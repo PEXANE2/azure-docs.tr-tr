@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 6923bb31e53493dd01f41cb0b0449f2093bc7e91
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092482"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532603"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -118,7 +118,7 @@ Depolama hesabı sahibi, "HPC Cache kaynak sağlayıcısı" kullanıcısı için
 
 Bunu zaman içinde yapabilir veya bir BLOB depolama hedefi eklediğiniz sayfada bir bağlantıya tıklayarak yapabilirsiniz. Rol ayarlarının Azure ortamından yayılması beş dakika sürebileceğini unutmayın. bu nedenle, bir depolama hedefi oluşturmadan önce roller eklendikten sonra birkaç dakika beklemeniz gerekir.
 
-RBAC rolleri ekleme adımları:
+Azure rollerini ekleme adımları:
 
 1. Depolama hesabı için **erişim denetimi (IAM)** sayfasını açın. ( **Depolama hedefi Ekle** sayfasındaki bağlantı, seçili hesap için otomatik olarak bu sayfayı açar.)
 
@@ -220,9 +220,9 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 | Kullanım modeli                   | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Yok                     |
+| Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Hiçbiri                     |
 | %15 yazma boyutundan büyük       | Okuma/yazma   | Asla                 | 1 saat                   |
-| İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Yok                     |
+| İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Hiçbiri                     |
 
 ### <a name="create-an-nfs-storage-target"></a>NFS depolama hedefi oluşturma
 

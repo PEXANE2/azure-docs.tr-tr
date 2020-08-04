@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513052"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533164"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
-Azure NetApp Files NFS (NFSv3 ve NFSv 4.1) ve SMBv3 birimlerini destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, bir NFS biriminin nasıl oluşturulacağı gösterilmektedir. SMB birimi oluşturmak istiyorsanız, bkz. [Azure NetApp Files IÇIN SMB birimi oluşturma](azure-netapp-files-create-volumes-smb.md). 
+Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, bir NFS biriminin nasıl oluşturulacağı gösterilmektedir. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
-Zaten bir kapasite havuzu ayarlamış olmalısınız.   
-[Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)   
-Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
-[Azure NetApp Files için bir alt ağı temsilci olarak belirleme](azure-netapp-files-delegate-subnet.md)
+* Zaten bir kapasite havuzu ayarlamış olmalısınız.  
+    Bkz. [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md).   
+* Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
+    [Azure NetApp Files için bir alt ağ temsilcisine](azure-netapp-files-delegate-subnet.md)bakın.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 
@@ -44,22 +44,19 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
 ## <a name="best-practice"></a>En iyi yöntem
 
-* Birim için uygun bağlama yönergelerini kullandığınızdan emin olmanız gerekir.  Bkz. [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).
+* Birim için uygun bağlama yönergelerini kullandığınızdan emin olun.  Bkz. [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).
 
 * NFS istemcisi, Azure NetApp Files birimle aynı VNet veya eşlenmiş VNet 'te olmalıdır. VNet dışından bağlantı desteklenir; Ancak, ek gecikme ortaya çıkaracak ve genel performansı azaltacaktır.
 
-* NFS istemcisinin güncel olduğundan ve işletim sistemi için en son güncelleştirmeleri çalıştırdığından emin olmanız gerekir.
+* NFS istemcisinin güncel olduğundan ve işletim sistemi için en son güncelleştirmeleri çalıştırdığından emin olun.
 
 ## <a name="create-an-nfs-volume"></a>NFS birimi oluşturma
 
-1.  Kapasite havuzları dikey penceresinden **birimler** dikey penceresine tıklayın. 
+1.  Kapasite havuzları dikey penceresinden **birimler** dikey penceresine tıklayın. Birim oluşturmak için **+ Birim ekle**'ye tıklayın. 
 
-    ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Birim oluşturmak için **+ Birim ekle**'ye tıklayın.  
-    Birim oluştur penceresi görüntülenir.
-
-3.  Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve aşağıdaki alanlar için bilgi sağlayın:   
+2.  Birim Oluştur penceresinde **Oluştur**' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
     * **Birim adı**      
         Oluşturmakta olduğunuz birim için ad belirtin.   
 
@@ -92,11 +89,11 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümünü göster** ' e tıklayın ve açılır menüden bir anlık görüntü ilkesi seçin. 
 
-        Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntüleri yönetme](azure-netapp-files-manage-snapshots.md).
+        Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntü Ilkelerini yönetme](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Gelişmiş seçimi göster](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
+3. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
     * Birimin protokol türü olarak **NFS** ' yi seçin.   
     * Yeni birim için dışarı aktarma yolunu oluşturmak üzere kullanılacak **dosya yolunu** belirtin. Dışarı aktarma yolu, birimi bağlamak ve birime erişmek için kullanılır.
 
@@ -105,11 +102,16 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         Dosya yolu her abonelik ve her bölge içinde benzersiz olmalıdır. 
 
     * Birim için NFS sürümünü (**NFSv3** veya **nfsv 4.1**) seçin.  
+
+    * NFSv 4.1 kullanıyorsanız, birim için **Kerberos** şifrelemeyi etkinleştirmek isteyip istemediğinizi belirtin.  
+
+        NFSv 4.1 ile Kerberos kullanıyorsanız ek yapılandırma gerekir. [NFSv 4.1 Kerberos şifrelemesini yapılandırma](configure-kerberos-encryption.md)bölümündeki yönergeleri izleyin.
+
     * İsteğe bağlı olarak, [NFS birimi için dışarı aktarma ilkesini yapılandırın](azure-netapp-files-configure-export-policy.md).
 
     ![NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. Birim ayrıntılarını gözden geçirmek için **gözden geçir + oluştur** ' a tıklayın.  Ardından, NFS birimini oluşturmak için **Oluştur** ' a tıklayın.
+4. Birim ayrıntılarını gözden geçirmek için **gözden geçir + oluştur** ' a tıklayın.  Birimi oluşturmak için **Oluştur** ' a tıklayın.
 
     Oluşturduğunuz birim birimler sayfasında görünür. 
  
@@ -119,6 +121,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 * [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma](azure-netapp-files-configure-nfsv41-domain.md)
+* [NFSv 4.1 Kerberos şifrelemesini yapılandırma](configure-kerberos-encryption.md)
 * [Windows veya Linux sanal makineleri için birimi bağlama veya ayırma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [NFS birimine yönelik dışarı aktarma ilkesini yapılandırma](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)

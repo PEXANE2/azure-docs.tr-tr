@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e2e13d00e48c83ff56cc21f23f513d17f545b4e4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496058"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534779"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -89,7 +89,7 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 
 
 > [!IMPORTANT]
-> Güvenlik duvarıyla korunan depolamaya erişirken yalnızca yönetilen kimlik kullanılabilir. [Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen KIMLIĞE](../../active-directory/managed-identities-azure-resources/overview.md) [bir RBAC rolünü](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan RBAC rolüne karşılık gelir.
+> Güvenlik duvarıyla korunan depolamaya erişirken yalnızca yönetilen kimlik kullanılabilir. [Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir Azure rolünü](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
 >
 
 ## <a name="credentials"></a>Kimlik bilgileri

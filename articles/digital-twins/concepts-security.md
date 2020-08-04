@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373292"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534048"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile Azure dijital TWINS güvenliğini sağlama
 
@@ -24,7 +24,7 @@ RBAC, Azure dijital TWINS 'e [Azure Active Directory](../active-directory/fundam
 
 Bir *güvenlik sorumlusu*için, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş*olması gerekir. 
 
@@ -33,7 +33,7 @@ Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir K
 
 Kimlik doğrulama adımı, herhangi bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesini gerektirir. Bir uygulama, [Azure işlevleri](../azure-functions/functions-overview.md) uygulaması gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için **yönetilen bir kimlik** kullanabilir. Sonraki bölümde Yönetilen kimlikler hakkında daha fazla bilgi edinin.
 
-Yetkilendirme adımı, güvenlik sorumlusuna bir RBAC rolünün atanmasını gerektirir. Bir güvenlik sorumlusu 'na atanan roller, sorumlunun sahip olacağı izinleri belirleyebilir. Azure dijital TWINS, Azure dijital TWINS kaynakları için izin kümelerini çevreleyen RBAC rolleri sağlar. Bu roller, bu makalenin ilerleyen kısımlarında açıklanmıştır.
+Yetkilendirme adımı, güvenlik sorumlusuna bir Azure rolünün atanmasını gerektirir. Bir güvenlik sorumlusu 'na atanan roller, sorumlunun sahip olacağı izinleri belirleyebilir. Azure dijital TWINS, Azure dijital TWINS kaynakları için izin kümelerini çevreleyen Azure rolleri sağlar. Bu roller, bu makalenin ilerleyen kısımlarında açıklanmıştır.
 
 Azure 'da desteklenen roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. Azure RBAC belgelerindeki [*farklı rolleri anlama*](../role-based-access-control/rbac-and-directory-admin-roles.md) .
 
@@ -41,9 +41,9 @@ Azure 'da desteklenen roller ve rol atamaları hakkında daha fazla bilgi edinme
 
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Böylece, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler vermek üzere bu kimliği erişim denetimi rolleriyle ilişkilendirebilirsiniz.
 
-Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönetir. Uygulama kodunuzda veya yapılandırmanızda, kimliğin kendisi için ya da erişmeniz gereken kaynaklar için erişim anahtarlarını depolamanız ve korumanız gerekmez. Azure App Service uygulamasının içinde çalışan bir Azure dijital TWINS istemci uygulamasının SAS kurallarını ve anahtarlarını veya diğer erişim belirteçlerini işlemesi gerekmez. İstemci uygulaması yalnızca Azure Digital TWINS ad alanının uç nokta adresine ihtiyaç duyuyor. Uygulama bağlandığında, Azure Digital TWINS yönetilen varlığın bağlamını istemciye bağlar. Yönetilen bir kimlikle ilişkilendirildikten sonra Azure dijital TWINS istemciniz tüm yetkili işlemleri gerçekleştirebilir. Daha sonra, yönetilen bir varlık bir Azure dijital TWINS RBAC rolüyle ilişkilendirerek yetkilendirme verilecektir (aşağıda açıklanmıştır).
+Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönetir. Uygulama kodunuzda veya yapılandırmanızda, kimliğin kendisi için ya da erişmeniz gereken kaynaklar için erişim anahtarlarını depolamanız ve korumanız gerekmez. Azure App Service uygulamasının içinde çalışan bir Azure dijital TWINS istemci uygulamasının SAS kurallarını ve anahtarlarını veya diğer erişim belirteçlerini işlemesi gerekmez. İstemci uygulaması yalnızca Azure Digital TWINS ad alanının uç nokta adresine ihtiyaç duyuyor. Uygulama bağlandığında, Azure Digital TWINS yönetilen varlığın bağlamını istemciye bağlar. Yönetilen bir kimlikle ilişkilendirildikten sonra Azure dijital TWINS istemciniz tüm yetkili işlemleri gerçekleştirebilir. Daha sonra, yönetilen bir varlık bir Azure dijital TWINS Azure rolüyle (aşağıda açıklanmıştır) ilişkilendirilerek yetkilendirme verilecektir.
 
-### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Yetkilendirme: Azure dijital TWINS için RBAC rolleri
+### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Yetkilendirme: Azure dijital TWINS için Azure rolleri
 
 Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
 * *Azure dijital TWINS sahibi (Önizleme)* – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
@@ -62,7 +62,7 @@ Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için Azure diji
 
 ## <a name="permission-scopes"></a>İzin kapsamları
 
-Bir güvenlik sorumlusuna RBAC rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı vermek için idealdir.
+Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı vermek için idealdir.
 
 Aşağıdaki listede, Azure dijital TWINS kaynaklarına erişimi kapsama ekleyebileceğiniz düzeyler açıklanmaktadır.
 * Modeller: Bu kaynak için Eylemler, Azure dijital TWINS 'te karşıya yüklenen [modeller](concepts-models.md) üzerinde denetim dikte ediyor.

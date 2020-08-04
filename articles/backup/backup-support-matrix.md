@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091020"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531889"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -106,20 +106,17 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 ### <a name="data-security"></a>Veri güvenliği
 
 - Yedekleme verileri, kurtarma hizmetleri kasasında şifrelenmiş biçimde depolanır.
-- Yalnızca bu verilerin kilidini açmak için bir parola vardır. Microsoft, herhangi bir noktada yedekleme verilerinin şifresini çözemez.
-
-    > [!WARNING]
-    > Kasayı ayarladıktan sonra yalnızca şifreleme anahtarına erişiminiz vardır. Microsoft hiçbir şekilde kopya korumaz ve anahtara erişemez. Anahtar yanlış olursa Microsoft, yedekleme verilerini kurtaramaz.
+- MARS aracısına sahip şirket içi sunuculardan veri yedeklendiğinde, veriler Azure Backup yüklenmeden önce bir parola ile şifrelenir ve yalnızca Azure Backup indirildikten sonra şifresi çözülür.
 - Azure VM 'lerini yedekliyorsanız, sanal makine *içinde* şifrelemeyi ayarlamanız gerekir.
 - Azure Backup, Windows sanal makinelerde BitLocker, Linux sanal makinelerde ise **dm-crypt** kullanan Azure Disk Şifrelemesi özelliğini destekler.
 - Arka uçta Azure Backup, bekleyen verileri koruyan [Azure depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md)kullanır.
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
-**Azure VM’leri** | ![Yes][green] | ![Yes][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Evet][green]
+**Azure VM’leri** | ![Yes][green] | ![Evet][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Evet][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Evet][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -132,7 +129,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 **Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
 **VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Evet][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -153,9 +150,9 @@ Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlen
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
-| SQL/SAP HANA          | Hayır                                                           | Yok               |
-| 'Nın                    | Hayır                                                           | Yok               |
+| MARS Aracısı/şirket içi | No                                                           | Yok               |
+| SQL/SAP HANA          | No                                                           | Yok               |
+| 'Nın                    | No                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420490"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528677"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
@@ -19,7 +19,7 @@ Rol tabanlı erişim denetimi (RBAC), Azure kaynakları için erişim yönetimi 
 
 ## <a name="roles-in-automation-accounts"></a>Otomasyon hesaplarındaki roller
 
-Azure Automation’da, otomasyon hesabı kapsamında kullanıcılara, gruplara ve uygulamalara uygun RBAC rolü atanarak erişim verilir. Aşağıda Automation hesabının desteklediği yerleşik roller bulunmaktadır:
+Azure Otomasyonu 'nda, Otomasyon hesabı kapsamındaki kullanıcılara, gruplara ve uygulamalara uygun Azure rolü atanarak erişim verilir. Aşağıda Automation hesabının desteklediği yerleşik roller bulunmaktadır:
 
 | **Role** | **Açıklama** |
 |:--- |:--- |
@@ -319,7 +319,7 @@ Otomasyon hesabını yönetmesiz veya kuruluş için artık çalışan bir kulla
 
 Ayrıca, aşağıdaki [Azure PowerShell cmdlet 'lerini](../role-based-access-control/role-assignments-powershell.md)kullanarak bir Otomasyon hesabına rol tabanlı erişimi de yapılandırabilirsiniz:
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) , Azure Active Directory bulunan tüm RBAC rollerini listeler. `Name`Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i parametresiyle birlikte kullanabilirsiniz.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) , Azure Active Directory bulunan tüm Azure rollerini listeler. `Name`Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i parametresiyle birlikte kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'

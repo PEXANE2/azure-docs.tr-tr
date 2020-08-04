@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133172"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534301"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
 
@@ -24,7 +24,7 @@ Varsayılan olarak, blob verilerinize genel erişim her zaman yasaktır. Ancak, 
 
 Depolama hesabı için genel blob erişimine izin vermemek için Azure depolama, bu hesaba yönelik tüm anonim istekleri reddeder. Bir hesap için genel erişime izin verildikten sonra, söz konusu hesaptaki kapsayıcılar daha sonra genel erişim için yapılandırılamaz. Ortak erişim için önceden yapılandırılmış olan tüm kapsayıcılar, anonim istekleri artık kabul etmez. Daha fazla bilgi için bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md).
 
-Bu makalede, bir depolama hesabına karşı anonim isteklerin nasıl çözümleneceği ve tüm depolama hesabı veya tek bir kapsayıcı için anonim erişimin nasıl engelleneceği açıklanmaktadır.
+Bu makalede, depolama hesaplarınız için genel erişimi sürekli olarak yönetmek üzere bir sürükleme (algılama-düzeltme-denetim-Idare) çerçevesinin nasıl kullanılacağı açıklanır.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>İstemci uygulamalarından gelen Anonim istekleri Algıla
 
@@ -157,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Birden çok hesap için genel erişim ayarını denetleyin
+
+En iyi performansa sahip bir dizi depolama hesabı genelinde genel erişim ayarını denetlemek için Azure portal Azure Kaynak Grafiği Gezginini kullanabilirsiniz. Kaynak Grafiği Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak Ilk kaynak grafik sorgunuzu çalıştırma](/azure/governance/resource-graph/first-query-portal).
+
+Kaynak Graph Explorer 'da aşağıdaki sorguyu çalıştırmak, depolama hesaplarının bir listesini döndürür ve her bir hesap için ortak erişim ayarını görüntüler:
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>Uyumluluğu denetlemek için Azure Ilkesini kullanma
+
+Çok sayıda depolama hesabınız varsa, bu hesapların genel erişimi engelleyecek şekilde yapılandırıldığından emin olmak için bir denetim yapmak isteyebilirsiniz. Uyumluluğun bir depolama hesapları kümesini denetlemek için Azure Ilkesi ' ni kullanın. Azure Ilkesi, Azure kaynaklarına kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullanabileceğiniz bir hizmettir. Azure Ilkesi, bu kaynakları kurumsal standartlarınızla ve hizmet düzeyi Sözleşmelerinizle uyumlu tutmanıza yardımcı olur. Daha fazla bilgi için bkz. [Azure Ilkesine genel bakış](../../governance/policy/overview.md).
+
+### <a name="create-a-policy-with-an-audit-effect"></a>Denetim efektli bir ilke oluşturma
+
+Azure Ilkesi, bir ilke kuralı bir kaynağa göre değerlendirildiğinde ne olacağını belirlemek için etkileri destekler. Denetim etkisi, bir kaynak uyumlu olmadığında, ancak isteği durdurmadığında bir uyarı oluşturur. Efektler hakkında daha fazla bilgi için bkz. [Azure ilke efektlerini anlama](../../governance/policy/concepts/effects.md).
+
+Azure portal bir depolama hesabı için genel erişim ayarı için denetim etkisi olan bir ilke oluşturmak için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Ilke hizmeti ' ne gidin.
+1. **Yazma** bölümünde **tanımlar**' ı seçin.
+1. **İlke tanımı Ekle** ' yi seçerek yeni bir ilke tanımı oluşturun.
+1. **Tanım konumu** alanı için, denetim ilkesi kaynağının nerede olduğunu belirtmek üzere **daha fazla** düğmesini seçin.
+1. İlke için bir ad belirtin. İsteğe bağlı olarak bir açıklama ve kategori belirtebilirsiniz.
+1. **İlke kuralı**altında, **policyrule** bölümüne aşağıdaki ilke tanımını ekleyin.
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. İlkeyi kaydedin.
+
+### <a name="assign-the-policy"></a>İlke atama
+
+Sonra, ilkeyi bir kaynağa atayın. İlke kapsamı bu kaynağa ve altındaki kaynaklara karşılık gelir. İlke atama hakkında daha fazla bilgi için bkz. [Azure ilke atama yapısı](../../governance/policy/concepts/assignment-structure.md).
+
+İlkeyi Azure portal atamak için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Ilke hizmeti ' ne gidin.
+1. **Yazma** bölümünde **atamalar**' ı seçin.
+1. Yeni ilke ataması oluşturmak için **Ilke ata** ' yı seçin.
+1. **Kapsam** alanı için, ilke atamasının kapsamını seçin.
+1. **İlke tanımı** alanı Için, **daha fazla** düğmesini seçin ve ardından listeden önceki bölümde tanımladığınız ilkeyi seçin.
+1. İlke ataması için bir ad girin. Açıklama isteğe bağlıdır.
+1. **İlke zorlamasının** *etkin*olarak ayarlanmış kalsın. Bu ayarın denetim ilkesi üzerinde hiçbir etkisi yoktur.
+1. Atamayı oluşturmak için **gözden geçir + oluştur** ' u seçin.
+
+### <a name="view-compliance-report"></a>Uyumluluk raporunu görüntüle
+
+İlkeyi atadıktan sonra, uyumluluk raporunu görüntüleyebilirsiniz. Bir denetim ilkesi için uyumluluk raporu, ilke ile uyumlu olmayan depolama hesaplarının hakkında bilgi sağlar. Daha fazla bilgi için bkz. [ilke uyumluluk verilerini edinme](../../governance/policy/how-to/get-compliance-data.md).
+
+Uyumluluk raporunun, ilke ataması oluşturulduktan sonra kullanılabilir olması birkaç dakika sürebilir.
+
+Uyumluluk raporunu Azure portal görüntülemek için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Ilke hizmeti ' ne gidin.
+1. **Uyumluluk**' i seçin.
+1. Önceki adımda oluşturduğunuz ilke atamasının adı için sonuçları filtreleyin. Rapor, ilkeyle ilgili olarak kaç kaynağın uyumsuz olduğunu gösterir.
+1. Uyumluluğa sahip olmayan depolama hesaplarının bir listesi de dahil olmak üzere ek ayrıntılar için raporda ayrıntıya gidebilirsiniz.
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Blob genel erişimi için denetim ilkesi uyumluluk raporunu gösteren ekran görüntüsü":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>Yetkili erişimi zorlamak için Azure Ilkesini kullanma
+
+Azure Ilkesi, Azure kaynaklarının gereksinimlere ve standartlara bağlı olmasını sağlayarak bulut idare desteği sağlar. Kuruluşunuzdaki depolama hesaplarının yalnızca yetkili isteklere izin verdiğinden emin olmak için, anonim isteklere izin veren bir genel erişim ayarı ile yeni bir depolama hesabı oluşturulmasını önleyen bir ilke oluşturabilirsiniz. Bu ilke, bu hesap için genel erişim ayarı ilkeyle uyumlu değilse, mevcut bir hesapta tüm yapılandırma değişikliklerini de engeller.
+
+Zorlama ilkesi, genel erişime izin vermek üzere bir depolama hesabı oluşturacak veya değiştirecek bir isteği engellemek için reddetme efektini kullanır. Efektler hakkında daha fazla bilgi için bkz. [Azure ilke efektlerini anlama](../../governance/policy/concepts/effects.md).
+
+Anonim isteklere izin veren bir genel erişim ayarı için reddetme etkisi olan bir ilke oluşturmak için, [uyumluluğu denetlemek Için Azure Ilkesi kullanma](#use-azure-policy-to-audit-for-compliance)bölümünde açıklanan adımları izleyin, ancak Ilke tanımının **POLICYRULE** bölümünde aşağıdaki JSON 'ı sağlayın:
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+İlkeyi reddetme etkimiyle oluşturup bir kapsama atadıktan sonra, Kullanıcı, genel erişime izin veren bir depolama hesabı oluşturamaz. Ya da bir Kullanıcı, mevcut bir depolama hesabında halen genel erişime izin veren bir yapılandırma değişikliği yapabilir. Bunun denenmeye çalışılması bir hata ile sonuçlanır. Hesap oluşturma veya yapılandırmaya devam etmek için depolama hesabının genel erişim ayarı **yanlış** olarak ayarlanmalıdır.
+
+Aşağıdaki görüntüde, reddetme etkisi olan bir ilke ortak erişime izin verilmediğinde genel erişime izin veren (yeni bir hesap için varsayılan) bir depolama hesabı oluşturmaya çalıştığınızda oluşan hata gösterilmektedir.
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="İlke ihlalinden bir depolama hesabı oluşturulurken oluşan hatayı gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

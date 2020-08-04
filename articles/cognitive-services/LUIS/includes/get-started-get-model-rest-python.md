@@ -19,7 +19,7 @@ ms.locfileid: "84416443"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Python 3.6](https://www.python.org/downloads/) veya üzeri.
+* [Python 3,6](https://www.python.org/downloads/) veya üzeri.
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>Örnek konuşmalar JSON dosyası
@@ -32,7 +32,7 @@ ms.locfileid: "84416443"
 
 ## <a name="change-model-programmatically"></a>Modeli program aracılığıyla değiştirme
 
-1. `model.py` adlı yeni bir dosya oluşturun. Aşağıdaki kodu ekleyin:
+1. `model.py` adlı yeni bir dosya oluşturun. Şu kodu ekleyin:
 
     [!code-python[Add example utterances to Language Understanding in python](~/cognitive-services-quickstart-code/python/LUIS/python-model-with-rest/model.py)]
 

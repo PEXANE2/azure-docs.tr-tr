@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519295"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534643"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimleri ayarlama 
 
 Kuruluşunuzdaki doğru kişilerin ortamınızdaki güvenlik uyarıları hakkında bildirim aldığından emin olmak için e-posta **bildirimleri** ayarları sayfasına e-posta adreslerini girin.
 
-Bildirimlerinizi ayarlarken, e-postaları belirli kişilere veya bir abonelik için belirli bir RBAC rolüne sahip herkese gönderilecek şekilde yapılandırabilirsiniz. 
+Bildirimlerinizi ayarlarken, e-postaları belirli kişilere veya belirli bir Azure rolüne sahip herkese bir abonelik için gönderilecek şekilde yapılandırabilirsiniz. 
 
 Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin miktarını sınırlandırır. Güvenlik Merkezi, her abonelik için şunu gönderir:
 
@@ -41,7 +41,7 @@ Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin mik
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Uyarılar için e-posta bildirimleri ayarlama<a name="email"></a>
 
-Kişilere veya belirli RBAC rollerine sahip tüm kullanıcılara e-posta bildirimleri gönderebilirsiniz.
+Kişilere veya belirli Azure rollerine sahip tüm kullanıcılara e-posta bildirimleri gönderebilirsiniz.
 
 1. Güvenlik Merkezi 'nin **fiyatlandırma & ayarları** alanından, ilgili abonelik ve **e-posta bildirimleri**' ni seçin.
 

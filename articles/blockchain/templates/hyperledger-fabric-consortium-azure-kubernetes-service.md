@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını
 ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286062"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533436"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -305,12 +305,12 @@ Eş kuruluş istemcisinde, belirtilen kanalda eş kuruluşa ait bağlantı eşle
   - `<anchorPeersList>`Yalnızca peer1 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" olarak ayarlayın.
   - `<anchorPeersList>`Hem peer1 hem de peer3 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" "peer3" olarak ayarlayın.
 
-### <a name="chaincode-management-commands"></a>Chaincode yönetim komutları
+## <a name="chaincode-management-commands"></a>Chaincode yönetim komutları
 
 >[!NOTE]
 > Herhangi bir chaincode işlemine başlamadan önce, istemci uygulamasının ilk kurulumunun tamamlandığından emin olun.  
 
-**Aşağıdaki chaincode 'a özgü ortam değişkenlerini ayarlayın**
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>Aşağıdaki chaincode 'a özgü ortam değişkenlerini ayarlayın
 
 ```bash
 # peer organization name where chaincode operation is to be performed
@@ -329,14 +329,6 @@ CC_PATH=<chaincodePath>
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
 ```
-
-Aşağıdaki chaincode işlemleri gerçekleştirilebilir:  
-
-- [Chaincode 'u yükler](#install-chaincode)  
-- [Chaincode örneği oluşturma](#instantiate-chaincode)  
-- [Chaincode çağırma](#invoke-chaincode)
-- [Sorgu chaincode](#query-chaincode)
-
 
 ### <a name="install-chaincode"></a>Chaincode 'u yükler  
 
@@ -358,13 +350,13 @@ Adımları izleyin:
 Eş istemci uygulamasından, kanaldaki chaincode 'u başlatmak için aşağıdaki komutu yürütün.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
+
 Örnek oluşturma işlevi adı ve bağımsız değişken ayrılmış listesi ' ni `<instantiateFunc>` ve `<instantiateFuncArgs>` sırasıyla geçirin. Örneğin, chaincode_example02. go chaincode 'da, ' `<instantiateFunc>` `init` a ve " `<instantiateFuncArgs>` a" "2000" "b" "1000" olarak ayarlanmış chaincode 'u oluşturmak için.
 
 > [!NOTE]
 > Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün. İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, chaincode, kanaldaki tüm eş kuruluşlardaki tüm eşdüzey düğümlerde oluşturulur.  
-
 
 ### <a name="invoke-chaincode"></a>Chaincode çağırma  
 

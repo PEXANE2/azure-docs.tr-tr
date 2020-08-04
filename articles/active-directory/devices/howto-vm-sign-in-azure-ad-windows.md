@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419793"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529119"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -144,7 +144,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>VM için rol atamalarını yapılandırma
 
-VM 'yi oluşturduğunuza göre, VM 'de kimlerin oturum Açabili belirleyebilmek için Azure RBAC ilkesini yapılandırmanız gerekir. VM oturum açma yetkisini yetkilendirmek için iki RBAC rolü kullanılır:
+VM 'yi oluşturduğunuza göre, VM 'de kimlerin oturum Açabili belirleyebilmek için Azure RBAC ilkesini yapılandırmanız gerekir. VM oturum açma yetkisini yetkilendirmek için iki Azure rolü kullanılır:
 
 - **Sanal Makine Yöneticisi oturum açma**: Bu role atanmış kullanıcılar yönetici ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
 - **Sanal makine Kullanıcı oturumu açma**: Bu role atanmış kullanıcılar, normal kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
@@ -315,13 +315,13 @@ Genel önizlemede, AADLoginForWindows uzantısının yalnızca Windows Server 20
 
 ### <a name="troubleshoot-sign-in-issues"></a>Oturum açma sorunlarını giderme
 
-Azure AD kimlik bilgileriyle RDP kullanmaya çalıştığınızda karşılaşılan bazı yaygın hatalar, hiçbir RBAC rolü atanmamış, yetkisiz istemci veya 2FA oturum açma yöntemi gerekli değildir. Bu sorunları gidermek için aşağıdaki bilgileri kullanın.
+Azure AD kimlik bilgileriyle RDP kullanmaya çalıştığınızda oluşan bazı yaygın hatalar, hiçbir Azure rolü atanmamış, yetkisiz istemci veya 2FA oturum açma yöntemi gerekli değildir. Bu sorunları gidermek için aşağıdaki bilgileri kullanın.
 
 Cihaz ve SSO durumu çalıştırılarak görüntülenebilir `dsregcmd /status` . Amaç, cihaz durumunun olarak gösterilmesi `AzureAdJoined : YES` ve `SSO State` gösterilmesi içindir `AzureAdPrt : YES` .
 
 Ayrıca, Azure AD hesaplarını kullanan RDP oturum açma işlemi, Aad\işletimsel olay günlükleri altında Olay Görüntüleyicisi 'nde yakalanır.
 
-#### <a name="rbac-role-not-assigned"></a>RBAC rolü atanmadı
+#### <a name="azure-role-not-assigned"></a>Azure rolü atanmadı
 
 Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki hata iletisini görürseniz: 
 

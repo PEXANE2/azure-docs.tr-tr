@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514076"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533589"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
@@ -23,6 +23,10 @@ Windows Server makineleri, System Center DPM ve Microsoft Azure Backup sunucusu 
 ### <a name="how-long-are-vault-credentials-valid"></a>Kasa kimlik bilgileri ne kadar süreyle geçerlidir?
 
 Kasa kimlik bilgilerinin 10 gün sonra sona ereceği süre. Kimlik bilgileri dosyasının süresi dolarsa, Azure portal dosyayı yeniden indirin.
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>Parola için hangi karakterlere izin veriliyor?
+
+Parola, ASCII karakter kümesindeki karakterleri kullanmalıdır, bu değer 127 değerinden küçük veya buna eşit olmalıdır.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Dosyaları ve klasörleri hangi sürücülerden yedekleyebilirim?
 

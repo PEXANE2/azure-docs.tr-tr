@@ -32,7 +32,7 @@ ms.locfileid: "84416428"
 
 ## <a name="change-model-programmatically"></a>Modeli program aracılığıyla değiştirme
 
-1. `predict.go` adlı yeni bir dosya oluşturun. Aşağıdaki kodu ekleyin:
+1. `predict.go` adlı yeni bir dosya oluşturun. Şu kodu ekleyin:
 
     [!code-go[Code snippet](~/cognitive-services-quickstart-code/go/LUIS/go-rest-model/model.go)]
 

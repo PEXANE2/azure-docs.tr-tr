@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371966"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528472"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
@@ -70,8 +70,8 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-1. Bu [Kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak Azure PowerShell 'i yükler.
-2. Genel amaçlı v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak genel amaçlı v2 'ye yükseltmeniz gerekir.
+1. Bu [kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak Azure PowerShell'i yükleyin.
+2. Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
 3. Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) bakın.
 #### <a name="steps"></a>Adımlar
 
@@ -88,13 +88,13 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
    > [!NOTE]
    > Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak **v2 'ye yükseltmeniz** gerekir.
 
-3. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. SQL Server 'a **Depolama Blobu veri sahibi, katkıda bulunan veya Reader** RBAC rolü atayın.
+3. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. SQL Server 'a **Depolama Blobu veri sahibi, katkıda bulunan veya okuyucu** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
    
     > [!IMPORTANT]
-    > **Depolama** **blobu veri** sahibini, KATKıDA bulunan veya Reader RBAC rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır. 
+    > **Depolama** **blobu veri** sahibini, katkıda bulunan veya okuyucu Azure rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır. 
 
     ![Yük için RBAC izni veriliyor](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +112,10 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory kimlik doğrulaması (AAD)
 #### <a name="steps"></a>Adımlar
 
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. AAD kullanıcısına **Depolama Blobu veri sahibi, katkıda bulunan veya Reader** RBAC rolü atayın. 
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. AAD kullanıcısına **Depolama Blobu veri sahibi, katkıda bulunan veya okuyucu** Azure rolü atayın. 
 
     > [!IMPORTANT]
-    > **Depolama** **blobu veri** sahibini, KATKıDA bulunan veya Reader RBAC rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır.
+    > **Depolama** **blobu veri** sahibini, katkıda bulunan veya okuyucu Azure rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır.
 
     ![Yük için RBAC izni veriliyor](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 

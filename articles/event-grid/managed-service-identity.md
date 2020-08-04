@@ -3,12 +3,12 @@ title: Yönetilen hizmet kimliğiyle olay teslimi
 description: Bu makalede bir Azure olay Kılavuzu konusu için yönetilen hizmet kimliğinin nasıl etkinleştirileceği açıklanır. Olayları desteklenen hedeflere iletmek için kullanın.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499832"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534252"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
 Bu makalede, Azure Event Grid konuları veya etki alanları için [yönetilen bir hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
@@ -63,20 +63,20 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 Var olan bir etki alanını güncelleştirme komutu benzerdir ( `az eventgrid domain update` ).
 
-## <a name="supported-destinations-and-rbac-roles"></a>Desteklenen hedefler ve RBAC rolleri
+## <a name="supported-destinations-and-azure-roles"></a>Desteklenen hedefler ve Azure rolleri
 Olay kılavuzunuzun konusu veya etki alanı için kimliği etkinleştirdikten sonra Azure, Azure Active Directory içinde otomatik olarak bir kimlik oluşturur. Konunun veya etki alanının olayları desteklenen hedeflere iletebilmesi için bu kimliği uygun Azure rollerine ekleyin. Örneğin, olay Kılavuzu konusunun olayları bu ad alanındaki Olay Hub 'larına iletebilmesi için, Azure Event Hubs ad alanı için **azure Event Hubs Data sender** rolüne kimliği ekleyin. 
 
 Şu anda Azure Event Grid, olayları aşağıdaki hedeflere iletmek için sistem tarafından atanan yönetilen kimlikle yapılandırılmış konuları veya etki alanlarını destekler. Bu tabloda, konunun olayları iletebilmesi için kimliğin içinde olması gereken roller de sunulur.
 
-| Hedef | RBAC rolü | 
+| Hedef | Azure rolü | 
 | ----------- | --------- | 
 | Service Bus kuyrukları ve konuları | [Veri Göndericisini Azure Service Bus](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs veri gönderici](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob depolama | [Depolama Blobu veri Katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Azure Kuyruk Depolama |[Depolama kuyruğu veri Iletisi gönderici](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Blob depolama | [Depolama Blobu veri Katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure Kuyruk Depolama |[Depolama kuyruğu veri Iletisi gönderici](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
-## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>Hedeflerdeki RBAC rollerine bir kimlik ekleme
-Bu bölümde, konağınız veya etki alanınız için bir RBAC rolüne nasıl kimlik ekleneceği açıklanmaktadır. 
+## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Hedeflerde Azure rollerine kimlik ekleme
+Bu bölümde, bir Azure rolüne konağınız veya etki alanınız için kimliğin nasıl ekleneceği açıklanmaktadır. 
 
 ### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 Konunun veya etki alanının olayları hedefe iletebilmesi için konuyu veya etki alanı kimliğini uygun bir role atamak üzere Azure portal kullanabilirsiniz. 
@@ -94,7 +94,7 @@ Aşağıdaki örnek, bir kuyruk veya konu kaynağı içeren bir Service Bus ad a
 Bu adımlar, tabloda bahsedilen diğer rollere bir kimlik eklemeye benzer. 
 
 ### <a name="use-the-azure-cli"></a>Azure CLI kullanma
-Bu bölümdeki örnekte, bir RBAC rolüne kimlik eklemek için Azure CLı 'nın nasıl kullanılacağı gösterilmektedir. Örnek komutlar Event Grid konularına yöneliktir. Event Grid etki alanları için komutlar benzerdir. 
+Bu bölümdeki örnekte, bir Azure rolüne kimlik eklemek için Azure CLı 'nın nasıl kullanılacağı gösterilmektedir. Örnek komutlar Event Grid konularına yöneliktir. Event Grid etki alanları için komutlar benzerdir. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Konunun sistem kimliği için sorumlu KIMLIĞI al 
 İlk olarak, konunun sistem tarafından yönetilen kimliğin asıl KIMLIĞINI alın ve kimliği uygun rollere atayın.

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386223"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531175"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -38,16 +38,37 @@ Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi için bk
 
 Anahtar kasaınızdaki anahtarlar, gizlilikler veya sertifikalarla çalışmadan önce, aşağıdaki makalelerde açıklandığı gibi CLı, PowerShell, Kaynak Yöneticisi şablonları veya REST aracılığıyla anahtar kasanızı oluşturup yönetirsiniz:
 
-- [CLı ile Anahtar Kasası oluşturma ve yönetme](../secrets/quick-create-cli.md)
-- [PowerShell ile Anahtar Kasası oluşturma ve yönetme](../secrets/quick-create-powershell.md)
-- [Azure portal ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-portal.md)
-- [Python ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-python.md)
-- [Java ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-java.md)
-- [Node.jsanahtarla anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-node.md)
-- [.NET ile anahtar kasaları oluşturma ve yönetme (v4 SDK)](../secrets/quick-create-net.md)
-- [Bir Anahtar Kasası oluşturma ve bir Azure Resource Manager şablonu aracılığıyla gizli dizi ekleme](../secrets/quick-create-template.md)
-- [REST ile anahtar kasaları oluşturma ve yönetme](/rest/api/keyvault/)
+- [CLı ile Anahtar Kasası oluşturma ve yönetme](quick-create-cli.md)
+- [PowerShell ile Anahtar Kasası oluşturma ve yönetme](quick-create-powershell.md)
+- [Azure portal ile anahtar kasaları oluşturma ve yönetme](quick-create-portal.md)
+- [REST ile anahtar kasaları oluşturma ve yönetme](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>Gizli dizileri ayarlama ve alma
+
+- [CLı ile gizli dizi ayarlama ve alma](../secrets/quick-create-cli.md)
+- [PowerShell ile gizli dizi ayarlama ve alma](../secrets/quick-create-powershell.md)
+- [Azure portal bir gizli dizi ayarlama ve alma](../secrets/quick-create-portal.md)
+- [REST ile gizli dizi işlemleri](/rest/api/keyvault/#secret-operations)
+- [Python ile gizli dizi ayarlama ve alma](../secrets/quick-create-python.md)
+- [Java ile gizli dizi ayarlama ve alma](../secrets/quick-create-java.md)
+- [Node.jsile gizli dizi ayarlama ve alma](../secrets/quick-create-node.md)
+- [.NET ile gizli dizi ayarlama ve alma (v4 SDK)](../secrets/quick-create-net.md)
+- [Bir Anahtar Kasası oluşturma ve bir Azure Resource Manager şablonu aracılığıyla gizli dizi ekleme](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>Anahtarları ayarlama ve alma
+
+- [CLı ile anahtar ayarlama ve alma](../keys/quick-create-cli.md)
+- [PowerShell ile anahtar ayarlama ve alma](../keys/quick-create-powershell.md)
+- [Azure portal bir anahtar ayarlama ve alma](../keys/quick-create-portal.md)
+- [REST ile anahtar işlemleri](/rest/api/keyvault/#key-operations)
+- [Python ile anahtar ayarlama ve alma](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>Sertifikaları ayarlama ve alma
+- [CLı ile bir sertifika ayarlama ve alma](../certificates/quick-create-cli.md)
+- [PowerShell ile bir sertifika ayarlama ve alma](../certificates/quick-create-powershell.md)
+- [Azure portal bir sertifikayı ayarlama ve alma](../certificates/quick-create-portal.md)
+- [REST ile anahtar işlemleri](/rest/api/keyvault/#certificate-operations)
+- [Python ile bir sertifika ayarlama ve alma](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Key Vault kodlama
 
@@ -64,8 +85,6 @@ Key Vault kaynaklarınızın tamamına REST arabiriminden erişilebilir. Kasalar
 #### <a name="net"></a>.NET
 
 [Key Vault için .NET API başvurusu](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
-
-.NET SDK 'sının 2. x sürümü hakkında daha fazla bilgi için [sürüm notlarına](dotnet2api-release-notes.md)bakın.
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ Node.js, Key Vault yönetim API 'SI ve Key Vault nesne API 'SI ayrıdır. Aşağ
 Uygulamalarınızla Key Vault kullanan tüm örnekler için bkz.:
 
 - [Kod örneklerini Azure Key Vault](https://azure.microsoft.com/resources/samples/?service=key-vault) -Azure Key Vault Için kod örnekleri. 
-- [Bir Web uygulamasından Azure Key Vault kullanın](../secrets/quick-create-net.md) -Azure 'da bir web uygulamasından Azure Key Vault kullanmayı öğrenmenize yardımcı olmak için öğreticiden yararlanabilirsiniz. 
 
 ## <a name="how-tos"></a>Nasıl yapılır belgeleri
 
@@ -124,7 +142,6 @@ Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar 
 
 - [Key Vault geçici silme davranışı](soft-delete-overview.md)) silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu belirten silinen nesnelerin kurtarılmasına izin veren bir özelliği açıklar.
 - [Key Vault istemci kısıtlama](overview-throttling.md) , sizi daraltma temel kavramlara yönlendirir ve uygulamanız için bir yaklaşım sunar.
-- [Key Vault depolama hesabı anahtarlarına genel bakış](../secrets/overview-storage-keys.md)) Key Vault tümleştirme Azure depolama hesapları anahtarlarını açıklar.
 - [Key Vault güvenliği](overview-security-worlds.md) , bölgeler ve güvenlik alanları arasındaki ilişkileri açıklar.
 
 ## <a name="social"></a>Sosyal

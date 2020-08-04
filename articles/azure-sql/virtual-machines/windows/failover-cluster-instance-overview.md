@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287371"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533827"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
+|**FILESTREAM 'i destekler**|Yes|No|Yes |
 |**Azure Blob önbelleği**|Hayır|Hayır|Yes|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
@@ -98,7 +98,7 @@ Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme küm
 - Devam eden disk çoğaltma nedeniyle yüksek performans elde etmek için yüksek ağ bant genişliği gereklidir. 
 - Depolama her VM 'ye eklendiğinden daha büyük bir VM boyutu ve depolama için çift ödeme gerektirir. 
 
-Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanları doğrudan](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
+Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md). 
 
 ### <a name="premium-file-share"></a>Premium dosya paylaşma
 

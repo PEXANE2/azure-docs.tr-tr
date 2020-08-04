@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512967"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533147"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -97,11 +97,15 @@ Aşağıdaki formülü kullanarak MB/s 'yi ıOPS 'ye dönüştürebilirsiniz:
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Nasıl yaparım? bir birimin hizmet düzeyini değiştirmek mi istiyorsunuz?
 
-Bir birimin hizmet düzeyini değiştirme Şu anda desteklenmiyor.
+Birimi, birimi için istediğiniz [hizmet düzeyini](azure-netapp-files-service-levels.md) kullanan başka bir kapasite havuzuna taşıyarak mevcut bir birimin hizmet düzeyini değiştirebilirsiniz. Bkz. [bir birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md). 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Nasıl yaparım? Azure NetApp Files performans izlemesi yapılsın mı?
 
 Azure NetApp Files, birim performans ölçümleri sağlar. Azure Izleyici 'yi, Azure NetApp Files kullanım ölçümlerini izlemek için de kullanabilirsiniz.  Azure NetApp Files için performans ölçümlerinin listesi için bkz. [Azure NetApp Files ölçümleri](azure-netapp-files-metrics.md) .
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>NFSv 4.1 üzerinde Kerberos 'un performans etkisi nedir?
+
+NFSv 4.1 için güvenlik seçenekleri, test edilen performans vektörleri ve beklenen performans etkisi hakkında bilgi için bkz. [NFSv 4.1 üzerinde Kerberos 'un performans etkisi](configure-kerberos-encryption.md#kerberos_performance) . 
 
 ## <a name="nfs-faqs"></a>NFS hakkında SSS
 
@@ -164,6 +168,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
+
+## <a name="dual-protocol-faqs"></a>Çift protokol SSS
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Bir UNIX sisteminde NTFS güvenlik stiliyle bir çift protokol birimine erişmek için ' root ' ve yerel kullanıcıları kullanmaya çalıştım. Neden "Izin reddedildi" hatasıyla karşılaştım?   
+
+Çift protokol birimi hem NFS hem de SMB protokollerini destekler.  UNIX sisteminde takılı birime erişmeye çalıştığınızda, sistem kullandığınız UNIX kullanıcısını bir Windows kullanıcısına eşlemeye çalışır. Hiçbir eşleme bulunmazsa, "Izin verilmedi" hatası oluşur.  Bu durum, erişim için ' root ' kullanıcısını kullandığınızda da geçerlidir.    
+
+"Izin reddedildi" sorununu önlemek için, `pcuser` bağlama noktasına erişmeden önce Windows Active Directory 'nin dahil olduğundan emin olun. `pcuser`"İzin reddedildi" sorunuyla karşılaşduktan sonra eklerseniz, erişimi yeniden denemeden önce önbellek girişinin Temizleme için 24 saat bekleyin.
+
 
 ## <a name="capacity-management-faqs"></a>Kapasite Yönetimi SSS
 

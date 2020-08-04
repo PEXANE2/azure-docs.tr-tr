@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
 author: roy-har
 manager: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "84466915"
 ---
 Pizza uygulamasını oluşturun.
 
-1. Dosya için GitHub sayfasını açmak için [pizza-App-for-Luu-V6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) ' ı seçin `pizza-app-for-luis.json` .
+1. Dosya için GitHub sayfasını açmak üzere [pizza-app-for-luis-v6.json '](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) u seçin `pizza-app-for-luis.json` .
 1. **Ham** düğmesine sağ tıklayın veya uzun dokunduktan sonra **Bağlantıyı farklı kaydet** ' i seçerek bilgisayarınıza kaydedin `pizza-app-for-luis.json` .
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. [Uygulamalarım](https://www.luis.ai/applications)' ı seçin.
@@ -44,7 +44,7 @@ Pizza uygulamasındaki amaçları içeren bir liste ile **amaçlar** sayfasını
 ## <a name="add-an-authoring-resource-to-the-pizza-app"></a>Pizza uygulamasına bir yazma kaynağı ekleme
 
 1. **Yönet**' i seçin.
-1. **Azure kaynakları**' nı seçin.
+1. **Azure Kaynakları**’nı seçin.
 1. **Yazma kaynağı**' nı seçin.
 1. **Yazma kaynağını Değiştir**' i seçin.
 
@@ -65,7 +65,7 @@ Bu değerleri bulmak için:
 
 1. **Amaçlar** sayfasından **Yönet**' i seçin.
 1. **Uygulama ayarları** sayfasında, **uygulama kimliğini**kaydedin.
-1. **Azure kaynakları**' nı seçin.
+1. **Azure Kaynakları**’nı seçin.
 1. **Yazma kaynağı**' nı seçin.
 1. **Kaynak yazma** sekmesinde, **birincil anahtarı**kaydedin. Bu değer, yazma anahtarınıza ait.
 1. **Uç nokta URL 'sini**kaydedin. Bu değer, yazma uç noktanıza ait.

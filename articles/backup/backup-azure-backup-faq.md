@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 6d05c06b1d27cd9d1bc396bddad49fcc89ba3ec3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091088"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532467"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -108,7 +108,7 @@ Boyut sınırları şöyledir:
 İşletim sistemi/makine | Veri kaynağının boyut sınırı
 --- | ---
 Windows 8 veya üzeri | 54.400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 veya üzeri | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](./backup-support-matrix-iaas.md#vm-storage-support)
@@ -214,7 +214,7 @@ Microsoft herhangi bir noktada yedekleme verilerinin şifresini çözmez.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Yedekleme verilerini şifrelemek için kullanılan şifreleme anahtarının en düşük uzunluğu nedir?
 
-Azure Backup aracısını kullanırken şifreleme anahtarı en az 16 karakter olmalıdır. Azure VM'lerde, Azure KeyVault tarafından kullanılan anahtarlar için boyut sınırlaması yoktur.
+Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı tarafından kullanılan şifreleme anahtarı en az 16 karakter uzunluğunda bir paroladan türetilir. Azure sanal makineleri için Azure Keykasasının kullandığı anahtarların uzunluğuna yönelik bir sınır yoktur.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Şifreleme anahtarını kaybedersem ne olur? Verileri kurtarabilir miyim? Microsoft verileri kurtarabilir mi?
 

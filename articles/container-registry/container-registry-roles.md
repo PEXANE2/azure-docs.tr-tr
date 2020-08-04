@@ -1,14 +1,14 @@
 ---
-title: RBAC rolleri ve izinleri
+title: Azure rolleri ve izinleri
 description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izinler sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) ve kimlik ve erişim yönetimi (ıAM) kullanın.
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497758"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533317"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
 
@@ -85,7 +85,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Identity 'a [Azure Portal](../role-based-access-control/role-assignments-portal.md), [Azure CLI](../role-based-access-control/role-assignments-cli.md)veya DIĞER Azure araçlarını kullanarak RBAC rolleri atama hakkında daha fazla bilgi edinin.
+* Azure rollerini [Azure Portal](../role-based-access-control/role-assignments-portal.md), [Azure CLI](../role-based-access-control/role-assignments-cli.md)veya diğer Azure araçlarını kullanarak Azure Identity 'a atama hakkında daha fazla bilgi edinin.
 
 * Azure Container Registry için [kimlik doğrulama seçenekleri](container-registry-authentication.md) hakkında bilgi edinin.
 

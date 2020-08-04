@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410308"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529373"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak kareden veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,6 @@ Bu kare bağlayıcı, aşağıdaki etkinlikler için desteklenir:
 
 - [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-
 
 Kareden verileri, desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
@@ -52,15 +51,25 @@ Kare bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Type özelliği: **Square** olarak ayarlanmalıdır | Yes |
+| connectionProperties | Karekökünü nasıl bağlayabileceğini tanımlayan bir özellik grubu. | Yes |
+| ***Altında `connectionProperties` :*** | | |
 | konak | Kare örneğinin URL 'SI. (örn. mystore.mysquare.com)  | Yes |
 | clientId | Kare uygulamanızla ilişkili istemci KIMLIĞI.  | Yes |
 | clientSecret | Kare uygulamanızla ilişkili istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| redirectUri | Kare uygulama panosunda atanan yeniden yönlendirme URL 'SI. (örn. http: \/ /localhost: 2500)  | Yes |
+| accessToken | Kareden alınan erişim belirteci. Kimliği doğrulanmış bir kullanıcıdan açık izinler isteyerek bir kare hesabına sınırlı erişim verir. OAuth erişim belirteçlerinin süresi, verildikten 30 gün sonra dolar, ancak yenileme belirteçlerinin süresi dolmaz. Erişim belirteçleri yenileme belirteci tarafından yenilenebilir.<br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.  | Yes |
+| refreshToken | Kareden alınan yenileme belirteci. Geçerli bir süre sona erdiğinde yeni erişim belirteçleri elde etmek için kullanılır.<br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
 | Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
 | Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
-**Örnek:**
+Kare iki tür erişim belirtecini destekler: **Personal** ve **OAuth**.
+
+- Kişisel erişim belirteçleri, kendi kare hesabınızdaki kaynaklara sınırsız bağlanma API 'SI erişimi sağlamak için kullanılır.
+- OAuth erişim belirteçleri, herhangi bir kare hesabına kimliği doğrulanmış ve kapsamlı bağlanma API erişimi almak için kullanılır. Uygulamanız hesap sahipleri adına diğer kare hesaplardaki kaynaklara eriştiğinde bunları kullanın. Ayrıca, OAuth erişim belirteçleri kendi kare hesabınızdaki kaynaklara erişmek için de kullanılabilir.
+
+Data Factory, yalnızca kişisel erişim belirteci ile kimlik doğrulama `accessToken` , OAuth aracılığıyla kimlik doğrulaması gerekir `accessToken` `refreshToken` . [Buradan](https://developer.squareup.com/docs/build-basics/access-tokens)erişim belirtecini nasıl alacağınızı öğrenin.
+
+**Örneğinde**
 
 ```json
 {
@@ -68,13 +77,25 @@ Kare bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
     "properties": {
         "type": "Square",
         "typeProperties": {
-            "host" : "mystore.mysquare.com",
-            "clientId" : "<clientId>",
-            "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
-            },
-            "redirectUri" : "http://localhost:2500"
+            "connectionProperties": {
+                "host": "<e.g. mystore.mysquare.com>", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<clientSecret>"
+                }, 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true 
+            }
         }
     }
 }
@@ -121,7 +142,7 @@ Kare içinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü *
 | tür | Kopyalama etkinliği kaynağının Type özelliği: **SquareSource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Business"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

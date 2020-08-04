@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475065"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533570"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -24,13 +24,13 @@ Azure Backup, Azure [sanal makinelerini (VM 'ler) ve diskleri](./backup-azure-ar
 
 Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye gidin ve istediğiniz kurtarma noktasını seçin.
 
-1. [Azure Portal](https://portal.Azure.com) oturum açın ve sol bölmede **sanal makineler**' e tıklayın. Sanal makineler listesinden sanal makineyi seçerek bu sanal makinenin panosunu açın.
+1. [Azure Portal](https://portal.Azure.com) oturum açın ve sol bölmede **sanal makineler**' i seçin. Sanal makineler listesinden sanal makineyi seçerek bu sanal makinenin panosunu açın.
 
-2. Sanal makinenin menüsünde, yedekleme panosunu açmak için **Yedekle** ' ye tıklayın.
+2. Sanal makinenin menüsünde, yedekleme panosunu açmak için **Yedekle** ' yi seçin.
 
     ![Kurtarma Hizmetleri Kasası yedekleme öğesini aç](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. Yedekleme panosu menüsünde, **dosya kurtarma**' ya tıklayın.
+3. Yedekleme panosu menüsünde **dosya kurtarma**' yı seçin.
 
     ![Dosya Kurtarma düğmesi](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
@@ -50,7 +50,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
     Yürütülebilir dosyayı veya betiği yönetici olarak çalıştırmak için, indirilen dosyayı bilgisayarınıza kaydetmeniz önerilir.
 
-6. Yürütülebilir dosya veya komut dosyası parola korumalıdır ve parola gerektirir. **Dosya kurtarma** menüsünde, parolayı belleğe yüklemek için Kopyala düğmesine tıklayın.
+6. Yürütülebilir dosya veya komut dosyası parola korumalıdır ve parola gerektirir. **Dosya kurtarma** menüsünde, parolayı belleğe yüklemek için Kopyala düğmesini seçin.
 
     ![Oluşturulan parola](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -78,7 +78,7 @@ Linux 'ta, kurtarma noktasının birimleri betiğin çalıştırıldığı klas�
 
 ## <a name="closing-the-connection"></a>Bağlantı kapatılıyor
 
-Dosyaları tanımladıktan ve yerel bir depolama konumuna kopyaladıktan sonra ek sürücüleri kaldırın (veya çıkarın). Sürücüleri çıkarmak için, Azure portal **dosya kurtarma** menüsünde, **diskleri**çıkar ' a tıklayın.
+Dosyaları tanımladıktan ve yerel bir depolama konumuna kopyaladıktan sonra ek sürücüleri kaldırın (veya çıkarın). Sürücüleri çıkarmak için Azure portal **dosya kurtarma** menüsünde, **diskleri**çıkar ' ı seçin.
 
 ![Diskleri çıkarın](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -162,7 +162,7 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
 ```
 
-1. sütun (BD) fiziksel birimi gösterir, sonraki sütunlarda ilgili birim grubu adı, biçim, öznitelikler, boyut, boş alan ve birim grubunun benzersiz KIMLIĞI gösterilir. Komut çıktısı tüm fiziksel birimleri gösterir. Betik çıktısına başvurun ve yedeklemeyle ilgili birimleri tanımla. Yukarıdaki örnekte, betik çıktısı/dev/sdf ve/dev/sddtarafından gösterilirdi. Bu nedenle, datavg_db birim grubu betiğe ve Appvg_new birim grubu makineye aittir. Son fikir, benzersiz bir birim grubu adının 1 benzersiz KIMLIĞE sahip olmasını sağlamalıdır.
+İlk sütunda (BD) fiziksel birim, sonraki sütunlarda ise ilgili birim grubu adı, biçim, öznitelikler, boyut, boş alan ve birim grubunun benzersiz KIMLIĞI gösterilir. Komut çıktısı tüm fiziksel birimleri gösterir. Betik çıktısına başvurun ve yedeklemeyle ilgili birimleri tanımla. Yukarıdaki örnekte, betik çıktısı/dev/sdf ve/dev/sddtarafından gösterilirdi. Bu nedenle, *datavg_db* birim grubu betiğe ve *Appvg_new* birim grubu makineye aittir. Son fikir benzersiz bir birim grubu adının benzersiz bir KIMLIĞE sahip olmasını sağlamalıdır.
 
 ###### <a name="duplicate-volume-groups"></a>Yinelenen birim grupları
 
@@ -184,9 +184,9 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
 ```
 
-Betik çıktısı,/dev/sdg,/dev/SDH,/dev/sdm2 eklenmiş olarak gösterilirdi. Bu nedenle, karşılık gelen VG adları Appvg_new ve kök VG ' dir. Ancak aynı adlar makinenin VG listesinde de bulunur. 1 VG adının 2 UUID 'ler olduğunu doğrulayabiliriz.
+Betik çıktısı,/dev/sdg,/dev/SDH,/dev/sdm2 eklenmiş olarak gösterilirdi. Bu nedenle, karşılık gelen VG adları Appvg_new ve kök VG ' dir. Ancak aynı adlar makinenin VG listesinde de bulunur. Bir VG adının iki UUID 'ler olduğunu doğrulayabiliriz.
 
-Şimdi,/dev/sdg,/dev/SDH,/dev/sdm2, komut dosyası tabanlı birimler için VG adlarını yeniden adlandırdık. Birim grubunu yeniden adlandırmak için aşağıdaki komutu kullanın
+Artık betik tabanlı birimler için VG adlarını yeniden adlandırdık, örneğin:/dev/sdg,/dev/SDH,/dev/sdm2. Birim grubunu yeniden adlandırmak için aşağıdaki komutu kullanın
 
 ```bash
 vgimportclone -n rootvg_new /dev/sdm2
@@ -265,7 +265,7 @@ Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumlu
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Linux işletim sistemi için
 
@@ -343,7 +343,7 @@ Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda di
     - Node. Conn [0]. Timeo. noop_out_timeout = 5 ila Node. Conn [0]. Timeo. noop_out_timeout = 30
 - Yukarıdaki değişikliği yaptıktan sonra betiği yeniden çalıştırın. Bu değişikliklerle dosya kurtarmanın başarılı olması oldukça önemlidir.
 - Kullanıcı bir betiği her indirdiğinde, Azure Backup kurtarma noktasını indirme işlemini hazırlama işlemini başlatır. Büyük disklerle bu işlem önemli ölçüde zaman alır. İsteklerin birbirini izleyen bir kopyası varsa, hedef hazırlık bir indirme içine gider. Bu nedenle, Portal/PowerShell/CLı 'dan bir betiği indirmeniz, 20-30 dakika beklemeniz ve sonra çalıştırmanız önerilir. Bu süre içinde, hedefin betikten bağlantı için hazırlanma beklenmektedir.
-- Dosya kurtarmasından sonra, portala geri döndiğinizden emin olun ve birimleri takabileceğiniz kurtarma noktaları için **diskleri** çıkar ' a tıklayın. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.
+- Dosya kurtarmasından sonra, portala geri dönüp birimleri takabileceğiniz kurtarma noktaları için **diskleri** çıkar ' ı seçtiğinizden emin olun. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -357,7 +357,7 @@ Dosyaları sanal makinelerden kurtarırken sorunlarla karşılaşırsanız, daha
 | Exe 'nin çalıştırıldığı makinede: yeni birimler, çıkarma düğmesine tıklandıktan sonra çıkartılırsa | Makinedeki Iscsı Başlatıcısı, hedefe yönelik bağlantısını yanıt vermiyor/yenilemedi ve önbelleğin saklanması. |  **Çıkarma**' ya tıkladıktan sonra birkaç dakika bekleyin. Yeni birimler çıkartılırsa tüm birimlere göz atabilirsiniz. Tüm birimlere göz atmak başlatıcıyı bağlantıyı yenilemeye zorlar ve birim, diskin kullanılamadığı bir hata iletisiyle çıkarılır.|
 | Exe çıkışı: betik başarıyla çalıştırıldı, ancak "eklenen yeni birimler" betik çıktısında görüntülenmiyor |    Bu geçici bir hatadır    | Birimler zaten eklenmiş durumda. Gezinmek için Explorer 'ı açın. Her seferinde betikleri çalıştırmak için aynı makineyi kullanıyorsanız, makineyi yeniden başlatmayı düşünün ve listenin sonraki exe çalıştırmaları içinde görüntülenmesi gerekir. |
 | Linux 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Betiğin çalıştırıldığı makinenin işletim sistemi, korunan sanal makinenin temelindeki dosya sistemini tanımıyor olabilir | Kurtarma noktasının çökme ile tutarlı veya dosya tutarlılığı olup olmadığını denetleyin. Dosya tutarlı ise, işletim sistemi, korunan VM 'nin dosya sistemini algılayan başka bir makinede betiği çalıştırın. |
-| Windows 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Diskler takılmış ancak birimler yapılandırılmamış olabilir | Disk Yönetimi ekranından, kurtarma noktasıyla ilgili ek diskleri tanımla. Bu disklerden herhangi biri çevrimdışı durumdaysa, diske sağ tıklayıp **çevrimiçi**' a tıklayarak bunları çevrimiçi duruma getirin.|
+| Windows 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Diskler takılmış ancak birimler yapılandırılmamış olabilir | Disk Yönetimi ekranından, kurtarma noktasıyla ilgili ek diskleri tanımla. Bu disklerden herhangi biri çevrimdışı durumdaysa, diske sağ tıklayıp **çevrimiçi**' i seçerek onları çevrimiçi duruma getirmeye çalışın.|
 
 ## <a name="security"></a>Güvenlik
 
@@ -393,7 +393,7 @@ Her bileşenin kimliğini doğrulayabilmesi için karşılıklı CHAP kimlik do�
 
 Kurtarma hizmeti ile makine arasındaki veri akışı, TCP üzerinden güvenli bir TLS tüneli oluşturarak korunur (TLS 1,2, betiğin çalıştırıldığı makinede[desteklenmelidir](#system-requirements) ).
 
-Üst/yedeklenen sanal makinede bulunan herhangi bir dosya Access Control listesi (ACL), bağlı dosya sisteminde de korunur.
+Üst/yedeklenen VM 'de bulunan herhangi bir dosya Access Control listesi (ACL), bağlı dosya sisteminde de korunur.
 
 Betik, bir kurtarma noktasına salt okunurdur ve yalnızca 12 saat boyunca geçerlidir. Daha önce erişimi kaldırmak istiyorsanız, Azure Portal/PowerShell/CLı oturumunu açın ve söz konusu kurtarma noktası için **çıkarma diskleri** gerçekleştirin. Betik hemen geçersiz kılınır.
 

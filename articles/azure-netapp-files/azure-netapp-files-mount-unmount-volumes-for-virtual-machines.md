@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045663"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533096"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows veya Linux sanal makineleri için birimi bağlama veya ayırma 
 
@@ -43,9 +43,12 @@ Gerektiğinde Windows veya Linux sanal makineleri için bir birimi bağlayabilir
     a. Öncelikle birimi bir UNIX veya Linux VM 'ye bağlayın.  
     b. Birimde bir `chmod 777` veya `chmod 775` komutunu çalıştırın.  
     c. Windows üzerinde NFS istemcisi aracılığıyla birimi bağlayın.
+    
+5. Bir NFS Kerberos birimi bağlamak istiyorsanız, daha fazla ayrıntı için bkz. [NFSv 4.1 Kerberos şifrelemesini yapılandırma](configure-kerberos-encryption.md) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS hakkında SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [Ağ dosya sistemine genel bakış](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [NFS Kerberos birimi bağlama](configure-kerberos-encryption.md#kerberos_mount)

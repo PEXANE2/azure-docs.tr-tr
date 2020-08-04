@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320706"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528846"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Hızlı başlangıç: Java ile Redsıs için Azure önbelleğini kullanma
 
@@ -30,12 +30,24 @@ Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen g�
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-**ANA BİLGİSAYAR ADI** ve **Birincil** erişim anahtarınız için ortam değişkenleri ekleyin. Hassas bilgileri kodunuza doğrudan eklemek yerine kodunuzdaki bu değişkenleri kullanacaksınız.
+## <a name="setting-up-the-working-environment"></a>Çalışma ortamını ayarlama 
+
+İşletim sisteminize bağlı olarak, **ana bilgisayar adınız** ve **birincil erişim anahtarınız**için ortam değişkenleri ekleyin. Bir komut istemi veya bir Terminal penceresi açın ve aşağıdaki değerleri ayarlayın:
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+Yer tutucuları aşağıdaki değerlerle değiştirin:
+
+- `<YOUR_HOST_NAME>`: Azure portalında Redsıs kaynağı için Azure önbelleğinizin *Özellikler* bölümünden elde edilen DNS ana bilgisayar adı.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Azure portalındaki redin kaynağı için Azure önbelleğinizin *erişim tuşları* bölümünden alınan birincil erişim anahtarı.
 
 ## <a name="create-a-new-java-app"></a>Yeni bir Java uygulaması oluşturma
 

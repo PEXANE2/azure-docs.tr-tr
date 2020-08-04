@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 801d3ca383ebde75d6590558638df6820e538249
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324837"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529953"
 ---
 # <a name="payout-policy-details"></a>Ödeme ilkesi ayrıntıları
 
@@ -20,7 +20,7 @@ Bu makalede, Microsoft 'un ödeme süreci, ödeme zamanlaması, ödeme ve dağı
 
 ## <a name="where-to-find-upcoming-payouts"></a>Yaklaşan ödemeler nerede bulunur?
 
-Iş Ortağı Merkezi 'nde portalın sağ üst kısmında bulunan **ödeme** ' yi seçin:
+Iş Ortağı Merkezi ' nde, ekranın sağ üst köşesindeki **ödeme** ' yi seçin:
 
 ![Iş Ortağı Merkezi portalının sağ üst tarafındaki ödeme simgesini gösterir.](./media/payout-overview.png)
 
@@ -40,24 +40,24 @@ Aşağıdaki bölümlerde, ödeme sürecimiz açıklanır.
 > [!NOTE]
 > Müşteri ödeme yapamazsa, ancak size bir ödeme vermiş olduğumuz eylemler için aşağıdaki [Müşteri ödemesiz işleme](#process-for-customer-non-payment) bölümüne bakın.
 
-| Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\* |
+| Olay  | Tarih (UTC) | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\* |
 | --- | --- | --- | --- |
 | İşlem veya kullanım ayı | 8/1/2020 – 8/31/2020 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
 | Dönem sonu (ay) | 8/31/2020 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
 | Sıra oluşturuldu | 9/3/2020 – 9/7/2020 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme kazanmakta hesaplama | 9/4/2020 – 9/10/2020 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 10/5/2020 | Ödeme panosundaki işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Ödeme tarihi | 10/15/2020 | Işlem geçmişinde ve ödeme panosunun ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Ödeme tarihi\** | 10/15/2020 | Işlem geçmişinde ve ödeme panosunun ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Müşteri faturası toplandı | 12/1/2020 | Işlem geçmişinde ve ödeme panosunun ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi  |
 |  |  |  |  |
 
-\*Kullanım ve sipariş raporlarına Iş Ortağı Merkezi 'ndeki çözümle bölümünde erişilebilir.
+\*Kullanım ve sipariş raporlarına Iş Ortağı Merkezi 'ndeki çözümle bölümünde erişilebilir.</br>\** Ödeme tarihi Pasifik standart saatine (PST) göre yapılır.
 
 ### <a name="customers-who-pay-using-credit-card-or-invoice"></a>Kredi kartı veya fatura kullanarak ödeme yapan müşteriler
 
 Kredi kartı veya aylık fatura içeren tüm satın almalarda, fonların temizlendiğinden ve geri ödeme veya şüpheli sahtekarlık olmadığından emin olmak için 30 günlük bir bekleme süresi bulunur.
 
-| Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
+| Olay  | Tarih (UTC) | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
 | --- | --- | --- | --- |
 | İşlem veya kullanım ayı | 8/1/2019 - 8/31/2019 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
 | Dönem sonu (ay) | 8/31/2019 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
@@ -65,16 +65,16 @@ Kredi kartı veya aylık fatura içeren tüm satın almalarda, fonların temizle
 | Müşteri faturası toplandı | 9/7/2019 – 9/10/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme 'yi hesapla | 9/8/2019 -9/12/2019 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 11/5/2019\* | Ödeme panosundaki Işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Ödeme tarihi | 11/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Ödeme tarihi\** | 11/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 |  |  |  |  |
 
-\*Kullanım ve sipariş raporlarına Iş Ortağı Merkezi 'ndeki çözümle bölümünde erişilebilir.
+\*Kullanım ve sipariş raporlarına Iş Ortağı Merkezi 'ndeki çözümle bölümünde erişilebilir.</br>\** Ödeme tarihi Pasifik standart saatine (PST) göre yapılır.
 
 ### <a name="enterprise-agreement-transactions-prior-to-may-1-2020"></a>1 Mayıs 2020 ' den önceki işlemleri Kurumsal Anlaşma
 
 Bu tarihten önce oluşan tüm satın alımlar, Microsoft 'un müşterilerden ödeme topladıktan ve Market ücretini işleyene sonra aşağıdaki zamanlama başına işlenir ve ücretlenir.
 
-| Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
+| Olay  | Tarih (UTC)  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
 | --- | --- | --- | --- |
 | İşlem veya kullanım ayı | 8/1/2019 – 8/31/2019 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
 | Dönem sonu (ay) | 8/31/2019 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
@@ -82,10 +82,10 @@ Bu tarihten önce oluşan tüm satın alımlar, Microsoft 'un müşterilerden ö
 | Müşteri faturası toplandı | 12/1/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme 'yi hesapla | 12/5/2019 – 12/7/2019 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 1/5/2019 | Ödeme panosundaki işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Ödeme tarihi | 1/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Ödeme tarihi\** | 1/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 |  |  |  |  |
 
-\*Kullanım ve sipariş raporlarına Iş Ortağı Merkezi 'ndeki çözümle bölümünde erişilebilir.
+\*Kullanım ve sipariş raporlarına Iş Ortağı Merkezi 'ndeki çözümle bölümünde erişilebilir.</br>\** Ödeme tarihi Pasifik standart saatine (PST) göre yapılır.
 
 ## <a name="process-for-customer-non-payment"></a>Müşteri ödemesiz işlem
 
@@ -109,6 +109,19 @@ Microsoft, aşağıdaki yöntemlerden birini kullanarak zaten ücretli olan tüm
 | Ödeme kesinti | 3/1/2021 | Yayımcı, Iş Ortağı Merkezi ödeme bildiriminde negatif işlem görür |
 | Ödeme stopaj uygulanan | 3/15/2021 | Gelecekteki ödemeler, Iş Ortağı Merkezi ödeme bildiriminde gösterilir. Bu, bakiye artık negatif olmadığından, ödeme ödemeyi almaz.  |
 |||
+
+## <a name="number-of-days-for-payments-to-reach-a-payout-account"></a>Ödemelerin bir ödeme hesabına ulaşması için geçen gün sayısı
+
+Genellikle söz konusu ayın 15. gününde belirli bir ay boyunca herhangi bir ödeme gönderiyoruz, ancak ödemenin hesabınıza ulaşması daha fazla zaman alır. Gün miktarı, aşağıda açıklandığı gibi, hesabınız için kullandığımız ödeme yöntemine bağlıdır.
+
+> [!NOTE]
+> Aşağıda gösterilen günler yaklaşık değerlerdir; Tüm ödemeler hesabınıza ulaşmak için daha uzun veya daha kısa bir süre alabilir.
+
+| Ödeme yöntemi     | Ödeme hesabına ulaşma gün sayısı     |
+|--------------------|--------------------------------------------|
+| PayPal             | 1 iş günü                             |
+| ACH/SEPA           | 2-3 iş günü                          |
+| Tel aktarım      | 7-10 iş günü                         |
 
 ## <a name="next-step"></a>Sonraki adım
 

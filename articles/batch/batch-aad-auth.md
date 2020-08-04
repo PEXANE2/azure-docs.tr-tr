@@ -4,12 +4,12 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032468"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533521"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -130,9 +130,9 @@ Hizmet sorumlusu ile kimlik doğrulaması yapmak için uygulamanıza RBAC ataman
 1. **Rol** açılır listesinden uygulamanız için *katkıda* bulunan veya *okuyucu* rolünü seçin. Bu roller hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı Access Control kullanmaya başlama](../role-based-access-control/overview.md).
 1. **Seç** alanına uygulamanızın adını girin. Listeden uygulamanızı seçin ve ardından **Kaydet**' i seçin.
 
-Uygulamanız artık erişim denetimi ayarlarınızda bir RBAC rolü atanmış olarak görünmelidir.
+Uygulamanız artık erişim denetimi ayarlarınızda atanmış bir Azure rolüyle birlikte görünmelidir.
 
-![Uygulamanıza RBAC rolü atama](./media/batch-aad-auth/app-rbac-role.png)
+![Uygulamanıza bir Azure rolü atama](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>Özel bir rolü atama
 

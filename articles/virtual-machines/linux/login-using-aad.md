@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291133"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534745"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -113,7 +113,7 @@ Uzantı VM 'ye başarıyla yüklendikten sonra, *başarılı* olan *provisioning
 
 ## <a name="configure-role-assignments-for-the-vm"></a>VM için rol atamalarını yapılandırma
 
-Azure rol tabanlı erişim denetimi (Azure RBAC) ilkesi, VM 'de kimlerin oturum Açabili belirler. VM oturum açma yetkisini yetkilendirmek için iki RBAC rolü kullanılır:
+Azure rol tabanlı erişim denetimi (Azure RBAC) ilkesi, VM 'de kimlerin oturum Açabili belirler. VM oturum açma yetkisini yetkilendirmek için iki Azure rolü kullanılır:
 
 - **Sanal Makine Yöneticisi oturum açma**: Bu role atanmış kullanıcılar, Windows Yöneticisi veya Linux kök kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
 - **Sanal makine Kullanıcı oturumu açma**: Bu role atanmış kullanıcılar, normal kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
@@ -181,9 +181,9 @@ Bu satırla:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Oturum açma sorunlarını giderme
 
-Azure AD kimlik bilgileriyle SSH kullanmaya çalıştığınızda oluşan bazı yaygın hatalar, atanmış RBAC rolleri ve oturum açmak için yinelenen istemler içerir. Bu sorunları düzeltmek için aşağıdaki bölümleri kullanın.
+Azure AD kimlik bilgileriyle SSH kullanmaya çalıştığınızda oluşan bazı yaygın hatalar, hiçbir Azure rolü atanmaz ve oturum açmak için yinelenen istemler içerir. Bu sorunları düzeltmek için aşağıdaki bölümleri kullanın.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Erişim reddedildi: RBAC rolü atanmadı
+### <a name="access-denied-azure-role-not-assigned"></a>Erişim reddedildi: Azure rolü atanmadı
 
 SSH isteminizde aşağıdaki hatayı görürseniz, VM için *sanal makine yöneticisi oturumu* veya *sanal makine Kullanıcı oturum açma* rolü veren RBAC ilkelerini yapılandırdığınızdan emin olun:
 

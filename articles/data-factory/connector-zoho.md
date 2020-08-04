@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 50d893ef42c7b870d5fbf2be1feed798d46c86a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81409966"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531294"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Zoho 'tan veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,6 +36,8 @@ Bu Zoho Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 Zoho 'daki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
+Bu bağlayıcı, Xero Access Token kimlik doğrulamasını ve OAuth 2,0 kimlik doğrulamasını destekler.
+
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
@@ -51,13 +53,19 @@ Zoho bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Type özelliği: **Zoho** olarak ayarlanmalıdır | Yes |
+| connectionProperties | Zoho 'e bağlanmayı tanımlayan bir özellik grubu. | Yes |
+| ***Altında `connectionProperties` :*** | | |
 | endpoint | Zoho Server () uç noktası `crm.zoho.com/crm/private` . | Yes |
+| authenticationType | İzin verilen değerler `OAuth_2.0` ve ' dir `Access Token` . | Yes |
+| clientId | Zoho uygulamanızla ilişkili istemci KIMLIĞI. | OAuth 2,0 kimlik doğrulaması için Evet | 
+| clientSecrect | Zoho uygulamanızla ilişkili ClientSecret. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | OAuth 2,0 kimlik doğrulaması için Evet | 
+| refreshToken | Devre dışı bırakıldığında erişim belirtecini yenilemek için kullanılan, Zoho uygulamanızla ilişkili OAuth 2,0 yenileme belirteci. Yenileme belirtecinin hiçbir zaman sona ermez. Yenileme belirteci almak için access_type istemeniz gerekir `offline` , [Bu makaleden](https://www.zoho.com/crm/developer/docs/api/auth-request.html)daha fazla bilgi edinebilirsiniz. <br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.| OAuth 2,0 kimlik doğrulaması için Evet |
 | accessToken | Zoho kimlik doğrulaması için erişim belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
 | Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
 | Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
-**Örnek:**
+**Örnek: OAuth 2,0 kimlik doğrulaması**
 
 ```json
 {
@@ -65,11 +73,50 @@ Zoho bağlı hizmeti için aşağıdaki özellikler desteklenir:
     "properties": {
         "type": "Zoho",
         "typeProperties": {
-            "endpoint" : "crm.zoho.com/crm/private",
-            "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
-            }
+            "connectionProperties": { 
+                "authenticationType":"OAuth_2.0", 
+                "endpoint": "crm.zoho.com/crm/private", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+```
+
+**Örnek: erişim belirteci kimlik doğrulaması**
+
+```json
+{
+    "name": "ZohoLinkedService",
+    "properties": {
+        "type": "Zoho",
+        "typeProperties": {
+            "connectionProperties": { 
+                "authenticationType":"Access Token", 
+                "endpoint": "crm.zoho.com/crm/private", 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }
         }
     }
 }
@@ -116,7 +163,7 @@ Zoho 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Zoh
 | tür | Kopyalama etkinliği kaynağının Type özelliği: **Zohosource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Accounts"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

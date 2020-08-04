@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514314"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532501"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -120,16 +120,15 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 - Bir kasa oluşturulduğunda, "DefaultPolicy" de oluşturulur ve kaynakları yedeklemek için kullanılabilir.
 - Bir yedekleme ilkesinin bekletme döneminde yapılan tüm değişiklikler, yeni olanlardan başka tüm eski kurtarma noktalarına daha etkin bir şekilde uygulanır.
 
-### <a name="additional-reference"></a>Ek başvuru 
+### <a name="additional-reference"></a>Ek başvuru
 
--   Azure VM makinesi: ilkeyi [oluşturma](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) ve [değiştirme](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) 
--   Azure VM makinesindeki SQL Server veritabanı: ilke [oluşturma](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) ve [değiştirme](./manage-monitor-sql-database-backup.md#modify-policy) 
--   Azure dosya paylaşma: ilkeyi [oluşturma](./backup-afs.md#discover-file-shares-and-configure-backup) ve [değiştirme](./manage-afs-backup.md#modify-policy) 
--   SAP HANA: ilke nasıl [oluşturulur](./backup-azure-sap-hana-database.md#create-a-backup-policy) ve [değiştirilir](./sap-hana-db-manage.md#change-policy) ? 
--   MARS: ilkeyi [oluşturma](./backup-windows-with-mars-agent.md#create-a-backup-policy) ve [değiştirme](./backup-azure-manage-mars.md#modify-a-backup-policy) 
--   [İş yükü türüne bağlı olarak yedeklemeyi zamanlamaya yönelik herhangi bir sınırlama var mı?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Bekletme ilkesini değiştirdiğimde mevcut kurtarma noktalarına ne olur?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
+- Azure VM makinesi: ilke [oluşturma](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) ve [değiştirme](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) .
+- Azure VM makinesindeki SQL Server veritabanı: ilke [oluşturma](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) ve [değiştirme](./manage-monitor-sql-database-backup.md#modify-policy) .
+- Azure dosya paylaşma: ilke [oluşturma](./backup-afs.md) ve [değiştirme](./manage-afs-backup.md#modify-policy) .
+- SAP HANA: ilke [oluşturma](./backup-azure-sap-hana-database.md#create-a-backup-policy) ve [değiştirme](./sap-hana-db-manage.md#change-policy) .
+- MARS: ilke [oluşturma](./backup-windows-with-mars-agent.md#create-a-backup-policy) ve [değiştirme](./backup-azure-manage-mars.md#modify-a-backup-policy) .
+- [İş yükü türüne bağlı olarak yedeklemeyi zamanlamaya yönelik herhangi bir sınırlama var mı?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Saklama ilkesini değiştirirsem mevcut kurtarma noktalarına ne olur?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Mimari: yerleşik Azure VM yedeklemesi
 

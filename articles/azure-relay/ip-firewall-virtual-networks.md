@@ -3,12 +3,12 @@ title: Azure Relay ad alanı için congibir IP güvenlik duvarı
 description: Bu makalede, belirli IP adreslerinden Azure Relay ad alanlarına bağlantılara izin vermek için Güvenlik Duvarı kurallarının nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314848"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533078"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Azure Relay ad alanı için IP güvenlik duvarını yapılandırma
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, geçiş ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
@@ -52,7 +52,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir geçiş ad alanına bir I
 > ```json
 > "defaultAction": "Allow"
 > ```
-> -
+> şöyle değiştirin:
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -129,4 +129,4 @@ Ağ güvenliği ile ilgili diğer özellikler hakkında bilgi edinmek için bkz.
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

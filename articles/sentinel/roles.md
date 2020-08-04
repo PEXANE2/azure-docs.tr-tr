@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 95a966799b4cb66b74d998df9c58958b9b89ecdb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374227"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534014"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
 Azure Sentinel, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md)sağlamak Için [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) kullanır   .
 
-Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz dahilinde roller oluşturup atamak üzere RBAC 'yi kullanın. Farklı roller, Azure Sentinel 'in kullanıcılarının görebileceği ve yapabilecekleri ayrıntılı denetim sağlar. RBAC rolleri doğrudan Azure Sentinel çalışma alanına atanabilir (aşağıdaki nota bakın) veya çalışma alanının ait olduğu bir abonelikte veya kaynak grubunda Azure Sentinel 'in devralması gerekir.
+Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz dahilinde roller oluşturup atamak üzere RBAC 'yi kullanın. Farklı roller, Azure Sentinel 'in kullanıcılarının görebileceği ve yapabilecekleri ayrıntılı denetim sağlar. Azure rolleri, Azure Sentinel çalışma alanına doğrudan atanabilir (aşağıdaki nota bakın) veya çalışma alanının ait olduğu bir abonelikte veya kaynak grubunda Azure Sentinel 'in devraldığı bir abonelik veya kaynak grubu olabilir.
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Azure Sentinel 'de çalışmak için roller
 
@@ -64,7 +64,7 @@ Yan yana karşılaştırma için [aşağıdaki tabloya](#roles-and-allowed-actio
 
 ### <a name="other-roles-you-might-see-assigned"></a>Atanmış olarak görebileceğiniz diğer roller
 
-Azure Sentinel 'e özgü RBAC rolleri atarken, diğer Azure ve diğer amaçlar için kullanıcılara atanmış olan RBAC rollerinin Log Analytics olabilirsiniz. Bu rollerin Azure Sentinel çalışma alanınıza ve diğer kaynaklara erişim de dahil olmak üzere daha geniş bir izin kümesi verildiğini bilmeniz gerekir:
+Azure Sentinel 'e özgü Azure rolleri atarken, diğer amaçlar için kullanıcılara atanmış olabilecek diğer Azure ve Log Analytics Azure rolleri arasında gelebiliriz. Bu rollerin Azure Sentinel çalışma alanınıza ve diğer kaynaklara erişim de dahil olmak üzere daha geniş bir izin kümesi verildiğini bilmeniz gerekir:
 
 - **Azure rolleri:** [sahip](../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor)ve [okuyucu](../role-based-access-control/built-in-roles.md#reader). Azure rolleri, Log Analytics çalışma alanları ve Azure Sentinel kaynakları dahil olmak üzere tüm Azure kaynaklarınız genelinde erişim izni verir.
 

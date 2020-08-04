@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372170"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530434"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -117,7 +117,7 @@ SQL denetimini, bir VNet veya güvenlik duvarının arkasındaki bir depolama he
    }
    ```
 
-2. [Azure portalını](https://portal.azure.com) açın. Depolama hesabınıza gidin. **Access Control (IAM)** öğesini bulun ve **rol ataması Ekle**' ye tıklayın. Önceki adımda olduğu gibi Azure Active Directory (Azure AD) ile kaydettiğiniz veritabanını barındıran sunucuya **Depolama Blobu veri katılımcısı** RBAC rolünü atayın.
+2. [Azure portalını](https://portal.azure.com) açın. Depolama hesabınıza gidin. **Access Control (IAM)** öğesini bulun ve **rol ataması Ekle**' ye tıklayın. Önceki adımda olduğu gibi Azure Active Directory (Azure AD) ile kaydettiğiniz veritabanını barındıran sunucuya **Depolama Blobu verileri katılımcısı** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)' ne bakın.

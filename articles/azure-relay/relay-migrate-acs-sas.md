@@ -3,16 +3,16 @@ title: Azure Relay-paylaşılan erişim Imzası yetkilendirmesi 'ne geçiş
 description: Azure Relay uygulamalarının Azure Active Directory Access Control Service kullanarak paylaşılan erişim Imzası yetkilendirmesini nasıl geçirebileceğinizi açıklar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314301"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532875"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
 
-Azure Relay uygulamalarda iki farklı yetkilendirme modeli kullanma seçeneği vardı: doğrudan geçiş hizmeti tarafından sunulan [paylaşılan erişim imzası (SAS)](../service-bus-messaging/service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetiminin [Azure ACTIVE DIRECTORY](/azure/active-directory/) Access Control Service (ACS) tarafından yönetildiği BIR Federasyon modeli ve ACS 'den alınan belirteçler, istenen özelliklere erişim yetkisi veren geçişe geçirilir.
+Azure Relay uygulamalarda iki farklı yetkilendirme modeli kullanma seçeneği vardı: doğrudan geçiş hizmeti tarafından sunulan [paylaşılan erişim imzası (SAS)](../service-bus-messaging/service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetiminin [Azure ACTIVE DIRECTORY](../active-directory/index.yml) Access Control Service (ACS) tarafından yönetildiği BIR Federasyon modeli ve ACS 'den alınan belirteçler, istenen özelliklere erişim yetkisi veren geçişe geçirilir.
 
 ACS yetkilendirme modelinin süresi, tercih edilen model olarak [SAS yetkilendirmesi](../service-bus-messaging/service-bus-authentication-and-authorization.md) ile değiştirilmiştir ve tüm belgeler, kılavuzluk ve örnekler günümüzde SAS kullanır. Üstelik, artık ACS ile eşleştirilmiş yeni geçiş ad alanları oluşturmak mümkün değildir.
 
@@ -56,5 +56,3 @@ Azure Relay kimlik doğrulaması hakkında daha fazla bilgi edinmek için aşağ
 
 * [Azure Relay kimlik doğrulaması ve yetkilendirme](relay-authentication-and-authorization.md)
 * [Paylaşılan erişim Imzaları ile kimlik doğrulamasını Service Bus](../service-bus-messaging/service-bus-sas.md)
-
-

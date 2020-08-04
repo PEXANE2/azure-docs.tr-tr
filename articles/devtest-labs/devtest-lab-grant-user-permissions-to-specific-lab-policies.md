@@ -3,12 +3,12 @@ title: Belirli laboratuvar ilkelerine Kullanıcı izinleri verme | Microsoft Doc
 description: Her kullanıcının ihtiyaçlarına bağlı olarak DevTest Labs 'deki belirli laboratuvar ilkelerine Kullanıcı izinleri verme hakkında bilgi edinin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cfacba2a7cdba20bd5a05c9ca5898194c31c2e68
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 1a0f46ed64bf360ceb990f1e91cb65ace76b5a9a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855770"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534558"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Belirli laboratuvar ilkelerine Kullanıcı izinleri verme
 ## <a name="overview"></a>Genel Bakış
@@ -17,7 +17,7 @@ Bu makalede, PowerShell kullanarak kullanıcılara belirli bir laboratuvar ilkes
 ## <a name="policies-as-resources"></a>Kaynaklar olarak ilkeler
 [Azure rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md) makalesinde ele alındığı gibi RBAC, Azure için kaynakların ayrıntılı erişim yönetimine izin verebilir. RBAC kullanarak, DevOps ekibinizdeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz.
 
-DevTest Labs 'de, ilke **Microsoft. DevTestLab/Labs/policySets/policies/** RBAC eylemini sağlayan bir kaynak türüdür. Her laboratuvar ilkesi, Ilke kaynak türündeki bir kaynaktır ve bir RBAC rolüne kapsam olarak atanabilir.
+DevTest Labs 'de, ilke **Microsoft. DevTestLab/Labs/policySets/policies/** RBAC eylemini sağlayan bir kaynak türüdür. Her laboratuvar ilkesi, Ilke kaynak türündeki bir kaynaktır ve bir Azure rolüne kapsam olarak atanabilir.
 
 Örneğin, **Izin VERILEN VM boyutları** ilkesine kullanıcılara okuma/yazma izni vermek Için, **Microsoft. devtestlab/Labs/policysets/policies/** Action ile çalışan özel bir rol oluşturursunuz ve ardından **Microsoft. Devtestlab/Labs/Policysets/policies/AllowedVmSizesInLab**kapsamındaki bu özel role uygun kullanıcıları atamalısınız.
 

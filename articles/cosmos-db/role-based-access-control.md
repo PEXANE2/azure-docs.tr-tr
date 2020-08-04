@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086682"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530580"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB'de rol tabanlı erişim denetimi
 
-Azure Cosmos DB, Azure Cosmos DB ortak yönetim senaryoları için yerleşik rol tabanlı erişim denetimi (RBAC) sağlar. Azure Active Directory bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu RBAC rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir. Rol atamaları yalnızca, Azure Cosmos hesaplarına, veritabanlarına, kapsayıcılarına ve tekliflere (verimlilik) erişimi de içeren denetim düzlemi erişimini kapsar.
+Azure Cosmos DB, Azure Cosmos DB ortak yönetim senaryoları için yerleşik rol tabanlı erişim denetimi (RBAC) sağlar. Azure Active Directory bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu Azure rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir. Rol atamaları yalnızca, Azure Cosmos hesaplarına, veritabanlarına, kapsayıcılarına ve tekliflere (verimlilik) erişimi de içeren denetim düzlemi erişimini kapsar.
 
 ## <a name="built-in-roles"></a>Yerleşik roller
 
@@ -39,13 +39,13 @@ Azure portal **erişim denetimi (IAM)** bölmesi Azure Cosmos kaynaklarında rol
 
 ## <a name="custom-roles"></a>Özel roller
 
-Kullanıcılar, yerleşik rollere ek olarak Azure 'da [özel roller](../role-based-access-control/custom-roles.md) de oluşturabilir ve bu rolleri, Active Directory kiracısındaki tüm aboneliklerde hizmet sorumlularına uygulayabilir. Özel roller, kullanıcılara özel bir kaynak sağlayıcısı işlemleri kümesiyle RBAC rol tanımları oluşturmak için bir yol sağlar. Azure Cosmos DB için özel roller oluşturmaya yönelik hangi işlemlerin kullanılabildiğini öğrenmek için bkz. [Azure Cosmos DB kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+Kullanıcılar, yerleşik rollere ek olarak Azure 'da [özel roller](../role-based-access-control/custom-roles.md) de oluşturabilir ve bu rolleri, Active Directory kiracısındaki tüm aboneliklerde hizmet sorumlularına uygulayabilir. Özel roller, kullanıcılara özel bir kaynak sağlayıcısı işlemleri kümesiyle Azure rol tanımları oluşturmak için bir yol sağlar. Azure Cosmos DB için özel roller oluşturmaya yönelik hangi işlemlerin kullanılabildiğini öğrenmek için bkz. [Azure Cosmos DB kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Azure Cosmos DB SDK 'lardan değişiklikler engelleniyor
 
 Azure Cosmos DB kaynak sağlayıcısı, hesap anahtarlarını (Azure Cosmos SDK aracılığıyla bağlanan uygulamalar) kullanarak bağlanan bir istemciden kaynaklardaki değişikliklerin oluşmasını engellemek için kilitlenebilir. Bu da Azure portal yapılan değişiklikleri içerir. Bu özellik, üretim ortamları için daha yüksek düzeyde denetim ve idare isteyen kullanıcılar için istenebilir. SDK 'daki değişikliklerin önlenmesi, denetim düzlemi işlemlerine yönelik kaynak kilitleri ve tanılama günlükleri gibi özellikleri de devre da sunar. Azure Cosmos DB SDK 'dan bağlanan istemcilerin Azure Cosmos hesapları, veritabanları, kapsayıcılar ve verimlilik için herhangi bir özelliği değiştirmesi engellenir. Verileri, Cosmos kapsayıcılarına okumayı ve yazmayı ilgilendiren işlemler etkilenmez.
 
-Bu özellik etkinleştirildiğinde, herhangi bir kaynakta yapılan değişiklikler yalnızca doğru RBAC rolüne ve yönetilen hizmet kimlikleri dahil Azure Active Directory kimlik bilgilerine sahip bir kullanıcıdan yapılabilir.
+Bu özellik etkinleştirildiğinde, herhangi bir kaynakta yapılan değişiklikler yalnızca, doğru Azure rolüne sahip bir kullanıcıdan ve yönetilen hizmet kimlikleri dahil Azure Active Directory kimlik bilgileriyle yapılabilir.
 
 > [!WARNING]
 > Bu özelliğin etkinleştirilmesi, uygulamanız üzerinde etkiye sahip olabilir. Etkinleştirilmeden önce etkisini anladığınızdan emin olun.

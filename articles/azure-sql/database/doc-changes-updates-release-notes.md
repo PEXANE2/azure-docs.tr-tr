@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067411"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533368"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -137,7 +137,7 @@ Belirli durumlarda, var olan bir işi değiştirmek, devre dışı bırakmak vey
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>Kaynak grubundaki izinler SQL yönetilen örneği 'ne uygulanmadı
 
-SQL yönetilen örneği katkıda bulunan RBAC rolü bir kaynak grubuna (RG) uygulandığında, SQL yönetilen örneğine uygulanmaz ve hiçbir etkisi olmaz.
+SQL yönetilen örneği katkıda bulunan Azure rolü bir kaynak grubuna (RG) uygulandığında, SQL yönetilen örneğine uygulanmaz ve hiçbir etkisi olmaz.
 
 **Geçici çözüm**: kullanıcılar için abonelik DÜZEYINDE bir SQL yönetilen örnek katılımcısı rolü ayarlayın.
 

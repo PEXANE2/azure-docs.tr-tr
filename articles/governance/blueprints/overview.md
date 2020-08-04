@@ -3,12 +3,12 @@ title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970935"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530433"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -33,13 +33,13 @@ Azure şemaları ile şema tanımı (dağıtılması _gereken_ ) ve şema atamas
 
 ARM şablonuyla bir Blueprint arasında seçim yapmanız gerekmez. Her bir şema, sıfır veya daha fazla ARM şablon _yapıtlarından_oluşabilir. Bu destek, daha önceki bir ARM şablonları kitaplığı geliştirme ve bakımını yapma çabalarının Azure 'da yeniden kullanılabilir olduğunu gösterir.
 
-## <a name="how-its-different-from-azure-policy"></a>Azure İlkesi'nden farkı
+## <a name="how-its-different-from-azure-policy"></a>Azure İlkesi ile arasındaki farklar
 
 Şema tutarlılık ve uyumluluk sağlamak için yeniden kullanılabilen Azure bulut hizmetleri, güvenlik ve tasarım uygulamasıyla ilgili belirli bir alana yönelik standart, desen ve gereksinim kümesi oluşturmak için kullanılan bir paket veya kapsayıcıdır.
 
 [İlke](../policy/overview.md) ise yeni dağıtılan ve var olan kaynakların özelliklerine odaklanan varsayılan olarak izin verme ve açıkça reddetme sistemidir. Bir abonelik içindeki kaynakların gereksinimlere ve standartlara uygun olduğunu doğrulayarak bulut yönetimini destekler.
 
-Şema içine bir ilkenin dahil edilmesi, şema ataması sırasında doğru desenin veya tasarımın oluşturulmasını da sağlar. Bu ilke şemanın amacıyla uyumluluk sağlamak için ortamda yalnızca onaylanan veya beklenen değişikliklerin yapılmasını garanti eder.
+Bir ilkeyi bir şemaya dahil etmek, şemanın atanması sırasında doğru desenin veya tasarımın oluşturulmasını sağlar. Bu ilke şemanın amacıyla uyumluluk sağlamak için ortamda yalnızca onaylanan veya beklenen değişikliklerin yapılmasını garanti eder.
 
 Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Şemalar ayrıca ilkeler ve girişimlerle parametrelerin kullanılmasını da destekler.
 
@@ -47,7 +47,7 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 Şemalar, _yapıtlardan_ meydana gelir. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
 
-|Kaynak  | Hiyerarşi seçenekleri| Description  |
+|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz şekilde düzenlemenize olanak tanır ve dahil edilen ilke ve rol atama yapıtları ve ARM şablonları için bir kapsam sınırlayıcısı sağlar. |
 |ARM şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
@@ -103,7 +103,7 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 
 Aşağıdaki yerleşik roller kullanılabilir:
 
-|RBAC rolü | Description |
+|Azure rolü | Açıklama |
 |-|-|
 |[Sahibi](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
 |[Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |

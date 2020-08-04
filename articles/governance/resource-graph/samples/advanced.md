@@ -3,12 +3,12 @@ title: Gelişmiş sorgu örnekleri
 description: Sütunlarla çalışma, kullanılan etiketleri listeleme ve normal ifadelerle eşleşen kaynakları de içeren bazı gelişmiş sorguları çalıştırmak için Azure Kaynak grafiğini kullanın.
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087501"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534796"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Gelişmiş kaynak grafiği sorgu örnekleri
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>Sanal makineleri ağ arabirimiyle ve genel IP 'si ile listeleyin
 
-Bu sorgu **leftouter** `join` , sanal makineleri, ilgili ağ arabirimlerini ve bu ağ arabirimleriyle ilgili genel IP adreslerini birlikte getirmek için iki LeftOuter komutu kullanır.
+Bu sorgu, **leftouter** `join` Kaynak Yöneticisi dağıtım modeliyle oluşturulan sanal makineleri, ilgili ağ arabirimlerini ve bu ağ arabirimleriyle ilgili genel IP adreslerini birlikte getirmek için iki soltouter komutu kullanır.
 
 ```kusto
 Resources

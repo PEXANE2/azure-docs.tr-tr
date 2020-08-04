@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086696"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533878"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Hızlı başlangıç: yönetilen SQL yönetilen örneği oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,10 +34,10 @@ Yönetilen bir örnek oluşturmak için aşağıdaki adımları izleyin:
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Azure portal sol menüsünde **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna **Azure SQL** ' i girin.
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **SQL yönetilen örnekler** kutucuğunda **Ayrıntıları göster** ' i seçerek Azure SQL yönetilen örneği hakkındaki ek bilgileri görüntüleyebilirsiniz.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    ![Yönetilen örnek oluşturma](./media/instance-create-quickstart/create-managed-instance.png)
 
@@ -51,12 +51,12 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
    Bu sekmede gereken bilgiler için bir başvuru olarak aşağıdaki tabloyu kullanın.
 
-   | Ayar| Önerilen değer | Description |
+   | Ayar| Önerilen değer | Açıklama |
    | ------ | --------------- | ----------- |
    | **Abonelik** | Aboneliğiniz. | Yeni kaynaklar oluşturmak için size izin veren bir abonelik. |
    | **Kaynak grubu** | Yeni veya mevcut bir kaynak grubu.|Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    | **Yönetilen örnek adı** | Geçerli bir ad.|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
-   | **Geli** |Yönetilen örneği oluşturmak istediğiniz bölge.|Bölgeler hakkında bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).|
+   | **Bölge** |Yönetilen örneği oluşturmak istediğiniz bölge.|Bölgeler hakkında bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).|
    | **Yönetilen örnek yöneticisi oturum açma** | Geçerli bir Kullanıcı adı. | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). Bu ayrılmış sunucu düzeyi bir rol olduğundan "serveradmin" kullanmayın.|
    | **Parola** | Herhangi bir geçerli parola.| Parola en az 16 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
 
@@ -74,7 +74,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
    Bu sekmede gereken bilgiler için bir başvuru olarak aşağıdaki tabloyu kullanın.
 
-   | Ayar| Önerilen değer | Description |
+   | Ayar| Önerilen değer | Açıklama |
    | ------ | --------------- | ----------- |
    | **Sanal ağ** | **Yeni sanal ağ** ya da geçerli bir sanal ağ ve alt ağ oluştur ' u seçin.| Bir ağ veya alt ağ kullanılamaz durumdaysa, yeni yönetilen örnek için bir hedef olarak seçmeden önce [ağ gereksinimlerini karşılamak üzere değiştirilmesi](vnet-existing-add-subnet.md) gerekir. SQL yönetilen örneği için ağ ortamını yapılandırma gereksinimleri hakkında bilgi için bkz. [SQL yönetilen örneği için sanal ağ yapılandırma](connectivity-architecture-overview.md). |
    | **Bağlantı türü** | Proxy ve yeniden yönlendirme bağlantı türü arasında seçim yapın.|Bağlantı türleri hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örnek bağlantı türü](../database/connectivity-architecture.md#connection-policy).|
@@ -91,14 +91,14 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
    Bu sekmede gereken bilgiler için bir başvuru olarak aşağıdaki tabloyu kullanın.
 
-   | Ayar| Önerilen değer | Description |
+   | Ayar| Önerilen değer | Açıklama |
    | ------ | --------------- | ----------- |
    | **Harmanlama** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak kaynak harmanlamasını denetleyin `SELECT SERVERPROPERTY(N'Collation')` ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Saat dilimi** | Yönetilen örneğin gözleneceği saat dilimini seçin.|Daha fazla bilgi için bkz. [saat dilimleri](timezones-overview.md).|
-   | **Yük devretme ikincili olarak kullan** | **Evet**' i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
+   | **Yük devretme ikincili olarak kullan** | **Evet**’i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
    | **BIRINCIL SQL yönetilen örneği** ( **Yük devretme Ikincili olarak kullan** **Evet**olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz. [öğretici: bir yük devretme grubuna yönetilen örnek ekleme](failover-group-add-instance-tutorial.md).|
 
-## <a name="review--create"></a>Gözden geçir + oluştur
+## <a name="review--create"></a>Gözden geçirme ve oluşturma
 
 1. Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** sekmesini seçin.
 
@@ -124,7 +124,9 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 > 3. Sürmekte olan SQL yönetilen örnek dağıtım işlemini seçin.
 
 > [!IMPORTANT]
-> Yönetilen örnek oluşturma durumunu alabilmeniz için, kaynak grubu üzerinde **Okuma izinlerine** sahip olmanız gerekir. Yönetilen örnek oluşturma işlemi sırasında bu izne sahip değilseniz veya dosyayı iptal ederseniz, bu, SQL yönetilen örneğinin kaynak grubu dağıtımları listesinde görünmemesine neden olabilir.
+> - SQL yönetilen örneğinin oluşturulması, belirli koşullara bağlı olarak, bir seferde birkaç saat sürebilecek uzun süreli bir işlemdir. Tipik oluşturma süreleri için bkz. [yönetim işlemleri süresi](management-operations-overview.md#management-operations-duration) .
+> - Aynı alt ağdaki diğer yönetilen örneklerde uzun süre çalışan geri yükleme veya ölçeklendirme işlemleri olduğunda, SQL yönetilen örnek oluşturma 'nın başlatılması, diğer etkileyen işlemler varsa geciktirilebilir. Daha fazla bilgi için bkz. [yönetim işlemleri çapraz etkisi](management-operations-overview.md#management-operations-cross-impact).
+> - Yönetilen örnek oluşturma durumunu alabilmeniz için, kaynak grubu üzerinde **Okuma izinlerine** sahip olmanız gerekir. Yönetilen örnek oluşturma işlemi sırasında bu izne sahip değilseniz veya dosyayı iptal ederseniz, bu, SQL yönetilen örneğinin kaynak grubu dağıtımları listesinde görünmemesine neden olabilir.
 >
 
 ## <a name="view-resources-created"></a>Oluşturulan kaynakları görüntüle

@@ -3,12 +3,12 @@ title: Azure Active Directory'ye erişimi yetkilendirme
 description: Bu makalede Azure Active Directory kullanarak Event Hubs kaynaklarına erişimi yetkilendirme hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: c6d1be2825ea716c72d70cd38babbb2d95083198
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af9278d801dfd858ce8bba5ec5786d521f72218c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413400"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534575"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme
 Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -21,14 +21,14 @@ Bir güvenlik sorumlusu (bir kullanıcı veya uygulama) bir Event Hubs kaynağı
 
 Kimlik doğrulama adımı, bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesi gerekir. Bir uygulama bir Azure VM 'si, bir sanal makine ölçek kümesi veya bir Azure Işlev uygulaması gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için yönetilen bir kimlik kullanabilir. Yönetilen bir kimlik tarafından Event Hubs hizmetine yapılan isteklerin nasıl doğrulanabilmesi hakkında bilgi edinmek için bkz. [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler Ile azure Event Hubs kaynaklarına erişim kimlik doğrulaması](authenticate-managed-identity.md). 
 
-Yetkilendirme adımı, güvenlik sorumlusuna bir veya daha fazla RBAC rolünün atanmasını gerektirir. Azure Event Hubs, Event Hubs kaynakları için izin kümelerini çevreleyen RBAC rolleri sağlar. Bir güvenlik sorumlusu 'na atanan roller, sorumlunun sahip olacağı izinleri belirleyebilir. RBAC rolleri hakkında daha fazla bilgi için bkz. Azure ['da azure Event Hubs için yerleşik roller](#azure-built-in-roles-for-azure-event-hubs). 
+Yetkilendirme adımı, güvenlik sorumlusuna bir veya daha fazla Azure rolünün atanmasını gerektirir. Azure Event Hubs, Event Hubs kaynakları için izin kümelerini çevreleyen Azure rolleri sağlar. Bir güvenlik sorumlusu 'na atanan roller, sorumlunun sahip olacağı izinleri belirleyebilir. Azure rolleri hakkında daha fazla bilgi için bkz. Azure ['da azure Event Hubs için yerleşik roller](#azure-built-in-roles-for-azure-event-hubs). 
 
 Event Hubs istek yapan yerel uygulamalar ve Web uygulamaları Azure AD ile de yetki verebilir. Erişim belirteci isteme ve bu uygulamayı Event Hubs kaynaklara yönelik istekleri yetkilendirmek üzere kullanma hakkında bilgi edinmek için bkz. [bir uygulamadan Azure AD Ile azure Event Hubs erişim kimlik doğrulaması](authenticate-application.md). 
 
-## <a name="assign-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rolleri atama
+## <a name="assign-azure-roles-for-access-rights"></a>Erişim hakları için Azure rolleri atama
 Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure Event Hubs, Olay Hub 'ı verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen Azure yerleşik rollerinin bir kümesini tanımlar ve verilere erişmek için özel roller de tanımlayabilir.
 
-Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, abonelik düzeyi, kaynak grubu, Event Hubs ad alanı veya bunun altındaki herhangi bir kaynak kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir kullanıcı veya bir uygulama hizmeti sorumlusu ya da [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md)olabilir.
+Azure AD güvenlik sorumlusuna bir Azure rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, abonelik düzeyi, kaynak grubu, Event Hubs ad alanı veya bunun altındaki herhangi bir kaynak kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir kullanıcı veya bir uygulama hizmeti sorumlusu ya da [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md)olabilir.
 
 ## <a name="azure-built-in-roles-for-azure-event-hubs"></a>Azure Event Hubs için Azure yerleşik rolleri
 Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
@@ -38,11 +38,11 @@ Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek
 - [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Event Hubs kaynaklara tüketen/alan erişimine izin vermek için bu rolü kullanın.
 
 ## <a name="resource-scope"></a>Kaynak kapsamı 
-Bir güvenlik sorumlusuna RBAC rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı sağlamak için her zaman en iyi seçenektir.
+Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı sağlamak için her zaman en iyi seçenektir.
 
 Aşağıdaki listede, en dar kapsamdan başlayarak Event Hubs kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde güvenlik sorumlusuna RBAC rolü atamayı desteklemez. 
+- **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
 - **Olay Hub 'ı**: rol ataması, Olay Hub 'ı varlığı ve altındaki Tüketici grubu için geçerlidir.
 - **Ad alanı**: rol ataması, ad alanı altındaki tüm Event Hubs topolojisine ve onunla ilişkili tüketici grubuna yayılır.
 - **Kaynak grubu**: rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.
@@ -68,7 +68,7 @@ Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Bir güvenlik sorumlusuna yerleşik bir RBAC rolü atamayı öğrenin, bkz. [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim kimlik doğrulaması](authenticate-application.md).
+- Bir güvenlik sorumlusu için Azure yerleşik rolünü atamayı öğrenin, bkz. [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim kimlik doğrulaması](authenticate-application.md).
 - [RBAC ile özel roller oluşturmayı](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole)öğrenin.
 - [Azure ACTIVE DIRECTORY Eh ile kullanmayı](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK) öğrenin
 

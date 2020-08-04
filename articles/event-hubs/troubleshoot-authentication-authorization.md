@@ -3,12 +3,12 @@ title: Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 description: Bu makale, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını giderme hakkında bilgi sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502112"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533895"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 [Bağlantı sorunlarını giderme](troubleshooting-guide.md) makalesinde, Azure Event Hubs bağlantı sorunlarını gidermeye yönelik ipuçları verilmektedir. Bu makalede, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını gidermeye yönelik ipuçları ve öneriler sağlanmaktadır. 
@@ -16,13 +16,13 @@ ms.locfileid: "87502112"
 ## <a name="if-you-are-using-azure-active-directory"></a>Azure Active Directory kullanıyorsanız
 Azure Event Hubs kimlik doğrulaması yapmak ve yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, Olay Hub 'ına erişen kimliğin doğru **kaynak kapsamında** (Tüketici grubu, Olay Hub 'ı, ad alanı, kaynak grubu veya abonelik) doğru **Azure rolünün** bir üyesi olduğunu doğrulayın.
 
-### <a name="rbac-roles"></a>RBAC rolleri
+### <a name="azure-roles"></a>Azure rolleri
 - Event Hubs kaynaklara yönelik tüm erişim için [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) .
 - Gönderme erişimi için [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) .
 - Alma erişimi için [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) .
 
 ### <a name="resource-scopes"></a>Kaynak kapsamları
-- **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde güvenlik sorumlusuna RBAC rolü atamayı desteklemez. 
+- **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
 - **Olay Hub 'ı**: rol ataması, Olay Hub 'ı varlığı ve altındaki Tüketici grubu için geçerlidir.
 - **Ad alanı**: rol ataması, ad alanı altındaki tüm Event Hubs topolojisine ve onunla ilişkili tüketici grubuna yayılır.
 - **Kaynak grubu**: rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.custom: references_regions
-ms.openlocfilehash: 19e4ea37aa10c90d15a2b7dcdf962c131c8e473d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ce903271accd3f63df7634dc5045932655ac2a7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193223"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531158"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>IoT önkoşulları için Azure Güvenlik Merkezi
 
@@ -30,8 +30,8 @@ Bu makalede, IoT hizmeti için Azure Güvenlik Merkezi 'nin farklı bileşenleri
 ## <a name="minimum-requirements"></a>Minimum gereksinimler
 
 - Standart katman IoT Hub
-  - RBAC rol **sahibi** düzeyi ayrıcalıkları
-- [Log Analytics çalışma alanı](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+  - Azure rolü **sahip** düzeyi ayrıcalıkları
+- [Log Analytics Çalışma Alanı](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure Güvenlik Merkezi (önerilir)
   - Azure Güvenlik Merkezi 'nin kullanımı, gereksinim değil, öneridir. Azure Güvenlik Merkezi olmadan, diğer Azure kaynaklarınızı IoT Hub içinde görüntüleyemedik.
 
@@ -43,7 +43,7 @@ IoT öngörüleri ve raporlama için Azure Güvenlik Merkezi, Azure IoT Hub ve A
 
 IoT için Azure Güvenlik Merkezi şu anda aşağıdaki Azure bölgelerindeki IoT Hub 'Ları için desteklenmektedir:
 
-- Orta ABD
+- Central US
 - Doğu ABD
 - Doğu ABD 2
 - Orta Batı ABD
@@ -58,7 +58,7 @@ IoT için Azure Güvenlik Merkezi şu anda aşağıdaki Azure bölgelerindeki Io
 - Orta Fransa
 - Batı Birleşik Krallık
 - Güney Birleşik Krallık
-- Batı Avrupa
+- West Europe
 - Kuzey Avrupa
 - Batı Japonya
 - Doğu Japonya

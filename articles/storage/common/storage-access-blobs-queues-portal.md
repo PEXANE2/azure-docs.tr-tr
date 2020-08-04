@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501415"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534184"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure portal kullanma
 
@@ -29,7 +29,7 @@ Azure portal blob veya kuyruk verilerine erişimi nasıl yetkilendirmek istediğ
 
 ### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullan
 
-Blob ve kuyruk verilerine hesap erişim anahtarıyla erişmek için, **Microsoft. Storage/storageAccounts/ListKeys/ACTION**RBAC eylemini içeren size ATANMıŞ bir RBAC rolüne sahip olmanız gerekir. Bu RBAC rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
+Blob ve kuyruk verilerine hesap erişim anahtarıyla erişmek için, **Microsoft. Storage/storageAccounts/ListKeys/ACTION**RBAC eylemini içeren size atanmış bir Azure rolüne sahip olmanız gerekir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
 
 - Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) rolü
 - Azure Resource Manager [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü
@@ -47,7 +47,7 @@ Azure AD hesabınızı kullanarak Azure portal blob veya kuyruk verilerine eriş
 - En azından, depolama hesabı düzeyine veya daha yüksek bir kapsamda Azure Resource Manager [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü atanmıştı. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir.
 - Blob veya kuyruk verilerine erişim sağlayan yerleşik veya özel bir rol atanmıştı.
 
-Kullanıcının Azure portal depolama hesabı yönetim kaynaklarını görüntülemesi ve gezinebilmesi için **okuyucu** rol ataması veya başka bir Azure Resource Manager rol ataması gerekir. Blob veya kuyruk verilerine erişim izni veren RBAC rolleri, depolama hesabı yönetimi kaynaklarına erişim izni vermez. Portalda blob veya kuyruk verilerine erişmek için, kullanıcının depolama hesabı kaynaklarında gezinmek üzere izinleri olması gerekir. Bu gereksinim hakkında daha fazla bilgi için bkz. [Portal erişimi Için okuyucu rolünü atama](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
+Kullanıcının Azure portal depolama hesabı yönetim kaynaklarını görüntülemesi ve gezinebilmesi için **okuyucu** rol ataması veya başka bir Azure Resource Manager rol ataması gerekir. Blob veya kuyruk verilerine erişim izni veren Azure rolleri, depolama hesabı yönetim kaynaklarına erişim izni vermez. Portalda blob veya kuyruk verilerine erişmek için, kullanıcının depolama hesabı kaynaklarında gezinmek üzere izinleri olması gerekir. Bu gereksinim hakkında daha fazla bilgi için bkz. [Portal erişimi Için okuyucu rolünü atama](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 Blob veya kuyruk verilerinize erişimi destekleyen yerleşik roller şunlardır:
 
@@ -82,7 +82,7 @@ Hesap erişim anahtarını kullanarak kimlik doğrulaması yapıyorsanız, porta
 
 ![Şu anda kapsayıcı verilerine hesap anahtarıyla erişme](media/storage-access-blobs-queues-portal/auth-method-access-key.png)
 
-Azure AD hesabı 'nı kullanmaya geçiş yapmak için görüntüde vurgulanan bağlantıya tıklayın. Size atanmış RBAC rolleri aracılığıyla uygun izinleriniz varsa, devam edebilirsiniz. Ancak doğru izinleriniz yoksa, aşağıdakine benzer bir hata iletisi görürsünüz:
+Azure AD hesabı 'nı kullanmaya geçiş yapmak için görüntüde vurgulanan bağlantıya tıklayın. Size atanan Azure rolleri aracılığıyla uygun izinleriniz varsa, devam edebilirsiniz. Ancak doğru izinleriniz yoksa, aşağıdakine benzer bir hata iletisi görürsünüz:
 
 ![Azure AD hesabı erişimi desteklemiyorsa gösterilen hata](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 

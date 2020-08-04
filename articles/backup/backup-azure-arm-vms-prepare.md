@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439706"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533606"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -51,7 +51,8 @@ Depolama çoğaltma türünü aşağıdaki gibi değiştirin:
 1. Yeni kasada, **Ayarlar** bölümünden **Özellikler** ' i seçin.
 2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
 3. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
-s ![ Yeni kasa için depolama yapılandırmasını ayarlama](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+      ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > Kasa ayarlandıktan ve yedekleme öğeleri içerdiğinde depolama çoğaltma türünü değiştiremezsiniz. Bunu yapmak istiyorsanız kasayı yeniden oluşturmanız gerekir.
@@ -145,7 +146,7 @@ Aşağıda verilen şekilde **yedekleme işi** ayrıntıları bölmesinden denet
 
 İş durumu, aşağıdaki senaryolara bağlı olarak değişebilir:
 
-**Görüntüye** | **Verileri kasaya aktar** | **İş Durumu**
+**Anlık Görüntü** | **Verileri kasaya aktar** | **İş Durumu**
 --- | --- | ---
 Tamamlandı | Sürüyor | Sürüyor
 Tamamlandı | Atlandı | Tamamlandı
@@ -166,13 +167,6 @@ Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek A
 --- | ---
 **Windows** | 1. aracı MSI dosyasını [indirip yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) .<br/><br/> 2. makinede yönetici izinleriyle Install.<br/><br/> 3. yüklemeyi doğrulayın. VM 'deki *c:\windowsazure\packages* ' de **WaAppAgent.exe**  >  **Özellikler**' e sağ tıklayın. **Ayrıntılar** sekmesinde **ürün sürümü** 2.6.1198.718 veya üzeri olmalıdır.<br/><br/> Aracıyı güncelleştiriyorsanız, hiçbir yedekleme işlemi olmadığından emin olun ve [aracıyı yeniden yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](../virtual-machines/linux/endorsed-distros.md) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.
-
->[!NOTE]
-> **Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.**
->
->Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (Işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
->
->Önizlemeye kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

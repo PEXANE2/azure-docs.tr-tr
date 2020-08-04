@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > Bu örnek [Covıd-19 açık araştırma veri kümesinden](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)bir dosya kullanır. Bu sayfadaki verilerin hangi yapıda ve yapısına bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız, başvuran bir veri kaynağı ile **veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

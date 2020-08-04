@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513086"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533181"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
-Azure NetApp Files NFS ve SMBv3 birimlerini destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMBv3 birimi oluşturma konusu gösterilmektedir. NFS birimi oluşturmak istiyorsanız, bkz. [Azure NetApp Files IÇIN NFS birimi oluşturma](azure-netapp-files-create-volumes.md). 
+Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMBv3 birimi oluşturma konusu gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 Zaten bir kapasite havuzu ayarlamış olmalısınız.   
@@ -45,7 +45,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    Icmpv4             |    YOK       |    Yankı yanıtı    |
+    |    Icmpv4             |    Yok       |    Yankı yanıtı    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -197,7 +197,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 2. Birim oluşturmak için **+ Birim ekle**'ye tıklayın.  
     Birim oluştur penceresi görüntülenir.
 
-3. Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve aşağıdaki alanlar için bilgi sağlayın:   
+3. Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
     * **Birim adı**      
         Oluşturmakta olduğunuz birim için ad belirtin.   
 
@@ -230,7 +230,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 
     * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümünü göster** ' e tıklayın ve açılır menüden bir anlık görüntü ilkesi seçin. 
 
-        Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntüleri yönetme](azure-netapp-files-manage-snapshots.md).
+        Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntü Ilkelerini yönetme](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Gelişmiş seçimi göster](../media/azure-netapp-files/volume-create-advanced-selection.png)
 

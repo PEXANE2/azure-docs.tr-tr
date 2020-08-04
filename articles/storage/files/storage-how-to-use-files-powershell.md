@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340831"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531821"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile Azure dosya paylaşımını oluşturma ve yönetme 
 Bu kılavuzda, PowerShell kullanarak [Azure dosya paylaşımlarıyla](storage-files-introduction.md) çalışmanın temel bilgileri gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
@@ -88,7 +88,7 @@ Kullanabilmeyi umduğunuz uygulama ve araçlarını kullanmanıza izin vereceği
 - [Azure İşlevleri](../../azure-functions/functions-overview.md) gibi sunucusuz kaynaklardan yararlanıyorsanız. 
 - Yedekleme veya virüsten koruma taraması yapma gibi birçok Azure dosya paylaşımı ile etkileşime girebilen bir değer ekleme hizmeti oluşturuyorsunuz.
 
-Aşağıdaki örneklerde, Azure dosya paylaşımınızı Dosya REST protokolüyle işlemek için Azure PowerShell modülünün nasıl kullanılacağı gösterilmektedir. `-Context`Parametresi, dosya paylaşımında belirtilen eylemleri gerçekleştirmek üzere depolama hesabı anahtarını almak için kullanılır. Depolama hesabı anahtarını almak için depolama hesabında RBAC rolüne sahip olmanız gerekir `Owner` .
+Aşağıdaki örneklerde, Azure dosya paylaşımınızı Dosya REST protokolüyle işlemek için Azure PowerShell modülünün nasıl kullanılacağı gösterilmektedir. `-Context`Parametresi, dosya paylaşımında belirtilen eylemleri gerçekleştirmek üzere depolama hesabı anahtarını almak için kullanılır. Depolama hesabı anahtarını almak için depolama hesabında Azure rolüne sahip olmanız gerekir `Owner` .
 
 #### <a name="create-directory"></a>Dizin oluşturma
 Azure dosya paylaşımınızın kökünde *mydirectory* adlı yeni bir dizin oluşturmak için [New-azstoragedirectory](/powershell/module/az.storage/New-AzStorageDirectory) cmdlet 'ini kullanın.

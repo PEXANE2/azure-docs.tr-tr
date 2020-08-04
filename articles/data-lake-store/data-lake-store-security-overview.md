@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086581"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529985"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
 
@@ -46,7 +46,7 @@ Azure Active Directory bir kullanıcının kimliğini doğruladıktan sonra, kul
 
 Dört temel rol, varsayılan olarak Data Lake Storage 1. için tanımlanmıştır. Roller, Azure portal, PowerShell cmdlet 'leri ve REST API 'Leri aracılığıyla Data Lake Storage 1. hesapta farklı işlemlere izin verir. Sahip ve katkıda bulunan rolleri, hesapta çeşitli yönetim işlevleri gerçekleştirebilir. Okuyucu rolünü yalnızca hesap yönetimi verilerini görüntüleyen kullanıcılara atayabilirsiniz.
 
-![RBAC rolleri](./media/data-lake-store-security-overview/rbac-roles.png "RBAC rolleri")
+![Azure rolleri](./media/data-lake-store-security-overview/rbac-roles.png "Azure rolleri")
 
 Roller hesap yönetimi için atanmış olsa da, bazı rollerin verilere erişimi etkilediği unutulmamalıdır. Bir kullanıcının dosya sisteminde gerçekleştirebileceği işlemlere erişimi denetlemek için ACL 'Leri kullanmanız gerekir. Aşağıdaki tabloda, varsayılan roller için yönetim haklarının ve veri erişim haklarının bir özeti gösterilmektedir.
 

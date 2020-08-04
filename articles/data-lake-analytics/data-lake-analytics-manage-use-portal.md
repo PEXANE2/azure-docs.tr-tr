@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127545"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531229"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics'i Azure portalını kullanarak yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,7 +27,7 @@ Bu makalede, Azure portal kullanılarak Azure Data Lake Analytics hesaplarının
 
 ### <a name="create-an-account"></a>Hesap oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Kaynak oluştur**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**' a tıklayın.
 3. Aşağıdaki öğeler için değerleri seçin: 
    1. **Ad**: Data Lake Analytics hesabının adı.
@@ -95,7 +95,7 @@ Yeni Data Lake kullanıcılarını kolayca sağlamak için **Kullanıcı ekleme 
 
 Diğer Azure hizmetleri gibi, kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için rol tabanlı Access Control (RBAC) kullanabilirsiniz.
 
-Standart RBAC rolleri aşağıdaki yeteneklere sahiptir:
+Standart Azure rolleri aşağıdaki yeteneklere sahiptir:
 * **Sahip**: işleri gönderebilir, işleri izleyebilir, herhangi bir kullanıcının işini iptal edebilir ve hesabı yapılandırabilir.
 * **Katkıda bulunan**: işleri gönderebilir, işleri izleyebilir, herhangi bir kullanıcının işini iptal edebilir ve hesabı yapılandırabilir.
 * **Okuyucu**: işleri izleyebilir.
@@ -112,7 +112,7 @@ U-SQL geliştiricilerinin Data Lake Analytics hizmetini kullanmasını sağlamak
 2. **Erişim denetimi (IAM)**  >  **rol ataması Ekle**' ye tıklayın.
 3. Bir rol seçin.
 4. Bir kullanıcı ekleyin.
-5. **Tamam** düğmesine tıklayın.
+5. **Tamam**'a tıklayın.
 
 >[!NOTE]
 >Bir kullanıcının veya güvenlik grubunun işleri göndermesi gerekiyorsa mağaza hesabında da izne ihtiyacı vardır. Daha fazla bilgi için bkz. [Data Lake Store 'de depolanan verileri güvenli hale getirme](../data-lake-store/data-lake-store-secure-data.md).

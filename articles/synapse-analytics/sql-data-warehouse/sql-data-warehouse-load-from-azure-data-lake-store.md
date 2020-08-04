@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213304"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533946"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>SYNAPSE SQL için Azure Data Lake Storage verileri yükleme
 
@@ -30,7 +30,7 @@ Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin
 > * Azure Data Lake Storage verileri yüklemek için hedef tablo oluşturun.
 > * Veri ambarına veri yüklemek için kopyalama ifadesini oluşturun.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -39,7 +39,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
 * Bir SQL Havuzu. Bkz. [SQL havuzu oluşturma ve verileri sorgulama](create-data-warehouse-portal.md).
-* Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Bu depolama hesabında, yüklemek için şu kimlik bilgilerinden birini yapılandırmanız veya belirtmeniz gerekir: depolama hesabı anahtarı, paylaşılan erişim imzası (SAS) anahtarı, bir Azure dizin uygulama kullanıcısı veya depolama hesabına uygun RBAC rolüne sahip bir AAD kullanıcısı.
+* Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Bu depolama hesabında, yüklemek için şu kimlik bilgilerinden birini yapılandırmanız veya belirtmeniz gerekir: depolama hesabı anahtarı, paylaşılan erişim imzası (SAS) anahtarı, bir Azure dizin uygulama kullanıcısı veya depolama hesabına uygun Azure rolüne sahip bir AAD kullanıcısı.
 
 ## <a name="create-the-target-table"></a>Hedef tabloyu oluşturma
 
@@ -124,7 +124,7 @@ Aşağıdaki örnek, istatistik oluşturmak için iyi bir başlangıç noktasıd
 
 ## <a name="achievement-unlocked"></a>Başarı kilidi açıldı!
 
-Verileri veri ambarınıza başarıyla yüklesahipsiniz. Harika iş!
+Verileri veri ambarınıza başarıyla yüklesahipsiniz. Harika iş çıkardınız!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Verilerin yüklenmesi, Azure SYNAPSE Analytics kullanılarak veri ambarı çözümü geliştirmenin ilk adımıdır. Geliştirme kaynaklarımıza göz atın.

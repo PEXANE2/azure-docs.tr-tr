@@ -5,14 +5,14 @@ description: Azure Kubernetes Service (AKS) ile ilgili teknoloji ve tolerans, d�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077856"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530070"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki gelişmiş Zamanlayıcı özellikleri için en iyi yöntemler
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) gelişmiş zamanlayıcı özellikleri için en iyi yöntemler
 
 Azure Kubernetes Service (AKS) içindeki kümeleri yönetirken, genellikle takımları ve iş yüklerini yalıtmanız gerekir. Kubernetes Scheduler, belirli düğümlerde hangi yığınların planlanabileceği veya birden çok Pod uygulamasının küme genelinde uygun şekilde nasıl dağıtılacağı hakkında gelişmiş özellikler sağlar. 
 
@@ -71,8 +71,6 @@ Bu Pod dağıtıldığında, `kubectl apply -f gpu-toleration.yaml` Kubernetes, 
 
 Taşı uyguladığınızda, uygulama geliştiricileriniz ve sahipleriyle birlikte çalışarak dağıtımlarındaki gerekli toleranları tanımlamasına izin verin.
 
-Litre ve toleransyonlar hakkında daha fazla bilgi için bkz. [litre ve tolerans uygulama][k8s-taints-tolerations].
-
 AKS 'de birden çok düğüm havuzu kullanma hakkında daha fazla bilgi için bkz. [AKS 'deki bir küme için birden çok düğüm havuzu oluşturma ve yönetme][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS 'teki litre ve tolerantalara yönelik davranış
@@ -80,6 +78,7 @@ AKS 'de birden çok düğüm havuzu kullanma hakkında daha fazla bilgi için bk
 AKS 'deki bir düğüm havuzunu yükselttiğinizde, litre ve tolerans, yeni düğümlere uygulandıkları sırada bir küme düzeniyle uyar:
 
 - **Sanal makine ölçek kümeleri kullanan varsayılan kümeler**
+  - Yeni ölçeklendirilen düğümlerin API tarafından belirtilen düğüm Taks 'leri almasını sağlamak için AKS API 'sinden [nodepool Taint][taint-node-pool] 'i kullanabilirsiniz.
   - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Düğüm havuzunu yükseltirsiniz.
   - İki ek düğüm oluşturulur, *Düğüm3* ve *Düğüm4*ve litre sırasıyla geçirilir.
   - Özgün *Düğüm1* ve *Düğüm2* silinir.
@@ -198,3 +197,4 @@ Bu makalede, gelişmiş Kubernetes Zamanlayıcı özelliklerine odaklanılmışt
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

@@ -1,5 +1,5 @@
 ---
-title: Azure yönetim erişimi için RBAC rollerini ayarlama
+title: Azure yönetim erişimi için Azure rollerini ayarlama
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama Yönetimi için yönetim görevlerini denetleme ve bunların yetkisini aktarmaya yönelik Azure portal rol tabanlı yönetim denetimi (RBAC).
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462847"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534439"
 ---
-# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Bilişsel Arama yönetim erişimi için RBAC rolleri ayarlama
+# <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure 'a yönetici erişimi için Azure rolleri ayarlama Bilişsel Arama
 
 Azure, portal veya Kaynak Yöneticisi API 'Leri aracılığıyla yönetilen tüm hizmetler için [Genel rol tabanlı bir yetkilendirme modeli](../role-based-access-control/role-assignments-portal.md) sağlar. Sahip, katkıda bulunan ve okuyucu rolleri, her role atanan Active Directory Kullanıcılar, gruplar ve güvenlik sorumluları için *hizmet yönetiminin* düzeyini belirlemektir. 
 
@@ -29,7 +29,7 @@ Azure Bilişsel Arama için roller, aşağıdaki yönetim görevlerini destekley
 | Rol | Görev |
 | --- | --- |
 | Sahip |API anahtarları, dizinler, Dizin oluşturucular, Dizin Oluşturucu veri kaynakları ve Dizin Oluşturucu zamanlamaları dahil hizmet veya hizmette herhangi bir nesne oluşturun veya silin.<p>Sayılar ve depolama boyutu dahil olmak üzere hizmet durumunu görüntüleyin.<p>Rol üyeliği ekleme veya silme (yalnızca sahip, rol üyeliğini yönetebilir).<p>Abonelik yöneticileri ve hizmet sahipleri, sahipler rolünde otomatik üyeliğe sahiptir. |
-| Katılımcı |Sahibe göre aynı erişim düzeyi, eksi RBAC rol yönetimi. Örneğin, katkıda bulunan, nesne oluşturabilir veya silebilir ya da [API anahtarlarını](search-security-api-keys.md)görüntüleyebilir ve yeniden oluşturabilir, ancak rol üyeliklerini değiştiremezler. |
+| Katılımcı |Sahibe göre aynı erişim düzeyi, eksi Azure rol yönetimi. Örneğin, katkıda bulunan, nesne oluşturabilir veya silebilir ya da [API anahtarlarını](search-security-api-keys.md)görüntüleyebilir ve yeniden oluşturabilir, ancak rol üyeliklerini değiştiremezler. |
 | [Arama Hizmeti katkıda bulunan yerleşik rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Katkıda bulunan rolüne eşdeğerdir. |
 | Okuyucu |Hizmet temellerini ve ölçümlerini görüntüleyin. Bu rolün üyeleri dizin, Dizin Oluşturucu, veri kaynağı veya anahtar bilgilerini görüntüleyemez.  |
 
@@ -39,7 +39,7 @@ Roller, hizmet uç noktasına erişim hakkı vermez. Dizin Yönetimi, dizin olu�
 
 Aşağıdaki tabloda, Azure Bilişsel Arama 'de izin verilen işlemler özetlenmektedir ve hangi anahtarın belirli bir işleme erişim kilidi vardır.
 
-| Çalışma | İzinler |
+| İşlem | İzinler |
 |-----------|-------------------------|
 | Hizmet oluşturma | Azure abonelik sahibi |
 | Hizmeti ölçeklendirme | Kaynakta yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |

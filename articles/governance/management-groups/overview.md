@@ -3,12 +3,12 @@ title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 7c6d5d752886f47da1321289696feb4261abe7e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447113"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529356"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure Yönetim grupları nelerdir?
 
@@ -38,7 +38,7 @@ Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla abon
 
 ## <a name="root-management-group-for-each-directory"></a>Her dizin için kök yönetim grubu
 
-Her dizinde "Kök" yönetim grubu olarak adlandırılan tek bir üst düzey yönetim grubu bulunur. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Bu kök yönetim grubu, genel ilkelerin ve Azure rol atamalarının dizin düzeyinde uygulanmasını sağlar. Başlangıçta Azure AD Genel Yöneticisinin bu kök grubunun Kullanıcı Erişimi Yönetici rolüne [kendisini yükseltmesi gerekir](../../role-based-access-control/elevate-access-global-admin.md). Yönetici, erişimi yükselttikten sonra hiyerarşiyi yönetmek için diğer dizin kullanıcılarına veya gruplara herhangi bir RBAC rolü atayabilir. Yönetici olarak, kendi hesabınızı kök yönetim grubunun sahibi olarak atayabilirsiniz.
+Her dizinde "Kök" yönetim grubu olarak adlandırılan tek bir üst düzey yönetim grubu bulunur. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Bu kök yönetim grubu, genel ilkelerin ve Azure rol atamalarının dizin düzeyinde uygulanmasını sağlar. Başlangıçta Azure AD Genel Yöneticisinin bu kök grubunun Kullanıcı Erişimi Yönetici rolüne [kendisini yükseltmesi gerekir](../../role-based-access-control/elevate-access-global-admin.md). Erişim yükseltildikten sonra, yönetici, hiyerarşiyi yönetmek için diğer dizin kullanıcılarına veya gruplarına herhangi bir Azure rolü atayabilir. Yönetici olarak, kendi hesabınızı kök yönetim grubunun sahibi olarak atayabilirsiniz.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Kök yönetim grubu hakkında önemli bilgiler
 
@@ -50,7 +50,7 @@ Her dizinde "Kök" yönetim grubu olarak adlandırılan tek bir üst düzey yön
   - Yeni abonelikler, oluşturulduğunda kök yönetim grubuna otomatik olarak eklenir.
 - Tüm Azure müşterileri kök yönetim grubunu görebilir ancak tüm müşteriler o kök yönetim grubunu yönetmek için erişime sahip değildir.
   - Bir aboneliğe erişimi olan herkes bu aboneliğin hiyerarşide bulunduğu bağlamı görebilir.  
-  - Kök yönetim grubuna hiç kimsenin varsayılan erişimi yoktur. Erişim kazanmak için yalnızca Azure AD Genel Yöneticileri kendi rollerini yükseltebilir. Kök yönetim grubuna erişim izni olduktan sonra, genel Yöneticiler yönetmek için diğer kullanıcılara herhangi bir RBAC rolü atayabilir  
+  - Kök yönetim grubuna hiç kimsenin varsayılan erişimi yoktur. Erişim kazanmak için yalnızca Azure AD Genel Yöneticileri kendi rollerini yükseltebilir. Kök yönetim grubuna erişim izni olduktan sonra, genel Yöneticiler yönetmek için diğer kullanıcılara herhangi bir Azure rolü atayabilir  
     içerdiği.
 - SDK 'da kök yönetim grubu veya ' kiracı kökü ' bir yönetim grubu olarak çalışır.
 
@@ -83,11 +83,11 @@ Bu geriye dönük doldurma işlemi hakkında sorularınız varsa şu adresten bi
 ## <a name="management-group-access"></a>Yönetim grubu erişimi
 
 Azure Yönetim grupları tüm kaynak erişimleri ve rol tanımları için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../../role-based-access-control/overview.md) destekler.
-Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir RBAC rolü, hiyerarşiyi kaynaklara devralacak bir yönetim grubuna atanabilir. Örneğin, VM katılımcısı adlı RBAC rolü bir yönetim grubuna atanabilir. Bu rolün yönetim grubu üzerinde herhangi bir eylemi yoktur ancak o yönetim grubu altındaki tüm VM’lere devredilir.
+Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir Azure rolü, hiyerarşiyi kaynaklara devralacak bir yönetim grubuna atanabilir. Örneğin, Azure rolü sanal makine katılımcısı bir yönetim grubuna atanabilir. Bu rolün yönetim grubu üzerinde herhangi bir eylemi yoktur ancak o yönetim grubu altındaki tüm VM’lere devredilir.
 
 Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eylemler gösterilmektedir.
 
-| RBAC Rol Adı             | Oluştur | Rename | Geçiş\*\* | Sil | Erişim Ata | İlke Ata | Okuma  |
+| Azure rolü adı             | Oluştur | Rename | Geçiş\*\* | Sil | Erişim Ata | İlke Ata | Okuma  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Sahip                       | X      | X      | X        | X      | X             | X             | X     |
 |Katılımcı                 | X      | X      | X        | X      |               |               | X     |

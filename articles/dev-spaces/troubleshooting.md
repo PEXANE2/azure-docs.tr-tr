@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232500"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534405"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -278,7 +278,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam* düğmesine tıklayın.
+* *Tamam*'a tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
@@ -498,9 +498,9 @@ Denetleyicinizin yeniden yüklenmesi sırasında, yığınlarınızı yeniden da
 
 ### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Dev Spaces denetleyicisi ve API 'Leri çağırmak için yanlış RBAC izinleri
 
-Azure Dev Spaces denetleyicisine erişen kullanıcının AKS kümesinde admin *kubeconfig* 'i okumak için erişimi olmalıdır. Örneğin, bu izin [yerleşik Azure Kubernetes hizmet kümesi yönetici rolünde](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)bulunur. Azure Dev Spaces denetleyicisine erişen kullanıcının denetleyici için *katkıda* bulunan veya *sahip* RBAC rolüne de sahip olması gerekir. Bir kullanıcının bir AKS kümesi için izinlerini güncelleştirme hakkında daha fazla ayrıntıya [buradan](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)ulaşabilirsiniz.
+Azure Dev Spaces denetleyicisine erişen kullanıcının AKS kümesinde admin *kubeconfig* 'i okumak için erişimi olmalıdır. Örneğin, bu izin [yerleşik Azure Kubernetes hizmet kümesi yönetici rolünde](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)bulunur. Azure Dev Spaces denetleyicisine erişen kullanıcının denetleyiciye *katkıda* bulunan veya *sahip* Azure rolü de olmalıdır. Bir kullanıcının bir AKS kümesi için izinlerini güncelleştirme hakkında daha fazla ayrıntıya [buradan](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)ulaşabilirsiniz.
 
-Denetleyicinin Kullanıcı RBAC rolünü güncelleştirmek için:
+Kullanıcının, denetleyicinin Azure rolünü güncelleştirmek için:
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. Genellikle AKS kümeniz ile aynı olan denetleyiciyi içeren kaynak grubuna gidin.

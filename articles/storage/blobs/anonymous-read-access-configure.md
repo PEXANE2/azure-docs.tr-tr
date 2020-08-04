@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289250"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534320"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
 
@@ -50,7 +50,9 @@ Depolama hesabı için genel erişime izin vermemek, bu hesaptaki tüm kapsayıc
 > [!IMPORTANT]
 > Bir depolama hesabı için genel erişime izin vermemek, bu depolama hesabındaki tüm kapsayıcılar için genel erişim ayarlarını geçersiz kılar. Depolama hesabı için genel erişime izin verilse, bu hesaba yönelik ileride yapılacak anonim istekler başarısız olur. Bu ayarı değiştirmeden önce, Depolama hesabınızdaki verilere anonim olarak erişebilecek istemci uygulamalarının etkilerini anladığınızdan emin olun. Daha fazla bilgi için bkz. [kapsayıcılar ve bloblara anonim genel okuma erişimini engelleme](anonymous-read-access-prevent.md).
 
-Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, hesabın **Blobpublicaccess** özelliğini yapılandırmak üzere Azure Portal veya Azure CLI kullanın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
+Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, hesabın **Allowblobpublicaccess** özelliğini yapılandırın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
+
+**Allowblobpublicaccess** özelliği varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null** olduğunda veya **true**olduğunda ortak erişime izin verir.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -62,64 +64,118 @@ Azure portal bir depolama hesabı için genel erişime izin vermek veya bu eriş
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Hesap için blob genel erişimine izin verme veya bu erişimi engelleme ile ilgili ekran görüntüsü":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell ile bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, [Azure PowerShell Version 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) veya üstünü yüklersiniz. Ardından, **Allowblobpublicaccess** özelliğini yeni veya mevcut bir depolama hesabı için yapılandırın.
+
+Aşağıdaki örnek bir depolama hesabı oluşturur ve **Allowblobpublicaccess** özelliğini açıkça **true**olarak ayarlar. Ardından, **Allowblobpublicaccess** özelliğini **false**olarak ayarlamak için depolama hesabını güncelleştirir. Örnek, her durumda özellik değerini de alır. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+
+```powershell
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+$location = "<location>"
+
+# Create a storage account with AllowBlobPublicAccess set to true (or null).
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property for the newly created storage account.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+
+# Set AllowBlobPublicAccess set to false
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı ile bir depolama hesabı için genel erişime izin vermek veya erişimi engellemek için, önce [az Resource Show](/cli/azure/resource#az-resource-show) komutunu çağırarak depolama HESABıNıZıN kaynak kimliğini alın. Daha sonra, depolama hesabı için **Allowblobpublicaccess** özelliğini ayarlamak üzere [az Resource Update](/cli/azure/resource#az-resource-update) komutunu çağırın. Ortak erişime izin vermek için **Allowblobpublicaccess** özelliğini true olarak ayarlayın; izin vermemek için **false**olarak ayarlayın.
+Azure CLı ile bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için Azure CLı sürüm 2.9.0 veya üstünü yüklersiniz. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli). Ardından, **Allowblobpublicaccess** özelliğini yeni veya mevcut bir depolama hesabı için yapılandırın.
 
-Aşağıdaki örnek, depolama hesabı için genel blob erişimine izin vermez. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek bir depolama hesabı oluşturur ve **Allowblobpublicaccess** özelliğini açıkça **true**olarak ayarlar. Ardından, **Allowblobpublicaccess** özelliğini **false**olarak ayarlamak için depolama hesabını güncelleştirir. Örnek, her durumda özellik değerini de alır. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
-storage_account_id=$(az resource show \
-    --name anonpublicaccess \
-    --resource-group storagesamples-rg \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --kind StorageV2 \
+    --location <location> \
+    --allow-blob-public-access true
 
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowBlobPublicAccess=false
-    ```
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
+
+az storage account update \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --allow-blob-public-access false
+
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
 ```
+
+# <a name="template"></a>[Şablon](#tab/template)
+
+Şablonla bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, **Allowblobpublicaccess** özelliği **true** veya **false**olarak ayarlanmış bir şablon oluşturun. Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
+
+1. Azure portal **kaynak oluştur**' u seçin.
+1. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
+1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın) (Önizleme)**, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluşturun**' i seçin.
+1. Şablon Düzenleyicisi 'nde, yeni bir hesap oluşturmak için aşağıdaki JSON öğesine yapıştırın ve **Allowblobpublicaccess** özelliğini **true** veya **false**olarak ayarlayın. Açılı ayraçlar içindeki yer tutucuları kendi değerlerinizle değiştirmeyi unutmayın.
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'template')]"
+        },
+        "resources": [
+            {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "<location>",
+            "properties": {
+                "allowBlobPublicAccess": false
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
+            "tags": {}
+            }
+        ]
+    }
+    ```
+
+1. Şablonu kaydedin.
+1. Kaynak grubu parametresini belirtin, ardından şablonu dağıtmak için **gözden geçir + oluştur** düğmesini seçin ve **Allowblobpublicaccess** özelliği yapılandırılmış bir depolama hesabı oluşturun.
 
 ---
 
 > [!NOTE]
 > Bir depolama hesabı için genel erişime izin vermemek, bu depolama hesabında barındırılan herhangi bir statik Web sitesini etkilemez. **$Web** kapsayıcı her zaman herkese açık olarak erişilebilir.
+>
+> Depolama hesabı için genel erişim ayarını güncelleştirdikten sonra, değişiklik tamamen yayılmadan önce 30 saniye kadar sürebilir.
 
-## <a name="check-whether-public-access-is-allowed-for-a-storage-account"></a>Bir depolama hesabı için genel erişime izin verilip verilmediğini denetleyin
+Blob genel erişimine izin vermek veya bu erişimi vermemek, Azure depolama kaynak sağlayıcısı 'nın 2019-04-01 veya sonraki bir sürümünü gerektirir. Daha fazla bilgi için bkz. [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp/).
 
-Bir depolama hesabı için genel erişime izin verilip verilmeyeceğini denetlemek için **Allowblobpublicaccess** özelliğinin değerini alın. Tek seferde büyük bir depolama hesabı için bu özelliği denetlemek üzere Azure Kaynak Grafiği gezginini kullanın.
-
-> [!IMPORTANT]
-> **Allowblobpublicaccess** özelliği varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null** olduğunda veya **true**olduğunda ortak erişime izin verir.
-
-### <a name="check-whether-public-access-is-allowed-for-a-single-storage-account"></a>Tek bir depolama hesabı için genel erişime izin verilip verilmediğini denetleyin
-
-Azure CLı kullanarak tek bir depolama hesabı için genel erişime izin verilip verilmeyeceğini denetlemek için, **Allowblobpublicaccess** özelliği için [az Resource Show](/cli/azure/resource#az-resource-show) komutunu ve sorguyu çağırın:
-
-```azurecli-interactive
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowBlobPublicAccess \
-    --output tsv
-```
-
-### <a name="check-whether-public-access-is-allowed-for-a-set-of-storage-accounts"></a>Bir depolama hesabı kümesi için genel erişime izin verilip verilmediğini denetleyin
-
-En iyi performansa sahip bir depolama hesapları kümesi üzerinde genel erişime izin verilip verilmeyeceğini denetlemek için Azure portal Azure Kaynak Grafiği Gezginini kullanabilirsiniz. Kaynak Grafiği Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak Ilk kaynak grafik sorgunuzu çalıştırma](/azure/governance/resource-graph/first-query-portal).
-
-Kaynak Graph Explorer 'da aşağıdaki sorguyu çalıştırmak, depolama hesaplarının bir listesini döndürür ve her bir hesap için **Allowblobpublicaccess** özelliğinin değerini görüntüler:
-
-```kusto
-resources
-| where type =~ 'Microsoft.Storage/storageAccounts'
-| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
-| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
-| order by subscriptionId, resourceGroup, name asc
-```
+Bu bölümdeki örneklerde, genel erişimin Şu anda izin verildiğini veya izin verilmediğini tespit etmek üzere depolama hesabı için **Allowblobpublicaccess** özelliğinin nasıl okunacağı gösterilmektedir. Bir hesabın ortak erişim ayarının anonim erişimi engelleyecek şekilde yapılandırıldığını doğrulama hakkında daha fazla bilgi edinmek için bkz. [anonim genel erişimi](anonymous-read-access-prevent.md#remediate-anonymous-public-access)düzeltme.
 
 ## <a name="set-the-public-access-level-for-a-container"></a>Bir kapsayıcı için genel erişim düzeyini ayarlama
 
@@ -131,9 +187,7 @@ Bir depolama hesabı için genel erişime izin verildiğinde, bir kapsayıcıyı
 - **Yalnızca Bloblar Için genel okuma erişimi:** Kapsayıcı içindeki Bloblar anonim istek tarafından okunabilir, ancak kapsayıcı verileri anonim olarak kullanılamaz. Anonim istemciler kapsayıcı içindeki Blobları numaralandıramaz.
 - **Kapsayıcı ve Blobları Için genel okuma erişimi:** Kapsayıcı ve blob verileri, kapsayıcı izin ayarları ve kapsayıcı meta verileri dışında anonim istek tarafından okunabilir. İstemciler kapsayıcı içindeki Blobları anonim istek ile numaralandırabilirler, ancak depolama hesabındaki kapsayıcıları numaralandıramaz.
 
-Tek bir blob için genel erişim düzeyini değiştiremezsiniz. Genel erişim düzeyi yalnızca kapsayıcı düzeyinde ayarlanır.
-
-Kapsayıcının ortak erişim düzeyini ayarlamak için Azure portal veya Azure CLı kullanın. Kapsayıcıyı oluştururken kapsayıcının ortak erişim düzeyini ayarlayabilir veya var olan bir kapsayıcıda bu ayarı güncelleştirebilirsiniz.
+Tek bir blob için genel erişim düzeyini değiştiremezsiniz. Genel erişim düzeyi yalnızca kapsayıcı düzeyinde ayarlanır. Kapsayıcıyı oluştururken kapsayıcının ortak erişim düzeyini ayarlayabilir veya var olan bir kapsayıcıdaki ayarı güncelleştirebilirsiniz.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -151,44 +205,81 @@ Depolama hesabı için genel erişime izin verilmedikçe, kapsayıcının ortak 
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Ortak erişime izin verilmediği zaman, Setting kapsayıcısının genel erişim düzeyinin engellendiğini gösteren ekran görüntüsü":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell ile bir veya daha fazla kapsayıcının genel erişim düzeyini güncelleştirmek için [set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) komutunu çağırın. Hesap anahtarınızı, bir bağlantı dizesini veya paylaşılan erişim imzasını (SAS) geçirerek bu işlemi yetkilendirin. Kapsayıcının ortak erişim düzeyini ayarlayan kapsayıcı [ACL 'si](/rest/api/storageservices/set-container-acl) IŞLEMI Azure AD ile yetkilendirmeyi desteklemez. Daha fazla bilgi için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+
+Aşağıdaki örnek, ortak erişime devre dışı bırakılmış bir kapsayıcı oluşturur ve sonra kapsayıcının ve bloblarına anonim erişime izin vermek için kapsayıcının ortak erişim ayarını güncelleştirir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+
+```powershell
+# Set variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Get context object.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+# Create a new container with public access setting set to Off.
+$containerName = "<container>"
+New-AzStorageContainer -Name $containerName -Permission Off -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+
+# Update the container's public access setting to Container.
+Set-AzStorageContainerAcl -Container $containerName -Permission Container -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+```
+
+Depolama hesabı için genel erişime izin verilmedikçe, kapsayıcının ortak erişim düzeyi ayarlanamaz. Kapsayıcının ortak erişim düzeyini ayarlamaya çalışırsanız, Azure depolama, depolama hesabında ortak erişime izin verilmediğini belirten bir hata döndürür.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı ile bir veya daha fazla kapsayıcının genel erişim düzeyini güncelleştirmek için [az Storage Container set Permission](/cli/azure/storage/container#az-storage-container-set-permission) komutunu çağırın. Hesap anahtarınızı, bir bağlantı dizesini veya paylaşılan erişim imzasını (SAS) geçirerek bu işlemi yetkilendirin. Kapsayıcının ortak erişim düzeyini ayarlayan kapsayıcı [ACL 'si](/rest/api/storageservices/set-container-acl) IŞLEMI Azure AD ile yetkilendirmeyi desteklemez. Daha fazla bilgi için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
-Aşağıdaki örnek, kapsayıcıya ve bloblarına anonim erişimi etkinleştirmek üzere bir kapsayıcı için genel erişim ayarını ayarlar. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, ortak erişime devre dışı bırakılmış bir kapsayıcı oluşturur ve sonra kapsayıcının ve bloblarına anonim erişime izin vermek için kapsayıcının ortak erişim ayarını güncelleştirir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
+az storage container create \
+    --name <container-name> \
+    --account-name <account-name> \
+    --resource-group <resource-group>
+    --public-access off \
+    --account-key <account-key> \
+    --auth-mode key
+
+az storage container show-permission \
+    --name <container-name> \
+    --account-name <account-name> \
+    --account-key <account-key> \
+    --auth-mode key
+
 az storage container set-permission \
     --name <container-name> \
     --account-name <account-name> \
     --public-access container \
     --account-key <account-key> \
     --auth-mode key
-```
 
-Depolama hesabı için genel erişime izin verilmedikçe, kapsayıcının ortak erişim düzeyi ayarlanamaz. Kapsayıcının ortak erişim düzeyini ayarlamaya çalışırsanız, depolama hesabında genel erişime izin verilmediğini belirten bir hata oluşur.
-
----
-
-## <a name="check-the-container-public-access-setting"></a>Kapsayıcı genel erişim ayarını denetleyin
-
-Bir veya daha fazla kapsayıcının genel erişim ayarını denetlemek için Azure portal, PowerShell, Azure CLı, Azure depolama istemci kitaplıklarından birini veya Azure depolama kaynak sağlayıcısı 'nı kullanabilirsiniz. Aşağıdaki bölümler birkaç örnek sunmaktadır.  
-
-### <a name="check-the-public-access-setting-for-a-single-container"></a>Tek bir kapsayıcı için genel erişim ayarını denetleyin
-
-Azure CLı ile bir veya daha fazla kapsayıcının genel erişim düzeyini almak için [az Storage Container Show Permission](/cli/azure/storage/container#az-storage-container-show-permission) komutunu çağırın. Hesap anahtarınızı, bir bağlantı dizesini veya paylaşılan erişim imzasını (SAS) geçirerek bu işlemi yetkilendirin. Kapsayıcının ortak erişim düzeyini döndüren [kapsayıcı al ACL 'si](/rest/api/storageservices/get-container-acl) , Azure AD ile yetkilendirmeyi desteklemez. Daha fazla bilgi için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
-
-Aşağıdaki örnek bir kapsayıcı için genel erişim ayarını okur. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
-
-```azurecli-interactive
 az storage container show-permission \
     --name <container-name> \
     --account-name <account-name> \
-    --account-key <account-key>
+    --account-key <account-key> \
     --auth-mode key
 ```
 
-### <a name="check-the-public-access-setting-for-a-set-of-containers"></a>Bir kapsayıcı kümesi için genel erişim ayarını denetleyin
+Depolama hesabı için genel erişime izin verilmedikçe, kapsayıcının ortak erişim düzeyi ayarlanamaz. Kapsayıcının ortak erişim düzeyini ayarlamaya çalışırsanız, Azure depolama, depolama hesabında ortak erişime izin verilmediğini belirten bir hata döndürür.
+
+# <a name="template"></a>[Şablon](#tab/template)
+
+Yok.
+
+---
+
+## <a name="check-the-public-access-setting-for-a-set-of-containers"></a>Bir kapsayıcı kümesi için genel erişim ayarını denetleyin
 
 Bir veya daha fazla depolama hesabında, kapsayıcıları listeleyerek ve genel erişim ayarını denetleyerek, genel erişim için hangi kapsayıcıların yapılandırıldığını denetlemek mümkündür. Bu yaklaşım, bir depolama hesabı çok sayıda kapsayıcı içermediği ya da ayarı az sayıda depolama hesabı üzerinde denetlerken pratik bir seçenektir. Ancak, çok sayıda kapsayıcıyı numaralandırmaya çalışırsanız performans düşebilir.
 

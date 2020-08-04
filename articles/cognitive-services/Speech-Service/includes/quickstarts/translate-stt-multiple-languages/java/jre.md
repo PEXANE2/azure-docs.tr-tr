@@ -17,7 +17,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671737"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -27,7 +27,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni boş bir sınıf eklemek için **Dosya** > **Yeni** > **sınıf**' ı seçin.
+1. Java projenize yeni boş bir sınıf eklemek için **Dosya**  >  **Yeni**  >  **sınıf**' ı seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -131,9 +131,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Proje üzerindeki değişiklikleri kaydedin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
-F11 tuşuna basın veya**hata ayıklamayı** **Çalıştır** > ' ı seçin.
+F11 tuşuna basın veya **Run**  >  **hata ayıklamayı**Çalıştır ' ı seçin.
 
 1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir, bu da metin (Bu durumda, Fransızca ve Almanca) olarak metne dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 

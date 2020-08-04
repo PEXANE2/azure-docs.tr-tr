@@ -10,17 +10,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708527"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532535"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -36,7 +36,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL yönetilen örnek genel bakış](
 
 Yönetilen bir örnek yayımcısı ve yönetilen örnek abonesi arasında çoğaltmayı yapılandırmak için, bkz. [iki yönetilen örnek arasında işlemsel çoğaltmayı yapılandırma](replication-between-two-instances-configure-tutorial.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -78,7 +78,7 @@ Yönetilen örnek oluşturma hakkında daha fazla bilgi için, bkz. [portalda y�
 
 [Azure Portal](https://portal.azure.com)kullanarak SQL Server sanal makine oluşturun. SQL Server sanal makine aşağıdaki özelliklere sahip olmalıdır:
 
-- Ada`sql-vm-sub`
+- Ad: `sql-vm-sub`
 - Görüntü: SQL Server 2016 veya üzeri
 - Kaynak grubu: yönetilen örnekle aynı
 - Sanal ağ:`sql-vm-sub-vnet`
@@ -166,7 +166,7 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 ### <a name="link-the-virtual-network"></a>Sanal ağı bağlama
 
 1. Yeni **özel DNS bölgenize** gidin ve **sanal ağ bağlantıları**' nı seçin.
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 1. Bağlantı için gibi bir ad girin `Pub-link` .
 1. Açılır listeden aboneliğinizi seçin ve ardından yayımcı yönetilen örneğiniz için sanal ağı seçin.
 1. **Otomatik kaydolmayı etkinleştir ' in**yanındaki kutuyu işaretleyin.
@@ -247,6 +247,10 @@ Bağlantı kurulduktan sonra bir örnek veritabanınız varsa, `sql-mi-distribut
 1. Yeni bir **sorgu** penceresi açın ve dağıtıcı yönetilen örneğinde dağıtımı yapılandırmak Için aşağıdaki Transact-SQL kodunu çalıştırın:
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,
@@ -357,7 +361,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 Aracı bir Windows oturum açma ile yapılandırılmış ve bunun yerine SQL Server bir oturum açma kullanması gerekiyor. SQL Server oturum açma kimlik bilgilerini değiştirmek için **yayın özelliklerinin** **Aracı Güvenlik** sayfasını kullanın.
 
-### <a name="failed-to-connect-to-azure-storage"></a>Azure depolama ile bağlantı kurulamadı
+### <a name="failed-to-connect-to-azure-storage"></a>Azure Depolama bağlantısı kurulamadı
 
 `Connecting to Azure Files Storage '\\replstorage.file.core.windows.net\replshare' Failed to connect to Azure Storage '' with OS error: 53.`
 

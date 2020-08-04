@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f29ed1ad7ba0215e9b4193fd56dd3a32f3e9a2
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 68d40e9dbc2c4da6b298f7245318c95de983edcc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476287"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530155"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -59,12 +59,13 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 - Rol bir grup ile atandığında dinamik bir grup oluşturamaz veya değiştiremezsiniz.
-- Azure Information Protection, henüz grup aracılığıyla rol üyeliğini tanımıyor. Doğrudan rol atamaları hala çalışır. Azure Information Protection Portal (klasik portal) henüz grup aracılığıyla rol üyeliğini tanımıyor. Doğrudan rol atamaları hala çalışır. [Birleşik duyarlılık etiketleme platformuna geçiş](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) yapabilir ve sonra rolleri yönetmek için Grup atamalarını kullanmak üzere Office 365 güvenlik & Uyumluluk Merkezi ' ni kullanabilirsiniz.
 - **Yönetilen Kullanıcı oturum açma özelliği için hazırlanan dağıtımı etkinleştir** ayarı, Grup aracılığıyla atamayı desteklemez.
 - *Yalnızca Azure AD P2 lisanslı müşteriler*: bir gruba hem Azure AD hem de Privileged Identity Management aracılığıyla bir rolü etkin olarak atamayın. Bu, kullanıcıların, PıM 'de etkin rol atamalarını görmemesi ve bu PıM atamasını kaldıramamasının gerektiği sorunlara yol açacaktır. Uygun atamalar Bu senaryoda etkilenmez. Bu atamayı yapmayı denerseniz, şöyle beklenmeyen davranışlar görebilirsiniz:
   - Rol atamasının bitiş saati yanlış görüntülenebilir.
   - PıM portalında, (bir veya daha fazla grup ve doğrudan) bir atamaya göre kaç yöntemden bağımsız olarak **rollerim** yalnızca bir rol ataması gösterebilir.
-- *Yalnızca Azure AD P2 lisanslı müşterileri* Grubu sildikten sonra bile, PıM Kullanıcı arabirimindeki rolün uygun bir üyesi gösterilmeye devam eder. İşlevsel bir sorun yoktur; yalnızca Azure portal bir önbellek sorunudur.
+- *Yalnızca Azure AD P2 lisanslı müşterileri* Grubu sildikten sonra bile, PıM Kullanıcı arabirimindeki rolün uygun bir üyesi gösterilmeye devam eder. İşlevsel bir sorun yoktur; yalnızca Azure portal bir önbellek sorunudur.  
+- Exchange Yönetim Merkezi, rol üyeliğini henüz grup aracılığıyla tanımıyor, ancak PowerShell cmdlet 'i çalışacaktır.
+- Azure Information Protection Portal (klasik portal) henüz grup aracılığıyla rol üyeliğini tanımıyor. [Birleşik duyarlılık etiketleme platformuna geçiş](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) yapabilir ve sonra rolleri yönetmek için Grup atamalarını kullanmak üzere Office 365 güvenlik & Uyumluluk Merkezi ' ni kullanabilirsiniz.
 
 Bu sorunları düzeltiyoruz.
 
@@ -74,5 +75,5 @@ Bu özelliği kullanmak için Azure AD kuruluşunuzda Azure AD Premium P1 lisans
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Rol atanabilir Grup oluşturma](roles-groups-create-eligible.md)
+- [Rol atanabilir grup oluşturma](roles-groups-create-eligible.md)
 - [Rol atanabilir gruba rol atama](roles-groups-assign-role.md)

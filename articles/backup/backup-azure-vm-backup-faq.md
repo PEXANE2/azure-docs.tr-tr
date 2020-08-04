@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538777"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533504"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -99,11 +99,7 @@ VM 'niz veya VM kaynak grubunuz için büyük/küçük harf (büyük veya küç�
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>Bir VM 'ye bağlı seçmeli diskleri yedekleyebilir veya geri yükleyebilir miyim?
 
-Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.
-
-Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
-
-Önizlemeye kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
+Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir. Daha fazla bilgi için bkz. [Azure VM 'ler Için seçmeli disk yedekleme ve geri yükleme](selective-disk-backup-restore.md).
 
 ## <a name="restore"></a>Geri Yükleme
 

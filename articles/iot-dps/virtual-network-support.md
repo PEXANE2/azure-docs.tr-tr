@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532046"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534609"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Sanal ağlar için Azure IoT Hub cihaz sağlama hizmeti (DPS) desteği
 
@@ -59,7 +59,7 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 
 * DPS kaynağı ve bağlı hub farklı bulutlarda olduğunda özel uç noktalar DPS ile çalışmaz. Örneğin, [Azure Kamu ve küresel Azure](../azure-government/documentation-government-welcome.md).
 
-* Şu anda, DPS için [Azure işlevleri ile özel ayırma ILKELERI](how-to-use-custom-allocation-policies.md) VNET ve özel uç noktaları çalışmayacak. 
+* Şu anda, Azure işlevi VNET ve özel uç noktalara kilitlendiğinde, DPS için [Azure işlevleri ile özel ayırma ilkeleri](how-to-use-custom-allocation-policies.md) çalışmayacaktır. 
 
 * Geçerli DPS VNET desteği yalnızca DPS 'e veri girişi için geçerlidir. DPS 'ten IoT Hub giden trafik olan veri çıkışı, adanmış VNET yerine iç hizmetten hizmete bir mekanizma kullanır. DPS ve IoT Hub arasında tam VNET tabanlı çıkış kilidi desteği şu anda kullanılamıyor.
 

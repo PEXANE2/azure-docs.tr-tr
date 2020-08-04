@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415230"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529730"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "81415230"
 Bu makalede, bir SAP tablosundan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Daha fazla bilgi için bkz. [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
 
 >[!TIP]
->ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için, her SAP Bağlayıcısı, karşılaştırma ve kılavuza ayrıntılı giriş ile [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
@@ -47,6 +47,7 @@ Bir SAP tablosundan desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 - SAP saydam tablosundan, havuza alınmış bir tablodan, kümelenmiş bir tablodan ve bir görünümden veri kopyalama.
 - SNC yapılandırıldıysa, temel kimlik doğrulaması veya güvenli ağ Iletişimleri (SNC) kullanarak verileri kopyalama.
 - SAP uygulama sunucusuna veya SAP ileti sunucusuna bağlanma.
+- Varsayılan veya özel RFC aracılığıyla veri alma.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -217,14 +218,15 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type`Özelliğin olarak ayarlanması gerekir `SapTableSource` .         | Yes      |
 | `rowCount`                         | Alınacak satır sayısı.                              | No       |
-| `rfcTableFields`                   | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | No       |
-| `rfcTableOptions`                  | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | No       |
-| `customRfcReadTableFunctionModule` | Bir SAP tablosundan veri okumak için kullanılabilen özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alındığını tanımlamak ve Data Factory ' a geri dönmek için özel bir RFC işlevi modülü kullanabilirsiniz. Özel işlev modülünün `/SAPDS/RFC_READ_TABLE2` , Data Factory tarafından kullanılan varsayılan arabirim olan öğesine benzer bir arabirimi (içeri aktarma, dışarı aktarma, tablolar) uygulanmış olması gerekir. | No       |
+| `rfcTableFields`                 | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | No       |
+| `rfcTableOptions`                | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | No       |
+| `customRfcReadTableFunctionModule` | Bir SAP tablosundan veri okumak için kullanılabilen özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alındığını tanımlamak ve Data Factory ' a geri dönmek için özel bir RFC işlevi modülü kullanabilirsiniz. Özel işlev modülünün `/SAPDS/RFC_READ_TABLE2` , Data Factory tarafından kullanılan varsayılan arabirim olan öğesine benzer bir arabirimi (içeri aktarma, dışarı aktarma, tablolar) uygulanmış olması gerekir.<br>Data Factory | No       |
 | `partitionOption`                  | Bir SAP tablosundan okunacak bölüm mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt`(gibi, sol tarafta sıfır dolgusu olan normal tamsayı veya tamsayı değerleri `0000012345` )</li><li>`PartitionOnCalendarYear`("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth`("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate`("YYYYMMDD" biçiminde 8 basamak)</li></ul> | No       |
 | `partitionColumnName`              | Verileri bölümlemek için kullanılan sütunun adı.                | No       |
 | `partitionUpperBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en büyük değeri `partitionColumnName` . | No       |
 | `partitionLowerBound`              | Bölümlendirmeye devam etmek için, içinde belirtilen sütunun en küçük değeri `partitionColumnName` . (Note: `partitionLowerBound` bölüm seçeneği olduğunda "0" olamaz `PartitionOnInt` ) | No       |
 | `maxPartitionsNumber`              | Verilerin bölüneceği en fazla bölüm sayısı.     | No       |
+| `sapDataColumnDelimiter` | Çıktı verilerini ayırmak için SAP RFC 'ye geçirilen sınırlayıcı olarak kullanılan tek karakter. | No |
 
 >[!TIP]
 >SAP tablonuzda birkaç milyar satır gibi büyük miktarda veri varsa, `partitionOption` `partitionSetting` verileri daha küçük bölümlere bölmek için ve kullanın. Bu durumda, veriler bölüm başına okunurdur ve her bir veri bölümü, tek bir RFC çağrısıyla SAP sunucusundan alınır.<br/>
@@ -235,14 +237,14 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 İçinde `rfcTableOptions` , satırları filtrelemek için aşağıdaki genel SAP sorgu işleçlerini kullanabilirsiniz:
 
-| İşleç | Description |
+| İşleç | Açıklama |
 | :------- | :------- |
 | `EQ` | Eşittir |
 | `NE` | Eşit değildir |
 | `LT` | Küçüktür |
 | `LE` | Küçük veya eşittir |
 | `GT` | Büyüktür |
-| `GE` | Büyük veya eşittir |
+| `GE` | Büyüktür veya eşittir |
 | `IN` | İtibariyle`TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | İtibariyle`LIKE 'Emma%'` |
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832577"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533130"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files için hizmet düzeyleri
 Hizmet düzeyleri, bir kapasite havuzunun özniteliğidir. Hizmet düzeyleri, birime atanan kota temelinde kapasite havuzundaki bir birim için izin verilen en yüksek aktarım hızına göre tanımlanır ve farklılaştırılır.
@@ -56,7 +56,8 @@ Yukarıdaki 2. örnekte, 100 GiB kotasının atandığı Premium Depolama katman
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Farklı hizmet düzeylerinin fiyatı için [Azure NetApp Files fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/netapp/) bakın
-- Kapasite havuzundaki kapasite tüketiminin hesaplanması için bkz. [maliyet modeli Azure NetApp Files](azure-netapp-files-cost-model.md) 
+- [Azure NetApp Files fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Azure NetApp Files için maliyet modeli](azure-netapp-files-cost-model.md) 
 - [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
-- [Azure NetApp Files için bkz. hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Azure NetApp Files için Hizmet Düzeyi Sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md) 

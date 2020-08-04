@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475762"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531328"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -39,7 +39,8 @@ NPM aracılığıyla yükler.
 npm i --save @microsoft/applicationinsights-web
 ```
 
-> *Not:* **Bu pakete dahil**edilmiştir. bu nedenle, ayrı bir typler paketi **yüklemeniz gerekmez.**
+> [!Note]
+> **Bu pakete dahil**edilmiştir, bu nedenle ayrı bir typler paketi **yüklemeniz gerekmez.**
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'

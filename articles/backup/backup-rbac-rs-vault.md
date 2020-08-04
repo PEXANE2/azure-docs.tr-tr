@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine e
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445314"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533470"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için rol tabanlı Access Control kullanma
 
@@ -28,9 +28,9 @@ Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. Azu
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Yedekleme yerleşik rollerini yedekleme yönetim eylemlerine eşleme
 
-Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yönetim eylemleri ve karşılık gelen minimum RBAC rolü yer alır.
+Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yönetimi eylemleri ve ilgili minimum Azure rolü yer alır.
 
-| Yönetim Işlemi | Minimum RBAC rolü gerekli | Kapsam gerekli |
+| Yönetim Işlemi | Gerekli en düşük Azure rolü | Kapsam gerekli |
 | --- | --- | --- |
 | Kurtarma Hizmetleri kasası oluşturma | Yedek Katılımcısı | Kasayı içeren kaynak grubu |
 | Azure VM 'lerinin yedeklenmesini etkinleştirme | Yedekleme Işletmeni | Kasayı içeren kaynak grubu |

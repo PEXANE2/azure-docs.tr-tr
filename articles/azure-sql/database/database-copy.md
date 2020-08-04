@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 968fe5a0f4999c25486189384186c23d1fcd5509
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430243"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530431"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -133,7 +133,7 @@ Veritabanınızı, T-SQL kullanarak farklı bir abonelikte bulunan bir sunucuya 
 > [!IMPORTANT]
 > Kaynaktan önemli ölçüde daha küçük bir hizmet hedefine sahip bir kopya oluşturmanız gerekiyorsa, hedef veritabanı dengeli işlem işlemini tamamlayacak yeterli kaynağa sahip olmayabilir ve kopyalama işlemi başarısız olmasına neden olabilir. Bu senaryoda, farklı bir sunucuda ve/veya farklı bir bölgede bir kopya oluşturmak için bir coğrafi geri yükleme isteği kullanın. Daha fazla bilgi için bkz. [veritabanı yedeklerini kullanarak Azure SQL veritabanını kurtarma](recovery-using-backups.md#geo-restore) .
 
-## <a name="rbac-roles-to-manage-database-copy"></a>Veritabanı kopyasını yönetmek için RBAC rolleri
+## <a name="azure-roles-to-manage-database-copy"></a>Veritabanı kopyasını yönetmek için Azure rolleri
 
 Bir veritabanı kopyası oluşturmak için aşağıdaki rollerde olması gerekir
 
@@ -155,7 +155,7 @@ Azure portal kullanarak veritabanı kopyasını yönetmek için aşağıdaki izi
 
    Microsoft. resources/abonelikleri/kaynakları/Microsoft. resources/abonelikleri/kaynakları/yaz Microsoft. resources/dağıtımlar/okuma Microsoft. resources/dağıtımlar/Write Microsoft. resources/dağıtımlar/operationdurumlar/Read
 
-Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden çok kaynak sağlayıcılarındaki işlemler altında gerçekleştirilen işlemleri görmek isterseniz, bu ek RBAC rollerinin olması gerekir:
+Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden çok kaynak sağlayıcısı arasındaki işlemleri görmek isterseniz, bu ek Azure rollerine ihtiyacınız olacaktır:
 
    Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/işlemler/okuma Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/operationdurumlarının/Read
 

@@ -3,12 +3,12 @@ title: Karma Bağlantılar için tanılama günlükleri
 description: Bu makalede, Azure Relay için kullanılabilen tüm etkinlik ve tanılama günlüklerine genel bir bakış sunulmaktadır.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314907"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533011"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay Karma Bağlantılar için tanılama günlüklerini etkinleştir
 Azure Relay Karma Bağlantılar kullanmaya başladığınızda, dinleyiclarınızın ve gönderenlerden nasıl ve ne zaman açılacağını ve Karma Bağlantılar nasıl oluşturulduğunu ve iletilerin gönderileceğini izlemek isteyebilirsiniz. Bu makalede, Azure Relay hizmeti tarafından sağlanan etkinlik ve tanılama günlüklerine bir genel bakış sunulmaktadır. 
@@ -46,18 +46,18 @@ Tanılama günlüklerini etkinleştirmek için aşağıdaki adımları uygulayı
         ![Örnek Tanılama ayarları](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin.
 
-Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama günlükleri** bölmesindeki yapılandırılan arşiv hedefinde görüntülenir. Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/diagnostic-logs-overview.md).
+Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama günlükleri** bölmesindeki yapılandırılan arşiv hedefinde görüntülenir. Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>Karma Bağlantı olayları için şema
 Karma bağlantılar olay günlüğü JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | ------- | ------- |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
 | Etkinlik kimliği | Belirtilen işlemi tanımlamak için kullanılan iç KIMLIK. "Trackingıd" olarak da bilinir |
-| Uç Nokta | Geçiş kaynağının adresi |
-| ThrottledRequests | Günlüğe kaydedilen Karma Bağlantılar işlem türü |
+| Uç Noktası | Geçiş kaynağının adresi |
+| OperationName | Günlüğe kaydedilen Karma Bağlantılar işlem türü |
 | EventTimeString | Günlük kaydının UTC zaman damgası |
 | İleti | Etkinliğin ayrıntılı iletisi |
 | Kategori | Etkinliğin kategorisi. Şu anda yalnızca vardır `HybridConnectionsEvents` . 
@@ -80,7 +80,7 @@ JSON biçiminde örnek bir karma bağlantılar olayı aşağıda verilmiştir.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Tanılama günlüklerinde yakalanan olaylar ve işlemler
 
-| Çalışma | Açıklama | 
+| İşlem | Açıklama | 
 | --------- | ----------- | 
 | AuthorizationFailed | Yetkilendirme başarısız oldu.|
 | Invalidsastoken | SAS belirteci geçersiz. | 

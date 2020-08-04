@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126780"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531380"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon uygulamasının güvenliğini sağlama
 
@@ -109,7 +109,7 @@ Azure olmayan bir ortamda Yönetilen kimlikler üzerinde çalışırken, kullan�
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Azure Maps 'a Daemon uygulaması için rol tabanlı erişim verme
 
-Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azure Maps erişim denetimi rol tanımlarına atayarak *rol tabanlı erişim denetimi* (RBAC) verirsiniz. Azure haritalar için kullanılabilen RBAC rol tanımlarını görüntülemek için **erişim denetimi (IAM)** sayfasına gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
+Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azure Maps erişim denetimi rol tanımlarına atayarak *rol tabanlı erişim denetimi* (RBAC) verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
 
 > [!div class="mx-imgBorder"]
 > ![Kullanılabilir rolleri görüntüle](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

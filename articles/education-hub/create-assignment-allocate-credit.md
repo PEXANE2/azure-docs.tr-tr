@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: e0d0804ce1f43d246dc4e87e222cbfbaf7db58aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102294"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534099"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Ödev oluşturma ve kredi ayırma
 
@@ -31,7 +31,7 @@ Azure Eğitim Merkezi, _____ @ öğesinde herhangi bir e-posta adresini kabul ed
 > [!IMPORTANT]
 > İş ve okul hesapları, kuruluşun dışındaki bir etki alanından e-posta adresine izin verilip verilmeyeceğini (örneğin, etki alanına ekleme) dahil olmak üzere kendi ilkelerine tabidir student2@outlook.com @school.edu . Yeni Kullanıcı eklemeden önce bu ilkeleri denetlediğinizden emin olun.
 
-Bir iş veya okul hesabı (örneğin,), student1@school.edu eğitimci portalı veya [Azure Portal](https://portal.azure.com)rol tabanlı ERIŞIM denetimi (RBAC) olarak eklendiğinde, Azure alıcıya otomatik olarak e-posta gönderir. Bu e-posta, kullanıcının aboneliğe erişim almadan önce yeni hesabı ve RBAC rolünü kabul etmesini gerektirir. Kurs öğretimi Yardımcısı (TA) veya Mesleme yapıyorsanız, aboneliğin Azure portal beklendiği gibi görüntüleyeceği şekilde bu şekilde öğrenci 'yi bilgilendirdiğinizden emin olun. E-posta şuna benzer olmalıdır:
+Bir iş veya okul hesabı (örneğin,), student1@school.edu eğitimci portalı veya [Azure Portal](https://portal.azure.com)rol tabanlı ERIŞIM denetimi (RBAC) olarak eklendiğinde, Azure alıcıya otomatik olarak e-posta gönderir. Bu e-posta, kullanıcının aboneliğe erişim almadan önce yeni hesabı ve Azure rolünü kabul etmesini gerektirir. Kurs öğretimi Yardımcısı (TA) veya Mesleme yapıyorsanız, aboneliğin Azure portal beklendiği gibi görüntüleyeceği şekilde bu şekilde öğrenci 'yi bilgilendirdiğinizden emin olun. E-posta şuna benzer olmalıdır:
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory kullanmaya başlayın" border="false":::
 

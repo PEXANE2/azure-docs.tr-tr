@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 8e56c4da0eec3338de7863a2ee158e804cf406c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325568"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533283"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Izleyici 'de roller, izinler ve güvenlik
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Birçok ekibin izleme verilerine ve ayarlarına erişimi kesinlikle daha fazla düzenleyen olması gerekir. Örneğin, özellikle izleme üzerinde (destek mühendisleri, DevOps mühendisleri) çalışan ekip üyeleriniz varsa veya yönetilen hizmet sağlayıcısı kullanıyorsanız, bu kullanıcılara yalnızca izleme verilerine erişim vermek isteyebilirsiniz, bu da kaynakları oluşturma, değiştirme veya silme imkanlarını kısıtlamakla sınırlayabilirsiniz. Bu makalede, yerleşik izleme RBAC rolünü Azure 'da bir kullanıcıya hızlı bir şekilde uygulama veya sınırlı izleme izinleri olan bir kullanıcı için kendi özel rolünüzü oluşturma işlemlerinin nasıl yapılacağı gösterilir. Daha sonra, Azure monitörünüzle ilgili kaynaklarınız için güvenlik konuları ve içerdikleri verilere erişimi nasıl sınırlayabileceğinizi anlatmaktadır.
+Birçok ekibin izleme verilerine ve ayarlarına erişimi kesinlikle daha fazla düzenleyen olması gerekir. Örneğin, özellikle izleme üzerinde (destek mühendisleri, DevOps mühendisleri) çalışan ekip üyeleriniz varsa veya yönetilen hizmet sağlayıcısı kullanıyorsanız, bu kullanıcılara yalnızca izleme verilerine erişim vermek isteyebilirsiniz, bu da kaynakları oluşturma, değiştirme veya silme imkanlarını kısıtlamakla sınırlayabilirsiniz. Bu makalede, Azure 'daki bir kullanıcıya kolayca yerleşik bir izleme Azure rolü uygulama veya sınırlı izleme izinleri olan bir kullanıcı için kendi özel rolünüzü oluşturma işlemlerinin nasıl yapılacağı gösterilir. Daha sonra, Azure monitörünüzle ilgili kaynaklarınız için güvenlik konuları ve içerdikleri verilere erişimi nasıl sınırlayabileceğinizi anlatmaktadır.
 
 ## <a name="built-in-monitoring-roles"></a>Yerleşik izleme rolleri
 Azure Izleyici 'nin yerleşik rolleri, bir abonelikteki kaynaklarla erişimi sınırlamaya yardımcı olmak üzere tasarlanmıştır. bu sayede, altyapının ihtiyaç duydukları verileri elde etmek ve yapılandırmak üzere izleme için sorumlu olmaya devam ediyor. Azure Izleyici, iki kullanıma hazır rol sağlar: Izleme okuyucu ve Izleme katılımcısı.
