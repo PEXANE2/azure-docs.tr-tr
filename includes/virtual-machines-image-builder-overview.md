@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83821512"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545318"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -41,7 +41,7 @@ Azure görüntü Oluşturucu hizmeti bu bölgelerde önizleme için kullanılabi
 - Batı ABD
 - Batı ABD 2
 - Kuzey Avrupa
-- Batı Avrupa
+- West Europe
 
 ## <a name="os-support"></a>İşletim sistemi desteği
 AıB, Azure Marketi temel işletim sistemi görüntülerini destekleyecektir:
@@ -97,6 +97,9 @@ Görüntü oluşturma işlemi sırasında dosyalar indirilir ve kaynak grubunda 
 Image Builder, VM için gereken bir D1v2 VM boyutu, depolama alanı ve ağ kullanarak bir VM oluşturur. Bu kaynaklar, derleme işleminin süresi boyunca son verilecek ve görüntü Oluşturucu görüntüyü oluşturmayı tamamladığında silinir. 
  
 Azure Image Builder, görüntüyü seçtiğiniz bölgelere dağıtır ve bu da ağ çıkış ücretleri doğuracaktır.
+
+## <a name="hyper-v-generation"></a>Hyper V oluşturma
+Şu anda bulunan görüntü Oluşturucu, Hyper V nesil 1 görüntülerini ve VM 'Leri destekler.
  
 ## <a name="next-steps"></a>Sonraki adımlar 
  

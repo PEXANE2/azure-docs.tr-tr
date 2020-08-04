@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091955"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544022"
 ---
 # <a name="streaming-policies"></a>Akış İlkeleri
 
@@ -40,7 +40,7 @@ Aşağıdaki "karar ağacı" senaryonuz için önceden tanımlanmış bir akış
 
 Resmi tam boyutlu görüntülemek için tıklayın.  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![Senaryonuz için önceden tanımlanmış bir akış Ilkesi seçmenize yardımcı olmak üzere tasarlanan bir karar ağacının gösterildiği diyagram.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 İçeriğinizi şifreliyorsanız bir [Içerik anahtarı ilkesi](content-key-policy-concept.md)oluşturmanız gerekir, **içerik anahtarı ilkesi** açık akış veya indirme için gerekli değildir. 
 

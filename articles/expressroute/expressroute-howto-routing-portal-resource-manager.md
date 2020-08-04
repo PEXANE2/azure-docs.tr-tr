@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: 1e3d855d0860d8d9875e4a93091653cab18965f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcbe2bd038a3e27df86b281c51cf0a151c5b5af
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738541"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542917"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Bir ExpressRoute bağlantı hattı için eşlemeyi oluşturma ve değiştirme
 
 Bu makale, Azure portal kullanarak bir Azure Resource Manager (ARM) ExpressRoute devresi için Yönlendirme yapılandırması oluşturmanıza ve yönetmenize yardımcı olur. Ayrıca, bir ExpressRoute bağlantı hattı için durum, güncelleştirme veya silme ve yinelenenleri kaldırma ve sağlama ayarlarını da denetleyebilirsiniz. Devrenize çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçin:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Ortak eşleme](about-public-peering.md)
@@ -60,11 +60,13 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Microsoft eşleme yapıland
 
    **Devre dışı sağlayıcı durumu: sağlanmadı**
 
-    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Provider status: Not provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![ExpressRoute tanıtım devresi için genel bakış sayfasını gösteren ekran görüntüsü, "sağlanmadı" olarak ayarlanan sağlayıcı durumunu vurgulamaya yönelik kırmızı bir kutu.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+
 
    **Devre dışı sağlayıcı durumu: sağlandı**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Provider status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [!["Sağlandı" olarak ayarlanan sağlayıcı durumunu vurgulamakta olan ExpressRoute tanıtım devresi için genel bakış sayfasını gösteren ekran görüntüsü.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+
 2. Bağlantı hattı için Microsoft eşlemesini yapılandırın. Devam etmeden önce aşağıdaki bilgilere sahip olduğunuzdan emin olun.
 
    * Birincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır. Bu alt ağdan, Microsoft 'un yönlendiricisi için kullanılan ikinci IP adresini kullandığından, ilk yapılandırılmış IP adresini yönlendiricinize atayacaksınız.
@@ -125,11 +127,11 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
 
    **Devre dışı sağlayıcı durumu: sağlanmadı**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Provider status = Not Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+   [![ExpressRoute tanıtım devresi için genel bakış sayfasını gösteren ekran görüntüsü, "sağlanmadı" olarak ayarlanan sağlayıcı durumunu vurgulamaya yönelik kırmızı bir kutu.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
 
    **Devre dışı sağlayıcı durumu: sağlandı**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Provider Status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+   [!["Sağlandı" olarak ayarlanan sağlayıcı durumunu vurgulamakta olan ExpressRoute tanıtım devresi için genel bakış sayfasını gösteren ekran görüntüsü.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
 
 2. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlara devam etmeden önce aşağıdaki öğelerin bulunduğundan emin olun:
 

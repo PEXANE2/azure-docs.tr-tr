@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045308"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543767"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu makalede, *Azure hizmetlerinin* sunucuda *devre dışı* olarak AYARLANDıĞ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-the-azure-virtual-machine"></a>Azure sanal makinesini oluşturma
 
@@ -34,9 +34,7 @@ Bu makalede, *Azure hizmetlerinin* sunucuda *devre dışı* olarak AYARLANDıĞ�
 Bu şablon, en son düzeltme eki uygulanan sürümü kullanarak, Windows sürümü için birkaç farklı seçenek kullanarak basit bir Windows sanal makinesini dağıtmanıza olanak tanır. Bu, kaynak grubu konumunda bir a2 boyutlu VM dağıtır ve sanal makinenin tam etki alanı adını döndürür.
 <br><br>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 Daha fazla bilgi için bkz. [WINDOWS VM 'Nin çok basit dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows).
 
@@ -54,7 +52,7 @@ Aşağıdaki adımlarda, Uzak Masaüstü bağlantısı kullanarak sanal makineni
 
    ![RDP formu](./media/database-import-export-azure-services-off/rdp.png)  
 
-3. **RDP dosyasını indir**' i seçin.
+3. **RDP Dosyasını İndir**’i seçin.
 
    > [!NOTE]
    > Sanal makinenize bağlanmak için SSH de kullanabilirsiniz.

@@ -1,6 +1,6 @@
 ---
 title: Azure operasyonel güvenliğe genel bakış | Microsoft Docs
-description: Bu makalede, Azure operasyonel güvenliğe genel bakış sunulmaktadır.
+description: Bu genel bakışta Azure operasyonel güvenlik hakkında bilgi edinin. İşlemsel güvenlik, varlık koruma hizmetleri, denetimler ve Özellikler anlamına gelir.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50fb9c597a74a7aa08dfc3d8b7acd9b94760a9df
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674236"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542900"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -64,7 +64,7 @@ Daha fazla bilgi için [Azure Backup bileşenleri tablosuna](/azure/backup/backu
 
 Azure AD, aşağıdakiler dahil olmak üzere tam [kimlik yönetimi özellikleri](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)paketini de içerir:
 
-- [Multi-factor authentication](/azure/multi-factor-authentication/multi-factor-authentication)
+- [Çok faktörlü kimlik doğrulaması](/azure/multi-factor-authentication/multi-factor-authentication)
 - [Self servis parola yönetimi](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self servis grup yönetimi](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Ayrıcalıklı hesap yönetimi](/azure/active-directory/active-directory-privileged-identity-management-configure)

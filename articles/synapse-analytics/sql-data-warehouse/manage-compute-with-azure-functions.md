@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9d680283250cc323c833f388f6b20d7fe6fa132d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211060"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543665"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 
@@ -38,9 +38,7 @@ Azure İşlev Uygulaması 'yi SQL havuzuyla kullanabilmek için, SQL havuzu örn
 
 Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 Şablonu dağıttıktan sonra, üç yeni kaynak bulmanız gerekir: ücretsiz bir Azure App Service planı, tüketim tabanlı bir İşlev Uygulaması planı ve günlüğü ve işlemler kuyruğunu işleyen bir depolama hesabı. Dağıtılan işlevlerin gereksinimlerinize uyacak şekilde nasıl değiştirileceğini görmek için okumaya devam edin.
 
@@ -141,7 +139,7 @@ Bu bölüm, duraklatma, devam etmeyi ve ölçeklendirme özelliklerini daha karm
 
 Gündelik olarak 08:00'da DW600'a ölçeği artırma ve 20:00'da DW200'e ölçeği azaltma.
 
-| İşlev  | Zamanla     | Çalışma                                |
+| İşlev  | Zamanla     | İşlem                                |
 | :-------- | :----------- | :--------------------------------------- |
 | İşlev1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | İşlev2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +148,7 @@ Gündelik olarak 08:00'da DW600'a ölçeği artırma ve 20:00'da DW200'e ölçe�
 
 Günlük ölçeği, 10:00 ' da DW1000 ' ye kadar bir kez ölçeklendirin, 4pm 'de DW600.
 
-| İşlev  | Zamanla     | Çalışma                                |
+| İşlev  | Zamanla     | İşlem                                |
 | :-------- | :----------- | :--------------------------------------- |
 | İşlev1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | İşlev2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +158,7 @@ Günlük ölçeği, 10:00 ' da DW1000 ' ye kadar bir kez ölçeklendirin, 4pm 'd
 
 Hafta içi günlerinde 08:00'da DW1000'e ölçeği artırma ve 16:00'da bir kez DW600'e ölçeği azaltma. Cuma 23:00'da duraklatılır, Pazartesi sabahı 07:00'da sürdürülür.
 
-| İşlev  | Zamanla       | Çalışma                                |
+| İşlev  | Zamanla       | İşlem                                |
 | :-------- | :------------- | :--------------------------------------- |
 | İşlev1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | İşlev2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077945"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543478"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -66,7 +66,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**MariaDB için Azure Veritabanı** | Microsoft. Dbformarıdb/sunucular    | mariadbServer |
 |**Azure IoT Hub** | Microsoft. Devices/IotHubs    | ıothub |
 |**Azure Key Vault** | Microsoft. Keykasası/kasa    | kasa |
-|**Azure Kubernetes hizmeti-Kubernetes API 'SI** | Microsoft. ContainerService/Managedkümeler    | managedCluster |
+|**Azure Kubernetes hizmeti-Kubernetes API 'SI** | Microsoft. ContainerService/Managedkümeler    | yönetim |
 |**Azure Search** | Microsoft. Search/searchService| searchService|  
 |**Azure Container Registry** | Microsoft. ContainerRegistry/kayıt defterleri    | registry |
 |**Azure Uygulama Yapılandırması** | Microsoft. Appconfiguration/Configurationmağazaları    | Configurationmağazaların |

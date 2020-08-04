@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 45a8a2e4df35b0ddbf3fe3e42308a3361e1c912e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c15883f4e2a515e8c6015a39951a8729cf77274
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000151"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544005"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST kullanarak isteğe bağlı içerik sunmaya başlayın  
 
@@ -34,7 +34,7 @@ Aşağıdaki resimde Media Services OData modeliyle VoD uygulamaları geliştiri
 
 Resmi tam boyutlu görüntülemek için tıklayın.  
 
-<a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
+[![Isteğe bağlı uygulamalar üzerinde video geliştirmek için Azure Media Services nesne veri modelinde en yaygın olarak kullanılan nesnelerden bazılarını gösteren diyagram.](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
 ## <a name="prerequisites"></a>Önkoşullar
 REST API 'Leri ile Media Services geliştirmeye başlamak için aşağıdaki Önkoşullar gereklidir.
@@ -484,7 +484,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 }
 ```
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 Her Işin, gerçekleştirmek istediğiniz işleme türüne bağlı olarak bir veya daha fazla görevi olabilir. REST API aracılığıyla Işleri ve bunlarla ilgili görevleri iki şekilde oluşturabilirsiniz: görevler, Iş varlıklarındaki görevler gezintisi özelliği aracılığıyla veya OData toplu işleme aracılığıyla satır içi olarak tanımlanabilir. Media Services SDK toplu işlemeyi kullanır. Ancak, bu makaledeki kod örneklerinin okunabilirliğini için görevler satır içi olarak tanımlanmıştır. Toplu işleme hakkında daha fazla bilgi için bkz. [Açık Veri Protokolü (OData) toplu işleme](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Aşağıdaki örnek, belirli bir çözünürlükte ve kalitede video kodlamak için bir görev ayarlama ile bir Işi nasıl oluşturup nakledeceğiniz gösterilmektedir. Aşağıdaki belgeler bölümü, Media Encoder Standard işlemcisi tarafından desteklenen tüm [görev önayarlarının](/azure/media-services/previous/media-services-mes-presets-overview) listesini içerir.  
@@ -972,5 +972,5 @@ Aşamalı indirmeyi test etmek için bir tarayıcıya URL (örneğin, IE, Chrome
 ## <a name="next-steps-media-services-learning-paths"></a>Sonraki Adımlar: Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

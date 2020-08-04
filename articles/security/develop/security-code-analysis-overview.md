@@ -1,6 +1,6 @@
 ---
 title: Microsoft Güvenlik kodu çözümleme belgelerine genel bakış
-description: Bu makale, Microsoft Güvenlik kodu analiz uzantısı 'na genel bakış
+description: Microsoft Güvenlik kodu analiz uzantısı hakkında bilgi edinin. Bu uzantıyla, Azure DevOps CI/ID işlem hattına güvenlik kodu analizi ekleyebilirsiniz.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361328"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543019"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Güvenlik kodu analizi hakkında
 

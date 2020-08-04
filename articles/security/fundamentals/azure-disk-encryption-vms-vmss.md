@@ -1,20 +1,20 @@
 ---
-title: Sanal makineler ve sanal makine ölçek kümeleri için Azure disk şifrelemesi
-description: Bu makalede, Azure disk şifrelemesi 'ne genel bakış sunulmaktadır
+title: Sanal makineler ve sanal makine ölçek kümeleri için Azure Disk Şifrelemesi
+description: Sanal makineler (VM) ve VM Ölçek Kümeleri için Azure disk şifrelemesi hakkında bilgi edinin. Azure disk şifrelemesi hem Linux hem de Windows VM 'Leri için geçerlidir.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062117"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543682"
 ---
-# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Sanal makineler ve sanal makine ölçek kümeleri için Azure disk şifrelemesi
+# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Sanal makineler ve sanal makine ölçek kümeleri için Azure Disk Şifrelemesi
 
 Azure disk şifrelemesi hem Linux hem de Windows sanal makinelerine ve sanal makine ölçek kümelerine uygulanabilir. 
 
@@ -25,7 +25,7 @@ Aşağıdaki makalelerde Linux sanal makinelerini şifrelemek için rehberlik sa
 ### <a name="current-version-of-azure-disk-encryption"></a>Azure disk şifrelemesi 'nin geçerli sürümü
 
 - [Linux sanal makineleri için Azure Disk Şifrelemesi'ne genel bakış](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Linux VM'lerinde Azure Disk Şifrelemesi senaryoları](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Linux VM’lerde Azure Disk Şifrelemesi senaryoları](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Azure CLI ile Linux VM oluşturma ve şifreleme](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Azure PowerShell ile Linux VM oluşturma ve şifreleme](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Azure portalı ile Linux VM oluşturma ve şifreleme](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
@@ -77,6 +77,6 @@ Aşağıdaki makaleler, sanal makine ölçek kümelerini şifrelemek için rehbe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure şifrelemeye genel bakış](encryption-overview.md)
+- [Azure'da şifrelemeye genel bakış](encryption-overview.md)
 - [Bekleme sırasında veri şifrelemesi](encryption-atrest.md)
 - [Veri güvenliği ve şifreleme için en iyi uygulamalar](data-encryption-best-practices.md)

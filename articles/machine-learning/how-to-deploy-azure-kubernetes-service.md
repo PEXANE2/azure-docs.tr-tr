@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bc53a243a58522a76be63536aa721f269ed4759a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433225"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544056"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 >
 > Ayrıca, Azure Machine Learning- [Yerel not defterine dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) ' ya başvurabilirsiniz
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -65,7 +65,7 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 
 - Temel Load Balancer (BLB) yerine kümenizde dağıtılan bir Standart Load Balancer (SLB) varsa, lütfen AKS portalında/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına ekleyin.
 
-- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML CONTOL düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Için de [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın.
+- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML DENETIM düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Için de [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın.
 
 __Authpolanmış IP aralıkları yalnızca Standart Load Balancer ile kullanılabilir.__
  
@@ -423,15 +423,12 @@ print(token)
 >
 > Bir belirteci almak için Azure Machine Learning SDK veya [az ml Service Get-Access-Token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) komutunu kullanmanız gerekir.
 
-## <a name="update-the-web-service"></a>Web hizmetini güncelleştirme
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bir sanal ağda güvenli deneme ve çıkarım](how-to-enable-virtual-network.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
+* [Web hizmetini Güncelleştir](how-to-deploy-update-web-service.md)
 * [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)

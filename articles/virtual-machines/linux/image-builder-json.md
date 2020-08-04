@@ -3,17 +3,17 @@ title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283308"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543614"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -142,12 +142,13 @@ Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullana
 
 ## <a name="properties-source"></a>Özellikler: kaynak
 
-`source`Bölümü, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir.
+Image Builder Şu anda yalnızca HyperV oluşturma 1 görüntülerini ve VM 'Leri destekliyor, `source` bölüm, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir.
 
 API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerektirir; şu anda üç tür vardır:
 - Platformımage-kaynak görüntünün Market görüntüsü olduğunu gösterdi.
 - Managedımage-normal yönetilen görüntüden itibaren bunu kullanın.
 - Parça sürümü-bu, paylaşılan bir görüntü galerisinde kaynak olarak bir görüntü sürümü kullanırken kullanılır.
+
 
 > [!NOTE]
 > Var olan Windows özel görüntülerini kullanırken, Sysprep komutunu tek bir Windows görüntüsünde 8 kez çalıştırabilirsiniz. daha fazla bilgi için [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) belgelerine bakın.
@@ -191,7 +192,10 @@ Plan bilgilerini de belirtebilirsiniz, örneğin:
 ```
 ### <a name="managedimage-source"></a>Managedımage kaynağı
 
-Kaynak görüntüyü genelleştirilmiş bir VHD veya VM 'nin mevcut bir yönetilen görüntüsü olarak ayarlar. Kaynak yönetilen görüntü desteklenen bir işletim sistemi olmalıdır ve Azure Image Builder şablonunuz ile aynı bölgede olmalıdır. 
+Kaynak görüntüyü genelleştirilmiş bir VHD veya VM 'nin mevcut bir yönetilen görüntüsü olarak ayarlar.
+
+> [!NOTE]
+> Kaynak yönetilen görüntü desteklenen bir işletim sistemi olmalıdır ve görüntünün Azure Image Builder şablonunuz ile aynı bölgeye sahip olması gerekir. 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ Kaynak görüntüyü genelleştirilmiş bir VHD veya VM 'nin mevcut bir yönetil
 
 
 ### <a name="sharedimageversion-source"></a>Parça sürümü kaynağı
-Kaynak görüntüyü paylaşılan görüntü galerisinde var olan bir görüntü sürümü olarak ayarlar. Görüntü sürümü desteklenen bir işletim sistemi olmalıdır ve görüntünün Azure Image Builder şablonunuz ile aynı bölgeye çoğaltılması gerekir. 
+Kaynak görüntüyü paylaşılan görüntü galerisinde var olan bir görüntü sürümü olarak ayarlar.
+
+> [!NOTE]
+> Kaynak yönetilen görüntü desteklenen bir işletim sistemi olmalıdır ve görüntünün Azure Image Builder şablonunuz ile aynı bölgeye sahip olması gerekir, aksi takdirde görüntü sürümünü görüntü Oluşturucu şablon bölgesine çoğaltın.
+
 
 ```json
         "source": { 

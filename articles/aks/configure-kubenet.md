@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255447"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543376"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -47,6 +47,17 @@ Birçok ortamda, ayrılmış IP adresi aralıklarına sahip sanal ağları ve al
 Azure, bir UDR 'de en fazla 400 yolu destekler, bu nedenle 400 düğümden daha büyük bir AKS kümeniz olamaz. Aks [sanal düğümleri][virtual-nodes] ve Azure ağ ilkeleri, *Kubernetes kullanan*ile desteklenmez.  [Calıco ağ ilkelerini][calico-network-policies], kubenet ile desteklendiği için kullanabilirsiniz.
 
 *Azure CNI*ile her Pod, IP alt ağında bir IP adresi alır ve diğer Pod ve hizmetlerle doğrudan iletişim kurabilir. Kümeleriniz, belirttiğiniz IP adresi aralığı kadar büyük olabilir. Bununla birlikte, IP adresi aralığı önceden planlanmalıdır ve tüm IP adresleri AKS düğümleri tarafından destekleyeceği maksimum düğüm sayısına göre tüketilir. *Azure CNI*Ile [sanal düğümler][virtual-nodes] veya ağ ilkeleri (Azure ya da calıco) gibi gelişmiş ağ özellikleri ve senaryolar desteklenir.
+
+### <a name="limitations--considerations-for-kubenet"></a>Kubernetes kullanan için sınırlamalar & konuları
+
+* Kubenet tasarımında, Pod iletişimine küçük gecikme süresi ekleyen ek bir atlama gerekir.
+* Rota tabloları ve Kullanıcı tanımlı yollar, işlemlere karmaşıklık ekleyen kubenet kullanımı için gereklidir.
+* Kubernetes kullanan tasarımı nedeniyle, Kubernetes kullanan için doğrudan Pod adresleme desteklenmez.
+* Azure CNı kümelerinin aksine, birden fazla Kubernetes kullanan kümesi bir alt ağ paylaşamaz.
+* **Kubernetes kullanan üzerinde desteklenmeyen** özellikler şunlardır:
+   * [Azure ağ ilkeleri](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), ancak calıco ağ ilkeleri Kubernetes kullanan üzerinde destekleniyor
+   * [Windows düğüm havuzları](windows-node-limitations.md)
+   * [Sanal düğümler eklentisi](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP adresi kullanılabilirliği ve tükenmesi
 

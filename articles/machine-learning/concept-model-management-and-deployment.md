@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82929766"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543393"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -74,7 +74,7 @@ Daha fazla bilgi için, [modelleri dağıtma](how-to-deploy-and-where.md#registe
 ### <a name="profile-models"></a>Profil modelleri
 
 Azure Machine Learning, modelinizi dağıtırken oluşturulacak hizmetin CPU ve bellek gereksinimlerini anlamanıza yardımcı olabilir. Profil oluşturma, modelinizi çalıştıran hizmeti sınar ve CPU kullanımı, bellek kullanımı ve yanıt gecikme süresi gibi bilgileri döndürür. Ayrıca, kaynak kullanımına bağlı olarak bir CPU ve bellek önerisi sağlar.
-Daha fazla bilgi için bkz. [dağıtım modellerinin](how-to-deploy-and-where.md#profilemodel)profil oluşturma bölümü.
+Daha fazla bilgi için bkz. [dağıtım modellerinin](how-to-deploy-profile-model.md)profil oluşturma bölümü.
 
 ### <a name="package-and-debug-models"></a>Paket ve hata ayıklama modelleri
 
@@ -94,16 +94,16 @@ Azure Machine Learning ile ONNX hakkında daha fazla bilgi için bkz. [ml modell
 
 Eğitilen makine öğrenimi modelleri, bulutta veya yerel olarak Web Hizmetleri olarak dağıtılır. Modelleri, Azure IoT Edge cihazlara de dağıtabilirsiniz. Dağıtımlar, Inor sınırlaması için CPU, GPU veya alan programlanabilir geçit dizileri (FPGA) kullanır. Ayrıca, Power BI modelleri de kullanabilirsiniz.
 
-Bir modeli Web hizmeti veya IoT Edge cihaz olarak kullanırken, aşağıdaki öğeleri sağlarsınız:
+Modeli bir web hizmeti veya IoT Edge cihazı olarak kullanırken şu öğeleri sağlarsınız:
 
 * Hizmete/cihaza gönderilen verileri almak için kullanılan model (ler).
 * Giriş betiği. Bu betik istekleri kabul eder, verileri öğrenmek için modeli kullanır ve bir yanıt döndürür.
 * Model ve giriş betiği için gereken PIP ve Conda bağımlılıklarını açıklayan bir Azure Machine Learning ortamı.
 * Model ve giriş betiği için gereken metin, veri vb. gibi diğer varlıklar.
 
-Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. Örneğin, sanal makine aile türü, kullanılabilir bellek ve Azure Kubernetes hizmetine dağıtım yaparken çekirdek sayısı.
+Ayrıca hedef dağıtım platformunun yapılandırmasını da sağlarsınız. Örneğin, sanal makine aile türü, kullanılabilir bellek ve Azure Kubernetes hizmetine dağıtım yaparken çekirdek sayısı.
 
-Görüntü oluşturulduğunda, Azure Machine Learning için gereken bileşenler de eklenir. Örneğin, Web hizmetini çalıştırmak ve IoT Edge etkileşimde bulunmak için gereken varlıklar.
+Görüntü oluşturulduğunda Azure Machine Learning’e gereken bileşenler de eklenir. Örneğin, web hizmetinin çalıştırılması ve IoT Edge ile etkileşim kurması için gereken varlıklar.
 
 #### <a name="batch-scoring"></a>Batch puanlama
 Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](how-to-use-parallel-run-step.md).

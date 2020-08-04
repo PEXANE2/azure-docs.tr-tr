@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421748"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543461"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell & kısıtlamaları sorunlarını giderme
 
@@ -151,7 +151,8 @@ Kişisel verilerinizi önemli ölçüde Azure Cloud Shell, Azure Cloud Shell hiz
 ### <a name="export"></a>Dışarı Aktarma
 Kullanıcı ayarlarını **dışarı aktarmak** için, tercih edilen kabuk, yazı tipi boyutu ve yazı tipi türü gibi Cloud Shell kaydeder ve aşağıdaki komutları çalıştırın.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Başlatma Azure Cloud Shell etiketli bir düğmeyi gösteren resim.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Bash veya PowerShell 'de aşağıdaki komutları çalıştırın:
 
 Bash
@@ -174,7 +175,8 @@ Kullanıcı ayarlarınızı **silmek** için Cloud Shell tercih edilen kabuk, ya
 >[!Note]
 > Kullanıcı ayarlarınızı silerseniz, gerçek Azure dosyaları paylaşma silinmez. Bu eylemi gerçekleştirmek için Azure dosyalarınıza gidin.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Başlatma Azure Cloud Shell etiketli bir düğmeyi gösteren resim.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Bash veya PowerShell 'de aşağıdaki komutları çalıştırın:
 
 Bash

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544374"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545135"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 kimliğe erişim izinleri atama
 
@@ -28,7 +28,7 @@ Kullanıcılara paylaşma düzeyi izinleri vermek için üç Azure yerleşik rol
 > [!IMPORTANT]
 > Bir dosyanın sahipliğini alma özelliği de dahil olmak üzere bir dosya paylaşımının tam yönetim denetimi, depolama hesabı anahtarının kullanılmasını gerektirir. Yönetim denetimi, Azure AD kimlik bilgileriyle desteklenmez.
 
-Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz. Paylaşma düzeyi RBAC rol atamasının etkili bir zaman sürebildiği farkında olun. 
+Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz. Paylaşılan düzeyi Azure rolü atamasının etkili bir zaman alabilir olduğunu unutmayın. 
 
 > [!NOTE]
 > Şirket içi AD DS kimlik doğrulaması için kullanmayı planlıyorsanız [AD DS kimlik bilgilerinizi Azure AD 'ye eşitlemeyi](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) unutmayın. AD DS 'den Azure AD 'ye Parola karması eşitlemesi isteğe bağlıdır. Paylaşma düzeyi izni, şirket içi AD DS eşitlenmiş Azure AD kimliğine verilecek.
@@ -36,7 +36,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kull
 Genel öneri, bir Kullanıcı ve kimlik grubunu temsil eden bir AD grubuna yüksek düzeyde erişim yönetimi için paylaşma düzeyi iznini kullanmak ve ardından dizin/dosya düzeyinde ayrıntılı erişim denetimi için NTFS izinlerinden faydalanır. 
 
 #### <a name="azure-portal"></a>Azure portal
-[Azure Portal](https://portal.azure.com)kullanarak BIR Azure AD kimliğine RBAC rolü atamak için aşağıdaki adımları izleyin:
+Azure AD kimliğine [Azure Portal](https://portal.azure.com)kullanarak bir Azure rolü atamak için aşağıdaki adımları izleyin:
 
 1. Azure portal dosya paylaşımınıza gidin veya [bir dosya paylaşma oluşturun](../articles/storage/files/storage-how-to-create-file-share.md).
 2. **Access Control (IAM)** seçeneğini belirleyin.
@@ -46,7 +46,7 @@ Genel öneri, bir Kullanıcı ve kimlik grubunu temsil eden bir AD grubuna yüks
 
 #### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure AD kimliğine RBAC rolü atamayı göstermektedir. PowerShell ile RBAC rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../articles/role-based-access-control/role-assignments-powershell.md).
+Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağını göstermektedir. PowerShell ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../articles/role-based-access-control/role-assignments-powershell.md).
 
 Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>CLI
   
-Aşağıdaki CLı 2,0 komutunda, oturum açma adına göre bir Azure AD kimliğine RBAC rolü atama gösterilmektedir. Azure CLı ile RBAC rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../articles/role-based-access-control/role-assignments-cli.md). 
+Aşağıdaki CLı 2,0 komutunda, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağı gösterilmektedir. Azure CLı ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../articles/role-based-access-control/role-assignments-cli.md). 
 
 Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
@@ -130,7 +130,7 @@ NTFS izinlerini ve desteklenen farklı türlerdeki izinleri ayarlamak için ıac
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 etki alanına katılmış bir VM 'den bir dosya paylaşma bağlama
 
-Aşağıdaki işlem, dosya paylaşımınızın ve erişim izninizin doğru ayarlandığını ve bir Azure dosya paylaşımının etki alanına katılmış bir VM 'den erişebileceğini doğrular. Paylaşma düzeyi RBAC rol atamasının etkili bir zaman sürebildiği farkında olun. 
+Aşağıdaki işlem, dosya paylaşımınızın ve erişim izninizin doğru ayarlandığını ve bir Azure dosya paylaşımının etki alanına katılmış bir VM 'den erişebileceğini doğrular. Paylaşılan düzeyi Azure rolü atamasının etkili bir zaman alabilir olduğunu unutmayın. 
 
 Aşağıdaki görüntüde gösterildiği gibi, izin verdiğiniz Azure AD kimliğini kullanarak VM 'de oturum açın. Azure dosyaları için şirket içi AD DS kimlik doğrulamasını etkinleştirdiyseniz, AD DS kimlik bilgilerinizi kullanın. Azure AD DS kimlik doğrulaması için Azure AD kimlik bilgileriyle oturum açın.
 

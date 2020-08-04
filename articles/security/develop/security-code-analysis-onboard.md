@@ -1,6 +1,6 @@
 ---
 title: Microsoft Güvenlik kodu analizi ekleme Kılavuzu
-description: Bu makalede, Microsoft Güvenlik kodu çözümleme uzantısı 'nı yükleme açıklanmaktadır
+description: Microsoft Güvenlik kodu çözümleme uzantısı 'nı ekleme ve yüklemeyi öğrenin. Önkoşulları inceleyin ve ek kaynakları görüntüleyin.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323596"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543036"
 ---
 # <a name="onboarding-and-installing"></a>Ekleme ve yükleme
 
@@ -78,7 +78,7 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
    - Yeni işlem hattı: **Yeni** ' yi seçin ve yeni bir işlem hattı oluşturmak için ayrıntılı adımları izleyin.
    - İşlem hattını Düzenle: mevcut bir işlem hattını seçin ve ardından işlem hattını düzenlemeye başlamak için **Düzenle** ' yi seçin.
 1. ' İ seçin **+** ve **Görevler Ekle** bölmesine gidin.
-1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Ekle**'yi seçin.
+1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
 1. Görev için gereken parametreleri belirtin.
 1. Yeni bir derlemeyi kuyruğa al.
    >[!NOTE]

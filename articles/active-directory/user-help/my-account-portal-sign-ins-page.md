@@ -1,5 +1,5 @@
 ---
-title: Oturum açma (Önizleme) sayfasından son oturum açma etkinliğinizi görüntüleme ve arama-Azure Active Directory | Microsoft Docs
+title: Oturum açma etkinliklerim sayfasından son oturum açma etkinliğinizi görüntüleyin ve arayın-Azure Active Directory | Microsoft Docs
 description: Son oturum açma etkinliğinizi görüntüleme ve arama konusundaki ayrıntılar, Hesabım portalının oturum açma görevlerim sayfasından yapılır.
 services: active-directory
 author: curtand
@@ -9,58 +9,64 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 738e6507a1642a1ab76938eeaf3294668bcea964
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422308"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543250"
 ---
-# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Son oturum açma etkinliğinizi, oturum açma (Önizleme) sayfasından görüntüleme ve arama
+# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Oturum açma etkinliklerim sayfasından son oturum açma etkinliğinizi görüntüleyin ve arayın
 
 En son iş veya okul hesabı oturum açma etkinliğinizi, **Hesabım** portalının My **Sign-ins** sayfasından görüntüleyebilirsiniz. Oturum açma geçmişinizi gözden geçirmek, şunları görmenizi sağlayarak olağan dışı etkinlikleri denetlemenize yardımcı olur:
 
 - Parolanızı tahmin etmeye çalışıyorsa.
-
 - Bir saldırgan hesabınızda başarıyla oturum açmışsa ve bu konumdan.
-
 - Saldırganın erişmeye çalıştığı uygulamalar.
 
 ## <a name="view-your-recent-sign-in-activity"></a>Son oturum açma etkinliğinizi görüntüleme
 
 1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin.
 
-2. Sol gezinti bölmesinden **oturum açma işlemlerini (Önizleme)** seçin veya **oturum açma (Önizleme)** bloğundan **son etkinliği gözden geçir** bağlantısını seçin.
+2. Sol gezinti bölmesinden **oturum açma** işlemlerini seçin veya **oturum kapatma** bloğundan **son etkinliği gözden geçir** bağlantısını seçin.
 
     ![Son kullanılan etkinlik bağlantılarını gösteren Hesabım sayfası](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. Her bir oturum açma öğesini genişletip gözden geçirerek her birini tanıdığınızdan emin olun. Tanıdık görünmeyen bir oturum açma öğesi bulursanız, tehlikede olduğu takdirde hesabınızı korumanıza yardımcı olması için parolanızı değiştirmenizi önemle tavsiye ederiz.
+3. Her bir oturum açma öğesini genişletip gözden geçirerek her birini tanıdığınızdan emin olun. Tanıdık olmayan bir oturum açma öğesi bulursanız, tehlikede olduğu durumlarda hesabı korumak için parolanızı değiştirin.
 
-    ![Genişletilmiş oturum açma ayrıntılarının bulunduğu son etkinlik sayfası](media/my-account-portal/my-account-portal-sign-ins-page.png)
+    ![Genişletilmiş oturum açma ayrıntılarının bulunduğu son etkinlik sayfası](media/my-account-portal-sign-ins-page/recent-activity.png)
 
 ### <a name="if-you-see-a-successful-sign-in"></a>Başarılı bir oturum açma görürseniz
 
-Kendi etkinliğinizi normal olarak tanıyabilmelisiniz. Ancak, garip bir konumdan, tarayıcıdan veya işletim sisteminden başarılı bir oturum açma bildirimi yaptıysanız, bir saldırganın hesabınıza erişim kazandığı anlamına gelebilir. Bu durumda, parolanızı hemen değiştirmenizi ve güvenlik ayarlarınızı güncelleştirmek için [güvenlik bilgisi](https://mysignins.microsoft.com/security-info) sayfasına gitmeniz önerilir.
+Bazen kendi normal oturum açma etkinliğinizi gözden geçirirken, bilmediğiniz bir konumdan, tarayıcıdan veya işletim sisteminden başarılı bir oturum açma işlemi görebilirsiniz. Bilmediğiniz oturum açma işlemleri bir saldırganın hesabınıza erişim kazandığını ifade edebilir. Yetkilendirmediğiniz etkinlikleri görürseniz, parolanızı hemen değiştirmenizi ve ardından güvenlik bilgilerini güncelleştirmek için [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) ' ne gitmeniz önerilir.
 
-Bir şeyin yanlış olduğunu belirlemediğinizden önce, yanlış pozitif bir değer görmediğinden emin olun (öğenin şüpheli olduğu, ancak sorun devam ettiği). Örneğin, IP adresinizi temel alarak yaklaşık konum ve eşlemenizi tespit ediyoruz. Mobil ağlar, bazen trafiği uzak konumlara yönlendirdiklerinden, özellikle de sabit bir şekilde kullanılır. Bu nedenle, mobil cihazınızı Washington durumunda kullanarak açtıysanız, konum California 'dan gelen oturum açma durumunu gösterebilir. Bu nedenle, yalnızca konumun ötesinde daha fazla ayrıntı denetlemeniz önemle tavsiye ederiz. Ayrıca, aynı zamanda işletim sisteminin, tarayıcının ve uygulamanın anlamlı olduğundan emin olmanız gerekir.
+Bir şeyin yanlış olduğunu belirlemediğinizden önce, yanlış pozitif bir değer görmediğinden emin olun (öğenin şüpheli olduğu, ancak sorun devam ettiği). Örneğin, IP adresinizi temel alarak yaklaşık konum ve eşlemenizi tespit ediyoruz. Mobil ağlar, bazen trafiği uzak konumlara yönlendirdiklerinden, özellikle de sabit bir şekilde kullanılır. Mobil cihazınızı Washington durumunda oturum açsanız bile, konum California 'dan gelen oturum açma durumunu gösterebilir. Yalnızca konumun ötesinde ayrıntıları denetlemeniz önemle tavsiye ederiz. Aynı işletim sisteminin, tarayıcının ve uygulamanın anlamlı olduğundan emin olun.
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Başarısız bir oturum açma görürseniz
 
-Oturum etkinliği olmadan başarısız bir oturum açma işlemi, birincil doğrulama yönteminizin (Kullanıcı adı/parola) başarısız olduğu anlamına gelir. Bu, Kullanıcı adınızı veya parolanızı yanlış yazmış olduğunuz anlamına gelir, ancak bir saldırganın parolanızı tahmin etmeye çalıştığı anlamına da gelebilir. Bir saldırganın parolanızı tahmin edemeyeceğini düşünüyorsanız parolanızı değiştirmeniz gerekmez, ancak Azure Multi-Factor Authentication (MFA) için kaydolmanızı önemle öneririz. MFA ile, korsanın parolanızı tahmin etse bile hesabınıza erişmek için yeterli olmayacaktır.
+Başarısız bir oturum açma görürseniz, kimlik bilgilerinizi yanlış yazmış olursunuz. Bu, bir saldırganın parolanızı tahmin etmeye çalıştığı anlamına da gelebilir. Bu riske yanıt vermek için parolanızı değiştirmeniz gerekmez, ancak Azure Multi-Factor Authentication (MFA) için kaydolmanızı öneririz. Multi-Factor Authentication sayesinde, korsanın parolanızı tahmin etse bile, hesaba erişmek için yeterli olmaz.
 
-Başarısız bir oturum açma görürseniz, oturum etkinliği altında, **ek doğrulama başarısız oldu, geçersiz kod**ile, birincil kimlik doğrulamanın (Kullanıcı adı/parola) başarılı olduğu ancak MFA 'nın başarısız olduğu anlamına gelir. Bu bir saldırgan ise parolanızı doğru tahmin eder ancak MFA Challenge 'ı yine de geçemeyebilir. Bu durumda, saldırgan söz konusu bölüm hakkına sahip olduğundan ve ardından güvenlik ayarlarınızı güncelleştirmek için [güvenlik bilgisi](https://mysignins.microsoft.com/security-info) sayfasına giderek parolanızı değiştirmenize devam etmenizi öneririz.
+![Başarısız oturum açma kutucuğu](media/my-account-portal-sign-ins-page/unsuccessful.png)
+
+**Oturum etkinlik** ' in altında bir notla başarısız bir oturum açma görürseniz, `Additional verification failed, invalid code` Bu, birincil kimlik doğrulama kimlik bilgilerinizin başarılı olduğu ancak Multi-Factor Authentication başarısız olduğu anlamına gelir. Bu durum, bir saldırganın parolanızı doğru tahmin ettiğinde ancak Multi-Factor Authentication sınamasını geçemedik anlamına gelebilir. Saldırgan zaten sahip olabileceğinden ve güvenlik ayarlarınızı güncelleştirmek için [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasına giderek parolanızı değiştirmenize devam etmenizi öneririz.
 
 ## <a name="search-for-specific-sign-in-activity"></a>Belirli bir oturum açma etkinliğini arayın
 
 En son oturum açma etkinliğinizi kullanılabilir bilgilerden herhangi birini izleyerek arayabilirsiniz. Örneğin, işletim sistemi, konum, uygulama ve benzeri en son oturum açma etkinliğinizi arayabilirsiniz.
 
-1. **Son etkinliği gözden geçir** sayfasında, **arama çubuğuna aramak** istediğiniz bilgileri yazın. Örneğin, Hesabım `My Account` uygulaması tarafından toplanan tüm etkinlikleri aramak için yazın.
+1. **Son etkinliği gözden geçir** sayfasında, **arama çubuğuna aramak** istediğiniz bilgileri yazın. Örneğin, `Unsuccessful` Hesabım uygulaması tarafından toplanan tüm başarısız oturum açma etkinliklerini aramak için yazın.
 
 2. Aramaya başlamak için **Ara** düğmesini seçin.
 
-    ![Son etkinlik sayfası, vurgulanan arama çubuğu, arama düğmesi ve sonuçları gösterme](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
+    ![Son etkinlik sayfası, vurgulanan arama çubuğu, arama düğmesi ve sonuçları gösterme](media/my-account-portal-sign-ins-page/sign-in-search.png)
+
+### <a name="confirm-unusual-activity"></a>Olağan dışı etkinliği Onayla
+
+Olağan dışı etkinlik olarak işaretlenen oturum açma işlemleri, **oturum açma 'lerim** sayfasında söz konusu etkinliğin kutucuğunda onaylanır.
+
+![İçin olağan dışı oturum açma kutucuğu, oturum açma girişiminde bulunduğunu onaylar veya denemeyin](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

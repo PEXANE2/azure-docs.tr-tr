@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292415"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545200"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -53,7 +53,9 @@ Bir [Windows](../articles/virtual-machines/windows/create-powershell-availabilit
 Kullanılabilirlik kümeleri, VM artıklığı ve kullanılabilirliği sağlayan başka bir veri merkezi yapılandırması. Bir veri merkezi içindeki bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını ve% 99,95 Azure SLA 'sını karşılamasını sağlar. Daha fazla bilgi için bkz. [Sanal Makineler için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Bir kullanılabilirlik kümesindeki tek örnekli bir sanal makine, en az% 99,9 sanal makine bağlantısı için SLA 'ya hak kazanmak üzere tüm işletim sistemi diskleri ve veri diskleri için Premium SSD veya ultra disk kullanmalıdır.
+> Bir kullanılabilirlik kümesindeki tek örnekli bir sanal makine, en az% 99,9 sanal makine bağlantısı için SLA 'ya hak kazanmak üzere tüm işletim sistemi diskleri ve veri diskleri için Premium SSD veya ultra disk kullanmalıdır. 
+> 
+> Standart SSD olan tek örnekli bir sanal makinede en az% 99,5 SLA olur, ancak Standart HDD olan tek örnekli bir sanal makinede en az %95 SLA olur.  Bkz. [sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)
 
 Kullanılabilirlik kümenizdeki her sanal makineye, temel alınan Azure platformu tarafından bir **güncelleme etki alanı** ve bir **hata etki alanı** atanır. Belirli bir kullanılabilirlik kümesi için, aynı anda yeniden başlatılabilecek sanal makine gruplarını ve temel alınan fiziksel donanımları göstermek üzere, kullanıcı tarafından yapılandırılabilen beş güncelleme etki alanı varsayılan olarak atanır (Resource Manager dağıtımları daha sonra en fazla 20 güncelleme etki alanı sağlayacak şekilde artırılabilir). Tek bir kullanılabilirlik kümesinde beşten fazla sanal makine yapılandırıldığında, altıncı sanal makine birinci sanal makine ile, yedinci sanal makine ikinci sanal makine ile aynı güncelleme etki alanına yerleştirilir ve yerleştirme işlemi bu düzende devam eder. Yeniden başlatılmakta olan güncelleme etki alanlarının sırası, planlanan bakım sırasında sıralı olarak uygulanmayabilir, ancak aynı anda yalnızca bir güncelleme etki alanı yeniden başlatılır. Yeniden başlatılmış bir güncelleme etki alanının kurtarılması için, farklı bir güncelleme etki alanında bakım başlatılmadan önce 30 dakika beklenir.
 

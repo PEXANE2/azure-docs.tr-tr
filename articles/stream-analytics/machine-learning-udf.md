@@ -8,24 +8,24 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 30e70e56eb54815c26521829e4baf82dce574e43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432595"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543444"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
 Akış girişi verilerinizde gerçek zamanlı Puanlama ve tahmin işlemleri yapmak için Azure Stream Analytics işlerinizde Kullanıcı tanımlı bir işlev (UDF) olarak makine öğrenimi modelleri uygulayabilirsiniz. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) , modellerinizi geliştirmek, eğitme ve dağıtmak Için TensorFlow, scikit-öğren veya PyTorch gibi popüler açık kaynak araçlarından birini kullanmanıza olanak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden önce aşağıdaki adımları uygulayın:
 
 1. [Modelinizi bir Web hizmeti olarak dağıtmak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)için Azure Machine Learning kullanın.
 
-2. Puanlama betiğinizin bir şema belirtimi oluşturmak için Azure Machine Learning tarafından kullanılan [örnek girişler ve çıktılar](../machine-learning/how-to-deploy-and-where.md#example-entry-script) olması gerekir. Stream Analytics, Web hizmetinizin işlev imzasını anlamak için şemayı kullanır. Bu [örnek Swagger tanımını](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) , doğru ayarlamış olduğunuzdan emin olmak için bir başvuru olarak kullanabilirsiniz.
+2. Puanlama betiğinizin bir şema belirtimi oluşturmak için Azure Machine Learning tarafından kullanılan [örnek girişler ve çıktılar](../machine-learning/how-to-deploy-and-where.md) olması gerekir. Stream Analytics, Web hizmetinizin işlev imzasını anlamak için şemayı kullanır. Bu [örnek Swagger tanımını](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) , doğru ayarlamış olduğunuzdan emin olmak için bir başvuru olarak kullanabilirsiniz.
 
 3. Web hizmetinizin JSON seri hale getirilmiş verileri kabul ettiğinden ve döndürdüğünden emin olun.
 
@@ -147,7 +147,7 @@ Aşağıdaki JSON, önceki sorgudan gelen bir istek örneğidir:
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Azure Machine Learning UDF 'Leri için performansı iyileştirme
 
-Modelinizi Azure Kubernetes hizmetine dağıttığınızda, [kaynak kullanımını tespit etmek için modelinizin profilini](../machine-learning/how-to-deploy-and-where.md#profilemodel)oluşturabilirsiniz. Ayrıca, istek hızlarını, yanıt sürelerini ve hata hızlarını anlamak için [dağıtımlarınız Için App Insights 'ı etkinleştirebilirsiniz](../machine-learning/how-to-enable-app-insights.md) .
+Modelinizi Azure Kubernetes hizmetine dağıttığınızda, [kaynak kullanımını tespit etmek için modelinizin profilini](../machine-learning/how-to-deploy-profile-model.md)oluşturabilirsiniz. Ayrıca, istek hızlarını, yanıt sürelerini ve hata hızlarını anlamak için [dağıtımlarınız Için App Insights 'ı etkinleştirebilirsiniz](../machine-learning/how-to-enable-app-insights.md) .
 
 Yüksek olay işleme içeren bir senaryonuz varsa, düşük uçtan uca gecikme süreleriyle en iyi performansı elde etmek için Stream Analytics aşağıdaki parametreleri değiştirmeniz gerekebilir:
 

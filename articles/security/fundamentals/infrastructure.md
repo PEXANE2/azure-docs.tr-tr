@@ -1,6 +1,6 @@
 ---
 title: Azure altyapı güvenliği | Microsoft Docs
-description: Makalede, Microsoft 'un Azure veri merkezlerimizi güvenli hale getirmek için nasıl çalıştığı açıklanır.
+description: Microsoft 'un Azure veri merkezlerini güvenli hale getirmek için nasıl çalıştığını öğrenin. Veri merkezleri Microsoft operasyon personeli tarafından yönetilir, izlenir ve yönetilir.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72595400"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543937"
 ---
 # <a name="azure-infrastructure-security"></a>Azure altyapı güvenliği
 Microsoft Azure, Microsoft tarafından yönetilen ve çalıştırılan veri merkezlerinde çalıştırılır. Bu coğrafi olarak dağınık veri merkezleri, güvenlik ve güvenilirlik için ISO/ıEC 27001:2013 ve NıST SP 800-53 gibi temel sektör standartlarıyla uyumlu değildir. Veri merkezleri Microsoft operasyon personeli tarafından yönetilir, izlenir ve yönetilir. Operasyon personeli, dünyanın en büyük çevrimiçi hizmetler 24 x 7 devamlılığını sunmaya yönelik yıllar yaşar.

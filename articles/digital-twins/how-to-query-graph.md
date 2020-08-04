@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486672"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543359"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
-Bu makalede, bilgi için [ikizi grafiğini](concepts-twins-graph.md) sorgulamak üzere [Azure Digital TWINS sorgu deposu dilinin](concepts-query-language.md) kullanımıyla ilgili örnekler ve daha ayrıntılı bilgiler sunulmaktadır. Azure Digital TWINS [**sorgu API 'lerini**](how-to-use-apis-sdks.md)kullanarak grafikteki sorguları çalıştırırsınız.
+Bu makalede, bilgi için [ikizi grafiğini](concepts-twins-graph.md) sorgulamak üzere [Azure Digital TWINS sorgu dilinin](concepts-query-language.md) kullanımıyla ilgili örnekler ve daha ayrıntılı bilgiler sunulmaktadır. Azure Digital TWINS [**sorgu API 'lerini**](how-to-use-apis-sdks.md)kullanarak grafikteki sorguları çalıştırırsınız.
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -87,11 +87,11 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu
 
-Dijital TWINS ' ilişkilerine göre sorgulama yaparken, Azure Digital TWINS sorgu deposu dilinin özel bir sözdizimi vardır.
+Dijital TWINS ' ilişkilerine göre sorgulama yaparken, Azure Digital TWINS sorgu dilinin özel bir sözdizimi vardır.
 
 İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` . 
 
-Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Bu, Azure Digital TWINS sorgu deposu dilinin `JOIN` Genel SQL 'den biraz farklı olduğu anlamına gelir `JOIN` , burada ilişkiler bağımsız olarak sorgulanamaz ve bir ikizi bağlı olması gerekir.
+Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Bu, Azure Digital TWINS sorgu dilinin `JOIN` Genel SQL 'den biraz farklı olduğu anlamına gelir `JOIN` , burada ilişkiler bağımsız olarak sorgulanamaz ve bir ikizi bağlı olması gerekir.
 Bu farkı eklemek için, `RELATED` `JOIN` yan tümcesinde ikizi 'in ilişki kümesine başvurmak için kullanılır. 
 
 Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek verilmiştir.
@@ -117,7 +117,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>Bir ilişkinin özelliklerini sorgulama
 
-Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. Azure Digital TWINS sorgu deposu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
+Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
 
 Örnek olarak, *Reportedcondition* özelliği olan bir *servicedBy* ilişkisini göz önünde bulundurun. Aşağıdaki sorguda, özelliğine başvurmak için bu ilişkiye ' R ' diğer adı verilir.
 

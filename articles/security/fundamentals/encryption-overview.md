@@ -1,6 +1,6 @@
 ---
 title: Azure şifrelemeye genel bakış | Microsoft Docs
-description: Azure 'da çeşitli şifreleme seçenekleri hakkında bilgi edinin
+description: Azure 'da şifreleme seçenekleri hakkında bilgi edinin. Bekleyen şifreleme, uçuşta şifreleme ve Azure Key Vault ile anahtar yönetimi bilgilerine bakın.
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083965"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542968"
 ---
 # <a name="azure-encryption-overview"></a>Azure'da şifrelemeye genel bakış
 
@@ -113,7 +113,7 @@ Azure, verileri bir konumdan diğerine taşırken verilerin özel tutulması iç
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 'da veri bağlantısı katmanı şifreleme
 
-Azure müşteri [trafiği, Microsoft](https://1.ieee802.org/security/802-1ae/) tarafından denetlenmediği (veya Microsoft 'un adına), fiziksel sınırların dışındaki veri merkezleri arasında her taşınamadığında, ana ağ donanımının tamamında noktadan noktaya (MACsec olarak da bilinir) kullanan bir veri bağlantısı katmanı şifreleme yöntemi uygulanır.  Paketler gönderilmeden önce cihazlarda şifrelenir ve şifresi çözülür, böylece fiziksel "ortadaki adam" veya gözetleme/kablolu dokunma saldırıları engellenir.  Bu teknoloji ağ donanımının kendisi üzerinde tümleştirildiği için, ölçülebilir bağlantı gecikme süresi artışına sahip Ağ donanımında satır hızı şifrelemesi sağlar.  Bu MACsec şifrelemesi, bir bölgedeki veya bölgelerin içindeki tüm Azure trafiği gezileri için varsayılan olarak açık olur ve müşterilerin etkinleştirilmesi için müşterinin bölümünde herhangi bir işlem yapılması gerekmez. 
+Azure müşteri [trafiği, Microsoft](https://1.ieee802.org/security/802-1ae/) tarafından denetlenmediği (veya Microsoft 'un adına), fiziksel sınırların dışındaki veri merkezleri arasında her taşınamadığında, ana ağ donanımının tamamında noktadan noktaya (MACsec olarak da bilinir) kullanan bir veri bağlantısı katmanı şifreleme yöntemi uygulanır. Paketler gönderilmeden önce cihazlarda şifrelenir ve şifresi çözülür, böylece fiziksel "ortadaki adam" veya gözetleme/kablolu dokunma saldırıları engellenir. Bu teknoloji ağ donanımının kendisi üzerinde tümleştirildiği için, ölçülebilir bağlantı gecikme süresi artışına sahip Ağ donanımında satır hızı şifrelemesi sağlar. Bu MACsec şifrelemesi, bir bölgede veya bölgeler arasında seyahat eden tüm Azure trafiği için varsayılan olarak açık olur ve müşterilerin etkinleştirilmesi için hiçbir işlem yapılması gerekmez. 
 
 ### <a name="tls-encryption-in-azure"></a>Azure 'da TLS şifreleme
 

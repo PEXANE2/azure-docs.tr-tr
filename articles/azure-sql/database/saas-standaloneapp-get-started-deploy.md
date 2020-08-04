@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: fd4b94f6a99241ffddd7ae359059c3a4a918934a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042130"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544090"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanan tek başına tek kiracılı bir uygulama dağıtma ve araştırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,13 +43,17 @@ Ek öğreticiler yayımlanacak. Bu uygulama düzenine göre bir dizi yönetim se
 
 Uygulamayı belirtilen üç kiracı için dağıtın:
 
-1. [Azure Portal](https://portal.azure.com)Dağıtım şablonunu açmak için her mavi **Azure 'a dağıt** düğmesine tıklayın. Her şablon iki parametre değeri gerektirir; Yeni bir kaynak grubu için bir ad ve bu dağıtımı uygulamanın diğer dağıtımlarından ayırt eden Kullanıcı adı. Sonraki adımda, bu değerleri ayarlamaya ilişkin ayrıntılar sağlanmaktadır.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Contoso Concert salonu**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Dogwood Dojo**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Fabrikam Cakulüsinek**
+1. [Azure Portal](https://portal.azure.com)Dağıtım şablonunu açmak için her mavi **Azure 'a dağıt** düğmesine tıklayın. Her şablon iki parametre değeri gerektirir; Yeni bir kaynak grubu için bir ad ve bu dağıtımı uygulamanın diğer dağıtımlarından ayırt eden Kullanıcı adı. Sonraki adımda, bu değerleri ayarlamaya ilişkin ayrıntılar sağlanmaktadır.
 
+   **Contoso Concert salonu**   
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+
+   **Dogwood dojo**   
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+
+   **Fabrikam Cakulüsinek**   
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+ 
 2. Her dağıtım için gerekli parametre değerlerini girin.
 
     > [!IMPORTANT]
@@ -82,7 +86,7 @@ Uygulama Vitrini olayları barındıran olaylar.  Havalandırma noktaları, uygu
 
      (Her URL 'de, &lt; kullanıcıyı &gt; dağıtımınızın Kullanıcı değeriyle değiştirin.)
 
-   ![Olaylar](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Ekinlikler](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Uygulama, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md)kullanır. Kiracıya özgü her uygulama örneği, URL 'deki etki alanı adının bir parçası olarak kiracı adını içerir. Tüm kiracı URL 'Leri, belirli **Kullanıcı** değerini içerir. URL 'Ler aşağıdaki biçimi izler:
 - http://events.&lt; venuename &gt; . &lt; user &gt; . trafficmanager.net

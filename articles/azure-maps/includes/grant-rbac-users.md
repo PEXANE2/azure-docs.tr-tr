@@ -9,16 +9,16 @@ ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b138dab2a97537a93b8d873f79b6ee9c00b4af4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8dfc3714362b082168c32ba73e234e9b5fb43525
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126763"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545268"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>Kullanıcılara Azure Maps 'e rol tabanlı erişim verme
 
-Bir veya daha fazla Azure Maps erişim denetimi rol tanımına bir Azure AD grubu veya güvenlik sorumlusu atayarak *rol tabanlı erişim denetimi* (RBAC) verirsiniz. Azure haritalar için kullanılabilen RBAC rol tanımlarını görüntülemek için **erişim denetimi (IAM)** sayfasına gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın.
+Bir veya daha fazla Azure Maps erişim denetimi rol tanımına bir Azure AD grubu veya güvenlik sorumlusu atayarak *rol tabanlı erişim denetimi* (RBAC) verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın.
 
 * Büyük miktarda kullanıcının Azure Maps 'e erişimini verimli bir şekilde yönetmek için bkz. [Azure AD grupları](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups).
 * Kullanıcıların uygulamada kimlik doğrulamasına izin verilmesi için kullanıcıların Azure AD 'de oluşturulması gerekir. Bkz. [Azure ad kullanarak Kullanıcı ekleme veya silme](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory).

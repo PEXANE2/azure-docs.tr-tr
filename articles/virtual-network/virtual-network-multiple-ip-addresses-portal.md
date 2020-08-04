@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088215"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543495"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure portal kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -48,7 +48,7 @@ Aşağıdaki adımları tamamlayarak bir Azure ağ arabirimine özel ve genel IP
 
 5. Seçtiğiniz NIC için görüntülenen bölmede, **IP yapılandırması**' na tıklayın. **Ekle**' ye tıklayın, eklemek istediğiniz IP adresi türüne bağlı olarak, aşağıdaki bölümlerden birindeki adımları tamamlayın ve ardından **Tamam**' a tıklayın. 
 
-### <a name="add-a-private-ip-address"></a>**Özel IP adresi ekle**
+### <a name="add-a-private-ip-address"></a>Özel IP adresi ekle
 
 Yeni bir özel IP adresi eklemek için aşağıdaki adımları izleyin:
 

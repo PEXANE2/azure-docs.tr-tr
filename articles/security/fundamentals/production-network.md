@@ -1,6 +1,6 @@
 ---
 title: Azure üretim ağı
-description: Bu makalede, Azure üretim ağının genel bir açıklaması sağlanmaktadır.
+description: Azure üretim ağı hakkında bilgi edinin. Ağla bağlantı kurmak için güvenlik erişimi yöntemlerine ve koruma mekanizmalarına bakın.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68726700"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543818"
 ---
 # <a name="the-azure-production-network"></a>Azure üretim ağı
 Azure üretim ağı kullanıcıları, kendi Azure uygulamalarına ve üretim ağını yöneten dahili Azure destek personeline erişen harici müşteriler içerir. Bu makalede, Azure üretim ağına bağlantı kurmaya yönelik güvenlik erişimi yöntemleri ve koruma mekanizmaları ele alınmaktadır.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b031b2a26f81c34f1699e530c8d0bb8839454c89
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206206"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543886"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure 'da Kullanılabilirlik Alanları destekleyen bölgeler
 
@@ -63,7 +63,7 @@ Azure ayrıca aşağıdaki bölgelerde Kullanılabilirlik Alanları destek sunar
 - Orta Güney ABD
 - Orta Kanada
 
-Bu beş bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişime geçin.
+Bu beş bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişim kurun veya bir teknik destek isteği açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

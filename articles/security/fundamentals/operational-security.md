@@ -1,6 +1,6 @@
 ---
 title: Azure operasyonel güvenlik | Microsoft Docs
-description: Microsoft Azure Izleme günlükleri, hizmetleri ve nasıl çalıştığı hakkında bilgi edinin.
+description: Günlüklerini, hizmetlerini ve bu genel bakışı okuyarak nasıl çalıştığını Microsoft Azure Izlemek için kendinize tanıtın.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448373"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543342"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
 ## <a name="introduction"></a>Giriş

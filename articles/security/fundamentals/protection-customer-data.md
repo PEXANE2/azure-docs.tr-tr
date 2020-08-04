@@ -1,6 +1,6 @@
 ---
 title: Azure 'da müşteri verilerinin korunması
-description: Bu makalede, Azure 'un müşteri verilerini nasıl koruduğu ele alınmaktadır.
+description: Veri ayırma, veri artıklığı ve veri yok etme aracılığıyla Azure 'un müşteri verilerini nasıl koruduğunu öğrenin.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076284"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543801"
 ---
 # <a name="azure-customer-data-protection"></a>Azure müşteri verileri koruması   
 Microsoft Operasyon ve destek personelinin müşteri verilerine erişimi varsayılan olarak reddedilir. Bir destek durumuyla ilgili verilere erişim izni verildiğinde, yalnızca Uyumluluk ve Gizlilik İlkemize göre denetlenen ve belirtilen ilkeler kullanılarak tam zamanında (JıT) bir model kullanılarak verilir.  Erişim denetimi gereksinimleri aşağıdaki Azure Güvenlik Ilkesiyle belirlenir:

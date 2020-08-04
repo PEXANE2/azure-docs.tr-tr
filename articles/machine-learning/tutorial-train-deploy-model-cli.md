@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4167f8958f7a1613c4d48625f7a79a02c7588d0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84429743"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543410"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -329,7 +329,7 @@ Eğitim betiğini inceleyebileceğiniz zaman da eğitilen modeli depoladığınd
 
 Model, `./outputs` eğitilen işlem hedefinde dizine kaydedildi. Bu durumda, Azure bulutu 'nda Azure Machine Learning Işlem örneği. Eğitim süreci, `./outputs` eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem hedefinden dizinin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır ( `myexperiment` Bu örnekte).
 
-## <a name="register-the-model"></a>Modeli kaydedin
+## <a name="register-the-model"></a>Modeli Kaydet
 
 Modeli denemenizin içindeki saklı sürümden doğrudan kaydetmek için aşağıdaki komutu kullanın:
 
@@ -383,7 +383,7 @@ Bu komut `myservice` , daha önce kaydettiğiniz modelin 1. sürümünü kullana
 
 `inferenceConfig.yml`Dosya, çıkarım için modeli kullanma hakkında bilgi sağlar. Örneğin, giriş betiğine ( `score.py` ) ve yazılım bağımlılıklarına başvurur.
 
-Bu dosyanın yapısı hakkında daha fazla bilgi için, bkz. [çıkarım yapılandırma şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema). Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md#prepare-to-deploy).
+Bu dosyanın yapısı hakkında daha fazla bilgi için, bkz. [çıkarım yapılandırma şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema). Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 `aciDeploymentConfig.yml`Hizmetini barındırmak için kullanılan dağıtım ortamını açıklar. Dağıtım yapılandırması, dağıtım için kullandığınız işlem türüne özeldir. Bu durumda, bir Azure Kapsayıcı örneği kullanılır. Daha fazla bilgi için bkz. [dağıtım yapılandırma şeması](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
