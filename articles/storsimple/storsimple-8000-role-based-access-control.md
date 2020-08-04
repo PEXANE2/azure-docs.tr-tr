@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 58332be22600620e7a3ff1f455f96fe0d786d846
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500053"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535119"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple için rol tabanlı Access Control
 
@@ -29,7 +29,7 @@ Bu makale, Azure portal güncelleştirme 3,0 veya sonraki bir sürümünü çal�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>StorSimple için RBAC rolleri
+## <a name="azure-roles-for-storsimple"></a>StorSimple için Azure rolleri
 
 RBAC, rollere göre atanabilir. Roller, ortamdaki kullanılabilir kaynaklara bağlı olarak belirli izin düzeylerinin olmasını güvence altına alır. StorSimple kullanıcılarının aralarından seçim yapabileceğiniz iki tür rol vardır: yerleşik veya özel.
 
@@ -58,7 +58,7 @@ Aşağıdaki örnekte, kullanıcıların tüm kaynak kapsamlarını görüntüle
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. JSON dosyasını Visual Studio 'da açın. Tipik bir RBAC rolünün üç ana bölümden, **eylemlerden**, **NotActions**ve **astifblescopes**oluştuğunu görürsünüz.
+4. JSON dosyasını Visual Studio 'da açın. Tipik bir Azure rolünün üç ana bölümden, **eylemlerden**, **NotActions**ve **astifblescopes**oluştuğunu görürsünüz.
 
     **Eylem** bölümünde, bu rol için izin verilen tüm işlemler listelenir. Her eylem bir kaynak sağlayıcısından atanır. StorSimple altyapı yöneticisi için `Microsoft.StorSimple` kaynak sağlayıcısını kullanın.
 
@@ -68,9 +68,9 @@ Aşağıdaki örnekte, kullanıcıların tüm kaynak kapsamlarını görüntüle
 
     Kaynak sağlayıcılarını yönetmek için kullanılabilir tüm PowerShell cmdlet 'lerini de denetleyebilirsiniz.
 
-    **NotActions** bölümlerinde, belırlı bir RBAC rolü için tüm kısıtlı eylemler listelenir. Bu örnekte, hiçbir eylem kısıtlanamaz.
+    **NotActions** bölümlerinde, belirli bir Azure rolü için tüm kısıtlı eylemler listelenir. Bu örnekte, hiçbir eylem kısıtlanamaz.
     
-    **Astifblescopes**, abonelik kimlikleri listelenir. RBAC rolünün, kullanıldığı açık abonelik KIMLIĞINI içerdiğinden emin olun. Doğru abonelik KIMLIĞI belirtilmemişse, aboneliğinizdeki rolü içeri aktarmaya izin verilmez.
+    **Astifblescopes**, abonelik kimlikleri listelenir. Azure rolünün, kullanıldığı açık abonelik KIMLIĞINI içerdiğinden emin olun. Doğru abonelik KIMLIĞI belirtilmemişse, aboneliğinizdeki rolü içeri aktarmaya izin verilmez.
 
     Önceki hususları göz önünde bulundurarak dosyayı düzenleyin.
 
@@ -109,7 +109,7 @@ Aşağıdaki örnekte, kullanıcıların tüm kaynak kapsamlarını görüntüle
 
 Bu rol artık **erişim denetimi** dikey penceresindeki Roller listesinde görünmelidir.
 
-![RBAC rollerini görüntüleme](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![Azure rollerini görüntüleme](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
 Daha fazla bilgi için [özel roller](../role-based-access-control/custom-roles.md)' e gidin.
 
@@ -167,7 +167,7 @@ Rol atamasının kapsamı olan kaynak, kaynak grubu veya abonelik içinden eriş
 
 1. **Access Control (IAM)** sayfasına gidin. Erişim denetimi dikey penceresinde **+ Ekle** ' ye tıklayın.
 
-    ![RBAC rolüne erişim ekleme](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![Azure rolüne erişim ekleme](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
 2. Atamak istediğiniz rolü seçin, bu durumda **StorSimple altyapı yöneticisi**budur.
 
@@ -175,7 +175,7 @@ Rol atamasının kapsamı olan kaynak, kaynak grubu veya abonelik içinden eriş
 
 4. Atamayı oluşturmak için **Kaydet** ' i seçin.
 
-    ![RBAC rolüne izinler ekleme](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![Azure rolüne izinler ekleme](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
 Bir **Kullanıcı bildirimi ekleme** ilerleme durumunu izler. Kullanıcı başarıyla eklendikten sonra, erişim denetimindeki kullanıcıların listesi güncellenir.
 

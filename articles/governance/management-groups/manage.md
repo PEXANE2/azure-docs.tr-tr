@@ -3,16 +3,16 @@ title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259414"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535017"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
-Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şekilde erişim, ilke ve uyumluluk yönetimi gerçekleştirmek isteyebilirsiniz. Azure yönetim grupları, aboneliklerin üzerinde bir kapsam düzeyi sunar. Abonelikleri "yönetim grupları" adlı kapsayıcılarla düzenler ve idare koşullarınızı bu yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır.
+Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şekilde erişim, ilke ve uyumluluk yönetimi gerçekleştirmek isteyebilirsiniz. Azure yönetim grupları aboneliklerin üzerinde bir kapsam düzeyi sağlar. Abonelikleri "yönetim grupları" adlı kapsayıcılarla düzenler ve idare koşullarınızı bu yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır.
 
 Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar. Yönetim grupları hakkında daha fazla bilgi edinmek için bkz. [Azure Yönetim gruplarıyla kaynaklarınızı düzenleme](./overview.md).
 
@@ -69,7 +69,7 @@ Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması g
 
    - Bir aboneliği veya yönetim grubunu başka bir yönetim grubuna taşımak için bkz. [hiyerarşideki Yönetim gruplarını ve abonelikleri taşıma](#moving-management-groups-and-subscriptions).
 
-1. Yönetim grubu ("sahip", "katkıda bulunan" veya "yönetim grubu katılımcısı") üzerinde yazma izinlerine sahip olmanız gerekir. Sahip olduğunuz izinleri görmek için yönetim grubunu seçin ve ardından **IAM**' i seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz.  
+1. Yönetim grubu ("sahip", "katkıda bulunan" veya "yönetim grubu katılımcısı") üzerinde yazma izinlerine sahip olmanız gerekir. Sahip olduğunuz izinleri görmek için yönetim grubunu seçin ve ardından **IAM**' i seçin. Azure rolleri hakkında daha fazla bilgi için bkz.  
    [RBAC ile erişimi ve Izinleri yönetin](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Portalda Sil
@@ -93,7 +93,7 @@ Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması g
 
    :::image type="content" source="./media/delete_confirm.png" alt-text="Grup onay penceresini Sil" border="false":::
 
-1. **Evet**' i seçin.
+1. **Evet**’i seçin.
 
 ### <a name="delete-in-powershell"></a>PowerShell 'de Sil
 
@@ -113,7 +113,7 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>Yönetim gruplarını görüntüle
 
-Üzerinde doğrudan veya devralınmış bir RBAC rolüne sahip olduğunuz herhangi bir yönetim grubunu görüntüleyebilirsiniz.  
+Üzerinde doğrudan veya devralınmış bir Azure rolüne sahip olduğunuz herhangi bir yönetim grubunu görüntüleyebilirsiniz.  
 
 ### <a name="view-in-the-portal"></a>Portalda görüntüle
 
@@ -215,7 +215,7 @@ Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir:
 
 Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik (yönetim grubundan devralınmadı) için sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
 
-Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seçin ve ardından **IAM**öğesini seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile erişimi ve Izinleri yönetme](../../role-based-access-control/overview.md).
+Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seçin ve ardından **IAM**öğesini seçin. Azure rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile erişimi ve Izinleri yönetme](../../role-based-access-control/overview.md).
 
 ## <a name="move-subscriptions"></a>Abonelikleri taşıma 
 

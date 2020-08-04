@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501942"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535051"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Çalışma alanı yönetilen kimliğine izin ver (Önizleme)
 
@@ -84,11 +84,11 @@ Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için 
 
 ![Yeni rol ataması Ekle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
-#### <a name="step-5-select-the-rbac-role"></a>5. Adım: RBAC rolünü seçin
+#### <a name="step-5-select-the-azure-role"></a>5. Adım: Azure rolünü seçin
 
 **Depolama Blobu veri katılımcısı** rolünü seçin.
 
-![RBAC rolünü seçin](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
+![Azure rolünü seçin](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>6. Adım: Azure AD güvenlik sorumlusunu seçme
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3335bfbed592c9e13d5be437e8013a89ae86e970
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510637"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535102"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>İkinci kısım: bir kimliğe bir kimlik için paylaşma düzeyi izinleri atama
 
@@ -38,11 +38,11 @@ Kullanıcılara paylaşma düzeyi izinleri vermek için üç Azure yerleşik rol
 
 Azure portal, Azure PowerShell veya Azure CLı ' yi kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, Share-Level izinleri verme amacıyla atayabilirsiniz.
 
-## <a name="assign-an-rbac-role"></a>RBAC rolü atama
+## <a name="assign-an-azure-role"></a>Azure rolü atama
 
 ### <a name="azure-portal"></a>Azure portal
 
-[Azure Portal](https://portal.azure.com)kullanarak BIR Azure AD kimliğine RBAC rolü atamak için aşağıdaki adımları izleyin:
+Azure AD kimliğine [Azure Portal](https://portal.azure.com)kullanarak bir Azure rolü atamak için aşağıdaki adımları izleyin:
 
 1. Azure portal dosya paylaşımınıza gidin veya [bir dosya paylaşma oluşturun](storage-how-to-create-file-share.md).
 1. **Access Control (IAM)** seçeneğini belirleyin.
@@ -52,7 +52,7 @@ Azure portal, Azure PowerShell veya Azure CLı ' yi kullanarak, yerleşik roller
 
 ### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure AD kimliğine RBAC rolü atamayı göstermektedir. PowerShell ile RBAC rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md).
+Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağını göstermektedir. PowerShell ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md).
 
 Aşağıdaki örnek betiği çalıştırmadan önce, köşeli ayraçlar dahil yer tutucu değerlerini değerlerinizle değiştirin.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-Aşağıdaki CLı 2,0 komutu, oturum açma adına göre Azure AD kimliğine bir RBAC rolü atar. Azure CLı ile RBAC rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-cli.md). 
+Aşağıdaki CLı 2,0 komutu, oturum açma adına bağlı olarak bir Azure AD kimliğine Azure rolü atar. Azure CLı ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-cli.md). 
 
 Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 

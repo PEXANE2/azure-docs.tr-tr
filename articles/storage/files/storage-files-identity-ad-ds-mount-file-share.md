@@ -7,18 +7,18 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 40d372eb5569f3a4079acda3ab1e43b3e86cc113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999607"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535068"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Dördüncü kısım: etki alanına katılmış bir VM 'den bir dosya paylaşma bağlama
 
 Bu makaleye başlamadan önce, önceki makaleyi tamamladığınızdan emin olun, [Dizin ve dosya düzeyi IZINLERINI SMB üzerinden yapılandırın](storage-files-identity-ad-ds-configure-permissions.md).
 
-Bu makalede açıklanan işlem, dosya paylaşımınızın ve erişim izninizin doğru ayarlandığını ve bir Azure dosya paylaşımının etki alanına katılmış bir VM 'den erişebileceğini doğrular. Share-Level RBAC rol atamasının etkili olması biraz zaman alabilir. 
+Bu makalede açıklanan işlem, dosya paylaşımınızın ve erişim izninizin doğru ayarlandığını ve bir Azure dosya paylaşımının etki alanına katılmış bir VM 'den erişebileceğini doğrular. Share-Level Azure rolü atamasının etkili olması biraz zaman alabilir. 
 
 Aşağıdaki görüntüde gösterildiği gibi, izinleri verilen kimlik bilgilerini kullanarak istemcide oturum açın.
 

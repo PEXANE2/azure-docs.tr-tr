@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133713"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535000"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server için olağanüstü durum kurtarmayı ayarlama
 
@@ -47,6 +47,8 @@ Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| Azure Site Recove
 > * Azure, Hyper-V, VMware veya fiziksel altyapıda herhangi bir dağıtım için Site Recovery kullanmayı tercih edebilirsiniz. Lütfen [bir SQL Server kümesini Site Recovery ile korumanıza yardımcı olmak için](#how-to-help-protect-a-sql-server-cluster) Bu makalenin sonundaki yönergeleri izleyin.
 > * Makinede gözlenen veri değişim hızının [Site Recovery limitlerin](vmware-physical-azure-support-matrix.md#churn-limits)içinde olduğundan emin olun. Değişiklik hızı, saniye başına yazılan bayt cinsinden ölçülür. Windows çalıştıran makineler için, Görev Yöneticisi 'nde **performans** sekmesini seçerek bu değişiklik oranını görüntüleyebilirsiniz. Her disk için yazma hızını gözlemleyin.
 > * Site Recovery, Depolama Alanları Doğrudan yük devretme kümesi örneklerinin çoğaltılmasını destekler. Daha fazla bilgi için bkz. [depolama alanları doğrudan çoğaltmayı etkinleştirme](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+> 
+> SQL Iş yükünüzü Azure 'a geçirdiğinizde, [Azure sanal makinelerinde SQL Server Için performans kılavuzunu](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)uygulamanız önerilir.
 
 ## <a name="disaster-recovery-of-an-application"></a>Uygulamanın olağanüstü durum kurtarması
 

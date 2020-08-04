@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423992"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534915"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde edin
 Bu makalede, Azure Active Directory kiracınızla bağlantılı tüm Azure aboneliklerine güvenlik ilkeleri uygulayarak kuruluşunuzun güvenlik duruşunu nasıl yöneteceğiniz açıklanmaktadır.
@@ -39,7 +39,7 @@ Yönetim gruplarına ayrıntılı bir genel bakış için bkz. [Azure Yönetim g
 Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yönetim gruplarına uygulayabilirsiniz. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan ilkeleri devralır. Güvenlik Merkezi 'ni eklemek için yönetim grupları gerekli olmasa da, kök yönetim grubunun oluşturulması için en az bir yönetim grubu oluşturmanız önemle tavsiye edilir. Grup oluşturulduktan sonra, Azure AD kiracınız kapsamındaki tüm abonelikler buna bağlanır. PowerShell ve daha fazla bilgi için yönergeler için bkz. [kaynak ve kuruluş yönetimi için yönetim grupları oluşturma](../azure-resource-manager/management-groups-create.md).
 
  
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 3. Ana sayfada **yeni yönetim grubu** ' nu seçin. 
 
@@ -52,7 +52,7 @@ Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yöneti
 5.  **Kaydet**’i seçin
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Azure portal Yönetim gruplarını görüntüleme
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Yönetim gruplarını görüntülemek için Azure ana menüsünde **tüm hizmetler** ' i seçin.
 3. **Genel**altında **Yönetim grupları**' yi seçin.
 
@@ -60,10 +60,10 @@ Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yöneti
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Kiracı düzeyinde görünürlük ve ilke atama özelliği verme
 
-Azure AD kiracısında kayıtlı olan tüm aboneliklerin güvenlik duruşunu görünürlüğünü almak için, kök yönetim grubuna yeterli okuma izinleri olan bir RBAC rolünün atanması gerekir.
+Azure AD kiracısında kayıtlı olan tüm aboneliklerin güvenlik duruşunu görünürlüğünü almak için, kök yönetim grubuna yeterli okuma izinleri olan bir Azure rolünün atanması gerekir.
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory genel yönetici için erişimi yükseltme
-Azure Active Directory kiracı yöneticisinin Azure aboneliklerine doğrudan erişimi yoktur. Ancak, bir dizin Yöneticisi olarak, kendilerine erişimi olan bir role yükseltme hakkı vardır. Azure AD kiracı yöneticisinin, RBAC rolleri atayabilmeleri için kendisini kök yönetim grubu düzeyinde Kullanıcı erişimi Yöneticisi 'ne yükseltmesine ihtiyacı vardır. PowerShell yönergeleri ve ek bilgiler için, bkz. [Azure Active Directory genel yönetici için erişimi yükseltme](../role-based-access-control/elevate-access-global-admin.md). 
+Azure Active Directory kiracı yöneticisinin Azure aboneliklerine doğrudan erişimi yoktur. Ancak, bir dizin Yöneticisi olarak, kendilerine erişimi olan bir role yükseltme hakkı vardır. Azure AD kiracı yöneticisinin Azure rolleri atayabilmeleri için kendisini kök yönetim grubu düzeyinde Kullanıcı erişimi Yöneticisi 'ne yükseltmesine ihtiyacı vardır. PowerShell yönergeleri ve ek bilgiler için, bkz. [Azure Active Directory genel yönetici için erişimi yükseltme](../role-based-access-control/elevate-access-global-admin.md). 
 
 
 1. [Azure Portal](https://portal.azure.com) veya [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com)oturum açın.
@@ -87,13 +87,13 @@ Azure Active Directory kiracı yöneticisinin Azure aboneliklerine doğrudan eri
 5. Yükseltilmiş erişimle yapmanız gereken görevleri gerçekleştirin. İşiniz bittiğinde, anahtarı tekrar **Hayır**olarak ayarlayın.
 
 
-### <a name="assign-rbac-roles-to-users"></a>Kullanıcılara RBAC rolleri atama
-Tüm Aboneliklerle ilgili görünürlük elde etmek için, kiracı yöneticilerinin, kök yönetim grubu düzeyinde dahil olmak üzere kiracı genelinde görünürlük sağlamak istedikleri kullanıcılara uygun RBAC rolünü ataması gerekir. Atanacak önerilen roller **Güvenlik Yöneticisi** veya **güvenlik okuyucusu**' dir. Genellikle güvenlik yöneticisi rolü kök düzeyinde uygulamak için gereklidir, ancak güvenlik okuyucusu kiracı düzeyinde görünürlük sağlamak için yeterli olacaktır. Bu rollerin verdiği izinler hakkında daha fazla bilgi için bkz. [Güvenlik Yöneticisi yerleşik rol açıklaması](../role-based-access-control/built-in-roles.md#security-admin) veya [güvenlik okuyucusu yerleşik rol açıklaması](../role-based-access-control/built-in-roles.md#security-reader).
+### <a name="assign-azure-roles-to-users"></a>Kullanıcılara Azure rolleri atama
+Tüm Aboneliklerle ilgili görünürlük elde etmek için, kiracı yöneticilerinin, kök yönetim grubu düzeyinde dahil olmak üzere kiracı genelinde görünürlük sağlamak istedikleri kullanıcılara uygun Azure rolünü ataması gerekir. Atanacak önerilen roller **Güvenlik Yöneticisi** veya **güvenlik okuyucusu**' dir. Genellikle güvenlik yöneticisi rolü kök düzeyinde uygulamak için gereklidir, ancak güvenlik okuyucusu kiracı düzeyinde görünürlük sağlamak için yeterli olacaktır. Bu rollerin verdiği izinler hakkında daha fazla bilgi için bkz. [Güvenlik Yöneticisi yerleşik rol açıklaması](../role-based-access-control/built-in-roles.md#security-admin) veya [güvenlik okuyucusu yerleşik rol açıklaması](../role-based-access-control/built-in-roles.md#security-reader).
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Kullanıcılara Azure portal aracılığıyla RBAC rolleri atama: 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure portal aracılığıyla kullanıcılara Azure rolleri atama: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. Yönetim gruplarını görüntülemek için Azure ana menüsünde **tüm hizmetler** ' i seçin ve **Yönetim grupları**' yi seçin.
 1.  Bir yönetim grubu seçin ve **Ayrıntılar**' a tıklayın.
 
@@ -108,7 +108,7 @@ Tüm Aboneliklerle ilgili görünürlük elde etmek için, kiracı yöneticileri
    ![Güvenlik okuyucusu rolü Ekle ekran görüntüsü](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Kullanıcılara PowerShell ile RBAC rolleri atama: 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>PowerShell ile kullanıcılara Azure rolleri atama: 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -140,7 +140,7 @@ Tüm Aboneliklerle ilgili görünürlük elde etmek için, kiracı yöneticileri
 ### <a name="open-or-refresh-security-center"></a>Güvenlik merkezini aç veya Yenile
 Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm aboneliklerde görünürlük olduğunu doğrulamak için Azure Güvenlik Merkezi 'ni açın veya yenileyin. 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Güvenlik Merkezi 'nde görüntülemek istediğiniz abonelik seçicisindeki tüm abonelikleri seçtiğinizden emin olun.
 
     ![Abonelik seçici ekran görüntüsü](./media/security-center-management-groups/subscription-selector.png)
@@ -155,7 +155,7 @@ Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm abonelikle
     ![Abonelik kapsamı listesi ekran görüntüsü](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Yükseltilmiş erişimi kaldır 
-RBAC rolleri kullanıcılara atandıktan sonra, kiracı yöneticisinin kendisini Kullanıcı erişimi yönetici rolünden kaldırması gerekir.
+Kullanıcılara Azure rolleri atandıktan sonra, kiracı yöneticisinin kendisini Kullanıcı erişimi yönetici rolünden kaldırması gerekir.
 
 1. [Azure Portal](https://portal.azure.com) veya [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com)oturum açın.
 
@@ -183,7 +183,7 @@ Oluşturduğunuz yönetim grubuna abonelikler ekleyebilirsiniz. Bu adımlar, kir
 4. Kapsamdaki tüm abonelikleri ekleyinceye kadar 1 ile 3 arasındaki adımları yineleyin.
 
    > [!NOTE]
-   > Yönetim gruplarında hem abonelikler hem de alt yönetim grupları bulunabilir. Bir kullanıcıyı üst yönetim grubuna RBAC rolü atadığınızda, erişim alt yönetim grubunun abonelikleri tarafından devralınır. Üst yönetim grubunda ayarlanan ilkeler alt öğeler tarafından da devralınır. 
+   > Yönetim gruplarında hem abonelikler hem de alt yönetim grupları bulunabilir. Bir kullanıcıyı bir Azure rolünü üst yönetim grubuna atadığınızda, erişim alt yönetim grubunun abonelikleri tarafından devralınır. Üst yönetim grubunda ayarlanan ilkeler alt öğeler tarafından da devralınır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde etme hakkında öğrendiniz. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
