@@ -171,10 +171,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: Tanılama günlükleri şemaları
           href: media-services-diagnostic-logs-schema.md
-    - name: Yürütücü istemcileri
+    - name: Azure Media Player
       items:
-        - name: Azure Media Player
-          href: use-azure-media-player.md
+        - name: Azure Media Player'a genel bakış
+          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
     - name: v3 API'leriyle geliştirme
       items:
         - name: Genel Bakış
@@ -285,7 +285,11 @@
           items:
             - name: .NET ile
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: Kodlayıcı önayarlarını özelleştirme
+                  href: customize-encoder-presets-how-to.md
+                - name: Katman dönüşümü oluşturma
+                  href: how-to-create-overlay.md
             - name: CLI ile
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -355,6 +359,14 @@
           href: download-results-howto.md
         - name: Sinyal açıklayıcı ses
           href: signal-descriptive-audio-howto.md
+    - name: Medya oynatıcılarını kullanma
+      items:
+        - name: Eksiksiz Azure Media Player kurulumu
+          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+        - name: Video.js oynatıcısını kullanma
+          href: how-to-video-js-player.md
+        - name: Shaka video oynatıcısını kullanma
+          href: how-to-shaka-player.md
 - name: Başvuru
   items:
     - name: OpenAPI Belirtimi (Swagger)

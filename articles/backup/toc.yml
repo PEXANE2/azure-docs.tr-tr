@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: Linux çalıştıran Azure VM’lerinde uygulamayla tutarlı yedeklemeler yapılandırma
               href: backup-azure-linux-app-consistent.md
+            - name: Seçmeli disk yedeklemesi
+              href: selective-disk-backup-restore.md
         - name: Geri Yükleme
           items:
             - name: Azure VM geri yükleme hakkında

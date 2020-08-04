@@ -55,22 +55,30 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Azure NetApp Files için bir alt ağı temsilci olarak belirleme
       href: azure-netapp-files-delegate-subnet.md
-    - name: Azure NetApp Files için SMB birimi oluşturma
+    - name: NFS birimi oluşturma ve yönetme
+      items:
+        - name: NFS birimi oluşturma
+          href: azure-netapp-files-create-volumes.md
+        - name: NFSv4.1 varsayılan etki alanını yapılandırma
+          href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: NFSv4.1 Kerberos şifrelemesini yapılandırma
+          href: configure-kerberos-encryption.md
+        - name: Azure NetApp Files için NFS istemcisini yapılandırma
+          href: configure-nfs-clients.md
+        - name: NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
+          href: azure-netapp-files-configure-export-policy.md
+    - name: SMB birimi oluşturma
       href: azure-netapp-files-create-volumes-smb.md
-    - name: Azure NetApp Files için NFS birimi oluşturma
-      href: azure-netapp-files-create-volumes.md
-    - name: Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma
-      href: azure-netapp-files-configure-nfsv41-domain.md
-    - name: NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
-      href: azure-netapp-files-configure-export-policy.md
-    - name: Birimleri yönetme
-      href: azure-netapp-files-manage-volumes.md
+    - name: Çift protokollü birim oluşturma
+      href: create-volumes-dual-protocol.md
     - name: Windows veya Linux sanal makineleri için birimi bağlama veya ayırma
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Anlık görüntüleri yönetme
       href: azure-netapp-files-manage-snapshots.md
     - name: Kapasitesi havuzunu veya birimi yeniden boyutlandırma
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Birimin hizmet düzeyini dinamik olarak değiştirme
+      href: dynamic-change-volume-service-level.md
     - name: Geliştirme
       items:
         - name: REST API

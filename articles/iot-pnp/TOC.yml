@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: Çok bileşenli bir cihaza bağlanma (Python)
       href: tutorial-multiple-components-python.md
+    - name: Cihazı bağlamak için MQTT kullanma
+      href: tutorial-use-mqtt.md
 - name: Kavramlar
   items:
     - name: Mimari
