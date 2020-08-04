@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603902"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542119"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında Lisans atama veya kaldırma
 
@@ -35,7 +35,7 @@ Azure AD hizmeti için aşağıdakiler de dahil olmak üzere birkaç lisans plan
 
 - Azure AD Premium P2
 
-Her lisans planı ve ilgili lisanslama ayrıntıları hakkında belirli bilgiler için bkz. [Hangi lisansa ihtiyacım var?](https://azure.microsoft.com/pricing/details/active-directory/).
+Her lisans planı ve ilgili lisanslama ayrıntıları hakkında belirli bilgiler için bkz. [Hangi lisansa ihtiyacım var?](https://azure.microsoft.com/pricing/details/active-directory/). Azure AD Premium lisans planlarına kaydolmak için [buraya](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)bakın.
 
 Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir gruba atanabilmesi için önce tüm Üyeler için **kullanım konumunu** belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
 
@@ -84,7 +84,7 @@ Lisanslı bir Azure AD hizmeti kullanması gereken herkesin uygun lisansa sahip 
     > [!NOTE]
     > Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir kullanıcıya atanabilmesi için önce **kullanım konumunu**belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
 
-1. **Ata**'yı seçin.
+1. **Ata**’yı seçin.
 
     Kullanıcı lisanslı kullanıcılar listesine eklenir ve dahil edilen Azure AD hizmetlerine erişimi vardır.
     > [!NOTE]
@@ -110,7 +110,7 @@ Lisanslı bir Azure AD hizmeti kullanması gereken herkesin uygun lisansa sahip 
 
     Bir kullanıcının seçili olduğunu ve atamaların yapılandırıldığını göstermek için **Lisans ata** sayfası güncellenir.
 
-1. **Ata**'yı seçin.
+1. **Ata**’yı seçin.
 
     Grup, lisanslı gruplar listesine eklenir ve tüm üyelerin dahil edilen Azure AD hizmetlerine erişimi vardır.
 

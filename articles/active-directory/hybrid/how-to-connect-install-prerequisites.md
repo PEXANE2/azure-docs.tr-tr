@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33b3e406e21f5bc2a4128fdd7dc9930fa3e0c32
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447017"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542068"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -125,6 +125,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
         </system.net>
     ```
 
+* Proxy yapılandırması mevcut bir kurulumda yapılamakta ise, Azure AD Connect proxy yapılandırmasını okuyabilmesi ve behviour güncelleştirmesi için **Microsoft Azure AD Eşitleme hizmetinin** yeniden başlatılması gerekir. 
 * Azure AD Connect, Dizin eşitlemesinin bir parçası olarak Azure AD 'ye bir Web isteği gönderdiğinde, Azure AD 'nin yanıtlaması 5 dakika sürebilir. Proxy sunucularda bağlantı boşta kalma zaman aşımı yapılandırması olması yaygındır. Yapılandırmanın en az 6 dakika veya daha fazla ayarlandığından emin olun.
 
 Daha fazla bilgi için bkz. [varsayılan proxy öğesi](https://msdn.microsoft.com/library/kd3cf2ex.aspx)hakkında MSDN.

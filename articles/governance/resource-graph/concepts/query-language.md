@@ -1,14 +1,14 @@
 ---
 title: Sorgu dilini anlama
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970459"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541830"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -19,6 +19,7 @@ Bu makalede kaynak Graph tarafından desteklenen dil bileşenleri ele alınmakta
 - [Kaynak grafik tabloları](#resource-graph-tables)
 - [Kaynak Grafiği özel dil öğeleri](#resource-graph-custom-language-elements)
 - [Desteklenen KQL dil öğeleri](#supported-kql-language-elements)
+- [Sorgunun kapsamı](#query-scope)
 - [Kaçış karakterleri](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Kaynak grafik tabloları
@@ -112,10 +113,35 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[Proje-dışarıda](/azure/kusto/query/projectawayoperator) |[Sütunları sonuçlardan kaldır](../samples/advanced.md#remove-column) | |
 |[düzenine](/azure/kusto/query/sortoperator) |[Ada göre sıralanan kaynakları Listele](../samples/starter.md#list-resources) |Eş anlamlısı`order` |
 |[ölçütü](/azure/kusto/query/summarizeoperator) |[Azure kaynaklarını sayma](../samples/starter.md#count-resources) |Yalnızca Basitleştirilmiş ilk sayfa |
-|[almanız](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı`limit` |
-|[Sayfanın Üstü](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster](../samples/starter.md#show-sorted) | |
+|[take](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı`limit` |
+|[top](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster](../samples/starter.md#show-sorted) | |
 |[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tablosu_. `union`Tek bir sorgudaki 3 Tag sınırı. `union`Bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
 |[olmadığı](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
+
+## <a name="query-scope"></a>Sorgu kapsamı
+
+Kaynakları bir sorgu tarafından döndürülen aboneliklerin kapsamı, kaynak grafiğine erişme yöntemine bağlıdır. Azure CLı ve Azure PowerShell yetkili kullanıcının bağlamına göre isteğe dahil edilecek Aboneliklerin listesini doldurun. Abonelikler listesi, sırasıyla **abonelikler** ve **abonelik** parametreleriyle birlikte el ile tanımlanabilir.
+REST API ve diğer tüm SDK 'larda, kaynak dahil edilecek aboneliklerin listesi, isteğin bir parçası olarak açıkça tanımlanmalıdır.
+
+Bir **Önizleme**olarak REST API sürüm, `2020-04-01-preview` sorgunun kapsamını bir [yönetim grubuna](../../management-groups/overview.md)eklemek için bir özellik ekler. Bu önizleme API 'SI de abonelik özelliğini isteğe bağlı hale getirir. Yönetim grubu veya abonelik listesi tanımlanmadıysa, sorgu kapsamı kimliği doğrulanmış kullanıcının erişebileceği tüm kaynaklardır. Yeni `managementGroupId` özellik, yönetim grubunun adından farklı olan yönetim grubu kimliğini alır.
+Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId`, ile aynı anda kullanılamaz `subscriptions` .
+
+Örnek: ' myMG ' KIMLIĞIYLE ' My Management Group ' adlı Yönetim grubu hiyerarşisinde tüm kaynakları sorgulayın.
+
+- REST API URI'si
+
+  ```http
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  ```
+
+- İstek Gövdesi
+
+  ```json
+  {
+      "query": "Resources | summarize count()",
+      "managementGroupId": "myMG"
+  }
+  ```
 
 ## <a name="escape-characters"></a>Kaçış karakterleri
 

@@ -3,12 +3,12 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255906"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542882"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -165,7 +165,7 @@ Birincil düğüm türü için yükseltilmiş ölçek kümesi eklemek üzere öz
 
 #### <a name="parameters"></a>Parametreler
 
-Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekleyin. `vmNodeType1Name`Yeni ölçek kümesinin benzersiz olduğunu, sayı ve boyut değerlerinin ise orijinal ölçek kümesiyle aynı olduğunu unutmayın.
+Yeni ölçek kümesinin örnek adı için bir parametre ekleyin. `vmNodeType1Name`Yeni ölçek kümesinin benzersiz olduğunu, sayı ve boyut değerlerinin ise orijinal ölçek kümesiyle aynı olduğunu unutmayın.
 
 **Şablon dosyası**
 
@@ -174,18 +174,7 @@ Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekley
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-},
-"nt1InstanceCount": {
-    "type": "int",
-    "defaultValue": 5,
-    "metadata": {
-        "description": "Instance count for node type"
-    }
-},
-"vmNodeType1Size": {
-    "type": "string",
-    "defaultValue": "Standard_D2_v2"
-},
+}
 ```
 
 **Parametre dosyası**
@@ -193,12 +182,6 @@ Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekley
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
-},
-"nt1InstanceCount": {
-    "value": 5
-},
-"vmNodeType1Size": {
-    "value": "Standard_D2_v2"
 }
 ```
 
@@ -216,13 +199,13 @@ Dağıtım şablonu `variables` bölümünde, yeni ölçek kümesinin gelen NAT 
 
 Dağıtım şablonu *kaynakları* bölümünde, yeni sanal makine ölçek kümesini ekleyerek şunları göz önünde bulundurun:
 
-* Yeni ölçek kümesi özgün ile aynı düğüm türüne başvuruyor:
+* Yeni ölçek kümesi yeni düğüm türüne başvuruyor:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
     ```
 
-* Yeni ölçek kümesi aynı yük dengeleyici arka uç adresine ve alt ağına başvuruyor (ancak farklı yük dengeleyici gelen NAT havuzu kullanır):
+* Yeni ölçek kümesi, orijinaliyle aynı yük dengeleyici arka uç adresine ve alt ağına başvurur, ancak farklı yük dengeleyici gelen NAT havuzu kullanır:
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -253,6 +236,33 @@ Dağıtım şablonu *kaynakları* bölümünde, yeni sanal makine ölçek kümes
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
+
+Ardından, `nodeTypes` *Microsoft. servicefabric/kümeler* kaynağı listesine bir giriş ekleyin. `name`Yeni düğüm türüne (*vmNodeType1Name*) başvurması gereken, hariç, özgün düğüm türü girdisiyle aynı değerleri kullanın.
+
+```json
+"nodeTypes": [
+    {
+        "name": "[parameters('vmNodeType0Name')]",
+        ...
+    },
+    {
+        "name": "[parameters('vmNodeType1Name')]",
+        "applicationPorts": {
+            "endPort": "[parameters('nt0applicationEndPort')]",
+            "startPort": "[parameters('nt0applicationStartPort')]"
+        },
+        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+        "durabilityLevel": "Silver",
+        "ephemeralPorts": {
+            "endPort": "[parameters('nt0ephemeralEndPort')]",
+            "startPort": "[parameters('nt0ephemeralStartPort')]"
+        },
+        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+        "isPrimary": true,
+        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+    }
+],
+```
 
 Şablon ve parametre dosyalarınızda tüm değişiklikleri yaptıktan sonra, Key Vault başvurularını almak ve güncelleştirmeleri kümenize dağıtmak için sonraki bölüme ilerleyin.
 

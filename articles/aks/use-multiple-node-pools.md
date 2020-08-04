@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133104"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542034"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -489,6 +489,8 @@ Yalnızca bu toleranlama uygulanmış olan bir düğüm, *gpunodepool*içindeki 
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Düğüm havuzu için bir taınt, etiket veya etiket belirtme
 
+### <a name="setting-nodepool-taints"></a>Nodepool izleri ayarlama
+
 Düğüm havuzu oluştururken, bu düğüm havuzuna litre, Etiketler veya Etiketler ekleyebilirsiniz. Bir taınt, etiket veya etiket eklediğinizde, bu düğüm havuzundaki tüm düğümler o taınt, etiket veya etiketi de alır.
 
 Taint ile bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Container TNP* adını belirtin ve bu parametreyi, `--node-taints` Taint için *SKU = GPU: NoSchedule* belirtmek üzere kullanın.
@@ -532,6 +534,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Taint bilgileri, düğümlerin zamanlama kurallarını işlemek için Kubernetes içinde görülebilir.
 
+### <a name="setting-nodepool-labels"></a>Nodepool etiketlerini ayarlama
+
 Düğüm havuzu oluşturma sırasında düğüm havuzuna de etiket ekleyebilirsiniz. Düğüm havuzunda ayarlanan Etiketler düğüm havuzundaki her bir düğüme eklenir. Bu Etiketler, düğümlerin zamanlama kurallarını işlemek için [Kubernetes içinde görülebilir][kubernetes-labels] .
 
 Etiketli bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Labelnp* adını belirtin ve `--labels` Bu parametreyi kullanarak *Bölüm = It* ve *costcenter = 9999* etiketlerini belirtin.
@@ -574,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>Nodepool Azure etiketlerini ayarlama
+
 AKS kümenizdeki düğüm havuzlarına bir Azure etiketi uygulayabilirsiniz. Düğüm havuzuna uygulanan etiketler, düğüm havuzu içindeki her bir düğüme uygulanır ve yükseltmeler aracılığıyla kalıcı hale getirilir. Etiketler, genişleme işlemleri sırasında düğüm havuzuna eklenen yeni düğümlere de uygulanır. Etiket eklemek, ilke izleme veya maliyet tahmini gibi görevlerle yardımcı olabilir.
+
+Azure etiketlerinde, anahtar ararken bir etiketi alırken olduğu gibi işlemler için büyük/küçük harfe duyarsız olan anahtarlar vardır. Bu durumda, verilen anahtara sahip bir etiket, büyük/küçük harfe bakılmaksızın güncelleştirilir veya alınacaktır. Etiket değerleri büyük/küçük harfe duyarlıdır.
+
+AKS 'de, birden fazla etiket aynı anahtarlarla, ancak büyük/küçük harflere sahip olarak ayarlandıysa, kullanılan etiket ilk alfabetik sırada kullanılır. Örneğin, `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` `Key1` ile sonuçlanır ve `val1` ayarlanır.
 
 [Az aks nodepool Add][az-aks-nodepool-add]' i kullanarak bir düğüm havuzu oluşturun. *Tagnodepool* adını belirtin ve `--tag` Bu parametreyi kullanarak, Etiketler için *Bölüm = It* ve *costcenter = 9999* parametresini belirtin.
 

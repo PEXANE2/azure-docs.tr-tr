@@ -1,6 +1,6 @@
 ---
 title: Azure Gelişmiş tehdit algılama | Microsoft Docs
-description: Azure AD Kimlik Koruması ve özellikleri hakkında bilgi edinin.
+description: Azure için Azure AD Kimlik Koruması hizmeti gibi yerleşik Gelişmiş tehdit algılama işlevleri hakkında bilgi edinin.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503294"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541031"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure gelişmiş tehdit algılama
 
@@ -342,7 +342,7 @@ Kuruluşunuz, gölge BT’yi ortaya çıkarmaya, riskleri değerlendirmeye, ilke
 
 | Kategori | Açıklama |
 | -------- | ----------- |
-| Bul | Cloud App Security ile gölge BT’yi ortaya çıkarın. Bulut ortamınızdaki uygulamaları, etkinlikleri, kullanıcıları, verileri ve dosyaları bularak görünürlük kazanın. Bulutunuza bağlı olan üçüncü taraf uygulamalarını keşfedin.|
+| Bulma | Cloud App Security ile gölge BT’yi ortaya çıkarın. Bulut ortamınızdaki uygulamaları, etkinlikleri, kullanıcıları, verileri ve dosyaları bularak görünürlük kazanın. Bulutunuza bağlı olan üçüncü taraf uygulamalarını keşfedin.|
 |Araştır | Riskli uygulamaları, belirli kullanıcıları ve ağınızdaki dosyaları derinlemesine incelemek üzere bulut inceleme araçlarını kullanarak bulut uygulamalarınızı araştırın. Buluttan toplanan verilerdeki modelleri bulun. Bulutunuzu izlemek için raporlar oluşturun. |
 | Denetim | Ağ bulut trafiği üzerinde en yüksek denetim düzeyine ulaşmak için ilkeler ve uyarılar ayarlayarak riski azaltın. Kullanıcılarınızı güvenli, tasdikli bulut uygulaması alternatiflerine geçirmek için Cloud App Security’yi kullanın. |
 | Koruma | Uygulamaları tasdik etmek veya önlemek, veri kaybı engellemesini zorlamak, izinleri ve paylaşımı denetlemek ve özel raporlar ve uyarılar oluşturmak için Cloud App Security kullanın. |

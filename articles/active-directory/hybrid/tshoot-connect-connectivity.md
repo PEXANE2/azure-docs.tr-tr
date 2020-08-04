@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356415"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541745"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -32,7 +32,7 @@ Azure AD Connect, kimlik doğrulaması için modern kimlik doğrulaması (ADAL k
 
 Bu makalede, Fabrikam 'ın proxy 'si aracılığıyla Azure AD 'ye nasıl bağlandığını göstereceğiz. Proxy sunucusu fabrikamproxy olarak adlandırılır ve 8080 numaralı bağlantı noktasını kullanıyor.
 
-İlk olarak [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) doğru yapılandırıldığından emin olmak istiyoruz.
+İlk olarak [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) doğru yapılandırıldığından ve machine.config dosya güncelleştirmesinden sonra **Microsoft Azure AD Eşitleme hizmetinin** yeniden başlatıldığından emin olun.
 ![MachineConfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -113,7 +113,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Azure AD'ye Bağlanma**
 
-| Saat | URL |
+| Zaman | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Yapılandır**
 
-| Saat | URL |
+| Zaman | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **İlk eşitleme**
 
-| Saat | URL |
+| Zaman | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

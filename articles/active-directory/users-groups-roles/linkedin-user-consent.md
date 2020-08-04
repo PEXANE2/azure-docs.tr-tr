@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448671"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542370"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn hesap bağlantıları veri paylaşımı ve onayı
 
@@ -41,7 +41,7 @@ Kuruluşunuzun ayarını yönetmek için bir Azure Active Directory yöneticisi 
 1. Tümleştirmeyi etkinleştirmek veya devre dışı bırakmak için [Azure AD kuruluşunuz Için LinkedIn tümleştirmesi onay](linkedin-integration.md)bölümündeki adımları izleyin.
 2. Kuruluşunuzda LinkedIn tümleştirmesini duyurdığınızda, kullanıcılarınızı [Microsoft uygulamaları ve Hizmetleri 'Ndeki LinkedIn bilgileri](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)hakkında SSS bölümüne getirin. Makale, LinkedIn bilgilerinin nerede görüntüleneceğini, [veri paylaşımını ve gizliliğini](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400), [hesapların nasıl bağlanacağını](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) ve daha fazlasını gösteren bilgiler sağlar.
 
-LinkedIn tümleştirmesiyle ilgili veri paylaşımı ve gizlilikle ilgili tüm bilgileri sağlayan kullanıcılarınıza LinkedIn tümleştirmesini duyurmalısınız. Lisanslarını kullanan kullanıcıların, içindeki hesaplara bağlanabilmesi için 
+LinkedIn tümleştirmesiyle [, veri paylaşımı ve gizlilikle](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)ilgili tüm bilgileri sağlayan kullanıcılarınıza LinkedIn tümleştirmesini duyurmalısınız. 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Microsoft ve LinkedIn 'de veri erişimi için Kullanıcı onayı
 

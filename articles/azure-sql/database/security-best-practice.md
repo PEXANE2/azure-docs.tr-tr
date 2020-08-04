@@ -1,7 +1,7 @@
 ---
 title: Ortak güvenlik gereksinimlerini ele almak için PlayBook
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde ortak güvenlik gereksinimleri ve en iyi uygulamalar sağlanmaktadır.
+description: Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği için ortak güvenlik gereksinimleri ve en iyi uygulamalar sağlanmaktadır.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371796"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541728"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -241,7 +241,7 @@ Gerekli görevleri gerçekleştirmek için yalnızca gerekli [izinleri](https://
 
 - Azure Resource Manager:
   - Kullanılabilir veya Azure özel rolleri yerleşik roller kullanın ve gerekli izinleri atayın.
-    - [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
+    - [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)
     - [Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
 
 **En iyi uygulamalar**:
@@ -291,7 +291,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 - Sisteme erişen kullanıcıların (ve otomatikleştirilmiş işlemlerin) kapsamlı bir hiyerarşisini belirler.
 
 - Gerekli Kullanıcı gruplarına göre roller oluşturun ve rollere izinler atayın.
-  - Azure portal veya PowerShell aracılığıyla yönetim düzeyi görevler için, RBAC rollerini kullanın. Gereksinimle eşleşen bir yerleşik rol bulun ya da kullanılabilir izinleri kullanarak bir Azure özel rolü oluşturun
+  - Azure portal veya PowerShell aracılığıyla yönetim düzeyindeki görevler için Azure rollerini kullanın. Gereksinimle eşleşen bir yerleşik rol bulun ya da kullanılabilir izinleri kullanarak bir Azure özel rolü oluşturun
   - Yönetilen bir örnekte sunucu genelindeki görevler için sunucu rolleri oluşturun (yeni oturumlar, veritabanları oluşturma).
   - Veritabanı düzeyindeki görevler için veritabanı rolleri oluşturun.
 
@@ -318,7 +318,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 
 - Yerleşik roller çok fazla izin veya yetersiz izin vermekle, Kullanıcı tanımlı roller oluşturup kullanın.
 
-- Rol atamaları Ayrıca, T-SQL ' d a SQL Agent Iş adımlarında ya da RBAC rolleri için Azure PıM 'yi kullanarak, Ayrıca, örneğin, dinamik olarak (DSD) (örneğin, bir veya daha fazla işlem),
+- Rol atamaları Ayrıca, T-SQL ' d a SQL Agent Iş adımlarında veya Azure rolleri için Azure PıM ' yi kullanarak, Ayrıca, örneğin dinamik olarak (DSD), aynı zamanda bir veya daha fazla performans ayrımı olarak da
 
 - DBAs 'nin şifreleme anahtarlarına veya anahtar depolarına erişimi olmadığından ve anahtarlara erişimi olan güvenlik yöneticilerinin sırasıyla veritabanına erişimi olmadığından emin olun. [Genişletilebilir anahtar yönetimi (ekm)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) kullanımı, bu ayrımı daha kolay hale getirir. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , EKM 'yi uygulamak için kullanılabilir.
 
@@ -342,7 +342,7 @@ SoD 'ye daha ayrıntılı bir şekilde geçmek isteyen okuyucular için aşağı
   - [İmza saklı yordamları](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Azure Kaynak yönetimi için:
-  - [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
+  - [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)
   - [Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
   - [Yükseltilmiş erişim için Azure AD Privileged Identity Management kullanma](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 

@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082127"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542238"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect eşitleme: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitleme tarafından eşitlenen öznitelikleri listeler.  
@@ -165,7 +165,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | targetAddress |X |X | | |
 | Telephoneassiste |X |X | | |
 | telephoneNumber 'dır |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Azure AD 'den, Exchange Online 'ın bu öznitelik için yetki kaynağı haline gelmesi ve Şirket içinden daha sonraki değişiklikler eşitlenmesinden sonra Exchange Online 'a yalnızca bir kez eşitlenir. Daha fazla bilgi için bkz. ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | başlık |X |X | | |
 | Unauthorıg |X |X |X | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
@@ -247,7 +247,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | targetAddress |X |X | | |
 | Telephoneassiste |X |X | | |
 | telephoneNumber 'dır |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Azure AD 'den, Exchange Online 'ın bu öznitelik için yetki kaynağı haline gelmesi ve Şirket içinden daha sonraki değişiklikler eşitlenmesinden sonra Exchange Online 'a yalnızca bir kez eşitlenir. Daha fazla bilgi için bkz. ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | başlık |X |X | | |
 | Unauthorıg |X |X |X | |
 | url |X |X | | |
@@ -298,7 +298,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber 'dır |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Azure AD 'den, Exchange Online 'ın bu öznitelik için yetki kaynağı haline gelmesi ve Şirket içinden daha sonraki değişiklikler eşitlenmesinden sonra Exchange Online 'a yalnızca bir kez eşitlenir. Daha fazla bilgi için bkz. ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | başlık |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |

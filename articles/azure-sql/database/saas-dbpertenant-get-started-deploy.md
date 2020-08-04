@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254319"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542255"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
 
@@ -38,7 +38,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 Çeşitli SaaS tasarım ve yönetim düzenlerini araştırmak için bir [dizi ilgili öğretici](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) sunulmaktadır. Öğreticiler, bu ilk dağıtımın ötesinde derleme içerir. Öğreticileri kullandığınızda, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betikleri inceleyebilirsiniz. Betikler, SQL Database özelliklerinin SaaS uygulamalarının geliştirilmesini nasıl basitleştireceğinizi gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -57,7 +57,7 @@ Adlarınızı şimdi seçin ve bunları aşağı yazın.
 
 1. Azure portal, Wingtip bilet SaaS veritabanının kiracı başına Dağıtım şablonunu açmak için, **Azure 'A dağıt**' ı seçin.
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. Gerekli parametreler için şablondaki değerleri girin.
 
@@ -118,7 +118,7 @@ Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için ba�
 
 2. Olaylar hub 'ında **fabrikam Cakkulübü** seçin.
 
-    ![Olaylar](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Ekinlikler](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 

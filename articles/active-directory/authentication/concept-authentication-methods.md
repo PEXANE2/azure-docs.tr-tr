@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051314"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540844"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -38,13 +38,13 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 | [Parola](#password) | Yes | |
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
 | [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
-| [OATH yazılım belirteçleri](#oath-software-tokens) | Hayır | MFA |
+| [OATH yazılım belirteçleri](#oath-software-tokens) | No | MFA |
 | [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Yes | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
-| [Sesli arama](#phone-options) | Hayır | MFA ve SSPR |
-| [Güvenlik soruları](#security-questions) | Hayır | Yalnızca SSPR |
-| [E-posta adresi](#email-address) | Hayır | Yalnızca SSPR |
-| [Uygulama parolaları](#app-passwords) | Hayır | Yalnızca belirli durumlarda MFA |
+| [Sesli arama](#phone-options) | No | MFA ve SSPR |
+| [Güvenlik soruları](#security-questions) | No | Yalnızca SSPR |
+| [E-posta adresi](#email-address) | No | Yalnızca SSPR |
+| [Uygulama parolaları](#app-passwords) | No | Yalnızca belirli durumlarda MFA |
 
 Bu makalede, Azure AD 'de bulunan bu farklı kimlik doğrulama ve doğrulama yöntemleri ve belirli sınırlamalar veya kısıtlamalar özetlenmektedir.
 
@@ -74,7 +74,7 @@ Authenticator uygulaması, Smartphone 'a veya tabletinize bir bildirim gönderer
 ![Oturum açma işlemini tamamlamaya yönelik kimlik doğrulayıcı uygulama bildirimi için Web tarayıcı istemi örnek ekran görüntüsü](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, Android cihazlarda *mobil uygulama yöntemi ile Ilgili bildirim* söz konusu ülkede/bölgede çalışmaz. Diğer kimlik doğrulama yöntemleri bu kullanıcılar için kullanılabilir duruma getirilmelidir.
+> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan bir personel varsa, Android cihazlarda *mobil uygulama yöntemi aracılığıyla bildirim* , Google Play hizmetleri (anında iletme bildirimleri dahil) bölgede engellenmeye karşı, bu ülkede/bölgede çalışmaz. Ancak iOS bildirimi çalışır. Android cihazlarda, bu kullanıcılar için alternatif kimlik doğrulama yöntemlerinin kullanılabilir hale getirilmelidir.
 
 ### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 

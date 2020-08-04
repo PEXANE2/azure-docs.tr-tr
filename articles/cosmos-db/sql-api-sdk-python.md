@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d68fc7b01e6204cb9ad00ea60e413c73856d758e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247074"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542455"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 
@@ -301,10 +301,8 @@ Sürüm 4.0.0 B1, Python dili en iyi uygulamalarına uygun bir Kullanıcı dostu
 
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
 
-Kullanımdan kaldırılan bir SDK 'Yı kullanarak Azure Cosmos DB istek, hizmet tarafından reddedilir.
-
 > [!WARNING]
-> Sürüm **1.0.0** ÖNCESI SQL API için Python SDK 'sının tüm sürümleri **, 29 Şubat 2016**tarihinde kullanımdan kalkmıştı. Ve, SQL API için Python SDK 'sının tüm 1. x ve 2. x sürümleri **30 ağustos 2020**tarihinde kullanımdan kaldırılacaktır.
+> 31 Ağustos 2022 ' den sonra, Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API için Azure Cosmos DB Python SDK 'sının 1. x veya 2. x sürümlerine destek sağlamacaktır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x ve 2. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |

@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool Release 7/2/2019
 titleSuffix: Azure
-description: Tehdit modelleme aracı için sürüm notlarını belgeleme
+description: 7/2/2019 tarihinde yayınlanan tehdit modelleme aracı güncelleştirmesi için sürüm notlarını okuyun. Notlar, erişilebilirlik geliştirmelerini ve hata düzeltmelerini içerir.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: d4a97a10b8055af4401dbe163723b1fb38a5d12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e62f6950f90d7f15aa231783e292ec8eee0b4c4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269665"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539127"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.60702.1-7/2/2019
 
@@ -31,7 +31,7 @@ Tıbbi cihazları modelleyen bir kalıp kümesi, açık kaynaklı topluluk taraf
 
 ![Model doğrulama seçeneği](./media/threat-modeling-tool-releases-71607021/tmt-template-selection.png)
 
-## <a name="system-requirements"></a>Sistem Gereksinimleri
+## <a name="system-requirements"></a>Sistem gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - [Microsoft Windows 10 yıldönümü güncelleştirmesi](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) veya üzeri

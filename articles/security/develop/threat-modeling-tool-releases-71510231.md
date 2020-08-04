@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool Release 11/1/2018
 titleSuffix: Azure
-description: Tehdit modelleme aracı için sürüm notlarını belgeleme
+description: 11/1/2018 tarihinde yayınlanan tehdit modelleme aracı güncelleştirmesi için sürüm notlarını okuyun. Bu sürüm, yeni işlevsellik veya düzeltme içermiyor.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 3d6057c729b2f3f9d7157e91656db1912422f168
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e48e14c13ef2ff171145022f4eafa6e0f80a9b22
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269761"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539025"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.51023.1 - 01.11.2018
 
@@ -27,7 +27,7 @@ ms.locfileid: "78269761"
 
 - Hiçbiri
 
-## <a name="system-requirements"></a>Sistem Gereksinimleri
+## <a name="system-requirements"></a>Sistem gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - Microsoft Windows 10

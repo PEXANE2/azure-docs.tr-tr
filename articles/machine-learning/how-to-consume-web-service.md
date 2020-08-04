@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 991ad3afc51cc2f6dc1853a6b26f53bcb2fd1503
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7aa17a7a96bffd0cd6f68f6187038aabd72b8cbd
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326418"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542170"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,6 +92,9 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 |Belirteç| Kullanılamaz| Varsayılan olarak devre dışı |
 
 Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirtecin olarak biçimlendirilmesi gerekir `Bearer <key-or-token>` , burada `<key-or-token>` anahtar veya belirteç değeridir.
+
+Anahtarlar ve belirteçler arasındaki başlıca fark, **anahtarların statik olduğu ve el ile yeniden üretilme**ve **belirteçlerin süre sonu üzerine yenilenmesi gerektiği**. Anahtar tabanlı kimlik doğrulaması, Azure Container Instance ve Azure Kubernetes hizmeti tarafından dağıtılan Web Hizmetleri için desteklenir ve belirteç tabanlı kimlik doğrulaması **yalnızca** Azure Kubernetes hizmet dağıtımları için kullanılabilir. Daha fazla bilgi ve belirli kod örnekleri için bkz. [nasıl yapılır](how-to-setup-authentication.md#web-service-authentication) kimlik doğrulaması.
+
 
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
@@ -181,7 +184,7 @@ Web hizmeti, bir istekte birden çok veri kümesini kabul edebilir. Yanıt dizis
 
 ### <a name="binary-data"></a>İkili veriler
 
-Hizmetinize ikili veri desteğini etkinleştirme hakkında daha fazla bilgi için bkz. [ikili veriler](how-to-deploy-and-where.md#binary).
+Hizmetinize ikili veri desteğini etkinleştirme hakkında daha fazla bilgi için bkz. [ikili veriler](how-to-deploy-advanced-entry-script.md#binary-data).
 
 > [!TIP]
 > İkili veri desteğini etkinleştirme, dağıtılan model tarafından kullanılan score.py dosyasında olur. İstemciden, programlama dilinizin HTTP işlevini kullanın. Örneğin, aşağıdaki kod parçacığı bir JPG dosyasının içeriğini bir Web hizmetine gönderir:
@@ -196,7 +199,7 @@ Hizmetinize ikili veri desteğini etkinleştirme hakkında daha fazla bilgi içi
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Çıkış noktaları arası kaynak paylaşımı (CORS)
 
-Hizmetinizde CORS desteğini etkinleştirme hakkında bilgi için bkz. çıkış noktaları [arası kaynak paylaşımı](how-to-deploy-and-where.md#cors).
+Hizmetinizde CORS desteğini etkinleştirme hakkında bilgi için bkz. çıkış noktaları [arası kaynak paylaşımı](how-to-deploy-advanced-entry-script.md#cors).
 
 ## <a name="call-the-service-c"></a>Hizmeti çağırma (C#)
 
@@ -518,6 +521,153 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+
+## <a name="web-service-schema-openapi-specification"></a>Web hizmeti şeması (Openapı belirtimi)
+
+Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)kullanarak hizmetin openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)` .) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
+
+Aşağıdaki JSON belgesi, bir dağıtım için oluşturulan bir şemanın (Openapı belirtimi) bir örneğidir:
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for Azure Machine Learning myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+Daha fazla bilgi için bkz. [Openapı belirtimi](https://swagger.io/specification/).
+
+Belirtiden istemci kitaplıkları oluşturabileceğiniz bir yardımcı program için bkz. [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen).
+
+
+> [!TIP]
+> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) kullanın (örneğin, `service.swagger_uri` ).
 
 ## <a name="consume-the-service-from-power-bi"></a>Hizmeti Power BI’dan kullanma
 

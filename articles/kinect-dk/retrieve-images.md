@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, alma, algılayıcı, kamera, SDK, derinlik, RGB, görüntüler, renk, yakalama, çözümleme, arabellek
-ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277651"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538923"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Azure Kinect görüntü verilerini alma
 
-Bu sayfa, Azure Kinect 'tan görüntülerin nasıl alınacağını gösteren ayrıntıları sağlar. Makalede, cihazın renk ve derinlik kameraları arasında koordine edilen görüntülerin nasıl yakalanacağı ve erişebileceği gösterilmektedir. cihaz. Görüntülere erişmek için önce cihazı açmanız ve yapılandırmanız gerekir, ardından görüntüleri yakalayabilirsiniz.
+Bu sayfa, Azure Kinect 'tan görüntülerin nasıl alınacağını gösteren ayrıntıları sağlar. Makalede, cihazın rengi ve derinliği arasında koordine edilen görüntülerin nasıl yakalanacağı ve erişebileceği gösterilmektedir. Görüntülere erişmek için önce cihazı açmanız ve yapılandırmanız gerekir, ardından görüntüleri yakalayabilirsiniz.
 Bir görüntüyü yapılandırmadan ve yakalamadan önce [cihazı bulup açmanız](find-then-open-device.md)gerekir.
 
 Ayrıca, bu makaledeki işlevlerin nasıl kullanılacağını gösteren [SDK akış örneğine](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming) de başvurabilirsiniz.

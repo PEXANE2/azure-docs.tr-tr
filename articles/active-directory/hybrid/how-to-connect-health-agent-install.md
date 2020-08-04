@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7267da7db91e153190e98b09e9a3c505837bd042
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c709fca3fbddb6fc16699052c5f01d1255c79dd8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446317"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542102"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -154,6 +154,7 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle**' ye tıklayın.
 8. **Federasyon Hizmeti özellikleri** Iletişim kutusunda **Olaylar** sekmesine tıklayın.
 9. **(Success audits and Failure audits) Başarı denetimleri ve Hata denetimleri** onay kutularını seçin ve **OK (Tamam)** düğmesine tıklayın.
+10. Ayrıntılı günlük kaydı şu komutu kullanarak PowerShell aracılığıyla etkinleştirilebilir: ```Set-AdfsProperties -LOGLevel Verbose``` .
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Windows Server 2016'da AD FS için denetimi etkinleştirme
 

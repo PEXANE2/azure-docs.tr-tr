@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de sanal ağ kaynakları ve bağla
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208066"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542713"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hizmetinde ağ bağlantısı ve güvenlik için en iyi yöntemler
 
@@ -37,7 +37,9 @@ Kapsayıcı ağ arabirimi (CNı), kapsayıcı çalışma zamanının bir ağ sa�
 
 ![Her biri tek bir Azure VNet 'e bağlanan köprülerle iki düğüm gösteren diyagram](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-Çoğu üretim dağıtımı için Azure CNı ağı kullanmanız gerekir. Bu ağ modeli, kaynakların denetim ve yönetimi için ayrım sağlar. Bir güvenlik perspektifinden, genellikle farklı takımların bu kaynakları yönetmesini ve güvenliğini sağlamak isteyeceksiniz. Azure CNı Networking, mevcut Azure kaynaklarına, şirket içi kaynaklara veya diğer hizmetlere, her Pod 'a atanan IP adresleri aracılığıyla doğrudan bağlanmanızı sağlar.
+Üretim dağıtımları için hem Kubernetes kullanan hem de Azure CNı geçerli seçeneklerdir.
+
+Üretim için Azure CNı ağı 'nın önemli bir avantajı, ağ modelinin, kaynakların denetimi ve yönetimi ile ayrılmasını sağlar. Bir güvenlik perspektifinden, genellikle farklı takımların bu kaynakları yönetmesini ve güvenliğini sağlamak isteyeceksiniz. Azure CNı Networking, mevcut Azure kaynaklarına, şirket içi kaynaklara veya diğer hizmetlere, her Pod 'a atanan IP adresleri aracılığıyla doğrudan bağlanmanızı sağlar.
 
 Azure CNı ağı kullandığınızda, sanal ağ kaynağı AKS kümesine ayrı bir kaynak grubunda bulunur. Bu kaynaklara erişmek ve bunları yönetmek için AKS hizmet sorumlusu için temsilci izinleri. AKS kümesi tarafından kullanılan hizmet sorumlusu, sanal ağınızdaki alt ağda en az bir [ağ katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) iznine sahip olmalıdır. Yerleşik ağ katılımcısı rolünü kullanmak yerine [özel bir rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız aşağıdaki izinler gereklidir:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`

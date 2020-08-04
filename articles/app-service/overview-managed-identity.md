@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415066"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542221"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -314,6 +314,9 @@ App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokol
 
 ### <a name="using-the-rest-protocol"></a>REST protokolünü kullanma
 
+> [!NOTE]
+> "2017-09-01" API sürümünü kullanarak bu protokolün daha eski bir sürümü, `secret` yerine üst bilgiyi kullandı `X-IDENTITY-HEADER` ve yalnızca `clientid` Kullanıcı tarafından atanan özelliği kabul eder. Ayrıca, `expires_on` bir zaman damgası biçiminde döndürülür. MSI_ENDPOINT, IDENTITY_ENDPOINT bir diğer ad olarak kullanılabilir ve MSI_SECRET IDENTITY_HEADER için bir diğer ad olarak kullanılabilir. Protokolün bu sürümü şu anda Linux tüketim barındırma planları için gereklidir.
+
 Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahiptir:
 
 - IDENTITY_ENDPOINT-yerel belirteç hizmeti URL 'SI.
@@ -321,10 +324,10 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **IDENTITY_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> | Parametre adı    | İçinde     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Parametre adı    | İçinde     | Açıklama                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | kaynak          | Sorgu  | Belirtecin alınması gereken kaynağın Azure AD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.    |
-> | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın.                                                                                                                                                                                                                                                                 |
+> | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın (Şu anda yalnızca "2017-09-01" sağlayan Linux tüketimini kullanmadıkça, Yukarıdaki nota bakın).                                                                                                                                                                                                                                                                 |
 > | X-ıDENTITY-HEADER | Üst bilgi | IDENTITY_HEADER ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.                                                                                                                                                                                                    |
 > | client_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin istemci KIMLIĞI. ,, Veya içeren bir istek üzerinde kullanılamaz `principal_id` `mi_res_id` `object_id` . Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                             |
 > | principal_id      | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin asıl KIMLIĞI. `object_id`Bunun yerine kullanılabilecek bir diğer addır. Client_id, mi_res_id veya object_id içeren bir istekte kullanılamaz. Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır. |
@@ -335,7 +338,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 
-> | Özellik adı | Description                                                                                                                                                                                                                                        |
+> | Özellik adı | Açıklama                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.                                                                                                                               |
 > | client_id     | Kullanılan kimliğin istemci KIMLIĞI.                                                                                                                                                                                                       |
@@ -345,9 +348,6 @@ Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gö
 > | token_type    | Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür Ftaşıyıcı ' dır. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Bu yanıt, [Azure AD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.
-
-> [!NOTE]
-> "2017-09-01" API sürümünü kullanarak bu protokolün daha eski bir sürümü, `secret` yerine üst bilgiyi kullandı `X-IDENTITY-HEADER` ve yalnızca `clientid` Kullanıcı tarafından atanan özelliği kabul eder. Ayrıca, `expires_on` bir zaman damgası biçiminde döndürülür. MSI_ENDPOINT, IDENTITY_ENDPOINT bir diğer ad olarak kullanılabilir ve MSI_SECRET IDENTITY_HEADER için bir diğer ad olarak kullanılabilir.
 
 ### <a name="rest-protocol-examples"></a>REST protokol örnekleri
 

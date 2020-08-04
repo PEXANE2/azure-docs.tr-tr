@@ -1,6 +1,6 @@
 ---
 title: Başlarken-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: Bu, Threat Modeling Tool eyleminde vurgulamanın daha derin bir genel bakıştır.
+description: Threat Modeling Tool kullanmaya nasıl başlaleyeceğinizi öğrenin. Bir diyagram oluşturun, tehditleri ve tehditleri azaltın ve her bir hafifletme doğrulaması yapın.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728298"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539909"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool kullanmaya başlama
 

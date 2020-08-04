@@ -1,18 +1,18 @@
 ---
 title: Microsoft Threat Modeling Tool özelliğe genel bakış-Azure
-description: Threat Modeling Tool bulunan tüm özellikler hakkında bilgi edinin
+description: Analiz görünümü ve raporlar gibi Threat Modeling Tool bulunan tüm özellikler hakkında bilgi edinin.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552126"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540011"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool özelliğe genel bakış
 
@@ -39,7 +39,7 @@ Deneyim, diğer Microsoft ürünleriyle benzerdir. Üst düzey menü öğelerini
 
 ![Menü öğeleri](./media/threat-modeling-tool-feature-overview/menuitems.png)
 
-| Etiketle                               | Ayrıntılar      |
+| Etiket                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
 | **Dosya** | <ul><li>Dosyaları açma, kaydetme ve kapatma</li><li>OneDrive hesaplarının oturumunu açın ve oturumunuzu kapatın.</li><li>Bağlantıları paylaşma (görüntüleme ve düzenleme).</li><li>Dosya bilgilerini görüntüleyin.</li><li>Varolan modellere yeni bir şablon uygulayın.</li></ul> |
 | **Düzenle** | Eylemleri geri alın ve yeniden yapın, Ayrıca kopyalama, yapıştırma ve silme işlemlerini yapın. |
@@ -75,13 +75,13 @@ Tuval, öğeleri sürükleyip bıraktığınızda yer alan alandır. Model oluş
 
 ![Öğe özellikleri](./media/threat-modeling-tool-feature-overview/canvasdrop2.png)
 
-### <a name="stencils"></a>Şablonlar
+### <a name="stencils"></a>Kalıplar
 
 Seçtiğiniz şablona bağlı olarak, kullanıma sunulan tüm kalıpları bulabilirsiniz. Doğru öğeleri bulamıyorsanız, başka bir şablon kullanın. İsterseniz, bir şablonu gereksinimlerinize uyacak şekilde değiştirebilirsiniz. Genellikle, aşağıdaki gibi kategorilerin bir birleşimini bulabilirsiniz:
 
 | Şablon adı                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
-| **İşleme** | Uygulamalar, tarayıcı eklentileri, iş parçacıkları, sanal makineler |
+| **İşle** | Uygulamalar, tarayıcı eklentileri, iş parçacıkları, sanal makineler |
 | **Dış etkileşen** | Kimlik doğrulama sağlayıcıları, tarayıcılar, kullanıcılar, Web uygulamaları |
 | **Veri deposu** | Önbellek, depolama, yapılandırma dosyaları, veritabanları, kayıt defteri |
 | **Veri akışı** | İkili, ALPC, HTTP, HTTPS/TLS/SSL, ıOCTL, IPSec, adlandırılmış kanal, RPC/DCOM, SMB, UDP |
@@ -100,7 +100,7 @@ Seçtiğiniz şablona bağlı olarak, kullanıma sunulan tüm kalıpları bulabi
 
 | Element özelliği                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
-| **Adı** | İşlemlerinizi, mağazalarınızı, karışık aktörleri ve akışları kolayca tanınabilmeleri için adlandırmak faydalı olur. |
+| **Ad** | İşlemlerinizi, mağazalarınızı, karışık aktörleri ve akışları kolayca tanınabilmeleri için adlandırmak faydalı olur. |
 | **Kapsam dışı** | Seçilirse, öğe tehdit oluşturma matrisinden alınır (önerilmez). |
 | **Kapsam dışı nedeni** | Kullanıcıların kapsam dışı neden seçili olduğunu bilmesini sağlamak için gerekçe alanı. |
 

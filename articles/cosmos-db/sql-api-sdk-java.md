@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b8cc0d44c654bd7047bac462ce98126fb4a27334
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461043"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541677"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -260,11 +260,10 @@ Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos D
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
 
 > [!WARNING]
-> Java için SQL SDK 'sının tüm **1. x** sürümleri **30 Mayıs 2020**tarihinde kullanımdan kaldırılacaktır. Sürüm **1.0.0** öncesinde Java IÇIN SQL SDK 'nın tüm sürümleri **, 29 Şubat 2016**tarihinde devre dışı bırakıldı.
-> 
-> 
+> 30 Mayıs 2020 ' den sonra, Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API için Azure Cosmos DB Java SDK 'sının 1. x sürümleri için destek sunacaktır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
+>
+> 29 Şubat 2016 ' den sonra Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API için Azure Cosmos DB Java SDK 'sının 0. x sürümlerine destek sağlamalıdır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 0. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
 
-<br/>
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |

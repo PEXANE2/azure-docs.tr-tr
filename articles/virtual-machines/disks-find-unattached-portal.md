@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085767"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542747"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Eklenmemiş Azure yönetilen ve yönetilmeyen diskleri bulma ve silme-Azure portal
 
@@ -22,12 +22,12 @@ Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağ
 
 Ekli yönetilen disklere sahipseniz ve bu verilere artık ihtiyacınız yoksa, aşağıdaki süreç Azure portal nasıl bulacağınızı açıklar:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Diskleri**arayın ve seçin.
 
     **Diskler** dikey penceresinde, tüm disklerinizin bir listesini görürsünüz. **-** **Sahip** sütununda "" olan herhangi bir disk, eklenmemiş bir disktir.
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![Yönetilen diskler dikey penceresinin ekran görüntüsü; bir disk sahip sütununse, bu, eklenmemiş bir disktir.](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. Silmek istediğiniz eklenmemiş diski seçin, bu, diskin dikey penceresini açar.
 1. Diskin dikey penceresinde disk durumunun eklenmemiş olduğunu onaylayıp **Sil**' i seçin.
@@ -40,7 +40,7 @@ Yönetilmeyen diskler, [Azure depolama hesaplarında](../storage/common/storage-
 
 Bir VM 'ye bağlı olmayan ve bu disklere artık gerek duyulmayan yönetilmeyen diskler varsa ve bunları silmek istiyorsanız, aşağıdaki süreç Azure portal bunun nasıl yapılacağını açıklar:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Diskleri arayın ve seçin **(klasik)**.
 
     Tüm yönetilmeyen disklerinizin bir listesini görürsünüz. Ekli sütununda "" olan tüm diskler **-** , **Attached to** açılmamış bir disktir.

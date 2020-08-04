@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706367"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542662"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL yönetilen örneğine bağlanmak için bir Azure VM yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,13 +27,13 @@ Bu hızlı başlangıçta, Azure sanal makinesini SQL Server Management Studio (
 
 Bunun yerine bir noktadan siteye bağlantı kullanarak şirket içi istemci bilgisayarından bağlanmayı gösteren hızlı başlangıç için bkz. [Noktadan siteye bağlantı yapılandırma](point-to-site-p2s-configure.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta, [yönetilen bir örnek oluşturmak](instance-create-quickstart.md) için başlangıç noktası olarak oluşturulan kaynaklar kullanılmaktadır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-new-subnet-vnet"></a>Yeni bir alt ağ VNet oluştur
 
@@ -51,7 +51,7 @@ Aşağıdaki adımlar, Azure sanal makinesinin yönetilen örneğe bağlanabilme
 
    | Ayar| Önerilen değer | Açıklama |
    | ---------------- | ----------------- | ----------- |
-   | **Adı** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
+   | **Ad** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    | **Adres aralığı (CIDR bloğu)** | Geçerli bir Aralık | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Ağ güvenlik grubu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Yol tablosu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
@@ -74,7 +74,7 @@ Tüm gerekli araçlarla istemci sanal makinesi oluşturmanın en kolay yolu Azur
 
 1. Azure portal başka bir tarayıcı sekmesinde oturum açtığınızdan emin olun. Ardından, bir istemci sanal makinesi oluşturmak ve SQL Server Management Studio yüklemek için aşağıdaki düğmeyi seçin:
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json)
 
 2. Aşağıdaki tabloda bulunan bilgileri kullanarak formu doldurun:
 
@@ -118,7 +118,7 @@ Aşağıdaki adımlarda, bir Uzak Masaüstü bağlantısı kullanarak yeni oluş
 
    ![RDP formu](./media/connect-vm-instance-configure/rdp.png)  
 
-3. **RDP dosyasını indir**' i seçin.
+3. **RDP Dosyasını İndir**’i seçin.
 
    > [!NOTE]
    > Sanal makinenize bağlanmak için SSH de kullanabilirsiniz.

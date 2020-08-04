@@ -1,6 +1,6 @@
 ---
 title: Kimlik yönetimine yardımcı olan Azure Güvenlik özellikleri | Microsoft Docs
-description: " Bu makalede kimlik yönetimiyle ilgili temel Azure Güvenlik özelliklerine genel bir bakış sunulmaktadır. Microsoft kimlik ve erişim yönetimi çözümleri, Multi-Factor Authentication ve koşullu erişim ilkeleri gibi ek doğrulama düzeylerini etkinleştirerek kurumsal veri merkezinde ve buluta uygulamalara ve kaynaklara erişimi korumaya yardımcı olur. "
+description: Kimlik yönetimine yardımcı olan çekirdek Azure Güvenlik özellikleri hakkında bilgi edinin. Çoklu oturum açma ve ters proxy gibi konular hakkında bilgi için bkz..
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 9de31ba30c4599393d9127c7852cb567cf0258ef
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384540"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542085"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
 
@@ -99,7 +99,7 @@ RBAC, Azure Resource Manager'ı temel alan, Azure kaynakları için ayrıntılı
 Daha fazla bilgi edinin:
 
 * [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](/azure/role-based-access-control/overview)
-* [Yerleşik Azure rolleri](/azure/role-based-access-control/built-in-roles)
+* [Azure yerleşik rolleri](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 

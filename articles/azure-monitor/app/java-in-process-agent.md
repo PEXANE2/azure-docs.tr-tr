@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014346"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541864"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -20,7 +20,7 @@ Application Insights Java SDK 'sını uygulamanıza eklemek artık gerekli deği
 
 Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm oto toplanan Telemetriyi izleyip onunla ilişkilendirilecektir.
 
-## <a name="quickstart"></a>Hızlı Başlangıç
+## <a name="quickstart"></a>Hızlı başlangıç
 
 **1. aracıyı indirin**
 
@@ -126,7 +126,22 @@ Ayrıntılar için bkz. [3,0 genel önizleme: yapılandırma seçenekleri](./jav
 
 Mikro ölçüm, Opentelemetri API ve popüler günlük çerçevesini destekliyoruz. Application Insights Java 3,0, Telemetriyi otomatik olarak yakalar ve otomatik toplanan telemetriyle birlikte ilişkilendirilecektir.
 
-Bu nedenle, şu anda Application Insights 3,0 ile bir SDK 'Yı serbest bırakmaya planlanıyoruz.
+### <a name="supported-custom-telemetry"></a>Desteklenen özel telemetri
+
+Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebileceğiniz, şu anda desteklenen özel telemetri türlerini temsil eder. Özetlemek gerekirse, özel ölçümler mikro ölçüm aracılığıyla desteklenir, özel özel durumlar ve izlemeler günlüğe kaydetme çerçeveleri aracılığıyla etkinleştirilebilir ve tüm özel telemetri türleri [Java 2. x SDK Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x)aracılığıyla desteklenir. 
+
+
+|                 | Micrometer | Log4J, logback, Tem | 2. x SDK |
+|-----------------|------------|---------------------|---------|
+| Özel olaylar   |            |                     |  Yes    |
+| Özel ölçümler  |  Yes       |                     |  Yes    |
+| Bağımlılıklar    |            |                     |  Yes    |
+| Özel durumlar      |            |  Yes                |  Yes    |   
+| Sayfa Görüntülemeleri      |            |                     |  Yes    |
+| İstekler        |            |                     |  Yes    |
+| İzlemeler          |            |  Yes                |  Yes    |
+
+Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 
 Application Insights Java 3,0, Java SDK 'Sı 2. x Application Insights gönderilen telemetri için zaten dinliyor. Bu işlevsellik, var olan 2. x kullanıcıları için yükseltme hikayesinin önemli bir parçasıdır ve Opentelemetri API 'SI GA olana kadar özel telemetri desteğimize önemli bir boşluk girer.
 

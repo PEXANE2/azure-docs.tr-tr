@@ -10,12 +10,12 @@ ms.author: larryfr
 author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: c8b25e1d3ef2d2b780d88fbf2ba6c6568b4a804d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59671a0520d665d594356a2e6aee46116a8de5d3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744962"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541779"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Bilişsel Arama ile kullanmak üzere bir model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Bir modeli Azure Bilişsel Arama ile kullanmak üzere dağıttığınızda, dağ
 * Giriş betiği Ayrıca JSON verilerini girdi olarak kabul etmelidir ve JSON 'u çıkış olarak oluşturur.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -216,7 +216,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 Dağıtım yapılandırması, Web hizmetini çalıştırmak için kullanılan Azure Kubernetes hizmeti barındırma ortamını tanımlar.
 
 > [!TIP]
-> Dağıtımınızın bellek, CPU veya GPU gereksinimleriyle ilgili olduğundan emin değilseniz, bu bilgileri öğrenmek için profil oluşturma 'yı kullanabilirsiniz. Daha fazla bilgi için bkz. [bir modelin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md#prepare-to-deploy).
+> Dağıtımınızın bellek, CPU veya GPU gereksinimleriyle ilgili olduğundan emin değilseniz, bu bilgileri öğrenmek için profil oluşturma 'yı kullanabilirsiniz. Daha fazla bilgi için bkz. [bir modelin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core.model import Model
