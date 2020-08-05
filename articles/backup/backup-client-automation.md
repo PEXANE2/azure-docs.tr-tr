@@ -3,12 +3,12 @@ title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
 description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513736"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564036"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 Windows Server veya Windows istemci makinesinde, makineyi kasaya kaydetmek için [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) cmdlet 'ini çalıştırın.
-Bu ve yedekleme için kullanılan diğer cmdlet 'ler, Mars Agentınstaller 'ın yükleme işleminin bir parçası olarak eklediği MSONLINE modülünden alınır.
+Bu ve yedekleme için kullanılan diğer cmdlet 'ler, MARS Agentınstaller 'ın yükleme işleminin bir parçası olarak eklediği MSONLINE modülünden alınır.
 
 Aracı yükleyicisi $Env:P SModulePath değişkenini güncelleştirmez. Bu, modülün otomatik yükünün başarısız olduğu anlamına gelir. Bu sorunu gidermek için aşağıdakileri yapabilirsiniz:
 

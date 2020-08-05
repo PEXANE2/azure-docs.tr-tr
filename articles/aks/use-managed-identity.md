@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: e96126d1516e8a1e20e6f6db9b3a448b94c71cd7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e660678f33f36b75147c2513c77d3085136127d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050600"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563212"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -35,7 +35,7 @@ Aşağıdaki kaynağın yüklü olması gerekir:
 
 AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır.
 
-| Kimlik                       | Name    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
+| Kimlik                       | Ad    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
 |----------------------------|-----------|----------|
 | Kontrol düzlemi | görünür değil | Inks yük dengeleyiciler ve AKS yönetilen genel IP 'Ler dahil olmak üzere yönetilen ağ kaynakları için AKS tarafından kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | Önizleme
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | Düğüm kaynak grubu için okuyucu rolü | Şu anda desteklenmiyor
@@ -212,5 +212,5 @@ Kendi yönetilen kimliklerinizi kullanarak başarılı bir küme oluşturma, bu 
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
+[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list

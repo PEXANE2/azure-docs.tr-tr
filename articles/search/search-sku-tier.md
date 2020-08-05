@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519751"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553980"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -61,9 +61,18 @@ Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Sta
 Azure Bilişsel Arama 'de oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret alabilir:
 
 + Hizmetin, en az yapılandırmada (bir bölüm ve çoğaltma) 7/24 çalışan maliyeti
+
 + Kapasite (çoğaltmalar veya bölümler) ekleme
-+ Bant genişliği ücretleri (giden veri aktarımı) 
-+ AI zenginleştirme gibi eklenti hizmetleri (AI işlemini tanımlayan becerileri içinde bilişsel hizmetler ekleme veya bilgi deposu için Azure depolama 'yı kullanma) veya bir özel sanal ağda arama hizmeti dağıtma
+
++ Bant genişliği ücretleri (giden veri aktarımı)
+
++ Belirli yetenekler veya özellikler için gereken eklenti hizmetleri:
+
+  + AI zenginleştirme (bilişsel [Hizmetler](https://azure.microsoft.com/pricing/details/cognitive-services/)gerektirir)
+  + bilgi deposu ( [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)gerektirir)
+  + Artımlı zenginleştirme ( [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)gerektırır, AI zenginleştirme için geçerlidir)
+  + Müşteri tarafından yönetilen anahtarlar ve çift şifreleme ( [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)gerekir)
+  + İnternet erişimi olmayan bir model için özel uç noktalar ( [Azure özel bağlantısı](https://azure.microsoft.com/pricing/details/private-link/)gerekir)
 
 ### <a name="service-costs"></a>Hizmet maliyetleri
 

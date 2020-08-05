@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3ced7e758669041d11d50ae7bfaf1065cf5439b3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4211f21d78ac0e06743c97f1081804fd641f9d2
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562023"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563585"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Öğretici: bir Jekyll sitesini Azure statik Web Apps önizleme 'ye yayımlama
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Jekyıll](https://jekyllrb.com/docs/installation/) 'yi yükler
   - Linux için Windows alt sistemini kullanabilir ve gerekirse Ubuntu yönergelerini izleyebilirsiniz.
@@ -88,7 +88,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 ### <a name="create-the-application"></a>Uygulama oluşturma
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 
 1. **Kaynak oluştur ' a**tıklayın.
 
@@ -96,7 +96,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın.
 
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 1. **Abonelik**için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
 
@@ -146,7 +146,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Jekyıll uygulamasını bir metin düzenleyicisinde açın ve _. GitHub/iş akışları/Azure-Pages-<WORKFLOW_NAME>. yıml_ dosyasını açın.
 
-1. Satırı `- uses: actions/checkout@v1` aşağıdaki yapılandırma bloğu ile değiştirin.
+1. Aşağıdaki yapılandırma bloğuna bloğundan sonra satır ekleyin `- uses: actions/checkout@v2` .
 
     ```yml
     - uses: actions/checkout@v2
@@ -154,12 +154,12 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
         submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
-        with:
+      with:
         ruby-version: 2.6
     - name: Install dependencies
-        run: bundle install
+      run: bundle install
     - name: Jekyll build
-        run: jekyll build
+      run: jekyll build
     ```
 
 1. Güncelleştirilmiş iş akışını işleyin ve GitHub 'a gönderin.

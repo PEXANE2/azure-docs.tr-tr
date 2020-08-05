@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628802"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562455"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -48,7 +48,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 ## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure portalındaki](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
@@ -102,8 +102,11 @@ Uygulamanızın yüksek performanslı, güvenilir bir içerik deposu olması ger
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Sitemin yerel önbellek kullanmaya geçmiş olup olmadığını nasıl anlayabilirim?
 Yerel önbellek özelliğini hazırlama ortamları ile kullanıyorsanız, yerel önbellek çarpana kadar değiştirme işlemi tamamlanmaz. Sitenizin yerel önbelleğe karşı çalışıp çalışmadığını denetlemek için çalışan işlem ortamı değişkenini kontrol edebilirsiniz `WEBSITE_LOCALCACHE_READY` . Çalışan işlem ortamı değişkenine birden çok örnek üzerinde erişmek için [çalışan işlem ortamı değişkeni](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) sayfasındaki yönergeleri kullanın.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Yeni değişiklikler yayımladım, ancak Uygulamam bunlara sahip görünmüyor. Neden mi?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Yeni değişiklikler yayımladım, ancak Uygulamam bunlara sahip görünmüyor. Neden?
 Uygulamanız yerel önbellek kullanıyorsa, en son değişiklikleri almak için sitenizi yeniden başlatmanız gerekir. Bir üretim sitesindeki değişiklikleri yayınlamak istemiyor musunuz? Önceki en iyi yöntemler bölümündeki yuva seçeneklerine bakın.
+
+> [!NOTE]
+> [Paket dağıtımından Çalıştır](deploy-run-package.md) seçeneği, yerel önbellek ile uyumlu değil.
 
 ### <a name="where-are-my-logs"></a>Günlüklerim nerede?
 Yerel önbellek ile günlüklerinizi ve veri klasörlerinizi biraz farklı bir şekilde görünür. Ancak, alt klasörlerin yapısı aynı kalır, ancak alt klasörler "benzersiz VM tanımlayıcısı" ve zaman damgası biçiminde bir alt klasör altına alınır.

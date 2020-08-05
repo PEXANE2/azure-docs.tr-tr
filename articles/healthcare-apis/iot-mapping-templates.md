@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: cc8b7d46e1018974c6a88cef9e4f4a9f9a09caa7
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513358"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553657"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) eşleme şablonları
 Bu makalede, eşleme şablonları kullanılarak FHıR için Azure IoT bağlayıcısının nasıl yapılandırılacağı açıklanır.
@@ -565,7 +565,7 @@ Fhır veri türü [miktarını](http://hl7.org/fhir/datatypes.html#Quantity) tem
 FHıR (Önizleme) için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın.
 
 >[!div class="nextstepaction"]
->[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md#iot-connector-preview)
+>[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 

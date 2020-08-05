@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388229"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564138"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Geçici silme, tüm anahtar kasaları üzerinde etkinleştirilecek
 
@@ -48,7 +48,7 @@ Gizli dizileri kalıcı olarak silme erişimi gerektiren güvenlik ilkelerine, b
 
 Anahtar kasalarınızda, geçici silme özelliğinin kapalı olduğunu belirten bir Azure Ilkeniz varsa, bu ilkenin devre dışı bırakılması gerekir.  Bu sorunu, ortamınıza uygulanan Azure Ilkelerini denetleyen bir yöneticiye iletmek zorunda kalabilirsiniz. Bu ilke devre dışı bırakılsa, uygulanan ilkenin kapsamında yeni anahtar kasaları oluşturma özelliğini kaybedebilirsiniz.
 
-Kuruluşunuzun geçerli uyumluluk gereksinimlerine sahip olması ve Silinen anahtar kasalarının ve parolaların kurtarılabilir bir durumda kalmasına izin vermediyse, uzun bir süre boyunca, kuruluşunuzun standartlarını karşılamak için 7 – 90 gün arasında yapılandırılabilir olan geçici silme bekletme süresini ayarlamanız gerekir.
+Kuruluşunuz yasal uyumluluk gereksinimlerine tabidir ve Silinen anahtar kasalarının ve parolaların kurtarılabilir bir durumda kalmasına izin vermediyse, uzun bir süre boyunca, kuruluşunuzun standartlarını karşılamak için 7 – 90 gün arasında yapılandırılabilir olan geçici silme bekletme süresini ayarlamanız gerekir.
 
 ## <a name="procedures"></a>Yordamlar
 
@@ -66,14 +66,14 @@ Kuruluşunuzun geçerli uyumluluk gereksinimlerine sahip olması ve Silinen anah
 10. Azure Ilkesi dikey penceresinde "Uyumluluk" e tıklayın.
 11. Uyguladığınız ilkeyi seçin.
 
-Artık anahtar kasalarınızdan hangilerinin geçici silme etkin (uyumlu kaynaklar) ve hangi anahtar kasalarının yazılım için (uyumlu olmayan kaynak) etkin olmadığını filtreleyebilmeli.
+Artık anahtar kasalarınızdan hangilerinin geçici silme etkin (uyumlu kaynaklar) ve hangi anahtar kasalarının yazılım için (uyumlu olmayan kaynaklar) etkin olmadığını filtreleyebilmeli.
 
 ### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Mevcut bir Anahtar Kasası için geçici silmeyi aç
 
 1. Azure portalında oturum açın.
 2. Key Vault arayın.
 3. Ayarlar altında "Özellikler" i seçin.
-4. Geçici silme altında "kurtarmayı etkinleştir" öğesine karşılık gelen radyo düğmesini seçin. Bu kasanın ve nesnelerinin ".
+4. Geçici silme altında, "Bu kasanın ve onun nesnelerinin kurtarılmasını etkinleştir" öğesine karşılık gelen radyo düğmesini seçin.
 5. Geçici silme için saklama süresini ayarlayın.
 6. "Kaydet" i seçin.
 

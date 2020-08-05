@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 8e3f33e8f453ffd6eedaeb75a041af7ec11b4e39
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457813"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554065"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -161,7 +161,7 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 |         |                                 | Kadın | `zh-CN-XiaoyouNeural`    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
 |         |                                 | Erkek   | `zh-CN-YunyangNeural`    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
 |         |                                 | Erkek   | `zh-CN-YunyeNeural`      | Öykü anlatımı için iyileştirildi |
-| `zh-HK` | Çince (Cantoneo, yatıcı)   | Kadın | `zh-HK-HiuGaaiNeural`| Genel |
+| `zh-HK` | Çince (Cantoneo, geleneksel)   | Kadın | `zh-HK-HiuGaaiNeural`| Genel |
 | `zh-TW` | Çince (Taiwanese Mandarin)   | Kadın | `zh-TW-HsiaoYuNeural`    | Genel |
 
 > [!IMPORTANT]

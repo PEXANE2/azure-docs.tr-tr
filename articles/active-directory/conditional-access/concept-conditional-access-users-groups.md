@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274672"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552909"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
 
@@ -30,7 +30,7 @@ Bu kullanıcı listesi genellikle bir kuruluşun koşullu erişim ilkesinde hede
 
 Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
 
-- Yok
+- Hiçbiri
    - Hiçbir Kullanıcı seçilmedi
 - Tüm kullanıcılar
    - B2B konukları dahil dizinde bulunan tüm kullanıcılar.
@@ -44,6 +44,9 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
 
 > [!WARNING]
 > Kullanıcılar veya gruplar 2048 'den fazla grup üyesiyse, erişimleri engellenebilir. Bu sınır hem doğrudan hem de iç içe Grup üyeliği için geçerlidir.
+
+> [!WARNING]
+> Koşullu erişim ilkeleri, [özel roller](../users-groups-roles/roles-create-custom.md)gibi doğrudan bir nesne için bir [yönetim birimi](../users-groups-roles/roles-admin-units-assign-roles.md) veya dizin rollerine kapsamlı bir dizin rolü atanmış olan kullanıcıları desteklemez.
 
 ## <a name="exclude-users"></a>Kullanıcıları hariç tut
 

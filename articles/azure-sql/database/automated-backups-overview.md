@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 07/20/2020
-ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 08/04/2020
+ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428233"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554048"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -120,7 +120,7 @@ LTR hakkında daha fazla bilgi için bkz. [uzun süreli yedek saklama](long-term
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
 
-Depolama fiyatı, DTU modelini mi yoksa vCore modelini mi kullandığınıza bağlı olarak farklılık gösterir.
+Yedekleme depolama alanı fiyatı, DTU modeli veya vCore modeli ile aynı zamanda bölgeniz olarak değişir. Yedekleme depolaması tüketilen GB/ay başına ücretlendirilir, fiyatlandırma için bkz. [Azure SQL Veritabanı fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası ve [Azure SQL yönetilen örnek fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) sayfası.
 
 ### <a name="dtu-model"></a>DTU modeli
 

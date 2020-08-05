@@ -6,20 +6,52 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3719956df0dce62ee69d8e306ff2cad27197616d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4443c92fad2510b6bc4bc1214840aca5553556a5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85569019"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553470"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Senaryo: sanal ağlar için özel yalıtım
 
-Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Sanal ağlar için özel bir yalıtım senaryosunda, amaç belirli bir sanal ağ kümesinin diğer belirli sanal ağlar kümesine ulaşabilme zorunluluğunu önlemektir. Ancak, tüm dallara ulaşmak için sanal ağlar gereklidir (VPN/ER/Kullanıcı VPN).
+Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Sanal ağlar için özel bir yalıtım senaryosunda, amaç belirli bir sanal ağ kümesinin diğer belirli sanal ağlar kümesine ulaşabilme zorunluluğunu önlemektir. Ancak, tüm dallara ulaşmak için sanal ağlar gereklidir (VPN/ER/Kullanıcı VPN). Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-Bu senaryoda, VPN, ExpressRoute ve kullanıcı VPN bağlantıları (her ikisi de dal olarak adlandırılır) aynı yol tablosu (varsayılan yol tablosu) ile ilişkilendirilir. Tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+## <a name="scenario-design"></a><a name="design"></a>Senaryo tasarımı
+
+Kaç tane yol tablosunun gerekli olacağını anlamak için bir bağlantı matrisi oluşturabilirsiniz. Bu senaryo için, her hücrenin bir kaynağın (satır) bir hedefle (sütun) iletişim kurup kuramayacağını temsil ettiği aşağıdaki gibi görünür:
+
+| Kaynak | Hedef:| *Mavi VNET 'ler* | *Kırmızı VNET 'ler* | *Dallar*|
+|---|---|---|---|---|
+| **Mavi VNET 'ler** |   &#8594;|      X        |               |       X      |
+| **Kırmızı VNET 'ler**  |   &#8594;|              |       X       |       X      |
+| **Dallar**   |   &#8594;|     X        |       X       |       X      |
+
+Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun başlıkları) öğrenip öğrenmediğini açıklar.
+
+Farklı satır desenlerinin sayısı, bu senaryoda ihtiyacımız olacak yol tablolarının sayısı olacaktır. Bu durumda, sanal ağlar için **RT_BLUE** ve **RT_RED** çağıracağız üç yol yolu tablosu ve dallar için **varsayılan** . Dalların her zaman varsayılan yönlendirme tablosuyla ilişkilendirilmesi gerektiğini unutmayın.
+
+Dalların hem kırmızı hem de mavi VNET 'lerden gelen öneklerini öğrenmeleri gerekir. bu nedenle, tüm VNET 'lerin varsayılana yayılması gerekir ( **RT_BLUE** veya **RT_RED**ek olarak). Dallar ön eklerini öğrenmeleri için mavi ve kırmızı VNET 'ler, **RT_BLUE** ve **RT_RED** her iki yol tablosuna yayılır. Sonuç olarak, bu son tasarımdır:
+
+* Mavi sanal ağlar:
+  * İlişkili yol tablosu: **RT_BLUE**
+  * Yol tablolarına yayma: **RT_BLUE** ve **varsayılan**
+* Kırmızı sanal ağlar:
+  * İlişkili yol tablosu: **RT_RED**
+  * Yol tablolarına yayma: **RT_RED** ve **varsayılan**
+* Dallar
+  * İlişkili yol tablosu: **varsayılan**
+  * Yol tablolarına yayma: **RT_BLUE**, **RT_RED** ve **varsayılan**
+
+> [!NOTE]
+> Tüm dalların varsayılan yol tablosuyla ilişkilendirilmesi ve aynı yönlendirme tabloları kümesine yayılması gerektiğinden, tüm dallar aynı bağlantı profiline sahip olur. Diğer bir deyişle, sanal ağlar için kırmızı/mavi kavramı dallara uygulanamaz.
+
+> [!NOTE]
+> Sanal WAN 'ınız birden çok bölgeye dağıtılmışsa, her hub 'da **RT_BLUE** ve **RT_RED** Route tabloları oluşturmanız ve her VNET bağlantısının, yayma etiketleri kullanılarak her sanal hub 'daki yol tablolarına yayılması gerekir.
+
+Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
 ## <a name="scenario-workflow"></a><a name="architecture"></a>Senaryo iş akışı
 
@@ -31,8 +63,8 @@ Bu senaryoda, VPN, ExpressRoute ve kullanıcı VPN bağlantıları (her ikisi de
 Yönlendirmeyi ayarlarken aşağıdaki adımları göz önünde bulundurun.
 
 1. Azure portal, **RT_BLUE** ve **RT_RED**iki özel yol tablosu oluşturun.
-2. Yol tablosu **RT_BLUE**için:
-   * **İlişkilendirme**: tüm mavi VNET 'leri seçin
+2. Yol tablosu için **RT_BLUE**, aşağıdaki ayarlar için:
+   * **İlişkilendirme**: tüm mavi VNET 'leri seçin.
    * **Yayma**: dallar için, dalların seçeneğini belirleyin, ımpber DALı (VPN/er/P2S) bağlantıları bu yol tablosuna yolları yayar.
 3. Kırmızı sanal ağlar ve dallar (VPN/ER/P2S) için **RT_RED** yol tablosu için aynı adımları yineleyin.
 

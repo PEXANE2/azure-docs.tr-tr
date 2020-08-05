@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170386"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564019"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -235,7 +235,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Azure Işlevleri çalışma zamanı günlükçüsü erişimi, işlev uygulamanızda bir kök işleyici aracılığıyla kullanılabilir [`logging`](https://docs.python.org/3/library/logging.html#module-logging) . Bu günlükçü Application Insights bağlıdır ve işlev yürütmesi sırasında uyarıları ve hataları işaretetmenize olanak tanır.
 
@@ -434,8 +434,8 @@ Bağımlılıklarınızı derlemek ve sürekli teslim (CD) kullanarak yayımlama
 
 ### <a name="remote-build"></a>Uzak derleme
 
-Uzak derleme kullanılırken, sunucuda geri yüklenen bağımlılıklar ve yerel bağımlılıklar üretim ortamıyla eşleşir. Bu, karşıya yüklenecek daha küçük bir dağıtım paketine neden olur. Windows üzerinde Python uygulamaları geliştirirken uzak derlemeyi kullanın. Projenizde özel bağımlılıklar varsa, [ek dizin URL 'si ile uzak derlemeyi kullanabilirsiniz](#remote-build-with-extra-index-url). 
- 
+Uzak derleme kullanılırken, sunucuda geri yüklenen bağımlılıklar ve yerel bağımlılıklar üretim ortamıyla eşleşir. Bu, karşıya yüklenecek daha küçük bir dağıtım paketine neden olur. Windows üzerinde Python uygulamaları geliştirirken uzak derlemeyi kullanın. Projenizde özel bağımlılıklar varsa, [ek dizin URL 'si ile uzak derlemeyi kullanabilirsiniz](#remote-build-with-extra-index-url).
+
 Bağımlılıklar, requirements.txt dosyanın içeriğine göre uzaktan elde edilir. [Uzaktan derleme](functions-deployment-technologies.md#remote-build) önerilen derleme yöntemidir. Varsayılan olarak, Python projenizi Azure 'da yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullandığınızda Azure Functions Core Tools uzak bir derlemeyi ister.
 
 ```bash
@@ -456,7 +456,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 `<APP_NAME>`Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın.
 
-Seçeneğini kullanarak `--build local` , Proje bağımlılıkları requirements.txt dosyasından okunurdur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bazı nedenlerle requirements.txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir. 
+Seçeneğini kullanarak `--build local` , Proje bağımlılıkları requirements.txt dosyasından okunurdur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bazı nedenlerle requirements.txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir.
 
 Windows 'da yerel olarak geliştirme yaparken yerel derlemelerin kullanılmasını önermiyoruz.
 
@@ -466,7 +466,7 @@ Projenizin [Python paket dizininde](https://pypi.org/)bulunmayan bağımlılıkl
 
 #### <a name="remote-build-with-extra-index-url"></a>Ek dizin URL 'SI ile uzak derleme
 
-Paketleriniz erişilebilir bir özel paket dizininden kullanılabilir olduğunda, uzak bir yapı kullanın. Yayımlamadan önce adlı [bir uygulama ayarı oluşturduğunuzdan](functions-how-to-use-azure-function-app-settings.md#settings) emin olun `PIP_EXTRA_INDEX_URL` . Bu ayarın değeri, özel paket dizininizin URL 'sidir. Bu ayarın kullanılması, uzak derlemeyi `pip install` seçeneğini kullanarak çalıştırmasını söyler `--extra-index-url` . Daha fazla bilgi için bkz. [Python PIP yüklemesi belgeleri](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format). 
+Paketleriniz erişilebilir bir özel paket dizininden kullanılabilir olduğunda, uzak bir yapı kullanın. Yayımlamadan önce adlı [bir uygulama ayarı oluşturduğunuzdan](functions-how-to-use-azure-function-app-settings.md#settings) emin olun `PIP_EXTRA_INDEX_URL` . Bu ayarın değeri, özel paket dizininizin URL 'sidir. Bu ayarın kullanılması, uzak derlemeyi `pip install` seçeneğini kullanarak çalıştırmasını söyler `--extra-index-url` . Daha fazla bilgi için bkz. [Python PIP yüklemesi belgeleri](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format).
 
 Ayrıca, ek paket dizin URL 'lerinizle temel kimlik doğrulama bilgilerini de kullanabilirsiniz. Daha fazla bilgi için bkz. Python belgelerindeki [temel kimlik doğrulama kimlik bilgileri](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) .
 
@@ -658,11 +658,14 @@ Bu kitaplıkların listesinin tüm ayrıntılarını görüntülemek için lütf
 
 Python Worker Işlevleri için belirli bir kitaplık kümesi gerekir. İşlevlerinizin bu kitaplıklarını da kullanabilirsiniz, ancak Python standardının bir parçası değildir. İşlevleriniz bu kitaplıkların herhangi birine bağımlı ise, Azure Işlevleri dışında çalışırken kodunuz için kullanılamayabilir. [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) dosyasında, **Install \_ gerektiriyor** bölümünde bağımlılıkların ayrıntılı bir listesini bulabilirsiniz.
 
+> [!NOTE]
+> İşlev uygulamanızın requirements.txt bir giriş içeriyorsa, uygulamayı `azure-functions-worker` kaldırın. Çalışan işlevleri Azure Işlevleri platformu tarafından otomatik olarak yönetilir ve yeni özellikler ve hata düzeltmeleri ile düzenli olarak güncelleştiririz. requirements.txt Worker 'ın eski bir sürümünü el ile yüklemek beklenmeyen sorunlara neden olabilir.
+
 ### <a name="azure-functions-python-library"></a>Azure Işlevleri Python kitaplığı
 
 Her Python Worker güncelleştirmesi [Azure Işlevleri Python kitaplığı 'nın (Azure. Functions)](https://github.com/Azure/azure-functions-python-library)yeni bir sürümünü içerir. Bu yaklaşım, her güncelleştirme geriye dönük olarak uyumlu olduğundan, Python işlev uygulamalarınızın sürekli güncelleştirilmesini kolaylaştırır. Bu kitaplığın sürümlerinin bir listesi, [Azure-Functions PyPi](https://pypi.org/project/azure-functions/#history)'de bulunabilir.
 
-Çalışma zamanı kitaplığı sürümü Azure tarafından düzeltildi ve requirements.txt tarafından geçersiz kılınamaz. `azure-functions`requirements.txt giriş yalnızca, ve müşteri tanıma için geçerlidir. 
+Çalışma zamanı kitaplığı sürümü Azure tarafından düzeltildi ve requirements.txt tarafından geçersiz kılınamaz. `azure-functions`requirements.txt giriş yalnızca, ve müşteri tanıma için geçerlidir.
 
 Çalışma zamanında Python Işlevleri kitaplığının gerçek sürümünü izlemek için aşağıdaki kodu kullanın:
 
@@ -689,7 +692,8 @@ CORS, Python işlev uygulamaları için tam olarak desteklenmektedir.
 
 Aşağıda, yaygın sorunlara yönelik sorun giderme kılavuzlarının bir listesi verilmiştir:
 
-* [Modulenotfoun, ımporterror](recover-module-not-found.md)
+* [Modulenotfoun, ımporterror](recover-python-functions.md#troubleshoot-modulenotfounderror)
+* [' Cygrpc ' içeri aktarılamıyor](recover-python-functions.md#troubleshoot-cannot-import-cygrpc)
 
 Tüm bilinen sorunlar ve özellik istekleri [GitHub sorunları](https://github.com/Azure/azure-functions-python-worker/issues) listesi kullanılarak izlenir. Bir sorunla karşılaşırsanız ve sorunu GitHub 'da bulamazsanız, yeni bir sorun açın ve sorunun ayrıntılı bir açıklamasını ekleyin.
 

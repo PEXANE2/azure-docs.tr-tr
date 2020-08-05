@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128939"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562421"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -44,6 +44,10 @@ Hayır, bu senaryo desteklenmiyor. Varsayılan ayarlar şunlardır:
 
 - Microsoft AAD uygulama proxy Bağlayıcısı-WAPCSvc-Network Service
 - Microsoft AAD Uygulama Ara Sunucusu Bağlayıcı Güncelleştiricisi-WAPCUpdaterSvc-NT Authorıty\system
+
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>Küresel yönetici ile bir Konuk Kullanıcı veya uygulama Yöneticisi rolü, (konuk) kiracısı bağlayıcısını kaydedebilir mi?
+
+Hayır, şu anda mümkün değildir. Kayıt denemesi her zaman kullanıcının giriş kiracısında yapılır.
 
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Arka uç Uygulamam birden çok Web sunucusunda barındırılır ve Kullanıcı oturumu kalıcılığı (süreklilik) gerektirir. Oturum kalıcılığını nasıl sağlayabilirim? 
 

@@ -6,24 +6,51 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: f43f17a0f3742831920836e448de3ef757f2dfa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85569013"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553402"
 ---
 # <a name="scenario-isolating-vnets"></a>Senaryo: VNET 'leri yalıtma
 
-Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Bu senaryoda, hedef, VNET 'lerin başka bir şekilde iletişime geçebilmesini engellemektir. Bu, sanal ağları yalıtma olarak bilinir. VNet içindeki iş yükü yalıtılmış kalır ve herhangi bir senaryoda olduğu gibi diğer VNET 'ler ile iletişim kuramaz. Ancak, sanal ağlar tüm dallara (VPN, ER ve kullanıcı VPN) ulaşabilmesi için gereklidir. Bu senaryoda, tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları aynı ve bir yol tablosuyla ilişkilendirilir. Tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Bu senaryoda, hedef, VNET 'lerin başka bir şekilde iletişime geçebilmesini engellemektir. Bu, sanal ağları yalıtma olarak bilinir. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Senaryo iş akışı
+## <a name="design"></a><a name="design"></a>Tasarım
+
+Bu senaryoda, belirli bir sanal ağ içindeki iş yükü yalıtılmış kalır ve diğer sanal ağlarda iletişim kuramaz. Ancak, sanal ağlar tüm dallara (VPN, ER ve kullanıcı VPN) ulaşabilmesi için gereklidir. Kaç tane yol tablosunun gerekli olacağını anlamak için bir bağlantı matrisi oluşturabilirsiniz. Bu senaryo için, her hücrenin bir kaynağın (satır) bir hedefle (sütun) iletişim kurup kuramayacağını temsil ettiği aşağıdaki tablo gibi görünür:
+
+| Kaynak |   Amaç |  *Sanal ağlar* | *Dallar* |
+| -------------- | -------- | ---------- | ---|
+| Sanal ağlar     | &#8594;|           |     X    |
+| Dallar   | &#8594;|    X     |     X    |
+
+Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, italik olan sütun başlıkları) öğrenip öğrenmediğini açıklar.
+
+Bu bağlantı matrisi, iki yol tablosuna çeviren iki farklı satır deseni sunar. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle başka bir yol tablosu gerekecektir. Bu örnekte, yol tablosu **RT_VNET**olarak adı vereceğiz.
+
+VNET 'ler, bu **RT_VNET** yol tablosuyla ilişkilendirilir. Dallara bağlanmaları gerektiğinden, dalların **RT_VNET** yayılması gerekir (Aksi halde sanal ağlar dal öneklerini öğrenmez). Dallar her zaman varsayılan yol tablosuyla ilişkilendirildiğinden, sanal ağların varsayılan yol tablosuna yayılması gerekir. Sonuç olarak, bu son tasarımdır:
+
+* Sanal ağlar:
+  * İlişkili yol tablosu: **RT_VNET**
+  * Yol tablolarına yayma: **varsayılan**
+* Dallar
+  * İlişkili yol tablosu: **varsayılan**
+  * Yol tablolarına yayma: **RT_VNET** ve **varsayılan**
+
+Yalnızca dalların yol tablosuna yayıldığından **RT_VNET**, bu, diğer VNET 'lerin öğrendiğine yönelik tek ön eklerin olduğunu fark eder.
+
+Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+
+## <a name="workflow"></a><a name="workflow"></a>Akışıyla
 
 Bu senaryoyu yapılandırmak için aşağıdaki adımları göz önünde bulundurun:
 
-1. Özel bir yol tablosu oluşturun. Örnekte, yol tablosu **RT_VNet**. Bir yol tablosu oluşturmak için bkz. [sanal hub yönlendirmeyi yapılandırma](how-to-virtual-hub-routing.md). Yol tabloları hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+1. Her hub 'da özel bir yol tablosu oluşturun. Örnekte, yol tablosu **RT_VNet**. Bir yol tablosu oluşturmak için bkz. [sanal hub yönlendirmeyi yapılandırma](how-to-virtual-hub-routing.md). Yol tabloları hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 2. **RT_VNet** yol tablosunu oluşturduğunuzda, aşağıdaki ayarları yapılandırın:
 
    * **İlişkilendirme**: yalıtmak istediğiniz sanal ağları seçin.

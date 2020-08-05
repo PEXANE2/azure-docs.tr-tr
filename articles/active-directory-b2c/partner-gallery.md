@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 986abbe6c124ce1323add5b8e854973416dfcbf4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 225e337cdb4a1901d6b8e563a2a7d7c0bea4b05d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371218"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552976"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -34,6 +34,7 @@ ISV iş ortağı ağı, sorunsuz son kullanıcı deneyimleri oluşturmanıza yar
 | ![Le](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) kimlik doğrulama çözümlerini, sahtekarlık önleme çözümlerini, uyumluluk çözümlerini ve diğerlerini Içeren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
 | ![Le](./media/partner-gallery/itsme-logo.png) | [ıtsme](./partner-itsme.md) , kullanıcıların kart okuyucuları, parolalar, iki öğeli kimlik doğrulaması ve bırden çok PIN kodu olmadan güvenli bir şekilde oturum açmalarına olanak tanımak Için bir elektronik tanımlama, kimlik doğrulama ve güven Hizmetleri (eidas) ile uyumlu dijital kimlik çözümüdür. |
 | ![Le](./media/partner-gallery/lexisnexis-logo.png) | [Lexisnex,](./partner-lexisnexis.md) Kullanıcı kimliğini doğrulayan ve kullanıcının cihazına göre kapsamlı risk değerlendirmesi sağlayan bir profil oluşturma ve kimlik doğrulama sağlayıcısıdır. |
+| ![Le](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) , şirketlerin müşteri ve kimlik gereksinimlerinizi gerçek zamanlı olarak *bilmesini* sağlayan bir belge kimliği ve yüz Biyometri doğrulama çözümüdür.  |
 | ![Le](./media/partner-gallery/trusona-logo.png) | [Truslonıntegration](./partner-trusona.md) , güvenli bir şekilde oturum açmanıza ve passwordless kimlik doğrulaması, Multi-Factor Authentication ve dijital lisans taramasını kullanmanıza yardımcı olur.|
 | ![Le](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) , çok faktörlü kimlik doğrulaması (MFA) ile SMS tek seferlik parola (OTP), zaman tabanlı bir kerelik parola (TOTP) ve anında iletme bildirimleri aracılığıyla ve ödeme hizmetleri yönergesi 2 (PSD2) için SCA gereksinimlerine uymak üzere birden çok çözüm sağlar.|
 | ![Le](./media/partner-gallery/typingdna-logo.png) | [Typingdna](./partner-typingdna.md) , Kullanıcı yazma düzenine göre kimlik doğrulama ve sağlama sağlayıcıdır, çok faktörlü kimlik doğrulamasını zorluyor kimlik doğrulama çözümleri sağlar ve ödeme hizmetleri yönergesi 2 (PSD2) için SCA gereksinimleriyle uyumlu olmaya yardımcı olur. |

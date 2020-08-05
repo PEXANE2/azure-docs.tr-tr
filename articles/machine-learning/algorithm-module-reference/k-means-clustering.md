@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/19/2020
-ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/04/2020
+ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921173"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553011"
 ---
 # <a name="module-k-means-clustering"></a>Modül: K-kümeleme anlamına gelir
 
@@ -62,7 +62,7 @@ Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş
   
 3.  **Centroıds sayısı**için, algoritmanın başlamasını istediğiniz küme sayısını yazın.  
   
-     Modelin tam olarak bu sayıda küme üretmesi garanti edilmez. Algoritma, bu sayıda veri noktasıyla başlar ve en iyi yapılandırmayı bulmak için yinelenir.  
+     Modelin tam olarak bu sayıda küme üretmesi garanti edilmez. Algoritma, bu sayıda veri noktasıyla başlar ve en iyi yapılandırmayı bulmak için yinelenir. [Sköğren kaynak koduna](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069)başvurabilirsiniz.
   
 4.  Özellikler **başlatma** , ilk küme yapılandırmasını tanımlamak için kullanılan algoritmayı belirtmek için kullanılır.  
   

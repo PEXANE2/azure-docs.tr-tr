@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564569"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563067"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel 'i AWS Cloudtrato 'a bağlama
 
-AWS Cloudiz olaylarınızın tümünü Azure Sentinel 'e göndermek için AWS bağlayıcısını kullanın. Bu bağlantı işlemi, AWS Cloudtraı ve Azure Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerinizi Azure Sentinel 'e erişimi devreder. Bu, AWS günlüklerinde Azure Sentinel 'e erişim izni veren bir rol oluşturarak AWS 'de gerçekleştirilir.
+AWS Cloudiziz yönetimi olaylarınızın Azure Sentinel 'e akışını sağlamak için AWS bağlayıcısını kullanın. Bu bağlantı işlemi, AWS Cloudtraı ve Azure Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerinizi Azure Sentinel 'e erişimi devreder. Bu, AWS günlüklerinde Azure Sentinel 'e erişim izni veren bir rol oluşturarak AWS 'de gerçekleştirilir.
 
 > [!NOTE]
 > AWS Cloudizinin LookupEvents API 'sinde [yerleşik sınırlamaları](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) vardır. Hesap başına saniye başına iki işlem (TPS) ve her bir sorgu en fazla 50 kayıt döndürebilir. Sonuç olarak, tek bir kiracının bir bölgede saniyede 100 'den fazla kayıt oluşturması halinde, biriktirme listeleri ve veri alma gecikmelerinin sonucu olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 
 > [!NOTE]
-> Azure Sentinel, tüm bölgelerde Cloudtraizetkinlikleri toplar. Bir bölgeden diğerine olay akışı yapmanız önerilmez.
+> Azure Sentinel, tüm bölgelerde Cloudizyönetim olayları toplar. Bir bölgeden diğerine olay akışı yapmanız önerilmez.
 
 ## <a name="connect-aws"></a>AWS’yi bağlama 
 

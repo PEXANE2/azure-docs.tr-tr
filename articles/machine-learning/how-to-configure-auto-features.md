@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502928"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552493"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
@@ -161,7 +161,7 @@ text_transformations_used
 > [!NOTE]
 > BERT uygulamamız, bir eğitim örneğinin toplam metin uzunluğunu 128 belirteç olarak sınırlandırır. Yani, art arda tüm metin sütunlarının en çok 128 belirteç uzunluğunda olması gerekir. İdeal olarak, birden çok sütun varsa, bu koşulun karşılanması için her sütun ayıklanmalıdır. Örneğin, verilerde iki metin sütunu varsa, verileri oto ml 'ye yazdırmadan önce her iki metin sütununun de her biri 64 belirtece (her iki sütunun de en son birleştirilmiş metin sütununda aynı şekilde temsil olmasını istediğinizi varsayarak) ayıklanmalıdır. >128 belirteçlerinin bir birleştirilmiş sütunları için, Bert 'in belirteç ayırıcı katmanı bu girişi 128 belirteçlere keser.
 
-3. Özellik üst kısmında, oto ml, verilerin bir örneği üzerinde BERT 'yi (kelimeler özelliği ve önceden eğitilen kelime eklenebilir) ile karşılaştırır ve BERT 'in doğruluk iyileştirmeleri verip veremeyeceğini belirler. BERT 'in temelden daha iyi çalıştığını belirlerse, oto ve en iyi performans stratejisi olarak metin kullanımı için BERT 'yi kullanır ve verilerin tamamını kordoğru bir şekilde devam eder. Bu durumda, son modelde "Pretraınedtextdnntransformer" metnini görürsünüz.
+3. Özellik üst kısmında, oto ml, verilerin bir örneği üzerinde BERT 'yi (sözcük çantası özellikleri) taban çizgisine göre karşılaştırır ve BERT 'in doğruluk iyileştirmeleri verip veremeyeceğini belirler. BERT 'in temelden daha iyi çalıştığını belirlerse, oto ve en iyi performans stratejisi olarak metin kullanımı için BERT 'yi kullanır ve verilerin tamamını kordoğru bir şekilde devam eder. Bu durumda, son modelde "Pretraınedtextdnntransformer" metnini görürsünüz.
 
 BERT genellikle diğer birçok farklı şekilde daha uzun çalışır. Kümenizde daha fazla işlem yaparak bu işlem yapılabilir. Oto (en fazla 8 düğüme kadar) varsa, oto ml, BERT eğitimini birden çok düğüm arasında dağıtır. Bu, [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 1 ' den yüksek olarak ayarlanarak yapılabilir. Daha iyi performans için, RDMA özelliklerine sahip SKU 'ların kullanılması önerilir ("STANDARD_NC24r" veya "STANDARD_NC24rs_V3" gibi)
 

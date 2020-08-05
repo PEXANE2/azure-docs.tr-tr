@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/03/2020
 ms.author: jasteppe
-ms.openlocfilehash: 8c372a865e34b2cbd1b5b3e6d8619c3ef0f438e0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b404fa5322d3afa8cbf71741382d44dd0433d49c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460431"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553691"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu
 
-Bu makalede, FHıR hata iletileri ve koşulları için genel Azure IoT Bağlayıcısı sorunlarını gidermeye yönelik adımlar sağlanmaktadır.  
+Bu makalede, FHıR * hata iletileri ve koşulları için genel Azure IoT Bağlayıcısı sorunlarını gidermeye yönelik adımlar sağlanmaktadır.  
 
 Ayrıca, Azure IoT bağlayıcısının, Azure portal dışında düzenlenmek ve arşivlemek üzere veya bir destek bileti açarken Azure teknik desteği sağlamak için Azure IoT Bağlayıcısı 'nın kopyalarını oluşturmayı öğreneceksiniz. 
 
@@ -72,7 +72,7 @@ FHıR eşleme dosyaları için Azure IoT bağlayıcısının kopyalanması, Azur
 FHıR için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın.
 
 >[!div class="nextstepaction"]
->[FHıR için Azure IoT Bağlayıcısı (Önizleme) SSS](fhir-faq.md#iot-connector-preview)
+>[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 

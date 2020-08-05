@@ -1,116 +1,67 @@
 ---
-title: "Bilişsel hizmetler: 1 Haziran 2020 için docs 'taki yenilikler-30 Haziran 2020"
-description: 1 Haziran 2020-30 Haziran 2020 ' de bilişsel hizmetler belgelerinden yenilikler.
+title: "Bilişsel hizmetler belgeleri: 1 Temmuz 2020 ' deki yenilikler-31 Temmuz 2020"
+description: 1 Temmuz 2020 ' de 31 Temmuz 2020 ' de bilişsel hizmetler belgelerinden yenilikler.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 07/09/2020
-ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/03/2020
+ms.openlocfilehash: eda90a430d96d43d052a603f82832aef6c0facdb
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075193"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553368"
 ---
-# <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Bilişsel hizmetler belgeleri: 1 Haziran 2020 ' deki yenilikler-30 Haziran 2020
+# <a name="cognitive-services-docs-whats-new-for-july-1-2020---july-31-2020"></a>Bilişsel hizmetler belgeleri: 1 Temmuz 2020 ' deki yenilikler-31 Temmuz 2020
 
-1 Haziran 2020 ' den 30 Haziran 2020 ' e kadar bilişsel hizmetler belgelerinden yenilikler 'e hoş geldiniz. Bu makalede, bu süre boyunca docs 'ta yapılan önemli değişikliklerden bazıları listelenir.
+1 Temmuz 2020 ' den 31 Temmuz 2020 ' e kadar bilişsel hizmetler belgelerinden yenilikler 'e hoş geldiniz. Bu makalede, bu süre boyunca docs 'ta yapılan önemli değişikliklerden bazıları listelenir.
 
-## <a name="computer-vision"></a>Görüntü İşleme
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Hızlı başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılmış ve el yazısı metin Ayıkla](/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)
-- [Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak yazdırılan ve el yazısı metin Ayıkla](/azure/cognitive-services/computer-vision/quickstarts/python-hand-text)
-
-## <a name="face"></a>Yüz Tanıma
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Örnek: Gerçek Zamanlı Videoları Analiz Etme](/azure/cognitive-services/face/face-api-how-to-topics/howtoanalyzevideo_face)
-
-## <a name="immersive-reader"></a>Tam Ekran Okuyucu
+## <a name="form-recognizer"></a>Form Tanıma
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Hızlı başlangıç: tam ekran okuyucusu istemci kitaplığını kullanma](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
-
-## <a name="luis"></a>LUIS
-
-### <a name="new-articles"></a>Yeni makaleler
-
-- [Language Understanding (LUSıS) içinde yapay zeka](/azure/cognitive-services/luis/artificial-intelligence)
-- [LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları](/azure/cognitive-services/luis/luis-concept-devops-automation)
-- [LUSıS için DevOps uygulamaları](/azure/cognitive-services/luis/luis-concept-devops-sourcecontrol)
-- [LUSıS DevOps için test etme](/azure/cognitive-services/luis/luis-concept-devops-testing)
-- [Hızlı başlangıç: amacı sağlamak için kıvrımlı ve REST kullanın](/azure/cognitive-services/luis/luis-get-started-rest-get-intent)
-- [Hızlı başlangıç: modeli değiştirmek için kıvrımlı ve REST kullanma](/azure/cognitive-services/luis/luis-get-started-rest-get-model)
-- [GitHub eylemlerini kullanarak LUSıS uygulama geliştirmeye DevOps uygulama](/azure/cognitive-services/luis/luis-how-to-devops-with-github)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Makine öğrenimi özellikleri](/azure/cognitive-services/luis/luis-concept-feature)
-- [LUSıS kaynakları oluşturma](/azure/cognitive-services/luis/luis-how-to-azure-subscription)
-- [Azure Kaynak yazma anahtarına geçiş](/azure/cognitive-services/luis/luis-migration-authoring)
-
-
-- [Öğretici: Node.jsLanguage Understanding ile etkin bir Web uygulaması bot kullanın](/azure/cognitive-services/luis/luis-nodejs-tutorial-bf-v4)
+- [Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma](/azure/cognitive-services/form-recognizer/tutorial-ai-builder)
 
 ## <a name="personalizer"></a>Kişiselleştirme
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [.NET Web uygulamasına kişiselleştirici ekleme](/azure/cognitive-services/personalizer/tutorial-use-personalizer-web-app)
+- [Öğretici: .NET Chat bot 'ta kişiselleştirici kullanma](/azure/cognitive-services/personalizer/tutorial-use-personalizer-chat-bot)
+
+## <a name="qna-maker"></a>Soru-Cevap Oluşturucu
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Soru-Cevap Oluşturma Uygulamanızı planlayın](/azure/cognitive-services/qnamaker/concepts/plan)
 
 ## <a name="speech-service"></a>Konuşma Hizmeti
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Özel Komutlar kavramları](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Komuta onaylar ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
-- [Parametreyi dış Katalog varlığı olarak yapılandırma](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
-- [Konuşma yanıtları için dil oluşturma şablonlarını kullanma](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Bir komutta düzeltme uygulama](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
-- [Komutlara parametre ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Basit komutlar ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
-- [Özel komut parametrelerine doğrulama ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
-- [Özel komut uygulaması oluşturma](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
-- [Özel Konuşma Tanıma için CI/CD](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Özel komutlar kullanarak uçtan uca ses Yardımcısı oluşturma](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
-- [Hızlı başlangıç: konuşma Studio 'da bir ses dosyası kullanarak bir modeli test etme](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
-- [Konuşmacı tanımanın temellerini öğrenin](/azure/cognitive-services/speech-service/speaker-recognition-basics)
-- [Azure konuşmacı tanıma hizmeti nedir?](/azure/cognitive-services/speech-service/speaker-recognition-overview)
-- [Konuşma hizmeti: docs 'taki yenilikler](/azure/cognitive-services/speech-service/whats-new)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Toplu iş dökümü nedir?](/azure/cognitive-services/speech-service/batch-transcription)
-- [Konuşma hizmeti için dil ve ses desteği](/azure/cognitive-services/speech-service/language-support)
+- [Bekleyen verinin Özel Komutlarla şifrelenmesi](/azure/cognitive-services/speech-service/custom-commands-encryption-of-data-at-rest)
+- [Özel anahtar sözcük temelleri](/azure/cognitive-services/speech-service/custom-keyword-basics)
+- [Özel Ses ile Özel Komutlar’ı Kullanma](/azure/cognitive-services/speech-service/how-to-custom-commands-use-custom-voice)
+- [Konuşma kapsayıcıları için Batch işleme seti](/azure/cognitive-services/speech-service/speech-container-batch-processing)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+### <a name="new-articles"></a>Yeni makaleler
 
-- [Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Go kullanma](/azure/cognitive-services/text-analytics/quickstarts/go)
-- [Hızlı başlangıç: Azure Metin Analizi bilişsel hizmetini çağırmak için Java kullanma](/azure/cognitive-services/text-analytics/quickstarts/java)
-- [Hızlı başlangıç: Metin Analizi bilişsel hizmeti 'ni çağırmak için Node.js kullanma](/azure/cognitive-services/text-analytics/quickstarts/nodejs)
-- [Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için PHP kullanma](/azure/cognitive-services/text-analytics/quickstarts/php)
-- [Hızlı başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma](/azure/cognitive-services/text-analytics/quickstarts/python)
-- [Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Ruby kullanma](/azure/cognitive-services/text-analytics/quickstarts/ruby)
-
-## <a name="translator"></a>Translator
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Metin ve konuşma çevirisi için dil ve bölge desteği](/azure/cognitive-services/translator/language-support)
+- [Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
 
 ## <a name="community-contributors"></a>Topluluk katkı sağlayanlar
 
-Aşağıdaki kişiler bu süre boyunca bilişsel hizmetler belgelerine katkıda bulunanlar. Teşekkür ederiz! 
+Aşağıdaki kişiler bu süre boyunca bilişsel hizmetler belgelerine katkıda bulunanlar. Teşekkür ederiz! Yenilikler [giriş sayfasında](index.yml)"katılım alma" başlığı altında yer alan bağlantıları izleyerek nasıl katkıda bulunabileceğinizi öğrenin.
 
-- [changeworld](https://github.com/changeworld) -Takashi Takebayashi (1)
-- [huaigulin](https://github.com/huaigulin) -Huaigu Lin (1)
+- [milestonedev](https://github.com/milestonedev) -da mil (2)
+- [felixvantaeuwen](https://github.com/felixvanleeuwen) (1)
+- [Loıcb](https://github.com/LoicB) -Loic Beylot (1)
+- [nkgami](https://github.com/nkgami) -Hiroki Nakagami (1)
+- [RussellJQA](https://github.com/RussellJQA) -Russati Johnson (1)
+- [ryotokuro](https://github.com/ryotokuro) -TaiYue tan (1)
+- [smorcuend](https://github.com/smorcuend) -Sergio Morcuende (1)
+- [swildermann](https://github.com/swildermann) -Sven Soldermann (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

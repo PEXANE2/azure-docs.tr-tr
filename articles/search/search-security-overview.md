@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501500"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553963"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
-Bu makalede, Azure Bilişsel Arama içerik ve işlemleri koruyabilecek temel güvenlik özellikleri açıklanmaktadır. 
+Bu makalede, Azure Bilişsel Arama içerik ve işlemleri koruyabilecek temel güvenlik özellikleri açıklanmaktadır.
 
-+ Depolama katmanında, bekleyen şifreleme platform düzeyinde verilir, ancak Bilişsel Arama ek bir şifreleme katmanı için Azure Key Vault aracılığıyla müşteri tarafından yönetilen anahtarlar da sunar.
++ Depolama katmanında, dizinler, eş anlamlı eşlemeler ve Dizin oluşturucular, veri kaynakları ve becerileri tanımları dahil olmak üzere diske kaydedilen tüm hizmet tarafından yönetilen içerikler için, Rest 'ten şifreleme yerleşik olarak bulunur. Azure Bilişsel Arama, dizinli içeriğin ek şifrelenmesi için müşteri tarafından yönetilen anahtarların (CMK) eklenmesini de destekler. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.
 
 + Gelen güvenlik, arama hizmeti uç noktasını, güvenlik seviyelerine karşı koruma sağlar: istekteki API anahtarlarından, güvenlik duvarında gelen kurallara, genel İnternet 'ten hizmetinizi tamamen koruyan özel uç noktalara.
 
@@ -29,29 +30,41 @@ Güvenlik mimarisine ve her özellik kategorisine genel bir bakış için bu hı
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>Şifrelenmiş aktarımlar ve depolama
 
-Şifreleme, Azure Bilişsel Arama, bağlantılar ve iletimlerden başlayarak diskte depolanan içeriğe genişleterek bir şekilde kullanılır. Genel internet üzerindeki arama hizmetleri için Azure Bilişsel Arama, HTTPS bağlantı noktası 443 ' i dinler. Tüm istemciden hizmete bağlantılar TLS 1,2 şifrelemesini kullanır. Önceki sürümler (1,0 veya 1,1) desteklenmez.
+Azure Bilişsel Arama 'de, şifreleme bağlantılarla ve iletimlerle başlar ve diskte depolanan içeriğe genişletir. Genel internet üzerindeki arama hizmetleri için Azure Bilişsel Arama, HTTPS bağlantı noktası 443 ' i dinler. Tüm istemciden hizmete bağlantılar TLS 1,2 şifrelemesini kullanır. Önceki sürümler (1,0 veya 1,1) desteklenmez.
 
-### <a name="data-encryption-at-rest"></a>Bekleyen veri şifreleme
+Arama hizmeti tarafından dahili olarak işlenen veriler için aşağıdaki tabloda [veri şifreleme modelleri](../security/fundamentals/encryption-atrest.md#data-encryption-models)açıklanmaktadır. Bilgi deposu, artımlı zenginleştirme ve Dizin Oluşturucu tabanlı dizin oluşturma, diğer Azure hizmetlerinde veri yapılarına okuma veya yazma gibi bazı özellikler. Bu hizmetlerin Azure Bilişsel Arama ayrı ayrı şifreleme desteği düzeyleri vardır.
 
-Azure Bilişsel Arama Dizin tanımlarını ve içeriği, veri kaynağı tanımlarını, Dizin Oluşturucu tanımlarını, Beceri tanımlarını ve eş anlamlı haritaları depolar.
+| Model | Belirlenmesine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gereklilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Kısıtlamalar | Şunlara uygulanır |
+|------------------|-------|-------------|--------------|------------|
+| sunucu tarafı şifreleme | Microsoft tarafından yönetilen anahtarlar | Hiçbiri (yerleşik) | Hiçbiri, tüm bölgelerde, tüm bölgelerde bulunan ve 24 2018 Ocak 'tan sonra oluşturulan içerikler için kullanılabilir. | İçerik (dizinler ve eş anlamlı haritalar) ve tanımlar (Dizin oluşturucular, veri kaynakları, becerileri) |
+| sunucu tarafı şifreleme | Müşteri tarafından yönetilen anahtarlar | Azure Key Vault | Faturalandırılabilir katmanda, tüm bölgelerde, Ocak 2019 ' den sonra oluşturulan içerikler için kullanılabilir. | Veri disklerinde içerik (dizinler ve eş anlamlılar haritaları) |
+| sunucu tarafı çift şifreleme | Müşteri tarafından yönetilen anahtarlar | Azure Key Vault | 1 2020 Ağustos 'Tan sonra Arama hizmetlerinde, seçili bölgelerde faturalanabilir katmanlarda kullanılabilir. | Veri disklerinde ve geçici disklerde içerik (dizinler ve eş anlamlılar haritaları) |
 
-Depolama katmanında veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak diskte şifrelenir. Şifrelemeyi kapatamaz veya kapatamaz veya şifreleme ayarlarını portalda veya program aracılığıyla görüntüleyemezsiniz. Şifreleme işlemi, dizin oluşturma süresinin tamamlanmasını veya dizin boyutunu hiçbir ölçülebilir etki olmadan tamamen internalized. Tam olarak şifrelenmemiş bir dizine yönelik artımlı güncelleştirmeler de dahil olmak üzere tüm dizin oluşturma işleminde otomatik olarak gerçekleşir (2018 Ocak 'tan önce oluşturulmuştur).
+### <a name="service-managed-keys"></a>Hizmet tarafından yönetilen anahtarlar
 
-Dahili olarak, şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanılarak [Azure depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md)tabanlıdır.
+Hizmet tarafından yönetilen şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanılarak [Azure depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md)temel alan Microsoft iç işlemidir. Tam olarak şifrelenmeyen dizinlerin Artımlı güncelleştirmeleri de dahil olmak üzere tüm dizin oluşturma işleminde otomatik olarak gerçekleşir (2018 Ocak 'tan önce oluşturulmuştur).
 
-> [!NOTE]
-> Bekleyen şifreleme, 24 Ocak 2018 ' de duyuruldu ve tüm bölgelerde ücretsiz katman dahil tüm hizmet katmanlarına uygulanıyor. Tam şifreleme için, bu tarihten önce oluşturulan dizinlerin, şifrelemenin gerçekleşmesi için bırakılması ve yeniden oluşturulması gerekir. Aksi takdirde, yalnızca 24 Ocak 'tan sonra eklenen yeni veriler şifrelenir.
+### <a name="customer-managed-keys-cmk"></a>Müşteri tarafından yönetilen anahtarlar (CMK)
 
-### <a name="customer-managed-key-cmk-encryption"></a>Müşteri tarafından yönetilen anahtar (CMK) şifreleme
+Müşteri tarafından yönetilen anahtarlar, farklı bir bölgede, ancak Azure Bilişsel Arama olarak aynı abonelik altında olabilen ek bir faturalanabilir hizmet Azure Key Vault gerektirir. CMK şifrelemesini etkinleştirmek, dizin boyutunu artırır ve sorgu performansını düşürür. Tarih gözlemlerini temel alarak sorgu süreleriyle %30 oranında %60 oranında bir artış görmeniz beklenir, ancak gerçek performans, Dizin tanımına ve sorgu türlerine göre değişir. Bu performans etkisi nedeniyle, bu özelliği yalnızca gerçekten gereken dizinlerde etkinleştirmenizi öneririz. Daha fazla bilgi için bkz. [Azure bilişsel arama müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](search-security-manage-encryption-keys.md).
 
-Ek depolama koruması isteyen müşteriler, verileri ve nesneleri diskte saklanmadan ve şifrelenmeden önce şifreleyebilir. Bu yaklaşım, Microsoft 'tan bağımsız olarak Azure Key Vault aracılığıyla yönetilen ve saklanan kullanıcıya ait bir anahtara dayalıdır. Disk üzerinde şifrelenmeden önce içeriği şifrelemek "Çift şifreleme" olarak adlandırılır. Şu anda dizinleri ve eş anlamlı haritaları seçmeli olarak çift şifreleyebilirsiniz. Daha fazla bilgi için bkz. [Azure bilişsel arama 'de müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md).
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> CMK şifrelemesi, 2019 Ocak ' den sonra oluşturulan arama hizmetleri için genel kullanıma sunulmuştur. Bu, ücretsiz (paylaşılan) hizmetlerde desteklenmez. 
->
->Bu özelliğin etkinleştirilmesi, dizin boyutunu artırır ve sorgu performansını düşürür. Tarih gözlemlerini temel alarak sorgu süreleriyle %30 oranında %60 oranında bir artış görmeniz beklenir, ancak gerçek performans, Dizin tanımına ve sorgu türlerine göre değişir. Bu performans etkisi nedeniyle, bu özelliği yalnızca gerçekten gereken dizinlerde etkinleştirmenizi öneririz.
+### <a name="double-encryption"></a>Çift şifreleme 
+
+Azure Bilişsel Arama 'de, Çift şifreleme CMK 'nin bir uzantısıdır. İki katlı şifreleme (CMK tarafından bir kez ve hizmet tarafından yönetilen anahtarlar tarafından), kapsam içi ve bir veri diskine yazılan uzun süreli depolamayı ve geçici disklere yazılan kısa vadeli depolamayı içeren kapsamlı bir şifreleme olduğu anlaşıldı. CMK ile 1 2020 Ağustos 'Tan önce ve sonrasında CMK arasındaki fark ve Azure Bilişsel Arama 'de CMK 'nin Çift şifreleme özelliği ne kadar bir kez yapılır, geçici disklerde bekleyen verilerin ek şifrelemesi.
+
+Çift şifreleme Şu anda bu bölgelerde oluşturulan yeni hizmetlerde 1 Ağustos 'Tan sonra kullanılabilir:
+
++ Batı ABD 2
++ Doğu ABD
++ Orta Güney ABD
++ US Gov Virginia
++ US Gov Arizona
 
 <a name="service-access-and-authentication"></a>
 

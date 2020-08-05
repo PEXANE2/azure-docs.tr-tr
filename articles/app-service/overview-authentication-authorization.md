@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068209"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562387"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -22,15 +22,20 @@ Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web b
 > [!IMPORTANT]
 > Kimlik doğrulama ve yetkilendirme için bu özelliği kullanmanız gerekli değildir. Seçtiğiniz Web çerçevesindeki paketlenmiş güvenlik özelliklerini kullanabilir veya kendi yardımcı programlarını yazabilirsiniz. Bununla birlikte, Chrome 80 ' in, farklı tanımlama bilgileri için (2020 Mart 'ta Yayın tarihi) ve özel uzaktan kimlik doğrulama veya siteler arası tanımlama bilgisine bağlı diğer senaryolar, istemci Chrome tarayıcıları güncelleştirilirken kesintiye uğrayabilecek [şekilde değişiklik yapıyor](https://www.chromestatus.com/feature/5088147346030592) . Farklı tarayıcılar için farklı SameSite davranışlarını desteklemesi gerektiğinden geçici çözüm karmaşıktır. 
 >
-> App Service tarafından barındırılan ASP.NET Core 2,1 ve üzeri sürümleri, bu son değişiklik için zaten düzeltme eki uygulanmış ve Chrome 80 ve daha eski tarayıcıları uygun şekilde işleyecek. Ayrıca, ASP.NET Framework 4.7.2 için de aynı düzeltme eki, Ocak 2020 boyunca App Service örneklerine dağıtılır. Uygulamanızın düzeltme ekini aldığını nasıl öğrendiklerini de içeren daha fazla bilgi için, [Azure App Service SameSite tanımlama bilgisi güncelleştirmesi](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)' ne bakın.
+> App Service tarafından barındırılan ASP.NET Core 2,1 ve üzeri sürümleri, bu son değişiklik için zaten düzeltme eki uygulanmış ve Chrome 80 ve daha eski tarayıcıları uygun şekilde işleyecek. Ayrıca, ASP.NET Framework 4.7.2 için de aynı düzeltme eki, 2020 Ocak boyunca App Service örneklerine dağıtılır. Daha fazla bilgi için bkz. [Azure App Service SameSite tanımlama bilgisi güncelleştirmesi](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
 
 > [!NOTE]
 > Kimlik doğrulama/yetkilendirme özelliği bazen "kolay kimlik doğrulaması" olarak da adlandırılır.
 
+> [!NOTE]
+> Bu özelliği etkinleştirmek, [https 'yi zorlamak](configure-ssl-bindings.md#enforce-https)için App Service yapılandırma ayarından bağımsız olarak, uygulamanıza yönelik **Tüm** güvenli olmayan http isteklerinin otomatik olarak https 'ye yönlendirilmesini sağlar. Gerekirse, `requireHttps` [kimlik doğrulama ayarları yapılandırma dosyasındaki](app-service-authentication-how-to.md#configuration-file-reference)ayarı aracılığıyla bunu devre dışı bırakabilirsiniz, ancak bundan böyle hiçbir güvenlik BELIRTECININ güvenli olmayan http bağlantıları üzerinden iletilmemesini sağlamak için dikkatli olmanız gerekir.
+
 Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](../app-service-mobile/app-service-mobile-auth.md).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
+
+### <a name="on-windows"></a>Windows üzerinde
 
 Kimlik doğrulama ve yetkilendirme modülü, uygulama kodunuzla aynı korumalı alanda çalışır. Etkin olduğunda, her gelen HTTP isteği, uygulama kodunuz tarafından işlenemeden önce üzerinden geçirilir.
 
@@ -44,6 +49,10 @@ Bu modül, uygulamanız için çeşitli şeyleri işler:
 - Kimlik bilgilerini istek üst bilgilerine ekler
 
 Modül, uygulama kodınızdan ayrı olarak çalışır ve uygulama ayarları kullanılarak yapılandırılır. SDK, belirli dil veya uygulama kodunuzda değişiklik yapılması gerekmez. 
+
+### <a name="on-containers"></a>Kapsayıcılar üzerinde
+
+Kimlik doğrulama ve yetkilendirme modülü, uygulama kodınızdan yalıtılmış ayrı bir kapsayıcıda çalışır. [Amelçi deseninin](https://docs.microsoft.com/azure/architecture/patterns/ambassador)bilindiğinin kullanılması, Windows 'da olduğu gibi benzer işlevleri gerçekleştirmek üzere gelen trafikle etkileşime girer. İşlem içinde çalıştırılmadığından, belirli dil çerçeveleri ile doğrudan tümleştirme mümkün değildir; Ancak, uygulamanızın ihtiyaç duyacağı ilgili bilgiler, aşağıda açıklandığı gibi istek üstbilgileri kullanılarak geçirilir.
 
 ### <a name="userapplication-claims"></a>Kullanıcı/uygulama talepleri
 

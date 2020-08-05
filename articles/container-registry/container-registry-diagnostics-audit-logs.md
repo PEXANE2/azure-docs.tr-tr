@@ -3,12 +3,12 @@ title: Kaynak günlüklerini toplama & analiz etme
 description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252496"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553385"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
 
@@ -121,7 +121,7 @@ ContainerRegistryRepositoryEvents
 | project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
 ```
 
-### <a name="reposity-level-operation-failures"></a>Kayıt düzeyindeki işlem sorunları
+### <a name="repository-level-operation-failures"></a>Depo düzeyi işlem sorunları
 
 ```kusto
 ContainerRegistryRepositoryEvents 

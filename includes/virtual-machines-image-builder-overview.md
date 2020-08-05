@@ -4,13 +4,13 @@ ms.author: cynthn
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+manager: daberry
+ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545318"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554895"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -56,6 +56,7 @@ AıB, Azure Marketi temel işletim sistemi görüntülerini destekleyecektir:
 - Windows 2019
 
 RHEL ISOs desteği artık desteklenmiyor.
+
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
 
@@ -98,8 +99,8 @@ Image Builder, VM için gereken bir D1v2 VM boyutu, depolama alanı ve ağ kulla
  
 Azure Image Builder, görüntüyü seçtiğiniz bölgelere dağıtır ve bu da ağ çıkış ücretleri doğuracaktır.
 
-## <a name="hyper-v-generation"></a>Hyper V oluşturma
-Şu anda bulunan görüntü Oluşturucu, Hyper V nesil 1 görüntülerini ve VM 'Leri destekler.
+## <a name="hyper-v-generation"></a>Hyper-V oluşturma
+Şu anda bulunan görüntü Oluşturucu, Hyper-V nesil 1 görüntülerini ve VM 'Leri destekler.
  
 ## <a name="next-steps"></a>Sonraki adımlar 
  

@@ -6,18 +6,18 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 94d120973939dd1efabee868fc75e9f6c1352bf3
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976515"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562642"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -81,7 +81,7 @@ Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazları
 
 ![Azure AD Uygulama Ara Sunucusu mimarisi](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Bir uygulamayı çoklu oturum açma için yapılandırmanın birkaç yolu vardır ve seçtiğiniz yöntem uygulamanızın kullandığı kimlik doğrulamasına bağlıdır. Uygulama proxy 'Si aşağıdaki uygulama türlerini destekler:
 
@@ -138,7 +138,7 @@ Aşağıdaki diyagramda, son kullanıcılara şirket içi uygulamalarda çoklu o
 
 |**Bileşen**|**Açıklama**|
 |:-|:-|
-|Uç Nokta|Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
+|Uç Noktası|Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
 |Azure AD|Azure AD, bulutta depolanan kiracı dizinini kullanarak kimlik doğrulamasını gerçekleştirir.|
 |Uygulama proxy hizmeti|Bu uygulama proxy hizmeti, Azure AD 'nin bir parçası olarak bulutta çalışır. Kullanıcının oturum açma belirtecini, uygulama proxy Bağlayıcısı 'na geçirir. Uygulama proxy 'Si, istekteki tüm erişilebilir üstbilgileri iletir ve üst bilgileri protokol başına, istemci IP adresine ayarlar. Ara sunucuya gelen istek zaten bu üstbilgiye sahipse, istemci IP adresi üst bilginin değeri olan virgülle ayrılmış listenin sonuna eklenir.|
 |Uygulama proxy Bağlayıcısı|Bağlayıcı, ağınız içindeki bir Windows Server üzerinde çalışan hafif bir aracıdır. Bağlayıcı, bulutta ve şirket içi uygulamada bulunan uygulama proxy hizmeti arasındaki iletişimi yönetir. Bağlayıcı yalnızca giden bağlantıları kullanır, bu nedenle herhangi bir gelen bağlantı noktasını açmanız veya DMZ 'e herhangi bir şey yerleştirmeniz gerekmez. Bağlayıcılar, gereken şekilde durum bilgisiz ve buluttan tanıtım bilgileri. Yük Dengeleme ve kimlik doğrulama gibi bağlayıcılar hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](application-proxy-connectors.md).|
@@ -180,7 +180,7 @@ Bağlayıcılarınızın nereye yükleneceğini ve ağınızı iyileştirerek ku
 
 ## <a name="other-use-cases"></a>Diğer kullanım örnekleri
 
-Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Bunlara aşağıdakiler dahildir:
+Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Bu ölçümler şunlardır:
 
 * **REST API 'Leri güvenli bir şekilde yayımlayın**. Şirket içinde çalışan veya buluttaki sanal makinelerde barındırılan iş mantığı veya API 'Ler olduğunda, uygulama proxy 'SI API erişimi için genel bir uç nokta sağlar. API uç noktası erişimi, gelen bağlantı noktalarına gerek kalmadan kimlik doğrulama ve yetkilendirmeyi denetlemenize olanak tanır. Intune kullanan masaüstleri, iOS, MAC ve Android cihazlar için Multi-Factor Authentication ve cihaz tabanlı koşullu erişim gibi Azure AD Premium özellikler aracılığıyla ek güvenlik sağlar. Daha fazla bilgi edinmek için bkz. [yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md) ve [Azure Active Directory ve API Management ile OAUTH 2,0 kullanarak API 'yi koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
 * **Uzak Masaüstü Hizmetleri** **(RDS)**. Standart RDS dağıtımları açık gelen bağlantılar gerektirir. Ancak, [uygulama proxy 'si Ile RDS dağıtımı](application-proxy-integrate-with-remote-desktop-services.md) , bağlayıcı hizmetini çalıştıran sunucudan kalıcı bir giden bağlantıya sahiptir. Bu şekilde, Uzak Masaüstü Hizmetleri aracılığıyla şirket içi uygulamaları yayımlayarak son kullanıcılara daha fazla uygulama sunabilirsiniz. Ayrıca, RDS 'ye sınırlı bir iki adımlı doğrulama ve koşullu erişim denetimi kümesiyle dağıtımın saldırı yüzeyini de azaltabilirsiniz.

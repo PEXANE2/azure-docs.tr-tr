@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 13842512c7d983a70b32132b4a16be37ac0b2b54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050718"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562796"
 ---
 # <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Önizleme-Azure Kubernetes Service (AKS) düğümü görüntü yükseltmeleri
 
@@ -47,7 +47,7 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService

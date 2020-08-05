@@ -1,7 +1,7 @@
 ---
-title: Azure AD uygulaması SAML belirteci taleplerini özelleştirme
+title: Uygulama SAML belirteci taleplerini özelleştirme
 titleSuffix: Microsoft identity platform
-description: Azure AD 'de kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirmeyi öğrenin.
+description: Kurumsal uygulamalar için SAML belirtecinde Microsoft Identity platform tarafından verilen talepleri özelleştirmeyi öğrenin.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5cce985e3f63ade94fb626d18bded440caeff1fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274477"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552841"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
-Günümüzde Azure Active Directory (Azure AD), Azure AD uygulama galerisinde ve özel uygulamalarda önceden tümleştirilmiş uygulamalar da dahil olmak üzere çoğu kurumsal uygulamayla çoklu oturum açmayı (SSO) destekler. Bir Kullanıcı, SAML 2,0 protokolünü kullanarak Azure AD aracılığıyla bir uygulamanın kimliğini doğruladığında, Azure AD uygulamaya bir belirteç gönderir (bir HTTP POST aracılığıyla). Sonra uygulama, Kullanıcı adı ve parola istemek yerine, kullanıcının oturum açmasını sağlamak için belirtecini doğrular ve kullanır. Bu SAML belirteçleri, *talep*olarak bilinen kullanıcı hakkında bilgi parçalarını içerir.
+Günümüzde Microsoft Identity platformu, Azure AD uygulama galerisinde ve özel uygulamalarda önceden tümleştirilmiş uygulamalar da dahil olmak üzere çoğu kurumsal uygulamayla çoklu oturum açmayı (SSO) destekler. Bir Kullanıcı, SAML 2,0 protokolünü kullanarak Microsoft Identity platform aracılığıyla bir uygulamanın kimliğini doğruladığında, Microsoft Identity platform uygulamaya bir belirteç gönderir (bir HTTP POST aracılığıyla). Sonra uygulama, Kullanıcı adı ve parola istemek yerine, kullanıcının oturum açmasını sağlamak için belirtecini doğrular ve kullanır. Bu SAML belirteçleri, *talep*olarak bilinen kullanıcı hakkında bilgi parçalarını içerir.
 
 Bir *talep* , bir kimlik sağlayıcısının bu kullanıcı için çalıştıkları belirtecin içindeki bir kullanıcı hakkında bilgi veren bir sorundur. [SAML belirtecinde](https://en.wikipedia.org/wiki/SAML_2.0), bu VERILER genellikle SAML Attribute ifadesinde bulunur. Kullanıcının benzersiz KIMLIĞI, genellikle ad tanımlayıcısı olarak da bilinen SAML konusu içinde temsil edilir.
 
-Azure AD, varsayılan olarak, `NameIdentifier` Azure AD 'de kullanıcının Kullanıcı adı (Kullanıcı asıl adı olarak da bilinir) değeri olan bir talep içeren BIR SAML belirteci verir. Bu, kullanıcıyı benzersiz şekilde tanımlayabilirler. SAML belirteci ayrıca kullanıcının e-posta adresini, adını ve soyadını içeren ek talepler içerir.
+Varsayılan olarak, Microsoft Identity platformu, `NameIdentifier` Azure AD 'de kullanıcının Kullanıcı adı (Kullanıcı asıl adı olarak da bilinir) değeri olan bir talep içeren BIR SAML belirteci verir ve bu da kullanıcıyı benzersiz şekilde tanımlayabilir. SAML belirteci ayrıca kullanıcının e-posta adresini, adını ve soyadını içeren ek talepler içerir.
 
 SAML belirtecinde verilen talepleri uygulamaya görüntülemek veya düzenlemek için Azure portal içinde uygulamayı açın. Ardından **Kullanıcı öznitelikleri & talepler** bölümünü açın.
 
@@ -48,19 +48,19 @@ NameID (ad tanımlayıcı değeri) düzenlemek için:
 
 ### <a name="nameid-format"></a>NameID biçimi
 
-SAML isteği belirli bir biçime sahip Nameıdpolicy öğesini içeriyorsa, Azure AD istekteki biçimi kabul eder.
+SAML isteği belirli bir biçime sahip Nameıdpolicy öğesini içeriyorsa, Microsoft Identity platform istekteki biçimi kabul eder.
 
-SAML isteği Nameıdpolicy için bir öğe içermiyorsa Azure AD, belirttiğiniz biçimle birlikte NameID olarak verilecek. Hiçbir biçim belirtilmemişse Azure AD, seçilen talep kaynağıyla ilişkili varsayılan kaynak biçimini kullanır.
+SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity platform, belirttiğiniz biçimde NameID 'yi yayınacaktır. Biçim belirtilmemişse, Microsoft Identity platform seçili talep kaynağıyla ilişkili varsayılan kaynak biçimini kullanır.
 
 **Ad tanımlayıcı biçimi Seç** açılan menüsünde, aşağıdaki seçeneklerden birini seçebilirsiniz.
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
-| **Varsayılanını** | Azure AD varsayılan kaynak biçimini kullanır. |
-| **Kalıcı** | Azure AD, NameID biçimi olarak kalıcı kullanacaktır. |
-| **EmailAddress** | Azure AD, NameID biçimi olarak Emapostaadı kullanacaktır. |
-| **Belirtilmemiş** | Azure AD, NameID biçimi olarak belirtilmemiş kullanır. |
-| **Windows etki alanı nitelikli adı** | Azure AD, NameID biçimi olarak WindowsDomainQualifiedName kullanır. |
+| **Varsayılan** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
+| **Kalıcı** | Microsoft Identity platform, NameID biçimi olarak persistent kullanacaktır. |
+| **EmailAddress** | Microsoft Identity platformu, NameID biçimi olarak Emapostaadı kullanacaktır. |
+| **Belirtilmemiş** | Microsoft Identity platform, NameID biçimi olarak belirtilmemiş olarak kullanılacak. |
+| **Windows etki alanı nitelikli adı** | Microsoft Identity platformu, NameID biçimi olarak WindowsDomainQualifiedName kullanır. |
 
 Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tarafında yapılandırılamaz. Nameıdpolicy özniteliği hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma SAML Protokolü](single-sign-on-saml-protocol.md).
 
@@ -169,9 +169,9 @@ Talep koşulu eklemek için:
 
 Koşulları eklediğiniz sıra önemlidir. Azure AD, talebe göre hangi değerin yayacağına karar vermek için koşulları yukarıdan aşağıya değerlendirir. 
 
-Örneğin, Britta Simon, contoso kiracısındaki bir Konuk Kullanıcı. Aynı zamanda Azure AD kullanan başka bir kuruluşa aittir. Fabrikam uygulaması için aşağıdaki yapılandırma verildiğinde, Britta Fabrikam ' ta oturum açmaya çalıştığında Azure AD, koşulları takip edecek şekilde değerlendirir.
+Örneğin, Britta Simon, contoso kiracısındaki bir Konuk Kullanıcı. Aynı zamanda Azure AD kullanan başka bir kuruluşa aittir. Fabrikam uygulaması için aşağıdaki yapılandırma verildiğinde, Britta Fabrikam ' ta oturum açmaya çalıştığında, Microsoft Identity platform koşulları takip edecek şekilde değerlendirir.
 
-İlk olarak, Azure AD, Britta 'ın Kullanıcı türünün olup olmadığını doğrular `All guests` . Bu, doğru olduğundan Azure AD, talebin kaynağını atar `user.extensionattribute1` . İkinci olarak, Azure AD, `AAD guests` Bu da doğru olduğundan Azure AD, talebin kaynağını atar `user.mail` . Son olarak, talep, Britta değeri ile yayılır `user.mail` .
+İlk olarak, Microsoft Identity platform Britta 'ın Kullanıcı türünün olup olmadığını doğrular `All guests` . Bu, doğru olduğundan Microsoft Identity platform, talep için kaynağı atar `user.extensionattribute1` . İkinci olarak, Microsoft Identity platform, `AAD guests` Bu da doğru olduğundan Microsoft Identity platform, talebin kaynağını atar `user.mail` . Son olarak, talep, Britta değeri ile yayılır `user.mail` .
 
 ![Talep koşullu yapılandırması](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

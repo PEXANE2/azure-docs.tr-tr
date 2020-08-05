@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: a92aa304d605242063e0d0484317bc8c051959e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a41fe159f3ac7ef91ba943534aaa6baeeab83001
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317850"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552416"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning modelinize ait hiper parametreleri ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -379,7 +379,7 @@ Ayrıca, bir paralel koordinat çizimi kullanarak ayrı ayrı hiper parametreler
 
 [![Hiper parametre ayarlama paralel koordinatları](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-Azure Web portalındaki tüm hiperparameter ayarlama çalışmalarınızı da görselleştirebilirsiniz. Web portalında bir denemeyi görüntüleme hakkında daha fazla bilgi için bkz. [denemeleri Track](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
+Azure Web portalındaki tüm hiperparameter ayarlama çalışmalarınızı da görselleştirebilirsiniz. Web portalında bir denemeyi görüntüleme hakkında daha fazla bilgi için bkz. [denemeleri Track](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
 
 ## <a name="find-the-best-model"></a>En iyi modeli bulun
 

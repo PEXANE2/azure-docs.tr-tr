@@ -1,7 +1,7 @@
 ---
 title: Azure AD uygulamalarına isteğe bağlı talepler sağlama
 titleSuffix: Microsoft identity platform
-description: SAML 2,0 ve Azure Active Directory tarafından verilen JSON Web belirteçleri (JWT) belirteçlerine özel veya ek talepler ekleme.
+description: Microsoft Identity platform tarafından yayınlanan SAML 2,0 ve JSON Web belirteçleri (JWT) belirteçlerine özel veya ek talepler ekleme.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445575"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552875"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Nasıl yapılır: Azure AD uygulamanıza isteğe bağlı talepler sağlama
+# <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
 Uygulama geliştiricileri, kendi uygulamalarına hangi talepler gönderilmesini istediğinizi belirlemek için Azure AD uygulamalarında isteğe bağlı talepler kullanabilir.
 
 İsteğe bağlı talepleri şu şekilde kullanabilirsiniz:
 
 - Uygulamanızın belirteçlerine dahil etmek için ek talepler ' i seçin.
-- Azure AD 'nin belirteçlerde döndürdüğü belirli taleplerin davranışını değiştirin.
+- Microsoft Identity platform 'un belirteçlerde döndürdüğü belirli taleplerin davranışını değiştirin.
 - Uygulamanız için özel talepler ekleyin ve erişin.
 
 Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [id_token](id-tokens.md) talep belgeleri.
@@ -37,7 +37,7 @@ Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [i
 
 | Hesap türü               | v 1.0 belirteçleri | v 2.0 belirteçleri |
 |----------------------------|-------------|-------------|
-| Kişisel Microsoft hesabı | YOK         | Desteklenir   |
+| Kişisel Microsoft hesabı | Yok         | Desteklenir   |
 | Azure AD hesabı           | Desteklenir   | Desteklenir   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 ve v 2.0 isteğe bağlı talepler kümesi
@@ -77,7 +77,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 
 **Tablo 3: v 2.0-yalnızca isteğe bağlı talepler**
 
-| JWT talebi     | Name                            | Açıklama                                | Notlar |
+| JWT talebi     | Ad                            | Açıklama                                | Notlar |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP Adresi                      | İstemcinin oturum açtığı IP adresi.   |       |
 | `onprem_sid`  | Şirket Içi güvenlik tanımlayıcısı |                                             |       |
@@ -137,7 +137,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Ekle**'yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 **Uygulama bildirimi aracılığıyla isteğe bağlı talepler Yapılandırılıyor:**
 
@@ -399,7 +399,7 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Bildirim yapılandırması:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.

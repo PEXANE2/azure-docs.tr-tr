@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529633"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554031"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -29,9 +29,9 @@ PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu]
 
 Aşağıdaki hizmet özellikleri, hizmetin kullanım ömrü boyunca düzeltilir; bunlardan herhangi birini değiştirmek yeni bir hizmet gerektirir. Düzeltildiklerinden, her bir özelliği doldururken kullanım etkilerini göz önünde bulundurun:
 
-* hizmet adı URL uç noktasının bir parçası olur (faydalı hizmet adları için[ipuçları gözden geçirin](#name-the-service) ).
-* hizmet katmanı, [faturalandırmayı etkiler](search-sku-tier.md) ve kapasite üzerinde yukarı bir sınır ayarlar.
-* hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. Bilgi madenciliği ve AI zenginleştirme ile ilgileniyorsanız, bilişsel hizmetler ve muhtemelen Azure Bilişsel Arama ile aynı bölgede Azure Machine Learning gerekir.
+* Hizmet adı URL uç noktasının bir parçası olur (faydalı hizmet adları için[ipuçları gözden geçirin](#name-the-service) ).
+* Hizmet katmanı, [faturalandırmayı etkiler](search-sku-tier.md) ve kapasite üzerinde yukarı bir sınır ayarlar. Ücretsiz katmanda bazı özellikler kullanılamaz.
+* Hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. [Yüksek güvenlik özellikleri](search-security-overview.md) veya [AI zenginleştirmesi](cognitive-search-concept-intro.md)gerekiyorsa, Azure bilişsel arama diğer hizmetlerle aynı bölgeye veya söz konusu özelliği sağlayan bölgelere yerleştirmeniz gerekir. 
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 
@@ -41,7 +41,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
 
@@ -51,7 +51,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="choose-a-subscription"></a>Abonelik seçin
 
-Birden fazla aboneliğiniz varsa, arama hizmetiniz için bir tane seçin.
+Birden fazla aboneliğiniz varsa, arama hizmetiniz için bir tane seçin. Yönetilen hizmet kimliklerine bağlı bir [Çift şifreleme](search-security-overview.md#double-encryption) veya diğer özellikler uygulamadıysanız, yönetilen kimliklerin kullanıldığı Azure Key Vault veya diğer hizmetler için kullanılan aboneliği seçin.
 
 ## <a name="set-a-resource-group"></a>Kaynak grubu ayarlama
 
@@ -89,6 +89,8 @@ Azure Bilişsel Arama çoğu bölgede kullanılabilir. Desteklenen bölgelerin l
 
 > [!Note]
 > Orta Hindistan ve BAE Kuzey şu anda yeni hizmetlerde kullanılamıyor. Bu bölgelerde zaten bulunan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Kısıtlamalar geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlamalar artık uygulanmadıysa bu notun kaldırılması gerekir.
+>
+> Çift şifreleme yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Çift şifreleme](search-security-overview.md#double-encryption).
 
 ### <a name="requirements"></a>Gereksinimler
 

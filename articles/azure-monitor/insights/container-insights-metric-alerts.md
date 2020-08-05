@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici 'den ölçüm uyarıları | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'de genel önizlemede bulunan kapsayıcılar için sunulan önerilen ölçüm uyarıları incelenir.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099769"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563373"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den önerilen ölçüm uyarıları (Önizleme)
 
@@ -33,7 +33,7 @@ Başlamadan önce, aşağıdakileri onaylayın:
 
     Gösterilen değer **ciprod05262020**' den sonraki bir sürüm olmalıdır. Kümenizin daha eski bir sürümü varsa, en son sürümü almak için [AKS kümesi adımlarında yükseltme aracısını](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) izleyin.
     
-    Aracı sürümü ile ilgili daha fazla bilgi için bkz. [Aracı yayınlama geçmişi](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Ölçümlerin toplandığını doğrulamak için, Azure Izleyici ölçümleri Gezginini kullanabilir ve **Öngörüler** tarafından listelenen **ölçüm ad** alanından emin olabilirsiniz. Varsa, devam edebilir ve uyarıları ayarlamaya başlayabilirsiniz.
+    Aracı sürümü ile ilgili daha fazla bilgi için bkz. [Aracı yayınlama geçmişi](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Ölçümlerin toplandığını doğrulamak için, Azure Izleyici ölçümleri Gezginini kullanabilir ve **Öngörüler** tarafından listelenen **ölçüm ad** alanından emin olabilirsiniz. Varsa, devam edebilir ve uyarıları ayarlamaya başlayabilirsiniz. Toplanan ölçümleri görmüyorsanız, küme hizmeti sorumlusu veya MSI 'nin gerekli izinleri yoktur. SPN veya MSI 'ın **Izleme ölçümleri yayımcı** rolünün bir üyesi olduğunu doğrulamak için, rol atamasını onaylamak ve ayarlamak üzere [Azure CLI kullanarak küme başına yükseltme](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) bölümünde açıklanan adımları izleyin.
 
 ## <a name="alert-rules-overview"></a>Uyarı kurallarına genel bakış
 
@@ -106,7 +106,7 @@ Azure portal Azure Izleyici 'de ölçüm uyarılarını etkinleştirmek için bu
 
 Bu bölümde, Azure portal kapsayıcılar ölçüm Uyarısı (Önizleme) için Azure Izleyici 'nin etkinleştirilmesi gösterilmektedir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Kapsayıcılar için Azure Izleyici ölçümleri Uyarısı (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir.
 

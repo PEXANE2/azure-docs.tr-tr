@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960308"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563356"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde özel etki alanı ayarlama
 
 Varsayılan olarak, Azure statik Web Apps otomatik olarak oluşturulan bir etki alanı adı sağlar. Bu makalede bir Azure statik Web Apps uygulamasına özel bir etki alanı adı eşleme gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Satın alınan etki alanı adı
 - Etki alanınız için DNS yapılandırma özelliklerine erişim
@@ -37,7 +37,7 @@ Bir uygulama için kullanılabilir birkaç farklı DNS yapılandırması türü 
 
 ## <a name="map-a-cname-record"></a>CNAME kaydını eşleme
 
-Bir CNAME kaydı bir etki alanını diğerine eşler. `www.example.com`Azure statik Web Apps tarafından sunulan otomatik oluşturulan etki alanına eşlemek için BIR CNAME kaydı kullanabilirsiniz.
+Bir CNAME kaydı bir etki alanını diğerine eşler. CNAME kaydını, `www.example.com` `blog.example.com` ya da başka bir alt etki alanını Azure static Web Apps tarafından sunulan otomatik oluşturulan etki alanına eşlemek için kullanabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com)'ı açın ve Azure hesabınızla oturum açın.
 
@@ -66,7 +66,7 @@ Bir CNAME kaydı bir etki alanını diğerine eşler. `www.example.com`Azure sta
     | Ayar             | Değer                     |
     | ------------------- | ------------------------- |
     | Tür                | CNAME                     |
-    | Ana bilgisayar                | www                       |
+    | Konak                | www                       |
     | Değer               | Panodan yapıştırma |
     | TTL (varsa) | Varsayılan değer olarak bırak    |
 
@@ -111,7 +111,7 @@ Bazen başka bir etki alanına yönlendirmek için bir alt etki alanına gönder
     | Ayar | Değer                  |
     | ------- | ---------------------- |
     | Tür    | CNAME                  |
-    | Ana bilgisayar    | \*                     |
+    | Konak    | \*                     |
     | Değer   | www.example.com        |
     | TTL     | Varsayılan değer olarak bırak |
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262126"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552008"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI Visual ile çalışmaya başlama
 
@@ -35,6 +35,9 @@ Harita görselleştirmesini oluşturmak için kullanılan harita görüntüleri 
 
 -   Haritanın odaklandığı alanla ilgili ayrıntılar, harita tuvali (eşleme kutucukları olarak da bilinir) işlemek için gereken görüntüleri almak üzere Azure 'a gönderilir. 
 -   Konum, enlem ve Boylam demetlerindeki veriler, harita koordinatlarını (coğrafi kodlama adlı bir işlem) almak için Azure 'a gönderilebilir. 
+-   Power BI telemetri seçeneği etkinse, telemetri verileri görselin (örneğin kilitlenme raporları) sistem durumunda toplanabilir.
+
+Yukarıda açıklanan senaryolardan farklı olarak, haritada yer alan başka hiçbir veri Azure Maps sunucularına gönderilmez. Tüm verilerin işlenmesi istemci içinde yerel olarak gerçekleştirilir.
 
 Siz veya yöneticiniz, aşağıdaki URL 'YI kullanan Azure haritalar platformuna erişime izin vermek için güvenlik duvarınızı güncelleştirmeniz gerekebilir.
 
@@ -127,12 +130,12 @@ Azure haritalar görseli aşağıdaki hizmet ve uygulamalarda kullanılabilir:
 
 | Hizmet/Uygulama                              | Kullanılabilirlik |
 |------------------------------------------|--------------|
-| Power BI Desktop                         | Evet          |
-| Power BI hizmeti (app.powerbi.com)       | Evet          |
+| Power BI Desktop                         | Yes          |
+| Power BI hizmeti (app.powerbi.com)       | Yes          |
 | Power BI mobil uygulamaları             | Evet          |
 | Power BI - web'de yayımlama                  | Hayır           |
 | Power BI Embedded                        | Hayır           |
-| Power BI hizmeti - ekleme (PowerBI.com) | Evet          |
+| Power BI hizmeti - ekleme (PowerBI.com) | Yes          |
 
 Ek Power BI Hizmetleri/uygulamaları için destek, gelecekteki güncelleştirmelere eklenecektir.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061596"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563934"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -37,10 +37,10 @@ Dijital bir ikizi oluşturmak için şunları sağlamanız gerekir:
 
 İsteğe bağlı olarak, dijital ikizi tüm özellikleri için başlangıç değerleri sağlayabilirsiniz. 
 
-> [!TIP]
-> GetDigitalTwin ile ikizi aldığınızda yalnızca en az bir kez ayarlanan özellikler döndürülür.  
-
 Model ve ilk özellik değerleri `initData` , ilgili verileri içeren BIR JSON dizesi olan parametresi aracılığıyla sağlanır.
+
+> [!TIP]
+> Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha sonra](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekirse yeni oluşturduğunuz TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
 
 ### <a name="initialize-properties"></a>Özellikleri Başlat
 
@@ -90,6 +90,9 @@ object result = await client.GetDigitalTwin(id);
 ```
 
 Bu çağrı, ikizi verilerini JSON dizesi olarak döndürür. 
+
+> [!TIP]
+> İle ikizi aldığınızda yalnızca en az bir kez ayarlanmış olan özellikler döndürülür `GetDigitalTwin` .
 
 Tek bir API çağrısını kullanarak birden çok TWINS almak için, sorgu API 'SI örneklerine bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md).
 
@@ -174,7 +177,12 @@ Serileştirme yardımcı sınıfları hakkında daha fazla bilgi [*Için bkz. na
 
 Bir Digital ikizi özelliklerini güncelleştirmek için, değiştirmek istediğiniz bilgileri [JSON yama](http://jsonpatch.com/) biçiminde yazarsınız. Bu şekilde, birden çok özelliği aynı anda değiştirebilirsiniz. Ardından JSON Patch belgesini bir `Update` yönteme geçirirsiniz:
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+> [!TIP]
+> Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha önce](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekirse yeni güncellenen TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
 
 JSON yama kodu örneği aşağıda verilmiştir. Bu belge, uygulandığı dijital ikizi 'in *kütle* ve *Radius* özellik değerlerini değiştirir.
 

@@ -6,14 +6,14 @@ author: hansenms
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 08/03/2020
 ms.author: mihansen
-ms.openlocfilehash: af891935fd474e6f1f83ff1c2ce56ef71cd065c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3838c46dcd5515cca81f41a4b8ac55bc68ffe69
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536734"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552943"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -49,38 +49,37 @@ Geliştirme açısından, her özellik ilk olarak Azure için açık kaynaklı M
 FHıR üzerinde akıllı (Substitutable tıbbi uygulamalar ve yeniden kullanılabilir teknoloji), iş ortağı uygulamalarını FHıR sunucularıyla ve elektronik sistem durumu kayıtları ve sistem durumu bilgileri değişimleri gibi diğer sistem durumu BT sistemleriyle tümleştirmeye yönelik bir dizi açık belirtimdir. FHıR uygulaması ile akıllı bir uygulama oluşturarak, uygulamanızın farklı sistemlerdeki bir plethora erişilebilir ve yararlanılabilir sağlayabilirsiniz.
 FHIR için kimlik doğrulaması ve Azure API. AKıLLı hakkında daha fazla bilgi edinmek için bkz. [Smart Health](https://smarthealthit.org/).
 
-
-## <a name="iot-connector-preview"></a>IoT Bağlayıcısı (Önizleme)
+## <a name="azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme)
 
 ### <a name="what-is-iomt"></a>IoMT nedir?
 IoMT, tıbbi nesnelerin Interneti olduğunu ve ağ üzerinden BT sistemleri ile sistem durumu ve iş verileri yakalayan ve alıp veren bir IoT cihazları kategorisidir. Bazı ıomt cihazlarına örnek olarak, uygunluk ve klinik wearables, izleme algılayıcıları, etkinlik izleyicileri, bakım noktaları ve hatta akıllı bir Pill sayılabilir.
 
-### <a name="how-many-iot-connectors-do-i-need"></a>Kaç IoT bağlayıcısıyla ihtiyacım var?
-Tek bir IoT Bağlayıcısı, çok sayıda farklı cihaz türünden veri almak için kullanılabilir. Yine de aşağıdaki nedenlerle farklı bağlayıcılar kullanmaya karar verebilirsiniz:
-- **Ölçek**: genel önizleme Için, IoT Bağlayıcısı kaynak kapasitesi sabittir ve saniyede 200 ileti aktarımı sağlaması beklenir. Daha yüksek aktarım hızı gerekliyse daha fazla IoT Bağlayıcısı ekleyebilirsiniz.
-- **Cihaz türü**: cihaz yönetimi nedenleriniz için sahip olduğunuz her ıomt cihazı türü için ayrı bir IoT Bağlayıcısı ayarlayabilirsiniz.
+### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>FHıR (Önizleme) için kaç Azure IoT bağlayıcısına ihtiyacım var?
+FHIR * için tek bir Azure IoT Bağlayıcısı, çok sayıda farklı cihaz türünden veri almak için kullanılabilir. Yine de aşağıdaki nedenlerle farklı bağlayıcılar kullanmaya karar verebilirsiniz:
+- **Ölçek**: genel önizleme için, fhır kaynak kapasitesi Için Azure IoT Bağlayıcısı sabittir ve saniyede 200 ileti hakkında bir verimlilik sağlanması beklenmektedir. Daha yüksek aktarım hızı gerekiyorsa FHıR için daha fazla Azure IoT Bağlayıcısı ekleyebilirsiniz.
+- **Cihaz türü**: cihaz yönetimi nedenleriniz için sahip olduğunuz her ıomt cihazı türü için fhır için ayrı bir Azure IoT Bağlayıcısı ayarlayabilirsiniz.
 
-### <a name="is-there-a-limit-on-number-of-iot-connectors-during-public-preview"></a>Genel Önizleme sırasında IoT bağlayıcılarının sayısıyla ilgili bir sınır var mı?
-Evet, özellik genel önizlemede olduğunda, abonelik başına yalnızca iki IoT Bağlayıcısı oluşturabilirsiniz. Bu sınır, Önizleme süresince Özellik ücretsiz olarak kullanılabilir olduğu için beklenmeyen giderleri engellemek için mevcuttur. İstek üzerine bu sınır en fazla beş IoT bağlayıcısından yükseltilebilir.
+### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Genel Önizleme sırasında FHIR (Önizleme) için Azure IoT Bağlayıcısı sayısı sınırı var mı?
+Evet, özellik genel önizlemedeyken abonelik başına FHıR için yalnızca iki Azure IoT Bağlayıcısı oluşturabilirsiniz. Bu sınır, Önizleme süresince Özellik ücretsiz olarak kullanılabilir olduğu için beklenmeyen giderleri engellemek için mevcuttur. İstek üzerine bu sınır, FHıR için en fazla beş Azure IoT Bağlayıcısı üzerinden yükseltilebilir.
 
-### <a name="what-azure-regions-iot-connector-feature-is-available-during-public-preview"></a>Genel Önizleme sırasında hangi Azure bölgeleri IoT Bağlayıcısı özelliği kullanılabilir?
-IoT Bağlayıcısı, FHıR için Azure API 'sinin kullanılabildiği tüm Azure bölgelerinde kullanılabilir.
+### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) özelliği, genel önizleme sırasında kullanılabilir mi?
+FHıR için Azure IoT Bağlayıcısı, FHıR için Azure API 'sinin kullanılabildiği tüm Azure bölgelerinde kullanılabilir.
 
-### <a name="can-i-configure-scaling-capacity-for-iot-connector"></a>IoT Bağlayıcısı için ölçek kapasitesini yapılandırabilir miyim?
-IoT Bağlayıcısı genel önizleme sırasında ücretsiz olduğundan, ölçeklendirme kapasitesi sabittir ve sınırlı olur. IoT Bağlayıcısı yapılandırmasının, saniyede 200 ileti aktarımı sağlaması beklenmektedir. Bazı kaynak kapasitesi yapılandırması, genel kullanıma açık (GA) olarak kullanılabilir hale getirilir.
+### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>FHIR (Önizleme) için Azure IoT Bağlayıcısı için ölçek kapasitesini yapılandırabilir miyim?
+FHıR için Azure IoT Bağlayıcısı genel önizleme sırasında ücretsiz olduğundan, ölçeklendirme kapasitesi sabittir ve sınırlı olur. FHıR yapılandırması için Azure IoT Bağlayıcısı 'nın, saniye başına 200 ileti hakkında bir verimlilik sağlaması beklenir. Bazı kaynak kapasitesi yapılandırması, genel kullanıma açık (GA) olarak kullanılabilir hale getirilir.
 
-### <a name="what-fhir-version-does-iot-connector-support"></a>IoT Bağlayıcısı hangi FHıR sürümünde desteklenir?
-IoT Bağlayıcısı Şu anda yalnızca FHıR sürüm R4 desteklemektedir. Bu nedenle, bu özellik yalnızca FHıR için Azure API 'sinin R4 örneklerinde görünür ve Microsoft şu anda sürüm STU3 desteklemeyi planlıyor.
+### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>FHıR (Önizleme) için Azure IoT Bağlayıcısı 'nın hangi FHıR sürümü desteği vardır?
+FHıR için Azure IoT Bağlayıcısı Şu anda yalnızca FHıR sürüm R4 desteklemektedir. Bu nedenle, bu özellik yalnızca FHıR için Azure API 'sinin R4 örneklerinde görünür ve Microsoft şu anda sürüm STU3 desteklemeyi planlıyor.
 
-### <a name="why-cant-i-install-iot-connector-when-private-link-is-enabled-on-azure-api-for-fhir"></a>FHıR için Azure API 'sinde özel bağlantı etkinleştirildiğinde neden IoT bağlayıcısını yükleyemiyorum?
-IoT Bağlayıcısı Şu anda özel bağlantı özelliğini desteklemiyor. Bu nedenle, FHıR için Azure API 'sinde özel bağlantınız etkinse IoT bağlayıcısını yükleyemez ve tam tersi de geçerlidir. Bu sınırlamanın, IoT Bağlayıcısı genel kullanıma (GA) uygun olduğunda dışarıda olması beklenir.
+### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>FHıR için Azure API üzerinde özel bağlantı etkinleştirildiğinde neden FHIR için Azure IoT bağlayıcısını (Önizleme) yükleyemiyorum?
+FHıR için Azure IoT Bağlayıcısı Şu anda özel bağlantı özelliğini desteklemiyor. Bu nedenle, FHıR için Azure API 'sinde özel bağlantınız etkinse, FHıR için Azure IoT bağlayıcısını yükleyemez ve tam tersi de geçerlidir. Bu sınırlamanın, FHıR için Azure IoT Bağlayıcısı genel kullanıma (GA) uygun olduğunda dışarıda olması beklenir.
 
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-iot-connector-feature-of-azure-api-for-fhir-service"></a>FHıR hizmeti için Azure API 'nin Azure API 'si ve IoT Bağlayıcısı özelliği için açık kaynaklı ıomt FHıR Bağlayıcısı arasındaki fark nedir?
-IoT Bağlayıcısı, Azure için açık kaynaklı ıomt FHıR bağlayıcısının barındırılan ve yönetilen bir sürümüdür. Yönetilen hizmette, Microsoft tüm bakım ve güncelleştirmeleri sağlar.
+### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Azure için açık kaynaklı ıomt FHıR Bağlayıcısı ve FHıR hizmeti için Azure API 'sinin FHIR (Önizleme) özelliği için Azure IoT Bağlayıcısı arasındaki fark nedir?
+FHıR için Azure IoT Bağlayıcısı, Azure için açık kaynaklı ıomt FHıR bağlayıcısının barındırılan ve yönetilen bir sürümüdür. Yönetilen hizmette, Microsoft tüm bakım ve güncelleştirmeleri sağlar.
 
 Azure için IoMT FHıR bağlayıcısını çalıştırırken, temel alınan kaynaklara doğrudan erişiminiz vardır. Ancak, FI verilerini depoluyorsanız, sunucunun ve gerekli tüm uyumluluk işinin saklanması ve güncelleştirilmesinden de sorumlu olursunuz.
 
-Geliştirme açısından, her özellik Azure için açık kaynaklı ıomt FHıR bağlayıcısına dağıtılır. Açık kaynakta doğrulandıktan sonra, FHıR hizmeti için Azure API 'sinin PaaS IoT Bağlayıcısı özelliğinde serbest bırakılır. Açık kaynaklı ve PaaS 'deki yayın arasındaki süre, özelliğin karmaşıklığına ve diğer yol eşleme önceliklere bağlıdır.
+Geliştirme açısından, her özellik Azure için açık kaynaklı ıomt FHıR bağlayıcısına dağıtılır. Açık kaynakta doğrulandıktan sonra, FHıR hizmeti için Azure API 'sinin FHıR özelliği için PaaS Azure IoT Bağlayıcısı ' nda kullanıma sunulacaktır. Açık kaynaklı ve PaaS 'deki yayın arasındaki süre, özelliğin karmaşıklığına ve diğer yol eşleme önceliklere bağlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -88,3 +87,7 @@ Bu makalede, FHıR için Azure API 'SI hakkında sık sorulan sorulardan bazıla
  
 >[!div class="nextstepaction"]
 >[Desteklenen FHıR özellikleri](fhir-features-supported.md)
+
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
+
+FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.

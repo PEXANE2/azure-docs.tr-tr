@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502486"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551702"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -195,8 +195,7 @@ Bu roldeki kullanıcılar, temel dizin bilgilerini okuyabilir. Bu rol için kull
 Kullanmayın. Bu rol, Azure AD Connect hizmetine otomatik olarak atanır ve başka bir kullanım için tasarlanmamıştır veya desteklenmez.
 
 ### <a name="directory-writers"></a>[Dizin yazarları](#directory-writers-permissions)
-
-Bu, [onay çerçevesini](../develop/quickstart-register-app.md)desteklemeyen uygulamalara atanacak eski bir roldür. Herhangi bir kullanıcıya atanmamalıdır.
+Bu roldeki kullanıcılar, kullanıcıların, grupların ve hizmet sorumlularının temel bilgilerini okuyabilir ve güncelleştirebilir. Bu rolü yalnızca [onay çerçevesini](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)desteklemeyen uygulamalara atayın. Herhangi bir kullanıcıya atanmamalıdır.
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 Yöneticisi/CRM Yöneticisi](#crm-service-administrator-permissions)
 
@@ -420,7 +419,7 @@ Kimlik koruma Merkezi | Güvenlik okuyucusu rolünün tüm izinleri<br>Ayrıca, 
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Güvenlik okuyucusu rolünün tüm izinleri<br>Azure AD rol atamaları veya **ayarları yönetemez**
 [Office 365 güvenlik & Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Güvenlik ilkelerini yönetin<br>Güvenlik tehditlerini görüntüleyin, araştırın ve yanıtlayın<br>Raporları görüntüle
 Azure Gelişmiş Tehdit Koruması | Şüpheli güvenlik etkinliğini izleyin ve yanıtlayın
-Windows Defender ATP ve EDR | Rolleri atama<br>Makine gruplarını yönetme<br>Uç nokta tehdit algılamasını ve otomatik düzeltmeyi yapılandırma<br>Uyarıları görüntüleyin, araştırın ve yanıtlayın
+Windows Defender ATP ve EDR | Rol atama<br>Makine gruplarını yönetme<br>Uç nokta tehdit algılamasını ve otomatik düzeltmeyi yapılandırma<br>Uyarıları görüntüleyin, araştırın ve yanıtlayın
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Kullanıcı, cihaz, kayıt, yapılandırma ve uygulama bilgilerini görüntüler<br>Intune üzerinde değişiklik yapılamıyor
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Yönetici ekleme, ilke ve ayarlar ekleme, günlükleri karşıya yükleme ve idare eylemleri gerçekleştirme
 [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir
@@ -1001,22 +1000,36 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
-| Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
-| Microsoft. Directory/Groups/createAsOwner | Azure Active Directory grupları oluşturun. Oluşturucu ilk sahip olarak eklenir ve oluşturulan nesne, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılır. |
 | Microsoft. Directory/Groups/Approtaatamalar/güncelleştirme | Azure Active Directory groups. Approtaatamalar özelliğini güncelleştirin. |
-| Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin. |
+| Microsoft. Directory/Groups/Atamalisansı | Azure Active Directory gruplardaki lisansları yönetin. |
+| Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin.  |
+| Microsoft. Directory/gruplar/sınıflandırma/güncelleştirme | Azure Active Directory içindeki grubun sınıflandırma özelliğini güncelleştirin. |
+| Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
+| Microsoft. Directory/gruplar/groupType/Update | Azure Active Directory bir grubun groupType özelliğini güncelleştirin. |
 | Microsoft. Directory/gruplar/Üyeler/güncelleştirme | Azure Active Directory groups. Members özelliğini güncelleştirin. |
 | Microsoft. Directory/gruplar/Owners/Update | Azure Active Directory groups. Owners özelliğini güncelleştirin. |
+| Microsoft. Directory/Groups/Reprocesslicenseatama | Azure Active Directory bir grup için lisans atamalarını yeniden işleyin. |
+| Microsoft. Directory/Groups/securityEnabled/Update | Azure Active Directory bir grubun Secuyenabled özelliğini güncelleştirin. |
 | Microsoft. Directory/Groups/Settings/Update | Azure Active Directory groups. Settings özelliğini güncelleştirin. |
+| Microsoft. Directory/gruplar/görünürlük/güncelleştirme | Grubun görünürlük özelliğini güncelleştirme |
 | Microsoft. Directory/groupSettings/Basic/Update | Azure Active Directory içindeki groupSettings üzerindeki temel özellikleri güncelleştirin. |
-| Microsoft. Directory/groupSettings/Create | Azure Active Directory groupSettings oluşturun. |
+| Microsoft. Directory/groupSettings/Create | Azure Active Directory groupSettings oluşturma.. |
 | Microsoft. Directory/groupSettings/Delete | Azure Active Directory groupSettings 'i silin. |
+| Microsoft. Directory/oAuth2PermissionGrants/Basic/Update | Azure Active Directory 'de oAuth2PermissionGrants 'in temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/oAuth2PermissionGrants/Create | Azure Active Directory 'de oAuth2PermissionGrants oluşturun. |
+| Microsoft. Directory/Servicesorumlularını/synchronizationCredentials/Manage | Uygulama sağlama gizli dizilerini ve kimlik bilgilerini yönetin. |
+| Microsoft. Directory/Servicesorumlularını/synchronizationJobs/Manage | Uygulama sağlama eşitleme işlerini başlatın, yeniden başlatın ve duraklatın. |
+| Microsoft. Directory/Servicesorumlularını/synchronizationSchema/Yönet | Uygulama sağlama eşitleme işleri ve şeması oluşturun ve yönetin. |
 | Microsoft. Directory/Users/Approtaatamalar/güncelleştirme | Azure Active Directory Users. Approtaatamalar özelliğini güncelleştirin. |
 | Microsoft. Directory/Users/Atamalisansı | Azure Active Directory kullanıcılar üzerinde lisansları yönetin. |
 | Microsoft. Directory/Users/Basic/Update | Azure Active Directory kullanıcıların temel özelliklerini güncelleştirin. |
-| Microsoft. Directory/Users/ınvalidateallrefreshtokens | Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar. |
+| Microsoft. Directory/kullanıcılar/devre dışı bırak | Azure Active Directory bir kullanıcı hesabını devre dışı bırakın. |
+| Microsoft. Directory/kullanıcılar/etkinleştir | Azure Active Directory Kullanıcı hesabını etkinleştirme |
+| Microsoft. Directory/Users/ınvalidateallrefreshtokens | Kullanıcıların bir sonraki oturum açma sırasında yeniden kimlik doğrulaması yapmasını gerektiren Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar |
 | Microsoft. Directory/Users/Manager/Update | Azure Active Directory içindeki Users. Manager özelliğini güncelleştirin. |
+| Microsoft. Directory/Users/Reprocesslicenseatama | Azure Active Directory bir kullanıcı için lisans atamalarını yeniden işleyin. |
 | Microsoft. Directory/Users/userPrincipalName/Update | Azure Active Directory içindeki Users. userPrincipalName özelliğini güncelleştirin. |
+
 
 ### <a name="exchange-service-administrator-permissions"></a>Exchange hizmeti yönetici izinleri
 
@@ -1899,7 +1912,7 @@ Cihaz yöneticileri | Kullanım Dışı | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Cihaz kullanıcıları | Kullanım Dışı | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Dizin okuyucuları | Dizin okuyucuları | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Dizin eşitleme hesapları | Kullanılmaması nedeniyle gösterilmez | d29b2b05-8046-44ba-8758-1e26182fcf32
-Dizin yazarları | Kullanılmaması nedeniyle gösterilmez | 9360feb5-f418-4baa-8175-e2a00bac4301
+Dizin yazarları | Dizin yazarları | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange hizmeti Yöneticisi | Exchange yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Dış kimlik Kullanıcı akış Yöneticisi | Dış kimlik Kullanıcı akış Yöneticisi | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Dış kimlik Kullanıcı akışı öznitelik Yöneticisi | Dış kimlik Kullanıcı akışı öznitelik Yöneticisi | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

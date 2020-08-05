@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636249"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551991"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge 'i yapılandırma (Önizleme)
 
@@ -79,7 +79,7 @@ Aşağıdaki MSSQL. conf seçenekleri SQL Edge için geçerli değildir:
 |**Veritabanı posta profili** | Linux üzerinde SQL Server için varsayılan veritabanı posta profilini ayarlayın. |
 |**Yüksek kullanılabilirlik** | Kullanılabilirlik gruplarını etkinleştirin. |
 |**Microsoft Dağıtılmış İşlem Düzenleyicisi** | Linux üzerinde MSDTC 'yi yapılandırma ve sorunlarını giderme. SQL Edge için ek dağıtılmış işlem ile ilgili yapılandırma seçenekleri desteklenmez. Bu ek yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [MSDTC 'Yi yapılandırma](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
-|**MLServices EULA 'Ları** | Azure Machine Learning paketleri için R ve Python EULA 'Ları kabul edin. Yalnızca SQL Server 2019 için geçerlidir.|
+|**ML Hizmetleri EULA 'Ları** | Azure Machine Learning paketleri için R ve Python EULA 'Ları kabul edin. Yalnızca SQL Server 2019 için geçerlidir.|
 |**outboundnetworkaccess** |[Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R, Python ve Java uzantıları için giden ağ erişimini etkinleştirin.|
 
 Aşağıdaki örnek MSSQL. conf dosyası SQL Edge için geçerlidir. MSSQL. conf dosyasının biçimi hakkında daha fazla bilgi için bkz. [MSSQL. conf biçimi](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
@@ -113,6 +113,51 @@ traceflag0 = 3604
 traceflag1 = 3605
 traceflag2 = 1204
 ```
+
+## <a name="run-azure-sql-edge-as-non-root-user"></a>Azure SQL Edge 'i kök olmayan kullanıcı olarak çalıştır
+
+Azure SQL Edge CTP 2.2 ile başlayarak, SQL Edge kapsayıcıları kök olmayan kullanıcı/grup ile çalışabilir. Azure Marketi aracılığıyla dağıtıldığında, farklı bir Kullanıcı/Grup belirtilmedikçe, SQL Edge kapsayıcıları MSSQL (kök olmayan) Kullanıcı olarak başlar. Dağıtım sırasında farklı bir kök olmayan kullanıcı belirtmek için `*"User": "<name|uid>[:<group|gid>]"*` kapsayıcı oluşturma seçenekleri altına anahtar-değer çiftini ekleyin. SQL Edge aşağıdaki örnekte Kullanıcı olarak başlatılacak şekilde yapılandırılmıştır `*IoTAdmin*` .
+
+```json
+{
+    ..
+    ..
+    ..
+    "User": "IoTAdmin",
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "MSSQL_PID=Premium"
+    ]
+}
+```
+
+Kök olmayan kullanıcının bağlı birimlerde bulunan DB dosyalarına erişmesine izin vermek için, kapsayıcıyı çalıştırdığınız Kullanıcı/grubun, kalıcı dosya depolaması üzerinde okuma & yazma izinlerine sahip olduğundan emin olun. Aşağıdaki örnekte, kök olmayan kullanıcıyı dosyaların sahibi olarak user_id 10001 ile ayarlayacağız. 
+
+```bash
+chown -R 10001:0 <database file dir>
+```
+
+### <a name="upgrading-from-earlier-ctp-releases"></a>Önceki CTP sürümlerinden yükseltme
+
+Azure SQL Edge 'in önceki CTP, kök kullanıcılar olarak çalışacak şekilde yapılandırılmıştır. Önceki CTP 'lerden yükseltirken aşağıdaki seçenekler mevcuttur
+
+- Kök kullanıcıyı kullanmaya devam et-kök kullanıcıyı kullanmaya devam etmek Için `*"User": "0:0"*` kapsayıcı oluşturma seçenekleri altına anahtar-değer çiftini ekleyin.
+- Varsayılan MSSQL kullanıcısını kullanın-varsayılan MSSQL kullanıcısını kullanmak Için aşağıdaki adımları izleyin
+  - Docker konağına MSSQL adlı bir kullanıcı ekleyin. Aşağıdaki örnekte, KIMLIĞI 10001 olan bir Kullanıcı MSSQL 'si ekleyeceğiz. Bu Kullanıcı kök gruba da eklenir.
+    ```bash
+    sudo useradd -M -s /bin/bash -u 10001 -g 0 mssql
+    ```
+  - Veritabanı dosyasının bulunduğu dizin/bağlama biriminde izinleri değiştirme 
+    ```bash
+    sudo chgrp -R 0 /var/lib/docker/volumes/kafka_sqldata/
+    sudo chmod -R g=u /var/lib/docker/volumes/kafka_sqldata/
+    ```
+- Farklı bir kök olmayan kullanıcı hesabı kullanın-kök olmayan farklı bir kullanıcı hesabı kullanmak Için
+  - Kapsayıcı `*"User": "user_name | user_id*` oluşturma seçenekleri altında anahtar-değer çifti Ekle öğesini belirtmek için kapsayıcı oluşturma seçeneklerini güncelleştirin. Lütfen user_name veya user_id, Docker konağından gerçek user_name veya user_id değiştirin. 
+  - Dizin/bağlama birimi üzerindeki izinleri değiştirin.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

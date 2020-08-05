@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318122"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563849"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -137,7 +137,7 @@ Azure tanılama uzantısı, Azure sanal makinelerine yöneliktir ve Azure Izleyi
 Azure Izleyici trafiği Microsoft eşlemesi ExpressRoute devresini kullanır. Farklı ExpressRoute trafiği türlerinin açıklaması için bkz. [ExpressRoute belgeleri](../expressroute/expressroute-faqs.md#supported-services) . 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Log Analytics aracısının Azure Izleyici ile iletişim kurabildiğini nasıl doğrulayabilirim?
-Aracı bilgisayardaki Denetim masasından, **güvenlik & ayarları**' nı seçin **Microsoft Monitoring Agent** . **Azure Log Analytics (OMS)** sekmesinde, yeşil onay işareti simgesi aracının Azure izleyici ile iletişim kurabildiğini onaylar. Sarı bir uyarı simgesi, aracının sorun yaşadığını gösterir. **Microsoft Monitoring Agent** hizmetin durdurulduğu bir yaygın neden olur. Hizmeti yeniden başlatmak için hizmet denetimi Yöneticisi 'ni kullanın.
+Aracı bilgisayardaki Denetim Masası ' ndan **güvenlik & ayarları**, * * Microsoft Monitoring Agent ' nı seçin. **Azure Log Analytics (OMS)** sekmesinde, yeşil onay işareti simgesi aracının Azure izleyici ile iletişim kurabildiğini onaylar. Sarı bir uyarı simgesi, aracının sorun yaşadığını gösterir. **Microsoft Monitoring Agent** hizmetin durdurulduğu bir yaygın neden olur. Hizmeti yeniden başlatmak için hizmet denetimi Yöneticisi 'ni kullanın.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Log Analytics aracısının Azure Izleyici ile iletişim kurmasını Nasıl yaparım? mı?
 Doğrudan Log Analytics bağlı aracılar için, Denetim Masası 'nı açın ve **güvenlik & ayarları** **Microsoft Monitoring Agent**' nı seçin. **Azure Log Analytics (OMS)** sekmesinde, listelenen tüm çalışma alanlarını kaldırın. System Center Operations Manager, bilgisayarı Log Analytics yönetilen bilgisayarlar listesinden kaldırın. Operations Manager, aracının yapılandırmasını artık Log Analytics raporlanmayacak şekilde güncelleştirir. 
@@ -207,7 +207,7 @@ Görünüm Tasarımcısı yalnızca Log Analytics çalışma alanında katkıda 
 * [ASP.NET sunucusu kurma](app/monitor-performance-live-website-now.md)
 * [Java sunucusu kurma](app/java-agent.md)
 
-*Kaç Application Insights dağıtmalıyım?:*
+*Kaç Application Insights kaynak dağıtmalıyım:*
 
 * [Application Insights dağıtımınızı tasarlama: bir çok Application Insights kaynağı.](app/separate-resources.md)
 
@@ -509,6 +509,15 @@ Daha fazla bilgi için bkz. [defaultProxy](/dotnet/framework/configure-apps/file
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502 ve 503 yanıtları her zaman Application Insights tarafından yakalanmaz
+
+"502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" hataları Application Insights tarafından her zaman yakalanmaz. İzleme için yalnızca istemci tarafı JavaScript kullanılıyorsa, bu, hata yanıtının, izlenen JavaScript kod parçacığı ile HTML üstbilgisini içeren sayfadan önce döndürüldüğünden beklenen davranış olabilir. 
+
+Sunucu tarafı izleme özelliği etkin olan bir sunucudan 502 veya 503 yanıtı gönderilmişse, hatalar Application Insights SDK tarafından toplanır. 
+
+Ancak, bir uygulamanın Web sunucusunda sunucu tarafı izlemenin etkin olduğu durumlarda bile 502 veya 503 hatasının Application Insights tarafından yakalanmayacağını hala unutmayın. Birçok modern web sunucusu, istemcinin doğrudan iletişim kurmasına izin vermez, bunun yerine, istemci ve ön uç Web sunucuları arasında bilgileri geri ve ileri geçirmek için ters proxy 'ler gibi çözümler kullanmayı sağlar. 
+
+Bu senaryoda, ters proxy katmanında bir sorun olması nedeniyle istemciye bir 502 veya 503 yanıtı döndürülebilir ve bu, Application Insights tarafından kullanıma hazır olarak yakalanmaz. Bu katmandaki sorunları tespit etmenize yardımcı olmak için, günlüğü ters proxy 'nizden Log Analytics iletmek ve 502/503 yanıtlarını denetlemek için özel bir kural oluşturmanız gerekebilir. 502 ve 503 hatalarının yaygın nedenleri hakkında daha fazla bilgi edinmek için, ["502 hatalı Ağ Geçidi" ve "503 Service unavailable" için Azure App Service sorun giderme makalesine](../app-service/troubleshoot-http-502-http-503.md)başvurun.     
 
 ## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 

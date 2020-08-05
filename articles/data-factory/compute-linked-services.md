@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 3233292f0097330cc5e6ed07460de80934a278e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849306"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563747"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen işlem ortamları
 
@@ -42,12 +42,12 @@ Aşağıdaki tabloda, Data Factory tarafından desteklenen işlem ortamlarının
 
 İsteğe bağlı ve KCG (kendi işlem ortamınızı getir) ortamında yapılandırma için desteklenen depolama bağlı hizmet türleri hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
 
-| Işlem bağlantılı hizmetinde | Özellik Adı                | Açıklama                                                  | Blob | ADLS 2. | Azure SQL DB | ADLS 1. Nesil |
+| Işlem bağlantılı hizmetinde | Özellik Adı                | Açıklama                                                  | Blob | ADLS 2. Nesil | Azure SQL DB | ADLS 1. Nesil |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
-| İsteğe bağlı                 | linkedServiceName            | Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. | Yes  | Evet       | Hayır           | Hayır         |
+| İsteğe bağlı                 | linkedServiceName            | Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. | Yes  | Yes       | Hayır           | Hayır         |
 |                           | additionalLinkedServiceNames | Data Factory hizmeti tarafından sizin adınıza kaydettirilebilmeleri için HDInsight bağlı hizmeti için ek depolama hesapları belirtir. | Evet  | Hayır        | Hayır           | Hayır         |
 |                           | hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetinin adı. İsteğe bağlı HDInsight kümesi, Azure SQL veritabanı, meta veri deposu olarak kullanılarak oluşturulur. | Hayır   | Hayır        | Evet          | Hayır         |
-| BYOC                      | linkedServiceName            | Azure depolama bağlı hizmeti başvurusu.                | Yes  | Evet       | Hayır           | Hayır         |
+| BYOC                      | linkedServiceName            | Azure depolama bağlı hizmeti başvurusu.                | Yes  | Yes       | Hayır           | Hayır         |
 |                           | additionalLinkedServiceNames | Data Factory hizmeti tarafından sizin adınıza kaydettirilebilmeleri için HDInsight bağlı hizmeti için ek depolama hesapları belirtir. | Hayır   | Hayır        | Hayır           | Hayır         |
 |                           | hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetine bir başvuru. | Hayır   | Hayır        | Hayır           | Hayır         |
 
@@ -109,17 +109,17 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 > [!IMPORTANT]
 > HDInsight kümesi JSON 'da belirttiğiniz blob depolamada (**Linkedservicename**) bir **varsayılan kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmetiyle, HDInsight kümesi her oluşturulduğunda, burada mevcut canlı bir küme (**timeToLive**) olmadıkça bir dilim gerekir ve işlem bittiğinde silinir. 
 >
-> Daha fazla Etkinlik çalıştırıldığında, Azure Blob depolamada birçok kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+> Daha fazla Etkinlik çalıştırıldığında, Azure Blob depolamada birçok kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Azure Blob depolamada kapsayıcıları silmek için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
 #### <a name="properties"></a>Özellikler
 
 | Özellik                     | Açıklama                              | Gerekli |
 | ---------------------------- | ---------------------------------------- | -------- |
-| tür                         | Type özelliği **hdınsightondemand**olarak ayarlanmalıdır. | Evet      |
-| clusterSize                  | Kümedeki çalışan/veri düğümlerinin sayısı. HDInsight kümesi, bu özellik için belirttiğiniz çalışan düğümü sayısıyla birlikte 2 baş düğüm ile oluşturulur. Düğümler 4 çekirdeğe sahip Standard_D3 boyutlardır, bu nedenle 4 çalışan düğümü kümesi 24 çekirdek alır ( \* çalışan düğümleri için 4 4 = 16 çekirdek, ve \* baş düğümler için 2 4 = 8 çekirdek). Ayrıntılar için bkz. [HDInsight 'Ta Hadoop, Spark, Kafka ve daha fazlası ile kümeleri ayarlama](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Evet      |
-| linkedServiceName            | Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. HDInsight kümesi, bu Azure depolama hesabı ile aynı bölgede oluşturulur. Azure HDInsight, desteklediği her bir Azure bölgesinde kullanabileceğiniz toplam çekirdek sayısıyla ilgili sınırlamaya sahiptir. Gerekli clusterSize uyması için bu Azure bölgesinde yeterli çekirdek kotadığınızdan emin olun. Ayrıntılar için bkz. [HDInsight 'Ta Hadoop, Spark, Kafka ve daha fazlası ile küme ayarlama](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Şu anda depolama olarak bir Azure Data Lake Storage (Gen 2) kullanan isteğe bağlı bir HDInsight kümesi oluşturamazsınız. Bir Azure Data Lake Storage (Gen 2) HDInsight işlemeden sonuç verilerini depolamak istiyorsanız, verileri Azure Blob depolamadan Azure Data Lake Storage (Gen 2) kopyalamak için bir kopyalama etkinliği kullanın. </p> | Evet      |
-| clusterResourceGroup         | HDInsight kümesi bu kaynak grubunda oluşturulur. | Evet      |
-| TimeToLive                   | İsteğe bağlı HDInsight kümesi için izin verilen boşta kalma süresi. Kümede başka bir etkin iş yoksa, bir etkinlik çalıştırıldıktan sonra, isteğe bağlı HDInsight kümesinin ne kadar süreyle etkin kalacağını belirtir. İzin verilen en düşük değer 5 dakikadır (00:05:00).<br/><br/>Örneğin, bir etkinlik çalıştırması 6 dakika sürüyorsa ve TimeToLive, 5 dakika olarak ayarlanırsa, etkinlik çalıştırmasının sonunda 6 dakikadan sonra küme, 5 dakika boyunca etkin kalır. Başka bir etkinlik çalıştırması 6 dakikalık bir pencere ile yürütülürse aynı küme tarafından işlenir.<br/><br/>İsteğe bağlı HDInsight kümesi oluşturma işlemi pahalı bir işlemdir, bu nedenle isteğe bağlı HDInsight kümesini yeniden kullanarak bir veri fabrikasının performansını artırmak için bu ayarı gereken şekilde kullanın.<br/><br/>TimeToLive değerini 0 olarak ayarlarsanız, etkinlik çalıştırması tamamlandıktan hemen sonra küme silinir. Ancak, yüksek bir değer ayarlarsanız, bazı sorun giderme amacıyla oturum açmanız için küme boşta kalabilir, ancak bu durum yüksek maliyetlere neden olabilir. Bu nedenle, gereksinimlerinize göre uygun değeri ayarlamanız önemlidir.<br/><br/>TimeToLive özelliğinin değeri uygun şekilde ayarlandıysa, birden çok işlem hattı isteğe bağlı HDInsight kümesinin örneğini paylaşabilir. | Evet      |
+| tür                         | Type özelliği **hdınsightondemand**olarak ayarlanmalıdır. | Yes      |
+| clusterSize                  | Kümedeki çalışan/veri düğümlerinin sayısı. HDInsight kümesi, bu özellik için belirttiğiniz çalışan düğümü sayısıyla birlikte 2 baş düğüm ile oluşturulur. Düğümler 4 çekirdeğe sahip Standard_D3 boyutlardır, bu nedenle 4 çalışan düğümü kümesi 24 çekirdek alır ( \* çalışan düğümleri için 4 4 = 16 çekirdek, ve \* baş düğümler için 2 4 = 8 çekirdek). Ayrıntılar için bkz. [HDInsight 'Ta Hadoop, Spark, Kafka ve daha fazlası ile kümeleri ayarlama](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Yes      |
+| linkedServiceName            | Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. HDInsight kümesi, bu Azure depolama hesabı ile aynı bölgede oluşturulur. Azure HDInsight, desteklediği her bir Azure bölgesinde kullanabileceğiniz toplam çekirdek sayısıyla ilgili sınırlamaya sahiptir. Gerekli clusterSize uyması için bu Azure bölgesinde yeterli çekirdek kotadığınızdan emin olun. Ayrıntılar için bkz. [HDInsight 'Ta Hadoop, Spark, Kafka ve daha fazlası ile küme ayarlama](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Şu anda depolama olarak bir Azure Data Lake Storage (Gen 2) kullanan isteğe bağlı bir HDInsight kümesi oluşturamazsınız. Bir Azure Data Lake Storage (Gen 2) HDInsight işlemeden sonuç verilerini depolamak istiyorsanız, verileri Azure Blob depolamadan Azure Data Lake Storage (Gen 2) kopyalamak için bir kopyalama etkinliği kullanın. </p> | Yes      |
+| clusterResourceGroup         | HDInsight kümesi bu kaynak grubunda oluşturulur. | Yes      |
+| TimeToLive                   | İsteğe bağlı HDInsight kümesi için izin verilen boşta kalma süresi. Kümede başka bir etkin iş yoksa, bir etkinlik çalıştırıldıktan sonra, isteğe bağlı HDInsight kümesinin ne kadar süreyle etkin kalacağını belirtir. İzin verilen en düşük değer 5 dakikadır (00:05:00).<br/><br/>Örneğin, bir etkinlik çalıştırması 6 dakika sürüyorsa ve TimeToLive, 5 dakika olarak ayarlanırsa, etkinlik çalıştırmasının sonunda 6 dakikadan sonra küme, 5 dakika boyunca etkin kalır. Başka bir etkinlik çalıştırması 6 dakikalık bir pencere ile yürütülürse aynı küme tarafından işlenir.<br/><br/>İsteğe bağlı HDInsight kümesi oluşturma işlemi pahalı bir işlemdir, bu nedenle isteğe bağlı HDInsight kümesini yeniden kullanarak bir veri fabrikasının performansını artırmak için bu ayarı gereken şekilde kullanın.<br/><br/>TimeToLive değerini 0 olarak ayarlarsanız, etkinlik çalıştırması tamamlandıktan hemen sonra küme silinir. Ancak, yüksek bir değer ayarlarsanız, bazı sorun giderme amacıyla oturum açmanız için küme boşta kalabilir, ancak bu durum yüksek maliyetlere neden olabilir. Bu nedenle, gereksinimlerinize göre uygun değeri ayarlamanız önemlidir.<br/><br/>TimeToLive özelliğinin değeri uygun şekilde ayarlandıysa, birden çok işlem hattı isteğe bağlı HDInsight kümesinin örneğini paylaşabilir. | Yes      |
 | clusterType                  | Oluşturulacak HDInsight kümesinin türü. İzin verilen değerler "Hadoop" ve "Spark" değerleridir. Belirtilmemişse, varsayılan değer Hadoop ' dır. Kurumsal Güvenlik Paketi etkinleştirilmiş küme isteğe bağlı olarak oluşturulamaz, bunun yerine [var olan bir kümeyi kullanın/kendi işlem ortamınızı getirin](#azure-hdinsight-linked-service). | Hayır       |
 | sürüm                      | HDInsight kümesinin sürümü. Belirtilmemişse, geçerli HDInsight tanımlı varsayılan sürümü kullanılıyor. | Hayır       |
 | Hostsubscriptionıd           | HDInsight kümesi oluşturmak için kullanılan Azure abonelik KIMLIĞI. Belirtilmemişse, Azure oturum açma bağlamınızın abonelik KIMLIĞINI kullanır. | Hayır       |
@@ -163,9 +163,9 @@ Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını ku
 
 | Özellik                | Açıklama                              | Gerekli |
 | :---------------------- | :--------------------------------------- | :------- |
-| **Serviceprincipalıd**  | Uygulamanın istemci KIMLIĞINI belirtin.     | Evet      |
-| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin.           | Evet      |
-| **tenant**              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet      |
+| **Serviceprincipalıd**  | Uygulamanın istemci KIMLIĞINI belirtin.     | Yes      |
+| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin.           | Yes      |
+| **tenant**              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Yes      |
 
 #### <a name="advanced-properties"></a>Gelişmiş Özellikler
 
@@ -300,11 +300,11 @@ Kendi HDInsight kümenizi Data Factory kaydetmek için bir Azure HDInsight bağl
 ### <a name="properties"></a>Özellikler
 | Özellik          | Açıklama                                                  | Gerekli |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| tür              | Type özelliği **HDInsight**olarak ayarlanmalıdır.            | Evet      |
-| clusterUri        | HDInsight kümesinin URI 'SI.                            | Evet      |
-| kullanıcı adı          | Mevcut bir HDInsight kümesine bağlanmak için kullanılacak kullanıcının adını belirtin. | Evet      |
-| password          | Kullanıcı hesabı için parola belirtin.                       | Evet      |
-| linkedServiceName | HDInsight kümesi tarafından kullanılan Azure Blob depolama alanına başvuran Azure depolama bağlı hizmetinin adı. <p>Şu anda bu özellik için bir Azure Data Lake Storage (Gen 2) bağlı hizmeti belirtemezsiniz. HDInsight kümesinin Data Lake Store erişimi varsa, Hive/Pig betiklerinden Azure Data Lake Storage (Gen 2) verilerine erişebilirsiniz. </p> | Evet      |
+| tür              | Type özelliği **HDInsight**olarak ayarlanmalıdır.            | Yes      |
+| clusterUri        | HDInsight kümesinin URI 'SI.                            | Yes      |
+| username          | Mevcut bir HDInsight kümesine bağlanmak için kullanılacak kullanıcının adını belirtin. | Yes      |
+| password          | Kullanıcı hesabı için parola belirtin.                       | Yes      |
+| linkedServiceName | HDInsight kümesi tarafından kullanılan Azure Blob depolama alanına başvuran Azure depolama bağlı hizmetinin adı. <p>Şu anda bu özellik için bir Azure Data Lake Storage (Gen 2) bağlı hizmeti belirtemezsiniz. HDInsight kümesinin Data Lake Store erişimi varsa, Hive/Pig betiklerinden Azure Data Lake Storage (Gen 2) verilerine erişebilirsiniz. </p> | Yes      |
 | ıvspenabled      | HDInsight kümesi [Kurumsal güvenlik paketi](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) etkinse '*true ' değerini*belirtin. Varsayılan değer '*false*' şeklindedir. | Hayır       |
 | connectVia        | Bu bağlı hizmete etkinlikleri göndermek için kullanılacak Integration Runtime. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. <br />Kurumsal Güvenlik Paketi (ESP) etkin HDInsight kümesi için, kümeye bir görüş satırı içeren, şirket içinde barındırılan bir tümleştirme çalışma zamanı kullanın veya ESP HDInsight kümesiyle aynı sanal ağ içinde dağıtılması gerekir. | Hayır       |
 
@@ -360,12 +360,12 @@ Azure Batch Service ' i yeni biliyorsanız aşağıdaki makalelere bakın:
 ### <a name="properties"></a>Özellikler
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| tür              | Type özelliği **AzureBatch**olarak ayarlanmalıdır. | Evet      |
-| accountName       | Azure Batch hesabının adı.         | Evet      |
-| accessKey         | Azure Batch hesabı için erişim anahtarı.  | Evet      |
-| batchUri          | Azure Batch hesabınızın URL 'SI, https://*batchaccountname. Region*. Batch.Azure.com biçiminde. | Evet      |
-| poolName          | Sanal makine havuzunun adı.    | Evet      |
-| linkedServiceName | Bu Azure Batch bağlı hizmetiyle ilişkili Azure depolama bağlı hizmetinin adı. Bu bağlı hizmet, etkinliği çalıştırmak için gereken hazırlama dosyaları için kullanılır. | Evet      |
+| tür              | Type özelliği **AzureBatch**olarak ayarlanmalıdır. | Yes      |
+| accountName       | Azure Batch hesabının adı.         | Yes      |
+| accessKey         | Azure Batch hesabı için erişim anahtarı.  | Yes      |
+| batchUri          | Azure Batch hesabınızın URL 'SI, https://*batchaccountname. Region*. Batch.Azure.com biçiminde. | Yes      |
+| poolName          | Sanal makine havuzunun adı.    | Yes      |
+| linkedServiceName | Bu Azure Batch bağlı hizmetiyle ilişkili Azure depolama bağlı hizmetinin adı. Bu bağlı hizmet, etkinliği çalıştırmak için gereken hazırlama dosyaları için kullanılır. | Yes      |
 | connectVia        | Bu bağlı hizmete etkinlikleri göndermek için kullanılacak Integration Runtime. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır       |
 
 ## <a name="azure-machine-learning-studio-linked-service"></a>Bağlı hizmet Azure Machine Learning Studio
@@ -396,9 +396,9 @@ Bir Machine Learning Batch Puanlama uç noktasını bir veri fabrikasına kaydet
 ### <a name="properties"></a>Özellikler
 | Özellik               | Açıklama                              | Gerekli                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Tür                   | Type özelliği: **AzureML**olarak ayarlanmalıdır. | Evet                                      |
-| mlEndpoint             | Toplu işlem Puanlama URL 'SI.                   | Evet                                      |
-| apiKey                 | Yayımlanan çalışma alanı modelinin API 'SI.     | Evet                                      |
+| Tür                   | Type özelliği: **AzureML**olarak ayarlanmalıdır. | Yes                                      |
+| mlEndpoint             | Toplu işlem Puanlama URL 'SI.                   | Yes                                      |
+| apiKey                 | Yayımlanan çalışma alanı modelinin API 'SI.     | Yes                                      |
 | updateResourceEndpoint | Tahmine dayalı Web hizmetini eğitilen model dosyasıyla güncelleştirmek için kullanılan bir Azure Machine Learning Web hizmeti uç noktasının güncelleştirme kaynak URL 'SI | Hayır                                       |
 | Serviceprincipalıd     | Uygulamanın istemci KIMLIĞINI belirtin.     | UpdateResourceEndpoint belirtilmişse gereklidir |
 | Servicesprincipalkey    | Uygulamanın anahtarını belirtin.           | UpdateResourceEndpoint belirtilmişse gereklidir |
@@ -440,10 +440,10 @@ Bir Azure Machine Learning çalışma alanını veri fabrikasına bağlamak içi
 ### <a name="properties"></a>Özellikler
 | Özellik               | Açıklama                              | Gerekli                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Tür                   | Type özelliği: **AzureMLService**olarak ayarlanmalıdır. | Evet                                      |
-| subscriptionId         | Azure abonelik KIMLIĞI              | Evet                                      |
-| resourceGroupName      | name | Evet                                      |
-| Mlçalışmaalanıadı        | Azure Machine Learning çalışma alanı adı | Evet  |
+| Tür                   | Type özelliği: **AzureMLService**olarak ayarlanmalıdır. | Yes                                      |
+| subscriptionId         | Azure abonelik KIMLIĞI              | Yes                                      |
+| resourceGroupName      | name | Yes                                      |
+| Mlçalışmaalanıadı        | Azure Machine Learning çalışma alanı adı | Yes  |
 | Serviceprincipalıd     | Uygulamanın istemci KIMLIĞINI belirtin.     | Hayır |
 | Servicesprincipalkey    | Uygulamanın anahtarını belirtin.           | Hayır |
 | Kiracı                 | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | UpdateResourceEndpoint belirtilmişse gereklidir | Hayır |
@@ -483,14 +483,14 @@ Bir Azure Data Lake Analytics işlem hizmetini bir Azure Data Factory 'ye bağla
 
 | Özellik             | Açıklama                              | Gerekli                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| tür                 | Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. | Evet                                      |
-| accountName          | Azure Data Lake Analytics hesap adı.  | Evet                                      |
+| tür                 | Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. | Yes                                      |
+| accountName          | Azure Data Lake Analytics hesap adı.  | Yes                                      |
 | Datalakeanaliz Ticsurı | Azure Data Lake Analytics URI 'SI.           | Hayır                                       |
 | subscriptionId       | Azure abonelik KIMLIĞI                    | Hayır                                       |
 | resourceGroupName    | Azure kaynak grubu adı                | Hayır                                       |
-| Serviceprincipalıd   | Uygulamanın istemci KIMLIĞINI belirtin.     | Evet                                      |
-| Servicesprincipalkey  | Uygulamanın anahtarını belirtin.           | Evet                                      |
-| Kiracı               | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet                                      |
+| Serviceprincipalıd   | Uygulamanın istemci KIMLIĞINI belirtin.     | Yes                                      |
+| Servicesprincipalkey  | Uygulamanın anahtarını belirtin.           | Yes                                      |
+| Kiracı               | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Yes                                      |
 | connectVia           | Bu bağlı hizmete etkinlikleri göndermek için kullanılacak Integration Runtime. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır                                       |
 
 
@@ -545,10 +545,10 @@ Databricks iş yüklerini (Not defteri, Jar, Python) çalıştırmak için kulla
 
 | Özellik             | Açıklama                              | Gerekli                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | Bağlı hizmetin adı               | Evet   |
-| tür                 | Type özelliği: **Azure Databricks**olarak ayarlanmalıdır. | Evet                                      |
-| etki alanı               | Databricks çalışma alanının bölgesine göre uygun şekilde Azure bölgesini belirtin. Örnek: https://eastus.azuredatabricks.net | Evet                                 |
-| accessToken          | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) bulunabilir  | Evet                                       |
+| name                 | Bağlı hizmetin adı               | Yes   |
+| tür                 | Type özelliği: **Azure Databricks**olarak ayarlanmalıdır. | Yes                                      |
+| etki alanı               | Databricks çalışma alanının bölgesine göre uygun şekilde Azure bölgesini belirtin. Örnek: https://eastus.azuredatabricks.net | Yes                                 |
+| accessToken          | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) bulunabilir  | Yes                                       |
 | Existingclusterıd    | Bu kümedeki tüm işleri çalıştırmak için var olan bir kümenin küme KIMLIĞI. Bu, önceden oluşturulmuş bir etkileşimli küme olmalıdır. Yanıt vermeyi durdurduğunda kümeyi el ile yeniden başlatmanız gerekebilir. Databricks daha fazla güvenilirlik sağlamak için işleri yeni kümeler üzerinde çalıştırmaya öneriyor. Databricks çalışma alanı-> kümeleri-> etkileşimli küme adı-> yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla ayrıntı’yı seçin](https://docs.databricks.com/user-guide/clusters/tags.html) | Hayır 
 | instancePoolId    | Databricks çalışma alanında var olan bir havuzun örnek havuzu KIMLIĞI.  | Hayır  |
 | newClusterVersion    | Kümenin Spark sürümü. Databricks içinde bir iş kümesi oluşturur. | Hayır  |
@@ -574,7 +574,7 @@ SQL Server bağlı bir hizmet oluşturur ve bir Data Factory işlem hattından s
 
 Azure Işlev bağlı hizmeti oluşturup Azure Işlevleri 'ni bir Data Factory işlem hattında çalıştırmak için [Azure işlevi etkinliğiyle](control-flow-azure-function-activity.md) birlikte kullanabilirsiniz. Azure işlevinin dönüş türü geçerli bir olmalıdır `JObject` . ( [Jarray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) öğesinin bir *değil* olduğunu aklınızda bulundurun `JObject` .) Diğer herhangi bir dönüş türü `JObject` başarısız olur ve Kullanıcı hata *yanıtı içeriğini başlatır geçerli bir JObject değildir*.
 
-| **Özellik** | **Açıklama** | **Gerekli** |
+| **Özelliði** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
 | tür   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | evet |
 | işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net` . Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |

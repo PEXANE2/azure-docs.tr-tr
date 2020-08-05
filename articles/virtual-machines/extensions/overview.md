@@ -1,54 +1,36 @@
 ---
 title: Azure sanal makine uzantıları ve özellikleri
-description: Azure VM uzantılarının ne olduğunu ve bunları Azure sanal makineleri ile nasıl kullanacağınızı öğrenin
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+description: Azure VM uzantıları hakkında daha fazla bilgi
+services: virtual-machines
+author: amjads1
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/12/2019
-ms.author: akjosh
-ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.author: amjads
+ms.openlocfilehash: 73738f339bea3e8e075530e5de564c1c0854d283
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072972"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552059"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure sanal makine uzantıları ve özellikleri
-Azure sanal makinesi (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır, var olan görüntüleri kullanabilir ve ardından bunları dağıtımlarınızın bir parçası olarak özelleştirebilir ve bu da özel görüntü oluşturma işinizi bilgisayarınızdan elde edebilirsiniz.
-
-Azure platformu, VM yapılandırması, izleme, güvenlik ve yardımcı program uygulamalarından çok çeşitli uzantılar barındırır. Yayımcılar bir uygulamayı alır, ardından bir uzantıya sarın ve yüklemeyi basitleştirerek, tüm yapmanız gereken zorunlu parametreler sağlamalıdır. 
-
- Birinci ve üçüncü taraf uzantılarının büyük bir seçimi vardır, uzantı deposundaki uygulama yoksa, Özel Betik uzantısını kullanabilir ve VM 'nizi kendi komut dosyalarınız ve komutlarınız ile yapılandırabilirsiniz.
-
-Uzantıların kullanıldığı önemli senaryolar örnekleri:
-* VM yapılandırması, VM yapılandırma aracılarını yüklemek ve VM 'nizi yapılandırmak için PowerShell DSC (Istenen durum yapılandırması), Chef, Pupevcil hayvan ve özel betik uzantılarını kullanabilirsiniz. 
-* Symantec, ESET gibi AV ürünleri.
-* Qualys, Rapid7, HPE gibi VM Güvenlik Açığı aracı.
-* DynaTrace, Azure ağ Izleyicisi, Site24x7 ve Stacking gibi VM ve uygulama izleme araçları.
-
-Uzantılar, yeni bir VM dağıtımıyla birlikte paketlenmiştir. Örneğin, bu uygulamalar daha büyük bir dağıtımın parçası olabilirler, VM sağlaması üzerinde uygulamaları yapılandırıyor veya desteklenen tüm uzantı çalıştırılan sistemlerin dağıtımı sonrasında çalıştırılabilir.
+Uzantılar, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon sağlayan küçük uygulamalardır. Azure platformu VM yapılandırması, izleme, güvenlik ve yardımcı program uygulamalarını kapsayan birçok uzantıyı barındırır. Yayımcılar bir uygulamayı alır, bir uzantıya sarın ve yüklemeyi basitleştirir. Yapmanız gereken tek şey zorunlu parametreler sağlamaktır. 
 
 ## <a name="how-can-i-find-what-extensions-are-available"></a>Hangi uzantıların kullanılabilir olduğunu nasıl bulabilirim?
-Kullanılabilir uzantıları portaldaki VM dikey penceresinde görüntüleyebilirsiniz, Uzantılar altında bu yalnızca küçük bir miktarı temsil eder, tam liste için CLı araçlarını kullanabilir, [Linux IÇIN VM uzantılarını bulma](features-linux.md) ve [Windows Için VM uzantılarını bulma](features-windows.md)bölümüne bakın.
+Sol menüdeki **uzantıları** SEÇIN bir VM seçerek kullanılabilir uzantıları görüntüleyebilirsiniz. Uzantıların tam listesini almak için bkz. [Linux IÇIN VM uzantılarını bulma](features-linux.md) ve [Windows Için VM uzantılarını bulma](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Bir uzantıyı nasıl yükleyebilirim?
-Azure VM uzantıları, Azure CLı, Azure PowerShell, Azure Resource Manager şablonları ve Azure portal kullanılarak yönetilebilir. Bir uzantıyı denemek için Azure portal gidebilir, Özel Betik uzantısını seçebilir, sonra bir komut/betik geçirebilir ve uzantıları çalıştırabilirsiniz.
+Azure VM uzantıları, Azure CLı, PowerShell, Kaynak Yöneticisi şablonları ve Azure portal kullanılarak yönetilebilir. Bir uzantıyı denemek için Azure portal gidin, Özel Betik uzantısını seçin, sonra uzantıyı çalıştırmak için bir komut veya betik geçirin.
 
-Portala CLı veya Kaynak Yöneticisi şablonuna göre eklediğiniz aynı uzantıya isterseniz, bkz. [Windows Özel Betik uzantısı](custom-script-windows.md) ve [Linux özel Betik uzantısı](custom-script-linux.md)gibi farklı uzantı belgeleri.
+Daha fazla bilgi için bkz. [Windows Özel Betik uzantısı](custom-script-windows.md) ve [Linux özel Betik uzantısı](custom-script-linux.md).
 
 ## <a name="how-do-i-manage-extension-application-lifecycle"></a>Nasıl yaparım? uzantısı uygulama yaşam döngüsünü yönetmek mi istiyorsunuz?
-Uzantıyı yüklemek veya silmek için bir VM 'ye doğrudan bağlanmanız gerekmez. Azure uzantı uygulaması yaşam döngüsü VM dışında yönetiliyor ve Azure platformuyla tümleştirildiği için, uzantının tümleşik durumunu da alırsınız.
+Bir uzantıyı yüklemek veya silmek için bir VM 'ye doğrudan bağlanmanız gerekmez. Azure uzantı yaşam döngüsü, sanal makine dışında yönetilir ve Azure platformunda tümleşiktir.
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Uzantılar için göz önünde bulundurulması gereken başka bir şey var mı?
-Uzantılar yükleme uygulamalar gibi bazı gereksinimler vardır, uzantılar için desteklenen Windows ve Linux Işletim sistemleri listesi ve Azure VM aracılarının yüklü olması gerekir. Bazı bağımsız VM Uzantısı uygulamalarının bir uç noktaya erişim gibi kendi ortam önkoşulları olabilir.
+Bazı bağımsız VM Uzantısı uygulamalarının bir uç noktaya erişim gibi kendi ortam önkoşulları olabilir. Her uzantının, hangi işletim sistemlerinin desteklendiği de dahil olmak üzere önkoşulları açıklayan bir makalesi vardır.
 
 ## <a name="troubleshoot-extensions"></a>Uzantı sorunlarını giderme
 
@@ -69,7 +51,7 @@ Her bir uzantıya ilişkin sorun giderme bilgileri, uzantının genel bakış ko
 | Microsoft. enterprisecloud. Monitoring. omsagentforlinux | [Linux için Azure Izleyici](oms-linux.md#troubleshoot-and-support)
 | Microsoft. enterprisecloud. Monitoring. microsoftmonitoringagent | [Windows için Azure Izleyici](oms-windows.md#troubleshoot-and-support) |
 | stackbelirt. linuxagent. Extension. stackifılinuxbir TExtension | [Linux için yeniden Izlemeyi stackbelirt](stackify-retrace-linux.md#troubleshoot-and-support) |
-| vmaccessforlinux. Microsoft. ostcextensions | [Linux için parolayı sıfırlama (VMAccess)](vmaccess.md#troubleshoot-and-support) |
+| vmaccessforlinux. Microsoft. ostcextensions | [Linux için parolayı sıfırlama](vmaccess.md#troubleshoot-and-support) |
 | Microsoft. recoveryservices. VMSnapshot | [Linux için anlık görüntü](vmsnapshot-linux.md#troubleshoot-and-support) |
 | Microsoft. recoveryservices. VMSnapshot | [Windows için anlık görüntü](vmsnapshot-windows.md#troubleshoot-and-support) |
 

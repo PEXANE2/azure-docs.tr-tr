@@ -1,19 +1,20 @@
 ---
 title: MARS Aracısı hakkında
 description: MARS aracısının yedekleme senaryolarını nasıl desteklediğini öğrenin
-ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/04/2020
+ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497956"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562608"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı hakkında
 
 Bu makalede, Azure Backup hizmetinin dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı nasıl kullandığı açıklanır.
+
+## <a name="backup-scenarios"></a>Yedekleme senaryoları
 
 MARS Aracısı aşağıdaki yedekleme senaryolarını destekler:
 
@@ -23,13 +24,21 @@ MARS Aracısı aşağıdaki yedekleme senaryolarını destekler:
 - **Birim düzeyi**: makinenizin bir Windows biriminin tamamını koruyun.
 - **Sistem düzeyi**: tüm Windows sistem durumunu koruyun.
 
+### <a name="additional-scenarios"></a>İlave senaryolar
+
+- **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+
+- **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
+
+## <a name="restore-scenarios"></a>Geri yükleme senaryoları
+
 MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 
 ![MARS kurtarma senaryoları](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
 - **Aynı sunucu**: yedeklemenin ilk olarak oluşturulduğu sunucu.
   - **Dosyalar ve klasörler**: geri yüklemek istediğiniz tek tek dosyaları ve klasörleri seçin.
-  - **Birim düzeyi**: geri yüklemek istediğiniz birim ve kurtarma noktasını seçin ve aynı konuma veya aynı makinede alternatif bir konuma geri yükleyin.  Mevcut dosyaların bir kopyasını oluşturun, varolan dosyaların üzerine yazın veya var olan dosyaları kurtarmayı atlayın.
+  - **Birim düzeyi**: geri yüklemek istediğiniz birimi ve kurtarma noktasını seçin. Daha sonra aynı konuma veya aynı makinede alternatif bir konuma geri yükleyin.  Mevcut dosyaların bir kopyasını oluşturun, varolan dosyaların üzerine yazın veya var olan dosyaları kurtarmayı atlayın.
   - **Sistem düzeyi**: belirtilen konumdaki aynı makineye geri yüklemek için sistem durumu ve kurtarma noktasını seçin.
 
 - **Alternatif sunucu**: yedeklemenin alındığı sunucudan başka bir sunucu.
@@ -54,12 +63,6 @@ MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 - **Artımlı yedeklemeler** (sonraki yedeklemeler) belirttiğiniz zamanlamaya göre çalışır. Artımlı yedeklemeler sırasında, değiştirilen dosyalar tanımlanır ve yeni bir VHD oluşturulur. VHD sıkıştırılır ve şifrelenir ve ardından kasaya gönderilir. Artımlı yedekleme bittikten sonra, yeni VHD ilk çoğaltmadan sonra oluşturulan VHD ile birleştirilir. Bu birleştirilmiş VHD, devam eden yedekleme için kullanılmak üzere en son durumu sağlar.
 
 - MARS Aracısı, tüm birimi tarayarak dizin veya dosyalardaki değişiklikleri denetleyerek, USN (sıra numarası güncelleştirme) değişiklik günlüğünü veya **en iyi duruma getirilmiş modu** kullanarak yedekleme işini **iyileştirilmiş modda** çalıştırabilir. En iyi duruma getirilmiş mod, aracının birimdeki her dosyayı tarayabilmesi ve değiştirilen dosyaları tespit etmek için meta verilere göre karşılaştırılabilmesi nedeniyle daha yavaştır.  **İlk yedekleme** her zaman iyileştirilmemiş modda çalışacaktır. Önceki yedekleme başarısız olduysa, sonraki zamanlanmış yedekleme işi iyileştirilmemiş modda çalışacaktır. Bu modlar ve bunların nasıl doğrulanabileceği hakkında daha fazla bilgi edinmek için [Bu makaleye](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode)bakın.
-
-### <a name="additional-scenarios"></a>İlave senaryolar
-
-- **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](./backup-architecture.md#architecture-built-in-azure-vm-backup).
-
-- **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

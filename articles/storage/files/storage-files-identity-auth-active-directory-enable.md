@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7aab7f5db6256d2f2525ff4a58c10ff5aa517f7
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999590"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553181"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -46,6 +46,8 @@ Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmede
     Özelliği yeni veya mevcut bir şirket içi AD DS ortamında etkinleştirebilirsiniz. Erişim için kullanılan kimlikler Azure AD ile eşitlenmelidir. Azure AD kiracısı ve eriştiğiniz dosya paylaşımının aynı abonelikle ilişkilendirilmesi gerekir.
 
 - Etki alanı-şirket içi bir makineye veya bir Azure VM 'ye şirket içi AD DS ekleyin. Etki alanına ekleme hakkında daha fazla bilgi için, bkz. [bir bilgisayarı etki alanına ekleme](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
+
+    Makinenizin bir AD DS etki alanına katılmış olmaması durumunda, makinenizde AD etki alanı denetleyicisi varsa, kimlik doğrulama için AD kimlik bilgilerini kullanmaya devam edebilirsiniz.
 
 - Bir Azure depolama hesabı seçin veya oluşturun.  En iyi performans için, depolama hesabını paylaşıma erişmeyi planladığınız istemciyle aynı bölgeye dağıtmanızı öneririz. Daha sonra, [Azure dosya paylaşımından](storage-how-to-use-files-windows.md) depolama hesabı anahtarınızı bağlayın. Depolama hesabı anahtarıyla bağlama, bağlantıyı doğrular.
 

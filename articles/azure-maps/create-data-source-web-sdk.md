@@ -9,18 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 57589552af3b93d98733d4872b43a719703d501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f51afbcf50939d762b1b5d32d6204ccfbb9a62d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285739"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551685"
 ---
 # <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
 Azure Haritalar Web SDK 'Sı verileri veri kaynaklarında depolar. Veri kaynaklarını kullanmak, sorgulamak ve işlemek için veri işlemlerini iyileştirir. Şu anda iki tür veri kaynağı vardır:
 
-**GeoJSON veri kaynağı**
+- **Geojson kaynağı**: coğrafi konum verilerini yerel olarak geojson biçiminde yönetir. Küçük ve orta ölçekli veri kümeleri için iyi (yüzlerce yüz binlerce şekil).
+- **Vektör kutucuk kaynağı**: haritalar döşeme sistemine bağlı olarak, geçerli harita görünümü için vektör kutucukları olarak biçimlendirilen verileri yükler. Büyük ve çok büyük veri kümeleri (milyonlarca veya milyarlarca şekil) için idealdir.
+
+## <a name="geojson-data-source"></a>GeoJSON veri kaynağı
 
 Coğrafi JSON tabanlı veri kaynağı, sınıfını kullanarak verileri yerel olarak yükler ve depolar `DataSource` . GeoJSON verileri, [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) ad alanındaki yardımcı sınıflar kullanılarak el ile oluşturulabilir veya oluşturulabilir. `DataSource`Sınıfı, yerel veya uzak coğrafi JSON dosyalarını içeri aktarmak için işlevler sağlar. Uzak GeoJSON dosyaları CORs etkin bir uç noktada barındırılmalıdır. `DataSource`Sınıfı, kümeleme noktası verileri için işlevsellik sağlar. Ve, veriler kolayca eklenebilir, kaldırılabilir ve `DataSource` sınıfla güncellenir. Aşağıdaki kod, coğrafi JSON verilerinin Azure haritalar 'da nasıl oluşturulagösterdiğini gösterir.
 
@@ -37,7 +40,7 @@ var rawGeoJson = {
      }
 };
 
-//Create GeoJSON using helper classes (less error prone).
+//Create GeoJSON using helper classes (less error prone and less typing).
 var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
     "custom-property": "value"
 }); 
@@ -69,7 +72,7 @@ dataSource.setShapes(geoJsonData);
 > [!TIP]
 > , Bir içindeki tüm verilerin üzerine yazmak istediğinizi varsayalım `DataSource` . `clear`Then işlevlerine çağrılar yaparsanız `add` , eşleme iki kez yeniden işleyebilir ve bu da gecikmeye neden olabilir. Bunun yerine, `setShapes` veri kaynağındaki tüm verileri kaldıracak ve değiştirecek ve yalnızca haritanın tek bir yeniden işlemesini tetikleyeceği işlevini kullanın.
 
-**Vektör kutucuk kaynağı**
+## <a name="vector-tile-source"></a>Vektör kutucuk kaynağı
 
 Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğinizi açıklar. Vektör kutucuk kaynağı oluşturmak için [Vectortilesource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) sınıfını kullanın. Vektör döşeme katmanları döşeme katmanlarına benzerdir, ancak aynı değildir. Döşeme katmanı bir raster görüntüsüdür. Vektör döşeme katmanları, **PBF** biçiminde sıkıştırılmış bir dosyadır. Bu sıkıştırılmış dosya, vektör eşleme verilerini ve bir veya daha fazla katmanı içerir. Dosya, her katmanın stiline bağlı olarak işlenilerek, istemci üzerinde stil oluşturulabilir. Vektör kutucuğunda bulunan veriler, işaret, çizgi ve çokgenler biçimindeki coğrafi özellikler içerir. Raster döşeme katmanları yerine vektör kutucuğu katmanlarını kullanmanın çeşitli avantajları vardır:
 

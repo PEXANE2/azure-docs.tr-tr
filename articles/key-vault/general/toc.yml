@@ -6,6 +6,8 @@
       href: overview.md
     - name: 'Anahtarlar, gizli diziler ve sertifikalar hakkında'
       href: about-keys-secrets-certificates.md
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

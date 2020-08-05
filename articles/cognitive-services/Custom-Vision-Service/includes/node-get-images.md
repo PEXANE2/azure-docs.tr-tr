@@ -13,4 +13,4 @@ ms.locfileid: "67188697"
 ---
 ## <a name="get-the-sample-images"></a>Örnek görüntüleri alma
 
-Bu örnek, GitHub 'da bilişsel [Hizmetler Node. js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) deposunun **Samples/customvision/Images** dizininden görüntüleri kullanır. Bu depoyu geliştirme ortamınıza kopyalayın veya indirin.
+Bu örnek, GitHub 'daki bilişsel [hizmetler Node.js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) deposunun **örnek/customvision/Images** dizininden görüntüleri kullanır. Bu depoyu geliştirme ortamınıza kopyalayın veya indirin.

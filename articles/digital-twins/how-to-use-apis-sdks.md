@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b83c60182c311d9b04a205da4ab0c3477dc9b9e
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373258"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563713"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -43,7 +43,7 @@ Veri düzlemi API 'Leri, Azure dijital TWINS örneğiniz içindeki öğeleri yö
 * **Sorgu** -sorgu kategorisi, geliştiricilerin ilişkiler genelinde [ikizi grafiğinde dijital TWINS kümeleri bulmasına](how-to-query-graph.md) olanak tanır.
 * **Eventroutes** -eventroutes kategorisi, verileri sistem ve aşağı akış Hizmetleri aracılığıyla [yönlendiren](concepts-route-events.md)API 'leri içerir.
 
-Genel önizleme için en güncel veri düzlemi API sürümü _**2020-05-31-Preview**_' dir.
+Genel önizleme için en güncel veri düzlemi API sürümü _**2020-05-31-Preview**_' dir. Veri düzlemi işlemleri için _2020-03-01-Preview_ API sürümü artık kullanım dışıdır.
 
 Veri düzlemi API 'Lerini kullanmak için:
 * API 'Leri doğrudan çağırabilirsiniz...

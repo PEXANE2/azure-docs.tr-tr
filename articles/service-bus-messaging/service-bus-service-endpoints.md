@@ -4,12 +4,12 @@ description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktas�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422955"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552994"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Service Bus ad alanına erişime izin ver
 
@@ -32,6 +32,7 @@ Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş y�
 > Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
 > - Azure App Service
 > - Azure İşlevleri
+> - Azure Izleyici (Tanılama ayarı)
 
 > [!IMPORTANT]
 > Sanal ağlar yalnızca [Premium katmanda](service-bus-premium-messaging.md) Service Bus ad alanlarında desteklenir.

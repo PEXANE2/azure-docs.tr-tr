@@ -1,5 +1,5 @@
 ---
-title: Azure AD 'de imzalama anahtarı geçişi
+title: Microsoft Identity platformunda imzalama anahtarı geçişi
 description: Bu makalede Azure Active Directory için imzalama anahtarı aktarma en iyi yöntemleri açıklanmaktadır
 services: active-directory
 author: rwike77
@@ -12,20 +12,20 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537245"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552773"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 'da anahtar geçişi imzalanıyor
-Bu makalede, güvenlik belirteçlerini imzalamak için Azure Active Directory (Azure AD) ' de kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Azure AD kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir veya düzenli bir el ile geçiş işlemi oluşturabilir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
+# <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarı geçişi
+Bu makalede, güvenlik belirteçlerini imzalamak için Microsoft Identity platform tarafından kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Microsoft Identity platform kullanan tüm uygulamaların, anahtar geçişi işlemini programlı bir şekilde işleyebilmesi veya düzenli bir el ile geçiş işlemi kurabilmesi gerekir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 'de imzalama anahtarlarına genel bakış
-Azure AD, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartlarına göre oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde geçerlidir: Azure AD ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Azure AD kullanan bir uygulamada oturum açtığında, Azure AD Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Azure AD tarafından imzalanır. Belirtecin geçerli olduğunu ve Azure AD 'den geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-besbir [Federasyon meta veri BELGESINDE](../azuread-dev/azure-ad-federation-metadata.md)bulunan Azure AD tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir.
+## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarlarına genel bakış
+Microsoft Identity platform, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartları üzerinde oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde işe yarar: Microsoft Identity platform ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Microsoft Identity platform kullanan bir uygulamada oturum açtığında, Microsoft Identity platform Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Microsoft Identity platformu tarafından imzalanır. Belirtecin geçerli olduğunu ve Microsoft Identity platformundan geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-beslikli [Federasyon meta veri belgesinde](../azuread-dev/azure-ad-federation-metadata.md)bulunan Microsoft Identity platform tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir.
 
-Güvenlik nedeniyle, Azure AD 'nin imzalama anahtarı düzenli olarak kaydedilir ve acil durumda bir acil durum durumunda hemen üzerinden alınabilir. Azure AD ile tümleştirilen herhangi bir uygulama, ne sıklıkta gerçekleşebileceğini önemli bir anahtar geçişi olayını işleyecek şekilde hazırlanmalıdır. Yoksa ve uygulamanız bir belirteçte imzayı doğrulamak için bir süre sonu anahtarını kullanmayı denerse, oturum açma isteği başarısız olur.
+Güvenlik nedeniyle, Microsoft Identity platformunun imzalama anahtarı düzenli olarak kaydedilir ve acil durumda bir acil durum durumunda hemen üzerinden alınabilir. Microsoft Identity platformu ile tümleştirilen herhangi bir uygulama, ne sıklıkta gerçekleşebileceğini önemli bir şekilde bir anahtar geçişi olayını işleyecek şekilde hazırlanmalıdır. Yoksa ve uygulamanız bir belirteçte imzayı doğrulamak için bir süre sonu anahtarını kullanmayı denerse, oturum açma isteği başarısız olur.
 
 OpenID Connect bulgu belgesinde ve Federasyon meta verileri belgesinde her zaman bir geçerli anahtar mevcuttur. Uygulamanız, belgede belirtilen anahtarlardan herhangi birini kullanmaya hazırlanmalıdır, çünkü bir anahtar yakında alınabilir, diğeri de bunun yerini alır ve bu şekilde devam eder.
 
@@ -148,7 +148,7 @@ Visual Studio 2013 ' de Web API şablonu kullanarak bir Web API uygulaması olu�
 
 Kimlik doğrulamasını el ile yapılandırdıysanız, kendi anahtar bilgilerini otomatik olarak güncelleştirmek üzere Web API 'nizi nasıl yapılandıracağınızı öğrenmek için aşağıdaki yönergeleri izleyin.
 
-Aşağıdaki kod parçacığı, Federasyon meta veri belgesinden en son anahtarları nasıl alınacağını ve sonra belirteci doğrulamak için [JWT belirteci işleyicisini](https://msdn.microsoft.com/library/dn205065.aspx) nasıl kullanacağınızı gösterir. Kod parçacığı, Azure AD 'den gelecek belirteçleri doğrulamak için bir veritabanı, yapılandırma dosyası veya başka bir yerde olsun, anahtarı kalıcı hale getiren kendi önbelleğe alma mekanizmanızı kullanacağınızı varsayar.
+Aşağıdaki kod parçacığı, Federasyon meta veri belgesinden en son anahtarları nasıl alınacağını ve sonra belirteci doğrulamak için [JWT belirteci işleyicisini](https://msdn.microsoft.com/library/dn205065.aspx) nasıl kullanacağınızı gösterir. Kod parçacığı, bir veritabanı, yapılandırma dosyası veya başka bir yerde olup olmadığı gibi, Microsoft Identity platform 'dan gelecek belirteçleri doğrulamak için anahtarı kalıcı hale getiren kendi önbelleğe alma mekanizmanızı kullanacağınızı varsayar.
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Kaynakları koruyan ve Visual Studio 2012 ile oluşturulan Web uygulamaları
-Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Azure AD) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
+Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Microsoft Identity Platform) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
 
 Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenecek yol belgelerinden birini kullanarak oluşturduysanız, anahtar aktarma mantığı projenize zaten dahil edilmiştir. Aşağıdaki kodun projenizde zaten var olduğunu fark edeceksiniz. Uygulamanızda zaten bu mantık yoksa, eklemek ve düzgün çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
@@ -282,7 +282,7 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
           </keys>
    ```
 2. **\<add thumbprint="">** Ayarında, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web.config** dosyasını kaydedin.
-3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Azure AD makalesini kullanarak Web uygulamanıza oturum açma ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirme ve İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Microsoft Identity platform makalesini kullanarak Web uygulamanıza oturum açma ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirme ve İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>.NET 3,5 için kaynakları koruyan ve Visual Studio 2008 ya da 2010 ve Windows Identity Foundation (WıF) v 1.0 ile oluşturulan Web uygulamaları
 WıF v 1.0 üzerinde bir uygulama oluşturduysanız, yeni bir anahtar kullanmak için uygulamanızın yapılandırmasını otomatik olarak yenilemek üzere bir sağlanmayan mekanizma yoktur.
@@ -301,10 +301,10 @@ Yapılandırmanızı güncelleştirmek için FedUtil kullanma yönergeleri:
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Diğer kitaplıkları kullanan veya desteklenen protokollerden herhangi birini uygulayan Web uygulamaları/API 'Leri, kaynakları koruyan
 Başka bir kitaplığı kullanıyorsanız veya desteklenen protokollerden herhangi birini el ile uyguladıysanız, anahtarın OpenID Connect bulgu belgesinden veya Federasyon meta veri belgesinden alındığından emin olmak için kitaplığı veya uygulamanızı gözden geçirmeniz gerekir. Bunu kontrol etmenin bir yolu, OpenID bulgu belgesine veya Federasyon meta veri belgesine yapılan çağrılar için kodunuzda veya kitaplığın kodunda bir arama yapmak.
 
-Bu anahtar, uygulamanızda bir yere veya sabit kodlanmış olarak depolanırsa, bu kılavuz belgesinin sonundaki yönergelere göre el ile bir rollover gerçekleştirerek, anahtarı el ile alabilir ve uygun şekilde güncelleştirebilirsiniz. Azure AD 'nin rollover temposunda yükseltireceği veya bir acil durum bant dışı geçişe sahip olması durumunda, gelecekteki kesintiler ve yükün önlenmesi için bu makaledeki yaklaşımlardan herhangi birini kullanarak **otomatik geçişi desteklemeye yönelik uygulamanızı geliştirmektir** .
+Bu anahtar, uygulamanızda bir yere veya sabit kodlanmış olarak depolanırsa, bu kılavuz belgesinin sonundaki yönergelere göre el ile bir rollover gerçekleştirerek, anahtarı el ile alabilir ve uygun şekilde güncelleştirebilirsiniz. Microsoft Identity platform 'ın rollover temposunda 'i artırdığı veya bir acil durum bant dışı geçişe sahip olması durumunda, gelecekteki kesintiler ve yük devretme adımlarını önlemek için **uygulamanızı geliştirmektir** .
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Uygulamanızı, etkilenip etkilenmediğine yönelik test etme
 Komut dosyalarını indirerek ve [Bu GitHub deposundaki](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) yönergeleri izleyerek uygulamanızın otomatik anahtar geçişi 'ni destekleyip desteklemediğini doğrulayabilirsiniz.
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Uygulamanız otomatik geçişi desteklemiyorsa el ile geçiş gerçekleştirme
-Uygulamanız otomatik **geçişi desteklemiyorsa,** Azure AD 'nin imzalama anahtarlarını düzenli olarak izleyen ve buna uygun bir el ile geçiş gerçekleştiren bir işlem oluşturmanız gerekir. [Bu GitHub deposu](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) bunun nasıl yapılacağı hakkında betikler ve yönergeler içerir.
+Uygulamanız otomatik **geçişi desteklemiyorsa,** Microsoft kimlik platformunun imzalama anahtarlarını düzenli olarak izleyen ve el ile geçiş yapan bir işlem oluşturmanız gerekir. [Bu GitHub deposu](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) bunun nasıl yapılacağı hakkında betikler ve yönergeler içerir.

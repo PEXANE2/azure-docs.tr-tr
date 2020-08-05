@@ -1,20 +1,20 @@
 ---
 title: Şifreleme kapsamları oluşturma ve yönetme (Önizleme)
-description: ''
+description: Blob verilerini kapsayıcı veya blob düzeyinde yalıtmak için bir şifreleme kapsamı oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532475"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564155"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Şifreleme kapsamları oluşturma ve yönetme (Önizleme)
 
@@ -24,7 +24,7 @@ Bu makalede, bir şifreleme kapsamının nasıl oluşturulacağı gösterilmekte
 
 ## <a name="create-an-encryption-scope"></a>Şifreleme kapsamı oluşturma
 
-Bir şifreleme kapsamı oluşturmak için, önce bir Azure Anahtar Kasası oluşturmanız ve kapsam için kullanmayı düşündüğünüz anahtarı eklemeniz gerekir. Anahtar kasasının hem **geçici silme** hem de **Temizleme koruma** özelliklerinin etkinleştirilmiş olması ve depolama hesabıyla aynı bölgede olması gerekir. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
+Microsoft tarafından yönetilen bir anahtarla veya Azure Key Vault depolanan, müşteri tarafından yönetilen bir anahtarla şifreleme kapsamları oluşturabilirsiniz. Müşteri tarafından yönetilen bir anahtarla bir şifreleme kapsamı oluşturmak için, önce bir Azure Anahtar Kasası oluşturmanız ve kapsam için kullanmayı düşündüğünüz anahtarı eklemeniz gerekir. Anahtar kasasının hem **geçici silme** hem de **Temizleme koruma** özelliklerinin etkinleştirilmiş olması ve depolama hesabıyla aynı bölgede olması gerekir. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
 
 Bir şifreleme kapsamı, oluşturduğunuzda otomatik olarak etkinleştirilir. Şifreleme kapsamını oluşturduktan sonra, bir blob oluştururken belirtebilirsiniz. Ayrıca, kapsayıcıdaki tüm Bloblar için otomatik olarak uygulanan bir kapsayıcı oluşturduğunuzda varsayılan bir şifreleme kapsamı belirtebilirsiniz.
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432423"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563560"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -146,11 +146,11 @@ Azure Data Factory sürüm 2 tarafından yayılan ölçülerden bazıları şunl
 | Triggercancelledçalıştırmaları                  | İptal edilen tetikleyici çalışan ölçümleri            | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen tetikleyici çalıştırmalarının toplam sayısı. |
 | Triggerfailedçalıştırmaları                    | Başarısız tetikleyici çalıştırma ölçümleri              | Count    | Toplam                | Bir dakika penceresi içinde başarısız olan tetikleyici çalıştırmalarının toplam sayısı. |
 | TriggerSucceededRuns                 | Başarılı tetikleyici çalışan ölçümleri           | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan tetikleyici çalıştırmalarının toplam sayısı. |
-| Ssisıntegrationruntimestartiptal edildi  | İptal edilen SSIS IR başlangıç ölçümleri           | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS IR 'nin başladığı toplam sayısı. |
-| Ssisıntegrationruntimestartfailed    | Başarısız SSIS IR başlangıç ölçümleri             | Count    | Toplam                | Bir dakika penceresinde başarısız olan SSIS IR 'nin başladığı toplam sayısı. |
-| Ssisıntegrationruntimestartsucceeded | Başarılı SSIS IR başlangıç ölçümleri          | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan SSIS IR 'nin toplam sayısı. |
-| Ssisıntegrationruntimestoptakılmış      | Kalmış SSIS IR durdurma ölçümleri               | Count    | Toplam                | Bir dakika penceresi içinde takılmış olan SSIS IR duraklarının toplam sayısı. |
-| Ssisıntegrationruntimestopsucceeded  | Başarılı SSIS IR durdurma ölçümleri           | Count    | Toplam                | Bir dakikalık pencere içinde başarılı olan SSIS IR duraklarının toplam sayısı. |
+| Ssisıntegrationruntimestartiptal edildi  | İptal edilen SSIS Integration Runtime başlangıç ölçümleri           | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS tümleştirme çalışma zamanı 'nın toplam sayısı. |
+| Ssisıntegrationruntimestartfailed    | Başarısız SSIS Integration Runtime başlangıç ölçümleri             | Count    | Toplam                | Bir dakika penceresinde başarısız olan SSIS tümleştirme çalışma zamanı 'nın toplam sayısı. |
+| Ssisıntegrationruntimestartsucceeded | Başarılı SSIS Integration Runtime başlangıç ölçümleri          | Count    | Toplam                | SSIS tümleştirme çalışma zamanının toplam sayısı bir dakika penceresi içinde başarılı olur. |
+| Ssisıntegrationruntimestoptakılmış      | Takılmış SSIS tümleştirme çalışma zamanı ölçümleri durdur               | Count    | Toplam                | Bir dakika penceresi içinde takılmış olan SSIS tümleştirme çalışma zamanı duraklarının toplam sayısı. |
+| Ssisıntegrationruntimestopsucceeded  | Başarılı SSIS tümleştirme çalışma zamanı ölçümleri durdur           | Count    | Toplam                | Bir dakika penceresinde başarılı olan SSIS tümleştirme çalışma zamanının toplam sayısı. |
 | Ssispackageexecutioniptal edildi         | İptal edilen SSIS paketi yürütme ölçümleri  | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS paket yürütmelerinin toplam sayısı. |
 | Ssıspackageexecutionfailed           | Başarısız SSIS paketi yürütme ölçümleri    | Count    | Toplam                | Bir dakikalık pencere içinde başarısız olan SSSıS paket yürütmelerinin toplam sayısı. |
 | Ssıspackageexecutionsucceeded        | Başarılı SSIS paketi yürütme ölçümleri | Count    | Toplam                | Bir dakika penceresinde başarılı olan SSIS paket yürütmelerinin toplam sayısı. |
@@ -221,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Üst bilgiler
+##### <a name="headers"></a>Üst Bilgiler
 
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | --- | --- | --- |
 | **Storageaccountıd** |Dize | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI. |
 | **Servicebusruleıd** |Dize | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz hizmet veri yolu ad alanının hizmet veri yolu kuralı KIMLIĞI. Kural KIMLIĞI biçimi vardır `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -341,7 +341,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Üst bilgiler
+##### <a name="headers"></a>Üst Bilgiler
 
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
@@ -455,7 +455,7 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/res
 |**operationName**| Dize | Etkinliğin durumuyla ilgili ad. Etkinlik başlangıç sinyalinise, özellik değeri olur `MyActivity -` . Etkinlik son sinyaldir ise, özellik değeri olur `MyActivity - Succeeded` . | `MyActivity - Succeeded` |
 |**Ardışık Düzen adı**| Dize | İşlem hattının adı. | `MyPipeline` |
 |**activityName**| Dize | Etkinliğin adı. | `MyActivity` |
-|**başından**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`|
+|**start**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`|
 |**erer**| Dize | Etkinliğin bitiş saati, TimeSpan UTC biçiminde çalışır. Tanılama günlüğünde bir etkinliğin başlatıldığını ancak henüz bitmemiş olduğunu gösteriyorsa, özellik değeri olur `1601-01-01T00:00:00Z` . | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>İşlem hattı-günlük özniteliklerini çalıştırma
@@ -499,7 +499,7 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/res
 |**düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
 |**operationName**| Dize | İşlem hattının, durumu ile birlikte adı. İşlem hattı çalıştırması tamamlandıktan sonra özellik değeri olur `Pipeline - Succeeded` . | `MyPipeline - Succeeded`. |
 |**Ardışık Düzen adı**| Dize | İşlem hattının adı. | `MyPipeline` |
-|**başından**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`. |
+|**start**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`. |
 |**erer**| Dize | Etkinliğin bitiş saati, TimeSpan UTC biçiminde çalışır. Tanılama günlüğünde bir etkinlik başlatılmış ancak henüz bitmemişse, özellik değeri olur `1601-01-01T00:00:00Z` .  | `2017-06-26T20:55:29.5007959Z` |
 |**durumlarına**| Dize | İşlem hattının son durumu. Olası özellik değerleri `Succeeded` ve ' dir `Failed` . | `Succeeded`|
 
@@ -544,7 +544,7 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/res
 |**triggerName**| Dize | Tetikleyicinin adı. | `MyTrigger` |
 |**triggerType**| Dize | Tetikleyicinin türü. Olası özellik değerleri `Manual Trigger` ve ' dir `Schedule Trigger` . | `ScheduleTrigger` |
 |**triggerEvent**| Dize | Tetikleyicinin olayı. | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**başından**| Dize | Zaman aralığı UTC biçiminde tetikleyicinin tetiklemenin başlangıç saati. | `2017-06-26T20:55:29.5007959Z`|
+|**start**| Dize | Zaman aralığı UTC biçiminde tetikleyicinin tetiklemenin başlangıç saati. | `2017-06-26T20:55:29.5007959Z`|
 |**durumlarına**| Dize | Tetikleyicinin başarıyla harekete geçirilip tetiklenmediğini gösteren nihai durum. Olası özellik değerleri `Succeeded` ve ' dir `Failed` . | `Succeeded`|
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>SSIS tümleştirme çalışma zamanı günlük öznitelikleri
@@ -833,10 +833,10 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dinamik |
     | $. Properties. Açıklamaları | Ek Açıklamalar | Dinamik |
-    | $. Properties. Girişinin | Giriş | Dinamik |
+    | $. Properties. Girişinin | Girdi | Dinamik |
     | $. Properties. Çıktıların | Çıktı | Dinamik |
     | $. Properties. Hata. errorCode | ErrorCode | int |
-    | $. Properties. Hata. ileti | Hata | dize |
+    | $. Properties. Hata. ileti | Hata | string |
     | $. Properties. Hatayla | Hata | Dinamik |
     | $. Properties. Öncül | Öncül | Dinamik |
     | $. Properties. Parametrelere | Parametreler | Dinamik |

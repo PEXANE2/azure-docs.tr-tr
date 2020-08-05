@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 218c0bebee6ed1e36da747802ea5e94bcebf9d62
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026535"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563322"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Korumalı Web API 'SI: kapsamları ve uygulama rollerini doğrulama
 
@@ -72,7 +72,7 @@ public class TodoListController : Controller
     [HttpGet]
     public IEnumerable<TodoItem> Get()
     {
-         HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi)
+         HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
         // Do the work and return the result.
         // ...
     }
@@ -153,4 +153,4 @@ Ters koşulun denetlenmesi, yalnızca bir kullanıcının API 'nizi çağırmas�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime geçme](scenario-protected-web-api-production.md)
+> [Üretime taşıma](scenario-protected-web-api-production.md)

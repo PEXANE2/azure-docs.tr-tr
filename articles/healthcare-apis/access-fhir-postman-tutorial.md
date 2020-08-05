@@ -9,20 +9,21 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: f6c3b1f4c24ad2bce68c1cff7b22f0059d3534a2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446059"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563968"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman ile FHıR için Azure API 'sine erişme
 
 İstemci uygulaması bir [REST API](https://www.hl7.org/fhir/http.html)aracılığıyla bir FHıR API 'sine erişir. Ayrıca, uygulamalar oluştururken, örneğin hata ayıklama amacıyla, FHıR sunucusuyla doğrudan etkileşim kurmak isteyebilirsiniz. Bu öğreticide, bir FHıR sunucusuna erişmek için [Postman](https://www.getpostman.com/) 'ı kullanmak için gereken adımları adım adım göstereceğiz. Postman, API 'Lere erişen uygulamalar oluştururken genellikle hata ayıklama için kullanılan bir araçtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure 'da bir FHıR uç noktası. Azure için, FHıR için yönetilen Azure API 'sini veya açık kaynaklı FHıR sunucusunu kullanarak bu ayarı yapabilirsiniz. [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)veya [Azure CLI](fhir-paas-cli-quickstart.md)kullanarak FHıR için yönetilen Azure API 'sini ayarlayın.
+- FHıR hizmetine erişmek için kullanacağınız bir [istemci uygulaması](register-confidential-azure-ad-client-app.md)
 - Postman yüklendi. Buradan edinebilirsiniz[https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHıR sunucusu ve kimlik doğrulaması ayrıntıları

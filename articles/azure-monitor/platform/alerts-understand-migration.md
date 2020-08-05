@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073614"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564104"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
 
@@ -104,7 +104,7 @@ Aynı işlevselliği sağlayan birleştirilmiş bir ölçüm olmadığından, Mo
 
 ### <a name="classic-compute-metrics"></a>Klasik işlem ölçümleri
 
-Klasik işlem kaynakları henüz yeni uyarılarla desteklenmediğinden, klasik işlem ölçümlerine ilişkin tüm uyarılar geçiş aracı kullanılarak geçirilmez. Bu kaynak türlerinde yeni uyarılar için destek daha sonra eklenecektir. Kullanılabilir olduğunda, müşteriler 2020 Haziran tarihinden önce klasik uyarı kurallarına göre yeni eşdeğer uyarı kuralları yeniden oluşturulmalıdır.
+Klasik işlem kaynakları henüz yeni uyarılarla desteklenmediğinden, klasik işlem ölçümlerine ilişkin tüm uyarılar geçiş aracı kullanılarak geçirilmez. Bu kaynak türlerinde yeni uyarılar için destek şu anda genel önizlemededir ve müşteriler, klasik uyarı kurallarına göre yeni eşdeğer uyarı kuralları yeniden oluşturabilir.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Kullanım dışı ölçümler üzerinde klasik uyarı kuralları
 
@@ -134,7 +134,7 @@ Aşağıdaki bölümlerde, yeni sistemde farklı, eşdeğer bir ölçüme sahip 
 
 Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki ölçümler aşağıda gösterildiği gibi eşdeğer ölçümlere eşlenir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
 |--------------------------|---------------------------------|---------|
 | AnonymousAuthorizationError| "ResponseType" = "AuthorizationError" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü| |
 | Anonymousclienentothererror | "ResponseType" = "Clienentothererror" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü | |
@@ -171,7 +171,7 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 
 Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
 |--------------------------|---------------------------------|---------|
 | kullanılabilirlik. Kullanılabilirbilitymetric. değer | Kullanılabilirlik sonuçları/kullanılabilirliği yüzdesi|   |
 | AVAILABILITY. durationMetric. Value | Kullanılabilirlik sonuçları/süresi| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
@@ -201,7 +201,7 @@ Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibi
 
 Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
 | Veri boyutu | Veri kullanımı| |

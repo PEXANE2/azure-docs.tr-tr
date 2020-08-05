@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532467"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553096"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -196,6 +196,10 @@ Yeni bir ilke uygulandığında yeni ilkenin zamanlama ve saklaması geçerli ol
 
 - Bekletme genişletildiğinde, var olan kurtarma noktaları, yeni ilkeye göre tutmak üzere işaretlenir.
 - Bekletme süresi kısaltıldıysa, bunlar sonraki temizleme işleminde kesilmek üzere işaretlenir ve sonra silinir.
+
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>Yedeklemeler durdurulurken veriler ne kadar tutulur, ancak yedekleme verilerini tutma seçeneği seçiliyor mi?
+
+Yedeklemeler durdurulduğunda ve veriler korunurken, veri ayıklama için mevcut ilke kuralları durdurulur ve veriler, silinmek üzere başlatılana kadar süresiz olarak korunur.
 
 ## <a name="encryption"></a>Şifreleme
 

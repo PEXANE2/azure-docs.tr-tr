@@ -3,18 +3,18 @@ title: Azure IoT Central uygulaması oluşturma | Microsoft Docs
 description: Yeni bir Azure IoT Central uygulaması oluşturun. Ücretsiz fiyatlandırma planı veya standart fiyatlandırma planlarından birini kullanarak uygulamayı oluşturun.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/12/2020
+ms.date: 07/30/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758155"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552586"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central uygulaması oluşturma
 
@@ -43,8 +43,11 @@ Sektörün hızlı bir şekilde başlamanıza veya **özel bir uygulamalar** şa
     ![Azure IoT Central faturalandırma bilgileri](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Önceki sayfada **özel uygulama** ' yı seçerseniz, bir **uygulama şablonu** açılır listesini görürsünüz. Buradan özel ve eski şablonlar arasında geçiş yapabilirsiniz. Ayrıca, kuruluşunuz için kullanılabilir hale getirilen diğer şablonları da görebilirsiniz.
+    > Önceki sayfada **özel uygulama** ' yı seçerseniz, bir **uygulama şablonu** açılır listesini görürsünüz. Açılan menü, kuruluşunuz tarafından size sunulan diğer şablonları gösterebilir. 
 
+    >[!IMPORTANT]
+    >Eski uygulama şablonunda daha önce sunulan tüm yetenekler artık en son **özel uygulama** şablonunda (v3) kullanılabildiğinden, **özel uygulama (eski)** şablonu (v2) kullanımdan kaldırılmıştır. 
+    
 1. 7 günlük ücretsiz deneme fiyatlandırma planını veya standart fiyatlandırma planlarından birini kullanarak bu uygulamayı oluşturmayı seçin:
 
     - *Ücretsiz* planı kullanarak oluşturduğunuz uygulamalar yedi gün boyunca ücretsizdir ve en fazla beş cihaz destekler. Bunları, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planı kullanacak şekilde dönüştürebilirsiniz.

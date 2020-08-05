@@ -2,16 +2,16 @@
 title: Azure Otomasyonu ile Azure Analysis Services modellerini yenileme | Microsoft Docs
 description: Bu makalede, Azure Otomasyonu kullanılarak Azure Analysis Services için model yenilemelerinin nasıl değiştirileceği açıklanır.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025413"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553912"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
@@ -19,7 +19,7 @@ Azure Otomasyonu ve PowerShell runbook 'Larını kullanarak Azure Analysis tablo
 
 Bu makaledeki örnek, [SqlServer PowerShell modülünü](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanır. Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 

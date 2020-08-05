@@ -11,17 +11,17 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e12c22d56399ce1690bee678623c58288cf0163b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423822"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552212"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, kullanarak Azure Kubernetes Service (AKS) veya Azure Container Instances (acı Application Insights) içindeki Web hizmeti uç noktalarına dağıtılan modellerden nasıl veri toplayacağınızı öğrenirsiniz. 
+Bu makalede, Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) içindeki Web hizmeti uç noktalarına dağıtılan modellerden nasıl veri toplayacağınızı öğrenirsiniz ve bu, günlükleri sorgulayarak ve Azure Application Insights ile 
 * [Python SDK Azure Machine Learning](#python)
 * [Azure Machine Learning Studio](#studio)https://ml.azure.com
 
@@ -34,13 +34,25 @@ Uç noktanın çıkış verilerini ve yanıtını toplamaya ek olarak şunları 
 [Azure Application Insights hakkında daha fazla bilgi edinin](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 
 * Azure Machine Learning çalışma alanı, betiklerinizi içeren yerel bir dizin ve Python için Azure Machine Learning SDK yüklü. Bu önkoşulları nasıl alabileceğinizi öğrenmek için bkz. [geliştirme ortamını yapılandırma](how-to-configure-environment.md)
 
 * Azure Kubernetes hizmeti (AKS) veya Azure Container Instance 'a (acı) dağıtılacak eğitilen bir makine öğrenme modeli. Bir tane yoksa, bkz. [eğitim resmi sınıflandırma modeli](tutorial-train-models-with-aml.md) öğreticisi
+
+## <a name="query-logs-for-deployed-models"></a>Dağıtılan modeller için sorgu günlükleri
+
+Daha önce dağıtılan bir Web hizmetinden günlükleri almak için hizmeti yükleyin ve `get_logs()` işlevini kullanın. Günlükler, dağıtım sırasında oluşan hatalar hakkında ayrıntılı bilgiler içerebilir.
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
 
 ## <a name="web-service-metadata-and-response-data"></a>Web hizmeti meta verileri ve yanıt verileri
 
@@ -50,6 +62,7 @@ Uç noktanın çıkış verilerini ve yanıtını toplamaya ek olarak şunları 
 Web hizmetine bir isteğin bilgilerini günlüğe kaydetmek için, `print` Score.py dosyanıza deyimler ekleyin. Her `print` bir ifade, ileti altındaki Application Insights izleme tablosunda bir girdiye neden olur `STDOUT` . Deyimin içerikleri, `print` `customDimensions` ve ardından `Contents` izleme tablosunda yer alır. Bir JSON dizesi yazdırırsanız, altındaki izleme çıkışında hiyerarşik bir veri yapısı üretir `Contents` .
 
 Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir veya daha uzun bekletme veya daha fazla işleme için depolama hesabına [sürekli bir dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ayarlayabilirsiniz. Model verileri daha sonra etiketleme, yeniden eğitim, explainability, veri analizi veya diğer kullanımı ayarlamak için Azure Machine Learning kullanılabilir. 
+
 
 <a name="python"></a>
 
@@ -164,7 +177,7 @@ Görüntülemek için:
 1. [Studio](https://ml.azure.com/)'daki Azure Machine Learning çalışma alanınıza gidin.
 1. **Uç noktaları**seçin.
 1. Dağıtılan hizmetinizi seçin.
-1. **Application Insights URL 'sini** bulmak için aşağı kaydırın ve bağlantıya tıklayın.
+1. **Application Insights URL 'sini** bulmak için aşağı kaydırın ve bağlantıyı seçin.
 
     [![Application Insights URL 'sini bul](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 

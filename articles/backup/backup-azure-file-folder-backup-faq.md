@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533589"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563117"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
@@ -19,6 +19,12 @@ Bu makalede, [Azure Backup](backup-overview.md) hizmetinde MICROSOFT Azure kurta
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>MARS aracısının en son sürümünü nereden indirebilirim?
 
 Windows Server makineleri, System Center DPM ve Microsoft Azure Backup sunucusu yedeklenirken kullanılan en son MARS Aracısı [indirilebilir](https://aka.ms/azurebackup_agent).
+
+### <a name="where-can-i-download-the-vault-credentials-file"></a>Kasa kimlik bilgileri dosyasını nereden indirebilirim?
+
+Azure portal, kasanızın **Özellikler** ' e gidin. **Yedekleme kimlik bilgileri**altında, **zaten en son kurtarma hizmetleri aracısını kullanan**onay kutusunu seçin. **İndir**'i seçin.
+
+![Kimlik bilgilerini indir](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Kasa kimlik bilgileri ne kadar süreyle geçerlidir?
 
@@ -174,7 +180,7 @@ Azure Backup Aracısı, geri yükleme sırasında yedeklenen verilerin şifresin
 
 Aşağıdaki koşulları göz önünde bulundurun:
 
-* Aracıyı kaldırarak ve ile aynı orijinal makineye yeniden kaydettiğinizde
+* Aracıyı Kaldırma ve ile aynı orijinal makineye yeniden kaydetme
   * *Aynı parola*, yedeklenen verilerinizi geri yükleyebilirsiniz.
   * *Farklı bir parola*, daha sonra yedeklenen verilerinizi geri alamazsınız.
 * Aracıyı, ile *farklı bir makineye* yüklerseniz

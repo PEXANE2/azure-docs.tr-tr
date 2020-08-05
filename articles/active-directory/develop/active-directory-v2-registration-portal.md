@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885642"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552722"
 ---
 # <a name="app-registration-reference"></a>Uygulama kayıt başvurusu
 
@@ -38,11 +38,11 @@ Bu liste, yalnızca Microsoft hesabı ile kullanım için kaydedilmiş tüm uygu
 
 ## <a name="application-secrets"></a>Uygulama gizli dizileri
 
-Uygulama gizli dizileri, uygulamanızın Azure AD ile güvenilir [istemci kimlik doğrulaması](https://tools.ietf.org/html/rfc6749#section-2.3) gerçekleştirmesini sağlayan kimlik bilgileridir. OAuth & OpenID Connect içinde, uygulama gizli dizisi genellikle bir olarak adlandırılır `client_secret` . V 2.0 protokolünde, bir Web adreslenebilir konumda (bir şema kullanılarak) bir güvenlik belirteci alan tüm uygulamalar, `https` Bu güvenlik belirtecinin kullanıma alınması sırasında kendisini Azure AD 'ye tanıtmak için bir uygulama gizli anahtarı kullanmalıdır. Ayrıca, bir cihazda belirteçleri alan tüm yerel istemcilerin, istemci kimlik doğrulaması gerçekleştirmek için bir uygulama gizli anahtarı kullanılması yasaktır. Bu etkilenmeden, güvenli olmayan ortamlarda gizli dizi depolanmasını ister.
+Uygulama gizli dizileri, uygulamanızın Microsoft Identity platformu ile güvenilir [istemci kimlik doğrulaması](https://tools.ietf.org/html/rfc6749#section-2.3) gerçekleştirmesini sağlayan kimlik bilgileridir. OAuth & OpenID Connect içinde, uygulama gizli dizisi genellikle bir olarak adlandırılır `client_secret` . V 2.0 protokolünde, bir Web adreslenebilir konumda (bir şema kullanılarak) bir güvenlik belirteci alan tüm uygulamalar, `https` Bu güvenlik belirtecinin kullanım sonrasında kendisini Microsoft Identity platformu 'na tanıtmak için bir uygulama gizli anahtarı kullanmalıdır. Ayrıca, bir cihazda belirteçleri alan tüm yerel istemcilerin, istemci kimlik doğrulaması gerçekleştirmek için bir uygulama gizli anahtarı kullanılması yasaktır. Bu etkilenmeden, güvenli olmayan ortamlarda gizli dizi depolanmasını ister.
 
 Her bir uygulama, belirli bir zamanda iki geçerli uygulama parolası içerebilir. İki gizli dizi tutarak, uygulamanızın tamamı boyunca düzenli anahtar geçişi gerçekleştirebilirsiniz. Uygulamanızı tamamen yeni bir gizli dizi ile geçirdikten sonra, eski parolayı silip yeni bir parola sağlayabilirsiniz.
 
-Şu anda, uygulama kayıt portalında yalnızca iki tür uygulama gizli listesine izin verilir. **Yeni parola oluştur** seçeneğinin belirlenmesi, uygulamanızda kullanabileceğiniz ilgili veri deposunda paylaşılan bir gizli dizi oluşturur ve depolar. **Yeni anahtar çifti oluştur** seçildiğinde, Azure AD 'de istemci kimlik doğrulaması için indirilebilen ve kullanılabilecek yeni bir ortak/özel anahtar çifti oluşturulur. **Ortak anahtarı karşıya yükle** seçeneğinin belirlenmesi, kendi ortak/özel anahtar çiftini kullanmanıza olanak sağlar.
+Şu anda, uygulama kayıt portalında yalnızca iki tür uygulama gizli listesine izin verilir. **Yeni parola oluştur** seçeneğinin belirlenmesi, uygulamanızda kullanabileceğiniz ilgili veri deposunda paylaşılan bir gizli dizi oluşturur ve depolar. **Yeni anahtar çifti oluştur** seçildiğinde, Microsoft Identity platform 'a istemci kimlik doğrulaması için indirilebilen ve kullanılabilecek yeni bir ortak/özel anahtar çifti oluşturulur. **Ortak anahtarı karşıya yükle** seçeneğinin belirlenmesi, kendi ortak/özel anahtar çiftini kullanmanıza olanak sağlar.
 Ortak anahtar içeren bir sertifikayı karşıya yüklemeniz gerekir.
 
 ## <a name="profile"></a>Profil

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447707"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562693"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -34,7 +34,7 @@ Runbook 'larınız için daha fazla yalıtım sağlamak üzere, Azure sanal maki
 
 Alternatif olarak, belirli bir gereksiniminize sahipseniz, Azure Güvenlik duvarı da bu uygulamayı karşılamak için de kullanılabilir.
 
-* [Azure 'da sanal ağlar ve sanal makineler](../virtual-machines/windows/network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../virtual-machines/network-overview.md)
 
 * [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
@@ -848,7 +848,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 **Kılavuz**: Azure ortamınızda dağıtılan yüksek riskli uygulamalar, sanal ağlar, alt ağ, abonelikler, yönetim grupları gibi yapılar kullanılarak ayrı ağ ve kaynak kapsayıcıları kullanılarak yalıtılmış olabilir, bu, bir Azure Güvenlik Duvarı, Web uygulaması güvenlik duvarı (WAF) veya ağ güvenlik grubu (NSG) ile yeterince güvenli hale gelebilir.
 
-* [Azure 'da sanal ağlar ve sanal makineler](../virtual-machines/windows/network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../virtual-machines/network-overview.md)
 
 * [Azure Güvenlik Duvarı 'Na genel bakış](../firewall/overview.md)
 

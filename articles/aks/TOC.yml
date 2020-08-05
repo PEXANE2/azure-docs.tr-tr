@@ -301,7 +301,7 @@
     - name: Uygulamaları geliştirme ve çalıştırma
       items:
         - name: Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: Helm ile mevcut uygulamaları yükleme
           href: kubernetes-helm.md
         - name: OpenFaaS kullanma

@@ -6,19 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/15/2020
-ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076334"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553945"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="feature-announcements-in-2020"></a>2020 sürümündeki Özellik Duyuruları
+
+### <a name="august-2020"></a>Ağustos 2020
+
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
+|---------|------------------|-------------|---------------|
+| [Çift şifreleme](search-security-overview.md#encryption) | Güvenlik | Yeni Arama hizmetlerinde müşteri tarafından yönetilen anahtar (CMK) şifrelemesini yapılandırarak depolama katmanında çift şifrelemeyi etkinleştirin. Yeni bir hizmet oluşturun,, [müşteri tarafından yönetilen anahtarları](search-security-manage-encryption-keys.md) dizinlere veya eş anlamlı Maps 'a yapılandırın ve uygulayın ve bu içerik üzerinde çift şifrelemeden yararlanın. | 1 Ağustos 2020 ' den sonra oluşturulan tüm Arama hizmetlerinde, bu bölgelerde genel kullanıma sunulmuştur: Batı ABD 2, Doğu ABD, Orta Güney ABD, US Gov Virginia, US Gov Arizona. Hizmeti oluşturmak için Portal, yönetim REST API 'Leri veya SDK 'Ları kullanın. |
 
 ### <a name="july-2020"></a>Temmuz 2020
 

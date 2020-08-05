@@ -84,6 +84,9 @@
           href: overview-patch-os-runtime.md
         - name: Yerleşik güvenlik denetimleri
           href: app-service-security-controls.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Güvenliğe genel bakış
           href: overview-security.md
     - name: Ağ özellikleri

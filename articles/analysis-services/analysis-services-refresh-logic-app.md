@@ -2,17 +2,17 @@
 title: Azure Analysis Services modelleri için Logic Apps ile yenileme | Microsoft Docs
 description: Bu makalede, Azure Logic Apps kullanılarak Azure Analysis Services için zaman uyumsuz yenilemenin nasıl kodleneceğini açıklar.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025328"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552246"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
@@ -20,7 +20,7 @@ Logic Apps ve REST çağrılarını kullanarak, Azure Analysis tablolu modelleri
 
 Azure Analysis Services ile REST API 'Leri kullanma hakkında daha fazla bilgi için bkz. [REST API Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örneklerde Azure Analysis Services kimlik doğrulaması için bir hizmet sorumlusu (SPN) kullanılır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -67,9 +67,9 @@ HTTP etkinliğini şu şekilde yapılandırın:
 |---------|---------|
 |**Yöntem**     |POST         |
 |**URI**     | https://*sunucu bölgenizi*/Servers/*AAS sunucu adı*/models/*veritabanınızın adı*/yenilemeler <br /> <br /> Örneğin: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
-|**Üst Bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst Bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Bilgisinde**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst Bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Gövde**     |   İstek gövdesini oluşturan hakkında daha fazla bilgi edinmek için, [REST API-Post/Refresh Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md#post-refreshes)bölümüne bakın. |
-|**Kimlik doğrulaması**     |Active Directory OAuth         |
+|**Kimlik Doğrulaması**     |Active Directory OAuth         |
 |**Kiracı**     |Azure Active Directory Tenantıd 'nizi girin         |
 |**Hedef kitle**     |https://*. aşama zure. Windows. net         |
 |**İstemci KIMLIĞI**     |Hizmet asıl adı ClientID değerini girin         |

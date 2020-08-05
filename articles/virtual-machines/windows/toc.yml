@@ -356,7 +356,7 @@
     - name: İzleme
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Yedekleme ve kurtarma
-      href: backup-recovery.md
+      href: ../backup-recovery.md
     - name: Bulut benimseme çerçevesi
       href: /azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Mimari merkezi
