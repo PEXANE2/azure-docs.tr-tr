@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400556"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
@@ -21,7 +21,7 @@ ms.locfileid: "81400556"
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni boş bir sınıf eklemek için **Dosya** > **Yeni** > **sınıf**' ı seçin.
+1. Java projenize yeni boş bir sınıf eklemek için **Dosya**  >  **Yeni**  >  **sınıf**' ı seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -118,9 +118,9 @@ ms.locfileid: "81400556"
 > [!NOTE]
 > Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
-F11 tuşuna basın veya**hata ayıklamayı** **Çalıştır** > ' ı seçin.
+F11 tuşuna basın veya **Run**  >  **hata ayıklamayı**Çalıştır ' ı seçin.
 Ses dosyanızdaki konuşma girişi ilk 15 saniye, konsol penceresinde tanınacaktır ve günlüğe kaydedilir.
 
    ```text

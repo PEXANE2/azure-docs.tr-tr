@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050648"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543579"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -95,7 +95,12 @@ Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmışt
 
 ## <a name="get-domain-verification-id"></a>Etki alanı doğrulama KIMLIĞINI al
 
-Uygulamanıza özel bir etki alanı eklemek için etki alanı sağlayıcınızla bir TXT kaydı olarak bir doğrulama KIMLIĞI ekleyerek etki alanının sahipliğinin doğrulanması gerekir. Uygulama sayfanızın sol gezinti bölmesinde **Ayarlar**altında **özel etki alanları** ' na tıklayın. Özel etki alanı doğrulama KIMLIĞININ değerini buradan kopyalayın. Sonraki adımda bu doğrulama KIMLIĞI gereklidir.
+Uygulamanıza özel bir etki alanı eklemek için etki alanı sağlayıcınızla bir TXT kaydı olarak bir doğrulama KIMLIĞI ekleyerek etki alanının sahipliğinin doğrulanması gerekir. Uygulama sayfanızın sol gezinti bölmesinde **özel etki alanları**' na tıklayın. Özel **etki alanı doğrulama kimliğini** bir sonraki adım Için **özel etki alanları** sayfasında kopyalayın.
+
+![Özel etki alanı doğrulama KIMLIĞI al](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> Özel etki alanına etki alanı doğrulama kimlikleri eklemek, DNS girdilerinin tehlikribilme ve alt etki alanı engellerini önlemeye engel olabilir. Bu genel yüksek öneme sahip tehdit hakkında daha fazla bilgi için bkz. alt [etki alanı](../security/fundamentals/subdomain-takeover.md).
 
 ## <a name="map-your-domain"></a>Etki alanınızı eşleme
 
@@ -122,7 +127,7 @@ Dışında başka bir alt etki alanınız varsa `www` , alt etki `www` alanını
 
 Bir alt etki alanını uygulamanın varsayılan etki alanı adına eşleyin ( `<app_name>.azurewebsites.net` , burada `<app_name>` uygulamanızın adıdır). Alt etki alanı için bir CNAME eşlemesi oluşturmak için `www` iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Konak | Değer | Açıklamalar |
 | - | - | - |
 | CNAME | `www` | `<app_name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid.www` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
@@ -194,7 +199,7 @@ Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları*
 
 Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Konak | Değer | Açıklamalar |
 | - | - | - |
 | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi | Etki alanı eşlemesi ( `@` genellikle kök etki alanını temsil eder). |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. Kök etki alanı için kullanın `asuid` . |

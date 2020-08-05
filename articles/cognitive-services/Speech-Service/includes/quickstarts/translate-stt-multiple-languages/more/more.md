@@ -20,7 +20,7 @@ Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dil
 | C#          | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++         | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac]                                   |
 | Java        | [Android][java-android], [JRE][java-jre]                                                       |
-| JavaScript  | [Tarayıcı, Node. js][js-code]                                                                    |
+| JavaScript  | [Tarayıcı, Node.js][js-code]                                                                    |
 | Objective-C | [iOS][obj-iOS], [MacOS][obj-macOS]                                                             |
 | Python      | [Windows, Linux, macOS][python]                                                                |
 | Swift       | [iOS][swift-iOS], [MacOS][swift-macOS]                                                         |

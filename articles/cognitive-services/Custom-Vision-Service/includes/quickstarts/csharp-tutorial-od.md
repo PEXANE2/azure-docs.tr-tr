@@ -32,7 +32,7 @@ Bu Visual Studio projesi, [Özel Görüntü İşleme web sitesi](https://customv
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-_Program.cs_ dosyasını açın ve kodu inceleyin. Eğitim ve tahmin anahtarlarınız için sırasıyla ve `CUSTOM_VISION_PREDICTION_KEY`olarak adlı `CUSTOM_VISION_TRAINING_KEY` [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Betik bu değişkenlere bakar.
+_Program.cs_ dosyasını açın ve kodu inceleyin. Eğitim ve tahmin anahtarlarınız için sırasıyla ve olarak adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `CUSTOM_VISION_TRAINING_KEY` `CUSTOM_VISION_PREDICTION_KEY` . Betik bu değişkenlere bakar.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_keys)]
 

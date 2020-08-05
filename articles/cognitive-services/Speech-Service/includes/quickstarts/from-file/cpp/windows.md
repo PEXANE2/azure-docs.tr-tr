@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400617"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -31,20 +31,20 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. Dizeyi `YourServiceRegion` , [aboneliğinizle ilişkili olan bölge](https://aka.ms/speech/sdkregion) `westus` **tanımlayıcısıyla** değiştirin (örneğin, ücretsiz deneme aboneliği için).
+1. Dizeyi, `YourServiceRegion` aboneliğinizle ilişkili [olan bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısıyla** değiştirin (örneğin, `westus` ücretsiz deneme aboneliği için).
 
 1. Dizeyi `whatstheweatherlike.wav` kendi dosya adı ile değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
+1. Menü çubuğundan **Dosya**  >  **Tümünü Kaydet**' i seçin.
 
 > [!NOTE]
 > Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
+1. **Debug**  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın).
 
 1. Ses dosyanız konuşma hizmetine iletilir ve dosyadaki ilk söylenme, aynı pencerede görüntülenen metne yeniden gönderilir.
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2c71e96dc1c92fc94d403e7c721b2b9f3149b8e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f3b9758d52c4be8e4d85c398f5ef1d0b3fae7e86
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102240"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541813"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Anahtar Kasası oluşturma
 
@@ -69,7 +69,7 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında herhangi bir işlemi ge
 
 Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmanız yararlı olabilir.
 
-Artık gerekli değilse, [az group delete](/cli/azure/group) komutunu kullanarak kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz. Kaynakları aşağıda gösterildiği gibi silebilirsiniz:
+Artık gerekli değilse, kaynak grubunu ve tüm ilgili kaynakları kaldırmak için Azure CLı [az Group Delete](/cli/azure/group) komutunu kullanabilirsiniz:
 
 ```azurecli
 az group delete --name myResourceGroup

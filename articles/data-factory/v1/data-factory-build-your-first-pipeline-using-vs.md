@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: bf7bfa6ec405841934cd068cbc90c2b071fc0afc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022104"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543155"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Öğretici: Visual Studio kullanarak veri fabrikası oluşturma
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -56,7 +56,7 @@ Bu izlenecek yolun bir parçası olarak gerçekleştireceğiniz adımlar şunlar
 4. **DataFactoryUsingVS** adlı bir veri fabrikası oluşturun. Veri fabrikasını ve tüm Data Factory varlıklarını (bağlı hizmetler, tablolar ve işlem hattı) dağıtın.
 5. Yayımladıktan sonra, işlem hattını izlemek için Azure portalı dikey pencereleri ile İzleme ve Yönetim Uygulamasını kullanabilirsiniz. 
   
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -128,7 +128,7 @@ Azure Depolama bağlı hizmeti, bağlantı bilgilerini sağlayarak Azure Depolam
     > [!IMPORTANT]
     > HDInsight kümesi JSON’da belirttiğiniz blob depolamada (linkedServiceName) bir **varsayılan kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmeti kullanıldığında, mevcut canlı bir küme olmadığı sürece bir dilim her işlendiğinde bir HDInsight kümesi oluşturulur (timeToLive). Küme, işlem tamamlandığında otomatik olarak silinir.
     > 
-    > Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp`. Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+    > Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp`. Azure Blob depolamada kapsayıcıları silmek için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
     JSON özellikleri hakkında daha fazla bilgi için [İşlem bağlı hizmetleri](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) makalesine bakın. 
 4. **HDInsightOnDemandLinkedService1.json** dosyasını kaydedin.
@@ -412,7 +412,7 @@ Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek i�
 -  Data Factory, sizin için önceki JSON ile **Linux tabanlı** bir HDInsight kümesi oluşturur. Ayrıntılar için bkz. [İsteğe Bağlı HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 - HDInsight kümesi JSON’da belirttiğiniz blob depolamada (linkedServiceName) bir **varsayılan kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmeti kullanıldığında, mevcut canlı bir küme olmadığı sürece bir dilim her işlendiğinde bir HDInsight kümesi oluşturulur (timeToLive). Küme, işlem tamamlandığında otomatik olarak silinir.
     
-    Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+    Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Azure Blob depolamada kapsayıcıları silmek için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 - Şu anda, çıktı veri kümesi zamanlamayı yönetendir; bu nedenle etkinlik hiçbir çıktı oluşturmasa bile sizin bir çıktı veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz. 
 - Bu öğreticide, Azure Data Factory kullanarak verilerin nasıl kopyalanacağı gösterilmemektedir. Azure Data Factory kullanarak verileri kopyalama öğreticisi için bkz. [Öğretici: Blob Depolama’dan SQL Veritabanı’na veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
@@ -563,9 +563,9 @@ Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-| Konu başlığı | Açıklama |
+| Konu | Açıklama |
 |:--- |:--- |
-| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza, senaryonuz ya da işletmeniz için veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı öğrenmenize yardımcı olur. |
+| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza, senaryonuz ya da işletmeniz için veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı öğrenmenize yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Azure Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Veri Dönüştürme Etkinlikleri](data-factory-data-transformation-activities.md) |Bu makalede, Azure Data Factory’nin desteklediği veri dönüştürme etkinliklerinin (bu öğreticide kullandığınız HDInsight Hive dönüştürmesi gibi) bir listesi sağlanmaktadır. |
 | [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |

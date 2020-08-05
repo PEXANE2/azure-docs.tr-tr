@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 15c388336efc92381ac5ebd84df9145c1890cfcc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32705c37685ab03ffa68f805dedb64411d8d9c46
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007223"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543138"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Öğretici: Data Factory REST API kullanarak ilk Azure data factory’nizi derleme
 > [!div class="op_single_selector"]
@@ -132,7 +132,7 @@ Aşağıdaki noktalara dikkat edin:
 * İsteğe bağlı HDInsight kümesi kullanmak yerine **kendi HDInsight kümenizi** kullanabilirsiniz. Ayrıntılar için bkz. [HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 * HDInsight kümesi JSON 'da belirttiğiniz blob depolamada (**Linkedservicename**) bir **varsayılan kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmetiyle HDInsight kümesi her oluşturulduğunda burada mevcut canlı bir küme (**timeToLive**) olmadıkça bir dilim işlenir ve işlem bittiğinde silinir.
 
-    Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir kalıbı izler: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+    Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir kalıbı izler: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Azure Blob depolamada kapsayıcıları silmek için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
 Ayrıntılar için bkz. [İsteğe Bağlı HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
@@ -490,7 +490,7 @@ Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalı�
 | Konu | Açıklama |
 |:--- |:--- |
 | [Data Factory REST API Başvurusu](/rest/api/datafactory/) |Data Factory cmdlet'leri hakkında kapsamlı belgelere bakma |
-| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
+| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Azure Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |
 | [İzleme Uygulaması kullanılarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md) |Bu makalede İzleme ve Yönetim Uygulaması kullanılarak işlem hatlarını izleme, yönetme ve hatalarını ayıklama işlemleri açıklanmaktadır. |

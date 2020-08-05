@@ -1,14 +1,14 @@
 ---
 title: Azure Kaynak Grafiği'ne Genel Bakış
 description: Azure Kaynak Grafiği hizmeti 'nin, abonelikler ve kiracılar arasında ölçeklendirerek kaynakların karmaşık şekilde sorgulanmasını nasıl sağladığını anlayın.
-ms.date: 06/29/2020
+ms.date: 07/25/2020
 ms.topic: overview
-ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970612"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541796"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Kaynak Grafı nedir?
 
@@ -62,6 +62,10 @@ Kaynak Grafı’nı kullanmak için, sorgulamak istediğiniz kaynaklara en az ok
 > Kaynak Grafiği, oturum açma sırasında bir sorumlu için kullanılabilen abonelikleri kullanır. Etkin bir oturum sırasında eklenen yeni aboneliğin kaynaklarını görmek için sorumlu bağlamı yenilemeniz gerekir. Bu eylem, oturumunuzu kapatıp yeniden oturum açarken otomatik olarak gerçekleşir.
 
 Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) aynıdır \- ; sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişebileceğiniz kaynak gruplarını elde edersiniz. Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
+
+> [!NOTE]
+> **Önizleme** REST API sürümünde `2020-04-01-preview` , abonelik listesi yeniden derlenen olabilir.
+> İstekte hem hem `subscriptions` de `managementGroupId` Özellikler tanımlanmadığında, _kapsam_ kiracı olarak ayarlanır. Daha fazla bilgi için bkz. [sorgunun kapsamı](./concepts/query-language.md#query-scope).
 
 ## <a name="throttling"></a>Azaltma
 

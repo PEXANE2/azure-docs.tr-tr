@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400603"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -29,14 +29,14 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Bu yeni dosyada `YourSubscriptionKey` dizesini Konuşma hizmeti abonelik anahtarınız ile değiştirin.
 
-1. Dizeyi `YourServiceRegion` , [aboneliğinizle ilişkili olan bölge](https://aka.ms/speech/sdkregion) `westus` **tanımlayıcısıyla** değiştirin (örneğin, ücretsiz deneme aboneliği için).
+1. Dizeyi, `YourServiceRegion` aboneliğinizle ilişkili [olan bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısıyla** değiştirin (örneğin, `westus` ücretsiz deneme aboneliği için).
 
 1. Dizeyi `whatstheweatherlike.wav` kendi dosya adı ile değiştirin.
 
 > [!NOTE]
 > Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
-## <a name="build-the-app"></a>Uygulama oluşturma
+## <a name="build-the-app"></a>Uygulamayı oluşturma
 
 > [!NOTE]
 > Aşağıdaki komutları _tek bir komut satırı_ olarak girdiğinizden emin olun. Bunu yapmanın en kolay yolu, komutu her komutun yanındaki **Kopyala** düğmesini kullanarak kopyalayıp kabuk isteminize yapıştırmaktır.

@@ -20,7 +20,7 @@ Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dil
 | C# | [Mikrofondan][1-mic] [BLOB 'tan][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++ | [Mikrofondan][2-mic] [BLOB 'tan][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
 | Java | [Mikrofondan][3-mic] [BLOB 'tan][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | Dosyadan bir [Node. js][js-node] [tarayıcısı][js-browser] | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Mikrofondan tarayıcı][js-browser], [dosyadanNode.js][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [MIC 'Den iOS][obj-iOS-qck], [MIC 'den MacOS][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
 | Python | [Mikrofondan][4-mic] [BLOB 'tan][4-blob] | [Windows, Linux, macOS][python] |
 | Swift | [MIC 'Den iOS][swift-iOS-qck], [MIC 'den MacOS][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |

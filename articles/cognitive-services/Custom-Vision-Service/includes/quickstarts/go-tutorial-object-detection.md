@@ -12,7 +12,7 @@ ms.locfileid: "82134099"
 ---
 Bu makalede, bir nesne algılama modeli oluşturmak için Go ile Özel Görüntü İşleme SDK 'Yı kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlanmaktadır. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi go uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Go 1.8 +](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
@@ -25,7 +25,7 @@ Go için Özel Görüntü İşleme Service SDK 'yı yüklemek için PowerShell '
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-veya kullanıyorsanız `dep`, deponuzda çalıştırın:
+veya kullanıyorsanız `dep` , deponuzda çalıştırın:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```

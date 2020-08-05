@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d5004dc48fe3052d6632573da67f4069eb6fac1c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208187"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543325"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
 
@@ -39,11 +39,11 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 
 İlk olarak, verilerinizi [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya Azure Blob depolama alanına yükleyin. Daha sonra, PolyBase kullanarak verilerinizi hazırlama tablolarına yükleyin. Aşağıdaki yapılandırmayı kullanın:
 
-| Tasarlama | Öneri |
+| Tasarım | Öneri |
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
 | Dizinleme | Yığın |
-| Bölümleme | Yok |
+| Bölümleme | Hiçbiri |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
 [Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
@@ -65,7 +65,7 @@ Tablo özelliklerini bağlı olarak aşağıdaki stratejileri kullanın:
 * Varchar biçiminde dağıtmayın.
 * Sık birleştirme işlemleri ile bir olgu tablosuna yönelik genel karma anahtar içeren boyut tabloları karma dağıtılmış olabilir.
 * Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* komutunu kullanın.
-* Sorguların ardındaki veri hareketlerini analiz etmek, yayın ve karıştırma işlemlerinin aldığı süreyi izlemek için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* komutunu kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
+* Sorguların arkasındaki veri taşımalarını analiz etmek, zaman yayınını izlemek ve karıştırma işlemleri yapmak için *[sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
 
 [Çoğaltılmış tablolar](design-guidance-for-replicated-tables.md) ve [dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md) hakkında daha fazla bilgi edinin.
 
@@ -131,9 +131,7 @@ Azure SYNAPSE 'ın temel bir özelliği, [işlem kaynaklarını yönetme](sql-da
 
 Azure İşlevleri ile istediğiniz anda otomatik ölçeklendirme yapın:
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 ## <a name="optimize-your-architecture-for-performance"></a>Performans için mimarinizi iyileştirme
 
@@ -143,6 +141,4 @@ Hub ve bağlı bileşen mimarisindeki SQL Database ve Azure Analysis Services’
 
 SQL havuzundaki SQL veritabanlarındaki bağlı uçlarınıza tek bir tıklama ile dağıtın:
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

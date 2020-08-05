@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0d8c153bb95ee4eda109d8d7d6ce8ae40dae19e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260732"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543784"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı Başlangıç: Gremlin konsolunu kullanarak Azure Cosmos DB graf veritabanı oluşturma, sorgulama ve çapraz geçiş yapma
 
@@ -58,7 +58,7 @@ Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklem
     ---|---|---
     hosts|[*Hesap-adı*. **Gremlin**. Cosmos.Azure.com]|Aşağıdaki ekran görüntüsüne bakın. Bu, köşeli ayraçlar içinde Azure portal Genel Bakış sayfasındaki **Gremlin URI** değeridir ve sonunda: 443/removed. Not: Gremlin değerlerini, daha sonra Gremlin sorgularını yürütmeye çalışırken, büyük olasılıkla "ana bilgisayar zamanında yanıt vermedi" özel durumuyla sonuçlanan URI 'yi **değil** , [*Account-Name*. Documents.Azure.com] ile biten URI 'yi kullanmayın. 
     port|443|443 olarak ayarlayın.
-    kullanıcı adı|*Kullanıcı adınız*|`/dbs/<db>/colls/<coll>` formunun kaynağı; burada `<db>` veritabanı adınız ve `<coll>` koleksiyon adınızdır.
+    username|*Kullanıcı adınız*|`/dbs/<db>/colls/<coll>` formunun kaynağı; burada `<db>` veritabanı adınız ve `<coll>` koleksiyon adınızdır.
     password|*Birincil anahtarınız*| Aşağıdaki ikinci ekran görüntüsüne bakın. Bu sizin birincil anahtarınızdır, bu anahtarı Azure portalının Anahtarlar sayfasındaki Birincil Anahtar kutusunda bulabilirsiniz. Değeri kopyalamak için kutunun solundaki kopyala düğmesini kullanın.
     connectionPool|{enableSsl: true}|TLS için bağlantı havuzu ayarınız.
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Bu değere ayarlayın ve değeri yapıştırırken tüm `\n` satır sonlarını silin.
@@ -81,7 +81,7 @@ Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklem
    connectionPool: {
      enableSsl: true
    }
-   serializer: { className: org.apache.tinkerpop.gremlin.driver.   ser.GraphSONMessageSerializerV2d0, config: {    serializeResultToString: true }}
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
    ```
 
    Ana bilgisayar parametresinin değerini köşeli ayraç [] içinde sardığınızdan emin olun. 

@@ -23,7 +23,7 @@ ms.locfileid: "85980233"
 Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
 
 * `ANOMALY_DETECTOR_KEY`-İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `ANOMALY_DETECTOR_ENDPOINT`-API istekleri göndermek için kaynak uç noktası. Şöyle görünür: 
+* `ANOMALY_DETECTOR_ENDPOINT`-API istekleri göndermek için kaynak uç noktası. Şu şekilde görünür: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
 İşletim sisteminiz için yönergeleri kullanın.

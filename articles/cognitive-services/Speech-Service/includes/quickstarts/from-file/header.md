@@ -18,8 +18,8 @@ ms.locfileid: "81400470"
 ---
 Bu hızlı başlangıçta, ses dosyasından konuşmayı tanımak için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Birkaç önkoşulu karşıladıktan sonra, bir dosyadan konuşmayı tanımayı yalnızca birkaç adım sürer:
 > [!div class="checklist"]
-> * Abonelik anahtarınızdan ve bölgenizde bir `SpeechConfig` nesne oluşturun.
-> * Öğesini belirten `AudioConfig` bir nesne oluşturun. WAV dosya adı.
-> * Yukarıdaki `SpeechRecognizer` `SpeechConfig` ve `AudioConfig` nesnelerini kullanarak bir nesne oluşturun.
-> * `SpeechRecognizer` Nesnesini kullanarak, tek bir söylik için tanıma sürecini başlatın.
-> * `SpeechRecognitionResult` Döndürülen ' i inceleyin.
+> * `SpeechConfig`Abonelik anahtarınızdan ve bölgenizde bir nesne oluşturun.
+> * Öğesini `AudioConfig` belirten bir nesne oluşturun. WAV dosya adı.
+> * `SpeechRecognizer`Yukarıdaki ve nesnelerini kullanarak bir nesne oluşturun `SpeechConfig` `AudioConfig` .
+> * Nesnesini kullanarak `SpeechRecognizer` , tek bir söylik için tanıma sürecini başlatın.
+> * Döndürülen ' i inceleyin `SpeechRecognitionResult` .

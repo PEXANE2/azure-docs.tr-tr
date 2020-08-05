@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400572"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -25,8 +25,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 ## <a name="support-and-updates"></a>Destek ve güncelleştirmeler
 
 Konuşma SDK 'Sı Python paketine yönelik güncelleştirmeler PyPI aracılığıyla dağıtılır ve [sürüm notlarında](~/articles/cognitive-services/Speech-Service/releasenotes.md)duyurulmuştur.
-Yeni bir sürüm varsa, komutunu komutuyla `pip install --upgrade azure-cognitiveservices-speech`güncelleştirebilirsiniz.
-`azure.cognitiveservices.speech.__version__` Değişkeni inceleyerek Şu anda hangi sürümün yüklü olduğunu denetleyin.
+Yeni bir sürüm varsa, komutunu komutuyla güncelleştirebilirsiniz `pip install --upgrade azure-cognitiveservices-speech` .
+Değişkeni inceleyerek Şu anda hangi sürümün yüklü olduğunu denetleyin `azure.cognitiveservices.speech.__version__` .
 
 Bir sorununuz varsa veya bir özellik eksikse, bkz. [destek ve yardım seçenekleri](~/articles/cognitive-services/Speech-Service/support.md).
 
@@ -34,7 +34,7 @@ Bir sorununuz varsa veya bir özellik eksikse, bkz. [destek ve yardım seçenekl
 
 ### <a name="run-the-sample"></a>Örneği çalıştırma
 
-Bu hızlı başlangıçta [örnek kodu](#sample-code) bir kaynak dosyaya `quickstart.py` kopyalayabilir ve IDE 'niz içinde veya konsolunda çalıştırabilirsiniz:
+Bu hızlı başlangıçta [örnek kodu](#sample-code) bir kaynak dosyaya KOPYALAYABILIR `quickstart.py` ve IDE 'niz içinde veya konsolunda çalıştırabilirsiniz:
 
 ```Bash
 python quickstart.py
@@ -89,7 +89,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 1. Bilgisayarınızda [Python](https://www.python.org/downloads/), 3,8 3,5 ' nin 64 bitlik bir sürümünü indirip bilgisayarınıza yükleyin.
 1. [Visual Studio Code](https://code.visualstudio.com/Download)indirin ve yükleyin.
-1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **Dosya** > **tercihleri** > **uzantıları** ' nı seçin. **Python**için arama yapın.
+1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **Dosya**  >  **tercihleri**  >  **uzantıları** ' nı seçin. **Python**için arama yapın.
 
    ![Python uzantısını yükler](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -98,7 +98,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
    ![Bir klasörü açın](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Yeni dosya simgesini seçerek yeni bir Python `speechsdk.py`kaynak dosyası oluşturun.
+1. Yeni dosya simgesini seçerek yeni bir Python kaynak dosyası oluşturun `speechsdk.py` .
 
    ![Dosya oluşturma](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
@@ -108,7 +108,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
    Aksi takdirde, kullanılabilir Python yorumlayıcılarını bir listesini alın. <kbd>CTRL + SHIFT + P</kbd> komut paletini açın ve **Python: yorumlayıcı Seç**' i girin. Uygun olanı seçin.
 1. Konuşma SDK 'Sı Python paketini Visual Studio Code içinden yükleyebilirsiniz. Seçtiğiniz Python yorumlayıcı için henüz yüklenmemişse bunu yapın.
    Konuşma SDK 'Sı paketini yüklemek için bir Terminal açın. Komut paletini bir kez daha açın <kbd>CTRL + SHIFT + P</kbd> , **Terminal: yeni tümleşik Terminal oluştur**.
-   Açılan terminalde, sisteminiz için komutu `python -m pip install azure-cognitiveservices-speech` veya uygun komutu girin.
+   Açılan terminalde, `python -m pip install azure-cognitiveservices-speech` sisteminiz için komutu veya uygun komutu girin.
 1. Örnek kodu çalıştırmak için, düzenleyicinin içinde herhangi bir yere sağ tıklayın. **Terminalde Python dosyasını çalıştır '** ı seçin.
    Ses dosyanızdaki konuşma girişi ilk 15 saniye, konsol penceresinde tanınacaktır ve günlüğe kaydedilir.
 

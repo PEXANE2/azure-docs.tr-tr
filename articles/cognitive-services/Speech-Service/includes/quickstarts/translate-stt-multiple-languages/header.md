@@ -19,9 +19,9 @@ ms.locfileid: "74981202"
 ---
 Bu hızlı başlangıçta konuşmayı bir dilden başka bir dilde konuşmaya etkileşimli bir şekilde çevirmek için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Birkaç önkoşul karşıladıktan sonra, birden çok dilde konuşmayı metne çevirme yalnızca altı adımdan yararlanır:
 > [!div class="checklist"]
-> * Abonelik anahtarınızdan ve bölgenizde bir ````SpeechTranslationConfig```` nesne oluşturun.
-> * Konuşma tanıma ````SpeechTranslationConfig```` kaynak dilini belirtmek için nesneyi güncelleştirin.
-> * Birden çok ````SpeechTranslationConfig```` çeviri hedefi dili belirtmek için nesnesini güncelleştirin.
-> * Yukarıdaki ````SpeechTranslationConfig```` nesneyi ````TranslationRecognizer```` kullanarak bir nesne oluşturun.
-> * ````TranslationRecognizer```` Nesnesini kullanarak, tek bir söylik için tanıma sürecini başlatın.
-> * ````TranslationRecognitionResult```` Döndürülen ' i inceleyin.
+> * ````SpeechTranslationConfig````Abonelik anahtarınızdan ve bölgenizde bir nesne oluşturun.
+> * ````SpeechTranslationConfig````Konuşma tanıma kaynak dilini belirtmek için nesneyi güncelleştirin.
+> * ````SpeechTranslationConfig````Birden çok çeviri hedefi dili belirtmek için nesnesini güncelleştirin.
+> * ````TranslationRecognizer````Yukarıdaki nesneyi kullanarak bir nesne oluşturun ````SpeechTranslationConfig```` .
+> * Nesnesini kullanarak ````TranslationRecognizer```` , tek bir söylik için tanıma sürecini başlatın.
+> * Döndürülen ' i inceleyin ````TranslationRecognitionResult```` .

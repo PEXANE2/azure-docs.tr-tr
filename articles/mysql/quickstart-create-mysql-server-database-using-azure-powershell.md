@@ -8,18 +8,18 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 55805402037edac230aa225b74ce2eeb731945b7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495412"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543546"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
 Bu hızlı başlangıç, PowerShell kullanarak bir Azure Kaynak grubunda MySQL için Azure veritabanı sunucusu oluşturma işlemini açıklar. PowerShell 'i kullanarak Azure kaynaklarını etkileşimli olarak veya betikte oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda, cmdlet 'inin yaygın olarak kullanılan parametrelerinin v
 
 |        **Ayar**         | **Örnek değer** |                                                                                                                                                             **Açıklama**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                       | mydemoserver     | Azure 'da MySQL sunucusu için Azure veritabanınızı tanımlayan genel olarak benzersiz bir ad seçin. Sunucu adı yalnızca harf, sayı ve kısa çizgi (-) karakterini içerebilir. Belirtilen tüm büyük karakterler, oluşturma işlemi sırasında otomatik olarak küçük harfe dönüştürülür. 3 ila 63 karakter arası içermelidir. |
+| Ad                       | mydemoserver     | Azure 'da MySQL sunucusu için Azure veritabanınızı tanımlayan genel olarak benzersiz bir ad seçin. Sunucu adı yalnızca harf, sayı ve kısa çizgi (-) karakterini içerebilir. Belirtilen tüm büyük karakterler, oluşturma işlemi sırasında otomatik olarak küçük harfe dönüştürülür. 3 ila 63 karakter arası içermelidir. |
 | ResourceGroupName          | myresourcegroup  | Azure kaynak grubunun adını sağlayın.                                                                                                                                                                                                                                                                                            |
 | Sku                        | GP_Gen5_2        | SKU'nun adı. Toplu olarak **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdekleri** kuralına uyar. SKU parametresi hakkında daha fazla bilgi için bu tablodan sonraki bilgilere bakın.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. 7-35 aralığındadır.                                                                                                                                                                                                                                                                       |
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [PowerShell kullanarak MySQL için Azure veritabanı tasarlama](tutorial-design-database-using-powershell.md)
+> [PowerShell ile bir bağlantı dizesi oluşturma-MySQL için Azure veritabanı](connect-powershell.md)
