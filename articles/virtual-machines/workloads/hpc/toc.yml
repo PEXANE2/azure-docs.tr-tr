@@ -2,16 +2,16 @@
   items:
     - name: Genel Bakış
       items:
-        - name: H serisi VM’lere yönelik HPC
+        - name: H serisi ve N serisi VM’ler için HPC
           href: overview.md
     - name: Yapılandırma
       items:
-        - name: Linux için iyileştirme
+        - name: VM’leri yapılandırma ve iyileştirme
           href: configure.md
         - name: InfiniBand’i etkinleştirme
           href: enable-infiniband.md
-    - name: MPI’yı ayarlama
-      href: setup-mpi.md
+        - name: MPI’yı ayarlama
+          href: setup-mpi.md
     - name: Ölçeklendirme uygulamaları
       href: compiling-scaling-applications.md
     - name: Sanal makineler
@@ -28,5 +28,5 @@
               href: hc-series-overview.md
             - name: Performans
               href: hc-series-performance.md
-        - name: HB serisi ve HC serisi sanal makineler ile ilgili bilinen sorunlar
+        - name: H serisi ve N serisi VM’lerdeki bilinen sorunlar
           href: hb-hc-known-issues.md

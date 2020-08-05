@@ -15,28 +15,6 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: Studio
-      expanded: true
-      items:
-        - name: Tasarımcı (sürükle ve bırak)
-          items:
-            - name: 1. Regresyon modelini eğitme
-              displayName: studio
-              href: tutorial-designer-automobile-price-train-score.md
-            - name: 2. Bu modeli dağıtma
-              displayName: studio
-              href: tutorial-designer-automobile-price-deploy.md
-        - name: Otomatikleştirilmiş ML (UI)
-          items:
-            - name: Otomatik ML denemeleri oluşturma
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-first-experiment-automated-ml.md
-            - name: Tahmin talebi (Bisiklet paylaşma verileri)
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-automated-ml-forecast.md
-        - name: Etiket resmi verileri
-          displayName: 'tag, tagging, images'
-          href: tutorial-labeling.md
     - name: Python SDK'sı
       expanded: true
       items:
@@ -64,11 +42,33 @@
         - name: Kodunuzu üretim için hazırlama
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
+    - name: Studio
+      expanded: true
+      items:
+        - name: Otomatikleştirilmiş ML (UI)
+          items:
+            - name: Otomatik ML denemeleri oluşturma
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: Tahmin talebi (Bisiklet paylaşma verileri)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: Tasarımcı (sürükle ve bırak)
+          items:
+            - name: 1. Regresyon modelini eğitme
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. Bu modeli dağıtma
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: Etiket resmi verileri
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: R SDK
       items:
         - name: İlk ML denemesini oluşturma (R)
           href: tutorial-1st-r-experiment.md
-    - name: Machine Learning CLI
+    - name: CLI
       items:
         - name: CLI ile eğitim ve dağıtım
           href: tutorial-train-deploy-model-cli.md
@@ -226,9 +226,6 @@
         - name: Özel Python paketlerini kullanma
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-private-python-packages.md
-        - name: Günlü kaydını etkinleştir
-          displayName: 'troubleshoot, log, files, tracing'
-          href: how-to-enable-logging.md
         - name: Giriş ve çıkış dizinlerini ayarlama
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
@@ -309,8 +306,12 @@
             - name: 'Çalıştırmaları başlatma, izleme ve iptal etme'
               displayName: 'cancel, fail, status, child run'
               href: how-to-manage-runs.md
-            - name: Eğitim çalıştırmaları için günlük ölçümleri
+            - name: Günlükleri etkinleştirme
+              displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
+            - name: Günlükleri görüntüleme
+              displayName: 'troubleshoot, log, files, tracing'
+              href: how-to-monitor-view-training-logs.md
             - name: MLflow ile denemeleri izleme
               displayName: 'log, monitor, metrics, Databricks'
               href: how-to-use-mlflow.md
@@ -363,7 +364,7 @@
         - name: Dağıtım nereye ve nasıl yapılır?
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Dağıtım senaryoları
+        - name: Dağıtım hedefleri
           items:
             - name: Mevcut modelleri kullanma
               displayName: publish existing model
@@ -394,19 +395,37 @@
               href: how-to-deploy-fpga-web-service.md
         - name: Sorun giderme ve hata ayıklama
           href: how-to-troubleshoot-deployment.md
-        - name: İstemciler oluşturma
+        - name: Web hizmetini kullanma
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Modelleri izleme
+        - name: Web hizmetini güncelleştirme
+          displayName: update hot reload model mounting
+          href: how-to-deploy-update-web-service.md
+        - name: Gelişmiş giriş betiği yazma
+          displayName: swagger inference schema binary cors
+          href: how-to-deploy-advanced-entry-script.md
+        - name: Web hizmetlerini izleme
           items:
             - name: Model verilerini toplama ve değerlendirme
               displayName: track production
               href: how-to-enable-data-collection.md
             - name: Application Insights ile izleme
               href: how-to-enable-app-insights.md
+        - name: Modelleri sürekli dağıtma
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: Şifrelenmiş çıkarım hizmeti dağıtma
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
+        - name: Profil modelleri
+          displayName: profile resource requirement
+          href: how-to-deploy-profile-model.md
+        - name: (Önizleme) Kod dağıtımı yok
+          displayName: no code
+          href: how-to-deploy-no-code-deployment.md
+        - name: Paket modelleri
+          displayName: docker file download
+          href: how-to-deploy-package-models.md
     - name: ML işlem hatlarını oluşturma ve kullanma
       displayName: pipelines
       items:
@@ -423,6 +442,9 @@
           href: how-to-debug-pipelines.md
         - name: Application Insights’ta işlem hatlarında hata ayıklama
           href: how-to-debug-pipelines-application-insights.md
+        - name: Tasarımcı günlüğü ölçümleri
+          displayName: 'designer, logging'
+          href: how-to-track-designer-experiments.md
         - name: Tasarımcı verileri dönüştürme
           displayName: pipeline
           href: how-to-designer-transform-data.md

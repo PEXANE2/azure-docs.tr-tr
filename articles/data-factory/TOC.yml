@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: Sorun giderme kılavuzları
       items:
+        - name: Data Factory kullanıcı deneyimi
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Etkinlikler
           href: data-factory-troubleshoot-guide.md
         - name: Bağlayıcılar

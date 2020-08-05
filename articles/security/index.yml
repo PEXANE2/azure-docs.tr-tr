@@ -4,7 +4,7 @@ summary: Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel g
 brand: azure
 metadata:
   title: Azure güvenlik belgeleri
-  description: Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik zekasından türetilmiş benzersiz güvenlik avantajları, müşteriye dönük gelişmiş denetimler ve güvenli bir sağlamlaştırılmış altyapı sağlar. Bu güçlü birleşim, uygulama ve verilerinizi korumaya, uyum çabalarınızı desteklemeye ve her boyuttan kuruluşlar için uygun maliyetli güvenlik sağlamanıza yardımcı olur.
+  description: Azure’da güvenlik hakkında bilgi edinin. Güvenlik temelleri, en iyi deneyimler ve desenler ve Azure Güvenlik Merkezi hakkındaki bilgilere bakın.
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115358"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540861"
 highlightedContent:
   items:
   - title: Azure güvenliğe giriş

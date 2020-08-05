@@ -8,6 +8,8 @@
       href: features.md
     - name: Sürüm notları
       href: release-notes.md
+    - name: Kullanım ve tanılama verilerini toplama
+      href: usage-and-diagnostics-data-configuration.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

@@ -91,7 +91,7 @@
       items:
         - name: Ayrıcalıklı erişime genel bakış
           href: groups-features.md
-        - name: Grupları keşfetme
+        - name: Grupları yönetim altına alma
           href: groups-discover-groups.md
         - name: Üye veya sahip atama
           href: groups-assign-member-owner.md

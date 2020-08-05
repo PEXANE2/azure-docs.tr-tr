@@ -345,8 +345,8 @@
       items:
         - name: Depolama sorunlarını giderme
           href: functions-recover-storage-account.md
-        - name: Python bağımlılıklarında sorun giderme
-          href: recover-module-not-found.md
+        - name: Python işlevleriyle ilgili sorunları giderme
+          href: recover-python-functions.md
 - name: Başvuru
   items:
     - name: API başvuruları

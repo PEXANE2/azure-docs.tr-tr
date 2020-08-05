@@ -51,6 +51,12 @@
   items:
     - name: Ağ İzleyicisi’ni yapılandırma
       href: network-watcher-create.md
+    - name: Bağlantı İzleyicisi oluşturma (Önizleme)
+      items:
+        - name: Azure portalını kullanma
+          href: connection-monitor-preview-create-using-portal.md
+        - name: ARMClient kullanma
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: VM ağ sorunlarını tanılama
       items:
         - name: VM uzantıları yükleme

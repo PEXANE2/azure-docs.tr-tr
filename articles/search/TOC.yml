@@ -335,6 +335,8 @@
           items:
             - name: Müşteri tarafından yönetilen anahtarlar
               href: search-security-manage-encryption-keys.md
+            - name: Önemli bilgileri getirme
+              href: search-security-get-encryption-keys.md
         - name: Gelen güvenlik
           items:
             - name: API erişim anahtarları
