@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052852"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836454"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Media Encoder Standard ve .NET kullanarak küçük resim oluşturma 
 
@@ -282,7 +282,7 @@ Dosya adında {Resolution} makrosunun kullanımını göz önünde edin; Bu, kod
 Yukarıdaki örneklerin hepsi yalnızca görüntü üreten bir kodlama görevini nasıl gönderebileceğinizi ele alırken video/ses kodlamasını küçük resim oluşturma ile de birleştirebilirsiniz. Aşağıdaki JSON ve XML önayarı kodlama sırasında küçük resim oluşturmak **Media Encoder Standard** söyler.
 
 ### <a name="json-preset"></a><a id="json"></a>JSON önceden ayarı
-Şema hakkında daha fazla bilgi için [Bu](/azure/media-services/previous/media-services-mes-schema) makaleye bakın.
+Şema hakkında daha fazla bilgi için [Bu](./media-services-mes-schema.md) makaleye bakın.
 
 ```json
     {
@@ -347,7 +347,7 @@ Yukarıdaki örneklerin hepsi yalnızca görüntü üreten bir kodlama görevini
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML önayarı
-Şema hakkında daha fazla bilgi için [Bu](/azure/media-services/previous/media-services-mes-schema) makaleye bakın.
+Şema hakkında daha fazla bilgi için [Bu](./media-services-mes-schema.md) makaleye bakın.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -571,7 +571,7 @@ Kodlama işi beklenirken [işin ilerlemesini](media-services-check-job-progress.
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

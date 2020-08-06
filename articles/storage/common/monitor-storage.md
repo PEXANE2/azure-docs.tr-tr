@@ -1,6 +1,6 @@
 ---
 title: Azure Storage 'ı izleme | Microsoft Docs
-description: Azure depolama 'nın performansını ve kullanılabilirliğini izlemeyi öğrenin.
+description: Azure depolama 'nın performansını ve kullanılabilirliğini izlemeyi öğrenin. Azure depolama verilerini izleyin, yapılandırma hakkında bilgi edinin ve ölçüm ve günlük verilerini çözümleyin.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182721"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836675"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage 'ı izleme
 
@@ -86,9 +86,9 @@ Günlükleri toplamak istediğiniz işlem kategorilerini da belirtmeniz gerekir.
 
 | Kategori | Açıklama |
 |:---|:---|
-| StorageRead | Bloblarda okuma işlemleri. |
-| StorageWrite | Bloblarda yazma işlemleri. |
-| StorageDelete | Bloblarda silme işlemleri. |
+| StorageRead | Nesnelerde okuma işlemleri. |
+| StorageWrite | Nesneler üzerinde yazma işlemleri. |
+| StorageDelete | Nesneler üzerinde silme işlemleri. |
 
 ## <a name="analyze-metric-data"></a>Ölçüm verilerini çözümleme
 

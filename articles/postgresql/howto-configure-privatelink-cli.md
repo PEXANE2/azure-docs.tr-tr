@@ -7,21 +7,21 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adb3104fe5874ab80134f267553b90a4b8823039
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 15ddf9392fffb8a9ed196b75b1c5e80d4484b0ad
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837253"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>For PostgreSQL için Azure veritabanı-CLı kullanarak tek sunucu için özel bağlantı oluşturma ve yönetme
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu makalede Azure CLı 'yı kullanarak bir Azure sanal ağında bir VM oluşturma ve Azure özel uç noktası ile PostgreSQL için Azure veritabanı tek sunucu oluşturma hakkında bilgi edineceksiniz.
 
 > [!NOTE]
-> Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında PostgreSQL için Azure veritabanı sunucuları için kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 

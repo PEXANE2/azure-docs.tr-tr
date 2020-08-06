@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 07fde5a8e7e3d542ed3fa3bc54b761d5434ac710
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284872"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836896"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 'da OpenSUSE Linux çalıştıran bir sanal makineye MySQL 'i yükler
 
@@ -32,7 +32,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya so
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-VM 'yi oluşturun. Bu örnekte, sanal makinenin adı *Myvm* , VM boyutu ise *Standard_D2s_v3*, ancak iş yükünüz için en uygun olduğunu düşündüğünüz [VM boyutunu](sizes.md) seçmeniz gerekir.
+VM 'yi oluşturun. Bu örnekte, sanal makinenin adı *Myvm* , VM boyutu ise *Standard_D2s_v3*, ancak iş yükünüz için en uygun olduğunu düşündüğünüz [VM boyutunu](../sizes.md) seçmeniz gerekir.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -157,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>Sonraki adımlar
 MySQL hakkındaki ayrıntılar için [MySQL belgelerine](https://dev.mysql.com/doc)bakın.
-
-
-
-

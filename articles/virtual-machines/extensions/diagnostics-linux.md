@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085699"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837049"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -173,7 +173,7 @@ Bu yapılandırma bilgileri kümesi, genel görünümden korunması gereken hass
 }
 ```
 
-Name | Değer
+Ad | Değer
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
 storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu 'na sahiptir `https://core.windows.net` . Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
@@ -580,7 +580,7 @@ Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Bu komut, Azure CLı 'nın Azure Kaynak Yönetimi (ARM) modunu kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](/azure/xplat-cli-connect)bakın.
+Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)bakın.
 
 ### <a name="powershell"></a>PowerShell
 

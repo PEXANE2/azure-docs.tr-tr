@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a7b81dc18af15e0928582fd8c1414e3401297c3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291199"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837100"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Bellek için iyileştirilmiş dv2 ve Dsv2 serisi
 
@@ -83,7 +83,7 @@ Hızlandırılmış ağ ile <sup>4</sup> 25000 Mbps.
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

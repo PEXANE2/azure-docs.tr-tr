@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206450"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836488"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -20,10 +20,10 @@ ms.locfileid: "86206450"
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 > [!NOTE]
-> Bu özellik, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-vm"></a>Azure VM oluşturma
 

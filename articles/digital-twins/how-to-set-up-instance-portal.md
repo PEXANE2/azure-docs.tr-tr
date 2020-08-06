@@ -1,5 +1,5 @@
 ---
-title: Örnek ve kimlik doğrulaması ayarlama (portal)
+title: Örnek ayarlama ve kimlik doğrulaması (portal)
 titleSuffix: Azure Digital Twins
 description: Azure portal kullanarak Azure dijital TWINS hizmeti örneğini ayarlama bölümüne bakın.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408409"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836947"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -62,7 +62,7 @@ Aşağıdaki *kaynak oluştur* sayfasında, aşağıda verilen değerleri girin:
 
 İşiniz bittiğinde, _gözden geçir + oluştur_' u seçin. Bu işlem sizi, girdiğiniz örnek ayrıntılarını gözden geçirebileceğiniz ve _Oluştur_'a vurtabileceğiniz bir özet sayfasına götürür. 
 
-### <a name="verify-success"></a>Başarıyı doğrula
+### <a name="verify-success-and-collect-important-values"></a>Başarıyı doğrulama ve önemli değerleri toplama
 
 *Oluşturma*'yı gönderdikten sonra, Azure bildirimlerinde, örnek dağıtımının durumunu Portal simgesi çubuğunun yanı da görebilirsiniz. Bildirim dağıtımın başarılı olduğunu gösterir ve oluşturduğunuz örneği görüntülemek için _Kaynağa Git_ düğmesini seçebileceksiniz.
 

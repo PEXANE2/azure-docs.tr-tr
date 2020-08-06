@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078217"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837389"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services uygulamalarınızı ve çözümlerinizi Azure Logic Apps geçirin
 
@@ -35,7 +35,7 @@ Bu tablo, Logic Apps BizTalk Services yeteneklerini eşler.
 | BizTalk Services   | Logic Apps            | Amaç                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Bağlayıcı          | Bağlayıcı             | Veri gönderme ve alma   |
-| Köprü             | Logic App             | Ardışık düzen işlemcisi           |
+| Bridge             | Logic App             | Ardışık düzen işlemcisi           |
 | Aşamayı doğrula     | XML doğrulama eylemi | Bir XML belgesini bir şemaya göre doğrulama | 
 | Zenginleştirme aşaması       | Veri belirteçleri           | Özellikleri iletilere veya yönlendirme kararlarına yükseltme |
 | Dönüşüm aşaması    | Dönüştürme eylemi      | XML iletilerini bir biçimden diğerine dönüştürme |
@@ -103,7 +103,7 @@ BizTalk Services işleme içinde, zenginleştirme aşamasında, alınan verilerl
 
 ### <a name="run-custom-code"></a>Özel kod Çalıştır
 
-BizTalk Services, kendi derlemelerinize yüklenen [özel kodu çalıştırmanızı](/previous-versions/azure/dn232389(v=azure.100)) sağlar. Bu işlev [ımessageınspector](/azure/logic-apps/logic-apps-move-from-mabs) arabirimi tarafından uygulanır. Köprü içindeki her aşama, bu arabirimi uygulayan .NET türünü sağlayan iki Özellik (Enter denetçisinde ve çıkış denetçisinde) içerir. Özel kod, veriler üzerinde daha karmaşık işleme gerçekleştirmenizi sağlar ve ortak iş mantığını gerçekleştiren derlemelerdeki mevcut kodu yeniden kullanmanıza olanak tanır. 
+BizTalk Services, kendi derlemelerinize yüklenen [özel kodu çalıştırmanızı](/previous-versions/azure/dn232389(v=azure.100)) sağlar. Bu işlev [ımessageınspector]() arabirimi tarafından uygulanır. Köprü içindeki her aşama, bu arabirimi uygulayan .NET türünü sağlayan iki Özellik (Enter denetçisinde ve çıkış denetçisinde) içerir. Özel kod, veriler üzerinde daha karmaşık işleme gerçekleştirmenizi sağlar ve ortak iş mantığını gerçekleştiren derlemelerdeki mevcut kodu yeniden kullanmanıza olanak tanır. 
 
 Logic Apps özel kod yürütmeye yönelik iki temel yol sağlar: Azure Işlevleri ve API Apps. Azure Işlevleri, Logic Apps 'ten oluşturulabilir ve çağrılabilir. Bkz. [Azure işlevleri aracılığıyla mantıksal uygulamalar için özel kod ekleme ve çalıştırma](../logic-apps/logic-apps-azure-functions.md). Kendi tetikleyicilerinin ve eylemlerinizi oluşturmak için API Apps, Azure App Service bir kısmını kullanın. [Logic Apps ile kullanmak üzere özel bır API oluşturma](../logic-apps/logic-apps-create-api-app.md)hakkında daha fazla bilgi edinin. 
 

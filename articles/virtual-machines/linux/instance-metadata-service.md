@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 0d31d982e7788970cbf7aad7dd64db9e6d4b9b10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502206"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836998"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (ıMDS)
 
@@ -178,7 +178,7 @@ API | Varsayılan veri biçimi | Diğer biçimler
 /Instance | json | metin
 /scheduledevents | json | yok
 
-Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
+Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örnek:
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -187,7 +187,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 > [!NOTE]
 > /Metadata/Instance içindeki yaprak düğümleri için `format=json` çalışmıyor. `format=text`Varsayılan biçim JSON olduğundan bu sorguların açıkça belirtilmesi gerekir.
 
-### <a name="versioning"></a>Sürüm Oluşturma
+### <a name="versioning"></a>Sürüm oluşturma
 
 Instance Metadata Service sürümlenmiş ve HTTP isteğindeki API sürümünün belirtilmesi zorunludur.
 
@@ -236,7 +236,7 @@ API | Açıklama | Sunulan sürüm
 
 Örnek API 'SI, sanal makine, ağ ve depolama dahil olmak üzere VM örnekleri için önemli meta verileri kullanıma sunar. Aşağıdaki kategorilere örnek/işlem aracılığıyla erişilebilir:
 
-Veriler | Description | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 customData | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
@@ -256,12 +256,12 @@ resourceId | Kaynağın [tam](/rest/api/resources/resources/getbyid) kimliği | 
 isteyin | VM görüntüsü için belirli SKU | 2017-04-02
 storageProfile | [Depolama profilini](#storage-metadata) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
-tags | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
+etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
 sürüm | VM görüntüsünün sürümü | 2017-04-02
 Kimliği | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | Sanal makine ölçek kümesinin [sanal makine ölçek kümesi adı](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [VM boyutu](sizes.md) | 2017-04-02
+vmSize | [VM boyutu](../sizes.md) | 2017-04-02
 bölge | Sanal makinenizin [kullanılabilirlik bölgesi](../../availability-zones/az-overview.md) | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>Örnek 1: Azure 'da çalışan Izleme sanal makinesi
@@ -427,7 +427,7 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 
 Ağ meta verileri, örnek API 'sinin bir parçasıdır. Aşağıdaki ağ kategorileri, örnek/ağ uç noktası üzerinden kullanılabilir.
 
-Veriler | Description | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 IPv4/Privateıpaddress | VM 'nin yerel IPv4 adresi | 2017-04-02
 IPv4/Publicıpaddress | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -495,7 +495,7 @@ Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır: görüntü
 
 Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-Veriler    | Description
+Veriler    | Açıklama
 --------|-----------------
 kimlik      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
@@ -505,7 +505,7 @@ sürüm | Platform veya Market görüntüsünün sürümü
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-Veriler    | Description
+Veriler    | Açıklama
 --------|-----------------
 önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -520,7 +520,7 @@ Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
 Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
 
-Veriler    | Description
+Veriler    | Açıklama
 --------|-----------------
 önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -682,7 +682,7 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 Belge aşağıdaki alanları içerir:
 
-Veriler | Description
+Veriler | Açıklama
 -----|------------
 nonce | İsteğe bağlı olarak istekle birlikte sağlanmış bir dize. Bir nonce sağlanmazsa, geçerli UTC zaman damgası kullanılır
 plan | [Azure Marketi görüntü planı](/rest/api/compute/virtualmachines/createorupdate#plan). Plan kimliğini (adı), ürün görüntüsünü veya teklifi (ürün) ve yayımcı kimliğini (yayımcı) içerir.
@@ -812,7 +812,7 @@ Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 ## <a name="error-and-debugging"></a>Hata ve hata ayıklama
 
-Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
+Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örnek:
 
 HTTP durum kodu | Neden
 ----------------|-------

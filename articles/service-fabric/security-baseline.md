@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460686"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836726"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric için Azure Güvenlik temeli
 
 Service Fabric için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
-Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
+Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview.md)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
 
-Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../security/benchmarks/security-baselines-overview.md).
 
 
 
 ## <a name="network-security"></a>Ağ güvenliği
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](/azure/security/benchmarks/security-control-network-security).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: sanal ağlar içindeki Azure kaynaklarını koruma
 
 **Rehberlik**: tüm sanal ağ alt ağ dağıtımlarının, uygulamanızın güvenilen bağlantı noktalarına ve kaynaklarına özel ağ erişim denetimleriyle uygulanmış bir ağ güvenlik grubu olduğundan emin olun.
 
-* [Şablon kullanarak Azure Güvenlik Duvarı’nı dağıtma](https://docs.microsoft.com/azure/firewall/deploy-template)
+* [Şablon kullanarak Azure Güvenlik Duvarı’nı dağıtma](../firewall/deploy-template.md)
 
-* [Azure ağ güvenlik gruplarını (NSG 'ler) kullanarak çevre ağları oluşturma](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices#use-network-isolation-and-security-with-azure-service-fabric)
+* [Azure ağ güvenlik gruplarını (NSG 'ler) kullanarak çevre ağları oluşturma](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
-* [Azure Service Fabric kümenizi mevcut bir sanal ağla tümleştirme](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)
+* [Azure Service Fabric kümenizi mevcut bir sanal ağla tümleştirme](./service-fabric-patterns-networking.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -46,11 +46,11 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Kılavuz**: Azure Güvenlik Merkezi 'ni kullanın ve Azure Service Fabric kümenizin güvenliğini sağlamak için kullanılan sanal ağ, alt ağ ve ağ güvenlik grubu için ağ koruma önerilerini düzeltin. Ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin ve günlükleri bir Azure depolama hesabına trafik denetimine gönderin. Ayrıca Azure Log Analytics çalışma alanına NSG akış günlükleri gönderebilir ve Azure bulutunuzda trafik akışına Öngörüler sağlamak için Azure Trafik Analizi kullanabilirsiniz. Azure Trafik Analizi avantajlarından bazıları, ağ etkinliğini görselleştirme ve etkin noktaları belirlemek, güvenlik tehditlerini belirlemek, trafik akışı düzenlerini anlamak ve ağ yapılandırmalarını saptamak için kullanılır.
 
-* [NSG akış günlüklerini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG akış günlüklerini etkinleştirme](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Azure Trafik Analizi etkinleştirme ve kullanma](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure Trafik Analizi etkinleştirme ve kullanma](../network-watcher/traffic-analytics.md)
 
-* [Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama](../security-center/security-center-network-recommendations.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -62,11 +62,11 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 Azure Web uygulaması güvenlik duvarını (WAF), gelen trafiğin ek incelemesi için kritik Web uygulamaları önünde dağıtmaya dikkat edin. WAF ve alma günlükleri için tanılama ayarını bir depolama hesabı, Olay Hub 'ı veya Log Analytics çalışma alanında etkinleştirin.
 
-* [Service Fabric ve Azure API Management'a genel bakış](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)
+* [Service Fabric ve Azure API Management'a genel bakış](./service-fabric-api-management-overview.md)
 
-* [Application Gateway ile iç VNET 'te API Management tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Application Gateway ile iç VNET 'te API Management tümleştirme](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure WAF dağıtma](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF dağıtma](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -76,9 +76,9 @@ Azure Web uygulaması güvenlik duvarını (WAF), gelen trafiğin ek incelemesi 
 
 **Kılavuz**: DDoS saldırılarına karşı korumalar için Azure Service Fabric kümenizin dağıtıldığı sanal ağ üzerinde Azure DDoS standart korumasını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
 
-* [DDoS korumasını yapılandırma](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS korumasını yapılandırma](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/threat-protection.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -88,11 +88,11 @@ Azure Web uygulaması güvenlik duvarını (WAF), gelen trafiğin ek incelemesi 
 
 **Kılavuz**: Azure Service Fabric kümenizi korumak için kullanılan alt ağa bağlı NSG için ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin. Flow kayıtları oluşturmak için NSG akış günlüklerini bir Azure depolama hesabına kaydedin. Anormal etkinlikleri araştırmak için gerekliyse, Azure ağ Izleyicisi paket yakalamayı etkinleştirin.
 
-* [NSG akış günlüklerini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG akış günlüklerini etkinleştirme](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Ağ İzleyicisini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Ağ İzleyicisini etkinleştirme](../network-watcher/network-watcher-create.md)
 
-* [NSG akış günlüklerini görselleştirmek için trafik analizini kullanma](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [NSG akış günlüklerini görselleştirmek için trafik analizini kullanma](../network-watcher/traffic-analytics.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -106,9 +106,9 @@ Kötü amaçlı trafiği algılamak ve/veya reddetmek için kuruluşunuzun ağ s
 
 * [Azure Market](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Güvenlik duvarını dağıtma](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Güvenlik Duvarı ile uyarıları yapılandırma](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Güvenlik Duvarı ile uyarıları yapılandırma](../firewall/threat-intel.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -118,11 +118,11 @@ Kötü amaçlı trafiği algılamak ve/veya reddetmek için kuruluşunuzun ağ s
 
 **Rehberlik**: güvenilen SERTIFIKALAR için HTTPS/SSL özellikli Web uygulamaları için Azure Application Gateway dağıtın.
 
-* [Application Gateway dağıtma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway dağıtma](../application-gateway/quick-create-portal.md)
 
-* [Application Gateway HTTPS kullanacak şekilde yapılandırma](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [Application Gateway HTTPS kullanacak şekilde yapılandırma](../application-gateway/create-ssl-portal.md)
 
-* [Azure Web uygulaması ağ geçitleri ile katman 7 yük dengelemesini anlama](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Web uygulaması ağ geçitleri ile katman 7 yük dengelemesini anlama](../application-gateway/overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -132,9 +132,9 @@ Kötü amaçlı trafiği algılamak ve/veya reddetmek için kuruluşunuzun ağ s
 
 **Kılavuz**: Azure Service Fabric kümenizin dağıtıldığı alt ağa bağlı ağ güvenlik grupları (NSG) üzerinde ağ erişim denetimleri tanımlamak için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (örn., Apimanaya) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
-* [Sanal ağ hizmeti etiketleri](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Sanal ağ hizmeti etiketleri](../virtual-network/service-tags-overview.md)
 
-* [Service Fabric ağ en iyi uygulamaları](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-networking)
+* [Service Fabric ağ en iyi uygulamaları](./service-fabric-best-practices-networking.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -146,11 +146,11 @@ Kötü amaçlı trafiği algılamak ve/veya reddetmek için kuruluşunuzun ağ s
 
 Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, RBAC denetimleri ve ilkeleri gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint oluşturma](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -164,11 +164,11 @@ Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kayna
 
 Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etiketlerine göre kaynakları arayabilir veya bunlarla ilgili eylemler gerçekleştirebilirsiniz.
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-* [Sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
-* [Güvenlik Yapılandırması ile NSG oluşturma](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Güvenlik Yapılandırması ile NSG oluşturma](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -178,9 +178,9 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure Service Fabric dağıtımlarınızla ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -188,13 +188,13 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](/azure/security/benchmarks/security-control-logging-monitoring).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: onaylanan zaman eşitleme kaynaklarını kullanın
 
 **Kılavuz**: Microsoft Azure Service Fabric küme bileşenlerine yönelik zaman kaynaklarını korur, işlem dağıtımlarınız için zaman eşitlemesini güncelleştirebilirsiniz.
 
-* [Azure işlem kaynakları için zaman eşitlemesini yapılandırma](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Azure işlem kaynakları için zaman eşitlemesini yapılandırma](../virtual-machines/windows/time-sync.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -204,11 +204,11 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Rehberlik**: küme tarafından oluşturulan güvenlik verilerini toplamak için Azure Service Fabric kümenizi Azure izleyici 'ye ekleyebilirsiniz. Bkz. Service Fabric ile örnek Tanılama sorunları ve çözümleri.
 
-* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Yaygın Service Fabric senaryolarını tanılama](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-common-scenarios)
+* [Yaygın Service Fabric senaryolarını tanılama](./service-fabric-diagnostics-common-scenarios.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -218,13 +218,13 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Rehberlik**: Service Fabric kümesi Için Azure izleyicisini etkinleştirin ve bunu bir Log Analytics çalışma alanına yönlendirin. Bu, tüm Azure Service Fabric küme düğümleri için ilgili küme bilgilerini ve işletim sistemi ölçümlerini günlüğe kaydeder.
 
-* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Log Analytics aracısını düğümleriniz üzerine dağıtma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Log Analytics aracısını düğümleriniz üzerine dağıtma](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics günlük aramaları](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics günlük aramaları](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -234,13 +234,13 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure Service Fabric kümesini Azure izleyici 'ye ekleme. Kullanılan Log Analytics çalışma alanının, kuruluşunuzun uyumluluk düzenlemelerine göre ayarlanmış günlük tutma süresine sahip olduğundan emin olun.
 
-* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Log Analytics aracısını düğümleriniz üzerine dağıtma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Log Analytics aracısını düğümleriniz üzerine dağıtma](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics çalışma alanı saklama süresini yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -250,13 +250,13 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure Service Fabric kümesini Azure izleyici 'ye ekleme. Kullanılan Log Analytics çalışma alanının, kuruluşunuzun uyumluluk düzenlemelerine göre ayarlanmış günlük tutma süresine sahip olduğundan emin olun.
 
-* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Izleyici günlüklerini Service Fabric ile tümleştirmeyi yapılandırma](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure 'da izleme kapsayıcıları için Azure Izleyici günlüklerini ayarlama Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Log Analytics aracısını düğümleriniz üzerine dağıtma](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Log Analytics aracısını düğümleriniz üzerine dağıtma](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics çalışma alanı saklama süresini yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -266,7 +266,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure Service Fabric günlüklerini sorgulamak için Azure Log Analytics çalışma alanı sorgularını kullanın.
 
-* [Log Analytics günlük aramaları](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics günlük aramaları](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -276,9 +276,9 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure Log Analytics çalışma alanını, güvenlik günlükleri ve Azure Service Fabric kümenizle ilgili olaylar için anormal etkinlikleri izlemek ve uyarmak üzere kullanın.
 
-* [Azure Güvenlik Merkezi 'nde uyarıları yönetme](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics günlük verilerinde uyarı alma](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -288,7 +288,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Yönergeler**: varsayılan olarak Windows Defender, windows Server 2016 ' de yüklüdür. Windows Defender kullanmıyorsanız yapılandırma kuralları için Antimaleware belgelerinize bakın. Windows Defender, Linux üzerinde desteklenmez.
 
-* [Ayrıntılar için bkz. Windows Server 'da Windows Defender virüsten koruma 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Ayrıntılar için bkz. Windows Server 'da Windows Defender virüsten koruma 2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -312,7 +312,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 ## <a name="identity-and-access-control"></a>Kimlik ve erişim denetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve erişim denetimi](/azure/security/benchmarks/security-control-identity-access-control).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve erişim denetimi](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
@@ -320,11 +320,11 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kullanabilirsiniz.
 
-* [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Azure Güvenlik Merkezi ile kimlik ve erişimi izleme](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Güvenlik Merkezi ile kimlik ve erişimi izleme](../security-center/security-center-identity-access.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -334,7 +334,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: bir küme sağlanırken Azure, Web portalı için yeni parolalar oluşturmanızı gerektirir. Değiştirilecek varsayılan parola yoktur, ancak Web portalı erişimi için farklı parolalar belirtebilirsiniz.
 
-* [Azure portalda oluşturma](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
+* [Azure portalda oluşturma](./service-fabric-cluster-creation-via-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -346,9 +346,9 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kullanabilirsiniz.
 
-* [Azure Active Directory istemci kimlik doğrulamasını ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-windows-cluster#set-up-azure-active-directory-client-authentication)
+* [Azure Active Directory istemci kimlik doğrulamasını ayarlama](./service-fabric-tutorial-create-vnet-and-windows-cluster.md#set-up-azure-active-directory-client-authentication)
 
-* [Azure Güvenlik Merkezi ile kimlik ve erişimi izleme](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Güvenlik Merkezi ile kimlik ve erişimi izleme](../security-center/security-center-identity-access.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -358,7 +358,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: mümkün olan yerlerde, tek başına bağımsız kimlik bilgilerini hizmet başına yapılandırmak yerıne Azure Active Directory SSO kullanın. Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini kullanın.
 
-* [Azure AD ile SSO 'yu anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure AD ile SSO 'yu anlama](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -368,9 +368,9 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Kılavuz**: Azure AD MFA 'yı etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
-* [Azure 'da MFA 'yı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../security-center/security-center-identity-access.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -380,9 +380,9 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Kılavuz**: Azure Service Fabric kümelerinizi ve ilgili kaynaklarınızı açmak ve yapılandırmak için yapılandırılmış çok faktörlü kimlik DOĞRULAMASıYLA (MFA) Paws (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Azure 'da MFA 'yı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -392,9 +392,9 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: ortamda şüpheli veya güvenli olmayan bir etkinlik oluştuğunda günlükler ve uyarılar oluşturmak için Azure ACTIVE DIRECTORY (AD) PRIVILEGED IDENTITY Management (PIM) kullanın. Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın.
 
-* [Privileged Identity Management dağıtma (PıM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management dağıtma (PıM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD risk algılamalarını anlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD risk algılamalarını anlama](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -404,7 +404,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından erişime izin vermek Için adlandırılmış konumlar kullanın.
 
-* [Azure 'da adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure 'da adlandırılmış konumları yapılandırma](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -414,9 +414,9 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Kılavuz**: Azure Service Fabric kümelerinin yönetim uç noktalarına erişimi güvenli hale getirmek için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (AAD) kullanın. AAD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. AAD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-* [AAD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [AAD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Service Fabric istemci kimlik doğrulaması için kurulum Azure Active Directory](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+* [Service Fabric istemci kimlik doğrulaması için kurulum Azure Active Directory](./service-fabric-cluster-creation-setup-aad.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -426,7 +426,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Kılavuz**: Azure Service Fabric kümenizle Azure ACTIVE DIRECTORY (AAD) kimlik doğrulaması kullanın. AAD, eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Kullanıcının erişimi, yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için düzenli olarak incelenebilir.
 
-* [Azure kimlik erişimi Incelemelerini kullanma](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -438,7 +438,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 AAD Kullanıcı hesapları için Tanılama ayarları oluşturarak, Denetim günlüklerini ve oturum açma günlüklerini bir Azure Log Analytics çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. Azure Log Analytics çalışma alanında istenen uyarıları yapılandırın.
 
-* [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -448,11 +448,11 @@ AAD Kullanıcı hesapları için Tanılama ayarları oluşturarak, Denetim günl
 
 **Rehberlik**: Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılanan otomatik yanıtları yapılandırmak IÇIN Azure AD risk ve kimlik koruması özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-* [Azure AD riskli oturum açma işlemlerini görüntüleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel 'i ekleme](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -462,7 +462,7 @@ AAD Kullanıcı hesapları için Tanılama ayarları oluşturarak, Denetim günl
 
 **Rehberlik**: kullanılamıyor; Müşteri Kasası henüz Azure Service Fabric için desteklenmiyor.
 
-* [Desteklenen Müşteri Kasası hizmetleri listesi](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Desteklenen Müşteri Kasası hizmetleri listesi](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -470,13 +470,13 @@ AAD Kullanıcı hesapları için Tanılama ayarları oluşturarak, Denetim günl
 
 ## <a name="data-protection"></a>Veri koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](/azure/security/benchmarks/security-control-data-protection).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için Azure Service Fabric kümesi dağıtımlarınızla ilgili kaynaklarda yer alan etiketler kullanın.
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -486,19 +486,19 @@ AAD Kullanıcı hesapları için Tanılama ayarları oluşturarak, Denetim günl
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Kaynaklar VNet/subnet ile ayrılmalıdır, uygun şekilde etiketlenebilir ve bir NSG veya Azure güvenlik duvarıyla korunmuş olmalıdır. Hassas verileri depolayan veya işleyen kaynaklar yeterince yalıtılmalıdır. Hassas verileri depolayan veya işleyen sanal makineler için, kullanımda olmadığında devre dışı bırakmak üzere ilke ve yordam uygulayın.
 
-* [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-* [Sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
-* [Güvenlik Yapılandırması ile NSG oluşturma](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Güvenlik Yapılandırması ile NSG oluşturma](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Güvenlik duvarını dağıtma](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Güvenlik Duvarı ile uyarı veya uyarı yapılandırma ve reddetme](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Güvenlik Duvarı ile uyarı veya uyarı yapılandırma ve reddetme](../firewall/threat-intel.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -512,7 +512,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 Yetenek.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -524,9 +524,9 @@ Yetenek.
 
 Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme için kullanın.
 
-* [Azure ile iletim sırasında şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Azure ile iletim sırasında şifrelemeyi anlama](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Service Fabric kümesi güvenlik senaryoları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+* [Service Fabric kümesi güvenlik senaryoları](./service-fabric-cluster-security.md)
 
 * [TLS yapılandırması için sorun giderme kılavuzu Service Fabric](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
@@ -540,7 +540,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -560,7 +560,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -570,13 +570,13 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik**: tüm Azure kaynaklarında bekleyen şifreleme kullanın. Microsoft, Azure 'un şifreleme anahtarlarınızı yönetmesine izin vermesini önerir, ancak bazı örneklerde kendi anahtarlarınızı yönetmeniz için seçenek vardır.
 
-* [Azure 'da bekleyen şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Azure 'da bekleyen şifrelemeyi anlama](../security/fundamentals/encryption-atrest.md)
 
-* [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+* [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](../storage/common/storage-encryption-keys-portal.md)
 
-* [Windows 'da Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-windows)
+* [Windows 'da Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme](./service-fabric-enable-azure-disk-encryption-windows.md)
 
-* [Linux 'ta Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-linux)
+* [Linux 'ta Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme](./service-fabric-enable-azure-disk-encryption-linux.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -586,7 +586,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, önemli Azure kaynaklarına yapılan değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -594,7 +594,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 ## <a name="vulnerability-management"></a>Güvenlik açığı yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](/azure/security/benchmarks/security-control-vulnerability-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
@@ -604,11 +604,11 @@ Azure sanal makinelerinizde ve kapsayıcı görüntülerinde güvenlik açığı
 
 Ağ cihazlarında ve Web uygulamalarında güvenlik açığı değerlendirmeleri gerçekleştirmek için bir üçüncü taraf çözümü kullanın. Uzak taramalar yaparken, tek bir kalıcı, yönetici hesabı kullanmayın. Tarama hesabı için JıT sağlama yöntemini uygulamayı düşünün. Tarama hesabı için kimlik bilgileri korunmalıdır, izlenir ve yalnızca güvenlik açığı taraması için kullanılmalıdır.
 
-* [Service Fabric hata analiz hizmetine giriş](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)
+* [Service Fabric hata analiz hizmetine giriş](./service-fabric-testability-overview.md)
 
-* [Service Fabric kümelerinde ı, kontrollü Chaos](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
+* [Service Fabric kümelerinde ı, kontrollü Chaos](./service-fabric-controlled-chaos.md)
 
-* [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -620,13 +620,13 @@ Ağ cihazlarında ve Web uygulamalarında güvenlik açığı değerlendirmeleri
 
 Alternatif olarak, üretime geçmeden önce işletim sistemi düzeltme eklerini test etmek için ölçek kümesinin işletim sistemi görüntüsü yükseltmeleri için el ile tetikleyiciyi kullanın. El ile tetikleme seçeneğinin yerleşik geri alma özelliği sunmadığını unutmayın. Azure Otomasyonu 'ndan Güncelleştirme Yönetimi kullanarak işletim sistemi düzeltme eklerini izleyin.
 
-* [Service Fabric küme düğümleri için Düzeltme Eki Yönetimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Service Fabric küme düğümleri için Düzeltme Eki Yönetimi](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Azure sanal makine ölçek kümeleri ile otomatik işletim sistemi görüntüsü yükseltmeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Azure sanal makine ölçek kümeleri ile otomatik işletim sistemi görüntüsü yükseltmeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [En son ölçek kümesi modeliyle VM 'Leri güncel hale getirme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+* [En son ölçek kümesi modeliyle VM 'Leri güncel hale getirme](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
+* [Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -636,11 +636,11 @@ Alternatif olarak, üretime geçmeden önce işletim sistemi düzeltme eklerini 
 
 **Kılavuz**: Azure Service Fabric kümenizin sanal makine ölçek kümelerinde otomatik işletim sistemi görüntüsü yükseltmelerini etkinleştirin. Düzeltme Eki düzenleme uygulaması (POA), Azure dışında barındırılan Service Fabric kümelerine yönelik alternatif bir çözümdür. POA, Azure kümeleriyle birlikte kullanılabilir ve bazı ek barındırma yüklerine sahip olabilir.
 
-* [Service Fabric küme düğümleri için Düzeltme Eki Yönetimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Service Fabric küme düğümleri için Düzeltme Eki Yönetimi](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Azure sanal makine ölçek kümeleri ile otomatik işletim sistemi görüntüsü yükseltmeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Azure sanal makine ölçek kümeleri ile otomatik işletim sistemi görüntüsü yükseltmeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Service Fabric kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
+* [Service Fabric kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma](./service-fabric-patch-orchestration-application.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -664,7 +664,7 @@ Alternatif olarak, üretime geçmeden önce işletim sistemi düzeltme eklerini 
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve varlık yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: otomatik varlık bulma çözümünü kullanma
 
@@ -672,11 +672,11 @@ Alternatif olarak, üretime geçmeden önce işletim sistemi düzeltme eklerini 
 
 Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri doğru Azure Resource Manager kaynak oluşturmanız ve kullanılması kesinlikle önerilir.
 
-* [Azure Kaynak Graf ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-* [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -686,7 +686,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 **Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -696,11 +696,11 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 **Rehberlik**: varlıkları düzenlemek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-* [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -724,9 +724,9 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak grafiğini kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -744,7 +744,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Kılavuz**: Azure Service Fabric kümeleri de dahil olmak üzere tüm kaynakları (işlem, depolama, ağ, bağlantı noktaları ve protokoller vb.) sorgulamak/öğrenmek Için Azure Kaynak grafiğini kullanın (örneğin, abonelikleriniz dahilinde). Keşfettiğiniz onaylanmamış tüm Azure kaynaklarını kaldırın. Azure Service Fabric küme düğümleri için, onaylanmamış yazılımları kaldırmak veya uyarmak üzere bir üçüncü taraf çözümü uygulayın.
 
-* [Azure Graph ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -762,9 +762,9 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: ortamınızda sağlayabileceğiniz hizmetleri kısıtlamak Için Azure ilkesini kullanın.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -782,7 +782,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" özelliğini yapılandırarak kullanıcıların Azure kaynakları yöneticisiyle etkileşime geçmesini sınırlamak Için Azure koşullu erişimi kullanın.
 
-* [Azure Kaynak Yöneticisi 'ne erişimi engellemek için koşullu erişimi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Kaynak Yöneticisi 'ne erişimi engellemek için koşullu erişimi yapılandırma](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -792,7 +792,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: kullanıcıların Azure işlem kaynakları içinde betikleri yürütme yeteneğini sınırlamak için işletim sistemine özgü yapılandırma veya üçüncü taraf kaynakları kullanın.
 
-* [Örneğin, Windows ortamlarında PowerShell betiği yürütmeyi denetleme](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Örneğin, Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -802,9 +802,9 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: iş işlemleri için gerekli olan, ancak kuruluşa daha fazla risk doğurabilecek yazılımlar, kendi sanal makinesi ve/veya sanal ağı içinde yalıtılmalıdır ve bir Azure Güvenlik Duvarı veya ağ güvenlik grubuyla yeterince güvenli hale getirilir.
 
-* [Sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
-* [Güvenlik Yapılandırması ile NSG oluşturma](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Güvenlik Yapılandırması ile NSG oluşturma](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -812,15 +812,15 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 ## <a name="secure-configuration"></a>Güvenli yapılandırma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](/azure/security/benchmarks/security-control-secure-configuration).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
 **Rehberlik**: Service Fabric kümenizin ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. servicefabric" ad alanındaki Azure ilke diğer adlarını kullanın.
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -838,9 +838,9 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Kılavuz**: Azure Service Fabric kümeleriniz ve ilgili kaynaklarınız için güvenli ayarları zorlamak üzere Azure ilkesi [reddetme] ve [dağıtım yok] kullanın.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilke efektlerini anlama](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Ilke efektlerini anlama](../governance/policy/concepts/effects.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -858,9 +858,9 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Kılavuz**: özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure devops veya Azure Repos kullanın.
 
-* [Azure DevOps 'da kod depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos belgeleri](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -870,11 +870,11 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Kılavuz**: özel görüntüler kullanıyorsanız, yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için RBAC kullanın. Kapsayıcı görüntüleri için Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için RBAC 'den yararlanın.
 
-* [Azure 'da RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure 'da RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Container Registry için RBAC 'yi anlayın](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Container Registry için RBAC 'yi anlayın](../container-registry/container-registry-roles.md)
 
-* [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -884,7 +884,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. servicefabric" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -902,9 +902,9 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: Service Fabric kümenizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. servicefabric" ad alanındaki Azure ilke diğer adlarını kullanın.
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -914,7 +914,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: kapsayıcılar için işletim sistemi ve Docker ayarları için temel taramalar gerçekleştirmek üzere Azure Güvenlik Merkezi 'ni kullanın.
 
-* [Azure Güvenlik Merkezi'ndeki kapsayıcı önerilerini anlama](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Azure Güvenlik Merkezi'ndeki kapsayıcı önerilerini anlama](../security-center/container-security.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -924,13 +924,13 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte yönetilen hizmet kimliği kullanın.
 
-* [Service Fabric ile Azure için Yönetilen kimlikler kullanma](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Service Fabric ile Azure için Yönetilen kimlikler kullanma](./concepts-managed-identity.md)
 
-* [Yeni bir Service Fabric kümesi için yönetilen kimlik desteğini yapılandırma](https://docs.microsoft.com/azure/service-fabric/configure-new-azure-service-fabric-enable-managed-identity)
+* [Yeni bir Service Fabric kümesi için yönetilen kimlik desteğini yapılandırma](./configure-new-azure-service-fabric-enable-managed-identity.md)
 
-* [Yönetilen kimliği bir Service Fabric uygulamayla kullanma](https://docs.microsoft.com/azure/service-fabric/how-to-managed-identity-service-fabric-app-code)
+* [Yönetilen kimliği bir Service Fabric uygulamayla kullanma](./how-to-managed-identity-service-fabric-app-code.md)
 
-* [Service Fabric uygulamalar için KeyVaultReference desteği](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+* [Service Fabric uygulamalar için KeyVaultReference desteği](./service-fabric-keyvault-references.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -940,7 +940,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: Yönetilen kimlikler, Azure tarafından dağıtılan Service Fabric kümelerinde ve Azure kaynakları olarak dağıtılan uygulamalarda kullanılabilir. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
 
-* [Service Fabric ile Azure için Yönetilen kimlikler kullanma](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Service Fabric ile Azure için Yönetilen kimlikler kullanma](./concepts-managed-identity.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -954,7 +954,7 @@ Service Fabric küme sertifikalarını otomatik olarak döndürmek için Azure K
 
 * [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-* [Service Fabric kümelerinde sertifika yönetimi](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#certificate-rotation)
+* [Service Fabric kümelerinde sertifika yönetimi](./cluster-security-certificate-management.md#certificate-rotation)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -962,7 +962,7 @@ Service Fabric küme sertifikalarını otomatik olarak döndürmek için Azure K
 
 ## <a name="malware-defense"></a>Kötü amaçlı yazılımdan koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](/azure/security/benchmarks/security-control-malware-defense).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
 
@@ -970,7 +970,7 @@ Service Fabric küme sertifikalarını otomatik olarak döndürmek için Azure K
 
 Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaçlı yazılımdan koruma belgelerinize bakın. Windows Defender, Linux üzerinde desteklenmez.
 
-* [Windows Server 2016 ' de Windows Defender virüsten koruma 'yı anlama](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Windows Server 2016 ' de Windows Defender virüsten koruma 'yı anlama](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -994,13 +994,13 @@ Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaç
 
 ## <a name="data-recovery"></a>Veri kurtarma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](/azure/security/benchmarks/security-control-data-recovery).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
 
 **Rehberlik**: Service Fabric ' deki yedekleme ve geri yükleme hizmeti, durum bilgisi olan hizmetlerde depolanan bilgilerin kolay ve otomatik yedeklemesini mümkün bir şekilde sunar. Uygulama verilerini düzenli aralıklarla yedeklemek, veri kaybına ve hizmetin kullanılamamasına karşı koruma için temel bir uygulamadır. Service Fabric, ek kod yazmak zorunda kalmadan durum bilgisi olan Reliable Services (aktör hizmetleri dahil) düzenli olarak yedeklenmesini yapılandırmanıza olanak tanıyan, isteğe bağlı bir yedekleme ve geri yükleme hizmeti sağlar. Ayrıca, daha önce alınan yedeklemelerin geri yüklenmesini de kolaylaştırır.
 
-* [Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1010,11 +1010,11 @@ Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaç
 
 **Rehberlik**: Service Fabric kümenizdeki yedekleme geri yükleme hizmetini etkinleştirin ve durum bilgisi olan hizmetleri düzenli aralıklarla ve isteğe bağlı olarak yedeklemek için yedekleme ilkeleri oluşturun. Azure Key Vault içinde müşteri tarafından yönetilen anahtarları yedekleyin.
 
-* [Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
-* [Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1024,11 +1024,11 @@ Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaç
 
 **Rehberlik**: yedekleme yapılandırma bilgilerini ve kullanılabilir yedeklemeleri düzenli olarak inceleyerek yedekleme geri yükleme hizmetinden geri yükleme gerçekleştirebilme olanağı sağlayın. Yedeklenen müşteri tarafından yönetilen anahtarların test geri yüklemesi.
 
-* [Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Azure Service Fabric yedeklemeyi geri yükleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-backup-restore-service-trigger-restore)
+* [Azure Service Fabric yedeklemeyi geri yükleme](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1040,9 +1040,9 @@ Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaç
 
 Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault ' deki geçici silme özelliğinin yanlışlıkla veya kötü amaçlı silme ile karşı korunması için etkinleştirildiğinden emin olun.
 
-* [Azure Depolama bekleyen verileri şifreleme](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Azure Depolama bekleyen verileri şifreleme](../storage/common/storage-service-encryption.md)
 
-* [Key Vault 'da geçici silme özelliğini etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault 'da geçici silme özelliğini etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1050,7 +1050,7 @@ Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault ' deki 
 
 ## <a name="incident-response"></a>Olay yanıtı
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](/azure/security/benchmarks/security-control-incident-response).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: olay yanıtı kılavuzu oluşturma
 
@@ -1072,9 +1072,9 @@ Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault ' deki 
 
 Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynaklarını tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
 
-* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
-* [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1094,7 +1094,7 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 **Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır. Sorunların çözümlendiğinden emin olmak için gerçesonra olayları gözden geçirin.
 
-* [Azure Güvenlik Merkezi güvenlik ilgili kişisini ayarlama](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Güvenlik Merkezi güvenlik ilgili kişisini ayarlama](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1104,9 +1104,9 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 **Rehberlik**: sürekli dışa aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Uyarılar Sentinel 'i akışa almak için Azure Güvenlik Merkezi veri bağlayıcısını kullanabilirsiniz.
 
-* [Sürekli dışarı aktarmayı yapılandırma](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Sürekli dışarı aktarmayı yapılandırma](../security-center/continuous-export.md)
 
-* [Uyarıları Azure Sentinel 'e akış](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Uyarıları Azure Sentinel 'e akış](../sentinel/connect-azure-security-center.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1116,7 +1116,7 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 **Rehberlik**: güvenlik uyarılarında ve önerilerinde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek Için Azure Güvenlik Merkezi 'Nde Iş akışı Otomasyonu özelliğini kullanın.
 
-* [Iş akışı otomasyonu ve Logic Apps yapılandırma](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Iş akışı otomasyonu ve Logic Apps yapılandırma](../security-center/workflow-automation.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1124,7 +1124,7 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma testleri ve red team alıştırmaları
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
 
@@ -1140,5 +1140,5 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

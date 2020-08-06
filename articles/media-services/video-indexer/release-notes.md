@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042623"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837318"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -29,6 +29,28 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="july-2020"></a>Temmuz 2020
+
+### <a name="ga-for-multi-language-identification"></a>Çok dilli tanımlama için GA
+
+Çoklu dil tanımlama, önizleme 'den GA 'ye taşınır ve üretken kullanım için hazırlayın.
+
+"GA Önizleme" geçişi ile ilgili bir fiyatlandırma etkisi yoktur.
+
+### <a name="video-indexer-website-improvements"></a>Video Indexer Web sitesi geliştirmeleri
+
+#### <a name="adjustments-in-the-video-gallery"></a>Video galerisindeki ayarlamalar
+
+Ayrıntılı Öngörüler için ek filtreleme özelliklerine sahip yeni arama çubuğu eklendi. Arama sonuçları da geliştirildi.
+
+Birden çok dosya içeren video arşivini sıralama ve yönetme yeteneğine sahip yeni liste görünümü.
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>Kolay seçim ve yapılandırma için yeni panel
+
+Kolay seçim ve Kullanıcı Yapılandırması için yan panel eklendi, basit ve hızlı hesap oluşturma ve paylaşmaya izin vererek yapılandırma ayarı da sağlar.
+
+Yan panel, Kullanıcı tercihleri ve yardım için de kullanılır.
 
 ## <a name="june-2020"></a>Haziran 2020
 

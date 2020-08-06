@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 6f2043b91f8345a638d6fc773230cd182fb0fead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508854"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836539"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için özel bağlantı
 
@@ -20,7 +20,7 @@ ms.locfileid: "84508854"
 Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin listesi için özel bağlantı [belgelerini](https://docs.microsoft.com/azure/private-link/index)gözden geçirin. Özel uç nokta, belirli bir [sanal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ağ ve alt ağ içindeki özel bir IP adresidir.
 
 > [!NOTE]
-> Bu özellik, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
 ## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
 
@@ -57,7 +57,7 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki MariaDB için A
 
 Özel bağlantıları etkinleştirmek için özel uç noktalar gereklidir. Bu işlem, aşağıdaki nasıl yapılır kılavuzlarından yararlanarak yapılabilir.
 
-* [Azure portalındaki](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
+* [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Onay Işlemi

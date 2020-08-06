@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080412"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837168"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -23,7 +23,7 @@ Portal aracılığıyla Azure sanal makine ölçek kümesinin dağıtımını ya
 Bu makalede ele alınan özelliklerin tümünü Azure Resource Manager şablonlarını kullanarak yapılandırabilirsiniz. Belirli özellikler için Azure CLI ve PowerShell örnekleri de eklenmiştir.
 
 ## <a name="accelerated-networking"></a>Hızlandırılmış Ağ
-Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırmasına (SR-IV) olanak tanıyarak ağ performansını geliştirir. Hızlandırılmış ağ hakkında daha fazla bilgi edinmek için [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) veya [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) sanal makineler için Hızlandırılmış ağ sayfalarını inceleyin. Ölçek kümeleriyle hızlandırılmış ağ kullanmak için, ölçek kümenizin networkInterfaceConfigurations ayarlarında enableAcceleratedNetworking değerini **true** olarak ayarlayın. Örneğin:
+Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırmasına (SR-IV) olanak tanıyarak ağ performansını geliştirir. Hızlandırılmış ağ hakkında daha fazla bilgi edinmek için [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) veya [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) sanal makineler için Hızlandırılmış ağ sayfalarını inceleyin. Ölçek kümeleriyle hızlandırılmış ağ kullanmak için, ölçek kümenizin networkInterfaceConfigurations ayarlarında enableAcceleratedNetworking değerini **true** olarak ayarlayın. Örnek:
 
 ```json
 "networkProfile": {
@@ -90,13 +90,13 @@ Bir uygulama ağ geçidi kullanan bir ölçek kümesi oluşturmak için, bu ARM 
 Varsayılan olarak, ölçek kümeleri içinde oluşturuldukları VNET ve alt ağın belirli DNS ayarlarını alır. Bununla birlikte, ölçek kümesi için DNS ayarlarını doğrudan oluşturmanız da mümkündür.
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Yapılandırılabilir DNS sunucularıyla ölçek kümesi oluşturma
-Azure CLI kullanarak özel DNS yapılandırmasıyla bir ölçek kümesi oluşturmak için, **vmss create** komutuna sunucu ip adreslerini ayıran boşluktan sonra **--dns-servers** bağımsız değişkenini ekleyin. Örneğin:
+Azure CLI kullanarak özel DNS yapılandırmasıyla bir ölçek kümesi oluşturmak için, **vmss create** komutuna sunucu ip adreslerini ayıran boşluktan sonra **--dns-servers** bağımsız değişkenini ekleyin. Örnek:
 
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
 
-Azure şablonunda özel DNS sunucularını yapılandırmak için, ölçek kümesinin networkInterfaceConfigurations bölümüne bir dnsSettings özelliği ekleyin. Örneğin:
+Azure şablonunda özel DNS sunucularını yapılandırmak için, ölçek kümesinin networkInterfaceConfigurations bölümüne bir dnsSettings özelliği ekleyin. Örnek:
 
 ```json
 "dnsSettings":{
@@ -107,7 +107,7 @@ Azure şablonunda özel DNS sunucularını yapılandırmak için, ölçek kümes
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Yapılandırılabilir sanal makine etki alanı adlarıyla ölçek kümesi oluşturma
 CLI kullanarak sanal makineler için özel bir DNS adıyla bir ölçek kümesi oluşturmak için, **virtual machine scale set create** komutuna etki alanı adını temsil eden dizeden sonra **--vm-domain-name** bağımsız değişkenini ekleyin.
 
-Bir Azure şablonunda etki alanı adını ayarlamak için, ölçek kümesi **Networkınterfaceconfigurations** bölümüne bir **dnssettings** özelliği ekleyin. Örneğin:
+Bir Azure şablonunda etki alanı adını ayarlamak için, ölçek kümesi **Networkınterfaceconfigurations** bölümüne bir **dnssettings** özelliği ekleyin. Örnek:
 
 ```json
 "networkProfile": {
@@ -153,7 +153,7 @@ Genel olarak, Azure ölçek kümesi sanal makinelerinin kendi genel IP adresleri
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Sanal makine başına bir genel IP ile ölçek kümesi oluşturma
 CLI ile her sanal makineye bir genel IP adresi atayan bir ölçek kümesi oluşturmak için, **vmss create** komutuna **--public-ip-per-vm** parametresini ekleyin. 
 
-Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft. COMPUTE/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30**olduğundan emin olun ve ölçek kümesi ipconfigurations bölümüne **Publicıpaddressconfiguration** JSON özelliği ekleyin. Örneğin:
+Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft. COMPUTE/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30**olduğundan emin olun ve ölçek kümesi ipconfigurations bölümüne **Publicıpaddressconfiguration** JSON özelliği ekleyin. Örnek:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -169,13 +169,13 @@ Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft. COMP
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Ölçek kümesinde sanal makinelerin genel IP adreslerini sorgulama
 CLI kullanarak ölçek kümesi sanal makinelerine atanmış genel IP adreslerini listelemek için, **az vmss list-instance-public-ips** komutunu kullanın.
 
-PowerShell kullanarak ölçek kümesi genel IP adreslerini listelemek için _Get-Azpublicıpaddress_ komutunu kullanın. Örneğin:
+PowerShell kullanarak ölçek kümesi genel IP adreslerini listelemek için _Get-Azpublicıpaddress_ komutunu kullanın. Örnek:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-Doğrudan genel IP adresi yapılandırmasının kaynak kimliğine başvuruda bulunarak da genel IP adreslerini sorgulayabilirsiniz. Örneğin:
+Doğrudan genel IP adresi yapılandırmasının kaynak kimliğine başvuruda bulunarak da genel IP adreslerini sorgulayabilirsiniz. Örnek:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
@@ -244,7 +244,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 Ölçek kümesinde bir sanal makineye bağlanan her NIC ile ilişkilendirilmiş bir veya birden çok IP yapılandırması olabilir. Her yapılandırma bir özel IP adresine atanır. Her yapılandırmayla ilişkilendirilmiş bir genel IP adresi kaynağı da olabilir. NIC’ye kaç IP adresi atanabileceğini ve Azure aboneliğinde kaç genel IP adresi kullanabileceğinizi anlamak için, [Azure sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) bakın.
 
 ## <a name="multiple-nics-per-virtual-machine"></a>Sanal makine başına birden çok NIC
-Sanal makinenin boyutuna bağlı olarak, sanal makine başına en çok 8 NIC’niz olabilir. Makine başına NIC sayısı üst sınırı, [Sanal makine boyutu makalesinde](../virtual-machines/windows/sizes.md) verilmiştir. Bir VM örneğine bağlı tüm NIC'ler aynı sanal ağa bağlanmalıdır. NIC'ler farklı alt ağlara bağlanabilir, ancak tüm alt ağların aynı sanal ağ kapsamında olması gerekir.
+Sanal makinenin boyutuna bağlı olarak, sanal makine başına en çok 8 NIC’niz olabilir. Makine başına NIC sayısı üst sınırı, [Sanal makine boyutu makalesinde](../virtual-machines/sizes.md) verilmiştir. Bir VM örneğine bağlı tüm NIC'ler aynı sanal ağa bağlanmalıdır. NIC'ler farklı alt ağlara bağlanabilir, ancak tüm alt ağların aynı sanal ağ kapsamında olması gerekir.
 
 Aşağıdaki örnek, sanal makine başına birden çok NIC girdisi ve birden çok genel IP gösteren bir ölçek kümesi ağ profilidir:
 
@@ -326,7 +326,7 @@ Ağ Güvenlik Grupları, ölçek kümesi sanal makine özelliklerinin ağ arabir
 
 Uygulama Güvenlik Grupları da ölçek kümesi sanal makine özelliklerinin ağ arabirimi IP yapılandırmaları bölümüne bir başvuru eklemek yoluyla doğrudan ölçek kümesine uygulanabilir.
 
-Örneğin:
+Örnek:
 
 ```json
 "networkProfile": {

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ef6751d3e7745b47b3a801cefb0bcd2db4f64ffa
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 570e2798cf2ae5a20d55973622cca9344ea4a4a3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553653"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837151"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 ve Dasv4 serisi
 
@@ -81,7 +81,7 @@ Dasv4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi 
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

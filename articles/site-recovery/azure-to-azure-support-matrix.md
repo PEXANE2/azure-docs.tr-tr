@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: d4beec60a2cd705884ee79296c9afab2afc08c2e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 09b6bf6db5927c49950fc5b2a6d1753d53364380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534507"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836658"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -21,7 +21,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 **Dağıtım** |  **Destek**
 --- | ---
 **Azure Portal** | Destekleniyor.
-**PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
+**PowerShell** | Destekleniyor. [Daha fazla bilgi](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
@@ -170,7 +170,7 @@ SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Varsayılan olarak, tüm [his
 
 **Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
-Boyut | En az 2 CPU çekirdeğine ve 1 GB RAM 'e sahip Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/windows/sizes.md)doğrulayın.
+Boyut | En az 2 CPU çekirdeğine ve 1 GB RAM 'e sahip Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/sizes.md)doğrulayın.
 Kullanılabilirlik kümeleri | Desteklenir | Varsayılan seçeneklerle bir Azure VM için çoğaltmayı etkinleştirirseniz, kaynak bölge ayarlarına bağlı olarak bir kullanılabilirlik kümesi otomatik olarak oluşturulur. Bu ayarları değiştirebilirsiniz.
 Kullanılabilirlik alanları | Desteklenir |
 Karma kullanım teklifi (HUB) | Desteklenir | Kaynak VM 'nin etkinleştirilmiş bir HUB lisansı varsa, yük devretme testi veya yük devretme VM 'si de HUB lisansı kullanır.
@@ -205,7 +205,7 @@ Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için de
 Geçici disk | Desteklenmez | Geçici disk her zaman çoğaltmadan çıkarılır.<br/><br/> Kalıcı verileri geçici diskte depolamamayın. [Daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md).
 Veri diski en büyük boyutu | yönetilen diskler için 8192 GB<br></br>yönetilmeyen diskler için 4095 GB|
 Veri diski en küçük boyutu | Yönetilmeyen diskler için kısıtlama yoktur. yönetilen diskler için 2 GB |
-Veri diski en fazla sayı | Belirli bir Azure VM boyutu için desteğe uygun olarak 64 'e kadar | VM boyutları hakkında [daha fazla bilgi edinin](../virtual-machines/windows/sizes.md) .
+Veri diski en fazla sayı | Belirli bir Azure VM boyutu için desteğe uygun olarak 64 'e kadar | VM boyutları hakkında [daha fazla bilgi edinin](../virtual-machines/sizes.md) .
 Veri diski değişim oranı | Premium Depolama için disk başına en fazla 20 MBps. Standart depolama için disk başına en fazla 2 MBps. | Disk üzerindeki ortalama veri değişim oranı, en yüksek değerden sürekli yüksek ise çoğaltma işlemi gerçekleştirilmez.<br/><br/>  Ancak, en yüksek değer, tek tek aşılırsa, çoğaltma yakalayabilir, ancak biraz gecikmeli kurtarma noktası görebilirsiniz.
 Veri diski-standart depolama hesabı | Desteklenir |
 Veri diski-Premium depolama hesabı | Desteklenir | Bir VM 'nin Premium ve standart depolama hesapları arasında yayıldığı diskler varsa, hedef bölgede aynı depolama yapılandırmasına sahip olduğunuzdan emin olmak için her bir disk için farklı bir hedef depolama hesabı seçebilirsiniz.
@@ -219,7 +219,7 @@ Bekleyen şifreleme (SSE) | Desteklenir | SSE, depolama hesaplarında varsayıla
 Bekleyen şifreleme (CMK) | Desteklenir | Yönetilen diskler için hem yazılım hem de HSM anahtarları desteklenir
 Rest 'te Çift şifreleme | Desteklenir | [Windows](../virtual-machines/windows/disk-encryption.md) ve [Linux](../virtual-machines/linux/disk-encryption.md) için desteklenen bölgeler hakkında daha fazla bilgi edinin
 Windows işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. | Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez. <br/><br/> HSM korumalı anahtarlar desteklenmez. <br/><br/> Tek bir diskte ayrı ayrı birimlerin şifrelenmesi desteklenmez. |
-Linux işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. | Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez. <br/><br/> HSM korumalı anahtarlar desteklenmez. <br/><br/> Tek bir diskte ayrı ayrı birimlerin şifrelenmesi desteklenmez. <br><br> Çoğaltmayı etkinleştirme ile ilgili bilinen sorun. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137) |
+Linux işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. | Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez. <br/><br/> HSM korumalı anahtarlar desteklenmez. <br/><br/> Tek bir diskte ayrı ayrı birimlerin şifrelenmesi desteklenmez. <br><br> Çoğaltmayı etkinleştirme ile ilgili bilinen sorun. [Daha fazla bilgi edinin.](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS anahtarı döndürme | Desteklenmiyor | Depolama hesapları için SAS anahtarı döndürülürse, müşterinin çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeleri gerekir. |
 Sık erişimli ekleme    | Desteklenir | Çoğaltılan bir Azure VM 'ye eklediğiniz bir veri diski için çoğaltmanın etkinleştirilmesi, yönetilen diskleri kullanan VM 'Ler için desteklenir. <br/><br/> Tek seferde bir Azure VM 'sine yalnızca bir disk eklenebilir. Birden çok diskin paralel eklenmesi desteklenmez. |
 Diski sık erişimli kaldır    | Desteklenmez | SANAL makinede veri diski kaldırırsanız, çoğaltmayı devre dışı bırakmanız ve VM için çoğaltmayı yeniden etkinleştirmeniz gerekir.
@@ -274,15 +274,15 @@ Birden çok IP adresi | Desteklenmez | Birden çok IP adresli NIC 'ye sahip bir 
 Traffic Manager     | Desteklenir | Traffic Manager, trafiğin kaynak bölgedeki uç noktaya ve yük devretme durumunda hedef bölgedeki uç noktaya yönlendirilmesi için önceden yapılandırabilirsiniz.
 Azure DNS | Desteklenir |
 Özel DNS    | Desteklenir |
-Kimliği doğrulanmamış proxy | Desteklenir | [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
+Kimliği doğrulanmamış proxy | Desteklenir | [Daha fazla bilgi](./azure-to-azure-about-networking.md)
 Kimliği doğrulanmış ara sunucu | Desteklenmez | VM, giden bağlantı için kimliği doğrulanmış bir proxy kullanıyorsa, Azure Site Recovery kullanılarak çoğaltılamaz.
-Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenir | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
-VNET 'ten VNET 'e bağlantı    | Desteklenir | [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
+Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenir | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi](./azure-to-azure-about-networking.md)
+VNET 'ten VNET 'e bağlantı    | Desteklenir | [Daha fazla bilgi](./azure-to-azure-about-networking.md)
 Sanal Ağ Hizmet Uç Noktaları | Desteklenir | Depolama hesaplarına sanal ağ erişimini kısıtladığınız takdirde, güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verildiğinden emin olun.
 Hızlandırılmış ağ iletişimi | Desteklenir | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto ağ gereci | Desteklenmez | Üçüncü taraf gereçlerle, genellikle sağlayıcı tarafından sanal makine içinde uygulanan kısıtlamalar vardır. Azure Site Recovery aracı, Uzantılar ve giden bağlantıların kullanılabilir olmasını gerektirir. Ancak gereç, sanal makine içinde herhangi bir giden etkinliğin yapılandırılmasına izin vermez.
 IPv6  | Desteklenmez | Hem IPv4 hem de IPv6 içeren karışık yapılandırma de desteklenmez. Lütfen herhangi bir Site Recovery işleminden önce IPv6 aralığının alt ağını boşaltın.
-Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bilgi](azure-to-azure-how-to-enable-replication-private-endpoints.md)
 
 
 
@@ -290,4 +290,3 @@ Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bi
 
 - Azure VM 'lerini çoğaltmak için [ağ kılavuzunu](./azure-to-azure-about-networking.md) okuyun.
 - [Azure VM 'lerini çoğaltarak](./azure-to-azure-quickstart.md)olağanüstü durum kurtarma dağıtın.
-

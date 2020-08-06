@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986963"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836692"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için saydam veri şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84986963"
 
 TDE, verilerin sayfa düzeyindeki gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. TDE, veritabanı şifreleme anahtarı (DEK) adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Veritabanı başlangıcında, şifrelenen DEK şifresi çözülür ve veritabanı dosyalarının şifresini çözmek ve SQL Server veritabanı altyapısı işleminde yeniden şifrelemek için kullanılır. DEK, TDE koruyucusu tarafından korunur. TDE koruyucusu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) depolanan bir asimetrik anahtardır (müşteri tarafından yönetilen saydam veri şifrelemesi).
 
-Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu [sunucu](logical-servers.md) düzeyinde ayarlanır ve bu sunucuyla ilişkili tüm veritabanları tarafından devralınır. Azure SQL yönetilen örneği (önizlemede BYOK özelliği) için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
+Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu [sunucu](logical-servers.md) düzeyinde ayarlanır ve bu sunucuyla ilişkili tüm veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
 
 > [!IMPORTANT]
 > SQL veritabanı 'ndaki yeni oluşturulan tüm veritabanları, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılarak varsayılan olarak şifrelenir. 2017 Mayıs 'tan önce oluşturulan mevcut SQL veritabanları ve geri yükleme, coğrafi çoğaltma ve veritabanı kopyası kullanılarak oluşturulan SQL veritabanları varsayılan olarak şifrelenmez. 2019 Şubat 'tan önce oluşturulan mevcut SQL yönetilen örnek veritabanları varsayılan olarak şifrelenmez. Restore aracılığıyla oluşturulan SQL yönetilen örnek veritabanları, kaynaktan şifreleme durumunu devralma.

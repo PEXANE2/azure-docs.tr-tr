@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: bf55c1f7de751f03fb804eb263cf0810a48378e1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 32efde2cb2497fb8aab415d09a1063ff07c6b0f0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494896"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837202"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi için doğru hata etki alanı sayısını seçme
 Sanal Makine Ölçek Kümeleri, Azure bölgelerinde hiçbir bölge olmadan varsayılan olarak beş hata etki alanıyla oluşturulur. Sanal makine ölçek kümelerinin zeli dağıtımını destekleyen bölgeler için ve bu seçenek belirlendiğinde, her bir bölge için varsayılan hata etki alanı sayısı 1 ' dir. Bu durumda FD = 1, ölçek kümesine ait sanal makine örneklerinin, en iyi çaba temelinde birçok rafta yayılacaı anlamına gelir.
@@ -24,7 +24,7 @@ Ayrıca, ölçek kümesi hata etki alanlarının sayısını yönetilen disk say
 ## <a name="rest-api"></a>REST API
 Özelliğini `properties.platformFaultDomainCount` 1, 2 veya 3 (belirtilmemişse, varsayılan olarak 3) olarak ayarlayabilirsiniz. [REST API için](/rest/api/compute/virtualmachinescalesets/createorupdate)belgelere bakın.
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 Parametresini `--platform-fault-domain-count` 1, 2 veya 3 (belirtilmemişse, varsayılan olarak 3) olarak ayarlayabilirsiniz. [Burada](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)Azure CLI belgelerine bakın.
 
 ```azurecli-interactive
@@ -41,4 +41,4 @@ az vmss create \
 Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure ortamları için [kullanılabilirlik ve artıklık özellikleri](../virtual-machines/windows/availability.md) hakkında daha fazla bilgi edinin.
+- Azure ortamları için [kullanılabilirlik ve artıklık özellikleri](../virtual-machines/availability.md) hakkında daha fazla bilgi edinin.

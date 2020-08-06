@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71180079"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841972"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Ek Premium dosya paylaşma düzeyi limitleri
 
@@ -25,8 +25,8 @@ ms.locfileid: "71180079"
 
 |Alan  |Premium dosya  |Standart dosya |
 |---------|---------|---------|
-|Boyut                  |1 TiB         |1 TiB|
-|Dosya başına en fazla ıOPS     |5.000         |1000|
+|Boyut                  |4 TiB         |1 TiB|
+|Dosya başına en fazla ıOPS     |5.000         |1.000|
 |Eşzamanlı tutamaçlar    |2.000         |2.000|
 |Çıkış  |300 MIB/sn|      Bkz. standart dosya işleme değerleri|
 |Giriş  |200 MIB/sn| Bkz. standart dosya işleme değerleri|

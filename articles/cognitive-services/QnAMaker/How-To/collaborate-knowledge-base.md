@@ -3,18 +3,18 @@ title: Bilgi Bankası 'nda işbirliği-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure rol tabanlı erişim denetimi (Azure RBAC) ile birlikte sağlanır.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446937"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837440"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Yazarlar ve düzenleyicilerle işbirliği
 
 İşbirliği, işbirliğinin rolüne bağlı olarak ortak çalışan erişimini kısıtlamanız için Soru-Cevap Oluşturma kaynak düzeyinde sağlanır. Soru-Cevap Oluşturma ortak çalışan kimlik doğrulama [kavramları](../Concepts/role-based-access-control.md)hakkında daha fazla bilgi edinin.
 
-## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağına rol tabanlı erişim (RBAC) ekleme
+## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağınız için Azure rol tabanlı erişim denetimi (Azure RBAC) ekleme
 
 Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik Azure [rol tabanlı Access Control](../../../active-directory/role-based-access-control-configure.md)sağlanır.
 
@@ -36,13 +36,13 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     ![Soru-Cevap Oluşturma ıAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. **Ekle**'yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. Aşağıdaki listeden bir rol seçin:
 
-    |Rol|
+    |Role|
     |--|
     |Sahip|
     |Katılımcı|

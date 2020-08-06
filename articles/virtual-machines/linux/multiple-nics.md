@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283274"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836930"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Azure 'da birden çok ağ arabirim kartı ile Linux sanal makinesi oluşturma
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>VM oluşturma ve NIC 'Leri iliştirme
-VM oluştururken, ile oluşturduğunuz NIC 'Leri belirtin `--nics` . VM boyutunu seçerken de dikkatli olmanız gerekir. Bir VM 'ye ekleyebileceğiniz toplam NIC sayısı sınırı vardır. [LINUX VM boyutları](sizes.md)hakkında daha fazla bilgi edinin.
+VM oluştururken, ile oluşturduğunuz NIC 'Leri belirtin `--nics` . VM boyutunu seçerken de dikkatli olmanız gerekir. Bir VM 'ye ekleyebileceğiniz toplam NIC sayısı sınırı vardır. [LINUX VM boyutları](../sizes.md)hakkında daha fazla bilgi edinin.
 
 [az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek *myVM* adlı bir VM oluşturur:
 
@@ -97,7 +97,7 @@ az vm create \
 [Konuk IŞLETIM sistemini birden çok NIC Için yapılandırma](#configure-guest-os-for-multiple-nics)bölümündeki adımları tamamlayarak Konuk işletim sistemine yönlendirme tabloları ekleyin.
 
 ## <a name="add-a-nic-to-a-vm"></a>VM 'ye bir NIC ekleme
-Önceki adımlarda birden çok NIC içeren bir VM oluşturulmuştur. Ayrıca, Azure CLı ile mevcut bir VM 'ye NIC 'ler de ekleyebilirsiniz. Farklı [VM boyutları](sizes.md) değişen sayıda NIC destekler, bu nedenle VM 'nizi uygun şekilde boyutlandırın. Gerekirse, [bir VM 'yi yeniden boyutlandırabilirsiniz](change-vm-size.md).
+Önceki adımlarda birden çok NIC içeren bir VM oluşturulmuştur. Ayrıca, Azure CLı ile mevcut bir VM 'ye NIC 'ler de ekleyebilirsiniz. Farklı [VM boyutları](../sizes.md) değişen sayıda NIC destekler, bu nedenle VM 'nizi uygun şekilde boyutlandırın. Gerekirse, [bir VM 'yi yeniden boyutlandırabilirsiniz](change-vm-size.md).
 
 [Az Network Nic Create](/cli/azure/network/nic)komutuyla başka bir NIC oluşturun. Aşağıdaki örnek, önceki adımlarda oluşturulan arka uç alt ağına ve ağ güvenlik grubuna bağlı *myNic3* ADLı bir NIC oluşturur:
 
@@ -242,6 +242,6 @@ ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Birden çok NIC ile VM oluşturmaya çalışırken [LINUX VM boyutlarını](sizes.md) gözden geçirin. Her VM boyutunun desteklediği en fazla NIC sayısına dikkat edin.
+Birden çok NIC ile VM oluşturmaya çalışırken [LINUX VM boyutlarını](../sizes.md) gözden geçirin. Her VM boyutunun desteklediği en fazla NIC sayısına dikkat edin.
 
 VM 'lerinizi daha güvenli hale getirmek için tam zamanında VM erişimi kullanın. Bu özellik, gerektiğinde SSH trafiği için ağ güvenlik grubu kurallarını ve tanımlı bir süre için açar. Daha fazla bilgi için bkz. [Tam zamanında özelliğini kullanarak sanal makine erişimini yönetme](../../security-center/security-center-just-in-time.md).

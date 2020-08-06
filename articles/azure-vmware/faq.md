@@ -4,12 +4,12 @@ description: Azure VMware çözümü (AVS) ile ilgili bazı yaygın soruların y
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836590"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizleme hakkında sık sorulan sorular
 
@@ -25,7 +25,7 @@ Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini
 
 **AVS bugün nerede mevcuttur?**
 
-Önizleme sırasında, Batı Avrupa 'daki Kuzey Amerika ve Amsterdam ' de ABD Doğu kullanılabilir.
+Hizmet yeni bölgelere sürekli ekleniyor, bu nedenle daha fazla ayrıntı için [en son hizmet kullanılabilirliği bilgilerini](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) görüntüleyin. 
 
 **Bir Azure VMware çözümü (AVS) örneğinde çalışan iş yükleri Azure hizmetleriyle tüketiliyor veya tümleştirilmesine neden olabilir?**
 
@@ -57,7 +57,7 @@ Hizmette yapılan güncelleştirmeler, Microsoft Azure Standart değişiklik yö
 
 **Bu, CloudSimple tarafından Azure VMware çözümünden farklı midir?**
 
-Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sağlayıcısı ortaklığı vardır. Yeni çözüm tamamen tasarlanır, Microsoft tarafından oluşturulup desteklenir ve VMware tarafından doğrulanmıştır. Mimari türsel olarak, çözümler Azure adanmış bir altyapıda çalışan VMware teknoloji yığını ile tutarlıdır.
+Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sağlayıcısı ortaklığı vardır. Yeni çözüm, Microsoft tarafından tamamen tasarlanır, oluşturulmuştur ve desteklenir, VMware tarafından onaylanmıştır. Mimari türsel olarak, çözümler Azure adanmış bir altyapıda çalışan VMware teknoloji yığını ile tutarlıdır.
 
 **Var olan bir Azure VMware Çözüm müşterisiyseniz, bu önizleme benim için ne anlama geliyor?**
 
@@ -65,7 +65,7 @@ CloudSimple ile mevcut Azure VMware çözümünde değişiklik yapılmaz. Azure 
 
 **Bu yeni çözüme CloudSimple ile Azure VMware çözümünden geçiş yapabilir miyim?**
 
-Evet, Azure VMware çözümü, HCX gibi tanıdık VMware araçları kullanılarak geçişi destekler. Yeni çözüme geçiş yapmak isteyen müşteriler için lütfen seçenekleri ve kullanılabilir desteği incelemek üzere Microsoft hesabı ekibinizle birlikte çalışın.
+Evet, Azure VMware çözümü, HCX gibi tanıdık VMware araçları kullanılarak geçişi destekler. Yeni çözüme geçiş ile ilgilenen müşteriler için, seçenekleri ve kullanılabilir desteği incelemek üzere Microsoft hesabı ekibinizle birlikte çalışın.
 
 
 
@@ -89,7 +89,7 @@ Her ESXi konağında, 15,2 TB 'lik kapasite katmanı ve 3,2 TB NVMe önbellek ka
 
 **Her ESXi konağında kullanılabilir ağ bant genişliği miktarı nedir?**
 
-ESXi Konakları, 25 Gbps 'e kadar bağlantı bant genişliğini destekler.
+Her ESXi Konağı, ESXi sistem trafiği için sağlanan iki NIC ve iş yükü trafiği için sağlanan iki NIC ile 4 25 Gbps NIC ile yapılandırılır. 
 
 **Veriler, bekleyen vSAN veri depoları üzerinde mi depolanıyor?**
 
@@ -197,11 +197,11 @@ NSX-T üzerinde tam yönetici ayrıcalıklarına sahip olacaksınız ve şirket 
 
 **AVS 'nin önizlemesi sırasında fiyatlandırma nasıl yapılandırılır?**
 
-Fiyatlandırma hakkında genel sorular için bkz. Azure VMware Çözüm [fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-vmware) sayfası. Önizleme fiyatlandırması istek üzerine alınabilir, lütfen hesap ekibinize başvurun veya satış ile iletişim kurmak için fiyatlandırma sayfasındaki bağlantıyı izleyin.
+Fiyatlandırma hakkında genel sorular için bkz. Azure VMware Çözüm [fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-vmware) sayfası. Önizleme fiyatlandırması istek üzerine alınabilir, hesap ekibinize başvurun veya satış ile iletişim kurmak için fiyatlandırma sayfasındaki bağlantıyı izleyin.
 
 **AVS 'yi destekliyor mu?**
 
-AVS desteği Microsoft tarafından dağıtılır. Lütfen önizleme yönergelerimize göre 9-5 pm pasıfık saati Pazartesi-Cuma arasında destek sağlayacağız. [Bu bağlantıdan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) bir destek bileti yükseltebilirsiniz
+AVS desteği Microsoft tarafından dağıtılır. Göz önünde olmak üzere, önizleme kılavuzlarımıza göre 9-5 PM PST iş saati Pazartesi-Cuma sürecinde destek sağlayacağız. [Bu bağlantıdan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) bir destek bileti yükseltebilirsiniz
 
 **AVS özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?**
 

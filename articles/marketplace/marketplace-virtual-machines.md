@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065640"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837354"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Sanal makine teklifleri için Yayımlama Kılavuzu
 
@@ -29,7 +29,7 @@ Teklifinizi test etmek üzere kullanıcıları düzenlemek için, kendi lisansı
 
 Hizmet olarak altyapı (IaaS) veya hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla bir veya daha fazla sanal makine dağıtabilirsiniz. *Test sürücüsü* yayımlama seçeneğinin bir avantajı, bir sanal makinenin veya tüm çözümünün iş ortağı tarafından barındırılan bir Kılavuzlu tura göre otomatik olarak kurulumu. Bir sınama sürücüsü, müşterilerinizin VM 'Leri hiçbir ek ücret ödemeden değerlendirmelerini sağlar. Deneme deneyimiyle birlikte çalışmak için müşterinin mevcut bir Azure müşterisi olması gerekmez. 
 
-Başlamak için [amp-testdrive](mailto:amp-testdrive@microsoft.com)'da e-postayla bizimle iletişim kurun. 
+Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md)
 
 |Gereksinimler  |Ayrıntılar |
 |---------|---------|

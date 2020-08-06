@@ -3,12 +3,12 @@ title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 4e3153ae611f368f66b045a69bab23ca0a52a033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28bdf902ab74bf4bb94a6bc02a558bf200b25e52
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089524"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836641"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -46,7 +46,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
 
 > [!NOTE]
-> Güncelleştirme paketi 48, ADE kullanılarak şifrelenmiş Linux makineleri için çoğaltmayı etkinleştirme konusunda bilinen bir sorun içeriyor. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137).
+> Güncelleştirme paketi 48, ADE kullanılarak şifrelenmiş Linux makineleri için çoğaltmayı etkinleştirme konusunda bilinen bir sorun içeriyor. [Daha fazla bilgi edinin](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137).
 
 ### <a name="update-rollup-47"></a>Güncelleştirme paketi 47
 

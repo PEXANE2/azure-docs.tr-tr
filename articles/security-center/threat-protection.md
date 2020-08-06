@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037197"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836811"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -54,11 +54,15 @@ Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak içi
 
     Microsoft Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi panosunda gösterilir. Panodan, Microsoft Defender ATP konsoluna Pivot verebilir ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Microsoft Defender ATP hakkında daha fazla bilgi için bkz. [Microsoft Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
 
-* **Dosya daha az saldırı algılama** <a name="windows-fileless"></a> -Uç noktalarınızı hedefleyen dosya daha az saldırı yaygındır. Algılamayı önlemek için, dosya daha az saldırı kötü amaçlı yükleri belleğe ekler. Saldırgan yükleri, güvenliği aşılmış işlemlerin belleğinde kalır ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
+* **Dosya daha az saldırı algılama** <a name="windows-fileless"></a> -Fileless saldırıları, disk tabanlı tarama tekniklerine göre algılamayı önlemek için kötü amaçlı yükleri belleğe ekler. Saldırganın yükü, daha fazla riskli işlem belleği içinde devam ettirir ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
 
-    Dosya daha az saldırı algılaması sayesinde, otomatik bellek oluşturma teknikleri, dosya daha az saldırı araç takımları, teknikler ve davranışları belirler. Bu çözüm, çalışma zamanında makinenizi düzenli olarak tarar ve öngörüleri doğrudan güvenlik açısından kritik işlemlerin belleğinden ayıklar.
+    Dosya daha az saldırı algılaması sayesinde, otomatik bellek oluşturma teknikleri, dosya daha az saldırı araç takımları, teknikler ve davranışları belirler. Bu çözüm, çalışma zamanında makinenizi düzenli olarak tarar ve öngörüleri doğrudan işlem belleğinden ayıklar. Linux için özel Öngörüler şunları içerir: 
 
-    Yararlanma, kod ekleme ve kötü amaçlı yükleri yürütme kanıtlarını bulur. Dosya daha az saldırı algılama, uyarı önceliklendirme, bağıntı ve aşağı akış yanıt süresini hızlandırmak için ayrıntılı güvenlik uyarıları üretir. Bu yaklaşım, daha fazla algılama kapsamı sağlayan olay tabanlı EDR çözümlerini tamamlar.
+    - İyi bilinen araç takımları ve şifre araştırma yazılımı 
+    - Genellikle bir yazılım güvenlik açığından yararlanma aşamasında yük olarak kullanılan küçük bir kod parçası olan shellcode.
+    - İşlem belleğinde kötü amaçlı yürütülebilir dosya eklendi
+
+    Dosya daha az saldırı algılama, ağ etkinliği gibi ek işlem meta verileri ile açıklamaları içeren ayrıntılı güvenlik uyarıları oluşturur. Bu, uyarı önceliklendirme, bağıntı ve aşağı akış yanıt süresini hızlandırır. Bu yaklaşım, olay tabanlı EDR çözümlerini tamamlar ve daha fazla algılama kapsamı sağlar.
 
     Dosya daha az saldırı algılama uyarılarına ilişkin ayrıntılar için, [Uyarı tablosuna](alerts-reference.md#alerts-windows)bakın.
 

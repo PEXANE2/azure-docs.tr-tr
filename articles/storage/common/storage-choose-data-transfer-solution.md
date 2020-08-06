@@ -1,6 +1,6 @@
 ---
 title: Veri aktarımı için bir Azure çözümü seçin | Microsoft Docs
-description: Ortamınızdaki veri boyutlarına ve kullanılabilir ağ bant genişliğine bağlı olarak veri aktarımı için bir Azure çözümü seçme hakkında bilgi edinin
+description: Ortamınızdaki veri boyutlarına ve kullanılabilir ağ bant genişliğine bağlı olarak veri aktarımı için bir Azure çözümü seçme hakkında bilgi edinin.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,14 +8,14 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514436"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836607"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Veri aktarımı için bir Azure çözümü seçin
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Veri aktarımı için bir Azure çözümü seçme
 
 Bu makalede, bazı yaygın Azure veri aktarımı çözümlerine genel bakış sunulmaktadır. Makale Ayrıca ortamınızdaki ağ bant genişliğine ve aktarmak istediğiniz verilerin boyutuna bağlı olarak önerilen seçeneklere bağlantı sağlar.
 

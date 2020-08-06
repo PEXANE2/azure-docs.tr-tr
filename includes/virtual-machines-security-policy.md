@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9310fd5c9a66fbd39e32c4756c5037567963912d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458684"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841927"
 ---
 Çalıştırdığınız uygulamalar için sanal makinenizin (VM) güvenli tutulması önemlidir. Sanal makinelerinizin güvenliğini sağlamak, sanal makinelerinize güvenli erişimi kapsayan bir veya daha fazla Azure hizmetini ve özelliğini ve verilerinizin güvenli şekilde depolanmasını içerebilir. Bu makalede, sanal makinenizin ve uygulamalarınızın güvenliğini sağlamanıza olanak tanıyan bilgiler sağlanmaktadır.
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizm
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-[Rol tabanlı erişim denetimi 'ni (RBAC)](../articles/role-based-access-control/overview.md)kullanarak, ekipinizdeki görevleri ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](https://docs.microsoft.com/cli/azure/role)veya[Azure POWERSHELL](../articles/role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](../articles/role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../articles/role-based-access-control/overview.md)kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](https://docs.microsoft.com/cli/azure/role)veya[Azure POWERSHELL](../articles/role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](../articles/role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

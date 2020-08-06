@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6391b21faaf6cd2a61dbe84af50ae12e4289dff9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509330"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837298"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için özel bağlantı
 
@@ -20,7 +20,7 @@ ms.locfileid: "84509330"
 Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin listesi için özel bağlantı [belgelerini](https://docs.microsoft.com/azure/private-link/index)gözden geçirin. Özel uç nokta, belirli bir [sanal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ağ ve alt ağ içindeki özel bir IP adresidir.
 
 > [!NOTE]
-> Bu özellik, MySQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
 ## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
 
@@ -57,7 +57,7 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki MySQL için Azu
 
 Özel bağlantıları etkinleştirmek için özel uç noktalar gereklidir. Bu işlem, aşağıdaki nasıl yapılır kılavuzlarından yararlanarak yapılabilir.
 
-* [Azure portalındaki](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
+* [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Onay Işlemi

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387736"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837117"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM 'Leri için kısa ömürlü işletim sistemi diskleri
 
@@ -40,7 +40,7 @@ Kalıcı ve kısa ömürlü işletim sistemi diskleri arasındaki önemli farkl�
 | **Bölge desteği**              | Tüm bölgeler                                                                                  | Tüm bölgeler                              |
 | **Veri kalıcılığı**            | IŞLETIM sistemi diskine yazılan işletim sistemi diski verileri Azure depolama 'da depolanıyor                                  | İşletim sistemi diskine yazılan veriler yerel VM depolama alanında depolanır ve Azure Storage 'da kalıcı değildir. |
 | **Serbest bırakılmış durumu durdur**      | VM 'Ler ve ölçek kümesi örnekleri, durdurma-serbest bırakıldı durumundan durdurulup yeniden başlatılabilir | VM 'Ler ve ölçek kümesi örnekleri durdurulamıyor-serbest bırakılamaz                                  |
-| **Özelleştirilmiş işletim sistemi diski desteği** | Yes                                                                                          | Hayır                                                                                 |
+| **Özelleştirilmiş işletim sistemi diski desteği** | Evet                                                                                          | Hayır                                                                                 |
 | **İşletim sistemi diski yeniden boyutlandırma**              | VM oluşturma sırasında ve VM durdurulduktan sonra desteklenir-serbest bırakıldı                                | Yalnızca VM oluşturma sırasında desteklenir                                                  |
 | **Yeni bir VM boyutuna yeniden boyutlandırma**   | İşletim sistemi diski verileri korunur                                                                    | İşletim sistemi diskindeki veriler silinir, işletim sistemi yeniden sağlandı                                      |
 
@@ -51,7 +51,7 @@ VM ve örnek görüntülerini VM önbelleğinin boyutuna kadar dağıtabilirsini
 Kısa ömürlü diskler Ayrıca, VM boyutunun Premium depolamayı desteklemesini gerektirir. Boyutlar genellikle (her zaman değil) `s` , DSv2 ve EsV3 gibi bir ada sahiptir. Daha fazla bilgi için bkz. [Azure VM boyutları](sizes.md) , hangi boyutlarda Premium depolamayı destekledikleri hakkındaki ayrıntılar için.
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Önizleme-kısa ömürlü işletim sistemi diskleri artık geçici disklere depolanabilir
-Kısa ömürlü işletim sistemi diskleri artık VM önbelleğine ek olarak VM geçici/kaynak diskine depolanabilir. Bu nedenle, artık önbelleğe sahip olmayan veya önbelleği olmayan, ancak Dav3, Dav4, Eav4 ve Eav3 gibi kısa ömürlü işletim sistemi diskini depolamak için bir geçici/kaynak diskine sahip olan VM ile kısa ömürlü işletim sistemi diskleri kullanabilirsiniz. Bir VM 'de yeterli önbellek ve geçici alan varsa, Ayrıca, [Dağıtılmış Diskyerleştirmesi](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement)adlı yeni bir özellik kullanarak kısa ömürlü Işletim sistemi diskini nerede depolamak istediğinizi de belirtebilirsiniz. Bu özellik şu anda önizleme sürümündedir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Başlamak için [erişim isteyin](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
+Kısa ömürlü işletim sistemi diskleri artık VM önbelleğine ek olarak VM geçici/kaynak diskine depolanabilir. Bu nedenle, artık önbelleğe sahip olmayan veya önbelleği olmayan, ancak Dav3, Dav4, Eav4 ve Eav3 gibi kısa ömürlü işletim sistemi diskini depolamak için bir geçici/kaynak diskine sahip olan VM ile kısa ömürlü işletim sistemi diskleri kullanabilirsiniz. Bir VM 'de yeterli önbellek ve geçici alan varsa, Ayrıca, [Dağıtılmış Diskyerleştirmesi](/rest/api/compute/virtualmachines/list#diffdiskplacement)adlı yeni bir özellik kullanarak kısa ömürlü Işletim sistemi diskini nerede depolamak istediğinizi de belirtebilirsiniz. Bu özellik şu anda önizleme sürümündedir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Başlamak için [erişim isteyin](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
 
 ## <a name="powershell"></a>PowerShell
 

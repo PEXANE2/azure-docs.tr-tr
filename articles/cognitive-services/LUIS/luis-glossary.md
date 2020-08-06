@@ -3,12 +3,12 @@ title: Sözlük-LUSıS
 description: Sözlük, LUSıS API hizmetiyle çalışırken karşılaşabileceğiniz terimleri açıklar.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056387"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836420"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 Language Understanding (LUSıS) sözlüğü, LUO hizmeti ile çalışırken karşılaşabileceğiniz terimleri açıklar.
@@ -72,7 +72,7 @@ Toplu iş testinde duyarlık (pozitif tahmine dayalı değer olarak da bilinir),
 
 Anhayvan Batch testi için bir örnek, toplam hayvanlar sayısı (koyun ve koyun) ile ayrılmış olan koyun sayısıdır.
 
-### <a name="recall"></a>Geri Çağırma
+### <a name="recall"></a>Geri çağırma
 
 Toplu iş testinde geri çek (duyarlılık olarak da bilinir), luto Genelleştirmenin bir özelliğidir.
 
@@ -94,11 +94,11 @@ Sınıflandırıcı, bir girişin hangi kategoriye veya sınıfa uyduğunu tahmi
 
 ## <a name="collaborator"></a>İşbirlikçi
 
-Ortak çalışan, kavramsal olarak aynı şeyi [yapar.](#contributor) Bir sahip, ortak çalışan e-posta adresini rol tabanlı erişim (RBAC) ile denetlenen bir uygulamaya eklediğinde ortak çalışan erişimi verilir. Ortak çalışanları hala kullanıyorsanız, LUSıS hesabınızı geçirmeniz ve RBAC ile katılımcıları yönetmek için LUSıS yazma kaynaklarını kullanmanız gerekir.
+Ortak çalışan, kavramsal olarak aynı şeyi [yapar.](#contributor) Bir sahip, ortak çalışan e-posta adresini Azure rol tabanlı erişim denetimi (Azure RBAC) ile denetlenen bir uygulamaya eklediğinde ortak çalışan erişimi verilir. Ortak çalışanları hala kullanıyorsanız, LUSıS hesabınızı geçirmeniz ve RBAC ile katılımcıları yönetmek için LUSıS yazma kaynaklarını kullanmanız gerekir.
 
 ## <a name="contributor"></a>Katılımcı
 
-Katkıda bulunan, uygulamanın [sahibi](#owner) değildir, ancak hedefleri, varlıkları, utbotları eklemek, düzenlemek ve silmek için aynı izinlere sahiptir. Katkıda bulunan, bir LUO uygulamasına rol tabanlı erişim (RBAC) sağlar.
+Katkıda bulunan, uygulamanın [sahibi](#owner) değildir, ancak hedefleri, varlıkları, utbotları eklemek, düzenlemek ve silmek için aynı izinlere sahiptir. Katkıda bulunan, bir Lua uygulamasına Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar.
 
 Ayrıca bkz:
 * Katkıda [bulunanlar ekleme](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)
@@ -107,11 +107,11 @@ Ayrıca bkz:
 
 Tanımlayıcı, daha önce bir makine öğrenimi [özelliği](#features)için kullanılan terimdir.
 
-## <a name="domain"></a>Domain
+## <a name="domain"></a>Etki alanı
 
 LUSıS bağlamında, etki alanı bir bilgi alanıdır. Etki alanınız senaryonuz için özeldir. Farklı etki alanları, etki alanı bağlamında anlamı olan belirli dili ve terimleri kullanır. Örneğin, müzik çalmak için bir uygulama oluşturuyorsanız, uygulamanız müziğe özgü hüküm ve dile özgü olacaktır: "şarkı, izleme, albüm, şarkı sözleri, b-tarafı, sanatçı" gibi kelimeler. Etki alanı örnekleri için bkz. [önceden oluşturulmuş etki alanları](#prebuilt-domain).
 
-## <a name="endpoint"></a>Uç Nokta
+## <a name="endpoint"></a>Uç Noktası
 
 ### <a name="authoring-endpoint"></a>Yazma uç noktası
 
@@ -228,7 +228,7 @@ Her uygulamanın, uygulamayı oluşturan kişi olan bir sahibi vardır. Sahibi A
 
 Önceden oluşturulmuş bir amaç, yaygın bilgi türleri sağlar ve kendi etiketli örnek türlerinde yer almaktadır.
 
-## <a name="prediction"></a>Prediction (Tahmin)
+## <a name="prediction"></a>Tahmin
 
 Tahmin, yeni verileri alan (Kullanıcı utterance) Azure LUSıS tahmin hizmetine yönelik bir REST isteği ve hangi amaçlardan ve varlıkların bulunduğunu belirlemek için bu verilere eğitilen ve yayımlanmış uygulamayı uygular.
 
@@ -254,7 +254,7 @@ Tahmin kaynağında bir Azure "Kind" bulunur `LUIS` .
 
 [Yazma anahtarı](#authoring-key)olarak yeniden adlandırıldı.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 [Yayımlama](luis-how-to-publish-app.md) , bir lusıs etkin sürümünü hazırlama veya üretim [uç noktasında](#endpoint)kullanılabilir hale getirmek anlamına gelir.
 
@@ -305,7 +305,7 @@ Bkz. [önceden oluşturulmuş datetimeV2 varlığının saat dilimini değiştir
 
 **İngilizce**için, belirteç ve sayıların sürekli bir yayılımı (boşluk veya noktalama işareti yoktur). Boşluk bir belirteç DEĞIL.
 
-|İfadenin|Belirteç sayısı|Açıklama|
+|İfade|Belirteç sayısı|Açıklama|
 |--|--|--|
 |`Dog`|1|Noktalama veya boşluk içermeyen tek bir sözcük.|
 |`RMT33W`|1|Kayıt Bulucu numarası. Sayı ve harflerden oluşabilir, ancak herhangi bir noktalama işareti yoktur.|

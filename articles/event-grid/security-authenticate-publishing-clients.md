@@ -3,12 +3,12 @@ title: Özel konular veya etki alanları Event Grid için istemci yayımlama ola
 description: Bu makalede, istemci yayımlama olaylarını Event Grid özel konuları doğrulamak için farklı yollar açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1e147830a4b37a8603df8e4ce29953acab2345bd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115885"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837406"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Yayımlama istemcilerinin kimliğini doğrulama (Azure Event Grid)
 Bu makalede, **erişim anahtarı** veya **paylaşılan ERIŞIM imzası (SAS)** belirteci kullanarak Azure Event Grid konular veya etki alanları için olayları yayınlayan istemcilerin kimlik doğrulaması hakkında bilgi sağlanır. SAS belirtecini kullanmanızı öneririz, ancak anahtar kimlik doğrulaması basit programlama sağlar ve birçok mevcut Web kancası yayımcısıyla uyumludur.  
@@ -27,7 +27,7 @@ aeg-sas-key: XXXXXXXXXXXXXXXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 Ayrıca, `aeg-sas-key` bir sorgu parametresi olarak belirtebilirsiniz. 
 
 ```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+https://<yourtopic>.<region>.eventgrid.azure.net/api/events?aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 Bir konu veya etki alanı için erişim anahtarları alma hakkında yönergeler için bkz. [erişim anahtarlarını alma](get-access-keys.md).
@@ -35,7 +35,7 @@ Bir konu veya etki alanı için erişim anahtarları alma hakkında yönergeler 
 ## <a name="authenticate-using-a-sas-token"></a>SAS belirteci kullanarak kimlik doğrulama
 Bir Event Grid kaynağı için SAS belirteçleri, kaynak, sona erme saati ve bir imzayı içerir. SAS belirtecinin biçimi: `r={resource}&e={expiration}&s={signature}` .
 
-Kaynak, olayları gönderdiğiniz olay Kılavuzu konusunun yoludur. Örneğin, geçerli bir kaynak yolu: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Desteklenen tüm API sürümlerini görmek için bkz. [Microsoft. EventGrid kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
+Kaynak, olayları gönderdiğiniz olay Kılavuzu konusunun yoludur. Örneğin, geçerli bir kaynak yolu: `https://<yourtopic>.<region>.eventgrid.azure.net/api/events` . Desteklenen tüm API sürümlerini görmek için bkz. [Microsoft. EventGrid kaynak türleri](/azure/templates/microsoft.eventgrid/allversions). 
 
 İlk olarak, program aracılığıyla bir SAS belirteci oluşturun ve ardından `aeg-sas-token` `Authorization SharedAccessSignature` Event Grid kimlik doğrulaması için üstbilgiyi veya üstbilgiyi kullanın. 
 
@@ -69,14 +69,14 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 Üst bilgi için SAS belirtecini bir değer olarak geçirme örneği aşağıda verilmiştir `aeg-sas-toke` . 
 
 ```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ### <a name="using-authorization-header"></a>Yetkilendirme üst bilgisini kullanma
 Üst bilgi için SAS belirtecini bir değer olarak geçirme örneği aşağıda verilmiştir `Authorization` . 
 
 ```http
-Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

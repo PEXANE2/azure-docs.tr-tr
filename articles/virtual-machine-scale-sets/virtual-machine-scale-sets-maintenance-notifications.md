@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080446"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837185"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için planlı bakım bildirimleri
 
@@ -72,7 +72,7 @@ Aşağıdaki durumlarda self servis bakımını kullanmak en iyisidir:
 
 Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşan bakım dalgasının etkilediği sanal makine ölçek kümelerinin listesini görüntüleyebilirsiniz. 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler**' i seçin ve ardından **Sanal Makine Ölçek Kümeleri**' ni seçin.
 3. **Sanal Makine Ölçek Kümeleri**altında, **Sütunları Düzenle** ' yi seçerek kullanılabilir sütunların listesini açın.
 4. **Kullanılabilir sütunlar** bölümünde **self servis bakımı**' nı seçin ve ardından **Seçili sütunlar** listesine taşıyın. **Uygula**’yı seçin.  
@@ -91,7 +91,7 @@ Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşa
 
 Azure, abonelik sahibine ve ortak sahipler grubuna bir e-posta göndererek planlı bakım için bir zamanlama iletişim kurar. Etkinlik günlüğü uyarıları oluşturarak bu iletişime alıcılar ve kanallar ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure etkinlik günlüğü ile abonelik izleme etkinliği](../azure-monitor/platform/platform-logs-overview.md).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **izleyici**' yi seçin. 
 3. **İzleyici-uyarılar (klasik)** bölmesinde **+ etkinlik günlüğü uyarısı Ekle**' yi seçin.
 4. **Etkinlik günlüğü uyarısı Ekle** sayfasında istenen bilgileri seçin veya girin. **Ölçütlerde**aşağıdaki değerleri ayarladığınızdan emin olun:
@@ -181,7 +181,7 @@ Y **:** Azure platformunda yapılan güncelleştirmelerin ve yükseltmelerin ço
 
 Y **:** Bir kullanılabilirlik kümesinde veya sanal makine ölçek kümelerinde dağıtılan sanal makineler güncelleştirme etki alanlarını kullanır. Azure, bakım gerçekleştirirken güncelleştirme etki alanı kısıtlamasını kabul eder ve farklı bir güncelleştirme etki alanından (aynı Kullanılabilirlik kümesi içinde) VM 'Leri yeniden başlatmaz. Azure, sonraki VM grubuna geçmeden önce en az 30 dakika bekler. 
 
-Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için bölgeler ve kullanılabilirlik](../virtual-machines/windows/availability.md).
+Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için bölgeler ve kullanılabilirlik](../virtual-machines/availability.md).
 
 **S: planlı bakım hakkında nasıl bildirim alabilir?**
 
