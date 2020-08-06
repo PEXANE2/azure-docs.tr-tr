@@ -5,14 +5,14 @@ services: vpn-gateway
 author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 08/04/2020
 ms.author: alzam
-ms.openlocfilehash: cf978f9551e5b2db885ca28d14f66586c029d913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082231"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761187"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN protokolü bağlantıları için VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
@@ -250,6 +250,15 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 </clientconfig>
 </azvpnprofile>
 ```
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Profili bir komut satırı isteminden içeri aktarabilir miyim?
+
+İndirilen **azurevpnconfig.xml** dosyasını **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+içeri aktarmaya zorlamak için **-f** anahtarını da kullanın
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

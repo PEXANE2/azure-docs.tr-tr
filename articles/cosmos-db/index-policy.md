@@ -4,14 +4,14 @@ description: Azure Cosmos DB ' de otomatik dizin oluşturma ve daha fazla perfor
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636334"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760830"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 
@@ -20,7 +20,7 @@ Azure Cosmos DB, her kapsayıcının kapsayıcının öğelerinin nasıl dizine 
 Bazı durumlarda bu otomatik davranışı kendi gereksinimlerinize daha iyi uyacak şekilde geçersiz kılmak isteyebilirsiniz. *Dizin oluşturma modunu*ayarlayarak bir kapsayıcının dizin oluşturma ilkesini özelleştirebilir ve *özellik yollarını*dahil edebilir veya dışlayabilirsiniz.
 
 > [!NOTE]
-> Bu makalede açıklanan dizin oluşturma ilkelerini güncelleştirme yöntemi yalnızca Azure Cosmos DB SQL (Core) API 'SI için geçerlidir.
+> Bu makalede açıklanan dizin oluşturma ilkelerini güncelleştirme yöntemi yalnızca Azure Cosmos DB SQL (Core) API 'SI için geçerlidir. [MongoDB için Azure Cosmos DB API](mongodb-indexing.md) 'sinde dizin oluşturma hakkında bilgi edinin
 
 ## <a name="indexing-mode"></a>Dizin oluşturma modu
 
@@ -36,7 +36,7 @@ Varsayılan olarak, dizin oluşturma ilkesi olarak ayarlanır `automatic` . `aut
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 
-Özel bir dizin oluşturma ilkesi, dizin oluşturma işleminden açıkça dahil edilen veya dışlanan Özellik yollarını belirtebilir. Dizini oluşturulmuş yolların sayısını en iyi duruma getirerek, Kapsayıcınız tarafından kullanılan depolama miktarını düşürebilirsiniz ve yazma işlemlerinin gecikme süresini artırabilirsiniz. Bu yollar, [Dizin oluşturma genel bakış bölümünde açıklanan yöntemi](index-overview.md#from-trees-to-property-paths) aşağıdaki eklemelerle izleyerek tanımlanmıştır:
+Özel bir dizin oluşturma ilkesi, dizin oluşturma işleminden açıkça dahil edilen veya dışlanan Özellik yollarını belirtebilir. Dizine alınmış yolların sayısını en iyi duruma getirerek, yazma işlemlerinin gecikme süresini ve RU ücretlendirmesini önemli ölçüde azaltabilirsiniz. Bu yollar, [Dizin oluşturma genel bakış bölümünde açıklanan yöntemi](index-overview.md#from-trees-to-property-paths) aşağıdaki eklemelerle izleyerek tanımlanmıştır:
 
 - skaler bir değere (dize veya sayı) öndeki bir yol, şununla biter`/?`
 - bir dizideki öğeler `/[]` , Gösterim (yerine `/0` , `/1` vb.) ile birlikte karşılanır
@@ -89,7 +89,7 @@ Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle kar
 
 Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olur:
 
-| **Özellik Adı**     | **Varsayılan değer** |
+| **Özellik adı**     | **Varsayılan değer** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
@@ -101,7 +101,7 @@ Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini olu�
 
 Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, daha kesin yol daha önceliklidir.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 **Dahil edilen yol**:`/food/ingredients/nutrition/*`
 
@@ -129,7 +129,7 @@ Dizin oluşturma ilkesinde bir uzamsal yol tanımladığınızda, bu yola hangi 
 
 * LineString
 
-Azure Cosmos DB, varsayılan olarak hiçbir uzamsal dizin oluşturmaz. Uzamsal SQL yerleşik işlevlerini kullanmak isterseniz, gereken özelliklerde bir uzamsal dizin oluşturmanız gerekir. Uzamsal dizinler eklemeye yönelik dizin oluşturma örnekleri için [Bu bölüme](geospatial.md) bakın.
+Azure Cosmos DB, varsayılan olarak hiçbir uzamsal dizin oluşturmaz. Uzamsal SQL yerleşik işlevlerini kullanmak isterseniz, gereken özelliklerde bir uzamsal dizin oluşturmanız gerekir. Uzamsal dizinler eklemeye yönelik dizin oluşturma örnekleri için [Bu bölüme](sql-query-geospatial-index.md) bakın.
 
 ## <a name="composite-indexes"></a>Bileşik dizinler
 
@@ -259,16 +259,23 @@ Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler 
 
 ## <a name="modifying-the-indexing-policy"></a>Dizin oluşturma ilkesini değiştirme
 
-Kapsayıcının dizin oluşturma ilkesi [, Azure Portal veya desteklenen SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)dilediğiniz zaman güncelleştirilemeyebilir. Dizin oluşturma ilkesi için bir güncelleştirme, eski dizinden yeni bir dönüştürmeyi tetikler ve bu, çevrimiçi ve yerinde gerçekleştirilir (Bu nedenle işlem sırasında ek depolama alanı tüketilmelidir). Eski ilkenin dizini, yazma kullanılabilirliğini etkilemeden ve kapsayıcıda sağlanan aktarım hızını etkilemeden etkili bir şekilde yeni ilkeye dönüştürülür. Dizin dönüştürme zaman uyumsuz bir işlemdir ve tamamlanmak üzere gereken süre, sağlanan aktarım hızına, öğe sayısına ve bunların boyutuna bağlıdır.
+Kapsayıcının dizin oluşturma ilkesi [, Azure Portal veya desteklenen SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)dilediğiniz zaman güncelleştirilemeyebilir. Dizin oluşturma ilkesi için bir güncelleştirme, eski dizinden yeni bir dönüştürmeyi tetikler ve bu, çevrimiçi ve yerinde gerçekleştirilir (Bu nedenle işlem sırasında ek depolama alanı tüketilmemelidir). Eski ilkenin dizini, yazma kullanılabilirliği, okuma kullanılabilirliği veya kapsayıcıda sağlanan aktarım hızını etkilemeden etkili bir şekilde yeni ilkeye dönüştürülür. Dizin dönüştürme zaman uyumsuz bir işlemdir ve tamamlanmak üzere gereken süre, sağlanan aktarım hızına, öğe sayısına ve bunların boyutuna bağlıdır.
 
 > [!NOTE]
-> Bir Aralık veya uzamsal dizin eklenirken, sorgular tüm eşleşen sonuçları döndürmeyebilir ve hata döndürmeksizin bunu yapacaktır. Bu, sorgu sonuçlarının Dizin dönüştürmesi tamamlanana kadar tutarlı olamayacağı anlamına gelir. [SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)Dizin dönüşümünün ilerlemesini izlemek mümkündür.
+> [SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)Dizin dönüşümünün ilerlemesini izlemek mümkündür.
 
-Yeni dizin oluşturma ilkesinin modu tutarlı olarak ayarlandıysa, Dizin dönüştürme işlemi devam ederken başka bir dizin oluşturma ilkesi değişikliği uygulanabilir. Çalışan bir dizin dönüştürmesi, dizin oluşturma ilkesinin modu None olarak ayarlanarak iptal edilebilir (Bu, dizini hemen bırakacak).
+Herhangi bir dizin dönüştürmesi sırasında kullanılabilirliği yazmanın bir etkisi yoktur. Dizin dönüştürme, sağlanan RUs 'yi, CRUD işlemlerinizin veya sorgulardan daha düşük bir öncelikte kullanır.
+
+Yeni Dizin eklenirken kullanılabilirliği okuma etkisi yoktur. Sorgular, Dizin dönüştürme işlemi tamamlandıktan sonra yalnızca yeni dizinleri kullanacaktır. Dizin dönüştürmesi sırasında, sorgu altyapısı var olan dizinleri kullanmaya devam eder, bu nedenle dizinleme değişikliğini başlatmadan önce gözlemlediğiniz şekilde, dizin oluşturma dönüştürmesi sırasında benzer okuma performansını gözlemleyeceksiniz. Yeni dizinler eklenirken tamamlanmamış veya tutarsız sorgu sonuçlarının de riski yoktur.
+
+Dizinler kaldırılırken ve bırakılan dizinlerde filtre uygulayan sorguları hemen çalıştırdığınızda, tutarlı veya tamamlanmış sorgu sonuçlarının garantisi yoktur. Birden çok dizini kaldırır ve tek bir dizin oluşturma İlkesi değişikliğini yaparsanız sorgu altyapısı, Dizin dönüştürmesi boyunca tutarlı ve tamamlanmış sonuçları garanti eder. Ancak, birden çok dizin oluşturma ilkesi değişikliği aracılığıyla dizinleri kaldırırsanız, sorgu altyapısı tüm dizin dönüştürmeleri tamamlanana kadar tutarlı veya tamamlanmamış sonuçları garanti etmez. Çoğu geliştirici dizinleri çalıştırmaz ve bu dizinleri kullanan sorguları hemen çalıştırmayı dener. bu durum, uygulamada düşüktür.
+
+> [!NOTE]
+> Mümkün olduğunda, her zaman birden çok dizin oluşturma değişikliğini tek bir dizin oluşturma ilkesi değişikliğine göre gruplemeye çalışırsınız
 
 ## <a name="indexing-policies-and-ttl"></a>Dizin oluşturma ilkeleri ve TTL
 
-[Yaşam süresi (TTL) özelliği](time-to-live.md) , dizin oluşturmanın açık olduğu kapsayıcıda etkin olmasını gerektirir. Bunun anlamı:
+[Yaşam süresi (TTL) özelliğinin kullanılması için](time-to-live.md) dizin oluşturma gerekir. Bunun anlamı:
 
 - Dizin oluşturma modunun None olarak ayarlandığı bir kapsayıcıda TTL 'yi etkinleştirmek mümkün değildir,
 - TTL 'nin etkinleştirildiği bir kapsayıcıda dizin oluşturma modunun hiçbiri olarak ayarlanması mümkün değildir.

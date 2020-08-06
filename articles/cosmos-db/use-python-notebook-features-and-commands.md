@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: c35c34d5ffe3f3349430f17e71ad8192f4d8256e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263373"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761204"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB Python not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 
@@ -42,7 +42,7 @@ Bu paket, Azure Cosmos hesap çalışma alanındaki herhangi bir not defterinden
 - ``{database_id}``Ve ' i, ``{container_id}`` Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır.
 
-Örneğin: 
+Örnek: 
 ```python
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -51,7 +51,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 
 ## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>Bir Pandas DataFrame 'e SQL sorgusu ve çıkışı çalıştırma
 
-Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)'e aktarabilirsiniz. Sözdizimini kullanın: 
+Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame)'e aktarabilirsiniz. Sözdizimini kullanın: 
 
 ```python
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
@@ -61,7 +61,7 @@ Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pyda
 - ``{outputDataFrameVar}``Sonuçları Içerecek DataFrame değişkeninin adıyla değiştirin.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır. 
 
-Örneğin:
+Örnek:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -108,7 +108,7 @@ df_cosmos.head(10)
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örneğin:
+Örnek:
 
 ```python
 %%upload --database databaseName --container containerName --url 
@@ -147,7 +147,7 @@ df_cosmos.groupby("Item").size()
 
 ``cosmos_client``Herhangi BIR SDK işlemini çalıştırmak için yerleşik örneği kullanın. 
 
-Örneğin:
+Örnek:
 
 ```python
 ## Import modules as needed

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290935"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760643"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
 
@@ -25,7 +25,7 @@ Görüntü İşleme bazı özellikleri birden çok dili destekler; Burada bahsed
 
 Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu belirtmenizi gerektirmez. Daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](concept-recognizing-text.md) .
 
-|Dil| Dil kodu | OCR APı 'SI | V 3.0 'ı oku | Okuma v 3.1-Önizleme. 1 |
+|Dil| Dil kodu | OCR APı 'SI | V 3.0 'ı oku | V 3.1 Genel önizlemeyi oku |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arapça | `ar`|✔ | | |
 |Basitleştirilmiş Çince | `zh-Hans`|✔ | |✔ |
@@ -33,7 +33,7 @@ Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu beli
 |Çekçe | `cs` |✔ | | |
 |Danca | `da` |✔ | | |
 |Felemenkçe | `nl` |✔ |✔ |✔ |
-|Türkçe | `en` |✔ |✔ |✔ |
+|İngilizce | `en` |✔ |✔ |✔ |
 |Fince | `fi` |✔ | | |
 |Fransızca | `fr` |✔ |✔ |✔ |
 |Almanca | `de` |✔ |✔ |✔ |
@@ -42,7 +42,7 @@ Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu beli
 |İtalyanca | `it` |✔ |✔ |✔ |
 |Japonca | `ja` |✔ | | |
 |Korece | `ko` |✔ | | |
-|Norveçce | `nb` |✔ | | |
+|Norveççe | `nb` |✔ | | |
 |Lehçe | `pl` |✔ | | |
 |Portekizce | `pt` |✔ |✔ |✔ |
 |Rumence | `ro` |✔ | | |
@@ -61,7 +61,7 @@ Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu beli
 |Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Color (Renk) | Yüzler | ImageType | Nesneler | Ünlü Kişiler | Bölümler |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Çince | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|Türkçe | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
+|İngilizce | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japonca | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portekizce | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |İspanyolca | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
