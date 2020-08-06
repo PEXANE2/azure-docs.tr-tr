@@ -2,7 +2,7 @@
 title: Hızlı Başlangıç-grupları & üyelerini görüntüleme-Azure AD
 description: Kuruluşunuzun gruplarını ve bunların atanan üyelerini nasıl arayabileceği ve görüntüleyecağınız hakkında yönergeler.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75423008"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797500"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, kuruluşunuzun tüm mevcut gruplarını ve atanmış 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları gerçekleştirmeniz gerekir:
 
 - Bir Azure Active Directory kiracısı oluşturun. Daha fazla bilgi için, bkz. [Azure Active Directory portalına erişme ve yeni bir kiracı oluşturma](active-directory-access-create-new-tenant.md).
@@ -61,14 +61,14 @@ _Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi
 
     - **Ad:**_Alain Charon_ yazın.
 
-    - **Kullanıcı adı:** *Contoso.com\@* yazın.
+    - **Kullanıcı adı:** * \@ Contoso.com*yazın.
 
 3. **Parola** kutusunda sağlanan otomatik olarak oluşturulmuş parolayı kopyalayın ve ardından **Oluştur** seçeneğini belirleyin.
 
 ## <a name="add-a-group-member"></a>Grup üyesi ekleme
 Şimdi bir grubunuz ve kullanıcınız olduğuna göre, _Alain Charon_’u _MDM ilkesi - Batı_ grubuna üye olarak ekleyebilirsiniz. Grup üyelerini ekleme hakkında daha fazla bilgi için, bkz. [Grup üyelerini ekleme veya kaldırma](active-directory-groups-members-azure-portal.md).
 
-1. **Azure Active Directory** > **grupları**' nı seçin.
+1. **Azure Active Directory**  >  **grupları**' nı seçin.
 
 2. **Gruplar - Tüm gruplar** sayfasından, **MDM ilkesi - Batı** grubunu arayın ve seçin.
 
@@ -81,7 +81,7 @@ _Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi
 ## <a name="view-all-groups"></a>Tüm grupları görüntüleme
 Kuruluşunuz için tüm grupları Azure portalın **Gruplar - Tüm gruplar** sayfasında görebilirsiniz.
 
-- Azure **Active Directory** > **grupları**' nı seçin.
+- Azure **Active Directory**  >  **grupları**' nı seçin.
 
     **Gruplar - Tüm gruplar** sayfası görüntülenir ve tüm etkin gruplarınız gösterilir.
 

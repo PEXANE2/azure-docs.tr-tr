@@ -4,15 +4,15 @@ description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: b031b2a26f81c34f1699e530c8d0bb8839454c89
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e13d7a1cb35d2b0c9544a8be36f834efc6970501
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543886"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759657"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure 'da Kullanılabilirlik Alanları destekleyen bölgeler
 
@@ -58,12 +58,11 @@ Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan 
 Azure ayrıca aşağıdaki bölgelerde Kullanılabilirlik Alanları destek sunar:
 
 - US Gov Virginia
-- Doğu Avustralya
 - Güney Afrika Kuzey
 - Orta Güney ABD
 - Orta Kanada
 
-Bu beş bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişim kurun veya bir teknik destek isteği açın.
+Bu dört bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişim kurun veya bir teknik destek isteği açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

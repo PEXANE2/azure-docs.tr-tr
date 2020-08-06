@@ -2,7 +2,7 @@
 title: Özel etki alanınızı ekleme-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory kullanarak özel bir etki alanı eklemeye ilişkin yönergeler.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603970"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796820"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme
 
@@ -54,7 +54,7 @@ Dizininizi oluşturduktan sonra, özel etki alanı adınızı ekleyebilirsiniz.
 
     ![Özel etki alanı adları sayfası, gösterilen özel etki alanı Ekle](media/add-custom-domain/add-custom-domain.png)
 
-1. **Özel etki alanı adı**alanına kuruluşunuzun yeni adını girin, bu örnekte, *contoso.com*. **Etki alanı ekle**'yi seçin.
+1. **Özel etki alanı adı**alanına kuruluşunuzun yeni adını girin, bu örnekte, *contoso.com*. **Etki alanı ekle** seçeneğini belirleyin.
 
     ![Özel etki alanı adları sayfası, özel etki alanı Ekle sayfası](media/add-custom-domain/add-custom-domain-blade.png)
 
@@ -65,7 +65,7 @@ Dizininizi oluşturduktan sonra, özel etki alanı adınızı ekleyebilirsiniz.
 
     ![DNS girişi bilgileri içeren contoso sayfası](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
-## <a name="add-your-dns-information-to-the-domain-registrar"></a>DNS bilgilerinizi etki alanı kaydedicisinde ekleme
+## <a name="add-your-dns-information-to-the-domain-registrar"></a>DNS bilgilerinizi etki alanı kaydedicisine ekleme
 
 Özel etki alanı adınızı Azure AD 'ye ekledikten sonra, etki alanı kayıt şirketinize dönüp Azure AD DNS bilgilerini kopyalanmış TXT dosyanıza eklemeniz gerekir. Etki alanınız için bu TXT kaydının oluşturulması, etki alanı adınızın sahipliğini doğrular.
 

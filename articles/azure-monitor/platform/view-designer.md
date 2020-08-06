@@ -5,27 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289102"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759742"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.
 
 > [!IMPORTANT]
-> Azure Izleyici 'deki görünümler kullanıma alınıyor ve ek işlevsellik sağlayan [çalışma kitapları](workbooks-overview.md) ile değiştiriliyor. Mevcut görünümlerinizi çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](view-designer-conversion-overview.md) . Önümüzdeki birkaç ay içinde gerçekleştirilecek adımlar için aşağıdaki tabloya bakın.
-> 
-> | Değiştir | Bu anlamı | Beklenen tarih |
-> |:---|:---|:---|
-> | Görünüm Tasarımcısı aracılığıyla oluşturulan yeni görünümlerin oluşturulmasını devre dışı bırakın. | Artık Azure portal yeni özel görünümleri oluşturamayacaksınız ve kaydedemeyeceksiniz.| 2020 Kasım |
-> | Görünüm Tasarımcısı ile mevcut görünümler için düzenleme işlevini devre dışı bırakın. | Artık var olan özel görünümleriniz üzerinde değişiklik yapamayacak ve değişiklikleri kaydedemeyeceksiniz. | 2020 Kasım |
-> | Log Analytics çalışma alanlarına görünümlerin dağıtımını devre dışı bırak | Artık Log Analytics çalışma alanlarına ARM kullanarak özel görünümler dağıtameyeceksiniz. | Mart 2021 |
-> | Görünüm Tasarımcısı artık Azure portal kullanılamıyor | Portal deneyimi artık görünüm tasarımcısını desteklemiyor. | Haziran 2021 |
-> | Çalışma alanı özetinden kaldırılan özel görünümler | Özel görünüm verilerinize artık erişemeyeceksiniz. | Aralık 2021 |
+> Azure Izleyici 'deki görünümler, ek işlevsellik sağlayan [çalışma kitaplarına](workbooks-overview.md) geçirildi. Mevcut görünümlerinizi çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](view-designer-conversion-overview.md) .
  
 
 

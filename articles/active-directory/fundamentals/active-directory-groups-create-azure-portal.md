@@ -2,7 +2,7 @@
 title: Temel Grup oluşturma ve üye ekleme-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory kullanarak temel Grup oluşturma yönergeleri.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4539fe1d8f5fbfab8e73de3a9ac35baa154b142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604361"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797670"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Azure Active Directory kullanarak temel Grup oluşturma ve üye ekleme
 Azure Active Directory (Azure AD) portalını kullanarak temel bir grup oluşturabilirsiniz. Bu makalenin amaçları doğrultusunda, kaynak sahibi (yönetici) tarafından tek bir kaynağa temel bir grup eklenir ve bu grup, o kaynağa erişmesi gereken belirli üyeleri (çalışanlar) içerir. Dinamik üyelikler ve kural oluşturma da dahil olmak üzere daha karmaşık senaryolar için bkz. [Azure Active Directory kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
@@ -27,12 +27,12 @@ Azure Active Directory (Azure AD) portalını kullanarak temel bir grup oluştur
 Birkaç grup ve üyelik türü vardır. Aşağıdaki bilgiler, bir grup oluştururken hangi seçeneklere izin vereceğinize karar vermenize yardımcı olmak üzere her grup ve üyelik türünü ve bunların neden kullanıldığını açıklamaktadır.
 
 ### <a name="group-types"></a>Grup türleri:
-- **Güvenlik**. Bir kullanıcı grubu için paylaşılan kaynaklara üye ve bilgisayar erişimini yönetmek için kullanılır. Örneğin, belirli bir güvenlik ilkesi için bir güvenlik grubu oluşturabilirsiniz. Böylece, her bir üyeye ayrı ayrı izin eklemek zorunda kalmadan aynı anda tüm üyelere bir dizi izin verebilirsiniz. Bir güvenlik grubu, sahipleri olarak kullanıcıları, cihazları, grupları ve hizmet sorumlularını üye, kullanıcılar ve hizmet sorumluları olarak içerebilir. Kaynaklara erişimi yönetme hakkında daha fazla bilgi için bkz. [Azure Active Directory grupları ile kaynaklara erişimi yönetme](active-directory-manage-groups.md).
+- **Güvenlik**. Bir kullanıcı grubu için paylaşılan kaynaklara üye ve bilgisayar erişimini yönetmek için kullanılır. Örneğin, belirli bir güvenlik ilkesi için bir güvenlik grubu oluşturabilirsiniz. Böylece, her üyeye ayrı ayrı izin eklemek zorunda kalmadan aynı anda tüm üyelere bir dizi izin verebilirsiniz. Bir güvenlik grubu, sahipleri olarak kullanıcıları, cihazları, grupları ve hizmet sorumlularını üye, kullanıcılar ve hizmet sorumluları olarak içerebilir. Kaynaklara erişimi yönetme hakkında daha fazla bilgi için bkz. [Azure Active Directory grupları ile kaynaklara erişimi yönetme](active-directory-manage-groups.md).
 - **Office 365**. Üyelerin paylaşılan posta kutusuna, takvime, takvime, dosyalara, SharePoint sitesine vb.’ye erişmesini sağlayarak işbirliği fırsatları sunar. Bu seçenek, kuruluşunuzun dışındaki kişilerin de gruba erişmesini sağlar. Office 365 Grubu yalnızca üyeleri olarak kullanıcıları içerebilir. Hem kullanıcılar hem de hizmet sorumluları bir Office 365 grubunun sahipleri olabilir. Office 365 Grupları hakkında daha fazla bilgi için bkz. [Office 365 Grupları hakkında bilgi edinin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Üyelik türleri:
 - **Atanan.** Bu grubun üyesi olacak ve benzersiz izinlere sahip olacak şekilde belirli kullanıcıları eklemenize olanak sağlar. Bu makalenin amaçları doğrultusunda, bu seçeneği kullanıyoruz.
-- **Dinamik kullanıcı.** , Üyeleri otomatik olarak eklemek ve kaldırmak için dinamik üyelik kuralları kullanmanıza olanak sağlar. Bir üyenin öznitelikleri değişirse sistem, üyenin kural gereksinimlerini karşıladığını mı (eklendiğini) yoksa artık kural gereksinimlerini karşılamadığını mı (kaldırıldığını) görmek amacıyla dizin için dinamik grup kurallarınıza bakar.
+- **Dinamik Kullanıcı.** , Üyeleri otomatik olarak eklemek ve kaldırmak için dinamik üyelik kuralları kullanmanıza olanak sağlar. Bir üyenin öznitelikleri değişirse sistem, üyenin kural gereksinimlerini karşıladığını mı (eklendiğini) yoksa artık kural gereksinimlerini karşılamadığını mı (kaldırıldığını) görmek amacıyla dizin için dinamik grup kurallarınıza bakar.
 - **Dinamik cihaz.** Otomatik olarak cihazlar eklemek ve kaldırmak için dinamik grup kuralları kullanmanıza olanak sağlar. Bir cihazın öznitelikleri değişirse sistem, cihazın kural gereksinimlerini karşıladığını mı (eklendiğini) yoksa artık kural gereksinimlerini karşılamadığını mı (kaldırıldığını) görmek amacıyla dizin için dinamik grup kurallarınıza bakar.
 
     > [!IMPORTANT]
@@ -63,7 +63,7 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz. Temel
 
 1. Önceden tanımlanmış bir **üyelik türü seçin (gerekli).** Üyelik türleri hakkında daha fazla bilgi için bkz. [Grup ve Üyelik türleri](#membership-types).
 
-1. **Oluştur**'u seçin. Grubunuz oluşturulur ve üyeler eklemeniz için hazır olur.
+1. **Oluştur**’u seçin. Grubunuz oluşturulur ve üyeler eklemeniz için hazır olur.
 
 1. **Grup** sayfasından **Üyeler** alanını seçin ve sonra **Üyeleri seç** sayfasından grubunuza eklenecek üyeleri aramaya başlayın.
 

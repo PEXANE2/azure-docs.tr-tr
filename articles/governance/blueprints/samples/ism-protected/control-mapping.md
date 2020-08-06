@@ -1,14 +1,14 @@
 ---
 title: Avustralya kamu ile korunan şema örnek genel bakış
 description: Avustralya kamu ile korunan şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli bir ISM korumalı denetimleri değerlendirmesine yardımcı olur.
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517108"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760439"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Avustralya kamu ile korunan şema örneğine yönelik denetim eşlemesi
 
@@ -106,10 +106,10 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
-- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için önkoşulları dağıtın
-- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : parola olmayan hesaplara sahip Linux sanal makinelerini denetlemek için önkoşulları dağıtın
+- Parolasız uzak bağlantılara izin veren Linux VM 'lerinden denetim sonuçlarını göster
+- Parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için önkoşulları dağıtın
+- Parolası olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
+- Parolası olmayan hesaplara sahip Linux sanal makinelerini denetlemek için önkoşulları dağıtın
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 çok faktörlü kimlik doğrulaması, standart kullanıcıların kimliğini doğrulamak için kullanılır
 
@@ -122,8 +122,8 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 tek faktörlü kimlik doğrulaması için kullanılan parola, en az 4 Rastgele kelime olacak şekilde karmaşıklıkla birlikte 14 karakterdir
 
-- \[Önizleme \] : ' güvenlik ayarları-hesap ilkeleri ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını gösterme
-- \[Önizleme \] : ' güvenlik ayarları-hesap ilkeleri ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- ' Güvenlik ayarları-hesap Ilkeleri ' içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
+- ' Güvenlik ayarları-hesap Ilkeleri ' içindeki Windows VM 'Leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ## <a name="guidelines-for-system-management---system-administration"></a>Sistem yönetimi için yönergeler-sistem yönetimi
 
@@ -147,7 +147,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -159,7 +159,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -171,7 +171,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -183,7 +183,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -195,7 +195,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -207,7 +207,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -229,8 +229,8 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 işletim sistemleri için aşağıdaki olaylar günlüğe kaydedilir: önemli veri ve işlemlere, uygulama kilitlenmelerine ve hata iletilerine yönelik erişim, özel ayrıcalıklar kullanma girişimleri, hesap değişiklikleri, güvenlik ilkesinde yapılan değişiklikler, sistem yapılandırmalarında yapılan değişiklikler, etki alanı adı sistemi (DNS) ve Köprü Metni Aktarım Protokolü (HTTP) istekleri, veri ve sistem kaynaklarına erişmeye yönelik başarısız denemeler, sistem başlatma ve kapatmalar , dış medyaya, Kullanıcı veya grup yönetimine veri aktarımı, özel ayrıcalıkların kullanımı
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
 - Tanılama ayarını denetle
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 şu olaylar günlüğe kaydedilir: özellikle önemli bilgilere, yeni kullanıcıların eklenmesine, özellikle ayrıcalıklı kullanıcılara, açıklama içeren herhangi bir sorguya, birden çok katıştırılmış sorgu içeren herhangi bir sorguya, herhangi bir sorgu ya da veritabanına uyarı veya başarısızlık, ayrıcalıkların yükseltilme girişimleri, veritabanı yapısında yapılan değişiklikler, Kullanıcı rollerinde veya veritabanı izinlerinde yapılan değişiklikler, veritabanı yönetici eylemleri , veritabanı oturum açmaları ve günlüğe kaydetme, verilerde yapılan değişiklikler, yürütülebilir komutların kullanımı
@@ -246,7 +246,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- \[Önizleme \] : güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
+- Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir

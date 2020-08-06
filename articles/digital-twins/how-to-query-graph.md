@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543359"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760405"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -172,7 +172,7 @@ catch (RequestFailedException e)
 Önizleme sırasında kullanmayla ilgili ek sınırlamalar vardır `JOIN` .
 * İfadesinde hiçbir alt sorgu desteklenmez `FROM` .
 * `OUTER JOIN`semantikler desteklenmez, yani ilişkinin sıfır sıralaması varsa, tüm "satır" çıkış sonuç kümesinden kaldırılır.
-* Genel Önizleme sırasında grafik çapraz geçiş derinliği kısıtlıdır: `JOIN` sorgu başına yalnızca birine izin verilir.
+* Önizleme süresince grafik çapraz geçiş derinliği `JOIN` sorgu başına beş düzey ile kısıtlıdır.
 * `JOIN`İşlem kaynağı kısıtlanmış: sorgu, sorgunun başladığı TWINS 'i bildirmelidir.
 
 ## <a name="query-best-practices"></a>En iyi sorgu yöntemleri

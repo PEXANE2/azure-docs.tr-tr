@@ -4,76 +4,47 @@ description: Azure CLı ve Azure portal kullanarak bir Linux VHD 'YI indirin.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 08/21/2019
+ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289777"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761083"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure 'dan bir Linux VHD indirin
 
-Bu makalede, Azure CLı ve Azure portal kullanarak Azure 'dan bir Linux sanal sabit disk (VHD) dosyası indirmeyi öğreneceksiniz. 
-
-Daha önce yapmadıysanız [Azure CLI](/cli/azure/install-az-cli2)'yı yükleyebilirsiniz.
+Bu makalede, Azure 'dan Azure portal kullanarak bir Linux sanal sabit disk (VHD) dosyası indirmeyi öğreneceksiniz. 
 
 ## <a name="stop-the-vm"></a>VM’yi durdurma
 
-Bir VHD, çalışan bir VM 'ye eklenmişse Azure 'dan indirilemiyor. Bir VHD 'YI indirmek için VM 'yi durdurmanız gerekir. Yeni disklerle diğer VM 'Ler oluşturmak için bir VHD 'YI [görüntü](tutorial-custom-images.md) olarak kullanmak istiyorsanız, dosyada bulunan işletim sistemini önceden hazırlamanız ve genelleştirietmeniz ve VM 'yi durdurmanız gerekir. VHD 'yi, var olan bir VM 'nin veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere yalnızca VM 'yi durdurup serbest bırakma yeterlidir.
+Bir VHD, çalışan bir VM 'ye eklenmişse Azure 'dan indirilemiyor. VHD 'YI indirmek için VM 'yi durdurmanız gerekir. 
 
-VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için şu adımları izleyin:
-
-1. Bağlanılacak sanal makinenin SSH, hesap adı ve genel IP adresini kullanın ve uygulamayı yeniden sağlayın. Genel IP adresini [az Network public-IP Show](/cli/azure/network/public-ip#az-network-public-ip-show)komutuyla bulabilirsiniz. + User parametresi, sağlanan son kullanıcı hesabını da kaldırır. VM 'de hesap kimlik bilgilerini fıryorsanız, bu + kullanıcı parametresini bırakın. Aşağıdaki örnek, sağlanan son kullanıcı hesabını kaldırır:
-
-    ```bash
-    ssh azureuser@<publicIpAddress>
-    sudo waagent -deprovision+user -force
-    exit 
-    ```
-
-2. [Az Login](/cli/azure/reference-index)komutuyla Azure hesabınızda oturum açın.
-3. VM 'yi durdurun ve serbest bırakın.
-
-    ```azurecli
-    az vm deallocate --resource-group myResourceGroup --name myVM
-    ```
-
-4. VM 'yi genelleştirin. 
-
-    ```azurecli
-    az vm generalize --resource-group myResourceGroup --name myVM
-    ``` 
-
-VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
-
-1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
 2.  Sol taraftaki menüden **sanal makineler**' i seçin.
 3.  Listeden VM 'yi seçin.
 4.  VM 'nin sayfasında **Durdur**' u seçin.
 
-    ![VM’yi Durdurma](./media/download-vhd/export-stop.png)
+    :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="VM 'yi durdurmak için menü düğmesini gösterir.":::
 
 ## <a name="generate-sas-url"></a>SAS URL 'SI oluştur
 
 VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL 'si oluşturmanız gerekir. URL oluşturulduğunda, URL 'ye bir sona erme saati atanır.
 
-1.  VM 'nin sayfasının menüsünde **diskler**' i seçin.
-2.  VM 'nin işletim sistemi diskini seçin ve ardından **disk dışarı aktar**' ı seçin.
-3.  **URL Oluştur**' u seçin.
-
-    ![URL Oluştur](./media/download-vhd/export-generate.png)
-
+1. VM 'nin sayfasının menüsünde **diskler**' i seçin.
+2. VM 'nin işletim sistemi diskini seçin ve ardından **disk dışarı aktar**' ı seçin.
+1. Gerekirse, indirme işleminin tamamlanabilmesi için yeterli zaman vermesi için URL 'nin değerini **(saniye) cinsinden** güncelleştirin. Varsayılan değer 3600 saniyedir (bir saat).
+3. **URL Oluştur**' u seçin.
+ 
+      
 ## <a name="download-vhd"></a>VHD 'YI indir
 
 1.  Oluşturulan URL altında **VHD dosyasını indir**' i seçin.
-**
-    ![VHD 'YI indir](./media/download-vhd/export-download.png)
+
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="VHD 'YI indirmek için düğmeyi gösterir.":::
 
 2.  İndirmeyi başlatmak için tarayıcıda **Kaydet** ' i seçmeniz gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
-
-    ![Tarayıcıda Kaydet ' i seçin](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

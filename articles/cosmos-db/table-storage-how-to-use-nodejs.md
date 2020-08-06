@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9404232533ae86e14f9b87c65fdd086f84e8aebb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414012"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760983"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
 
@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
 
-Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örneğin:
+Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örnek:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -123,7 +123,7 @@ function (returnObject, finalCallback, next)
 
 Bu geri çağırmada ve `returnObject` (istekten sunucuya olan yanıt) işlendikten sonra geri çağırma, `next` diğer filtreleri işlemeye devam etmek için varsa veya `finalCallback` hizmet çağrısını sonlandırmak için Aksi takdirde çağırmak gerekir.
 
-Yeniden deneme mantığını uygulayan iki filtre Node.js için Azure SDK ile birlikte gelir, `ExponentialRetryPolicyFilter** and ` doğrıretrypolicyfilter `. The following creates a ` tableservice ` object that uses the ` üs alretrypolicyfilter ':
+Yeniden deneme mantığını uygulayan iki filtre, Node.js için Azure SDK ile birlikte gelir `ExponentialRetryPolicyFilter` `LinearRetryPolicyFilter` . Aşağıdakiler `TableService` , şunu kullanan bir nesnesi oluşturur `ExponentialRetryPolicyFilter` :
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -211,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Varsayılan olarak, bir varlık güncelleştirildiğinde, güncelleştirilmekte olan verilerin önceden başka bir işlem tarafından değiştirilip değiştirilmediği denetlenmez. Eş zamanlı güncelleştirmeleri desteklemek için:
 >
 > 1. Güncelleştirilmekte olan nesnenin ETag öğesini alın. Bu, herhangi bir varlıkla ilgili işlemin `response` değerinin parçası olarak döndürülür ve `response['.metadata'].etag` aracılığıyla alınabilir.
-> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örneğin:
+> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örnek:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Güncelleştirme işlemini gerçekleştirin. Varlık, ETag değerini almanızın ardından değiştirildiyse, (örn. uygulamanızın başka bir örneği), istekte belirtilen güncelleştirme koşulunun karşılanmadığını belirten bir `error` döndürülür.

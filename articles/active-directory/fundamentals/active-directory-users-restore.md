@@ -2,7 +2,7 @@
 title: Son silinen kullanıcıyı geri yükleme veya kalıcı olarak kaldırma-Azure AD
 description: Yeniden yüklenebilen kullanıcıları görüntüleme, silinen bir kullanıcıyı geri yükleme veya Azure Active Directory olan bir kullanıcıyı kalıcı olarak silme.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603936"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796769"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory kullanarak yakın zamanda silinen bir kullanıcıyı geri yükleme veya kaldırma
 Bir kullanıcıyı sildikten sonra, hesap 30 gün boyunca askıya alınmış durumda kalır. Bu 30 günlük pencerede, Kullanıcı hesabı tüm özellikleriyle birlikte geri yüklenebilir. 30 günlük pencere geçtikten sonra, Kullanıcı otomatik olarak ve kalıcı olarak silinir.

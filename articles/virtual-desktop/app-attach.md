@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291512"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760677"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -202,19 +202,19 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 
 1. Pakete sağ tıklayın ve **Özellikler**' i seçin.
 2. Görüntülenen pencerede **dijital imzalar** sekmesini seçin. Aşağıdaki görüntüde gösterildiği gibi sekmedeki listede yalnızca bir öğe olmalıdır. Öğeyi vurgulamak için bu öğeyi seçin, sonra **Ayrıntılar**' ı seçin.
-3. Dijital imza ayrıntıları penceresi göründüğünde **genel** sekmesini seçin ve ardından **sertifikayı yükler**' i seçin.
+3. Dijital imza ayrıntıları penceresi göründüğünde **genel** sekmesini seçin, ardından **sertifikayı görüntüle**' yi seçin ve **sertifikayı yükler**' i seçin.
 4. Yükleyici açıldığında, depolama konumunuz olarak **yerel makine** ' yi seçin ve ardından **İleri**' yi seçin.
 5. Yükleyici, uygulamanın cihazınızda değişiklik yapmasına izin vermek isteyip istemediğinizi isterse, **Evet**' i seçin.
 6. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından da **Araştır**' ı seçin.
 7. Sertifika deposu Seç penceresi göründüğünde, **Güvenilen Kişiler**' i seçin ve ardından **Tamam**' ı seçin.
-8. **Son**’u seçin.
+8. **İleri** ve **son**' u seçin.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri hazırlama
 
 MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
 
 1. Aşama
-2. Kaydettir
+2. Kaydol
 3. Kaydını silmek
 4. Gerçekleştirilen
 

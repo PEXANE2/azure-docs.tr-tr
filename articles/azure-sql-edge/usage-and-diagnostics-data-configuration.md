@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 1f6624c454364ca19c8ce112cb1cbbef134f162d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/04/2020
-ms.locfileid: "87568043"
+ms.locfileid: "87759623"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge kullanımı ve tanılama veri yapılandırması
 
@@ -87,7 +87,7 @@ Azure SQL Edge kullanımı ve tanılama veri koleksiyonunun yerel denetim bileş
 
 Azure SQL Edge 'de yerel denetim kullanımını ve tanılama verilerini etkinleştirmek için
 
-1. Yeni yerel denetim günlüğü depolaması için bir hedef dizin oluşturun. Bu hedef dizin, SQL Edge 'de/var/seçenek/MSSQL/Path ile eşlenmiş aynı bağlama biriminde oluşturulmalıdır.
+1. Yeni yerel denetim günlüğü depolaması için bir hedef dizin oluşturun. Bu hedef dizin, konakta ya da kapsayıcı içinde olabilir. Aşağıdaki örnekte, hedef dizin SQL Edge 'de/var/seçenek/MSSQL/Path ile eşlenmiş aynı bağlama biriminde oluşturulur.
 
    ```bash
    sudo mkdir <host mount path>/audit
@@ -95,14 +95,14 @@ Azure SQL Edge 'de yerel denetim kullanımını ve tanılama verilerini etkinle�
 
 2. Ortam değişkenlerini veya MSSQL. conf dosyasını kullanarak kullanım ve tanılama verilerinin denetimini yapılandırın.
 
-   - Ortam değişkenlerini kullanma-aşağıdaki ortam değişkenini SQL Edge dağıtımınıza ekleyin.
+   - Ortam değişkenlerini kullanma-aşağıdaki ortam değişkenini SQL Edge dağıtımınıza ekleyin ve denetim dosyaları için hedef dizini belirtin.
    
-     `*MSSQL_TELEMETRY_DIR = /var/opt/mssql/audit*`
+     `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - MSSQL. conf dosyasını kullanarak-MSSQL. conf dosyasına aşağıdaki satırları ekleyin.
+   - MSSQL. conf dosyasını kullanarak-MSSQL. conf dosyasına aşağıdaki satırları ekleyin ve denetim dosyaları için hedef dizini belirtin.
        ```ini
        [telemetry]
-       userrequestedlocalauditdirectory  = /var/opt/mssql/audit
+       userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
 ## <a name="next-steps"></a>Sonraki adımlar

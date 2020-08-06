@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809473"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760422"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -30,7 +30,7 @@ Bu makalede, Azure ön kapı özellikleri ve işlevselliği hakkında sık sorul
 
 ### <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 
-Azure ön kapısı, uygulamalarınız için çeşitli katman 7 yük dengeleme özellikleri sunan bir hizmet olarak Uygulama Teslim Ağı (ADN). Neredeyse gerçek zamanlı yük devretme ile genel yük dengeleme ile birlikte dinamik site hızlandırma (DSA) sağlar. Azure tarafından tam olarak yönetilen, yüksek oranda kullanılabilir ve ölçeklenebilir bir hizmettir.
+Azure ön kapısı, uygulamalarınız için çeşitli katman 7 yük dengeleme özellikleri sunan bir hizmet olarak Uygulama Teslim Ağı (ADN). Dinamik site hızlandırma (DSA) özelliğinin yanı sıra gerçek zamanlıya yakın yük devretme işleviyle küresel ölçekte yük dengeleme sunar. Tamamen Azure tarafından yönetilen, yüksek oranda kullanılabilir ve ölçeklenebilir bir hizmettir.
 
 ### <a name="what-features-does-azure-front-door-support"></a>Azure ön kapısı hangi özellikleri destekler?
 
@@ -159,9 +159,12 @@ HTTPS protokolünü bir ön kapı özel etki alanında güvenli bir şekilde tes
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure ön kapısının desteklediği geçerli şifre paketleri nelerdir?
 
-TLS 1.2 için aşağıdaki şifre paketleri desteklenir
+TLS 1.2 için aşağıdaki şifre paketleri desteklenir: 
 
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
 TLS 1.0/1.1 özellikli özel etki alanları kullanılırken aşağıdaki şifre paketleri desteklenir:
 

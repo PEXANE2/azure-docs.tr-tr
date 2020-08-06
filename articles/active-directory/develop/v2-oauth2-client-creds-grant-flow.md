@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529234"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759079"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı
 
@@ -64,19 +64,11 @@ ACL 'Leri kullanmak yerine, **Uygulama izinleri**kümesini kullanıma sunmak Iç
 * Herhangi bir kullanıcı olarak posta gönder
 * Dizin verilerini oku
 
-Uygulama izinleri hakkında daha fazla bilgi için, [onay ve izinler belgelerini](v2-permissions-and-consent.md#permission-types)gözden geçirin.
+Uygulama izinlerini kendi API 'niz ile kullanmak için (Microsoft Graph aksine), önce API 'nin Azure portal içindeki uygulama kaydında kapsamları tanımlayarak [API 'yi kullanıma sunmalısınız](quickstart-configure-app-expose-web-apis.md) . Daha sonra, istemci uygulamanızın uygulama kaydında bu izinleri seçerek [API 'ye erişimi yapılandırın](quickstart-configure-app-access-web-apis.md) . API 'nin uygulama kaydında hiçbir kapsam çıkarmadığınız takdirde, Azure portal istemci uygulamanızın uygulama kaydında Bu API 'ye yönelik uygulama izinleri belirtemezsiniz.
 
-Uygulamanızda uygulama izinlerini kullanmak için, sonraki bölümlerde ele alınan adımları izleyin.
+Bir uygulama olarak kimlik doğrulaması yaparken (bir kullanıcının aksine), *temsilci izinleri* (bir kullanıcı tarafından verilen kapsamlar) kullanamazsınız. Uygulama için yönetici veya Web API 'SI tarafından ön kimlik doğrulama aracılığıyla verilen, rol olarak da bilinen uygulama izinlerini kullanmanız gerekir.
 
-> [!NOTE]
-> Bir uygulama olarak kimlik doğrulaması yaparken, bir kullanıcı ile aksine, "temsilci izinleri" (bir kullanıcı tarafından verilen kapsamlar) kullanamazsınız.  Uygulama için bir yönetici (veya Web API 'SI tarafından önceden Yetkilendirme aracılığıyla) verilen "Roller" olarak da bilinen "uygulama izinleri" kullanmanız gerekir.
-
-#### <a name="request-the-permissions-in-the-app-registration-portal"></a>Uygulama kayıt portalında izinleri isteyin
-
-1. Yeni [uygulama kayıtları (Önizleme) deneyimi](quickstart-register-app.md)aracılığıyla bir uygulamayı kaydedin ve oluşturun.
-2. Uygulama kayıtları (Önizleme) deneyiminde uygulamanıza gidin. Bir belirteç istemek için en az bir gizli anahtar gerektiğinden, **sertifikalar & gizlilikler** bölümüne gidin ve **Yeni bir istemci gizli anahtarı**ekleyin.
-3. **API izinleri** bölümünü bulun ve ardından uygulamanızın gerektirdiği **uygulama izinlerini** ekleyin.
-4. Uygulama kaydını **kaydedin** .
+Uygulama izinleri hakkında daha fazla bilgi için bkz. [izinler ve onay](v2-permissions-and-consent.md#permission-types).
 
 #### <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
 

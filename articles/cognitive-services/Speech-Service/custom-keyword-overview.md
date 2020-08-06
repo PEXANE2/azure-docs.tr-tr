@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 60bcdac0d7e19c424b007980294898638814d586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044875"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760558"
 ---
 # <a name="what-is-a-keyword"></a>Anahtar sözcük nedir?
 
@@ -35,6 +35,23 @@ Anahtar sözcüğü, ürününüzün ses özellikli olmasını sağlayan bir kel
 
 * Bkz. temel kullanım ve tasarım desenleri için [özel anahtar sözcük temelleri](custom-keyword-basics.md) .
 * [C# kullanarak ürününüzü konuşma SDK 'sı ile nasıl etkinleştireceğinize](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="choose-an-effective-keyword"></a>Etkin bir anahtar sözcük seçin
+
+Etkin anahtar sözcük oluşturma, cihazınızın sürekli olarak ve doğru şekilde yanıt vermesini sağlamak için önemlidir. Anahtar keliinizi özelleştirmek, cihazınızı ayırt etmenin ve markanızı güçlendirmenin etkili bir yoludur. Bir anahtar sözcük seçerken aşağıdaki yönergeleri göz önünde bulundurun:
+
+> [!div class="checklist"]
+> * Anahtar kelimelisiniz Ingilizce bir sözcük veya tümcecik olmalıdır.
+> * İki saniyeden daha uzun sürmemelidir.
+> * 4 ile 7 hece hecelere en iyi şekilde çalışan sözcükler. Örneğin, "Hey, Computer" iyi bir anahtar sözcüktür. Yalnızca "Hey" kötü bir alışkanlıktır.
+> * Anahtar sözcükler, yaygın Ingilizce Söyleniş kurallarını izlemelidir.
+> * Yaygın Ingilizce telaffuz kuralları takip eden, benzersiz veya hatta oluşturulmuş bir sözcük, hatalı pozitif sonuçları düşürebilir. Örneğin, "computerama" iyi bir anahtar sözcük olabilir.
+> * Ortak bir sözcük seçemezsiniz. Örneğin, "yemek" ve "Go", insanların normal konuşmada sıkça söyledikleri sözcüklerdir. Cihazınız için yanlış Tetikleyiciler olabilir.
+> * Alternatif söylenişleri olabilecek bir anahtar sözcük kullanmaktan kaçının. Kullanıcıların, cihazlarını yanıt vermesini sağlamak için "sağ" söylenişini bilmeleri gerekir. Örneğin, "509", "5 0 9", "5 0 9" veya "509" olarak kullanılabilir. "R.E.I." "r-e-i" veya "Ray" olarak kullanılabilir. "Canlı", "/līv/" veya "/Liv/" ile yapılabilir.
+> * Özel karakterler, semboller veya basamaklar kullanmayın. Örneğin, "Go #" ve "20 + kediler" sorunlu anahtar sözcüklerdir. Bununla birlikte, "keskin" veya "yirmi Plus kediler" işe devam edebilir. Markanızdaki sembolleri kullanmaya devam edebilir ve uygun telaffuz zorlamak için pazarlama ve belgeleri kullanabilirsiniz.
+
+> [!NOTE]
+> Anahtar kelime olarak bir trademarked sözcüğü seçerseniz, bu ticari marka sahibi olduğunuzdan veya ticari marka sahibinden, kelimeyi kullanmak için izninizin olduğundan emin olun. Microsoft, sizin tercih ettiğiniz anahtar kelimeden çıkabilecek herhangi bir yasal sorun için tabi değildir.
 
 ## <a name="see-samples-on-github"></a>GitHub 'da örneklere bakın
 

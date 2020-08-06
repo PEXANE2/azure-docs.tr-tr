@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326690"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797908"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -247,14 +247,15 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Aşağıdaki üç piksel boyutunda teklifinizin logosunun PNG dosyalarını sağlayın:
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
+
+Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
 
 - **Küçük** (48 x 48)
 - **Orta** (90 x 90)
-- **Büyük** (216 x 216)
-- **Geniş** (255 x 115)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
 
-Üç logo de gereklidir ve listede farklı yerlerde kullanılır.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

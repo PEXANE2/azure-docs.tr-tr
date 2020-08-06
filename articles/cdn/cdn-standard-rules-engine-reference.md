@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559311"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760099"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN için standart kural altyapısı başvurusu
 
@@ -59,15 +59,7 @@ URL kodlamasını göstermek için yüzde işareti kullanılır (örneğin, `%20
 
 ### <a name="wildcard-values"></a>Joker karakter değerleri
 
-Joker karakter değeri olarak yorumlanan metin özel karakterlere ek anlam atar. Aşağıdaki tabloda, özel karakterlerin standart kurallar altyapısında nasıl yorumlanacağı açıklanmaktadır:
-
-Karakter | Açıklama
-----------|------------
-\ | Bu tabloda belirtilen karakterlerden herhangi birini atlamak için ters eğik çizgi kullanılır. Bir ters eğik çizgi, önüne kaçılması gereken özel karakterden önce belirtilmelidir. Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar:`\*`
-% | URL kodlamasını göstermek için yüzde işareti kullanılır (örneğin, `%20` ).
-\* | Yıldız işareti bir veya daha fazla karakteri temsil eden bir joker karakterdir.
-space | Boşluk karakteri, bir eşleşme koşulunun belirtilen değerlerden veya desenlerden herhangi biri tarafından karşılanamayacağını gösterir.
-tek tırnak işaretleri | Tek tırnak işareti özel bir anlamı yoktur. Ancak, bir dizi tek tırnak işareti, bir değerin değişmez değer olarak değerlendirilip değerlendirilmeyeceğini gösterir. Tek tırnak işaretleri aşağıdaki yollarla kullanılabilir:<ul><li>Belirtilen değer karşılaştırma değerinin herhangi bir bölümüyle eşleştiğinde eşleşme koşulunun karşılanmasına izin vermek için.  Örneğin, `'ma'` aşağıdaki dizelerin herhangi biriyle eşleşir: <ul><li>/Business/**ma**oython/asset.htm</li><li>**ma**p.gif</li><li>/Business/Template. **ma**p</li></ul><li>Özel bir karakterin sabit karakter olarak belirtilmesine izin vermek için. Örneğin, bir boşluk karakterini tek tırnak işareti (veya) kümesinde çevreleyerek bir sabit alan karakteri belirtebilirsiniz `' '` `'<sample value>'` .</li><li>Boş değerin belirtilmesine izin vermek için. Bir dizi tek tırnak işareti (**' '**) belirterek boş bir değer belirtin.</li></ul>**Önemli**:<br /><ul><li>Belirtilen değer bir joker karakter içermiyorsa, değer otomatik olarak değişmez değer olarak değerlendirilir. Sabit değer değeri için bir dizi tek tırnak işareti belirtmeniz gerekmez.</li><li>Bu tablodaki başka bir karakteri atlamak için ters eğik çizgi kullanılmazsa, bir dizi tek tırnak işareti içinde belirtildiğinde ters eğik çizgi yok sayılır.</li><li>Özel bir karakteri sabit karakter olarak belirtmenin başka bir yolu da bir ters eğik çizgi () kullanarak kaçış yöntemidir `\` .</li></ul>
+Şu anda standart kurallar altyapısındaki **URLPath eşleşme koşulunda** joker karakteri destekliyoruz. \*Karakter bir veya daha fazla karakteri temsil eden bir yıldız işaretidir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

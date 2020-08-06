@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 88f1c120ac4578e077e1c51f59bcaf53b1de2083
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 0cbfed307cea1bd98bf864046a8c08edb849226a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87538906"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797994"
 ---
 # <a name="enable-infiniband"></a>InfiniBand’i etkinleştirme
 
@@ -42,11 +42,12 @@ VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/)
 [Mellanox Openyapılar sürücüleri (OFED)](https://www.mellanox.com/products/InfiniBand-VPI-Software) , [SR-IOV etkin](../../sizes-hpc.md#rdma-capable-instances) [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'lere el ile yüklenebilir.
 
 ### <a name="linux"></a>Linux
-[Linux Için alınan sürücüler](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) aşağıdaki örnekle yüklenebilir. Buradaki örnek RHEL/CentOS için de olsa da, adımlar genel ve Ubuntu (16,04, 18,04 19,04, 20,04) ve SLES (12 SP4 ve 15) gibi uyumlu bir Linux işletim sistemi için kullanılabilir. Gelen kutusu sürücüleri de çalışır, ancak Mellanox ALıNAN sürücüler daha fazla özellik sağlar.
+[Linux Için alınan sürücüler](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) aşağıdaki örnekle yüklenebilir. Buradaki örnek RHEL/CentOS için de olsa da, adımlar genel ve Ubuntu (16,04, 18,04 19,04, 20,04) ve SLES (12 SP4 ve 15) gibi uyumlu bir Linux işletim sistemi için kullanılabilir. Diğer kullanıcılar için daha fazla örnek [azhpc-Images](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mellanoxofed.sh)depolarından daha fazla örnektir. Gelen kutusu sürücüleri de çalışır, ancak Mellanox ALıNAN sürücüler daha fazla özellik sağlar.
 
 ```bash
 MLNX_OFED_DOWNLOAD_URL=http://content.mellanox.com/ofed/MLNX_OFED-5.0-2.1.8.0/MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
-# Optinally verify checksum
+# Optionally verify checksum
+wget --retry-connrefused --tries=3 --waitretry=5 $MLNX_OFED_DOWNLOAD_URL
 tar zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
 
 KERNEL=( $(rpm -q kernel | sed 's/kernel\-//g') )

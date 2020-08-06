@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386444"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798078"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -180,7 +180,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, müşteriler için teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer** adı kutusuna girdiğiniz adla birlikte doldurulur. Bu adı daha sonra değiştirebilirsiniz. Ad:
 
@@ -196,7 +196,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Müşterilerin destek ekibinize ulaşabilmesi için destek Web sitesini sağlay�
 
 Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş ortakları için iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Name
+- Ad
 - E-posta
 - Telefon
 
@@ -234,7 +234,7 @@ Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş o
 
 Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da dahil olmak üzere iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Name
+- Ad
 - E-posta
 - Telefon
 
@@ -245,16 +245,17 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
-#### <a name="azure-marketplace-logos"></a>Azure Market logoları
+#### <a name="store-logos"></a>Mağaza logoları
 
-Aşağıdaki dört resim boyutlarıyla teklifinizin logosunun PNG dosyalarını sağlayın:
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
 
-- **Küçük** (48 &times; 48 piksel)
-- **Orta** (90 &times; 90 piksel)
-- **Büyük** (216 &times; 216 piksel)
-- **Geniş** (255 &times; 115 piksel)
+Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
 
-Dört logo de gereklidir ve çeşitli Azure Market listelerinde görüntülenir.
+- **Küçük** (48 x 48)
+- **Orta** (90 x 90)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
@@ -534,7 +535,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
-7. Description
+7. Açıklama
 8. Yararlı bağlantılar
 9. Ekran görüntüleri/videolar
 

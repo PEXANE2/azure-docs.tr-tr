@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001443"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798265"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations teklifi oluşturma
 
@@ -191,11 +191,14 @@ Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görünt�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunu iki piksel boyutunda sağlar:
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
+
+Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
 
 - **Küçük** (48 x 48)
-- **Büyük** (216 x 216)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
 
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

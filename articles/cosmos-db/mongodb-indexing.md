@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 08/04/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420660"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761170"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -50,7 +50,7 @@ Aşağıdaki örnekte gösterildiği gibi, aynı anda birden çok alanda etkili 
 
 `db.coll.find().sort({name:1,age:1})`
 
-Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. İşte bir örnek:
+Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -319,7 +319,12 @@ Dizin ilerleme durumu ayrıntıları geçerli dizin işleminin ilerleme yüzdesi
 
 **Arka** plan dizini özelliği için belirtilen değerden bağımsız olarak, dizin güncelleştirmeleri her zaman arka planda yapılır. Dizin güncelleştirmeleri, diğer veritabanı işlemlerinden daha düşük bir öncelikte Istek birimlerini (ru) tükettiğinden, dizin değişiklikleri yazma, güncelleştirme veya silme işlemlerine hiçbir kesinti oluşmasına neden olmaz.
 
-Yeni bir dizin eklediğinizde, sorgular dizini hemen kullanacaktır. Bu, sorguların tüm eşleşen sonuçları döndürmeyeceği ve herhangi bir hata döndürülmeksizin yapamayacağı anlamına gelir. Dizin dönüştürmesi tamamlandığında sorgu sonuçları tutarlı olur. [Dizin ilerlemesini izleyebilirsiniz](#track-index-progress).
+Yeni Dizin eklenirken kullanılabilirliği okuma etkisi yoktur. Sorgular, Dizin dönüştürme işlemi tamamlandıktan sonra yalnızca yeni dizinleri kullanacaktır. Dizin dönüştürmesi sırasında, sorgu altyapısı var olan dizinleri kullanmaya devam eder, bu nedenle dizinleme değişikliğini başlatmadan önce gözlemlediğiniz şekilde, dizin oluşturma dönüştürmesi sırasında benzer okuma performansını gözlemleyeceksiniz. Yeni dizinler eklenirken tamamlanmamış veya tutarsız sorgu sonuçlarının de riski yoktur.
+
+Dizinler kaldırılırken ve hemen çalışan sorgular, bırakılan dizinlerde filtreleri varsa, Dizin dönüştürmesi bitene kadar sonuçlar tutarsız ve tamamlanmamış olabilir. Dizinleri kaldırırsanız sorgu altyapısı, bu yeni kaldırılan dizinlerde sorgular filtreladığında tutarlı veya tamamlanmamış sonuçları garanti etmez. Çoğu geliştirici dizinleri bırakamaz ve sonra bu durum, uygulamada, bu durumun olası bir durumdur.
+
+> [!NOTE]
+> [Dizin ilerlemesini izleyebilirsiniz](#track-index-progress).
 
 ## <a name="migrate-collections-with-indexes"></a>Koleksiyonları dizinlerle geçirme
 

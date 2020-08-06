@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259961"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760133"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısındaki eylemler
 
@@ -33,8 +33,8 @@ Kuralların eşleştiği talepler için uç noktanın yaşam süresi (TTL) değe
 Önbellek davranışı |  Açıklama              
 ---------------|----------------
 Atlama önbelleği | Bu seçenek belirlendiğinde ve kural eşleştiğinde, içerik önbelleğe alınmaz.
-Geçersiz kıl | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan döndürülen TTL değeri, eylemde belirtilen değerle üzerine yazılır.
-Eksikse ayarla | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan bir TTL değeri döndürülmezse, kural TTL 'yi eylemde belirtilen değere ayarlar.
+Geçersiz kıl | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan döndürülen TTL değeri, eylemde belirtilen değerle üzerine yazılır. Bu davranış yalnızca yanıtın önbelleklenebilir olması durumunda uygulanır. "No-Cache", "Private", "No-Store" değerlerine sahip Cache-Control yanıt üst bilgisi için, eylem geçerli olmayacaktır.
+Eksikse ayarla | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan bir TTL değeri döndürülmezse, kural TTL 'yi eylemde belirtilen değere ayarlar. Bu davranış yalnızca yanıtın önbelleklenebilir olması durumunda uygulanır. "No-Cache", "Private", "No-Store" değerlerine sahip Cache-Control yanıt üst bilgisi için, eylem geçerli olmayacaktır.
 
 #### <a name="additional-fields"></a>Ek alanlar
 

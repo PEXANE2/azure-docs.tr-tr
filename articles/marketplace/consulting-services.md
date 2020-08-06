@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280962"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797874"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -86,12 +86,12 @@ Sistem Tümleştirici İş ortakları, aşağıdaki 20 ülkede/bölgede Danışm
 Şirket bilgilerinizi Market 'e [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) başlayın. Kayıt gereksinimlerinin tüm denetim listesi için bkz. [Market 'te yayımcı olma](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Yayımlama yapılarınızı hazırlama
-Kaydolmadan önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin. 
+Kaydolmadan önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin.
 
 |Yeni yayımcılar için kurulum  |
 |---------|
 |MPN Kimliği     |
-|Şirket logoları (48 x 48, 216 x 216 piksel)     |
+|Şirket logoları: 48 x 48 piksel (isteğe bağlı), 216 x 216 piksel – 350 x 350 piksel (gerekli)  |
 |Müşteri adayı hedefi     |
 ||
 

@@ -3,7 +3,7 @@ title: Yardım bulun ve bir destek bileti açın-Azure Active Directory | Micros
 description: Yardım alma ve Azure Active Directory için destek bileti açma ile ilgili yönergeler.
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799385"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797296"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Yardım bulun ve Azure Active Directory için bir destek bileti açın
 Microsoft, Azure Active Directory (Azure AD) için genel teknik, satış öncesi, faturalandırma ve abonelik desteği sağlar. Destek, Microsoft Azure ücretli ve deneme abonelikleri için hem çevrimiçi hem de telefonla kullanılabilir. Telefon desteği ve çevrimiçi faturalandırma desteği, ek dillerde mevcuttur. 
@@ -98,6 +98,6 @@ Destek telefon numaralarını almak için [destek Için Microsoft 'A başvurun](
 
 ##  <a name="next-steps"></a>Sonraki adımlar
 
-* [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
 * [Docs.microsoft.com adresinde Teknik belgeler](https://docs.microsoft.com/azure/active-directory/)

@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688900"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760915"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure 'da SAP ASCS/SCS örneği için Windows Yük devretme kümesine ve paylaşılan diske SAP NetWeaver HA 'yi yüklemeyin
 
@@ -148,7 +148,7 @@ ms.locfileid: "84688900"
 
 Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server yük devretme kümesi ve Küme Paylaşılan diski kullanılarak Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeye başlamadan önce şu belgeleri gözden geçirin:
 
@@ -225,7 +225,7 @@ Sonraki birkaç görev standart SAP yükleme belgelerinde açıklanmamıştır.
 
 YOKS/SCS örneğinin SAP profilini değiştirmek için:
 
-1. Bu profil parametresini SAP ASCS/SCS örnek profiline ekleyin:
+1. ENSA1 kullanılıyorsa, bu profile parametresini SAP ASCS/SCS örnek profiline ekleyin.
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ YOKS/SCS örneğinin SAP profilini değiştirmek için:
    Örneğin, SAP SCS örnek profiline ve karşılık gelen yola:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   Hem ENSA1 hem de ENSA2 için, `keepalive` işletim sistemi PARAMETRELERININ SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)' de açıklandığı gibi ayarlandığından emin olun.   
 
 2. Değişiklikleri uygulamak için SAP ASCS/SCS örneğini yeniden başlatın.
 

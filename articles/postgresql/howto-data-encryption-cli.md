@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 94c5ee53b48aa1e373099614d1637d4b6da0088b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502027"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797823"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
 
@@ -93,6 +93,25 @@ PostgreSQL için Azure veritabanı tek sunucu, Key Vault ' de depolanan bir mü�
 * [Okuma çoğaltması sunucusu oluşturma](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Sunucu geri yüklendikten sonra, geri yüklenen sunucu için veri şifrelemeyi yeniden doğrula
+
+*   Çoğaltma sunucusu için kimlik ata
+```azurecli-interactive
+az postgres server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   Geri yüklenen/çoğaltma sunucusu için kullanılması gereken mevcut anahtarı al
+
+```azurecli-interactive
+az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   Geri yüklenen/çoğaltma sunucusu için yeni kimliğin ilkesini ayarlama
+
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* Geri yüklenen/çoğaltılan sunucuyu şifreleme anahtarıyla yeniden doğrulama
 
 ```azurecli-interactive
 az postgres server key create –name  <server name> -g <resource_group> --kid <key url>

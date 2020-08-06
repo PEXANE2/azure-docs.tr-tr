@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448960"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761017"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -32,7 +32,7 @@ Azure işlem kaynakları için zaman eşitlemesini yapılandırma hakkında bilg
 **Sorumluluk:** MICROSOFT
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Merkezi güvenlik günlüğü yönetimini yapılandırma
-**Rehberlik:** Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, yönetim düzlemi düzeyinde Azure DevTest Labs örneklerinizin üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, DevTest Labs örnekleriniz için yönetim düzlemi düzeyinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" seçeneğini belirleyebilirsiniz.
+**Rehberlik:** Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, yönetim düzlemi düzeyinde Azure DevTest Labs örneklerinizin üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, DevTest Labs örnekleriniz için yönetim düzlemi düzeyinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" belirleyebilirsiniz.
 
 Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md).
 
@@ -258,6 +258,110 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 **Sorumluluk:** Müşterisi
 
+## <a name="data-protection"></a>Veri Koruma
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../security/benchmarks/security-control-data-protection.md).*
+
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
+**Rehberlik:** Gizli bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın.
+
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/resource-group-using-tags.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
+**Rehberlik:** Geliştirme, test ve üretim için ayrı abonelikler veya yönetim grupları uygulayın. Azure DevTest Labs örneklerin sanal ağ/alt ağ ile ayrılması ve uygun şekilde etiketlenmesi gerekir. 
+
+- [Ek Azure abonelikleri oluşturma](../billing/billing-create-subscription.md)
+- [Yönetim grupları oluşturma](../governance/management-groups/create.md)
+- [DevTest Labs için sanal ağ yapılandırma](devtest-lab-configure-vnet.md)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/resource-group-using-tags.md)
+- [DevTest Labs için Etiketler oluşturma ve kullanma](devtest-lab-add-tag.md)
+
+**Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
+
+**Sorumluluk:** Müşterisi
+
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: hassas bilgilerin yetkisiz aktarımını izleme ve engelleme
+**Rehberlik:** Henüz kullanılamıyor; veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz Azure DevTest Labs için kullanılamaz.
+
+Microsoft, Azure DevTest Labs için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
+
+- [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+
+**Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
+
+**Sorumluluk:** Paylaşılan
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
+**Rehberlik:** Azure DevTest Labs, varsayılan olarak TLS şifreli iletişim gerektirir. TLS sürümleri 1,2 Şu anda destekleniyor. İstemci kitaplığınız veya aracınız TLS desteklemiyorsa, şifrelenmemiş bağlantıları etkinleştirmek Azure portal veya yönetim API 'Leri aracılığıyla yapılabilir. Şifrelenmiş bağlantıların mümkün olmadığı durumlarda, laboratuvar ve istemci uygulamasının sanal bir ağa yerleştirilmesi önerilir.
+
+[DevTest Labs için iletim senaryosunda şifrelemeyi anlama](https://techcommunity.microsoft.com/t5/azure-developer-community-blog/azure-devtest-labs-enforcing-tls-1-2-starting-may-01-2020/ba-p/1236279)
+
+**Azure Güvenlik Merkezi izleme:** Yes
+
+**Sorumluluk:** Paylaşılan
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: hassas verileri belirlemek için etkin bir keşif aracı kullanın
+**Rehberlik:** Veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz Azure DevTest Labs için kullanılamaz. Gizli bilgiler içeren örnekleri Etiketler ve uyumluluk amaçları için gerekliyse üçüncü taraf çözümü uygular.
+
+Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
+
+- [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+
+**Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
+
+**Sorumluluk:** Müşterisi
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
+**Rehberlik:** Azure DevTest Labs Labs 'e erişimi denetlemek için Azure Active Directory (Azure AD) rol tabanlı erişim denetimi (RBAC) kullanın.
+
+- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [DevTest Labs 'de rolleri anlayın](devtest-lab-add-devtest-user.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: erişim denetimini zorlamak için ana bilgisayar tabanlı veri kaybı önleme kullanın
+**Rehberlik:** DevTest Labs 'nin bir parçası olarak oluşturulan işlem kaynaklarında uyumluluk için gerekliyse, verileri bir sistemden kopyalandıklarında bile verilere erişim denetimlerine zorlamak için otomatik ana bilgisayar tabanlı veri kaybı önleme çözümü gibi bir üçüncü taraf aracı uygulayın.
+
+Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
+
+- [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Uygulanamaz
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
+**Rehberlik:** Azure DevTest Labs aşağıdaki müşteri verilerini depolar:
+
+- Yapıtları uygulamadan oluşturulan dağıtım ve uzantı günlüklerini içeren [yapıt sonuçları](add-artifact-vm.md)
+- Formüllerden sanal makineler oluşturmak için kullanılan [Formül belgeleri](devtest-lab-manage-formulas.md)
+- Laboratuvar sanal makineleri için işletim sistemi ve veri diskleri 
+
+Yapıt sonuçları ve formül belgeleri, her laboratuvar dağıtımının bir parçası olarak oluşturulan bir Azure depolama hesabına gönderilir. Azure depolama 'daki veriler, 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülür, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Azure depolama şifrelemesi devre dışı bırakılamaz. Depolama hesabınızın şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetebilirsiniz. Daha fazla bilgi için bkz. [Laboratuvar depolama hesabı Için şifreleme](encrypt-storage.md).
+
+Varsayılan olarak, tüm laboratuar işletim sistemi ve veri diskleri, platform tarafından yönetilen bir anahtarla şifrelenir. Mevcut yönetilen disklere yazılan tüm yönetilen diskler, anlık görüntüler, görüntüler ve veriler, platform tarafından yönetilen anahtarlarla otomatik olarak şifrelenir. Laboratuvar sahibi olarak, laboratuvar işletim sistemi disklerini, müşteri tarafından yönetilen bir anahtarla şifrelenecek şekilde yapılandırabilirsiniz. Laboratuvar veri diskleri için müşteri tarafından yönetilen anahtar kullanan şifreleme Şu anda laboratuvar aracılığıyla yapılandırılamaz. Ancak bir abonelik Yöneticisi, bu ayarı bir abonelik içindeki laboratuvar diskleri için şimdilik yapılandırabilir. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarları kullanarak Lab DevTest Labs işletim sistemi disklerini şifreleme](encrypt-disks-customer-managed-keys.md).
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Paylaşılan
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
+**Rehberlik:** DevTest Labs örneklerine ve diğer kritik veya ilgili kaynaklara yapılan değişikliklerin ne zaman gerçekleştiği hakkında uyarı oluşturmak için Azure Izleyici ile Azure etkinlik günlüğünü kullanın.
+
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [DevTest Labs etkinlik günlüğü olayları için uyarı oluşturma](create-alerts.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+
+
 ## <a name="vulnerability-management"></a>Güvenlik Açığı Yönetimi
 *Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](../security/benchmarks/security-control-vulnerability-management.md).*
 
@@ -372,7 +476,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 **Sorumluluk:** Müşterisi
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: işlem kaynakları içindeki onaylanmamış yazılım uygulamaları için izleyici
-**Rehberlik:** Azure Otomasyonu, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında tamamen denetim sağlar. Abonelik Yöneticisi olarak, aboneliğinizdeki DevTest Labs sanal makinelerinde bulunan tüm yazılımlarla ilgili bilgi toplamayı otomatik hale getirmek için Azure sanal makine envanterinden yararlanabilirsiniz. Yazılım adı, sürüm, yayımcı ve yenileme süresi özellikleri Azure portal kullanılabilir. Yüklemenin tarih ve diğer bilgilerine erişim sağlamak için, müşteri, Konuk düzeyinde tanılamayı etkinleştirmek ve Windows olay günlüklerini bir Log Analytics çalışma alanına getirmelerini sağlamak için gereklidir.
+**Rehberlik:** Azure Otomasyonu, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında tamamen denetim sağlar. Abonelik Yöneticisi olarak, aboneliğinizdeki DevTest Labs sanal makinelerinde bulunan tüm yazılımlarla ilgili bilgi toplamayı otomatik hale getirmek için Azure sanal makine envanterini kullanabilirsiniz. Yazılım adı, sürüm, yayımcı ve yenileme süresi özellikleri Azure portal kullanılabilir. Yüklemenin tarih ve diğer bilgilerine erişim sağlamak için, müşteri, Konuk düzeyinde tanılamayı etkinleştirmek ve Windows olay günlüklerini bir Log Analytics çalışma alanına getirmelerini sağlamak için gereklidir.
 
 Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın yanı sıra, Azure Güvenlik Merkezi 'ndeki Uyarlamalı uygulama denetimleri, makinelerinizde çalışan uygulamaları analiz etmek ve bu zekası aracılığıyla bir izin verilenler listesi oluşturmak için makine öğrenimini kullanır. Bu özellik, uygulama izin verilenler listesi ilkelerini yapılandırma ve sürdürme sürecini önemli ölçüde basitleştirir. böylece, ortamınızda istenmeyen yazılımların kullanılmasını önleyebilirsiniz. Denetim modunu veya zorlama modunu yapılandırabilirsiniz. Denetim modu yalnızca korumalı VM 'lerdeki etkinliği denetler. Zorla modu kuralları zorunlu kılar ve çalışmasına izin verilmeyen uygulamaların engellenmiş olmasını sağlar. 
 
@@ -421,7 +525,7 @@ Aşağıdaki makalelere bakın:
 
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: onaylanan yazılım başlıkları envanterini koruyun
-**Rehberlik:** Uyarlamalı uygulama denetimi, DevTest Labs 'de barındırılan Azure ve Azure dışı makinelerde (Windows ve Linux) hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan Azure Güvenlik Merkezi 'ndeki akıllı, otomatik, uçtan uca bir çözümdür. Bu ayarı DevTest Labs 'de barındırılan temeldeki işlem kaynakları için yapılandırabilmek üzere bir abonelik yöneticisi olmanız gerektiğini unutmayın. Bu ayar kuruluşunuzun gereksinimini karşılamıyorsa üçüncü taraf çözümünü uygulayın.
+**Rehberlik:** Uyarlamalı uygulama denetimi, DevTest Labs 'de barındırılan Azure ve Azure dışı makinelerde (Windows ve Linux) hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan Azure Güvenlik Merkezi 'ndeki akıllı, otomatik, uçtan uca bir çözümdür. Bu ayarı, DevTest Labs 'de barındırılan temeldeki işlem kaynakları için yapılandırmak üzere bir abonelik yöneticisi olmanız gerektiğini unutmayın. Bu ayar kuruluşunuzun gereksinimini karşılamıyorsa üçüncü taraf çözümünü uygulayın.
 
 - [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
@@ -464,6 +568,156 @@ Aşağıdaki makalelere bakın:
 
 **Sorumluluk:** Müşterisi
 
+## <a name="secure-configuration"></a>Güvenli yapılandırma
+**Daha fazla bilgi için bkz. güvenlik denetimi: güvenli yapılandırma.**
+
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
+**Rehberlik:** DevTest Labs 'in bir parçası olarak oluşturulan Azure kaynaklarınızın yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak üzere Azure Ilke diğer adlarını kullanın. Yerleşik Azure Ilke tanımlarını da kullanabilirsiniz.
+
+Ayrıca, Azure Resource Manager, yapılandırmanın kuruluşunuzun güvenlik gereksinimlerini karşıladığından/aştığından emin olmak için gözden geçirilmesi gereken JavaScript Nesne Gösterimi (JSON) içinde şablonu dışarı aktarma özelliğine sahiptir.
+
+Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli bir yapılandırma temeli olarak da kullanabilirsiniz.
+
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
+- [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
+- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: güvenli işletim sistemi yapılandırması oluşturma
+**Rehberlik:** DevTest Labs 'nin bir parçası olarak oluşturulan tüm temeldeki işlem kaynaklarında güvenlik yapılandırmalarının bakımını yapmak için Azure Güvenlik Merkezi önerilerini kullanın. Ayrıca, kuruluşunuz tarafından istenen işletim sisteminin güvenlik yapılandırmasını oluşturmak için özel işletim sistemi görüntülerini veya Azure Automation durum yapılandırması veya DevTest Labs yapılarını kullanabilirsiniz.
+
+- [Azure Güvenlik Merkezi önerilerini izleme](../security-center/security-center-recommendations.md)
+- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
+- [Bir VHD 'YI karşıya yükleyin ve Azure 'da yeni Windows VM 'Leri oluşturmak için kullanın](../virtual-machines/windows/upload-generalized-managed.md)
+- [Azure CLı ile özel diskten bir Linux VM oluşturma](../virtual-machines/linux/upload-vhd.md)
+- [Özel görüntüleri oluşturma ve birden çok DevTest Labs 'e dağıtma](image-factory-save-distribute-custom-images.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Uygulanamaz
+
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: güvenli Azure Kaynak yapılandırmalarının bakımını yapma
+**Rehberlik:** DevTest Labs 'in bir parçası olarak oluşturulan Azure kaynaklarınız genelinde güvenli ayarları zorlamak için Azure Ilkesi **reddetme** ve **dağıtım yok** kurallarını kullanın. Ayrıca, kuruluşunuz tarafından gerekli olan Azure kaynaklarınızın güvenlik yapılandırmasını sürdürmek için Azure Resource Manager şablonları kullanabilirsiniz.
+
+- [Azure Ilke efektlerini anlama](../governance/policy/concepts/effects.md)
+- [Uyumluluğu zorunlu tutmak için ilkeleri oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
+- [Azure Resource Manager şablonlarına genel bakış](../azure-resource-manager/templates/overview.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: güvenli işletim sistemi yapılandırmalarının bakımını yapma
+**Rehberlik:** Laboratuvarın bir parçası olarak oluşturulan temel Azure işlem kaynaklarınız üzerinde güvenlik açığı değerlendirmeleri gerçekleştirmeye yönelik Azure Güvenlik Merkezi önerilerini izleyin. Ayrıca, kuruluşunuz tarafından istenen işletim sisteminin güvenlik yapılandırmasını sürdürmek için Azure Resource Manager şablonları, özel işletim sistemi görüntüleri veya Azure Otomasyonu durum yapılandırması ' nı kullanabilirsiniz. Ayrıca, istenen tüm yapılandırmalara göre düzenli olarak görüntü oluşturup dağıtan bir kod yapılandırma çözümü olan Image Factory çözümünü de kullanabilirsiniz.
+
+Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntüleri Microsoft tarafından yönetilir ve sürdürülür.
+
+- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
+- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [DevTest Labs 'de görüntü fabrikası oluşturma](image-factory-create.md)
+
+**Azure Güvenlik Merkezi izleme:** Yes
+
+**Sorumluluk:** Paylaşılan
+
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Azure kaynaklarının yapılandırmasını güvenli bir şekilde depolayın
+**Rehberlik:** Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen durum yapılandırması betikleri gibi güvenli bir şekilde depolamak ve yönetmek için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynaklara erişmek için, Azure DevOps ile tümleşikse, belirli kullanıcılar, yerleşik güvenlik grupları veya Azure Active Directory (Azure AD) içinde tanımlanan gruplar için izin verebilir veya vermeyebilirsiniz.
+
+- [Git öğreticisi Azure Repos](/devops/repos/git/gitworkflow?view=azure-devops)
+- [İzinler ve gruplar hakkında](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure DevTest Labs ile Azure DevOps iş akışı arasında tümleştirme](devtest-lab-dev-ops.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
+**Rehberlik:** Özel görüntüler kullanıyorsanız, görüntülere yalnızca yetkili kullanıcıların erişebildiğinden emin olmak için rol tabanlı erişim denetimi (RBAC) kullanın. Paylaşılan bir görüntü Galerisi 'ni kullanarak görüntülerinizi, ihtiyaç duyulan belirli laboratuvarlara paylaşabilirsiniz. Kapsayıcı görüntüleri için, onları Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için RBAC kullanın.
+
+- [Azure 'da RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [DevTest Labs için paylaşılan görüntü Galerisi yapılandırma](configure-shared-image-gallery.md)
+- [Container Registry için RBAC 'yi anlayın](../container-registry/container-registry-roles.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: sistem yapılandırma yönetimi araçlarını dağıtma
+**Rehberlik:** Azure Ilkesi 'ni kullanarak Azure kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. DevTest Labs altında oluşturulan Azure kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak üzere Azure Ilke diğer adlarını kullanın. Ayrıca, belirli kaynaklarınızla ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz. Ayrıca, Azure Otomasyonu ' nu yapılandırma değişikliklerini dağıtmak için de kullanabilirsiniz.
+
+- [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
+- [Diğer adları kullanma](../governance/policy/concepts/definition-structure.md#aliases)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: işletim sistemleri için sistem yapılandırma yönetimi araçları dağıtma
+**Rehberlik:** Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde Istenen durum yapılandırması (DSC) düğümleri için bir yapılandırma yönetim hizmetidir. Makineleri kolayca ekleyebilir, bunlara bildirime dayalı yapılandırmalara atayabilir ve her makinenin, belirttiğiniz istenen duruma göre uyumluluğunu gösteren raporları görüntüleyebilirsiniz. Ayrıca, kurumsal ilkelerin izlediklerinden emin olmak için her laboratuvar makinesinde yüklenebilen özel bir yapıt da yazabilirsiniz. 
+
+- [Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme](../automation/automation-dsc-onboarding.md)
+- [DevTest Labs sanal makineleri için özel yapılar oluşturma](devtest-lab-artifact-author.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Azure hizmetleri için otomatik yapılandırma izlemeyi uygulayın
+**Rehberlik:** DevTest Labs altında oluşturulan Azure kaynaklarınıza yönelik temel taramalar gerçekleştirmek için Azure Güvenlik Merkezi 'ni kullanın. Ayrıca Azure Ilkesi 'ni kullanarak Azure Kaynak konfigürasyonları 'nı uyarır ve denetleyin.
+
+- [Azure Güvenlik Merkezi 'nde öneriler nasıl düzeltileceği](../security-center/security-center-remediate-recommendations.md)
+ 
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: işletim sistemleri için otomatik yapılandırma izlemeyi Uygula
+**Rehberlik:** Kapsayıcılar için işletim sistemi ve Docker ayarlarına yönelik temel taramalar gerçekleştirmek üzere Azure Güvenlik Merkezi 'ni kullanın.
+
+- [Azure Güvenlik Merkezi'ndeki kapsayıcı önerilerini anlama](../security-center/security-center-container-recommendations.md)
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
+### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure gizli dizilerini güvenli bir şekilde yönetin
+**Rehberlik:** Bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliği kullanın.
+
+- [DevTest Labs 'de Azure Resource Manager ortamları dağıtmak için yönetilen kimlik yapılandırma](use-managed-identities-environments.md)
+- [DevTest Labs 'de sanal makineleri dağıtmak için yönetilen kimlik yapılandırma](enable-managed-identities-lab-vms.md)
+- [Anahtar Kasası oluşturma](../key-vault/quick-create-portal.md)
+- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](../key-vault/managed-identity.md)
+
+**Azure Güvenlik Merkezi izleme:** Yes
+
+**Sorumluluk:** Müşterisi
+
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
+**Rehberlik:** Azure AD 'de otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
+
+- [DevTest Labs 'de Azure Resource Manager ortamları dağıtmak için yönetilen kimlik yapılandırma](use-managed-identities-environments.md)
+- [DevTest Labs 'de sanal makineleri dağıtmak için yönetilen kimlik yapılandırma](enable-managed-identities-lab-vms.md)
+ 
+**Azure Güvenlik Merkezi izleme:** Yes
+
+**Sorumluluk:** Müşterisi
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
+**Rehberlik:** Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
+
+- Kimlik bilgisi tarayıcısını ayarlama
+
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+
+**Sorumluluk:** Müşterisi
+
 
 ## <a name="malware-defense"></a>Kötü amaçlı yazılımdan koruma
 *Daha fazla bilgi için bkz. güvenlik denetimi: kötü amaçlı yazılımdan koruma.*
@@ -480,7 +734,7 @@ Aşağıdaki makalelere bakın:
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: işlem dışı Azure kaynaklarına yüklenecek dosyaları önceden Tara
 **Rehberlik:** Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen temel ana bilgisayar üzerinde (örneğin, laboratuarda barındırılan Azure App Service) etkinleştirilir, ancak içeriğiniz üzerinde çalışmaz.
-App Service, Data Lake Storage, BLOB depolama vb. gibi işlem dışı Azure kaynaklarına yüklenen tüm dosyaları önceden tarayın.
+App Service, Data Lake Storage, BLOB depolama gibi işlem dışı Azure kaynaklarına yüklenen tüm dosyaları önceden tarayın.
 
 Depolama hesaplarına yüklenen kötü amaçlı yazılımları algılamak için veri Hizmetleri için Azure Güvenlik Merkezi 'nin tehdit algılamasını kullanın.
 
@@ -561,7 +815,7 @@ Azure Disk Şifrelemesi kullanıyorsanız, Azure VM 'yi disk şifreleme anahtarl
 
 - [Kendi güvenlik olay yanıtı işleminizi oluşturma kılavuzu](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 - [Microsoft Güvenlik Yanıt Merkezi 'nin bir olayın anatomisi](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
-- [Kendi olay yanıtı planınızı oluşturmaya yardımcı olmak için NıST 'nin bilgisayar güvenliği olay işleme kılavuzuyla yararlanın](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [Kendi olay yanıtı planınızın oluşturulmasına yardımcı olması için NıST 'nin bilgisayar güvenliği olay işleme kılavuzunu kullanın](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 

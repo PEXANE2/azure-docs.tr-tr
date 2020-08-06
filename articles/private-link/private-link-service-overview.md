@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202222"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760965"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
 Azure özel bağlantı hizmeti, Azure özel bağlantısı tarafından desteklenen kendi hizmetinize yapılan başvurudur. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md) arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir ve böylece hizmetinize ait tüketiciler kendi sanal ağlarına özel olarak erişebilir. Müşterileriniz, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmetle eşleşmekte olabilir. Bu makalede hizmet sağlayıcı tarafı ile ilgili kavramlar açıklanmaktadır. 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Özel bağlantı hizmeti iş akışı" border="true":::
+
+*Şekil: Azure özel bağlantı hizmeti.*
+
 ## <a name="workflow"></a>İş akışı
 
 ![Özel bağlantı hizmeti iş akışı](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*Şekil: Azure özel bağlantı hizmeti iş akışı.*
 
 ### <a name="create-your-private-link-service"></a>Özel bağlantı hizmetinizi oluşturma
 
@@ -104,7 +111,7 @@ Bu bilgiler, özel bir tür uzunluğu-değer (TLV) vektörü kullanılarak aşa�
 
 Özel TLV ayrıntıları:
 
-|Alan |Uzunluk (sekizli)  |Description  |
+|Alan |Uzunluk (sekizli)  |Açıklama  |
 |---------|---------|----------|
 |Tür  |1        |PP2_TYPE_AZURE (0xEE)|
 |Uzunluk  |2      |Değer uzunluğu|

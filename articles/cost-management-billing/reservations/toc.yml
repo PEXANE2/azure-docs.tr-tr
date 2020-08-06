@@ -71,7 +71,7 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Kavramlar
   items:
-    - name: Rezervasyon önerilerinin oluşturulma biçimi
+    - name: Rezervasyon önerileri
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: İndirim nasıl uygulanır?
       items:
@@ -120,9 +120,9 @@
     - name: Rezervasyonlar REST API’si
       href: reservation-apis.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Rezervasyonlar - Azure PowerShell
-      href: /powershell/module/azurerm.reservations
+      href: /powershell/module/az.reservations
     - name: Rezervasyonlar - CLI
-      href: /cli/azure/reservations/reservation
+      href: /cli/azure/reservations
     - name: Maliyet Yönetimi - Tüketim Kullanım Ayrıntıları REST API’si
       href: /rest/api/consumption/usagedetails
     - name: Maliyet Yönetimi - Tüketim Rezervasyon Ayrıntıları REST API’si

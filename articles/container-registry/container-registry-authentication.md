@@ -3,12 +3,12 @@ title: Kayıt defteri kimlik doğrulama seçenekleri
 description: Bir Azure Active Directory kimlikle oturum açma, hizmet sorumlularını kullanma ve isteğe bağlı yönetici kimlik bilgilerini kullanma dahil olmak üzere, özel bir Azure Kapsayıcı kayıt defteri için kimlik doğrulama seçenekleri.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d44a97e01eef709dff47342e4503d1e0263a225
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712046"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760592"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure Container Registry ile kimlik doğrulama
 
@@ -18,7 +18,7 @@ Her biri bir veya daha fazla kayıt defteri kullanımı senaryosu için geçerli
 
 ## <a name="authentication-options"></a>Kimlik doğrulaması seçenekleri
 
-Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemleri ve önerilen senaryolar listelenmektedir. Ayrıntılar için bkz. bağlantılı içerik.
+Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemleri ve tipik senaryolar listelenmektedir. Ayrıntılar için bkz. bağlantılı içerik.
 
 | Yöntem                               | Kimlik doğrulaması nasıl yapılır?                                           | Senaryolar                                                            | RBAC                             | Sınırlamalar                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
@@ -26,26 +26,50 @@ Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemleri ve önerilen
 | [AD hizmet sorumlusu](#service-principal)                  | `docker login`<br/><br/>`az acr login`Azure CLı 'da<br/><br/> API 'lerde veya araç defterindeki kayıt defteri oturum açma ayarları<br/><br/> [Kubernetes çekme gizli dizisi](container-registry-auth-kubernetes.md)                                           | CI/CD ardışık düzeninde katılımsız gönderim<br/><br/> Azure 'a veya dış hizmetlere katılımsız çekme  | Evet                              | SP parolasının varsayılan süre sonu 1 yıldır       |                                                           
 | [AKS ile tümleştirme](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | AKS kümesi oluşturulduğunda veya güncelleştirilirken kayıt defteri Ekle  | AKS kümesine katılımsız çekme                                                  | Hayır, yalnızca çekme erişimi             | Yalnızca AKS kümesi ile kullanılabilir            |
 | [Azure kaynakları için yönetilen kimlik](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` Azure CLı 'da                                       | Azure CI/CD ardışık düzeninde katılımsız gönderim<br/><br/> Azure hizmetlerine katılımsız çekme<br/><br/>   | Evet                              | Yalnızca [Azure kaynakları için yönetilen kimlikleri destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) Azure hizmetlerinden kullanın              |
-| [Yönetici Kullanıcı](#admin-account)                            | `docker login`                                          | Bireysel geliştirici veya test edici tarafından etkileşimli gönderim/çekme                           | Hayır, her zaman çek ve anında erişim  | Kayıt defteri başına tek hesap, birden çok kullanıcı için önerilmez         |
+| [Yönetici Kullanıcı](#admin-account)                            | `docker login`                                          | Bireysel geliştirici veya test edici tarafından etkileşimli gönderim/çekme<br/><br/>Kayıt defterinden Azure App Service veya Azure Container Instances 'ye görüntü dağıtımı                      | Hayır, her zaman çek ve anında erişim  | Kayıt defteri başına tek hesap, birden çok kullanıcı için önerilmez         |
 | [Depo kapsamlı erişim belirteci](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login`Azure CLı 'da   | Bireysel geliştirici veya test edici tarafından depoya etkileşimli gönderim/çekme<br/><br/> Ayrı sistem veya dış cihaz tarafından yapılan katılımsız gönderme/depoya çekme                  | Evet                              | Şu anda AD kimliğiyle tümleştirildi  |
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD ile bireysel oturum açma
 
-Kayıt defteriyle doğrudan bir geliştirme iş istasyonundan görüntü çekme ve gönderme gibi, [Azure CLI](/cli/azure/install-azure-cli)'de [az ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) komutunu kullanarak kimlik doğrulaması yapma.
+Kayıt defteriyle doğrudan çalışırken, bir geliştirme iş istasyonundan görüntü çekme ve görüntüleri oluşturduğunuz bir kayıt defterine gönderme gibi, bireysel Azure kimliğinizi kullanarak kimlik doğrulaması yapın. [Azure CLI](/cli/azure/install-azure-cli)'de [az ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) komutunu çalıştırın:
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-İle oturum açtığınızda `az acr login` , CLI, kayıt defterinizle oturumunuzu sorunsuz bir şekilde doğrulamak için [az Login](/cli/azure/reference-index#az-login) çalıştırdığınızda oluşturulan belirteci kullanır. Kimlik doğrulama akışını gerçekleştirmek için, Docker 'ın ortamınızda yüklü ve çalışır durumda olması gerekir. `az acr login`, dosyasında Azure Active Directory belirteç ayarlamak için Docker istemcisini kullanır `docker.config` . Bu şekilde oturum açtıktan sonra, kimlik bilgileriniz önbelleğe alınır ve `docker` oturuminizdeki sonraki komutlar Kullanıcı adı veya parola gerektirmez.
+İle oturum açtığınızda `az acr login` , CLI, kayıt defterinizle oturumunuzu sorunsuz bir şekilde doğrulamak için [az Login](/cli/azure/reference-index#az-login) çalıştırdığınızda oluşturulan belirteci kullanır. Kimlik doğrulama akışını gerçekleştirmek için, Docker CLı ve Docker Daemon 'ın ortamınızda yüklü ve çalışır durumda olması gerekir. `az acr login`, dosyasında Azure Active Directory belirteç ayarlamak için Docker istemcisini kullanır `docker.config` . Bu şekilde oturum açtıktan sonra, kimlik bilgileriniz önbelleğe alınır ve `docker` oturuminizdeki sonraki komutlar Kullanıcı adı veya parola gerektirmez.
 
 > [!TIP]
 > Ayrıca `az acr login` , Docker görüntüleri dışındaki yapıtları, Kayıt defterinize ( [OCI yapıları](container-registry-oci-artifacts.md)gibi) göndermek veya çekmek istediğinizde tek bir kimliğin kimliğini doğrulamak için kullanın.  
 
-
 Kayıt defteri erişimi için tarafından kullanılan belirteç `az acr login` **3 saat**için geçerlidir; bu nedenle, bir komutu çalıştırmadan önce her zaman kayıt defterinde oturum açmanız önerilir `docker` . Belirtecin süresi dolarsa, `az acr login` yeniden kimlik doğrulaması yapmak için komutunu tekrar kullanarak yenileyebilirsiniz. 
 
-`az acr login`Azure kimlikleri ile kullanılması, [rol tabanlı erişim](../role-based-access-control/role-assignments-portal.md)sağlar. Bazı senaryolarda, Azure AD 'de kendi bireysel kimliklerinizi kullanarak bir kayıt defterinde oturum açmak isteyebilirsiniz. Şirketler arası senaryolar için veya tek tek erişimi yönetmek istemediğiniz bir çalışma grubunun veya geliştirme iş akışının ihtiyaçlarını işlemek için [Azure kaynakları için yönetilen bir kimlikle](container-registry-authentication-managed-identity.md)da oturum açabilirsiniz.
+`az acr login`Azure kimlikleri ile kullanılması, [rol tabanlı erişim](../role-based-access-control/role-assignments-portal.md)sağlar. Bazı senaryolarda, Azure AD 'de kendi bireysel Kimliğiniz ile bir kayıt defterinde oturum açmak veya diğer Azure kullanıcılarını belirli [RBAC rolleri ve izinleriyle](container-registry-roles.md)yapılandırmak isteyebilirsiniz. Şirketler arası senaryolar için veya tek tek erişimi yönetmek istemediğiniz bir çalışma grubunun veya geliştirme iş akışının ihtiyaçlarını işlemek için [Azure kaynakları için yönetilen bir kimlikle](container-registry-authentication-managed-identity.md)da oturum açabilirsiniz.
+
+### <a name="az-acr-login-with---expose-token"></a>az ACR ile oturum açma--gösterme-belirteç
+
+Bazı durumlarda, `az acr login` Docker Daemon ortamınızda çalışmadığı zaman kimlik doğrulaması yapmanız gerekebilir. Örneğin, `az acr login` DOCKER CLI 'yı sağlayan ancak Docker Daemon çalıştırmayan Azure Cloud Shell bir betikte çalıştırmanız gerekebilir.
+
+Bu senaryo için, `az acr login` önce `--expose-token` parametresiyle çalıştırın. Bu seçenek, Docker CLı aracılığıyla oturum açmak yerine bir erişim belirteci gösterir.
+
+```azurecli
+az acr login -name <acrName> --expose-token
+```
+
+Çıktı, burada kısaltılmış olarak erişim belirtecini görüntüler:
+
+```console
+{
+  "accessToken": "eyJhbGciOiJSUzI1NiIs[...]24V7wA",
+  "loginServer": "myregistry.azurecr.io"
+}
+``` 
+
+Ardından, Çalıştır `docker login` , `00000000-0000-0000-0000-000000000000` Kullanıcı adı olarak geçer ve erişim belirtecini parola olarak kullanarak:
+
+```console
+docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
+```
 
 ## <a name="service-principal"></a>Hizmet sorumlusu
 
@@ -65,13 +89,15 @@ CLı betikleri için bir Azure Container Registry ile kimlik doğrulamaya yönel
 
 ## <a name="admin-account"></a>Yönetici hesabı
 
-Her kapsayıcı kayıt defteri, varsayılan olarak devre dışı bırakılan bir yönetici kullanıcı hesabı içerir. Yönetici kullanıcıyı etkinleştirebilir ve Azure portal kimlik bilgilerini yönetebilir veya Azure CLı veya diğer Azure araçlarını kullanarak yapılandırabilirsiniz.
+Her kapsayıcı kayıt defteri, varsayılan olarak devre dışı bırakılan bir yönetici kullanıcı hesabı içerir. Yönetici kullanıcıyı etkinleştirebilir ve Azure portal kimlik bilgilerini yönetebilir veya Azure CLı veya diğer Azure araçlarını kullanarak yapılandırabilirsiniz. Yönetici hesabının kayıt defteri için tam izinleri vardır.
+
+Yönetici hesabı şu anda bir kapsayıcı kayıt defterinden belirli Azure hizmetlerine görüntü dağıtmaya yönelik bazı senaryolar için gereklidir. Örneğin, portalda bir kapsayıcı görüntüsünü doğrudan [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) veya [kapsayıcılar için Azure Web Apps](container-registry-tutorial-deploy-app.md)bir kayıt defterinden dağıttığınızda yönetici hesabı gerekir.
 
 > [!IMPORTANT]
 > Yönetici hesabı, genellikle test amacıyla tek bir kullanıcının kayıt defterine erişmesi için tasarlanmıştır. Yönetici hesabı kimlik bilgilerini birden çok kullanıcı arasında paylaşmayı önermiyoruz. Yönetici hesabıyla kimlik doğrulaması yapan tüm kullanıcılar, kayıt defterine gönderme ve çekme erişimi olan tek bir kullanıcı olarak görüntülenir. Bu hesabın değiştirilmesi veya devre dışı bırakılması, kimlik bilgilerini kullanan tüm kullanıcılar için kayıt defteri erişimini devre dışı bırakır. Gözetimsiz senaryolara yönelik kullanıcılar ve hizmet sorumluları için bireysel kimlik önerilir.
 >
 
-Yönetici hesabı, her ikisi de yeniden üretilbilen iki parolayla sağlanır. İki parola, diğerini yeniden oluştururken bir parola kullanarak kayıt defteriyle bağlantıyı korumanıza olanak sağlar. Yönetici hesabı etkinleştirilmişse, `docker login` kayıt defterine temel kimlik doğrulaması sorulduğunda, Kullanıcı adını ve parolayı komuta geçirebilirsiniz. Örneğin:
+Yönetici hesabı, her ikisi de yeniden üretilbilen iki parolayla sağlanır. İki parola, diğerini yeniden oluştururken bir parola kullanarak kayıt defteriyle bağlantıyı korumanıza olanak sağlar. Yönetici hesabı etkinleştirilmişse, `docker login` kayıt defterine temel kimlik doğrulaması sorulduğunda, Kullanıcı adını ve parolayı komuta geçirebilirsiniz. Örnek:
 
 ```
 docker login myregistry.azurecr.io 

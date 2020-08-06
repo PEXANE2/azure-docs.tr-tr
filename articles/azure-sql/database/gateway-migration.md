@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373496"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759708"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,20 +26,23 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
-# <a name="in-progress"></a>[Devam ediyor](#tab/in-progress-ip)
+# <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
 ### <a name="september-2020"></a>Eylül 2020
 
-Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, 10 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlayacaktır:
+
+- Orta Batı ABD: 13.78.248.43 
+- Güney Afrika Kuzey: 102.133.120.2  
+
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, 1 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlayacaktır:
 
 - Kuzey Avrupa: 13.74.104.113 
 - Batı ABD2:40.78.248.10 
 - Batı Avrupa: 52.236.184.163 
 - Orta Güney ABD: 20.45.121.1, 20.49.88.1 
 
-Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır:
+Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, 1 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlar. :
 - Japonya Doğu: 40.79.184.8, 40.79.192.5
-
-Bu SQL ağ geçitleri, 1 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlar. 
 
 ### <a name="august-2020"></a>Ağustos 2020
 
@@ -82,7 +85,7 @@ Trafik geçişi, Azure SQL veritabanı 'nda veritabanınız için DNS tarafında
 - Veritabanınız için bölgesel olarak [yedekli yapılandırmayı](high-availability-sla.md#zone-redundant-configuration) kullanın
 
 Şunları yaptıysanız etkilenmeyecektir:
-
+ 
 - Bağlantı ilkesi olarak yeniden yönlendirme
 - Azure 'un içinden ve hizmet etiketlerini kullanarak SQL veritabanı 'na bağlantı
 - SQL Server için JDBC sürücüsünün desteklenen sürümleri kullanılarak yapılan bağlantılar, hiçbir etkisi görmez. Desteklenen JDBC sürümleri için bkz. [SQL Server Için MICROSOFT JDBC sürücüsü indirme](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).

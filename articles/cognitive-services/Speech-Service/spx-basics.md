@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5b516eb913bf9e7b8337a41483682e1201c58890
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801878"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759045"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -62,7 +62,7 @@ Bu komutta, hem kaynak **(çevrilecek**dil) hem de hedef (çevrilecek **dil) dil
 Bir ses dosyası dizininiz varsa, toplu konuşma tanımayı hızlı bir şekilde çalıştırmak için konuşma CLı 'yı kolayca kullanabilirsiniz. Aşağıdaki komutu çalıştırarak dizininizle birlikte `--files` komutunu çalıştırın. Bu örnekte, `\*.wav` dizinde bulunan tüm dosyaları tanımak için dizine eklenir `.wav` . Ayrıca, `--threads` tanımayı 10 paralel iş parçacığında çalıştırmak için bağımsız değişkenini belirtin.
 
 > [!NOTE]
-> `--threads`Bağımsız değişken, komutlar için sonraki bölümde de kullanılabilir `spx synthesize` ve kullanılabilir Iş parçacıkları CPU 'ya ve geçerli yük yüzdesine bağlıdır.
+> `--threads`Bağımsız değişken, komutlar için sonraki bölümde de kullanılabilir `spx synthesize` ve kullanılabilir Iş parçacıkları CPU 'ya ve geçerli yük yüzdesine göre değişir.
 
 ```shell
 spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\speech_output.tsv --threads 10

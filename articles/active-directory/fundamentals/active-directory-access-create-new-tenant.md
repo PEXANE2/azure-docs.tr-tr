@@ -2,7 +2,7 @@
 title: Hızlı başlangıç-erişim & yeni kiracı oluşturma-Azure AD
 description: Azure Active Directory bulma ve kuruluşunuz için yeni bir kiracı oluşturma hakkında yönergeler.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f29d103ce1be426fb0b5c462cc1d831fefe87b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f658b5670c42ab03770a3082f8eca740f6869dc3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80050002"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797653"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory yeni bir kiracı oluşturun
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
@@ -33,7 +33,7 @@ Azure portalda oturum açtıktan sonra kuruluşunuz için yeni bir kiracı oluş
 
 1. Kuruluşunuzun [Azure Portal](https://portal.azure.com/)oturum açın.
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin.  
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin.  
 
     ![Azure Active Directory kaynak sayfası oluştur](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 

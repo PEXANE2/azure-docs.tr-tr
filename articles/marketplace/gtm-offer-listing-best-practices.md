@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 388fb7e36a823d7f6e9ee1d58220d3a1008d8cec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498063"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798129"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -119,9 +119,9 @@ Anahtar sözcükler, müşterilerin arama yaparken teklifinizi bulmasına yardı
 ## <a name="storefront-marketing-details"></a>Storefront pazarlama ayrıntıları
 | Storefront ayarı | En iyi yöntem |
 |:--- |:--- |  
-| Teklif logosu (PNG biçimi, 48 &nbsp; &times; &nbsp; 48): arama sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Amblemini PNG biçiminde karşıya yükleyerek teklifinizin arama sayfasına yükleyin. |
-| Teklif logosu (PNG biçimi, 216 &nbsp; &times; &nbsp; 216): uygulama ayrıntıları sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Logonuzu uygulama ayrıntıları listesi sayfasına PNG biçiminde karşıya yükleyin. |
-| "Daha fazla bilgi" belgeleri | "Daha fazla bilgi" altında destekleyici satış ve pazarlama varlıklarının dahil olduğu bazı örnekler şunlardır: <ul> <li> teknik incelemeler, </li> <li> Broşürler </li> <li> denetim listeleri veya </li> <li> PowerPoint sunuları.</li> </ul>Tüm dosyaları PDF biçiminde kaydedin. Burada Hedefiniz, müşterileri satmak değil, müşterileri eğitmek için olmalıdır. <br><br>Tüm belgelerinize uygulama giriş sayfanız için bir bağlantı ekleyin ve ziyaretçi ve deneme sürümlerini izlemenize yardımcı olması için URL parametreleri ekleyin. |
+| Teklif logosu (PNG biçimi, 216 × 216 ve 350 x 350 piksel): uygulama ayrıntıları sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Logonuzu uygulama ayrıntıları listesi sayfasına PNG biçiminde karşıya yükleyin. İş Ortağı Merkezi, gereken logo boyutlarına göre yeniden boyutlandırır. |
+| Teklif logosu (PNG biçimi, 48 × 48 piksel): arama sayfası | İş Ortağı Merkezi, yüklediğiniz büyük logoyu bu logoyu oluşturacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz. |
+| "Daha fazla bilgi" belgeleri | "Daha fazla bilgi" altında destekleyici satış ve pazarlama varlıklarının dahil olduğu bazı örnekler şunlardır:<ul><li>teknik incelemeler</li><li> Broşürler</li><li>denetim listeleri veya</li><li> PowerPoint sunuları</li></ul><br>Tüm dosyaları PDF biçiminde kaydedin. Burada Hedefiniz, müşterileri satmak değil, müşterileri eğitmek için olmalıdır.<br><br>Tüm belgelerinize uygulama giriş sayfanız için bir bağlantı ekleyin ve ziyaretçi ve deneme sürümlerini izlemenize yardımcı olması için URL parametreleri ekleyin. |
 | Videolar: yalnızca AppSource, danışmanlık hizmetleri ve SaaS teklifleri | En güçlü videolar, sizin teklifinizin değerini, anlatım formunda iletişim kurar:<ul> <li> Müşterinizin, hikayenin herbirini değil, müşteriniz yapın. </li> <li> Videonuzun, hedef müşterinizin sorumlu güçlüklerine ve hedeflerine yönelik olması gerekir. </li> <li> Önerilen Uzunluk: 60-90 saniye.</li> <li> Videoların adını kullanan anahtar arama sözcüklerini ekleyin. </li> <li> Nasıl yapılır, Başlarken veya müşteri referansları gibi ek videolar eklemeyi göz önünde bulundurun. </li> </ul> |
 | Ekran görüntüleri (1280 &nbsp; &times; &nbsp; 720) | En fazla beş ekran görüntüsü ekleyin:<br>Anahtar arama sözcüklerini dosya adlarına ekleyin. |
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317782"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798231"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -101,7 +101,7 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
     - Analiz
     - Uygulama modernleştirme
     - Arşiv
-    - Yapay Zeka ve Makine Öğrenmesi
+    - Yapay Zeka + Makine Öğrenmesi
     - Backup
     - Büyük Veri
     - Veri platformu
@@ -182,7 +182,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 [!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
-### <a name="keywords"></a>Anahtar sözcükler
+### <a name="keywords"></a>Anahtar Sözcükler
 
 Birincil ürün ve danışmanlık hizmetinize uygun en fazla üç arama anahtar sözcüğü girin. Tekliflerinizi bulmayı daha kolay hale getirir.
 
@@ -207,12 +207,14 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Aşağıdaki piksel boyutlarının her birinde teklifinizin logosunun PNG dosyalarını sağlayın:
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
 
-- **Küçük (48 x 48)**
-- **Büyük (216 x 216)**
+Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
 
-Tüm logolar gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+- **Küçük** (48 x 48)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 

@@ -1,24 +1,24 @@
 ---
 title: Azure Blob depolamada ağ dosya sistemi 3,0 desteği (Önizleme) | Microsoft Docs
-description: Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar.
+description: Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Windows ve Linux istemcilerinin bir Azure sanal makinesinden (VM) veya şirket içinde çalışan bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372901"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760932"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
-Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
+Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Windows veya Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
 
 > [!NOTE]
 > Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu ve şu bölgelerde kullanılabilir: ABD Doğu, ABD Orta ve Kanada Orta.
@@ -41,7 +41,7 @@ Bir depolama hesabı kapsayıcısını bağlamak için bu işlemleri yapmanız g
 
 7. Kapsayıcıyı bağlayın.
 
-Adım adım yönergeler için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak Linux 'Ta blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
+Adım adım yönergeler için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
 
 > [!IMPORTANT]
 > Bu görevleri sırayla gerçekleştirmek önemlidir. Hesabınızda NFS 3,0 protokolünü etkinleştirmeden önce oluşturduğunuz kapsayıcıları bağlayamıyoruz. Ayrıca, hesabınızda NFS 3,0 protokolünü etkinleştirdikten sonra devre dışı bırakabilirsiniz.
@@ -113,7 +113,7 @@ Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak Linux 'Ta blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
+Başlamak için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
 
 
 

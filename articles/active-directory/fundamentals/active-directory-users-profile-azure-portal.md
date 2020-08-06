@@ -2,7 +2,7 @@
 title: Kullanıcı profili bilgilerini ekleme veya güncelleştirme-Azure AD
 description: Bir resim ve iş ayrıntıları dahil olmak üzere Azure Active Directory kullanıcının profiline bilgi ekleme hakkında yönergeler.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604021"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797246"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme
 Profil resmi, işe özel bilgiler ve Azure Active Directory (Azure AD) kullanarak bazı ayarlar dahil olmak üzere Kullanıcı profili bilgilerini ekleyin. Yeni Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
@@ -50,7 +50,7 @@ Gördüğünüz gibi, kullanıcının profilinde kullanıcı oluşturma sırası
 
     - **Kimlik doğrulaması iletişim bilgileri.** Kullanıcı için etkin bir telefon numarası ve e-posta adresi olduğundan emin olmak için bu bilgileri doğrulayın. Bu bilgiler, kullanıcının oturum açma işlemi sırasında gerçekten Kullanıcı olduğundan emin olmak için Azure Active Directory tarafından kullanılır. Kimlik doğrulama iletişim bilgileri yalnızca genel bir yönetici tarafından güncelleştirilebilen olabilir.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
     Tüm değişiklikleriniz Kullanıcı için kaydedilir.
 

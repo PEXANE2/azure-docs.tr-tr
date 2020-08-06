@@ -2,7 +2,7 @@
 title: Kullanıcı ekleme veya silme-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory kullanarak yeni kullanıcıların nasıl ekleneceği veya mevcut kullanıcıların nasıl silineceği hakkında yönergeler.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30730f685945d129ababb27040f34bf8ab2f790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603868"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797109"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory kullanarak Kullanıcı ekleme veya silme
 
@@ -54,7 +54,7 @@ Yeni bir kullanıcı eklemek için şu adımları izleyin:
 
 1. **Parola** kutusunda belirtilen otomatik oluşturulan parolayı kopyalayın. İlk kez oturum açmak için kullanıcıya bu parolayı vermeniz gerekir.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Kullanıcı oluşturulup Azure AD kuruluşunuza eklenir.
 

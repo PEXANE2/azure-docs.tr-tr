@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: konuşma SDK 'sını kullanarak botunuzu etkinleştirme-konuşma hizmeti"
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, Microsoft bot-Framework ' u kullanarak bir Echo bot oluşturacak, bunu Azure 'a dağıtabileceğiniz ve bunu, bot-Framework Direct Line konuşma kanalına kaydedeceksiniz. Daha sonra, Windows için bir örnek istemci uygulaması oluşturacaksınız ve bu, sizin için bot 'a konuşmanıza ve size yanıt vermenizi sağlamanıza olanak tanır.
+description: Bu öğreticide, Microsoft bot Framework kullanarak bir Echo bot oluşturacak, bunu Azure 'a dağıtacaksınız ve bunu bot Framework Direct Line konuşma kanalına kaydedeceksiniz. Daha sonra, Windows için bir örnek istemci uygulaması oluşturacaksınız ve bu, sizin için bot 'a konuşmanıza ve size yanıt vermenizi sağlamanıza olanak tanır.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,31 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753194"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758959"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
-Artık bir sohbet bot 'ı kolayca sesli olarak etkinleştirmek için konuşma hizmetinin gücünden yararlanabilirsiniz.
+Bir sohbet bot 'ı sesli etkinleştirmek için konuşma hizmetini kullanabilirsiniz.
 
-Bu öğreticide, Microsoft bot-Framework ' u kullanarak bir Echo bot oluşturacak, bunu Azure 'a dağıtabileceğiniz ve bunu, bot-Framework Direct Line konuşma kanalına kaydedeceksiniz. Daha sonra, Windows için bir örnek istemci uygulaması oluşturacaksınız ve bu, sizin için bot 'a konuşmanıza ve size yanıt vermenizi sağlamanıza olanak tanır.
+Bu öğreticide, size söylediklerinizi tekrardan yineleme sağlayan bir bot oluşturacaksınız.
+Microsoft bot Framework kullanarak botunuzu oluşturacak, Azure 'a dağıtırsınız ve bot Framework Direct Line konuşma kanalına kaydetmelisiniz.
+Daha sonra, Windows için bir örnek istemci uygulaması oluşturacaksınız ve bu da, bot 'unuza konuşmanıza ve sizi dinleyebilmenizi sağlar.
 
-Bu öğretici, Azure, bot-Framework botları, doğrudan hat konuşmayı veya konuşma SDK 'Sı ile yolculuğunu başlatan geliştiriciler için tasarlanmıştır ve sınırlı kodlamaya sahip bir çalışma sistemini hızlıca oluşturmak ister. Bu hizmetlerle ilgili deneyim veya benzerlik yok.
+Bu öğretici, Azure, bot Framework botları, doğrudan konuşma veya konuşma SDK 'Sı için yeni olan geliştiriciler için tasarlanmıştır ve sınırlı kodlamaya sahip çalışan bir sistemi hızlıca oluşturmak ister. Bu hizmetlerle ilgili deneyim veya benzerlik yok.
 
-Bu alıştırmanın sonunda, şu şekilde çalışacak bir sistem ayarlacaksınız:
+Bu öğreticide yaptığınız ses özellikli sohbet bot şu adımları izler:
 
-1. Örnek istemci uygulaması, doğrudan hat konuşma kanalına ve yankı bot 'a bağlanacak şekilde yapılandırılmıştır
-1. Ses, düğmeye basıldığında varsayılan mikrofondan kaydedilir (veya özel anahtar sözcük etkinleştirildiyse sürekli kaydedilir)
-1. İsteğe bağlı olarak, özel anahtar sözcük algılama gerçekleşir ve buluta ses akışı geçişi yapılır
-1. Uygulama, konuşma SDK 'sını kullanarak doğrudan hat konuşma kanalına bağlanır ve ses akışı sağlar
-1. İsteğe bağlı olarak, hizmette daha yüksek doğruluk anahtar sözcüğü doğrulaması gerçekleşir
-1. Ses, konuşma tanıma hizmetine geçirilir ve metne kaydedilir
-1. Tanınan metin, bir bot Framework etkinliği olarak Echo-bot 'a geçirilir 
-1. Yanıt metni, metinden konuşmaya (TTS) hizmeti tarafından sese açılır ve kayıttan yürütme için istemci uygulamasına geri akışı yapılır
+1. Örnek istemci uygulaması, doğrudan hat konuşma kanalına ve yankı bot 'a bağlanacak şekilde yapılandırılmıştır.
+1. Kullanıcı bir düğmeye bastığında, mikrofondan sesli ses akışları. (Veya özel bir anahtar sözcük kullanıldığında ses sürekli olarak kaydedilir.)
+1. Özel bir anahtar sözcük kullanılırsa, yerel cihazda anahtar sözcük algılama gerçekleşir ve bu, buluta ses akışını ele alır.
+1. Konuşma SDK 'sını kullanarak, örnek istemci uygulaması doğrudan hat konuşma kanalına bağlanır ve ses akışı sağlar.
+1. İsteğe bağlı olarak, hizmette daha yüksek doğruluk anahtar sözcüğü doğrulaması gerçekleşir.
+1. Ses, konuşma tanıma hizmetine geçirilir ve metne kaydedilir.
+1. Tanınan metin, bir bot Framework etkinliği olarak Echo bot 'a geçirilir.
+1. Yanıt metni, metinden konuşmaya (TTS) hizmeti tarafından sese açılır ve kayıttan yürütme için istemci uygulamasına geri akışı yapılır.
 
 ![Diyagram-etiket](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Konuşma kanalı akışı")
 
@@ -50,20 +52,20 @@ Bu öğreticinin şu şekilde ele alınmaktadır:
 > * Özel anahtar sözcük etkinleştirme Ekle
 > * Tanınan ve konuşulan konuşma dilini değiştirmeyi öğrenin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için gerekenler aşağıda verilmiştir:
 
 - Çalışan bir mikrofona ve hoparlörlere (veya kulaklıktan) sahip bir Windows 10 PC
-- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
+- **ASP.net ve Web geliştirme** iş yükü yüklüyken [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
 - [.NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) veya üzeri
-- Bir Azure hesabı. [Ücretsiz kaydolun](https://azure.microsoft.com/free/ai/).
-- [GitHub](https://github.com/) hesabı
+- Azure hesabı. [Ücretsiz kaydolun](https://azure.microsoft.com/free/ai/).
+- Bir [GitHub](https://github.com/) hesabı
 - [Windows için Git](https://git-scm.com/download/win)
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetlerini kullanır. Botunuzun yanıtlarının gidiş dönüş süresini azaltmak için, bu hizmetlerin aynı Azure bölgesinde bulunduğundan emin olmak isteyeceksiniz. Bu bölümde, **Batı ABD** bölgesinde bir kaynak grubu oluşturacaksınız. Bu kaynak grubu, bot-Framework, doğrudan hat konuşma kanalı ve konuşma hizmeti için ayrı kaynaklar oluştururken kullanılacaktır.
+Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetlerini kullanır. Botunuzun yanıtlarının gidiş dönüş süresini azaltmak için, bu hizmetlerin aynı Azure bölgesinde bulunduğundan emin olmak isteyeceksiniz. Bu bölümde, **Batı ABD** bölgesinde bir kaynak grubu oluşturacaksınız. Bu kaynak grubu, bot Framework, doğrudan hat konuşma kanalı ve konuşma hizmeti için ayrı kaynaklar oluştururken kullanılacaktır.
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Kaynak grubu oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. Sizden bazı bilgiler sağlamanız istenecektir:
@@ -71,8 +73,8 @@ Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetleri
    * **Kaynak grubunuz**için bir ad girin. **SpeechEchoBotTutorial-ResourceGroup**önerilir.
    * **Bölge** açılır listesinden **Batı ABD**' yi seçin.
 1. **Gözden geçir ve oluştur**’a tıklayın. Okuma **doğrulamasının geçtiğini**belirten bir başlık görmeniz gerekir.
-1. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
-1. Bu öğreticide daha sonra oluşturacağınız kaynaklarda olduğu gibi, kolay erişim için bu kaynak grubunu panonuza sabitlemek iyi bir fikirdir. Bu kaynak grubunu sabitlemek istiyorsanız panonun sağ üst köşesindeki sabitleme simgesine tıklayın.
+1. **Oluştur**’a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+1. Bu öğreticide daha sonra oluşturacağınız kaynaklarda olduğu gibi, kolay erişim için bu kaynak grubunu panonuza sabitlemek iyi bir fikirdir. Bu kaynak grubunu sabitlemek isterseniz, kaynak grubu adının sağ sabitleme simgesine tıklayın.
 
 ### <a name="choosing-an-azure-region"></a>Azure bölgesi seçme
 
@@ -104,7 +106,7 @@ Bir konuşma kaynağı oluşturmak için aşağıdaki yönergeleri izleyin:
 
 Bu noktada, kaynak grubunuzun (**SpeechEchoBotTutorial-ResourceGroup**) bir konuşma kaynağına sahip olup olmadığını kontrol edin:
 
-| Name | Tür  | Konum |
+| Ad | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
 
@@ -121,11 +123,11 @@ Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web 
    * **Bölge**için **Batı ABD**' yi seçin.
    * **Fiyatlandırma katmanı**Için **Standart S1** ' in seçildiğinden emin olun. Bu, varsayılan değer olmalıdır. Değilse, **Işletim sistemini** yukarıda açıklandığı gibi **Windows** 'a ayarladığınızdan emin olun.
 5. **Gözden geçir ve oluştur**’a tıklayın. Okuma **doğrulamasının geçtiğini**belirten bir başlık görmeniz gerekir.
-6. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+6. **Oluştur**’a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 
 Bu noktada, kaynak grubunuz (**SpeechEchoBotTutorial-ResourceGroup**) iki kaynak olduğunu kontrol edin:
 
-| Name | Tür  | Konum |
+| Ad | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service Planı | Batı ABD |
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
@@ -145,7 +147,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
    git clone https://github.com/Microsoft/botbuilder-samples.git
    ```
 
-2. Visual Studio’yu başlatın.
+2. Visual Studio 'Yu başlatın.
 3. Araç çubuğundan **Dosya**  >  **Aç**  >  **Proje/çözüm**' ü seçin ve Echo bot proje çözümünü açın:
 
    ```
@@ -153,13 +155,13 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
    ```
 
 4. Proje yüklendikten sonra, projeyi derlemek ve çalıştırmak için <kbd>F5</kbd> ' e basın.
-5. Bir tarayıcı başlatması gerekir ve şuna benzer bir ekran görürsünüz.
+5. Bir tarayıcı başlatılır ve aşağıdakine benzer bir ekran görürsünüz.
     > [!div class="mx-imgBorder"]
     > [![yankı bot-on-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "Localhost üzerinde çalışan yankı bot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Bot Framework öykünücüsü ile bot örneğini test etme
 
-[Bot Framework öykünücüsü](https://github.com/microsoft/botframework-emulator) , bot geliştiricilerinin kendi botlarını yerel olarak veya bir tünel üzerinden uzaktan test etmesine ve hatalarını ayıklamalarına olanak tanıyan bir masaüstü uygulamasıdır. Öykünücü, girilen metni giriş (ses değil) olarak destekler. Bot metinle yanıt verecek. Metin girişi ve metin çıktısı ile yerel olarak çalışan yankı botunuzu test etmek için, bot Framework öykünücüsünü kullanmak üzere bu adımları izleyin. Bot 'ı Azure 'a dağıttıktan sonra, bu dosyayı sesli giriş ve ses çıkışıyla test edeceğiz.
+[Bot Framework öykünücüsü](https://github.com/microsoft/botframework-emulator) , bot geliştiricilerinin botlarını yerel olarak test etme ve hata ayıklama olanağı sağlayan bir masaüstü uygulamasıdır (veya bir tünel üzerinden uzaktan). Öykünücü, girilen metni giriş (ses değil) olarak kabul eder. Bot aynı zamanda metinle yanıt verir. Metin girişi ve metin çıktısı ile yerel olarak çalışan yankı botunuzu test etmek için, bot Framework öykünücüsünü kullanmak üzere bu adımları izleyin. Bot 'ı Azure 'a dağıttıktan sonra, bu dosyayı sesli giriş ve ses çıkışıyla test edeceğiz.
 
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
@@ -170,7 +172,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
    http://localhost:3978/api/messages
    ```
    ve "Bağlan" düğmesine basın.
-4. Bot, sizi "Merhaba ve hoş geldiniz!" ile hemen grejet iletisi döndürmektedir. Herhangi bir metin iletisini yazın ve bot 'tan bir yanıt aldığınızı onaylayın.
+4. Bot sizi "Merhaba ve hoş geldiniz!" ile Grele iletisi döndürmektedir. Herhangi bir metin iletisini yazın ve bot 'tan bir yanıt aldığınızı onaylayın.
 5. Bu, bir Echo bot örneğiyle iletişim alışverişi yapılan bir iletişimin nasıl görünebileceğini şöyle görünebilir: [ ![bot-Framework-Emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework öykünücüsü")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Botunuzu bir Azure App Service dağıtma
@@ -180,6 +182,9 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
 > [!NOTE]
 > Alternatif olarak, [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) ve [dağıtım şablonlarını](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot)kullanarak bir bot dağıtabilirsiniz.
 
+> [!NOTE]
+> **Yayımla...** aşağıdaki adımları gerçekleştirirken görünmez, **ASP.net ve Web geliştirme** iş yükünü eklemek için Visual Studio yükleyicisi kullanın.
+
 1. Visual Studio 'da, doğrudan hat konuşma kanalı ile kullanılmak üzere yapılandırılmış yankı botnu açın:
 
    ```
@@ -187,18 +192,17 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
    ```
 
 1. **Çözüm Gezgini**, **yankı bot** projesine sağ tıklayın ve Yayımla ' yı seçin **...**
-1. **Bir yayımlama hedefi seç** başlıklı yeni bir pencere açılır.
-1. **Azure hizmetleri** gezinmesinin **App Service** seçin, **Yeni oluştur**' u seçin ve ardından **Profil oluştur**' a tıklayın.
-1. **App Service oluştur** penceresi göründüğünde:
+1. **Yayımla** adlı yeni bir pencere açılır.
+1. **Azure**' ı seçin, **İleri**' ye tıklayın, **Azure App Service (Windows)** öğesini seçin, **İleri**' ye tıklayın ve yeşil artı Işaretine göre **Yeni bir Azure App Service... oluştur** seçeneğine tıklayın
+1. **App Service (Windows)** penceresi göründüğünde:
    * **Hesap Ekle**' ye tıklayın ve Azure hesabı kimlik bilgilerinizle oturum açın. Zaten oturum açtıysanız, açılan listeden istediğiniz hesabı seçin.
-   * **Uygulama adı**Için, bot için genel olarak benzersiz bir ad girmeniz gerekir. Bu ad, benzersiz bir bot URL 'SI oluşturmak için kullanılır. Tarih ve saat dahil olmak üzere varsayılan bir değer doldurulur (örneğin: "EchoBot20190805125647"). Bu öğretici için varsayılan adı kullanabilirsiniz.
+   * **Ad**Için, bot için genel olarak benzersiz bir ad girmeniz gerekir. Bu ad, benzersiz bir bot URL 'SI oluşturmak için kullanılır. Tarih ve saat dahil olmak üzere varsayılan bir değer doldurulur (örneğin: "EchoBot20190805125647"). Bu öğretici için varsayılan adı kullanabilirsiniz.
    * **Abonelik**Için, **ücretsiz deneme** olarak ayarlayın
    * **Kaynak grubu**için **SpeechEchoBotTutorial-ResourceGroup** öğesini seçin
    * **Barındırma planı**için **SpeechEchoBotTutorial-appserviceplan** ' ı seçin.
-   * **Application Insights**Için, **yok** olarak bırakın
-1. **Oluştur** 'a tıklayın
-1. Yeni oluşturulan profilin sağ tarafında **Yayımla** ' ya tıklayın.
-1. Visual Studio 'da şuna benzer bir başarı iletisi görmeniz gerekir:
+1. **Oluştur**’a tıklayın. Son sihirbaz ekranında **son**' a tıklayın.
+1. Yayımla ekranının sağ tarafında **Yayımla** ' ya tıklayın. Visual Studio, bot 'ı Azure 'a dağıtır.
+1. Visual Studio 'nun çıkış penceresinde şuna benzer bir başarı iletisi görmeniz gerekir:
 
    ```
    Publish Succeeded.
@@ -206,9 +210,9 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
    ```
 
 1. Varsayılan tarayıcınızın açılması ve "bot 'Niz hazır!" yazan bir sayfa görüntülemesi gerekir.
-1. Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin ve üç kaynak olduğunu onaylayın:
+1. Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin ve bu üç kaynağı onaylayın:
 
-| Name | Tür  | Konum |
+| Ad | Tür  | Konum |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
@@ -218,8 +222,8 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
 
 Botunuzun Web yuvalarını kullanarak doğrudan hat konuşma kanalıyla iletişim kurabilmesi için küçük bir yapılandırma değişikliği yapmanız gerekir. Web yuvalarını etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin ve App Service bulun. Kaynak, **EchoBot20190805125647** (benzersiz uygulamanızın adı) ile aynı olmalıdır.
-2. **Azure hizmetleri** gezinmede **Ayarlar**altında **yapılandırma**' ya tıklayın.
+1. [Azure Portal](https://portal.azure.com)gidin ve App Service tıklayın. Kaynak, **EchoBot20190805125647** (benzersiz uygulamanızın adı) ile aynı olmalıdır.
+2. Sol gezinti bölmesindeki **Ayarlar**altında **yapılandırma**' ya tıklayın.
 3. **Genel ayarlar** sekmesini seçin.
 4. **Web Yuvaları** geçiş biçimini bulun ve **Açık**olarak ayarlayın.
 5. **Kaydet**’e tıklayın.
@@ -229,11 +233,7 @@ Botunuzun Web yuvalarını kullanarak doğrudan hat konuşma kanalıyla iletişi
 
 ## <a name="create-a-channel-registration"></a>Kanal kaydı oluşturma
 
-Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonraki adım bir **bot kanalları kaydı**oluşturmaktır. Kanal kaydı oluşturma, doğrudan hat konuşma kanalı dahil olmak üzere bot-Framework kanallarıyla botunuzu kaydetmek için bir önkoşuldur.
-
-> [!NOTE]
-> Botların kanallardan yararlanma hakkında daha fazla bilgi edinmek istiyorsanız bkz. [bir bot 'ı kanallara bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
-
+Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonraki adım bir **bot kanalları kaydı**oluşturmaktır. Kanal kaydı oluşturma, botunuzu doğrudan hat konuşma kanalı dahil, bot Framework kanallarıyla kaydetmeye yönelik bir önkoşuldur. Botların kanalları kullanma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [kanallara bir bot bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot kanalları kaydı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Sizden bazı bilgiler sağlamanız istenecektir:
@@ -247,13 +247,13 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
      * **Otomatik uygulama kimliği ve parola oluşturmayı**yoksay.
 5. **Bot kanalları kayıt** dikey penceresinin alt kısmındaki **Oluştur**' a tıklayın.
 
-Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin. Şimdi dört kaynak göstermesi gerekir:
+Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin. Şimdi en az dört kaynak göstermesi gerekir:
 
-| Name | Tür  | Konum |
+| Ad | Tür  | Konum |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
-| SpeechEchoBotTutorial-BotRegistration-8726 | Bot kanalları kaydı | global |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Bot kanalları kaydı | Genel |
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
 
 > [!IMPORTANT]
@@ -282,18 +282,18 @@ Azure bot kanalları kayıt sayfasında, **bot Management**altında **Web sohbet
 
 ## <a name="register-the-direct-line-speech-channel"></a>Doğrudan hat konuşma kanalını kaydetme
 
-Şimdi doğrudan hat konuşma kanalı ile botunuzu kaydetme zamanı. Bu kanal, yankı bot 'niz ile konuşma SDK 'Sı ile derlenen bir istemci uygulaması arasında bağlantı oluşturmak için kullanılır.
+Şimdi doğrudan hat konuşma kanalı ile botunuzu kaydetme zamanı. Bu kanal, bot ile konuşma SDK 'Sı ile derlenen bir istemci uygulaması arasında bir bağlantı oluşturur.
 
 1. [Azure Portal](https://portal.azure.com) **SpeechEchoBotTutorial-botregistration-# # # #** kaynağını bulup açın.
 1. **Bot yönetimi** gezinmede **Kanallar**' ı seçin.
-   * **Daha fazla kanal**arayın, **doğrudan hat konuşmayı**bulun ve tıklatın.
-   * Sayfadaki **doğrudan konuşmayı Yapılandır**' ı, ardından "bilişsel hizmet hesabı" olarak etiketlenen açılan menüyü genişleterek sayfada bulunan metni gözden geçirin.
+   * **Daha fazla kanal**altında **doğrudan hat konuşmayı**' na tıklayın.
+   * Sayfadaki **doğrudan konuşmayı Yapılandır**' ı, ardından bilişsel **hizmet hesabı** açılır menüsünü genişleterek sayfada bulunan metni gözden geçirin.
    * Daha önce oluşturduğunuz konuşma kaynağını (ör. **SpeechEchoBotTutorial-Speech**) seçerek bot 'unuzu konuşma abonelik anahtarınızla ilişkilendirin.
-   * İsteğe bağlı alanların geri kalanını yoksay
+   * İsteğe bağlı alanların geri kalanını yoksayın.
    * **Kaydet**’e tıklayın.
 
 1. **Bot yönetimi** gezinmede **Ayarlar**' a tıklayın.
-   * **Akış uç noktasını etkinleştir**etiketli kutuyu işaretleyin. Bu, bot ve doğrudan hat konuşma kanalı arasında Web Yuvaları üzerinde oluşturulmuş bir iletişim protokolünü etkinleştirmek için gereklidir.
+   * **Akış uç noktasını etkinleştir**etiketli kutuyu işaretleyin. Bu, bot ve doğrudan hat konuşma kanalı arasında Web Yuvaları üzerinde oluşturulmuş bir iletişim protokolü oluşturmak için gereklidir.
    * **Kaydet**’e tıklayın.
 
 > [!TIP]
@@ -301,19 +301,20 @@ Azure bot kanalları kayıt sayfasında, **bot Management**altında **Web sohbet
 
 ## <a name="run-the-windows-voice-assistant-client"></a>Windows Voice Yardımcısı Istemcisini çalıştırma
 
-Bu adımda, Windows Voice Yardımcısı Istemcisini çalıştıracağız. İstemci, doğrudan hat konuşma kanalını kullanarak bot 'unuzla iletişimi yönetmek için [konuşma SDK 'sını](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) kullanan C# ' de bir WINDOWS PRESENTATION FOUNDATION (WPF) uygulamasıdır. Özel bir istemci uygulaması yazmadan önce botunuzu etkileşmek ve test etmek için kullanın. Açık kaynak olduğundan, yürütülebilir dosyayı indirebilir ve çalıştırabilir ya da kendiniz oluşturabilirsiniz.
+Bu adımda, Windows Voice Yardımcısı Istemcisini çalıştıracaksınız. İstemci, doğrudan hat konuşma kanalını kullanarak bot 'unuzla iletişimi yönetmek için [konuşma SDK 'sını](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) kullanan C# ' de bir WINDOWS PRESENTATION FOUNDATION (WPF) uygulamasıdır. Özel bir istemci uygulaması yazmadan önce botunuzu etkileşmek ve test etmek için kullanın. Açık kaynak olduğundan, yürütülebilir dosyayı indirebilir ve çalıştırabilir ya da kendiniz oluşturabilirsiniz.
 
-Windows Voice Yardımcısı Istemcisinde, bot ile bağlantıyı yapılandırmanıza, metin konuşmasını görüntülemenize, bot-Framework etkinliklerini JSON biçiminde görüntülemenize ve Uyarlamalı kartlar görüntülemenize olanak tanıyan basit bir kullanıcı arabirimi vardır. Ayrıca özel anahtar sözcüklerin kullanımını destekler. Bu istemciyi, bot ile konuşmak ve bir sesli yanıt almak için kullanacaksınız.
+Windows Voice Yardımcısı Istemcisinde, bot ile kurulan bağlantıyı yapılandırmanıza, metin konuşmasını görüntülemenize, bot Framework etkinliklerini JSON biçiminde görüntülemenize ve Uyarlamalı kartlar görüntülemenize olanak tanıyan basit bir kullanıcı arabirimi vardır. Ayrıca özel anahtar sözcüklerin kullanımını destekler. Bu istemciyi, bot ile konuşmak ve bir sesli yanıt almak için kullanacaksınız.
 
-Üzerinde geçiş yapmadan önce, mikrofonunuzun ve hoparlörlerinizin etkinleştirildiğinden ve çalıştığından emin olun.
+> [!NOTE]
+> Bu noktada, mikrofonunuzun ve hoparlörlerinizin etkin ve çalışır olduğunu doğrulayın.
 
 1. [Windows Voice Yardımcısı Istemcisinin](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md)GitHub deposuna gidin.
 1. Her biri için belirtilen yönergeleri izleyin
-   * çalıştırmak için çalıştırılabilir dosyayı içeren bir ZIP paketi indirin veya
+   * çalıştırmak için bir ZIP paketinde önceden oluşturulmuş bir yürütülebiliri indirin veya
    * Depoyu kopyalayarak ve projeyi oluşturarak çalıştırılabilir dosyayı kendiniz oluşturun.
 
-1. İstemci uygulamasını başlatın ve GitHub deposundaki yönergelere bağlı olarak bu uygulamayı bot 'unuza bağlanacak şekilde yapılandırın
-1. **Yeniden bağlan** ' a tıklayın ve **mikrofonunuza konuşmaya başlamak Için mikrofon düğmesine basın veya yazarak**emin olun.
+1. `VoiceAssistantClient.exe`GitHub deposundaki yönergeleri izleyerek istemci uygulamasını başlatın ve bu uygulamayı bot 'unuza bağlanacak şekilde yapılandırın.
+1. **Yeniden bağlan** ' a tıklayın ve **yeni konuşma başladı iletisini gördüğdiğinizden emin olun-yazın veya mikrofon düğmesine basın**.
 1. Şimdi test edin. Mikrofon düğmesine tıklayın ve Ingilizce 'de birkaç sözcükten konuşun. Konuşma sırasında tanınan metin görüntülenir. Konuşmayı tamamladığınızda, bot kendi sesinden yanıt vererek "Echo" ve ardından tanınan kelimeleri söyleyerek.
 1. Ayrıca, bot ile iletişim kurmak için metin de kullanabilirsiniz. Metni alt çubuğa yazmanız yeterlidir. 
 
@@ -479,4 +480,4 @@ Bu öğreticide dağıtılan Echo-bot 'ı kullanmaya devam edemeyecekseniz, **Sp
   * [Konuşma hizmeti](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Kendi seslendirmeyi kullanan bot 'ı derleme ve dağıtma:
   * Bir [bot Framework bot](https://dev.botframework.com/)oluşturun. [Doğrudan hat konuşma kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) kaydolun ve [botunuzu ses için özelleştirin](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
-  * Mevcut bir [bot Framework çözümlerini](https://microsoft.github.io/botframework-solutions/index)keşfet: sanal bir [yardımcı](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) oluşturun ve [konuşmayı doğrudan konuşmaya yönlendirmek için genişletin](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)
+  * Mevcut [bot Framework çözümlerini](https://microsoft.github.io/botframework-solutions/index)keşfet: sanal bir [yardımcı](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) oluşturun ve [doğrudan konuşmaya konuşma için genişletin](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

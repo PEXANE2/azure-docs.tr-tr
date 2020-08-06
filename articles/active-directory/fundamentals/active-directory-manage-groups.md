@@ -2,7 +2,7 @@
 title: Grupları kullanarak uygulama & kaynak erişimini yönetme-Azure AD
 description: Kuruluşunuzun bulut tabanlı uygulamalarına, şirket içi uygulamalara ve Azure Active Directory grupları kullanarak kaynaklara erişimi yönetme hakkında bilgi edinin.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982608"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797316"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory gruplarını kullanarak uygulama ve kaynak erişimini yönetme
 Azure Active Directory (Azure AD), bulut tabanlı uygulamalarınıza, şirket içi uygulamalarınıza ve kaynaklarınıza erişimi yönetmek için grupları kullanmanıza olanak sağlar. Kaynaklarınız, Azure AD 'deki roller aracılığıyla nesneleri yönetme izinleri ya da hizmet olarak yazılım (SaaS) uygulamaları, Azure Hizmetleri, SharePoint siteleri ve şirket içi kaynaklar gibi kuruluş dışında, Azure AD kuruluşunun bir parçası olabilir.

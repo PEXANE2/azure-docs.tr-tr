@@ -1,24 +1,24 @@
 ---
-title: NFS 3,0 protokolünü (Önizleme) kullanarak Linux 'ta Azure Blob Storage 'ı bağlama | Microsoft Docs
-description: Linux tabanlı bir Azure sanal makinesinden (VM) veya NFS 3,0 protokolünü kullanarak şirket içinde çalışan bir Linux sisteminden BLOB depolama alanına bir kapsayıcı bağlama hakkında bilgi edinin.
+title: NFS 3,0 protokolünü (Önizleme) kullanarak Azure Blob depolamayı bağlama | Microsoft Docs
+description: Bir Azure sanal makinesinden (VM) veya NFS 3,0 protokolünü kullanarak şirket içinde çalışan bir istemciden BLOB depolama alanına bir kapsayıcı bağlama hakkında bilgi edinin.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372918"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760812"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak Linux 'ta blob Storage bağlama
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama
 
-Bir kapsayıcıyı, Linux tabanlı bir Azure sanal makinesi (VM) veya şirket içinde çalışan bir Linux sisteminden NFS 3,0 protokolünü kullanarak, BLOB depolama alanına bağlayabilirsiniz. Bu makalede adım adım yönergeler sunulmaktadır. Blob depolamada NFS 3,0 protokol desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Storage 'da (Önizleme) ağ dosya sistemi (NFS) 3,0 protokol desteği](network-file-system-protocol-support.md).
+BLOB depolama alanına bir kapsayıcıyı Windows veya Linux tabanlı bir Azure sanal makinesi (VM) veya NFS 3,0 protokolünü kullanarak şirket içinde çalışan bir Windows veya Linux sisteminden bağlayabilirsiniz. Bu makalede adım adım yönergeler sunulmaktadır. Blob depolamada NFS 3,0 protokol desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Storage 'da (Önizleme) ağ dosya sistemi (NFS) 3,0 protokol desteği](network-file-system-protocol-support.md).
 
 > [!NOTE]
 > Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu ve şu bölgelerde kullanılabilir: ABD Doğu, ABD Orta ve Kanada Orta.
@@ -117,6 +117,10 @@ Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz.
 
 ## <a name="step-7-mount-the-container"></a>7. Adım: kapsayıcıyı bağlama
 
+Windows veya Linux sisteminizde bir dizin oluşturun ve ardından depolama hesabına bir kapsayıcı bağlayın.
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. Linux sisteminde bir dizin oluşturun.
 
    ```
@@ -133,12 +137,31 @@ Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz.
 
    - `<container-name>`Yer tutucusunu kapsayıcının adıyla değiştirin.
 
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. **Windows özellikleri** iletişim kutusunu açın ve ardından **NFS istemcisi** özelliğini açın. 
+
+   ![Ağ dosya sistemi için istemci özelliği](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. [Bağlama](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) komutunu kullanarak bir kapsayıcı bağlayın.
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - `<storage-account-name>`Bu komutta görünen yer tutucuyu depolama hesabınızın adıyla değiştirin.  
+
+   - `<container-name>`Yer tutucusunu kapsayıcının adıyla değiştirin.
+
+---
+
 ## <a name="resolve-common-issues"></a>Yaygın sorunları çözme
 
 |Sorun/hata | Çözüm|
 |---|---|
-|`Access denied by server while mounting`|İstemcinizin desteklenen bir alt ağ içinde çalıştığından emin olun. [Desteklenen ağ konumlarına](network-file-system-protocol-support.md#supported-network-connections)bakın.|
-|`No such file or directory`| Oluşturduğunuz kapsayıcının, özelliğin kaydedildiğini doğruladıktan sonra oluşturulduğundan emin olun. Bkz. [2. Adım: özelliğin kayıtlı olduğunu doğrulayın](#step-2-verify-that-the-feature-is-registered). Ayrıca, Mount komutunu ve bu parametrenin parametrelerini doğrudan terminaline yazdığınızdan emin olun. Bu komutun herhangi bir bölümünü kopyalayıp başka bir uygulamadan terminale yapıştırırsanız, yapıştırılan bilgilerden gizli karakterler bu hatanın görünmesine neden olabilir.|
+|`Access denied by server while mounting`|İstemcinizin desteklenen bir alt ağ üzerinde çalıştığından emin olun. [Desteklenen ağ konumlarına](network-file-system-protocol-support.md#supported-network-connections)bakın.|
+|`No such file or directory`| Bağladığınız kapsayıcının özelliğin kaydedildiğini doğruladıktan sonra oluşturulduğundan emin olun. Bkz. [2. Adım: özelliğin kayıtlı olduğunu doğrulayın](#step-2-verify-that-the-feature-is-registered). Ayrıca, Mount komutunu ve bu parametrenin parametrelerini doğrudan terminaline yazdığınızdan emin olun. Bu komutun herhangi bir bölümünü başka bir uygulamadan kopyalayıp terminale yapıştırırsanız, yapıştırdığınız bilgilerde bulunan gizli karakterler bu hatanın ortaya çıkmasına neden olabilir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
