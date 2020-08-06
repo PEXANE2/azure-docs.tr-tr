@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367410"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835910"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -195,7 +195,7 @@ Bu yöntem, tüm bulut uygulamaları için Kullanıcı ve oturum açma riskini t
 
 ## <a name="use-role-based-access-control"></a>Rol tabanlı erişim denetimi kullanma
 
-Bulut kaynakları için erişim yönetimi, bulutu kullanan her kuruluş için kritik öneme sahiptir. [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview), Azure kaynaklarına kimlerin erişebileceğini, bu kaynaklarla neler yapabileceğini ve hangi alanların erişebileceğini yönetmenize yardımcı olur.
+Bulut kaynakları için erişim yönetimi, bulutu kullanan her kuruluş için kritik öneme sahiptir. [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview), Azure kaynaklarına kimlerin erişebileceğini, bu kaynaklarla neler yapabileceğini ve hangi alanların erişebileceğini yönetmenize yardımcı olur.
 
 Azure 'daki belirli işlevlerden sorumlu grupları veya ayrı rolleri atamak, güvenlik riskleri oluşturan insan ve otomasyon hatalarına yol açabilecek karışıklıklara karşı yardımcı olur. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur.
 

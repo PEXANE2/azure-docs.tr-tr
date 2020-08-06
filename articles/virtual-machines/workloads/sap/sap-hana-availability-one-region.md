@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035868"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833326"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Tek bir Azure bölgesinde kullanılabilirliği SAP HANA
 Bu makalede, bir Azure bölgesindeki çeşitli kullanılabilirlik senaryoları açıklanmaktadır. Azure, dünyanın tamamında yayılan birçok bölgeye sahiptir. Azure bölgelerinin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/). Tek bir Azure bölgesindeki sanal makinelere SAP HANA dağıtmak için, Microsoft, bir HANA örneğiyle tek bir sanal makinenin dağıtımını sunmaktadır. Daha yüksek kullanılabilirlik için, kullanılabilirlik için HANA sistem çoğaltması kullanan bir [Azure kullanılabilirlik kümesi](../../windows/tutorial-availability-sets.md) IÇINDE iki Hana örneğiyle iki VM dağıtabilirsiniz. 
@@ -82,7 +82,7 @@ Mimari şöyle görünür:
 
 Bu kurulum, harika kurtarma noktası hedefi (RPO) ve kurtarma süresi hedefi (RTO) zamanlarını elde etmek için uygun değildir. RTO zamanları özellikle, kopyalanmış yedeklemeleri kullanarak tam veritabanını tamamen geri yükleme gereksiniminden kaynaklanıyor olabilir. Ancak, bu kurulum ana örneklerde istenmeden veri silmeyi kurtarmak için yararlıdır. Bu kurulumla, herhangi bir zamanda belirli bir noktaya geri yükleme yapabilir, verileri ayıklayabilir ve silinen verileri ana örneğinizle içeri aktarabilirsiniz. Bu nedenle, bir yedek kopya yönteminin diğer yüksek kullanılabilirlik işlevselliğiyle birlikte kullanılması mantıklı olabilir. 
 
-Yedeklemeler kopyalanırken, SAP HANA örneğinin üzerinde çalıştığı ana VM 'den daha küçük bir VM kullanabilirsiniz. Daha küçük VM 'lere daha az sayıda VHD iliştirebileceğinizi aklınızda bulundurun. Tek tek VM türlerinin limitleri hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar](../../linux/sizes.md).
+Yedeklemeler kopyalanırken, SAP HANA örneğinin üzerinde çalıştığı ana VM 'den daha küçük bir VM kullanabilirsiniz. Daha küçük VM 'lere daha az sayıda VHD iliştirebileceğinizi aklınızda bulundurun. Tek tek VM türlerinin limitleri hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar](../../sizes.md).
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Otomatik yük devretme olmadan sistem çoğaltmasını SAP HANA
 

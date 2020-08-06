@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 1714fac465531a2d3a5829e7080132510ccd1ec4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2f10a6915a3edf673316ae9151b6052442678ef9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407576"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832372"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -24,7 +24,18 @@ Bu komutu Cloud Shell ' de çalıştırarak izin düzeyinizi kontrol edebilirsin
 az role assignment list --assignee <your-Azure-email>
 ```
 
-Sahibiyseniz, `roleDefinitionName` çıkışdaki değer *sahipdir*:
+> [!NOTE]
+> Bu komut, CLı 'nin **grafik veritabanında kullanıcı veya hizmet sorumlusu bulamadığını**söyleyen bir hata döndürürse:
+>
+> Bu makalenin geri kalanında, e-postanız yerine kullanıcının *nesne kimliğini* kullanın. Bu, kişisel [Microsoft hesaplarındaki (MSAs)](https://account.microsoft.com/account)kullanıcılar için gerçekleşebilir. 
+>
+> Kullanıcı hesabınızı seçmek ve ayrıntılarını açmak için [Azure Active Directory kullanıcıların Azure Portal sayfasını](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) kullanın. Kullanıcı *ObjectID*'yi kopyalayın:
+>
+> :::image type="content" source="../articles/digital-twins/media/includes/user-id.png" alt-text="' Nesne KIMLIĞI ' alanındaki GUID 'YI vurgulamak Azure portal Kullanıcı sayfasının görünümü" lightbox="../articles/digital-twins/media/includes/user-id.png":::
+>
+> Sonra, e-postanız yerine kullanıcının *nesne kimliğini* kullanarak rol atama listesi komutunu tekrarlayın.
+
+Rol atama listesi komutunu çalıştırdıktan sonra, bir sahibiyseniz, `roleDefinitionName` çıktıdaki değer *sahip*olur:
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/cloud-shell/owner-role.png" alt-text="Az role atama listesi komutunun çıkışını gösteren Cloud Shell pencere":::
 

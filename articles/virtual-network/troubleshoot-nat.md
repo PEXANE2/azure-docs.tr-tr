@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688290"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836114"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
 
@@ -195,6 +195,14 @@ _**Çözümden**_
 Bir NAT ağ geçidi kaynağı için bir alt ağ yapılandırarak bir sanal makineyi yeniden başlatmak gerekli değildir.  Ancak, bir sanal makine yeniden başlatıldığında bağlantı durumu temizlenir.  Bağlantı durumu boşaltılmışsa, tüm bağlantılar NAT ağ geçidi kaynağının IP adreslerini kullanmaya başlar.  Ancak bu, yeniden başlatmanın gerekli olduğu bir gösterge değil, sanal makinenin yeniden başlatıldığı yan etkilerden oluşur.
 
 Hala sorun yaşıyorsanız, daha fazla sorun giderme için bir destek talebi açın.
+
+### <a name="connection-setup-time"></a>Bağlantı kurulum zamanı
+
+Load Balancer giden kuralları, SNAT bağlantı noktalarının havuzlarını belirli sanal makinelere statik olarak atayacağından, yeni giden akışlar oluşturulması sanal ağ NAT kullanmaktan daha hızlıdır. Bu nedenle, Load Balancer giden kurallarından geçiş yaptığınızda, yeni bir giden bağlantı oluştururken artan gecikme süresini görebilirsiniz. Daha önce açıklandığı gibi, uygulamanızın performansını en üst düzeye çıkarmak için uzun süreli akışlar (örneğin, yeniden kullanılan TCP bağlantıları) kullanmanız gerekir.
+
+_**Çözümden**_
+
+Birincil olarak en az bir kurulum gecikmesi ile ilgileniyorsanız Load Balancer giden kurallarını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

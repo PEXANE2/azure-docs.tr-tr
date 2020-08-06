@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963215"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835995"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -110,8 +110,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|262144|128|268435455|
 |Genel Amaçlı|4|262144|128|536870912|
 |Genel Amaçlı|8|262144|128|1073741824|
@@ -126,7 +126,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="max_connections"></a>max_connections
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En yüksek değer**|
 |---|---|---|---|---|
 |Temel|1|50|10|50|
 |Temel|2|100|10|100|
@@ -159,8 +159,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|16777216|16384|268435455|
 |Genel Amaçlı|4|16777216|16384|536870912|
 |Genel Amaçlı|8|16777216|16384|1073741824|
@@ -184,8 +184,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|* * En büyük değer * *|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|0|0|16777216|
 |Genel Amaçlı|4|0|0|33554432|
 |Genel Amaçlı|8|0|0|67108864|
@@ -198,14 +198,29 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 |Bellek İçin İyileştirilmiş|16|0|0|134217728|
 |Bellek İçin İyileştirilmiş|32|0|0|134217728|
 
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+Lower_case_table_name varsayılan olarak 1 ' e ayarlanır ve MySQL 5,6 ve MySQL 5,7 ' de bu parametreyi güncelleştirebilirsiniz
+
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names) gözden geçirin.
+
+> [!NOTE]
+> MySQL 8,0 ' de lower_case_table_name varsayılan olarak 1 ' e ayarlanır ve bunu değiştiremezsiniz.
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+"Satır boyutu çok büyük (> 8126) şuna benzer bir hata alırsanız, **innodb_strict_mode**parametresini kapatmak isteyebilirsiniz. Satır veri boyutu 8k ' den daha büyükse, verilerin sunucu düzeyinde genel olarak değiştirilmesine izin verilmez, çünkü bu, veri kaybına neden olan bir hata olmadan veriler kesilir. **innodb_strict_mode** Şemayı sayfa boyutu sınırına uyacak şekilde değiştirmenizi öneririz. 
+
+Bu parametre, kullanılarak bir oturum düzeyinde ayarlanabilir `init_connect` . **İnnodb_strict_mode** , oturum düzeyinde ayarlamak için, [listede bulunmayan ayar parametresi](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)' ne bakın.
+
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
 Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) gözden geçirin.
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|524288|32768|4194304|
 |Genel Amaçlı|4|524288|32768|8388608|
 |Genel Amaçlı|8|524288|32768|16777216|
@@ -224,8 +239,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|16777216|1024|67108864|
 |Genel Amaçlı|4|16777216|1024|134217728|
 |Genel Amaçlı|8|16777216|1024|268435456|

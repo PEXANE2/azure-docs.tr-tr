@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318394"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829603"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafikleriyle ilgili sorunları giderme
 
@@ -42,7 +42,7 @@ Bazı durumlarda, doğru kaynakları ve ölçümleri seçtikten sonra grafiklerd
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Kaynağınız üzerinde yeterli erişim haklarınız yok
 
-Azure'da ölçümlere erişim [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) tarafından denetlenir. Herhangi bir kaynağın ölçümlerini incelemek için [izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader), [izleme katkıda bulunanı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) veya [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) üyesi olmalısınız.
+Azure 'da ölçümlere erişim, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)tarafından denetlenir. Herhangi bir kaynağın ölçümlerini incelemek için [izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader), [izleme katkıda bulunanı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) veya [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) üyesi olmalısınız.
 
 **Çözüm:** Ölçümleri araştırırken kaynak için yeterli izinlere sahip olduğunuzdan emin olun.
 
@@ -118,4 +118,3 @@ Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tan�
 * [Ölçüm Gezgini 'nin gelişmiş özellikleri hakkında bilgi edinin](metrics-charts.md)
 * [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](metrics-supported.md)
 * [Yapılandırılmış grafik örneklerine bakın](metric-chart-samples.md)
-

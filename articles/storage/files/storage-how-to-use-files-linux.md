@@ -1,18 +1,18 @@
 ---
 title: Linux ile Azure dosyaları kullanma | Microsoft Docs
-description: Linux üzerinde bir Azure dosya paylaşımının SMB üzerinden nasıl bağlanacağını öğrenin.
+description: Linux üzerinde bir Azure dosya paylaşımının SMB üzerinden nasıl bağlanacağını öğrenin. Önkoşullar listesine bakın. Linux istemcilerinde SMB güvenlik konularını gözden geçirin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089354"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835723"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `mount` ' de bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı `/etc/fstab` .
@@ -249,18 +249,18 @@ Linux Kernel 4,18 ' den itibaren, eski nedenler için çağrılan SMB çekirdek 
 | Dağıtım | SMB 1 devre dışı bırakabilir |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Hayır |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
+| Ubuntu 18.04 | Evet |
+| Ubuntu 19.04 + | Evet |
 | De, 8-9 | Hayır |
-| De, 10 + | Yes |
-| Fedora 29 + | Yes |
+| De, 10 + | Evet |
+| Fedora 29 + | Evet |
 | CentOS 7 | Hayır | 
-| CentOS 8 + | Yes |
+| CentOS 8 + | Evet |
 | Red Hat Enterprise Linux 6. x-7. x | Hayır |
-| Red Hat Enterprise Linux 8 + | Yes |
+| Red Hat Enterprise Linux 8 + | Evet |
 | openSUSE artık 15,0 | Hayır |
-| openSUSE artık 15.1 + | Yes |
-| openSUSE Tpoed | Yes |
+| openSUSE artık 15.1 + | Evet |
+| openSUSE Tpoed | Evet |
 | SUSE Linux Enterprise 11. x-12. x | Hayır |
 | SUSE Linux Enterprise 15 | Hayır |
 | SUSE Linux Enterprise 15,1 | Hayır |

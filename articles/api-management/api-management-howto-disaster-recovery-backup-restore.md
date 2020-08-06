@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250473"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830266"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -55,7 +55,7 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory uygulaması oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. API Management hizmeti örneğinizi içeren aboneliği kullanarak **Azure Active Directory** (Azure Active Directory > yönet/Uygulama kayıtları) **uygulama kayıtları** sekmesine gidin.
 
     > [!NOTE]
@@ -169,19 +169,24 @@ burada:
 
 Yedekleme, tamamlanması bir dakikadan uzun süreolabilecek uzun süredir çalışan bir işlemdir. İstek başarılı olursa ve yedekleme işlemi başladıysa, `202 Accepted` üst bilgiyle bir yanıt durum kodu alırsınız `Location` . İşlemin durumunu öğrenmek için üstbilgideki URL 'ye ' GET ' istekleri yapın `Location` . Yedekleme devam ederken, bir ' 202 kabul edildi ' durum kodu almaya devam edersiniz. Yanıt kodu `200 OK` , yedekleme işleminin başarıyla tamamlandığını gösterir.
 
-Yedekleme veya geri yükleme isteği yaparken aşağıdaki kısıtlamalara göz önünde edin:
+#### <a name="constraints-when-making-backup-or-restore-request"></a>Yedekleme veya geri yükleme isteği yapılırken kısıtlamalar
 
 -   İstek gövdesinde belirtilen **kapsayıcı** **mevcut olmalıdır**.
 -   Yedekleme devam ederken, hizmette SKU yükseltme veya düşürme, etki alanı adında değişiklik ve daha fazlası gibi **yönetim değişikliklerinden kaçının** .
 -   Bir yedeklemenin geri yüklenmesi yalnızca, oluşturulduktan sonra **30 gün boyunca garanti edilir** .
--   Analiz raporları oluşturmak için kullanılan **kullanım verileri** yedeklemeye **dahil değildir** . [Azure API Management REST API][azure api management rest api] kullanarak safekeeping için analiz raporlarını düzenli aralıklarla alın.
--   Ayrıca, aşağıdaki öğeler yedekleme verilerinin bir parçası değildir: özel etki alanı TLS/SSL sertifikaları ve müşteri, geliştirici portalı içeriği ve sanal ağ tümleştirme ayarları tarafından karşıya yüklenen tüm ara veya kök sertifikalar.
--   Hizmet yedeklemeleri gerçekleştirdiğiniz sıklık, kurtarma noktası hedefini etkiler. Bunu en aza indirmek için, API Management hizmetinize değişiklikler yaptıktan sonra düzenli yedeklemeler uygulamanızı ve isteğe bağlı yedeklemeler gerçekleştirmenizi öneririz.
 -   Yedekleme işlemi sırasında hizmet yapılandırmasında yapılan **değişiklikler** (örneğin, API 'ler, ilkeler ve geliştirici portalı görünümü), **yedeklemeden dışlanmayabilir ve kaybolacaktır**.
--   [Güvenlik duvarı][azure-storage-ip-firewall] etkinleştirilmişse denetim düzlemine Azure Storage hesabı 'Na erişime **izin verin** . Müşteri, yedekleme veya geri yükleme için depolama hesabındaki [Azure API Management Denetim DÜZLEMI IP adresleri][control-plane-ip-address] kümesini açmalı. 
+-   [Güvenlik duvarı][azure-storage-ip-firewall] etkinleştirilmişse denetim düzlemine Azure Storage hesabı 'Na erişime **izin verin** . Müşteri, yedekleme veya geri yükleme için depolama hesabındaki [Azure API Management Denetim DÜZLEMI IP adresleri][control-plane-ip-address] kümesini açmalı. Bunun nedeni, Azure depolama 'ya yönelik isteklerin Işlem > (Azure API yönetim denetim düzlemi) genel bir IP 'ye karşı bir şekilde değil. Çapraz bölge depolama isteği yeniden oluşturulacak.
 
-> [!NOTE]
-> [Güvenlik duvarı][azure-storage-ip-firewall] etkin olan bir depolama hesabı kullanarak bir API Management hizmetinden yedekleme/geri yükleme yapmayı denerseniz, aynı Azure bölgesinde bu işlem çalışmaz. Bunun nedeni, Azure depolama 'ya yönelik isteklerin Işlem > (Azure API yönetim denetim düzlemi) genel bir IP 'ye karşı bir şekilde değil. Çapraz bölge depolama isteği yeniden oluşturulacak.
+#### <a name="what-is-not-backed-up"></a>Yedeklenmeyen
+-   Analiz raporları oluşturmak için kullanılan **kullanım verileri** yedeklemeye **dahil değildir** . [Azure API Management REST API][azure api management rest api] kullanarak safekeeping için analiz raporlarını düzenli aralıklarla alın.
+-   [Özel etki alanı TLS/SSL](configure-custom-domain.md) sertifikaları
+-   Müşteri tarafından karşıya yüklenen ara veya kök sertifikaları içeren [özel CA sertifikası](api-management-howto-ca-certificates.md)
+-   [Sanal ağ](api-management-using-with-vnet.md) tümleştirme ayarları.
+-   [Yönetilen kimlik](api-management-howto-use-managed-service-identity.md) yapılandırması.
+-   [Azure Izleyici tanısı](api-management-howto-use-azure-monitor.md) Yapılandırmada.
+-   [Protokoller ve şifre](api-management-howto-manage-protocols-ciphers.md) ayarları.
+
+Hizmet yedeklemeleri gerçekleştirdiğiniz sıklık, kurtarma noktası hedefini etkiler. Bunu en aza indirmek için, API Management hizmetinize değişiklikler yaptıktan sonra düzenli yedeklemeler uygulamanızı ve isteğe bağlı yedeklemeler gerçekleştirmenizi öneririz.
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>API Management hizmeti geri yükleme
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage 2. ile
-description: Data Lake Storage 2. için
+description: Azure Data Lake Storage 2. için Hadoop Dağıtılmış Dosya Sistemi (bir) CLı kullanın. Bir kapsayıcı oluşturun, dosyaların veya dizinlerin bir listesini alın ve daha fazlasını yapın.
 services: storage
 author: normesta
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109459"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836318"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
 
@@ -58,7 +58,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 `<path>`Yer tutucuyu kapsayıcının veya kapsayıcı KLASÖRÜNÜN URI 'siyle değiştirin.
 
-Örneğin, `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
+Örnek: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
@@ -66,7 +66,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 `<path>`Yer tutucusunu kök kapsayıcı adı veya Kapsayıcınız içindeki bir klasör ile değiştirin.
 
-Örneğin, `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+Örnek: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>Dosya veya dizini silme
 
@@ -74,7 +74,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 `<path>`Yer tutucusunu, silmek istediğiniz dosya veya KLASÖRÜN URI 'siyle değiştirin.
 
-Örneğin, `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
+Örnek: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Dosyaların ve dizinlerin Access Control listelerini (ACL 'Ler) görüntüleme
 

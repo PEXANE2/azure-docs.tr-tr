@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088300"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831116"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -149,7 +149,7 @@ SAP HANA yedekleme ve geri yükleme stratejileri için, [Azure sanal makinelerin
 ### <a name="business-one-client-server"></a>İş tek istemci sunucusu
 Bu bileşenler için depolama konuları birincil sorun değildir. Bununla birlikte, güvenilir bir platforma sahip olmak istiyorsunuz. Bu nedenle, temel VHD için bile bu sanal makine için Azure Premium Depolama kullanmanız gerekir. VM 'yi, [SAP Business One donanım gereksinimleri kılavuzunda](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)verilen verilerle boyutlandırma. Azure için, belge Bölüm 2,4 ' de belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir. Gereksinimleri hesaplarken, sizin için ideal VM 'yi bulmak için bunları aşağıdaki belgelere göre karşılaştırmanız gerekir:
 
-- [Azure'daki Windows sanal makinesi boyutları](../../windows/sizes.md)
+- [Azure'daki Windows sanal makinesi boyutları](../../sizes.md)
 - [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 Microsoft tarafından belgelenme için gereken CPU ve bellek sayısını karşılaştırın. Ayrıca, VM 'Leri seçerken ağ aktarım hızını göz önünde bulundurun.

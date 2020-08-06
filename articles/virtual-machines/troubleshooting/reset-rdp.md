@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088589"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832459"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM 'de Uzak Masaüstü Hizmetleri veya yönetici parolasını sıfırlama
 Bir Windows sanal makinesine (VM) bağlanamıyorsanız, yerel yönetici parolanızı sıfırlayabilir veya Uzak Masaüstü Hizmetleri yapılandırmayı sıfırlayabilirsiniz (Windows etki alanı denetleyicilerinde desteklenmez). Parolayı sıfırlamak için Azure portalı veya Azure PowerShell'deki VM Erişimi uzantısını kullanın. VM'de oturum açtıktan sonra yerel yönetici parolasını sıfırlayın.  
-PowerShell kullanıyorsanız, [en son PowerShell modülünün yüklü ve yapılandırılmış](/powershell/azure/) olduğundan ve Azure aboneliğinizde oturum açmış olduğunuzdan emin olun. Ayrıca [klasik dağıtım modeliyle oluşturulmuş olan VM'lerde bu adımları da gerçekleştirebilirsiniz](/azure/virtual-machines/windows/classic/reset-rdp).
+PowerShell kullanıyorsanız, [en son PowerShell modülünün yüklü ve yapılandırılmış](/powershell/azure/) olduğundan ve Azure aboneliğinizde oturum açmış olduğunuzdan emin olun. Ayrıca [klasik dağıtım modeliyle oluşturulmuş olan VM'lerde bu adımları da gerçekleştirebilirsiniz](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp).
 
 Uzak Masaüstü Hizmetleri ve kimlik bilgileri sıfırlamasını gerçekleştirmek için aşağıdaki yöntemleri kullanabilirsiniz:
 

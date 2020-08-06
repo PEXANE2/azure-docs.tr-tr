@@ -1,5 +1,5 @@
 ---
-title: Örnek ve kimlik doğrulaması ayarlama (CLı)
+title: Örnek ayarlama ve kimlik doğrulaması (CLI)
 titleSuffix: Azure Digital Twins
 description: CLı kullanarak Azure dijital TWINS hizmeti örneğini ayarlama bölümüne bakın
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ba03acabb3325045a71d55f583343a26b4d121ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408356"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832373"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (CLı) ayarlama
 
@@ -46,7 +46,7 @@ Bu bölümde, Cloud Shell komutunu kullanarak **Azure Digital TWINS 'in yeni bir
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>Başarıyı doğrula
+### <a name="verify-success-and-collect-important-values"></a>Başarıyı doğrulama ve önemli değerleri toplama
 
 Örnek başarılı bir şekilde oluşturulduysa Cloud Shell sonucu, oluşturduğunuz kaynakla ilgili bilgiler olarak aşağıdaki gibi görünür:
 
@@ -71,12 +71,16 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.
 
-> [!TIP]
-> Bunun yerine *400: BadRequest* hatası alırsanız, Kullanıcı için *ObjectID* 'yi almak üzere aşağıdaki komutu çalıştırın:
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> Sonra, e-posta yerine kullanıcının *nesne kimliğini* kullanarak rol atama komutunu tekrarlayın.
+> [!NOTE]
+> Bu komut, CLı 'nin **grafik veritabanında kullanıcı veya hizmet sorumlusu bulamadığını**söyleyen bir hata döndürürse:
+>
+> E-postaları yerine kullanıcının *nesne kimliğini* kullanın. Bu, kişisel [Microsoft hesaplarındaki (MSAs)](https://account.microsoft.com/account)kullanıcılar için gerçekleşebilir. 
+>
+> Kullanıcı hesabını seçmek ve ayrıntılarını açmak için [Azure Active Directory kullanıcıların Azure Portal sayfasını](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) kullanın. Kullanıcının *ObjectID*'yi kopyalayın:
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="' Nesne KIMLIĞI ' alanındaki GUID 'YI vurgulamak Azure portal Kullanıcı sayfasının görünümü" lightbox="media/includes/user-id.png":::
+>
+> Sonra, e-posta yerine kullanıcının *nesne kimliğini* kullanarak rol atama listesi komutunu tekrarlayın.
 
 ### <a name="verify-success"></a>Başarıyı doğrula
 
@@ -117,7 +121,7 @@ Yeni oluşturduğunuz *manifest.js* gidin ve "Aç" düğmesine basın.
 Ardından, bir uygulama kaydı oluşturmak için aşağıdaki komutu çalıştırın (yer tutucuları gerektiği gibi değiştirin):
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 İşte oluşturduğunuz kayıt hakkındaki bilgileri gösteren bu komutun çıktısının bir alıntısı:

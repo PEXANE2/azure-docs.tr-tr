@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543614"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830351"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -116,7 +116,7 @@ Bu isteğe bağlı bölüm, devam etmeden önce bağımlılıkların tamamlandı
     "dependsOn": [],
 ```
 
-Daha fazla bilgi için bkz. [Kaynak bağımlılıklarını tanımlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
+Daha fazla bilgi için bkz. [Kaynak bağımlılıklarını tanımlama](../../azure-resource-manager/templates/define-resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Kimlik
 
@@ -137,8 +137,8 @@ Kullanıcı tarafından atanan bir kimlik için görüntü Oluşturucu desteği:
 * Yalnızca tek bir kimliği destekler
 * Özel etki alanı adlarını desteklemez
 
-Daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../../active-directory/managed-identities-azure-resources/overview.md).
+Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity).
 
 ## <a name="properties-source"></a>Özellikler: kaynak
 
@@ -151,10 +151,10 @@ API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerekti
 
 
 > [!NOTE]
-> Var olan Windows özel görüntülerini kullanırken, Sysprep komutunu tek bir Windows görüntüsünde 8 kez çalıştırabilirsiniz. daha fazla bilgi için [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) belgelerine bakın.
+> Var olan Windows özel görüntülerini kullanırken, Sysprep komutunu tek bir Windows görüntüsünde 8 kez çalıştırabilirsiniz. daha fazla bilgi için [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) belgelerine bakın.
 
 ### <a name="platformimage-source"></a>Platformımage kaynağı 
-Azure Image Builder, Windows Server ve Client ve Linux Azure Marketi görüntülerini destekler, tam liste için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) bakın. 
+Azure Image Builder, Windows Server ve Client ve Linux Azure Marketi görüntülerini destekler, tam liste için [buraya](../windows/image-builder-overview.md#os-support) bakın. 
 
 ```json
         "source": {
@@ -373,7 +373,7 @@ Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırm
 - **Validexitcodes** : isteğe bağlı, betiğe/satır içi komuttan döndürülebilecek geçerli kodlar, bu, betik/satır içi komutunun bildirilen başarısızlığından kaçınacaktır.
 - **runyükseltici** – isteğe bağlı, Boole, yükseltilmiş izinlerle komutları ve betikleri çalıştırmaya yönelik destek.
 - **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
-    * Windows [Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) üzerinde bir PowerShell kullanarak sha256Checksum oluşturmak için
+    * Windows [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) üzerinde bir PowerShell kullanarak sha256Checksum oluşturmak için
 
 
 ### <a name="file-customizer"></a>Dosya Özelleştirici
@@ -567,7 +567,7 @@ Paylaşılan görüntü Galerisi şu şekilde yapılır:
 - Görüntü tanımları-görüntüler için kavramsal gruplama. 
 - Görüntü sürümleri-bu, VM veya ölçek kümesi dağıtmak için kullanılan bir görüntü türüdür. Görüntü sürümleri, VM 'Lerin dağıtılması gereken diğer bölgelere çoğaltılabilir.
  
-Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tanımı oluşturmanız gerekir, [paylaşılan görüntüler](shared-images.md)' e bakın. 
+Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tanımı oluşturmanız gerekir, [paylaşılan görüntüler](../shared-images-cli.md)' e bakın. 
 
 ```json
 {

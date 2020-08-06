@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029442"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830691"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleriyle otomatik ölçeklendirme sorunlarını giderme
 **Sorun** : sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale Ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.
@@ -23,7 +23,7 @@ ms.locfileid: "87029442"
 Göz önünde bulundurulması gereken bazı noktalar şunlardır:
 
 * Her VM 'nin kaç tane vCPU olduğunu ve her vCPU 'Yu yüklüyorsunuz?
-  Önceki örnek Azure hızlı başlangıç şablonu, tek bir vCPU yükleyen bir do_work. php komut dosyasına sahiptir. Standard_A1 veya D1 gibi tek vCPU VM boyutundan daha büyük bir VM kullanıyorsanız, bu yükü birden çok kez çalıştırmanız gerekir. [Azure 'Da Windows sanal makineleri Için boyutları inceleyerek sanal makineleriniz](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Için kaç vCPU olduğunu denetleyin
+  Önceki örnek Azure hızlı başlangıç şablonu, tek bir vCPU yükleyen bir do_work. php komut dosyasına sahiptir. Standard_A1 veya D1 gibi tek vCPU VM boyutundan daha büyük bir VM kullanıyorsanız, bu yükü birden çok kez çalıştırmanız gerekir. [Azure 'Da Windows sanal makineleri Için boyutları inceleyerek sanal makineleriniz](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Için kaç vCPU olduğunu denetleyin
 * Sanal makine ölçek kümesindeki kaç VM, her biri üzerinde iş yapıyor musunuz?
   
     Ölçek Genişletme olayı yalnızca bir ölçek kümesindeki **Tüm** VM 'LERDE ortalama CPU, otomatik ölçeklendirme kurallarında tanımlanan zaman içinde eşik değerini aşarsa meydana gelen bir olay gerçekleşir.

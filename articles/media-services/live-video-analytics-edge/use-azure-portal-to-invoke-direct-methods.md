@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279296"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830759"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Doğrudan yöntemleri çağırmak için Azure portal kullanma
 
-IoT Hub, uç cihazlarda buluttan [doğrudan Yöntemler](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules) çağırma olanağı sağlar. IoT Edge (LVA) modülündeki canlı video analizi, canlı videoyu çözümlemek üzere farklı iş akışlarını tanımlamak, dağıtmak ve örneklemek için kullanılabilecek çeşitli [doğrudan Yöntemler](/azure/media-services/live-video-analytics-edge/direct-methods) sunar.
+IoT Hub, uç cihazlarda buluttan [doğrudan Yöntemler](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules) çağırma olanağı sağlar. IoT Edge (LVA) modülündeki canlı video analizi, canlı videoyu çözümlemek üzere farklı iş akışlarını tanımlamak, dağıtmak ve örneklemek için kullanılabilecek çeşitli [doğrudan Yöntemler](./direct-methods.md) sunar.
 
 Bu makalede, Azure portal aracılığıyla bir IoT Edge modülü için canlı video analizinden doğrudan Yöntem çağrılarını çağırmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Uç cihazınızda çalışan IoT Edge modülde canlı video analizinden yararlanarak [hızlı başlangıç: canlı video analizi IoT Edge](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) veya portalı kullanma ' da açıklanan yöntemleri kullanabilirsiniz [.](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)
+* Uç cihazınızda çalışan IoT Edge modülde canlı video analizinden yararlanarak [hızlı başlangıç: canlı video analizi IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) veya portalı kullanma ' da açıklanan yöntemleri kullanabilirsiniz [.](./deploy-iot-edge-device.md)
 
-* [Canlı video analizlerini](/azure/media-services/live-video-analytics-edge/overview) ve [medya grafiği kavramını](/azure/media-services/live-video-analytics-edge/media-graph-concept)anlamış olursunuz.
+* [Canlı video analizlerini](./overview.md) ve [medya grafiği kavramını](./media-graph-concept.md)anlamış olursunuz.
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>Azure portal aracılığıyla doğrudan Yöntemler çağırma
 
-LVA modülü tarafından kullanıma sunulan [doğrudan yöntemlerin](/azure/media-services/live-video-analytics-edge/direct-methods) her biri Azure Portal aracılığıyla çağrılabilir. Aşağıdaki adımlarda, bir doğrudan yöntem için ayrıntılar sağlanmaktadır. Benzer adımları kullanarak diğer doğrudan yöntemleri çağırabilirsiniz. Ancak, her bir doğrudan yöntem için belirli bir JSON gövdesi gerekir.
+LVA modülü tarafından kullanıma sunulan [doğrudan yöntemlerin](./direct-methods.md) her biri Azure Portal aracılığıyla çağrılabilir. Aşağıdaki adımlarda, bir doğrudan yöntem için ayrıntılar sağlanmaktadır. Benzer adımları kullanarak diğer doğrudan yöntemleri çağırabilirsiniz. Ancak, her bir doğrudan yöntem için belirli bir JSON gövdesi gerekir.
 
 `GraphTopologyList`IoT Edge modülündeki canlı video analizi üzerinde şu anda dağıtılmış olan tüm grafik topolojilerinin bir listesini almak için yöntem çağrısını kullanın. Bu doğrudan yöntemi çağırmak için aşağıdaki adımları kullanın:
 
@@ -72,9 +72,9 @@ LVA modülü tarafından kullanıma sunulan [doğrudan yöntemlerin](/azure/medi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Doğrudan Yöntemler](/azure/media-services/live-video-analytics-edge/direct-methods) sayfasında daha doğrudan Yöntemler bulunabilir.
+[Doğrudan Yöntemler](./direct-methods.md) sayfasında daha doğrudan Yöntemler bulunabilir.
 
 > [!NOTE]
 > Grafik örneği belirli bir topolojiyi örnekledi, bu nedenle lütfen bir grafik örneği oluşturmadan önce doğru topoloji ayarlamış olduğunuzdan emin olun.
 
-[Hızlı başlangıç: hareket yayma olaylarını algılama](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) , doğrudan yöntem çağrılarının tam sırasını anlamak için iyi bir başvurudur.
+[Hızlı başlangıç: hareket yayma olaylarını algılama](./get-started-detect-motion-emit-events-quickstart.md) , doğrudan yöntem çağrılarının tam sırasını anlamak için iyi bir başvurudur.

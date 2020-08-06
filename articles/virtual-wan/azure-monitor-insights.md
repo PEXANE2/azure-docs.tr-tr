@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136352"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836080"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Sanal WAN için Azure Izleyici öngörüleri (Önizleme)
 
@@ -21,7 +21,7 @@ Sanal WAN için [Azure Izleyici öngörüleri](../azure-monitor/insights/network
 Sanal WAN kaynak düzeyi ölçümleri toplanır ve sanal WAN, hub, ağ geçidi ve bağlantı düzeylerindeki ölçümleri gösteren, önceden paketlenmiş bir sanal WAN ölçümleri çalışma kitabı aracılığıyla sunulur. Bu makale, sanal WAN topolojinizi ve ölçümlerini tek bir yerde görüntülemek için sanal WAN için Azure Izleyici öngörülerini kullanma adımlarında size yol gösterir.
 
 > [!NOTE]
-> Öngörüler menüsü, bu önizlemede kullanıma sunulmaya yönelik bir işlemdir.
+> Sanal WAN portalındaki Öngörüler menü seçeneği kullanıma alınıyor. Sanal WAN için Öngörüler menüsü kullanıma alındığından, sanal WAN topolojisine ve ölçüm çalışma kitabına doğrudan ağlar için Azure montor kullanılarak erişilebilir. Daha fazla bilgi için bkz. [Azure Izleyici öngörüleri](../azure-monitor/insights/network-insights-overview.md) . 
 >
 
 ## <a name="before-you-begin"></a>Başlamadan önce

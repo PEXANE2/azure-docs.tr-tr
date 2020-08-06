@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543835"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835944"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -60,7 +60,7 @@ Bulut hizmeti modeline bağlı olarak, uygulamanın veya hizmetin güvenliğini 
 
 Yerleşik yetenekler altı işlevsel alanda düzenlenmiştir: Işlemler, uygulamalar, depolama, ağ, Bilgi Işlem ve kimlik. Bu altı alanda Azure platformunda bulunan özellikler ve yetenekler hakkında ek ayrıntı Özet bilgiler aracılığıyla sağlanır.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>İşlemler
 Bu bölümde güvenlik işlemlerinde temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="security-and-audit-dashboard"></a>Güvenlik ve Denetim Panosu
@@ -336,7 +336,7 @@ Microsoft, ürün ve hizmetlerinde kimlik ve erişim yönetimi için birden çok
 
 -   [Belirteç tabanlı kimlik doğrulaması](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) , Azure Active Directory aracılığıyla kimlik doğrulaması yapılmasını mümkün.
 
--   [Rol tabanlı erişim denetimi (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) , kullanıcının atanan rolüne göre erişim sağlamanıza olanak sağlayarak kullanıcılara yalnızca iş görevlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını vermeyi kolaylaştırır. RBAC 'yi kuruluşunuzun iş modeli ve risk toleransı başına özelleştirebilirsiniz.
+-   [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) , kullanıcının atanan rolüne göre erişim sağlamanıza olanak sağlayarak kullanıcılara yalnızca iş görevlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını vermeyi kolaylaştırır. RBAC 'yi kuruluşunuzun iş modeli ve risk toleransı başına özelleştirebilirsiniz.
 
 -   [Tümleşik kimlik yönetimi (Hibrit kimliği)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) , kullanıcıların iç veri merkezleri ve bulut platformları genelinde erişiminin denetimini korumanıza olanak sağlar. bu sayede, tüm kaynaklara yönelik kimlik doğrulama ve yetkilendirme için tek bir Kullanıcı Kimliği oluşturursunuz.
 

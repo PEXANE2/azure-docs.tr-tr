@@ -1,36 +1,39 @@
 ---
-title: Sorumlu Machine Learning (ML) önizlemesi
+title: Machine Learning sorumlu nedir (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Sorumlu ML 'nin ne olduğunu ve nasıl kullanılacağını öğrenin Azure Machine Learning
+description: Machine Learning 'in ne olduğunu ve nasıl kullanılacağını öğrenin Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201942"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829399"
 ---
-# <a name="responsible-machine-learning-ml-preview"></a>Sorumlu Machine Learning (ML) önizlemesi
+# <a name="what-is-responsible-machine-learning-preview"></a>Machine Learning sorumlu nedir? (önizleme)
 
-Bu makalede, sorumlu ML 'nin ne olduğunu ve Azure Machine Learning ile uygulamaya nasıl koyabileceğinizi öğreneceksiniz.
+Bu makalede, sorumlu makine öğrenimi (ML) ne olduğunu ve Azure Machine Learning ile uygulamaya nasıl koyabileceğinizi öğreneceksiniz.
 
-AI sistemlerinin geliştirilmesi ve kullanımı boyunca güvenin çekirdek üzerinde olması gerekir. Platformda, süreçte ve modellerde güvenin. Microsoft 'ta, sorumlu ML aşağıdaki değerleri ve ilkeleri kapsar:
+## <a name="responsible-machine-learning-principles"></a>Sorumlu makine öğrenimi ilkeleri
+
+AI sistemlerinin geliştirilmesi ve kullanımı boyunca güvenin çekirdek üzerinde olması gerekir. Platformda, süreçte ve modellerde güvenin. Microsoft 'ta, sorumlu makine öğrenimi aşağıdaki değerleri ve ilkeleri kapsar:
 
 - Makine öğrenimi modellerini anlama
   - Model davranışını yorumlama ve açıklama
   - Model unfairness değerlendir ve azaltma
 - Kişileri ve verilerini koruyun
-  - Değişiklik gizliliğiyle veri pozlamasını önleyin  
+  - Değişiklik gizliliğiyle veri pozlamasını önleyin
+  - Homomorphic şifrelemesi kullanarak şifrelenmiş verilerle çalışma
 - Uçtan uca makine öğrenimi işlemini denetleme
   - Machine Learning yaşam döngüsünü veri sayfaları ile belgeleme
 
-:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Sorumlu ML pilde":::
+:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Sorumlu ML pillerini-yorumlilik, değişiklik gizliliği, homomorphic şifrelemesi, denetim izi-Azure Machine Learning":::
 
 Yapay zeka ve özerk sistemler topluluğu dokusuna daha fazlasını tümleştirmekle, bu teknolojilerin istenmeden sonuçlý sonuçlarını tahmin etmek ve azaltmak için önceden önlem olarak bir çaba olması önemlidir.
 
@@ -40,7 +43,7 @@ Sistem geliştiricileri, düzenleyiciler, kullanıcılar ve iş karar mekanizmal
 
 Intertable AI sistemleri oluşturmak için, Microsoft tarafından oluşturulan açık kaynaklı bir paket olan [ınterbir](https://github.com/interpretml/interpret)Package kullanın. Inter, [otomatik makine öğrenimi modelleri](how-to-machine-learning-interpretability-automl.md)de dahil olmak üzere [makine öğrenimi modellerinizi yorumlamak ve açıklamak](how-to-machine-learning-interpretability-aml.md)için, [Azure Machine Learning içinde yorumbir şekilde kullanılabilir](how-to-machine-learning-interpretability.md) .
 
-## <a name="assess-and-mitigate-model-unfairness"></a>Model unfairness değerlendir ve azaltma
+## <a name="mitigate-fairness-in-machine-learning-models"></a>Makine öğrenimi modellerinde eşitliği 'i azaltma
 
 AI sistemleri, topluluğu 'in günlük karar verme konusunda daha fazla sonuç aldığından, bu sistemlerin herkese açık sonuçlar sağlamak için iyi bir öneme sahip olma.
 
@@ -64,6 +67,16 @@ Farklı şekilde özel sistemlerin uygulanması zordur. [Whitenoıse](https://gi
 > [!NOTE]
 > Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
 
+## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Homomorphic şifrelemesi ile şifrelenmiş veriler üzerinde çalışma
+
+Geleneksel bulut depolama ve hesaplama çözümlerinde, bulutun üzerinde işlem yapmak için müşteri verilerine şifrelenmemiş erişimi olması gerekir. Bu erişim, verileri bulut işleçlerine sunar. Veri gizliliği, bulut tarafından uygulanan ve müşteri tarafından güvenilen erişim denetimi ilkelerine dayanır.
+
+Homomorphic şifrelemesi, bir gizli dizi (şifre çözme) anahtarına erişmek gerekmeden, şifrelenmiş verilerde hesaplamalar yapılmasına izin verir. Hesaplamaların sonuçları şifrelenir ve yalnızca gizli anahtar sahibi tarafından açığa çıkarlenebilir. Homomorphic şifrelemesi kullanarak, bulut işleçleri depolarken ve bilgi işlem yaptıkları verilere şifrelenmemiş olarak erişemez. Hesaplamalar doğrudan şifrelenmiş verilerde gerçekleştirilir. Veri gizliliği, son derece şifreleme durumuna dayanır ve veri sahibi tüm bilgi sürümlerini denetler. Microsoft 'ta homomorphic şifreleme hakkında daha fazla bilgi için bkz. [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
+
+Azure Machine Learning 'de homomorphic şifrelemeyi kullanmaya başlamak için, [Microsoft mühürlemek](https://github.com/microsoft/SEAL)üzere [şifrelenmiş çıkarım](https://pypi.org/project/encrypted-inference/) Python bağlamalarını kullanın. Microsoft mühürleme, şifreli tamsayılar veya gerçek sayılar üzerinde eklemeler ve çoğullar gerçekleştirilmesini sağlayan açık kaynaklı bir homomorphic şifreleme kitaplığıdır. Microsoft MÜHÜRLEMEK hakkında daha fazla bilgi için [Azure mimari merkezi](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) veya [Microsoft Research projesi sayfasına](https://www.microsoft.com/research/project/microsoft-seal/)bakın.
+
+[Azure Machine Learning ' de şifrelenmiş bir ınırm Web hizmeti dağıtmayı](how-to-homomorphic-encryption-seal.md)öğrenmek için aşağıdaki örneğe bakın.
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>Machine Learning yaşam döngüsünü veri sayfaları ile belgeleme
 
 Machine Learning işleminde doğru bilgilerin belgelenerek, her aşamada sorumlu kararlar alma anahtarıdır. Veri sayfaları, makine öğrenimi yaşam döngüsünün bir parçası olarak kullanılan ve oluşturulan makine öğrenimi varlıklarını belgelemek için bir yoldur.
@@ -83,5 +96,5 @@ Bir veri sayfasının parçası olarak belgelemek isteyebileceğiniz bazı model
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [Şifrelenmiş bir ınırtıon Web hizmeti dağıtmak](how-to-homomorphic-encryption-seal.md)için homomorphic şifrelemesi kullanın.
+- Daha fazla bilgi için, en iyi yöntemler hakkında bilgi edinmek için [sorumlu yenilik araç seti](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) bölümüne bakın.
 - Machine Learning sistem belgeleri [hakkında](https://www.partnershiponai.org/about-ml/) daha fazla bilgi için bkz..

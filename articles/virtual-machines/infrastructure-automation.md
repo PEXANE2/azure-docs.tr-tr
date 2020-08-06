@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292386"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830555"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure 'daki sanal makinelerle altyapı Otomasyonu araçlarını kullanma
 
@@ -34,9 +34,9 @@ Azure sanal makinelerini (VM 'Ler) bir ölçekte tutarlı bir şekilde oluşturm
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure ile kullanmak Için Linux üzerinde erişilebilir ve yapılandırın](../ansible/ansible-install-configure.md).
-- [Bir Linux sanal makinesi oluşturun](../ansible/ansible-create-vm.md).
-- [Linux sanal makinesini yönetin](../ansible/ansible-manage-linux-vm.md).
+- [Azure ile kullanmak Için Linux üzerinde erişilebilir ve yapılandırın](/azure/developer/ansible/install-on-linux-vm).
+- [Bir Linux sanal makinesi oluşturun](/azure/developer/ansible/vm-configure).
+- [Linux sanal makinesini yönetin](/azure/developer/ansible/vm-manage).
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ Azure sanal makinelerini (VM 'Ler) bir ölçekte tutarlı bir şekilde oluşturm
 Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure Marketi 'Nden Chef otomatikleştirmesini dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Windows üzerinde Chef 'ı yükleyip Azure VM 'leri oluşturun](../chef/chef-automation.md).
+- [Windows üzerinde Chef 'ı yükleyip Azure VM 'leri oluşturun](/azure/developer/chef/windows-vm-configure).
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ DSC yapılandırması, bir makineye nelerin yükleneceğini ve konağın nasıl 
 
 
 ## <a name="azure-custom-script-extension"></a>Azure Özel Betik Uzantısı
-[Linux](./linux/extensions-customscript.md) veya [Windows](./windows/extensions-customscript.md) Için Azure Özel Betik uzantısı, Azure VM 'lerinde betikleri indirir ve yürütür. Bir VM oluşturduğunuzda veya VM kullanımda olduktan sonra istediğiniz zaman uzantıyı kullanabilirsiniz.
+[Linux](./extensions/custom-script-linux.md) veya [Windows](./extensions/custom-script-windows.md) Için Azure Özel Betik uzantısı, Azure VM 'lerinde betikleri indirir ve yürütür. Bir VM oluşturduğunuzda veya VM kullanımda olduktan sonra istediğiniz zaman uzantıyı kullanabilirsiniz.
 
 Betikler, Azure Storage 'dan veya GitHub deposu gibi genel bir konumdan indirilebilir. Özel Betik uzantısıyla, betikleri kaynak VM üzerinde çalışan herhangi bir dilde yazabilirsiniz. Bu betikler, uygulamaları yüklemek veya VM 'yi istendiği şekilde yapılandırmak için kullanılabilir. Kimlik bilgilerinin güvenliğini sağlamak için, parolalar gibi hassas bilgiler korumalı bir yapılandırmada depolanabilir. Bu kimlik bilgilerinin yalnızca VM 'nin içinde şifresi çözülür.
 
@@ -116,7 +116,7 @@ Azure Otomasyonu, belirli bir VM kümesinin yapılandırılması için tanımlar
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [PowerShell runbook 'U oluşturun](../automation/automation-first-runbook-textual-powershell.md).
+- [PowerShell runbook 'U oluşturun](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
 - [Şirket içi kaynakları yönetmek Için karma Runbook Worker 'ı kullanın](../automation/automation-hybrid-runbook-worker.md).
 - [Azure Automation DSC kullanın](../automation/automation-dsc-getting-started.md).
 
@@ -126,7 +126,7 @@ Azure Otomasyonu, belirli bir VM kümesinin yapılandırılması için tanımlar
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure 'Da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde bir geliştirme altyapısı oluşturun](../jenkins/tutorial-jenkins-github-docker-cicd.md).
+- [Azure 'Da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde bir geliştirme altyapısı oluşturun](/azure/developer/jenkins/pipeline-with-github-and-docker).
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
@@ -149,4 +149,3 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure 'da altyapı Otomasyonu araçlarını kullanmanın birçok farklı seçeneği vardır. Gereksinimlerinize ve ortamınıza en uygun çözümü kullanma özgürlüğüne sahipsiniz. Kullanmaya başlamak ve Azure 'da yerleşik araçları denemek için bkz. bir [Linux](./linux/tutorial-automate-vm-deployment.md) veya [Windows](./windows/tutorial-automate-vm-deployment.md) sanal makinesi özelleştirmesini otomatikleştirme.
-

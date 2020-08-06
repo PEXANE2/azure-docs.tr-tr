@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 019c627743c344fc0f07c8954ebdfdf2eca0437b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267056"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836216"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 'Leri için kıyaslama puanlarını hesaplama
 Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select Azure VM 'Leri için işlem performansını gösterir. İşlem kıyaslama puanları, [Linux sanal makineleri](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)için de kullanılabilir.
@@ -389,5 +389,4 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 Windows numaraları Windows Server üzerinde [Specınt 2006](https://www.spec.org/cpu2006/results/rint2006.html) çalıştırılarak hesaplanmıştı. Specınt, vCPU başına bir kopya ile temel hız seçeneği (SPECint_rate2006) kullanılarak çalıştırıldı. Specınt, her biri üç kez çalışan 12 ayrı testten oluşur ve her testten oluşan medyan değerini alan ve bileşik puan oluşturacak şekilde ağırlığa neden olacak. Daha sonra bu testler, gösterilen ortalama puanları sağlamak için birden çok VM genelinde çalıştırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Depolama kapasiteleri, disk ayrıntıları ve VM boyutları arasında seçim yapma konusunda ek konular için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
+* Depolama kapasiteleri, disk ayrıntıları ve VM boyutları arasında seçim yapma konusunda ek konular için bkz. [sanal makineler Için boyutlar](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

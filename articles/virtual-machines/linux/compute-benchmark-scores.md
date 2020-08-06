@@ -5,12 +5,12 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373428"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830538"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux sanal makineleri için kıyaslama puanlarını hesaplama
 Aşağıdaki CoreMark kıyaslama puanları, Ubuntu çalıştıran Azure 'un yüksek performanslı VM sıralaması için işlem performansını gösterir. İşlem kıyaslama puanları [Windows VM 'leri](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için de kullanılabilir.
@@ -469,6 +469,5 @@ Aşağıdaki CoreMark kıyaslama puanları, Ubuntu çalıştıran Azure 'un yük
 Linux numaraları, Ubuntu üzerinde [CoreMark](https://www.eembc.org/coremark/faq.php) çalıştırılarak hesaplanır. CoreMark, sanal CPU sayısına ayarlanan iş parçacığı sayısı ve iş parçacıkları için eşzamanlılık kümesi ile yapılandırıldı. Hedef yineleme sayısı, en az 20 saniye (genellikle çok daha uzun) bir çalışma zamanı sağlamak için beklenen performansa göre ayarlandı. Son puan, tamamlanan yineleme sayısını temsil eden, testi çalıştırmak için geçen saniye sayısına göre hesaplanır. Her bir test, her VM 'de en az yedi kez çalıştırıldı. Yukarıda gösterilen test çalıştırması tarihleri. Azure genel bölgelerinde çalıştırılan testler, sanal makinenin çalıştırıldığı tarih üzerinde desteklenir. Performans değişken olduğundan, temel A ve B (Burstable) serisi gösterilmez. N serisi GPU merkezli oldukları ve CoreMark GPU performansını ölçmediğinden gösterilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Depolama kapasiteleri, disk ayrıntıları ve VM boyutları arasında seçim yapma konusunda ek konular için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Depolama kapasiteleri, disk ayrıntıları ve VM boyutları arasında seçim yapma konusunda ek konular için bkz. [sanal makineler Için boyutlar](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Linux VM 'lerinde CoreMark betikleri çalıştırmak için [CoreMark betik paketini](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)indirin.
-

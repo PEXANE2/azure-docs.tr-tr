@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495667"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836352"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -63,7 +63,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
         - RTO ve RPO temelinde, yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisinin nasıl görünmesi gerektiğini tanımlayın.
         - Bir bölge içinde yüksek kullanılabilirlik için, istenen DBMS 'nin Azure 'da sunmasına ne olduğunu denetleyin. Çoğu DBMS paketi, üretim sistemleri için önerdiğimiz, zaman uyumlu bir etkin bekleme, zaman uyumlu yöntemler sunar. Ayrıca, [SAP iş yükleri ve ilgili belgeler Için Azure sanal MAKINELER DBMS dağıtımına ilişkin bazı hususlar](./dbms_guide_general.md) ile başlayan farklı VERITABANLARı için SAP ile ilgili belgelere bakın.
            Örneğin [SQL Server açıklananlar](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)gıbı, DBMS katmanının paylaşılan disk yapılandırmasıyla Windows Server Yük Devretme Kümelemesi kullanmak desteklenmez. Bunun yerine, şunun gibi çözümler kullanın:
-           - [SQL Server Always On](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server Always On](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA sistem çoğaltması](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - Azure bölgeleri arasında olağanüstü durum kurtarma için farklı DBMS satıcıları tarafından sunulan çözümleri gözden geçirin. Çoğu zaman uyumsuz çoğaltmayı veya günlük dağıtımını destekler.
@@ -103,8 +103,8 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - SAP destek notlarındaki kaynakları, SAP HANA donanım dizinindeki ve SAP PAM ' de tekrar gözden geçirin. Azure için desteklenen VM 'Lerde, bu VM türleri için desteklenen işletim sistemi yayınlarına ve desteklenen SAP ve DBMS sürümlerinden herhangi bir değişiklik olmadığından emin olun.
         - Uygulamanızın ve Azure 'da dağıttığınız altyapının boyutunu yeniden doğrulayın. Mevcut uygulamaları taşıyorsanız, genellikle kullandığınız altyapıdan ve [SAP kıyaslama Web sayfasından](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) gerekli SAPS 'leri türetebilir ve bunu [sap destek Not#1928533](https://launchpad.support.sap.com/#/notes/1928533)listelenen SAPS numaralarıyla karşılaştırabilirsiniz. Ayrıca, [Bu makaleye SAPS derecelendirmeleri](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) göz önünde bulundurun.
         - Azure VM 'lerinizin boyutunu, planlama aşamasında seçtiğiniz VM türlerinin maksimum depolama alanı işleme ve ağ aktarım hızına göre değerlendirin ve test edin. Verileri buradan bulabilirsiniz:
-           -  [Azure 'Da Windows sanal makineleri Için boyutlar](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
-           -  [Azure 'Da Linux sanal makineleri Için boyutlar](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
+           -  [Azure 'Da Windows sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
+           -  [Azure 'Da Linux sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
    2. Depolama’yı seçin.
         - En azından, SAP uygulama katmanlarını temsil eden VM 'Ler için ve performans duyarlı olmayan DBMS 'lerin dağıtımı için [Azure Standart SSD depolama](../../windows/disks-types.md#standard-ssd) kullanın.
         - Genel olarak, [Azure Standart HDD disklerinin](../../windows/disks-types.md#standard-hdd)kullanımını önermiyoruz.
@@ -207,8 +207,8 @@ Bu aşamada, genellikle geliştirme sistemlerini, birim testi sistemlerini ve i�
 11. [SAP uygulamalarıyla en iyi ağ gecikmesi için](sap-proximity-placement-scenarios.md), sanal makinelerinizin doğru [Azure yakınlık yerleşimi grubuna](../../linux/co-location.md)dağıtıldığından emin olun.
 11. İş yükünü uygulamadan önce kavram kanıtı aşaması için listelenen diğer tüm denetimleri gerçekleştirin.
 12. İş yükü geçerli olduğundan, sistemlerin kaynak tüketimini Azure 'da kaydedin. Bu tüketimi eski platformunuzun kayıtlarıyla karşılaştırın. Büyük farklarınızın olduğunu görürseniz gelecek dağıtımların sanal makine boyutunu ayarlayın. Sanal makinelerin boyutunu, depolamayı ve ağ bant genişliğini azaltdığınızda da azaltabileceğinizi aklınızda bulundurun.
-    - [Azure'daki Windows sanal makinesi boyutları](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Azure’da Linux sanal makine boyutları](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [Azure'daki Windows sanal makinesi boyutları](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Azure’da Linux sanal makine boyutları](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Sistem kopyalama işlevselliği ve işlemleriyle denemeler yapın. Amaç, bir geliştirme sistemini veya test sistemini kopyalamanızı kolaylaştırırken, proje ekiplerinin hızla yeni sistemler alabilir. Bu görevler için [SAP](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) 'yi kullanmayı düşünün.
 14. Görevlerin ayrıldığınızdan emin olmak için takımınızın Azure rol tabanlı erişimini, izinlerini ve süreçlerini iyileştirin ve odaklanmak. Aynı zamanda, tüm takımların Azure altyapısında görevlerini gerçekleştirmesini sağlayın.
 15. Personelinizin bu görevleri yürütmesini sağlamak için yüksek kullanılabilirlik ve olağanüstü durum kurtarma yordamlarını uygulayın, test edin ve belgeleyin. Eksiklikleri belirleyip dağıtımlarınızla Tümleştirdiğiniz yeni Azure işlevlerini uyarlayın.

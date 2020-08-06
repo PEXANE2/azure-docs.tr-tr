@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289708"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831303"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
 
@@ -80,7 +80,7 @@ NVv2 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV ör
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>Daha eski nesil sanal makine boyutları
 
-Bu bölüm, daha eski nesil sanal makine boyutları hakkında bilgi sağlar. Bu boyutlar hala desteklenir, ancak ek kapasite almaz. Genel olarak kullanılabilen daha yeni veya alternatif boyutlar vardır. Gereksinimlerinize en uygun VM boyutlarını seçmek için lütfen [Azure 'Da Linux sanal makineleri Için boyutlara](linux/sizes.md) bakın.  
+Bu bölüm, daha eski nesil sanal makine boyutları hakkında bilgi sağlar. Bu boyutlar hala desteklenir, ancak ek kapasite almaz. Genel olarak kullanılabilen daha yeni veya alternatif boyutlar vardır. Gereksinimlerinize en uygun VM boyutlarını seçmek için lütfen [Azure 'Da Linux sanal makineleri Için boyutlara](./sizes.md) bakın.  
 
 Linux VM 'yi yeniden boyutlandırma hakkında daha fazla bilgi için bkz. [Linux VM 'Yi yeniden boyutlandırma](linux/change-vm-size.md).  
 

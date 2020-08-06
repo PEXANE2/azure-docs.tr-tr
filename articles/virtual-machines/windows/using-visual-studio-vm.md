@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525543"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836165"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 'da Visual Studio görüntüleri
 Visual Studio 'Yu önceden yapılandırılmış bir Azure sanal makinesinde (VM) kullanmak, herhangi bir şey için bir şeyi çalışır duruma getirmenin bir geliştirme ortamına hızlı ve kolay bir yoludur. Farklı Visual Studio yapılandırmalarına sahip sistem görüntüleri [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)'nde kullanılabilir.
@@ -31,7 +31,7 @@ En son ana sürümlere ait görüntüler, Visual Studio 2019, Visual Studio 2017
 | Yayın sürümü                                                                                                                                                | Sürümler              | Ürün sürümü   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019: en son (sürüm 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Kuruluş, topluluk | Sürüm 16.5.4    |
-| Visual Studio 2019: RTW                         | Enterprise | Sürüm 16.0.13    |
+| Visual Studio 2019: RTW                         | Kurumsal | Sürüm 16.0.13    |
 | Visual Studio 2017: en son (sürüm 15,9)           | Kuruluş, topluluk | Sürüm 15.9.22   |
 | Visual Studio 2017: RTW                             | Kuruluş, topluluk | Sürüm 15.0.28  |
 | Visual Studio 2015: latest (güncelleştirme 3)               | Kuruluş, topluluk | Sürüm 14.0.25431.01 |
@@ -77,7 +77,7 @@ Azure, sanal makine boyutlarının tam bir aralığını sunar. Visual Studio g�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-En son makine boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](./sizes.md).
+En son makine boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../sizes.md).
 
 Azure ile, sanal makineyi yeniden boyutlandırarak başlangıç seçiminizi yeniden dengelemeniz sağlayabilirsiniz. Daha uygun bir boyuta sahip yeni bir VM sağlayabilir veya mevcut sanal makineyi farklı temel donanımla yeniden boyutlandırabilirsiniz. Daha fazla bilgi için bkz. [Windows VM 'Yi yeniden boyutlandırma](./resize-vm.md).
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: b360e58c9349bf98e8c89fcb75a46eedea1bb8fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000508"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833037"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -99,7 +99,7 @@ En son hizmet sürümü sayesinde, bir Iş başarısız olduğunda hizmet taraf�
 > Media Services Azure Access Control Service kimlik doğrulama anahtarları desteğini kullanımdan kaldırır. 22 Haziran 2018 ' de, Access Control Service anahtarlarını kullanarak kod aracılığıyla Media Services arka ucu ile kimlik doğrulaması yapamayacaktır. Kodunuzu [Azure AD tabanlı kimlik doğrulaması](media-services-use-aad-auth-to-access-ams-api.md)başına Azure Active Directory (Azure AD) kullanacak şekilde güncelleştirmeniz gerekir. Azure portal bu değişiklik hakkındaki uyarıları izleyin.
 
 ### <a name="updates-for-october-2017"></a>2017 Ekim güncelleştirmeleri
-#### <a name="sdks"></a>SDK
+#### <a name="sdks"></a>SDK’lar
 * .NET SDK, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Azure AD 'ye daha hızlı geçiş yapmak için, Access Control Service kimlik doğrulaması desteği Nuget.org üzerindeki en son .NET SDK 'sinden kaldırılmıştır. 
 * JAVA SDK 'Sı, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Java SDK 'sına Azure AD kimlik doğrulaması desteği eklenmiştir. Java SDK 'sını Media Services ile kullanma hakkında daha fazla bilgi için bkz [. Java istemci SDK 'sını kullanmaya başlama Azure Media Services](media-services-java-how-to-use.md)
 
@@ -569,7 +569,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->
@@ -580,8 +580,8 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 [Microsoft Q&A question page for Azure Media Services]: /answers/topics/azure-media-services.html
 [Azure Media Services REST API'si Başvurusu]: /rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
-[Giriş meta verileri]: /azure/media-services/previous/media-services-input-metadata-schema
-[Çıkış meta verileri]: /azure/media-services/previous/media-services-output-metadata-schema
+[Giriş meta verileri]: ./media-services-input-metadata-schema.md
+[Çıkış meta verileri]: ./media-services-output-metadata-schema.md
 [Deliver content]: /previous-versions/azure/hh973618(v=azure.100)
 [Index media files with the Azure Media Indexer]: /previous-versions/azure/dn783455(v=azure.100)
 [Streammingendpoint]: /rest/api/media/operations/streamingendpoint
@@ -595,7 +595,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 [Dinamik paketleme]: /previous-versions/azure/jj889436(v=azure.100)
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: /previous-versions/azure/dn189154(v=azure.100)
-[.NET için Media Services SDK 'da yeniden deneme mantığı]: /azure/media-services/previous/media-services-retry-logic-in-dotnet-sdk
+[.NET için Media Services SDK 'da yeniden deneme mantığı]: ./media-services-retry-logic-in-dotnet-sdk.md
 [Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: /previous-versions/azure/dn303341(v=azure.100)
 [Create overlays]: /previous-versions/azure/dn640496(v=azure.100)

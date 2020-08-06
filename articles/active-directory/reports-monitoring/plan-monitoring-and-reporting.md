@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232114"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829651"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory raporlama ve izleme dağıtımını planlayın
 
@@ -147,9 +147,9 @@ Aşağıdaki roller Azure AD raporlarını okuyabilir:
 
 * Güvenlik Yöneticisi
 
-* Güvenlik okuyucusu
+* Güvenlik Okuyucusu
 
-* Rapor okuyucu
+* Rapor Okuyucusu
 
 [Azure AD Yönetim rolleri](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)hakkında daha fazla bilgi edinin.
 
@@ -193,6 +193,4 @@ Yukarıdaki tasarım kılavuzunu kullanarak daha önce yaptığınız kararlara 
 
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) uygulamayı deneyin 
 
-[Rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulamayı düşünün
-
- 
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulamayı düşünün

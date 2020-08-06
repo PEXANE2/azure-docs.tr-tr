@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d667ff3949fcf58affc72b5d75a40abd8ca0dcb6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292255"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830317"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux sanal makinesi yükleme ve oluşturma
 
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Hedef depolama hesabı, sanal diskinizi karşıya yüklediğiniz konum ile aynı olmalıdır. Ayrıca, sanal ağ, genel IP adresi, Kullanıcı adı ve SSH anahtarları gibi **az VM Create** komutu için gereken tüm ek parametreleri de belirtmeniz veya yanıt vermenizi da gerekir. [Kullanılabilir klasık clı Kaynak Yöneticisi parametreleri](../azure-cli-arm-commands.md#virtual-machines)hakkında daha fazla bilgi edinebilirsiniz.
+Hedef depolama hesabı, sanal diskinizi karşıya yüklediğiniz konum ile aynı olmalıdır. Ayrıca, sanal ağ, genel IP adresi, Kullanıcı adı ve SSH anahtarları gibi **az VM Create** komutu için gereken tüm ek parametreleri de belirtmeniz veya yanıt vermenizi da gerekir. [Kullanılabilir klasık clı Kaynak Yöneticisi parametreleri](/previous-versions/azure/virtual-machines/azure-cli-arm-commands#virtual-machines)hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="requirements"></a>Gereksinimler
 Aşağıdaki adımları tamamlayabilmeniz için şunlar gerekir:

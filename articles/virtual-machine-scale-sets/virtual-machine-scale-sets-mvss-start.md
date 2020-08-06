@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503056"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831507"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Sanal Makine Ölçek Kümesi şablonları hakkında bilgi edinin
 [Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md#template-deployment-process), ilgili kaynak gruplarını dağıtmanın harika bir yoludur. Bu öğretici serisinde, temel bir ölçek kümesi şablonunun nasıl oluşturulduğu ve bu şablonun çeşitli senaryolara uyacak şekilde nasıl değiştirileceği gösterilmektedir. Tüm örnekler bu [GitHub deposundan](https://github.com/gatneil/mvss)gelir.
@@ -115,7 +115,7 @@ Bu durumda, listede bir önceki örnekteki sanal ağ olmak üzere yalnızca bir 
 ## <a name="specify-scale-set-properties"></a>Ölçek kümesi özelliklerini belirtin
 Ölçek kümelerinin ölçek kümesindeki VM 'Leri özelleştirmek için birçok özelliği vardır. Bu özelliklerin tam listesi için [şablon başvurusuna](/azure/templates/microsoft.compute/virtualmachinescalesets)bakın. Bu öğretici için, yalnızca birkaç yaygın kullanılan özellik ayarlanır.
 ### <a name="supply-vm-size-and-capacity"></a>VM boyut ve kapasitesini belirtin
-Ölçek kümesinin oluşturulacak sanal makine boyutunu ("SKU adı") ve kaç tane sanal makine oluşturulacağını ("SKU kapasitesi") bilmeleri gerekir. Hangi VM boyutlarının kullanılabilir olduğunu görmek için, [VM boyutları belgelerine](../virtual-machines/windows/sizes.md)bakın.
+Ölçek kümesinin oluşturulacak sanal makine boyutunu ("SKU adı") ve kaç tane sanal makine oluşturulacağını ("SKU kapasitesi") bilmeleri gerekir. Hangi VM boyutlarının kullanılabilir olduğunu görmek için, [VM boyutları belgelerine](../virtual-machines/sizes.md)bakın.
 
 ```json
        "sku": {

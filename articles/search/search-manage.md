@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421901"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835961"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 
@@ -56,7 +56,7 @@ Uç noktaya erişim için, hizmet URL 'sine erişimi olan herkesin ve bir API an
 * Hizmete salt okuma erişimi, genellikle URL ve sorgu API anahtarı vererek bir istemci uygulamasına verilen sorgu haklardır.
 * Okuma-yazma erişimi, API anahtarları, dizinler, Dizin oluşturucular, veri kaynakları ve zamanlamalar dahil sunucu nesnelerini ekleme, silme veya değiştirme olanağı sağlar. URL, yönetici API anahtarı vererek okuma-yazma erişimi verilir.
 
-Rol atamaları aracılığıyla hizmet sağlama apparas haklarına yönelik haklar verilir. [Rol tabanlı erişim (RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarının sağlanması için [Azure Resource Manager](../azure-resource-manager/management/overview.md) oluşturulan bir yetkilendirme sistemidir. 
+Rol atamaları aracılığıyla hizmet sağlama apparas haklarına yönelik haklar verilir. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarının sağlanması için [Azure Resource Manager](../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir. 
 
 Azure Bilişsel Arama bağlamında, [Azure rol atamaları](search-security-rbac.md) , [Portal](search-manage.md), [PowerShell](search-manage-powershell.md)veya [Yönetim REST API 'lerini](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimin hangi görevleri gerçekleştirebileceğini tespit eder:
 

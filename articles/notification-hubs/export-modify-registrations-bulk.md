@@ -4,34 +4,36 @@ description: Bir Bildirim Hub 'ında çok sayıda işlem gerçekleştirmek veya 
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a7de1921732328fe4112de9b9171af3e21fe7e3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71212391"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832187"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs kayıtlarını toplu olarak içeri ve dışarı aktarma
-Bir Bildirim Hub 'ında çok sayıda kayıt oluşturmak veya değiştirmek için gerekli senaryolar vardır. Bu senaryolardan bazıları, toplu hesaplamalar sonrasında etiket güncelleştirmeleridir veya mevcut bir gönderme uygulamasını Notification Hubs kullanmak üzere geçirmektedir.
+
+Bir Bildirim Hub 'ında çok sayıda kayıt oluşturmak veya değiştirmek için gerekli senaryolar vardır. Bu senaryolardan bazıları, Batch hesaplamaları sonrasında etiket güncelleştirmeleridir veya mevcut bir gönderme uygulamasını Azure Notification Hubs kullanmak üzere geçirmektedir.
 
 Bu makalede, bir Bildirim Hub 'ında çok sayıda işlemin nasıl gerçekleştirileceği veya tüm kayıtların toplu olarak dışarı aktarılması açıklanmaktadır.
 
 ## <a name="high-level-flow"></a>Üst düzey akış
+
 Batch desteği milyonlarca kayıt içeren uzun süreli işleri destekleyecek şekilde tasarlanmıştır. Toplu destek, bu ölçeğe ulaşmak için iş ayrıntılarını ve çıktıyı depolamak üzere Azure Storage kullanır. Toplu güncelleştirme işlemleri için, kullanıcının içerik kayıt güncelleştirme işlemleri listesi olan bir blob kapsayıcısında bir dosya oluşturması gerekir. Kullanıcı başlatıldığında, bir çıkış dizinine (aynı zamanda bir blob kapsayıcısında) bir URL ile birlikte giriş blobuna bir URL sağlar. İş başladıktan sonra, Kullanıcı, işin başlangıcında belirtilen bir URL konumunu sorgulayarak durumu denetleyebilir. Belirli bir iş yalnızca belirli bir türdeki (oluşturma, güncelleştirme veya silme) işlemleri gerçekleştirebilir. Dışarı aktarma işlemleri, anormal olarak gerçekleştirilir.
 
 ## <a name="import"></a>İçeri Aktar
 
 ### <a name="set-up"></a>Kurulum
+
 Bu bölüm, aşağıdaki varlıklara sahip olduğunuzu varsayar:
 
 - Sağlanan bir Bildirim Hub 'ı.
@@ -39,7 +41,8 @@ Bu bölüm, aşağıdaki varlıklara sahip olduğunuzu varsayar:
 - [Azure depolama NuGet paketine](https://www.nuget.org/packages/windowsazure.storage/) ve [Notification Hubs NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)başvurur.
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Giriş dosyası oluşturma ve bir blob 'da depolama
-Bir giriş dosyası, satır başına bir tane olmak üzere XML 'de serileştirilmiş kayıtların bir listesini içerir. Aşağıdaki kod örneği, Azure SDK 'sını kullanarak kayıtların serileştirilme ve BLOB kapsayıcısına nasıl yükleneceği gösterilmektedir.
+
+Bir giriş dosyası, satır başına bir tane olmak üzere XML 'de serileştirilmiş kayıtların bir listesini içerir. Aşağıdaki kod örneği, Azure SDK 'yı kullanarak kayıtların serileştirilme ve BLOB kapsayıcısına nasıl yüklenecekleri gösterilmektedir:
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -62,6 +65,7 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 > Yukarıdaki kod, kayıtları bellekte seri hale getirir ve sonra akışın tamamını bir blob 'a yükler. Yalnızca birkaç megabayttan daha fazla bir dosya yüklediyseniz, bu adımları nasıl gerçekleştireceğiniz hakkında bilgi için bkz. Azure Blob Kılavuzu. Örneğin, [blok Blobları](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
 ### <a name="create-url-tokens"></a>URL belirteçleri oluştur
+
 Giriş dosyanız karşıya yüklendikten sonra, hem giriş dosyası hem de çıkış dizini için Bildirim Hub 'ına sağlanacak URL 'Leri oluşturun. Giriş ve çıkış için iki farklı blob kapsayıcı kullanabilirsiniz.
 
 ```csharp
@@ -90,6 +94,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>İşi gönderme
+
 İki giriş ve çıkış URL 'Si ile, artık toplu işi başlatabilirsiniz.
 
 ```csharp
@@ -131,6 +136,7 @@ Bu örnek, giriş ve çıkış URL 'Lerine ek olarak, `NotificationHubJob` aşa�
 Bu dosyalar, toplu işleminizden başarılı ve başarısız işlemlerin listesini içerir. Dosya biçimi `.cvs` , her satırda orijinal giriş dosyasının satır numarası ve işlemin çıkışı (genellikle oluşturulan veya güncelleştirilmiş kayıt açıklaması) ile aynıdır.
 
 ### <a name="full-sample-code"></a>Tam örnek kod
+
 Aşağıdaki örnek kod kayıtları bir Bildirim Hub 'ına aktarır.
 
 ```csharp
@@ -169,7 +175,7 @@ namespace ConsoleApplication1
                 new MpnsRegistrationDescription(@"http://dm2.notify.live.net/throttledthirdparty/01.00/12G9Ed13dLb5RbCii5fWzpFpAgAAAAADAQAAAAQUZm52OkJCMjg1QTg1QkZDMdUxREQFBlVTTkMwMQ"),
             };
 
-            //write to blob store to create an input file
+            // Write to blob store to create an input file
             var blobClient = new CloudBlobClient(STORAGE_ENDPOINT, new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials(STORAGE_ACCOUNT, STORAGE_PASSWORD));
             var container = blobClient.GetContainerReference("testjobs");
             container.CreateIfNotExists();
@@ -181,7 +187,7 @@ namespace ConsoleApplication1
             var inputFileSasUri = GetInputFileUrl(container, INPUT_FILE_NAME);
 
 
-            //Lets import this file
+            // Import this file
             NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
             var createTask = client.SubmitNotificationHubJobAsync(
                 new NotificationHubJob {
@@ -221,35 +227,35 @@ namespace ConsoleApplication1
 
         static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
         {
-            //Set the expiry time and permissions for the container.
-            //In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container.
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(4),
                 Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Read
             };
 
-            //Generate the shared access signature on the container, setting the constraints directly on the signature.
+            // Generate the shared access signature on the container, setting the constraints directly on the signature.
             string sasContainerToken = container.GetSharedAccessSignature(sasConstraints);
 
-            //Return the URI string for the container, including the SAS token.
+            // Return the URI string for the container, including the SAS token.
             return new Uri(container.Uri + sasContainerToken);
         }
 
         static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
         {
-            //Set the expiry time and permissions for the container.
-            //In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container.
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(4),
                 Permissions = SharedAccessBlobPermissions.Read
             };
 
-            //Generate the shared access signature on the container, setting the constraints directly on the signature.
+            // Generate the shared access signature on the container, setting the constraints directly on the signature.
             string sasToken = container.GetBlockBlobReference(filePath).GetSharedAccessSignature(sasConstraints);
 
-            //Return the URI string for the container, including the SAS token.
+            // Return the URI string for the container, including the SAS token.
             return new Uri(container.Uri + "/" + filePath + sasToken);
         }
 
@@ -262,22 +268,24 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Dışarı Aktarma
+
 Kayıt verme, aşağıdaki farklılıklar ile içeri aktarmaya benzer:
 
 - Yalnızca çıkış URL 'sine ihtiyacınız vardır.
 - Exportkayıtları türünde bir NotificationHubJob oluşturursunuz.
 
 ### <a name="sample-code-snippet"></a>Örnek kod parçacığı
+
 Java 'da kayıtları dışarı aktarmaya yönelik örnek kod parçacığı aşağıda verilmiştir:
 
 ```java
-// submit an export job
+// Submit an export job
 NotificationHubJob job = new NotificationHubJob();
 job.setJobType(NotificationHubJobType.ExportRegistrations);
 job.setOutputContainerUri("container uri with SAS signature");
 job = hub.submitNotificationHubJob(job);
 
-// wait until the job is done
+// Wait until the job is done
 while(true){
     Thread.sleep(1000);
     job = hub.getNotificationHubJob(job.getJobId());
@@ -288,6 +296,7 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Kayıtlar hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Kayıt yönetimi](notification-hubs-push-notification-registration-management.md)

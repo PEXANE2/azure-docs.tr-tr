@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: 2898364811616c16a0c33ea26dcaacace9c2c4ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491808"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832646"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot VM 'Ler 
 
@@ -40,6 +40,11 @@ Spot ölçek kümeleri oluştururken, çıkarma ilkesini *serbest bırakma* (var
 
 Kullanıcılar [Azure zamanlanan olaylar](../virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı kabul edebilir. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
 
+## <a name="placement-groups"></a>Yerleştirme grupları
+Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile Azure kullanılabilirlik kümesine benzer bir yapıdır. Varsayılan olarak, bir ölçek kümesi en fazla 100 VM boyutuna sahip tek bir yerleştirme grubundan oluşur. Çağrılan ölçek kümesi özelliği `singlePlacementGroup` *false*olarak ayarlandıysa, ölçek kümesi birden çok yerleştirme grubundan oluşabilir ve 0-1000 VM aralığı vardır. 
+
+> [!IMPORTANT]
+> , HPC ile InfiniBand kullanmıyorsanız, `singlePlacementGroup` bölge veya bölge genelinde daha iyi ölçekleme için birden çok yerleştirme grubunu etkinleştirmek üzere ölçek kümesi özelliğini *false* olarak ayarlamanız önemle önerilir. 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Ölçek kümelerinde spot VM 'Leri dağıtma
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. 
 
-Spot şablon dağıtımları için `"apiVersion": "2019-03-01"` veya üstünü kullanın. `priority` `evictionPolicy` `billingProfile` Şablonunuzda bölümüne ve özelliklerini ekleyin `"virtualMachineProfile":` : 
+Spot şablon dağıtımları için `"apiVersion": "2019-03-01"` veya üstünü kullanın. 
+
+`priority`, `evictionPolicy` Ve özelliklerini, `billingProfile` `"virtualMachineProfile":` şablonlarınızın bölümüne ve özelliğini bölümüne ekleyin `"singlePlacementGroup": false,` `"Microsoft.Compute/virtualMachineScaleSets"` :
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 Çıkarıldıktan sonra örneği silmek için `evictionPolicy` parametresini olarak değiştirin `Delete` .
@@ -156,11 +174,11 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Yes                               |
-| Kullandıkça Öde                | Yes                               |
+| Kurumsal Anlaşma         | Evet                               |
+| Kullandıkça Öde                | Evet                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](/partner-center/azure-plan-get-started) |
 | Yararları                     | Kullanılamaz                     |
-| Sponsorlu                    | Yes                               |
+| Sponsorlu                    | Evet                               |
 | Ücretsiz Deneme                   | Kullanılamaz                     |
 
 

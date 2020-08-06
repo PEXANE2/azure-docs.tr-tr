@@ -4,14 +4,14 @@ description: Azure Cosmos DB hesabınız için müşteri tarafından yönetilen 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092634"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836521"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -64,6 +64,8 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Azure Cosmos DB sorumlusu seçin":::
 
 1. Yeni erişim ilkesini eklemek için **Ekle** ' yi seçin.
+
+1. Tüm değişiklikleri kaydetmek için Key Vault örneğinde **Kaydet** ' i seçin.
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Azure Key Vault bir anahtar oluşturun
 

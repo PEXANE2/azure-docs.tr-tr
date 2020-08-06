@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 4e35772e81329e112aac361b6a533c559154f03f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284702"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831235"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure'da sanal makineleri yönetirken sık karşılaşılan hata iletilerini anlama
 
@@ -176,7 +176,7 @@ Bu bölümde, VM 'Leri yönetirken karşılaşabileceğiniz yaygın hata iletile
 |  OSProvisioningClientError  |  VM için belirtilen Kullanıcı adı bu Linux dağıtımı için geçersiz. Hata ayrıntıları: {0} .  |
 |  Osprovisioningınternalerror  |  Bir iç hata nedeniyle VM ' ' için işletim sistemi sağlama başarısız oldu {0} .  |
 |  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin.  |
-|  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin. Ayrıca, görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun.   <ul><li>[Windows]( ../windows/upload-image.md)için yönergeler.</li><li> [Linux](../linux/capture-image.md) için yönergeler</li></ul>  |
+|  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin. Ayrıca, görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun.   <ul><li>[Windows]( ../windows/upload-generalized-managed.md)için yönergeler.</li><li> [Linux](../linux/capture-image.md) için yönergeler</li></ul>  |
 |  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. Ancak, VM Konuk Aracısı çalışıyor olarak algılandı. Bu, Konuk işletim sisteminin bir VM görüntüsü (CreateOption = FromImage) olarak kullanılmak üzere düzgün şekilde hazırlandığını önerir. Bu sorunu çözmek için, VHD 'yi CreateOption = Attach ile birlikte kullanın veya görüntü olarak kullanmak üzere doğru şekilde hazırlayın:   <ul><li>Windows için yönergeler:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için yönergeler:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  Gerekli VM boyutu şu anda seçili konumda kullanılamıyor.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Devam eden platform güncelleştirmesi nedeniyle kaynak şu anda güncelleştirilemiyor. Lütfen daha sonra yeniden deneyin.  |

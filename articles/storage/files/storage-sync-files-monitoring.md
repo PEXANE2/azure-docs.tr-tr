@@ -4,15 +4,15 @@ description: Azure Dosya Eşitleme nasıl izlenir.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515203"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832629"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -20,7 +20,11 @@ ms.locfileid: "85515203"
 
 Bu makalede, Azure Izleyici, depolama eşitleme hizmeti ve Windows Server kullanılarak Azure Dosya Eşitleme dağıtımınızın nasıl izleneceği açıklanır.
 
-Aşağıdaki izleme seçenekleri şu anda kullanılabilir.
+Bu kılavuzda aşağıdaki senaryolar ele alınmıştır: 
+- Azure Izleyici 'de Azure Dosya Eşitleme ölçümlerini görüntüleyin.
+- Azure Izleyici 'de, kritik koşullar hakkında önceden bildirim almak için uyarılar oluşturun.
+- Azure portal kullanarak Azure Dosya Eşitleme dağıtımınızın sistem durumunu izleyin.
+- Azure Dosya Eşitleme dağıtımınızın durumunu izlemek için Windows sunucularınızda olay günlükleri ve performans sayaçlarını kullanma. 
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
@@ -48,7 +52,19 @@ Azure Dosya Eşitleme için aşağıdaki ölçümler Azure Izleyici 'de bulunabi
 
 ### <a name="alerts"></a>Uyarılar
 
-Azure Izleyici 'de uyarıları yapılandırmak için depolama eşitleme hizmeti ' ni seçin ve ardından uyarı için kullanılacak [Azure dosya eşitleme ölçümünü](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) seçin.  
+Uyarılar, izleme verilerinizde önemli koşullar bulunduğunda size bir bildirim gönderir. Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+**Azure Dosya Eşitleme için uyarı oluşturma**
+
+- **Azure Portal** **depolama eşitleme hizmetinize** gidin. 
+- Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+- **Koşul Seç** ' e tıklayın ve uyarı için aşağıdaki bilgileri sağlayın: 
+    - **Ölçüm**
+    - **Boyut adı**
+    - **Uyarı mantığı**
+- **Eylem grubunu Seç** ' e tıklayın ve var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) ekleyin.
+- Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+- Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.  
 
 Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kullanılacak uygun ölçüm listelenmektedir:
 
@@ -58,8 +74,6 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 | Dosyalar bir sunucu veya bulut uç noktasına eşitlenemiyor | Dosyalar eşitlenmiyor |
 | Kayıtlı sunucu, depolama eşitleme hizmeti ile iletişim kuramıyor | Sunucu çevrimiçi durumu |
 | Bulut katmanlama geri çağırma boyutu günde 500 gib 'yi aştı  | Bulut katmanlama geri çağırma boyutu |
-
-Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
 ## <a name="storage-sync-service"></a>Depolama Eşitleme Hizmeti
 
@@ -146,8 +160,8 @@ Azure Dosya Eşitleme için aşağıdaki performans sayaçları performans Izley
 | AFS Sync Operations\toplam eşitleme dosyası Işlemi/sn | Eşitlenen toplam dosya sayısı (karşıya yükleme ve indirme). |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
 - [Güvenlik duvarını ve proxy ayarlarını değerlendirin](storage-sync-files-firewall-and-proxy.md)
 - [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)
-- [Azure Dosya Eşitleme ile ilgili sorunları giderme](storage-sync-files-troubleshoot.md)
+- [Azure Dosya Eşitleme'de sorun giderme](storage-sync-files-troubleshoot.md)
 - [Azure dosyaları hakkında sık sorulan sorular](storage-files-faq.md)

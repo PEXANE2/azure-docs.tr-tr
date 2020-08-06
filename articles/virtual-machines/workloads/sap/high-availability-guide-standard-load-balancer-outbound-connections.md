@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082146"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836131"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -100,7 +100,7 @@ Yapılandırma şöyle görünür:
 2. **Mybackendpoolofpublicılb** arka uç havuzunu oluşturun ve VM 'leri ekleyin.  
    1. Sanal ağı seçin  
    1. VM 'Leri ve IP adreslerini seçin ve arka uç havuzuna ekleyin  
-3. [Giden kuralları oluşturun](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule). Şu anda Azure portal giden kuralların oluşturulması mümkün değildir. [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest)ile giden kurallar oluşturabilirsiniz.  
+3. [Giden kuralları oluşturun](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration). Şu anda Azure portal giden kuralların oluşturulması mümkün değildir. [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest)ile giden kurallar oluşturabilirsiniz.  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -165,7 +165,7 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünebilir: ![ Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall**özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle’yi seçin. 
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Add (Ekle) seçeneğini belirleyin. 
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 

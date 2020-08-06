@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: f25bda1a450919264c7ddba3886554381009c546
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1ae627a7ee1a7e2a704cc17cc8ec9ccc9846c109
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119608"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829314"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu
 
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucusu içindeki kullanıcıları nasıl oluşturabileceğiniz açıklanmaktadır.
 
-Azure abonelik kullanıcıları ve bunların ayrıcalıklarını oluşturma ve yönetme hakkında bilgi edinmek istiyorsanız, [Azure rol tabanlı erişim denetimi (RBAC) makalesini](../role-based-access-control/built-in-roles.md) ziyaret edebilir veya [rolleri özelleştirmeyi](../role-based-access-control/custom-roles.md)inceleyebilirsiniz.
+Azure aboneliği kullanıcılarını ve bunların ayrıcalıklarını oluşturma ve yönetme hakkında bilgi edinmek istiyorsanız, [Azure rol tabanlı erişim denetimi (Azure RBAC) makalesini](../role-based-access-control/built-in-roles.md) ziyaret edebilir veya [rolleri özelleştirmeyi](../role-based-access-control/custom-roles.md)inceleyebilirsiniz.
 
 ## <a name="the-server-admin-account"></a>Sunucu yöneticisi hesabı
 
@@ -70,7 +70,7 @@ Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kull
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örneğin:
+4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örnek:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;

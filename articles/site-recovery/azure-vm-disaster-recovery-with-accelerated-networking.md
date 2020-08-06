@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73622424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835859"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Azure sanal makine olağanüstü durum kurtarma ile hızlandırılmış ağ
 
@@ -24,7 +24,7 @@ Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV
 
 Azure Site Recovery, farklı bir Azure bölgesine yük devredilen Azure sanal makineleri için hızlandırılmış ağ avantajlarından faydalanmanızı sağlar. Bu makalede, Azure Site Recovery ile çoğaltılan Azure sanal makineleri için hızlandırılmış ağı nasıl etkinleştirebileceğinizi anlatmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunu anladığınızdan emin olun:
 -   Azure sanal makine [çoğaltma mimarisi](azure-to-azure-architecture.md)
@@ -45,7 +45,7 @@ Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem 
 
 Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/DSv3, E/ESv3, Fsv2 ve MS/MMS
 
-VM örnekleri hakkında daha fazla bilgi için bkz. [WINDOWS VM boyutları](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+VM örnekleri hakkında daha fazla bilgi için bkz. [WINDOWS VM boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="accelerated-networking-with-linux-vms"></a>Linux VM 'lerle hızlandırılmış ağ
 
@@ -66,7 +66,7 @@ Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem 
 
 Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/DSv3, E/ESv3, Fsv2 ve MS/MMS.
 
-VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Çoğaltılan VM 'Ler için hızlandırılmış ağı etkinleştirme
 

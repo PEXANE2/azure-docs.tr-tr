@@ -1,5 +1,5 @@
 ---
-title: Machine Learning modellerinde eşitliği sorunlarını değerlendirme ve azaltma (Önizleme)
+title: Makine öğrenimi modellerinde eşitliği azaltma (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Machine Learning modellerinde eşitliği hakkında bilgi edinin ve Fairlearn Python paketinin fairer modellerini oluşturmanıza nasıl yardımcı olabileceğini öğrenin.
 services: machine-learning
@@ -8,22 +8,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207299"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829382"
 ---
-# <a name="build-fairer-machine-learning-models-preview"></a>Derleme fairer makine öğrenimi modelleri (Önizleme)
+# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Makine öğrenimi modellerinde eşitliği azaltma (Önizleme)
 
-Machine Learning 'de eşitliği hakkında bilgi edinin ve [Fairlearn](https://fairlearn.github.io/) açık kaynaklı Python paketinin daha dengeli modeller oluşturmanıza nasıl yardımcı olabileceğini öğrenin. Eşitliği sorunlarını anlamak ve makine öğrenimi modellerini oluştururken eşitliği değerlendirmek için çaba harcadıysanız, dengeli olmayan sonuçlar üreten modeller oluşturabilirsiniz. 
+Machine Learning 'de eşitliği hakkında bilgi edinin ve [Fairlearn](https://fairlearn.github.io/) açık kaynaklı Python paketinin makine öğrenimi modelleriyle ilgili eşitliği sorunları azaltmanıza nasıl yardımcı olabileceğini öğrenin. Eşitliği sorunlarını anlamak ve makine öğrenimi modellerini oluştururken eşitliği değerlendirmek için çaba harcadıysanız, dengeli olmayan sonuçlar üreten modeller oluşturabilirsiniz.
 
 Fairlearn açık kaynak paketine yönelik [Kullanıcı kılavuzunun](https://fairlearn.github.io/user_guide/index.html) aşağıdaki Özeti, oluşturduğunuz AI sistemlerinin eşitliği ' i değerlendirmek için nasıl kullanılacağını açıklar.  Fairlearn açık kaynak paketi ayrıca, gözlemlediğiniz eşitliği sorunlarını azaltmaya veya azaltmanıza yardımcı olmaya yönelik seçenekler de sunabilir.  Azure Machine Learning eğitim sırasında AI sistemlerinin eşitliği değerlendirmesini etkinleştirmek için [nasıl yapılır](how-to-machine-learning-fairness-aml.md) ve [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) bakın.
 
 
-## <a name="what-is-fairness-in-machine-learning-systems"></a>Machine Learning sistemlerinde eşitliği nedir?
+## <a name="what-is-fairness-in-machine-learning-models"></a>Machine Learning modellerinde eşitliği nedir?
 
 >[!NOTE]
 > Eşitliği, bir Socio-Technical Challenge. Eşitliği 'in ve son işlem gibi birçok yönü, nicel eşitliği ölçümleri içinde yakalanmaz. Ayrıca, birçok nicel eşitliği ölçümü aynı anda karşılanamayacak. Fairlearn açık kaynaklı paketiyle amaç, insanların farklı etki ve hafifletme stratejilerini değerlendirmesini sağlamaktır. Son olarak, bu, senaryolarına uygun olan ve bu kişilerin kendi senaryosuna uygun olan yapay zeka ve makine öğrenimi modelleri oluşturan insan kullanıcılarına yönelik olarak tasarlanmıştır.
@@ -38,7 +38,6 @@ Yaygın olarak kullanılan iki tür AI:
 
 AI sistemlerindeki haksız davranışı azaltmak için, bu Harms 'yi değerlendirmeniz ve azaltmanız gerekir.
 
-
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Fairlearn ile eşitliği değerlendirmesi ve risk azaltma
 
 Fairlearn, makine öğrenimi geliştiricilerinin geliştiricilerin sistemlerini değerlendirmesini ve gözlemlenen eşitliği sorunlarını azaltmasını sağlayan açık kaynaklı bir Python paketidir.
@@ -50,7 +49,8 @@ Fairlearn açık kaynak paketinin iki bileşeni vardır:
 
 Bu bileşenler birlikte, veri bilimcilerinin ve iş liderlerinin eşitliği ve performans arasında herhangi bir denge kurmasını ve ihtiyaçlarına en uygun risk azaltma stratejisini seçmesini sağlar.
 
-## <a name="fairness-assessment"></a>Eşitliği değerlendirmesi
+## <a name="assess-fairness-in-machine-learning-models"></a>Makine öğrenimi modellerinde eşitliği değerlendirin
+
 Fairlearn açık kaynaklı pakette, eşitliği, **Grup eşitliği**olarak bilinen bir yaklaşım olsa da, hangi kişi gruplarının Harms 'nin risk altında olduğunu soran Alt oluşturmalar olarak da bilinen ilgili gruplar **gizli özellikler** veya gizli öznitelikler aracılığıyla tanımlanır. Hassas özellikler, Fairlearn açık kaynaklı paketteki bir tahmin aracı 'a vektör veya çağrılan bir matris olarak geçirilir `sensitive_features` . Bu terim, Grup eşitliği değerlendirmek için sistem tasarımcısının bu özelliklere duyarlı olması önerilir. 
 
 En küçük bir şey, bu özelliklerin özel veriler nedeniyle gizlilik etkilerini içerip içermediğini belirtir. Ancak "hassas" sözcüğü, bu özelliklerin tahminlerde kullanılması gerektiğini göstermez.
@@ -72,7 +72,7 @@ Değerlendirme aşaması sırasında, eşitliği, ayırt eşliği ölçülerine 
 
 - Seçim hızında ayırıcı: Bu ölçüm, farklı alt gruplar arasındaki seçim oranından farkı içerir. Bu, kredi onayı ücretine eşlik eden bir örnektir. Seçim oranı, her sınıftaki veri noktalarının kesiri olarak 1 (ikili sınıflandırmada) veya tahmin değerlerinin dağılımı (gerileme) anlamına gelir.
 
-## <a name="unfairness-mitigation"></a>Unfairness azaltma
+## <a name="mitigate-unfairness-in-machine-learning-models"></a>Makine öğrenimi modellerinde unfairness 'i azaltma
 
 ### <a name="parity-constraints"></a>Eşlik kısıtlamaları
 

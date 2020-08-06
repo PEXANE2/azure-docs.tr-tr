@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c47488915997f054487d8343c7c3c032135dcdb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828517"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833088"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3 topluluğu  
 
@@ -40,7 +40,7 @@ Aşağıdaki Forumlar, geçerli ürünler ve özellikler hakkında sorular sorma
 
 Şu anda, MSDN Media Services ekibin birincil topluluk Forumu ' dur.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 Ekip, ' Azure-Media-Services ' ile Stack Overflow etiketli soruları de izler.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051511"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829705"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -745,7 +745,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda herhangi bir Azure IP aralığı altında çalışabilir. Hizmetin üzerinde çalıştığı IP aralıkları kümesini birleştirmek için iş devam ediyor. Bu belge, IP aralığı listesi birleştirildikten sonra güncelleştirilir. 
+Azure AD sağlama hizmeti şu anda AzureActiveDirectory ve AzureActiveDirectoryDomainServices için IP aralıkları altında [aşağıda](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen şekilde çalışır. AzureActiveDirectory altındaki yalnızca IP aralıklarında birleştirilecek olan iş devam ediyor. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 
@@ -1187,7 +1187,7 @@ Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağı
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
 SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü düzen tanımlamaz. Mevcut sektör standartlarının kullanımını temel alır. Azure AD sağlama istemcisi galerideki uygulamalar için iki yetkilendirme yöntemini destekler. 
 
-|Yetkilendirme Yöntemi|Avantajlar|Dezavantajlar|Destek|
+|Yetkilendirme yöntemi|Avantajlar|Dezavantajlar|Destek|
 |--|--|--|--|
 |Kullanıcı adı ve parola (Azure AD tarafından önerilmez veya desteklenmez)|Kolayca uygulanır|Güvenli olmayan- [PA $ $Word önemi yoktur](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Galeri uygulamaları için büyük/küçük harf esasına göre desteklenir. Galeri olmayan uygulamalar için desteklenmez.|
 |Uzun süreli taşıyıcı belirteci|Uzun süreli belirteçler için bir kullanıcının mevcut olması gerekmez. Yöneticiler, sağlama ayarlarken kolayca kullanılabilir.|Uzun süreli belirteçlerin, e-posta gibi güvenli olmayan yöntemler kullanmadan bir yönetici ile paylaşılması zor olabilir. |Galeri ve Galeri olmayan uygulamalar için desteklenir. |

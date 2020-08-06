@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534405"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835706"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -60,13 +60,13 @@ Denetleyiciyi yeniden oluşturmak, CLı veya Visual Studio 'dan yapılabilir. Ö
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Denetleyici adı uzunluğu nedeniyle denetleyici oluşturma başarısız oldu
 
-Azure Dev Spaces denetleyicisinin adı 31 karakterden uzun olamaz. Bir AKS kümesinde dev alanlarını etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinin adı 31 karakteri aşarsa bir hata alırsınız. Örneğin:
+Azure Dev Spaces denetleyicisinin adı 31 karakterden uzun olamaz. Bir AKS kümesinde dev alanlarını etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinin adı 31 karakteri aşarsa bir hata alırsınız. Örnek:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Bu sorunu onarmak için alternatif ada sahip bir denetleyici oluşturun. Örneğin:
+Bu sorunu onarmak için alternatif ada sahip bir denetleyici oluşturun. Örnek:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -170,7 +170,7 @@ Aynı AKS kümesinde hem HELI komutları hem de dev Spaces komutlarının kullan
 
 Azure Dev Spaces, projenizdeki belirli bir _Dockerfile_ 'ı işaret etmek için yapılandırılabilir. Kapsayıcınız derlemek istediğiniz _dockerfile_ ' ı Azure dev Spaces görünürse, hangi dockerfile 'ın kullanılacağını açıkça Azure dev Spaces söylemeniz gerekebilir. 
 
-Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örneğin:
+Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örnek:
 
 ```yaml
 ...
@@ -217,7 +217,7 @@ install:
 
 Hizmet kodunuz başlatılamıyorsa bu hatayla karşılaşabilirsiniz. Nedeni genellikle kullanıcı kodudur. Daha fazla tanılama bilgisi edinmek için, hizmetinizi başlatırken daha ayrıntılı günlük kaydını etkinleştirin.
 
-Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örneğin:
+Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örnek:
 
 ```cmd
 azds up --verbose --output json
@@ -267,7 +267,7 @@ Bu hata, Azure Dev Spaces Şu anda çok aşamalı derlemeleri desteklemediğinde
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Geliştirme makinenizi bağlarken ağ trafiği AKS kümenize iletilmez
 
-[AKS kümenizi geliştirme makinenize bağlamak için Azure dev Spaces](how-to/local-process-kubernetes-vs-code.md)kullanırken, ağ trafiğinin geliştirme makineniz ve aks kümeniz arasında iletilemediği bir sorunla karşılaşabilirsiniz.
+[AKS kümenizi geliştirme makinenize bağlamak için Azure dev Spaces](https://code.visualstudio.com/docs/containers/local-process-kubernetes)kullanırken, ağ trafiğinin geliştirme makineniz ve aks kümeniz arasında iletilemediği bir sorunla karşılaşabilirsiniz.
 
 Geliştirme makinenizi AKS kümenize bağlarken, geliştirme makinenizin dosyasını değiştirerek AKS kümeniz ile geliştirme makineniz arasındaki ağ trafiğini iletir Azure Dev Spaces `hosts` . Azure Dev Spaces, `hosts` bir ana bilgisayar adı olarak değiştirdiğiniz Kubernetes hizmetinin adresiyle öğesinde bir giriş oluşturur. Bu giriş, geliştirme makineniz ve AKS kümesi arasında ağ trafiğini yönlendirmek için bağlantı noktası iletme ile kullanılır. Geliştirme makinenizdeki bir hizmet, değiştirdiğiniz Kubernetes hizmetinin bağlantı noktasıyla çakışıyorsa, Azure Dev Spaces Kubernetes hizmeti için ağ trafiğini iletemez. Örneğin, *Windows BranchCache* hizmeti genellikle *0.0.0.0:80*' e bağlanır, bu da çakışmalar tüm yerel ıp 'lerde bağlantı noktası 80 ' de çakışmaya neden olur.
 
@@ -278,7 +278,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam*'a tıklayın.
+* *Tamam* düğmesine tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
@@ -328,7 +328,7 @@ Yönetilen kimliğin ayrıntılarını listelemek için, AKS kümeniz için aşa
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Yukarıdaki komut, yönetilen kimliğin *ClientID* ve *RESOURCEID* değerini verir. Örneğin:
+Yukarıdaki komut, yönetilen kimliğin *ClientID* ve *RESOURCEID* değerini verir. Örnek:
 
 ```json
 {
@@ -369,7 +369,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: My-Label-Value* etiketli tüm iş yükleri kümenin yönetilen kimliğine erişebilir. Bu etiketi ekleyin ve herhangi bir geliştirme alanında çalışan tüm iş yüklerini yeniden dağıtın. Örneğin:
+*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: My-Label-Value* etiketli tüm iş yükleri kümenin yönetilen kimliğine erişebilir. Bu etiketi ekleyin ve herhangi bir geliştirme alanında çalışan tüm iş yüklerini yeniden dağıtın. Örnek:
 
 ```yaml
 apiVersion: apps/v1
@@ -453,7 +453,7 @@ Bu sorunu düzeltmek için:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Yetkilendirme hatası "Microsoft. DevSpaces/Register/Action"
 
-Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örneğin:
+Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örnek:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.

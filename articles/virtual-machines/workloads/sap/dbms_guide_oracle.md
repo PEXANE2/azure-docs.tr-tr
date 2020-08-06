@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051839"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832272"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -359,9 +359,9 @@ Yalnızca NTFS biçimli diskler kullanan tek örnekli Oracle desteklenir. Tüm v
 
 Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz.
 
-- [Microsoft Azure Dosya Hizmeti’ne Giriş](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure Dosya Hizmeti’ne Giriş](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Microsoft Azure Dosyaları ile kalıcı bağlantılar](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Microsoft Azure Dosyaları ile kalıcı bağlantılar](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 Azure Sayfa Blobu depolama veya yönetilen diskleri temel alan diskler kullanıyorsanız, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için önemli](dbms_guide_general.md) olan deyimler Oracle Database olan dağıtımlar için de geçerlidir.
@@ -374,10 +374,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -387,13 +387,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Yok | Kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium | Yok | Kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium | Hiçbiri | Kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium | Hiçbiri | Kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium | Yok | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -450,9 +450,9 @@ Oracle Linux UEK kernels için, [Azure Premium SSD](../../windows/premium-storag
 
 Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için, aşağıdakilere bakın: 
 
-- [Microsoft Azure Dosya Hizmeti’ne Giriş](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure Dosya Hizmeti’ne Giriş](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Microsoft Azure Dosyaları ile kalıcı bağlantılar](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Microsoft Azure Dosyaları ile kalıcı bağlantılar](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 Azure sayfa BLOB depolama veya yönetilen diskleri temel alan diskler kullanıyorsanız, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için dikkat edilmesi gereken](dbms_guide_general.md) deyimler Oracle Database olan dağıtımlar için de geçerlidir.
 
@@ -464,10 +464,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -478,13 +478,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Yok | Kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium | Hiçbiri | Kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium | Hiçbiri | Kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM

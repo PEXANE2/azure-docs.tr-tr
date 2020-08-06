@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: b649a1b3c3dc0d8dd5f7056f36714f831509b82d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 908c258dab5625cda7f2fa020257b08e68102a1d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266869"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835570"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# ve Kaynak Yöneticisi şablonu kullanarak bir Azure sanal makinesini dağıtma
 
@@ -326,4 +326,4 @@ Bu konsol uygulamasının başlangıçtan sonuna kadar tam olarak çalıştırı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure Resource Manager Genel Azure dağıtım hatalarıyla Ilgili sorunları giderme](../../azure-resource-manager/templates/common-deployment-errors.md)bölümüne bakmak olacaktır.
-* [C# kullanarak bir Azure sanal makinesini dağıtmayı](csharp.md)inceleyerek bir sanal makineyi ve destekleyici kaynaklarını dağıtmayı öğrenin.
+* [C# kullanarak bir Azure sanal makinesini dağıtmayı](../../azure-resource-manager/templates/deploy-rest.md)inceleyerek bir sanal makineyi ve destekleyici kaynaklarını dağıtmayı öğrenin.

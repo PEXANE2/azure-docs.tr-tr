@@ -3,12 +3,12 @@ title: Azure Event Grid iş ortağı konuları
 description: Üçüncü taraf Event Grid SaaS ve PaaS iş ortaklarından olayları, Azure Event Grid Azure hizmetlerine doğrudan gönderin.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e56055c55a3b30c5d13736b9838257f3c0bbec10
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116004"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831915"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Azure Event Grid iş ortağı konuları (Önizleme)
 İş ortağı konularını kullanarak, üçüncü taraf olay kaynaklarını doğrudan Azure Event Grid bağlayabilirsiniz. Bu tümleştirme, Azure hizmetlerinden olaylara abone olduğunuz şekilde iş ortaklarından olaylara abone olmanızı sağlar. 
@@ -22,7 +22,7 @@ Event Grid iş ortağı konuları aracılığıyla kullanılabilen ilk iş orta�
 İş ortağı konuları, sistem konuları ile aynı işlem fiyatı üzerinden ücretlendirilir.
 
 ## <a name="limits"></a>Sınırlar
-İş ortağı konuları genel önizlemededir. Genel Önizleme sırasında, iş ortağı konuları sistem konuları ve özel konular ile [aynı sınırlara](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits) tabidir.
+İş ortağı konuları genel önizlemededir. Genel Önizleme sırasında, iş ortağı konuları sistem konuları ve özel konular ile [aynı sınırlara](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits) tabidir.
 
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Nasıl yaparım? Event Grid iş ortağı olacak mı?
 Bu başlatmayı desteklemek için oluşturulan altyapı, yeni iş ortaklarının olay yeteneklerini Event Grid ile tümleştirmelerini kolaylaştırır ve hızlı hale getirir. Daha fazla bilgi için bkz. [iş ortağı ekleme belgeleri](partner-onboarding-overview.md).

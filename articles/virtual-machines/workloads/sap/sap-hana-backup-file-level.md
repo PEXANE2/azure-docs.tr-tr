@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035749"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833394"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Dosya düzeyinde Azure Backup SAP HANA
 
@@ -25,7 +25,7 @@ ms.locfileid: "87035749"
 
 Bu makale, [Azure sanal makineler 'de SAP HANA Için Yedekleme kılavuzuna](./sap-hana-backup-guide.md)yönelik bir genel bakış ve bu konuda, Azure Backup hizmeti ve depolama anlık görüntüleri hakkında daha fazla bilgi ve Başlarken hakkında daha fazla ayrıntı sunan bir makaledir. 
 
-Azure 'daki farklı VM türleri, farklı sayıda VHD 'nin eklenmiş olduğunu sağlar. Ayrıntılar, [Azure 'Da Linux sanal makineleri Için boyutlar](../../linux/sizes.md)bölümünde belgelenmiştir. Bu belgelerde başvurulan testler için, 64 bağlı veri diskine izin veren bir GS5 Azure VM 'si kullandık. Daha büyük SAP HANA sistemler için, veri ve günlük dosyaları için çok sayıda disk zaten alınmış olabilir ve muhtemelen en iyi disk GÇ işleme için yazılım şeridi oluşturma ile birlikte. Azure VM 'lerinde SAP HANA dağıtımlar için önerilen disk yapılandırmalarına ilişkin daha fazla bilgi için [Azure sanal makine depolama yapılandırması SAP HANA](./hana-vm-operations-storage.md)makalesini okuyun. Yapılan öneriler, yerel yedeklemeler için de disk alanı önerilerini de dahil.
+Azure 'daki farklı VM türleri, farklı sayıda VHD 'nin eklenmiş olduğunu sağlar. Ayrıntılar, [Azure 'Da Linux sanal makineleri Için boyutlar](../../sizes.md)bölümünde belgelenmiştir. Bu belgelerde başvurulan testler için, 64 bağlı veri diskine izin veren bir GS5 Azure VM 'si kullandık. Daha büyük SAP HANA sistemler için, veri ve günlük dosyaları için çok sayıda disk zaten alınmış olabilir ve muhtemelen en iyi disk GÇ işleme için yazılım şeridi oluşturma ile birlikte. Azure VM 'lerinde SAP HANA dağıtımlar için önerilen disk yapılandırmalarına ilişkin daha fazla bilgi için [Azure sanal makine depolama yapılandırması SAP HANA](./hana-vm-operations-storage.md)makalesini okuyun. Yapılan öneriler, yerel yedeklemeler için de disk alanı önerilerini de dahil.
 
 Yedekleme/geri yükleme 'yi dosya düzeyinde yönetmenin standart yolu, SAP HANA Studio aracılığıyla veya SAP HANA SQL deyimleriyle dosya tabanlı bir yedekleme kullanmaktır. Daha fazla bilgi için [SQL ve sistem görünümleri başvurusu SAP HANA](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf)makalesini okuyun.
 

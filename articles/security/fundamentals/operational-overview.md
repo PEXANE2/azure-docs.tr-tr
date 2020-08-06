@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 50fb9c597a74a7aa08dfc3d8b7acd9b94760a9df
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542900"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835927"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -87,7 +87,7 @@ Sanal makinenizin güvenlik ayarlarını ve tehditleri izlemeye yönelik görün
 - Disk şifreleme doğrulaması.
 - Ağ tabanlı saldırılar.
 
-Güvenlik Merkezi, [rol tabanlı Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal)kullanır. RBAC, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilecek [yerleşik roller](../../role-based-access-control/built-in-roles.md) sağlar.
+Güvenlik Merkezi, [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/role-assignments-portal)kullanır. RBAC, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilecek [yerleşik roller](../../role-based-access-control/built-in-roles.md) sağlar.
 
 Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını belirlemek için kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi 'nde, bir kaynakla ilgili bilgileri, yalnızca bir kaynağın ait olduğu abonelik veya kaynak grubu için sahip, katkıda bulunan veya okuyucu rolüne atadığınız zaman görürsünüz.
 

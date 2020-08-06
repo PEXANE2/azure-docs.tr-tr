@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086617"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833904"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -128,7 +128,7 @@ Bu Önkoşullar, mantıksal uygulamalarınız Premium düzeyinde (Geliştirici d
 
 * Varsayılan olarak, SAP yükleyicisi derleme dosyalarını varsayılan yükleme klasörüne koyar. Senaryonuza bağlı olarak, bu derleme dosyalarını aşağıdaki gibi başka bir konuma kopyalamanız gerekir:
 
-  Bir ıSE içinde çalışan Logic Apps için [Integration Service ortamı önkoşulları](#sap-ise)bölümünde açıklanan adımları izleyin. Çok kiracılı Azure 'da çalışan ve şirket içi veri ağ geçidini kullanan Logic Apps için, derleme dosyalarını varsayılan yükleme klasöründen veri ağ geçidi yükleme klasörüne kopyalayın. Data Gateway ile ilgili sorunlar yaşıyorsanız, aşağıdaki sorunları gözden geçirin:
+  * Bir ıSE içinde çalışan Logic Apps için [Integration Service ortamı önkoşulları](#sap-ise)bölümünde açıklanan adımları izleyin. Çok kiracılı Azure 'da çalışan ve şirket içi veri ağ geçidini kullanan Logic Apps için, derleme dosyalarını varsayılan yükleme klasöründen veri ağ geçidi yükleme klasörüne kopyalayın. Data Gateway ile ilgili sorunlar yaşıyorsanız, aşağıdaki sorunları gözden geçirin:
 
   * Data Gateway yalnızca 64 bit sistemlerde çalıştığından SAP istemci kitaplığı için 64-bit sürümünü yüklemelisiniz. Aksi takdirde, veri ağ geçidi ana bilgisayar hizmeti 32 bitlik derlemeleri desteklemediğinden "kötü görüntü" hatası alırsınız.
 
@@ -532,7 +532,7 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
 
 1. Yaptığınız değişiklikleri kaydedin.
 
-1. Bağlantınızı test etmek için **bağlantı testi** ' ni seçin.
+1. Bağlantınızı test etmek için **bağlantı testi**' ni seçin.
 
 #### <a name="create-receiver-port"></a>Alıcı bağlantı noktası oluştur
 
@@ -626,7 +626,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
 1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-from-sap)için bu konudaki önceki adımları izleyin.
 
-   Örneğin:
+   Örnek:
 
    ![Logic App 'e SAP tetikleyicisi ekleme](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -727,7 +727,10 @@ Aşağıdaki örnek, anonim bir alana sahip bir tablo parametresi olan bir RFC �
 
 ```
 
-Aşağıdaki örnek ad alanları için önekleri içerir. Tüm ön ekleri aynı anda bildirebilir veya bir düğümün özniteliği olarak herhangi bir miktarda önek bildirebilirsiniz. RFC ad alanı diğer adı, `ns0` temel tür için kök ve parametreler olarak kullanılır. Karmaşık türlerin, `ns3` diğer ad ile normal RFC ad alanı yerine diğer ada sahıp RFC türleri için farklı bir ad alanı altında bildirildiği unutulmamalıdır `ns0` .
+Aşağıdaki örnek ad alanları için önekleri içerir. Tüm ön ekleri aynı anda bildirebilir veya bir düğümün özniteliği olarak herhangi bir sayıda önek bildirebilirsiniz. RFC ad alanı diğer adı, `ns0` temel tür için kök ve parametreler olarak kullanılır.
+
+> [!NOTE]
+> karmaşık türler, `ns3` diğer ad ile normal RFC ad alanı yerine diğer ada sahıp RFC türleri için farklı bir ad alanı altında bildirilmiştir `ns0` .
 
 ```xml
 
@@ -883,7 +886,7 @@ Aşağıdaki örnek, düz kesimlere sahip bir örnek veri kaydıdır. Bu örnek,
 
 ```
 
-Aşağıdaki örnek, gruplandırılmış kesimlere sahip bir veri kaydıdır. Buna, ve dahil olmak üzere bir grup üst düğümü, ve `E2EDKT1002GRP` birden çok alt düğüm dahildir `E2EDKT1002` `E2EDKT2001` . 
+Aşağıdaki örnek, gruplandırılmış kesimlere sahip bir veri kaydıdır. Kayıt, ve dahil olmak üzere bir grup üst düğümü, ve `E2EDKT1002GRP` birden çok alt düğüm içerir `E2EDKT1002` `E2EDKT2001` . 
 
 ```xml
 
@@ -900,7 +903,7 @@ Aşağıdaki örnek, gruplandırılmış kesimlere sahip bir veri kaydıdır. Bu
 
 ```
 
-Önerilen yöntem, tRFC ile kullanmak için bir IDoc tanımlayıcı oluşturmaktır. Bu işlem tanımlayıcısını, `tid` SAP Bağlayıcısı API 'Sindeki [IDoc Send işlemini](https://docs.microsoft.com/connectors/sap/#send-idoc) kullanarak ayarlayabilirsiniz.
+Önerilen yöntem, tRFC ile kullanmak için bir IDoc tanımlayıcı oluşturmaktır. Bu işlem tanımlayıcısını, `tid` SAP Bağlayıcısı API 'Sindeki [IDoc Send işlemini](/connectors/sap/#send-idoc) kullanarak ayarlayabilirsiniz.
 
 Aşağıdaki örnek, veya işlem tanımlayıcısı ayarlamak için alternatif bir yöntemdir `tid` . Bu örnekte, son veri kayıt kesimi düğümü ve IDoc veri düğümü kapalıdır. Ardından, GUID, `guid` yinelemeleri algılamak Için tRFC tanımlayıcısı olarak kullanılır. 
 

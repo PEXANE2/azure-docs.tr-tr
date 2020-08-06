@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247040"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836403"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -254,7 +254,9 @@ Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güven
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?
 
-Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Kayıt defterinizde herhangi bir [kapsam eşlemeniz (Kullanıcı) veya belirteç kaynağınız](https://aka.ms/acr/repo-permissions) varsa, lütfen bir destek bileti oluşturmadan önce bunları silin (sistem kapsamı eşlemeleri yoksayılabilir). Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>Tanılama ve durum denetimleri
@@ -427,7 +429,7 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik duvarı
+* Güvenlik Duvarı
 * Ad engelleyiciler
 * DNS hataları
 
@@ -501,8 +503,8 @@ Bu ayar komut için de geçerlidir `az acr run` .
 
 | Git hizmeti | Kaynak bağlamı | El ile derleme | Tamamlama tetikleyicisi aracılığıyla otomatik derleme |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Evet |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Evet | Evet |
 | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Hayır |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Evet | Hayır |
 

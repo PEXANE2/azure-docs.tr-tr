@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532501"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835740"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -42,7 +42,7 @@ Kurtarma Hizmetleri kasaları aşağıdaki özelliklere sahiptir:
 - Kasaları, yedekleme verilerinizi düzenlemenizi kolaylaştırır, yönetim yükünü en aza indirir.
 - Her bir Azure aboneliğinde en fazla 500 kasa oluşturabilirsiniz.
 - Azure VM 'Leri ve şirket içi makineler dahil olmak üzere bir kasadaki yedeklenen öğeleri izleyebilirsiniz.
-- Azure [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/role-assignments-portal.md)ile kasa erişimini yönetebilirsiniz.
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)ile kasa erişimini yönetebilirsiniz.
 - Kasadaki verilerin artıklık için nasıl çoğaltılacağı belirtirsiniz:
   - **Yerel olarak yedekli depolama (LRS)**: bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md).
   - **Coğrafi olarak yedekli depolama (GRS)**: bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md).
@@ -94,10 +94,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
-Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
+Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
+Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)

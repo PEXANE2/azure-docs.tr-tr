@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870292"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835502"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Azure 'da Amazon Web Services (AWS) ve diğer platformlardan yönetilen disklere geçirme
 
@@ -55,7 +55,7 @@ Azure yönetilen disklerinin kullanılabildiği bir konum seçin. Premium yönet
 
 ### <a name="vm-sizes"></a>VM boyutları
 
-Premium yönetilen disklere geçiş yapıyorsanız, VM 'nin boyutunu VM 'nin bulunduğu bölgede kullanılabilir olan Premium depolama özellikli boyuta güncelleştirmeniz gerekir. Premium depolama özellikli VM boyutlarını gözden geçirin. Azure VM boyutu belirtimleri, [sanal makineler Için boyutlar](sizes.md)bölümünde listelenmiştir.
+Premium yönetilen disklere geçiş yapıyorsanız, VM 'nin boyutunu VM 'nin bulunduğu bölgede kullanılabilir olan Premium depolama özellikli boyuta güncelleştirmeniz gerekir. Premium depolama özellikli VM boyutlarını gözden geçirin. Azure VM boyutu belirtimleri, [sanal makineler Için boyutlar](../sizes.md)bölümünde listelenmiştir.
 Premium depolamayla çalışan sanal makinelerin performans özelliklerini gözden geçirin ve iş yükünüze en uygun VM boyutunu seçin. Disk trafiğini yönlendirmek için sanal makinenizde yeterli kullanılabilir bant genişliği olduğundan emin olun.
 
 ### <a name="disk-sizes"></a>Disk boyutları

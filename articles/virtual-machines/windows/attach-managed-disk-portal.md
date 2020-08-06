@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e8fd330fdb6e0c7d857ea99f6d51b05436c17d1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657173"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836233"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal kullanarak bir Windows VM 'sine yönetilen veri diski iliştirme
 
-Bu makalede, Azure portal kullanarak yeni bir yönetilen veri diskini bir Windows sanal makinesine (VM) nasıl ekleyebileceğiniz gösterilmektedir. Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını belirler. Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](sizes.md).
+Bu makalede, Azure portal kullanarak yeni bir yönetilen veri diskini bir Windows sanal makinesine (VM) nasıl ekleyebileceğiniz gösterilmektedir. Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını belirler. Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](../sizes.md).
 
 
 ## <a name="add-a-data-disk"></a>Veri diski ekleme

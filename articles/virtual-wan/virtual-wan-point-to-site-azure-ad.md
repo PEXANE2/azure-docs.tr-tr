@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077487"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832527"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Kullanıcı VPN için Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -23,14 +23,14 @@ Bu tür bir bağlantı, istemci bilgisayarda bir istemcinin yapılandırılmış
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * WAN oluşturma
-> * Hub oluşturma
-> * P2S yapılandırması oluşturma
-> * VPN istemci profilini indir
-> * P2S yapılandırmasını bir hub'a uygulama
-> * Bir sanal ağı bir hub'a bağlama
-> * VPN istemci yapılandırmasını indirme ve uygulama
-> * Sanal WAN'ınızı görüntüleme
+> * Sanal WAN oluşturma
+> * Sanal hub oluşturma
+> * Kullanıcı VPN yapılandırması oluşturma
+> * Sanal WAN Kullanıcı VPN profilini indir
+> * Kullanıcı VPN yapılandırmasını bir sanal hub 'a Uygula
+> * VNet 'i sanal hub 'a bağlama
+> * Kullanıcı VPN istemci yapılandırmasını indirme ve uygulama
+> * Sanal WAN 'nizi görüntüleme
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -81,9 +81,9 @@ Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure he
 3. **Gözden geçir ve oluştur**’a tıklayın.
 4. **Doğrulama başarılı** sayfasında **Oluştur**' a tıklayın.
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Yeni bir P2S yapılandırması oluşturma
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>Yeni bir kullanıcı VPN yapılandırması oluştur
 
-P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri tanımlar.
+Bir kullanıcı VPN yapılandırması, uzak istemcileri bağlamaya yönelik parametreleri tanımlar.
 
 1. Sanal WAN ' ın altında, **Kullanıcı VPN yapılandırması**' nı seçin.
 
@@ -93,7 +93,16 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 
    ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. Bilgileri girin ve **Oluştur** ' a tıklayın.
+3. Bilgileri girin ve **Oluştur**' a tıklayın.
+
+   * **Yapılandırma adı** -Kullanıcı VPN yapılandırmanızı çağırmak istediğiniz adı girin.
+   * **Tünel türü** -OpenVPN öğesini seçin.
+   * **Kimlik doğrulama yöntemi** -Azure Active Directory seçin.
+   * **Hedef kitle** -Azure AD kiracınızda KAYıTLı [Azure VPN](openvpn-azure-ad-tenant.md) kurumsal uygulamasının uygulama kimliğini yazın. 
+   * **Enden** - `https://sts.windows.net/<your Directory ID>/`
+   * **AAD kiracısı** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,7 +120,7 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 6. **Onayla**'ya tıklayın.
 7. İşlemin tamamlanması 30 dakika kadar sürebilir.
 
-## <a name="download-vpn-profile"></a><a name="device"></a>VPN profili indirme
+## <a name="download-user-vpn-profile"></a><a name="device"></a>Kullanıcı VPN profilini indir
 
 İstemcilerinizi yapılandırmak için VPN profilini kullanın.
 
@@ -188,13 +197,12 @@ Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://www.microsoft.co
 2. Genel bakış sayfasında haritadaki her bir nokta bir hub'ı temsil eder.
 3. Hub'lar ve bağlantılar bölümünde herhangi bir hub'ın durumunu, sitesini, bölgesini, VPN bağlantısı durumunu ve gelen/giden baytları görüntüleyebilirsiniz.
 
-
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
 
-Bu kaynaklar artık gerekli değilse, [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. "myResourceGroup" yerine kaynak grubunuzun adını yazın ve aşağıdaki PowerShell komutunu çalıştırın:
+Bu kaynaklara artık ihtiyacınız kalmadığında, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. "myResourceGroup" yerine kaynak grubunuzun adını yazın ve aşağıdaki PowerShell komutunu çalıştırın:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

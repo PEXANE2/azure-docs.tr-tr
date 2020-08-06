@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292896"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836029"
 ---
 # <a name="playback-with-azure-media-player"></a>Azure Media Player ile kayıttan yürütme
 
@@ -47,7 +47,7 @@ Video akışının tanılamalarını izlemek için [Azure Media Player Demo sayf
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>HTML 'inizdeki Azure Media Player ayarlama
 
-Azure Media Player kolayca ayarlanabilir. Media Services hesabınızdan medya içeriğinin temel oynatımını almak yalnızca birkaç dakika sürer. Azure Media Player ayarlama ve yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure Media Player belgeleri](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) .
+Azure Media Player kolayca ayarlanabilir. Media Services hesabınızdan medya içeriğinin temel oynatımını almak yalnızca birkaç dakika sürer. Azure Media Player ayarlama ve yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure Media Player belgeleri](../azure-media-player/azure-media-player-overview.md) .
 
 ## <a name="additional-notes"></a>Ek notlar
 
@@ -55,5 +55,5 @@ Azure Media Player kolayca ayarlanabilir. Media Services hesabınızdan medya i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Media Player belgeleri](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure Media Player belgeleri](../azure-media-player/azure-media-player-overview.md)
 * [Azure Media Player örnekleri](https://github.com/Azure-Samples/azure-media-player-samples)

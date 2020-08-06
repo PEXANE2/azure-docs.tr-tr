@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 74d8c4dc9f6b8f1a409f5f6766bea57b23b15ba7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284804"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836267"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
@@ -59,7 +59,7 @@ Yazma Hızlandırıcısı: [destekleniyor](./windows/how-to-enable-write-acceler
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

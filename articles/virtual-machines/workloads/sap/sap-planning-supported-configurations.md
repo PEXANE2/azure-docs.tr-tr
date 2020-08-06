@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079817"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833343"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
 Azure 'da SAP NetWeaver, Business One `Hybris` veya S/4HANA sistemleri mimarisi tasarlamak, ölçeklenebilir, verimli ve yüksek oranda kullanılabilir bir dağıtıma ulaşmak için kullanabileceğiniz çeşitli mimariler ve araçlar için çok sayıda farklı fırsat açar. Kullanılan işletim sistemine veya DBMS 'ye bağımlı olsa da kısıtlamalar vardır. Ayrıca, şirket içinde desteklenen tüm senaryolar Azure 'da aynı şekilde desteklenmez. Bu belge, Azure VM 'Leri kullanan desteklenen yüksek kullanılabilirliğe sahip olmayan yapılandırmaların ve yüksek kullanılabilirliğe sahip yapılandırmaların ve mimarilerin oluşmasına yol açacaktır. [Hana büyük örneklerle](./hana-overview-architecture.md)desteklenen senaryolar IÇIN, [Hana büyük örnekler için desteklenen senaryolar](./hana-supported-scenario.md)makalesine bakın. 
@@ -246,7 +246,7 @@ VM 'nin tam iş yükü trafiğine karşılaşmadığından, olağanüstü durum 
 - VM aileleri arasında yeniden boyutlandırma, farklı VM 'Ler tek bir Azure kullanılabilirlik kümesinde toplandığında veya M serisi ailesi ile Mv2 ailesi sanal makineleri arasında yeniden boyutlandırma gerçekleşiyorsa bir sorun olabilir
 - Veritabanı örneği için CPU ve bellek tüketimi, bu değişiklikleri verilere en az gecikmeyle uygulamak üzere en az gecikmeyle ve yeterli CPU ve bellek kaynağına sahip değişiklikler akışını alabiliyor  
 
-Farklı VM boyutlarının sınırlamaları hakkında daha fazla ayrıntı için [burada](../../linux/sizes.md) bulunabilir 
+Farklı VM boyutlarının sınırlamaları hakkında daha fazla ayrıntı için [burada](../../sizes.md) bulunabilir 
 
 Bir DR hedefini dağıtmaya yönelik başka bir desteklenen yöntem, bir üretim dışı SAP örneğinin üretim dışı bir DBMS örneğini çalıştıran bir VM 'de yüklü ikinci bir DBMS örneğidir. Bu, DR senaryosunda ana örnek olarak çalışması gereken belirli hedef örnekler için bellek, CPU kaynakları, ağ bant genişliği ve depolama bant genişliği hakkında bilgi almanız gerektiğinden bu biraz daha zor olabilir. Özellikle de HANA 'da, verilerin DR hedefi örneğine önceden yüklenmemiş olması için paylaşılan bir konakta DR hedefi olarak işlev gören örneği yapılandırmanız önemle önerilir.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1771b0b55301fe4beaf2049859ebf3b9642fdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077342"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831065"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
 
@@ -336,7 +336,7 @@ Genel açıklamaya uygun olarak, SQL Server yürütülebilir dosyaları, VM 'nin
 
 
 * Tüm SAP sertifikalı VM türleriyle (bkz. SAP Note [1928533]), A serisi VM 'ler, tempdb verileri ve günlük dosyaları, kalıcı olmayan d:\ üzerine yerleştirilebilecek sürücü. 
-* Bununla birlikte, birden çok tempdb veri dosyası kullanılması önerilir. Farkında olun D:\ sürücü birimleri VM türüne göre farklılık açmış. D:\ için tam boyutlar için farklı VM 'lerden oluşan sürücü, [Azure 'Da Windows sanal makinelerinin makale boyutlarını](../../windows/sizes.md)kontrol edin.
+* Bununla birlikte, birden çok tempdb veri dosyası kullanılması önerilir. Farkında olun D:\ sürücü birimleri VM türüne göre farklılık açmış. D:\ için tam boyutlar için farklı VM 'lerden oluşan sürücü, [Azure 'Da Windows sanal makinelerinin makale boyutlarını](../../sizes.md)kontrol edin.
 
 Bu yapılandırma tempdb 'nin sistem sürücüsünün sağlayabileceğinden daha fazla alan kullanmasını sağlar. Kalıcı olmayan D:\ sürücü Ayrıca daha iyi g/ç gecikme süresi ve aktarım hızı (A serisi VM 'Ler hariç) sağlar. Uygun tempdb boyutunu belirleyebilmek için, mevcut sistemlerdeki tempdb boyutlarını kontrol edebilirsiniz. 
 
@@ -379,7 +379,7 @@ SQL Server 2014 ve üzeri sürümler, veritabanı dosyalarını, çevresindeki b
 
 * Kullanılan depolama hesabının, SQL Server VM 'yi dağıtmak için kullanılan aynı Azure bölgesinde olması gerekir.
 * VHD 'lerin farklı Azure depolama hesapları üzerinden dağıtılması hakkında daha önce listelenen konular bu dağıtım yöntemi için de geçerlidir. G/ç işlemlerinin, Azure depolama hesabı sınırlarına göre sayısı anlamına gelir.
-* VM 'nin depolama g/ç kotasına karşı, SQL Server veri ve günlük dosyalarını temsil eden depolama bloblarına karşı trafik, sanal makinenin belirli VM türünün ağ bant genişliğine göre hesaba katılmaz. Belirli bir sanal makine türünün ağ ve depolama bant genişliği için, [Azure 'Da Windows sanal makinelerinin makale boyutlarına](../../windows/sizes.md)başvurun.
+* VM 'nin depolama g/ç kotasına karşı, SQL Server veri ve günlük dosyalarını temsil eden depolama bloblarına karşı trafik, sanal makinenin belirli VM türünün ağ bant genişliğine göre hesaba katılmaz. Belirli bir sanal makine türünün ağ ve depolama bant genişliği için, [Azure 'Da Windows sanal makinelerinin makale boyutlarına](../../sizes.md)başvurun.
 * Dosya g/ç 'yi ağ kotasından dağıtmaya bir sonuç olarak, depolama kotasını büyük ölçüde ve ile yalnızca kısmen VM 'nin Genel bant genişliğini kullanacak şekilde kullanırsınız.
 * IOP ve g/ç verimlilik performansı, Azure Premium Depolama 'nın farklı disk boyutları için sahip olduğu hedeflerse artık uygulanmaz. Oluşturduğunuz Bloblar Azure Premium depolamada bulunuyor olsa da. Hedefler, [yüksek performanslı Premium Depolama ve VM 'ler için yönetilen diskler](../../windows/disks-types.md#premium-ssd)makalesine belgelenmiştir. SQL Server veri dosyalarını ve günlük dosyalarını doğrudan Azure Premium depolamada depolanan bloblara yerleştirmekten kaynaklanan performans özellikleri, Azure Premium depolamada bulunan VHD 'lere kıyasla farklı olabilir.
 * Azure Premium depolama diskleri için kullanılabilir olarak ana bilgisayar tabanlı önbelleğe alma, SQL Server veri dosyalarını doğrudan Azure bloblarına yerleştirirken kullanılamaz.
