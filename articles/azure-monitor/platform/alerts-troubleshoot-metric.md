@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327489"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824571"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -110,7 +110,7 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 
 Ölçüm uyarısı kuralı oluştururken, ölçüm adı [Ölçüm tanımları API 'sine](/rest/api/monitor/metricdefinitions/list) göre doğrulandıktan ve var olduğundan emin olur. Bazı durumlarda, özel bir ölçümde, yayılmadan önce bile bir uyarı kuralı oluşturmak istersiniz. Örneğin, (ARM şablonu kullanarak), bu ölçümü izleyen bir uyarı kuralıyla birlikte özel bir ölçümü yayan bir Application Insights kaynağı oluşturur.
 
-Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. ARM şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın (ölçüm uyarı kuralları oluşturmak için tüm ARM şablonu örnekleri için, [buraya]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)bakın).
+Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. ARM şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın (ölçüm uyarı kuralları oluşturmak için tüm ARM şablonu örnekleri için, [buraya]( ./alerts-metric-create-templates.md)bakın).
 
 ```json
 "criteria": {
@@ -247,4 +247,3 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Uyarılar ve bildirimler hakkında genel sorun giderme bilgileri için bkz. [Azure izleyici uyarılarında sorun giderme sorunları](alerts-troubleshoot.md).
-

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514383"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827903"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure DataBox ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
 Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:
@@ -88,6 +88,13 @@ Artık, maliyetleri kaydetmek için hazırlama paylaşımının temizleyebilmeni
 
 > [!IMPORTANT]
 > Çevrimdışı veri aktarım modunu devre dışı bıraktıktan sonra, toplu geçişten hazırlama payı hala kullanılabilir olsa bile, yeniden etkinleştirilemez.
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>Bulutta Azure Dosya Eşitleme ve önceden oluşturulmuş dosyalar
+
+Azure dosya paylaşımında bulunan dosyaları DataBox 'dan başka yollarla (örn. AzCopy ile, bir bulut yedeklemesinden veya başka bir yöntemden) kullanarak, bu makalede açıklanan [çevrimdışı veri aktarımı işlemini](#process-for-offline-data-transfer) yine de izlemeniz gerekir. Yalnızca dosyalarınızın buluta taşına yöntemi olarak DataBox ' a göz ardı etmeniz gerekir. Ancak, son, Azure Dosya Eşitleme bağlı paylaşıma değil, dosyaları *hazırlama paylaşımında* sağlama sürecini hala takip ettiğinden emin olmak için paratakdir.
+
+> [!WARNING]
+> Dağıtım dosyalarını, Azure Dosya Eşitleme bağlı paylaşıma **değil, hazırlama paylaşımında izleyin**. Aksi takdirde, dosya çakışmaları oluşabilir (her iki dosya sürümü de depolanır) ve canlı sunucuda silinen dosyalar daha eski, sağlanan dosya kümesinde hala mevcutsa geri dönebilir. Ayrıca, klasör değişiklikleri birbiriyle birlikte birleştirilerek bir hata daha sonra ad alanını ayırmak çok zor hale gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Dosya Eşitleme dağıtımı için plan yapın](storage-sync-files-planning.md)

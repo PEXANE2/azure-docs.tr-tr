@@ -1,6 +1,6 @@
 ---
 title: Azure Depolama Analizi ölçümleri (klasik)
-description: Azure depolama 'da Depolama Analizi ölçümlerini nasıl kullanacağınızı öğrenin.
+description: Azure depolama 'da Depolama Analizi ölçümlerini nasıl kullanacağınızı öğrenin. İşlem ve kapasite ölçümleri, ölçümlerin nasıl depolandığı, ölçümlerin nasıl ETKİNLEŞTİRİ, ve daha birçok konuda bilgi edinin.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087280"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828056"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Depolama Analizi ölçümleri (klasik)
 
@@ -74,7 +74,7 @@ Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işle
 1. **Durumun** **Açık**olarak ayarlandığından emin olun.
 1. İzlemek istediğiniz hizmetler için ölçümleri seçin.
 1. Ölçüm ve günlük verilerinin ne kadar süreyle saklanacağını göstermek için bir bekletme ilkesi belirtin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 [Azure Portal](https://portal.azure.com) Şu anda depolama hesabınızda dakika ölçümlerini yapılandırmanıza izin vermez. PowerShell veya program aracılığıyla dakika ölçümlerini etkinleştirmeniz gerekir.
 

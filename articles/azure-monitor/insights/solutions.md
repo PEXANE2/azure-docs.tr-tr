@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326010"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824792"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -192,7 +192,6 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Microsoft 'un izleme çözümlerinin bir listesini](/azure/azure-monitor/monitor-reference)alın.
+* [Microsoft 'un izleme çözümlerinin bir listesini](../monitor-reference.md)alın.
 * İzleme çözümleri tarafından toplanan verileri analiz etmek için [sorgular oluşturmayı](../log-query/log-query-overview.md) öğrenin.
 * [Azure izleyici için tüm Azure CLI komutlarına](/cli/azure/azure-cli-reference-for-monitor)bakın.
-

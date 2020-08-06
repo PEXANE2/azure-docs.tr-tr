@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421068"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827631"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Boyutlar
 
@@ -31,7 +31,7 @@ Bu makalede, uygulamalarınızı ve iş yüklerinizi çalıştırmak için kulla
 - Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) veya [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)için fiyatlandırma sayfaları.
 - Azure bölgelerindeki VM boyutlarının kullanılabilirliği için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/).
 - Azure VM 'lerinde genel sınırları görmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Azure 'un VM 'lerini nasıl adlandırmasının hakkında daha fazla bilgi için bkz. [Azure sanal makine boyutları adlandırma kuralları](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+- Azure 'un VM 'lerini nasıl adlandırmasının hakkında daha fazla bilgi için bkz. [Azure sanal makine boyutları adlandırma kuralları](./vm-naming-conventions.md).
 
 ## <a name="rest-api"></a>REST API
 

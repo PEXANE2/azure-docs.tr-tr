@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: bd7619f000d16a55e1cfb31cc3b9cfb3b6d33502
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432605"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827682"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Yakınlık yerleştirme gruplarında çalışan Azure sanal makinelerini başka bir bölgeye çoğaltma
 
@@ -31,7 +31,7 @@ Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecik
 > [!NOTE]
 > Azure Site Recovery, Hyper-V ' d e Azure senaryolarına yönelik yönetilen disklerden yeniden çalışmayı desteklemez. Bu nedenle, Azure 'daki yakınlık yerleşimi grubundan Hyper-V ' d e yeniden çalışma desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure PowerShell az modüle sahip olduğunuzdan emin olun. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
 2. En az Azure PowerShell az sürüm 4.1.0 olmalıdır. Geçerli sürümü denetlemek için aşağıdaki komutu kullanın-
@@ -42,7 +42,7 @@ Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecik
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Yakınlık yerleştirme grubundaki sanal makineler için Site Recovery ayarlama
 
 > [!NOTE]
-> Hedef yakınlık yerleşimi grubunun benzersiz KIMLIĞINE sahip olduğunuzdan emin olun. Yeni bir yakınlık yerleşimi grubu oluşturuyorsanız, [burada](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) komutu kontrol edin ve var olan bir yakınlık yerleşimi grubunu kullanıyorsanız [buradaki](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)komutu kullanın.
+> Hedef yakınlık yerleşimi grubunun benzersiz KIMLIĞINE sahip olduğunuzdan emin olun. Yeni bir yakınlık yerleşimi grubu oluşturuyorsanız, [burada](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) komutu kontrol edin ve var olan bir yakınlık yerleşimi grubunu kullanıyorsanız [buradaki](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)komutu kullanın.
 
 ### <a name="azure-to-azure"></a>Azure-Azure arası
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: d4ad1c46aa023f30a2d33ef11e576aa29607b273
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827495"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -413,7 +413,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>VM 'yi yeniden boyutlandırma
 
-Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken göz önünde bulundurulmalıdır. Daha fazla bilgi için bkz. [VM boyutları](sizes.md).  
+Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken göz önünde bulundurulmalıdır. Daha fazla bilgi için bkz. [VM boyutları](../sizes.md).  
 
 Sanal makinenin boyutunu değiştirmek için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 

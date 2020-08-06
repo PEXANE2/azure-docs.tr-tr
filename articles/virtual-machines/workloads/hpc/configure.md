@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c49286f370691c39c3d14d589f2657d6e0bb3c04
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542340"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825149"
 ---
-# <a name="configure-and-optimize-vms"></a>VM 'Leri yapılandırma ve iyileştirme
+# <a name="configure-and-optimize-vms"></a>VM’leri yapılandırma ve iyileştirme
 
 Bu makalede, HPC için InfiniBand özellikli [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'leri yapılandırmak ve iyileştirmek üzere bilinen teknikler paylaşır.
 
 ## <a name="vm-images"></a>VM görüntüleri
-InfiniBand etkinleştirilmiş VM 'lerde, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Ayrıca, uygun sürücü ve yapılandırmayla [özel VM görüntüleri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) oluşturmanız ve bu yinelenen öğeyi yeniden kullanmanız önerilir.
+InfiniBand etkinleştirilmiş VM 'lerde, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Ayrıca, uygun sürücü ve yapılandırmayla [özel VM görüntüleri](../../linux/tutorial-custom-images.md) oluşturmanız ve bu yinelenen öğeyi yeniden kullanmanız önerilir.
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM görüntüleri
 SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, CENTOS-HPC sürüm 6,5 veya sonraki bir sürümü, market 'te 7,5 ' e kadar uygundur. Örneğin, [H16 serisi VM 'ler](../../h-series.md)için 7,1 sürümleri 7,5 ' ye önerilir. Bu VM görüntüleri, RDMA ve Intel MPı sürüm 5,1 için ağ doğrudan sürücüleriyle önceden yüklenmiş olarak gelir.
@@ -53,7 +53,7 @@ Aşağıda, sanal makinede iyileştirilmiş performans için bazı isteğe bağl
 
 ### <a name="update-lis"></a>LIS 'yi Güncelleştir
 
-İşlevsellik veya performans için gerekliyse, [Linux Integration Services (LIS) sürücüleri](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) desteklenen işletim sistemi distroları üzerinde yüklenebilir veya güncelleştirilemeyebilir, özellikle de özel bir görüntü veya CentOS/RHEL 6. x veya daha önceki 7. x sürümü gibi eski bir işletim sistemi sürümü kullanılarak dağıtımı yapılabilir.
+İşlevsellik veya performans için gerekliyse, [Linux Integration Services (LIS) sürücüleri](../../linux/endorsed-distros.md) desteklenen işletim sistemi distroları üzerinde yüklenebilir veya güncelleştirilemeyebilir, özellikle de özel bir görüntü veya CentOS/RHEL 6. x veya daha önceki 7. x sürümü gibi eski bir işletim sistemi sürümü kullanılarak dağıtımı yapılabilir.
 
 ```bash
 wget https://aka.ms/lis

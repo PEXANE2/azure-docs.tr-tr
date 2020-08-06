@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 52c715b65ed3d37446dfc42a1375bf686fc25000
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0fa4fb1fa55d5d3fa61c923bc024e6536b43c87a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288508"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829195"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 ve Edsv4 serisi
 
@@ -87,7 +87,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

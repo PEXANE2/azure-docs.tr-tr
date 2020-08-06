@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206661"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825982"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -20,10 +20,10 @@ ms.locfileid: "86206661"
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 > [!NOTE]
-> Bu özellik, MySQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-vm"></a>Azure VM oluşturma
 
@@ -237,7 +237,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Bağlan’ı seçin.
+5. Bağlan'ı seçin.
 
 6. Sol menüden veritabanlarına gözatamazsınız.
 

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: 00b7f675e7dd8fb347399ee7740318e129f12746
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504186"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826560"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -135,7 +135,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
   
 ## <a name="permissions"></a>İzinler
 
-Yük devretme grubu izinleri [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla yönetilir. [SQL Server katkıda](../../role-based-access-control/built-in-roles.md#sql-server-contributor) bulunan rolü, yük devretme gruplarını yönetmek için gereken tüm izinlere sahiptir.
+Yük devretme grubu izinleri [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)aracılığıyla yönetilir. [SQL Server katkıda](../../role-based-access-control/built-in-roles.md#sql-server-contributor) bulunan rolü, yük devretme gruplarını yönetmek için gereken tüm izinlere sahiptir.
 
 ### <a name="create-failover-group"></a>Yük devretme grubu oluştur
 

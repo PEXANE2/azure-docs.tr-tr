@@ -1,7 +1,7 @@
 ---
 title: Veri yedekliği
 titleSuffix: Azure Storage
-description: Microsoft Azure Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kullanılabilirlik için çoğaltılır. Artıklık yapılandırması yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS), Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS), coğrafi bölge yedekli depolama (GZRS) ve Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) içerir.
+description: Azure Storage 'da veri yedekliliği anlayın. Microsoft Azure Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kullanılabilirlik için çoğaltılır.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036735"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827852"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -163,8 +163,8 @@ Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün ge�
 
 | Kesinti senaryosu | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Yes | Yes | Yes | Yes |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Evet | Evet<sup>1</sup> | Yes |
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Evet | Evet | Evet | Evet |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Evet | Evet<sup>1</sup> | Evet |
 | Birincil bölgede bölge genelinde bir kesinti meydana gelir | Hayır | Hayır | Evet<sup>1</sup> | Evet<sup>1</sup> |
 | Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır | Hayır | Evet (RA-GRS ile) | Evet (RA-GZRS ile) |
 

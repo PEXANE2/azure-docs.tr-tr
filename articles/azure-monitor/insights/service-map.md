@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326078"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825370"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
@@ -35,7 +35,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 ## <a name="enable-service-map"></a>Hizmet Eşlemesi etkinleştir
 
 1. Hizmet Eşlemesi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) 'nden veya [Çözüm Galerisi izleme çözümlerini ekleme](solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
-1. [Windows 'A bağımlılık aracısını yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) veya veri almak istediğiniz her bilgisayara [Linux 'a bağımlılık Aracısı 'nı yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) . Bağımlılık Aracısı en yakındaki komşularla bağlantıları izleyebildiğinden her bilgisayarda bir aracıya ihtiyacınız olmayabilir.
+1. [Windows 'A bağımlılık aracısını yükler](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows) veya veri almak istediğiniz her bilgisayara [Linux 'a bağımlılık Aracısı 'nı yükler](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux) . Bağımlılık Aracısı en yakındaki komşularla bağlantıları izleyebildiğinden her bilgisayarda bir aracıya ihtiyacınız olmayabilir.
 
 Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve sol bölmeden **çözümler** seçeneğini belirleyin.<br><br> ![Çalışma alanında çözüm seçeneğini belirleyin ](./media/service-map/select-solution-from-workspace.png) .<br> Çözümler listesinden **Servicemap (Çalışmaalanıadı)** öğesini seçin ve hizmet eşlemesi çözüme genel bakış sayfasında hizmet eşlemesi Özet kutucuğuna tıklayın.<br><br> ![Özet kutucuğunu Hizmet Eşlemesi ](./media/service-map/service-map-summary-tile.png) .
 
@@ -603,4 +603,3 @@ Makinenizde Hizmet Eşlemesi görürseniz, ancak işlem veya bağlantı verisi y
 ## <a name="suggestions"></a>Öneriler
 
 Hizmet Eşlemesi veya bu belgeler hakkında bizimle ilgili geri bildiriminiz var mı?  Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
-

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 2989343a5cc9612ea0f4d3b177093fdef93f5d73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000679"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826067"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
 
@@ -45,7 +45,7 @@ Bir görev yapılandırması kullanarak, dizin oluşturma görevleriniz için da
 
 Ayrıca, bir bildirim dosyası kullanarak birden çok medya dosyasını aynı anda işleyebilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](/azure/media-services/previous/media-services-analytics-overview).
+Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](./media-services-analytics-overview.md).
 
 ## <a name="index-an-asset"></a>Varlık dizini oluşturma
 Aşağıdaki yöntem bir ortam dosyasını varlık olarak yükler ve varlığı dizine eklemek için bir iş oluşturur.
@@ -158,7 +158,7 @@ Tüm giriş medyası dosyaları başarıyla dizinlenmezse, dizin oluşturma işi
 ## <a name="index-multiple-files"></a>Birden çok dosya dizini oluştur
 Aşağıdaki yöntem, birden çok medya dosyasını bir varlık olarak yükler ve bir toplu işteki tüm bu dosyaları dizine almak için bir iş oluşturur.
 
-". Lst" uzantısına sahip bir bildirim dosyası oluşturulup varlığa karşıya yüklenir. Bildirim dosyası tüm varlık dosyalarının listesini içerir. Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](/azure/media-services/previous/media-services-analytics-overview).
+". Lst" uzantısına sahip bir bildirim dosyası oluşturulup varlığa karşıya yüklenir. Bildirim dosyası tüm varlık dosyalarının listesini içerir. Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](./media-services-analytics-overview.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -243,7 +243,7 @@ Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değer
 ### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Azure Media Indexer için görev önayarı
 Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
 
-| Name | Gerektirme | Açıklama |
+| Ad | Gerektirme | Açıklama |
 | --- | --- | --- |
 | **girişinin** |yanlış |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
 | **veriyi** |yanlış |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -252,7 +252,7 @@ Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön
 ### <a name="error-codes"></a><a id="error_codes"></a>Hata kodları
 Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini yeniden raporlemelidir:
 
-| Kod | Name | Olası nedenler |
+| Kod | Ad | Olası nedenler |
 | --- | --- | --- |
 | 2000 |Geçersiz yapılandırma |Geçersiz yapılandırma |
 | 2001 |Geçersiz giriş varlıkları |Eksik giriş varlıkları veya boş varlık. |
@@ -271,7 +271,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04536836c4d061249201c82f738aa41501f0847e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387719"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828872"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure sanal makine kullanımını anlama
 Azure kullanım verilerinizi analiz ederek, güçlü tüketim öngörüleri, kuruluşunuzun tamamında daha iyi maliyet yönetimi ve ayırmayı olanaklı hale getirebilirler. Bu belge, Azure Işlem tüketimi ayrıntılarınız hakkında ayrıntılı bilgi sağlar. Genel Azure kullanımı hakkında daha fazla bilgi için [Faturanızı Anlama](../../cost-management-billing/understand/review-individual-bill.md)bölümüne gidin.
@@ -35,7 +35,7 @@ Başlamak için [kullanım ayrıntılarınızı indirin](../../cost-management-b
 | Kullanılan| O gün için tüketilen kaynağın miktarı. Işlem için, VM 'nin belirli bir saat boyunca çalıştığı her dakika için faturalandırırız (en fazla 6 ondalık doğruluk).| `1, 0.5`|
 | Kaynak Konumu  | Kaynağın çalıştığı veri merkezini tanımlar.| `JA East`|
 | Tüketim Hizmeti | Kullandığınız Azure platform hizmeti.| `Microsoft.Compute`|
-| Kaynak Grubu | Dağıtılan kaynağın içinde çalıştığı kaynak grubu. Daha fazla bilgi için bkz [. Azure Resource Manager genel bakış.](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)|`MyRG`|
+| Kaynak Grubu | Dağıtılan kaynağın içinde çalıştığı kaynak grubu. Daha fazla bilgi için bkz [. Azure Resource Manager genel bakış.](../../azure-resource-manager/management/overview.md)|`MyRG`|
 | Örnek Kimliği | Kaynak için tanımlayıcı. Tanımlayıcı, kaynağı oluştururken belirttiğiniz adı içerir. VM 'Ler için, örnek KIMLIĞI SubscriptionID, ResourceGroupName ve VMName (veya ölçek kümesi kullanımı için ölçek kümesi adı) içerecektir.| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>veya<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Etiketler| Kaynağa atadığınız etikettir. Etiketleri kullanarak fatura kayıtlarını gruplayabilirsiniz. [Sanal makinelerinizi nasıl etiketleyeceğinizi öğrenin.](tag.md) Bu yalnızca Kaynak Yöneticisi VM 'Ler için kullanılabilir.| `{"myDepartment":"RD","myUser":"myName"}`|
 | Ek Bilgi | Hizmete özgü meta veriler. VM 'Ler için ek bilgi alanında aşağıdaki verileri doldurduk: <br><br> Çalıştırdığınız görüntü türüne özgü görüntü. Aşağıda, görüntü türleri altında desteklenen dizelerin tam listesini bulun.<br><br> Hizmet türü: dağıttığınız boyut.<br><br> VMName: sanal makinenizin adı. Bu alan yalnızca ölçek kümesi VM 'Leri için doldurulur. Ölçek kümesi VM 'Leri için VM adınızın olması gerekiyorsa, bunu yukarıdaki örnek KIMLIĞI dizesinde bulabilirsiniz.<br><br> UsageType: Bu, temsil ettiği kullanım türünü belirtir.<br><br> Bu, temel alınan VM için Standard_D1_v2 gibi Işlem saati kullanımdır.<br><br> ComputeHR_SW, sanal makine Microsoft R Server gibi Premium yazılım kullanıyorsa Premium yazılım ücretlendirilir. | Sanal Makineler<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Sanal Makine Ölçek Kümeleri<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium yazılım<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |

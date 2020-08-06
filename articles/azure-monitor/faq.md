@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563849"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828515"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -670,7 +670,7 @@ Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, VM'l
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Yeni bir çalışma alanına ekleyebilir miyim? 
 VM 'niz Şu anda mevcut bir Log Analytics çalışma alanına bağlı değilse, verilerinizi depolamak için yeni bir çalışma alanı oluşturmanız gerekir. Azure portal üzerinden VM'ler için Azure İzleyici için tek bir Azure VM yapılandırırsanız, yeni bir varsayılan çalışma alanı oluşturma otomatik olarak yapılır.
 
-Betik tabanlı yöntemi kullanmayı seçerseniz, bu adımlar [Azure PowerShell veya Kaynak Yöneticisi şablonu kullanarak VM'ler için Azure izleyici etkinleştir](insights/vminsights-enable-at-scale-powershell.md) makalesinde ele alınmıştır. 
+Betik tabanlı yöntemi kullanmayı seçerseniz, bu adımlar [Azure PowerShell veya Kaynak Yöneticisi şablonu kullanarak VM'ler için Azure izleyici etkinleştir](./insights/vminsights-enable-powershell.md) makalesinde ele alınmıştır. 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM 'im mevcut bir çalışma alanına zaten bildirildiğimde ne yapmam gerekiyor?
 Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çalışma alanına verileri raporlamak için onu zaten yapılandırmış olabilirsiniz.  Çalışma alanı desteklenen bölgelerden birinde olduğu sürece, VM'ler için Azure İzleyici önceden var olan çalışma alanına etkinleştirebilirsiniz.  Zaten kullanmakta olduğunuz çalışma alanı desteklenen bölgelerden birinde değilse, şu anda VM'ler için Azure İzleyici içine yükleyemezsiniz.  Ek bölgeleri desteklemek için etkin bir şekilde çalışıyoruz.
@@ -691,7 +691,7 @@ Ekleme işlemini başlattınız ve VM 'nin eklendi olması gerektiğini belirten
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>VM 'im için Performans grafiklerinde bir veya daha fazla veri görmüyorum
 Performans Grafiklerimiz, *ınsightsölçümlerini* tablosunda depolanan verileri kullanacak şekilde güncelleştirilmiştir.  Bu grafiklerdeki verileri görmek için yeni VM öngörüleri çözümünü kullanmak üzere yükseltmeniz gerekir.  Daha fazla bilgi için lütfen [ga SSS bölümüne](insights/vminsights-ga-release-faq.md) bakın.
 
-Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)çalıştırın.
+Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](./insights/vminsights-enable-powershell.md)çalıştırın.
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>VM'ler için Azure İzleyici eşleme özelliği Hizmet Eşlemesi nasıl farklıdır?

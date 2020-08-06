@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328360"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824588"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>PowerShell kullanarak VM'ler için Azure İzleyici etkinleştirme
 Bu makalede, PowerShell kullanarak Azure sanal makinelerinde VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
@@ -35,7 +35,7 @@ Birden çok VM veya sanal makine ölçek kümesi için VM'ler için Azure İzley
 
 Her bir sanal makine veya sanal makine ölçek kümesi için, betik Log Analytics Aracısı ve bağımlılık aracısının VM uzantısının zaten yüklü olup olmadığını doğrular. Her iki uzantı de yüklüyse, betik yeniden yüklemeyi dener. Her iki uzantı de yüklü değilse, betik bunları yüklenir.
 
-Uyumluluk diğer adları etkinken Azure PowerShell Module az Version 1.0.0 veya üzeri kullandığınızı doğrulayın `Enable-AzureRM` . Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
+Uyumluluk diğer adları etkinken Azure PowerShell Module az Version 1.0.0 veya üzeri kullandığınızı doğrulayın `Enable-AzureRM` . Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
 Betiğin bağımsız değişken ayrıntılarının ve örnek kullanımının bir listesini almak için, öğesini çalıştırın `Get-Help` .
 

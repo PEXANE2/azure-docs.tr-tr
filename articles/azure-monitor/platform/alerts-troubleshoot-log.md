@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321114"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828464"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları sorunlarını giderme  
 
@@ -190,7 +190,7 @@ Azure Izleyici 'de yapılandırmanın bir parçası olarak oluşturulan her gün
 
 ## <a name="alert-rule-quota-was-reached"></a>Uyarı kuralı kotasına ulaşıldı
 
-Abonelik ve kaynak başına günlük arama uyarı kuralları sayısı [burada](https://docs.microsoft.com/azure/azure-monitor/service-limits)açıklanan kota sınırlarına tabidir.
+Abonelik ve kaynak başına günlük arama uyarı kuralları sayısı [burada](../service-limits.md)açıklanan kota sınırlarına tabidir.
 
 ### <a name="recommended-steps"></a>Önerilen Adımlar
     
@@ -201,7 +201,7 @@ Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardım
 
     - Kota sınırının artırılmasını istediğiniz aboneliklerin kimlikleri
     - Kota artışı nedeni
-    - Kota artışı için kaynak türü: **Log Analytics**, **Application Insights** ect.
+    - Kota artışı için kaynak türü: **Log Analytics**, **Application Insights**, vb.
     - İstenen kota sınırı
 
 
@@ -226,4 +226,3 @@ Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardım
 - [Azure 'da günlük uyarıları](./alerts-unified-log.md)hakkında bilgi edinin.
 - [Application Insights](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
-

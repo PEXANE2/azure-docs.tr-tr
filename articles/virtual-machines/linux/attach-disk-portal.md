@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: c5be90cfd107dfa66eb31597818d93ef092b5258
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8bafde086febce78ca2715ab77c8a071467b986b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502869"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825472"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 VM 'nize disk iliştirmadan önce şu ipuçlarını gözden geçirin:
 
-* Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Ayrıntılar için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Ayrıntılar için bkz. [sanal makineler Için boyutlar](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Sanal makinelere eklenen diskler aslında. vhd dosyaları Azure 'da depolanır. Ayrıntılar için bkz. [yönetilen disklere giriş](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Diski iliştirdikten sonra, [Yeni diski bağlamak Için LINUX VM 'ye bağlanmanız](#connect-to-the-linux-vm-to-mount-the-new-disk)gerekir.
 

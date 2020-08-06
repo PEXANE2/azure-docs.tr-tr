@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116973"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825965"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-hiper ölçek (Citus)
 
 > [!NOTE]
-> "Kullanıcılar" terimi, bir Hyperscale (Citus) sunucu grubu içindeki kullanıcılara başvurur. Azure abonelik kullanıcıları ve ayrıcalıkları hakkında bilgi edinmek için [Azure rol tabanlı erişim denetimi (RBAC) makalesini](../role-based-access-control/built-in-roles.md) ziyaret edin veya [rolleri nasıl özelleştireceğinizi](../role-based-access-control/custom-roles.md)inceleyin.
+> "Kullanıcılar" terimi, bir Hyperscale (Citus) sunucu grubu içindeki kullanıcılara başvurur. Azure abonelik kullanıcıları ve ayrıcalıkları hakkında bilgi edinmek için [Azure rol tabanlı erişim denetimi (Azure RBAC) makalesini](../role-based-access-control/built-in-roles.md) ziyaret edin veya [rolleri nasıl özelleştireceğinizi](../role-based-access-control/custom-roles.md)inceleyin.
 
 ## <a name="the-server-admin-account"></a>Sunucu yöneticisi hesabı
 

@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057628"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824503"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Kurumsal abonelikleri oluşturma erişimi verme (Önizleme)
 
-[Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)üzerinde bir Azure müşterisi olarak, hesabınıza faturalandırılan abonelikler oluşturmak için başka bir kullanıcıya veya hizmet sorumlusu izni verebilirsiniz. Bu makalede, abonelik oluşturma özelliğini paylaşmak için [rol tabanlı Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) kullanmayı ve abonelik oluşturma işlemlerinin nasıl denetleneceğini öğreneceksiniz. Paylaşmak istediğiniz hesapta sahip rolüne sahip olmanız gerekir.
+[Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)üzerinde bir Azure müşterisi olarak, hesabınıza faturalandırılan abonelikler oluşturmak için başka bir kullanıcıya veya hizmet sorumlusu izni verebilirsiniz. Bu makalede, [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) kullanarak abonelikler oluşturma ve abonelik oluşturma özelliklerini denetleme hakkında bilgi edineceksiniz. Paylaşmak istediğiniz hesapta sahip rolüne sahip olmanız gerekir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

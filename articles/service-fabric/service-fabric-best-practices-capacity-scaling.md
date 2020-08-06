@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261180"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824605"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -19,7 +19,7 @@ Herhangi bir Azure Service Fabric kümesi oluşturmadan veya kümenizi barındı
 Düğüm türü ve küme özelliklerini düşünmenin yanı sıra, bir üretim ortamı için bir saatten daha uzun sürer. Bu durum, eklediğiniz VM sayısının ne olursa olsun doğru bir konudur.
 
 ## <a name="autoscaling"></a>Otomatik ölçeklendirme
-[Kaynak yapılandırmalarının kod olarak]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)değerlendirmek için en iyi yöntem olduğundan, Azure Resource Manager şablonları aracılığıyla ölçeklendirme işlemleri gerçekleştirmeniz gerekir. 
+[Kaynak yapılandırmalarının kod olarak](./service-fabric-best-practices-infrastructure-as-code.md)değerlendirmek için en iyi yöntem olduğundan, Azure Resource Manager şablonları aracılığıyla ölçeklendirme işlemleri gerçekleştirmeniz gerekir. 
 
 Sanal Makine Ölçek Kümeleri aracılığıyla otomatik ölçeklendirmeyi kullanmak, sürümlü Kaynak Yöneticisi şablonunun sanal makine ölçek kümeleri için örnek sayılarınızı doğru şekilde tanımlamasını sağlayacak. Yanlış tanım, gelecekteki dağıtımların istenmeden ölçeklendirme işlemlerine neden olacağı riski artırır. Genel olarak, şu durumlarda otomatik ölçeklendirmeyi kullanmanız gerekir:
 
@@ -72,7 +72,7 @@ Düğüm özellikleri ve yerleştirme kısıtlamaları ile birlikte, aşağıdak
 5. Tüm VM 'Ler kaybolduktan sonra ("aşağı" olarak temsil edilir) doku:/System/InfrastructureService/[Node Name] bir hata durumu gösterecektir. Daha sonra, düğüm türünü kaldırmak için küme kaynağını güncelleştirebilirsiniz. ARM şablon dağıtımını kullanabilir ya da [Azure Resource Manager](https://resources.azure.com)aracılığıyla küme kaynağını düzenleyebilirsiniz. Bu, hata durumunda olan Fabric:/System/InfrastructureService/[Node Type] hizmetini kaldıracak bir küme yükseltmesi başlatır.
  6. VMScaleSet 'yi isteğe bağlı olarak silerseniz, yine de düğümleri Service Fabric Explorer görünümünde "aşağı" olarak görürsünüz. Son adım, komutu komutuyla temizleyelim `Remove-ServiceFabricNodeState` .
 
-## <a name="horizontal-scaling"></a>Yatay ölçekleme
+## <a name="horizontal-scaling"></a>Yatay ölçeklendirme
 
 Yatay ölçeklendirmeyi [el ile](./service-fabric-cluster-scale-in-out.md) veya [programlama yoluyla](./service-fabric-cluster-programmatic-scaling.md)yapabilirsiniz.
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Şunları yapabilirsiniz:
+> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Seçenekleriniz şunlardır:
 > * [Remove-ServiceFabricNodeState komutunu](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) uygun düğüm adıyla çağırın.
 > * [Service Fabric otomatik ölçeklendirme yardımcısı uygulamasını](https://github.com/Azure/service-fabric-autoscale-helper/) kümenize dağıtın. Bu uygulama, ölçeklenmiş düğümlerin Service Fabric Explorer temizlenmesini sağlar.
 

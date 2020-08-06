@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323953"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824775"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -157,8 +157,8 @@ VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgele
 
 | Bağlı kaynak | Desteklenir | Açıklama |
 |:--|:--|:--|
-| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Hayır | |
 
 ## <a name="agents"></a>Aracılar
@@ -174,10 +174,10 @@ Aşağıda, bu aracıları dağıtmaya yönelik birden çok yöntem verilmiştir
 
 | Yöntem | Açıklama |
 |:---|:---|
-| [Azure Portal](vminsights-enable-single-vm.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
-| [Resource Manager şablonları](vminsights-enable-powershell.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
-| [Azure İlkesi](vminsights-enable-at-scale-policy.md) | Bir sanal makine veya sanal makine ölçek kümesi oluşturulduğunda aracıları otomatik olarak yüklemek için Azure Ilke girişimi atayın. |
-| [El ile yüklemesi](vminsights-enable-hybrid-cloud.md) | Veri merkezinize veya diğer bulut ortamlarınıza dahil olmak üzere Azure dışında barındırılan bilgisayarlarda, aracıları Konuk işletim sistemine yükler. |
+| [Azure Portal](./vminsights-enable-portal.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
+| [Kaynak Yöneticisi şablonları](vminsights-enable-powershell.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
+| [Azure İlkesi](./vminsights-enable-policy.md) | Bir sanal makine veya sanal makine ölçek kümesi oluşturulduğunda aracıları otomatik olarak yüklemek için Azure Ilke girişimi atayın. |
+| [El ile yüklemesi](./vminsights-enable-hybrid.md) | Veri merkezinize veya diğer bulut ortamlarınıza dahil olmak üzere Azure dışında barındırılan bilgisayarlarda, aracıları Konuk işletim sistemine yükler. |
 
 
 
@@ -200,4 +200,3 @@ Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Ser
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Performans izleme özelliğini nasıl kullanacağınızı öğrenmek için bkz. [VM'ler için Azure izleyici performansını görüntüleme](vminsights-performance.md). Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
-

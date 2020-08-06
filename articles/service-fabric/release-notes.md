@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 08808fa0577077b642d0f21e3995931726d4d8a3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8a9ca656ec102a101df9aafb87652680a1001f31
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423550"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826288"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -18,7 +18,7 @@ ms.locfileid: "87423550"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sorun Izleme</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Destek seçenekleri</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Desteklenen sürümler</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod Örnekleri</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod örnekleri</a>
 
 Bu makalede, Service Fabric çalışma zamanına ve SDK 'lara yönelik en son yayınlar ve güncelleştirmeler hakkında daha fazla bilgi sağlanmaktadır.
 
@@ -51,9 +51,9 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
 ### <a name="improve-application-life-cycle-experience"></a>Uygulama yaşam döngüsü deneyimini geliştirme
 
 - **[Önizleme: istek boşaltma](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)**: hizmet yükseltmeleri veya düğüm devre dışı bırakma gibi planlı hizmet bakımı sırasında hizmetlerin bağlantıları düzgün bir şekilde boşaltmasını sağlamak istersiniz. Bu özellik, hizmet yapılandırmasında bir örnek kapatma gecikme süresi ekler. Planlanan işlemler sırasında, SF hizmetin adresini bulma işleminden kaldırır ve ardından hizmeti kapatmadan önce bu süreyi bekler.
-- **[Otomatik alt küme algılama ve dengeleme](/azure/service-fabric/cluster-resource-manager-subclustering )**: farklı yerleştirme kısıtlamalarına sahip hizmetlerde ortak bir [yük ölçümü](./service-fabric-cluster-resource-manager-metrics.md)olduğunda, alt kümeleme gerçekleşir. Farklı düğüm kümelerindeki yükün önemli ölçüde farklı olduğu durumlarda Service Fabric kümesi, yerleştirme kısıtlamaları nedeniyle mümkün olan en iyi dengeyi sahip olsa bile kümenin imse olduğunu düşündü Kaynak Yöneticisi. Sonuç olarak, büyük olasılıkla gereksiz hizmet hareketlerine neden olan ("ımbilanço" önemli ölçüde iyileşebildiğinden) kümeyi yeniden dengelemeye çalışır. Bu sürümden itibaren, Küme Kaynak Yöneticisi artık bu yapılandırma türlerini otomatik olarak algılamaya çalışır ve ne zaman, önemli bir geliştirme yapamayacağı için bu tür yapılandırmayı otomatik olarak algılamaya ve ne zaman tek tek bırakması gerektiğine çalışacaktır.  
+- **[Otomatik alt küme algılama ve dengeleme](./cluster-resource-manager-subclustering.md)**: farklı yerleştirme kısıtlamalarına sahip hizmetlerde ortak bir [yük ölçümü](./service-fabric-cluster-resource-manager-metrics.md)olduğunda, alt kümeleme gerçekleşir. Farklı düğüm kümelerindeki yükün önemli ölçüde farklı olduğu durumlarda Service Fabric kümesi, yerleştirme kısıtlamaları nedeniyle mümkün olan en iyi dengeyi sahip olsa bile kümenin imse olduğunu düşündü Kaynak Yöneticisi. Sonuç olarak, büyük olasılıkla gereksiz hizmet hareketlerine neden olan ("ımbilanço" önemli ölçüde iyileşebildiğinden) kümeyi yeniden dengelemeye çalışır. Bu sürümden itibaren, Küme Kaynak Yöneticisi artık bu yapılandırma türlerini otomatik olarak algılamaya çalışır ve ne zaman, önemli bir geliştirme yapamayacağı için bu tür yapılandırmayı otomatik olarak algılamaya ve ne zaman tek tek bırakması gerektiğine çalışacaktır.  
 - [**İkincil çoğaltmalar Için farklı taşıma maliyeti**](./service-fabric-cluster-resource-manager-movement-cost.md): ikincil çoğaltmalar için ayrı bir taşıma maliyetinin kullanılması gerekip gerekmediğini tanımlamak üzere bazı senaryolarda ek esneklik sağlayan yeni taşıma maliyeti değeri VeryHigh.
-- Kapsayıcılı uygulamalar için etkin hale [**getirme araştırması**](/azure/service-fabric/probes-codepackage ) mekanizması. Lizur araştırması Kapsayıcılı uygulamanın tam olarak duyurulmasına ve zamanında yanıt vermediklerinde yeniden başlatmaya neden olur.
+- Kapsayıcılı uygulamalar için etkin hale [**getirme araştırması**](./probes-codepackage.md) mekanizması. Lizur araştırması Kapsayıcılı uygulamanın tam olarak duyurulmasına ve zamanında yanıt vermediklerinde yeniden başlatmaya neden olur.
 - [**Hizmetler için tamamlama/bir kez çalıştırma**](./run-to-completion.md)**
 
 ### <a name="image-store-improvements"></a>Görüntü Deposu iyileştirmeler

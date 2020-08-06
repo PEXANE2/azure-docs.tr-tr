@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660764"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827869"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -81,7 +81,7 @@ Bağlantı olmadan bir senaryoda, henüz yayımlanmış bir geçiş kılavuzu yo
 | Kaynak | Hedef: </br>Karma dağıtım | Hedef: </br>Yalnızca bulutta dağıtım |
 |:---|:--|:--|
 | | Araç birleşimi:| Araç birleşimi: |
-| Windows Server 2012 R2 ve üzeri | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme</li><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 ve üzeri | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Bulutta Azure Dosya Eşitleme ve önceden oluşturulmuş dosyalar](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme</li><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 ve öncesi | <ul><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
 | Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux veya Samba | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
@@ -152,5 +152,5 @@ Aracın sınanan sürümü 4.4.1 sürümüdür. Bulut katmanlı dosyalarla uyuml
 Bu makalede bahsedilen Azure dosyaları teknolojileri hakkında daha fazla bilgi aşağıda verilmiştir:
 
 * [Azure dosya paylaşımında genel bakış](storage-files-introduction.md)
-* [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+* [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
 * [Azure Dosya Eşitleme: bulut katmanlaması](storage-sync-cloud-tiering.md)

@@ -3,12 +3,12 @@ title: Azure Event Grid iş ortağı olarak ekleme
 description: Azure Event Grid iş ortağı konu türü olarak ekleme. İş ortağı konuları için kaynak modeli ve yayımlama akışını anlayın.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461264"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826798"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid iş ortağı olarak ekleme
 
@@ -91,7 +91,7 @@ Aşağıdaki kaynak modeli iş ortağı konuları içindir.
 ### <a name="partner-topic-types"></a>İş ortağı konu türleri
 * Kaynak`partnerTopicTypes`
 * Kullanan: müşteriler
-* Açıklama: Iş ortağı konu türleri, müşterilerin onaylanan iş ortağı konu türleri listesini bulmasını sağlayan, çok sayıda kaynak türlerdir. URL şöyle görünürhttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Açıklama: Iş ortağı konu türleri, müşterilerin onaylanan iş ortağı konu türleri listesini bulmasını sağlayan kiracı genelinde kaynak türleridir. URL şöyle görünürhttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Kapsam: genel
 
 ## <a name="publish-events-to-event-grid"></a>Olayları Event Grid yayımlayın
@@ -150,10 +150,10 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
 | Geçersiz uç nokta                 | 404 Bulunamadı         |
 | Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |
 
-## <a name="references"></a>Başvurular
+## <a name="references"></a>Referanslar
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM şablonu](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM şablonu](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM şablon şeması](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API'leri](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLı uzantısı](/cli/azure/ext/eventgrid/?view=azure-cli-latest)

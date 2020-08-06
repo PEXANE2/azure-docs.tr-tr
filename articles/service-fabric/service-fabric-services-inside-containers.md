@@ -4,12 +4,12 @@ description: Windows 'da Service Fabric Reliable Services ve Reliable Actors hiz
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186afb87b4668ad575208beeeb19643e6a11cedd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466176"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824554"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows'da Service Fabric Reliable Services ve Reliable Actors kapsayıcıları
 
@@ -93,7 +93,7 @@ Bu belge, hizmetinizi bir Windows kapsayıcısı içinde çalıştırmaya yönel
    </Policies>
    ```
 
-9. Kapsayıcı yalıtımı modunu yapılandırma için bkz. [yalıtım modunu yapılandırma]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). Windows, kapsayıcılar için iki yalıtım modunu destekler: İşlem ve Hyper-V. Aşağıdaki kod parçacıklarında, uygulama bildirim dosyasında yalıtım modunun nasıl belirtildiği gösterilmektedir.
+9. Kapsayıcı yalıtımı modunu yapılandırma için bkz. [yalıtım modunu yapılandırma]( ./service-fabric-get-started-containers.md#configure-isolation-mode). Windows, kapsayıcılar için iki yalıtım modunu destekler: İşlem ve Hyper-V. Aşağıdaki kod parçacıklarında, uygulama bildirim dosyasında yalıtım modunun nasıl belirtildiği gösterilmektedir.
 
    ```xml
    <Policies>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526886"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825693"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
@@ -272,6 +272,6 @@ VM çalışıyorsa disk değiştirme işlemini kapatır, disk değiştirme işle
 ## <a name="next-steps"></a>Sonraki adımlar
 Şu konular hakkında daha fazla bilgi edinin:
 
- [Azure seri konsol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+ [Azure seri konsol]( ./serial-console-linux.md)
 
 [Tek Kullanıcı modu](./serial-console-grub-single-user-mode.md)

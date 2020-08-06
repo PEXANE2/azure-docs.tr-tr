@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525475"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827427"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -174,7 +174,7 @@ Bir Azure depolama hesabı, yönetim yapısıdır ve ayrıca Kısıtlamaların b
 
 Standart depolama için, depolama hesabı başına ıOPS 'de bir sınır olduğunu unutmayın. [Azure depolama ölçeklenebilirlik ve performans hedefleri](../../../storage/common/scalability-targets-standard-account.md)makalesindeki **toplam istek oranı** 'nı içeren satıra bakın. Ayrıca, Azure aboneliği başına depolama hesabı sayısı için bir başlangıç sınırı vardır. Bu depolama hesaplarının limitlerine ulaşmaktan kaçınmak için, farklı depolama hesaplarında daha büyük SAP için VHD 'leri dengeleyin. Bu, binlerce VHD 'den fazlasına sahip birkaç yüz sanal makine hakkında konuşuyorsanız sıkıcı bir çalışmadır.
 
-Bir SAP iş yükü ile birlikte DBMS dağıtımları için standart depolama kullanılması önerilmediği için, standart depolamaya yapılan başvurular ve öneriler bu kısa [makaleyle](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) sınırlıdır
+Bir SAP iş yükü ile birlikte DBMS dağıtımları için standart depolama kullanılması önerilmediği için, standart depolamaya yapılan başvurular ve öneriler bu kısa [makaleyle](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance) sınırlıdır
 
 Microsoft 'un farklı Azure depolama hesaplarında VHD planlama ve dağıtma konusunda yönetim çalışmasından kaçınmak için, Microsoft tarafından 2017 ' de [Azure yönetilen diskler](https://azure.microsoft.com/services/managed-disks/) kullanıma sunulmuştur. Yönetilen diskler standart depolama ve Premium Depolama için kullanılabilir. Yönetilen disklerin yönetilmeyen disklere kıyasla başlıca avantajları şunlardır:
 
@@ -327,7 +327,7 @@ Yük dengeleyici bir DirectServerReturn seçeneği sunar. Bu seçenek yapıland�
 
 DirectServerReturn ' i SAP uygulama katmanı ve DBMS katmanı arasında konumlandırılmış yük dengeleyiciler ile birlikte yapılandırmanızı öneririz. Bu yapılandırma iki katman arasındaki ağ gecikmesini azaltır.
 
-Bu yapılandırmayı SQL Server her zaman açık olarak ayarlama hakkında bir örnek için bkz. [Azure 'Da Always on kullanılabilirlik grupları için BIR ıLB dinleyicisi yapılandırma](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
+Bu yapılandırmayı SQL Server her zaman açık olarak ayarlama hakkında bir örnek için bkz. [Azure 'Da Always on kullanılabilirlik grupları için BIR ıLB dinleyicisi yapılandırma](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
 
 Azure 'da SAP altyapı dağıtımlarınız için yayımlanmış GitHub JSON şablonlarını bir başvuru olarak kullanırsanız, bu [şablonu SAP 3 katmanlı bir sistem için](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)inceleyin. Bu şablonda, yük dengeleyici için doğru ayarları da görebilirsiniz.
 

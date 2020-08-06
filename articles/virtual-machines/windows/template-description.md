@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283240"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827461"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki sanal makineler
 
@@ -274,7 +274,7 @@ Bu özelliği ayarlamak için, ağ arabiriminin mevcut olması gerekir. Bu neden
 
 Bir sanal makine kaynağı tanımlarken çeşitli profil öğeleri kullanılır. Bazıları gereklidir ve bazıları isteğe bağlıdır. Örneğin, hardwareProfile, osProfile, storageProfile ve networkProfile öğeleri gereklidir, ancak diagnosticsProfile isteğe bağlıdır. Bu profiller gibi ayarları tanımlar:
    
-- [boyutla](sizes.md)
+- [boyutla](../sizes.md)
 - [ad](/azure/architecture/best-practices/resource-naming) ve kimlik bilgileri
 - disk ve [işletim sistemi ayarları](cli-ps-findimage.md)
 - [Ağ arabirimi](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ Yönetilen görüntüden bir sanal makine oluşturmak istiyorsanız, ImageRefere
 
 ### <a name="attach-data-disks"></a>Veri disklerini iliştirme
 
-İsteğe bağlı olarak VM 'lere veri diskleri ekleyebilirsiniz. [Disk sayısı](sizes.md) , kullandığınız işletim sistemi diskinin boyutuna bağlıdır. VM 'lerin boyutu Standard_DS1_v2 olarak ayarlandığında, bunlara eklenebilecek en fazla veri diski sayısı ikdir. Örnekte, her VM 'ye bir yönetilen veri diski ekleniyor:
+İsteğe bağlı olarak VM 'lere veri diskleri ekleyebilirsiniz. [Disk sayısı](../sizes.md) , kullandığınız işletim sistemi diskinin boyutuna bağlıdır. VM 'lerin boyutu Standard_DS1_v2 olarak ayarlandığında, bunlara eklenebilecek en fazla veri diski sayısı ikdir. Örnekte, her VM 'ye bir yönetilen veri diski ekleniyor:
 
 ```json
 "dataDisks": [

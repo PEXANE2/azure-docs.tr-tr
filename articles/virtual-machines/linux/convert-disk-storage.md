@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf16ee0af1c5816822f6a201ad1d5a70127082db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658202"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825387"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure yönetilen diskler depolamasını standart 'ten Premium veya Premium 'a standart olarak dönüştürme
 
@@ -30,7 +30,7 @@ Bu makalede, Azure CLı kullanılarak yönetilen disklerin standart olan Premium
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Bir VM 'nin tüm yönetilen disklerini Premium ve standart arasında değiştirme
 
-Bu örnek, bir VM 'nin tüm disklerinin standart olan disklerini Premium depolamaya veya Premium 'dan standart depolamaya nasıl dönüştüreceğiniz gösterilmektedir. Premium yönetilen diskleri kullanmak için, sanal makinenizin Premium depolamayı destekleyen bir [VM boyutu](sizes.md) kullanması gerekir. Bu örnek ayrıca Premium depolamayı destekleyen bir boyuta geçiş yapar.
+Bu örnek, bir VM 'nin tüm disklerinin standart olan disklerini Premium depolamaya veya Premium 'dan standart depolamaya nasıl dönüştüreceğiniz gösterilmektedir. Premium yönetilen diskleri kullanmak için, sanal makinenizin Premium depolamayı destekleyen bir [VM boyutu](../sizes.md) kullanması gerekir. Bu örnek ayrıca Premium depolamayı destekleyen bir boyuta geçiş yapar.
 
  ```azurecli
 
@@ -67,7 +67,7 @@ az vm start --name $vmName --resource-group $rgName
 ```
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Standart ve Premium arasında yönetilen diskleri tek tek değiştirme
 
-Geliştirme ve test iş yükünüz için, maliyetlerinizi azaltmak üzere standart ve Premium disklerin bir karışımını elde etmek isteyebilirsiniz. Yalnızca daha iyi performansa ihtiyacı olan diskleri yükseltmeyi tercih edebilirsiniz. Bu örnek, tek bir VM diskinin standart 'dan Premium depolamaya veya Premium 'dan standart depolamaya nasıl dönüştürüleceğini gösterir. Premium yönetilen diskleri kullanmak için, sanal makinenizin Premium depolamayı destekleyen bir [VM boyutu](sizes.md) kullanması gerekir. Bu örnek ayrıca Premium depolamayı destekleyen bir boyuta geçiş yapar.
+Geliştirme ve test iş yükünüz için, maliyetlerinizi azaltmak üzere standart ve Premium disklerin bir karışımını elde etmek isteyebilirsiniz. Yalnızca daha iyi performansa ihtiyacı olan diskleri yükseltmeyi tercih edebilirsiniz. Bu örnek, tek bir VM diskinin standart 'dan Premium depolamaya veya Premium 'dan standart depolamaya nasıl dönüştürüleceğini gösterir. Premium yönetilen diskleri kullanmak için, sanal makinenizin Premium depolamayı destekleyen bir [VM boyutu](../sizes.md) kullanması gerekir. Bu örnek ayrıca Premium depolamayı destekleyen bir boyuta geçiş yapar.
 
  ```azurecli
 
@@ -129,7 +129,7 @@ az vm start --ids $vmId
 
 ## <a name="switch-managed-disks-between-standard-and-premium-in-azure-portal"></a>Azure portal 'de standart ve Premium arasında yönetilen diskleri değiştirme
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Sanal makineler**listesinden VM 'yi seçin.

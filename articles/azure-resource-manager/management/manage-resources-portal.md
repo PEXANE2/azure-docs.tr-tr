@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 5e3cd30f2ed523584ae827f51d19c6acebf72abf
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 051361860a6a2d9ad70aa81e313857ec86cacfb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055537"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827055"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal kullanarak Azure kaynaklarını yönetme
 
@@ -33,7 +33,7 @@ Azure kaynakları, Azure hizmetleri ve kaynak grupları tarafından düzenlenir.
 
 Bir kaynağı hizmet türüne göre açmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol bölmede Azure hizmeti ' ni seçin. Bu durumda, **depolama hesapları**.  Listelenen hizmeti görmüyorsanız, **tüm hizmetler**' i seçin ve ardından hizmet türünü seçin.
 
     ![Portalda Azure kaynağını açın](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Bir kaynağı hizmet türüne göre açmak için:
 
 Kaynak grubuna göre bir kaynağı açmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Grubun içindeki kaynağı listelemek için sol bölmede **kaynak grupları** ' nı seçin.
 3. Açmak istediğiniz kaynağı seçin. 
 
@@ -114,7 +114,7 @@ Grafiği panoya sabitlemek için grafiklerin sağ üst köşesindeki sabitleme s
 
 ## <a name="manage-access-to-resources"></a>Kaynaklara erişimi yönetme
 
-[Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md), Azure'daki kaynaklara erişimi yönetmek için kullanılan sistemdir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

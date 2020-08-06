@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417123"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828414"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Karma sanal makine için VM'ler için Azure İzleyici etkinleştirme
 Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure dışındaki bir sanal makine için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
@@ -19,7 +19,7 @@ Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure d�
 > [!IMPORTANT]
 > Karma VM 'Leri etkinleştirmenin önerilen yöntemi, VM 'Lerin Azure sanal makinelerine benzer süreçler kullanılarak VM'ler için Azure İzleyici için etkinleştirilebilmesi için öncelikle [sunucular Için Azure yayı 'yi](../../azure-arc/servers/overview.md) etkinleştirir. Bu makalede, Azure Arc 'ı kullanmayı tercih ediyorsanız karma VM 'Lerin nasıl ekleneceği açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Log Analytics çalışma alanı oluşturun ve yapılandırın](vminsights-configure-workspace.md).
 - Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
@@ -158,7 +158,7 @@ Bağımlılık aracısı yüklemeniz başarılı oldu, ancak bilgisayarınızı 
 
     **Linux**: "Microsoft-Dependency-Agent" çalıştırma işlemini arayın.
 
-2. [Log Analytics ücretsiz fiyatlandırma katmanında](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)misiniz? Ücretsiz plan, beş adede kadar benzersiz bilgisayara izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm bilgisayarlar haritada gösterilmez.
+2. [Log Analytics ücretsiz fiyatlandırma katmanında](./solutions.md)misiniz? Ücretsiz plan, beş adede kadar benzersiz bilgisayara izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm bilgisayarlar haritada gösterilmez.
 
 3. Bilgisayar Azure Izleyici günlüklerine günlük ve performans verileri gönderiyor mu? Bilgisayarınız için aşağıdaki sorguyu gerçekleştirin:
 

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359169"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828804"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
 Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
@@ -104,12 +104,12 @@ Bir hizmet örneğini silerken, aşağıdakilere dikkat edin:
 
 [//]: # (RBAC bölümünün başlangıcı)
 ## <a name="manage-access-with-role-based-access-control"></a>Rol Tabanlı Erişim Denetimi ile erişimi yönetme
-Azure AD Connect Health için [rol tabanlı Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) , genel yönetici dışındaki kullanıcılara ve gruplara erişim sağlar. RBAC, istenen kullanıcılara ve gruplara roller atar ve dizininizin içindeki genel yöneticileri sınırlandırmak için bir mekanizma sağlar.
+Azure AD Connect Health için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) , genel yönetici dışındaki kullanıcılara ve gruplara erişim sağlar. RBAC, istenen kullanıcılara ve gruplara roller atar ve dizininizin içindeki genel yöneticileri sınırlandırmak için bir mekanizma sağlar.
 
 ### <a name="roles"></a>Roller
 Azure AD Connect Health aşağıdaki yerleşik rolleri destekler:
 
-| Rol | İzinler |
+| Role | İzinler |
 | --- | --- |
 | Sahip |Sahipler *erişimi yönetebilir* (örneğin, bir kullanıcıya veya gruba bir rol atayabilir), portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir) ve Azure AD Connect Health içindeki ayarları (örneğin, e-posta bildirimleri) *değiştirebilirsiniz* . <br>Varsayılan olarak, Azure AD Genel yöneticilerine bu rol atanır ve bu ayar değiştirilemez. |
 | Katılımcı |Katkıda bulunanlar portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir) ve Azure AD Connect Health içindeki ayarları (örneğin, e-posta bildirimleri) *değiştirebilir* . |
@@ -133,10 +133,10 @@ Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıc�
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. Adım: kullanıcıları ve grupları ekleme ve rol atama
 1. **Yapılandır** bölümünde **Kullanıcılar**' a tıklayın.<br>
    ![Azure AD Connect Health kaynak kenar çubuğu ekran görüntüsü](./media/how-to-connect-health-operations/startRBAC.png)
-2. **Ekle**'yi seçin.
+2. **Add (Ekle)** seçeneğini belirleyin.
 3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
    ![RBAC kullanıcıları penceresinin Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
-4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**' e tıklayın.
+4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**’e tıklayın.
    ![RBAC kullanıcıları penceresinin Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. **Tamam**’ı seçin.<br>
 6. Rol ataması tamamlandıktan sonra, kullanıcılar ve gruplar listede görüntülenir.<br>

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532603"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826713"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -112,7 +112,7 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Erişim denetimi rollerini hesabınıza ekleyin
 
-Azure HPC Cache, önbellek hizmetinin Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmesini yetkilendirmek için [rol tabanlı erişim denetimi 'ni (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) kullanır.
+Azure HPC Cache, Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmek üzere Önbellek hizmetini yetkilendirmek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) kullanır.
 
 Depolama hesabı sahibi, "HPC Cache kaynak sağlayıcısı" kullanıcısı için rol [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
 
@@ -147,7 +147,7 @@ Azure rollerini ekleme adımları:
 
 BLOB depolama hedefi eklemeden önce, önbelleğin depolama hesabına erişmek için doğru rollere sahip olduğunu ve güvenlik duvarı ayarlarının depolama hedefi oluşturulmasına izin ver, olduğunu kontrol edin.
 
-Azure HPC Cache, önbellek hizmetinin Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmesini yetkilendirmek için [rol tabanlı erişim denetimi 'ni (RBAC)](../role-based-access-control/index.yml) kullanır.
+Azure HPC Cache, Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmek üzere Önbellek hizmetini yetkilendirmek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/index.yml) kullanır.
 
 Depolama hesabı sahibi, "HPC Cache kaynak sağlayıcısı" kullanıcısı için rol [depolama hesabı katılımcısı](../role-based-access-control/built-in-roles.md#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
 

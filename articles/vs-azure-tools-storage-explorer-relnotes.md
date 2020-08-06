@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Depolama Gezgini sürüm notları
-description: Microsoft Azure Depolama Gezgini için sürüm notları
+description: En son Microsoft Azure Depolama Gezgini sürümü için sürüm notlarını okuyun. Önceki sürümlere ait sürüm notları da gösterilir.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80351071"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828787"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
 
@@ -46,7 +46,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
       * Kopyala & Yapıştır
       * Klasör silme dahil silme
    * Yönetilen Diskler
-      * Karşıya Yükle
+      * Karşıya Yükleme
       * İndir
       * Kopyala & Yapıştır
 
@@ -100,7 +100,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
    * Dosya paylaşımları
    * Erişim katmanları
    * Geçici silme
-   * ADLS 2.
+   * ADLS 2. Nesil
    * Yönetilen Diskler
 * Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
@@ -216,7 +216,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
    * Dosya paylaşımları
    * Erişim katmanları
    * Geçici silme
-   * ADLS 2.
+   * ADLS 2. Nesil
    * Yönetilen Diskler
 * Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
@@ -290,7 +290,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
    * Dosya paylaşımları
    * Erişim katmanları
    * Geçici silme
-   * ADLS 2.
+   * ADLS 2. Nesil
    * Yönetilen Diskler
 * Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
@@ -349,7 +349,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
    * Dosya paylaşımları
    * Erişim katmanları
    * Geçici silme
-   * ADLS 2.
+   * ADLS 2. Nesil
 * Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
@@ -406,7 +406,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
    * Dosya paylaşımları
    * Erişim katmanları
    * Geçici silme
-   * ADLS 2.
+   * ADLS 2. Nesil
 * Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
@@ -458,7 +458,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
    * Dosya paylaşımları
    * Erişim katmanları
    * Geçici silme
-   * ADLS 2.
+   * ADLS 2. Nesil
 * Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```

@@ -3,12 +3,12 @@ title: Kaynakları izlemek için Azure etkinlik günlüklerini görüntüleme
 description: Kullanıcı eylemlerini ve hataları gözden geçirmek için etkinlik günlüklerini kullanın. PowerShell, Azure CLı ve REST Azure portal gösterir.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75478142"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827087"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme
 
@@ -191,7 +191,7 @@ Etkinlik günlüğüyle çalışmak için kullanılması gereken REST işlemleri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure etkinlik günlükleri, aboneliğinizdeki eylemler hakkında daha fazla öngörü kazanmak için Power BI ile kullanılabilir. Bkz. [Power BI ve daha fazlasını Azure etkinlik günlüklerini görüntüleme ve çözümleme](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Güvenlik ilkelerini ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı Access Control](../../role-based-access-control/role-assignments-portal.md).
+* Güvenlik ilkelerini ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişikliklerle ilgili daha fazla ayrıntı görüntülemek için bkz. [Azure izleyici 'de uygulama değişikliği analizini kullanma](../../azure-monitor/app/change-analysis.md).
 * Dağıtım işlemlerini görüntüleme komutları hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](../templates/deployment-history.md).
 * Tüm kullanıcılar için bir kaynaktaki silme işlemlerini nasıl önleyeceğinizi öğrenmek için bkz. [Azure Resource Manager ile kaynakları kilitleme](lock-resources.md).

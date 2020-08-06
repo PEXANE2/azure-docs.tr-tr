@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501560"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825268"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure ayrılmış ana bilgisayar ayırmaları ile maliyetleri kaydetme
 
@@ -24,7 +24,7 @@ Ayrılmış bir Azure ayrılmış ana bilgisayar örneğine kaydetme yaptığın
 
 Bir ayırma satın almadan önce, hangi adanmış ana bilgisayara ihtiyacınız olduğunu belirlemelisiniz. Bir SKU, VM serisini ve türünü temsil eden ayrılmış bir konak için tanımlanır. 
 
-VM serisini belirlemek için [Windows sanal makinesi](./windows/sizes.md) veya [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) için desteklenen boyutlara giderek başlayın.
+VM serisini belirlemek için [Windows sanal makinesi](./sizes.md) veya [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) için desteklenen boyutlara giderek başlayın.
 
 Ardından, Azure adanmış konaklarda desteklenip desteklenmediğini kontrol edin. [Azure adanmış konaklar fiyatlandırma](https://aka.ms/ADHPricing) sayfası, adanmış ana bilgisayar SKU 'LARıNıN, CPU bilgilerinin ve çeşitli fiyatlandırma seçeneklerinin (ayrılmış örnekler dahil) tüm listesini içerir.
 
@@ -70,18 +70,18 @@ EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle se
 
 | **Alan**           | **Açıklama**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Abonelik        | Ayırma için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, rezervasyonun maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, varsa parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
+| Abonelik        | Ayırma için ödeme yapmak üzere kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, parasal taahhüt bakiyesinden düşülür veya varsa fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
 | Kapsam               | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Bölge              | Ayırma kapsamındaki Azure bölgesi.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Ayrılmış ana bilgisayar boyutu | Adanmış konak örneklerinin boyutu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Terim                | Bir yıl veya üç yıl.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Süre                | Bir yıl veya üç yıl.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Miktar            | Ayırma içinde satın alınan örneklerin sayısı. Miktar, fatura iskontosunu elde eden, çalışan ayrılmış ana bilgisayar örneklerinin sayısıdır.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 - **Tek kaynak grubu kapsamı**   — Rezervasyon iskontosunu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygular.
 
 - **Tek abonelik kapsamı**   — Rezervasyon iskontosunu seçili abonelikteki eşleşen kaynaklara uygular.
 
-- **Paylaşılan kapsam**   — Fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde tarifelerine tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
+- **Paylaşılan kapsam**   — Fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
 
 ## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve ayırma kullanımı
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 3a628a70d8ce62827f79c1f7e16d2826be8d80f5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513851"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827257"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -393,7 +393,7 @@ Bağlantılar, hizmet veya sistem izin verdiği sürece hedef hizmete veya siste
 
 ## <a name="custom-apis-and-connectors"></a>Özel API 'Ler ve bağlayıcılar
 
-Özel kod çalıştıran veya bağlayıcı olarak kullanılamayan API 'Leri çağırmak için, [özel API Apps oluşturarak](../logic-apps/logic-apps-create-api-app.md)Logic Apps platformunu genişletebilirsiniz. Ayrıca, bu API 'Leri Azure aboneliğinizdeki herhangi bir mantıksal uygulama için kullanılabilir hale getirmek *üzere bekleyen veya* SOAP tabanlı API 'ler için [özel bağlayıcılar oluşturabilirsiniz](../logic-apps/custom-connector-overview.md) . Özel API Apps veya bağlayıcıları herkesin Azure 'da kullanması için genel hale getirmek amacıyla, [Microsoft sertifikası için bağlayıcılar gönderebilirsiniz](../logic-apps/custom-connector-submit-certification.md).
+Özel kod çalıştıran veya bağlayıcı olarak kullanılamayan API 'Leri çağırmak için, [özel API Apps oluşturarak](../logic-apps/logic-apps-create-api-app.md)Logic Apps platformunu genişletebilirsiniz. Ayrıca, bu API 'Leri Azure aboneliğinizdeki herhangi bir mantıksal uygulama için kullanılabilir hale getirmek *üzere bekleyen veya* SOAP tabanlı API 'ler için [özel bağlayıcılar oluşturabilirsiniz](../logic-apps/custom-connector-overview.md) . Özel API Apps veya bağlayıcıları herkesin Azure 'da kullanması için genel hale getirmek amacıyla, [Microsoft sertifikası için bağlayıcılar gönderebilirsiniz](/connectors/custom-connectors/submit-certification).
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamında (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) dağıttığınız ve çalıştırdığınız Logic Apps, bir Azure sanal ağındaki kaynaklara doğrudan erişebilir. Şirket içi veri ağ geçidini gerektiren özel bağlayıcılarınız varsa ve bu bağlayıcıları bir ıSE dışında oluşturduysanız, bir ıSE içindeki Logic Apps de bu bağlayıcıları kullanabilir.
@@ -618,4 +618,3 @@ Kuruluşunuz Azure Logic Apps bağlayıcılarını kullanarak belirli kaynaklara
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 protokolünü kullanan iletileri kodla"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML iletilerini dönüştürme"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML iletilerini doğrula"
-

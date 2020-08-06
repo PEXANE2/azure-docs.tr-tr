@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057560"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827240"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -32,11 +32,11 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Kaynak gruplarını** seçin
 
     ![Kaynak Grubu Ekle](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. **Ekle**'yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. Aşağıdaki değerleri girin:
 
    - **Abonelik**: Azure aboneliğinizi seçin. 
@@ -45,14 +45,14 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 
      ![kaynak grubu oluştur](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. **Gözden geçir + oluştur** ' u seçin
-6. **Oluştur**'u seçin. Bir kaynak grubu oluşturmak birkaç saniye sürer.
+6. **Oluştur**’u seçin. Bir kaynak grubu oluşturmak birkaç saniye sürer.
 7. Kaynak grubu listesini yenilemek için üstteki menüden **Yenile** ' yi seçin ve ardından yeni oluşturulan kaynak grubunu seçerek dosyayı açın. Ya da üst kısımdaki **bildirim**(zil simgesi) öğesini seçin ve ardından yeni oluşturulan kaynak grubunu açmak için **kaynak grubuna git** ' i seçin.
 
     ![kaynak grubuna git](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>Kaynak gruplarını listeleme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Kaynak gruplarını listelemek için **kaynak grupları** ' nı seçin.
 
     ![kaynak gruplarına gözatamıyorum](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,8 +61,8 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 
 ## <a name="open-resource-groups"></a>Kaynak gruplarını aç
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **Kaynak grupları**’nı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. **Kaynak grupları**' nı seçin.
 3. Açmak istediğiniz kaynak grubunu seçin.
 
 ## <a name="delete-resource-groups"></a>Kaynak gruplarını silme
@@ -105,7 +105,7 @@ Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kay
 
 ## <a name="manage-access-to-resource-groups"></a>Kaynak gruplarına erişimi yönetme
 
-[Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md), Azure'daki kaynaklara erişimi yönetmek için kullanılan sistemdir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

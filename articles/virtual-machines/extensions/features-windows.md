@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082639"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829093"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -36,7 +36,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 - PowerShell Istenen durum yapılandırmasını Windows için DSC uzantısına sahip bir VM 'ye uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](dsc-overview.md).
 - Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../azure-monitor/learn/quick-collect-azurevm.md).
-- Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](../../chef/chef-automation.md).
+- Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](/azure/developer/chef/windows-vm-configure).
 - Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için bkz. [Dataköpek blogu](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 `Set-AzVMExtension`Komut herhangi BIR VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -263,7 +263,7 @@ Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı
 Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantıları
+- Uzantılar
 - Önyükleme tanılaması kapsayıcısı
 - Konuk işletim sistemi gizli dizileri
 - VM boyutu
