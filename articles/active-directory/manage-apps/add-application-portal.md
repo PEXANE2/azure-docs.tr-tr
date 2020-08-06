@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338036"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808448"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınıza uygulama ekleme
 
@@ -58,8 +57,15 @@ Azure AD kiracınıza bir uygulama eklemek için:
 
 Uygulama eklemeyi tamamladınız. Sonraki hızlı başlangıçta, logosunun nasıl değiştirileceği ve uygulamanızın diğer özelliklerinin nasıl düzenleneceği gösterilmektedir.
 
+> [!TIP]
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Hızlı başlangıç serisine devam edemeyecekseniz, test kiracınızı temizlemek için uygulamayı silmeyi göz önünde bulundurun. Bu serinin son hızlı başlangıçta uygulamanın silinmesi, bkz. [uygulamayı silme](delete-application-portal.md).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir uygulamayı yapılandırma](add-application-portal-configure.md)
-- [Çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)
-- [Bir uygulamayı silme](delete-application-portal.md)
+Bir uygulamanın nasıl yapılandırılacağını öğrenmek için bir sonraki makaleye ilerleyin.
+> [!div class="nextstepaction"]
+> [Bir uygulamayı yapılandırma](add-application-portal-configure.md)

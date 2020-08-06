@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/16/2020
+ms.date: 08/04/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171659"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800357"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -104,6 +104,8 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 08/04/2020: [Azure 'DA SLES 'de pacemaker 'ı ayarlama](./high-availability-guide-suse-pacemaker.md) ve [Azure 'daki RHEL 'de pacemaker](./high-availability-guide-rhel-pacemaker.md) 'ı ayarlama sırasında değişiklik yaparken, paceoluşturucu kümeleri için güvenilir ad çözümlemesinin önemini vurgulayın
+- 08/04/2020: [SAP NW ha Ile WFCS 'de, dosya paylaşımıyla](./sap-high-availability-installation-wsfc-file-share.md)değiştirin, [paylaşılan disk ile wfcs 'de SAP NW ha](./sap-high-availability-installation-wsfc-shared-disk.md), [Azure VM](./high-availability-guide.md)'lerinde SAP NW için ha, [SLES](./high-availability-guide-suse.md)üzerinde SAP NW için ha, SLES 'deki [Azure VM 'Lerinde](./high-availability-guide-suse-netapp-files.md)SAP [SLES Multi-SID KıLAVUZUNDAKI Azure VM 'lerinde SAP NW Için ha](./high-availability-guide-suse-multi-sid.md), RHEL 'de Azure VM 'lerinde SAP [NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-rhel.md), Azure VM 'lerinde RHEL 'de SAP [için,](./high-availability-guide-rhel-netapp-files.md) RHEL [Çoklu SID](./high-availability-guide-rhel-multi-sid.md) 'de Azure VM 'lerinde for SAP NW`enque/encni/set_so_keepalive`
 - 07/23/2020: SAP HANA Büyük Örnekleri kaydetme, bir SAP HANA Büyük Örnekleri rezervasyonu satın almadan önce bilmeniz gerekenleri açıklayan [bir Azure ayırma](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) makalesiyle eklendi ve satın alma işlemi nasıl yapılır?
 - 07/16/2020: [dağıtım KıLAVUZUNDA](deployment-guide.md) SAP IÇIN yeni VM uzantısı yüklemek üzere Azure PowerShell nasıl kullanacağınızı açıkla
 - 7/04/2020: [SAP Çözümleri Için Azure izleyici sürümü (Önizleme)](./azure-monitor-overview.md)
@@ -130,7 +132,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 - 03/31/2020: [Azure VM 'Lerde yüksek kullanılabilirlik üzerinde SAP HANA](./sap-hana-high-availability.md) ve Azure VM 'lerde yüksek kullanılabilirlik, şeritli birimler oluştururken Stripe boyutunun nasıl belirtilmesinde yönergeler eklemek için [rhel üzerinde SAP HANA](./sap-hana-high-availability-rhel.md)
 - 03/27/2020: dosya sistemi bağlama seçeneklerini NetApp TR-4746 (eşitleme bağlama seçeneğini kaldır) olarak hizalamak için [SLES 'Deki Azure VM 'LERINDE SAP NW Için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md) olarak değiştirin
 - 03/26/2020: [SLES çok düzeyli kılavuzdaki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse-multi-sid.md) değişikliği yapın NetApp TR-4746 başvurusu eklemek için
-- 03/26/2020: SLES for SAP Applications üzerinde SAP [NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse.md)olarak değişiklik yapın ve SAP [uygulamaları için Azure NetApp Files, SLES 'teki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)yapın SLES [High availability for NFS on Azure VMs on SLES](./high-availability-guide-suse-nfs.md)'de Azure VM 'lerde yüksek KULLANıLABILIRLIK, [SLES Multi-SID kılavuzundaki](./high-availability-guide-suse-multi-sid.md)Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik, SAP uygulamaları için [RHEL 'de Azure](./high-availability-guide-rhel.md) VM 'Lerde yüksek kullanılabilirlik ve Azure VM 'lerinde SAP NetWeaver için [yüksek](./high-availability-guide-rhel-netapp-files.md) kullanılabilirlik ve arka uç havuzu oluşturma yönergelerini açıklığa kavuşturma Azure NetApp Files Azure Load Balancer
+- 03/26/2020: SLES for SAP Applications üzerinde SAP [NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse.md)olarak değişiklik yapın ve SAP [uygulamaları için Azure NetApp Files, SLES 'teki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)yapın [SLES](./high-availability-guide-suse-nfs.md)üzerinde Azure VM 'lerde yüksek KULLANıLABILIRLIK, [rhel çoklu SID kılavuzundaki](./high-availability-guide-suse-multi-sid.md)Azure VM 'lerinde [SAP](./high-availability-guide-rhel-netapp-files.md) NetWeaver için yüksek kullanılabilirlik, SAP uygulamaları için [RHEL 'de](./high-availability-guide-rhel.md) Azure VM 'lerde yüksek kullanılabilirlik ve güvenlik arka uç havuzu oluşturma yönergelerini açıklığa kavuşturma ve Azure VM 'lerde yüksek kullanılabilirlik Azure NetApp Files Azure Load Balancer
 - 03/19/2020: belge hızlı başlangıcı 'nın ana düzeltmesi: Azure sanal makinelerine [SAP HANA yüklemek](./hana-get-started.md) Için [Azure sanal makinelerinde tek örnekli SAP HANA el ile yükleme](./hana-get-started.md)
 - 03/17/2020: artık gerekli olmayan SBD yapılandırma ayarını kaldırmak için [Azure 'daki SUSE Linux Enterprise Server Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik
 - 03/16/2020: [Azure dağıtımları için desteklenen SAP yazılımının desteklendiği](./sap-supported-product-on-azure.md) SAP HANA IaaS sertifikalı platformda sütun sertifikasyon senaryosunun açıklaması

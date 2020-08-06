@@ -10,19 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223916"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808244"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdan bir uygulamayı silme
 
 Bu hızlı başlangıç, Azure Active Directory (Azure AD) kiracınıza eklenmiş bir uygulamayı silmek için Azure portal kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınızdan bir uygulamayı silmek için şunlar gerekir:
 
@@ -44,9 +43,15 @@ Azure AD kiracınızdan bir uygulamayı silmek için:
 1. Sol bölmedeki **Yönet** bölümünde **Özellikler**' i seçin.
 1. **Sil**' i seçin ve ardından Azure AD kiracınızdan uygulamayı silmek istediğinizi onaylamak için **Evet** ' i seçin.
 
+> [!TIP]
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıç serisini tamamladığınızda, test kiracınızı temizlemek için uygulamayı silmeyi göz önünde bulundurun. Uygulamanın silinmesi bu hızlı başlangıçta ele alınmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulama yönetimi en iyi uygulamaları](application-management-fundamentals.md)
-- [Uygulama yönetimi genel senaryolar](common-scenarios.md)
-- [Uygulama yönetimi görünürlüğü ve denetimi](cloud-app-security.md)
+Hızlı başlangıç serisini tamamladınız! Sonraki adım olarak, uygulama yönetiminde en iyi yöntemler hakkında bilgi edinin.
+> [!div class="nextstepaction"]
+> [Uygulama yönetimi en iyi uygulamaları](application-management-fundamentals.md)

@@ -3,7 +3,7 @@ title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi için değişiklik i
 description: Azure Active Directory yetkilendirme yönetimi 'nde erişim paketi için istek ve onay ayarlarını değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf38013efb14e412fbcd43e06dcf17e61c3bc4a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078816"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798775"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ve onay ayarları
 

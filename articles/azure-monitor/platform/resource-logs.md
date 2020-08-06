@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077084"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800509"
 ---
 # <a name="azure-resource-logs"></a>Azure Kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
 
-Oluşturduğunuz her Azure kaynağı için otomatik olarak bir tanılama ayarı oluşturmak üzere [Azure ilkesi 'ni](deploy-scale.md) kullanma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları](diagnostic-settings.md) oluşturma.
+Oluşturduğunuz her Azure kaynağı için otomatik olarak bir tanılama ayarı oluşturmak üzere [Azure ilkesi 'ni](../deploy-scale.md) kullanma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları](diagnostic-settings.md) oluşturma.
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics çalışma alanına gönderme
  Aşağıdakiler de dahil olmak üzere [Azure Izleyici günlüklerinin](data-platform-logs.md) özelliklerini etkinleştirmek için kaynak günlüklerini bir Log Analytics çalışma alanına gönderin:

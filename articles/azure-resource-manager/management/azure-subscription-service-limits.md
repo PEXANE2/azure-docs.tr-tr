@@ -4,12 +4,12 @@ description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtla
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515892"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810488"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -375,11 +375,11 @@ Azure dosya limitleri hakkında daha fazla bilgi için bkz. [Azure dosyaları ö
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Daha fazla bilgi için bkz. [sanal makine boyutları](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Daha fazla bilgi için bkz. [sanal makine boyutları](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 #### <a name="disk-encryption-sets"></a>Disk şifreleme kümeleri
 
-Her abonelik için bölge başına 50 disk şifreleme kümesi sınırlaması vardır. Daha fazla bilgi için bkz. [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) veya [Windows](/azure/virtual-machines/windows/disk-encryption#restrictions) sanal makineleri için şifreleme belgeleri. Kotayı artırmanız gerekiyorsa Azure desteği 'ne başvurun.
+Her abonelik için bölge başına 50 disk şifreleme kümesi sınırlaması vardır. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) veya [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) sanal makineleri için şifreleme belgeleri. Kotayı artırmanız gerekiyorsa Azure desteği 'ne başvurun.
 
 ### <a name="managed-virtual-machine-disks"></a>Yönetilen sanal makine diskleri
 
@@ -426,6 +426,6 @@ Paylaşılan görüntü galerileri kullanarak kaynak dağıtmak için abonelik b
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure sınırlarını ve artışları anlayın](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Azure için sanal makine ve bulut hizmeti boyutları](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure için sanal makine ve bulut hizmeti boyutları](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Cloud Services için Boyutlar](../../cloud-services/cloud-services-sizes-specs.md)
 * [Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları](resource-name-rules.md)

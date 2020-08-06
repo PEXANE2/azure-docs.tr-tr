@@ -3,7 +3,7 @@ title: Gruplar & uygulamalar için erişim gözden geçirmesini tamamlar-Azure A
 description: Azure Active Directory erişim gözden geçirmeleriyle grup üyelerinin veya uygulama erişiminin erişim incelemesini tamamlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251ca1dc2b288d3448cdcda0f28335a92c54b431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078865"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798843"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri içindeki gruplar ve uygulamalar için bir erişim incelemesi tamamlamayı doldurun
 
@@ -29,7 +29,7 @@ Yönetici olarak, [gruplar veya uygulamalar için erişim gözden geçirmesi olu
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Premium P2
 - Genel yönetici, Kullanıcı Yöneticisi, güvenlik yöneticisi veya güvenlik okuyucusu

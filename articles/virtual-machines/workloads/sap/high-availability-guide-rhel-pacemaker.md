@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065144"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800271"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -125,7 +125,11 @@ ms.locfileid: "87065144"
 1. **[A]** kurulum konak adı çözümlemesi
 
    Bir DNS sunucusu kullanabilir veya tüm düğümlerdeki/etc/Konakları değiştirebilirsiniz. Bu örnek,/etc/hosts dosyasının nasıl kullanılacağını gösterir.
-   Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin. /Etc/hosts kullanmanın avantajı, kümenizin DNS 'den bağımsız hale gelmesi ve tek bir başarısızlık noktası olması olabilir.
+   Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin.  
+
+   >[!IMPORTANT]
+   > Küme yapılandırmasında ana bilgisayar adları kullanılıyorsa, güvenilir ana bilgisayar adı çözümlemenin olması çok önemlidir. Adlar kullanılabilir değilse ve küme yük devretme gecikmelerine yol açacağından, küme iletişimi başarısız olur.
+   > /Etc/hosts kullanmanın avantajı, kümenizin DNS 'den bağımsız hale gelmesi ve tek bir başarısızlık noktası olması olabilir.  
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -216,7 +220,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel Bakış’ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Genel bakış'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 

@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 938fb751de90112dc206779a36b88f95f1d7d508
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289448"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810437"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -24,7 +24,7 @@ MABS, System Center DPM 'yi temel alır ve birkaç farklılık ile benzer işlev
 
 - MABS çalıştırmak için herhangi bir System Center lisansı gerekmez.
 - Azure, hem MABS hem de DPM için uzun süreli yedekleme depolama alanı sağlar. Ayrıca DPM, banttaki uzun süreli depolamaya yönelik verileri yedeklemenizi sağlar. MABS bu işlevselliği sağlamaz.
-- [BIRINCIL DPM sunucusunu ikincil BIR DPM sunucusuyla yedekleyebilirsiniz](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu tekrar kullanılabilir hale gelene kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir  MABS bu işlevselliği sağlamaz.
+- [BIRINCIL DPM sunucusunu ikincil BIR DPM sunucusuyla yedekleyebilirsiniz](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu tekrar kullanılabilir hale gelene kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir  MABS bu işlevselliği sağlamaz.
 
 MABS 'yi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57520)' nden indirebilirsiniz. Şirket içinde veya bir Azure sanal makinesinde çalıştırılabilir.
 

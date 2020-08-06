@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502656"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810233"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Express.js 'den Azure Işlevlerine kaydırma
 
@@ -27,7 +27,7 @@ Kodu sunucusuz bir mimariye geçirirken Express.js uç noktaları yeniden düzen
 - **Yapılandırma ve kurallar**: bir IŞLEVLER uygulaması http fiillerini tanımlamak, güvenlik ilkelerini tanımlamak ve işlevin [giriş ve çıkışını](./functions-triggers-bindings.md)yapılandırmak için dosyadaki _function.js_ kullanır. Varsayılan olarak, işlev dosyalarını içeren klasör adı, uç nokta adını tanımlar, ancak adı `route` dosyadaki [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) özelliği aracılığıyla değiştirebilirsiniz.
 
 > [!TIP]
-> Etkileşimli öğretici [yeniden düzenleme Node.js ve Azure işlevleri Ile sunucusuz API 'Lere hızlı API 'ler](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)aracılığıyla daha fazla bilgi edinin.
+> Etkileşimli öğretici [yeniden düzenleme Node.js ve Azure işlevleri Ile sunucusuz API 'Lere hızlı API 'ler](/learn/modules/shift-nodejs-express-apis-serverless/)aracılığıyla daha fazla bilgi edinin.
 
 ## <a name="example"></a>Örnek
 
@@ -138,4 +138,4 @@ Dizide tanımlayarak `get` `methods` , işlevi http istekleri için kullanılabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Etkileşimli öğretici [yeniden düzenleme Node.js ve Azure işlevleri Ile sunucusuz API 'Lere hızlı API 'ler](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/) hakkında daha fazla bilgi edinin
+- Etkileşimli öğretici [yeniden düzenleme Node.js ve Azure işlevleri Ile sunucusuz API 'Lere hızlı API 'ler](/learn/modules/shift-nodejs-express-apis-serverless/) hakkında daha fazla bilgi edinin

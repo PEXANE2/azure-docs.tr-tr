@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 07/19/2020
+ms.date: 08/05/2020
 ms.author: abnarain
-ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023895"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800921"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -20,7 +20,7 @@ ms.locfileid: "87023895"
 
 Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümleştirme çalışma zamanı için genel sorun giderme yöntemleri incelenmektedir.
 
-## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Azure Data Factory şirket içinde barındırılan tümleştirme çalışma zamanı günlüklerini toplayın
+## <a name="gather-self-hosted-ir-logs-from-azure-data-factory"></a>Azure Data Factory şirket içinde barındırılan IR günlüklerini toplayın
 
 Şirket içinde barındırılan IR/paylaşılan IR üzerinde çalışan başarısız etkinlikler için Azure Data Factory hata günlüklerini görüntülemeyi ve yüklemeyi destekler. Aşağıdaki adımları izleyerek hata raporu KIMLIĞINI alabilir ve ilgili bilinen sorunları bulmak için rapor KIMLIĞINI girebilirsiniz.
 
@@ -46,11 +46,369 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 > Günlük görüntüleme ve karşıya yükleme istekleri, tüm çevrimiçi şirket içinde barındırılan IR örneklerinde yürütülür. Lütfen tüm şirket içinde barındırılan IR örneklerinin eksik Günlükler olması durumunda çevrimiçi olduğundan emin olun. 
 
 
-## <a name="common-errors-and-resolutions"></a>Genel sorunlar ve çözümleri
+## <a name="self-hosted-ir-general-failure-or-error"></a>Şirket içinde barındırılan IR genel hatası veya hatası
 
-### <a name="error-message"></a>Hata iletisi: 
+### <a name="tlsssl-certificate-issue"></a>TLS/SSL sertifikası sorunu
 
-`Self-hosted integration runtime can't connect to cloud service`
+#### <a name="symptoms"></a>Belirtiler
+
+**Şirket içinde barındırılan IR Configuration Manager**TLS/SSL sertifikası (Gelişmiş)  ->  ,**intranet 'ten uzaktan erişim**, TLS/SSL sertifikası ' nı seçtikten sonra, aşağıdaki hata görüntülenir:
+
+`Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
+
+Yukarıdaki durumda, Kullanıcı son öğe olarak "microsoft.com" ile sertifikayı kullanıyor.
+
+#### <a name="cause"></a>Nedeni
+
+Bu, WCF 'de bilinen bir sorundur: WCF TLS/SSL doğrulaması yalnızca SAN 'da son DNSName 'yi denetler. 
+
+#### <a name="resolution"></a>Çözüm
+
+Joker karakter sertifikası Azure Data Factory v2 şirket içinde barındırılan IR 'de desteklenir. Bu sorun normalde SSL sertifikası doğru olmadığı için oluşur. SAN 'daki son DNSName geçerli olmalıdır. Doğrulamak için aşağıdaki adımları izleyin. 
+1.  Yönetim Konsolu 'Nu açın, sertifika ayrıntılarından hem *Konu* hem de *konu alternatif adını* iki kez kontrol edin. Yukarıdaki durumda, örneğin "DNS Name = microsoft.com.com" olan *konu alternatif adındaki*son öğe geçerli değildir.
+2.  Yanlış DNS adını kaldırmak için sertifika sorunu şirketine başvurun.
+
+### <a name="concurrent-jobs-limit-issue"></a>Eşzamanlı işler sınırı sorunu
+
+#### <a name="symptoms"></a>Belirtiler
+
+Azure Data Factory kullanıcı arabiriminden eşzamanlı işleri sınırla ' yı arttırmaya çalışırken, her zaman *güncelleştirme* olarak askıda kalır.
+Eşzamanlı işlerin maksimum değeri 24 olarak ayarlanmıştır ve işlerin daha hızlı çalışabilmesi için sayıyı artırmak istiyorsunuz. Girebileceğiniz en küçük değer 3 ve girebileceğiniz en büyük değer 32 ' dir. Bu değeri 24 ' ten 32 ' e artırmış ve *güncelleştirme* düğmesi ' nde, aşağıda gördüğünüz şekilde *güncelleştirmede* yer aldığı Kullanıcı arabiriminde anlamış olursunuz. Yenilemeden sonra müşteri, değeri yine 24 olarak görmemiştir ve 32 'e hiçbir şekilde güncelleştirilmedi.
+
+![Durum güncelleştiriliyor](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
+
+#### <a name="cause"></a>Nedeni
+
+Değer, bilgisayar logicCore ve belleğe bağlı olduğundan, bu ayar için bir sınırlama vardır; bunu yalnızca 24 gibi daha küçük bir değere ayarlayabilir ve sonuca bakabilirsiniz.
+
+> [!TIP] 
+> - Mantıksal çekirdek sayısının ne olduğu ve makinenizin mantıksal çekirdek sayısını bulma hakkında daha fazla bilgi için [Bu makaleye](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)bakın.
+> - Math. log ' u hesaplama hakkında daha fazla bilgi için [Bu makaleye](https://www.rapidtables.com/calc/math/Log_Calculator.html)bakın.
+
+
+### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Şirket içinde barındırılan IR HA SSL sertifikası sorunu
+
+#### <a name="symptoms"></a>Belirtiler
+
+Şirket içinde barındırılan IR iş düğümü aşağıdaki hatayı bildirdi:
+
+`Failed to pull shared states from primary node net.tcp://abc.cloud.corp.Microsoft.com:8060/ExternalService.svc/. Activity ID: XXXXX The X.509 certificate CN=abc.cloud.corp.Microsoft.com, OU=test, O=Microsoft chain building failed. The certificate that was used has a trust chain that cannot be verified. Replace the certificate or change the certificateValidationMode. The revocation function was unable to check revocation because the revocation server was offline.`
+
+#### <a name="cause"></a>Nedeni
+
+SSL/TLS anlaşması ile ilgili servis taleplerini işleytiğimiz zaman, sertifika zinciri doğrulamayla ilgili bazı sorunlarla karşılaşabilirler. 
+
+#### <a name="resolution"></a>Çözüm
+
+- X. 509.440 sertifika zinciri derleme hatası sorunlarını gidermek için hızlı ve sezgisel bir yol aşağıda verilmiştir.
+ 
+    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını Yönet ' e gidin ve denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler**  ->  **dışarı aktar**' a sağ tıklayın.
+    
+        ![Görevleri dışarı aktar](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
+
+    2. İçe aktarılmış sertifikayı istemci makinesine kopyalayın. 
+    3. İstemci tarafında CMD ' de aşağıdaki komutu çalıştırın. Aşağıdaki *\<certificate path>* ve *\<output txt file path>* yer tutucuları ilgili yollarla değiştirdiğinizden emin olun.
+    
+        ```
+        Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
+        ```
+
+        Örnek:
+
+        ```
+        Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
+        ```
+    4. Çıkış txt dosyasında herhangi bir hata olup olmadığını denetleyin. Hata özetini txt dosyasının sonunda bulabilirsiniz.
+
+        Örnek: 
+
+        ![Hata Özeti](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
+
+        Günlük dosyasının sonunda aşağıda gösterildiği gibi herhangi bir hata görmüyorsanız, istemci makinesinde başarıyla oluşturulan sertifika zincirini göz önünde bulundurun.
+        
+        ![Günlük dosyasında hata yok](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
+
+- Sertifika dosyasında AIA, CDP ve OCSP yapılandırılmışsa. Daha sezgisel bir şekilde kontrol edebilirsiniz.
+ 
+    1. Bir sertifikanın ayrıntılarını denetleyerek bu bilgileri alabilirsiniz.
+    
+        ![Sertifika ayrıntısı](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
+    1. Aşağıdaki komutu çalıştırın. *\<certificate path>* Yer tutucuyu sertifikanın ilgili yoluyla değiştirdiğinizden emin olun.
+    
+        ```
+          Certutil   -URL    <certificate path> 
+        ```
+    1. Sonra **URL alma aracı** açılır. **Al** DÜĞMESINE tıklayarak AIA, CDP ve OCSP 'den sertifikaları doğrulayabilirsiniz.
+
+        ![Alma düğmesi](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
+ 
+        AIA sertifikası "doğrulandı" ise ve CDP veya OCSP sertifikası "doğrulandıktan" ise sertifika zinciri başarıyla oluşturulabilir.
+
+        AIA, CDP alırken hata görürseniz, istemci makinenin hedef URL 'ye bağlanmasına hazırlığını sağlamak için ağ ekibiyle birlikte çalışın. Http yolu veya LDAP yolu doğrulanamazsa bu yeterli olur.
+
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Şirket içinde barındırılan IR, dosya veya derlemeyi yükleyemedi
+
+#### <a name="symptoms"></a>Belirtiler
+
+`Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
+ 
+Örnek: 
+
+`Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
+
+#### <a name="cause"></a>Nedeni
+
+İşlem izleyiciyi alırsanız aşağıdaki sonucu görebilirsiniz:
+
+[![İşlem İzleyicisi](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
+
+> [!TIP] 
+> Aşağıdaki ekran görüntüsünde gösterilen şekilde filtre ayarlayabilirsiniz.
+> Bu, dll **System. ValueTuple** 'nin GAC ile ilgili klasörde veya *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway*veya *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* klasöründe yer aldığı konusunda bize söyler.
+> Temel olarak, dll 'yi önce *GAC* klasöründen, sonra da *paylaşılan* ve son olarak *ağ geçidi* klasöründen yükler. Bu nedenle, dll 'yi yararlı olabilecek herhangi bir yola koyabilirsiniz.
+
+![Filtreleri ayarlama](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
+
+#### <a name="resolution"></a>Çözüm
+
+**System.ValueTuple.dll** *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* klasöründe bulunduğunu görebilirsiniz. Sorunu çözmek **System.ValueTuple.dll** içinSystem.ValueTuple.dll*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* klasörüne kopyalayın.
+
+Aynı yöntemi diğer dosya veya bütünleştirilmiş kod eksik sorunlarını çözmek için de kullanabilirsiniz.
+
+#### <a name="more-information"></a>Daha Fazla Bilgi
+
+*%Windir%\Microsoft.NET\assembly* ve *%windir%\assembly* altında System.ValueTuple.dll görmenizin nedeni, .net davranışının olmasının nedenidir. 
+
+Aşağıdaki hatadan, derleme sistemini açık bir şekilde görebilirsiniz *. ValueTuple* yok. Bu nedenle, uygulama derlemeyi *System.ValueTuple.dll*denetlemeye çalıştığında böyle bir sorun oluşur.
+ 
+`<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
+ 
+GAC hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/dotnet/framework/app-domains/gac)bakın.
+
+
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Şirket içinde barındırılan IR anahtarını denetleme eksik
+
+#### <a name="symptoms"></a>Belirtiler
+
+Şirket içinde barındırılan tümleştirme çalışma zamanı aniden anahtar olmadan çevrimdışı duruma geçer, aşağıdaki hata iletisi olay günlüğünde gösterilir:`Authentication Key is not assigned yet`
+
+![Kimlik doğrulama anahtarı eksik](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
+
+#### <a name="cause"></a>Nedeni
+
+- Şirket içinde barındırılan IR düğümü veya portalda otomatik olarak barındırılan bir IR silinir.
+- Temiz bir kaldırma işlemi yapılır.
+
+#### <a name="resolution"></a>Çözüm
+
+Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: *%ProgramData%\microsoft\data Transfer\DataManagementGateway*ve **yapılandırma** adlı dosyanın silinip silinmediğini kontrol edebilirsiniz. Silinirse, dosyayı kimin sildiğini denetlemek için [buradaki](https://www.netwrix.com/how_to_detect_who_deleted_file.html) yönergeleri izleyin.
+
+![Yapılandırma dosyasını denetle](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
+
+
+### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>İki şirket içi veri deposunu köprülemek için kendi kendine barındırılan IR kullanılamaz
+
+#### <a name="symptoms"></a>Belirtiler
+
+Hem kaynak hem de hedef veri depoları için şirket içinde barındırılan IRS oluşturduktan sonra, bir kopyayı tamamlaması için iki IRS 'yi birbirine bağlamak istersiniz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor*; *hedef IR tarafından kaynağa erişilemiyor*.
+ 
+#### <a name="cause"></a>Nedeni
+
+Şirket içinde barındırılan IR, her bir veri deposu için yüklenmesi gereken bir istemci aracısına değil, kopyalama etkinliğinin merkezi bir düğümü olarak tasarlanmıştır.
+ 
+Yukarıdaki durumda, her bir veri deposu için bağlı hizmetin aynı IR ile oluşturulması gerekir ve IR, ağ üzerinden her iki veri deposuna de erişebilmelidir. IR, kaynak veri deposu, hedef veri deposu veya üçüncü bir makine üzerinde her ne olursa olsun, farklı IRS ile iki bağlı hizmet oluşturulmuşsa, ancak aynı kopyalama etkinliğinde kullanılırsa, hedef IR kullanılır ve her iki veri deposunun sürücülerinin hedef IR makinesine yüklenmesi gerekir.
+
+#### <a name="resolution"></a>Çözüm
+
+Hedef IR üzerinde hem kaynak hem de hedef için sürücüleri yükler ve kaynak veri deposuna erişebilecekleri emin olun.
+ 
+Trafik iki veri deposu arasında ağdan geçemezse (örneğin, iki VNET 'lerde yapılandırılmışsa), bu kopyayı, IR yüklü olsa bile tek bir etkinlikte bitiremeyebilirsiniz. Bu durumda, her biri bir VENT 'te iki IRS ile iki adet kopyalama etkinliği oluşturabilirsiniz: 1 IR; veri deposu 1 ' den Azure Blob depolama alanına kopyalamak için başka bir Azure Blob depolama 'dan veri deposu 2 ' ye kopyalama yapabilirsiniz. Bu, iki bağlantısı kesik veri deposunu bağlayan bir köprü oluşturmak için IR kullanma gereksiniminin benzetimini yapar.
+
+
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Kimlik bilgisi eşitleme sorunu, HA 'dan kimlik bilgilerinin kaybolmasına neden oluyor
+
+#### <a name="symptoms"></a>Belirtiler
+
+"XXXXXXXXXX Integration Runtime" veri kaynağı kimlik bilgisi, Azure portal bağlantı hizmetini sildiğinizde veya görevin yanlış yükü varsa, lütfen kimlik bilgilerinizi yeniden kullanarak yeni bağlantı hizmeti oluşturun "
+
+#### <a name="cause"></a>Nedeni
+
+Şirket içinde barındırılan IR, iki düğüm ile HA modunda oluşturulmuştur, ancak kimlik bilgileri eşitleme durumunda değil, dağıtıcı düğümünde depolanan kimlik bilgileri diğer çalışan düğümleriyle eşitlenmez. Herhangi bir yük devretme dağıtıcı düğümünden çalışan düğümüne, ancak kimlik bilgileri yalnızca önceki dağıtıcı düğümünde mevcutsa, kimlik bilgilerine erişmeye çalışırken görev başarısız olur ve yukarıdaki hata hakkında daha fazla vurun.
+
+#### <a name="resolution"></a>Çözüm
+
+Bu sorundan kaçınmak için tek yol, kimlik bilgilerinin eşitleme durumunda iki düğümün olduğundan emin olmak içindir. Aksi takdirde, yeni dağıtıcı için kimlik bilgilerini yeniden giretmeniz gerekir.
+
+
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Özel anahtar eksik olduğundan sertifika seçemezsiniz
+
+#### <a name="symptoms"></a>Belirtiler
+
+1.  Bir PFX dosyasını sertifika deposuna aktarın.
+2.  IR Configuration Manager Kullanıcı arabirimi aracılığıyla sertifikayı seçerken aşağıdaki hata ile karşılaşrsınız:
+
+    ![Özel anahtar eksik](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+
+#### <a name="cause"></a>Nedeni
+
+- Kullanıcı hesabı düşük ayrıcalıkta ve özel anahtara erişemez.
+- Sertifika imza olarak oluşturuldu ancak anahtar değişimi olarak üretildi.
+
+#### <a name="resolution"></a>Çözüm
+
+1.  Kullanıcı arabirimini çalıştırmak için özel anahtara erişebilen ayrıcalıklı bir hesap kullanın.
+2.  Sertifikayı içeri aktarmak için aşağıdaki komutu çalıştırın:
+    
+    ```
+    certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
+    ```
+
+
+## <a name="self-hosted-ir-setup"></a>Şirket içinde barındırılan IR kurulumu
+
+### <a name="the-integration-runtime-registration-error"></a>Integration Runtime kayıt hatası 
+
+#### <a name="symptoms"></a>Belirtiler
+
+Bazen, aşağıdaki gibi nedenlerle şirket içinde barındırılan IR 'yi farklı bir hesapta çalıştırmak istiyoruz:
+- Şirket ilkesi, hizmet hesabına izin vermez.
+- Bazı kimlik doğrulaması gereklidir.
+
+Hizmet panelinde hizmet hesabını değiştirdikten sonra, Integration Runtime çalışmayı durdurduğunu fark edebilirsiniz.
+
+![IR kayıt hatası](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+
+#### <a name="cause"></a>Nedeni
+
+Yalnızca hizmet hesabına verilen birçok kaynak vardır. Hizmet hesabını başka bir hesapla değiştirirken, tüm bağımlı kaynakların izni aynı kalır.
+
+#### <a name="resolution"></a>Çözüm
+
+Hatayı denetlemek için Integration Runtime olay günlüğüne gidin.
+
+![IR olay günlüğü](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
+
+Hata, *UnauthorizedAccessException*' dan sonra gösteriyorsa, aşağıdaki yönergeleri izleyin:
+
+
+1. Windows hizmeti panelinde *Diahostservice* oturum açma hizmeti hesabını denetleyin.
+
+    ![Oturum açma hizmeti hesabı](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+
+2. Oturum açma hizmeti hesabının şu klasör üzerinde R/W iznine sahip olup olmadığını denetleyin: *%ProgramData%\microsoft\datatransfer\datamanagementgateway*.
+
+    - Varsayılan olarak, hizmet oturum açma hesabı değiştirilmediyseniz, R/W iznine sahip olmalıdır.
+
+        ![Hizmet izni](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
+
+    - Hizmet oturum açma hesabını değiştirdiyseniz, sorunu azaltmak için aşağıdaki adımları izleyin:
+        1. Temizle geçerli şirket içinde barındırılan IR 'yi kaldırın.
+        1. Şirket içinde barındırılan IR bitlerini yükler.
+        1. Hizmet hesabını değiştirmek için aşağıdaki yönergeleri izleyin: 
+            1. Selfhosted IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Yükseltilmiş ayrıcalık kullanarak bir komut satırı başlatın. *\<user>* Ve *\<password>* kendi Kullanıcı adınızı ve parolanızı değiştirin ve ardından aşağıdaki komutu çalıştırın:
+                       
+                ```
+                dmgcmd.exe -SwitchServiceAccount "<user>" "<password>"
+                ```
+            1. LocalSystem hesabına geçmek istiyorsanız, bu hesap için doğru biçimi kullandığınızdan emin olun. Doğru biçimin bir örneği aşağıda verilmiştir:
+
+                ```
+                dmgcmd.exe -SwitchServiceAccount "NT Authority\System" ""
+                ```         
+                Biçimi aşağıda gösterildiği **gibi kullanmayın:**
+
+                ```
+                dmgcmd.exe -SwitchServiceAccount "LocalSystem" ""
+                ```              
+            1. Alternatif olarak, yerel sistem yöneticiden daha yüksek ayrıcalıklara sahip olduğundan, bunu "Hizmetler" de doğrudan değiştirebilirsiniz.
+            1. IR hizmeti oturum açma hesabı için yerel/etki alanı kullanıcısı ' nı kullanabilirsiniz.            
+        1. Integration Runtime kaydedin.
+
+Hata şöyle görünüyorsa: *' Integration Runtime Service ' (DIAHostService) hizmeti başlatılamadı. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın*, aşağıdaki yönergeleri izleyin:
+
+1. Windows hizmeti panelinde *Diahostservice* oturum açma hizmeti hesabını denetleyin.
+   
+    ![Oturum açma hizmeti hesabı](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+
+2. Windows hizmetini başlatmak için oturum açma hizmeti hesabının **hizmet olarak oturum** aç iznine sahip olup olmadığını denetleyin:
+
+    ![Hizmet olarak oturum aç](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
+
+#### <a name="more-information"></a>Daha Fazla Bilgi
+
+Büyük/küçük bir çözünürlükte iki desenden hiçbiri uygulamanızda yoksa, aşağıdaki Windows olay günlüklerini toplamayı deneyin: 
+- Uygulama ve hizmet günlükleri-> Integration Runtime
+- Windows günlükleri-> uygulaması
+
+### <a name="cannot-find-register-button-to-register-a-self-hosted-ir"></a>Kendi kendine barındırılan bir IR kaydetmek için Kaydet düğmesi bulunamıyor    
+
+#### <a name="symptoms"></a>Belirtiler
+
+Şirket içinde barındırılan bir IR kaydı sırasında Configuration Manager Kullanıcı arabiriminde **Kaydet** düğmesi bulunamadı.
+
+![Kaydolma düğmesi yok](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+
+#### <a name="cause"></a>Nedeni
+
+*Integration Runtime 3,0*' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Bir düğüm bazı Integration Runtime kaydedilmişse (çevrimiçi veya değil), başka bir Integration Runtime yeniden kaydetmek için önceki düğümü kaldırmanız ve ardından düğümü yükleyip kaydetmeniz gerekir.
+
+#### <a name="resolution"></a>Çözüm
+
+1. Mevcut Integration Runtime kaldırmak için Denetim Masası 'na gidin.
+
+    > [!IMPORTANT] 
+    > Aşağıdaki işlemde Evet ' i seçin. Kaldırma işlemi sırasında verileri değiştirmeyin.
+
+    ![Verileri silme](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
+
+1. Tümleştirme çalışma zamanı yükleyicisi MSI yoksa, en son Integration Runtime indirmek için [indirme merkezi](https://www.microsoft.com/en-sg/download/details.aspx?id=39717) ' ne gidin.
+1. MSI 'yi yükleyip Integration Runtime kaydedin.
+
+
+### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Localhost nedeniyle Şirket içinde barındırılan IR kaydedilemiyor    
+
+#### <a name="symptoms"></a>Belirtiler
+
+Get_LoopbackIpOrName, şirket içinde barındırılan IR yeni bir makineye kaydedilemiyor.
+
+**Hata Ayıkla:** Çalışma zamanı hatası oluştu.
+' Microsoft. DataTransfer. DIAgentHost. DataSourceCache ' için tür başlatıcısı özel durum oluşturdu.
+Veritabanı araması sırasında kurtarılamaz bir hata oluştu.
+ 
+**Özel durum ayrıntısı:** System. TypeInitializationException: ' Microsoft. DataTransfer. DIAgentHost. DataSourceCache ' için tür başlatıcısı özel durum oluşturdu. ---> sistemi .net. Sockets. SocketException: System .net. DNS. GetAddrInfo (dize adı) konumundaki bir veritabanı araması sırasında kurtarılamaz bir hata oluştu.
+
+#### <a name="cause"></a>Nedeni
+
+Bu sorun genellikle localhost çözümlenirken meydana gelir.
+
+#### <a name="resolution"></a>Çözüm
+
+Dosyayı barındırmak ve bu sorunu çözmek için localhost 127.0.0.1 kullanın.
+
+
+### <a name="self-hosted-setup-failed"></a>Şirket içinde barındırılan kurulum başarısız oldu    
+
+#### <a name="symptoms"></a>Belirtiler
+
+Mevcut bir IR kaldırılamaz veya yeni bir IR yükleyemez ya da mevcut bir IR 'yi yeni bir IR ile yükseltebilirsiniz.
+
+#### <a name="cause"></a>Nedeni
+
+Yükleme Windows Installer hizmetine bağlıdır. Yükleme sorununa neden olabilecek değişken nedenleri vardır:
+- Yeterli disk alanı yok
+- İzinlerin bulunmaması
+- NT hizmeti bir nedenden dolayı kilitlenmiş
+- CPU kullanımı çok yüksek
+- MSI dosyası yavaş bir ağ konumunda barındırılıyor
+- Bazı sistem dosyalarına veya kayıt defterlerine istem dışı olarak dokunulmadı
+
+
+## <a name="self-hosted-ir-connectivity-issues"></a>Şirket içinde barındırılan IR bağlantı sorunları
+
+### <a name="self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı bulut hizmetine bağlanamıyor
+
+#### <a name="symptoms"></a>Belirtiler
 
 ![Şirket içinde barındırılan IR bağlantı sorunu](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -114,8 +472,7 @@ Beklenen yanıt aşağıda verilmiştir:
 > *    "Wu2.frontend.clouddatahub.net/" TLS/SSL sertifikasının proxy sunucusunda güvenilir olup olmadığını denetleyin.
 > *    Proxy üzerinde Active Directory kimlik doğrulaması kullanıyorsanız, hizmet hesabını "Integration Runtime hizmeti" olarak proxy 'ye erişebilen kullanıcı hesabı olarak değiştirin.
 
-### <a name="error-message"></a>Hata iletisi: 
-`Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Hata iletisi: şirket içinde barındırılan tümleştirme çalışma zamanı düğümü/mantıksal dolgu, etkin olmayan/"çalışıyor (sınırlı)" durumunda
 
 #### <a name="cause"></a>Nedeni 
 
@@ -160,12 +517,11 @@ Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
     - Tüm düğümleri aynı etki alanına yerleştirin.
     - Barındırılan tüm VM 'nin ana bilgisayar dosyalarındaki ana bilgisayar eşlemesine IP 'yi ekleyin.
 
-
-## <a name="troubleshoot-connectivity-issue"></a>Bağlantı sorununu giderme
-
-### <a name="troubleshoot-connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Şirket içinde barındırılan IR ve Data Factory veya şirket içinde barındırılan IR ve veri kaynağı/havuz arasında bağlantı sorununu giderme
+### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Şirket içinde barındırılan IR ve Data Factory veya şirket içinde barındırılan IR ve veri kaynağı/havuz arasında bağlantı sorunu
 
 Ağ bağlantısı sorununu gidermek için, [Ağ izlemesini nasıl toplayacağınızı](#how-to-collect-netmon-trace), nasıl kullanacağınızı anlamanız gerektiğini ve NetMon 'u şirket IÇINDE barındırılan IR 'den gerçek zamanlı olarak uygulamadan önce [Netmon izlemesini nasıl analiz](#how-to-analyze-netmon-trace) edeceğinizi bilmeniz gerekir.
+
+#### <a name="symptoms"></a>Belirtiler
 
 Bazen, şirket içinde barındırılan IR ve Data Factory arasındaki bağlantı sorunlarını giderirken: 
 
@@ -173,13 +529,13 @@ Bazen, şirket içinde barındırılan IR ve Data Factory arasındaki bağlantı
 
 Ya da şirket içinde barındırılan IR ve veri kaynağı/havuz arasında aşağıdaki hatalarla karşılaşacağız:
 
-**Hata iletisi:**
 `Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
 
-**Hata iletisi:**
 `One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
 
-**Çözüm:** Yukarıdaki sorunlar hakkında daha fazla bilgi için aşağıdaki yönergelere bakın:
+#### <a name="resolution"></a>Çözüm:
+
+Yukarıdaki sorunlar hakkında daha fazla bilgi için aşağıdaki yönergelere bakın:
 
 Netmon izlemesini alın ve daha fazla analiz edin.
 - İlk olarak, bir filtreyi sunucudan istemci tarafına herhangi bir sıfırlamayı görmek için ayarlayabilirsiniz. Aşağıdaki örnekte, sunucu tarafının Data Factory sunucu olduğunu görebilirsiniz.
@@ -299,6 +655,19 @@ Aşağıda, iyi bir senaryonun nasıl görüneceğine ilişkin bir örnek göste
     ![TCP 4 el sıkışma](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
 
     ![TCP 4 el sıkışma iş akışı](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+
+
+## <a name="self-hosted-ir-sharing"></a>Şirket içinde barındırılan IR paylaşımı
+
+### <a name="share-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Şirket içinde barındırılan IR 'yi farklı bir kiracıdan paylaşma desteklenmez 
+
+#### <a name="symptoms"></a>Belirtiler
+
+Şirket içinde barındırılan IR 'yi Azure Data Factory kullanıcı arabiriminden paylaşmaya çalışırken diğer veri fabrikaları (farklı kiracılarda) fark edebilirsiniz, ancak şirket içinde barındırılan IR 'yi farklı kiracılardaki veri fabrikaları arasında paylaşamaz.
+
+#### <a name="cause"></a>Nedeni
+
+Şirket içinde barındırılan IR, çapraz kiracılar paylaştırılamaz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

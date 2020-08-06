@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537538"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800475"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * , `endpoint-name` Bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktasını tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
 
-Aynı zamanda geçirilen olay yolu nesnesi, `EventRoutes.Add` Bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [ **filtre** parametresi](./how-to-manage-routes.md#filter-events)alır.
+Aynı zamanda geçirilen olay yolu nesnesi, `EventRoutes.Add` Bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [ **filtre** parametresi](./how-to-manage-routes-apis-cli.md#filter-events)alır.
 
 Rotalar [Azure Digital TWINS CLI](how-to-use-cli.md)kullanılarak da oluşturulabilir.
 
@@ -90,7 +90,7 @@ IoT Hub ve Azure dijital TWINS 'de farklı olay türleri aşağıda açıklandı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. bir olay yolunu ayarlama ve yönetme:
-* [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes.md)
+* [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes-apis-cli.md)
 
 Ya da Azure Digital TWINS içindeki olayları yönlendirmek için bkz. Azure Işlevleri 'ni kullanma:
 * [*Nasıl yapılır: verileri işlemek için bir Azure işlevi ayarlama*](how-to-create-azure-function.md)

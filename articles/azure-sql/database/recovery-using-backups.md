@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075918"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809502"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Varsayılan olarak, Azure SQL veritabanı ve Azure SQL yönetilen örnek yedeklemeleri, coğrafi olarak çoğaltılan BLOB depolama alanında (RA-GRS depolama türü) depolanır. [Otomatik veritabanı yedeklemeleri](automated-backups-overview.md)kullanılarak veritabanı kurtarma için aşağıdaki seçenekler kullanılabilir. Seçenekleriniz şunlardır:
+[Otomatik veritabanı yedeklemeleri](automated-backups-overview.md)kullanılarak veritabanı kurtarma için aşağıdaki seçenekler kullanılabilir. Seçenekleriniz şunlardır:
 
 - Aynı sunucuda, bekletme döneminde belirtilen bir zaman noktasına kurtarılan yeni bir veritabanı oluşturun.
 - Silinen bir veritabanı için silme zamanına kurtarıldığı aynı sunucuda bir veritabanı oluşturun.
@@ -33,6 +33,11 @@ Varsayılan olarak, Azure SQL veritabanı ve Azure SQL yönetilen örnek yedekle
 
 > [!IMPORTANT]
 > Geri yükleme sırasında var olan bir veritabanının üzerine yazamaz.
+
+Varsayılan olarak, Azure SQL veritabanı ve Azure SQL yönetilen örnek yedeklemeleri, coğrafi olarak çoğaltılan BLOB depolama alanında (RA-GRS depolama türü) depolanır. Ayrıca, SQL yönetilen örneği yerel olarak yedekli (LRS) ve bölgesel olarak yedekli (ZRS) yedekleme depolamasını da destekler. Artıklık, verilerinizin geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal olağanüstü durumlar dahil olmak üzere planlı ve planlanmamış etkinliklerden korunmasını sağlar. Bölgesel olarak yedekli depolama (ZRS) yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir.
+
+> [!IMPORTANT]
+> Yedeklemeler için depolama yedekliliği yapılandırma yalnızca yönetilen örnek için kullanılabilir ve oluşturma işlemi sırasında izin verilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz.
 
 Standart veya Premium hizmet katmanını kullanırken, veritabanı geri yüklemeniz ek bir depolama maliyeti gerektirebilir. Geri yüklenen veritabanının en büyük boyutu hedef veritabanının hizmet katmanına ve performans düzeyine dahil edilen depolama miktarından daha büyükse, ek maliyet tahakkuk edilir. Ek depolamanın fiyatlandırma ayrıntıları için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan alanın gerçek miktarı dahil edilen depolama miktarından azsa, maksimum veritabanı boyutunu dahil edilen miktara ayarlayarak bu ekstra maliyetten kaçınabilirsiniz.
 
@@ -51,7 +56,7 @@ Büyük veya çok etkin bir veritabanı için geri yükleme birkaç saat sürebi
 
 Tek bir abonelik için, eş zamanlı geri yükleme isteği sayısında sınırlamalar vardır. Bu sınırlamalar, uzun süreli saklama yedeklemesinden gelen zaman içindeki tüm geri yüklemeler, coğrafi geri yüklemeler ve geri yüklemeler için geçerlidir.
 
-|| **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilen en fazla eşzamanlı istek sayısı** |
+| **Dağıtım seçeneği** | **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilen en fazla eşzamanlı istek sayısı** |
 | :--- | --: | --: |
 |**Tek veritabanı (abonelik başına)**|10|60|
 |**Elastik havuz (havuz başına)**|4|200|
@@ -137,6 +142,9 @@ Silinen örnek veritabanının nasıl geri yükleneceğini gösteren örnek bir 
 
 ## <a name="geo-restore"></a>Coğrafi Geri Yükleme
 
+> [!IMPORTANT]
+> Coğrafi geri yükleme yalnızca coğrafi olarak yedekli (RA-GRS) yedekleme depolama türü ile yapılandırılmış yönetilen örnekler için kullanılabilir. Yerel olarak yedekli veya bölgesel olarak yedekli yedekleme depolama türleriyle yapılandırılmış yönetilen örnekler, coğrafi geri yüklemeyi desteklemez.
+
 Herhangi bir SQL veritabanı sunucusundaki bir veritabanını veya herhangi bir Azure bölgesindeki yönetilen örnekteki bir örnek veritabanını, en son coğrafi çoğaltılan yedeklerden geri yükleyebilirsiniz. Coğrafi geri yükleme, kaynak olarak coğrafi olarak çoğaltılan bir yedeklemeyi kullanır. Veritabanı veya veri merkezi bir kesinti nedeniyle erişilemez olsa bile coğrafi geri yükleme isteğinde bulunabilir.
 
 Coğrafi geri yükleme, veritabanınız barındırma bölgesindeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Veritabanını başka herhangi bir bölgedeki sunucuya geri yükleyebilirsiniz. Bir yedeklemenin ne zaman alındığı ve farklı bir bölgedeki Azure blobuna coğrafi olarak çoğaltılma arasında bir gecikme vardır. Sonuç olarak, geri yüklenen veritabanı özgün veritabanının arkasında bir saate kadar sürebilir. Aşağıdaki çizimde, başka bir bölgedeki son kullanılabilir yedeklemeden bir veritabanı geri yüklemesi gösterilmektedir.
@@ -162,7 +170,7 @@ Yedeklemeden yeni bir veritabanı oluşturma işlemini tamamlar. Azure SQL verit
 
 #### <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 
-Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları uygulayın:
+Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları izleyin:
 
 1. **Yeni veritabanı**' nı seçin.
 2. İstenen bir veritabanı adı yazın.
@@ -208,7 +216,7 @@ Kurtarma için Azure PowerShell veya REST API de kullanabilirsiniz. Aşağıdaki
 
 Tek başına veya havuza alınmış bir veritabanını geri yüklemek için bkz. [restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
-  | Cmdlet | Description |
+  | Cmdlet | Açıklama |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Bir veya daha fazla veritabanını alır. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Geri yükleyebileceğiniz, silinmiş bir veritabanını alır. |
@@ -222,7 +230,7 @@ Tek başına veya havuza alınmış bir veritabanını geri yüklemek için bkz.
 
 Yönetilen örnek veritabanını geri yüklemek için bkz. [restore-Azsqlınstancedatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-  | Cmdlet | Description |
+  | Cmdlet | Açıklama |
   | --- | --- |
   | [Get-Azsqlınstance](/powershell/module/az.sql/get-azsqlinstance) |Bir veya daha fazla yönetilen örneği alır. |
   | [Get-Azsqlınstancedatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Bir örnek veritabanı alır. |
@@ -232,7 +240,7 @@ Yönetilen örnek veritabanını geri yüklemek için bkz. [restore-Azsqlınstan
 
 REST API kullanarak bir veritabanını geri yüklemek için:
 
-| API | Description |
+| API | Açıklama |
 | --- | --- |
 | [REST (createMode = kurtarma)](https://docs.microsoft.com/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
@@ -255,5 +263,5 @@ Otomatik yedeklemeler, veritabanlarınızı Kullanıcı ve uygulama hatalarında
 
 - [İş sürekliliği genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [SQL veritabanı otomatik yedeklemeleri](automated-backups-overview.md)
-- [Uzun vadeli bekletme](long-term-retention-overview.md)
+- [Uzun süreli saklama](long-term-retention-overview.md)
 - Daha hızlı kurtarma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma](active-geo-replication-overview.md) veya [otomatik yük devretme grupları](auto-failover-group-overview.md).

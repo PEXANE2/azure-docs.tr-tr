@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554048"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810299"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -26,22 +26,38 @@ ms.locfileid: "87554048"
 
 ## <a name="what-is-a-database-backup"></a>Veritabanı yedeklemesi nedir?
 
-Veritabanı yedeklemeleri, iş sürekliliği ve olağanüstü durum kurtarma stratejilerinin önemli bir parçasıdır çünkü verilerinizi bozulma veya silme işleminden korur.
+Veritabanı yedeklemeleri, iş sürekliliği ve olağanüstü durum kurtarma stratejilerinin önemli bir parçasıdır çünkü verilerinizi bozulma veya silme işleminden korur. Bu yedeklemeler, yapılandırılan saklama süresi içinde bir zaman noktasına veritabanı geri yüklemeyi etkinleştirir. Veri koruma kurallarınız, yedeklemelerinizin uzun süre (10 yıla kadar) kullanılabilmesini gerektiriyorsa, hem tek hem de havuza alınmış veritabanları için [uzun süreli saklama](long-term-retention-overview.md) yapılandırabilirsiniz.
+
+### <a name="backup-frequency"></a>Yedekleme sıklığı
 
 Hem SQL veritabanı hem de SQL yönetilen örneği, her hafta [tam yedeklemeler](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) oluşturmak için SQL Server teknolojisini kullanır, [fark yedeklemeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) her 12-24 saatte bir ve [işlem günlüğü yedeklemeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) 5 ila 10 dakika sürer. İşlem günlüğü yedeklemelerinin sıklığı, işlem boyutuna ve veritabanı etkinliğinin miktarına göre belirlenir.
 
 Bir veritabanını geri yüklediğinizde, hizmet hangi tam, fark ve işlem günlüğü yedeklemelerinin geri yüklenmesi gerektiğini belirler.
 
-Bu yedeklemeler, yapılandırılan saklama süresi içinde bir zaman noktasına veritabanı geri yüklemeyi etkinleştirir. Yedeklemeler, birincil bölgedeki yedekleme depolama alanını etkileyen kesintilere karşı koruma için bir [eşleştirilmiş bölgeye](../../best-practices-availability-paired-regions.md) çoğaltılan [RA-GRS depolama Blobları](../../storage/common/storage-redundancy.md) olarak depolanır. 
+### <a name="backup-storage-redundancy"></a>Yedekleme depolama yedekliliği
 
-Veri koruma kurallarınız, yedeklemelerinizin uzun süre (10 yıla kadar) kullanılabilmesini gerektiriyorsa, hem tek hem de havuza alınmış veritabanları için [uzun süreli saklama](long-term-retention-overview.md) yapılandırabilirsiniz.
+> [!IMPORTANT]
+> Yedeklemeler için yapılandırılabilir depolama yedekliği Şu anda yalnızca SQL yönetilen örneği için kullanılabilir ve yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz.
+
+Yedekleme depolama yedekliliği yapılandırma seçeneği, yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS) veya coğrafi olarak yedekli (RA-GRS) [depolama Blobları](../../storage/common/storage-redundancy.md)arasında seçim yapmak için esneklik sağlar. Depolama artıklığı mekanizmaları, geçici donanım arızası, ağ veya güç kesintileri ya da büyük doğal felaketler dahil, planlı ve plansız olaylardan korunmak üzere verilerinizin birden çok kopyasını depolar. Bu özellik şu anda yalnızca SQL yönetilen örneği için kullanılabilir.
+
+RA-GRS depolama Blobları, birincil bölgedeki yedekleme depolama alanını etkileyen kesintilere karşı korunmak ve bir olağanüstü durum durumunda sunucunuzu farklı bir bölgeye geri yüklemenize olanak tanımak için [eşleştirilmiş bir bölgeye](../../best-practices-availability-paired-regions.md) çoğaltılır. 
+
+Tersine, LRS ve ZRS depolama Blobları, verilerinizin SQL veritabanınızın veya SQL yönetilen örneğinizin dağıtıldığı bölge içinde kalmasını güvence altına aldığından emin olur. Bölgesel olarak yedekli depolama (ZRS) Şu anda yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir).
+
+> [!IMPORTANT]
+> SQL yönetilen örneği 'nde yapılandırılan yedekleme yedekliliği, uzun vadeli yedeklemeler (LTR) için kullanılan zaman içinde nokta geri yükleme (ıNR) ve uzun süreli bekletme yedeklemeleri için kullanılan kısa süreli yedekleme bekletme ayarlarına uygulanır.
+
+### <a name="backup-usage"></a>Yedekleme kullanımı
 
 Bu yedeklemeleri kullanarak şunları yapabilirsiniz:
 
-- Mevcut bir veritabanını, Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak saklama süresi içinde [geçmiş bir noktaya geri yükleyin](recovery-using-backups.md#point-in-time-restore) . Tek ve havuza alınmış veritabanları için, bu işlem Özgün veritabanıyla aynı sunucuda yeni bir veritabanı oluşturur, ancak özgün veritabanının üzerine yazılmasını önlemek için farklı bir ad altında. Geri yükleme tamamlandıktan sonra özgün veritabanını silebilir veya [yeniden adlandırabilir](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) ve geri yüklenen veritabanını özgün veritabanı adına sahip olacak şekilde yeniden adlandırabilirsiniz. Yönetilen bir örnekte bu işlem aynı şekilde veritabanının bir kopyasını aynı veya aynı abonelikte ve aynı bölgede farklı bir yönetilen örnekle oluşturabilir.
-- [Silinen bir veritabanını silme zamanına](recovery-using-backups.md#deleted-database-restore) veya Bekletme dönemi içinde herhangi bir zaman noktasına geri yükleyin. Silinen veritabanı yalnızca özgün veritabanının oluşturulduğu sunucuya veya yönetilen örneğe geri yüklenebilir. Bir veritabanı silinirken, veri kaybını engellemek için, silme işleminden önce hizmet son işlem günlüğü yedeklemesini alır.
-- [Veritabanını başka bir coğrafi bölgeye geri yükleyin](recovery-using-backups.md#geo-restore). Coğrafi geri yükleme, birincil bölgedeki veritabanınıza veya yedeklemelerinize erişene zaman coğrafi bir olağanüstü durumdan kurtulmanızı sağlar. Herhangi bir Azure bölgesindeki var olan herhangi bir sunucuda veya yönetilen örnekte yeni bir veritabanı oluşturur.
-- Veritabanı uzun süreli bir bekletme ilkesiyle yapılandırılmışsa (LTR), tek bir veritabanı veya havuza alınmış bir veritabanının [belirli bir uzun süreli yedeklemesinden veritabanını geri yükleyin](long-term-retention-overview.md) . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) veya [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [Uzun süreli saklama](long-term-retention-overview.md).
+- **Mevcut veritabanının**  -  zaman içindeki bir noktaya geri yüklemesi Mevcut bir veritabanını, Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak saklama süresi içinde [geçmiş bir noktaya geri yükleyin](recovery-using-backups.md#point-in-time-restore) . Bu işlem, SQL veritabanı için özgün veritabanıyla aynı sunucuda yeni bir veritabanı oluşturur, ancak özgün veritabanının üzerine yazılmasını önlemek için farklı bir ad kullanır. Geri yükleme tamamlandıktan sonra özgün veritabanını silebilirsiniz. Alternatif olarak, özgün veritabanını [yeniden adlandırabilir](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) ve sonra geri yüklenen veritabanını özgün veritabanı adıyla yeniden adlandırabilirsiniz. Benzer şekilde, SQL yönetilen örneği için bu işlem, aynı abonelikte ve aynı bölgede bulunan aynı veya farklı yönetilen örnekteki veritabanının bir kopyasını oluşturur.
+- **Silinen veritabanının**  -  zaman içindeki bir noktaya geri yüklemesi [Silinen bir veritabanını silme zamanına](recovery-using-backups.md#deleted-database-restore) veya Bekletme dönemi içinde herhangi bir zaman noktasına geri yükleyin. Silinen veritabanı yalnızca özgün veritabanının oluşturulduğu sunucuya veya yönetilen örneğe geri yüklenebilir. Bir veritabanı silinirken, veri kaybını engellemek için, silme işleminden önce hizmet son işlem günlüğü yedeklemesini alır.
+- **Coğrafi geri yükleme**  -  [Veritabanını başka bir coğrafi bölgeye geri yükleyin](recovery-using-backups.md#geo-restore). Coğrafi geri yükleme, birincil bölgedeki veritabanınıza veya yedeklemelerinize erişene zaman coğrafi bir olağanüstü durumdan kurtulmanızı sağlar. Herhangi bir Azure bölgesindeki var olan herhangi bir sunucuda veya yönetilen örnekte yeni bir veritabanı oluşturur.
+   > [!IMPORTANT]
+   > Coğrafi geri yükleme yalnızca, coğrafi olarak yedekli (RA-GRS) yedekleme depolaması yapılandırılmış olan yönetilen örnekler için kullanılabilir.
+- **Uzun vadeli yedeklemeden**  -  geri yükleme Veritabanı uzun süreli bir bekletme ilkesiyle yapılandırılmışsa (LTR), tek bir veritabanı veya havuza alınmış bir veritabanının [belirli bir uzun süreli yedeklemesinden veritabanını geri yükleyin](long-term-retention-overview.md) . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) veya [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [Uzun süreli saklama](long-term-retention-overview.md).
 
 Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri yükleme](recovery-using-backups.md).
 
@@ -50,13 +66,13 @@ Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri y
 
 Aşağıdaki örnekleri kullanarak yedekleme yapılandırma ve geri yükleme işlemlerini deneyebilirsiniz:
 
-| | Azure portalı | Azure PowerShell |
+| İşlem | Azure portal | Azure PowerShell |
 |---|---|---|
-| **Yedekleme bekletmesini değiştirme** | [Tek veritabanı](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Yönetilen örnek](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Tek veritabanı](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **Uzun süreli yedekleme bekletmesini değiştirme** | [Tek veritabanı](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Yönetilen örnek-yok  | [Tek veritabanı](long-term-backup-retention-configure.md)<br/>Yönetilen örnek-yok  |
-| **Bir veritabanından bir zaman noktasından geri yükleme** | [Tek veritabanı](recovery-using-backups.md#point-in-time-restore) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Silinen veritabanını geri yükleme** | [Tek veritabanı](recovery-using-backups.md) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Azure Blob depolamadan bir veritabanını geri yükleme** | Tek veritabanı-yok <br/>Yönetilen örnek-yok  | Tek veritabanı-yok <br/>[Yönetilen örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Yedekleme bekletmesini değiştirme** | [SQL Veritabanı](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Yönetilen Örnek](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Veritabanı](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Uzun süreli yedekleme bekletmesini değiştirme** | [SQL Veritabanı](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL yönetilen örneği-yok  | [SQL Veritabanı](long-term-backup-retention-configure.md)<br/>[SQL Yönetilen Örnek](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Bir veritabanından bir zaman noktasından geri yükleme** | [SQL Veritabanı](recovery-using-backups.md#point-in-time-restore)<br>[SQL Yönetilen Örnek](../managed-instance/point-in-time-restore.md) | [SQL Veritabanı](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Silinen veritabanını geri yükleme** | [SQL Veritabanı](recovery-using-backups.md)<br>[SQL Yönetilen Örnek](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Azure Blob depolamadan bir veritabanını geri yükleme** | SQL veritabanı-yok <br/>SQL yönetilen örneği-yok  | SQL veritabanı-yok <br/>[SQL Yönetilen Örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Yedekleme zamanlaması
 
@@ -98,6 +114,7 @@ Bir veritabanı için maksimum veri boyutuna kadar yedekleme depolama tüketimi 
 - Büyük veri yükleme işlemleri için, [kümelenmiş columnstore dizinlerini](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) ve ilgili [en iyi uygulamaları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)kullanmayı ve/veya kümelenmemiş dizinlerin sayısını azaltmayı düşünün.
 - Genel Amaçlı hizmet katmanında, sağlanan veri depolama alanı, yedekleme depolama fiyatından daha ucuz. Sürekli yedekleme depolama maliyetleriniz varsa, yedekleme depolama alanı üzerinde kaydedilecek veri depolama alanını artırmayı düşünebilirsiniz.
 - Geçici sonuçları ve/veya geçici verileri depolamak için uygulama mantığınızdaki kalıcı tablolar yerine TempDB kullanın.
+- Mümkün olduğunda yerel olarak yedekli yedekleme depolaması kullanın (örneğin geliştirme ve test ortamları)
 
 ## <a name="backup-retention"></a>Yedekleri bekletme
 
@@ -112,15 +129,13 @@ Son 1-35 gün içinde yedek bekletme amaçları için bazen kısa süreli yedekl
 
 ### <a name="long-term-retention"></a>Uzun vadeli bekletme
 
-Tek ve havuza alınmış veritabanları ve yönetilen örnekler için, Azure Blob depolamada 10 yıla kadar tam yedeklemelerin uzun süreli bekletmesini (LTR) yapılandırabilirsiniz. Bir LTR ilkesini etkinleştirirseniz haftalık tam yedeklemeler otomatik olarak farklı bir RA-GRS depolama kapsayıcısına kopyalanır. Çeşitli uyumluluk gereksinimlerini karşılamak için haftalık, aylık ve/veya yıllık tam yedeklemeler için farklı saklama süreleri seçebilirsiniz. Depolama alanı tüketimi, seçili LTR yedeklemelerine ve bekletme dönemine veya dönemlerine bağlıdır. LTR depolama maliyetini tahmin etmek için [LTR Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=sql-database) ' yı kullanabilirsiniz.
-
-Invr yedeklemeleri gibi, LTR yedeklemeler, coğrafi olarak yedekli depolama ile korunur. Daha fazla bilgi için bkz. [Azure Depolama yedekliliği](../../storage/common/storage-redundancy.md).
+Hem SQL veritabanı hem de SQL yönetilen örneği için, Azure Blob depolamada en fazla 10 yıla kadar tam yedekleme uzun süreli saklama (LTR) yapılandırabilirsiniz. LTR ilkesi yapılandırıldıktan sonra, tam yedeklemeler haftalık olarak farklı bir depolama kapsayıcısına kopyalanır. Çeşitli uyumluluk gereksinimlerini karşılamak için haftalık, aylık ve/veya yıllık tam yedeklemeler için farklı saklama süreleri seçebilirsiniz. Depolama alanı tüketimi, LTR yedeklemelerin seçili sıklık ve bekletme dönemlerine bağlıdır. LTR depolama maliyetini tahmin etmek için [LTR Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=sql-database) ' yı kullanabilirsiniz.
 
 LTR hakkında daha fazla bilgi için bkz. [uzun süreli yedek saklama](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
 
-Yedekleme depolama alanı fiyatı, DTU modeli veya vCore modeli ile aynı zamanda bölgeniz olarak değişir. Yedekleme depolaması tüketilen GB/ay başına ücretlendirilir, fiyatlandırma için bkz. [Azure SQL Veritabanı fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası ve [Azure SQL yönetilen örnek fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) sayfası.
+Yedekleme depolaması için fiyat değişir ve satın alma modelinize (DTU veya vCore), seçili yedekleme depolama artıklığı seçeneğine ve ayrıca bölgenizde bağlıdır. Yedekleme depolaması tüketilen GB/ay başına ücretlendirilir, fiyatlandırma için bkz. [Azure SQL Veritabanı fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası ve [Azure SQL yönetilen örnek fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) sayfası.
 
 ### <a name="dtu-model"></a>DTU modeli
 
@@ -153,6 +168,18 @@ Basitleştirilmiş bir örnek olarak, veritabanı tamamen boşta olduğu için b
 Gerçek yedekleme faturalandırma senaryoları daha karmaşıktır. Veritabanındaki değişiklik hızı iş yüküne ve zaman içinde değişken olmasına bağlı olduğundan, her bir değişiklik ve günlük yedeklemesinin boyutu da farklılık gösterir ve saatlik yedekleme depolama tüketiminin buna uygun şekilde dalgalanmasına neden olur. Ayrıca, her fark yedeklemesi, son tam yedeklemeden bu yana veritabanında yapılan tüm değişiklikleri içerir, bu nedenle tüm fark yedeklemelerinin toplam boyutu bir hafta boyunca kademeli olarak artar ve daha eski bir tam, değişiklik ve günlük yedekleri kümesi bir kez daha belirginleşerek keskin hale getirilir. Örneğin, tam bir yedekleme tamamlandıktan sonra, dizin yeniden oluşturma gibi ağır bir yazma etkinliği çalıştırıldıysa, dizin yeniden oluşturma işlemi tarafından yapılan değişiklikler yeniden oluşturma süresince alınan işlem günlüğü yedeklemelerine, sonraki değişiklik yedeklemesine ve sonraki tam yedekleme gerçekleşene kadar her değişiklik yedeklemesine dahil edilir. Daha büyük veritabanlarındaki İkinci senaryo için, değişiklik yedeklemesi çok büyük değilse, hizmette en iyi duruma getirme değişiklik yedeklemesi yerine tam yedekleme oluşturur. Bu, aşağıdaki tam yedekleme yapılıncaya kadar tüm değişiklik yedeklemelerinin boyutunu azaltır.
 
 Her yedekleme türü (tam, fark, işlem günlüğü) için toplam yedekleme depolama tüketimini, [tüketimi izleme](#monitor-consumption)bölümünde açıklandığı gibi zaman içinde izleyebilirsiniz.
+
+### <a name="backup-storage-redundancy"></a>Yedekleme depolama yedekliliği
+
+Yedekleme depolama artıklığı, yedekleme maliyetlerini aşağıdaki şekilde etkiler:
+- LRS Fiyatı = x
+- ZRS fiyatı = 1,25 x
+- RA-GRS fiyatı = 2x
+
+Yedekleme Depolama fiyatlandırması hakkında daha fazla bilgi için [Azure SQL Veritabanı fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/sql-database/single/) ve [Azure SQL yönetilen örnek fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)ziyaret edin.
+
+> [!IMPORTANT]
+> Yedeklemeler için yapılandırılabilir depolama yedekliği Şu anda yalnızca SQL yönetilen örneği için kullanılabilir ve yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz.
 
 ### <a name="monitor-costs"></a>Maliyetleri izleme
 
@@ -300,6 +327,54 @@ Durum kodu: 200
 ```
 
 Daha fazla bilgi için bkz. [yedekleme bekletme REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+
+#### <a name="sample-request"></a>Örnek istek
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
+```
+
+#### <a name="request-body"></a>İstek gövdesi
+
+```json
+{
+  "properties":{
+    "retentionDays":28
+  }
+}
+```
+
+#### <a name="sample-response"></a>Örnek yanıt
+
+Durum kodu: 200
+
+```json
+{
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+  }
+}
+```
+
+Daha fazla bilgi için bkz. [yedekleme bekletme REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+
+## <a name="configure-backup-storage-redundancy"></a>Yedek depolama yedekliliği yapılandırma
+
+> [!NOTE]
+> Yedeklemeler için yapılandırılabilir depolama yedekliği Şu anda yalnızca SQL yönetilen örneği için kullanılabilir ve yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz.
+
+Yönetilen bir örnek için yedek depolama yedekliği yalnızca örnek oluşturma sırasında ayarlanabilir. Varsayılan değer, coğrafi olarak yedekli depolama (RA-GRS) değeridir. Yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS) ve coğrafi olarak yedekli (RA-GRS) yedekleme depolaması arasındaki fiyatlandırma farkları için [yönetilen örnek fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)ziyaret edin.
+
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Azure portal kullanarak yedek depolama yedekliliği yapılandırma
+
+Azure portal, yedekleme depolama yedekliliği değiştirme seçeneği, SQL yönetilen örneğinizi oluştururken **temel bilgiler** sekmesinde **yönetilen örnekten yapılandırma** seçeneğinden erişilebilen **işlem + depolama** dikey penceresinde bulunur.
+![Açık Işlem + depolama yapılandırması-dikey pencere](./media/automated-backups-overview/open-configuration-blade-mi.png)
+
+**İşlem + depolama** dikey penceresinde yedekleme depolama yedekliliği seçme seçeneğini bulun.
+![Yedek depolama yedekliliği yapılandırma](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,16 +12,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344518"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808856"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Uzun süreli saklama-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
-Birçok uygulamanın, Azure SQL veritabanı ve Azure SQL yönetilen örnek [Otomatik yedeklemeleri](automated-backups-overview.md)tarafından belirtilen 7-35 günden daha fazla veritabanı yedeklerini tutmanız gereken mevzuata, uyumluluk veya diğer iş amaçları vardır. Uzun süreli saklama (LTR) özelliğini kullanarak, Azure Blob depolamada belirtilen SQL veritabanı ve SQL yönetilen örnek tam yedeklemelerini, Okuma Erişimli Coğrafi olarak yedekli depolama ile 10 yıla kadar saklayabilirsiniz. Daha sonra tüm yedeklemeyi yeni bir veritabanı olarak geri yükleyebilirsiniz. Azure depolama artıklığı hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](../../storage/common/storage-redundancy.md). 
+Birçok uygulamanın, Azure SQL veritabanı ve Azure SQL yönetilen örnek [Otomatik yedeklemeleri](automated-backups-overview.md)tarafından belirtilen 7-35 günden daha fazla veritabanı yedeklerini tutmanız gereken mevzuata, uyumluluk veya diğer iş amaçları vardır. Uzun süreli saklama (LTR) özelliğini kullanarak, Azure Blob depolamada belirtilen SQL veritabanı ve SQL yönetilen örnek tam yedeklemelerini, Okuma Erişimli Coğrafi olarak yedekli depolama ile 10 yıla kadar saklayabilirsiniz. Daha sonra tüm yedeklemeyi yeni bir veritabanı olarak geri yükleyebilirsiniz.
+
+Ayrıca, SQL yönetilen örneği, yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS) veya coğrafi olarak yedekli (RA-GRS) [depolama Blobları](../../storage/common/storage-redundancy.md)arasında seçim yapmak için esneklik sağlayan [yapılandırılabilir yedek depolama artıklığı](automated-backups-overview.md#backup-storage-redundancy) sunar. Bu seçenek şu anda yalnızca yönetilen örnek oluşturma işlemi sırasında kullanılabilir ve kaynak sağlandıktan sonra değiştirilemez.
 
 Azure SQL veritabanı için uzun süreli saklama etkinleştirilebilir ve Azure SQL yönetilen örneği için sınırlı genel önizlemede bulunabilir. Bu makalede uzun süreli saklama hakkında kavramsal bir genel bakış sunulmaktadır. Uzun süreli saklama yapılandırmak için bkz. [Azure SQL VERITABANı LTR 'Yi yapılandırma](long-term-backup-retention-configure.md) ve [Azure SQL yönetilen örnek LTR 'yi yapılandırma](../managed-instance/long-term-backup-retention-configure.md). 
 

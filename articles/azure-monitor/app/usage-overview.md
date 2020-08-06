@@ -3,16 +3,18 @@ title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323562"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800220"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
 Web veya mobil uygulamanızın hangi özellikleri en popüler? Kullanıcılarınız uygulamanızla hedeflerine ulaşsın mı? Belirli noktalarda kullanıma hazır olurlar ve daha sonra geri dönesin mi?  [Azure Application Insights](./app-insights-overview.md) kişilerin uygulamanızı nasıl kullandıkları hakkında güçlü Öngörüler elde etmenize yardımcı olur. Uygulamanızı her güncelleştirdiğinizde, kullanıcılar için ne kadar iyi çalışma olduğunu değerlendirebilirsiniz. Bu bilgi ile, sonraki geliştirme döngüleriniz hakkında veri odaklı kararlar verebilirsiniz.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>Uygulamanızdan telemetri gönderin
 

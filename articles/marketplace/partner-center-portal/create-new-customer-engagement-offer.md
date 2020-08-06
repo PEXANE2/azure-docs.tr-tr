@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121937"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800016"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -137,10 +137,10 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 4. Destek adresi (bağlantı)
 5. Kullanım koşulları adresi (bağlantı)
 6. Teklif adı
-7. Description
+7. Açıklama
 8. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -148,7 +148,7 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -195,10 +195,14 @@ Teklifinizin logolarını ve görüntülerini sağlayın. Tüm görüntülerin P
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunu üç piksel boyutunda sağlayın:
-- **Küçük** (gerekli; 48 x 48)
-- **Büyük** (gerekli; 216 x 216)
-- **Geniş** (isteğe bağlı; 255 x 115)
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
+
+Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
+
+- **Küçük** (48 x 48)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
@@ -290,7 +294,7 @@ Teklifinizin anahtar kullanımı senaryolarını listeleyen bir PDF dosyasını 
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 

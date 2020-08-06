@@ -263,7 +263,7 @@
         - name: Şirket içi işlevler
           href: functions-runtime-install.md
         - name: Jenkins eklentisini kullanarak dağıtma
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: Yapılandırma
       items:

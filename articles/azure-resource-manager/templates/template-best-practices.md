@@ -3,12 +3,12 @@ title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248926"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809264"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
 
@@ -226,7 +226,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    
      Sanal makinelere bağlanma hakkında daha fazla bilgi için bkz.:
    
-   * [Azure 'da N katmanlı mimari için VM 'Leri çalıştırma](../../guidance/guidance-compute-n-tier-vm.md)
+   * [Azure 'da N katmanlı mimari için VM 'Leri çalıştırma](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Azure Resource Manager VM 'Ler için WinRM erişimi ayarlama](../../virtual-machines/windows/winrm.md)
    * [Azure portal kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [PowerShell kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-powershell.md)

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b7f924c7f115e8eddda93ea0c096ab94411da72
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652510"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810403"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Android uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Java veya C++ ' da [Azure uzamsal bağlayıcıların�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -86,7 +86,7 @@ Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değişti
 
 Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
 
-`public AzureSpatialAnchorsManager(Session arCoreSession)`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");` .
+Alanı bulun `SpatialAnchorsAccountDomain` ve `Set me` hesap etki alanı ile değiştirin.
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -96,7 +96,7 @@ Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değişti
 
 Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
 
-`AzureSpatialAnchorsApplication::StartCloudSession()`Hesap etki alanında yer alan aşağıdaki satırı bulun ve daha önce ekleyin: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");` .
+Alanı bulun `SpatialAnchorsAccountDomain` ve `Set me` hesap etki alanı ile değiştirin.
 
 ---
 

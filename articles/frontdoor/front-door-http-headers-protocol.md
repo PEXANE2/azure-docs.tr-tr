@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471685"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799132"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure ön kapılarında HTTP üstbilgileri için protokol desteği
 Bu makalede, ön kapıların çağrı yolunun bölümleriyle desteklediği protokol (bkz. görüntü) özetlenmektedir. Aşağıdaki bölümlerde, ön kapıda desteklenen HTTP üstbilgileri hakkında daha fazla bilgi sağlanmaktadır.
@@ -44,6 +44,7 @@ Bu makalede, ön kapıların çağrı yolunun bölümleriyle desteklediği proto
 | X-Iletilen-konak | X-Iletilen-ana bilgisayar: contoso.azurefd.net </br> X-Iletilen ana bilgisayar HTTP üst bilgisi alanı, istemci tarafından istenen özgün Konağı tanımlamak için kullanılan ortak bir yöntemdir, ana bilgisayar HTTP istek üst bilgisi. Bunun nedeni, ön kapıdan ana bilgisayar adının isteği işleyen arka uç sunucusu için farklı olabilir. |
 | X-Iletilen-proto | X-Iletilen-proto: http </br> , Yapılandırmaya bağlı olan ön kapı, HTTPS kullanarak arka uca iletişim kurabildiğinden, bir HTTP isteğinin kaynak protokolünü belirlemek için genellikle X-Iletilen-proto HTTP üstbilgisi alanı kullanılır. Bu, ters proxy 'ye yönelik istek HTTP olsa bile geçerlidir. |
 | X-FD-Healtharaştırması | X-FD-Healtharaştırması HTTP üstbilgisi alanı, ön kapıdan sistem durumu araştırmasını belirlemek için kullanılır. Bu üstbilgi 1 olarak ayarlandıysa, istek sistem durumu araştırmasına sahip olur. X ile Iletilen ana bilgisayar üst bilgisi alanı ile belirli ön kapıdan katı erişim sağlamak istediğinizde ' i kullanabilirsiniz. |
+|X-Azure-FDıD | X-Azure-FDıD üst bilgisi: 437c82cd-360A-4a54-94c3-5ff707647783 </br> Bu alan, gelen isteğin hangi ön kapıdan olduğunu belirlemek için kullanılabilecek frontdoorID içerir. Bu alan, ön kapı hizmeti tarafından doldurulur. | 
 
 ## <a name="front-door-to-client"></a>İstemciye ön kapı
 

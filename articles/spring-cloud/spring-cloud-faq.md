@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037517"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800380"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -161,6 +161,21 @@ Mevcut yay bulutu mikro hizmetlerini Azure Spring buluta geçirirken, aşağıda
 * Resmi, kararlı özette yay kitaplıklarını kullanmanızı öneririz. Özet Ilkelerin kitaplıklarının resmi olmayan, beta veya çatallı sürümlerinin hizmet düzeyi anlaşması (SLA) desteği yoktur.
 
 Geçişten sonra, uygulama örneklerinin uygun şekilde ölçeklendirdiğinden emin olmak için CPU/RAM ölçümleri ve ağ trafiğinizi izleyin.
+
+## <a name="trouble-shooting"></a>Sorun giderme
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Hizmet kayıt defterinin etkileri nadiren kullanılamıyor mu?
+
+Nadiren meydana gelen bazı senaryolarda, şöyle bir hata görebilirsiniz: 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+Uygulama günlüklerinizin. Bu sorun, ağ kararsız veya diğer ağ sorunları nedeniyle Spring Framework tarafından çok düşük bir ücret sunarak tanıtılmıştır. 
+
+Kullanıcı deneyimine hiçbir etkileri olmaması gerekir, Eureka istemcisinde bu işlemi gerçekleştirmek için hem sinyal hem de yeniden deneme ilkesi vardır. Bunu tek geçici bir hata olarak düşünebilirsiniz ve güvenle atlayabilirsiniz.
+
+Bu bölümü geliştireceğiz ve kısa bir süre sonra kullanıcıların uygulamalarından bu hatadan kaçınacağız.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

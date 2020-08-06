@@ -4,12 +4,12 @@ description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372425"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810097"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -19,7 +19,7 @@ Bir Java geliştiricisi olarak, Azure Işlevleri 'ne yeni başladıysanız, lüt
 
 | Başlarken | Kavramlar| 
 | -- | -- |  
-| <ul><li>[Visual Studio Code kullanarak Java işlevi](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Terminal/komut istemiyle Java/Maven işlevi](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Gradle kullanarak Java işlevi](functions-create-first-java-gradle.md)</li><li>[Çakışan Küreler kullanan Java işlevi](functions-create-maven-eclipse.md)</li><li>[IntelliJ FIKRINI kullanarak Java işlevi](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> |
+| <ul><li>[Visual Studio Code kullanarak Java işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Terminal/komut istemiyle Java/Maven işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Gradle kullanarak Java işlevi](functions-create-first-java-gradle.md)</li><li>[Çakışan Küreler kullanan Java işlevi](functions-create-maven-eclipse.md)</li><li>[IntelliJ FIKRINI kullanarak Java işlevi](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Java işlevi temelleri
 
@@ -388,7 +388,7 @@ Bu işlevi bir HttpRequest üzerinde çağırılır. Kuyruk depolamaya birden ç
 | `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntemi, üstbilgileri veya sorguları alır |
 | `HttpResponseMessage` | HTTP çıkış bağlama | 200 dışında bir durum döndürür   |
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](./functions-triggers-bindings.md) gönderir. Daha fazla açıklama kullanarak `@BindingName` tetikleyici meta verilerine bağlayabilirsiniz.
 

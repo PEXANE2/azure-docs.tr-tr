@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1687224e796043af1f7c3d1ee6f0417465fb4959
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317697"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800307"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulama teklifi oluşturma
 
@@ -207,11 +207,14 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunun PNG dosyalarını iki piksel boyutunda sağlar:
-- **Küçük** (48 x 48)
-- **Büyük** (216 x 216)
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
 
-Her iki logo de gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
+
+- **Küçük** (48 x 48)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

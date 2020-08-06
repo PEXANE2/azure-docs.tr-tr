@@ -3,23 +3,23 @@ title: Şablon dağıtımı-if (Önizleme)
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888745"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810080"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
 
-Bir Azure Resource Manager (ARM) şablonu dağıtılmadan önce, gerçekleşen değişikliklerin önizlemesini yapabilirsiniz. Azure Resource Manager, şablonu dağıtırsanız kaynakların ne şekilde değişdiklerinizi görmenizi sağlamak için ne yapılır işlemini sağlar. Bu işlem, mevcut kaynaklarda hiçbir değişiklik yapmaz. Bunun yerine, belirtilen şablon dağıtılırsa değişiklikleri tahmin eder.
+Azure Resource Manager şablonu (ARM şablonu) dağıtılmadan önce, gerçekleşen değişikliklerin önizlemesini yapabilirsiniz. Azure Resource Manager, şablonu dağıtırsanız kaynakların ne şekilde değişdiklerinizi görmenizi sağlamak için ne yapılır işlemini sağlar. Bu işlem, mevcut kaynaklarda hiçbir değişiklik yapmaz. Bunun yerine, belirtilen şablon dağıtılırsa değişiklikleri tahmin eder.
 
 > [!NOTE]
 > Bu işlem şu anda önizleme aşamasındadır. Önizleme sürümü olarak, sonuçlar bazen hiçbir değişiklik gerçekleşmediği zaman bir kaynağın değiştirileceği gösterebilir. Bu sorunları azaltmak için çalışıyoruz, ancak yardımımız için ihtiyacımız var. Lütfen bu sorunları konusunda bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-Azure PowerShell, Azure CLı veya REST API işlemleri ile durum işlemini kullanabilirsiniz. Kaynak grubu ve abonelik düzeyinde dağıtımlar için desteklenir.
+Azure PowerShell, Azure CLı veya REST API işlemleri ile durum işlemini kullanabilirsiniz. Kaynak grubu, abonelik, yönetim grubu ve kiracı düzeyinde dağıtımlar için ne desteklenir?
 
 ## <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
 
@@ -125,20 +125,23 @@ Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Bir şablonu dağıtımdan önce değişiklikleri önizlemek için [az Deployment Group ne-if](/cli/azure/deployment/group#az-deployment-group-what-if) veya [az Deployment Sub ne-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)' ı kullanın.
+Bir şablonu dağıtımdan önce değişiklikleri önizlemek için şunu kullanın:
 
-* `az deployment group what-if`kaynak grubu dağıtımları için
-* `az deployment sub what-if`abonelik düzeyinde dağıtımlar için
+* [az dağıtım grubu](/cli/azure/deployment/group#az-deployment-group-what-if) kaynak grubu dağıtımları için ne yapılır?
+* abonelik düzeyi dağıtımlar için [az Deployment Sub](/cli/azure/deployment/sub#az-deployment-sub-what-if)
+* Yönetim grubu dağıtımları için [az Deployment mg ne-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if)
+* [az dağıtım kiracısı](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) kiracı dağıtımları için ne yapılır?
 
-`--confirm-with-what-if` `-c` Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtarı (veya kısa biçimini) kullanabilirsiniz. Bu anahtarı [az Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) veya [az Deployment Sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)öğesine ekleyin.
+`--confirm-with-what-if` `-c` Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtarı (veya kısa biçimini) kullanabilirsiniz. Bu anahtarı şu şekilde ekleyin:
 
-* `az deployment group create --confirm-with-what-if`veya `-c` kaynak grubu dağıtımları için
-* `az deployment sub create --confirm-with-what-if``-c`abonelik düzeyi dağıtımlar için veya
+* [az dağıtım grubu oluştur](/cli/azure/deployment/group#az-deployment-group-create)
+* [az Deployment Sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
+* [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [az Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Değişiklikler için programlı olarak inceleyebileceğiniz bir JSON nesnesi almak için şunu kullanın:
+Örneğin, `az deployment group create --confirm-with-what-if` `-c` kaynak grubu dağıtımları için veya kullanın.
 
-* `az deployment group what-if --no-pretty-print`kaynak grubu dağıtımları için
-* `az deployment sub what-if --no-pretty-print`abonelik düzeyinde dağıtımlar için
+Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Değişiklikler için programlı olarak inceleyebileceğiniz bir JSON nesnesi almak için `--no-pretty-print` anahtarını kullanın. Örneğin, `az deployment group what-if --no-pretty-print` kaynak grubu dağıtımları için kullanın.
 
 Sonuçları renkler olmadan döndürmek istiyorsanız, [Azure CLI yapılandırma](/cli/azure/azure-cli-configuration) dosyanızı açın. **No_color** **Evet**olarak ayarlayın.
 
@@ -147,7 +150,9 @@ Sonuçları renkler olmadan döndürmek istiyorsanız, [Azure CLI yapılandırma
 REST API için şunu kullanın:
 
 * [Dağıtımlar-](/rest/api/resources/deployments/whatif) kaynak grubu dağıtımları için What If
-* Dağıtımlar-abonelik düzeyindeki dağıtımlar için [abonelik kapsamında What If](/rest/api/resources/deployments/whatifatsubscriptionscope)
+* [Dağıtımlar-abonelik dağıtımları Için Abonelik kapsamında What If](/rest/api/resources/deployments/whatifatsubscriptionscope)
+* Dağıtımlar-yönetim grubu dağıtımları için [Yönetim grubu kapsamındaki What If](/rest/api/resources/deployments/whatifatmanagementgroupscope)
+* [Dağıtımlar-](/rest/api/resources/deployments/whatifattenantscope) kiracı dağıtımlarında kiracı kapsamındaki What If.
 
 ## <a name="change-types"></a>Değişiklik türleri
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 Çıktının en üstünde, değişikliklerin türünü belirtmek için renklerin tanımlandığını görürsünüz.
 
-Çıktının en altında, etiketin sahibinin silindiğini gösterir. Adres ön eki 10.0.0.0/16 olarak 10.0.0.0/15 olarak değiştirildi. Subnet001 adlı alt ağ silindi. Bu değişikliklerin gerçekten dağıtılmadığını unutmayın. Şablonu dağıtırsanız gerçekleştirilecek değişikliklerin önizlemesini görürsünüz.
+Çıktının en altında, etiketin sahibinin silindiğini gösterir. Adres ön eki 10.0.0.0/16 olarak 10.0.0.0/15 olarak değiştirildi. Subnet001 adlı alt ağ silindi. Bu değişikliklerin dağıtılmadığını unutmayın. Şablonu dağıtırsanız gerçekleştirilecek değişikliklerin önizlemesini görürsünüz.
 
 Silinmiş olarak listelenen özelliklerden bazıları aslında değişmeyecektir. Özellikler, şablonda olmadıkları sırada silinmiş olarak yanlış bildirilebilir, ancak dağıtım sırasında varsayılan değer olarak otomatik olarak ayarlanır. Bu sonuç, durum yanıtı içinde "gürültü" olarak değerlendirilir. Son dağıtılan kaynak, özellikler için ayarlanmış değerlere sahip olacaktır. Ne gibi işlemler söz konusu olduğunda, bu özellikler sonuçtan filtrelenmez.
 

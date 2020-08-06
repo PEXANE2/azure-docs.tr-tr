@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016981"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809961"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma (Önizleme)
-Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. Bu tümleştirme genel önizlemededir ve başarılı bir şekilde çalışan merkezi 'nden 70 ' ten fazla [Kullanıcı özniteliği](../app-provisioning/sap-successfactors-attribute-reference.md) almayı destekler.
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma 
+Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
 
 >[!NOTE]
 >Başarılı bir şekilde sağlamak istediğiniz kullanıcıların şirket içi bir AD hesabına ve isteğe bağlı olarak bir Azure AD hesabına ihtiyacı varsa bu öğreticiyi kullanın. Kullanıcıların yalnızca Azure AD hesabına (yalnızca bulutta kullanıcılar) ihtiyacı varsa, [Azure AD Kullanıcı sağlaması IÇIN SAP başarılı faktörleri yapılandırma](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) hakkında öğreticiye bakın. 
@@ -82,7 +82,7 @@ Bulut HR tabanlı Kullanıcı sağlamasının başarılı bir şekilde AD 'ye ya
 * Dağıtım için AD Kullanıcı sağlama uygulamalarına yönelik başarılı etmen sayısı
 * Eşleşen KIMLIK, öznitelik eşleme, dönüşüm ve kapsam filtreleri
 
-Bu konularda kapsamlı yönergeler için lütfen [bulut HR dağıtım planına](../app-provisioning/plan-cloud-hr-provision.md) bakın. 
+Bu konularda kapsamlı yönergeler için lütfen [bulut HR dağıtım planına](../app-provisioning/plan-cloud-hr-provision.md) bakın. Desteklenen varlıklar, ayrıntıları işleme ve farklı ık senaryolar için tümleştirmenin nasıl özelleştirileceği hakkında bilgi edinmek için lütfen [SAP başarılı faktörleri tümleştirme başvurusuna](../app-provisioning/sap-successfactors-integration-reference.md) bakın. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Tümleştirme için başarılı faktörleri yapılandırma
 

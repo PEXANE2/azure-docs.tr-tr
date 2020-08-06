@@ -1,5 +1,5 @@
 ---
-title: SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar-Azure AD
+title: Etki alanları arası kimlik yönetimi (SCıM) 2,0 protokol uyumluluğu için sistem ile ilgili bilinen sorunlar-Azure AD
 description: Azure AD 'de SCıM 2,0 ' i destekleyen Galeri dışı bir uygulama eklenirken karşılaşılan yaygın protokol uyumluluk sorunlarını çözme
 services: active-directory
 author: kenwith
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/03/2018
+ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c54478282cb1106ae95fe1c9e3fbb15e9c37bbf9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387175"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808584"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -26,32 +26,63 @@ Azure AD 'nin SCıM 2,0 protokolü desteği, kullanıcıların ve grupların Azu
 
 Bu makalede, Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokolüne uygunluğunu ve bu sorunları geçici olarak nasıl çözebileceğinizi açıklayan geçerli ve geçmişteki sorunlar açıklanmaktadır.
 
-> [!IMPORTANT]
-> Azure AD Kullanıcı sağlama hizmeti SCıM istemcisinin en son güncelleştirmesi 18 Aralık 2018 tarihinde yapıldı. Bu güncelleştirme, aşağıdaki tabloda listelenen bilinen uyumluluk sorunlarını ele alıyor. Bu güncelleştirme hakkında daha fazla bilgi için aşağıdaki sık sorulan sorulara bakın.
+## <a name="understanding-the-provisioning-job"></a>Sağlama işini anlama
+Sağlama hizmeti bir uygulamaya karşı işlem yapmak için bir iş kavramını kullanır. İş kimliği, [ilerleme çubuğunda](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)bulunabilir. Tüm yeni sağlama uygulamaları, "Scim" ile başlayan bir iş kimliği ile oluşturulur. SCIM işi hizmetin geçerli durumunu temsil eder. Eski işlerin "customappsso" KIMLIĞI vardır. Bu iş, 2018 içindeki hizmetin durumunu temsil eder. 
+
+Galeride bir uygulama kullanıyorsanız, iş genellikle uygulamanın adını içerir (örneğin, yakınlaştırma kar tanesi, dataBricks vb.). Galeri uygulaması kullanırken bu belgeleri atlayabilirsiniz. Bu, birincil olarak, JobId SCıM veya customAppSSO içeren Galeri olmayan uygulamalar için geçerlidir.
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCıM 2,0 uyumluluk sorunları ve durumu
-
-| **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  
-|---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | 
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | 
-|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | 
-|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  
-
-## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Hizmet düzeltmeleri önceden mevcut SCIM uygulamama otomatik olarak uygulandı mi?
-
-Hayır. Eski davranışla çalışacak şekilde kodlanmış SCIM uygulamalarına bir kırılırdı, değişiklikler mevcut uygulamalara otomatik olarak uygulanmaz.
-
-Değişiklikler, düzeltilme tarihinden sonra Azure portal yapılandırılan tüm yeni Galeri olmayan SCıM uygulamalarına uygulanır.
-
-Önceden var olan bir Kullanıcı sağlama işini en son düzeltmeleri içerecek şekilde geçirme hakkında daha fazla bilgi için sonraki bölüme bakın.
-
-## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Mevcut bir SCıM tabanlı Kullanıcı sağlama işini en son hizmet düzeltmelerini içerecek şekilde geçirebilir miyim?
-
-Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız ve mevcut sağlama işini en son düzeltmeleri içerecek şekilde geçirmeniz gerekiyorsa aşağıdaki yordamı izleyin. Bu yordamda, mevcut SCıM uygulamanızdan eski sağlama işinizi kaldırmak ve yeni davranışı gösteren yeni bir tane oluşturmak için Microsoft Graph API ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanmaktadır.
+Aşağıdaki tabloda, sabit olarak işaretlenen herhangi bir öğe, SCıM işinde uygun davranışın bulunduğu anlamına gelir. Yaptığımız değişiklikler için geriye dönük uyumluluk sağlamaya çalıştık. Ancak, eski davranışın uygulanması önerilmez. Yeni uygulamalar için yeni davranışı kullanmanızı ve mevcut uygulamaları güncellemeyi öneririz.
 
 > [!NOTE]
-> Uygulamanız hala geliştirilmeye devam ediyorsa ve henüz çoklu oturum açma ya da Kullanıcı sağlama için dağıtılmamışsa, en kolay çözüm Azure portal **Azure Active Directory > kurumsal uygulamalar** bölümünde uygulama girişini silmek ve uygulama Için **Galeri olmayan bir seçenek > oluştur** seçeneğini kullanarak uygulama için yeni bir giriş eklemektir. Bu, aşağıdaki yordamı çalıştırmaya alternatiftir.
+> 2018 ' de yapılan değişiklikler için, customappsso davranışına geri dönebilirsiniz. 2018 ' den bu yana yapılan değişiklikler için, eski davranışa geri dönmek üzere URL 'Leri kullanabilirsiniz. Eski iş öğesine geri dönmenize veya bir bayrak kullanarak, yaptığımız değişiklikler için geriye dönük uyumluluk sağlamaya çalıştık. Ancak, daha önce belirtildiği gibi eski davranışı uygulamayı önermiyoruz. Yeni uygulamalar için yeni davranışı kullanmanızı ve mevcut uygulamaları güncellemeyi öneririz.
+
+| **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  **Geriye dönük uyumluluk** |
+|---|---|---|
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
+| Uyumluluğu sağlamak için düzeltme eki davranışını güncelleştirme | Hayır | TBD| Önizleme bayrağını kullan |
+
+## <a name="flags-to-alter-the-scim-behavior"></a>SCıM davranışını değiştirecek bayraklar
+Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın kiracı URL 'sinde aşağıdaki bayrakları kullanın.
+
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="Daha sonraki davranışa yönelik SCıM bayrakları.":::
+
+* Uyumluluğu sağlamak için düzeltme eki davranışını güncelleştirme
+  * **SCıM RFC başvuruları:** 
+    * https://tools.ietf.org/html/rfc7644#section-3.5.2
+  * **URL (SCıM uyumlu):** AzureAdScimPatch062020
+  * **Durum**
+    * Uyumlu grup üyeliği kaldırma işlemleri:
+  ```json
+   {
+     "schemas":
+      ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+     "Operations":[{
+       "op":"remove",
+       "path":"members[value eq \"2819c223-7f76-...413861904646\"]"
+     }]
+   }
+  ```
+  * **URL (SCıM uyumlu değil):** AzureAdScimPatch2017
+  * **Durum**
+    * Uyumlu olmayan Grup üyeliği kaldırma işlemleri:
+   ```json
+   {
+     "schemas":
+     ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+     "Operations":[{
+       "op":"Remove",  
+       "path":"members",
+       "value":[{"value":"2819c223-7f76-...413861904646"}]
+     }]
+   }
+   ```
+
+## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>Eski customappsso işinden SCıM işine yükseltme
+Aşağıdaki adımları takip etmek, mevcut customappsso işinizi silecek ve yeni bir SCIM işi oluşturacak. 
  
 1. Azure portal ' de oturum açın https://portal.azure.com .
 2. Azure portal **Azure Active Directory > Enterprise Applications** bölümünde, mevcut SCIM uygulamanızı bulun ve seçin.
@@ -71,7 +102,7 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
  
    ![Şemayı al](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Şemayı al") 
 
-8. JSON çıkışını son adımdan kopyalayın ve bir metin dosyasına kaydedin. Bu, eski uygulamanıza eklediğiniz tüm özel öznitelik eşlemelerini içerir ve yaklaşık binlerce satır JSON satırı olmalıdır.
+8. JSON çıkışını son adımdan kopyalayın ve bir metin dosyasına kaydedin. JSON, eski uygulamanıza eklediğiniz herhangi bir özel öznitelik eşlemesi içerir ve yaklaşık binlerce satır JSON satırı olmalıdır.
 9. Sağlama işini silmek için aşağıdaki komutu çalıştırın:
  
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
@@ -81,7 +112,7 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   templateId: "scim"   }`
    
-11. Son adımın sonuçlarında, "Scim" ile başlayan tam "ID" dizesini kopyalayın. İsteğe bağlı olarak, aşağıdaki komutu çalıştırarak eski öznitelik eşlemelerinizi yeniden uygulayın, [New-id] öğesini yeni kopyaladığınız iş KIMLIĞIYLE değiştirerek ve adım #7, istek gövdesi olarak JSON çıkışını girerek.
+11. Son adımın sonuçlarında, "Scim" ile başlayan tam "ID" dizesini kopyalayın. İsteğe bağlı olarak, aşağıdaki komutu çalıştırarak eski öznitelik eşlemelerinizi yeniden uygulayın, [New-id] öğesini kopyaladığınız yeni iş KIMLIĞIYLE değiştirerek ve adım #7 istek gövdesi olarak JSON çıkışını girerek.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
@@ -89,10 +120,9 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
 12. İlk web tarayıcı penceresine dönün ve uygulamanız için **sağlama** sekmesini seçin.
 13. Yapılandırmanızı doğrulayın ve sonra sağlama işini başlatın. 
 
-## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Eski Kullanıcı sağlama davranışına sahip yeni Galeri olmayan bir uygulama ekleyebilir miyim?
+## <a name="downgrading-from-the-scim-job-to-the-customappsso-job-not-recommended"></a>SCıM işinden customappsso işine indirgenme (önerilmez)
+ Eski davranışa geri dönerek, ancak customappsso yaptığımız güncelleştirmelerden bazılarının avantajına sahip olmadığı ve sonsuza kadar desteklenmeme gibi bir işlem yapmanızı önermeyiz. 
 
-Evet. Düzeltmelerden önce varolan eski davranışa bir uygulamayı kodlandırdıysanız ve yeni bir örneğini dağıtmanız gerekiyorsa, aşağıdaki yordamı izleyin. Bu yordamda, eski davranışı gösteren bir SCıM sağlama işi oluşturmak için Microsoft Graph API ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanmaktadır.
- 
 1. Azure portal ' de oturum açın https://portal.azure.com .
 2. **Azure Active Directory > kurumsal uygulamalar > uygulama oluştur** Azure Portal bölümünde, **Galeri olmayan** yeni bir uygulama oluşturun.
 3. Yeni özel uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.

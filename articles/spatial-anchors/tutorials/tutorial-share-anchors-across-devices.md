@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77615486"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810198"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Öğretici: Azure uzamsal bağlayıcılarını oturumlar ve cihazlar arasında paylaşma
 
@@ -34,7 +34,7 @@ Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli t
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Bu öğreticide Unity 'yi ve bir ASP.NET Core Web uygulamasını kullanmaya yaşıyorsanız, ancak yalnızca diğer cihazlarda Azure uzamsal bağlantı tanımlayıcılarını paylaşma hakkında bir örnek göstermek de vardır. Aynı amaca ulaşmak için diğer dilleri ve arka uç teknolojilerini kullanabilirsiniz. Ayrıca, bu öğreticide kullanılan ASP.NET Core Web uygulamasının .NET Core 2,2 SDK 'ya bağımlılığı vardır. Normal Azure Web Apps (Windows için) üzerinde ince çalışır, ancak şu anda Linux için Azure Web Apps üzerinde çalışmamakta olacaktır.
+Bu öğreticide Unity 'yi ve bir ASP.NET Core Web uygulamasını kullanmaya yaşıyorsanız, ancak yalnızca diğer cihazlarda Azure uzamsal bağlantı tanımlayıcılarını paylaşma hakkında bir örnek göstermek de vardır. Aynı amaca ulaşmak için diğer dilleri ve arka uç teknolojilerini kullanabilirsiniz.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -54,7 +54,7 @@ Visual Studio 'yu açın ve projeyi `Sharing\SharingServiceSample` klasöründe 
 
 Hizmeti VS Code dağıtmadan önce bir kaynak grubu ve bir App Service planı oluşturmanız gerekir.
 
-### <a name="sign-in-to-azure"></a>Azure 'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> gidin ve Azure aboneliğinizde oturum açın.
 
@@ -82,19 +82,13 @@ Kaynak grubunuzu **myResourceGroup** olarak adlandırıp **Tamam**’ı seçin.
 
 **Tamam**’ı seçin.
 
-Visual Studio Code açın ve projeyi `Sharing\SharingServiceSample` klasörde açın. Paylaşım hizmetini Visual Studio Code aracılığıyla dağıtmak için <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Bu öğreticiyi</a> izleyin. ' Onu Visual Studio Code ile aç ' bölümünden başlayarak adımları izleyebilirsiniz. Daha önce dağıtılması ve yayımlanması gereken projeye zaten sahip olduğunuz için, SharingServiceSample gibi başka bir MVC projesi oluşturmayın.
+Visual Studio Code açın ve projeyi `Sharing\SharingServiceSample` klasörde açın. Paylaşım hizmetini Visual Studio Code aracılığıyla dağıtmak için <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Bu öğreticiyi</a> izleyin. ' Onu Visual Studio Code ile aç ' bölümünden başlayarak adımları izleyebilirsiniz. Daha önce dağıtılması gereken proje zaten varsa, SharingServiceSample, yukarıdaki adımda açıklandığı gibi başka bir ASP.NET projesi oluşturmayın.
 
 ---
 
 ## <a name="deploy-the-sample-app"></a>Örnek uygulamayı dağıtma
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
-
-## <a name="troubleshooting"></a>Sorun giderme
-
-### <a name="unity-20193"></a>Unity 2019,3
-
-Büyük değişiklikler nedeniyle Unity 2019,3 Şu anda desteklenmiyor. Lütfen Unity 2019,1 veya 2019,2 kullanın.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

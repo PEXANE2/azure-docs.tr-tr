@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447276"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808636"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -62,7 +62,7 @@ Azure Backup yedeklemeleri düzenlemek ve yönetmek için kurtarma hizmetleri ka
 
 ### <a name="align-to-subscription-design-strategy"></a>Abonelik tasarım stratejisine Hizala
 
-Kasa bir abonelik kapsamında olduğundan, aboneliklerin belirli uygulamalara veya hizmetlere göre veya uygulama arşiv satırları üzerinde ayrıldığı *uygulama kategorisi stratejisi* gibi abonelik tasarımı stratejisini karşılamak için kasa tasarımınıza uyum yapın. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/)bakın.
+Kasa bir abonelik kapsamında olduğundan, aboneliklerin belirli uygulamalara veya hizmetlere göre veya uygulama arşiv satırları üzerinde ayrıldığı *uygulama kategorisi stratejisi* gibi abonelik tasarımı stratejisini karşılamak için kasa tasarımınıza uyum yapın. Daha fazla bilgi için bu [makaleye](/azure/cloud-adoption-framework/decision-guides/subscriptions/)bakın.
 
 ### <a name="single-or-multiple-vault"></a>Tek veya birden çok kasa
 
@@ -72,7 +72,7 @@ Yedeklemenizi düzenlemek ve yönetmek için tek bir kasa veya birden çok kasa 
 
 * İş yükleriniz abonelikler arasında yayıldığında, abonelik başına bir veya daha fazla çoklu kasa oluşturabilirsiniz.
   * Tüm kasalarda, aboneliklerde ve kiracılarda işlemsel etkinliklerin izlenmesini kolaylaştırmak için yedekleme Gezgini ve raporları kullanabilirsiniz. Toplu bir görünüm almak için [burada daha fazla bilgi edinin](monitor-azure-backup-with-backup-explorer.md) .
-  * Kasaların tamamında tutarlı ilke gerekiyorsa, yedekleme ilkesini birden çok kasa genelinde yaymak için Azure ilkesini kullanabilirsiniz. Bir yedekleme ilkesini birden çok kasa genelinde yaymak için [' deployifnotexists '](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) efektini kullanan özel bir [Azure ilke tanımı](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure) yazabilirsiniz. Bu Azure Ilke tanımını belirli bir kapsama (abonelik veya RG) [atayabilir](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) , böylece Azure ilke atamasının kapsamındaki tüm kurtarma hizmetleri kasalarına bir ' yedekleme İlkesi ' kaynağı dağıtılır. Yedekleme ilkesinin ayarları (örneğin, yedekleme sıklığı, bekletme vb.), Kullanıcı tarafından Azure Ilke atamasında parametre olarak belirtilmelidir.
+  * Kasaların tamamında tutarlı ilke gerekiyorsa, yedekleme ilkesini birden çok kasa genelinde yaymak için Azure ilkesini kullanabilirsiniz. Bir yedekleme ilkesini birden çok kasa genelinde yaymak için [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) efektini kullanan özel bir [Azure ilke tanımı](../governance/policy/concepts/definition-structure.md) yazabilirsiniz. Bu Azure Ilke tanımını belirli bir kapsama (abonelik veya RG) [atayabilir](../governance/policy/assign-policy-portal.md) , böylece Azure ilke atamasının kapsamındaki tüm kurtarma hizmetleri kasalarına bir ' yedekleme İlkesi ' kaynağı dağıtılır. Yedekleme ilkesinin ayarları (örneğin, yedekleme sıklığı, bekletme vb.), Kullanıcı tarafından Azure Ilke atamasında parametre olarak belirtilmelidir.
 
 * Kurumsal parmak izi büyüdükçe, aşağıdaki nedenlerden dolayı iş yüklerini abonelikler arasında taşımak isteyebilirsiniz: yedekleme ilkesine göre hizalayın, kasaları birleştirin, düşük yedekliliğe kadar tasarruf edin (GRS 'den LRS 'ye geçiş yapın).  Azure Backup, kurtarma hizmetleri kasasının Azure aboneliklerine veya aynı abonelik içindeki başka bir kaynak grubuna taşınmasını destekler. [Daha fazla bilgi edinin](backup-azure-move-recovery-services-vault.md).
 
@@ -175,21 +175,21 @@ Azure Backup, iş yükünüze ait verilerin kurtarma hizmetleri kasasına taşı
 
 * *Azure VM yedeklemesi* -depolama ve Azure Backup hizmeti arasındaki tüm gerekli iletişim ve veri aktarımı, sanal ağınıza erişime gerek kalmadan Azure ağı içinde gerçekleşir. Bu nedenle, güvenli ağların içine yerleştirilmiş olan Azure VM 'lerinin yedeklenmesi, herhangi bir IP veya FQDN 'ye erişim izni vermemesini gerektirmez.
 
-* Azure VM 'de *SQL Server veritabanları,* Azure vm 'de SAP HANA veritabanları-Azure Backup hizmeti, Azure depolama ve Azure Active Directory bağlantı gerektirir. Bu, Özel uç noktalar kullanılarak veya gerekli genel IP adreslerine veya FQDN 'lere erişim izni vererek elde edilebilir. Gerekli Azure hizmetlerine doğru bağlantının yapılmasına izin verilmemesi, veritabanı bulma, yedeklemeyi yapılandırma, yedeklemeleri gerçekleştirme ve verileri geri yükleme gibi işlemlerde hata oluşmasına yol açabilir. NSG etiketlerini, Azure Güvenlik duvarını ve HTTP proxy 'yi kullanırken tüm Ağ Kılavuzu için, bu [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) ve [SAP HANA](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#establish-network-connectivity) makalelerine bakın.
+* Azure VM 'de *SQL Server veritabanları,* Azure vm 'de SAP HANA veritabanları-Azure Backup hizmeti, Azure depolama ve Azure Active Directory bağlantı gerektirir. Bu, Özel uç noktalar kullanılarak veya gerekli genel IP adreslerine veya FQDN 'lere erişim izni vererek elde edilebilir. Gerekli Azure hizmetlerine doğru bağlantının yapılmasına izin verilmemesi, veritabanı bulma, yedeklemeyi yapılandırma, yedeklemeleri gerçekleştirme ve verileri geri yükleme gibi işlemlerde hata oluşmasına yol açabilir. NSG etiketlerini, Azure Güvenlik duvarını ve HTTP proxy 'yi kullanırken tüm Ağ Kılavuzu için, bu [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) ve [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) makalelerine bakın.
 
 * *Karma* -MARS (Microsoft Azure Kurtarma Hizmetleri) Aracısı tüm kritik işlemler için ağ erişimi gerektirir-yükleme, yapılandırma, yedekleme ve geri yükleme. MARS Aracısı [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) üzerinden Azure Backup hizmetine, [Özel uç noktaları](install-mars-agent.md#private-endpoints) kullanarak veya [uygun erişim denetimleriyle ara sunucu/güvenlik duvarı](install-mars-agent.md#verify-internet-access)aracılığıyla genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi aracılığıyla bağlanabilir.
 
 ### <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
-Azure [Özel uç noktası](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) , Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Azure Backup, Özel uç noktaları kullanarak kurtarma hizmetleri Kasalarınızın verilerinizi güvenli bir şekilde yedekleyeve geri yüklemenize olanak tanır.
+Azure [Özel uç noktası](../private-link/private-endpoint-overview.md) , Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Azure Backup, Özel uç noktaları kullanarak kurtarma hizmetleri Kasalarınızın verilerinizi güvenli bir şekilde yedekleyeve geri yüklemenize olanak tanır.
 
 * Kasa için özel uç noktaları etkinleştirdiğinizde, bunlar yalnızca Azure VM ve MARS Aracısı yedeklemelerindeki SQL ve SAP HANA iş yüklerinin yedeklenmesi ve geri yüklenmesi için kullanılır.  Diğer iş yüklerinin yedeklenmesi için kasayı da kullanabilirsiniz (ancak özel uç noktalar gerektirmez). MARS Aracısı kullanılarak SQL ve SAP HANA iş yükleri ve yedekleme 'nin yedeğinin yanı sıra, Azure VM yedeklemesi durumunda dosya kurtarma gerçekleştirmek için de özel uç noktalar kullanılır. [Daha fazla bilgi edinin](private-endpoints.md#recommended-and-supported-scenarios).
 
-* Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle, Azure Active Directory için gereken IP 'Ler ve FQDN 'ler, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz. [Önkoşullar](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start)hakkında daha fazla bilgi edinin.
+* Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle, Azure Active Directory için gereken IP 'Ler ve FQDN 'ler, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz. [Önkoşullar](./private-endpoints.md#before-you-start)hakkında daha fazla bilgi edinin.
 
 ## <a name="governance-considerations"></a>İdare ile ilgili önemli noktalar
 
-Azure 'da idare, birincil olarak [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/overview) ve [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)ile uygulanır. [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/overview) , kaynaklarınız için kuralları zorlamak üzere ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar. Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar. [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar. Ayrıca, [Azure fiyat Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) ve [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) gibi aşağıdaki araçlar, maliyet yönetimi sürecinde önemli bir rol oynar.
+Azure 'da idare, birincil olarak [Azure ilkesi](../governance/policy/overview.md) ve [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md)ile uygulanır. [Azure ilkesi](../governance/policy/overview.md) , kaynaklarınız için kuralları zorlamak üzere ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar. Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar. [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar. Ayrıca, [Azure fiyat Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) ve [Azure Advisor](../advisor/advisor-overview.md) gibi aşağıdaki araçlar, maliyet yönetimi sürecinde önemli bir rol oynar.
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup yerleşik Azure Ilkesi aracılığıyla iki temel senaryoyu destekler
 
@@ -237,9 +237,9 @@ Bir yedekleme kullanıcısı veya Yöneticisi olarak, tüm yedekleme çözümler
   * Farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri tanımlama.
 
 * Ayrıca
-  * **Log Analytics** çalışma alanına veri (örneğin, işler, ilkeler vb.) gönderebilirsiniz. Bu işlem, Azure izleyici tarafından toplanan diğer izleme verileriyle veri bağıntısını etkinleştirmek için Azure Izleyici günlüklerinin özelliklerini etkinleştirir, birden çok Azure aboneliği ve kiracısından günlük girişlerini analiz için tek bir konumda birleştirir, karmaşık analiz gerçekleştirmek ve günlük girişleri hakkında derin Öngörüler elde etmek için günlük sorgularını kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace).
-  * Olayları Azure dışında, örneğin bir üçüncü taraf SıEM (güvenlik bilgileri ve olay yönetimi) veya diğer Log Analytics çözümüne göndermek için Olay Hub 'ına veri gönderebilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#send-to-azure-event-hubs).
-  * Günlük verilerinizi denetim, statik analiz veya yedekleme için 90 günden daha uzun bir süre içinde bekletmek istiyorsanız, Azure depolama hesabına veri gönderebilirsiniz. Olaylarınızı yalnızca 90 gün veya daha az süreyle tutmanız gerekiyorsa, etkinlik günlüğü olayları 90 gün boyunca Azure platformunda tutulduğundan bir depolama hesabına arşiv ayarlamanız gerekmez. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#send-to--azure-storage).
+  * **Log Analytics** çalışma alanına veri (örneğin, işler, ilkeler vb.) gönderebilirsiniz. Bu işlem, Azure izleyici tarafından toplanan diğer izleme verileriyle veri bağıntısını etkinleştirmek için Azure Izleyici günlüklerinin özelliklerini etkinleştirir, birden çok Azure aboneliği ve kiracısından günlük girişlerini analiz için tek bir konumda birleştirir, karmaşık analiz gerçekleştirmek ve günlük girişleri hakkında derin Öngörüler elde etmek için günlük sorgularını kullanın. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
+  * Olayları Azure dışında, örneğin bir üçüncü taraf SıEM (güvenlik bilgileri ve olay yönetimi) veya diğer Log Analytics çözümüne göndermek için Olay Hub 'ına veri gönderebilirsiniz. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
+  * Günlük verilerinizi denetim, statik analiz veya yedekleme için 90 günden daha uzun bir süre içinde bekletmek istiyorsanız, Azure depolama hesabına veri gönderebilirsiniz. Olaylarınızı yalnızca 90 gün veya daha az süreyle tutmanız gerekiyorsa, etkinlik günlüğü olayları 90 gün boyunca Azure platformunda tutulduğundan bir depolama hesabına arşiv ayarlamanız gerekmez. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Uyarı
 

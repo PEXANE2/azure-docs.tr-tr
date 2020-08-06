@@ -3,7 +3,7 @@ title: Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketinin kaynak roller
 description: Azure Active Directory yetkilendirme yönetimi 'nde var olan bir erişim paketinin kaynak rollerini değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550313"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798655"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
 
@@ -86,7 +86,7 @@ Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft e
 
     ![Erişim paketi-kaynak rolleri ekleme-Grup seçme](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. **Seç**' e tıklayın.
+1. **Seç**’e tıklayın.
 
     Grubu veya takımı seçtiğinizde, **alt tür** sütunu aşağıdaki alt türlerinden birini listeler:
 
@@ -128,7 +128,7 @@ Bir uygulama seçerken bazı konular aşağıda verilmiştir:
 
     ![Erişim paketi-kaynak rolleri ekleme-uygulama seçme](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. **Seç**' e tıklayın.
+1. **Seç**’e tıklayın.
 
 1. **Rol** listesinde bir uygulama rolü seçin.
 
@@ -148,7 +148,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
     ![Erişim paketi-kaynak rolleri ekleme-SharePoint Online siteleri seçin](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. **Seç**' e tıklayın.
+1. **Seç**’e tıklayın.
 
 1. **Rol** listesinde bir SharePoint Online site rolü seçin.
 

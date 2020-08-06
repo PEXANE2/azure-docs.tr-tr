@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506579"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810012"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -466,30 +466,6 @@ Evet. Yapılandırmanız aşağıdaki senaryoda eşleşiyorsa NSG akış günlü
 - Application Gateway v2 'yi dağıttıysanız
 - Application Gateway alt ağında bir NSG var
 - NSG akış günlüklerini bu NSG 'de etkinleştirdiniz
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Application Gateway v2 'yi yalnızca özel ön uç IP adresi ile kullanmak Nasıl yaparım??
-
-Application Gateway v2 Şu anda yalnızca özel IP modunu desteklemiyor. Aşağıdaki birleşimleri destekler
-* Özel IP ve genel IP
-* Yalnızca genel IP
-
-Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız, aşağıdaki işlemi izleyebilirsiniz:
-1. Hem genel hem de özel ön uç IP adresiyle Application Gateway oluşturun
-2. Genel ön uç IP adresi için herhangi bir dinleyici oluşturmayın. Application Gateway, kendisi için bir dinleyici oluşturulmadıysa genel IP adresindeki herhangi bir trafiği dinlemez.
-3. Öncelik sırasına göre aşağıdaki yapılandırmaya sahip Application Gateway alt ağı için bir [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/security-overview) oluşturun ve ekleyin:
-    
-    a. Kaynak olarak **Gatewaymanager** hizmet etiketi ve hedef bağlantı **noktası olarak** **65200-65535**olarak gelen trafiğe izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları sertifika kimlik doğrulaması tarafından korunur (kilitlidir). Ağ Geçidi Kullanıcı yöneticileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz
-    
-    b. Kaynak olarak **AzureLoadBalancer** hizmet etiketi ve hedef bağlantı noktası olarak trafiğe izin **Any** ver
-    
-    c. Kaynaktaki tüm gelen trafiği **Internet** hizmet etiketi ve hedef bağlantı **noktası olarak reddet.** Bu kurala gelen kurallarda *En düşük önceliği* verin
-    
-    d. Özel IP adresi erişiminin engellenmemesi için VirtualNetwork Inbound 'e izin verme gibi varsayılan kuralları koruyun
-    
-    e. Giden internet bağlantısı engellenmiyor. Aksi takdirde, oturum açma, ölçümler vb. ile ilgili sorunlar olur.
-
-Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![ yalnızca özel IP erişimi için Application Gateway v2 NSG yapılandırması](./media/application-gateway-faq/appgw-privip-nsg.png)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

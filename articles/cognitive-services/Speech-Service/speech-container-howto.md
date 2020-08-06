@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974662"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808669"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -35,7 +35,7 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -354,7 +354,7 @@ ApiKey={API_KEY}
 Şu komut:
 
 * Kapsayıcı görüntüsünden *metinden konuşmaya* kapsayıcısı çalıştırır.
-* 2 CPU çekirdeği ve bir gigabayt (GB) bellek ayırır.
+* 1 CPU çekirdeği ve 2 gigabayt (GB) bellek ayırır.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
@@ -394,7 +394,7 @@ ApiKey={API_KEY}
 Şu komut:
 
 * Kapsayıcı görüntüsünden *özel bir metin okuma* kapsayıcısı çalıştırır.
-* 2 CPU çekirdeği ve bir gigabayt (GB) bellek ayırır.
+* 1 CPU çekirdeği ve 2 gigabayt (GB) bellek ayırır.
 * Toplu giriş bağlamalarından *özel metin okuma* modelini yükler, örneğin *c:\customvoice*.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Verilen modeli indirir `ModelId` (birim bağlaması üzerinde bulunmazsa).

@@ -3,7 +3,7 @@ title: Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketinin erişimini g�
 description: Azure Active Directory erişim gözden geçirmeleri (Önizleme) içinde, Yetkilendirme Yönetimi erişim paketlerinin erişim incelemesini tamamlamayı öğrenin.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078571"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798606"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketinin erişimini gözden geçirme
 
 Azure AD Yetkilendirme Yönetimi, kuruluşların gruplara, uygulamalara ve SharePoint sitelerine erişimi nasıl yöneteceğini basitleştirir. Bu makalede, belirli bir gözden geçiren olarak bir erişim paketine atanan diğer kullanıcılar için erişim incelemelerinin nasıl gerçekleştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kullanıcıların etkin erişim paketi atamalarını gözden geçirmek için erişim gözden geçirmesi yapmak üzere önkoşulları karşılamanız gerekir:
 - Azure AD Premium P2

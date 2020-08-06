@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317748"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800381"
 ---
 # <a name="create-a-saas-offer"></a>SaaS teklifi oluşturma
 
@@ -282,12 +282,16 @@ Bu alan gereklidir.
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
 - **Belgeler** (gerekli) – Teklifinizle ilgili pazarlama belgelerini, en az bir ve teklif başına üç adede kadar belgeyi PDF biçiminde ekleyin.
-- **Görüntüler** (isteğe bağlı): teklifinizin logo görüntülerinin Market genelinde GÖRÜNEBILECEĞI, PNG biçiminde aşağıdaki piksel boyutlarını gerektiren birden çok yer vardır:
+- **Görüntüler** (gerekli): teklifinizin logo görüntülerinin Market genelinde görünebileceği birden çok yer vardır. **Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz. **Geniş** bir logo eklemek isteğe bağlıdır.
 
-  - **Küçük** (48 x 48, gereklidir)
-  - **Orta** (90 x 90, gereklidir)
-  - **Büyük** (216 x 216, gereklidir)
-  - **Geniş** (255 x 115)
+    Listede farklı yerlerde kullanılmak üzere üç logo boyutu gereklidir; biri isteğe bağlıdır:
+
+    - **Küçük** (48 x 48)
+    - **Orta** (90 x 90)
+    - **Büyük** (216 x 216 ve 350 x 350 arasında)
+    - **Geniş** (255 x 115), *isteğe bağlı*
+
+    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 - **Ekran görüntüleri** (gerekli) – teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin, 1280 x 720 piksel boyutunda. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.

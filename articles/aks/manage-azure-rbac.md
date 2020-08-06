@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes hizmeti (AKS) ile Kubernetes yetkilendirmesi için Azure RBAC kullanmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498115"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799370"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -33,29 +33,25 @@ Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya
 
 ### <a name="prerequisites"></a>Önkoşullar 
 - Önizleme için kaydolun <https://aka.ms/aad-rbac-sign-up-form> .
+- Azure CLı sürüm 2.9.0 veya sonraki bir sürüme sahip olduğunuzdan emin olun
 - `EnableAzureRBACPreview`Özellik bayrağının etkinleştirildiğinden emin olun.
-- `AAD-V2`Özellik bayrağının etkinleştirildiğinden emin olun.
 - `aks-preview` [CLI uzantısının][az-extension-add] v 0.4.55 veya üzeri yüklü olduğundan emin olun
 - [Kubectl v 1.18.3 +][az-aks-install-cli]' i yüklediğinizden emin olun.
 
-#### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>Kaydetme `EnableAzureRBACPreview` ve `AAD-V2` Önizleme özellikleri
+#### <a name="register-enableazurerbacpreview-preview-feature"></a>`EnableAzureRBACPreview`Önizleme özelliğini Kaydet
 
-Kubernetes yetkilendirmesi için Azure RBAC kullanan bir AKS kümesi oluşturmak için `EnableAzureRBACPreview` `AAD-V2` aboneliğinizdeki ve özellik bayraklarını etkinleştirmeniz gerekir.
+Kubernetes yetkilendirmesi için Azure RBAC kullanan bir AKS kümesi oluşturmak için `EnableAzureRBACPreview` aboneliğinizdeki Özellik bayrağını etkinleştirmeniz gerekir.
 
-`EnableAzureRBACPreview` `AAD-V2` Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak ve özellik bayraklarını kaydedin:
+`EnableAzureRBACPreview`Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-
-az feature register --namespace "Microsoft.ContainerService"  --name "AAD-V2"
 ```
 
 Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
 Hazırlandığınızda, [az Provider Register] [az-Provider-Register] komutunu kullanarak *Microsoft. ContainerService* kaynak sağlayıcısı kaydını yenileyin:

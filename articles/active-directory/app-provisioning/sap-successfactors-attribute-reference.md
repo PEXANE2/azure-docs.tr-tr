@@ -2,36 +2,37 @@
 title: SAP başarılı etmenleri öznitelik başvurusu
 description: Başarılı bir şekilde hangi özniteliklerin desteklendiğini
 services: active-directory
-author: kenwith
+author: cmmdesai
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/06/2019
-ms.author: kenwith
+ms.date: 08/05/2020
+ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781557"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808516"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
 
 Bu makalede şu bilgileri bulabilirsiniz:
 
-- [Desteklenen başarılı etken varlıkları ve öznitelikleri](#supported-successfactors-entities-and-attributes)
+- [Varlıkları ve öznitelikleri başarılı bir şekilde çarpanları](#supported-successfactors-entities-and-attributes)
 - [Varsayılan öznitelik eşlemesi](#default-attribute-mapping)
 
 ## <a name="supported-successfactors-entities-and-attributes"></a>Desteklenen başarılı etken varlıkları ve öznitelikleri
 
-Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından desteklenen başarılı etmen özniteliklerinin listesi verilmiştir:
+Aşağıdaki tabloda, varsayılan olarak aşağıdaki iki sağlama uygulamasında yer alan başarılı etmenler özniteliklerinin listesi verilmiştir:
 
 - [Kullanıcı sağlamayı Active Directory için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 - [Azure AD Kullanıcı sağlama için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
+Ek özniteliklerin şemasını genişletmek için lütfen [SAP başarılı faktörleri tümleştirme başvurusuna](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) bakın. 
 
 | \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem türü |
 |----|----------------------------------------|------------------------------|----------------|
@@ -71,7 +72,7 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 | 34 | Kullanıcı                                   | takma ad                     | Okuma           |
 | 35 | Kullanıcı                                   | durum                        | Okuma           |
 | 36 | Kullanıcı                                   | timeZone                     | Okuma           |
-| 37 | Kullanıcı                                   | kullanıcı adı                     | Okuma           |
+| 37 | Kullanıcı                                   | username                     | Okuma           |
 | 38 | Kullanıcı                                   | Posta kodu                      | Okuma           |
 | 39 | PerPhone                               | areaCode                     | Okuma           |
 | 40 | PerPhone                               | countryCode                  | Okuma           |
@@ -130,7 +131,7 @@ Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure A
 | 7  | Kullanıcı                                   | city                     | l                                       | NA                                                                                           |
 | 8  | Kullanıcı                                   | ülke                  | co                                      | NA                                                                                           |
 | 9  | Kullanıcı                                   | durum                    | st                                      | NA                                                                                           |
-| 10 | Kullanıcı                                   | kullanıcı adı                 | samAccountName                          | NA                                                                                           |
+| 10 | Kullanıcı                                   | username                 | samAccountName                          | NA                                                                                           |
 | 11 | Kullanıcı                                   | Posta kodu                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | posta                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | başlık                                   | NA                                                                                           |

@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık s
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132661"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799897"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular - Hyper-V'den Azure'a olağanüstü durum kurtarma
 
@@ -156,6 +156,10 @@ Azure 'a çoğalttığınızda, çoğaltma trafiği bir Azure depolama hesabın�
 ### <a name="what-are-the-replicated-vm-requirements"></a>Çoğaltılan VM gereksinimleri nelerdir?
 
 Çoğaltma için, Hyper-V sanal makinesi desteklenen bir işletim sistemi çalıştırıyor olmalıdır. Ayrıca, VM 'nin Azure VM gereksinimlerini karşılaması gerekir. Destek matrisinden [daha fazla bilgi edinin](hyper-v-azure-support-matrix.md#replicated-vms) .
+
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>Sanal makine disklerimi Premium depolamaya çoğaltsam neden ek bir standart depolama hesabı gerekir?
+
+Şirket içi sanal makinelerinizi/fiziksel sunucularınızı Premium depolamaya çoğalttığınızda, korunan makinenin disklerinde bulunan tüm veriler Premium depolama hesabına çoğaltılır. Çoğaltma günlüklerini depolamak için ek bir standart depolama hesabı gereklidir. Disk verilerinin çoğaltılmasının ilk aşaması tamamlandıktan sonra, şirket içi disk verilerinde yapılan tüm değişiklikler sürekli olarak izlenir ve bu ek standart depolama hesabında çoğaltma günlükleri olarak depolanır.
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Azure 'a ne sıklıkta çoğaltma yapabilirim?
 

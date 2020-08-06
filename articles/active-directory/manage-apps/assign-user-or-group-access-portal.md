@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763746"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799511"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory'de kurumsal uygulamaya kullanıcı veya grup atama
 
@@ -26,6 +26,9 @@ Bu makalede, Azure portal içinden veya PowerShell kullanarak Azure Active Direc
 Daha fazla denetim için, bazı kurumsal uygulama türleri [Kullanıcı Ataması gerektirecek](#configure-an-application-to-require-user-assignment)şekilde yapılandırılabilir. 
 
 [Bir kullanıcı veya grubu kurumsal bir uygulamaya atamak](#assign-users-or-groups-to-an-app-via-the-azure-portal)için, bir genel yönetici, uygulama Yöneticisi, bulut uygulaması Yöneticisi veya kurumsal uygulamanın atanmış sahibi olarak oturum açmanız gerekir.
+
+> [!IMPORTANT]
+> Bir uygulamaya bir grup atadığınızda, yalnızca gruptaki kullanıcıların erişimi olur. Atama, iç içe gruplar olarak basamaklanmıyor.
 
 > [!NOTE]
 > Grup tabanlı atama Azure Active Directory Premium P1 veya P2 Edition gerektirir. Grup tabanlı atama yalnızca güvenlik grupları için desteklenir. İç içe geçmiş grup üyelikleri ve Office 365 grupları Şu anda desteklenmemektedir. Bu makalede ele alınan özelliklerin daha fazla lisanslama gereksinimi için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory)bakın. 

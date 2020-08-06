@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: 4aac13bf34394c359837ecd7a85abd78495bc4b4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283121"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808465"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory sağlama, SAP başarılı faktörlerle nasıl tümleştirilir? 
 
@@ -33,7 +33,7 @@ Azure AD sağlama hizmeti, çalışan merkezi OData API uç noktalarına bağlan
 Azure AD sağlama hizmeti ile başarılı etmenler arasındaki bağlantıyı daha da güvenli hale getirmek için, aşağıdaki adımları kullanarak Azure AD IP aralıklarını başarılı etmenlerin IP izin verilenler-listesine ekleyebilirsiniz:
 
 1. Azure genel bulutu için [en son IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=56519) indirin 
-1. Dosyayı açın ve **AzureActiveDirectory** ve **AzureActiveDirectoryDomainServices** etiketlerini arayın 
+1. Dosyayı açın ve etiket **AzureActiveDirectory** arayın 
 
    >[!div class="mx-imgBorder"] 
    >![Azure AD IP aralığı](media/sap-successfactors-integration-reference/azure-active-directory-ip-range.png)

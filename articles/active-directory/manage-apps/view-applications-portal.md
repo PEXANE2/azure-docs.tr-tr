@@ -12,19 +12,18 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055401"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808380"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Hızlı başlangıç: kimlik yönetimi için Azure Active Directory (Azure AD) kiracınızı kullanan uygulamaların listesini görüntüleme
 
 Kuruluşunuzun kullandığı uygulamalar için kimlik ve erişim yönetimi (ıAM) sistemi olarak Azure AD 'yi kullanmaya başlayın. Bu hızlı başlangıçta, uygulama olarak da bilinen uygulamaları, kimlik sağlayıcısı olarak Azure AD kiracısı kullanacak şekilde önceden ayarlamış olursunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınızda kayıtlı olan uygulamaları görüntülemek için şunlar gerekir:
 
@@ -68,11 +67,17 @@ Belirli bir uygulamayı aramak için:
 3. Uygulama adının ilk birkaç harfini girmeyi deneyin. Bu örnek **Sales** ile başlayan tüm uygulamaları gösterir.
     ![Örnek, Sales ile başlayan tüm uygulamaları gösterir](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıçta yeni kaynak oluşturmadınız, temizlenecek bir şey yok.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure AD kiracınızdaki uygulamaları görüntülemeyi öğrendiniz. Uygulama türü, durum ve görünürlük ile uygulama listesinin nasıl filtreleneceğini öğrendiniz. Ayrıca belirli bir uygulamayı aramayı da öğrendiniz.
-
-- [Uygulama ekleme](add-application-portal.md)
-- [Bir uygulamayı yapılandırma](add-application-portal-configure.md)
-- [Çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)
-- [Bir uygulamayı silme](delete-application-portal.md)
+Bir uygulama için kimlik sağlayıcısı olarak Azure AD 'yi nasıl kullanacağınızı öğrenmek için sonraki makaleye ilerleyin.
+> [!div class="nextstepaction"]
+> [Uygulama ekleme](add-application-portal.md)

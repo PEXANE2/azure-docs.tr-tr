@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004554"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809451"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Bağlı makine Aracısı bağlantı sorunlarını giderme
 
@@ -90,7 +90,7 @@ Aşağıdaki tabloda, bilinen hatalardan bazıları ve bunların nasıl giderile
 
 Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
 
-* [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-arc.html)aracılığıyla Azure uzmanlarından yanıtlar alın.
+* [Microsoft Q&A](/answers/topics/azure-arc.html)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, Azure Community 'yi yanıtlar, destek ve uzmanlar için bağlar.
 

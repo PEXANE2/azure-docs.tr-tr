@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324242"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800001"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı Başlangıç: Windows üzerinde Azure App Service’ta Java uygulaması oluşturma
 
@@ -49,13 +49,19 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
 
-Azure App Service dağıtım işlemi, Azure CLı 'dan Azure CLı 'dan otomatik olarak tanıtım edebilir. Azure CLı yüklü değilse, Maven eklentisi OAuth veya cihaz oturum açma bilgilerini kullanarak oturumunuzu açacaktır. Gerekirse [Maven eklentilerle kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) ayrıntılarını denetleyin.
+Azure App Service dağıtım işlemi, Azure CLı 'den otomatik olarak Azure kimlik bilgilerinizi alabilir. Azure CLı yerel olarak yüklü değilse Maven eklentisi OAuth veya cihaz oturum açma bilgileri ile oturum açmanızı ister. Gerekirse [Maven eklentilerle kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) ayrıntılarını denetleyin.
 
-Dağıtımı yapılandırmak için komut Isteminde aşağıdaki Maven komutunu çalıştırabilirsiniz, ilk adımda **Windows** işletim sistemi için **' 2 '** seçeneğini belirleyin, ardından **onay (Y/N)** **istemi görünene kadar** varsayılan yapılandırmaları kabul edin ve ardından **' Y '** tuşuna basın ve yapılandırma yapılır. 
-
+Dağıtımı yapılandırmak için aşağıdaki Maven komutunu çalıştırabilirsiniz
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+Şunları seçmeniz istenecek 
+* **İşletim sistemi (varsayılan: `linux` )**
+* **Java sürümü (varsayılan: `1.8` )**
+* **Web kapsayıcısı (varsayılan: `tomcat 8.5` )** 
+
+**`2`** İlk adımda **Windows** işletim sistemini seçmek için girişe dikkat edin. Diğer yapılandırma, **ENTER**tuşuna basarak varsayılan olarak bırakılabilir. Son olarak, **`Y`** yapılandırmayı tamamlamaya yönelik **onay (Y/N)** istemine basın.
 
 Örnek bir işlem şöyle görünür:
 
@@ -135,7 +141,7 @@ Confirm (Y/N)? :
 > [!NOTE]
 > Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-`pom.xml`Güncelleştirilmiş yapılandırmayı görmek için ' i açın.
+`pom.xml`Güncelleştirilmiş yapılandırmayı görmek için açın.
 
 ```bash
 code pom.xml
@@ -153,8 +159,11 @@ App Service yapılandırmasını doğrudan Pod dosyanızda, gerekirse, bazı yay
 `<runtime>` | true | Çalışma zamanı ortamı yapılandırması, [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)ayrıntıları görebilirsiniz. | 0.1.0 +
 `<deployment>` | true | Dağıtım yapılandırması, ayrıntıları [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)görebilirsiniz. | 0.1.0 +
 
+`<appName>`Ve `<resourceGroup>` ( `helloworld-1590394316693` `helloworld-1590394316693-rg` demo olarak da buna göre) değerleri hakkında dikkatli olun, daha sonra kullanılır.
+
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>Uygulamayı dağıtma
 
@@ -169,13 +178,14 @@ Ardından, aşağıdaki komutu kullanarak Java uygulamanızı Azure 'a dağıtab
 mvn package azure-webapp:deploy
 ```
 
-Dağıtım tamamlandıktan sonra, web tarayıcınızda aşağıdaki URL’yi kullanarak dağıtılan uygulamanın konumuna gidin; örneğin `http://<webapp>.azurewebsites.net/`.
+Dağıtım tamamlandıktan sonra uygulamanız ' `http://<appName>.azurewebsites.net/` `http://helloworld-1590394316693.azurewebsites.net` de (tanıtımda) hazırlanacaktır. Yerel Web tarayıcınızla URL 'yi açın, şunu görmeniz gerekir:
 
 ![Azure App Service 'de çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Tebrikler!** Windows üzerinde App Service için ilk Java uygulamanızı dağıttınız.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

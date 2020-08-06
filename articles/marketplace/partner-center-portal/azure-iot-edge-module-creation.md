@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 5ead227d886805c0ed48ebb52c4c0e30ef13b851
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320043"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808720"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -50,10 +50,10 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
-- Teklif bir taslak taslağı ise, [taslak teklifini siler](update-existing-offer.md#delete-a-draft-offer))
+- Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval))
-- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin.](update-existing-offer.md#cancel-publishing))
+- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval)
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin.](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -199,14 +199,15 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Aşağıdaki dört piksel boyutundan her biri için teklifinizin logosunun PNG dosyalarını sağlayın:
+**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
 
-- **Küçük (48 x 48)**
-- **Orta (90 x 90)**
-- **Büyük (216 x 216)**
-- **Geniş (255 x 115)**
+Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
 
-Dört logo gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+- **Küçük** (48 x 48)
+- **Orta** (90 x 90)
+- **Büyük** (216 x 216 ve 350 x 350 arasında)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 

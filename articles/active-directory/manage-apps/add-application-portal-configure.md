@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338053"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808414"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
@@ -55,11 +55,11 @@ Uygulama özelliklerini düzenlemek için:
        | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanan kullanıcı deneyimi | Atanan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanan kullanıcılar oturum açabilir mi? | Atanan kullanıcılar uygulamayı görebilir mi?* |
-       | Yes | Yes | Yes | Yes | Yes  |
-       | Yes | Yes | Hayır  | Evet | Hayır   |
-       | Evet | Hayır  | Yes | Yes | Yes  |
-       | Yes | Hayır  | Hayır  | Evet | Hayır   |
-       | Hayır  | Yes | Yes | Hayır  | Hayır   |
+       | Evet | Evet | Evet | Evet | Evet  |
+       | Evet | Evet | Hayır  | Evet | Hayır   |
+       | Evet | Hayır  | Evet | Evet | Evet  |
+       | Evet | Hayır  | Hayır  | Evet | Hayır   |
+       | Hayır  | Evet | Evet | Hayır  | Hayır   |
        | Hayır  | Evet | Hayır  | Hayır  | Hayır   |
        | Hayır  | Hayır  | Evet | Hayır  | Hayır   |
        | Hayır  | Hayır  | Hayır  | Hayır  | Hayır   |
@@ -69,11 +69,11 @@ Uygulama özelliklerini düzenlemek için:
        | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanmayan kullanıcı deneyimi | Atanmayan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
-       | Yes | Yes | Yes | Hayır  | Hayır   |
-       | Yes | Yes | Hayır  | Hayır  | Hayır   |
-       | Evet | Hayır  | Yes | Yes | Hayır   |
+       | Evet | Evet | Evet | Hayır  | Hayır   |
+       | Evet | Evet | Hayır  | Hayır  | Hayır   |
+       | Evet | Hayır  | Evet | Evet | Hayır   |
        | Evet | Hayır  | Hayır  | Evet | Hayır   |
-       | Hayır  | Yes | Yes | Hayır  | Hayır   |
+       | Hayır  | Evet | Evet | Hayır  | Hayır   |
        | Hayır  | Evet | Hayır  | Hayır  | Hayır   |
        | Hayır  | Hayır  | Evet | Hayır  | Hayır   |
        | Hayır  | Hayır  | Hayır  | Hayır  | Hayır   |
@@ -95,9 +95,17 @@ Uygulama özelliklerini düzenlemek için:
    > [!NOTE]
    > Bu **Özellikler** bölmesinde görünen küçük resim, hemen güncelleştirmez. Güncelleştirilmiş simgesini görmek için **Özellikler** bölmesini kapatıp yeniden açabilirsiniz.
 
+
+> [!TIP]
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Hızlı başlangıç serisine devam edemeyecekseniz, test kiracınızı temizlemek için uygulamayı silmeyi göz önünde bulundurun. Bu serinin son hızlı başlangıçta uygulamanın silinmesi, bkz. [uygulamayı silme](delete-application-portal.md).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir uygulamanın özelliklerini yapılandırdığınıza göre, çoklu oturum açmayı ayarlamaya devam edebilirsiniz.
-
-- [Çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)
-- [Bir uygulamayı silme](delete-application-portal.md)
+Bir uygulama için çoklu oturum açmayı ayarlamayı öğrenmek için bir sonraki makaleye ilerleyin.
+> [!div class="nextstepaction"]
+> [Çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)

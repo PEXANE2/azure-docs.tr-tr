@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 34624358a26fbd52db5832cf3531a6f1d3b91e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061747"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800424"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
@@ -103,7 +103,7 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 
 İşte bir yaşam döngüsü bildiriminin gövdesinde yer alan alanlar.
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir. |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
@@ -189,7 +189,7 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
 
 Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Name    | Değer |
+| Ad    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Mydigitaltwins.westus2.azuredigitaltwins.net* gibi Azure dijital TWINS örneğinin adı |
@@ -245,7 +245,7 @@ Dijital **ikizi değişiklik bildirimleri** , bir dijital ikizi güncelleştiril
 
 Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Name    | Değer |
+| Ad    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
@@ -300,7 +300,7 @@ Karşılık gelen bildirim (Azure Digital TWINS bir dijital ikizi güncelleştir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Olayları iletmek için uç noktalar ve rotalar oluşturma konusuna bakın:
-* [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes.md)
+* [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes-apis-cli.md)
 
 Ya da Azure Digital TWINS API 'Leri ve SDK seçenekleri hakkında daha fazla bilgi edinin:
 * [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md)
