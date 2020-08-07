@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922958"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
@@ -54,5 +54,4 @@ Var olan bir sunucuyu değiştirirken asAdministrator özelliğini belirtmek iç
 
 [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md)  
 [Veritabanı rollerini ve kullanıcılarını yönetme](analysis-services-database-users.md)  
-[Rol tabanlı Access Control](../role-based-access-control/overview.md)  
-
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)  

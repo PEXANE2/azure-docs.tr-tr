@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255634"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922498"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Uygulamaları Microsoft kimlik doğrulama kitaplığı 'na geçirme (MSAL)
 
@@ -52,10 +52,10 @@ Aşağıdaki makaleler MSAL 'e geçiş yapmanıza yardımcı olabilir:
 ## <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
 __S: ADAL kullanım dışı mı?__  
-C: Evet. 30 Haziran 2020 ' den itibaren, artık ADAL 'e yeni özellikler ekleyeceğiz. 30 Haziran 2022 ' e kadar ADAL 'e kritik güvenlik düzeltmeleri eklemeye devam edeceğiz.
+C: Evet. 30 Haziran 2020 ' den itibaren, artık ADAL 'e yeni özellikler ekleyeceğiz. 30 Haziran 2022 ' e kadar ADAL 'e kritik güvenlik düzeltmeleri eklemeye devam edeceğiz. Bu süreden sonra, ADAL kullanan uygulamalarınız çalışacaktır ancak en son özelliklerden yararlanmak ve güvende kalmak için MSAL sürümüne yükseltmeniz önerilir.
 
 __S: Nasıl yaparım? uygulamalarımın ADAL kullandığını öğrensin mi?__  
-Y: uygulamanın kaynak koduna sahipseniz, uygulamanın hangi kitaplığı kullandığını ve MSAL 'e nasıl geçireceğinizi belirlemenize yardımcı olması için yukarıdaki geçiş kılavuzlarıyla başvurabilirsiniz. Uygulamanızın kaynak koduna erişiminiz yoksa, kayıtlı uygulamalarınızın ve her uygulamanın kullandığı kitaplığın bir listesini almak için [bir destek isteği açabilirsiniz](developer-support-help-options.md#open-a-support-request) .
+Y: uygulamanın kaynak koduna sahipseniz, uygulamanın hangi kitaplığı kullandığını ve MSAL 'e nasıl geçireceğinizi belirlemenize yardımcı olması için yukarıdaki geçiş kılavuzlarıyla başvurabilirsiniz. ISV ile ortaklıyorsanız, MSAL 'e geçiş yolculuğunu anlamak için doğrudan bu kişilere ulaşmanız önerilir. Uygulamanızın kaynak koduna erişiminiz yoksa, kayıtlı uygulamalarınızın ve her uygulamanın kullandığı kitaplığın bir listesini almak için [bir destek isteği açabilirsiniz](developer-support-help-options.md#open-a-support-request) .
 
 __S: var olan ADAL uygulamalarım çalışmaya devam edecek mi?__  
 Y: mevcut uygulamalarınız değişiklik yapılmadan çalışmaya devam edecektir. 30 Haziran 2022 ' den fazla tutmaya planlandıysanız, bunları güvende tutmak için MSAL olarak güncelleştirmeyi göz önünde bulundurmanız gerekir, ancak MSAL 'e geçiş, mevcut işlevselliği korumak için gerekli değildir.

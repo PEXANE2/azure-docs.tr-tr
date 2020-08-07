@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1de6af0f30453d40348e9e836b2a5989652f49f1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170437"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925167"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Öğretici: başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -32,7 +32,7 @@ Bu öğreticide, başarılı faktörleri Azure Active Directory (Azure AD) ile t
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -116,7 +116,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [başarılı olan istemci desteği ekibine](https://www.successfactors.com/content/ssf-site/en/support.html) başvurun.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [başarılı olan istemci desteği ekibine](https://www.sap.com/support.html) başvurun.
 
 4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -227,7 +227,7 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
 Azure AD kullanıcılarının başarılı bir faktörde oturum açmasını sağlamak için, bunların başarılı bir şekilde sağlanması gerekir. Başarılı etken durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
-Kullanıcıları başarılı bir şekilde oluşturulan kullanıcılara almak için, [başarılı olan destek ekibine](https://www.successfactors.com/content/ssf-site/en/support.html)başvurmanız gerekir.
+Kullanıcıları başarılı bir şekilde oluşturulan kullanıcılara almak için, [başarılı olan destek ekibine](https://www.sap.com/support.html)başvurmanız gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

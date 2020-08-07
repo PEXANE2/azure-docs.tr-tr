@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315454"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921102"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Hizmet sağlayıcıları için Azure Izleyici günlükleri
 
@@ -40,7 +40,7 @@ Hizmet sağlayıcı yöneticilerinin bir müşteri kiracısında bir Log Analyti
 
 Dağıtılmış mimarinin avantajları şunlardır:
 
-* Müşteri, [Azure tarafından atanan kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md)aracılığıyla belirli düzeylerde izinleri belirtebilir veya kendi [rol tabanlı erişimini](../../role-based-access-control/overview.md)kullanarak günlüklere erişimi yönetebilir.
+* Müşteri, [Azure tarafından atanan kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md)aracılığıyla belirli düzeylerde izinleri belirtebilir veya kendi [Azure rol tabanlı erişim DENETIMINI (Azure RBAC)](../../role-based-access-control/overview.md)kullanarak günlüklere erişimi yönetebilir.
 * Günlükler yalnızca aracı tabanlı VM verilerini değil, tüm kaynak türleri için toplanabilir. Örneğin, Azure denetim günlükleri.
 * Her müşteri, çalışma alanı için bekletme ve veri dönüşü gibi farklı ayarlara sahip olabilir.
 * Yönetmelik ve zorluk açısından müşteriler arasında yalıtım.
@@ -90,4 +90,3 @@ Günlükleri merkezi bir konumda uygulamak için iki seçenek vardır:
 * [Power BI](./powerbi.md) kullanarak özet raporlar oluşturma
 
 * [Azure tarafından atanan kaynak yönetimine](../../lighthouse/concepts/azure-delegated-resource-management.md)müşteri ekleme.
-

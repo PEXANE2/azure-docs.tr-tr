@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: rota tabanlı ağ geçidi oluşturma: PowerShell'
-description: PowerShell kullanarak hızlı bir şekilde rota tabanlı VPN Gateway oluşturma
+description: PowerShell kullanarak rota tabanlı Azure VPN Ağ Geçidi oluşturmayı öğrenin. Şirket içi ağınıza bağlanmak için bir VPN ağ geçidi kullanın.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e6c8ec12927afbabd6c6d41ab348bad9814e82c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987652"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923212"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell kullanarak rota temelli VPN ağ geçidi oluşturma
 

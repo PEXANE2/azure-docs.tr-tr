@@ -1,18 +1,18 @@
 ---
 title: 'Rota tabanlı Azure VPN Gateway oluşturma: CLı'
-description: CLı kullanarak VPN Gateway oluşturmayı hızlı bir şekilde öğrenin
+description: Azure CLı kullanarak rota tabanlı Azure VPN Ağ Geçidi oluşturmayı öğrenin. Şirket içi ağınıza bağlanmak için bir VPN ağ geçidi kullanın.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c207d2c5b2817bacd75ffcd12c9b4c43fe86f55
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987693"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923348"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLı kullanarak rota temelli VPN ağ geçidi oluşturma
 

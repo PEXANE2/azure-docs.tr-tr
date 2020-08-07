@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77187021"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921631"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute çapraz geçiş API 'leri geliştirme ve Tümleştirme
 
@@ -30,7 +30,7 @@ ExpressRouteCrossConnections kaynağına geçmesinin avantajları:
 
 * ExpressRoute iş ortakları için gelecekteki tüm geliştirmeler ExpressRouteCrossConnection kaynağında kullanıma sunulacaktır.
 
-* İş ortakları, expressRouteCrossConnection kaynağına [rol tabanlı Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
+* İş ortakları, expressRouteCrossConnection kaynağına [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
 
 * ExpressRouteCrossConnection kaynağı, ExpressRoute bağlantılarında sorun gidermeye yardımcı olabilecek API 'Ler sunar. Buna ARP tablosu, BGP yol tablosu Özeti ve BGP yol tablosu ayrıntıları dahildir. Bu özellik klasik dağıtım API 'Leri tarafından desteklenmez.
 

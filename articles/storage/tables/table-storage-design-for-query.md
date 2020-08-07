@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1d157e7d2880761fb6559723bdc1d6c34baffb09
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903213"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926255"
 ---
 # <a name="design-for-querying"></a>Sorgulama için tasarım
 Tablo hizmeti çözümleri yoğun bir şekilde okunabilir, yoğun yazma veya ikisinin karışımı olabilir. Bu makalede, tablo hizmetinizi, okuma işlemlerini verimli bir şekilde destekleyecek şekilde tasarlarken göz önünde bulundurmanız gereken noktalar ele alınmaktadır. Genellikle, okuma işlemlerini etkin şekilde destekleyen bir tasarım, yazma işlemleri için de etkilidir. Bununla birlikte, [veri değişikliği Için tasarım tasarımında](table-storage-design-for-modification.md)bahsedilen yazma işlemlerini desteklemek için tasarlanırken dikkate alınması gereken ek hususlar vardır.
@@ -81,14 +81,14 @@ Varlık **anahtarınız** , varlıkları ekleme, güncelleştirme ve silme ile i
 ## <a name="optimizing-queries-for-the-table-service"></a>Tablo hizmeti için sorguları iyileştirme
 Tablo hizmeti, tek bir kümelenmiş dizindeki **partitionkey** ve **rowkey** değerlerini kullanarak varlıklarınızı otomatik olarak dizinlenir, bu nedenle nokta sorgularının kullanım açısından en verimli olması neden olur. Ancak, **partitionkey** ve **rowkey**üzerindeki kümelenmiş dizinin dışında başka bir dizin yoktur.
 
-Birçok tasarım, varlıkların birden çok ölçüte göre aramasını etkinleştirmek için gereksinimlere uymalıdır. Örneğin, e-posta, çalışan kimliği veya soyadı temelinde çalışan varlıklarını bulma. [Tablo tasarım desenlerinde](table-storage-design-patterns.md) açıklanan desenler, bu tür gereksinimleri ele almaz ve tablo hizmetinin ikincil dizinler sağlamadığı gerçeğe geçici çözüm yolları açıklanmaktadır:  
+Birçok tasarım, varlıkların birden çok ölçüte göre aramasını etkinleştirmek için gereksinimlere uymalıdır. Örneğin, e-posta, çalışan KIMLIĞI veya soyadı temelinde çalışan varlıklarını bulma. [Tablo tasarım desenlerinde](table-storage-design-patterns.md) açıklanan desenler, bu tür gereksinimleri ele almaz ve tablo hizmetinin ikincil dizinler sağlamadığı gerçeğe geçici çözüm yolları açıklanmaktadır:  
 
 * [Bölüm içi ikincil dizin düzeni](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) **-farklı** rowkey değerleri kullanılarak hızlı ve verimli aramalar ve alternatif sıralama emirlerini etkinleştirmek için, her bir varlığın farklı **rowkey** değerlerini kullanarak birden çok kopyasını depolayın (aynı bölümde).  
 * [Bölümler arası ikincil dizin düzeni](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) -ayrı bölümlerde veya ayrı tablolarda farklı **rowkey** değerleri kullanarak her bir varlığın birden çok kopyasını depolayın ve farklı **rowkey** değerleri kullanarak hızlı ve verimli aramalar ve alternatif sıralama emirlerini etkinleştirin.  
 * [Dizin varlıkları model](table-storage-design-patterns.md#index-entities-pattern) -varlık listeleri döndüren etkili aramaları etkinleştirmek için Dizin varlıklarını koruyun.  
 
 ## <a name="sorting-data-in-the-table-service"></a>Tablo hizmetindeki verileri sıralama
-Tablo hizmeti, **partitionkey** ve sonra **rowkey**'e göre artan sırada sıralanan varlıkları döndürür. Bu anahtarlar dize değerleridir ve sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve sıfırlarla birlikte ayarlayabilmeniz gerekir. Örneğin, **Rowkey** olarak kullandığınız çalışan kimliği değeri bir tamsayı değeri ise, **123** çalışan kimliğini **00000123**olarak dönüştürmeniz gerekir.  
+Tablo hizmeti, **partitionkey** ve sonra **rowkey**'e göre artan sırada sıralanan varlıkları döndürür. Bu anahtarlar dize değerleridir ve sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve sıfırlarla birlikte ayarlayabilmeniz gerekir. Örneğin, **Rowkey** olarak KULLANDıĞıNıZ çalışan kimliği değeri bir tamsayı değeri ise, **123** çalışan kimliğini **00000123**olarak dönüştürmeniz gerekir.  
 
 Birçok uygulamanın, farklı siparişlerde sıralanmış verileri kullanma gereksinimleri vardır: Örneğin, çalışanları ada göre veya birleştirme tarihine göre sıralama. Aşağıdaki desenler, varlıklarınız için sıralama emirlerinin nasıl farklı olduğunu ele almalardır:  
 

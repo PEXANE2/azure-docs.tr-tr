@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Azure Active Directory B2C kiracı oluşturma
-description: Azure portal kullanarak Azure Active Directory B2C kiracı oluşturarak uygulamalarınızı kaydetmeye nasıl hazırlanacağınızı öğrenin.
+description: Azure portal kullanarak Azure Active Directory B2C kiracı oluşturarak uygulamalarınızı kaydetmeye nasıl hazırlanacağınızı öğrenmek için bu öğreticiyi izleyin.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806859"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922203"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracısı oluşturma
 
@@ -31,11 +31,13 @@ Bu makalede şunları öğreneceksiniz:
 
 Bir uygulamayı sonraki öğreticide nasıl kaydedeceğinizi öğrenirsiniz.
 
+## <a name="prerequisites"></a>Ön koşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C kiracısı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın. Abonelik içinde en azından [katılımcı](../role-based-access-control/built-in-roles.md) rolü veya abonelik içindeki bir kaynak grubu atanmış bir Azure hesabıyla oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın. Abonelik içinde en azından [katılımcı](../role-based-access-control/built-in-roles.md) rolü veya abonelik içindeki bir kaynak grubu atanmış bir Azure hesabıyla oturum açın.
 
 1. Aboneliğinizi içeren dizini seçin.
 
@@ -59,8 +61,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     ![İçinde kiracı formunu örnek değerlerle oluşturun Azure portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
-1. **İncele ve oluştur**’u seçin.
-1. Dizin ayarlarınızı gözden geçirin. Ardından **Oluştur**'u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
+1. Dizin ayarlarınızı gözden geçirin. Ardından **Oluştur**’u seçin.
 
 Faturalama amacıyla birden çok Azure AD B2C kiracıyı tek bir Azure aboneliğine bağlayabilirsiniz. Bir kiracıyı bağlamak için Azure AD B2C kiracısında yönetici olmanız ve Azure aboneliği içinde en az bir katkıda bulunan rolü atanması gerekir. Bkz. [Azure AD B2C kiracıyı aboneliğe bağlama](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
@@ -82,7 +84,7 @@ Kiracınızla birlikte çalışmak istediğiniz her **durumda** *Azure AD B2C* i
 
 Bu işlemi yalnızca bir kez gerçekleştirmeniz gerekir. Bu adımları gerçekleştirmeden önce, önceki bölümde açıklandığı gibi Azure AD B2C kiracınızı içeren dizine geçdiğinizden emin olun, [B2C kiracı dizininizi seçin](#select-your-b2c-tenant-directory).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portal menüsünde **tüm hizmetler**' i seçin.
 1. **Tüm hizmetler** arama kutusunda **Azure AD B2C**arayın, arama sonucunun üzerine gelin ve ardından araç ipucunda yıldız simgesini seçin. **Azure AD B2C** artık **sık kullanılanlar**altındaki Azure Portal görüntülenir.
 1. Yeni sık kullanılanlarınızın konumunu değiştirmek istiyorsanız, Azure portal menüsüne gidin, **Azure AD B2C**' i seçin ve ardından istediğiniz konuma aşağı veya aşağı sürükleyin.

@@ -2,15 +2,15 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 07/20/2020
+ms.date: 08/06/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: b2667e63f7cac5d1e3ad8475501ff909e8f6f3c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fe9ec46050ad831430239b960a7f528af7f4dc2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102336"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924334"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
@@ -53,12 +53,12 @@ Bu seçenekler aşağıda gösterilmiştir.
    New-AzTemplateSpec `
      -ResourceGroupName templateSpecRG `
      -Name storageSpec `
-     -Version "1.0.0.0" `
+     -Version "1.0" `
      -Location westus2 `
      -TemplateJsonFile "c:\Templates\azuredeploy.json"
    ```
 
-# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
+# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
 
 1. Şablon belirtimini oluşturmak için ARM şablonu kullandığınızda, şablon kaynak tanımına katıştırılır. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**olarak yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
@@ -86,7 +86,7 @@ Bu seçenekler aşağıda gösterilmiştir.
                    {
                        "type": "versions",
                        "apiVersion": "2019-06-01-preview",
-                       "name": "1.0.0.1",
+                       "name": "1.0",
                        "location": "westus2",
                        "dependsOn": [ "storageSpec" ],
                        "properties": {
@@ -195,7 +195,7 @@ Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılma
 1. Şablon belirtiminin kaynak KIMLIĞINI alın.
 
    ```azurepowershell
-   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0.0.0").Version.Id
+   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
    ```
 
 1. Şablon belirtimini dağıtın.
@@ -203,10 +203,19 @@ Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılma
    ```azurepowershell
    New-AzResourceGroupDeployment `
      -TemplateSpecId $id `
-     -ResourceGroupName demoRG
+     -ResourceGroupName storageRG
    ```
 
-# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
+1. Bir ARM şablonunda yaptığınız gibi parametreleri tam olarak sağlarsınız. Şablon belirtimini depolama hesabı türü için bir parametre ile yeniden dağıtın.
+
+   ```azurepowershell
+   New-AzResourceGroupDeployment `
+     -TemplateSpecId $id `
+     -ResourceGroupName storageRG `
+     -StorageAccountType Standard_GRS
+   ```
+
+# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
 
 1. Aşağıdaki şablonu kopyalayın ve **storage.js**adlı bir dosyaya yerel olarak kaydedin.
 
@@ -224,7 +233,7 @@ Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılma
                "name": "demo",
                "properties": {
                    "templateLink": {
-                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0.0.0')]"
+                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
                    },
                    "parameters": {
                    },

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446527"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925796"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -122,11 +122,19 @@ Bu bölüm desteklenen Linux dağıtımları hakkında ayrıntılı bilgi sağla
  - Ubuntu, debir:`apt-get install -y python2`
  - SUSE`zypper install -y python2`
 
-Python2 yürütülebilir dosyası, aşağıdaki komutu kullanarak "Python" için diğer ad olmalıdır:
+Python2 yürütülebilir dosyası, aşağıdaki yordam kullanılarak *Python* 'un diğer adı olmalıdır:
 
-```
-alternatives --set python `which python2`
-```
+1. Varsa, geçerli Python diğer adlarını görüntülemek için aşağıdaki komutu çalıştırın. Varsa, bir sonraki adım için önceliği göz önünde atın.
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. Aşağıdaki komutu çalıştırın. *\<priority\>* Mevcut bağlantı önceliğinden daha büyük bir sayıyla veya hiçbir bağlantı yoksa 1 ile değiştirin.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>Desteklenen kaldırmalar
 
@@ -189,12 +197,12 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |
-|*.azure-automation.net |Bağlantı noktası 443 |Giden|Yes |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |
+|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |
 
-Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). 
+Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 
 Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080684"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920730"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>C kullanarak Azure Time Series Insights Gen1 ortamından veri sorgulama #
 
@@ -75,10 +75,11 @@ Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak paketleri ek
 
 ## <a name="c-sample-code"></a>C# örnek kodu
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)okuyun.
 
 - Time Series Insights için [istemci SDK 'sını kullanarak bir JavaScript uygulamasının nasıl bağlanacağını](https://github.com/microsoft/tsiclient) okuyun.
+Azure-Samples/Azure-Time-Series-Insights/Gen1-Sample/CSharp-TSİ-Gen1-Sample/program. cs
