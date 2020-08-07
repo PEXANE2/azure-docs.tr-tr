@@ -6,19 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539559"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843394"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
 
-[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar Eylül 2019 ' de kullanımdan kaldırılıyor (ilk olarak 2019 Temmuz idi). Klasik uyarı kuralları kullanan ve geçiş yapmak isteyen müşterilere Azure portal bir geçiş aracı vardır.
-
 > [!NOTE]
-> Geçiş Aracı 'nın çıkış gecikmesi nedeniyle, klasik uyarılar geçişinin devre dışı bırakılması tarihi 31 Haziran 2019 tarihinde ilk bildirilen tarihten itibaren 31 Ağustos 2019 tarihine kadar genişletilmiştir.
+> [Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar kullanımdan kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. Bu uyarıların devre dışı bırakılması tarihi daha fazla genişletildi. Yeni bir tarih yakında duyurulacak.
+>
 
 Klasik uyarı kurallarınızı yeni uyarı kurallarına göre gönüllü olarak geçirmeyi tercih ederseniz, iki sistem arasında bazı farklılıklar olduğunu unutmayın. Bu makalede bu farklılıklar ve değişikliğe nasıl hazırlanacağı açıklanmaktadır.
 
@@ -31,7 +30,7 @@ Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabiriml
 | Dağıtım betiği türü | Klasik uyarılar | Yeni ölçüm uyarıları |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI’si     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Başvuru](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Başvuru](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager şablonu | [Klasik uyarılar için](./alerts-enable-template.md)|[Yeni ölçüm uyarıları için](./alerts-metric-create-templates.md)|
 

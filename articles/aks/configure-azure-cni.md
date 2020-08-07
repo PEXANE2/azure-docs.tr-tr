@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416860"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872438"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -19,7 +19,7 @@ Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve siz
 
 Bu makalede, bir AKS kümesi için bir sanal ağ alt ağı oluşturmak ve kullanmak üzere *Azure CNI* ağı 'nın nasıl kullanılacağı gösterilmektedir. Ağ seçenekleri ve konuları hakkında daha fazla bilgi için bkz. [Kubernetes ve AKS Için ağ kavramları][aks-network-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
 * Aks kümeleri,,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı için kullanılamıyor olabilir.
@@ -87,7 +87,7 @@ Düğüm başına en fazla düğüm sayısı için en düşük değer, sistem Po
 
 ### <a name="configure-maximum---existing-clusters"></a>En fazla mevcut kümeleri yapılandırma
 
-Düğüm başına maxPod ayarı, yeni bir düğüm havuzu oluşturduğunuzda tanımlanabilir. Var olan bir kümede düğüm başına maxPod ayarını artırmanız gerekiyorsa, istenen yeni maxPod sayımına sahip yeni bir düğüm havuzu ekleyin. Yığınlarınızı yeni havuza geçirdikten sonra eski havuzu silin. Bir kümedeki eski bir havuzu silmek için, düğüm havuzu modlarını [sistem düğüm havuzu belge[sistemi-düğüm-havuzlarında]tanımlandığı şekilde ayarlamadığınıza emin olun.
+Düğüm başına maxPod ayarı, yeni bir düğüm havuzu oluşturduğunuzda tanımlanabilir. Var olan bir kümede düğüm başına maxPod ayarını artırmanız gerekiyorsa, istenen yeni maxPod sayımına sahip yeni bir düğüm havuzu ekleyin. Yığınlarınızı yeni havuza geçirdikten sonra eski havuzu silin. Bir kümedeki eski bir havuzu silmek için, düğüm havuzu modlarını [sistem düğüm havuzları belgesinde][system-node-pools]tanımlandığı şekilde ayarlamadığınıza emin olun.
 
 ## <a name="deployment-parameters"></a>Dağıtım parametreleri
 
@@ -214,4 +214,4 @@ Aks motoru ile oluşturulan Kubernetes kümeleri hem [Kubernetes kullanan][kuben
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
-[Sistem düğümü havuzları]: use-system-pools.md
+[system-node-pools]: use-system-pools.md

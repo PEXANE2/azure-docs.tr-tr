@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538658"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872421"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -54,7 +54,7 @@ Konum değişiklikleri | Yedekleme altyapısını ( `net stop bengine` ) durduru
 
 MARS aracısının bu URL 'Lere erişmesi gerekir:
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
@@ -79,7 +79,7 @@ Ortak eşleme ile: aşağıdaki etki alanlarına/adreslere erişim sağlayın:
 - `.microsoftonline.com`
 - `.windows.net`
 
-Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
+Microsoft eşlemesi ile aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
@@ -89,6 +89,16 @@ Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expres
 
 >[!NOTE]
 >Ortak eşleme, yeni devreler için kullanım dışıdır.
+
+### <a name="private-endpoint-support"></a>Özel uç nokta desteği
+
+Artık verilerinizi sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde yedeklemek için özel uç noktaları kullanabilirsiniz. Azure Active Directory şu anda özel uç noktaları desteklemediğinden, Azure Active Directory için gereken IP 'Ler ve FQDN 'Lerin Ayrıca giden erişime ayrı olarak izin verilmesi gerekir.
+
+Şirket içi kaynaklarınızı yedeklemek için MARS Aracısı 'nı kullandığınızda, şirket içi ağınızın (yedeklenecek kaynakları içeren) kasa için özel bir uç nokta içeren Azure VNet ile eşlendiğinizden emin olun. Daha sonra MARS aracısını yüklemeye ve yedeklemeyi yapılandırmanıza devam edebilirsiniz. Ancak, yedekleme için tüm iletişimin yalnızca eşlenmiş ağ aracılığıyla yapıldığından emin olmanız gerekir.
+
+Bir MARS Aracısı kaydedildikten sonra kasadaki özel uç noktaları kaldırırsanız, kapsayıcıyı kasaya yeniden kaydetmeniz gerekir. Bunların korumasını durdurmanız gerekmez.
+
+[Azure Backup için özel uç noktalar](private-endpoints.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="throttling-support"></a>Daraltma desteği
 
@@ -111,20 +121,20 @@ MARS aracısını aşağıda belirtilen işletim sistemlerinde çalışan Azure 
 
 **İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**
 --- | --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Yes | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 8.1 (Enterprise, Pro)| Yes |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 8 (Enterprise, Pro) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows Server 2016 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, Foundation) | Yes | Yes |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe)
+Windows 10 (Enterprise, Pro, Home) | Evet | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8.1 (Enterprise, Pro)| Evet |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8 (Enterprise, Pro) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows Server 2016 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Evet | Evet |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe)
 Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2019 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
 Daha fazla bilgi için bkz. [desteklenen MABS ve DPM işletim sistemleri](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
 ### <a name="operating-systems-at-end-of-support"></a>Destek sonundaki işletim sistemleri
 
-Aşağıdaki işletim sistemleri destek sonunda bulunur ve korunan olmaya devam etmek için işletim sisteminin yükseltilmesi önemle önerilir.
+Aşağıdaki işletim sistemleri destek sonunda bulunur ve korunan olmaya devam etmek için işletim sistemini yükseltmeniz önemle önerilir.
 
 Mevcut taahhütler işletim sisteminin yükseltilmesini engelliyorsa, Windows Server 'ı Azure VM 'lerine geçirmeyi ve korumalı kalmaya devam etmek için Azure VM yedeklemelerine yararlanmanızı göz önünde bulundurun. Windows Server 'ı geçirme hakkında daha fazla bilgi için [buraya geçiş sayfasını](https://azure.microsoft.com/migration/windows-server/) ziyaret edin.
 
@@ -133,7 +143,7 @@ Mevcut taahhütler işletim sisteminin yükseltilmesini engelliyorsa, Windows Se
 | **İşletim Sistemi**                                       | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
 | Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet               | Hayır                 | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin |
-| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Yes               | Yes                | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe) |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Evet               | Evet                | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe) |
 | Windows Server 2008 SP2 (Standard, Datacenter, Foundation)  | Evet               | Hayır                 | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe) <br>  -Sanal sunucu 2005 tabanı + KB KB948515 |
 
 ## <a name="backup-limits"></a>Yedekleme limitleri
@@ -148,7 +158,7 @@ Windows Server 2012 veya üzeri |54.400 GB
 Windows Server 2008 R2 SP1 |1.700 GB
 Windows Server 2008 SP2| 1.700 GB
 Windows 8 veya üzeri| 54.400 GB
-Windows 7| 1.700 GB
+Windows 7| 1.700 GB
 
 ### <a name="other-limitations"></a>Diğer sınırlamalar
 

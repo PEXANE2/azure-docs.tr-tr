@@ -1,20 +1,20 @@
 ---
 title: MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
-description: Bu makalede, MongoDB API 'sini kullanarak Azure Cosmos DB Dizin oluşturma özelliklerine ilişkin bir genel bakış sunulmaktadır.
+description: Bu makalede, MongoDB için Azure Cosmos DB API 'SI kullanılarak Azure Cosmos DB Dizin oluşturma özelliklerine genel bir bakış sunulmaktadır
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761170"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843819"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -315,7 +315,7 @@ Dizin ilerleme durumu ayrıntıları geçerli dizin işleminin ilerleme yüzdesi
    }
    ```
 
-### <a name="background-index-updates"></a>Arka plan dizini güncelleştirmeleri
+## <a name="background-index-updates"></a>Arka plan dizini güncelleştirmeleri
 
 **Arka** plan dizini özelliği için belirtilen değerden bağımsız olarak, dizin güncelleştirmeleri her zaman arka planda yapılır. Dizin güncelleştirmeleri, diğer veritabanı işlemlerinden daha düşük bir öncelikte Istek birimlerini (ru) tükettiğinden, dizin değişiklikleri yazma, güncelleştirme veya silme işlemlerine hiçbir kesinti oluşmasına neden olmaz.
 

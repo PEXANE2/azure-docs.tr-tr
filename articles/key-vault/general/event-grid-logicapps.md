@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53e8586486d9a9ebf870de350d5607f58977c0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 340fcd723442a53ca72d3af0461226be737eb7a5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423281"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844210"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Anahtar Kasası gizliliklerin durum değişiklikleriyle ilgili e-posta almak için Logic Apps kullanın
 
@@ -23,11 +23,12 @@ Bu kılavuzda, [Azure Logic Apps](../../logic-apps/index.yml)kullanarak [Azure E
 
 Azure Key Vault/Azure Event Grid tümleştirmesine genel bakış için bkz. [Azure Event Grid Ile izleme Key Vault (Önizleme)](event-grid-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Logic Apps tarafından desteklenen herhangi bir e-posta sağlayıcısından (Office 365 Outlook gibi) bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen Logic App bağlayıcılarının tam listesi için bkz. [Bağlayıcılara genel bakış](/connectors)
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Azure aboneliğinizdeki bir Anahtar Kasası. [Azure CLI kullanarak Azure Key Vault bir gizli anahtarı ayarlama ve alma](../secrets/quick-create-cli.md)bölümündeki adımları izleyerek hızlı bir şekilde yeni bir Anahtar Kasası oluşturabilirsiniz.
+- Kaynak sağlayıcısı olarak kayıtlı Event Grid, bkz. [kaynak sağlayıcıları kayıtları](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Event Grid aracılığıyla mantıksal uygulama oluşturma
 
@@ -58,8 +59,8 @@ Azure Event Grid aboneliği oluşturmak için aşağıdaki adımları izleyin:
    ![Mantıksal uygulama Tasarımcısı-e-posta Ekle](../media/eventgrid-logicappdesigner3.png)
 
 1. E-posta şablonunuzu oluşturun:
-    - **Şunları yapmak için:** Bildirim e-postalarını alacak e-posta adresini girin. Bu öğreticide, test etmek için erişebileceğiniz bir e-posta hesabı kullanın.
-    - **Konu** ve **Gövde**: E-postanızın metnini yazın. Olay verileri temelinde dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Kullanarak `@{triggerBody()?['Data']}`olayın verilerini alabilirsiniz.
+    - **Şunları yapmak için:** Bildirim e-postalarını alacak e-posta adresini girin. Bu öğreticide, test için erişebileceğiniz bir e-posta hesabı kullanın.
+    - **Konu** ve **Gövde**: E-postanızın metnini yazın. Olay verilerine göre dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Kullanarak olayın verilerini alabilirsiniz `@{triggerBody()?['Data']}` .
 
     E-posta şablonunuz, bu örneğe benzeyebilir.
 

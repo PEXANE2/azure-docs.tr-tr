@@ -4,14 +4,21 @@ description: Java Ileti hizmeti 'ni (JMS) Azure Service Bus ve Gelişmiş İleti
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 95558f973041a086dc66d2bebb1ce54ee58c952a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320791"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799693"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmeti 'ni (JMS) kullanma
+
+> [!WARNING]
+> Aşağıdaki kılavuz, Java Ileti hizmeti (JMS) 1,1 API 'SI için **sınırlı desteğe** ve yalnızca Azure Service Bus Standart katman için mevcuttur.
+>
+> Java Ileti hizmeti (JMS) 2,0 API 'SI için tam destek, yalnızca [Önizlemedeki Azure Service Bus Premium katmanında](how-to-use-java-message-service-20.md)kullanılabilir ve bu da önemle önerilir.
+>
+
 Bu makalede, popüler Java Ileti hizmeti (JMS) API standardı kullanılarak Java uygulamalarından Azure Service Bus mesajlaşma özelliklerinin (kuyruklar ve yayımlama/abone olma konuları) nasıl kullanılacağı açıklanmaktadır. Azure Service Bus .NET API 'SI ile nasıl yapılacağını açıklayan bir [yardımcı makale](service-bus-amqp-dotnet.md) vardır. AMQP 1,0 kullanarak platformlar arası mesajlaşma hakkında bilgi edinmek için bu iki Kılavuzu birlikte kullanabilirsiniz.
 
 Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0, güçlü, platformlar arası mesajlaşma uygulamaları oluşturmak için kullanabileceğiniz verimli, güvenilir, hat düzeyinde bir mesajlaşma protokolüdür.
@@ -29,7 +36,7 @@ Bu kılavuzda zaten adlı bir kuyruğu içeren bir Service Bus ad alanınız old
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>AMQP 1,0 JMS istemci kitaplığı indiriliyor
 Apache Qpid JMS AMQP 1,0 istemci kitaplığı 'nın en son sürümünü indirme yeri hakkında daha fazla bilgi için, adresini ziyaret edin [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) .
 
-Aşağıdaki dört JAR dosyasını Apache Qpid JMS AMQP 1,0 dağıtım arşivinden, Service Bus JMS uygulamaları oluşturup çalıştırırken Java SıNıFYOLUNA eklemeniz gerekir:
+Service Bus ile JMS uygulamaları oluşturup çalıştırırken Apache Qpid JMS AMQP 1,0 dağıtım Arşivi 'nden aşağıdaki JAR dosyalarını Java SıNıFYOLUNA eklemeniz gerekir:
 
 * GERONIMO-JMS \_ 1,1 \_ spec-1.0. jar
 * qpid-JMS-Client-[sürüm]. jar
@@ -377,4 +384,3 @@ Bu nasıl yapılır kılavuzunda, popüler JMS API ve AMQP 1,0 kullanılarak Jav
 * [Service Bus AMQP 1,0 Geliştirici Kılavuzu](service-bus-amqp-dotnet.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
 * [Java Geliştirici Merkezi](https://azure.microsoft.com/develop/java/)
-

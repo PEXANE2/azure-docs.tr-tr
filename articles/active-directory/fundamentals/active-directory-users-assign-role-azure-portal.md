@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a468b5f43e8b024dd1da6e382049f8cce6de295
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797374"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902363"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama
 
@@ -28,7 +28,7 @@ Kullanılabilir Azure AD rolleri hakkında daha fazla bilgi için, bkz. [Azure A
 
 ## <a name="assign-roles"></a>Rol atama
 
-Bir kullanıcıya Azure AD rolleri atamak için ortak bir yol, bir kullanıcı için **atanan roller** sayfasıdır. Ayrıca, Privileged Identity Management (PıM) kullanarak bir rol için tam zamanında yükseltilme uygunluğu da sağlayabilirsiniz. PıM kullanma hakkında daha fazla bilgi için bkz. [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
+Bir kullanıcıya Azure AD rolleri atamak için ortak bir yol, bir kullanıcı için **atanan roller** sayfasıdır. Ayrıca, Kullanıcı uygunluğunu Privileged Identity Management (PıM) kullanarak bir role tam zamanında Yükseltilmek üzere de yapılandırabilirsiniz. PıM kullanma hakkında daha fazla bilgi için bkz. [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 > [!Note]
 > Bir Azure AD Premium P2 lisans planınız varsa ve zaten PıM kullanıyorsanız, tüm rol yönetim görevleri [Privileged Identity Management deneyimde](../users-groups-roles/directory-manage-roles-portal.md)gerçekleştirilir.

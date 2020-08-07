@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428011"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902482"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -44,7 +44,7 @@ Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan 
 
 Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepler kümesi vardır.
 
-| Talep kümesi | Description |
+| Talep kümesi | Açıklama |
 |---|---|
 | Çekirdek talep kümesi | , İlkeden bağımsız olarak her belirteçte bulunur. Bu talepler de kısıtlı olarak değerlendirilir ve değiştirilemez. |
 | Temel talep kümesi | Belirteçleri için varsayılan olarak yayılan talepleri içerir (çekirdek talep kümesine ek olarak). Talepler eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
@@ -261,13 +261,15 @@ Hangi taleplerin yayıldığını ve verilerin nereden geldiğini denetlemek iç
 **Veri türü:** Bir veya daha fazla talep şeması girişi içeren JSON blobu
 
 **Özet:** Bu özellik, temel talep kümesine ve çekirdek talep kümesine ek olarak, ilkeden etkilenen belirteçlerde hangi taleplerin mevcut olduğunu tanımlar.
-Bu özellikte tanımlanan her talep şeması girişi için bazı bilgiler gereklidir. Verilerin nereye geldiğini (**değer** veya **kaynak/kimlik çiftinin**) ve verilerin hangi talebe göre (**talep türü**) yayınlandığını belirtin.
+Bu özellikte tanımlanan her talep şeması girişi için bazı bilgiler gereklidir. Verilerin (**değer**, **kaynak/kimlik çiftinin**veya **kaynak/extensionID çiftinin**) nereye geldiğini ve verilerin hangi talebe göre (**talep türü**) yayınlandığını belirtin.
 
 ### <a name="claim-schema-entry-elements"></a>Talep şeması giriş öğeleri
 
 **Değer:** Value öğesi, bir statik değeri, talepteki veri olarak tanımlar.
 
-**Kaynak/kimlik çifti:** Kaynak ve KIMLIK öğeleri, talepteki verilerin kaynağını belirler. 
+**Kaynak/kimlik çifti:** Kaynak ve KIMLIK öğeleri, talepteki verilerin kaynağını belirler.  
+
+**Kaynak/extensionID çifti:** Kaynak ve extensionID öğeleri, talepteki verilerin kaynağı olan dizin şeması uzantısı özniteliğini tanımlar. Daha fazla bilgi için bkz. [taleplerde Dizin şeması uzantısı özniteliklerini kullanma](active-directory-schema-extensions.md).
 
 Kaynak öğeyi aşağıdaki değerlerden birine ayarlayın: 
 
@@ -284,7 +286,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
 
-| Kaynak | ID | Description |
+| Kaynak | ID | Açıklama |
 |-----|-----|-----|
 | Kullanıcı | surname | Aile adı |
 | Kullanıcı | givenname | Verilen Ad |
@@ -328,7 +330,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | atanan | kullanıcıya atanan uygulama rollerinin listesi|
 | uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
 | uygulama, kaynak, hedef kitle | objected | ObjectID |
-| uygulama, kaynak, hedef kitle | tags | Hizmet sorumlusu etiketi |
+| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi/bölgesi |
 
 **Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
@@ -359,7 +361,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: dönüştürme yöntemleri ve beklenen girişler ve çıktılar
 
-|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Description|
+|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
 |Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-posta veya UPN|ayıklanan dize|ExtensionAttributes 1-15 veya Kullanıcı için bir UPN ya da e-posta adresi değeri depolayan diğer şema uzantıları gibi johndoe@contoso.com . Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
@@ -385,7 +387,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
-|Kaynak|ID|Description|
+|Kaynak|ID|Açıklama|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
@@ -439,7 +441,7 @@ Azure AD 'de, belirli hizmet sorumluları için belirteçlerde yayılan talepler
 > [!NOTE]
 > Bir talep eşleme ilkesi oluştururken, belirteçlerdeki Dizin şeması uzantısı özniteliğinden bir talep da oluşturabilirsiniz. Öğesinde *ID* yerine Extension özniteliği Için *extensionID* kullanın `ClaimsSchema` .  Uzantı öznitelikleri hakkında daha fazla bilgi için bkz. [Dizin şeması uzantısı özniteliklerini kullanma](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki örneklerde, hizmet sorumluları için ilkeleri oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma hakkında bilgi](quickstart-create-new-tenant.md) almanızı öneririz.
 

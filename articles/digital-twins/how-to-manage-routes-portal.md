@@ -7,12 +7,12 @@ ms.author: v-lakast
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7786f970f612d2856948e2286ed234e2b0895072
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d563c7706529c6f3e280f7d138c0d6ba0dfc849
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836980"
+ms.locfileid: "87902224"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -129,44 +129,49 @@ Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **ola
 
 ### <a name="create-an-event-route"></a>Olay yolu oluşturma 
 
-Bir olay yolu tanımı şu öğeleri içerebilir:
-* Kullanmak istediğiniz yol KIMLIĞI
+Bir olay yolu tanımı şu öğeleri içerir:
+* Kullanmak istediğiniz yol adı
 * Kullanmak istediğiniz uç noktanın adı
 * Uç noktaya hangi olayların gönderileceğini tanımlayan bir filtre
+    - Bir olayın gönderilmemesi için yolu devre dışı bırakmak için bir filtre değeri kullanın`false`
+    - Belirli bir filtreleme özelliği olmayan bir yolu etkinleştirmek için, bir filtre değeri kullanın`true`
+    - Diğer filtre türleri hakkında daha fazla bilgi için aşağıdaki [*Olayları Filtrele*](#filter-events) bölümüne bakın.
 
-Rota KIMLIĞI yoksa, Azure dijital TWINS dışında hiçbir ileti yönlendirilmez.
-Bir yol KIMLIĞI varsa ve filtre ise `true` , tüm iletiler uç noktaya yönlendirilir.
-Bir yol KIMLIĞI varsa ve farklı bir filtre eklenirse, iletiler filtreye göre filtrelenecektir.
-
-Bir yol birden çok bildirimin ve olay türünün seçilebilmelidir.
+Tek bir yol, birden fazla bildirim ve olay türünün seçili olmasını sağlayabilir.
 
 Bir olay yolu oluşturmak için [Azure Portal](https://portal.azure.com) Azure dijital TWINS örneğinizin ayrıntılar sayfasına gidin (örneğin adını Portal arama çubuğuna girerek örneği bulabilirsiniz).
 
 Örnek menüsünden _olay yolları_' nı seçin. Ardından, aşağıdaki *olay yolları* sayfasından *+ bir olay yolu oluştur*' u seçin. 
 
-Açılan *bir olay yolu oluştur* sayfasında, _ad_ alanına rota için en az bir ad seçin ve açılan listeden yol oluşturmak Için kullanmak istediğiniz _uç noktayı_ seçin.
+Açılan *bir olay yolu oluştur* sayfasında en az ' ı seçin:
+* _Ad_ alanına yönlendirmenize ilişkin bir ad
+* Yolu oluşturmak için kullanmak istediğiniz _uç nokta_ 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Örneğiniz için olay yolu oluşturma ekranının ekran görüntüsü.":::
+Yolun etkinleştirilmesi için, en azından **bir olay yönlendirme filtresi de eklemeniz** gerekir `true` . (Varsayılan değerinin bırakılması `false` yolu oluşturur, ancak buna hiçbir olay gönderilmez.) Bunu yapmak için, _Gelişmiş düzenleyicinin_ anahtarını etkinleştirmek üzere değiştirin ve `true` *filtre* kutusuna yazın.
+
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Örneğiniz için olay yolu oluşturma ekranının ekran görüntüsü." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 İşiniz bittiğinde, olay rotasını oluşturmak için _Kaydet_ düğmesine basın.
 
 ### <a name="filter-events"></a>Olayları filtreleme
 
-Bitiş noktaları, filtrelemeden Azure dijital TWINS 'ten çeşitli olaylar alır:
+Yukarıda açıklandığı gibi, yolların bir **filtre** alanı vardır. Yolinizdeki filtre değeri ise `false` , uç noktanıza hiçbir olay gönderilmez. 
+
+En az filtresini etkinleştirdikten sonra `true` uç noktalar Azure dijital TWINS 'den çeşitli olaylar alır:
 * Azure Digital TWINS hizmet API 'SI kullanılarak [dijital TWINS](concepts-twins-graph.md) tarafından tetiklenen telemetri
 * İkizi özellik değişikliği bildirimleri, Azure dijital TWINS örneğindeki herhangi bir ikizi için özellik değişikliklerinde harekete geçirilir
 * Yaşam döngüsü olayları, TWINS veya ilişkiler oluşturulduğunda veya silindiğinde tetiklenir
 * Model değişiklik olayları, bir Azure dijital TWINS örneğinde yapılandırılan [modeller](concepts-models.md) eklendiğinde veya silindiğinde tetiklenir
 
-Olay yolıza bir uç nokta için **filtre** ekleyerek gönderilmekte olan olayları kısıtlayabilirsiniz.
+Daha özel bir filtre tanımlayarak gönderilmekte olan olay türlerini kısıtlayabilirsiniz.
 
-Bir olay yolu oluştururken filtre eklemek için, *olay yolu oluşturma* sayfasının _olay yol filtresi ekle_ bölümünü kullanın. 
+Bir olay yolu oluştururken bir olay filtresi eklemek için, *olay yolu oluşturma* sayfasının _olay yol filtresi ekle_ bölümünü kullanın. 
 
 Bazı temel ortak filtre seçeneklerinden birini seçebilir veya kendi özel filtrelerinizi yazmak için gelişmiş filtre seçeneklerini kullanabilirsiniz.
 
 #### <a name="use-the-basic-filters"></a>Temel filtreleri kullanma
 
-Temel filtreleri kullanmak için, _olay türleri_ seçeneğini genişletin ve filtrelemek istediğiniz olaylara karşılık gelen onay kutularını seçin. 
+Temel filtreleri kullanmak için, _olay türleri_ seçeneğini genişletin ve uç noktanıza göndermek istediğiniz olaylara karşılık gelen onay kutularını seçin. 
 
 :::row:::
     :::column:::

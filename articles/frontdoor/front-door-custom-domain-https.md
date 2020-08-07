@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160094"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808806"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
 Bu öğreticide ön uç konakları bölümü altında Front Door’unuzla ilişkili özel bir etki alanı için HTTPS protokolünün nasıl etkinleştirileceği gösterilir. Özel etki alanınızda HTTPS protokolünü kullanarak (örneğin, https:\//www.contoso.com), hassas veriler internet üzerinden gönderildiğinde bunların TLS/SSL şifrelemesi ile güvenli bir şekilde teslim edilmesini sağlarsınız. Web tarayıcınız HTTPS üzerinden bir web sitesine bağlanırken, web sitesinin güvenlik sertifikasını onaylar ve bu sertifikanın yasal bir sertifika yetkilisi tarafından verildiğini doğrular. Bu işlem güvenlik sağlar ve web uygulamalarınızı saldırılara karşı korur.
 
-Azure ön kapısı, varsayılan olarak ön kapı varsayılan ana bilgisayar adı üzerinde HTTPS 'yi destekler. Örneğin, bir ön kapı oluşturursanız (gibi `https://contoso.azurefd.net`), https istekleri için otomatik olarak etkinleştirilir. `https://contoso.azurefd.net` Öte yandan, 'www.contoso.com' özel etki alanını ekledikten sonra bu ön uç konağı için HTTPS'yi etkinleştirmeniz gerekecektir.   
+Azure ön kapısı, varsayılan olarak ön kapı varsayılan ana bilgisayar adı üzerinde HTTPS 'yi destekler. Örneğin, bir ön kapı oluşturursanız (gibi `https://contoso.azurefd.net` ), https istekleri için otomatik olarak etkinleştirilir `https://contoso.azurefd.net` . Öte yandan, 'www.contoso.com' özel etki alanını ekledikten sonra bu ön uç konağı için HTTPS'yi etkinleştirmeniz gerekecektir.   
 
 Özel HTTPS özelliğinin en önemli niteliklerinden bazıları şunlardır:
 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmalı ve en az bir özel etki alanı eklemelisiniz. Daha fazla bilgi için bkz. [Öğretici: Front Door’unuza özel etki alanı ekleme](front-door-custom-domain.md).
 
@@ -68,6 +68,9 @@ Azure ön kapısının yönettiği bir sertifika kullandığınızda, HTTPS öze
 4. Kaydet’e tıklayın.
 
 5. [Etki alanını doğrulama](#validate-the-domain) adımına ilerleyin.
+
+> [!NOTE]
+> AFD tarafından yönetilen sertifikalar için DigiCert 64 karakter sınırı zorlanır. Bu sınır aşılırsa doğrulama başarısız olur.
 
 
 ### <a name="option-2-use-your-own-certificate"></a>Seçenek 2: Kendi sertifikanızı kullanın
@@ -105,7 +108,7 @@ Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure ön kapısın
 
 1. Anahtar kasası hesabınızda AYARLAR bölümünden **Erişim ilkeleri**’ni ve sonra **Yeni ekle**’yi seçip yeni bir ilke oluşturun.
 
-2. **Sorumlu seç** bölümünde **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**'yi arayın ve **Microsoft.Azure.Frontdoor**’u seçin. **Seç**' e tıklayın.
+2. **Sorumlu seç** bölümünde **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**'yi arayın ve **Microsoft.Azure.Frontdoor**’u seçin. **Seç**’e tıklayın.
 
 3. **Gizli izinler**' de, sertifikayı almak Için ön kapıya izin vermek için **Al** ' ı seçin.
 
@@ -147,7 +150,7 @@ Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez.
 
 CNAME kaydınız, *Ad*’ın özel etki alanınız, *Değer*’in ise Front Door’unuzun varsayılan .azurefd.net konak adı olduğu aşağıdaki biçimde olmalıdır:
 
-| Adı            | Tür  | Değer                 |
+| Ad            | Tür  | Değer                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -176,7 +179,7 @@ webmaster@&lt;etki-alanı-adınız.com&gt;
 hostmaster@&lt;etki-alanı-adınız.com&gt;  
 postmaster@&lt;.com&gt;  
 
-Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Bir istenmeyen posta filtresi kullanıyorsanız, izin verilenler listesine admin@digicert.com ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
+Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Bir istenmeyen posta filtresi kullanıyorsanız, admin@digicert.com izin verilenler listesine ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
 
 Onay bağlantısına tıkladığınızda, çevrimiçi bir onay formuna yönlendirilirsiniz. Formdaki yönergeleri uygulayın. İki doğrulama seçeneğiniz vardır:
 

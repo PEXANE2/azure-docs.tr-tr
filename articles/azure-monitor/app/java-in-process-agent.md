@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: c719f7f0310a6894d2289bdb0ac8fc64170df307
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824860"
+ms.locfileid: "87902091"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -130,16 +130,15 @@ Mikro ölçüm, Opentelemetri API ve popüler günlük çerçevesini destekliyor
 
 Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebileceğiniz, şu anda desteklenen özel telemetri türlerini temsil eder. Özetlemek gerekirse, özel ölçümler mikro ölçüm aracılığıyla desteklenir, özel özel durumlar ve izlemeler günlüğe kaydetme çerçeveleri aracılığıyla etkinleştirilebilir ve tüm özel telemetri türleri [Java 2. x SDK Application Insights](#sending-custom-telemetry-using-application-insights-java-sdk-2x)aracılığıyla desteklenir. 
 
-
-|                 | Micrometer | Log4J, logback, Tem | 2. x SDK |
-|-----------------|------------|---------------------|---------|
-| Özel olaylar   |            |                     |  Evet    |
-| Özel ölçümler  |  Evet       |                     |  Evet    |
-| Bağımlılıklar    |            |                     |  Evet    |
-| Özel durumlar      |            |  Evet                |  Evet    |   
-| Sayfa Görüntülemeleri      |            |                     |  Evet    |
-| İstekler        |            |                     |  Evet    |
-| İzlemeler          |            |  Evet                |  Evet    |
+|                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
+|---------------------|------------|---------------------|---------|
+| **Özel olaylar**   |            |                     |  Evet    |
+| **Özel ölçümler**  |  Evet       |                     |  Evet    |
+| **Bağımlılıklar**    |            |                     |  Evet    |
+| **Özel durumlar**      |            |  Evet                |  Evet    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
+| **İstekler**        |            |                     |  Evet    |
+| **İzlemeler**          |            |  Evet                |  Evet    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 

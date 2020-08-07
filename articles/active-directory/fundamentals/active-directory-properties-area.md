@@ -2,7 +2,7 @@
 title: Kuruluşunuzun gizlilik bilgilerini ekleme-Azure Active Directory | Microsoft Docs
 description: Kuruluşunuzun gizlilik bilgilerini Azure Active Directory özellikleri alanına nasıl ekleyeceğiniz hakkında yönergeler.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830647"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797402"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory kullanarak kuruluşunuzun gizlilik bilgilerini ekleyin
 Bu makalede, bir kiracı yöneticisinin Azure portal aracılığıyla bir kuruluşun Azure Active Directory (Azure AD) kiracısına gizlilikle ilgili bilgileri nasıl ekleyebileceği açıklanmaktadır.
@@ -53,7 +53,7 @@ Kuruluşunuzun gizlilik bilgilerini Azure AD 'nin **Özellikler** alanına ekler
 
         ![B2B Işbirliği Inceleme Izinleri kutusu ileti](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Active Directory B2B işbirliği daveti kullanım](../b2b/redemption-experience.md)

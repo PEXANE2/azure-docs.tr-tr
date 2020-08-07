@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ilke ifadeleri | Microsoft Docs
-description: Azure API Management 'de ilke ifadeleri hakkında bilgi edinin.
+description: Azure API Management 'de ilke ifadeleri hakkında bilgi edinin. Örneklere bakın ve kullanılabilir ek kaynakları görüntüleyin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249827"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844250"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
 Bu makalede C# 7 ' de ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
@@ -74,7 +74,7 @@ Tek deyim ifadeleri içine alınmıştır `@(expression)` , burada `expression` 
 ## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>İlke ifadelerinde izin verilen .NET Framework türleri
 Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve üyelerini listelemektedir.
 
-|Type|Desteklenen Üyeler|
+|Tür|Desteklenen Üyeler|
 |--------------|-----------------------|
 |Üzerinde Newtonsoft.Js. Biçime|Tümü|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
