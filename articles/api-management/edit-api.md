@@ -1,6 +1,6 @@
 ---
 title: Azure portal ile API’yi düzenleme| Microsoft Docs
-description: Bu öğreticide, bir API’yi düzenlemek için API Management’ın (APIM) nasıl kullanılacağı gösterilir.
+description: Bir API 'yi düzenlemek için API Management (APıM) kullanmayı öğrenin. APıM örneğindeki işlemleri ekleyin, silin veya yeniden adlandırın veya API 'nin Swagger öğesini düzenleyin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70072165"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905168"
 ---
 # <a name="edit-an-api"></a>API’yi düzenleme
 
@@ -26,7 +26,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 + Bu işlemi, APIM örneğindeki işlemleri ekleyerek, silerek ve yeniden adlandırarak yapabilirsiniz. 
 + API’nizin swagger’ını düzenleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + [İlk API’nizi içeri aktarma ve yayımlama](import-and-publish.md)
@@ -64,5 +64,5 @@ Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelle�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [APIM ilke örnekleri](policy-samples.md)
-> [yayınlanmış bir API 'yi dönüştürme ve koruma](transform-api.md)
+> [APIM ilke örnekleri](policy-samples.md) 
+>  [Yayınlanmış BIR API 'Yi dönüştürme ve koruma](transform-api.md)

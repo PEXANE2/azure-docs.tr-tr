@@ -1,18 +1,17 @@
 ---
-title: Azure Site Recovery ile şirket içi makineleri geçirme
-description: Bu makalede, Azure Site Recovery kullanarak şirket içi makineleri Azure’a geçirme işlemi açıklanmaktadır.
-author: rayne-wiselman
+title: Azure geçişi ile şirket içi makineleri geçirme
+description: Bu makalede, şirket içi makinelerin Azure 'a nasıl geçirileceği özetlenmektedir ve Azure geçişi önerilmektedir.
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285365"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847321"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Şirket içi makineleri Azure’a geçirme
 
@@ -20,7 +19,7 @@ Bu makalede, şirket içi makineleri Azure 'a geçirme seçenekleri açıklanmak
 
 ## <a name="migrate-with-azure-migrate"></a>Azure geçişi ile geçiş
 
-[Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak makineleri Azure 'a geçirmeniz önerilir. Azure geçişi, Azure geçişi, diğer Azure hizmetleri ve üçüncü taraf araçları kullanarak şirket içi makinelerin Azure 'a değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar.
+[Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak makineleri Azure 'a geçirmeniz önerilir. Azure geçişi, sunucu geçişi için oluşturulmuştur. Azure geçişi, şirket içi makinelerin Azure 'a bulunması, değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar.
 
 Azure geçişi ile geçiş yapmak için bu bağlantıları izleyin:
 

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 08/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 12a858364fc58972894f9fb365955496f8832246
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987791"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845774"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,7 +41,7 @@ OData kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 - OData sürüm 3,0 ve 4,0.
 - Şu kimlik doğrulamalarından birini kullanarak verileri kopyalama: **anonim**, **temel**, **Windows**ve **AAD hizmet sorumlusu**.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -69,6 +69,7 @@ OData bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | Serviceprincıpalimon Beddedcertpassword | Sertifikanızın bir parolayla güvenliği varsa sertifikanızın parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.  | Hayır|
 | Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Hayır |
 | Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin.| Hayır |
+| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için AAD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment**ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
 
 **Örnek 1: anonim kimlik doğrulaması kullanma**
@@ -207,7 +208,7 @@ OData 'ten veri kopyalamak için, veri kümesinin **Type** özelliğini **ODataR
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Veri kümesinin **Type** özelliği **ODataResource**olarak ayarlanmalıdır. | Evet |
-| yol | OData kaynağının yolu. | Evet |
+| path | OData kaynağının yolu. | Evet |
 
 **Örnek**
 

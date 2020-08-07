@@ -6,44 +6,33 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a0ed747ea0c894214a633bdbc8141e95e95b5fb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050139"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830045"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
 
-Azure Uygulama yapılandırması, yapılandırma verilerini anahtar-değer çiftleri olarak depolar. Anahtar-değer çiftleri, geliştiriciler tarafından kullanılan uygulama ayarlarının basit ve esnek bir gösterimidir.
+Azure Uygulama yapılandırması, yapılandırma verilerini anahtar-değer olarak depolar. Anahtar değerleri, geliştiriciler tarafından kullanılan uygulama ayarlarının basit ve esnek bir gösterimidir.
 
 ## <a name="keys"></a>Anahtarlar
 
-Anahtarlar anahtar-değer çiftleri için tanımlayıcı olarak görev yapar ve karşılık gelen değerleri depolamak ve almak için kullanılır. Ya da gibi bir karakter sınırlayıcısı kullanarak, anahtarları hiyerarşik bir ad alanında düzenlemek yaygın bir uygulamadır `/` `:` . Uygulamanıza en uygun kuralı kullanın. Uygulama yapılandırması, anahtarları bir bütün olarak ele alır. Adlarının nasıl yapılandırıldığını veya üzerinde herhangi bir kuralın nasıl zorlanacağını anlamak için anahtarları ayrıştırmaz.
+Anahtarlar anahtar değerleri için tanımlayıcı olarak görev yapar ve karşılık gelen değerleri depolamak ve almak için kullanılır. Ya da gibi bir karakter sınırlayıcısı kullanarak, anahtarları hiyerarşik bir ad alanında düzenlemek yaygın bir uygulamadır `/` `:` . Uygulamanıza en uygun kuralı kullanın. Uygulama yapılandırması, anahtarları bir bütün olarak ele alır. Adlarının nasıl yapılandırıldığını veya üzerinde herhangi bir kuralın nasıl zorlanacağını anlamak için anahtarları ayrıştırmaz.
 
-Aşağıda, bir hiyerarşiye yapılandırılmış anahtar adlarından oluşan iki örnek verilmiştir:
-
-* Bileşen hizmetlerine göre
+Bileşen hizmetlerine dayalı bir hiyerarşiye yapılandırılmış anahtar adları örneği aşağıda verilmiştir:
 
 ```aspx
-        AppName:Service1:ApiEndpoint
-        AppName:Service2:ApiEndpoint
-```
-
-* Dağıtım bölgelerine göre
-
-```aspx
-        AppName:Region1:DbEndpoint
-        AppName:Region2:DbEndpoint
+    AppName:Service1:ApiEndpoint
+    AppName:Service2:ApiEndpoint
 ```
 
 Uygulama çerçeveleri içindeki yapılandırma verilerinin kullanımı, anahtar değerleri için belirli adlandırma düzenlerini dikte edebilir. Örneğin, Java 'nın Spring Cloud Framework, `Environment` bir Spring uygulamasına ayarlar sağlayan kaynakları tanımlar.  Bunlar, *uygulama adı* ve *profili*içeren değişkenlere göre parametrelenir. Bulutta ilgili yapılandırma verileri için anahtarlar genellikle sınırlayıcıyla ayrılmış bu iki öğe ile başlar.
 
 Uygulama yapılandırmasında depolanan anahtarlar büyük/küçük harfe duyarlıdır ve Unicode tabanlı dizelerdir. *APP1* ve *APP1* anahtarları bir uygulama yapılandırma deposunda farklıdır. Bir uygulama içinde yapılandırma ayarlarını kullandığınızda bu durumu aklınızda tutun çünkü bazı çerçeveler yapılandırma anahtarlarını işle-insensitively. Anahtarları ayırt etmek için büyük/küçük harf kullanılması önerilmez.
 
-, Ve dışında, anahtar adlarında herhangi bir Unicode karakteri kullanabilirsiniz `*` `,` `\` .  Bu ayrılmış karakterlerden birini eklemeniz gerekiyorsa, bunu kullanarak kaçış `\{Reserved Character}` . 
-
-Anahtar-değer çiftinde 10 KB 'lık Birleşik boyut sınırı vardır. Bu sınır, anahtardaki tüm karakterleri, değerini ve ilişkili tüm isteğe bağlı öznitelikleri içerir. Bu sınırın içinde, anahtarlar için birçok hiyerarşi düzeyine sahip olabilirsiniz.
+Dışında, anahtar adlarında herhangi bir Unicode karakteri kullanabilirsiniz `%` . Anahtar adı `.` ya `..` da olamaz. Anahtar değerinde 10 KB 'lık Birleşik boyut sınırı vardır. Bu sınır, anahtardaki tüm karakterleri, değerini ve ilişkili tüm isteğe bağlı öznitelikleri içerir. Bu sınırın içinde, anahtarlar için birçok hiyerarşi düzeyine sahip olabilirsiniz.
 
 ### <a name="design-key-namespaces"></a>Anahtar ad alanlarını tasarlama
 
@@ -57,25 +46,26 @@ Uygulama yapılandırmasındaki anahtarları birçok yolla hiyerarşik olarak d�
 
 ### <a name="label-keys"></a>Etiket anahtarları
 
-Uygulama yapılandırmasındaki anahtar değerler, isteğe bağlı olarak bir Label özniteliğine sahip olabilir. Etiketler, anahtar değerlerini aynı anahtarla ayırt etmek için kullanılır. *A* ve *B* etiketleri ile bir Key *APP1* , bir uygulama yapılandırma deposundaki iki ayrı anahtarı oluşturur. Varsayılan olarak, bir anahtar değerinin etiketi yoktur. Etiket olmadan bir anahtar değerine açık olarak başvurmak için `\0` (URL kodlamalı olarak) kullanın `%00` .
+Uygulama yapılandırmasındaki anahtar değerleri, isteğe bağlı olarak bir Label özniteliğine sahip olabilir. Etiketler, anahtar değerlerini aynı anahtarla ayırt etmek için kullanılır. *A* ve *B* etiketleri ile bir Key *APP1* , bir uygulama yapılandırma deposundaki iki ayrı anahtarı oluşturur. Varsayılan olarak, bir anahtar değeri etiket içermez. Etiketi olmayan bir anahtar değere açık olarak başvurmak için `\0` (URL kodlamalı olarak `%00` ) kullanın.
 
 Etiket, bir anahtarın türevlerini oluşturmak için kullanışlı bir yol sağlar. Etiketlerin yaygın kullanımı, aynı anahtar için birden çok ortam belirtmektir:
 
-```aspx
+```
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
 ```
 
-### <a name="version-key-values"></a>Sürüm anahtarı değerleri
+### <a name="version-key-values"></a>Sürüm anahtarı-değerler
 
-Uygulama yapılandırması, anahtar değerlerini otomatik olarak değiştirmez. Anahtar değerinin birden çok sürümünü oluşturmak için Etiketler kullanın. Örneğin, belirli bir yazılım derlemesi ile ilişkili anahtar değerlerini belirlemek için, etiketlerde bir uygulama sürümü numarası veya git COMMIT ID girişi yapabilirsiniz.
+Anahtar-değer 'nin birden çok sürümünü oluşturmak için etiketleri kullanın. Örneğin, belirli bir yazılım derlemesi ile ilişkili anahtar değerlerini belirlemek için, etiketlerde bir uygulama sürümü numarası veya git COMMIT ID girişi yapabilirsiniz.
 
-Etiketler içinde,, ve dışında herhangi bir Unicode karakteri `*` kullanabilirsiniz `,` `\` . Bu karakterler ayrılmıştır. Ayrılmış bir karakter eklemek için, kullanarak bunu atlamanız gerekir `\{Reserved Character}` .
+> [!NOTE]
+> Değişiklik sürümleri arıyorsanız, uygulama yapılandırması bir anahtar-değer değişikliklerinin tüm değişiklikleri otomatik olarak geçmiş belirli bir süre içinde tutar. Daha fazla ayrıntı için bkz. [Noktadan noktaya anlık görüntü](./concept-point-time-snapshot.md) .
 
-### <a name="query-key-values"></a>Sorgu anahtarı değerleri
+### <a name="query-key-values"></a>Sorgu anahtarı-değerleri
 
-Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz şekilde tanımlanır `null` . Bir model belirterek anahtar değerleri için bir uygulama yapılandırma deposu sorgulayın. Uygulama yapılandırma deposu, düzen ve bunlara karşılık gelen değerler ve özniteliklerle eşleşen tüm anahtar değerlerini döndürür. Uygulama yapılandırmasına yönelik REST API çağrılarında aşağıdaki temel desenleri kullanın:
+Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz şekilde tanımlanır `\0` . Bir model belirterek anahtar değerleri için bir uygulama yapılandırma deposu sorgulayın. Uygulama yapılandırma deposu, karşılık gelen değerleri ve öznitelikleri dahil olmak üzere tüm anahtar değerlerini döndürür. Uygulama yapılandırmasına yönelik REST API çağrılarında aşağıdaki temel desenleri kullanın:
 
 | Anahtar | Açıklama |
 |---|---|
@@ -86,21 +76,26 @@ Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz ş
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
-| Etiketle | Açıklama |
+| Etiket | Açıklama |
 |---|---|
-| `label`atlanır veya`label=*` | İçeren herhangi bir etiketle eşleşir.`null` |
-| `label=%00` | Eşleşir `null` etiketi |
+| `label`atlanır veya`label=*` | İçeren herhangi bir etiketle eşleşir.`\0` |
+| `label=%00` | Eşleşir `\0` etiketi |
 | `label=1.0.0` | Label **1.0.0** ile tam olarak eşleşir |
 | `label=1.0.*` | 1,0 ile başlayan etiketlerle eşleşir **.** |
-| `label=%00,1.0.0` | `null`, Beş CSV ile sınırlı olan Etiketler veya **1.0.0**eşleşir |
+| `label=%00,1.0.0` | `\0`, Beş CSV ile sınırlı olan Etiketler veya **1.0.0**eşleşir |
+
+> [!NOTE]
+> `*`, `,` ve, `\` sorgularda ayrılmış karakterlerdir. Anahtar adlarınızda veya etiketlerinizde ayrılmış bir karakter kullanılıyorsa, sorgularda kullanarak bunu atlamanız gerekir `\{Reserved Character}` .
 
 ## <a name="values"></a>Değerler
 
-Anahtarlara atanan değerler de Unicode dizeleridir. Değerler için tüm Unicode karakterlerini kullanabilirsiniz. Her bir değerle ilişkili, Kullanıcı tanımlı isteğe bağlı bir içerik türü vardır. Uygulamanızın düzgün işlemesini sağlayan bir değer hakkındaki bilgileri depolamak için bu özniteliği kullanın.
+Anahtarlara atanan değerler de Unicode dizeleridir. Değerler için tüm Unicode karakterlerini kullanabilirsiniz.
 
-Bir uygulama yapılandırma deposunda depolanan yapılandırma verileri, bekleyen ve aktarım sırasında şifrelenir. Anahtarlar bekleyen olarak şifrelenmez. Uygulama yapılandırması, Azure Key Vault için bir değiştirme çözümü değildir. Uygulama gizli dizileri üzerinde depolamamayın.
+### <a name="use-content-type"></a>Content-Type kullanın
+Uygulama yapılandırmasındaki her anahtar-değer bir Content-Type özniteliğine sahiptir. Bu özniteliği, uygulamanızın doğru şekilde işlemesini sağlayan anahtar değerindeki değer türü hakkındaki bilgileri depolamak için isteğe bağlı olarak kullanabilirsiniz. İçerik türü için herhangi bir biçim kullanabilirsiniz. Uygulama yapılandırması, özellik bayrakları, Key Vault başvuruları ve JSON anahtar değerleri gibi yerleşik veri türleri için [medya türlerini]( https://www.iana.org/assignments/media-types/media-types.xhtml) (MIME türleri olarak da bilinir) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Belirli bir noktanın anlık görüntüsü](./concept-point-time-snapshot.md)  
-* [Özellik yönetimi](./concept-feature-management.md)  
+* [Belirli bir noktanın anlık görüntüsü](./concept-point-time-snapshot.md)
+* [Özellik yönetimi](./concept-feature-management.md)
+* [Olay işleme](./concept-app-configuration-event.md)

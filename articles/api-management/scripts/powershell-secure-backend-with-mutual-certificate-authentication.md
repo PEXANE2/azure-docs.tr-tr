@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell Betik Örneği - Güvenli arka uç | Microsoft Docs
-description: Azure PowerShell Betik Örneği - Güvenli arka uç
+description: Karşılıklı sertifika kimlik doğrulamasıyla arka uca güvenli hale getirmek için bir Azure PowerShell betik örneği kullanmayı öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 00198d4b4a5268a112b097c17f6a97aa02f6f0f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb6b1cfcb6a8f482bdcbc9d6befc99197f024f4a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008804"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905661"
 ---
 # <a name="secure-back-end"></a>Güvenli arka uç
 

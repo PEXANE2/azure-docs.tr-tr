@@ -1,18 +1,18 @@
 ---
 title: Azure Dosya Eşitleme sunucu uç noktası Ekle/Kaldır | Microsoft Docs
-description: Azure dosyaları dağıtımı için planlama yaparken göz önünde bulundurmanız gerekenler hakkında bilgi edinin.
+description: Azure Dosya Eşitleme bir sunucu uç noktası eklemeyi veya kaldırmayı öğrenin. Sunucu uç noktası, kayıtlı bir sunucuda, sunucu birimindeki bir klasör gibi belirli bir konumdur.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509481"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905066"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure Dosya Eşitleme sunucusu uç noktası Ekle/Kaldır
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -21,7 +21,7 @@ Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı
 
 Azure Dosya Eşitleme uçtan uca dağıtma hakkında bilgi için bkz. [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Sunucu uç noktası oluşturmak için öncelikle aşağıdaki ölçütlerin karşılandığından emin olmanız gerekir: 
 - Sunucuda Azure Dosya Eşitleme Aracısı yüklü ve kayıtlı. Azure Dosya Eşitleme aracısını yüklemeye yönelik yönergeler [Azure dosya eşitleme ile sunucu kaydetme/kaydını kaldırma](storage-sync-files-server-registration.md) makalesinde bulunabilir. 
 - Depolama eşitleme hizmeti 'nin dağıtıldığından emin olun. Depolama eşitleme hizmeti dağıtma hakkında ayrıntılı bilgi için bkz. [nasıl dağıtılır Azure dosya eşitleme](storage-sync-files-deployment-guide.md) . 
@@ -73,5 +73,5 @@ Sunucu uç noktasını kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Dosya Eşitleme ile sunucu kaydetme/kaydını silme](storage-sync-files-server-registration.md)
-- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)

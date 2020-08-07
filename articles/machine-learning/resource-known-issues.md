@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373700"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905505"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -131,7 +131,7 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 
     Alternatif olarak, Python kitaplıklarıyla ilgili sorunları gidermek için Init betiklerini kullanabilirsiniz. Bu yaklaşım resmi olarak desteklenmez. Daha fazla bilgi için bkz. [küme kapsamlı init betikleri](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks içeri aktarma hatası: ' Pandas. _libs. tslibs ' öğesinden ' timedelta ' adı içeri**aktarılamıyor: otomatik makine öğrenimi kullandığınızda bu hatayı görürseniz, Not defterinizde aşağıdaki iki satırı çalıştırın:
+* **Databricks içeri aktarma hatası: adı `Timedelta` öğesinden `pandas._libs.tslibs` içeri **aktarılamıyor: otomatik makine öğrenimi kullandığınızda bu hatayı görürseniz, Not defterinizde aşağıdaki iki satırı çalıştırın:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -219,7 +219,7 @@ Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
     | Kategorik | String, bool, int, float | Özelliğindeki benzersiz değer sayısı 100 ' den az ve satır sayısının %5 ' inden az. | Null, kendi kategorisi olarak değerlendirilir. | 
     | Sayısal | int, float | Özelliğindeki değerler sayısal bir veri türüdür ve kategorik bir özelliğin koşulunu karşılamaz. | Değerin %15 ' i >null ise özellik bırakıldı. | 
 
-* [Bir datadrift izleyici](how-to-monitor-datasets.md) oluşturduğunuzda ancak Azure Machine Learning Studio 'Daki veri **kümesi izleyicileri** sayfasında verileri göremiyorsanız, aşağıdakileri deneyin.
+* [Bir veri DRI izlemesi](how-to-monitor-datasets.md) oluşturduğunuzda ancak Azure Machine Learning Studio 'Daki veri **kümesi izleyicileri** sayfasında verileri göremiyorsanız, aşağıdakileri deneyin.
 
     1. Sayfanın üst kısmında doğru tarih aralığını seçtiğinizden emin olun.  
     1. **Veri kümesi izleyicileri** sekmesinde, çalışma durumunu denetlemek için denemeler bağlantısını seçin.  Bu bağlantı tablonun en sağında bulunur.
@@ -382,5 +382,5 @@ Azure Machine Learning için diğer sorun giderme makalelerine bakın:
 * [Azure Machine Learning ile Docker dağıtımı sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Machine Learning işlem hatlarında hata ayıkla](how-to-debug-pipelines.md)
 * [Azure Machine Learning SDK 'dan ParallelRunStep sınıfında hata ayıklama](how-to-debug-parallel-run-step.md)
-* [VS Code ile bir makine öğrenimi işlem örneğinde etkileşimli hata ayıklama](how-to-set-up-vs-code-remote.md)
+* [VS Code ile bir makine öğrenimi işlem örneğinde etkileşimli hata ayıklama](how-to-debug-visual-studio-code.md)
 * [Machine Learning işlem hatları hatalarını ayıklamak için Application Insights kullanın](how-to-debug-pipelines-application-insights.md)

@@ -1,26 +1,29 @@
 ---
-title: .NET Bilişsel Arama Azure 'da kullanma
+title: .NET 'te Microsoft. Azure. Search (ile v10 arasındaki) kullanın
 titleSuffix: Azure Cognitive Search
-description: C# ve .NET SDK kullanarak bir .NET uygulamasında Azure Bilişsel Arama kullanmayı öğrenin. Kod tabanlı görevler, hizmete bağlanma, içerik dizini oluşturma ve bir dizini sorgulama içerir.
+description: .NET SDK 'nın C# ve sürüm 10 ' ü kullanarak bir .NET uygulaması için arama nesneleri oluşturma ve yönetme hakkında bilgi edinin. Kod parçacıkları hizmete bağlanmayı, dizinleri ve sorguları oluşturmayı gösterir.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/05/2020
+ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146906"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905432"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET uygulamasından Azure Bilişsel Arama kullanma
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>.NET uygulamasında Microsoft. Azure. Search (ile v10 arasındaki) kullanma
 
-Bu makale, [Azure bilişsel arama .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)ile çalışmaya başlamanıza ve bu adımları kullanmaya başlamanıza yönelik bir yönergedir. Azure Bilişsel Arama kullanarak uygulamanızda zengin arama deneyimi uygulamak için .NET SDK 'sını kullanabilirsiniz.
+Bu makalede C# ve [Azure bilişsel arama (ile v10 arasındaki) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)kullanılarak arama nesnelerinin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Sürüm 10, Microsoft. Azure. Search paketinin son sürümüdür. İleriye doğru taşıma, yeni özellikler Azure SDK ekibinin [Azure.Search.Documlar](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) halinde kullanıma sunulacaktır.
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure Bilişsel Arama SDK 'sındaki Özellikler
+Mevcut veya daha açık geliştirme projeleriniz varsa sürüm 10 ' u kullanmaya devam edin. Yeni projeler için veya yeni özellikleri kullanmak için, var olan bir arama çözümünü yeni kitaplığa geçirmeniz gerekir.
+
+## <a name="whats-in-version-10"></a>Sürüm 10 ' da neler
+
 SDK, dizinlerinizi, veri kaynaklarınızı, Dizin oluşturucularını ve eş anlamlı haritalarınızı yönetmenizi, Ayrıca, HTTP ve JSON ayrıntıları ile uğraşmak zorunda kalmadan tüm sorguları ve sorguları yürütmeyi sağlayan birkaç istemci kitaplığı içerir. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
 
 Ana NuGet paketi `Microsoft.Azure.Search` , diğer tüm paketleri bağımlılık olarak içeren bir meta paketidir. Yeni kullanmaya başladıysanız veya uygulamanızın Azure Bilişsel Arama tüm özelliklerine ihtiyacı olacağını biliyorsanız bu paketi kullanın.

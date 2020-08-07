@@ -1,18 +1,18 @@
 ---
 title: Azure dosyaları performans sorunlarını giderme kılavuzu
-description: Azure dosya paylaşımları ve ilişkili geçici çözümler ile ilgili bilinen performans sorunları.
+description: Azure dosya paylaşımlarında bilinen performans sorunlarını giderin. Bu sorunlarla karşılaşıldığında olası nedenleri ve ilgili geçici çözümleri bulun.
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c0d7e5c7c021f8cdad8980bd7659d819b85f899
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511954"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905023"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 

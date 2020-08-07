@@ -1,6 +1,7 @@
 ---
-title: "Hızlı başlangıç: uygulama için Web API 'Lerine erişim-Microsoft Identity platform | Mavisi"
-description: Bu hızlı başlangıçta, Web API 'Lerine erişim için yeniden yönlendirme URI 'Leri, kimlik bilgileri veya izinleri içerecek şekilde Microsoft Identity platformu ile kaydedilen bir uygulamayı yapılandırın.
+title: "Hızlı başlangıç: bir uygulamayı bir Web API 'sine erişecek şekilde yapılandırma | Mavisi"
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, Web API 'Lerine erişim için yeniden yönlendirme URI 'Leri, kimlik bilgileri veya izinleri içerecek şekilde Microsoft Identity platformunda kayıtlı bir uygulamayı yapılandırırsınız.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,28 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c91c3dfc23c0a8a9dffb38788f3a8fea08096f5c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82082331"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825064"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
 
 Bu hızlı başlangıçta, uygulamanız için Web API 'Lerine erişim için yeniden yönlendirme URI 'Leri, kimlik bilgileri veya izinleri eklersiniz. Bir Web veya gizli istemci uygulamasının, kimlik doğrulaması gerektiren bir yetkilendirme verme akışına katılması için güvenli kimlik bilgileri kurması gerekir. Azure portal tarafından desteklenen varsayılan kimlik doğrulaması yöntemi istemci kimliği ve gizli anahtar kullanımıdır. Uygulama, bu işlem sırasında bir erişim belirteci alır.
 
 İstemci, Microsoft Graph API gibi bir kaynak uygulama tarafından kullanıma sunulan bir Web API 'sine erişebilinceye kadar, izin çerçevesi istemcinin istenen izinler için gereken izin iznini almasını sağlar. Varsayılan olarak, tüm uygulamalar Microsoft Graph API 'sinden izin isteyebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: bir uygulamayı Microsoft Identity platformu Ile kaydetme](quickstart-register-app.md).
-* [Microsoft Identity platform uç noktasındaki izinleri ve onayı](v2-permissions-and-consent.md)gözden geçirin.
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Hızlı başlangıç: bir uygulamayı bir Web API 'si göstermek Için yapılandırma](quickstart-configure-app-expose-web-apis.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
 
@@ -50,7 +50,7 @@ Uygulamanıza özel yeniden yönlendirme URI 'leri ve önerilen yeniden yönlend
 1. Uygulamanız için Yeniden Yönlendirme URI’sini girin.
 
    * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `http://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
-   * Genel uygulamalar için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin: `https://MyFirstApp`.
+   * Genel uygulamalar için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin: `https://MyFirstApp` .
 1. **Kaydet**’i seçin.
 
 Ortak istemciler için önerilen yeniden yönlendirme URI 'lerinden seçim yapmak için şu adımları izleyin:
@@ -109,11 +109,11 @@ Uygulama ayarlarını platforma veya cihaza göre yapılandırmak için şunlar�
    |-------------------------|-----------------------------------|
    | **Web**              | Uygulamanız için **yeniden yönlendirme URI 'si** girin. |
    | **iOS/macOS**              | Info. plist veya Build Settings içinde XCode içinde bulabileceğiniz uygulama **paket kimliğini**girin. Paket KIMLIĞINI eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur. |
-   | **Android**          | AndroidManifest. xml dosyasında bulabileceğiniz uygulama **paketi adını**sağlayın.<br/>**İmza karmasını**oluşturun ve girin. İmza karmasını eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur.  |
-   | **Mobil ve Masaüstü uygulamaları**  | İsteğe bağlı. Masaüstü ve cihazlar için uygulamalar oluşturuyorsanız önerilen **Önerilen yeniden yönlendirme URI** 'lerinden birini seçin.<br/>İsteğe bağlı. Azure AD 'nin kullanıcıları kimlik doğrulama isteklerine yanıt olarak yeniden yönlendireceği konum olarak kullanılan **özel bir yeniden yönlendirme URI 'si**girin. Örneğin, etkileşim istediğiniz .NET Core uygulamaları için kullanın `http://localhost`. |
+   | **Android**          | AndroidManifest.xml dosyasında bulabileceğiniz uygulama **paketi adını**sağlayın.<br/>**İmza karmasını**oluşturun ve girin. İmza karmasını eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur.  |
+   | **Mobil ve Masaüstü uygulamaları**  | İsteğe bağlı. Masaüstü ve cihazlar için uygulamalar oluşturuyorsanız önerilen **Önerilen yeniden yönlendirme URI** 'lerinden birini seçin.<br/>İsteğe bağlı. Azure AD 'nin kullanıcıları kimlik doğrulama isteklerine yanıt olarak yeniden yönlendireceği konum olarak kullanılan **özel bir yeniden yönlendirme URI 'si**girin. Örneğin, etkileşim istediğiniz .NET Core uygulamaları için kullanın `http://localhost` . |
 
    > [!NOTE]
-   > Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ve Azure AD B2C bir bağlantı noktası numarası da belirtmeniz gerekir.  Örneğin: `http://localhost:1234`. 
+   > Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ve Azure AD B2C bir bağlantı noktası numarası da belirtmeniz gerekir.  Örneğin: `http://localhost:1234`.
 
    > [!IMPORTANT]
    > En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalarda, bu uygulamalar için yeniden yönlendirme URI 'Lerini **Masaüstü + cihazlarda**yapılandırmanız gerekir.
@@ -200,16 +200,7 @@ Onay istemi, **kabul etme** veya **iptal**etme seçeneğini sağlar. Yönetici i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web API 'Lerini kullanıma sunma hakkında bilgi edinmek için sonraki makaleye ilerleyin.
+Hangi hesap türlerinin uygulamanıza erişebileceğini nasıl yapılandıracağınızı öğrenmek için serideki bir sonraki hızlı başlangıca ilerleyin. Örneğin, erişimi yalnızca kuruluşunuzdaki kullanıcılarla (tek kiracı) sınırlamak veya diğer Azure AD kiracılarındaki kullanıcılara (çok kiracılı) ve kişisel Microsoft hesaplarıyla (MSA) izin vermek isteyebilirsiniz.
+
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Web API 'Lerini kullanıma sunmak için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md)
-
-* Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
-
-* Azure Active Directory ile uygulama geliştirirken kullanmanız gereken markalama yönergeleri hakkında daha fazla bilgi edinmek için bkz. [Uygulamalar için markalama yönergeleri](howto-add-branding-in-azure-ad-apps.md).
-
-* [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
-
-* [Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
-
-* [Hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)
+> [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)

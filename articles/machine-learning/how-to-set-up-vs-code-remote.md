@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 07/09/2020
-ms.openlocfilehash: dfb8dac1b9027acd01b3c13c919d9c3cd8368819
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 37d0ec0295d76f740b2e8bf70ae72f0c95e68d14
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320128"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904488"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama (Önizleme)
 
-Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde uzaktan Visual Studio Code ayarlamayı öğrenirsiniz, böylece VS Code **kodunuzda kodunuzun hatalarını etkileşimli olarak ayıklayabilirsiniz** . 
+Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde Visual Studio Code uzak uzantısının nasıl ayarlanacağını öğrenirsiniz, böylece VS Code **kodunuzun hatalarını etkileşimli olarak ayıklayabilirsiniz** .
 
-+ [Azure Machine Learning Işlem örneği](concept-compute-instance.md) , veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar. 
+* [Azure Machine Learning Işlem örneği](concept-compute-instance.md) , veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar. 
 
-
-+ [Visual Studio Code uzak](https://code.visualstudio.com/docs/remote/remote-overview) Geliştirme, bir kapsayıcı, uzak makine veya Linux için Windows alt sistemi 'ni (WSL) tam özellikli bir geliştirme ortamı olarak kullanmanıza olanak tanır. 
+* [Visual Studio Code uzak](https://code.visualstudio.com/docs/remote/remote-overview) Geliştirme, bir kapsayıcı, uzak makine veya Linux için Windows alt sistemi 'ni (WSL) tam özellikli bir geliştirme ortamı olarak kullanmanıza olanak tanır. 
 
 ## <a name="prerequisite"></a>Önkoşul  
 
-Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yüklemelisiniz](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) . 
+* SSH özellikli işlem örneği. Daha fazla bilgi için [bkz. işlem örneği oluşturma kılavuzu.](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#create).
+* Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yüklemelisiniz](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) . 
 
 > [!Note]
 > SSH komutunun yolda olması gerektiğinden, PuTTY Windows üzerinde desteklenmez. 
 
-## <a name="get-ip-and-ssh-port"></a>IP ve SSH bağlantı noktası al 
+## <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>İşlem örneğiniz için IP ve SSH bağlantı noktasını alın
 
 1. Konumundaki Azure Machine Learning Studio 'ya gidin https://ml.azure.com/ .
 
@@ -43,33 +43,37 @@ Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yükleme
 1. İletişim kutusunda, IP adresi ve SSH bağlantı noktasını göz önünde atın. 
 1. Özel anahtarınızı yerel bilgisayarınızdaki ~/PST SSH/dizinine kaydedin; Örneğin, yeni bir dosya için bir düzenleyici açın ve anahtarı içine yapıştırın: 
 
-   **Linux**: 
+   **Linux**:
+
    ```sh
    vi ~/.ssh/id_azmlcitest_rsa  
    ```
 
-   **Windows**: 
-   ```
-   notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa 
+   **Windows**:
+
+   ```cmd
+   notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa
    ```
 
    Özel anahtar şöyle görünür:
-   ```
-   -----BEGIN RSA PRIVATE KEY----- 
 
-   MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD 
+   ```text
+   -----BEGIN RSA PRIVATE KEY-----
+
+   MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD
    ..... 
-   ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw== 
+   ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw==
 
-   -----END RSA PRIVATE KEY----- 
+   -----END RSA PRIVATE KEY-----
    ```
 
 1. Dosyayı yalnızca sizin okuyadığınızdan emin olmak için dosya izinlerini değiştirin.  
+
    ```sh
-   chmod 600 ~/.ssh/id_azmlcitest_rsa   
+   chmod 600 ~/.ssh/id_azmlcitest_rsa
    ```
 
-## <a name="add-instance-as-a-host"></a>Örneği konak olarak ekle 
+## <a name="add-instance-as-a-host"></a>Örneği konak olarak ekle
 
 Dosyayı `~/.ssh/config` (Linux) veya `C:\Users<username>.ssh\config` (Windows) bir düzenleyicide açın ve şuna benzer yeni bir giriş ekleyin:
 
@@ -82,10 +86,10 @@ Host azmlci1
 
     User azureuser 
 
-    IdentityFile ~/.ssh/id_azmlcitest_rsa   
+    IdentityFile ~/.ssh/id_azmlcitest_rsa
 ```
 
-Burada, alanlarla ilgili bazı ayrıntılar verilmiştir: 
+Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
@@ -95,13 +99,13 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 |Kullanıcı|Bunun olması gerekir `azureuser` |
 |Identityfile|Özel anahtarı kaydettiğiniz dosyaya işaret etmelidir |
 
-Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` . 
+Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` .
 
-## <a name="connect-vs-code-to-the-instance"></a>Örneğe VS Code bağlama 
+## <a name="connect-vs-code-to-the-instance"></a>Örneğe VS Code bağlama
 
 1. [Visual Studio Code 'ı yükler](https://code.visualstudio.com/).
 
-1. [Uzak SSH uzantısını yükler](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh). 
+1. [Uzak SSH uzantısını yükler](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
 
 1. SSH yapılandırmalarınızı göstermek için sol taraftaki uzaktan SSH simgesine tıklayın.
 
@@ -109,10 +113,10 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 1. **Geçerli pencerede konağa Bağlan '** ı seçin. 
 
-Buradan, işlem örneği üzerinde tamamen çalıştısınız ve artık, yerel Visual Studio Code gibi düzenleyebilir, hata ayıklaması yapabilir, git kullanabilir, uzantıları kullanabilirsiniz vb.). 
+Buradan, işlem örneği üzerinde tamamen çalıştısınız ve artık, yerel Visual Studio Code gibi düzenleyebilir, hata ayıklaması yapabilir, git kullanabilir, uzantıları kullanabilirsiniz vb.).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Visual Studio Code uzak olarak ayarladığınıza göre, kodunuzda etkileşimli olarak hata ayıklamak için Visual Studio Code uzaktan işlem olarak bir işlem örneği kullanabilirsiniz. 
+Visual Studio Code uzak olarak ayarladığınıza göre, [kodunuzda etkileşimli olarak hata ayıklamak](how-to-debug-visual-studio-code.md)için Visual Studio Code uzaktan işlem olarak bir işlem örneği kullanabilirsiniz.
 
 [Öğretici: Ilk ml modelinize eğitme](tutorial-1st-experiment-sdk-train.md) bir işlem örneğinin tümleşik bir not defteriyle nasıl kullanılacağını gösterir.

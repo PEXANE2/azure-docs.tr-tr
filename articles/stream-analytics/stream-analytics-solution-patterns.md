@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999413"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903332"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics çözüm desenleri
 
@@ -86,17 +86,12 @@ Azure Stream Analytics ' yerleşik [anomali algılama modeli](stream-analytics-m
 
 ![ASA Machine Learning uygulaması](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>Neredeyse gerçek zamanlı veri depolama
+## <a name="real-time-data-warehousing"></a>Gerçek zamanlı veri depolama
 
-Diğer bir yaygın model, akış veri ambarı olarak da adlandırılan gerçek zamanlı veri ambardır. Event Hubs IoT Hub ve uygulamanızdan gelen olaylara ek olarak, [IoT Edge üzerinde çalışan Azure Stream Analytics](stream-analytics-edge.md) veri temizleme, veri azaltma ve veri depolama ve iletme ihtiyaçlarını karşılamak için kullanılabilir. IoT Edge üzerinde çalışan Stream Analytics, sistemdeki bant genişliği sınırlamasını ve bağlantı sorunlarını düzgün şekilde işleyebilir. SQL çıkış bağdaştırıcısı SQL veri ambarı 'na çıkış yapmak için kullanılabilir; Ancak, en fazla üretilen iş 10 MB/sn ile sınırlıdır.
+Diğer bir yaygın model, akış veri ambarı olarak da adlandırılan gerçek zamanlı veri ambardır. Event Hubs IoT Hub ve uygulamanızdan gelen olaylara ek olarak, [IoT Edge üzerinde çalışan Azure Stream Analytics](stream-analytics-edge.md) veri temizleme, veri azaltma ve veri depolama ve iletme ihtiyaçlarını karşılamak için kullanılabilir. IoT Edge üzerinde çalışan Stream Analytics, sistemdeki bant genişliği sınırlamasını ve bağlantı sorunlarını düzgün şekilde işleyebilir. Stream Analytics, Azure SYNAPSE Analytics 'e yazarken 200 MB/sn 'ye kadar üretilen iş hızını destekleyebilir.
 
 ![ASA veri ambarı](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-Bazı gecikme süresi zorunluluğunu getirir ile üretilen işi geliştirmenin bir yolu, olayları Azure Blob depolama alanına arşivlemek ve daha sonra [PolyBase Ile SQL Data Warehouse 'a içeri aktarmaktır](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). [Verileri zaman damgasıyla arşivleyerek](stream-analytics-custom-path-patterns-blob-storage-output.md) ve düzenli aralıklarla içeri aktararak BLOB depolama ve BLOB depolamadan SQL veri ambarı 'na giriş Stream Analytics el ile bir araya almalısınız.
-
-Bu kullanım modelinde, Azure Stream Analytics neredeyse gerçek zamanlı ETL altyapısı olarak kullanılır. Yeni gelen olaylar sürekli olarak dönüştürülür ve aşağı akış analizi hizmeti tüketimi için depolanır.
-
-![ASA yüksek aktarım hızı veri depolama](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Analiz için gerçek zamanlı verileri arşivleme
 

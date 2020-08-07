@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760405"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905610"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -130,6 +130,22 @@ AND R.reportedCondition = 'clean'
 ```
 
 Yukarıdaki örnekte, *Reportedcondition* 'ın *servicedBy* ilişkisinin kendisini ( *servicedBy* ilişkisine sahip bir Digital ikizi değil) nasıl bir özelliği olduğunu not edin.
+
+### <a name="query-with-multiple-joins"></a>Birden çok birleştirme içeren sorgu
+
+Şu anda önizleme aşamasında olan en fazla beş `JOIN` sn tek bir sorguda desteklenir. Bu, aynı anda birden çok ilişki seviyelerine çapraz geçiş yapmanıza olanak sağlar.
+
+Burada, Oda 1 ve 2 ' deki açık panellerde bulunan tüm hafif bultların yer aldığı çok sayıda JOIN sorgusuna bir örnek verilmiştir.
+
+```sql
+SELECT LightBulb 
+FROM DIGITALTWINS Room 
+JOIN LightPanel RELATED Room.contains 
+JOIN LightBulb RELATED LightPanel.contains 
+WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
+AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
+AND Room.$dtId IN [‘room1’, ‘room2’] 
+```
 
 ## <a name="run-queries-with-an-api-call"></a>Sorguları bir API çağrısıyla çalıştırma
 

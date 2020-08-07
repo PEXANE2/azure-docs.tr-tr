@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/05/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203114"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903791"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $orderby söz dizimi
 
  Azure Bilişsel Arama arama sonuçları için özel bir sıralama düzeni uygulamak üzere [OData **$OrderBy** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$OrderBy** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$OrderBy** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 **$OrderBy** parametresi, en fazla 32 **sıra ölçütü yan tümceleri**olan virgülle ayrılmış bir liste kabul eder. Order by yan tümcesinin sözdizimi aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından açıklanmıştır:
 
@@ -50,7 +50,9 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 > [!NOTE]
 > Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-Her yan tümce sıralama ölçütlerine sahiptir ve isteğe bağlı olarak bir sıralama yönü ( `asc` artan veya `desc` azalan için) izler. Bir yön belirtmezseniz, varsayılan değer artan olur. Sıralama ölçütü, bir alanın yolu veya ya da `sortable` işlevlerine yapılan bir çağrı olabilir [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) .
+Her yan tümce sıralama ölçütlerine sahiptir ve isteğe bağlı olarak bir sıralama yönü ( `asc` artan veya `desc` azalan için) izler. Bir yön belirtmezseniz, varsayılan değer artan olur. Alanda null değerler varsa, sıralama varsa `asc` ve en son sıralama ise, null değerler önce görüntülenir `desc` .
+
+Sıralama ölçütü, bir alanın yolu veya ya da `sortable` işlevlerine yapılan bir çağrı olabilir [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) .
 
 Birden çok belge aynı sıralama ölçütlerine sahip ise ve `search.score` işlev kullanılmazsa (örneğin, bir sayısal alana göre sıralarsanız `Rating` ve hepsi 4 derecelendirmesine sahipseniz), bu siteler belge puanına göre azalan sırada bozulur. Belge puanları aynı olduğunda (örneğin, istekte tam metin arama sorgusu belirtilmediğinde), bağlı belgelerin göreli sıralaması belirsiz olur.
 

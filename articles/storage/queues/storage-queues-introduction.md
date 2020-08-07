@@ -1,6 +1,6 @@
 ---
 title: Azure kuyruklara giriş-Azure depolama
-description: Azure kuyruklara giriş
+description: Çok sayıda iletiyi depolamaya yönelik bir hizmet olan Azure sıralarına giriş konusuna bakın. Kuyruk hizmeti bir URL biçimi, depolama hesabı, kuyruk ve ileti içerir.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/18/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805119"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826509"
 ---
 # <a name="what-are-azure-queues"></a>Azure kuyrukları nedir?
 

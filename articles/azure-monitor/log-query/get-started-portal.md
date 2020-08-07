@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075346"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874240"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Öğretici: Log Analytics sorguları kullanmaya başlama
 
@@ -32,7 +32,7 @@ Günlük sorguları yazma hakkında ayrıntılı bir öğretici için bkz. [Azur
 ## <a name="open-log-analytics"></a>Log Analytics açın
 Log Analytics kullanmak için bir Azure hesabında oturum açmış olmanız gerekir. Bir Azure hesabınız yoksa, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Bu öğreticideki adımların çoğunu tamamlayabilmeniz için, [Bu tanıtım ortamını](https://portal.loganalytics.io/demo)kullanarak çok sayıda örnek veri de kullanabilirsiniz. Tanıtım ortamıyla, sorguları kaydedemez veya sonuçları bir panoya sabitleyemez.
+Bu öğreticideki adımların çoğunu tamamlayabilmeniz için, [Bu tanıtım ortamını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)kullanarak çok sayıda örnek veri de kullanabilirsiniz. Tanıtım ortamıyla, sorguları kaydedemez veya sonuçları bir panoya sabitleyemez.
 
 Azure Izleyici 'yi kullanarak en az bir Azure kaynağında günlük verilerini toplamak için kendi ortamınızı de kullanabilirsiniz. Bir Log Analytics çalışma alanını açmak için, Azure Izleyici sol gezinti bölmesinde **Günlükler**' i seçin. 
 
@@ -191,7 +191,7 @@ Bir sorguyu kaydetmek için:
    
 1. Bir Log Analytics çalışma alanım varsa sorgu **Gezgini** 'nin sorgu için kullanacağı bir **Kategori** belirtin. (Kategoriler, uygulamalar için Application Insights sorguları için kullanılamaz)
    
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
    
    ![İşlevi Kaydet](media/get-started-portal/save-function.png)
 

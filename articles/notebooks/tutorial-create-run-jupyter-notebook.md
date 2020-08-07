@@ -3,13 +3,13 @@ title: Öğretici-Jupyter Not defteri oluşturma ve çalıştırma-Azure Noteboo
 description: Veri bilimi 'nde doğrusal gerileme sürecini gösteren Azure Notebooks önizlemede bir Jupyter Not defteri oluşturmayı ve çalıştırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.custom: tracking-python
-ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85834140"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846921"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Öğretici: Python ile Jupyter Not defteri oluşturma ve çalıştırma
 
@@ -152,9 +152,9 @@ Jupyıter, birincil UI öğelerine yerleşik bir tur sağlar. **Yardım**  >  **
 
 Menü komutlarının grupları aşağıdaki gibidir:
 
-| Menü | Description |
+| Menü | Açıklama |
 | --- | --- |
-| Dosya | Not defteri dosyasını yönetmek için komutlar, not defterlerini oluşturma ve kopyalama, baskı önizleme gösterme ve Not defterini çeşitli biçimlerde indirme komutları dahil. |
+| File | Not defteri dosyasını yönetmek için komutlar, not defterlerini oluşturma ve kopyalama, baskı önizleme gösterme ve Not defterini çeşitli biçimlerde indirme komutları dahil. |
 | Düzenle | Hücreleri kesme, kopyalama ve yapıştırma, değerleri bulma ve değiştirme, hücre eklerini yönetme ve görüntü ekleme için tipik komutlar.  |
 | Görüntüle | Jupyıter Kullanıcı arabiriminin farklı bölümlerinin görünürlüğünü denetlemek için komutlar. |
 | Ekle | Geçerli hücrenin üstüne veya altına yeni bir hücre ekleme komutları. Bu komutları sıklıkla bir not defteri oluştururken kullanırsınız. |

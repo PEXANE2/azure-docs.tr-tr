@@ -1,6 +1,7 @@
 ---
-title: JavaScript tek sayfalı uygulama öğreticisi-Microsoft Identity platform | Mavisi
-description: JavaScript SPA uygulamaları, Azure Active Directory v 2.0 uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilir
+title: JavaScript tek sayfalı uygulama öğreticisi | Mavisi
+titleSuffix: Microsoft identity platform
+description: Bu öğreticide, JavaScript tek sayfalı uygulamaların (maça 'Lar) Microsoft Identity platformu tarafından verilen erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenirsiniz.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 303caf36b613e4bcd6a5c48317710b69a3ffbc0a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129687"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875226"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -25,8 +26,8 @@ Bu kılavuzda bir JavaScript tek sayfalı uygulamanın (SPA) nasıl kullanılabi
 - Erişim belirteci alma
 - *Microsoft Identity platform uç noktasından* erişim belirteçleri GEREKTIREN Microsoft Graph API 'sini veya diğer API 'leri çağırma
 
->[!NOTE]
-> Microsoft Identity platform 'u kullanmaya yeni başladıysanız, [oturum açma kullanıcıları ile başlamanıza ve bir JAVASCRIPT Spa hızlı Başlangıçda erişim belirteci almanıza](quickstart-v2-javascript.md)önerilir.
+>[!TIP]
+> Bu öğretici, tek sayfalı uygulamalar için örtük verme akışını kullanmayla sınırlı olan v1. x MSAL.js kullanır. Bunun yerine tüm yeni uygulamaların [,MSAL.js 2. x ve yetkilendirme kodu akışını PKCE ve CORS](tutorial-v2-javascript-auth-code.md) desteğiyle kullanması önerilir.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 
@@ -50,7 +51,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticiyi çalıştırmak için [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
 
@@ -278,7 +279,7 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js için yeniden yönlendirme URL 'SI ayarlama
 >

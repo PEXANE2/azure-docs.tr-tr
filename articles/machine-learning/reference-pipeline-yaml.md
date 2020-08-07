@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 4fc28ca533c6670263c8d559f4d6dd3e21671881
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.custom: devx-track-python
+ms.openlocfilehash: 079341fe1b22db83ded4b11941d8bdf809adfb8d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513171"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845544"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML 'de makine öğrenimi işlem hatlarını tanımlama
 
@@ -26,15 +26,15 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 
 | Adım türü | Destekleniyor mu? |
 | ----- | :-----: |
-| PythonScriptStep | Yes |
-| ParallelRunStep | Yes |
-| AdlaStep | Yes |
-| AzureBatchStep | Yes |
-| DatabricksStep | Yes |
-| DataTransferStep | Yes |
+| PythonScriptStep | Evet |
+| ParallelRunStep | Evet |
+| AdlaStep | Evet |
+| AzureBatchStep | Evet |
+| DatabricksStep | Evet |
+| DataTransferStep | Evet |
 | Oto Mlstep | Hayır |
 | HyperDriveStep | Hayır |
-| ModuleStep | Yes |
+| ModuleStep | Evet |
 | MPIStep | Hayır |
 | EstimatorStep | Hayır |
 

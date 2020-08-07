@@ -6,21 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498517"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827750"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
 
+## <a name="july-2020"></a>Temmuz 2020
+
+### <a name="general"></a>Genel
+- [Azure izleyici 'Yi dağıtma](deploy-scale.md) -VM'ler için Azure izleyici içerik ekleme yeniden yapılandırabilir.
+- [Azure özel bağlantısı 'Nı kullanarak ağları sınırlı Azure izleyici 'ye güvenli](platform/private-link-security.md) bir şekilde bağlayın.
+
+### <a name="alerts"></a>Uyarılar
+- [Azure izleyici uyarıları Için eylem kuralları](platform/alerts-action-rules.md) -CLI işlemleri eklendi.
+- Azure portal, Kullanıcı arabirimindeki değişiklikleri yansıtacak şekilde güncellenen [eylem grupları oluşturun ve yönetin](platform/action-groups.md) .
+- [Azure izleyici Log Analytics kaydedilmiş sorgular](log-query/saved-queries.md) -yeni makale.
+- Uyarı kuralı kotasında Azure Izleyici tarafından eklenen bölümde [günlük uyarılarına sorun giderme](platform/alerts-troubleshoot-log.md) .
+- [Azure ölçüm uyarıları sorunlarını giderme](platform/alerts-troubleshoot-metric.md) -henüz yayınlanmayan özel bir ölçümde uyarı kuralında bölüm eklendi.
+- [Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.](platform/alerts-metric-overview.md) -Toplama ayrıntı düzeyi seçme önerisi eklendi.
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Web App uzantısı Için sürüm notları-Application Insights](app/web-app-extension-release-notes.md) -yeni makale.
+- [Application Insights kaynakları için şablon örnekleri Kaynak Yöneticisi](samples/resource-manager-app-resource.md) -yeni makale.
+- Azure App Service ASP.NET Core uygulamalar için Profil Oluşturucu çalıştıran hata hakkında [Azure Application Insights Profiler ile ilgili sorunları giderin](app/profiler-troubleshooting.md) . 
+
+### <a name="containers"></a>Kapsayıcılar
+- [Kapsayıcılar Için Azure izleyici 'deki uyarıları günlüğe kaydet](insights/container-insights-log-alerts.md) -yeni makale.
+- [Kapsayıcılar Için Azure izleyici 'Den ölçüm uyarıları](insights/container-insights-metric-alerts.md) -yeni makale.
+
+### <a name="logs"></a>Günlükler
+- [Azure izleyici müşterinin yönettiği anahtar tarafından yönetilen](platform/customer-managed-keys.md) hata iletisi ve bölüm CMK yapılandırması.
+- [Azure IZLEYICI http veri toplayıcı API 'si](platform/data-collector-api.md) -Python 3 örneği eklendi.
+- Alt sorgular kullanılırken birden çok veri taramasını önleme başlıklı bölümde [Azure izleyici 'de günlük sorgularını en iyileştirin](log-query/query-optimization.md) .
+- [Öğretici: Log Analytics sorguları ile çalışmaya](log-query/get-started-portal.md) başlayın-video eklendi.
+
+### <a name="platform-logs"></a>Platform günlükleri
+- [Platform günlüklerini ve ölçümlerini farklı hedeflerle eklenen videoya göndermek için Tanılama ayarları oluşturun](platform/diagnostic-settings.md) .
+- [Azure izleyici için Kaynak Yöneticisi şablon örnekleri](samples/resource-manager-samples.md) -Günlükler hedef türü kullanılarak ARM örneği eklendi. 
+
+### <a name="solutions"></a>Çözümler
+- [Azure izleyici 'de çözümleri izleme](insights/solutions.md) -CLI işlemlerinde eklendi.
+- [Azure 'Da Office 365 yönetim çözümü](insights/solution-office-365.md) -devre dışı bırakma tarihi değiştirildi.
+
+### <a name="virtual-machines"></a>Sanal makineler
+
+VM'ler için Azure İzleyici içeriği yeniden yapılandırmak için yeni ve güncelleştirilmiş makaleler
+
+- [VM'ler için Azure İzleyici nedir?](insights/vminsights-overview.md)
+- [VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma](insights/vminsights-configure-workspace.md)
+- [Linux bilgisayarlarını Azure Izleyici 'ye bağlama](platform/agent-linux.md)
+- [Karma ortam için Azure Izleyicisini etkinleştirme](insights/vminsights-enable-hybrid.md)
+- [Azure portal tek bir sanal makine veya sanal makine ölçek kümesi için Azure Izleyicisini etkinleştirin](insights/vminsights-enable-portal.md)
+- [Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme](insights/vminsights-enable-at-scale-policy.md)
+- [VM'ler için Azure İzleyici genel bakış 'ı etkinleştir](insights/vminsights-enable-overview.md)
+- [PowerShell kullanarak VM'ler için Azure İzleyici etkinleştirme](insights/vminsights-enable-powershell.md)
+- [Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici etkinleştirme](insights/vminsights-enable-resource-manager.md)
+- [PowerShell veya şablonlarla VM'ler için Azure İzleyici etkinleştirme](insights/vminsights-enable-at-scale-powershell.md)
+
+
+### <a name="visualizations"></a>Görsel öğeler
+- [Log Analytics Pano görselleştirmelerinizi yükseltme](log-query/dashboard-upgrade.md) -yenileme oranı güncelleştirildi.
+- [Azure izleyici 'den verileri görselleştirme](visualizations.md) -eklenen video.
+
+
 ## <a name="june-2020"></a>Haziran 2020
 
 ### <a name="general"></a>Genel
-- [Azure Izleyiciyi dağıtma](platform/deploy-scale.md) -yeni makale.
+- [Azure Izleyiciyi dağıtma](deploy-scale.md) -yeni makale.
 - [Azure izleyici müşteri tarafından yönetilen anahtar](platform/customer-managed-keys.md) -güncelleştirilmiş billingtype özelliği. PowerShell komutları eklendi.
 
 ### <a name="agents"></a>Aracılar
@@ -35,7 +93,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [JavaScript Web Apps Için Azure Application Insights](app/javascript.md) -JavaScript SDK 'sı bölümüne güncelleştirin. Yükleme başarısızlıklarını raporlamak için kod parçacığı güncelleştirildi.
 - [Profil oluşturucu & Snapshot Debugger-yeni makale için KCG 'leri (kendi depolama alanınızı getirin) yapılandırma](app/profiler-bring-your-own-storage.md) .
 - [Azure 'da, Opencensus Python Ile gelen Istek izleme Application Insights](app/opencensus-python-request.md) , opencensus için günlük kaydı ve yapılandırma güncelleştirildi.
-- [Azure Application Insights ile canlı bir ASP.NET Web uygulamasını izleme](app/monitor-performance-live-website-now.md) durum İzleyicisi v1 için güncel kaldırma tarihi.
+- [Azure Application Insights ile canlı bir ASP.NET Web uygulamasını izleme](app/monitor-performance-live-website-now.md) -durum İzleyicisi v1 için kullanım dışı bırakma tarihi güncelleştirildi.
 - [Azure Application Insights ile Node.js hizmetleri izleme](app/nodejs.md) -birden çok güncelleştirme, sanal SÜRÜMLERDEN ve SDK yapılandırmasından geçiş de dahil olmak üzere
 - Azure izleyici dışarı aktarımlarını yapılandırma bölümüne [Azure izleyici (Önizleme) Ile Python uygulamalarını izleyin](app/opencensus-python.md) .
 - [Kod değişikliği olmadan uygulamalarınızı izleyin-Azure izleyici için otomatik izleme Application Insights](app/codeless-overview.md) -yeni makale.
@@ -54,7 +112,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure Log Analytics çalışma alanını silme ve kurtarma](platform/delete-workspace.md) -PowerShell komutu eklendi. Sorun giderme güncelleştirildi.
 - RBAC bölümünde izin verilmeyen tablolar için [Azure izleyici 'de Log Analytics çalışma alanlarını yönetin](platform/manage-access.md) .
 - [Azure Izleyici günlükleri için kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) -veri boyutunun hesaplanmasıyla ilgili ek ayrıntılar. Veri birimi uyarılarını yapılandırma güncelleştirildi. Azure Sentinel tarafından toplanan Güvenlik verileriyle ilgili ayrıntılar. Veri ucunun açıklaması.
-- [Azure izleyici günlüklerini Azure Logic Apps ve Power otomatikleştir](platform/logicapp-flow-connector.md) tarafından eklenen bağlayıcı limitleriyle birlikte kullanın.
+- [Azure Izleyici günlüklerini Azure Logic Apps ve Power otomatikleştir tarafından eklenen bağlayıcı limitleriyle kullanın](platform/logicapp-flow-connector.md) .
 
 ### <a name="metrics"></a>Ölçümler
 - [Azure izleyici kaynak türüne göre desteklenen ölçümleri](platform/metrics-supported.md) SQL Server.
@@ -66,7 +124,8 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure Portal yeni makale kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderin](learn/quick-collect-activity-log-portal.md) .
 - [Azure Resource Manager şablonu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderin](learn/quick-collect-activity-log-arm.md) -yeni makale.
 
-#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncelleştirilmiş makaleler
+Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncelleştirilmiş makaleler
+
 - [Azure Kaynak günlüklerini depolama hesabına arşivleme](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure etkinlik günlüğü olay şeması](platform/activity-log-schema.md)
 - [Azure etkinlik günlüğü](platform/activity-log.md)
@@ -84,7 +143,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Sanal makineler
-- [Azure portal VM'ler için Azure izleyici,](insights/vminsights-enable-single-vm.md) Azure Arc 'ı içerecek şekilde güncelleştirildi.
+- [Azure portal VM'ler için Azure izleyici,](./insights/vminsights-enable-portal.md) Azure Arc 'ı içerecek şekilde güncelleştirildi.
 - [VM'ler için Azure izleyici genel bakışı etkinleştirin](insights/vminsights-enable-overview.md) -Azure Arc 'ı içerecek şekilde güncelleştirildi.
 - [VM'ler için Azure İzleyici nedir?](insights/vminsights-overview.md) -Azure yayı içerecek şekilde güncelleştirildi.
 
@@ -293,7 +352,7 @@ VM'ler için Azure İzleyici genel kullanıma yönelik genel güncelleştirmeler
 
 - [VM'ler için Azure İzleyici nedir?](insights/vminsights-overview.md)
 - [VM'ler için Azure İzleyici (GA) sık sorulan sorular](insights/vminsights-ga-release-faq.md) 
-- [Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme](insights/vminsights-enable-at-scale-policy.md) 
+- [Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme](./insights/vminsights-enable-policy.md) 
 - [VM'ler için Azure İzleyici ile performansı grafik oluşturma](insights/vminsights-performance.md)
 - [VM'ler için Azure İzleyici günlüklerini sorgulama](insights/vminsights-log-search.md)
 - [VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme](insights/vminsights-maps.md) 

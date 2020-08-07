@@ -4,15 +4,19 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: 7e7825e8247e78cbc0c0e9e22bdbd9326939e0a8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 43e64dadc5e339d174d08788cc7a98506841ee88
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998113"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810197"
 ---
-Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
+## <a name="configure-the-account-information"></a>Hesap bilgilerini yapılandırın
 
-**Proje** bölmesinde öğesine gidin `Assets\AzureSpatialAnchors.SDK\Resources` . `SpatialAnchorConfig` öğesini seçin. Ardından, **Inspector** bölmesine için `Account Key` değeri olarak değerini `Spatial Anchors Account Key` ve `Account ID` değeri olarak değerini girin `Spatial Anchors Account Id` .
+**Proje** bölmesinde, öğesine gidin `Assets/AzureSpatialAnchors.Examples/Scenes` ve `AzureSpatialAnchorsBasicDemo.unity` sahne dosyasını açın.
 
-Sonra, öğesini açın `SpatialAnchorManager.cs` . `CreateSessionAsync()`Aşağıdaki satırı bulun ve daha önce hesap etki alanında yerine ekleyin: `session.Configuration.AccountDomain = "MyAccountDomain";` . Bu satırı doğrudan bu açıklamadan önce ekleyebilirsiniz `// Configure authentication` .
+Sonraki adım, uygulamayı hesap bilgilerinizi kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
+
+**Proje** bölmesinde öğesine gidin `Assets\AzureSpatialAnchors.SDK\Resources` . `SpatialAnchorConfig` öğesini seçin. Ardından, **Inspector** bölmesinde, için değer olarak değerini, için `Account Key` değeri olarak `Spatial Anchors Account Key` `Account ID` `Spatial Anchors Account Id` ve `Account Domain` değeri olarak değerini girin `Spatial Anchors Account Domain` .
+
+**Dosya**Kaydet ' i seçerek sahneyi kaydedin  >  **Save**.

@@ -8,16 +8,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 044786d6a6aa4f9f3d163090c0edfa3832023b10
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116943"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799574"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
 Çalışma kitapları, veri analizi için esnek bir tuval ve Azure portal içinde zengin görsel raporların oluşturulmasını sağlar. Azure 'da birden çok veri kaynağına dokunmanıza ve bunları Birleşik etkileşimli deneyimler halinde birleştirmeye olanak tanır. 
+
+Çalışma kitapları oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>Veri kaynakları
 

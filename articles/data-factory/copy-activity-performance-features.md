@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/15/2020
-ms.openlocfilehash: dfd439affe488805b4645211477c6d32bbbe7489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/05/2020
+ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770943"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846352"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala
 
@@ -35,14 +35,14 @@ Kopyalama etkinliği çalıştırmasını güçlendiren izin verilen, **2 ile 25
 |:--- |:--- |---- |
 | Dosya depoları arasında |- **Veya tek dosyadan Kopyala**: 2-4 <br>- **Ve birden çok dosyaya kopyalama**: 2-256, dosyaların sayısına ve boyutuna bağlı olarak <br><br>Örneğin, 4 büyük dosya içeren bir klasörden veri kopyalar ve hiyerarşiyi korumayı seçerseniz, en yüksek etkin DIU 16 ' dır; dosyayı birleştirmeyi seçtiğinizde, en fazla etkin DIU 4 ' tir. |Dosyaların sayısına ve boyutuna bağlı olarak 4 ile 32 arasında |
 | Dosya deposundan dosya olmayan depoya |- **Tek dosyadan Kopyala**: 2-4 <br/>- **Birden çok dosyadan kopyalama**: 2-256, dosyaların sayısına ve boyutuna bağlı olarak <br/><br/>Örneğin, 4 büyük dosya içeren bir klasörden veri kopyalarsanız, en yüksek etkin DIU 16 ' dır. |- Havuz katmanına (DTU/ru) ve kaynak dosya düzenine bağlı olarak, **Azure SQL veritabanı 'na veya Azure Cosmos DB**: 4 ile 16 arasında kopyalama<br>- PolyBase veya COPY deyimlerini kullanarak **Azure SYNAPSE Analytics 'e kopyalama** : 2<br>-Diğer senaryo: 4 |
-| Dosya depolamadan dosya deposuna |- **Bölüm-seçenek etkinleştirilmiş veri depolarından** ( [Oracle](connector-oracle.md#oracle-as-source) / [Netezza](connector-netezza.md#netezza-as-source) / [Teradata](connector-teradata.md#teradata-as-source)dahil) kopyalama: bir klasöre yazarken 2-256 ve tek bir dosyaya yazarken 2-4. Kaynak veri bölümü başına, en fazla 4 DIUs kullanabilirsiniz.<br>- **Diğer senaryolar**: 2-4 |- **REST veya http 'Den Kopyala**: 1<br/>- Yüklemeyi kaldırma kullanarak **Amazon Redshift 'Tan Kopyala** : 2<br>- **Diğer senaryo**: 4 |
-| Dosya olmayan depolar arasında |- **Bölüm-seçenek etkinleştirilmiş veri depolarından** ( [Oracle](connector-oracle.md#oracle-as-source) / [Netezza](connector-netezza.md#netezza-as-source) / [Teradata](connector-teradata.md#teradata-as-source)dahil) kopyalama: bir klasöre yazarken 2-256 ve tek bir dosyaya yazarken 2-4. Kaynak veri bölümü başına, en fazla 4 DIUs kullanabilirsiniz.<br/>- **Diğer senaryolar**: 2-4 |- **REST veya http 'Den Kopyala**: 1<br>- **Diğer senaryo**: 4 |
+| Dosya depolamadan dosya deposuna |- **Bölüm-seçenek etkinleştirilmiş veri depolarından** ( [Azure SQL VERITABANı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)dahil) kopyalayın: bir klasöre yazarken 2-256 ve tek bir dosyaya yazarken 2-4. Kaynak veri bölümü başına, en fazla 4 DIUs kullanabilirsiniz.<br>- **Diğer senaryolar**: 2-4 |- **REST veya http 'Den Kopyala**: 1<br/>- Yüklemeyi kaldırma kullanarak **Amazon Redshift 'Tan Kopyala** : 2<br>- **Diğer senaryo**: 4 |
+| Dosya olmayan depolar arasında |- **Bölüm-seçenek etkinleştirilmiş veri depolarından** ( [Azure SQL VERITABANı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)dahil) kopyalayın: bir klasöre yazarken 2-256 ve tek bir dosyaya yazarken 2-4. Kaynak veri bölümü başına, en fazla 4 DIUs kullanabilirsiniz.<br/>- **Diğer senaryolar**: 2-4 |- **REST veya http 'Den Kopyala**: 1<br>- **Diğer senaryo**: 4 |
 
 Kopyalama etkinliği izleme görünümü veya etkinlik çıkışında her bir kopya için kullanılan orus 'yi görebilirsiniz. Daha fazla bilgi için bkz. [kopyalama etkinliği izleme](copy-activity-monitoring.md). Bu varsayılanı geçersiz kılmak için, özellik için aşağıdaki gibi bir değer belirtin `dataIntegrationUnits` . Kopyalama işleminin çalışma zamanında kullandığı *gerçek sayı* , veri düzenlerinize bağlı olarak yapılandırılan değere eşit veya ondan daha az.
 
 **Kullanılan mus \* kopyalama süresi \* birim fiyatı/Diu-saat**üzerinden ücretlendirilecektir. Geçerli fiyatlara [buradan](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)bakın. Yerel para birimi ve ayrı ayırt sayma, abonelik türü başına uygulanabilir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -74,7 +74,7 @@ Daha yüksek aktarım hızı elde etmek isterseniz, şirket içinde barındırı
 Aşağıdaki senaryolarda, tek kopya etkinliği yürütme birden çok şirket içinde barındırılan IR düğümünden yararlanabilir:
 
 - Dosya tabanlı mağazalardan, dosyaların sayısına ve boyutuna bağlı olarak verileri kopyalayın.
-- Veri bölümlerinin sayısına bağlı olarak, Bölüm seçenekleri etkinleştirilmiş veri deposundan ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)dahil) verileri kopyalayın.
+- Veri bölümlerinin sayısına bağlı olarak, Bölüm seçenekleri etkinleştirilmiş veri deposundan ( [Azure SQL veritabanı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)) verileri kopyalayın.
 
 ## <a name="parallel-copy"></a>Paralel kopya
 
@@ -93,14 +93,14 @@ Aşağıdaki tabloda, paralel kopyalama davranışı listelenmektedir:
 | --- | --- |
 | Dosya depoları arasında | `parallelCopies`**dosya düzeyinde**paralellik belirler. Her bir dosya içindeki parçalama otomatik ve şeffaf bir şekilde gerçekleşir. Verileri paralel olarak yüklemek için belirli bir veri deposu türü için en iyi uygun öbek boyutunu kullanmak üzere tasarlanmıştır. <br/><br/>Kopya etkinliğinin gerçek sayısı, çalışma zamanında kullanılan, sahip olduğunuz dosya sayısından daha fazla değil. Kopyalama davranışı dosya havuzunda **birleştirme dosyası** ise kopyalama etkinliği dosya düzeyinde paralellik özelliğinden yararlanamaz. |
 | Dosya deposundan dosya olmayan depoya | -Verileri Azure SQL veritabanı 'na veya Azure Cosmos DB kopyalarken, varsayılan paralel kopya Ayrıca havuz katmanına (DTU 'Lar/ru sayısı) göre değişir.<br>-Verileri Azure tablosuna kopyalarken, varsayılan paralel kopya 4 ' dir. |
-| Dosya depolamadan dosya deposuna | -Seçenek etkinleştirilmiş veri deposundan ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)dahil) veri kopyalarken, varsayılan paralel kopya 4 ' dir. Kopya etkinliğinin gerçek sayısı, çalışma zamanında kullanılan, sahip olduğunuz veri bölümlerinin sayısından fazla değil. Şirket içinde barındırılan Integration Runtime ve Azure Blob/ADLS 2. ' e kopyalama sırasında, en fazla etkin paralel kopya, IR düğümü başına 4 veya 5 ' tir.<br>-Diğer senaryolar için paralel kopya etkili olmaz. Paralellik belirtilmiş olsa bile, uygulanmaz. |
-| Dosya olmayan depolar arasında | -Verileri Azure SQL veritabanı 'na veya Azure Cosmos DB kopyalarken, varsayılan paralel kopya Ayrıca havuz katmanına (DTU 'Lar/ru sayısı) göre değişir.<br/>-Seçenek etkinleştirilmiş veri deposundan ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)dahil) veri kopyalarken, varsayılan paralel kopya 4 ' dir.<br>-Verileri Azure tablosuna kopyalarken, varsayılan paralel kopya 4 ' dir. |
+| Dosya depolamadan dosya deposuna | -Seçenek etkinleştirilmiş veri deposundan ( [Azure SQL veritabanı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)dahil) veri kopyalanırken varsayılan paralel kopya 4 ' dir. Kopya etkinliğinin gerçek sayısı, çalışma zamanında kullanılan, sahip olduğunuz veri bölümlerinin sayısından fazla değil. Şirket içinde barındırılan Integration Runtime ve Azure Blob/ADLS 2. ' e kopyalama sırasında, en fazla etkin paralel kopya, IR düğümü başına 4 veya 5 ' tir.<br>-Diğer senaryolar için paralel kopya etkili olmaz. Paralellik belirtilmiş olsa bile, uygulanmaz. |
+| Dosya olmayan depolar arasında | -Verileri Azure SQL veritabanı 'na veya Azure Cosmos DB kopyalarken, varsayılan paralel kopya Ayrıca havuz katmanına (DTU 'Lar/ru sayısı) göre değişir.<br/>-Seçenek etkinleştirilmiş veri deposundan ( [Azure SQL veritabanı](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL yönetilen örneği](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)ve [Teradata](connector-teradata.md#teradata-as-source)dahil) veri kopyalanırken varsayılan paralel kopya 4 ' dir.<br>-Verileri Azure tablosuna kopyalarken, varsayılan paralel kopya 4 ' dir. |
 
 Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalama performansını ayarlamak için varsayılan değeri geçersiz kılabilir ve özellik için bir değer belirtebilirsiniz `parallelCopies` . Değer 1 ' den büyük veya buna eşit bir tamsayı olmalıdır. Çalışma zamanında, en iyi performans için kopyalama etkinliği, ayarladığınız değerden küçük veya bu değere eşit bir değer kullanır.
 
 Özelliği için bir değer belirttiğinizde `parallelCopies` , kaynak ve havuz Veri depolarındaki yük artışını hesapta yapın. Ayrıca, kopyalama etkinliği tarafından güçde bulunursa, şirket içinde barındırılan tümleştirme çalışma zamanına yönelik yük artışını de göz önünde bulundurun. Bu yük artışı, özellikle aynı veri deposunda çalışan aynı etkinliklerin birden çok etkinliğiniz veya eş zamanlı çalıştırmaları olduğunda gerçekleşir. Veri deposunun veya şirket içinde barındırılan tümleştirme çalışma zamanının yük ile azaldığını fark ederseniz, `parallelCopies` yükü ortadan kaldırmak için değeri azaltın.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -146,10 +146,10 @@ Hedef veri deposuna yüklemeden önce, verilerin blob depolamada hazırlanması 
 
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
-| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |False |Hayır |
-| linkedServiceName |Geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir [Azurestorage](connector-azure-blob-storage.md#linked-service-properties) Linked hizmetinin adını belirtin. <br/><br/> PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |YOK |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| yol |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |YOK |Hayır |
-| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |False |Hayır |
+| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |Hayır |
+| linkedServiceName |Geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir [Azurestorage](connector-azure-blob-storage.md#linked-service-properties) Linked hizmetinin adını belirtin. <br/><br/> PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
+| path |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |Hayır |
+| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |Hayır |
 
 >[!NOTE]
 > Hazırlanan bir kopyayı sıkıştırma etkinken kullanırsanız, hazırlama blobu bağlı hizmeti için hizmet sorumlusu veya MSI kimlik doğrulaması desteklenmez.

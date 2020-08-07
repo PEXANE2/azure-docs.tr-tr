@@ -10,22 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808125"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873645"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
-Bu makalede, Azure Güvenlik duvarını bir Azure Machine Learning çalışma alanıyla kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
+Bu makalede, Azure Güvenlik Duvarı 'nı Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek üzere nasıl yapılandıracağınızı öğrenin.   Azure Machine Learning güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning Için kuruluş güvenliği](concept-enterprise-security.md)
 
-> [!IMPORTANT]
-> Bu belgedeki bilgiler Azure Güvenlik duvarı kullanımı temel alınarak, diğer güvenlik duvarı ürünleriyle de kullanabilmeniz gerekir. Güvenlik duvarınız üzerinden iletişime izin verme hakkında sorularınız varsa, lütfen kullandığınız güvenlik duvarının belgelerine başvurun.
-
-Azure Güvenlik Duvarı, Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek için kullanılabilir. Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kullanarak sorunlara yol açabilir. Hem Azure Machine Learning çalışma alanı tarafından hem de bu makalede açıklanan birçok konak adı vardır.
+Bu belgedeki bilgiler [Azure Güvenlik Duvarı](../firewall/tutorial-firewall-deploy-portal.md)kullanımı temel alınarak, diğer güvenlik duvarı ürünleriyle de kullanabilmeniz gerekir. Güvenlik duvarınız üzerinden iletişime izin verme hakkında sorularınız varsa, lütfen kullandığınız güvenlik duvarının belgelerine başvurun.
 
 ## <a name="network-rules"></a>Ağ kuralları
 
@@ -37,6 +34,8 @@ Güvenlik duvarınızda, bu makaledeki adreslere ve adreslere yönelik trafiğe 
 > Azure Güvenlik duvarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
 ## <a name="microsoft-hosts"></a>Microsoft Konakları
+
+Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kullanarak sorunlara yol açabilir. Azure Machine Learning çalışma alanı tarafından her ikisi de kullanılan birçok konak adı vardır.
 
 Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün çalışması için gerekli hizmetleri sağlar.
 
@@ -58,6 +57,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **mcr.microsoft.com** | Temel Docker görüntüleri için Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | Yalnızca Azure Container Registry sanal ağın arkasında ise gereklidir. Bu yapılandırmada, Microsoft ortamından aboneliğinizdeki ACR örneğine özel bir bağlantı oluşturulur. Azure Machine Learning çalışma alanınız için ACR sunucu adını kullanın. |
 | **\*. notebooks.azure.net** | Azure Machine Learning Studio 'daki Not defterleri için gereklidir. |
+
 ## <a name="python-hosts"></a>Python Konakları
 
 Bu bölümdeki konaklar, Python paketlerini yüklemek için kullanılır. Geliştirme, eğitim ve dağıtım sırasında gereklidir. 
@@ -79,7 +79,7 @@ Bu bölümdeki konaklar R paketleri yüklemek için kullanılır. Geliştirme, e
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN paketleri yüklenirken kullanılır. |
 
-Sonraki adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-* [[Azure Güvenlik duvarını dağıtma ve yapılandırma](../firewall/tutorial-firewall-deploy-portal.md)]
+* [Öğretici: Azure portalını kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma](../firewall/tutorial-firewall-deploy-portal.md)
 * [Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama](how-to-enable-virtual-network.md)

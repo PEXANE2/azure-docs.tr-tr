@@ -2,18 +2,18 @@
 title: 'PowerShell: Azure için FHıR sunucusunu dağıtma – FHıR için Azure API'
 description: Bu hızlı başlangıçta, PowerShell kullanılarak Microsoft açık kaynak FHıR sunucusunun nasıl dağıtılacağı açıklanmaktadır.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: f959b884f67f354599b99bb6dd24918b28d13382
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: matjazl
+ms.openlocfilehash: c133a309cc85ffcfb69be2ae7bbb614cbb540f2e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "84820183"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847151"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak açık kaynaklı FHıR sunucusunu dağıtma
 
