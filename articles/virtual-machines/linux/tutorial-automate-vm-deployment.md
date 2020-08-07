@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433019"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828974"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
 
@@ -57,7 +57,7 @@ cloud-init’i uygulamalı olarak görmek için, NGINX’i yükleyen ve basit bi
 
 Bash isteminizdeki veya Cloud Shell, *cloud-init.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Örneğin, `sensible-editor cloud-init.txt` dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için yazın. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
 
-```bash
+```yaml
 #cloud-config
 package_upgrade: true
 packages:

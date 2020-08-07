@@ -58,6 +58,10 @@
       href: remote-work-support.md
     - name: Ağ kurallarında FQDN
       href: fqdn-filtering-network-rules.md
+    - name: Kavramlar
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure PowerShell’i kullanarak dağıtma

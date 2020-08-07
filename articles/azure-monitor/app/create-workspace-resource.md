@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323120"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824996"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Çalışma alanı tabanlı Application Insights kaynakları (Önizleme)
 
@@ -19,7 +19,7 @@ ms.locfileid: "87323120"
 Bu Ayrıca, kaynaklarınız genelinde ortak rol tabanlı Access Control (RBAC) sağlar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
 
 > [!NOTE]
-> Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu Log Analytics çalışma alanı üzerinden faturalandırılır. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights) .
+> Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu Log Analytics çalışma alanı üzerinden faturalandırılır. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
 
 Yeni deneyimi test etmek için [Azure Portal](https://portal.azure.com)oturum açın ve bir Application Insights kaynağı oluşturun:
 
@@ -204,4 +204,3 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

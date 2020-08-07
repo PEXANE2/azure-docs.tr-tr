@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
-- tracking-python
+- devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 120708cc72117495e6200f41f13422e94a58c265
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556476"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845333"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma
 
 Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Python 2 veya 3](https://www.python.org/downloads/)

@@ -1,6 +1,6 @@
 ---
 title: Azure API Management'ta özel önbelleğe alma
-description: Azure API Management öğelerini anahtara göre önbelleğe alma hakkında bilgi edinin
+description: Azure API Management 'de öğeleri anahtara göre önbelleğe alma hakkında bilgi edinin. Anahtarı istek üst bilgilerini kullanarak değiştirebilirsiniz.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249725"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903451"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API Management'ta özel önbelleğe alma
-Azure API Management hizmetinde, anahtar olarak kaynak URL 'SI kullanılarak [http yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek bulunur. Anahtar, özellikler kullanılarak istek üstbilgileri tarafından değiştirilebilir `vary-by` . Bu, tüm HTTP yanıtlarının (diğer adıyla gösterimler) önbelleğe alınması için yararlıdır, ancak bazen bir gösterimin bir bölümünü önbelleğe almak için yararlıdır. Yeni [önbellek-arama-değer](./api-management-caching-policies.md#GetFromCacheByKey) ve [önbellek-depolama-değer](./api-management-caching-policies.md#StoreToCacheByKey) ilkeleri, ilke tanımlarından rastgele veri parçalarını depolama ve alma olanağı sağlar. Artık dış hizmetlerden gelen yanıtları önbelleğe sunabileceğinden, bu özellik önceden tanıtılan [gönderme isteği](./api-management-advanced-policies.md#SendRequest) ilkesine değer de ekler.
+Azure API Management hizmetinde, anahtar olarak kaynak URL 'SI kullanılarak [http yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek bulunur. Anahtar, özellikler kullanılarak istek üstbilgileri tarafından değiştirilebilir `vary-by` . Bu, tüm HTTP yanıtlarının (temsiller olarak da bilinir) önbelleğe alınması için yararlıdır, ancak bazen bir temsilinin bir bölümünü önbelleğe almak faydalı olur. Yeni [önbellek-arama-değer](./api-management-caching-policies.md#GetFromCacheByKey) ve [önbellek-depolama-değer](./api-management-caching-policies.md#StoreToCacheByKey) ilkeleri, ilke tanımlarından rastgele veri parçalarını depolama ve alma olanağı sağlar. Artık dış hizmetlerden gelen yanıtları önbelleğe sunabileceğinden, bu özellik önceden tanıtılan [gönderme isteği](./api-management-advanced-policies.md#SendRequest) ilkesine değer de ekler.
 
 ## <a name="architecture"></a>Mimari
 API Management hizmet, birden çok birime kadar ölçeklendirerek aynı önbelleğe alınmış verilere erişmeye devam ettiğiniz için paylaşılan bir kiracı veri önbelleği kullanır. Ancak, çok bölgeli bir dağıtımla çalışırken her bir bölgenin içinde bağımsız önbellekler vardır. Önbellek bir veri deposu olarak değerlendirilmemelidir, burada bazı bilgilerin tek kaynağı olduğu yerdir. Bunu yaptıysanız ve daha sonra çok bölgeli dağıtımdan faydalanmaya karar verdiyseniz, kullanıcılara seyahat eden kullanıcılar bu önbelleğe alınmış verilere erişimi kaybedebilir.

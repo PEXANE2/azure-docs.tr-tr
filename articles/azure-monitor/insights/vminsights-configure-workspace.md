@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 10c4f0ba4bfc88017304c228ca1afce4ba863118
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328454"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828566"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
 VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM'ler için Azure İzleyici için yapılandırılacak.
@@ -40,7 +40,7 @@ Aşağıdaki yöntemlerden herhangi birini kullanarak yeni bir Log Analytics ça
 
 * [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
@@ -63,7 +63,7 @@ VM'ler için Azure İzleyici, herhangi bir bölgedeki sanal makineleri izleyebil
 - West Europe
 - Doğu Asya
 - Güneydoğu Asya
-- Central India
+- Orta Hindistan
 - Doğu Japonya
 - Doğu Avustralya
 - Güneydoğu Avustralya

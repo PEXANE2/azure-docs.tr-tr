@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa76f68be2f886ead16bd718cbeb8d14c78fe6d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828668"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 'de özel yönetici rolleri (Önizleme)
 
@@ -34,7 +34,7 @@ Azure AD rol tabanlı erişim denetimi, Azure AD 'nin genel önizleme özelliği
 
 Rol tanımınızı oluşturduktan sonra bir rol ataması oluşturarak bunu bir kullanıcıya atayabilirsiniz. Rol ataması, kullanıcıya belirtilen kapsamdaki bir rol tanımında izinleri verir. Bu iki adımlı işlem, tek bir rol tanımı oluşturmanızı ve farklı kapsamlarda birçok kez atamanızı sağlar. Kapsam, rol üyesinin erişimi olan Azure AD kaynakları kümesini tanımlar. En yaygın kapsam, kuruluş genelinde (kuruluş genelinde) kapsamındadır. Özel bir rol kuruluş genelinde bir kapsamda atanabilir, Yani rol üyesi kuruluştaki tüm kaynaklar üzerinde rol izinlerine sahiptir. Özel bir rol, bir nesne kapsamına da atanabilir. Bir nesne kapsamına bir örnek, tek bir uygulama olabilir. Aynı rol, kuruluştaki tüm uygulamalarda bir kullanıcıya ve sonra yalnızca contoso gider raporları uygulamasının kapsamına sahip başka bir kullanıcıya atanabilir.  
 
-Azure AD yerleşik ve özel rolleri, [Azure rol tabanlı erişim denetimine](../../role-based-access-control/overview.md)benzer kavramlar üzerinde çalışır. [Bu iki rol tabanlı erişim denetimi sistemi arasındaki fark](../../role-based-access-control/rbac-and-directory-admin-roles.md) , Azure RBAC 'Nin Azure Kaynak Yönetimi 'ni kullanarak sanal makineler veya depolama gibi Azure kaynaklarına erişimi denetlemesini ve Azure AD özel rollerinin Graph API kullanarak Azure AD kaynaklarına erişimini denetlerleridir. Her iki sistem de rol tanımları ve rol atamaları kavramından faydalanır.
+Azure AD yerleşik ve özel rolleri, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)ile benzer kavramlar üzerinde çalışır. [Bu iki rol tabanlı erişim denetimi sistemi arasındaki fark](../../role-based-access-control/rbac-and-directory-admin-roles.md) , Azure RBAC 'Nin Azure Kaynak Yönetimi 'ni kullanarak sanal makineler veya depolama gibi Azure kaynaklarına erişimi denetlemesini ve Azure AD özel rollerinin Graph API kullanarak Azure AD kaynaklarına erişimini denetlerleridir. Her iki sistem de rol tanımları ve rol atamaları kavramından faydalanır.
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Azure AD 'nin bir kullanıcının kaynağa erişip erişemeyeceğini belirleme
 
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda rol ataması örneği gösterilmektedir. Bu örnekte, Ch
 
 Güvenlik sorumlusu, Azure AD kaynaklarına erişim atanacak kullanıcıyı temsil eder. *Kullanıcı* , Azure Active Directory bir kullanıcı profiline sahip kişidir.
 
-### <a name="role"></a>Rol
+### <a name="role"></a>Role
 
 Rol tanımı veya rol, izin koleksiyonudur. Rol tanımı, oluşturma, okuma, güncelleştirme ve silme gibi Azure AD kaynaklarında gerçekleştirilebilecek işlemleri listeler. Azure AD 'de iki tür rol vardır:
 

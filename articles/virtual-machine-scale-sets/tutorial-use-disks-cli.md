@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: a26eb3ae1dbe426da11e9ade4af90f4e01c3405a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a4be498b25aee7c5a50b2f35fe06be3763eb4732
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492131"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825863"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -70,7 +70,7 @@ Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli 
 | Disk başına en fazla IOPS | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
 Disk başına aktarım hızı | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
 
-Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Linux VM türleri](../virtual-machines/linux/sizes.md).
+Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Linux VM türleri](../virtual-machines/sizes.md).
 
 
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme

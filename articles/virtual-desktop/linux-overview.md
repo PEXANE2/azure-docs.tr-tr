@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f91e130bfa83c6a9b116c05d7293aa70945e2dc2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259865"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903553"
 ---
 # <a name="linux-support"></a>Linux desteği
 
-İş ortakları Windows sanal masaüstü için Linux SDK 'Yı kullanarak tek başına bir Windows sanal masaüstü istemcisi oluşturabilir. Ayrıca, istemci uygulamanızda Windows sanal masaüstü desteğini etkinleştirmek için de kullanabilirsiniz. Bu hızlı kılavuz, Linux SDK 'sının ne olduğunu ve nasıl kullanılacağını açıklar.
+Linux cihazlarımızda, Linux basit istemci iş ortaklarımız tarafından sağlanmış olan aşağıdaki desteklenen istemcilerle Windows sanal masaüstü kaynaklarına erişebilirsiniz. Desteklenen Windows sanal masaüstü istemcilerini daha Linux tabanlı işletim sistemleri ve cihazlarda etkinleştirmek için bir dizi iş ortaklarıyla çalışıyoruz. Burada listelenmeyen bir Linux platformunda Windows sanal masaüstü desteği ' ni istiyorsanız, lütfen [UserVoice sayfamızda](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)bize bildirin.
 
 ## <a name="connect-with-your-linux-device"></a>Linux aygıtınızla bağlantı kurmak
 
@@ -29,14 +29,7 @@ Aşağıdaki iş ortakları Linux cihazları için Windows sanal masaüstü iste
 
 ## <a name="what-is-the-linux-sdk"></a>Linux SDK nedir?
 
-Kaynak akışlarını almak, masaüstü veya uzak uygulama oturumlarına bağlanmak ve ilk taraf istemcilerimizin desteklediği birçok yeniden yönlendirmeleri kullanmak için SDK API 'Lerini kullanabilirsiniz.
-
-> [!NOTE]
-> SDK Şu anda geliştirme aşamasındadır. Bu belgeyi, genel kullanıma sunulduğunda SDK 'ya erişme yönergeleriyle birlikte güncelleştireceğiz.
-
-### <a name="supported-linux-distributions"></a>Desteklenen Linux dağıtımları
-
-SDK, Ubuntu 18,04 veya üzerini temel alan çoğu işletim sistemiyle uyumludur. Farklı bir Linux dağıtımına sahipseniz, gereksinimlerinizi en iyi şekilde desteklemeyi öğrenmek için sizinle birlikte çalışabiliriz.
+Linux basit istemci ortakları, kaynak akışlarını almak, masaüstü veya uzak uygulama oturumlarına bağlanmak ve ilk taraf istemcilerimizin desteklediği birçok yeniden yönlendirmeleri kullanmak için Windows sanal masaüstü Linux SDK API 'Lerini kullanabilir. SDK, Ubuntu 18,04 veya üzerini temel alan çoğu işletim sistemiyle uyumludur.
 
 ### <a name="feature-support"></a>Özellik desteği
 
@@ -57,13 +50,6 @@ SDK, masaüstü ve uzak uygulama oturumlarına yönelik birden çok bağlantıy�
 Ayrıca, oturumunuz için seçtiğiniz izleyiciler bitişik olduğu sürece SDK birden fazla izleyici görüntüleme yapılandırmasını da destekler.
 
 Yeni özellikler ve yeniden yönlendirmeler için destek eklediğimiz için bu belgeyi güncelleştireceğiz. Yeni özellikler ve diğer iyileştirmeler önermek istiyorsanız [UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523)sayfamızı ziyaret edin.
-
-## <a name="get-started-with-the-linux-sdk"></a>Linux SDK 'Yı kullanmaya başlama
-
-Windows sanal masaüstü için bir Linux istemcisi geliştirebilmeniz için aşağıdaki işlemleri yapmanız gerekir:
-
-1. Test veya üretim kullanımı için bir Windows sanal masaüstü ortamı oluşturun ve dağıtın.
-2. Windows sanal masaüstü Kullanıcı deneyimini tanımak için kullanılabilir birinci taraf istemcileri test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

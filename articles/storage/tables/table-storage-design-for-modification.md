@@ -1,6 +1,6 @@
 ---
 title: Veri değişikliği için Azure Tablo Depolaması tasarlama | Microsoft Docs
-description: Azure Tablo depolamada veri değişikliği için tabloları tasarlayın.
+description: Azure Tablo depolamada veri değişikliği için tabloları tasarlayın. INSERT, Update ve DELETE işlemlerini iyileştirin. Saklı varlıklarınızda tutarlılık sağlayın.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f48cbf198e8a12d4f35293b285e6cb09bef29a1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75771555"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826475"
 ---
 # <a name="design-for-data-modification"></a>Veri değişikliği için tasarım
 Bu makalede, eklemeleri, güncelleştirmeleri ve silmeleri iyileştirmeye yönelik tasarım konuları ele alınmaktadır. Bazı durumlarda, ilişkisel veritabanları için tasarımlarda yaptığınız gibi, veri değişikliği için optimize eden tasarımlarla sorgu oluşturma için optimize eden tasarımlar arasındaki dengelemeyi değerlendirmeniz gerekir (ancak, tasarım kredilerinizi yönetme teknikleri ilişkisel bir veritabanında farklılık gösterse de). Bölüm tablosu tasarım desenleri, tablo hizmeti için bazı ayrıntılı tasarım düzenlerini açıklar ve bu ticaret şartlarını vurgular. Uygulamada, varlıkları sorgulamak için en iyi duruma getirilmiş birçok tasarım, varlıkları değiştirmek için de iyi çalışır.  

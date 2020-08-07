@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 211da48a08db948daac0257ff86f2c0b325efce9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python
+ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559821"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873050"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak bir Python uygulaması oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "84559821"
 
 Bu hızlı başlangıçta, GitHub 'dan kopyalanmış bir Python Flask-do Web uygulaması çalıştırmak için Mongo DB API hesabı veya Azure Cosmos DB öykünücüsü Azure Cosmos DB kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . Ya da [Azure Cosmos DB öykünücüsünü](local-emulator.md)kullanabilirsiniz. 
 - [Python 3.6 +](https://www.python.org/downloads/)
@@ -125,7 +125,7 @@ Canlı Azure Cosmos DB hesabıyla kodu test etmek için bağlantı dizesi bilgil
 
 Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. Öncekiyle aynı şekilde çalıştırabilirsiniz.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtın
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu uygulamayı dağıtmak için Azure 'da yeni bir Web uygulaması oluşturabilir ve bu GitHub deposunun çatalından sürekli dağıtımı etkinleştirebilirsiniz. Azure 'da GitHub ile sürekli dağıtımı ayarlamak için bu [öğreticiyi](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) izleyin.
 

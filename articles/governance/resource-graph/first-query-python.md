@@ -3,13 +3,13 @@ title: 'Hızlı başlangıç: ilk Python sorgunuz'
 description: Bu hızlı başlangıçta, Python için kaynak grafiği kitaplığını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 07/15/2020
 ms.topic: quickstart
-ms.custom: tracking-python
-ms.openlocfilehash: f7ca6ce5fab687e26007949898ad72c75d036782
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511932"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873679"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Hızlı başlangıç: Python kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 

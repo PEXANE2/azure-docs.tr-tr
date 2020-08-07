@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
-ms.openlocfilehash: 292f7b65528c13d23d4f2b72467538c43c6ad75e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d8c61c90456607d73fc0e8abc24709d901328ecf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172497"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829535"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Öğretici: Firebase SDK sürümü 1.0.0-preview1 'i kullanarak Android cihazlara anında iletme bildirimleri gönderme
 
@@ -29,7 +29,7 @@ Bu öğreticide aşağıdaki adımlar yer almaktadır:
 - Uygulamanızı hub 'a bağlayın.
 - Uygulamayı test etme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/).
 
@@ -71,7 +71,7 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 
    2.  **Uygulamayı kaydet**' i seçin.
 
-4.  **Google-Services. json dosyasını indir**' i seçin, dosyayı projenizin **uygulama**   klasörüne kaydedin ve sonra **İleri**' yi seçin.
+4.  **google-services.jskarşıdan yükle**' yi seçin, dosyayı projenizin **uygulama**   klasörüne kaydedin ve sonra **İleri**' yi seçin.
 
    :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google hizmetini indirin":::
 
@@ -79,7 +79,7 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 
    :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Proje ayarları":::
 
-6. **Google-Services. JSON** dosyasını **app**   Android Studio projenizin uygulama klasörüne indirmediyseniz bu sayfada yapabilirsiniz.
+6. Dosyadaki **google-services.js** Android Studio projenizin **uygulama**   klasörüne indirmediyseniz, bu sayfada bunu yapabilirsiniz.
 
 7.  **Bulut mesajlaşma**   sekmesine geçin.
 
@@ -228,7 +228,7 @@ Bildirim Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde y
    }
    ```
 
-3. Android Studio, menü çubuğunda **Oluştur**' u seçin, sonra kodunuzda hata olmadığından emin olmak Için **projeyi yeniden derle**' yi seçin   .  **İc_launcher**simgesiyle ilgili bir hata alırsanız   , AndroidManifest. xml dosyasından aşağıdaki ifadeyi kaldırın:
+3. Android Studio, menü çubuğunda **Oluştur**' u seçin, sonra kodunuzda hata olmadığından emin olmak Için **projeyi yeniden derle**' yi seçin   .  **İc_launcher**simgesiyle ilgili bir hata alırsanız   , AndroidManifest.xml dosyasından aşağıdaki ifadeyi kaldırın:
 
    ```xml
    android:icon="@mipmap/ic_launcher"
@@ -278,7 +278,7 @@ Bu öğreticide, hizmet ile kaydedilmiş tüm Android cihazlara bildirim yayıml
 
 Bildirim göndermek için bazı diğer öğreticiler aşağıda verilmiştir:
 
-- Azure Mobile Apps: Notification Hubs ile tümleştirilmiş Mobile Apps arka uçta bildirimlerin nasıl gönderileceği hakkında bir örnek Için bkz. [iOS uygulamanıza anında Iletme bildirimleri ekleme](/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
+- Azure Mobile Apps: Notification Hubs ile tümleştirilmiş Mobile Apps arka uçta bildirimlerin nasıl gönderileceği hakkında bir örnek Için bkz. [iOS uygulamanıza anında Iletme bildirimleri ekleme](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 
 - ASP.NET: [kullanıcılara anında iletme bildirimleri göndermek için Notification Hubs kullanın](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 

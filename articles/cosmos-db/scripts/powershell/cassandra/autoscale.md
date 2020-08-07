@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 06aa80e7a0aa379c8e7a622752fc203b58b2d2c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b6df0a428fce88556ec4d6bd7616736cc1a67f30
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506937"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760711"
 ---
 # <a name="create-a-keyspace-and-table-with-autoscale-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB için otomatik ölçeklendirmeyi içeren bir anahtar alanı ve tablo oluşturun Cassandra API
 
@@ -42,7 +42,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [New-AzCosmosDBAccount](/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Cosmos DB hesabı oluşturur. |
 | [New-AzCosmosDBCassandraKeyspace](/powershell/module/az.cosmosdb/new-azcosmosdbcassandrakeyspace) | Bir Cosmos DB Cassandra API anahtar uzayı oluşturur. |
 | [New-AzCosmosDBCassandraClusterKey](/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | Bir Cosmos DB Cassandra API küme anahtarı oluşturur. |
-| [New-AzCosmosDBCassandraColumn](/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Bir Cosmos DB Cassandra API sütunu oluşturur. |
+| [New-AzCosmosDBCassandraColumn](/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Bir Cosmos DB Cassandra API sütunu oluşturur. |
 | [New-AzCosmosDBCassandraSchema](/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | Bir Cosmos DB Cassandra API şeması oluşturur. |
 | [New-AzCosmosDBCassandraTable](/powershell/module/az.cosmosdb/new-azcosmosdbcassandratable) | Bir Cosmos DB Cassandra API tablosu oluşturur. |
 |**Azure Kaynak grupları**| |

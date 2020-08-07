@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124585"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827370"
 ---
 ## <a name="configure-the-sample-project"></a>Örnek projeyi yapılandırma
 
@@ -18,7 +18,7 @@ Ardından, Azure dijital TWINS örneğinizle etkileşime girebilen bir örnek is
 
 Makinenizde indirilen dosyaya gidin ve dosyayı ayıklayın.
 
-Sıkıştırılmış klasörün içinden bir kez _AdtSampleApp/_ adresine gidin. Visual Studio 2019 ' de _**AdtE2ESample. sln**_ 'yi açın. 
+Sıkıştırılmış klasörün içindeyken _AdtSampleApp_adresine gidin. Visual Studio 2019 ' de _**AdtE2ESample. sln**_ 'yi açın. 
 
 Visual Studio 'da, *Solution Explorer* _üzerinde sampleclientapp >serviceConfig.jsbir kopyasını oluşturmak için Çözüm Gezgini bölmesini kullanın **. Şablon** _ dosyası (kopyalamak ve yapıştırmak için sağ seçme menülerini kullanabilirsiniz). Kopyalama *serviceConfig.js*yeniden adlandırın. Bu, projeyi çalıştırmak için gerekli yapılandırma değişkenlerine sahip bir önceden ayarlanmış JSON dosyası işlevi görür.
 
@@ -31,6 +31,8 @@ Dosyayı Düzenle penceresinde açmak için *serviceConfig.js* seçin. ' I `tena
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 Dosyayı kaydedin ve kapatın. 
 
