@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489886"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904547"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,12 +30,15 @@ Genel olarak, Azure Machine Learning ile kullanabileceğiniz iki tür kimlik do�
 
 Kullanılan kimlik doğrulama türünden bağımsız olarak, kaynaklara izin verilen erişim düzeyini kapsam için rol tabanlı erişim denetimi (RBAC) kullanılır. Örneğin, dağıtılan bir modelin erişim belirtecini almak için kullanılan bir hesabın yalnızca çalışma alanına okuma erişimi olması gerekir. RBAC hakkında daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure MACHINE LEARNING Not defteri VM](concept-azure-machine-learning-architecture.md#compute-instance) 'si kullanın.
 
 ## <a name="interactive-authentication"></a>Etkileşimli kimlik doğrulaması
+
+> [!IMPORTANT]
+> Etkileşimli kimlik doğrulaması tarayıcınızı kullanır ve tanımlama bilgileri gerektirir (3. taraf tanımlama bilgileri dahil). Tanımlama bilgilerini devre dışı bırakırsanız, "oturum açılamadı" gibi bir hata alabilirsiniz. Bu hata, [Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)'ı etkinleştirdiyseniz da oluşabilir.
 
 Belgelerde ve örneklerde birçok örnek etkileşimli kimlik doğrulaması kullanır. Örneğin, SDK kullanırken, otomatik olarak Kullanıcı arabirimi tabanlı kimlik doğrulama akışı isteyen iki işlev çağrısı vardır:
 

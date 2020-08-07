@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797908"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904523"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -56,12 +56,12 @@ Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakl
 
 [Azure Market 'e yönelik çözüm şablonları ve yönetilen uygulamalar için](https://channel9.msdn.com/Events/Build/2018/BRK3603) sunulan video, Azure Uygulama teklifi türüne kapsamlı bir giriş sağlar:
 
-* Hangi teklif türleri kullanılabilir?
-* Hangi teknik varlıkların gerekli olduğu;
-* Azure Resource Manager şablonu yazma;
-* Uygulama kullanıcı arabirimini geliştirme ve test etme;
-* Uygulama teklifini yayımlama;
-* Uygulama İnceleme işlemi.
+* Kullanılabilir teklif türleri
+* Hangi teknik varlıkların gerekli olduğu
+* Azure Resource Manager şablonu yazma
+* Uygulama kullanıcı arabirimini geliştirme ve test etme
+* Uygulama teklifini yayımlama
+* Uygulama İnceleme işlemi
 
 ### <a name="suggested-tools"></a>Önerilen araçlar
 
@@ -247,15 +247,14 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
-
-Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
+Aşağıdaki üç piksel boyutunda teklifinizin logosunun PNG dosyalarını sağlayın:
 
 - **Küçük** (48 x 48)
 - **Orta** (90 x 90)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+- **Büyük** (216 x 216)
+- **Geniş** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Üç logo de gereklidir ve listede farklı yerlerde kullanılır.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
@@ -283,7 +282,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 Tek tek (10 ' a kadar) veya bir CSV dosyası karşıya yükleyerek (100 'e kadar) en az bir Azure abonelik KIMLIĞI ekleyin. Bu abonelik kimliklerini ekleyerek teklifinizin canlı olarak yayınlanmadan önce ne kadar önizleyebilir olduğunu tanımlarsınız. Teklifiniz zaten canlı ise, teklifinizdeki değişiklikleri veya güncelleştirmeleri test etmek için bir önizleme izleyiciyi yine de tanımlayabilirsiniz.
 
 > [!NOTE]
-> Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine erişebilir. Teklifinizin Market 'e tamamen yayımlandıktan sonra yalnızca özel bir hedef kitle için kullanılabilir olacağını da içeren tüm planları görebilir ve doğrulayabilir. Özel bir hedef kitle (plan **fiyatlandırması ve kullanılabilirliği** sekmesinde tanımlanmıştır) belirli bir plana özel erişim sağlar.
+> Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan *önce* teklifinizin erişimine erişebilir. Teklifinizin Market 'e tamamen yayımlandıktan sonra yalnızca özel bir hedef kitle için kullanılabilir olacağını da içeren tüm planları görebilir ve doğrulayabilir. Özel bir hedef kitle (plan **fiyatlandırması ve kullanılabilirliği** sekmesinde tanımlanmıştır) belirli bir plana özel erişim sağlar.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -324,7 +323,7 @@ Oluşturulduktan sonra, plan adları, kimlikleri, plan türü, kullanılabilirli
 
 ***Plan kimliği*** – bu teklifte her plan için benzersiz BIR plan kimliği oluşturun. Bu KIMLIK, ürün URL 'sindeki müşterilere görünür olacaktır.  Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi kullanın. Bu plan KIMLIĞI için en fazla 50 karakter kullanılabilir. Bu KIMLIK, oluştur seçildikten sonra değiştirilemez.
 
-***Plan adı*** -müşteriler, teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
+***Plan adı*** – tekliflerinizi hangi plana seçeceğinize karar verirken müşteriler bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Planı ayarla
 
@@ -335,7 +334,7 @@ Teklifiniz için plan türünü seçin. Bir **çözüm şablonu** planı tamamen
 
 #### <a name="re-use-technical-configuration"></a>Teknik yapılandırmayı yeniden kullanma
 
-Aynı türde birden fazla planınız varsa ve paketler aralarında özdeş ise, **Bu planı başka bir plandaki paketleri yeniden kullanır**' i seçebilirsiniz.  Bu seçeneği belirlediğinizde, bu teklif için aynı türdeki diğer planlardan birini seçerek paketleri ' den yeniden kullanabilirsiniz. 
+Aynı türde birden fazla planınız varsa ve paketler aralarında özdeş ise, **Bu planı başka bir plandaki paketleri yeniden kullanır**' i seçebilirsiniz.  Bu seçeneği belirlediğinizde, bu teklif için aynı türdeki diğer planlardan birini seçerek paketleri ' den yeniden kullanabilirsiniz.
 
 >[!Note]
 >Paketleri başka bir plandan yeniden kullandığınızda, tüm teknik Yapılandırma sekmesi bu plandan kaybolur. İleride yaptığınız tüm güncelleştirmeler de dahil olmak üzere diğer plandaki teknik yapılandırma ayrıntıları, bu plan için de kullanılacaktır.<br><br>Bu plan yayımlandıktan sonra bu ayar değiştirilemez.
@@ -416,9 +415,9 @@ Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarla
 
 Bu plan için aylık fiyat fiyatını belirtin.  Bu fiyat, bu çözüm tarafından dağıtılan kaynaklar tarafından tahakkuk eden tüm Azure altyapısına veya kullandıkça öde yazılım maliyetlerine ek olarak yapılır.
 
-Aylık fiyata ek olarak, [ölçülen faturalandırmayı](./azure-app-metered-billing.md)kullanarak standart olmayan birimlerin tüketimine yönelik fiyatlar da ayarlayabilirsiniz.  Aylık fiyat fiyatını sıfır olarak ayarlayabilir ve isterseniz tarifeli faturalandırma kullanarak özel olarak ücretlendirme yapabilirsiniz. 
+Aylık fiyata ek olarak, [ölçülen faturalandırmayı](./azure-app-metered-billing.md)kullanarak standart olmayan birimlerin tüketimine yönelik fiyatlar da ayarlayabilirsiniz.  Aylık fiyat fiyatını sıfır olarak ayarlayabilir ve isterseniz tarifeli faturalandırma kullanarak özel olarak ücretlendirme yapabilirsiniz.
 
-ABD Doları cinsinden ayarlanan fiyatlar (USD = Birleşik Devletler dolar), kaydedildiği sırada geçerli döviz kurları kullanılarak tüm seçili piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışarı aktarıp her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın. Tek bir pazarda özel fiyatlar ayarlamak isterseniz, fiyatlandırma elektronik tablosunu değiştirin ve içeri aktarın. 
+ABD Doları cinsinden ayarlanan fiyatlar (USD = Birleşik Devletler dolar), kaydedildiği sırada geçerli döviz kurları kullanılarak tüm seçili piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışarı aktarıp her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın. Tek bir pazarda özel fiyatlar ayarlamak isterseniz, fiyatlandırma elektronik tablosunu değiştirin ve içeri aktarın.
 
 >[!Note]
 >Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.
@@ -442,8 +441,7 @@ Planı özel yaparsanız, bir **Azure abonelik kimlikleri** ve açıklamasını 
 >[!Note]
 >Özel teklifler, bulut çözümü sağlayıcısı programı 'nın (CSP) satıcısı aracılığıyla oluşturulan Azure abonelikleri ile desteklenmez.
 
-
-### <a name="technical-configuration"></a>Teknik yapılandırma 
+### <a name="technical-configuration"></a>Teknik yapılandırma
 
 Bu sekme, müşterilerin planınızı dağıtmasına olanak sağlayacak dağıtım paketini karşıya yüklemenize olanak sağlar.
 
@@ -501,15 +499,15 @@ Bu plan sürümünün yönetilen uygulama örneklerinde bulunan tüm CRUD işlem
 
 #### <a name="customize-allowed-customer-actions"></a>İzin verilen müşteri eylemlerini özelleştirme
 
-Müşterilerin, `*/read` Varsayılan olarak kullanılabilir olan "" eylemlerine ek olarak yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtmek için bu seçeneği belirleyin. 
+Müşterilerin, `*/read` Varsayılan olarak kullanılabilir olan "" eylemlerine ek olarak yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtmek için bu seçeneği belirleyin.
 
-Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](../../role-based-access-control/deny-assignments.md).  Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
+Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](../../role-based-access-control/deny-assignments.md). Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
 
 #### <a name="global-azure--azure-government-cloud"></a>Küresel Azure/Azure Kamu Bulutu
 
-Desteklenen her bulutta bu yönetilen uygulamaya yönetim erişiminin olması gereken kişileri belirtin. Yönetilen kaynak grubu için izin verilmesini istediğiniz kullanıcılar, gruplar veya uygulamalar Azure Active Directory (AAD) kimlikleri kullanılarak tanımlanır.
+Desteklenen her bulutta bu yönetilen uygulamaya yönetim erişiminin olması gereken kişileri belirtin. Yönetilen kaynak grubu için izin verilmesini istediğiniz kullanıcılar, gruplar veya uygulamalar Azure Active Directory (AD) kimlikleri kullanılarak tanımlanır.
 
-**Azure Active Directory KIRACı kimliği** : izin vermek istediğiniz kullanıcıların, grupların veya uygulamaların KIMLIKLERINI Içeren AAD Kiracı kimliği (dizin kimliği olarak da bilinir). Azure portal [Azure Active Directory ÖZELLIKLERINDE](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)AAD kiracı kimliğinizi bulabilirsiniz.
+**Azure Active Directory KIRACı kimliği** : izin vermek istediğiniz kullanıcıların, grupların veya uygulamaların kimliklerini IÇEREN Azure AD Kiracı kimliği (dizin kimliği olarak da bilinir). Azure portal [Azure Active Directory özelliklerinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)Azure AD kiracı kimliğinizi bulabilirsiniz.
 
 **Yetkilendirmeler** – yönetilen kaynak grubu için izin verilmesini istediğiniz kullanıcı, Grup veya uygulamanın Azure ACTIVE DIRECTORY nesne kimliğini ekleyin. Kullanıcıyı, [Azure portal Azure Active Directory Kullanıcıları dikey penceresinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)bulunan birincil kimliğine göre belirler.
 
@@ -579,9 +577,9 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 Teklifin tüm gerekli bölümlerini tamamladığınızda, portalın sağ üst köşesinde bulunan **gözden geçir ve Yayımla** ' yı seçin.
 
 Teklifin her bir bölümü için tamamlanma durumunu gözden geçirin.
-    - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
-    - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+    - *Başlatılmamış* – bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
+    - *Tamamlanmamış* – bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
+    - *Tamamlandı* – bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 
 Bu teklifi ilk kez yayımlıyorsanız, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayabilirsiniz.
 

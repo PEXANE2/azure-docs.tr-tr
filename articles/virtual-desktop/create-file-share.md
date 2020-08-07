@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027401"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842918"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -21,7 +21,7 @@ Bu makalede, var olan bir Windows sanal masaüstü konak havuzunda bir etki alan
 
 Bu işlem, bir şirket içi dizin hizmeti olan Active Directory Domain Services (AD DS) kullanır. Azure AD DS ile FSLogix profil kapsayıcısı oluşturma hakkında bilgi arıyorsanız bkz. [Azure dosyaları Ile fslogix profil kapsayıcısı oluşturma](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve oturum konaklarınızın bağlı olduğu Azure sanal ağı 'ndan (VNET) çözümleneceğinden emin olun.
 
@@ -31,7 +31,7 @@ Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve o
 
 Bir depolama hesabı ayarlamak için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. Arama çubuğunda **depolama hesabı** araması yapın.
 
@@ -39,7 +39,7 @@ Bir depolama hesabı ayarlamak için:
 
 4. **Depolama hesabı oluşturma** sayfasına aşağıdaki bilgileri girin:
 
-    - Yeni bir kaynak grubu oluşturun.
+    - Yeni bir kaynak grubu oluşturma.
     - Depolama hesabınız için benzersiz bir ad girin.
     - **Konum**Için, Windows sanal masaüstü ana bilgisayar havuzuyla aynı konumu seçmenizi öneririz.
     - **Performans** alanında **Standart**’ı seçin. (IOPS gereksinimlerinize bağlı olarak. Daha fazla bilgi için bkz. [Windows sanal masaüstündeki FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).)
@@ -56,13 +56,13 @@ Ardından, bir Azure dosya paylaşımının oluşturulması gerekir.
 
 Dosya paylaşımı oluşturmak için:
 
-1. **Kaynağa Git**' i seçin.
+1. **Kaynağa git**’i seçin.
 
 2. Genel Bakış sayfasında **dosya paylaşımları**' nı seçin.
 
 3. **+ Dosya paylaşımları**' nı seçin, **profiller**adlı yeni bir dosya paylaşımı oluşturun, ardından uygun bir kota girin veya hiçbir kota olmaması için alanı boş bırakın.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 ## <a name="enable-active-directory-authentication"></a>Active Directory kimlik doğrulamasını etkinleştir
 
@@ -90,7 +90,7 @@ Paylaşma düzeyi izinlerini yapılandırmak için, her kullanıcıya uygun eri�
 
 Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
@@ -104,7 +104,7 @@ Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
      Aynı yönergeleri izleyerek kullanıcılara FSLogix profilleri için gerekli izinleri atayın. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
@@ -119,7 +119,7 @@ Başlamak için Azure portal iki şey bilmeniz gerekir:
 
 UNC yolunu buradan edinebilirsiniz:
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
@@ -133,13 +133,13 @@ UNC yolunu buradan edinebilirsiniz:
     - Eğik çizgiyi `/` ters eğik çizgiyle değiştirin `\` .
     - [Azure dosya paylaşımında](#create-an-azure-file-share) oluşturduğunuz dosya PAYLAŞıMıNıN adını UNC sonuna ekleyin.
 
-        Örneğin, `\\customdomain.file.core.windows.net\<fileshare-name>`
+        Örnek: `\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>Depolama hesabı anahtarını alma
 
 Depolama hesabı anahtarını almak için:
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
@@ -181,7 +181,7 @@ NTFS izinlerinizi yapılandırmak için:
      - <bağlı sürücü harfi> sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
      - Kullanıcı-e-posta> <, paylaşıma erişim gerektirecek kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
-     Örneğin:
+     Örnek:
 
      ```powershell
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -189,8 +189,6 @@ NTFS izinlerinizi yapılandırmak için:
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
-
-5. **Uygula**’yı seçin.
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Oturum Ana bilgisayar VM 'lerinde FSLogix yapılandırma
 
@@ -216,7 +214,7 @@ Oturum konağı VM örneğinizde FSLogix'i yapılandırmak için:
 
 6. VM’yi yeniden başlatın.
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 FSLogix yükledikten ve yapılandırdıktan sonra, konak havuzundaki bir uygulama grubuna veya masaüstüne atanmış bir kullanıcı hesabıyla oturum açarak dağıtımınızı test edebilirsiniz. Oturum açmak için kullandığınız kullanıcı hesabının dosya paylaşımında izni olduğundan emin olun.
 
@@ -226,7 +224,7 @@ Oturumunuzla ilgili izinlerinizi denetlemek için:
 
 1. Windows sanal masaüstü 'nde bir oturum başlatın.
 
-2. Azure portalı açın.
+2. Azure portalını açın.
 
 3. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 

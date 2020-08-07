@@ -1,6 +1,6 @@
 ---
 title: Azure portalı kullanarak SOAP API’sini içeri aktarma | Microsoft Docs
-description: API Management ile SOAP API’sini içeri aktarmayı öğrenin.
+description: Bir SOAP API 'sinin standart XML gösterimini içeri aktarmayı ve ardından API 'yi Azure ve geliştirici portalları 'nda test etme hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202749"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905659"
 ---
 # <a name="import-soap-api"></a>SOAP API’sini içeri aktarma
 
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Azure portalında API’yi test etme
 > * Geliştirici portalında API’yi test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 

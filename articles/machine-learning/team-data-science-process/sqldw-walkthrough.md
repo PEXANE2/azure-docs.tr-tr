@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845706"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science süreci: Azure SYNAPSE Analytics 'i kullanma
 Bu öğreticide, genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) Için Azure SYNAPSE Analytics 'i kullanarak bir makine öğrenimi modeli oluşturma ve dağıtma konusunda size kılavuzluk ederiz. Oluşturulan ikili sınıflandırma modeli, seyahat için bir tıp ödenip ödenmediğini tahmin eder.  Modeller birden çok Lass sınıflandırması (bir ipucu olup olmadığına bakılmaksızın) ve gerileme (ücretli ücret miktarları için dağıtım) içerir.
@@ -805,7 +805,7 @@ pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
 ![Çubuk çizim çıkışı][3]
 
-ve
+reservedStorageGb
 
 ```sql
 pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
@@ -1012,7 +1012,7 @@ Bu adım adım öğreticide yaptığımız şeyleri yeniden kaplamanız için, b
 ### <a name="license-information"></a>Lisans bilgileri
 Bu örnek izlenecek yol ve birlikte gelen betikler ve IPython Not defteri, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla ayrıntı için GitHub 'daki örnek kodun dizinindeki LICENSE.txt dosyasını denetleyin.
 
-## <a name="references"></a>Başvurular
+## <a name="references"></a>Referanslar
 - [AndrMonroy NYC TAXI gezi Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)
 - [NYC 'nin taxt verileri, Chris Whong 'a göre veri seyahat](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC Taxi ve Limousine Komisyonu araştırması ve Istatistikleri](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801436"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874070"
 ---
-# <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını kullanmaya başlama
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure İzleyici’de günlük sorgularını kullanmaya başlama
 
 > [!NOTE]
-> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://portal.loganalytics.io/demo)kullanın.  KQL 'de sorgu oluşturmayı zaten biliyorsanız, ancak yalnızca kaynak türlerine göre kısa bir süre önce yararlı sorgular oluşturmanız gerekiyorsa, [kaydedilen örnek sorgular bölmesine](saved-queries.md)bakın.
+> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)kullanın.  KQL 'de sorgu oluşturmayı zaten biliyorsanız, ancak yalnızca kaynak türlerine göre kısa bir süre önce yararlı sorgular oluşturmanız gerekiyorsa, [kaydedilen örnek sorgular bölmesine](saved-queries.md)bakın.
 
 Bu öğreticide, Azure Izleyici 'de günlük sorgularını yazmayı öğreneceksiniz. Şu şekilde nasıl yapılacağını öğretir:
 
@@ -111,8 +111,8 @@ Filtre koşullarını yazarken aşağıdaki ifadeleri kullanabilirsiniz:
 |:---|:---|:---|
 | == | Eşitliği denetle<br>(büyük/küçük harfe duyarlı) | `Level == 8` |
 | =~ | Eşitliği denetle<br>(büyük/küçük harf duyarsız) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =,  <> | Eşitsizlik denetimi<br>(her iki ifade de aynıdır) | `Level != 4` |
-| *ve* *veya* | Koşullar arasında gerekli| `Level == 16 or CommandLine != ""` |
+| !=, <> | Eşitsizlik denetimi<br>(her iki ifade de aynıdır) | `Level != 4` |
+| *and*, *or* | Koşullar arasında kullanılması gereklidir| `Level == 16 or CommandLine != ""` |
 
 Birden çok koşula göre filtrelemek için, **ve**şunları kullanabilirsiniz:
 

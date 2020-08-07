@@ -1,6 +1,6 @@
 ---
 title: Azure Event Hubs olayları Azure 'da günlüğe kaydetme | API Management | Microsoft Docs
-description: Azure API Management 'da olayları Azure Event Hubs günlüğe kaydetme hakkında bilgi edinin.
+description: Azure API Management 'da olayları Azure Event Hubs günlüğe kaydetme hakkında bilgi edinin. Event Hubs, yüksek oranda ölçeklenebilir bir veri giriş hizmetidir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024971"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903416"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management
 Azure Event Hubs, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen oldukça büyük miktardaki verileri işleyip analiz edebilmeniz için saniye başına milyonlarca olayı işleyebilen ileri düzeyde ölçeklenebilir bir veri alım sistemidir. Event Hubs, bir olay ardışık düzeni için "ön kapı" olarak görev yapar ve veriler bir olay hub 'ına toplandıktan sonra herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işlem/depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Event Hubs olay akışı üretimlerini bu olayların tüketilmesinden ayırır, böylece olay tüketicileri olaylara kendi zamanlamalarında erişebilir.
@@ -63,7 +63,7 @@ Günlükçüize API Management bir kez yapılandırıldıktan sonra, istenen ola
 ```
 `logger-id` `{loggerId}` Önceki adımda günlükçü oluşturmak IÇIN istek URL 'sinde kullandığınız değerle değiştirin.
 
-Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz `log-to-eventhub` . Bu örnekte, tarih ve saat, hizmet adı, istek kimliği, istek IP adresi ve işlem adı içeren JSON biçimindeki bir dize günlüğe kaydedilir.
+Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz `log-to-eventhub` . Bu örnekte, tarih ve saat, hizmet adı, istek KIMLIĞI, istek IP adresi ve işlem adı içeren JSON biçimindeki bir dize günlüğe kaydedilir.
 
 Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e tıklayın. Kaydedilen ilke etkin olur ve olaylar belirlenen Olay Hub 'ına kaydedilir.
 

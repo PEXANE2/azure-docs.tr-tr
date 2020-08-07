@@ -6,15 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 01/29/2020
-ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387447"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902108"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
+
+## <a name="supported-geographic-locations"></a>Desteklenen coğrafi konumlar
 
 Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
@@ -167,3 +169,34 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 \*Brezilya 'daki müşteriler, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
 
 \** Yalnızca ücretsiz ve KLG VM görüntüleri.
+
+## <a name="how-we-convert-currency"></a>Para birimini dönüştürme
+
+Tüm ücretli teklif türleri için ISV 'Ler ABD Doları cinsinden fiyatları girme veya fiyatları yerel para birimine yükleme seçeneğine sahiptir. USD cinsinden girilen fiyatlar, sayfa kaydedildiğinde otomatik olarak yerel para birimine dönüştürülür. Iş Ortağı Merkezi 'nin kullandığı ücretler günlük olarak güncelleştirilir. ISV 'Ler fiyatları dışa aktarabilir ve dönüştürülen eşdeğerleri gözden geçirebilir.
+
+Yayımlamadan önce herhangi bir fiyatı ayarlamak için, fiyatlandırma elektronik tablosunu dışarı aktarın, değiştirin ve değişikliklerle karşıya yükleyin.
+
+> [!NOTE]
+> Planınızdaki bir pazar bedeli yayımlandıktan sonra, daha sonra değiştirilemez. Fiyatları yayımlamadan önce fiyatların doğru olduğundan emin olmak için, fiyatlandırma elektronik tablosunu dışarı aktarın ve her pazardaki fiyatları gözden geçirin.
+
+## <a name="rate-changes"></a>Oran değişiklikleri
+
+Yerel fiyatları hesaplamak için kullandığımız ücretler günlük olarak güncelleştirilir. Bu hesaplama, ISV sayfayı kaydettiğinde yapılır ve yayımlamadan önce fiyatları dışa aktarıp inceleyerek tüm ücretleri gözden geçirebilir.
+
+### <a name="retrieving-currency-information-by-api"></a>API 'ye göre para birimi bilgilerini alma
+
+Ayrı fiyatlar (nasıl ayarlandıklarından bağımsız olarak, kaydedildiği gündeki Exchange ücretleri tarafından etkilenmiş olabilir) bir API kullanılarak alınabilir; para birimi bilgileri olamaz.
+
+Belirli teklif türleri için fiyat girme hakkında daha fazla bilgi için şu makalelere bakın:
+
+- [Azure uygulama teklifi oluşturma](partner-center-portal/create-new-azure-apps-offer.md)
+- [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)
+- [Azure sanal makine teklifi oluşturma](partner-center-portal/azure-vm-create-offer.md)
+- [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)
+- [PowerApps teklifi & müşteri katılımı için Dynamics 365 oluşturun](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Operations teklifi oluşturma](partner-center-portal/create-new-operations-offer.md)
+- [Dynamics 365 Business Central teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)
+- [IoT Edge modül teklifi oluşturma](partner-center-portal/azure-iot-edge-module-creation.md)
+- [Yönetilen Hizmet teklifi oluşturma](partner-center-portal/create-new-managed-service-offer.md)
+- [Power BI uygulaması oluşturma](partner-center-portal/create-power-bi-app-offer.md)
+- [SaaS teklifi oluşturma](partner-center-portal/create-new-saas-offer.md)

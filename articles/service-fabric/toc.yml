@@ -635,7 +635,7 @@
             - name: Azure Pipelines ile sürekli tümleştirmeyi ayarlama
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Jenkins kullanarak Linux uygulamalarınızı dağıtma
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: Ters proxy’yi ayarlama ve yapılandırma
       items:
         - name: Ters proxy’yi ayarlama ve yapılandırma

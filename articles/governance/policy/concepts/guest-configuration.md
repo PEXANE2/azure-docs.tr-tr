@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072826"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901989"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -62,7 +62,7 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde bulunan daha eski işletim sistemi sürümleri hariç tutulur.
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
-|Publisher|Name|Sürümler|
+|Publisher|Ad|Sürümler|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 ve üzeri|
 |Credavtiv|Debian|8 ve üzeri|
@@ -74,7 +74,26 @@ Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin
 
 Özel sanal makine görüntüleri, Konuk yapılandırma ilkeleri tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
 
-## <a name="guest-configuration-extension-network-requirements"></a>Konuk yapılandırma uzantısı ağ gereksinimleri
+## <a name="network-requirements"></a>Ağ gereksinimleri
+
+Azure 'daki sanal makineler, Konuk Yapılandırma hizmetiyle iletişim kurmak için yerel ağ bağdaştırıcısı veya özel bir bağlantı kullanabilir.
+
+Azure Arc makineleri, Azure hizmetlerine ulaşmak ve uyumluluk durumunu raporlamak için şirket içi ağ altyapısını kullanarak bağlanır.
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>Azure 'da sanal ağlar üzerinden iletişim kurma
+
+Sanal ağları iletişim için kullanan sanal makineler, bağlantı noktasındaki Azure veri merkezlerine giden erişim gerektirir `443` . Azure 'da giden trafiğe izin veren özel bir sanal ağ kullanıyorsanız, ağ güvenlik grubu kuralları ile özel durumlar yapılandırın. "GuestAndHybridManagement" hizmet etiketi, Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
+
+### <a name="communicate-over-private-link-in-azure"></a>Azure 'da özel bağlantı üzerinden iletişim kurma
+
+Sanal makineler, Konuk yapılandırma hizmeti ile iletişim kurmak için [özel bağlantıyı](../../../private-link/private-link-overview.md) kullanabilir. `EnablePrivateNeworkGC`Bu özelliği etkinleştirmek için adı ve değeri ile etiket uygulayın `TRUE` . Bu etiket, Konuk yapılandırma ilkelerinin makineye uygulanmadan önce veya sonra uygulanabilir.
+
+Azure platform kaynaklarıyla güvenli ve kimliği doğrulanmış bir kanal oluşturmak için Azure [sanal genel IP adresi](../../../virtual-network/what-is-ip-address-168-63-129-16.md) kullanılarak trafik yönlendirilir.
+
+### <a name="azure-arc-connected-machines"></a>Azure Arc bağlantılı makineler
+
+Azure Arc tarafından bağlanan Azure dışında bulunan düğümlerin Konuk yapılandırma hizmetine bağlantısı olması gerekir.
+[Azure Arc belgelerinde](../../../azure-arc/servers/overview.md)sunulan ağ ve ara sunucu gereksinimleriyle ilgili ayrıntılar.
 
 Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'daki bir ağ giden trafiğe izin vermezse, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. "Guestandhybridmanagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) , Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
 

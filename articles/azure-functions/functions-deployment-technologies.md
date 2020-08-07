@@ -4,16 +4,30 @@ description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562948"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905134"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
-Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makale, bu teknolojilerin kapsamlı bir listesini sağlar, Işlevlerin hangi özellikler için kullanılabilir olduğunu açıklar, her yöntemi kullanırken ne olduğunu açıklar ve çeşitli senaryolarda kullanılacak en iyi yöntem için öneriler sağlar. Azure Işlevlerine dağıtımı destekleyen çeşitli araçlar, bağlamlarına göre doğru teknoloji olarak ayarlanmıştır. Genel olarak, ZIP dağıtımı Azure Işlevleri için önerilen dağıtım teknolojisidir.
+Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makalede, size sunulan dağıtım yöntemlerine ilişkin bir genel bakış ve çeşitli senaryolarda kullanılacak en iyi yöntem önerileri sunulmaktadır. Ayrıca, underlyng dağıtım teknolojileri hakkında ayrıntılı bir liste ve önemli ayrıntılar sağlar. 
+
+## <a name="deployment-methods"></a>Dağıtım yöntemleri
+
+Azure 'da kod yayımlamak için kullandığınız dağıtım teknolojisi, genellikle uygulamanızı yayımlama yöntemiyle belirlenir. Uygun dağıtım yöntemi, belirli gereksinimlere ve geliştirme döngüsündeki noktaya göre belirlenir. Örneğin, geliştirme ve test sırasında, Visual Studio Code gibi doğrudan geliştirme aracınızdan dağıtım yapabilirsiniz. Uygulamanız üretimde olduğunda, kaynak denetiminden veya ek doğrulama ve test içeren bir otomatik yayımlama işlem hattı kullanarak daha dikkatli bir şekilde yayımlayabilirsiniz.  
+
+Aşağıdaki tabloda, Işlev projeniz için kullanılabilir dağıtım yöntemleri açıklanmaktadır.
+
+| Dağıtım &nbsp; türü | Yöntemler | En iyi... |
+| -- | -- | -- |
+| Araçlar tabanlı | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; Yayımlama](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio yayımlama](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Temel araçlar yayımlama](functions-run-local.md#publish) | Geliştirme ve diğer ad-Hock dağıtımları sırasında dağıtımlar. Dağıtımlar araç tarafından yerel olarak yönetilir. | 
+| App Service yönetilen| &bull;&nbsp;[Dağıtım &nbsp; Merkezi &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Kapsayıcı &nbsp; dağıtımları](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Kaynak denetiminden veya bir kapsayıcı kayıt defterinden sürekli dağıtım (CI/CD). Dağıtımlar App Service platformu (kudu) tarafından yönetilir.|
+| Dış işlem hatları|&bull;&nbsp;[DevOps işlem hatları](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub eylemleri](functions-how-to-github-actions.md) | Ek doğrulama, test ve diğer eylemleri içeren üretim ve DevOps işlem hatları otomatik dağıtımın bir parçası olarak çalıştırılır. Dağıtımlar işlem hattı tarafından yönetilir. |
+
+Belirli Işlev dağıtımları, kendi bağlamına göre en iyi teknolojiyi kullanır, ancak çoğu dağıtım yöntemi [ZIP dağıtımına](#zip-deploy)dayalıdır.
 
 ## <a name="deployment-technology-availability"></a>Dağıtım teknolojisinin kullanılabilirliği
 

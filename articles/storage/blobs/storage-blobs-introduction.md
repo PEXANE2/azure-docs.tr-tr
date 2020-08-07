@@ -1,7 +1,7 @@
 ---
 title: Blob (nesne) depolamaya giriş
 titleSuffix: Azure Storage
-description: Azure Blob depolama, metin veya ikili veri gibi çok miktarda yapılandırılmamış nesne verilerini depolar. Azure Blob depolama, yüksek oranda ölçeklenebilir ve kullanılabilir. İstemciler, REST kullanarak veya Azure Depolama istemci kitaplıkları aracılığıyla programlama yoluyla Azure CLI’den veya PowerShell’den Blob depolamadaki veri nesnelerine erişebilir.
+description: Metin veya ikili veriler gibi büyük miktarda yapılandırılmamış nesne verilerini depolamak için Azure Blob depolama 'yı kullanın. Azure Blob depolama, yüksek oranda ölçeklenebilir ve kullanılabilir.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0d05e85a06ae1e893d5d7faa7e5389da78ad6389
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85559529"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836386"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob depolamaya giriş
 
@@ -56,7 +56,7 @@ Bir kapsayıcı, bir dosya sistemindeki dizine benzer bir blob kümesini düzenl
 Azure depolama, üç tür blob destekler:
 
 - **Blok Blobları** metin ve ikili verileri depolar. Blok blobları, ayrı ayrı yönetilebilen veri bloklarından oluşur. Blok Blobları, yaklaşık 4,75 TiB veriye kadar depolar. Daha büyük blok blob 'ları önizlemede bulunabilir, yaklaşık 190,7 TiB 'ye kadar
-- **Ekleme Blobları** blok Blobları gibi bloklarından oluşur, ancak ekleme işlemleri için en iyi duruma getirilmiştir. Ekleme blobları sanal makine verilerini günlüğe alma gibi senaryolar için idealdir.
+- **Ekleme Blobları** blok Blobları gibi bloklarından oluşur, ancak ekleme işlemleri için en iyi duruma getirilmiştir. Ekleme blobları sanal makine verilerini günlüğe kaydetme gibi senaryolar için idealdir.
 - **Sayfa Blobları** , rastgele erişim dosyalarını boyutu 8 TB 'ye kadar depolar. Sayfa Blobları, sanal sabit sürücü (VHD) dosyalarını depolar ve Azure sanal makineleri için disk olarak görev yapar. Sayfa Blobları hakkında daha fazla bilgi için bkz. [Azure sayfa Bloblarına genel bakış](storage-blob-pageblob-overview.md)
 
 Farklı blob türleri hakkında daha fazla bilgi için bkz. [blok bloblarını, ekleme bloblarını ve sayfa Bloblarını anlama](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).

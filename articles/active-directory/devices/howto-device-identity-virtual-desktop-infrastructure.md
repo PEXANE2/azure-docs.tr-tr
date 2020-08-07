@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419810"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903162"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -43,16 +43,16 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 
 | Cihaz kimliği türü | Kimlik altyapısı | Windows cihazları | VDı platformu sürümü | Desteklenir |
 | --- | --- | --- | --- | --- |
-| Hibrit Azure AD'ye katılmış | Federasyon | Windows geçerli * * * ve Windows alt düzey * * * * | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | No |
-|   |   | Windows alt düzey | Kalıcı olmayan | Yes |
-|   | Yönetilen * * | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | No |
-|   |   | Windows alt düzey | Kalıcı olmayan | Yes |
-| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | No |
-|   |   |   | Kalıcı olmayan | No |
-|   | Yönetilen | Windows geçerli | Kalıcı | No |
-|   |   |   | Kalıcı olmayan | No |
+| Hibrit Azure AD'ye katılmış | Federasyon | Windows geçerli * * * ve Windows alt düzey * * * * | Kalıcı | Evet |
+|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
+|   |   | Windows alt düzey | Kalıcı olmayan | Evet |
+|   | Yönetilen * * | Windows geçerli ve Windows alt düzeyi | Kalıcı | Evet |
+|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
+|   |   | Windows alt düzey | Kalıcı olmayan | Evet |
+| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
+|   |   |   | Kalıcı olmayan | Hayır |
+|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
+|   |   |   | Kalıcı olmayan | Hayır |
 | Azure AD kayıtlı | Federe | Windows geçerli | Kalıcı | Geçerli değil |
 |   |   |   | Kalıcı olmayan | Geçerli değil |
 |   | Yönetilen | Windows geçerli | Kalıcı | Geçerli değil |
@@ -77,7 +77,7 @@ Sistem Hazırlama Aracı 'nı (sysprep.exe) kullanıyorsanız ve yükleme için 
 
 Ek VM 'Ler oluşturmak için bir sanal makine (VM) anlık görüntüsüne güvenmek istiyorsanız, anlık görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir VM 'den olmadığından emin olun.
 
-Kalıcı olmayan VDı dağıtımı yaparken BT yöneticileri, Azure AD 'de eski cihazları yönetmek için yakın bir uyarı ödemelidir. Microsoft, BT yöneticilerinin aşağıdaki kılavuzu uygulamasını önerir. Bunun yapılmaması, dizininizde kalıcı olmayan VDı platformunuzun kayıtlı olan çok sayıda eski karma Azure AD 'ye katılmış cihaz olmasına neden olur.
+Kalıcı olmayan VDı için karma Azure AD katılımı Windows güncel sürümlerinde desteklenmez. Windows alt düzey için kalıcı olmayan VDı dağıtımı yaparken BT yöneticileri, Azure AD 'de eski cihazları yönetmeye yakın bir ilgi ödemelidir. Microsoft, BT yöneticilerinin aşağıdaki kılavuzu uygulamasını önerir. Bunun yapılmaması, dizininizde kalıcı olmayan VDı platformunuzun kayıtlı olan çok sayıda eski karma Azure AD 'ye katılmış cihaz olmasına neden olur.
 
 - Masaüstünü VDı tabanlı olarak gösteren bilgisayarın görünen adı için bir ön ek oluşturun ve kullanın.
 - Oturumu kapatma betiğinin bir parçası olarak aşağıdaki komutu uygulayın. Bu komut, cihazı silmek için Azure AD 'ye en iyi çaba çağrısını tetikler.
