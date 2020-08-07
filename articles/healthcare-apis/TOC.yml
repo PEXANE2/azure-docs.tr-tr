@@ -19,7 +19,7 @@
       href: fhir-oss-powershell-quickstart.md
     - name: Azure için FHIR Sunucusu'nu dağıtma - CLI
       href: fhir-oss-cli-quickstart.md
-    - name: IoT bağlayıcısını dağıtma - Portal
+    - name: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme) - Portal
       href: iot-fhir-portal-quickstart.md
 - name: Öğreticiler
   expanded: false
@@ -86,7 +86,7 @@
       href: enable-diagnostic-logging.md
     - name: FHIR için Azure API'sine yönelik belirteç alma - CLI
       href: get-healthcare-apis-access-token-cli.md
-    - name: IoT Bağlayıcısı'ndaki hataları giderme
+    - name: FHIR için Azure IoT Bağlayıcısı’ndaki sorunları giderme (önizleme)
       href: iot-troubleshoot-guide.md
 - name: Kavramlar
   expanded: false
@@ -97,12 +97,12 @@
       href: azure-ad-hcapi-token-validation.md
     - name: Denetim Günlüklerine veri eklemek için Özel HTTP üst bilgileri kullanma
       href: use-custom-headers.md
-    - name: IoT Bağlayıcısı çalışmaları
+    - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) işleyişi
       expanded: false
       items:
-        - name: IoT Bağlayıcısı veri akışı
+        - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) veri akışı
           href: iot-data-flow.md
-        - name: IoT Bağlayıcısı eşleme şablonları
+        - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) eşleme şablonları
           href: iot-mapping-templates.md
 - name: Kaynaklar
   items:

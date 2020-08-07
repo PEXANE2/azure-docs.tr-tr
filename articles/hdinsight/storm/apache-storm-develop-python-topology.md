@@ -22,7 +22,7 @@ Python bileşenleri kullanan bir [Apache Storm](https://storm.apache.org/) topol
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, HDInsight 3,6 ' de fırtınası kullanılarak test edilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 

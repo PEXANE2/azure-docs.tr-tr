@@ -30,7 +30,7 @@ Aşağıdaki örnek, bir BLOB depolama kapsayıcısından CSV girişi alan bir P
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel test için yüklü bir [Python](https://www.python.org/downloads/) dağıtımı.
 * [Azure](https://pypi.org/project/azure/) `pip` paketi.

@@ -28,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: Azure Active Directory kimlik doğrulamasını yapılandırma (Portal)
           href: configure-azure-ad-ui.md
+    - name: Velero ile yedek oluşturma ve bir uygulamayı geri yükleme
+      items:
+        - name: Velero ile bir küme uygulamasının yedeğini oluşturma
+          href: howto-create-a-backup.md
+        - name: Velero ile bir küme uygulamasını geri yükleme
+          href: howto-create-a-restore.md
     - name: Azure Red Hat OpenShift 4 için izleme ve günlüğe kaydetme
       items:
         - name: Azure Red Hat OpenShift 4’te kapsayıcılar için Azure İzleyici (önizleme)

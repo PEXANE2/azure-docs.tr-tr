@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Yeni API](./media/api-management-import-and-publish/created-api.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure API Management terminolojisini](api-management-terminology.md)anlayın.
 - [Azure API Management örneği oluşturun](get-started-create-service-instance.md).

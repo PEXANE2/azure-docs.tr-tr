@@ -94,7 +94,7 @@
               href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
             - name: Kurumsal müşterilere yönelik kullanım verileri
               href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: Faturalama terminolojisi
+        - name: Faturalandırma
           items:
             - name: Bireysel abonelik kullanım koşulları
               href: understand/understand-usage.md
@@ -108,6 +108,8 @@
               href: manage/mca-understand-pricesheet.md
             - name: Microsoft İş Ortağı Sözleşmesi faturası koşulları
               href: understand/mpa-invoice-terms.md
+            - name: Güncelleştirilmiş bireysel faturalandırma hesabınızda yapılan değişiklikler
+              href: understand/mosp-new-customer-experience.md
             - name: Microsoft Müşteri Sözleşmesi için ödeme hesapları
               href: understand/mca-overview.md
             - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları

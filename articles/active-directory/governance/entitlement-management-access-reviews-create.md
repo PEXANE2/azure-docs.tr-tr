@@ -27,7 +27,7 @@ ms.locfileid: "87798520"
 
 Eski erişim riskini azaltmak için, Azure AD yetkilendirme yönetiminde bir erişim paketine etkin atamaları olan kullanıcıların düzenli olarak incelemelerine izin verilmelidir. Yeni bir erişim paketi oluşturduğunuzda veya var olan bir erişim paketini düzenlerken İncelemeleri etkinleştirebilirsiniz. Bu makalede erişim paketlerinin erişim incelemelerinin nasıl etkinleştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Erişim paketleri incelemelerini etkinleştirmek için, erişim paketi oluşturma önkoşullarını karşılamanız gerekir:
 - Azure AD Premium P2

@@ -35,7 +35,7 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 - Linux VM 'ye özel DSC modülleri (Install ExtensionAction) yükler.
 - Linux VM 'den özel DSC modüllerini kaldırın (ExtensionAction 'ı kaldırın).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 

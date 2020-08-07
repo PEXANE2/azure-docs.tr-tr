@@ -7,13 +7,15 @@
     - name: Mesajlaşma hizmetlerini karşılaştırma
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: Java Message Service (JMS) 2.0 ile Service Bus kullanma (önizleme)
+      href: how-to-use-java-message-service-20.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Service Bus kuyrukları
       items:
         - name: Service Bus kuyruğu oluşturma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -127,6 +129,8 @@
           items:
             - name: 'Kuyruklar, konu başlıkları ve abonelikler'
               href: service-bus-queues-topics-subscriptions.md
+            - name: Java Message Service (JMS) 2.0 varlıkları (önizleme)
+              href: java-message-service-20-entities.md
             - name: 'İletiler, yükler ve serileştirme'
               href: service-bus-messages-payloads.md
             - name: 'İleti aktarımları, kilitler ve kapatma'

@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: Günlükleri olay hub’ına aktarma
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Günlük analizi sihirbazı
+      href: tutorial-log-analytics-wizard.md
 - name: Kavramlar
   items:
     - name: Raporlama ve izleme dağıtımı planlama

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-pnp
 author: dominicbetts
 ms.service: iot-pnp

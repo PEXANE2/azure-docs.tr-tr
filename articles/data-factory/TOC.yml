@@ -209,14 +209,14 @@
       items:
         - name: Veri fabrikalarını görsel olarak yazma
           href: author-visually.md
+        - name: Yinelemeli geliştirme ve hata ayıklama
+          href: iterative-development-debugging.md
         - name: Yönetim merkezi
           href: author-management-hub.md
         - name: Kaynak denetimi
           href: source-control.md
         - name: Sürekli tümleştirme ve teslim
           href: continuous-integration-deployment.md
-        - name: Yinelemeli geliştirme ve hata ayıklama
-          href: iterative-development-debugging.md
     - name: Bağlayıcılar
       items:
         - name: Bağlayıcıya genel bakış
@@ -562,6 +562,8 @@
       items:
         - name: Bağlı hizmetleri parametreleştirme
           href: parameterize-linked-services.md
+        - name: Genel parametreler
+          href: author-global-parameters.md
         - name: İfade Dili
           href: control-flow-expression-language-functions.md
         - name: Sistem değişkenleri

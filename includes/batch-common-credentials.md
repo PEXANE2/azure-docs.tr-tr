@@ -15,7 +15,7 @@ ms.locfileid: "70128047"
 
 Bu örnekte, Batch ve depolama hesaplarınız için kimlik bilgileri sağlamanız gerekir. Gerekli kimlik bilgilerini almanın kolay yolu Azure portalındadır. (Bu kimlik bilgilerini ayrıca Azure API'lerini veya komut satırı araçlarını kullanarak da alabilirsiniz.)
 
-1. **Tüm hizmetler** > **Batch hesapları**' nı seçin ve ardından Batch hesabınızın adını seçin.
+1. **Tüm hizmetler**  >  **Batch hesapları**' nı seçin ve ardından Batch hesabınızın adını seçin.
 
 2. Batch kimlik bilgilerini görmek için **anahtarlar**' ı seçin. **Batch hesabı**, **URL** ve **Birincil erişim anahtarı** değerlerini metin düzenleyiciye kopyalayın.
 

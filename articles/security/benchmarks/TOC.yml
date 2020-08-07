@@ -59,6 +59,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks güvenlik temeli
       href: ../../azure-databricks/security-baseline.md
+    - name: Azure Güvenlik Duvarı güvenlik temeli
+      href: ../../firewall/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
       href: ../../azure-functions/security-baseline.md
     - name: Azure İlkesi güvenlik temeli
@@ -83,6 +85,8 @@
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics güvenlik temeli
       href: ../../data-lake-analytics/security-baseline.md
+    - name: DDOS Protection güvenlik temeli
+      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: Event Hubs güvenlik temeli
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute güvenlik temeli
@@ -95,6 +99,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: Ağ İzleyicisi güvenlik temeli
       href: ../../network-watcher/security-baseline.md
+    - name: Güvenlik Merkezi temeli
+      href: ../../security-center/security-baseline.md
     - name: Service Fabric temeli
       href: ../../service-fabric/security-baseline.md
     - name: Stream Analytics temeli

@@ -25,7 +25,7 @@ Metin Analizi REST API ve Python ile dili çözümlemeye başlamak için bu hız
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.x](https://python.org)
 

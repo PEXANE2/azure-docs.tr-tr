@@ -75,7 +75,7 @@
       href: ./policy-samples.md
 - name: Kavramlar
   items:
-    - name: Anahtar değeri deposu
+    - name: Anahtarlar ve değerler
       href: concept-key-value.md
     - name: Belirli bir noktanın anlık görüntüsü
       href: concept-point-time-snapshot.md

@@ -17,7 +17,7 @@ ms.locfileid: "85365254"
 ---
 Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure giriş sayfasından **+ kaynak oluştur** düğmesini seçin ve ardından **Market 'te ara** alanına *IoT Hub* girin.
 
@@ -31,7 +31,7 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
    - **Bölge**: hub 'ınızın bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin. [IoT Hub cihaz akışları](../articles/iot-hub/iot-hub-device-streams-overview.md)gibi bazı özellikler yalnızca belirli bölgelerde kullanılabilir. Bu sınırlı Özellikler için desteklenen bölgelerden birini seçmeniz gerekir.
 
-   - **IoT Hub adı**: hub 'ınız için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
+   - **IoT Hub adı**: hub 'ınız için bir ad girin. Bu adın genel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 

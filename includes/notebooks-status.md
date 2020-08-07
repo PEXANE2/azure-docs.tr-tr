@@ -12,7 +12,7 @@ ms.lasthandoff: 07/09/2020
 ms.locfileid: "86181513"
 ---
 > [!IMPORTANT]
-> 9 Ekim 2020 ' de Azure Notebooks genel önizleme sitesi kullanımdan kaldırılacak ve Visual Studio, Azure ve GitHub 'daki tümleşik hizmetlerle değiştirilmelidir.
+> 9 Ekim 2020'de Azure Notebooks genel önizleme sitesi kullanımdan kaldırılacak ve onun yerini Visual Studio, Azure ve GitHub'dan tümleşik hizmetler alacaktır.
 > Seçenekleriniz ve Microsoft 'un diğer Not defterlerimiz hakkında [daha fazla bilgi edinin](https://aka.ms/aznb-notebooks-at-msft/) .
 >
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.

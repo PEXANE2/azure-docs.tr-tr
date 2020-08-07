@@ -494,10 +494,8 @@
       items:
         - name: Özel anahtar sözcüğe genel bakış
           href: custom-keyword-overview.md
-        - name: Özel anahtar sözcük adlandırma yönergeleri
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Özel klavye tanıma
-          href: speech-devices-sdk-create-kws.md
+        - name: Özel anahtar sözcük hakkındaki temel bilgiler
+          href: custom-keyword-basics.md
 - name: Konuşmacı Tanıma
   items:
     - name: Genel Bakış

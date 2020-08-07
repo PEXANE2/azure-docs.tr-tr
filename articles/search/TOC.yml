@@ -312,9 +312,15 @@
         - name: Önizleme özelliği listesi
           href: search-api-preview.md
         - name: .NET’te geliştirme
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: Microsoft.Azure.Search (v10) kullanma
+              href: search-howto-dotnet-sdk.md
+            - name: Kullanmaya başlama (v10)
+              href: search-get-started-dotnet-v10.md
         - name: SDK’yı yükseltme
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -349,7 +355,7 @@
           items:
             - name: Güvenlik filtreleri
               href: search-security-trimming-for-azure-search.md
-            - name: AAD kimlikleri üzerinde filtreleme
+            - name: Kullanıcı kimlikleri üzerinde filtreleme
               href: search-security-trimming-for-azure-search-with-aad.md
     - name: Yönetme
       items:

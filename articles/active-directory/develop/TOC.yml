@@ -13,10 +13,10 @@
       items:
         - name: Bir uygulamayı kaydetme
           href: quickstart-register-app.md
-        - name: Web API’lerine erişmek için uygulama yapılandırma
-          href: quickstart-configure-app-access-web-apis.md
-        - name: Web API’lerini kullanıma sunmak için uygulama yapılandırma
+        - name: Bir web API'sini kullanıma sunmak için uygulamayı yapılandırma
           href: quickstart-configure-app-expose-web-apis.md
+        - name: Bir web API'sine erişmek için uygulamayı yapılandırma
+          href: quickstart-configure-app-access-web-apis.md
         - name: Bir uygulama tarafından desteklenen hesapları değiştirme
           href: quickstart-modify-supported-accounts.md
         - name: Uygulama kaldırma
@@ -460,7 +460,7 @@
       items:
         - name: Genel Bakış
           href: authentication-national-cloud.md
-        - name: Kimlik doğrulaması
+        - name: Kimlik Doğrulaması
           href: msal-national-cloud.md
     - name: Otomatik kullanıcı sağlama (SCIM)
       items:
