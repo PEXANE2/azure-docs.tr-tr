@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery ile Windows Server 2008 sunucularını Azure 'a geçirme
-description: Bu makalede, Azure Site Recovery kullanarak şirket içi Windows Server 2008 sunucuları Azure’a geçirme işlemi açıklanmaktadır.
+title: Azure geçişi/Site Recovery ile Windows Server 2008 sunucularını Azure 'a geçirme
+description: Bu makalede, şirket içi Windows Server 2008 makinelerini Azure 'a nasıl geçirebileceğiniz ve Azure geçişi önerilmektedir.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503829"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845570"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 çalıştıran sunucuları Azure'a geçirme
 
@@ -31,9 +31,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="migrate-with-azure-migrate"></a>Azure geçişi ile geçiş
 
-[Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak makineleri Azure 'a geçirmeniz önerilir. Azure geçişi, Azure geçişi, diğer Azure hizmetleri ve üçüncü taraf araçları kullanarak şirket içi makinelerin Azure 'a değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar. Azure Site Recovery, yalnızca olağanüstü durum kurtarma için kullanılmalıdır, geçiş değildir.
+[Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak makineleri Azure 'a geçirmeniz önerilir. 
 
-Azure geçişi, Windows Server 2008 çalıştıran sunucuların geçirilmesini destekler.
+- Azure geçişi, sunucu geçişi için oluşturulmuştur.
+- Azure geçişi, şirket içi makinelerin Azure 'a bulunması, değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar. Azure Site Recovery, yalnızca olağanüstü durum kurtarma için kullanılmalıdır, geçiş değildir.
+- Azure geçişi, Windows Server 2008 çalıştıran sunucuların geçirilmesini destekler.
 
 
 ## <a name="migrate-with-site-recovery"></a>Site Recovery ile geçir

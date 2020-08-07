@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: how-to, contperfq4, devx-track-python
+ms.openlocfilehash: 9d49ea99b97411e15d3f264057c865219e4d63c4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420541"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853509"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning eğitim
 
 Bir __sanal ağ__ , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 
@@ -42,7 +42,7 @@ Ayrıca, özel bir uç nokta kullanarak çalışma alanınıza bağlanmak için 
 > [!TIP]
 > Çalışma alanınız ve diğer Azure kaynakları arasındaki iletişimi korumak için sanal ağ ve özel bağlantıyı birlikte birleştirebilirsiniz. Ancak, bazı birleşimler Enterprise Edition çalışma alanı gerektirir. Hangi senaryoların Enterprise Edition gerektirdiğini anlamak için aşağıdaki tabloyu kullanın:
 >
-> | Senaryo | Enterprise</br>Edition | Temel</br>Edition |
+> | Senaryo | Kurumsal</br>Edition | Temel</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Sanal ağ veya özel bağlantı yok | ✔ | ✔ |
 > | Özel bağlantı olmadan çalışma alanı. Bir sanal ağdaki diğer kaynaklar (Azure Container Registry hariç) | ✔ | ✔ |

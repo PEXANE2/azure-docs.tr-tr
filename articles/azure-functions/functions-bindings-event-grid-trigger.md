@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: 8876677a9ab4470875e6a311a62ce32598465fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: fasttrack-edit, devx-track-python
+ms.openlocfilehash: 78b15e0ba73743f6d88d28b03c99ca64d73dfae1
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421272"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848443"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid tetikleyicisi
 
@@ -307,7 +307,7 @@ Tüm örnek için bkz. C# örneği.
 
 Aşağıdaki tabloda, dosyasında *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. Öznitelikte ayarlanacak bir oluşturucu parametresi veya özellik yok `EventGridTrigger` .
 
-|function.jsözelliği |Description|
+|function.jsözelliği |Açıklama|
 |---------|---------|
 | **türüyle** | Gerekli-olarak ayarlanmalıdır `eventGridTrigger` . |
 | **Görünüm** | Gerekli-olarak ayarlanmalıdır `in` . |
@@ -399,7 +399,7 @@ Ortak ve olaya özgü özelliklerin açıklamaları için Event Grid belgelerind
 
 Event Grid HTTP isteklerini almaya başlamak için, işlevi çağıran uç nokta URL 'sini belirten bir Event Grid aboneliği oluşturun.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Event Grid tetikleyicisiyle Azure portal geliştirdiğiniz işlevlerde **tümleştirme** ' i seçin, ardından **Event Grid tetikleyiciyi** seçin ve **Event Grid aboneliği oluştur**' u seçin.
 

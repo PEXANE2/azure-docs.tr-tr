@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 86c2bc86a4eeea8b04c4f22c20edade2eac2a811
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439028"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829994"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Java IoT Edge modülü geliştirme
 
@@ -45,7 +45,7 @@ Java modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak iç
 | **Linux AMD64** | ![Linux AMD64 üzerinde Java modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 üzerinde Java modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -62,7 +62,7 @@ Java 'da bir IoT Edge modülü geliştirmek için aşağıdaki ek önkoşulları
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
-   >Java ve Maven için ortam değişkenleri, yükleme işlemlerinde eklenecektir. Bu ortam değişkenlerini eklediğinizde açık olan Visual Studio Code Terminal, PowerShell veya komut istemi örneklerini yeniden başlatmak isteyeceksiniz. Bu, Java ve Maven komutlarının bu yardımcı programlar tarafından tanındığından emin olur.
+   >Java ve Maven yükleme işlemi, sisteminize ortam değişkenleri ekler. Yüklemeyi tamamladıktan sonra herhangi bir açık Visual Studio Code terminali, PowerShell veya komut istemi örneğini yeniden başlatın. Bu adım, bu yardımcı programların, ileri giderek Java ve Maven komutlarını tanıyabilmesini sağlar.
 
 ## <a name="create-a-module-project"></a>Modül projesi oluşturma
 

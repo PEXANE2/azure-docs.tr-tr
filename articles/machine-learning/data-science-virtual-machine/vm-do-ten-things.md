@@ -5,17 +5,17 @@ description: Windows Veri Bilimi Sanal Makinesi veri keşif ve modelleme görevl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 82e7cd67da6b64788d597e84c723d797138ac608
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959288"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848545"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
 
@@ -41,7 +41,7 @@ Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetle
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliğine ihtiyacınız vardır. [Ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 * Azure portal bir Veri Bilimi Sanal Makinesi sağlamaya yönelik yönergeler, [sanal makine oluşturma](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)bölümünde bulunabilir.
@@ -130,7 +130,7 @@ IrisPredictor(3,2,3,4)
 ```
 
 ### <a name="build-and-operationalize-r-models"></a>R modellerini derleme ve operationleştir
-Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Uygulamanız gereken adımlar:
+Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Adımlar şunlardır:
 
 1. Çalışma alanı KIMLIĞINIZI ve kimlik doğrulama belirtecinizi sağlamak için dosyada bir settings.jsoluşturun. 
 2. Modelin tahmin işlevi için bir sarmalayıcı yazın.
@@ -263,7 +263,7 @@ Github.com ' de bulunan kaynaklardan GitHub deponuzla çalışmak için git kull
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir bulut depolama hizmetidir. Bu bölümde, blob depolamaya verileri nasıl taşıyacağınız ve bir Azure Blob 'da depolanan verilere erişim açıklanmaktadır.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Portal](https://portal.azure.com)Azure Blob Storage hesabınızı oluşturun.
 
@@ -367,7 +367,7 @@ Veriler veri çerçevesi olarak okundu:
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage, büyük veri analizi iş yükleri için hiper ölçekli bir depodur ve Hadoop Dağıtılmış Dosya Sistemi (bir) ile uyumludur. Hadoop, Spark ve Azure Data Lake Analytics ile birlikte kullanılır. Bu bölümde, Azure Data Lake Analytics kullanarak Azure Data Lake Storage verileri nasıl taşıyabileceğinizi ve analizi nasıl çalıştıracağınızı öğreneceksiniz.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 * Azure Data Lake Analytics örneğinizi [Azure Portal](https://portal.azure.com)oluşturun.
 

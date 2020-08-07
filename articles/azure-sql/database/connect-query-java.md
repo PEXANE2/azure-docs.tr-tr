@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 06/26/2020
+ms.date: 08/05/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4269ac63b7c1af219d8158953abbc0919a2256b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325143"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833598"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Azure SQL veritabanı ile Java ve JDBC kullanma
 
@@ -137,7 +137,7 @@ En sevdiğiniz IDE 'yi kullanarak yeni bir Java projesi oluşturun ve `pom.xml` 
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>7.4.1.jre8</version>
+            <version>8.2.2.jre8</version>
         </dependency>
     </dependencies>
 </project>

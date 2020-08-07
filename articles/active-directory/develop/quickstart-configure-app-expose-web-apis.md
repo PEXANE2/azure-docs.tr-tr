@@ -1,6 +1,7 @@
 ---
-title: Web API 'Leri kullanıma sunmak için bir uygulama yapılandırma-Microsoft Identity platform | Mavisi
-description: Yeni bir izni/kapsamı ve rolü kullanıma sunmak ve uygulamayı istemci uygulamaları için kullanılabilir hale getirmek üzere bir uygulamayı yapılandırmayı öğrenin.
+title: "Hızlı başlangıç: bir uygulamayı bir Web API 'SI sunmak üzere yapılandırma | Mavisi"
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, uygulamayı istemci uygulamalar için kullanılabilir hale getirmek üzere yeni bir izni/kapsamı ve rolü ortaya çıkarmak için bir uygulamayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,30 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/14/2019
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76704230"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830300"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Hızlı başlangıç: Web API 'Lerini kullanıma sunmak için uygulama yapılandırma
+# <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma
 
 Bir web API'si geliştirip [izinleri/kapsamları](developer-glossary.md#scopes) ve [rolleri](developer-glossary.md#roles) kullanıma sunarak istemci uygulamaları tarafından kullanılmasını sağlayabilirsiniz. Doğru şekilde yapılandırılmış olan bir web API'sini kullanıma sunmak için yapılması gereken işlemler Graph API ve Office 365 API'leri gibi diğer Microsoft web API'leri için yapılması gerekenlerle aynıdır.
 
-Bu hızlı başlangıçta, yeni bir kapsamı kullanıma sunmak ve istemci uygulamaları için kullanılabilir hale getirmek üzere bir uygulamayı yapılandırmayı öğreneceksiniz.
+Bu hızlı başlangıçta, bir uygulamayı istemci uygulamalar için kullanılabilir hale getirmek üzere yeni bir kapsam sergilemek üzere nasıl yapılandıracağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için aşağıdaki önkoşulları tamamladığınızdan emin olun:
-
-* Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Kaydedilmiş uygulamaları olan bir kiracısı olma.
-  * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Hızlı başlangıç: bir uygulamayı Microsoft Identity platformu Ile kaydetme](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
 
@@ -75,17 +73,28 @@ Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için
 
 1. **Durum**’u ayarlayın ve işiniz bittiğinde **Kapsam ekle**’yi seçin.
 
+1. Seçim Uygulamanızın kullanıcılarına tanımladığınız kapsamlara izin sorulmasını engellemek için, istemci uygulamasını Web API 'nize erişmek üzere "önceden Yetkilendir" seçeneğini kullanabilirsiniz. Kullanıcılarınızın izin reddetme fırsatı olmadığı için *yalnızca* güvendiğiniz istemci uygulamalarına ön yetki vermiş olmanız gerekir.
+    1. **Yetkili istemci uygulamaları**altında, **istemci uygulaması Ekle** ' yi seçin.
+    1. Önceden yetkilendirmek istediğiniz istemci uygulamanın **uygulama (istemci) kimliğini** girin. Örneğin, daha önce kaydetmiş olduğunuz bir Web uygulamasının.
+    1. **Yetkili kapsamlar**altında izin istemini bastırmak istediğiniz kapsamları seçin ve ardından **Uygulama Ekle**' yi seçin.
+
+    İstemci uygulaması artık önceden yetkilendirilmiş bir istemci uygulamasıdır (PCA) ve oturum açarken kullanıcılardan onay istenmez.
+
 1. [Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama](#verify-the-web-api-is-exposed-to-other-applications) adımlarını izleyin.
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Uygulama bildirimi aracılığıyla yeni bir kapsamı veya rolü kullanıma sunma
 
+Uygulama bildirimi, bir Azure AD uygulama kaydının özniteliklerini tanımlayan uygulama varlığını güncelleştirme mekanizması olarak görev yapar.
+
 [![Bildirimde oauth2Permissions koleksiyonunu kullanarak yeni bir kapsam kullanıma sunma](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
-Uygulama bildirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için:
+Uygulama bildirimini düzenleyerek yeni bir kapsamı ortaya çıkarmak için:
 
 1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Bildirimi portalda **Düzenleme** seçeneği sunana web tabanlı bir bildirim düzenleyici açılır. İsteğe bağlı olarak **İndir** seçeneğini belirleyip bildirimi yerel ortamda düzenledikten sonra **Yükle** seçeneğiyle uygulamanıza yeniden uygulayabilirsiniz.
-    
+
     Bu örnekte `oauth2Permissions` koleksiyonuna aşağıdaki JSON öğesini ekleyerek kaynak/API öğesinde `Employees.Read.All` adlı yeni bir kapsamı kullanıma sunma gösterilmektedir.
+
+    `id`Değeri programlı olarak veya [Guidgen](https://www.microsoft.com/download/details.aspx?id=55984)gibi bir GUID oluşturma aracı kullanarak oluşturun.
 
       ```json
       {
@@ -100,39 +109,41 @@ Uygulama bildirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için:
       }
       ```
 
-   > [!NOTE]
-   > `id` değerinin program aracılığıyla veya [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) gibi bir GUID oluşturma aracı kullanılarak oluşturulması gerekir. `id`, web API'si tarafından kullanıma sunulan kapsam için benzersiz tanıtıcıyı temsil eder. Bir istemci web API'nize erişmek için gerekli izinlerle uygun şekilde yapılandırıldıktan sonra Azure AD tarafından bir OAuth 2.0 erişim belirteci düzenlenir. İstemci web API'sini çağırdığında uygulama kaydında istenen izinlere göre ayarlanan kapsam (scp) talebine sahip olan erişim belirtecini sunar.
-   >
-   > Gerekirse daha sonra ek kapsamları kullanıma sunabilirsiniz. Web API'niz farklı işlevlerle ilişkilendirilmiş birden fazla kapsamı kullanıma sunabilir. Kaynağınız alınan OAuth 2.0 erişim belirtecindeki kapsam (`scp`) taleplerini değerlendirerek web API'si erişimini çalışma zamanında denetleyebilir.
-
 1. İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. Web API'nizi dizininizdeki diğer uygulamalar tarafından kullanılacak şekilde yapılandırmış oldunuz.
 1. [Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama](#verify-the-web-api-is-exposed-to-other-applications) adımlarını izleyin.
 
+Uygulama varlığı ve şeması hakkında daha fazla bilgi için bkz. Microsoft Graph 'ın [uygulama][ms-graph-application] kaynak türü başvurusu belgeleri.
+
+Şema başvurusu da dahil olmak üzere uygulama bildirimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama bildirimini anlama](reference-app-manifest.md).
+
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama
 
-1. Azure AD kiracınıza geri dönün, **Uygulama kayıtları**'nı seçin ve yapılandırmak istediğiniz istemci uygulamasını seçin.
+1. Azure AD kiracınıza dönün, **uygulama kayıtları**' yi seçin ve ardından yapılandırmak istediğiniz istemci uygulamasını bulun ve seçin.
 1. [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md) bölümünde belirtilen adımları tekrarlayın.
-1. [BIR API seçme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-)adımına geldiğinizde, kaynağı seçin. İstemci izin istekleri için kullanılabilir durumdaki yeni kapsamı görmeniz gerekir.
+1. [BIR API seçme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)adımına geldiğinizde, kaynağı (Web API 'si uygulama kaydı) seçin.
+    * Web API uygulaması kaydını Azure portal kullanarak oluşturduysanız API kaynağınız **My API 'Lerim** sekmesinde listelenir.
+    * Proje oluşturma sırasında Web API uygulaması kaydınızı oluşturmak için Visual Studio 'ya izin verirseniz, API kaynağınız **Kuruluşumun kullandığı API 'ler** sekmesinde listelenir.
 
-## <a name="more-on-the-application-manifest"></a>Uygulama bildirimi hakkında daha fazla bilgi
+Web API kaynağını seçtikten sonra, istemci izin istekleri için kullanılabilir yeni kapsamı görmeniz gerekir.
 
-Uygulama bildirimi, bir Azure AD uygulamasının kimlik yapılandırmasının tüm özniteliklerini tanımlayan uygulama varlığının güncelleştirilmesi için bir uygulama bildirimi görevi görür. Uygulama varlığı ve şeması hakkında daha fazla bilgi için bkz. [Graph API Uygulama varlığı belgeleri](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). İlgili makalede aşağıdakiler dahil olmak üzere API'niz için izin belirtmek için kullanılan Uygulama varlığı üyeleri hakkında ayrıntılı başvuru bilgileri bulunur:  
+## <a name="using-the-exposed-scopes"></a>Sunulan kapsamları kullanma
 
-* [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) varlığı koleksiyonu olan ve bir web API'sinin [uygulama izinlerini](developer-glossary.md#permissions) tanımlamak için kullanılan appRoles üyesi.
-* [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) varlığı koleksiyonu olan ve bir web API'sinin [temsilcili izinlerini](developer-glossary.md#permissions) tanımlamak için kullanılan oauth2Permissions üyesi.
+İstemci, Web API 'nize erişim izinleri ile uygun şekilde yapılandırıldıktan sonra, Azure AD tarafından bir OAuth 2,0 erişim belirteci verilebilir. İstemci, Web API 'sini çağırdığında, kapsam ( `scp` ) talebinin, uygulama kaydında istenen izinlere ayarlanmış erişim belirtecini gösterir.
 
-Uygulama bildirimi kavramları hakkında daha fazla genel bilgi için bkz. [Azure Active Directory uygulama bildirimini anlama](reference-app-manifest.md).
+Gerekirse daha sonra ek kapsamları kullanıma sunabilirsiniz. Web API'niz farklı işlevlerle ilişkilendirilmiş birden fazla kapsamı kullanıma sunabilir. Kaynağınız alınan OAuth 2.0 erişim belirtecindeki kapsam (`scp`) taleplerini değerlendirerek web API'si erişimini çalışma zamanında denetleyebilir.
+
+Uygulamalarınızda, tam kapsam değeri, Web API 'nizin **uygulama KIMLIĞI URI** 'sinin (kaynak) ve **Kapsam adının**bir birleşimi olur.
+
+Örneğin, Web API 'nizin uygulama KIMLIĞI URI 'SI ise `https://contoso.com/api` ve kapsam adınız ise `Employees.Read.All` , tam kapsam şu şekilde olur:
+
+`https://contoso.com/api/Employees.Read.All`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
+Kapsamları yapılandırarak Web API 'nizi kullanıma açdığınıza göre, bu kapsamlara erişim izni ile istemci uygulamanızın kaydını yapılandırın.
 
-* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
-* [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md)
-* [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
-* [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)
+> [!div class="nextstepaction"]
+> [Web API erişimi için uygulama kaydını yapılandırma](quickstart-configure-app-access-web-apis.md)
 
-Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
-
-Azure Active Directory ile uygulama geliştirirken kullanmanız gereken markalama yönergeleri hakkında daha fazla bilgi edinmek için bkz. [Uygulamalar için markalama yönergeleri](howto-add-branding-in-azure-ad-apps.md).
+<!-- REF LINKS -->
+[ms-graph-application]: /graph/api/resources/application

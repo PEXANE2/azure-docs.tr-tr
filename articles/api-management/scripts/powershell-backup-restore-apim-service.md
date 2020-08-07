@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell Betik Örneği - Hizmet yedekleme ve geri yükleme | Microsoft Docs
-description: Azure PowerShell Betik Örneği - Hizmet yedekleme ve geri yükleme
+description: API Management hizmet örneğini yedekleme ve geri yükleme hakkında bilgi edinin. Örnek bir betik görüntüleyin ve kullanılabilir ek kaynakları görüntüleyin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 1c56aefb7b30026d1676e8a782fe2f6d394bd1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d80a63b1a52d1ed7750d1a025eb8f4cd9f254a94
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008991"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851146"
 ---
 # <a name="backup-and-restore-service"></a>Hizmet yedekleme ve geri yükleme
 
-Bu makalede gösterilen bu örnekte, API Management hizmet örneğini yedekleme ve geri yükleme işlemi gösterilir. 
+Bu makaledeki örnek betik, API Management hizmet örneğinin nasıl yedeklenve geri yükleneceğini gösterir. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -3,12 +3,12 @@ title: Azure Işlevlerinde IP adresleri
 description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı ve bunların değişmesine neden olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656777"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874087"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
 
@@ -49,12 +49,13 @@ Kullanılabilir giden IP adreslerini bulmanın alternatif bir yolu [Cloud Shell]
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> [Tüketim planında](functions-scale.md#consumption-plan) çalışan bir işlev uygulaması ölçeklendirilirse, yeni BIR giden IP adresi aralığı atanabilir. Tüketim planında çalışırken, tüm veri merkezini beyaz listeye almanız gerekebilir.
+> [Tüketim planında](functions-scale.md#consumption-plan) çalışan bir işlev uygulaması ölçeklendirilirse, yeni BIR giden IP adresi aralığı atanabilir. Tüketim planında çalışırken, tüm veri merkezini izin verilenler listesine eklemeniz gerekebilir.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Veri merkezi giden IP adresleri
 
-İşlev uygulamalarınız tarafından kullanılan giden IP adreslerini beyaz listeye almanız gerekiyorsa, uygulamanın veri merkezi (Azure bölgesi) işlevini beyaz bir şekilde listeleyerek başka bir seçenek vardır. [Tüm Azure veri MERKEZLERININ IP adreslerini listeleyen BIR JSON dosyası indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ardından, işlev uygulamanızın çalıştırıldığı bölge için geçerli olan JSON parçasını bulun.
+İşlev uygulamalarınız tarafından kullanılan giden IP adreslerini izin verilenler listesine eklemeniz gerekiyorsa, başka bir seçenek de ' veri merkezi (Azure bölgesi) işlevini izin verilenler listesine eklemektir. [Tüm Azure veri MERKEZLERININ IP adreslerini listeleyen BIR JSON dosyası indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ardından, işlev uygulamanızın çalıştırıldığı bölge için geçerli olan JSON parçasını bulun.
 
 Örneğin, Batı Avrupa JSON parçası şöyle görünebilir:
 

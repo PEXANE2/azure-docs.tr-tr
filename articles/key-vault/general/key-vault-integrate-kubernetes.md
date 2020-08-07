@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921574"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902006"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Hizmet sorumlunuzu atayın veya yönetilen kimlikler kullanın.
 > * Ana kasanızdan bağlı gizli dizileri kullanarak Pod 'nizi dağıtın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -71,7 +71,7 @@ Azure Cloud Shell kullanmanız gerekmez. Azure CLı yüklü olan komut isteminiz
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Oluşturduğunuz AKS kümesinin meta verilerini göstermek için aşağıdaki komutu kullanın. Daha sonra kullanmak üzere **PrincipalId**, **ClientID**, **SubscriptionID**ve **noderesourcegroup** 'u kopyalayın.
+1. Oluşturduğunuz AKS kümesinin meta verilerini göstermek için aşağıdaki komutu kullanın. Daha sonra kullanmak üzere **PrincipalId**, **ClientID**, **SubscriptionID**ve **noderesourcegroup** 'u kopyalayın. ASK kümesi, Yönetilen kimlikler etkinleştirilmiş olarak oluşturulmadıysa, **PrincipalId** ve **ClientID** null olur. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ Aşağıdaki görüntüde, **az keykasa Show--Name contosoKeyVault5** for the il
 
 ### <a name="assign-a-service-principal"></a>Hizmet sorumlusu atama
 
-Hizmet sorumlusu kullanıyorsanız, anahtar kasanıza erişmek ve gizli dizileri almak için izin verin. *Okuyucu* rolünü atayın ve aşağıdakileri yaparak anahtar kasaınızdan gizli dizileri *almak* için hizmet sorumlusu izinleri verin:
+Hizmet sorumlusu kullanıyorsanız, anahtar kasanıza erişmek ve gizli dizileri almak için izin verin. Aşağıdaki komutu gerçekleştirerek *okuyucu* rolünü atayın ve anahtar kasaınızdan gizli dizileri *almak* için hizmet sorumlusu izinleri verin:
 
 1. Hizmet sorumlunuzu mevcut anahtar kasanıza atayın. **$AZURE _CLIENT_ID** parametresi, hizmet sorumlunuzu oluşturduktan sonra kopyaladığınız **AppID** 'dir.
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 Yönetilen kimlikler kullanıyorsanız, oluşturduğunuz AKS kümesine belirli roller atayın. 
 
-1. Kullanıcı tarafından atanan yönetilen kimlik oluşturmak, listelemek veya okumak için, AKS kümenizin [yönetilen kimlik katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rolüne atanması gerekir. **$ClientID** Kubernetes kümesinin ClientID 'si olduğundan emin olun.
+1. Kullanıcı tarafından atanan yönetilen kimlik oluşturmak, listelemek veya okumak için, AKS kümenizin [yönetilen kimlik operatörü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolüne atanması gerekir. **$ClientID** Kubernetes kümesinin ClientID 'si olduğundan emin olun. Kapsam için, bu, özellikle AKS kümesi oluşturulduğunda yapılmış olan düğüm kaynak grubu Azure abonelik hizmetiniz altında olacaktır. Bu kapsam, aşağıda atanan rollerden yalnızca o gruptaki kaynakların etkilendiğinden emin olur. 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```

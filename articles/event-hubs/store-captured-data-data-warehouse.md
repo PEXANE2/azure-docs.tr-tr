@@ -4,12 +4,12 @@ description: "Öğretici: Bu öğreticide, bir olay kılavuzuyla tetiklenen bir 
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039506"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833734"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
@@ -178,4 +178,4 @@ Birkaç dakika sonra, SQL veri ambarınızdaki tabloyu sorgulayın. WindTurbineD
 ## <a name="next-steps"></a>Sonraki adımlar 
 Eyleme dönüştürülebilir içgörüler edinmek için veri ambarınızla güçlü veri görselleştirme araçları kullanabilirsiniz.
 
-Bu makalede [SQL Veri Ambarı ile Power BI'ın](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) nasıl kullanılacağı gösterilmektedir
+Bu makalede [SQL Veri Ambarı ile Power BI'ın](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) nasıl kullanılacağı gösterilmektedir
