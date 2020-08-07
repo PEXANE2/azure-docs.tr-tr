@@ -3,19 +3,19 @@ title: Konuşmadan metne API başvurusu (REST)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşmayı metne REST API nasıl kullanacağınızı öğrenin. Bu makalede yetkilendirme seçenekleri, sorgu seçenekleri, bir isteği nasıl yapılandıracağınızı ve yanıt alabileceğinizi öğreneceksiniz.
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 4b1548efe942cbef842498035d6e0b0d11a91d00
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537978"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905253"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -60,7 +60,7 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Description | Gerekli/Isteğe bağlı |
+|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -74,7 +74,7 @@ Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgil
 
 HTTP isteğinin gövdesinde ses gönderilir `POST` . Bu tablodaki biçimlerden birinde olmalıdır:
 
-| Biçimlendir | Bileşeni | Bit hızı | Örnek hız  |
+| Biçim | Bileşeni | Bit hızı | Örnek hız  |
 |--------|-------|----------|--------------|
 | WAV    | PCM   | 256 kbps | 16 kHz, mono |
 | OGG    | OPUS 'LAR  | 256 kpbs | 16 kHz, mono |
@@ -191,7 +191,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içerir.
 
-| Parametre | Description  |
+| Parametre | Açıklama  |
 |-----------|--------------|
 |`RecognitionStatus`|Başarılı tanıma gibi durum `Success` . Sonraki tabloya bakın.|
 |`DisplayText`|Büyük harfler, noktalama, ters metin normalleştirmesinin ardından tanınan metin ("Doctor Smith" için "200" veya "Dr. Smith" için 200 gibi daha kısa formlara dönüştürme) ve küfür maskeleme. Yalnızca başarılı olduğunda sunun.|
@@ -200,7 +200,7 @@ Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içer
 
 `RecognitionStatus`Alan şu değerleri içerebilir:
 
-| Durum | Description |
+| Durum | Açıklama |
 |--------|-------------|
 | `Success` | Tanıma başarılı oldu ve `DisplayText` alan var. |
 | `NoMatch` | Ses akışında konuşma algılandı, ancak hedef dilden hiçbir sözcük eşleşmedi. Genellikle, tanınma dilinin kullanıcının konuşmadan farklı bir dil olduğu anlamına gelir. |
@@ -216,7 +216,7 @@ Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içer
 
 `NBest`Listedeki nesne şunları içerebilir:
 
-| Parametre | Description |
+| Parametre | Açıklama |
 |-----------|-------------|
 | `Confidence` | 0,0 (güven yok) ile 1,0 arasındaki girdinin Güvenirlik puanı (tam güven) |
 | `Lexical` | Tanınan metnin sözlü biçimi: tanınan gerçek sözcükler. |

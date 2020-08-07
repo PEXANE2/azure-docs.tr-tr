@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552123"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874784"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
@@ -106,8 +106,6 @@ Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. K
 ![Oturum açma sıklığı için yapılandırılmış koşullu erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
 Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak kabul edilir. Örneğin, Office uygulamaları için oturum açma sıklığını 24 saate yapılandırdıysanız, Azure AD kayıtlı Windows cihazlarındaki kullanıcılar cihazda oturum açarak oturum açma sıklığı ilkesini karşılar ve Office uygulamaları açılırken bir daha sorulmayacaktır.
-
-Aynı tarayıcı oturumunda çalışan farklı Web uygulamaları için farklı oturum açma sıklığı yapılandırdıysanız, aynı tarayıcı oturumunda çalışan tüm uygulamalar tek bir oturum belirtecini paylaştığından, her iki uygulama için de en katı ilkesi uygulanır.
 
 ### <a name="policy-2-persistent-browser-session"></a>İlke 2: kalıcı tarayıcı oturumu
 

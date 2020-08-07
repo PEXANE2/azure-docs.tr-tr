@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083382"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874036"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 ![HDInsight küme oluşturma temelleri](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure portal yeni bir küme oluşturma")
 
@@ -86,6 +86,9 @@ Ileri ' yi seçin: bir sonraki sekmeye ilerlemek için **depolama >>** .
 
 İsteğe bağlı: küme dışında Apache Hive, Apache Oozie, ve veya Apache ambarı meta verilerini kaydetmek için mevcut bir SQL veritabanı belirtin. Meta veri deposu için kullanılan Azure SQL veritabanı, Azure HDInsight da dahil olmak üzere diğer Azure hizmetleriyle bağlantı kurulmasına izin vermelidir. Bir meta veri deposu oluşturduğunuzda bir veritabanını tireler veya kısa çizgilerden adlandırma. Bu karakterler, küme oluşturma işleminin başarısız olmasına neden olabilir.
 
+> [!IMPORTANT]
+> Metastores 'yi destekleyen küme şekilleri için varsayılan meta veri deposu, **temel katman 5 DTU sınırı (yükseltilebilir)** Ile BIR Azure SQL veritabanı sağlar! Temel test amaçları için uygundur. Büyük veya üretim iş yükleri için bir dış meta veri yüklemeye geçiş yapmanızı öneririz.
+
 Sonraki sekmeye ilerlemek için **İleri ' yi seçin: güvenlik + ağ >>** .
 
 ## <a name="security--networking"></a>Güvenlik + ağ
@@ -121,7 +124,7 @@ Sonraki sekmeye ilerlemek için **İleri ' yi seçin: yapılandırma + fiyatland
 
 Küme yapılandırmasını doğrulamak ve son sekmeye ilerlemek için **gözden geçir + oluştur >>** seçin.
 
-## <a name="review--create"></a>Gözden geçir + oluştur
+## <a name="review--create"></a>Gözden geçirme ve oluşturma
 
 ![HDInsight küme Özeti oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Küme düğümlerinin sayısını belirtin")
 

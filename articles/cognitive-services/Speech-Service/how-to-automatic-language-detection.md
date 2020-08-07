@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3a648b11e795a7d5c8680ac8c3df95e7d0c6bb7d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c1d2613661421ae95c34edef3caafe4c6fb3d4a9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406784"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905083"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Konuşmayı metne dönüştürme için otomatik dil algılama
 
@@ -26,7 +26,7 @@ Otomatik dil algılama, sunulan dillerin listesine kıyasla konuşma SDK 'sına 
 Bu makalede, `AutoDetectSourceLanguageConfig` bir `SpeechRecognizer` nesnesi oluşturmak ve algılanan dili almak için kullanmayı öğreneceksiniz.
 
 > [!IMPORTANT]
-> Bu özellik yalnızca C#, C++, Java, Python ve amaç-C ile konuşma SDK 'Sı için kullanılabilir.
+> Bu özellik yalnızca C#, C++, Java, Python, JavaScript ve amaç-C olan konuşma SDK 'Sı için kullanılabilir.
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile otomatik dil algılama
 
@@ -240,4 +240,24 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Konuşma SDK başvuru belgeleri](speech-sdk.md)
+::: zone pivot="programming-language-csharp"
+* Otomatik dil algılama için GitHub 'daki [örnek koda](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) bakın
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+* Otomatik dil algılama için GitHub 'daki [örnek koda](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) bakın
+::: zone-end
+
+::: zone pivot="programming-language-java"
+* Otomatik dil algılama için GitHub 'daki [örnek koda](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) bakın
+::: zone-end
+
+::: zone pivot="programming-language-python"
+* Otomatik dil algılama için GitHub 'daki [örnek koda](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) bakın
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+* Otomatik dil algılama için GitHub 'daki [örnek koda](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) bakın
+::: zone-end
+
+* [Konuşma SDK başvuru belgeleri](speech-sdk.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: cc270ebb12b27c6461b00a4f7042bc3c829d02ef
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812333"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905219"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -32,9 +32,14 @@ Bu makalede açıklanan ölçümler, Azure aboneliğinizdeki Azure dijital TWINS
 
     Bu sayfa, Azure dijital TWINS örneğiniz için ölçümleri görüntüler. Ayrıca, listeden görmek istediklerinizi seçerek ölçümlerinizin özel görünümlerini de oluşturabilirsiniz.
     
-3. Menüdeki **Tanılama ayarları** ' na ve ardından **Tanılama ayarı Ekle**' ye tıklayarak ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına göndermenizi seçebilirsiniz.
+3. Menüdeki **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle**' yi seçerek ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına gönderebilirsiniz.
 
-    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
+
+    Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
+
+4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
 

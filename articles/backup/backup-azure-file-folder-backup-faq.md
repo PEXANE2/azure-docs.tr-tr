@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563117"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874631"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
@@ -32,7 +32,7 @@ Kasa kimlik bilgilerinin 10 gün sonra sona ereceği süre. Kimlik bilgileri dos
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>Parola için hangi karakterlere izin veriliyor?
 
-Parola, ASCII karakter kümesindeki karakterleri kullanmalıdır, bu değer 127 değerinden küçük veya buna eşit olmalıdır.
+Parola, ASCII karakter kümesindeki karakterleri kullanmalıdır, bu [değer 127 değerinden küçük veya buna eşit](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)olmalıdır.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Dosyaları ve klasörleri hangi sürücülerden yedekleyebilirim?
 

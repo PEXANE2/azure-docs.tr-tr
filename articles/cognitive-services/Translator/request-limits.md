@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561463"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903417"
 ---
 # <a name="request-limits-for-translator"></a>Çevirmen için istek sınırları
 
@@ -23,18 +23,18 @@ Bu makale, çevirmen için azaltma sınırları sağlar. Hizmetler çeviri, alfa
 
 ## <a name="character-and-array-limits-per-request"></a>İstek başına karakter ve dizi sınırları
 
-Her çeviri isteği, çeviri yaptığınız tüm hedef dillerde 5.000 karakterle sınırlıdır. Örneğin, 3 farklı dile çevirmek için 1.500 karakterlik bir çeviri isteği gönderilmesi, istek sınırını karşılayan 1, 500 x3 = 4.500 karakterlik bir istek boyutuyla sonuçlanır. İstek sayısına göre değil, karakter başına ücretlendirilirsiniz. Daha kısa istekler göndermeniz önerilir.
+Her çeviri isteği, çeviri yaptığınız tüm hedef dillerde 10.000 karakterle sınırlıdır. Örneğin, 3 farklı dile çevirmek için 3.000 karakterlik çeviri isteği gönderilmesi, istek sınırını karşılayan 3000x3 = 9.000 karakter istek boyutuyla sonuçlanır. İstek sayısına göre değil, karakter başına ücretlendirilirsiniz. Daha kısa istekler göndermeniz önerilir.
 
 Aşağıdaki tabloda, çeviricisinin her bir işlemi için dizi öğesi ve karakter sınırları listelenmektedir.
 
-| Çalışma | Dizi öğesinin en büyük boyutu |    En fazla dizi öğesi sayısı |    En fazla Istek boyutu (karakter) |
+| İşlem | Dizi öğesinin en büyük boyutu |    En fazla dizi öğesi sayısı |    En fazla Istek boyutu (karakter) |
 |:----|:----|:----|:----|
-| Çevirme | 5.000    | 100    | 5.000 |
-| Karakter Dönüştürme | 5.000    | 10    | 5.000 |
-| Algılama | 10,000 |    100 |    50,000 |
-| BreakSentence | 10,000    | 100 |    50,000 |
-| Sözlük Arama| 100 |    10    | 1000 |
-| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|    2.000 |
+| Çevirme | 10,000    | 100   | 10,000 |
+| Karakter Dönüştürme | 5.000 | 10    | 5.000 |
+| Algılama | 10,000 | 100 |   50,000 |
+| BreakSentence | 50,000    | 100 | 50,000 |
+| Sözlük Arama| 100 |  10  | 1.000 |
+| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2.000 |
 
 ## <a name="character-limits-per-hour"></a>Saat başına karakter sınırları
 

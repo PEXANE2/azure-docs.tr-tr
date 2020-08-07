@@ -1,6 +1,6 @@
 ---
 title: Depolama Gezgini kullanmaya başlayın | Microsoft Docs
-description: Depolama Gezgini ile Azure depolama kaynaklarını yönetme
+description: Depolama Gezgini ile Azure depolama kaynaklarını yönetmeye başlayın. Azure Depolama Gezgini indirin ve yükleyin, bir depolama hesabına veya hizmetine bağlanın ve daha fazlasını yapın.
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975274"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905355"
 ---
 # <a name="get-started-with-storage-explorer"></a>Depolama Gezgini ile çalışmaya başlama
 
@@ -23,7 +23,7 @@ Microsoft Azure Depolama Gezgini; Windows, macOS ve Linux’ta Azure Depolama il
 
 ![Microsoft Azure Depolama Gezgini][0]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -31,7 +31,7 @@ Aşağıdaki Windows destek sürümleri Depolama Gezgini:
 
 * Windows 10 (önerilir)
 * Windows 8
-* Windows 7
+* Windows 7
 
 Tüm Windows sürümleri için Depolama Gezgini en az .NET Framework 4.7.2 gerektirir.
 
@@ -133,7 +133,7 @@ Depolama Gezgini bir kaynağa eklemenin birkaç yolu vardır:
 
 Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil eden düğüme gider. Kaynak, **Yerel & bağlı**  >  **depolama hesapları**  >  **(ekli kapsayıcılar)**  >  **BLOB kapsayıcıları**altında görünür. Depolama Gezgini bağlantınızı ekleyemedik veya bağlantıyı başarıyla ekledikten sonra verilerinize erişemiyorsanız, bkz. [Azure Depolama Gezgini sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
-#### <a name="use-a-connection-string"></a>Bağlantı dizesi kullan
+#### <a name="use-a-connection-string"></a>Bağlantı dizesi kullanma
 
 1. **Azure depolama 'Ya Bağlan**' ı açmak için **Bağlan** simgesini seçin.
 
@@ -147,7 +147,7 @@ Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil ede
 
 Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil eden düğüme gider. Kaynak, **Yerel & bağlı**  >  **depolama hesapları**altında görünür. Depolama Gezgini bağlantınızı ekleyemedik veya bağlantıyı başarıyla ekledikten sonra verilerinize erişemiyorsanız, bkz. [Azure Depolama Gezgini sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
-#### <a name="use-a-shared-access-signature-uri"></a>Paylaşılan erişim imzası URI 'SI kullan
+#### <a name="use-a-shared-access-signature-uri"></a>Paylaşılan erişim imzası URI’si kullanma
 
 1. **Azure depolama 'Ya Bağlan**' ı açmak için **Bağlan** simgesini seçin.
 
@@ -161,7 +161,7 @@ Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil ede
 
 Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil eden düğüme gider. Kaynak, eklenen kapsayıcı türü için **Yerel & bağlı**  >  **depolama hesapları**  >  **(ekli kapsayıcılar)**  >  *hizmet düğümü*altında görünür. Depolama Gezgini bağlantınızı ekleyemedik, bkz. [Azure Depolama Gezgini sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting). Bağlantıyı başarıyla ekledikten sonra verilerinize erişemiyorsanız sorun giderme kılavuzuna bakın.
 
-#### <a name="use-a-name-and-key"></a>Ad ve anahtar kullan
+#### <a name="use-a-name-and-key"></a>Ad ve anahtar kullanma
 
 1. **Azure depolama 'Ya Bağlan**' ı açmak için **Bağlan** simgesini seçin.
 
@@ -179,7 +179,7 @@ Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil ede
 
 Bağlantı başarıyla eklendikten sonra kaynak ağacı bağlantıyı temsil eden düğüme gider. Kaynak, **Yerel & bağlı**  >  **depolama hesapları**altında görünür. Depolama Gezgini bağlantınızı ekleyemedik veya bağlantıyı başarıyla ekledikten sonra verilerinize erişemiyorsanız, bkz. [Azure Depolama Gezgini sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
-#### <a name="attach-to-a-local-emulator"></a>Yerel öykünücüye iliştirme
+#### <a name="attach-to-a-local-emulator"></a>Yerel bir öykünücüye ekleme
 
 Depolama Gezgini Şu anda iki adet resmi depolama öykünücüsünü desteklemektedir:
 

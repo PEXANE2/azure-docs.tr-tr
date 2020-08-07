@@ -1,6 +1,6 @@
 ---
 title: Premium Azure dosya paylaşma oluşturma
-description: Bu makalede, Premium Azure dosya paylaşımının nasıl oluşturulacağını öğreneceksiniz.
+description: Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak Premium Azure dosya paylaşımının nasıl oluşturulacağını öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,25 +8,25 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497639"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903825"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure dosya paylaşma oluşturma
 Premium dosya paylaşımları, katı hal disk (SSD) depolama medyasında sunulur ve barındırma veritabanları ve yüksek performanslı bilgi işlem (HPC) dahil olmak üzere GÇ yoğunluklu iş yükleri için kullanışlıdır. Premium dosya paylaşımları, FileStorage hesabı olarak adlandırılan özel bir amaç depolama hesabı türünde barındırılır. Premium dosya paylaşımları, yüksek performans ve kurumsal ölçekli uygulamalar için tasarlanmıştır; tutarlı düşük gecikme süresi, yüksek ıOPS ve yüksek verimlilik paylaşımları sağlar.
 
 Bu makalede [Azure Portal](https://portal.azure.com/), Azure PowerShell ve Azure CLI kullanarak bu yeni hesap türünü nasıl oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Azure portal kullanarak Premium dosya paylaşma oluşturma
 
-### <a name="sign-in-to-azure"></a>Azure’da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure portalında](https://portal.azure.com/) oturum açın.
 

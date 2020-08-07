@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e86b89fbf325eb0af5e4127e7fe113b87b1b70c2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890567"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874274"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
 [Belirteç](msal-acquire-cache-tokens.md)alındıktan sonra, Microsoft kimlik doğrulama KITAPLıĞı (msal) tarafından önbelleğe alınır.  Uygulama kodu, başka bir yöntem tarafından belirteç almadan önce önbellekten bir belirteç almayı denemelidir.  Bu makalede, MSAL.NET içinde belirteç önbelleğinin varsayılan ve özel serileştirmesi açıklanmaktadır.
@@ -271,12 +271,15 @@ namespace CommonCacheMsalV3
 
 ### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Web uygulaması için belirteç önbelleği (gizli istemci uygulaması)
 
-Web Apps veya Web API 'Lerinde, önbellek oturum, Redsıs önbelleği veya bir veritabanı aracılığıyla faydalanabilir.
+Web Apps veya Web API 'Lerinde, önbellek oturum, Redsıs önbelleği veya bir veritabanı aracılığıyla faydalanabilir. Web Apps veya Web API 'Lerinde her hesap için bir belirteç önbelleğini tutmanız gerekir. 
 
-Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tutun.  Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.  Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir. MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Olaylar, önbelleğe erişildiğinde harekete geçirilir, uygulamalar önbelleğin serileştirip serileştirmeyeceğini veya seri durumdan çıkaramayacağını seçebilir. Kullanıcıları işleyen gizli istemci uygulamalarında (kullanıcıların oturum açması ve Web API 'Lerini çağıran Web uygulamaları ve aşağı akış Web API 'lerini çağıran Web API 'Leri), birçok kullanıcı olabilir ve kullanıcılar paralel olarak işlenir. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Serileştirme olayları, işlenen kullanıcının kimliğine bağlı olarak bir önbellek anahtarını hesaplar ve bu kullanıcı için bir belirteç önbelleğinin serileştirilmesi/serisini kaldıramıyor.
+Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.
+
+Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir.
+
+MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Olaylar, önbelleğe erişildiğinde harekete geçirilir, uygulamalar önbelleğin serileştirip serileştirmeyeceğini veya seri durumdan çıkaramayacağını seçebilir. Kullanıcıları işleyen gizli istemci uygulamalarında (kullanıcıların oturum açması ve Web API 'Lerini çağıran Web uygulamaları ve aşağı akış Web API 'lerini çağıran Web API 'Leri), birçok kullanıcı olabilir ve kullanıcılar paralel olarak işlenir. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Serileştirme olayları, işlenen kullanıcının kimliğine bağlı olarak bir önbellek anahtarını hesaplar ve bu kullanıcı için bir belirteç önbelleğinin serileştirilmesi/serisini kaldıramıyor.
 
 [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) kitaplığı, belirteç önbelleği serileştirmesini içeren [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) Önizleme paketi sağlar:
-
 
 | Genişletme yöntemi | Microsoft. Identity. Web Sub ad alanı | Açıklama  |
 | ---------------- | --------- | ------------ |
@@ -284,7 +287,7 @@ Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tut
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Belirteç önbelleği Kullanıcı oturumuna bağlanır. Tanımlama bilgisi çok büyük hale gelecağından KIMLIK belirteci çok sayıda talep içeriyorsa bu seçenek ideal değildir.
 | `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Belirteç önbelleği, ASP.NET Core uygulamasına karşı bir bağdaştırıcıdır `IDistributedCache` , bu nedenle dağıtılmış bellek önbelleği, redsıs önbelleği, dağıtılmış bir NCache veya bir SQL Server önbelleği arasından seçim yapabilirsiniz. Uygulamalar hakkındaki ayrıntılar için `IDistributedCache` bkz https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache ..
 
-Bellek içi önbelleği kullanarak basit bir durum:
+İşte, bir ASP.NET Core uygulamasında [Başlangıç](/aspnet/core/fundamentals/startup) sınıfının [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) yönteminde bellek içi önbelleğin kullanılmasına bir örnek:
 
 ```C#
 // or use a distributed Token Cache by adding
@@ -292,7 +295,6 @@ Bellek içi önbelleği kullanarak basit bir durum:
     services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
             .AddInMemoryTokenCaches();
 ```
-
 
 Olası Dağıtılmış önbelleklere örnek olarak şunlar verilebilir:
 

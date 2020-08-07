@@ -3,12 +3,12 @@ title: Azure geçişi hakkında SSS
 description: Azure geçişi hizmeti hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090017"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847474"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
 
@@ -29,7 +29,13 @@ Azure geçişi 'ni kullanarak şirket içi altyapıyı, uygulamaları ve veriler
 
 [Azure geçişi](migrate-services-overview.md) , değerlendirme ve Azure 'a geçiş için merkezi bir merkez sağlar. 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) bir olağanüstü durum kurtarma çözümüdür. 
+- Azure geçişi 'nin kullanılması, Azure geçiş araçları, diğer Azure hizmetleri ve üçüncü taraf araçlarla birlikte çalışabilirlik ve gelecekteki genişletilebilirlik sağlar.
+- Azure geçişi: sunucu geçiş aracı, Azure 'a sunucu geçişi için tasarlanmıştır. Geçiş için en iyi duruma getirilmiştir. Doğrudan geçişle ilgili olmayan kavramlar ve senaryolar hakkında bilgi almanız gerekmez. 
+- Bir VM için çoğaltma işlemi başlatıldığında 180 gün boyunca geçiş için bir araç kullanım ücreti yoktur. Bu, geçişi tamamlamaya yönelik bir zaman sağlar. Yalnızca Çoğaltmada kullanılan depolama ve ağ kaynakları için ve test geçişleri sırasında tüketilen işlem ücretleri için ödeme yaparsınız.
+- Azure geçişi, Site Recovery tarafından desteklenen tüm geçiş senaryolarını destekler. Ayrıca, VMware VM 'Leri için Azure geçişi aracısız bir geçiş seçeneği sağlar.
+- Yalnızca Azure geçişi: sunucu geçiş aracı için yeni geçiş özelliklerini önceliklendiriyoruz. Bu özellikler Site Recovery için hedeflenmemektedir.
+
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) yalnızca olağanüstü durum kurtarma için kullanılmalıdır.
 
 Azure geçişi: sunucu geçiş aracı bazı şirket içi makinelerin geçiş ve geçiş geçişi için bazı arka uç Site Recovery işlevleri kullanır.
 

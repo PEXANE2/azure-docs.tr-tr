@@ -34,8 +34,6 @@
           href: connect-python.md
         - name: Node.js
           href: connect-nodejs.md
-        - name: Azure PowerShell
-          href: connect-powershell.md
         - name: Ruby
           href: connect-ruby.md
         - name: C++
@@ -50,7 +48,7 @@
       items:
         - name: Azure portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: tutorial-design-database-using-cli.md
         - name: Azure PowerShell
           href: tutorial-design-database-using-powershell.md
@@ -176,7 +174,7 @@
       items:
         - name: Azure portal
           href: howto-restore-server-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: howto-restore-server-cli.md
         - name: Azure PowerShell
           href: howto-restore-server-powershell.md
@@ -193,7 +191,11 @@
         - name: Kullanıcı oluşturma
           href: howto-create-users.md
         - name: Bağlantı dizeleri
-          href: howto-connection-string.md
+          items:
+            - name: Uygulamaları bağlama
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: SSL yapılandırma
           href: howto-configure-ssl.md
         - name: TLS’yi yapılandırma
@@ -206,7 +208,7 @@
       items:
         - name: Azure portal
           href: howto-server-parameters.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
         - name: Azure PowerShell
           href: howto-configure-server-parameters-using-powershell.md
@@ -308,7 +310,7 @@
           href: howto-move-regions-portal.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql

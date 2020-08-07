@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765445"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903604"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal kullanarak doğrudan ExpressRoute oluşturma
 
 Bu makalede, Azure portal kullanarak doğrudan ExpressRoute 'a nasıl oluşturacağınız gösterilmektedir.
 ExpressRoute Direct, Microsoft 'un Dünya genelinde stratejik olarak dağıtılan eşleme konumlarında doğrudan Microsoft 'un küresel ağına bağlanmanızı sağlar. Daha fazla bilgi için bkz. [ExpressRoute Direct Hakkında](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a><a name="before"></a>Başlamadan önce
+
+**Microsoft. Network** kaynak sağlayıcısının aboneliğinize kayıtlı olduğunu doğrulayın. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır.
+
+1. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md)bölümünde açıklandığı gibi abonelik ayarlarınıza erişin.
+1. Aboneliğinizde, **kaynak sağlayıcıları**Için, **Microsoft. Network** sağlayıcısının **kayıtlı** bir durum gösterdiğini doğrulayın. Microsoft. Network kaynak sağlayıcısı kayıtlı sağlayıcılar listesinde yoksa, ekleyin.
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. ExpressRoute Direct oluşturma
 
@@ -56,7 +63,7 @@ ExpressRoute Direct, Microsoft 'un Dünya genelinde stratejik olarak dağıtıla
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Gözden geçirme ve oluşturma":::
 
-1. **Oluştur**'u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
+1. **Oluştur**’u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
 
 ## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. bağlantıların yönetici durumunu değiştirin
 
@@ -100,7 +107,7 @@ Aşağıdaki adımlar, ExpressRoute doğrudan iş akışından bir ExpressRoute 
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Gözden geçirme ve oluşturma":::
 
-1. **Oluştur**'u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
+1. **Oluştur**’u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

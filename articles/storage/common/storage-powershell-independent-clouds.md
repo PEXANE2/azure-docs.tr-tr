@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccacef6f9557bdcf683973c2ad5141b6066347b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176218"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904335"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>PowerShell kullanarak Azure bağımsız bulutlarında depolamayı yönetme
 
@@ -84,7 +84,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Bu komut aşağıdaki sonuçları döndürür.
 
-| Name| StorageEndpointSuffix|
+| Ad| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -101,7 +101,7 @@ Sonuçlar aşağıdaki değerlere benzer:
 
 |Özellik Adı|Değer|
 |----|----|
-| Adı | `AzureGermanCloud` |
+| Ad | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | Activedirectoryserviceendpointresourceı | `http://management.core.cloudapi.de/` |
 | Gallerurl 'Si | `https://gallery.cloudapi.de/` |
@@ -112,6 +112,7 @@ Sonuçlar aşağıdaki değerlere benzer:
 | SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
 | **StorageEndpointSuffix** | `core.cloudapi.de` |
 | ... | ... |
+
 Yalnızca depolama uç noktası soneki özelliğini almak için, belirli bulutu alın ve yalnızca bir özelliği isteyin.
 
 ```powershell

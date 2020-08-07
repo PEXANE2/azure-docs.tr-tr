@@ -3,18 +3,18 @@ title: Karma bulut uzantısı 'nı (HCX) yükler
 description: Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475456"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905002"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
 Bu makalede, Azure VMWare çözümünüz (AVS) özel bulutunuz için VMWare hibrit bulut uzantısı (HCX) çözümünü ayarlama yordamlarına göz atacağız. HCX, VMware iş yüklerinizin buluta geçirilmesini ve farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla diğer bağlı siteleri sağlar.
 
-Varsayılan yükleme, HCX gelişmiş, en fazla üç vCenter destekler. Üçten fazla gerekliyse, müşteriler destek aracılığıyla HCX kurumsal eklentisini etkinleştirme seçeneğine sahiptir. HCX kurumsal yüklemesi, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler sunar, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
+Varsayılan yükleme, HCX gelişmiş, en fazla üç site bağlantısını (Şirket içi veya bulutta buluta) destekler. Üçten fazla site bağlantısı gerekliyse, müşteriler şu anda önizleme aşamasında olan HCX kurumsal eklentisini destek aracılığıyla etkinleştirme seçeneğine sahiptir. HCX kurumsal, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler taşır, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
 
 
 [Başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimlerinden](#software-version-requirements)ve [önkoşullardan](#prerequisites) önce ayrıntılı bir şekilde gözden geçirin. 
@@ -22,7 +22,7 @@ Varsayılan yükleme, HCX gelişmiş, en fazla üç vCenter destekler. Üçten f
 Ardından, aşağıdakileri yapmak için gereken tüm yordamları inceleyeceğiz:
 
 > [!div class="checklist"]
-> * Şirket içi HCX OVA 'yı dağıtma
+> * Şirket içi HCX OVA 'yı (bağlayıcı) dağıtma
 > * HCX 'i etkinleştirme ve yapılandırma
 > * Ağ yukarı ve hizmet kafesi yapılandırma
 > * Gereç durumunu denetleyerek kurulumu tamamlayarak
@@ -36,11 +36,14 @@ Kurulumu tamamladıktan sonra, bu makalenin sonunda sunulan önerilen sonraki ad
 * VMware [HCX Ile sanal makinelerin geçişini](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)yapan VMware docs ' i inceleyin.
 * İsteğe bağlı olarak [VMware HCX dağıtım konularını](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)gözden geçirin.
 * HCX üzerinde VMware vSphere [blog serisi](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) gibi, isteğe bağlı olarak HCX üzerinde ilgili VMware malzemeleri gözden geçirin. 
-* AVS 'yi kullanarak bir AVS HCX Kurumsal etkinleştirmesi siparişi, kanalları destekler.
+* AVS destek kanalları aracılığıyla bir AVS HCX Kurumsal etkinleştirme isteyin.
 
-Çalışma yüklerini işlem ve depolama kaynaklarına karşı boyutlandırma, AVS özel bulut HCX çözümünü kullanmaya hazırlanırken önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin.   
+Çalışma yüklerini işlem ve depolama kaynaklarına karşı boyutlandırma, AVS özel bulut HCX çözümünü kullanmaya hazırlanırken önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin. 
+
+Ayrıca, Azure geçişi portalındaki bir AVS değerlendirmesi tamamlayarak iş yüklerini de kullanabilirsiniz ( https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) .
 
 ## <a name="software-version-requirements"></a>Yazılım sürümü gereksinimleri
+
 Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıdır. 
                                                          
 | Bileşen türü    | Kaynak ortam gereksinimleri    | Hedef ortam gereksinimleri   |
