@@ -82,11 +82,9 @@
     - name: Service Fabric Mesh CLI Başvurusu
       href: /cli/azure/ext/mesh
     - name: Service Fabric İstemcisi Kaynak REST API’leri
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Service Fabric Maven CLI Başvurusu
       href: service-fabric-mesh-reference-maven.md
-    - name: Resource Manager şablonu
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
 - name: Kaynaklar
   items:
     - name: Sık sorulan sorular

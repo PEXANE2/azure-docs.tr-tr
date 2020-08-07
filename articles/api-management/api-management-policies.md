@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ilkeleri | Microsoft Docs
-description: Azure API Management'ta kullanılabilecek ilkeler hakkında bilgi edinin.
+description: Azure API Management'ta kullanılabilecek ilkeler hakkında bilgi edinin. İlkeler, yayımcının yapılandırma aracılığıyla API davranışını değiştirmesine izin verir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4cdd9b7ace107d09ec14b23e02c56d2b13f264e6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252869"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905678"
 ---
 # <a name="api-management-policies"></a>API Management ilkeleri
 Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](api-management-howto-policies.md).  

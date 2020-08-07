@@ -1,5 +1,5 @@
 ---
-title: Oracle WebLogic Server Azure uygulamaları | Microsoft Docs
+title: Azure 'da Oracle WebLogic Server nedir?
 description: Microsoft Azure 'da Oracle WebLogic Server çalıştırmayı öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,40 +13,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2020
 ms.author: edburns
-ms.openlocfilehash: 9ba4e3a66ae8ef71b39aa26fd54048381237c2fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe247e75040f658beb94a66176f802993268a7d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83665218"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851876"
 ---
-# <a name="oracle-weblogic-server-azure-applications"></a>Oracle WebLogic Server Azure uygulamaları
+# <a name="what-is-oracle-weblogic-server-on-azure"></a>Azure 'da Oracle WebLogic Server nedir?
 
-## <a name="oracle-weblogic-server-is-a-scalable-enterprise-ready-java-ee-application-server"></a>Oracle WebLogic Server, ölçeklenebilir, kurumsal özellikli bir Java EE uygulama sunucusudur.
+Bu sayfada, Azure sanal makinelerinde WebLogic Server (WLS) çalıştırmaya yönelik çözümler açıklanmaktadır.  Bu çözümler, Oracle ve Microsoft tarafından ortaklaşa geliştirilmiştir.
 
-Oracle WebLogic Server, çok katmanlı dağıtılmış kurumsal uygulamalar geliştirmeye ve dağıtmaya yönelik dünyanın ilk bulut Yerel, Enterprise Java platformu uygulama sunucusudur. Azure WebLogic Server teklifleri, Java EE uygulamalarınızın en düşük çaba ve en büyük etkiyle Azure bulutuna taşınması ve kaydırılması dahil olmak üzere Web Logic Migration için daha fazla seçenek ve esneklik sağlayarak bulut bilgi ayracını çok daha geniş bir şekilde seçmenizi sağlar. Teklifler, sanal ağ, depolama ve Linux kaynaklarını otomatik olarak sağlayarak, WebLogic Server 'ı yükleyerek, bir ağ güvenlik grubu ile güvenlik dengelemesi, Azure uygulama ağ geçidi ile yük dengeleme, Azure Active Directory kimlik doğrulama ve kolaylaştırıcı veritabanı bağlantısı aracılığıyla iş uygulamalarınızı hızlı bir şekilde başlatmayı güçlendirin.
+Oracle WebLogic Server, çok katmanlı dağıtılmış kurumsal uygulamalar geliştirmeye ve dağıtmaya yönelik dünyanın ilk bulut Yerel, Enterprise Java platformu uygulama sunucusudur. Azure WebLogic Server teklifleri, bulut bilgi ayracını etkin hale etkinleştirmenizi sağlar.  Java EE uygulamalarınızın Azure bulutuna taşınması ve kaydırılması dahil olmak üzere WebLogic Migration için daha fazla seçenek ve esneklik elde edersiniz.   Azure 'da WLS, küçük bir çabayla büyük bir etkiye sahiptir. Teklifler, iş kolu (LOB) uygulamalarınızı hızlı bir şekilde başlatmayı güçlendirin.  Her teklif, sanal ağ, depolama ve Linux kaynaklarını otomatik olarak sağlar.  Sıfır çabayla WebLogic Server yüklenir.  WLS on Azure, bir ağ güvenlik grubuyla güvenlik, Azure uygulama ağ geçidi ile yük dengeleme, Azure Active Directory kimlik doğrulaması ve otomatik olarak mevcut veritabanınıza bağlanır.
 
-Farklı senaryoları karşılamak için kullanabileceğiniz dört teklif vardır: yönetici sunucusu olmayan tek düğüm, yönetici sunucusu, küme ve dinamik küme ile tek düğüm.  Bunlara bir deneme hakkı vermeniz gerekir. teklifler ücretsiz olarak kullanılabilir.
+:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="Azure Portal 'ı kullanarak Azure 'da WebLogic Server dağıtımı yapabilirsiniz":::
 
-_Bu teklifler, kendi lisansını getir_. Bunlar, Oracle ile ilgili lisansları zaten temin ve Microsoft Azure teklifleri çalıştırmak için doğru lisanslanmış olduğunu varsaymaktadır.
+Farklı senaryoları karşılamak için kullanabileceğiniz dört teklif vardır: yönetici sunucusu olmayan tek düğüm, yönetim sunucusu, küme ve dinamik küme içeren tek düğüm.  Teklifleri deneyin, ücretsiz olarak kullanılabilir.
 
-_Bu teklifleri geliştiren mühendislik ekibinin geçiş senaryolarınız üzerinde yakından çalışmak istiyorsanız, Azure Marketi 'ndeki [benimle Iletişim kurun](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) düğmesine basın_ . [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) Program yöneticileri, mimarlar ve mühendisler kısa bir süre sonra yeniden sunulacaktır ve işbirliği başlatabilir!
+_Bu teklifler, kendi lisansını getir_. Bunlar, Oracle ile ilgili lisanslarınızın zaten bulunduğunu varsayar ve Microsoft Azure tekliflerini çalıştırmak için doğru lisanslanır.
 
-### <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server tek düğüm
+_Bu teklifleri geliştirmede mühendislik ekibinin geçiş senaryolarınız üzerinde yakından çalışmak istiyorsanız, Azure Marketi 'nde [benimle Iletişim kurun](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) düğmesini seçin_ . [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) Program yöneticileri, mimarlar ve mühendisler, kısa bir süre sonra yeniden sunulacaktır ve işbirliği başlatabilir!
 
-Bu teklif, tek bir sanal makine sağlar ve buna Oracle WebLogic Server 'ı kurar. Bir etki alanı oluşturmaz veya yönetim sunucusunu başlatır. Bu, yüksek düzeyde özelleştirilmiş etki alanı yapılandırmasına sahip senaryolar için yararlıdır.
+## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server tek düğüm
 
-### <a name="oracle-weblogic-server-with-admin-server"></a>Yönetim sunucusu ile Oracle WebLogic Server
+Bu teklif, tek bir sanal makine sağlar ve üzerine WLS 'yi kurar. Bir etki alanı oluşturmaz veya yönetim sunucusunu başlatır. Tek düğüm, yüksek düzeyde özelleştirilmiş etki alanı yapılandırmasına sahip senaryolar için faydalıdır.
 
-Bu teklif, tek bir sanal makine sağlar ve buna Oracle WebLogic Server 'ı kurar. Bir etki alanı oluşturur ve etki alanını yönetmenizi sağlayan yönetim sunucusunu başlatır.
+## <a name="oracle-weblogic-server-with-admin-server"></a>Yönetim sunucusu ile Oracle WebLogic Server
 
-### <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server kümesi
+Bu teklif, tek bir sanal makine sağlar ve üzerine WLS 'yi kurar. Bir etki alanı oluşturur ve etki alanını yönetmenizi sağlayan yönetim sunucusunu başlatır.
 
-Bu teklif, Oracle WebLogic Server sanal makinelerinin yüksek düzeyde kullanılabilir bir kümesini oluşturur. Yönetim sunucusu ve tüm yönetilen sunucular varsayılan olarak başlatılır, bu da etki alanını yönetmenizi sağlar.
+## <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server kümesi
 
-### <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server dinamik kümesi
+Bu teklif, WLS sanal makinelerinin yüksek düzeyde kullanılabilir bir kümesini oluşturur. Yönetim sunucusu ve tüm yönetilen sunucular varsayılan olarak başlatılır, bu da etki alanını yönetmenizi sağlar.
 
-Bu teklif, Oracle WebLogic Server sanal makinelerinin yüksek düzeyde kullanılabilir ve ölçeklenebilir dinamik bir kümesini oluşturur. Yönetim sunucusu ve tüm yönetilen sunucular varsayılan olarak başlatılır, bu da etki alanını yönetmenizi sağlar.
+## <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server dinamik kümesi
+
+Bu teklif, WLS sanal makinelerinin yüksek düzeyde kullanılabilir ve ölçeklenebilir dinamik bir kümesini oluşturur. Yönetim sunucusu ve tüm yönetilen sunucular varsayılan olarak başlatılır, bu da etki alanını yönetmenizi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

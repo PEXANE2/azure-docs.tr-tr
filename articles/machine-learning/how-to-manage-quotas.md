@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372952"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846743"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,13 +46,9 @@ Azure aboneliğinizdeki çeşitli kaynak türlerine göre kota sınırlarının 
 > Sınırlar değişikliğe tabidir. En son, her zaman Azure için hizmet düzeyi kota [belgesinde](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) bulunabilir.
 
 ### <a name="virtual-machines"></a>Sanal makineler
-Her Azure aboneliği için, hizmetleriniz veya tek başına sahip olduğunuz sanal makine sayısı için bir sınır vardır. Bu sınır, hem toplam çekirdekte hem de her aile temelinde bölge düzeyidir.
-
-Sanal makine çekirdekleri, her ikisi de ayrı olarak zorlanan bölgesel toplam sınıra ve her ikisi de her ikisi de uygulanan boyut serisi (dv2, F, vb.) sınırına sahiptir. Örneğin, ABD Doğu toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. Bu aboneliğin 30 adet A1 sanal makinesi veya 30 adet D1 sanal makinesi ya da ikisinin toplamda 30 çekirdeği geçmeyecek bir birleşimini (örneğin, 10 adet A1 sanal makinesi ve 20 adet D1 sanal makinesi) dağıtmasına izin verilir.
+Her Azure aboneliği için, hizmetinizdeki veya tek başına sanal makine sayısında bir sınır vardır. Sanal makine çekirdekleri, her ikisi de ayrı olarak zorlanan bölgesel toplam sınıra ve her ikisi de her ikisi de uygulanan boyut serisi (dv2, F, vb.) sınırına sahiptir. Örneğin, ABD Doğu toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. Bu aboneliğin 30 adet A1 sanal makinesi veya 30 adet D1 sanal makinesi ya da ikisinin toplamda 30 çekirdeği geçmeyecek bir birleşimini (örneğin, 10 adet A1 sanal makinesi ve 20 adet D1 sanal makinesi) dağıtmasına izin verilir.
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-Daha ayrıntılı ve güncel kota sınırları listesi için, [Azure genelinde kota makalesini](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)inceleyin.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning İşlemi
 [Azure Machine Learning işlem](concept-compute-target.md#azure-machine-learning-compute-managed)için, hem çekirdek sayısı hem de bir abonelikte bölge başına izin verilen benzersiz işlem kaynakları sayısı için varsayılan bir kota sınırı vardır. Bu kota, yukarıdaki VM çekirdeği kotasından ayrıdır ve AmlCompute, kaynakları barındırılan bir modelde, kaynak dağıtan bir yönetilen hizmet olduğundan, çekirdek sınırları iki kaynak türü arasında paylaşılmaz.
@@ -84,16 +80,10 @@ Kullanılabilir kaynaklar:
 - İşlem hattında izin verilen en fazla adım sayısı 30.000 ' dir
 - Her ay abonelik başına yayınlanan işlem hattı tarafından tetiklenen en fazla zamanlama tabanlı çalıştırma ve BLOB çeklerinin toplamı 100.000 ' dir.
 
-> [!NOTE]
-> Bu sınırı artırmak istiyorsanız [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
-
 ### <a name="container-instances"></a>Kapsayıcı örnekleri
 
 Ayrıca, belirli bir süre içinde (kapsamdaki saatlik) veya tüm aboneliğiniz üzerinde dönebileceğinizi kapsayıcı örnekleri sayısında bir sınır vardır.
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-Kota sınırlarının daha ayrıntılı ve güncel listesi için [buradaki](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)Azure genelinde kota makalesini inceleyin.
+Sınırlar için bkz. [Container Instances sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Depolama
 Belirli bir abonelikte her bölge için depolama hesabı sayısı sınırı vardır. Varsayılan sınır 250 ' dir ve hem standart hem de Premium Depolama hesaplarını içerir. Belirli bir bölgede 250 'den fazla depolama hesabına ihtiyacınız varsa, [Azure desteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)aracılığıyla bir istek yapın. Azure depolama ekibi, iş kasalarınızı inceleyerek, belirli bir bölge için 250 depolama hesabını onaylayabilir.
@@ -126,7 +116,7 @@ Azure Machine Learning Işlem, aboneliğinizdeki diğer Azure Kaynak kotalarınd
 1. Kota sınırlarını görüntülemek için bir abonelik seçin. İlgilendiğiniz bölgeye filtre getirmeyi unutmayın.
 
 1. Artık bir abonelik düzeyi görünümü ve çalışma alanı düzeyi görünümü arasında geçiş yapabilirsiniz:
-    + **Abonelik görünümü:** Bu, çekirdek kota kullanımınızı VM ailesi ile görüntülemenizi, çalışma alanına göre genişletmeyi ve gerçek küme adlarına göre genişletmeyi görmenizi sağlar. Bu görünüm, belirli bir VM ailesi için temel kullanımların ayrıntılarını hızla almak ve bu çalışma alanlarının her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir. Bu görünümdeki genel kural (kullanım/kota) olduğundan, kullanım, en güncel ölçekli çekirdek sayısı ve kota, kaynağın ölçeklendirebileceği mantıksal maksimum çekirdek sayısıdır. Her **çalışma alanı**için kota, belırlı bir VM ailesi için ölçeklenebileceğinizi en fazla çekirdek sayısını gösteren çalışma alanı düzeyi kotası (yukarıda açıklandığı gibi) olacaktır. Benzer şekilde, kota **, kümenin max_nodes** özelliği tarafından tanımlanan en fazla düğüm sayısına göre ölçeklenebilen çekirdeklerdir.
+    + **Abonelik görünümü:** VM ailesi ile çekirdek kotasının kullanımını, çalışma alanına göre genişletmeyi ve gerçek küme adlarına göre genişletmeyi daha da genişleterek görüntüler. Belirli bir VM ailesi için temel kullanımların ayrıntılarına hızlıca giderek, çalışma alanlarını ve bu çalışma alanlarının her biri için temel alınan kümeler tarafından daha fazla bilgi edinebilirsiniz. Bu görünümdeki genel kural (kullanım/kota) olduğundan, kullanım, en güncel ölçekli çekirdek sayısı ve kota, kaynağın ölçeklendirebileceği mantıksal maksimum çekirdek sayısıdır. Her **çalışma alanı**için kota, belırlı bir VM ailesi için ölçeklenebileceğinizi en fazla çekirdek sayısını gösteren çalışma alanı düzeyi kotası (yukarıda açıklandığı gibi) olacaktır. Benzer şekilde, kota **, kümenin max_nodes** özelliği tarafından tanımlanan en fazla düğüm sayısına göre ölçeklenebilen çekirdeklerdir.
 
     + **Çalışma alanı görünümü:** Bu, çalışma alanına göre çekirdek kotasının kullanımını görüntülemenize, VM ailesine göre genişleterek ve gerçek küme adlarına göre daha fazla genişleetmenize olanak tanır. Bu görünüm, belirli bir çalışma alanının ana kullanımının ayrıntılarını hızla almak ve bu ailelerin her biri için temel alınan kümeler tarafından daha fazla bilgi almak için idealdir.
 
@@ -149,8 +139,4 @@ Kota artışı istediğinizde, kotayı artırmak için istediğiniz hizmeti seç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalelerle daha fazla bilgi edinin:
-
 + [Azure Machine Learning için maliyetleri planlayın & yönetin](concept-plan-manage-cost.md)
-
-+ [Kotayı artırma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).

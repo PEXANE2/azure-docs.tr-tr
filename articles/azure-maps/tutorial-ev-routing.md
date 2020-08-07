@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: f341179d121af2fa4e5b198aeee2ea65bc6c378c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133325"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850177"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -35,7 +35,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
@@ -89,7 +89,7 @@ Kodu Not defterinde çalıştırmak için, aşağıdaki adımları uygulayarak p
     a. İlk açılan listede **Requirements.txt**' yi seçin.  
     b. İkinci aşağı açılan listede *requirements.txt* dosyanızı seçin.  
     c. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
     ![Paketleri yükler](./media/tutorial-ev-routing/install-packages.png)
 

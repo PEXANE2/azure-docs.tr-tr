@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ilk API 'nizi içeri aktarma ve yayımlama
-description: Openapı belirtim API 'sini Azure API Management içeri aktarmayı ve API 'nizi Azure portal test yapmayı öğrenin.
+description: Bir Openapı belirtim API 'sini Azure API Management içeri aktarmayı ve sonra API 'nizi Azure portal test yapmayı öğrenin.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 38b723cb823547d4737a68576575c2b629f5eb67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 71a239393c61dccf39ed505aa2b08d7612b7e370
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206271"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905559"
 ---
 # <a name="import-and-publish-your-first-api"></a>İlk API’nizi içeri aktarma ve yayımlama
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Yeni API](./media/api-management-import-and-publish/created-api.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure API Management terminolojisini](api-management-terminology.md)anlayın.
 - [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
@@ -61,7 +61,7 @@ Bu bölümde, bir Openapı belirtim arka uç API 'sini içeri ve nasıl yayımla
    |**Açıklama**|Önceki hizmet URL 'sini girdikten sonra, API Management bu alanı JSON 'a göre doldurur.|API 'nin isteğe bağlı bir açıklaması.|
    |**URL düzeni**|**HTTPS**|API 'ye erişmek için hangi protokoller kullanılabilir.|
    |**API URL’si soneki**|*conference*|API Management hizmeti için temel URL 'ye eklenen sonek. API Management, API 'Lerini kendi sonekine göre ayırır. bu nedenle, belirli bir yayımcının her API 'SI için sonekin benzersiz olması gerekir.|
-   |**Etiketler**| |Arama, gruplama veya filtreleme için API 'Leri düzenlemek için Etiketler.|
+   |**Lerimi**| |Arama, gruplama veya filtreleme için API 'Leri düzenlemek için Etiketler.|
    |**Ürün**|**Sınırsız**|Bir veya daha fazla API 'nin ilişkilendirmesi. Her bir API Management örneği iki örnek ürünle gelir: **Başlangıç** ve **sınırsız**. API 'yi bir ürünle ilişkilendirerek, bu örnekte **sınırsız** bir API yayımlayın.<br/>Bir ürüne çeşitli API 'Ler dahil edebilir ve bunları geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Bu API 'yi başka bir ürüne eklemek için ürün adını yazın veya seçin. API 'yi birden çok ürüne eklemek için bu adımı tekrarlayın. Ayrıca, daha sonra **Ayarlar** sayfasından, ürünlere API 'ler ekleyebilirsiniz.<br/>API’ye erişim elde etmek için geliştiricilerin önce bir ürüne abone olması gerekir. Abone olduklarında, söz konusu üründeki API 'leri için iyi bir abonelik anahtarı alırlar. <br/>API Management örneğini oluşturduysanız, zaten bir yönetici olursunuz, bu nedenle örnekteki her ürüne abone olursunuz.|
    |**Ağ geçitleri**|**Yönetilen**|API 'YI kullanıma sunan API Gateway 'leri. Bu alan yalnızca **Geliştirici** ve **Premium** katman hizmetlerinde kullanılabilir.<br/>**Managed** gateway, API Management hizmetinde yerleşik olarak bulunan ve Azure 'da Microsoft tarafından barındırılan ağ geçidini gösterir. Diğer ağ geçitleri [kendi kendine barındırılan ağ geçitlerdir](self-hosted-gateway-overview.md) ve yalnızca Premium ve geliştirici hizmeti katmanlarında kullanılabilir. Bunları, şirket içinde veya diğer bulutlarda dağıtabilirsiniz.<br/>Ağ Geçidi seçilmezse, API kullanılamaz ve API istekleriniz başarılı olmayacaktır.|
    |**Bu API'nin sürümü oluşturulsun mu?**|Seç veya seçimi kaldır|Sürüm oluşturma hakkında daha fazla bilgi için bkz. [API 'nizin birden fazla sürümünü yayımlama](api-management-get-started-publish-versions.md).|

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 7d34b54349a681061f80798a19ce65d2266f589d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 441575a33e7c3d54de7b25c06f7a839805f8ac1b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559480"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875294"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -207,7 +207,7 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 
 Verileri `DataTransferStep` veri kaynakları ve havuzlar arasında taşımayı kolaylaştırır. Bu aktarmayı el ile yapmak için kod basit ancak tekrarlı. Bunun yerine, yalnızca bir `DataTransferStep` ad, bir veri kaynağı ve veri havuzu ve bir işlem hedefi ile bir oluşturma oluşturabilirsiniz. [DataTransferStep ile](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) not defteri Azure Machine Learning işlem hattı bu esnekliği gösterir.
 
-## <a name="modules"></a>Modül
+## <a name="modules"></a>Modüller
 
 Ardışık düzen adımları önceki çalıştırmanın sonuçlarının yeniden kullanılmasına izin verirken, çoğu durumda adımın oluşturulması, betiklerin ve bağımlı dosyaların gerekli olduğu varsayılır. Bir veri bilimconu mevcut kodların üzerine derlemek istiyorsa, betikler ve bağımlılıkların genellikle ayrı bir depodan klonlanmış olması gerekir.
 

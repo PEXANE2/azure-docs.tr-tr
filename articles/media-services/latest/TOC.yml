@@ -174,7 +174,7 @@
     - name: Azure Media Player
       items:
         - name: Azure Media Player'a genel bakış
-          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
+          href: ../azure-media-player/azure-media-player-overview.md
     - name: v3 API'leriyle geliştirme
       items:
         - name: Genel Bakış
@@ -362,7 +362,7 @@
     - name: Medya oynatıcılarını kullanma
       items:
         - name: Eksiksiz Azure Media Player kurulumu
-          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+          href: ../azure-media-player/azure-media-player-full-setup.md
         - name: Video.js oynatıcısını kullanma
           href: how-to-video-js-player.md
         - name: Shaka video oynatıcısını kullanma
@@ -373,7 +373,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/'
+      href: /rest/api/media/
     - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK’lar
@@ -386,7 +386,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ilkelerinde adlandırılmış değerleri kullanma
-description: Azure API Management ilkelerinde adlandırılmış değerleri nasıl kullanacağınızı öğrenin.
+description: Azure API Management ilkelerinde adlandırılmış değerleri nasıl kullanacağınızı öğrenin. Adlandırılmış değerler, sabit dizeler ve ilke ifadeleri içerebilir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243486"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852200"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
 
@@ -29,7 +29,7 @@ Her bir API Management hizmet örneği, hizmet örneği için genel olan adland�
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | dize          | İlkelerdeki adlandırılmış değere başvurmak için kullanılır. Bir ile 256 karakter arasında bir dize. Yalnızca harfler, rakamlar, nokta ve tireye izin verilir. |
 | `Value`        | string          | Gerçek değer. Boş olmamalı veya yalnızca boşluklardan oluşmalıdır. En fazla 4096 karakter uzunluğunda.                                        |
-| `Secret`       | boole         | Değerin gizli olup olmadığını ve şifrelenmesinin gerekip gerekmediğini belirler.                                                               |
+| `Secret`       | boolean         | Değerin gizli olup olmadığını ve şifrelenmesinin gerekip gerekmediğini belirler.                                                               |
 | `Tags`         | dize dizisi | Adlandırılmış değer listesini filtrelemek için kullanılır. En fazla 32 etiket.                                                                                    |
 
 ![Adlandırılmış değerler](./media/api-management-howto-properties/named-values.png)
@@ -40,7 +40,7 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](./api-management-
 | ---------- | -------------------------- | ------ | ------------- |
 | Değer      | 42                         | Yanlış  | önemli sayılar |
 | Kimlik Bilgisi | ••••••••••••••••••••••     | Doğru   | güvenlik      |
-| İfade | @ (DateTime. Now. ToString ()) | Yanlış  |               |
+| Expression | @ (DateTime. Now. ToString ()) | Yanlış  |               |
 
 > [!NOTE]
 > Bir API Management hizmeti içinde depolanan adlandırılmış değerler yerine, bu [örnekte](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)gösterildiği gibi [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) hizmetinde depolanan değerleri kullanabilirsiniz.

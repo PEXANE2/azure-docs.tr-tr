@@ -3,13 +3,13 @@ title: Çok fazla sayıda görev gönderme
 description: Tek bir Azure Batch işinde çok fazla sayıda görevi verimli bir şekilde gönderme
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 317cd3514bfa5641c163e82fb8ac17465cb02079
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84553361"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848766"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Bir Batch işine çok sayıda görev gönderme
 
@@ -54,7 +54,7 @@ Bir işe büyük bir görev koleksiyonu eklemek biraz zaman alabilir. Örneğin,
 
 Aşağıdaki C# parçacıkları Batch .NET API 'SI kullanılarak çok sayıda görev eklenirken yapılandırılacak ayarları gösterir.
 
-Görev aktarım hızını artırmak için [Batchclient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)'ın [Maxdegreeofparallelilik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğinin değerini artırın. Örneğin:
+Görev aktarım hızını artırmak için [Batchclient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)'ın [Maxdegreeofparallelilik](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) özelliğinin değerini artırın. Örnek:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -64,7 +64,7 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
 ...
 ```
 [Addtaskasync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) veya [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
-) yönteminin uygun aşırı yüklemesini kullanarak işe bir görev koleksiyonu ekleyin. Örneğin:
+) yönteminin uygun aşırı yüklemesini kullanarak işe bir görev koleksiyonu ekleyin. Örnek:
 
 ```csharp
 // Add a list of tasks as a collection
@@ -135,7 +135,7 @@ client = batch.BatchExtensionsClient(
 ...
 ```
 
-Bir işe eklemek için bir görev koleksiyonu oluşturun. Örneğin:
+Bir işe eklemek için bir görev koleksiyonu oluşturun. Örnek:
 
 
 ```python

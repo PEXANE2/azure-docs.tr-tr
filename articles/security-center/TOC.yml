@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: Güvenliği artırmak için önerileri kullanın
           href: security-center-using-recommendations.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Tehdit koruması ve güvenlik uyarıları
       items:
         - name: Güvenlik merkezinde tehdit korumasına genel bakış

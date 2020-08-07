@@ -1,6 +1,6 @@
 ---
 title: Özel CA sertifikası ekleme-Azure API Management | Microsoft Docs
-description: Azure API Management özel bir CA sertifikası eklemeyi öğrenin.
+description: Azure API Management özel bir CA sertifikası eklemeyi öğrenin. Ayrıca, bir sertifikayı silme yönergelerini de görebilirsiniz.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073599"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852081"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management özel CA sertifikası ekleme
 

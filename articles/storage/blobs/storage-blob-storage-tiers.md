@@ -1,6 +1,6 @@
 ---
 title: Blob 'lar için sık erişimli, seyrek erişimli ve arşiv erişim katmanları-Azure depolama
-description: Azure Blob depolama için sık erişimli, seyrek erişimli ve arşiv erişim katmanları hakkında bilgi edinin. Katmanlamayı destekleyen depolama hesaplarını gözden geçirin. Blok blog depolama seçeneklerini karşılaştırın.
+description: Azure Blob depolama için sık erişimli, seyrek erişimli ve arşiv erişim katmanları hakkında bilgi edinin. Katmanlamayı destekleyen depolama hesaplarını gözden geçirin. Blok Blobu depolama seçeneklerini karşılaştırın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 17df78f846d8422c0200ce5fc75b4722d21d35df
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828281"
+ms.locfileid: "87849735"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -141,7 +141,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portal ve PowerShell kullanılarak g
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 veya Blob depolama hesabının varsayılan hesap erişim katmanını değiştirme
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 veya blob depolama hesabındaki bir Blobun katmanını değiştirme
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 

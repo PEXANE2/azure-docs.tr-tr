@@ -9,19 +9,19 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
-ms.custom: tracking-python
-ms.openlocfilehash: 93e120a0519e1fc61a716e606e088801fdf508dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 7025d042fa021c6ee5311566d66bfd090dbd06cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556354"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851588"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Visual Studio için Python web ve çalışan rolleri içeren Python Araçları
 
 Bu makalede, [Visual Studio için Python Araçları][Python Tools for Visual Studio] ile Python web ve çalışan rollerini kullanmaya genel bir bakış sunulmuştur. Visual Studio’yu kullanarak Python kullanan temel bir Bulut Hizmetinin nasıl oluşturulup dağıtılacağını öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Visual Studio 2013, 2015 veya 2017](https://www.visualstudio.com/)
 * [Visual Studio için Python Araçları][Python Tools for Visual Studio] (PTVS)
 * [VS 2013 için Azure SDK Araçları][Azure SDK Tools for VS 2013] veya  

@@ -1,6 +1,6 @@
 ---
 title: Azure API Management'ta ürün oluşturma ve yayımlama
-description: Azure API Management'ta ürün oluşturmayı ve yayımlamayı öğrenin.
+description: Azure API Management'ta ürün oluşturmayı ve yayımlamayı öğrenin. Bir ürün yayımlandıktan sonra, geliştiriciler ürünün API 'Lerini kullanmaya başlayabilir.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: d90b212286b555bf5b858990fd5dcb062348be8d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69b5e381ed8446b45f68b4b1ce9bb13df47039c0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254733"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904913"
 ---
 # <a name="create-and-publish-a-product"></a>Ürün oluşturma ve yayımlama  
 
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ![Ürün ekleme](media/api-management-howto-add-products/02-create-publish-product-01.png)
 
 1. **Ürünler** sayfasını görüntülemek için soldaki menüden **Ürünler**’e tıklayın.
-2. **+ Ekle**'ye tıklayın.
+2. **+ Ekle**’ye tıklayın.
 
     Ürün eklerken aşağıdaki bilgileri sağlamanız gerekir: 
 
@@ -81,7 +81,7 @@ Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması g
 
 1. **Ürünler** sekmesinden bir ürün seçin.
 2. **API'ler** sekmesine gidin.
-3. **+ Ekle**'ye tıklayın.
+3. **+ Ekle**’ye tıklayın.
 4. Bir API seçip **Seç**’e tıklayın.
 
 > [!TIP]

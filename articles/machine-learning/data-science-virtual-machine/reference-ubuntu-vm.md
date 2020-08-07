@@ -5,16 +5,16 @@ description: Ubuntu Veri Bilimi Sanal Makinesi bulunan araçlarla ilgili ayrınt
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955548"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852234"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -85,7 +85,7 @@ Torch, makine öğrenimi algoritmaları için geniş destek içeren bilimsel bir
 
 PyTorch, kök Anaconda ortamında da mevcuttur. Örnekler/dsvm/Samples/pytorch.
 
-## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Sunucusu
+## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Server
 
 R, veri analizi ve makine öğrenimi için en popüler dillerden biridir. Analiz etmeniz için R 'yi kullanmak istiyorsanız, VM 'nin Microsoft R Open ve Math Kernel kitaplığı ile Microsoft Machine Learning Server vardır. Matematik Çekirdek Kitaplığı, analitik algoritmalarda ortak olan matematik işlemlerini iyileştirir. Microsoft R Open, CRAN R ile yüzde 100 uyumludur ve CRAN 'de yayınlanan R kitaplıklarının herhangi biri Microsoft R Open 'a yüklenebilir. 
 
@@ -255,7 +255,7 @@ R ve Python 'da modellerin Azure Machine Learning içine nasıl dağıtılacağ�
 
 ## <a name="machine-learning-tools"></a>Machine Learning araçları
 
-VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu modüller şunlardır:
+VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bunlara
 
 * **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
 * **xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.

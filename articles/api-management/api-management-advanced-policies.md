@@ -1,6 +1,6 @@
 ---
 title: Azure API Management gelişmiş ilkeleri | Microsoft Docs
-description: Azure API Management 'de kullanıma sunulan gelişmiş ilkeler hakkında bilgi edinin.
+description: Azure API Management 'de kullanıma sunulan gelişmiş ilkeler hakkında bilgi edinin. Örneklere bakın ve kullanılabilir ek kaynakları görüntüleyin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243741"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851690"
 ---
 # <a name="api-management-advanced-policies"></a>API Management gelişmiş ilkeleri
 
@@ -304,7 +304,7 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 | Öznitelik | Açıklama                                                                                        | Gerekli | Varsayılan |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
+| key       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
 | en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım

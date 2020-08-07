@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849028"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu ile klasik ölçüm uyarısı oluşturma
+
 > [!WARNING]
-> 
-> Bu makalede Kaynak Yöneticisi şablonları kullanılarak **Klasik ölçüm uyarıları** oluşturulması açıklanmaktadır. Klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır ve 2020 Haziran 'da tam kullanım dışı olarak ayarlanmıştır. Yeni klasik uyarılar Genel Azure oluşturamazsınız. Azure 'un bazı bölgesel sürümlerinde seçeneği hala olabilir, ancak bunun yerine şablonları kullanarak [daha yeni ölçüm uyarıları](./alerts-metric-near-real-time.md) oluşturmanızı öneririz. [Bu makalede](alerts-metric-create-templates.md) ayrıntılar sağlanmaktadır.
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](./alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan](./monitoring-classic-retirement.md)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda.
 >
 
 Bu makalede, Azure klasik ölçüm uyarılarını yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlendiğinden emin olmak için kaynaklardaki uyarıları otomatik olarak ayarlamanıza olanak sağlar.

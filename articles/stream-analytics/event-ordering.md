@@ -6,13 +6,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/12/2019
-ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044575"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901700"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics için olay sıralama ilkelerini yapılandırma
 
@@ -75,6 +75,11 @@ Aynı giriş akışından birden çok bölüm birleştirildiğinde, geç varış
 Bu ileti, girişte en az bir bölümün boş olduğunu ve çıktıyı geç varış eşiğine göre erteleyip geciktiğini bilgilendirecektir. Bunu aşmak için aşağıdakilerden birini yapmanız önerilir:  
 1. Olay Hub 'ınızın/IoT Hub tüm bölümlerinin giriş aldığından emin olun. 
 2. Sorgunuzda Partition by PartitionID yan tümcesini kullanın. 
+
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Geç varış ilkeniz 0 olarak ayarlandığında, neden 5 saniyelik bir gecikme görüyorum?
+Hiçbir girişi hiç almamış bir giriş bölümü olduğunda bu oluşur. Bu davranışı doğrulamak için bölüm ile giriş ölçümlerini doğrulayabilirsiniz. 
+
+Bir bölüm, yapılandırılan geç eşiğini aşan bir veri içermiyorsa, Stream Analytics, olay sırası konuları bölümünde açıklandığı gibi uygulama zaman damgasını ilerletir. Bu, tahmini varış süresi gerektirir. Bölüm hiçbir zaman veri almadıysanız, Stream Analytics varış süresini *Yerel Saat-5 saniye*olarak tahmin eder. Hiçbir veri olmayan bu bölümler nedeniyle 5 saniyelik bir eşik gecikmesi gösterebilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Zaman işleme konusunda dikkat edilmesi gerekenler](stream-analytics-time-handling.md)

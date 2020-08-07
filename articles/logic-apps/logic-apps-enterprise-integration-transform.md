@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072428"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832748"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te XML biçimini dönüştüren eşlemeler oluşturma
 
@@ -36,7 +36,7 @@ Dönüştürme/eşlemeyi tümleştirme hesabınıza yükledikten sonra, mantıks
 
 Artık önkoşulları karşıladığınıza göre, mantıksal uygulamanızı oluşturmanız zaman atalım:  
 
-1. Bir mantıksal uygulama oluşturun ve [bunu eşlemeyi içeren tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-accounts.md "Tümleştirme hesabını bir Logic App 'e bağlamayı öğrenin") .
+1. Bir mantıksal uygulama oluşturun ve [bunu eşlemeyi içeren tümleştirme hesabınıza bağlayın](./logic-apps-enterprise-integration-create-integration-account.md "Tümleştirme hesabını bir Logic App 'e bağlamayı öğrenin") .
 2. Mantıksal uygulamanıza **istek** tetikleyicisi ekleme  
    ![Istek tetikleyicisi seçiliyken "Microsoft tarafından yönetilen API 'Leri göster" açılır listesinin ekran görüntüsü. Açılan menü, Visual Studio Enterprise tümleştirme SDK 'Sı kullanılarak oluşturulan bir mantıksal uygulamadır.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Önce **Eylem Ekle** ÖĞESINI seçerek **XML dönüştürme** eylemini ekleyin   
@@ -136,4 +136,3 @@ Varsayılan olarak, dönüşümden gelen yanıt bayt sıra Işaretiyle (BOM) ba�
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 * [Enterprise Integration Pack hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin")  
 * [Haritalar hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-maps.md "Kurumsal tümleştirme haritaları hakkında bilgi edinin")  
-
