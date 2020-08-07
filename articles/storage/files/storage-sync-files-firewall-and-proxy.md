@@ -1,18 +1,18 @@
 ---
 title: Şirket içi güvenlik duvarı ve proxy ayarlarını Azure Dosya Eşitleme | Microsoft Docs
-description: Şirket içi ağ yapılandırması Azure Dosya Eşitleme
+description: Şirket içi proxy ve güvenlik duvarı ayarlarını Azure Dosya Eşitleme anlayın. Bağlantı noktaları, ağlar ve Azure 'a özel bağlantılar için yapılandırma ayrıntılarını gözden geçirin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515286"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903723"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -111,33 +111,33 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 | Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
-| Ortak |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Güneydoğu Avustralya | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
-| Ortak |Güneydoğu Avustralya | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |
-| Ortak | Güney Brezilya | https: \/ /brazilsouth01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-brazilsouth01.AFS.Azure.net |
-| Ortak | Orta Kanada | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /Kailani-CAC.One.Microsoft.com | Doğu Kanada | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-Kailani-CAC.One.Microsoft.com |
-| Ortak | Doğu Kanada | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /Kailani-CAE.One.Microsoft.com | Orta Kanada | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani.CAE.One.Microsoft.com |
-| Ortak | Orta Hindistan | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |
-| Ortak | Orta ABD | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /Kailani-cus.One.Microsoft.com | Doğu ABD 2 | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-Kailani-cus.One.Microsoft.com |
-| Ortak | Doğu Asya | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.Microsoft.com | Güneydoğu Asya | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.Microsoft.com |
-| Ortak | Doğu ABD | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.Microsoft.com | Batı ABD | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.Microsoft.com |
-| Ortak | Doğu ABD 2 | https: \/ /eastus201.AFS.Azure.net<br>https: \/ /Kailani-ESS.One.Microsoft.com | Orta ABD | https: \/ /TM-eastus201.AFS.Azure.net<br>https: \/ /TM-Kailani-ESS.One.Microsoft.com |
-| Ortak | Doğu Japonya | https: \/ /japaneast01.AFS.Azure.net | Batı Japonya | https: \/ /TM-japaneast01.AFS.Azure.net |
-| Ortak | Batı Japonya | https: \/ /japanwest01.AFS.Azure.net | Doğu Japonya | https: \/ /TM-japanwest01.AFS.Azure.net |
-| Ortak | Güney Kore - Orta | https: \/ /koreacentral01.AFS.Azure.net/ | Güney Kore - Güney | https: \/ /TM-koreacentral01.AFS.Azure.net/ |
-| Ortak | Güney Kore - Güney | https: \/ /koreasouth01.AFS.Azure.net/ | Güney Kore - Orta | https: \/ /TM-koreasouth01.AFS.Azure.net/ |
-| Ortak | Orta Kuzey ABD | https: \/ /northcentralus01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-northcentralus01.AFS.Azure.net |
-| Ortak | Kuzey Avrupa | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | Batı Avrupa | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
-| Ortak | Orta Güney ABD | https: \/ /southcentralus01.AFS.Azure.net | Orta Kuzey ABD | https: \/ /TM-southcentralus01.AFS.Azure.net |
-| Ortak | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Orta Hindistan | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
-| Ortak | Güneydoğu Asya | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Doğu Asya | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
-| Ortak | Güney Birleşik Krallık | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKS.One.Microsoft.com | Batı Birleşik Krallık | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKS.One.Microsoft.com |
-| Ortak | Batı Birleşik Krallık | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-UKW.One.Microsoft.com | Güney Birleşik Krallık | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKW.One.Microsoft.com |
-| Ortak | Orta Batı ABD | https: \/ /westcentralus01.AFS.Azure.net | Batı ABD 2 | https: \/ /TM-westcentralus01.AFS.Azure.net |
-| Ortak | Batı Avrupa | https: \/ /westeurope01.AFS.Azure.net<br>https: \/ /kailani6.One.Microsoft.com | Kuzey Avrupa | https: \/ /TM-westeurope01.AFS.Azure.net<br>https: \/ /TM-kailani6.One.Microsoft.com |
-| Ortak | Batı ABD | https: \/ /westus01.AFS.Azure.net<br>https: \/ /Kailani.One.Microsoft.com | Doğu ABD | https: \/ /TM-westus01.AFS.Azure.net<br>https: \/ /TM-Kailani.One.Microsoft.com |
-| Ortak | Batı ABD 2 | https: \/ /westus201.AFS.Azure.net | Orta Batı ABD | https: \/ /TM-westus201.AFS.Azure.net |
-| Devlet | US Gov Arizona | https: \/ /usgovarizona01.AFS.Azure.us | US Gov Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
-| Devlet | US Gov Texas | https: \/ /usgovtexas01.AFS.Azure.us | US Gov Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
+| Genel |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Avustralya Güneydoğu | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
+| Genel |Avustralya Güneydoğu | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |
+| Genel | Brezilya Güney | https: \/ /brazilsouth01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-brazilsouth01.AFS.Azure.net |
+| Genel | Orta Kanada | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /Kailani-CAC.One.Microsoft.com | Doğu Kanada | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-Kailani-CAC.One.Microsoft.com |
+| Genel | Doğu Kanada | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /Kailani-CAE.One.Microsoft.com | Orta Kanada | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani.CAE.One.Microsoft.com |
+| Genel | Orta Hindistan | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |
+| Genel | Central US | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /Kailani-cus.One.Microsoft.com | Doğu ABD 2 | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-Kailani-cus.One.Microsoft.com |
+| Genel | Doğu Asya | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.Microsoft.com | Güneydoğu Asya | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.Microsoft.com |
+| Genel | Doğu ABD | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.Microsoft.com | Batı ABD | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.Microsoft.com |
+| Genel | Doğu ABD 2 | https: \/ /eastus201.AFS.Azure.net<br>https: \/ /Kailani-ESS.One.Microsoft.com | Central US | https: \/ /TM-eastus201.AFS.Azure.net<br>https: \/ /TM-Kailani-ESS.One.Microsoft.com |
+| Genel | Doğu Japonya | https: \/ /japaneast01.AFS.Azure.net | Batı Japonya | https: \/ /TM-japaneast01.AFS.Azure.net |
+| Genel | Batı Japonya | https: \/ /japanwest01.AFS.Azure.net | Doğu Japonya | https: \/ /TM-japanwest01.AFS.Azure.net |
+| Genel | Güney Kore - Orta | https: \/ /koreacentral01.AFS.Azure.net/ | Güney Kore - Güney | https: \/ /TM-koreacentral01.AFS.Azure.net/ |
+| Genel | Güney Kore - Güney | https: \/ /koreasouth01.AFS.Azure.net/ | Güney Kore - Orta | https: \/ /TM-koreasouth01.AFS.Azure.net/ |
+| Genel | Orta Kuzey ABD | https: \/ /northcentralus01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-northcentralus01.AFS.Azure.net |
+| Genel | Kuzey Avrupa | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
+| Genel | Orta Güney ABD | https: \/ /southcentralus01.AFS.Azure.net | Orta Kuzey ABD | https: \/ /TM-southcentralus01.AFS.Azure.net |
+| Genel | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Orta Hindistan | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
+| Genel | Güneydoğu Asya | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Doğu Asya | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
+| Genel | Güney Birleşik Krallık | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKS.One.Microsoft.com | Batı Birleşik Krallık | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKS.One.Microsoft.com |
+| Genel | Batı Birleşik Krallık | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-UKW.One.Microsoft.com | Güney Birleşik Krallık | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKW.One.Microsoft.com |
+| Genel | Orta Batı ABD | https: \/ /westcentralus01.AFS.Azure.net | Batı ABD 2 | https: \/ /TM-westcentralus01.AFS.Azure.net |
+| Genel | West Europe | https: \/ /westeurope01.AFS.Azure.net<br>https: \/ /kailani6.One.Microsoft.com | Kuzey Avrupa | https: \/ /TM-westeurope01.AFS.Azure.net<br>https: \/ /TM-kailani6.One.Microsoft.com |
+| Genel | Batı ABD | https: \/ /westus01.AFS.Azure.net<br>https: \/ /Kailani.One.Microsoft.com | Doğu ABD | https: \/ /TM-westus01.AFS.Azure.net<br>https: \/ /TM-Kailani.One.Microsoft.com |
+| Genel | Batı ABD 2 | https: \/ /westus201.AFS.Azure.net | Orta Batı ABD | https: \/ /TM-westus201.AFS.Azure.net |
+| Kamu | US Gov Arizona | https: \/ /usgovarizona01.AFS.Azure.us | US Gov Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
+| Kamu | US Gov Texas | https: \/ /usgovtexas01.AFS.Azure.us | US Gov Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
 
 - Yerel olarak yedekli (LRS) veya bölge yedekli (ZRS) depolama hesapları kullanıyorsanız, yalnızca "birincil uç nokta URL 'SI" altında listelenen URL 'YI etkinleştirmeniz gerekir.
 
@@ -280,6 +280,6 @@ Bu belgede daha önce bulunan listeler, şu anda iletişim kuran Azure Dosya Eş
 Etki alanı sınırlandırma güvenlik duvarı kurallarını ayarlamak, güvenliği artırmak için bir ölçü olabilir. Bu güvenlik duvarı yapılandırmalarının kullanılması durumunda, URL 'Lerin ekleneceğini ve zaman içinde değişebileceğini göz önünde bulundurmanız gerekir. Bu makaleye düzenli olarak bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)
 - [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)

@@ -1,7 +1,7 @@
 ---
 title: .NET ile depolanan bir erişim ilkesi oluşturma
 titleSuffix: Azure Storage
-description: .NET istemci kitaplığını kullanarak depolanan bir erişim ilkesi oluşturmayı öğrenin.
+description: Depolanan bir erişim ilkesi oluşturmak için Azure Storage ve .NET kullanın. Sunucusunda hizmet düzeyi paylaşılan erişim imzaları üzerinde ek denetim düzeyleri yapın.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f4a0d69f3687f0dcc174a2d8a1275a2bf55d9ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504398"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903774"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>.NET ile depolanan bir erişim ilkesi oluşturma
 

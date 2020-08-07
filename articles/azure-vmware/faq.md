@@ -4,12 +4,12 @@ description: Azure VMware çözümü (AVS) ile ilgili bazı yaygın soruların y
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836590"
+ms.locfileid: "87872336"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizleme hakkında sık sorulan sorular
 
@@ -45,7 +45,7 @@ Belirli tümleştirmeler ve kullanım durumları, büyük/küçük harf esasına
 
 **VSphere sanal makinelerini şirket içi ortamlardan AVS özel bulutlarına geçirebilir miyim?**
 
-Evet. Standart çapraz vCenter [vMotion Requirements] [] karşılanıyorsa VM 'Leri özel buluta taşımak için VM geçişi ve vMotion kullanılabilir https://kb.vmware.com/s/article/210695 .
+Evet. Standart çapraz vCenter [vMotion gereksinimleri](https://kb.vmware.com/s/article/210695) karşılanıyorsa VM 'leri özel bir buluta TAŞıMAK için VM geçişi ve vMotion kullanılabilir.
 
 **Şirket içi ortamlarda gerekli olan belirli bir vSphere sürümü mi?**
 

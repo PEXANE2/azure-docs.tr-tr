@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475660"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904199"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -49,9 +49,9 @@ Red hat çekme gizli dizisi, kümenizin ek içerikle birlikte Red Hat kapsayıc�
 
    Red Hat hesabınızda oturum açmanız veya iş e-postanızı kullanarak yeni bir Red Hat hesabı oluşturmanız ve hüküm ve koşulları kabul etmeniz gerekir.
 
-2. **Çekme gizliliğini Indir ' e tıklayın.**
+2. İlk kez bir küme oluşturuyorsanız [**OpenShift ürün sayfasına**](https://developers.redhat.com/products/codeready-containers) gidin. Kayıttan sonra, [**Red Hat OpenShift kümesi Yöneticisi sayfasına**](https://cloud.redhat.com/openshift/)gidin. burada, **çekme gizliliğini indir** ' e tıklayabilir ve Aro kümenizde kullanılacak bir çekme gizli anahtarı indirebilirsiniz.
 
-Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde tutun-bu, her küme oluşturmada kullanılacaktır.
+Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde saklayın. Red hat veya sertifikalı iş ortakları için örnekler veya işleçler içeren bir küme oluşturmanız gerekiyorsa dosya her küme oluşturmada kullanılacaktır.
 
 `az aro create`Komutunu çalıştırırken, parametresini kullanarak çekme gizli dizinizi başvurabilirsiniz `--pull-secret @pull-secret.txt` . `az aro create`Dosyanızı depoladığınız dizinden yürütün `pull-secret.txt` . Aksi takdirde, `@pull-secret.txt` ile değiştirin `@<path-to-my-pull-secret-file>` .
 
