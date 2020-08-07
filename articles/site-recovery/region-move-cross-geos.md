@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134022"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927309"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure VM’lerini Azure Kamu ve Genel bölgeleri arasında taşıma 
 
@@ -53,7 +53,7 @@ Bu öğreticide, Azure sanal makinelerini Azure Kamu ve ortak bölgeler arasınd
 Azure hesabınızın VM 'lerin Azure 'a çoğaltılması için izinlere sahip olduğundan emin olun.
 
 - Makineleri Azure 'a çoğaltmak için gereken [izinleri](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) gözden geçirin.
-- [Rol tabanlı erişim](../role-based-access-control/role-assignments-portal.md) izinlerini doğrulayın ve değiştirin. 
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) izinlerini doğrulayın ve değiştirin. 
 
 ### <a name="set-up-an-azure-network"></a>Azure ağı ayarlama
 
@@ -187,7 +187,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  **Source**.
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
-4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Ardından **Tamam**'a tıklayın.
+4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Daha sonra, **Tamam**'a tıklayın.
 5. **Hedef**bölümünde, yük devretmeden sonra Azure VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Azure 'da kullanmak istediğiniz dağıtım modelini (klasik veya kaynak yönetimi) seçin.
 6. Verileri çoğaltmak için kullanmak istediğiniz Azure depolama hesabını seçin. 
 7. Yük devretme sonrasında oluşturulan Azure VM'lerinin bağlanacağı Azure ağını ve alt ağını seçin.

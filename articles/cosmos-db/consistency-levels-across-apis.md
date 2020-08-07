@@ -5,22 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119316"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920441"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
 
-Azure Cosmos DB popüler veritabanları için kablolu protokol ile uyumlu API 'Ler için yerel destek sağlar. Bunlar MongoDB, Apache Cassandra, Gremlin ve Azure Tablo depolama 'yı içerir. Bu veritabanları, tutarlılık düzeyleri için tam olarak tanımlanmış tutarlılık modelleri veya SLA ile desteklenen garantiler sunmaz. Genellikle, Azure Cosmos DB tarafından sunulan beş tutarlılık modelinin yalnızca bir alt kümesini sağlar. 
+Azure Cosmos DB popüler veritabanları için kablolu protokol ile uyumlu API 'Ler için yerel destek sağlar. Bunlar MongoDB, Apache Cassandra, Gremlin ve Azure Tablo depolama 'yı içerir. Bu veritabanları, tutarlılık düzeyleri için tam olarak tanımlanmış tutarlılık modelleri veya SLA ile desteklenen garantiler sunmaz. Genellikle, Azure Cosmos DB tarafından sunulan beş tutarlılık modelinin yalnızca bir alt kümesini sağlar.
 
 SQL API, Gremlin API ve Tablo API'si kullanıldığında, Azure Cosmos hesabında yapılandırılan varsayılan tutarlılık düzeyi kullanılır. 
 
 MongoDB için Cassandra API veya Azure Cosmos DB API 'sini kullanırken, uygulamalar, sırasıyla Apache Cassandra ve MongoDB tarafından sunulan bir tutarlılık düzeyi kümesini, hatta daha güçlü tutarlılık ve dayanıklılık garantisi elde eder. Bu belgede Apache Cassandra ve MongoDB tutarlılık düzeyleri için karşılık gelen Azure Cosmos DB tutarlılığı düzeyleri gösterilmektedir.
+
+> [!NOTE]
+> Azure Cosmos DB için varsayılan tutarlılık modeli oturumdur. Oturum, Cassandra ya da MongoDB tarafından yerel olarak desteklenmeyen istemci merkezli bir tutarlılık modelidir. Hangi tutarlılık modelinin seçeyli hakkında daha fazla bilgi için [Azure Cosmos DB ' deki tutarlılık düzeyleri](consistency-levels.md) ' ne bakın
 
 ## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Apache Cassandra ve Azure Cosmos DB tutarlılık düzeyleri arasında eşleme
 
@@ -36,14 +39,14 @@ Aşağıdaki tabloda, Cassandra API kullanılırken yerel Cassandra tutarlılık
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>MongoDB ve Azure Cosmos DB tutarlılık düzeyleri arasında eşleme
 
-Azure Cosmos DB aksine, yerel MongoDB kesin olarak tanımlanmış tutarlılık garantisi sağlamaz. Bunun yerine, yerel MongoDB kullanıcıların, istenen tutarlılık düzeyini elde etmek için, okuma işlemlerini birincil veya ikincil çoğaltmalara yönlendirecek bir yazma sorunu, bir okuma sorunu ve isMaster yönergesi sağlar. 
+Azure Cosmos DB aksine, yerel MongoDB kesin olarak tanımlanmış tutarlılık garantisi sağlamaz. Bunun yerine, yerel MongoDB kullanıcıların, istenen tutarlılık düzeyini elde etmek için, okuma işlemlerini birincil veya ikincil çoğaltmalara yönlendirecek bir yazma sorunu, bir okuma sorunu ve isMaster yönergesi sağlar.
 
 MongoDB için Azure Cosmos DB API 'SI kullanılırken MongoDB sürücüsü, yazma bölgenizi birincil çoğaltma olarak değerlendirir ve diğer tüm bölgeler okuma çoğaltmasıdır. Azure Cosmos hesabınızla ilişkilendirilen bölgeyi birincil çoğaltma olarak seçebilirsiniz. 
 
 Azure Cosmos DB, MongoDB için API 'sini kullanırken:
 
 * Yazma sorunu, Azure Cosmos hesabınızda yapılandırılmış varsayılan tutarlılık düzeyiyle eşleştirilir.
- 
+
 * Azure Cosmos DB, MongoDB istemci sürücüsüyle belirtilen okuma kaygısını, bir okuma isteği üzerinde dinamik olarak yapılandırılmış Azure Cosmos DB tutarlılık düzeylerinden birine dinamik olarak eşler.  
 
 * Bölgeyi ilk yazılabilir bölge olarak yaparak Azure Cosmos hesabınızla ilişkili belirli bir bölgeye "ana" olarak ek açıklama ekleyebilirsiniz. 

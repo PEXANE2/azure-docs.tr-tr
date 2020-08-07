@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328478"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921275"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te transactable SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -56,7 +56,7 @@ Başlamak için [Yeni bir uygulama kaydetme](https://docs.microsoft.com/azure/ac
 
 Microsoft Graph API 'sini sorgulamak istiyorsanız, [Yeni uygulamanızı Web API 'lerine erişecek şekilde yapılandırın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Bu uygulama için API izinlerini seçtiğinizde, **Kullanıcı. Read** 'in varsayılanı, ekleme işlemini sorunsuz ve otomatik hale getirmek için alıcı hakkındaki temel bilgileri toplamak üzere yeterlidir. Yönetici olmayan tüm kullanıcıların giriş sayfanızı ziyaret etmesini engelleyecek şekilde, yönetici **izni olması gereken**HERHANGI bir API izni isteme.
 
-Hazırlama veya sağlama işleminizin bir parçası olarak yükseltilmiş izinlere ihtiyacınız varsa, Market 'ten gönderilen tüm alıcıların başlangıçta giriş sayfasıyla etkileşime girebilmesi için Azure AD 'nin [artımlı onay](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis) işlevlerini kullanmayı düşünün.
+Hazırlama veya sağlama işleminizin bir parçası olarak yükseltilmiş izinlere ihtiyacınız varsa, Market 'ten gönderilen tüm alıcıların başlangıçta giriş sayfasıyla etkileşime girebilmesi için Azure AD 'nin [artımlı onay](https://aka.ms/incremental-consent) işlevlerini kullanmayı düşünün.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Başlangıç noktası olarak bir kod örneği kullanma
 
@@ -90,16 +90,7 @@ SaaS 'nin birlikte getirilmesi API 'Leri ile uygulamanızın kimliğini doğrula
 
 ### <a name="call-the-resolve-endpoint"></a>Çözümleme bitiş noktasını çağırma
 
-SaaS 'nin yeniden getirilmesi API 'Leri, Market belirtecinin geçerliliğini onaylamak ve bu tabloda gösterilen değerler dahil olmak üzere abonelik hakkında bilgi döndürmek için çağrılabilecek [Çözümle](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) bitiş noktasını uygular.
-
-| Değer | Açıklama |
-| ------------ | ------------- |
-| Id | Bu abonelik için benzersiz tanımlayıcı (GUID). Bu değere, daha sonra SaaS karşılama API 'Lerine çağrı yapmanız gerekir. |
-| subscriptionName | Teklif Iş Ortağı Merkezi 'ne eklendiğinde ayarlanan aboneliğin adı. |
-| OfferId | Belirli teklif için tanımlayıcı (teklif eklendiğinde ayarlanır). |
-| PlanID | Teklif için belirli bir planın tanımlayıcısı (teklif eklendiğinde ayarlanır). |
-| Miktar | Satın alma sırasında alıcıya göre miktar girişi. |
-|||
+SaaS karşılama API 'Leri, Market belirtecinin geçerliliğini onaylamak ve abonelik hakkında bilgi döndürmek için çağrılabilecek [Çözümleme](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) bitiş noktasını uygular.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>KIMLIK belirtecinde kodlanan taleplerden bilgi okuyun
 

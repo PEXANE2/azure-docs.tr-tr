@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401055"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921427"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Çok cihazlı konuşma (Önizleme) nedir?
 
@@ -60,7 +60,7 @@ Gerçek zamanlı döküm ve çeviri, konuşmaları farklı diller konuştan ve/v
 Ayrıca, hem ekranda hem de hedef kitle üyelerinin kendi cihazlarındaki sunular ve seminerler için açıklamalı alt yazılar sağlayabilirsiniz. Hedef kitle konuşma koduyla birleştikten sonra, kendi cihazındaki bu dökümü kendi tercih ettiği dilde görebilirler.
 
 > [!NOTE]
-> Bir örnek görmek için, çok cihazlı konuşma hizmetini kullanan bir PowerPoint eklentisi olan [sunu çeviricisine](https://www.microsoft.com/translator/apps/presentation-translator/)göz atın. Söz konusu dosyayı [buradan](https://www.microsoft.com/download/details.aspx?id=55024) indirebilirsiniz.
+> Bir örnek görmek için, çok cihazlı konuşma hizmetini kullanan bir PowerPoint eklentisi olan [sunu çeviricisine](https://www.microsoft.com/translator/apps/presentation-translator/)göz atın. Söz konusu dosyayı [buradan](https://download.cnet.com/s/powerpoint-add-in/) indirebilirsiniz.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 

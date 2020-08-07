@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064315"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920696"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
 
@@ -31,12 +31,12 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Staryaprak 
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir Staryaprak kiracısı](https://www.starleaf.com/solutions/).
+* [Bir Staryaprak kiracısı](https://starleaf.com/).
 * Yönetici izinlerine sahip Staryaprak 'da bir kullanıcı hesabı.
 
 ## <a name="assign-users-to-starleaf"></a>Kullanıcıları Staryaprak 'a ata
@@ -58,7 +58,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**'ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**’ya tıklayın.
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image01.png)
 

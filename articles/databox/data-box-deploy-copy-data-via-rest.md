@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: REST API 'Leri aracılığıyla blob depolamaya kopyalama"
 titleSuffix: Azure Data Box
-description: REST API 'Leri aracılığıyla Azure Data Box BLOB depolama alanına veri kopyalamayı öğrenin
+description: Bu öğreticide, http veya https üzerinden REST API 'Lerini kullanarak Azure Data Box blob depolamaya bağlanmayı öğrenin ve sonra Azure Data Box verileri kopyalayın.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 50c4daabe3dc980937f52db7e56cd778890b84d8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960698"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926204"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Öğretici: Azure Data Box blob depolamaya veri kopyalamak için REST API 'Lerini kullanma  
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * *Http* veya *https* aracılığıyla Data Box blob depolamaya bağlanma
 > * Data Box'a veri kopyalama
 
@@ -133,7 +133,7 @@ Ubuntu ve deni gibi birkaç tane `update-ca-certificates` komutunu kullanın.
 RHEL, Fedora ve CentOS 'ın son sürümleri `update-ca-trust` komutunu kullanır.
 
 * Sertifika dosyasını `/etc/pki/ca-trust/source/anchors` dizine kopyalayın.
-* `update-ca-trust` öğesini çalıştırın.
+* `update-ca-trust` komutunu çalıştırın.
 
 Ayrıntılar için dağıtıma özgü belgelere başvurun.
 

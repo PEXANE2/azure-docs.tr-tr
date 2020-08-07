@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1d7b29bbd508223888c6f205e25008c0b29fecea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903536"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922943"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -72,10 +72,12 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 
 | Senaryo | Uyarı için kullanılacak ölçüm |
 |-|-|
-| Portalda sunucu uç noktası sistem durumu = hata | Eşitleme oturumu sonucu |
+| Sunucu uç noktası sistem durumu portalda bir hata gösteriyor | Eşitleme oturumu sonucu |
 | Dosyalar bir sunucu veya bulut uç noktasına eşitlenemiyor | Dosyalar eşitlenmiyor |
 | Kayıtlı sunucu, depolama eşitleme hizmeti ile iletişim kuramıyor | Sunucu çevrimiçi durumu |
 | Bulut katmanlama geri çağırma boyutu günde 500 gib 'yi aştı  | Bulut katmanlama geri çağırma boyutu |
+
+Bu senaryolar için uyarı oluşturma yönergeleri için [uyarı örnekleri](#alert-examples) bölümüne bakın.
 
 ## <a name="storage-sync-service"></a>Depolama Eşitleme Hizmeti
 
@@ -110,7 +112,7 @@ Kayıtlı sunucu sistem durumu, sunucu uç noktası sistem durumu ve ölçümler
 
 ## <a name="windows-server"></a>Windows Server
 
-Windows Server 'da bulut katmanlaması, kayıtlı sunucu ve eşitleme sistem durumunu görüntüleyebilirsiniz.
+Azure Dosya Eşitleme aracısının yüklü olduğu Windows Server 'da, bulut katmanlaması, kayıtlı sunucu ve eşitleme sistem durumunu görüntüleyebilirsiniz.
 
 ### <a name="event-logs"></a>Olay günlükleri
 
@@ -162,6 +164,100 @@ Azure Dosya Eşitleme için aşağıdaki performans sayaçları performans Izley
 | AFS Sync Operations\indirilen eşitleme dosyaları/sn | Saniye başına indirilen dosya sayısı. |
 | AFS Sync Operations\karşıya yüklenen eşitleme dosyaları/sn | Saniye başına karşıya yüklenen dosya sayısı. |
 | AFS Sync Operations\toplam eşitleme dosyası Işlemi/sn | Eşitlenen toplam dosya sayısı (karşıya yükleme ve indirme). |
+
+## <a name="alert-examples"></a>Uyarı örnekleri
+Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
+
+  > [!Note]  
+  > Bir uyarı oluşturursanız ve çok gürültülü bir uyarı oluşturursanız eşik değerini ve uyarı mantığını ayarlayın.
+  
+### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Sunucu uç noktası durumu portalda bir hata gösteriyorsa uyarı oluşturma
+
+1. **Azure Portal**Ilgili **depolama eşitleme hizmeti**' ne gidin. 
+2. **İzleme** bölümüne gidin ve **Uyarılar**' a tıklayın. 
+3. Yeni bir uyarı kuralı oluşturmak için **+ Yeni uyarı kuralına** tıklayın. 
+4. **Koşul Seç**' i tıklatarak koşulu yapılandırın.
+5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **eşitleme oturumu sonucu** ' na tıklayın.  
+6. Aşağıdaki boyut yapılandırmasını seçin: 
+    - Boyut adı: **sunucu uç noktası adı**  
+    - İşlecinde**=** 
+    - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
+7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
+    - Eşik **statik** olarak ayarlandı 
+    - İşleç: **küçüktür** 
+    - Toplama türü: **en fazla**  
+    - Eşik değeri: **1** 
+    - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **24 saat** | Değerlendirme sıklığı = **her saat** 
+    - Bitti ' ye tıklayın **.** 
+8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
+9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. **Uyarı kuralı oluştur**’a tıklayın. 
+
+### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>Dosyalar bir sunucu veya bulut uç noktası ile eşitlenememesi durumunda uyarı oluşturma
+
+1. **Azure Portal**Ilgili **depolama eşitleme hizmeti**' ne gidin. 
+2. **İzleme** bölümüne gidin ve **Uyarılar**' a tıklayın. 
+3. Yeni bir uyarı kuralı oluşturmak için **+ Yeni uyarı kuralına** tıklayın. 
+4. **Koşul Seç**' i tıklatarak koşulu yapılandırın.
+5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **eşitleme değil dosyalar** ' a tıklayın.  
+6. Aşağıdaki boyut yapılandırmasını seçin: 
+     - Boyut adı: **sunucu uç noktası adı**  
+     - İşlecinde**=** 
+     - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
+7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
+     - Eşik **statik** olarak ayarlandı 
+     - İşleç: **büyüktür** 
+     - Toplama türü: **Toplam**  
+     - Eşik değeri: **100** 
+     - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **5 dakika** | Değerlendirme sıklığı = **her 5 dakikada** bir 
+     - Bitti ' ye tıklayın **.** 
+8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
+9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. **Uyarı kuralı oluştur**’a tıklayın. 
+
+### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>Kayıtlı bir sunucu depolama eşitleme hizmeti ile iletişim kuramıyorsa uyarı oluşturma
+
+1. **Azure Portal**Ilgili **depolama eşitleme hizmeti**' ne gidin. 
+2. **İzleme** bölümüne gidin ve **Uyarılar**' a tıklayın. 
+3. Yeni bir uyarı kuralı oluşturmak için **+ Yeni uyarı kuralına** tıklayın. 
+4. **Koşul Seç**' i tıklatarak koşulu yapılandırın.
+5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **sunucu çevrimiçi durumu** ' na tıklayın.  
+6. Aşağıdaki boyut yapılandırmasını seçin: 
+     - Boyut adı: **sunucu adı**  
+     - İşlecinde**=** 
+     - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
+7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
+     - Eşik **statik** olarak ayarlandı 
+     - İşleç: **küçüktür** 
+     - Toplama türü: **en fazla**  
+     - Eşik değeri (bayt): **1** 
+     - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **1 saat** | Değerlendirme sıklığı = **her 30 dakikada** bir 
+     - Bitti ' ye tıklayın **.** 
+8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
+9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. **Uyarı kuralı oluştur**’a tıklayın. 
+
+### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>Bulut katmanlama geri çağırma boyutu günde 500 gib 'yi aşarsa uyarı oluşturma
+
+1. **Azure Portal**Ilgili **depolama eşitleme hizmeti**' ne gidin. 
+2. **İzleme** bölümüne gidin ve **Uyarılar**' a tıklayın. 
+3. Yeni bir uyarı kuralı oluşturmak için **+ Yeni uyarı kuralına** tıklayın. 
+4. **Koşul Seç**' i tıklatarak koşulu yapılandırın.
+5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **bulut katmanlama geri çağırma boyutu** ' na tıklayın.  
+6. Aşağıdaki boyut yapılandırmasını seçin: 
+     - Boyut adı: **sunucu adı**  
+     - İşlecinde**=** 
+     - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
+7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
+     - Eşik **statik** olarak ayarlandı 
+     - İşleç: **büyüktür** 
+     - Toplama türü: **Toplam**  
+     - Eşik değeri (bayt): **67108864000** 
+     - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **24 saat** | Değerlendirme sıklığı = **her saat** 
+    - Bitti ' ye tıklayın **.** 
+8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
+9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. **Uyarı kuralı oluştur**’a tıklayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)

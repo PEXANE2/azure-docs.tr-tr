@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058102"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923739"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD’ye katılmış cihazlar
 
@@ -28,7 +28,7 @@ Azure AD katılımı, yalnızca bulutta veya bulutta olmak isteyen kuruluşlar i
 | **Birincil hedef kitle** | Yalnızca bulut ve hibrit kuruluşlar için uygundur. |
 |   | Bir kuruluştaki tüm kullanıcılar için geçerlidir |
 | **Cihaz sahipliği** | Kuruluş |
-| **İşletim sistemleri** | Tüm Windows 10 cihazları |
+| **İşletim sistemleri** | Windows 10 Home dışındaki tüm Windows 10 cihazları |
 |   | [Azure 'da çalışan Windows Server 2019 sanal makineleri](howto-vm-sign-in-azure-ad-windows.md) (Sunucu Çekirdeği desteklenmez) |
 | **Sağlanıyor** | Self Servis: Windows OOBE veya Settings |
 |   | Toplu kayıt |
@@ -62,7 +62,7 @@ Azure AD’ye katılma özelliği temel olarak bir şirket içi Windows Server A
 - Active Directory yerine Azure AD’de bir kullanıcı grubunu yönetmek istediğinizde. Bu senaryo, örneğin, dönemsel çalışanlar, yükleniciler veya öğrenciler için uygulanabilir.
 - Sınırlı şirket içi altyapısı olan uzak şube ofislerindeki çalışanlara katılma özellikleri sağlamak istediğinizde.
 
-Windows 10 cihazları için Azure AD’ye katılmış cihazları yapılandırabilirsiniz.
+Tüm Windows 10 cihazları için Azure AD 'ye katılmış cihazları Windows 10 Home dışında yapılandırabilirsiniz.
 
 Azure AD'ye katılmış cihazların hedefi şu işlemlerde basitleştirme sağlamaktır:
 

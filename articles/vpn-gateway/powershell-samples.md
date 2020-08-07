@@ -1,22 +1,22 @@
 ---
 title: VPN Gateway için Azure PowerShell örnekleri
-description: VPN Gateway için Azure PowerShell örnekleri.
+description: Rota tabanlı VPN ağ geçitleri, VNet-VNet bağlantıları oluşturmak ve VPN cihaz şablonunu indirmek için bu Azure PowerShell betikleri kullanın.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: fcae37da3ef9c5b2b7633db1dd16cec247a782af
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c92e3bad0e8e49ff07997dd37ed7098087c39d5e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203829"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921563"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>VPN Gateway için Azure PowerShell örnekleri
 
-Aşağıdaki tablo, Azure PowerShell betiklerinin bağlantılarını içerir:
+Aşağıdaki tablo Azure PowerShell betiklerinin bağlantılarını içerir:
 
 | Komut Dosyası | Açıklama |
 |----|----|

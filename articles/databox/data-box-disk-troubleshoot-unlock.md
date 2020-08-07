@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk disk kilit açma sorunlarını giderme | Microsoft Docs
-description: Azure Data Box Disk sorunlarının nasıl giderileceği anlatılmaktadır.
+description: Azure Data Box Disk ile kilit açma aracında sorunları gidermeye yönelik iş akışları hakkında bilgi edinin. Data Box Disk araç açma hatası bölümüne bakın.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 61f6da7df09f9569af1746563dc3be2922f4e2c1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833578"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925570"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Azure Data Box Disk disk kilit açma sorunlarını giderme
 

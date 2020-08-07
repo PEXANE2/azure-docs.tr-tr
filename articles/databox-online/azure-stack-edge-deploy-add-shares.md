@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Edge ile paylaşımlara veri aktarma öğreticisi | Microsoft Docs
-description: Azure Stack Edge cihazında paylaşımların nasıl ekleneceğini ve bu cihazlarda nasıl bağlanacağınızı öğrenin.
+description: Bu öğreticide, Azure Stack Edge 'in verileri Azure 'a aktarabilmesi için Azure Stack Edge cihazınızda paylaşımların nasıl ekleneceğini ve bu cihazlarda nasıl bağlanacağınızı öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e62d746be92583abead1c3edb93900068b123838
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82571080"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926119"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge"></a>Öğretici: Azure Stack Edge ile veri aktarımı
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Paylaşıma bağlanma
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge 'e paylaşımlar eklemeden önce şunları yaptığınızdan emin olun:
 
@@ -116,7 +116,7 @@ Azure Stack Edge cihazınıza bağlı Windows Server istemcisinde, komutları gi
 
 3. Klavyenizde Windows + R ' yi seçin.
 
-4. **Çalıştır** penceresinde, `\\<device IP address>`öğesini belirtin ve ardından **Tamam**' ı seçin.  
+4. **Çalıştır** penceresinde, `\\<device IP address>` öğesini belirtin ve ardından **Tamam**' ı seçin.  
    Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/azure-stack-edge-deploy-add-shares/connect-to-share2.png)
@@ -138,7 +138,7 @@ Azure Stack Edge cihazınıza bağlı Linux istemciniz için aşağıdaki yordam
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
-    > `sync` Paylaşım paylaşımları, büyük dosyaların aktarım hızlarını geliştirir.
+    > `sync`Paylaşım paylaşımları, büyük dosyaların aktarım hızlarını geliştirir.
     > Paylaşma 'yı bağlamadan önce, yerel bilgisayarınızda bağlama noktası olarak görev yapacak dizinlerin zaten oluşturulduğundan emin olun. Bu dizinler herhangi bir dosya veya alt klasör içermemelidir.
 
     Aşağıdaki örnek, Azure Stack Edge cihazınızda bir paylaşıma NFS aracılığıyla nasıl bağlanılacağını gösterir. Cihaz IP adresi: `10.10.10.60`. `mylinuxshare2` paylaşımı ubuntuVM öğesine bağlanmış. Paylaşımı bağlama noktası: `/home/databoxubuntuhost/edge`.

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169621"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927445"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry’den Azure Container Instances’a dağıtma
 
@@ -25,7 +25,7 @@ ms.locfileid: "86169621"
 
 ## <a name="configure-registry-authentication"></a>Kayıt defteri kimlik doğrulamasını yapılandırma
 
-"Gözetimsiz" hizmetlere ve uygulamalarına erişim sağlayan bir üretim senaryosunda, bir [hizmet sorumlusu](../container-registry/container-registry-auth-service-principal.md)kullanarak kayıt defteri erişiminin yapılandırılması önerilir. Hizmet sorumlusu kapsayıcı görüntülerinize [rol tabanlı erişim denetimi](../container-registry/container-registry-roles.md) sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
+"Gözetimsiz" hizmetlere ve uygulamalarına erişim sağlayan bir üretim senaryosunda, bir [hizmet sorumlusu](../container-registry/container-registry-auth-service-principal.md)kullanarak kayıt defteri erişiminin yapılandırılması önerilir. Hizmet sorumlusu, kapsayıcı görüntülerinize [Azure rol tabanlı erişim denetimi (Azure RBAC)](../container-registry/container-registry-roles.md) sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
 
 Azure Container Registry ek [kimlik doğrulama seçenekleri](../container-registry/container-registry-authentication.md)sağlar.
 

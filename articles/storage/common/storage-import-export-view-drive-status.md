@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923620"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure İçeri/Dışarı Aktarma işlerinin durumunu görüntüleme
 
@@ -31,7 +31,7 @@ Sürücünüzün işlemde bulunduğu yere bağlı olarak aşağıdaki iş duruml
 | İş Durumu | Açıklama |
 |:--- |:--- |
 | Oluşturma | Bir iş oluşturulduktan sonra, durumu **oluşturma**olarak ayarlanır. İş **oluşturuluyor** durumundaysa, Içeri/dışarı aktarma hizmeti, sürücülerin veri merkezine gönderilmediğinden varsayılmaktadır. Bir iş, iki hafta boyunca bu durumda kalabilir ve sonrasında hizmet tarafından otomatik olarak silinir. |
-| Sevkiyat | Paketinizi gönderdikten sonra, Azure portal izleme bilgilerini güncelleştirmeniz gerekir.  Bu işlem, işi **teslim** durumuna getirir. İş, en fazla iki hafta boyunca **Sevkiyat** durumunda kalır. 
+| Gönderim | Paketinizi gönderdikten sonra, Azure portal izleme bilgilerini güncelleştirmeniz gerekir.  Bu işlem, işi **teslim** durumuna getirir. İş, en fazla iki hafta boyunca **Sevkiyat** durumunda kalır. 
 | Alındı | Tüm sürücüler veri merkezinde alındıktan sonra iş durumu **alındı**olarak ayarlanır. |
 | Aktarma | En az bir sürücü işlemeye başladıktan sonra, iş durumu **aktarma**olarak ayarlanır. Daha fazla bilgi için [Sürücü durumları](#view-drive-status)' na gidin. |
 | Paketleme | Tüm sürücüler işlemeyi tamamladıktan sonra, diskler size geri gönderilene kadar iş **paketleme** durumuna yerleştirilir. |
@@ -73,7 +73,7 @@ Aşağıdaki tabloda, her durum için sürücü hatası durumları ve gerçekle�
 -  Kopyalandığı verilerin iş türü ve boyutu
 -  Bir işteki disk sayısı. 
 
-İçeri/dışarı aktarma hizmeti bir SLA 'ya sahip değil, ancak hizmet, diskler alındıktan sonra 7 güne kadar kopyayı tamamlamaya çalışır. Azure portalında gönderilen duruma ek olarak, REST API 'Leri iş ilerlemesini izlemek için kullanılabilir. [Işleri Listele](/previous-versions/azure/dn529083(v=azure.100)) işlem API çağrısı ' nda tamamlanma yüzdesi parametresi, kopyalama ilerleme durumunu yüzdesini sağlar.
+İçeri/dışarı aktarma hizmeti bir SLA 'ya sahip değil, ancak hizmet, diskler alındıktan sonra 7 güne kadar kopyayı tamamlamaya çalışır. Azure portal gönderilen duruma ek olarak, REST API 'Leri iş ilerlemesini izlemek için kullanılabilir. [Işleri Listele](/previous-versions/azure/dn529083(v=azure.100)) işlem API çağrısı ' nda tamamlanma yüzdesi parametresi, kopyalama ilerleme durumunu yüzdesini sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

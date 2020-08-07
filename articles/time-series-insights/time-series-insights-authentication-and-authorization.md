@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3441a540cb00dc9b85de54543484b1723fa4226e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080785"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922651"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -84,7 +84,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    1. C# ' de aşağıdaki kod, uygulama adına belirteci alabilir. Gen1 ortamından veri sorgulama hakkında tüm bir örnek için, [C# kullanarak sorgu verilerini](time-series-insights-query-data-csharp.md)okuyun.
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
+        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
    1. Belirteç daha sonra `Authorization` uygulama Azure TIME SERIES INSIGHTS API 'sini çağırdığında üstbilgiye geçirilebilir.
 
@@ -98,7 +98,7 @@ Bu bölümde, Azure Time Series Insights gen1 ve Gen2 API 'Lerinde sorgu yapmak 
 > [!TIP]
 > REST API 'Leri kullanma, HTTP istekleri yapma ve HTTP yanıtlarını işleme hakkında daha fazla bilgi edinmek için [Azure REST API başvurusunu](https://docs.microsoft.com/rest/api/azure/) okuyun.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 [Azure TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, tercih ETTIĞINIZ bir rest Istemcisi kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir (Postman, JavaScript, C#).
 

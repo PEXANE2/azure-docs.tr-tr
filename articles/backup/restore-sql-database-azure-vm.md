@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını geri yükleme
 description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054572"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921155"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
 
@@ -30,6 +30,7 @@ Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabil
 - Veritabanını aynı Azure bölgesindeki bir SQL Server örneğine geri yükleyebilirsiniz.
 - Hedef sunucu, kaynakla aynı kasada kayıtlı olmalıdır.
 - Bir TDE şifreli veritabanını başka bir SQL Server geri yüklemek için öncelikle [sertifikayı hedef sunucuya geri yüklemeniz](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)gerekir.
+- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) etkin veritabanlarının [dosya olarak geri yükle](#restore-as-files) seçeneği kullanılarak geri yüklenmesi gerekir.
 - "Ana" veritabanını geri yüklemeden önce, **-ı AzureWorkloadBackup**başlangıç seçeneğini kullanarak SQL Server örneğini tek kullanıcılı modda başlatın.
   - **-D** değeri, istemcinin adıdır.
   - Bağlantıyı yalnızca belirtilen istemci adı açabilir.

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901751"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927224"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -305,27 +305,27 @@ Bu sorunu çözmek için **DirectoryCacheEntrySizeMax** kayıt defteri değerini
  
 Örneğin, bunu 0x100000 olarak ayarlayabilir ve performansın daha iyi olup olmadığını görebilirsiniz.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hata AadDsTenantNotFound, Azure dosyaları için Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulamasını etkinleştirme "Kiracı kimliği AAD-Tenant-ID" olan etkin kiracılar bulunamıyor
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hata AadDsTenantNotFound, Azure dosyaları için Azure Active Directory etki alanı hizmeti (Azure AD DS) kimlik doğrulamasını etkinleştirme "Kiracı KIMLIĞINE sahip etkin kiracılar bulunamıyor-Tenant-ID"
 
 ### <a name="cause"></a>Nedeni
 
-Azure dosyalarında, ilişkili aboneliğin AAD kiracısında [AAD etki alanı hizmeti 'nin (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) oluşturulabileceği bir depolama hesabındaki [Azure Active Directory Domain Services (Azure AD DS) kimlik doğrulamasını etkinleştirmeye](storage-files-identity-auth-active-directory-domain-service-enable.md) çalıştığınızda hata AadDsTenantNotFound olur.  
+Azure [ad etki alanı hizmeti 'nin (azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) Ilişkili ABONELIĞIN Azure AD kiracısında oluşturulabileceği bir depolama hesabındaki [Azure Active Directory Domain Services (Azure AD DS) kimlik doğrulamasını etkinleştirmeye](storage-files-identity-auth-active-directory-domain-service-enable.md) çalıştığınızda hata AadDsTenantNotFound oluşur.  
 
 ### <a name="solution"></a>Çözüm
 
-Depolama hesabınızın dağıtıldığı aboneliğin AAD kiracısında AAD DS 'yi etkinleştirin. Yönetilen bir etki alanı oluşturmak için AAD kiracısının yönetici ayrıcalıklarına sahip olmanız gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirmek](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)için adım adım yönergeleri izleyin.
+Depolama hesabınızın dağıtıldığı aboneliğin Azure AD kiracısında Azure AD DS 'yi etkinleştirin. Yönetilen bir etki alanı oluşturmak için Azure AD kiracısının yönetici ayrıcalıklarına sahip olmanız gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirmek](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)için adım adım yönergeleri izleyin.
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Hata ' sistem hatası 1359 oluştu. Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulaması etkinken dosya paylaşımlarına SMB erişimi üzerinden alınan bir iç hata '
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Hata ' sistem hatası 1359 oluştu. Azure Active Directory etki alanı hizmeti (Azure AD DS) kimlik doğrulaması etkinken dosya paylaşımlarına SMB erişimi üzerinden alınan bir iç hata '
 
 ### <a name="cause"></a>Nedeni
 
-Hata ' sistem hatası 1359 oluştu. Bir iç hata ', bir sayısal karakterle başlayan etki alanı DNS adına sahip bir AAD DS kimlik doğrulaması ile dosya paylaşımınıza bağlanmaya çalıştığınızda oluşur. Örneğin, AAD DS etki alanı DNS adınız "1domain" ise, AAD kimlik bilgilerini kullanarak dosya paylaşımının bağlamaya çalışırken bu hatayı alırsınız. 
+Hata ' sistem hatası 1359 oluştu. Bir iç hata ', Azure AD DS kimlik doğrulaması ile dosya paylaşımınıza bağlanmaya çalıştığınızda, bir sayısal karakterle başlayan etki alanı DNS adı ile bir Azure AD DS ile bağlantı kurmak istediğinizde gerçekleşir. Örneğin, Azure AD DS etki alanı DNS adınız "1domain" ise, Azure AD kimlik bilgilerini kullanarak dosya paylaşımının bağlamaya çalışırken bu hatayı alırsınız. 
 
 ### <a name="solution"></a>Çözüm
 
-Şu anda, aşağıdaki kurallarla geçerli olan yeni bir etki alanı DNS adı kullanarak AAD DS 'nizi yeniden dağıtmaya göz önüne alabilirsiniz:
+Şu anda, aşağıdaki kurallarla geçerli olan yeni bir etki alanı DNS adı kullanarak Azure AD DS yeniden dağıtmaya göz önüne alabilirsiniz:
 - Adlar sayısal bir karakterle başlayamaz.
 - Adların uzunluğu 3 ile 63 karakter arasında olmalıdır.
 
@@ -350,7 +350,7 @@ Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik s
 4. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin 
 5. Checkadobjectpassworno: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı kerb1 veya kerb2 anahtarı ile aynı olduğundan emin olun
 6. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz.
-7. CheckAadUserHasSid: bir Azure AD kullanıcısının AD 'de SID 'ye sahip olup olmadığını denetleyin. Bu denetim, kullanıcının Azure AD kullanıcısının nesne kimliğini parametre-ObjectID ile girmesini gerektirir. 
+7. CheckAadUserHasSid: bir Azure AD kullanıcısının AD 'de SID 'ye sahip olup olmadığını denetleyin. Bu denetim, kullanıcının Azure AD kullanıcısının nesne KIMLIĞINI parametre-ObjectID ile girmesini gerektirir. 
 8. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirildiğini ve hesabın AD özelliklerinin doldurulduğunu görmek için depolama hesabının özelliklerini denetleyin.
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor

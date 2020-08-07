@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: uygulamalarınıza kimlik sağlayıcıları ekleme'
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C Azure portal kullanarak uygulamalarınıza kimlik sağlayıcıları eklemeyi öğrenin.
+description: Azure portal kullanarak Azure Active Directory B2C uygulamalarınıza kimlik sağlayıcıları eklemeyi öğrenmek için bu öğreticiyi izleyin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482014"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922158"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' de uygulamalarınıza kimlik sağlayıcıları ekleme
 
@@ -119,7 +119,7 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
     * **Soyadı**: *family_name*
     * **E-posta**: *unique_name*
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="add-the-facebook-identity-provider"></a>Facebook kimlik sağlayıcısını ekleme
 
@@ -127,7 +127,7 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 1. Bir **ad**girin. Örneğin, *Facebook*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Facebook UYGULAMASıNıN uygulama kimliğini girin.
 1. **İstemci parolası**için, kaydettiğiniz uygulama gizli anahtarını girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="update-the-user-flow"></a>Kullanıcı akışını güncelleştirme
 
@@ -135,7 +135,7 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 
 1. **Kullanıcı akışları**' nı seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
 2. **Kimlik sağlayıcıları**' nı seçin, eklediğiniz **Facebook** ve **contoso Azure AD** kimlik sağlayıcılarını seçin.
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

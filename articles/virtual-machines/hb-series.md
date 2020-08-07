@@ -5,14 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.author: jushiman
-ms.openlocfilehash: 34fbc0683ac39429193f488f3ade289996a67fb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/06/2020
+ms.author: amverma
+ms.reviewer: jushiman
+ms.openlocfilehash: e735b389b5e223e558736f5eaa3c393f8bc29004
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291154"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926272"
 ---
 # <a name="hb-series"></a>HB serisi
 
@@ -44,5 +45,7 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 - [Önceki nesiller](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+- [Sanal makinelerinizi yapılandırma](./workloads/hpc/configure.md), InfiniBand 'yi [etkinleştirme](./workloads/hpc/enable-infiniband.md), [MPI ayarlama](./workloads/hpc/setup-mpi.md)ve [HPC iş yüklerinde](./workloads/hpc/overview.md)Azure için HPC uygulamalarını iyileştirme hakkında daha fazla bilgi edinin.
+- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).
+- Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1b2d707569221a79ad53f04bcc379f5067ed9b04
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905542"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926527"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC için Ileti geçirme arabirimini ayarlama
 
@@ -95,11 +95,24 @@ Yukarıdaki bölümde belirtilen bölüm anahtarınızı denetleyin.
 
 ## <a name="intel-mpi"></a>Intel MPı
 
-[Intel MPI 'Yi indirin](https://software.intel.com/mpi-library/choose-download).
+[Intel MPI](https://software.intel.com/mpi-library/choose-download)'nin seçtiğiniz sürümünü indirin. Sürüme bağlı olarak I_MPI_FABRICS ortam değişkenini değiştirin. Intel MPı 2018 için `I_MPI_FABRICS=shm:ofa` ve 2019 için kullanın, kullanın `I_MPI_FABRICS=shm:ofi` .
 
-Sürüme bağlı olarak I_MPI_FABRICS ortam değişkenini değiştirin. Intel MPı 2018 için `I_MPI_FABRICS=shm:ofa` ve 2019 için kullanın, kullanın `I_MPI_FABRICS=shm:ofi` .
+### <a name="non-sr-iov-vms"></a>SR-ıOV olmayan VM 'Ler
+SR-ıOV olmayan VM 'Ler için, 5. x çalışma zamanı [ücretsiz değerlendirme sürümünü](https://registrationcenter.intel.com/en/forms/?productid=1740) karşıdan yüklemeyle ilgili bir örnek aşağıdaki gibidir:
+```bash
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+```
+Yükleme adımları için bkz. [Intel MPI kitaplığı yükleme kılavuzu](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
+İsteğe bağlı olarak, kök olmayan hata ayıklayıcı olmayan işlemlere yönelik ptrace 'i etkinleştirmek isteyebilirsiniz (Intel MPı 'nin en son sürümleri için gereklidir).
+```bash
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
-İşlem sabitleme, varsayılan olarak 15, 30 ve 60 PPN için doğru şekilde çalışmaktadır.
+### <a name="suse-linux"></a>SUSE Linux
+SUSE Linux Enterprise Server VM görüntü sürümleri-HPC için SLES 12 SP3, HPC için SLES 12 SP3, HPC için SLES 12 SP1, HPC için SLES 12 SP1, HPC için SLES 12 SP1, SLES 12 SP4 ve SLES 15, RDMA sürücüleri yüklenir ve Intel MPı paketleri sanal makinede dağıtılır. Aşağıdaki komutu çalıştırarak Intel MPı 'yi çalıştırın:
+```bash
+sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+```
 
 ## <a name="mpich"></a>MPICH
 

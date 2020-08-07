@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503744"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923664"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Işlevleri Zamanlayıcı tetikleyicisi kullanarak Azure Cosmos DB aktarım hızını ölçeklendirme
 
@@ -23,7 +23,7 @@ Aktarım hızını, çekirdek (SQL) API hesapları için [Azure Resource Manager
 
 Bir zamanlamaya göre Azure Cosmos DB ölçeklendirme sürecini basitleştirmek için [Azure Cosmos üretilen iş Zamanlayıcı](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)adlı örnek bir proje oluşturduk. Bu proje, "ScaleUpTrigger" ve "ScaleDownTrigger" adlı iki Zamanlayıcı tetikleyicisine sahip bir Azure Işlevleri uygulamasıdır. Tetikleyiciler her bir kaynaktaki dosyada tanımlanan aktarım hızını ayarlayan bir PowerShell betiği çalıştırır `resources.json` . ScaleUpTrigger, 8: UTC 'de çalışacak şekilde yapılandırılmıştır ve ScaleDownTrigger 6 PM UTC 'de çalışacak şekilde yapılandırılmıştır ve bu süreler `function.json` Her tetikleyici için dosya içinde kolayca güncelleştirilebilen olabilir.
 
-Bu projeyi yerel olarak kopyalayabilir, ölçek artırma ve azaltma yapılacak Azure Cosmos DB kaynakları ve çalıştırılacak zamanlamayı belirtmek için bunu değiştirebilirsiniz. Daha sonra bu hizmeti bir Azure aboneliğine dağıtabilir ve Azure Cosmos hesaplarınız üzerinde üretilen işi ayarlamak için "Azure Cosmos DB operatörü" rolüyle [rol tabanlı Access Control](role-based-access-control.md) (RBAC) izinleriyle yönetilen hizmet kimliğini kullanarak güvenli hale getirebilirsiniz.
+Bu projeyi yerel olarak kopyalayabilir, ölçek artırma ve azaltma yapılacak Azure Cosmos DB kaynakları ve çalıştırılacak zamanlamayı belirtmek için bunu değiştirebilirsiniz. Daha sonra bir Azure aboneliğine dağıtabilir ve Azure Cosmos hesaplarınızda üretilen işi ayarlamak için "Azure Cosmos DB operatörü" rolüyle birlikte yönetilen hizmet kimliğini kullanarak [Azure rol tabanlı erişim denetimi (Azure RBAC)](role-based-access-control.md) izinleriyle güvenli hale getirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 4446eef481e8370f7457311f6eae6ce40f9e6727
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab869fc8577d4d1934be96404ded5a2051237bbf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539270"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922737"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Azure Izleyici için Kaynak Yöneticisi şablonu örnekleri
 
-Azure Izleyici, [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md)kullanılarak ölçeklendirerek dağıtılabilir ve yapılandırılabilir. Aşağıdaki makalelerde, farklı Azure Izleyici özelliklerine yönelik örnek şablonlar sağlanmaktadır. Bu örnekler, belirli gereksinimleriniz için değiştirilebilir ve Kaynak Yöneticisi şablonları dağıtmak için herhangi bir standart yöntem kullanılarak dağıtılabilir. 
+Azure Izleyici, [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md)kullanılarak ölçeklendirilebilir şekilde dağıtılabilir ve yapılandırılabilir. Aşağıdaki makalelerde, farklı Azure Izleyici özelliklerine yönelik örnek şablonlar sağlanmaktadır. Bu örnekler, belirli gereksinimleriniz için değiştirilebilir ve Kaynak Yöneticisi şablonları dağıtmak için herhangi bir standart yöntem kullanılarak dağıtılabilir. 
 
 ## <a name="deploying-the-sample-templates"></a>Örnek şablonları dağıtma
 Örnekleri kullanmak için temel adımlar şunlardır:
@@ -49,7 +49,7 @@ az deployment group create \
 - Uyarılar
   - [Uyarı kurallarını günlüğe kaydet](resource-manager-alerts-log.md) -günlük sorgularından ve Azure etkinlik günlüğünden uyarılar.
   - [Ölçüm uyarı kuralları](resource-manager-alerts-metric.md) -farklı mantık türleri kullanılarak ölçümlerin uyarıları.
-- Application Insights çok yakında.
+- [Uygulama Bilgileri](resource-manager-app-resource.md)
 - [Tanılama ayarları](resource-manager-diagnostic-settings.md) -farklı kaynak türlerindeki günlükleri ve ölçümleri iletmek için Tanılama ayarları oluşturun.
 - [Günlük sorguları](resource-manager-log-queries.md) -kaydedilmiş günlük sorgularını Log Analytics çalışma alanında oluşturun.
 - [Log Analytics çalışma alanı](resource-manager-workspace.md) -Log Analytics aracılarından Log Analytics çalışma alanı oluşturun ve farklı veri kaynakları koleksiyonunu yapılandırın.

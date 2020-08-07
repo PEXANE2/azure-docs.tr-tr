@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361498"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926187"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 
@@ -68,7 +68,7 @@ Excel kullanıcıları bir Windows hesabı, bir kuruluş KIMLIĞI (e-posta adres
 
 ![Azure portal erişim denetimi](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Bu düzeydeki roller, portalda veya Azure Resource Manager şablonlar kullanılarak tamamlangerekebilecek görevler gerçekleştirmesi gereken kullanıcılara veya hesaplara uygulanır. Daha fazla bilgi için bkz. [rol tabanlı Access Control](../role-based-access-control/overview.md). 
+Bu düzeydeki roller, portalda veya Azure Resource Manager şablonlar kullanılarak tamamlangerekebilecek görevler gerçekleştirmesi gereken kullanıcılara veya hesaplara uygulanır. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="database-roles"></a>Veritabanı rolleri
 
@@ -81,4 +81,4 @@ Bu düzeydeki roller, portalda veya Azure Resource Manager şablonlar kullanıla
 [Azure Active Directory gruplarıyla kaynaklara erişimi yönetme](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Veritabanı rollerini ve kullanıcılarını yönetme](analysis-services-database-users.md)  
 [Sunucu yöneticilerini yönetme](analysis-services-server-admins.md)  
-[Rol tabanlı Access Control](../role-based-access-control/overview.md)  
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)  

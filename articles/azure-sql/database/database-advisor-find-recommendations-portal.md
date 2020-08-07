@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041321"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921223"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Performans önerilerini bulma ve uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Azure SQL veritabanı 'nda veritabanınızın performansını iyileştirebilecek
 
 ## <a name="viewing-recommendations"></a>Önerileri görüntüleme
 
-Performans önerilerini görüntülemek ve uygulamak için, Azure 'da doğru [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) izinlerine sahip olmanız gerekir. **Okuyucu**, **SQL DB katkıda bulunan** Izinleri, önerileri ve **sahibini**görüntülemek Için gereklidir; **SQL DB katkıda bulunan** izinleri tüm eylemleri yürütmek için gereklidir; dizinler oluşturun veya bırakın ve Dizin oluşturmayı iptal edin.
+Performans önerilerini görüntülemek ve uygulamak için Azure 'da doğru [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) izinlerine ihtiyacınız vardır. **Okuyucu**, **SQL DB katkıda bulunan** Izinleri, önerileri ve **sahibini**görüntülemek Için gereklidir; **SQL DB katkıda bulunan** izinleri tüm eylemleri yürütmek için gereklidir; dizinler oluşturun veya bırakın ve Dizin oluşturmayı iptal edin.
 
 Azure portal performans önerilerini bulmak için aşağıdaki adımları kullanın:
 
@@ -172,4 +172,4 @@ Azure SQL veritabanı, veritabanı performansını iyileştirmeye yönelik öner
 
 * [Sorgu Deposu](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: d360b890023c1a14f80d9fc8efc703abd7544710
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328502"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921393"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -53,7 +53,7 @@ Başlamak için [Yeni bir uygulama kaydetme](https://docs.microsoft.com/azure/ac
 
 Microsoft Graph API 'sini sorgulamak istiyorsanız, [Yeni uygulamanızı Web API 'lerine erişecek şekilde yapılandırın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Bu uygulama için API izinlerini seçtiğinizde, **Kullanıcı. Read** 'in varsayılan örneği, ekleme işlemini sorunsuz ve otomatik hale getirmek için Kullanıcı hakkındaki temel bilgileri toplamak üzere yeterlidir. Yönetici olmayan tüm kullanıcıların giriş sayfanızı ziyaret etmesini engelleyecek şekilde, yönetici **izni olması gereken**HERHANGI bir API izni isteme.
 
-Ekleme veya sağlama işleminizin bir parçası olarak yükseltilmiş izinlere ihtiyacınız varsa, marketten gönderilen tüm kullanıcıların başlangıçta giriş sayfasıyla etkileşime girebilmesi için Azure AD 'nin [artımlı onay](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#incremental-and-dynamic-consent) işlevlerini kullanmayı düşünün.
+Ekleme veya sağlama işleminizin bir parçası olarak yükseltilmiş izinlere ihtiyacınız varsa, marketten gönderilen tüm kullanıcıların başlangıçta giriş sayfasıyla etkileşime girebilmesi için Azure AD 'nin [artımlı onay](https://aka.ms/incremental-consent) işlevlerini kullanmayı düşünün.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Başlangıç noktası olarak bir kod örneği kullanma
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835927"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925320"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -68,7 +68,7 @@ Azure AD, aşağıdakiler dahil olmak üzere tam [kimlik yönetimi özellikleri]
 - [Self servis parola yönetimi](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self servis grup yönetimi](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Ayrıcalıklı hesap yönetimi](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Rol tabanlı erişim denetimi](/azure/role-based-access-control/overview)
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview)
 - [Uygulama kullanımı izleme](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Zengin denetim](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Güvenlik izleme ve uyarı](/azure/operations-management-suite/oms-security-responding-alerts)

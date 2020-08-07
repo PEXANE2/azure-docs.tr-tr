@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292833"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924589"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Bulut çözümü sağlayıcısı (CSP) programıyla çok kiracılı bir ortamda VMware olağanüstü durum kurtarmayı ayarlama
 
@@ -98,7 +98,7 @@ Artık Azure portal kiracının tüm Site Recovery işlemlerini gerçekleştireb
 Bu makalede açıklandığı gibi kiracı abonelikleri ayarlayarak, ilgili çok kiracılı modellerden herhangi birinde müşterileri etkinleştirmeye hızlı bir başlangıç yapabilirsiniz. Farklı çok kiracılı modeller hakkında daha fazla bilgi edinmek ve şirket içi erişim denetimlerini [burada](vmware-azure-multi-tenant-overview.md)etkinleştirmek için kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure Site Recovery dağıtımlarını yönetmek için [rol tabanlı erişim denetimi](site-recovery-role-based-linked-access-control.md) hakkında daha fazla bilgi edinin.
+- Azure Site Recovery dağıtımlarını yönetmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](site-recovery-role-based-linked-access-control.md) hakkında daha fazla bilgi edinin.
 - VMware 'den Azure 'a [çoğaltma mimarisi](vmware-azure-architecture.md)hakkında daha fazla bilgi edinin.
 - VMware VM 'lerini Azure 'a çoğaltma [öğreticisini gözden geçirin](vmware-azure-tutorial.md) .
 VMware VM 'lerini Azure 'a çoğaltmak için [çok kiracılı ortamlar](vmware-azure-multi-tenant-overview.md) hakkında daha fazla bilgi edinin.

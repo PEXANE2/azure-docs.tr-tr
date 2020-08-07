@@ -1,6 +1,6 @@
 ---
 title: 'BGP ve Azure VPN Gateway: genel bakış'
-description: Bu makale Azure VPN Gateways ile BGP’ye genel bakış sağlar.
+description: Azure VPN Gateway, Yönlendirme ve erişilebilirlik bilgilerini Exchange için kullanılan standart yönlendirme protokolünü Sınır Ağ Geçidi Protokolü destekler.
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f514c2708c3a81ff56c6029d5e43df43ad503036
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708102"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924708"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>Azure VPN Gateway ile BGP hakkında
 Bu makalede, Azure VPN Gateway 'da BGP (Sınır Ağ Geçidi Protokolü) desteğine genel bir bakış sunulmaktadır.

@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: b621b16d789e16a6f44536a6e8c18b5aa3690d74
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905457"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922277"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
 
 C# ' de bir arama dizini oluşturan, yükleyen ve sorgulayan bir .NET Core konsol uygulaması oluşturmak için yeni [Azure.Search.Documstalar (sürüm 11) istemci kitaplığını](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) kullanın.
 
-Tamamlanmış bir projeden başlamak için [kaynak kodunu indirin](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart-v11) veya kendi kendinize oluşturmak için bu makaledeki adımları izleyin.
+Tamamlanmış bir projeden başlamak için [kaynak kodunu indirin](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11) veya kendi kendinize oluşturmak için bu makaledeki adımları izleyin.
 
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
@@ -183,13 +183,17 @@ Belgeler karşıya yüklenirken [ındexdocumentsbatch](https://docs.microsoft.co
 
     Console.WriteLine("{0}", "Loading index...\n");
     qryclient.IndexDocuments(batch, idxoptions);
+    ```
 
+    [Indexdocumentsbatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini başlattığınızda, [searchclient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) nesneniz üzerindeki [ındexdocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) ' ı çağırarak dizine gönderebilirsiniz.
+
+1. Bu, tüm komutları sıralı olarak çalıştıran bir konsol uygulaması olduğundan, dizin oluşturma ve sorgular arasında 2 saniyelik bir bekleme süresi ekleyin.
+
+    ```csharp
     // Wait 2 seconds for indexing to complete before starting queries (for demo and console-app purposes only)
     Console.WriteLine("Waiting for indexing...\n");
     System.Threading.Thread.Sleep(2000);
     ```
-
-    [Indexdocumentsbatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini başlattığınızda, [searchclient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) nesneniz üzerindeki [ındexdocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) ' ı çağırarak dizine gönderebilirsiniz.
 
     2 saniyelik gecikme, zaman uyumsuz olan dizin oluşturma için dengelenir, böylece sorgular yürütülmeden önce tüm belgelerin dizini oluşturulabilir. Yalnızca gösteriler, testler ve örnek uygulamalarda yalnızca bir gecikmeden kodlama gereklidir.
 

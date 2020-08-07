@@ -3,12 +3,12 @@ title: ISO 27001 paylaşılan hizmetleri şema örnek denetimleri
 description: ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: a6d2d586efd15b258f65e8c28cd8e233f3d984a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7655ae2828972a9b99479c7a94f02b02005a9284
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536825"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927139"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi
 
@@ -34,7 +34,7 @@ Azure 'un [SQL güvenlik açığı değerlendirme hizmeti](../../../../azure-sql
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A. 9.1.2, ağlara ve ağ hizmetlerine erişim
 
-Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) uygular. Bu şema yedi [Azure ilke](../../../policy/overview.md) tanımı atayarak Azure kaynaklarına erişimi denetlemenize yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin vermeyi sağlayan kaynak türlerinin ve yapılandırmaların kullanımını denetler.
+Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. Bu şema yedi [Azure ilke](../../../policy/overview.md) tanımı atayarak Azure kaynaklarına erişimi denetlemenize yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin vermeyi sağlayan kaynak türlerinin ve yapılandırmaların kullanımını denetler.
 Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullanıcılarla sınırlı olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olabilir.
 
 - Parolası olmayan hesaplara sahip Linux sanal makinelerini denetlemek için önkoşulları dağıtın
@@ -69,7 +69,7 @@ Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek
 
 ## <a name="a925-review-of-user-access-rights"></a>A. 9.2.5 Kullanıcı erişimi haklarının Incelemesi
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirme için öncelik verilmelidir, denetlenecek hesaplara dört adet [Azure ilke](../../../policy/overview.md) tanımı atar.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirme için öncelik verilmelidir, denetlenecek hesaplara dört adet [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
@@ -78,7 +78,7 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A. 9.2.6 kaldırma veya erişim hakları ayarlama
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) uygular. [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) ve RBAC kullanarak, Kullanıcı rollerini kurumsal değişiklikleri yansıtacak şekilde güncelleştirebilirsiniz. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurmanız gereken amorti edilmiş hesabı denetlemek için iki [Azure ilke](../../../policy/overview.md) tanımı atar.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) ve RBAC kullanarak, Kullanıcı rollerini kurumsal değişiklikleri yansıtacak şekilde güncelleştirebilirsiniz. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurmanız gereken amorti edilmiş hesabı denetlemek için iki [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır

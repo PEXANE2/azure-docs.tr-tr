@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555537"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927428"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure Machine Learning Enterprise ve Basic sürümleri 
 
@@ -112,7 +112,7 @@ Her çalışma alanı oluşturduğunuzda sürümü atarsınız. Müşteriler, bu
 
 | Özellikler     | Sürüm                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [Rol tabanlı Access Control](how-to-assign-roles.md) (RBAC) desteği                                           | Tümü                     |
+| [Azure rol tabanlı erişim denetimi (Azure RBAC)](how-to-assign-roles.md) desteği                                           | Tümü                     |
 | İşlem için [sanal ağ (VNet)](how-to-enable-virtual-network.md) desteği                                         | Tümü                     |
 | Puanlama uç noktası kimlik doğrulaması                                                    | Tümü                     |
 | [Çalışma alanı özel bağlantısı](how-to-configure-private-link.md)                                                            | Tümü                     |

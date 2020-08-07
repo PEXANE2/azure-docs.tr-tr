@@ -1,6 +1,6 @@
 ---
 title: "Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama"
-description: REST API 'Leri aracılığıyla Azure Data Box Heavy BLOB depolama alanına veri kopyalamayı öğrenin
+description: Bu öğreticide, http veya https üzerinden REST API 'Lerini kullanarak Azure Data Box blob depolamaya bağlanmayı öğrenin ve sonra Azure Data Box Heavy verileri kopyalayın.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849422"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921172"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama  
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlama](data-box-heavy-deploy-set-up.md).
+1. [Öğretici: Azure Data Box Heavy’yi ayarlama](data-box-heavy-deploy-set-up.md) bölümünü tamamladınız.
 2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. [Data Box BLOB depolama için sistem gereksinimlerini](data-box-system-requirements-rest.md) incelediyseniz ve desteklenen API 'Ler, SDK 'lar ve araçların sürümleriyle ilgili bilgi sahibisiniz.
 4. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayara erişirsiniz. Ana bilgisayarınız:
@@ -143,7 +143,7 @@ Ubuntu ve deni gibi birkaç tane `update-ca-certificates` komutunu kullanın.
 RHEL, Fedora ve CentOS 'ın son sürümleri `update-ca-trust` komutunu kullanır.
 
 - Sertifika dosyasını `/etc/pki/ca-trust/source/anchors` dizine kopyalayın.
-- `update-ca-trust` öğesini çalıştırın.
+- `update-ca-trust` komutunu çalıştırın.
 
 Ayrıntılar için dağıtıma özgü belgelere başvurun.
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810299"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921954"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -111,7 +111,7 @@ Bir veritabanı için maksimum veri boyutuna kadar yedekleme depolama tüketimi 
 
 - [Yedekleme saklama süresini](#change-the-pitr-backup-retention-period-by-using-the-azure-portal) gereksinimleriniz için mümkün olan en düşük süreye düşürün.
 - Dizin yeniden oluşturmanız gibi büyük yazma işlemlerini yapmaktan kaçının, ancak gerekenden daha sık.
-- Büyük veri yükleme işlemleri için, [kümelenmiş columnstore dizinlerini](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) ve ilgili [en iyi uygulamaları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)kullanmayı ve/veya kümelenmemiş dizinlerin sayısını azaltmayı düşünün.
+- Büyük veri yükleme işlemleri için, [kümelenmiş columnstore dizinlerini](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) ve ilgili [en iyi uygulamaları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)kullanmayı ve/veya kümelenmemiş dizinlerin sayısını azaltmayı düşünün.
 - Genel Amaçlı hizmet katmanında, sağlanan veri depolama alanı, yedekleme depolama fiyatından daha ucuz. Sürekli yedekleme depolama maliyetleriniz varsa, yedekleme depolama alanı üzerinde kaydedilecek veri depolama alanını artırmayı düşünebilirsiniz.
 - Geçici sonuçları ve/veya geçici verileri depolamak için uygulama mantığınızdaki kalıcı tablolar yerine TempDB kullanın.
 - Mümkün olduğunda yerel olarak yedekli yedekleme depolaması kullanın (örneğin geliştirme ve test ortamları)

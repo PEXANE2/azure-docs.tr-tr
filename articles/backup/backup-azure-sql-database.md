@@ -3,12 +3,12 @@ title: SQL Server veritabanlarını Azure 'a yedekleme
 description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır. Makalede kurtarma SQL Server de açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: df8543d7f083dd2bf9d2421b4808de5b60a51e30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28644065619771069e556c941d2c5a77626e1ba6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513787"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922906"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
@@ -40,7 +40,7 @@ Bu çözüm SQL veritabanlarınızın yedeklerini almak için SQL Native API 'le
 Başlamadan önce, aşağıdakileri doğrulayın:
 
 1. Azure 'da çalışan bir SQL Server örneğine sahip olduğunuzdan emin olun. Market 'te [hızlıca bir SQL Server örneği oluşturabilirsiniz](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md) .
-2. [Özellik değerlendirmesi](sql-support-matrix.md#feature-consideration-and-limitations) ve [senaryo desteğini](sql-support-matrix.md#scenario-support)gözden geçirin.
+2. [Özellik konularını](sql-support-matrix.md#feature-considerations-and-limitations) ve [senaryo desteğini](sql-support-matrix.md#scenario-support)gözden geçirin.
 3. Bu senaryoyla ilgili [sık sorulan soruları gözden geçirin](faq-backup-sql-server.md) .
 
 ## <a name="set-vm-permissions"></a>VM izinlerini ayarla

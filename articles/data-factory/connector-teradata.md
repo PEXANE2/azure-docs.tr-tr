@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418040"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926901"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata Vanndan veri kopyalama
+
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-onprem-teradata-connector.md)
@@ -63,14 +64,15 @@ Teradata bağlı hizmeti aşağıdaki özellikleri destekler:
 |:--- |:--- |:--- |
 | tür | Type özelliği **Teradata**olarak ayarlanmalıdır. | Yes |
 | Dizisi | Teradata örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Yes |
-| kullanıcı adı | Teradata 'a bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | No |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Ayrıca, [Azure Key Vault depolanan bir gizli dizi başvurusunu](store-credentials-in-key-vault.md)da seçebilirsiniz. <br>Windows kimlik doğrulaması kullandığınızda veya temel kimlik doğrulaması için Key Vault bir parolaya başvurulduğunda geçerlidir. | No |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| username | Teradata 'a bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | Hayır |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Ayrıca, [Azure Key Vault depolanan bir gizli dizi başvurusunu](store-credentials-in-key-vault.md)da seçebilirsiniz. <br>Windows kimlik doğrulaması kullandığınızda veya temel kimlik doğrulaması için Key Vault bir parolaya başvurulduğunda geçerlidir. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazla bağlantı özelliği:
 
 | Özellik | Açıklama | Varsayılan değer |
 |:--- |:--- |:--- |
+| UseDataEncryption | Teradata veritabanıyla iletişimin tümünün şifrelenip şifrelenmeyeceğini belirtir. İzin verilen değerler 0 veya 1 ' dir.<br><br/>- **0 (devre dışı, varsayılan)**: yalnızca kimlik doğrulama bilgilerini şifreler.<br/>- **1 (etkin)**: sürücü ve veritabanı arasında geçirilen tüm verileri şifreler. | Hayır |
 | CharacterSet | Oturum için kullanılacak karakter kümesi. Ör., `CharacterSet=UTF16` .<br><br/>Bu değer, Kullanıcı tanımlı bir karakter kümesi veya aşağıdaki önceden tanımlanmış karakter kümelerinden biri olabilir: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JıS (Windows, DOS uyumlu, KANJISJIS_0S)<br/>-EUC (UNIX ile uyumlu, KANJIEC_0U)<br/>-IBM ana bilgisayar (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-Networkkorece (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Varsayılan değer `ASCII` . |
 | MaxRespSize |SQL istekleri için en büyük yanıt arabelleği boyutu (kilobayt (KBs) cinsinden). Ör., `MaxRespSize=‭10485760‬` .<br/><br/>Teradata veritabanı sürüm 16,00 veya üzeri için en büyük değer 7361536 ' dir. Önceki sürümleri kullanan bağlantılarda en büyük değer 1048576 ' dir. | Varsayılan değer `65536` . |
 
@@ -150,7 +152,7 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | Veri kümesinin Type özelliği olarak ayarlanmalıdır `TeradataTable` . | Yes |
 | database | Teradata örneğinin adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
-| tablo | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
+| table | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek:**
 
@@ -204,11 +206,11 @@ Teradata 'tan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği olarak ayarlanmalıdır `TeradataSource` . | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır (veri kümesindeki tablo belirtilmişse) |
-| partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>Değerlere izin ver: **none** (varsayılan), **hash** ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, `None` ), Teradata 'den eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | No |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında Uygula `None` . | No |
-| partitionColumnName | Paralel kopya için Aralık bölümü veya karma bölümü tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği veya olduğunda geçerlidir `Hash` `DynamicRange` . Kaynak verileri, Hook `?AdfHashPartitionCondition` veya WHERE yan tümcesini almak için bir sorgu kullanırsanız `?AdfRangePartitionColumnName` . [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | No |
-| Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda Uygula `DynamicRange` . Kaynak verileri almak için sorgu kullanırsanız `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | No |
-| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | No |
+| partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>Değerlere izin ver: **none** (varsayılan), **hash** ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, `None` ), Teradata 'den eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | Hayır |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında Uygula `None` . | Hayır |
+| partitionColumnName | Paralel kopya için Aralık bölümü veya karma bölümü tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini yeniden algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği veya olduğunda geçerlidir `Hash` `DynamicRange` . Kaynak verileri, Hook `?AdfHashPartitionCondition` veya WHERE yan tümcesini almak için bir sorgu kullanırsanız `?AdfRangePartitionColumnName` . [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | Hayır |
+| Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda Uygula `DynamicRange` . Kaynak verileri almak için sorgu kullanırsanız `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
+| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
 
 > [!NOTE]
 >
@@ -305,36 +307,36 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 | Tarih |DateTime |
 | Ondalık |Ondalık |
 | Çift |Çift |
-| Sel |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Sel |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Tamsayı |Int32 |
-| Aralık günü |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık gün-saat |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık gün-dakika |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık gün-saniye |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık saati |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık saat-dakika |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık saat-saniye |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık dakikası |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık dakika-saniye |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık ayı |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık saniye |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık yılı |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Aralık yıl-ay |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık günü |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık gün-saat |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık gün-dakika |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık gün-saniye |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık saati |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık saat-dakika |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık saat-saniye |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık dakikası |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık dakika-saniye |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık ayı |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık saniye |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık yılı |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Aralık yıl-ay |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Sayı |Çift |
-| Süre (Tarih) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Süre (saat) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Süre (saat dilimiyle birlikte) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Süre (zaman damgası) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Süre (saat dilimiyle zaman damgası) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Süre (Tarih) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Süre (saat) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Süre (saat dilimiyle birlikte) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Süre (zaman damgası) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Süre (saat dilimiyle zaman damgası) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Small |Int16 |
-| Saat |TimeSpan |
+| Zaman |TimeSpan |
 | Saat dilimiyle saat |TimeSpan |
 | Zaman damgası |DateTime |
 | Saat dilimi Ile zaman damgası |DateTime |
 | VarByte |Byte [] |
 | VarChar |Dize |
-| VarGraphic |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Xml |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| VarGraphic |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
+| Xml |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri

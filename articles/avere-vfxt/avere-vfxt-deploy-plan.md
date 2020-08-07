@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754398"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922685"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT sisteminizi planlama
 
@@ -75,8 +75,8 @@ Avere vFXT kümenizin ağ altyapısını planlarken aşağıdaki yönergeleri iz
   |----------|-----------|----------|
   | Kaynak grubu | Boşsa, Evet | Boş olmalıdır|
   | Depolama hesabı | Küme oluşturulduktan sonra var olan bir blob kapsayıcısını bağlıyorsanız **Evet** <br/>  Küme oluşturma sırasında yeni bir blob kapsayıcısı oluşturulmaksam **Hayır** | Mevcut blob kapsayıcısı boş olmalıdır <br/> &nbsp; |
-  | Sanal ağ | Evet | Yeni bir Azure Blob kapsayıcısı oluşturulana bir depolama hizmeti uç noktası içermelidir |
-  | Alt ağ | Evet | Diğer kaynakları içeremez |
+  | Sanal ağ | Yes | Yeni bir Azure Blob kapsayıcısı oluşturulana bir depolama hizmeti uç noktası içermelidir |
+  | Alt ağ | Yes | Diğer kaynakları içeremez |
 
 ## <a name="ip-address-requirements"></a>IP adresi gereksinimleri
 
@@ -166,7 +166,7 @@ Kümeyi oluştururken, küme denetleyicisinde genel IP adresi oluşturulup oluş
 
 ## <a name="vm-access-roles"></a>VM erişim rolleri
 
-Azure, belirli görevleri gerçekleştirmek üzere küme VM 'Leri yetkilendirmek için [rol tabanlı erişim denetimi](../role-based-access-control/index.yml) 'ni (RBAC) kullanır. Örneğin, küme denetleyicisinin küme düğümü VM 'lerini oluşturmak ve yapılandırmak için yetkilendirmeye ihtiyacı vardır. Küme düğümlerinin IP adreslerini diğer küme düğümlerine atayabilmesi veya yeniden atayabilmeleri gerekir.
+Azure, belirli görevleri gerçekleştirmek üzere küme VM 'Leri yetkilendirmek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/index.yml) kullanır. Örneğin, küme denetleyicisinin küme düğümü VM 'lerini oluşturmak ve yapılandırmak için yetkilendirmeye ihtiyacı vardır. Küme düğümlerinin IP adreslerini diğer küme düğümlerine atayabilmesi veya yeniden atayabilmeleri gerekir.
 
 Avere vFXT sanal makineleri için iki yerleşik Azure rolü kullanılır:
 
