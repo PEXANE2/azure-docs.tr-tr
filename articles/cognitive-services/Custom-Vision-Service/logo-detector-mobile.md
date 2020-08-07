@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 5dd5cd1ac0463c6c07496e4ea49edd08178a5a54
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987860"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834397"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)
 - Visual Studio için Xamarin iş yükü (bkz. [Xamarin 'ı yükleme](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
@@ -67,7 +67,7 @@ Görüntülerinizi göstermek için sol bölmede **Etiketler** ' i **etiketlendi
 
 ![Eğitim görüntüleri sekmesinde Özel Görüntü İşleme Web sitesi. Bu ekran görüntüsünde eğitme düğmesi özetlenmiştir](media/azure-logo-tutorial/train-model.png)
 
-## <a name="get-the-prediction-url"></a>Tahmin URL 'sini al
+## <a name="get-the-prediction-url"></a>Tahmin URL'sini alma
 
 Modelinize eğitim verdikten sonra, bu uygulamayı uygulamanızla tümleştirmeye hazırsınız demektir. Uç nokta URL 'sini (uygulamanın Sorgulayabileceğiniz) ve tahmin anahtarını (uygulamanın tahmin isteklerine erişmesini sağlamak için) almanız gerekir. **Performans** sekmesinde, sayfanın üst kısmındaki **tahmin URL 'si** düğmesini seçin.
 

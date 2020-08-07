@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6edb6f026f3062dfb2beafd863cf090519f6b66a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427976"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875992"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
 > [!NOTE]
-> **Microsoft. Azure. Services. AppAuthentication** kullanım dışıdır. .NET, Java, TypeScript ve Python için sunulan yeni Azure Identity Library **DefaultAzureCredentials** 'ın yanı sıra yeni geliştirme işlemleri için kullanılması gerekir. Burada daha fazla bilgi bulabilirsiniz: [kimlik doğrulaması ve Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
+> **Microsoft. Azure. Services. AppAuthentication** artık yenı Key Vault SDK ile kullanılması önerilmez. .NET, Java, TypeScript ve Python için sunulan yeni Azure Identity Library **DefaultAzureCredentials** 'ın yanı sıra yeni geliştirme işlemleri için kullanılması gerekir. Burada daha fazla bilgi bulabilirsiniz: [kimlik doğrulaması ve Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
 
 Azure Key Vault kimlik doğrulaması yapmak için, paylaşılan bir gizli dizi ya da sertifika olan bir Azure Active Directory (Azure AD) kimlik bilgisine sahip olmanız gerekir.
 
@@ -27,7 +27,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 `Microsoft.Azure.Services.AppAuthentication`Kitaplık kimlik doğrulamasını otomatik olarak yönetir, bu da kimlik bilgileriniz yerine çözümünüze odaklanmanıza olanak tanır. Microsoft Visual Studio, Azure CLı veya Azure AD Tümleşik kimlik doğrulamasıyla yerel geliştirmeyi destekler. Yönetilen bir kimliği destekleyen bir Azure kaynağına dağıtıldığında, kitaplık otomatik olarak [Azure kaynakları için Yönetilen kimlikler](../../active-directory/msi-overview.md)kullanır. Kod veya yapılandırma değişikliği gerekli değildir. Kitaplık Ayrıca, yönetilen bir kimlik olmadığında veya geliştiricinin güvenlik bağlamı yerel geliştirme sırasında belirlenemediğinde Azure AD [istemci kimlik bilgilerinin](../../azure-resource-manager/resource-group-authenticate-service-principal.md) doğrudan kullanımını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) veya [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
@@ -235,7 +235,7 @@ Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için aşağ
 
 İşlemi denetlemek için, `AzureServiceTokenProvider` oluşturucuya geçirilmiş veya *AzureServicesAuthConnectionString* ortam değişkeninde belirtilen bir bağlantı dizesi kullanın.  Aşağıdaki seçenekler desteklenir:
 
-| Bağlantı dizesi seçeneği | Senaryo | Yorumlar|
+| Bağlantı dizesi seçeneği | Senaryo | Açıklamalar|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için AzureCli kullanır. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için Visual Studio 'Yu kullanır. |

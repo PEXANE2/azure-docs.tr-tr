@@ -10,19 +10,19 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 05/20/2020
 ms.author: pafarley
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 968f9f1d658e79fb5213355358b91e98c353b07f
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: seodec18, devx-track-python
+ms.openlocfilehash: 768bfad42c06fa100b97633c6a345ce14c8b0874
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985688"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847797"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak küçük resim oluşturma
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden küçük resim oluşturacaksınız. [Küçük resim al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c) yöntemiyle, istenen yüksekliği ve genişliği belirtebilir ve görüntü işleme akıllı kırpma kullanarak ilgilendiğiniz alanı ve bu bölgeyi temel alan kırpma koordinatları oluşturabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.

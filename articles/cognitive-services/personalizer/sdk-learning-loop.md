@@ -3,14 +3,14 @@ title: 'Hızlı başlangıç: SDK-kişiselleştirici ile öğrenme döngüsü ol
 description: Bu hızlı başlangıçta, istemci SDK 'sını kullanarak bilgi bankaınızı oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir.
 ms.topic: quickstart
 ms.date: 07/30/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 05657d350616502c3d32b500a32b394a748ab2f6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 480e860952c2659d053f8a5659e312feacff2d2b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461138"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874495"
 ---
 # <a name="quickstart-personalizer-client-library"></a>Hızlı başlangıç: kişiselleştirici istemci kitaplığı
 

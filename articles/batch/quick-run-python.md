@@ -6,13 +6,13 @@ ms.date: 11/27/2018
 ms.custom:
 - seo-python-october2019
 - mvc
-- tracking-python
-ms.openlocfilehash: 5c4f8a90a43d19f3bc94da04681d9d690dc33e70
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+- devx-track-python
+ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561787"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852574"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Hızlı başlangıç: Azure Batch işini çalıştırmak için Python API kullanma
 
@@ -22,7 +22,7 @@ Burada Batch hizmetinin temel kavramlarını öğrenirsiniz ve daha büyük öl�
 
 ![Azure Batch iş akışına genel bakış](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - **Azure Batch** hesabı ve bağlı **Azure depolama** hesabı. Bu hesapları oluşturmak için [Azure Portal](quick-create-portal.md) veya [CLI](quick-create-cli.md) kullanın.
@@ -50,7 +50,7 @@ Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 pip install -r requirements.txt
 ```
 
-`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
+`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'

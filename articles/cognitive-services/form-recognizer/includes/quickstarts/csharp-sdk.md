@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 2b46e115b6360b161a1b2ad9b176f3afbfaf27d0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8ff353c5386f7ad5f30144ca50740c751b81ffc5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86277862"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87910697"
 ---
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
@@ -168,7 +168,7 @@ Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve
 Belirli bir URI 'deki bir dosyanın içeriğini tanımak için **Startrecognizecontentfromuri** metodunu kullanın.
 
 ```csharp
-private static async Task<Guid> GetContent(
+private static async Task GetContent(
     FormRecognizerClient recognizerClient, string invoiceUri)
 {
     Response<FormPageCollection> formPages = await recognizerClient
@@ -214,7 +214,7 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 Bir URI 'den alındıları tanımak için **StartRecognizeReceiptsFromUri** yöntemini kullanın. Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan bir **Recognizedmakbuz** nesneleri koleksiyonudur: Aşağıdaki kod, belirtilen URI 'ye bir alındısı işler ve ana alanları ve değerleri konsola yazdırır.
 
 ```csharp
-private static async Task<Guid> AnalyzeReceipt(
+private static async Task AnalyzeReceipt(
     FormRecognizerClient recognizerClient, string receiptUri)
 {
     RecognizedReceiptCollection receipts = await recognizerClient.StartRecognizeReceiptsFromUri(new Uri(receiptUri))
@@ -406,10 +406,10 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 ```csharp
 // Analyze PDF form data
 private static async Task AnalyzePdfForm(
-    FormRecognizerClient formClient, Guid modelId, string pdfFormFile)
+    FormRecognizerClient recognizerClient, Guid modelId, string formUrl)
 {    
     Response<IReadOnlyList<RecognizedForm>> forms = await recognizerClient
-        .StartRecognizeCustomFormsFromUri(modelId, new Uri(formUri))
+        .StartRecognizeCustomFormsFromUri(modelId.ToString(), new Uri(formUrl))
         .WaitForCompletionAsync();
 ```
 

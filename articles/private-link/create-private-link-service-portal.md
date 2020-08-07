@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 125b70b389809c576d17d1c8de35290c1c402c4a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78252540"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852897"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
@@ -37,12 +37,12 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroupLB |
-| **\<sanal ağ-adı>** | myVNet          |
-| **\<bölge adı>**          | Doğu ABD 2      |
-| **\<IPv4-adres-alanı>**   | 10.3.0.0 \ 16          |
-| **\<alt ağ-adı>**          | myBackendSubnet        |
-| **\<alt ağ-adres aralığı>** | 10.3.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Doğu ABD 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0/16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -50,7 +50,7 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 Standart bir iç yük dengeleyici oluşturmak için portalını kullanın. Belirttiğiniz ad ve IP adresi, yük dengeleyicinin ön ucu olarak otomatik olarak yapılandırılır.
 
-1. Portalın sol üst tarafında, **kaynak** > oluştur**ağ** > **Load Balancer**' ı seçin.
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
 
 1. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:
 
@@ -58,10 +58,10 @@ Standart bir iç yük dengeleyici oluşturmak için portalını kullanın. Belir
     | ---                     | ---                                                |
     | **Abonelik**               | Aboneliğinizi seçin.    |
     | **Kaynak grubu**         | Kutudan **Myresourcegrouplb** ' ı seçin.|
-    | **Adı**                   | **Myloadbalancer**girin.                                   |
+    | **Ad**                   | **Myloadbalancer**girin.                                   |
     | **Bölge**         | **Doğu ABD 2**’yi seçin.                                        |
     | **Tür**          | **Dahili**' ı seçin.                                        |
-    | **ISTEYIN**           | **Standart**' ı seçin.                          |
+    | **SKU**           | **Standart**' ı seçin.                          |
     | **Sanal ağ**           | **Myvnet**' i seçin.                          |
     | **IP adresi ataması**              | **Statik**’i seçin.   |
     | **Özel IP adresi**|Sanal ağınızın ve alt ağınızın adres alanında bir adres girin. Örnek olarak 10.3.0.7.  |
@@ -135,9 +135,9 @@ Yük dengeleyici kuralı oluşturmak için:
 
 Bu bölümde, standart yük dengeleyici arkasında bir özel bağlantı hizmeti oluşturursunuz.
 
-1. Azure Portal sayfanın sol üst kısmında **kaynak** > oluştur**ağ** > **özel bağlantı merkezi (Önizleme)** öğesini seçin. Ayrıca, özel bağlantı aramak için portalın arama kutusunu da kullanabilirsiniz.
+1. Azure Portal sayfanın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **özel bağlantı merkezi (Önizleme)** öğesini seçin. Ayrıca, özel bağlantı aramak için portalın arama kutusunu da kullanabilirsiniz.
 
-1. **Özel bağlantı merkezi** > 'nde,**Diğerlerinin bağlanabilmesi için kendi hizmetinizi kullanıma sunun**, **Başlat**' ı seçin.
+1. **Özel bağlantı merkezi**'nde,  >  **Diğerlerinin bağlanabilmesi için kendi hizmetinizi kullanıma sunun**, **Başlat**' ı seçin.
 
 1. **Özel bağlantı hizmeti oluşturma-temel bilgiler**altında bu bilgileri girin veya seçin:
 
@@ -145,9 +145,9 @@ Bu bölümde, standart yük dengeleyici arkasında bir özel bağlantı hizmeti 
     |-------------------|------------------------------------------------------------------------------|
     | Proje ayrıntıları:  |                                                                              |
     | **Abonelik**      | Aboneliğinizi seçin.                                                     |
-    | **Kaynak grubu**    | **Myresourcegrouplb**öğesini seçin.                                                    |
+    | **Kaynak Grubu**    | **Myresourcegrouplb**öğesini seçin.                                                    |
     | Örnek ayrıntıları: |                                                                              |
-    | **Adı**              | **Myprivatelinkservice**yazın. |
+    | **Ad**              | **Myprivatelinkservice**yazın. |
     | **Bölge**            | **Doğu ABD 2**’yi seçin.                                                        |
 
 1. **İleri ' yi seçin: giden ayarları**.
@@ -167,7 +167,7 @@ Bu bölümde, standart yük dengeleyici arkasında bir özel bağlantı hizmeti 
 
 1. **Özel bağlantı hizmeti oluşturma-erişim güvenliği**altında **görünürlük**' i seçin ve ardından **yalnızca rol tabanlı erişim denetimi**' ni seçin.
   
-1. İleri ' **yi seçin: Etiketler** > **gözden geçir + oluştur** ' u seçin veya sayfanın üst kısmındaki **gözden geçir + oluştur** sekmesini seçin.
+1. İleri ' **yi seçin: Etiketler**  >  **gözden geçir + oluştur** ' u seçin veya sayfanın üst kısmındaki **gözden geçir + oluştur** sekmesini seçin.
 
 1. Bilgilerinizi gözden geçirin ve **Oluştur**' u seçin.
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc, tracking-python
+ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0dfdb324013a246010c12d36a50c80b4fbef503e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607100"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873934"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark Machine Learning uygulaması oluşturma
 
@@ -21,7 +21,7 @@ Bu öğreticide, Azure HDInsight için [Apache Spark](./apache-spark-overview.md
 
 [Mllib](https://spark.apache.org/docs/latest/ml-guide.html) , ortak öğrenme algoritmalarından ve yardımcı programlarından oluşan Spark 'ın uyarılmatablosu makine öğrenimi kitaplığı. (Sınıflandırma, regresyon, kümeleme, işbirliğine dayalı filtreleme ve boyutlılık azaltma. Ayrıca, temel iyileştirme temelleri.)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Apache Spark Machine Learning uygulaması geliştirme
 
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="understand-the-data-set"></a>Veri kümesini anlamak
 
-Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC. csv** verilerini kullanır. Dosya konumunda bulunur `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Bir binanın, hedef sıcaklığa, sistem KIMLIĞINE ve sistem yaşı temelinde bir bina veya harmanlama olacağını tahmin edebilirsiniz.
+Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC.csv** verilerini kullanır. Dosya konumunda bulunur `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Bir binanın, hedef sıcaklığa, sistem KIMLIĞINE ve sistem yaşı temelinde bir bina veya harmanlama olacağını tahmin edebilirsiniz.
 
 ![Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü")
 
@@ -200,7 +200,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**' i seçin.
+1. **Sil**’i seçin. **Evet**’i seçin.
 
 ![Azure portal bir HDInsight kümesini siler](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 

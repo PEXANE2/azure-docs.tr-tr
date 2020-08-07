@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2675a55133d405041be6e309e0cc4d1596084e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074215"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835501"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure’da Windows sanal makineleri
 
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portalı |VM oluştururken listeden konum seçin. |
+| Azure portal |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -57,7 +57,7 @@ Azure, sanal makineyi tüm diskler için premium depolamayla dağıtmanız koşu
 
 
 ## <a name="vm-size"></a>VM boyutu
-Kullandığınız VM’nin [boyutu](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), çalıştırmak istediğiniz iş yüküne göre belirlenir. Seçtiğiniz boyut işlemci gücü, bellek ve depolama kapasitesi gibi ölçütleri belirler. Azure çok sayıda kullanım türünü desteklemek için büyük çeşitlilikteki boyutları sunar.
+Kullandığınız VM’nin [boyutu](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), çalıştırmak istediğiniz iş yüküne göre belirlenir. Seçtiğiniz boyut işlemci gücü, bellek ve depolama kapasitesi gibi ölçütleri belirler. Azure çok sayıda kullanım türünü desteklemek için büyük çeşitlilikteki boyutları sunar.
 
 Azure, VM 'nin boyut ve işletim sistemine göre [saatlik bir fiyat](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) ücretlendirir. Kısmi saatler için, Azure yalnızca kullanılan dakikaları ücretlendirir. Depolama ayrı olarak fiyatlandırılır ve ücretlendirilir.
 
@@ -73,14 +73,14 @@ Bu tabloda bir görüntünün bilgilerine nasıl erişebileceğiniz gösterilmi�
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portalı |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
+| Azure portal |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
 | Azure PowerShell |[Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *konumu*<BR>[Get-Azvmımageteklifinin](/powershell/module/az.compute/get-azvmimageoffer) -Location *konumu* -yayımcı *PublisherName*<BR>[Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku) -Location *konumu* -yayımcı *PublisherName* -bir *offername* sunma |
 | REST API'leri |[Görüntü yayımcılarını listeleme](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Görüntü tekliflerini listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Görüntü sku’larını listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 | Azure CLI |[az VM image List-Publishers](/cli/azure/vm/image?view=azure-cli-latest) --Location *Location*<BR>[az VM image List-teklifler](/cli/azure/vm/image?view=azure-cli-latest) --Location *Location* --Publisher *PublisherName*<BR>[az VM image List-SKU 'lar](/cli/azure/vm?view=azure-cli-latest) --konum *konumu* --yayımcı *PublisherName* -- *offername*|
 
 [Kendi görüntünüzü yükleyip kullanmanız halinde](upload-generalized-managed.md) yayımcı adı, teklif ve sku kullanılmaz.
 
-### <a name="extensions"></a>Uzantıları
+### <a name="extensions"></a>Uzantılar
 VM [uzantıları](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json), dağıtım sonrası yapılandırma ve otomatik görevlerle VM’nize yeni özellikler ekler.
 
 Uzantıları kullanarak şu genel görevleri gerçekleştirebilirsiniz:
@@ -94,11 +94,11 @@ Bu tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda mevc
 
 | Kaynak | Gerekli | Açıklama |
 | --- | --- | --- |
-| [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Yes |VM bir kaynak grubunda yer almalıdır. |
-| [Depolama hesabı](../../storage/common/storage-account-create.md) |Yes |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |
-| [Sanal ağ](../../virtual-network/virtual-networks-overview.md) |Yes |VM’in bir sanal ağa üye olması gerekir. |
+| [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Evet |VM bir kaynak grubunda yer almalıdır. |
+| [Depolama hesabı](../../storage/common/storage-account-create.md) |Evet |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |
+| [Sanal ağ](../../virtual-network/virtual-networks-overview.md) |Evet |VM’in bir sanal ağa üye olması gerekir. |
 | [Genel IP adresi](../../virtual-network/public-ip-addresses.md) |Hayır |VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir. |
-| [Ağ arabirimi](../../virtual-network/virtual-network-network-interface.md) |Yes |VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır. |
+| [Ağ arabirimi](../../virtual-network/virtual-network-network-interface.md) |Evet |VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır. |
 | [Veri diskleri](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Hayır |VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

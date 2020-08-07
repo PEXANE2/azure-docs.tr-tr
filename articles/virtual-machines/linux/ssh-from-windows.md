@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: dcb5277773be1fc45a3d2b0901cf9fda177b7054
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512661"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825574"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 'da Windows ile SSH anahtarlarını kullanma
 
@@ -45,7 +45,7 @@ Windows 10 ' un son sürümleri, SSH anahtarları oluşturup kullanmak ve PowerS
 
 VM 'nize bağlanmak için [Azure Cloud Shell](../../cloud-shell/overview.md) Bash 'i de kullanabilirsiniz. Cloud Shell bir [Web tarayıcısında](https://shell.azure.com/bash), [Azure Portal](https://portal.azure.com)veya Visual Studio Code [Azure hesap uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)kullanarak bir Terminal olarak kullanabilirsiniz.
 
-Ayrıca, [Linux Için Windows alt sistemini](https://docs.microsoft.com/windows/wsl/about) kullanarak sanal makinenize SSH üzerinden bağlanabilir ve bash kabuğu içindeki diğer yerel Linux araçlarını kullanabilirsiniz.
+Ayrıca, [Linux Için Windows alt sistemini](/windows/wsl/about) kullanarak sanal makinenize SSH üzerinden bağlanabilir ve bash kabuğu içindeki diğer yerel Linux araçlarını kullanabilirsiniz.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 

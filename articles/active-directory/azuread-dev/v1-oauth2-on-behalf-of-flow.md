@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/5/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551667"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845468"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
 
@@ -59,10 +59,10 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 1. Yeniden yönlendirme URI 'sini temel URL 'ye ayarlayın.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
-1. Azure portal çıkmadan önce bir istemci gizli dizisi oluşturun.
 1. Azure portal, uygulamanızı seçin ve **gizli dizileri & sertifikalar**' ı seçin.
 1. **Yeni istemci parolası** ' nı seçin ve süresi bir yıl ya da iki yıl olan bir parola ekleyin.
 1. Bu sayfayı kaydettiğinizde Azure portal gizli değeri görüntüler. Gizli bir konumda gizli bir konuma kopyalayın ve kaydedin.
+1. Uygulamanız için **BIR API 'Yi kullanıma** sunma sayfasında ve "kapsam Ekle" seçeneğine tıklayarak uygulamanızda bir kapsam oluşturun.  Portal, bir uygulama KIMLIĞI URI 'SI oluşturmanızı da gerektirebilir. 
 
 > [!IMPORTANT]
 > Uygulamanızda uygulama ayarlarını yapılandırmak için gizli anahtar gerekir. Bu gizli dizi değeri bir daha görüntülenmez ve başka hiçbir şekilde alınabilir değildir. Azure portal görünür hale geldiğinde onu kaydedin.
@@ -79,7 +79,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanız için izinleri yapılandırın. **API izinleri**' nde, **izin Ekle** ve sonra **API 'lerim**' i seçin.
 1. Metin alanına orta katman hizmetinin adını yazın.
-1. **Izinleri Seç** ' i seçin ve **ardından \<service name> erişim **' i seçin.
+1. **Izinleri Seç** ' i seçin ve ardından orta katmanı kaydetmenin son adımında oluşturduğunuz kapsamı seçin.
 
 ### <a name="configure-known-client-applications"></a>Bilinen istemci uygulamalarını yapılandırma
 
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JWT erişim belirteci kullanır, bu yüzden değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
 | onay |gerekli | İstekte kullanılan belirtecin değeri. |
@@ -249,7 +249,7 @@ Bazı OAuth tabanlı Web hizmetlerinin, etkileşimli olmayan akışlarda SAML on
 
 SAML onaylama işlemi için hizmetten hizmete yönelik bir istek aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | grant_type |gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
 | onay |gerekli | İstekte kullanılan erişim belirtecinin değeri.|

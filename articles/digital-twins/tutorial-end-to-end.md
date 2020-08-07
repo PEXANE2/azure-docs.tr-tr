@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131761"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827393"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Uçtan uca çözüm oluşturma
 
@@ -95,6 +95,20 @@ Sonraki adımda, bu öğreticide verileri işlemek için kullanılacak bir [Azur
 
 Bu bölümde, önceden yazılmış işlev uygulamasını yayımlayacaksınız ve işlev uygulamasının bir Azure Active Directory (Azure AD) kimliği atayarak Azure dijital TWINS 'e erişebildiğinden emin olursunuz. Bu adımları tamamlamak, öğreticinin geri kalanının işlev uygulaması içindeki işlevleri kullanmasına izin verir. 
 
+_**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri döndüğünüzde, Işlev uygulaması _**Samplefunctionsapp**_ proje dosyasında bulunur. *Çözüm Gezgini* bölmesinde görüntüleyebilirsiniz.
+
+### <a name="update-dependencies"></a>Bağımlılıkları Güncelleştir
+
+Uygulamayı yayımlamadan önce, tüm dahil edilen paketlerin en son sürümüne sahip olduğunuzdan emin olmak için bağımlılıklarınızın güncel olduğundan emin olmanız iyi bir fikirdir.
+
+*Çözüm Gezgini* bölmesinde *Samplefunctionsapp > bağımlılıklar*' ı genişletin. *Paketler* ' i sağ seçin ve *NuGet Paketlerini Yönet...* seçeneğini belirleyin.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp projesi için NuGet paketlerini yönetme" border="false":::
+
+Bu, NuGet Paket Yöneticisi 'Ni açar. *Güncelleştirmeler* sekmesini seçin ve güncelleştirme yapılacak herhangi bir paket varsa, *tüm paketleri seçmek*için kutuyu işaretleyin. Ardından *Güncelleştir*' i ziyaret edin.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet paket yöneticisinde tüm paketleri güncelleştirmek için seçme":::
+
 ### <a name="publish-the-app"></a>Uygulamayı yayımlama
 
 _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri döndüğünüzde, *Çözüm Gezgini* bölmesinden _**samplefunctionsapp**_ proje dosyasını sağ seçin ve **Yayınla**' yı tıklayın.
@@ -134,19 +148,21 @@ Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgile
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: yayımlama":::
 
 > [!NOTE]
-> Şu şekilde bir açılan pencere görebilirsiniz: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio 'Da Azure 'Da yayımlama işlevi: yayımlama kimlik bilgileri" border="false":::
-> Bu durumda, **Azure 'dan kimlik bilgilerini almayı dene** ve **Kaydet**' i seçin.
+> Şu şekilde bir açılan pencere görürseniz: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio 'Da Azure Işlevini yayımlama: kimlik bilgilerini yayımlama" border="false":::
+> **Azure 'dan kimlik bilgilerini alma** ve **kaydetme**girişimini seçin.
 >
-> *İşlevler çalışma zamanının sürümünün Azure 'da çalışan sürümle eşleşmediğinden*bir uyarı görürseniz, en son Azure işlevleri çalışma zamanı sürümüne yükseltmek için istemleri izleyin. Bu sorun, Bu öğreticinin başlangıcında *Önkoşullar* bölümünde önerilenden daha eski bir Visual Studio sürümü kullanıyorsanız meydana gelebilir.
+> *Azure 'Da işlev sürümünü yükseltmek* için bir uyarı görürseniz veya *işlevler çalışma zamanının sürümünün Azure 'da çalışan sürümle eşleşmemesi*durumunda:
+>
+> En son Azure Işlevleri çalışma zamanı sürümüne yükseltmek için istemleri izleyin. Bu sorun, Bu öğreticinin başlangıcında *Önkoşullar* bölümünde önerilenden daha eski bir Visual Studio sürümü kullanıyorsanız meydana gelebilir.
 
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 
-İşlev uygulamasının Azure dijital TWINS 'e erişmesine olanak tanımak için bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği atamak ve Azure dijital TWINS örneğinde bu kimlik *sahibi* izinlerini vermektir.
+İşlev uygulamasının Azure dijital TWINS 'e erişmesine olanak tanımak için, bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği olarak atamak ve Azure dijital TWINS örneğinde bu kimliğe *Azure dijital TWINS sahibi (Önizleme)* rolü vermektir. Bu rol, örnekte birçok veri düzlemi etkinliği gerçekleştirmek isteyen herhangi bir kullanıcı veya işlev için gereklidir. Güvenlik ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [*Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md).
 
-Azure Cloud Shell ' de, işlev uygulamanızın dijital TWINS örneğine başvurmak için kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın.
+Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi referans olarak kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda *PrincipalId* alanını bir yere göz atın.
@@ -155,7 +171,7 @@ Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kul
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-İşlev uygulamasının kimliğini Azure dijital TWINS örneğinizin *sahip* rolüne atamak için aşağıdaki komutta *PrincipalId* değerini kullanın:
+İşlev uygulamasının kimliğini Azure dijital TWINS örneğiniz için *Azure Digital TWINS Owner (Önizleme)* rolüne atamak için aşağıdaki komutta bulunan çıktıdan *PrincipalId* değerini kullanın:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +355,7 @@ Ayrıca, bu uç nokta için Azure dijital TWINS örneğinizi sorgulamak üzere a
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-`provisioningState`Çıktıda alanı bulun ve değerin "başarılı" olup olmadığını kontrol edin.
+`provisioningState`Çıktıda alanı bulun ve değerin "başarılı" olup olmadığını kontrol edin. Ayrıca "sağlama" da olabilir, yani uç noktanın oluşturulduğu anlamına gelir. Bu durumda, birkaç saniye bekleyin ve başarıyla tamamlandığını denetlemek için komutu yeniden çalıştırın.
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Uç nokta sorgusunun sonucu, bir provisioningState 'in başarılı olduğunu gösteriyor":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 Bu komutun çıktısı, oluşturduğunuz rota hakkında bazı bilgiler.
+
+>[!NOTE]
+>Uç noktaların (önceki adımdan), bunları kullanan bir olay yolu ayarlamadan önce sağlanması gerekir. Uç noktalar hazırlanmadığı için yol oluşturma başarısız olursa birkaç dakika bekleyip yeniden deneyin.
 
 #### <a name="connect-the-function-to-event-grid"></a>İşlevi Event Grid bağlayın
 

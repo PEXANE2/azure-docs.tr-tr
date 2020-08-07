@@ -7,13 +7,13 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.custom: tracking-python
-ms.openlocfilehash: 439e645369cd063e3084b5d975b3d1672e20a73e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python
+ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554023"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848197"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>V12 Python istemci kitaplıklarını kullanan Azure depolama örnekleri
 
@@ -173,7 +173,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
       [Blobu karşıya yükleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
    :::column-end:::
    :::column span="":::
-      [Blob indirme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
+      [Blobu indirme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -593,5 +593,5 @@ Diğer dillere yönelik örnekler hakkında bilgi için:
 
 * .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
 * Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
-* JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* JavaScript/Node.js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
 * Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)
