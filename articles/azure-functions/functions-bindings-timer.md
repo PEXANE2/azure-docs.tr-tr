@@ -6,13 +6,13 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-python
+ms.openlocfilehash: 49bbc2199c7dc3040a24071b8eb5a91929d88e08
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165677"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849251"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -258,7 +258,7 @@ Azure Işlevleri, NCRONTAB ifadelerini yorumlamak için [ncrontab](https://githu
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
-|Type  |Örnek  |Tetiklendiğinde  |
+|Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
 |Tüm değerler ( `*` )|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (günde 60 kez)|

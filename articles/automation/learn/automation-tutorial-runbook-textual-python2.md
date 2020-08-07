@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: has-adal-ref, devx-track-python
+ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185373"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847933"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Öğretici: Python runbook 'u oluşturma
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Otomasyonu 'nda bir [Python runbook](../automation-runboo
 > [!NOTE]
 > Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 

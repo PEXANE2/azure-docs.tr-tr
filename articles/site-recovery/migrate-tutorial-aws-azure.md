@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery hizmetiyle AWS VM'lerini Azure'a geçirme | Microsoft Docs
-description: Bu makalede, Azure Site Recovery kullanılarak, Amazon Web Services’te (AWS) çalıştırılan Windows sanal makinelerinin Azure’a nasıl geçirileceği açıklanmaktadır.
+title: AWS VM 'lerini Azure geçişi ile Azure 'a geçirme
+description: Bu makalede AWS örneklerini Azure 'a geçirme seçenekleri açıklanmakta ve Azure geçişi önerilmektedir.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/27/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dd91e99b45405cca10b9ddc2982674e72ad6bf86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83d8106b9f206da9095c37b6179bdda8001b439c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281302"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852778"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -22,7 +22,7 @@ Bu makalede Amazon Web Services (AWS) örneklerinin Azure 'a geçirilmesi için 
 
 ## <a name="migrate-with-azure-migrate"></a>Azure geçişi ile geçiş
 
-[Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak AWS örneklerini Azure 'a geçirmeniz önerilir. Azure geçişi, Azure geçişi, diğer Azure hizmetleri ve üçüncü taraf araçları kullanarak şirket içi makinelerin Azure 'a değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar.
+AWS EC2 örneklerini [Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak Azure 'a geçirmeniz önerilir. Azure geçişi, sunucu geçişi için oluşturulmuştur. Azure geçişi, şirket içi makinelerin Azure 'a bulunması, değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar.
 
 AWS örneklerini Azure geçişi ile geçirmeyi [öğrenin](../migrate/tutorial-migrate-aws-virtual-machines.md) . 
 

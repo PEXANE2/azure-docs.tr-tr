@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327404"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799931"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Iş Ortağı Merkezi 'nde SaaS teklifi oluşturma denetim listesi
 
@@ -79,9 +79,9 @@ Teklif kurulumu sayfası, farklı kanalları kabul edebilir ve ücretlerinizi sa
 Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerken göreceği metin ve görüntüleri sağladığınız yerdir. 
 
 | **Alan adı**    | **Notlar**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | Ad  | Gerekli, en fazla 50 karakter. |
-| Özet  | Gerekli, en fazla 100 karakter. | 
+| Özet  | Gerekli, en fazla 100 karakter. |
 | Açıklama  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
@@ -91,7 +91,7 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 | Faydalı bağlantılar başlığı + URL  | İsteğe bağlı. |
 | Destekleyici belgeler başlık + dosya  | Gerekli, en az 1 ve en fazla 3. PDF dosyası biçimi olmalıdır. |
 | Ekran görüntüleri  | Gerekli, en az 1 ekran görüntüsü ve en fazla 5; dört veya daha fazla önerilir. PNG biçiminde 1280 X 720 olmalıdır. |
-| Mağaza logoları (küçük, orta, büyük, geniş)  | Küçük (48 X 48) ve büyük (216 X 216) gereklidir; diğer boyutlar isteğe bağlıdır ancak önerilir: Orta (90 x 90), geniş (255 x 115). İçinde olmalıdır. PNG biçimi. |
+| Mağaza logoları (küçük, orta, büyük)  | Büyük logo (216 x 216) gereklidir. İş Ortağı Merkezi, küçük (48 x 48 piksel) ve Orta (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz. Logolar, PNG biçiminde olmalıdır. |
 | Videolar adı + URL + küçük resim  | İsteğe bağlı, önerilen, en fazla 4 video. Küçük resim, PNG biçiminde 1280 x 720 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
 | Kişiler (CSP programı, mühendislik, destek)  | Mühendislik ve destek ilgili kişisi gerekli (ad, e-posta ve telefon numarası); CSP programı isteğe bağlı, ancak önerilir. |
 | Destek URL 'SI  | Gereklidir. |
@@ -100,11 +100,11 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 
 Önizleme sayfası, teklifin, canlı olmadan önce tüm gereksinimlerinizi karşıladığından emin olmak için, teklif önizlemeye erişim sağlamak için hedef kitleyi belirlediğiniz yerdir. 
 
-| **Alan adı**    | **Notlar**   | 
-| :---------------- | :-----------| 
+| **Alan adı**    | **Notlar**   |
+| :---------------- | :-----------|
 | AAD/MSA e-postası + açıklama | El ile girilmişse, en az 1 ve en fazla 10, bir CSV dosyası karşıya yüklüyorsanız 20 ' ye kadar, gereklidir. |
 
-## <a name="technical-configuration-page"></a>Teknik yapılandırma sayfası 
+## <a name="technical-configuration-page"></a>Teknik yapılandırma sayfası
 
 Teknik yapılandırma sayfası, Microsoft tarafından teklifinizi bağlamak için kullanılan teknik ayrıntıları belirlediğiniz yerdir. Microsoft ile satımamaya karar verdiyseniz Bu sayfa sizin için görünür değildir.
 

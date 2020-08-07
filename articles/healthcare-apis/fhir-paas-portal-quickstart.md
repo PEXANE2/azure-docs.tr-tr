@@ -2,18 +2,18 @@
 title: 'Hızlı başlangıç: Azure portal kullanarak FHıR için Azure API dağıtma'
 description: Bu hızlı başlangıçta, FHıR için Azure API 'SI dağıtmayı ve Azure portal kullanarak ayarları yapılandırmayı öğreneceksiniz.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: e729597e9d83c4e6096fe52b577b052d94ca4799
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 03/15/2020
+ms.author: matjazl
+ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "84820255"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851945"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak FHıR için Azure API dağıtma
 
@@ -31,34 +31,31 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Arama kutusuna "FHIR" yazarak FHıR için Azure API 'sini bulabilirsiniz:
 
-![Sağlık API 'Leri arama](media/quickstart-paas-portal/portal-search-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-search-healthcare-apis.png" alt-text="Sağlık API 'Leri arama":::
 
 ## <a name="create-azure-api-for-fhir-account"></a>FHıR hesabı için Azure API oluşturma
 
 FHıR hesabı için yeni bir Azure API 'SI oluşturmak için **Oluştur** ' u seçin:
 
-![FHıR hesabı için Azure API oluşturma](media/quickstart-paas-portal/portal-create-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="FHıR hesabı için Azure API oluşturma":::
 
 ## <a name="enter-account-details"></a>Hesap ayrıntılarını girin
 
 Var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun, hesap için bir ad seçin ve son olarak **gözden geçir + oluştur**' a tıklayın:
 
-![Yeni sağlık API 'si ayrıntıları](media/quickstart-paas-portal/portal-new-healthcareapi-details.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Yeni sağlık API 'si ayrıntıları":::
 
 Oluşturma ve bekleme API 'SI dağıtımını onaylayın.
 
-## <a name="additional-settings"></a>Ek ayarlar
+## <a name="additional-settings-optional"></a>Ek ayarlar (isteğe bağlı)
 
-Ileri ' ye tıklayın: FHıR için bu Azure API 'sine erişmesine izin verilmesi gereken yetkili, hedef kitle, kimlik nesne kimliklerini yapılandırmak için **ek ayarlar** , gerekirse fhır 'de akıllı etkinleştirme ve veritabanı üretimini yapılandırma:
+Ileri ' ye de tıklayabilirsiniz: kimlik doğrulama ayarlarını görüntülemek için **ek ayarlar** . FHıR için Azure API 'sinin varsayılan yapılandırması, [veri düzlemi rolleri atamak Için Azure RBAC kullanmaktır](configure-azure-rbac.md). Bu modda yapılandırıldığında, FHıR hizmeti için "Authority", aboneliğin Azure Active Directory kiracısına ayarlanır:
 
-- **Yetkili:** Hizmet için kimlik doğrulama yetkilisi olarak oturum açtığınız bilgisayardan farklı bir Azure AD kiracısı belirtebilirsiniz.
-- **Hedef kitle:** En iyi yöntem ve varsayılan ayar, izleyicinin FHıR sunucusunun URL 'sine ayarlanlarıdır. Burada bu değişikliği yapabilirsiniz. Hedef kitle, belirtecin hedeflenen alıcıyı tanımlar. Bu bağlamda, FHıR API 'sini temsil eden bir şeye ayarlanmalıdır.
-- **Izin verilen nesne kimlikleri:** FHıR için bu Azure API 'sine erişmesine izin verilmesi gereken kimlik nesnesi kimliklerini belirtebilirsiniz. [Kimlik bulma nesne kimlikleri](find-identity-object-ids.md) nasıl yapılır Kılavuzu ' nda kullanıcılar ve hizmet sorumluları IÇIN nesne kimliğini bulma hakkında daha fazla bilgi edinebilirsiniz.  
-- **FHıR proxy üzerinde akıllı:** FHıR proxy üzerinde akıllı ' i etkinleştirebilirsiniz. FHıR proxy üzerinde akıllı yapılandırma hakkında ayrıntılı bilgi için bkz. fhır [proxy ÜZERINDE FHIR Smart için öğretici Azure API](https://docs.microsoft.com/azure/healthcare-apis/use-smart-on-fhir-proxy) 'si  
-- **Sağlanan aktarım hızı (ru/s):** Burada, FHıR için Azure API 'niz için temel alınan veritabanı için üretilen iş ayarlarını belirtebilirsiniz. Bu ayarı daha sonra veritabanı dikey penceresinde değiştirebilirsiniz. Daha fazla ayrıntı için lütfen [veritabanı ayarlarını yapılandırma](configure-database.md) sayfasına bakın.
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Varsayılan kimlik doğrulama ayarları":::
 
+Bu durumda rol atamalarını yapılandırmak için Azure RBAC kullandığımızdan, izin verilen nesne kimliklerinin girilmesi için kutunun gri olduğunu unutmayın.
 
-![İzin verilen nesne kimliklerini yapılandırma](media/quickstart-paas-portal/configure-audience.png)
+FHıR hizmetini dış veya ikincil Azure Active Directory kiracı kullanacak şekilde yapılandırmak istiyorsanız, yetkiyi değiştirebilir ve sunucu erişimine izin verilmesi gereken kullanıcı ve gruplar için nesne kimliklerini girebilirsiniz. Daha fazla bilgi için bkz. [Yerel RBAC yapılandırma](configure-local-rbac.md) Kılavuzu.
 
 ## <a name="fetch-fhir-api-capability-statement"></a>FHıR API özelliği bildirisini getir
 

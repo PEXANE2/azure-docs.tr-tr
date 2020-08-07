@@ -6,14 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073588"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852115"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Izleyici 'de klasik ölçüm uyarısıyla bir Web kancası çağırma
+
+> [!WARNING]
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl kullanılacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](./alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan](./monitoring-classic-retirement.md)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda.
+>
 
 Web kancalarını kullanarak, işlem sonrası veya özel eylemler için bir Azure uyarı bildirimini diğer sistemlere yönlendirebilirsiniz. Uyarı üzerinde bir Web kancasını SMS iletileri gönderen hizmetlere yönlendirmek, hataları günlüğe kaydetmek, sohbet veya mesajlaşma hizmetleri aracılığıyla bir takıma bildirmek veya diğer çeşitli eylemler için kullanabilirsiniz. 
 
@@ -84,7 +88,7 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 | eşiği |Ölçüm uyarıları için | |Uyarının etkinleştirildiği eşik değeri. |
 | windowSize |Ölçüm uyarıları için | |Eşik temelinde uyarı etkinliğini izlemek için kullanılan süre. Değer 5 dakika ile 1 gün arasında olmalıdır. Değer ISO 8601 Duration biçiminde olmalıdır. |
 | timeAggregation |Ölçüm uyarıları için |Ortalama, son, maksimum, en az, yok, toplam |Toplanan verilerin zaman içinde birleştirilmesi gerekir. Varsayılan değer Average değeridir. Bkz. [izin verilen değerler](/previous-versions/azure/reference/dn802410(v=azure.100)). |
-| operator |Ölçüm uyarıları için | |Geçerli ölçüm verilerini ayarlanan eşikle karşılaştırmak için kullanılan işleç. |
+| işleç |Ölçüm uyarıları için | |Geçerli ölçüm verilerini ayarlanan eşikle karşılaştırmak için kullanılan işleç. |
 | subscriptionId |Y | |Azure abonelik KIMLIĞI. |
 | resourceGroupName |Y | |Etkilenen kaynak için kaynak grubunun adı. |
 | resourceName |Y | |Etkilenen kaynağın kaynak adı. |

@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-python
+ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131982"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876742"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
@@ -63,7 +63,7 @@ Sistem isteği alır, daha sonra bu tahminle aynı gün ve hava durumu için kul
 > Bu bir simülasyonu olduğundan, ödül için algoritma basittir. Gerçek dünyada bir senaryoda, algoritma iş mantığını kullanmalıdır, bu da müşterinin deneyiminin çeşitli yönlerine yönelik ağırlıklarla birlikte, ödül puanı tespit etmelidir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure Not defteri](https://notebooks.azure.com/) hesabı.
 * Bir [Azure kişiselleştirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).

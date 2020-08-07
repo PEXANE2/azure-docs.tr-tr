@@ -2,14 +2,14 @@
 title: Azure App Services performansını izleme | Microsoft Docs
 description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373173"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876402"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -61,11 +61,11 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
         
 | Veriler | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
 | --- | --- | --- |
-| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
-| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
-| Ana işlem tarafından işlenmeyen özel durumları toplar | Yes |Yes |
-| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Yes |Yes |
-| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Yes |
+| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Evet |Evet |
+| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Evet |Evet |
+| Ana işlem tarafından işlenmeyen özel durumları toplar | Evet |Evet |
+| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Evet |Evet |
+| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Evet |
 
 3. Daha önce applicationinsights.config dosyası aracılığıyla denetleyebilmeniz gereken örnekleme gibi ayarları yapılandırmak için artık karşılık gelen bir ön ek ile uygulama ayarları aracılığıyla aynı ayarlarla etkileşime geçebilirsiniz. 
 
@@ -396,6 +396,12 @@ Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri v
 Bunun nedeni, APPINSIGHTS_JAVASCRIPT_ENABLED uygulama ayarı true olarak ayarlanmakta ve içerik kodlamasının aynı anda mevcut olmasını sağlar. Bu senaryo henüz desteklenmiyor. Geçici çözüm, APPINSIGHTS_JAVASCRIPT_ENABLED uygulama ayarlarından kaldırdır. Ne yazık ki, istemci/tarayıcı tarafı JavaScript izleme hâlâ gerekliyse, Web sayfalarınız için el ile SDK başvuruları gerekir. Lütfen JavaScript SDK 'Sı ile el ile izleme [yönergelerini](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) izleyin.
 
 Application Insights Aracısı/uzantısıyla ilgili en son bilgiler için, [sürüm notlarına](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)göz atın.
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Web Apps ile dağıtılan varsayılan Web sitesi otomatik istemci tarafı izlemeyi desteklemez
+
+Azure Uygulama hizmetlerinde veya çalışma zamanları ile bir Web uygulaması oluşturduğunuzda, `ASP.NET` `.NET Core` tek BIR statik HTML sayfasını Başlatıcı Web sitesi olarak dağıtır. Statik Web sayfası, IIS 'de .NET tarafından yönetilen bir Web bölümü de yükler. Bu, kodsuz kullanacaksınız sunucu tarafı izlemenin test edilmesine olanak tanır, ancak otomatik istemci tarafı izlemeyi desteklemez.
+
+Azure App Services Web uygulamasında ASP.NET veya ASP.NET Core için kodsuz kullanacaksınız sunucusunu ve istemci tarafı izlemeyi test etmek istiyorsanız, [bir ASP.NET Core Web uygulaması oluşturmak](../../app-service/app-service-web-get-started-dotnet.md) ve [bir ASP.NET Framework Web uygulaması](../../app-service/app-service-web-get-started-dotnet-framework.md) oluşturmak için resmi kılavuzlarınızın yanı sıra, izlemeyi etkinleştirmek için geçerli makaledeki yönergeleri kullanmanız önerilir.
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP ve WordPress desteklenmez
 

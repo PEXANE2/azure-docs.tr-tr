@@ -14,13 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
-ms.custom: tracking-python
-ms.openlocfilehash: 311d882814c45b3b001fde2a4f3f9027e879f29c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-python
+ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919892"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851520"
 ---
 # <a name="use-service-management-from-python"></a>Python 'da hizmet yönetimi kullanma
 Bu kılavuzda, Python 'dan programlı olarak ortak hizmet yönetimi görevlerini nasıl gerçekleştireceğiniz gösterilmektedir. [Python Için Azure SDK](https://github.com/Azure/azure-sdk-for-python) 'Daki **ServiceManagementService** sınıfı, [Azure Portal][management-portal]mevcut olan hizmet yönetimiyle ilgili işlevlerin büyük bölümüne programlı erişimi destekler. Bulut Hizmetleri, dağıtımlar, veri yönetimi hizmetleri ve sanal makineler oluşturmak, güncelleştirmek ve silmek için bu işlevi kullanabilirsiniz. Bu işlevsellik, hizmet yönetimine programlı erişim gerektiren uygulamalar oluşturmak için yararlı olabilir.
@@ -116,18 +116,18 @@ for location in result:
 
 Bir bulut hizmeti veya depolama hizmeti oluşturduğunuzda, geçerli bir konum sağlamanız gerekir. **Liste \_ konumları** yöntemi her zaman şu anda kullanılabilir konumların güncel bir listesini döndürür. Bu yazma itibariyle, kullanılabilir konumlar şunlardır:
 
-* Batı Avrupa
+* West Europe
 * Kuzey Avrupa
 * Güneydoğu Asya
 * Doğu Asya
-* Orta ABD
+* Central US
 * Orta Kuzey ABD
 * Orta Güney ABD
 * Batı ABD
 * Doğu ABD
 * Doğu Japonya
 * Batı Japonya
-* Güney Brezilya
+* Brezilya Güney
 * Doğu Avustralya
 * Güneydoğu Avustralya
 
@@ -364,7 +364,7 @@ sms.create_virtual_machine_deployment(service_name=name,
     role_size='Small')
 ```
 
-## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>Sanal makineyi silme
+## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>Sanal makineyi sil
 Bir sanal makineyi silmek için önce dağıtımı **Sil \_ ** yöntemini kullanarak dağıtımı silmelisiniz.
 
 ```python

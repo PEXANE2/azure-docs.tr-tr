@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830419"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -133,4 +133,4 @@ Bu öğreticide, Azure Güvenlik Merkezi’ni ayarladınız ve sonra Güvenlik M
 Jenkins, GitHub ve Docker ile bir CI/CD işlem hattı oluşturma hakkında daha fazla bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Jenkins, GitHub ve Docker ile CI/CD altyapısı oluşturma](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
+> [Jenkins, GitHub ve Docker ile CI/CD altyapısı oluşturma](/azure/developer/jenkins/pipeline-with-github-and-docker)

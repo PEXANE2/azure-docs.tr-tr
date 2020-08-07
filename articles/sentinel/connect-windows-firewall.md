@@ -1,5 +1,5 @@
 ---
-title: Windows Güvenlik Duvarı verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+title: Windows Defender güvenlik duvarı verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Azure Sentinel 'de Windows Güvenlik Duvarı bağlayıcısını, Log Analytics aracıları yüklü Windows makinelerden kolayca Güvenlik Duvarı olaylarını akışa almak üzere etkinleştirin.
 services: sentinel
 documentationcenter: na
@@ -10,52 +10,78 @@ ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559481"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850704"
 ---
-# <a name="connect-windows-firewall"></a>Windows güvenlik duvarını bağlama
+# <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı 'Nı Azure Sentinel 'e bağlama
 
+[Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) Bağlayıcısı, Azure Sentinel 'in çalışma alanınızdaki herhangi bir Windows makineden gelişmiş güvenlik günlükleri Ile Windows Defender güvenlik duvarı 'nı kolayca almasına olanak tanır. Bu bağlantı, çalışma kitaplarınızda Windows Güvenlik Duvarı olaylarını görüntülemenize ve çözümlemenize, bunları özel uyarılar oluşturmakta ve güvenlik araştırmalarınıza ekleyerek kuruluşunuzun ağına daha fazla bilgi vererek ve güvenlik işlemleri yeteneklerini iyileştirmenize olanak sağlar. 
 
-
-Windows Güvenlik Duvarı Bağlayıcısı, Azure Sentinel çalışma alanınıza bağlı olmaları durumunda Windows Güvenlik duvarları günlüklerinizi kolayca bağlamanıza olanak tanır. Bu bağlantı, panoları görüntülemenizi, özel uyarılar oluşturmanızı ve araştırmanızı sağlar. Bu, kuruluşunuzun ağı hakkında daha ayrıntılı bilgi verir ve güvenlik işlemi yeteneklerini geliştirir. Çözüm, Log Analytics aracısının yüklendiği Windows makinelerden Windows Güvenlik Duvarı olaylarını toplar. 
-
+Çözüm, Log Analytics aracısının yüklendiği Windows makinelerden Windows Güvenlik Duvarı olaylarını toplar. 
 
 > [!NOTE]
 > - Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
+>
 > - Azure Sentinel ve Azure Güvenlik Merkezi aynı çalışma alanına toplanırsa, bu bağlayıcı aracılığıyla Windows Güvenlik Duvarı çözümünü etkinleştirmeniz gerekmez. Yine de etkinleştirdiyseniz, yinelenen verilere neden olmaz. 
+
+## <a name="prerequisites"></a>Önkoşullar
+
+- İzlemek istediğiniz makinelerin bağlı olduğu çalışma alanı üzerinde okuma ve yazma izinlerinizin olması gerekir.
+
+- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>Bağlayıcıyı etkinleştirme 
 
-1. Azure Sentinel portalında, **veri bağlayıcıları** ' nı seçin ve ardından **Windows Güvenlik Duvarı** kutucuğuna tıklayın. 
-1.  Windows makineleriniz Azure 'da ise:
-    1. **Azure Windows sanal makinesinde aracıyı yükler**' e tıklayın.
-    1. **Sanal makineler** listesinde, Azure Sentinel 'de akışı yapmak istediğiniz Windows makinesini seçin. Bunun bir Windows sanal makine olduğundan emin olun.
-    1. Bu VM için açılan pencerede, **Bağlan**' a tıklayın.  
-    1. **Windows Güvenlik Duvarı Bağlayıcısı** penceresinde **Etkinleştir** ' e tıklayın. 
+1. Azure Sentinel portalında, gezinti menüsünden **veri bağlayıcıları** ' nı seçin.
 
-2. Windows makineniz bir Azure VM değilse:
-    1. **Azure dışı makinelerde aracıyı yükler**' e tıklayın.
-    1. **Doğrudan aracı** penceresinde, **Windows agent 'ı (64 bit) İndir** veya **Windows Agent 'ı (32 bit) İndir**seçeneğini belirleyin.
-    1. Aracıyı Windows makinenize yükler. **Çalışma alanı kimliği**, **birincil anahtar**ve **İkincil anahtarı** kopyalayın ve yükleme sırasında istendiğinde bunları kullanın.
+1. Bağlayıcılar galerisinden **Windows Güvenlik Duvarı** ' nı seçin ve **bağlayıcı sayfasını aç**' a tıklayın.
 
-4. Hangi veri türlerini akışa almak istediğinizi seçin.
-5. **Çözümü yüklensin**' e tıklayın.
-6. Windows Güvenlik Duvarı için Log Analytics ilgili şemayı kullanmak için, **Securityevent**araması yapın.
+### <a name="instructions-tab"></a>Yönergeler sekmesi
+
+- **Windows makineleriniz Azure 'da ise:**
+
+    1. **Azure Windows sanal makinesine aracıyı yüklemeyi**seçin.
+
+    1. Görüntülenen **Azure Windows sanal makineler Için yükleme & yükleme aracısı >** bağlantısını tıklatın.
+
+    1. **Sanal makineler** listesinde, Azure Sentinel 'de akışı yapmak istediğiniz Windows makinesini seçin. (Yalnızca Windows VM 'lerinin görüntülendiğinden emin olmak için işletim sistemi sütun filtresi ' nde **Windows** ' u seçebilirsiniz).
+
+    1. Bu VM için açılan pencerede, **Bağlan**' a tıklayın.
+
+    1. **Sanal makineler** bölmesine dönün ve bağlanmak istediğiniz diğer tüm VM 'ler için önceki iki adımı tekrarlayın. İşiniz bittiğinde **Windows Güvenlik Duvarı** bölmesine dönün.
+
+- **Windows makineniz bir Azure VM değilse:**
+
+    1. **Azure olmayan Windows makinesine aracıyı yüklemeyi**seçin.
+
+    1. Görüntülenen **Azure olmayan Windows makineleri Için indirme & yükleme aracısı >** bağlantısını tıklatın.
+
+    1. **Aracılar yönetimi** bölmesinde, gerektiğinde **Windows agent 'ı (64 bit) Indir** veya **Windows Agent 'ı (32 bit) İndir**seçeneğini belirleyin.
+
+    1. **Çalışma alanı kimliği**, **birincil anahtar**ve **İkincil anahtar** dizelerini bir metin dosyasına kopyalayın. Bu dosyayı ve indirilen yükleme dosyasını Windows makinenize kopyalayın. Yükleme dosyasını çalıştırın ve istendiğinde, yükleme sırasında metin dosyasına KIMLIĞI ve anahtar dizelerini girin.
+
+    1. **Windows Güvenlik Duvarı** bölmesine geri dönün.
+
+1. **Çözümü yüklensin**' e tıklayın.
+
+### <a name="next-steps-tab"></a>Sonraki adımlar sekmesi
+
+- Windows Güvenlik Duvarı günlük verilerinize ilişkin Öngörüler almak için **Windows Güvenlik Duvarı** veri Bağlayıcısı ile birlikte sunulan önerilen çalışma kitaplarına ve sorgu örneklerine bakın.
+
+- **Günlüklerde**Windows Güvenlik Duvarı verilerini sorgulamak için, sorgu penceresine **WindowsFirewall** yazın.
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
-
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir. 
-
-
+ 
+Windows Güvenlik Duvarı günlükleri yalnızca yerel günlük dosyası kapasiteye ulaştığında Azure Sentinel 'e gönderildiğinden, günlüğü 4096 KB 'ın varsayılan boyutunda bırakmak büyük olasılıkla yüksek toplama gecikmesi oluşmasına neden olur. Günlük dosyası boyutunu azaltarak gecikme süresini düşürebilirsiniz. [Windows Güvenlik Duvarı günlüğünü yapılandırma](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)yönergelerine bakın. Mümkün olan en düşük günlük boyutunu (1 KB) tanımlarken, koleksiyon gecikmesini neredeyse ortadan kaldıracak, bu durum da yerel makinenin performansını olumsuz yönde etkileyebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Windows Güvenlik Duvarı 'nı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

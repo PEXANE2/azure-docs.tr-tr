@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037078"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903196"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
@@ -24,7 +24,7 @@ Bu makalede Azure Stream Analytics çıkış bağlantılarıyla ilgili yaygın s
 1. Her çıkış için **Bağlantıyı Sına** düğmesini kullanarak çıkışlara bağlantıyı doğrulayın.
 1. **İzleyici** sekmesinde [izleme ölçümleri](stream-analytics-monitoring.md) ' ne bakın. Değerler toplanmış olduğundan ölçümler birkaç dakika gecikiyor.
 
-   * **Giriş olayı** değeri sıfırdan büyükse, iş giriş verilerini okuyabilir. **Giriş olayları** değeri sıfırdan büyük değilse, iş girişiyle ilgili bir sorun vardır. Daha fazla bilgi için bkz. [giriş bağlantılarında sorun giderme](stream-analytics-troubleshoot-input.md) .
+   * **Giriş olayı** değeri sıfırdan büyükse, iş giriş verilerini okuyabilir. **Giriş olayları** değeri sıfırdan büyük değilse, iş girişiyle ilgili bir sorun vardır. Daha fazla bilgi için bkz. [giriş bağlantılarında sorun giderme](stream-analytics-troubleshoot-input.md) . İşinizin başvuru verileri girişi varsa, **giriş olayları** ölçümünü ararken mantıksal ada göre bölme uygulayın. Başvuru verilerinizde tek başına giriş olayı yoksa, bu giriş kaynağının doğru başvuru veri kümesini getirmek için doğru şekilde yapılandırılmadığı anlamına gelir.
    * **Veri dönüştürme hatalarının** değeri sıfırdan büyükse ve bu hata, veri dönüştürme hatalarıyla ilgili ayrıntılı bilgi için bkz. [Azure Stream Analytics veri hataları](data-errors.md) .
    * **Çalışma zamanı hataları** değeri sıfırdan büyükse, işiniz verileri alır ancak sorguyu işlerken hata oluşturur. Hataları bulmak için [Denetim günlüklerine](../azure-resource-manager/management/view-activity-logs.md)gidin ve **başarısız** durumuna filtre uygulayın.
    * **Giriş olayları** değeri sıfırdan büyükse ve **Çıkış olayları** değeri sıfıra eşitse, aşağıdaki deyimlerden biri doğrudur:

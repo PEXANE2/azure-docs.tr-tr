@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 072beb4f6bd8f823b150a6e81f4308bdd6b29402
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500666"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852251"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 'SI için Java SDK v4 Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87500666"
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
@@ -46,15 +48,17 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 > [Azure Cosmos DB atölyeler ve Labs](https://aka.ms/cosmosworkshop) , Java SDK 'sı v4 Azure Cosmos DB kullanmayı öğrenmek için başka harika bir kaynaktır!
 >
 
-| |  |
+## <a name="helpful-content"></a>Yardımcı içerik
+
+| İçerik | Bağlantı |
 |---|---|
-| **SDK indirmesi** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
+|**SDK indirmesi**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API belgeleri** | [Java API başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**SDK 'ya katkıda bulunma** | [GitHub 'da Java merkezi deposu için Azure SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**Kullanmaya başlama** | [Hızlı başlangıç: Azure Cosmos db SQL API verilerini yönetmek için bir Java uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Hızlı başlangıç kodu Ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
-|**Temel kod örnekleri** | [Azure Cosmos DB: SQL API 'si Için Java örnekleri](sql-api-java-sdk-samples.md) · [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
-|**Değişiklik akışı olan konsol uygulaması**| [Değişiklik akışı-Java SDK v4 örneği](create-sql-api-java-changefeed.md) · [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
-|**Web uygulaması örneği**| [Java SDK 'sı v4 · bir Web uygulaması oluşturma](sql-api-java-application.md) [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
+|**Kullanmaya başlama** | [Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [Hızlı başlangıç kodu ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**Temel kod örnekleri** | [Azure Cosmos DB: SQL API'si için Java örnekleri](sql-api-java-sdk-samples.md) <br> [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**Değişiklik akışı olan konsol uygulaması**| [Değişiklik akışı-Java SDK v4 örneği](create-sql-api-java-changefeed.md) <br> [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
+|**Web uygulaması örneği**| [Java SDK v4 ile Web uygulaması oluşturma](sql-api-java-application.md) <br> [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **Performans ipuçları**| [Java SDK v4 için performans ipuçları](performance-tips-java-sdk-v4-sql.md)| 
 | **Sorun giderme** | [Java SDK v4 sorunlarını giderme](troubleshoot-java-sdk-v4-sql.md) |
 | **Daha eski bir SDK 'dan v4 'ye geçiş** | [Java V4 SDK’ya geçirme](migrate-java-v4-sdk.md) |
@@ -66,7 +70,7 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 ### <a name="440-beta1-unreleased"></a>4.4.0-Beta. 1 (serbest bırakılmamış)
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
-#### <a name="new-features"></a>Yeni Özellikler
+#### <a name="new-features"></a>Yeni özellikler
 * Reaktör-çekirdek kitaplık sürümü sürümüne güncelleştirildi `3.3.8.RELEASE` . 
 * Reaktör-Netty kitaplık sürümü sürümüne güncelleştirildi `0.9.10.RELEASE` . 
 * Netty kitaplık sürümü olarak güncelleştirildi `4.1.51.Final` . 
@@ -86,7 +90,7 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * Operatör ile ilgili sorun düzeltildi `.single()` özel durum durumunda reaktör zincirinin geliyor 'a neden olması. 
 
 ### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
-#### <a name="new-features"></a>Yeni Özellikler
+#### <a name="new-features"></a>Yeni özellikler
 * Betik günlüğü etkin API öğesine eklendi `CosmosStoredProcedureRequestOptions` .
 * `DirectConnectionConfig`Varsayılan değer `idleEndpointTimeout` 1 ' dir ve varsayılan `connectTimeout` olarak 0,5 s olarak güncelleştirilir.
 #### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
@@ -95,10 +99,10 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * Koleksiyonda sorun düzeltildi ve aynı ada sahip koleksiyonu yeniden oluştururken akış değiştir.
 * En üstteki sorgu oluşturma ClassCastException ile ilgili sorun düzeltildi.
 * Sorgu ' NullPointerException 'ı oluşturan sıralamada sorun düzeltildi.
-* İptal edilen isteklerin doğrudan modunda işlenmesinde, yeniden aktörün çağrılmasına neden olan sorun düzeltildi `onErrorDropped` . 
+* İptal edilen isteklerin doğrudan modunda işlenmesinde, yeniden aktörin çağrılmasına neden olan sorun düzeltildi `onErrorDropped` . 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
-#### <a name="new-features"></a>Yeni Özellikler
+#### <a name="new-features"></a>Yeni özellikler
 * Sorgu için destek eklendi `GROUP BY` .
 * DirectConnectionConfig içinde maxConnectionsPerEndpoint varsayılan değeri 130 olarak artar.
 * DirectConnectionConfig içinde varsayılan maxRequestsPerConnection değeri 30 ' a yükseltilir.
@@ -108,7 +112,7 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * RntbdClientChannelPool içindeki istek yöneticisinde boş işaretçi özel durumu düzeltildi.
 
 ### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
-#### <a name="new-features"></a>Yeni Özellikler
+#### <a name="new-features"></a>Yeni özellikler
 * Olarak yeniden adlandırıldı `QueryRequestOptions` `CosmosQueryRequestOptions` .
 * `ChangeFeedProcessorBuilder`Oluşturucu düzenine güncelleştirildi.
 * `CosmosPermissionProperties`Yeni kapsayıcı adı ve alt kaynaklar API 'leri ile güncelleştirildi.
@@ -174,5 +178,5 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 ## <a name="faq"></a>SSS
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.

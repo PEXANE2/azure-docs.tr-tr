@@ -4,13 +4,13 @@ description: Uygulamanız için önceden oluşturulmuş bir Python kapsayıcıs�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.custom: mvc, seodec18, devx-track-python
+ms.openlocfilehash: 0a0422dadd1c9b59e63da00b27a22fc7020bff93
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905638"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849973"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
 1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
-1. `pip install -r requirements.txt` öğesini çalıştırın.
+1. Şu komutu çalıştırın: `pip install -r requirements.txt`.
 1. Deponun kökünde *Manage.py* bulunursa, *Manage.py collectstatic*' i çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` olarak ayarlandıysa `true` , bu adım atlanır.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 

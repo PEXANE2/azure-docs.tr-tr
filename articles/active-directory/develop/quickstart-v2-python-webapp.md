@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
-ms.custom: aaddev, tracking-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0a2867b9b39634000366ec2a92f936a4e419e859
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 0a03ca76bd1414548102dc5eb2ed160b44bd92e8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558615"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846335"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasını Microsoft Identity plat
 
 Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -57,11 +57,11 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `python-webapp` .
 >      - **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
->      - **Kaydol**’u seçin.
+>      - **Kaydet**’i seçin.
 >      - Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Web** platformu yapılandırmasını ekleyin. `http://localhost:5000/getAToken` **Yeniden yönlendirme URI 'leri**olarak ekleyin.
->    - **Kaydet**'i seçin.
+>    - **Kaydet**’i seçin.
 > 1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
 >
 >      - Bir anahtar açıklaması (örnek uygulama gizli anahtarı) yazın.
@@ -116,7 +116,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 > AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 > ```
-> Konumlar:
+> Burada:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here`-Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &** .

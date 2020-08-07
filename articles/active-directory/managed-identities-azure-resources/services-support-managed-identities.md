@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 49692c08787103b09e6e1502f7a9a58736239fdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019004"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873594"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -79,6 +79,13 @@ Azure Arc etkin Kubernetes Şu anda [sistem tarafından atanan kimliği destekle
 
 
 ### <a name="azure-cognitive-search"></a>Azure Bilişsel Arama
+
+Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem tarafından atanan | ![Kullanılabilir][check] | ![Kullanılabilir][check] | Kullanılamaz | ![Kullanılabilir][check] |
+| Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+
+### <a name="azure-cognitive-services"></a>Azure Bilişsel Hizmetler
 
 Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |

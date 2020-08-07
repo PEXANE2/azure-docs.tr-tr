@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDOS Koruması
       href: ddos-best-practices.md
+    - name: DDoS Koruması güvenlik temeli
+      href: ddos-protection-security-baseline.md
     - name: Sarkan DNS ve alt etki alanı adı ele geçirme
       href: subdomain-takeover.md
     - name: Güvenli karma ağ mimarisi

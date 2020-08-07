@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100399"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829059"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>Linux için InfiniBand sürücü uzantısı
 
 Bu uzantı, InfiniBand ve SR-ıOV-Enabled (' r ' boyutları) [H serisi](../sizes-hpc.md) ve Linux çalıştıran [N serisi](../sizes-gpu.md) VM 'ler üzerinde InfiniBand temelli sürücüler yüklüyor. VM ailesine bağlı olarak, uzantı, Connect-X NIC için uygun sürücüleri yüklenir.
 
-ALıNAN sürücülerin el ile yüklenmesiyle ilgili yönergeler [burada](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed)bulunabilir.
+ALıNAN sürücülerin el ile yüklenmesiyle ilgili yönergeler [burada](../workloads/hpc/enable-infiniband.md#manual-installation)bulunabilir.
 
 [Windows VM 'ler](hpc-compute-infiniband-windows.md)için InfiniBand sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
@@ -69,7 +69,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 ### <a name="properties"></a>Özellikler
 
-| Name | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |

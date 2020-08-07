@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 86e2d54cfe7559675e5e878cbc8a0df4b4eb3d0b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129883"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834295"
 ---
 # <a name="what-is-custom-vision"></a>Özel Görüntü İşleme nedir?
 
@@ -35,7 +35,7 @@ Azure Özel Görüntü İşleme, kendi resim sınıflandırıcılarınızı olu�
 
 Özel Görüntü İşleme Hizmeti, görüntüler arasındaki önemli farklılıkları hızlı bir şekilde tanımak için en iyi duruma getirilmiştir, bu sayede modelinize kısa bir veri miktarıyla prototip başlatabilirsiniz. Her etiket için 50 görüntü genellikle iyi bir başlangıç. Ancak, görüntüde hafif farklılıkları tespit etmek için en uygun değildir (örneğin, kalite güvencesi senaryolarındaki küçük bir yandan veya en yüzlerini algılama).
 
-Ayrıca, belirli konu malzemelere&mdash;örnek olarak en iyi duruma getirilmiş özel görüntü işleme algoritmasından farklı, örneğin, yer işaretleri veya perakende öğeleri arasından seçim yapabilirsiniz. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
+Ayrıca, belirli konu malzemelere örnek olarak en iyi duruma getirilmiş Özel Görüntü İşleme algoritmasından farklı, &mdash; Örneğin, yer işaretleri veya perakende öğeleri arasından seçim yapabilirsiniz. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
 
 ## <a name="what-it-includes"></a>Neleri içerir
 

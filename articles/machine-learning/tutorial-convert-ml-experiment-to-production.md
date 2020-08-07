@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
-ms.custom: tracking-python
-ms.openlocfilehash: eabd4ceced77e90646169d80d08338c81af96e2f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-python
+ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025650"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852625"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Öğretici: ML denemeleri 'yi üretim Python koduna dönüştürme
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İlgili görevler için Python betikleri oluşturma
 > * Birim testleri oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [MLOpsPython şablonunu](https://github.com/microsoft/MLOpsPython/generate) oluşturun ve `experimentation/Diabetes Ridge Regression Training.ipynb` ve `experimentation/Diabetes Ridge Regression Scoring.ipynb` not defterlerini kullanın. Bu not defterleri, deneme 'den üretime dönüştürme örneği olarak kullanılır. Bu not defterlerini adresinde bulabilirsiniz [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) .
 - `nbconvert`yükleyin. [Yükleme](https://nbconvert.readthedocs.io/en/latest/install.html) sayfasında, yalnızca __nbconvert 'i yükleme__ bölümündeki yükleme yönergelerini izleyin.

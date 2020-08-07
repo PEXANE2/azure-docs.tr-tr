@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085914"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873101"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight’ta dış meta veri depolarını kullanma
 
@@ -38,10 +38,10 @@ Varsayılan olarak HDInsight, her küme türüyle bir meta veri deposu oluşturu
 
 * Varsayılan meta veri deposunu diğer kümelerle paylaşamazsınız.
 
-* Varsayılan meta veri deposu, beş DTU (veritabanı işlem birimi) sınırına sahip olan temel Azure SQL veritabanını kullanır.
-Bu varsayılan meta veri deposu genellikle görece basit iş yükleri için kullanılır. Birden çok küme gerektirmeyen ve kümenin yaşam döngüsünün ötesinde meta verilerin korunması gerekmeyen iş yükleri.
+* Varsayılan meta veri deposu yalnızca basit iş yükleri için önerilir. Birden çok küme gerektirmeyen ve kümenin yaşam döngüsünün ötesinde meta verilerin korunması gerekmeyen iş yükleri.
 
-* Üretim iş yükleri için dış bir meta veri yüklemeye geçiş yapmanızı öneririz. Daha fazla bilgi için lütfen aşağıdaki bölüme bakın.
+> [!IMPORTANT]
+> Varsayılan meta veri deposu, **temel katman 5 DTU sınırı (yükseltilebilir)** Ile BIR Azure SQL veritabanı sağlar! Temel test amaçları için uygundur. Büyük veya üretim iş yükleri için bir dış meta veri yüklemeye geçiş yapmanızı öneririz.
 
 ## <a name="custom-metastore"></a>Özel meta veri deposu
 
@@ -81,9 +81,8 @@ Kümenizi dilediğiniz zaman daha önce oluşturulmuş bir Azure SQL veritabanı
 
 ## <a name="hive-metastore-guidelines"></a>Hive meta veri deposu yönergeleri
 
-* İşlem kaynaklarını (çalışan kümeniz) ve meta verileri (meta veri deposu 'nda depolanır) ayırmaya yardımcı olmak için mümkün olduğunda özel bir meta veri deposu kullanın.
-
-* 50 DTU ve 250 GB depolama sağlayan bir S2 katmanı ile başlayın. Bir performans sorunu görürseniz, veritabanını ölçeklendirdirebilirsiniz.
+> [!NOTE]
+> İşlem kaynaklarını (çalışan kümeniz) ve meta verileri (meta veri deposu 'nda depolanır) ayırmaya yardımcı olmak için mümkün olduğunda özel bir meta veri deposu kullanın. 50 DTU ve 250 GB depolama sağlayan S2 katmanını başlatın. Bir performans sorunu görürseniz, veritabanını ölçeklendirdirebilirsiniz.
 
 * Ayrı verilere erişmek için birden çok HDInsight kümesi düşünüyorsanız, her kümede meta veri deposu için ayrı bir veritabanı kullanın. Birden çok HDInsight kümesi arasında bir meta veri deposu paylaşırsanız, kümelerin aynı meta verileri ve temel alınan kullanıcı veri dosyalarını kullanması anlamına gelir.
 

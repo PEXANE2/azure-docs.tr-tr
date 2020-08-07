@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: c2218d9ec641f1edba4caff09666436fc8928558
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 6a9c49fbbf1b917d3f912f38581929885a51de4a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326350"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852846"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geç
   ```
 * Bir [Application Insights örneği](../azure-monitor/app/opencensus-python.md) oluşturun (Bu belge, kaynak için bağlantı dizesini alma hakkında bilgi de içerir)
 
-## <a name="getting-started"></a>Kullanmaya Başlama
+## <a name="getting-started"></a>Başlarken
 
 Bu bölüm, Azure Machine Learning bir işlem hattından OpenCensus kullanımına özgü bir giriş niteliğindedir. Ayrıntılı bir öğretici için bkz. [Opencensus Azure Izleyici Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 

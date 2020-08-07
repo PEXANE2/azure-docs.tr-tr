@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.custom: tracking-python
-ms.openlocfilehash: 12f5f8b1e1a20675fd08f753e515faef2f7a97ce
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python
+ms.openlocfilehash: b5f1d0712098e4fe331607860f6e0ed488d29c1c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560028"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848801"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark
 
@@ -29,7 +29,7 @@ Bu öğreticide şunları yapacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Data Lake Storage 2. hesabı oluşturun.
 
@@ -104,7 +104,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
      
     - **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-4. **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
+4. **Küme oluştur**' u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 ## <a name="ingest-data"></a>Veriyi çekme
 
@@ -144,7 +144,7 @@ Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacak
 
 3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 5. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 

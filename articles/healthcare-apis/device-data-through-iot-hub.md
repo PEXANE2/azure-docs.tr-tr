@@ -1,45 +1,45 @@
 ---
 title: 'Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma'
-description: Bu öğreticide, IoT Bağlayıcısı üzerinden FHıR için Azure API 'ye IoT Hub cihaz veri yönlendirmeyi nasıl etkinleştireceğinizi öğreneceksiniz.
+description: Bu öğreticide, FHıR için Azure IoT Bağlayıcısı aracılığıyla IoT Hub 'den Azure API 'ye cihaz veri yönlendirmeyi nasıl etkinleştireceğinizi öğreneceksiniz.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 06/27/2020
+ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: d606cd4f5c4b901c060c97d73524997b94eaf225
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446297"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831626"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma
 
-IoT Bağlayıcısı, tıp 'leri Internet 'ten, FHAR için Azure API 'ye veri alma özelliği sağlar. Azure portal hızlı başlangıç [kullanan IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md) , Azure tarafından yönetilen bir cihaz örneği olduğunu gösterdi IoT Central IoT bağlayıcısına [telemetri gönderiyor](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) . IoT Bağlayıcısı, Azure IoT Hub aracılığıyla sağlanan ve yönetilen cihazlarla da çalışabilir. Bu öğreticide, cihaz verilerini Azure IoT Hub IoT Bağlayıcısı 'na bağlama ve yönlendirme yordamı sağlanmaktadır.
+FHIR için Azure IoT Bağlayıcısı *, tıbbi nesnelerin Interneti (IoMT) cihazları için Azure API 'ye veri alma olanağı sağlar. Azure portal hızlı başlangıçta Azure [IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md) , IoT Central Azure tarafından yönetilen bir cihaz örneği olduğunu ve fhır Için Azure IoT Bağlayıcısı 'na [telemetri göndermeyi](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) gösterdi. FHıR için Azure IoT Bağlayıcısı, Azure IoT Hub aracılığıyla sağlanan ve yönetilen cihazlarla da çalışabilir. Bu öğreticide, Azure IoT Hub cihaz verilerini, FHıR için Azure IoT bağlayıcısına bağlama ve yönlendirme yordamı sağlanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- En az bir IoT Bağlayıcısı ile FHıR kaynağı için Azure API- [Azure Portal kullanarak IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md)
+- Fhır için en az bir Azure IoT Bağlayıcısı içeren FHıR kaynağı için Azure API- [Azure Portal kullanarak fhir Için Azure IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md)
 - Azure IoT Hub kaynak gerçek veya sanal cihazla bağlandı- [Azure Portal kullanarak IoT Hub 'ı oluşturma](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
 
 > [!TIP]
 > Azure IoT Hub sanal cihaz uygulaması kullanıyorsanız, tercih ettiğiniz uygulamayı farklı desteklenen diller ve sistemler arasında seçebilirsiniz.
 
-## <a name="get-connection-string-for-iot-connector-preview"></a>IoT Bağlayıcısı için bağlantı dizesi al (Önizleme)
+## <a name="get-connection-string-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı bağlantı dizesini al (Önizleme)
 
-Azure IoT Hub, IoT bağlayıcınıza güvenli bir şekilde bağlanmak için bir bağlantı dizesi gerektirir. IoT Bağlayıcınız için [bağlantı dizesi](iot-fhir-portal-quickstart.md#generate-a-connection-string)oluşturma bölümünde açıklandığı gibi yeni bir bağlantı dizesi oluşturun. Sonraki adımda kullanılmak üzere bu bağlantı dizesini koru.
+Azure IoT Hub, FHıR için Azure IoT bağlayıcınıza güvenli bir şekilde bağlanmak için bir bağlantı dizesi gerektirir. [Bir bağlantı dizesi oluşturma](iot-fhir-portal-quickstart.md#generate-a-connection-string)bölümünde açıklandığı gibi fhır Için Azure IoT Bağlayıcınız için yeni bir bağlantı dizesi oluşturun. Sonraki adımda kullanılmak üzere bu bağlantı dizesini koru.
 
-IoT Bağlayıcısı, cihaz iletilerini almak için kullanılan bir Azure Event hub örneğini kullanır. Yukarıda oluşturulan bağlantı dizesi temelde bu temel olay hub 'ına yönelik bağlantı dizesidir.
+FHıR için Azure IoT Bağlayıcısı, cihaz iletilerini almak için kullanılan bir Azure Event hub örneğini kullanır. Yukarıda oluşturulan bağlantı dizesi temelde bu temel olay hub 'ına yönelik bağlantı dizesidir.
 
-## <a name="connect-azure-iot-hub-with-the-iot-connector-preview"></a>Azure IoT Hub IoT Bağlayıcısı (Önizleme) ile bağlama
+## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) ile Azure IoT Hub bağlama
 
-Azure IoT Hub, cihaz verilerini Olay Hub 'ı, depolama hesabı ve Service Bus gibi çeşitli Azure hizmetlerine gönderme yeteneği sağlayan [ileti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) adlı bir özelliği destekler. IoT Bağlayıcısı, Azure IoT Hub 'den Olay Hub 'ı uç noktasına bağlanmak ve cihaz verilerini göndermek için bu özellikten yararlanır.
+Azure IoT Hub, cihaz verilerini Olay Hub 'ı, depolama hesabı ve Service Bus gibi çeşitli Azure hizmetlerine gönderme yeteneği sağlayan [ileti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) adlı bir özelliği destekler. FHıR için Azure IoT Bağlayıcısı bu özellikten yararlanarak Azure IoT Hub 'tan Olay Hub 'ı uç noktasına bağlanıp cihaz verileri gönderebilir.
 
 > [!NOTE] 
-> Şu anda, IoT bağlayıcısının Olay Hub 'ı müşteri aboneliğinde barındırmadığı için, yalnızca PowerShell veya CLı komutunu, [ileti yönlendirme oluşturmak](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) için kullanabilirsiniz. bu nedenle, Azure Portal tarafından görülemez. Ancak, ileti yönlendirme nesneleri PowerShell veya CLı kullanılarak eklendikten sonra, Azure portal görünür ve buradan yönetilebilir.
+> Şu anda, FHıR 'nin Olay Hub 'ı için Azure IoT Bağlayıcısı 'nın müşteri aboneliğinde barındırılmadığı için, PowerShell veya CLı komutunu yalnızca [ileti yönlendirme oluşturmak](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) için kullanabilirsiniz. bu nedenle, Azure Portal aracılığıyla görülemez. Ancak, ileti yönlendirme nesneleri PowerShell veya CLı kullanılarak eklendikten sonra, Azure portal görünür ve buradan yönetilebilir.
 
 İleti yönlendirmeyi ayarlama iki adımdan oluşur.
 
@@ -51,12 +51,12 @@ Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak par
 |PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|resource-group|IoT Hub kaynağınızın kaynak grubu adı.|
-|Name|Hub-adı|IoT Hub kaynağınızın adı.|
+|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Oluşturulan uç noktaya atamak istediğiniz bir ad kullanın.|
 |EndpointType|uç nokta türü|IoT Hub bağlantı kurmak için gereken uç nokta türü. PowerShell için "EventHub" ve CLı için "eventhub" değerlerini kullanın.|
-|EndpointResourceGroup|uç nokta-kaynak grubu|IoT bağlayıcısının FHıR kaynağı için Azure API 'sinin kaynak grubu adı. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
-|Endpointsubscriptionıd|uç nokta-abonelik kimliği|IoT bağlayıcısının FHıR kaynağı için Azure API 'SI için abonelik kimliği. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
-|Dizisi|bağlantı dizesi|IoT bağlayıcınıza bağlantı dizesi. Önceki adımda edindiğiniz değeri kullanın.|
+|EndpointResourceGroup|uç nokta-kaynak grubu|FHıR 'nin FHıR kaynağı için Azure API 'SI için Azure IoT bağlayıcınızın kaynak grubu adı. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
+|Endpointsubscriptionıd|uç nokta-abonelik kimliği|FHıR 'nin FHıR kaynağı için Azure API 'SI için Azure IoT bağlayıcınızın abonelik kimliği. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
+|Dizisi|bağlantı dizesi|FHıR için Azure IoT bağlayıcınıza bağlantı dizesi. Önceki adımda edindiğiniz değeri kullanın.|
 
 ### <a name="add-a-message-route"></a>İleti yolu ekleme
 Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanımlar. Tercihinize göre [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell komutunu veya [az IoT Hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI komutunu kullanarak bir yol oluşturun.
@@ -66,14 +66,14 @@ Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak par
 |PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|g|IoT Hub kaynağınızın kaynak grubu adı.|
-|Name|Hub-adı|IoT Hub kaynağınızın adı.|
+|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Yukarıda oluşturduğunuz bitiş noktasının adı.|
 |Routetablename|yol adı|Oluşturulan ileti yoluna atamak istediğiniz ad.|
 |Kaynak|Kaynak türü|Uç noktaya gönderilen veri türü. PowerShell için "DeviceMessages" değeri ve CLı için "devicemessages" değerlerini kullanın.|
 
 ## <a name="send-device-message-to-iot-hub"></a>IoT Hub cihaz iletisi gönder
 
-Aşağıda gösterilen örnek kalp oranı iletisini Azure IoT Hub göndermek için cihazınızı (gerçek veya sanal) kullanın. Bu ileti, iletinin bir FHıR gözlem kaynağına dönüştürülebileceği ve FHıR için Azure API 'sinde depolanacak IoT bağlayıcısına yönlendirilir.
+Aşağıda gösterilen örnek kalp oranı iletisini Azure IoT Hub göndermek için cihazınızı (gerçek veya sanal) kullanın. Bu ileti fhır için Azure IoT Bağlayıcısı 'na yönlendirilir. burada ileti bir FHıR gözlem kaynağına dönüştürülür ve FHıR için Azure API 'sinde depolanır.
 
 ```json
 {
@@ -89,11 +89,11 @@ Aşağıda gösterilen örnek kalp oranı iletisini Azure IoT Hub göndermek iç
 }
 ```
 > [!IMPORTANT]
-> IoT Bağlayıcınız ile yapılandırılmış [eşleme şablonlarına](iot-mapping-templates.md) uyan cihaz iletisini gönderdiğinizden emin olun.
+> FHıR için Azure IoT Bağlayıcınız ile yapılandırılan [eşleme şablonlarına](iot-mapping-templates.md) uyan cihaz iletisini gönderdiğinizden emin olun.
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>FHıR için Azure API 'de cihaz verilerini görüntüleme
 
-IoT Bağlayıcısı tarafından oluşturulan FHıR izleme kaynakları 'nı Postman kullanarak FHıR için Azure API üzerinde görüntüleyebilirsiniz. [Fhır Için Azure API 'sine erişmek üzere Postman](access-fhir-postman-tutorial.md) 'nizi ayarlayın ve `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` Yukarıdaki örnek iletide sinyal oranı değeri gönderilen gözehar kaynaklarını görüntülemek için bir istek yapın.
+Postman kullanarak FHıR için Azure API 'sindeki fhır için Azure IoT Bağlayıcısı tarafından oluşturulan FHıR izleme kaynakları ' nı görüntüleyebilirsiniz. [Fhır Için Azure API 'sine erişmek üzere Postman](access-fhir-postman-tutorial.md) 'nizi ayarlayın ve `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` Yukarıdaki örnek iletide sinyal oranı değeri gönderilen gözehar kaynaklarını görüntülemek için bir istek yapın.
 
 > [!TIP]
 > Kullanıcının FHıR veri düzlemi için Azure API 'sine uygun erişimi olduğundan emin olun. Gerekli veri düzlemi rollerini atamak için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](configure-azure-rbac.md) kullanın.
@@ -101,16 +101,18 @@ IoT Bağlayıcısı tarafından oluşturulan FHıR izleme kaynakları 'nı Postm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıç kılavuzunda, cihaz verilerini IoT bağlayıcısına yönlendirmek için Azure IoT Hub ayarlarsınız. IoT Bağlayıcısı hakkında daha fazla bilgi edinmek için aşağıdaki adımları aşağıdan seçin:
+Bu hızlı başlangıç kılavuzunda, Azure IoT Hub 'yi, FHıR için Azure IoT Bağlayıcısı 'na yönlendirmek üzere ayarlarsınız. FHıR için Azure IoT Bağlayıcısı hakkında daha fazla bilgi edinmek için aşağıdaki adımları aşağıdan seçin:
 
-IoT Bağlayıcısı içindeki farklı veri akışı aşamalarını anlayın.
+Azure IoT Bağlayıcısı içindeki FHIR için farklı veri akışı aşamalarını anlayın.
 
 >[!div class="nextstepaction"]
->[IoT Bağlayıcısı veri akışı](iot-data-flow.md)
+>[FHıR veri akışı için Azure IoT Bağlayıcısı](iot-data-flow.md)
 
 Cihaz ve FHıR eşleme şablonlarını kullanarak IoT bağlayıcısını nasıl yapılandıracağınızı öğrenin.
 
 >[!div class="nextstepaction"]
->[IoT Bağlayıcısı eşleme şablonları](iot-mapping-templates.md)
+>[FHıR eşleme şablonları için Azure IoT Bağlayıcısı](iot-mapping-templates.md)
+
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 
 FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.
