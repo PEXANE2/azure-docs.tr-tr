@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: f68ee9854b40c8174fe8808fc82639b79629c0c8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760677"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987163"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -220,7 +220,7 @@ MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dö
 
 Her aşama bir PowerShell betiği oluşturur. Her aşama için örnek betikler [burada](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)bulunabilir.
 
-### <a name="stage-the-powershell-script"></a>PowerShell betiğini hazırlama
+### <a name="stage-powershell-script"></a>Aşama PowerShell betiği
 
 PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID 'sine sahip olduğunuzdan emin olun. Birim GUID 'sini almak için:
 
@@ -264,88 +264,48 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     #MSIX app attach staging sample
 
     #region variables
-
     $vhdSrc="<path to vhd>"
-
     $packageName = "<package name>"
-
     $parentFolder = "<package parent folder>"
-
     $parentFolder = "\" + $parentFolder + "\"
-
     $volumeGuid = "<vol guid>"
-
     $msixJunction = "C:\temp\AppAttach\"
-
     #endregion
 
     #region mountvhd
-
     try
-
     {
-
-    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
-
-    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
-
+          Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+          Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
     }
-
     catch
-
     {
-
-    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
-
+          Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
     }
-
     #endregion
 
     #region makelink
-
     $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
     if (!(Test-Path $msixJunction))
-
     {
-
-    md $msixJunction
-
+         md $msixJunction
     }
 
     $msixJunction = $msixJunction + $packageName
-
     cmd.exe /c mklink /j $msixJunction $msixDest
-
     #endregion
 
     #region stage
-
-    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime]
-    | Out-Null
-
+    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-
-    $asTaskAsyncOperation =
-    $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
-    [Windows.Management.Deployment.DeploymentProgress])
-
+    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
+    $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-
     $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
-
     $path = ([System.Uri]$path).AbsoluteUri
-
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-
     $task
-
     #endregion
     ```
 
@@ -357,17 +317,12 @@ Kayıt betiğini çalıştırmak için aşağıdaki PowerShell cmdlet 'lerini or
 #MSIX app attach registration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
-
 #endregion
 
 #region register
-
 Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-
 #endregion
 ```
 
@@ -379,15 +334,11 @@ Bu komut dosyası için **$PackageName** yer tutucusunu, Sınadığınızı pake
 #MSIX app attach deregistration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -PreserveRoamableApplicationData $packageName
-
 #endregion
 ```
 
@@ -399,21 +350,14 @@ Bu komut dosyası için **$PackageName** yer tutucusunu, Sınadığınızı pake
 #MSIX app attach de staging sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $msixJunction = "C:\temp\AppAttach\"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -AllUsers -Package $packageName
-
 cd $msixJunction
-
 rmdir $packageName -Force -Verbose
-
 #endregion
 ```
 
@@ -440,7 +384,7 @@ Lisansları çevrimdışı kullanım için ayarlama:
 2. 3. adım için komut dosyasında aşağıdaki değişkenleri güncelleştirin:
       1. `$contentID`, kodlanmamış lisans dosyasından (. xml) ContentID değeridir. Lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
       2. `$licenseBlob`, kodlanmış lisans dosyasında (. bin), lisans blobu için tüm dizedir. Kodlanmış lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
-3. Yönetici PowerShell isteminden aşağıdaki betiği çalıştırın. Lisans yükleme işlemini gerçekleştirmek için iyi bir yer, bir yönetici isteminden çalıştırılması gereken [hazırlama betiğinin](#stage-the-powershell-script) sonunda yer alan bir yerdir.
+3. Yönetici PowerShell isteminden aşağıdaki betiği çalıştırın. Lisans yükleme işlemini gerçekleştirmek için iyi bir yer, bir yönetici isteminden çalıştırılması gereken [hazırlama betiğinin](#stage-powershell-script) sonunda yer alan bir yerdir.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"

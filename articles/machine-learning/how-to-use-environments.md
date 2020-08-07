@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08e36f8ef31114b18a166e7a14d6d7ad8385582c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3fb13a4912fbd2a9bea39b56333adbd1329efef6
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850381"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985912"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning yazılım ortamları oluşturun & kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -320,6 +320,14 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 > [!WARNING]
 > Docker yansımanıza bazı Python bağımlılıklarını yükler ve user_managed_dependencies = true değerini ayarlamayı unutursanız, bu paketler yürütme ortamında mevcut olmayacaktır, böylece çalışma zamanı hatalara neden olur. Varsayılan olarak, Azure ML belirttiğiniz bağımlılıklara sahip bir Conda ortamı oluşturur ve temel görüntüde yüklü olan herhangi bir Python kitaplıklarını kullanmak yerine bu ortamda çalışmayı yürütür.
 
+### <a name="retrieve-image-details"></a>Görüntü ayrıntılarını al
+
+Kayıtlı bir ortam için, `details` [Dockerımagedetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) 'In (AzureML Python SDK >= 1,11) bir örneği olduğu ve dockerfile, kayıt defteri ve görüntü adı gibi ortam görüntüsüyle ilgili tüm bilgileri sağlayan aşağıdaki kodu kullanarak görüntü ayrıntılarını alabilirsiniz.
+
+```python
+details = environment.get_image_details()
+```
+
 ## <a name="use-environments-for-training"></a>Eğitim için ortamları kullanma
 
 Bir eğitim çalıştırması göndermek için ortamınızı, [işlem hedefini](concept-compute-target.md)ve eğitim Python betiğinizi çalıştırma yapılandırması olarak birleştirmeniz gerekir. Bu yapılandırma, çalıştırmaları göndermek için kullanılan bir sarmalayıcı nesnesidir.
@@ -376,12 +384,6 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 # Submit the run 
 run = experiment.submit(sk_est)
-```
-### <a name="retrieve-dockerfile-from-a-run"></a>Bir çalıştırağından Dockerfile alma
-
-Docker özellikli bir çalıştırmaya yönelik Dockerfile 'ı almak için aşağıdaki kodu kullanın.
-```python
-print(run.get_environment().get_image_details().dockerfile)
 ```
 
 ## <a name="use-environments-for-web-service-deployment"></a>Web hizmeti dağıtımı için ortamları kullanma

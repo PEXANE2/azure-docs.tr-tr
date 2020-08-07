@@ -3,16 +3,16 @@ title: .NET SDK ile Azure Cosmos DB HTTP 408 veya istek zaman aşımı sorunlar�
 description: .NET SDK isteği zaman aşımı özel durumunu tanılama ve çözme
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417616"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987418"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Tanılama ve sorun giderme Azure Cosmos DB .NET SDK isteği zaman aşımı
 HTTP 408 hatası, zaman aşımı sınırı gerçekleşmeden önce SDK isteği tamamlayamadıysa oluşur.
@@ -45,9 +45,12 @@ SDK 'Yı kullanan istemci uygulamasının ölçeği yukarı/aşağı yerleştiri
 Azure 'da çalışırken, .NET SDK kullanan istemciler Azure SNAT (PAT) bağlantı noktası tükenmesi ile aynı olabilir.
 
 #### <a name="solution-1"></a>1. Çözüm:
-[SNAT bağlantı noktası Tükenme kılavuzunu](troubleshoot-dot-net-sdk.md#snat)izleyin.
+Azure VM 'lerinde çalıştırıyorsanız, [SNAT bağlantı noktası Tükenme Kılavuzu](troubleshoot-dot-net-sdk.md#snat)' nu izleyin.
 
 #### <a name="solution-2"></a>2. Çözüm:
+Azure App Service üzerinde çalıştırıyorsanız, [bağlantı hataları sorun giderme kılavuzunu](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) izleyin ve [App Service tanılamayı kullanın](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
+
+#### <a name="solution-3"></a>Çözüm 3:
 Bir HTTP proxy kullanıyorsanız, SDK 'da yapılandırılan bağlantı sayısını destekleyediğinden emin olun `ConnectionPolicy` .
 Aksi halde bağlantı sorunlarıyla karşılaşın.
 

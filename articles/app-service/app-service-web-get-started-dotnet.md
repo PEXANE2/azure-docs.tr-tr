@@ -3,14 +3,14 @@ title: 'Hızlı başlangıç: C# ASP.NET Core uygulaması oluşturma'
 description: Visual Studio 'dan varsayılan C# ASP.NET Core Web uygulaması şablonunu dağıtarak Azure App Service Web uygulamalarının nasıl çalıştırılacağını öğrenin.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 08/06/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77ff1e907b15b129ef03d7ce799631d6d0a9671d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506800"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986194"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
 İşiniz bittiğinde, bir App Service barındırma planından ve dağıtılan bir Web uygulamasına sahip bir App Service içeren bir Azure Kaynak grubunuz olacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
 - Bu hızlı başlangıçta Windows üzerinde App Service bir uygulama dağıtılır. _Linux_ üzerinde App Service'e dağıtım yapmak için bkz. [Linux üzerinde App Service'te .NET Core web uygulaması oluşturma](./containers/quickstart-dotnetcore.md).
@@ -77,10 +77,10 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
 1. **Barındırma planı: Yeni oluştur** iletişim kutusunda, aşağıdaki tabloda belirtilen değerleri girin:
 
-   | Ayar  | Önerilen Değer | Description |
+   | Ayar  | Önerilen Değer | Açıklama |
    | -------- | --------------- | ----------- |
    | **Barındırma Planı**  | *myFirstAzureWebAppPlan* | App Service planının adı. |
-   | **Konum**      | *Batı Avrupa* | Web uygulamasının barındırıldığı veri merkezi. |
+   | **Konum**      | *West Europe* | Web uygulamasının barındırıldığı veri merkezi. |
    | **Boyut**          | *Ücretsiz* | [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), barındırma özelliklerini belirler. |
    
    ![Yeni barındırma planı oluştur](./media/app-service-web-get-started-dotnet/create-new-hosting-plan-vs2019.png)

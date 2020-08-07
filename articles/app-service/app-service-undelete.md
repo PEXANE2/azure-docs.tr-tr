@@ -5,26 +5,25 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050303"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985692"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinmiş App Service uygulamasını geri yükleme
 
 Uygulamanızı Azure App Service yanlışlıkla sildikten sonra, [az PowerShell modülündeki](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)komutları kullanarak geri yükleyebilirsiniz.
 
 > [!NOTE]
-> Silinen uygulamalar, ilk silinmeden 30 gün sonra sistemden temizlenir. Bir uygulama temizlenmeden sonra kurtarılamaz.
->
-
-> [!NOTE]
-> Geri alma işlevselliği, tüketim planı için desteklenmez.
+> - Silinen uygulamalar, ilk silinmeden 30 gün sonra sistemden temizlenir. Bir uygulama temizlenmeden sonra kurtarılamaz.
+> - Geri alma işlevi, tüketim planı için desteklenmez.
+> - App Service Ortamı çalıştıran uygulamalar hizmeti uygulamaları, anlık görüntüleri desteklemez. Bu nedenle, bir App Service Ortamı çalıştıran App Service uygulamalar için silmeyi geri alma ve kopyalama işlevselliği desteklenmez.
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service kaynak sağlayıcısını yeniden Kaydet
+
 Bazı müşteriler, silinen uygulamaların listesini almanın başarısız olduğu bir sorun boyunca gelebilir. Sorunu çözmek için aşağıdaki komutu çalıştırın:
 
 ```powershell
@@ -52,6 +51,7 @@ Ayrıntılı bilgiler şunları içerir:
 - **Silme zamanı**: uygulamanın ne zaman silindiği  
 
 ## <a name="restore-deleted-app"></a>Silinen uygulamayı geri yükle
+
 >[!NOTE]
 > `Restore-AzDeletedWebApp`işlev uygulamaları için desteklenmez.
 
@@ -61,7 +61,7 @@ Geri yüklemek istediğiniz uygulama tanımlandıktan sonra öğesini kullanarak
 Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Dağıtım yuvaları, uygulamanızın bir parçası olarak geri yüklenmez. Bir hazırlama yuvasını geri yüklemeniz gerekiyorsa `-Slot <slot-name>` bayrağını kullanın.
+> Dağıtım yuvaları, uygulamanızın bir parçası olarak geri yüklenmez. Hazırlama yuvasını geri yüklemeniz gerekiyorsa `-Slot <slot-name>` bayrağını kullanın.
 >
 
 Komut girişleri şunlardır:

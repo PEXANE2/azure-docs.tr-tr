@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 064a62b030a1fd9f3c875fce646ad8553b75d513
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799370"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986636"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -25,11 +25,7 @@ Bu belge, Azure kaynakları, AKS ve Kubernetes kaynakları genelinde Birleşik y
 
 Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya yerel Kubernetes mekanizmalarını kullanarak küme kaynakları için RBAC yönetme seçeneği sunar. Etkinleştirildiğinde, Azure AD sorumluları, normal Kubernetes kullanıcıları ve hizmet hesapları, Kubernetes RBAC tarafından özel olarak doğrulanırken Azure RBAC tarafından özel olarak doğrulanacak. AKS üzerinde kimlik doğrulama, yetkilendirme ve RBAC hakkında daha fazla bilgi için [buraya](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)bakın.
 
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis, kabul etme esasına göre sunulmaktadır. Önizlemeler "olduğu gibi" ve "kullanılabildiği gibi" verilmiştir ve hizmet düzeyi anlaşmalarından ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteği tarafından kısmen bir en iyi performans kapsamında ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için aşağıdaki destek makalelerine bakın:
->
-> - [AKS destek Ilkeleri](support-policies.md)
-> - [Azure desteği SSS](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Önkoşullar 
 - Önizleme için kaydolun <https://aka.ms/aad-rbac-sign-up-form> .

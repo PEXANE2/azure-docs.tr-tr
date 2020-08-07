@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850249"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987265"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -149,7 +149,7 @@ Azure Işlevleri üzerinde çalışırken örneklerin de mevcut [yönergeleri](.
 
 **Yazma işlemlerinde içerik yanıtını devre dışı bırak**
 
-Cenve Create yükleri olan iş yükleri için EnableContentResponseOnWrite istek seçeneğini false olarak ayarlayın. Hizmet artık oluşturulan veya güncellenen kaynağı SDK 'ya döndürmez. Normalde uygulama, oluşturulan nesneye sahiptir, bu nedenle hizmet bunu döndürmek için gerekli değildir. Üst bilgi değerlerine hala istek ücreti gibi erişilebilir. Bu, SDK 'nın artık bellek ayırmayı veya yanıtın gövdesini serileştirmesine gerek duymadığından performansı iyileştirebilir. Bu ayrıca performansı daha da kolaylaştırmak için ağ bant genişliği kullanımını azaltır.  
+Ağır oluşturma yükleri olan iş yükleri için EnableContentResponseOnWrite istek seçeneğini false olarak ayarlayın. Hizmet artık oluşturulan veya güncellenen kaynağı SDK 'ya döndürmez. Normalde uygulama, oluşturulan nesneye sahiptir, bu nedenle hizmet bunu döndürmek için gerekli değildir. Üst bilgi değerlerine hala istek ücreti gibi erişilebilir. Bu, SDK 'nın artık bellek ayırmayı veya yanıtın gövdesini serileştirmesine gerek duymadığından performansı iyileştirebilir. Bu ayrıca performansı daha da kolaylaştırmak için ağ bant genişliği kullanımını azaltır.  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };

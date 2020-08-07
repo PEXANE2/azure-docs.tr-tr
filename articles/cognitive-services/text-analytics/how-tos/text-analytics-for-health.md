@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373479"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986908"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -90,7 +90,7 @@ Azure [kapsayıcılar için Web App](https://azure.microsoft.com/services/app-se
 > [!NOTE]
 > Azure Web App 'i kullanarak bir etki alanını otomatik olarak şu biçimde alacaksınız`<appservice_name>.azurewebsites.net`
 
-Aboneliğinizi ve HTTPS üzerinden kapsayıcı görüntüsünü kullanarak bir Kapsayıcılar için Web App oluşturmak için Azure CLı kullanarak bu PowerShell betiğini çalıştırın. İlk isteği göndermeden önce betiğin (yaklaşık 20 dakika) tamamlanmasını bekleyin.
+Aboneliğinizi ve HTTPS üzerinden kapsayıcı görüntüsünü kullanarak bir Kapsayıcılar için Web App oluşturmak için Azure CLı kullanarak bu PowerShell betiğini çalıştırın. İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -120,7 +120,8 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Ayrıca, dağıtımı kolaylaştırmak için bir Azure Container Instance (acı) kullanabilirsiniz. ACI, yönetilen, sunucusuz bir Azure ortamında Docker kapsayıcılarını isteğe bağlı olarak çalıştırmanıza olanak tanıyan bir kaynaktır. 
 
-Azure portal kullanarak ACI kaynağını dağıtma adımları için bkz. [Azure Container Instances nasıl kullanılır](text-analytics-how-to-use-container-instances.md) . Ayrıca, kapsayıcı görüntüsünü kullanarak aboneliğinizde bir ACI oluşturacak olan Azure CLı kullanarak aşağıdaki PowerShell betiğini de kullanabilirsiniz.  İlk isteği göndermeden önce betiğin (yaklaşık 20 dakika) tamamlanmasını bekleyin.
+Azure portal kullanarak ACI kaynağını dağıtma adımları için bkz. [Azure Container Instances nasıl kullanılır](text-analytics-how-to-use-container-instances.md) . Ayrıca, kapsayıcı görüntüsünü kullanarak aboneliğinizde bir ACI oluşturacak olan Azure CLı kullanarak aşağıdaki PowerShell betiğini de kullanabilirsiniz.  İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.  ACI kaynağı başına en fazla CPU sayısı sınırı nedeniyle, her istek için 5 ' ten fazla büyük belge (yaklaşık 5000 karakter) göndermeyi düşünüyorsanız bu seçeneği seçmeyin.
+Kullanılabilirlik bilgileri için [acı bölgesel destek](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) makalesine bakın. 
 
 > [!NOTE] 
 > Azure Container Instances Builtin Domains için HTTPS desteği eklemeyin. HTTPS gerekiyorsa, sertifika oluşturma ve bir etki alanını kaydetme dahil olmak üzere el ile yapılandırmanız gerekir. Bunu, aşağıdaki NGıNX ile yapmak için yönergeler bulabilirsiniz.
@@ -143,7 +144,7 @@ $DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-h
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 5 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```

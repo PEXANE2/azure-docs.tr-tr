@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146419"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987180"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -64,6 +64,7 @@ App Service yönetilen ücretsiz sertifika, App Service özel DNS adınızı gü
 - Joker sertifikaları desteklemez.
 - Çıplak etki alanlarını desteklemez.
 - Dışarı aktarılabilir değil.
+- App Service Ortamı (Ao) üzerinde desteklenmez
 - Bir kaydı desteklemez. Örneğin, otomatik yenileme bir kayıtla birlikte çalışmaz.
 
 > [!NOTE]

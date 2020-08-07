@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: e4e83ec1fc64dd78e3b03ddf1b58733ce2588c81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030071"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985793"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
@@ -71,7 +71,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Azure Machine Learning (Microsoft. MachineLearningServices/Workspaces)/çalışma alanı | privatelink.api.azureml.ms | api.azureml.ms |
 | IoT Hub (Microsoft. Devices/IotHubs)/ıothub | privatelink.azure-devices.net | azure-devices.net |
 | SignalR (Microsoft. SignalRService/SignalR)/signalR | privatelink.service.signalr.net | service.signalr.net |
-| Azure Izleyici (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com | monitor.azure.com |
+| Azure Izleyici (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.com | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.com |
 | Bilişsel hizmetler (Microsoft. Bilitivehizmetleri/hesapları)/hesabı | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure Dosya Eşitleme (Microsoft. Storagessync/storageSyncServices)/AFS |  privatelink.afs.azure.net  |  afs.azure.net  |
 

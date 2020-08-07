@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281370"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987333"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -67,9 +67,7 @@ Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın ken
 
 ### <a name="validate-syntax"></a>Sözdizimini doğrula
 
-DTDL 'yi ayrıştırmak ve doğrulamak için kullanılabilir bir istemci tarafı kitaplığı vardır. Kullanıcı arabirimi öğeleri oluşturma gibi model temelli geliştirme senaryolarında kullanılabilen DTDL içeriğinin bir C# nesne modelini oluşturur. Bu kitaplığı, modellerinizin karşıya yüklemeden önce söz dizimi hatalarına sahip olmadığından emin olmak için de kullanabilirsiniz. 
-
-Bu kitaplık hakkında daha fazla bilgi ve bir DTDL doğrulayıcısı için üzerine oluşturulmuş bir örneğe erişme hakkında daha fazla bilgi için bkz. [*nasıl yapılır: modelleri ayrıştırma ve doğrulama*](how-to-use-parser.md).
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="manage-models-with-apis"></a>Modelleri API 'lerle yönetin.
 
@@ -86,7 +84,7 @@ Aşağıdaki bölümlerde, [Azure Digital TWINS API 'leri ve SDK 'ları](how-to-
 Modeller oluşturulduktan sonra Azure dijital TWINS örneğine yükleyebilirsiniz.
 
 > [!TIP]
-> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir. [Modeldl istemci tarafı ayrıştırıcı kitaplığı](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ve nasıl yapılır: modellerinizi hizmete yüklemeden önce bunları denetlemek için [*modelleri denetlemek için modeller ve doğrulama*](how-to-use-parser.md) bölümünde açıklanan [dtdl doğrulayıcısı örneğini](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) kullanabilirsiniz.
+> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir. [Modeldl istemci tarafı ayrıştırıcı kitaplığı](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ve nasıl yapılır: modellerinizi hizmete yüklemeden önce bunları denetlemek için [*modelleri denetlemek için modeller ve doğrulama*](how-to-parse-models.md) bölümünde açıklanan [dtdl doğrulayıcısı örneğini](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) kullanabilirsiniz.
 
 Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını kullanabilirsiniz:
 

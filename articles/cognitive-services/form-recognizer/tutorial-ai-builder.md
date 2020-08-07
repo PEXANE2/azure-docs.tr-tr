@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 16869ab3a1961879cfcda1eaa383073cd2309a01
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6ea1504f5cb3ae405ccd22774204f898484e6876
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433711"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987129"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
@@ -30,10 +30,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Modelinizi eğitme
 > * Azure Power Apps veya Power otomatikleştirmek 'de kullanmak için modelinizi yayımlayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Eğitim/test verileri için kullanılan aynı türden en az beş form kümesi. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
-* Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [DataFlex Pro 'yu](https://powerplatform.microsoft.com/en-us/common-data-service/)içermesi gerekir.
+* Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)'i içermesi gerekir.
 * Bir AI Oluşturucu [eklentisi veya denemesi](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409).
 
 

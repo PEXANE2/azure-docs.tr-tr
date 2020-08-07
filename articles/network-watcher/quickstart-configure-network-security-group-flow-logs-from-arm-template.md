@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/22/2020
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: fd0f295fbc47a8e461885916dbe48f7604e182c3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7d8cb89b1187bb15e7b361e1b6b9505400c612b5
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854661"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986326"
 ---
 # <a name="quickstart-configure-nsg-flow-logs-from-arm-template"></a>Hızlı başlangıç: NSG akış günlüklerini ARM şablonundan yapılandırma
 
@@ -69,6 +69,7 @@ Azure Resource Manager şablonlarını ilk kez kullanıyorsanız aşağıdaki ba
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
 * [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
 
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create) alınmıştır.
 
 Tüm şablon örneği aşağıda, NSG akış günlüklerini ayarlamak için en az parametrelerin geçirildiği en basit sürümdür. Daha fazla örnek için bu [bağlantıya](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager)gidin.
 

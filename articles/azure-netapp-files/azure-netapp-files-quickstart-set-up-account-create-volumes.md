@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533113"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987520"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
 
@@ -84,7 +84,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın: 
    1. Hesap adı için **myaccount1** girin. 
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam**'a tıklayın. 
+   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** düğmesine tıklayın. 
    4. Hesap konumunuzu seçin.  
 
       ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
@@ -132,7 +132,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
     > [!NOTE]
     > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
-    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın`az account list-locations -query "[].{Region:name}" --out table`
+    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın`az account list-locations --query "[].{Region:name}" --out table`
     >
 
 2. [Az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak yeni bir kaynak grubu oluşturun:
@@ -174,7 +174,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     2. Hizmet düzeyi için **Premium** ' u seçin. 
     3. Havuz boyutu olarak **4 (TiB)** belirtin. 
 
-5. **Tamam**'a tıklayın.
+5. **Tamam** düğmesine tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

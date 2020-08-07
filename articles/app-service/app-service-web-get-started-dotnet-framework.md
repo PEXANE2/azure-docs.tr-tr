@@ -3,14 +3,14 @@ title: 'Hızlı başlangıç: C# ASP.NET uygulaması oluşturma'
 description: Visual Studio 'dan varsayılan C# ASP.NET Web uygulaması şablonunu dağıtarak Azure App Service Web uygulamaları çalıştırmayı öğrenin.
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
-ms.date: 04/21/2020
+ms.date: 08/06/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 4f3b9966e1d146479ef6aa57e13cbb4ddadb415f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d4406841c235061dd90a510c577be796852a7417
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205858"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986993"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure’da ASP.NET Framework web uygulaması oluşturma
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, ilk ASP.NET Web uygulamanızın Azure App Service iç
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için, **ASP.net ve Web geliştirme** iş yüküyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' ü yüklemelisiniz.
 
@@ -43,7 +43,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 4. Azure’a herhangi bir türde ASP.NET web uygulaması dağıtabilirsiniz. Bu hızlı başlangıç için **MVC** şablonunu seçin.
 
-5. Kimlik doğrulamanın **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**'u seçin.
+5. Kimlik doğrulamanın **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**’u seçin.
 
    ![ASP.NET Web uygulaması oluşturma](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -80,10 +80,10 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. **Barındırma planını Yapılandır** iletişim kutusunda, aşağıdaki tablodaki değerleri girin ve ardından **Tamam**' ı seçin.
 
-   | Ayar | Önerilen Değer | Description |
+   | Ayar | Önerilen Değer | Açıklama |
    |-|-|-|
    | Barındırma Planı| myAppServicePlan | App Service planının adı. |
-   | Konum | Batı Avrupa | Web uygulamasının barındırıldığı veri merkezi. |
+   | Konum | West Europe | Web uygulamasının barındırıldığı veri merkezi. |
    | Boyut | Ücretsiz | [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), barındırma özelliklerini belirler. |
 
    ![App Service planı oluşturma](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)

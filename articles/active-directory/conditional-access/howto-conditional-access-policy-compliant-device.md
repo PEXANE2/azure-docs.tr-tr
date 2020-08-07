@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65b4ede6f4851418bf17d42db5b3215dafa9234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c60c0324b04bca0a8115f4ac884704012e8e1d8c
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995182"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986857"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Koşullu erişim: uyumlu cihazlar gerektir
 
@@ -40,11 +40,11 @@ Aşağıdaki adımlar, kaynaklara erişen cihazların kuruluşunuzun Intune uyum
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. İlkenizin belirli uygulamaları dışlayamazsınız, **Dışlanan bulut uygulamalarını seçin** altında **hariç tut** sekmesinden seçim yapın ve **Seç**' i seçin.
-   1. **Done** (Bitti) öğesini seçin.
-1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
+   1. **Bitti**'yi seçin.
+1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında  >  **Bu ilkenin uygulanacağı istemci uygulamalarını seçin**, tüm varsayılanları seçili bırakın ve **bitti**' yi seçin.
 1. **Erişim denetimleri**  >  **izni**altında **cihazın uyumlu olarak işaretlenmesini gerektir**' i seçin.
    1. **Seç**’i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.

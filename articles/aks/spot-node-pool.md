@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374619"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987299"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Önizleme-Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu ekleme
 
@@ -32,11 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bir spot düğüm havuzu kullanmak için bir küme oluşturduğunuzda, bu küme düğüm havuzları ve *Standart* SKU yük dengeleyici Için sanal makine ölçek kümelerini de kullanmalıdır. Bir spot düğüm havuzu kullanmak için kümenizi oluşturduktan sonra ek bir düğüm havuzu da eklemeniz gerekir. Ek düğüm havuzu eklemek sonraki bir adımda ele alınmıştır, ancak önce bir önizleme özelliğini etkinleştirmeniz gerekir.
 
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis, kabul etme özellikleridir. Topluluğumuza geri bildirim ve hata toplamak için sağlanırlar. Önizlemede, bu özellikler üretim kullanımı için tasarlanmamıştır. Genel önizlemede bulunan Özellikler ' en iyi çaba ' desteği altına düşmektedir. AKS teknik destek ekiplerinden yardım yalnızca çalışma saatleri Pasifik saat dilimi (PST) sırasında kullanılabilir. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
->
-> * [AKS destek Ilkeleri][aks-support-policies]
-> * [Azure desteği SSS][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="register-spotpoolpreview-preview-feature"></a>Spotpoolpreview önizleme özelliğini Kaydet
 
@@ -60,7 +56,7 @@ Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu ku
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
+### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
 
 Spot düğüm havuzu kullanan bir AKS kümesi oluşturmak için, *aks-Preview* CLI uzantısının sürümü 0.4.32 veya üzeri bir sürüm gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 
@@ -85,7 +81,7 @@ Bir spot düğüm havuzuyla AKS kümeleri oluşturup yönetirken aşağıdaki s�
 * Bir spot düğüm havuzunda *Kubernetes.Azure.com/scalesetpriority:spot*etiketi, taint *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule*ve sistem yığınlarının benzeşim düzeyi olur.
 * Bir spot düğüm havuzunda iş yüklerini zamanlamak için [karşılık gelen bir tolerans][spot-toleration] eklemeniz gerekir.
 
-## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>AKS kümesine bir spot düğüm havuzu ekleme
+## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>AKS kümesine spot düğüm havuzu ekleme
 
 Birden çok düğüm havuzu etkin olan mevcut bir kümeye bir spot düğüm havuzu eklemeniz gerekir. Birden çok düğümlü havuzlarla bir AKS kümesi oluşturma hakkında daha fazla ayrıntı [burada][use-multiple-node-pools]bulunabilir.
 

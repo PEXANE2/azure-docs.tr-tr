@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8b29708dbcc6bbb0d127b4277fd4b2d962da6e6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184370"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986398"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -48,7 +48,7 @@ Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerl
 
 - IBM ıferies erişimi ODBC sürücüsü Azure-SSIS IR desteklenmez. Özel kurulumunuz sırasında yükleme hataları görebilirsiniz. Bunu yaparsanız yardım için IBM desteği ile iletişime geçin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -129,11 +129,11 @@ Azure-SSIS IR Express özel kurulumlarla sağlamak veya yeniden yapılandırmak 
 
    * **Lisanslı bileşen türünü yüklemeyi** seçerseniz, **bileşen adı** açılır listesinde ISV iş ortaklarımızın tümleşik bir bileşenini seçebilirsiniz:
 
-     * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek, sentryone 'ın ' den bir bileşen [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini Azure-SSIS IR yükleyebilirsiniz. Geçerli tümleşik sürüm **2019.4.3**.
+     * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek, sentryone 'ın ' den bir bileşen [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini Azure-SSIS IR yükleyebilirsiniz. Geçerli tümleşik sürüm **2020.1.3**.
 
-     * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://hedda.io/ssis-component/)Hizmet satın aldıktan sonra Azure-SSIS IR, GÇ veri kalitesi/oh22 'tan bileşeni Temizleme. Geçerli tümleşik sürüm **1.0.13**.
+     * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://hedda.io/ssis-component/)Hizmet satın aldıktan sonra Azure-SSIS IR, GÇ veri kalitesi/oh22 'tan bileşeni Temizleme. Geçerli tümleşik sürüm **1.0.14**.
 
-     * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşeni yükleyebilirsiniz. Geçerli tümleşik sürüm **1.0.43**.
+     * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşeni yükleyebilirsiniz. Geçerli tümleşik sürüm **1.0.45**.
 
      * **Kingswaysoft 'ıN SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) Bağlayıcısı paketini, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR yükleyebilirsiniz. Geçerli tümleşik sürüm **2019,2**' dir.
 

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 06ab819065f96508bcc4ebd26371c743c89b9220
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87487811"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986571"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -750,6 +750,32 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
+
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Sanal ağ özel DNS bölgesine bağlanmadı
+
+Özel bir uç nokta ile bir çalışma alanı oluştururken, şablon __Privatelink.api.azureml.MS__adlı bir özel DNS bölgesi oluşturur. __Sanal ağ bağlantısı__ , bu özel DNS bölgesine otomatik olarak eklenir. Bağlantı yalnızca bir kaynak grubunda oluşturduğunuz ilk çalışma alanı ve özel uç nokta için eklenir; aynı kaynak grubunda özel bir uç nokta ile başka bir sanal ağ ve çalışma alanı oluşturursanız, ikinci sanal ağ özel DNS bölgesine eklenmeyebilir.
+
+Özel DNS bölgesi için zaten var olan sanal ağ bağlantılarını görüntülemek için aşağıdaki Azure CLı komutunu kullanın:
+
+```azurecli
+az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
+```
+
+Başka bir çalışma alanı ve özel uç nokta içeren sanal ağı eklemek için aşağıdaki adımları kullanın:
+
+1. Eklemek istediğiniz ağın sanal ağ KIMLIĞINI bulmak için aşağıdaki komutu kullanın:
+
+    ```azurecli
+    az network vnet show --name myvnet --resource-group myresourcegroup --query id
+    ```
+    
+    Bu komut ' "/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet" ' değerine benzer bir değer döndürür. Bu değeri kaydedin ve bir sonraki adımda kullanın.
+
+2. Privatelink.api.azureml.ms Özel DNS bölgesine bir sanal ağ bağlantısı eklemek için aşağıdaki komutu kullanın. Parametresi için `--virtual-network` , önceki komutun çıkışını kullanın:
+
+    ```azurecli
+    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

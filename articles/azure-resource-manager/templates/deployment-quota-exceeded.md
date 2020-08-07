@@ -2,20 +2,27 @@
 title: Dağıtım kotası aşıldı
 description: Kaynak grubu geçmişinde 800 ' den fazla dağıtıma sahip olma hatasının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391188"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987061"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800 ' i aştığında hatayı çözümle
 
 Her kaynak grubu, dağıtım geçmişinde 800 dağıtım ile sınırlıdır. Bu makalede, izin verilen 800 dağıtımlarını aşacağından bir dağıtım başarısız olduğunda aldığınız hata açıklanmaktadır. Bu hatayı çözmek için kaynak grubu geçmişinden dağıtımları silin. Bir dağıtımı geçmişten silmek, dağıtılan kaynakların hiçbirini etkilemez.
 
-> [!NOTE]
-> Azure Resource Manager, sınıra yaklaşmanıza karşı, en kısa süre önce geçmişinizden dağıtımları otomatik olarak silmeye başlayacaktır. Otomatik silme işlemleri yapmadıysanız bu hatayı görmeye devam edebilirsiniz. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
+Azure Resource Manager, sınıra yaklaştıklarında geçmişinizden dağıtımları otomatik olarak siler. Aşağıdaki nedenlerden biri için bu hatayı görmeye devam edebilirsiniz:
+
+1. Kaynak grubunda, dağıtım geçmişinden silme işlemlerini önleyen bir CanNotDelete kilidine sahipsiniz.
+1. Otomatik silme işlemleri yaptınız.
+1. Aynı anda çalışan çok sayıda dağıtıma sahipsiniz ve otomatik silme işlemleri, toplam sayıyı azaltmak için yeterince hızlı işlenmiyor.
+
+Kilidi otomatik silme işlemleri için kaldırma veya kaldırma hakkında bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
+
+Bu makalede, geçmişteki dağıtımların el ile nasıl silineceği açıklanır.
 
 ## <a name="symptom"></a>Belirti
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534779"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987146"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -49,7 +49,7 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -81,12 +81,13 @@ Aşağıdaki tabloda kullanılabilir yetkilendirme türlerini bulabilirsiniz:
 
 Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabilirsiniz:
 
-|                     | Blob Depolama   | ADLS 1.        | ADLS 2. Nesil     |
+| Yetki türü  | Blob Depolama   | ADLS 1.        | ADLS 2. Nesil     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *'LARıNıN*               | Desteklenir      | Desteklenmiyor   | Desteklenir     |
-| *Yönetilen kimlik* | Desteklenir      | Desteklenir        | Desteklenir     |
-| *Kullanıcı kimliği*    | Desteklenir      | Desteklenir        | Desteklenir     |
+| ['LARıNıN](?tabs=shared-access-signature#supported-storage-authorization-types)    | Desteklenir\*      | Desteklenmiyor   | Desteklenir\*     |
+| [Yönetilen Kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenir      | Desteklenir        | Desteklenir     |
+| [Kullanıcı kimliği](?tabs=user-identity#supported-storage-authorization-types)    | Desteklenir\*      | Desteklenir\*        | Desteklenir\*     |
 
+\*SAS belirteci ve Azure AD kimliği, güvenlik duvarıyla korunmayan bir depolamaya erişmek için kullanılabilir.
 
 > [!IMPORTANT]
 > Güvenlik duvarıyla korunan depolamaya erişirken yalnızca yönetilen kimlik kullanılabilir. [Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir Azure rolünü](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
@@ -177,27 +178,46 @@ Veritabanı kapsamlı kimlik bilgileri, aşağıdaki kimlik doğrulama türlerin
 
 Azure AD kullanıcıları, en az `Storage Blob Data Owner` , veya rolüne sahip olmaları durumunda Azure Storage 'daki herhangi bir dosyaya erişebilir `Storage Blob Data Contributor` `Storage Blob Data Reader` . Azure AD kullanıcılarının depolama erişimi için kimlik bilgilerine ihtiyacı yoktur.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 SQL kullanıcıları depolama alanına erişmek için Azure AD kimlik doğrulamasını kullanamaz.
 
 ### <a name="shared-access-signature"></a>[Paylaşılan erişim imzası](#tab/shared-access-signature)
 
-Aşağıdaki betik, kimlik bilgilerinde belirtilen SAS belirtecini kullanarak depolamadaki dosyalara erişmek için kullanılan bir kimlik bilgisi oluşturur.
+Aşağıdaki betik, kimlik bilgilerinde belirtilen SAS belirtecini kullanarak depolamadaki dosyalara erişmek için kullanılan bir kimlik bilgisi oluşturur. Betik, depolama alanına erişmek için bu SAS belirtecini kullanan bir örnek dış veri kaynağı oluşturur.
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
-Aşağıdaki betik, geçerli Azure AD kullanıcısının yönetilen hizmet kimliği olarak taklit etmek için kullanılabilecek veritabanı kapsamlı bir kimlik bilgisi oluşturur. 
+Aşağıdaki betik, geçerli Azure AD kullanıcısının yönetilen hizmet kimliği olarak taklit etmek için kullanılabilecek veritabanı kapsamlı bir kimlik bilgisi oluşturur. Betik, depolama alanına erişmek için çalışma alanı kimliğini kullanan örnek bir dış veri kaynağı oluşturur.
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 Veritabanı kapsamlı kimlik bilgisinin, depolama konumunu tanımlayan VERI KAYNAĞıNDA açık olarak kullanılacağı için depolama hesabı adıyla eşleşmesi gerekmez.
@@ -206,6 +226,11 @@ Veritabanı kapsamlı kimlik bilgisinin, depolama konumunu tanımlayan VERI KAYN
 
 Genel kullanıma açık dosyalara erişime izin vermek için veritabanı kapsamlı kimlik bilgileri gerekli değildir. Azure depolama 'da genel kullanıma açık dosyalara erişmek için [veritabanı kapsamlı kimlik bilgileri olmadan veri kaynağı](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) oluşturun.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 Bu depolama alanına erişmek için hangi kimlik doğrulama yönteminin kullanılacağını belirtmek için, dış veri kaynaklarında veritabanı kapsamlı kimlik bilgileri kullanılır:

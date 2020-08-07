@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857796"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985623"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API’yi kullanma
 
@@ -45,7 +45,7 @@ Dönüştürme hizmeti şunları yapmak için üç REST API uç noktası sağlar
 ### <a name="start-conversion-using-a-linked-storage-account"></a>Bağlı depolama hesabı kullanarak dönüştürmeyi Başlat
 [Depolama hesaplarını bağlama](../create-an-account.md#link-storage-accounts)adımlarını Izleyerek Azure uzaktan işleme hesabınızın, belirtilen depolama hesabına erişimi olması gerekir.
 
-| Uç Nokta | Yöntem |
+| Uç Noktası | Yöntem |
 |-----------|:-----------|
 | /V1/accounts/**AccountID**/Conversions/Create | POST |
 
@@ -53,6 +53,8 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 
 #### <a name="request-body"></a>İstek gövdesi
 
+> [!NOTE]
+> `input.folderPath`Azure 'da dönüştürmeyi gerçekleştirmek için altındaki her şey alınacaktır. `input.folderPath`Belirtilmemişse, kapsayıcının tüm içeriği alınacaktır. Alınan tüm Bloblar ve klasörler [geçerli Windows dosya adlarına](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)sahip olmalıdır.
 
 ```json
 {
@@ -75,11 +77,11 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>Belirtilen paylaşılan erişim imzalarını kullanarak dönüştürmeye başla
 ARR hesabınız depolama hesabınıza bağlı değilse, bu REST arabirimi *paylaşılan erişim imzaları (SAS)* kullanarak erişim sağlamanıza olanak tanır.
 
-| Uç Nokta | Yöntem |
+| Uç Noktası | Yöntem |
 |-----------|:-----------|
 | /V1/accounts/**AccountID**/Conversions/createwithsharedaccesssignature | POST |
 
-JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürür. Alan adı "Conversionıd" dir.
+JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürür. Alan adı `conversionId` .
 
 #### <a name="request-body"></a>İstek gövdesi
 
@@ -88,6 +90,8 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 > [!NOTE]
 > Bu SAS URI belirteçleri, tam URI değil, sorgu dizeleridir. 
 
+> [!NOTE]
+> `input.folderPath`Azure 'da dönüştürmeyi gerçekleştirmek için altındaki her şey alınacaktır. `input.folderPath`Belirtilmemişse, kapsayıcının tüm içeriği alınacaktır. Alınan tüm Bloblar ve klasörler [geçerli Windows dosya adlarına](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)sahip olmalıdır.
 
 ```json
 {
@@ -114,7 +118,7 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 Yukarıdaki REST çağrılarından biriyle başlatılan devam eden bir dönüştürmenin durumu aşağıdaki arabirim kullanılarak sorgulanabilir:
 
 
-| Uç Nokta | Yöntem |
+| Uç Noktası | Yöntem |
 |-----------|:-----------|
 | /V1/accounts/**AccountID**/Conversions/**conversionıd** | GET |
 

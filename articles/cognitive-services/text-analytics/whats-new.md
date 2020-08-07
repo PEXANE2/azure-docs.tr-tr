@@ -8,24 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371133"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986307"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
 
-## <a name="july-2020"></a>Temmuz 2020
+## <a name="august-2020"></a>Ağustos 2020
+
+* `2020-07-01`V3 için model sürümü `/keyphrases` ve şunları `/pii` `/languages` ekleyen uç noktalar:
+    * Adlandırılmış varlık tanıma için ek kamu ve ülkeye özgü [varlık kategorileri](named-entity-types.md?tabs=personal) .
+* Artık yayımlanan [veri sınırlarını](concepts/data-limits.md)aşan v3 API istekleri IÇIN bir HTTP 400 hatası döndürülür. 
+
+## <a name="july-2020"></a>Temmuz 2020 
 
 ### <a name="text-analytics-for-health-container---public-gated-preview"></a>Sistem durumu kapsayıcısı için Metin Analizi-genel geçişli Önizleme
 
-Sistem durumu kapsayıcısı için Metin Analizi, artık genel geçitli önizlemededir ve bu, örneğin: hasta Intake formları, Doktor notları, araştırma kağıtları ve ücretsiz Özet özetleri gibi klinik belgelerde yapılandırılmamış Ingilizce dilindeki metinden bilgi ayıklamanıza olanak tanır. Şu anda, sistem durumu kapsayıcısı kullanımı için Metin Analizi faturalandırılmaz. 
+Sistem durumu kapsayıcısı için Metin Analizi, artık genel geçitli önizlemededir ve bu, örneğin: hasta Intake formları, Doktor notları, araştırma kağıtları ve ücretsiz Özet özetleri gibi klinik belgelerde yapılandırılmamış Ingilizce dilindeki metinden bilgi ayıklamanıza olanak tanır. Şu anda, sistem durumu kapsayıcısı kullanımı için Metin Analizi faturalandırılmaz.
 
 Kapsayıcı aşağıdaki özellikleri sunar:
 

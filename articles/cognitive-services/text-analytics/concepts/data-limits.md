@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142376"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986823"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Metin Analizi API'si için veri ve hız sınırları
 <a name="data-limits"></a>
@@ -38,13 +38,10 @@ Tek bir istekte gönderebilmeniz için en fazla belge sayısı, kullanmakta oldu
 
 #### <a name="version-3"></a>[Sürüm 3](#tab/version-3)
 
-> [!NOTE]
-> V3 API isteğiniz bu sınırları aşarsa, ancak v2 sınırları içindeyse, API yanıtında bir uyarı döndürülür. 7/15/2020 ' den başlayarak, bunun yerine 400 hata kodu döndürülür. 
-
-Aşağıdaki sınırlar API 'nin v3 sürümünde değiştirilmiştir. Aşağıdaki sınırların aşılmasından sonra API yanıtında bir uyarı oluşturulur.
+Aşağıdaki sınırlar API 'nin v3 sürümünde değiştirilmiştir. Aşağıdaki sınırları aşmamak, bir HTTP 400 hata kodu üretir.
 
 
-| Öne çıkan özelliği | Istek başına en fazla belge | 
+| Özellik | Istek başına en fazla belge | 
 |----------|-----------|
 | Dil Algılama | 1000 |
 | Yaklaşım Analizi | 10 |
@@ -54,7 +51,7 @@ Aşağıdaki sınırlar API 'nin v3 sürümünde değiştirilmiştir. Aşağıda
 
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
-| Öne çıkan özelliği | Istek başına en fazla belge | 
+| Özellik | Istek başına en fazla belge | 
 |----------|-----------|
 | Dil Algılama | 1000 |
 | Yaklaşım Analizi | 1000 |

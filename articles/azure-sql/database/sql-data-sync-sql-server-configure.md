@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bd1362db2e70d4f9f46d80b00805856e08aedac4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963963"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987350"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Öğretici: Azure SQL veritabanı ve SQL Server veritabanları arasında SQL Data Sync ayarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
    | ------------------------------ | ------------------------------------------------- |
    | **Eşitleme grubu adı** | Yeni eşitleme grubu için bir ad girin. Bu ad, veritabanının kendisinin adından farklıdır. |
    | **Meta veri veritabanını Eşitle** | Veritabanı oluşturmayı seçin (önerilir) veya var olan bir veritabanını kullanın.<br/><br/>**Yeni veritabanı**' nı seçerseniz **Yeni veritabanı oluştur** ' u seçin. Ardından **SQL veritabanı** sayfasında, yeni veritabanını adlandırın ve yapılandırın ve **Tamam**' ı seçin.<br/><br/>**Varolan veritabanını kullan**' ı seçerseniz, listeden veritabanını seçin. |
-   | **Otomatik eşitleme** | **Açık** veya **kapalı**seçeneğini belirleyin.<br/><br/>**Açık**' ı seçerseniz, bir sayı girin ve **eşitleme sıklığı** bölümünde **saniye**, **dakika**, **saat**veya **gün** ' yı seçin. |
+   | **Otomatik eşitleme** | **Açık** veya **kapalı**seçeneğini belirleyin.<br/><br/>**Açık**' ı seçerseniz, bir sayı girin ve **eşitleme sıklığı** bölümünde **saniye**, **dakika**, **saat**veya **gün** ' yı seçin.<br/> İlk eşitleme, seçilen Aralık süresi yapılandırmanın kaydedildiği zamandan geçtiğinde başlar.|
    | **Çakışma çözümleme** | **Hub Win** veya **member WIN**' i seçin.<br/><br/>**Merkez kazanma** , çakışmaların ne zaman meydana geldiğini, Merkez veritabanındaki verileri üye veritabanındaki çakışan verilerin üzerine yazar.<br/><br/>**Üye kazanma** , çakışmaların ne zaman meydana geldiğini, üye veritabanındaki verileri Merkez veritabanındaki çakışan verilerin üzerine yazar. |
 
    > [!NOTE]
@@ -165,7 +165,7 @@ Yeni eşitleme grubu üyeleri oluşturulup dağıtıldıktan sonra, **eşitleme 
 
 1. Listeden eşitlemek istediğiniz tabloları seçin. Varsayılan olarak, tüm sütunlar seçilidir, bu nedenle eşitlemek istemediğiniz sütunlar için onay kutusunu devre dışı bırakın. Birincil anahtar sütununu seçili bırakmayı unutmayın.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. Varsayılan olarak, veritabanları zamanlanana veya el ile çalışmaya kadar eşitlenmez. El ile eşitleme çalıştırmak için Azure portal SQL veritabanı 'nda veritabanınıza gidin, **diğer veritabanlarına Eşitle**' yi seçin ve eşitleme grubunu seçin. **Veri eşitleme** sayfası açılır. **Eşitle**’yi seçin.
 

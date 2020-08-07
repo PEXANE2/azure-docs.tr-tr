@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffc9d3f4feb003d537b52cde15356e756aa11c0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd5e3e2a0e6d50340954600c5a452b6d026e5afc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500149"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987479"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Öğretici: bolluk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -52,7 +52,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Bolluk, **SP** tarafından başlatılan SSO 'yu destekler
 * Bolluk **, tam zamanında** Kullanıcı sağlamayı destekler
 * Bolluk [ **Otomatik** Kullanıcı sağlamasını destekler](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
-* Bolluk yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Bolluk yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-slack-from-the-gallery"></a>Galeriden bolluk ekleme
 
@@ -106,7 +106,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Bolluk uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz. Özniteliği de eklemeniz gerekir `email` . Kullanıcının bir e-posta adresi yoksa, **emapostaadresi** ' ni **User. UserPrincipalName** ile eşleyin ve **e-postayı** **User. UserPrincipalName**ile eşleyin.
 
-    | Name | Kaynak özniteliği |
+    | Ad | Kaynak özniteliği |
     | -----|---------|
     | EmailAddress | User. UserPrincipalName |
     | e-posta | User. UserPrincipalName |
@@ -159,15 +159,15 @@ Bu bölümde, bolluk erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 2. **Microsoft Azure AD** gidin ve **Takım ayarları**' na gidin.
 
-     ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-001.png)
+     ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. **Takım ayarları** bölümünde **kimlik doğrulama** sekmesine tıklayın ve ardından **Ayarları Değiştir**' e tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-002.png)
+    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. **SAML kimlik doğrulama ayarları** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-003.png)
+    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  **SAML 2,0 uç noktası (http)** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
@@ -177,7 +177,7 @@ Bu bölümde, bolluk erişimi vererek Azure çoklu oturum açma özelliğini kul
 
     d. Yukarıdaki üç ayarı bolluk ekibiniz için uygun şekilde yapılandırın. Ayarlar hakkında daha fazla bilgi için lütfen **bolluk 'ın SSO yapılandırma kılavuzunu** burada bulabilirsiniz. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-004.png)
+    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial-slack-expand.png)
 
     e. **Genişlet** ' e tıklayın ve `https://slack.com` **hizmet sağlayıcı verenin** metin kutusuna girin.
 

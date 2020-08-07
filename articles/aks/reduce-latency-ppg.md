@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 07/10/2020
 author: jluk
-ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056580"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986721"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Yakınlık yerleştirme gruplarıyla gecikme süresini azaltma (Önizleme)
 
@@ -26,11 +26,7 @@ Uygulamanızı Azure 'da dağıttığınızda, sanal makine (VM) örneklerinin b
 * Bir yakınlık yerleşimi grubunu ilişkilendirmek için bir düğüm havuzunun sanal makine ölçek kümelerini kullanması gerekir.
 * Düğüm havuzu, yalnızca düğüm havuzu oluşturma zamanında bir yakınlık yerleşimi grubunu ilişkilendirebilir.
 
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis, kabul etme esasına göre sunulmaktadır. Önizlemeler "olduğu gibi" ve "kullanılabildiği gibi" verilmiştir ve hizmet düzeyi anlaşmalarından ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteği tarafından kısmen bir en iyi performans kapsamında ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için aşağıdaki destek makalelerine bakın:
->
-> - [AKS destek Ilkeleri](support-policies.md)
-> - [Azure desteği SSS](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

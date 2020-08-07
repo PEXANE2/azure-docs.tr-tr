@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde Ultra disklerin nasıl et
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926748"
+ms.locfileid: "87986840"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Ultra diskleri kullanma (Önizleme)
 
@@ -49,11 +49,7 @@ Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu ku
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
->
-> - [AKS destek Ilkeleri](support-policies.md)
-> - [Azure desteği SSS](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
 
@@ -95,9 +91,8 @@ Ultra disk desteği olmayan kümeler oluşturmak istiyorsanız, özel parametrey
 
 Kümenize Ultra diskleri destekleyen yeni bir düğüm havuzu ekleyerek, mevcut kümelerde Ultra diskleri etkinleştirebilirsiniz. Bayrağını kullanarak ana bilgisayar tabanlı şifrelemeyi kullanmak için yeni bir düğüm havuzu yapılandırın `--aks-custom-headers` .
 
-
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 Ultra diskler için destek olmadan yeni düğüm havuzları oluşturmak istiyorsanız, özel parametreyi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
