@@ -3,12 +3,12 @@ title: Kayıt defteri kimlik doğrulama seçenekleri
 description: Bir Azure Active Directory kimlikle oturum açma, hizmet sorumlularını kullanma ve isteğe bağlı yönetici kimlik bilgilerini kullanma dahil olmak üzere, özel bir Azure Kapsayıcı kayıt defteri için kimlik doğrulama seçenekleri.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 0d44a97e01eef709dff47342e4503d1e0263a225
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760592"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926329"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure Container Registry ile kimlik doğrulama
 
@@ -22,12 +22,12 @@ Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemleri ve tipik sen
 
 | Yöntem                               | Kimlik doğrulaması nasıl yapılır?                                           | Senaryolar                                                            | RBAC                             | Sınırlamalar                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
-| [Bireysel AD kimliği](#individual-login-with-azure-ad)                | `az acr login` Azure CLı 'da                             | Geliştiricilere ve test edicilere göre etkileşimli gönderim/çekme                                    | Evet                              | AD belirtecinin her 3 saatte bir yenilenmesi gerekir     |
-| [AD hizmet sorumlusu](#service-principal)                  | `docker login`<br/><br/>`az acr login`Azure CLı 'da<br/><br/> API 'lerde veya araç defterindeki kayıt defteri oturum açma ayarları<br/><br/> [Kubernetes çekme gizli dizisi](container-registry-auth-kubernetes.md)                                           | CI/CD ardışık düzeninde katılımsız gönderim<br/><br/> Azure 'a veya dış hizmetlere katılımsız çekme  | Evet                              | SP parolasının varsayılan süre sonu 1 yıldır       |                                                           
+| [Bireysel AD kimliği](#individual-login-with-azure-ad)                | `az acr login` Azure CLı 'da                             | Geliştiricilere ve test edicilere göre etkileşimli gönderim/çekme                                    | Yes                              | AD belirtecinin her 3 saatte bir yenilenmesi gerekir     |
+| [AD hizmet sorumlusu](#service-principal)                  | `docker login`<br/><br/>`az acr login`Azure CLı 'da<br/><br/> API 'lerde veya araç defterindeki kayıt defteri oturum açma ayarları<br/><br/> [Kubernetes çekme gizli dizisi](container-registry-auth-kubernetes.md)                                           | CI/CD ardışık düzeninde katılımsız gönderim<br/><br/> Azure 'a veya dış hizmetlere katılımsız çekme  | Yes                              | SP parolasının varsayılan süre sonu 1 yıldır       |                                                           
 | [AKS ile tümleştirme](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | AKS kümesi oluşturulduğunda veya güncelleştirilirken kayıt defteri Ekle  | AKS kümesine katılımsız çekme                                                  | Hayır, yalnızca çekme erişimi             | Yalnızca AKS kümesi ile kullanılabilir            |
-| [Azure kaynakları için yönetilen kimlik](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` Azure CLı 'da                                       | Azure CI/CD ardışık düzeninde katılımsız gönderim<br/><br/> Azure hizmetlerine katılımsız çekme<br/><br/>   | Evet                              | Yalnızca [Azure kaynakları için yönetilen kimlikleri destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) Azure hizmetlerinden kullanın              |
+| [Azure kaynakları için yönetilen kimlik](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login` Azure CLı 'da                                       | Azure CI/CD ardışık düzeninde katılımsız gönderim<br/><br/> Azure hizmetlerine katılımsız çekme<br/><br/>   | Yes                              | Yalnızca [Azure kaynakları için yönetilen kimlikleri destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) Azure hizmetlerinden kullanın              |
 | [Yönetici Kullanıcı](#admin-account)                            | `docker login`                                          | Bireysel geliştirici veya test edici tarafından etkileşimli gönderim/çekme<br/><br/>Kayıt defterinden Azure App Service veya Azure Container Instances 'ye görüntü dağıtımı                      | Hayır, her zaman çek ve anında erişim  | Kayıt defteri başına tek hesap, birden çok kullanıcı için önerilmez         |
-| [Depo kapsamlı erişim belirteci](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login`Azure CLı 'da   | Bireysel geliştirici veya test edici tarafından depoya etkileşimli gönderim/çekme<br/><br/> Ayrı sistem veya dış cihaz tarafından yapılan katılımsız gönderme/depoya çekme                  | Evet                              | Şu anda AD kimliğiyle tümleştirildi  |
+| [Depo kapsamlı erişim belirteci](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login`Azure CLı 'da   | Bireysel geliştirici veya test edici tarafından depoya etkileşimli gönderim/çekme<br/><br/> Ayrı sistem veya dış cihaz tarafından yapılan katılımsız gönderme/depoya çekme                  | Yes                              | Şu anda AD kimliğiyle tümleştirildi  |
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD ile bireysel oturum açma
 
@@ -44,7 +44,7 @@ az acr login --name <acrName>
 
 Kayıt defteri erişimi için tarafından kullanılan belirteç `az acr login` **3 saat**için geçerlidir; bu nedenle, bir komutu çalıştırmadan önce her zaman kayıt defterinde oturum açmanız önerilir `docker` . Belirtecin süresi dolarsa, `az acr login` yeniden kimlik doğrulaması yapmak için komutunu tekrar kullanarak yenileyebilirsiniz. 
 
-`az acr login`Azure kimlikleri ile kullanılması, [rol tabanlı erişim](../role-based-access-control/role-assignments-portal.md)sağlar. Bazı senaryolarda, Azure AD 'de kendi bireysel Kimliğiniz ile bir kayıt defterinde oturum açmak veya diğer Azure kullanıcılarını belirli [RBAC rolleri ve izinleriyle](container-registry-roles.md)yapılandırmak isteyebilirsiniz. Şirketler arası senaryolar için veya tek tek erişimi yönetmek istemediğiniz bir çalışma grubunun veya geliştirme iş akışının ihtiyaçlarını işlemek için [Azure kaynakları için yönetilen bir kimlikle](container-registry-authentication-managed-identity.md)da oturum açabilirsiniz.
+`az acr login`Azure kimlikleri ile kullanılması, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)sağlar. Bazı senaryolarda, Azure AD 'de kendi bireysel Kimliğiniz ile bir kayıt defterinde oturum açmak veya diğer Azure [rollerini ve izinleri](container-registry-roles.md)Ile diğer Azure kullanıcılarını yapılandırmak isteyebilirsiniz. Şirketler arası senaryolar için veya tek tek erişimi yönetmek istemediğiniz bir çalışma grubunun veya geliştirme iş akışının ihtiyaçlarını işlemek için [Azure kaynakları için yönetilen bir kimlikle](container-registry-authentication-managed-identity.md)da oturum açabilirsiniz.
 
 ### <a name="az-acr-login-with---expose-token"></a>az ACR ile oturum açma--gösterme-belirteç
 
@@ -73,7 +73,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>Hizmet sorumlusu
 
-Kayıt defterinize bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) atarsanız, uygulamanız veya hizmetiniz bunu gözetimsiz kimlik doğrulaması için kullanabilir. Hizmet sorumluları, bir kayıt defterine [rol tabanlı erişime](../role-based-access-control/role-assignments-portal.md) izin verir ve bir kayıt defterine birden çok hizmet sorumlusu atayabilirsiniz. Birden çok hizmet sorumlusu, farklı uygulamalar için farklı erişim tanımlamanızı sağlar.
+Kayıt defterinize bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) atarsanız, uygulamanız veya hizmetiniz bunu gözetimsiz kimlik doğrulaması için kullanabilir. Hizmet sorumluları, [Azure rol tabanlı erişim denetimi 'ne (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) bir kayıt defterine izin verir ve bir kayıt defterine birden çok hizmet sorumlusu atayabilirsiniz. Birden çok hizmet sorumlusu, farklı uygulamalar için farklı erişim tanımlamanızı sağlar.
 
 Bir kapsayıcı kayıt defteri için kullanılabilir roller şunlardır:
 

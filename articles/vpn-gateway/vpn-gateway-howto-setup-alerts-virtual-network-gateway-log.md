@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: Tanılama kaynak günlüğü olaylarında uyarı yapılandırma'
-description: VPN Gateway tanılama kaynak günlüğü olaylarında uyarı yapılandırma adımları
+description: Azure Izleyici Log Analytics ve Azure 'da bulunan kaynak günlüklerini kullanarak Azure VPN Gateway kaynak günlüğü olaylarına göre uyarı ayarlamayı öğrenin.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d79bdc669ab2c3785b1cde569cfce3021e4d924f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075585"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923195"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway kaynak günlüğü olayları üzerinde uyarı ayarlama
 

@@ -3,16 +3,16 @@ title: Azure Application Insights kaynaklar, roller ve erişim denetimi | Micros
 description: Kuruluşunuzun öngörülerinin sahipleri, katkıda bulunanlar ve okuyucular.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325704"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926510"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights içindeki kaynaklar, roller ve erişim denetimi
 
-[Microsoft Azure ' de rol tabanlı erişim denetimi](../../role-based-access-control/role-assignments-portal.md)kullanarak Azure [Application Insights][start]verilerinize kimin okuma ve güncelleştirme erişimi olduğunu kontrol edebilirsiniz.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)kullanarak Azure [Application Insights][start]verilerinize okuma ve güncelleştirme erişimi olduğunu kontrol edebilirsiniz.
 
 > [!IMPORTANT]
 > **Kaynak grubunda veya** uygulama kaynağınızın ait olduğu abonelikteki kullanıcılara erişim atayın. **Application Insights bileşeni katkıda bulunan** rolünü atayın. Bu, uygulama kaynağınızın yanı sıra Web testlerine ve uyarılara erişimin tek düzen denetimini sağlar. [Daha fazla bilgi edinin](#access).
@@ -67,7 +67,7 @@ Tüm Azure rol tabanlı erişim denetimi ile ilgili bilgileri görüntülemek i�
 
 Uygun olduğunda, ilişkili resmi başvuru belgelerine bağlantı veriyoruz.
 
-| Rol | Kaynak grubunda |
+| Role | Kaynak grubunda |
 | --- | --- |
 | [Sahibi](../../role-based-access-control/built-in-roles.md#owner) |Kullanıcı erişimi de dahil olmak üzere herhangi bir şeyi değiştirebilir. |
 | [Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) |Tüm kaynaklar dahil olmak üzere herhangi bir şeyi düzenleyebilir. |
@@ -101,7 +101,7 @@ Uygun olduğunda, ilişkili resmi başvuru belgelerine bağlantı veriyoruz.
 
 ## <a name="related-content"></a>İlgili içerik
 
-* [Azure 'da rol tabanlı erişim denetimi](../../role-based-access-control/role-assignments-portal.md)
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>Rol üyeliğini belirleyecek PowerShell sorgusu
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

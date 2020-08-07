@@ -2,13 +2,13 @@
 title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
-ms.date: 07/31/2020
-ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/06/2020
+ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485635"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927156"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -193,7 +193,7 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS, tüm müşteri verilerini kümenin bölgesi dışında depolıyor mu?
 
-Hayır. Bir AKS kümesinde oluşturulan tüm veriler, kümenin bölgesi içinde tutulur.
+Müşteri verilerinin tek bir bölgede depolanmasını etkinleştirme özelliği şu anda yalnızca Asya Pasifik coğrafi bölgenin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri coğrafi olarak depolanır.
 
 <!-- LINKS - internal -->
 

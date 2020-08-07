@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a754873aeafe8d4e7b48d49647469874ff40f7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875904"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921768"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Hızlı başlangıç: Azure Active Directory B2C'yi kullanarak tek sayfalı bir uygulama için oturum açma bilgilerini ayarlama
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
     npm start
     ```
 
-    *Server. js* tarafından başlatılan sunucu, dinlediği bağlantı noktasını görüntüler:
+    *server.js* tarafından başlatılan sunucu, dinlediği bağlantı noktasını görüntüler:
 
     ```console
     Listening on port 6420...
@@ -75,6 +75,10 @@ Görünen adınızın Web API 'sinden JSON nesnesi olarak döndürülmesini sağ
 ![Web API yanıtını gösteren tarayıcıda örnek uygulama](./media/quickstart-single-page-app/call-api-spa.png)
 
 Örnek tek sayfalı uygulama, korumalı web API’si kaynağına yönelik isteğe bir erişim belirteci ekler.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Diğer Azure AD B2C hızlı başlangıçlarını veya öğreticilerini denemeyi planlıyorsanız Azure AD B2C kiracınızı kullanabilirsiniz. Artık ihtiyaç duymuyorsanız [Azure AD B2C kiracınızı silebilirsiniz](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

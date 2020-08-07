@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414320"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927088"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services paketlerini çalıştırma
 
@@ -87,7 +87,7 @@ AzureDTExec çağırma, dtexec 'yi çağırarak benzer seçenekler sunar. Daha f
 - **/F [ile]**: dosya sistemi, dosya paylaşımında veya Azure dosyalarında depolanan bir paketi yükler. Bu seçeneğin değeri olarak dosya sistemi, dosya paylaşımında veya Azure dosyaları. dtsx uzantısıyla birlikte paket dosyanız için UNC yolunu belirtebilirsiniz. Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tam yolun çevresine tırnak işareti koyun.
 - **/Conf [ıgfile]**: değerlerin ayıklanacağı bir yapılandırma dosyasını belirtir. Bu seçeneği kullanarak, paketiniz için tasarım zamanında belirtilenden farklı bir çalışma zamanı yapılandırması belirleyebilirsiniz. Farklı ayarları bir XML yapılandırma dosyasında depolayıp paket yürütmeden önce yükleyebilirsiniz. Daha fazla bilgi için bkz. [SSIS paketi yapılandırması](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Bu seçeneğin değerini belirtmek için, dosya sistemi, dosya paylaşımında veya Azure dosyalarında dtsConfig uzantılı yapılandırma dosyanız için UNC yolunu kullanın. Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tam yolun çevresine tırnak işareti koyun.
 - **/Conn [ection]**: paketinizdeki mevcut bağlantı yöneticileri için bağlantı dizelerini belirtir. Bu seçeneği kullanarak, paketinizdeki mevcut bağlantı yöneticileri için tasarım zamanında belirtilenlerden farklı çalışma zamanı bağlantı dizeleri ayarlayabilirsiniz. Bu seçenek için değeri aşağıdaki gibi belirtin: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` .
-- **/Set**: paketteki bir parametrenin, değişkenin, özelliğin, kapsayıcının, günlük sağlayıcının, Foreach Numaralandırıcı veya bağlantının yapılandırmasını geçersiz kılar. Bu seçenek birden çok kez belirtilebilir. Bu seçenek için değeri aşağıdaki gibi belirtin: `property_path;value` . Örneğin, `\package.variables[counter].Value;1` `counter` değişkenin değerini 1 olarak geçersiz kılar. Paketinizin değerini geçersiz kılmak istediğiniz öğelerin değerini bulmak, kopyalamak ve yapıştırmak için **paket yapılandırma** sihirbazını kullanabilirsiniz `property_path` . Daha fazla bilgi için bkz. [paket Yapılandırma Sihirbazı](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **/Set**: paketteki bir parametrenin, değişkenin, özelliğin, kapsayıcının, günlük sağlayıcının, Foreach Numaralandırıcı veya bağlantının yapılandırmasını geçersiz kılar. Bu seçenek birden çok kez belirtilebilir. Bu seçenek için değeri aşağıdaki gibi belirtin: `property_path;value` . Örneğin, `\package.variables[counter].Value;1` `counter` değişkenin değerini 1 olarak geçersiz kılar. Paketinizin değerini geçersiz kılmak istediğiniz öğelerin değerini bulmak, kopyalamak ve yapıştırmak için **paket yapılandırma** sihirbazını kullanabilirsiniz `property_path` . Daha fazla bilgi için bkz. [paket Yapılandırma Sihirbazı](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis).
 - **/De [Crypt]**: **EncryptAllWithPassword** / **EncryptSensitiveWithPassword** koruma düzeyiyle yapılandırılmış paketinizin şifre çözme parolasını ayarlar.
 
 > [!NOTE]

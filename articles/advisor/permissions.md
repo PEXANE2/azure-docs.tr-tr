@@ -3,16 +3,16 @@ title: Azure Danışmanı izinleri
 description: Danışman izinleri ve bunların abonelikleri yapılandırma veya önerileri erteleme veya kapatma yeteneğinizi nasıl engelleyebilecekleri.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057587"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927394"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Danışmanı izinleri
 
-Azure Danışmanı, Azure kaynaklarınızın ve aboneliklerinizin kullanımını ve yapılandırmasını temel alan öneriler sağlar. Danışman, önerilere ve danışman özelliklerine erişiminizi yönetmek için [rol tabanlı Access Control](../role-based-access-control/overview.md) (RBAC) tarafından sunulan [yerleşik rolleri](../role-based-access-control/built-in-roles.md) kullanır. 
+Azure Danışmanı, Azure kaynaklarınızın ve aboneliklerinizin kullanımını ve yapılandırmasını temel alan öneriler sağlar. Danışman, önerilere ve danışman özelliklerine erişiminizi yönetmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) tarafından sunulan [yerleşik rolleri](../role-based-access-control/built-in-roles.md) kullanır. 
 
 ## <a name="roles-and-their-access"></a>Roller ve erişimleri
 

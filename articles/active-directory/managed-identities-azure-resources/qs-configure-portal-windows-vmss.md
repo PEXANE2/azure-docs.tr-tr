@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e2d72ba63633d7c5d3da3094cfa00e076513af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609122"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924504"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -32,7 +32,7 @@ Bu makalede, PowerShell kullanarak, bir sanal makine ölçek kümesindeki Azure 
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rol tabanlı erişim denetimi atamalarına ihtiyaç duyuyor:
+- Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rolü atamalarına ihtiyaç duyuyor:
 
     > [!NOTE]
     > Ek Azure AD dizin rolü ataması gerekli değildir.
@@ -105,5 +105,3 @@ Bu bölümde, Azure portal kullanarak bir sanal makine ölçek kümesinden Kulla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure portal kullanarak, [başka bir Azure kaynağına](howto-assign-access-portal.md)Azure sanal makine ölçek kümesi yönetilen kimlik erişimi verin.
-
-

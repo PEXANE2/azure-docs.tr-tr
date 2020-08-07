@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 125b70b389809c576d17d1c8de35290c1c402c4a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852897"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927247"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
@@ -133,7 +133,7 @@ Yük dengeleyici kuralı oluşturmak için:
 
 ## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma
 
-Bu bölümde, standart yük dengeleyici arkasında bir özel bağlantı hizmeti oluşturursunuz.
+Bu bölümde, standart yük dengeleyici arkasında bir özel bağlantı hizmeti oluşturacaksınız.
 
 1. Azure Portal sayfanın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **özel bağlantı merkezi (Önizleme)** öğesini seçin. Ayrıca, özel bağlantı aramak için portalın arama kutusunu da kullanabilirsiniz.
 

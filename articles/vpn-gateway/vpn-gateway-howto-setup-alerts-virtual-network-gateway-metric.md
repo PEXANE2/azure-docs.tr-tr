@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway ölçümleri üzerinde uyarı ayarlama
-description: VPN Gateway ölçümlerinde uyarıları yapılandırma adımları
+description: Azure VPN Gateway ölçümlerinde uyarıları ayarlamayı öğrenin. VPN türünün sanal ağ geçitleri için uyarıları ayarlamak üzere Azure Izleyici 'yi kullanın.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3819f653cba80854a65a08f92a10f82057abb0fd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075521"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923076"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway ölçümlerinde uyarıları ayarlama
 

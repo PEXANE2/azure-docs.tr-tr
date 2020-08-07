@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 644184f5bb51d049d890655ada5be5ebd4c11bf7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910410"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926680"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -48,7 +48,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 | Dizin oluşturucular, veri kaynakları, becerileri için kullanılan istemci | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Yeni**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> Sürüm 11, sürüm 10 ' u ile yeniden adlandırır `SearchIndexClient` `SearchClient` ve ardından dizin, çözümleyici ve eş anlamlı harita nesneleriyle birlikte çalışarak bir istemcinin adını yeniden kullanır. İstemci başvurularını güncelleştirirken, arama ve değiştirme sırasında karışıklık oluşmasını önlemek için [yükseltme adımlarında](#UpgradeSteps) adım sırasını izleyin.
+> `SearchIndexClient`Her iki sürümde de bulunur, ancak farklı işlemleri destekler. Sürüm 10 ' da `SearchIndexClient` Dizinler ve diğer nesneler oluşturun. Sürüm 11 ' de `SearchIndexClient` var olan dizinlerle birlikte kullanılır. Kodu güncelleştirirken karışıklık oluşmasını önlemek için, istemci başvurularının güncelleştirildiği sırayı en az bir hale getirin. [Yükseltme adımlarında](#UpgradeSteps) aşağıdaki sıra, herhangi bir dize değiştirme sorununu azaltmaya yardımcı olur.
 
 <a name="naming-differences"></a>
 
@@ -125,7 +125,7 @@ Sürüm 11 aşağıdaki nesneleri ve işlemleri tam olarak destekler:
 
 Aşağıdaki sürüm 10 özellikleri henüz 11. sürümde kullanılamamaktadır. Bu özellikleri kullanırsanız, desteklenene kadar geçiş üzerinde tutun.
 
-+ [Jeo-uzamsal türler](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.serialization.geojsonextensions)
++ Jeo-uzamsal türler
 + [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) ( [Bu geçici çözümü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)kullanabilseniz de kullanabilirsiniz).
 + [Bilgi deposu](knowledge-store-concept-intro.md)
 

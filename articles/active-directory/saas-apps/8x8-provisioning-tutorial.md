@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: b200aabff1231cdf383d30ad2e671c4b46ca91bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1359ffb28cb98c0e46a6b7eff32c6faa7d00ba4
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196203"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924793"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 8x8 yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem 8x8 Co
 > * Kullanıcı özniteliklerinin Azure AD ve 8x8 arasında eşitlenmiş kalmasını sağlama
 > * 8x8 [' e çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -70,7 +70,7 @@ Bu bölüm, Azure AD ile sağlamayı desteklemek için 8x8 ' i yapılandırma ad
 
 Azure AD uygulama galerisinden 8x8 ' e ekleyerek 8x8 ' e sağlamayı yönetmeye başlayın. Daha önce, SSO için 8x8 ' i ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin.
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Sağlama kapsamında kim olacağını tanımlama
 
 Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Bu, daha basit bir seçenektir ve çoğu kişi tarafından kullanılır.
 
@@ -114,7 +114,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya Gru
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 
@@ -156,7 +156,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
 1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın.
-2. Sağlama döngüsünün durumunu ve ne kadar kapanmasının tamamlanmasının nasıl yapıldığını görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin.
+2. Sağlama döngüsünün durumunu ve ne kadar kapanmasının tamamlanmasının nasıl yapıldığını görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin.
 3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar

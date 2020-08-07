@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901989"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921699"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin
 |Microsoft|Windows Server|2012 ve üzeri|
 |Microsoft|Windows İstemcisi|Windows 10|
 |OpenLogic|CentOS|7,3 ve üzeri|
-|Red Hat|Red Hat Enterprise Linux|7,4-7,8, 9,0 ve üzeri|
+|Red Hat|Red Hat Enterprise Linux|7,4-7,8|
 |SUSE|SLES|12 SP3 ve üzeri|
 
 Özel sanal makine görüntüleri, Konuk yapılandırma ilkeleri tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.

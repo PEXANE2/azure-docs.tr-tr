@@ -92,6 +92,8 @@
           href: troubleshoot-metrics.md
         - name: Tanılama günlüklerini etkinleştirme
           href: troubleshoot-diagnostics.md
+        - name: Uyarıları etkinleştirme
+          href: troubleshoot-alerts.md
         - name: Bilinen sorunlar
           href: troubleshoot-known-issues.md
         - name: Sorun çözme

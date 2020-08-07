@@ -6,12 +6,12 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: a11cd001e33e52f9138d9b302c39e04ee3d984a5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503540"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927173"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Rol tabanlı erişim denetimi (RBAC) ile Site Recovery erişimini yönetme
 
@@ -72,7 +72,7 @@ Bir kullanıcının yeni bir sanal makinenin çoğaltmasını tamamlaması için
 Sırasıyla Kaynak Yöneticisi ve klasik dağıtım modelleriyle ilgili ' sanal makine katılımcısı ' ve ' klasik sanal makine katılımcısı ' [yerleşik rollerini](../role-based-access-control/built-in-roles.md) kullanmayı göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md): Azure Portal RBAC ile çalışmaya başlayın.
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure Portal RBAC ile çalışmaya başlayın.
 * İle erişimin nasıl yönetileceğini öğrenin:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

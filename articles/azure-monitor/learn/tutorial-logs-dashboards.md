@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148268"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927377"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics verilerinin panolarını oluşturma ve paylaşma
 
@@ -54,7 +54,7 @@ Bir pano oluşturulduğunda varsayılan olarak gizlidir, yani onu yalnızca siz 
 
 ![Azure portalında yeni pano paylaşma](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-Panonuzun yayımlanması için bir abonelik ve kaynak grubu seçmeniz istenir. Kolaylık olması için portalın yayımlama deneyimi, bir kaynak grubuna panoları yerleştirdiğiniz **panolar** adlı bir modelde size kılavuzluk eder.  Seçili olan aboneliği doğrulayın ve sonra **Yayımla**’ya tıklayın.  Panoda gösterilen bilgilere erişim, [Azure Kaynak Tabanlı Erişim Denetimi](../../role-based-access-control/role-assignments-portal.md) ile denetlenir.   
+Panonuzun yayımlanması için bir abonelik ve kaynak grubu seçmeniz istenir. Kolaylık olması için portalın yayımlama deneyimi, bir kaynak grubuna panoları yerleştirdiğiniz **panolar** adlı bir modelde size kılavuzluk eder.  Seçili olan aboneliği doğrulayın ve sonra **Yayımla**’ya tıklayın.  Panoda görünen bilgilere erişim, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)ile denetlenir.   
 
 ## <a name="visualize-a-log-query"></a>Günlük sorgusu görselleştirin
 [Log Analytics](../log-query/get-started-portal.md) , günlük sorgularıyla ve bunların sonuçlarıyla çalışmak için kullanılan özel bir portaldır. Birden fazla satırda sorgu düzenleme, seçerek kod yürütme, bağlama duyarlı IntelliSense ve Akıllı Analiz özellikleri mevcuttur. Bu öğreticide, grafik biçiminde bir performans görünümü oluşturmak, gelecekteki bir sorgu için kaydetmek ve daha önce oluşturulan paylaşılan panoya sabitlemek için Log Analytics kullanacaksınız.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533077"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923875"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Birimin hizmet düzeyini dinamik olarak değiştirme
 
@@ -33,8 +33,7 @@ Birimi taşımak istediğiniz kapasite havuzu zaten var olmalıdır. Kapasite ha
 
 * Birim başka bir kapasite havuzuna taşındıktan sonra, önceki toplu etkinlik günlüklerine ve birim ölçümlerine artık erişemeyecektir. Birim yeni kapasite havuzu altında yeni etkinlik günlükleri ve ölçümleri ile başlatılır.
 
-* Bir birimi daha yüksek bir hizmet düzeyinin kapasite havuzuna taşırsanız (örneğin, *Standart* düzeyinden *Premium* veya *Ultra* hizmet düzeyine geçme), birimi daha düşük bir hizmet düzeyindeki bir kapasite havuzuna yeniden taşıyabilmeniz için en az yedi gün beklemeniz gerekir (örneğin, *Ultra* *Premium* veya *Standart*arasında geçiş).  
-Birimi aynı hizmet düzeyine veya daha düşük bir hizmet düzeyine sahip bir kapasite havuzuna taşırsanız, bu bekleme süresi uygulanmaz.
+* Bir birimi daha yüksek bir hizmet düzeyinin kapasite havuzuna taşırsanız (örneğin, *Standart* düzeyinden *Premium* veya *Ultra* hizmet düzeyine geçme), *Bu birimi daha* düşük bir hizmet düzeyindeki bir kapasite havuzuna taşıyabilmeniz için en az yedi gün beklemeniz gerekir (örneğin, *Ultra* *Premium* veya *Standart*arasında geçiş).  
 
 ## <a name="register-the-feature"></a>Özelliği kaydetme
 
@@ -65,7 +64,7 @@ Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme a
 
     ![Havuzu Değiştir](../media/azure-netapp-files/change-pool.png)
 
-3.  **Tamam**'a tıklayın.
+3.  **Tamam** düğmesine tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  

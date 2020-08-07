@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489461"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925644"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -102,7 +102,7 @@ Azure Resource Manager şablonunda erişim modunu yapılandırmak için, çalı�
 
 ## <a name="manage-access-using-workspace-permissions"></a>Çalışma alanı izinlerini kullanarak erişimi yönetme
 
-Her çalışma alanı kendisiyle ilişkilendirilmiş birden çok hesap içerebilir ve her hesabın birden fazla çalışma alanına erişimi olabilir. Erişim, [Azure rol tabanlı erişim](../../role-based-access-control/role-assignments-portal.md)kullanılarak yönetilir.
+Her çalışma alanı kendisiyle ilişkilendirilmiş birden çok hesap içerebilir ve her hesabın birden fazla çalışma alanına erişimi olabilir. Erişim, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)kullanılarak yönetilir.
 
 Şu etkinlikler de Azure izinleri gerektirir:
 

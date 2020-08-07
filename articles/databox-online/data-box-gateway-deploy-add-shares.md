@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Gateway ile verileri aktarma | Microsoft Docs
-description: Data Box Gateway cihazında paylaşımları eklemeyi ve bunlara bağlanmayı öğrenin.
+description: Azure Data Box Gateway paylaşımlara nasıl ekleneceğini ve bunların nasıl bağlanacağınızı öğrenin ve Data Box Gateway cihazınız Azure 'a veri aktarabilir.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561738"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923484"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Öğretici: Azure Data Box Gateway veri aktarma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Data Box Gateway cihazınıza paylaşım eklemeden önce aşağıdakilerden emin olun:
 
@@ -107,7 +107,7 @@ Data Box Gateway bağlı Windows Server istemcisinde, komutları girerek bir SMB
 
 
 2. Klavyenizde Windows + R ' yi seçin. 
-3. **Çalıştır** penceresinde, `\\<device IP address>` öğesini belirtip **Tamam**' ı seçin. Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
+3. **Çalıştır** penceresinde, öğesini belirtip Tamam ' `\\<device IP address>` ı seçin. **OK** Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -137,7 +137,7 @@ Azure Stack Edge cihazınıza bağlı Linux istemciniz için aşağıdaki yordam
 > Bu sürüm için aşağıdaki uyarılar geçerlidir:
 > - Paylaşımlardaki bir dosya oluşturulduktan sonra dosyanın yeniden adlandırılması desteklenmez.
 > - Paylaşımdan dosya silindiğinde, depolama hesabındaki girdi silinmez.
-> - Verileri kopyalamak `rsync` için kullanıyorsanız, `rsync -a` seçeneği desteklenmez.
+> - `rsync`Verileri kopyalamak için kullanıyorsanız, `rsync -a` seçeneği desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

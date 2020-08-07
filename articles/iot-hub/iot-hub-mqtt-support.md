@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307633"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924198"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -437,7 +437,7 @@ Son dikkat olarak, bulut tarafında MQTT protokol davranışını özelleştirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](https://mqtt.org/documentation)bakın.
+MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](https://mqtt.org/)bakın.
 
 IoT Hub Dağıtımınızı planlama hakkında daha fazla bilgi edinmek için bkz.:
 

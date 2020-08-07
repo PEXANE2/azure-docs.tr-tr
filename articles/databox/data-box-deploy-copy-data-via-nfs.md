@@ -1,6 +1,6 @@
 ---
 title: NFS aracılığıyla Azure Data Box veri kopyalama öğreticisi | Microsoft Docs
-description: Azure Data Box NFS aracılığıyla verileri nasıl kopyalayacağınızı öğrenin
+description: Bu öğreticide, yerel Web Kullanıcı arabirimi ile NFS kullanarak ana bilgisayar bilgisayarınızdan Azure Data Box 'e bağlanmayı ve verileri kopyalamayı öğrenin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960544"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926085"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Data Box'a bağlanma
 > * Data Box'a veri kopyalama
 
@@ -48,7 +48,7 @@ Blok blobu ve sayfa blobu paylaşımlarının altında birinci düzeydeki varlı
 
 Aşağıdaki tabloda, Data Box üzerindeki paylaşımların UNC yolu ve verilerin karşıya yüklendiği Azure Depolama yolu URL'si gösterilmektedir. Son Azure depolama yolu URL'si, UNC paylaşım yolundan türetilebilir.
  
-| Azure depolama türü| Data Box paylaşımlar                                       |
+| Azure depolama türü| Data Box paylaşımları                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure Blok blobları | <li>Paylaşımların UNC yolu: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure Sayfa blobları  | <li>Paylaşımların UNC yolu: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -60,7 +60,7 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
 
     ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** düğmesine tıklayın.
 
     ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -139,17 +139,17 @@ Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardım
 > [!IMPORTANT]
 > Şu Linux dosya türleri desteklenmez: sembolik bağlantılar, karakter dosyaları, blok dosyaları, yuvalar ve kanallar. Bu dosya türleri **göndermeye hazırlama** adımı sırasında hatalara neden olur.
 
-Kopyalama işlemi sırasında, herhangi bir hata varsa bir bildirim görürsünüz.
+Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görürsünüz.
 
-![Connect ve Copy ile ilgili hataları indirin ve görüntüleyin](media/data-box-deploy-copy-data/view-errors-1.png)
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-1.png)
 
-**Sorun listesini indir**' i seçin.
+**Sorun listesini indir**’i seçin.
 
-![Connect ve Copy ile ilgili hataları indirin ve görüntüleyin](media/data-box-deploy-copy-data/view-errors-2.png)
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-2.png)
 
-Hatanın ayrıntılarını görüntülemek için listeyi açın ve önerilen çözümü görüntülemek için çözüm URL 'sini seçin.
+Hatanın ayrıntılarını görüntülemek için listeyi açın ve önerilen çözümü görüntülemek için çözüm URL’sini seçin.
 
-![Connect ve Copy ile ilgili hataları indirin ve görüntüleyin](media/data-box-deploy-copy-data/view-errors-3.png)
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 

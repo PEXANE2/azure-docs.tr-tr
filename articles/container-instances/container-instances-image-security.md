@@ -4,12 +4,12 @@ description: Azure Container Instances için güvenli görüntü ve gizli dizile
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907032"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922243"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances için güvenlik konuları
 
@@ -40,7 +40,7 @@ Genel olarak kullanılabilir bir kapsayıcı görüntüsü güvenliği garanti e
 
 ### <a name="protect-credentials"></a>Kimlik bilgilerini koruma
 
-Kapsayıcılar, çeşitli kümeler ve Azure bölgelerine yayılabilir. Bu nedenle, oturum açma işlemleri veya parola veya belirteçler gibi API erişimi için gereken kimlik bilgilerini güvence altına almalısınız. Yalnızca ayrıcalıklı kullanıcıların, aktarımda ve geri kalanında bu kapsayıcılara erişebildiğinden emin olun. Tüm kimlik bilgisi gizli dizileri envanterini çıkarın ve geliştiricilerin kapsayıcı platformları için tasarlanan, gelişen gizli dizi yönetim araçlarını kullanmasını gerektirir.  Çözümünüz şifreli veritabanları, aktarım sırasında gizli veriler için TLS şifreleme ve en düşük ayrıcalıklı [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)içerdiğinden emin olun. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) , Kapsayıcılı uygulamalar için şifreleme anahtarlarını ve gizli dizileri (sertifikalar, bağlantı dizeleri ve parolalar gibi) korumalarını sağlayan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların erişebilmesi için anahtar kasalarınıza güvenli bir şekilde erişin.
+Kapsayıcılar, çeşitli kümeler ve Azure bölgelerine yayılabilir. Bu nedenle, oturum açma işlemleri veya parola veya belirteçler gibi API erişimi için gereken kimlik bilgilerini güvence altına almalısınız. Yalnızca ayrıcalıklı kullanıcıların, aktarımda ve geri kalanında bu kapsayıcılara erişebildiğinden emin olun. Tüm kimlik bilgisi gizli dizileri envanterini çıkarın ve geliştiricilerin kapsayıcı platformları için tasarlanan, gelişen gizli dizi yönetim araçlarını kullanmasını gerektirir.  Çözümünüz şifreli veritabanları, aktarım sırasında gizli veriler için TLS şifreleme ve en düşük ayrıcalıklı [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)içerdiğinden emin olun. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) , Kapsayıcılı uygulamalar için şifreleme anahtarlarını ve gizli dizileri (sertifikalar, bağlantı dizeleri ve parolalar gibi) korumalarını sağlayan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların erişebilmesi için anahtar kasalarınıza güvenli bir şekilde erişin.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Kapsayıcı ekosistemi ile ilgili konular
 
@@ -117,7 +117,7 @@ Her türlü BT ortamında olduğu gibi, tüm şüpheli veya kötü amaçlı etki
 
 * [Kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , Azure Kubernetes Service (aks) üzerinde barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izler. Kapsayıcılar için Azure Izleyici, ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğüne sahip olmanızı sağlar. 
 
-* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örneğin:
+* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örnek:
 
   * Kapsayıcılarla kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
   * Docker veya Windows konaklarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyip arayarak kapsayıcılarla ilgili sorunları giderin.  

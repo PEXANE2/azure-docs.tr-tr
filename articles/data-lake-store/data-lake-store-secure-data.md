@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515247"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926306"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama
 Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç adımlı bir yaklaşımdır.  Hem rol tabanlı erişim denetimi (RBAC) hem de erişim denetim listeleri (ACL 'Ler), kullanıcılar ve güvenlik grupları için verilere erişimi tam olarak etkinleştirecek şekilde ayarlanmalıdır.
 
-1. Azure Active Directory (AAD) içinde güvenlik grupları oluşturarak başlayın. Bu güvenlik grupları Azure portal ' de rol tabanlı erişim denetimi (RBAC) uygulamak için kullanılır. Daha fazla bilgi için [Microsoft Azure Içindeki rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md)bakın.
+1. Azure Active Directory (AAD) içinde güvenlik grupları oluşturarak başlayın. Bu güvenlik grupları, Azure portal Azure rol tabanlı erişim denetimi (Azure RBAC) uygulamak için kullanılır. Daha fazla bilgi için bkz. [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. AAD güvenlik gruplarını Data Lake Storage 1. hesabına atayın. Bu, portaldan veya API 'lerden yönetim işlemlerinden Data Lake Storage 1. hesabına erişimi denetler.
 3. AAD güvenlik gruplarını, Data Lake Storage 1. dosya sisteminde erişim denetim listeleri (ACL 'Ler) olarak atayın.
 4. Ayrıca, Data Lake Storage 1. verilerine erişebilen istemciler için de bir IP adresi aralığı ayarlayabilirsiniz.
 
 Bu makale, yukarıdaki görevleri gerçekleştirmek için Azure portal nasıl kullanılacağına ilişkin yönergeler sağlar. Data Lake Storage 1. hesap ve veri düzeyinde güvenliği nasıl uygulayan hakkında ayrıntılı bilgi için, bkz. [Azure Data Lake Storage 1. güvenlik](data-lake-store-security-overview.md). ACL 'Lerin Data Lake Storage 1. nasıl uygulandığı hakkında ayrıntılı bilgi için, bkz. [Data Lake Storage 1. Access Control genel bakış](data-lake-store-access-control.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -102,7 +102,7 @@ Data Lake Storage 1. dosya sistemine Kullanıcı/güvenlik grupları atayarak, D
 4. **Izin ata** dikey penceresini açmak için **Ekle** simgesine tıklayın. Bu dikey pencerede **Kullanıcı veya Grup Seç**' e tıklayın ve ardından **Kullanıcı veya grup** dikey penceresinde, daha önce Azure Active Directory oluşturduğunuz güvenlik grubunu arayın. Arama yapmak için çok sayıda grubunuz varsa, Grup adını filtrelemek için üstteki metin kutusunu kullanın. Eklemek istediğiniz gruba tıklayın ve ardından **Seç**' e tıklayın.
    
     ![Grup Ekle](./media/data-lake-store-secure-data/adl.acl.3.png "Grup Ekle")
-5. İzinleri **Seç**' e tıklayın, izinleri yinelemeli olarak uygulanıp uygulanmayacağı ve izinleri bir erişim ACL 'si, varsayılan ACL veya her ikisi olarak atamak isteyip istemediğiniz. **Tamam**'a tıklayın.
+5. İzinleri **Seç**' e tıklayın, izinleri yinelemeli olarak uygulanıp uygulanmayacağı ve izinleri bir erişim ACL 'si, varsayılan ACL veya her ikisi olarak atamak isteyip istemediğiniz. **Tamam** düğmesine tıklayın.
    
     ![Gruba izin atama](./media/data-lake-store-secure-data/adl.acl.4.png "Gruba izin atama")
    
@@ -155,4 +155,3 @@ Güvenlik grubu ACL 'Lerini bir Data Lake Storage 1. dosya sisteminden kaldırd�
 * [PowerShell ile Data Lake Storage Gen1'i kullanmaya başlama](data-lake-store-get-started-powershell.md)
 * [.NET SDK kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage 1. için tanılama günlüklerine erişin](data-lake-store-diagnostic-logs.md)
-

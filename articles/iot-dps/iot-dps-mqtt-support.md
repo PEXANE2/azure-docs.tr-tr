@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680686"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924215"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak DPS ile iletişim kurma
 
@@ -82,7 +82,7 @@ WebSocket üzerinden bağlanılırken, alt protokolü olarak belirtin `mqtt` . [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](https://mqtt.org/documentation)bakın.
+MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](https://mqtt.org/)bakın.
 
 DPS 'in yeteneklerini daha fazla incelemek için bkz.:
 

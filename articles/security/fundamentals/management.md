@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224715"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921937"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
 Azure aboneleri yönetim iş istasyonları, geliştirici PC’leri ve hatta göreve özel izinleri bulunan ayrıcalıklı son kullanıcı cihazları dahil birden fazla cihazda kendi bulut ortamlarını yönetebilir. Bazı durumlarda, yönetim işlevleri [Azure portal](https://azure.microsoft.com/features/azure-portal/) gibi web tabanlı konsollar aracılığıyla gerçekleştirilir Diğer durumlarda, Sanal Özel Ağlar (VPN), Terminal Hizmetleri, istemci uygulaması protokolleri ya da (programlı olarak) Azure Service Management API (SMAPI) üzerinden şirket için sistemlerden Azure’a bağlantılar olabilir. Ayrıca, istemci uç noktaları ya da etki alanına katılmış veya yalıtılmış ve yönetilmeyen olabilir, tabletler veya akıllı telefonlar gibi.
@@ -66,7 +66,7 @@ Erişim kaynaklarını sağlamlaştırmak ve yönetilmeyen uç noktaları ortada
 ### <a name="providing-security-for-azure-remote-management"></a>Azure remote management için güvenlik sağlama
 Azure, Azure bulut hizmetlerini ve sanal makineleri yöneten yöneticilere yardım etmek amacıyla güvenlik mekanizmaları sağlar. Bu mekanizmalar şunları:
 
-* Kimlik doğrulama ve [rol tabanlı erişim denetimi](../../role-based-access-control/role-assignments-portal.md).
+* Kimlik doğrulaması ve [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * İzleme, günlük kaydı ve denetim.
 * Sertifikalar ve şifreli iletişim.
 * Web yönetim portalı.
@@ -138,7 +138,7 @@ Sıkı erişim denetimleri içeren ilke uygulama yönetici eylemlerini yönetebi
 ## <a name="client-configuration"></a>İstemci yapılandırması
 Sağlamlaştırılmış iş istasyonu için üç temel yapılandırma öneririz. Bunlar arasındaki en büyük fark, tüm seçeneklerde benzer güvenlik profili sağlarken, maliyet, kullanılabilirlik ve erişilebilirliktir. Aşağıdaki tabloda her birinin avantajları ve risklerinin kısa bir çözümlemesini sağlar. (“kurumsal PC” ifadesinin, rollerden bağımsız olarak, tüm etki alanı kullanıcıları için dağıtılabilecek standart masaüstü PC yapılandırması anlamına geldiğini unutmayın.)
 
-| Yapılandırma | Avantajlar | Dezavantajlar |
+| Yapılandırma | Yararları | Dezavantajlar |
 | --- | --- | --- |
 | Tek başına sağlamlaştırılmış iş istasyonu |Sıkı denetlenen iş istasyonu |ayrılmış masaüstü bilgisayarlar için daha yüksek maliyet |
 | - | Azaltılmış uygulama açıkları riski |Artan yönetim çabası |

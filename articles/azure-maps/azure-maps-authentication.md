@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285841"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922260"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
@@ -80,7 +80,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile yetkilendirme
 
-Azure haritalar; Azure AD kullanıcıları, gruplar, uygulamalar, Azure kaynakları ve Azure tarafından yönetilen kimlikler dahil olmak üzere Azure [rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview) için tüm asıl türlere erişimi destekler. Asıl türlere, rol tanımı olarak da bilinen bir izin kümesi verilir. Rol tanımı REST API eylemlere izinler sağlar. Bir veya daha fazla Azure Maps hesabına erişim uygulamak, kapsam olarak bilinir. Bir sorumlusu, rol tanımını ve kapsamı uygularken bir rol ataması oluşturulur. 
+Azure haritalar; Azure AD kullanıcıları, gruplar, uygulamalar, Azure kaynakları ve Azure tarafından yönetilen kimlikler dahil olmak üzere [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) için tüm asıl türlere erişimi destekler. Asıl türlere, rol tanımı olarak da bilinen bir izin kümesi verilir. Rol tanımı REST API eylemlere izinler sağlar. Bir veya daha fazla Azure Maps hesabına erişim uygulamak, kapsam olarak bilinir. Bir sorumlusu, rol tanımını ve kapsamı uygularken bir rol ataması oluşturulur. 
 
 Sonraki bölümlerde Azure AD rol tabanlı erişim denetimi ile Azure haritalar tümleştirmesinin kavramları ve bileşenleri ele alınmaktadır. Azure haritalar hesabınızı ayarlama işleminin bir parçası olarak Azure AD dizini, Azure Maps hesabının bulunduğu Azure aboneliğiyle ilişkilendirilir. 
 

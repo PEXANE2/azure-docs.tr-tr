@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d523aeff87b95aaea91df9ad5d3f44c73c871b71
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528608"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921410"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
 
@@ -117,13 +117,13 @@ Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure A
 
 Müşterilere yönelik her uygulamanın, toplanacak bilgiler için benzersiz gereksinimleri vardır. Azure AD B2C kiracınız, belirtilen ad, soyadı, şehir ve posta kodu gibi özelliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD B2C, her müşteri hesabında depolanan özellikler kümesini genişletebilirsiniz. Özel öznitelikler tanımlama hakkında daha fazla bilgi için bkz. [özel öznitelikler (Kullanıcı akışları)](user-flow-custom-attributes.md) ve [özel öznitelikler (özel ilkeler)](custom-policy-custom-attributes.md).
 
-Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` ( **App registrations**  >  Azure Portal**tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örneğin:
+Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` ( **App registrations**  >  Azure Portal**tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örnek:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-## <a name="code-sample"></a>Kod örneği
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod örneği: program aracılığıyla Kullanıcı hesaplarını yönetme
 
 Bu kod örneği, Microsoft Graph API ile etkileşim kurmak için [Microsoft Graph SDK 'sını](https://docs.microsoft.com/graph/sdks/sdks-overview) kullanan bir .NET Core konsol uygulamasıdır. Kodu, bir Azure AD B2C kiracısındaki kullanıcıları programlı bir şekilde yönetmek için API 'nin nasıl çağrılacağını gösterir.
 [Örnek Arşivi](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip) Indirebilir, GitHub 'daki [depoya gözatabilir](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) veya depoyu klonlayabilirsiniz:

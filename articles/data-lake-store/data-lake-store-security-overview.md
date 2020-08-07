@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529985"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926289"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
 
@@ -39,7 +39,7 @@ Her Azure aboneliği, bir Azure Active Directory örneğiyle ilişkilendirilebil
 
 Azure Active Directory bir kullanıcının kimliğini doğruladıktan sonra, kullanıcının Data Lake Storage 1. erişebilmeleri için yetkilendirme denetimleri erişim izinleri Data Lake Storage 1.. Data Lake Storage 1. hesapla ilgili ve verilerle ilgili etkinliklere yönelik yetkilendirmeyi aşağıdaki şekilde ayırır:
 
-* Hesap yönetimi için Azure tarafından sunulan [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC)
+* Hesap yönetimi için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)
 * Depodaki verilere erişmek için POSIX ACL 'SI
 
 ### <a name="rbac-for-account-management"></a>Hesap yönetimi için RBAC
@@ -52,7 +52,7 @@ Roller hesap yönetimi için atanmış olsa da, bazı rollerin verilere erişimi
 
 | Roller | Yönetim hakları | Veri erişim hakları | Açıklama |
 | --- | --- | --- | --- |
-| Atanan rol yok |Hiçbiri |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
+| Atanan rol yok |Yok |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
 | Sahip |Tümü |Tümü |Sahip rolü bir süper kullanıcı. Bu rol her şeyi yönetebilir ve verilere tam erişim sağlayabilir. |
 | Okuyucu |Salt okunur |ACL 'ye tabidir |Okuyucu rolü, hesap yönetimiyle ilgili her şeyi görüntüleyebilir, örneğin hangi rolün atandığı kullanıcı. Okuyucu rolü herhangi bir değişiklik yapamaz. |
 | Katılımcı |Rol Ekle ve Kaldır dışında tümü |ACL 'ye tabidir |Katkıda bulunan rolü, bir hesabın dağıtım ve uyarı oluşturma ve yönetme gibi bazı yönlerini yönetebilir. Katkıda bulunan rolü rol ekleyemez veya kaldıramaz. |

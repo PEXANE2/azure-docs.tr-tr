@@ -12,29 +12,37 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422921"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920125"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Öğretici: iki yönetilen örnek arasında çoğaltmayı yapılandırma
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-İşlemsel çoğaltma, verileri bir veritabanından SQL Server veya [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) (Genel Önizleme) üzerinde barındırılan bir diğerine çoğaltmanıza olanak sağlar. SQL yönetilen örneği, çoğaltma topolojisinde bir yayımcı, dağıtıcı veya abone olabilir. Kullanılabilir konfigürasyonlar için [işlem çoğaltma yapılandırmalarına](replication-transactional-overview.md#common-configurations) bakın.
+İşlemsel çoğaltma, verileri bir veritabanından SQL Server ya da [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md)üzerinde barındırılan bir diğerine çoğaltmanıza olanak sağlar. SQL yönetilen örneği, çoğaltma topolojisinde bir yayımcı, dağıtıcı veya abone olabilir. Kullanılabilir konfigürasyonlar için [işlem çoğaltma yapılandırmalarına](replication-transactional-overview.md#common-configurations) bakın. 
 
-> [!NOTE]
-> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
+İşlemsel çoğaltma şu anda SQL yönetilen örneği için genel önizlemededir. 
 
-Bu öğretici, yayımcı ve dağıtıcı olarak bir yönetilen örnek ve ardından abonelik olarak ikinci bir yönetilen örnek yapılandırmayı öğretir.  
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> - Yönetilen bir örneği, Çoğaltma yayımcısı ve dağıtıcı olarak yapılandırın.
+> - Yönetilen bir örneği, çoğaltma dağıtıcısı olarak yapılandırın.
 
 ![İki yönetilen örnek arasında Çoğalt](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
-  > [!NOTE]
-  > - Bu makale, kaynak grubu oluşturmaya başlamadan önce SQL yönetilen örneği ile uçtan uca çoğaltma yapılandırma konusunda gelişmiş bir kullanıcıya kılavuzluk amaçlıdır. Zaten dağıtılan yönetilen örneklere sahipseniz, yayımcı veritabanınızı oluşturmak için [4. adıma](#4---create-a-publisher-database) atlayın veya zaten bir yayımcı ve abone veritabanınız varsa ve çoğaltmayı yapılandırmaya başlamaya hazırsanız [6. adıma](#6---configure-distribution) geçin.  
-  > - Bu makale, aynı yönetilen örnek üzerinde yayımcısını ve dağıtıcısını yapılandırır. Dağıtıcıyı ayrı bir yönetilen örneğe yerleştirmek için, [Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma](replication-two-instances-and-sql-server-configure-tutorial.md)öğreticisine bakın. 
+Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcının Azure 'da hem yönetilen örneklere hem de SQL Server sanal makinelere dağıtım ve bağlanma hakkında bilgi sahibi olduğunu varsayar. 
+
+
+> [!NOTE]
+> - Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](../database/auto-failover-group-overview.md)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
+
+
 
 ## <a name="requirements"></a>Gereksinimler
 

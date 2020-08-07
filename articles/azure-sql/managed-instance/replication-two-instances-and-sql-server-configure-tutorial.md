@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532535"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920152"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+İşlemsel çoğaltma, verileri bir veritabanından SQL Server ya da [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md)üzerinde barındırılan bir diğerine çoğaltmanıza olanak sağlar. SQL yönetilen örneği, çoğaltma topolojisinde bir yayımcı, dağıtıcı veya abone olabilir. Kullanılabilir konfigürasyonlar için [işlem çoğaltma yapılandırmalarına](replication-transactional-overview.md#common-configurations) bakın. 
+
+İşlemsel çoğaltma şu anda SQL yönetilen örneği için genel önizlemededir. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -30,11 +34,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Yönetilen örnek yayımcısı, yönetilen örnek dağıtıcı ve SQL Server abonesi arasında çoğaltma](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcının Azure 'da hem yönetilen örneklere hem de SQL Server sanal makinelere dağıtım ve bağlanma hakkında bilgi sahibi olduğunu varsayar. Bu şekilde, bu öğreticideki bazı adımlar glossed.
+Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcının Azure 'da hem yönetilen örneklere hem de SQL Server sanal makinelere dağıtım ve bağlanma hakkında bilgi sahibi olduğunu varsayar. 
 
-Daha fazla bilgi edinmek için bkz. [Azure SQL yönetilen örnek genel bakış](sql-managed-instance-paas-overview.md) ve [SQL işlem çoğaltma](replication-transactional-overview.md) makaleleri.
 
-Yönetilen bir örnek yayımcısı ve yönetilen örnek abonesi arasında çoğaltmayı yapılandırmak için, bkz. [iki yönetilen örnek arasında işlemsel çoğaltmayı yapılandırma](replication-between-two-instances-configure-tutorial.md).
+> [!NOTE]
+> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -151,7 +155,7 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 
    ![Özel DNS bölgesi oluştur](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. **İncele ve oluştur**’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
+1. **Gözden geçir ve oluştur**’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
 
 ### <a name="create-an-a-record"></a>Bir kayıt oluştur
 

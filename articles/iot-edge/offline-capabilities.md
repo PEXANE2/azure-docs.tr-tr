@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6ed74149f106b801049da429dfe7b79b984a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e929463c33603c650bec2e9a49a13dde6965e39f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725253"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926663"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge cihazları, modülleri ve alt cihazları için genişletilmiş çevrimdışı özellikleri anlayın
 
@@ -20,7 +20,7 @@ Azure IoT Edge, IoT Edge cihazlarınızda genişletilmiş çevrimdışı işleml
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Bir IoT Edge cihaz çevrimdışı moda geçtiğinde, IoT Edge hub 'ı üç rol alır. İlk olarak, yukarı akış yapılacak iletileri depolar ve cihaz yeniden bağlanana kadar bunları kaydeder. İkincisi, işleme devam edebilmek için modüller ve alt cihazların kimliğini doğrulamak üzere IoT Hub adına işlem yapar. Üçüncü olarak, normalde IoT Hub ilerlebilen alt aygıtlar arasında iletişime izin verebilir.
+Bir IoT Edge cihaz çevrimdışı moda geçtiğinde, IoT Edge hub 'ı üç rol alır. İlk olarak, yukarı akış yapılacak iletileri depolar ve cihaz yeniden bağlanana kadar bunları kaydeder. İkincisi, IoT Hub adına işlem yaparak çalışmaya devam edebilmeleri için modüllerin ve cihazların kimliğini doğrulamaktır. Üçüncüsü ise alt cihazlar arasında gerçekleştirilen ve normalde IoT Hub üzerinden yapılan iletişimi sağlamaktır.
 
 Aşağıdaki örnekte, bir IoT Edge senaryosunun çevrimdışı modda nasıl çalıştığı gösterilmektedir:
 
@@ -95,7 +95,7 @@ Farklı bir cihaz alt kümesini seçmek için [sorguyu](../iot-hub/iot-hub-devgu
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>Seçenek 3: IoT Hub hizmeti SDK 'sını kullanma
 
-Son olarak, C#, Java veya Node.js IoT Hub hizmet SDK 'sını kullanarak üst alt öğe ilişkilerini programlı bir şekilde yönetebilirsiniz. C# SDK kullanarak [bir alt cihaz atamaya bir örnek](https://aka.ms/set-child-iot-device-c-sharp) aşağıda verilmiştir.
+Son olarak, C#, Java veya Node.js IoT Hub hizmet SDK 'sını kullanarak üst alt öğe ilişkilerini programlı bir şekilde yönetebilirsiniz. C# SDK kullanarak [bir alt cihaz atamaya bir örnek](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs) aşağıda verilmiştir.
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>Ana cihazı ağ geçidi olarak ayarlama
 

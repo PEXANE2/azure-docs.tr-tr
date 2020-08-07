@@ -1,6 +1,6 @@
 ---
 title: Azure Kullanılabilirlik Alanları 'de bölge yedekli sanal ağ geçitleri hakkında
-description: Kullanılabilirlik Alanları VPN Gateway ve ExpressRoute ağ geçitleri hakkında bilgi edinin.
+description: Azure Kullanılabilirlik Alanları 'de VPN ve ExpressRoute ağ geçitleri hakkında bilgi edinin, VNet ağ geçitleri için dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik özellikleri ekleyin.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a0a3d59477511ebf019e2c2019786788a92ad70
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864307"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922702"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Azure Kullanılabilirlik Alanları 'de bölge yedekli sanal ağ geçitleri hakkında
 
@@ -38,7 +38,7 @@ Belirli bir bölgedeki ağ geçitlerini dağıtmak için, bölgesel ağ geçitle
 
 ![Bölgesel ağ geçitleri grafiği](./media/create-zone-redundant-vnet-gateway/zonal.png)
 
-## <a name="gateway-skus"></a><a name="gwskus"></a>Ağ Geçidi SKU'ları
+## <a name="gateway-skus"></a><a name="gwskus"></a>Ağ Geçidi SKU’ları
 
 Bölgesel olarak yedekli ve bölgesel ağ geçitleri, yeni ağ geçidi SKU 'ları olarak kullanılabilir. Azure AZ bölgelere yeni sanal ağ geçidi SKU 'Ları ekledik. Bu SKU 'lar ExpressRoute ve VPN Gateway için ilgili mevcut SKU 'lara benzer ve bunlar, bölgesel olarak yedekli ve bölgesel ağ geçitlerine özgü olmaları dışında. Bu SKU 'Ları, SKU adında "AZ" ile tanımlayabilirsiniz.
 

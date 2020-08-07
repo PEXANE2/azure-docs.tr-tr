@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117063"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927326"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -34,12 +34,12 @@ Güvenlik duvarının veya proxy 'nin aşağıdaki tabloda açıklanan bağlant�
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |  
-|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Giden|Yes |  
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |  
+|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |  
 
-Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
+Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 
 Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğrulayabilmeniz için birkaç yol vardır.
 

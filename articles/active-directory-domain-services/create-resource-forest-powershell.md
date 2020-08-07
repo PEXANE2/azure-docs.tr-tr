@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505776"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922005"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure PowerShell kullanarak bir şirket içi etki alanına Azure Active Directory Domain Services kaynak ormanı ve giden orman güveni oluşturma
 
@@ -102,7 +102,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
 1. Betiği için gereken aşağıdaki parametreleri gözden geçirin `New-AzureAaddsForest` . Önkoşul **Azure PowerShell** ve **Azure AD PowerShell** modüllerine de sahip olduğunuzdan emin olun. Uygulama ve şirket içi bağlantı sağlamak için sanal ağ gereksinimlerini planladığınızdan emin olun.
 
-    | Name                         | Betik parametresi          | Açıklama |
+    | Ad                         | Betik parametresi          | Açıklama |
     |:-----------------------------|---------------------------|:------------|
     | Abonelik                 | *-Azuyeniden gönderilirken Scriptionıd*    | Azure AD DS faturalandırma için kullanılan abonelik KIMLIĞI. [Get-AzureRMSubscription][Get-AzureRMSubscription] cmdlet 'ini kullanarak Aboneliklerin listesini alabilirsiniz. |
     | Kaynak Grubu               | *-aaddsResourceGroupName* | Yönetilen etki alanı ve ilişkili kaynaklar için kaynak grubunun adı. |
@@ -112,7 +112,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
     `New-AzureAaddsForest`Bu kaynaklar zaten mevcut değilse betik Azure sanal ağını ve azure AD DS alt ağını oluşturabilir. Komut dosyası, belirtildiğinde, isteğe bağlı olarak iş yükü alt ağlarını oluşturabilir:
 
-    | Name                              | Betik parametresi                  | Description |
+    | Ad                              | Betik parametresi                  | Açıklama |
     |:----------------------------------|:----------------------------------|:------------|
     | Sanal ağın adı              | *-Aaddsvbir ağ adı*                  | Yönetilen etki alanı için sanal ağın adı.|
     | Adres alanı                     | *-Aaddsvnetcıdraddressspace*      | CıDR gösteriminde sanal ağın adres aralığı (sanal ağ oluşturuluyoruz).|
@@ -148,8 +148,8 @@ Başlamadan önce, [ağ konularını ve önerileri](tutorial-create-forest-trust
 
 1. Azure VPN veya Azure ExpressRoute bağlantısı kullanarak şirket içi ağınız ile Azure arasında karma bağlantı oluşturun. Karma ağ yapılandırması bu belge kapsamının ötesinde ve ortamınızda zaten var olabilir. Belirli senaryolar hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-    * [Azure siteden sıteye VPN](/vpn-gateway/vpn-gateway-about-vpngateways).
-    * [Azure ExpressRoute 'A genel bakış](/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Azure siteden sıteye VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Azure ExpressRoute 'A genel bakış](/azure/expressroute/expressroute-introduction).
 
     > [!IMPORTANT]
     > Bağlantıyı, yönetilen etki alanının sanal ağına doğrudan oluşturursanız, ayrı bir ağ geçidi alt ağı kullanın. Yönetilen etki alanının alt ağında ağ geçidini oluşturmayın.
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Şimdi aşağıdaki bilgileri komut dosyasına girin:
 
-| Name                               | Betik parametresi     | Description |
+| Ad                               | Betik parametresi     | Açıklama |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS etki alanı adı            | *-ManagedDomainFqdn* | Yönetilen etki alanının FQDN 'SI (örneğin, *aaddscontoso.com* ) |
 | Şirket içi AD DS etki alanı adı      | *-TrustFqdn*         | *OnPrem.contoso.com* gibi güvenilir ormanın FQDN 'si |

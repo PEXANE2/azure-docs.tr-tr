@@ -14,12 +14,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/20/2020
-ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003226"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926714"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Data Factory'de SSIS Paketini Yürüt etkinliğiyle bir SSIS paketi çalıştırma
 
@@ -97,7 +97,7 @@ SSIS paketi yürütme etkinliğinin **Ayarlar** sekmesinde aşağıdaki adımlar
 
 Azure-SSIS IR, Azure SQL veritabanı sunucusu/yönetilen örneği tarafından barındırılan bir SSIS Kataloğu (SSSıSDB) ile sağlandıysa veya kendiniz seçerek, paket konumunuz olarak **Sssısdb** otomatik olarak seçilir. Seçilirse, aşağıdaki adımları uygulayın.
 
-   1. Azure-SSIS IR çalışıyorsa ve **el ile girdiler** onay kutusu SILINIRSE, SSISDB 'den var olan klasörlerinizi, projelerinizi, paketlerinizi ve ortamlarınızı göz atın ve seçin. Yeni eklenen klasörlerinizi, projelerinizi, paketlerinizi veya ortamlarınızı SSıSDB 'den getirmek için **Yenile** ' yi seçin, böylece göz atma ve seçim için kullanılabilir olmaları gerekir. Paket yürütmelerinin ortamlarına gitmek ve bunları seçmek için, bu ortamları SSSıSDB altındaki aynı klasörlerden başvuru olarak eklemek üzere projelerinizi önceden yapılandırmanız gerekir. Daha fazla bilgi için bkz. [SSIS ortamlarını oluşturma ve eşleme](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
+   1. Azure-SSIS IR çalışıyorsa ve **el ile girdiler** onay kutusu SILINIRSE, SSISDB 'den var olan klasörlerinizi, projelerinizi, paketlerinizi ve ortamlarınızı göz atın ve seçin. Yeni eklenen klasörlerinizi, projelerinizi, paketlerinizi veya ortamlarınızı SSıSDB 'den getirmek için **Yenile** ' yi seçin, böylece göz atma ve seçim için kullanılabilir olmaları gerekir. Paket yürütmelerinin ortamlarına gitmek ve bunları seçmek için, bu ortamları SSSıSDB altındaki aynı klasörlerden başvuru olarak eklemek üzere projelerinizi önceden yapılandırmanız gerekir. Daha fazla bilgi için bkz. [SSIS ortamlarını oluşturma ve eşleme](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
 
    1. **Günlüğe kaydetme düzeyi**için, paket yürütülemenize yönelik önceden tanımlanmış bir günlük kapsamı seçin. Bunun yerine özelleştirilmiş günlük adınızı girmek istiyorsanız **özelleştirilmiş** onay kutusunu seçin. 
 
@@ -269,7 +269,7 @@ Alternatif olarak, Azure Key Vault depolanan gizli dizileri değerler olarak kul
 
    1. Seçtiğiniz paketteki mevcut özelliklerin yollarını, el ile değer atamak için birer birer girin. Bu koşulların ve paket yürütmenin başarılı olması için doğru girildiğinden emin olun. Örneğin, Kullanıcı değişkeninizin değerini geçersiz kılmak için yolunu aşağıdaki biçimde girin: `\Package.Variables[User::<variable name>].Value` . 
 
-      SSDT 'de bulunan paketi açarak herhangi bir paket özelliği için doğru **ÖZELLIK yolunu** elde edebilirsiniz. Paket açıldıktan sonra, SSDT 'nin **Özellikler** penceresinde denetim akışı ve **Konfigürasyonlar** özelliğini seçin. Ardından, **yapılandırma** özelliğinin yanındaki üç nokta (**...**) düğmesini seçerek paket yapılandırma Düzenleyicisi [' ni paket dağıtım modelinde oluşturmak](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014)için kullanılan **paket yapılandırma düzenleyicisini** açın. 
+      SSDT 'de bulunan paketi açarak herhangi bir paket özelliği için doğru **ÖZELLIK yolunu** elde edebilirsiniz. Paket açıldıktan sonra, SSDT 'nin **Özellikler** penceresinde denetim akışı ve **Konfigürasyonlar** özelliğini seçin. Ardından, **yapılandırma** özelliğinin yanındaki üç nokta (**...**) düğmesini seçerek paket yapılandırma Düzenleyicisi [' ni paket dağıtım modelinde oluşturmak](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)için kullanılan **paket yapılandırma düzenleyicisini** açın. 
 
       ![SSDT-Configurations özelliğinden paket özelliklerini al](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 

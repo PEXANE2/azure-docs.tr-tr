@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448162"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927462"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mürekkep Tanıma API’si nedir?
 
@@ -43,14 +43,14 @@ Mürekkep tanıyıcı API 'SI, bir Web hizmeti olduğundan, HTTP istekleri yapan
 
 Kaydolduktan sonra:
 
-1. Mürekkep vuruşu verilerinizi alın ve geçerli JSON olarak [biçimlendirin](concepts/send-ink-data.md#sending-ink-data) .
+1. Mürekkep vuruşu verilerinizi alın ve geçerli JSON olarak [biçimlendirin](concepts/send-ink-data.md#sending-ink-data) . API, istek başına en fazla 1500 mürekkep vuruşunu kabul eder. 
 1. Verilerinize yönelik olarak mürekkep tanıyıcı API 'sine bir istek gönderin.
 1. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Mürekkep tanıyıcı API 'sine çağrı yapmaya başlamak için aşağıdaki dillerde bir hızlı başlangıç yapın.
-* [, #](quickstarts/csharp.md)
+* [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
 * [JavaScript](quickstarts/javascript.md)
 

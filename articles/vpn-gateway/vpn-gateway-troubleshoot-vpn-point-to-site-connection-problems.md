@@ -1,19 +1,19 @@
 ---
 title: Azure Noktadan siteye bağlantı sorunlarını giderme
 titleSuffix: Azure VPN Gateway
-description: Noktadan siteye bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
+description: Çeşitli VPN istemci hataları da dahil olmak üzere Azure 'da karşılaşabileceğiniz ortak Noktadan siteye bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: b997942fd8d8a90b4bd395c2afa7d99b64a97ad8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8fd32cb99db115484c913e1a0f00b038b62367e9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037758"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920662"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorun giderme: Azure Noktadan siteye bağlantı sorunları
 

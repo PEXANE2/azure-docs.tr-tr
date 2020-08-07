@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: yapılandırma ayarları'
-description: Azure sanal ağ geçitleri için VPN Gateway ayarları hakkında bilgi edinin.
+description: Azure 'da, her biri yapılandırılabilir ayarları içeren birden fazla kaynağa dayanan bir VPN Ağ Geçidi bağlantısı yapılandırması hakkında bilgi edinin.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fef54e4fff442f1c9eae523d7d278f193b84171
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708153"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926935"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN Gateway yapılandırma ayarları hakkında
 
@@ -49,7 +49,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -VpnType RouteBased
 ```
 
-## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU'ları
+## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU’ları
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
@@ -114,7 +114,7 @@ Bir VPN ağ geçidi yapılandırması için sanal ağ geçidi oluşturduğunuzda
 
 Seçtiğiniz VPN türü, oluşturmak istediğiniz çözüm için tüm bağlantı gereksinimlerini karşılamalıdır. Örneğin, aynı sanal ağ için bir S2S VPN Ağ Geçidi bağlantısı ve bir P2S VPN Ağ Geçidi bağlantısı oluşturmak istiyorsanız, P2S, RouteBased VPN türü gerektirdiğinden *Routebased* VPN türünü kullanırsınız. Ayrıca, VPN cihazınızın bir RouteBased VPN bağlantısı destekliyordu de doğrulamanız gerekir. 
 
-Bir sanal ağ geçidi oluşturulduktan sonra VPN türünü değiştiremezsiniz. Sanal ağ geçidini silip yeni bir tane oluşturmanız gerekir. İki VPN türü vardır:
+Bir sanal ağ geçidi oluşturulduktan sonra VPN türünü değiştiremezsiniz. Sanal ağ geçidini silip yeni bir tane oluşturmanız gerekir. İki tür VPN vardır:
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
@@ -173,7 +173,7 @@ REST API 'leri, PowerShell cmdlet 'leri veya VPN Gateway yapılandırmalarına y
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| Desteklenmiyor | [Azure CLI](/cli/azure/network/vnet-gateway)|
+| Desteklenmez | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

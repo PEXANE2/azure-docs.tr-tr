@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836352"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924436"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -74,7 +74,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
 4.  Foundation hizmetlerinin tasarımı. Bu tasarım aşağıdaki öğeleri içermelidir:
     - Active Directory ve DNS tasarımı.
     - Azure içindeki ağ topolojisi ve farklı SAP sistemleri atama.
-    - Azure 'da altyapı ve SAP uygulamalarını yöneten takımlar için [rol tabanlı erişim](../../../role-based-access-control/overview.md) yapısı.
+    - Azure 'da altyapı ve SAP uygulamalarını yöneten takımlar için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../role-based-access-control/overview.md) yapısı.
     - Kaynak grubu topolojisi.
     - [Etiketleme stratejisi](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - VM 'Ler ve diğer altyapı bileşenleri ve/veya mantıksal adlar için adlandırma kuralları.

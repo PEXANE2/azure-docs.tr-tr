@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell betiği örneği - Siteden Siteye VPN yapılandırma | Microsoft Docs
-description: Siteden Siteye VPN’yi yapılandırın.
+description: Bu PowerShell betiği, yol tabanlı bir VPN Gateway oluşturur ve siteden siteye yapılandırma ekler. Betikteki tüm cmdlet 'ler hakkında bilgi edinin.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
-ms.openlocfilehash: e55cbcbd27d9a2b6307f570d5e2bca37eba3e1e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e3629fd605b74edc0a274fa887f56295dcb0ab77
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998519"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926986"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>PowerShell kullanarak VPN Gateway oluşturma ve Siteden Siteye bağlantı ekleme
 

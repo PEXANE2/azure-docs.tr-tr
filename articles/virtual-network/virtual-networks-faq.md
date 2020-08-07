@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087059"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924130"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -109,7 +109,7 @@ Evet. Alt ağ adres aralığı başka bir alt ağın parçası olmadığı ve sa
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Oluşturduktan sonra alt ağımın boyutunu değiştirebilir miyim?
 Evet. Alt ağın içinde dağıtılmış VM'ler veya hizmetler yoksa alt ağı ekleyebilir, kaldırabilir, genişletebilir veya daraltabilirsiniz.
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>Alt ağları oluşturduktan sonra değiştirebilir miyim?
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Sanal ağı oluşturduktan sonra değiştirebilir miyim?
 Evet. VNet tarafından kullanılan CıDR bloklarını ekleyebilir, kaldırabilir ve değiştirebilirsiniz.
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Hizmetlerimi bir VNet 'te çalıştırdım, internet 'e bağlanabilir miyim?
@@ -195,7 +195,7 @@ Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıt
 
 * [App Service ağ özellikleri](../app-service/networking-features.md)
 * [App Service Ortamı Web Apps oluşturma](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Uygulamanızı bir Azure Sanal Ağı ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Uygulamanızı bir Azure sanal ağıyla tümleştirin](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service erişim kısıtlamaları](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ve çalışan rolleri (PaaS) ile bir VNet 'te Cloud Services dağıtabilir miyim?

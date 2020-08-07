@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042892"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926408"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL veritabanı için Sorgu Performansı İçgörüleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Sorgu Performansı İçgörüleri, tek ve havuza alınmış veritabanları için
 
 ![Sorgu Performansı İçgörüleri](./media/query-performance-insight-use/opening-title.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](https://msdn.microsoft.com/library/dn817826.aspx) etkin olmasını gerektirir. Azure SQL veritabanı 'ndaki tüm veritabanları için varsayılan olarak otomatik olarak etkinleştirilir. Sorgu deposu çalışmıyorsa, Azure portal etkinleştirmek isteyip istemeyecektir.
 
@@ -39,7 +39,7 @@ Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](https://m
 
 ## <a name="permissions"></a>İzinler
 
-Sorgu Performansı İçgörüleri kullanmak için aşağıdaki [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) izinlerine sahip olmanız gerekir:
+Sorgu Performansı İçgörüleri kullanmak için aşağıdaki [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) izinlerinizin olması gerekir:
 
 * En üstteki kaynak kullanan sorguları ve grafikleri görüntülemek için **okuyucu**, **sahip**, **katkıda bulunan**, **SQL DB katılımcısı**veya **SQL Server katkıda** bulunan izinleri gereklidir.
 * Sorgu metnini görüntülemek için **sahip**, **katkıda**bulunan, **SQL DB katılımcısı**veya **SQL Server katkıda** bulunan izinleri gereklidir.

@@ -2,15 +2,15 @@
 title: Şablon özelliklerine genel bakış
 description: Şablon özelliklerinin nasıl oluşturulduğunu ve kuruluşunuzdaki diğer kullanıcılarla nasıl paylaşılacağını açıklar.
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/06/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f5151550b9f23ba63380688f53325f8976f14a51
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497809"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921887"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager şablonu özellikleri (Önizleme)
 
@@ -18,7 +18,7 @@ ms.locfileid: "87497809"
 
 **Microsoft. resources/Templatespec** , şablon özelliklerine yönelik yeni kaynak türüdür. Ana şablondan ve herhangi bir sayıda bağlantılı şablondan oluşur. Azure, şablon özelliklerini kaynak gruplarında güvenli bir şekilde depolar. Şablon özellikleri [sürümü oluşturmayı](#versioning)destekler.
 
-Şablon belirtimini dağıtmak için PowerShell, Azure CLı, Azure portal, REST ve diğer desteklenen SDK 'lar ve istemciler gibi standart Azure araçlarını kullanırsınız. Aynı komutları kullanır ve şablon için aynı parametreleri geçirin.
+Şablon belirtimini dağıtmak için PowerShell, Azure CLı, Azure portal, REST ve diğer desteklenen SDK 'lar ve istemciler gibi standart Azure araçlarını kullanırsınız. Şablonla aynı komutları kullanın.
 
 > [!NOTE]
 > Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [bekleme listesine kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
@@ -37,21 +37,32 @@ Aşağıdaki örnekte, Azure 'da bir depolama hesabı oluşturmak için basit bi
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-06-01",
-      "location": "[resourceGroup().location]",
-      "kind": "StorageV2",
-      "sku": {
-        "name": "Premium_LRS",
-        "tier": "Premium"
-      }
-    }
-  ]
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ]
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[concat('store', uniquestring(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            }
+        }
+    ]
 }
 ```
 
@@ -105,6 +116,42 @@ $id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG
+```
+
+## <a name="parameters"></a>Parametreler
+
+Parametreleri Template spec 'e geçirmek, parametreleri bir ARM şablonuna geçirme gibidir. Parametre değerlerini satır içi veya bir parametre dosyasına ekleyin.
+
+Bir parametreyi satır içine geçirmek için şunu kullanın:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -StorageAccountType Standard_GRS
+```
+
+Yerel bir parametre dosyası oluşturmak için şunu kullanın:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "StorageAccountType": {
+      "value": "Standard_GRS"
+    }
+  }
+}
+```
+
+Ve bu parametre dosyasını şu ile geçirin:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -TemplateParameterFile ./mainTemplate.parameters.json
 ```
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>Bağlantılı şablonlarla şablon belirtimi oluşturma

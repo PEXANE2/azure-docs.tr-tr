@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257808"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927037"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric Mesh nedir?
 
@@ -42,7 +42,7 @@ Service Fabric Mesh ile şunları yapabilirsiniz:
 
 - Altyapı sağlamak veya yönetmek zorunda kalmadan uygulamaları dağıtma ve yönetme.  Service Fabric Mesh altyapıyı sizin için sağlar, yükseltir, düzeltme eki uygular ve bakımını yapar.
 - Uygulamaları kolayca paketlemek ve dağıtmak için tümleşik araçları kullanarak sürekli tümleştirmeye geçiş yapabilirsiniz.
-- Azure Resource Manager kaynaklarının tüm özelliklerinden yararlanın. Bu özelliklere örnek olarak denetim izi ve [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)dahildir. Azure 'da Service Fabric kafes hizmetine dağıttığınız tüm kaynaklar Azure Resource Manager kaynaklardır. Bu kaynaklar uygulamalar, hizmetler, gizlilikler vb. içerir.
+- Azure Resource Manager kaynaklarının tüm özelliklerinden yararlanın. Bu özelliklere örnek olarak denetim izi ve [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)) verilebilir. Azure 'da Service Fabric kafes hizmetine dağıttığınız tüm kaynaklar Azure Resource Manager kaynaklardır. Bu kaynaklar uygulamalar, hizmetler, gizlilikler vb. içerir.
 - Kaynakları [Azure portal](https://portal.azure.com), Resource Manager şablonları veya Azure CLI/PowerShell kitaplıklarını kullanarak dağıtabilir ve yönetebilirsiniz.
 - [Application Insights](/azure/application-insights/)'ı (veya istediğiniz bir aracı) kullanarak işlem izleme ve uyarı ayarlarını yapabilir, platformdan işlem ve tanılama izlemelerini alabilirsiniz.
 - [Application Insights](/azure/application-insights/)'ı veya istediğiniz bir aracı kullanarak uygulama modelinden gelen uygulama tanılama bilgilerine erişebilirsiniz.

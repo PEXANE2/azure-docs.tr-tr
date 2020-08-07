@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk portalı yönetici kılavuzu | Microsoft Docs
-description: Azure portalı kullanarak Azure Data Box'ınızı nasıl yönetebileceğiniz açıklanmaktadır.
+description: Azure portal kullanarak Data Box Disk yönetmeyi öğrenin. Siparişleri yönetin, diskleri yönetin ve ilerledikçe bir siparişin durumunu izleyin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707744"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924762"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Data Box Disk’inizi yönetmek için Azure portalını kullanma
 
@@ -51,7 +51,7 @@ Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
     ![Siparişi kopyalama 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**'a tıklayın.    
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**’a tıklayın.    
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 

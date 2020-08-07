@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: fa23637500755f43bb380a9f20cbe3acc7c3a394
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371388"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925813"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage kullanarak PaaS Web ve mobil uygulamaları güvenli hale getirmenin en iyi yöntemleri
 Bu makalede, hizmet olarak platform (PaaS) Web ve mobil uygulamalarınızın güvenliğini sağlamak için Azure Depolama güvenliği en iyi uygulamalarının bir koleksiyonunu tartıştık. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
@@ -56,7 +56,7 @@ SAS, depolama hesabı anahtarlarınızı dışarıda bırakmadan içeriği payla
 Paylaşılan erişim imzası hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim Imzalarını kullanma](/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 ## <a name="use-role-based-access-control"></a>Rol tabanlı erişim denetimi kullanma
-Erişimi yönetmenin bir diğer yolu [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) (RBAC) kullanmaktır. RBAC ile çalışanlara, ihtiyaç duydukları tam izinleri, bilmeniz gerekenler ve en az ayrıcalık güvenlik ilkelerine göre vermek için odaklanırsınız. Çok fazla izin, saldırganlar için bir hesap sunabilir. Çok az izin, çalışanların çalışmalarını verimli bir şekilde kullanamayacağı anlamına gelir. RBAC, Azure için ayrıntılı erişim yönetimi sunarak bu sorunu ele almanıza yardımcı olur. Bu, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur.
+Erişimi yönetmenin bir başka yolu da [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview)kullanmaktır. RBAC ile çalışanlara, ihtiyaç duydukları tam izinleri, bilmeniz gerekenler ve en az ayrıcalık güvenlik ilkelerine göre vermek için odaklanırsınız. Çok fazla izin, saldırganlar için bir hesap sunabilir. Çok az izin, çalışanların çalışmalarını verimli bir şekilde kullanamayacağı anlamına gelir. RBAC, Azure için ayrıntılı erişim yönetimi sunarak bu sorunu ele almanıza yardımcı olur. Bu, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur.
 
 Kullanıcılara ayrıcalık atamak için Azure 'da Azure yerleşik rollerini kullanabilirsiniz. Örneğin, klasik depolama hesaplarını yönetmek için depolama hesaplarını ve klasik depolama hesabı katılımcısı rolünü yönetmesi gereken bulut işleçleri için depolama hesabı katılımcısı ' nı kullanın. VM 'Leri yönetmesi gereken ancak bağlı oldukları sanal ağ veya depolama hesabı olmayan bulut işleçleri için bunları sanal makine katılımcısı rolüne ekleyebilirsiniz.
 
@@ -65,7 +65,7 @@ RBAC gibi özellikleri kullanarak veri erişim denetimini zorunlu olmayan kurulu
 RBAC hakkında daha fazla bilgi için bkz.:
 
 - [RBAC ve Azure portalı kullanarak erişimi yönetme](/azure/role-based-access-control/role-assignments-portal)
-- [Yerleşik Azure rolleri](/azure/role-based-access-control/built-in-roles)
+- [Azure yerleşik rolleri](/azure/role-based-access-control/built-in-roles)
 - [Azure Depolama güvenlik kılavuzu](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Yüksek değerli veriler için istemci tarafı şifrelemeyi kullanın

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131540"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920509"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS bölgelerini ve kayıtlarını koruma
 
@@ -20,7 +20,7 @@ ms.locfileid: "87131540"
 
 DNS bölgeleri ve kayıtları kritik kaynaklardır. Bir DNS bölgesini veya tek bir DNS kaydını silmek, hizmet kesintisi oluşmasına neden olabilir. DNS bölgelerinin ve kayıtlarının yetkisiz veya yanlışlıkla yapılan değişikliklere karşı korunması önemlidir.
 
-Bu makalede Azure DNS, özel DNS bölgelerinizi ve kayıtlarınızı bu değişikliklere karşı korumanıza nasıl olanak sağladığını açıklamaktadır.  Azure Resource Manager, [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) ve [kaynak kilitleri](../azure-resource-manager/management/lock-resources.md)tarafından sunulan iki güçlü menkul Özellik uygulayacağız.
+Bu makalede Azure DNS, özel DNS bölgelerinizi ve kayıtlarınızı bu değişikliklere karşı korumanıza nasıl olanak sağladığını açıklamaktadır.  [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) ve [kaynak kilitleri](../azure-resource-manager/management/lock-resources.md)Azure Resource Manager tarafından sunulan iki güçlü menkul Özellik uygulayacağız.
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
