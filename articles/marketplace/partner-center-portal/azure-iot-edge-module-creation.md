@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808720"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876640"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -199,15 +199,14 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
+Aşağıdaki dört piksel boyutundan her biri için teklifinizin logosunun PNG dosyalarını sağlayın:
 
-Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
+- **Küçük (48 x 48)**
+- **Orta (90 x 90)**
+- **Büyük (216 x 216)**
+- **Geniş (255 x 115)**
 
-- **Küçük** (48 x 48)
-- **Orta** (90 x 90)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Dört logo gereklidir ve Market listesindeki farklı yerlerde kullanılır.
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 

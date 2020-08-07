@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773288"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835825"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 'da gizli bilgi işlem
 
@@ -52,7 +52,7 @@ Kuşanın güvenliği, donanım işlemcisinin ve belleğinin güvenli bir kısı
 
 Uygulama geliştirirken, kodunuzun ve verilerinizin parçalarını kuşkuya içinde korumak için [yazılım araçlarını](#oe-sdk) kullanabilirsiniz. Bu araçlar, kodunuzun ve verilerinizin güvenilir ortam dışındaki kimseler tarafından görüntülenememesini veya değiştirilmesini güvence altına alacak. 
 
-Temelde, bir kuşatma 'yı siyah kutu olarak düşünün. Şifrelenmiş kod ve verileri kutuya yerleştirebilirsiniz. Kutunun dışından, hiçbir şey göremezsiniz. Şifreleme, verilerin şifresini çözmek için bir anahtar verirsiniz, daha sonra veriler, kuşdan gönderilmeden önce işlenir ve yeniden şifrelenir.
+Temelde, güvenli bir kutu olarak bir şifreleme düşünün. Şifrelenmiş kod ve verileri kutuya yerleştirebilirsiniz. Kutunun dışından, hiçbir şey göremezsiniz. Şifreleme, verilerin şifresini çözmek için bir anahtar verirsiniz, daha sonra veriler, kuşdan gönderilmeden önce işlenir ve yeniden şifrelenir.
 
 ### <a name="attestation"></a>Kanıtlama
 

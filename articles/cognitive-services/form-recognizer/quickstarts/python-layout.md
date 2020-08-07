@@ -9,13 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: 62cbaec3e4eaffb9ff3b29e97516ed7e039b38ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-python
+ms.openlocfilehash: 0c7e077b3f170e3d9f1b15f78d52a1f386396983
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028111"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876878"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak metin ve düzen bilgilerini ayıklama
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, form belgelerinden metin düzeni bilgilerini ve tablo
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).

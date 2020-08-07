@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: f4fa90025e9aaa12c065514e0dd4e5d76e4f8d24
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-python-october2019, devx-track-python
+ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337297"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852489"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Service Bus kuyruklarından ileti oluşturmak, göndermek ve 
 
 Python Azure Service Bus kitaplıkları hakkında daha fazla bilgi için bkz. [Python için Service Bus kitaplıkları](/python/api/overview/azure/servicebus?view=azure-python).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliği. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 - [Hızlı başlangıç: bir Service Bus konusu ve abonelikleri oluşturmak için Azure Portal](service-bus-quickstart-topics-subscriptions-portal.md)kullanarak oluşturulan bir Service Bus ad alanı. Bu makalede daha sonra kullanmak için, **paylaşılan erişim ilkeleri** ekranından birincil bağlantı dizesini kopyalayın. 
 - Python [Azure Service Bus][Python Azure Service Bus package] paketi yüklüyken Python 3.4 x veya üzeri. Daha fazla bilgi için bkz. [Python Yükleme Kılavuzu](/azure/developer/python/azure-sdk-install). 

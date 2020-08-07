@@ -9,13 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.custom: tracking-python
-ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-python
+ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431923"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876912"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -23,7 +23,7 @@ Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasa
 
 + [Python IÇIN sdk Azure Machine Learning](#python-sdk): Python SDK, her biri farklı yeteneklere sahip modelleri eğitmek için çeşitli yollar sağlar.
 
-    | Eğitim yöntemi | Description |
+    | Eğitim yöntemi | Açıklama |
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için genel bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmanız. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Bir çalıştırma yapılandırması, eğitim betiğinizi ve bir işlem hedefini (eğitim ortamı) alabilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize**olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |

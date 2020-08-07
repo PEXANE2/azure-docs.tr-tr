@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: f43db986f70e64e55225465223b7e324450541a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec4b771387854c40045f2b57afe7ead6c52f2c7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084346"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836046"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme (sürüm 3.0.0-preview1 'i)
 
@@ -317,7 +317,7 @@ Anında iletme bildirimleri normal olarak, uyumlu bir kitaplık kullanılarak Mo
 
 Bildirim göndermek için gözden geçirmek isteyebileceğiniz diğer bazı öğreticilerin listesi aşağıda verilmiştir:
 
-- Azure Mobile Apps: Notification Hubs ile tümleştirilmiş Mobile Apps arka uçta bildirimlerin nasıl gönderileceği hakkında bir örnek Için bkz. [IOS uygulamanıza anında Iletme bildirimleri ekleme](/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
+- Azure Mobile Apps: Notification Hubs ile tümleştirilmiş Mobile Apps arka uçta bildirimlerin nasıl gönderileceği hakkında bir örnek Için bkz. [IOS uygulamanıza anında Iletme bildirimleri ekleme](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 - ASP.NET: [kullanıcılara anında iletme bildirimleri göndermek için Notification Hubs kullanın](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 - Azure Notification Hubs Java SDK 'Sı: Java 'dan bildirim göndermek için [Java 'dan Notification Hubs nasıl kullanacağınızı](notification-hubs-java-push-notification-tutorial.md)öğrenin   . Android Geliştirmesi için Eclipse'te test edilmiştir.
 - PHP: [php 'den Notification Hubs nasıl kullanılır](notification-hubs-php-push-notification-tutorial.md).

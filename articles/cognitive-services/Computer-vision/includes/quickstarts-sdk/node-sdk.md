@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: dc01600d052752d4558e22fe5c5ca48fb84a8121
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405509"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841786"
 ---
 <a name="HOLTop"></a>
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org/) geçerli sürümü
@@ -140,7 +140,7 @@ Aşağıdaki kod görüntüdeki ortak nesneleri algılar ve konsola yazdırır. 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-Yardımcı işlevi tanımlayın `formatRectObjects` :
+`formatRectObjects`Üst, sol, alt ve sağ koordinatları, genişlik ve yükseklikle birlikte döndürecek yardımcı işlevi tanımlayın.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 

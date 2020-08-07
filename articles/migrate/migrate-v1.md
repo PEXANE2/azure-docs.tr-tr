@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306120"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836012"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -101,7 +101,7 @@ Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayaca�
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
 **Çekirdekler** | Makine çekirdeği <= bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
-**Bellek** | Makine bellek boyutu <= bir Azure VM 'si için maksimum bellek (3892 GB on Azure b serisi Standard_M128m &nbsp; <sup>2</sup>). [Daha fazla bilgi edinin](../virtual-machines/windows/sizes.md).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
+**Bellek** | Makine bellek boyutu <= bir Azure VM 'si için maksimum bellek (3892 GB on Azure b serisi Standard_M128m &nbsp; <sup>2</sup>). [Daha fazla bilgi edinin](../virtual-machines/sizes.md).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
 **Depolama diski** | Bir diskin ayrılan boyutu 4 TB (4096 GB) veya daha az olmalıdır.<br/><br/> Makineye bağlı disk sayısı, işletim sistemi diski dahil 65 veya daha az olmalıdır. | Sınırlar içindeyse hazırlanın.
 **Ağ** | Bir makinenin kendisine bağlı 32 veya daha az NIC 'e sahip olması gerekir. | Sınırlar içindeyse hazırlanın.
 
@@ -263,7 +263,7 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Windows ve Linux işletim sistemleri için [bağımlılık Aracısı desteği](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) hakkında daha fazla bilgi edinin.
-- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) .
+- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) .
 
 >[!NOTE]
 > Sistem önkoşulları ve bağımlılık aracısını dağıtma yöntemlerine genel bir bakış sağlamak için başvurulan VM'ler için Azure İzleyici makale, Hizmet Eşlemesi çözümü için de geçerlidir.

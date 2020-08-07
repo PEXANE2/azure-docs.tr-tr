@@ -10,13 +10,13 @@ ms.date: 06/12/2020
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.custom: tracking-python
-ms.openlocfilehash: 331f38f899c77f451fd43b81d7e83d73b3d5bcc1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: devx-track-python
+ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782441"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844635"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C bir Python web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -53,7 +53,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
@@ -63,7 +63,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
@@ -125,7 +125,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Konsolunuzun veya terminalinizde, örneği içeren dizine geçin. Örneğin:
+1. Konsolunuzun veya terminalinizde, örneği içeren dizine geçin. Örnek:
 
     ```console
     cd ms-identity-python-webapp

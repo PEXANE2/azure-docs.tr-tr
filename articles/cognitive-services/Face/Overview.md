@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 061d6d1088358e5da0cb590fad5ed0a4cd9e422a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403462"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834227"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure yüz hizmeti nedir?
 
@@ -51,7 +51,7 @@ Ve bu görüntüler aday yüzlerdir:
 
 ![Beş tane gülümseyen kişi görüntüsü. A ve b görüntüleri aynı kişiyi gösterir.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Benzer dört yüzü bulmak için, matchPerson modu, hedef yüzü ile aynı kişiyi gösteren a ve b döndürür. Eşleme modu, biri hedefle aynı kişi olmasa veya az benzerliğe sahip&mdash;olsa bile, b, c ve d tam olarak dört aday döndürür. Daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya [benzer API başvurusu bul](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) belgelerine bakın.
+Benzer dört yüzü bulmak için, matchPerson modu, hedef yüzü ile aynı kişiyi gösteren a ve b döndürür. Eşleme modu, &mdash; biri hedefle aynı kişi olmasa veya az benzerliğe sahip olsa bile, b, c ve d tam olarak dört aday döndürür. Daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya [benzer API başvurusu bul](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) belgelerine bakın.
 
 ## <a name="face-grouping"></a>Yüz gruplama
 
@@ -61,7 +61,7 @@ Gruplama API'si, bilinmeyen bir dizi yüzü benzerlik temelinde birkaç gruba ay
 
 Tanıma API 'SI, bir kişi veritabanında algılanan bir yüzü belirlemek için kullanılır. Bu özellik, fotoğraf yönetimi yazılımında otomatik görüntü etiketleme için yararlı olabilir. Veritabanını önceden oluşturun ve zaman içinde düzenleyebilirsiniz.
 
-Aşağıdaki görüntüde adlı `"myfriends"`bir veritabanı örneği gösterilmektedir. Her grup, en fazla 1.000.000 farklı kişi nesnesi içerebilir. Her kişi nesnesinde en fazla 248 kayıtlı yüz olabilir.
+Aşağıdaki görüntüde adlı bir veritabanı örneği gösterilmektedir `"myfriends"` . Her grup, en fazla 1.000.000 farklı kişi nesnesi içerebilir. Her kişi nesnesinde en fazla 248 kayıtlı yüz olabilir.
 
 ![Her biri üç yüz görüntüsü içeren farklı kişiler için üç sütunlu bir kılavuz](./Images/person.group.clare.jpg)
 

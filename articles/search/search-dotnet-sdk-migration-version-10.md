@@ -1,5 +1,5 @@
 ---
-title: Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
+title: .NET SDK sürüm 10 ' a yükseltme
 titleSuffix: Azure Cognitive Search
 description: Kodu eski sürümlerden Azure Bilişsel Arama .NET SDK sürüm 10 ' a geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562392"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905790"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
 
@@ -111,7 +111,7 @@ var webApiSkill = new WebApiSkill(
 
 Beceri başına mil, artık iç içe bağlamlardan giriş birleştirmeye izin verebilir. Bu değişikliği etkinleştirmek için, `InputFieldMappingEntry` yalnızca bir `Source` özellik veya hem de özellikleri belirtilerek, örnekleri oluşturulacak şekilde değiştirdik `SourceContext` `Inputs` .
 
-Büyük olasılıkla herhangi bir kod değişikliği yapmanız gerekmez; Ancak, bu iki birleşimden yalnızca birine izin verildiğini unutmayın. Diğer bir deyişle:
+Büyük olasılıkla herhangi bir kod değişikliği yapmanız gerekmez; Ancak, bu iki birleşimden yalnızca birine izin verildiğini unutmayın. Bunun anlamı:
 
 - `InputFieldMappingEntry`Yalnızca başlatılmış bir konum oluşturmak `Source` geçerlidir.
 - `InputFieldMappingEntry`Yalnızca ve başlatılmış bir WHERE oluşturulması `SourceContext` `Inputs` geçerlidir.

@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84872608"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852931"
 ---
 # <a name="testing-the-fhir-api"></a>FHıR API 'sini test etme
 Önceki iki adımda, FHıR için Azure API 'yi dağıttınız ve istemci uygulamanızı kaydettiniz. Artık, FHıR için Azure API 'nizin istemci uygulamanızla birlikte ayarlanmış olduğunu test etmeye hazırsınız. 
@@ -22,11 +22,11 @@ ms.locfileid: "84872608"
 ## <a name="retrieve-capability-statement"></a>Yetenek bildirisini al
 İlk olarak, FHıR için Azure API 'niz için yetenek beyanını alacaksınız. 
 1. Postman 'ı aç
-1. GET https:// \< fhır-Server-NAME>. azurehealthcareapis.com/metadata yaparak yetenek ifadesini alın. Aşağıdaki görüntüde FHıR sunucu adı **fhirserver**' dır.
+1. GET https://. azurehealthcareapis.com/metadata yaparak yetenek ifadesini alın \<FHIR-SERVER-NAME> . Aşağıdaki görüntüde FHıR sunucu adı **fhirserver**' dır.
 
 ![Capability ekstresi](media/tutorial-web-app/postman-capability-statement.png)
 
-Bir sonraki adımda, hasta alma girişiminde bulunuldu. Hasta almak için GET https:// \< fhır-Server-NAME>. azurehealthcareapis.com/Patient girin. 401 Yetkisiz bir hata alacaksınız. Bu hata, hasta verilerine erişiminizin olması gerektiğini kanıtlamadınız.
+Bir sonraki adımda, hasta alma girişiminde bulunuldu. Hasta almak için GET https:// \<FHIR-SERVER-NAME> . azurehealthcareapis.com/Patient girin. 401 Yetkisiz bir hata alacaksınız. Bu hata, hasta verilerine erişiminizin olması gerektiğini kanıtlamadınız.
 
 ## <a name="get-patient-from-fhir-server"></a>FHıR sunucusundan hasta alın
 ![Başarısız hasta](media/tutorial-web-app/postman-patient-authorization-failed.png)
@@ -41,11 +41,11 @@ Erişim kazanmak için bir erişim belirtecine ihtiyacınız vardır.
 |Belirteç Adı           |Belirteciniz için bir ad                                               |
 |Veriliş Türü           |Yetkilendirme kodu                                                  |
 |Geri Çağırma URL’si         |https://www.getpostman.com/oauth2/callback                          |
-|Kimlik Doğrulama URL’si             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
-|Erişim Belirteci URL’si     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
+|Kimlik Doğrulama URL’si             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/OAuth2/? kaynağı = https:// \<FHIR-SERVER-NAME> . azurehealthcareapis.com|
+|Erişim Belirteci URL’si     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/OAuth2/Token|
 |İstemci Kimliği            |Önceki adımlarda kopyaladığınız istemci KIMLIĞI             |
-|İstemci Gizli Anahtarı        |\<BOŞ>                                                            |
-|Kapsam                |\<BOŞ>                                                            |
+|İstemci Gizli Anahtarı        |\<BLANK>                                                            |
+|Kapsam                |\<BLANK>                                                            |
 |Durum                |1234                                                                |
 |İstemci Kimlik Doğrulaması|İstemci kimlik bilgilerini gövdesinde gönder                                     |
 

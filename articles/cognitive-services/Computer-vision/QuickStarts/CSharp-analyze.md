@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1ece80ce5337304d1b0d51e5e334cd64cc133619
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: dc6ec5f440efef153273f8678bd1a55400a1235b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84984407"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835437"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API ve C kullanarak yerel bir görüntüyü çözümleme #
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğinden görsel özellik bilgilerini ayıklayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır

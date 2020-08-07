@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0c893609d81abbe1ea1bdfab2d3d0c6e49bf98f4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 44bd0a766574889334601a354b47946a80fc475a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406665"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833718"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node.js kullanarak görüntüdeki yüzeyleri algılama
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -113,7 +113,7 @@ Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve dosyayı `node
 node facedetection.js
 ```
 
-Tüm JSON verileri buradan aşağıda verilmiştir `response.data` . Örneğin:
+Tüm JSON verileri buradan aşağıda verilmiştir `response.data` . Örnek:
 
 ```json
 [

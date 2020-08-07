@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-python
+ms.openlocfilehash: 01ed3df547a7dc02e0ca29028876eddb8be21c77
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852455"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Hızlı başlangıç: Python ile Service Bus konuları ve abonelikleri kullanma
 
@@ -27,7 +27,7 @@ Bu makalede, Python 'un Azure Service Bus konuları ve abonelikleri ile nasıl k
 - Aboneliklerden ileti alma
 - Konu başlıklarını ve abonelikleri silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliği. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 - [Hızlı başlangıç: bir Service Bus konusu ve abonelikleri oluşturmak için Azure Portal](service-bus-quickstart-topics-subscriptions-portal.md)kullanarak oluşturulan bir Service Bus ad alanı. Bu hızlı başlangıçta kullanmak üzere **paylaşılan erişim ilkeleri** ekranından ad alanı adını, paylaşılan erişim anahtarı adını ve birincil anahtar değerini kopyalayın. 
 - [Azure Python SDK][Azure Python package] paketi yüklüyken Python 3.4 x veya üzeri. Daha fazla bilgi için bkz. [Python Yükleme Kılavuzu](/azure/developer/python/azure-sdk-install).

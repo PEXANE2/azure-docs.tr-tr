@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554065"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902054"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -128,7 +128,7 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 |Yerel Ayar  | Dil            | Cinsiyet | Ses adı | Stil desteği |
 |--|--|--|--|--|
 | `ar-EG` | Arapça (Mısır)                  | Kadın | `ar-EG-SalmaNeural`      | Genel |
-| `ar-SA` | Arapça (Suudi Arabistan)           | Kadın | `ar-SA-ZariyahNeura`     | Genel |
+| `ar-SA` | Arapça (Suudi Arabistan)           | Kadın | `ar-SA-ZariyahNeural`    | Genel |
 | `ca-ES` | Katalanca (İspanya)                 | Kadın | `ca-ES-AlbaNeural`       | Genel |
 | `da-DK` | Danca (Danimarka)                | Kadın | `da-DK-ChristelNeural`   | Genel |
 | `de-DE` | Almanca (Almanya)                | Kadın | `de-DE-KatjaNeural`      | Genel |

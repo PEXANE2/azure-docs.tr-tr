@@ -2,14 +2,14 @@
 title: JavaScript Web uygulamaları için Azure Application Insights
 description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, tek sayfalı uygulamalar (SPA) ve kullanım desenlerini izleyin. JavaScript web sayfalarında özel durumları ve performans sorunlarını yakalayın.
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531328"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905834"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -107,10 +107,10 @@ Kullanılabilir yapılandırma seçenekleri şunlardır
 | Ad | Tür | Açıklama
 |------|------|----------------
 | src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
-| name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan Appınsights olarak belirlenmiştir. ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
+| name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan olarak olur `appInsights` . ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
 | Eski | MS olarak sayı *[isteğe bağlı]* | SDK 'Yı yüklemeyi denemeden önce beklenecek yük gecikmesini tanımlar. Varsayılan değer 0 ' dır ve herhangi bir negatif değer, sayfanın baş bölgesine hemen bir betik etiketi ekler ve &lt; &gt; Bu, betik yüklenene kadar sayfa yükleme olayını engeller (veya başarısız olur).
 | useXhr | Boole *[isteğe bağlı]* | Bu ayar yalnızca SDK yükleme hatalarının bildirdiği için kullanılır. Raporlama ilk olarak, varsa Fetch () kullanmaya çalışır ve ardından XHR 'a geri dönüşse, bu değeri true olarak ayarlamak yalnızca getirme denetimini atlar. Bu değerin kullanılması yalnızca uygulamanız, alma işlemi hata olaylarını gönderemediği bir ortamda kullanılıyorsa gereklidir.
-| Çapraz Sorigin | dize *[isteğe bağlı]* | Bu ayarı ekleyerek, SDK 'Yı indirmek için eklenen komut dosyası etiketi, bu dize değerine sahip çapraz Sorigin özniteliğini içerecektir. Tanımlanmadığında (varsayılan), hiçbir çapraz ekleme özniteliği eklenmez. Önerilen değerler tanımlı değil (varsayılan); ""; veya "Anonymous" (tüm geçerli değerler Için bkz [. html özniteliği: çapraz sorumde](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) belgeler)
+| Çapraz Sorigin | dize *[isteğe bağlı]* | Bu ayarı ekleyerek, SDK 'Yı indirmek için eklenen komut dosyası etiketi, bu dize değerine sahip çapraz Sorigin özniteliğini içerecektir. Tanımlanmadığında (varsayılan), hiçbir çapraz ekleme özniteliği eklenmez. Önerilen değerler tanımlı değil (varsayılan); ""; veya "Anonymous" (tüm geçerli değerler Için bkz [. html özniteliği `crossorigin` :](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) belgeler)
 | satırında | nesne **[gerekli]** | Yapılandırma, başlatma sırasında Application Insights SDK 'ya geçirildi.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Name | Varsayılan | Açıklama |
+| Ad | Varsayılan | Açıklama |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -195,9 +195,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableResponseHeaderTracking | yanlış | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
 | distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)bakın.
 | enableAjaxErrorStatusText | yanlış | Varsayılan yanlış. Doğru ise, başarısız AJAX isteklerinde bağımlılık olayına yanıt hatası veri metnini ekleyin.
-| enableAjaxPerfTracking | yanlış | Varsayılan yanlış. Daha fazla tarayıcı penceresi aramak ve dahil olmak üzere izin vermek için bayrak. bildirilen Ajax (XHR ve fetch) tarafından bildirilen ölçümlerde performans zamanlamaları.
+| enableAjaxPerfTracking | yanlış | Varsayılan yanlış. Ek tarayıcı penceresi için arama ve dahil etme özelliğini etkinleştirme bayrağı. bildirilen `ajax` (XHR ve fetch) bildirilen ölçümlerde performans zamanlamaları.
 | maxAjaxPerfLookupAttempts | 3 | Varsayılan olarak 3 ' e döner. Pencerenin aranacağı en fazla sayı. performans zamanlamaları (varsa), tüm tarayıcılar pencereyi doldurmadığından bu gereklidir. XHR isteğinin sonunu ve getirme isteklerini raporlamadan önce bu, tamamlandıktan sonra eklenir.
-| ajaxPerfLookupDelay | 25 | Varsayılan olarak 25 MS olur. Bir AJAX isteği için Windows. Performance zamanlamalarını bulmayı yeniden denemeden önce beklenecek süre (süre milisaniye cinsinden) ve doğrudan setTimeout () öğesine geçirilir.
+| ajaxPerfLookupDelay | 25 | Varsayılan olarak 25 MS olur. Bir istek için Windows. Performance zamanlamalarını bulmayı yeniden denemeden önce beklenecek süre `ajax` (süre milisaniye cinsinden) ve doğrudan setTimeout () öğesine geçirilir.
 | enableUnhandledPromiseRejectionTracking | yanlış | Doğru ise, işlenmeyen Promise reddi sayısı, yeniden toplanacak ve bir JavaScript hatası olarak raporlanır. DisableExceptionTracking true olduğunda (özel durumları izlememeyin), yapılandırma değeri yok sayılır ve işlenmemiş Promise geri alma raporlanmaz.
 
 ## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
@@ -219,6 +219,38 @@ Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada har
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="correlation"></a>Bağıntı
+
+İstemci-sunucu tarafı bağıntı için desteklenir:
+
+- XHR/AJAX istekleri 
+- İstekleri getir 
+
+İstemci-sunucu tarafı bağıntı, ve istekleri için **desteklenmez** `GET` `POST` .
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>İstemci AJAX ve sunucu istekleri arasında çapraz bileşen bağıntısını etkinleştir
+
+`CORS`Bağıntıyı etkinleştirmek için, istemcinin iki ek istek üst bilgisi `Request-Id` ve `Request-Context` sunucu tarafı, bu üst bilgilerle bağlantıları kabul edebilmeleri gerekir. Bu üst bilgilerin gönderilmesi `enableCorsCorrelation: true` JAVASCRIPT SDK Yapılandırması içinde ayarlanarak etkinleştirilir. 
+
+`Access-Control-Allow-Headers`Sunucu tarafında yapılandırmaya bağlı olarak, genellikle ve el ile ekleyerek sunucu tarafı listesini genişletmek gereklidir `Request-Id` `Request-Context` .
+
+Erişim-denetim-Izin-üst bilgiler: `Request-Id` , `Request-Context` ,`<your header>`
+
+İstemcinin iletişim kurduğu üçüncü taraf sunuculardan herhangi biri `Request-Id` ve `Request-Context` üst bilgileri kabul edemez ve yapılandırmalarını güncelleştiremezsiniz, bunları yapılandırma özelliği aracılığıyla dışlama listesine koymanız gerekir `correlationHeaderExcludeDomains` . Bu özellik joker karakterleri destekler.
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>Tarayıcı/istemci tarafı verilerini keşfet
 

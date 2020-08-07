@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 70244f6709e35271f63834fd818ea7c72e52a419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52cba173f7d3fe4c4d65d538fac3ef850f0491e2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032077"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835417"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme 3,0 REST API ve C kullanarak yazdırılmış ve el yazısı metin Ayıkla #
 

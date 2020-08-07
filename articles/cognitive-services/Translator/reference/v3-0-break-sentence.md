@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588641"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904012"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3,0: Breakcümle
 
@@ -37,7 +37,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 | -------| ----------- |
 | api-sürümü <img width=200/>   | **Gerekli sorgu parametresi**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` . |
 | language | **Isteğe bağlı sorgu parametresi**.<br/>Giriş metninin dilini tanımlayan dil etiketi. Bir kod belirtilmemişse, otomatik dil algılama uygulanır. |
-| betiğini çalıştırın    | **Isteğe bağlı sorgu parametresi**.<br/>Giriş metni tarafından kullanılan betiği tanımlayan betik etiketi. Bir komut dosyası belirtilmemişse, dilin varsayılan betiği kabul edilecektir.  | 
+| betik    | **Isteğe bağlı sorgu parametresi**.<br/>Giriş metni tarafından kullanılan betiği tanımlayan betik etiketi. Bir komut dosyası belirtilmemişse, dilin varsayılan betiği kabul edilecektir.  | 
 
 İstek üstbilgileri şunları içerir:
 
@@ -61,7 +61,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 Aşağıdaki sınırlamalar geçerlidir:
 
 * Dizi en fazla 100 öğe içerebilir.
-* Bir dizi öğesinin metin değeri boşluk dahil 10.000 karakteri aşamaz.
+* Bir dizi öğesinin metin değeri boşluk dahil 50.000 karakteri aşamaz.
 * İstekte bulunan metnin tamamı boşluk dahil 50.000 karakteri aşamaz.
 * `language`Sorgu parametresi belirtilmişse, tüm dizi öğeleri aynı dilde olmalıdır. Aksi halde, dil otomatik algılama her bir dizi öğesine bağımsız olarak uygulanır.
 

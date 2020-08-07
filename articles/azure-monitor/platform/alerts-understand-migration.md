@@ -1,44 +1,33 @@
 ---
-title: Azure Izleyici uyarıları için geçiş aracını anlama
-description: Uyarılar geçiş aracının nasıl çalıştığını ve sorunları nasıl giderebileceğinizi anlayın.
+title: Azure Izleyici uyarıları için geçişi anlama
+description: Uyarı geçişinin nasıl çalıştığını anlayın ve sorunları giderin.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564104"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852404"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
+# <a name="understand-migration-options-to-newer-alerts"></a>Geçiş seçeneklerini daha yeni uyarılara anlayın
 
-[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar 31 Ağustos 2019 tarihine kadar kullanımdan kaldırılıyor (başlangıçta 30 Haziran 2019 idi). Klasik uyarı kuralları kullanan ve geçiş yapmak isteyen müşterilere Azure portal bir geçiş aracı vardır.
+Klasik uyarılar [kullanımdan](./monitoring-classic-retirement.md)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. Kalan uyarılar geçişi, [Azure Kamu Bulutu](../../azure-government/documentation-government-welcome.md)ve [Azure Çin 21Vianet](https://docs.azure.cn/)için yakında yeni bir tarih duyurulacaktır.
 
-Bu makalede, gönüllü geçiş aracının nasıl çalıştığı açıklanır. Ayrıca, bazı yaygın sorunlara yönelik düzeltmeler de açıklanmaktadır.
-
-> [!NOTE]
-> Geçiş Aracı 'nın çıkış gecikmesi nedeniyle, klasik uyarılar geçişinin devre dışı bırakılması tarihi 31 Haziran 2019 tarihinde ilk bildirilen tarihten itibaren [31 ağustos 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) tarihine kadar genişletilmiştir.
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Geçirilmeyecek olan klasik uyarı kuralları
+Bu makalede, el ile geçiş ve gönüllü geçiş aracının nasıl çalıştığı ve kalan uyarı kurallarının geçirilmesi için kullanılacağı açıklanmaktadır. Ayrıca, bazı yaygın sorunlara yönelik düzeltmeler de açıklanmaktadır.
 
 > [!IMPORTANT]
 > Etkinlik günlüğü uyarıları (hizmet durumu uyarıları dahil) ve günlük uyarıları geçişten etkilenmez. Geçiş yalnızca [burada](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)açıklanan klasik uyarı kuralları için geçerlidir.
 
-Araç neredeyse tüm [Klasik uyarı kurallarını](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)geçirebilse de bazı özel durumlar vardır. Aşağıdaki uyarı kuralları, Aracı kullanılarak (veya 2019 Eylül ayının başladığı otomatik geçiş sırasında) geçirilmez:
-
-- Sanal makine konuk ölçümlerinde klasik uyarı kuralları (hem Windows hem de Linux). Bu makalenin ilerleyen kısımlarında [yeni ölçüm uyarılarında bu tür uyarı kurallarını](#guest-metrics-on-virtual-machines) yeniden oluşturma kılavuzlarına bakın.
-- Klasik depolama ölçümlerinde klasik uyarı kuralları. [Klasik depolama hesaplarınızı izlemeye yönelik kılavuza](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)bakın.
-- Bazı depolama hesabı ölçümlerinde klasik uyarı kuralları. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#storage-account-metrics) bakın.
-- Bazı Cosmos DB ölçümlerinde klasik uyarı kuralları. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#cosmos-db-metrics) bakın.
-- Tüm klasik sanal makinelerde ve bulut hizmetleri ölçümlerinde klasik uyarı kuralları (Microsoft. ClassicCompute/virtualMachines ve Microsoft. ClassicCompute/domainNames/yuvalar/roller). Bu makalenin ilerleyen kısımlarında [ayrıntılara](#classic-compute-metrics) bakın.
-
-Aboneliğiniz klasik bu kurallara sahipse, bunları el ile geçirmeniz gerekir. Otomatik geçiş sağlayabilmemiz için, bu türlerin mevcut, klasik tüm ölçüm uyarıları, Haziran 2020 ' e kadar çalışmaya devam edecektir. Bu uzantı, yeni uyarılara geçiş yapmak için size zaman kazandırır. Ayrıca, yukarıdaki listelenen özel durumlar üzerinde 2020 Haziran 'a kadar klasik yeni uyarılar oluşturmaya devam edebilirsiniz. Ancak, diğer her şey için 2019 Ağustos 'Tan sonra yeni bir klasik uyarı oluşturulamaz.
-
 > [!NOTE]
-> Yukarıda listelenen özel durumların yanı sıra, klasik uyarı kurallarınız da geçersiz olabilir. Bunlar, [kullanım dışı ölçümlerde](#classic-alert-rules-on-deprecated-metrics) veya silinmiş kaynaklardakiler geçirilmeyecektir ve hizmet kullanımdan kaldırıldıktan sonra kullanılamaz.
+> Klasik uyarı kurallarınız geçersiz ise, bunlar [kullanım dışı ölçümlerde](#classic-alert-rules-on-deprecated-metrics) veya silinmiş kaynaklardır ve hizmet devre dışı bırakıldıktan sonra kullanılamaz olur.
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Klasik uyarıları daha yeni uyarılara el ile geçirme
+
+Kalan uyarılarını el ile geçirmeye ilgilenen müşteriler, aşağıdaki bölümleri kullanarak zaten bu işlemleri yapabilir. Bu bölümler, kaynak sağlayıcısı tarafından kullanımdan kaldırılan ölçümleri de tanımlar ve şu anda doğrudan geçirilemez.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Sanal makinelerde Konuk ölçümleri
 

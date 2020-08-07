@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/06/2020
 ms.author: kumud
-ms.openlocfilehash: 28cb73df2df91fc96d7ac19e25d7bd13f47df41e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047299"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904505"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir kişi modelini özelleştirme
 
@@ -126,9 +126,20 @@ Kişi modellerinizin içeriğini görmek için kişi modelinin adının yanında
 
 ### <a name="manage-a-person"></a>Bir kişiyi yönetme
 
-**Yönet**' i seçerseniz, bu kişi modelinin eğitilmekte olduğu tüm yüzeyleri görürsünüz. Bu yüzler, bu kişi modelini kullanan videolar veya el ile karşıya yüklediğiniz görüntülerden gelir.
+**Yönet**' i seçerseniz, bu kişi modelinin eğitilmekte olduğu tüm yüzlerle ilgili **kişinin Ayrıntılar** penceresini görürsünüz. Bu yüzler, bu kişi modelini kullanan videolar veya el ile karşıya yüklediğiniz görüntülerden gelir.
+
+> [!TIP]
+> Kişinin adına tıklayarak veya yukarıda gösterildiği gibi **Yönet**' e tıklayarak **kişinin Ayrıntılar** penceresine ulaşabilirsiniz.
+
+#### <a name="add-a-face"></a>Yüz ekleme
 
 **Görüntü ekle**' yi seçerek kişiye daha fazla yüzey ekleyebilirsiniz.
+
+#### <a name="delete-a-face"></a>Yüz silme
+
+Silmek istediğiniz görüntüyü seçin ve **Sil**' e tıklayın.
+
+#### <a name="rename-and-delete-the-person"></a>Kişiyi yeniden adlandırma ve silme 
 
 Kişiyi yeniden adlandırmak ve kişi modelinden kişiyi silmek için Yönet bölmesini kullanabilirsiniz.
 

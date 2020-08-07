@@ -3,13 +3,13 @@ title: 'Hızlı başlangıç: Linux Python uygulaması oluşturma'
 description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.custom: seo-python-october2019, cli-validate, tracking-python
-ms.openlocfilehash: 1411c6ccc5228aa9248d5185bf44ecbfd496ed1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.openlocfilehash: 804ed6084454a70fa6fc4edff9a0579e43a3a872
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042381"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853492"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090867"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903995"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
 
@@ -136,7 +136,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 Aşağıdaki sınırlamalar geçerlidir:
 
 * Dizi en fazla 100 öğe içerebilir.
-* İstekte bulunan metnin tamamı boşluk dahil 5.000 karakteri aşamaz.
+* İstekte bulunan metnin tamamı boşluk dahil 10.000 karakteri aşamaz.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
@@ -391,7 +391,7 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   </tr>
 </table> 
 
-Örneğin:
+Örnek:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

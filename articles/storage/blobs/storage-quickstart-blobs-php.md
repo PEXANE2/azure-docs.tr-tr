@@ -1,23 +1,23 @@
 ---
 title: Azure Hızlı Başlangıç - PHP kullanarak nesne depolamada blob oluşturma | Microsoft Docs
-description: PHP kullanarak nesneleri Azure Blob depolama içine/dışına aktarmayı kısa sürede öğrenin
+description: PHP kullanarak nesneleri Azure Blob depolama içine/içine aktarmayı hızlı bir şekilde öğrenin. Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yükleyin, indirin ve listeleyin.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68726385"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835757"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP kullanarak nesneleri Azure Blob depolama içine/dışına aktarma
 Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için PHP'yi nasıl kullanabileceğinizi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 

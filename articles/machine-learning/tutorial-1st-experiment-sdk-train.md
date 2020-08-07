@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 821b11dc89a3479f7310770db84d0947390a3109
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520553"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852710"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -133,7 +133,7 @@ Eğitim tamamlandıktan sonra, `experiment` Studio 'da deneme için bir bağlant
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Studio 'da eğitim sonuçlarını görüntüleme
 

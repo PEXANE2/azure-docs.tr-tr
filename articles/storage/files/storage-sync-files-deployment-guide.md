@@ -1,18 +1,18 @@
 ---
 title: Dağıtım Azure Dosya Eşitleme | Microsoft Docs
-description: Baştan sona Azure Dosya Eşitleme dağıtmayı öğrenin.
+description: Baştan sona, Azure portal, PowerShell veya Azure CLı kullanarak Azure Dosya Eşitleme dağıtmayı öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460635"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903859"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.

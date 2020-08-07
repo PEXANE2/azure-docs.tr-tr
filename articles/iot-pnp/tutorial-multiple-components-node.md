@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420699"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904114"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Öğretici: bir örnek IoT Tak ve Kullan önizleme birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Node.js)
 
@@ -98,29 +98,29 @@ set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
 
 1. `modelId`Uygulanan cihaz IÇIN DTMI olduğunu tanımlayın. Bu DTMı Kullanıcı tanımlı ve [sıcaklık denetleyicisi DTDL modelinin](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)dtmı ile eşleşmelidir.
 
-1. Sıcaklık denetleyicisi DTDL modelinde tanımlanan bileşenleri uygulayın. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu örnekte, iki arabirim şunlardır:
+2. Sıcaklık denetleyicisi DTDL modelinde tanımlanan bileşenleri uygulayın. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu örnekte, iki arabirim şunlardır:
   - Saatiniz
   - Azure tarafından geliştirilen cihaz bilgileri
 
-1. Bileşen adlarını tanımlayın. Bu örnekte iki adet termostats ve bir cihaz bilgileri bileşeni bulunur.
+3. Bileşen adlarını tanımlayın. Bu örnekte iki adet termostats ve bir cihaz bilgileri bileşeni bulunur.
 
-1. Komut adını tanımlayın. Bunlar, cihazın yanıt verdiği komutlardır.
+4. Komut adını tanımlayın. Bunlar, cihazın yanıt verdiği komutlardır.
 
-1. Sabiti tanımlayın `serialNumber` . , `serialNumber` Belirli bir cihaz sabitlenmiştir.
+5. Sabiti tanımlayın `serialNumber` . , `serialNumber` Belirli bir cihaz sabitlenmiştir.
 
-1. Komut işleyicilerini tanımlayın.
+6. Komut işleyicilerini tanımlayın.
 
-1. Komut yanıtlarının gönderileceği işlevleri tanımlayın.
+7. Komut yanıtlarının gönderileceği işlevleri tanımlayın.
 
-1. Komut isteklerini günlüğe kaydetmek için yardımcı işlevleri tanımlayın.
+8. Komut isteklerini günlüğe kaydetmek için yardımcı işlevleri tanımlayın.
 
-1. Özellikleri oluşturmak için bir yardımcı işlev tanımlayın.
+9. Özellikleri oluşturmak için bir yardımcı işlev tanımlayın.
 
-1. Özellik güncelleştirmeleri için bir dinleyici tanımlayın.
+10. Özellik güncelleştirmeleri için bir dinleyici tanımlayın.
 
-1. Bu cihazdan telemetri göndermek için bir işlev tanımlayın. Hem termostats hem de kök bileşen telemetri gönderir. Bu işlev, bileşen adını parametre olarak alır.
+11. Bu cihazdan telemetri göndermek için bir işlev tanımlayın. Hem termostats hem de kök bileşen telemetri gönderir. Bu işlev, bileşen adını parametre olarak alır.
 
-1. Şu `main` şekilde bir işlev tanımlayın:
+12. Şu `main` şekilde bir işlev tanımlayın:
 
     1. Bir cihaz istemcisi oluşturmak ve IoT Hub 'ınıza bağlanmak için cihaz SDK 'sını kullanır. Cihaz, `modelId` IoT Hub cihazı ıot Tak ve Kullan cihazı olarak tanımlayabilmesi için sağlar.
 

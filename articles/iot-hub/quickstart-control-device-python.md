@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-- tracking-python
+- devx-track-python
 ms.date: 01/09/2020
-ms.openlocfilehash: c03209413235b0d6fca22039756d6c19b643034b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6a93410b40926904a8429b70522eb01ab02f80a7
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606505"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876470"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (Python)
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta, Azure IoT Hub bağlı sanal cihazı denetlemek için 
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
 
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
+Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT Uzantısı belirli IoT Hub, IoT Edge ve IoT Cihaz Sağlama Hizmeti (DPS) komutlarını Azure CLI’ya ekler.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -78,7 +78,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 

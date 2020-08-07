@@ -1,6 +1,6 @@
 ---
 title: Azure Içeri/dışarı aktarma işlerinin durumunu görüntüleme | Microsoft Docs
-description: Içeri/dışarı aktarma işlerinin ve kullanılan sürücülerin durumunu görüntülemeyi öğrenin.
+description: Azure Içeri/dışarı aktarma işlerinin ve kullanılan sürücülerin durumunu görüntülemeyi öğrenin. Bir işi işlemek için ne kadar sürdüğünü etkileyen faktörleri anlayın.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514138"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905729"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure İçeri/Dışarı Aktarma işlerinin durumunu görüntüleme
 
@@ -36,7 +36,7 @@ Sürücünüzün işlemde bulunduğu yere bağlı olarak aşağıdaki iş duruml
 | Aktarma | En az bir sürücü işlemeye başladıktan sonra, iş durumu **aktarma**olarak ayarlanır. Daha fazla bilgi için [Sürücü durumları](#view-drive-status)' na gidin. |
 | Paketleme | Tüm sürücüler işlemeyi tamamladıktan sonra, diskler size geri gönderilene kadar iş **paketleme** durumuna yerleştirilir. |
 | Tamamlandı | Tüm sürücüler size geri gönderildikten sonra, iş hatasız tamamlanırsa, iş **tamamlandı**olarak ayarlanır. İş, **tamamlandı** durumunda 90 gün sonra otomatik olarak silinir. |
-| Closed | Tüm sürücüler size geri gönderildikten sonra, işin işlenmesi sırasında herhangi bir hata oluşursa iş **kapalı**olarak ayarlanır. İş, **kapalı** durumda 90 gün sonra otomatik olarak silinir. |
+| Kapalı | Tüm sürücüler size geri gönderildikten sonra, işin işlenmesi sırasında herhangi bir hata oluşursa iş **kapalı**olarak ayarlanır. İş, **kapalı** durumda 90 gün sonra otomatik olarak silinir. |
 
 ## <a name="view-drive-status"></a>Sürücü durumunu görüntüleme
 
@@ -63,7 +63,7 @@ Aşağıdaki tabloda, her durum için sürücü hatası durumları ve gerçekle�
 | Sürücü durumu | Olay | Çözüm/sonraki adım |
 |:--- |:--- |:--- |
 | NeverReceived | **Neverreceived** olarak işaretlenen bir sürücü (iş sevkiyatının bir parçası olarak alınmadığı için) başka bir sevkiyata ulaştı. | İşlemler ekibi, sürücüyü **alındı**olarak kaydırır. |
-| YOK | Herhangi bir işin parçası olmayan bir sürücü, veri merkezinde başka bir işin parçası olarak ulaşır. | Sürücü ek bir sürücü olarak işaretlenir ve özgün paketle ilişkili iş tamamlandığında size döndürülür. |
+| Yok | Herhangi bir işin parçası olmayan bir sürücü, veri merkezinde başka bir işin parçası olarak ulaşır. | Sürücü ek bir sürücü olarak işaretlenir ve özgün paketle ilişkili iş tamamlandığında size döndürülür. |
 
 ## <a name="time-to-process-job"></a>İşi işleme süresi
 İçeri/dışarı aktarma işinin işlenmesi için gereken süre, şöyle bir dizi etkene göre farklılık gösterir:

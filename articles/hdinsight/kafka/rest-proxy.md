@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: has-adal-ref, tracking-python
+ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 3050062a80e253d0e63f6d20a8c8de31e9866ea1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 660e200b673da53af1ee00e4de1e2ce3298e861d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082565"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876453"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
 
@@ -23,7 +23,7 @@ Kafka REST proxy, HTTP üzerinden bir REST API aracılığıyla Kafka kümeniz i
 
 Kafka REST API tarafından desteklenen işlemler için bkz. [HDInsight Kafka Rest Proxy API başvurusu](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 ![Kafka REST ara sunucu tasarımı](./media/rest-proxy/rest-proxy-architecture.png)
 

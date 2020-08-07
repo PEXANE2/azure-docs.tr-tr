@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: ea26e1861d1e3916302563a27389763ebc4c450c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326707"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853390"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile model ölçümlerini izleyin ve ML modellerini dağıtın
 
@@ -47,7 +47,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
  MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
 
 
-| Yetenek | MLflow &nbsp; izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLı | Azure Machine Learning Studio|
+| Özellik | MLflow &nbsp; izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLı | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Çalışma alanını yönet |   | ✓ | ✓ | ✓ |
 | Veri depolarını kullanma  |   | ✓ | ✓ | |

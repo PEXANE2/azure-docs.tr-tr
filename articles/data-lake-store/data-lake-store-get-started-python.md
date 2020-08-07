@@ -6,13 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.custom: tracking-python
-ms.openlocfilehash: e72873f01a68a9c5c7fcd44086464bb850836715
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-python
+ms.openlocfilehash: 57414828394e7f241cd33b7d56190a3ce9a7eab2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985922"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876009"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "85985922"
 
 Data Lake Storage 1. hesabı oluşturma, Data Lake Storage 1. hesaplarını listeleme vb. gibi temel hesap yönetim işlemlerini gerçekleştirmek için Azure Data Lake Storage 1. için Python SDK 'yı nasıl kullanacağınızı öğrenin. Python kullanarak Data Lake Storage 1. dosya sistemi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için bkz. [Python kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-python.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Python**. Python’u [buradan](https://www.python.org/downloads/) indirebilirsiniz. Bu makalede Python 3.6.2 kullanılmıştır.
 

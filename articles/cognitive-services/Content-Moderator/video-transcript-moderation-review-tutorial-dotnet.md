@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3e83781a5ac8270cef37346b5850edd95a102f6a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404233"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834415"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript denetimi
 
@@ -32,7 +32,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > - Metin denetimi hizmetiyle transkripti denetleme
 > - Denetlenen transkripti video incelemesine ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) Web sitesine kaydolun ve özel etiketler oluşturun. Bu adımla ilgili yardıma ihtiyacınız varsa [etiketleri kullanma](Review-Tool-User-Guide/tags.md) bölümüne bakın.
 
@@ -42,7 +42,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="enter-credentials"></a>Kimlik bilgilerini girin
 
-`App.config` Dosyayı düzenleyin ve tarafından `#####`gösterilen Active Directory kiracı adını, hizmet uç noktalarını ve abonelik anahtarlarını ekleyin. Aşağıdaki bilgiler gerekir:
+Dosyayı düzenleyin `App.config` ve tarafından gösterilen Active Directory kiracı adını, hizmet uç noktalarını ve abonelik anahtarlarını ekleyin `#####` . Aşağıdaki bilgiler gerekir:
 
 |Anahtar|Açıklama|
 |-|-|
@@ -359,7 +359,7 @@ Total Elapsed Time: 00:05:56.8420355
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, TRANSCRIPT içeriği&mdash;&mdash;dahil olmak üzere video Içeriğini destekleyen ve gözden geçirme aracında incelemeler oluşturulan bir uygulamayı ayarlarsınız. Daha sonra, video denetleme ayrıntıları hakkında daha fazla bilgi edinin.
+Bu öğreticide, &mdash; TRANSCRIPT içeriği dahil olmak üzere video içeriğini destekleyen &mdash; ve gözden geçirme aracında incelemeler oluşturulan bir uygulamayı ayarlarsınız. Daha sonra, video denetleme ayrıntıları hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Video denetimi](./video-moderation-human-review.md)

@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352882"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905865"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>Öğretici: bir örnek IoT Tak ve Kullan önizleme birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Python)
 
@@ -86,26 +86,26 @@ Sıcaklık denetleyicisi, sıcaklık denetleyicisi DTDL modeline bağlı olarak 
 
 1. `pnp_helper_preview_refresh.py`Yardımcı yöntemlere erişim sağlamak için içeri aktarır.
 
-1. DTDL modelinde tanımlanan iki farklı arabirimi benzersiz olarak temsil eden iki dijital ikizi model tanımlayıcısını (Dtmıs) tanımlar. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu Dtmıs, Kullanıcı tarafından bilinmelidir ve cihaz uygulamasının senaryosuna bağlı olarak değişiklik gösterir. Geçerli örnek için, bu iki arabirim şunları temsil eder:
+2. DTDL modelinde tanımlanan iki farklı arabirimi benzersiz olarak temsil eden iki dijital ikizi model tanımlayıcısını (Dtmıs) tanımlar. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu Dtmıs, Kullanıcı tarafından bilinmelidir ve cihaz uygulamasının senaryosuna bağlı olarak değişiklik gösterir. Geçerli örnek için, bu iki arabirim şunları temsil eder:
 
   - Bir termostat
   - Azure tarafından geliştirilen cihaz bilgileri.
 
-. `model_id`Uygulanan cihaz IÇIN DTMı 'yi tanımlar. DTMı Kullanıcı tanımlı ve DTDL model dosyasındaki DTMı ile eşleşmelidir.
+3. `model_id`Uygulanan cihaz IÇIN DTMı 'yi tanımlar. DTMı Kullanıcı tanımlı ve DTDL model dosyasındaki DTMı ile eşleşmelidir.
 
-1. DTDL dosyasındaki bileşenlere verilen adları tanımlar. DTDL ve bir cihaz bilgileri bileşeninde iki adet termostats vardır. Adlı bir sabit `serial_number` , kök arabirimde da tanımlanır. Bir `serial_number` cihaz için değişiklik yapamıyor.
+4. DTDL dosyasındaki bileşenlere verilen adları tanımlar. DTDL ve bir cihaz bilgileri bileşeninde iki adet termostats vardır. Adlı bir sabit `serial_number` , kök arabirimde da tanımlanır. Bir `serial_number` cihaz için değişiklik yapamıyor.
 
-1. Komut işleyici uygulamalarını tanımlar. Bu, cihazın komut istekleri aldığında ne yaptığını tanımlar.
+5. Komut işleyici uygulamalarını tanımlar. Bu, cihazın komut istekleri aldığında ne yaptığını tanımlar.
 
-1. Komut yanıtı oluşturmak için işlevleri tanımlar. Bu, cihazın komut istekleri ile nasıl yanıt vereceğini tanımlar. Bir komutun IoT Hub 'ına özel bir yanıt gönderebilmesi gerekiyorsa komut yanıt işlevleri oluşturursunuz. Bir komut için bir yanıt işlevi sağlanmazsa, genel bir yanıt gönderilir. Bu örnekte, yalnızca **Getmaxminreport** komutunda özel bir yanıt vardır.
+6. Komut yanıtı oluşturmak için işlevleri tanımlar. Bu, cihazın komut istekleri ile nasıl yanıt vereceğini tanımlar. Bir komutun IoT Hub 'ına özel bir yanıt gönderebilmesi gerekiyorsa komut yanıt işlevleri oluşturursunuz. Bir komut için bir yanıt işlevi sağlanmazsa, genel bir yanıt gönderilir. Bu örnekte, yalnızca **Getmaxminreport** komutunda özel bir yanıt vardır.
 
-1. Bu cihazdan telemetri göndermek için bir işlev tanımlar. Hem termostats hem de kök arabirim telemetri gönderir. Bu işlev, bir bileşenin Telemetriyi gönderdiğini belirlemesini sağlamak için isteğe bağlı bir bileşen adı parametresi alır.
+7. Bu cihazdan telemetri göndermek için bir işlev tanımlar. Hem termostats hem de kök arabirim telemetri gönderir. Bu işlev, bir bileşenin Telemetriyi gönderdiğini belirlemesini sağlamak için isteğe bağlı bir bileşen adı parametresi alır.
 
-1. Komut istekleri için bir dinleyici tanımlar.
+8. Komut istekleri için bir dinleyici tanımlar.
 
-1. İstenen özellik güncelleştirmeleri için bir dinleyici tanımlar.
+9. İstenen özellik güncelleştirmeleri için bir dinleyici tanımlar.
 
-1. Şu `main` şekilde bir işleve sahiptir:
+10. Şu `main` şekilde bir işleve sahiptir:
 
     1. Bir cihaz istemcisi oluşturmak ve IoT Hub 'ınıza bağlanmak için cihaz SDK 'sını kullanır. Cihaz, `model_id` IoT Hub 'ın cihazı ıot Tak ve Kullan cihazı olarak tanımlayabilmesi için gönderir.
 

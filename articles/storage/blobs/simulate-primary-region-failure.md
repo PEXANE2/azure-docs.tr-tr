@@ -1,7 +1,7 @@
 ---
 title: Öğretici-birincil bölgeden verileri okurken hata benzetimi yap
 titleSuffix: Azure Storage
-description: Depolama hesabı Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) için yapılandırıldığında birincil bölgeden verileri okurken hata benzetimi yapın. Hata oluştuktan sonra, verileri ikincil bölgeden okuyun.
+description: Depolama hesabı Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) için yapılandırıldığında birincil bölgeden verileri okurken hata benzetimi yapın.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a9aa58ec990170df99f330f67991fff7b61c2b49
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 59eb826d8d17ed2adb3027f0aab11a6933b47ae5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429841"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905746"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Öğretici: birincil bölgeden verileri okurken hata benzetimi yap
 
@@ -33,7 +33,7 @@ Serinin ikinci bölümünde şunları öğrenirsiniz:
 > * [Geçersiz bir statik rota](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler) ile hata benzetimi yapma
 > * Birincil uç noktayı geri yükleme benzetimi gerçekleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, önceki öğreticiyi izleyin: [Azure depolama ile uygulama verilerinizi yüksek oranda kullanılabilir hale getirin][previous-tutorial].
 

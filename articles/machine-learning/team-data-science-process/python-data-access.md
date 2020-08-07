@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 486b89e5c93de7444758638ad36743ff2f0bcb37
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026347"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852370"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
 Microsoft Azure Machine Learning Python istemci kitaplığının önizlemesi, yerel bir Python ortamından Azure Machine Learning veri kümelerine güvenli erişim sağlayabilir ve bir çalışma alanında veri kümelerinin oluşturulmasını ve yönetilmesini sağlar.
@@ -28,7 +28,7 @@ Bu konuda aşağıdakiler hakkında yönergeler sağlanmaktadır:
 * denemeleri 'deki ara veri kümelerine erişme
 * veri kümelerini numaralandırmak, meta verilere erişmek, bir veri kümesinin içeriğini okumak, yeni veri kümeleri oluşturmak ve mevcut veri kümelerini güncelleştirmek için Python istemci kitaplığını kullanın
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 Python istemci kitaplığı, aşağıdaki ortamlar altında test edilmiştir:
 
 * Windows, Mac ve Linux
