@@ -1,6 +1,6 @@
 ---
 title: PowerShell 'de Azure kuyruk depolama eylemlerini gerçekleştirme
-description: PowerShell ile Azure kuyruk depolama üzerinde işlem gerçekleştirme
+description: PowerShell ile Azure kuyruk depolama üzerinde işlemler yapın. Azure kuyruk depolama ile, HTTP/HTTPS tarafından erişilebilen çok sayıda ileti saklayabilirsiniz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 05/15/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a3de37f6442900f600f3c6a3efaf75141d151bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873f1bd0187eb5609456592b7dc37a48671b7e42
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808983"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905712"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Kuyruk depolama işlemleri gerçekleştirme
 

@@ -3,16 +3,16 @@ title: Azure Event Hubs bağlanma
 description: Azure Event Hubs ve Azure Logic Apps kullanarak olayları izleyen ve yöneten otomatik görevler ve iş akışları oluşturun
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284107"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848853"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs ve Azure Logic Apps ile olayları izleme, alma ve gönderme
 
@@ -62,6 +62,9 @@ Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde 
 
 Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygulama iş akışını nasıl başlatakullanabileceğinizi gösterir. 
 
+> [!NOTE]
+> Tüm Olay Hub 'ı Tetikleyicileri *uzun yoklama* tetiklerdir, bu da tetikleyicinin tüm olayları işlediği ve daha fazla olayın olay hub 'ında görünmesi için bölüm başına 30 saniye beklediği anlamına gelir. Bu nedenle, tetikleyici dört bölüm ile ayarlandıysa, tetikleyicinin tüm bölümleri yoklamak için bu gecikmenin iki dakika geçmesi gerekebilir. Bu gecikmeden hiçbir olay alınmıyorsa, tetikleyici çalıştırması atlanır. Aksi takdirde, tetikleyici olay hub 'ınız boş olana kadar olayları okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirttiğiniz yinelenme aralığına göre yapılır.
+
 1. Azure portal veya Visual Studio 'da, Logic Apps tasarımcısını açan boş bir mantıksal uygulama oluşturun. Bu örnek Azure portal kullanır.
 
 1. Arama kutusuna filtreniz olarak "Olay Hub 'ları" yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **Olay Hub 'ında olaylar kullanılabilir olduğunda-Event Hubs**
@@ -76,12 +79,12 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub'ı adı** | Yes | İzlemek istediğiniz olay hub 'ının adı |
+   | **Olay Hub'ı adı** | Evet | İzlemek istediğiniz olay hub 'ının adı |
    | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
    | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
    | **En fazla olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
-   | **Aralık** | Yes | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
-   | **Sıklık** | Yes | Yinelenme için zaman birimi |
+   | **Aralık** | Evet | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
+   | **Sıklık** | Evet | Yinelenme için zaman birimi |
    ||||
 
    **Ek özellikler**
@@ -100,11 +103,6 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
 1. Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantıksal uygulamanıza bir veya daha fazla eylem eklemeye devam edin. 
 
    Örneğin, olayları bir kategori gibi belirli bir değere göre filtrelemek için, **olay Gönder** eyleminin yalnızca koşullarınızı karşılayan olayları göndermesi için bir koşul ekleyebilirsiniz. 
-
-> [!NOTE]
-> Tüm Olay Hub 'ı Tetikleyicileri *uzun yoklama* tetiklerdir, bu da bir tetikleyici tetiklendiğinde tetikleyicinin tüm olayları işlediği ve daha fazla olayın olay hub 'ında görünmesi için 30 saniye bekler.
-> 30 saniye içinde hiçbir olay alınmıyorsa, tetikleyici çalıştırması atlanır. Aksi takdirde, tetikleyici olay hub 'ınız boş olana kadar olayları okumaya devam eder.
-> Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirttiğiniz yinelenme aralığına göre yapılır.
 
 <a name="add-action"></a>
 
@@ -132,7 +130,7 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub'ı adı** | Yes | Olayı göndermek istediğiniz olay hub 'ı |
+   | **Olay Hub'ı adı** | Evet | Olayı göndermek istediğiniz olay hub 'ı |
    | **İçerik** | Hayır | Göndermek istediğiniz olay için içerik |
    | **Özellikler** | Hayır | Gönderilen uygulama özellikleri ve değerler |
    | **Bölüm anahtarı** | Hayır | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
@@ -154,8 +152,8 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Event Hubs ad alanı** | Yes | <*Olay-Hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
+   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Event Hubs ad alanı** | Evet | <*Olay-Hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
    |||||  
 
    Örnek:

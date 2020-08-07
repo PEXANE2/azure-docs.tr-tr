@@ -1,0 +1,96 @@
+---
+title: Genel parametreler
+description: Azure Data Factory ortamlarınızın her biri için genel parametreleri ayarlayın
+services: data-factory
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+ms.date: 08/05/2020
+ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87854358"
+---
+# <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory genel parametreler
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+Genel parametreler, herhangi bir ifadede bir işlem hattı tarafından tüketilen bir veri fabrikası genelinde sabitler. Aynı parametre adlarına ve değerlerine sahip birden çok işlem hattına sahip olduğunuzda faydalıdır. Bir veri fabrikasını sürekli tümleştirme ve dağıtım işlemi (CI/CD) kullanarak yükseltirken, bu parametreleri her bir ortamda geçersiz kılabilirsiniz. 
+
+## <a name="creating-global-parameters"></a>Genel parametreler oluşturma
+
+Genel parametre oluşturmak için, *Yönet* bölümündeki *genel parametreler* sekmesine gidin. **Yeni** ' yi seçerek oluşturma yan-NAV ' ı açın.
+
+![Genel parametreler oluştur](media/author-global-parameters/create-global-parameter-1.png)
+
+Yan gezinte bir ad girin, bir veri türü seçin ve parametresinin değerini belirtin.
+
+![Genel parametreler oluştur](media/author-global-parameters/create-global-parameter-2.png)
+
+Genel bir parametre oluşturulduktan sonra parametrenin adına tıklayarak düzenleyebilirsiniz. Aynı anda birden çok parametreyi değiştirmek için **Tümünü Düzenle**' yi seçin.
+
+![Genel parametreler oluştur](media/author-global-parameters/create-global-parameter-3.png)
+
+## <a name="using-global-parameters-in-a-pipeline"></a>İşlem hattında genel parametreleri kullanma
+
+Genel parametreler, herhangi bir [ardışık düzen ifadesinde](control-flow-expression-language-functions.md)kullanılabilir. Bir işlem hattı veri kümesi veya veri akışı gibi başka bir kaynağa başvuruyorsa, genel parametre değerini bu kaynak parametreleri aracılığıyla geçirebilirsiniz. Genel parametrelere olarak başvurulur `pipeline().globalParameters.<parameterName>` .
+
+![Genel parametreleri kullanma](media/author-global-parameters/expression-global-parameters.png)
+
+## <a name="global-parameters-in-cicd"></a><a name="cicd"></a>CI/CD 'deki genel parametreler
+
+Genel parametreler, Azure Data Factory diğer varlıklara göre benzersiz bir CI/CD işlemine sahiptir. Genel parametrelerle bir fabrika yayımladığınızda veya bir ARM şablonunu dışarı aktardığınızda, *your-factory-name_GlobalParameters.jsüzerinde*adlı bir dosya Ile *globalparameters* adlı bir klasör oluşturulur. Bu dosya, yayımlanan fabrikada her genel parametre türünü ve değerini içeren bir JSON nesnesidir.
+
+![Genel parametreler yayımlanıyor](media/author-global-parameters/global-parameters-adf-publish.png)
+
+TEST veya ÜRETIM gibi yeni bir ortama dağıtıyorsanız, bu genel parametre dosyasının bir kopyasını oluşturmanız ve ortama özgü uygun değerlerin üzerine yazılması önerilir. Özgün genel parametre dosyasını yeniden yayımladığınızda, üzerine yazılır, ancak diğer ortamın kopyası dokunmaz.
+
+Örneğin, ' ADF-DEV ' adlı bir fabrikanızı ve ' dev ' değeri ile ' Environment ' adlı, dize türünde bir genel parametre varsa, *üzerindeADF-DEV_GlobalParameters.js* adlı bir dosya yayımladığınızda oluşturulur. ' ADF_TEST ' adlı bir test fabrikasına dağıtım yapıyorsanız, JSON dosyasının bir kopyasını oluşturun (örneğin, ADF-TEST_GlobalParameters.jsadlı) ve parametre değerlerini ortama özgü değerlerle değiştirin. ' Environment ' parametresinin ' test ' değeri artık olabilir. 
+
+![Genel parametreleri dağıtma](media/author-global-parameters/powershell-task.png)
+
+Genel parametreleri ek ortamlara yükseltmek için aşağıdaki PowerShell betiğini kullanın. ARM Şablon dağıtımı önce Azure PowerShell DevOps görevi ekleyin. DevOps görevinde yeni parametreler dosyasının konumunu, hedef kaynak grubunu ve hedef veri fabrikasını belirtmeniz gerekir.
+
+> [!NOTE]
+> PowerShell kullanarak genel parametreleri dağıtmak için, az Module 'ün en az sürüm 4.4.0 kullanmanız gerekir.
+
+```powershell
+param
+(
+    [parameter(Mandatory = $true)] [String] $globalParametersFilePath,
+    [parameter(Mandatory = $true)] [String] $resourceGroupName,
+    [parameter(Mandatory = $true)] [String] $dataFactoryName
+)
+
+Import-Module Az.DataFactory
+
+$newGlobalParameters = New-Object 'system.collections.generic.dictionary[string,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]'
+
+Write-Host "Getting global parameters JSON from: " $globalParametersFilePath
+$globalParametersJson = Get-Content $globalParametersFilePath
+
+Write-Host "Parsing JSON..."
+$globalParametersObject = [Newtonsoft.Json.Linq.JObject]::Parse($globalParametersJson)
+
+foreach ($gp in $globalParametersObject.GetEnumerator()) {
+    Write-Host "Adding global parameter:" $gp.Key
+    $globalParameterValue = $gp.Value.ToObject([Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification])
+    $newGlobalParameters.Add($gp.Key, $globalParameterValue)
+}
+
+$dataFactory = Get-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Name $dataFactoryName
+$dataFactory.GlobalParameters = $newGlobalParameters
+
+Write-Host "Updating" $newGlobalParameters.Count "global parameters."
+
+Set-AzDataFactoryV2 -InputObject $dataFactory -Force
+```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Azure Data Factory [sürekli tümleştirme ve dağıtım süreci](continuous-integration-deployment.md) hakkında bilgi edinin
+* [Denetim akışı ifade dilini](control-flow-expression-language-functions.md) kullanmayı öğrenin

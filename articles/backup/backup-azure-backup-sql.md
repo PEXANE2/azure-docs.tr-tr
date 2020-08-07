@@ -3,12 +3,12 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055374"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876317"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
@@ -21,6 +21,9 @@ SQL Server bir veritabanını Azure 'a yedeklemek ve Azure 'dan kurtarmak için:
 1. Azure 'da SQL Server veritabanlarını korumak için bir yedekleme ilkesi oluşturun.
 1. Azure 'da isteğe bağlı yedekleme kopyaları oluşturun.
 1. Veritabanını Azure 'dan kurtarın.
+
+>[!NOTE]
+>DPM 2019 UR2, küme paylaşılan birimleri 'ni (CSV) kullanarak SQL Server yük devretme kümesi örneklerini (FCı) destekler.
 
 ## <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
 

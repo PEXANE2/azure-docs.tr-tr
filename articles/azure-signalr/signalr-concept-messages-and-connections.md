@@ -4,14 +4,14 @@ description: Azure SignalR hizmetindeki iletiler ve bağlantılarla ilgili temel
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75392822"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853458"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR hizmetindeki mesajlar ve bağlantılar
 
@@ -36,7 +36,13 @@ Faturalandırma için yalnızca Azure SignalR hizmetinden gelen giden iletiler s
 
 2 KB 'den büyük mesajlar her biri 2 KB 'lık birden fazla ileti olarak sayılır. Azure portal ileti sayısı grafiği her Hub için her 100 ileti için güncelleştirilir.
 
-Örneğin, üç istemciniz ve bir uygulama sunucunuz olduğunu varsayalım. Bir istemci, sunucunun tüm istemcilere yayınlamasına izin vermek için 4 KB 'lik bir ileti gönderir. İleti sayısı sekiz ' dır: hizmetten uygulama sunucusuna bir ileti ve hizmetten istemcilere yapılan üç ileti. Her ileti iki adet 2 KB 'lik ileti olarak sayılır.
+Örneğin, bir uygulama sunucunuz ve üç istemciniz olduğunu düşünün:
+
+App Server tüm bağlı istemcilere 1 KB 'lik bir ileti yayınlar, App Server 'daki ileti, ücretsiz gelen ileti olarak kabul edilir. Yalnızca hizmetten her istemciye gönderilen üç ileti, giden iletiler olarak faturalandırılır.
+
+A istemcisi, App Server 'a geçmeden diğer bir istemciye 1 KB 'lik bir ileti gönderir. İstemciden hizmete giden ileti, ücretsiz gelen iletidir. Hizmetten istemciye B 'ye ileti, giden ileti olarak faturalandırılır.
+
+Üç istemciniz ve bir uygulama sunucunuz varsa. Bir istemci, sunucunun tüm istemcilere yayınlamasına izin vermek için 4 KB 'lik bir ileti gönderir. Faturalanan ileti sayısı sekiz ' dır: hizmetten uygulama sunucusuna bir ileti ve hizmetten istemcilere yapılan üç ileti. Her ileti iki adet 2 KB 'lik ileti olarak sayılır.
 
 ## <a name="how-connections-are-counted"></a>Bağlantılar nasıl sayılır?
 
@@ -46,13 +52,13 @@ Azure portal gösterilen bağlantı sayısı hem sunucu bağlantılarını hem d
 
 Örneğin, iki uygulama sunucunuz olduğunu ve kodda beş hub tanımladığınızı varsayalım. Sunucu bağlantı sayısı 50 olacaktır: 2 App Servers * 5 hub *, hub başına 5 bağlantı.
 
-ASP.NET SignalR sunucu bağlantılarını farklı bir şekilde hesaplar. Bu, tanımladığınız hublara ek olarak bir varsayılan Hub içerir. Varsayılan olarak, her uygulama sunucusunun beş daha fazla ilk sunucu bağlantısı olması gerekir. Varsayılan Hub için ilk bağlantı sayısı, diğer hub 'larla tutarlı kalır.
+ASP.NET SignalR sunucu bağlantılarını farklı bir şekilde hesaplar. Bu, tanımladığınız hublara ek olarak bir varsayılan Hub içerir. Varsayılan olarak, her uygulama sunucusunun beş daha fazla ilk sunucu bağlantısı olması gerekir. Varsayılan Hub için ilk bağlantı sayısı diğer hub 'larla tutarlı kalır.
 
-Uygulama sunucusunun kullanım ömrü boyunca, hizmet ve uygulama sunucusu eşitleme bağlantısı durumunu tutar ve daha iyi performans ve hizmet kararlılığı için sunucu bağlantılarında ayarlama yapar. Bu nedenle sunucu bağlantı numarası değişikliğini zaman zaman görebilirsiniz.
+Hizmet ve uygulama sunucusu, daha iyi performans ve hizmet kararlılığı elde etmek için bağlantı durumunu eşitlemeyi ve sunucu bağlantılarında ayarlama yapmayı devam etmesini sağlar.  Bu nedenle sunucu bağlantı numarası değişikliğini zaman zaman görebilirsiniz.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Gelen/giden trafik nasıl sayılır?
 
-Gelen trafik ve giden trafik arasındaki ayrım, Azure SignalR hizmeti perspektifine dayanır. Trafik bayt cinsinden hesaplanır.
+Hizmete gönderilen ileti, gelen iletidir. Hizmetten gönderilen ileti, giden iletidir. Trafik bayt cinsinden hesaplanır.
 
 ## <a name="related-resources"></a>İlgili kaynaklar
 

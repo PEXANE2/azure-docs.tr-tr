@@ -1,6 +1,6 @@
 ---
 title: Azure hizmet yönetimi sertifikasını karşıya yükleme | Microsoft Docs
-description: Azure portal için hizmet yönetimi sertifikasını karşıya yüklemeyi öğrenin.
+description: Azure portal için hizmet yönetimi sertifikasını karşıya yüklemeyi öğrenin. Yönetim sertifikaları, klasik dağıtım modeliyle kimlik doğrulaması yapmanızı sağlar.
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d2436b524ba6df68b12206bcb545e54a405b731
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78329129"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848562"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure hizmet yönetimi sertifikasını karşıya yükleme
 Yönetim sertifikaları, Azure tarafından sunulan klasik dağıtım modeliyle kimlik doğrulaması yapmanıza olanak sağlar. Birçok program ve araç (Visual Studio veya Azure SDK gibi), çeşitli Azure hizmetlerinin yapılandırılmasını ve dağıtımını otomatik hale getirmek için bu sertifikaları kullanır. 

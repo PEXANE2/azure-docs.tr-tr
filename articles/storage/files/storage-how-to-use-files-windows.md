@@ -1,18 +1,18 @@
 ---
 title: Azure dosya paylaşımını Windows'da kullanma | Microsoft Docs
-description: Azure dosya paylaşımını Windows ve Windows Server ile kullanmayı öğrenin.
+description: Windows ve Windows Server ile Azure dosya paylaşımlarını kullanmayı öğrenin. Şirket içinde veya Azure VM 'lerinde çalışan Windows yüklemelerinde SMB 3,0 ile Azure dosya paylaşımlarını kullanın.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509787"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905763"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -23,13 +23,13 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 
 | Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket içinde takılamaz |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Yes | Evet |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Evet |
-| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Evet |
-| Windows Server 2016 | SMB 3.0 | Yes | Evet |
-| Windows 8.1 | SMB 3.0 | Yes | Evet |
-| Windows Server 2012 R2 | SMB 3.0 | Yes | Evet |
-| Windows Server 2012 | SMB 3.0 | Yes | Evet |
+| Windows Server 2019 | SMB 3.0 | Evet | Evet |
+| Windows 10<sup>1</sup> | SMB 3.0 | Evet | Evet |
+| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Evet | Evet |
+| Windows Server 2016 | SMB 3.0 | Evet | Evet |
+| Windows 8.1 | SMB 3.0 | Evet | Evet |
+| Windows Server 2012 R2 | SMB 3.0 | Evet | Evet |
+| Windows Server 2012 | SMB 3.0 | Evet | Evet |
 | Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
 
@@ -40,7 +40,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 > [!Note]  
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 445 numaralı bağlantı noktasının açık olduğundan emin olun: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. Güvenlik duvarınızın, cmdlet ile 445 bağlantı noktasını engelleyip engellemediğini kontrol edebilirsiniz `Test-NetConnection` . Engellenen 445 bağlantı noktasına geçici çözüm yolları hakkında bilgi edinmek için, Windows sorun giderme kılavuzumuzdan [1: bağlantı noktası 445 engellendi](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) bölümüne bakın.
 
@@ -59,7 +59,7 @@ Bu betiği almak için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
-1. **Dosya paylaşımları**' nı seçin.
+1. **Dosya paylaşımları**’nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="örneğinde":::
@@ -138,7 +138,7 @@ Aşağıdaki tabloda tüm Windows sürümlerinde SMB 1 protokolünün durumu hak
 | Windows 8.1                               | Etkin              | Windows özelliği ile kaldırma | 
 | Windows Server 2012                       | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 | Windows Server 2008 R2                    | Etkin              | Kayıt defteri ile devre dışı bırakma       |
-| Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
+| Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 kullanımını denetleme
 > Windows Server 2019, Windows Server yarı yıllık kanal (sürüm 1709 ve 1803), Windows Server 2016, Windows 10 (sürümler 1507, 1607, 1703, 1709 ve 1803), Windows Server 2012 R2 ve Windows 8.1 için geçerlidir.
@@ -200,6 +200,6 @@ Bu kayıt defteri anahtarını oluşturduktan sonra SMB 1'i devre dışı bırak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın:
-- [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
+- [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
 - [SSS](../storage-files-faq.md)
 - [Windows’da sorun giderme](storage-troubleshoot-windows-file-connection-problems.md)      

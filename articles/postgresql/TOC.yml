@@ -48,7 +48,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -255,6 +255,8 @@
           items:
             - name: TLS’yi yapılandırma
               href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: Sunucu parametrelerini yapılandırma
           items:
             - name: Azure portal

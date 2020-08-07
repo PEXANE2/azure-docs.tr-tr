@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: 45ff681bdf0260b6e3c12f7e644d102a49206c9f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/06/2020
+ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288918"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875464"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -82,7 +82,7 @@ Dizelerle çalışmak için, bu dize işlevlerini ve ayrıca bazı [koleksiyon i
 | [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | İki veya daha fazla dizeyi birleştirin ve Birleşik dizeyi döndürün. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Bir dizenin belirtilen alt dizeyle bitip bitmediğini denetleyin. |
 | [formatNumber numarası](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Belirtilen biçime göre bir sayı olarak dize döndürün |
-| ['ini](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Bir dize olarak bir genel benzersiz tanımlayıcı (GUID) oluşturun. |
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Bir dize olarak bir genel benzersiz tanımlayıcı (GUID) oluşturun. |
 | [IndexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Bir alt dize için başlangıç konumunu döndürür. |
 | [LastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Alt dizenin son geçtiği başlangıç konumunu döndürür. |
 | [değiştirin](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Bir alt dizeyi belirtilen dizeyle değiştirin ve güncelleştirilmiş dizeyi döndürün. |
@@ -102,7 +102,7 @@ Koleksiyonlar, genellikle diziler, dizeler ve bazen sözlüklerle çalışmak i�
 
 | Koleksiyon işlevi | Görev |
 | ------------------- | ---- |
-| [vardır](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
+| [şunu içerir](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Bir koleksiyonun boş olup olmadığını kontrol edin. |
 | [adı](../logic-apps/workflow-definition-language-functions-reference.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
 | [imin](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür. |
@@ -127,13 +127,13 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [eşittir](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin. |
-| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | İfadenin yanlış olup olmadığını denetleyin. |
+| [başlatılmadı](../logic-apps/workflow-definition-language-functions-reference.md#not) | İfadenin yanlış olup olmadığını denetleyin. |
 | [veya](../logic-apps/workflow-definition-language-functions-reference.md#or) | En az bir ifadenin doğru olup olmadığını denetleyin. |
 |||
 
@@ -374,7 +374,7 @@ actionBody('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Eylem için istediğiniz `body` çıkışın adı |
+| <*actionName*> | Evet | Dize | Eylem için istediğiniz `body` çıkışın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -419,7 +419,7 @@ actionOutputs('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Eylem için istediğiniz çıkışın adı |
+| <*actionName*> | Evet | Dize | Eylem için istediğiniz çıkışın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -492,7 +492,7 @@ actions('<actionName>').outputs.body.<property>
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Çıktısı istediğiniz eylem nesnesinin adı  |
+| <*actionName*> | Evet | Dize | Çıktısı istediğiniz eylem nesnesinin adı  |
 | <*özelliði*> | Hayır | Dize | Eylem nesnesinin özelliğinin değeri istediğiniz adı: **Name**, **StartTime**, **bitişsaati**, **girişler**, **çıkışlar**, **durum**, **kod**, **trackingıd**ve **clienttrackingıd**. Azure portal, belirli bir çalıştırma geçmişinin ayrıntılarını inceleyerek bu özellikleri bulabilirsiniz. Daha fazla bilgi için bkz. [REST API-Iş akışı çalıştırma eylemleri](/rest/api/logic/workflowrunactions/get). |
 |||||
 
@@ -523,7 +523,7 @@ add(<summand_1>, <summand_2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2*> | Yes | Integer, float veya Mixed | Eklenecek numaralar |
+| <*summand_1*>, <*summand_2*> | Evet | Integer, float veya Mixed | Eklenecek numaralar |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -553,8 +553,8 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*miş*> | Yes | Tamsayı | Eklenecek gün sayısının pozitif veya negatif sayısı |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*miş*> | Evet | Tamsayı | Eklenecek gün sayısının pozitif veya negatif sayısı |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -595,8 +595,8 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*saatlerinin*> | Yes | Tamsayı | Eklenecek saatlerin pozitif veya negatif sayısı |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*saatlerinin*> | Evet | Tamsayı | Eklenecek saatlerin pozitif veya negatif sayısı |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -637,8 +637,8 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*dakika*> | Yes | Tamsayı | Eklenecek pozitif veya negatif dakika sayısı |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*dakika*> | Evet | Tamsayı | Eklenecek pozitif veya negatif dakika sayısı |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -679,9 +679,9 @@ addProperty(<object>, '<property>', <value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*nesne*> | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
-| <*özelliði*> | Yes | Dize | Eklenecek özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Özelliğin değeri |
+| <*nesne*> | Evet | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
+| <*özelliði*> | Evet | Dize | Eklenecek özelliğin adı |
+| <*deeri*> | Evet | Herhangi bir | Özelliğin değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -697,10 +697,10 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*nesne*> | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
-| <*Parent-Property*> | Yes | Dize | Alt özellik eklemek istediğiniz üst özelliğin adı |
-| <*alt özellik*> | Yes | Dize | Eklenecek alt özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
+| <*nesne*> | Evet | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
+| <*Parent-Property*> | Evet | Dize | Alt özellik eklemek istediğiniz üst özelliğin adı |
+| <*alt özellik*> | Evet | Dize | Eklenecek alt özelliğin adı |
+| <*deeri*> | Evet | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -778,8 +778,8 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*saniyeden*> | Yes | Tamsayı | Eklenecek pozitif veya negatif saniye sayısı |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*saniyeden*> | Evet | Tamsayı | Eklenecek pozitif veya negatif saniye sayısı |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -821,9 +821,9 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*aralığında*> | Yes | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
-| <*timeUnit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*aralığında*> | Evet | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
+| <*timeUnit*> | Evet | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -854,7 +854,7 @@ Ve isteğe bağlı "D" biçimini kullanarak sonucu döndürür:`"Tuesday, Januar
 
 <a name="and"></a>
 
-### <a name="and"></a>ve
+### <a name="and"></a>reservedStorageGb
 
 Tüm ifadelerin doğru olup olmadığını denetleyin.
 Tüm ifadeler doğru olduğunda true, en az bir ifade false olduğunda false döndürün.
@@ -865,7 +865,7 @@ and(<expression1>, <expression2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade1*>, <*İfade2*>,... | Yes | Boole | Denetlenecek ifadeler |
+| <*ifade1*>, <*İfade2*>,... | Evet | Boole | Denetlenecek ifadeler |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -918,7 +918,7 @@ array('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dizi oluşturmak için dize |
+| <*deeri*> | Evet | Dize | Dizi oluşturmak için dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -951,7 +951,7 @@ base64('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Giriş dizesi |
+| <*deeri*> | Evet | Dize | Giriş dizesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -984,7 +984,7 @@ base64ToBinary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek Base64 kodlamalı dize |
+| <*deeri*> | Evet | Dize | Dönüştürülecek Base64 kodlamalı dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1019,7 +1019,7 @@ base64ToString('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Kod çözme için Base64 kodlamalı dize |
+| <*deeri*> | Evet | Dize | Kod çözme için Base64 kodlamalı dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1049,7 +1049,7 @@ binary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek dize |
+| <*deeri*> | Evet | Dize | Dönüştürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1083,7 +1083,7 @@ body('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Eylem için istediğiniz `body` çıkışın adı |
+| <*actionName*> | Evet | Dize | Eylem için istediğiniz `body` çıkışın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1128,7 +1128,7 @@ bool(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Herhangi bir | Dönüştürülecek değer |
+| <*deeri*> | Evet | Herhangi bir | Dönüştürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1163,7 +1163,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>,... | Yes | Herhangi biri, türleri karıştırabilirler | Null denetlenecek bir veya daha fazla öğe |
+| <*object_1*>, <*object_2*>,... | Evet | Herhangi biri, türleri karıştırabilirler | Null denetlenecek bir veya daha fazla öğe |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1199,7 +1199,7 @@ concat('<text1>', '<text2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin1*>, <*Metin2*>,... | Yes | Dize | Birleştirilecek en az iki dize |
+| <*metin1*>, <*Metin2*>,... | Evet | Dize | Birleştirilecek en az iki dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1238,8 +1238,8 @@ contains([<collection>], '<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dize, dizi veya sözlük | Denetlenecek koleksiyon |
-| <*deeri*> | Yes | Sırasıyla dize, dizi veya sözlük | Bulunacak öğe |
+| <*koleksiyon*> | Evet | Dize, dizi veya sözlük | Denetlenecek koleksiyon |
+| <*deeri*> | Evet | Sırasıyla dize, dizi veya sözlük | Bulunacak öğe |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1275,8 +1275,8 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*destinationTimeZone*> | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*destinationTimeZone*> | Evet | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1317,9 +1317,9 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*sourceTimeZone*> | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
-| <*destinationTimeZone*> | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*sourceTimeZone*> | Evet | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
+| <*destinationTimeZone*> | Evet | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1360,8 +1360,8 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*sourceTimeZone*> | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*sourceTimeZone*> | Evet | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1403,7 +1403,7 @@ createArray('<object1>', '<object2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*>,... | Yes | Any, ancak karışık değil | Diziyi oluşturmak için en az iki öğe |
+| <*object1*>, <*object2*>,... | Evet | Any, ancak karışık değil | Diziyi oluşturmak için en az iki öğe |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1433,7 +1433,7 @@ dataUri('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek dize |
+| <*deeri*> | Evet | Dize | Dönüştürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1465,7 +1465,7 @@ dataUriToBinary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek veri URI 'SI |
+| <*deeri*> | Evet | Dize | Dönüştürülecek veri URI 'SI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1500,7 +1500,7 @@ dataUriToString('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek veri URI 'SI |
+| <*deeri*> | Evet | Dize | Dönüştürülecek veri URI 'SI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1530,7 +1530,7 @@ dayOfMonth('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1560,7 +1560,7 @@ dayOfWeek('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1590,7 +1590,7 @@ dayOfYear('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1629,7 +1629,7 @@ decodeDataUri('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Kodu çözülecek veri URI dizesi |
+| <*deeri*> | Evet | Dize | Kodu çözülecek veri URI dizesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1664,7 +1664,7 @@ decodeUriComponent('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Kodu çözülecek kaçış karakterlerine sahip dize |
+| <*deeri*> | Evet | Dize | Kodu çözülecek kaçış karakterlerine sahip dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1694,8 +1694,8 @@ div(<dividend>, <divisor>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*eni*> | Yes | Tamsayı veya kayan | *Bölen* tarafından bölünecek sayı |
-| <*Lene*> | Yes | Tamsayı veya kayan | *Bölünen bölünen*sayı, ancak 0 olamaz |
+| <*eni*> | Evet | Tamsayı veya kayan | *Bölen* tarafından bölünecek sayı |
+| <*Lene*> | Evet | Tamsayı veya kayan | *Bölünen bölünen*sayı, ancak 0 olamaz |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1736,7 +1736,7 @@ encodeUriComponent('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | URI kodlu biçime dönüştürülecek dize |
+| <*deeri*> | Evet | Dize | URI kodlu biçime dönüştürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1768,7 +1768,7 @@ empty([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | String, array veya Object | Denetlenecek koleksiyon |
+| <*koleksiyon*> | Evet | String, array veya Object | Denetlenecek koleksiyon |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1804,8 +1804,8 @@ endsWith('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Denetlenecek dize |
-| <*aramametni*> | Yes | Dize | Bulunacak bitiş alt dizesi |
+| <*metinleri*> | Evet | Dize | Denetlenecek dize |
+| <*aramametni*> | Evet | Dize | Bulunacak bitiş alt dizesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1835,7 +1835,7 @@ Ve şu sonucu döndürür:`false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>eşittir
+### <a name="equals"></a>equals
 
 Değerlerin, ifadelerin veya nesnelerin eşit olup olmadığını denetleyin.
 Her ikisi de eşdeğer olduğunda true, eşdeğer olmadığında false döndürün.
@@ -1846,7 +1846,7 @@ equals('<object1>', '<object2>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*> | Yes | Türlerini | Karşılaştırılacak değerler, ifadeler veya nesneler |
+| <*object1*>, <*object2*> | Evet | Türlerini | Karşılaştırılacak değerler, ifadeler veya nesneler |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1881,7 +1881,7 @@ first([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dize veya dizi | İlk öğenin bulunacağı koleksiyon |
+| <*koleksiyon*> | Evet | Dize veya dizi | İlk öğenin bulunacağı koleksiyon |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1916,7 +1916,7 @@ float('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek geçerli bir kayan noktalı sayı olan dize |
+| <*deeri*> | Evet | Dize | Dönüştürülecek geçerli bir kayan noktalı sayı olan dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1946,7 +1946,7 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1977,8 +1977,8 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Çıktısı istediğiniz anahtar değere sahip olan eylem |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*actionName*> | Evet | Dize | Çıktısı istediğiniz anahtar değere sahip olan eylem |
+| <*anahtar*> | Evet | Dize | Değerini istediğiniz anahtarın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2009,8 +2009,8 @@ formDataValue('<actionName>', '<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Çıktısı istediğiniz anahtar değere sahip olan eylem |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*actionName*> | Evet | Dize | Çıktısı istediğiniz anahtar değere sahip olan eylem |
+| <*anahtar*> | Evet | Dize | Değerini istediğiniz anahtarın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2040,8 +2040,8 @@ formatNumber(<number>, <format>, <locale>?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayısından*> | Yes | Tamsayı veya çift | Biçimlendirmek istediğiniz değer. |
-| <*formatını*> | Yes | Dize | Kullanmak istediğiniz biçimi belirten bir bileşik biçim dizesi. Desteklenen sayısal biçim dizeleri için, bkz. tarafından desteklenen [Standart sayısal biçim dizeleri](/dotnet/standard/base-types/standard-numeric-format-strings) `number.ToString(<format>, <locale>)` . |
+| <*sayısından*> | Evet | Tamsayı veya çift | Biçimlendirmek istediğiniz değer. |
+| <*formatını*> | Evet | Dize | Kullanmak istediğiniz biçimi belirten bir bileşik biçim dizesi. Desteklenen sayısal biçim dizeleri için, bkz. tarafından desteklenen [Standart sayısal biçim dizeleri](/dotnet/standard/base-types/standard-numeric-format-strings) `number.ToString(<format>, <locale>)` . |
 | <*ayarlar*> | Hayır | Dize | Tarafından desteklendiği şekilde kullanılacak yerel ayar `number.ToString(<format>, <locale>)` . Belirtilmemişse, varsayılan değer `en-us` . |
 |||||
 
@@ -2094,8 +2094,8 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*aralığında*> | Yes | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
-| <*timeUnit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
+| <*aralığında*> | Evet | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
+| <*timeUnit*> | Evet | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -2138,8 +2138,8 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*aralığında*> | Yes | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
-| <*timeUnit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
+| <*aralığında*> | Evet | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
+| <*timeUnit*> | Evet | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -2184,8 +2184,8 @@ greater('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Integer, float veya String | İkinci değerden daha büyük olup olmadığını kontrol etmek için ilk değer |
-| <*compareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma değeri |
+| <*deeri*> | Evet | Integer, float veya String | İkinci değerden daha büyük olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla tamsayı, float veya dize | Karşılaştırma değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2221,8 +2221,8 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Integer, float veya String | İkinci değerden büyük veya ona eşit olup olmadığını kontrol etmek için ilk değer |
-| <*compareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma değeri |
+| <*deeri*> | Evet | Integer, float veya String | İkinci değerden büyük veya ona eşit olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla tamsayı, float veya dize | Karşılaştırma değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2292,9 +2292,9 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifadesini*> | Yes | Boole | Denetlenecek ifade |
-| <*valueIfTrue*> | Yes | Herhangi bir | İfade true olduğunda döndürülecek değer |
-| <*valueIfFalse*> | Yes | Herhangi bir | İfade false olduğunda döndürülecek değer |
+| <*ifadesini*> | Evet | Boole | Denetlenecek ifade |
+| <*valueIfTrue*> | Evet | Herhangi bir | İfade true olduğunda döndürülecek değer |
+| <*valueIfFalse*> | Evet | Herhangi bir | İfade false olduğunda döndürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2324,8 +2324,8 @@ indexOf('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Bulunacak alt dizenin bulunduğu dize |
-| <*aramametni*> | Yes | Dize | Bulunacak alt dize |
+| <*metinleri*> | Evet | Dize | Bulunacak alt dizenin bulunduğu dize |
+| <*aramametni*> | Evet | Dize | Bulunacak alt dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2355,7 +2355,7 @@ int('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek dize |
+| <*deeri*> | Evet | Dize | Dönüştürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2410,7 +2410,7 @@ items('<loopName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*loopName*> | Yes | Dize | For-each döngüsünün adı |
+| <*loopName*> | Evet | Dize | For-each döngüsünün adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2438,7 +2438,7 @@ iterationIndexes('<loopName>')
 
 | Parametre | Gerekli | Tür | Açıklama | 
 | --------- | -------- | ---- | ----------- | 
-| <*loopName*> | Yes | Dize | Until döngüsünün adı | 
+| <*loopName*> | Evet | Dize | Until döngüsünün adı | 
 ||||| 
 
 | Döndürülen değer | Tür | Açıklama | 
@@ -2539,7 +2539,7 @@ json('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | String veya XML | Dönüştürülecek dize veya XML |
+| <*deeri*> | Evet | String veya XML | Dönüştürülecek dize veya XML |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2611,7 +2611,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*Collection2*>,... | Yes | Dizi veya nesne, ancak her ikisi birden değil | *Yalnızca* ortak öğelerin olmasını istediğiniz Koleksiyonlar |
+| <*collection1*>, <*Collection2*>,... | Evet | Dizi veya nesne, ancak her ikisi birden değil | *Yalnızca* ortak öğelerin olmasını istediğiniz Koleksiyonlar |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2641,8 +2641,8 @@ join([<collection>], '<delimiter>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dizi | Katılacak öğelere sahip dizi |
-| <*ayırıcı*> | Yes | Dize | Elde edilen dizedeki her karakter arasında görünen ayırıcı |
+| <*koleksiyon*> | Evet | Dizi | Katılacak öğelere sahip dizi |
+| <*ayırıcı*> | Evet | Dize | Elde edilen dizedeki her karakter arasında görünen ayırıcı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2673,7 +2673,7 @@ last([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dize veya dizi | Son öğenin bulunacağı koleksiyon |
+| <*koleksiyon*> | Evet | Dize veya dizi | Son öğenin bulunacağı koleksiyon |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2699,33 +2699,48 @@ Ve şu sonuçları döndürür:
 
 ### <a name="lastindexof"></a>LastIndexOf
 
-Bir alt dizenin son oluşumu için başlangıç konumunu veya dizin değerini döndürür.
-Bu işlev, büyük/küçük harfe duyarlı değildir ve dizinler 0 sayısıyla başlar.
+Bir alt dizenin son oluşumu için başlangıç konumunu veya dizin değerini döndürür. Bu işlev, büyük/küçük harfe duyarlı değildir ve dizinler 0 sayısıyla başlar.
 
-```
+```json
 lastIndexOf('<text>', '<searchText>')
 ```
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Bulunacak alt dizenin bulunduğu dize |
-| <*aramametni*> | Yes | Dize | Bulunacak alt dize |
-|||||
+| <*metinleri*> | Evet | Dize | Bulunacak alt dizenin bulunduğu dize |
+| <*aramametni*> | Evet | Dize | Bulunacak alt dize |
+|||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*son dizin-değer*> | Tamsayı | Belirtilen alt dizenin son geçtiği konumun başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa,-1 sayısını döndürün. |
-||||
+| <*son dizin-değer*> | Tamsayı | Belirtilen alt dizenin son geçtiği konumun başlangıç konumu veya dizin değeri. |
+|||
 
-*Örnek*
+Dize veya alt dize değeri boşsa, aşağıdaki davranış oluşur:
 
-Bu örnek, "Hello World" dizesinde "World" alt dizesinin son geçtiği başlangıç dizin değerini bulur:
+* Dize değeri boşsa, `-1` döndürülür:
 
+* Dize ve alt dize değerlerinin ikisi de boşsa, `0` döndürülür.
+
+* Yalnızca alt dize değeri boşsa, aşağıdaki iki değerin daha büyük bir örneği döndürülür:
+
+  * `0`
+
+  * Dizenin uzunluğu, eksi 1.
+
+*Örnekler*
+
+Bu örnek dizedeki alt dize alt dizesinin son oluşumu için başlangıç dizini değerini bulur `world` `hello world hello world` . Döndürülen sonuç `18` :
+
+```json
+lastIndexOf('hello world hello world', 'world')
 ```
-lastIndexOf('hello world', 'world')
-```
 
-Ve şu sonucu döndürür:`6`
+Bu örnekte alt dize parametresi eksiktir ve bir değeri döndürür `22` çünkü girdi dizesinin değeri ( `23` ) eksi 1 ' den büyük.
+
+```json
+lastIndexOf('hello world hello world', '')
+```
 
 <a name="length"></a>
 
@@ -2740,7 +2755,7 @@ length([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dize veya dizi | Sayılacak öğelerin bulunduğu koleksiyon |
+| <*koleksiyon*> | Evet | Dize veya dizi | Sayılacak öğelerin bulunduğu koleksiyon |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2773,8 +2788,8 @@ less('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Integer, float veya String | İkinci değerden daha az olup olmadığını kontrol etmek için ilk değer |
-| <*compareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma öğesi |
+| <*deeri*> | Evet | Integer, float veya String | İkinci değerden daha az olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla tamsayı, float veya dize | Karşılaştırma öğesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2810,8 +2825,8 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Integer, float veya String | İkinci değere eşit veya ondan küçük olup olmadığını kontrol etmek için ilk değer |
-| <*compareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma öğesi |
+| <*deeri*> | Evet | Integer, float veya String | İkinci değere eşit veya ondan küçük olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla tamsayı, float veya dize | Karşılaştırma öğesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2868,8 +2883,8 @@ max([<number1>, <number2>, ...])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı1*>, <*sayı2*>,... | Yes | Integer, float veya both | En yüksek değeri istediğiniz sayı kümesi |
-| [<*sayı1*>, <*sayı2*>,...] | Yes | Dizi-tamsayı, kayan veya her ikisi | En yüksek değeri istediğiniz sayı dizisi |
+| <*sayı1*>, <*sayı2*>,... | Evet | Integer, float veya both | En yüksek değeri istediğiniz sayı kümesi |
+| [<*sayı1*>, <*sayı2*>,...] | Evet | Dizi-tamsayı, kayan veya her ikisi | En yüksek değeri istediğiniz sayı dizisi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2901,8 +2916,8 @@ min([<number1>, <number2>, ...])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı1*>, <*sayı2*>,... | Yes | Integer, float veya both | En düşük değeri istediğiniz sayı kümesi |
-| [<*sayı1*>, <*sayı2*>,...] | Yes | Dizi-tamsayı, kayan veya her ikisi | En düşük değeri istediğiniz sayı dizisi |
+| <*sayı1*>, <*sayı2*>,... | Evet | Integer, float veya both | En düşük değeri istediğiniz sayı kümesi |
+| [<*sayı1*>, <*sayı2*>,...] | Evet | Dizi-tamsayı, kayan veya her ikisi | En düşük değeri istediğiniz sayı dizisi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2934,8 +2949,8 @@ mod(<dividend>, <divisor>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*eni*> | Yes | Tamsayı veya kayan | *Bölen* tarafından bölünecek sayı |
-| <*Lene*> | Yes | Tamsayı veya kayan | *Bölünen bölünen*sayı, ancak 0 olamaz. |
+| <*eni*> | Evet | Tamsayı veya kayan | *Bölen* tarafından bölünecek sayı |
+| <*Lene*> | Evet | Tamsayı veya kayan | *Bölünen bölünen*sayı, ancak 0 olamaz. |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2965,8 +2980,8 @@ mul(<multiplicand1>, <multiplicand2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | Yes | Tamsayı veya kayan | *Multiplicand2* ile çarpılacak sayı |
-| <*multiplicand2*> | Yes | Tamsayı veya kayan | *Multiplicand1* Katalan sayı |
+| <*multiplicand1*> | Evet | Tamsayı veya kayan | *Multiplicand2* ile çarpılacak sayı |
+| <*multiplicand2*> | Evet | Tamsayı veya kayan | *Multiplicand1* Katalan sayı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3000,8 +3015,8 @@ multipartBody('<actionName>', <index>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Birden çok parçaya çıkış içeren eylemin adı |
-| <*indeks*> | Yes | Tamsayı | İstediğiniz bölümün dizin değeri |
+| <*actionName*> | Evet | Dize | Birden çok parçaya çıkış içeren eylemin adı |
+| <*indeks*> | Evet | Tamsayı | İstediğiniz bölümün dizin değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3022,7 +3037,7 @@ not(<expression>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifadesini*> | Yes | Boole | Denetlenecek ifade |
+| <*ifadesini*> | Evet | Boole | Denetlenecek ifade |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3071,7 +3086,7 @@ or(<expression1>, <expression2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade1*>, <*İfade2*>,... | Yes | Boole | Denetlenecek ifadeler |
+| <*ifade1*>, <*İfade2*>,... | Evet | Boole | Denetlenecek ifadeler |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3119,7 +3134,7 @@ outputs('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Yes | Dize | Eylem için istediğiniz çıkışın adı |
+| <*actionName*> | Evet | Dize | Eylem için istediğiniz çıkışın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3182,7 +3197,7 @@ parameters('<parameterName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*parameterName*> | Yes | Dize | Değerini istediğiniz parametre için ad |
+| <*parameterName*> | Evet | Dize | Değerini istediğiniz parametre için ad |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3220,8 +3235,8 @@ rand(<minValue>, <maxValue>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Yes | Tamsayı | Aralıktaki en küçük tamsayı |
-| <*Değerini*> | Yes | Tamsayı | İşlevin döndürebilecekleri aralıktaki en yüksek tamsayıyı izleyen tamsayı |
+| <*minValue*> | Evet | Tamsayı | Aralıktaki en küçük tamsayı |
+| <*Değerini*> | Evet | Tamsayı | İşlevin döndürebilecekleri aralıktaki en yüksek tamsayıyı izleyen tamsayı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3251,8 +3266,8 @@ range(<startIndex>, <count>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Yes | Tamsayı | İlk öğe olarak diziyi Başlatan bir tamsayı değeri |
-| <*biriktirme*> | Yes | Tamsayı | Dizideki tamsayıların sayısı |
+| <*startIndex*> | Evet | Tamsayı | İlk öğe olarak diziyi Başlatan bir tamsayı değeri |
+| <*biriktirme*> | Evet | Tamsayı | Dizideki tamsayıların sayısı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3282,9 +3297,9 @@ replace('<text>', '<oldText>', '<newText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Değiştirilecek alt dizenin bulunduğu dize |
-| <*EskiMetin*> | Yes | Dize | Değiştirilecek alt dize |
-| <*newText*> | Yes | Dize | Değiştirme dizesi |
+| <*metinleri*> | Evet | Dize | Değiştirilecek alt dizenin bulunduğu dize |
+| <*EskiMetin*> | Evet | Dize | Değiştirilecek alt dize |
+| <*newText*> | Evet | Dize | Değiştirme dizesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3314,8 +3329,8 @@ removeProperty(<object>, '<property>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*nesne*> | Yes | Nesne | Bir özelliği kaldırmak istediğiniz JSON nesnesi |
-| <*özelliði*> | Yes | Dize | Kaldırılacak özelliğin adı |
+| <*nesne*> | Evet | Nesne | Bir özelliği kaldırmak istediğiniz JSON nesnesi |
+| <*özelliði*> | Evet | Dize | Kaldırılacak özelliğin adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3331,9 +3346,9 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*nesne*> | Yes | Nesne | Özelliğini kaldırmak istediğiniz JSON nesnesi |
-| <*Parent-Property*> | Yes | Dize | Kaldırmak istediğiniz alt özelliği olan üst özelliğin adı |
-| <*alt özellik*> | Yes | Dize | Kaldırılacak alt özelliğin adı |
+| <*nesne*> | Evet | Nesne | Özelliğini kaldırmak istediğiniz JSON nesnesi |
+| <*Parent-Property*> | Evet | Dize | Kaldırmak istediğiniz alt özelliği olan üst özelliğin adı |
+| <*alt özellik*> | Evet | Dize | Kaldırılacak alt özelliğin adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3411,7 +3426,7 @@ result('<scopedActionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*Scopedadctionname*> | Yes | Dize | Tüm iç eylemlerdeki girişlerin ve çıktıların döndürüleceği kapsamlı eylemin adı |
+| <*Scopedadctionname*> | Evet | Dize | Tüm iç eylemlerdeki girişlerin ve çıktıların döndürüleceği kapsamlı eylemin adı |
 ||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3532,9 +3547,9 @@ setProperty(<object>, '<property>', <value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*nesne*> | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
-| <*özelliði*> | Yes | Dize | Ayarlanacak mevcut veya yeni özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
+| <*nesne*> | Evet | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
+| <*özelliði*> | Evet | Dize | Ayarlanacak mevcut veya yeni özelliğin adı |
+| <*deeri*> | Evet | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 Alt nesne içindeki alt özelliği ayarlamak için, bunun yerine iç içe geçmiş bir `setProperty()` çağrı kullanın. Aksi takdirde, işlev yalnızca çıkış olarak alt nesneyi döndürür.
@@ -3545,10 +3560,10 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*nesne*> | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
-| <*Parent-Property*> | Yes | Dize | Ayarlamak istediğiniz alt özelliği olan üst özelliğin adı |
-| <*alt özellik*> | Yes | Dize | Ayarlanacak alt özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
+| <*nesne*> | Evet | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
+| <*Parent-Property*> | Evet | Dize | Ayarlamak istediğiniz alt özelliği olan üst özelliğin adı |
+| <*alt özellik*> | Evet | Dize | Ayarlanacak alt özelliğin adı |
+| <*deeri*> | Evet | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3624,8 +3639,8 @@ skip([<collection>], <count>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dizi | Öğelerini kaldırmak istediğiniz koleksiyon |
-| <*biriktirme*> | Yes | Tamsayı | En önünde kaldırılacak öğe sayısı için pozitif bir tamsayı |
+| <*koleksiyon*> | Evet | Dizi | Öğelerini kaldırmak istediğiniz koleksiyon |
+| <*biriktirme*> | Evet | Tamsayı | En önünde kaldırılacak öğe sayısı için pozitif bir tamsayı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3655,8 +3670,8 @@ split('<text>', '<delimiter>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Özgün dizedeki belirtilen sınırlayıcıya göre alt dizelerdeki ayrı olacak dize |
-| <*ayırıcı*> | Yes | Dize | Ayırıcı olarak kullanılacak özgün dizedeki karakter |
+| <*metinleri*> | Evet | Dize | Özgün dizedeki belirtilen sınırlayıcıya göre alt dizelerdeki ayrı olacak dize |
+| <*ayırıcı*> | Evet | Dize | Ayırıcı olarak kullanılacak özgün dizedeki karakter |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3686,7 +3701,7 @@ startOfDay('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -3717,7 +3732,7 @@ startOfHour('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -3748,7 +3763,7 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -3791,8 +3806,8 @@ startsWith('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Denetlenecek dize |
-| <*aramametni*> | Yes | Dize | Bulunacak başlangıç dizesi |
+| <*metinleri*> | Evet | Dize | Denetlenecek dize |
+| <*aramametni*> | Evet | Dize | Bulunacak başlangıç dizesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3822,7 +3837,7 @@ Ve şu sonucu döndürür:`false`
 
 <a name="string"></a>
 
-### <a name="string"></a>dize
+### <a name="string"></a>string
 
 Bir değer için dize sürümünü döndürün.
 
@@ -3832,7 +3847,7 @@ string(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Herhangi bir | Dönüştürülecek değer. Bu değer null ise veya null olarak değerlendirilirse, değer boş bir String ( `""` ) değerine dönüştürülür. <p><p>Örneğin, işleç ile erişebileceğiniz, varolmayan bir özelliğe bir dize değişkeni atarsanız, `?` null değeri boş bir dizeye dönüştürülür. Ancak, null bir değeri karşılaştırmak boş bir dizeyi karşılaştırmadan aynı değildir. |
+| <*deeri*> | Evet | Herhangi bir | Dönüştürülecek değer. Bu değer null ise veya null olarak değerlendirilirse, değer boş bir String ( `""` ) değerine dönüştürülür. <p><p>Örneğin, işleç ile erişebileceğiniz, varolmayan bir özelliğe bir dize değişkeni atarsanız, `?` null değeri boş bir dizeye dönüştürülür. Ancak, null bir değeri karşılaştırmak boş bir dizeyi karşılaştırmadan aynı değildir. |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3876,8 +3891,8 @@ sub(<minuend>, <subtrahend>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*eksilen*> | Yes | Tamsayı veya kayan | *Çıkarılan* çıkarmak için gereken sayı |
-| <*çıkarılan*> | Yes | Tamsayı veya kayan | *Eksilen* 'ten çıkarılacak sayı |
+| <*eksilen*> | Evet | Tamsayı veya kayan | *Çıkarılan* çıkarmak için gereken sayı |
+| <*çıkarılan*> | Evet | Tamsayı veya kayan | *Eksilen* 'ten çıkarılacak sayı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3908,9 +3923,9 @@ substring('<text>', <startIndex>, <length>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Karakterleri istediğiniz dize |
-| <*startIndex*> | Yes | Tamsayı | Başlangıç konumu veya dizin değeri olarak kullanmak istediğiniz pozitif bir sayı eşittir veya 0 ' dan büyük bir değer |
-| <*uzunluklu*> | Yes | Tamsayı | Alt dizede istediğiniz pozitif karakter sayısı |
+| <*metinleri*> | Evet | Dize | Karakterleri istediğiniz dize |
+| <*startIndex*> | Evet | Tamsayı | Başlangıç konumu veya dizin değeri olarak kullanmak istediğiniz pozitif bir sayı eşittir veya 0 ' dan büyük bir değer |
+| <*uzunluklu*> | Evet | Tamsayı | Alt dizede istediğiniz pozitif karakter sayısı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3941,9 +3956,9 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*aralığında*> | Yes | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
-| <*timeUnit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
+| <*ilişkin*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*aralığında*> | Evet | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
+| <*timeUnit*> | Evet | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
 | <*formatını*> | Hayır | Dize | Tek bir [biçim belirticisi](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -3985,8 +4000,8 @@ take([<collection>], <count>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*koleksiyon*> | Yes | Dize veya dizi | Öğelerini istediğiniz koleksiyon |
-| <*biriktirme*> | Yes | Tamsayı | Önünden istediğiniz öğe sayısı için pozitif bir tamsayı |
+| <*koleksiyon*> | Evet | Dize veya dizi | Öğelerini istediğiniz koleksiyon |
+| <*biriktirme*> | Evet | Tamsayı | Önünden istediğiniz öğe sayısı için pozitif bir tamsayı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4020,7 +4035,7 @@ ticks('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ilişkin*> | Yes | Dize | Zaman damgası için dize |
+| <*ilişkin*> | Evet | Dize | Zaman damgası için dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4040,7 +4055,7 @@ toLower('<text>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Küçük harfle döndürülecek dize |
+| <*metinleri*> | Evet | Dize | Küçük harfle döndürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4070,7 +4085,7 @@ toUpper('<text>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Büyük harfle döndürülecek dize |
+| <*metinleri*> | Evet | Dize | Büyük harfle döndürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4139,7 +4154,7 @@ triggerFormDataMultiValues('<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*anahtar*> | Evet | Dize | Değerini istediğiniz anahtarın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4170,7 +4185,7 @@ triggerFormDataValue('<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*anahtar*> | Evet | Dize | Değerini istediğiniz anahtarın adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4200,7 +4215,7 @@ triggerMultipartBody(<index>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*indeks*> | Yes | Tamsayı | İstediğiniz bölümün dizin değeri |
+| <*indeks*> | Evet | Tamsayı | İstediğiniz bölümün dizin değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4237,7 +4252,7 @@ trim('<text>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metinleri*> | Yes | Dize | Kaldırılacak öndeki ve sondaki boşluğu olan dize |
+| <*metinleri*> | Evet | Dize | Kaldırılacak öndeki ve sondaki boşluğu olan dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4269,7 +4284,7 @@ union([<collection1>], [<collection2>], ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*Collection2*>,...  | Yes | Dizi veya nesne, ancak her ikisi birden değil | *Tüm* öğeleri istediğiniz yerdeki Koleksiyonlar |
+| <*collection1*>, <*Collection2*>,...  | Evet | Dizi veya nesne, ancak her ikisi birden değil | *Tüm* öğeleri istediğiniz yerdeki Koleksiyonlar |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4301,7 +4316,7 @@ uriComponent('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | URI kodlu biçime dönüştürülecek dize |
+| <*deeri*> | Evet | Dize | URI kodlu biçime dönüştürülecek dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4331,7 +4346,7 @@ uriComponentToBinary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek URI kodlamalı dize |
+| <*deeri*> | Evet | Dize | Dönüştürülecek URI kodlamalı dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4366,7 +4381,7 @@ uriComponentToString('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Kodu çözülecek URI kodlamalı dize |
+| <*deeri*> | Evet | Dize | Kodu çözülecek URI kodlamalı dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4396,7 +4411,7 @@ uriHost('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*kullanılmamışsa*> | Yes | Dize | `host`Değerini ISTEDIĞINIZ URI |
+| <*kullanılmamışsa*> | Evet | Dize | `host`Değerini ISTEDIĞINIZ URI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4426,7 +4441,7 @@ uriPath('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*kullanılmamışsa*> | Yes | Dize | `path`Değerini ISTEDIĞINIZ URI |
+| <*kullanılmamışsa*> | Evet | Dize | `path`Değerini ISTEDIĞINIZ URI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4456,7 +4471,7 @@ uriPathAndQuery('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*kullanılmamışsa*> | Yes | Dize | `path`Ve değerlerini ISTEDIĞINIZ URI `query` |
+| <*kullanılmamışsa*> | Evet | Dize | `path`Ve değerlerini ISTEDIĞINIZ URI `query` |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4486,7 +4501,7 @@ uriPort('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*kullanılmamışsa*> | Yes | Dize | `port`Değerini ISTEDIĞINIZ URI |
+| <*kullanılmamışsa*> | Evet | Dize | `port`Değerini ISTEDIĞINIZ URI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4516,7 +4531,7 @@ uriQuery('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*kullanılmamışsa*> | Yes | Dize | `query`Değerini ISTEDIĞINIZ URI |
+| <*kullanılmamışsa*> | Evet | Dize | `query`Değerini ISTEDIĞINIZ URI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4546,7 +4561,7 @@ uriScheme('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*kullanılmamışsa*> | Yes | Dize | `scheme`Değerini ISTEDIĞINIZ URI |
+| <*kullanılmamışsa*> | Evet | Dize | `scheme`Değerini ISTEDIĞINIZ URI |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4621,7 +4636,7 @@ variables('<variableName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*variableName*> | Yes | Dize | Değerini istediğiniz değişkenin adı |
+| <*variableName*> | Evet | Dize | Değerini istediğiniz değişkenin adı |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4675,7 +4690,7 @@ xml('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Dize | Dönüştürülecek JSON nesnesine sahip dize <p>JSON nesnesinin yalnızca bir root özelliği olmalıdır ve bu bir dizi olamaz. <br>\\Çift tırnak işareti (") için kaçış karakteri olarak ters eğik çizgi karakterini () kullanın. |
+| <*deeri*> | Evet | Dize | Dönüştürülecek JSON nesnesine sahip dize <p>JSON nesnesinin yalnızca bir root özelliği olmalıdır ve bu bir dizi olamaz. <br>\\Çift tırnak işareti (") için kaçış karakteri olarak ters eğik çizgi karakterini () kullanın. |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4733,8 +4748,8 @@ xpath('<xml>', '<xpath>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*'sini*> | Yes | Herhangi bir | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
-| <*XPath*> | Yes | Herhangi bir | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
+| <*'sini*> | Evet | Herhangi bir | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
+| <*XPath*> | Evet | Herhangi bir | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |

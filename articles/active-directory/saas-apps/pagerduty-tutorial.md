@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 330066a950165d3424ca7900493ac89ce746b309
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683502"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>Öğretici: Pagerharcı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,12 +32,15 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Pagerharcı tümleştirme
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Pagerharcı çoklu oturum açma (SSO) etkin aboneliği.
+
+> [!NOTE]
+> MFA veya passwordless kimlik doğrulamasını Azure AD ile kullanıyorsanız, SAML Isteğindeki AuthnContext değerini kapatın. Aksi takdirde, Azure AD, AuthnContext uyuşmazlığından sonra hatayı oluşturur ve belirteci uygulamaya geri göndermez.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -107,9 +110,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -180,7 +183,7 @@ Azure AD kullanıcılarının, Pagerharcı 'de oturum açmasını sağlamak içi
 
     a. **B. Simon**gibi kullanıcının **adını ve soyadını** yazın. 
    
-    b. **B. Simon\@contoso.com**gibi kullanıcının **e-posta** adresini girin.
+    b. **B. Simon \@ contoso.com**gibi kullanıcının **e-posta** adresini girin.
    
     c. **Ekle**' ye ve ardından **davet gönder**' e tıklayın.
    

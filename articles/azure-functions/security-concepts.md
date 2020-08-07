@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502690"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850721"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -70,6 +70,18 @@ Aşağıdaki tabloda, çeşitli erişim anahtarları türleri için kullanımlar
 <sup>2</sup> Uzantıya göre ayarlanan belirli adlar.
 
 Erişim anahtarları hakkında daha fazla bilgi için bkz. [http tetikleyici bağlama makalesi](functions-bindings-http-webhook-trigger.md#obtaining-keys).
+
+
+#### <a name="secret-repositories"></a>Gizli depolar
+
+Anahtarlar varsayılan olarak, ayar tarafından belirtilen hesapta bir BLOB depolama kapsayıcısında depolanır `AzureWebJobsStorage` . Belirli uygulama ayarlarını, bu davranışı geçersiz kılmak ve anahtarları farklı bir konumda depolamak için kullanabilirsiniz.
+
+|Konum  |Ayar | Değer | Açıklama  |
+|---------|---------|---------|---------|
+|Farklı depolama hesabı     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Anahtarları, belirtilen SAS URL 'sini temel alarak ikinci bir depolama hesabının BLOB depolama alanında depolar. Anahtarlar, işlev uygulamanıza özel bir gizli anahtar kullanılarak depolanmadan önce şifrelenir. |
+|Dosya sistemi   | `AzureWebJobsSecretStorageType`   |  `files`       | Dosyalar, depolama öncesinde, işlev uygulamanıza özel bir gizli anahtar kullanılarak şifrelenmiş olarak şifrelenir. |
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | Kasasının, barındırma kaynağının sistem tarafından atanan yönetilen kimliğine karşılık gelen bir erişim ilkesi olmalıdır. Erişim ilkesi, kimliğe aşağıdaki gizli izinleri vermelidir: `Get` , `Set` , `List` , ve `Delete` . <br/>Yerel olarak çalışırken geliştirici kimliği kullanılır ve ayarlar [dosyadalocal.settings.js](functions-run-local.md#local-settings-file)olmalıdır. | 
+|Kubernetes Gizli Dizileri  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (isteğe bağlı) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Yalnızca Kubernetes 'te Işlevler çalışma zamanı çalıştırılırken desteklenir. `AzureWebJobsKubernetesSecretName`Ayarlanmadıysa, depo salt okunurdur olarak kabul edilir. Bu durumda, değerlerin dağıtımdan önce oluşturulması gerekir. Azure Functions Core Tools, Kubernetes 'e dağıtım yaparken değerleri otomatik olarak oluşturur.|
 
 ### <a name="authenticationauthorization"></a>Kimlik doğrulama/yetkilendirme
 

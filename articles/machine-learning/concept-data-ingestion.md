@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 48393ac14805c60ac12df9256f915721ee928758
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552836"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875328"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning iş akışları için veri alma seçenekleri
 
@@ -37,7 +37,7 @@ Veri alımı, yapılandırılmamış verilerin bir veya daha fazla kaynaktan ay�
 
 Aşağıdaki tabloda, veri alma iş akışlarınız için Azure Data Factory kullanmanın uzmanları ve dezavantajları özetlenmektedir.
 
-|Artıları|Simgeler
+|Avantajlar|Dezavantajlar
 ---|---
 Verileri ayıklamak, yüklemek ve dönüştürmek için özel olarak oluşturulmuştur.|Şu anda sınırlı sayıda Azure Data Factory işlem hattı görevi sunmaktadır 
 Veri hareketini ve dönüştürmeleri ölçekleyerek düzenlemek için veri odaklı iş akışları oluşturmanıza olanak tanır.|Yapı ve bakım açısından pahalıdır. Daha fazla bilgi için Azure Data Factory [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) bakın.
@@ -64,7 +64,7 @@ Bu adımlar ve aşağıdaki diyagramda Azure Data Factory veri alımı iş akı�
 
 Aşağıdaki tabloda, veri alma görevleri için SDK 'Yı ve bir ML işlem hattı adımını kullanmaya yönelik profesyonelleri ve Con özetlenmektedir.
 
-Artıları| Simgeler
+Avantajlar| Dezavantajlar
 ---|---
 Kendi Python betiklerinizi yapılandırma | Veri kaynağı değişikliği tetiklemesini yerel olarak desteklemez. Mantıksal uygulama veya Azure Işlev uygulamaları gerektirir
 Her model eğitimi yürütmesinin parçası olarak veri hazırlama|Veri alma betiği oluşturmak için geliştirme becerileri gerektirir

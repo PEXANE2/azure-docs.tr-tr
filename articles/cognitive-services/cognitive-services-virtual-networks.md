@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148098"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876589"
 ---
-# <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure bilişsel hizmetler sanal ağlarını yapılandırma
+# <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Bilişsel Hizmetler sanal ağlarını yapılandırma
 
-Azure bilişsel hizmetler, katmanlı bir güvenlik modeli sağlar. Bu model, bilişsel hizmetler hesaplarınızı belirli bir ağ alt kümesiyle korumanıza olanak sağlar. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar hesaba erişebilir. İstek filtreleme ile kaynaklarınızın erişimini sınırlayabilirsiniz. Yalnızca belirtilen IP adreslerinden, IP aralıklarından veya [Azure sanal ağlarındaki](../virtual-network/virtual-networks-overview.md)alt ağlar listesinden kaynaklanan isteklere izin verme. Bu teklif ile ilgileniyorsanız, [Önizleme erişimi istemeniz](https://aka.ms/cog-svc-vnet-signup)gerekir.
+Azure bilişsel hizmetler, katmanlı bir güvenlik modeli sağlar. Bu model, Bilişsel Hizmetler hesaplarınızı belirli bir ağ alt kümesinde güvenlik altına almanızı sağlar. Ağ kuralları yapılandırıldığında yalnızca belirli bir ağ kümesi üzerinden veri isteğinde bulunan uygulamalar hesaba erişim sağlayabilir. İstek filtreleme ile kaynaklarınıza erişimi sınırlayabilirsiniz. Yalnızca belirtilen IP adreslerinden, IP aralıklarından veya [Azure sanal ağlarındaki](../virtual-network/virtual-networks-overview.md)alt ağlar listesinden kaynaklanan isteklere izin verme.
 
 Ağ kuralları etkin olduğunda bilişsel hizmetler kaynağına erişen bir uygulama yetkilendirme gerektirir. Yetkilendirme [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) kimlik bilgileriyle veya GEÇERLI bir API anahtarı ile desteklenir.
 
 > [!IMPORTANT]
 > Bilişsel hizmetler hesabınız için güvenlik duvarı kurallarını açmak, varsayılan olarak gelen istekleri engeller. Üzerinden isteklere izin vermek için aşağıdaki koşullardan birinin karşılanması gerekir:
+
 > * İstek, hedef bilişsel hizmetler hesabının izin verilen alt ağ listesindeki bir Azure sanal ağı (VNet) içinde çalışan bir hizmetten kaynaklanmalıdır. VNet 'ten kaynaklı isteklerdeki uç noktanın, bilişsel hizmetler hesabınızın [özel alt etki alanı](cognitive-services-custom-subdomains.md) olarak ayarlanması gerekir.
 > * Ya da istek, izin verilen bir IP adresi listesinden geliyor olmalıdır.
 >
@@ -39,39 +40,39 @@ Ağ kuralları, REST ve WebSocket dahil olmak üzere Azure bilişsel hizmetler '
 
 ## <a name="supported-regions-and-service-offerings"></a>Desteklenen bölgeler ve hizmet teklifleri
 
-Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUAP*, *Orta Güney ABD*, *Doğu ABD*, *Batı ABD 2*, *Kuzey Avrupa*, *Güney Afrika Kuzey*, *Batı Avrupa*, *Orta Hindistan*, *Avustralya Doğu*, *Batı ABD*ve *US gov Virginia* Azure bölgeleriyle sınırlıdır. Hizmet teklifi burada listelenmiyorsa, sanal ağları desteklemez.
+Aşağıda listelenen bilişsel hizmetler, ticari buluttaki ve US Gov buluttaki sanal ağları destekler. Hizmet burada listelenmiyorsa, henüz sanal ağları desteklemez.
 
 > [!div class="checklist"]
+
 > * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
 > * [Görüntü İşleme](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
 > * [Yüz Tanıma](./face/index.yml)
 > * [Form Tanıma](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding](./luis/index.yml)
 > * [Kişiselleştirme](./personalizer/index.yml)
 > * [Metin Analizi](./text-analytics/index.yml)
 > * [Soru-Cevap Oluşturucu](./qnamaker/index.yml)
-
-Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUAP*, *Orta Güney ABD*, *Doğu ABD*, *Batı ABD 2*, *Global*ve *US gov Virginia* Azure bölgeleriyle sınırlıdır.
-> [!div class="checklist"]
 > * [Translator Metin Çevirisi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Hizmet Etiketleri
-Bilişsel hizmetler, yukarıdaki hizmetler için sanal ağ hizmet uç noktalarını desteklemeye ek olarak, giden ağ kuralları yapılandırması için de bir hizmet etiketi destekler. Aşağıdaki hizmetler, Biliveservicesmanagement hizmeti etiketinde bulunur.
+
+Bilişsel hizmetler, ağ kuralları yapılandırması için hizmet etiketlerini destekler. Aşağıda listelenen hizmetler, **Biliveservicesmanagement** hizmeti etiketinde bulunur.
 > [!div class="checklist"]
+
 > * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
 > * [Görüntü İşleme](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
 > * [Yüz Tanıma](./face/index.yml)
 > * [Form Tanıma](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding (LUIS)](./luis/index.yml)
 > * [Kişiselleştirme](./personalizer/index.yml)
 > * [Metin Analizi](./text-analytics/index.yml)
 > * [Soru-Cevap Oluşturucu](./qnamaker/index.yml)
 > * [Translator](./translator/index.yml)
-> * [Konuşma Hizmeti](./speech-service/index.yml)
+> * [Konuşma hizmeti](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Varsayılan ağ erişim kuralını değiştirme
 
@@ -84,7 +85,7 @@ Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemci
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -186,7 +187,7 @@ Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure
 
 Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, PowerShell veya Azure CLı aracılığıyla yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -330,6 +331,7 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
         -g "myresourcegroup" -n "myaccount" \
         --subnet $subnetid
     ```
+
 ***
 
 > [!IMPORTANT]
@@ -361,7 +363,7 @@ IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verili
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla IP ağ kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -491,13 +493,13 @@ Bir sanal ağdaki (VNet) istemcilerin [özel bir bağlantı](../private-link/pri
 
 Bilişsel hizmetler kaynakları için özel uç noktalar şunları yapmanızı sağlar:
 
-- Güvenlik duvarını bilişsel hizmetler hizmeti için genel uç noktada tüm bağlantıları engelleyecek şekilde yapılandırarak bilişsel hizmetler kaynağınızın güvenliğini sağlayın.
-- VNET 'ten veri alımını engellemeyi etkinleştirerek VNet için güvenliği artırın.
-- [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-locations.md) kullanarak VNET 'e bağlanan şirket içi ağlardan bilişsel hizmetler kaynaklarına güvenli bir şekilde bağlanın.
+* Güvenlik duvarını bilişsel hizmetler hizmeti için genel uç noktada tüm bağlantıları engelleyecek şekilde yapılandırarak bilişsel hizmetler kaynağınızın güvenliğini sağlayın.
+* VNET 'ten veri alımını engellemeyi etkinleştirerek VNet için güvenliği artırın.
+* [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-locations.md) kullanarak VNET 'e bağlanan şirket içi ağlardan bilişsel hizmetler kaynaklarına güvenli bir şekilde bağlanın.
 
 ### <a name="conceptual-overview"></a>Kavramsal genel bakış
 
-Özel uç nokta, [VNET](../virtual-network/virtual-networks-overview.md)'iniz Içindeki bir Azure hizmeti için özel bir ağ arabirimidir. Bilişsel hizmetler kaynağınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve kaynağınızın istemcileri arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve bilişsel hizmetler hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
+Özel uç nokta, [VNET](../virtual-network/virtual-networks-overview.md)'iniz Içindeki bir Azure kaynağı için özel bir ağ arabirimidir. Bilişsel hizmetler kaynağınız için özel bir uç nokta oluşturulması, VNet 'iniz ve kaynağınızın istemcileri arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve bilişsel hizmetler hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
 
 VNet 'teki uygulamalar hizmete özel uç nokta üzerinden sorunsuz bir şekilde bağlanıp kullandıkları bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak bağlanabilir. Özel durum, ayrı bir uç nokta gerektiren konuşma hizmetidir. [Konuşma hizmeti Ile özel uç noktalar](#private-endpoints-with-the-speech-service)bölümüne bakın. Özel uç noktalar bilişsel hizmetler kaynağı tarafından desteklenen ve REST dahil tüm protokollerle kullanılabilir.
 
@@ -509,11 +511,11 @@ Bilişsel hizmetler kaynak sahipleri, [Azure Portal](https://portal.azure.com)bi
 
 ### <a name="private-endpoints"></a>Özel uç noktalar
 
-Özel uç nokta oluştururken, bağlandığı bilişsel hizmetler kaynağını belirtmeniz gerekir. Özel uç nokta oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Özel uç nokta oluştururken, bağlandığı bilişsel hizmetler kaynağını belirtmeniz gerekir. Özel uç nokta oluşturma hakkında daha fazla bilgi için bkz.
 
-- [Azure portal özel bağlantı merkezini kullanarak özel bir uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)
-- [Azure CLı kullanarak özel uç nokta oluşturma](../private-link/create-private-endpoint-cli.md)
-- [Azure PowerShell kullanarak özel uç nokta oluşturma](../private-link/create-private-endpoint-powershell.md)
+* [Azure portal özel bağlantı merkezini kullanarak özel bir uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)
+* [Azure CLı kullanarak özel uç nokta oluşturma](../private-link/create-private-endpoint-cli.md)
+* [Azure PowerShell kullanarak özel uç nokta oluşturma](../private-link/create-private-endpoint-powershell.md)
 
 ### <a name="connecting-to-private-endpoints"></a>Özel uç noktalara bağlanma
 
@@ -523,7 +525,7 @@ Varsayılan olarak, Özel uç noktalara yönelik gerekli güncelleştirmelerle V
 
 ### <a name="private-endpoints-with-the-speech-service"></a>Konuşma hizmeti ile özel uç noktalar
 
-Konuşma hizmeti ile özel uç noktalar kullanırken, konuşma hizmeti API 'sini çağırmak için özel bir uç nokta kullanmanız gerekir. Genel uç noktasını kullanamazsınız. {Account} formunun bir uç noktasını kullanmanız gerekir. {STT | TTS | ses | DLS}. Speech. Microsoft. com.
+Konuşma hizmeti ile özel uç noktalar kullanırken, konuşma hizmetini çağırmak için özel bir uç nokta kullanmanız gerekir. Genel uç noktasını kullanamazsınız. Uç nokta şu modele uymalıdır: `{account}.{stt|tts|voice|dls}.speech.microsoft.com` .
 
 ### <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
@@ -531,17 +533,17 @@ Konuşma hizmeti ile özel uç noktalar kullanırken, konuşma hizmeti API 'sini
 
 Uç nokta URL 'sini özel uç noktayla VNet dışından çözümlediğinizde, bilişsel hizmetler kaynağının genel uç noktasına dönüşür. Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, uç nokta URL 'SI özel uç noktanın IP adresine çözümlenir.
 
-Bu yaklaşım, Özel uç noktaları barındıran VNet 'teki istemciler ve sanal ağ dışındaki istemciler için aynı bağlantı dizesini kullanarak bilişsel hizmetler kaynağına erişim sağlar.
+Bu yaklaşım, Özel uç noktaları ve VNet dışındaki istemcileri barındıran VNet 'teki istemciler için aynı bağlantı dizesini kullanarak bilişsel hizmetler kaynağına erişim sağlar.
 
-Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler bilişsel hizmetler kaynak uç noktasının tam etki alanı adını (FQDN) özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu, sanal ağın özel DNS bölgesine özel bağlantı alt etki alanı atamak üzere yapılandırmalısınız.
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler bilişsel hizmetler kaynak uç noktasının tam etki alanı adını (FQDN) özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek üzere yapılandırın.
 
 > [!TIP]
 > Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, ' Privatelink ' alt etki alanındaki bilişsel hizmetler kaynak adını özel uç nokta IP adresine çözümlemek üzere yapılandırmalısınız. Bunu, sanal ağın özel DNS bölgesine ' Privatelink ' alt etki alanı temsilcisi seçerek veya DNS sunucunuzda DNS bölgesi yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
 
 Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Özel uç noktalar için DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+* [Özel uç noktalar için DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ### <a name="pricing"></a>Fiyatlandırma
 

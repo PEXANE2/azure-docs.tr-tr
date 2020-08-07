@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494794"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876725"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -29,25 +29,17 @@ ms.locfileid: "86494794"
 
 DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine OMı ve DSC aracısını yükleme. DSC Uzantısı aşağıdaki eylemleri de gerçekleştirebilir:
 
-
 - Azure Otomasyonu hizmetinden (ExtensionAction 'ı Kaydet) yapılandırma çekmek için Linux VM 'yi bir Azure Otomasyonu hesabına kaydettirin.
 - MOF yapılandırmasını Linux VM 'ye gönderin (ExtensionAction öğesini Gönder).
 - Düğüm yapılandırmasını (çekme ExtensionAction) çekmek için bir çekme sunucusu yapılandırmak üzere Linux sanal makinesine meta MOF yapılandırması uygulayın.
 - Linux VM 'ye özel DSC modülleri (Install ExtensionAction) yükler.
 - Linux VM 'den özel DSC modüllerini kaldırın (ExtensionAction 'ı kaldırın).
 
- 
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](../linux/endorsed-distros.md) destekler:
-
-| Dağıtım | Sürüm |
-|---|---|
-| Debian | Tüm sürümler |
-| Ubuntu| 18,04 |
+Linux çalıştıran düğümler için DSC Linux uzantısı, [POWERSHELL DSC belgelerinde](/powershell/scripting/dsc/getting-started/lnxgettingstarted)listelenen tüm Linux dağıtımlarını destekler.
  
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
