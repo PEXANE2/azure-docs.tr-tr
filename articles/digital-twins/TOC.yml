@@ -55,7 +55,7 @@
         - name: Özel modelleri yönetme
           href: how-to-manage-model.md
         - name: Modelleri ayrıştırma ve doğrulama
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: Etiket ekleme
           href: how-to-use-tags.md
     - name: Canlı yürütme ortamı kullanma

@@ -671,7 +671,7 @@
                 - name: Programlı olarak ölçeği genişletme
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: Birincil düğüm türlerinin ölçeğini artırma
-                  href: service-fabric-scale-up-node-type.md
+                  href: service-fabric-scale-up-primary-node-type.md
                 - name: Düğüm türü ekleme
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: Düğüm türünü kaldırma

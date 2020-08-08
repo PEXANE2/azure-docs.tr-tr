@@ -7,14 +7,14 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: ARM Şablonu kullanarak NSG Akış günlüklerini yapılandırma
-      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: VM trafik filtresi sorununu tanılama - Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: VM trafik filtresi sorununu tanılama - PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: VM trafik filtresi sorununu tanılama - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: ARM Şablonu kullanarak NSG Akış günlüklerini yapılandırma
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Öğreticiler
   items:
     - name: Bir VM yönlendirme sorununu tanılama
