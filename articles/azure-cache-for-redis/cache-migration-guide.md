@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 554724c334cb6c51b8744de0eedd4d6815d707b5
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172615"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009588"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Redis için Azure Cache’e geçiş
 Bu makalede, şirket içinde veya başka bir bulut hizmetinde çalışan mevcut bir redo önbelleğinin redin için Azure önbelleğine geçirilmesi için çeşitli yaklaşımlar açıklanmaktadır.
@@ -51,7 +51,7 @@ Bu seçeneği uygulamak için genel adımlar şunlardır:
 
 ### <a name="export-data-to-an-rdb-file-and-import-it-into-azure-cache-for-redis"></a>Verileri bir RDB dosyasına aktarın ve Redsıs için Azure önbelleğine aktarın
 
-Açık kaynaklı redo, bir Önbelleğin bellek içi veri kümesinin anlık görüntüsünü almak ve bir dosyaya kaydetmek için standart bir mekanizma tanımlar. RDB adlı bu dosya başka bir Redsıs önbelleği tarafından okunabilir. [Redsıs Premium katmanının Azure önbelleği](cache-premium-tier-intro.md) , verileri RDB dosyalar aracılığıyla bir önbellek örneğine aktarmayı destekler. Bir RDB dosyasını, Redsıs için mevcut bir önbellekten Azure önbelleğine veri aktarmak için kullanabilirsiniz.
+Açık kaynaklı redo, bir Önbelleğin bellek içi veri kümesinin anlık görüntüsünü almak ve bir dosyaya kaydetmek için standart bir mekanizma tanımlar. RDB adlı bu dosya başka bir Redsıs önbelleği tarafından okunabilir. [Redsıs Premium katmanının Azure önbelleği](cache-overview.md#service-tiers) , verileri RDB dosyalar aracılığıyla bir önbellek örneğine aktarmayı destekler. Bir RDB dosyasını, Redsıs için mevcut bir önbellekten Azure önbelleğine veri aktarmak için kullanabilirsiniz.
 
 > [!IMPORTANT]
 > RDB dosya biçimi, Redsıs sürümleri arasında değişebilir ve geriye dönük uyumluluğu koruyamayabilir. Dışarı aktardığınız önbelleğin Redsıs sürümü Redsıs için Azure Cache tarafından verilen sürümden eşit veya ondan küçük olmalıdır.
@@ -114,5 +114,5 @@ Bu seçeneği uygulamak için genel adımlar şunlardır:
 ## <a name="next-steps"></a>Sonraki adımlar
 Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
-* [Redsıs Premium katmanı için Azure önbelleğine giriş](cache-premium-tier-intro.md)
+* [Redsıs hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)
 * [Verileri içeri aktar](cache-how-to-import-export-data.md#import)

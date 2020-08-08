@@ -1,6 +1,6 @@
 ---
 title: Web SDK desteklenen tarayıcılar | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps web SDK 'Sı için desteklenen tarayıcılar ve tarayıcının desteklenen bir tarayıcı olup olmadığını denetleme hakkında bilgi edineceksiniz.
+description: Azure Haritalar Web SDK 'sının bir tarayıcıyı destekleyip desteklemediğini denetleme hakkında bilgi edinin. Desteklenen tarayıcıların listesini görüntüleyin. Harita hizmetlerini eski tarayıcılarla nasıl kullanacağınızı öğrenin.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988796"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002940"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK destekleyen tarayıcılar
 
@@ -63,7 +63,7 @@ Aşağıdaki Web SDK modülleri de Node.js desteklenir:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Hedef eski tarayıcılar
 
-WebGL 'yi desteklemeyen veya yalnızca sınırlı desteği olan eski tarayıcıları hedeflemek isteyebilirsiniz. Bu gibi durumlarda, Azure haritalar hizmetlerini, [leaflet](https://leafletjs.com/)gibi bir açık kaynaklı eşleme denetimiyle birlikte kullanmanızı öneririz. İşte bir örnek:
+WebGL 'yi desteklemeyen veya yalnızca sınırlı desteği olan eski tarayıcıları hedeflemek isteyebilirsiniz. Bu gibi durumlarda, Azure haritalar hizmetlerini, [leaflet](https://leafletjs.com/)gibi bir açık kaynaklı eşleme denetimiyle birlikte kullanmanızı öneririz. Aşağıda bir örnek verilmiştir:
 
 <br/>
 

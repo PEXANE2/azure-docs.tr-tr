@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) konak havuzu Azure Marketi-Azure
 description: Azure Marketi 'ni kullanarak Windows sanal masaüstü (klasik) konak havuzu oluşturma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291313"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008602"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü 'nde bir konak havuzu oluşturma (klasik)
 
@@ -52,13 +50,13 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 1. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
 1. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
 
 Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
 **Temel kavramlar** sekmesi için şunları yapın:
 

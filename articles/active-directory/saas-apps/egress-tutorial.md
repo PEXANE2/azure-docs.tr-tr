@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101737"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Öğretici: çıkış ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -45,7 +45,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Çıkış **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Çıkış **, tam zamanında** Kullanıcı sağlamayı destekler
-* Çıkış 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Çıkış 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-egress-from-the-gallery"></a>Galeriden çıkış ekleme
 
@@ -130,7 +130,7 @@ Bu bölümde, çıkış için erişim izni vererek B. Simon 'u Azure çoklu otur
 
 1. Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin.
 
-    ![Çıkış yapılandırması](./media/egress-tutorial/configure1.PNG)
+    ![Çıkış yapılandırması](./media/egress-tutorial/configure-1.PNG)
 
     a. Sol taraftaki menüde **SSO yapılandırması**' na tıklayın.
 
@@ -150,11 +150,11 @@ Bu bölümde, çıkış için erişim izni vererek B. Simon 'u Azure çoklu otur
 
 1. Sol taraftaki menüden **kullanıcıları davet et** ' e tıklayın ve kullanıcıyı eklemek Için **tek kullanıcı davet et** ' e tıklayın.
 
-    ![Çıkış testi Kullanıcı Oluştur](./media/egress-tutorial/createuser1.PNG)
+    ![Çıkış testi Kullanıcı Oluştur](./media/egress-tutorial/create-user-1.PNG)
 
 1. Gerekli alanları doldurup **davet**' e tıklayın.
 
-    ![Çıkış testi Kullanıcı Oluştur](./media/egress-tutorial/createuser2.PNG)
+    ![Çıkış testi Kullanıcı Oluştur](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

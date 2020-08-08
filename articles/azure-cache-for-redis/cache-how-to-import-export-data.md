@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857006"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004330"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
 İçeri/dışarı aktarma, redsıs veri yönetimi işlemi için bir Azure önbelleğidir. Bu, redsıs veritabanı (RDB) anlık görüntüsü için bir Azure önbelleğini bir Azure depolama hesabındaki bir Blobun içeri aktarıp dışarı aktararak redsıs için Azure Cache 'e içeri aktarıp dışarı aktarmanıza olanak tanır.
@@ -24,7 +24,7 @@ ms.locfileid: "85857006"
 Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarmaya yönelik bir kılavuz ve sık sorulan soruların yanıtları sağlanır.
 
 > [!IMPORTANT]
-> İçeri/dışarı aktarma yalnızca [Premium katman](cache-premium-tier-intro.md) önbellekler için kullanılabilir.
+> İçeri/dışarı aktarma yalnızca [Premium katman](cache-overview.md#service-tiers) önbellekler için kullanılabilir.
 >
 >
 
@@ -148,10 +148,10 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 
 Bu sorunu çözmek için, 15 dakikadan önce içeri aktarma veya dışarı aktarma işlemini başlatın.
 
-### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Verileri Azure Blob depolamaya verirken bir hata aldım. Neler oldu?
+### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Verileri Azure Blob depolamaya verirken bir hata aldım. Ne oldu?
 Dışarı aktarma yalnızca sayfa Blobları olarak depolanan RDB dosyaları ile birlikte kullanılabilir. Diğer blob türleri, sık ve seyrek katmanlara sahip BLOB depolama hesapları da dahil olmak üzere şu anda desteklenmemektedir. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla Premium önbellek özelliği kullanmayı öğrenin.
+Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
-* [Redsıs Premium katmanı için Azure önbelleğine giriş](cache-premium-tier-intro.md)
+* [Redsıs hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)

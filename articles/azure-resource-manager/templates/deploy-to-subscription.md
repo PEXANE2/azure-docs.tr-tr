@@ -3,16 +3,16 @@ title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321777"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002786"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
-Kaynakların yönetimini basitleştirmek için, Azure aboneliğinizin düzeyindeki kaynakları dağıtmak üzere bir Azure Resource Manager şablonu (ARM şablonu) kullanabilirsiniz. Örneğin, aboneliğinize [ilke](../../governance/policy/overview.md) ve [rol tabanlı erişim denetimleri](../../role-based-access-control/overview.md) dağıtabilirsiniz. bu denetimler, aboneliğiniz genelinde uygulanır. Ayrıca, abonelik içinde kaynak grupları oluşturabilir ve kaynakları abonelikte kaynak gruplarına dağıtabilirsiniz.
+Kaynakların yönetimini basitleştirmek için, Azure aboneliğinizin düzeyindeki kaynakları dağıtmak üzere bir Azure Resource Manager şablonu (ARM şablonu) kullanabilirsiniz. Örneğin, abonelikleriniz için [ilkeler](../../governance/policy/overview.md) ve [Azure rol tabanlı erişim denetımı (Azure RBAC)](../../role-based-access-control/overview.md) dağıtabilirsiniz. Ayrıca, abonelik içinde kaynak grupları oluşturabilir ve kaynakları abonelikte kaynak gruplarına dağıtabilirsiniz.
 
 > [!NOTE]
 > Abonelik düzeyi dağıtımında 800 farklı kaynak grubuna dağıtım yapabilirsiniz.
@@ -54,7 +54,7 @@ Aboneliğinizi yönetmek için şunu kullanın:
 
 * [bütçelerinin](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [lerimi](/azure/templates/microsoft.resources/tags)
+* [etiketler](/azure/templates/microsoft.resources/tags)
 
 Desteklenen diğer türler şunlardır:
 
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>Erişim denetimi
 
-Rol atama hakkında bilgi edinmek için bkz. [RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-template.md).
+Rol atama hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme](../../role-based-access-control/role-assignments-template.md).
 
 Aşağıdaki örnek, bir kaynak grubu oluşturur, buna bir kilit uygular ve bir sorumlusu bir rol atar.
 

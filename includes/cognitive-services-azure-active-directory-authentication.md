@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062669"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010963"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulaması
 
@@ -17,7 +17,7 @@ ms.locfileid: "86062669"
 > 1. Şu anda **yalnızca** Görüntü İşleme API'si, Yüz Tanıma API'si, metin Analizi API'si, modern okuyucu, form tanıyıcı, anomali algılayıcısı ve Bing Özel Arama, Azure ACTIVE DIRECTORY (AAD) kullanarak kimlik doğrulaması desteği hariç tüm Bing hizmetleri.
 > 2. AAD kimlik doğrulamasının her zaman Azure kaynağınızın özel alt etki alanı adıyla birlikte kullanılması gerekir. [Bölgesel uç noktalar](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) AAD kimlik doğrulamasını desteklemez.
 
-Önceki bölümlerde, tek hizmet veya çok sunuculu bir abonelik anahtarı kullanarak Azure bilişsel hizmetler 'de nasıl kimlik doğrulaması yapılacağını gösterdik. Bu anahtarlar geliştirme başlatmaya başlamak için hızlı ve kolay bir yol sağlarken, rol tabanlı erişim denetimleri gerektiren daha karmaşık senaryolara kısa süreli olarak düşmektedir. Azure Active Directory (AAD) kullanarak kimlik doğrulaması yapmak için gereklere göz atalım.
+Önceki bölümlerde, tek hizmet veya çok sunuculu bir abonelik anahtarı kullanarak Azure bilişsel hizmetler 'de nasıl kimlik doğrulaması yapılacağını gösterdik. Bu anahtarlar geliştirmeye başlamak için hızlı ve kolay bir yol sağlarken, Azure rol tabanlı erişim denetimi (Azure RBAC) gerektiren daha karmaşık senaryolara kısa süreli olarak düşmektedir. Azure Active Directory (AAD) kullanarak kimlik doğrulaması yapmak için gereklere göz atalım.
 
 Aşağıdaki bölümlerde, bir alt etki alanı oluşturmak, roller atamak ve Azure bilişsel hizmetler 'i çağırmak için bir taşıyıcı belirteci almak için Azure Cloud Shell ortamını veya Azure CLı 'yi kullanacaksınız. Takıldıysanız, her bölümde Azure Cloud Shell/Azure CLı 'daki her komut için kullanılabilen tüm seçeneklerle bağlantılar sağlanır.
 
@@ -45,7 +45,7 @@ Aşağıdaki bölümlerde, bir alt etki alanı oluşturmak, roller atamak ve Azu
 Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet sorumlusu için bir rol atamanız gerekir.
 
 > [!NOTE]
-> AAD rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun.
+> Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun.
 
 1. İlk olarak, bir [AAD uygulaması](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)kaydedelim.
 

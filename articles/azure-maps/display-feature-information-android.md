@@ -1,6 +1,6 @@
 ---
 title: Özellik bilgilerini Azure Maps Android SDK görüntüleyin | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir haritada Özellik bilgilerini görüntülemeyi öğreneceksiniz.
+description: Kullanıcılar harita özellikleriyle etkileşim kurarken bilgileri görüntülemeyi öğrenin. Bildirim iletilerini ve diğer ileti türlerini göstermek için Azure Haritalar Android SDK kullanın.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75911686"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009044"
 ---
 # <a name="display-feature-information"></a>Özellik bilgilerini görüntüleme
 

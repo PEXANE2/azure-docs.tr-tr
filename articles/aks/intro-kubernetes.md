@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 810f887c43b5653513d6848e9b7dd2e7ced070ab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251340"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003214"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
 
@@ -26,7 +26,7 @@ Başlamak için, [Azure portalda][aks-portal] veya [ Azure CLI][aks-cli] ile AKS
 
 ## <a name="access-security-and-monitoring"></a>Erişim, güvenlik ve izleme
 
-AKS, gelişmiş güvenlik ve yönetim için, Azure Active Directory ile tümleşmenizi ve Kubernetes rol tabanlı erişim denetimlerini kullanmanızı sağlar. Ayrıca, kümelerinizin ve kaynaklarınızın sistem durumunu da izleyebilirsiniz.
+Gelişmiş güvenlik ve yönetim için AKS, Azure Active Directory tümleştirmenize ve Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) kullanmanıza olanak tanır. Ayrıca, kümelerinizin ve kaynaklarınızın sistem durumunu da izleyebilirsiniz.
 
 ### <a name="identity-and-security-management"></a>Kimlik ve güvenlik yönetimi
 
@@ -140,6 +140,6 @@ Azure CLI hızlı başlangıçları ile AKS dağıtma ve yönetme hakkında daha
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md

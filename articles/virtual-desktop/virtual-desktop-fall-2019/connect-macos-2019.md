@@ -1,19 +1,17 @@
 ---
 title: MacOS-Azure ' dan Windows sanal masaüstüne (klasik) bağlanma
 description: MacOS istemcisini kullanarak Windows sanal masaüstüne (klasik) bağlanma.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a4aac80f7e4ef93b6503398c225b2aeffe566dbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a0d2bd6a07cfc9e5ebe205322550c9e898022846
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270575"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008449"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>MacOS istemcisiyle Windows sanal masaüstüne (klasik) bağlanma
 
@@ -38,7 +36,7 @@ Bir akışa abone olmak için:
 2. Akış URL 'sini girin. Bu bir URL veya e-posta adresi olabilir:
    - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com> .
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
-3. **Ekle**'yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.
 
 Oturum açtıktan sonra, kullanılabilir kaynakların bir listesini görmeniz gerekir.

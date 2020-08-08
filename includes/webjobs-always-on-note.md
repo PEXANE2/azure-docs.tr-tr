@@ -5,15 +5,15 @@ services: app-service
 author: ggailey777
 ms.service: app-service
 ms.topic: include
-ms.date: 02/19/2019
+ms.date: 06/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 82e5221daefaecb687ad9feb79305e546d4ec17e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c255be53a1809bf5dd3fc6b184852767dfec9c66
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68424171"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009820"
 ---
 > [!NOTE]
-> Bir Web uygulaması 20 dakikadan sonra zaman aşımına uğrar. Yalnızca gerçek Web uygulamasına gönderilen istekler süreölçeri sıfırlar. Uygulamanın yapılandırmasını Azure portal veya gelişmiş araçlar sitesine () istek yapmayı görüntülemek `https://<app_name>.scm.azurewebsites.net` , zamanlayıcıyı sıfırlayamaz. Uygulamanız sürekli veya zamanlanmış (Zamanlayıcı tetikleyicisi) Web Işleri çalıştırıyorsa, Web Işlerinin güvenilir bir şekilde çalışmasını sağlamak için **her zaman açık** ' ı etkinleştirin. Bu özellik yalnızca temel, standart ve Premium [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)kullanılabilir.
+> Bir Web uygulaması 20 dakikadan sonra zaman aşımına uğrar. yalnızca gerçek Web uygulamasına yönelik istekler zamanlayıcıyı sıfırlayabilir. Uygulamanın yapılandırmasını Azure portal veya gelişmiş araçlar sitesine () yönelik isteklerin yapılması `https://<app_name>.scm.azurewebsites.net` süreölçeri sıfırlayamaz. Web uygulamanızı sürekli veya zamanlanmış (Zamanlayıcı-tetikleyici) WebJobs çalıştıracak şekilde ayarlarsanız, Web Işlerinin güvenilir bir şekilde çalışmasını sağlamak için Web uygulamanızın Azure **yapılandırma** sayfasında **her zaman açık** ayarını etkinleştirin. Bu özellik yalnızca temel, standart ve Premium [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)kullanılabilir.

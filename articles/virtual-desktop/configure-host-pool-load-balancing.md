@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü yük dengelemesini Yapılandırma-Azure
 description: Windows sanal masaüstü ortamı için yük dengeleme yöntemini yapılandırma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204365"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010115"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
 
@@ -22,7 +20,7 @@ Bir konak havuzu için yük dengeleme yöntemini yapılandırmak, Windows sanal 
 >[!NOTE]
 > Bu, kullanıcıların konak havuzundaki bir oturum ana bilgisayarına her zaman bir 1:1 eşlemesi olduğundan, kalıcı bir masaüstü konak havuzu için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, PowerShell modülünü indirip yüklemek ve Azure hesabınızda oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izlediğiniz varsayılmaktadır.
 

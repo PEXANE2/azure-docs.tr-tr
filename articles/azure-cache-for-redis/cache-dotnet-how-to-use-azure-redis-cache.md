@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 2efe05ebb26030720a1af90c4a4de8d48ea37106
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b2144907c8c11e482a32121e7d7a22533a68a25e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201475"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003806"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
 
@@ -167,7 +167,7 @@ static void Main(string[] args)
 }
 ```
 
-Redsıs için Azure önbelleğinde, Redsıs için bir Azure önbelleğindeki verileri mantıksal olarak ayırmak üzere kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Kod, DB 0 adlı varsayılan veritabanına bağlanır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration).
+Redsıs için Azure önbelleğinde, Redsıs için bir Azure önbelleğindeki verileri mantıksal olarak ayırmak üzere kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Kod, DB 0 adlı varsayılan veritabanına bağlanır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-development-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration).
 
 `StringSet` ve `StringGet` yöntemleri kullanılarak önbellek öğeleri depolanabilir ve alınabilir.
 
@@ -251,7 +251,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 
 **Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
 
-![Silme](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
+![Sil](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
 Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
 

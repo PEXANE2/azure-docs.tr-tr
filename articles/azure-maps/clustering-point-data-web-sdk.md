@@ -1,6 +1,6 @@
 ---
 title: Bir haritadaki kümeleme noktası verileri | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritada nasıl küme verileri kümeleyeceğinizi ve bunu nasıl işleyebileceğinizi öğreneceksiniz.
+description: Haritalar üzerinde küme noktası verilerini nasıl kullanacağınızı öğrenin. Bkz. Azure Maps web SDK 'sını kullanarak verileri kümeleme, küme fare olaylarına tepki verme ve küme toplamlarını görüntüleme.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 05e21e63b104a21757c63b9ad8d2954ed778d4b8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285756"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009061"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
@@ -95,9 +95,9 @@ Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğ
 | Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| `cluster_id`              | dize  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
+| `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
 | `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
-| `point_count_abbreviated` | dize  | `point_count`Long ise değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
+| `point_count_abbreviated` | string  | `point_count`Long ise değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
 
 Bu örnek, küme noktalarını işleyen ve bir tıklama olayı ekleyen bir kabarcık katmanı alır. Click olayı tetiklendiğinde, kod, kümenin parçalama yaptığı sonraki yakınlaştırma düzeyine kadar olan eşlemeyi hesaplar ve büyütür. Bu işlev, `getClusterExpansionZoom` `DataSource` sınıfının yöntemi ve `cluster_id` tıklanan kümelenmiş veri noktasının özelliği kullanılarak uygulanır.
 

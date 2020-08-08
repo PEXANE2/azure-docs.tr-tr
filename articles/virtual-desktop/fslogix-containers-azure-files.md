@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü FSLogix profil kapsayıcıları dosyaları-Azure
 description: Bu makalede, Windows sanal masaüstü ve Azure dosyaları içindeki FSLogix profil kapsayıcıları açıklanmaktadır.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611985"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002396"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -49,15 +47,15 @@ Aşağıdaki tabloda önceki Kullanıcı profili teknolojilerinin avantajları v
 
 | Teknoloji | Modern ayarlar | Win32 ayarları | İşletim sistemi ayarları | Kullanıcı verileri | Sunucu SKU 'sunda destekleniyor | Azure 'da arka uç depolama | Şirket içinde arka uç depolama | Sürüm desteği | Sonraki oturum açma zamanı |Notlar|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Kullanıcı profili diskleri (UPD)** | Yes | Yes | Yes | Yes | Yes | No | Evet | Win 7 + | Yes | |
-| **Gezici Kullanıcı profili (RUP), bakım modu** | No | Yes | Yes | Yes | Yes| No | Evet | Win 7 + | No | |
-| **Enterprise State Roaming (ESR)** | Evet | No | Evet | No | Notlara bakın | Evet | No | Win 10 | No | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
-| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Yes | Yes | Yes | No | Evet | No | Evet | Win 7 + | No |  |
-| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Evet | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | No | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
+| **Kullanıcı profili diskleri (UPD)** | Yes | Yes | Yes | Yes | Yes | Hayır | Yes | Win 7 + | Yes | |
+| **Gezici Kullanıcı profili (RUP), bakım modu** | Hayır | Yes | Yes | Yes | Yes| Hayır | Yes | Win 7 + | Hayır | |
+| **Enterprise State Roaming (ESR)** | Yes | Hayır | Yes | Hayır | Notlara bakın | Yes | Hayır | Win 10 | Hayır | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
+| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Yes | Yes | Yes | Hayır | Yes | Hayır | Yes | Win 7 + | Hayır |  |
+| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Yes | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | Hayır | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
 
 #### <a name="performance"></a>Performans
 
-UPD, performans gereksinimlerini karşılamak için [depolama alanları doğrudan (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gerektirir. UPD, sunucu Ileti bloğu (SMB) protokolünü kullanır. Profili, kullanıcının günlüğe kaydedildiği VM 'ye kopyalar. S2D ile UPD, Windows sanal masaüstü için önerdiğimiz çözümdür.  
+UPD, performans gereksinimlerini karşılamak için [depolama alanları doğrudan (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gerektirir. UPD, sunucu Ileti bloğu (SMB) protokolünü kullanır. Profili, kullanıcının günlüğe kaydedildiği VM 'ye kopyalar. S2D ile UPD, Windows sanal masaüstü için önerdiğimiz çözümdür.
 
 #### <a name="cost"></a>Maliyet
 

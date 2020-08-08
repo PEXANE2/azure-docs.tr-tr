@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132373"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008891"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı Başlangıç: Azure Logic Apps ile otomatik görevler, işlemler ve iş akışları oluşturma - Visual Studio
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Azure Kamu aboneliğiniz varsa, [Azure Kamu Bulutu Için Visual Studio 'yu ayarlamak](#azure-government)için aşağıdaki ek adımları izleyin.
 
 * Henüz yoksa şu araçları indirip yükleyin:
 
@@ -51,12 +51,6 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
   
     Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
 
-  * Azure Kamu aboneliklerini Visual Studio ile birlikte kullanmak için, ek kurulum için aşağıdaki konulara bakın:
-
-    * Visual Studio 2019: [hızlı başlangıç: Azure Kamu 'Ya Visual Studio Ile bağlanma](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017: [Visual Studio Market](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)indirebileceğiniz ve yükleyebileceğiniz [Azure ortam Seçicisi Visual Studio Uzantısı ile tanışın](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/).
-
 * Ekli Mantıksal Uygulama Tasarımcısı kullanılırken web erişimi
 
   Tasarımcı Azure 'da kaynak oluşturmak ve mantıksal uygulamanızdaki bağlayıcılardan özellikleri ve verileri okumak için bir internet bağlantısı gerektirir.
@@ -65,6 +59,34 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
 
   > [!IMPORTANT]
   > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Azure Kamu için Visual Studio’yu ayarlama
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+[Visual Studio Market](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)indirebileceğiniz ve yükleyebileceğiniz [Azure ortam Seçicisi Visual Studio uzantısı](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)' nı kullanabilirsiniz.
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+Azure Logic Apps Azure Kamu abonelikleriyle çalışmak için, [Visual Studio 'Ya Azure Kamu Bulutu için bir bulma uç noktası eklemeniz](../azure-government/documentation-government-connect-vs.md)gerekir. Ancak, *Azure Kamu hesabınızla Visual Studio 'da oturum açmadan önce*, aşağıdaki adımları izleyerek bulma uç noktasını ekledikten sonra oluşturulan json dosyasını yeniden adlandırmanız gerekir:
+
+1. Visual Studio’yu kapatın.
+
+1. Bu konumda adlı oluşturulan JSON dosyasını bulun `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` :
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. JSON dosyasını olarak yeniden adlandırın `AadProvider.Configuration.json` .
+
+1. Visual Studio’yu yeniden başlatın.
+
+1. Azure Kamu hesabınızla oturum açmak için gereken adımlarla devam edin.
+
+Bu kurulumu dönmek için, aşağıdaki konumdaki JSON dosyasını silin ve Visual Studio 'Yu yeniden başlatın:
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 

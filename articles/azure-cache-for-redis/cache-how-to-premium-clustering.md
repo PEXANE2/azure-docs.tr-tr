@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4f200457bd327a6f2ce74794bb28dd16c38e6fdd
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856320"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004767"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
-
-Diğer Premium önbellek özellikleri hakkında daha fazla bilgi için bkz. [Redsıs Premium katmanı Için Azure önbelleğine giriş](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>Redsıs kümesi nedir?
 Redsıs için Azure Cache, redsıs ['de uygulanan](https://redis.io/topics/cluster-tutorial)redin kümesi sunar. Redsıs kümesi ile aşağıdaki avantajları elde edersiniz: 
@@ -26,7 +24,7 @@ Redsıs için Azure Cache, redsıs ['de uygulanan](https://redis.io/topics/clust
 * Daha fazla verimlilik: parçalar sayısını artırdıkça üretilen Iş miktarı artar. 
 * Daha fazla bellek boyutu: parça sayısını artırdıkça doğrusal miktarı artırır.  
 
-Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısını artırmaz. Premium önbellekler ile boyut, aktarım hızı ve bant genişliği hakkında daha fazla bilgi için bkz. [redin sunumu Için Azure önbelleği ve boyutu ne kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısını artırmaz. Premium önbellekler ile boyut, aktarım hızı ve bant genişliği hakkında daha fazla bilgi için, bkz [. sağ katmanı seçme](cache-overview.md#choosing-the-right-tier)
 
 Azure 'da reddo kümesi, her parçanın Redsıs hizmeti için Azure Cache tarafından yönetilen çoğaltma ile birincil/çoğaltma çifti olduğu bir birincil/çoğaltma modeli olarak sunulur. 
 
@@ -91,7 +89,7 @@ Aşağıdaki liste, Redsıs Kümelemesi için Azure önbelleği hakkında sık s
   Daha fazla bilgi için bkz. [Redsıs küme belirtimi uygulanmış alt küme](https://redis.io/topics/cluster-spec#implemented-subset).
 * [StackExchange. Redo](https://www.nuget.org/packages/StackExchange.Redis/)kullanıyorsanız, 1.0.481 veya üstünü kullanmanız gerekir. Küme etkin olmayan bir önbelleğe bağlanırken kullandığınız [uç noktaları, bağlantı noktalarını ve anahtarları](cache-configure.md#properties) kullanarak önbelleğe bağlanırsınız. Tek fark, tüm okuma ve yazma işlemlerini veritabanı 0 ' a uygulamak olmalıdır.
   
-  * Diğer istemcilerin farklı gereksinimleri olabilir. Bkz. [Tüm Redmi istemcileri kümeleme desteği mi?](#do-all-redis-clients-support-clustering)
+  Diğer istemcilerin farklı gereksinimleri olabilir. Bkz. [Tüm Redmi istemcileri kümeleme desteği mi?](#do-all-redis-clients-support-clustering)
 * Uygulamanız tek bir komutta toplu olarak birden çok anahtar işlem kullanıyorsa, tüm anahtarların aynı parça içinde bulunması gerekir. Aynı parça içindeki anahtarları bulmak için bkz. [anahtarlar bir kümede nasıl dağıtılır?](#how-are-keys-distributed-in-a-cluster)
 * Redsıs ASP.NET oturum durumu sağlayıcısını kullanıyorsanız, 2.0.1 veya üstünü kullanmanız gerekir. Bkz [. redin ASP.NET oturum durumu ve çıktı önbelleği sağlayıcılarıyla kümeleme kullanabilir miyim?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
@@ -156,9 +154,9 @@ Kümeleme yalnızca Premium önbellekler için kullanılabilir.
 Kümeleme kullanırken StackExchange. Redsıs kullanıyorsanız ve `MOVE` özel durumlar alıyorsanız, [StackExchange. redsıs 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) veya üstünü kullandığınızdan emin olun. .NET uygulamalarınızı StackExchange. Redsıs kullanacak şekilde yapılandırma yönergeleri için bkz. [önbellek Istemcilerini yapılandırma](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla Premium önbellek özelliği kullanmayı öğrenin.
+Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
-* [Redsıs Premium katmanı için Azure önbelleğine giriş](cache-premium-tier-intro.md)
+* [Redsıs Premium hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

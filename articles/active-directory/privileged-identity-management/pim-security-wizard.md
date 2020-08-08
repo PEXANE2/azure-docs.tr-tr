@@ -1,6 +1,6 @@
 ---
-title: PıM-Azure Active Directory 'de Azure AD rolleri Güvenlik Sihirbazı | Microsoft Docs
-description: Kalıcı ayrıcalıklı Azure AD rol atamalarını Azure AD Privileged Identity Management (PıM) kullanarak uygun hale dönüştürmek için kullanabileceğiniz güvenlik sihirbazını açıklar.
+title: Privileged Identity Management eski Güvenlik Sihirbazı 'nda Azure AD rolleri bulma ve öngörüleri (Önizleme)-Azure Active Directory
+description: Bulma ve Öngörüler (eski adıyla Güvenlik Sihirbazı), kalıcı Azure AD rol atamalarını Privileged Identity Management tam zamanında atamalara dönüştürmenize yardımcı olur.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,65 +10,60 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 08/07/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc7aed1cc79a8c08a7ff11382a1c7a51455d5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743669"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005980"
 ---
-# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri Güvenlik Sihirbazı
+# <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD rolleri için bulma ve Öngörüler (Önizleme) (eski adıyla Güvenlik Sihirbazı)
 
-Azure Active Directory (Azure AD) kuruluşunuzda Privileged Identity Management (PıM) kullanmaya yönelik ilk kişiyseniz, kullanmaya başlamak için bir sihirbaz sunulur. Sihirbaz, ayrıcalıklı kimliklerin güvenlik risklerini ve Privileged Identity Management bu riskleri azaltmak için nasıl kullanacağınızı anlamanıza yardımcı olur. Daha sonra yapmayı tercih ediyorsanız, sihirbazda mevcut rol atamalarında herhangi bir değişiklik yapmanız gerekmez.
+Azure Active Directory (Azure AD) kuruluşunuzda Privileged Identity Management (PıM) kullanıyorsanız, kullanmaya başlamak için **bulma ve Öngörüler (Önizleme)** sayfasını kullanabilirsiniz. Bu özellik, kuruluşunuzdaki ayrıcalıklı rollere kimlerin atandığını ve kalıcı rol atamalarını tam zamanında atamalara hızlıca değiştirmek için PıM 'yi nasıl kullanacağınızı gösterir. **Bulma ve Öngörüler (Önizleme)** içinde kalıcı ayrıcalıklı rol atamalarınızı görüntüleyebilir veya değişiklikler yapabilirsiniz. Bu bir çözümleme aracıdır ve bir eylem aracıdır.
 
-> [!Important]
-> Güvenlik Sihirbazı geçici olarak kullanılamıyor. Sabrınız için teşekkürler.
+## <a name="discovery-and-insights-preview"></a>Bulma ve Öngörüler (Önizleme)
 
-## <a name="wizard-overview"></a>Sihirbaza genel bakış
+Kuruluşunuz Privileged Identity Management kullanmaya başlamadan önce, tüm rol atamaları kalıcıdır. Kullanıcılar, ayrıcalıklarına gerek duymadığı durumlarda bile her zaman kendilerine atanan rollerdir. Önceki Güvenlik Sihirbazı 'Nın yerini alan bulma ve Öngörüler (Önizleme), ayrıcalıklı rollerin bir listesini ve şu anda bu rollerdeki Kullanıcı sayısını gösterir. Bir veya daha fazla bilginiz yoksa atanan kullanıcılar hakkında daha fazla bilgi edinmek için, bir rolün atamalarını listeleyebilirsiniz.
 
-Kuruluşunuz Privileged Identity Management kullanmaya başlamadan önce, tüm rol atamaları kalıcıdır: kullanıcılar, ayrıcalıklarına gerek duymasa bile her zaman bu rollerdir. Sihirbazın ilk adımı, yüksek ayrıcalıklı rollerin bir listesini ve şu anda bu rollerdeki Kullanıcı sayısını gösterir. Bir veya daha fazla bilginiz yoksa kullanıcılar hakkında daha fazla bilgi edinmek için belirli bir rol detayına gidebilirsiniz.
+: heavy_check_mark: **Microsoft** , oturum açarken Multi-Factor Authentication gerektirmeyen, genel yönetici rolüne kalıcı olarak atanmış 2 kesme camı hesabı tutmanızı önerir. Bunları herhangi bir kesme camı senaryosunda veya hiç kimse genel yönetici rolüne yükseltemez durumda kullanabilirsiniz.
 
-Sihirbazın ikinci adımı, size yöneticinin rol atamalarını değiştirme olanağı sağlar.  
+Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya Outlook.com gibi Microsoft hizmetlerinde oturum açmak için kullandıkları bir hesap) varsa rol atamalarını kalıcı tutun. Bu tür bir rol için çok faktörlü kimlik doğrulamasının etkinleştirilmesini isterseniz, Kullanıcı kilitlenir.
 
-> [!WARNING]
-> En az bir genel yöneticiniz ve bir iş veya okul hesabıyla (Microsoft hesabı değil) birden fazla ayrıcalıklı rol yöneticisi olması önemlidir. Yalnızca bir ayrıcalıklı rol yöneticisi varsa, bu hesap silinirse kuruluş Privileged Identity Management yönetemez.
-> Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype ve Outlook.com gibi Microsoft hizmetlerinde oturum açmak için kullandıkları bir hesap) varsa rol atamalarını kalıcı tutun. Bu rol için etkinleştirme için çok faktörlü kimlik doğrulaması yapılmasını düşünüyorsanız, bu kullanıcı kilitlenir.
-
-## <a name="run-the-wizard"></a>Sihirbazı çalıştırma
+## <a name="open-discovery-and-insights-preview"></a>Keşif ve Öngörüler 'i açma (Önizleme)
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 
-1. **Azure AD rolleri** ' ni seçin ve ardından **sihirbaz**' ı seçin.
+1. **Azure AD rolleri** ' ni seçin ve ardından **bulma ve Öngörüler ' i (Önizleme)** seçin. Sayfayı açmak ilgili rol atamalarını bulmak için bulma işlemini başlatır.
 
-    ![Azure AD rolleri-Sihirbazı çalıştırmak için 3 adım gösteren sihirbaz sayfası](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD rolleri-3 seçenekleri gösteren bulma ve Öngörüler sayfası](./media/pim-security-wizard/new-preview-link.png)
 
-1. **1 ayrıcalıklı rol bul**' u seçin.
+1. **Küresel yöneticileri azalt**' ı seçin.
 
-1. Hangi kullanıcıların kalıcı veya uygun olduğunu görmek için ayrıcalıklı rollerin listesini gözden geçirin.
+    ![Genel yöneticileri azalt-tüm üyeleri gösteren rol bölmesi](./media/pim-security-wizard/new-preview-page.png)
 
-    ![Ayrıcalıklı rolleri bul-kalıcı ve uygun üyeleri gösteren rol bölmesi](./media/pim-security-wizard/discover-privileged-roles-users.png)
+1. Genel yönetici rolü atamalarının listesini gözden geçirin.
 
-1. Uygun hale getirmek istediğiniz kullanıcıları veya grupları seçmek için **İleri ' yi** seçin.
+    ![Genel yöneticileri azalt-tüm üyeleri gösteren rol bölmesi](./media/pim-security-wizard/new-global-administrator-list.png)
 
-    ![Roller için uygun hale getirmek istediğiniz üyeleri seçmek üzere seçenekleri içeren uygun sayfaya Üyeler dönüştürün](./media/pim-security-wizard/convert-members-eligible.png)
+1. **İleri** ' yi seçerek uygun hale getirmek istediğiniz kullanıcıları veya grupları seçin ve ardından **uygun yap** veya **Atamayı Kaldır**' ı seçin.
 
-1. Kullanıcıları veya grupları seçtikten sonra **İleri**' yi seçin.
+    ![Roller için uygun hale getirmek istediğiniz üyeleri seçmek üzere seçenekleri içeren uygun sayfaya Üyeler dönüştürün](./media/pim-security-wizard/new-global-administrator-buttons.png)
 
-    ![Dönüştürülecek kalıcı rol atamaları olan üyeleri gösteren değişiklikleri gözden geçirme sayfası](./media/pim-security-wizard/review-changes.png)
+1. Ayrıca, tüm genel yöneticilerin kendi erişimini gözden geçirmesine gerek vardır.
 
-1. Kalıcı atamaları uygun öğesine dönüştürmek için **Tamam ' ı** seçin.
+    ![Erişim İncelemeleri bölümünü gösteren genel Yöneticiler sayfası](./media/pim-security-wizard/new-global-administrator-access-review.png)
 
-    Dönüştürme tamamlandığında bir bildirim görürsünüz.
+1. Bu değişikliklerden herhangi birini seçtikten sonra bir Azure bildirimi görürsünüz.
 
-    ![Dönüştürmenin durumunu gösteren bildirim](./media/pim-security-wizard/notification-completion.png)
+1. Daha sonra, diğer ayrıcalıklı rollerde ve hizmet sorumlusu rolü atamalarında yukarıdaki adımları yinelemek için, **erişimi ortadan kaldırma** veya **hizmet sorumlularını gözden geçirme** ' yi seçebilirsiniz. Hizmet sorumlusu rol atamaları için yalnızca rol atamalarını kaldırabilirsiniz.
 
-Diğer ayrıcalıklı rol atamalarını uygun olarak dönüştürmeniz gerekiyorsa, Sihirbazı yeniden çalıştırabilirsiniz. Sihirbazı yerine Privileged Identity Management arabirimini kullanmak istiyorsanız, bkz. [Azure AD rollerini Privileged Identity Management atama](pim-how-to-add-role-to-user.md).
+    ![Erişimi ortadan kaldırmaya ve hizmet sorumlularını incelemeye yönelik ek Öngörüler seçenekleri ](./media/pim-security-wizard/new-preview-page-service-principals.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Haritalar Web SDK 'sında veri odaklı stil Ifadeleri | Microsoft Azure haritaları
-description: Bu makalede, veri tabanlı stil ifadelerinin Microsoft Azure haritaları Web SDK 'sında nasıl kullanılacağı hakkında bilgi edineceksiniz.
+description: Veri odaklı stil ifadeleri hakkında bilgi edinin. Haritaların stillerini ayarlamak için Azure Maps web SDK 'sında bu ifadeleri nasıl kullanacağınızı öğrenin.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285722"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009146"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -84,7 +84,7 @@ Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar.
 | Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Diziden bir öğe alır. |
-| `['geometry-type']` | dize | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
+| `['geometry-type']` | string | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
 | `['get', string]` | değer | Geçerli özelliğin özelliklerinden özellik değerini alır. İstenen özellik eksikse null değerini döndürür. |
 | `['get', string, object]` | değer | Belirtilen nesnenin özelliklerinden özellik değerini alır. İstenen özellik eksikse null değerini döndürür. |
 | `['has', string]` | boolean | Özelliğin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
@@ -402,12 +402,12 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 | Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | dizi \| nesnesi | Sabit bir dizi veya nesne değeri döndürür. Bir dizi ya da nesnenin bir ifade olarak değerlendirilmesini engellemek için bu ifadeyi kullanın. Bir dizi ya da nesnenin bir ifade tarafından döndürülmesi gerektiğinde bu gereklidir. |
-| `['image', string]` | dize | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
+| `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
 | `['to-boolean', value]` | boolean | Giriş değerini bir Boole değerine dönüştürür. Sonuç, `false` girişin boş bir dize,,, veya, `0` `false` `null` `NaN` Aksi durumda `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Giriş değerini bir renge dönüştürür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | sayı | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya ise `false` , sonuç 0 ' dır. Giriş ise, `true` Sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
-| `['to-string', value]` | dize | Giriş değerini bir dizeye dönüştürür. Giriş ise, `null` sonuç olur `""` . Giriş bir Boole ise, sonuç `"true"` veya olur `"false"` . Giriş bir sayı ise, ECMAScript dil belirtiminin [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number işlevi kullanılarak bir dizeye dönüştürülür. Giriş bir renkeyse CSS RGBA Color dizesine dönüştürülür `"rgba(r,g,b,a)"` . Aksi takdirde, giriş, ECMAScript dil belirtiminin [JSON. stringbelirt](https://tc39.github.io/ecma262/#sec-json.stringify) işlevi kullanılarak bir dizeye dönüştürülür. |
-| `['typeof', value]` | dize | Verilen değerin türünü tanımlayan bir dize döndürür. |
+| `['to-string', value]` | string | Giriş değerini bir dizeye dönüştürür. Giriş ise, `null` sonuç olur `""` . Giriş bir Boole ise, sonuç `"true"` veya olur `"false"` . Giriş bir sayı ise, ECMAScript dil belirtiminin [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number işlevi kullanılarak bir dizeye dönüştürülür. Giriş bir renkeyse CSS RGBA Color dizesine dönüştürülür `"rgba(r,g,b,a)"` . Aksi takdirde, giriş, ECMAScript dil belirtiminin [JSON. stringbelirt](https://tc39.github.io/ecma262/#sec-json.stringify) işlevi kullanılarak bir dizeye dönüştürülür. |
+| `['typeof', value]` | string | Verilen değerin türünü tanımlayan bir dize döndürür. |
 
 > [!TIP]
 > Tarayıcı konsolunda aşağıdakine benzer bir hata iletisi varsa `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` , kodunuzda ilk değeri için bir dize olmayan bir dizi içeren bir ifade olduğu anlamına gelir. İfadenin bir dizi döndürmesini istiyorsanız, diziyi ifadesiyle sarın `literal` . Aşağıdaki örnek, `offset` `match` nokta özelliğinin özelliğinin değerine bağlı olarak iki sayı değeri arasında seçim yapmak için bir ifade kullanarak bir sembol katmanının simge seçeneğini ayarlar `entityType` .
@@ -466,8 +466,8 @@ Dize operatörü ifadeleri, büyük/küçük harfe dönüştürme ve dönüştü
 | Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | dize | Birden çok dizeyi birlikte birleştirir. Her değer bir dize olmalıdır. `to-string`Gerekirse, diğer değer türlerini dizeye dönüştürmek için tür ifadesini kullanın. |
-| `['downcase', string]` | dize | Belirtilen dizeyi küçük harfe dönüştürür. |
-| `['upcase', string]` | dize | Belirtilen dizeyi büyük harfe dönüştürür. |
+| `['downcase', string]` | string | Belirtilen dizeyi küçük harfe dönüştürür. |
+| `['upcase', string]` | string | Belirtilen dizeyi büyük harfe dönüştürür. |
 
 **Örnek**
 

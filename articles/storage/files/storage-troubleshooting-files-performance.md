@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: ceadc2d37b9d13502b5ae20605ff083edfd5c51f
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987010"
+ms.locfileid: "88009282"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -182,22 +182,27 @@ GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme sü
 6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü**' nü seçin.
 7. **Boyut değerleri** açılan listesi ' ne tıklayın ve **başarılı olarak daraltma** (SMB Için) veya **CLIENTKıSıTLAR lingerror** (REST için) öğesini seçin.
 
-> [!NOTE]
-> Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror**yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
+  > [!NOTE]
+  > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror**yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
 
 8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
 9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
-> [!NOTE]
-> Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri**seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+  > [!NOTE]
+  > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri**seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
 10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
 
-> [!TIP]
-> Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
+  > [!TIP]
+  > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
 
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 12. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="see-also"></a>Ayrıca bkz.
+* [Windows 'da Azure dosyaları sorunlarını giderme](storage-troubleshoot-windows-file-connection-problems.md)
+* [Linux 'ta Azure dosyaları sorunlarını giderme](storage-troubleshoot-linux-file-connection-problems.md)
+* [Azure Dosyalar hakkında sık sorulan sorular (SSS)](storage-files-faq.md)

@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü konak havuzu yük dengelemesi-Azure
 description: Windows sanal masaüstü ortamı için konak havuzu Yük Dengeleme yöntemleri hakkında bilgi edinin.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00870de007d590de33881809c57107997b531d8c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285144"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007446"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Ana bilgisayar havuzu yük dengeleme yöntemleri
 

@@ -6,32 +6,32 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498132"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007089"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
-Kimlik doğrulamak, erişimi denetlemek/yetkilendirmek ve Kubernetes kümelerinin güvenliğini sağlamak için farklı yollar vardır. Kubernetes rol tabanlı erişim denetimlerini (RBAC) kullanarak kullanıcılara, gruplara ve hizmet hesaplarına yalnızca ihtiyaç duydukları kaynaklara erişim izni verebilirsiniz. Azure Kubernetes hizmeti (AKS) ile Azure Active Directory ve Azure RBAC kullanarak güvenlik ve izin yapısını daha da geliştirebilirsiniz. Bu yaklaşımlar, küme erişiminizi güvenli hale getirmenize ve yalnızca geliştiricilere ve işleçlere gereken en düşük izinleri sağlamanıza yardımcı olur.
+Kimlik doğrulamak, erişimi denetlemek/yetkilendirmek ve Kubernetes kümelerinin güvenliğini sağlamak için farklı yollar vardır. Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) kullanarak, kullanıcılara, gruplara ve hizmet hesaplarına yalnızca ihtiyaç duydukları kaynaklara erişim izni verebilirsiniz. Azure Kubernetes hizmeti (AKS) ile Azure Active Directory ve Azure RBAC kullanarak güvenlik ve izin yapısını daha da geliştirebilirsiniz. Bu yaklaşımlar, küme erişiminizi güvenli hale getirmenize ve yalnızca geliştiricilere ve işleçlere gereken en düşük izinleri sağlamanıza yardımcı olur.
 
 Bu makalede, AKS 'de izinleri kimlik doğrulamasından ve atamaya yardımcı olan temel kavramlar tanıtılmaktadır:
 
-- [Kubernetes rol tabanlı erişim denetimleri (RBAC)](#kubernetes-role-based-access-controls-rbac)
+- [Kubernetes rol tabanlı erişim denetimi (RBAC)](#kubernetes-role-based-access-control-rbac)
   - [Roller ve Kümerolleri](#roles-and-clusterroles)
   - [RoleBindings ve ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes hizmet hesapları](#kubernetes-service-accounts)
 - [Azure Active Directory tümleştirmesi](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-controls-rbac)
+- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
   - [AKS kaynağına erişimi yetkilendirmek için Azure RBAC](#azure-rbac-to-authorize-access-to-the-aks-resource)
   - [Kubernetes yetkilendirmesi için Azure RBAC (Önizleme)](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-controls-rbac"></a>Kubernetes rol tabanlı erişim denetimleri (RBAC)
+## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes rol tabanlı erişim denetimi (RBAC)
 
-Kullanıcıların gerçekleştirebileceği eylemlerin parçalı filtrelemesini sağlamak için Kubernetes rol tabanlı erişim denetimleri (RBAC) kullanır. Bu denetim mekanizması, kullanıcıları veya Kullanıcı gruplarını atamanıza izin verir, kaynak oluşturma veya değiştirme gibi işlemleri yapma veya çalışan uygulama iş yüklerinden günlükleri görüntüleme izni verir. Bu izinler tek bir ad alanı kapsamında olabilir veya tüm AKS kümesi genelinde verilebilir. Kubernetes RBAC ile, izinleri tanımlamak için *Roller* oluşturun ve ardından bu rolleri *rol bağlamalarıyla*kullanıcılara atayın.
+Kullanıcıların gerçekleştirebileceği eylemlerin ayrıntılı filtrelemesini sağlamak için, Kubernetes rol tabanlı erişim denetimi (RBAC) kullanır. Bu denetim mekanizması, kullanıcıları veya Kullanıcı gruplarını atamanıza izin verir, kaynak oluşturma veya değiştirme gibi işlemleri yapma veya çalışan uygulama iş yüklerinden günlükleri görüntüleme izni verir. Bu izinler tek bir ad alanı kapsamında olabilir veya tüm AKS kümesi genelinde verilebilir. Kubernetes RBAC ile, izinleri tanımlamak için *Roller* oluşturun ve ardından bu rolleri *rol bağlamalarıyla*kullanıcılara atayın.
 
 Daha fazla bilgi için bkz. [RBAC yetkilendirmesi kullanma][kubernetes-rbac].
 
@@ -95,7 +95,7 @@ Yukarıdaki grafikte gösterildiği gibi, API sunucusu AKS Web kancası sunucusu
  
 **AKS ['ı AAD ile](managed-aad.md)nasıl tümleştirileceğini öğrenin.**
 
-## <a name="azure-role-based-access-controls-rbac"></a>Azure rol tabanlı erişim denetimleri (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
 
 Azure RBAC, Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir.
 
@@ -107,7 +107,7 @@ Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) ne
 
 Bir AKS kümesini tam olarak çalıştırmak için iki erişim düzeyi gereklidir: 
 1. [Azure aboneliğinizdeki AKS kaynağına erişin](#azure-rbac-to-authorize-access-to-the-aks-resource). Bu işlem, AKS API 'Lerini kullanarak kümenizi ölçeklendirmeyi veya yükseltmeyi denetlemenizi sağlar ve kubeconfig 'nizi çekin.
-2. Kubernetes API 'sine erişim. Bu erişim, [KUBERNETES RBAC](#kubernetes-role-based-access-controls-rbac) (Geleneksel) tarafından denetlenir veya [Azure RBAC Ile Kubernetes YETKILENDIRMESI için aks ile tümleştirilir](#azure-rbac-for-kubernetes-authorization-preview)
+2. Kubernetes API 'sine erişim. Bu erişim, [KUBERNETES RBAC](#kubernetes-role-based-access-control-rbac) (Geleneksel) tarafından denetlenir veya [Azure RBAC Ile Kubernetes YETKILENDIRMESI için aks ile tümleştirilir](#azure-rbac-for-kubernetes-authorization-preview)
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>AKS kaynağına erişimi yetkilendirmek için Azure RBAC
 

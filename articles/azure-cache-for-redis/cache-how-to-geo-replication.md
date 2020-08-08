@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184982"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003701"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama
 
@@ -24,7 +24,7 @@ Coğrafi çoğaltma, Redsıs örnekleri için iki Premium katman Azure önbelle�
 
 İki önbellek arasında Coğrafi çoğaltmayı yapılandırmak için aşağıdaki önkoşulların karşılanması gerekir:
 
-- Her iki önbellek de [Premium katman](cache-premium-tier-intro.md) önbellekler.
+- Her iki önbellek de [Premium katman](cache-overview.md#service-tiers) önbellekler.
 - Her iki önbellek de aynı Azure aboneliğinde bulunur.
 - İkincil bağlantılı önbellek, birincil bağlı önbellekten aynı önbellek boyutu veya daha büyük bir önbellek boyutudur.
 - Her iki önbellek de oluşturulur ve çalışır durumda.
@@ -186,5 +186,6 @@ Azure bölgelerinde otomatik yük devretme, coğrafi çoğaltılan önbelleklerd
 Müşteri tarafından başlatılan bir yük devretmeyi başlatmak için öncelikle önbellekler bağlantısını kaldırın. Ardından, Redsıs istemcinizi (eski adıyla bağlantılı) ikincil önbelleğin bağlantı uç noktasını kullanacak şekilde değiştirin. İki önbelleğin bağlantısı kesildiğinde, ikincil önbellek normal bir okuma-yazma önbelleği yeniden oluşturur ve istekleri doğrudan Redsıs istemcilerinden kabul eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
-[Redsıs Premium katmanı Için Azure önbelleği](cache-premium-tier-intro.md)hakkında daha fazla bilgi edinin.
+* [Redsıs hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)

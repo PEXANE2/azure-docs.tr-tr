@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü konak havuzu Azure portal-Azure
 description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluşturma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291451"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002658"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -61,7 +59,7 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
 6. Konak havuzunuz için benzersiz bir ad girin.
 
 7. Konum alanında, açılan menüden konak havuzunu oluşturmak istediğiniz bölgeyi seçin.
-   
+
    Seçtiğiniz bölgelerle ilişkili Azure coğrafya, bu konak havuzunun ve ilgili nesnenin meta verilerinin depolanacağı yerdir. Hizmet meta verilerinin depolanmasını istediğiniz coğrafya içindeki bölgeleri seçtiğinizden emin olun.
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
     > [!div class="mx-imgBorder"]
     > ![Bir açılan menüdeki kullanılabilir bağlantı noktalarının listesini gösteren güvenlik grubu sayfasının ekran görüntüsü.](media/available-ports.png)
-    
+
     **Gelişmiş**' i seçerseniz, önceden yapılandırdığınız mevcut bir ağ güvenlik grubunu seçin.
 
 10. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. Ayrıca, sanal makinelerin bulunmasını istediğiniz belirli bir kuruluş birimini de ekleyebilirsiniz.
@@ -153,7 +151,7 @@ Bununla birlikte, konak havuzunuzu ayarlamanın bir sonraki aşamasına başlama
 
 ## <a name="workspace-information"></a>Çalışma alanı bilgileri
 
-Konak Havuzu Kurulum işlemi varsayılan olarak bir masaüstü uygulama grubu oluşturur. Konak havuzunun istendiği gibi çalışması için, bu uygulama grubunu kullanıcılara veya Kullanıcı gruplarına yayımlamanız gerekir ve uygulama grubunu bir çalışma alanına kaydetmeniz gerekir. 
+Konak Havuzu Kurulum işlemi varsayılan olarak bir masaüstü uygulama grubu oluşturur. Konak havuzunun istendiği gibi çalışması için, bu uygulama grubunu kullanıcılara veya Kullanıcı gruplarına yayımlamanız gerekir ve uygulama grubunu bir çalışma alanına kaydetmeniz gerekir.
 
 Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
 
@@ -167,10 +165,10 @@ Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
 
     Burada, yöneticilerinize daha kolay hale getirmek için nesneleri meta verilerle gruplandırabilmeniz için Etiketler ekleyebilirsiniz.
 
-4. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin. 
+4. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin.
 
      >[!NOTE]
-     >İnceleme + doğrulama oluştur işlemi, parolanızın güvenlik standartlarını karşılayıp karşılamadığını veya mimarinizin doğru olup olmadığını kontrol etmez. bu nedenle, bunlardan herhangi biriyle ilgili sorunları denetlemeniz gerekir. 
+     >İnceleme + doğrulama oluştur işlemi, parolanızın güvenlik standartlarını karşılayıp karşılamadığını veya mimarinizin doğru olup olmadığını kontrol etmez. bu nedenle, bunlardan herhangi biriyle ilgili sorunları denetlemeniz gerekir.
 
 5. Her şeyin doğru göründüğünden emin olmak için dağıtımınız hakkındaki bilgileri gözden geçirin. İşiniz bittiğinde **Oluştur**'u seçin. Bu, aşağıdaki nesneleri oluşturan dağıtım işlemini başlatır:
 
