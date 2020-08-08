@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 01/10/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d931206e99516e0320d0cbedd0812389ee41aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742173"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005814"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management kullanılacak lisans gereksinimleri
 
@@ -32,19 +32,19 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanma
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-## <a name="how-many-licenses-must-you-have"></a>Kaç lisansa sahip olmanız gerekir?
+## <a name="licenses-you-must-have"></a>Sahip olmanız gereken lisanslar
 
 Aşağıdaki görevleri yerine getirmek istediğiniz çalışanlara sahip olduğunuz için, dizininizde en az sayıda Azure AD Premium P2 lisansa sahip olduğundan emin olun:
 
-- PıM kullanılarak yönetilen Azure AD rollerine uygun olarak atanan kullanıcılar
+- Azure AD veya PıM kullanılarak yönetilen Azure rollerine uygun olarak atanan kullanıcılar
+- Uygun Üyeler veya ayrıcalıklı erişim gruplarının sahipleri olarak atanan kullanıcılar
 - PıM 'de etkinleştirme isteklerini onaylayabilecek veya reddedebilen kullanıcılar
-- Tam zamanında veya doğrudan (zaman tabanlı) atamalarla bir Azure Kaynak rolüne atanan kullanıcılar  
 - Erişim gözden geçirmesi için atanan kullanıcılar
 - Erişim gözden geçirmeleri gerçekleştiren kullanıcılar
 
 Aşağıdaki görevler için Azure AD Premium P2 lisansları gerekli **değildir** :
 
-- PıM 'yi ayarlama, uyarıları alma ve erişim incelemelerini ayarlama gibi genel yönetici veya ayrıcalıklı rol yöneticisi rollerine sahip kullanıcılar için lisans gerekmez.
+- PıM 'yi ayarlama, ilkeleri yapılandırma, uyarıları alma ve erişim incelemelerini ayarlama kullanıcıları için herhangi bir lisans gerekmez.
 
 Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 
@@ -58,7 +58,7 @@ Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı 
 | Grafik tasarımı Enstitüsü, 14 ' ün PıM aracılığıyla yönettiği 25 yöneticileridir. Rol etkinleştirme onay gerektirir ve kuruluşta etkinleştirmeleri onaylayabilecek üç farklı kullanıcı vardır. | uygun roller ve üç onaylayan için 14 lisans | 17 |
 | Contoso, 50 'e 42 ait, PıM aracılığıyla yönetilmekte olan yöneticilerine sahiptir. Rol etkinleştirme onay gerektirir ve kuruluşta etkinleştirmeleri onaylayabilecek beş farklı kullanıcı vardır. Contoso Ayrıca, yönetici rollerine atanan kullanıcılara yönelik aylık incelemeler ve gözden geçirenler, kullanıcının PıM tarafından yönetilen yönetici rollerde bulunmayan Kullanıcı yöneticilerinde de bulunur. | uygun rollere yönelik 42 lisans + beş onaylayan + altı gözden geçiren | 53 |
 
-## <a name="what-happens-when-a-license-expires"></a>Lisansın süresi dolarsa ne olur?
+## <a name="when-a-license-expires"></a>Bir Lisansın süresi dolarsa
 
 Bir Azure AD Premium P2, EMS E5 veya deneme lisansının süresi dolarsa Privileged Identity Management özellikler artık dizininizde kullanılamaz:
 
@@ -72,4 +72,4 @@ Bir Azure AD Premium P2, EMS E5 veya deneme lisansının süresi dolarsa Privile
 
 - [Privileged Identity Management'ı dağıtma](pim-deployment-plan.md)
 - [Privileged Identity Management'ı kullanmaya başlama](pim-getting-started.md)
-- [Privileged Identity Management içinde yönetemezsiniz roller](pim-roles.md)
+- [Privileged Identity Management içinde yönetileyemiyorum roller](pim-roles.md)

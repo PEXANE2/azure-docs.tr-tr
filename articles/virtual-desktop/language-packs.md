@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü-Azure 'da Windows 10 VM 'lerine dil paketleri yüklemesi
 description: Windows sanal masaüstü 'nde Windows 10 çoklu oturum VM 'Leri için dil paketleri nasıl yüklenir.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361311"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008772"
 ---
 # <a name="install-language-packs"></a>Dil paketlerini yükleme
 
@@ -41,7 +39,7 @@ Dil paketlerini yüklemek için:
 
 5. Bundan sonra **dil**' i seçin ve ardından **Dil ekle**' yi seçin. Listeden yüklemek istediğiniz dili seçin ve ardından **İleri**' yi seçin.
 6. **Dil özelliklerini yükler** penceresi açıldığında, **dil paketini yükler ve Windows görüntüleme dili olarak ayarla**etiketli onay kutusunu seçin.
-7. **Yükle**'yi seçin.
+7. **Yükle**’yi seçin.
 8. Aynı anda birden çok dil eklemek için **Dil ekle**' yi seçin ve ardından 5 ve 6. adımlarda bir dil eklemek için işlemi tekrarlayın. Yüklemek istediğiniz her dil için bu işlemi tekrarlayın. Ancak, tek seferde yalnızca bir dil görüntüleme diliniz olarak ayarlayabilirsiniz.
 
     Hızlı bir görsel tanıtım aracılığıyla çalıştıralım. Aşağıdaki resimlerde, Fransızca ve Felemenkçe dil paketlerinin nasıl yükleneceği gösterilmektedir ve ardından, görüntüleme dili olarak Fransızca ayarlanır.
@@ -146,7 +144,7 @@ Bir görüntü yakalamak için:
    > [!div class="mx-imgBorder"]
    > ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-Image-fr" dır ve bunu "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 5. Yakalama işleminin tamamlanabilmesi için birkaç dakika bekleyin. Görüntü hazırsa, bildirim merkezinde görüntünün yakalandığını bildiren bir ileti görmeniz gerekir.
 

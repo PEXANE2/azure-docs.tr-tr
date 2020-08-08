@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de yalıtım için küme işletmen
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077785"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003107"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme yalıtımı için en iyi yöntemler
 
@@ -42,7 +42,7 @@ Mantıksal yalıtımda, tek bir AKS kümesi çoklu iş yükleri, takımlar veya 
 
 Kümelerin mantıksal ayrımı genellikle fiziksel olarak yalıtılmış kümelerden daha yüksek bir pod yoğunluğu sağlar. Kümede boşta kalan daha fazla bilgi işlem kapasitesi vardır. Kubernetes kümesi otomatik olarak birleştirildiğinde, talepleri karşılamak için düğüm sayısını yukarı veya aşağı ölçeklendirebilirsiniz. Otomatik ölçeklendirmeye yönelik bu en iyi yöntem, yalnızca gerekli olan düğüm sayısını ve maliyetleri en aza indirecek şekilde çalışır.
 
-Kubernetes ortamları, AKS veya başka bir yerde, çok kiracılı Kullanıcı kullanımı için tamamen güvenli değildir. Çok kiracılı bir ortamda birden çok kiracı ortak, paylaşılan bir altyapı üzerinde çalışıyor. Sonuç olarak, tüm kiracıların güvenilemediği durumlarda, bir kiracının güvenlik ve hizmet tarafından etkilenmesini önlemek için ek planlama yapmanız gerekir. Tüm düğümler için *Pod güvenlik ilkesi* ve daha ayrıntılı rol tabanlı erişim DENETIMLERI (RBAC) gibi ek güvenlik özellikleri, güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir.
+Kubernetes ortamları, AKS veya başka bir yerde, çok kiracılı Kullanıcı kullanımı için tamamen güvenli değildir. Çok kiracılı bir ortamda birden çok kiracı ortak, paylaşılan bir altyapı üzerinde çalışıyor. Sonuç olarak, tüm kiracıların güvenilemediği durumlarda, bir kiracının güvenlik ve hizmet tarafından etkilenmesini önlemek için ek planlama yapmanız gerekir. Tüm düğümler için *Pod güvenlik ilkesi* ve daha ayrıntılı rol tabanlı erişim denetımı (RBAC) gibi ek güvenlik özellikleri, güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir.
 
 ## <a name="physically-isolate-clusters"></a>Kümeleri fiziksel olarak yalıtma
 
@@ -60,7 +60,7 @@ Bu makale, küme yalıtımına odaklanılmıştır. AKS 'deki küme işlemleri h
 
 * [Temel Kubernetes Zamanlayıcı özellikleri][aks-best-practices-scheduler]
 * [Gelişmiş Kubernetes Zamanlayıcı özellikleri][aks-best-practices-advanced-scheduler]
-* [Kimlik doğrulaması ve yetkilendirme][aks-best-practices-identity]
+* [Kimlik doğrulama ve yetkilendirme][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 

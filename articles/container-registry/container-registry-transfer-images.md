@@ -4,12 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259456"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009163"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -234,6 +234,8 @@ Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.jso
 |targetName     |  Kaynak depolama hesabınıza ( *myblob* gibi) aktarılmış yapıt blobu için seçtiğiniz ad
 |Yapıt | Aktarılacak kaynak yapıtların dizisi, Etiketler veya bildirim özetleri<br/>Örnek: `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
+Aynı özelliklere sahip bir ardışık düzen eylemsizlik kaynağını yeniden dağıtıyorsanız, [Forceupdatetag](#redeploy-pipelinerun-resource) özelliğini de kullanmanız gerekir.
+
 Ardışık düzen eylemsizlik kaynağını oluşturmak için [az Deployment Group Create][az-deployment-group-create] ' i çalıştırın. Aşağıdaki örnek, dağıtım *Exportardışık düzen eylemsizlik*' i adlandırır.
 
 ```azurecli
@@ -291,6 +293,8 @@ Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.jso
 |pipelineResourceId     |  İçeri aktarma işlem hattının kaynak KIMLIĞI.<br/>Örnek: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |Kaynak     |  Depolama hesabınızdaki, *myblob* gibi, aktarılmış yapılar için mevcut Blobun adı
 
+Aynı özelliklere sahip bir ardışık düzen eylemsizlik kaynağını yeniden dağıtıyorsanız, [Forceupdatetag](#redeploy-pipelinerun-resource) özelliğini de kullanmanız gerekir.
+
 Kaynağı çalıştırmak için [az Deployment Group Create][az-deployment-group-create] ' i çalıştırın.
 
 ```azurecli
@@ -304,6 +308,23 @@ Dağıtım başarıyla tamamlandığında, hedef kapsayıcı kayıt defterindeki
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>Ardışık düzen eylemsizlik kaynağını yeniden Dağıt
+
+*Aynı özelliklerle*bir ardışık düzen eylemsizlik kaynağını yeniden dağıtıyorsanız, **forceupdatetag** özelliğinden yararlanabilirsiniz. Bu özellik, yapılandırma değişmemiş olsa bile ardışık düzen eylemsizlik kaynağının yeniden oluşturulması gerektiğini gösterir. Lütfen, ardışık düzen eylemsizlik kaynağını her yeniden dağıtırken forceUpdateTag 'in farklı olduğundan emin olun. Aşağıdaki örnek, dışa aktarma için bir ardışık düzen eylemsizlik oluşturur. ForceUpdateTag ' i ayarlamak için geçerli tarih saat kullanılır, bu nedenle bu özelliğin her zaman benzersiz olmasını sağlar.
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>İşlem hattı kaynaklarını silme

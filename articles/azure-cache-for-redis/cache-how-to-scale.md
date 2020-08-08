@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe725f3e4571f5b1f646b320e8c669e663c657e0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830018"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004691"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -26,7 +26,7 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 * Ağ bant genişliği
 * CPU Kullanımı
 
-Önbelleğinizin artık uygulamanızın gereksinimlerini karşılamadığını belirlerseniz, uygulamanız için uygun olan daha büyük veya daha küçük bir önbellek fiyatlandırma katmanına ölçeklendirebilirsiniz. Hangi önbellek fiyatlandırma katmanını kullanacağınızı belirleme hakkında daha fazla bilgi için bkz. [redne Için Azure Cache ve size ne kadar bellek kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Önbelleğinizin artık uygulamanızın gereksinimlerini karşılamadığını belirlerseniz, uygulamanız için uygun olan daha büyük veya daha küçük bir önbellek fiyatlandırma katmanına ölçeklendirebilirsiniz. Kullanılacak önbellek fiyatlandırma katmanını belirleme hakkında daha fazla bilgi için, bkz. [sağ katman seçme](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="scale-a-cache"></a>Bir önbelleği ölçeklendirme
 Önbelleğinizi ölçeklendirmek için [Azure Portal](https://portal.azure.com) [önbelleğe](cache-configure.md#configure-azure-cache-for-redis-settings) gidin ve **Kaynak menüsünden** **Ölçekle** ' ye tıklayın.

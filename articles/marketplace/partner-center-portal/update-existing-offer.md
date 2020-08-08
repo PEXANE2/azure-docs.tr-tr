@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 113808a3e2bab6c4cb9d2ea5f155a027abf1b5bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086345"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006800"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market'te bulunan bir teklifi güncelleştirme
 
@@ -43,7 +43,7 @@ Zaten yayımladığınız mevcut bir teklif içinde yeni bir plan eklemek için:
 
 1. Mevcut teklifiniz için **teklif genel bakış** sayfası ile **plana genel bakış** sayfasına gidin ve ardından **Yeni plan oluştur**' u seçin.
 1. **Mevcut planlar fiyatlandırma modelini**kullanarak [yönergelere](./create-new-saas-offer.md#plan-overview) göre yeni bir plan oluşturun.
-1. Plan adını değiştirdikten sonra **Taslağı kaydet** ' i seçin. 
+1. Plan adını değiştirdikten sonra **Taslağı kaydet** ' i seçin.
 1. Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Mevcut bir teklif içindeki bir planı güncelleştirme
@@ -55,6 +55,24 @@ Zaten yayımladığınız mevcut bir teklifin içindeki bir planda değişiklik 
 1. Plan adı, açıklama veya hedef kitle kullanılabilirliğine herhangi bir değişiklik yaptıktan sonra **Taslağı kaydet** ' i seçin.
 1. Güncelleştirmelerinizi yayımlamaya hazırsanız **gözden geçir ve Yayımla '** yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
 1. **Yayımla**' yı seçerek güncelleştirilmiş planı yayımlama için gönderebilirsiniz. Güncelleştirilmiş teklifin önizleme sürümü incelenmek ve oturumu kapatmak için kullanılabilir olduğunda size e-posta göndereceğiz.
+
+## <a name="offer-a-virtual-machine-plan-at-a-new-price"></a>Yeni bir fiyata bir sanal makine planı sunun
+
+Bir sanal makine planı yayımlandıktan sonra, fiyatı değiştirilemez. Aynı planı farklı bir fiyatla sunmak için planı gizlemeniz ve güncelleştirilmiş fiyata yeni bir tane oluşturmanız gerekir. İlk olarak, değiştirmek istediğiniz fiyattan planı gizleyin:
+
+1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster**' i seçin.
+1. **Planı Gizle** onay kutusunu seçin. Devam etmeden önce taslağı kaydedin.
+
+Planı eski fiyatla gizlemiş olduğunuza göre, bu planın güncelleştirilmiş fiyatla bir kopyasını oluşturun:
+
+1. Iş Ortağı Merkezi ' nde **plana genel bakış ' a**geri dönün.
+2. **Yeni plan oluştur**' u seçin. Bir **plan kimliği** ve bir **Plan adı**girip **Oluştur**' u seçin.
+1. Gizlediğiniz plandaki teknik yapılandırmayı yeniden kullanmak için, **Teknik yapılandırmayı yeniden kullan** onay kutusunu seçin. Daha fazla bilgi edinmek için [plana genel bakış](azure-vm-create-offer.md#plan-overview) konusunu okuyun.
+    > [!IMPORTANT]
+    > **Bu planı başka bir plandan teknik yapılandırmayı yeniden kullanır**' i seçerseniz, üst planı daha sonra satamazsınız. Ana planı satmaya geçmek istiyorsanız bu seçeneği kullanmayın.
+3. Yeni fiyat dahil olmak üzere yeni plan için gerekli tüm bölümleri doldurun.
+1. **Taslağı kaydet**'i seçin.
+1. Yeni plan için gerekli tüm bölümleri tamamladıktan sonra **gözden geçir ve Yayımla**' yı seçin. Bu işlem teklifinizi İnceleme ve yayınlama için gönderir. Daha ayrıntılı bilgi edinmek için [gözden geçirin ve ticari Market 'e bir teklif yayımlayın](../review-publish-offer.md) .
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Market teklifleriyle yapılan değişiklikleri karşılaştırın
 

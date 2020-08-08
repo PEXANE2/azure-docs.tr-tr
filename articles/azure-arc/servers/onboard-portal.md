@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/23/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bc9bc034abce789046803bbcad5b750984c905cb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809536"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008008"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -50,7 +50,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Betik oluştur** sayfasında, **işletim sistemi** açılan listesinde, betiğin üzerinde çalıştığı işletim sistemini seçin.
 
 1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduğundan, Ileri ' yi seçin **: ara sunucu**.
+
 1. **Proxy sunucusu** sekmesinde, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` .
+
 1. **Gözden geçir + oluştur**' u seçin.
 
 1. **Gözden geçir + oluştur** sekmesinde Özet bilgilerini gözden geçirin ve ardından **İndir**' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki**' yi seçin.
@@ -65,7 +67,7 @@ Bağlı makine aracısını *AzureConnectedMachineAgent.msi*Windows Installer pa
 >* Aracıyı yüklemek veya kaldırmak için *yönetici* izinlerinizin olması gerekir.
 >* Önce yükleyici paketini indirmeniz ve hedef sunucudaki bir klasöre veya paylaşılan bir ağ klasöründen kopyalamanız gerekir. Yükleyici paketini herhangi bir seçenek olmadan çalıştırırsanız, aracı etkileşimli olarak yüklemek için izleyebileceğiniz bir Kurulum Sihirbazı başlatılır.
 
-Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra, makalenin ilerleyen kısımlarında açıklanan bir komutu çalıştırmanız gerekir. Bu, proxy sunucu sistemi ortam değişkenini ayarlar `https_proxy` .
+Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra aşağıdaki adımlarda açıklanan bir komut çalıştırmanız gerekir. Bu komut, proxy sunucu sistemi ortam değişkenini ayarlar `https_proxy` .
 
 Windows Installer paketlerine yönelik komut satırı seçeneklerini tanımıyorsanız, [msiexec standart komut satırı seçeneklerini](/windows/win32/msi/standard-installer-command-line-options) ve [msiexec komut satırı seçeneklerini](/windows/win32/msi/command-line-options)gözden geçirin.
 
@@ -75,13 +77,32 @@ Windows Installer paketlerine yönelik komut satırı seçeneklerini tanımıyor
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Aracı sessizce yüklemek ve var olan klasörde bir kurulum günlük dosyası oluşturmak için `C:\Support\Logs` aşağıdaki komutu çalıştırın.
+1. Aracı sessizce yüklemek ve var olan klasörde bir kurulum günlük dosyası oluşturmak için `C:\Support\Logs` aşağıdaki komutu çalıştırın.
 
-```dos
-msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
-```
+    ```dos
+    msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+    ```
 
-Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*' dir.
+    Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*' dir.
+
+2. Makinenin bir ara sunucu üzerinden iletişim kurması gerekiyorsa, proxy sunucusu ortam değişkenini ayarlamak için aşağıdaki komutu çalıştırın:
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
+    $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+    # For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+    Restart-Service -Name himds
+    ```
+
+    >[!NOTE]
+    >Aracı bu önizlemede proxy kimlik doğrulamasını ayarlamayı desteklemiyor.
+    >
+
+3. Aracıyı yükledikten sonra, aşağıdaki komutu çalıştırarak Azure Arc hizmetiyle iletişim kurmasını sağlayacak şekilde yapılandırmanız gerekir:
+
+    ```dos
+    "%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"
+    ```
 
 ### <a name="install-with-the-scripted-method"></a>Komut dosyalı yöntemle Install
 
@@ -97,34 +118,13 @@ Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgile
 
 Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*' dir.
 
-### <a name="configure-the-agent-proxy-setting"></a>Aracı proxy ayarını yapılandırma
-
-Proxy sunucusu ortam değişkenini ayarlamak için aşağıdaki komutu çalıştırın:
-
-```powershell
-# If a proxy server is needed, execute these commands with the proxy URL and port.
-[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
-$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
-# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
-Restart-Service -Name himds
-```
-
->[!NOTE]
->Aracı bu önizlemede proxy kimlik doğrulamasını ayarlamayı desteklemiyor.
->
-
-### <a name="configure-agent-communication"></a>Aracı iletişimini yapılandırma
-
-Aracıyı yükledikten sonra, aşağıdaki komutu çalıştırarak aracıyı Azure Arc hizmeti ile iletişim kuracak şekilde yapılandırmanız gerekir:
-
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
 ## <a name="install-and-validate-the-agent-on-linux"></a>Linux 'ta aracıyı yükleyip doğrulama
 
 Linux için bağlı makine Aracısı, dağıtım için tercih edilen paket biçiminde sağlanır (. RPM veya. DEB) Microsoft [paket deposunda](https://packages.microsoft.com/)barındırılır. [Kabuk betik paketi `Install_linux_azcmagent.sh` ](https://aka.ms/azcmagent) aşağıdaki eylemleri gerçekleştirir:
 
 - Packages.microsoft.com adresinden Aracı paketini indirmek için konak makineyi yapılandırır.
 - Karma kaynak sağlayıcısı paketini kurar.
+- Makineyi Azure Arc 'a kaydeder
 
 İsteğe bağlı olarak, parametresini dahil ederek aracıyı proxy bilgileriniz ile yapılandırabilirsiniz `--proxy "{proxy-url}:{proxy-port}"` .
 
@@ -149,15 +149,6 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 # Install the connected machine agent. 
 bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 ```
-
-### <a name="configure-the-agent-communication"></a>Aracı iletişimini yapılandırma
-
-Aracıyı yükledikten sonra, aşağıdaki komutu çalıştırarak Azure Arc hizmeti ile iletişim kuracak şekilde yapılandırın:
-
-`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
->[!NOTE]
->**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc ile bağlantıyı doğrulama
 

@@ -3,16 +3,16 @@ title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321811"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002903"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
-Kuruluşunuz geliştikçe, yönetim grubu düzeyinde kaynak oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) dağıtabilirsiniz. Örneğin, bir yönetim grubu için [ilke](../../governance/policy/overview.md) veya [rol tabanlı erişim denetimleri](../../role-based-access-control/overview.md) tanımlamanız ve atamanız gerekebilir. Yönetim grubu düzeyi şablonları ile, ilkeleri yönetim grubu düzeyinde bildirimli olarak uygulayabilir ve roller atayabilirsiniz.
+Kuruluşunuz geliştikçe, yönetim grubu düzeyinde kaynak oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) dağıtabilirsiniz. Örneğin, bir yönetim grubu için [ilkeler](../../governance/policy/overview.md) veya [Azure rol tabanlı erişim denetımı (Azure RBAC)](../../role-based-access-control/overview.md) tanımlamanız ve atamanız gerekebilir. Yönetim grubu düzeyi şablonları ile, ilkeleri yönetim grubu düzeyinde bildirimli olarak uygulayabilir ve roller atayabilirsiniz.
 
 ## <a name="supported-resources"></a>Desteklenen kaynaklar
 
@@ -43,7 +43,7 @@ Abonelikler veya kaynak gruplarına dağıtan iç içe şablonlar için şunu ku
 
 Kaynaklarınızı yönetmek için şunu kullanın:
 
-* [lerimi](/azure/templates/microsoft.resources/tags)
+* [etiketler](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>Şema
 
@@ -357,6 +357,6 @@ Yönetim grubu düzeyi dağıtımından, yönetim grubu içinde bir aboneliği h
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Rol atama hakkında bilgi edinmek için bkz. [RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-template.md).
+* Rol atama hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme](../../role-based-access-control/role-assignments-template.md).
 * Azure Güvenlik Merkezi için çalışma alanı ayarlarını dağıtmaya ilişkin bir örnek için bkz. [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Ayrıca, [abonelik düzeyinde](deploy-to-subscription.md) ve [kiracı düzeyinde](deploy-to-tenant.md)şablonlar dağıtabilirsiniz.

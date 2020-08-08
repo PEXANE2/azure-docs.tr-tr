@@ -1,19 +1,17 @@
 ---
 title: MacOS-Azure ' dan Windows sanal masaüstüne bağlanma
 description: MacOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 80d75357baeb3f8afd910e22abca8b11af2d80b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285178"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007617"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>MacOS istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -38,7 +36,7 @@ Bir akışa abone olmak için:
 2. Akış URL 'sini girin. Bu bir URL veya e-posta adresi olabilir:
    - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
-3. **Ekle**'yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.
 
 Oturum açtıktan sonra, kullanılabilir kaynakların bir listesini görmeniz gerekir.

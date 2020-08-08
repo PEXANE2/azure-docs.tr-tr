@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fde142c76c71aa7155fd39d90f7a6c8120538141
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022438"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008670"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
@@ -102,6 +102,9 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
 4.  **Sertifikalar, tanımlayıcılar & profiller**   sayfasında, **tanımlayıcılar**' ın altında, az önce oluşturduğunuz uygulama kimliği satırı ÖĞESINI bulun ve ardından **uygulama kimliği yapılandırmasını düzenleme**ekranınızı göstermek için satırını seçin   .
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Notification Hubs için bir sertifika oluşturun
+
+> [!NOTE]
+> İOS 13 ' ün sürümleri nedeniyle, belirteç tabanlı kimlik doğrulaması kullanarak yalnızca sessiz bildirimler alabilirsiniz. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulaması ile geçiş yapmanız gerekir.
 
 Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika gerekir. Bu, iki şekilde yapılabilir:
 

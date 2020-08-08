@@ -2,14 +2,14 @@
 title: Havuzlar için VM boyutlarını seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları arasından seçim yapma
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 08/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005142"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -31,16 +31,16 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | Temel A | Basic_A0 *dışındaki* tüm boyutlar (a0) |
 | A | Standard_A0 *dışındaki* tüm boyutlar |
 | AV2 | Tüm Boyutlar |
-| B | Hiçbiri |
-| DC | Hiçbiri |
+| B | Yok |
+| DC | Yok |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
-| Dav4<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
-| Dasv4<sup>1</sup> | Standard_D48as_v4, Standard_D64as_v4, Standard_D96as_v4 hariç tüm boyutlar |
+| Dav4<sup>1</sup> | Tüm Boyutlar |
+| Dasv4<sup>1</sup> | Tüm Boyutlar |
 | Ddv4, Ddsv4 |  Hiçbiri-henüz kullanılamıyor |
 | Ev3, Esv3 | E64is_v3 ve E64i_v3 hariç tüm boyutlar |
-| Eav4<sup>1</sup> | Standard_E48a_v4, Standard_E64a_v4, Standard_E96a_v4 hariç tüm boyutlar |
-| Easv4<sup>1</sup> | Standard_E48as_v4, Standard_E64as_v4, Standard_E96as_v4 hariç tüm boyutlar |
+| Eav4<sup>1</sup> | Tüm Boyutlar |
+| Easv4<sup>1</sup> | Tüm Boyutlar |
 | Edv4, Edsv4 |  Hiçbiri-henüz kullanılamıyor |
 | F, FS | Tüm Boyutlar |
 | Fsv2 | Tüm Boyutlar |
@@ -60,8 +60,8 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | NDv2<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |
 | NVv3<sup>1</sup> | Tüm Boyutlar |
-| NVv4 | Hiçbiri |
-| SAP HANA | Hiçbiri |
+| NVv4 | Yok |
+| SAP HANA | Yok |
 
 <sup>1</sup> bu VM boyutları, sanal makine yapılandırmasındaki Batch havuzlarında tahsis edilebilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
 

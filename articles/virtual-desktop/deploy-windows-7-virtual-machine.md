@@ -1,19 +1,17 @@
 ---
 title: Windows 7 sanal makinesini dağıtma Windows sanal masaüstü-Azure
 description: Windows sanal masaüstü 'nde Windows 7 sanal makinesini yapılandırma ve dağıtma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285174"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007589"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
@@ -24,7 +22,7 @@ Windows sanal masaüstü üzerinde bir Windows 7 sanal makinesi (VM) dağıtma i
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin. Portalı kullanıyorsanız, [Azure Portal kullanarak bir konak havuzu oluşturmak için](create-host-pools-azure-marketplace.md)adım 1 ' den 9 ' a kadar olan yönergeleri izleyin. Bundan sonra boş bir konak havuzu oluşturmak için **gözden geçir + oluştur** ' u seçin. 
+Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin. Portalı kullanıyorsanız, [Azure Portal kullanarak bir konak havuzu oluşturmak için](create-host-pools-azure-marketplace.md)adım 1 ' den 9 ' a kadar olan yönergeleri izleyin. Bundan sonra boş bir konak havuzu oluşturmak için **gözden geçir + oluştur** ' u seçin.
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 sanal makinesini yapılandırma
 
@@ -49,9 +47,9 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
      ```
 
 12. Kayıt belirteci almak için [buradaki](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) yönergeleri izleyin.
-      
+
       - Azure portal kullanmayı tercih ediyorsanız, VM 'yi eklemek istediğiniz konak havuzunun genel bakış sayfasına gidebilir ve burada bir belirteç oluşturabilirsiniz.
-  
+
 13. Windows [7 Için Windows sanal masaüstü aracısını indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. Windows [7 Için Windows sanal masaüstü Aracısı Yöneticisi 'Ni indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Windows sanal masaüstü Aracısı yükleyicisini açın ve yönergeleri izleyin. İstendiğinde, 12. adımda oluşturduğunuz kayıt anahtarını verin.

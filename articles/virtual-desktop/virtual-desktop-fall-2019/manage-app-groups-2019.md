@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) için uygulama gruplarını yönetme-Azure
 description: Azure Active Directory 'da Windows sanal masaüstü (klasik) kiracılarının nasıl ayarlanacağını açıklar.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcf946c4bde89f3c14e78744305bc274ea67962f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ad8afc3d842a134ba09281005e35cf8cb04818a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284991"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009078"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü için uygulama gruplarını yönetme (klasik)
 
@@ -53,7 +51,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-   
+
 4. Uygulamasına göre uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın `AppAlias` . `AppAlias`3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
 
    ```powershell

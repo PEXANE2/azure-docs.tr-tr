@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5d525824039c276d0bc8a63256b32afa9cb25445
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851825"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009316"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB’nin API’si (sürüm 3.2): desteklenen özellikler ve söz dizimi
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı MongoDB istemci [sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak mongodb için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. Azure Cosmos DB MongoDB API 'SI, mevcut istemci sürücülerinin MongoDB [kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlanarak kullanımını sağlar.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı MongoDB istemci [sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak mongodb için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. MongoDB için Azure Cosmos DB’nin API’si, MongoDB [kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) bağlı kalarak mevcut istemci sürücülerinin kullanımını etkinleştirir.
 
 MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB 'nin avantajlarından yararlanarak, Cosmos DB sağladığı tüm kurumsal yetenekler şunlardır: [küresel dağıtım](distribute-data-globally.md), [Otomatik](partition-data.md)parçalama, kullanılabilirlik ve gecikme garantisi, her alanın otomatik dizin oluşturma, Rest, yedeklemeler ve çok daha fazlası.
 
@@ -228,7 +228,7 @@ Desteklenen işleçler, bunların kullanımıyla ilgili örneklerle birlikte aş
 }
 ```
 
-Operatör | Örnek |
+İşleç | Örnek |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -288,7 +288,7 @@ Normal ifade ($regex) sorgularında, soldan başlayan ifadeler dizin aramasına 
 
 ### <a name="geospatial-operators"></a>Jeo-uzamsal işleçler
 
-Operatör | Örnek | Destekleniyor |
+İşleç | Örnek | Desteklenir |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
@@ -308,13 +308,13 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>Ek işleçler
 
-Operatör | Örnek | Notlar
+İşleç | Örnek | Notlar
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
 $size | ```{ "Location.coordinates": { $size: 2 } }``` |
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | Desteklenmiyor. Bunun yerine $regex kullanın.
+$text |  | Desteklenmez. Bunun yerine $regex kullanın.
 
 ## <a name="unsupported-operators"></a>Desteklenmeyen işleçler
 
@@ -342,7 +342,7 @@ Cosmos DB, belgenin zaman damgasına göre yaşam süresi (TTL) desteği sağlar
 
 ## <a name="user-and-role-management"></a>Kullanıcı ve rol yönetimi
 
-Cosmos DB henüz kullanıcıları ve rolleri desteklemez. Ancak Cosmos DB, rol tabanlı erişim denetimi (RBAC) ve [Azure Portal](https://portal.azure.com) (bağlantı dizesi sayfası) aracılığıyla elde edilebilir salt okuma ve salt yazılır parolaları/anahtarları destekler.
+Cosmos DB henüz kullanıcıları ve rolleri desteklemez. Ancak, Azure rol tabanlı erişim denetimi (Azure RBAC) ve [Azure Portal](https://portal.azure.com) (bağlantı dizesi sayfası) aracılığıyla elde edilebilir salt okuma ve salt okuma parolalarını/anahtarlarını destekler Cosmos DB.
 
 ## <a name="replication"></a>Çoğaltma
 

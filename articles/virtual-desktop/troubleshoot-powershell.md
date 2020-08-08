@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü PowerShell-Azure
 description: Windows sanal masaüstü ortamı ayarlarken PowerShell ile ilgili sorunları giderme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd34fa2bc4c1083d4bd4dda7d118e0348a1a7fd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288719"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002273"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
 
@@ -22,7 +20,7 @@ ms.locfileid: "87288719"
 
 PowerShell 'i Windows sanal masaüstü ile kullanırken oluşan hataları ve sorunları gidermek için bu makaleyi kullanın. PowerShell Uzak Masaüstü Hizmetleri hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü PowerShell](/powershell/module/windowsvirtualdesktop/).
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -33,10 +31,10 @@ Bu bölümde, Windows sanal masaüstü ayarlanırken genellikle kullanılan Powe
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Hata: New-Azroleatama: belirtilen bilgiler bir AD nesne KIMLIĞIYLE eşlenmiyor
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**Neden:** *-Signınname* parametresi tarafından belirtilen kullanıcı, Windows sanal masaüstü ortamına bağlı Azure Active Directory bulunamıyor. 
+**Neden:** *-Signınname* parametresi tarafından belirtilen kullanıcı, Windows sanal masaüstü ortamına bağlı Azure Active Directory bulunamıyor.
 
 **Çözüm:** Aşağıdaki işlemlerden emin olun.
 
@@ -46,7 +44,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Hata: New-Azroleatama: "nesne kimliği olan istemcinin kapsam üzerinde eylem gerçekleştirme yetkilendirmesi yok (kod: AuthorizationFailed)"
 
-**Neden 1:** Kullanılan hesabın abonelik üzerinde sahip izinleri yok. 
+**Neden 1:** Kullanılan hesabın abonelik üzerinde sahip izinleri yok.
 
 **1. Çözüm:** Sahip izinlerine sahip bir kullanıcının rol atamasını yürütmesi gerekir. Alternatif olarak, bir Kullanıcı bir uygulama grubuna atamak için kullanıcının Kullanıcı erişimi Yöneticisi rolüne atanması gerekir.
 
@@ -57,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Hata: New-AzWvdHostPool--konum, kaynak türü için kullanılamaz
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 Neden: Windows sanal masaüstü, belirli konumlarda hizmet meta verilerini depolamak için konak havuzlarının, uygulama gruplarının ve çalışma alanlarının konumunu seçmeyi destekler. Seçenekleriniz bu özelliğin kullanılabildiği yerle kısıtlıdır. Bu hata, özelliğin seçtiğiniz konumda kullanılamadığı anlamına gelir.

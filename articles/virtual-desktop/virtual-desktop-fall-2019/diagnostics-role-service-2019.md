@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) sorunları tanılama-Azure
 description: Sorunları tanılamak için Windows sanal masaüstü (klasik) Tanılama özelliğini kullanma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285059"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009350"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki sorunları tanımla ve Tanıla (klasik)
 
@@ -25,7 +23,7 @@ Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden be
 * Akış aboneliği etkinlikleri: Son Kullanıcı bu etkinlikleri, Microsoft Uzak Masaüstü uygulamaları aracılığıyla akışına bağlanmayı denediğinde tetikler.
 * Bağlantı etkinlikleri: Son Kullanıcı, Microsoft Uzak Masaüstü uygulamalar aracılığıyla bir masaüstüne veya RemoteApp 'e bağlanmayı her denediğinde bu etkinlikleri tetikler.
 * Yönetim etkinlikleri: yönetici, sistem üzerinde, konak havuzları oluşturma, kullanıcıları uygulama gruplarına atama ve rol atamaları oluşturma gibi yönetim işlemlerini gerçekleştirirken bu etkinlikleri tetikler.
-  
+
 Tanılama rolü hizmeti Windows sanal masaüstü 'nün bir parçası olduğundan, Windows sanal masaüstüne ulaşmayacak bağlantılar tanılama sonuçlarında gösterilmez. Son Kullanıcı ağ bağlantısı sorunlarıyla karşılaşıyorsa Windows sanal masaüstü bağlantısı sorunları ortaya çıkabilir.
 
 Başlamak için, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/) . Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Windows sanal masaüstü tanılaması yalnızca bir PowerShell cmdlet 'i kullanır, ancak sorunları daraltmak ve yalıtmak için birçok isteğe bağlı parametre içerir. Aşağıdaki bölümlerde, sorunları tanılamak için çalıştırabileceğiniz cmdlet 'ler listelenmektedir. Çoğu filtre birlikte uygulanabilir. Parantez içinde listelenen değerler, gibi `<tenantName>` , durumunuza uygulanan değerlerle değiştirilmelidir.
 
 >[!IMPORTANT]
->Tanılama özelliği, tek kullanıcılı sorun giderme içindir. PowerShell kullanan tüm sorgular *-UserName* veya *-ActivityId* parametrelerini içermelidir. İzleme özellikleri için Log Analytics kullanın. Tanılama verilerini çalışma alanınıza gönderme hakkında daha fazla bilgi için bkz. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics-2019.md) . 
+>Tanılama özelliği, tek kullanıcılı sorun giderme içindir. PowerShell kullanan tüm sorgular *-UserName* veya *-ActivityId* parametrelerini içermelidir. İzleme özellikleri için Log Analytics kullanın. Tanılama verilerini çalışma alanınıza gönderme hakkında daha fazla bilgi için bkz. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics-2019.md) .
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Tanılama etkinliklerini kullanıcıya göre filtrele
 

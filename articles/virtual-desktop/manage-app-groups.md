@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü portalı için uygulama gruplarını yönetme-Azure
 description: Azure portal ile Windows sanal masaüstü uygulama gruplarını yönetme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283410"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010098"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Öğretici: Azure portal ile uygulama gruplarını yönetme
 
@@ -49,16 +47,16 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
     > ![Azure portal temel bilgiler sekmesinin ekran görüntüsü.](media/basics-tab.png)
 
 6. Konak havuzunuza uygulama grupları eklemek istiyorsanız, ekranın sol tarafındaki menüden **konak havuzları** ' nı seçin.
-   
+
     Ardından, uygulama gruplarını eklemek istediğiniz konak havuzunun adını seçin.
-   
+
     Bundan sonra, ekranın sol tarafındaki menüden **uygulama grupları** ' nı seçin ve **+ Ekle**' yi seçin.
 
     Son olarak, içinde uygulama grubunu oluşturmak istediğiniz abonelik grubunu ve kaynak grubunu seçin. Açılan menüden var olan bir kaynak grubunun adını seçebilir ya da yeni oluştur ' u seçerek yenisini **oluşturabilirsiniz** .
 
       >[!NOTE]
       >Konak havuzunuza uygulama grupları eklediğinizde, bundan sonra gelen uygulama grubuyla ilgili konak havuzu zaten seçilidir.
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![Ana Havuz önceden seçili olan temel bilgiler sekmesinin ekran görüntüsü.](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
 
 12.  **Uygulamalar** sekmesini seçin ve **+ Uygulama Ekle**' yi seçin.
 
-13.  Başlangıç menüsünden bir uygulama eklemek için: 
+13.  Başlangıç menüsünden bir uygulama eklemek için:
 
       - **Uygulama kaynağı** ' na gidin ve açılan menüden **Başlat menüsü** ' nü seçin. Sonra, **uygulama** ' ya gidin ve açılan menüden uygulamayı seçin.
 
@@ -111,7 +109,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
 16.  Uygulama grubunu bir çalışma alanına kaydetmek istiyorsanız, **uygulama grubunu kaydet** ' e gidin ve **Evet**' i seçin. Uygulama grubunu daha sonra kaydetmeyi tercih ediyorsanız **Hayır**' ı seçin.
 
 17.  **Evet**' i seçerseniz, uygulama grubunuzu kaydetmek için var olan bir çalışma alanı seçebilirsiniz.
-       
+
        >[!NOTE]
        >Uygulama grubunu yalnızca konak havuzuyla aynı konumda oluşturulan çalışma alanlarına kaydedebilirsiniz. Açabilirsiniz. bir çalışma alanına yeni uygulama grubunuz ile aynı konak havuzundan daha önceden kaydolduysanız, seçilir ve düzenleyemezsiniz. Bir konak havuzundaki tüm uygulama gruplarının aynı çalışma alanına kayıtlı olması gerekir.
 

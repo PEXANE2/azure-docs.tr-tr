@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) için hizmet uyarılarını ayarlama-Azure
 description: Azure hizmet durumunu Windows sanal masaüstü (klasik) için hizmet bildirimleri alacak şekilde ayarlama.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3f938c6e4c9bb13794ddd01092f0e79077a89cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3f2171d3271a4ffc4770dd0c9faea16c23e44d02
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283393"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005511"
 ---
 # <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü için hizmet uyarılarını ayarlama (klasik)
 
@@ -22,7 +20,7 @@ ms.locfileid: "87283393"
 
 Windows sanal masaüstü için hizmet sorunlarını ve sistem durumu belgelerini izlemek üzere Azure hizmet durumu ' nu kullanabilirsiniz. Azure hizmet durumu, farklı Uyarı türleri (örneğin, e-posta veya SMS) ile size bildirimde bulunabilir, bir sorunun etkisini anlamanıza yardımcı olur ve sorun çözümlendiği sürece güncelleştirmiş olursunuz. Azure hizmet durumu, kapalı kalma süresini azaltmanıza ve kaynaklarınızın kullanılabilirliğini etkileyebilecek planlı bakım ve değişiklikler için hazırlık yapmanıza da yardımcı olabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hizmet uyarıları oluşturun ve yapılandırın.

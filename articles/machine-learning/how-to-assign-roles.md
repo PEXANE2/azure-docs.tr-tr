@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836556"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002219"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -66,7 +66,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning işlemler
 
-Birçok işlem ve görev için yerleşik Eylemler Azure Machine Learning. Tüm liste için bkz. [Azure kaynak sağlayıcıları işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+Birçok işlem ve görev için yerleşik Eylemler Azure Machine Learning. Tüm liste için bkz. [Azure Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="create-custom-role"></a>Özel rol oluştur
 
@@ -382,9 +382,9 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırken dikkat etmeniz ger
 Amlcompute kümelerinde Kullanıcı tarafından atanan bir kimlik atamak için, birinin işlem oluşturmak için yazma izinlerine sahip olması ve [yönetilen kimlik operatörü rolü](/azure/role-based-access-control/built-in-roles#managed-identity-operator)olması gerekir. Yönetilen kimliklerle RBAC hakkında daha fazla bilgi için, [Kullanıcı tarafından atanan kimliği yönetme](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) konusunu okuyun
 
 
-### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>S. Studio portalında rol tabanlı erişim denetimlerini destekliyoruz mi?
+### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>S. Studio portalında rol tabanlı erişim denetimini destekliyoruz mi?
 
-Azure Machine Learning Studio rol tabanlı erişim denetimlerini destekler. 
+Azure Machine Learning Studio, Azure rol tabanlı erişim denetimini (Azure RBAC) destekler. 
 
 > [!IMPORTANT]
 > Çalışma alanınızda bir veri bilimcilerinin belirli izinleri olan özel bir rol atadıktan sonra, bunlara karşılık gelen eylemler (örneğin, bir işlem düğmesi ekleme), kullanıcılardan otomatik olarak gizlenir. Bu öğelerin gizlenmesi, kullanıldığında hizmetten yetkisiz erişim bildirimi döndüren denetimleri görmekten kaynaklanan karışıklıklara engel olur.

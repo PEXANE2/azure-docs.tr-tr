@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: yegu
-ms.openlocfilehash: 3f5cfccd1f85f68c619192496c62bf80ea8d4785
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170186"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008568"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Reddır için yönetilen önbellek hizmetinden Azure önbelleğine geçiş (kullanım dışı)
 Azure Yönetilen Önbellek Hizmeti kullanan uygulamalarınızın redin için Azure önbelleğine geçirilmesi, önbelleğe alma uygulamanız tarafından kullanılan yönetilen önbellek hizmeti özelliklerine bağlı olarak uygulamanızda en az değişiklikle gerçekleştirilebilir. API 'Ler tamamen benzer değildir ve bir önbelleğe erişmek için Yönetilen Önbellek hizmetini kullanan mevcut kodunuzun çoğu, en az değişiklikle yeniden kullanılabilir. Bu makalede, yönetilen önbellek hizmeti uygulamalarınızı Redsıs için Azure önbelleği 'ni kullanmak üzere geçirmek için gerekli yapılandırma ve uygulama değişikliklerinin nasıl yapılacağı gösterilmektedir ve Yönetilen Önbellek Hizmeti önbelleğinin işlevlerini uygulamak için redin Azure Cache 'in bazı özelliklerinin nasıl kullanılabileceği gösterilmektedir.
@@ -39,7 +40,7 @@ Azure Yönetilen Önbellek Hizmeti ve Redsıs için Azure önbelleği benzerdir 
 
 | Yönetilen Önbellek Hizmeti özelliği | Yönetilen Önbellek hizmeti desteği | Redsıs desteği için Azure önbelleği |
 | --- | --- | --- |
-| Adlandırılmış önbellekler |Varsayılan bir önbellek yapılandırılır ve standart ve Premium önbellek tekliflerinde, isterseniz en fazla dokuz ek adlandırılmış önbellek yapılandırılabilir. |Redsıs için Azure önbelleğinde, adlandırılmış önbelleklere benzer bir işlevsellik uygulamak için kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |
+| Adlandırılmış önbellekler |Varsayılan bir önbellek yapılandırılır ve standart ve Premium önbellek tekliflerinde, isterseniz en fazla dokuz ek adlandırılmış önbellek yapılandırılabilir. |Redsıs için Azure önbelleğinde, adlandırılmış önbelleklere benzer bir işlevsellik uygulamak için kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-development-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |
 | Yüksek Kullanılabilirlik |Standart ve Premium önbellek tekliflerindeki Önbellekteki öğeler için yüksek kullanılabilirlik sağlar. Bir hata nedeniyle öğeler kaybolursa, önbellekteki öğelerin yedek kopyaları hala kullanılabilir. Çoğaltma önbelleğine yazma işlemleri zaman uyumlu olarak yapılır. |Yüksek kullanılabilirlik, iki düğümlü birincil/çoğaltma yapılandırmasına (bir Premium önbellekteki her parça birincil/çoğaltma çiftine sahiptir) sahip olan standart ve Premium önbellek teklifleriyle kullanılabilir. Çoğaltmaya yazma işlemleri zaman uyumsuz olarak yapılır. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/). |
 | Bildirimler |Adlandırılmış bir önbellekte çeşitli önbellek işlemleri gerçekleşince istemcilerin zaman uyumsuz bildirimler almasına izin verir. |İstemci uygulamaları, bildirimlere benzer bir işlevsellik elde etmek için Redsıs pub/Sub veya [keyspace bildirimlerini](cache-configure.md#keyspace-notifications-advanced-settings) kullanabilir. |
 | Yerel önbellek |Daha hızlı erişim için, önbelleğe alınmış nesnelerin bir kopyasını istemcide yerel olarak depolar. |İstemci uygulamalarının bu işlevselliği bir sözlük veya benzer bir veri yapısı kullanarak uygulaması gerekir. |
@@ -47,7 +48,7 @@ Azure Yönetilen Önbellek Hizmeti ve Redsıs için Azure önbelleği benzerdir 
 | Süre sonu Ilkesi |Varsayılan süre sonu ilkesi mutlak ve varsayılan süre sonu aralığı 10 dakikadır. Kaydırma ve hiçbir zaman ilke de kullanılabilir değildir. |Varsayılan olarak önbellekteki öğelerin süresi dolmaz, ancak önbellek kümesi aşırı yüklemeleri kullanılarak yazma esasına göre bir süre sonu yapılandırılabilir. |
 | Bölgeler ve etiketleme |Bölgeler, önbelleğe alınmış öğeler için alt gruplar. Bölgeler Ayrıca, Etiketler adlı ek tanımlayıcı dizelerle önbelleğe alınmış öğelerin ek açıklamasını destekler. Bölgeler, bu bölgedeki herhangi bir etiketli öğe üzerinde arama işlemleri gerçekleştirme yeteneğini destekler. Bir bölgedeki tüm öğeler önbellek kümesinin tek bir düğümü içinde bulunur. |Redin için bir Azure önbelleği, tek bir düğümden oluşur (Redsıs kümesi etkin değilse), Yönetilen Önbellek Hizmeti bölgeleri kavramı uygulanmaz. Redsıs anahtarları alırken arama ve joker karakter işlemlerini destekler, böylece açıklayıcı Etiketler anahtar adlarına katıştırılabildiğinden ve öğeleri daha sonra almak için kullanılabilir. Red, kullanarak etiketleme çözümü uygulama örneği için bkz. [redsıs ile önbellek etiketleme uygulama](https://stackify.com/implementing-cache-tagging-redis/). |
 | Serileştirme |Yönetilen Önbellek NetDataContractSerializer, BinaryFormatter ve özel serileştiricilerin kullanımını destekler. Varsayılan değer NetDataContractSerializer ' dir. |Bu, istemci uygulamanın, seri hale getirme seçeneği ile istemci uygulama geliştiricisine kadar olan, önbelleğe alınmadan önce .NET nesnelerini seri hale getirme sorumluluğundadır. Daha fazla bilgi ve örnek kod için bkz. [önbellekte .NET nesneleriyle çalışma](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
-| Önbellek öykünücüsü |Yönetilen Önbellek, yerel bir önbellek öykünücüsü sağlar. |Redin için Azure önbelleğinde öykünücü yoktur, ancak öykünücü deneyimi sağlamak için [redis-server.exe MSOpenTech derlemesini yerel olarak çalıştırabilirsiniz](cache-faq.md#cache-emulator) . |
+| Önbellek öykünücüsü |Yönetilen Önbellek, yerel bir önbellek öykünücüsü sağlar. |Redin için Azure önbelleğinde öykünücü yoktur, ancak bir öykünücü deneyimi sağlamak için [redsıs 'yi yerel olarak çalıştırabilirsiniz](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis) . |
 
 ## <a name="choose-a-cache-offering"></a>Bir önbellek teklifi seçin
 Redo için Microsoft Azure Cache aşağıdaki katmanlarda kullanılabilir:
@@ -58,7 +59,7 @@ Redo için Microsoft Azure Cache aşağıdaki katmanlarda kullanılabilir:
 
 Her katman özellikler ve fiyatlandırma açısından farklıdır. Özellikler bu kılavuzun ilerleyen kısımlarında ele alınmıştır ve fiyatlandırma hakkında daha fazla bilgi için bkz. [önbellek fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cache/).
 
-Geçiş için bir başlangıç noktası, önceki Yönetilen Önbellek Hizmeti önbelleğinizin boyutuyla eşleşen boyutu seçip uygulamanızın gereksinimlerine bağlı olarak ölçeği büyütme veya küçültme olur. Redin teklifi için doğru Azure önbelleğini seçme hakkında daha fazla bilgi için bkz. [redne Için Azure önbelleği ve boyutu kullanmalıyım](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Geçiş için bir başlangıç noktası, önceki Yönetilen Önbellek Hizmeti önbelleğinizin boyutuyla eşleşen boyutu seçip uygulamanızın gereksinimlerine bağlı olarak ölçeği büyütme veya küçültme olur. Redin sunumu için doğru Azure önbelleğini seçme hakkında daha fazla bilgi için, bkz. [doğru katmanı seçme](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="create-a-cache"></a>Önbellek oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

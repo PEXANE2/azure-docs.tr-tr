@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü FSLogix profili kapsayıcı paylaşma-Azure
 description: Sanal makine tabanlı dosya paylaşımının kullanıldığı bir Windows sanal masaüstü konak havuzu için FSLogix profil kapsayıcısını ayarlama.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211842"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002594"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
 
@@ -66,7 +64,7 @@ Sanal makineleri FSLogix yazılımıyla yapılandırmak için, konak havuzuna ka
 6. **Profiller**adlı bir anahtar oluşturun.
 7. Profiller anahtarı için aşağıdaki değerleri oluşturun:
 
-| Name                | Tür               | Veri/değer                        |
+| Ad                | Tür               | Veri/değer                        |
 |---------------------|--------------------|-----------------------------------|
 | Etkin             | DWORD              | 1                                 |
 | Vhdkonumları        | Çok dizeli değer | "Dosya paylaşımının ağ yolu"     |

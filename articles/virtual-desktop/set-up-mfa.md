@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü için Azure Multi-Factor Authentication ayarlama-Azure
 description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication ayarlama.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291367"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009469"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için Multi-Factor Authentication'ı etkinleştirme
 
@@ -59,7 +57,7 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
 
    >[!IMPORTANT]
    > Web istemcisi için Windows sanal masaüstü Istemci uygulamaları kullanılır. Ancak, Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve MFA 'ya sahip olmamalıdır.
-  
+
 1. Uygulamanızı seçtikten sonra **Seç**' i seçin ve **bitti**' yi seçin.
 
    > [!div class="mx-imgBorder"]

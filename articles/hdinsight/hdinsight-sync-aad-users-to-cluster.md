@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085982"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004411"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
 
-[Kurumsal güvenlik paketi (ESP) Içeren HDInsight kümeleri](hdinsight-domain-joined-introduction.md) , Azure Active Directory (Azure AD) kullanıcılarıyla güçlü kimlik doğrulaması ve *rol tabanlı erişim denetimi* (RBAC) ilkeleri kullanabilir. Azure AD 'ye kullanıcılar ve gruplar eklerken, kümenize erişmesi gereken kullanıcıları da eşzamanlı hale getirebilirsiniz.
+[Kurumsal güvenlik paketi (ESP) Içeren HDInsight kümeleri](hdinsight-domain-joined-introduction.md) , Azure Active Directory (Azure AD) kullanıcılarıyla güçlü kimlik doğrulaması ve *Azure rol tabanlı erişim denetımı (Azure RBAC)* ilkelerini kullanabilir. Azure AD 'ye kullanıcılar ve gruplar eklerken, kümenize erişmesi gereken kullanıcıları da eşzamanlı hale getirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,7 +37,7 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
     ![Azure portal Kullanıcı bölmesi grupları seçin](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Kullanıcıları eşleştirmek için Apache ambarı REST API kullanma
 

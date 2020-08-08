@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220703"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007072"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -40,7 +40,7 @@ Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktad�
     Birden çok aboneliğiniz varsa App Service Ortamı bir uygulama oluşturmayı biliyorsanız, ortamı oluştururken kullandığınız aboneliğin aynısını kullanmanız gerekir. 
 3. Kaynak grubunu seçin veya oluşturun.
    
-    *Kaynak grupları* , ilgili Azure kaynaklarını birim olarak yönetmenizi sağlar ve uygulamalarınız için *rol tabanlı erişim denetimi* (RBAC) kuralları oluştururken faydalıdır. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış][ResourceGroups]. 
+    *Kaynak grupları* , ilgili Azure kaynaklarını bir birim olarak yönetmenizi sağlar ve uygulamalarınız için *Azure rol tabanlı erişim denetımı (Azure RBAC)* kuralları oluştururken faydalıdır. Daha fazla bilgi için bkz. [Azure Resource Manager'a genel bakış][ResourceGroups]. 
 4. Bir App Service planı seçin ya da oluşturun.
    
     *App Service planlar* , Web Apps 'in yönetilen kümeleridir.  Normal olarak, fiyatlandırma ' yı seçtiğinizde, ücretlendirilen fiyat ayrı uygulamalar yerine App Service planına uygulanır. ASA 'da, ASP 'iyle listelendikleriniz yerine asa 'ya ayrılan işlem örnekleri için ödeme yaparsınız.  Bir Web uygulamasının örnek sayısını ölçeklendirmek için App Service planınızın örneklerini ölçeklendirir ve bu plandaki tüm Web uygulamalarını etkiler.  Site yuvaları veya Sanal Ağ Tümleştirmesi gibi bazı özellikler de plan dahilinde miktar kısıtlamalarına sahiptir.  Daha fazla bilgi için bkz. [Azure App Service planlarına genel bakış](../overview-hosting-plans.md)

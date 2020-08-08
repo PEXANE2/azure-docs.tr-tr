@@ -1,14 +1,14 @@
 ---
 title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373768"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003498"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -130,10 +130,16 @@ Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz A
 
   1. Ana sayfada **eklentiyi etkinleştir** düğmesini seçin.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini etkinleştirin" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini etkinleştirin":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > **Eklentiyi etkinleştir** düğmesi gri ise, abonelik henüz önizlemeye eklenmedi. **Eklentiyi devre dışı bırak** düğmesi etkinse ve v2 iletisi için bir geçiş uyarısı görüntülenirse, Gatekeepver v2 hala yüklüdür ve kaldırılması gerekir.
+     > **Eklentiyi etkinleştir** düğmesi gri ise, abonelik henüz önizlemeye eklenmedi. **Eklentiyi devre dışı bırak** düğmesi etkinse ve bir geçiş uyarısı v2 iletisi görüntülenirse, v1 eklentisi yüklenir ve v2 ilke tanımları atanmadan önce kaldırılmalıdır. _Kullanımdan kaldırılan_ v1 eklentisi, 24 Ağustos 2020 ' den itibaren v2 eklentisi ile otomatik olarak değiştirilebilir. İlke tanımlarının yeni v2 sürümlerinin atanması gerekir. Şimdi yükseltmek için aşağıdaki adımları izleyin:
+     > 
+     > 1. AKS kümenizin, AKS kümenizdeki **ilkeler (Önizleme)** sayfasını ziyaret ederek v1 eklentisinin yüklü olduğunu doğrulayın ve "geçerli küme Azure ilke eklentisi 'ni kullanır..." İleti.
+     > 1. [Eklentiyi kaldırın](#remove-the-add-on-from-aks).
+     > 1. Eklentinin v2 sürümünü yüklemek için **eklentiyi etkinleştir** düğmesini seçin.
+     > 1. [V1 yerleşik ilke tanımlarınızın V2 sürümlerini atayın](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 

@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) kiracı konak havuzu oluşturma-Azure
 description: Windows sanal masaüstü (klasik) kiracı ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269606"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009265"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstünde kiracı ve konak havuzu oluşturma (klasik)
 
@@ -22,7 +20,7 @@ ms.locfileid: "87269606"
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -43,9 +41,9 @@ Ham hata örneği:
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -124,12 +122,12 @@ Etkinlik günlüğündeki hatayı görüntülemek için:
 1. Geçerli Azure Marketi dağıtım sunumndan çıkın.
 2. Üst arama çubuğunda **etkinlik günlüğü**' nü arayıp seçin.
 3. Durumu **başarısız** olan **dağıtımı doğrula** adlı bir etkinlik bulun ve etkinliği seçin.
-   
+
    > [!div class="mx-imgBorder"]
    > ![* * Başarısız * * durumundaki tek * * dağıtımı doğrula * * etkinliğinin ekran görüntüsü](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. JSON ' ı seçin ve ardından "statusMessage" alanını görene kadar ekranın alt kısmına gidin.
-   
+
    > [!div class="mx-imgBorder"]
    > ![JSON metninin statusMessage özelliği etrafında kırmızı bir kutu ile başarısız etkinliğin ekran görüntüsü.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -260,7 +258,7 @@ Ham hata örneği:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

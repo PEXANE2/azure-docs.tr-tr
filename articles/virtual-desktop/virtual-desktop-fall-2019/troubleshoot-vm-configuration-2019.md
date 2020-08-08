@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) oturum ana bilgisayarı-Azure sorunlarını giderme
 description: Windows sanal masaüstü (klasik) oturum ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291250"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008636"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows sanal masaüstü (klasik) oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -22,7 +20,7 @@ ms.locfileid: "87291250"
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -311,7 +309,7 @@ Bir yönetici hesabı kullanarak Windows 10 Enterprise çoklu oturumunda oturum 
 
 Zaman sınırının süresi dolarsa, "Bu bilgisayar için kullanılabilir uzak masaüstü istemci erişim lisansı olmadığından uzak oturumun bağlantısı kesildi." ifadesini içeren bir hata iletisi görüntülenir.
 
-Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.  
+Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.
 
 >[!NOTE]
 >Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](/windows-server/remote/remote-desktop-services/rds-client-access-license/).

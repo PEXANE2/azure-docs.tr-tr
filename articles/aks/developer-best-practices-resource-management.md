@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281574"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005321"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Uygulama geliştiricilerinin Azure Kubernetes Service (AKS) içindeki kaynakları yönetmesi için en iyi uygulamalar
 
@@ -74,7 +74,7 @@ Kaynak ölçümleri ve atamaları hakkında daha fazla bilgi için bkz. [kapsay�
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>AKS kümesinde uygulama geliştirme ve hata ayıklama
 
-**En iyi yöntem kılavuzumuzu** geliştirme ekipleri, dev alanlarını kullanarak bir aks kümesine karşı dağıtım ve hata ayıklamalıdır. Bu geliştirme modeli, uygulama üretime dağıtılmadan önce rol tabanlı erişim denetimleri, ağ veya depolama gereksinimlerinizin uygulandığından emin olur.
+**En iyi yöntem kılavuzumuzu** geliştirme ekipleri, dev alanlarını kullanarak bir aks kümesine karşı dağıtım ve hata ayıklamalıdır. Bu geliştirme modeli, uygulama üretime dağıtılmadan önce rol tabanlı erişim denetimi (RBAC), ağ veya depolama gereksinimlerinizin uygulandığından emin olmanızı sağlar.
 
 Azure Dev Spaces ile, uygulamaları doğrudan bir AKS kümesine karşı geliştirin, hata ayıklayın ve test edersiniz. Bir ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca derleme ve test yapmak için birlikte çalışır. Visual Studio veya Visual Studio Code gibi mevcut araçları kullanmaya devam edebilirsiniz. Bir AKS kümesinde uygulamayı çalıştırma ve hata ayıklama seçeneği sunan dev alanları için bir uzantı yüklenir.
 

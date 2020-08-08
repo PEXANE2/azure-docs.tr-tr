@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü ortamı konak havuzu oluşturma-Azure
 description: Windows sanal masaüstü ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a36e21d346e08ebe09f8c4b34f6af529d2a0f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292567"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006171"
 ---
 # <a name="host-pool-creation"></a>Konak havuzu oluşturma
 
@@ -22,7 +20,7 @@ ms.locfileid: "87292567"
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -37,13 +35,13 @@ Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marke
 > [!div class="mx-imgBorder"]
 > !["Ücretsiz hesap oluşturma" iletisinin gösterildiği Azure portal gösteren resim](media/create-new-account.png)
 
-**Neden**: Azure 'da oturum açtığınız hesapta etkin abonelikler yok veya hesabın abonelikleri görüntüleme izni yok. 
+**Neden**: Azure 'da oturum açtığınız hesapta etkin abonelikler yok veya hesabın abonelikleri görüntüleme izni yok.
 
 **Çözüm**: en az katkıda bulunan düzeyinde erişimi olan bir hesapla oturum ana bilgisayarı sanal makinelerini (VM 'ler) dağıtacağınız abonelikte oturum açın.
 
 ### <a name="error-exceeding-quota-limit"></a>Hata: "kota sınırını aşılıyor"
 
-İşlem, kota sınırının üzerine gittiğinde, aşağıdakilerden birini yapabilirsiniz: 
+İşlem, kota sınırının üzerine gittiğinde, aşağıdakilerden birini yapabilirsiniz:
 
 - Aynı parametrelerle, ancak daha az VM ve VM çekirdeğine sahip yeni bir konak havuzu oluşturun.
 
@@ -119,9 +117,9 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 Ham hata örneği:
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
@@ -138,10 +136,10 @@ Ham hata örneği:
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -162,7 +160,7 @@ Ham hata örneği:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

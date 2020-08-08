@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü oturumu ana bilgisayarı sorunlarını giderme-Azure
 description: Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f0665aa8427371fa458039d73297fa0e02b4eb4d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286385"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005217"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -22,7 +20,7 @@ ms.locfileid: "87286385"
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -138,8 +136,8 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 **Çözüm:** Aracı kayıt defteri hatasını onarmak için bu yönergeleri izleyin.
 
-1. Zaten bir kayıt belirteci varsa Remove-AzWvdRegistrationInfo ile kaldırın. 
-2. Yeni bir belirteç oluşturmak için **New-AzWvdRegistrationInfo** cmdlet 'ini çalıştırın. 
+1. Zaten bir kayıt belirteci varsa Remove-AzWvdRegistrationInfo ile kaldırın.
+2. Yeni bir belirteç oluşturmak için **New-AzWvdRegistrationInfo** cmdlet 'ini çalıştırın.
 3. *-Expriationtime* parametresinin 3 gün olarak ayarlandığını doğrulayın.
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Hata: Windows sanal masaüstü Aracısı Get-AzWvdSessionHost çalıştırılırken bir sinyal bildirmiyor
@@ -305,7 +303,7 @@ Bir yönetici hesabı kullanarak Windows 10 Enterprise çoklu oturumunda oturum 
 
 Zaman sınırının süresi dolarsa, "Bu bilgisayar için kullanılabilir uzak masaüstü istemci erişim lisansı olmadığından uzak oturumun bağlantısı kesildi." ifadesini içeren bir hata iletisi görüntülenir.
 
-Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.  
+Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.
 
 >[!NOTE]
 >Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](/windows-server/remote/remote-desktop-services/rds-client-access-license/).

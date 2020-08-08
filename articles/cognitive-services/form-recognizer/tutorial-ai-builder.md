@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 6ea1504f5cb3ae405ccd22774204f898484e6876
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987129"
+ms.locfileid: "88003361"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Eğitim/test verileri için kullanılan aynı türden en az beş form kümesi. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
-* Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)'i içermesi gerekir.
+* Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)içermesi gerekir.
 * Bir AI Oluşturucu [eklentisi veya denemesi](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409).
 
 

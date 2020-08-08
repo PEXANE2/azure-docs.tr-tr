@@ -1,18 +1,16 @@
 ---
 title: Windows sanal masaüstü için GPU 'YU Yapılandırma-Azure
 description: Windows sanal masaüstü 'nde GPU hızlandırmalı işleme ve kodlamayı etkinleştirme.
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a80e9940aff69d351fde7512cfc38a12d6029f74
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291493"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007785"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -58,7 +56,7 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
 
 Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve masaüstü bilgisayarlar tarafından oluşturulan tüm grafikleri (GPU ile veya CPU ile işlenmeksizin) kodlar. Ekranın bir kısmı sıklıkla güncelleniyorsa, ekranın bu bölümü bir video codec bileşeniyle (H. bir/AVC) kodlanır. Varsayılan olarak, uzak masaüstü bu kodlama için kullanılabilir GPU 'lara ait değildir. GPU hızlandırmalı çerçeve kodlamasını etkinleştirmek için oturum ana bilgisayarı için grup ilkesi yapılandırın. Yukarıdaki adımlara devam edin:
- 
+
 >[!NOTE]
 >GPU hızlandırmalı çerçeve kodlaması NVv4 serisi VM 'lerde kullanılamaz.
 

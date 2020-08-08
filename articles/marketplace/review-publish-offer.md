@@ -8,18 +8,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9c05753b44b0c644b121eb3ccd3316633f9e5964
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119744"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009537"
 ---
-# <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi gözden geçirin ve yayımlayın
+# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi gözden geçirin ve yayımlayın
 
 Bu makalede, Iş Ortağı Merkezi 'ni kullanarak teklifinizin önizlemesini nasıl göndereceğiniz, teklifinizin önizlemesinin nasıl yapılacağı ve daha sonra Microsoft Commercial Market 'te yayımlayacağınız gösterilmektedir. Yayımlama adımlarında ilerlerken yayımlama durumunuzu nasıl denetliyoruz de ele alınmaktadır. Yayımlamak istediğiniz bir teklifi önceden oluşturmuş olmanız gerekir.
 
-## <a name="go-to-your-offer-in-commercial-marketplace"></a>Ticari Market 'teki teklifinizi ziyaret edin
+## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Ticari Market 'teki teklifinizi ziyaret edin
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 1. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
@@ -53,13 +53,13 @@ Bu makalede, Iş Ortağı Merkezi 'ni kullanarak teklifinizin önizlemesini nas�
 
 **Yayımla**' yı seçtikten sonra doğrulama ve yayımlama işlemi sırasıyla devam ediyor. En yaygın yayımlama süreci bu tabloda gösterilmiştir:
 
-| Aşama | Ne olur | 
+| Aşama | Ne olur? | 
 | ------------ | ------------- | ------------- |
 | Otomatik doğrulama | Otomatik doğrulama kümesini işliyoruz. | 
-| Sertifikasyon | El ile doğrulama yaptık. | 
+| Sertifika | El ile doğrulama yaptık. | 
 | Önizleme oluşturma | Teklif önizlemeniz için liste sayfası önizleme bağlantısına sahip olan herkes tarafından kullanılabilir. Teklifiniz Microsoft (transactable) üzerinden satılıyorsa, yalnızca teklifinizin **ön izleme İzleyicisi** sayfasında belirttiğiniz hedef kitle, test için teklif satın alabilir ve bu teklifi erişebilir. | 
 | Yayımcı oturumu kapatma | Teklifinizi önizlemenizi ve onaylamanıza yönelik bir istek içeren bir e-posta göndereceğiz. | 
-| Yayımlama | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. | 
+| Yayımla | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. | 
 |||
 
 ## <a name="automated-validation-phase"></a>Otomatik doğrulama aşaması

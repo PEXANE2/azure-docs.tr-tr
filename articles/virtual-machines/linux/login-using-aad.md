@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534745"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002326"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -35,7 +35,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Linux VM 'lerinde oturum a
   - Azure sanal makinelerinde oturum açmayı daha da güvenli hale getirmek için Multi-Factor Authentication 'ı yapılandırabilirsiniz.
   - Azure Active Directory ile Linux VM 'lerinde oturum açma özelliği, [Federasyon Hizmetleri](../../active-directory/hybrid/how-to-connect-fed-whatis.md)kullanan müşteriler için de kullanılabilir.
 
-- **Sorunsuz işbirliği:** Rol tabanlı Access Control (RBAC) ile, belirli bir VM 'de, düzenli bir kullanıcı olarak veya yönetici ayrıcalıklarına sahip kimlerin oturum açmasını belirtebilirsiniz. Kullanıcılar ekibinize katılırsanız veya takımınızda ayrıldığınızda, uygun şekilde erişim sağlamak için VM RBAC ilkesini güncelleştirebilirsiniz. Bu deneyim, gereksiz SSH ortak anahtarlarını kaldırmak için VM 'Leri Temizleme zorunluluktan çok daha basittir. Çalışanlar kuruluştan ayrıldığında ve Kullanıcı hesapları devre dışı bırakıldığında veya Azure AD 'den kaldırıldığında, kaynaklarınıza artık erişemez.
+- **Sorunsuz işbirliği:** Azure rol tabanlı erişim denetimi (Azure RBAC) sayesinde, belirli bir VM 'de, düzenli bir kullanıcı veya yönetici ayrıcalıklarına sahip kimlerin oturum açmasını belirtebilirsiniz. Kullanıcılar ekibinize katılırsanız veya takımınızda ayrıldığınızda, uygun şekilde erişim sağlamak için VM için Azure RBAC ilkesini güncelleştirebilirsiniz. Bu deneyim, gereksiz SSH ortak anahtarlarını kaldırmak için VM 'Leri Temizleme zorunluluktan çok daha basittir. Çalışanlar kuruluştan ayrıldığında ve Kullanıcı hesapları devre dışı bırakıldığında veya Azure AD 'den kaldırıldığında, kaynaklarınıza artık erişemez.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Desteklenen Azure bölgeleri ve Linux dağıtımları
 
@@ -121,7 +121,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) ilkesi, VM 'de kimlerin oturum 
 > [!NOTE]
 > Bir kullanıcının SSH üzerinden VM 'de oturum açmasına izin vermek için, *Sanal Makine Yöneticisi oturum açma* veya *sanal makine Kullanıcı oturum açma* rolünü atamanız gerekir. Bir VM için atanan *sahip* veya *katkıda* bulunan rollerinin bulunduğu bir Azure KULLANıCıSıNıN, sanal makinede SSH üzerinden oturum açma ayrıcalıkları otomatik olarak yoktur.
 
-Aşağıdaki örnek, geçerli Azure kullanıcılarınız için *Sanal Makine Yöneticisi oturum açma* rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve *kapsam* , [az VM Show](/cli/azure/vm#az-vm-show)ile önceki bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimleri](../../role-based-access-control/overview.md)
+Aşağıdaki örnek, geçerli Azure kullanıcılarınız için *Sanal Makine Yöneticisi oturum açma* rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve *kapsam* , [az VM Show](/cli/azure/vm#az-vm-show)ile önceki bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal Azure RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [Azure RBAC](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa,--atane *-nesnesi-kimliği*ile Kullanıcı HESABıNıZıN nesne kimliğini belirtmeniz *gerekir.* Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
 
-Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında daha fazla bilgi için bkz. [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)veya [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanma.
+Azure RBAC kaynaklarına erişimi yönetmek için Azure RBAC kullanma hakkında daha fazla bilgi için bkz. [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)veya [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanma.
 
 Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması için çok faktörlü kimlik doğrulaması gerektirecek şekilde Azure AD 'yi yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Bulutta Azure Multi-Factor Authentication kullanmaya başlama](../../active-directory/authentication/howto-mfa-getstarted.md).
 
@@ -185,7 +185,7 @@ Azure AD kimlik bilgileriyle SSH kullanmaya çalıştığınızda oluşan bazı 
 
 ### <a name="access-denied-azure-role-not-assigned"></a>Erişim reddedildi: Azure rolü atanmadı
 
-SSH isteminizde aşağıdaki hatayı görürseniz, VM için *sanal makine yöneticisi oturumu* veya *sanal makine Kullanıcı oturum açma* rolü veren RBAC ilkelerini yapılandırdığınızdan emin olun:
+SSH isteminizde aşağıdaki hatayı görürseniz, VM için *Sanal Makine Yöneticisi oturum açma* veya *sanal makine Kullanıcı oturum açma* rolü veren Azure RBAC ilkelerini yapılandırdığınızdan emin olun:
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

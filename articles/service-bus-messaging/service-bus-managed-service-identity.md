@@ -3,12 +3,12 @@ title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2e1c6127f3705adbf05cbfd8a92740651efe9048
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3458d7d160317e383da6217252e3dd7ed52e90f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835672"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008908"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD), [Azure rol tabanlı erişim denetimi (Azure R
 Azure AD güvenlik sorumlusuna bir Azure rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, abonelik düzeyi, kaynak grubu veya Service Bus ad alanı kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya Azure kaynakları için yönetilen bir kimlik olabilir.
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>Azure Service Bus için Azure yerleşik rolleri
-Azure Service Bus için ad alanları ve tüm ilgili kaynakların Azure portal ve Azure Kaynak yönetimi API 'SI aracılığıyla yönetimi, *rol tabanlı erişim denetimi* (RBAC) modeli kullanılarak zaten korunuyor. Azure, bir Service Bus ad alanına erişim yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
+Azure Service Bus için ad alanları ve tüm ilgili kaynaklar Azure portal ve Azure Kaynak yönetimi API 'SI aracılığıyla Azure RBAC modeli kullanılarak zaten korunuyor. Azure, bir Service Bus ad alanına erişim yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
 
 - [Veri sahibi Azure Service Bus](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Service Bus ad alanına ve varlıklarına veri erişimi sağlar (kuyruklar, konular, abonelikler ve filtreler)
 - [Veri göndereni Azure Service Bus](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Service Bus ad alanına ve varlıklarına gönderme erişimi sağlamak için bu rolü kullanın.
@@ -72,7 +72,7 @@ VM 'nizden Service Bus kaynaklarını yetkilendirmek üzere Azure kaynakları i�
 - [Azure Resource Manager istemci kitaplıkları](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Azure AD 'de yönetilen bir kimliğe izin verme
-Uygulamanızdaki yönetilen bir kimlikle Service Bus hizmetine bir istek yetkilendirmek için, önce bu yönetilen kimlik için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure Service Bus Service Bus gönderme ve okuma izinlerini çevreleyen Azure rollerini tanımlar. Azure rolü yönetilen bir kimliğe atandığında, yönetilen kimliğe uygun kapsamda Service Bus varlıklara erişim verilir.
+Uygulamanızdaki yönetilen bir kimlikle Service Bus hizmetine bir istek yetkilendirmek için, önce bu yönetilen kimlik için Azure rol tabanlı erişim denetimi (Azure RBAC) ayarlarını yapılandırın. Azure Service Bus Service Bus gönderme ve okuma izinlerini çevreleyen Azure rollerini tanımlar. Azure rolü yönetilen bir kimliğe atandığında, yönetilen kimliğe uygun kapsamda Service Bus varlıklara erişim verilir.
 
 Azure rolleri atama hakkında daha fazla bilgi için bkz. [Service Bus kaynaklara erişim için Azure Active Directory kimlik doğrulaması ve yetkilendirme](authenticate-application.md#azure-built-in-roles-for-azure-service-bus).
 
@@ -108,7 +108,7 @@ Bir Service Bus ad alanına rol atamak için Azure portal ad alanına gidin. Kay
 4.  **Rol ataması Ekle** sayfasında, atamak istediğiniz Azure Service Bus rolleri seçin. Ardından, rolü atamak için kaydettiğiniz hizmet kimliğini bulmak için arama yapın.
     
     ![Rol atama sayfası ekle](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  **Kaydet**’i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Azure Service Bus veri sahibi olduğunu gösterilmektedir.
+5.  **Kaydet**'i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Azure Service Bus veri sahibi olduğunu gösterilmektedir.
     
     ![Bir role atanan kimlik](./media/service-bus-managed-service-identity/role-assigned.png)
 

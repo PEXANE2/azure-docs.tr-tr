@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) için Tanılama aracını dağıtma-Azure
 description: Windows sanal masaüstü (klasik) için tanılama UX aracı 'nı dağıtma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285110"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009197"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
 

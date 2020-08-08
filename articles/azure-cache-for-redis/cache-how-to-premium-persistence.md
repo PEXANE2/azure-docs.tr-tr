@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80245285"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004802"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için veri kalıcılığını yapılandırma
 Redsıs için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium bir Azure önbelleğinde kalıcılığı yapılandırma açıklanmaktadır.
-
-Diğer Premium önbellek özellikleri hakkında daha fazla bilgi için bkz. [Redsıs Premium katmanı Için Azure önbelleğine giriş](cache-premium-tier-intro.md).
 
 ## <a name="what-is-data-persistence"></a>Veri kalıcılığı nedir?
 [Redsıs kalıcılığı](https://redis.io/topics/persistence) , redin içinde depolanan verileri kalıcı hale getirebilmeniz için izin verir. Ayrıca, anlık görüntüler alabilir ve verileri yedekleyebilir ve bu da donanım arızası durumunda yükleyebilirsiniz. Bu, tüm verilerin bellekte depolandığı temel veya standart katmandan çok büyük bir avantajdır ve önbellek düğümlerinin kapatılmasında oluşabilecek bir hata olması durumunda olası veri kaybı olabilir. 
@@ -166,7 +164,7 @@ AOF dosyası yeterince büyük olduğunda otomatik olarak bir yeniden yazma işl
 
 AOF dosyalarında depolanan veriler, verileri depolamaya kaydetme performansını artırmak için düğüm başına birden çok sayfa bloblarına bölünmüştür. Aşağıdaki tabloda her bir fiyatlandırma katmanı için kaç sayfa Blobları kullanıldığını göstermektedir:
 
-| Premium katman | Bloblar |
+| Premium katmanı | Bloblar |
 |--------------|-------|
 | P1           | parça başına 4    |
 | P2           | parça başına 8    |
@@ -179,9 +177,9 @@ Yeniden yazma işleminden sonra depolama alanında iki dosya kümesi vardır. Ye
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla Premium önbellek özelliği kullanmayı öğrenin.
+Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
-* [Redsıs Premium katmanı için Azure önbelleğine giriş](cache-premium-tier-intro.md)
+* [Redsıs Premium hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836947"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009690"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -24,27 +24,13 @@ Bu makalenin bu sürümü, Azure portal kullanarak bu adımları el ile tek tek 
 * CLı kullanarak bu adımları el ile yapmak için, bu makalenin CLı sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (CLI) ayarlama*](how-to-set-up-instance-cli.md).
 * Bir dağıtım betiği örneği kullanarak otomatikleştirilmiş bir kurulum aracılığıyla çalıştırmak için, bu makalenin betikleştirilmiş sürümüne bakın: [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (komut dosyalı)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-Ardından [Azure Portal](https://ms.portal.azure.com/) kimlik bilgilerinizle oturum açın.
-
-## <a name="prerequisites-permission-requirements"></a>Önkoşullar: Izin gereksinimleri
-
-Bu makaledeki tüm adımları tamamlayabilmeniz için, Azure aboneliğinizde bir sahip olarak sınıflandırılmalıdır. 
-
-İzin düzeyinizi Azure portal [abonelik sayfasında](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) kontrol edebilirsiniz (Bu bağlantıyı kullanabilir veya Portal arama çubuğu ile *abonelikler* bulabilirsiniz). Kullanmakta olduğunuz aboneliğin adını bulun ve *rol* sütununda rolü görüntüleyin. Sahibiyseniz, bu değer *sahip*olur:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Kullanıcı sahip olarak gösteren Azure portal Abonelikler sayfasının görünümü" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-Değerin *katkıda* bulunduğunu veya *sahip*dışında bir şeyi fark ederseniz aşağıdaki yollarla devam edebilirsiniz:
-* Sizin adınıza bu makaledeki adımları tamamlamaya yönelik abonelik sahibine ve sahibine yönelik isteğe başvurun
-* Abonelik sahibine veya Kullanıcı erişimi yönetici rolüne sahip birine abone olur ve devam etmek için gereken izinlere sahip olacak şekilde aboneliğinizi aboneliğe sahip olarak yükseltmenizi isteyin. Bunun uygun olup olmadığı, kuruluşunuza ve onun içindeki rolünüze bağlıdır.
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Azure dijital TWINS örneğini oluşturma
 
-Bu bölümde, Azure portal kullanarak **Azure Digital TWINS 'in yeni bir örneğini oluşturacaksınız** .
+Bu bölümde, [Azure Portal](https://ms.portal.azure.com/)kullanarak **Azure Digital TWINS 'in yeni bir örneğini oluşturacaksınız** . Portala gidin ve kimlik bilgilerinizle oturum açın.
 
-[Azure Portal](https://ms.portal.azure.com/)oturum açtıktan sonra, Azure Hizmetleri giriş sayfası menüsünde _kaynak oluştur_ ' u seçerek başlayın.
+Portalda bir kez, Azure Hizmetleri giriş sayfası menüsünde _kaynak oluştur_ ' u seçerek başlayın.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
 
@@ -87,7 +73,7 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="' Erişim denetimi (ıAM) ' sayfasından rol ataması eklemeyi seçme":::
 
-Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliğinin sahibi tarafından tamamlanmalıdır):
+Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından tamamlanmalıdır):
 * **Rol**: açılan menüden *Azure dijital TWINS sahibini (Önizleme)* seçin
 * **Erişim ata**: açılan menüden *Azure AD Kullanıcı, Grup veya hizmet sorumlusu ' nı* seçin
 * **Seç**: atanacak kullanıcının adını veya e-posta adresini arayın. Sonucu seçtiğinizde, Kullanıcı *Seçili Üyeler* bölümünde görünür.

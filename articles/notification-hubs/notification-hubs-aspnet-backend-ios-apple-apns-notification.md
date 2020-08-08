@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530191"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004179"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri gönderme
 
@@ -50,7 +50,7 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
 1. [Azure Notification Hubs öğreticisini kullanarak iOS uygulamalarına anında iletme bildirimleri göndermek için](ios-sdk-get-started.md) oluşturduğunuz tek sayfalı görünüm uygulamasını açın.
 
    > [!NOTE]
-   > Bu bölümde, projenizin boş bir kuruluş adıyla yapılandırıldığı varsayılır. Aksi takdirde, kuruluşunuzun adını tüm sınıf adlarına eklemeniz gerekir.
+   > Bu bölümde, projenizin boş bir kuruluş adıyla yapılandırıldığı varsayılır. Aksi takdirde, kuruluşunuzun adını tüm sınıf adlarına ekleyin.
 
 2. `Main.storyboard`Dosyasında, nesne kitaplığından ekran görüntüsünde gösterilen bileşenleri ekleyin.
 
@@ -66,7 +66,7 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
 
      [Azure Notification Hubs öğreticisi kullanılarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md) hakkında bazı bileşenler eklenmiştir.
 
-3. Görünümdeki bileşenlerden **CTRL** ' e sürükleyin `ViewController.h` ve bu yeni aykırı değerleri ekleyin.
+3. Görünümdeki bileşenlerden **CTRL** 'e sürükleyin `ViewController.h` ve bu yeni aykırı değerleri ekleyin:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. İçinde `ViewController.h` , `#define` içeri aktarma deyimlerinizin ardından aşağıdakini ekleyin. `<Enter Your Backend Endpoint>`Yer tutucusunu, önceki bölümde uygulamanızın arka ucunu dağıtmak için kullandığınız hedef URL ile değiştirin. Örneğin, `http://your_backend.azurewebsites.net`.
+4. İçinde `ViewController.h` , `#define` içeri aktarma deyimlerinizin ardından aşağıdakini ekleyin. `<Your backend endpoint>`Yer tutucusunu, önceki bölümde uygulamanızın arka ucunu dağıtmak için kullandığınız hedef URL ile değiştirin. Örneğin `http://your_backend.azurewebsites.net` :
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. Projenizde, `RegisterClient` oluşturduğunuz ASP.net arka ucu ile arabirim adlı yeni bir Cocoa Touch sınıfı oluşturun. Öğesinden devralan sınıfı oluşturun `NSObject` . Ardından içine aşağıdaki kodu ekleyin `RegisterClient.h` .
+5. Projenizde, `RegisterClient` oluşturduğunuz ASP.net arka ucu ile arabirim adlı yeni bir Cocoa Touch sınıfı oluşturun. Öğesinden devralan sınıfı oluşturun `NSObject` . Ardından aşağıdaki kodu öğesine ekleyin `RegisterClient.h` :
 
     ```objc
     @interface RegisterClient : NSObject
@@ -494,7 +494,7 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, kayıtlarıyla ilişkili etiketleri olan belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrendiniz. Konum tabanlı anında iletme bildirimleri göndermeyi öğrenmek için aşağıdaki öğreticiye ilerleyin: 
+Bu öğreticide, kayıtlarıyla ilişkili etiketleri olan belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrendiniz. Konum tabanlı anında iletme bildirimleri göndermeyi öğrenmek için aşağıdaki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
 >[Konum temelli anında iletme bildirimleri gönderme](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

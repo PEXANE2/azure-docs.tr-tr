@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü güvenli URL listesi-Azure
 description: Windows sanal masaüstü dağıtımınızın istendiği gibi çalıştığından emin olmak için engellemesini kaldırmanız gereken URL 'lerin bir listesi.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075607"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009486"
 ---
 # <a name="safe-url-list"></a>Güvenli URL listesi
 

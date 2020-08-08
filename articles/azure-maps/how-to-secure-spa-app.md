@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531355"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006426"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Etkileşimli olmayan oturum açma ile tek sayfalı bir uygulamanın güvenliğini sağlama
 
@@ -102,12 +102,12 @@ Azure AD 'den kimlik doğrulamasından sorumlu bir güvenli Web hizmeti uygulama
 
 ## <a name="grant-role-based-access"></a>Rol tabanlı erişim verme
 
-Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atayarak *rol tabanlı erişim denetimi* (RBAC) verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın.
+Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* erişimi verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın.
 
 1. **Azure haritalar hesabınıza**gidin. **Erişim denetimi (IAM)**  >  **rol atamasını**seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Azure RBAC kullanarak erişim verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. **Rol atamaları** sekmesinde, **rol**altında **Azure Maps veri okuyucusu** veya **Azure haritalar veri katılımcısı**gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**altında **işlev uygulaması**' yi seçin. Asıl ada göre ' yi seçin. Ardından **Kaydet**’i seçin.
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185235"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008041"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
@@ -98,5 +98,7 @@ Evet, aşağıdaki PowerShell cmdlet 'lerini kullanarak zamanlanmış güncelle�
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Redsıs Premium katman özellikleri için daha fazla Azure önbelleği](cache-premium-tier-intro.md) bulun.
+Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
+
+* [Redsıs hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)
 

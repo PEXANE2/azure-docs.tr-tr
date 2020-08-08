@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d00a6b7753a61bb2527a56231b2fe054736f1b0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829899"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008585"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Şablon kullanarak Redsıs için Azure önbelleği oluşturma
 
@@ -26,7 +26,7 @@ Bu konu başlığında, Reda için Azure önbelleği dağıtan bir Azure Resourc
 Tüm şablon için bkz. [redsıs şablonu Için Azure önbelleği](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
 > [!NOTE]
-> Yeni [Premium katmanının](cache-premium-tier-intro.md) Kaynak Yöneticisi şablonları kullanılabilir. 
+> Yeni [Premium katmanının](cache-overview.md#service-tiers) Kaynak Yöneticisi şablonları kullanılabilir. 
 > 
 > * [Kümeleme ile Reda için Premium Azure önbelleği oluşturma](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [Veri kalıcılığı olan Redsıs için Premium Azure önbelleği oluşturma](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)

@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) PowerShell-Azure
 description: Windows sanal masaüstü (klasik) kiracı ortamı ayarlarken PowerShell ile ilgili sorunları giderme.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ef12d6de8820740be687bd09ffaa5a8e69eb86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269623"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004903"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows sanal masaüstü (klasik) PowerShell
 
@@ -22,7 +20,7 @@ ms.locfileid: "87269623"
 
 PowerShell 'i Windows sanal masaüstü ile kullanırken oluşan hataları ve sorunları gidermek için bu makaleyi kullanın. PowerShell Uzak Masaüstü Hizmetleri hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü PowerShell](/powershell/module/windowsvirtualdesktop/).
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 

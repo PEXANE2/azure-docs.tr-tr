@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171814"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009010"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Azure Kaynak Grafiği güvenlik temeli
 
@@ -26,7 +26,7 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../../../security/
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
-**Kılavuz**: Azure Kaynak Grafiği, rol tabanlı erişim DENETIMLERINE (RBAC) göre kaynak türlerine ve özelliklere erişim sağlar. Sorguların uygun kaynaklar için sonuçlar döndürmesini sağlamak üzere güvenlik ilkelerine (kullanıcılar, gruplar ve hizmet hesapları) verilen erişimi denetleyin ve gözden geçirin.
+**Kılavuz**: Azure Kaynak Grafiği, Azure rol tabanlı erişim denetimi (Azure RBAC) temelinde kaynak türlerine ve özelliklere erişim sağlar. Sorguların uygun kaynaklar için sonuçlar döndürmesini sağlamak üzere güvenlik ilkelerine (kullanıcılar, gruplar ve hizmet hesapları) verilen erişimi denetleyin ve gözden geçirin.
 
 * [Azure Kaynak Grafiği’nde izinler](../overview.md#permissions-in-azure-resource-graph)
 

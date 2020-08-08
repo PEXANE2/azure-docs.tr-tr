@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010316"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009622"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -30,28 +30,28 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 **Kaynak menüsünü**kullanarak aşağıdaki ayarları görüntüleyebilir ve yapılandırabilirsiniz.
 
-* [Genel Bakış](#overview)
+* [Genel bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
-* [Etiketler](#tags)
+* [Lerimi](#tags)
 * [Sorunları tanılama ve çözme](#diagnose-and-solve-problems)
 * [Ayarlar](#settings)
     * [Erişim tuşları](#access-keys)
     * [Gelişmiş ayarlar](#advanced-settings)
     * [Redsıs Danışmanı için Azure önbelleği](#azure-cache-for-redis-advisor)
-    * [Ölçek](#scale)
+    * [Ölçeklendirme](#scale)
     * [Küme boyutu](#cluster-size)
     * [Veri kalıcılığı](#redis-data-persistence)
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
     * [Coğrafi çoğaltma](#geo-replication)
     * [Sanal Ağ](#virtual-network)
-    * [Güvenlik Duvarı](#firewall)
+    * [Güvenlik duvarı](#firewall)
     * [Özellikler](#properties)
     * [Kilitler](#locks)
     * [Otomasyon betiği](#automation-script)
 * Yönetim
     * [Verileri içeri aktar](#importexport)
-    * [Verileri dışarı aktar](#importexport)
+    * [Verileri dışarı aktarma](#importexport)
     * [Yeniden başlatma](#reboot)
 * [İzleme](#monitoring)
     * [Redsıs ölçümleri](#redis-metrics)
@@ -91,13 +91,13 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Erişim tuşları](#access-keys)
 * [Gelişmiş ayarlar](#advanced-settings)
 * [Redsıs Danışmanı için Azure önbelleği](#azure-cache-for-redis-advisor)
-* [Ölçek](#scale)
+* [Ölçeklendirme](#scale)
 * [Küme boyutu](#cluster-size)
 * [Veri kalıcılığı](#redis-data-persistence)
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
 * [Coğrafi çoğaltma](#geo-replication)
 * [Sanal Ağ](#virtual-network)
-* [Güvenlik Duvarı](#firewall)
+* [Güvenlik duvarı](#firewall)
 * [Özellikler](#properties)
 * [Kilitler](#locks)
 * [Otomasyon betiği](#automation-script)
@@ -185,12 +185,12 @@ Her fiyatlandırma katmanı, istemci bağlantıları, bellek ve bant genişliği
 
 | Redin ölçümü için Azure önbelleği | Daha fazla bilgi |
 | --- | --- |
-| Ağ bant genişliği kullanımı |[Önbellek performansı kullanılabilir bant genişliği](cache-faq.md#cache-performance) |
+| Ağ bant genişliği kullanımı |[Önbellek performansı kullanılabilir bant genişliği](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | Bağlı istemciler |[Varsayılan Redsıs sunucu yapılandırması-MaxClients](#maxclients) |
 | Sunucu yükü |[Kullanım grafikleri-Redsıs sunucu yükü](cache-how-to-monitor.md#usage-charts) |
-| Bellek kullanımı |[Önbellek performansı-boyut](cache-faq.md#cache-performance) |
+| Bellek kullanımı |[Önbellek performansı-boyut](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-Önbelleğinizi yükseltmek için, fiyatlandırma katmanını değiştirmek ve önbelleğinizi [ölçeklendirmek](#scale) üzere **Şimdi Yükselt** ' e tıklayın. Fiyatlandırma Katmanı seçme hakkında daha fazla bilgi için bkz. [redne Için Azure önbelleğinin ve boyutun ne kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Önbelleğinizi yükseltmek için, fiyatlandırma katmanını değiştirmek ve önbelleğinizi [ölçeklendirmek](#scale) üzere **Şimdi Yükselt** ' e tıklayın. Fiyatlandırma Katmanı seçme hakkında daha fazla bilgi için, bkz [. sağ katmanı seçme](cache-overview.md#choosing-the-right-tier)
 
 
 ### <a name="scale"></a>Ölçek
@@ -291,7 +291,7 @@ Gelecekteki dağıtımlar için dağıtılan kaynaklarınızın bir şablonunu d
 ![Yönetim](./media/cache-configure/redis-cache-administration.png)
 
 * [Verileri içeri aktar](#importexport)
-* [Verileri dışarı aktar](#importexport)
+* [Verileri dışarı aktarma](#importexport)
 * [Yeniden başlatma](#reboot)
 
 
@@ -414,7 +414,7 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
   * P4 (53 GB-530 GB)-en fazla 64 veritabanı
   * Redsıs kümesi etkin olan tüm Premium önbellekler-Redsıs kümesi yalnızca 0 veritabanının kullanımını destekler, böylece `databases` redsıs kümesi etkin olan tüm Premium önbellek için sınır etkin 1 olur ve [Select](https://redis.io/commands/select) komutuna izin verilmez. Daha fazla bilgi için bkz. [kümelendirmeyi kullanmak için istemci Uygulamam üzerinde herhangi bir değişiklik yapmam gerekir mi?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nelerdir?](cache-faq.md#what-are-redis-databases)
+Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nelerdir?](cache-development-faq.md#what-are-redis-databases)
 
 > [!NOTE]
 > `databases`Ayar yalnızca önbellek oluşturma sırasında ve yalnızca PowerShell, CLI veya diğer yönetim istemcileri kullanılarak yapılandırılabilir. `databases`PowerShell kullanarak önbellek oluşturma sırasında yapılandırma örneği için, bkz. [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
@@ -505,4 +505,4 @@ shard1>get myKey
 Kaynakları bir kaynak grubundan diğerine ve bir abonelikten diğerine taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Redsıs komutlarıyla çalışma hakkında daha fazla bilgi için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)
+* Redsıs komutlarıyla çalışma hakkında daha fazla bilgi için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](cache-development-faq.md#how-can-i-run-redis-commands)

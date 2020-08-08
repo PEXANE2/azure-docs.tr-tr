@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ef70535ecd84a97bde9650eb8a3ea3b9406bd2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 291a9016c01e7d618cbfdd556a482ec77f173ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101736"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003606"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intsights"></a>Öğretici: Intsıghts ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -99,12 +99,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, ıntsıghts uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name | Kaynak özniteliği |
+    | Ad | Kaynak özniteliği |
     | -----| ---------------- |
     | firstName | Kullanıcı. |
     | lastName | User. soyadı |
     | Intsı, Saccountıd | < ıntsı, Saccountıd > |
     | Intsıghtsrole | < Intsıghtsrole > |
+
+    > [!NOTE]
+    > **Int32** ve **ıntsıghtsrole** , varsayılan olarak eklenmemiş ve yalnızca **tam zamanında** Kullanıcı sağlama etkin olduğunda el ile eklenebilen isteğe bağlı taleplerdir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

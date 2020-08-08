@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506443"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008976"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Redis için Azure Cache istemci tarafı sorunlarını giderme
 
@@ -53,7 +53,7 @@ Kötü ayarlarla birleştirilmiş trafik, `ThreadPool` Redsıs sunucusu tarafın
 - `IOCP`Bölümünde ve `WORKER` bölümünde `Busy` değerden daha büyük bir değer olduğuna dikkat edin `Min` . Bu fark, `ThreadPool` ayarlarınızın ayarlanması gereken anlamına gelir.
 - Ayrıca, bkz `in: 64221` .. Bu değer, istemcinin çekirdek yuva katmanında 64.211 baytın alındığını, ancak uygulama tarafından okunmadığını gösterir. Bu fark genellikle uygulamanızın (örneğin, StackExchange. Redsıs), sunucu tarafından size gönderildiğinde, ağdan veri okuyamayacağı anlamına gelir.
 
-İş parçacığı havuzunuzun, patlama senaryolarında hızlı bir şekilde ölçeklendirdiğinizden emin olmak için [ `ThreadPool` ayarlarınızı yapılandırabilirsiniz](cache-faq.md#important-details-about-threadpool-growth) .
+İş parçacığı havuzunuzun, patlama senaryolarında hızlı bir şekilde ölçeklendirdiğinizden emin olmak için [ `ThreadPool` ayarlarınızı yapılandırabilirsiniz](cache-management-faq.md#important-details-about-threadpool-growth) .
 
 ## <a name="high-client-cpu-usage"></a>Yüksek istemci CPU kullanımı
 
@@ -109,4 +109,4 @@ Büyük yanıt boyutları için çözümler farklılaştırılabilecek ancak şu
 ## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache sunucu tarafı sorunlarını giderme](cache-troubleshoot-server.md)
-- [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

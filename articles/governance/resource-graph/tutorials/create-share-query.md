@@ -3,16 +3,16 @@ title: 'Öğretici: Azure portal sorguları yönetme'
 description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturur ve yeni sorguyu Azure portal başkalarıyla paylaşabilirsiniz.
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970595"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005174"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
 
-Azure Kaynak Grafiği Gezgini, kaynak grafik sorgularınızı doğrudan Azure portal kaydetmenize olanak tanır. İki tür sorgu vardır: _özel_ ve _paylaşılan_. Azure portal ayarlarınıza özel bir sorgu kaydedilir. Paylaşılan sorgu, rol tabanlı erişim denetimleriyle (RBAC) yönetilebilen ve kaynak kilitleriyle korunan bir Azure Resource Manager kaynağıdır. Her iki sorgu türü de bekleyen olarak şifrelenir.
+Azure Kaynak Grafiği Gezgini, kaynak grafik sorgularınızı doğrudan Azure portal kaydetmenize olanak tanır. İki tür sorgu vardır: _özel_ ve _paylaşılan_. Azure portal ayarlarınıza özel bir sorgu kaydedilir. Paylaşılan sorgu, Azure rol tabanlı erişim denetimi (Azure RBAC) ile yönetilebilen ve kaynak kilitleri ile korunan bir Azure Resource Manager kaynağıdır. Her iki sorgu türü de bekleyen olarak şifrelenir.
 
 Sorguları Azure portal kaydederek sık kullandığınız veya yaygın olarak kullanılan sorguları Aradığınız zamandan tasarruf edebilirsiniz. Sorguları paylaştığınızda, ekibinizin yineleme aracılığıyla tutarlılık ve verimlilik hedeflerini fark etmiş olursunuz.
 
@@ -60,7 +60,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
 ## <a name="create-a-shared-query"></a>Paylaşılan sorgu oluşturma
 
-Özel bir sorgunun aksine, paylaşılan bir sorgu Kaynak Yöneticisi kaynağıdır. Bu olgu, sorgunun bir kaynak grubuna kaydedildiği, RBAC ile yönetilebilecek ve denetlenebileceği, hatta kaynak kilitleri ile korunabilecek anlamına gelir. Kaynak olarak, uygun izinlere sahip olan herkes onu görebilir ve kullanabilir.
+Özel bir sorgunun aksine, paylaşılan bir sorgu Kaynak Yöneticisi kaynağıdır. Bu olgu, sorgunun bir kaynak grubuna kaydedildiği, Azure RBAC ile yönetilebilecek ve denetlenebileceği, hatta kaynak kilitleri ile korunabilecek anlamına gelir. Kaynak olarak, uygun izinlere sahip olan herkes onu görebilir ve kullanabilir.
 Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
 
 1. Portal menüsünde **tüm hizmetler**' i seçin veya **kaynak grafik Gezgini**' ni aramak ve seçmek için tüm sayfaların en üstündeki Azure Arama kutusunu kullanın.

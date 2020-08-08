@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024202"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002995"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL yönetilen örneği 'nin yönetilen örneklerini bir yük devretme gru
   > [!NOTE]
   > - Bu öğreticide, kaynaklarınızı [SQL yönetilen örneği için yük devretme grupları ayarlamaya yönelik önkoşullara](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)göre yapılandırırken emin olun. 
   > - Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [SQL yönetilen örnek yönetimi işlemleri](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Yük devretme grubuna katılan yönetilen örnekler için [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN ağ geçidi gerekir. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
+  > - Yük devretme grubuna katılan yönetilen örnekler için [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN ağ geçidi gerekir. Küresel VNet eşlemesi desteklenmiyor. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
 
 
 ## <a name="prerequisites"></a>Önkoşullar

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485654"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003373"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics için Azure Güvenlik temeli
 
@@ -248,7 +248,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-**Rehberlik**: Stream Analytics kimlik doğrulaması, Azure Active Directory ile birlikte sağlandığı ve hizmeti yönetmek için rol tabanlı erişim DENETIMLERI (RBAC) tarafından sağlandığı için varsayılan parola kavramına sahip değildir. Ekleme akışı hizmetlerine ve çıkış hizmetlerine bağlı olarak, işlerinde yapılandırılan kimlik bilgilerini döndürmeniz gerekir.
+**Rehberlik**: Stream Analytics kimlik doğrulaması, Azure Active Directory ile birlikte sağlandığı ve hizmeti yönetmek için rol tabanlı erişim denetımı (RBAC) tarafından güvenliği sağlanmış olarak varsayılan parola kavramına sahip değildir. Ekleme akışı hizmetlerine ve çıkış hizmetlerine bağlı olarak, işlerinde yapılandırılan kimlik bilgilerini döndürmeniz gerekir.
 
 * [Stream Analytics işinin girdileri ve çıkışları için oturum açma kimlik bilgilerini döndürün](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -442,11 +442,11 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için rol tabanlı erişim denetımı (RBAC) kullanın.
+**Rehberlik**: kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-* [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

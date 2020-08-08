@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar ile erişilebilir harita uygulaması oluşturma | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları kullanarak erişilebilirlik özellikleriyle uygulama oluşturmayı öğreneceksiniz.
+description: Azure haritalar 'da erişilebilirlik konuları hakkında bilgi edinin. Harita uygulamaları erişilebilir hale getirmek için hangi özelliklerin kullanılabildiğini görün ve erişilebilirlik ipuçlarını görüntüleyin.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242382"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006222"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 

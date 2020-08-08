@@ -1,19 +1,17 @@
 ---
 title: Yönetim aracını bir Azure Resource Manager şablonuyla dağıtma-Azure
 description: Windows sanal masaüstü (klasik) kaynaklarını yönetmek için bir Azure Resource Manager şablonuyla Kullanıcı arabirimi aracı nasıl yüklenir.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284957"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005712"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonuyla Windows sanal masaüstü (klasik) Yönetim Aracı dağıtma
 

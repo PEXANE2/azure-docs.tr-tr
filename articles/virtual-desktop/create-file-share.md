@@ -1,19 +1,17 @@
 ---
 title: Bir etki alanı denetleyicisi ile Azure dosyaları dosya paylaşma oluşturma-Azure
 description: Active Directory etki alanı ile mevcut bir Windows sanal masaüstü konak havuzundaki Azure dosya paylaşımında bir FSLogix profil kapsayıcısı ayarlayın.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842918"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009231"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -104,7 +102,7 @@ Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
      Aynı yönergeleri izleyerek kullanıcılara FSLogix profilleri için gerekli izinleri atayın. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
@@ -214,7 +212,7 @@ Oturum konağı VM örneğinizde FSLogix'i yapılandırmak için:
 
 6. VM’yi yeniden başlatın.
 
-## <a name="testing"></a>Sınama
+## <a name="testing"></a>Test Etme
 
 FSLogix yükledikten ve yapılandırdıktan sonra, konak havuzundaki bir uygulama grubuna veya masaüstüne atanmış bir kullanıcı hesabıyla oturum açarak dağıtımınızı test edebilirsiniz. Oturum açmak için kullandığınız kullanıcı hesabının dosya paylaşımında izni olduğundan emin olun.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a0afdecfcab9cc1ab3903429b197fe859d40a7f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cd436462d157a7e416f0f6a468edd33520ccec7d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424884"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009947"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Öğretici: Kemp LoadMaster Azure AD tümleştirmesiyle SSO tümleştirmesi Azure Active Directory
 
@@ -44,7 +44,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Kemp LoadMaster Azure AD tümleştirmesi **IDP** tarafından başlatılan SSO 'yu destekler
-* Kemp LoadMaster Azure AD tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Kemp LoadMaster Azure AD tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Galeriden Kemp LoadMaster Azure AD tümleştirmesi ekleme
 
@@ -317,7 +317,7 @@ Daha önce kimliği doğrulanmamış erişim yerine kiralandırılmış oturum a
 
     ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-11.png)
 
-    a. Bu kullanıcıya yalnızca belirtilen hizmetlere yetki vermek için güven ' i seçin.
+    a. Bu kullanıcıya yalnızca belirtilen hizmetlerde temsilci seçiminde güven'i seçin.
 
     b. Herhangi bir kimlik doğrulama protokolünü kullan'ı seçin.
 

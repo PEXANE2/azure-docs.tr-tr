@@ -1,23 +1,21 @@
 ---
 title: Storage FSLogix profil kapsayıcısı Windows sanal masaüstü-Azure
 description: Azure depolama 'da Windows sanal masaüstü FSLogix profilinizi depolama seçenekleri.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808525"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009418"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri
 
-Azure, FSLogix profil kapsayıcınızı depolamak için kullanabileceğiniz birden çok depolama çözümleri sunar. Bu makalede, Azure 'un Windows sanal masaüstü FSLogix Kullanıcı profili kapsayıcıları için sunduğu depolama çözümleri karşılaştırılır. FSLogix profil kapsayıcılarını, müşterilerimizin çoğu için Azure dosyalarında depolamanızı öneririz. 
+Azure, FSLogix profil kapsayıcınızı depolamak için kullanabileceğiniz birden çok depolama çözümleri sunar. Bu makalede, Azure 'un Windows sanal masaüstü FSLogix Kullanıcı profili kapsayıcıları için sunduğu depolama çözümleri karşılaştırılır. FSLogix profil kapsayıcılarını, müşterilerimizin çoğu için Azure dosyalarında depolamanızı öneririz.
 
 Windows sanal masaüstü, önerilen Kullanıcı profili çözümü olarak FSLogix profil kapsayıcıları sunar. FSLogix, Windows Sanal Masaüstü gibi uzak bilgi işlem ortamlarında dolaşım profillerini etkinleştirme amacıyla tasarlanmıştır. Bu kapsayıcı, oturum açma sırasında, yerel olarak desteklenen bir sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanılarak bilgi işlem ortamına dinamik olarak eklenir. Kullanıcı profili hemen kullanılabilir olur ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür.
 
