@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531380"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006647"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon uygulamasının güvenliğini sağlama
 
 Aşağıdaki kılavuz, güvenilir ve güvenli bir ortamda barındırılan arka plan işlemleri, zamanlayıcılar ve işlere yöneliktir. Azure Web Işleri, Azure Işlev uygulamaları, Windows Hizmetleri ve diğer güvenilir arka plan hizmetleri örnekleri bulunur.
 
 > [!Tip]
-> Microsoft, üretim uygulamaları için Azure Active Directory (Azure AD) ve rol tabanlı erişim denetimi (RBAC) uygulamayı önerir. Kavramlara genel bakış için bkz. [Azure Maps kimlik doğrulaması](./azure-maps-authentication.md).
+> Microsoft, üretim uygulamaları için Azure Active Directory (Azure AD) ve Azure rol tabanlı erişim denetimi (Azure RBAC) uygulamasını önerir. Kavramlara genel bakış için bkz. [Azure Maps kimlik doğrulaması](./azure-maps-authentication.md).
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ Aşağıdaki adımlarda bu süreç ana hatlarıyla verilmiştir:
 > [!Tip]
 > Uygulama Azure ortamında barındırılıyorsa, Azure Key Vault kimlik doğrulaması yapmak için bir gizli dizi yönetiminin maliyetini ve karmaşıklığını azaltmak üzere yönetilen bir kimlik uygulamalısınız. [Yönetilen kimlik üzerinden bağlanmak için aşağıdaki Azure Key Vault öğreticiye](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)bakın.
 
-Daemon uygulaması, paylaşılan anahtarı güvenli bir depolamadan almaktan sorumludur. Azure Key Vault uygulamayla, gizliliğe erişmek için Azure AD aracılığıyla kimlik doğrulaması gerekir. Bunun yerine, paylaşılan anahtar kimlik doğrulamasını kullanmaya yönelik ek karmaşıklık ve işletimsel gereksinimlerin bir sonucu olarak Azure Maps 'a yönelik Azure Maps 'a doğrudan kimlik doğrulamasını öneririz.
+Daemon uygulaması, paylaşılan anahtarı güvenli bir depolamadan almaktan sorumludur. Azure Key Vault uygulamayla, gizliliğe erişmek için Azure AD aracılığıyla kimlik doğrulaması gerekir. Bunun yerine, paylaşılan anahtar kimlik doğrulamasını kullanmaya yönelik ek karmaşıklık ve işletimsel gereksinimlerin sonucu olarak Azure AD kimlik doğrulamasını Azure Maps 'e doğrudan yönlendiririz.
 
 > [!IMPORTANT]
 > Anahtar yeniden oluşturmayı basitleştirmek için, uygulamaların tek seferde bir anahtar kullanmasını öneririz. Uygulamalar daha sonra kullanılmayan anahtarı yeniden oluşturabilir ve yeni oluşturulan anahtarı Azure Key Vault gibi güvenli bir gizli depolama alanına dağıtabilir.
@@ -109,7 +109,7 @@ Azure olmayan bir ortamda Yönetilen kimlikler üzerinde çalışırken, kullan�
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Azure Maps 'a Daemon uygulaması için rol tabanlı erişim verme
 
-Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azure Maps erişim denetimi rol tanımlarına atayarak *rol tabanlı erişim denetimi* (RBAC) verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
+Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azure Maps rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
 
 > [!div class="mx-imgBorder"]
 > ![Kullanılabilir rolleri görüntüle](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -117,7 +117,7 @@ Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azu
 1. **Azure haritalar hesabınıza**gidin. **Erişim denetimi (IAM)** > **Rol atamaları**’nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Azure RBAC kullanarak erişim verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. **Rol atamaları** sekmesinde bir rol ataması **ekleyin** . 
     

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: active-directory
 author: curtand
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375168"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010990"
 ---
 Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamalarını ve diğer hizmet sınırlarını burada bulabilirsiniz.
 
@@ -30,4 +30,4 @@ Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamaların
 | Erişim Paneli |Atanan lisanslardan bağımsız olarak Kullanıcı başına erişim panelinde görülemeyen uygulama sayısıyla ilgili bir sınır yoktur.  |
 | Raporlar | Herhangi bir raporda en fazla 1.000 satır görüntülenebilir veya indirilebilir. Bunun üzerindeki veriler kesilir. |
 | Yönetim birimleri | Bir Azure AD kaynağı 30 ' dan fazla yönetim birimi olmayan bir üye olabilir. |
-| Yönetici rolleri ve izinleri | <ul><li>Bir grup, [sahip](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)olarak eklenemez.</li><li>Bir grup [role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)atanamaz.</li><li>Yönetici olmayan kullanıcıların tüm dizin bilgilerine erişimini devre dışı bırakmak için kullanıcıların diğer Kullanıcı dizin bilgilerini okuma yeteneği, Azure AD kuruluş genelinde anahtar dışında kısıtlanamaz (önerilmez). [Burada](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)varsayılan izinler hakkında daha fazla bilgi.</li><li>Yönetici rolü üyelik eklemeleri ve geri alma işlemleri yürürlüğe girmeden önce 15 dakika kadar sürebilir veya oturum kapatıp oturum açıp oturum açabilirsiniz.</li></ul> |
+| Yönetici rolleri ve izinleri | <ul><li>Bir grup, [sahip](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)olarak eklenemez.</li><li>Yönetici olmayan kullanıcıların tüm dizin bilgilerine erişimini devre dışı bırakmak için kullanıcıların diğer Kullanıcı dizin bilgilerini okuma yeteneği, Azure AD kuruluş genelinde anahtar dışında kısıtlanamaz (önerilmez). [Burada](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)varsayılan izinler hakkında daha fazla bilgi.</li><li>Yönetici rolü üyelik eklemeleri ve geri alma işlemleri yürürlüğe girmeden önce 15 dakika kadar sürebilir veya oturum kapatıp oturum açıp oturum açabilirsiniz.</li></ul> |

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fc3c03fa3368d87857ed91c720a92aacecf6eb89
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843173"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008211"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Mevcut modelinize Azure Machine Learning dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Bu makaledeki kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machi
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
-  + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar.
+  + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar. Çalışma alanına bağlanma hakkında daha fazla bilgi için lütfen [Python için Azure MACHINE LEARNING SDK belgelerine](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace)başvurun.
   
   + CLı örnekleri `myworkspace` , ve ' nin `myresourcegroup` , çalışma alanınızın adı ve onu içeren kaynak grubu ile değiştirmeniz gereken yer tutucuları kullanır.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Haritalar Web SDK 'sindeki görüntü şablonları | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps web SDK 'sında HTML işaretçileri ve çeşitli katmanlarla görüntü şablonlarını kullanmayı öğreneceksiniz.
+description: Azure Haritalar Web SDK 'sını kullanarak haritalara görüntü simgeleri ve kalıp dolgulu çokgenler ekleme hakkında bilgi edinin. Kullanılabilir görüntü ve Fill model şablonlarını görüntüleyin.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285688"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004659"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
 
@@ -122,7 +122,7 @@ Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü �
 | Ad | Dönüş Türü | Açıklama | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Atlas ad alanına özel bir SVG resim şablonu ekler. |
-|  `getImageTemplate(templateName: string, scale?: number)`| dize | Bir SVG şablonunu ada göre alır. |
+|  `getImageTemplate(templateName: string, scale?: number)`| string | Bir SVG şablonunu ada göre alır. |
 | `getAllImageTemplateNames()` | String [] |  Bir SVG şablonunu ada göre alır. |
 
 SVG resim şablonları aşağıdaki yer tutucu değerlerini destekler:

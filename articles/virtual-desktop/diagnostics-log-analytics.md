@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü tanılama günlüğü Analizi-Azure
 description: Windows sanal masaüstü tanılama özelliği ile Log Analytics 'i kullanma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292597"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005102"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
@@ -134,7 +132,7 @@ Azure Izleyici Log Analytics Kullanıcı arabirimi aracılığıyla örnek sorgu
 1. Log Analytics çalışma alanınıza gidin ve ardından **Günlükler**' i seçin. Örnek sorgu Kullanıcı arabirimi otomatik olarak gösterilir.
 1. Filtreyi **Kategori**olarak değiştirin.
 1. Kullanılabilir sorguları gözden geçirmek için **Windows sanal masaüstü 'nü** seçin.
-1. Seçili sorguyu çalıştırmak için **Çalıştır** ' ı seçin. 
+1. Seçili sorguyu çalıştırmak için **Çalıştır** ' ı seçin.
 
 [Azure izleyici Log Analytics kayıtlı sorgularda](../azure-monitor/log-query/saved-queries.md)örnek sorgu arabirimi hakkında daha fazla bilgi edinin.
 

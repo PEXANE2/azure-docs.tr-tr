@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü (klasik) tanılama günlüğü Analizi-Azure
 description: Log Analytics 'i Windows sanal masaüstü (klasik) tanılama özelliği ile kullanma.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a7a7a6681be78c2777130ca540319eb829d8f9d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285076"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002352"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki (klasik) tanılama özelliği için Log Analytics kullanma
 

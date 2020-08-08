@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6448a2d449f86e93630d9d555e101291aa84c71e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809621"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003885"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC kullanarak bağlı makine aracısını yüklemek
 
@@ -49,7 +49,7 @@ ms.locfileid: "87809621"
 
 Bu modüldeki kaynaklar, Azure bağlı makine Aracısı yapılandırmasını yönetmek için tasarlanmıştır. Ayrıca, klasöründe bulunan bir PowerShell betiğiyle birlikte bulunur `AzureConnectedMachineAgent.ps1` `AzureConnectedMachineDsc\examples` . İndirme ve yüklemeyi otomatikleştirmek ve Azure Arc ile bağlantı kurmak için topluluk kaynaklarını kullanır. Bu betik, [Azure Portal makalesinden karma makineleri Azure 'A bağlama](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştirir.
 
-Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra [burada](onboard-portal.md#configure-the-agent-proxy-setting)açıklanan bir komut çalıştırmanız gerekir. Bu, proxy sunucu sistemi ortam değişkenini ayarlar `https_proxy` . Komutu el ile çalıştırmak yerine, [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modülünü kullanarak bu adımı DSC ile gerçekleştirebilirsiniz.
+Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra [burada](manage-agent.md#update-or-remove-proxy-settings)açıklanan bir komut çalıştırmanız gerekir. Bu, proxy sunucu sistemi ortam değişkenini ayarlar `https_proxy` . Komutu el ile çalıştırmak yerine, [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modülünü kullanarak bu adımı DSC ile gerçekleştirebilirsiniz.
 
 >[!NOTE]
 >DSC 'nin çalışmasına izin vermek için, Windows 'un bir localhost yapılandırması çalıştırırken bile PowerShell uzak komutlarını alacak şekilde yapılandırılması gerekir. Ortamınızı doğru şekilde yapılandırmak için, yalnızca `Set-WsManQuickConfig -Force` yükseltilmiş bir PowerShell terminalinde çalıştırın.

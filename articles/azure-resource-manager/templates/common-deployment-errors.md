@@ -3,21 +3,19 @@ title: Sık karşılaşılan dağıtım hatalarını giderme
 description: Azure 'a Azure Resource Manager kullanarak kaynak dağıtırken yaygın hataların nasıl çözümleneceğini açıklar.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: dad80cf4230c3c6b4d7d97b21d155f6e755c2ab9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/07/2020
+ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446609"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008177"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager'la yaygın Azure dağıtım hatalarını giderme
 
 Bu makalede bazı yaygın Azure dağıtım hataları açıklanmakta ve hatalar çözümlenme bilgileri sağlanmaktadır. Dağıtım hatanızın hata kodunu bulamazsanız bkz. [Hata kodunu bulma](#find-error-code).
 
 Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bize bize izin verin. Bu sayfanın en altında geri bildirimde olabilirsiniz. Geri bildirim, GitHub sorunlarıyla izlenir.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>Hata kodları
 
@@ -76,6 +74,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | Storageaccountalreadyçekildi | Depolama hesabına benzersiz bir ad verin. | [Depolama hesabı adını çözümle](error-storage-account-name.md) |
 | StorageAccountNotFound | Kullanmayı denediğiniz depolama hesabının aboneliğini, kaynak grubunu ve adını denetleyin. | |
 | SubnetsNotInSameVnet | Bir sanal makine yalnızca bir sanal ağa sahip olabilir. Çeşitli NIC 'ler dağıtıldığında aynı sanal ağa ait olduklarından emin olun. | [Birden çok NIC](../../virtual-machines/windows/multiple-nics.md) |
+| SubscriptionNotFound | Dağıtım için belirtilen aboneliğe erişilemiyor. Abonelik KIMLIĞI yanlış olabilir, şablonu dağıtmanın Kullanıcı aboneliğe dağıtmak için yeterli izinlere sahip değil veya abonelik KIMLIĞI yanlış biçimde. [Kapsamları genelinde dağıtmak](cross-scope-deployment.md)üzere iç içe dağıtımlar kullanılırken, aboneliğin GUID 'sini sağlayın. | |
 | SubscriptionNotRegistered | Ağ kaynaklarını dağıttığınızda, Microsoft. Network kaynak sağlayıcısı abonelikte otomatik olarak kaydedilir. Bazen otomatik kayıt zaman içinde tamamlanmaz. Bu aralıklı hatadan kaçınmak için, dağıtımdan önce Microsoft. Network kaynak sağlayıcısını kaydedin. | [Kaydı çözümle](error-register-resource-provider.md) |
 | Templateresourcecırculardependency | Gereksiz bağımlılıkları kaldırın. | [Döngüsel bağımlılıkları çözümle](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | Tek bir dağıtım için kaynak gruplarının sayısını azaltın. | [Çapraz kapsam dağıtımı](cross-scope-deployment.md) |

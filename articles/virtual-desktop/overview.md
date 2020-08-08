@@ -1,19 +1,17 @@
 ---
 title: Windows Sanal Masaüstü nedir? - Azure
 description: Windows sanal masaüstü 'ne genel bakış.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386588"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002367"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
@@ -133,13 +131,13 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|No|Hayır|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|
 |Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|No|Hayır|
-|Windows 7 Enterprise|Yes|Yes|No|Hayır|
-|Windows Server 2019|Yes|Yes|No|Hayır|
-|Windows Server 2016|Yes|Yes|Yes|Yes|
-|Windows Server 2012 R2|Yes|Yes|No|Hayır|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|
+|Windows Server 2016|Evet|Yes|Yes|Yes|
+|Windows Server 2012 R2|Evet|Yes|Hayır|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

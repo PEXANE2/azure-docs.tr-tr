@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü güvenliği en iyi yöntemleri-Azure
 description: Windows sanal masaüstü ortamınızı güvenli tutmak için en iyi uygulamalar.
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736681"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002288"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -31,12 +29,12 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 
 | Güvenlik gereksinimi | Müşteri bundan sorumlu mi? |
 |---------------|:-------------------------:|
-|Kimlik|Evet|
-|Kullanıcı cihazları (mobil ve bılgısayar)|Evet|
-|Uygulama güvenliği|Evet|
-|Oturum Ana Bilgisayarı işletim sistemi|Evet|
-|Dağıtım yapılandırması|Evet|
-|Ağ denetimleri|Evet|
+|Kimlik|Yes|
+|Kullanıcı cihazları (mobil ve bılgısayar)|Yes|
+|Uygulama güvenliği|Yes|
+|Oturum Ana Bilgisayarı işletim sistemi|Yes|
+|Dağıtım yapılandırması|Yes|
+|Ağ denetimleri|Yes|
 |Sanallaştırma denetim düzlemi|Hayır|
 |Fiziksel konaklar|Hayır|
 |Fiziksel ağ|Hayır|
@@ -103,7 +101,7 @@ Oturum Konakları, bir Azure aboneliği ve sanal ağ içinde çalışan sanal ma
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection 'ı etkinleştir
 
-Dağıtımınızı bilinen kötü amaçlı yazılımlardan korumak için tüm oturum konaklarda Endpoint Protection 'ın etkinleştirilmesini öneririz. Windows Defender virüsten koruma veya bir üçüncü taraf programını kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [VDI ortamında Windows Defender virüsten koruma Için dağıtım kılavuzu](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus). 
+Dağıtımınızı bilinen kötü amaçlı yazılımlardan korumak için tüm oturum konaklarda Endpoint Protection 'ın etkinleştirilmesini öneririz. Windows Defender virüsten koruma veya bir üçüncü taraf programını kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [VDI ortamında Windows Defender virüsten koruma Için dağıtım kılavuzu](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
 
 FSLogix gibi profil çözümleri veya VHD dosyalarını bağlayan diğer çözümler için, VHD dosya uzantılarının dışında tutulması önerilir.
 

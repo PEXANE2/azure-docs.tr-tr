@@ -1,19 +1,17 @@
 ---
 title: Windows sanal masaüstü hakkında SSS-Azure
 description: Windows sanal masaüstü için sık sorulan sorular ve en iyi uygulamalar.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504424"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007497"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Sanal Masaüstü hakkında SSS
 
@@ -25,7 +23,7 @@ Konak havuzları ve diğer nesneler oluşturmak istiyorsanız, üzerinde çalı�
 
 Uygulama gruplarını kullanıcılara veya Kullanıcı gruplarına yayımlamak için, bir uygulama grubunda Kullanıcı erişimi Yöneticisi rolüne atanmalısınız.
 
-Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. gibi yalnızca kullanıcı oturumlarını yönetmesine izin vermek için özel roller oluşturabilirsiniz. Örnek: 
+Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. gibi yalnızca kullanıcı oturumlarını yönetmesine izin vermek için özel roller oluşturabilirsiniz. Örnek:
 
 ```powershell
 "actions": [
@@ -116,7 +114,7 @@ Bir konak havuzu oluşturduktan sonra, türünü değiştiremezsiniz. Ancak, bir
 
 FSLogix 'teki sınırlamalar veya kotalar, Kullanıcı profili VHD (X) dosyalarını depolamak için kullanılan depolama dokusuna bağımlıdır.
 
-Aşağıdaki tabloda, bir FSLogix profilinin her kullanıcıyı desteklemesi için gereken kaynakların nasıl yapılacağı hakkında bir örnek verilmiştir. Gereksinimler, her profildeki Kullanıcı, uygulama ve etkinliğe bağlı olarak farklılık gösterebilir. 
+Aşağıdaki tabloda, bir FSLogix profilinin her kullanıcıyı desteklemesi için gereken kaynakların nasıl yapılacağı hakkında bir örnek verilmiştir. Gereksinimler, her profildeki Kullanıcı, uygulama ve etkinliğe bağlı olarak farklılık gösterebilir.
 
 | Kaynak | Gereksinim |
 |---|---|

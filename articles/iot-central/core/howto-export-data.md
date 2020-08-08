@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483933"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008534"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>Azure 'da IoT verilerini hedeflere dışarı aktarma
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>Veri dışarı aktarma kullanarak IoT verilerini Azure 'daki hedeflere dışarı aktarma (eski)
 
-*Bu konu, Yöneticiler için geçerlidir.*
+> [!Note]
+> IoT Central verileri dışarı aktarmanın yeni bir yolu vardır. Dışarı aktarılmış verilerinizi filtrelemek ve zenginleştirin ve bunu Web kancası uç noktaları gibi yeni hedeflere dışarı aktarmak için yeni veri dışa aktarma kullanabilirsiniz. Yeni veri dışa aktarma hakkında [buradan](./howto-use-data-export.md)bilgi edinebilirsiniz. Yeni veri dışa aktarma ve eski veri dışa aktarma arasındaki farklar hakkında bilgi edinmek için [karşılaştırma tablosuna](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export)bakın.
 
 Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl kullanılacağı açıklanır. Bu özellik verilerinizi **azure Event Hubs**, **Azure Service Bus**veya **Azure Blob Storage** örneklerine sürekli olarak dışa aktarmanıza olanak tanır. Veri dışa aktarma JSON biçimini kullanır ve Telemetriyi, cihaz bilgilerini ve cihaz şablonu bilgilerini içerebilir. İçin, bu verileri kullan:
 
@@ -27,7 +28,7 @@ Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl k
 > [!Note]
 > Veri dışarı aktarmayı açtığınızda, bu andan itibaren yalnızca verileri alırsınız. Şu anda veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için, verilerin dışarı aktarılmasını erken açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
 

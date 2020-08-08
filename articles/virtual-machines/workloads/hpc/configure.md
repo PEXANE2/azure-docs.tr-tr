@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825149"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006613"
 ---
 # <a name="configure-and-optimize-vms"></a>VM’leri yapılandırma ve iyileştirme
 
@@ -27,9 +27,18 @@ Bu makalede, HPC için InfiniBand özellikli [H serisi](../../sizes-hpc.md) ve [
 ## <a name="vm-images"></a>VM görüntüleri
 InfiniBand etkinleştirilmiş VM 'lerde, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Ayrıca, uygun sürücü ve yapılandırmayla [özel VM görüntüleri](../../linux/tutorial-custom-images.md) oluşturmanız ve bu yinelenen öğeyi yeniden kullanmanız önerilir.
 
+> [!NOTE]
+> GPU etkin [N serisi](../../sizes-gpu.md) VM 'lerde, uygun GPU sürücüleri [VM uzantıları](../../extensions/hpccompute-gpu-linux.md) veya [el ile](../../linux/n-series-driver-setup.md)eklenebilecek şekilde de gereklidir. Market 'teki bazı VM görüntüleri de NVIDIA GPU sürücüleriyle önceden yüklenmiş olarak gelir.
+
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM görüntüleri
+
+#### <a name="non-sr-iov-enabled-vms"></a>SR-ıOV etkin olmayan VM 'Ler
 SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, CENTOS-HPC sürüm 6,5 veya sonraki bir sürümü, market 'te 7,5 ' e kadar uygundur. Örneğin, [H16 serisi VM 'ler](../../h-series.md)için 7,1 sürümleri 7,5 ' ye önerilir. Bu VM görüntüleri, RDMA ve Intel MPı sürüm 5,1 için ağ doğrudan sürücüleriyle önceden yüklenmiş olarak gelir.
 
+> [!NOTE]
+> SR-ıOV etkin olmayan VM 'Ler için bu CentOS tabanlı HPC görüntülerinde, **VUM** yapılandırma dosyasında çekirdek güncelleştirmeleri devre dışı bırakılır. Bunun nedeni, NetworkDirect Linux RDMA sürücülerinin bir RPM paketi olarak dağıtılmaktadır ve çekirdek güncelleştirilirse sürücü güncelleştirmeleri çalışmayabilir.
+
+#### <a name="sr-iov-enabled-vms"></a>SR-ıOV özellikli VM 'Ler
   SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, [CENTOS-HPC sürüm 7,6 veya Market 'teki sonrakı bir](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) sürüm VM görüntüleri uygundur. Bu VM görüntüleri, RDMA ve çeşitli yaygın olarak kullanılan MPı kitaplıkları ve bilimsel bilgi işlem paketleri ve başlamak için en kolay yol ile en iyi duruma getirilmiş ve önceden yüklenmiş olarak gelir.
 
   Bir taban CentOS Market görüntüsünden CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betiklerin örneği [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos)depolarından oluşur.

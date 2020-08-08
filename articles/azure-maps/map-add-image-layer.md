@@ -1,6 +1,6 @@
 ---
 title: Haritaya görüntü katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, harita üzerinde Microsoft Azure haritaları Web SDK 'sını kullanarak bir görüntünün nasıl kaplayacağınızı öğreneceksiniz.
+description: Bir haritaya görüntü eklemeyi öğrenin. Görüntü katmanlarını özelleştirmek ve sabit koordinat kümelerinde resim kaplayan görüntüleri özelleştirmek için bkz. Azure Maps web SDK 'sını kullanma.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 6ffec1afc44c6b920a64b4b92b384b6ce3829488
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a804272a92d98156122397ee7427dcb467fbdf0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286952"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010234"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Haritaya görüntü katmanı ekleme
 

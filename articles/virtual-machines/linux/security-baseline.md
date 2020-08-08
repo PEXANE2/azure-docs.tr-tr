@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 97b2189020beffda32cc70dc66f028bec834eee5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446548"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003267"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Sanal Makineleri için Azure Güvenlik temeli
 
@@ -562,13 +562,13 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: rol tabanlı erişim denetimi 'NI (RBAC) kullanarak, ekipinizdeki görevleri ayırabilirsiniz ve yalnızca kendi işlerini GERÇEKLEŞTIRMESI gereken sanal makinenizde kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. Azure CLı veya Azure PowerShell kullanarak Azure portal VM için erişim denetimi yapılandırabilirsiniz.
+**Kılavuz**: Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanarak, ekipinizdeki görevleri ayırabilirsiniz ve yalnızca kendi işlerini GERÇEKLEŞTIRMESI gereken sanal makinenizde kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. Azure CLı veya Azure PowerShell kullanarak Azure portal VM için erişim denetimi yapılandırabilirsiniz.
 
-* [Azure kaynakları için rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)
+* [Azure RBAC](../../role-based-access-control/overview.md)
 
-* [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -920,11 +920,11 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
 
-**Kılavuz**: özel görüntüler (örn. sanal sabit disk) kullanıyorsanız, yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için Azure rol tabanlı erişim denetimlerini kullanın.
+**Kılavuz**: özel görüntüler (örn. sanal sabit disk) kullanıyorsanız, yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın.
 
-* [Azure 'da RBAC 'yi anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC 'yi anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Azure 'da RBAC 'yi yapılandırma](../../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC 'yi yapılandırma](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 

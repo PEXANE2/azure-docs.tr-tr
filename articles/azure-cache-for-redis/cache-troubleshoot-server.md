@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698087"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008925"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Redis için Azure Cache sunucu tarafı sorunlarını giderme
 
@@ -76,7 +76,7 @@ Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu duruml
 ## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
-- [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Doğru katmanı seçme](cache-overview.md#choosing-the-right-tier)
+- [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)
-- [Redsıs komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)
+- [Redsıs komutlarını nasıl çalıştırabilirim?](cache-development-faq.md#how-can-i-run-redis-commands)

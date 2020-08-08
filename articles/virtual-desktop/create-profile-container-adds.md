@@ -1,25 +1,23 @@
 ---
 title: FSLogix profili kapsayıcısı Azure dosyaları oluşturma Active Directory Domain Services-Azure
 description: Bu makalede, Azure dosyaları ve Azure Active Directory Domain Services ile FSLogix profil kapsayıcısının nasıl oluşturulacağı açıklanır.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362450"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007718"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
 
 Bu makalede, Azure dosyaları ve Azure Active Directory Domain Services (AD DS) ile bir FSLogix profil kapsayıcısı oluşturma gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, zaten bir Azure AD DS örneği ayarlamış olduğunuz varsayılmaktadır. Henüz bir tane yoksa, önce [temel yönetilen etki alanı oluşturma](../active-directory-domain-services/tutorial-create-instance.md) bölümündeki yönergeleri izleyin, sonra buraya geri dönün.
 
@@ -109,7 +107,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<share-name>`Daha önce oluşturduğunuz paylaşımın adıyla değiştirin.
     - `<storage-account-key>`Azure 'daki depolama hesabı anahtarıyla değiştirin.
 
-    Örneğin:
+    Örnek:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
@@ -124,7 +122,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<mounted-drive-letter>`Kullanıcının kullanmasını istediğiniz sürücünün harfiyle değiştirin.
     - `<user-email>`Oturum ana bilgisayar VM 'lerine erişmek için bu profili kullanacak olan kullanıcının UPN 'si ile değiştirin.
 
-    Örneğin:
+    Örnek:
 
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
@@ -142,7 +140,7 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
-4. **Yükle**'yi seçin.
+4. **Yükle**’yi seçin.
 
 5. **Drive C** **Program Files**  >  **FSLogix**  >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix**uygulamalarına** gidin.
 
@@ -202,7 +200,7 @@ Kullanıcıları atamak için:
 
     Önceki cmdlet 'ler gibi,, `<your-wvd-tenant>` `<wvd-pool>` ve değerlerini de ilgili değerlerle değiştirdiğinizden emin olun `<user-principal>` .
 
-    Örneğin:
+    Örnek:
 
      ```powershell
      $pool1 = "contoso"

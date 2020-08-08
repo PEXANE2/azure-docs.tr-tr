@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529119"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005026"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -174,7 +174,7 @@ Birkaç dakika sonra, güvenlik sorumlusu seçili kapsamda role atanır.
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Azure Cloud Shell deneyimini kullanma
 
-Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimleri](../../virtual-machines/linux/login-using-aad.md).
+Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal Azure RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [Azure 'da Azure Active Directory kimlik doğrulaması kullanarak bir Linux sanal makinesinde oturum açma](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -189,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmezse, Kullanıcı hesabınızın nesne KIMLIĞINI yalnızca Kullanıcı adı değil ile belirtmeniz gerekir `--assignee-object-id` `--assignee` . Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
 
-Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure RBAC 'nin Azure abonelik kaynaklarınıza erişimini yönetmek için nasıl kullanılacağı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [RBAC ve Azure CLı kullanarak Azure kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-cli)
-- [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-portal)
-- [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetin](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](/azure/role-based-access-control/role-assignments-cli)
+- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](/azure/role-based-access-control/role-assignments-portal)
+- [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](/azure/role-based-access-control/role-assignments-powershell).
 
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma
 

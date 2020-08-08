@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9bd0f1cbe1f4797a0187952b94ca48077bb3134c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854413"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004477"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Güvenlik Merkezi için Azure Güvenlik temeli
 
@@ -190,7 +190,7 @@ Alternatif olarak, Azure Güvenlik Merkezi tarafından Azure Sentinel 'e ilişki
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Kılavuz**: Azure rol tabanlı erişim denetımı (RBAC), Azure kaynaklarına erişimi rol atamaları aracılığıyla yönetmenizi sağlar. Bu rolleri kullanıcılara atayabilir, hizmet sorumlularını ve yönetilen kimlikleri gruplara atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir. Azure Güvenlik Merkezi ' güvenlik okuyucusu ' veya ' güvenlik Admin' için yerleşik rollere sahiptir ve bu sayede kullanıcıların güvenlik ilkelerini okumasına veya güncelleştirmesine ve uyarıları ve önerileri kapatabilir.
+**Kılavuz**: Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynaklarına erişimi rol atamaları aracılığıyla yönetmenizi sağlar. Bu rolleri kullanıcılara atayabilir, hizmet sorumlularını ve yönetilen kimlikleri gruplara atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir. Azure Güvenlik Merkezi ' güvenlik okuyucusu ' veya ' güvenlik Admin' için yerleşik rollere sahiptir ve bu sayede kullanıcıların güvenlik ilkelerini okumasına veya güncelleştirmesine ve uyarıları ve önerileri kapatabilir.
 
 - [Azure Güvenlik Merkezi'nde İzinler](security-center-permissions.md)
 
@@ -344,7 +344,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure kaynaklarına erişimi, Azure Active Directory RBAC aracılığıyla denetleyebilirsiniz.
+**Rehberlik**: ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure RBAC aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz.
 
 Varsayılan olarak, Azure Güvenlik Merkezi verileri, güvenlik merkezi arka uç hizmetinde depolanır. Kuruluşunuzda bu verileri kendi kaynaklarınıza depolamak için gereksinimler eklendiyse, güvenlik merkezi verilerini, uyarılarını ve önerilerini depolamak üzere bir Log Analytics çalışma alanı yapılandırabilirsiniz. Kendi çalışma alanınızı kullanırken, verilerin kaynaklandığı ortama göre farklı çalışma alanlarını yapılandırarak daha fazla ayrım ekleyebilirsiniz.
 
@@ -376,15 +376,15 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-controls-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimleri kullanma 
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma 
 
-**Kılavuz**: Azure Güvenlik Merkezi ile ilgili veri ve kaynaklara erişimi yönetmek için Azure rol tabanlı erişim denetimlerini kullanın. Azure Güvenlik Merkezi ' güvenlik okuyucusu ' veya ' güvenlik Admin' için yerleşik rollere sahiptir ve bu sayede kullanıcıların güvenlik ilkelerini okumasına veya güncelleştirmesine ve uyarıları ve önerileri kapatabilir. Güvenlik Merkezi tarafından toplanan verileri depolayan Log Analytics çalışma alanında, ' Log Analytics okuyucu ', ' Log Analytics katkıda bulunan ' ve diğerleri gibi atayabileceğiniz yerleşik roller de vardır. Kullanıcıların gerekli görevlerini tamamlaması için gereken en az izin veren rolü atayın. Örneğin, okuyucu rolünü yalnızca bir kaynağın güvenlik durumu ile ilgili bilgileri görüntülemesi gereken ancak öneri veya ilkeleri Düzenle gibi işlemleri olmayan kullanıcılara atayın.
+**Kılavuz**: Azure Güvenlik Merkezi ile ilgili veri ve kaynaklara erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın. Azure Güvenlik Merkezi ' güvenlik okuyucusu ' veya ' güvenlik Admin' için yerleşik rollere sahiptir ve bu sayede kullanıcıların güvenlik ilkelerini okumasına veya güncelleştirmesine ve uyarıları ve önerileri kapatabilir. Güvenlik Merkezi tarafından toplanan verileri depolayan Log Analytics çalışma alanında, ' Log Analytics okuyucu ', ' Log Analytics katkıda bulunan ' ve diğerleri gibi atayabileceğiniz yerleşik roller de vardır. Kullanıcıların gerekli görevlerini tamamlaması için gereken en az izin veren rolü atayın. Örneğin, okuyucu rolünü yalnızca bir kaynağın güvenlik durumu ile ilgili bilgileri görüntülemesi gereken ancak öneri veya ilkeleri Düzenle gibi işlemleri olmayan kullanıcılara atayın.
 
 - [Azure Log Analytics çalışma alanı izinleri](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
 - [Azure Güvenlik Merkezi'nde İzinler](security-center-permissions.md)
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

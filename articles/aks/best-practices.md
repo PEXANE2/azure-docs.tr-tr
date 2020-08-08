@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) içinde uygulama derlemek ve yönetm
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77596326"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008789"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama derlemek ve yönetmek için küme operatörü ve geliştirici en iyi uygulamaları
 
@@ -21,7 +21,7 @@ Bu en iyi yöntemler ve kavramsal makaleler, AKS ürün grubu, mühendislik tak�
 
 Bir küme operatörü olarak, ihtiyaçlarını anlamak için uygulama sahipleri ve geliştiricilerle birlikte çalışın. Daha sonra, AKS kümelerinizi gerektiği şekilde yapılandırmak için aşağıdaki en iyi yöntemleri kullanabilirsiniz.
 
-**Çok kiracılı**
+**Çoklu kiracı**
 
 * [Küme yalıtımı için en iyi deneyimler](operator-best-practices-cluster-isolation.md)
     * Çok kiracılı çekirdek bileşenleri ve ad alanlarıyla mantıksal yalıtım içerir.
@@ -30,7 +30,7 @@ Bir küme operatörü olarak, ihtiyaçlarını anlamak için uygulama sahipleri 
 * [Gelişmiş zamanlayıcı özellikleri için en iyi deneyimler](operator-best-practices-advanced-scheduler.md)
     * Talara ve toleranlara, düğüm seçicilerini ve benzeşimine ve yerleşik olmayan benzeşim ve benzeşim kullanımını içerir.
 * [Kimlik doğrulaması ve yetkilendirme için en iyi yöntemler](operator-best-practices-identity.md)
-    * Rol tabanlı erişim denetimleri (RBAC) ve pod kimliklerini kullanarak Azure Active Directory tümleştirme içerir.
+    * Rol tabanlı erişim denetimi (RBAC) ve pod kimliklerini kullanarak Azure Active Directory tümleştirme içerir.
 
 **Güvenlik**
 
