@@ -4,12 +4,12 @@ description: Düğüm türü ekleyerek bir Service Fabric kümesini ölçeklendi
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 01f6c90f9f7d7679f5b108138e2d2318eb6b9e18
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010867"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031990"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünün ölçeğini artırma
 Bu makalede, kümeye ek bir düğüm türü ekleyerek bir Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir.
@@ -62,9 +62,6 @@ New-AzResourceGroupDeployment `
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Kümeye yeni bir birincil düğüm türü ekleyin
 > [!Note]
 > Aşağıdaki adımlarda oluşturulan kaynaklar, ölçeklendirme işlemi tamamlandıktan sonra kümenizde yeni birincil düğüm türü olacaktır. İlk alt ağ, genel IP, Load Balancer, sanal makine ölçek kümesi ve düğüm türünden benzersiz olan adlar kullandığınızdan emin olun. 
-
-> [!Note]
-> Zaten standart bir SKU genel IP kullanıyorsanız ve standart SKU LB ' ı kullanıyorsanız, yeni ağ kaynakları oluşturmanız gerekmez. 
 
 Aşağıdaki adımların tümünü içeren bir şablon bulabilirsiniz: [Service Fabric-yeni düğüm türü küme](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json). Aşağıdaki adımlarda, yeni kaynaklardaki değişiklikleri vurgulayan kısmi kaynak parçacıkları bulunur.  
 
@@ -162,7 +159,40 @@ Dağıtım tamamlandığında Service Fabric kümesi artık iki düğüm türün
 ### <a name="remove-the-existing-node-type"></a>Var olan düğüm türünü kaldır 
 Kaynakların dağıtımı tamamlandıktan sonra, özgün birincil düğüm türündeki düğümleri devre dışı bırakmayı deneyebilirsiniz. Düğümler devre dışı bırakıldığı için, sistem hizmetleri Yukarıdaki adımda dağıtılan yeni birincil düğüm türüne geçirilir.
 
-1. Düğüm türü 0 içindeki düğümleri devre dışı bırakın. 
+1. Service Fabric küme kaynağındaki birincil düğüm türü özelliğini false olarak ayarlayın. 
+```json
+{
+    "name": "[variables('vmNodeType0Name')]",
+    "applicationPorts": {
+        "endPort": "[variables('nt0applicationEndPort')]",
+        "startPort": "[variables('nt0applicationStartPort')]"
+    },
+    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
+    "durabilityLevel": "Bronze",
+    "ephemeralPorts": {
+        "endPort": "[variables('nt0ephemeralEndPort')]",
+        "startPort": "[variables('nt0ephemeralStartPort')]"
+    },
+    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+    "isPrimary": false,
+    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
+    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+}
+```
+2. Şablonu orijinal düğüm türündeki güncelleştirilmiş IsPrimary özelliği ile dağıtın. Birincil bayrağın asıl düğüm türünde false olarak ayarlanmış bir şablon bulabilirsiniz: [Service Fabric-birincil düğüm türü false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
+
+```powershell
+# deploy the updated template files to the existing resource group
+$templateFilePath = "C:\AzureDeploy-3.json"
+$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+```
+
+3. Düğüm türü 0 içindeki düğümleri devre dışı bırakın. 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
     -KeepAliveIntervalInSec 10 `
@@ -196,7 +226,7 @@ foreach($node in $nodes)
 > [!Note]
 > Bu adımın tamamlanması biraz zaman alabilir. 
 
-2. Düğüm türü 0 üzerindeki verileri durdur. 
+4. Düğüm türü 0 üzerindeki verileri durdur. 
 ```powershell
 foreach($node in $nodes)
 {
@@ -208,62 +238,18 @@ foreach($node in $nodes)
   }
 }
 ```
-3. Özgün sanal makine ölçek kümesindeki düğümleri serbest bırakma 
+5. Özgün sanal makine ölçek kümesindeki düğümleri serbest bırakma 
 ```powershell
 $scaleSetName="nt1vm"
 $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
+> [!Note]
+> Standart SKU genel IP ve standart SKU yük dengeleyicisi kullanıyorsanız 6. ve 7. adım isteğe bağlıdır. Bu durumda, aynı yük dengeleyici altında birden fazla sanal makine ölçek kümesi/düğüm türüne sahip olabilirsiniz. 
 
-4. Düğüm durumu 0 olan düğüm türünden kaldır.
-```powershell
-foreach($node in $nodes)
-{
-  if ($node.NodeType -eq $nodeType)
-  {
-    $node.NodeName
+6. Artık özgün IP 'yi ve Load Balancer kaynakları silebilirsiniz. Bu adımda DNS adını da güncelleşolursunuz. 
 
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
-  }
-}
-```
-5. Service Fabric küme kaynağındaki birincil düğüm türü özelliğini false olarak ayarlayın. 
-
-```json
-{
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
-    "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-}
-```
-
-5. Şablonu orijinal düğüm türündeki güncelleştirilmiş IsPrimary özelliği ile dağıtın. Birincil bayrağın asıl düğüm türünde false olarak ayarlanmış bir şablon bulabilirsiniz: [Service Fabric-birincil düğüm türü false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
-
-```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
-```
-
-7. Artık özgün IP 'yi ve Load Balancer kaynakları silebilirsiniz. Bu adımda DNS adını da güncelleşolursunuz. 
 ```powershell
 $lbname="LB-cluster-name-nt1vm"
 $lbResourceType="Microsoft.Network/loadBalancers"
@@ -283,11 +269,24 @@ $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
 ``` 
-6. Kümedeki yönetim uç noktasını yeni IP 'ye başvuracak şekilde güncelleştirin. 
+
+7. Kümedeki yönetim uç noktasını yeni IP 'ye başvuracak şekilde güncelleştirin. 
 ```json
   "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-7. ARM şablonundaki Service Fabric kaynağından özgün düğüm türü başvurusunu kaldırın. 
+8. Düğüm durumu 0 olan düğüm türünden kaldır.
+```powershell
+foreach($node in $nodes)
+{
+  if ($node.NodeType -eq $nodeType)
+  {
+    $node.NodeName
+
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+  }
+}
+```
+9. ARM şablonundaki Service Fabric kaynağından özgün düğüm türü başvurusunu kaldırın. 
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -338,13 +337,10 @@ Yalnızca gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki kü
  } 
 }
 ```
+10. ARM şablonundan orijinal düğüm türüyle ilişkili diğer tüm kaynakları kaldırın. Bu özgün kaynakların tümü kaldırılmış olan bir şablon için [Service Fabric-yeni düğüm türü kümesi](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) ' ne bakın.
 
-8. ARM şablonundan orijinal düğüm türüyle ilişkili diğer tüm kaynakları kaldırın. Bu özgün kaynakların tümü kaldırılmış olan bir şablon için [Service Fabric-yeni düğüm türü kümesi](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) ' ne bakın.
-
-9. Değiştirilen Azure Resource Manager şablonunu dağıtın. * * Bu adım genellikle iki saate kadar sürer. Bu yükseltme ayarları InfrastructureService olarak değiştirecek, bu nedenle bir düğümün yeniden başlatılması gerekiyor. Bu durumda forceRestart yoksayıldı. Yükseltilebilir Dereperepsetchecktimeout parametresi, Service Fabric bir bölümün güvenli bir durumda olmasını bekleyeceği en uzun süreyi belirtir, zaten güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric. UpgradeTimeout parametresi için değer 6 saate indirgenecek, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
-Ardından şunları doğrulayın:
-
-* Portalda Service Fabric kaynak, Ready olarak görünür.
+11. Değiştirilen Azure Resource Manager şablonunu dağıtın. * * Bu adım genellikle iki saate kadar sürer. Bu yükseltme ayarları InfrastructureService olarak değiştirecek, bu nedenle bir düğümün yeniden başlatılması gerekiyor. Bu durumda forceRestart yoksayıldı. Yükseltilebilir Dereperepsetchecktimeout parametresi, Service Fabric bir bölümün güvenli bir durumda olmasını bekleyeceği en uzun süreyi belirtir, zaten güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric. UpgradeTimeout parametresi için değer 6 saate indirgenecek, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
+Ardından, portalda Service Fabric kaynağının, ' ın hazırlandığını doğrulayın. 
 
 ```powershell
 # deploy the updated template files to the existing resource group

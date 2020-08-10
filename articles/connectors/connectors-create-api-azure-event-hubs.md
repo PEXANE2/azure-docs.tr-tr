@@ -7,20 +7,20 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848853"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031423"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs ve Azure Logic Apps ile olayları izleme, alma ve gönderme
 
 Bu makalede, Azure Event Hubs Bağlayıcısı ile bir mantıksal uygulamanın içinden [azure Event Hubs](../event-hubs/event-hubs-about.md) gönderilen olayları nasıl izleyebileceğinizi ve yönetebileceğinizi gösterir. Böylece, Olay Hub’ınızdan gelen olayları almaya, bu olayları denetlemeye ve göndermeye yönelik görevleri ve iş akışlarını otomatikleştiren mantıksal uygulamalar oluşturabilirsiniz. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Event Hubs Bağlayıcısı başvurusu](/connectors/eventhubs/) </a> .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
+* Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
 * [Azure Event Hubs ad alanı ve Olay Hub 'ı](../event-hubs/event-hubs-create.md)
 
@@ -33,7 +33,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 Mantıksal uygulamanızın Olay Hub 'ınıza erişebildiğinizden emin olmak için, izinlerinizi denetleyin ve Event Hubs ad alanınız için bağlantı dizesini alın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Belirli bir olay hub 'ına değil Event Hubs *ad alanına*gidin. 
 
@@ -79,12 +79,12 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub'ı adı** | Evet | İzlemek istediğiniz olay hub 'ının adı |
+   | **Olay Hub'ı adı** | Yes | İzlemek istediğiniz olay hub 'ının adı |
    | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
    | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
    | **En fazla olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
-   | **Aralık** | Evet | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
-   | **Sıklık** | Evet | Yinelenme için zaman birimi |
+   | **Aralık** | Yes | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
+   | **Sıklık** | Yes | Yinelenme için zaman birimi |
    ||||
 
    **Ek özellikler**
@@ -130,7 +130,7 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub'ı adı** | Evet | Olayı göndermek istediğiniz olay hub 'ı |
+   | **Olay Hub'ı adı** | Yes | Olayı göndermek istediğiniz olay hub 'ı |
    | **İçerik** | Hayır | Göndermek istediğiniz olay için içerik |
    | **Özellikler** | Hayır | Gönderilen uygulama özellikleri ve değerler |
    | **Bölüm anahtarı** | Hayır | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
@@ -152,11 +152,11 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Event Hubs ad alanı** | Evet | <*Olay-Hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
+   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Event Hubs ad alanı** | Yes | <*Olay-Hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
    |||||  
 
-   Örnek:
+   Örneğin:
 
    ![Olay Hub 'ı bağlantısı oluştur](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 

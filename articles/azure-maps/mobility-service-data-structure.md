@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar 'da Mobility hizmeti veri yapıları | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps Mobility Hizmetleri aracılığıyla döndürülen ortak alanlar ve veri yapıları hakkında bilgi edineceksiniz.
+description: Azure haritalar Mobility hizmetlerinde verilerin Metro alanlarında nasıl düzenlendiğini anlayın. Bkz. genel transit hakkında bilgileri depolayan alanları ve çizgileri.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5c2033557d14a25c786f3f6b08dc5bd54956f7e1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131285"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033232"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility hizmetindeki veri yapıları
 

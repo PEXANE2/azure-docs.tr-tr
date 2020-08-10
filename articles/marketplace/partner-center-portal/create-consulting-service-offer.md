@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798231"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032603"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -101,7 +101,7 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
     - Analiz
     - Uygulama modernleştirme
     - Arşiv
-    - Yapay Zeka + Makine Öğrenmesi
+    - Yapay Zeka ve Makine Öğrenmesi
     - Backup
     - Büyük Veri
     - Veri platformu
@@ -160,7 +160,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 8. Ekran görüntüleri/videolar
 9. Belgeler
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -182,7 +182,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 [!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
-### <a name="keywords"></a>Anahtar Sözcükler
+### <a name="keywords"></a>Anahtar sözcükler
 
 Birincil ürün ve danışmanlık hizmetinize uygun en fazla üç arama anahtar sözcüğü girin. Tekliflerinizi bulmayı daha kolay hale getirir.
 
@@ -202,19 +202,22 @@ Teklifiniz için PDF belgelerini destekleyen en fazla üç (ancak en az bir) ekl
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin. png biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
+Aşağıdaki piksel boyutlarının her birinde teklifinizin logosunun PNG dosyalarını sağlayın:
 
-Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
+- **Küçük (48 x 48)**
+- **Büyük (216 x 216)**
 
-- **Küçük** (48 x 48)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+Tüm logolar gereklidir ve Market listesindeki farklı yerlerde kullanılır.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   Küçük logo (48 x 48 piksel) Azure Marketi arama sonuçlarında ve Microsoft AppSource ana sayfa ve arama sonuçları sayfasında görünür. 
+-   Büyük logo (216 x 216 ve 350 x 350 piksel arasında), Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 

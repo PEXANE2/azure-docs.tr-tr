@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway ölçümleri üzerinde uyarı ayarlama
-description: Azure VPN Gateway ölçümlerinde uyarıları ayarlamayı öğrenin. VPN türünün sanal ağ geçitleri için uyarıları ayarlamak üzere Azure Izleyici 'yi kullanın.
+description: Sanal ağ VPN ağ geçitleri için ölçümleri temel alarak Azure Izleyici uyarılarını ayarlamak üzere Azure portal nasıl kullanacağınızı öğrenin.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 3819f653cba80854a65a08f92a10f82057abb0fd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923076"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033504"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway ölçümlerinde uyarıları ayarlama
 
@@ -50,11 +50,11 @@ Aşağıdaki örnek adımlar, için bir ağ geçidinde uyarı oluşturur:
 
 2. Kaynak olarak VPN ağ geçidinizi seçin.
 
-   ![Kaynak listesinde Seç düğmesi ve VPN ağ geçidi](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Şunu seçin:")
+   ![Kaynak listesinde Seç düğmesi ve VPN ağ geçidi](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Seçim")
 
 3. Uyarı için yapılandırılacak bir ölçüm seçin.
 
-   ![Ölçüm listesinde seçili ölçüm](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Şunu seçin:")
+   ![Ölçüm listesinde seçili ölçüm](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Seçim")
 4. Sinyal mantığını yapılandırın. Bunun üç bileşeni vardır:
 
     a. **Boyutlar**: ölçümün boyutları varsa, uyarının yalnızca o boyuttaki verileri vermesini sağlamak için belirli boyut değerlerini seçebilirsiniz. Bunlar isteğe bağlıdır.
@@ -63,11 +63,11 @@ Aşağıdaki örnek adımlar, için bir ağ geçidinde uyarı oluşturur:
 
     c. **Zaman**: ölçüm verilerinin ayrıntı düzeyini ve uyarının değerlendirileceği süreyi belirtin.
 
-   ![Sinyal mantığını yapılandırmaya ilişkin ayrıntılar](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Şunu seçin:")
+   ![Sinyal mantığını yapılandırmaya ilişkin ayrıntılar](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Seçim")
 
 5. Yapılandırılan kuralları görüntülemek için, **Uyarı kurallarını yönet**' i seçin.
 
-   ![Uyarı kurallarını yönetmek için düğme](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Şunu seçin:")
+   ![Uyarı kurallarını yönetmek için düğme](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Seçim")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

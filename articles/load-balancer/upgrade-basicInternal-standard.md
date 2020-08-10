@@ -5,14 +5,14 @@ services: load-balancer
 author: irenehua
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 02/23/2020
+ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809325"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033164"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekmez
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -48,7 +48,7 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 ## <a name="download-the-script"></a>Betiği indir
 
-[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0)geçiş betiğini indirin.
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0)geçiş betiğini indirin.
 ## <a name="use-the-script"></a>Betiği kullan
 
 Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:

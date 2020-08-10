@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB, avantajları ve ne zaman kullanılacağı için Azure SYNAPSE bağlantısı
 description: Azure Cosmos DB için Azure SYNAPSE bağlantısı hakkında bilgi edinin. SYNAPSE bağlantısı, Azure Cosmos DB üzerinde işletimsel veriler üzerinde Azure SYNAPSE Analytics kullanarak neredeyse gerçek zamanlı analizler (HTAP) çalıştırmanızı sağlar.
-author: srchi
-ms.author: srchi
+author: Rodrigossz
+ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025786"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034187"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 

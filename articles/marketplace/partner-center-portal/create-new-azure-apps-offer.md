@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904523"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031515"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -202,7 +202,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Ad
+#### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -242,6 +242,8 @@ Bir **destek kişisi**, **mühendislik Iletişim**ve **CSP program kişisi**içi
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler gönderiminizin reddedilmesine neden olur.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
@@ -255,6 +257,8 @@ Aşağıdaki üç piksel boyutunda teklifinizin logosunun PNG dosyalarını sağ
 - **Geniş** (255 x 115)
 
 Üç logo de gereklidir ve listede farklı yerlerde kullanılır.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

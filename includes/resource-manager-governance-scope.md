@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager

@@ -15,13 +15,13 @@ ms.locfileid: "67704272"
 
 Çeşitli yollarla bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt defteriyle kimlik doğrulaması yapabilirsiniz, ancak komut satırından önerilen yöntem [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)'yı kullanmaktır.
 
-Aşağıdaki örnekte gösterildiği gibi [ `docker login` komutunu](https://docs.docker.com/engine/reference/commandline/login/), bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt `containerpreview.azurecr.io`defteri ' nde oturum açmak için kullanın. Kullanıcı adını, Azure bilişsel hizmetler takımınızdan aldığınız kimlik bilgilerinde belirtilen parola ile Kullanıcı adı ve * \<parola\> * *ile değiştirin \<\> *
+Aşağıdaki örnekte gösterildiği gibi [ `docker login` komutunu](https://docs.docker.com/engine/reference/commandline/login/), bilişsel `containerpreview.azurecr.io` Hizmetler kapsayıcıları için özel kapsayıcı kayıt defteri ' nde oturum açmak için kullanın. Kullanıcı adını, Azure bilişsel hizmetler takımınızdan aldığınız kimlik bilgilerinde belirtilen parola ile Kullanıcı adı ve * \< parola \> * *ile değiştirin. \< \> *
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Kimlik bilgilerinizi bir metin dosyasında güvenli hale yaptıysanız, `cat` komutunu kullanarak, aşağıdaki örnekte gösterildiği gibi, bu metin dosyasının içeriğini `docker login` komut ile birleştirebilirsiniz. * \<PasswordFile\> * değerini, kimlik bilgilerinizle belirtilen kullanıcı adıyla * \<parolayı ve\> Kullanıcı adını içeren* metin dosyasının yolu ve adıyla değiştirin.
+Kimlik bilgilerinizi bir metin dosyasında güvenli hale yaptıysanız, komutunu kullanarak, `cat` `docker login` Aşağıdaki örnekte gösterildiği gibi, bu metin dosyasının içeriğini komut ile birleştirebilirsiniz. * \< PasswordFile \> * değerini, kimlik bilgilerinizle belirtilen kullanıcı adıyla * \< \> parolayı ve Kullanıcı adını içeren* metin dosyasının yolu ve adıyla değiştirin.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin

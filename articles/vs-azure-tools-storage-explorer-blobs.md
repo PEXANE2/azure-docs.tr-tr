@@ -1,6 +1,6 @@
 ---
 title: Depolama Gezgini ile Azure Blob depolama kaynaklarını yönetme | Microsoft Docs
-description: Azure Blob kapsayıcıları ve Bloblarını Depolama Gezgini ile yönetme
+description: Depolama Gezgini ile Azure Blob depolama kaynaklarını yönetme. Blob kapsayıcısı oluşturun, blob kapsayıcı içeriklerini görüntüleyin, blob kapsayıcısını silin veya kopyalayın ve daha fazlasını yapın.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298132"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033623"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Depolama kaynaklarını Depolama Gezgini'yle yönetme
 
@@ -188,7 +188,7 @@ Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörleri
         ![Karşıya dosya yükleme seçenekleri][16]
      3. **BLOB türünün**türünü belirtin. Daha fazla bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. İsteğe bağlı olarak, seçili dosyaların karşıya yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
-     5. **Karşıya Yükle**'yi seçin.
+     5. **Karşıya Yükle**’yi seçin.
    * **Blob kapsayıcısına bir klasör yükleme**
 
      1. Ana bölmedeki araç çubuğunda **karşıya yükle**' yi ve ardından açılan menüden **klasörü karşıya yükle** ' yi seçin.
@@ -199,13 +199,13 @@ Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörleri
         ![Klasör yükleme seçenekleri][18]
      3. **BLOB türünün**türünü belirtin. Daha fazla bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. İsteğe bağlı olarak, seçili klasörün içeriklerinin yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
-     5. **Karşıya Yükle**'yi seçin.
+     5. **Karşıya Yükle**’yi seçin.
    * **Yerel bilgisayarınıza blob indirme**
 
      1. İndirmek istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **İndir**’i seçin.
      3. **İndirilen blob 'un kaydedileceği yeri belirtin** iletişim kutusunda, blob 'un indirilmesini istediğiniz konumu ve vermek istediğiniz adı belirtin.  
-     4. **Kaydet**'i seçin.
+     4. **Kaydet**’i seçin.
    * **Yerel bilgisayarınızda bir blob açın**
 
      1. Açmak istediğiniz blobu seçin.
@@ -217,7 +217,7 @@ Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörleri
      2. Ana bölmedeki araç çubuğunda **Kopyala**’yı seçin.
      3. Sol bölmede başka bir blob kapsayıcısına gidin ve ana bölmede görüntülemek için çift tıklayın.
      4. Ana bölmedeki araç çubuğunda, Blobun bir kopyasını oluşturmak için **Yapıştır** ' ı seçin.
-   * **Blob silme**
+   * **Blobu silme**
 
      1. Silmek istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **Sil**’i seçin.

@@ -1,18 +1,18 @@
 ---
 title: Dynamics 365 Iş Merkezi teklifi oluşturma-Microsoft ticari Market
-description: İş Ortağı Merkezi 'nde ticari Market portalında yeni bir Dynamics 365 Iş Merkezi teklifi oluşturmaya yönelik adımları ve konuları öğrenin. Teklifinizi Azure Marketi 'nde veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyebilir veya satın alabilirsiniz.
+description: İş Ortağı Merkezi 'nde Microsoft ticari marketi 'nde yeni bir Dynamics 365 Iş Merkezi teklifi oluşturmaya yönelik adımları ve konuları öğrenin. Teklifinizi Azure Marketi 'nde veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyebilir veya satın alabilirsiniz.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800407"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031508"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central teklifi oluşturma
 
@@ -134,7 +134,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 9. Açıklama
 10. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -180,19 +180,21 @@ Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad,
 
 Burada, teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en az bir (en fazla üç) ilgili pazarlama belgesi sağlayın. Bu belgeler. PDF biçiminde olmalıdır.
 
-### <a name="store-logos"></a>Mağaza logoları
+### <a name="marketplace-images"></a>Market görüntüleri
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
+Teklifinizin logolarını ve görüntülerini sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. 
 
-Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
-- **Küçük** (48 x 48)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+Teklif logonuzu iki boyutta karşıya yükleyin:
+
+* **Küçük** (48 x 48 piksel)
+* **Büyük** (216 x 216 piksel)
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın `https://upload.xboxlive.com` Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

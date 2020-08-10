@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79533241"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031226"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na veri çoğaltma
 
@@ -29,6 +29,11 @@ Geçiş senaryoları için, [Azure veritabanı geçiş hizmeti](https://azure.mi
 
 ### <a name="data-not-replicated"></a>Çoğaltılan veriler
 Ana sunucudaki [*MySQL sistem veritabanı*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) çoğaltılmaz. Ana sunucudaki hesaplar ve izinler üzerinde yapılan değişiklikler çoğaltılmaz. Ana sunucuda bir hesap oluşturursanız ve bu hesabın çoğaltma sunucusuna erişmesi gerekiyorsa, çoğaltma sunucusu tarafında el ile aynı hesabı oluşturun. Hangi tabloların sistem veritabanına dahil olduğunu anlamak için [MySQL kılavuzuna](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)bakın.
+
+### <a name="filtering"></a>Filtreleme
+Ana sunucunuzdaki (Şirket içi, sanal makinelerde barındırılan veya diğer bulut sağlayıcıları tarafından barındırılan bir veritabanı hizmetindeki) tabloları çoğaltmayı atlamak için, `replicate_wild_ignore_table` parametresi desteklenir. İsteğe bağlı olarak, [Azure Portal](howto-server-parameters.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak Azure 'da barındırılan Çoğaltma sunucusunda bu parametreyi güncelleştirin.
+
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) gözden geçirin.
 
 ### <a name="requirements"></a>Gereksinimler
 - Ana sunucu sürümü en az MySQL sürüm 5,6 olmalıdır. 

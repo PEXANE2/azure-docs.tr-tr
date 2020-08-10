@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fb0a5c06c8b7bdbb62e937e865e6bb2fd4000f2d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1ec3eaac90e1d2bc24608f6cb4546d5bed859b5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462488"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033249"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
 İç yük dengeleyici ve iki sanal makine oluşturmak için Azure portal kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -51,20 +51,56 @@ Sanal ağdaki özel bir IP adresi, yük dengeleyici için ön uç (varsayılan o
 
 Ön uç IP adresi **statik** veya **dinamik**olabilir.
 
-## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
+## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-Bu bölümde, adımlarda bulunan parametreleri aşağıdaki bilgilerle değiştirirsiniz:
+Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
-| Parametre                   | Değer                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
-| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+1. Ekranın sol üst kısmında, **kaynak oluştur > ağ > sanal ağ** ' ı seçin veya arama kutusunda **sanal ağ** ara ' yı seçin.
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+
+    | **Ayar**          | **Değer**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Proje ayrıntıları**  |                                                                 |
+    | Abonelik     | Azure aboneliğinizi seçin                                  |
+    | Kaynak Grubu   | **Myresourcegrouplb** seçin |
+    | **Örnek ayrıntıları** |                                                                 |
+    | Adı             | **Myvnet** girin                                    |
+    | Bölge           | **Batı Avrupa** seçin |
+
+3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
+
+4. **IP adresleri** sekmesinde şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | IPv4 adres alanı | **10.1.0.0/16** girin |
+
+5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+
+6. **Alt ağı Düzenle**' de şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Alt ağ adı | **Mybackendsubnet** girin |
+    | Alt ağ adres aralığı | **10.1.0.0/24** girin |
+
+7. **Kaydet**’i seçin.
+
+8. **Güvenlik** sekmesini seçin.
+
+9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Savunma adı | **Mybastionhost** girin |
+    | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
+
+
+8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
+
+9. **Oluştur**’u seçin.
 
 ## <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
@@ -76,7 +112,7 @@ Bu bölümde, adımlarda bulunan parametreleri aşağıdaki bilgilerle değişti
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Myresourcegrouplb** öğesini seçin.|
-    | Name                   | **Myloadbalancer** girin                                   |
+    | Adı                   | **Myloadbalancer** girin                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
@@ -125,7 +161,7 @@ Sanal makinelerin durumunu izlemek için **myHealthProbe** adlı bir durum araş
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Myhealtharaştırması**girin. |
+    | Adı | **Myhealtharaştırması**girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | **80**girin.|
     | Aralık | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için **15** girin. |
@@ -153,7 +189,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Myhttprule**girin. |
+    | Adı | **Myhttprule**girin. |
     | IP sürümü | **IPv4** seçin |
     | Ön uç IP adresi | **Loadbalancerön uç** seçin |
     | Protokol | **TCP**’yi seçin. |
@@ -164,6 +200,9 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     | Örtük giden kuralları oluşturma | **Hayır**'ı seçin.
 
 4. Kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
+
+>[!NOTE]
+>Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz.: </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
 
 ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
 
@@ -228,7 +267,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | **İzleme** |  |
     | Önyükleme tanılaması | Seçme **kapalı** |
    
-7. **Gözden geçir ve oluştur**’u seçin. 
+7. **İncele ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -236,7 +275,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
     | Ayar | VM 2|
     | ------- | ----- |
-    | Name |  **myVM2** |
+    | Adı |  **myVM2** |
     | Kullanılabilirlik alanı | **2** |
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin|
 
@@ -256,20 +295,56 @@ Sanal ağdaki özel bir IP adresi, yük dengeleyici için ön uç (varsayılan o
 
 Ön uç IP adresi **statik** veya **dinamik**olabilir.
 
-## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
+## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-Bu bölümde, adımlarda bulunan parametreleri aşağıdaki bilgilerle değiştirirsiniz:
+Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
-| Parametre                   | Değer                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
-| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+1. Ekranın sol üst kısmında, **kaynak oluştur > ağ > sanal ağ** ' ı seçin veya arama kutusunda **sanal ağ** ara ' yı seçin.
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+
+    | **Ayar**          | **Değer**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Proje ayrıntıları**  |                                                                 |
+    | Abonelik     | Azure aboneliğinizi seçin                                  |
+    | Kaynak Grubu   | **Myresourcegrouplb** seçin |
+    | **Örnek ayrıntıları** |                                                                 |
+    | Adı             | **Myvnet** girin                                    |
+    | Bölge           | **Batı Avrupa** seçin |
+
+3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
+
+4. **IP adresleri** sekmesinde şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | IPv4 adres alanı | **10.1.0.0/16** girin |
+
+5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+
+6. **Alt ağı Düzenle**' de şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Alt ağ adı | **Mybackendsubnet** girin |
+    | Alt ağ adres aralığı | **10.1.0.0/24** girin |
+
+7. **Kaydet**’i seçin.
+
+8. **Güvenlik** sekmesini seçin.
+
+9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Savunma adı | **Mybastionhost** girin |
+    | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
+
+
+8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
+
+9. **Oluştur**’u seçin.
 
 ## <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
@@ -281,7 +356,7 @@ Bu bölümde, adımlarda bulunan parametreleri aşağıdaki bilgilerle değişti
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Myresourcegrouplb** öğesini seçin.|
-    | Name                   | **Myloadbalancer** girin                                   |
+    | Adı                   | **Myloadbalancer** girin                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Temel** seçin |
@@ -317,11 +392,11 @@ Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere **Myb
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Mybackendpool**girin. |
+    | Adı | **Mybackendpool**girin. |
     | Sanal ağ | **Myvnet**' i seçin. |
     | İlişkili olduğu öğe | **Sanal makineleri** seçin |
 
-4. **Ekle**'yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 
@@ -337,7 +412,7 @@ Sanal makinelerin durumunu izlemek için **myHealthProbe** adlı bir durum araş
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Myhealtharaştırması**girin. |
+    | Adı | **Myhealtharaştırması**girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | **80**girin.|
     | Yol | Girmesini**/** |
@@ -365,7 +440,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Myhttprule**girin. |
+    | Adı | **Myhttprule**girin. |
     | IP sürümü | **IPv4** seçin |
     | Ön uç IP adresi | **Loadbalancerön uç** seçin |
     | Protokol | **TCP**’yi seçin. |
@@ -434,12 +509,13 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 5. **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin.
 
 6. **Yönetim** sekmesinde, şunu seçin veya girin:
+    
     | Ayar | Değer |
     |-|-|
-    | **İzleme** | |
+    | **İzleme** |  |
     | Önyükleme tanılaması | Seçme **kapalı** |
 
-7. **Gözden geçir ve oluştur**’u seçin. 
+7. **İncele ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -447,7 +523,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
     | Ayar | VM 2 |
     | ------- | ----- |
-    | Name |  **myVM2** |
+    | Adı |  **myVM2** |
     | Kullanılabilirlik kümesi| **MyAvailabilitySet** seçin |
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin|
 
@@ -465,9 +541,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 5. **MyVM1** ve **myVM2**' nin yanındaki kutuları seçin.
 
-6. **Ekle**'yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 ---
 
 ## <a name="create-test-virtual-machine"></a>Test sanal makinesi oluştur
@@ -487,7 +563,6 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
     | Sanal makine adı | **Mytestvm** girin |
     | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
-    | Kullanılabilirlik alanı | **Bölge yedekli** seçeneğini belirleyin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
     | Azure Spot örneği | **Hayır** seçin |
     | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
@@ -505,7 +580,7 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
     | **Ağ arabirimi** |  |
     | Sanal ağ | **myVNet** |
     | Alt ağ | **myBackendSubnet** |
-    | Genel IP | **Mytestvm-IP**varsayılan değerini kabul edin. |
+    | Genel IP | **Hiçbiri** seçeneğini belirtin. |
     | NIC ağ güvenlik grubu | **Gelişmiş** seçin|
     | Ağ güvenlik grubunu yapılandırma | Önceki adımda oluşturulan **Mynsg** öğesini seçin.|
     
@@ -518,7 +593,7 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
     | **İzleme** |  |
     | Önyükleme tanılaması | Seçme **kapalı** |
    
-7. **Gözden geçir ve oluştur**’u seçin. 
+7. **İncele ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -526,15 +601,15 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden, **myresourcegrouplb** kaynak grubunda bulunan **myVM1** ' yi seçin.
 
-2. **Genel bakış** SAYFASıNDA, VM için RDP dosyasını Indirmek üzere **Bağlan** ' ı seçin.
+2. **Genel bakış** sayfasında **Bağlan** **' ı ve**sonra da ' yi seçin.
 
-3. RDP dosyasını açın.
+4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-4. VM oluşturma işlemleri sırasında belirlediğiniz kimlik bilgilerini kullanarak VM'de oturum açın.
+5. **Bağlan**’ı seçin.
 
-5. Sunucu masaüstünde **Windows Yönetim Araçları** > **Windows PowerShell**' e gidin.
+6. Sunucu masaüstünde **Windows Yönetim Araçları**  >  **Windows PowerShell**' e gidin.
 
-6. PowerShell penceresinde aşağıdaki komutları çalıştırın:
+7. PowerShell penceresinde aşağıdaki komutları çalıştırın:
 
     * IIS sunucusunu yükler
     * Varsayılan iisstart.htm dosyasını Kaldır
@@ -546,14 +621,15 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # remove default htm file
-    remove-item  C:\inetpub\wwwroot\iisstart.htm
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
     
     # Add a new htm file that displays server name
-    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-7. **myVM1** ile RDP oturumunu kapatın.
+8. **MyVM1**ile savunma oturumunu kapatın.
 
-8. IIS’yi ve **myVM2**’deki güncelleştirilmiş iisstart.htm dosyasını yüklemek için 1 ile 6 arasındaki adımları tekrarlayın.
+9. IIS’yi ve **myVM2**’deki güncelleştirilmiş iisstart.htm dosyasını yüklemek için 1 ile 6 arasındaki adımları tekrarlayın.
+
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
@@ -563,15 +639,13 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
 
 3. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **Myresourcegrouplb** kaynak grubunda bulunan **mytestvm** ' yi seçin.
 
-4. **Genel bakış** SAYFASıNDA, VM için RDP dosyasını Indirmek üzere **Bağlan** ' ı seçin.
+4. **Genel bakış** sayfasında **Bağlan** **' ı ve**sonra da ' yi seçin.
 
-5. RDP dosyasını açın.
-
-6. VM oluşturma işlemleri sırasında belirlediğiniz kimlik bilgilerini kullanarak VM'de oturum açın.
+6. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
 7. **Mytestvm**'de **Internet Explorer** 'ı açın.
 
-4. Özel IP adresini kopyalayın ve tarayıcının adres çubuğuna yapıştırın. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
+8. Önceki adımdan, tarayıcının adres çubuğuna IP adresini girin. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standart iç yük dengeleyici oluşturma" border="true":::
    
@@ -591,4 +665,5 @@ Bu hızlı başlangıçta:
 
 Azure Load Balancer hakkında daha fazla bilgi edinmek için [Azure Load Balancer nedir?](load-balancer-overview.md) ve [sık sorulan sorular Load Balancer](load-balancer-faqs.md).
 
-[Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
+* [Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
+* [Azure](https://docs.microsoft.com/azure/bastion/bastion-overview)savunma hakkında daha fazla bilgi edinin.

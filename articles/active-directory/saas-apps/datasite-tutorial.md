@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da42ef51646f7775234ed870e59c442d54933c1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: df9b417b6387a44004b6c363f4e8b12a6f692a94
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170559"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>Öğretici: Datasite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, veri sitesini Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -87,17 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://auth.<ENVIRONMENT>.com/sp/ACS.saml2`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Datasite istemci destek ekibine](mailto:applicationsupport@datasite.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
-
-1. Datasite uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
-
-    ![image](common/default-attributes.png)
-
-1. Veri sitesi uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
-    
-    | Ad | Kaynak özniteliği |
-    | -------------| --------- |
-    | Kuruluş kimliği | < organizationId > |
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Datasite istemci destek ekibine](mailto:service@datasite.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -139,11 +129,11 @@ Bu bölümde, veri sitesi erişimi vererek Azure çoklu oturum açma özelliğin
 
 ## <a name="configure-datasite-sso"></a>Veri sitesi SSO 'SU yapılandırma
 
-**Datasite** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [Datasite destek ekibine](mailto:applicationsupport@datasite.com)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Datasite** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [Datasite destek ekibine](mailto:service@datasite.com)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-datasite-test-user"></a>Datasite test kullanıcısı oluştur
 
-Bu bölümde, Datasite 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. Datasite platformunda kullanıcıları eklemek için [Datasite destek ekibi](mailto:applicationsupport@datasite.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Datasite 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. Datasite platformunda kullanıcıları eklemek için [Datasite destek ekibi](mailto:service@datasite.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box Azure Dosya Eşitleme verileri geçirme
-description: Toplu verileri Azure Dosya Eşitleme ile uyumlu bir şekilde geçirin.
+description: Azure Dosya Eşitleme ile uyumlu toplu verileri çevrimdışı olarak geçirin. Dosya çakışmalarını önleyin ve eşitlemeyi etkinleştirdikten sonra dosya ve klasör ACL 'Lerini ve zaman damgalarını koruyun.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827903"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034354"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure DataBox ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
 Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:

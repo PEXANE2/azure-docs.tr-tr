@@ -8,23 +8,20 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 9427b007bc047e2f01db2dad02e06bf0ab0f5dea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000619"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032307"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
-
-
 
 Azure IoT Central, kurumsal düzeyde IoT çözümlerini geliştirme, yönetme ve sürdürme ile ilişkili yükü ve maliyeti azaltan bir IoT uygulama platformudur. Azure IoT Central ile oluşturmayı seçtiğinizde, yalnızca karmaşık ve sürekli gelişen bir IoT altyapısını korumak ve güncelleştirmek yerine, işletmenizin IoT verileriyle dönüştürülmesi için zaman, para ve enerji tasarrufu sağlayabilirsiniz.
 
 Bu makalede, perakende satış için belirli IoT Central uygulama şablonları açıklanmaktadır. Bir çözüm Oluşturucusu olarak, arz zincirlerini optimize eden IoT çözümleri oluşturmak, müşteriler için mağaza içi deneyimleri iyileştirmek ve envanteri daha verimli bir şekilde izlemek için bu şablonları kullanabilirsiniz.
 
-> [!div class="mx-imgBorder"]
-> ![Azure IoT perakende genel bakış](./media/overview-iot-central-retail/retail-app-templates.png)
+:::image type="content" source="media/overview-iot-central-retail/retail-app-templates.png" alt-text="Azure IoT perakende genel bakış":::
 
 Aşağıdaki bölümler, bu uygulama şablonlarının yeteneklerini anlatmaktadır:
 
@@ -44,19 +41,17 @@ Bağlı bir lojistik çözümünün avantajları şunlardır:
 
 Aşağıdaki ekran görüntüleri, uygulama şablonundaki kullanıma hazır panoyu gösterir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik panosu":::
 
-> [!div class="mx-imgBorder"]
-> ![Bağlı lojistik panosu](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik panosu":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve bağlı bir lojistik uygulama şablonu](./tutorial-iot-central-connected-logistics.md) öğreticisini gözden geçir.
 
 ## <a name="digital-distribution-center"></a>Dijital dağıtım merkezi
 
-Üreticiler ve perakendeciler dünya çapında bir şekilde kullanıma suntıkça, arz zincirlerinin dalı de daha karmaşık hale gelir. Müşteriler artık büyük miktarda ürünlerin kullanılabilir olmasını ve bu malların satın alma için bir veya iki gün içinde ulaşmasını bekliyor. Dağıtım merkezleri, var olan verimsizlikleri üzerine gelirken bu eğilimleri uyarmalıdır. 
+Üreticiler ve perakendeciler dünya çapında bir şekilde kullanıma suntıkça, arz zincirlerinin dalı de daha karmaşık hale gelir. Müşteriler artık büyük miktarda ürünlerin kullanılabilir olmasını ve bu malların satın alma için bir veya iki gün içinde ulaşmasını bekliyor. Dağıtım merkezleri, var olan verimsizlikleri üzerine gelirken bu eğilimleri uyarmalıdır.
 
-Günümüzde, el ile işçiye yönelik bir rahatlık, dağıtım merkezi maliyetlerinin% 55-65 ' ı için çekme ve ambalaj hesapları anlamına gelir. El ile çekme ve paketleme işlemleri genellikle otomatik sistemlerden daha yavaştır ve ekip oluşturma ihtiyaçlarını hızlı bir şekilde dalgalanmak, nakliye hacimlerini de zorlaştırır. Bu mevsimler, yüksek personel cirosu elde eden sonuçlara neden olur ve maliyetli hata olasılığını artırır.
+Günümüzde, el ile işçiye güvenmek, dağıtım merkezi maliyetlerinin% 55-65 ' ı için çekme ve ambalaj hesapları anlamına gelir. El ile çekme ve paketleme işlemleri genellikle otomatik sistemlerden daha yavaştır ve ekip oluşturma ihtiyaçlarını hızlı bir şekilde dalgalanmak, nakliye hacimlerini de zorlaştırır. Bu mevsimler, yüksek personel cirosu elde eden sonuçlara neden olur ve maliyetli hata olasılığını artırır.
 
 IoT özellikli kameraları temel alan çözümler, dijital bir geri bildirim döngüsünü etkinleştirerek dönüştürülebilir avantajlar sunabilir. Dağıtım Merkezi genelindeki veriler, daha iyi veri ile sonuçlanarak eyleme dönüştürülebilir içgörülere yol açar.
 
@@ -69,8 +64,7 @@ Dijital bir dağıtım merkezinin avantajları şunlardır:
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir: 
 
-> [!div class="mx-imgBorder"]
-> ![Dijital dağıtım merkezi panosu](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Dijital dağıtım merkezi panosu":::
 
 Daha fazla bilgi edinmek için bkz. [bir Digital Distribution Center uygulama şablonu öğreticisine dağıtım ve İzlenecek yol](./tutorial-iot-central-digital-distribution-center.md) .
 
@@ -82,8 +76,8 @@ Bir çözüm Oluşturucusu olarak, uçtan uca bir çözüm oluşturmak için ma�
 
 Uygulama şablonunu kullanarak şunları yapın:
 
-* Birçok IoT sensöri IoT Central uygulama örneğine bağlayın.
-* , Algılayıcı ağının sistem durumunu ve ortamdaki tüm ağ geçidi cihazlarını izleyin ve yönetin.
+* Farklı türlerde IoT algılayıcılarının IoT Central bir uygulama örneğine bağlanmasını sağlar.
+* Ağ algılayıcısı ağının ve ortamdaki tüm ağ geçidi cihazlarının sistem durumunu izleyin ve yönetin.
 * Mağaza yöneticileri için uyarıları tetiklemek üzere bir depodaki ortam koşullarının etrafında özel kurallar oluşturun.
 * Mağazalarınızın içindeki çevresel koşulları, Retail Store ekibinin müşteri deneyimini geliştirmek için kullanabileceği öngörülere dönüştürün.
 * Toplu öngörüleri mevcut veya yeni iş uygulamalarına dışarı aktarıp perakende personeli için yararlı ve zamanında bilgiler sağlayın.
@@ -92,8 +86,7 @@ Uygulama şablonu bir cihaz şablonları kümesiyle birlikte gelir ve panoyu dol
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir: 
 
-> [!div class="mx-imgBorder"]
-> ![Mağaza içi analiz koşulu Izleme](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Mağaza içi analiz koşulu Izleme":::
 
 Daha fazla bilgi edinmek için bkz. [Azure 'da bir mağaza 'da analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app.md) öğreticisi.
 
@@ -105,8 +98,8 @@ Bir çözüm Oluşturucusu olarak, bir mağazanın teslim alma bölgesinin perak
 
 Uygulama şablonunu kullanarak şunları yapın:
 
-* Birçok IoT sensöri IoT Central uygulama örneğine bağlayın.
-* , Algılayıcı ağının sistem durumunu ve ortamdaki tüm ağ geçidi cihazlarını izleyin ve yönetin.
+* Farklı türlerde IoT algılayıcılarının IoT Central bir uygulama örneğine bağlanmasını sağlar.
+* Ağ algılayıcısı ağının ve ortamdaki tüm ağ geçidi cihazlarının sistem durumunu izleyin ve yönetin.
 * Retail personele yönelik uyarıları tetiklemek için bir mağaza içindeki kullanıma alma koşulunun etrafında özel kurallar oluşturun.
 * Mağaza içindeki kullanıma alma koşullarını, Retail Store ekibinin müşteri deneyimini geliştirmek için kullanabileceği öngörülere dönüştürün.
 * Toplu öngörüleri mevcut veya yeni iş uygulamalarına dışarı aktarıp perakende personeli için yararlı ve zamanında bilgiler sağlayın.
@@ -115,8 +108,7 @@ Uygulama şablonu bir cihaz şablonları kümesiyle birlikte gelir ve panoyu Lan
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir: 
 
-> [!div class="mx-imgBorder"]
-> ![Mağaza içi analiz kullanıma alma](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Mağaza içi analiz kullanıma alma":::
 
 Daha fazla bilgi edinmek için bkz. [Azure 'da bir mağaza 'da analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app.md) öğreticisi.
 
@@ -136,8 +128,7 @@ Bu uygulama şablonu cihaz bağlantısına odaklanır ve RFıD ve Bluetooth dü�
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-> [!div class="mx-imgBorder"]
-> ![Akıllı envanter yönetimi panosu](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Akıllı envanter yönetimi panosu":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve bir akıllı envanter yönetimi uygulama şablonu](./tutorial-iot-central-smart-inventory-management.md) öğreticisini gözden geçir.
 
@@ -157,10 +148,32 @@ Uygulama şablonu şunları yapmanızı sağlar:
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-> [!div class="mx-imgBorder"]
-> ![Mikro Karşılama Merkezi](./media/overview-iot-central-retail/MFC-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Mikro Karşılama Merkezi":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve Micro-Karşılama Merkezi uygulama şablonu](./tutorial-micro-fulfillment-center.md) öğreticisini inceleyin.
+
+## <a name="video-analytics---object-and-motion-detection"></a>Video analizi-nesne ve hareket algılama
+
+*IoT Central video analizi-nesne ve hareket algılama* uygulama şablonu, nesneleri ve hareketi algılamak için akıllı sınır kameralarını kullanan bir çözümün nasıl dağıtılacağını, yönetileceğini ve izleneceğini hızlı bir şekilde görmenizi sağlar.
+
+Video analizi uygulaması, IoT Edge çalıştıran [canlı bir video analizi (LVA)](#live-video-analytics) modülünü kullanır. LVA modülü, kenarı ve bulutu kapsayan akıllı video uygulamaları oluşturmanız için bir platform sağlar. Platformu, video analizi uygulaması gibi IoT çözümlerini, nesne ve hareket algılama ile geliştirmek için kullanabilirsiniz.
+
+Uygulama şablonu dört uygulama panosu içerir:
+
+* **Kurulum** , uygulama tasarımı hakkında bilgi sağlar ve kameraları eklemenize ve silmenize olanak sağlar.
+* **Yönetin** , kameraları yönetmenizi sağlar. Örneğin, kameraları yapılandırabilir, durum bilgilerini görüntüleyebilir ve çalıştıran kameraları başlatabilirsiniz.
+* **Gerçek kameralar** , gerçek kameralardan algılama sayısı ve kamera olayları gibi bilgileri görüntülemenize olanak sağlar.
+* **İzleyici** , tüm kameralardan ayrıntılı bilgileri görüntülemenize olanak sağlar.
+
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Video analizi-nesne ve hareket algılama":::
+
+Çözümün mimarisi hakkında daha fazla bilgi edinmek için bkz. [video analizi uygulama mimarisi](architecture-video-analytics.md).
+
+Çözümü dağıtmayı öğrenmek için bkz. [Azure 'da video Analytics uygulaması oluşturma IoT Central](tutorial-video-analytics-create-app.md) öğreticisi.
+
+### <a name="live-video-analytics"></a>Canlı video analizi
+
+Canlı video analizi, kenarı ve bulutu kapsayan akıllı video uygulamaları oluşturmanız için bir platform sağlar. Platform, canlı videoyu yakalama, kaydetme, çözümleme ve sonuçları video veya video analizi olabilecek sonuçları Azure hizmetlerine yayımlama özelliği sunar. Azure Hizmetleri, bulutta veya kenarda çalışıyor olabilir. Platformu, video analiziyle IoT çözümlerini geliştirmek için kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

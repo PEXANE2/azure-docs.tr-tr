@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275012"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032143"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
 Bir yönetici, koşullu erişim ilkesinde, ilke kararlarını iyileştirmek için risk, cihaz platformu veya konum gibi koşullardan gelen sinyalleri kullanabilir. 
 
-![Koşullu erişim ilkesi tanımlama ve koşulları belirtme](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[![Koşullu erişim ilkesi tanımlama ve koşulları belirtme](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 Ayrıntılı ve belirli koşullu erişim ilkeleri oluşturmak için birden çok koşul birleştirilebilir.
 
@@ -60,21 +60,28 @@ Konum bir koşul olarak yapılandırılırken, kuruluşlar konumları dahil etme
 
 Konumlar hakkında daha fazla bilgi için, [Azure Active Directory Koşullu erişim içindeki konum koşulunun ne olduğunu](location-condition.md)bulabilirsiniz.
 
-## <a name="client-apps-preview"></a>İstemci uygulamaları (Önizleme)
+## <a name="client-apps"></a>İstemci uygulamaları
 
-Koşullu erişim ilkeleri, varsayılan olarak modern kimlik doğrulama protokollerini kullanan tarayıcı tabanlı uygulamalar ve uygulamalar için geçerlidir. Yöneticiler, bu uygulamaların yanı sıra Exchange ActiveSync istemcilerini ve eski protokolleri kullanan diğer istemcileri de dahil etmek için seçim yapabilir.
+Varsayılan olarak, tüm yeni oluşturulan koşullu erişim ilkeleri, istemci uygulamaları koşulu yapılandırılmamışsa bile tüm istemci uygulama türleri için geçerlidir. 
 
 > [!NOTE]
-> Hangi istemci uygulamalarının seçili olduğunu görmeyi kolaylaştırmak için istemci uygulamaları koşulunda yapılandırma Evet/Hayır geçişi kaldırılmıştır. Bu, var olan bir ilkenin hangi istemci uygulamalarına uygulanacağını etkilemez.
+> İstemci uygulamaları koşulunun davranışı, Ağustos 2020 ' de güncelleştirildi. Koşullu erişim ilkelerinize sahipseniz, bunlar değişmeden kalır. Ancak, var olan bir ilkeye tıkladığınızda, yapılandırma geçişi kaldırılmıştır ve ilke geçerli olan istemci uygulamaları seçilir.
 
-- Tarayıcı
-   - Bunlar SAML, WS-Federation, OpenID Connect gibi protokolleri kullanan Web tabanlı uygulamaları veya OAuth gizli istemci olarak kaydedilmiş hizmetleri içerir.
-- Mobil uygulamalar ve Masaüstü istemcileri
-   - Modern kimlik doğrulama istemcileri
-      - Bu seçenek, Office Masaüstü ve telefon uygulamaları gibi uygulamaları içerir.
+> [!IMPORTANT]
+> Eski kimlik doğrulama istemcilerinden yapılan oturum açma işlemleri MFA 'yı desteklemez ve cihaz durum bilgilerini Azure AD 'ye geçirmez, bu nedenle MFA veya uyumlu cihazlar gerektirme gibi koşullu erişim izni denetimleri tarafından engellenecektir. Eski kimlik doğrulamasını kullanması gereken hesaplarınız varsa, bu hesapları ilkeden hariç tutabilir veya ilkeyi yalnızca modern kimlik doğrulama istemcilerine uygulanacak şekilde yapılandırırsınız.
+
+**Evet** olarak ayarlandığında **yapılandırma** geçişi, işaretlenmiş öğeler için geçerli olduğunda, modern ve eski kimlik doğrulama istemcileri de dahil **olmak üzere tüm** istemci uygulamalarına uygulanmaz. Bu geçiş, 2020 Ağustos 'Tan önce oluşturulan ilkelerde görünmez.
+
+- Modern kimlik doğrulama istemcileri
+   - Tarayıcı
+      - Bunlar SAML, WS-Federation, OpenID Connect gibi protokolleri kullanan Web tabanlı uygulamaları veya OAuth gizli istemci olarak kaydedilmiş hizmetleri içerir.
+   - Mobil uygulamalar ve Masaüstü istemcileri
+      -  Bu seçenek, Office Masaüstü ve telefon uygulamaları gibi uygulamaları içerir.
+- Eski kimlik doğrulama istemcileri
    - Exchange ActiveSync istemcileri
-      - Varsayılan olarak, Exchange ActiveSync (EAS) protokolünün tüm kullanımını içerir. **İlkeyi yalnızca desteklenen platformlara Uygula** seçeneğinin belirlenmesi IOS, Android ve Windows gibi desteklenen platformlarla sınırlı olacaktır.
+      - Bu, Exchange ActiveSync (EAS) protokolünün tüm kullanımını içerir.
       - İlke Exchange ActiveSync kullanımını engellediğinde, etkilenen Kullanıcı tek bir karantina e-postası alır. Bu e-posta, neden engellendikleri hakkında bilgi sağlar ve mümkünse düzeltme yönergelerini içerir.
+      - Yöneticiler, koşullu erişim MS Graph API aracılığıyla yalnızca desteklenen platformlara (iOS, Android ve Windows) ilke uygulayabilir.
    - Diğer istemciler
       - Bu seçenek, modern kimlik doğrulamasını desteklemeyen temel/eski kimlik doğrulama protokollerini kullanan istemcileri içerir.
          - Kimliği doğrulanmış SMTP-e-posta iletileri göndermek için POP ve IMAP istemci tarafından kullanılır.
@@ -99,7 +106,7 @@ Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu 
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
-| Windows 7 | Internet Explorer, Chrome |
+| Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
 | Windows Phone | Microsoft Edge, Internet Explorer |

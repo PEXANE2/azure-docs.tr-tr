@@ -1,6 +1,6 @@
 ---
 title: Azure Depolama ile buluta görüntü verileri yükleme | Microsoft Docs
-description: Uygulama verilerini depolamak için bir Web uygulamasıyla Azure Blob depolamayı kullanma
+description: Uygulama verilerini bir depolama hesabına depolamak için Azure Blob depolamayı Web Apps ile birlikte kullanın. Bu öğretici, Azure depolama 'daki görüntüleri depolayan ve görüntüleyen bir Web uygulaması oluşturur.
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15d18372b9123602e6d6f05b9259e50a74f7eb39
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3ac1855c0cc72a3c4afc20598d023f0adce2bd76
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433276"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034150"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Öğretici: Azure depolama ile buluta görüntü verileri yükleme
 
@@ -395,7 +395,7 @@ module.exports = router;
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Depolama hesabında görüntünün gösterildiğini doğrulayın
 
-[Azure portalında](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar**' ı seçin ve ardından **görüntüler** kapsayıcısını seçin.
+[Azure Portal](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar**' ı seçin ve ardından **görüntüler** kapsayıcısını seçin.
 
 Kapsayıcıda görüntünün gösterildiğini doğrulayın.
 
@@ -405,7 +405,7 @@ Kapsayıcıda görüntünün gösterildiğini doğrulayın.
 
 Küçük resim görüntülemeyi test etmek için **, küçük resim kapsayıcısına bir** görüntü yükleyerek uygulamanın **küçük** resim kapsayıcısını okuyup okuyamadığını kontrol edebilirsiniz.
 
-[Azure portalında](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar**' ı seçin ve ardından **küçük resim** kapsayıcısını seçin. **Karşıya Yükle**’yi seçerek **Blobu karşıya yükle** bölmesini açın.
+[Azure Portal](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar**' ı seçin ve ardından **küçük resim** kapsayıcısını seçin. **Karşıya Yükle**’yi seçerek **Blobu karşıya yükle** bölmesini açın.
 
 Dosya seçicisine sahip bir dosya seçin ve **karşıya yükle**' yi seçin.
 

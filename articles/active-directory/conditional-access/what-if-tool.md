@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253146"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032892"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu erişimde What If aracını kullanarak sorun giderme
 
@@ -76,7 +76,7 @@ Bu ayar [cihaz platformları koşulunu](concept-conditional-access-conditions.md
 
 ### <a name="client-apps"></a>İstemci uygulamaları
 
-Bu ayar, [istemci uygulamaları koşulunu](concept-conditional-access-conditions.md#client-apps-preview)taklit eder.
+Bu ayar, [istemci uygulamaları koşulunu](concept-conditional-access-conditions.md#client-apps)taklit eder.
 Varsayılan olarak, bu ayar **tarayıcı** veya **mobil uygulamalar ve Masaüstü istemcileri** tek tek veya her ikisi de seçili olan tüm ilkelerin değerlendirilmesine neden olur. Ayrıca, **Exchange ActiveSync (EAS)** uygulayan ilkeleri de algılar. Şunları seçerek bu ayarı daraltabilirsiniz:
 
 - En az **tarayıcı** seçili olan tüm ilkeleri değerlendirmek için **tarayıcı** . 

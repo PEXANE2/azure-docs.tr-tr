@@ -1,18 +1,18 @@
 ---
 title: Azure Dosya Eşitleme bulut katmanlamayı anlama | Microsoft Docs
-description: Azure Dosya Eşitleme Özellik bulutu katmanlama hakkında bilgi edinin
+description: İsteğe bağlı bir Azure Dosya Eşitleme özelliği olan bulut katmanlaması hakkında bilgi edinin. Sık erişilen dosyalar sunucuda yerel olarak önbelleğe alınır; diğerleri Azure dosyaları için katmanlılanlardır.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 74887e6ee4656091aa647b481bc406dcc23b9c12
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460091"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033130"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.

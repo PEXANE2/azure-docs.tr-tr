@@ -1,18 +1,18 @@
 ---
 title: Öğretici-Azure VPN Gateway kullanarak ağ geçidi oluşturma ve yönetme
-description: Müşteri içi ve Azure arasında bağlantı sağlamak için Azure VPN Gateway dağıtmak üzere bu öğreticiyi kullanın. Bir VPN ağ geçidini görüntüleyin, yeniden boyutlandırın ve sıfırlayın.
+description: PowerShell kullanarak bir Azure VPN Gateway oluşturma, dağıtma ve yönetme hakkında bilgi edinmek için bu öğreticiyi izleyin.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: f423ed5ea9017d510639bbe7046a12d320cd5c7d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 38b13ddc08b08ce080f1cc9e9b30caeea3b4efdf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920577"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031533"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Öğretici: PowerShell kullanarak bir VPN ağ geçidi oluşturma ve yönetme
 

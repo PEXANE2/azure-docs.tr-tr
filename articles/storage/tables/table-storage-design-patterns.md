@@ -1,6 +1,6 @@
 ---
 title: Azure depolama tablo tasarım desenleri | Microsoft Docs
-description: Azure Tablo hizmeti çözümleri için desenler kullanın.
+description: Azure 'daki tablo hizmeti çözümleriyle kullanım için uygun olan tasarım düzenlerini inceleyin. Diğer makalelerde ele alınan adres sorunları ve dengelemeler.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 32904044cf6dcecf19b1a78eb4236dc02555bb86
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081239"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034206"
 ---
 # <a name="table-design-patterns"></a>Tablo tasarımı desenleri
 Bu makalede, tablo hizmeti çözümleriyle kullanım için uygun bazı desenler açıklanmaktadır. Ayrıca, diğer tablo depolama Tasarım makalelerinde ele alınan bazı sorunları ve ilgili konuları nasıl uygulayakullanabileceğinizi öğreneceksiniz. Aşağıdaki diyagramda, farklı desenler arasındaki ilişkiler özetlenmektedir:  
@@ -82,7 +82,7 @@ Farklı **rowkey değerleri kullanarak** , hızlı ve verimli aramalar ve altern
 ### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo hizmeti, **partitionkey** ve **rowkey** değerlerini kullanarak varlıkları otomatik olarak dizine ekler. Bu, bir istemci uygulamanın bu değerleri kullanarak bir varlığı etkin bir şekilde almasını sağlar. Örneğin, aşağıda gösterilen tablo yapısını kullanarak, bir istemci uygulaması, departman adı ve çalışan KIMLIĞI ( **partitionkey** ve **rowkey** değerleri) kullanarak bireysel bir çalışan varlığı almak için bir nokta sorgusu kullanabilir. Ayrıca, bir istemci her bir departman içindeki çalışan KIMLIĞINE göre sıralanmış varlıkları alabilir.  
 
-![Çalışan Kimlik Numarası](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
+![Çalışan Numarası](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
 Ayrıca, e-posta adresi gibi başka bir özelliğin değerine bağlı olarak bir çalışan varlığı bulabilmek istiyorsanız, bir eşleşme bulmak için daha az verimli bir bölüm taraması kullanmanız gerekir. Bunun nedeni, tablo hizmetinin ikincil dizinler sağlamasunmamalıdır. Ayrıca, bir çalışan listesini **Rowkey** sırasına göre farklı bir sırada sıralanmış olarak isteme seçeneği yoktur.  
 
@@ -838,7 +838,7 @@ Her varlık **Partitionkey**, **Rowkey**ve **timestamp** değerlerine sahip olma
 <th>E-posta</th>
 </tr>
 <tr>
-<td>Employee (Çalışan)</td>
+<td>Çalışan</td>
 <td></td>
 <td></td>
 <td></td>
@@ -860,7 +860,7 @@ Her varlık **Partitionkey**, **Rowkey**ve **timestamp** değerlerine sahip olma
 <th>E-posta</th>
 </tr>
 <tr>
-<td>Employee (Çalışan)</td>
+<td>Çalışan</td>
 <td></td>
 <td></td>
 <td></td>
@@ -901,7 +901,7 @@ Her varlık **Partitionkey**, **Rowkey**ve **timestamp** değerlerine sahip olma
 <th>E-posta</th>
 </tr>
 <tr>
-<td>Employee (Çalışan)</td>
+<td>Çalışan</td>
 <td></td>
 <td></td>
 <td></td>

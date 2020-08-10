@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799183"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032790"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketi 'nde Azure Container teklifi oluşturma
 
@@ -50,7 +50,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -190,20 +190,23 @@ Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listes
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
-
-Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
+ Aşağıdaki dört piksel boyutundan her biri için teklifinizin logosunun PNG dosyalarını sağlayın:
 
 - **Küçük** (48 x 48)
-- **Orta** (90 x 90)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+- **Orta** (90 X 90)
+- **Büyük** (216 x 216)
+- **Geniş** (255 X 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Dört logo gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 

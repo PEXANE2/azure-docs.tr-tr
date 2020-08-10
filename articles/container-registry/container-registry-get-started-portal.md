@@ -1,17 +1,17 @@
 ---
 title: Hızlı başlangıç-portalda kayıt defteri oluşturma
-description: Azure portal Azure Container Registry içinde özel bir Docker kayıt defteri oluşturmayı hızlı bir şekilde öğrenin.
+description: Azure portal kullanarak özel bir Azure Container Registry oluşturmayı hızlı bir şekilde öğrenin.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752841"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031833"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel kapsayıcı kayıt defteri oluşturma
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kapsayıcı kayıt defteri oluşturma
 
 Azure Container Registry, Azure 'da özel Docker kapsayıcı görüntülerini ve ilgili yapıtları depolayabileceğiniz ve yönetebileceğiniz özel bir Docker kayıt defteridir. Bu hızlı başlangıçta, Azure portalıyla bir kapsayıcı kayıt defteri oluşturursunuz. Ardından, Docker komutlarını kullanarak kayıt defterine bir kapsayıcı görüntüsü gönderin ve son olarak görüntüyü Kayıt defterinizden çekin ve çalıştırın.
 
@@ -41,14 +41,20 @@ Bu hızlı başlangıçta, Azure Container Registry hakkında bilgi edinmek içi
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Portalda kapsayıcı kayıt defterine genel bakış":::
 
-**Oturum açma sunucusunun**değerini bir yere göz atın. Bu değeri, Docker ile görüntü gönderdiğinizde ve çektiğinizde aşağıdaki adımlarda kullanırsınız.
+Kayıt defteri adını ve **oturum açma sunucusunun**değerini bir yere göz atın. Bu değerleri, Docker ile görüntü gönderdiğinizde ve çektiğinizde aşağıdaki adımlarda kullanırsınız.
 
 ## <a name="log-in-to-registry"></a>Kayıt defterinde oturum açma
 
-Kapsayıcı görüntülerini göndermeden ve çekmeden önce, kayıt defteri örneğinde oturum açmalısınız. Yerel makinenizde [Azure CLI oturumunu açın][get-started-with-azure-cli] , sonra [az ACR Login][az-acr-login] komutunu çalıştırın. (Azure CLı ile oturum açarken yalnızca kayıt defteri adını belirtin. ' Azurecr.io ' sonekini eklemeyin.)
+Kapsayıcı görüntülerini göndermeden ve çekmeden önce, kayıt defteri örneğinde oturum açmalısınız. Yerel makinenizde [Azure CLI oturumunu açın][get-started-with-azure-cli] , sonra [az ACR Login][az-acr-login] komutunu çalıştırın. (Azure CLı ile oturum açarken yalnızca kayıt defteri adını belirtin. ' Azurecr.io ' etki alanı sonekini eklemeyin.)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Örnek:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 Bu komut tamamlandığında `Login Succeeded` döndürülür. 

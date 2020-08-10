@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 01/23/2019
+ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: b10bf18fde850223bda80a597f448747558113f1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752177"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031820"
 ---
 ## <a name="push-image-to-registry"></a>Kayıt defterine görüntü gönderme
 
@@ -23,13 +23,20 @@ Azure Container kayıt defterine görüntü gönderebilmeniz için önce bir gö
 docker pull hello-world
 ```
 
-Bir görüntüyü Kayıt defterinize gönderebilmeniz için önce kayıt defteri oturum açma sunucunuzun tam adı ile etiketlemelisiniz. Oturum açma sunucusu adı * \<registry-name\> . azurecr.io* biçimindedir (tümü küçük harf), örneğin, *mycontainerregistry007.azurecr.io*.
+Bir görüntüyü Kayıt defterinize gönderebilmeniz için önce kayıt defteri oturum açma sunucunuzun tam adı ile etiketlemelisiniz. Oturum açma sunucusu adı * \<registry-name\> . azurecr.io* biçimindedir (tümü küçük harf), örneğin, *mycontainerregistry.azurecr.io*.
 
 Görüntüyü [docker tag][docker-tag] komutunu kullanarak etiketleyin. `<login-server>` değerini, ACR örneğinizin sunucu adıyla değiştirin.
 
 ```
 docker tag hello-world <login-server>/hello-world:v1
 ```
+
+Örnek:
+
+```
+docker tag hello-world mycontainerregistry.azurecr.io/hello-world:v1
+```
+
 
 Son olarak, [Docker Push][docker-push] kullanarak görüntüyü kayıt defteri örneğine gönderin. `<login-server>`Kayıt defteri örneğinizin oturum açma sunucusu adıyla değiştirin. Bu örnek, görüntüyü içeren **Merhaba-Dünya** deposunu oluşturur `hello-world:v1` .
 

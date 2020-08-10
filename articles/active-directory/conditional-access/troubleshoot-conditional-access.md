@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610539"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032977"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu Erişimle ilgili oturum açma sorunlarını giderme
 
@@ -55,11 +55,16 @@ Hangi koşullu erişim ilkesinin veya ilkelerinin uygulanacağını ve bunun ned
    1. **Sorun giderme ve destek** sekmesindeki bilgiler, bir oturum açma nedeninin, uyumluluk gereksinimlerini karşılamayan bir cihaz gibi neden başarısız olduğu konusunda açık bir neden sağlayabilir.
    1. Daha fazla araştırmak için, **Ilke adına**tıklayarak ilkelerin yapılandırmasında ayrıntıya gidin. **Ilke adına** tıkladığınızda, seçilen ilke için ilke yapılandırma kullanıcı arabirimi gözden geçirme ve düzenlemeyle gösterilir.
    1. Koşullu erişim ilkesi değerlendirmesi için kullanılan **istemci kullanıcı** ve **cihaz ayrıntıları** **temel bilgiler**, **konum**, **cihaz bilgileri**, **kimlik doğrulama ayrıntıları**ve oturum açma olayının **ek ayrıntılar** sekmelerinde da kullanılabilir.
-   1. İlkenin sağ tarafındaki üç noktayı seçmek ilke ayrıntılarını getirir. Bu, yöneticilere bir ilkenin neden başarıyla uygulandığı hakkında ek bilgiler verir.
+
+### <a name="policy-details"></a>İlke ayrıntıları
+
+Bir oturum açma olayında ilkenin sağ tarafındaki üç noktayı seçmek ilke ayrıntılarını getirir. Bu, yöneticilere bir ilkenin neden başarıyla uygulandığı hakkında ek bilgiler verir.
 
    ![Oturum açma olayı koşullu erişim sekmesi](./media/troubleshoot-conditional-access/image5.png)
 
    ![İlke ayrıntıları (Önizleme)](./media/troubleshoot-conditional-access/policy-details.png)
+
+Sol tarafta, oturum açma sırasında toplanan ayrıntılar sağlanır ve sağ tarafta, bu ayrıntıların uygulanan koşullu erişim ilkelerinin gereksinimlerini karşılayıp karşılamadığını karşılayıp karşılamadığını ayrıntılı olarak bulabilirsiniz. Koşullu erişim ilkeleri yalnızca tüm koşulların karşılanması veya yapılandırılmadığı durumlar için geçerlidir.
 
 Olaydaki bilgiler, oturum açma sonuçlarını anlamak veya istenen sonuçları almak için ilkeyi ayarlamak üzere yeterli değilse, bir destek olayı açılabilir. Bu oturum açma olayının **sorun giderme ve destek** sekmesine gidin ve **Yeni bir destek isteği oluştur**' u seçin.
 

@@ -1,6 +1,6 @@
 ---
 title: Mobility (Transit) kapsamı
-description: Bu makalede, Microsoft Azure Maps Mobility hizmetinde genel transit kapsamı hakkında bilgi edineceksiniz.
+description: Yönlendirme ve hizmet uyarıları gibi genel aktarım özellikleri için hangi bölgelerde Azure Maps Mobility hizmeti 'nin sağladığı kapsama düzeyini öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/23/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3cd2cc2068f1855c46bc139100006d75492632d8
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169387"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033266"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure haritalar Mobility kapsamı
 

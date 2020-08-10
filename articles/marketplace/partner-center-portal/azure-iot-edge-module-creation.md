@@ -3,16 +3,16 @@ title: Azure Marketi 'nde Iş Ortağı Merkezi ile Azure IoT Edge bir modül tek
 description: Iş Ortağı Merkezi 'ni kullanarak Azure Marketi 'nde bir IoT Edge modülü teklifi oluşturmayı, yapılandırmayı ve yayımlamayı öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/07/2020
+ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876640"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032841"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -131,7 +131,7 @@ Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -194,6 +194,8 @@ Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listes
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
@@ -207,6 +209,8 @@ Aşağıdaki dört piksel boyutundan her biri için teklifinizin logosunun PNG d
 - **Geniş (255 x 115)**
 
 Dört logo gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 
@@ -229,7 +233,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 3. Destek adresi (bağlantı)
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
-6. Ad
+6. Adı
 7. Özet
 8. Açıklama
 9. Yararlı bağlantılar
@@ -445,14 +449,14 @@ Yol değerindeki doğru [yol söz dizimini](../../iot-edge/module-composition.md
 - Ad #2: FromContosoModuleToCloud
 - Değer #2:/messages/modules/ContonsoModule/outputs/ContosoOutput 'den $upstream
 
-**Varsayılan modül ikizi istenen özellikleri**. Modül ikizi, istenen özellikler dahil olmak üzere bir modül örneği için durum bilgilerini depolayan IoT Hub JSON belgesidir. İstenen özellikler, modül yapılandırmalarını veya koşullarını eşitlemeye yönelik bildirilen özelliklerle birlikte kullanılır. Çözüm arka ucu istenen özellikleri ayarlayabilir ve modül bunları okuyabilir. Modül, istenen özelliklerde değişiklik bildirimleri de alabilir. İstenen özellikler en fazla beş ad/değer çifti kullanılarak oluşturulur ve her varsayılan değer 512 karakterden az olmalıdır. En fazla beş ad/değer ikizi istenen özellikleri tanımlayabilirsiniz. İkizi Desired özelliklerinin değerleri, en yüksek iç içe geçmiş dört düzey hiyerarşisine sahip diziler olmadan geçerli bir JSON, kaçışsız olmalıdır. Varsayılan değer için gereken bir parametrenin anlamlı olmadığı bir senaryoda (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz. İkizi istenen özellikler hakkında daha fazla bilgi edinmek için bkz. [istenen özellikleri tanımlama veya güncelleştirme](../../iot-edge/module-composition.md#define-or-update-desired-properties).
+**Varsayılan modül ikizi istenen özellikleri**. Modül ikizi, istenen özellikler dahil olmak üzere bir modül örneği için durum bilgilerini depolayan IoT Hub JSON belgesidir. İstenen özellikler, modül yapılandırmalarını veya koşullarını eşitlemeye yönelik bildirilen özelliklerle birlikte kullanılır. Çözüm arka ucu istenen özellikleri ayarlayabilir ve modül bunları okuyabilir. Modül, istenen özelliklerde değişiklik bildirimleri de alabilir. İstenen özellikler en fazla beş ad/değer çifti kullanılarak oluşturulur ve her varsayılan değer 512 karakterden kısa olmalıdır. En fazla beş ad/değer ikizi istenen özellikleri tanımlayabilirsiniz. İkizi Desired özelliklerinin değerleri, en yüksek iç içe geçmiş dört düzey hiyerarşisine sahip diziler olmadan geçerli bir JSON, kaçışsız olmalıdır. Varsayılan değer için gereken bir parametrenin anlamlı olmadığı bir senaryoda (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz. İkizi istenen özellikler hakkında daha fazla bilgi edinmek için bkz. [istenen özellikleri tanımlama veya güncelleştirme](../../iot-edge/module-composition.md#define-or-update-desired-properties).
 
 Örneğin, bir modül ikizi istenen özellikleri kullanarak dinamik olarak yapılandırılabilir yenileme oranını destekliyorsa, aşağıdaki varsayılan ikizi istenen özelliği tanımlamak mantıklı olur:
 
 - Ad #1: RefreshRate
 - Değer #1:60
 
-**Varsayılan ortam değişkenleri**. Ortam değişkenleri, yapılandırma işlemine yardımcı olan bir modüle ek bilgiler sağlar. Ortam değişkenleri ad/değer çiftleri kullanılarak oluşturulur. Her varsayılan ortam değişkeni adı ve değeri 512 karakterden az olmalıdır ve en fazla beş karakter tanımlayabilirsiniz. Varsayılan bir değer için gereken bir parametre anlamlı olmadığında (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz.
+**Varsayılan ortam değişkenleri**. Ortam değişkenleri, yapılandırma işlemine yardımcı olan bir modüle ek bilgiler sağlar. Ortam değişkenleri ad/değer çiftleri kullanılarak oluşturulur. Her varsayılan ortam değişkeni adı ve değeri 512 karakterden kısa olmalıdır ve en fazla beş karakter tanımlayabilirsiniz. Varsayılan bir değer için gereken bir parametre anlamlı olmadığında (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz.
 
 Örneğin, bir modülün başlamadan önce kullanım koşullarını kabul etmesi gerekiyorsa, aşağıdaki ortam değişkenini tanımlayabilirsiniz:
 

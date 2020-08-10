@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46c48d6f7d751e6d767921fad21e6213c6b1203b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80384033"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033877"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Öğretici: Atlasduyi bulutunu Azure Active Directory tümleştirin
 
@@ -40,13 +40,17 @@ Başlamak için aşağıdaki öğeler gereklidir:
 * Atlasme bulutu çoklu oturum açma (SSO) etkin aboneliği.
 * Atlasme bulut ürünleri için Security Assertion Markup Language (SAML) çoklu oturum açmayı etkinleştirmek için, Atlasbir erişim ayarlamanız gerekir. [Atlasduyi erişimi]( https://www.atlassian.com/enterprise/cloud/identity-manager)hakkında daha fazla bilgi edinin.
 
+> [!NOTE]
+> Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
+
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. 
 
 * Atlasme bulutu **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Atlasme bulutu [Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı](atlassian-cloud-provisioning-tutorial.md) destekler
-* Atlasıı bulutunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Atlasıı bulutunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>Galeriden Atlasme bulutu ekleme
 
 Atlasduyi bulutu 'nın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize atlasduyisi bulutu eklemeniz gerekir.
@@ -58,69 +62,129 @@ Atlasduyi bulutu 'nın Azure AD ile tümleştirilmesini yapılandırmak için, G
 1. **Galeriden Ekle** bölümünde, arama kutusuna **atlasduyisi bulutu** yazın.
 1. Sonuçlar panelinden **Atlasduyi bulutu** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak, Atlasbir Cloud Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Atlasduyi bulutu 'ndaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Atlasduyi bulutu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Atlasduyi Cloud SSO 'Yu yapılandırma](#configure-atlassian-cloud-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * Atlasbir **[Cloud test kullanıcısı oluşturun](#create-atlassian-cloud-test-user)** -kullanıcının Azure AD gösterimine bağlı olan atlasduyi bulutu 'nda B. Simon 'a karşılık gelen bir karşılığı vardır.
+1. **[Azure AD 'Yi Atlasme Cloud SSO Ile yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın, atlasduyi bulutu Ile Azure AD tabanlı SAML SSO 'yu kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Atlasbir **[Cloud test kullanıcısı oluşturun](#create-atlassian-cloud-test-user)** -kullanıcının Azure AD gösterimine bağlı olan atlasduyi bulutu 'nda B. Simon 'a karşılık gelen bir karşılığı vardır.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Atlasme Cloud** Application Integration sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Başlamadan önce Atlasbir ürün örneğinize gidip örnek URL 'sini kopyalayıp kaydedin
+   > [!NOTE]
+   > URL, modele sığması gerekir `https://<instancename>.atlassian.net`
+
+   ![image](./media/atlassian-cloud-tutorial/get-atlassian-instance-name.png)
+
+1. [Atlasme Yönetici portalını](https://admin.atlassian.com/) açın ve kuruluşunuzun adına tıklayın
+
+   ![image](./media/atlassian-cloud-tutorial/click-on-organization-in-atlassian-access.png)
+
+1. Çoklu oturum açmayı yapılandırmadan önce etki alanınızı doğrulamanız gerekir. Daha fazla bilgi için bkz. [Atlasme etki alanı doğrulama](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) belgesi.
+1. Atlasme Yönetici portalı ekranından sol çekmeceden **güvenlik** ' i seçin
+
+   ![image](./media/atlassian-cloud-tutorial/click-on-security-in-atlassian-access.png)
+
+1. Atlas, Yönetici portalı güvenlik ekranından sol çekmeceden **SAML çoklu oturum açma** seçeneğini belirleyin
+
+   ![image](./media/atlassian-cloud-tutorial/click-on-saml-sso-in-atlassian-access-security.png)
+
+1. **SAML Yapılandırması Ekle** ' ye tıklayın ve sayfayı açık tutun
+
+   ![image](./media/atlassian-cloud-tutorial/saml-configuration-in-atlassian-access-security-saml-sso.png)
+
+   ![image](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
+
+1. [Azure Portal](https://portal.azure.com/), **Atlasme Cloud** Application Integration sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açmayı ayarla**' yı seçin.
+
+   ![image](./media/atlassian-cloud-tutorial/set-up-sso.png)
+
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![image](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Atlasıı bulutu 'nı ayarlamak** için aşağı kaydırın
+   
+   a. **Yapılandırma URL 'lerine** tıklayın
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://auth.atlassian.com/saml/<unique ID>`
+   ![image](./media/atlassian-cloud-tutorial/configuration-urls.png)
+   
+   b. **Azure AD tanımlayıcı** değerini Azure Portal 'den kopyalayın, Atlasme 'de **KIMLIK sağlayıcısı varlık kimliği** metin kutusuna yapıştırın.
+   
+   c. Azure portal **oturum açma URL 'si** değerini, Atlasbir 'Da **KIMLIK sağlayıcısı SSO URL** metin kutusuna yapıştırın.
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`
+   ![image](./media/atlassian-cloud-tutorial/configuration-urls-azure.png)
 
-    c. **Ek URL 'Ler ayarla**' ya tıklayın.
-
-    d. **Geçiş durumu** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<instancename>.atlassian.net`
-
-    > [!NOTE]
-    > Yukarıdaki değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu gerçek değerleri, daha sonra öğreticide **Atlasduyi Cloud SSO 'Yu yapılandırma** adımında açıklanan **ATLASDUYI bulutu SAML yapılandırma** ekranından alırsınız.
-
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<instancename>.atlassian.net`
-
-    > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Atlasme bulut Yöneticisi portalına oturum açabilmek için kullandığınız örnekten değeri yapıştırın.
-
-    ![Çoklu oturum açmayı yapılandırma](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-10.png)
-
-1. Atlasme bulut uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Atlasme Cloud uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
-
-    ![image](common/edit-attribute.png)
+   ![image](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+   ![image](./media/atlassian-cloud-tutorial/certificate.png)
 
-1. **Atlasme bulutu 'Nı ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
+   ![image](./media/atlassian-cloud-tutorial/certificate-1.png)
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+1. Atlasbir 'da SAML yapılandırması **ekleme/kaydetme**
 
-    a. Oturum Açma URL’si
+1. Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Azure 'daki **SAML Ile çoklu oturum açmayı ayarlama** sayfasındaki **temel SAML yapılandırması** bölümünü düzenleyin ve atlasıı yönetici portalında **SAML çoklu oturum açma sayfasını** açın
 
-    b. Azure AD tanımlayıcısı
+   a. Atlasbir 'dan **SP VARLıK kimliği** değerini kopyalayın, Azure 'daki **tanımlayıcı (varlık kimliği)** kutusuna yapıştırın ve varsayılan olarak ayarlayın
+   
+   b. Atlasbir 'dan **SP onaylama tüketici hizmeti URL 'si** değerini kopyalayın, Azure 'DAKI **yanıt URL 'Si (onaylama tüketici hizmeti URL 'si)** kutusuna yapıştırın ve varsayılan olarak ayarlayın
+   
+   c. 1. adımda kopyaladığınız **örnek URL** değerini kopyalayın ve Azure 'Daki **geçiş durumu** kutusuna yapıştırın.
 
-    c. Oturum kapatma URL 'SI
+   ![image](./media/atlassian-cloud-tutorial/copy-urls.png)
 
+   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
+
+   ![image](./media/atlassian-cloud-tutorial/urls.png)
+   
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Azure 'da **SAML Ile çoklu oturum açma ayarlama** sayfasındaki **temel SAML yapılandırması** bölümünü düzenleyin. **Örnek URL** 'nizi (1. adımdan) kopyalayın ve Azure 'Da **oturum açma URL 'si** kutusuna yapıştırın
+
+   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
+
+   ![image](./media/atlassian-cloud-tutorial/sign-on-URL.png)
+   
+1. Atlasme bulut uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. **Düzenle** simgesine tıklayarak öznitelik eşlemesini düzenleyebilirsiniz. 
+
+   ![image](./media/atlassian-cloud-tutorial/default-attributes.png)
+   
+   1. Office 365 lisansıyla bir Azure AD kiracısı için öznitelik eşlemesi
+      
+      a. **Benzersiz kullanıcı tanımlayıcısı (ad kimliği)** talebine tıklayın
+
+      ![image](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
+      
+      b. Atlasme bulutu, **NameIdentifier** 'ın (**benzersiz kullanıcı tanımlayıcısı**) kullanıcının e-postasına (**Kullanıcı. email**) eşleştirilmesini bekliyor. **Kaynak özniteliğini** düzenleyin ve **Kullanıcı. Mail**olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
+
+      ![image](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
+      
+      c. Son öznitelik eşlemeleri aşağıdaki gibi görünmelidir.
+
+      ![image](common/default-attributes.png)
+      
+   1. Office 365 lisansı olmadan bir Azure AD kiracısı için öznitelik eşlemesi 
+
+      a. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**Talebe tıklayın.
+
+      ![image](./media/atlassian-cloud-tutorial/email-address.png)
+         
+      b. Azure, Azure AD kiracılarında Office 365 lisansı olmadan oluşturulan kullanıcılar için **User. Mail** özniteliğini doldurmamışken, e-postayı **userPrincipalName** özniteliğinde bu kullanıcı için depolar. Atlasme bulutu, **NameIdentifier** 'ın (**benzersiz kullanıcı tanımlayıcısı**) kullanıcının e-postasına (**User. UserPrincipalName**) eşlenmesini bekliyor.  **Kaynak özniteliğini** düzenleyin ve **User. UserPrincipalName**olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
+
+      ![image](./media/atlassian-cloud-tutorial/set-email.png)
+         
+      c. Son öznitelik eşlemeleri aşağıdaki gibi görünmelidir.
+
+      ![image](common/default-attributes.png)
+     
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -129,9 +193,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -145,52 +209,11 @@ Bu bölümde, Atlasme bulutuna erişim vererek, B. Simon 'u Azure çoklu oturum 
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](./media/atlassian-cloud-tutorial/add-assign-user.png)
 
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
-## <a name="configure-atlassian-cloud-sso"></a>Atlasduyi bulutu SSO 'yu yapılandırma
-
-1. Atlasduyi bulutu 'ndaki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
-
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
-
-1. Tarayıcıya Uzantı eklendikten sonra, **Kurulum Atlasme bulutu** ' na tıklayın, sizi atlasme bulut uygulamasına yönlendirir. Buradan, Atlasduyi bulutu 'nda oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
-
-    ![Kurulum yapılandırması](common/setup-sso.png)
-
-1. Atlasesi bulutu 'nı el ile kurmak isterseniz, yeni bir Web tarayıcısı penceresi açın ve Atlasme bulutu şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
-
-1. Çoklu oturum açmayı yapılandırmadan önce etki alanınızı doğrulamanız gerekir. Daha fazla bilgi için bkz. [Atlasme etki alanı doğrulama](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) belgesi.
-
-1. Sol bölmede **güvenlik** > **SAML çoklu oturum açma**' yı seçin. Daha önce yapmadıysanız, Atlasme Identity Manager 'a abone olun.
-
-    ![Çoklu oturum açmayı yapılandırma](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-11.png)
-
-1. **SAML Yapılandırması Ekle** penceresinde şunları yapın:
-
-    ![Çoklu oturum açmayı yapılandırma](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-12.png)
-
-    a. **Kimlik sağlayıcısı VARLıK kimliği** kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure ad tanımlayıcısını** yapıştırın.
-
-    b. **Kimlik sağlayıcısı SSO URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'sini** yapıştırın.
-
-    c. İndirilen sertifikayı bir. txt dosyasında Azure portal açın, değeri ( *Başlangıç sertifikası* ve *son sertifika* satırları olmadan) kopyalayın ve ardından **genel x509 sertifikası** kutusuna yapıştırın.
-
-    d. **Yapılandırmayı kaydet**' e tıklayın.
-
-1. Doğru URL 'Leri ayarlamış olduğunuzdan emin olmak için aşağıdakileri yaparak Azure AD ayarlarını güncelleştirin:
-
-    ![Çoklu oturum açmayı yapılandırma](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-13.png)
-
-    a. SAML penceresinde, **SP KIMLIK kimliğini** kopyalayın ve ardından Azure Portal, atlasme bulutu **temel SAML yapılandırması**altında, **tanımlayıcı** kutusuna yapıştırın.
-
-    b. SAML penceresinde, **SP onaylama tüketici hizmeti URL 'sini** kopyalayın ve ardından Azure Portal, Atlasme bulutu **temel SAML yapılandırması**altında, **yanıt URL 'si** kutusuna yapıştırın. Oturum açma URL 'SI, Atlasme bulutunuzun kiracı URL 'sidir.
-
-    > [!NOTE]
-    > Mevcut bir müşteriyseniz, Azure portal **SP KIMLIK kimliği** ve **SP onaylama tüketici hizmeti URL 'si** değerlerini güncelleştirdikten sonra **Evet, güncelleştirme yapılandırması**' nı seçin. Yeni bir müşteriyseniz, bu adımı atlayabilirsiniz.
 
 ### <a name="create-atlassian-cloud-test-user"></a>Atlasduyi bulutu test kullanıcısı oluşturma
 
@@ -226,7 +249,5 @@ Erişim panelinde Atlascu bulutu kutucuğunu seçtiğinizde, SSO 'yu ayarladığ
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Atlasme bulutu 'nı deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Gelişmiş görünürlük ve denetimlerle Atlasme bulutunu koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

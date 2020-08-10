@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell betiği örneği-önekle kapsayıcıları silme | Microsoft Docs
-description: Azure Depolama blob’u kapsayıcılarını, bir kapsayıcı adı ön ekine göre silin.
+description: Azure PowerShell kullanarak, kapsayıcı adındaki bir ön eke göre Azure Blob Storage 'ın nasıl silineceğini gösteren bir örnek okuyun.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 6069c51b27d7f8f11155a72613c04566d1c7b64d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 18827beeb606694e2c9089f27570216d413aabd9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006101"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033572"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Kapsayıcıları, kapsayıcı adı ön ekine göre silme
 
