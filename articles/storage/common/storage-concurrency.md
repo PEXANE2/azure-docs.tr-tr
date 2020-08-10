@@ -1,7 +1,7 @@
 ---
 title: Eşzamanlılığı yönetme
 titleSuffix: Azure Storage
-description: Blob, kuyruk, tablo ve dosya hizmetleri için eşzamanlılık yönetimi hakkında bilgi edinin.
+description: Blob, kuyruk, tablo ve dosya hizmetleri için Azure Storage 'da eşzamanlılık yönetimi hakkında bilgi edinin. Kullanılan üç ana veri eşzamanlılık stratejilerini anlayın.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504303"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030393"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolamada Eşzamanlılığı Yönetme
 
@@ -88,15 +88,15 @@ Azure depolama Ayrıca, **If-Modified-Since**, **If-Modified-Since** ve **If-Non
 
 Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden ve yanıtta bir ETag değeri döndüren kapsayıcı işlemlerini özetler.  
 
-| Çalışma | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
+| İşlem | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| Kapsayıcı Oluşturma |Evet |Hayır |
-| Kapsayıcı özelliklerini al |Evet |Hayır |
-| Kapsayıcı meta verilerini al |Evet |Hayır |
+| Kapsayıcı Oluşturma |Yes |Hayır |
+| Kapsayıcı özelliklerini al |Yes |Hayır |
+| Kapsayıcı meta verilerini al |Yes |Hayır |
 | Kapsayıcı meta verilerini ayarla |Yes |Yes |
-| Kapsayıcı ACL 'sini al |Evet |Hayır |
-| Kapsayıcı ACL 'sini ayarla |Evet |Evet (*) |
-| Kapsayıcıyı Silme |Hayır |Evet |
+| Kapsayıcı ACL 'sini al |Yes |Hayır |
+| Kapsayıcı ACL 'sini ayarla |Yes |Evet (*) |
+| Kapsayıcıyı Silme |Hayır |Yes |
 | Kira kapsayıcısı |Yes |Yes |
 | Blobları Listele |Hayır |Hayır |
 
@@ -104,7 +104,7 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden ve yanıtta bir ETag değeri döndüren blob işlemlerini özetler.
 
-| Çalışma | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
+| İşlem | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
 | İkili Büyük Nesne Koyma |Yes |Yes |
 | Blob al |Yes |Yes |
@@ -114,12 +114,12 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 | Blob meta verilerini ayarla |Yes |Yes |
 | Kira Blobu (*) |Yes |Yes |
 | İkili Büyük Nesne Anlık Görüntüsünü Alma |Yes |Yes |
-| İkili Büyük Nesneyi Kopyalama |Evet |Evet (kaynak ve hedef blobu için) |
+| İkili Büyük Nesneyi Kopyalama |Yes |Evet (kaynak ve hedef blobu için) |
 | Kopyalama blobu durdur |Hayır |Hayır |
-| İkili Büyük Nesneyi Silme |Hayır |Evet |
+| İkili Büyük Nesneyi Silme |Hayır |Yes |
 | Yerleştirme bloğu |Hayır |Hayır |
 | Öbek listesini yerleştirme |Yes |Yes |
-| Engelleme listesini al |Evet |Hayır |
+| Engelleme listesini al |Yes |Hayır |
 | Yerleştirme sayfası |Yes |Yes |
 | Sayfa aralıklarını al |Yes |Yes |
 
@@ -242,15 +242,15 @@ customer.ETag = "*";
 
 Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kullandığını özetler:
 
-| Çalışma | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
+| İşlem | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
 |:--- |:--- |:--- |
-| Sorgu varlıkları |Evet |Hayır |
-| Varlık Ekle |Evet |Hayır |
+| Sorgu varlıkları |Yes |Hayır |
+| Varlık Ekle |Yes |Hayır |
 | Varlığı Güncelleştir |Yes |Yes |
 | Birleştirme varlığı |Yes |Yes |
-| Varlığı Sil |Hayır |Evet |
-| Varlık Ekle veya Değiştir |Evet |Hayır |
-| Varlık ekleme veya birleştirme |Evet |Hayır |
+| Varlığı Sil |Hayır |Yes |
+| Varlık Ekle veya Değiştir |Yes |Hayır |
+| Varlık ekleme veya birleştirme |Yes |Hayır |
 
 **Varlık Ekle veya Değiştir** ve **Ekle ya da Birleştir** Işlemlerinin tablo hizmetine bir ETag değeri *göndermediğinden hiçbir eşzamanlılık denetimi gerçekleştirmediğini* unutmayın.  
 

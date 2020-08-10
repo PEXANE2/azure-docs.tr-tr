@@ -57,7 +57,7 @@ Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, olay, örne
 
 Tanılama ayarlarını ayarlarken **Kategori ayrıntıları** altında seçilebilecekleri günlük kategorileri hakkında daha fazla ayrıntı aşağıda verilmiştir.
 
-| Günlük kategorisi | Açıklama |
+| Günlük kategorisi | Description |
 | --- | --- |
 | ADTModelsOperation | Modellerle ilgili tüm API çağrılarını günlüğe kaydet |
 | ADTQueryOperation | Sorgularla ilgili tüm API çağrılarını günlüğe kaydet |

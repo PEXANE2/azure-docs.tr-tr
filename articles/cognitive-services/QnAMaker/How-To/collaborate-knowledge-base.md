@@ -42,7 +42,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
 1. Aşağıdaki listeden bir rol seçin:
 
-    |Role|
+    |Rol|
     |--|
     |Sahip|
     |Katılımcı|

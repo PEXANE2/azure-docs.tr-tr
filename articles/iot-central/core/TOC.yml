@@ -105,8 +105,10 @@
           href: howto-run-a-job.md
     - name: Dönüşüm
       items:
-        - name: Azure’daki hedeflere veri aktarma
+        - name: Azure’daki hedeflere veri aktarma (eski)
           href: howto-export-data.md
+        - name: Bulut hedeflerine veri aktarma (önizleme)
+          href: howto-use-data-export.md
         - name: Kurallar üzerinde web kancaları oluşturma
           href: howto-create-webhooks.md
         - name: Diğer hizmetlerle tümleştirmek için iş akışlarını kullanma

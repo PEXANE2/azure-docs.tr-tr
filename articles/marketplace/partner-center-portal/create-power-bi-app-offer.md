@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800307"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030783"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulama teklifi oluşturma
 
@@ -53,7 +53,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterimini gösterir (hem tamamlandı hem de yaklaşan) ve her adımın tamamlanması gereken süre.
 
-Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak taslağı ise, [taslak teklifini siler](update-existing-offer.md#delete-a-draft-offer))
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -146,7 +146,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 10. Açıklama
 11. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -202,19 +202,20 @@ PDF biçiminde en az bir ve en çok üç ilgili pazarlama belgesi sağlayın. Ö
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın `https://upload.xboxlive.com` Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
-
-Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
-
+Teklifinizin logosunun PNG dosyalarını iki piksel boyutunda sağlar:
 - **Küçük** (48 x 48)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+- **Büyük** (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Her iki logo de gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

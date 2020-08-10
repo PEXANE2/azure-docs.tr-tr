@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824571"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030971"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -130,6 +130,15 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
         }
 ```
 
+## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal aracılığıyla ölçüm uyarısı kuralının ARM şablonunu dışarı aktarma
+
+Ölçüm uyarısı kuralının ARM şablonunu dışa aktarmak, JSON sözdizimi ve özelliklerini anlamanıza yardımcı olur ve gelecekteki dağıtımları otomatikleştirmek için kullanılabilir.
+1. Portalda **kaynak grupları** bölümüne gidin ve kuralı içeren kaynak grubunu seçin.
+2. Genel bakış bölümünde **gizli türleri göster** onay kutusunu işaretleyin.
+3. **Tür** filtresinde *Microsoft. Insights/metricalerts*' i seçin.
+4. Ayrıntılarını görüntülemek için ilgili uyarı kuralını seçin.
+5. **Ayarlar**altında, **şablonu dışarı aktar**' ı seçin.
+
 ## <a name="metric-alert-rules-quota-too-small"></a>Ölçüm uyarı kuralları kotası çok küçük
 
 Abonelik başına izin verilen ölçüm uyarısı kuralı sayısı, [kota sınırlarına](../service-limits.md)tabidir.
@@ -236,7 +245,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örnek:
+Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

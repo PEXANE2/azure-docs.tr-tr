@@ -1,18 +1,18 @@
 ---
 title: Azure Dosya Eşitleme dağıtımı planlama | Microsoft Docs
-description: Azure dosyaları dağıtımı için planlama yaparken göz önünde bulundurmanız gerekenler hakkında bilgi edinin.
+description: Şirket içi Windows Server veya bulut VM 'de bir dizi Azure dosya paylaşımını önbelleğe almanıza olanak sağlayan bir hizmet olan Azure Dosya Eşitleme bir dağıtım planlayın.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036803"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030682"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -311,7 +311,7 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 | Genel | Kanada | Orta Kanada | `canadacentral` |
 | Genel | Kanada | Doğu Kanada | `canadaeast` |
 | Genel | Avrupa | Kuzey Avrupa | `northeurope` |
-| Genel | Avrupa | Batı Avrupa | `westeurope` |
+| Genel | Avrupa | West Europe | `westeurope` |
 | Genel | Fransa | Orta Fransa | `francecentral` |
 | Genel | Fransa | Fransa Güney * | `francesouth` |
 | Genel | Hindistan | Orta Hindistan | `centralindia` |
@@ -326,7 +326,7 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 | Genel | BAE | BAE Kuzey | `uaenorth` |
 | Genel | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
 | Genel | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
-| Genel | ABD | Orta ABD | `centralus` |
+| Genel | ABD | Central US | `centralus` |
 | Genel | ABD | Doğu ABD | `eastus` |
 | Genel | ABD | Doğu ABD 2 | `eastus2` |
 | Genel | ABD | Orta Kuzey ABD | `northcentralus` |

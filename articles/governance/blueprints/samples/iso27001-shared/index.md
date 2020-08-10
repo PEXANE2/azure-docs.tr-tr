@@ -3,12 +3,12 @@ title: ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 description: ISO 27001 Paylaşılan Hizmetler şema örneğinin genel bakış bilgileri ve mimarisi. Bu şema örneği, müşterilerin belirli ISO 27001 denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072864"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927360"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 
@@ -25,7 +25,7 @@ VDC, Microsoft'un en büyük kurumsal müşterileriyle kullandığı başarısı
 
 Bu ortam, ISO 27001 standartlarında güvenli, tümüyle izlenen, kurumsal kullanıma hazır bir paylaşılan hizmetler altyapısı sağlamak için kullanılan çeşitli Azure hizmetlerinden oluşur. Bu ortam şunlardan oluşur:
 
-- Denetim düzlemi açısından görevler ayrımı sağlamak için kullanılan [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) rolleri. Herhangi bir altyapı dağıtımından önce üç rol tanımlanır:
+- Denetim düzlemi açısından görevler ayrımı sağlamak için kullanılan [Azure rolleri](../../../../role-based-access-control/overview.md). Herhangi bir altyapı dağıtımından önce üç rol tanımlanır:
   - NetOps rolü güvenlik duvarı ayarları, NSG ayarları, yönlendirme ve diğer ağ işlevselliği de dahil olmak üzere ağ ortamını yönetme haklarına sahiptir
   - SecOps rolü [Azure Güvenlik Merkezi](../../../../security-center/security-center-intro.md)'ni dağıtmak ve yönetmek, [Azure İlkeleri](../../../policy/overview.md) tanımlamak için gereken haklara ve güvenlikle ilgili diğer haklara sahiptir
   - SysOps rolü, diğer işletme haklarının yanı sıra abonelik içinde [Azure İlkeleri](../../../policy/overview.md) tanımlamak, ortamın tamamı için [Log Analytics](../../../../azure-monitor/overview.md)'i yönetmek için gereken haklara sahiptir

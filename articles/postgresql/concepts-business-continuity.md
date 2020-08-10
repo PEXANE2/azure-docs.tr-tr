@@ -1,17 +1,17 @@
 ---
 title: İş sürekliliği-PostgreSQL için Azure veritabanı-tek sunucu
-description: Bu makalede, PostgreSQL için Azure veritabanı kullanılırken iş sürekliliği (zaman içinde geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) açıklanmaktadır.
+description: Bu makalede, PostgreSQL için Azure veritabanı kullanılırken iş sürekliliği (zaman içinde geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme, çoğaltmalar) açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: b14eba63d848b5f583e16b39f3ade6bd7e7ba83f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245316"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031209"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -28,14 +28,16 @@ Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaşt�
 | Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
 | Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
-> [!IMPORTANT]
-> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucunuzun yanlışlıkla silinmesini önlemeye yardımcı olmak için [Azure Kaynak kilidini](../azure-resource-manager/management/lock-resources.md) kullanın.
+Ayrıca, [okuma çoğaltmaları](concepts-read-replicas.md)kullanmayı da düşünebilirsiniz.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Bir kullanıcı veya uygulama hatasından sonra bir sunucuyu kurtarma
 
 Bir sunucuyu çeşitli kesintiye uğratan kurtarmak için hizmetin yedeklemelerini kullanabilirsiniz. Bir kullanıcı yanlışlıkla bazı verileri silebilir, yanlışlıkla önemli bir tabloyu bırakabilir, hatta tüm veritabanını bile bırakabilir. Bir uygulama, bir uygulama hatası nedeniyle yanlışlıkla hatalı verilerle iyi verilerin üzerine yazabilir ve bu şekilde devam edebilir.
 
 Sunucunuzun bir kopyasını zaman içinde bilinen iyi bir noktada oluşturmak için bir **zaman içinde geri yükleme** gerçekleştirebilirsiniz. Bu nokta, sunucunuz için yapılandırdığınız yedekleme saklama süresi içinde olmalıdır. Veriler yeni sunucuya geri yüklendikten sonra, özgün sunucuyu yeni geri yüklenen sunucuyla değiştirebilir veya gerekli verileri geri yüklenen sunucudan özgün sunucuya kopyalayabilirsiniz.
+
+> [!IMPORTANT]
+> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucunuzun yanlışlıkla silinmesini önlemeye yardımcı olmak için [Azure Kaynak kilidini](../azure-resource-manager/management/lock-resources.md) kullanın.
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Azure veri merkezi kesintisinden kurtarma
 

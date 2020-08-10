@@ -73,7 +73,7 @@ Doğrulama için birden çok oturum çalıştırırsanız, oturum başına bir h
 
 *error.xml* bulunan hatalar, ilgili önerilen eylemlerle birlikte aşağıdaki tabloda özetlenmiştir.
 
-| Hata kodu| Açıklama                       | Önerilen Eylemler               |
+| Hata kodu| Description                       | Önerilen Eylemler               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Veriler başarıyla doğrulanmadı. | İşlem yapmanız gerekmez. |
 | `InvalidXmlCharsInPath` |Dosya yolu geçersiz karakterler içerdiğinden bildirim dosyası oluşturulamadı. | Devam etmek için bu karakterleri kaldırın.  |

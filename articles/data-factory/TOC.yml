@@ -620,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: Şirket içinde barındırılan tümleştirme çalışma zamanı otomasyon betikleri
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: Windows kapsayıcısında şirket içinde barındırılan tümleştirme çalışma zamanı çalıştırma
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Azure’da SSIS paketlerini çalıştırma
       items:
         - name: Azure’da SSIS paketlerini SSDT’ten çalıştırma

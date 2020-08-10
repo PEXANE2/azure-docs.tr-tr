@@ -4,19 +4,19 @@ description: MongoDB (3,6 sürümü) tarafından desteklenen özellikler ve söz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076842"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030562"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB API’si (sürüm 3.6): desteklenen özellikler ve söz dizimi
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı MongoDB istemci [sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak mongodb için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. Azure Cosmos DB MongoDB API 'SI, mevcut istemci sürücülerinin MongoDB [kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlanarak kullanımını sağlar.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı MongoDB istemci [sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak mongodb için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. MongoDB için Azure Cosmos DB’nin API’si, MongoDB [kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) bağlı kalarak mevcut istemci sürücülerinin kullanımını etkinleştirir.
 
 MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB avantajlarından yararlanarak, Cosmos DB sağladığı tüm kurumsal yetenekler sayesinde, [genel dağıtım](distribute-data-globally.md), [Otomatik](partition-data.md)parçalar, kullanılabilirlik ve gecikme garantisi, Rest, yedeklemeler ve çok daha fazlası için de kullanabilirsiniz.
 
@@ -486,7 +486,7 @@ $comment |Yes|
 
 ### <a name="geospatial-operators"></a>Jeo-uzamsal işleçler
 
-Operatör | Desteklenir| 
+İşleç | Desteklenir| 
 --- | --- |
 $geoWithin | Yes |
 $geoIntersects | Yes | 
@@ -495,10 +495,10 @@ $nearSphere |  Yes |
 $geometry |  Yes |
 $minDistance | Yes |
 $maxDistance | Yes |
-$center | Yes |
-$centerSphere | Yes |
-$box | Yes |
-$polygon |  Yes |
+$center | Hayır |
+$centerSphere | Hayır |
+$box | Hayır |
+$polygon |  Hayır |
 
 ## <a name="cursor-methods"></a>İmleç yöntemleri
 

@@ -3,18 +3,18 @@ title: SaaS teklifi oluşturma, Azure Marketi ve Microsoft AppSource
 description: Microsoft AppSource, Azure Marketi 'nde veya Microsoft Iş Ortağı Merkezi 'ndeki Microsoft ticari Market programını kullanarak bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleme veya satma için hizmet olarak yazılım (SaaS) teklifi oluşturma.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800381"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031044"
 ---
-# <a name="create-a-saas-offer"></a>SaaS teklifi oluşturma
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS teklifi oluşturma
 
 Ticari Market 'te hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak için, önce [bir Iş Ortağı Merkezi hesabı](./create-account.md) oluşturduğunuzdan ve **genel bakış** sekmesi seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açın.
 
@@ -83,7 +83,7 @@ Yayımcının Azure aboneliğinde çalışan SaaS çözümleri sayesinde, müşt
 
 SaaS, aylık veya yıllık faturalandırmaya, Kullanıcı başına veya ölçülen faturalandırma hizmeti kullanılarak sunulan tüketim ücretlerine göre destek sunuyor. Microsoft 'un ticari Market 'i, yayımcıların fiyatları, Microsoft ürün müşterileri ve Microsoft 'un bir kurum ücretini stopajına göre gelir ödediği bir kurum modeli üzerinde çalışır.
 
-Bu, bir ücret modelini (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu olmak üzere) göstermek için maliyet ve ödemeler için örnek bir dökümtür.
+Bu, bir ücret modelini (tüm listelenmiş fiyatlar yalnızca amaç ve gerçek maliyetlerin yansıtılmasını amaçlanır) göstermek için maliyet ve ödemeler için örnek bir dökümtür.
 
 |**Lisans maliyetiniz**|**$100/ay**|
 |:---|:---|
@@ -282,16 +282,18 @@ Bu alan gereklidir.
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
 - **Belgeler** (gerekli) – Teklifinizle ilgili pazarlama belgelerini, en az bir ve teklif başına üç adede kadar belgeyi PDF biçiminde ekleyin.
-- **Görüntüler** (gerekli): teklifinizin logo görüntülerinin Market genelinde görünebileceği birden çok yer vardır. **Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz. **Geniş** bir logo eklemek isteğe bağlıdır.
+- **Görüntüler** – logo görüntülerini png biçiminde karşıya yükle:
 
-    Listede farklı yerlerde kullanılmak üzere üç logo boyutu gereklidir; biri isteğe bağlıdır:
+  - **Küçük** (48 x 48 piksel, gereklidir)
+  - **Orta** (90 x 90 piksel, gereklidir)
+  - **Büyük** (216 x 216 piksel, gereklidir)
+  - **Geniş** (255 x 115 piksel) (isteğe bağlı)
 
-    - **Küçük** (48 x 48)
-    - **Orta** (90 x 90)
-    - **Büyük** (216 x 216 ve 350 x 350 arasında)
-    - **Geniş** (255 x 115), *isteğe bağlı*
+   Bu üç logo boyutu, storefronts 'de farklı yerlerde kullanılır:
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   Küçük logo (48 x 48 piksel) Azure Marketi arama sonuçlarında ve Microsoft AppSource ana sayfa ve arama sonuçları sayfasında görünür. 
+   -   Orta logo (90 x 90 piksel) Microsoft Azure içinde yeni bir kaynak oluşturduğunuzda görüntülenir.
+   -   Büyük logo (216 x 216 ve 350 x 350 piksel arasında), Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
 
 - **Ekran görüntüleri** (gerekli) – teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin, 1280 x 720 piksel boyutunda. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.

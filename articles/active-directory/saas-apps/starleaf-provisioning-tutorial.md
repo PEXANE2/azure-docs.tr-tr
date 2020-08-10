@@ -58,7 +58,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**’ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**'ya tıklayın.
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -91,7 +91,7 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryaprak 'da kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

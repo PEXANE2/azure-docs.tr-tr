@@ -67,7 +67,7 @@ Tüm Azure rol tabanlı erişim denetimi ile ilgili bilgileri görüntülemek i�
 
 Uygun olduğunda, ilişkili resmi başvuru belgelerine bağlantı veriyoruz.
 
-| Role | Kaynak grubunda |
+| Rol | Kaynak grubunda |
 | --- | --- |
 | [Sahibi](../../role-based-access-control/built-in-roles.md#owner) |Kullanıcı erişimi de dahil olmak üzere herhangi bir şeyi değiştirebilir. |
 | [Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) |Tüm kaynaklar dahil olmak üzere herhangi bir şeyi düzenleyebilir. |

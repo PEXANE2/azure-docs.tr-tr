@@ -18,12 +18,12 @@ Data Box cihaz için desteklenen depolama hesaplarının ve depolama türlerinin
 
 | **Depolama hesabı/desteklenen depolama türleri** | **Blok blobu** |**Sayfa Blobu*** |**Azure dosyaları** |**Notlar**|
 | --- | --- | -- | -- | -- |
-| Klasik Standart | E | E | E |
-| Genel amaçlı v1 standardı  | E | E | E | Sık ve seyrek erişimli desteklenir.|
-| Genel amaçlı v1 Premium  |  | E| | |
-| Genel amaçlı v2 standart  | E | E | E | Sık ve seyrek erişimli desteklenir.|
-| Genel amaçlı v2 Premium  |  |E | | |
-| BLOB depolama standart |E | | |Sık ve seyrek erişimli desteklenir. |
+| Klasik Standart | Y | Y | Y |
+| Genel amaçlı v1 standardı  | Y | Y | Y | Sık ve seyrek erişimli desteklenir.|
+| Genel amaçlı v1 Premium  |  | Y| | |
+| Genel amaçlı v2 standart  | Y | Y | Y | Sık ve seyrek erişimli desteklenir.|
+| Genel amaçlı v2 Premium  |  |Y | | |
+| BLOB depolama standart |Y | | |Sık ve seyrek erişimli desteklenir. |
 
 \**-Sayfa bloblarına yüklenen veriler, VHD 'ler gibi 512 bayt hizalı olmalıdır.*
 
@@ -31,14 +31,14 @@ Dışarı aktarma siparişlerinde, aşağıdaki tabloda desteklenen depolama hes
 
 | **Depolama hesabı/desteklenen depolama türleri** | **Blok blobu** |**Sayfa Blobu*** |**Azure dosyaları** |**Desteklenen erişim katmanları**|
 | --- | --- | -- | -- | -- |
-| Klasik Standart | E | E | E | |
-| Genel amaçlı v1 standardı  | E | E | E | Sık erişimli, seyrek erişimli|
-| Genel amaçlı v1 Premium  |  | E| | |
-| Genel amaçlı v2 standart  | E | E | E | Sık erişimli, seyrek erişimli|
-| Genel amaçlı v2 Premium  |  |E | | |
-| BLOB depolama standart |E | | |Sık erişimli, seyrek erişimli |
-| Blok Blobu depolama Premium |E | | |Sık erişimli, seyrek erişimli |
-| Sayfa Blobu depolama Premium | |E | | |
+| Klasik Standart | Y | Y | Y | |
+| Genel amaçlı v1 standardı  | Y | Y | Y | Sık erişimli, seyrek erişimli|
+| Genel amaçlı v1 Premium  |  | Y| | |
+| Genel amaçlı v2 standart  | Y | Y | Y | Sık erişimli, seyrek erişimli|
+| Genel amaçlı v2 Premium  |  |Y | | |
+| BLOB depolama standart |Y | | |Sık erişimli, seyrek erişimli |
+| Blok Blobu depolama Premium |Y | | |Sık erişimli, seyrek erişimli |
+| Sayfa Blobu depolama Premium | |Y | | |
 
 > [!IMPORTANT]
 > - Genel amaçlı hesaplar için Data Box kuyruk, tablo, disk ve Azure Data Lake Gen 2 depolama türlerini desteklemez.

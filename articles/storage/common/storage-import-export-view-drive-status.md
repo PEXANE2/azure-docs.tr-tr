@@ -28,7 +28,7 @@ Azure portal içeri aktarma veya dışarı aktarma işlerinizin durumunu izleyeb
 
 Sürücünüzün işlemde bulunduğu yere bağlı olarak aşağıdaki iş durumlardan birini görürsünüz.
 
-| İş Durumu | Açıklama |
+| İş Durumu | Description |
 |:--- |:--- |
 | Oluşturma | Bir iş oluşturulduktan sonra, durumu **oluşturma**olarak ayarlanır. İş **oluşturuluyor** durumundaysa, Içeri/dışarı aktarma hizmeti, sürücülerin veri merkezine gönderilmediğinden varsayılmaktadır. Bir iş, iki hafta boyunca bu durumda kalabilir ve sonrasında hizmet tarafından otomatik olarak silinir. |
 | Gönderim | Paketinizi gönderdikten sonra, Azure portal izleme bilgilerini güncelleştirmeniz gerekir.  Bu işlem, işi **teslim** durumuna getirir. İş, en fazla iki hafta boyunca **Sevkiyat** durumunda kalır. 
@@ -44,7 +44,7 @@ Aşağıdaki tabloda, bir içeri aktarma veya dışarı aktarma işi aracılığ
 
 Aşağıdaki tabloda, bir işteki her bir sürücünün geçeme durumu açıklanmaktadır.
 
-| Sürücü durumu | Açıklama |
+| Sürücü durumu | Description |
 |:--- |:--- |
 | Belirtilir | İçeri aktarma işi için, iş Azure portal oluşturulduğunda, bir sürücü için ilk durum **belirtilir**. Bir dışarı aktarma işi için, iş oluşturulduğunda bir sürücü belirtilmediğinden, ilk sürücü durumu **alınır**. |
 | Alındı | Içeri/dışarı aktarma hizmeti bir içeri aktarma işi için sevkiyat şirketten alınan sürücüleri işlediğinde, sürücü **alındı** durumuna geçer. Bir dışarı aktarma işi için ilk sürücü durumu **alınan** durumudur. |

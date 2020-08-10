@@ -12,10 +12,10 @@
   items:
     - name: Genel yük dengeleyici oluşturma - Portal
       href: quickstart-load-balancer-standard-public-portal.md
+    - name: Genel yük dengeleyici oluşturma - PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
     - name: Genel yük dengeleyici oluşturma - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Genel yük dengeleyici oluşturma - Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
     - name: Genel yük dengeleyici oluşturma - ARM şablonu
       href: quickstart-load-balancer-standard-public-template.md
     - name: İç yük dengeleyici oluşturma - Portal
@@ -41,7 +41,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Örnekler
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -99,7 +99,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: IPv6 ile genel Load Balancer oluşturma
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'

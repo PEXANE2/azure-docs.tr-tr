@@ -8,7 +8,7 @@
   items:
     - name: Lisans gereksinimleri
       href: subscription-requirements.md
-    - name: Yönetemeyeceğiniz roller
+    - name: PIM ile yönetemeyeceğiniz roller
       href: pim-roles.md
     - name: Güvenli ayrıcalıklı erişim
       href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -18,7 +18,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: E-posta bildirimleri
       href: pim-email-notifications.md
-    - name: Microsoft Graph API'leri
+    - name: Microsoft Graph API’si ve PIM
       href: pim-apis.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: Azure kaynaklarını bulma
           href: pim-resource-roles-discover-resources.md
-        - name: Başkalarına PIM’yi yönetmek için erişim izni verme
+        - name: PIM’e erişim atama
           href: pim-how-to-give-access-to-pim.md
         - name: Tüm abonelikleri yönetmek için erişimi yükseltme
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json

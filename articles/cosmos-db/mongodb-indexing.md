@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843819"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030512"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -40,7 +40,7 @@ Bir sorgu, kullanılabilir yerlerde birden çok tek alan dizini kullanır. Kapsa
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Bileşik dizinler (MongoDB sunucusu sürüm 3,6)
 
-Azure Cosmos DB, MongoDB için API, sürüm 3,6 kablo protokolünü kullanan hesaplara yönelik bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. MongoDB 'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda etkili bir şekilde sıralanması gerekiyorsa bileşik bir dizin oluşturmanız gerekir. Sıralama gerektirmeyen birden çok filtreye sahip sorgularda tek bir bileşik dizin yerine birden çok tek alan dizini oluşturun.
+Azure Cosmos DB, MongoDB için API, sürüm 3,6 kablo protokolünü kullanan hesaplara yönelik bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. **MongoDB 'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda etkili bir şekilde sıralanması gerekiyorsa bileşik bir dizin oluşturmanız gerekir.** Sıralama gerektirmeyen birden çok filtreye sahip sorgularda tek bir bileşik dizin yerine birden çok tek alan dizini oluşturun.
 
 Aşağıdaki komut, alanlarda bir bileşik dizin oluşturur `name` ve `age` :
 
@@ -57,6 +57,9 @@ Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorgu
 Ancak, Birleşik dizindeki yolların sırası sorguyla tam olarak eşleşmelidir. Ek bir bileşik dizin gerektirecek bir sorgu örneği aşağıda verilmiştir:
 
 `db.coll.find().sort({age:1,name:1})`
+
+> [!NOTE]
+> İç içe özellikler veya diziler üzerinde Bileşik dizinler oluşturamazsınız.
 
 ### <a name="multikey-indexes"></a>Çok tuşlu dizinler
 

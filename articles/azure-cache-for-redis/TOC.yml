@@ -39,11 +39,11 @@
       items:
         - name: Spring Boot Başlatıcı uygulaması kullanma
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: Puan tabloları ile önbelleğe almayı kullanma
+    - name: Puan tabloları oluşturma
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: Azure PowerShell ile yönetme
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: Azure CLI ile yönetme
       href: cli-samples.md
 - name: Kavramlar
   items:
@@ -65,7 +65,7 @@
     - name: Planlama
       items:
         - name: Önbellek katmanı seçme
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: Kümelemeyle önbelleğinizi dağıtın
           href: cache-how-to-premium-clustering.md
         - name: Redis veri kalıcılığı ile önbelleğinizi koruyun
@@ -82,6 +82,12 @@
           href: cache-migration-guide.md
         - name: Yönetilen Önbellek Hizmeti’nden Geçiş (kullanım dışı)
           href: cache-migrate-to-redis.md
+        - name: Planlama hakkında SSS
+          href: cache-planning-faq.md
+    - name: Oluşturma
+      items:
+        - name: Geliştirme hakkında SSS
+          href: cache-development-faq.md
     - name: Otomatikleştirme
       items:
         - name: Azure PowerShell kullanarak dağıtma ve yönetme
@@ -106,12 +112,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 ve 1.1'i kaldırma
           href: cache-remove-tls-10-11.md
+        - name: Yönetim hakkında SSS
+          href: cache-management-faq.md
     - name: İzleme
       items:
         - name: Azure portalında izleme
           href: cache-how-to-monitor.md
         - name: Özel durumlar için uyarılar ayarlama
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: İzleme hakkında SSS
+          href: cache-monitor-troubleshoot-faq.md
+    - name: Ölçek
+      items:
+        - name: Farklı bir boyuta ve katmana güncelleştirme
+          href: cache-how-to-scale.md
+        - name: Ölçek daraltma veya genişletme için Redis kümesini kullanma
+          href: cache-how-to-premium-clustering.md
     - name: Tanılama ve sorun giderme
       items:
         - name: Redis sunucusu sorunlarını giderme
@@ -122,12 +138,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: Veri kaybı sorunlarını giderme
           href: cache-troubleshoot-data-loss.md
-    - name: Ölçek
-      items:
-        - name: Farklı bir boyuta ve katmana güncelleştirme
-          href: cache-how-to-scale.md
-        - name: Ölçek daraltma veya genişletme için Redis kümesini kullanma
-          href: cache-how-to-premium-clustering.md
+        - name: Sorun giderme hakkında SSS
+          href: cache-monitor-troubleshoot-faq.md
 - name: Başvuru
   items:
     - name: Redis için Azure Önbelleği örnekleri
@@ -152,7 +164,7 @@
       href: 'https://redis.io/commands#'
 - name: Kaynaklar
   items:
-    - name: Redis için Azure Önbelleği SSS
+    - name: Redis için Azure Cache hakkında SSS
       href: cache-faq.md
     - name: Videolar
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'

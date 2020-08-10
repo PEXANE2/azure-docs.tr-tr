@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: Noktadan siteye bağlantılar sorunlarını giderme: Mac OS X istemcileri'
-description: 'Mac OS X Noktadan siteye bağlantı sorunlarını giderin. bu ayarları denetleyin: sunucu adresi, uzak KIMLIK, Yerel KIMLIK, kimlik doğrulama ayarları ve işletim sistemi sürümü.'
+description: Yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağlantı sorunlarını giderme hakkında bilgi edinin.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: ae7ca9ad69bc5bea20fc959f86e41439bd01cd5c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920764"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030677"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN istemcilerinden Noktadan siteye VPN bağlantıları sorunlarını giderme
 

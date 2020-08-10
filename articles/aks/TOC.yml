@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: Uzaktan bağlanma
           href: rdp.md
-        - name: Bilinen sınırlamalar
-          href: windows-node-limitations.md
+        - name: Windows Server kapsayıcıları hakkında SSS
+          href: windows-faq.md
         - name: Kubernetes panosunu kullanma
           href: kubernetes-dashboard.md
         - name: Windows Server kapsayıcılarına yönelik Dockerfiles oluşturma

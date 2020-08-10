@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL iş yükü şema örneğine genel bakış
 description: ISO 27001 App Service Ortamı/SQL Veritabanı iş yükü şema örneğinin genel bakış bilgileri ve mimarisi.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 71044ae1754cf4bdfc42be7b6585a1905dce426c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536842"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926102"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Ortamı/SQL Veritabanı iş yükü şema örneğine genel bakış
 
@@ -28,7 +28,7 @@ ISO 27001 App Service Ortamı/SQL Veritabanı iş yükü şema örneği, hizmet 
 
 Bu ortam, ISO 27001 standartlarında güvenli, tümüyle izlenen, kurumsal kullanıma hazır bir iş yükü altyapısı sağlamak için kullanılan çeşitli Azure hizmetlerinden oluşur. Bu ortam şunlardan oluşur:
 
-- Şema örneği tarafından dağıtılan [Azure App Service Ortamlarında](../../../../app-service/environment/intro.md) kaynakları dağıtma ve yönetme haklarına sahip olan DevOps adlı [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) rolü
+- Şema örneği tarafından dağıtılan [Azure App Service Ortamlarında](../../../../app-service/environment/intro.md) kaynakları dağıtma ve yönetme haklarına sahip olan DevOps adlı [Azure rolü](../../../../role-based-access-control/overview.md)
 - Ortama dağıtılabilecek hizmetleri belirlemek ve herhangi bir genel IP adresi (PIP) kaynağı oluşturma işlemini reddetmek için [Azure İlkeleri](../../../policy/overview.md)
 - Tek bir alt ağ içeren, önceden varolan [paylaşılan hizmetler](../iso27001-shared/index.md) ortamıyla geri eşlenen ve tüm trafiğin [paylaşılan hizmetler](../iso27001-shared/index.md) güvenlik duvarından geçmesini zorunlu tutan bir sanal ağ. Sanal ağ aşağıdaki kaynakları barındırır:
   - Bir veya birden çok web uygulamasını, web API'sini veya işlevi barındırmak için kullanılabilen [Azure App Service Ortamları](../../../../app-service/environment/intro.md)

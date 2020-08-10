@@ -1,6 +1,6 @@
 ---
 title: 'Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2. | Microsoft Docs'
-description: Azure Data Lake Storage 2. MapReduce performansı ayarlama yönergeleri
+description: Eşleme performansını ayarlamaya yönelik yönergeleri anlamak Azure Data Lake Storage 2. üzerindeki işleri azaltır.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106229"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030529"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2.
 
 Harita azaltma işlerinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Bu makalede, bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
@@ -40,7 +40,7 @@ MapReduce işlerini çalıştırırken, Data Lake Storage 2. performansı artır
 
 **MapReduce. job. Maps/MapReduce. job. azaltıyor** Bu, oluşturulacak maksimum Map, veya azaltıcının sayısını belirleyecek.  Bölme sayısı, MapReduce işi için kaç tane eşleme oluşturulacağını saptacaktır.  Bu nedenle, istenen mapgt sayısından daha az bölme varsa, istenenden daha az mapto alabilirsiniz.       
 
-## <a name="guidance"></a>Rehber
+## <a name="guidance"></a>Yönerge
 
 > [!NOTE]
 > Bu belgedeki kılavuz, uygulamanızın kümenizde çalışan tek uygulama olduğunu varsayar.

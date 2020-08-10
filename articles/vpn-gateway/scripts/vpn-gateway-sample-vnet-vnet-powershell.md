@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell betiği örneği - sanal ağlar arası VPN yapılandırma | Microsoft Docs
-description: Bu PowerShell betiği, VNet-VNet bağlantı türünü kullanarak iki Azure sanal ağını bağlar. Betikteki tüm cmdlet 'ler hakkında bilgi edinin.
+description: Siteden siteye VNet 'ten VNet 'e VPN Gateway bağlantısı yapılandırmak için bir PowerShell betiği kullanmayı öğrenin.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 9f35f4e097f6b7848c19d1d926e0896d870f3f64
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 949c2b7810bc6b4f5a80b9932427f4aa3565794e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926981"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030376"
 ---
 # <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>Sanal ağdan sanal ağa VPN Ağ Geçidi bağlantısı yapılandırmak için PowerShell 'i kullanma
 
