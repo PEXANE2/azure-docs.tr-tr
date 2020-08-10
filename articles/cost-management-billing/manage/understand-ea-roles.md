@@ -1,18 +1,18 @@
 ---
 title: Azure’da Kuruluş için yönetici rollerini anlama
-description: Azure’da Kuruluş yöneticisi rolleri hakkında bilgi edinin.
+description: Azure’da Kuruluş yöneticisi rolleri hakkında bilgi edinin. Beş ayrı yönetim rolü atayabilirsiniz.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124349"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531498"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure kurumsal rollerini yönetme
 
@@ -103,9 +103,9 @@ Yönetici rolünüze ve Kuruluş Yöneticisi tarafından ücretleri görüntüle
 
 Bu ilkelerin nasıl ayarlanacağı hakkında bilgi edinmek için bkz. [Azure için faturalama bilgilerine erişimi yönetme](manage-billing-access.md).
 
-Aşağıdaki tabloda, Azure portalında gördüğünüz fiyatlandırma, Azure portalındaki rol tabanlı erişim denetimi (RBAC) rolü, ücretleri görüntüleme ilkesi ve Kurumsal Anlaşma yönetici rolleri arasındaki ilişki gösterilmektedir. Kuruluş Yöneticisi her zaman kuruluşun Kurumsal Anlaşma fiyatlandırmasına göre kullanım ayrıntılarını görür. Ancak Bölüm Yöneticisi ve Hesap Sahibi, ücreti görüntüleme ilkesine ve RBAC rolüne göre farklı fiyatlandırma görünümleri görür. Aşağıdaki tabloda listelenen Bölüm Yöneticisi rolü hem Bölüm Yöneticisi hem de Bölüm Yöneticisi (salt okunur) rolünü ifade eder.
+Aşağıdaki tabloda, Azure portalında gördüğünüz fiyatlandırma, Azure portalındaki Azure rolü, ücretleri görüntüleme ilkesi ve Kurumsal Anlaşma yönetici rolleri arasındaki ilişki gösterilmektedir. Kuruluş Yöneticisi her zaman kuruluşun Kurumsal Anlaşma fiyatlandırmasına göre kullanım ayrıntılarını görür. Ancak Bölüm Yöneticisi ve Hesap Sahibi, ücreti görüntüleme ilkesine ve Azure rolüne göre farklı fiyatlandırma görünümleri görür. Aşağıdaki tabloda listelenen Bölüm Yöneticisi rolü hem Bölüm Yöneticisi hem de Bölüm Yöneticisi (salt okunur) rolünü ifade eder.
 
-|Kurumsal Anlaşma yönetici rolü|Rol için ücretleri görüntüleme ilkesi|RBAC rolü|Fiyatlandırma görünümü|
+|Kurumsal Anlaşma yönetici rolü|Rol için ücretleri görüntüleme ilkesi|Azure rolü|Fiyatlandırma görünümü|
 |---|---|---|---|
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✔ Etkin|Sahip|Kuruluşun Kurumsal Anlaşma fiyatlandırması|
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✘ Devre dışı|Sahip|Perakende fiyatlandırması|
@@ -113,7 +113,7 @@ Aşağıdaki tabloda, Azure portalında gördüğünüz fiyatlandırma, Azure po
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✘ Devre dışı |yok|Fiyatlandırma yok|
 |Hiçbiri|Uygulanamaz |Sahip|Perakende fiyatlandırması|
 
-Kuruluş yöneticisi rolünü ve ücretleri görüntüleme ilkelerini Enterprise portal’da ayarlarsınız. RBAC rolü, Azure portalında güncelleştirilebilir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Kuruluş yöneticisi rolünü ve ücretleri görüntüleme ilkelerini Enterprise portal’da ayarlarsınız. Azure rolü Azure portalında güncelleştirilebilir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
 
 
 

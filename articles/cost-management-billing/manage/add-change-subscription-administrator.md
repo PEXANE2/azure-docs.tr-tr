@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126134"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530019"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure Aboneliği yöneticileri ekleme veya değiştirme
 
@@ -33,7 +33,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager ve klasik dağıtım karşı
 
 ## <a name="assign-a-subscription-administrator"></a>Abonelik yöneticisi atama
 
-Bir kullanıcıyı Azure aboneliğinin yöneticisi yapmak için, mevcut bir yöneticinin o kullanıcıya abonelik kapsamında [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolünü (RBAC rolü) ataması gerekir. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir. Bu adımlar diğer rol atamasıyla aynıdır.
+Bir kullanıcıyı Azure aboneliğinin yöneticisi yapmak için, mevcut bir yöneticinin o kullanıcıya abonelik kapsamında [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolünü (Azure rolü) ataması gerekir. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir. Bu adımlar diğer rol atamasıyla aynıdır.
 
 Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız aşağıdaki adımları izleyerek bulabilirsiniz.
 

@@ -1,23 +1,36 @@
 ---
-title: Azure Maliyet Yönetimi ve Faturalama'ya Genel Bakış | Microsoft Docs
-description: Azure Maliyet Yönetimi ve Faturalandırma özelliklerini kullanarak faturalarla ilgili yönetim görevlerini gerçekleştirebilir ve maliyetler için faturalandırma erişimini yönetebilirsiniz. Ayrıca bu özelliği kullanarak Azure harcamalarını izleyip denetleyebilir ve Azure kaynaklarının kullanımını iyileştirebilirsiniz.
+title: Azure Maliyet Yönetimi + Faturalama'ya genel bakış
+description: Azure Maliyet Yönetimi + Faturalama özelliklerini kullanarak faturalarla ilgili yönetim görevlerini gerçekleştirebilir ve maliyetler için faturalama erişimini yönetebilirsiniz. Ayrıca bu özellikleri kullanarak Azure harcamalarını izleyip denetleyebilir ve Azure kaynaklarının kullanımını iyileştirebilirsiniz.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 07/29/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 76121dd8126922de2843e430a4e01cae1c7c0d53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879097"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413009"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>Azure Maliyet Yönetimi ve Faturalandırma nedir?
+# <a name="what-is-azure-cost-management--billing"></a>Azure Maliyet Yönetimi + Faturalama nedir?
 
-Azure ürün ve hizmetlerinde sadece kullandığınız kadar ödersiniz. Yalnızca oluşturup kullandığınız Azure kaynakları için ücretlendirilirsiniz. Azure Maliyet Yönetimi ve Faturalandırma özelliklerini kullanarak faturalarla ilgili yönetim görevlerini gerçekleştirebilir ve maliyetler için faturalandırma erişimini yönetebilirsiniz. Ayrıca bu özellikleri kullanarak Azure harcamalarını izleyip denetleyebilir ve Azure kaynaklarının kullanımını iyileştirebilirsiniz.
+Microsoft bulutunu kullanarak iş yüklerinizin teknik performansını önemli ölçüde geliştirebilirsiniz. Ayrıca kurumsal varlıkları yönetmek için gereken maliyetlerinizi ve ek yükü azaltabilir. Bununla birlikte, bulut dağıtımlarınıza atık ve verimsizlik getirme olasılığı olduğundan iş fırsatı bir risk oluşturur. Azure Maliyet Yönetimi + Faturalama, Microsoft tarafından sağlanan ve iş yüklerinizin maliyetini analiz etmenize, yönetmenize ve iyileştirmenize yardımcı olan bir araç paketidir. Paketin kullanılması kuruluşunuzun bulut tarafından sağlanan avantajlardan yararlanmasına yardımcı olur.
+
+Azure iş yüklerini evinizdeki ışıklar gibi düşünebilirsiniz. Gün boyunca dışarıda olacağınız zaman ışıkları açık bırakır mısınız? Aylık elektrik faturanızı azaltmaya yardımcı olmak için farklı ve daha verimli ampuller kullanabilir misiniz? Bir odada ihtiyacınız olandan fazla ışık olabilir mi? Azure Maliyet Yönetimi + Faturalama'yı kullanarak kuruluşunuz tarafından kullanılan iş yükleri konusunda benzer bir düşünce akışı izleyebilirsiniz.
+
+Azure ürün ve hizmetlerinde sadece kullandığınız kadar ödersiniz. Yalnızca oluşturup kullandığınız Azure kaynakları için ücretlendirilirsiniz. Yeni kaynakları dağıtma kolaylığından dolayı, düzgün bir analiz ve izleme olmadığında iş yüklerinizin maliyeti önemli bir sıçrama gösterebilir. Azure Maliyet Yönetimi + Faturalama özelliklerini kullanarak:
+
+- Faturanızı ödeme gibi faturalamayla ilgili yönetim görevlerini yürütebilirsiniz
+- Maliyetlere faturalama erişimini yönetebilirsiniz
+- Aylık faturanızı oluştururken kullanılan maliyet ve kullanım verilerini indirebilirsiniz
+- Maliyetlerinize proaktif olarak veri analizi uygulayabilirsiniz
+- Harcama eşiklerini ayarlayabilirsiniz
+- Harcamalarınızı iyileştirebilecek iş yükü değişiklikleri için fırsatları belirleyebilirsiniz
+
+Kuruluş olarak maliyet yönetimine nasıl yaklaşmak gerektiği hakkında daha fazla bilgi edinmek için, [Azure Maliyet Yönetimi en iyi yöntemleri](./costs/cost-mgt-best-practices.md) makalesini gözden geçirin.
 
 ## <a name="understand-azure-billing"></a>Azure Faturalandırma özelliklerini anlama
 
@@ -42,9 +55,8 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 
 |Kapsam  |Tanım  |
 |---------|---------|
-|Fatura hesabı     | Bir veya daha fazla Azure aboneliği için tek bir sahibi (Hesap yöneticisi) temsil eder. Hesap Yöneticisi, abonelik oluşturma, faturaları görüntüleme veya aboneliklerin faturalamasını değiştirme gibi çeşitli faturalama görevlerini gerçekleştirme yetkisine sahiptir.  |
+|Fatura hesabı     | Bir veya daha fazla Azure aboneliği için tek bir sahibi (Hesap yöneticisi) temsil eder. Hesap Yöneticisi, abonelik oluşturma, faturaları görüntüleme veya aboneliklerin faturalamasını değiştirme gibi çeşitli faturalama görevlerini yerine getirme yetkisine sahiptir.  |
 |Abonelik     |  Bir Azure kaynakları gruplamasını temsil eder. Abonelik kapsamında fatura oluşturulur. Faturasını ödemek için kullanılan kendi ödeme yöntemlerine sahiptir.|
-
 
 #### <a name="enterprise-agreement"></a>Kurumsal Anlaşma
 
@@ -54,7 +66,6 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 |Bölüm     |  İsteğe bağlı kayıt hesapları gruplaması.      |
 |Kayıt hesabı     |  Tek bir hesap sahibini temsil eder. Azure abonelikleri kayıt hesabı kapsamı altında oluşturulur.  |
 
-
 #### <a name="microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi
 
 |Kapsam  |Görevler  |
@@ -63,19 +74,17 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 |Faturalama profili     |  Bir faturayı ve ödeme yöntemlerini temsil eder. Fatura bu kapsamda oluşturulur. Faturalama profili birden çok fatura bölümüne sahip olabilir.      |
 |Fatura bölümü     |   Faturadaki bir maliyet grubunu temsil eder. Abonelikler ve diğer satın alma işlemleri fatura bölümünün kapsamıyla ilişkilidir.    |
 
-
 ## <a name="understand-azure-cost-management"></a>Azure Maliyet Yönetimi’ni anlama
-Maliyet yönetimi, işlerinizle ilişkili maliyetleri etkili bir şekilde planlama ve denetleme işlemidir. Maliyet yönetimi görevleri normalde finans, yönetim ve uygulama takımları tarafından gerçekleştirilir. Azure Maliyet Yönetimi + Faturalandırma, kuruluşların maliyet planlaması yapmasını sağlar. Ayrıca, maliyetleri etkili bir şekilde analiz etmeye ve bulut harcamalarını iyileştirmek için gerçekleştirilecek eylemlere de katkı sağlar. Kuruluş olarak maliyet yönetimine nasıl yaklaşmak gerektiği hakkında daha fazla bilgi edinmek için, [Azure Maliyet Yönetimi en iyi yöntemleri](./costs/cost-mgt-best-practices.md) makalesini gözden geçirin.
-
-Azure Maliyet Yönetimi'nin Azure'da tasarruf sağlamanıza nasıl yardımcı olacağı hakkında bilgi edinmek için [Azure Maliyet Yönetimi'ne genel bakış videosunu](https://www.youtube.com/watch?v=el4yN5cHsJ0) izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
-
->[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Faturalandırma, maliyet yönetimiyle ilgili olsa da aynı şey değildir. Faturalandırma, müşterilere mal veya hizmetler karşılığı fatura hazırlama ve ticari ilişkileri yönetme işlemidir.
 
 Maliyet yönetimi, gelişmiş analizle kurumsal maliyet ve kullanım düzenlerini gösterir. Maliyet Yönetimi raporları, Azure hizmetleri ve üçüncü taraf Market teklifleri için kullanıma bağlı ücretleri gösterir. Ücretler, anlaşmalı fiyatlara göre hesaplanır ve rezervasyon ile Azure Hibrit Avantajı indirimleri dikkate alınır. Raporlar hep birlikte, kullanımla ilişkili iç ve dış maliyetlerinizi ve Azure Market ücretlerinizi ortaya koyar. Rezervasyon satın almaları, destek ve vergiler gibi diğer ücretler henüz raporlarda gösterilmemektedir. Raporlar, harcamalarınızı ve kaynak kullanımınızı anlamanıza, ayrıca harcama anomalilerini bulmanıza yardımcı olur. Tahmine dayalı analiz de sağlanır. Maliyet Yönetimi harcamalarınızın nasıl düzenlendiğini ve maliyetleri nasıl düşürebileceğinizi net bir şekilde göstermek için Azure yönetim gruplarını, bütçelerini ve önerilerini kullanır.
 
 Azure portalı veya çeşitli API'leri kullanarak dışarı aktarma otomasyonu yapabilir ve bu yolla maliyet verilerini dış sistemler ve süreçlerle tümleştirebilirsiniz. Otomatik faturalandırma verilerini dışarı aktarma özelliği ve zamanlanmış raporlar da sağlanır.
+
+Azure Maliyet Yönetimi'nin Azure'da tasarruf sağlamanıza nasıl yardımcı olacağı hakkında bilgi edinmek için [Azure Maliyet Yönetimi'ne genel bakış videosunu](https://www.youtube.com/watch?v=el4yN5cHsJ0) izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 ### <a name="plan-and-control-expenses"></a>Giderleri planlama ve denetleme
 
@@ -99,17 +108,16 @@ Maliyet yönetimi verilerine erişmek veya bu verileri incelemek için dış sis
 
 ### <a name="additional-azure-tools"></a>Ek Azure araçları
 
-Azure'un, Azure Maliyet Yönetimi ve Faturalandırma özellik kümesi kapsamında yer almayan başka araçları da vardır. Bununla birlikte, bu araçlar maliyet yönetimi işleminde önemli bir rol oynar. Söz konusu araçlar hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın.
+Azure'ın, Azure Maliyet Yönetimi + Faturalama özellik kümesi kapsamında yer almayan başka araçları da vardır. Bununla birlikte, bu araçlar maliyet yönetimi işleminde önemli bir rol oynar. Söz konusu araçlar hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın.
 
 - [Azure Fiyatlandırma Hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) - Önceden bulut maliyetlerinizi tahmin etmek için bu aracı kullanın.
 - [Azure Geçişi](../migrate/migrate-overview.md) - Azure yedek çözümünden neler gerektiği hakkında içgörüler elde etmek için geçerli veri merkezi yükünüzü değerlendirin.
 - [Azure Danışmanı](../advisor/advisor-overview.md) - Kullanılmayan sanal makineleri belirleyin ve Azure ayrılmış örnek satın almalarıyla ilgili öneriler alın.
 - [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) - Tasarruf etmek için geçerli şirket içi Windows Server veya SQL Server lisanslarınızı Azure'da sanal makineler için kullanın.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Maliyet Yönetimi ve Faturalandırma ile tanıştığınıza göre, bir sonraki adımda hizmeti kullanmaya başlayacaksınız.
+Artık Maliyet Yönetimi + Faturalama ile tanıştığınıza göre, bir sonraki adımda hizmeti kullanmaya başlayacaksınız.
 
 - Azure Maliyet Yönetimi'ni kullanarak [maliyetleri analiz etmeye](./costs/quick-acm-cost-analysis.md) başlayın.
 - Ayrıca, [Azure Maliyet Yönetimi en iyi yöntemlerini](./costs/cost-mgt-best-practices.md) de okuyabilirsiniz.

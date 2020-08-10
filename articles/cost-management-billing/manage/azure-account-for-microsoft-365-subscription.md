@@ -1,6 +1,6 @@
 ---
 title: Azure hesabıyla Microsoft 365’e kaydolma
-description: Azure hesabı kullanarak nasıl Microsoft 365 aboneliği oluşturulacağını öğrenin
+description: Azure hesabı kullanarak Microsoft 365 aboneliğinin nasıl oluşturulacağını öğrenin. Ayrıca mevcut Azure ve Microsoft 365 hesaplarını birbiriyle ilişkilendirebilirsiniz.
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
@@ -8,14 +8,14 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: banders
-ms.openlocfilehash: 006f8edc81ec19647ff6173a4c786c6d7e93fadc
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 050bd9c420ccecdb91a6c438782d9be1c6c23b88
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810389"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461893"
 ---
-# <a name="sign-up-for-a-microsoft--365-subscription-with-your-azure-account"></a>Azure hesabınızla Microsoft 365 aboneliğine kaydolma
+# <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Azure hesabınızla Microsoft 365 aboneliğine kaydolma
 
 Azure abonesiyseniz, Microsoft 365 aboneliğine kaydolmak için Azure hesabınızı kullanabilirsiniz. Azure aboneliği olan bir kuruluşun parçasıysanız, mevcut Azure Active Directory’nizde (Azure AD) kullanıcılar için Microsoft 365 abonelikleri oluşturabilirsiniz. Azure Active Directory kiracınızda Genel Yönetici veya Faturalama Yöneticisi izinlerine sahip olan bir hesap kullanarak Microsoft 365’e kaydolun. Daha fazla bilgi için bkz. [Azure AD’de hesap izinlerimi denetleme](#RoleInAzureAD) ve [Azure Active Directory’de yönetici rolleri atama](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 

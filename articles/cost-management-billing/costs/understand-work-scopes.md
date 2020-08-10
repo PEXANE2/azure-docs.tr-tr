@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077167"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501534"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -93,8 +93,8 @@ Kayıt olarak da adlandırılan Kurumsal Anlaşma (EA) ödeme hesapları iki kap
 
 EA faturalama kapsamları şu rolleri destekler:
 
-- **Kuruluş yöneticisi**: Ödeme hesabı ayarlarını ve erişimini yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
-- **Kurumsal salt okunur kullanıcı**: Ödeme hesabı ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Okuyucusu Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
+- **Kuruluş yöneticisi**: Ödeme hesabı ayarlarını ve erişimini yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
+- **Kurumsal salt okunur kullanıcı**: Ödeme hesabı ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Okuyucusu Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
 - **Departman yöneticisi**: Maliyet merkezi gibi departman ayarlarını yönetebilir, tüm maliyetlere erişebilir, onları görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir.  Departman yöneticilerinin ve salt okunur kullanıcıların maliyetleri görebilmesi için **DA ücretleri görüntüleme** fatura hesabı ayarının etkinleştirilmiş olması gerekir. **DA ücretleri görüntüleme** ayarının devre dışı bırakılması halinde hesap veya abonelik sahibi olsalar dahi kullanıcılar herhangi bir düzeydeki maliyetleri göremezler.
 - **Departman salt okunur kullanıcı**: Departman ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. **DA ücretleri görüntüleme** ayarının devre dışı bırakılması halinde hesap veya abonelik sahibi olsalar dahi kullanıcılar herhangi bir düzeydeki maliyetleri göremezler.
 - **Hesap sahibi**: Kayıt hesabı ayarlarını (maliyet merkezi gibi) yönetebilir, tüm maliyetleri görüntüleyebilir ve kayıt hesabının maliyet yapılandırmasını (bütçeler ve dışarı aktarma işlemleri gibi) yönetebilir. Hesap sahiplerinin ve RBAC kullanıcılarının maliyetleri görebilmesi için **AO ücretleri görüntüleme** fatura hesabı ayarının etkinleştirilmiş olması gerekir.
@@ -141,10 +141,10 @@ Müşteri Sözleşmesi faturalama kapsamları iş ortakları için geçerli değ
 
 Müşteri Sözleşmesi faturalama kapsamları şu rolleri destekler:
 
-- **Sahip**: Faturalandırma ayarlarını yönetebilir, tüm maliyetlere erişebilir, bunları görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
-- **Katkıda bulunan**: Erişim haricindeki faturalandırma ayarlarını yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
-- **Okuyucu**: Faturalandırma ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Okuyucusu Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
-- **Fatura yöneticisi**: Faturaları görüntüleyip ödeyebilir, maliyet verilerini ve yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Okuyucusu Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
+- **Sahip**: Faturalandırma ayarlarını yönetebilir, tüm maliyetlere erişebilir, bunları görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
+- **Katkıda bulunan**: Erişim haricindeki faturalandırma ayarlarını yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
+- **Okuyucu**: Faturalandırma ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Okuyucusu Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
+- **Fatura yöneticisi**: Faturaları görüntüleyip ödeyebilir, maliyet verilerini ve yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Okuyucusu Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
 - **Azure aboneliği oluşturucusu**: Azure aboneliği oluşturabilir, maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, EA kayıt hesabı sahibi rolüyle aynıdır.
 
 Azure abonelikleri, EA kayıt hesaplarında olduğu gibi fatura bölümleri altında iç içe yerleştirilir. Faturalandırma kullanıcıları, kendi kapsamları altında yer alan aboneliklere ve kaynak gruplarına ait maliyet verilerine erişebilir. Ancak bu kaynakları Azure portalında göremez ve yönetemezler. Faturalandırma kullanıcıları, Azure portalındaki hizmet listesinde **Maliyet Yönetimi + Faturalandırma**'ya giderek maliyetleri görüntüleyebilir. Bu kullanıcılar maliyetleri belirli aboneliklere ve kaynak gruplarına göre filtreleyerek ihtiyaç duydukları raporlara ulaşabilirler.

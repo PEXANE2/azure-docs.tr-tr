@@ -1,17 +1,17 @@
 ---
 title: REST API ile Azure abonelik faturalama verilerini gözden geçirme
-description: Abonelik faturalama ayrıntılarını gözden geçirmek için Azure REST API’lerinin nasıl kullanılacağını öğrenin.
+description: Abonelik faturalama ayrıntılarını gözden geçirmek için Azure REST API’lerinin nasıl kullanılacağını öğrenin. Sonuçları özelleştirmeye yardımcı olması için filtreleri kullanabilirsiniz.
 author: lleonard-msft
 ms.service: cost-management-billing
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 7b80bd57906515ffeb0ff9e8ac52cf7178f5ccd8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac5bbc1d93347654cea118ea9521d6074a9af7c8
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202816"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461842"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API’leri kullanarak abonelik faturalamasını gözden geçirme
 

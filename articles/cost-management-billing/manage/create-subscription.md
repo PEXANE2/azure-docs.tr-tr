@@ -1,17 +1,17 @@
 ---
 title: Ek Azure aboneliği oluşturma
-description: Azure portalında nasıl yeni bir Azure aboneliği ekleneceğini öğrenin.
+description: Azure portalında nasıl yeni bir Azure aboneliği ekleneceğini öğrenin. Ödeme hesabı formları hakkındaki bilgilere bakın ve kullanılabilir ek kaynakları görüntüleyin.
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200855"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460975"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Ek Azure aboneliği oluşturma
 
@@ -33,7 +33,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portalında abonelik oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Abonelikler** araması yapın.
 
    ![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/create-subscription/billing-search-subscription-portal.png)
@@ -50,7 +50,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 |Alan  |Tanım  |
 |---------|---------|
-|Ad     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
+|Adı     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
 |Sunduğu     | Geliştirme veya test iş yükleri için bu aboneliği kullanmayı planlıyorsanız EA Geliştirme ve Test, diğer durumlarda Microsoft Azure Kurumsal’ı seçin. EA Geliştirme ve Test abonelikleri oluşturmak için kayıt hesabınızda DevTest teklifinin etkinleştirilmesi gerekir.|
 
 **Microsoft Müşteri Sözleşmesi**
@@ -60,7 +60,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 |Faturalama profili     | Aboneliğinizin ücretleri, seçtiğiniz faturalama profiline faturalanır. Yalnızca bir faturalama profiline erişiminiz varsa seçim gri olur.     |
 |Fatura bölümü     | Aboneliğinizin ücretleri, faturalama profilinin faturasının bu bölümünde görünür. Yalnızca bir fatura bölümüne erişiminiz varsa seçim gri olur.  |
 |Planlama     | Geliştirme veya test iş yükleri için bu aboneliği kullanmayı planlıyorsanız DevTest için Microsoft Azure Planı’nı seçin; aksi takdirde Microsoft Azure Planı‘nı kullanın. Faturalama profili için etkinleştirilmiş yalnızca bir plan varsa seçim gri olur.  |
-|Ad     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
+|Adı     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
 
 **Microsoft İş Ortağı Sözleşmesi**
 
@@ -68,7 +68,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 |---------|---------|
 |Müşteri    | Abonelik, seçtiğiniz müşteri için oluşturulur. Yalnızca bir müşteriniz varsa seçim gri olur.  |
 |Kurumsal bayi    | Müşteriye hizmet sağlayan kurumsal bayi. Burası isteğe bağlı bir alandır ve yalnızca CSP iki katmanlı modelindeki Dolaylı sağlayıcılar için geçerlidir. |
-|Ad     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
+|Adı     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Program aracılığıyla ek Azure aboneliği oluşturma
 

@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286606"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553487"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>Azure hesabınız için ilgili kişi bilgilerini değiştirme
 
@@ -24,7 +24,7 @@ Bu makale, Azure portalında hesabınıza ilişkin ilgili kişi bilgilerini gün
 
 *Fatura adresi* - Fatura adresi, kuruluşun veya bir ödeme hesabı için oluşturulan faturalardan sorumlu kişinin adresi ve iletişim bilgileridir. Bir Microsoft Çevrimiçi Hizmet Programı (MOSP) için ödeme hesabının, hesap için oluşturulan tüm faturalarda görüntülenen bir fatura adresi vardır. Bir Microsoft Müşteri Sözleşmesi (MCA) için ödeme hesabının, her faturalama profili için bir fatura adresi vardır ve bu, faturalama profili için oluşturulan faturada gösterilir.
 
-*Hizmet ve pazarlama e-postaları için iletişim e-posta adresi* - Azure hesabınız hakkında önemli faturalandırma, hizmet ve önerilerle ilgili bildirimleri almak için, oturum açarken kullandığınız e-posta adresinden farklı bir e-posta adresi belirtebilirsiniz.  
+*Hizmet ve pazarlama e-postaları için iletişim e-posta adresi*: Azure hesabınız hakkında önemli faturalandırma, hizmet ve önerilerle ilgili bildirimleri almak için, oturum açarken kullandığınız e-posta adresinden farklı bir e-posta adresi belirtebilirsiniz. Acil güvenlik sorunları, fiyat değişiklikleri veya hesabınız tarafından kullanılan hizmetlerdeki hataya neden olan değişiklikler gibi hizmet bildirimi e-postaları her zaman oturum açma adresinize gönderilir.
 
 ## <a name="update-an-mosp-billing-account-address"></a>MOSP faturalama hesabı adresini güncelleştirme
 

@@ -1,6 +1,6 @@
 ---
 title: Azure kullanımını ve ücretlerini Görüntüleme ve İndirme
-description: Günlük Azure kullanımınızın ve ücretlerinizin nasıl indirileceğini veya görüntüleneceğini açıklar.
+description: Azure günlük kullanımınızı ve ücretlerinizi indirmeyi veya görüntülemeyi öğrenin, kullanılabilir ek kaynaklara bakın.
 keywords: faturalama kullanımı, kullanım ücretleri, kullanım indirmesi, kullanımı görüntüleme, azure faturası, azure kullanımı
 author: bandersmsft
 ms.author: banders
@@ -8,12 +8,12 @@ tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322048"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460516"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme
 

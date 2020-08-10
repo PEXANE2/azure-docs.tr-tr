@@ -7,28 +7,28 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281795"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529934"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
 Microsoft iş ortakları, müşterilerin Microsoft ürünlerini kullanarak iş ve görev hedeflerini başarmasına yardımcı olan hizmetler sağlar. Azure hizmetlerini yöneten, yapılandıran ve destekleyen müşteri adına hareket ederken iş ortağı kullanıcılarının müşterinin ortamına erişmesi gerekir. İş ortakları, İş Ortağı Yönetici Bağlantısını (PAL) kullanarak iş ortağı ağı kimliğini, hizmet teslimi için kullanılan kimlik bilgileriyle ilişkilendirebilir.
 
-PAL, Microsoft’un Azure müşteri başarısını artıran iş ortaklarını belirlemesine ve tanımasına olanak tanır. Microsoft hesabın izinleri (RBAC rolü) ve kapsamı (abonelik, kaynak grubu, kaynak) temelinde etkiyi ve Azure’ın tüketim gelirini kuruluşunuzla ilişkilendirebilir.
+PAL, Microsoft’un Azure müşteri başarısını artıran iş ortaklarını belirlemesine ve tanımasına olanak tanır. Microsoft hesabın izinleri (Azure rolü) ve kapsamı (abonelik, kaynak grubu, kaynak) temelinde etkiyi ve Azure’ın tüketim gelirini kuruluşunuzla ilişkilendirebilir.
 
 ## <a name="get-access-from-your-customer"></a>Müşterinizden erişim elde etme
 
 Siz iş ortağı kimliğinizi bağlamadan önce müşteriniz aşağıdaki seçeneklerden birini kullanarak Azure kaynaklarına erişmenizi sağlamalıdır:
 
-- **Konuk kullanıcı**: Müşteriniz, sizi konuk kullanıcı olarak ekleyip rol tabanlı erişim denetimi (RBAC) rolleri atayabilir. Daha fazla bilgi için bkz. [Başka bir dizinden konuk kullanıcılar ekleme](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Konuk kullanıcı**: Müşteriniz, sizi konuk kullanıcı olarak ekleyip Azure rolleri atayabilir. Daha fazla bilgi için bkz. [Başka bir dizinden konuk kullanıcılar ekleme](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Dizin hesabı**: Müşteriniz, kendi dizininde sizin için bir kullanıcı hesabı oluşturabilir ve RBAC rolü atayabilir.
+- **Dizin hesabı**: Müşteriniz, kendi dizininde sizin için bir kullanıcı hesabı oluşturabilir ve Azure rolü atayabilir.
 
-- **Hizmet sorumlusu**: Müşteriniz, kendi dizininde kuruluşunuzdan bir uygulama veya betik ekleyebilir ve RBAC rolü atayabilir. Uygulamanın veya betiğin kimliği, hizmet sorumlusu olarak bilinir.
+- **Hizmet sorumlusu**: Müşteriniz, kendi dizininde kuruluşunuzdan bir uygulama veya betik ekleyebilir ve Azure rolü atayabilir. Uygulamanın veya betiğin kimliği, hizmet sorumlusu olarak bilinir.
 
 - **Azure Lighthouse**: Müşteriniz bir aboneliği (veya kaynak grubunu) temsilci olarak atayarak kullanıcılarınızın kiracınızda bunun üzerinde çalışmasını sağlayabilir. Daha fazla bilgi için bkz. [Azure’da atanan kaynak yönetimi](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
@@ -168,9 +168,8 @@ Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
 
 **PAL hangi verileri toplar?**
 
-Mevcut kimlik bilgilerine PAL ilişkilendirmesi Microsoft'a yeni müşteri verileri sağlamaz. Yalnızca Microsoft'a müşterinin Azure ortamına etkin bir şekilde dahil olan iş ortağının telemetrisini sağlar. Microsoft müşteri tarafından iş ortağına sağlanan hesabın izinleri (RBAC rolü) ve kapsamı (Yönetim Grubu, Abonelik, Kaynak Grubu, Kaynak) temelinde müşteri ortamından gelen etkiyi ve Azure tüketim gelirini iş ortağı kuruluşuyla ilişkilendirebilir. 
+Mevcut kimlik bilgilerine PAL ilişkilendirmesi Microsoft'a yeni müşteri verileri sağlamaz. Yalnızca Microsoft'a müşterinin Azure ortamına etkin bir şekilde dahil olan iş ortağının telemetrisini sağlar. Microsoft müşteri tarafından iş ortağına sağlanan hesabın izinleri (Azure rolü) ve kapsamı (Yönetim Grubu, Abonelik, Kaynak Grubu, Kaynak) temelinde müşteri ortamından gelen etkiyi ve Azure tüketim gelirini iş ortağı kuruluşuyla ilişkilendirebilir. 
 
 **Bu bir müşterinin Azure Ortamının güvenliğini etkiler mi?**
 
-PAL ilişkilendirmesi yalnızca iş ortağının MPN ID değerini önceden sağlanmış kimlik bilgilerine ekler ve hiçbir izni (RBAC rolü) değiştirmediği gibi iş ortağına veya Microsoft'a ek Azure hizmet verileri de sağlamaz. 
-
+PAL ilişkilendirmesi yalnızca iş ortağının MPN ID değerini önceden sağlanmış kimlik bilgilerine ekler ve hiçbir izni (Azure rolü) değiştirmediği gibi iş ortağına veya Microsoft'a ek Azure hizmet verileri de sağlamaz. 

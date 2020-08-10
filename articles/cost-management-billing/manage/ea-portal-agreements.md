@@ -3,16 +3,16 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537808"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563492"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -20,7 +20,7 @@ Makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure hizmetleri erişimini
 
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
-Yeni Azure Ön Ödemesinin başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen Azure Ön Ödeme siparişleri UTC saat dilimine göre işleme alındığından Azure Ön Ödeme satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. https://www.explore.ms adresinde satın alma siparişindeki karşılama başlangıç tarihi Azure Ön Ödemesinin başlangıcını gösterir. Karşılama başlangıç tarihi Azure Ön Ödemesinin Azure EA portalında gösterildiği tarihtir.
+Yeni Azure Ön Ödemesinin başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen Azure Ön Ödeme siparişleri UTC saat dilimine göre işleme alındığından Azure Ön Ödeme satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. Satın alma siparişindeki kapsam başlangıç tarihi Azure Ön Ödemesinin başlangıcını gösterir. Kapsam başlangıç tarihi Azure Ön Ödemesinin Azure EA portalında gösterildiği tarihtir.
 
 ## <a name="support-for-enterprise-customers"></a>Kurumsal müşterilere yönelik destek
 
@@ -43,7 +43,7 @@ Kayıt aşağıdaki durum değerlerinden birine sahiptir. Değerlerin her biri k
 
 **Süresi Doldu**: EA kaydı kurumsal anlaşma bitiş tarihine ulaştığında kaydın süresi dolar. EA müşterisi uzatılmış süreyi kabul etmemiş ve tüm hizmetleri devre dışı bırakılmıştır.
 
-1 Ağustos 2019 itibarıyla Azure ticari müşterileri için yeni geri çevirme formları kabul edilmez. Bunun yerine tüm kayıtlar süresiz uzatılan süre durumuna geçer. Azure hizmetlerini kullanmayı durdurmak istiyorsanız [Azure portalında](https://portal.azure.com) aboneliğinizi kapatın. İsterseniz iş ortağınız https://www.explore.ms adresine bir sonlandırma isteği de gönderebilir. Kamu anlaşması türlerindeki müşteriler için hiçbir değişiklik yoktur.
+1 Ağustos 2019 itibarıyla Azure ticari müşterileri için yeni geri çevirme formları kabul edilmez. Bunun yerine tüm kayıtlar süresiz uzatılan süre durumuna geçer. Azure hizmetlerini kullanmayı durdurmak istiyorsanız [Azure portalında](https://portal.azure.com) aboneliğinizi kapatın. İsterseniz, iş ortağınız bir sonlandırma isteği de gönderebilir. Kamu anlaşması türlerindeki müşteriler için hiçbir değişiklik yoktur.
 
 **Aktarıldı**: Aktarıldı durumu, ilişkili hesapları ve hizmetleri yeni kayda aktarılmış olan kayıtlara uygulanır. Yenileme sırasında yeni bir kayıt numarası oluşturulduysa kayıtlar otomatik olarak aktarılmaz. Otomatik aktarım için müşterinin yenileme isteğine önceki kayıt numarası eklenmelidir.
 

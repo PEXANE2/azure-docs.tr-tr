@@ -1,18 +1,18 @@
 ---
 title: Azure Databricks önceden satın alma indiriminin uygulanması
-description: Azure Databricks önceden satın alma indiriminin kullanımınıza nasıl uygulandığı hakkında bilgi edinin.
+description: Azure Databricks önceden satın alma indiriminin kullanımınıza nasıl uygulandığı hakkında bilgi edinin. Satın alma dönemi boyunca bu Databricks'i kullanabilirsiniz.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380c4c7fdcccf45d83adaf355c2cc12da0b327fc
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200325"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460329"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks önceden satın alma indiriminin uygulanması
 
@@ -51,7 +51,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 - Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](manage-reserved-vm-instance.md).
 - Para tasarrufu sağlamak için Azure Databricks’i önceden satın alma hakkında daha fazla bilgi edinmek için bkz. [Önceden satın alma ile Azure Databricks maliyetlerini iyileştirme](prepay-databricks-reserved-capacity.md).
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
   - [Azure’da Rezervasyonları Yönetme](manage-reserved-vm-instance.md)
   - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
   - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)

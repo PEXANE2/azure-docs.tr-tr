@@ -3,17 +3,17 @@ title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372153"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563951"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -140,7 +140,7 @@ Seçilen müşteriye ait aboneliklerle ilgili **Azure Kullanımı** ücretleri i
 
 Maliyet ilkesi **Evet** olarak ayarlandığında müşteri kiracısıyla ilişkilendirilmiş olan abonelik kullanıcıları, kullandıkça öde fiyatları üzerinden kullanım maliyetlerini görebilir.
 
-Maliyet görünürlüğü ilkesi etkinleştirildiğinde abonelik kullanımına sahip olan tüm hizmetler, kullandıkça öde fiyatları üzerinden maliyetleri görüntüler. Rezervasyon kullanımı, gerçek ve amorti edilen maliyetler için sıfır ücretle gösterilir. Satın alma ve yetkilendirme işlemleri belirli bir abonelikle ilişkilendirilmez. Bu nedenle satın alma işlemleri, abonelik kapsamında görüntülenmez.
+Maliyet görünürlüğü ilkesi etkinleştirildiğinde abonelik kullanımına sahip olan tüm hizmetler, kullandıkça öde fiyatları üzerinden maliyetleri görüntüler. Rezervasyon kullanımı, gerçek ve amorti edilen maliyetler için sıfır ücretle gösterilir. Satın alma ve yetkilendirme işlemleri belirli bir abonelikle ilişkilendirilmez. Bu nedenle satın alma işlemleri, abonelik kapsamında görüntülenmez. Doğrudan iş ortağının veya dolaylı sağlayıcının genel yöneticisi/yönetici aracısı her müşterinin büyük ölçekte maliyet görünürlüğü ilkesini ayarlamak için [Müşteri Güncelleştirme API'sini](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) de kullanabilir.
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Müşteri kiracısında abonelik maliyetlerini görüntüleme
 
