@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu
-description: Bu makalede, Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edineceksiniz.
+description: Azure haritalar 'da yakınlaştırma düzeylerini ayarlamayı öğrenin. Coğrafi koordinatları piksel koordinatlarına, döşeme koordinatlarına ve quadkeys 'e dönüştürme bölümüne bakın. Kod örneklerini görüntüleyin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093060"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035884"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 

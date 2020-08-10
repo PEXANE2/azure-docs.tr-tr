@@ -3,12 +3,12 @@ title: MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032604"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036734"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 
@@ -24,6 +24,9 @@ MABS v3 UR1 için aşağıdaki matrisi kullanın:
 
 * Koruma ve kurtarma – desteklenen depolama kapsayıcısı veya desteklenen dağıtım gibi iş yükleriyle ilgili ayrıntılı bilgileri listeleyin.
 
+>[!NOTE]
+>32 bitlik koruma aracısına yönelik destek MABS v3 UR1 ile kullanım dışıdır. Bkz. [32-bit koruma aracısının kullanımdan kaldırılması](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation).
+
 ## <a name="protection-support-matrix"></a>Koruma destek matrisi
 
 Aşağıdaki bölümlerde, MABS için koruma destek matrisi ayrıntıları verilmiştir:
@@ -34,7 +37,7 @@ Aşağıdaki bölümlerde, MABS için koruma destek matrisi ayrıntıları veril
 
 ## <a name="applications-backup"></a>Uygulamalar yedeklemesi
 
-| **İş Yükü**               | **Sürüm**                                                  | **Azure Backup Sunucusu yükleme**                       | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                  |
+| **İş yükü**               | **Sürüm**                                                  | **Azure Backup Sunucusu yükleme**                       | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | İstemci bilgisayarlar (64-bit) | Windows 10                                                  | Fiziksel sunucu  <br><br>    Hyper-V sanal makine   <br><br>   VMware sanal makinesi | V3 UR1                            | Birim, paylaşma, klasör, dosyalar, yinelenenleri kaldırılmış birimler   <br><br>   Korumalı birimler NTFS olmalıdır. FAT ve FAT32 desteklenmez.  <br><br>    Birimler en az 1 GB olmalıdır. Azure Backup Sunucusu, veri anlık görüntüsünü almak için Birim Gölge Kopyası Hizmeti (VSS) kullanır ve anlık görüntü yalnızca birim en az 1 GB olduğunda geçerlidir. |
 | Sunucular (64-bit)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)  <br><br>    Fiziksel sunucu  <br><br>    Hyper-V sanal makine <br><br>     VMware sanal makinesi  <br><br>    Azure Stack | V3 UR1                            | Birim, paylaşma, klasör, dosya, yinelenenleri kaldırılmış birimler (NTFS ve ReFS)  <br><br>   Sistem durumu ve tam (iş yükü Azure sanal makinesi olarak çalışırken desteklenmez) |
@@ -45,14 +48,14 @@ Aşağıdaki bölümlerde, MABS için koruma destek matrisi ayrıntıları veril
 
 ## <a name="vm-backup"></a>VM yedeklemesi
 
-| **İş Yükü**                                                 | **Sürüm**                                             | **Azure Backup Sunucusu yükleme**                      | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                 |
+| **İş yükü**                                                 | **Sürüm**                                             | **Azure Backup Sunucusu yükleme**                      | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
 | Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde | Windows Server 2019, 2016, 2012 R2, 2012               | Fiziksel sunucu  <br><br>    Hyper-V sanal makine <br><br>    VMware sanal makinesi | V3 UR1                             | Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)  <br><br>    Kurtarma: sanal makine, dosya ve klasörün öğe düzeyinde kurtarılması yalnızca Windows, birimler, sanal sabit sürücüler için kullanılabilir |
 | VMware VM 'Leri                                                  | VMware Server 5,5, 6,0 veya 6,5, 6,7 (lisanslı sürüm) | Hyper-V sanal makinesi  <br><br>   VMware sanal makinesi         | V3 UR1                             | Koruma: Küme Paylaşılan birimlerinde (CSV), NFS ve SAN depolamada VMware VM 'Leri   <br><br>     Kurtarma: sanal makine, dosya ve klasörün öğe düzeyinde kurtarılması yalnızca Windows, birimler, sanal sabit sürücüler için kullanılabilir <br><br>    VMware vApps desteklenmez. |
 
 ## <a name="linux"></a>Linux
 
-| **İş Yükü** | **Sürüm**                               | **Azure Backup Sunucusu yükleme**                      | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                 |
+| **İş yükü** | **Sürüm**                               | **Azure Backup Sunucusu yükleme**                      | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
 | Linux        | Hyper-V veya VMware konuğu olarak çalışan Linux | Fiziksel sunucu, şirket içi Hyper-V VM, VMWare 'de Windows VM | V3 UR1                             | Hyper-V Windows Server 2012 R2, Windows Server 2016 veya Windows Server 2019 üzerinde çalışıyor olmalıdır. Koruma: tüm sanal makine   <br><br>   Kurtarma: Tüm sanal makine   <br><br>    Yalnızca dosya tutarlı anlık görüntüler desteklenir.    <br><br>   Desteklenen Linux dağıtımları ve sürümlerinin tüm listesi için bkz. [Azure tarafından onaylanan dağıtımların Linux](../virtual-machines/linux/endorsed-distros.md)makalesi. |
 

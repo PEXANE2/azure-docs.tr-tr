@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure haritaları için doğru fiyatlandırma katmanını seçin
-description: Bu makalede, Microsoft Azure haritaları tarafından sunulan fiyatlandırma katmanları hakkında bilgi edineceksiniz.
+description: Azure haritalar fiyatlandırma katmanları hakkında bilgi edinin. Hangi katmanların hangi katmanda sunulmakta olduğunu görün ve fiyatlandırma katmanı seçme ile ilgili önemli noktaları görüntüleyin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285773"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036785"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure haritalar 'da doğru fiyatlandırma katmanını seçin
 
@@ -29,11 +29,11 @@ S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. 
 
 ### <a name="pricing-tier-capabilities"></a>Fiyatlandırma Katmanı Özellikleri
 
-| Yetenek                              |        S0           |  S1      |
+| Özellik                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | Eşleme Işleme                              | ✓                   | ✓       |
 | Uydu Imagery                       |                     | ✓        |
-| Arama                                  | ✓                    | ✓        |
+| Ara                                  | ✓                    | ✓        |
 | Toplu işlem arama                            |                     | ✓        |
 | Yol                                   | ✓                    |✓        |
 | Batch yönlendirme                            |                    | ✓        |

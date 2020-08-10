@@ -1,18 +1,18 @@
 ---
 title: Azure dosyaları nasıl dağıtılır | Microsoft Docs
-description: Baştan sona Azure dosyaları dağıtmayı öğrenin.
+description: Baştan sona Azure dosyaları dağıtmayı öğrenin. Verileri Azure dosyalarına aktarın. Gerekli bilgisayarlara veya sunuculara otomatik olarak bağlayın.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510799"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034507"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Dosyaları’nı dağıtma
 [Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyalarını kuruluşunuzda nasıl kuruluşunuzun içinde dağıtacağınız gösterilmektedir.

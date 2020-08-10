@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar ile harita oluşturma | Microsoft Azure haritaları
-description: Bu makalede, bir Web sayfasında Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritanın nasıl işleneceğini öğreneceksiniz.
+description: Azure Haritalar Web SDK 'sını kullanarak Web sayfalarına haritalar ekleme hakkında bilgi edinin. Animasyon, stil, kamera, hizmetler ve kullanıcı etkileşimleri için seçenekler hakkında bilgi edinin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 77eaa3e1f4390182ad210ae3aa2ce6a1427d8b0f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 9566bcc329b4d148fe9454fe70b556a9010fc4ac
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551906"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036479"
 ---
 # <a name="create-a-map"></a>Harita oluşturma
 
@@ -130,7 +130,7 @@ Aşağıdaki kodda, ilk kod bloğu bir harita oluşturur ve ENTER ve zoom harita
 
 ## <a name="request-transforms"></a>İstek dönüşümleri
 
-Bazen harita denetimi tarafından yapılan HTTP isteklerini değiştirmek faydalı olabilir. Örnek:
+Bazen harita denetimi tarafından yapılan HTTP isteklerini değiştirmek faydalı olabilir. Örneğin:
 
 - Kutucuk isteklerine ek üstbilgiler ekleyin. Bu, genellikle parola korumalı hizmetler için yapılır.
 - Proxy hizmeti üzerinden istekleri çalıştırmak için URL 'Leri değiştirin.

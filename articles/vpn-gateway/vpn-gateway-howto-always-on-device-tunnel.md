@@ -1,19 +1,19 @@
 ---
 title: Her zaman açık VPN tüneli yapılandırma
 titleSuffix: Azure VPN Gateway
-description: Kullanıcı oturum açma, ağ durumu değişikliği veya cihaz ekranı etkin gibi tetikleyicilere dayalı bir VPN bağlantısı tutan her zaman açık ' ı nasıl yapılandıracağınızı öğrenin.
+description: Kalıcı cihaz tünellerini Azure 'a kurmak ve yapılandırmak için Windows 10 her zaman açık olan ağ geçitlerini nasıl kullanacağınızı öğrenin.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 24043576fca4910631ccddb3924303dd642c6842
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e64d2223740942fe35ae8a730303bee8893c2489
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927071"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035612"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN cihazı tüneli yapılandırma
 

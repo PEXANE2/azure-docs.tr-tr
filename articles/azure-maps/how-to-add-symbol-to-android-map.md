@@ -1,6 +1,6 @@
 ---
 title: Android Maps 'e sembol katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Android SDK Microsoft Azure haritaları kullanarak bir sembol katmanını ekleyerek bir haritada nokta verilerinin nasıl işleneceğini öğreneceksiniz.
+description: Haritaya işaret eklemeyi öğrenin. Bir veri kaynağından gelen nokta tabanlı verileri içeren bir sembol katmanı eklemek için Azure Maps Android SDK kullanan bir örneğe bakın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 528c5a5ba4314e44334548334e312d1111768cf5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127086"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037397"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya bir sembol katmanı ekleme Android SDK
 
 Bu makalede, Azure Maps Android SDK kullanarak bir harita üzerinde sembol katmanı olarak bir veri kaynağındaki nokta verilerinin nasıl işleneceğini gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamen izlemek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 

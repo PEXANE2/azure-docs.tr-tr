@@ -1,18 +1,18 @@
 ---
 title: Azure dosyaları için sık sorulan sorular (SSS) | Microsoft Docs
-description: Azure dosyaları hakkında sık sorulan soruların yanıtlarını bulun.
+description: Azure dosyaları hakkında sık sorulan soruların yanıtlarını alın. Azure dosya paylaşımlarını bulut veya şirket içi Windows, Linux veya macOS dağıtımlarında eşzamanlı olarak bağlayabilirsiniz.
 author: roygara
 ms.service: storage
 ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482879"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037142"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -428,4 +428,4 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Windows 'da Azure dosyaları sorunlarını giderme](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux 'ta Azure dosyaları sorunlarını giderme](storage-troubleshoot-linux-file-connection-problems.md)
-* [Azure Dosya Eşitleme ile ilgili sorunları giderme](storage-sync-files-troubleshoot.md)
+* [Azure Dosya Eşitleme'de sorun giderme](storage-sync-files-troubleshoot.md)

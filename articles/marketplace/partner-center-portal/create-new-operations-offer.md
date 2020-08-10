@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 553fd4e49d274fcf4c25356764182d54b91149e4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798265"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036649"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations teklifi oluşturma
 
@@ -186,19 +186,19 @@ Burada, teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en 
 
 Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
-
-Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
+Teklifinizin logosunu iki piksel boyutunda sağlar:
 
 - **Küçük** (48 x 48)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+- **Büyük** (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

@@ -1,6 +1,6 @@
 ---
 title: Bir raster eşlemesinde özel verileri işleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps statik görüntü hizmetini kullanarak bir raster eşlemesinde özel verileri nasıl işleyebileceğinizi öğreneceksiniz.
+description: Bir raster eşlemesine Pushpin, etiket ve geometrik şekillerin nasıl ekleneceğini öğrenin. Bu amaçla Azure Maps 'ta statik görüntü hizmetini nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6eae060b2ed2b0f7d6de5ac54d92677c95fc8a89
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126882"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037380"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
@@ -25,7 +25,7 @@ Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak içi
 > [!Tip]
 > Azure Haritalar Web SDK 'sını kullanarak, bir Web sayfasında statik görüntü hizmetini kullanmaktan daha basit bir harita göstermek için çok daha uygun maliyetli hale gelir. Web SDK 'Sı harita kutucukları kullanır ve Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, genellikle harita yükü başına bir işlemin yalnızca bir bölümünü oluşturur. Azure Maps web SDK 'sının yatay kaydırmayı ve yakınlaştırmasını devre dışı bırakma seçenekleri olduğunu unutmayın. Ayrıca, Azure Maps web SDK 'Sı statik bir harita Web hizmetinden daha zengin bir veri görselleştirme seçenekleri kümesi sağlar.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 

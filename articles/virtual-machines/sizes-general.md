@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 706635e019f77fe31c5efb609c6f4028a0304446
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 98bb4cb54b9e26de9f38efdb554461f265f69aa9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874309"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036904"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Genel amaçlı sanal makine boyutları
 
 Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. Bu makalede genel amaçlı bilgi işlem teklifleri hakkında bilgi sağlanır.
-
-
-Test için bir satır ekleniyor. Test için bir [bağlantı](https://aka.ms/computecontentrequest) ekleniyor. Test için **kalın** bir ifade ekleme
 
 - [AV2 serisi](av2-series.md) VM 'ler, çeşitli donanım türlerinde ve işlemcilerde dağıtılabilir. A serisi VM 'Ler, geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansına ve bellek yapılandırmalarına sahiptir. Dağıtıldığı donanımdan bağımsız olarak, çalışan örneğe tutarlı işlemci performansı sunmak için boyut donanıma göre genişletilir. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın. Örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları, kavram kanıtı ve kod depoları bulunur.
 

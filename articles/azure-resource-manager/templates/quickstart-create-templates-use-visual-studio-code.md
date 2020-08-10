@@ -2,15 +2,15 @@
 title: Şablon oluşturma-Visual Studio Code
 description: Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları eklentisini kullanın.
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040522"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034999"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 `arm!`Azure Kaynak grubu dağıtımı için kapsamı belirlenmiş bir şablon oluşturmayı seçin.
 
-![Azure Resource Manager yapı iskelesi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Azure Resource Manager yapı iskelesi parçacıklarını gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 Bu kod parçacığı bir ARM şablonu için temel yapı taşlarını oluşturur.
 
@@ -68,7 +68,7 @@ Tamamlanma yeteneklerini kullanmak için, `megaStorage` imleci çift tırnak iş
 
 Şimdi depolama hesabı adını belirtmek için bir parametre oluşturun ve kullanın.
 
-İmlecinizi parametreler bloğuna yerleştirin, bir satır başı ekleyin, yazın `par` ve sonra `arm-param-value` kod parçacığını seçin. Bu eylem, şablona bir genel parametre ekler.
+İmlecinizi parametreler bloğuna yerleştirin, bir satır başı ekleyin, yazın `"` ve sonra `new-parameter` kod parçacığını seçin. Bu eylem, şablona bir genel parametre ekler.
 
 ![ARM şablonuna eklenen bir parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

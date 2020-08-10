@@ -1,6 +1,6 @@
 ---
 title: Arşiv katmanından blob verilerini yeniden doldurma
-description: Verilere erişebilmek için bloblarınızı arşiv depolamadan yeniden doldurma.
+description: Blob verilerine erişebilmek için bloblarınızı arşiv depolamadan yeniden doldurma. Arşivlenmiş bir blobu çevrimiçi katmana kopyalayın.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 9d1d663dce8791b70b9fd8679730d5681d66013a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282475"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035153"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
@@ -61,7 +61,7 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv blobunu çevrimiçi katmana yeniden doldurma
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure depolama uyumluluk teklifleri | Microsoft Docs
-description: Azure Storage 'da uyumluluk tekliflerinin Özeti
+description: Verilerin toplanması ve kullanımını yöneten ulusal, bölgesel ve sektöre özel gereksinimler için Azure depolama 'daki uyumluluk tekliflerinin özetini okuyun.
 services: storage
 author: fhryo-msft
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: c24db9fb1b411de31ba8d086b6baa418f656c920
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac37dc66c9861c974c2d5fea435a3ae6771e6c7d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514404"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035017"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure depolama uyumluluk teklifleri
 

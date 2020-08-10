@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090170"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035816"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API 'sine erişim için kimlik bilgilerini alın  
 
@@ -33,7 +33,7 @@ Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulaması kull
 
 Bu makalede Media Services API 'sine erişmek için kimlik bilgilerini alma adımları açıklanır. Aşağıdaki sekmelerden birini seçin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](create-account-howto.md)konusuna bakın.
@@ -45,7 +45,7 @@ Bu makalede Media Services API 'sine erişmek için kimlik bilgilerini alma adı
 **API erişimi** sayfası, API 'ye bağlanmak için kullanmak istediğiniz kimlik doğrulama yöntemini seçmenizi sağlar. Bu sayfa, API 'ye bağlanmak için gereken değerleri de sağlar.
 
 1. [Azure portal](https://portal.azure.com/)Media Services hesabınızı seçin.
-2. Media Services API 'sine nasıl bağlanılacağını seçin.
+2. Sol gezinti çubuğunda **API erişimi (yeni)** dikey penceresini seçin.
 3. **MEDIA SERVICES API 'Sine Bağlan**altında, bağlanmak ISTEDIĞINIZ Media Services API sürümünü seçin (v3 hizmetin en son sürümüdür).
 
 ### <a name="service-principal-authentication--recommended"></a>Hizmet sorumlusu kimlik doğrulaması (önerilir)

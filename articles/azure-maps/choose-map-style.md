@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Web Harita Denetimi stilini değiştirme
-description: Bu makalede, Azure Maps Web Harita Denetimi stil özellikleri hakkında bilgi edineceksiniz.
+description: Haritanın stilini ve seçeneklerini değiştirmeyi öğrenin. Kullanıcıların farklı stiller arasında geçiş yapabilmesi için bkz. Azure haritalar 'daki haritaya bir stil Seçici denetimi ekleme.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a4c1629302c72d6f59f7f1fd10dc850d46cea5a7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285822"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036802"
 ---
 # <a name="change-the-style-of-the-map"></a>Haritanın stilini değiştirme
 

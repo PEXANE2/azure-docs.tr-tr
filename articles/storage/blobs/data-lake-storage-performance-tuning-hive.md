@@ -1,6 +1,6 @@
 ---
 title: 'Performansı ayarlama: Hive, HDInsight & Azure Data Lake Storage 2. | Microsoft Docs'
-description: Hive performansı ayarlama yönergelerini Azure Data Lake Storage 2..
+description: Hive, HDInsight ve Azure Data Lake Storage 2. kullanarak g/ç yoğunluklu sorgular için ayarlama kılavuzunu anlayın.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f6a0b76a479575fdeb0cc507a7d0fb62b6b067a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285314"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034779"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: Hive, HDInsight & Azure Data Lake Storage 2.
 
 Varsayılan ayarlar, birçok farklı kullanım durumunda iyi bir performans sağlamak üzere ayarlanmıştır.  G/ç yoğun sorgularda, Hive Azure Data Lake Storage 2. daha iyi performans sağlamak için ayarlanabilir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
@@ -47,7 +47,7 @@ Gelişmiş Data Lake Storage 2. performansını ayarlamaya yönelik en önemli a
 
 **hive.exec. Reducer. bytes. per. Reducer** – Bu parametre her bir Reducer boyutunu ayarlar.  Varsayılan olarak, her Reducer 256 MB 'dir.  
 
-## <a name="guidance"></a>Rehber
+## <a name="guidance"></a>Yönerge
 
 **hive.exec. Reducer. bytes. per. Reducer** – varsayılan değer sıkıştırılmamış olduğunda iyi sonuç verir.  Sıkıştırılmış veriler için Reducer boyutunu azaltmanız gerekir.  
 

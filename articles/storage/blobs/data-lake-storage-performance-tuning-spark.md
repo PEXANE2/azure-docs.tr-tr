@@ -1,6 +1,6 @@
 ---
 title: 'Performansı ayarlama: Spark, HDInsight & Azure Data Lake Storage 2. | Microsoft Docs'
-description: Azure Data Lake Storage 2. Spark performansı ayarlama yönergeleri
+description: Azure HDInsight ve Azure Data Lake Storage 2. Spark 'un performansını ayarlamaya yönelik yönergeleri anlayın.
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 06fe2670e5ee0d95df8985c9777d3ad9741336b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106127"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034745"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: Spark, HDInsight & Azure Data Lake Storage 2.
 
 Spark üzerinde performans ayarlaması yaparken, kümenizde çalıştırılacak uygulama sayısını göz önünde bulundurmanız gerekir.  Varsayılan olarak, HDI kümenizde 4 uygulamayı eşzamanlı olarak çalıştırabilirsiniz (Note: varsayılan ayar değişikliğe tabidir).  Varsayılan ayarları geçersiz kılabilmeniz ve bu uygulamalar için kümeyi daha fazla kullanabilmek için daha az uygulama kullanmaya karar verebilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
@@ -46,7 +46,7 @@ Spark işlerini çalıştırırken, Data Lake Storage 2. performansı artırmak 
 
 Varsayılan olarak, HDInsight 'ta Spark çalıştırılırken her fiziksel çekirdek için iki sanal YARN çekirdeği tanımlanmıştır.  Bu sayı, birden fazla iş parçacığından eşzamanlılık ve bağlam değiştirme miktarının iyi bir bakiyesini sağlar.  
 
-## <a name="guidance"></a>Rehber
+## <a name="guidance"></a>Yönerge
 
 Spark analitik iş yüklerini Data Lake Storage 2. verilerle çalışacak şekilde çalıştırırken en son HDInsight sürümünü kullanarak Data Lake Storage 2. en iyi performansı elde etmenizi öneririz. İşiniz daha yoğun olan g/ç olduğunda, performansı artırmak için bazı parametreler yapılandırılabilir.  Data Lake Storage 2. yüksek aktarım hızını işleyebilen, yüksek düzeyde ölçeklenebilir bir depolama platformudur.  İş, genellikle okuma veya yazma işlemleri içeriyorsa, g/ç için eşzamanlılık kullanımını Data Lake Storage 2., performansı artırabilir.
 

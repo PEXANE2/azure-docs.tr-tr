@@ -1,6 +1,6 @@
 ---
 title: Bölge sınırı için geojson veri biçimi | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps ile bölge oluşturma API 'sinde kullanılabilen bölge verilerinin nasıl hazırlanacağı hakkında bilgi edineceksiniz.
+description: Azure haritalar bölge verileri hakkında bilgi edinin. Bir bölge alanına göre koordinatların konumunu alırken bölge alma ve bölge oluşturma API 'Lerini nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131314"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037414"
 ---
 # <a name="geofencing-geojson-data"></a>Bölge sınırlaması coğrafi JSON verileri
 

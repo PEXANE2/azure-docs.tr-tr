@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/20/2019
+ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 6f1beea12b33dcc3c0111e26d79daf096c1eedcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808425"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034746"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
 
@@ -25,9 +25,17 @@ Bu makalede, [.net Için Azure depolama istemci kitaplığı](/dotnet/api/overvi
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Blob kapsayıcısı için bir hizmet SAS oluşturma
 
-Bir kapsayıcı için bir hizmet SAS oluşturmak için [Cloudblobcontainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metodunu çağırın.
+Aşağıdaki kod örneği bir kapsayıcı için SAS oluşturur. Varolan bir depolanmış erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilendirilir. Depolanmış erişim ilkesi sağlanmazsa, kod kapsayıcıda bir geçici SAS oluşturur.
 
-Aşağıdaki kod örneği bir kapsayıcı üzerinde bir SAS oluşturur. Varolan bir depolanmış erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilendirilir. Depolanmış erişim ilkesi sağlanmazsa, kod kapsayıcıda bir geçici SAS oluşturur.
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+Yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)oluşturun. Sonra, SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırın. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Bir kapsayıcı için bir hizmet SAS oluşturmak için [Cloudblobcontainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metodunu çağırın.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -67,13 +75,23 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
     // Return the URI string for the container, including the SAS token.
     return container.Uri + sasContainerToken;
 }
+
 ```
+---
 
 ## <a name="create-a-service-sas-for-a-blob"></a>Blob için hizmet SAS oluşturma
 
-Blob için bir hizmet SAS oluşturmak için [Cloudblob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metodunu çağırın.
-
 Aşağıdaki kod örneği bir blob üzerinde SAS oluşturur. Varolan bir depolanmış erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilendirilir. Depolanan erişim ilkesi sağlanmazsa, kod blob üzerinde bir geçici SAS oluşturur.
+
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+Yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)oluşturun. Sonra, SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırın. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Blob için bir hizmet SAS oluşturmak için [Cloudblob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metodunu çağırın.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -117,6 +135,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

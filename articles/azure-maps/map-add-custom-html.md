@@ -1,6 +1,6 @@
 ---
 title: Haritaya HTML Işaretleyicisi ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya HTML Işaretleyicisi ekleme hakkında bilgi edineceksiniz.
+description: Haritalar 'a HTML işaretçileri eklemeyi öğrenin. İşaretçileri özelleştirmek ve bir işaretçiye açılan ve fare olayları eklemek için Azure Maps web SDK 'sını kullanma konusuna bakın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9b7156bf5c266ccbba926a22a4afe46129ee3f1e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58954a98215fd353c5944486446dab5664e5349c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286987"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035442"
 ---
 # <a name="add-html-markers-to-the-map"></a>Haritaya HTML işaretçileri ekleyin
 

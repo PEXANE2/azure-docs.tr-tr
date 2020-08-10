@@ -1,6 +1,6 @@
 ---
 title: Azure CLI kullanarak Azure dosya paylaşımlarını yönetme için hızlı başlangıç
-description: Bu hızlı başlangıcı Azure dosyalarını yönetmek için Azure CLI kullanma hakkında bilgi edinmek için kullanın.
+description: Bu hızlı başlangıçta Azure CLı kullanarak Azure dosyalarını yönetme hakkında bilgi edinin. Bir kaynak grubu ve depolama hesabı oluşturun, ardından bir Azure dosya paylaşma oluşturup kullanın.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495784"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034592"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure CLI kullanarak [Azure dosya paylaşımları](storage-files-introduction.md) ile çalışmanın temel kuralları gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
@@ -323,4 +323,4 @@ Alternatif olarak, kaynakları ayrı ayrı kaldırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Azure Dosyaları nedir?](storage-files-introduction.md)
+> [Azure Dosyalar nedir?](storage-files-introduction.md)

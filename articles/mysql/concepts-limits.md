@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: c562b8a82ef21e78eccad2c2ed6159251056f4fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24a214d63fd01fc4353be6563d18f9e28b820c6f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392701"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036530"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı sınırlamaları
 Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcalık desteğini, veri işleme ekstresi desteğini ve veritabanı hizmetindeki işlev sınırlarını anlatmaktadır. Ayrıca bkz. MySQL veritabanı altyapısı için geçerli olan [genel sınırlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) .
@@ -27,7 +27,7 @@ MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı 
 
 ## <a name="storage-engine-support"></a>Depolama altyapısı desteği
 
-### <a name="supported"></a>Destekleniyor
+### <a name="supported"></a>Desteklenir
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
 - [BELLEK](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
@@ -43,11 +43,11 @@ MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı 
 - DBA rolü: çok sayıda sunucu parametresi ve ayarı, DBMS 'nin sunucu performansını veya Negate ACID özelliklerini yanlışlıkla düşürebilir. Bu nedenle, hizmet bütünlüğünü ve SLA 'yı bir ürün düzeyinde sürdürmek için, bu hizmet DBA rolünü kullanıma sunmaz. Yeni bir veritabanı örneği oluşturulduğunda oluşturulan varsayılan kullanıcı hesabı, bu kullanıcının yönetilen veritabanı örneğinde DDL ve DML deyimlerinin çoğunu gerçekleştirmesini sağlar. 
 - Süper ayrıcalık: benzer [süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) da kısıtlıdır.
 - DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya `--skip-definer` bir mysqldump gerçekleştirirken komutunu kullanarak kaldırın.
-
+- Sistem veritabanları: MySQL için Azure veritabanı 'Nda, [MySQL sistem veritabanı](https://dev.mysql.com/doc/refman/8.0/en/system-schema.html) , çeşitli PaaS hizmeti işlevlerini desteklemek için kullanıldığı için salt okunurdur. Sistem veritabanındaki herhangi bir şeyi değiştiremediğini lütfen unutmayın `mysql` .
 
 ## <a name="data-manipulation-statement-support"></a>Veri işleme ekstresi desteği
 
-### <a name="supported"></a>Destekleniyor
+### <a name="supported"></a>Desteklenir
 - `LOAD DATA INFILE`desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bır UNC yoluna (SMB üzerinden bağlanmış Azure Storage) yönlendirilmelidir.
 
 ### <a name="unsupported"></a>Desteklenmeyen

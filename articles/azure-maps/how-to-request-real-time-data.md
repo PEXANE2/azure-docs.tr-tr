@@ -1,6 +1,6 @@
 ---
 title: Gerçek zamanlı genel geçiş verileri iste | Microsoft Azure haritaları
-description: Microsoft Azure haritaları Mobility hizmetini kullanarak gerçek zamanlı genel aktarım verileri isteyin.
+description: Bir geçiş durgde gibi gerçek zamanlı genel aktarım verileri isteme hakkında bilgi edinin. Bu amaçla Azure Maps Mobility hizmetini nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 784d6a94562e8b5a709d65abdadef46ca71de395
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71dc67d4c142f6fb84458cd6cd0b33452f2217b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505967"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037295"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmetini kullanarak gerçek zamanlı genel aktarım verileri isteyin
 
@@ -22,7 +22,7 @@ Bu makalede, Azure Maps [Mobility hizmetini](https://aka.ms/AzureMapsMobilitySer
 
 Bu makalede, belirli bir dura ulaşan tüm satırlar için sonraki gerçek zamanlı varışları isteme hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Maps ortak Aktarma API 'Lerine herhangi bir çağrı yapmak için önce bir Azure Maps hesabına ve bir abonelik anahtarına sahip olmanız gerekir. Daha fazla bilgi için, [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) ' daki yönergeleri Izleyerek Azure Maps hesabı oluşturun. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 

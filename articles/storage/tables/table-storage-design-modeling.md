@@ -1,6 +1,6 @@
 ---
 title: Azure Tablo depolama tasarımında ilişki modelleme | Microsoft Docs
-description: Tablo depolama çözümünüzü tasarlarken modelleme sürecini anlayın.
+description: Azure Tablo depolama çözümünüzü tasarlarken modelleme sürecini anlayın. Bire çok, bire bir ve devralma ilişkileri hakkında bilgi edinin.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c803a7b11aee3d57d6145bed296bd40ddd9bb5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457569"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036054"
 ---
 # <a name="modeling-relationships"></a>İlişkileri modelleme
 Bu makalede, Azure Tablo depolama çözümlerinizi tasarlamanıza yardımcı olacak modelleme süreci ele alınmaktadır.
@@ -43,8 +43,8 @@ Aşağıdaki tabloda, bir-çok ilişkisine sahip olan çalışan ve departman va
 <table>
 <tr>
 <th>Yaklaşım</th>
-<th>Artıları</th>
-<th>Simgeler</th>
+<th>Avantajlar</th>
+<th>Dezavantajlar</th>
 </tr>
 <tr>
 <td>Ayrı varlık türleri, aynı bölüm, aynı tablo</td>

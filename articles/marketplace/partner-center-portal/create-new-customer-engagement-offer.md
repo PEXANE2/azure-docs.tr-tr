@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 000413267d09f5f51ffdb50ccc5aeaab78a18b5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800016"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036666"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -140,7 +140,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Açıklama
 8. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -190,19 +190,19 @@ PDF biçiminde teknik incelemeler, broşürler, denetim listeleri veya sunular g
 
 Teklifinizin logolarını ve görüntülerini sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz.
+Teklifinizin logosunu üç piksel boyutunda sağlayın:
+- **Küçük** (gerekli; 48 x 48)
+- **Büyük** (gerekli; 216 x 216)
+- **Geniş** (isteğe bağlı; 255 x 115)
 
-Her iki logo boyutu da listede farklı yerlerde kullanılmak üzere gereklidir:
-
-- **Küçük** (48 x 48)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

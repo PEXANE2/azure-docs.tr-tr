@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 description: Azure Cosmos hesapları için SYNAPSE bağlantısının nasıl etkinleştirileceğini, analitik deponun etkinleştirildiği bir kapsayıcı oluşturmayı, Azure Cosmos veritabanını SYNAPSE çalışma alanına bağlamayı ve sorguları çalıştırmayı öğrenin.
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 9499fe2140f4a345d48bce6ef010989cfc22c58e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262047"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037091"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 
@@ -32,7 +32,7 @@ Azure Cosmos DB için SYNAPSE bağlantısıyla analitik sorgular çalıştırmak
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 

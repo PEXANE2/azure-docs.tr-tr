@@ -4,15 +4,15 @@ description: Azure 'da Azure/Service-Bus paketini kullanarak bir Node.js uygulam
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9d4a3a66d967bd003534c7931091979d1667526c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fc8b1be387446b26fca86b344a203c103068db52
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432799"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036037"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: Node.js ve Azure-SB paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, Service Bus bir konuya ileti göndermek ve [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Service Bus aboneliğinden ileti almak için Node.js uygulamalar oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve paketi dahili olarak kullanan Node.js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır `azure-sb` .
@@ -114,7 +114,7 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 });
 ```
 
-### <a name="filters"></a>Filtreler
+### <a name="filters"></a>FilTReleri
 İsteğe bağlı filtreleme işlemleri, **Servicebusservice**kullanılarak gerçekleştirilen işlemlere uygulanabilir. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden deneme vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript
@@ -254,7 +254,7 @@ var message = {
     }
 }
 
-for (i = 0;i < 5;i++) {
+for (var i = 0; i < 5; i++) {
     message.customProperties.messagenumber=i;
     message.body='This is Message #'+i;
     serviceBusService.sendTopicMessage(topic, message, function(error) {

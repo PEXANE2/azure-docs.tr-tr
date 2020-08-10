@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090153"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036581"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
 Bu makalede ticari Market hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="general"></a>Genel
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>Microsoft ticari Market nedir?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market nedir?
 
 Ticari Market iş ve kamu kuruluşlarını iş ortaklarımız tarafından oluşturulan çözümlerle bağlar. İş ortaklarımız Iş Ortağı Merkezi 'nde teklifler oluşturur ve yönetir ve müşteriler, Microsoft AppSource, Azure Marketi, bulut çözüm sağlayıcısı programı ve satış ekiplerimiz gibi ürün içi deneyimler aracılığıyla ortak satış programı aracılığıyla çözümleri bulabilir ve satın alabilir.
 
@@ -60,7 +60,7 @@ Müşterilerin ticari Market teklifinizi kullanma yolları, teklifleri nasıl ol
 
 - Otomatik olarak sağladığınız çözümler, ister ücretli olsun, kendi lisansını getir (KLG) ya da ücretsiz olarak, müşterileri *hemen almak*için tasarlanmıştır.
 - Sınama sürücüsünü destekleyen teklifler (demo), müşteriyi *Test*etmek için müşterinin isteği ister. 
-- Ticari Market 'ten *ücretsiz*deneme sağlayan bir hizmet olarak yazılım (SaaS) teklifi.
+- Ticari Market dışında bir deneme sağlayan hizmet olarak yazılım (SaaS) teklifleri *ücretsiz deneme*.
 - Basit listeler müşterinin *benimle iletişim*istemesine izin verir.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Ticari Market için teklifler oluşturmak Nasıl yaparım? misiniz?
@@ -77,7 +77,7 @@ En iyi yöntemler ve bilgi paylaşma hakkında bilgi edinmek için [etkin toplul
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Kuruluşumun ticari Market 'ten hangi analizler mevcuttur?
 
-Ticari marketimiz dahilinde tekliflerinizi raporlamak istiyoruz. Müşteriler, siparişler, mağaza ile ilgili verilere erişmek ve daha fazlasını yapmak için [Iş Ortağı Merkezi 'nde ticari Market](partner-center-portal/analytics.md)analizine gidin.
+Ticari Market 'teki tekliflerinizi raporlama olanağı sunuyoruz. Müşteriler, siparişler, mağaza ile ilgili verilere erişmek ve daha fazlasını yapmak için [Iş Ortağı Merkezi 'nde ticari Market](partner-center-portal/analytics.md)analizine gidin.
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft 'un müşterilerle olan ilişkisi nedir?
 
@@ -285,7 +285,7 @@ Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](par
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>Hangi ülkelerde/bölgelerde vergi, sizin adınıza yönetiliyor?
 
-Müşteriler dünyanın dört bir yanındaki ticari Market 'ten çözümler bulabilir ve birçok konumdaki vergileri yönetiyoruz. 
+Müşteriler dünyanın dört bir yanındaki ticari marketten çözümler bulabilir ve birçok konumdaki vergileri yönetiyoruz. 
 
 Konumların tam listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](partner-center-portal/tax-details-paid-transactions.md)gidin.
 

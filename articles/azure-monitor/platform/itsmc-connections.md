@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325364"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035034"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -31,7 +31,7 @@ Aşağıdaki ıTSM ürünleri/hizmetleri desteklenir. Ürünün ıSMC 'a nasıl 
 
 Aşağıdaki bölümlerde, System Center Service Manager ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -176,16 +176,17 @@ Aşağıdaki örnek görüntüde başarılı bir bağlantının ayrıntıları g
 
 Aşağıdaki bölümlerde, ServiceNow ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki önkoşulların karşılandığından emin olun:
 - ISMC yüklendi. Daha fazla bilgi: [BT hizmet yönetimi Bağlayıcısı çözümü ekleme](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- ServiceNow desteklenen sürümler: New York, Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki, Genfiliz.
+- ServiceNow desteklenen sürümler: Orlando, New York, Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki, Genfiliz.
 > [!NOTE]
 > ISMC, şimdi hizmetten yalnızca resmi SaaS teklifini destekler. Hizmetin özel dağıtımları artık desteklenmiyor. 
 
 **ServiceNow yöneticilerinin ServiceNow örneğinde aşağıdakileri yapması gerekir**:
 - ServiceNow ürünü için istemci KIMLIĞI ve istemci gizli dizisi oluşturun. İstemci KIMLIĞI ve gizli dizi oluşturma hakkında bilgi için, aşağıdaki bilgileri gerekli şekilde inceleyin:
 
+    - [Orlando için OAuth ayarla](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [New York için OAuth ayarlama](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Madrid için OAuth ayarlama](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Londra için OAuth ayarlama](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -298,7 +299,7 @@ Kullanıcı başarılı bir şekilde oluşturulduktan sonra, **yükleme denetim 
 Aşağıdaki bölümlerde, Provance ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -351,7 +352,7 @@ Daha fazla bilgi: [Azure uyarılarından ITSM iş öğeleri oluşturun](./itsmc-
 
 Aşağıdaki bölümlerde, Cherwell ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 

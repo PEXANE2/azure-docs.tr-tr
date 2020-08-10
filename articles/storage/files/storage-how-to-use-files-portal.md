@@ -1,18 +1,18 @@
 ---
 title: Azure portal ile Azure dosya paylaşımlarını yönetme hızlı başlangıcı
-description: Azure portaldan Azure Dosyaları'nı yönetmeyi öğrenmek için bu hızlı başlangıcı kullanın.
+description: Azure portal Azure dosya paylaşımlarını oluşturma ve yönetme hakkında bilgi için bkz.. Bir depolama hesabı oluşturun, bir Azure dosya paylaşma oluşturun ve Azure dosya paylaşımınızı kullanın.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f68d9f620b686ab20e93584bdd7c024d8a943577
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71260298"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036547"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portal ile Azure dosya paylaşımları oluşturma ve yönetme 
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows, Linux ve macOS platformlarına bağlanabilir. Bu kılavuzda, [Azure portalını](https://portal.azure.com/) kullanarak Azure dosya paylaşımlarıyla çalışmanın temel bilgileri gösterilmektedir.
@@ -41,7 +41,7 @@ Azure Dosyaları, Azure dosya paylaşımınızdaki dosya ve klasörler ile çal�
 Bir dosya paylaşımını SMB ile bağlayabilmeniz için işletim sisteminize göre aşağıdaki belgeye bakın:
 - [Windows](storage-how-to-use-files-windows.md)
 - [Linux](storage-how-to-use-files-linux.md)
-- [Mac OS](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Azure portalda Azure dosya paylaşımını kullanma
 Azure portalı üzerinde gelen tüm istekler Dosya REST API ile yapılır; böylelikle SMB erişimi olmadan istemcilerdeki dosyaları ve dizinleri oluşturabilir, değiştirebilir ve silebilirsiniz. Dosya REST protokolüyle doğrudan çalışmak mümkündür (yani, el ile REST HTTP çağrılarını kendiniz), ancak dosya REST protokolünü kullanmak için en yaygın yol (Azure portal kullanmanın ötesinde), hepsi, seçtiğiniz komut dosyası/programlama dilinde Dosya REST Protokolü etrafında iyi bir sarmalayıcı sağlayan [Azure PowerShell modülünü](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)'Yi veya bir Azure depolama SDK 'sını kullanmaktır. 
@@ -84,4 +84,4 @@ Dosyaya sağ tıklayarak, karşıya yüklediğiniz dosyanın bir kopyasını ind
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Dosyaları nedir?](storage-files-introduction.md)
+> [Azure Dosyalar nedir?](storage-files-introduction.md)

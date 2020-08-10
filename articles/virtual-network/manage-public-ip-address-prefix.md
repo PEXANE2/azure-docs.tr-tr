@@ -1,7 +1,7 @@
 ---
 title: Azure genel IP adresi öneki oluşturma, değiştirme veya silme
 titlesuffix: Azure Virtual Network
-description: Genel IP adresi önekleri hakkında bilgi edinin ve bunları bilmiyorsanız daha fazla bilgi bulabilirsiniz. Ayrıca, bir tane oluşturmayı, değiştirmeyi veya silmeyi öğrenin.
+description: Genel IP adresi önekleri ve bunların nasıl oluşturulacağı, değiştirileceği veya silineceği hakkında bilgi edinin. Daha fazla bilgi bulmak için bkz..
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 85e649944b155fc9e51fe01c282fc7f34f8a00d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283172"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035085"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Genel IP adresi ön eki oluşturma, değiştirme veya silme
 
@@ -50,7 +50,7 @@ Genel IP adresi ön eklerinin ücreti vardır. Ayrıntılar için bkz. [fiyatlan
    |---|---|---|
    |Abonelik|Yes|Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı [abonelikte](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bulunmalıdır.|
    |Kaynak grubu|Yes|, Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı veya farklı bir [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bulunabilir.|
-   |Ad|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Adı|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
    |Bölge|Yes|, Aralıktan adres atayacağımız genel IP adresleriyle aynı [bölgede](https://azure.microsoft.com/regions)bulunmalıdır.|
    |Ön ek boyutu|Yes| İhtiyaç duyduğunuz ön ek boyutu. Varsayılan değer A/28 veya 16 IP adresleridir.
 
@@ -71,7 +71,7 @@ Genel IP adresi ön eklerinin ücreti vardır. Ayrıntılar için bkz. [fiyatlan
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
-   |Ad|Yes|Genel IP adresinin adı, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Adı|Yes|Genel IP adresinin adı, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
    |Boşta kalma zaman aşımı (dakika)|Hayır|Bir TCP veya HTTP bağlantısının istemcilere bağlı kalmadan açık tutulması için, etkin tut iletileri göndermek için kaç dakika sürer. |
    |DNS ad etiketi|Hayır|İçinde adını oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır (tüm abonelikler ve tüm müşteriler genelinde). Azure adı ve IP adresini DNS 'ye otomatik olarak kaydeder, böylece ada sahip bir kaynağa bağlanabilirsiniz. Azure, tam DNS adını oluşturmak için *Location.cloudapp.Azure.com* gibi bir varsayılan alt ağ (seçtiğiniz konum sizin seçtiğiniz konumdur), sağladığınız ada ekler. Daha fazla bilgi için bkz. [Azure genel IP adresi ile Azure DNS kullanma](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -101,7 +101,7 @@ Alternatif olarak, genel bir IP adresi kaynağı oluşturmak için aşağıdaki 
 
 Genel IP adresi öneklerinde görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                                            | Ad                                                           |
+| Eylem                                                            | Adı                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft. Network/Publicipönekleri/okuma                           | Genel IP adresi ön ekini oku                                |
 | Microsoft. Network/Publicipöneklerini/yazma                          | Genel IP adresi öneki oluşturma veya güncelleştirme                    |

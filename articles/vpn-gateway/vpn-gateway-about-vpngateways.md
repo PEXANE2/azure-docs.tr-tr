@@ -1,6 +1,6 @@
 ---
 title: Azure VPN Gateway hakkında
-description: Bir VPN ağ geçidinin ne olduğunu ve Azure sanal ağlarına bağlanmak için VPN ağ geçidini nasıl kullanacağınızı öğrenin. IPsec/IKE Siteden Siteye şirketler arası ve Sanal Ağlar arası çözümlerin yanı sıra Noktadan Siteye VPN dahil.
+description: VPN Gateway ne olduğunu ve IPSec ıKE siteden siteye, VNet-VNET ve Noktadan siteye VPN sanal ağlarına bağlanmak için VPN Gateway nasıl kullanacağınızı öğrenin.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300056"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036887"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN Ağ Geçidi nedir?
 
@@ -51,7 +51,7 @@ Aşağıdaki tablo çözümünüz için en iyi bağlantı seçeneğine karar ver
 
 [!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU'ları
+## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU’ları
 
 Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz ağ geçidi SKU’sunu belirtmelisiniz. İş yükü, aktarım hızı, özellik ve SLA türlerine bağlı olarak gereksinimlerinize uyan SKU’ları seçin.
 

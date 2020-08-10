@@ -8,12 +8,12 @@ ms.date: 08/04/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 737fe4b334e60f1b51e8f60f39e8821588a6841c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51630154b77233aeb2587ac3a2d603c1da6fa4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010337"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036564"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>Veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma (Önizleme)
 
@@ -31,9 +31,9 @@ Bu makalede, Azure IoT Central 'de yeni veri aktarma Önizleme özelliklerinin n
 > [!Note]
 > Veri dışarı aktarmayı açtığınızda, bu andan itibaren yalnızca verileri alırsınız. Şu anda veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için, verilerin dışarı aktarılmasını erken açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
+Veri dışa aktarma (Önizleme) kullanmak için bir v3 uygulamasına sahip olmanız ve veri dışa aktarma izinlerinizin olması gerekir.
 
 ## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
@@ -150,15 +150,22 @@ Yeni bir hedef oluşturun veya önceden oluşturduğunuz bir hedef ekleyin.
 
 ## <a name="export-contents-and-format"></a>İçeriği ve biçimi dışarı aktar
 
-Event Hubs ve Service Bus hedefler için veriler neredeyse gerçek zamanlı olarak verilir. Veriler ileti gövdesinde bulunur ve JSON biçiminde UTF-8 olarak kodlanır. Örnekler için aşağıya bakın.
+### <a name="azure-blob-storage-destination"></a>Azure Blob depolama hedefi
 
-BLOB depolama için, veriler dakikada bir kez, son içe aktarma dosyasından bu yana yapılan değişiklikleri içeren her bir dosyayla birlikte verilir. Verilen veriler JSON biçiminde üç klasöre yerleştirilir. Depolama hesabınızdaki varsayılan yollar şunlardır:
+Veriler dakikada bir kez, son dışarıya aktarılmış dosyadan bu yana yapılan değişiklikleri içeren her bir dosyayla birlikte verilir. Verilen veriler JSON biçiminde üç klasöre yerleştirilir. Depolama hesabınızdaki varsayılan yollar şunlardır:
 
 - Telemetri: _{Container}/{app-id}/{partition_id}/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}_
 - Özellik değişiklikleri: _{Container}/{app-id}/{partition_id}/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}_
 
 Azure portal içe aktarılmış dosyalara gitmek için dosyaya gidin ve **blobu Düzenle** sekmesini seçin.
 
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure Event Hubs ve Azure Service Bus hedefleri
+
+Veriler neredeyse gerçek zamanlı olarak verilir. Veriler ileti gövdesinde bulunur ve JSON biçiminde UTF-8 olarak kodlanır. 
+
+İletinin ek açıklamaları veya sistem özellikleri paketinde, `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` `iotcentral-message-type` ileti gövdesinde karşılık gelen alanlarla aynı değerlere sahip olan,, ve değerlerini bulabilirsiniz.
+
+### <a name="webhook-destination"></a>Web kancası hedefi
 Web kancaları için veriler de neredeyse gerçek zamanlı olarak verilir. Veriler ileti gövdesinde Event Hubs ve Service Bus aynı biçimde.
 
 
@@ -169,7 +176,7 @@ Her bir dışarıya gönderilen ileti, aygıtın, UTF-8 olarak kodlanmış JSON 
 - `messageSource`telemetri verilerini dışarı aktarmak için *telemetri*
 - `deviceId`Telemetri iletisini gönderen cihaz
 - `schema`, yük şemasının adı ve sürümüdür
-- `templateId`cihazla ilişkili cihaz şablonu kimliği
+- `templateId`cihazla ilişkili cihaz şablonu KIMLIĞI
 - `enrichments`dışarı aktarma üzerinde ayarlanan herhangi bir zengintür
 - `messageProperties`, cihazın iletiyle birlikte gönderdiği ek veri parçalarından oluşur. Bu, *uygulama özellikleri*olarak da bilinir, [IoT Hub belgelerinden daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -217,7 +224,7 @@ Her ileti veya kayıt, bir cihaz veya bulut özelliğindeki bir değişikliği t
 - `messageType`*Cloudpropertychange* veya *Devicepropertydesiredchange*olan *devicepropertyreportedchange*
 - `deviceId`özellikleri değişmiş olan cihaz
 - `schema`, yük şemasının adı ve sürümüdür
-- `templateId`cihazla ilişkili cihaz şablonu kimliği
+- `templateId`cihazla ilişkili cihaz şablonu KIMLIĞI
 - `enrichments`dışarı aktarma üzerinde ayarlanan herhangi bir zengintür
 
 Event Hubs ve Service Bus için, IoT Central yeni iletileri olay hub 'ınıza veya Service Bus kuyruğuna veya konuya neredeyse gerçek zamanlı olarak dışa aktarır.
@@ -251,9 +258,10 @@ Bu, eski veri dışa aktarma ve yeni veri dışa aktarma arasındaki farklılık
 | Özellikler  | Eski veri dışa aktarma | Yeni veri dışa aktarma |
 | :------------- | :---------- | :----------- |
 | Kullanılabilir veri türleri | Telemetri, cihazlar, cihaz şablonları | Telemetri, özellik değişiklikleri |
-| Filtreleme | Yok | , Dışarıya aktarılmış veri türüne bağlıdır. Telemetri için telemetri, ileti özellikleri, özellik değerleri ile filtreleme |
-| Zenginleştirmeleri | Yok | Cihazdaki özel bir dize veya özellik değeri ile zenginleştirme |
+| Filtreleme | Hiçbiri | , Dışarıya aktarılmış veri türüne bağlıdır. Telemetri için telemetri, ileti özellikleri, özellik değerleri ile filtreleme |
+| Zenginleştirmeleri | Hiçbiri | Cihazdaki özel bir dize veya özellik değeri ile zenginleştirme |
 | Hedefler | Azure Event Hubs, Azure Service Bus kuyruklar ve konular, Azure Blob depolama | Eski veri dışa aktarma ve Web kancaları ile aynı| 
+| Desteklenen uygulamalar | V2, V3 | Yalnızca v3 |
 | Önemli sınırlar | her uygulama için 5 dışarı aktarım, dışarı aktarma başına 1 hedef | 10 dışarı aktarmalar-uygulama başına hedef bağlantı | 
 
 ## <a name="next-steps"></a>Sonraki adımlar

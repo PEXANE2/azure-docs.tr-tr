@@ -5,21 +5,21 @@ keywords: Azure Anahtar Kasası kimlik doğrulaması yerel kimlik bilgileri
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 06/30/2020
+ms.date: 08/08/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 6edb6f026f3062dfb2beafd863cf090519f6b66a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d48e9ac71ba12ecd2eaadb8ba333f5440c68af4b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875992"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034796"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
 > [!NOTE]
-> **Microsoft. Azure. Services. AppAuthentication** artık yenı Key Vault SDK ile kullanılması önerilmez. .NET, Java, TypeScript ve Python için sunulan yeni Azure Identity Library **DefaultAzureCredentials** 'ın yanı sıra yeni geliştirme işlemleri için kullanılması gerekir. Burada daha fazla bilgi bulabilirsiniz: [kimlik doğrulaması ve Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
+> **Microsoft. Azure. Services. AppAuthentication** artık yenı Key Vault SDK ile kullanılması önerilmez. .NET, Java, TypeScript ve Python için sunulan yeni Azure Identity Library **DefaultAzureCredentials** 'ın yanı sıra yeni geliştirme işlemleri için kullanılması gerekir. Burada daha fazla bilgi bulabilirsiniz: [kimlik doğrulaması ve Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
 
 Azure Key Vault kimlik doğrulaması yapmak için, paylaşılan bir gizli dizi ya da sertifika olan bir Azure Active Directory (Azure AD) kimlik bilgisine sahip olmanız gerekir.
 
@@ -27,7 +27,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 `Microsoft.Azure.Services.AppAuthentication`Kitaplık kimlik doğrulamasını otomatik olarak yönetir, bu da kimlik bilgileriniz yerine çözümünüze odaklanmanıza olanak tanır. Microsoft Visual Studio, Azure CLı veya Azure AD Tümleşik kimlik doğrulamasıyla yerel geliştirmeyi destekler. Yönetilen bir kimliği destekleyen bir Azure kaynağına dağıtıldığında, kitaplık otomatik olarak [Azure kaynakları için Yönetilen kimlikler](../../active-directory/msi-overview.md)kullanır. Kod veya yapılandırma değişikliği gerekli değildir. Kitaplık Ayrıca, yönetilen bir kimlik olmadığında veya geliştiricinin güvenlik bağlamı yerel geliştirme sırasında belirlenemediğinde Azure AD [istemci kimlik bilgilerinin](../../azure-resource-manager/resource-group-authenticate-service-principal.md) doğrudan kullanımını destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) veya [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 

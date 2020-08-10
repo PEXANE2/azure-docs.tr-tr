@@ -1,6 +1,6 @@
 ---
 title: Azure ağ hizmetleri 'ne genel bakış
-description: Bağlantı Hizmetleri, uygulama koruma hizmetleri, uygulama teslim hizmetleri ve ağ izleme dahil olmak üzere Azure 'daki ağ hizmetleri hakkında bilgi edinin.
+description: Bağlantı, uygulama koruması, uygulama teslimi ve ağ izleme hizmetleri dahil olmak üzere Azure 'daki ağ hizmetleri hakkında bilgi edinin.
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 5b32f6b368af62bad13a505472a9ddd4709c032c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282169"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037261"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 |[Sanal ağ hizmet uç noktaları](#serviceendpoints)|Bazı Azure hizmet kaynaklarına ağ erişimini bir sanal ağ alt ağıyla sınırlamanıza olanak sağlar|[PaaS kaynaklarına ağ erişimini kısıtlama](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
 [Özel Bağlantı](#privatelink)|Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerini sanal ağınızdaki özel bir uç nokta üzerinden erişmenize izin vermez.|<p>[Özel uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)</p><p>[Özel Bağlantı hizmeti oluşturma](../private-link/create-private-link-service-portal.md)</p>|
 |||
-### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS koruması 
+### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDOS Koruması 
 [Azure DDoS koruması](../virtual-network/manage-ddos-protection.md) , en gelişmiş DDoS tehditlerine karşı karşı önlemler sağlar. Hizmet, uygulamanız ve sanal ağlarınızda dağıtılan kaynaklarınız için gelişmiş DDoS azaltma özellikleri sağlar. Ayrıca, Azure DDoS koruması kullanan müşterilerin, etkin bir saldırı sırasında DDoS uzmanlarını sağlamak için DDoS hızlı yanıt desteğine erişimi vardır.
 
 ![DDOS Koruması](./media/networking-overview/ddos-protection.png)

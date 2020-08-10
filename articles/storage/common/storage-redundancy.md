@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827852"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034473"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -55,7 +55,9 @@ ZRS ile, bir bölge kullanılamaz hale gelirse bile verilerinize hem okuma hem d
 
 ZRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleştirilir. Yazma işlemi, veriler yalnızca üç kullanılabilirlik alanı genelinde tüm yinelemelere yazıldıktan sonra başarıyla döndürülür.
 
-Microsoft, birincil bölgede, tutarlılık, dayanıklılık ve yüksek kullanılabilirlik gerektiren senaryolar için ZRS kullanılmasını önerir. ZRS, geçici olarak kullanılamaz duruma gelirse verileriniz için mükemmel performans, düşük gecikme süresi ve dayanıklılık sağlar. Ancak, ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bölgesel felate karşı koruma için, Microsoft birincil bölgede ZRS kullanan ve ayrıca verilerinizi ikincil bir bölgeye çoğaltan [coğrafi bölge yedekli depolama](#geo-zone-redundant-storage) (GZRS) kullanılmasını önerir.
+Microsoft, birincil bölgede, tutarlılık, dayanıklılık ve yüksek kullanılabilirlik gerektiren senaryolar için ZRS kullanılmasını önerir. Ayrıca, bir uygulamayı veri idare gereksinimleri nedeniyle yalnızca bir ülke veya bölge dahilinde verileri çoğaltmak üzere kısıtlamak istiyorsanız ZRS kullanılmasını öneririz.
+
+ZRS, geçici olarak kullanılamaz duruma gelirse verileriniz için mükemmel performans, düşük gecikme süresi ve dayanıklılık sağlar. Ancak, ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bölgesel felate karşı koruma için, Microsoft birincil bölgede ZRS kullanan ve ayrıca verilerinizi ikincil bir bölgeye çoğaltan [coğrafi bölge yedekli depolama](#geo-zone-redundant-storage) (GZRS) kullanılmasını önerir.
 
 Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS destekledikleri gösterilmektedir:
 
@@ -163,8 +165,8 @@ Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün ge�
 
 | Kesinti senaryosu | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Evet | Evet | Evet | Evet |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Evet | Evet<sup>1</sup> | Evet |
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Yes | Yes | Yes | Yes |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Yes | Evet<sup>1</sup> | Yes |
 | Birincil bölgede bölge genelinde bir kesinti meydana gelir | Hayır | Hayır | Evet<sup>1</sup> | Evet<sup>1</sup> |
 | Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır | Hayır | Evet (RA-GRS ile) | Evet (RA-GZRS ile) |
 

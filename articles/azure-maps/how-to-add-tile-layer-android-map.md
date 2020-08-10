@@ -1,6 +1,6 @@
 ---
 title: Android Maps 'e kutucuk katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir haritada kutucuk katmanının nasıl işleneceğini öğreneceksiniz.
+description: Bir haritaya döşeme katmanı eklemeyi öğrenin. Bir haritaya Hava durumu radar kaplaması eklemek için Azure Maps Android SDK kullanan bir örneğe bakın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7480ba3befaf560eace2cae4ef4a822012373a2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126984"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037363"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
 
@@ -37,7 +37,7 @@ Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya a�
 * `{bbox-epsg-3857}`- `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 * `{subdomain}`-Alt etki alanı değeri belirtilmişse alt etki alanı değerleri için bir yer tutucu.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 

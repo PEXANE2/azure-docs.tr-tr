@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249729"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036377"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
@@ -56,6 +56,8 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 | Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, `dataRead` her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
 | Filesoku | Dosya tabanlı kaynaktan okunan dosya sayısı. | Int64 değeri (birim yok) |
 | yazılan Files | Dosya tabanlı havuza yazılan/kaydedilen dosya sayısı. | Int64 değeri (birim yok) |
+| filesSkipped | Dosya tabanlı kaynaktan Atlanan dosya sayısı. | Int64 değeri (birim yok) |
+| Dataımımdoðrulamasý doğrulaması | Kopyalanmış verilerinizin kaynak ve hedef depo arasında tutarlı olarak doğrulanıp doğrulanmadığını görebileceğiniz veri tutarlılığı doğrulamasının ayrıntıları. [Bu makaleden](copy-activity-data-consistency.md#monitoring)daha fazla bilgi edinin. | Dizi |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim yok) |
 | sinkPeakConnections | Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim yok) |
 | rowsRead | Kaynaktan okunan satır sayısı. Bu ölçüm, dosyalar ayrıştırılmadan olduğu gibi kopyalanırken uygulanmaz; Örneğin, kaynak ve havuz veri kümeleri ikili biçim türü veya aynı ayarlara sahip başka biçim türüdür. | Int64 değeri (birim yok) |
@@ -71,9 +73,11 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 | Etkilenen bir tümleştirme çalışma zamanı | Etkinlik çalıştırmasının gücü için kullanılan tümleştirme çalışma zamanı (IR) veya çalışma zamanları (biçiminde) `<IR name> (<region if it's Azure IR>)` . | Metin (dize) |
 | Useddataıntegrationunits | Kopyalama sırasında etkili veri tümleştirme birimleri. | Int32 değeri |
 | Usedparallelkopyaları | Kopya sırasında etkin Paralellkopyalar. | Int32 değeri |
-| redirectRowPath | Özellikte yapılandırdığınız blob depolamadaki uyumsuz satırların yolu `redirectIncompatibleRowSettings` . Bkz. [hata toleransı](copy-activity-overview.md#fault-tolerance). | Metin (dize) |
+| logPath | Blob depolamada atlanan verilerin oturum günlüğü yolu. Bkz. [hata toleransı](copy-activity-overview.md#fault-tolerance). | Metin (dize) |
 | executionDetails | Kopyalama etkinliğinin aşamaları hakkında daha fazla ayrıntı ve ilgili adımlar, süreler, konfigürasyonlar vb. Bu bölümü değiştirebileceğinden, bu bölümü ayrıştırmayı önermiyoruz. Kopyalama performansını anlamanıza ve sorunlarını gidermenize nasıl yardımcı olduğunu daha iyi anlamak için, [görsel izleme](#monitor-visually) bölümüne bakın. | Dizi |
 | Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için [performans ayarlama ipuçlarına](copy-activity-performance-troubleshooting.md#performance-tuning-tips) bakın. | Dizi |
+| billingReference | Belirtilen çalışma için faturalama tüketimi. [Etkinlik çalıştırma düzeyinde izleme tüketiminden](plan-manage-costs.md#monitor-consumption-at-activity-run-level)daha fazla bilgi edinin. | Nesne |
+| durationInQueue | Kopyalama etkinliğinin yürütülmeye başlanmadan önce saniye cinsinden sıraya alma süresi. | Nesne |
 
 **Örnek:**
 
@@ -83,6 +87,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
     "dataWritten": 1180089300500,
     "filesRead": 110,
     "filesWritten": 110,
+    "filesSkipped": 0,
     "sourcePeakConnections": 640,
     "sinkPeakConnections": 1024,
     "copyDuration": 388,
@@ -92,6 +97,11 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
     "usedDataIntegrationUnits": 128,
     "billingReference": "{\"activityType\":\"DataMovement\",\"billableDuration\":[{\"Managed\":11.733333333333336}]}",
     "usedParallelCopies": 64,
+    "dataConsistencyVerification": 
+    { 
+        "VerificationResult": "Verified", 
+        "InconsistentData": "None" 
+    },
     "executionDetails": [
         {
             "source": {

@@ -1,7 +1,7 @@
 ---
 title: Kimlik doğrulamasını yönetme
 titleSuffix: Azure Maps
-description: Microsoft Azure haritaların kimlik doğrulamasını yönetmek için Azure portal kullanın.
+description: Azure haritalar kimlik doğrulamasıyla tanıdık olun. Hangi yaklaşımın en iyi hangi senaryoda çalıştığına bakın. Kimlik doğrulama ayarlarını görüntülemek için portalını nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531746"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037346"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
 

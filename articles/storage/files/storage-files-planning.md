@@ -1,18 +1,18 @@
 ---
 title: Azure dosyaları dağıtımını planlama | Microsoft Docs
-description: Azure dosyaları dağıtımı için planlama yaparken göz önünde bulundurmanız gerekenler hakkında bilgi edinin.
+description: Azure dosyaları dağıtımının planlanmasını anlayın. Azure dosya paylaşımından doğrudan bağlama yapabilir veya Azure dosya paylaşımından Azure Dosya Eşitleme ile önbelleğe yazabilirsiniz.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370368"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037176"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 

@@ -1,6 +1,6 @@
 ---
 title: Azure Storage ile AzCopy 'i yapılandırma, iyileştirme ve sorunlarını giderme | Microsoft Docs
-description: AzCopy 'i yapılandırın, iyileştirin ve sorun giderin.
+description: Azure depolama ile AzCopy 'i yapılandırın, iyileştirin ve sorun giderin. Planı ve günlük dosyalarını değiştirin veya kaldırın. Varsayılan günlük düzeyini değiştirin.
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282441"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037193"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -69,7 +69,7 @@ Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullan
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Örnek** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]

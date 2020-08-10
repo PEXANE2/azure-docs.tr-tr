@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/9/2020
-ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/7/2020
+ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206935"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037312"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ Aşağıdaki tabloda sunucusuz bilgi işlem katmanı ve sağlanan işlem katman�
 | | **Sunucusuz işlem** | **Sağlanan işlem** |
 |:---|:---|:---|
 |**Veritabanı kullanım deseninin**| Zaman içinde daha düşük ortalama işlem kullanımı ile öngörülemeyen kullanım | Zamana göre daha fazla ortalama işlem kullanımı veya elastik havuzlar kullanan birden çok veritabanı içeren daha düzenli kullanım düzenleri.|
-| **Performans yönetimi çabaları** |Lower|Daha yüksek|
+| **Performans yönetimi çabaları** |Daha az|Daha fazla|
 |**İşlem ölçekleme**|Automatic|El ile|
 |**İşlem yanıtlama hızı**|Etkin olmayan dönemlerden sonra düşük|Hemen|
 |**Faturalandırma ayrıntı düzeyi**|/Saniye|/Saat|
@@ -88,7 +88,7 @@ Sunucusuz veritabanları için bellek, sağlanan işlem veritabanlarından daha 
 
 #### <a name="cache-reclamation"></a>Önbellek geri kazanma
 
-Sağlanan işlem veritabanlarının aksine, CPU veya etkin önbellek kullanımı düşük olduğunda SQL önbelleğinden alınan bellek sunucusuz bir veritabanından geri kazanılır.  CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.
+Sağlanan işlem veritabanlarının aksine, CPU veya etkin önbellek kullanımı düşük olduğunda SQL önbelleğinden alınan bellek sunucusuz bir veritabanından geri kazanılır.
 
 - En son kullanılan önbellek girişlerinin toplam boyutu bir süre eşiğinin altına düştüğünde etkin önbellek kullanımı düşük kabul edilir.
 - Cache geri kazanma tetiklendiğinde, hedef önbellek boyutu artımlı olarak önceki boyutunun bir kesirine düşürülür ve geri kazanma yalnızca kullanım düşük kalırsa devam eder.
@@ -96,6 +96,8 @@ Sağlanan işlem veritabanlarının aksine, CPU veya etkin önbellek kullanımı
 - Önbellek boyutu, yapılandırılabilecek minimum sanal çekirdekler tarafından tanımlanan en düşük bellek sınırının altına hiç düşürülmez.
 
 Hem sunucusuz hem de sağlanan işlem veritabanlarında, kullanılabilir tüm bellek kullanılıyorsa önbellek girdileri çıkartılamayabilir.
+
+CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.  Ayrıca, düzenli arka plan işlemlerinin önceki Kullanıcı etkinliğine yanıt vermemesi nedeniyle bellek geri kazanma gerçekleşmeden önce, Kullanıcı etkinliği durdurulmadan önce ek gecikme olabilir.  Örneğin, silme işlemleri silinmek üzere işaretlenen hayalet kayıtlar oluşturur, ancak veri sayfalarını önbelleğe okumayı içerebilen hayalet temizleme işlemi çalıştırılıncaya kadar fiziksel olarak silinmez.
 
 #### <a name="cache-hydration"></a>Önbellek hidrasyonu
 
@@ -127,7 +129,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulama ve yetkilendirme|Oturum açma|
+|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -149,7 +151,7 @@ Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncell
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 
-### <a name="latency"></a>Gecikme Süresi
+### <a name="latency"></a>Gecikme süresi
 
 Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1 dakikalık ve oto duraklamaya 1-10 dakika sıradır.
 
@@ -176,7 +178,7 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
 
 Aşağıdaki örnekler sunucusuz işlem katmanında yeni bir veritabanı oluşturur.
 
-#### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+#### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](single-database-create-quickstart.md).
 

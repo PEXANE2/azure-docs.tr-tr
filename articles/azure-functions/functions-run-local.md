@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449137"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037040"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -39,7 +39,7 @@ Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yer
 
 Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Functions Core Tools Şu anda Azure hesabınızda kimlik doğrulaması için Azure CLı 'ye bağımlıdır. Bu, Azure CLı 'yı Azure Functions Core Tools 'ten [Azure 'a yayımlayabilmek](#publish) için [yerel olarak kurmanız](/cli/azure/install-azure-cli) gerektiği anlamına gelir. 
 
@@ -205,7 +205,23 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Varsayılan olarak, temel araçların sürüm 2. x ve sonraki sürümleri, .NET çalışma zamanına yönelik işlev uygulama projelerini [C# sınıf projeleri](functions-dotnet-class-library.md) (. csproj) olarak oluşturur. Visual Studio veya Visual Studio Code ile kullanılabilen bu C# projeleri, test sırasında ve Azure 'a yayımlarken derlenir. Bunun yerine, 1. x sürümünde oluşturulan aynı C# betiği (. CSX) dosyalarını oluşturup, portalda çalışmak istiyorsanız, `--csx` işlevleri oluştururken ve dağıtırken parametresini eklemeniz gerekir.
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>Uzantıları Kaydet
+
+HTTP ve Zamanlayıcı Tetikleyicileri hariç olmak üzere, çalışma zamanı sürüm 2. x ve üzeri içindeki Işlev bağlamaları uzantı paketleri olarak uygulanır. HTTP bağlamaları ve Zamanlayıcı Tetikleyicileri uzantı gerektirmez. 
+
+Çeşitli uzantı paketleri arasındaki uyumsuzlukları azaltmak için Işlevler, proje dosyasında host.jsbir uzantı paketine başvurmanıza olanak sağlar. Uzantı paketlerinizi kullanmayı tercih ederseniz, .NET Core 2. x SDK 'sını yerel olarak yüklemeniz ve bir uzantıları. csproj ' ı işlevler projem ile korumanız gerekir.  
+
+Azure Işlevleri çalışma zamanının 2. x ve sonraki sürümlerinde, işlevleriniz içinde kullanılan bağlama türleri için uzantıları açıkça kaydetmeniz gerekir. Bağlama uzantılarını tek tek yüklemeyi seçebilir veya proje dosyasında host.jsbir uzantı paketi başvurusu ekleyebilirsiniz. Uzantı demeti, birden çok bağlama türü kullanırken paket uyumluluk sorunları olma olasılığını ortadan kaldırır. Bağlama uzantılarını kaydetmek için önerilen yaklaşımdır. Uzantı paketleri de .NET Core 2. x SDK yükleme gereksinimini ortadan kaldırır. 
+
+### <a name="use-extension-bundles"></a>Uzantı paketleri kullan
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](functions-bindings-register.md#extension-bundles). Dosyadaki function.jsbağlama eklemeden önce host.jsuzantı paketleri eklemeniz gerekir.
+
+### <a name="explicitly-install-extensions"></a>Uzantıları açıkça yükler
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 

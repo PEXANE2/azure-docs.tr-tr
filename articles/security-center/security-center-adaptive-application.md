@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri
-description: Bu belge, Azure makinelerinde çalışan uygulamaları beyaz listelemek için Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi kullanmanıza yardımcı olur.
+description: Bu belge, Azure makinelerinde çalışan liste uygulamalarına izin vermek için Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi kullanmanıza yardımcı olur.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,173 +11,218 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2019
+ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77604681"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037016"
 ---
-# <a name="adaptive-application-controls"></a>Uyarlamalı uygulama denetimleri
-Bu kılavuzu kullanarak Azure Güvenlik Merkezi'ndeki uygulama denetimi özelliklerini yapılandırmayı öğrenebilirsiniz.
+# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
-## <a name="what-are-adaptive-application-controls-in-security-center"></a>Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri nelerdir?
-Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dışı makinelerde (Windows ve Linux) hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan akıllı, otomatik, uçtan uca bir çözümdür. Bu, diğer avantajların yanı sıra makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, makinelerinizde çalışan uygulamaları çözümlemek için makine öğrenimini kullanır ve bu zeka izin verilenler listesi oluşturur. Bu özellik, uygulama izin verilenler listesi ilkelerini yapılandırma ve sürdürme sürecini önemli ölçüde basitleştirir ve şunları yapmanıza olanak sağlar:
+Azure Güvenlik Merkezi 'nin Uyarlamalı uygulama denetimlerinin avantajları ve bu veri tabanlı, akıllı özellik ile güvenliği nasıl geliştirebileceğinizi öğrenin.
 
-- Kötü amaçlı yazılımdan koruma çözümlerinin kaçırılanlanlar da dahil olmak üzere kötü amaçlı uygulamalar çalıştırma girişimlerini engelleyin veya uyarır.
-- Kuruluşunuzun yalnızca lisanslı yazılım kullanımını gerektiren kuruluş güvenlik ilkelerine uygun hareket etme.
-- Ortamınızda istenmeyen yazılımların kullanılmasını önleme.
-- Eski ve desteklenmeyen uygulamaların çalışmasını önleme.
-- Kuruluşunuzda kullanılmasına izin verilmeyen belirli yazılım araçlarını engelleme.
-- BT ekibinin uygulama üzerinden gizli verilere erişimi denetlemesini mümkün kılma.
 
-> [!NOTE]
-> Azure olmayan ve Linux makineler için, uyarlamalı uygulama denetimleri yalnızca denetim modunda desteklenir.
+## <a name="what-are-security-centers-adaptive-application-controls"></a>Güvenlik Merkezi 'nin Uyarlamalı uygulama denetimleri nelerdir?
 
-## <a name="how-to-enable-adaptive-application-controls"></a>Uyarlamalı uygulama denetimleri nasıl etkinleştirilir?
+Uyarlamalı uygulama denetimleri, makineleriniz için bilinen güvenli uygulamalar listesine izin vermeyi tanımlamaya yönelik akıllı ve otomatikleştirilmiş bir çözümdür. 
 
-Uyarlamalı uygulama denetimleri, yapılandırılmış makine gruplarında çalışmasına izin verilen bir uygulamalar kümesi tanımlamanıza yardımcı olur. Bu özellik hem Azure hem de Azure olmayan Windows (tüm sürümler, klasik veya Azure Resource Manager) ve Linux makineler için kullanılabilir. Uygulamanızı izin verilenler listesine yapılandırmak için aşağıdaki adımları kullanın:
+Genellikle, kuruluşların aynı işlemlerin düzenli olarak çalıştırdığı makine koleksiyonları vardır. Güvenlik Merkezi, makinelerinizde çalışan uygulamaları çözümlemek ve bilinen güvenli yazılımın bir listesini oluşturmak için makine öğrenimini kullanır. Listelere izin ver, belirli Azure iş yüklerinize dayalıdır ve aşağıdaki yönergeleri kullanarak önerileri daha ayrıntılı bir şekilde özelleştirebilirsiniz.
 
-1. **Güvenlik Merkezi** panosunu açın.
+Uyarlamalı uygulama denetimlerini etkinleştirdikten ve yapılandırdıktan sonra, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa güvenlik uyarıları alırsınız.
 
-1. Sol bölmeden **Gelişmiş bulut savunması** altında bulunan **Uyarlamalı uygulama denetimlerini** seçin.
 
-    [![Savunma](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
+## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Uyarlamalı uygulama denetimlerinin avantajları nelerdir?
 
-**Uyarlamalı uygulama denetimleri** sayfası açılır.
+Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürütüldüğünde uyarı ürettikten sonra, birden çok sağlamlaştırma hedefi elde edebilirsiniz:
 
-![denetimler](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+- Kötü amaçlı yazılımdan koruma çözümleri tarafından kaçırılmış olabilecek olası kötü amaçlı yazılımları belirlemek
+- Yalnızca lisanslı yazılımların kullanımını gösteren yerel güvenlik ilkeleriyle uyumluluğu geliştirme
+- Eski veya desteklenmeyen uygulamalar çalıştırmaktan kaçının
+- Kuruluşunuz tarafından yasaklanmış olan belirli yazılımları engelleyin
+- Hassas verilere erişen uygulamalardan daha fazla bakış artışı
 
-**VM grupları** bölümünde üç sekme bulunur:
 
-* **Yapılandırılan**: Uygulama denetimiyle yapılandırılan VM’leri içeren grupların listesidir.
-* **Önerilen**: Uygulama denetiminin önerildiği grupların listesidir. Güvenlik Merkezi makine öğrenimi özelliklerini kullanarak VM'lerin tutarlı bir şekilde aynı uygulamaları çalıştırıp çalıştırmadığına bakar ve uygulama denetimi için uygun olan VM'leri tanımlar.
-* **Öneri olmayan**: Uygulama denetimi önerisi olmayan VM’leri içeren grupların listesidir. Örneğin, uygulamaların sürekli değiştiği ve kararlı bir duruma geçmediği VM'ler.
 
-> [!NOTE]
-> Güvenlik Merkezi benzer VM’lerin önerilen en iyi uygulama denetimi ilkesini alması için VM grupları oluşturan özel bir kümeleme algoritması kullanır.
->
->
+## <a name="availability"></a>Kullanılabilirlik
 
-### <a name="configure-a-new-application-control-policy"></a>Yeni bir uygulama denetim ilkesi yapılandırma
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Genel kullanılabilirlik|
+|Fiyat|Standart katmanı|
+|Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
+|Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|||
 
-1. Uygulama denetimi önerilerini içeren grupların listesi için **Önerilen** sekmeyi seçin:
 
-   ![Önerilen](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-   Liste aşağıdakileri içerir:
+## <a name="enable-application-controls-on-a-group-of-machines"></a>Bir makine grubunda uygulama denetimlerini etkinleştir
 
-   - **Grup adı**: aboneliğin ve grubun adı
-   - **VM 'ler ve bilgisayarlar**: gruptaki sanal makinelerin sayısı
-   - **Durum**: önerilerin durumu
-   - **Önem derecesi**: önerilerin önem düzeyi
+Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesini çalıştıran makine grupları tanımlamışsa aşağıdaki öneriyle karşılaşırsınız: **güvenli uygulamalar tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir**.
 
-2. **Uygulama denetim kuralları oluştur** seçeneğini açmak için bir gruba tıklayın.
+Öneriyi seçin ya da Uyarlamalı uygulama denetimleri sayfasını açarak önerilen bilinen güvenli uygulamalar ve makine gruplarının listesini görüntüleyin.
 
-   [![Uygulama denetimi kuralları](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
+1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
 
-3. **VM 'Leri Seç**bölümünde, önerilen VM 'lerin listesini gözden geçirin ve uygulama için beyaz listeye ekleme ilkesi uygulamak istemediğiniz herhangi bir onay işaretini kaldırın. Daha sonra iki liste görürsünüz:
+    **Uyarlamalı uygulama denetimleri** sayfası, VM 'leriniz aşağıdaki sekmelerde gruplandırılarak açılır:
 
-   - **Önerilen uygulamalar**: Bu grup içindeki VM 'lerde sık kullanılan uygulamaların listesi ve çalışmasına izin verilmesi önerilir.
-   - **Daha fazla uygulama**: Bu gruptaki VM 'lerde daha az sıklıkta veya Patıtables olarak bilinen uygulamaların bir listesi (daha fazla bilgi için bkz.) ve gözden geçirme için önerilir.
+    - **Yapılandırılmış** -zaten tanımlı bir uygulama listesi olan makine grupları. Her grup için, yapılandırılan sekmede şunları gösterir:
+        - gruptaki makinelerin sayısı
+        - Son Uyarılar
 
-4. Her bir listedeki uygulamaları gözden geçirin ve uygulamak istemediklerinizin işaretini kaldırın. Her liste aşağıdakileri içerir:
+    - Aynı uygulamaları tutarlı bir şekilde çalıştıran ve izin verilenler listesine sahip olmayan, **Önerilen** ve olmayan gruplar. Bu gruplar için uyarlamalı uygulama denetimlerini etkinleştirmenizi öneririz.
+    
+      > [!TIP]
+      > "BELGEADı grubu" önekiyle bir grup adı görürseniz, bu, kısmen tutarlı bir uygulamalar listesi olan makineler içerir. Güvenlik Merkezi bir düzen göremez, ancak [grubun Uyarlamalı uygulama denetimleri kuralını düzenlemede](#editing-a-groups-adaptive-application-controls-rule)açıklanan şekilde, bazı Uyarlamalı uygulama denetimleri kurallarını el ile tanımlayıp _tanımlayamayacağını görmek_ için bu grubun gözden geçirilmesini öneriyor.
+      >
+      > Ayrıca, [makineyi bir gruptan diğerine taşıma](#move-a-machine-from-one-group-to-another)bölümünde açıklandığı gibi bu gruptaki makineleri diğer gruplara taşıyabilirsiniz.
 
-   - **Ad**: sertifika bilgileri veya bir uygulamanın tam yolu
-   - **DOSYA TÜRLERİ**: Uygulama dosya türü. Bu, EXE, betik, MSI veya bu türlerin herhangi bir permütasyonu olabilir.
-   - **Açıktan yararlanma**: bir uyarı simgesi, belirli bir uygulamanın bir uygulama izin verilenler listesini atlayıp kullanamayacağını gösterir. Bu uygulamaları onaylamadan önce gözden geçirmeniz önerilir.
-   - **KULLANICILAR**: Bir uygulama çalıştırmasına izin verilmesi önerilen kullanıcılar
+    - **Öneri yok** -tanımlı bir uygulama listesi olmayan ve özelliği desteklemeyen makineler. Makineniz aşağıdaki nedenlerle bu sekmede olabilir:
+      - Log Analytics Aracısı eksik
+      - Log Analytics Aracısı olayları göndermiyor
+      - Bu, bir GPO veya yerel güvenlik ilkesi tarafından etkinleştirilen önceden var olan [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) ilkesi olan bir Windows makinesidir
 
-5. Seçimlerinizi tamamladıktan sonra **Oluştur**’u seçin. <br>
-   Oluştur ' u seçtikten sonra Azure Güvenlik Merkezi, yerleşik uygulama izin verilenler listesi çözümünün en üstünde Windows sunucularında (AppLocker) bulunan uygun kuralları otomatik olarak oluşturur.
+      > [!TIP]
+      > Güvenlik Merkezi 'nin makine grubu başına benzersiz önerilerini tanımlamak için en az iki haftalık veri olması gerekir. Kısa süre önce oluşturulmuş olan veya standart katmanla en son etkinleştirilen aboneliklere ait olan makineler, **öneri yok** sekmesi altında görünür.
 
-> [!NOTE]
-> - Güvenlik Merkezi, temel yapılandırma oluşturmak ve VM gruplarına benzersiz öneri sunmak için en az iki haftalık veri kullanmaktadır. Güvenlik Merkezi standart katmanının yeni müşterileri başlangıçta VM gruplarının *öneri yok* sekmesi altında olduğunu görebilir.
-> - Güvenlik Merkezi'ndeki Uyarlamalı Uygulama Denetimleri, GPO veya yerel güvenlik ilkesi ile AppLocker ilkesinin önceden etkinleştirilmiş olduğu VM'leri desteklemez.
-> -  Güvenlik Merkezi, en iyi güvenlik uygulaması olarak, izin verilen uygulamalar için her zaman bir yayımcı kuralı oluşturmaya çalışır ve yalnızca bir uygulamanın yayımcı bilgilerine sahip olmaması (asıka imzalı değilse), belirli bir uygulamanın tam yolu için bir yol kuralı oluşturulur.
->   
 
-### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Uygulama denetimiyle yapılandırılmış bir grubu düzenleme ve izleme
+1. **Önerilen** sekmeyi açın. Önerilen izin verilenler listelerine sahip makine grupları görüntülenir.
 
-1. Bir uygulama izin verilenler liste ilkesiyle yapılandırılmış bir grubu düzenlemek ve izlemek için, **Uyarlamalı uygulama denetimleri** sayfasına dönün ve **VM grupları**altında **yapılandırılan** ' ı seçin:
+   ![Önerilen sekme](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
-   ![Gruplar](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+1. Grup seçin. 
 
-   Liste aşağıdakileri içerir:
+1. Yeni kuralınızı yapılandırmak için bu **uygulama denetim kurallarını Yapılandır** sayfasının çeşitli bölümlerini gözden geçirin ve bu belirli makine grubu için benzersiz olacak içerikler:
 
-   - **Grup adı**: aboneliğin ve grubun adı
-   - **VM 'ler ve bilgisayarlar**: gruptaki sanal makinelerin sayısı
-   - **Mod**: Denetim modu, izin verilenler listesinde olmayan uygulamaları çalıştırmaya yönelik girişimleri günlüğe kaydeder. Zorla, izin verilenler listesinde olmadıkları takdirde uygulamaların çalışmasına izin vermez
-   - **Uyarılar**: tüm geçerli ihlaller
+   ![Yeni bir kural yapılandırın](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-2. **Uygulama denetim Ilkesini Düzenle** sayfasında değişiklik yapmak için bir gruba tıklayın.
+   1. **Makineleri seçin** -varsayılan olarak, tanımlanan gruptaki tüm makineler seçilidir. Bu kuraldan kaldırılan her türlü seçimi kaldırın.
+   
+   1. **Önerilen uygulamalar** -bu gruptaki makineler için ortak olan ve çalışmasına izin verilmesi önerilen uygulamaların listesini gözden geçirin.
+   
+   1. **Daha fazla uygulama** -bu gruptaki makinelerde daha az görülen veya yararlanılıdüğü bilinen uygulamalar listesini gözden geçirin. Bir uyarı simgesi, bir saldırgan tarafından uygulama izin verilenler listesini atlamak için kullanılabilecek belirli bir uygulama olduğunu gösterir. Bu uygulamaları dikkatle incelemenizi öneririz.
 
-   ![Koruma](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+      > [!TIP]
+      > Her iki uygulama listesi, belirli bir uygulamayı belirli kullanıcılara kısıtlama seçeneğini içerir. Mümkün olan her durumda en az ayrıcalık ilkesini benimseyin.
+      > 
+      > Uygulamalar yayımcıları tarafından tanımlanmıştır, bir uygulamanın yayımcı bilgileri yoksa (imzasız), belirli bir uygulamanın tam yolu için bir yol kuralı oluşturulur.
 
-3. **Koruma modu** altında aşağıdakilerden birini seçebilirsiniz:
+   1. Kuralı uygulamak için **Denetim**' i seçin. 
 
-   - **Denetim**: Bu modda uygulama denetimi çözümü kuralları zorunlu kılmaz ve yalnızca korumalı VM'lerdeki etkinliği denetler. Bu, bir uygulamanın hedef VM'de çalışmasını engellemeden önce genel davranışını gözlemlemek istediğiniz senaryolar için önerilir.
-   - **Zorunlu kıl**: Bu modda uygulama denetimi çözümü kuralları zorunlu kılar ve çalışmasına izin verilmeyen uygulamaların engellenmesini sağlar.
 
-   > [!NOTE]
-   > -  Koruma modunu **zorla** , daha fazla uyarı olana kadar devre dışı bırakılır.
-   > - Yukarıda belirtildiği gibi yeni uygulama denetimi ilkeleri her zaman *Denetim* modunda yapılandırılır. 
+
+
+## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Grubun Uyarlamalı uygulama denetimleri kuralını Düzenle
+
+Kuruluşunuzdaki bilinen değişiklikler nedeniyle bir makine grubu için izin verilenler listesini düzenlemeye karar verebilirsiniz. 
+
+Bir makine grubunun kurallarını düzenlemek için:
+
+1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
+
+1. **Yapılandırılan** sekmesinden, düzenlemek istediğiniz kurala sahip grubu seçin.
+
+1. [Bir makine grubunda Uyarlamalı uygulama denetimlerini etkinleştirme](#enable-application-controls-on-a-group-of-machines)bölümünde açıklandığı gibi **uygulama denetim kurallarını Yapılandır** sayfasının çeşitli bölümlerini gözden geçirin.
+
+1. İsteğe bağlı olarak, bir veya daha fazla özel kural ekleyin:
+
+   1. **Kural Ekle**' yi seçin.
+
+      ![Özel kural ekle](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+
+   1. Bilinen bir güvenli yol tanımlıyorsanız, **kural türünü** ' yol ' olarak değiştirin. Joker karakterleri yola ekleyebilirsiniz.
+   
+      > [!TIP]
+      > Bir yoldaki Joker karakterlere yönelik bazı senaryolar yararlı olabilir:
+      > 
+      > * Bu klasör ve alt klasörlerdeki tüm yürütülebilir dosyalara izin vermek için yolun sonunda bir joker karakter kullanma.
+      > * Bilinen bir yürütülebilir adı, değişen klasör adı (örneğin, bilinen bir yürütülebiliri içeren kişisel Kullanıcı klasörleri, otomatik olarak oluşturulan klasör adları vb.) sağlamak için yolun ortasında bir joker karakter kullanma.
+  
+   1. İzin verilen kullanıcıları ve korumalı dosya türlerini tanımlayın.
+
+   1. Kuralı tanımlamayı bitirdiğinizde **Ekle**' yi seçin.
+
+1. Değişiklikleri uygulamak için **Kaydet**' i seçin.
+
+
+
+
+## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>"Uyarlamalı uygulama denetim ilkenizde izin verilen Allowlist Rules" önerisi yanıt veriyor
+
+Güvenlik Merkezi 'nin makine öğrenimi, daha önceden izin verilmeyen yasal davranış belirlediğinde, bu öneriyi görürsünüz. Öneri, hatalı pozitif uyarıların sayısını azaltmak için mevcut tanımlarınız için yeni kurallar önerir.
+
+Sorunları düzeltmek için:
+
+1. Öneriler sayfasında, **Uyarlamalı uygulama denetim ilkenizde bulunan Allowlist kurallarını** seçerek, yeni tanımlanan, olası yasal davranışa sahip grupları görmek için önerilir.
+
+1. Düzenlemek istediğiniz kurala sahip grubu seçin.
+
+1. [Bir makine grubunda Uyarlamalı uygulama denetimlerini etkinleştirme](#enable-application-controls-on-a-group-of-machines)bölümünde açıklandığı gibi **uygulama denetim kurallarını Yapılandır** sayfasının çeşitli bölümlerini gözden geçirin.
+
+1. Değişiklikleri uygulamak için **Denetim**' i seçin.
+
+
+
+
+## <a name="auditing-alerts-and-violations"></a>Uyarıları ve ihlalleri denetleme
+
+1. Güvenlik Merkezi 'nin menüsünde, **Uyarlamalı uygulama denetimleri**' ni seçin.
+
+1. Son uyarıları olan makineleri içeren grupları görmek için, **yapılandırılan** sekmede listelenen grupları gözden geçirin.
+
+1. Daha fazla araştırmak için bir grup seçin.
+
+   ![Son Uyarılar](./media/security-center-adaptive-application/recent-alerts.png)
+
+1. Daha fazla ayrıntı ve etkilenen makinelerin listesi için bir uyarı seçin.
+
+
+
+## <a name="move-a-machine-from-one-group-to-another"></a>Bir makineyi bir gruptan diğerine taşıma
+
+Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denetim ilkesi, onu taşıdığınız grubun ayarlarına değişir. Ayrıca, bir makineyi yapılandırılmış bir gruptan yapılandırılmamış bir gruba taşıyabilirsiniz, böylece makineye uygulanan uygulama denetim kuralları da kaldırılır.
+
+1. **Uyarlamalı uygulama denetimleri** sayfasında, **yapılandırılan** sekmesinden, taşınacak makineyi içeren grubu seçin.
+
+1. **Yapılandırılmış makinelerin**listesini açın.
+
+1. Satırın sonundaki üç noktadan makinenin menüsünü açın ve **Taşı**' yı seçin. **Makineyi farklı bir grup bölmesine taşı** açılır.
+
+1. Hedef grubunu seçin ve **makineyi taşı**' yı seçin.
+
+1. Değişikliklerinizi kaydetmek için **Kaydet**' i seçin.
+
+
+
+
+
+## <a name="managing-application-controls-via-the-rest-api"></a>Uygulama denetimlerini REST API aracılığıyla yönetme 
+
+Uyarlamalı uygulama denetimlerinizi program aracılığıyla 'yi yönetmek için REST API kullanın. 
+
+Tam API belgesi [burada](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)bulunur.
+
+REST API kullanılabilen işlevlerden bazıları:
+
+* **Liste** tüm grup önerilerinizi alır ve her grup için bir NESNEYLE bir JSON sağlar.
+
+* **Get** , JSON 'u tam öneri verileriyle (diğer bir deyişle, makine listesi, yayımcı/yol kuralları vb.) alır.
+
+* **PUT** , kuralınızı yapılandırır (Bu isteğin gövdesi olarak **Al** ile aldığınız JSON 'ı kullanın).
+ 
+   > [!IMPORTANT]
+   > **PUT** işlevi get komutu tarafından döndürülen JSON 'dan daha az parametre bekler.
    >
+   > PUT isteğinde JSON kullanmadan önce şu özellikleri kaldırın: recommendationStatus, configurationStatus, sorunlar, konum ve dir.
 
-4. **İlke uzantısı**' nın altında, izin vermek istediğiniz tüm uygulama yollarını ekleyin. Bu yollar eklendikten sonra, Güvenlik Merkezi, seçili VM grubu içindeki VM 'lerde uygulama izin verilenler listesini güncelleştirir ve zaten var olan kurallara ek olarak bu uygulamalar için uygun kuralları oluşturur.
 
-5. **Son uyarılar** bölümünde listelenen geçerli ihlalleri gözden geçirin. Azure Güvenlik Merkezi 'nde **Uyarılar** sayfasına yönlendirilmek için her satıra tıklayın ve Azure Güvenlik Merkezi tarafından algılanan tüm uyarıları ilişkili VM 'lerde görüntüleyin.
-   - **Uyarılar**: günlüğe kaydedilen tüm ihlaller.
-   - **Hayır. VM 'Ler**: Bu uyarı türüne sahip sanal makine sayısı.
 
-6. **Yayımcı beyaz listeleme kuralları**, **yol beyaz listeleme kuralları**ve **karma beyaz listeleme kuralları** altında, kural koleksiyonu türüne göre, bir grup içindeki VM 'lerde hangi uygulama beyaz liste kurallarının yapılandırıldığını görebilirsiniz. Her kural için şunları görebilirsiniz:
-
-   - **Kural**: bir uygulamanın çalışmasına izin verilip verilmeyeceğini tespit etmek için bir uygulamanın AppLocker tarafından İncelenme göre belirli parametreleri.
-   - **Dosya türü**: belirli bir kural tarafından kapsanan dosya türleri. Bu, aşağıdakilerden herhangi biri olabilir: EXE, komut dosyası, MSI veya bu dosya türlerinin herhangi bir permütasyonu.
-   - **Kullanıcılar**: bir uygulama beyaz listeye ekleme kuralı kapsamında olan bir uygulamayı çalıştırmasına izin verilen Kullanıcı adı veya sayısı.
-
-   ![Beyaz listeye ekleme kuralları](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
-
-7. Belirli kuralı silmek veya izin verilen kullanıcıları düzenlemek istiyorsanız her satırın sonundaki üç noktaya tıklayın.
-
-8. **Uyarlamalı uygulama denetimleri** ilkesinde değişiklik yaptıktan sonra **Kaydet**' e tıklayın.
-
-### <a name="not-recommended-list"></a>Önerilmeyenler listesi
-
-Güvenlik Merkezi, yalnızca kararlı bir uygulama kümesi çalıştıran sanal makineler için uygulama beyaz listeleme ilkeleri önerir. Bağlantılı VM'lerdeki uygulamalar sürekli değişiyorsa öneriler oluşturulmayacaktır.
-
-![Öneri](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
-
-Liste aşağıdakileri içerir:
-- **Grup adı**: aboneliğin ve grubun adı
-- **VM 'ler ve bilgisayarlar**: gruptaki sanal makinelerin sayısı
-
-Azure Güvenlik Merkezi, önerilen VM grupları üzerinde de bir uygulama beyaz listeleme ilkesi tanımlamanızı sağlar. Bu gruplardaki bir uygulama beyaz listeye ekleme ilkesini yapılandırmak için daha önce açıklanan ilkeleri izleyin.
-
-## <a name="move-a-vm-from-one-group-to-another"></a>Bir VM 'yi bir gruptan diğerine taşıma
-
- Bir VM 'yi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denetim ilkesi, onu taşıdığınız grubun ayarlarına değişir. Ayrıca, VM 'ye daha önce uygulanan uygulama Denetim ilkelerinin kaldırılmasına neden olan yapılandırılmış bir gruptan bir VM 'yi yapılandırılmamış bir gruba taşıyabilirsiniz.
-
- 1. **Uyarlamalı uygulama denetimleri** sayfasında, **yapılandırılan** sekmesinden, geçerli olarak taşınacak VM 'nin ait olduğu gruba tıklayın.
-1. **Yapılandırılmış VM 'ler ve bilgisayarlar**' a tıklayın.
-1. Taşımak için VM 'nin satırındaki üç noktaya tıklayın ve **Taşı**' ya tıklayın. **Bilgisayarı farklı bir gruba taşı** penceresi açılır.
-
-    ![Koruma](./media/security-center-adaptive-application/adaptive-application-move-group.png)
-
- 1. VM 'nin taşınacağı grubu seçin ve **Bilgisayarı taşı**' ya tıklayın ve **Kaydet**' e tıklayın.
-
-    ![Koruma](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
-
- > [!NOTE]
-> **Bilgisayarı taşı**' yı tıklattıktan sonra **Kaydet** ' e tıkladığınızdan emin olun. **Kaydet**' e tıkladıysanız bilgisayar taşınmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure 'da ve Azure olmayan VM 'lerde çalışan uygulamaları beyaz listelemek için Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimini nasıl kullanacağınızı öğrendiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
+Bu belgede, Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi 'ni kullanarak Azure 'da ve Azure dışı makinelerde çalışan uygulamaların izin verilenler listesini nasıl tanımlayacağınızı öğrendiniz. Bazı güvenlik merkezi iş yükü koruma özellikleri hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Güvenlik Merkezi’nde uyarıları yönetme ve güvenlik olaylarına yanıt vermeyi öğrenin.
-* [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md). Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Farklı güvenlik uyarısı türleri hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi sorun giderme kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Güvenlik Merkezi’nde sık karşılaşılan sorunları gidermeyi öğrenin.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/). Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulun.
+* [Tam zamanında (JıT) VM erişimini anlama](just-in-time-explained.md)
+* [Azure Kubernetes kümelerinizin güvenliğini sağlama](azure-kubernetes-service-integration.md)

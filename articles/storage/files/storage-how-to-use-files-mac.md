@@ -1,18 +1,18 @@
 ---
 title: macOS’da SMB üzerinden Azure dosya paylaşımını bağlama | Microsoft Docs
-description: macOS’da SMB üzerinden Azure dosya paylaşımını bağlamayı öğrenin.
+description: Finder veya Terminal kullanarak macOS ile SMB üzerinden Azure dosya paylaşımının nasıl bağlanacağını öğrenin. Azure Dosyaları, Microsoft’un kullanımı kolay bulut dosya sistemidir.
 author: RenaShahMSFT
 ms.service: storage
 ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 87271cfc602ff81a65a63426360f3bc0a8a8f030
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509838"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034456"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS’da SMB üzerinden Azure dosya paylaşımını bağlama
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları macOS El Capitan 10.11+ üzerine endüstri standardı SMB 3 protokolü kullanılarak takılabilir. Bu makalede, macOS’ta Bulucu kullanıcı arabirimiyle ve Terminal kullanarak Azure dosya paylaşımını bağlamanın iki farklı yolu gösterilir.

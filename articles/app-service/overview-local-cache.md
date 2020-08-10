@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562455"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034966"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -36,7 +36,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Yerel önbelleğin App Service davranışını nasıl değiştirdiği
 * _D:\home_ , uygulama başlatıldığında VM örneğinde oluşturulan yerel önbelleğe işaret eder. _D:\Local_ , VM 'ye özgü geçici depolamaya işaret etmeye devam ediyor.
-* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başladığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 1 GB ile sınırlıdır, ancak 2 GB 'a artırılabilir. Önbellek boyutunun arttıkça önbelleğin yüklenmesi daha uzun sürer. Kopyalanan dosyalar yerel önbelleğin boyutunu aşarsa App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur.
+* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başladığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 1 GB ile sınırlıdır, ancak 2 GB 'a artırılabilir. Önbellek boyutunun arttıkça önbelleğin yüklenmesi daha uzun sürer. Yerel önbellek sınırını 2 GB olarak artırdıysanız ve kopyalanan dosyalar en fazla 2 GB boyutunu aşarsa, App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur. Sınır tanımlanmazsa veya sınır 2 GB 'den daha düşük bir şeye ayarlanmışsa ve kopyalanan dosyalar sınırı aşarsa, dağıtım veya değiştirme bir hata vererek başarısız olabilir.
 * Yerel önbellek okuma-yazma ' dır. Ancak, uygulama sanal makineleri taşıdığında veya yeniden başlatıldığında herhangi bir değişiklik atılır. Görev açısından kritik verileri içerik deposunda depolayan uygulamalar için yerel önbellek kullanmayın.
 * _D:\home\logfiles_ ve _d:\home\data_ günlük dosyalarını ve uygulama verilerini içerir. İki alt klasör, sanal makine örneğinde yerel olarak depolanır ve paylaşılan içerik deposuna düzenli olarak kopyalanır. Uygulamalar, günlük dosyalarını ve verileri bu klasörlere yazarak kalıcı hale getirebilirler. Ancak, paylaşılan içerik deposuna yapılan kopya en iyi çaba olduğundan, bir VM örneğinin ani kilitlenmesi nedeniyle günlük dosyaları ve verilerin kaybedilmesi mümkündür.
 * [Günlük akışı](troubleshoot-diagnostic-logs.md#stream-logs) , en iyi çaba kopyasından etkilenir. Akışlı günlüklerde bir dakikalık gecikmeye kadar gözlemleyebilirsiniz.

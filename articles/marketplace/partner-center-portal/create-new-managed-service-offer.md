@@ -3,16 +3,16 @@ title: Microsoft ticari Market 'te yönetilen hizmet teklifi oluşturma
 description: Iş Ortağı Merkezi 'nde ticari Market portalı 'nı kullanarak Azure Marketi 'nde listeleme için yeni bir yönetilen hizmet teklifi oluşturma.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.date: 07/07/2020
-ms.openlocfilehash: ae079fce02f58d6c6457d7fe6401526f4002662f
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798197"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036615"
 ---
 # <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
@@ -90,7 +90,7 @@ Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek a
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -130,20 +130,23 @@ Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad,
 
 Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
-#### <a name="store-logos"></a>Mağaza logoları
+#### <a name="marketplace-logos"></a>Market logoları
 
-**Büyük** boyut logosu IÇIN bir PNG dosyası sağlayın (216 x 216 ve 350 x 350 piksel arasında). İş Ortağı Merkezi, **küçük** (48 x 48 piksel) ve **Orta** (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz.
-
-Üç logo boyutu, listede farklı yerlerde kullanılmak üzere gereklidir:
+Teklifinizin logosunu dört piksel boyutunda sağlayın:
 
 - **Küçük** (48 x 48)
 - **Orta** (90 x 90)
-- **Büyük** (216 x 216 ve 350 x 350 arasında)
+- **Büyük** (216 x 216)
+- **Geniş** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Bu amblemler Azure Marketi 'nde farklı yerlerde kullanılır:
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

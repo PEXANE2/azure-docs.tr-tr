@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Maps web harita denetimi ile çalışmaya başlama
-description: Haritalar ve katıştırılmış Azure Maps işlevlerini Web veya mobil uygulamanıza işlemek için Microsoft Azure Maps web harita denetimi istemci tarafı JavaScript kitaplığını kullanmayı öğrenin.
+description: Azure haritalar 'daki Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak Web ve mobil uygulamalara nasıl haritalar ekleneceğini öğrenin. Bkz. eşlemeleri yerelleştirin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287068"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035970"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Haritalar harita denetimini kullanma
 
 Harita Denetimi istemci tarafı JavaScript kitaplığı, haritalar ve katıştırılmış Azure haritaları işlevlerini Web veya mobil uygulamanıza işletirmesini sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Harita Denetimi bir Web sayfasında kullanmak için aşağıdaki önkoşulların birine sahip olmanız gerekir:
 
@@ -34,22 +34,22 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
 
 1. Yeni bir HTML dosyası oluşturun.
 
-2. Azure Haritalar Web SDK 'sını yükleyin. İki seçenekten birini belirleyebilirsiniz;
+2. Azure Haritalar Web SDK 'sını yükleyin. İki seçenekten birini belirleyebilirsiniz:
 
     * HTML dosyasının öğesinde JavaScript ve stil sayfasına başvurular ekleyerek Azure Maps web SDK 'sının küresel olarak barındırılan CDN sürümünü kullanın `<head>` :
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * Azure Haritalar Web SDK kaynak kodunu [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) NPM paketini kullanarak yerel olarak yükleyin ve uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir.
 
-    > **NPM Install Azure-Maps-Control**
+      > **NPM Install Azure-Maps-Control**
 
     Ardından, Azure Maps stil sayfasına başvuruları `<head>` dosyanın öğesine ekleyin:
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 
