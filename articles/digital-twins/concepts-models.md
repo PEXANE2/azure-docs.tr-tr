@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985895"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042641"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -36,8 +36,8 @@ Azure dijital TWINS, **Dtdl _sürüm 2_** kullanır. DTDL 'nin bu sürümü hakk
 Bir model tanımı içinde, üst düzey kod öğesi bir **arabirimdir**. Bu, modelin tamamını kapsüller ve modelin geri kalanı arabirim içinde tanımlanır. 
 
 Bir DTDL model arabirimi, aşağıdaki alanlardan her birinin sıfır, bir veya bir çoğunu içerebilir:
-* **Özellik** özellikleri, bir varlığın durumunu temsil eden veri alanlarıdır (birçok nesne odaklı programlama dilinde özellikler gibi). Zamana sınırlı bir veri olayı olan telemetriden farklı olarak, Özellikler depolamayı yedeklebilirler ve herhangi bir zamanda okunabilir.
-* **Telemetri** -telemetri alanları ölçümleri ve olayları temsil eder ve genellikle cihaz algılayıcı ayarlarını göstermek için kullanılır. Telemetri dijital bir ikizi depolanmaz; bir yerde gönderilmek üzere bir veri olayları akışı daha gibidir. 
+* **Özellik** özellikleri, bir varlığın durumunu temsil eden veri alanlarıdır (birçok nesne odaklı programlama dilinde özellikler gibi). Özellikler depolamayı yedekliyor ve herhangi bir zamanda okunabilir.
+* **Telemetri** -telemetri alanları ölçümleri ve olayları temsil eder ve genellikle cihaz algılayıcı ayarlarını göstermek için kullanılır. Özelliklerden farklı olarak, telemetri dijital bir ikizi depolanmaz; Bu, gerçekleşdikleri sırada işlenmesi gereken bir dizi zamana bağlanan veri olaydır. Özellik ve telemetri arasındaki farklılıklar hakkında daha fazla bilgi için aşağıdaki [*Özellikler vs. telemetri*](#properties-vs-telemetry) bölümüne bakın.
 * **Bileşen** -bileşenler, model arabiriminizi başka arabirimlerin bir derlemesi olarak oluşturmanıza olanak tanır. Bir bileşene örnek olarak, bir *Telefon*için model tanımlarken kullanılan, önde gelen bir *Kamera* arabirimi (ve başka bir bileşen arabirimi *arkakamerası*) bulunur. İlk olarak, kendi modeli gibi *Frontcamera* için bir arabirim tanımlamanız gerekir ve ardından *Telefon*tanımlarken buna başvurabilirsiniz.
 
     Çözümünüzün integral bir parçası olan, ancak ayrı bir kimlik gerektirmeyen ve ikizi grafının bağımsız olarak oluşturulması, silinmesi veya yeniden düzenlenmesinin gerekli olmadığı bir şeyi betimleyen bir bileşen kullanın. Varlıkların ikizi grafiğinde bağımsız olarak var olmasını istiyorsanız, bunları farklı modellerdeki ayrı dijital ikgörüleri olarak temsil edin, *ilişkilerin* bağlanır (bkz. sonraki madde işareti).
@@ -47,7 +47,25 @@ Bir DTDL model arabirimi, aşağıdaki alanlardan her birinin sıfır, bir veya 
 * **İlişki** ilişkileri, dijital bir ikizi diğer dijital TWINS ile nasıl dahil edileceğini temsil etmenize olanak tanır. İlişkiler, *Contains* ("kat yer alan"), *cozı* ("HVAC Cozı"), *isbilledto* ("sıkıştırıcı kullanıcıya faturalandırılır") vb. gibi farklı anlam anlamlarını temsil edebilir. İlişkiler çözümün birbiriyle ilişkili varlıkların bir grafiğini sağlamasına izin verir.
 
 > [!NOTE]
-> DTDL özelliği ayrıca, dijital bir ikizi (sıfırlama komutu gibi) veya bir fanı açık veya kapalı bir komut olarak yürütülebilecek Yöntemler olan **komutları**tanımlar. Ancak, *Komutlar Şu anda Azure dijital TWINS 'te desteklenmemektedir.*
+> [DTDL özelliği](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) Ayrıca, dijital bir ikizi (sıfırlama komutu gibi) veya bir fanı açık veya kapalı bir komut olarak yürütülebilecek Yöntemler olan **komutları**tanımlar. Ancak, *Komutlar Şu anda Azure dijital TWINS 'te desteklenmemektedir.*
+
+### <a name="properties-vs-telemetry"></a>Özellikler ve telemetri karşılaştırması
+
+Azure dijital TWINS 'te DTDL **özelliği** ve **telemetri** alanları arasında ayrım yapmak için bazı ek yönergeler aşağıda verilmiştir.
+
+Azure dijital TWINS modelleriyle ilgili özellikler ve telemetri arasındaki fark aşağıdaki gibidir:
+* Depolama alanının yedeklenmemesi için **Özellikler** bekleniyor. Bu, herhangi bir zamanda bir özelliği okuyabilmeniz ve değerini alabilmek anlamına gelir. Özellik yazılabilir ise, özelliğinde bir değeri de saklayabilirsiniz.  
+* **Telemetri** bir olay akışı gibidir; Bu, kısa ömrü olan bir veri iletisi kümesidir. Olay ve işlem sırasında gerçekleştirilecek eylemler için dinlemeyi ayarlamazsanız, olayın daha sonra izlenmesi gerekmez. Geri dönemiyorum ve daha sonra okuyamıyorum. 
+  - C# koşullarında telemetri bir C# olayı gibidir. 
+  - IoT koşullarında telemetri genellikle bir cihaz tarafından gönderilen tek bir ölçümdür.
+
+**Telemetri** genellikle IoT cihazlarıyla kullanılır, çünkü birçok cihaz, oluşturdukları ölçüm değerlerini depoladığını veya bunlarla ilgilenmez. Bunlar yalnızca "Telemetri" olaylarının akışı olarak gönderilir. Bu durumda, telemetri alanının en son değeri için cihazı istediğiniz zaman sorgulayın. Bunun yerine, cihazdaki iletileri dinlemek ve iletiler geldikçe işlem yapmanız gerekir. 
+
+Sonuç olarak, Azure dijital TWINS 'te bir model tasarlarken, büyük olasılıkla TWINS 'nizi modellemek için çoğu durumda **özellikleri** kullanırsınız. Bu sayede depolama alanı yedekleme ve veri alanlarını okuma ve sorgulama imkanına sahip olursunuz.
+
+Telemetri ve özellikler genellikle cihazlardan veri girişini işlemek için birlikte çalışır. Azure dijital TWINS 'e yönelik tüm giriş [API 'ler](how-to-use-apis-sdks.md)aracılığıyla olduğundan, genellikle giriş işlevinizi kullanarak cihazlardan telemetri veya özellik olaylarını okuyabilir ve yanıt olarak ADT içinde bir özellik ayarlarsınız. 
+
+Ayrıca Azure dijital TWINS API 'sinden bir telemetri olayı yayımlayabilirsiniz. Diğer telemetride olduğu gibi, işlemek için bir dinleyici gerektiren kısa süreli bir olaydır.
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure dijital TWINS DTDL uygulama özellikleri
 

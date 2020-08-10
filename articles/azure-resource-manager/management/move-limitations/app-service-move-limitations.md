@@ -2,13 +2,13 @@
 title: Azure App Service kaynaklarını taşıma
 description: App Service kaynaklarını yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655780"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042068"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service kaynakları için kılavuzu taşıma
 
@@ -23,7 +23,8 @@ Bir Web uygulamasını abonelikler arasında taşırken aşağıdaki kılavuz ge
     - App Service planları
     - TLS/SSL sertifikaları karşıya yüklendi veya içeri aktarıldı
     - App Service ortamları
-- Kaynak grubundaki tüm App Service kaynakları birlikte taşınmalıdır. App Service ortamların yeni bir kaynak grubuna veya yeni bir aboneliğe taşınamayacağını unutmayın.
+- Kaynak grubundaki tüm App Service kaynakları birlikte taşınmalıdır.
+- App Service ortamlar yeni bir kaynak grubuna veya aboneliğe taşınamaz. Ancak, bir Web uygulamasını ve App Service planını App Service Ortamı taşımadan yeni bir aboneliğe taşıyabilirsiniz. Taşıma işleminden sonra, Web uygulaması artık App Service Ortamı barındırılmaz.
 - Sertifika, kaynak grubundaki diğer tüm kaynaklarla taşındığı sürece, TLS bağlamalarını silmeden bir sertifikayı bir Web 'e taşıyabilirsiniz.
 - App Service kaynaklar yalnızca, başlangıçta oluşturulduğu kaynak grubundan taşınabilir. Bir App Service kaynağı artık özgün kaynak grubunda yoksa, özgün kaynak grubuna geri taşıyın. Ardından, kaynağı abonelikler arasında taşıyın.
 

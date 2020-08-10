@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: b66969b26a801e6bd9aacf999c1c1ef9179ef1bd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534677"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042331"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre
 
@@ -27,17 +27,16 @@ Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı ka
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-- Yayın durumu: **genel kullanılabilirlik**
-- Gerekli roller: **güvenlik okuyucusu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- Desteklenen kayıt defterleri ve görüntüler:
-    - Genel internet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterlerine ✔ ve kabuk erişimi sağlayabilirsiniz.
-    - ✘ Windows tarafından barındırılan ACR kayıt defterleri.
-    - ✘ ' Private ' kayıt defterleri-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.
-    - [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi ✘ süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, Shell veya OS olmadan Içeren "Distrodaha az" görüntüler.
-- Larının 
-    - Ticari bulutlar ✔
-    - ✘ ABD kamu bulutu
-    - ✘ Çin kamu bulutu, diğer kamu bulutları
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Genel kullanılabilirlik|
+|Fiyat|Standart katmanı|
+|Desteklenen kayıt defterleri ve görüntüler:|![](./media/icons/yes-icon.png)Genel İnternet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterleri ve kabuk erişimi sağlar.<br>![](./media/icons/yes-icon.png)Windows tarafından barındırılan BIR ACR kayıt defterleri yoktur.<br>![](./media/icons/yes-icon.png)' Özel ' kayıt defterleri yok-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.<br>![](./media/icons/yes-icon.png) [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "distrodaha az" görüntüler.|
+|Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|||
+
+
 
 
 ## <a name="when-are-images-scanned"></a>Görüntüler ne zaman taranır?

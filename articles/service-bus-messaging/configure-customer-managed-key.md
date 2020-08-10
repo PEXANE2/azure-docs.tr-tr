@@ -3,12 +3,12 @@ title: Bekleyen verileri şifrelemek için kendi anahtarınızı yapılandırın
 description: Bu makalede, Azure Service Bus veri kalanını şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475994"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041572"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -21,7 +21,7 @@ BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurul
 > [!NOTE]
 > Hizmet tarafı şifrelemesi için müşterinin yönettiği anahtar için bazı uyarılar vardır. 
 >   * Bu özellik [Azure Service Bus Premium](service-bus-premium-messaging.md) katmanı tarafından desteklenir. Standart katman Service Bus ad alanları için etkinleştirilemez.
->   * Şifreleme yalnızca yeni veya boş ad alanları için etkinleştirilebilir. Ad alanı veri içeriyorsa, şifreleme işlemi başarısız olur.
+>   * Şifreleme yalnızca yeni veya boş ad alanları için etkinleştirilebilir. Ad alanı herhangi bir kuyruk veya konu içeriyorsa, şifreleme işlemi başarısız olur.
 
 Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 

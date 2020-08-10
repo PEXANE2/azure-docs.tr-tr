@@ -3,17 +3,17 @@ title: Azure Notification Hubs ve iOS SDK 'sını kullanarak iOS 'a anında ilet
 description: Bu öğreticide, iOS cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs ve Apple Anında Iletilen bildirim hizmetini nasıl kullanacağınızı öğreneceksiniz.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: fde142c76c71aa7155fd39d90f7a6c8120538141
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008670"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042454"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
@@ -104,7 +104,7 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
 ## <a name="create-a-certificate-for-notification-hubs"></a>Notification Hubs için bir sertifika oluşturun
 
 > [!NOTE]
-> İOS 13 ' ün sürümleri nedeniyle, belirteç tabanlı kimlik doğrulaması kullanarak yalnızca sessiz bildirimler alabilirsiniz. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulaması ile geçiş yapmanız gerekir.
+> İOS 13 ' ün piyasaya çıkmasıyla, belirteç tabanlı kimlik doğrulaması kullanarak yalnızca sessiz bildirimleri alabilirsiniz. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulaması ile geçiş yapmanız gerekir.
 
 Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika gerekir. Bu, iki şekilde yapılabilir:
 

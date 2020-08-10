@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 8ca3d7475472c6980be85299046624bdcf8cae11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81fdb404b99dc5456e9e544b6ff45dff73a7940d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254468"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042845"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory sınırlandırılmış metin biçimi
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **Sınırlandırılmış metin dosyalarını ayrıştırmak veya verileri sınırlandırılmış metin biçimine yazmak**istediğinizde bu makaleye uyun. 
@@ -29,17 +30,17 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği, **Delimitedtext**olarak ayarlanmalıdır. | Evet      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` .  | Evet      |
-| columnDelimiter  | Bir dosyadaki sütunları ayırmak için kullanılan karakter (ler). <br>Varsayılan değer **virgüldür `,` **. Sütun sınırlayıcısı boş bir dize olarak tanımlandığında bir sınırlayıcı anlamına gelir, tüm satır tek bir sütun olarak alınır.<br>Şu anda, boş dize olarak sütun sınırlayıcısı veya birden çok char yalnızca veri akışı eşlemesi için desteklenir ancak kopyalama etkinliği değildir.  | Hayır       |
-| rowDelimiter     | Tek karakter veya "\r\n" bir dosyadaki satırları ayırmak için kullanılır. <br>Varsayılan değer **: ["\r\n", "\r", "\n"]** ve **"\n" ya da "\r\n"** veri akışını eşleyerek ve kopyalama etkinliğini sırasıyla yazma sırasında aşağıdaki değerlerden herhangi biri. <br>Satır sınırlayıcısı sınırlayıcı (boş dize) olarak ayarlandığında, sütun sınırlayıcısı de sınırlayıcı (boş dize) olarak ayarlanmalıdır ve bu da tüm içeriği tek bir değer olarak değerlendirmek anlamına gelir.<br>Şu anda, boş dize olarak satır sınırlayıcısı yalnızca veri akışını eşlemek için desteklenir ancak kopyalama etkinliği değildir. | Hayır       |
-| quoteChar        | Sütun sınırlayıcısı içeriyorsa, tırnak işareti için tek karakter değeri. <br>Varsayılan değer **çift tırnak** olur `"` . <br>Veri akışını eşlemek için `quoteChar` boş bir dize olamaz. <br>Kopyalama etkinliği için, `quoteChar` boş bir dize olarak tanımlandığında, tırnak işareti yok ve sütun değeri tırnak içine alınmaz ve `escapeChar` sütun sınırlayıcısı ve kendisini atlamak için kullanılır. | Hayır       |
-| escapeChar       | Tırnak işaretli bir değer içindeki tırnak işareti için tek karakter.<br>Varsayılan değer **ters eğik `\` **çizgidir. <br>Veri akışını eşlemek için `escapeChar` boş bir dize olamaz. <br/>Kopyalama etkinliği için, `escapeChar` boş dize olarak tanımlandığında, `quoteChar` boş bir dize olarak ayarlanmalıdır ve bu durumda, tüm sütun değerlerinin sınırlayıcı içermediğinden emin olun. | Hayır       |
-| firstRowAsHeader | İlk satırın, sütun adlarıyla bir başlık satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br>Üst bilgi olarak ilk satır yanlış olduğunda, Kullanıcı arabirimi veri önizleme ve arama etkinliği çıkışı otomatik olarak sütun adları oluştur Prop_ {n} (0 ' dan başlayarak), kopyalama etkinliği kaynaktan havuza [Açık eşleme](copy-activity-schema-and-type-mapping.md#explicit-mapping) gerektirir ve sütunları sıraya göre konumlandırır (Column_ 1 ' den başlayarak)  | Hayır       |
-| nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | Hayır       |
-| encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Veri akışı eşleme, UTF-7 kodlamasını desteklemez. | Hayır       |
-| compressionCodec | Metin dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **Snappy**veya **lz4**. Varsayılan değer sıkıştırılmaz. <br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez. <br>Bu **dosyaları açmak ve dosya tabanlı** havuz veri deposuna yazmak için kopyalama **etkinliği kullanılırken,** varsayılan olarak dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source zip file>/` , `preserveZipFileNameAsFolder` ZIP dosya adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#delimited-text-as-source) üzerinde kullanın. | Hayır       |
-| compressionLevel | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | Hayır       |
+| tür             | Veri kümesinin Type özelliği, **Delimitedtext**olarak ayarlanmalıdır. | Yes      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` .  | Yes      |
+| columnDelimiter  | Bir dosyadaki sütunları ayırmak için kullanılan karakter (ler). <br>Varsayılan değer **virgüldür `,` **. Sütun sınırlayıcısı boş dize olarak tanımlandığında, bu da sınırlayıcı olmadığında, tüm satır tek bir sütun olarak alınır.<br>Şu anda, boş dize olarak sütun sınırlayıcısı veya birden çok char yalnızca veri akışı eşlemesi için desteklenir ancak kopyalama etkinliği değildir.  | No       |
+| rowDelimiter     | Tek karakter veya "\r\n" bir dosyadaki satırları ayırmak için kullanılır. <br>Varsayılan değer **: ["\r\n", "\r", "\n"]** ve **"\n" ya da "\r\n"** veri akışını eşleyerek ve kopyalama etkinliğini sırasıyla yazma sırasında aşağıdaki değerlerden herhangi biri. <br>Satır sınırlayıcısı sınırlayıcı (boş dize) olarak ayarlandığında, sütun sınırlayıcısı de sınırlayıcı (boş dize) olarak ayarlanmalıdır ve bu da tüm içeriği tek bir değer olarak değerlendirmek anlamına gelir.<br>Şu anda, boş dize olarak satır sınırlayıcısı yalnızca veri akışını eşlemek için desteklenir ancak kopyalama etkinliği değildir. | No       |
+| quoteChar        | Sütun sınırlayıcısı içeriyorsa, tırnak işareti için tek karakter değeri. <br>Varsayılan değer **çift tırnak** olur `"` . <br>Veri akışını eşlemek için `quoteChar` boş bir dize olamaz. <br>Kopyalama etkinliği için, `quoteChar` boş bir dize olarak tanımlandığında, tırnak işareti yok ve sütun değeri tırnak içine alınmaz ve `escapeChar` sütun sınırlayıcısı ve kendisini atlamak için kullanılır. | No       |
+| escapeChar       | Tırnak işaretli bir değer içindeki tırnak işareti için tek karakter.<br>Varsayılan değer **ters eğik `\` **çizgidir. <br>Veri akışını eşlemek için `escapeChar` boş bir dize olamaz. <br/>Kopyalama etkinliği için, `escapeChar` boş dize olarak tanımlandığında, `quoteChar` boş bir dize olarak ayarlanmalıdır ve bu durumda, tüm sütun değerlerinin sınırlayıcı içermediğinden emin olun. | No       |
+| firstRowAsHeader | İlk satırın, sütun adlarıyla bir başlık satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br>Üst bilgi olarak ilk satır yanlış olduğunda, Kullanıcı arabirimi veri önizleme ve arama etkinliği çıkışı otomatik olarak sütun adları oluştur Prop_ {n} (0 ' dan başlayarak), kopyalama etkinliği kaynaktan havuza [Açık eşleme](copy-activity-schema-and-type-mapping.md#explicit-mapping) gerektirir ve sütunları sıraya göre konumlandırır (Column_ 1 ' den başlayarak)  | No       |
+| nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | No       |
+| encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Veri akışı eşleme, UTF-7 kodlamasını desteklemez. | No       |
+| compressionCodec | Metin dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **Snappy**veya **lz4**. Varsayılan değer sıkıştırılmaz. <br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez. <br>Bu **dosyaları açmak ve dosya tabanlı** havuz veri deposuna yazmak için kopyalama **etkinliği kullanılırken,** varsayılan olarak dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source zip file>/` , `preserveZipFileNameAsFolder` ZIP dosya adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#delimited-text-as-source) üzerinde kullanın. | No       |
+| compressionLevel | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | No       |
 
 Azure Blob depolamada sınırlandırılmış metin veri kümesi örneği aşağıda verilmiştir:
 
@@ -79,18 +80,18 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 
 | Özellik       | Açıklama                                                  | Gerekli |
 | -------------- | ------------------------------------------------------------ | -------- |
-| tür           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsource**olarak ayarlanmalıdır. | Evet      |
-| formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin okuma ayarları** tablosuna bakın. | Hayır       |
-| storeSettings  | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . | Hayır       |
+| tür           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsource**olarak ayarlanmalıdır. | Yes      |
+| formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin okuma ayarları** tablosuna bakın. | No       |
+| storeSettings  | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . | No       |
 
 Desteklenen **sınırlandırılmış metin okuma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | FormatSettings türü, **Delimitedtextreadsettings**olarak ayarlanmalıdır. | Evet      |
-| skipLineCount | Giriş dosyalarından veri okurken atlanacak **boş olmayan** satır sayısını belirtir. <br>Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. | Hayır       |
-| compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | Hayır       |
-| preserveZipFileNameAsFolder<br>(*altında `compressionProperties` *) | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir. True (varsayılan) olarak ayarlandığında Data Factory ZIP dosyalarını içine yazar `<path specified in dataset>/<folder named as source zip file>/` ; false olarak ayarlandığında, Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` .  | Hayır |
+| tür          | FormatSettings türü, **Delimitedtextreadsettings**olarak ayarlanmalıdır. | Yes      |
+| skipLineCount | Giriş dosyalarından veri okurken atlanacak **boş olmayan** satır sayısını belirtir. <br>Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. | No       |
+| compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | No       |
+| preserveZipFileNameAsFolder<br>(*altında `compressionProperties` *) | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False**olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | No |
 
 ```json
 "activities": [
@@ -126,16 +127,16 @@ Aşağıdaki özellikler, etkinlik *** \* havuzunu \* *** Kopyala bölümünde d
 
 | Özellik       | Açıklama                                                  | Gerekli |
 | -------------- | ------------------------------------------------------------ | -------- |
-| tür           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsink**olarak ayarlanmalıdır. | Evet      |
+| tür           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsink**olarak ayarlanmalıdır. | Yes      |
 | formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin yazma ayarları** tablosuna bakın. |          |
-| storeSettings  | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` .  | Hayır       |
+| storeSettings  | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` .  | No       |
 
 Altında desteklenen **sınırlandırılmış metin yazma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| tür          | FormatSettings türü **DelimitedTextWriteSettings**olarak ayarlanmalıdır. | Evet                                                   |
-| fileExtension | Çıktı dosyalarını adlandırmak için kullanılan dosya `.csv` uzantısı, örn.. `.txt` `fileName`Output DelimitedText veri kümesinde belirtilmediğinde belirtilmelidir. Çıktı veri kümesinde dosya adı yapılandırıldığında, havuz dosya adı olarak kullanılır ve dosya uzantısı ayarı yok sayılır.  | Çıkış veri kümesinde dosya adı belirtilmediğinde Evet |
+| tür          | FormatSettings türü **DelimitedTextWriteSettings**olarak ayarlanmalıdır. | Yes                                                   |
+| fileExtension | Çıktı dosyalarını adlandırmak için kullanılan dosya uzantısı, örneğin, `.csv` `.txt` . `fileName`Output DelimitedText veri kümesinde belirtilmediğinde belirtilmelidir. Çıktı veri kümesinde dosya adı yapılandırıldığında, havuz dosya adı olarak kullanılır ve dosya uzantısı ayarı yok sayılır.  | Çıkış veri kümesinde dosya adı belirtilmediğinde Evet |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
@@ -145,7 +146,7 @@ Veri akışlarını eşleme bölümünde, şu veri depolarında sınırlandırı
 
 Aşağıdaki tabloda, ayrılmış bir metin kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz.
 
-| Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Joker karakter yolları | Joker karakterle eşleşen tüm dosyalar işlenecek. Veri kümesinde ayarlanan klasör ve dosya yolunu geçersiz kılar. | hayır | String [] | Yavaya Cardyolları |
 | Bölüm kök yolu | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | hayır | Dize | Partitionrootyolu |
@@ -175,7 +176,7 @@ source(
 
 Aşağıdaki tabloda, ayrılmış bir metin havuzunun desteklediği özellikler listelenmiştir. Bu özellikleri **Ayarlar** sekmesinde düzenleyebilirsiniz.
 
-| Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
 | Dosya adı seçeneği | Yazılan verilerin adlandırma biçimi. Varsayılan olarak, biçimdeki bölüm başına bir dosya`part-#####-tid-<guid>` | hayır | Model: dize <br> Bölüm başına: dize [] <br> Sütunda veri olarak: dize <br> Tek dosyaya çıkış:`['<fileName>']`  | filePattern <br> Partitionbir dosya adı <br> rowUrlColumn <br> Partitionbir dosya adı |

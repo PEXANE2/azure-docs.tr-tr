@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71961191"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042760"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS özel bölgelerin oto kaydı özelliği nedir?
 
@@ -29,6 +29,7 @@ Bir sanal ağ bağlantısı oluştururken "otomatik kaydolmayı etkinleştir" se
 
 * Oto kayıt yalnızca sanal makineler için geçerlidir. İç yük dengeleyiciler gibi diğer tüm kaynaklar için, DNS kayıtlarını sanal ağa bağlı özel DNS bölgesinde el ile oluşturabilirsiniz.
 * DNS kayıtları yalnızca birincil sanal makine NIC 'ı için otomatik olarak oluşturulur. Sanal makinelerinizde birden fazla NIC varsa, diğer ağ arabirimlerinin DNS kayıtlarını el ile oluşturabilirsiniz.
+* DNS kayıtları yalnızca birincil sanal makine NIC 'ı DHCP kullanıyorsa otomatik olarak oluşturulur. Statik IP adresleri yapılandırılırsa (örneğin, [Azure 'da birden çok IP adresi](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)kullanmak için), otomatik kayıt bu sanal makine için kayıt oluşturmaz.
 * IPv6 (AAAA kayıtları) için oto kaydı desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar

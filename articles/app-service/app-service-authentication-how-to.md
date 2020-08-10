@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424265"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042624"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -468,6 +468,67 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
     }
 }
 ```
+
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Uygulamanızı belirli bir kimlik doğrulaması çalışma zamanı sürümüne sabitleme
+
+Kimlik doğrulama/yetkilendirmeyi etkinleştirdiğinizde, platform ara yazılımı, [özellik genel bakışı](overview-authentication-authorization.md#how-it-works)bölümünde AÇıKLANDıĞı gibi http istek işlem hattınızla eklenir. Bu platform ara yazılımı, rutin platform güncelleştirmelerinin bir parçası olarak yeni özellikler ve geliştirmeler ile düzenli olarak güncelleştirilir. Varsayılan olarak, Web veya işlev uygulamanız bu platform ara yazılımı 'nın en son sürümünde çalışır. Bu otomatik güncelleştirmeler her zaman geriye dönük olarak uyumludur. Ancak, bu otomatik güncelleştirmenin Web veya işlev uygulamanız için bir çalışma zamanı sorunu tanıtıldığı nadir bir olayda, önceki bir ara yazılım sürümüne geçici olarak geri dönebilirsiniz. Bu makalede, bir uygulamanın kimlik doğrulama ara yazılımı 'nın belirli bir sürümüne geçici olarak nasıl sabitleneceği açıklanır.
+
+### <a name="automatic-and-manual-version-updates"></a>Otomatik ve el ile sürüm güncelleştirmeleri 
+
+Uygulama için bir ayar ayarlayarak uygulamanızı, platform ara yazılımı 'nın belirli bir sürümüne sabitleyebilirsiniz `runtimeVersion` . Uygulamanızı belirli bir sürüme açıkça sabitlemeyi seçmediğiniz müddetçe, uygulamanız her zaman en son sürümde çalışır. Tek seferde desteklenen birkaç sürüm olacaktır. Artık desteklenmeyen geçersiz bir sürüme PIN yaparsanız, uygulamanız bunun yerine en son sürümü kullanacaktır. En son sürümü her zaman çalıştırmak için `runtimeVersion` ~ 1 olarak ayarlayın. 
+
+### <a name="view-and-update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü görüntüle ve Güncelleştir
+
+Uygulamanız tarafından kullanılan çalışma zamanı sürümünü değiştirebilirsiniz. Yeni çalışma zamanı sürümü, uygulama yeniden başlatıldıktan sonra devreye girer. 
+
+#### <a name="view-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü görüntüle
+
+Platform kimlik doğrulama ara yazılımı 'nın geçerli sürümünü, Azure CLı kullanarak veya uygulamanızdaki built0-ın sürümü HTTP uç noktalarından biri aracılığıyla görüntüleyebilirsiniz.
+
+##### <a name="from-the-azure-cli"></a>Azure CLı 'dan
+
+Azure CLı 'yı kullanarak, [az WebApp auth Show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+Bu kodda, değerini `<my_app_name>` uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>` , uygulamanızın kaynak grubu adıyla değiştirin.
+
+`runtimeVersion`CLI çıkışında alanını görürsünüz. Bu, açıklık açısından kısaltıldı ve aşağıdaki örnek çıktıya benzeyecektir: 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>Sürüm uç noktasından
+
+Ayrıca, uygulamanın üzerinde çalıştığı geçerli ara yazılım sürümünü görüntülemek için bir uygulamadaki/. auth/Version uç noktasını da vurun. Aşağıdaki örnek çıktıya benzeyecektir:
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü güncelleştirme
+
+Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+`<my_app_name>`Uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>` , uygulamanızın kaynak grubu adıyla değiştirin. Ayrıca, `<version>` 1. x çalışma zamanının geçerli bir sürümüyle veya `~1` en son sürüm ile değiştirin. Sürüm notlarını farklı çalışma zamanı sürümlerinde bulabilirsiniz [buraya] ( https://github.com/Azure/app-service-announcements) sabitlenemeyecek sürümü belirlemenize yardımcı olmak için).
+
+Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](https://docs.microsoft.com/cli/azure/install-azure-cli) da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

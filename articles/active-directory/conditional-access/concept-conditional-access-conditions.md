@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032143"
+ms.locfileid: "88042488"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -68,7 +68,7 @@ Varsayılan olarak, tüm yeni oluşturulan koşullu erişim ilkeleri, istemci uy
 > İstemci uygulamaları koşulunun davranışı, Ağustos 2020 ' de güncelleştirildi. Koşullu erişim ilkelerinize sahipseniz, bunlar değişmeden kalır. Ancak, var olan bir ilkeye tıkladığınızda, yapılandırma geçişi kaldırılmıştır ve ilke geçerli olan istemci uygulamaları seçilir.
 
 > [!IMPORTANT]
-> Eski kimlik doğrulama istemcilerinden yapılan oturum açma işlemleri MFA 'yı desteklemez ve cihaz durum bilgilerini Azure AD 'ye geçirmez, bu nedenle MFA veya uyumlu cihazlar gerektirme gibi koşullu erişim izni denetimleri tarafından engellenecektir. Eski kimlik doğrulamasını kullanması gereken hesaplarınız varsa, bu hesapları ilkeden hariç tutabilir veya ilkeyi yalnızca modern kimlik doğrulama istemcilerine uygulanacak şekilde yapılandırırsınız.
+> Eski kimlik doğrulama istemcilerinden yapılan oturum açma işlemleri MFA 'yı desteklemez ve cihaz durum bilgilerini Azure AD 'ye geçirmez, bu nedenle MFA veya uyumlu cihazlar gerektirme gibi koşullu erişim izni denetimleri tarafından engellenecektir. Eski kimlik doğrulamasını kullanması gereken hesaplarınız varsa, bu hesapları ilkeden hariç tutmalısınız veya ilkeyi yalnızca modern kimlik doğrulama istemcilerine uygulanacak şekilde yapılandırmalısınız.
 
 **Evet** olarak ayarlandığında **yapılandırma** geçişi, işaretlenmiş öğeler için geçerli olduğunda, modern ve eski kimlik doğrulama istemcileri de dahil **olmak üzere tüm** istemci uygulamalarına uygulanmaz. Bu geçiş, 2020 Ağustos 'Tan önce oluşturulan ilkelerde görünmez.
 

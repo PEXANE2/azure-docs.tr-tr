@@ -6,12 +6,12 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824503"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042080"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Kurumsal abonelikleri oluşturma erişimi verme (Önizleme)
 
@@ -180,7 +180,7 @@ ms.locfileid: "87824503"
 
 Bu API aracılığıyla oluşturulan abonelikleri izlemek için [kiracı etkinlik günlüğü API](/rest/api/monitor/tenantactivitylogs)'sini kullanın. Abonelik oluşturmayı izlemek için şu anda PowerShell, CLı veya Azure portal kullanmak mümkün değildir.
 
-1. Azure AD kiracısının kiracı yöneticisi olarak, [erişimi yükseltin](../../role-based-access-control/elevate-access-global-admin.md) ve sonra da `/providers/microsoft.insights/eventtypes/management` kapsamı üzerinden denetleyen kullanıcıya Okuyucu rolü atayın.
+1. Azure AD kiracısının kiracı yöneticisi olarak, [erişimi yükseltin](../../role-based-access-control/elevate-access-global-admin.md) ve sonra da `/providers/microsoft.insights/eventtypes/management` kapsamı üzerinden denetleyen kullanıcıya Okuyucu rolü atayın. Bu erişim [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü, [izleme katılımcısı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) rolü veya [özel bir rol](../../role-based-access-control/custom-roles.md)tarafından kullanılabilir.
 1. Denetim kullanıcısı olarak, abonelik oluşturma etkinliklerini görmek için [kiracı etkinlik günlüğü API](/rest/api/monitor/tenantactivitylogs) 'sini çağırın. Örnek:
 
     ```

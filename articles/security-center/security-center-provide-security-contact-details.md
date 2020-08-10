@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534643"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042284"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimleri ayarlama 
 
@@ -34,9 +34,15 @@ Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin mik
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-- Yayın durumu: **genel olarak kullanılabilir**
-- Gerekli roller: **Güvenlik Yöneticisi** veya **abonelik sahibi** 
-- Bulutlar: ✔ ticari bulutlar ✔ US Gov (kısmi) ✘ National/Sovereign (Çin gov, diğer gov)
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Genel olarak kullanılabilir|
+|Fiyat|Ücretsiz katmanı|
+|Gerekli roller ve izinler:|**Güvenlik Yöneticisi**<br>**Abonelik sahibi** |
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov (kısmi)<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Uyarılar için e-posta bildirimleri ayarlama<a name="email"></a>

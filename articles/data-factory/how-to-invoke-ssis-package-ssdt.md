@@ -11,182 +11,199 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/31/2019
-ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/10/2020
+ms.openlocfilehash: 006b7db9f63f5ba74fee936383206b18c42aa038
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497411"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041876"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT 'den Azure 'da SSIS paketlerini yürütme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, SQL Server Veri Araçları (SSDT) üzerindeki Azure özellikli SQL Server Integration Services (SSIS) projelerinin özelliği açıklanmaktadır. Bu, paketleri Azure Data Factory (ADF) üzerinde Azure-SSIS Integration Runtime (IR) üzerinde çalıştırmanızı sağlar.  Bu özelliği kullanarak mevcut SSIS paketlerinizi, Azure 'a geçiş yapmak veya Azure 'a geçirmek ya da Azure 'da çalıştırmak üzere yeni SSIS paketleri geliştirmek için kullanabilirsiniz &.
+Bu makalede, SQL Server Veri Araçları (SSDT) üzerinde Azure etkin SQL Server Integration Services (SSIS) projelerinin özelliği açıklanmaktadır. SSIS paketlerinizin bulut uyumluluğunu değerlendirmenizi ve bunları Azure Data Factory (ADF) Azure-SSIS Integration Runtime (IR) üzerinde çalıştırmanızı sağlar. Bu özelliği, mevcut paketlerinizi kaldırmadan önce test etmek için kullanabilirsiniz & Azure 'a geçiş yapmak veya Azure 'da çalıştırmak üzere yeni paketler geliştirmek için kullanabilirsiniz.
 
-Bu özellikle, yeni bir Azure-SSIS IR oluşturabilir veya var olan bir dosyayı SSIS projelerine iliştirebilir ve sonra paketlerinizi yürütebilirsiniz.  Proje dağıtım modelindeki SSIS kataloğuna (SSıSDB) dağıtılacak paketleri ve paket dağıtım modelindeki dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dağıtılmasını destekliyoruz. 
+Bu özellikle, yeni oluşturulan/mevcut bir Azure-SSIS IR SSIS projelerine iliştirebilir ve sonra paketlerinizi yürütebilirsiniz.  Azure SQL veritabanı sunucunuz tarafından barındırılan SSIS kataloğuna (SSSıSDB) veya proje dağıtım modelindeki yönetilen örneğe dağıtılacak paketlerin çalıştırılmasını destekliyoruz. Paket dağıtım modelinde Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemine/Azure dosyalarına/SQL Server veritabanına (MSDB) dağıtılacak paketlerin çalıştırılmasını da destekliyoruz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu özelliği kullanmak için lütfen Visual Studio için SSIS projeleri uzantısı 'nı [buradan veya buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) tek başına bir yükleyici olarak indirip [yükleyin.](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
+
+Bu özelliği kullanmak için lütfen Visual Studio için SSIS projeleri uzantısı 'nı (VS.) [buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)indirip yükleyin. Alternatif olarak, en son SSDT 'yi de tek başına yükleyici olarak indirip [yükleyebilirsiniz.](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
 
 ## <a name="azure-enable-ssis-projects"></a>Azure-SSIS projelerini etkinleştir
-### <a name="create-new-azure-enabled-ssis-projects"></a>Yeni Azure özellikli SSIS projeleri oluşturma
+
+### <a name="creating-new-azure-enabled-ssis-projects"></a>Yeni Azure özellikli SSIS projeleri oluşturma
+
 SSDT 'de **Integration Services projesi (Azure-etkin)** şablonunu kullanarak yeni Azure özellikli SSIS projeleri oluşturabilirsiniz.
 
    ![Yeni Azure özellikli SSIS projesi](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-new-project.png)
 
 Azure etkin proje oluşturulduktan sonra, Azure Data Factory SSIS 'e bağlanmanız istenir.
 
-   ![Connect Azure-SSIS IR Istemi](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-integration-runtime-connect-prompt.png)
+   ![Connect Azure-SSIS IR istemi](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-integration-runtime-connect-prompt.png)
 
-Azure-SSIS IR hemen bağlanmak istiyorsanız, Ayrıntılar için lütfen [Azure-SSIS IR Connect](#irconnect) bölümüne bakın. Ayrıca, bir menü açmak için SSDT Çözüm Gezgini paneli ' ndeki proje düğümüne sağ tıklayıp, sonra da SSIS **Azure Data Factory** alt menüsünde ssın altındakı **Azure Data Factory SSIS 'e Bağlan** menü öğesini seçerek daha sonra bağlanabilirsiniz.
+Azure-SSIS IR hemen bağlanmak istiyorsanız, daha fazla ayrıntı için bkz. [Azure-SSIS IR bağlanma](#connectssisir) . Ayrıca, bir menü açmak için SSDT Çözüm Gezgini penceresinde proje düğümünüzde sağ tıklayarak da bağlanabilirsiniz. Sonra, **SSIS** ' de Azure Data Factory alt menüdeki **SSIS Azure Data Factory** öğesini seçin.
 
-### <a name="azure-enable-existing-ssis-projects"></a>Azure-var olan SSIS projelerini etkinleştirin
+### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a>Azure-var olan SSIS projelerini etkinleştirme
+
 Mevcut SSIS projeleri için, şu adımları izleyerek Azure 'u etkinleştirebilirsiniz:
 
-1. Bir menü açmak için SSDT Çözüm Gezgini panelinde proje düğümüne sağ tıklayın ve ardından **Azure etkin proje Sihirbazı 'nı**başlatmak Için, **SSIS Azure Data Factory** alt menüsünde bulunan **Azure etkin proje** menü öğesini seçin.
+1. Bir menü açmak için SSDT Çözüm Gezgini penceresinde proje düğümünüzde sağ tıklayın. Ardından, **Azure etkin proje Sihirbazı 'nı**başlatmak için Azure Data Factory alt menüsündeki **SSIS** 'de **Azure etkin proje** öğesini seçin.
 
    ![Azure-var olan SSIS projesini etkinleştir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
 
-2. **Visual Studio yapılandırması Seç** sayfasında, Azure 'da paket yürütme ayarlarını uygulamak Için Visual Studio yapılandırması ' nı seçin. Bulut ve Azure için yeni bir Visual Studio yapılandırması oluşturmak iyi bir uygulamadır; projenizi bulut yapılandırmasına karşı etkinleştirin. Birden çok yapılandırma ile farklı ortamlara (yerel olarak veya Azure 'da) göre parametrelerinizi farklı değerler atayabilirsiniz. Daha fazla ayrıntı için lütfen [Bu örneğe](#example) bakın.
+2. **Visual Studio yapılandırması Seç** sayfasında, Azure 'da paket yürütme ayarlarını uygulamak IÇIN mevcut vs yapılandırmanızı seçin. Daha önce yapmadıysanız, yeni bir [vs yapılandırması oluşturma](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)konusuna da yeni bir tane oluşturabilirsiniz. Yerel ve bulut ortamlarında paket yürütmeleri için en az iki farklı VS yapılandırmanıza sahip olmanız önerilir. böylece, projenizi bulut yapılandırmasında Azure için etkinleştirebilirsiniz. Bu şekilde, projenizi veya paketlerinizi parametreleştirdiyseniz, farklı yürütme ortamlarına (yerel makinenizde veya Azure 'da) göre çalışma zamanında projenize veya paket parametrelerine farklı değerler atayabilirsiniz. Örneğin, bkz. [paket yürütme ortamlarını değiştirme](#switchenvironment).
 
    ![Visual Studio yapılandırması seçin](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Azure-mevcut SSIS projelerinizi etkinleştirmek, hedef sunucu sürümünü, şu anda **SQL Server 2017**olan Azure-SSIS IR tarafından desteklenen en son bir sürüm olacak şekilde ayarlamanızı gerektirir. Daha önce yapmadıysanız, paketinizin SQL Server 2017 ' de desteklenmeyen ek bileşenler içerip içermemesi gerektiğini denetlemeniz ve sorun yoksa devam etmek için Ileri düğmesine tıklamasını öneririz.
+3. Azure-mevcut SSIS projelerinizi etkinleştirmek, hedef sunucu sürümünü Azure-SSIS IR tarafından desteklenen en son sürüm olacak şekilde ayarlamanızı gerektirir. Şu anda Azure-SSIS IR **SQL Server 2017**' e eşit olan varsayılan uyumluluk düzeyi 140 ' dir. Lütfen paketlerinizin SQL Server 2017 ' de desteklenmeyen ek bileşenler içermediğinden emin olun. Ayrıca, tüm uyumlu ek bileşenlerin özel kurulumlardan Azure-SSIS IR yüklendiğinden de emin olun, bkz. [Azure-SSIS IR özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). Devam etmek için **İleri** düğmesini seçin.
 
    ![Hedef sunucu sürümünü değiştir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
-4. Azure-SSIS IR bağlantısını gerçekleştirmek için [Azure-SSIS IR bağlanma](#irconnect) bölümüne bakın.
+4. Bkz. Azure-SSIS IR Azure-SSIS IR, projenizi bağlamayı tamamlamaya yönelik [bağlantı](#connectssisir) .
 
-## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="irconnect"></a>Azure etkin projelerini SSIS 'ye bağlama Azure Data Factory
+## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a>Azure etkin projelerini SSIS 'ye bağlama Azure Data Factory
 
-Azure etkin projelerinizi SSIS 'ye bağlanarak, paketlerinizi Azure dosyalarına yükleyebilir ve Azure-SSIS IR üzerinde çalıştırabilirsiniz. Bunu yapmak için lütfen şu adımları izleyin:
+Azure etkin projelerinizi SSIS 'ye bağlanarak, paketlerinizi Azure dosyalarına yükleyebilir ve Azure-SSIS IR üzerinde çalıştırabilirsiniz. Bunu aşağıdaki adımları izleyerek yapabilirsiniz:
 
-1. **ADF 'de SSIS giriş** sayfasında, giriş sayfasını gözden geçirin ve **İleri** düğmesine tıklayarak devam edin.
+1. **ADF 'de SSIS giriş** sayfasında, giriş sayfasını inceleyin ve devam etmek için **İleri** düğmesini seçin.
 
    ![ADF 'de SSIS girişi](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard.png)
 
-2. **ADF 'de SSIS IR seçin** sayfasında, mevcut ADF 'yi seçip Azure-SSIS IR paketleri çalıştırın veya yoksa yeni bir tane oluşturun.
+2. **ADF 'de SSIS IR seçin** sayfasında, mevcut ADF 'yi seçin ve paketleri çalıştırmak için Azure-SSIS IR. Ayrıca, yoksa yeni bir tane oluşturabilirsiniz.
    - Mevcut Azure-SSIS IR seçmek için önce ilgili Azure aboneliğini ve sonra ADF 'yi seçin.
-   - Azure-SSIS IR olmayan mevcut ADF 'yi seçerseniz, ADF portalında/uygulamada yeni bir tane oluşturmak için **SSIS IR oluştur** düğmesine tıklayın.
-   - ADF 'ye sahip olmayan mevcut Azure aboneliğinizi seçerseniz, aşağıdaki düzende adlandırılan, sizin adınıza otomatik olarak yeni bir Azure Kaynak grubu, Data Factory ve SSIS IR oluşturmak üzere **Integration Runtime oluşturma Sihirbazı**'nı başlatmak için **SSIS IR oluştur** düğmesine tıklayın: bızım **ön eki-RG/df/IR-yourcreationtime**.
+   - Mevcut ADF 'yi bir Azure-SSIS IR seçerseniz, ADF portalında yeni bir tane oluşturmak için **SSIS IR oluştur** düğmesini seçin. Oluşturulduktan sonra yeni Azure-SSIS IR seçmek için bu sayfaya geri dönebilirsiniz.
+   - ADF 'ye sahip olmayan mevcut Azure aboneliğinizi seçerseniz **Integration Runtime oluşturma Sihirbazı**'nı başlatmak için **SSIS IR oluştur** düğmesini seçin. Sihirbazda, aşağıdaki düzende adlandırılan yeni bir Azure Kaynak grubu, Data Factory ve SSIS IR 'yi sizin adınıza otomatik olarak oluşturmak için belirtilen konum ve ön eki girebilirsiniz: **yourprefix-RG/df/IR-YourCreationTime**. Oluşturulduktan sonra, yeni ADF ve Azure-SSIS IR seçmek için bu sayfaya geri dönebilirsiniz.
 
    ![ADF 'de SSIS IR seçin](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
-3. **Azure Storage 'ı seçin** sayfasında, mevcut Azure depolama hesabınızı seçerek paketleri Azure dosyalarına yükleyin veya yoksa yeni bir tane oluşturun.
+3. Azure **Storage 'ı seçin** sayfasında, Azure dosyalarına paket yüklemek Için mevcut Azure depolama hesabınızı seçin. Ayrıca, yoksa yeni bir tane oluşturabilirsiniz.
    - Mevcut Azure depolama hesabınızı seçmek için öncelikle ilgili Azure aboneliğini seçin.
-   - Azure depolama hesabı olmayan Azure-SSIS IR aynı Azure aboneliğini seçerseniz, Azure-SSIS IR adınızın ve oluşturulma tarihinin bir önekini birleştirerek adlandırılan Azure-SSIS IR aynı konumda sizin adınıza otomatik olarak yeni bir tane oluşturmak için **Azure depolama oluştur** düğmesine tıklayın.
-   - Azure depolama hesabı bulunmayan farklı bir Azure aboneliği seçerseniz Azure portal yeni bir tane oluşturmak için **Azure depolama oluştur** düğmesine tıklayın.
+   - Azure depolama hesabı olmayan Azure-SSIS IR aynı Azure aboneliğini seçerseniz, **Azure Storage oluştur** düğmesini seçin. Azure-SSIS IR adınızın bir önekini ve oluşturulma tarihini birleştirerek adlı Azure-SSIS IR aynı konumda sizin adınıza otomatik olarak yeni bir tane oluşturacağız. Oluşturulduktan sonra, yeni Azure depolama hesabınızı seçmek için bu sayfaya geri dönebilirsiniz.
+   - Azure depolama hesabı bulunmayan farklı bir Azure aboneliği seçerseniz Azure portal yeni bir tane oluşturmak için **Azure depolama oluştur** düğmesini seçin. Oluşturulduktan sonra, yeni Azure depolama hesabınızı seçmek için bu sayfaya geri dönebilirsiniz.
 
    ![Azure Depolama Alanı'nı seçin](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
-4. Bağlantınızı gerçekleştirmek için **Bağlan** düğmesine tıklayın.  Seçtiğiniz Azure-SSIS IR ve Azure depolama hesabınızı SSDT Çözüm Gezgini panelinde **bağlı Azure kaynakları** düğümü altında görüntüleyeceğiz.  Ayrıca, bir menü açmak ve ardından bunu ADF Portal/uygulama ' ya tıklayarak **Start\stop\yönet** menü öğesini seçmek için, Azure-SSIS IR durumunu yenileyecektir.
+4. Azure-SSIS IR için projenizi bağlamayı tamamladıktan sonra **Bağlan** düğmesini seçin. Seçtiğiniz Azure-SSIS IR ve Azure depolama hesabınızı, SSDT Çözüm Gezgini penceresindeki **bağlı Azure kaynakları** düğümü altında görüntüleriz. Ayrıca, Azure-SSIS IR düzenli olarak yenileyecek ve durumunu görüntüleriz. Bir menü açmak ve ardından bunu ADF Portal 'a alan **Start\stop\manage** öğesini seçmek için, düğümüne sağ tıklayıp Azure-SSIS IR yönetebilirsiniz.
 
 ## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>Azure 'da yürütmeler için SSIS project\packages 'i değerlendirin
-### <a name="assess-ssis-project-or-package"></a>SSIS projesini veya paketini değerlendir
-Paketlerinizi Azure 'da yürütmeden önce, bilmeniz gereken olası geçiş engelleyicisine veya bilgilere sahip olup olmadığını değerlendirmek için paketinizi değerlendirebilirsiniz. 
--  Tüm paketleri proje veya tek paket altında değerlendirebilirsiniz.
 
-   ![Proje ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
-    ![ değerlendirme paketini değerlendir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+### <a name="assessing-single-or-multiple-packages"></a>Tek veya birden çok paket değerlendiriliyor
 
--  Her bir değerlendirme sorununu denetlemek için değerlendirme raporu alabilir ve her bir sorun ayrıntılı açıklama ve önerisine sahip olur. Ayrıca, değerlendirme raporunu CSV dosyası olarak dışarı aktarabilirsiniz. 
+Paketlerinizi Azure 'da yürütmeden önce, olası bulut uyumluluk sorunlarını yüzeye ayırın. Bunlar geçiş engelleyicileri ve farkında olmanız gereken ek bilgiler içerir. 
+-  Tek tek paketleri, projeniz kapsamında aynı anda tek tek paketleri veya tüm paketleri değerlendirme seçenekleriniz vardır.
 
-   ![Proje sonucunu değerlendir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+   ![Paketi değerlendir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
 
-### <a name="suppress-assessment-rule"></a>Değerlendirme kuralını gizle
-Herhangi bir değerlendirme kuralının paketiniz için uygulanmadığından emin değilseniz, bunu bastırı seçebilirsiniz. 
--  Değerlendirme raporundaki **değerlendirme kuralı gizlemesini Yapılandır** bağlantısını doğrudan tıklayabilirsiniz.
+   ![Projeyi değerlendir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+
+-  SSDT **değerlendirme raporu** penceresinde, her biri kendi ayrıntılı açıklamasına ve önerisine sahip olan tüm olası bulut uyumluluk sorunlarını bulabilirsiniz. Değerlendirme raporunu, bu sorunları hafifletmek zorunda olan herkesle paylaşılabilen bir CSV dosyasına da dışarı aktarabilirsiniz. 
+
+   ![Değerlendirme raporu](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppressing-assessment-rules"></a>Değerlendirme kurallarını gizleme
+
+Bazı potansiyel bulut uyumluluk sorunlarının geçerli olmadığından veya paketlerinizdeki düzgün şekilde azaltıldığından emin olduktan sonra, bunları yüzey halinde gösteren ilgili değerlendirme kurallarını gizleyebilirsiniz. Bu, sonraki değerlendirme raporlarınızdaki paraziti azaltır.
+-  Bir değerlendirme **kuralı gizleme ayarları** penceresini seçmek için SSDT değerlendirme **raporundaki** değerlendirme **kuralı gizleme bağlantısını yapılandır** ' ı seçin, burada, bastırmaya yönelik değerlendirme kurallarını seçebilirsiniz.
 
    ![Değerlendirme kuralı gizleme ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
 
--  Ayrıca, **Azure etkin ayarları**aracılığıyla da yapılandırabilirsiniz.
+-  Alternatif olarak, bir menü açmak için SSDT Çözüm Gezgini penceresinde proje düğümünüzde sağ tıklayın. Proje özellik sayfalarınızın bulunduğu bir pencere açılır Azure Data Factory alt menüdeki **SSIS** 'de **Azure etkin ayarlar** öğesini seçin. **Azure etkin ayarlar** bölümünde **gizlenen değerlendirme kuralı kimlikleri** özelliğini seçin. Son olarak, ' ın üç nokta (**...**) düğmesini seçerek **değerlendirme kuralını gizleme ayarları** penceresini açabilir ve burada, bastırmaya yönelik değerlendirme kurallarını seçebilirsiniz.
 
    ![Azure etkin ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
    ![Azure etkin ayarları aracılığıyla değerlendirme kuralı gizleme ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>Azure 'da SSIS paketlerini yürütme
-### <a name="azure-enabled-setting"></a>Azure etkin ayarı
-Paketlerinizi Azure 'da yürütmeden önce, yürütme ayarlarını yapılandırmayı seçebilirsiniz. SSIS paketleriniz için Windows kimlik doğrulamasını etkinleştirmek istiyorsanız lütfen aşağıdaki adımları izleyin:
 
-1. Bir menü açmak için SSDT Çözüm Gezgini panelinde proje düğümüne sağ tıklayın ve sonra Azure Data Factory alt menüsünde **SSIS altında bulunan** **Azure etkin ayarlar** menü öğesini seçin.
+### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a>Azure etkin ayarlarını yapılandırma
+
+Paketlerinizi Azure 'da yürütmeden önce, Azure etkin ayarlarınızı bunlar için yapılandırabilirsiniz. Örneğin, aşağıdaki adımları izleyerek Azure-SSIS IR şirket içi/bulut veri depolarına erişmek için Windows kimlik doğrulamasını etkinleştirebilirsiniz:
+
+1. Bir menü açmak için SSDT Çözüm Gezgini penceresinde proje düğümünüzde sağ tıklayın. Ardından, proje özellik sayfalarınızın bulunduğu bir pencere açılır Azure Data Factory alt menüdeki **SSIS** 'de **Azure etkin ayarlar** öğesini seçin.
 
    ![Azure etkin ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
-2. **Windows kimlik doğrulamasını etkinleştir** açılan listesine tıklayın ve **doğru**öğesini seçin. Ardından, kimlik bilgilerini girmek için **Windows kimlik doğrulaması kimlik bilgileri** için Düzenle düğmesine tıklayın.
+2. **Azure etkin ayarlar** bölümünde **Windows kimlik doğrulaması özelliğini etkinleştir** ' i seçin ve ardından açılan menüsünde **doğru** ' ı seçin. Ardından, **Windows** kimlik doğrulama kimlik bilgileri özelliğini seçin ve sonra **Windows kimlik doğrulama kimlik bilgileri** penceresini seçmek için üç nokta (**...**) düğmesini seçin.
 
    ![Windows kimlik doğrulamasını etkinleştir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png)
 
-3. **Windows kimlik doğrulama kimlik bilgileri** Düzenleyicisi 'nde kimlik bilgilerini sağlayın.
+3. Windows kimlik doğrulama kimlik bilgilerinizi girin. Örneğin, Azure dosyalarına erişmek için `Azure` `YourStorageAccountName` `YourStorageAccountKey` sırasıyla **etki alanı**, **Kullanıcı adı**ve **parola**girebilirsiniz.
 
    ![Windows kimlik doğrulama kimlik bilgileri](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png)
 
 ### <a name="starting-package-executions"></a>Paket yürütmeleri başlatılıyor
-Projelerinizi ADF 'de SSIS 'e bağladıktan sonra, Azure-SSIS IR paketleri çalıştırabilirsiniz.  Paket yürütmelerini başlatmak için iki seçeneğiniz vardır:
--  Bir menü açmak ve **Azure 'Da Yürüt** menü öğesini seçmek için SSDT araç çubuğundaki **Başlat** düğmesine tıklayın 
+
+Azure etkin projelerinizi ADF 'ye bağladıktan sonra bulut uyumluluğunu değerlendirdikten ve olası sorunları etkinleştirdikten sonra, Azure-SSIS IR paketlerinizi yürütebilir/test edebilirsiniz.
+-  Bir menüyü aşağı eklemek için SSDT araç çubuğundaki **Başlat** düğmesini seçin. Ardından, **Azure 'Da Yürüt** öğesini seçin.
 
    ![Azure 'da Yürüt](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package.png)
 
--  Bir menü açmak için SSDT Çözüm Gezgini panelinde paket düğümüne sağ tıklayın ve **paketi Azure** menü öğesinde Yürüt ' ü seçin.
+-  Alternatif olarak, bir menü açmak için SSDT Çözüm Gezgini penceresindeki paket düğümünüzde sağ tıklayın. Ardından, Azure öğesinde **paketi Yürüt** öğesini seçin.
 
    ![Paketi Azure 'da Yürüt](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
 
 > [!NOTE]
-> Paketlerinizi Azure 'da çalıştırmak için çalışan bir Azure-SSIS IR olması gerekir, bu nedenle Azure-SSIS IR durdurulmuşsa, bir iletişim kutusu penceresi başlatılır.  Özel kurulum süresini dışlayarak, bu işlem 5 dakika içinde tamamlanmalıdır, ancak sanal bir ağa katılmak Azure-SSIS IR için yaklaşık 20-30 dakika sürebilir.  Paketlerinizi Azure 'da yürüttükten sonra, bir menü açmak ve ardından bunu yapmak için ADF Portal/uygulama ' ya tıklayarak **STARTDT** ' nin Çözüm Gezgini panelinde, çalışma maliyetini yönetmek için Azure-SSIS IR durdurabilirsiniz.
-
-### <a name="checking-package-execution-logs"></a>Paket yürütme günlükleri denetleniyor
-Paket yürütmeyi başlattığınızda, SSDT Ilerleme penceresinde günlüğünü biçimlendireceğiz ve görüntüleriz.  Uzun süre çalışan bir paket için günlük dosyasını dakikalar içinde düzenli olarak güncelleştireceğiz.  SSDT araç çubuğundaki **Durdur** düğmesine tıklayarak ve hemen iptal edecek şekilde paket yürütmeyi durdurabilirsiniz.  Günlük ham verilerini evrensel adlandırma kuralı (UNC) yolunda da geçici olarak bulabilirsiniz `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs` , ancak bir gün sonra temizleyeceğiz.
-
-### <a name="switching-package-protection-level"></a>Paket koruma düzeyini değiştirme
-Azure 'da SSIS paketlerini yürütme, **EncryptSensitiveWithUserKey** / **EncryptAllWithUserKey** koruma düzeylerini desteklemez.  Sonuç olarak, paketleriniz bunlarla yapılandırıldıysa, **EncryptSensitiveWithPassword** / paketlerinizi Azure-SSIS IR yürütmek üzere Azure dosyalarına karşıya yüklerken rastgele oluşturulan parolalarla, bunları sırasıyla EncryptSensitiveWithPassword**EncryptAllWithPassword**' ye geçeceğiz.
-
-> [!NOTE]
-> Paketleriniz, **EncryptSensitiveWithUserKey** / **EncryptAllWithUserKey** koruma düzeyleriyle yapılandırılmış diğer paketlere başvuran paket yürütme görevleri içeriyorsa, paketlerinizi yürütmeden önce, bu diğer paketleri sırasıyla **EncryptSensitiveWithPassword**EncryptAllWithPassword kullanacak şekilde el ile yeniden yapılandırmanız gerekir / **EncryptAllWithPassword**.
-
-Paketleriniz zaten **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** koruma düzeyiyle yapılandırıldıysa, bunları değişmeden tutacağız, ancak paketlerinizi Azure-SSIS IR yürütmek üzere Azure dosyalarına yüklerken rastgele oluşturulan parolalar kullanmaya devam edecektir.
-
-### <a name="using-package-configuration-file"></a>Paket yapılandırma dosyasını kullanma
-Çalışma zamanında değişken değerlerini değiştirmek için paket dağıtım modelinde paket yapılandırma dosyalarını kullanırsanız, bu dosyaları paketlerinizle birlikte Azure-SSIS IR yürütmek üzere Azure dosyalarına otomatik olarak yükleyeceğiz.
+> Paketlerinizi Azure 'da çalıştırmak için çalışan bir Azure-SSIS IR olması gerekir, bu nedenle Azure-SSIS IR durdurulmuşsa, bir iletişim kutusu penceresi başlatılır. Özel kurulum süresini dışlayarak, bu işlem 5 dakika içinde tamamlanmalıdır, ancak sanal bir ağa katılmak Azure-SSIS IR için yaklaşık 20-30 dakika sürebilir. Paketlerinizi Azure 'da yürüttükten sonra, bir menü açmak ve ardından bunu yapmak için ADF Portal 'a alan **Start\stop\manage** öğesini seçerek, çalışma Çözüm Gezgini maliyetini yönetmek için Azure-SSIS IR durdurabilirsiniz.
 
 ### <a name="using-execute-package-task"></a>Paket yürütme görevini kullanma
-Paketleriniz yerel dosya sistemlerinde depolanan diğer paketlere başvuran paket yürütme görevleri içeriyorsa, aşağıdaki ek kurulumları gerçekleştirmeniz gerekir:
 
-1. Diğer paketleri, projelerinize bağlı aynı Azure depolama hesabı altında Azure dosyalarına yükleyin ve örneğin yeni UNC yollarını alın.`\\test.file.core.windows.net\ssdtexecution\Package1.dtsx`
+Paketleriniz yerel dosya sistemlerinde depolanan alt paketlere başvuran paket yürütme görevleri içeriyorsa, bu ek adımları izleyin:
 
-2. Paket görevlerinin dosya Bağlantı Yöneticisinde bu diğer paketlerin dosya yolunu yeni UNC yollarıyla değiştirin
-   - SSDT çalıştıran makineniz yeni UNC yoluna erişe, dosya Bağlantı Yöneticisi 'nin Özellikler panelinde dosya yolunu değiştirebilirsiniz
+1. Alt paketleri, projelerinize bağlı aynı Azure depolama hesabı altında Azure dosyalarına yükleyin ve örneğin yeni evrensel adlandırma kuralı (UNC) yolunu alın.`\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
+
+2. Paket görevlerinin dosya Bağlantı Yöneticisinde bu alt paketlerin dosya yolunu yeni UNC yollarıyla değiştirin
+   - SSDT çalıştıran yerel makineniz yeni UNC yoluna erişe, bunu dosya Bağlantı Yöneticisi 'nin Özellikler paneline girebilirsiniz
    - Alternatif olarak, çalışma zamanında doğru değeri atamak için dosya yolu için bir değişken kullanabilirsiniz
 
-Paketleriniz aynı projedeki diğer paketlere başvuran paket yürütme görevlerini içeriyorsa, ek bir kurulum gerekmez.
+Paketleriniz aynı projedeki alt paketlere başvuran bir yürütme paketi görevi içeriyorsa ek bir adım gerekmez.
 
-## <a name="switching-package-execution-environments-with-azure-enabled-projects"></a><a name="example"></a>Azure özellikli projelerle paket yürütme ortamlarını değiştirme
+### <a name="switching-package-protection-level"></a>Paket koruma düzeyini değiştirme
 
-Paket yürütme ortamlarını Azure etkinleştirilmiş projelerle değiştirmek için, ortama özgü parametreler için farklı değerler uygulamak üzere birden çok Visual Studio yapılandırması oluşturabilirsiniz. Örneğin, belirtilen dosyanın özniteliklerini ayarlayan bir **dosya sistemi görevi** olan basıt bir SSIS paketi vardır ve aşağıdaki adımları kullanarak buluta geçiş yapabilirsiniz:
+Azure 'da SSIS paketlerini yürütmek, **EncryptSensitiveWithUserKey** / **EncryptAllWithUserKey** koruma düzeylerini desteklemez. Sonuç olarak, paketleriniz bunları kullanacak şekilde yapılandırıldıysa, bunları sırasıyla **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** koruma düzeylerini kullanarak geçici olarak dönüştürüyoruz. Ayrıca, paketlerinizi Azure-SSIS IR yürütmeler için Azure dosyalarına yüklerken rastgele şifreleme parolaları oluşturacağız.
 
-1. Hedef dosyanın dosya yolu olan dize türünde bir parametre **FilePath** 'i tanımlayın.
+> [!NOTE]
+> Paketleriniz, **EncryptSensitiveWithUserKey** / **EncryptAllWithUserKey** koruma düzeylerini kullanacak şekilde yapılandırılmış alt paketlere başvuran paket çalıştır görevleri içeriyorsa, paketlerinizi yürütmeden önce, bu alt paketleri sırasıyla **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** koruma düzeylerini kullanacak şekilde yeniden yapılandırmanız gerekir.
 
-   ![Paket parametresini tanımla](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-define-parameters.png)
+Paketleriniz zaten **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** koruma düzeylerini kullanacak şekilde yapılandırıldıysa, bunları değişmeden tutacağız. Paketlerinizi Azure-SSIS IR yürütmeler için Azure dosyaları 'na yüklerken rastgele şifreleme parolaları oluşturmaya devam edeceğiz.
 
-2. **Kaynak bağlantıyı** Bu parametre ile ilişkilendirin. 
+### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a>Paket yürütme ortamlarını değiştirme
 
-   ![Kaynak bağlantısını Güncelleştir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
+Proje dağıtım modelindeki proje/paketlerinizi parametreleştirebilirsiniz, paket yürütme ortamlarını değiştirmek için birden çok VS yapılandırması oluşturabilirsiniz. Bu şekilde, çalışma zamanında projenize/paket parametreleriniz için ortama özel değerler atayabilirsiniz. Yerel ve bulut ortamlarında paket yürütmeleri için en az iki farklı VS yapılandırmanıza sahip olmanız önerilir. böylece projelerinizi bulut yapılandırmasına karşı Azure için etkinleştirebilirsiniz. Aşağıda, yerel makineniz ve Azure arasında paket yürütme ortamlarını değiştirme adım adım bir örnek verilmiştir:
 
-3. Visual Studio Configuration Manager 'de bulut için yeni Visual Studio yapılandırması oluşturun.
+1. Paketinizin bir dosyanın özniteliklerini ayarlayan bir dosya sistemi görevi içerdiğini varsayalım. Yerel makinenizde çalıştırdığınızda yerel dosya sisteminizde depolanan bir dosyanın özniteliklerini ayarlar. Azure-SSIS IR çalıştırdığınız zaman, Azure dosyalarında depolanan bir dosyanın özniteliklerini ayarlamanızı istersiniz. İlk olarak, dize türünde bir paket parametresi oluşturun ve dosyayı hedef dosya yolunun değerini **tutacak şekilde adlandırın** .
 
-4. Her Visual Studio yapılandırmasına karşı bu parametre için değerleri tanımlayın.
+   ![Paket parametresi oluştur](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-define-parameters.png)
 
-   ![Parametre değerlerini geçersiz kıl](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-override-parameter.png)
+2. Sonra, **dosya sistemi görev Düzenleyicisi** penceresinin **genel** sayfasında, **FilePath** Package parametresiyle **kaynak bağlantısı** bölümündeki **SourceVariable** özelliğini parametreleştirin. 
 
-5. Bu SSIS projesi, bulut için Visual Studio yapılandırmasına karşı etkinleştirilmiştir.
+   ![Kaynak bağlantısı Parametreleştir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
 
-6. Bu paketi Azure 'da yürütün. Geçerli Visual Studio yapılandırmasını değiştirerek ortamı kolayca yerel bir şekilde değiştirebilirsiniz.
+3. Varsayılan olarak, **geliştirme**adlı yerel ortamda paket yürütmeleri için mevcut bir vs yapılandırmanıza sahip olursunuz. **Azure**adlı bulut ortamında paket yürütmeleri için yenı bir vs yapılandırması oluşturun, daha önce yapmadıysanız, [Yeni vs yapılandırması oluşturma](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)bölümüne bakın.
+
+4. Paketinizin parametrelerini görüntülerken, paketinizin **parametre değerlerini Yönet** penceresini açmak Için **parametrelere parametre Ekle** düğmesini seçin. Daha sonra, **geliştirme** ve **Azure** yapılandırmalarının altındaki **FilePath** Package parametresine hedef dosya yolunun farklı değerlerini atayın.
+
+   ![Parametre değerlerini ata](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-override-parameter.png)
+
+5. Azure-projenizi bulut yapılandırmasına karşı etkinleştirin, daha önce yapmadıysanız bkz. [Azure-var olan SSIS projelerini etkinleştirme](#azureenableproject). Daha sonra, Azure dosyaları Azure-SSIS IR için Windows kimlik doğrulamasını etkinleştirmek üzere Azure etkin ayarlarını yapılandırın, daha önce yapmadıysanız [Azure etkin ayarları yapılandırma](#azureenabledsettings)konusuna bakın.
+
+6. Paketinizi Azure 'da yürütün. **Geliştirme** yapılandırmasını seçerek paket yürütme ortamınızı yerel makinenize geri geçirebilirsiniz.
 
    ![Visual Studio yapılandırmasını değiştirme](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
 
+### <a name="using-package-configuration-file"></a>Paket yapılandırma dosyasını kullanma
+
+Paket dağıtım modelinde paket yapılandırma dosyalarını kullanıyorsanız, çalışma zamanında paket özelliklerinizi ortama özel değerler atayabilirsiniz. Paketleriniz için bu dosyaları, Azure-SSIS IR yürütmeler için Azure dosyalarına otomatik olarak yükleyeceğiz.
+
+### <a name="checking-package-execution-logs"></a>Paket yürütme günlükleri denetleniyor
+
+Paket yürütmeyi başlattıktan sonra, günlüklerini SSDT 'nin **ilerleme** penceresinde biçimlendirir ve görüntüleriz. Uzun süre çalışan bir pakette, günlüklerini düzenli olarak dakikalar içinde güncelleştiririz. SSDT araç çubuğundaki **Durdur** düğmesini seçerek paket yürütmeyi hemen iptal edebilirsiniz. Ayrıca, günlüklerinin ham verilerini şu UNC yolunda geçici olarak bulabilirsiniz: `\\<YourStorageAccountName>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs` , ancak bir gün sonra temizleyeceğiz.
+
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
--  Bu SSDT özelliği şu anda ulusal bulutu desteklemiyor.
+
+-  Azure özellikli SSDT yalnızca ticari/genel bulut bölgelerini destekler ve şimdilik kamu/Ulusal bulut bölgelerini desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-SSDT 'den Azure 'da paketlerinizi çalıştırmaya memnun olduktan sonra, ADF 'yi ADF Işlem hatlarında SSIS paket etkinliklerini Yürüt olarak [çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)ve çalıştırma konusuna bakın.
+
+SSDT 'den Azure 'da paketlerinizi çalıştırmaya memnun olduktan sonra, ADF 'yi ADF Işlem hatları 'nda SSIS paketi etkinliklerini [Yürüt olarak çalıştırıp çalıştırabilirsiniz.](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)

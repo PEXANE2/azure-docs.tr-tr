@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337186"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042726"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -34,10 +34,10 @@ Bu makalede IoT Central için özetlenmektedir:
 
 IoT Central belgeler, IoT Central bir uygulamayla etkileşime geçen dört kişilik anlamına gelir:
 
-- _Çözüm Oluşturucu_ , uygulamaya bağlanan ve uygulamayı operatör için özelleştiren cihazların türlerini tanımlamaktan sorumludur.
-- _Operatör_, uygulamaya bağlı cihazları yönetir.
+- _Çözüm Oluşturucu_ , uygulamaya bağlanan ve uygulamayı operatör için özelleştiren [cihazların türlerini tanımlamaktan](howto-set-up-template.md) sorumludur.
+- Bir _işleç_ , uygulamaya bağlı [aygıtları yönetir](howto-manage-devices.md) .
 - _Yönetici_ , uygulama içindeki [Kullanıcı rollerini ve izinleri](howto-administer.md) yönetme gibi yönetim görevlerinden sorumludur.
-- Bir _cihaz geliştiricisi_ , uygulamanıza bağlı bir cihazda veya IoT Edge modülde çalışan kodu oluşturur.
+- Bir _cihaz geliştiricisi_ , uygulamanıza bağlı bir cihazda veya [IoT Edge modülde](concepts-iot-edge.md) [çalışan kodu oluşturur](concepts-telemetry-properties-commands.md) .
 
 ## <a name="create-your-iot-central-application"></a>IoT Central uygulamanızı oluşturma
 
@@ -55,7 +55,7 @@ Bir çözüm Oluşturucusu olarak, uygulamanıza bağlanan cihazlar için bir _c
 - Bir cihaz tarafından ayarlanan ve uygulamada salt okunur özellikte olan cihaz özellikleri.
 - Bir işleç kümelerinin, cihazın davranışını belirleyen özellikler.
 
-Bu cihaz şablonu şunları içerir:
+Bu [cihaz şablonu](howto-set-up-template.md) şunları içerir:
 
 - Bir cihazın gönderdiği telemetri ve rapor aldığı özellikler gibi uygulaması gereken özellikleri açıklayan bir _cihaz yetenek modeli_ .
 - Cihazda depolanmayan bulut özellikleri.
@@ -83,13 +83,13 @@ Bir çözüm Oluşturucusu olarak, uygulamanın günlük kullanımıyla sorumlu 
 
 ## <a name="manage-your-devices"></a>Cihazlarınızı yönetme
 
-Bir operatör olarak, IoT Central çözümünüzdeki cihazları yönetmek için IoT Central uygulamasını kullanırsınız. İşleçler gibi görevler şunlardır:
+Bir operatör olarak, IoT Central çözümünüzdeki [cihazları yönetmek](howto-manage-devices.md) için IoT Central uygulamasını kullanırsınız. İşleçler gibi görevler şunlardır:
 
 - Uygulamaya bağlı cihazları izleme.
 - Cihazlarla ilgili sorunları giderme ve düzeltme.
 - Yeni cihazlar hazırlama.
 
-Bir çözüm Oluşturucusu olarak, bağlı cihazlardan veri akışı üzerinde çalışan özel kurallar ve eylemler tanımlayabilirsiniz. Operatör ise uygulama içindeki görevleri denetlemek ve otomatik hale getirmek için cihaz düzeyinde bu kuralları etkinleştirebilir ya da devre dışı bırakabilir.
+Bir çözüm Oluşturucusu olarak, bağlı cihazlardan veri akışı üzerinde çalışan [özel kurallar ve eylemler tanımlayabilirsiniz](howto-configure-rules.md) . Operatör ise uygulama içindeki görevleri denetlemek ve otomatik hale getirmek için cihaz düzeyinde bu kuralları etkinleştirebilir ya da devre dışı bırakabilir.
 
 Ölçekte çalışacak şekilde tasarlanan tüm IoT çözümleri ile cihaz yönetimine yönelik yapılandırılmış bir yaklaşım önemlidir. Cihazlarınızı buluta bağlamak yeterli değildir, cihazlarınızı bağlı ve sağlıklı tutmanız gerekir. Bir operatör, uygulama yaşam döngüsü boyunca cihazlarınızı yönetmek için aşağıdaki IoT Central yeteneklerini kullanabilir:
 

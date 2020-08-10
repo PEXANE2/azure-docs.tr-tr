@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 1ba8977272817d41334ccf0d9ad01d4d751bfb17
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439218"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041706"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -26,9 +26,9 @@ Azure Güvenlik duvarı özellikleri hakkında bilgi edinmek için bkz. [Azure G
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure Güvenlik Duvarı için tipik dağıtım modeli nedir?
 
-Azure Güvenlik duvarını herhangi bir sanal ağ üzerinde dağıtabilirsiniz, ancak müşteriler genellikle merkezi bir sanal ağda ve diğer sanal ağlara bir hub ve bağlı bileşen modelinde dağıtır. Daha sonra, eşlenen sanal ağlardan varsayılan yolu bu merkezi güvenlik duvarı sanal ağını işaret etmek üzere ayarlayabilirsiniz. Küresel VNet eşlemesi desteklenir, ancak bölgeler arasında olası performans ve gecikme sorunları nedeniyle önerilmez. En iyi performansı elde etmek için bölge başına bir güvenlik duvarı dağıtın.
+Azure Güvenlik Duvarı'nı herhangi bir sanal ağa dağıtmak mümkündür ancak müşteriler genellikle bunu merkezde bulunan bir sanal ağa dağıtıp hub ve bağlı bileşen modeli kullanarak diğer sanal ağlarla eşler. Daha sonra, eşlenen sanal ağlardan varsayılan yolu bu merkezi güvenlik duvarı sanal ağını işaret etmek üzere ayarlayabilirsiniz. Küresel VNet eşlemesi desteklenir, ancak bölgeler arasında olası performans ve gecikme sorunları nedeniyle önerilmez. En iyi performans için her bölgede ayrı bir güvenlik duvarı dağıtın.
 
-Bu modelin avantajı, farklı aboneliklerde birden çok bağlı ağ sanal ağlarına merkezi olarak denetim olanağı sağlar. Ayrıca, her VNet 'te ayrı bir güvenlik duvarı dağıtmanız gerekmiyorsa de maliyet tasarrufları vardır. Maliyet tasarrufları, müşteri trafiği desenlerine bağlı olarak eşleme maliyetini karşılaştırmalı olarak ölçülür.
+Bu modelin avantajı, farklı aboneliklerdeki birden fazla bağlı bileşen sanal ağını tek bir merkezden yönetmektir. Ayrıca, her VNet 'te ayrı bir güvenlik duvarı dağıtmanız gerekmiyorsa de maliyet tasarrufları vardır. Maliyet tasarrufları, müşterinin trafik desenlerine bağlı olarak eş düğüm maliyetleriyle karşılaştırmalı olarak hesaplanmalıdır.
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Azure Güvenlik duvarını nasıl yükleyebilirim?
 
@@ -123,7 +123,7 @@ Hedef IP adresi, [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına �
 
 Yeni bir güvenlik duvarı oluşturduğunuzda Zorlamalı tünel oluşturma desteklenir. Zorlamalı tünel için mevcut bir güvenlik duvarını yapılandıramazsınız. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](forced-tunneling.md). 
 
-Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
+Azure Güvenlik Duvarı internete bağlı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 
 Yapılandırmanız şirket içi ağa Zorlamalı tünel gerektiriyorsa ve Internet hedeflerine yönelik hedef IP öneklerini belirleyebiliyorsanız, AzureFirewallSubnet üzerinde Kullanıcı tanımlı bir yol aracılığıyla bu aralıkları, şirket içi ağ ile bir sonraki atlama olarak yapılandırabilirsiniz. Ya da bu yolları tanımlamak için BGP kullanabilirsiniz.
 
@@ -137,11 +137,13 @@ Hayır. NAT kuralları, çevrilen trafiğe izin vermek için, karşılık gelen 
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Uygulama kuralı hedef FQDN 'de joker karakterler nasıl çalışır?
 
+Joker karakterler şu anda yalnızca FQDN 'nin sol tarafında kullanılabilir. Örneğin, ***. contoso.com** ve ***contoso.com**.
+
 ***. Contoso.com**yapılandırırsanız, *anyvalue*. contoso.com, ancak contoso.com (etki alanı tepesinde) izin verir. Etki alanı tepesinde izin vermek istiyorsanız, onu hedef FQDN olarak açıkça yapılandırmanız gerekir.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>*Sağlama durumu* ne anlama geliyor?
 
-Her bir yapılandırma değişikliği uygulandığında, Azure Güvenlik Duvarı temeldeki tüm arka uç örneklerini güncelleştirmeye çalışır. Nadir durumlarda, bu arka uç örneklerinden biri yeni yapılandırmayla güncelleştiremeyebilir ve güncelleştirme işlemi başarısız bir sağlama durumuyla birlikte durduruluyor. Azure Güvenlik duvarınız hala çalışıyor, ancak uygulanan yapılandırma tutarsız bir durumda olabilir, burada bazı örnekler başkalarının güncelleştirilmiş kural kümesine sahip olduğu önceki yapılandırmaya sahiptir. Bu durumda, işlem başarılı olana ve güvenlik duvarınız *başarılı* bir sağlama durumunda olduğundan, yapılandırmanızı bir kez daha güncelleştirmeyi deneyin.
+Yeni bir yapılandırma değişikliği uygulandığında Azure Güvenlik Duvarı temel aldığı tüm arka uç örneklerini güncelleştirme girişiminde bulunur. Nadir durumlarda, bu arka uç örneklerinden biri yeni yapılandırmayla güncelleştiremeyebilir ve güncelleştirme işlemi başarısız bir sağlama durumuyla birlikte durduruluyor. Azure Güvenlik Duvarınız çalışmaya devam eder ancak uygulanan yapılandırma tutarsız bir durumda kalabilir. Örneklerden bazıları önceki yapılandırmaya, diğerleri ise güncelleştirilen kural kümesine sahip olabilir. Bu durumda, işlem başarılı olana ve güvenlik duvarınız *başarılı* bir sağlama durumunda olduğundan, yapılandırmanızı bir kez daha güncelleştirmeyi deneyin.
 
 ## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure Güvenlik Duvarı planlı bakım ve planlanmamış sorunları nasıl işler?
 Azure Güvenlik Duvarı, etkin-etkin bir yapılandırmada birkaç arka uç düğümünden oluşur.  Planlı bakım için, düğümleri düzgün şekilde güncelleştirmek için bağlantı boşaltma mantığı vardır.  Güncelleştirmeler, Azure bölgelerinin her biri için iş dışı saatlerde planlanmaktadır ve bu da kesinti riskini daha fazla sınırlar.  Plansız sorunlar için, hatalı düğümü değiştirecek yeni bir düğüm örnekliyoruz.  Yeni düğümle bağlantı, genellikle başarısızlık zamanından 10 saniye içinde yeniden oluşturulur.

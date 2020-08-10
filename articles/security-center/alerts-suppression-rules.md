@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089949"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042509"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gösterme
 
@@ -21,9 +21,15 @@ Bu sayfada, Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenm
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-- Yayın durumu: **Önizleme**
-- Gerekli roller: **Güvenlik Yöneticisi** ve **sahibi** , kurallar oluşturabilir/silebilir. **Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.
-- Bulutlar: ✔ ticari bulutlar ✔ National/Sovereign (US Gov, Çin gov, diğer gov)
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Önizleme|
+|Fiyat|Ücretsiz katmanı<br>(Çoğu güvenlik uyarısı yalnızca Standart katman için geçerlidir)|
+|Gerekli roller ve izinler:|**Güvenlik Yöneticisi** ve **sahibi** kuralları oluşturabilir/silebilir.<br>**Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>Gizleme kuralları nelerdir?
@@ -32,9 +38,9 @@ Azure Güvenlik Merkezi 'nin tehdit koruması bileşenleri, ortamınızın herha
 
 Tek bir uyarı ilgi çekici veya ilgili olmadığında bunu el ile kapatabilirsiniz. Alternatif olarak, daha sonra benzer uyarıları otomatik olarak kapatmak için gizleme kuralları özelliğini kullanın. Genellikle bir gizleme kuralı kullanarak şunları yapabilirsiniz:
 
-- yanlış pozitif sonuçlar olarak belirlediğiniz uyarıları gösterme
+- Yanlış pozitif sonuçlar olarak belirlediğiniz uyarıları gösterme
 
-- çok sık tetiklenen uyarıları, faydalı olması için gösterme
+- Çok sık tetiklenen uyarıları, faydalı olması için gösterme
 
 Gizleme kurallarınız, uyarıların otomatik olarak hangi ölçütlere göre kapatılacağını tanımlar.
 

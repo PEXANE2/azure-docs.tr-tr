@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800492"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042658"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure dijital TWINS 'i diğer hizmetlerle tümleştirme
 
-Azure dijital TWINS genellikle diğer hizmetlerle birlikte kullanılır. Azure dijital TWINS, [**olay yollarını**](concepts-route-events.md)kullanarak telemetri ve bildirimler sunmak için kullanılan [IoT Hub](../iot-hub/about-iot-hub.md)gibi yukarı akış hizmetlerinden veri alır. Azure dijital TWINS Ayrıca depolama, iş akışı tümleştirme, analiz ve diğer kullanımlar için aşağı akış hizmetlerine veri yönlendirebilir. 
+Azure dijital TWINS genellikle diğer hizmetlerle birlikte kullanılır. Azure dijital TWINS, [**olay yollarını**](concepts-route-events.md)kullanarak telemetri ve bildirimler sunmak için kullanılan [IoT Hub](../iot-hub/about-iot-hub.md)gibi yukarı akış hizmetlerinden veri alır. 
+
+Azure dijital TWINS, Azure haritalar ([*nasıl yapılır: Azure Maps ınkapıya yönelik bir Azure haritalar 'ı güncelleştirmek Için Azure dijital TWINS kullanma*](how-to-integrate-maps.md)) ve depolama, iş akışı tümleştirme, analiz ve daha fazlası için Time Series Insights ([*nasıl yapılır: Time Series Insights ile tümleştirme*](how-to-integrate-time-series-insights.md)) gibi aşağı akış hizmetlerine veri yönlendirebilir. 
 
 ## <a name="data-ingress"></a>Veri girişi
 

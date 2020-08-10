@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be6dbb74883f12498c5c011e35fa955509ff627c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415377"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042777"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) Azure Data Factory kullanarak verileri kopyalama ve dönüştürme
 
@@ -52,7 +52,7 @@ Data Factory, Azure Cosmos DB yazarken en iyi performansı sağlamak için [Azur
 > [!TIP]
 > [Veri geçiş videosu](https://youtu.be/5-SRNiC_qOU) , verileri Azure Blob depolamadan Azure Cosmos DB kopyalama adımlarında size yol gösterir. Video Ayrıca verileri genel olarak Azure Cosmos DB almak için performans ayarlama konularını açıklar.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -204,7 +204,7 @@ Cosmos DB verileri kopyalama sırasında [JSON belgelerini olduğu gibi dışar�
 
 Azure Cosmos DB (SQL API) ' e veri kopyalamak için kopyalama etkinliğindeki **Havuz** türünü **Documentdbcollectionsink**olarak ayarlayın. 
 
-Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |

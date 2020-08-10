@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39dbf7d9ad933dd47f0a566f02b5e276e4b615a3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514474"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041757"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal SSH anahtarları oluşturma ve depolama
 
@@ -22,17 +22,17 @@ Portalı Linux VM 'Leri dağıtmak için sık sık kullanıyorsanız, doğrudan 
 
 Mevcut anahtarlarınız varsa ve bunları portalda kullanmayı basitleştirmek istiyorsanız, bunları karşıya yükleyebilir ve yeniden kullanmak üzere Azure 'da saklayabilirsiniz.
 
-Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrıntılı bilgi için bkz. (Linux VM 'lerine bağlanmak için SSH anahtarlarını kullanma) [./Linux/SSH-From-Windows.MD].
+Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrıntılı bilgi için bkz. [Linux VM 'lerine bağlanmak IÇIN SSH anahtarlarını kullanma](./linux/ssh-from-windows.md).
 
 ## <a name="generate-new-keys"></a>Yeni anahtarlar oluştur
 
-1. [Azure portal] ( https://portal.azure.com .
+1. [Azure portalını](https://portal.azure.com) açın.
 
 1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market*altında **SSH anahtarları**' nı seçin.
 
 1. **SSH anahtarı** sayfasında **Oluştur**' u seçin.
 
-:::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
+   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
 
 1. Anahtarlarınızın depolandığı yeni bir kaynak grubu oluşturmak için **kaynak grubu** ' nda **Yeni oluştur** ' u seçin. Kaynak grubunuz için bir ad yazın ve **Tamam**' ı seçin.
 
@@ -48,7 +48,7 @@ Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrın
 
 1. Ardından, için bir açılır pencere alacaksınız, **özel anahtarı indir ve kaynak oluştur**' u seçin. Bu işlem SSH anahtarını bir. pek dosyası olarak indirir.
 
-:::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Özel anahtarı bir. pek dosyası olarak indirin":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Özel anahtarı bir. pek dosyası olarak indirin":::
 
 1. . Pek dosyası indirildikten sonra, bilgisayarınıza SSH istemcinizden kolayca işaret etmek için daha kolay bir yere taşımak isteyebilirsiniz.
 
@@ -66,15 +66,15 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 
 ## <a name="upload-an-ssh-key"></a>SSH anahtarını karşıya yükle
 
-Ayrıca, Azure 'da depolanacak ortak bir SSH anahtarını da yükleyebilirsiniz. SSH anahtar çifti oluşturma hakkında daha fazla bilgi için bkz. [Linux VM 'lerine bağlanmak IÇIN SSH anahtarlarını kullanma ](./linux/ssh-from-windows.md).
+Ayrıca, Azure 'da depolanacak ortak bir SSH anahtarını da yükleyebilirsiniz. SSH anahtar çifti oluşturma hakkında daha fazla bilgi için bkz. [Linux VM 'lerine bağlanmak IÇIN SSH anahtarlarını kullanma](./linux/ssh-from-windows.md).
 
-1. [Azure portal] ( https://portal.azure.com .
+1. [Azure portalını](https://portal.azure.com) açın.
 
 1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market*altında **SSH anahtarları**' nı seçin.
 
 1. **SSH anahtarı** sayfasında **Oluştur**' u seçin.
 
-:::image type="content" source="./media/ssh-keys/upload.png" alt-text="Azure 'da depolanacak SSH ortak anahtarını karşıya yükleme":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Azure 'da depolanacak SSH ortak anahtarını karşıya yükleme":::
 
 1. Anahtarlarınızın depolandığı yeni bir kaynak grubu oluşturmak için **kaynak grubu** ' nda **Yeni oluştur** ' u seçin. Kaynak grubunuz için bir ad yazın ve **Tamam**' ı seçin.
 
@@ -92,4 +92,4 @@ Anahtar karşıya yüklendikten sonra, bir VM oluştururken kullanmayı seçebil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure VM 'Leri ile SSH anahtarları kullanma hakkında daha fazla bilgi için bkz. (Linux VM 'lerine bağlanmak için SSH anahtarlarını kullanma) [./Linux/SSH-From-Windows.MD].
+Azure VM 'Leri ile SSH anahtarları kullanma hakkında daha fazla bilgi edinmek için bkz. [Linux VM 'lerine bağlanmak IÇIN SSH anahtarlarını kullanma](./linux/ssh-from-windows.md).

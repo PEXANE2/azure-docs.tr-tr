@@ -4,14 +4,14 @@ description: Azure portal veya CLı kullanarak ölçüm uyarı kuralları oluşt
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/10/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321131"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042743"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -88,6 +88,7 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 6. Düzenlemelerinizi kaydetmek için **bitti** ' ye tıklayın.
 
+
 ## <a name="with-azure-cli"></a>Azure CLI ile
 
 Önceki bölümlerde Azure portal kullanarak ölçüm uyarı kurallarının nasıl oluşturulacağı, görüntüleneceği ve yönetileceği açıklanmaktadır. Bu bölümde, platformlar arası [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanarak nasıl yapılacağı açıklanır. Azure CLı 'yı kullanmaya başlamanın en hızlı yolu [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)kullanmaktır. Bu makalede Cloud Shell kullanacağız.
@@ -133,6 +134,14 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>PowerShell ile
+
+Ölçüm uyarısı kuralları için adanmış PowerShell cmdlet 'leri kullanılabilir:
+
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): yeni bir ölçüm uyarı kuralı oluşturur veya var olanı güncelleştirir.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): bir veya daha fazla ölçüm uyarı kuralını alır.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): bir ölçüm uyarı kuralını kaldırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

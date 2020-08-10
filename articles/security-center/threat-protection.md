@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836811"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041995"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -114,12 +114,13 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 
 ### <a name="availability"></a>Kullanılabilirlik
 
-- Yayın durumu: **genel kullanılabilirlik**
-- Gerekli roller: **Güvenlik Yöneticisi** , uyarıları kapatabilir. **Güvenlik okuyucusu** bulguları görüntüleyebilir.
-- Larının<br>
-    Ticari bulutlar ✔<br>
-    ✘ US Gov<br>
-    ✘ Çin gov, diğer gov
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Genel olarak kullanılabilir|
+|Fiyat|Standart katmanı|
+|Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -150,14 +151,13 @@ Daha fazla bilgi için bkz.
 
 ### <a name="availability"></a>Kullanılabilirlik
 
-- Yayın durumu:
-    - [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)
-    - [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme)
-    - [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Önizleme)
-- Larının<br>
-    Ticari bulutlar ✔<br>
-    ✔ US Gov<br>
-    ✘ Çin gov, diğer gov
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|[BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)<br>[Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme)<br>[Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Önizleme)|
+|Fiyat|Standart katmanı|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|||
+
 
 ### <a name="whats-protected"></a>Ne korumalıdır?
 

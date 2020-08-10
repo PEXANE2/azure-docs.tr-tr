@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439726"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042811"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Öğretici: Özel Görüntü İşleme Hizmeti ile uçta görüntü sınıflandırması gerçekleştirme
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 >[!TIP]
 >Bu öğretici, [bir Raspberry PI 3 örnek projesinde özel görüntü işleme ve Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) basitleştirilmiş bir sürümüdür. Bu öğretici bir bulut VM 'de çalışacak şekilde tasarlandı ve görüntü sınıflandırıcısını eğitme ve test etmek için statik görüntüler kullanır. Bu, IoT Edge Özel Görüntü İşleme değerlendirmek için yalnızca bir kullanıcı için faydalıdır. Örnek proje fiziksel donanım kullanır ve görüntü sınıflandırıcısını eğitmek ve test etmek için, daha ayrıntılı, gerçek yaşam senaryosu denemek isteyen bir kişi için kullanışlıdır.
@@ -62,7 +62,7 @@ Görüntü sınıflandırıcı derlemek için bir Özel Görüntü İşleme Hizm
 
 Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcısı olarak dışarı aktarabilir ve bir IoT Edge cihazına dağıtabilirsiniz.
 
-### <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+### <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 1. Web tarayıcınızda [Özel Görüntü İşleme Hizmeti web sayfasına](https://customvision.ai/) gidin.
 
@@ -74,7 +74,7 @@ Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcıs
 
    | Alan | Değer |
    | ----- | ----- |
-   | Ad | Projeniz için bir ad belirleyin, örneğin: **EdgeTreeClassifier**. |
+   | Adı | Projeniz için bir ad belirleyin, örneğin: **EdgeTreeClassifier**. |
    | Description | İsteğe bağlı proje açıklaması. |
    | Kaynak | Özel Görüntü İşleme Hizmeti kaynağı içeren Azure Kaynak gruplarınızdan birini seçin veya henüz bir tane eklemediyseniz yeni bir tane **oluşturun** . |
    | Proje Türleri | **Sınıflandırma** |
@@ -433,9 +433,9 @@ Cihazdan cameraCapture modülü günlüklerini görüntüleyerek iletilerin gön
 Visual Studio Code, IoT Edge cihazınızın adına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktasını**seçin. 
 
 > [!NOTE]
-> Başlangıçta cameraCapture modülündeki çıktıda bazı bağlantı hataları görebilirsiniz. Bunun nedeni, dağıtılan ve başlatılan modüller arasındaki gecikmeden kaynaklanır.
+> Başlangıçta, cameraCapture modülünden Çıkışta bağlantı hataları görebilirsiniz. Bunun nedeni, dağıtılan ve başlatılan modüller arasındaki gecikmeden kaynaklanır.
 >
-> CameraCapture modülü başarılı olana kadar bağlantıyı otomatik olarak yeniden deneyecek. Daha sonra, aşağıda açıklanan beklenen görüntü sınıflandırma iletilerini görmeniz gerekir.
+> CameraCapture modülü başarılı olana kadar otomatik olarak bağlantı bağlantısını otomatik olarak yeniden durdurur. Başarılı bağlantıdan sonra, aşağıda açıklanan beklenen görüntü sınıflandırma iletilerini görürsünüz.
 
 cameraCapture modülünden iletiler olarak gönderilen Özel Görüntü İşleme Hizmeti modülü sonuçları, görüntünün köknar veya kiraz ağacı olma ihtimalini içerir. Görüntü köknar ağacına ait olduğundan olasılık değeri 1.0 olmalıdır.
 

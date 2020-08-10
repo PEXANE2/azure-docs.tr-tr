@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758959"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041793"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -38,6 +38,7 @@ Bu öğreticide yaptığınız ses özellikli sohbet bot şu adımları izler:
 1. Tanınan metin, bir bot Framework etkinliği olarak Echo bot 'a geçirilir.
 1. Yanıt metni, metinden konuşmaya (TTS) hizmeti tarafından sese açılır ve kayıttan yürütme için istemci uygulamasına geri akışı yapılır.
 
+<!-- svg src in User Story 1754106 -->
 ![Diyagram-etiket](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Konuşma kanalı akışı")
 
 > [!NOTE]
@@ -166,7 +167,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
    * **Dosya**  ->  **Bot 'ı açın**.
-3. Bot 'unuzun URL 'sini girin. Örnek:
+3. Bot 'unuzun URL 'sini girin. Örneğin:
 
    ```
    http://localhost:3978/api/messages

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519706"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042335"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
 
@@ -31,12 +31,14 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-- Yayın durumu: **genel olarak kullanılabilir**
-- Gerekli roller ve izinler:
-    - Dışarı aktarma yapılandırmasını içeren abonelikte **okuyucu**
-    - Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**
-    - Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır
-- Bulutlar: ✔ ticari bulutlar ✔ US Gov ✘ Çin gov, diğer gov
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|Genel olarak kullanılabilir|
+|Fiyat|Ücretsiz katmanı|
+|Gerekli roller ve izinler:|Dışarı aktarma yapılandırmasını içeren abonelikte **okuyucu**<br>Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama

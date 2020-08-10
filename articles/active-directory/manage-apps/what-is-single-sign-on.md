@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0928cb264dcff43cc0a3e45a8417dcd1e23a1ed3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387549"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042607"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
@@ -42,7 +42,7 @@ Aşağıdaki tablo, çoklu oturum açma yöntemlerini özetler ve daha fazla ayr
 
 | Çoklu oturum açma yöntemi | Uygulama türleri | Kullanılması gereken durumlar |
 | :------ | :------- | :----- |
-| [OpenID Connect ve OAuth](#openid-connect-and-oauth) | yalnızca bulut | Yeni bir uygulama geliştirirken OpenID Connect ve OAuth kullanın. Bu protokol uygulama yapılandırmasını basitleştirir, kullanımı kolay SDK 'lara sahiptir ve uygulamanızın MS Graf kullanmasını sağlar.
+| [OpenID Connect ve OAuth](#openid-connect-and-oauth) | bulut ve şirket içi | Yeni bir uygulama geliştirirken OpenID Connect ve OAuth kullanın. Bu protokol uygulama yapılandırmasını basitleştirir, kullanımı kolay SDK 'lara sahiptir ve uygulamanızın MS Graf kullanmasını sağlar.
 | [SAML](#saml-sso) | bulut ve şirket içi | OpenID Connect veya OAuth kullanmayan mevcut uygulamalar için mümkün olduğunda SAML 'yi seçin. SAML, SAML protokollerinden birini kullanarak kimlik doğrulaması yapan uygulamalar için geçerlidir.|
 | [Parola tabanlı](#password-based-sso) | bulut ve şirket içi | Uygulamanın Kullanıcı adı ve parolayla kimlik doğrulaması yaparken parola tabanlı ' yı seçin. Parola tabanlı çoklu oturum açma, güvenli uygulama parola depolaması ve bir Web tarayıcısı uzantısı ya da mobil uygulama kullanarak yeniden oynatma imkanı sunar. Bu yöntem, uygulama tarafından sağlanmış olan oturum açma işlemini kullanır, ancak yöneticinin parolaları yönetmesine olanak sağlar. |
 | [Bağlandı](#linked-sign-on) | bulut ve şirket içi | Uygulama, başka bir kimlik sağlayıcısı hizmetinde çoklu oturum açma için yapılandırıldığında, bağlantılı oturum açma seçeneğini belirleyin. Bu seçenek, uygulamaya çoklu oturum açma eklemez. Ancak, uygulama zaten Active Directory Federasyon Hizmetleri (AD FS) gibi başka bir hizmet kullanılarak uygulanmış çoklu oturum açma olabilir.|
