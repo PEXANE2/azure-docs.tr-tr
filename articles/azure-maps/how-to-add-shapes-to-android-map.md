@@ -1,6 +1,6 @@
 ---
 title: Android Maps 'a şekil ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak haritada farklı şekillerin nasıl işleneceğini öğreneceksiniz.
+description: Haritalara şekil eklemeyi öğrenin. Haritaya bir çizgi ve çokgen eklemek için Azure Maps Android SDK kullanan kod örneklerine bakın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 855a05bd228a3bf903b79522549ed519b4745e17
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127103"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037431"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya şekil ekleme Android SDK
 
 Bu makalede, Azure Maps Android SDK kullanarak bir haritada şekillerin nasıl işleneceğini gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 

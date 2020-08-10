@@ -1,6 +1,6 @@
 ---
 title: Azure depolama tablo verilerini şifreleme | Microsoft Docs
-description: Azure depolama 'da tablo veri şifrelemesi hakkında bilgi edinin.
+description: Azure depolama 'da tablo veri şifrelemesi hakkında bilgi edinin. .NET Azure Storage Istemci kitaplığı, ekleme ve değiştirme işlemleri için dize varlıklarını şifrelemenizi sağlar.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec213b9d7429714beb948f061445fd37d698624
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60326012"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037499"
 ---
 # <a name="encrypt-table-data"></a>Tablo verilerini şifreleme
 .NET Azure depolama Istemci kitaplığı, ekleme ve değiştirme işlemleri için dize varlık özelliklerinin şifrelenmesini destekler. Şifrelenmiş dizeler hizmette ikili özellikler olarak depolanır ve şifre çözme sonrasında dizelere geri dönüştürülür.    

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 description: Faturalandırma, analitik mağaza, güvenlik ve analitik depoda yaşam süresi gibi alanlarda Azure Cosmos DB için SYNAPSE bağlantısı hakkında sık sorulan soruların yanıtlarını alın.
-author: srchi
-ms.author: srchi
+author: Rodrigossz
+ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e65838074260a4d4a9c9668fa6ac4aa2a403929b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921200"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037567"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 

@@ -1,6 +1,6 @@
 ---
 title: Yerelleştirme desteği | Microsoft Azure haritaları
-description: Bu makalede Microsoft Azure haritaların Hizmetleri için desteklenen diller hakkında bilgi edineceksiniz.
+description: Haritalar, arama, yönlendirme, hava durumu ve trafik olayları gibi hizmetlerle Azure haritalarının desteklediği bölgeleri görün. Görünüm parametresini ayarlamayı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127902"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037703"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
 
@@ -25,7 +25,7 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
-| ID         | Name                   |  Haritalar | Arayın | Yönlendirme | Hava Durumu | Trafik olayları | JS eşleme denetimi |
+| ID         | Adı                   |  Haritalar | Ara | Yönlendirme | Hava Durumu | Trafik olayları | JS eşleme denetimi |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikaner              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -110,44 +110,44 @@ Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. 
 > 1 Ağustos 2019 ' den sonra, **Görünüm** parametresi yukarıda listelenen yeni bölgeler/ülkeler için döndürülen harita içeriğini tanımlar. Azure Maps **Görünüm** parametresi ("Kullanıcı bölgesi parametresi" olarak da bilinir), haritada görüntülenen Kenarlıklar ve Etiketler dahil olmak üzere Azure haritalar Hizmetleri aracılığıyla hangi coğrafi bölge/bölge için doğru haritaları gösterecek olan ıkı harfli ıso-3166 ülke kodudur. 
 
 REST API 'Leri için gereken **Görünüm** parametresini ve hizmetlerinizin kullandığı SDK 'ları ayarladığınızdan emin olun.
->  
->
->  **REST API 'Leri:**
->  
->  Görünüm parametresini gereken şekilde ayarlamış olduğunuzdan emin olun. View parametresi, Azure haritalar Hizmetleri aracılığıyla hangi geopolitik tartışmalı içerik kümesini döndürüleceğini belirtir. 
->
->  Etkilenen Azure haritalar REST Hizmetleri:
->    
->    * Harita kutucuğunu al
->    * Harita görüntüsünü al 
->    * Aramayı bulanık al
->    * Arama POı al
->    * Arama POı kategorisini al
->    * Yakında arama alın
->    * Arama adresini al
->    * Yapılandırılmış arama adresini al
->    * Arama adresini tersine al
->    * Arama adresini al çapraz cadde
->    * Geometri Içinde arama sonrası
->    * Arama sonrası adres Batch önizlemesi
->    * Arama sonrası adres geri Batch önizlemesi
->    * Rota üzerinde arama sonrası
->    * Arama sonrası benzer toplu Iş önizlemesi
->
->    
->  **SDK**
->
->  **Görünüm** parametresini gereken şekilde ayarlamış olduğunuzdan ve Web SDK 'sının en son sürümüne sahip olduğunuzdan emin olun ve Android SDK. Etkilenen SDK 'lar:
->
->    * Azure Haritalar Web SDK 'Sı
->    * Azure Haritalar Android SDK
+  
+
+### <a name="rest-apis"></a>REST API 'Leri
+  
+Görünüm parametresini gereken şekilde ayarlamış olduğunuzdan emin olun. View parametresi, Azure haritalar Hizmetleri aracılığıyla hangi geopolitik tartışmalı içerik kümesini döndürüleceğini belirtir. 
+
+Etkilenen Azure haritalar REST Hizmetleri:
+    
+ * Harita kutucuğunu al
+ * Harita görüntüsünü al 
+ * Aramayı bulanık al
+ * Arama POı al
+ * Arama POı kategorisini al
+ * Yakında arama alın
+ * Arama adresini al
+ * Yapılandırılmış arama adresini al
+ * Arama adresini tersine al
+ * Arama adresini al çapraz cadde
+ * Geometri Içinde arama sonrası
+ * Arama sonrası adres Batch önizlemesi
+ * Arama sonrası adres geri Batch önizlemesi
+ * Rota üzerinde arama sonrası
+ * Arama sonrası benzer toplu Iş önizlemesi
+
+ 
+### <a name="sdks"></a>SDK’lar
+
+**Görünüm** parametresini gereken şekilde ayarlamış olduğunuzdan ve Web SDK 'sının en son sürümüne sahip olduğunuzdan emin olun ve Android SDK. Etkilenen SDK 'lar:
+
+ * Azure Haritalar Web SDK 'Sı
+ * Azure Haritalar Android SDK
 
 Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin ve Azure Maps aracılığıyla erişim yetkisine sahip olduğunuz üçüncü taraf içeriklerin eşlenmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
 
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görüntüle         | Açıklama                            |  Haritalar | Arayın | JS Harita Denetimi |
+| Görüntüle         | Açıklama                            |  Haritalar | Ara | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |

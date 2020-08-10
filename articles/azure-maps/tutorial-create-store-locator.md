@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu uygulaması oluşturma | Microsoft Azure haritaları'
-description: Bu öğreticide, Microsoft Azure Maps web SDK 'sını kullanarak bir depo Konumlandırıcı Web uygulaması oluşturmayı öğreneceksiniz.
+description: Depo Konumlandırıcı Web uygulamaları oluşturmayı öğrenin. Web sayfası oluşturmak, arama hizmetini sorgulamak ve sonuçları bir haritada görüntülemek için Azure Maps web SDK 'sını kullanın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d6ab05d92ec209e10bfc4aec4e4fe2b6ea150099
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289550"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037669"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
@@ -33,7 +33,7 @@ Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıc
 
 [Canlı mağaza Bulucu örneğine](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) veya [kaynak koduna](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)atlayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 

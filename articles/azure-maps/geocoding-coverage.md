@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Maps arama hizmetindeki coğrafi kodlama kapsamı
-description: Bu makalede, farklı ülkelerde/bölgelerde coğrafi kodlama kapsamını Microsoft Azure eşler hakkında bilgi edineceksiniz.
+description: Azure haritalar arama 'nın hangi bölgelerde ele alınmaktadır olduğunu görün. Coğrafi kodlama kategorileri adres noktalarını, ev numaralarını, sokak düzeyini, şehir düzeyini ve ilgilendiğiniz noktaları içerir.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386920"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037448"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
 

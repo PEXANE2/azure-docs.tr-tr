@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: bir konuma yol bulma | Microsoft Azure haritaları'
-description: Bu öğreticide, Microsoft Azure haritaları yönlendirme hizmeti kullanarak bir harita üzerindeki bir konuma (ilgi noktası) nasıl bir konuma nasıl bir yol işleneceğini gösterilmektedir.
+description: Bir ilgi noktasına yol bulmayı öğrenin. Bkz. adres koordinatlarını ayarlama ve noktaya yönelik yönergeler için Azure Maps Route hizmetini sorgulama.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0ff604e920ca3e0708fc21a1cadfe61646f4e30b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287413"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037584"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bir ilgi noktasına yönlendirme
 
@@ -25,7 +25,7 @@ Bu öğreticide, Azure Haritalar hesabınız ile Yönlendirme Hizmeti SDK’nız
 > * Adres koordinatlarını ayarlama
 > * İstenen konuma yol tarifi almak için Sorgu Yönlendirme Hizmeti
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)' daki yönergeleri Izleyin, S1 fiyatlandırma katmanı ile bir abonelik gerekir. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Android harita denetimi ile çalışmaya başlama | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak Android harita denetimiyle çalışmaya nasıl başlacağınızı öğreneceksiniz.
+description: Azure Haritalar Android SDK hakkında bilgi sahibi olun. Android Studio bir proje oluşturmayı, SDK 'yı yüklemeyi ve etkileşimli bir harita oluşturmayı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f3a19a3e596d4d0162e92ac3f69c1333eea6aa41
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: fca1b48911ff2af977b8415ad1d9ec1cc2801623
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132169"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037771"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
 Azure Maps Android SDK, Android için bir vektör eşleme kitaplığıdır. Bu makale, Azure Maps Android SDK yükleme ve eşleme yükleme işlemlerinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 

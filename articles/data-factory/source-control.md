@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f5a8a87d4ac4936f25e7ece2a34b518c09a063
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674599"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037635"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -211,11 +211,11 @@ Yayın dalının ve bekleyen değişikliklerin doğru olduğunu onaylamak için 
 
 ### <a name="permissions"></a>İzinler
 
-Genellikle, her bir takım üyesinin fabrikası güncelleştirme izinlerine sahip olmasını istemezsiniz. Aşağıdaki izin ayarları önerilir:
+Genellikle her takım üyesinin Data Factory güncelleştirme izinlerine sahip olmasını istemezsiniz. Aşağıdaki izin ayarları önerilir:
 
-*   Tüm takım üyeleri, Veri Fabrikası için okuma izinlerine sahip olmalıdır.
-*   Yalnızca bir SELECT kişinin fabrikada yayımlamasına izin verilmelidir. Bunu yapmak için, fabrikasının içinde bulunduğu kaynak grubunda **Data Factory katkıda** bulunan rolüne sahip olmaları gerekir. İzinler hakkında daha fazla bilgi için bkz. [Azure Data Factory roller ve izinler](concepts-roles-permissions.md).
-   
+*   Tüm takım üyelerinin Data Factory okuma izinleri olmalıdır.
+*   Yalnızca bir seçim kümesinin Data Factory yayımlamasına izin verilmelidir. Bunu yapmak için, Data Factory içeren **kaynak grubunda** **Data Factory katkıda** bulunan rolüne sahip olmaları gerekir. İzinler hakkında daha fazla bilgi için bkz. [Azure Data Factory roller ve izinler](concepts-roles-permissions.md).
+
 İşbirliği dalında doğrudan iadelere izin vermeniz önerilir. Bu kısıtlama, her iade etme işleminin [özellik dalları oluşturma](source-control.md#creating-feature-branches)bölümünde açıklanan bir çekme isteği gözden geçirme süreci boyunca ilerlemesinin önlenmesi için hataları önlemeye yardımcı olabilir.
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault parolaları kullanma

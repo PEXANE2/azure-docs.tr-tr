@@ -1,6 +1,6 @@
 ---
 title: Kategorileri ara | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps 'ta desteklenen arama kategorileri hakkında bilgi edineceksiniz.
+description: Azure haritalar 'da hangi arama kategorilerinin desteklendiğini öğrenin. Desteklenen tüm kategori kodlarını ve her birinin temsil ettiği noktaların türlerini görüntüleyin.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4975a5842ef23b54444663f653f43bb8dbd1d2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9e910c38000fc4dbc454b68b752925df9145837
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745975"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037686"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure haritalar desteklenen Kategoriler
 

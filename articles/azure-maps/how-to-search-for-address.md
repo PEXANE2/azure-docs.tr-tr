@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar arama hizmetlerini kullanarak bir konum arayın
-description: Bu makalede, coğrafi kodlama, ters coğrafi kodlama, belirsiz arama ve ters çapraz arama araması için Microsoft Azure haritaları arama API 'Lerini kullanarak bir konumun nasıl aranacağını öğreneceksiniz.
+description: Azure haritalar arama hizmeti hakkında bilgi edinin. Bu API kümesini coğrafi kodlama, ters coğrafi kodlama, benzer aramalar ve çapraz açık aramalar için nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 51ee2bb66adedc310f65b2d3b430023ae7767df6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126654"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037788"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 
@@ -26,7 +26,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Koordinat konumunu cadde adresine çevirmek için [ters adres araması](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) yapın.
 * Koordinat konumunu, [arama adresi geriye yönelik arama API 'sini](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)kullanarak, bir insan genelindeki bir merkezden karşılıklı olarak çevirin.  Genellikle, bu, bir cihazdan veya varlıktan GPS akışı alan uygulamaları izlemek ve koordinat nerede bulunduğunu bildirmek için gereklidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).

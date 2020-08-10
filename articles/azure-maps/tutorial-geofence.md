@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Microsoft Azure haritasında bölge alanı oluşturma ve cihazları izleme'
-description: Microsoft Azure Maps uzamsal hizmetini kullanarak bölge sınırlaması ile ilişkili cihazları nasıl ayarlayacağınızı ve bu cihazların nasıl izleneceğini öğrenin.
+description: Bölge belirleme ayarlamayı öğrenin. Bkz. Azure Maps uzamsal hizmetini kullanarak, bölge sınırına göre cihazları izleme.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1044348e50f4208038739975e7355fb6f4873454
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517394"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037652"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure Haritalar’ı kullanarak bölge sınırı ayarlama
 
@@ -30,7 +30,7 @@ Azure haritalar, yukarıdaki senaryoda bulunan oluşturma alanını girip çıka
 > * Azure haritalar bölge giriş ve çıkış olaylarına abone olmak için [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) kullanın. İki Logic Apps tanımlanmış HTTP uç noktalarını çağıran iki Web kancası olay aboneliği ayarlayacağız. Logic Apps, daha sonra, bir ekipman için uygun e-posta bildirimlerini daha sonra veya bölge girişi altına alacak şekilde gönderir.
 > * Bir ekipman parçası çıktığında ve bölge alanları girdiğinde bildirim almak için [Arama bölge kümesi API 'sini](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -188,7 +188,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
 
 Bu bölümde, bir e-posta bildirimi tetiklenecek iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) uç noktası oluşturacağız. Her bitiş noktası çağrıldığında e-posta bildirimleri gönderecek ilk tetikleyiciyi nasıl oluşturacağınız hakkında göstereceğiz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 
 2. [Azure portalının](https://portal.azure.com) sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 

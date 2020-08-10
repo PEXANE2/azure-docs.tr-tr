@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 18eecdfeca58bc04c77dd0e39658a51fe56d0e68
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513103"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037550"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -25,17 +25,15 @@ ms.locfileid: "87513103"
 
 Bu makalede, yerel veya uzak denemeleri verilerinize erişmek için Azure Machine Learning veri kümeleri oluşturmayı öğreneceksiniz. Veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
-Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz ve veri kaynaklarınızın bütünlüğünü riske çıkarmazsınız. Ayrıca, veri kümeleri, iş akışı performans hızına yardımcı olan geç olarak değerlendirilir.
+Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz ve veri kaynaklarınızın bütünlüğünü riske çıkarmazsınız. Ayrıca, veri kümeleri, iş akışı performans hızına yardımcı olan geç değerlendirilir. Veri mağazalarından, genel URL 'Lerden ve [Azure açık veri](../open-datasets/how-to-create-dataset-from-open-dataset.md)kümelerinden veri kümeleri oluşturabilirsiniz.
 
 Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
 * Veri kümeleri tarafından başvurulan, depolama alanındaki verilerin tek bir kopyasını saklayın.
 
-* Bağlantı dizeleri veya veri yolları hakkında endişelenmeden model eğitimi sırasında verilere sorunsuzca erişin.
+* Bağlantı dizeleri veya veri yolları hakkında endişelenmeden model eğitimi sırasında verilere sorunsuzca erişin. [Veri kümeleriyle eğitme hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md).
 
 * Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.
-
-[Veri kümeleriyle eğitme hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -46,6 +44,12 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
 * Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), azureml veri kümesi paketini içerir.
+
+    * Tümleşik Not defterleri ve SDK 'nın zaten yüklü olduğu tam olarak yapılandırılmış ve yönetilen bir geliştirme ortamı olan [Azure Machine Learning işlem örneği](concept-compute-instance.md#managing-a-compute-instance)oluşturun.
+
+    **VEYA**
+
+    * Kendi Jupyter Not defteriniz üzerinde çalışın ve [bu yönergelerle](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)SDK 'yı kendiniz de yüklersiniz.
 
 > [!NOTE]
 > Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7).
@@ -159,7 +163,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|INDEKS|Passengerıd|Kalan|PClass|Name|Komutu|Yaş|SibSp|Parch|Bilet|Tarifeli havayolu|Cabin|Embarked
+|INDEKS|Passengerıd|Kalan|PClass|Adı|Komutu|Yaş|SibSp|Parch|Bilet|Tarifeli havayolu|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Yanlış|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
 1|2|Doğru|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
@@ -224,50 +228,15 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin. 
 1. Veri kümesi oluşturmayı gerçekleştirmek için **Oluştur** ' u seçin.
 
+## <a name="create-datasets-with-azure-open-datasets"></a>Azure açık veri kümeleri ile veri kümeleri oluşturma
+
+[Azure açık veri](https://azure.microsoft.com/services/open-datasets/) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini eğitmenize yardımcı olan hava durumu, Census, tatiller, genel güvenlik ve konum için genel etki alanı verilerini içerir. Açık veri kümeleri bulutta Microsoft Azure ve hem SDK hem de Studio 'ya dahildir.
+
+[Azure açık veri kümelerinden Azure Machine Learning veri kümeleri](../open-datasets/how-to-create-dataset-from-open-dataset.md)oluşturmayı öğrenin. 
+
 ## <a name="train-with-datasets"></a>Veri kümeleriyle eğitme
 
 ML modellerinizi eğitmek için Machine Learning denemeleri 'te veri kümelerinizi kullanın. [Veri kümeleriyle eğitme hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md)
-
-## <a name="create-datasets-with-azure-open-datasets"></a>Azure açık veri kümeleri ile veri kümeleri oluşturma
-
-[Azure açık veri](https://azure.microsoft.com/services/open-datasets/) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini eğitmenize yardımcı olan hava durumu, Census, tatiller, genel güvenlik ve konum için genel etki alanı verilerini içerir. Açık veri kümeleri bulutta Microsoft Azure ve hem SDK hem de çalışma alanı kullanıcı arabirimine dahildir.
-
-### <a name="use-the-sdk"></a>SDK 'Yı kullanma
-
-SDK 'da Azure açık veri kümeleri ile veri kümeleri oluşturmak için paketini ile yüklediğinizden emin olun `pip install azureml-opendatasets` . Her ayrık veri kümesi SDK 'daki kendi sınıfıyla temsil edilir ve belirli sınıflar `TabularDataset` ,, `FileDataset` veya her ikisi olarak kullanılabilir. Sınıfların tam listesi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) bakın.
-
-`TabularDataset` `FileDataset` Dosyaları doğrudan yönetmenize ve/veya indirmenizi sağlayan bir veya olarak belirli sınıfları alabilirsiniz. Diğer sınıflar **yalnızca** veya işlevlerinden birini kullanarak bir veri kümesi alabilir `get_tabular_dataset()` `get_file_dataset()` . Aşağıdaki kod örneği, bu sınıf türleri için birkaç örnek gösterir.
-
-```python
-from azureml.opendatasets import MNIST
-
-# MNIST class can return either TabularDataset or FileDataset
-tabular_dataset = MNIST.get_tabular_dataset()
-file_dataset = MNIST.get_file_dataset()
-
-from azureml.opendatasets import Diabetes
-
-# Diabetes class can return ONLY TabularDataset and must be called from the static function
-diabetes_tabular = Diabetes.get_tabular_dataset()
-```
-
-Açık veri kümelerinden oluşturulan bir veri kümesini kaydettiğinizde, hiçbir veri hemen indirilir, ancak istendiğinde (eğitim sırasında, örneğin, merkezi bir depolama konumundan), verilere daha sonra erişilir.
-
-### <a name="use-the-ui"></a>Kullanıcı arabirimini kullanma
-
-Ayrıca, Kullanıcı arabirimi aracılığıyla açık veri kümeleri sınıflarından veri kümeleri oluşturabilirsiniz. Çalışma alanınızda **varlıklar**' ın altındaki **veri kümeleri** sekmesini seçin. **Veri kümesi oluştur** aşağı açılan menüsünde **açık veri kümeleri ' nden**seçim yapın.
-
-![UI ile veri kümesini açma](./media/how-to-create-register-datasets/open-datasets-1.png)
-
-Kutucuğunu seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filtreleme seçeneğiniz vardır.) **İleri ' yi**seçin.
-
-![Veri kümesi seçin](./media/how-to-create-register-datasets/open-datasets-2.png)
-
-Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
-
-![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-register-datasets/open-datasets-3.png)
-
-Veri kümesi artık veri **kümeleri**altında çalışma alanınızda kullanılabilir. Bunu, oluşturduğunuz diğer veri kümeleriyle aynı şekilde kullanabilirsiniz.
 
 ## <a name="version-datasets"></a>Sürüm veri kümeleri
 
