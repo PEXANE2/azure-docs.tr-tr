@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841972"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057817"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Ek Premium dosya paylaşma düzeyi limitleri
 
@@ -23,11 +23,11 @@ ms.locfileid: "87841972"
 
 #### <a name="file-level-limits"></a>Dosya düzeyi sınırları
 
-|Alan  |Premium dosya  |Standart dosya |
+|Alan  |Standart dosya  |Premium dosya  |
 |---------|---------|---------|
-|Boyut                  |4 TiB         |1 TiB|
-|Dosya başına en fazla ıOPS     |5.000         |1.000|
-|Eşzamanlı tutamaçlar    |2.000         |2.000|
-|Çıkış  |300 MIB/sn|      Bkz. standart dosya işleme değerleri|
-|Giriş  |200 MIB/sn| Bkz. standart dosya işleme değerleri|
-|Aktarım hızı| Premium dosya giriş/çıkış değerlerini gör| En fazla 60 MIB/sn|
+|Boyut     |1 TiB         |4 TiB         |
+|Dosya başına en fazla ıOPS      |1.000         |5.000         |
+|Eşzamanlı tutamaçlar     |2.000         |2.000         |
+|Çıkış     |Bkz. standart dosya işleme değerleri         |300 MIB/sn         |
+|Giriş     |Bkz. standart dosya işleme değerleri         |200 MIB/sn         |
+|Aktarım hızı     |En fazla 60 MIB/sn         |Premium dosya giriş/çıkış değerlerini gör         |

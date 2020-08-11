@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471753"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056967"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
 Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlendirme kurallarıyla ilgili davranışı belirtir. Ön kapı modern bir Content Delivery Network (CDN) ve bunun yanı sıra dinamik site hızlandırma ve Yük Dengeleme ile aynı zamanda diğer CDN gibi önbelleğe alma davranışlarını da destekler.
@@ -111,6 +111,12 @@ Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi 
 Önbelleğe alma kullanılırken aşağıdaki istek üst bilgileri bir arka uca iletilmeyecektir.
 - İçerik Uzunluğu
 - Aktarım kodlaması
+
+## <a name="cache-duration"></a>Önbellek süresi
+
+Önbellek süresi hem ön kapı tasarımcısında hem de Rules altyapısında yapılandırılabilir. Frontkapısı tasarımcısında ayarlanan önbellek süresi en düşük önbellek süresi olur. Bu geçersiz kılma, Origin 'in önbellek denetim üst bilgisinde geçersiz kılma değerinden daha fazla TTL varsa çalışmaz. 
+
+Kural altyapısı aracılığıyla ayarlanan önbellek süresi, kaynak Yanıt üstbilgisinin ne olursa olsun, geçersiz kılma değerini kullanacağı anlamına gelen, doğru bir önbellek geçersiz kılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9ac473c3864b4be06c978e7d6a3555bb4550d2a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725542"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056848"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -48,7 +48,7 @@ Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)o
 Özel bir model oluşturmak için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanabilmeniz Için bir konuşma hizmeti aboneliği gerekir. Standart bir konuşma hizmeti aboneliği oluşturmak için bu yönergeleri izleyin: [bir konuşma aboneliği oluşturun](get-started.md#new-resource).
 
 > [!NOTE]
-> Lütfen standart (S0) abonelikler oluşturmanız, ücretsiz deneme (F0) aboneliklerinin desteklenmediğinden emin olun.
+> Lütfen standart (S0) abonelikler oluşturmayı unutmayın, ücretsiz (F0) abonelikler desteklenmez.
 
 Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, [özel konuşma tanıma Portal](https://speech.microsoft.com/customspeech) 'da oturum açmanız ve aboneliğinizi bağlamanız gerekir.
 

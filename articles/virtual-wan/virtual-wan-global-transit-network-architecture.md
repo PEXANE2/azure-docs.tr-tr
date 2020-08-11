@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856367"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056899"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -25,7 +25,7 @@ Bu modelde, bir bağlı bileşen şu olabilir:
 * Sanal ağ (VNet)
 * Fiziksel şube sitesi
 * Uzak Kullanıcı
-* Internet
+* İnternet
 
 ![Hub ve bağlı bileşen](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
@@ -132,6 +132,9 @@ Azure sanal WAN hub 'ları karma ağ genelinde tüm ağ uç noktalarını birbir
 ![Azure Güvenlik Duvarı ile güvenli sanal hub](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 **Şekil 5: Azure Güvenlik Duvarı ile güvenli sanal hub**
+
+> [!NOTE]
+> Güvenlik Duvarı ile Inter-hub Şu anda desteklenmiyor. Hub 'lar arasındaki trafik, her hub 'da doğrudan Azure Güvenlik duvarını atlayarak hareket eder.
 
 Sanal WAN ile Azure Güvenlik Duvarı, aşağıdaki genel güvenli geçiş bağlantı yollarını destekler. Parantez içindeki harfler Şekil 5 ' e eşlenir.
 

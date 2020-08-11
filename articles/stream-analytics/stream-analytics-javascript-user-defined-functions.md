@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430806"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056916"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı JavaScript işlevleri
  
@@ -130,6 +130,60 @@ INTO
     output
 FROM
     input PARTITION BY PARTITIONID
+```
+
+### <a name="cast-string-to-json-object-to-process"></a>Dizeyi işlenecek JSON nesnesine yayınla
+
+JSON olan bir dize alanınız varsa ve bunu bir JavaScript UDF 'de işlenmek üzere bir JSON nesnesine dönüştürmek istiyorsanız, daha sonra kullanılabilecek bir JSON nesnesi oluşturmak için **JSON. Parse ()** işlevini kullanabilirsiniz.
+
+**JavaScript kullanıcı tanımlı işlev tanımı:**
+
+```javascript
+function main(x) {
+var person = JSON.parse(x);  
+return person.name;
+}
+```
+
+**Örnek sorgu:**
+```SQL
+SELECT
+    UDF.getName(input) AS Name
+INTO
+    output
+FROM
+    input
+```
+
+### <a name="use-trycatch-for-error-handling"></a>Hata işleme için try/catch kullanın
+
+Try/catch blokları, JavaScript UDF 'e geçirilen hatalı biçimlendirilmiş giriş verileriyle ilgili sorunları belirlemenize yardımcı olabilir.
+
+**JavaScript kullanıcı tanımlı işlev tanımı:**
+
+```javascript
+function main(input, x) {
+    var obj = null;
+
+    try{
+        obj = JSON.parse(x);
+    }catch(error){
+        throw input;
+    }
+    
+    return obj.Value;
+}
+```
+
+**Örnek sorgu: bir hata olduğunda dönebilmesi için kaydın tamamını ilk parametre olarak geçirin.**
+```SQL
+SELECT
+    A.context.company AS Company,
+    udf.getValue(A, A.context.value) as Value
+INTO
+    output
+FROM
+    input A
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
