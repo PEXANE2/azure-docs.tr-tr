@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: Bağlama uzantılarını kaydetme
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: Bağlama ifadesi desenleri
           href: functions-bindings-expressions-patterns.md
         - name: Bağlama dönüş değerlerini kullanma
@@ -272,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: Çalıştırma sürümünü ayarlama
           href: set-runtime-version.md
-        - name: Uzantıyı el ile kaydetme
-          href: install-update-binding-extensions-manual.md
         - name: İşlevi devre dışı bırakma
           href: disable-function.md
         - name: Coğrafi olağanüstü durum kurtarma

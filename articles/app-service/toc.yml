@@ -66,6 +66,8 @@
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+    - name: Terraform
+      href: samples-terraform.md
 - name: Kavramlar
   items:
     - name: App Service planları
