@@ -128,6 +128,8 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: İç yük dengeleyici - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
+    - name: Yalnızca giden yük dengeleyici yapılandırması
+      href: egress-only.md
 - name: Sorun giderme
   items:
     - name: Azure Load Balancer sorunlarını giderme

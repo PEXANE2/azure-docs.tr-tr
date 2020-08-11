@@ -35,9 +35,9 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 
 | Yöntem | Birincil kimlik doğrulama | İkincil kimlik doğrulaması |
 | --- | --- | --- |
-| [Parola](#password) | Yes | |
+| [Parola](#password) | Evet | |
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
-| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
+| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Evet | Yalnızca MFA |
 | [OATH yazılım belirteçleri](#oath-software-tokens) | No | MFA |
 | [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | No | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |

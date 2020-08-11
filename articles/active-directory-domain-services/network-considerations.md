@@ -91,7 +91,7 @@ Sanal ağları bağlayan DNS sunucusunda koşullu DNS ileticileri veya yönetile
 
 Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluşturur. Bu kaynaklar, yönetilen etki alanının başarılı bir şekilde çalışması ve yönetimi için gereklidir ve el ile yapılandırılmamalıdır.
 
-| Azure kaynağı                          | Description |
+| Azure kaynağı                          | Açıklama |
 |:----------------------------------------|:---|
 | Ağ arabirim kartı                  | Azure AD DS, Windows Server 'da Azure sanal makineleri olarak çalışan iki etki alanı denetleyicisinde (DC) yönetilen etki alanını barındırır. Her VM 'nin sanal ağ alt ağınıza bağlanan bir sanal ağ arabirimi vardır. |
 | Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
@@ -110,9 +110,9 @@ Yönetilen etki alanı için kimlik doğrulama ve yönetim hizmetleri sağlamak 
 
 | Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Azure AD kiracınızla eşitleme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
 
 Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir. Bu ağ güvenlik grubunu silmeyin. Yük dengeleyici bu olmadan düzgün çalışmaz.
 

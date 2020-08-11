@@ -33,7 +33,7 @@ Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı ka
 |Fiyat|Standart katmanı|
 |Desteklenen kayıt defterleri ve görüntüler:|![](./media/icons/yes-icon.png)Genel İnternet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterleri ve kabuk erişimi sağlar.<br>![](./media/icons/no-icon.png)Windows tarafından barındırılan BIR ACR kayıt defterleri yoktur.<br>![](./media/icons/no-icon.png)' Özel ' kayıt defterleri yok-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.<br>![](./media/icons/no-icon.png) [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "distrodaha az" görüntüler.|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 

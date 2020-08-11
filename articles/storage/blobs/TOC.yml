@@ -158,8 +158,10 @@
           items:
             - name: Sürüm oluşturma
               href: versioning-overview.md
-            - name: Geçici silme
-              href: soft-delete-overview.md
+            - name: Bloblar için geçici silme
+              href: soft-delete-blob-overview.md
+            - name: Kapsayıcılar için geçici silme
+              href: soft-delete-container-overview.md
             - name: Anlık Görüntüler
               href: snapshots-overview.md
             - name: Akışı değiştirme
@@ -423,8 +425,10 @@
           items:
             - name: Blob sürümü oluşturmayı etkinleştirme
               href: versioning-enable.md
-            - name: Geçici silmeyi etkinleştirme
-              href: soft-delete-enable.md
+            - name: Bloblar için geçici silmeyi etkinleştirme
+              href: soft-delete-blob-enable.md
+            - name: Kapsayıcılar için geçici silmeyi etkinleştirme
+              href: soft-delete-container-enable.md
             - name: Anlık görüntüler oluşturma (.NET)
               href: snapshots-manage-dotnet.md
             - name: Değişiklik akışı günlüklerini işleme

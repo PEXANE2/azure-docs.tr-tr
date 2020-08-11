@@ -49,6 +49,8 @@
       items:
         - name: Azure AD mimarisi
           href: active-directory-architecture.md
+        - name: Tüm uygulamalarınızı Azure AD ile tümleştirme
+          href: five-steps-to-full-application-integration-with-azure-ad.md
     - name: Dağıtım kılavuzu
       items:
         - name: 'Dağıtım 30, 90 ve sonrası'

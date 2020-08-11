@@ -272,7 +272,7 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: Vergi ayrıntıları
           href: ./partner-center-portal/tax-details-paid-transactions.md
-    - name: CPP API Başvurusu
+    - name: CPP API başvurusu
       items:
         - name: Genel Bakış
           href: ./cloud-partner-portal-api-overview.md
