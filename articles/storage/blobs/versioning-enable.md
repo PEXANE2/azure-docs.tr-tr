@@ -1,24 +1,28 @@
 ---
 title: Blob sürüm oluşturmayı etkinleştirme ve yönetme (Önizleme)
 titleSuffix: Azure Storage
-description: Azure portal blob sürümü oluşturmayı nasıl etkinleştireceğinizi veya bir Azure Resource Manager şablonu kullanarak öğrenin.
+description: Azure portal veya Azure Resource Manager şablonu kullanarak blob sürümü oluşturmayı (Önizleme) nasıl etkinleştireceğinizi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086056"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067282"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme
+# <a name="enable-and-manage-blob-versioning-preview"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme (Önizleme)
 
-Depolama hesabı için blob sürüm oluşturma 'yı (Önizleme) Azure portal veya Azure Resource Manager şablonunu kullanarak istediğiniz zaman etkinleştirebilir veya devre dışı bırakabilirsiniz.
+Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturma 'yı (Önizleme) etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
+
+Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak depolama hesabı için blob sürüm oluşturma 'nın nasıl etkinleştirileceği veya devre dışı bırakılacağı gösterilmektedir.
+
+Blob sürümü oluşturmayı etkinleştirmeden önce önizlemeye kaydolmanız gerekir. Önizleme için nasıl kayıt yapılacağı dahil olmak üzere blob sürümü oluşturma hakkında daha fazla bilgi edinmek için bkz. [BLOB sürüm oluşturma (Önizleme)](versioning-overview.md).
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 

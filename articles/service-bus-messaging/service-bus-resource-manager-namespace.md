@@ -7,16 +7,16 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336838"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067401"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Service Bus ad alanı oluşturma
 
-Bir Service Bus ad alanı oluşturmak için Azure Resource Manager şablonu dağıtmayı öğrenin. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager belgeleri](/azure/azure-resource-manager/).
+Bir Service Bus ad alanı oluşturmak için Azure Resource Manager şablonu dağıtmayı öğrenin. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager belgeleri](../azure-resource-manager/index.yml).
 
 Aşağıdaki şablonlar Service Bus ad alanları oluşturmak için de kullanılabilir:
 
@@ -27,7 +27,7 @@ Aşağıdaki şablonlar Service Bus ad alanları oluşturmak için de kullanıla
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus ad alanı oluşturma
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369042"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067163"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Mevcut Java Ileti hizmeti (JMS) 2,0 uygulamalarını Apache ActiveMQ ' den Azure Service Bus geçirin
 
@@ -60,7 +60,7 @@ Service Bus yükseltmeleri ve yeniden başlatmalar söz konusu olduğunda geçic
 
 İstemci uygulamalarınızı Azure Service Bus etkileşimde bulunmak üzere geçirme ve değiştirme işleminin bir parçası olarak, ActiveMQ ' de tutulan veriler Service Bus öğesine geçirilmez. ActiveMQ kuyruklarını, konularını ve aboneliklerini boşaltmak için özel bir uygulamaya ihtiyacınız vardır ve ardından iletileri Service Bus kuyruklara, konularına ve aboneliklerine yeniden çalabilirsiniz.
 
-#### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+#### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 Azure Active Directory tarafından desteklenen rol tabanlı erişim denetimi (RBAC), Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır. RBAC veya talep tabanlı kimlik doğrulaması, Apache QPID JMS tarafından şu anda desteklenmediğinden, kimlik doğrulaması için SAS anahtarlarını kullanmanız gerekir.
 
@@ -90,7 +90,7 @@ Service Bus, çeşitli kurumsal güvenlik ve yüksek kullanılabilirlik özellik
   * [Güvenlik duvarı](service-bus-ip-filtering.md)
   * [Müşterinin yönettiği anahtarla hizmet tarafı şifreleme (BYOK)](configure-customer-managed-key.md)
   * [Özel uç noktalar](private-link-service.md)
-  * [Kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md)
+  * [Kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>İzleme, uyarılar ve izleme
 
@@ -272,7 +272,7 @@ Artık uygulamayı Service Bus iletileri göndermeye ve almaya başlamak üzere 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus ile sorunsuz tümleştirme için [JMS Azure Service Bus Için Spring Boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) 'ı kullanın.
+Service Bus ile sorunsuz tümleştirme için [JMS Azure Service Bus Için Spring Boot Starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) 'ı kullanın.
 
 Service Bus mesajlaşma ve JMS hakkında daha fazla bilgi edinmek için bkz.:
 

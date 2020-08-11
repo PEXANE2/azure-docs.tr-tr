@@ -3,12 +3,12 @@ title: .NET ve AMQP 1,0 ile Azure Service Bus | Microsoft Docs
 description: Bu makalede, AMQP (gelişmiş mesajlaşma sıraya alma Protokolü) kullanarak bir .NET uygulamasından Azure Service Bus nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340185"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067112"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1,0 ile .NET 'ten Service Bus kullanma
 
@@ -52,7 +52,7 @@ Non-.NET istemcilerle birlikte çalışabilirliği kolaylaştırmak için yalnı
 
 | .NET Body nesne türü | Eşlenmiş AMQP türü | AMQP gövdesi bölüm türü |
 | --- | --- | --- |
-| bool |boole |AMQP değeri |
+| bool |boolean |AMQP değeri |
 | byte |ubde |AMQP değeri |
 | ushort |ushort |AMQP değeri |
 | uint |uint |AMQP değeri |
@@ -109,7 +109,7 @@ Daha fazla bilgi edinmeye hazır mısınız? Aşağıdaki bağlantıları ziyare
 * [AMQP 1.0 protokol kılavuzu]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
@@ -117,4 +117,3 @@ Daha fazla bilgi edinmeye hazır mısınız? Aşağıdaki bağlantıları ziyare
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP 'ye Genel Bakış]: service-bus-amqp-overview.md
 [AMQP 1.0 protokol kılavuzu]: service-bus-amqp-protocol-guide.md
-

@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090085"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067733"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -84,7 +84,7 @@ Bağlantı başarılı olursa Edge cihazlarının listesi görüntülenir. **LVA
 
 ![LVA-örnek-cihaz düğümü](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>Doğrudan yöntemler kullanma
+## <a name="use-direct-method-calls"></a>Doğrudan Yöntem çağrılarını kullanın
 
 Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz. Daha fazla bilgi için bkz. [IoT Edge Için doğrudan canlı video analizi yöntemleri](direct-methods.md). 
 

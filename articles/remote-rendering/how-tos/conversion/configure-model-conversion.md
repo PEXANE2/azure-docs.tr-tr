@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432021"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067180"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -49,6 +49,12 @@ Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -131,6 +137,12 @@ Her mod farklı çalışma zamanı performansına sahiptir. `dynamic`Modunda, hi
 
 * `axis`-Koordinat sistem birimi vektörlerini geçersiz kılmak için. Varsayılan değerler şunlardır `["+x", "+y", "+z"]` . Teorik olarak, FBX biçiminde bu vektörler tanımlanmış ve dönüştürme söz konusu bilgileri sahneyi dönüştürmek için kullandığı bir üst bilgi vardır. GlTF biçimi de sabit bir koordinat sistemi tanımlar. Uygulamada, bazı varlıkların başlığında yanlış bilgiler var veya farklı bir koordinat sistemi kuralıyla kaydedilmiş. Bu seçenek, telafi sistemini dengelemek için geçersiz kılmanızı sağlar. Örneğin: `"axis" : ["+x", "+z", "-y"]` Z ekseni ve y eksenini değiş tokuş eder ve y ekseni yönünü tersine getirerek koordinat sistem hanliðini koruyun.
 
+### <a name="node-meta-data"></a>Düğüm meta verileri
+
+* `metadataKeys`-Dönüştürme sonucunda tutmak istediğiniz düğüm meta verileri özelliklerinin anahtarlarını belirtmenize izin verir. Tam anahtarları veya joker karakter anahtarlarını belirtebilirsiniz. Joker karakterler "ABC *" biçimindedir ve "ABC" ile başlayan herhangi bir anahtarla eşleşir. Desteklenen meta veri değer türleri `bool` , `int` , `float` ve `string` .
+
+    GLTF dosyaları için bu veriler [düğümlerdeki ekstralar nesnesinden](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)gelir. FBX dosyaları için bu veriler `Properties70` üzerindeki verilerden gelir `Model nodes` . Daha fazla ayrıntı için lütfen 3B varlık aracınızın belgelerine bakın.
+
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formatını
 
 :::no-loc text="vertex":::Bir kafesin biçimini, bellek tasarrufları için bir hassaslığına ayarlamak mümkündür. Daha düşük bir bellek kaplama daha büyük modeller yüklemenize veya daha iyi performans elde etmenize olanak tanır. Ancak verilerinize bağlı olarak, yanlış biçim işleme kalitesini önemli ölçüde etkileyebilir.
@@ -182,7 +194,7 @@ Bir bileşeni uygulamasına zorlayarak `NONE` , çıkış kafesinin ilgili akı�
 
 Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
-| Biçimlendir | Description | Bayt başına:::no-loc text="vertex"::: |
+| Biçimlendir | Açıklama | Bayt başına:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|iki bileşen tam kayan nokta duyarlığı|8
 |16_16_FLOAT|iki bileşenden oluşan yarı kayan nokta duyarlığı|4

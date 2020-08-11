@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 7399bc60ffa88112fee87b429571772f634c0754
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285433"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067452"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -24,9 +24,9 @@ Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda 
 > [!NOTE]
 > Bu özellik, MySQL için Azure veritabanı 'nın "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir. Diğer sınırlamalar için [sınırlandırma](concepts-data-encryption-mysql.md#limitations) bölümüne bakın.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
-MySQL için Azure veritabanı veri şifrelemesi aşağıdaki avantajları sağlar:
+MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla veri şifreleme aşağıdaki avantajları sağlar:
 
 * Veri erişimi, anahtarı kaldırabilme ve veritabanını erişilemez hale getirme özelliği tarafından tam olarak denetlenir 
 * Anahtar yaşam döngüsü üzerinde, kurumsal ilkelerle hizalamak için anahtar dönüşü dahil tam denetim
@@ -49,8 +49,8 @@ KEKs ile şifrelenen DEKs 'ler ayrı olarak depolanır. Yalnızca KEK erişimi o
 Bir MySQL sunucusunun, DEK ' de şifreleme için Key Vault depolanan müşteri tarafından yönetilen anahtarları kullanması için, bir Key Vault Yöneticisi sunucuya aşağıdaki erişim haklarını verir:
 
 * **Get**: anahtar kasasındaki anahtarın ortak bölümünü ve özelliklerini almak için.
-* **wrapKey**: dek ' i şifreleyebilmek için.
-* **unwrapKey**: dek ' nin şifresini çözebilmek için.
+* **wrapKey**: dek ' i şifreleyebilmek için. Şifrelenmiş DEK, MySQL için Azure veritabanı 'nda depolanır.
+* **unwrapKey**: dek ' nin şifresini çözebilmek için. MySQL için Azure veritabanı 'nın, verileri şifrelemek/şifrelerini çözmek için şifresi çözülmüş DEK gerekir
 
 Anahtar Kasası Yöneticisi ayrıca [Key Vault denetim olaylarının günlüğe kaydedilmesini etkinleştirerek](../azure-monitor/insights/key-vault-insights-overview.md)daha sonra denetlenebilir.
 
@@ -60,16 +60,16 @@ Sunucu, anahtar kasasında depolanan müşteri tarafından yönetilen anahtarı 
 
 Key Vault yapılandırmaya yönelik gereksinimler aşağıda verilmiştir:
 
-* MySQL için Azure veritabanı Key Vault ve aynı Azure Active Directory (Azure AD) kiracısına ait olmalıdır. Çapraz kiracı Key Vault ve sunucu etkileşimleri desteklenmez. Kaynakları taşımak daha sonra veri şifrelemeyi yeniden yapılandırmanız gerekir.
+* MySQL için Azure veritabanı Key Vault ve aynı Azure Active Directory (Azure AD) kiracısına ait olmalıdır. Çapraz kiracı Key Vault ve sunucu etkileşimleri desteklenmez. Key Vault kaynağı taşıma daha sonra veri şifrelemeyi yeniden yapılandırmanız gerekir.
 * Yanlışlıkla bir anahtar (veya Key Vault) silme işlemi gerçekleşdiğinde, anahtar kasasındaki geçici silme özelliğini etkinleştirin. Kullanıcı bu sırada kurtarmadığı veya silmediği takdirde, geçici olarak silinen kaynaklar 90 gün boyunca tutulur. Kurtarma ve Temizleme eylemlerinin Key Vault erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır, ancak PowerShell veya Azure CLı aracılığıyla etkinleştirebilir (Azure portal aracılığıyla etkinleştirebileceğinizi unutmayın).
-* MySQL için Azure veritabanı 'na, benzersiz yönetilen kimliğini kullanarak Get, wrapKey ve unwrapKey izinleriyle anahtar kasasına erişim izni verin. Azure portal, MySQL üzerinde veri şifrelemesi etkinleştirildiğinde benzersiz kimlik otomatik olarak oluşturulur. Azure portal kullanırken, ayrıntılı, adım adım yönergeler için bkz. [MySQL için veri şifrelemeyi yapılandırma](howto-data-encryption-portal.md) .
+* MySQL için Azure veritabanı 'na, benzersiz yönetilen kimliğini kullanarak Get, wrapKey ve unwrapKey izinleriyle anahtar kasasına erişim izni verin. Azure portal, MySQL üzerinde veri şifrelemesi etkinleştirildiğinde benzersiz ' hizmet ' kimliği otomatik olarak oluşturulur. Azure portal kullanırken, ayrıntılı, adım adım yönergeler için bkz. [MySQL için veri şifrelemeyi yapılandırma](howto-data-encryption-portal.md) .
 
 Aşağıda, müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik gereksinimler verilmiştir:
 
 * DEK şifrelemek için kullanılan müşteri tarafından yönetilen anahtar yalnızca asimetrik, RSA 2048 olabilir.
 * Anahtar etkinleştirme tarihi (ayarlandıysa), geçmişteki bir tarih ve saat olmalıdır. Sona erme tarihi (ayarlandıysa) gelecekteki bir tarih ve saat olmalıdır.
 * Anahtar *etkin* durumda olmalıdır.
-* Anahtar kasasında mevcut bir anahtarı içeri aktarıyorsanız, bunu desteklenen dosya biçimlerinde ( `.pfx` ,,) sağladığınızdan emin olun `.byok` `.backup` .
+* Anahtar kasasında [mevcut bir anahtarı içeri](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) aktarıyorsanız, bunu desteklenen dosya biçimlerinde ( `.pfx` , `.byok` ,) sağladığınızdan emin olun `.backup` .
 
 ## <a name="recommendations"></a>Öneriler
 

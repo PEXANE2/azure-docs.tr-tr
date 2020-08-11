@@ -6,12 +6,12 @@ documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85336727"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067571"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Hızlı başlangıç: Ruby ile Service Bus konuları ve abonelikleri kullanma
  
@@ -26,7 +26,7 @@ Bu makalede, Ruby uygulamalarından Service Bus konularının ve aboneliklerinin
 - Konuları ve abonelikleri silme
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) . 
 
@@ -62,7 +62,7 @@ topic = azure_service_bus_service.create_topic(topic)
 
 Abonelikler, varsayılan olarak kalıcıdır. Bunlar, ya da ilişkili oldukları konu silinene kadar var olmaya devam eder. Uygulamanız bir abonelik oluşturmak için mantık içeriyorsa, öncelikle getSubscription yöntemi kullanılarak aboneliğin zaten mevcut olup olmadığını denetlemelidir.
 
-Otomatik [Deleteonıdle özelliği](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)ayarlanarak aboneliklerin otomatik olarak silinmesini sağlayabilirsiniz.
+Otomatik [Deleteonıdle özelliği](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)ayarlanarak aboneliklerin otomatik olarak silinmesini sağlayabilirsiniz.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Varsayılan (MatchAll) filtreyle abonelik oluşturma
 Yeni bir abonelik oluşturulduğunda bir filtre belirtilmemişse, **Matchall** filtresi (varsayılan) kullanılır. **Matchall** filtresi kullanıldığında, konuya yayınlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek, "All-Messages" adlı bir abonelik oluşturur ve varsayılan **Matchall** filtresini kullanır.
@@ -150,7 +150,7 @@ Ayrıca, abonelik içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı v
 Uygulamanın ileti işlendikten sonra çöktüğü durumda `delete_subscription_message()` , ancak yöntem çağrılmadan önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Genellikle *en az bir kez işleme*olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu mantık genellikle ileti özelliği kullanılarak elde edilir ve bu da `message_id` teslim girişimleri arasında sabit kalır.
 
 ## <a name="delete-topics-and-subscriptions"></a>Konu başlıklarını ve abonelikleri silme
-[Oto Deleteonıdle özelliği](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) ayarlanmadığı için konular ve abonelikler kalıcıdır. [Azure Portal][Azure portal] veya program aracılığıyla silinebilirler. Aşağıdaki örnek, adlı konunun nasıl silineceğini gösterir `test-topic` .
+[Oto Deleteonıdle özelliği](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) ayarlanmadığı için konular ve abonelikler kalıcıdır. [Azure Portal][Azure portal] veya program aracılığıyla silinebilirler. Aşağıdaki örnek, adlı konunun nasıl silineceğini gösterir `test-topic` .
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

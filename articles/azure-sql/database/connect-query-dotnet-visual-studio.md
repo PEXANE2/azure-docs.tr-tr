@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: ed0ad6c5597d63c411eeb323cf00dcb7f044f667
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033131"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067826"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için Visual Studio 'Da .NET ve C# kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Azure SQL veritabanı 'nda Transact-SQL deyimleriyle 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
+Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure SQL veritabanı 'nda bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
@@ -62,17 +62,17 @@ Veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan y
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanını sorgulamak için kod oluşturma
 
-1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. 
+1. Visual Studio 'da yeni bir proje oluşturun. 
    
-1. **Yeni proje** iletişim kutusunda, **Visual C#**' yi seçin ve ardından **konsol uygulaması (.NET Framework)** öğesini seçin.
+1. **Yeni proje** iletişim kutusunda, **Visual C#**, **konsol uygulaması (.NET Framework)** seçeneğini belirleyin.
    
 1. Proje adı için *SQLtest* girin ve ardından **Tamam**' ı seçin. Yeni proje oluşturulur. 
    
 1. **Proje**  >  **NuGet Paketlerini Yönet**' i seçin. 
    
-1. **NuGet Paket Yöneticisi**' nde, **Gözden** geçirme sekmesini seçin, sonra **System. Data. SqlClient**öğesini arayıp seçin.
+1. **NuGet Paket Yöneticisi**' nde, **Gözden** geçirme sekmesini seçin, sonra **Microsoft. Data. SqlClient**' ı arayın ve seçin.
    
-1. **System. Data. SqlClient** sayfasında, **Install**' ı seçin. 
+1. **Microsoft. Data. SqlClient** sayfasında, **Install**' ı seçin. 
    - İstenirse, yüklemeye devam etmek için **Tamam** ' ı seçin. 
    - Bir **Lisans kabul** penceresi görüntülenirse **kabul ediyorum**' u seçin.
    
@@ -85,7 +85,7 @@ Veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan y
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

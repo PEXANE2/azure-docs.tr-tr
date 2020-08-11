@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924436"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067265"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -44,7 +44,8 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
     - Azure 'da yüksek etkili iş verilerini çalıştırmaya yönelik güvenlik ilkeleri. Veri güvenliği hakkında bilgi edinmek için [Azure Güvenlik belgeleriyle](../../../security/index.yml)başlayın.
 2.  Teknik tasarım belgesi. Bu belge şunları içermelidir:
     - Çözüm için bir blok diyagramı.
-    - Azure 'daki işlem, depolama ve ağ bileşenlerinin boyutu. Azure VM 'lerinin SAP boyutlandırması için bkz. [sap destek notunun #1928533](https://launchpad.support.sap.com/#/notes/1928533).
+    - Azure 'daki işlem, depolama ve ağ bileşenlerinin boyutu. Azure VM 'lerinin SAP boyutlandırması için bkz. [SAP 
+    -  Note #1928533] ( https://launchpad.support.sap.com/#/notes/1928533) .
     - İş sürekliliği ve olağanüstü durum kurtarma mimarisi.
     - İşletim sistemi, DB, çekirdek ve SAP destek paketi sürümleri hakkında ayrıntılı bilgi. SAP NetWeaver veya S/4HANA tarafından desteklenen her işletim sistemi sürümünün Azure VM 'lerinde desteklendiğinden true olması gerekmez. Aynı, DBMS yayınları için de geçerlidir. SAP ve Azure desteğinin sağlanması için gerekli olan SAP sürümlerini, DBMS sürümlerini ve işletim sistemi sürümlerini hizalamak ve gerekirse, aşağıdaki kaynakları kontrol edin. SAP ve Microsoft 'tan tam destek almak için SAP ve Azure tarafından desteklenen yayın birleşimlerinin olması gerekir. Gerekirse, bazı yazılım bileşenlerini yükseltmeyi planlamanız gerekir. Desteklenen SAP, OS ve DBMS yazılımları hakkında daha fazla ayrıntı aşağıda belirtilmiştir:
         - [Sap destek notunun #1928533](https://launchpad.support.sap.com/#/notes/1928533). Bu notta, Azure VM 'lerinde desteklenen en düşük işletim sistemi sürümleri tanımlanmaktadır. Ayrıca, HANA olmayan çoğu veritabanı için gereken en düşük veritabanı sürümlerini tanımlar. Son olarak, SAP tarafından desteklenen Azure VM türleri için SAP boyutlandırma sağlar.
@@ -56,9 +57,11 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
         - [SAP destek notunun #2555629-SAP HANA 2,0 dinamik katmanlama – hiper yönetici ve bulut desteği](https://launchpad.support.sap.com/#/notes/2555629)
         - [SAP destek notunun #1662610-Linux için SIOS koruma paketine yönelik destek ayrıntıları](https://launchpad.support.sap.com/#/notes/1662610)
         - SAP 'ye özgü diğer ürünler için SAP notları.     
-    - SAP üretim sistemleri için katı üç katmanlı tasarımlar yapmanızı öneririz. Bir VM 'de yoks ve/veya DBMS ve/veya uygulama sunucularının birleştirilmesi önerilmez. SAP Merkezi Hizmetleri için çok SID küme yapılandırmalarının kullanılması, Azure 'daki Windows Konuk işletim sistemlerinde desteklenir. Ancak bu yapılandırma, Azure 'da Linux işletim sistemlerindeki SAP Merkezi Hizmetleri için desteklenmez. Windows Konuk işletim sistemi senaryosuna yönelik belgeleri şu makalelerde bulabilirsiniz:
+    - SAP Merkezi Hizmetleri için çok SID küme yapılandırmalarının kullanılması, Azure 'da Windows, SLES ve RHEL Konuk işletim sistemlerinde desteklenir. Bir çok SID kümesine yerleştirdiğiniz daha fazla ASCS/SCS 'yi, elde eden yarıçapın artırabileceğini aklınızda bulundurun. İlgili Konuk işletim sistemi senaryosuna ait belgeleri şu makalelerde bulabilirsiniz:
         - [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk ile Azure üzerinde çok düzeyli yüksek kullanılabilirlik](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
+        - [SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+        - [SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
     - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisi.
         - RTO ve RPO temelinde, yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisinin nasıl görünmesi gerektiğini tanımlayın.
         - Bir bölge içinde yüksek kullanılabilirlik için, istenen DBMS 'nin Azure 'da sunmasına ne olduğunu denetleyin. Çoğu DBMS paketi, üretim sistemleri için önerdiğimiz, zaman uyumlu bir etkin bekleme, zaman uyumlu yöntemler sunar. Ayrıca, [SAP iş yükleri ve ilgili belgeler Için Azure sanal MAKINELER DBMS dağıtımına ilişkin bazı hususlar](./dbms_guide_general.md) ile başlayan farklı VERITABANLARı için SAP ile ilgili belgelere bakın.
@@ -78,7 +81,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
     - Kaynak grubu topolojisi.
     - [Etiketleme stratejisi](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - VM 'Ler ve diğer altyapı bileşenleri ve/veya mantıksal adlar için adlandırma kuralları.
-5.  Microsoft Premier Destek sözleşmesi. Microsoft Teknik Hesap yöneticinizin (TAM) kimliğini yapın. SAP destek gereksinimleri için bkz. [sap destek notunun #2015553](https://launchpad.support.sap.com/#/notes/2015553).
+5.  Microsoft Professional veya Premier Destek sözleşmesi. Microsoft 'un sahip olduğu bir Premier destek sözleşmeniz varsa, Microsoft Teknik Hesap Yöneticisi 'Ni (TAM) tanımlamak. SAP destek gereksinimleri için bkz. [sap destek notunun #2015553](https://launchpad.support.sap.com/#/notes/2015553).
 6.  Abonelikler için Azure abonelikleri ve çekirdek kota sayısı. Gerektiğinde [Azure aboneliklerinin kotalarını artırmak için destek Istekleri açın](../../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 7.  SAP verilerini Azure 'a geçirmek için veri azaltma ve veri geçişi planı. SAP NetWeaver sistemlerinde SAP, büyük miktarlarda veri hacminin nasıl sınırlandırılmasıyla ilgili yönergeler sağlar. SAP ERP sistemlerinde veri yönetimiyle ilgili [Bu SAP kılavuzuna](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) bakın. İçeriğin bazıları Ayrıca genel olarak NetWeaver ve S/4HANA sistemleri için de geçerlidir.
 8.  Otomatikleştirilmiş bir dağıtım yaklaşımı. Azure üzerinde altyapı dağıtımları Otomasyonu hedefi, belirleyici bir şekilde dağıtılır ve belirleyici sonuçlar elde etmek için kullanılır. Birçok müşteri PowerShell veya CLı tabanlı betikleri kullanır. Ancak SAP için Azure altyapısını dağıtmak ve hatta SAP yazılımı yüklemek için kullanabileceğiniz çeşitli açık kaynaklı teknolojiler vardır. GitHub 'da örnekleri bulabilirsiniz:
@@ -106,6 +109,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
            -  [Azure 'Da Windows sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
            -  [Azure 'Da Linux sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
    2. Depolama’yı seçin.
+        - [SAP iş yükü için belge Azure depolama türlerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) denetleyin
         - En azından, SAP uygulama katmanlarını temsil eden VM 'Ler için ve performans duyarlı olmayan DBMS 'lerin dağıtımı için [Azure Standart SSD depolama](../../windows/disks-types.md#standard-ssd) kullanın.
         - Genel olarak, [Azure Standart HDD disklerinin](../../windows/disks-types.md#standard-hdd)kullanımını önermiyoruz.
         - Uzaktan performansa duyarlı tüm DBMS VM 'Leri için [Azure Premium Depolama](../../windows/disks-types.md#premium-ssd) kullanın.

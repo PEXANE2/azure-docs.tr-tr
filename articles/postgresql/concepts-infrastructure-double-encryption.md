@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 3806135b7ed212e6eb5ea458c015ebc5810e0e80
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034966"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067503"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>PostgreSQL için Azure veritabanı altyapısı Çift şifreleme
 
@@ -36,7 +36,7 @@ Altyapı katmanlarında uygulama, anahtarların çeşitliliğe de sahiptir. Alty
 
 PostgreSQL için Azure veritabanı 'nın altyapı çift şifrelemesi aşağıdaki avantajları sağlar:
 
-1. **Şifre uygulama farklılığının yanı sıra** , donanım tabanlı şifrelemeye yapılan planlı geçiş, yazılım tabanlı uygulamaya ek olarak donanım tabanlı bir uygulama sağlayarak uygulamaları daha fazla zaman ayırarak.
+1. **Ek şifreleme uygulaması çeşitlemesi** -donanım tabanlı şifrelemeye yapılan planlı geçiş, yazılım tabanlı uygulamaya ek olarak donanım tabanlı bir uygulama sağlayarak uygulamaları daha fazla zaman ayırarak.
 2. **Uygulama hataları** : altyapı katmanında iki şifreleme katmanı, düz metin verileri sunan daha büyük katmanlarda önbelleğe alma veya bellek yönetimi hatalarını korur. Ayrıca, iki katman, genellikle şifreleme uygulamasındaki hatalara karşı da güvence altına alır.
 
 Bunların birleşimi, şifrelemeye saldırmak için kullanılan yaygın tehditlere ve zayıf yönleriyle karşı güçlü koruma sağlar.
@@ -45,7 +45,7 @@ Bunların birleşimi, şifrelemeye saldırmak için kullanılan yaygın tehditle
 
 PostgreSQL için Azure veritabanı tarafından sunulan şifreleme özellikleri birlikte kullanılabilir. Aşağıda kullanabileceğiniz çeşitli senaryoların bir özeti verilmiştir:
 
-|  ##   | Varsayılan şifreleme | Altyapı Çift şifreleme | Müşteri tarafından yönetilen anahtarları kullanarak veri şifreleme  |
+|  ##   | Varsayılan şifreleme | Altyapıyı çift şifreleme | Müşteri tarafından yönetilen anahtarları kullanarak veri şifreleme  |
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Evet*              | *Hayır*                             | *Hayır*                                         |
 | 2     | *Evet*              | *Evet*                            | *Hayır*                                         |
@@ -54,7 +54,7 @@ PostgreSQL için Azure veritabanı tarafından sunulan şifreleme özellikleri b
 |       |                    |                                  |                                              |
 
 > [!Important]
-> - Ek altyapı şifreleme katmanı nedeniyle, Senaryo 2 ve 4 ' ün PostgreSQL için Azure veritabanı sunucusu üzerinde önemli performans etkisi olacaktır.
+> - Ek altyapı şifreleme katmanı nedeniyle, Senaryo 2 ve 4 ' ün PostgreSQL için Azure veritabanı sunucusunda performans etkisi olacaktır.
 > - PostgreSQL için Azure veritabanı için altyapı ikili şifrelemeye yönelik yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra depolama şifrelemesini değiştiremezsiniz. Ancak, altyapı çift şifrelemesi ile oluşturulan/olmayan sunucu için müşteri tarafından yönetilen anahtarları kullanarak veri şifrelemeyi etkinleştirebilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar

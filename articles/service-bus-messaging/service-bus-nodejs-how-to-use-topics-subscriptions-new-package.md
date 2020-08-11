@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 531322c49a772eaf416fadf1bb4f9a5fb6bf1ff6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 5afe5eded4937631d25ab94edc1908b7ac83d383
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430604"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067486"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: Node.js ve Azure/Service-Bus paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanarak bir Service Bus aboneliğinden ileti almak için Node.js bir program yazmayı öğreneceksiniz [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
-Service Bus konusuyla etkileşim kurmak [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu [topicclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) sınıfının örneğini oluşturmak için kullanma ile başlar. Konu istemciye sahip olduktan sonra, ileti göndermek için bir gönderici oluşturabilir ve üzerinde [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) ya da [sendbatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metodunu kullanabilirsiniz.
+Service Bus konusuyla etkileşim kurmak [Servicebusclient](/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu [topicclient](/javascript/api/@azure/service-bus/topicclient) sınıfının örneğini oluşturmak için kullanma ile başlar. Konu istemciye sahip olduktan sonra, ileti göndermek için bir gönderici oluşturabilir ve üzerinde [Send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) ya da [sendbatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metodunu kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
 2. Adlı bir dosya oluşturun `send.js` ve içine aşağıdaki kodu yapıştırın. Bu kod, konuya 10 ileti gönderir.
@@ -83,7 +83,7 @@ Tebrikler! Service Bus kuyruğuna ileti gönderdiniz.
 Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Bir konuda tutulan ileti sayısında sınır yoktur, ancak bir konu tarafından tutulan iletilerin toplam boyutu için bir sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları](service-bus-quotas.md).
 
 ## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
-Service Bus abonelikle etkileşim kurmak, [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu kullanarak [subscriptionclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) sınıfının örneğini oluşturmaya başlar. Abonelik istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) ya da [registermessagehandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
+Service Bus abonelikle etkileşim kurmak, [Servicebusclient](/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu kullanarak [subscriptionclient](/javascript/api/@azure/service-bus/subscriptionclient) sınıfının örneğini oluşturmaya başlar. Abonelik istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) ya da [registermessagehandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
 2. Adlı bir dosya oluşturun `recieve.js` ve içine aşağıdaki kodu yapıştırın. Bu kod, aboneliğinizden 10 ileti almaya çalışır. Aldığınız gerçek sayı, abonelik ve ağ gecikmesi içindeki ileti sayısına bağlıdır.
@@ -121,7 +121,7 @@ Service Bus abonelikle etkileşim kurmak, [Servicebusclient](https://docs.micros
 
 Tebrikler! Service Bus aboneliğinden yalnızca ileti aldınız.
 
-[Createreceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) yöntemi, `ReceiveMode` [Receiveanddelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerlerini içeren bir Enum olan ' ı alır. [settle your messages](message-transfers-locks-settlement.md#settling-receive-operations) `PeekLock` `complete()` `abandon()` İleti üzerinde,, `defer()` veya yöntemlerinden birini kullanarak modunu kullanırsanız, iletilerinizi kapatmanız gerektiğini unutmayın `deadletter()` .
+[Createreceiver](/javascript/api/@azure/service-bus/subscriptionclient#createreceiver-receivemode-) yöntemi, `ReceiveMode` [Receiveanddelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerlerini içeren bir Enum olan ' ı alır. [settle your messages](message-transfers-locks-settlement.md#settling-receive-operations) `PeekLock` `complete()` `abandon()` İleti üzerinde,, `defer()` veya yöntemlerinden birini kullanarak modunu kullanırsanız, iletilerinizi kapatmanız gerektiğini unutmayın `deadletter()` .
 
 ## <a name="subscription-filters-and-actions"></a>Abonelik filtreleri ve eylemleri
 Service Bus, [aboneliklerdeki filtreleri ve eylemleri](topic-filters.md)destekler, bu da gelen iletileri bir aboneliğe filtrelemenizi ve özelliklerini düzenlemenizi sağlar.
@@ -143,5 +143,3 @@ Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın.
 - [Kuyruklar, konu başlıkları ve abonelikler](service-bus-queues-topics-subscriptions.md)
 - [GitHub üzerinde Service Bus için diğer NodeJS örneklerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript) kullanıma al
 - [Node.js Geliştirici Merkezi](https://azure.microsoft.com/develop/nodejs/)
-
-

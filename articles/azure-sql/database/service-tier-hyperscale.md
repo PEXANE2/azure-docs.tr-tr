@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024002"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067639"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -181,7 +181,7 @@ Etkin bölgeler:
 - Orta Avustralya
 - Brezilya Güney
 - Orta Kanada
-- Orta ABD
+- Central US
 - Çin Doğu 2
 - Çin Kuzey 2
 - Doğu Asya
@@ -208,7 +208,7 @@ Etkin bölgeler:
 - ABD devleti Arizona
 - ABD devleti Texas
 - Orta Batı ABD
-- Batı Avrupa
+- West Europe
 - Batı ABD
 - Batı ABD 2
 
@@ -224,7 +224,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | SQL Yönetilen Örnek | Azure SQL yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda Hyperscale ile desteklenmemektedir.|
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu bacpac dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur. [Yeni-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) veya [New-Azsqldatabaseımport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)kullanılarak PowerShell 'den, [az SQL DB Export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) ve [az SQL db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)kullanarak Azure CLI 'dan ve [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) desteklenmeyen bacpac dışarı aktarma/Azure Portal içeri aktarma. Daha küçük hiper ölçekli veritabanları için bacpac içeri/dışarı aktarma (200 GB 'a kadar) SSMS ve [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) sürüm 18,4 ve üzeri kullanılarak desteklenir. Daha büyük veritabanları için bacpac dışarı aktarma/içeri aktarma uzun sürebilir ve çeşitli nedenlerle başarısız olabilir.|
-| Kalıcı bellek Içi OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek yalnızca kalıcı olmayan bellek Içi OLTP nesnelerini destekler (tablo türleri, yerel SPs 'ler ve işlevler).  Kalıcı bellek Içi OLTP tabloları ve diğer nesneler, bir veritabanını hiper ölçek hizmet katmanına geçirmeden önce disk tabanlı nesneler olarak bırakılmalıdır ve yeniden oluşturulmalıdır.|
+| Bellek içi OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, tablo değişkenleri ve yerel koda derlenmiş modüller dahil olmak üzere bellek Içi OLTP nesnelerinin bir alt kümesini destekler. Ancak, geçirilmekte olan veritabanında herhangi bir tür bellek Içi OLTP nesnesi varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe geçiş desteklenmez. Bu tür bir veritabanını hiper ölçeğe geçirmek için, tüm bellek Içi OLTP nesneleri ve bunların bağımlılıkları bırakılmalıdır. Veritabanı geçirildikten sonra, bu nesneler yeniden oluşturulabilir. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları olarak yeniden oluşturulmalıdır.|
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır) Şu anda önizleme aşamasındadır. |

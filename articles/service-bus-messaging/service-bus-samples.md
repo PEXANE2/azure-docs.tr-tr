@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341026"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067537"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus mesajlaşma örnekleri
 Service Bus mesajlaşma örnekleri, [Service Bus mesajlaşma](https://azure.microsoft.com/services/service-bus/)'daki temel özellikleri gösterir. Şu anda örnekleri aşağıdaki yerlerde bulabilirsiniz:
@@ -30,5 +30,4 @@ Ayrıca, [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplo
 Service Bus kavramsal genel bakış için aşağıdaki konulara bakın.
 
 * [Service Bus mesajlaşma hizmetine genel bakış](service-bus-messaging-overview.md)
-* [Service Bus mimarisi](service-bus-architecture.md)
-
+* [Service Bus mimarisi](./service-bus-messaging-overview.md)

@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074452"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067945"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -86,8 +86,8 @@ IoT Edge üzerindeki canlı video analizi, Module [ikizi yapılandırma şeması
 
 ### <a name="deploy-using-the-azure-portal"></a>Azure portalını kullanarak dağıtma
 
-Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihazına gönderme işlemlerinde size rehberlik eder.
-Cihazınızı seçin
+Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihazına gönderme işlemlerinde size rehberlik eder.  
+#### <a name="select-your-device-and-set-modules"></a>Cihazınızı seçme ve modülleri ayarlama
 
 1. [Azure Portal](https://ms.portal.azure.com/) oturum açın ve IoT Hub 'ınıza gidin.
 1. Menüden **IoT Edge** seçin.
@@ -112,23 +112,12 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     > [!TIP]
     > Bu yordamda açıklandığı gibi **Modül ayarlarında**, **kapsayıcı oluşturma seçeneklerinde**ve **module ikizi Settings** sekmelerinde değer belirtene kadar **Ekle** ' yi seçmeyin.
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlıdır Azure IoT Edge. Modül adı olarak kullandığınız tam dizeyi unutmayın. '
 
 1. **Ortam değişkenleri** sekmesini açın.
    
-   Uygulama verilerini ve video çıkışlarını kaydetmek için kullanılacak kullanıcı KIMLIĞINI ve grup KIMLIĞINI sağlamak için aşağıdaki JSON 'ı kopyalayıp kutuya yapıştırın.
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   Ortam değişkenlerini gördüğünüz giriş kutularına aşağıdaki değerleri ekleyin ![](./media/deploy-iot-edge-device/environment-variables.png) 
 
 1. **Kapsayıcı oluşturma seçenekleri** sekmesini açın.
 
@@ -201,8 +190,8 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   İkizi özelliği **Allowunsecuredendpoints** , öğreticiler ve hızlı başlangıçlar amacıyla doğru olarak ayarlanır.   
+   > [!Note]
+   > İkizi özelliği **Allowunsecuredendpoints** , öğreticiler ve hızlı başlangıçlar amacıyla doğru olarak ayarlanır.   
    Üretim ortamında çalışırken bu özelliği **false** olarak ayarlamanız gerekir. Bu, uygulamanın tüm güvenli olmayan uç noktaları engellemesini ve Graf topolojilerini çalıştırmak için geçerli bağlantı kimlik bilgilerinin gerekli olacağını sağlar.  
    
     Module ikizi özelliklerini eklemek için Ekle ' yi seçin.
@@ -258,5 +247,7 @@ Sonra, bir doğrudan yöntemi çağırarak örneği test etmenizi sağlar. LvaEd
     ![Durum 200 iletisi](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+[Hızlı başlangıç: Başlarken-canlı video analizlerini deneme IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> Komutta, sonra `device-id` varsayılan yerine uygulamanızı kullanacaksınız `lva-sample-device` .

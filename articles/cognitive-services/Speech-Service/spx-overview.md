@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501823"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067435"
 ---
 # <a name="what-is-the-speech-cli"></a>Konuşma CLI’si nedir?
 
 Konuşma CLı, herhangi bir kod yazmadan konuşma hizmetini kullanmaya yönelik bir komut satırı aracıdır. Konuşma CLı, en az kurulum gerektirir ve kullanım durumlarınızın karşılanıp karşılanmadığını görmek için konuşma hizmetinin temel özellikleriyle denemeye hemen başlamak kolaydır. Dakikalar içinde, bir dosya dizininden Batch konuşma tanıma gibi basit test iş akışlarını çalıştırabilir veya bir dosyadaki dizeler koleksiyonunda metinden konuşmaya dönüştürebilirsiniz. Basit iş akışlarının ötesinde, konuşma CLı, üretime hazırdır ve otomatikleştirilmiş veya kabuk betikleri kullanılarak daha büyük süreçler çalıştırmak için ölçeklendirilebilir `.bat` .
 
-Konuşma SDK 'sının birincil özelliklerinin büyük bölümü konuşma CLı 'da bulunur, ancak bazı gelişmiş özellikler ve özelleştirmeler konuşma CLı 'de basitleştirilmiştir. Konuşma CLı veya konuşma SDK 'sının ne zaman kullanılacağına karar vermek için aşağıdaki kılavuzu göz önünde bulundurun.
+Konuşma SDK 'sının birincil özelliklerinin büyük bölümü konuşma CLı 'da bulunur ve konuşma CLı 'de bazı gelişmiş özellikler ve özelleştirmeler basitleştirilmiştir. Konuşma CLı veya konuşma SDK 'sının ne zaman kullanılacağına karar vermek için aşağıdaki kılavuzu göz önünde bulundurun.
 
 Şu durumlarda konuşma CLı 'Yı kullan:
 * Minimum kurulum ve kod olmadan konuşma hizmeti özellikleriyle denemeler yapmak istiyorsunuz
@@ -38,13 +38,13 @@ Konuşma SDK 'sının birincil özelliklerinin büyük bölümü konuşma CLı '
 
 * Konuşma senşi-metin dosyalarından giriş veya doğrudan komut satırından giriş kullanarak metin okumayı dönüştürür. [SSML yapılandırmalarının](speech-synthesis-markup.md)ve [Standart ya da sinir seslerinden](speech-synthesis-markup.md#standard-neural-and-custom-voices)yararlanarak konuşma çıkış özelliklerini özelleştirin.
 
-* Konuşma çevirisi-bir kaynak dildeki sesi hedef dilde metne çevirin.
+* Konuşma çevirisi-bir kaynak dildeki sesi bir hedef dilde metin veya sese çevirin.
 
-* Azure işlem kaynaklarında Çalıştır-kullanarak bir Azure uzaktan işlem kaynağında çalışacak SPX komutları gönderin `spx webjob` .
+* Azure işlem kaynaklarında çalıştırın-kullanarak bir Azure uzaktan işlem kaynağında çalıştırmak için konuşma CLı komutları gönderin `spx webjob` .
 
 ## <a name="get-started"></a>başlarken
 
-Konuşma CLı 'yı kullanmaya başlamak için [temel bilgiler makalesine](spx-basics.md)bakın. Bu makalede, bazı temel komutların SPX ile nasıl çalıştırılacağı ve ayrıca konuşmayı metne dönüştürme ve metinden konuşmaya yönelik toplu işlemler çalıştırmak için biraz daha gelişmiş komutlar gösterilmektedir. Temel bilgiler makalesini okuduktan sonra bazı özel komutlar yazmaya başlamak veya basit konuşma işlemlerini otomatik hale getirmek için SPX sözdizimi hakkında yeterli bilgiye sahip olmanız gerekir.
+Konuşma CLı 'yı kullanmaya başlamak için [temel bilgiler makalesine](spx-basics.md)bakın. Bu makalede, bazı temel komutların nasıl çalıştırılacağı ve ayrıca konuşmayı metne dönüştürme ve metinden konuşmaya yönelik toplu işlemler çalıştırmak için biraz daha gelişmiş komutlar gösterilmektedir. Temel bilgiler makalesini okuduktan sonra bazı özel komutlar yazmaya başlamak veya basit konuşma hizmeti işlemlerini otomatikleştirmek için söz dizimi hakkında yeterli bilgiye sahip olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

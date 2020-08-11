@@ -3,12 +3,12 @@ title: Bekleyen verileri şifrelemek için kendi anahtarınızı yapılandırın
 description: Bu makalede, Azure Service Bus veri kalanını şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041572"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067248"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -44,7 +44,7 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 
 Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri tarafından yönetilen anahtarı Azure Service Bus ad alanıyla ilişkilendirmeniz gerekir. Service Bus yalnızca Azure Key Vault destekler. Önceki bölümde, **müşteri tarafından yönetilen anahtar seçeneğiyle şifrelemeyi** etkinleştirirseniz, anahtarın Azure Key Vault içine aktarılması gerekir. Ayrıca, anahtarlar için **yumuşak silme** ve anahtar Için de **Temizleme** yapılandırması olmalıdır. Bu ayarlar, [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
 
-1. Yeni bir Anahtar Kasası oluşturmak için Azure Key Vault [hızlı](../key-vault/general/overview.md)başlangıcı ' nı izleyin. Varolan anahtarları içeri aktarma hakkında daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md).
+1. Yeni bir Anahtar Kasası oluşturmak için Azure Key Vault [hızlı](../key-vault/general/overview.md)başlangıcı ' nı izleyin. Varolan anahtarları içeri aktarma hakkında daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
 1. Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
 
     ```azurecli-interactive
@@ -323,5 +323,3 @@ Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsin
 Aşağıdaki makalelere bakın:
 - [Service Bus genel bakış](service-bus-messaging-overview.md)
 - [Key Vault genel bakış](../key-vault/general/overview.md)
-
-

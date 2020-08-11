@@ -3,12 +3,12 @@ title: Hareket ve yayma olaylarını algılama-Azure
 description: Bu hızlı başlangıçta, program aracılığıyla doğrudan yöntemleri çağırarak hareket ve yayma olaylarını algılamak için IoT Edge canlı video analizlerinin nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdc80c4d734902309e8b6dc5a6bfee38514fcdb7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091928"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067809"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Hızlı başlangıç: hareket ve yayma olaylarını Algıla
 
@@ -48,11 +48,11 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
 
 1. Aşağıdaki komutu çalıştırın.
 
-    ```
-    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
-    ```
+```
+bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
+```
 
-    Betik başarıyla tamamlanerdiğinde, aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir.
+Betik başarıyla tamamlanerdiğinde, aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir.
 
 1. Betik tamamlandıktan sonra, klasör yapısını göstermek için süslü ayraçları seçin. *~/CloudDrive/LVA-Sample* dizininde birkaç dosya görürsünüz. Bu hızlı başlangıçta ilgilendiğiniz:
 
@@ -72,30 +72,30 @@ Bir sonraki bölümde Visual Studio Code ' de geliştirme ortamınızı ayarlark
 
     Metin aşağıdaki çıktıya benzer şekilde görünmelidir.
 
-    ```
-    {  
-        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
-        "deviceId" : "lva-sample-device",  
-        "moduleId" : "lvaEdge"  
-    }
-    ```
-1. *Src/Edge* klasörüne gidin ve *. env*adlı bir dosya oluşturun.
+```
+{  
+    "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+    "deviceId" : "lva-sample-device",  
+    "moduleId" : "lvaEdge"  
+}
+```
+5. *Src/Edge* klasörüne gidin ve *. env*adlı bir dosya oluşturun.
 1. */CloudDrive/LVA-Sample/Edge-Deployment/-env* dosyasının içeriğini kopyalayın. Metin aşağıdaki kod gibi görünmelidir.
 
-    ```
-    SUBSCRIPTION_ID="<Subscription ID>"  
-    RESOURCE_GROUP="<Resource Group>"  
-    AMS_ACCOUNT="<AMS Account ID>"  
-    IOTHUB_CONNECTION_STRING="HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx"  
-    AAD_TENANT_ID="<AAD Tenant ID>"  
-    AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
-    AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"
-    APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
-    CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
-    CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry username>"      
-    ```
+```
+SUBSCRIPTION_ID="<Subscription ID>"  
+RESOURCE_GROUP="<Resource Group>"  
+AMS_ACCOUNT="<AMS Account ID>"  
+IOTHUB_CONNECTION_STRING="HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx"  
+AAD_TENANT_ID="<AAD Tenant ID>"  
+AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
+AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
+INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+OUTPUT_VIDEO_FOLDER_ON_DEVICE="/var/media"
+APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
+CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
+CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"      
+```
 
 ## <a name="examine-the-sample-files"></a>Örnek dosyaları inceleyin
 
@@ -141,6 +141,15 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 
 RTSP simülatör modülü, [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)çalıştırdığınızda Edge cihazınıza kopyalanmış bir video dosyası kullanarak canlı bir video akışının benzetimini yapar. 
 
+> [!NOTE]
+> Kurulum betiğimizden temin yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için uç cihazınıza gidin ve **yönetici haklarıyla**aşağıdaki komutları çalıştırın:  
+
+```
+mkdir /home/lvaadmin/samples      
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 Bu aşamada modüller dağıtılır ancak hiçbir medya grafiği etkin değildir.
 
 ## <a name="prepare-to-monitor-events"></a>Olayları izlemeye hazırlanma
@@ -168,55 +177,54 @@ IoT Edge modüldeki canlı video analizlerini kullanarak gelen canlı video akı
 1. F5 tuşunu seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde bazı iletiler görüntülenir.
 1. Dosyasındaki *operations.js* , ve çağrıları ile başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıçlarını bitirdikten sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-        "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-        "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+    "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+    "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+**TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+ * Daha önce kullanılan bir çağrısı `GraphTopologySet``topologyUrl`
+ * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
      
-     * Daha önce kullanılan bir çağrısı `GraphTopologySet``topologyUrl`
-     * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "MotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
      
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "MotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     
-     * `GraphInstanceActivate`Grafik örneğini ve videonun akışını başlatan öğesine yönelik bir çağrı
-     * `GraphInstanceList`Grafik örneğinin çalışır durumda olduğunu gösteren ikinci bir çağrı
-1. **TERMINAL** penceresindeki çıktı, tarihinde duraklatılır `Press Enter to continue` . Henüz ENTER ' ı seçmeyin. Doğrudan çağrdığınız yöntemler için JSON yanıtı yüklerini görmek üzere yukarı kaydırın.
+ * `GraphInstanceActivate`Grafik örneğini ve videonun akışını başlatan öğesine yönelik bir çağrı
+ * `GraphInstanceList`Grafik örneğinin çalışır durumda olduğunu gösteren ikinci bir çağrı
+6. **TERMINAL** penceresindeki çıktı, tarihinde duraklatılır `Press Enter to continue` . Henüz ENTER ' ı seçmeyin. Doğrudan çağrdığınız yöntemler için JSON yanıtı yüklerini görmek üzere yukarı kaydırın.
 1. Visual Studio Code **Çıkış** penceresine geçin. IoT Edge modülündeki canlı video analizinin IoT Hub 'ına gönderdiğini iletiler görürsünüz. Bu hızlı başlangıçta aşağıdaki bölümde bu iletiler ele alınmaktadır.
 1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve ENTER ' u seçin. 
 

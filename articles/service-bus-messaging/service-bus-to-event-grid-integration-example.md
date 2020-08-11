@@ -6,17 +6,17 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0909fd95238051a6a50e582cb2543dd3bdd307bf
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337061"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067299"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Öğretici: Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme
 Bu öğreticide, Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına nasıl yanıt verileceğini öğreneceksiniz. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Service Bus ad alanı oluşturma
 > * İleti göndermek için örnek bir uygulama hazırlama
@@ -26,7 +26,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Event Grid aracılığıyla işlev ve ad alanını bağlama
 > * Azure İşlevleri’ni kullanarak ileti alma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
@@ -355,10 +355,10 @@ Bu bölümde, bir olay aldıktan sonra nasıl ileti alınacağını ve işlenece
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) hakkında daha fazla bilgi edinin.
-* [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/) hakkında daha fazla bilgi edinin.
-* [Azure App Service’in Logic Apps özelliği](https://docs.microsoft.com/azure/logic-apps/) hakkında daha fazla bilgi edinin.
-* [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/) hakkında daha fazla bilgi edinin.
+* [Azure Event Grid](../event-grid/index.yml) hakkında daha fazla bilgi edinin.
+* [Azure İşlevleri](../azure-functions/index.yml) hakkında daha fazla bilgi edinin.
+* [Azure App Service’in Logic Apps özelliği](../logic-apps/index.yml) hakkında daha fazla bilgi edinin.
+* [Azure Service Bus](/azure/service-bus/) hakkında daha fazla bilgi edinin.
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

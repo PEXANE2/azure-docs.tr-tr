@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa55f864319146c4d3237eb9e6725da2a68035f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308993"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067619"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB zaman uyumsuz Java SDK v2 için performans ipuçları
 
@@ -239,28 +239,6 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     ```
     * - nofile 100000
     ```
-
-* **Netty için yerel TLS/SSL uygulamasını kullanma**
-
-    Netty, daha iyi performans elde etmek için doğrudan TLS uygulama yığınına yönelik OpenSSL kullanabilir. Bu yapılandırma yokluğunda, Java 'nın varsayılan TLS uygulamasına geri dönecektir.
-
-    Ubuntu 'da:
-    ```bash
-    sudo apt-get install openssl
-    sudo apt-get install libapr1
-    ```
-
-    ve projenizin Maven bağımlılıklara aşağıdaki bağımlılığı ekleyin:
-    ```xml
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative</artifactId>
-      <version>2.0.20.Final</version>
-      <classifier>linux-x86_64</classifier>
-    </dependency>
-    ```
-
-Diğer platformlar (Red hat, Windows, Mac vb.) için bu yönergelere bakınhttps://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Dizin Oluşturma İlkesi
  

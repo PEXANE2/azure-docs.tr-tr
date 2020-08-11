@@ -3,15 +3,15 @@ title: Windows sanal masaüstü güvenli URL listesi-Azure
 description: Windows sanal masaüstü dağıtımınızın istendiği gibi çalıştığından emin olmak için engellemesini kaldırmanız gereken URL 'lerin bir listesi.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009486"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067214"
 ---
 # <a name="safe-url-list"></a>Güvenli URL listesi
 
@@ -76,4 +76,6 @@ Kullandığınız herhangi bir uzak masaüstü istemcisinin aşağıdaki URL 'Le
 |query.prod.cms.rt.microsoft.com|443|İstemci güncelleştirmeleri|Windows Masaüstü|
 
 >[!IMPORTANT]
->Bu URL 'Leri açmak, güvenilir bir istemci deneyimi için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca istemci sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
+>Bu URL 'Leri açmak, güvenilir bir istemci deneyimi için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler.
+>
+>Bu URL 'Ler yalnızca istemci sitelerine ve kaynaklarına karşılık gelir. Bu liste Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez. Azure Active Directory URL 'Ler, [Office 365 URL 'lerinde ve IP adresi ARALıKLARıNDA](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)kimlik 56 ' de bulunabilir.

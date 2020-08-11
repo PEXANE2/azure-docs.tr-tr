@@ -2,16 +2,31 @@
 title: Uygulama yükseltmesini Service Fabric
 description: Bu makalede, yükseltme modlarını seçme ve sistem durumu denetimleri gerçekleştirme dahil olmak üzere Service Fabric uygulamasını yükseltmeye yönelik bir giriş sunulmaktadır.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 8/5/2020
+ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248008"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067520"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uygulama yükseltmesini Service Fabric
 Azure Service Fabric uygulaması, bir hizmet koleksiyonudur. Yükseltme sırasında, Service Fabric yeni [uygulama bildirimini](service-fabric-application-and-service-manifests.md) önceki sürümle karşılaştırır ve uygulamadaki hangi hizmetlerin güncelleştirme gerektirdiğini belirler. Service Fabric, hizmet bildirimlerinde sürüm numaralarını önceki sürümdeki sürüm numaralarıyla karşılaştırır. Bir hizmet değiştirilmemiştir, bu hizmet yükseltilmemiştir.
+
+> [!NOTE]
+> [Applicationparameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="rolling-upgrades-overview"></a>Sıralı yükseltmelere genel bakış
 Sıralı bir uygulama yükseltmesinde yükseltme, aşamalar halinde gerçekleştirilir. Her aşamada, güncelleştirme etki alanı olarak adlandırılan kümedeki düğümlerin bir alt kümesine yükseltme uygulanır. Sonuç olarak, uygulama yükseltme boyunca kullanılabilir kalır. Yükseltme sırasında küme, eski ve yeni sürümlerin bir karışımını içerebilir.

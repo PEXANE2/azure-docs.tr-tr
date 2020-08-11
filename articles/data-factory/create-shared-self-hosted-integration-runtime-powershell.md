@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03e906d448790be8c7494e8172d02b3fc0603673
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655700"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067962"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
@@ -51,11 +51,11 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
 1. Bağlı bir tümleştirme çalışma zamanı oluşturun.
 1. Paylaşımı iptal edin.
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) . 
+- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). 
 
 - **Azure PowerShell**. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](https://docs.microsoft.com/powershell/azure/install-az-ps)içindeki yönergeleri izleyin. Diğer veri fabrikaları ile paylaşılabilen şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için bir betiği çalıştırmak üzere PowerShell 'i kullanırsınız. 
 
@@ -155,7 +155,7 @@ Yanıt, bu şirket içinde barındırılan tümleştirme çalışma zamanı içi
 #### <a name="create-another-data-factory"></a>Başka bir veri fabrikası oluşturma
 
 > [!NOTE]  
-> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz Data Factory zaten varsa, bu adımı atlayın.
+> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz Data Factory zaten varsa, bu adımı atlayın. Ancak, Oder ' de diğer veri fabrikasına rol atamaları eklemek veya kaldırmak için, `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) veya [sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)gibi izinlerinizin olması gerekir.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

@@ -3,12 +3,12 @@ title: YAML başvurusu-ACR görevleri
 description: Görev özellikleri, adım türleri, adım özellikleri ve yerleşik değişkenler de dahil olmak üzere ACR görevleri için YAML görevlerini tanımlamaya yönelik başvuru.
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 4710afe0d10a81f2a84437a335d3a012f3bac326
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479787"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067592"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR görevleri başvurusu: YAML
 
@@ -77,13 +77,13 @@ Görev özellikleri genellikle bir dosyanın en üstünde görünür `acr-task.y
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Geçersiz kılma destekleniyor | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Yes | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | No | Hiçbiri |
-| `stepTimeout` | int (saniye) | Yes | Bir adımın çalıştırılacağı en fazla saniye sayısı. Özellik bir görevde belirtilmişse, `timeout` tüm adımların varsayılan özelliğini ayarlar. `timeout`Özellik bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Yes | 600 (10 dakika) |
-| `workingDirectory` | string | Yes | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Yes | `/workspace` |
-| `env` | [dize, dize,...] | Yes |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Yes | Hiçbiri |
-| `secrets` | [gizli, gizli,...] | Yes | [Gizli](#secret) nesneler dizisi. | No | Hiçbiri |
-| `networks` | [Ağ, ağ,...] | Yes | [Ağ](#network) nesneleri dizisi. | No | Hiçbiri |
-| `volumes` | [Birim, birim,...] | Yes | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | No | Hiçbiri |
+| `version` | string | Evet | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | No | Yok |
+| `stepTimeout` | int (saniye) | Evet | Bir adımın çalıştırılacağı en fazla saniye sayısı. Özellik bir görevde belirtilmişse, `timeout` tüm adımların varsayılan özelliğini ayarlar. `timeout`Özellik bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | 600 (10 dakika) |
+| `workingDirectory` | string | Evet | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | `c:\workspace`Windows veya `/workspace` Linux 'ta |
+| `env` | [dize, dize,...] | Evet |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Evet | Yok |
+| `secrets` | [gizli, gizli,...] | Evet | [Gizli](#secret) nesneler dizisi. | No | Yok |
+| `networks` | [Ağ, ağ,...] | Evet | [Ağ](#network) nesneleri dizisi. | No | Yok |
+| `volumes` | [Birim, birim,...] | Evet | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | No | Yok |
 
 ### <a name="secret"></a>gizli dizi
 
@@ -91,9 +91,9 @@ Gizli nesne aşağıdaki özelliklere sahiptir.
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | dize | No | Gizli dizi tanımlayıcısı. | Hiçbiri |
-| `keyvault` | string | Yes | Azure Key Vault gizli URL 'SI. | Hiçbiri |
-| `clientID` | string | Yes | Azure kaynakları için [Kullanıcı tarafından atanan yönetilen kimliğin](container-registry-tasks-authentication-managed-identity.md) istemci kimliği. | Hiçbiri |
+| `id` | dize | No | Gizli dizi tanımlayıcısı. | Yok |
+| `keyvault` | string | Evet | Azure Key Vault gizli URL 'SI. | Yok |
+| `clientID` | string | Evet | Azure kaynakları için [Kullanıcı tarafından atanan yönetilen kimliğin](container-registry-tasks-authentication-managed-identity.md) istemci kimliği. | Yok |
 
 ### <a name="network"></a>network
 
@@ -101,11 +101,11 @@ Ağ nesnesi aşağıdaki özelliklere sahiptir.
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | dize | No | Ağın adı. | Hiçbiri |
-| `driver` | string | Yes | Ağı yönetmek için sürücü. | Hiçbiri |
-| `ipv6` | bool | Yes | IPv6 ağ oluşturma özelliğinin etkin olup olmadığı. | `false` |
-| `skipCreation` | bool | Yes | Ağ oluşturma atlanıp atlanmayacağı. | `false` |
-| `isDefault` | bool | Yes | Ağın Azure Container Registry ile belirtilen varsayılan bir ağ olup olmadığı. | `false` |
+| `name` | dize | No | Ağın adı. | Yok |
+| `driver` | string | Evet | Ağı yönetmek için sürücü. | Yok |
+| `ipv6` | bool | Evet | IPv6 ağ oluşturma özelliğinin etkin olup olmadığı. | `false` |
+| `skipCreation` | bool | Evet | Ağ oluşturma atlanıp atlanmayacağı. | `false` |
+| `isDefault` | bool | Evet | Ağın Azure Container Registry ile belirtilen varsayılan bir ağ olup olmadığı. | `false` |
 
 ### <a name="volume"></a>Ses düzeyi
 
@@ -113,8 +113,8 @@ Birim nesnesi aşağıdaki özelliklere sahiptir.
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | dize | No | Takılacak birimin adı. Yalnızca alfasayısal karakterler, '-' ve ' _ ' içerebilir. | Hiçbiri |
-| `secret` | Map [dize] dizesi | No | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Hiçbiri |
+| `name` | dize | No | Takılacak birimin adı. Yalnızca alfasayısal karakterler, '-' ve ' _ ' içerebilir. | Yok |
+| `secret` | Map [dize] dizesi | No | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Yok |
 
 ## <a name="task-step-types"></a>Görev adımı türleri
 
@@ -143,8 +143,8 @@ steps:
 
 | Parametre | Açıklama | İsteğe Bağlı |
 | --------- | ----------- | :-------: |
-| `-t`&#124;`--image` | Oluşturulan görüntünün tam nitelikli olduğunu tanımlar `image:tag` .<br /><br />Görüntü, işlevsel testler gibi iç görev doğrulamaları için kullanılabilir, ancak tüm görüntülerin `push` bir kayıt defterine ihtiyacı yoktur. Ancak, bir görev yürütme içindeki bir görüntüyü örnek olarak, görüntünün başvuru için bir adı olması gerekir.<br /><br />Farklı olarak `az acr build` , ACR görevlerinin çalıştırılması varsayılan gönderme davranışı sağlamaz. ACR görevleri ile, varsayılan senaryo bir görüntüyü oluşturma, doğrulama ve gönderme özelliğini kabul eder. İsteğe bağlı olarak oluşturulan görüntüleri gönderme hakkında bilgi için bkz. [gönderim](#push) . | Yes |
-| `-f`&#124;`--file` | Geçirilen Dockerfile dosyasını belirtir `docker build` . Belirtilmemişse, bağlam kökündeki varsayılan Dockerfile varsayılır. Bir Dockerfile belirtmek için, dosya adını bağlamın köküne göre geçirin. | Yes |
+| `-t`&#124;`--image` | Oluşturulan görüntünün tam nitelikli olduğunu tanımlar `image:tag` .<br /><br />Görüntü, işlevsel testler gibi iç görev doğrulamaları için kullanılabilir, ancak tüm görüntülerin `push` bir kayıt defterine ihtiyacı yoktur. Ancak, bir görev yürütme içindeki bir görüntüyü örnek olarak, görüntünün başvuru için bir adı olması gerekir.<br /><br />Farklı olarak `az acr build` , ACR görevlerinin çalıştırılması varsayılan gönderme davranışı sağlamaz. ACR görevleri ile, varsayılan senaryo bir görüntüyü oluşturma, doğrulama ve gönderme özelliğini kabul eder. İsteğe bağlı olarak oluşturulan görüntüleri gönderme hakkında bilgi için bkz. [gönderim](#push) . | Evet |
+| `-f`&#124;`--file` | Geçirilen Dockerfile dosyasını belirtir `docker build` . Belirtilmemişse, bağlam kökündeki varsayılan Dockerfile varsayılır. Bir Dockerfile belirtmek için, dosya adını bağlamın köküne göre geçirin. | Evet |
 | `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | No |
 
 ### <a name="properties-build"></a>Özellikler: derleme
@@ -375,26 +375,7 @@ az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://gi
 ```
 
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/mounts-secrets.yaml -->
-<!-- [!code-yml[task](~/acr-tasks/mounts-secrets.yaml)] -->
-
-```yml
-# This template demonstrates mounting a custom volume into a container at a CMD step
-secrets:
-  - id: sampleSecret
-    keyvault: https://myacbvault2.vault.azure.net/secrets/SampleSecret
-
-volumes:
-  - name: mysecrets
-    secret:
-      mysecret1: {{.Secrets.sampleSecret | b64enc}}
-      mysecret2: {{.Values.mysecret | b64enc}}
-
-steps:
-  - cmd: bash cat /run/test/mysecret1 /run/test/mysecret2
-    volumeMounts:
-      - name: mysecrets
-        mountPath: /run/test
-```
+[!code-yml[task](~/acr-tasks/mounts-secrets.yaml)]
 
 ## <a name="task-step-properties"></a>Görev adımı özellikleri
 
@@ -402,29 +383,28 @@ Her adım türü, türü için uygun olan birkaç özelliği destekler. Aşağı
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | Yes | Çalışma sırasında kapsayıcının ayrılmayacağı. | `false` |
-| `disableWorkingDirectoryOverride` | bool | Yes | Geçersiz kılma işlevselliğinin devre dışı bırakılıp başlatılmayacağını belirtir `workingDirectory` . `workingDirectory`Kapsayıcının çalışma dizini üzerinde tamamen denetim sağlamak için bunu ile birlikte kullanın. | `false` |
-| `entryPoint` | string | Yes | `[ENTRYPOINT]`Bir adımın kapsayıcısını geçersiz kılar. | Hiçbiri |
-| `env` | [dize, dize,...] | Yes | `key=value`Adımın ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. | Hiçbiri |
-| `expose` | [dize, dize,...] | Yes | Kapsayıcıdan sunulan bağlantı noktası dizisi. |  Hiçbiri |
-| [`id`](#example-id) | string | Yes | Görevi içindeki adımı benzersiz bir şekilde tanımlar. Görevdeki diğer adımlarda `id` , ile bağımlılık denetimi gibi bir adım başvuru yapılabilir `when` .<br /><br />, `id` Aynı zamanda çalışan kapsayıcının adıdır. Görevdeki diğer kapsayıcılar üzerinde çalışan süreçler, `id` DNS ana bilgisayar adı olarak veya Docker logs [ID] ile erişim için öğesine başvurabilir. | `acb_step_%d`, `%d` YAML dosyasında adımın en üst düzey 0 tabanlı dizinidir |
-| `ignoreErrors` | bool | Yes | Kapsayıcının yürütülmesi sırasında bir hata oluşup oluşmadığını ne olursa olsun adımın başarıyla işaretleneceğini belirtir. | `false` |
-| `isolation` | string | Yes | Kapsayıcının yalıtım düzeyi. | `default` |
-| `keep` | bool | Yes | Adım kapsayıcısının yürütmeden sonra tutulup tutulmayacağını belirtir. | `false` |
-| `network` | object | Yes | Kapsayıcının çalıştığı bir ağı tanımlar. | Hiçbiri |
-| `ports` | [dize, dize,...] | Yes | Kapsayıcıdan konağa yayınlanan bağlantı noktaları dizisi. |  Hiçbiri |
-| `pull` | bool | Yes | Herhangi bir önbelleğe alma davranışına engel olmak için yürütmeden önce kapsayıcının yapılıp yapılmayacağını belirtir. | `false` |
-| `privileged` | bool | Yes | Kapsayıcının ayrıcalıklı modda çalıştırılıp çalıştırılmayacağı. | `false` |
-| `repeat` | int | Yes | Kapsayıcının yürütülmesini yinelemek için yeniden deneme sayısı. | 0 |
-| `retries` | int | Yes | Bir kapsayıcının yürütülmesinin başarısız olması durumunda denenecek yeniden deneme sayısı. Yeniden deneme yalnızca bir kapsayıcının çıkış kodu sıfır değilse denenir. | 0 |
-| `retryDelay` | int (saniye) | Yes | Bir kapsayıcının çalışmasının yeniden denemeleri arasındaki gecikme süresi (saniye cinsinden). | 0 |
-| `secret` | object | Yes | [Azure kaynakları için](container-registry-tasks-authentication-managed-identity.md)Azure Key Vault gizli dizi veya yönetilen kimlik tanımlar. | Hiçbiri |
-| `startDelay` | int (saniye) | Yes | Kapsayıcının yürütülmesinin geciktirileceği saniye sayısı. | 0 |
-| `timeout` | int (saniye) | Yes | Bir adımın sonlandırılmadan önce yürütebilmesi için gereken en fazla saniye sayısı. | 600 |
-| [`when`](#example-when) | [dize, dize,...] | Yes | Görevin içindeki bir veya daha fazla adım için bir adımın bağımlılığını yapılandırır. | Hiçbiri |
-| `user` | string | Yes | Bir kapsayıcının Kullanıcı adı veya UID 'SI | Hiçbiri |
-| `volumeMounts` | object | No | [Volumemount](#volumemount) nesnelerinin dizisi. | Hiçbiri |
-| `workingDirectory` | string | Yes | Bir adım için çalışma dizinini ayarlar. Varsayılan olarak ACR görevleri, çalışma dizini olarak bir kök dizin oluşturur. Ancak, derlemeniz birkaç adım içeriyorsa, önceki adımlar aynı çalışma dizinini belirterek yapıtları sonraki adımlarla paylaşabilir. | `/workspace` |
+| `detach` | bool | Evet | Çalışma sırasında kapsayıcının ayrılmayacağı. | `false` |
+| `disableWorkingDirectoryOverride` | bool | Evet | Geçersiz kılma işlevselliğinin devre dışı bırakılıp başlatılmayacağını belirtir `workingDirectory` . `workingDirectory`Kapsayıcının çalışma dizini üzerinde tamamen denetim sağlamak için bunu ile birlikte kullanın. | `false` |
+| `entryPoint` | string | Evet | `[ENTRYPOINT]`Bir adımın kapsayıcısını geçersiz kılar. | Yok |
+| `env` | [dize, dize,...] | Evet | `key=value`Adımın ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. | Yok |
+| `expose` | [dize, dize,...] | Evet | Kapsayıcıdan sunulan bağlantı noktası dizisi. |  Yok |
+| [`id`](#example-id) | string | Evet | Görevi içindeki adımı benzersiz bir şekilde tanımlar. Görevdeki diğer adımlarda `id` , ile bağımlılık denetimi gibi bir adım başvuru yapılabilir `when` .<br /><br />, `id` Aynı zamanda çalışan kapsayıcının adıdır. Görevdeki diğer kapsayıcılar üzerinde çalışan süreçler, `id` DNS ana bilgisayar adı olarak veya Docker logs [ID] ile erişim için öğesine başvurabilir. | `acb_step_%d`, `%d` YAML dosyasında adımın en üst düzey 0 tabanlı dizinidir |
+| `ignoreErrors` | bool | Evet | Kapsayıcının yürütülmesi sırasında bir hata oluşup oluşmadığını ne olursa olsun adımın başarıyla işaretleneceğini belirtir. | `false` |
+| `isolation` | string | Evet | Kapsayıcının yalıtım düzeyi. | `default` |
+| `keep` | bool | Evet | Adım kapsayıcısının yürütmeden sonra tutulup tutulmayacağını belirtir. | `false` |
+| `network` | object | Evet | Kapsayıcının çalıştığı bir ağı tanımlar. | Yok |
+| `ports` | [dize, dize,...] | Evet | Kapsayıcıdan konağa yayınlanan bağlantı noktaları dizisi. |  Yok |
+| `pull` | bool | Evet | Herhangi bir önbelleğe alma davranışına engel olmak için yürütmeden önce kapsayıcının yapılıp yapılmayacağını belirtir. | `false` |
+| `privileged` | bool | Evet | Kapsayıcının ayrıcalıklı modda çalıştırılıp çalıştırılmayacağı. | `false` |
+| `repeat` | int | Evet | Kapsayıcının yürütülmesini yinelemek için yeniden deneme sayısı. | 0 |
+| `retries` | int | Evet | Bir kapsayıcının yürütülmesinin başarısız olması durumunda denenecek yeniden deneme sayısı. Yeniden deneme yalnızca bir kapsayıcının çıkış kodu sıfır değilse denenir. | 0 |
+| `retryDelay` | int (saniye) | Evet | Bir kapsayıcının çalışmasının yeniden denemeleri arasındaki gecikme süresi (saniye cinsinden). | 0 |
+| `secret` | object | Evet | [Azure kaynakları için](container-registry-tasks-authentication-managed-identity.md)Azure Key Vault gizli dizi veya yönetilen kimlik tanımlar. | Yok |
+| `startDelay` | int (saniye) | Evet | Kapsayıcının yürütülmesinin geciktirileceği saniye sayısı. | 0 |
+| `timeout` | int (saniye) | Evet | Bir adımın sonlandırılmadan önce yürütebilmesi için gereken en fazla saniye sayısı. | 600 |
+| [`when`](#example-when) | [dize, dize,...] | Evet | Görevin içindeki bir veya daha fazla adım için bir adımın bağımlılığını yapılandırır. | Yok |
+| `user` | string | Evet | Bir kapsayıcının Kullanıcı adı veya UID 'SI | Yok |
+| `workingDirectory` | string | Evet | Bir adım için çalışma dizinini ayarlar. Varsayılan olarak ACR görevleri, çalışma dizini olarak bir kök dizin oluşturur. Ancak, derlemeniz birkaç adım içeriyorsa, önceki adımlar aynı çalışma dizinini belirterek yapıtları sonraki adımlarla paylaşabilir. | `c:\workspace`Windows veya `/workspace` Linux 'ta |
 
 ### <a name="volumemount"></a>Birimbağlama
 
@@ -432,8 +412,8 @@ VolumeMount nesnesi aşağıdaki özelliklere sahiptir.
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | dize | No | Takılacak birimin adı. Bir özellikten tam olarak bir adla eşleşmesi gerekir `volumes` . | Hiçbiri |
-| `mountPath`   | string | hayır | Kapsayıcıya dosya bağlamaya yönelik mutlak yol.  | Hiçbiri |
+| `name` | dize | No | Takılacak birimin adı. Bir özellikten tam olarak bir adla eşleşmesi gerekir `volumes` . | Yok |
+| `mountPath`   | string | hayır | Kapsayıcıya dosya bağlamaya yönelik mutlak yol.  | Yok |
 
 ### <a name="examples-task-step-properties"></a>Örnekler: görev adımı özellikleri
 
@@ -521,6 +501,10 @@ version: v1.1.0
 steps:
     - build: -t $Registry/hello-world:$ID .
 ```
+
+### <a name="runsharedvolume"></a>. SharedVolume Çalıştır
+
+Tüm görev adımları tarafından erişilebilen paylaşılan bir birimin benzersiz tanımlayıcısı. Birim `c:\workspace` Windows veya Linux 'a bağlanır `/workspace` . 
 
 ### <a name="runregistry"></a>Çalıştır. kayıt defteri
 

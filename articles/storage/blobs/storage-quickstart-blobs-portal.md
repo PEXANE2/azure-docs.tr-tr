@@ -9,18 +9,18 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2e18b060aabcb849fb8e17722c530d199ebdbb8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535187"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067791"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portalla kullanarak blobları yükleme, indirme ve listeleme
 
 Bu hızlı başlangıçta, [Azure portalını](https://portal.azure.com/) kullanarak Azure Depolamada bir kapsayıcı oluşturma ve bu kapsayıcı içinde blok bloblarını karşıya yükleme ve indirme hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -45,7 +45,7 @@ Azure portalında yeni kapsayıcınıza bir blok blobu yüklemek için aşağıd
 
 1. Azure portalında, önceki bölümde oluşturduğunuz kapsayıcıya gidin.
 1. İçerdiği blobların listesini görüntülemek üzere kapsayıcıyı seçin. Bu kapsayıcı yenidir, bu nedenle henüz blob içermemelidir.
-1. Karşıya yükleme dikey penceresini açmak **için karşıya yükle düğmesini seçin** ve Blok Blobu olarak karşıya yüklenecek dosyayı bulmak için yerel dosya sisteminize gidin. Alternatif olarak, karşıya yükleme işleminin diğer ayarlarını yapılandırmak için Gelişmiş bölümünü genişletebilirsiniz.
+1. Karşıya yükleme dikey penceresini açmak **için karşıya yükle düğmesini seçin** ve Blok Blobu olarak karşıya yüklenecek dosyayı bulmak için yerel dosya sisteminize gidin. Alternatif olarak, karşıya yükleme işleminin diğer ayarlarını yapılandırmak için **Gelişmiş** bölümünü genişletebilirsiniz.
 
     ![Yerel sürücünüzden bir blobu karşıya yüklemeyi gösteren ekran görüntüsü](media/storage-quickstart-blobs-portal/upload-blob.png)
 
@@ -59,9 +59,18 @@ Bir blok blobunu tarayıcıda görüntülemek veya yerel dosya sisteminize kayde
 1. Önceki bölümde karşıya yüklediğiniz blob listesine gidin.
 1. İndirmek istediğiniz bloba sağ tıklayın ve **İndir**'i seçin.
 
+    ![Bir Blobun nasıl indirileceği gösteren ekran görüntüsü](media/storage-quickstart-blobs-portal/download-blob.png)
+
+## <a name="delete-a-block-blob"></a>Blok Blobu silme
+
+Bir blok blobunu tarayıcıda görüntülemek veya yerel dosya sisteminize kaydetmek üzere indirebilirsiniz. Bir blok blobu indirmek için şu adımları izleyin:
+
+1. Önceki bölümde karşıya yüklediğiniz blob listesine gidin.
+1. Silmek istediğiniz Blobları seçin ve üst eylem çubuğunda **Sil** ' i seçin.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıçta oluşturduğunuz kaynakları kaldırmak için kapsayıcıyı silebilirsiniz. Kapsayıcıdaki tüm blob'lar da silinir.
+Bu hızlı başlangıçta oluşturduğunuz tüm kaynakları kaldırmak için kapsayıcıyı silmeniz yeterlidir. Kapsayıcıdaki tüm blob'lar da silinir.
 
 Kapsayıcıyı silmek için:
 

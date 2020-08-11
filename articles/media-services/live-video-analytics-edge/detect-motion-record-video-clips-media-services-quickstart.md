@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074409"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067707"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -29,13 +29,13 @@ Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstar
 
 Azure kaynaklarını kurmak için yukarıdaki adımların bir parçası olarak, bir park lotunun (kısa) bir videosu IoT Edge cihaz olarak kullanılan Azure 'daki Linux VM 'sine kopyalanacaktır. Bu video dosyası, bu öğretici için canlı bir akışın benzetimini yapmak üzere kullanılacaktır.
 
-[VLC Player](https://www.videolan.org/vlc/)gibi bir uygulama kullanabilir, bunu başlatabilir, Control + N tuşuna basın ve [Bu](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) bağlantıyı Park lotu videosuna yapıştırarak kayıttan yürütmeyi başlatın. 5 saniyelik işaret hakkında bir beyaz araba, Park partisi üzerinden geçer.
+[VLC oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulamayı kullanabilir, başlatabilir, başlatabilir `Ctrl+N` ve [Park lotu video örneği](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) bağlantısını yapıştırarak kayıttan yürütmeyi başlatabilirsiniz. 5 saniyelik işaret hakkında bir beyaz araba, Park partisi üzerinden geçer.
 
 Aşağıdaki adımları tamamladığınızda, arabasının bu hareketini saptamak için IoT Edge üzerinde canlı video analizi kullandınız ve 5 saniyelik bir işaret üzerinden başlayarak bir video klibini kaydedecaksınız. Aşağıdaki diyagram, genel akışın görsel gösterimidir.
 
 ![Hareket olaylarına göre kıymetlere olay tabanlı video kaydı](./media/quickstarts/topology.png)
 
-## <a name="use-direct-methods"></a>Doğrudan yöntemler kullanma
+## <a name="use-direct-method-calls"></a>Doğrudan Yöntem çağrılarını kullanın
 
 Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz. Modülün sunduğu tüm doğrudan yöntemleri anlamak için [IoT Edge üzerindeki canlı video analizlerine yönelik doğrudan yöntemleri](direct-methods.md) okuyun. 
 
@@ -46,35 +46,35 @@ Bu adım modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-gr
 1. Visual Studio Code penceresinin üst ortasında bir düzenleme kutusu açılır penceresi görürsünüz. Düzenle kutusuna "Graphtopologyılist" yazın ve ENTER tuşuna basın.
 1. Sonra, aşağıdaki JSON yükünü kopyalayın ve düzenleme kutusuna yapıştırın ve ENTER tuşuna basın.
     
-    ```
-    {
-        "@apiVersion" : "1.0"
-    }
-    ```
+```
+{
+    "@apiVersion" : "1.0"
+}
+```
 
-    Birkaç saniye içinde, aşağıdaki Yanıt ile Visual Studio Code açılır penceresinde çıkış penceresini görürsünüz
+Birkaç saniye içinde, aşağıdaki Yanıt ile Visual Studio Code açılır penceresinde çıkış penceresini görürsünüz
     
-    ```
-    [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
-    [DirectMethod] Response from [lva-sample-device/lvaEdge]:
-    {
-      "status": 200,
-      "payload": {
-        "value": []
-      }
-    }
-    ```
+```
+[DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
+[DirectMethod] Response from [lva-sample-device/lvaEdge]:
+{
+  "status": 200,
+  "payload": {
+    "value": []
+  }
+}
+```
     
-    Grafik topolojisi oluşturulmadığından yukarıdaki yanıt beklenmez.
+Grafik topolojisi oluşturulmadığından yukarıdaki yanıt beklenmez.
 
 ### <a name="invoke-graphtopologyset"></a>Graphtopologyıset komutunu çağır
 
-Graphtopologyılist ' i çağırmak için özetlenen adımlarla aynı adımları kullanarak, yük olarak aşağıdaki JSON 'u kullanarak bir [Graph topolojisi](media-graph-concept.md#media-graph-topologies-and-instances) ayarlamak Için Graphtopologyıset komutunu çağırabilirsiniz. "Evrtoassetsonmotiondetekcion" olarak adlandırılan bir grafik topolojisi oluşturacaksınız.
+Graphtopologyılist ' i çağırmak için özetlenen adımlarla aynı adımları kullanarak, yük olarak aşağıdaki JSON 'u kullanarak bir [Graph topolojisi](media-graph-concept.md#media-graph-topologies-and-instances) ayarlamak Için Graphtopologyıset komutunu çağırabilirsiniz. "EVRtoAssetsOnMotionDetection" adlı bir grafik topolojisi oluşturacaksınız.
 
 ```
 {
     "@apiVersion": "1.0",
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -195,7 +195,7 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsün�
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to assets based on motion events",
       "parameters": [
@@ -312,7 +312,7 @@ Döndürülen durum 201 ' dir ve yeni bir Graph topolojisi oluşturulduğunu gö
 
 * Graphtopologyıset komutunu yeniden çağırın ve döndürülen durum kodunun 200 olup olmadığını kontrol edin. Durum kodu 200, mevcut bir grafik topolojisinin başarıyla güncelleştirildiğini gösterir.
 * Graphtopologyıset komutunu yeniden çağırın, ancak açıklama dizesini değiştirin. Yanıttaki durum kodunun 200 olup olmadığını ve açıklamanın yeni değere güncelleştirildiğinden emin olun.
-* Önceki bölümde özetlenen Graphtopologyılist dosyasını çağırın ve bundan sonra döndürülen yükün "Evrtoassetsonmotiondetekcion" grafik topolojisini görmek için işaretleyin.
+* Önceki bölümde özetlenen Graphtopologyılist ' i çağırın ve bundan böyle döndürülen yükün "EVRtoAssetsOnMotionDetection" grafik topolojisini görmek istediğinizi kontrol edin.
 
 ### <a name="invoke-graphtopologyget"></a>Graphtopologyıget çağırma
 
@@ -321,7 +321,7 @@ Döndürülen durum 201 ' dir ve yeni bir Graph topolojisi oluşturulduğunu gö
 
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -337,7 +337,7 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -466,7 +466,7 @@ Ardından, yukarıdaki grafik topolojisine başvuran bir grafik örneği oluştu
     "@apiVersion" : "1.0",
     "name" : "Sample-Graph-2",
     "properties" : {
-        "topologyName" : "EVRtoAssetsOnMotionDetecion",
+        "topologyName" : "EVRtoAssetsOnMotionDetection",
         "description" : "Sample graph description",
         "parameters" : [
             { "name" : "rtspUrl", "value" : "rtsp://rtspsim:554/media/lots_015.mkv" }
@@ -477,7 +477,7 @@ Ardından, yukarıdaki grafik topolojisine başvuran bir grafik örneği oluştu
 
 Şunlara dikkat edin:
 
-* Yukarıdaki yük, grafik örneğinin oluşturulması gereken Graf topolojisi adını (Evrtoassetsonmotiondetekcion) belirtir.
+* Yukarıdaki yük, grafik örneğinin oluşturulması gereken Graf topolojisi adını (EVRtoAssetsOnMotionDetection) belirler.
 * Yük, topoloji yükünde varsayılan bir değere sahip olmayan "rtspUrl" için parametre değeri içeriyor.
 
 Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsünüz:
@@ -496,7 +496,7 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsün�
     "properties": {
       "state": "Inactive",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -531,13 +531,13 @@ Oluşturduğunuz medya grafiği, hareketi algılamak için hareket algılama iş
     
     Saniyeler içinde çıkış penceresinde aşağıdaki iletileri görürsünüz:
 
-    ```
-    [IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
-    [IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
-    ```
+```
+[IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
+[IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
+```
 
 ### <a name="invoke-graphinstanceactivate"></a>Graphınstanceactivate çağır
 
@@ -590,7 +590,7 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
     "properties": {
       "state": "Active",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -738,7 +738,7 @@ Grafik örneğinin çalışmaya devam etmesine izin verirseniz bu iletiyi görü
 
 Grafik örneğinin çalışmaya devam etmesine izin verirseniz, RTSP simülatör, video dosyasının sonuna ulaşır ve Durdur/bağlantıyı keser. RTSP kaynak düğümü daha sonra benzeticide yeniden bağlanır ve işlem yinelenir.
     
-## <a name="invoke-additional-direct-methods-to-clean-up"></a>Temizlemek için ek doğrudan Yöntemler çağırma
+## <a name="invoke-additional-direct-method-calls-to-clean-up"></a>Temizlemek için ek doğrudan Yöntem çağrıları çağırma
 
 Şimdi, grafik örneğini devre dışı bırakmak ve silmek için doğrudan yöntemleri çağırın (Bu sırada).
 
@@ -801,7 +801,7 @@ Aşağıdaki yük ile GraphTopologyDelete doğrudan metodunu çağırın:
 ```
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 

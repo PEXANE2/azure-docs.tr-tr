@@ -3,12 +3,12 @@ title: Hareket & ekran, uç cihazlarda video kaydetme-Azure
 description: Bu hızlı başlangıçta, (sanal) bir IP kamerasından canlı video akışını analiz etmek, herhangi bir hareketin mevcut olup olmadığını algılamak ve bu durumda bir MP4 video klibini, sınır cihazında yerel dosya sistemine kaydetmek için IoT Edge 'da canlı video analizinin nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 796def7cad3632dd50184bea751dc9f348569216
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091870"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067750"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Hızlı başlangıç: Edge cihazlarındaki hareketi algılama ve video kaydetme
  
@@ -89,11 +89,20 @@ Bu hızlı başlangıç önkoşulları kapsamında, örnek kodu bir klasöre ind
 
 [IoT Edge dağıtım bildirimi oluşturma ve dağıtma](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest) adımında, Visual Studio Code ' de **Azure IoT Hub** altında **LVA-örnek-cihaz** düğümünü genişletin (sol alt bölümde). Aşağıdaki modüllerin dağıtıldığını görmeniz gerekir:
 
-* **Lvaedge** adlı canlı video analizi modülü
-* Canlı video akışı kaynağı görevi gören bir RTSP sunucusunun benzetimini yapan **rtspsim** modülü
+* Adlı canlı video analizi modülü`lvaEdge`
+* `rtspsim`Canlı video akışı kaynağı görevi gören BIR RTSP sunucusunun benzetimini yapan modül
 
   ![Modül](./media/quickstarts/lva-sample-device-node.png)
 
+> [!NOTE]
+> Kurulum betiğimizden temin yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için uç cihazınıza gidin ve **yönetici haklarıyla**aşağıdaki komutları çalıştırın:  
+
+```
+mkdir /home/lvaadmin/samples
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 
 ## <a name="review---prepare-for-monitoring-events"></a>İnceleme-izleme olayları için hazırlanma
 [Olayları Izlemeye hazırlanmak](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)için adımları tamamladığınızdan emin olun.
@@ -103,56 +112,57 @@ Bu hızlı başlangıç önkoşulları kapsamında, örnek kodu bir klasöre ind
 ## <a name="run-the-sample-program"></a>Örnek programı çalıştırma
 
 1. F5 tuşunu seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde bazı iletiler yazdırılır.
-1. Koddaki *operations.js* doğrudan yöntemleri `GraphTopologyList` ve ' i çağırır `GraphInstanceList` . Önceki hızlı başlangıçlardan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve sonra duraklatılır. Enter tuşunu seçin.
+1. Koddaki *operations.js* doğrudan yöntemleri `GraphTopologyList` ve ' i çağırır `GraphInstanceList` . Önceki hızlı başlangıçlardan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve sonra duraklatılır. Enter tuşuna basın.
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+  "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+  "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+  **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:  
+  * Öğesine yapılan bir çağrı `GraphTopologySet``topologyUrl` 
+  * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
 
-     * Öğesine yapılan bir çağrı `GraphTopologySet``topologyUrl` 
-     * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "EVRToFilesOnMotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
 
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "EVRToFilesOnMotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     * `GraphInstanceActivate`Grafik örneğini ve videonun akışını başlatan öğesine yönelik bir çağrı
-     * `GraphInstanceList`Grafik örneğinin çalışır durumda olduğunu gösteren ikinci bir çağrı
-1. **TERMINAL** penceresindeki çıktı, tarihinde duraklatılır `Press Enter to continue` . Henüz ENTER ' ı seçmeyin. Çağrdığınız doğrudan yöntemler için JSON yanıtı yüklerini görmek için yukarı kaydırın.
+  * `GraphInstanceActivate`Grafik örneğini ve videonun akışını başlatan öğesine yönelik bir çağrı
+  * `GraphInstanceList`Grafik örneğinin çalışır durumda olduğunu gösteren ikinci bir çağrı  
+
+3. **TERMINAL** penceresindeki çıktı, tarihinde duraklatılır `Press Enter to continue` . Henüz ENTER ' ı seçmeyin. Çağrdığınız doğrudan yöntemler için JSON yanıtı yüklerini görmek için yukarı kaydırın.
 1. Visual Studio Code **Çıkış** penceresine geçin. IoT Edge modülünün canlı video analizinin IoT Hub 'ına gönderdiği iletileri görürsünüz. Bu hızlı başlangıçta aşağıdaki bölümde bu iletiler ele alınmaktadır.
 
 1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve ENTER ' u seçin. 
@@ -239,7 +249,7 @@ Bu iletinin bir örneği aşağıda verilmiştir:
 
 ## <a name="play-the-mp4-clip"></a>MP4 klibini oynat
 
-MP4 dosyaları, OUTPUT_VIDEO_FOLDER_ON_DEVICE anahtarını kullanarak *. env* dosyasında yapılandırdığınız Edge cihazında bir dizine yazılır. Varsayılan değeri kullandıysanız, sonuçlar */Home/lvaadmin/Samples/output/* klasöründe olmalıdır.
+MP4 dosyaları, OUTPUT_VIDEO_FOLDER_ON_DEVICE anahtarını kullanarak *. env* dosyasında yapılandırdığınız Edge cihazında bir dizine yazılır. Varsayılan değeri kullandıysanız, sonuçlar */var/Media/* klasöründe olmalıdır.
 
 MP4 klibini oynatmak için:
 
@@ -250,7 +260,7 @@ MP4 klibini oynatmak için:
     ![VM](./media/quickstarts/virtual-machine.png)
 
 1. [Azure kaynaklarınızı ayarlarken](detect-motion-emit-events-quickstart.md#set-up-azure-resources)oluşturulan kimlik bilgilerini kullanarak oturum açın. 
-1. Komut isteminde ilgili dizine gidin. Varsayılan konum */Home/lvaadmin/Samples/output*' dır. MP4 dosyalarını dizinde görmeniz gerekir.
+1. Komut isteminde ilgili dizine gidin. Varsayılan konum */var/Media*' dir. MP4 dosyalarını dizinde görmeniz gerekir.
 
     ![Çıktı](./media/quickstarts/samples-output.png) 
 
