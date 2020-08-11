@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 50a7fe866d236a7edb30b3cae5ef076d3ebbca56
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009724"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078521"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (CLı) ayarlama
 
@@ -63,10 +63,10 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Rolü atamak için aşağıdaki komutu kullanın (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından çalıştırılması gerekir):
+Rolü atamak için aşağıdaki komutu kullanın (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından çalıştırılması gerekir). Bu komut, rolün atanması gereken kullanıcı için Azure AD hesabındaki *Kullanıcı asıl adını* geçirmeniz gerekir. Çoğu durumda, bu, Azure AD hesabındaki kullanıcının e-postasına göre eşleşir.
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.
@@ -74,13 +74,13 @@ Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.
 > [!NOTE]
 > Bu komut, CLı 'nin **grafik veritabanında kullanıcı veya hizmet sorumlusu bulamadığını**söyleyen bir hata döndürürse:
 >
-> E-postaları yerine kullanıcının *nesne kimliğini* kullanın. Bu, kişisel [Microsoft hesaplarındaki (MSAs)](https://account.microsoft.com/account)kullanıcılar için gerçekleşebilir. 
+> Bunun yerine kullanıcının *nesne kimliğini* kullanarak rolü atayın. Bu, kişisel [Microsoft hesaplarındaki (MSAs)](https://account.microsoft.com/account)kullanıcılar için gerçekleşebilir. 
 >
 > Kullanıcı hesabını seçmek ve ayrıntılarını açmak için [Azure Active Directory kullanıcıların Azure Portal sayfasını](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) kullanın. Kullanıcının *ObjectID*'yi kopyalayın:
 >
 > :::image type="content" source="media/includes/user-id.png" alt-text="' Nesne KIMLIĞI ' alanındaki GUID 'YI vurgulamak Azure portal Kullanıcı sayfasının görünümü" lightbox="media/includes/user-id.png":::
 >
-> Sonra, e-posta yerine kullanıcının *nesne kimliğini* kullanarak rol atama listesi komutunu tekrarlayın.
+> Ardından, yukarıdaki parametresi için kullanıcının *nesne kimliğini* kullanarak rol atama listesi komutunu tekrarlayın `assignee` .
 
 ### <a name="verify-success"></a>Başarıyı doğrula
 

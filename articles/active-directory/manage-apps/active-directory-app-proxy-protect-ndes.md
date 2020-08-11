@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760805"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078946"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Bir ağ cihazı kayıt hizmeti (NDES) sunucusu üzerinde Azure AD Uygulama Ara Sunucusu ile tümleştirme
 
@@ -89,10 +89,10 @@ Azure AD Uygulama Ara Sunucusu, Azure üzerinde oluşturulmuştur. Bu, dağıtı
 
 1. **Http hatası 403 – Yasak** yanıt görmeniz gerekir.
 
-1. Belirtilen NDES URL 'sini (Microsoft Intune aracılığıyla) cihazlara değiştirme bu değişiklik, Microsoft uç nokta yapılandırma merkezi veya Intune bulutu içinde olabilir.
+1. Belirtilen NDES URL 'sini (Microsoft Intune aracılığıyla) cihazlara değiştirin. Bu değişiklik, Microsoft uç noktası Configuration Manager veya Microsoft Uç Nokta Yöneticisi Yönetim Merkezi 'nde olabilir.
 
-   * Yapılandırma Merkezi için, sertifika kayıt noktasına (CRP) gidin ve URL 'YI ayarlayın. Bu URL, cihazların ne kadar arama yaptığını ve zorluğun sunulmasını sağlar.
-   * Tek başına Intune olarak da bilinen Intune bulutu için, yeni bir SCEP ilkesi düzenleyin ya da oluşturun ve yeni URL 'YI ekleyin.
+   * Configuration Manager için, sertifika kayıt noktasına gidin ve URL 'YI ayarlayın. Bu URL, cihazların ne kadar arama yaptığını ve zorluğun sunulmasını sağlar.
+   * Tek başına Intune için yeni bir SCEP ilkesi düzenleyin ya da oluşturun ve yeni URL 'YI ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

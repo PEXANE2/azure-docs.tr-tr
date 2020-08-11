@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923875"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078963"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Birimin hizmet düzeyini dinamik olarak değiştirme
 
@@ -48,7 +48,7 @@ Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme a
 2. Özellik kaydının durumunu denetleyin: 
 
     > [!NOTE]
-    > **Registrationstate** , üzerinde `Registering` değişiklik yapmadan önce birkaç dakika içinde olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+    > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
@@ -64,7 +64,7 @@ Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme a
 
     ![Havuzu Değiştir](../media/azure-netapp-files/change-pool.png)
 
-3.  **Tamam** düğmesine tıklayın.
+3.  **Tamam**’a tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  

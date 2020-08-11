@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835706"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077042"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -278,13 +278,13 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam* düğmesine tıklayın.
+* *Tamam*’a tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
 [Yönetilen kimliğe](../aks/use-managed-identity.md) sahip bir aks kümesinde Azure dev Spaces bir hizmeti çalıştırırken ve [Pod tarafından yönetilen kimlikleri](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) yüklüyken, işlem *grafik yükleme* adımından sonra yanıt vermeyi durdurabilir. Azds *-Injector-Web kancasını* *azds* ad alanında inceleyebilir, bu hatayı görebilirsiniz.
 
-Azure Dev Spaces hizmetler kümede çalışır ve küme dışında Azure Dev Spaces arka uç hizmetleriyle konuşmak için kümenin yönetilen kimliğini kullanır. Pod yönetilen kimliği yüklendiğinde, kümenin düğümlerinde, yönetilen kimlik kimlik bilgileri için tüm çağrıları [kümeye yüklenmiş bir düğüm yönetilen kimliği (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)yeniden yönlendirmek üzere, ağ kuralları yapılandırılır. Bu NMI DaemonSet, çağıran Pod 'yi tanımlar ve pod 'ın istenen yönetilen kimliğe erişmek için uygun şekilde etiketlenmesini sağlar. Azure Dev Spaces, bir kümede Pod tarafından yönetilen kimliğin yüklü olup olmadığını algılayamaz ve Azure Dev Spaces hizmetlerin kümenin yönetilen kimliğine erişmesine izin vermek için gerekli yapılandırmayı gerçekleştiremez. Azure Dev Spaces Hizmetleri kümenin yönetilen kimliğine erişmek üzere yapılandırılmadığından, NMI DaemonSet, yönetilen kimlik için AAD belirteci almasına ve Azure Dev Spaces arka uç hizmetleriyle iletişim kuramamasına izin vermez.
+Azure Dev Spaces hizmetler kümede çalışır ve küme dışında Azure Dev Spaces arka uç hizmetleriyle konuşmak için kümenin yönetilen kimliğini kullanır. Pod yönetilen kimliği yüklendiğinde, kümenin düğümlerinde, yönetilen kimlik kimlik bilgileri için tüm çağrıları [kümeye yüklenmiş bir düğüm yönetilen kimliği (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)yeniden yönlendirmek üzere, ağ kuralları yapılandırılır. Bu NMI DaemonSet, çağıran Pod 'yi tanımlar ve pod 'ın istenen yönetilen kimliğe erişmek için uygun şekilde etiketlenmesini sağlar. Azure Dev Spaces, bir kümede Pod tarafından yönetilen kimliğin yüklü olup olmadığını algılayamaz ve Azure Dev Spaces hizmetlerin kümenin yönetilen kimliğine erişmesine izin vermek için gerekli yapılandırmayı gerçekleştiremez. Azure Dev Spaces Hizmetleri kümenin yönetilen kimliğine erişmek üzere yapılandırılmadığından, NMI DaemonSet, yönetilen kimlik için bir Azure AD belirteci almasına ve Azure Dev Spaces arka uç hizmetleriyle iletişim kuramamasına izin vermez.
 
 Bu sorunu onarmak için, *azds-Injector-Web kancası* Için bir [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) uygulayın ve yönetilen kimliğe erişmek üzere Azure dev Spaces tarafından işaretlenmiş bir şekilde güncelleştirin.
 
@@ -416,7 +416,7 @@ Bu sorunu onarmak için, [C# VS Code uzantısını](https://marketplace.visualst
 
 Visual Studio Code hata ayıklayıcıyı çalıştırırken bu hatayı görebilirsiniz. Geliştirme makinenizde yüklü Azure Dev Spaces için VS Code uzantısına sahip olmayabilirsiniz.
 
-Bu sorunu giderecek [Azure dev Spaces için vs Code uzantısını](get-started-netcore.md)yüklersiniz.
+Bu sorunu giderecek Azure Dev Spaces için VS Code uzantısını yüklersiniz.
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hata "geçersiz ' CWD ' değeri '/src '. Sistem belirtilen dosyayı bulamıyor. " veya "Launch: program '/src/[proje ikilisinde yol] ' yok"
 

@@ -5,19 +5,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021237"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077739"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
 [App Service](overview.md), Azure’da yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Ayrıca, uygulamanız için [Azure SQL Veritabanı](/azure/sql-database/)’na ve diğer Azure hizmetlerine erişimi güvenli hale getirmeye yönelik anahtar teslim bir çözüm olan [yönetilen kimliği](overview-managed-identity.md) sağlar. App Service içindeki yönetilen kimlikler, bağlantı dizelerindeki kimlik bilgileri gibi uygulamanızdaki gizli dizileri ortadan kaldırarak uygulamanızı daha güvenli hale getirir. Bu öğreticide, aşağıdaki öğreticilerden birinde oluşturduğunuz örnek Web uygulamasına yönetilen kimliği ekleyeceksiniz: 
 
-- [Öğretici: Azure’da SQL Veritabanı ile ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [Öğretici: Azure'da SQL Veritabanı ile ASP.NET uygulaması oluşturma](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](tutorial-dotnetcore-sqldb-app.md)
 
 İşiniz bittiğinde, örnek uygulamanız kullanıcı adı ve parolaya gerek kalmadan SQL Veritabanıa güvenli bir şekilde bağlanacaktır.
 
@@ -43,7 +43,7 @@ ms.locfileid: "84021237"
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makale, öğreticide kaldığınız yerden devam eder [: SQL veritabanı Ile Azure 'da bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md) veya [öğretici: Azure App Service IÇINDE ASP.NET Core ve SQL veritabanı uygulaması oluşturma](app-service-web-tutorial-dotnetcore-sqldb.md). Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, kendi .NET uygulamanıza yönelik adımları SQL veritabanı ile uyarlayabilirsiniz.
+Bu makale, öğreticide kaldığınız yerden devam eder [: SQL veritabanı Ile Azure 'da bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md) veya [öğretici: Azure App Service IÇINDE ASP.NET Core ve SQL veritabanı uygulaması oluşturma](tutorial-dotnetcore-sqldb-app.md). Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, kendi .NET uygulamanıza yönelik adımları SQL veritabanı ile uyarlayabilirsiniz.
 
 Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak için, bilgisayarınızdan istemci bağlantısına izin verildiğinden emin olun. Aksi takdirde, [Azure Portal kullanarak sunucu DÜZEYI IP güvenlik duvarı kurallarını yönetme](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)konumundaki adımları IZLEYEREK istemci IP 'sini ekleyin.
 
@@ -74,14 +74,14 @@ Active Directory Yöneticisi ekleme hakkında daha fazla bilgi için bkz. [sunuc
 
 ## <a name="set-up-visual-studio"></a>Visual Studio'yu ayarlama
 
-### <a name="windows"></a>Windows
+### <a name="windows-client"></a>Windows istemcisi
 Windows için Visual Studio, Azure AD kimlik doğrulamasıyla tümleşiktir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için, menüden **Dosya**hesap ayarları ' nı seçerek Azure AD kullanıcısını Visual Studio 'ya ekleyin  >  **Account Settings** ve **Hesap Ekle**' ye tıklayın.
 
 Azure hizmet kimlik doğrulaması için Azure AD kullanıcısını ayarlamak için, menüden **Araçlar**  >  **Seçenekler** ' i seçin ve ardından **Azure hizmeti kimlik doğrulama**  >  **hesabı seçimi**' ni seçin. Eklediğiniz Azure AD kullanıcısını seçip **Tamam**' a tıklayın.
 
 Artık Azure AD kimlik doğrulaması ile SQL veritabanıyla arka uç olarak uygulamanızı geliştirmeye ve hata ayıklamaya hazırsınız.
 
-### <a name="macos"></a>macOS
+### <a name="macos-client"></a>macOS istemcisi
 
 Mac için Visual Studio Azure AD kimlik doğrulamasıyla tümleştirilmiştir. Ancak, daha sonra kullanacağınız [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) KITAPLıĞı Azure CLI 'dan belirteçleri kullanabilir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için öncelikle yerel makinenize [Azure CLI yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli) gerekir.
 
@@ -107,7 +107,7 @@ Visual Studio 'da Paket Yöneticisi konsolunu açın ve [Microsoft. Azure. Servi
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-*Web. config*dosyasında, dosyanın en üstünden çalışarak aşağıdaki değişiklikleri yapın:
+*Web.config*' de, dosyanın en üstünden çalışarak aşağıdaki değişiklikleri yapın:
 
 - İçinde `<configSections>` , aşağıdaki bölüm bildirimini içine ekleyin:
 
@@ -142,7 +142,7 @@ Visual Studio 'da Paket Yöneticisi konsolunu açın ve [Microsoft. Azure. Servi
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-[ASP.NET Core ve SQL veritabanı öğreticisinde](app-service-web-tutorial-dotnetcore-sqldb.md), `MyDbConnection` yerel geliştirme ortamı bir SQLite veritabanı dosyası kullandığından ve Azure üretim ortamı App Service bir bağlantı dizesi kullandığından, bağlantı dizesi hiç kullanılmıyor. Active Directory kimlik doğrulamasıyla, her iki ortamın de aynı bağlantı dizesini kullanmasını istersiniz. *AppSettings. JSON*içinde, `MyDbConnection` bağlantı dizesinin değerini ile değiştirin:
+[ASP.NET Core ve SQL veritabanı öğreticisinde](tutorial-dotnetcore-sqldb-app.md), `MyDbConnection` yerel geliştirme ortamı bir SQLite veritabanı dosyası kullandığından ve Azure üretim ortamı App Service bir bağlantı dizesi kullandığından, bağlantı dizesi hiç kullanılmıyor. Active Directory kimlik doğrulamasıyla, her iki ortamın de aynı bağlantı dizesini kullanmasını istersiniz. *appsettings.json*öğesinde, `MyDbConnection` bağlantı dizesinin değerini ile değiştirin:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
@@ -229,7 +229,7 @@ Cloud Shell istemine geri dönmek için `EXIT` yazın.
 
 ### <a name="modify-connection-string"></a>Bağlantı dizesini değiştirme
 
-*Web. config* veya *appSettings. JSON* ' da yaptığınız aynı değişikliklerin yönetilen kimlikle birlikte çalışıp çalışmadığını unutmayın. bu nedenle tek şey, Visual Studio 'nun uygulamanızı ilk kez dağıttığı App Service var olan bağlantı dizesini kaldırmaktan emin olur. Aşağıdaki komutu kullanın, ancak *\<app-name>* uygulamanızın adıyla değiştirin.
+*Web.config* veya *appsettings.jsüzerinde* yaptığınız değişikliklerin yönetilen kimlikle birlikte çalışıp çalışmadığını unutmayın. bu nedenle, tek şey, Visual Studio 'nun uygulamanızı ilk kez dağıttığı App Service var olan bağlantı dizesini kaldırmaktan emin olur. Aşağıdaki komutu kullanın, ancak *\<app-name>* uygulamanızın adıyla değiştirin.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection
@@ -245,7 +245,7 @@ Bundan sonra tek yapmanız gereken, değişikliklerinizi Azure'da yayımlamaktı
 
 Yayımlama sayfasında **Yayımla**'ya tıklayın. 
 
-**Öğreticiden ulaşdıysanız [: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](app-service-web-tutorial-dotnetcore-sqldb.md)**, aşağıdaki komutlarla git kullanarak değişikliklerinizi yayımlayın:
+**Öğreticiden ulaşdıysanız [: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](tutorial-dotnetcore-sqldb-app.md)**, aşağıdaki komutlarla git kullanarak değişikliklerinizi yayımlayın:
 
 ```bash
 git commit -am "configure managed identity"

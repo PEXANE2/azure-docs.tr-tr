@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169995"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077484"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
-Bu makalede, Azure App Service ( [ıısnode](https://github.com/azure/iisnode)ile) üzerinde çalışan [düğüm uygulamaları](app-service-web-get-started-nodejs.md) için en iyi uygulamaları ve sorun giderme adımlarını öğreneceksiniz.
+Bu makalede, Azure App Service ( [ıısnode](https://github.com/azure/iisnode)ile) üzerinde çalışan [Windows Node.js uygulamaları](quickstart-nodejs.md?pivots=platform-windows) için en iyi uygulamaları ve sorun giderme adımlarını öğreneceksiniz.
 
 > [!WARNING]
 > Üretim sitenizde sorun giderme adımlarını kullanırken dikkatli olun. Öneri, üretim dışı bir kurulumda (örneğin, hazırlama yuvanız) ve sorun düzeltildiğinde, hazırlama yuvalarınızı üretim yuvasıyla değiştirme konusunda uygulamanızı sorun gidermeye yöneliktir.
@@ -273,7 +273,7 @@ NODE.exe adlı bir ayar vardır `NODE_PENDING_PIPE_INSTANCES` . Azure App Servic
 
 Azure App Service üzerinde node.js uygulamalar hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
-* [Azure App Service’te Node.js web uygulamalarını kullanmaya başlama](app-service-web-get-started-nodejs.md)
+* [Azure App Service’te Node.js web uygulamalarını kullanmaya başlama](quickstart-nodejs.md)
 * [Azure App Service’teki bir Node.js web uygulamasına hata ayıklama](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [Azure uygulamalarıyla Node.js Modüllerini kullanma](../nodejs-use-node-modules-azure-apps.md)
 * [Azure Uygulama Hizmeti Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

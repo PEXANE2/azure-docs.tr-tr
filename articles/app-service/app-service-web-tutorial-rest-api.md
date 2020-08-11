@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 78d44310420558d2f57d2b652f8453028b20c433
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559784"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077722"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service’te CORS ile RESTful API barındırma
 
@@ -142,7 +142,7 @@ Ardından, API'niz için App Service'te yerleşik CORS desteğini etkinleştirir
 
 Yerel deponuzda _wwwroot/index.html_ dosyasını açın.
 
-51. satırda, `apiEndpoint` değişkenini dağıtılan API'nizin URL'sine (`http://<app_name>.azurewebsites.net`) ayarlayın. _ \<AppName>_ değerini App Service uygulamanızın adıyla değiştirin.
+51. satırda, `apiEndpoint` değişkenini dağıtılan API'nizin URL'sine (`http://<app_name>.azurewebsites.net`) ayarlayın. _\<appname>_ App Service ' deki uygulamanızın adıyla değiştirin.
 
 Yerel terminal pencerenizde örnek uygulamayı yeniden çalıştırın.
 
@@ -150,7 +150,7 @@ Yerel terminal pencerenizde örnek uygulamayı yeniden çalıştırın.
 dotnet run
 ```
 
-`http://localhost:5000` adresindeki tarayıcı uygulamasına gidin. Tarayıcınızda geliştirici araçları penceresini açın (`Ctrl` + `Shift` + `i` Windows için Chrome 'da) ve **konsol** sekmesini inceleyin. Artık hata iletisini görmeniz gerekir `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+`http://localhost:5000` adresindeki tarayıcı uygulamasına gidin. Tarayıcınızda geliştirici araçları penceresini açın ( `Ctrl` + `Shift` + `i` Windows için Chrome 'da) ve **konsol** sekmesini inceleyin. Artık hata iletisini görmeniz gerekir `No 'Access-Control-Allow-Origin' header is present on the requested resource` .
 
 ![Tarayıcı istemcisinde CORS hatası](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -160,7 +160,7 @@ Tarayıcı uygulaması (`http://localhost:5000`) ile uzak kaynak (`http://<app_n
 
 ### <a name="enable-cors"></a>CORS'yi etkinleştirme 
 
-Cloud Shell, [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin. App-Name>yer tutucusunu değiştirin. _ &lt;_
+Cloud Shell, komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) . _ &lt; App-name>_ yer tutucusunu değiştirin.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
@@ -169,7 +169,7 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 `properties.cors.allowedOrigins` içinde birden çok istemci URL'si belirtebilirsiniz (`"['URL1','URL2',...]"`). Ayrıca `"['*']"` ile tüm istemci URL'lerini etkinleştirebilirsiniz.
 
 > [!NOTE]
-> Uygulamanız, gönderilecek tanımlama bilgileri veya kimlik doğrulama belirteçleri gibi kimlik bilgilerini gerektiriyorsa tarayıcı, yanıtta `ACCESS-CONTROL-ALLOW-CREDENTIALS` üst bilgi gerektirebilir. Bunu App Service etkinleştirmek için CORS yapılandırmasında olarak `properties.cors.supportCredentials` `true` ayarlayın. Bu, `allowedOrigins` içerdiğinde `'*'`etkinleştirilemez.
+> Uygulamanız, gönderilecek tanımlama bilgileri veya kimlik doğrulama belirteçleri gibi kimlik bilgilerini gerektiriyorsa tarayıcı, `ACCESS-CONTROL-ALLOW-CREDENTIALS` yanıtta üst bilgi gerektirebilir. Bunu App Service etkinleştirmek için `properties.cors.supportCredentials` CORS yapılandırmasında olarak ayarlayın `true` . Bu, `allowedOrigins` içerdiğinde etkinleştirilemez `'*'` .
 
 ### <a name="test-cors-again"></a>CORS'yi yeniden test etme
 
@@ -203,4 +203,4 @@ Daha fazla esneklik elde etmek için App Service CORS'si yerine kendi CORS yard�
 Kullanıcıların kimlik doğrulamasının ve yetkilendirmesinin nasıl yapılacağını öğrenmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uçtan uca kullanıcıların kimliğini doğrulama ve kullanıcıları yetkilendirme](app-service-web-tutorial-auth-aad.md)
+> [Öğretici: Uçtan uca kullanıcıların kimliğini doğrulama ve kullanıcıları yetkilendirme](tutorial-auth-aad.md)

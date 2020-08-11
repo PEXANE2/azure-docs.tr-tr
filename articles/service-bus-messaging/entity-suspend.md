@@ -3,12 +3,12 @@ title: Azure Service Bus-mesajlaşma varlıklarını askıya alma
 description: Bu makalede Azure Service Bus ileti varlıklarının (kuyruklar, konular ve abonelikler) geçici olarak askıya alınması ve yeniden etkinleştirilmesi açıklanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038146"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078878"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme (devre dışı bırakma)
 
@@ -18,9 +18,11 @@ Bir varlığın askıya alınması genellikle acil yönetim nedenleriyle yapıl�
 
 Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından gerçekleştirilebilir. Sistem yalnızca abonelik harcama sınırına vurmaya yönelik aksan nedeniyle yönetim nedenlerinden dolayı varlıkları askıya alır. Sistem devre dışı bırakılmış varlıklar Kullanıcı tarafından yeniden etkinleştirilemez, ancak askıya alınma nedeni sağlandığında geri yüklenir.
 
-Portalda ilgili varlık için **Özellikler** bölümü, durumun değiştirilmesini mümkün; Aşağıdaki ekran görüntüsünde bir sıranın geçişi gösterilmektedir:
+Portalda ilgili varlık için **genel bakış** bölümü, durumun değiştirilmesini mümkün; geçerli durum, bir köprü olarak **durum** ' ın altında görüntülenir.
 
-![Özellikler ayarı vurgulanmış ve sıra durumu seçeneği etkin ve kırmızı olarak seviyelendirilmiş Service Bus özelliğinin ekran görüntüsü.][1]
+Aşağıdaki ekran görüntüsünde, köprüyü seçerek varlığın değiştirilebileceği mevcut durumlar gösterilmektedir: 
+
+![Varlık durumu seçeneğini değiştirmek için genel bakış içindeki Service Bus özelliğinin ekran görüntüsü.][1]
 
 Portal yalnızca sıraların tamamen devre dışı bırakılmasını sağlar. Ayrıca, .NET Framework SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak veya Azure clı veya Azure PowerShell aracılığıyla Azure Resource Manager şablonuyla, gönderme ve alma işlemlerini ayrı olarak devre dışı bırakabilirsiniz.
 
@@ -55,5 +57,5 @@ Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki ko
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus konu başlıklarını ve aboneliklerini kullanma](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[1]: ./media/entity-suspend/queue-disable.png
+[1]: ./media/entity-suspend/entity-state-change.png
 

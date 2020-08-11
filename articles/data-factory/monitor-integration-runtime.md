@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2020
+ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290565"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078213"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
@@ -161,7 +161,7 @@ Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -Resou
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure SSIS tümleştirmesi çalışma zamanı
 
-Azure-SSIS IR, SSIS paketlerinizi çalıştırmak için adanmış, tam olarak yönetilen bir Azure sanal makine (veya düğümleri) kümesidir. Örneğin, Azure etkin SQL Server Veri Araçları (SSDT), AzureDTExec komut satırı yardımcı programı, T-SQL on SQL Server Management Studio (SSMS)/SQL Server Agent aracılığıyla ve SSIS paket etkinliklerini ADF işlem hatlarında yürütmek üzere çeşitli yöntemleri kullanarak Azure-SSIS IR SSIS paket yürütmelerini çağırabilirsiniz. Azure-SSIS IR diğer ADF etkinliklerini çalıştırmaz. Sağlandıktan sonra, Azure PowerShell, Azure portal ve Azure Izleyici aracılığıyla genel/düğüme özgü özellikleri ve durumları izleyebilirsiniz.
+Azure-SSIS IR, SSIS paketlerinizi çalıştırmak için adanmış, tam olarak yönetilen bir Azure sanal makine (VM veya düğüm) kümesidir. Örneğin, Azure etkin SQL Server Veri Araçları (SSDT), AzureDTExec komut satırı yardımcı programı, T-SQL on SQL Server Management Studio (SSMS)/SQL Server Agent aracılığıyla ve SSIS paket etkinliklerini ADF işlem hatlarında yürütmek üzere çeşitli yöntemleri kullanarak Azure-SSIS IR SSIS paket yürütmelerini çağırabilirsiniz. Azure-SSIS IR diğer ADF etkinliklerini çalıştırmaz. Sağlandıktan sonra, Azure PowerShell, Azure portal ve Azure Izleyici aracılığıyla genel/düğüme özgü özellikleri ve durumları izleyebilirsiniz.
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>Azure-SSIS tümleştirme çalışma zamanını Azure PowerShell ile izleme
 
@@ -196,7 +196,7 @@ Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından dö
 | Tür                         | Azure-SSIS IR IR türü (yönetilen/kendiliğinden konak). |
 | ResourceGroupName            | ADF ve Azure-SSIS IR oluşturulduğu Azure Kaynak grubunuzun adı. |
 | DataFactoryName              | ADF 'nizin adı. |
-| Ad                         | Azure-SSIS IR adı. |
+| Name                         | Azure-SSIS IR adı. |
 | Açıklama                  | Azure-SSIS IR açıklaması. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Durum (Azure-SSIS IR düğüm başına)
@@ -228,31 +228,55 @@ Azure-SSIS IR Azure portal izlemek için, ADF Kullanıcı arabirimindeki **izley
 
 ![Tüm tümleştirme çalışma zamanlarını izle](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-Sonra, izleme sayfasını açmak için Azure-SSIS IR adını seçin; burada, genel/düğüme özgü özellikleri ve durumlarını görebilirsiniz.
+Sonra, izleme sayfasını açmak için Azure-SSIS IR adını seçin; burada, genel/düğüme özgü özellikleri ve durumlarını görebilirsiniz. Bu sayfada, Azure-SSIS IR genel, dağıtım ve gelişmiş ayarlarını nasıl yapılandırdığınıza bağlı olarak, çeşitli bilgilendirici/işlevsel kutucuklar bulacaksınız.  **Tür** ve **bölge** bilgi kutucukları, sırasıyla Azure-SSIS IR ve bölge türünü gösterir. **Düğüm boyutu** bilgilendirici kutucuk, Azure-SSIS IR için SKU 'YU (ssıs edition_VM tier_VM serisi), CPU çekirdekleri sayısını ve düğüm başına RAM boyutunu gösterir. **Çalışan/Istenen düğüm (lar)** bilgi kutucuğu, çalışmakta olan düğüm sayısını Azure-SSIS IR için daha önce istenen toplam düğüm sayısına göre karşılaştırır. İşlevsel kutucuklar aşağıda daha ayrıntılı olarak açıklanmaktadır.
 
 ![Azure-SSIS IR izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
-Azure-SSIS IR izleme sayfanızın **durum** kutucuğunda, genel durumunu (örneğin, **çalışıyor** veya **durduruldu**) görebilirsiniz. **Çalışma** durumunun seçilmesi, Azure-SSIS IR durdurmak Için canlı **durdurma** düğmesine sahip bir pencere açılır. **Durdurulmuş** durum seçildiğinde Azure-SSIS IR başlatmak Için canlı **Başlat** düğmesini içeren bir pencere açılır. Açılır pencerede, Azure-SSIS IR üzerinde çalışan SSIS paketi yürütme etkinliği ile bir ADF işlem hattını otomatik olarak oluşturmak için bir **SSIS paketi yürütme** düğmesi vardır (bkz. [SSIS paketlerini ADF Işlem hatları 'Nda SSIS paketi etkinliklerini yürütme](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) ve bir **kaynak kimliği** metin kutusu `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ' den bağımsız yazılım satıcıları (ISV 'ler) için ek Premium/lisanslı ssıs BILEŞENLERI satın almak üzere kullanılabilecek Azure-SSIS IR kaynak kimliğinizi () kopyalayabilir ve bunları Azure-SSIS IR bağlayabilirsiniz (bkz. [Azure-SSIS IR Premium/lisanslı bileşenleri yükleme](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+#### <a name="status-tile"></a>DURUM kutucuğu
+
+Azure-SSIS IR izleme sayfanızın **durum** kutucuğunda, genel durumunu (örneğin, **çalışıyor** veya **durduruldu**) görebilirsiniz. **Çalışma** durumunun seçilmesi, Azure-SSIS IR durdurmak Için canlı **durdurma** düğmesine sahip bir pencere açılır. **Durdurulmuş** durum seçildiğinde Azure-SSIS IR başlatmak Için canlı **Başlat** düğmesini içeren bir pencere açılır. Açılır pencerede, Azure-SSIS IR üzerinde çalışan SSIS paketi yürütme etkinliğine sahip bir ADF işlem hattını otomatik olarak oluşturmak için bir **SSIS paketi yürütme** düğmesi vardır (bkz. ADF işlem hatlarında SSIS [paketi etkinliklerini yürütme](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) ve **kaynak kimliği** metin kutusu ile Azure-SSIS IR kaynak kimliğinizi ( `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ) kopyalayabilirsiniz. ADF ve Azure-SSIS IR adlarınızı içeren Azure-SSIS IR kaynak KIMLIĞINIZIN son eki, bağımsız yazılım satıcıları (ISV) için ek Premium/lisanslı SSIS bileşenleri satın almak ve bunları Azure-SSIS IR bağlamak için kullanılabilecek bir küme KIMLIĞI oluşturur (bkz. [Azure-SSIS IR Premium/lisanslı bileşenleri yükleme](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
 
 ![Azure-SSIS IR durumu Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+#### <a name="ssisdb-server-endpoint-tile"></a>SSSıSDB sunucu uç noktası kutucuğu
 
 Paketlerin Azure SQL veritabanı sunucunuz veya yönetilen örneğiniz tarafından barındırılan SSSıSDB 'de depolandığı proje dağıtım modelini kullanıyorsanız, Azure-SSIS IR izleme sayfanızda **SSıSDB sunucu uç noktası** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR dağıtım ayarlarınızı yapılandırma](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Bu kutucukta, bir pencere açmak için Azure SQL veritabanı sunucunuzu veya yönetilen örneğinizi tanımlayarak bir bağlantı seçebilirsiniz. buradan, sunucu uç noktasını bir metin kutusundan kopyalayabilir ve SMS 'den bağlanırken, paketlerinizi dağıtmak, yapılandırmak, çalıştırmak ve yönetmek için kullanabilirsiniz. Açılır pencerede, Azure portal SSıSDB 'nizi yeniden yapılandırmak/yeniden boyutlandırmak için **Azure SQL veritabanınızı veya yönetilen örnek ayarlarını görüntüleyin** bağlantısını da seçebilirsiniz.
 
 ![Azure-SSIS IR-SSıSDB Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
 
+#### <a name="proxy--staging-tile"></a>PROXY/HAZıRLAMA kutucuğu
+
+Şirket içinde verilere erişmek üzere Azure-SSIS IR için bir ara sunucu olarak şirket içinde barındırılan IR 'yi (Shar) indirip yapılandırırsanız, **Proxy/hazırlama** kutucuğunu Azure-SSIS IR izleme sayfanızda görürsünüz (bkz. [Azure-SSIS IR için ara sunucu olarak shır yapılandırma](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Bu kutucukta, KııR 'nizi tanımlayarak izleme sayfasını açmak için bir bağlantı seçebilirsiniz. Ayrıca, bağlı hizmetini yeniden yapılandırmak için Azure Blob depolama alanınızı hazırlama için tanımlayarak başka bir bağlantı seçebilirsiniz.
+
+#### <a name="validate-vnet--subnet-tile"></a>VNET/alt ağ kutucuğunu doğrula
+
 Azure-SSIS IR bir sanal ağa katılırsanız, Azure-SSIS IR izleme sayfanızda **VNET/subnet 'ı doğrula** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR VNET 'e katılma](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)). Bu kutucukta, VNET ve alt ağınızı tanımlayarak bir pencere açmaya yönelik bir bağlantı seçebilirsiniz. burada, sanal ağ veya alt ağ `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` adınızı metin kutularından kopyalayabilir ve ayrıca, gerekli gelen/giden ağ traffics ve yönetiminin Azure-SSIS IR olmamasını sağlamak Için VNET ve alt ağ yapılandırmalarından kimlik doğrulaması yapabilirsiniz.
 
 ![Azure-SSIS IR-doğrulama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+#### <a name="diagnose-connectivity-tile"></a>BAĞLANTı kutucuğunu TANıLA
 
 Azure-SSIS IR izleme sayfanızın **bağlantıyı Tanıla** kutucuğunda, bir pencere açmak Için bağlantıyı **Test** et bağlantısını seçebilirsiniz. buradan, Azure-SSIS IR ve ilgili paket/yapılandırma/veri depoları ile Yönetim Hizmetleri arasındaki bağlantıları, tam etkı alanı adı (FQDN)/IP adresi ve belirlenmiş bağlantı noktası aracılığıyla kontrol edebilirsiniz (bkz. [Azure-SSIS IR bağlantıları test](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)edin).
 
 ![Azure-SSIS IR tanılama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
+#### <a name="static-public-ip-addresses-tile"></a>STATIK genel IP ADRESLERI kutucuğu
+
+Azure-SSIS IR için kendi statik genel IP adreslerini getirecekseniz, Azure-SSIS IR izleme sayfanızda **STATIK genel IP adresleri** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR için kendı statik genel IP adreslerinizi getirme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)). Bu kutucukta, kaynak KIMLIKLERINI ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) bir metin kutusundan kopyalayabileceğiniz bir pencere açmak üzere Azure-SSIS IR için ilk/ikinci statik genel IP adreslerini tanımlayarak bağlantılar ' ı seçebilirsiniz. Açılır pencerede, Azure portal ' deki ilk/ikinci statik genel IP adresinizi yönetmek için **ilk/ikinci statik genel IP adresi ayarlarını gör** bağlantısını da seçebilirsiniz.
+
+![Azure-SSIS IR tanılama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+
+#### <a name="package-stores-tile"></a>PAKET depoları kutucuğu
+
 Paketlerin Azure SQL yönetilen örneğiniz tarafından barındırılan ve Azure-SSIS IR paket depoları aracılığıyla yönetilen dosya sistemi/Azure dosyaları/SQL Server veritabanı 'nda (MSDB) depolandığı paket dağıtım modelini kullanıyorsanız, **paket depoları** kutucuğunu Azure-SSIS IR izleme sayfanızda görürsünüz (bkz. [Azure-SSIS IR dağıtım ayarlarınızı yapılandırma](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Bu kutucukta, Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemi/Azure dosyaları/MSDB 'nin en üstünde yer alan Azure-SSIS IR paket depolarınız için ilgili bağlı hizmetleri yeniden yapılandırabileceğiniz bir pencere açmak için Azure-SSIS IR bağlı paket deposunun sayısını tanımlayarak bir bağlantı seçebilirsiniz.
 
 ![Azure-SSIS IR PAKETI Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
 
+#### <a name="errors-tile"></a>HATA (ler) kutucuğu
+
 Azure-SSIS IR başlatma/durdurma/bakım/yükseltme ile ilgili sorunlar varsa, Azure-SSIS IR izleme sayfanızda ek bir **hata (ler)** kutucuğu görürsünüz. Bu kutucukta, bir pencere açmak için Azure-SSIS IR tarafından üretilen hataların sayısını tanımlayarak bir bağlantı seçebilirsiniz. burada bu hataları daha ayrıntılı olarak görebileceğiniz ve sorun giderme kılavuzumuzdaki önerilen çözümleri bulmak üzere kopyalayabilir (bkz. [Azure-SSIS IR sorunlarını giderme](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)).
+
+![Azure-SSIS IR tanılama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Azure Izleyici ile Azure-SSIS tümleştirme çalışma zamanını izleme
 
@@ -263,10 +287,10 @@ Azure Izleyici ile Azure-SSIS IR izlemek için bkz. [Azure izleyici Ile SSIS Iş
 Azure-SSIS Integration Runtime hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Bu makalede, Azure-SSIS IR dahil olmak üzere genel olarak tümleştirme çalışma zamanları hakkında kavramsal bilgiler verilmektedir. 
-- [Öğretici: SSIS paketlerini Azure’a dağıtma](tutorial-create-azure-ssis-runtime-portal.md). Bu makalede, bir Azure-SSIS IR oluşturmak ve SSIS kataloğunu barındırmak için SQL veritabanı 'nı kullanması için adım adım yönergeler sağlanmaktadır. 
-- [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticide genişler ve SQL yönetilen örneği kullanma ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar. 
-- [Azure-SSIS IR’yi yönetme](manage-azure-ssis-integration-runtime.md). Bu makale bir Azure-SSIS IR’yi durdurma, başlatma veya kaldırma işlemini gösterir. Ayrıca, IR’ye daha fazla düğüm ekleyerek Azure-SSIS IR’nizi ölçeklendirmeyi gösterir. 
-- [Azure-SSIS IR’yi bir sanal ağa ekleyin](join-azure-ssis-integration-runtime-virtual-network.md). Bu makale Azure-SSIS IR’yi bir Azure sanal ağına ekleme hakkında kavramsal bilgiler sağlar. Ayrıca, Azure-SSIS IR sanal ağa katılabilmesi için sanal ağı yapılandırmak üzere Azure portal kullanma adımları da sağlar. 
+- [Öğretici: SSIS paketlerini Azure’a dağıtma](tutorial-create-azure-ssis-runtime-portal.md). Bu makalede, Azure-SSIS IR oluşturmaya ve SSIS kataloğunu (SSSıSDB) barındırmak için Azure SQL veritabanı 'nı kullanmaya yönelik adım adım yönergeler sağlanmaktadır. 
+- [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale, öğreticiyi genişletir ve SSıSDB barındırmak için Azure SQL yönetilen örneği kullanma hakkında yönergeler sağlar. 
+- [Azure-SSIS IR’yi yönetme](manage-azure-ssis-integration-runtime.md). Bu makalede Azure-SSIS IR başlatma, durdurma veya silme işlemlerinin nasıl yapılacağı gösterilir. Ayrıca, daha fazla düğüm ekleyerek nasıl ölçeklendirilebilen de gösterilmektedir. 
+- [Azure-SSIS IR’yi bir sanal ağa ekleyin](join-azure-ssis-integration-runtime-virtual-network.md). Bu makale, Azure-SSIS IR bir sanal ağa katılma hakkında yönergeler sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 İşlem hatlarını farklı yollarla izlemek için aşağıdaki makalelere bakın: 

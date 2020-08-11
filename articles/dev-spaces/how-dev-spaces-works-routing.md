@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces ve yönlendirmenin nasıl çalıştığına ilişkin süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512478"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077674"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Yönlendirmenin nasıl çalıştığı Azure Dev Spaces
 
@@ -49,13 +49,13 @@ HTTP olmayan diğer tüm TCP trafiği, giriş denetleyicisi ve devspaces-proxy k
 
 ## <a name="sharing-a-dev-space"></a>Geliştirme alanı paylaşma
 
-Bir takımla çalışırken, bir [ekibin tamamında bir geliştirme alanı paylaşabilir](how-to/share-dev-spaces.md) ve türetilmiş dev alanları oluşturabilirsiniz. Geliştirici alanı, dev alanının kaynak grubuna katkıda bulunan erişimi olan herkes tarafından kullanılabilir.
+Bir takımla çalışırken, bir ekibin tamamında bir geliştirme alanı paylaşabilir ve türetilmiş dev alanları oluşturabilirsiniz. Geliştirici alanı, dev alanının kaynak grubuna katkıda bulunan erişimi olan herkes tarafından kullanılabilir.
 
 Ayrıca, başka bir geliştirme alanından türetilmiş yeni bir geliştirme alanı da oluşturabilirsiniz. Türetilmiş bir geliştirme alanı oluşturduğunuzda, *azds.io/Parent-Space=Parent-Space-Name* etiketi türetilmiş geliştirme alanının ad alanına eklenir. Ayrıca, üst geliştirici alanındaki tüm uygulamalar, türetilmiş geliştirme alanıyla paylaşılır. Uygulamanın güncelleştirilmiş bir sürümünü türetilmiş geliştirme alanına dağıtırsanız, bu yalnızca türetilmiş dev alanında bulunur ve üst dev alanı etkilenmeden kalır. En fazla üç türetilmiş geliştirme alanı düzeyi veya en *üst* boşluk olabilir.
 
 Türetilmiş geliştirme alanı Ayrıca, kendi uygulamaları ve üst öğesinden paylaşılan uygulamalar arasında istekleri de akıllıca yönlendirir. Yönlendirme, istek türetilmiş geliştirme alanındaki bir uygulamaya yönlendirilmeye çalışarak ve üst geliştirme alanından paylaşılan uygulamaya geri dönerek yapılır. Uygulama üst alanda değilse, yönlendirme, ana alanda bulunan paylaşılan uygulamaya geri döner.
 
-Örneğin:
+Örnek:
 * Dev alanı *varsayılan* olarak, *Servicea* ve *serviceb*uygulamalarına sahiptir.
 * *Azureuser* dev Space, *varsayılan*olarak türetilir.
 * *Servicea* 'nın güncelleştirilmiş bir sürümü *azureuser*'e dağıtılır.

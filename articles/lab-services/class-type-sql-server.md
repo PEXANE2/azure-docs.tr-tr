@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444888"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079031"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>SQL Server yönetmek ve geliştirmek için bir laboratuvar kurun
 
@@ -61,11 +61,11 @@ Laboratuvar hizmetlerinde paylaşılan bir kaynak kullanmak için önce sanal a�
 20. **Sanal ağ**için, laboratuvar hesabıyla eşlenmiş sanal ağı seçin.
 21. **Alt ağ**için, uç noktanın barındırılmasını istediğiniz alt ağ ' ı seçin.  Uç noktaya atanan IP, bu alt ağa atanan aralıktan olacaktır.
 22. **Özel DNS Ile tümleştir** 'ı **Hayır**olarak ayarlayın. Kolaylık olması için, Azure 'un DNS DNS bölgesi veya kendi DNS sunucularımız üzerinden DNS 'i kullanacağız.
-23. **Tamam**'a tıklayın.
+23. **Tamam**’a tıklayın.
 24. **İleri**' ye tıklayın.
 25. **Varolan verileri kullan** ayarını için **örnek**' i seçin.  AdventureWorksLT veritabanının verileri veritabanı oluşturulduğunda kullanılacaktır.
 26. **Gözden geçir ve oluştur**’a tıklayın.
-27. **Oluştur**'a tıklayın.
+27. **Oluştur**’a tıklayın.
 
 SQL veritabanı dağıtımı başarıyla tamamlandıktan sonra Laboratuvarı oluşturabilir ve laboratuvar şablonu makinesine yazılım yükleyebilirsiniz.
 
@@ -86,7 +86,7 @@ Yukarıda seçilen görüntü, [Visual Studio 2019 Community](https://visualstud
 
 Visual Studio, SQL Server Veri Araçları (SSDT) içeren **veri depolama ve işleme** aracı kümesini içerir.  SSDT 'nin özellikleri hakkında daha fazla bilgi için bkz. [SQL Server veri araçları genel bakış](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15).  Sınıfın paylaşılan SQL Server bağlantısını doğrulamak için, bkz. [bir veritabanına bağlanma ve var olan nesnelere gözatmaya](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)yönelik. İstenirse, SQL Server örneğinize bağlanabilecek [izin verilen bilgisayarlar listesine](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure) şablon makinesini ekleyin.
 
-Visual Studio, mobil iş yükleri & **Web & bulut** ve **Masaüstü** gibi birçok iş yükünü destekler.  Bu iş yüklerinin her ikisi de veri kaynağı olarak SQL Server destekler. SQL Server ASP.NET Core kullanma hakkında daha fazla bilgi için bkz. Azure App Service öğreticide [ASP.NET Core ve SQL veritabanı uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb) .  [Xamarin](https://docs.microsoft.com/xamarin) UYGULAMASıNDAN bir SQL veritabanına bağlanmak için [System. Data. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) kitaplığını kullanın.
+Visual Studio, mobil iş yükleri & **Web & bulut** ve **Masaüstü** gibi birçok iş yükünü destekler.  Bu iş yüklerinin her ikisi de veri kaynağı olarak SQL Server destekler. SQL Server ASP.NET Core kullanma hakkında daha fazla bilgi için bkz. Azure App Service öğreticide [ASP.NET Core ve SQL veritabanı uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app) .  [Xamarin](https://docs.microsoft.com/xamarin) UYGULAMASıNDAN bir SQL veritabanına bağlanmak için [System. Data. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) kitaplığını kullanın.
 
 ## <a name="install-azure-data-studio"></a>Azure Data Studio yüklensin
 

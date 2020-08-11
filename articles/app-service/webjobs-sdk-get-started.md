@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743615"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078317"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
 
@@ -191,7 +191,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 1. Visual Studio 'da **Sunucu Gezgini** açın ve Azure 'da oturum açın. **Azure** düğümüne sağ tıklayın ve ardından **Microsoft Azure aboneliğine Bağlan**' ı seçin.
 
-   ![Azure'da oturum açma](./media/webjobs-sdk-get-started/sign-in.png)
+   ![Azure’da oturum açma](./media/webjobs-sdk-get-started/sign-in.png)
 
 1. **Sunucu Gezgini**içindeki **Azure** düğümü altında **depolama**' ya sağ tıklayın ve ardından **depolama hesabı oluştur**' u seçin.
 
@@ -201,7 +201,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 1. App Service uygulamanızı oluşturduğunuz **bölgeyi** veya size yakın bir bölgeyi seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    ![Depolama hesabı oluştur](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -310,7 +310,7 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>App Service uygulaması ve Application Insights örneği oluşturma
 
-1. Kullanabileceğiniz bir App Service uygulaması yoksa [bir tane oluşturun](app-service-web-get-started-dotnet-framework.md). Uygulamanızı oluşturduğunuzda bağlı bir Application Insights kaynağı da oluşturabilirsiniz. Bunu yaptığınızda, `APPINSIGHTS_INSTRUMENTATIONKEY` uygulamanızda sizin için ayarlanır.
+1. Kullanabileceğiniz bir App Service uygulaması yoksa [bir tane oluşturun](quickstart-dotnet-framework.md). Uygulamanızı oluşturduğunuzda bağlı bir Application Insights kaynağı da oluşturabilirsiniz. Bunu yaptığınızda, `APPINSIGHTS_INSTRUMENTATIONKEY` uygulamanızda sizin için ayarlanır.
 
 1. Kullanabileceğiniz bir Application Insights kaynağınız yoksa [bir tane oluşturun](../azure-monitor/app/create-new-resource.md ). **Uygulama türünü** **genel**olarak ayarlayın ve izleme **anahtarını Kopyala**' nın altındaki bölümleri atlayın.
 
@@ -338,7 +338,7 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 1. *{Instrumentation Key}* değerini, kullanmakta olduğunuz Application Insights kaynaktaki izleme anahtarıyla değiştirin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. Application Insights bağlantısını projeye ekleyerek yerel olarak çalıştırabilirsiniz. Dosyadaki *appsettings.js* , `APPINSIGHTS_INSTRUMENTATIONKEY` Aşağıdaki örnekte olduğu gibi bir alan ekleyin:
 
@@ -428,7 +428,7 @@ Bu bölümde, günlüğe kaydetme verilerinin artık Application Insights ve kon
 
 1. Konsol penceresini kapatın.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure’a dağıtın
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure’a dağıtma
 
 Dağıtım sırasında, işlevlerinizin çalıştırılacağı bir App Service örneği oluşturursunuz. Azure 'da App Service için bir .NET Core konsol uygulaması yayımladığınızda, otomatik olarak bir WebJob olarak çalıştırılır. Yayımlama hakkında daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma](webjobs-dotnet-deploy-vs.md).
 

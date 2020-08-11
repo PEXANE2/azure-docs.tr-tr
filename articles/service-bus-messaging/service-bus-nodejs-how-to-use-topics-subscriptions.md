@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fa1f6738628ed96e386186a579569170bfaac3ee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066959"
+ms.locfileid: "88077025"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: Node.js ve Azure-SB paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, Service Bus bir konuya ileti göndermek ve [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Service Bus aboneliğinden ileti almak için Node.js uygulamalar oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve paketi dahili olarak kullanan Node.js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır `azure-sb` .
@@ -40,7 +40,7 @@ Konular ve abonelikler hakkında daha fazla bilgi için, [sonraki adımlar](#nex
     > Bu hızlı başlangıçta **Node.js** kullanarak konu için bir **Konu** ve bir **abonelik** oluşturacaksınız. 
 
 ## <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
-Boş bir Node.js uygulaması oluşturun. Node.js uygulaması oluşturma hakkında yönergeler için bkz. [Azure Web sitesine Node.js uygulama oluşturma ve dağıtma], Windows PowerShell kullanarak [bulut hizmetiNode.js][Node.js Cloud Service] veya WebMatrix ile Web sitesi kullanma.
+Boş bir Node.js uygulaması oluşturun. Node.js uygulama oluşturma yönergeleri için, bkz. [Azure Web sitesine bir Node.js uygulaması oluşturma ve dağıtma], Windows PowerShell kullanarak [bulut hizmetiNode.js][Node.js Cloud Service] veya WebMatrix Ile web sitesi.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
 Service Bus kullanmak için Node.js Azure paketini indirin. Bu paket, Service Bus REST hizmetleriyle iletişim kuran bir kitaplıklar kümesi içerir.
@@ -343,5 +343,6 @@ Service Bus konuların temellerini öğrendiğinize göre, daha fazla bilgi edin
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Azure Web sitesinde Node.js uygulaması oluşturma ve dağıtma]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to Azure App Service]: ../app-service/quickstart-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+

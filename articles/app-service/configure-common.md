@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389793"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077382"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -33,13 +33,13 @@ ASP.NET ve ASP.NET Core geliştiricileri için App Service uygulama ayarlarını
 
 Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Özel kapsayıcılar](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Özel kapsayıcılar](configure-custom-container.md#configure-environment-variables)
 
 Uygulama ayarları her zaman (REST-REST) depolandığında şifrelenir.
 
@@ -104,13 +104,13 @@ Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-
 
 Örneğin, *connectionstring1* adlı bir MySQL bağlantı dizesi, ortam değişkeni olarak erişilebilir `MYSQLCONNSTR_connectionString1` . Dil yığınına özgü adımlar için bkz.:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Özel kapsayıcılar](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Özel kapsayıcılar](configure-custom-container.md#configure-environment-variables)
 
 Bağlantı dizeleri her zaman (REST-REST) depolandığında şifrelenir.
 
@@ -176,7 +176,7 @@ Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayar
     > [!NOTE]
     > Modern tarayıcıların çoğu yalnızca TLS üzerinden HTTP/2 protokolünü destekler, şifrelenmemiş trafik HTTP/1.1 kullanmaya devam eder. İstemci tarayıcılarının uygulamanıza HTTP/2 ile bağlanmasını sağlamak için özel DNS adınızın güvenliğini sağlayın. Daha fazla bilgi için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
     - **ARR benzeşimi**: çok örnekli bir dağıtımda, istemcinin oturum süresince aynı örneğe yönlendirildiğinden emin olun. Durum bilgisi olmayan uygulamalar için bu seçeneği **kapalı** olarak ayarlayabilirsiniz.
-- **Hata ayıklama**: [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node.js](containers/configure-language-nodejs.md#debug-remotely) uygulamalar için uzaktan hata ayıklamayı etkinleştirin. Bu seçenek, 48 saat sonra otomatik olarak devre dışı bırakır.
+- **Hata ayıklama**: [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node.js](configure-language-nodejs.md#debug-remotely) uygulamalar için uzaktan hata ayıklamayı etkinleştirin. Bu seçenek, 48 saat sonra otomatik olarak devre dışı bırakır.
 - **Gelen istemci sertifikaları**: [karşılıklı kimlik doğrulamasında](app-service-web-configure-tls-mutual-auth.md)istemci sertifikaları gerektir.
 
 ## <a name="configure-default-documents"></a>Varsayılan belgeleri yapılandırma
@@ -215,7 +215,7 @@ Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve 
 
 ### <a name="containerized-apps"></a>Kapsayıcılı uygulamalar
 
-[Kapsayıcılı uygulamanız için özel depolama ekleyebilirsiniz](containers/how-to-serve-content-from-azure-storage.md). Kapsayıcılı uygulamalar tüm Linux uygulamalarını ve Ayrıca App Service çalışan Windows ve Linux özel kapsayıcılarını içerir. **Yeni Azure Storage bağlama** ' ya tıklayın ve özel depolama alanınızı aşağıdaki şekilde yapılandırın:
+[Kapsayıcılı uygulamanız için özel depolama ekleyebilirsiniz](configure-connect-to-azure-storage.md). Kapsayıcılı uygulamalar tüm Linux uygulamalarını ve Ayrıca App Service çalışan Windows ve Linux özel kapsayıcılarını içerir. **Yeni Azure Storage bağlama** ' ya tıklayın ve özel depolama alanınızı aşağıdaki şekilde yapılandırın:
 
 - **Ad**: görünen ad.
 - **Yapılandırma seçenekleri**: **temel** veya **Gelişmiş**.
@@ -228,27 +228,27 @@ Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve 
 - **Erişim anahtarı**: Gelişmiş yapılandırma için erişim anahtarı.
 - **Bağlama yolu**: özel depolamayı bağlamak için kapsayıcınızda mutlak yol.
 
-Daha fazla bilgi için bkz. [Linux üzerinde App Service'te Azure Depolama'dan içerik sunma](containers/how-to-serve-content-from-azure-storage.md).
+Daha fazla bilgi için bkz. [Azure depolama 'yı App Service bir kapsayıcıdan ağ paylaşma olarak erişim](configure-connect-to-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Dil yığını ayarlarını yapılandırma
 
 Linux uygulamaları için bkz.:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>Özel kapsayıcıları yapılandırma
 
-Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](containers/configure-custom-container.md)
+Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](configure-custom-container.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure App Service'te özel etki alanı adını yapılandırma]
-- [Azure App Service’te hazırlık ortamları ayarlama]
+- [Azure App Service’ta hazırlık ortamları ayarlama]
 - [Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 - [Tanılama günlüklerini etkinleştirme](troubleshoot-diagnostic-logs.md)
 - [Azure App Service bir uygulamayı ölçeklendirme]
@@ -258,9 +258,9 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portalı]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
-[Azure App Service’te hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
+[Azure App Service’ta hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Azure App Service temel bilgileri izleme]: ./web-sites-monitor.md
 [ardışık düzen modu]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application

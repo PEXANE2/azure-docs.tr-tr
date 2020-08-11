@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324123"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078096"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili
 
@@ -23,7 +23,7 @@ Bu yönergeyi tamamladıktan sonra, uygulamanız görüntüde gösterilen izleme
 
 ![Profil Oluşturucu izlemeleri](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için geçerlidir:
 
 * [.NET Core SDK 2.1.2 'yi veya üstünü](https://dotnet.microsoft.com/download/archives)yükler.
@@ -106,7 +106,7 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
 
     ![Git deposunu ayarlama](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Daha fazla dağıtım seçeneği için [Bu makaleye](../../app-service/containers/choose-deployment-type.md)bakın.
+Daha fazla dağıtım seçeneği için [App Service belgelerine](https://docs.microsoft.com/azure/app-service)bakın.
 
 ## <a name="deploy-your-project"></a>Projenizi dağıtma
 

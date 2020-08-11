@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d40e9dbc2c4da6b298f7245318c95de983edcc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530155"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078453"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -53,7 +53,7 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
 Şu senaryolar Şu anda desteklenmiyor:  
 
 - Azure AD özel rollerine bulut grupları atama
-- Bir yönetim birimi üzerinden Azure AD rollerine (yerleşik veya özel) bulut grupları atayın.
+- Bir yönetim birimi veya uygulama kapsamı üzerinden Azure AD rollerine (yerleşik veya özel) bulut grupları atayın.
 - Azure AD rollerine şirket içi gruplar atama (yerleşik veya özel)
 
 ## <a name="known-issues"></a>Bilinen sorunlar

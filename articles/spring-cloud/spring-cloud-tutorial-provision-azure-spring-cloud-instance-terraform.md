@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 817a7c132657ba0ad8910a334b571f9d05481a0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021231"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079201"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Öğretici: Terrayform ile Azure yay bulutu örneği sağlama
 
@@ -29,7 +29,7 @@ Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur.
 > * , [HashiCorp topluluk portalının](https://discuss.hashicorp.com/c/terraform-core) soru, kullanım örnekleri ve faydalı desenler: Terkform bölümü
 > * Sağlayıcıyla ilgili sorular: [HashiCorp topluluk portalının Terkform sağlayıcıları bölümü](https://discuss.hashicorp.com/c/terraform-providers)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
@@ -37,7 +37,7 @@ Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur.
 
 1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#use-azure-cloud-shell)açın.
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell)açın.
 
 1. Cloud Shell düzenleyicisini başlatın:
 

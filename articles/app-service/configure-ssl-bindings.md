@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597904"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078640"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
-Bu makalede, bir sertifika bağlaması oluşturarak [App Service uygulamanızda](https://docs.microsoft.com/azure/app-service/) veya [işlev uygulamanızda](https://docs.microsoft.com/azure/azure-functions/) [özel etki alanının](app-service-web-tutorial-custom-domain.md) güvenliğini sağlama işlemi gösterilmektedir. İşiniz bittiğinde, özel DNS adınızın `https://` uç noktasında App Service uygulamanıza erişebilirsiniz (örneğin, `https://www.contoso.com`). 
+Bu makalede, bir sertifika bağlaması oluşturarak [App Service uygulamanızda](https://docs.microsoft.com/azure/app-service/) veya [işlev uygulamanızda](https://docs.microsoft.com/azure/azure-functions/) [özel etki alanının](app-service-web-tutorial-custom-domain.md) güvenliğini sağlama işlemi gösterilmektedir. İşiniz bittiğinde, `https://` özel DNS adınızın uç noktasında App Service uygulamanıza erişebilirsiniz (örneğin, `https://www.contoso.com` ). 
 
 ![Özel TLS/SSL sertifikasıyla Web uygulaması](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -52,12 +52,12 @@ Bu nasıl yapılır kılavuzunu izlemek için:
 
 Aşağıdaki adımları uygulayın:
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
 Uygulamanızın sol gezinti bölmesinde, **TLS/SSL bağlama** iletişim kutusunu şu şekilde başlatın:
 
-- **Özel etki alanlarını** > seçme**bağlama ekleme**
-- TLS/ **SSL ayarlarını** > seçme**TLS/SSL bağlaması Ekle**
+- **Özel etki alanlarını**seçme  >  **bağlama ekleme**
+- TLS/ **SSL ayarlarını**seçme  >  **TLS/SSL bağlaması Ekle**
 
 ![Etki alanına bağlama ekleme](./media/configure-ssl-bindings/secure-domain-launch.png)
 
@@ -102,15 +102,15 @@ Yapmanız gereken iki değişiklik olabilir:
 
     Uygulamanızın **özel etki alanı** sayfası, yeni ve ayrılmış IP adresi ile güncelleştirilir. [Bu IP adresini kopyalayın](app-service-web-tutorial-custom-domain.md#info), ardından bu yeni IP adresine [A kaydını yeniden eşleyin](app-service-web-tutorial-custom-domain.md#map-an-a-record).
 
-- ' A bir SNI SSL bağlamanız varsa, [herhangi bir CNAME eşlemesini](app-service-web-tutorial-custom-domain.md#map-a-cname-record) ( `sni` öneki ekleyin) `sni.<app-name>.azurewebsites.net` işaret etmek için yeniden eşleyin. `<app-name>.azurewebsites.net`
+- ' A bir SNI SSL bağlamanız varsa `<app-name>.azurewebsites.net` , [HERHANGI bir CNAME eşlemesini](app-service-web-tutorial-custom-domain.md#map-a-cname-record) `sni.<app-name>.azurewebsites.net` (öneki ekleyin) işaret etmek için yeniden eşleyin `sni` .
 
 ## <a name="test-https"></a>HTTPS’yi test etme
 
-Çeşitli tarayıcılarda, uygulamanızı hizmet ettiğini `https://<your.custom.domain>` doğrulamak için öğesine gidin.
+Çeşitli tarayıcılarda, `https://<your.custom.domain>` uygulamanızı hizmet ettiğini doğrulamak için öğesine gidin.
 
 ![Azure uygulamasına portal gezintisi](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-Uygulama kodunuz, "x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, `http` veya `https`değerine sahip olacaktır. 
+Uygulama kodunuz, "x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, veya değerine sahip olacaktır `http` `https` . 
 
 > [!NOTE]
 > Uygulamanız size sertifika doğrulama hataları veriyorsa, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir.
@@ -133,7 +133,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 ![HTTPS'yi zorunlu tutma](./media/configure-ssl-bindings/enforce-https.png)
 
-İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örneğin:
+İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örnek:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -153,7 +153,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 App Service, ağ yükü dengeleyicilerde [TLS sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) olur, bu nedenle tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa, `X-Forwarded-Proto` üstbilgiyi inceleyin.
 
-[Linux Node. js yapılandırma](containers/configure-language-nodejs.md#detect-https-session) kılavuzu gibi dile özgü yapılandırma kılavuzlarında, uygulama KODUNUZDA bir https oturumunun nasıl algılanacağı gösterilir.
+[Linux Node.js yapılandırma](configure-language-nodejs.md#detect-https-session) kılavuzu gibi dile özgü yapılandırma kılavuzlarında, uygulama KODUNUZDA bir https oturumunun nasıl algılanacağı gösterilir.
 
 ## <a name="automate-with-scripts"></a>Betiklerle otomatikleştirme
 
