@@ -3,18 +3,18 @@ title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: c4bf33fc7aa21be150a1ee0d6c65df84a391565e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089694"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065021"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
 Service Bus ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde Service Bus kaynaklarınızın genel durumunu değerlendirebilirsiniz. Bu istatistikler Service Bus durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler Ayrıca, Azure desteği ile iletişim kurmaya gerek kalmadan, kök neden sorunları gidermenize yardımcı olabilir.
 
-Azure Izleyici, çeşitli Azure hizmetleri genelinde izleme için birleştirilmiş kullanıcı arabirimleri sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
+Azure Izleyici, çeşitli Azure hizmetleri genelinde izleme için birleştirilmiş kullanıcı arabirimleri sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../azure-monitor/overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
 
 > [!IMPORTANT]
 > 2 saatlik bir varlıkla hiçbir etkileşim kalmadığında, varlık artık boşta kalmayacağı sürece ölçümler "0" değerini bir değer olarak göstermeye başlayacaktır.
@@ -169,9 +169,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. [Azure izleyiciye genel bakış](../monitoring-and-diagnostics/monitoring-overview.md).
+Bkz. [Azure izleyiciye genel bakış](../azure-monitor/overview.md).
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

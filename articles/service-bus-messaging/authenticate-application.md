@@ -3,12 +3,12 @@ title: Azure Service Bus varlıklara erişmek için bir uygulamanın kimliğini 
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular vb.) erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1d18772dfa9cf444dc55d5e4cef6f31dd6c0d669
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006273"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064834"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
 Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonelikler veya filtreler) yetki vermek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izinler vermek üzere Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -102,7 +102,7 @@ Uygulamanızı kaydettikten sonra **Ayarlar**altında **uygulama (istemci) kimli
 
 ![Kayıtlı uygulamanın uygulama KIMLIĞI](./media/authenticate-application/application-id.png)
 
-Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../active-directory/develop/quickstart-v2-register-an-app.md).
+Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../active-directory/develop/quickstart-register-app.md).
 
 > [!IMPORTANT]
 > **Tenantıd** ve **ApplicationId**' i unutmayın. Uygulamayı çalıştırmak için bu değerlere ihtiyacınız olacak.

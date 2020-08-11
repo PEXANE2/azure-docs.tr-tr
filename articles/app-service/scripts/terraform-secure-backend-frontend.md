@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f056f685c999895e793af3eb3c6e2047c5b6dc09
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88043025"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065446"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Özel uç nokta ve VNet tümleştirmesiyle güvenli bir şekilde bağlanan iki Web uygulaması oluşturma
 
@@ -27,11 +27,11 @@ Bu makalede, aşağıdaki adımları izleyerek iki Web uygulaması (ön uç ve a
 - Arka uç Web uygulaması oluşturma
 - Web uygulaması için özel bağlantı bölgesinin adı ile DNS özel bölgesini oluşturma privatelink.azurewebsites.net
 - Bu bölgeyi VNet 'e bağla
-- Uç nokta alt ağında arka uç Web uygulaması için özel uç nokta oluşturun ve DNS adlarını önceden oluşturulan DNS özel bölgesine kaydedin
+- Uç nokta alt ağında arka uç Web uygulaması için özel uç nokta oluşturun ve DNS adlarını (Web sitesi ve SCM) önceden oluşturulan DNS özel bölgesine kaydedin
 
 ## <a name="how-to-use-terraform-in-azure"></a>Azure 'da terrayform kullanma
 
-Azure ile terrayform kullanmayı öğrenmek için [Azure Portal](https://docs.microsoft.com/azure/developer/terraform/) gidin.
+Azure ile terrayform kullanmayı öğrenmek için [Azure belgelerine](https://docs.microsoft.com/azure/developer/terraform/) gidin.
 
 ## <a name="the-complete-terraform-file"></a>Tüm terrayform dosyası
 

@@ -3,12 +3,12 @@ title: Kimlik doğrulaması ve yetkilendirme Azure Service Bus | Microsoft Docs
 description: Paylaşılan erişim Imzası (SAS) kimlik doğrulamasıyla Service Bus için uygulamaların kimliğini doğrulayın.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337719"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066871"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus kimlik doğrulaması ve yetkilendirme
 Azure Service Bus kaynaklarına erişimin kimliğini doğrulamak ve bunlara yetki vermek için iki yol vardır: Azure etkinlik dizini (Azure AD) ve paylaşılan erişim Imzaları (SAS). Bu makale, bu iki tür güvenlik mekanizmasını kullanma hakkında ayrıntılı bilgi sağlar. 
@@ -30,7 +30,7 @@ Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki mak
 ## <a name="shared-access-signature"></a>Paylaşılan erişim imzası
 [SAS kimlik doğrulaması](service-bus-sas.md) , bir kullanıcıya belirli haklara sahip Service Bus kaynaklarına erişim izni vermenizi sağlar. Service Bus SAS kimlik doğrulaması, bir Service Bus kaynağında ilişkili haklara sahip bir şifreleme anahtarı yapılandırmasını içerir. İstemciler, erişilmekte olan kaynak URI 'sinden ve yapılandırılan anahtarla imzalanmış bir süre sonu olan bir SAS belirteci sunarak bu kaynağa erişim elde edebilir.
 
-SAS için anahtarları bir Service Bus ad alanında yapılandırabilirsiniz. Anahtar, bu ad alanı içindeki tüm mesajlaşma varlıkları için geçerlidir. Ayrıca, Service Bus kuyrukları ve konularında anahtarlar da yapılandırabilirsiniz. SAS de [Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md)desteklenir.
+SAS için anahtarları bir Service Bus ad alanında yapılandırabilirsiniz. Anahtar, bu ad alanı içindeki tüm mesajlaşma varlıkları için geçerlidir. Ayrıca, Service Bus kuyrukları ve konularında anahtarlar da yapılandırabilirsiniz. SAS de [Azure Relay](../azure-relay/relay-authentication-and-authorization.md)desteklenir.
 
 SAS 'yi kullanmak için bir ad alanı, kuyruk veya konu üzerinde bir [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) nesnesi yapılandırabilirsiniz. Bu kural aşağıdaki öğelerden oluşur:
 
@@ -46,7 +46,7 @@ Bir varlığa erişmek için, istemci belirli bir [Sharedaccessauthorizationrule
 Service Bus için SAS kimlik doğrulama desteği, Azure .NET SDK 2,0 ve üzeri sürümlerine dahildir. SAS, [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)için destek içerir. Parametre olarak bir bağlantı dizesini kabul eden tüm API 'Ler SAS bağlantı dizeleri için destek içerir.
 
 > [!IMPORTANT]
-> Service Bus ile Azure Active Directory Access Control (Access Control Service veya ACS olarak da bilinir) kullanıyorsanız, bu yöntemin desteğinin artık sınırlı olduğunu ve [UYGULAMANıZı SAS kullanacak şekilde geçirmeniz](service-bus-migrate-acs-sas.md) ya da Azure AD ile OAuth 2,0 kimlik doğrulaması kullanmanızı (önerilir) unutmayın. ACS 'nin kullanımdan kaldırılması hakkında daha fazla bilgi için [Bu blog gönderisine](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)bakın.
+> Service Bus ile Azure Active Directory Access Control (Access Control Service veya ACS olarak da bilinir) kullanıyorsanız, bu yöntemin desteğinin artık sınırlı olduğunu ve [UYGULAMANıZı SAS kullanacak şekilde geçirmeniz](service-bus-migrate-acs-sas.md) ya da Azure AD ile OAuth 2,0 kimlik doğrulaması kullanmanızı (önerilir) unutmayın. ACS 'nin kullanımdan kaldırılması hakkında daha fazla bilgi için [Bu blog gönderisine](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:

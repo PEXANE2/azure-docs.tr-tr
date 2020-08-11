@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071634"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064562"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Kbbitmq 'i Azure Service Bus ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu kılavuzda, Kbbitmq ' den Azure Service Bus ileti gönderme hakkında bilgi e
 
 Aşağıda, bu özellikleri kullandığımız birkaç senaryo vardır:
 
-- **Edge kurulumları**: Kbbitmq 'e ileti göndermekte olduğumuz, ancak bu iletileri daha fazla işleme için [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) iletmek istiyoruz, bu sayede birçok [Azure büyük veri özelliği](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data)kullanabiliriz.
+- **Edge kurulumları**: Kbbitmq 'e ileti göndermekte olduğumuz, ancak bu iletileri daha fazla işleme için [Azure Service Bus](./service-bus-messaging-overview.md) iletmek istiyoruz, bu sayede birçok [Azure büyük veri özelliği](/azure/architecture/guide/architecture-styles/big-data)kullanabiliriz.
 - **Karma bulut**: şirketiniz, yalnızca kendi mesajlaşma ihtiyaçları Için Kbıbitmq kullanan bir üçüncü taraf almış. Bunlar farklı bir bulutlardır. Azure 'a geçiş yaparken, Azure Service Bus ile kbbitmq ' i köprüleyerek daha önce veri paylaşmaya başlayabilirsiniz.
 - **Üçüncü taraf tümleştirmesi**: üçüncü taraf, bir aracı olarak Kbbitmq kullanır ve bu verileri bize göndermek ister, ancak kuruluşumuz dışındaysanız. Bunlara, iletilerini iletebilecekleri sınırlı bir Azure Service Bus kuyruğu kümesine erişim sağlayan SAS anahtarı ile birlikte sağlayabiliriz.
 
@@ -28,7 +28,7 @@ Liste açık demektir, ancak bu kullanım durumlarının çoğunu, Kbbitmq 'yi A
 
 İlk olarak, [buradan](https://azure.microsoft.com/free/) kaydolarak ücretsiz bir Azure hesabı oluşturmanız gerekir
 
-Hesabınızda oturum açtıktan sonra, [Azure Portal](https://portal.azure.com/) gidin ve yeni bir Azure Service Bus [ad alanı](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)oluşturun. Ad alanları, mesajlaşma bileşenlerinizin canlı olacağı, kuyruklar ve konular gibi kapsam kapsayıcılarıdır.
+Hesabınızda oturum açtıktan sonra, [Azure Portal](https://portal.azure.com/) gidin ve yeni bir Azure Service Bus [ad alanı](./service-bus-create-namespace-portal.md)oluşturun. Ad alanları, mesajlaşma bileşenlerinizin canlı olacağı, kuyruklar ve konular gibi kapsam kapsayıcılarıdır.
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>Yeni bir Azure Service Bus ad alanı ekleniyor
 
@@ -40,7 +40,7 @@ Ardından, tümleştirme ' i seçin ve Azure Service Bus ' ye tıklayarak bir me
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure Service Bus 'ı seçin":::
 
-Ad alanı bilgilerini girmeniz istenir. Kullanmak istediğiniz Azure aboneliğini seçin. Bir [kaynak grubunuz](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)yoksa yeni bir tane oluşturabilirsiniz.
+Ad alanı bilgilerini girmeniz istenir. Kullanmak istediğiniz Azure aboneliğini seçin. Bir [kaynak grubunuz](../azure-resource-manager/management/manage-resource-groups-portal.md)yoksa yeni bir tane oluşturabilirsiniz.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Ad alanı oluşturma":::
 
@@ -76,7 +76,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>Kbbitmq Azure Service Bus 'a bağlanıyor
 
-Kuyruğunuza yönelik bir [paylaşılan erişim ilkesi](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) (SAS) oluşturmanız gerekir. bu nedenle, Kbbitmq bu iletiye ileti yayımlayabilir. SAS Ilkesi, kaynağınız ile hangi dış tarafın yapılmasına izin verileceğini belirtmenizi sağlar. Bu düşünce, Kbbitmq 'ın ileti gönderebilmesinde veya sıradan yönetmemelidir.
+Kuyruğunuza yönelik bir [paylaşılan erişim ilkesi](../storage/common/storage-sas-overview.md) (SAS) oluşturmanız gerekir. bu nedenle, Kbbitmq bu iletiye ileti yayımlayabilir. SAS Ilkesi, kaynağınız ile hangi dış tarafın yapılmasına izin verileceğini belirtmenizi sağlar. Bu düşünce, Kbbitmq 'ın ileti gönderebilmesinde veya sıradan yönetmemelidir.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS Ilkesi Ekle":::
 

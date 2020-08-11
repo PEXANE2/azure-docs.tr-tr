@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fc8b1be387446b26fca86b344a203c103068db52
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa1f6738628ed96e386186a579569170bfaac3ee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036037"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066959"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: Node.js ve Azure-SB paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, Service Bus bir konuya ileti göndermek ve [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Service Bus aboneliğinden ileti almak için Node.js uygulamalar oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve paketi dahili olarak kullanan Node.js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır `azure-sb` .
@@ -20,7 +20,7 @@ Bu öğreticide, Service Bus bir konuya ileti göndermek ve [Azure-SB](https://w
 > [!IMPORTANT]
 > [Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)Daha hızlı [amqp 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni paketini kullanarak daha hızlı bir deneyim edinebilirsiniz. 
 > 
-> Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Service Bus konuları ve abonelikleri Node.js ve @azure/service-bus paketiyle kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
+> Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Service Bus konuları ve abonelikleri Node.js ve @azure/service-bus paketiyle kullanma](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
 
 Burada ele alınan senaryolar şunlardır:
 
@@ -142,7 +142,7 @@ Konu abonelikleri **Servicebusservice** nesnesiyle de oluşturulur. Abonelikler 
 > [!NOTE]
 > Varsayılan olarak, abonelikler ya da ilişkili oldukları konu tamamlanana kadar kalıcıdır. Uygulamanız bir abonelik oluşturmak için mantık içeriyorsa, öncelikle yöntemi kullanılarak aboneliğin mevcut olup olmadığını denetlemelidir `getSubscription` .
 >
-> Otomatik [Deleteonıdle özelliği](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)ayarlanarak aboneliklerin otomatik olarak silinmesini sağlayabilirsiniz.
+> Otomatik [Deleteonıdle özelliği](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)ayarlanarak aboneliklerin otomatik olarak silinmesini sağlayabilirsiniz.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Varsayılan (MatchAll) filtreyle abonelik oluşturma
 **Matchall** filtresi, bir abonelik oluşturulduğunda kullanılan varsayılan filtredir. **MatchAll** filtresini kullandığınızda konu başlığında yayımlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek AllMessages adlı bir abonelik oluşturur ve varsayılan **Matchall** filtresini kullanır.
@@ -306,7 +306,7 @@ Ayrıca, abonelik içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı d
 İleti işlendikten sonra uygulamanın çöktüğü durumda `deleteMessage` , ancak yöntem çağrılmadan önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu davranış genellikle *en az bir kez işleme*olarak adlandırılır. Diğer bir deyişle, her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işleme kabul edemeyebilir, yinelenen ileti teslimini işlemek için uygulamanıza mantık eklemeniz gerekir. İletinin **MessageID** özelliğini kullanabilirsiniz. Bu, teslim girişimleri arasında sabitde kalır.
 
 ## <a name="delete-topics-and-subscriptions"></a>Konu başlıklarını ve abonelikleri silme
-[Oto Deleteonıdle özelliği](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) ayarlanmadıkça konular ve abonelikler kalıcıdır ve [Azure Portal][Azure portal] veya program aracılığıyla açıkça silinmemelidir.
+[Oto Deleteonıdle özelliği](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) ayarlanmadıkça konular ve abonelikler kalıcıdır ve [Azure Portal][Azure portal] veya program aracılığıyla açıkça silinmemelidir.
 Aşağıdaki örnek, adlı konunun nasıl silineceğini göstermektedir `MyTopic` :
 
 ```javascript
@@ -345,4 +345,3 @@ Service Bus konuların temellerini öğrendiğinize göre, daha fazla bilgi edin
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Azure Web sitesinde Node.js uygulaması oluşturma ve dağıtma]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-

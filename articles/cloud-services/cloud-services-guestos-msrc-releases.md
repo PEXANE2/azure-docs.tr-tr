@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/21/2020
+ms.date: 8/10/2020
 ms.author: yohaddad
-ms.openlocfilehash: 04e75d108b9f518311ad19b2f9027dd0ad7e9e88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e14295842413464ed9faced59c8bb897f192a511
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002888"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067027"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -76,24 +76,22 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 
 ## <a name="june-2020-guest-os"></a>Haziran 2020 Konuk işletim sistemi
->[!NOTE]
->Haziran Konuk işletim sistemi şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine devredilir. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Nisan Konuk işletim sisteminde aşağıdaki düzeltme ekleri bulunmaktadır. Bu liste değişikliğe tabidir.
 
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2,99, 3,86, 4,79  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4561616]  |  En son toplu güncelleştirme (LCU)  |  5,44  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4561608]  |  En son toplu güncelleştirme (LCU)  |  6,20  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4562030]  |  Hizmet yığını güncelleştirmesi  |  2,99  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4561643]  |  Aylık toplu  |  2,99  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4562252]  |  Hizmet yığını güncelleştirmesi  |  3,86  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4561612]  |  Aylık toplu  |  3,86  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4561600]  |  In  |  3,86, 4,79, 5,44, 6,20  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4562253]  |  Hizmet yığını güncelleştirmesi  |  4,79  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4561666]  |  Aylık toplu  |  4,79  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4562561]  |  Hizmet yığını güncelleştirmesi  |  5,44  |  9 Haz, 2020  |
-|  Rel 20-06  |  [4562562]  |  Hizmet yığını güncelleştirmesi  |  6,20  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  [2,99], [3,86], [4,79]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561616]  |  En son toplu güncelleştirme (LCU)  |  [5,44]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561608]  |  En son toplu güncelleştirme (LCU)  |  [6,20]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562030]  |  Hizmet yığını güncelleştirmesi  |  [2,99]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561643]  |  Aylık toplu  |  [2,99]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562252]  |  Hizmet yığını güncelleştirmesi  |  [3,86]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561612]  |  Aylık toplu  |  [3,86]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561600]  |  In  |  [3,86], [4,79], [5,44], [6,20]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562253]  |  Hizmet yığını güncelleştirmesi  |  [4,79]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561666]  |  Aylık toplu  |  [4,79]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562561]  |  Hizmet yığını güncelleştirmesi  |  [5,44]  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562562]  |  Hizmet yığını güncelleştirmesi  |  [6,20]  |  9 Haz, 2020  |
 
 
 
@@ -109,6 +107,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
+[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Mayıs 2020 Konuk işletim sistemi
@@ -1193,7 +1196,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Rel 17-09 | [4038779], [4038786], [4038793] |Yalnızca Windows güvenliği |2,66, 3,53, 4,46 |12 Eylül 2017 |
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Eylül .NET güncelleştirmesi |2,66, 3,53, 4,46 |12 Eylül 2017 |
 | Rel 17-09 | [4036586] |Internet explorer |2,66, 3,53, 4,46 |12 Eylül 2017 |
-| CVE-2017-8704 | [4038782] |Hizmet Reddi |5.11 |12 Eylül 2017 |
+| CVE-2017-8704 | [4038782] |Denial of Service (Hizmet Reddi) |5.11 |12 Eylül 2017 |
 | Yok | [4034664] |Ağustos güvenlik dışı toplu  |2,66 |8 Ağustos 2017 |
 | Yok | [4034665] |Ağustos güvenlik dışı toplu |5.11 |8 Ağustos 2017 |
 | Yok | [4034681] |Ağustos güvenlik dışı toplu |4,46 |8 Ağustos 2017 |

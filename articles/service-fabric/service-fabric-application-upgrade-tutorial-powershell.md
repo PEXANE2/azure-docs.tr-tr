@@ -2,13 +2,13 @@
 title: PowerShell kullanarak uygulama yükseltmesini Service Fabric
 description: Bu makalede, bir Service Fabric uygulaması dağıtma, kodu değiştirme ve PowerShell 'i kullanarak bir yükseltmeyi kullanıma alma deneyimi anlatılmaktadır.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/5/2020
+ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195893"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064596"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell kullanarak uygulama yükseltmesini Service Fabric
 > [!div class="op_single_selector"]
@@ -24,6 +24,21 @@ En sık kullanılan ve önerilen yükseltme yaklaşımı, izlenen yuvarlama yük
 Yönetilen veya yerel API 'Ler, PowerShell, Azure CLı, Java veya REST kullanılarak izlenen bir uygulama yükseltmesi gerçekleştirilebilir. Visual Studio kullanarak yükseltme gerçekleştirmeye yönelik yönergeler için bkz. [Visual Studio kullanarak uygulamanızı yükseltme](service-fabric-application-upgrade-tutorial.md).
 
 Service Fabric izlenen yükseltmelerde, uygulama Yöneticisi Service Fabric uygulamanın sağlıklı olup olmadığını belirlemede sistem durumu değerlendirme ilkesini yapılandırabilir. Ayrıca, yönetici, sistem durumu değerlendirmesi başarısız olduğunda (örneğin, otomatik geri alma işlemi yapıldığında) yapılacak eylemi yapılandırabilir. Bu bölüm, PowerShell kullanan SDK örneklerinden biri için izlenen bir yükseltmeyi açıklar. 
+
+> [!NOTE]
+> [Applicationparameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>1. Adım: görsel nesneler örneğini derleme ve dağıtma
 Uygulama Projesi, **Visualobjectsapplication** öğesine sağ tıklayıp **Yayımla** komutunu seçerek uygulamayı derleyin ve yayımlayın.  Daha fazla bilgi için bkz. [uygulama yükseltme öğreticisini Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternatif olarak, uygulamanızı dağıtmak için PowerShell 'i de kullanabilirsiniz.

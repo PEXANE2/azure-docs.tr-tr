@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6151bb915298cc4f771b6d49628f39c8d27b62b4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800357"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064375"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -45,6 +45,7 @@ Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli
     - [HANA büyük örneği için desteklenen senaryolar](./hana-supported-scenario.md)
 - Azure Hizmetleri, Azure VM türleri ve Azure Depolama Hizmetleri farklı Azure bölgelerinde kullanılabilir, [bölgeye göre kullanılabilir site ürünlerini](https://azure.microsoft.com/global-infrastructure/services/) kontrol edin 
 - Windows ve Paceyapıcısı 'nin desteklenme yanı sıra üçüncü taraf HA çerçevesi çalışıyor mu? [Sap destek notunun](https://launchpad.support.sap.com/#/notes/1928533) alt kısmına bakın #1928533
+- Senaryoum için en iyi Azure depolama alanı nedir? [SAP iş yükü Için Azure depolama türlerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) okuyun
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -59,23 +60,7 @@ Belgelerinin bu bölümü SAP HANA farklı yönlerini kapsamaktadır. Bir önko�
  
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure sanal makinelerinde dağıtılan SAP NetWeaver
-Bu bölümde, Azure 'da SAP NetWeaver ve Iş için planlama ve dağıtım belgeleri listelenmiştir. Belgeler, Azure 'da SAP iş yükünün temel alınarak ve HANA olmayan veritabanlarının kullanımına odaklanmaktadır. Yüksek kullanılabilirlik için belgeler ve makaleler Ayrıca, Azure 'da HANA yüksek kullanılabilirliğe yönelik temel bir temelidir; örneğin:
-
-- [Azure Planlama Kılavuzu](./planning-guide.md). 
-- [Azure sanal makinelerde SAP Business One](./business-one-azure.md)
-- [Site Recovery kullanarak çok katmanlı SAP NetWeaver uygulama dağıtımını koruma](../../../site-recovery/site-recovery-sap.md)
-- [Azure için SAP LaMa bağlayıcısı](./lama-installation.md)
-
-Azure 'da bir SAP iş yükü altında HANA olmayan veritabanları hakkında bilgi için bkz.:
-
-- [SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular](./dbms_guide_general.md)
-- [SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server](./dbms_guide_sqlserver.md)
-- [SAP iş yükü için Oracle Azure Sanal Makineler DBMS dağıtımı](./dbms_guide_oracle.md)
-- [IBM DB2 Azure sanal makineleri SAP iş yükü için DBMS dağıtımı](./dbms_guide_ibm.md)
-- [SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı](./dbms_guide_sapase.md)
-- [Azure VM 'lerinde SAP MaxDB, canlı önbellek ve Içerik sunucusu dağıtımı](./dbms_guide_maxdb.md)
-
-Azure 'daki SAP HANA veritabanları hakkında daha fazla bilgi için, "Azure sanal makinelerinde SAP HANA" bölümüne bakın.
+Bu bölümde, Azure 'da SAP NetWeaver ve Iş için planlama ve dağıtım belgeleri listelenmiştir. Belgeler, Azure 'da SAP iş yükünün temel alınarak ve HANA olmayan veritabanlarının kullanımına odaklanmaktadır. Yüksek kullanılabilirlik için belgeler ve makaleler, Azure 'da HANA yüksek kullanılabilirlik temelini de temel alınır
 
 Azure 'da SAP iş yükünün yüksek kullanılabilirliği hakkında daha fazla bilgi için bkz.:
 
@@ -104,6 +89,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 08/10/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) SAP HANA depolama yapılandırması ve [Azure 'da SAP iş yükleri için bazı güncelleştirmeler yapma: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020: [Azure 'DA SLES 'de pacemaker 'ı ayarlama](./high-availability-guide-suse-pacemaker.md) ve [Azure 'daki RHEL 'de pacemaker](./high-availability-guide-rhel-pacemaker.md) 'ı ayarlama sırasında değişiklik yaparken, paceoluşturucu kümeleri için güvenilir ad çözümlemesinin önemini vurgulayın
 - 08/04/2020: [SAP NW ha Ile WFCS 'de, dosya paylaşımıyla](./sap-high-availability-installation-wsfc-file-share.md)değiştirin, [paylaşılan disk ile wfcs 'de SAP NW ha](./sap-high-availability-installation-wsfc-shared-disk.md), [Azure VM](./high-availability-guide.md)'lerinde SAP NW için ha, [SLES](./high-availability-guide-suse.md)üzerinde SAP NW için ha, SLES 'deki [Azure VM 'Lerinde](./high-availability-guide-suse-netapp-files.md)SAP [SLES Multi-SID KıLAVUZUNDAKI Azure VM 'lerinde SAP NW Için ha](./high-availability-guide-suse-multi-sid.md), RHEL 'de Azure VM 'lerinde SAP [NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-rhel.md), Azure VM 'lerinde RHEL 'de SAP [için,](./high-availability-guide-rhel-netapp-files.md) RHEL [Çoklu SID](./high-availability-guide-rhel-multi-sid.md) 'de Azure VM 'lerinde for SAP NW`enque/encni/set_so_keepalive`
 - 07/23/2020: SAP HANA Büyük Örnekleri kaydetme, bir SAP HANA Büyük Örnekleri rezervasyonu satın almadan önce bilmeniz gerekenleri açıklayan [bir Azure ayırma](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) makalesiyle eklendi ve satın alma işlemi nasıl yapılır?

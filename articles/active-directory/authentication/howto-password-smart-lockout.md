@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035426"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065990"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Kullanıcı hesaplarını Azure Active Directory akıllı kilitleme saldırılarına karşı koruma
 
@@ -24,7 +24,7 @@ Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye ya da a
 
 ## <a name="how-smart-lockout-works"></a>Akıllı kilitleme nasıl çalışacaktır?
 
-Varsayılan olarak, akıllı kilitleme, hesabı 10 başarısız girişimden bir dakika sonra oturum açma denemelerinde kilitler. Sonraki denemelerde ilk ve daha uzun bir süre sonra, hesap, sonraki başarısız oturum açma denemesinden sonra bir dakika sonra kilitlenir.
+Varsayılan olarak, akıllı kilitleme, hesabı 10 başarısız girişimden bir dakika sonra oturum açma denemelerinde kilitler. Sonraki denemelerde ilk ve daha uzun bir süre sonra, hesap, sonraki başarısız oturum açma denemesinden sonra bir dakika sonra kilitlenir. Bir saldırganın bu davranışı geçici olarak çözebileceği yolları en aza indirmek için, kilitleme süresinin ek başarısız oturum açma girişimleri üzerinden ne kadar büyüdüğü oranını açıklamıyoruz.
 
 Akıllı kilitleme, aynı parolanın kilitleme sayacını arttırmaktan kaçınmak için son üç hatalı parola karmalarını izler. Birisi aynı hatalı parolayı birden çok kez girerse, bu davranış hesabın kilitlenmesine neden olmaz.
 

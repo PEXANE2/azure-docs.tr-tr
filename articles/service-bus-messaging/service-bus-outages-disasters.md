@@ -3,12 +3,12 @@ title: Kesintileri ve olağanüstü durumlara karşı yalıtılmış Azure Servi
 description: Bu makaleler, uygulamaları potansiyel bir Azure Service Bus kesintiye karşı korumak için teknikler sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339665"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065633"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Uygulamaları Service Bus kesintilerine ve olağanüstü durumlarına karşı dayanıklı hale getirmek için en iyi yöntemler
 
@@ -72,7 +72,7 @@ Pasif çoğaltma kullanılırken, aşağıdaki senaryolarda iletiler kaybolabili
 [Service Bus Standart katman örneği Ile coğrafi çoğaltma][Geo-replication with Service Bus Standard Tier] , mesajlaşma varlıklarının pasif çoğaltmasını gösterir.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Geçiş uç noktalarını veri merkezi kesintileri veya olağanüstü durumlara karşı koruma
-[Azure Relay](../service-bus-relay/relay-what-is-it.md) uç noktaların coğrafi çoğaltma, bir geçiş uç noktasının Service Bus kesintileri olması durumunda ulaşılabilir olmasını sağlayan bir hizmete izin verir. Coğrafi çoğaltmanın elde edilebilmesi için hizmetin farklı ad alanlarında iki geçiş uç noktası oluşturması gerekir. Ad alanları farklı veri merkezlerinde bulunmalı ve iki uç noktanın farklı adlara sahip olması gerekir. Örneğin, **contosoPrimary.ServiceBus.Windows.net/myPrimaryService**altında birincil bir uç noktaya ulaşılırsa, ikincil karşılığı **contosoSecondary.ServiceBus.Windows.net/mySecondaryService**altına ulaşılmış olabilir.
+[Azure Relay](../azure-relay/relay-what-is-it.md) uç noktaların coğrafi çoğaltma, bir geçiş uç noktasının Service Bus kesintileri olması durumunda ulaşılabilir olmasını sağlayan bir hizmete izin verir. Coğrafi çoğaltmanın elde edilebilmesi için hizmetin farklı ad alanlarında iki geçiş uç noktası oluşturması gerekir. Ad alanları farklı veri merkezlerinde bulunmalı ve iki uç noktanın farklı adlara sahip olması gerekir. Örneğin, **contosoPrimary.ServiceBus.Windows.net/myPrimaryService**altında birincil bir uç noktaya ulaşılırsa, ikincil karşılığı **contosoSecondary.ServiceBus.Windows.net/mySecondaryService**altına ulaşılmış olabilir.
 
 Daha sonra hizmet her iki uç nokta üzerinde dinler ve bir istemci, hizmeti uç noktası aracılığıyla çağırabilir. İstemci uygulaması, geçişleri birincil uç nokta olarak rastgele seçer ve isteği etkin uç noktaya gönderir. İşlem hata kodu ile başarısız olursa, bu hata geçiş uç noktasının kullanılabilir olmadığını gösterir. Uygulama, yedekleme uç noktasına bir kanal açar ve isteği yeniden yayınlar. Bu noktada, etkin ve yedekleme uç noktaları, rol Değiştir: istemci uygulaması eski etkin uç noktayı yeni yedekleme uç noktası olarak ve eski yedekleme uç noktasını yeni etkin uç nokta olacak şekilde değerlendirir. Gönderme işlemlerinin her ikisi de başarısız olursa, iki varlığın rolleri değişmeden kalır ve bir hata döndürülür.
 

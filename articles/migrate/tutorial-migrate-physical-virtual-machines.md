@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nası
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ff8ac55f129e7579b12e2102c0c6292e9030021c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165405"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066636"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -40,7 +40,7 @@ Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve g
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -103,10 +103,13 @@ Azure geçişi: sunucu geçişi, makineleri Azure 'a çoğaltmak için bir çoğ
 
 Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 
-- Çoğaltma gerecini barındırmak için bir makine hazırlarsınız. Makine gereksinimlerini [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) . Gereç, çoğaltmak istediğiniz bir kaynak makineye yüklenmelidir.
+- Çoğaltma gerecini barındırmak için bir makine hazırlarsınız. Makine gereksinimlerini [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) .
 - Çoğaltma gereci MySQL kullanır. Gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) gözden geçirin.
 - Çoğaltma gerecinin [ortak](migrate-replication-appliance.md#url-access) ve [kamu](migrate-replication-appliance.md#azure-government-url-access) bulutları 'Na erişmesi Için gereken Azure URL 'lerini gözden geçirin.
 - Çoğaltma gereci için [port] (Migrate-Replication-gereci. MD # Port-Access) erişim gereksinimlerini gözden geçirin.
+
+> [!NOTE]
+> Çoğaltma gereci, çoğaltmak istediğiniz bir kaynak makineye veya daha önce yüklemiş olduğunuz Azure geçişi bulma ve değerlendirme gerecine yüklenmelidir.
 
 ## <a name="add-the-server-migration-tool"></a>Sunucu geçiş aracını ekleme
 
@@ -125,8 +128,8 @@ Bir Azure geçişi projesi ayarlayın ve ardından sunucu geçiş aracını buna
 
     ![Azure geçişi projesi oluşturma](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-8. **Değerlendirme aracı Seç**bölümünde **Şimdi bir değerlendirme aracı eklemeyi atla**' yı seçin  >  **Next**.
-9. **Geçiş aracı Seç**bölümünde **Azure geçişi: sunucu geçişi**  >  **İleri**' yi seçin.
+8. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
+9. **Geçiş aracı seçin** bölümünde **Azure Geçişi: Sunucu Geçişi** > **İleri**.
 10. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
 11. Araç eklendikten sonra, Azure geçişi proje > **sunucuları**  >  **geçiş araçları**' nda görüntülenir.
 
@@ -155,7 +158,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Fiziksel sunucu 
     ![Sağlayıcıyı indir](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 10. Gereç kurulum dosyasını ve anahtar dosyasını gereç için oluşturduğunuz Windows Server 2016 makinesine kopyalayın.
-11. Sonraki yordamda açıklandığı gibi, çoğaltma gereç kurulum dosyasını çalıştırın. Yükleme tamamlandıktan sonra gereç Yapılandırma Sihirbazı otomatik olarak başlatılır (gerecin masaüstünde oluşturulan Cspsconfigtool kısayolunu kullanarak Sihirbazı el ile de başlatabilirsiniz). Mobility hizmetinin göndererek yüklenmesi için kullanılacak hesap ayrıntılarını eklemek için sihirbazın hesapları Yönet sekmesini kullanın. Bu öğreticide, Mobility hizmetini çoğaltılacak makinelere el ile yükleyeceğiz, bu nedenle bu adımda bir kukla hesap oluşturun ve devam edin.
+11. Yükleme tamamlandıktan sonra gereç Yapılandırma Sihirbazı otomatik olarak başlatılır (gerecin masaüstünde oluşturulan Cspsconfigtool kısayolunu kullanarak Sihirbazı el ile de başlatabilirsiniz). Mobility hizmetinin göndererek yüklenmesi için kullanılacak hesap ayrıntılarını eklemek için sihirbazın hesapları Yönet sekmesini kullanın. Bu öğreticide, çoğaltılacak kaynak VM 'Lere Mobility hizmetini el ile yükleyeceğiz, bu nedenle bu adımda bir kukla hesap oluşturun ve devam edin. "Konuk" adlı kukla hesabı, Kullanıcı adı olarak "Kullanıcı adı" ve hesabın parolası olarak "parola" olarak oluşturmak için aşağıdaki ayrıntıları sağlayabilirsiniz. Çoğaltmayı etkinleştir aşamasında bu kukla hesabı kullanacaksınız. 
 
 12. Kurulum sonrasında gereç yeniden başlatıldıktan sonra, **makine bul**' da, **yapılandırma sunucusu**' nda yeni gereç ' ı seçin ve **kaydı Sonlandır**' a tıklayın. Kayıt işlemini sonuçlandırma, çoğaltma gerecini hazırlamak için birkaç son görevi gerçekleştirir.
 
@@ -230,7 +233,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 2. **Çoğaltma**' da, makinelerinizde > **kaynak ayarları**  >  **sanallaştırılır mi?**, **sanallaştırılmamış/diğer**seçeneğini belirleyin.
 3. **Şirket içi gereç**bölümünde, ayarladığınız Azure geçiş gerecinin adını seçin.
 4. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin.
-6. **Konuk kimlik bilgileri**' nde, Mobility hizmetini el ile yüklemek için kullanılacak bir kukla hesap belirtirsiniz (gönderme yüklemesi fiziksel olarak desteklenmez). Ileri ' ye tıklayın **: sanal makineler**.
+6. **Konuk kimlik bilgileri**' nde, Mobility hizmetini el ile yüklemek için lütfen daha önce [çoğaltma yükleyicisi kurulumu](#download-the-replication-appliance-installer) sırasında oluşturulan kukla hesabı seçin (gönderme yüklemesi desteklenmez). Ileri ' ye tıklayın **: sanal makineler**.   
 
     ![Sanal makineleri çoğaltma](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 

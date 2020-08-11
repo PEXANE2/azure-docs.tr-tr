@@ -3,12 +3,12 @@ title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a3458d7d160317e383da6217252e3dd7ed52e90f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b33f4e9b38d55ef3ed709df8d09f1ffd62a8bca8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008908"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066296"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -65,7 +65,7 @@ Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz.
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 'de yönetilen kimlikleri etkinleştirme
 VM 'nizden Service Bus kaynaklarını yetkilendirmek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için önce VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştireceğinizi öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portalındaki](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure portalındaki](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -108,7 +108,7 @@ Bir Service Bus ad alanına rol atamak için Azure portal ad alanına gidin. Kay
 4.  **Rol ataması Ekle** sayfasında, atamak istediğiniz Azure Service Bus rolleri seçin. Ardından, rolü atamak için kaydettiğiniz hizmet kimliğini bulmak için arama yapın.
     
     ![Rol atama sayfası ekle](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  **Kaydet**'i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Azure Service Bus veri sahibi olduğunu gösterilmektedir.
+5.  **Kaydet**’i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Azure Service Bus veri sahibi olduğunu gösterilmektedir.
     
     ![Bir role atanan kimlik](./media/service-bus-managed-service-identity/role-assigned.png)
 

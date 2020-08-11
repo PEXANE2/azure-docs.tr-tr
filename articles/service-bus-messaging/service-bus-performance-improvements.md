@@ -3,12 +3,12 @@ title: Azure Service Bus kullanarak performansı iyileştirmeye yönelik en iyi 
 description: Aracılı iletileri değiş tokuşu yaparken performansı iyileştirmek için Service Bus nasıl kullanılacağını açıklar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e0a6e54c1e941d7b7ff244ac40066a564e2ebbc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81e6fa1c6097f46bbfa3016beb1b7780ad3c351
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341103"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065310"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus Mesajlaşması kullanarak performans geliştirmek için en iyi yöntemler
 
@@ -40,7 +40,7 @@ Service Bus bağlantısını sürdürdüğü için AMQP en verimli yoldur. Toplu
 | <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Evrensel Windows Platformu 10.0.16299 | AMQP<br>HTTP |
 | <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
-En düşük .NET Standard platform desteği hakkında daha fazla bilgi için bkz. [.NET uygulama desteği](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support).
+En düşük .NET Standard platform desteği hakkında daha fazla bilgi için bkz. [.NET uygulama desteği](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Fabrikaları ve istemcileri yeniden kullanma
 
@@ -180,7 +180,7 @@ Service Bus, alma ve silme işlemlerine yönelik işlemleri desteklemez. Buna ek
 
 Varsayılan olarak, bir istemci 20 MS toplu iş aralığı kullanır. İleti fabrikası oluşturmadan önce [Batchflushınterval][BatchFlushInterval] özelliğini ayarlayarak Batch aralığını değiştirebilirsiniz. Bu ayar, bu fabrika tarafından oluşturulan tüm istemcileri etkiler.
 
-Toplu işlemeyi devre dışı bırakmak için [Batchflushınterval][BatchFlushInterval] özelliğini **TimeSpan. Zero**olarak ayarlayın. Örneğin:
+Toplu işlemeyi devre dışı bırakmak için [Batchflushınterval][BatchFlushInterval] özelliğini **TimeSpan. Zero**olarak ayarlayın. Örnek:
 
 ```csharp
 var settings = new MessagingFactorySettings

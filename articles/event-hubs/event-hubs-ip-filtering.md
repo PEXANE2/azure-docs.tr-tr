@@ -3,12 +3,12 @@ title: Azure Event Hubs güvenlik duvarı kuralları | Microsoft Docs
 description: Belirli IP adreslerinden Azure Event Hubs bağlantılara izin vermek için güvenlik duvarı kurallarını kullanın.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: b59c34e80fb08e35a9ed8b1b3e406e2e63517877
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7870260b77785af59f4f186274775067f2292ef6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836828"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066058"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Event Hubs ad alanlarına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Event Hubs ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
@@ -18,9 +18,9 @@ Bu özellik, Azure Event Hubs yalnızca belirli bilinen sitelerden erişilebilir
 >[!WARNING]
 > IP filtrelemeyi etkinleştirmek, diğer Azure hizmetlerinin Event Hubs etkileşimde olmasını engelleyebilir.
 >
-> Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
+> IP filtrelemesi uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
 >
-> Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
+> IP filtrelemesi ile çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
 > - Azure Stream Analytics
 > - Azure IoT Hub yolları
 > - Azure IoT Device Explorer

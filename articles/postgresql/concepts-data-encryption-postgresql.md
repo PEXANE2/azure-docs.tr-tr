@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290165"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064800"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
@@ -24,9 +24,9 @@ Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda 
 > [!NOTE]
 > Bu özellik, PostgreSQL için Azure veritabanı 'nın tek sunuculu "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir. Diğer sınırlamalar için [sınırlandırma](concepts-data-encryption-postgresql.md#limitations) bölümüne bakın.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
-PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu aşağıdaki avantajları sağlar:
+PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu aşağıdaki avantajları sağlar:
 
 * Veri erişimi, anahtarı kaldırabilme ve veritabanını erişilemez hale getirme özelliği tarafından tam olarak denetlenir 
 *    Anahtar yaşam döngüsü üzerinde, kurumsal ilkelerle hizalamak için anahtar dönüşü dahil tam denetim
@@ -48,8 +48,8 @@ KEKs ile şifrelenen DEKs 'ler ayrı olarak depolanır. Yalnızca KEK erişimi o
 Bir PostgreSQL sunucusu için Key Vault ' de depolanan müşteri tarafından yönetilen anahtarları kullanması için, bir Key Vault Yöneticisi sunucuya aşağıdaki erişim haklarını verir:
 
 * **Get**: anahtar kasasındaki anahtarın ortak bölümünü ve özelliklerini almak için.
-* **wrapKey**: dek ' i şifreleyebilmek için.
-* **unwrapKey**: dek ' nin şifresini çözebilmek için.
+* **wrapKey**: dek ' i şifreleyebilmek için. Şifrelenmiş DEK, PostgreSQL için Azure veritabanı 'nda depolanır.
+* **unwrapKey**: dek ' nin şifresini çözebilmek için. PostgreSQL için Azure veritabanı 'nın verileri şifrelemek/şifrelerini çözmek için şifresi çözülmüş DEK gerekir
 
 Anahtar Kasası Yöneticisi ayrıca [Key Vault denetim olaylarının günlüğe kaydedilmesini etkinleştirerek](../azure-monitor/insights/key-vault-insights-overview.md)daha sonra denetlenebilir.
 
@@ -59,16 +59,16 @@ Sunucu, anahtar kasasında depolanan müşteri tarafından yönetilen anahtarı 
 
 Key Vault yapılandırmaya yönelik gereksinimler aşağıda verilmiştir:
 
-* Key Vault ve PostgreSQL için Azure veritabanı tek sunuculu aynı Azure Active Directory (Azure AD) kiracısına ait olmalıdır. Çapraz kiracı Key Vault ve sunucu etkileşimleri desteklenmez. Kaynakları taşımak daha sonra veri şifrelemeyi yeniden yapılandırmanız gerekir.
+* Key Vault ve PostgreSQL için Azure veritabanı tek sunuculu aynı Azure Active Directory (Azure AD) kiracısına ait olmalıdır. Çapraz kiracı Key Vault ve sunucu etkileşimleri desteklenmez. Key Vault kaynağı taşıma daha sonra veri şifrelemeyi yeniden yapılandırmanız gerekir.
 * Yanlışlıkla bir anahtar (veya Key Vault) silme işlemi gerçekleşdiğinde, anahtar kasasındaki geçici silme özelliğini etkinleştirin. Kullanıcı bu sırada kurtarmadığı veya silmediği takdirde, geçici olarak silinen kaynaklar 90 gün boyunca tutulur. Kurtarma ve Temizleme eylemlerinin Key Vault erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır, ancak PowerShell veya Azure CLı aracılığıyla etkinleştirebilir (Azure portal aracılığıyla etkinleştirebileceğinizi unutmayın).
-* PostgreSQL için Azure veritabanı 'na, benzersiz yönetilen kimliğini kullanarak Get, wrapKey ve unwrapKey izinleriyle anahtar kasasına tek sunuculu erişim izni verin. Azure portal, benzersiz kimlik, PostgreSQL tek sunucusunda veri şifrelemesi etkinleştirildiğinde otomatik olarak oluşturulur. Azure portal kullanırken Azure portal ayrıntılı, adım adım yönergeler için bkz. [PostgreSQL Için Azure veritabanı Için veri şifreleme tek sunucu](howto-data-encryption-portal.md) .
+* PostgreSQL için Azure veritabanı 'na, benzersiz yönetilen kimliğini kullanarak Get, wrapKey ve unwrapKey izinleriyle anahtar kasasına tek sunuculu erişim izni verin. Azure portal, ' hizmet ' kimliği, PostgreSQL tek sunucusunda veri şifrelemesi etkinleştirildiğinde otomatik olarak oluşturulur. Azure portal kullanırken Azure portal ayrıntılı, adım adım yönergeler için bkz. [PostgreSQL Için Azure veritabanı Için veri şifreleme tek sunucu](howto-data-encryption-portal.md) .
 
 Aşağıda, müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik gereksinimler verilmiştir:
 
 * DEK şifrelemek için kullanılan müşteri tarafından yönetilen anahtar yalnızca asimetrik, RSA 2048 olabilir.
 * Anahtar etkinleştirme tarihi (ayarlandıysa), geçmişteki bir tarih ve saat olmalıdır. Sona erme tarihi (ayarlandıysa) gelecekteki bir tarih ve saat olmalıdır.
 * Anahtar *etkin* durumda olmalıdır.
-* Anahtar kasasında mevcut bir anahtarı içeri aktarıyorsanız, bunu desteklenen dosya biçimlerinde ( `.pfx` ,,) sağladığınızdan emin olun `.byok` `.backup` .
+* Anahtar kasasında [mevcut bir anahtarı içeri](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) aktarıyorsanız, bunu desteklenen dosya biçimlerinde ( `.pfx` , `.byok` ,) sağladığınızdan emin olun `.backup` .
 
 ## <a name="recommendations"></a>Öneriler
 

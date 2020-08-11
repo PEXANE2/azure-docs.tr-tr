@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551702"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066075"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -545,11 +545,11 @@ Aşağıdaki tablolarda, her role verilen Azure Active Directory belirli izinler
 | Microsoft. Directory/Approtaatamalar/güncelleştirme | Azure Active Directory Approtaatamaları güncelleştirin. |
 | Microsoft. Directory/Approtaatamaları/silme | Azure Active Directory Approtaatamaları silin. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-| Microsoft. Directory/connectorGroups/her şey/okuma | Azure Active Directory içindeki uygulama proxy Bağlayıcısı grubu özelliklerini okuyun. |
-| Microsoft. Directory/connectorGroups/her şey/güncelleştirme | Azure Active Directory tüm uygulama proxy Bağlayıcısı grubu özelliklerini güncelleştirin. |
+| Microsoft. Directory/connectorGroups/allProperties/Read | Azure Active Directory içindeki uygulama proxy Bağlayıcısı grubu özelliklerini okuyun. |
+| Microsoft. Directory/connectorGroups/allProperties/Update | Azure Active Directory tüm uygulama proxy Bağlayıcısı grubu özelliklerini güncelleştirin. |
 | Microsoft. Directory/connectorGroups/Create | Azure Active Directory 'de uygulama proxy Bağlayıcısı grupları oluşturun. |
 | Microsoft. Directory/connectorGroups/Delete | Azure Active Directory içindeki uygulama proxy Bağlayıcısı gruplarını silin. |
-| Microsoft. Directory/bağlayıcılar/her şey/okuma | Azure Active Directory içindeki tüm uygulama proxy Bağlayıcısı özelliklerini okuyun. |
+| Microsoft. Directory/bağlayıcılar/allProperties/Read | Azure Active Directory içindeki tüm uygulama proxy Bağlayıcısı özelliklerini okuyun. |
 | Microsoft. Directory/bağlayıcılar/oluşturma | Azure Active Directory içinde uygulama proxy bağlayıcıları oluşturun. |
 | Microsoft. Directory/policies/applicationConfiguration/Basic/Read | Azure Active Directory içindeki policies. applicationConfiguration özelliğini okuyun. |
 | Microsoft. Directory/policies/applicationConfiguration/Basic/Update | Azure Active Directory ilke. applicationConfiguration özelliğini güncelleştirin. |
@@ -1426,7 +1426,6 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-| Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. userCommunication/allEntities/allTasks | Yeni iletilerin görünürlüğünü okuyun ve güncelleştirin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 

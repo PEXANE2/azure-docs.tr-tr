@@ -3,12 +3,12 @@ title: Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0 | Microsof
 description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamasına yönelik protokol Kılavuzu
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511322"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064545"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
 
@@ -73,7 +73,7 @@ Bağlantılar, kanallar ve oturumlar kısa ömürlü. Temeldeki bağlantı daral
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP giden bağlantı noktası gereksinimleri
 
-TCP üzerinden AMQP bağlantıları kullanan istemciler, yerel güvenlik duvarında açılan 5671 ve 5672 bağlantı noktalarını gerektirir. Bu bağlantı noktalarıyla birlikte, [Enablelinkredirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) özelliği etkinse ek bağlantı noktaları açmanız gerekebilir. `EnableLinkRedirect`, iletileri alırken tek bir atlama atlanmasına yardımcı olan yeni bir mesajlaşma özelliğidir ve bu sayede aktarım hızını artırır. İstemci, aşağıdaki görüntüde gösterildiği gibi, 104XX bağlantı noktası aralığı üzerinden doğrudan arka uç hizmetiyle iletişim kurmaya başlayacaktır. 
+TCP üzerinden AMQP bağlantıları kullanan istemciler, yerel güvenlik duvarında açılan 5671 ve 5672 bağlantı noktalarını gerektirir. Bu bağlantı noktalarıyla birlikte, [Enablelinkredirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) özelliği etkinse ek bağlantı noktaları açmanız gerekebilir. `EnableLinkRedirect`, iletileri alırken tek bir atlama atlanmasına yardımcı olan yeni bir mesajlaşma özelliğidir ve bu sayede aktarım hızını artırır. İstemci, aşağıdaki görüntüde gösterildiği gibi, 104XX bağlantı noktası aralığı üzerinden doğrudan arka uç hizmetiyle iletişim kurmaya başlayacaktır. 
 
 ![Hedef bağlantı noktalarının listesi][4]
 
@@ -362,7 +362,7 @@ Protokol hareketi, yönetim belirtimi tarafından tanımlanan bir istek/yanıt d
 | çalışmasını |No |string |**Put belirteci** |
 | tür |No |string |Yerleştirmekte olan belirtecin türü. |
 | name |No |string |Belirtecin uygulandığı "hedef kitle". |
-| dolmadan |Yes |timestamp |Belirtecin süre sonu zamanı. |
+| dolmadan |Evet |timestamp |Belirtecin süre sonu zamanı. |
 
 *Name* özelliği, belirtecin ilişkilendirilacağı varlığı tanımlar. Service Bus kuyruk veya konu/abonelik yoludur. *Type* özelliği, belirteç türünü tanımlar:
 
@@ -379,7 +379,7 @@ Yanıt iletisinde aşağıdaki *uygulama özellikleri* değerleri bulunur
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
 | durum kodu |No |int |HTTP yanıt kodu **[RFC2616]**. |
-| durum-açıklama |Yes |string |Durumun açıklaması. |
+| durum-açıklama |Evet |string |Durumun açıklaması. |
 
 İstemci, *yerleştirme belirtecini* sürekli olarak ve mesajlaşma altyapısındaki herhangi bir varlık için çağırabilir. Belirteçler, geçerli istemcinin kapsamına alınır ve geçerli bağlantıya bağlanır, yani bağlantı düşerse sunucu tüm korunan belirteçleri bırakır.
 
@@ -419,5 +419,5 @@ AMQP hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları ziyar
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Service Bus AMQP 'ye Genel Bakış]: service-bus-amqp-overview.md
-[Service Bus bölümlenmiş kuyruklar ve konular için AMQP 1,0 desteği]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[Windows Server için Service Bus AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[Service Bus bölümlenmiş kuyruklar ve konular için AMQP 1,0 desteği]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

@@ -3,12 +3,12 @@ title: Kendi modelinizi kullanarak canlı videoyu çözümleyin-Azure
 description: Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için bilgisayar vizyonu uygularsınız.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 75e18917b0d44dc33999d17360cd66a538c83d2b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170617"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065208"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Hızlı başlangıç: kendi modelinizi kullanarak canlı videoyu çözümleyin
 
@@ -16,7 +16,7 @@ Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akış
 
 Bu hızlı başlangıç, bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir canlı video akışı kullanır. C# dilinde yazılmış örnek koda dayalıdır ve [hareket ve yayma olaylarını Algıla](detect-motion-emit-events-quickstart.md) hızlı başlangıç bölümünde oluşturulur. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir abonelik içeren bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
@@ -31,7 +31,7 @@ Bu hızlı başlangıç, bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 Azure kaynaklarını ayarlarken, Azure 'da IoT Edge cihaz olarak kullandığınız Linux VM 'sine yönelik kısa bir ekran trafiği. Bu hızlı başlangıçta canlı bir akışın benzetimini yapmak için video dosyası kullanılmaktadır.
 
-[VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama açın. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak için [videoya](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) bir bağlantı yapıştırın. Birçok taşıın otoyol trafiğinden çekilmesine bakabilirsiniz.
+[VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama açın. `Ctrl+N`Kayıttan yürütmeyi başlatmak için [otoyol kesişimi örnek videosunun](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) bağlantısını seçin ve yapıştırın. Birçok taşıın otoyol trafiğinden çekilmesine bakabilirsiniz.
 
 Bu hızlı başlangıçta, Araçlar ve kişiler gibi nesneleri algılamak için IoT Edge üzerinde canlı video analizi kullanacaksınız. İlişkili çıkarım olaylarını IoT Edge hub 'a yayımlayacaksınız.
 
@@ -107,9 +107,18 @@ Bu hızlı başlangıçta şunları yapmanız gerekir:
 1. IoT Hub bir cihaz seçmeniz istendiğinde, **LVA-örnek-cihaz**' ı seçin.
 1. 30 saniye sonra, pencerenin sol alt köşesinde Azure IoT Hub ' yi yenileyin. Edge cihazında artık aşağıdaki dağıtılan modüller gösterilmektedir:
 
-    * **Lvaedge** adlı canlı video analizi modülü
-    * Bir RTSP sunucusuna benzetir ve canlı video akışı kaynağı görevi gören **rtspsim** modülü
-    * Görüntülere görüntü getiren ve birden çok nesne türü sınıfını döndüren YOLOv3 nesne algılama modeli olan **yolov3** modülü.
+    * Adlı canlı video analizi modülü`lvaEdge`
+    * `rtspsim`BIR RTSP sunucusunun benzetimini yapan ve canlı video akışı kaynağı görevi gören modül
+    > [!NOTE]
+    > Kurulum betiğimizden temin yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için uç cihazınıza gidin ve **yönetici haklarıyla**aşağıdaki komutları çalıştırın:  
+
+    ```
+    mkdir /home/lvaadmin/samples
+    mkdir /home/lvaadmin/samples/input    
+    curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+    chown -R lvaadmin /home/lvaadmin/samples/  
+    ```
+    * `yolov3`Görüntülere bilgisayar vizyonu uygulayan ve nesne türlerinin birden çok sınıfını döndüren YoloV3 nesne algılama modeli olan modül.
  
       ![Sınır cihazında dağıtılan modüller](./media/quickstarts/yolov3.png)
 
@@ -284,7 +293,7 @@ Diğer hızlı başlangıç yapmayı düşünüyorsanız oluşturduğunuz kaynak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [YOLOv3 modelinin güvenli bir sürümünü](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) deneyın ve IoT Edge cihazına dağıtın. 
+* [YoloV3 modelinin güvenli bir sürümünü](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) deneyin ve IoT Edge cihaza dağıtın. 
 
 Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 

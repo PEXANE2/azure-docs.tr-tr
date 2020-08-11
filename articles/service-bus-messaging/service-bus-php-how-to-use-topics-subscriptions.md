@@ -4,12 +4,12 @@ description: Bu öğreticide, bir PHP uygulamasından Azure Service Bus konular�
 ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: f2161d39961cc52bc0f0da509abec3ed6377cc07
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341079"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066211"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Hızlı başlangıç: PHP ile Service Bus konuları ve abonelikleri kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, Service Bus konularının ve aboneliklerinin nasıl kullanılacağ�
 - Bir abonelikten ileti alma
 - Konuları ve abonelikleri silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) .
 
@@ -261,13 +261,13 @@ for($i = 0; $i < 5; $i++){
 Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Konu başlığında tutulan ileti sayısına ilişkin bir sınır yoktur ancak konu başlığı tarafından tutulan iletilerin toplam boyutu için uç sınır vardır. Konu boyutu için bu üst sınır 5 GB 'dir. Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
-Bir abonelikten ileti almanın en iyi yolu bir `ServiceBusRestProxy->receiveSubscriptionMessage` yöntemi kullanmaktır. İletiler iki farklı modda alınabilir: [ *Receiveanddelete* ve *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** varsayılan değerdir.
+Bir abonelikten ileti almanın en iyi yolu bir `ServiceBusRestProxy->receiveSubscriptionMessage` yöntemi kullanmaktır. İletiler iki farklı modda alınabilir: [ *Receiveanddelete* ve *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** varsayılan değerdir.
 
-[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) modunu kullanırken alma işlemi tek aşamalıdır. Service Bus abonelikte bir iletiye yönelik okuma isteği aldığında, iletiyi kullanılıyor olarak işaretler ve uygulamaya döndürür. [Receiveanddelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * modu en basit modeldir ve bir hata oluştuğunda bir uygulamanın bir iletiyi işlememesi için en iyisi senaryolar için geçerlidir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
+[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modunu kullanırken alma işlemi tek aşamalıdır. Service Bus abonelikte bir iletiye yönelik okuma isteği aldığında, iletiyi kullanılıyor olarak işaretler ve uygulamaya döndürür. [Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) * modu en basit modeldir ve bir hata oluştuğunda bir uygulamanın bir iletiyi işlememesi için en iyisi senaryolar için geçerlidir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-Varsayılan [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) modunda bir ileti almak iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiyi ' a geçirerek alma işleminin ikinci aşamasını tamamlar `ServiceBusRestProxy->deleteMessage` . Service Bus `deleteMessage` çağrısı gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
+Varsayılan [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) modunda bir ileti almak iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiyi ' a geçirerek alma işleminin ikinci aşamasını tamamlar `ServiceBusRestProxy->deleteMessage` . Service Bus `deleteMessage` çağrısı gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
 
-Aşağıdaki örnek, [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) Mode (varsayılan mod) kullanarak bir iletinin nasıl alınacağını ve işleyeceğini gösterir. 
+Aşağıdaki örnek, [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) Mode (varsayılan mod) kullanarak bir iletinin nasıl alınacağını ve işleyeceğini gösterir. 
 
 ```php
 require_once 'vendor/autoload.php';

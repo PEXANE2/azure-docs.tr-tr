@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: e066f810dca9c1b824c5eb30bb9f938df856a819
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6fb065e48b744a31bcce2ca3249d0d6bd0216049
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002696"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066432"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -88,7 +88,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya 2| 10G, 100G | CDC |
 | **Cape Town** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Güney Afrika Batı | 'Yi | BCX, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, Teraco |
 | **Chennai** | Tata Communications | 2 | Güney Hindistan | 'Yi | Global CloudXchange (GCX), SIFY, Tata Communications |
-| **Chennai2** | Airtel | 2 | Güney Hindistan | yok | Airtel |
+| **Chennai2** | Airtel | 2 | Güney Hindistan | 'Yi | Airtel |
 | **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | Orta Kuzey ABD | 10G, 100G | Aryaka Networks,&T Netbono, CenturyLink Cloud Connect, Geregix, Colt, Comcast, Coresıte, Equinix, Intercloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCFA Global Limited, Sprint, Telia taşıyıcısı, Verizon, Zayo |
 | **Kopenhag** | [Interxiyon CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | yok | 'Yi | Interxion |
 | **Şubesi** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | yok | 10G, 100G | Aryaka Networks,&T Netbonıngıgix, Equinix, Internet2, düzey 3 Communications, Megaport, nörona Networks, Telmex Unınet, Telia taşıyıcısı, Transtelco, Verizon, Zayo|
@@ -115,7 +115,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Minneapolis** | [Birlikte bulundurgix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | yok | 10G, 100G | Cologix |
 | **Montreal** | [Birlikte bulundurgix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | yok | 10G, 100G | Bell Kanada, Kolombiya Gix, Megaport, Telus, Zayo |
 | **Mumbai** | Tata Communications | 2 | Batı Hindistan | 'Yi | DE-CIX, küresel CloudXchange (GCX), Reliance jıo, Sıfy, Tata Iletişimleri, Verizon |
-| **Bombay2** | Airtel | 2 | Batı Hindistan | yok | Airtel, Sify, Vodafone Idea |
+| **Bombay2** | Airtel | 2 | Batı Hindistan | 'Yi | Airtel, Sify, Vodafone Idea |
 | **Münih** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | yok | 'Yi | DE-CıX |
 | **New Yok** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | yok | 10G, 100G | CenturyLink Cloud Connect, Colt, Coresite, DE-CIX, Equinx, Intercloud, Megaport, paket, Zayo |
 | **Newport (Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | Batı Birleşik Krallık | yok | İngiliz telekomünikasyon, Colt, düzey 3 Iletişimleri, yeni nesil veriler |

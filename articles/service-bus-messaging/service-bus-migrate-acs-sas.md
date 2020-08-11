@@ -3,16 +3,16 @@ title: Azure Service Bus-paylaşılan erişim Imzası yetkilendirmesi 'ne geçi�
 description: Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesini geçirme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340110"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064630"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
 
-Service Bus uygulamalar, daha önce iki farklı yetkilendirme modeli kullanma seçeneği içeriyordu: doğrudan Service Bus tarafından sunulan [paylaşılan erişim imzası (SAS)](service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetiminin [Azure ACTIVE DIRECTORY](/azure/active-directory/) Access Control Service (ACS) tarafından yönetildiği BIR Federasyon modeli ve ACS 'den alınan belirteçler, istenen özelliklere erişimi yetkilendirmek için Service Bus 'ye geçirilir.
+Service Bus uygulamalar, daha önce iki farklı yetkilendirme modeli kullanma seçeneği içeriyordu: doğrudan Service Bus tarafından sunulan [paylaşılan erişim imzası (SAS)](service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetiminin [Azure ACTIVE DIRECTORY](../active-directory/index.yml) Access Control Service (ACS) tarafından yönetildiği BIR Federasyon modeli ve ACS 'den alınan belirteçler, istenen özelliklere erişimi yetkilendirmek için Service Bus 'ye geçirilir.
 
 ACS yetkilendirme modelinin süresi, tercih edilen model olarak [SAS yetkilendirmesi](service-bus-authentication-and-authorization.md) ile değiştirilmiştir ve tüm belgeler, kılavuzluk ve örnekler günümüzde SAS kullanır. Üstelik, artık ACS ile eşleştirilmiş yeni Service Bus ad alanları oluşturmak mümkün değildir.
 
@@ -56,4 +56,3 @@ Service Bus kimlik doğrulaması hakkında daha fazla bilgi edinmek için aşağ
 
 * [Service Bus kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md)
 * [Paylaşılan erişim Imzaları ile kimlik doğrulamasını Service Bus](service-bus-sas.md)
-

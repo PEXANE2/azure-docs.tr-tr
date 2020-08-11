@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 2ac15317fe45573805ff7f6395884f7cb101fec3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112842"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065888"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -32,10 +32,10 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Avustralya Central2     | 20.36.113.0   |
 | Doğu Avustralya | 13.75.149.87, 40.79.161.1     |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |
-| Güney Brezilya | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
+| Brezilya Güney | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Orta Kanada |40.85.224.249  |
 | Doğu Kanada | 40.86.226.166    |
-| Orta ABD | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Doğu Çin | 139.219.130.35    |
 | Çin Doğu 2 | 40.73.82.1  |
 | Kuzey Çin | 139.219.15.17    |
@@ -65,8 +65,8 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Güney Birleşik Krallık | 51.140.184.11   |
 | Batı Birleşik Krallık | 51.141.8.11  |
 | Orta Batı ABD | 13.78.145.25     |
-| Batı Avrupa | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
-| Batı ABD | 104.42.238.205, 23.99.34.75  |
+| West Europe | 40.68.37.158, 191.237.232.75, 13.69.105.208, 104.40.169.187  |
+| Batı ABD | 104.42.238.205, 23.99.34.75, 13.86.216.212, 13.86.217.212 |
 | Batı ABD 2 | 13.66.226.202  |
 ||||
 

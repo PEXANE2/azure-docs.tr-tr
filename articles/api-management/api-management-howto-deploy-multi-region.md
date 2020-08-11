@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790488"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065463"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma
 
@@ -28,6 +28,9 @@ Yeni bir Azure API Management hizmeti başlangıçta tek bir Azure bölgesinde, 
 
 > [!NOTE]
 > Yalnızca API Management ağ geçidi bileşeni tüm bölgelere dağıtılır. Hizmet Yönetimi bileşeni ve geliştirici portalı yalnızca birincil bölgede barındırılır. Bu nedenle, birincil bölge kesintisi durumunda, geliştirici portalına erişim ve yapılandırmayı değiştirebilme (ör. API ekleme, ilkeleri uygulama), birincil bölge yeniden çevrimiçi olana kadar zayıflatılabilir. Birincil bölge çevrimdışı iken kullanılabilir olan Ikincil bölgeler, API trafiği için kullanılabilen en son yapılandırmayı kullanmaya devam eder.
+
+>[!IMPORTANT]
+> Müşteri verilerinin tek bir bölgede depolanmasını etkinleştirme özelliği şu anda yalnızca Asya Pasifik coğrafi bölgenin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri coğrafi olarak depolanır.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 

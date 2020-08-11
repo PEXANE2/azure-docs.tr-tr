@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 63b8c33b61d6bff28eca98929e344df7ea54e779
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 5037a7a68b86828b7a96fc99222c55f0bf896380
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430682"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065701"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: Node.js ve Azure/Service-Bus paketiyle Service Bus kuyruklarını kullanma
 Bu öğreticide, yeni paketi kullanarak Service Bus kuyruğuna ileti göndermek ve ileti almak için bir NodeJS programı yazmayı öğreneceksiniz [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
-Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturmaya ve [queueclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) sınıfının örneğini oluşturmak için kullanılmasına başlar. Kuyruk istemcisini aldıktan sonra, ileti göndermek için bir gönderici oluşturabilir ve bunun üzerinde [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) veya [sendbatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) yöntemini kullanabilirsiniz.
+Service Bus kuyrukla etkileşim kurmak [Servicebusclient](/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturmaya ve [queueclient](/javascript/api/@azure/service-bus/queueclient) sınıfının örneğini oluşturmak için kullanılmasına başlar. Kuyruk istemcisini aldıktan sonra, ileti göndermek için bir gönderici oluşturabilir ve bunun üzerinde [Send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) veya [sendbatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) yöntemini kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
 2. Adlı bir dosya oluşturun `send.js` ve içine aşağıdaki kodu yapıştırın. Bu kod, kuyruğunuza 10 ileti gönderir.
@@ -83,7 +83,7 @@ Tebrikler! Service Bus kuyruğuna ileti gönderdiniz.
 Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Bir kuyrukta tutulan ileti sayısında bir sınır yoktur ancak bir sıranın tuttuğu iletilerin toplam boyutunun bir üst sınırı vardır. Bu kuyruk boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları](service-bus-quotas.md).
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
-Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturmaya ve [queueclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) sınıfının örneğini oluşturmak için kullanılmasına başlar. Sıra istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) veya [registermessagehandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
+Service Bus kuyrukla etkileşim kurmak [Servicebusclient](/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturmaya ve [queueclient](/javascript/api/@azure/service-bus/queueclient) sınıfının örneğini oluşturmak için kullanılmasına başlar. Sıra istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) veya [registermessagehandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
 2. Adlı bir dosya oluşturun `recieve.js` ve içine aşağıdaki kodu yapıştırın. Bu kod, kuyruğunuzdan 10 ileti almaya çalışır. Aldığınız gerçek sayı, sıradaki ileti sayısına ve ağ gecikmesine bağlıdır.
@@ -119,7 +119,7 @@ Service Bus kuyrukla etkileşim kurmak [Servicebusclient](https://docs.microsoft
 
 Tebrikler! Service Bus sırasından ileti aldınız.
 
-[Createreceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) yöntemi, `ReceiveMode` [Receiveanddelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerlerini içeren bir Enum olan ' ı alır. [settle your messages](message-transfers-locks-settlement.md#settling-receive-operations) `PeekLock` `complete()` `abandon()` İleti üzerinde,, `defer()` veya yöntemlerinden birini kullanarak modunu kullanırsanız, iletilerinizi kapatmanız gerektiğini unutmayın `deadletter()` .
+[Createreceiver](/javascript/api/@azure/service-bus/queueclient#createreceiver-receivemode-) yöntemi, `ReceiveMode` [Receiveanddelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerlerini içeren bir Enum olan ' ı alır. [settle your messages](message-transfers-locks-settlement.md#settling-receive-operations) `PeekLock` `complete()` `abandon()` İleti üzerinde,, `defer()` veya yöntemlerinden birini kullanarak modunu kullanırsanız, iletilerinizi kapatmanız gerektiğini unutmayın `deadletter()` .
 
 > [!NOTE]
 > Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
@@ -129,4 +129,3 @@ Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın.
 - [Kuyruklar, konu başlıkları ve abonelikler](service-bus-queues-topics-subscriptions.md)
 - [GitHub üzerinde Service Bus için diğer NodeJS örneklerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript) kullanıma al
 - [Node.js Geliştirici Merkezi](https://azure.microsoft.com/develop/nodejs/)
-

@@ -3,12 +3,12 @@ title: Paylaşılan erişim Imzaları ile erişim denetimi Azure Service Bus
 description: Paylaşılan erişim Imzaları ile ilgili Service Bus erişim denetimine genel bakış, Azure Service Bus ile SAS yetkilendirmesi hakkında ayrıntılar.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460703"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066194"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -27,7 +27,7 @@ SAS koruyucuları, yetkilendirme kurallarına göre Service Bus erişimi sağlar
 
 Paylaşılan erişim Imzaları, basit belirteçler kullanan talep tabanlı bir yetkilendirme mekanizmasıdır. SAS kullanarak, anahtarlar hiçbir şekilde hatta hiçbir şekilde geçirilmez. Anahtarlar, daha sonra hizmet tarafından doğrulanabileolabilecek bilgileri şifreli olarak imzalamak için kullanılır. SAS, istemcinin bir yetkilendirme kuralı adının ve eşleşen bir anahtarın hemen elinde bulunduğu bir Kullanıcı adı ve parola şemasına benzer şekilde kullanılabilir. SAS, bir güvenlik belirteci hizmetinden herhangi bir zamana sınırlı ve imzalı erişim belirtecini, bu da oturum açmadan bir yerde değil, bir Federasyon güvenlik modeline benzer şekilde de kullanılabilir.
 
-Service Bus içinde SAS kimlik doğrulaması, ilişkili erişim hakları olan adlandırılmış [paylaşılan erişim yetkilendirme kurallarıyla](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) ve bir çift birincil ve ikincil şifreleme anahtarı ile yapılandırılır. Anahtarlar, Base64 gösteriminde 256 bitlik değerlerdir. Kuralları, Service Bus [geçişleri](../service-bus-relay/relay-what-is-it.md), [kuyrukları](service-bus-messaging-overview.md#queues)ve [konuları](service-bus-messaging-overview.md#topics), ad alanı düzeyinde yapılandırabilirsiniz.
+Service Bus içinde SAS kimlik doğrulaması, ilişkili erişim hakları olan adlandırılmış [paylaşılan erişim yetkilendirme kurallarıyla](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) ve bir çift birincil ve ikincil şifreleme anahtarı ile yapılandırılır. Anahtarlar, Base64 gösteriminde 256 bitlik değerlerdir. Kuralları, Service Bus [geçişleri](../azure-relay/relay-what-is-it.md), [kuyrukları](service-bus-messaging-overview.md#queues)ve [konuları](service-bus-messaging-overview.md#topics), ad alanı düzeyinde yapılandırabilirsiniz.
 
 [Paylaşılan erişim imza](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) belirteci, seçilen yetkilendirme kuralının adını, ERIŞILECEK kaynağın URI 'sini, bir süre sonu anında ve bir HMAC-SHA256 şifreleme imzasını, seçilen yetkilendirme kuralının birincil veya ikincil şifreleme anahtarı kullanılarak bu alanlar üzerinden hesaplanan bir HMAC-şifreleme imzası içerir.
 
@@ -84,7 +84,7 @@ Belirteç, karma değeri aynı parametrelerle yeniden hesaplanabilmesi, böylece
 
 Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, veya,,, `http://<namespace>.servicebus.windows.net/<entityPath>` `sb://<namespace>.servicebus.windows.net/<entityPath>` `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
-**URI [yüzde kodlamalı](https://msdn.microsoft.com/library/4fkewx0t.aspx)olmalıdır.**
+**URI [yüzde kodlamalı](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)olmalıdır.**
 
 İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/contosoTopics/T1` veya `http://contoso.servicebus.windows.net` Önceki örnekte.
 
@@ -256,7 +256,7 @@ Aşağıdaki tabloda Service Bus kaynakları üzerinde çeşitli işlemler için
 
 | İşlem | Talep gerekiyor | Talep kapsamı |
 | --- | --- | --- |
-| **Ad Alanı** | | |
+| **Uzayına** | | |
 | Ad alanında yetkilendirme kuralını yapılandırma |Yönetme |Herhangi bir ad alanı adresi |
 | **Hizmet kayıt defteri** | | |
 | Özel Ilkeleri listeleme |Yönetme |Herhangi bir ad alanı adresi |
@@ -276,7 +276,7 @@ Aşağıdaki tabloda Service Bus kaynakları üzerinde çeşitli işlemler için
 | İleti kuyruğu oturumuyla ilişkili durumu alma |Dinle |Geçerli bir sıra adresi |
 | İleti kuyruğu oturumuyla ilişkili durumu ayarlama |Dinle |Geçerli bir sıra adresi |
 | Daha sonra teslim için bir ileti zamanlayın; Örneğin, [Schedulemessageasync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Dinle | Geçerli bir sıra adresi
-| **Konu** | | |
+| **İlerde** | | |
 | Konu başlığı oluşturma |Yönetme |Herhangi bir ad alanı adresi |
 | Konuyu silme |Yönetme |Herhangi bir geçerli konu adresi |
 | Konuları listeleme |Yönetme |/$Resources/konular |

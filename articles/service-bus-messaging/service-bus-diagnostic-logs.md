@@ -3,12 +3,12 @@ title: Tanılama günlüklerini Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Service Bus için kullanılabilen tüm işletimsel ve tanılama günlüklerine bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337536"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064443"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus için tanılama günlüklerini etkinleştirme
 
@@ -25,7 +25,7 @@ Tüm Günlükler aşağıdaki iki konumda JavaScript Nesne Gösterimi (JSON) bi�
 
 İşletimsel günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | ------- | ------- |
 | Etkinlik kimliği | Belirtilen etkinliği tanımlamak için kullanılan iç KIMLIK |
 | EventName | İşlem adı |
@@ -62,11 +62,11 @@ Tüm Günlükler aşağıdaki iki konumda JavaScript Nesne Gösterimi (JSON) bi�
 
 Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır: 
 
-| Kapsam | Çalışma|
+| Kapsam | İşlem|
 |-------| -------- |
 | Ad Alanı | <ul> <li> Ad alanı oluştur</li> <li> Ad alanını güncelleştir </li> <li> Ad alanını sil </li> <li> Ad alanı SharedAccess Ilkesini güncelleştirme </li> </ul> | 
 | Kuyruk | <ul> <li> Sıra oluştur</li> <li> Kuyruğu Güncelleştir</li> <li> Kuyruğu Sil </li> <li> Silme kuyruğunu oto Sil </li> </ul> | 
-| Konu başlığı | <ul> <li> Konu Oluştur </li> <li> Konuyu Güncelleştir </li> <li> Konuyu sil </li> <li> Sil konusunu oto Sil </li> </ul> |
+| Konu | <ul> <li> Konu Oluştur </li> <li> Konuyu Güncelleştir </li> <li> Konuyu sil </li> <li> Sil konusunu oto Sil </li> </ul> |
 | Abonelik | <ul> <li> Abonelik Oluşturma </li> <li> Aboneliği Güncelleştir </li> <li> Aboneliği Sil </li> <li> Aboneliği silmeyi oto Sil </li> </ul> |
 
 > [!NOTE]
@@ -97,11 +97,11 @@ Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır:
 
     !["Tanılama ayarları" bölmesi](./media/service-bus-diagnostic-logs/image3.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama günlükleri** bölmesindeki yapılandırılan arşiv hedefinde görüntülenir.
 
-Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/diagnostic-logs-overview.md).
+Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

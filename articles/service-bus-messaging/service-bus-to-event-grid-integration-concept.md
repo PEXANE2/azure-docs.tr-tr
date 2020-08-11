@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503302"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065140"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus - Event Grid tümleştirmesine Genel Bakış
 
@@ -41,9 +41,9 @@ Service Bus şu anda iki senaryo için olaylar gönderir:
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-Ayrıca Service Bus, standart Event Grid güvenliğini ve [kimlik doğrulaması mekanizmalarını](https://docs.microsoft.com/azure/event-grid/security-authentication) da kullanır.
+Ayrıca Service Bus, standart Event Grid güvenliğini ve [kimlik doğrulaması mekanizmalarını](../event-grid/security-authentication.md) da kullanır.
 
-Daha fazla bilgi için bkz. [Azure Event Grid olay şemaları](https://docs.microsoft.com/azure/event-grid/event-schema).
+Daha fazla bilgi için bkz. [Azure Event Grid olay şemaları](../event-grid/event-schema.md).
 
 #### <a name="active-messages-available-event"></a>Etkin İletiler Kullanılabilir olayı
 
@@ -132,7 +132,7 @@ Yeni Event Grid aboneliği oluşturmak için aşağıdakileri yapın:
 
 ## <a name="azure-cli-instructions"></a>Azure CLI yönergeleri
 
-İlk olarak, Azure CLI sürüm 2.0 veya üzerinin yüklü olduğundan emin olun. [Yükleyiciyi indirin](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). **Windows + X**' i seçin ve ardından Yönetici izinleriyle yeni bir PowerShell konsolu açın. Alternatif olarak Azure portalındaki bir komut kabuğunu kullanabilirsiniz.
+İlk olarak, Azure CLI sürüm 2.0 veya üzerinin yüklü olduğundan emin olun. [Yükleyiciyi indirin](/cli/azure/install-azure-cli?view=azure-cli-latest). **Windows + X**' i seçin ve ardından Yönetici izinleriyle yeni bir PowerShell konsolu açın. Alternatif olarak Azure portalındaki bir komut kabuğunu kullanabilirsiniz.
 
 Şu kodu yürütün:
 
@@ -150,7 +150,7 @@ BASH kullanıyorsanız
 
 ## <a name="powershell-instructions"></a>PowerShell yönergeleri
 
-Azure PowerShell’in yüklenmiş olduğundan emin olun. [Yükleyiciyi indirin](https://docs.microsoft.com/powershell/azure/install-Az-ps). **Windows + X** tuşlarına basın ve Yönetici izinleriyle yeni bir PowerShell konsolu açın. Alternatif olarak Azure portalındaki bir komut kabuğunu kullanabilirsiniz.
+Azure PowerShell’in yüklenmiş olduğundan emin olun. [Yükleyiciyi indirin](/powershell/azure/install-Az-ps). **Windows + X** tuşlarına basın ve Yönetici izinleriyle yeni bir PowerShell konsolu açın. Alternatif olarak Azure portalındaki bir komut kabuğunu kullanabilirsiniz.
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ Buradan diğer kurulum seçeneklerini keşfedebilir veya olayların akışa alı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Service Bus ve Event Grid [örnekleri](service-bus-to-event-grid-integration-example.md) alın.
-* [Event Grid](https://docs.microsoft.com/azure/event-grid/) hakkında daha fazla bilgi edinin.
-* [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/) hakkında daha fazla bilgi edinin.
-* [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) hakkında daha fazla bilgi edinin.
-* [Service Bus](https://docs.microsoft.com/azure/service-bus/) hakkında daha fazla bilgi edinin.
+* [Event Grid](../event-grid/index.yml) hakkında daha fazla bilgi edinin.
+* [Azure İşlevleri](../azure-functions/index.yml) hakkında daha fazla bilgi edinin.
+* [Logic Apps](../logic-apps/index.yml) hakkında daha fazla bilgi edinin.
+* [Service Bus](/azure/service-bus/) hakkında daha fazla bilgi edinin.
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [renkli]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

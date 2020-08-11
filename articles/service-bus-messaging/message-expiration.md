@@ -3,12 +3,12 @@ title: Azure Service Bus-ileti süre sonu
 description: Bu makalede Azure Service Bus iletilerinin yaşam süresi ve yaşam süresi hakkında bilgi verilmektedir. Bu süre dolduktan sonra ileti artık teslim alınmaz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341202"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064732"
 ---
 # <a name="message-expiration-time-to-live"></a>İleti süre sonu (Yaşam Süresi)
 
@@ -27,9 +27,9 @@ Her bir ileti için süre sonu, göreli bir süre belirten [TimeToLive](/dotnet/
 Bir sıraya veya konuya gönderilen tüm iletiler, [Defaultmessagetimetolive](/azure/templates/microsoft.servicebus/namespaces/queues) özelliğine sahip varlık düzeyinde ayarlanan varsayılan bir süre sonuna tabidir ve oluşturma sırasında portalda ayarlanabilir ve daha sonra ayarlanabilir. Varsayılan süre sonu, [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 'nin açıkça ayarlanmamasının varlığına gönderilen tüm iletiler için kullanılır. Varsayılan süre sonu Ayrıca **TimeToLive** değeri için tavan olarak çalışır. Varsayılan değerden daha uzun **TimeToLive** süresi dolduktan sonra, kuyruğa alınmadan önce **defaultmessagetimetolive** değerine sessizce ayarlanır.
 
 > [!NOTE]
-> Aracılı bir ileti için varsayılan [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) değeri [TimeSpan.](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) aksi belirtilmedikçe Max değeridir.
+> Aracılı bir ileti için varsayılan [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) değeri [TimeSpan.](/dotnet/api/system.timespan.maxvalue) aksi belirtilmedikçe Max değeridir.
 >
-> Mesajlaşma varlıkları (kuyruklar ve konular) için, varsayılan sona erme saati de Service Bus standart ve Premium katmanlar için [TimeSpan. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) ' dur.  Temel katman için, varsayılan sona erme saati 14 gündür.
+> Mesajlaşma varlıkları (kuyruklar ve konular) için, varsayılan sona erme saati de Service Bus standart ve Premium katmanlar için [TimeSpan. Max](/dotnet/api/system.timespan.maxvalue) ' dur.  Temel katman için, varsayılan sona erme saati 14 gündür.
 
 Süre [dolmayan](service-bus-dead-letter-queues.md) Iletiler, [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) özelliğini ayarlayarak veya portalda ilgili kutusunu denetleyerek, isteğe bağlı olarak bir atılacak ileti kuyruğuna taşınabilir. Seçenek devre dışı bırakılırsa, zaman aşımına uğradı iletileri bırakılır. Teslim edilemeyen ileti kuyruğuna taşınan süre sonu iletileri, kullanıcının Özellikler bölümünde aracı tarafından depolanan [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) özelliği hesaplanarak, diğer kullanılmayan iletilerden ayırt edilebilir. değer, bu durumda [Ttlexpiredexception](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) olur.
 

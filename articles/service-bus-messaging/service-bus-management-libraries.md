@@ -4,12 +4,12 @@ description: Bu makalede, Service Bus ad alanlarını ve varlıklarını dinamik
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341713"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066177"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus yönetim kitaplıkları
 
@@ -22,15 +22,15 @@ Azure Service Bus yönetim kitaplıkları, Service Bus ad alanlarını ve varlı
 * Konu oluşturma, güncelleştirme, silme
 * Abonelik oluşturma, güncelleştirme, silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Service Bus yönetim kitaplıklarını kullanmaya başlamak için Azure Active Directory (Azure AD) hizmeti ile kimlik doğrulaması yapmanız gerekir. Azure AD, Azure kaynaklarınıza erişim sağlayan bir hizmet sorumlusu olarak kimlik doğrulaması yapmanızı gerektirir. Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için şu makalelerden birine bakın:  
 
-* [Kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için Azure portal kullanın](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için Azure portal kullanın](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-Bu öğreticiler size, `AppId` `TenantId` `ClientSecret` Yönetim kitaplıkları tarafından kimlik doğrulaması için kullanılan BIR (istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) veya [**katkıda bulunan**](/azure/role-based-access-control/built-in-roles#contributor) izinlerinizin olması gerekir.
+Bu öğreticiler size, `AppId` `TenantId` `ClientSecret` Yönetim kitaplıkları tarafından kimlik doğrulaması için kullanılan BIR (istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) veya [**katkıda bulunan**](../role-based-access-control/built-in-roles.md#contributor) izinlerinizin olması gerekir.
 
 ## <a name="programming-pattern"></a>Programlama stili
 

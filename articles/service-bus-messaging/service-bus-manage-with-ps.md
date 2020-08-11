@@ -3,12 +3,12 @@ title: Azure Service Bus kaynaklarını yönetmek için PowerShell 'i kullanma |
 description: Bu makalede, Service Bus varlıkları (ad alanları, kuyruklar, konular, abonelikler) oluşturmak ve yönetmek için Azure PowerShell modülün nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341745"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065752"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus kaynaklarını yönetmek için PowerShell 'i kullanma
 
@@ -18,7 +18,7 @@ Ayrıca, Azure Resource Manager şablonları kullanarak Service Bus varlıkları
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -159,8 +159,8 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 Aşağıdaki blog gönderilerinde açıklandığı gibi Service Bus varlıklarını yönetmenin bazı farklı yolları vardır:
 
-* [PowerShell betiği kullanarak Service Bus kuyrukları, konuları ve abonelikleri oluşturma](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-* [PowerShell betiği kullanarak Service Bus ad alanı ve Olay Hub 'ı oluşturma](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+* [PowerShell betiği kullanarak Service Bus kuyrukları, konuları ve abonelikleri oluşturma](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [PowerShell betiği kullanarak Service Bus ad alanı ve Olay Hub 'ı oluşturma](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus PowerShell betikleri](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

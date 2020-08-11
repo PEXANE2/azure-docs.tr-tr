@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054095"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065497"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -39,18 +39,18 @@ Aşağıdaki tabloda, sabit olarak işaretlenen herhangi bir öğe, SCıM işind
 
 | **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  **Geriye dönük uyumluluk** |
 |---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
-| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
-| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
-| Uyumluluğu sağlamak için düzeltme eki davranışını güncelleştirme | No | TBD| Önizleme bayrağını kullan |
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
+| Uyumluluk sağlamak için düzeltme eki davranışlarını güncelleştirme (örn. Boolean ve uygun Grup üyeliği kaldırma işlemleri) | No | TBD| Önizleme bayrağını kullan |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>SCıM davranışını değiştirecek bayraklar
 Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın kiracı URL 'sinde aşağıdaki bayrakları kullanın.
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="Daha sonraki davranışa yönelik SCıM bayrakları.":::
 
-* Düzeltme Eki davranışını güncelleştirmek ve SCıM uyumluluğunu sağlamak için aşağıdaki URL 'YI kullanın. Bu davranış Şu anda yalnızca bayrak kullanılırken kullanılabilir, ancak önümüzdeki birkaç ay içinde varsayılan davranış olur.
+* Düzeltme Eki davranışlarını güncelleştirmek ve SCıM uyumluluğunu sağlamak için aşağıdaki URL 'YI kullanın (örneğin, Boolean olarak etkin ve uygun Grup üyeliği kaldırma işlemleri). Bu davranış Şu anda yalnızca bayrak kullanılırken kullanılabilir, ancak önümüzdeki birkaç ay içinde varsayılan davranış olur.
   * **URL (SCıM uyumlu):** AzureAdScimPatch062020
   * **SCıM RFC başvuruları:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

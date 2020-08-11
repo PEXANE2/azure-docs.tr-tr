@@ -4,12 +4,12 @@ description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geç
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534847"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066653"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -99,7 +99,7 @@ Azure geçişi: sunucu geçişi, makineleri Azure 'a çoğaltmak için bir çoğ
 Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 
 - Çoğaltma gerecini barındırmak için ayrı bir EC2 VM ayarlayın. Bu örnek, Windows Server 2012 R2 veya Windows Server 2016 çalıştırıyor olmalıdır. Gereç için donanım, yazılım ve ağ gereksinimlerini [gözden geçirin](./migrate-replication-appliance.md#appliance-requirements) .
-- Gereç, çoğaltmak istediğiniz bir kaynak sanal makineye yüklenmelidir. Farklı bir VM üzerinde dağıtılmalıdır.
+- Gereç, çoğaltmak istediğiniz bir kaynak sanal makineye veya daha önce yüklemiş olduğunuz Azure geçişi bulma ve değerlendirme gerecine yüklenmelidir. Farklı bir VM üzerinde dağıtılmalıdır.
 - Geçirilecek kaynak AWS VM 'lerinin, çoğaltma gerecine bir ağ hattı olması gerekir. Bunu etkinleştirmek için gerekli güvenlik grubu kurallarını yapılandırın. Çoğaltma gerecinin geçirilecek kaynak VM 'Ler ile aynı VPC 'ye dağıtılması önerilir. Çoğaltma gerecinin farklı bir VPC 'de olması gerekiyorsa, VPCs 'nin VPC eşlemesi aracılığıyla bağlanması gerekir.
 - Kaynak AWS VM 'Leri, çoğaltma yönetimi ve çoğaltma veri aktarımı için gelen, HTTPS 443 (denetim kanalı düzenleme) ve TCP 9443 (veri aktarımı) bağlantı noktalarında çoğaltma gereci ile iletişim kurar. ' Deki çoğaltma gereci, Azure 'da HTTPS 443 giden bağlantı noktası üzerinden çoğaltma verilerini düzenler ve Azure 'a gönderir. Bu kuralları yapılandırmak için, güvenlik grubu gelen/giden kurallarını uygun bağlantı noktalarıyla ve kaynak IP bilgileriyle düzenleyin.
 

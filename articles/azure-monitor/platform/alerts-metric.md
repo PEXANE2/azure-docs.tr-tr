@@ -4,14 +4,14 @@ description: Azure portal veya CLı kullanarak ölçüm uyarı kuralları oluşt
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042743"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065871"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -139,9 +139,18 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 Ölçüm uyarısı kuralları için adanmış PowerShell cmdlet 'leri kullanılabilir:
 
-- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): yeni bir ölçüm uyarı kuralı oluşturur veya var olanı güncelleştirir.
-- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): bir veya daha fazla ölçüm uyarı kuralını alır.
-- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): bir ölçüm uyarı kuralını kaldırır.
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): yeni bir ölçüm uyarı kuralı oluşturun veya var olan bir ölçümü güncelleştirin.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): bir veya daha fazla ölçüm uyarı kuralı alın.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): bir ölçüm uyarı kuralını silin.
+
+## <a name="with-rest-api"></a>REST API ile
+
+- [Oluşturma veya güncelleştirme](/rest/api/monitor/metricalerts/createorupdate): yeni bir ölçüm uyarı kuralı oluşturun veya var olan bir ölçümü güncelleştirin.
+- [Get](/rest/api/monitor/metricalerts/get): belirli bir ölçüm uyarı kuralı alın.
+- [Kaynak grubuna göre Listele](/rest/api/monitor/metricalerts/listbyresourcegroup): belirli bir kaynak grubundaki ölçüm uyarısı kurallarının bir listesini alın.
+- [Aboneliğe göre Listele](/rest/api/monitor/metricalerts/listbysubscription): belirli bir abonelikteki ölçüm uyarısı kurallarının bir listesini alın.
+- [Güncelleştirme](/rest/api/monitor/metricalerts/update): ölçüm uyarı kuralını güncelleştirin.
+- [Sil](/rest/api/monitor/metricalerts/delete): ölçüm uyarı kuralını silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

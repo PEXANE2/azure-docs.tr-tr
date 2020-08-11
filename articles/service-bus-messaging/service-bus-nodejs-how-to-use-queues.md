@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: cebbab4045b3f8af061bfececff1af9ed70c50de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430635"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065135"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: Azure 'da Node.js ve Azure-SB paketiyle Service Bus kuyrukları kullanma
 Bu öğreticide, [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Azure Service Bus kuyruğundan ileti göndermek ve ileti almak için Node.js uygulamalar oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve Azure-SB paketini dahili olarak kullanan Node.js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır.
@@ -20,7 +20,7 @@ Bu öğreticide, [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kul
 > [!IMPORTANT]
 > [Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Yeni kullanarak daha hızlı bir deneyim edinebilirsiniz [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Bu, daha hızlı [amqp 1,0 protokolünü](service-bus-amqp-overview.md)kullanır. 
 > 
-> Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Service Bus kuyruklarını Node.js ve @azure/service-bus paketiyle kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
+> Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Service Bus kuyruklarını Node.js ve @azure/service-bus paketiyle kullanma](./service-bus-nodejs-how-to-use-queues-new-package.md), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
@@ -102,7 +102,7 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 });
 ```
 
-### <a name="filters"></a>Filtreler
+### <a name="filters"></a>FilTReleri
 İsteğe bağlı filtreleme işlemleri, **Servicebusservice**kullanılarak gerçekleştirilen işlemlere uygulanabilir. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden deneme vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript

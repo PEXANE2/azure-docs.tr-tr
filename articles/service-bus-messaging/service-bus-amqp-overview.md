@@ -3,15 +3,15 @@ title: Azure Service Bus AMQP 1,0 'ye Genel Bakış
 description: Azure Service Bus bir açık standart protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) nasıl destekleyeceğinizi öğrenin.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083880"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066347"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
-Azure Service Bus bulut hizmeti ve [Windows Server için şirket içi Service Bus (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) , gelişmiş ileti sıraya alma Protokolü (amqp) 1,0 ' i destekler. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar. Farklı diller ve çerçeveler kullanılarak oluşturulan ve farklı işletim sistemlerinde çalışan bileşenleri kullanarak uygulamalar oluşturabilirsiniz. Tüm bu bileşenler Service Bus bağlanabilir ve yapılandırılmış iş iletilerini verimli bir şekilde ve tam Aslına göre sorunsuz şekilde değiştirebilir.
+Azure Service Bus bulut hizmeti ve [Windows Server için şirket içi Service Bus (Service Bus 1,1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) , gelişmiş ileti sıraya alma Protokolü (amqp) 1,0 ' i destekler. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar. Farklı diller ve çerçeveler kullanılarak oluşturulan ve farklı işletim sistemlerinde çalışan bileşenleri kullanarak uygulamalar oluşturabilirsiniz. Tüm bu bileşenler Service Bus bağlanabilir ve yapılandırılmış iş iletilerini verimli bir şekilde ve tam Aslına göre sorunsuz şekilde değiştirebilir.
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Giriş: AMQP 1,0 nedir ve neden önemlidir?
 Geleneksel olarak, ileti yönelimli ara yazılım ürünleri, istemci uygulamaları ve aracılar arasındaki iletişim için özel protokoller kullandı. Bu, belirli bir satıcının mesajlaşma Aracısı 'nı seçtiğinizde, istemci uygulamalarınızı bu aracıya bağlamak için söz konusu satıcının kitaplıklarını kullanmanız gerektiğini gösterir. Bu, bir uygulamanın farklı bir ürüne taşıma ile bağlantılı tüm uygulamalarda kod değişiklikleri gerektirdiğinden bu satıcının bir ölçüde bağımlılığını elde ediyor. 
@@ -84,6 +84,6 @@ Daha fazla bilgi edinmeye hazır mısınız? Aşağıdaki bağlantıları ziyare
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [AMQP ile .NET 'ten Service Bus kullanma]: service-bus-amqp-dotnet.md
-[AMQP ile Java 'dan Service Bus kullanma]: service-bus-amqp-java.md
-[Bir Azure Linux sanal makinesine Apache Qpid proton-C yükleme]: service-bus-amqp-apache.md
-[Windows Server için Service Bus AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[AMQP ile Java 'dan Service Bus kullanma]: ./service-bus-java-how-to-use-jms-api-amqp.md
+[Bir Azure Linux sanal makinesine Apache Qpid proton-C yükleme]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

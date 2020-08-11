@@ -3,12 +3,12 @@ title: Azure Service Bus için sorun giderme kılavuzu | Microsoft Docs
 description: Bu makale, özel durum oluştuğunda gerçekleştirilecek Azure Service Bus mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071309"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067061"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus için sorun giderme kılavuzu
 Bu makale, Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler sağlar. 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 Kimliğin Service Bus konusuna erişim izni yok. 
 
 ### <a name="resolution"></a>Çözüm
-Bu hatayı çözmek için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) kitaplığını yükleme.  Daha fazla bilgi için bkz. [yerel geliştirme kimlik doğrulaması](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
+Bu hatayı çözmek için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) kitaplığını yükleme.  Daha fazla bilgi için bkz. [yerel geliştirme kimlik doğrulaması](../key-vault/general/service-to-service-authentication.md#local-development-authentication). 
 
 Rollere izin atamayı öğrenmek için bkz. [Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen kimliğin kimliğini doğrulama](service-bus-managed-service-identity.md).
 
@@ -101,5 +101,4 @@ Daha fazla ileti göndermek için Service Bus ad alanına yeni bir bağlantı a�
 Aşağıdaki makalelere bakın: 
 
 - [Özel durumları Azure Resource Manager](service-bus-resource-manager-exceptions.md). Azure Resource Manager kullanılarak Azure Service Bus (şablonlar veya doğrudan çağrılar aracılığıyla) ile etkileşim kurarken oluşturulan özel durumları listeler.
-- [Mesajlaşma özel durumları](service-bus-messaging-exceptions.md). Azure Service Bus için .NET Framework tarafından oluşturulan özel durumların bir listesini sağlar. 
-
+- [Mesajlaşma özel durumları](service-bus-messaging-exceptions.md). Azure Service Bus için .NET Framework tarafından oluşturulan özel durumların bir listesini sağlar.
