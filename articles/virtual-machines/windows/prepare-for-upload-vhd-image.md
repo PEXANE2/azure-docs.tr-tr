@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083523"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056253"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -58,7 +58,7 @@ Sanal diskinizi Azure için gereken biçime dönüştürmek ve yeniden boyutland
 1. VHDX 'ten dönüştürmek için, sonraki **VHD**'yi seçin  >  **Next**.
 1. Dinamik olarak genişleyen bir diskten dönüştürmek için, sonraki **sabit boyut**' u seçin  >  **Next**.
 1. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Diski dönüştürmek için PowerShell 'i kullanma
 
@@ -82,7 +82,7 @@ Bu örnekte, **yol** değerini dönüştürmek istediğiniz sanal sabit disk ile
 1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
 1. **Eylem Seç** sayfasında İleri **Genişlet**' i seçin  >  **Next**.
 1. **Sanal sabit diski bul** sayfasında, gib > yeni boyutunu **daha sonra**girin.
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için PowerShell 'i kullanma
 
@@ -488,6 +488,7 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 
 1. Windows VM 'de oturum açın.
 1. Yönetici olarak bir PowerShell oturumu çalıştırın.
+1. Panther dizinini (C:\Windows\Panther) silin.
 1. Dizini olarak değiştirin `%windir%\system32\sysprep` . Ardından `sysprep.exe` komutunu çalıştırın.
 1. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **generalize** onay kutusunun seçildiğinden emin olun.
 

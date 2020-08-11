@@ -10,18 +10,21 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099958"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056287"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Azure Key Vault sertifikası yenileme hakkında
 
 Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza ve uygulamalar için güvenli iletişimleri etkinleştirmenize olanak tanır. Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
 
 Kısa süreli sertifikaya sahip olma veya sertifika döndürmenin sıklığını artırma, kısary 'in, zarar açısından kapsamını sınırlar.
+
+## <a name="certificate-expiration-notifications"></a>Sertifika süre sonu bildirimleri
+İlk olarak, sertifikaların kullanım süreleri dolduğunda bildirim almak için Key Vault sertifika kişisi eklediğinizden emin olun (örn. PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) saniye kullanarak, sertifika süre sonu hakkında ne zaman bildirim almak istediğinizi yapılandırın. Yaşam süresi eylemini yapılandırmak için [burayı](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) izleyin
 
 Anahtar Kasası 'nda üç sertifika oluşturma kategorisi vardır. Bu kılavuz, sertifikaların nasıl yapıldığını anlamanıza yardımcı olur.
 -   Tümleşik CA ile oluşturulan sertifikalar (DigiCert veya GlobalSign)
@@ -55,6 +58,10 @@ Adımlar, yeni bir sertifika oluşturmaya benzer ve Ayrıntılar [aşağıda]( h
 
 ### <a name="troubleshoot"></a>Sorun giderme
 Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini görüntülemek için sertifika Işlemini görüntüleme adımına geçin.
+
+### <a name="frequently-asked-questions"></a>Sık sorulan sorular
+Etiketler, sertifikanın otomatik yenilenmesinin ardından çoğaltılacaktır mi?
+Hayır, Kullanıcı etiketlerin kendisini el ile kopyamadıkları takdirde Etiketler çoğaltılmaz.
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 *   [Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme](how-to-integrate-certificate-authority.md)

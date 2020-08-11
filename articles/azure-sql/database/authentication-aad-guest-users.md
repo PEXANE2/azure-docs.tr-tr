@@ -9,12 +9,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: b3abda9787654734b24cc27987921ef40d8070fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294462"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053771"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama
 
@@ -133,9 +133,9 @@ Azure AD Konuk kullanıcısını SQL mantıksal sunucusu için Azure AD yönetic
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure portal, SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE için Azure AD yöneticisi olarak bir Azure AD Konuk kullanıcısının seçilmesine engel olan bir sınırlama vardır. * \@ Outlook.com*, * \@ hotmail.com*, * \@ Live.com*veya * \@ Gmail.com*gibi Azure AD 'niz dışındaki Konuk hesaplarında, ad yönetici Seçicisi bu hesapları gösterir, ancak gri renkte görünür ve seçilemez. Azure AD yöneticisi 'ni ayarlamak için yukarıda listelenen [PowerShell veya CLI komutlarını](#setting-a-guest-user-as-an-azure-ad-admin) kullanın. Alternatif olarak, Konuk kullanıcıyı içeren bir Azure AD grubu, SQL mantıksal sunucusu için Azure AD yöneticisi olarak ayarlanabilir.
+Azure portal, SQL yönetilen örneği için Azure AD yöneticisi olarak bir Azure AD Konuk kullanıcısının seçilmesine engel olan bir sınırlama vardır. * \@ Outlook.com*, * \@ hotmail.com*, * \@ Live.com*veya * \@ Gmail.com*gibi Azure AD 'niz dışındaki Konuk hesaplarında, ad yönetici Seçicisi bu hesapları gösterir, ancak gri renkte görünür ve seçilemez. Azure AD yöneticisi 'ni ayarlamak için yukarıda listelenen [PowerShell veya CLI komutlarını](#setting-a-guest-user-as-an-azure-ad-admin) kullanın. Alternatif olarak, Konuk kullanıcıyı içeren bir Azure AD grubu, SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanabilir.
 
-Bu özelliğin genel kullanıma sunulmasından önce SQL veritabanı ve Azure SYNAPSE için bu işlev etkinleştirilecek.
+Bu özelliğin genel kullanıma sunulmasından önce SQL yönetilen örneği için bu işlev etkinleştirilecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

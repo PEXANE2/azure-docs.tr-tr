@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07e265710c69c2ed72df520bf090b7c7d86c8097
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503778"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056729"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturun
 
@@ -40,7 +40,7 @@ Hesap şifreleme anahtarını kuyruk veya tablo depolama ile kullanmak üzere ka
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell 'e kaydolmak için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
+PowerShell 'e kaydolmak için [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) komutunu çağırın.
 
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -62,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-YOK
+Yok
 
 ---
 
@@ -94,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-YOK
+Yok
 
 ---
 
@@ -120,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-YOK
+Yok
 
 ---
 
@@ -248,7 +248,7 @@ az storage account show /
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-YOK
+Yok
 
 ---
 

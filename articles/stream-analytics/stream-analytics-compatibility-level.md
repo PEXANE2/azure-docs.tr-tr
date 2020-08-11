@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087864"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056525"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -125,7 +125,7 @@ Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,1 ' de kullanıma sunul
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1,1 düzeyi:** İleti içeriği doğrudan ek etiket olmadan akışı içerir. Örneğin, `{ "SensorId":"1", "Temperature":64}`
+**1,1 düzeyi:** İleti içeriği doğrudan ek etiket olmadan akışı içerir. Örnek: `{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>Alan adları için büyük/küçük harf duyarlılığı
 
@@ -142,11 +142,11 @@ Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,1 ' de kullanıma sunul
 
 **1,1 düzeyi:** CREATE TABLE güçlü bir şema belirtmenize olanak tanır. Stream Analytics altyapısı, verilerin bu şemaya uygun olduğunu doğrular. Bu modelde, komut, olayları NaN değerleriyle filtreleyebilir.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>JSON 'da DateTime dizeleri için otomatik yukarı dönüştürmeyi devre dışı bırak
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>DateTime dizelerinin JSON için giriş konumundaki DateTime türüne otomatik dönüştürülmesini devre dışı bırak
 
-**1,0 düzeyi:** JSON ayrıştırıcısı tarih/saat/bölge bilgileri ile dize değerlerini otomatik olarak tarih/saat/bölge bilgileriyle yukarı aktarır ve UTC 'ye dönüştürür. Bu davranış, saat dilimi bilgilerini kaybetme ile sonuçlandı.
+**1,0 düzeyi:** JSON ayrıştırıcısı tarih/saat/bölge bilgileri ile dize değerlerini otomatik olarak tarih/saat/bölge bilgileriyle dönüştürür. böylece değer, özgün biçimlendirmesini ve saat dilimi bilgilerini hemen kaybeder. Bu, bu alan sorguda kullanılmasa bile, giriş sırasında yapıldığından UTC Tarih/saat biçimine dönüştürülür.
 
-**1,1 düzeyi:** Tarih/saat/bölge bilgileriyle DateTime türüne sahip dize değerleri için otomatik olarak başka bir dönüştürme yoktur. Sonuç olarak, saat dilimi bilgileri tutulur.
+**1,1 düzeyi:** Tarih/saat/bölge bilgileri ile DATETIME türüne sahip dize değerleri otomatik olarak dönüştürülmez. Sonuç olarak, saat dilimi bilgileri ve özgün biçimlendirme tutulur. Ancak, NVARCHAR (MAX) alanı sorguda bir TARIH saat ifadesinin (örneğin, DATEADD işlevi) bir parçası olarak kullanılıyorsa, hesaplamayı gerçekleştirmek için DATETIME türüne dönüştürülür ve özgün formunu kaybeder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372374"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055046"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Güvenlik Duvarı Yöneticisi dağıtımına genel bakış
 
@@ -65,6 +65,8 @@ Azure Güvenlik Duvarı Yöneticisi 'Ni dağıtmanın birden çok yolu vardır, 
 > - Her bölge için sanal WAN başına birden fazla hub 'ınız olamaz. Ancak bunu elde etmek için bölgeye birden çok sanal WAN ekleyebilirsiniz.
 > - VWAN 'da hub 'lar için çakışan IP alanları olamaz.
 > - Hub VNet bağlantılarınızın hub ile aynı bölgede olması gerekir.
+>
+> Daha bilinen sorunlar için bkz. [Azure Güvenlik Duvarı Yöneticisi nedir?](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>Sanal ağları dönüştürme
 

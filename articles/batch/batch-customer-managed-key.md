@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062535"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053754"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault ve yönetilen kimlik ile Azure Batch hesabınız için müşteri tarafından yönetilen anahtarlar yapılandırın
 
@@ -25,7 +25,7 @@ Sağladığınız anahtarların [Azure Key Vault](../key-vault/general/basic-con
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlikle Batch hesabı oluşturma
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 [Azure Portal](https://portal.azure.com/), Batch hesapları oluşturduğunuzda, **Gelişmiş** sekmesinde kimlik türünde **sistem atanan** ' ı seçin.
 
@@ -82,7 +82,7 @@ Azure portal, Key Vault oluşturulduktan sonra, **Ayarlar**' ın altında buluna
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Azure Key Vault bir anahtar oluşturun
 
-Azure portal, **anahtar** bölümündeki Key Vault örneğine gidin, **Oluştur/al**' ı seçin. Kullanılacak **anahtar türünü** `RSA` ve **anahtar boyutunu** seçin `2048` .
+Azure portal, **anahtar** bölümündeki Key Vault örneğine gidin, **Oluştur/al**' ı seçin. **Anahtar türünü** `RSA` ve **RSA anahtar boyutunu** en az bit olacak şekilde seçin `2048` . `EC`anahtar türleri şu anda bir Batch hesabında müşteri tarafından yönetilen anahtar olarak desteklenmez.
 
 ![Bir anahtar oluşturma](./media/batch-customer-managed-key/create-key.png)
 
@@ -90,7 +90,7 @@ Anahtar oluşturulduktan sonra, yeni oluşturulan anahtara ve geçerli sürüme 
 
 ## <a name="enable-customer-managed-keys-on-azure-batch-account"></a>Azure Batch hesapta müşteri tarafından yönetilen anahtarları etkinleştirin
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 [Azure Portal](https://portal.azure.com/)Batch hesabı sayfasına gidin. **Şifreleme** bölümünde, **müşteri tarafından yönetilen anahtarı**etkinleştirin. Anahtar tanımlayıcıyı doğrudan kullanabilir veya anahtar kasasını seçip anahtar **kasası ve anahtar Seç**öğesine tıklayabilirsiniz.
 
@@ -110,7 +110,7 @@ az batch account set \
 
 ## <a name="update-the-customer-managed-key-version"></a>Müşteri tarafından yönetilen anahtar sürümünü Güncelleştir
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Batch hesabını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları izleyin:
+Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Batch hesabını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları uygulayın:
 
 1. Azure portal ' de Batch hesabınıza gidin ve şifreleme ayarlarını görüntüleyin.
 2. Yeni anahtar sürümünün URI 'sini girin. Alternatif olarak, sürümü güncelleştirmek için anahtar kasasını ve anahtarı yeniden seçebilirsiniz.
@@ -142,6 +142,7 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
   * **Mevcut Batch hesapları için müşteri tarafından yönetilen anahtarlar destekleniyor mu?** Hayır. Müşteri tarafından yönetilen anahtarlar yalnızca yeni Batch hesapları için desteklenir.
+  * **2048 bitten daha büyük RSA anahtar boyutlarını seçebilir miyim?** Evet, RSA anahtar boyutları `3072` ve `4096` bitleri de desteklenir.
   * **Müşteri tarafından yönetilen anahtar iptal edildikten sonra hangi işlemler kullanılabilir?** Toplu işlem, müşteri tarafından yönetilen anahtara erişimi kaybederse, hesap silme işlemine izin verilir.
   * **Key Vault anahtarını yanlışlıkla sildiğimde Batch hesabımın erişimini nasıl geri yükleyebilirim?** Temizleme koruması ve geçici silme etkin olduğundan, mevcut anahtarları geri yükleyebilirsiniz. Daha fazla bilgi için bkz. [kurtarma Azure Key Vault](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
   * **Müşteri tarafından yönetilen anahtarları devre dışı bırakabilir miyim?** Batch hesabının şifreleme türünü dilediğiniz zaman "Microsoft yönetilen anahtar" olarak ayarlayabilirsiniz. Bundan sonra, anahtarı silmek veya değiştirmek için ücretsiz olursunuz.

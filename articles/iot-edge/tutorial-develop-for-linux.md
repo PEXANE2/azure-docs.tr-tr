@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439136"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056236"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
 
@@ -57,7 +57,7 @@ Aşağıdaki tabloda Visual Studio Code ve Visual Studio 'da **Linux kapsayıcı
 
 Bu öğreticide Visual Studio Code için geliştirme adımları öğretilir. Visual Studio 'Yu kullanmayı tercih ediyorsanız, [Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak Için Visual studio 2019 kullanma](how-to-visual-studio-develop-module.md)bölümündeki yönergelere bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makinesi:
 
@@ -151,6 +151,9 @@ Yeni çözümünüz Visual Studio Code penceresine yüklendikten sonra, oluştur
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>IoT Edge aracısına kayıt defteri kimlik bilgilerinizi girin
 
 Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu bilgileri IoT Edge çalışma zamanı ile paylaşır. Çalışma zamanının kapsayıcı görüntülerinizi IoT Edge cihaza çekmek için bu kimlik bilgilerine ihtiyacı vardır.
+
+>[!NOTE]
+>**Localhost: 5000** değerini Azure Container kayıt defterinizin oturum açma sunucusu değeriyle değiştirmediyseniz, [**proje şablonu oluştur**](#create-a-project-template) adımında, dağıtım bildiriminin **. env** dosyası ve registrycredentials bölümü eksik olur. 
 
 IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi çekmeye ve ortam dosyasına doldurmaya çalışır. Kimlik bilgilerinizin zaten eklenmiş olup olmadığını denetleyin. Yoksa, şimdi ekleyin:
 

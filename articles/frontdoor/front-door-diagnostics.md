@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322307"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056440"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure ön kapılarında ölçümleri ve günlükleri izleme
 
@@ -29,16 +29,16 @@ Azure ön kapısını kullanarak kaynakları aşağıdaki yollarla izleyebilirsi
 
 Ölçümler, portalda performans sayaçlarını görüntülemenize olanak tanıyan belirli Azure kaynaklarına yönelik bir özelliktir. Aşağıda kullanılabilir ön kapı ölçümleri verilmiştir:
 
-| Ölçüm | Ölçüm görünen adı | Birim | Boyutlar | Açıklama |
+| Ölçüm | Ölçüm görünen adı | Birim | Boyutlar | Description |
 | --- | --- | --- | --- | --- |
-| Istek sayısı | İstek Sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
+| Istek sayısı | İstek Sayısı | Count | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
 | RequestSize | İstek boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
 | Yanıt boyutu | Yanıt boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapıdan istemcilere yanıt olarak gönderilen bayt sayısı. |
 | TotalLatency | Toplam gecikme süresi | Mayacak | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemci, ön kapıdan gelen son yanıt baytını kabul edene kadar ön kapıdan alınan istemci isteğinden hesaplanan süredir. |
-| BackendRequestCount | Arka uç Istek sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>Arka uç | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
+| BackendRequestCount | Arka uç Istek sayısı | Count | Http durumu</br>HttpStatusGroup</br>Arka uç | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
 | BackendRequestLatency | Arka uç Isteği gecikmesi | Mayacak | Arka uç | Ön kapı arka uca Son Yanıt baytı aldığından, isteğin ön uca gönderildiği süre. |
 | BackendHealthPercentage | Arka uç sistem durumu yüzdesi | Yüzde | Arka uç</br>BackendPool | Ön kapıdan arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi. |
-| WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Sayı | PolicyName</br>RuleName</br>Eylem | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
+| WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Count | PolicyName</br>RuleName</br>Eylem | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Etkinlik günlükleri
 
@@ -91,7 +91,7 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 | RulesEngineMatchNames | İsteğin eşleştiği kuralların adları. |
 | SecurityProtocol | İstek tarafından kullanılan TLS/SSL protokol sürümü veya şifreleme yoksa null. |
 | SentToOriginShield | İlk ortamda bir önbellek isabetsizlik olup olmadığını ve isteğin bölgesel önbelleğe gönderilip gönderilmediğini temsil eden Boole alanı. Yönlendirme kuralı bir yeniden yönlendirme veya ne zaman önbelleğe alma etkin değilse bu alanı yoksayın. |
-| TimeTaken | İşlemin gerçekleştiği sürenin milisaniye cinsinden uzunluğu. |
+| TimeTaken | İsteğin ilk baytının, saniye cinsinden son bayta geçen bayt olan sürenin uzunluğu. |
 | TrackingReference | Ön kapıya yönelik olarak sunulan ve istemciye X-Azure-ref üst bilgisi olarak gönderilen bir isteği tanımlayan benzersiz başvuru dizesi. Belirli bir istek için erişim günlüklerindeki ayrıntıları aramak için gereklidir. |
 | Kullanıcı | İstemcinin kullandığı tarayıcı türü. |
 
@@ -99,8 +99,8 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 
 | Senaryolar | Günlük girişi sayısı | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Önbelleğe alma etkin olmayan yönlendirme kuralı | 1 | Edge POP kodu | İsteğin iletildiği arka uç | False | CONFIG_NOCACHE |
-| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta isabetli önbellek okuması | 1 | Edge POP kodu | Olmamalıdır | False | SıNAMASıNA |
+| Önbelleğe alma etkin olmayan yönlendirme kuralı | 1 | Edge POP kodu | İsteğin iletildiği arka uç | Yanlış | CONFIG_NOCACHE |
+| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta isabetli önbellek okuması | 1 | Edge POP kodu | Olmamalıdır | Yanlış | SıNAMASıNA |
 | Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta önbellek isabetsizlik, ancak üst önbellek AÇıSıNı önbellekte isabet | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. üst önbellek POP ana bilgisayar adı</br>2. boş | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. PARTIAL_HIT |
 | Önbelleğe alma özelliği etkin yönlendirme kuralı. Hem kenar hem de üst önbellek AÇıSıNı önbellekte isabetsiz önbellek | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. üst önbellek POP ana bilgisayar adı</br>2. önbelleğin doldurulmaya yardımcı olan arka uç | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. ISABETSIZLIK |
 

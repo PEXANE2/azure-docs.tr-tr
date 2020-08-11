@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c54478282cb1106ae95fe1c9e3fbb15e9c37bbf9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808584"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054095"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -39,47 +39,113 @@ Aşağıdaki tabloda, sabit olarak işaretlenen herhangi bir öğe, SCıM işind
 
 | **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  **Geriye dönük uyumluluk** |
 |---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
-| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
-| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
-| Uyumluluğu sağlamak için düzeltme eki davranışını güncelleştirme | Hayır | TBD| Önizleme bayrağını kullan |
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | customappSSO sürümüne düşürme |
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
+| Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
+| Uyumluluğu sağlamak için düzeltme eki davranışını güncelleştirme | No | TBD| Önizleme bayrağını kullan |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>SCıM davranışını değiştirecek bayraklar
 Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın kiracı URL 'sinde aşağıdaki bayrakları kullanın.
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="Daha sonraki davranışa yönelik SCıM bayrakları.":::
 
-* Uyumluluğu sağlamak için düzeltme eki davranışını güncelleştirme
+* Düzeltme Eki davranışını güncelleştirmek ve SCıM uyumluluğunu sağlamak için aşağıdaki URL 'YI kullanın. Bu davranış Şu anda yalnızca bayrak kullanılırken kullanılabilir, ancak önümüzdeki birkaç ay içinde varsayılan davranış olur.
+  * **URL (SCıM uyumlu):** AzureAdScimPatch062020
   * **SCıM RFC başvuruları:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
-  * **URL (SCıM uyumlu):** AzureAdScimPatch062020
   * **Durum**
-    * Uyumlu grup üyeliği kaldırma işlemleri:
   ```json
+   PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-     "schemas":
-      ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-     "Operations":[{
-       "op":"remove",
-       "path":"members[value eq \"2819c223-7f76-...413861904646\"]"
-     }]
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "remove",
+            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+        }
+    ]
    }
+
+    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "add",
+            "path": "members",
+            "value": [
+                {
+                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
+                }
+            ]
+        }
+    ]
+    } 
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "someone@contoso.com"
+        },
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].primary",
+            "value": true
+        },
+        {
+            "op": "replace",
+            "value": {
+                "active": false,
+                "userName": "someone"
+            }
+        }
+    ]
+    }
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "active",
+            "value": false
+        }
+    ]
+    }
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "add",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
+            "value": "Tech Infrastructure"
+        }
+    ]
+    }
+   
   ```
-  * **URL (SCıM uyumlu değil):** AzureAdScimPatch2017
-  * **Durum**
-    * Uyumlu olmayan Grup üyeliği kaldırma işlemleri:
-   ```json
-   {
-     "schemas":
-     ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-     "Operations":[{
-       "op":"Remove",  
-       "path":"members",
-       "value":[{"value":"2819c223-7f76-...413861904646"}]
-     }]
-   }
-   ```
+
+  * **Düşürme URL 'si:** Yeni SCıM uyumlu davranışı Galeri dışı uygulamada varsayılan haline geldikten sonra, eski, SCıM olmayan davranışa geri dönmek için aşağıdaki URL 'yi kullanabilirsiniz: AzureAdScimPatch2017
+  
+
 
 ## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>Eski customappsso işinden SCıM işine yükseltme
 Aşağıdaki adımları takip etmek, mevcut customappsso işinizi silecek ve yeni bir SCIM işi oluşturacak. 
@@ -139,4 +205,3 @@ Aşağıdaki adımları takip etmek, mevcut customappsso işinizi silecek ve yen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [SaaS uygulamalarına sağlama ve sağlamayı kaldırma hakkında daha fazla bilgi edinin](user-provisioning.md)
-

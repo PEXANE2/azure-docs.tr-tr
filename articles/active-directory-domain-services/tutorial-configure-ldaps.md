@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404183"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054349"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -234,7 +234,7 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
     | Protokol                          | TCP          |
     | Eylem                            | İzin Ver        |
     | Öncelik                          | 401          |
-    | Ad                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 
@@ -265,7 +265,7 @@ Yönetilen etki alanınızı bağlamak ve LDAP üzerinden aramak için *LDP.exe*
 Ardından, yönetilen etki alanınızı bağlayın. Yönetilen etki alanında NTLM parola karması eşitlemesini devre dışı bırakmış kullanıcılar (ve hizmet hesapları) LDAP basit bağlamalar gerçekleştiremez. NTLM parola karma eşitlemesini devre dışı bırakma hakkında daha fazla bilgi için bkz. [yönetilen etki alanınızı güvenli hale getirme][secure-domain].
 
 1. **Bağlantı** menüsü seçeneğini belirleyin ve ardından **bağla...** seçeneğini belirleyin.
-1. *Contosoadmin*gıbı *AAD DC Administrators* grubuna ait olan bir kullanıcı hesabının kimlik bilgilerini sağlayın. Kullanıcı hesabının parolasını girin ve etki alanınızı girin, örneğin *aaddscontoso.com*.
+1. Yönetilen etki alanına ait olan bir kullanıcı hesabının kimlik bilgilerini sağlayın. Kullanıcı hesabının parolasını girin ve etki alanınızı girin, örneğin *aaddscontoso.com*.
 1. **Bağlama türü**için, *kimlik bilgileriyle bağlama*seçeneğini belirleyin.
 1. Yönetilen etki alanınızı bağlamak için **Tamam ' ı** seçin.
 

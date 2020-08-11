@@ -1,6 +1,6 @@
 ---
 title: Azure çoklu oturum açma (SSO) nedir?
-description: Azure Active Directory (Azure AD) içinde uygulama yapılandırırken çoklu oturum açma yöntemi seçme hakkında bilgi edinin. Kullanıcıların her uygulama için parolaları hatırlamaları ve hesap yönetiminin yönetimini basitleştirmek için çoklu oturum açma kullanın.
+description: Çoklu oturum açma (SSO) Azure Active Directory ile nasıl çalıştığını öğrenin. Kullanıcılardan her uygulama için parolaları hatırlamaları gerekmiyorsa, SSO kullanın. Ayrıca hesap yönetiminin yönetimini basitleştirmek için SSO kullanın.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,22 +12,31 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0928cb264dcff43cc0a3e45a8417dcd1e23a1ed3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 5446d945a81d2630d788a866bda00eb118382b93
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042607"
+ms.locfileid: "88053788"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
-Çoklu oturum açma (SSO), kullanıcılar Azure Active Directory (Azure AD) uygulamalarında oturum açtığında güvenlik ve kolaylık sağlar. Bu makalede, çoklu oturum açma yöntemleri açıklanmakta ve uygulamalarınızı yapılandırırken en uygun SSO yöntemini seçmenize yardımcı olur.
+Çoklu oturum açma, kullanıcının kullandıkları her uygulamada oturum açması gerekmediği anlamına gelir. Kullanıcı bir kez oturum açar ve bu kimlik bilgileri diğer uygulamalar için de kullanılır.
+
+Son bir kullanıcı ise, SSO ayrıntılarından çok önemli değildir. Parolanızı çok büyük bir şekilde yazmak zorunda kalmadan yalnızca üretken olmanızı sağlayan uygulamaları kullanmak istersiniz. Uygulamalarınızı şurada bulabilirsiniz: https://myapps.microsoft.com .
+ 
+Bir Yöneticiyseniz veya BT uzmanı varsa, SSO 'nun Azure 'da nasıl uygulandığı hakkında daha fazla bilgi edinmek için okumaya devam edin.
+
+## <a name="single-sign-on-basics"></a>Çoklu oturum açma temelleri
+Çoklu oturum açma, kullanıcıların oturum açma ve uygulama kullanma biçiminde bir çok büyük paketlerini daha ileri sağlar. Çoklu oturum açma tabanlı kimlik doğrulama sistemleri genellikle "Modern kimlik doğrulaması" olarak adlandırılır. Çoklu oturum açma olanağı olduğunu anlamak için bu videoyu inceleyin.
+> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+
+
+## <a name="choosing-a-single-sign-on-method"></a>Çoklu oturum açma yöntemi seçme
 
 - **Çoklu oturum açma ile**kullanıcılar, etki alanına katılmış cihazlara, şirket kaynaklarına, hizmet olarak yazılım (SaaS) uygulamalarına ve Web uygulamalarına erişmek için bir hesapla bir kez oturum açabilirler. Oturum açtıktan sonra Kullanıcı Office 365 portalından veya Azure AD Uygulamaps erişim panelinden uygulama başlatabilir. Yöneticiler kullanıcı hesabı yönetimini merkezileştirmek ve grup üyeliğine göre uygulamalara Kullanıcı erişimini otomatik olarak ekleyebilir veya kaldırabilir.
 
 - **Çoklu oturum açma olmadan**, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. BT personelinin, Office 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir.
-
-## <a name="choosing-a-single-sign-on-method"></a>Çoklu oturum açma yöntemi seçme
 
 Bir uygulamayı çoklu oturum açma için yapılandırmanın birkaç yolu vardır. Çoklu oturum açma yönteminin seçilmesi, uygulamanın kimlik doğrulaması için nasıl yapılandırıldığına bağlıdır.
 
@@ -105,7 +114,7 @@ Parola tabanlı çoklu oturum açma, HTML tabanlı bir oturum açma sayfasına s
 - Windows 7 veya üzeri cihazlarda ve macOS X veya üzeri cihazlarda Chrome
 - Windows XP SP2 veya sonraki sürümlerinde ve macOS X 10,6 veya üzeri sürümlerde Firefox 26,0 veya üzeri
 
-Parola tabanlı çoklu oturum açma için bir bulut uygulaması yapılandırmak üzere, bkz. [parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md).
+Parola tabanlı çoklu oturum açma için bir bulut uygulaması yapılandırmak üzere bkz. [parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md).
 
 Şirket içi bir uygulamayı uygulama proxy 'Si aracılığıyla çoklu oturum açma için yapılandırmak için bkz. [uygulama proxy 'si ile çoklu oturum açma Için parola](application-proxy-configure-single-sign-on-password-vaulting.md) oluşturma
 
@@ -197,10 +206,5 @@ Bu senaryo Azure AD ve PingAccess arasındaki bir iş ortaklığı aracılığı
 
 Daha fazla bilgi için bkz. [Azure Active Directory sürümleri](../fundamentals/active-directory-whatis.md).
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="next-steps"></a>Sonraki adımlar
 * [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
-* [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
-* [Parola tabanlı çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
-* [Bağlı oturum açmayı yapılandırma](configure-linked-sign-on.md)
-* [Uygulamalara erişimi yönetmeye giriş](what-is-access-management.md)
-* İndirme bağlantısı: [Çoklu oturum açma dağıtım planı](https://aka.ms/SSODeploymentPlan).

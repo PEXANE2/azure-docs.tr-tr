@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099773"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053925"
 ---
 # <a name="what-is-batch-transcription"></a>Toplu iş dökümü nedir?
 
@@ -44,7 +44,7 @@ Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır. Şu anda bir iş
 
 Kullanımı kolay API 'nin yanında, Özel uç noktaları dağıtmanız gerekmez ve gözlemlemeye yönelik eşzamanlılık gereksinimleriniz yoktur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="subscription-key"></a>Abonelik Anahtarı
 
@@ -346,4 +346,4 @@ Geçerli örnek kod özel bir model belirtmiyor. Hizmet, dosya veya dosyaları �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
+- [Konuşmaya metin v3 API başvurusu](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

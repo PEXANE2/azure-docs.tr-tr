@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498608"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056542"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
 
@@ -24,6 +24,8 @@ Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storag
 Blob sürümü oluşturma, depolama hesabında etkinleştirilir ve depolama hesabındaki tüm Bloblar için geçerlidir. Depolama hesabı için blob sürüm oluşturmayı etkinleştirdikten sonra Azure depolama, depolama hesabındaki her blob için sürümleri otomatik olarak korur.
 
 Microsoft, üst veri koruma için bir Blobun önceki sürümlerini sürdürmek üzere blob sürümlendirme kullanılmasını önerir. Mümkün olduğunda, önceki sürümleri sürdürmek için blob anlık görüntüleri yerine blob sürümü oluşturma 'yı kullanın. Blob anlık görüntüleri, bir Blobun önceki sürümlerini koruduklarında benzer işlevler sağlar, ancak anlık görüntülerin uygulamanız tarafından el ile saklanması gerekir.
+
+Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
 
 > [!IMPORTANT]
 > Blob sürümü oluşturma, bir depolama hesabı veya kapsayıcısının yanlışlıkla silinmesini kurtarmanıza yardımcı olamaz. Depolama hesabının yanlışlıkla silinmesini engellemek için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
@@ -177,9 +179,9 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Açıklama | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blobu veri Katılımcısı |
+| Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blobu veri sahibi |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Paylaşılan erişim imzası (SAS) parametreleri
@@ -204,7 +206,8 @@ Blob sürümü oluşturma, önizleme aşamasında aşağıdaki bölgelerde kulla
 - Doğu Kanada
 - Orta Kanada
 
-Önizleme yalnızca üretim dışı kullanım için tasarlanmıştır.
+> [!IMPORTANT]
+> Blob sürüm oluşturma önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
 
 Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
 
@@ -226,7 +229,7 @@ Blob sürüm oluşturma önizlemesine kaydolmak için, özelliği aboneliğinize
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell 'e kaydolmak için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
+PowerShell 'e kaydolmak için [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) komutunu çağırın.
 
 ```powershell
 # Register for blob versioning (preview)
@@ -242,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Azure CLı ile kaydolmak için [az Feature Register](/cli/azure/feature#az-feature-register) komutunu çağırın.
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -266,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Azure CLı ile kaydlarınızın durumunu denetlemek için [az Feature](/cli/azure/feature#az-feature-show) komutunu çağırın.
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---

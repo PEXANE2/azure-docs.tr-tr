@@ -6,21 +6,21 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 08/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142543"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054315"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
 Bu makalede, PowerShell kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesaplarında Dizin, dosya ve izinleri oluşturma ve bunları yönetme işlemi gösterilmektedir. 
 
-[Gen1 to Gen2 Mapping](#gen1-gen2-map)  |  [Geri bildirimde](https://github.com/Azure/azure-powershell/issues) bulunun
+[Başvuru](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  |  [Gen1 to Gen2 Mapping](#gen1-gen2-map)  |  [Geri bildirimde](https://github.com/Azure/azure-powershell/issues) bulunun
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -81,7 +81,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-container"></a>Kapsayıcı oluşturma
+## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
 Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. Cmdlet 'ini kullanarak bir tane oluşturabilirsiniz `New-AzStorageContainer` . 
 

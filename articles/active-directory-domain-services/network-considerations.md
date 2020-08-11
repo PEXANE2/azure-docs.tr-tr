@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488661"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054281"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -91,7 +91,7 @@ Sanal ağları bağlayan DNS sunucusunda koşullu DNS ileticileri veya yönetile
 
 Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluşturur. Bu kaynaklar, yönetilen etki alanının başarılı bir şekilde çalışması ve yönetimi için gereklidir ve el ile yapılandırılmamalıdır.
 
-| Azure kaynağı                          | Açıklama |
+| Azure kaynağı                          | Description |
 |:----------------------------------------|:---|
 | Ağ arabirim kartı                  | Azure AD DS, Windows Server 'da Azure sanal makineleri olarak çalışan iki etki alanı denetleyicisinde (DC) yönetilen etki alanını barındırır. Her VM 'nin sanal ağ alt ağınıza bağlanan bir sanal ağ arabirimi vardır. |
 | Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
@@ -142,6 +142,10 @@ Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici 
 
 > [!NOTE]
 > Bu ağ güvenlik grubu kuralını düzenlemeye çalışırsanız portaldan *Corpnetgördünüz* hizmet etiketini el ile seçemezsiniz. *Corpnetgördünüz* hizmet etiketini kullanan bir kuralı el ile yapılandırmak için Azure PowerShell veya Azure CLI kullanmanız gerekir.
+>
+> Örneğin, RDP 'ye izin veren bir kural oluşturmak için aşağıdaki betiği kullanabilirsiniz: 
+>
+> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>Bağlantı noktası 5986-PowerShell uzaktan iletişimini kullanan yönetim
 

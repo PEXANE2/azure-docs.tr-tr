@@ -1,14 +1,14 @@
 ---
 title: Kaynakları düzenlemek için yönetim grupları oluşturma-Azure Idare
 description: Portal, Azure PowerShell ve Azure CLı kullanarak birden çok kaynağı yönetmek için Azure Yönetim grupları oluşturmayı öğrenin.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 0739eafdf4cf41195b189a8496c331ab470bbec0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971145"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056644"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma
 
@@ -18,7 +18,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 ## <a name="create-a-management-group"></a>Yönetim grubu oluşturma
 
-Kiracıdaki herhangi bir Azure AD kullanıcısı, bu kullanıcıya atanan yönetim grubu yazma izni olmadan bir yönetim grubu oluşturabilir. Bu yeni yönetim grubu kök yönetim grubunun bir alt öğesi olacak ve oluşturucuya bir "Owner" rol ataması verilecek. Yönetim grubu hizmeti, bu becerisine, rol atamalarının kök düzeyinde gerekli olmaması için izin verir. Kök yönetim grubuna, bir kullanıcı oluşturulduğunda erişemez. Yönetim grupları 'nı kullanmaya başlamak üzere Azure AD Genel yöneticilerini bulmanın önüne geçmek için, kökte ilk yönetim gruplarının oluşturulmasına izin veriyoruz  
+Kiracıdaki herhangi bir Azure AD kullanıcısı, bu kullanıcıya atanan yönetim grubu yazma izni olmadan bir yönetim grubu oluşturabilir. Bu yeni yönetim grubu kök yönetim grubunun bir alt öğesi olacak ve oluşturucuya bir "Owner" rol ataması verilecek. Yönetim grubu hizmeti, bu becerisine, rol atamalarının kök düzeyinde gerekmemesi için izin verir. Kök yönetim grubuna, bir kullanıcı oluşturulduğunda erişemez. Yönetim grupları 'nı kullanmaya başlamak üzere Azure AD Genel yöneticilerini bulmanın önüne geçmek için, kökte ilk yönetim gruplarının oluşturulmasına izin veriyoruz  
 düzeyde.
 
 Portal, [Azure Resource Manager şablonu](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), PowerShell veya Azure CLI kullanarak yönetim grubu oluşturabilirsiniz.
@@ -43,7 +43,7 @@ Portal, [Azure Resource Manager şablonu](../../azure-resource-manager/templates
 
    :::image type="content" source="./media/create_context_menu.png" alt-text="Yeni yönetim grubu oluşturmak için seçenekler bölmesi" border="false":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="create-in-powershell"></a>PowerShell 'de oluştur
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 611124a113a0cce3ab1fb8db5969a6ab6f5f6658
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041962"
+ms.locfileid: "88056323"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişimli yönetim bağlantı noktalarınızı güvenli hale getirin
 
@@ -35,7 +35,7 @@ Bu sayfa, güvenlik programınıza JıT ekleme hakkında öğretir. Şunları ö
 |----|:----|
 |Yayın durumu:|Genel kullanılabilirlik|
 |Fiyat|Standart katmanı|
-|Desteklenen VM 'Ler:|![](./media/icons/yes-icon.png)Azure Resource Manager aracılığıyla dağıtılan Evet VM 'leri.<br>![](./media/icons/yes-icon.png)Klasik dağıtım modelleriyle dağıtılan VM yok. [Bu dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).<br>![Azure ](./media/icons/yes-icon.png) [güvenlik duvarı Yöneticisi](https://docs.microsoft.com/azure/firewall-manager/overview) tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM yok|
+|Desteklenen VM 'Ler:|![](./media/icons/yes-icon.png)Azure Resource Manager aracılığıyla dağıtılan Evet VM 'leri.<br>![](./media/icons/no-icon.png)Klasik dağıtım modelleriyle dağıtılan VM yok. [Bu dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).<br>![Azure ](./media/icons/no-icon.png) [güvenlik duvarı Yöneticisi](https://docs.microsoft.com/azure/firewall-manager/overview) tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM yok|
 |Gerekli roller ve izinler:|**Reader** ve **securityreader** ROLLERININ her ikisi de JIT durumunu ve parametrelerini görüntüleyebilir.<br>JıT ile çalışan özel Roller oluşturmak için bkz. JıT 'i [yapılandırmak ve kullanmak Için hangi izinler gereklidir?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Bir VM 'ye JıT erişimi istemesi ve başka bir JıT işlemi gerçekleştirihtiyacı olmayan kullanıcılar için en az ayrıcalıklı bir rol oluşturmak üzere, güvenlik merkezi GitHub topluluk sayfalarından [set-Jleastprivilegedrole betiğini](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) kullanın.|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653118"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054060"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu’nu kullanmaya başlama
 
@@ -51,10 +51,10 @@ Ana MFA Sunucusu çevrimdışı olsa bile alt sunucular iki aşamalı doğrulama
 
 Azure Multi-Factor Authentication için kullandığınız sunucunun aşağıdaki gereksinimleri karşıladığından emin olun:
 
-| Azure Multi-Factor Authentication Sunucusu Gereksinimleri | Açıklama |
+| Azure Multi-Factor Authentication Sunucusu Gereksinimleri | Description |
 |:--- |:--- |
 | Donanım |<li>200 MB boş sabit disk alanı</li><li>x32 veya x64 özellikli işlemci</li><li>1 GB veya daha fazla RAM</li> |
-| Yazılım |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, tüm sürümler</li><li>Windows 8, tüm sürümler</li><li>Windows 7, tüm sürümler</li><li>Windows Vista, tüm sürümler, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 veya üst sürümü, kullanıcı portalı veya web hizmeti SDK’sı yüklüyorsanız</li> |
+| Yazılım |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (yalnızca [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) ile)</li><li>Windows 10</li><li>Windows 8.1, tüm sürümler</li><li>Windows 8, tüm sürümler</li><li>Windows 7, tüm sürümler (yalnızca [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) ile)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 veya üst sürümü, kullanıcı portalı veya web hizmeti SDK’sı yüklüyorsanız</li> |
 | İzinler | Active Directory kaydedileceği etki alanı yöneticisi veya kuruluş yöneticisi hesabı |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA Sunucusu Bileşenleri
@@ -81,15 +81,27 @@ Giden güvenlik duvarları bağlantı noktası 443’te kısıtlı ise aşağıd
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
-| 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254 |
+| 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254   |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 Olay Onayı özelliğini kullanmıyorsanız ve kullanıcılarınız şirket ağındaki cihazlardan doğrulama yapmak için mobil uygulamalar kullanmıyorsa, yalnızca aşağıdaki aralıklar gereklidir:
 
 | IP Alt ağı | Ağ maskesi | IP aralığı |
 |:---: |:---: |:---: |
-| 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
-| 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
-| 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
+| 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79|
+| 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79|
+| 70.37.154.200/29 |255.255.255.248  |70.37.154.201 – 70.37.154.206  |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 ## <a name="download-the-mfa-server"></a>MFA Sunucusu'nu indirme
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042331"
+ms.locfileid: "88056610"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre
 
@@ -31,7 +31,7 @@ Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı ka
 |----|:----|
 |Yayın durumu:|Genel kullanılabilirlik|
 |Fiyat|Standart katmanı|
-|Desteklenen kayıt defterleri ve görüntüler:|![](./media/icons/yes-icon.png)Genel İnternet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterleri ve kabuk erişimi sağlar.<br>![](./media/icons/yes-icon.png)Windows tarafından barındırılan BIR ACR kayıt defterleri yoktur.<br>![](./media/icons/yes-icon.png)' Özel ' kayıt defterleri yok-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.<br>![](./media/icons/yes-icon.png) [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "distrodaha az" görüntüler.|
+|Desteklenen kayıt defterleri ve görüntüler:|![](./media/icons/yes-icon.png)Genel İnternet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterleri ve kabuk erişimi sağlar.<br>![](./media/icons/no-icon.png)Windows tarafından barındırılan BIR ACR kayıt defterleri yoktur.<br>![](./media/icons/no-icon.png)' Özel ' kayıt defterleri yok-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.<br>![](./media/icons/no-icon.png) [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "distrodaha az" görüntüler.|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||

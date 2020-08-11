@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092329"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056372"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -102,22 +102,15 @@ Bu öğreticide geliştirme çalışmalarınız için kurulum aşağıdaki eylem
 * Eğitim için kullanmak üzere uzak bir işlem hedefi oluşturun
 
 ### <a name="install-required-packages"></a>Gerekli paketleri yükleme
-
- * CRAN 'ın en son sürümünü yükler.
-
-    ```R
-    # install the latest version from CRAN
-    install.packages("azuremlsdk")
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+Bilgi işlem örneği, CRAN 'un en son R SDK sürümü yüklenmiş olmalıdır. En son hata düzeltmelerini seçmek yerine geliştirme sürümünü GitHub 'dan yüklemek isterseniz, lütfen aşağıdakileri çalıştırın:
     
-* Veya geliştirme sürümünü GitHub 'dan yükleyemezsiniz.
+```R
+remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+azuremlsdk::install_azureml()
+```
 
-    ```R
-    # or install the development version from GitHub
-    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+> [!WARNING]
+> Yükleme işlemi sırasında, "" uyarısını alırsanız `Would you like to install Miniconda? [Y/n]:` , lütfen "" ile yanıtlayın, `n` ancak işlem örneği zaten yüklü ve bir miniconda yüklemesi gerekli değildir.
 
 Şimdi devam edin ve **azuremlsdk** paketini içeri aktarın.
 

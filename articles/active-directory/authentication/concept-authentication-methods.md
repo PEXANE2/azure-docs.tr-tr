@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540844"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054077"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
 | [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
 | [OATH yazılım belirteçleri](#oath-software-tokens) | No | MFA |
-| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Yes | MFA |
+| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | No | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
 | [Sesli arama](#phone-options) | No | MFA ve SSPR |
 | [Güvenlik soruları](#security-questions) | No | Yalnızca SSPR |

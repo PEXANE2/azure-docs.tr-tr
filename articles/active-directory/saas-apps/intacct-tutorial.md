@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509381"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056337"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile yerleşik olarak tümleştirme
 
@@ -33,7 +32,7 @@ Bu öğreticide, u 'nin Azure Active Directory (Azure AD) ile nasıl tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -45,6 +44,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Ise Intacct, **IDP** tarafından başlatılan SSO 'yu destekliyor
+* Şirket \ ' i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>Galeriden NtAcct ekleme
 
@@ -57,7 +57,7 @@ Nıntacct 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden
 1. **Galeriden Ekle** bölümünde, arama kutusuna **bağla Intacct** yazın.
 1. Sonuçlar panelinden, **It** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>U NtAcct için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>It Intacct için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu, It Intacct ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile bağlantılı Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -127,7 +127,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -227,3 +227,4 @@ Erişim panelinde, bir e-nİç bağlantı kutucuğuna tıkladığınızda, SSO '
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,14 +1,14 @@
 ---
 title: Azure kaynaklarınızı inceleme
 description: Kaynak grafik sorgu dilini kullanarak kaynaklarınızı keşfetme ve bunların nasıl bağlandığını bulma hakkında bilgi edinin.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654492"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056593"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
@@ -207,8 +207,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Sorguyu çalıştırmadan önce, **türü** Şu anda **Microsoft. COMPUTE/Disks**olarak biliyoruz?
-Tam KIMLIĞE bakarsanız dizenin bir parçası olarak **/providers/Microsoft.COMPUTE/Disks/** görürsünüz. Bu dize parçası, arama yapılacak tür için bir ipucu sağlar. Farklı bir yöntem, sınırı türe göre kaldırmak ve bunun yerine yalnızca KIMLIK alanına göre aramak olacaktır. KIMLIK benzersiz olduğundan, yalnızca bir kayıt döndürülür ve üzerinde **tür** özelliği bu ayrıntıyı sağlar.
+Sorguyu çalıştırmadan önce, **türü** Şu anda **Microsoft. COMPUTE/Disks**olarak biliyoruz? Tam KIMLIĞE bakarsanız dizenin bir parçası olarak **/providers/Microsoft.COMPUTE/Disks/** görürsünüz.
+Bu dize parçası, arama yapılacak tür için bir ipucu sağlar. Farklı bir yöntem, sınırı türe göre kaldırmak ve bunun yerine yalnızca KIMLIK alanına göre aramak olacaktır. KIMLIK benzersiz olduğundan, yalnızca bir kayıt döndürülür ve üzerinde **tür** özelliği bu ayrıntıyı sağlar.
 
 > [!NOTE]
 > Bu örneğin çalışması için, KIMLIK alanını kendi ortamınızdaki bir sonuçla değiştirmelisiniz.

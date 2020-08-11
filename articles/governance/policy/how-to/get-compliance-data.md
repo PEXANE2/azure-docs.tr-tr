@@ -1,14 +1,14 @@
 ---
 title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 8da1876842e89e806b61bba611db74795a6710d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521543"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054661"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -34,7 +34,7 @@ Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu
 
 - Bir kapsama zaten atanmış olan bir ilke veya girişim güncellenir. Bu senaryonun değerlendirme çevrimi ve zamanlaması, bir kapsama yönelik yeni atama ile aynıdır.
 
-- Bir kaynak, Azure Resource Manager, REST, Azure CLı veya Azure PowerShell aracılığıyla atama içeren bir kapsama dağıtılır. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
+- Bir kaynak, Azure Resource Manager, REST API veya desteklenen bir SDK aracılığıyla atama ile bir kapsam içine dağıtılır veya güncelleştirilir. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
 
 - Standart uyumluluk değerlendirme çevrimi. Her 24 saatte bir, atamalar otomatik olarak yeniden değerlendirilecektir. Çok sayıda kaynak için büyük bir ilke veya girişim zaman alabilir, bu nedenle değerlendirme döngüsünün tamamlandığı zaman önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
@@ -314,7 +314,7 @@ Sonuçlarınız aşağıdaki örneğe benzer:
 
 İlke olaylarını sorgulama hakkında daha fazla bilgi için bkz. [Azure Ilke olayları](/rest/api/policy-insights/policyevents) başvuru makalesi.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure Ilkesi için [Azure CLI](/cli/azure/what-is-azure-cli) komut grubu, REST veya Azure PowerShell bulunan birçok işlemi içerir. Kullanılabilir komutların tam listesi için bkz. [Azure CLI-Azure Ilkesine genel bakış](/cli/azure/policy).
 

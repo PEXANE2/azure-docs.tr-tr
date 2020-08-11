@@ -14,17 +14,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 383c5a0d6811b2797ecb4407e73c26752e1a5022
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728425"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055998"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
 Azure Active Directory (Azure AD) ' de, Kullanıcı veya cihaz özelliklerine göre grup üyeliğini Belirleme kurallarını kullanabilirsiniz. Bu makalede, Azure portal bir dinamik grup için nasıl bir kural ayarlanacağı açıklanır.
-Dinamik üyelik güvenlik grupları veya Office 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Office 365 grupları yalnızca Kullanıcı grupları olabilir.
+Dinamik üyelik güvenlik grupları veya Microsoft 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Microsoft 365 Gruplar yalnızca Kullanıcı grupları olabilir.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
 

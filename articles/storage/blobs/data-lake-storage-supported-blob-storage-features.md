@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0e7cedaea89e2ed3d998df6ffe0ecaa06115e265
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513800"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053482"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -42,15 +42,17 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |Arşiv erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
 |Yaşam döngüsü yönetim ilkeleri|Genel kullanıma sunuldu|Henüz desteklenmiyor|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
 |Azure Izleyici 'de günlüğe kaydetme|Önizleme |Henüz desteklenmiyor|[Azure Storage 'ı izleme](../common/monitor-storage.md)|
-|Anlık Görüntüler|Önizleme<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Henüz desteklenmiyor|[Blob anlık görüntüleri](snapshots-overview.md)|
-|Statik web siteleri|Önizleme<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Henüz desteklenmiyor|[Azure Depolama'da statik web sitesi barındırma](storage-blob-static-website.md)|
-|Sabit depolama|Önizleme<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Henüz desteklenmiyor|[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)|
+|Anlık Görüntüler|Önizleme|Henüz desteklenmiyor|[Blob anlık görüntüleri](snapshots-overview.md)|
+|Statik web siteleri|Önizleme|Henüz desteklenmiyor|[Azure Depolama'da statik web sitesi barındırma](storage-blob-static-website.md)|
+|Sabit depolama|Önizleme|Henüz desteklenmiyor|[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)|
+|Yaşam döngüsü yönetim ilkeleri|Önizleme|Henüz desteklenmiyor|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
+|Kapsayıcı geçici silme|Önizleme|Önizleme|[Kapsayıcılar için geçici silme (Önizleme)](soft-delete-container-overview.md)|
+|Blob geçici silme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Bloblar için geçici silme](storage-blob-soft-delete.md)|
 |Blobsigortası|Önizleme|Henüz desteklenmiyor|[Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama](storage-how-to-mount-container-linux.md)|
 |Akışı değiştirme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)|
 |Hesap yük devretmesi|Henüz desteklenmiyor|Henüz desteklenmiyor|[Olağanüstü durum kurtarma ve hesap yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob kapsayıcı ACL 'SI|Henüz desteklenmiyor<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Henüz desteklenmiyor<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Kapsayıcı ACL 'sini ayarla](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Özel etki alanları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)|
-|Geçici silme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure Depolama blobları için geçici silme](storage-blob-soft-delete.md)|
 
 <div id="diagnostic-logging"><sup>1</sup> Premium Blok Blob depolama hesapları için, tanılama günlükleri (klasik) Azure Portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirin.</div><br>
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518445"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055386"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
@@ -190,7 +190,7 @@ Adlandırılmış konumları oluştururken veya güncelleştirdiğinizde, toplu 
 
 Bir bulut barındırılan proxy veya VPN çözümü kullandığınızda, bir ilkeyi değerlendirirken Azure AD 'nin kullandığı IP adresi, proxy 'nin IP adresidir. Kullanıcının genel IP adresini içeren X-Iletilmiş-for (XFF) üst bilgisi kullanılmıyor çünkü güvenilen bir kaynaktan geldiğini belirten bir doğrulama olmadığından, bir IP adresi için bir yöntem sunar.
 
-Bir bulut proxy 'si olduğunda, etki alanına katılmış bir cihaz istemek için kullanılan bir ilke veya AD FS ' den gelen Corpnet talebi kullanılabilir.
+Bir bulut proxy 'si olduğunda, karma bir Azure AD 'ye katılmış cihaz istemek için kullanılan bir ilke veya AD FS ' den iç Corpnet talebi kullanılabilir.
 
 ### <a name="api-support-and-powershell"></a>API desteği ve PowerShell
 

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: NAT Gateway oluşturma-Kaynak Yöneticisi şablonu'
+title: NAT Gateway-Kaynak Yöneticisi şablonu oluşturma
 titleSuffix: Azure Virtual Network NAT
 description: Bu hızlı başlangıçta, Azure Resource Manager şablonunu kullanarak bir NAT ağ geçidinin nasıl oluşturulacağı gösterilmektedir.
 services: load-balancer
@@ -10,20 +10,20 @@ Customer intent: I want to create a NAT gateway by using an Azure Resource Manag
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: fbc8b48f4ff6a6df687d45a53008a159c5322084
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84703579"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053907"
 ---
-# <a name="tutorial-create-a-nat-gateway---resource-manager-template"></a>Öğretici: NAT Gateway oluşturma-Kaynak Yöneticisi şablonu
+# <a name="create-a-nat-gateway---resource-manager-template"></a>NAT Gateway-Kaynak Yöneticisi şablonu oluşturma
 
 Azure Resource Manager şablonu kullanarak sanal ağ NAT ile çalışmaya başlayın.  Bu şablon bir sanal ağ, bir NAT ağ geçidi kaynağı ve Ubuntu sanal makinesini dağıtır. Ubuntu sanal makinesi, NAT ağ geçidi kaynağıyla ilişkili bir alt ağa dağıtılır.
 
@@ -101,7 +101,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure portal**
+**Azure Portal**
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
@@ -136,7 +136,7 @@ Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/pow
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-**Azure portal**
+**Azure Portal**
 
 Artık gerekli olmadığında kaynak grubunu, NAT ağ geçidini ve tüm ilgili kaynakları silin. NAT ağ geçidini içeren **Myresourcegroupnat** kaynak grubunu seçin ve **Sil**' i seçin.
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074036"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053448"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -321,6 +321,44 @@ Bu nedenle, zaten Ultra disk depolaması için listelenen ANF birimleri için be
 > Birimlere gerek duymadan Azure NetApp Files birimleri dinamik olarak yeniden boyutlandırabilir `unmount` , sanal makineleri durdurabilir veya SAP HANA durdurabilirsiniz. Bu, uygulamanızı hem beklenen hem de öngörülemeyen üretilen iş taleplerini karşılamak için esneklik sağlar.
 
 Bir SAP HANA genişleme yapılandırması ile birlikte bekleyen bir yapılandırma, [Azure VM 'lerde bulunan ve SUSE Linux Enterprise Server Azure NetApp Files Ile Azure VM 'lerinde bekleme düğümüyle birlikte SAP HANA](./sap-hana-scale-out-standby-netapp-files-suse.md)olarak yayımlanmış.
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Depolama ile maliyet bilincine çözüm
+Şimdiye kadar, bu belgede açıklanan Azure Premium depolama çözümü, [Azure n serisi sanal makineler için Premium Depolama ve azure yazma hızlandırıcısı ile Ilgili çözüm çözümleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) SAP HANA üretimde desteklenen senaryolara yöneliktir. Üretim destektable yapılandırmalarının özelliklerinden biri, SAP HANA verileri için birimlerin ayrılmasıdır ve günlüğü iki farklı birime geri kaydeder. Bu tür bir ayrımı nedeni, birimlerdeki iş yükü özelliklerinin farklı olması nedenidir. Bu, önerilen üretim yapılandırmalarına sahip olan, farklı türde önbelleğe alma veya hatta farklı Azure blok depolama türleri gerekli olabilir. Azure blok depolama hedefini kullanan üretim, [Azure sanal makineleri için tek VM SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ile uyumlu olacak şekilde desteklenir.  Üretim dışı senaryolar için, üretim sistemlerine yönelik olarak gerçekleştirilen bazı önemli noktalar, üretim dışı olan daha düşük üretimden oluşan sistemlere uygulanmayabilir. Sonuç olarak, HANA verileri ve günlük birimi birleştirilebilir. Sonuç olarak, bazı küller ile sonuç olarak, üretim sistemleri için gerekli olan belirli aktarım hızını veya gecikmeli KPI 'Ları henüz karşılamıyor. Bu ortamlarda maliyetleri azaltmanın başka bir yönü de [Azure Standart SSD Storage](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)kullanımı olabilir. [Azure sanal makineleri için tek VM SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)geçersiz kılan bir seçenek de vardır. 
+
+Bu tür yapılandırmalara daha az maliyetli bir alternatif şöyle görünebilir:
+
+
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data ve/Hana/log<br /> LVM veya MDADDM ile şeritli | /Hana/Shared | /root birimi | /usr/SAP | açıklamaları |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| E16v3 | 128 GiB | 384 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | Sanal makine türü HANA sertifikalı değil <br /> 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 5.000<sup>2</sup> olarak sınırlandırır |
+| E20ds_v4 | 160 GiB | 480 MB/sn | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| E32v3 | 256 GiB | 768 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Sanal makine türü HANA sertifikalı değil <br /> 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| E32ds_v4 | 256 GiB | 768 MBps | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| M32ls | 256 GiB | 500 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 5.000<sup>2</sup> olarak sınırlandırır |
+| E48ds_v4 | 384 GiB | 1.152 MBps | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| E64v3 | 432 GiB | 1.200 MB/s | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| E64ds_v4 | 504 GiB | 1200 MB/s |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 1 MS depolama gecikme süresi<sup>1</sup> ' den az olmaz |
+| M64ls | 512 GiB | 1.000 MB/s | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 10.000<sup>2</sup> olarak sınırlandırır |
+| M64s | 1.000 GiB | 1.000 MB/s | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 10.000<sup>2</sup> olarak sınırlandırır |
+| M64ms | 1.750 GiB | 1.000 MB/s | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 10.000<sup>2</sup> olarak sınırlandırır |
+| M128s | 2.000 GiB | 2.000 MB/s |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 20.000<sup>2</sup> olarak sınırlandırır |
+| M208s_v2 | 2.850 GiB | 1.000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 10.000<sup>2</sup> olarak sınırlandırır |
+| M128ms | 3.800 GiB | 2.000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 20.000<sup>2</sup> olarak sınırlandırır |
+| M208ms_v2 | 5.700 GiB | 1.000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 10.000<sup>2</sup> olarak sınırlandırır |
+| M416s_v2 | 5.700 GiB | 2.000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 20.000<sup>2</sup> olarak sınırlandırır |
+| M416ms_v2 | 11400 GiB | 2.000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 20.000<sup>2</sup> olarak sınırlandırır |
+
+
+<sup>1</sup> [Azure yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md) , Ev4 ve Ev4 VM aileleri ile birlikte kullanılamaz. Azure Premium Depolama kullanmanın sonucu olarak, g/ç gecikmesi 1 MS 'den az olmaz
+
+<sup>2</sup> VM ailesi [Azure yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md)destekler, ancak yazma hızlandırıcısının ıOPS sınırının disk yapılandırması IOPS özelliklerini sınırlayabileceği bir olasılık vardır
+
+SAP HANA için veri ve günlük birimini birleştirme durumunda, şeritli birimi oluşturan diskler okuma önbelleği veya okuma/yazma önbelleği etkin olmamalıdır.
+
+SAP ile sertifikalı olmayan ve bu nedenle [SAP HANA donanım dizininde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)listelenmeyen sanal makine türleri vardır. Müşterilerin geri bildirimi, listelenen bazı sanal makine türlerinin bazı üretim dışı görevler için başarıyla kullanılmıştı.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

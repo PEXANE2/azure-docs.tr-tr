@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034405"
+ms.locfileid: "88056270"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -47,7 +47,7 @@ Windows Server 2012 R2 'de sunucu uç noktası oluşturduktan sonra, birime eri�
 SürücüHarfi: \ erişilebilir değil.  
 Parametre yanlış.
 
-Bu sorunu gidermek için, Windows Server 2012 R2 için en son güncelleştirmeleri yükledikten sonra sunucuyu yeniden başlatın.
+Bu sorunu çözmek için [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) yükleyip sunucuyu yeniden başlatın. Daha sonraki bir güncelleştirme zaten yüklü olduğu için bu güncelleştirme yüklenmeyecektir Windows Update gidin, Windows Server 2012 R2 için en son güncelleştirmeleri yükleyip sunucuyu yeniden başlatın.
 
 <a id="server-registration-missing-subscriptions"></a>**Sunucu kaydı tüm Azure aboneliklerini listelemez**  
 ServerRegistration.exe kullanarak bir sunucuyu kaydederken, Azure aboneliği açılır listesini tıklattığınızda abonelikler eksiktir.
@@ -338,7 +338,7 @@ Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler ve
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Çakışma dosyası sayısı üst sınırına ulaşıldığından dosya eşitlenemiyor. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Dosya çakışmaları hakkında daha fazla bilgi edinmek için Azure Dosya Eşitleme [SSS](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)bölümüne bakın. | Bu sorunu çözmek için, çakışma dosyalarının sayısını azaltın. Çakışma dosyası sayısı 100 ' den az olduğunda dosya eşitlenir. |
 
 #### <a name="handling-unsupported-characters"></a>Desteklenmeyen karakterleri işleme
-**FileSyncErrorsReport.ps1** PowerShell betiği desteklenmeyen karakterler (hata kodu 0x8007007B veya 0x80c80255) nedeniyle hata gösteriyorsa, ilgili dosya adlarından hata durumunda karakterleri kaldırmanız veya yeniden adlandırmanız gerekir. Bu karakterlerin çoğu standart görsel kodlamaya sahip olmadığından, PowerShell bu karakterleri muhtemelen soru işaretleri veya boş dikdörtgenler olarak yazdıracaktır. [Değerlendirme aracı](storage-sync-files-planning.md#evaluation-cmdlet) , desteklenmeyen karakterleri belirlemek için kullanılabilir.
+**FileSyncErrorsReport.ps1** PowerShell betiği desteklenmeyen karakterler (hata kodu 0x8007007B veya 0x80c80255) nedeniyle öğe başına eşitleme hatalarını gösteriyorsa, ilgili dosya adlarından hata durumunda karakterleri kaldırmanız veya yeniden adlandırmanız gerekir. Bu karakterlerin çoğu standart görsel kodlamaya sahip olmadığından, PowerShell bu karakterleri muhtemelen soru işaretleri veya boş dikdörtgenler olarak yazdıracaktır. [Değerlendirme aracı](storage-sync-files-planning.md#evaluation-cmdlet) , desteklenmeyen karakterleri belirlemek için kullanılabilir. Veri kümeniz geçersiz karakterler içeren birkaç dosya içeriyorsa, desteklenmeyen karakterler içeren dosyaları yeniden adlandırmak için [Scanunsupportedchars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) betiğini kullanın.
 
 Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode karakterler bulunur.
 
@@ -358,7 +358,7 @@ Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode 
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (ondalık)** | -2147023673 | 
 | **Hata dizesi** | ERROR_CANCELLED |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilmesini, VSS anlık görüntülerini vb. dahil çeşitli nedenlerle başarısız olabilir. Bu hata, izlenmesi gereken gibi görünse de, birkaç saat boyunca devam etmediği takdirde bu hatayı yoksaymak güvenlidir.
 
@@ -380,7 +380,7 @@ Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilme
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (ondalık)** | -2134376372 |
 | **Hata dizesi** | ECS_E_USER_REQUEST_THROTTLED |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -391,7 +391,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (ondalık)** | -2134364043 |
 | **Hata dizesi** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 İşlem yapmanız gerekmez. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Geri yükleme tamamlandıktan hemen sonra değişiklik algılama çalıştırılır ve çalışma süresi dosya paylaşımındaki dosyaların sayısına bağlıdır.
 
@@ -402,7 +402,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80041295 |
 | **HRESULT (ondalık)** | -2147216747 |
 | **Hata dizesi** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Normalde bir yedekleme uygulaması VSS anlık görüntüsü oluşturduğunda ve eşitleme veritabanının yüklemesi kaldırıldığında bu hata oluşur. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -571,7 +571,7 @@ Depolama hesabı güvenlik duvarından veya depolama hesabının bir sanal ağa 
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (ondalık)** | -2134375911 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Bu hata genellikle kendiliğinden çözülür ve şunlar varsa gerçekleşebilir:
 
@@ -707,7 +707,7 @@ Bu hata birimin doldurulmuş olması nedeniyle oluşur. Bu hata genellikle sunuc
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (ondalık)** | -2134364145 |
 | **Hata dizesi** | ECS_E_REPLICA_NOT_READY |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Bu hata, bulut uç noktasının Azure dosya paylaşımında zaten mevcut olan içerikle oluşturulduğu için oluşur. Azure Dosya Eşitleme, sunucu uç noktasının ilk eşitlemesine devam etmesini sağlamak için Azure dosya paylaşımında tüm içerikleri taramalıdır.
 
@@ -768,7 +768,7 @@ Yüklenmiş olan bulut katmanlama filtresi sürücüsü (StorageSync.sys) sürü
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (ondalık)** | -2134376373 |
 | **Hata dizesi** | ECS_E_SERVICE_UNAVAILABLE |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dosya Eşitleme hizmeti kullanılabilir olduğunda bu hata otomatik olarak çözülecektir.
 
@@ -779,7 +779,7 @@ Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dos
 | **HRESULT** | 0x80131500 |
 | **HRESULT (ondalık)** | -2146233088 |
 | **Hata dizesi** | COR_E_EXCEPTION |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Eşitleme özel bir durum nedeniyle başarısız olduğu için bu hata oluşur. Hata birkaç saat devam ederse lütfen bir destek isteği oluşturun.
 
@@ -801,7 +801,7 @@ Depolama hesabı başka bir bölgeye yük devrettiği için bu hata oluştu. Azu
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (ondalık)** | -2134375922 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Eşitleme veritabanındaki bir iç sorundan dolayı bu hata oluşur. Eşitleme yeniden denendiğinde bu hata otomatik olarak düzelecektir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
 
@@ -885,7 +885,7 @@ Bu hata, Azure Dosya Eşitleme HTTP yeniden yönlendirmeyi (3xx durum kodu) dest
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (ondalık)** | -2134364027 |
 | **Hata dizesi** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitleme ilerleme durumu (AppliedItemCount 0 ' dan büyükse) Bu hata yoksayılabilir. [Geçerli bir eşitleme oturumunun ilerlemesini izlemek nasıl yaparım? bakın mi?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 

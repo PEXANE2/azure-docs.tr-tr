@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041793"
+ms.locfileid: "88056661"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -60,7 +60,7 @@ Bu öğreticiyi tamamlayabilmeniz için gerekenler aşağıda verilmiştir:
 - Çalışan bir mikrofona ve hoparlörlere (veya kulaklıktan) sahip bir Windows 10 PC
 - **ASP.net ve Web geliştirme** iş yükü yüklüyken [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
 - [.NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) veya üzeri
-- Azure hesabı. [Ücretsiz kaydolun](https://azure.microsoft.com/free/ai/).
+- Azure hesabı. [Ücretsiz kaydolun](https://azure.microsoft.com/free/cognitive-services/)
 - Bir [GitHub](https://github.com/) hesabı
 - [Windows için Git](https://git-scm.com/download/win)
 
@@ -83,7 +83,6 @@ Bu öğretici için farklı bir bölge kullanmak istiyorsanız, bu faktörler se
 
 * [Desteklenen bir Azure bölgesi](regions.md#voice-assistants)kullandığınızdan emin olun.
 * Doğrudan hat konuşma kanalı, standart ve sinir seslendirmeyi içeren metin okuma hizmetini kullanır. Sinir seslerini [belirli Azure bölgeleriyle sınırlıdır](regions.md#standard-and-neural-voices).
-* Ücretsiz deneme anahtarları belirli bir bölgeyle sınırlı olabilir.
 
 Bölgeler hakkında daha fazla bilgi için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).
 

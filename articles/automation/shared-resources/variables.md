@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187328"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055301"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu 'nda değişkenleri yönetme
 
@@ -30,7 +30,7 @@ Otomasyon değişkenleri aşağıdaki senaryolar için yararlıdır:
 
 Azure Otomasyonu değişkenleri sürdürür ve bir runbook ya da DSC yapılandırması başarısız olsa bile bunları kullanılabilir hale getirir. Bu davranış, bir runbook veya DSC yapılandırmasının, daha sonra başka bir runbook tarafından veya bir sonraki çalıştırılışında aynı runbook veya DSC yapılandırması tarafından kullanılan bir değer ayarlamasına olanak tanır.
 
-Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Bir değişken oluştururken Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. 
+Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Bir değişken oluşturduğunuzda, Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Değişkeni oluşturduktan sonra, değişkeni yeniden oluşturmadan şifreleme durumunu değiştiremezsiniz. Azure Güvenlik Merkezi 'nin önerisi, [Otomasyon hesabı değişkenlerinde](../../security-center/recommendations-reference.md#recs-computeapp)açıklandığı şekilde tüm Azure Otomasyonu değişkenlerini şifreleyebilmelidir. 
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır. 
@@ -69,7 +69,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon değişkenleri olu�
 
 Aşağıdaki tablodaki iç cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmalarında değişkenlere erişmek için kullanılır. Bu cmdlet 'ler genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](modules.md#internal-cmdlets).
 
-| İç cmdlet | Açıklama |
+| İç cmdlet | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Mevcut bir değişkenin değerini alır.|
 |`Set-AutomationVariable`|Mevcut bir değişken için değeri ayarlar.|
@@ -88,7 +88,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Aşağıdaki tablodaki işlevler, Python 2 runbook 'daki değişkenlere erişmek için kullanılır.
 
-|Python 2 Işlevleri|Açıklama|
+|Python 2 Işlevleri|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Mevcut bir değişkenin değerini alır. |
 |`automationassets.set_automation_variable`|Mevcut bir değişken için değeri ayarlar. |

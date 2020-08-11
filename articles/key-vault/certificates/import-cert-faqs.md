@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445792"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056355"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Sık sorulan sorular-Azure Key Vault sertifika içeri aktarma
 
@@ -32,6 +32,10 @@ Depolamayla, Anahtar Kasası 'na depolamadan sonra karşıya yüklenen korumalı
 ### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>' Hatalı parametre hatasını ' nasıl çözebilirim? Key Vault'ta içeri aktarma desteği sunulan sertifika biçimleri hangileridir?
 
 Sertifikayı içeri aktarırken, anahtarın dosyanın içine eklendiğinden emin olmanız gerekir. Özel anahtarınız farklı bir biçimde ayrı olarak varsa, anahtarı sertifikayla birleştirmeniz gerekir. Bazı sertifika yetkilileri sertifikaları farklı biçimlerde sağlar, bu nedenle sertifikayı içeri aktarmadan önce. pek veya. pfx biçiminde olduklarından ve kullanılan anahtarın RSA ya da ECC olduğundan emin olun. [Sertifika gereksinimlerini](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) ve [sertifika anahtarı gereksinimlerini](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)gözden geçirmek için bunlara bakın.
+
+###  <a name="can-i-import-certificate-using-arm-template"></a>ARM şablonunu kullanarak sertifikayı içeri aktarabilir miyim?
+
+Hayır, ARM şablonları kullanarak sertifika işlemleri yapmak mümkün değildir. Önerilen geçici çözüm, API veya CLı veya PowerShell 'deki sertifika içeri aktarma yöntemlerini kullanmaktır. Zaten bir sertifikanız varsa, parolayı bir gizli dizi olarak içeri aktarabilirsiniz.
 
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>Portal aracılığıyla sertifika içeri aktarma işlemi sırasında karşılaşılan "Bir sorun oluştu" hatası. Nasıl daha fazla araştırma yapabilirim?
     

@@ -1,14 +1,14 @@
 ---
 title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
-ms.date: 05/21/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdaad59d136e89c595a6a42a9760c73523a977c0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422836"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056627"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 

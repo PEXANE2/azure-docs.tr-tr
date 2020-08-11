@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653113"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054009"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>En son Azure Multi-Factor Authentication Sunucusu’na yükseltme
 
@@ -41,7 +41,7 @@ Adımları bir bakışta yükseltin:
 4. Yeni yükleyiciyi her MFA sunucusunda çalıştırın. Ana sunucuları, ana sunucu tarafından çoğaltılan eski veri dosyasını okuyabildiğinden önce yükseltin.
 
    > [!NOTE]
-   > Bir sunucuyu yükseltirken, diğer MFA sunucularıyla herhangi bir loaddengeleme veya trafik paylaşımının kaldırılması gerekir.
+   > Bir sunucuyu yükseltirken, diğer MFA sunucularıyla herhangi bir yük dengelemeden veya trafik paylaşımınızdan kaldırılmalıdır.
    >
    > Yükleyiciyi çalıştırmadan önce geçerli MFA sunucunuzu kaldırmanız gerekmez. Yükleyici yerinde yükseltme gerçekleştirir. Yükleme yolu önceki yüklemeden kayıt defterinden alınır, bu nedenle aynı konuma yüklenir (örneğin, C:\Program Files\Multi-Factor Authentication sunucusu).
   

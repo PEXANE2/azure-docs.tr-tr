@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902054"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053584"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -38,16 +38,16 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Yerel Ayar  | Dil                          | Özelleştirmeler                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arapça (UAE)                      | Hayır                                                |
+| `ar-AE` | Arapça (UAE)                      | No                                                |
 | `ar-BH` | Arapça (Bahreyn), modern standart | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Dil modeli                                    |
-| `ar-IL` | Arapça (Israil)                   | Hayır                                                |
-| `ar-JO` | Arapça (Ürdün)                   | Hayır                                                |
-| `ar-KW` | Arapça (Kuveyt)                   | Hayır                                                |
-| `ar-LB` | Arapça (Lübnan)                  | Hayır                                                |
-| `ar-PS` | Arapça (Filistin Yönetimi)                | Hayır                                                |
-| `ar-QA` | Arapça (Qtor)                    | Hayır                                                |
-| `ar-SA` | Arapça (Suudi Arabistan)             | Hayır                                                |
+| `ar-IL` | Arapça (Israil)                   | No                                                |
+| `ar-JO` | Arapça (Ürdün)                   | No                                                |
+| `ar-KW` | Arapça (Kuveyt)                   | No                                                |
+| `ar-LB` | Arapça (Lübnan)                  | No                                                |
+| `ar-PS` | Arapça (Filistin Yönetimi)                | No                                                |
+| `ar-QA` | Arapça (Qtor)                    | No                                                |
+| `ar-SA` | Arapça (Suudi Arabistan)             | No                                                |
 | `ar-SY` | Arapça (Suriye)                    | Dil modeli                                    |
 | `ca-ES` | Katalanca                           | Dil modeli                                    |
 | `cs-CZ` | Çekçe (Çek Cumhuriyeti)            | Dil modeli                                    | 
@@ -104,7 +104,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | İsveççe (İsviçre)                  | Dil modeli                                    |
 | `ta-IN` | Tamil dili (Hindistan)                     | Dil modeli                                    |
 | `te-IN` | Telugu dili (Hindistan)                    | Dil modeli                                    |
-| `th-TH` | Tayca (Tayland)                   | Hayır                                                |
+| `th-TH` | Tayca (Tayland)                   | No                                                |
 | `tr-TR` | Türkçe (Türkiye)                  | Dil modeli                                    |
 | `zh-CN` | Çince (Mandarin, Basitleştirilmiş)    | Akustik model<br>Dil modeli                  |
 | `zh-HK` | Çince (Cantoneo, geleneksel)  | Dil modeli                                    |
@@ -361,20 +361,20 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 | Yerel Ayar | Dil | Metne bağımlı doğrulama | Metnin bağımsız doğrulaması | Metnin bağımsız tanımlayıcısı |
 |----|----|----|----|----|
 | tr-TR | İngilizce (ABD) | evet | evet | evet |
-|zh-CN  |Çince (Mandarin, Basitleştirilmiş)|    yok|    evet|    evet|
-|de-DE  |Almanca (Almanya)   |yok    |evet    |evet|
-|en-GB  |İngilizce (UK)   |yok    |evet    |evet|
-|fr-FR  |Fransızca (Fransa)    |yok    |evet    |evet|
-|En-AU  |İngilizce (Avustralya)    |yok    |evet    |evet|
-|en-CA  |İngilizce (Kanada)   |yok|   evet|    evet|
-|fr-CA  |Fransızca (Kanada)    |yok    |evet|   evet|
-|it-IT  |İtalyanca|   yok |evet|   evet|
-|es-ES| İspanyolca (İspanya) |yok    |evet|   evet|
-|es-MX  |İspanyolca (Meksika)   |yok|   evet|    evet|
-|ja-JP| Japonca    |yok    |evet    |evet|
-|pt-BR| Portekizce (Brezilya)|    yok|    evet|    evet|
+|zh-CN    |Çince (Mandarin, Basitleştirilmiş)|    yok|    evet|    evet|
+|de-DE    |Almanca (Almanya)    |yok    |evet    |evet|
+|en-GB    |İngilizce (UK)    |yok    |evet    |evet|
+|fr-FR    |Fransızca (Fransa)    |yok    |evet    |evet|
+|En-AU    |İngilizce (Avustralya)    |yok    |evet    |evet|
+|en-CA    |İngilizce (Kanada)    |yok|    evet|    evet|
+|fr-CA    |Fransızca (Kanada)    |yok    |evet|    evet|
+|it-IT    |İtalyanca|    yok    |evet|    evet|
+|es-ES|    İspanyolca (İspanya)    |yok    |evet|    evet|
+|es-MX    |İspanyolca (Meksika)    |yok|    evet|    evet|
+|ja-JP|    Japonca    |yok    |evet    |evet|
+|pt-BR|    Portekizce (Brezilya)|    yok|    evet|    evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma hizmeti deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
+* [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
 * [Bkz. C 'de konuşmayı tanıma #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

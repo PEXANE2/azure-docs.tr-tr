@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 08/10/2020
 ms.author: iainfou
-ms.openlocfilehash: f77d9cd72476f9f2c30ca22bb2296efe1fd6cf9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051672"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054298"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure Active Directory Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -145,7 +145,7 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 | Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Downtime  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portalı | 15 dakika | Kesinti süresi gerekli değildir | Yok |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-yönetilen etki alanını geçiş için hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
@@ -197,6 +197,12 @@ Yönetilen etki alanını geçişe hazırlamak için aşağıdaki adımları izl
     ```powershell
     $creds = Get-Credential
     ```
+    
+1. Azure abonelik KIMLIĞINIZ için bir değişken tanımlayın. Gerekirse, abonelik kimliklerinizi listelemek ve görüntülemek için [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) cmdlet 'ini kullanabilirsiniz. Aşağıdaki komutta kendi abonelik KIMLIĞINIZI girin:
+
+   ```powershell
+   $subscriptionId = 'yourSubscriptionId'
+   ```
 
 1. Şimdi `Migrate-Aadds` *-Prepare* parametresini kullanarak cmdlet 'ini çalıştırın. Kendi yönetilen etki alanınız için *aaddscontoso.com*gibi *-manageddomainfqdn* sağlayın:
 
@@ -204,7 +210,8 @@ Yönetilen etki alanını geçişe hazırlamak için aşağıdaki adımları izl
     Migrate-Aadds `
         -Prepare `
         -ManagedDomainFqdn aaddscontoso.com `
-        -Credentials $creds
+        -Credentials $creds `
+        -SubscriptionId $subscriptionId
     ```
 
 ## <a name="migrate-the-managed-domain"></a>Yönetilen etki alanını geçirme
@@ -224,7 +231,8 @@ Migrate-Aadds `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 Komut dosyası, yönetilen etki alanını geçişe hazırlandıktan sonra geçiş işlemini başlatmak için *Y* girin.
@@ -310,7 +318,8 @@ Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 ### <a name="restore"></a>Geri Yükleme

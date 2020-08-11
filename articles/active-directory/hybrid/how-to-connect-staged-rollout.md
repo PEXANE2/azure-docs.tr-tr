@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460618"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053239"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -84,7 +84,7 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 - Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
 
-- Kullanıcılar hazırlanan piyasaya sürülirken parola süre sonu ilkesi, özelleştirme seçeneği olmadan 90 gün olarak ayarlanır. 
+- Kullanıcılar hazırlanan piyasaya sürülirken, Enforcecıpasswordpolicyforpasswordsyncedusers etkinleştirildiğinde parola süre sonu ilkesi, özelleştirme seçeneği olmadan 90 gün olarak ayarlanır. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama

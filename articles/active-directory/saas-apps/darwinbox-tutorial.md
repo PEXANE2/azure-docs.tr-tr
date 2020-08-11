@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7169d6ab1e6a63b7275b8b09e977117ca0f62750
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 783a61c8e2b6c60b81e31d7771d3237c93be92a8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902703"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055603"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Öğretici: Darwinbox ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,18 +30,17 @@ Bu öğreticide, Darwinbox 'ı Azure Active Directory (Azure AD) ile tümleştir
 * Azure AD 'de, Darwinbox erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak Darwinbox 'a oturum açmalarına izin vermek.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Darwınbox çoklu oturum açma (SSO) etkin aboneliği.
-
 > [!NOTE]
 > Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
+
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -86,12 +85,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.darwinbox.in/`
+   1. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.darwinbox.in/`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
+   1. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
 
-    > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Darwinbox istemci destek ekibine](https://darwinbox.com/contact-us.php) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+      > [!NOTE]
+      > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Darwinbox istemci destek ekibine](https://darwinbox.com/contact-us.php) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -144,6 +143,28 @@ Bu bölümde, Darwinbox 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Darwinbox kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Darwinbox 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="test-sso-for-darwinbox-mobile"></a>Darwinbox için test SSO 'SU (mobil)
+
+1. Darwinbox mobil uygulamasını açın. **Kuruluş URL 'Sini girin** ' e tıklayın Şimdi metin kutusuna kuruluşunuzun URL 'sini girin ve ok düğmesine tıklayın.
+
+    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+
+1. Birden çok etki alanınız varsa, etki alanına tıklayın.
+
+    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+
+1. Azure AD e-postanızı Darwinbox uygulamasına girip **İleri**' ye tıklayın.
+
+    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+
+1. Azure AD parolanızı Darwinbox uygulamasına girip **oturum aç**' a tıklayın.
+
+    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+
+1. Son olarak, başarıyla oturum açtıktan sonra uygulama giriş sayfası görüntülenir.
+
+    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

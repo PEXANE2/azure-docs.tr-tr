@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: eda3afdf8deb3336cd0c5293c2422e694caa69c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80132731"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055475"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C 'de ilk dayanıklı işlevinizi oluşturma\#
 
@@ -23,7 +23,7 @@ Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -31,7 +31,7 @@ Bu öğreticiyi tamamlamak için:
 
 * Aşağıdaki VS Code uzantılarını yükler:
     - [Azure İşlevleri](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
-    - [, #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+    - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 * [Azure Functions Core Tools](../functions-run-local.md)en son sürümüne sahip olduğunuzdan emin olun.
 
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlamak için:
 
 Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. 
 
-1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...`.
+1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...` .
 
     ![İşlev projesi oluşturma](media/durable-functions-create-first-csharp/functions-vscode-create-project.png)
 
@@ -56,17 +56,17 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
     | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | İşlev uygulaması projeniz için bir dil seçin | C# | Yerel bir C# işlevleri projesi oluşturun. |
-    | Sürüm seçin | Azure Işlevleri v3 | Bu seçeneği yalnızca temel araçlar yüklü değilse görürsünüz. Bu durumda, uygulamayı ilk kez çalıştırdığınızda çekirdek araçlar yüklenir. |
+    | Sürüm seçin | Azure İşlevleri v3 | Bu seçeneği yalnızca temel araçlar yüklü değilse görürsünüz. Bu durumda, uygulamayı ilk kez çalıştırdığınızda çekirdek araçlar yüklenir. |
     | Projenizin ilk işlevi için bir şablon seçin | Şimdilik atla | |
     | Projenizi nasıl açmak istediğinizi seçin | Geçerli pencerede aç | VS Code seçtiğiniz klasörde yeniden açılır. |
 
-Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir klasörde işlev uygulaması projesi oluşturur. Bu proje [Host. JSON](../functions-host-json.md) ve [Local. Settings. JSON](../functions-run-local.md#local-settings-file) yapılandırma dosyalarını içerir.
+Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir klasörde işlev uygulaması projesi oluşturur. Bu proje yapılandırma dosyalarında [host.js](../functions-host-json.md) ve [local.settings.js](../functions-run-local.md#local-settings-file) içerir.
 
 ## <a name="add-functions-to-the-app"></a>Uygulamaya işlevler ekleyin
 
 Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir şablon kullanır.
 
-1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...`.
+1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...` .
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
@@ -84,13 +84,13 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
     | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma |  |
     | Yeni depolama hesabının adını girin | *benzersiz ad* | Oluşturulacak depolama hesabının adı |
     | Kaynak grubu seçme | *benzersiz ad* | Oluşturulacak kaynak grubunun adı |
-    | Bir konum seçin | *geli* | Size yakın bir bölge seçin |
+    | Bir konum seçin | *region* | Size yakın bir bölge seçin |
 
-Projeye yeni işlevleri içeren bir sınıf eklenir. VS Code Ayrıca, depolama hesabı bağlantı dizesini *Local. Settings. JSON* öğesine ve *. csproj* proje dosyasına bir [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet paketine bir başvuruya ekler.
+Projeye yeni işlevleri içeren bir sınıf eklenir. VS Code Ayrıca depolama hesabı bağlantı dizesini *local.settings.jsüzerine* ve [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) *. csproj* proje dosyasına bir NuGet paketine bir başvuruya ekler.
 
 İçeriği görüntülemek için yeni *HelloOrchestration.cs* dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
-| Yöntem | Ifadelerini | Açıklama |
+| Yöntem | Ifadelerini | Description |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
 | **`SayHello`** | `HelloOrchestration_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |
@@ -102,7 +102,7 @@ Artık işlev projenizi ve dayanıklı bir işlevi oluşturduğunuza göre, bunu
 
 Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirme bilgisayarınızda çalıştırmanıza olanak sağlar. Visual Studio Code'da ilk kez bir işlev başlattığınızda bu araçları yüklemeniz istenir.
 
-1. İşlevinizi test etmek için `SayHello` etkinlik işlev kodunda bir kesme noktası ayarlayın ve F5 'e basarak işlev uygulaması projesini başlatın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir.
+1. İşlevinizi test etmek için etkinlik işlev kodunda bir kesme noktası ayarlayın `SayHello` ve F5 'e basarak işlev uygulaması projesini başlatın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir.
 
     > [!NOTE]
     > Hata ayıklama hakkında daha fazla bilgi için [dayanıklı işlevler tanılamayı](durable-functions-diagnostics.md#debugging) inceleyin.
@@ -148,7 +148,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 1. **Çıktı** panelinden HTTP tetikleyicisinin URL’sini kopyalayın. HTTP tarafından tetiklenen işlevinizi çağıran URL aşağıdaki biçimde olmalıdır:
 
-        https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart
+    `https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart`
 
 1. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. Yayımlanan uygulamayı kullanmadan önce aynı durum yanıtını almalısınız.
 
@@ -167,7 +167,7 @@ Bu makalede, "Hello World" dayanıklı işlevini yerel olarak oluşturma ve test
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -181,9 +181,9 @@ Bu öğreticiyi tamamlamak için:
 
 Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta olabilecek bir proje oluşturur. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
-1. Visual Studio 'da **Dosya** menüsünden **Yeni** > **Proje** ' yi seçin.
+1. Visual Studio 'da Dosya menüsünden **Yeni**  >  **Proje** ' yi **File** seçin.
 
-1. **Yeni proje oluştur** iletişim kutusunda, arama `functions`yapın, **Azure işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
+1. **Yeni proje oluştur** iletişim kutusunda, arama `functions` yapın, **Azure Işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
 
     ![Visual Studio'da işlev oluşturmaya yönelik yeni proje iletişim kutusu](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
@@ -205,7 +205,7 @@ Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta ola
 
 Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir şablon kullanır.
 
-1. Visual Studio 'da projeye sağ tıklayın ve**yeni Azure işlevi** **Ekle** > ' yi seçin.
+1. Visual Studio 'da projeye sağ tıklayın ve **Add**  >  **yeni Azure işlevi**Ekle ' yi seçin.
 
     ![Yeni işlev Ekle](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
@@ -217,7 +217,7 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
 
 Uygulamaya yeni bir dayanıklı işlev eklenir.  İçeriğini görüntülemek için yeni. cs dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
-| Yöntem | Ifadelerini | Açıklama |
+| Yöntem | Ifadelerini | Description |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
 | **`SayHello`** | `<file-name>_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |
@@ -277,7 +277,7 @@ Projenizi yayımlayabilmeniz için önce Azure aboneliğinizde bir işlev uygula
 
     Dayanıklı işlev HTTP tetikleyicinizi çağıran URL aşağıdaki biçimde olmalıdır:
 
-        https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart
+    `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart`
 
 2. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. Yayımlanan uygulamayı kullanmadan önce aynı durum yanıtını almalısınız.
 

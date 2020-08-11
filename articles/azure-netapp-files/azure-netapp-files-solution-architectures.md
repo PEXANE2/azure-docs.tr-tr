@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 19e02012c31246b3b6b4636ef61154fbade347ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494630"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055811"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -44,8 +44,8 @@ Bu bölüm, Windows Uygulamaları ve SQL Server çözümleri için başvurular s
 
 ### <a name="file-sharing-and-global-file-caching"></a>Dosya paylaşımı ve genel dosya önbelleğe alma
 
-* [Talon/Azure NetApp Files dağıtımı](https://youtu.be/91LKb1qsLIM)
 * [Kendi Azure NFS 'Nizi oluşturun mi? Linux dosya paylaşımlarını buluta paketleyin](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
+* [Genel dosya önbelleği/Azure NetApp Files dağıtımı](https://youtu.be/91LKb1qsLIM)
 
 ### <a name="sql-server"></a>SQL Server
 

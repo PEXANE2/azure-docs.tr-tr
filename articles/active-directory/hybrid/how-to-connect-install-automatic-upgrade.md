@@ -16,15 +16,15 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359016"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053295"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
-Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
+Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md).  Bu özellik [Build 1.1.561](reference-connect-version-history.md) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
 
 ## <a name="overview"></a>Genel Bakış
 Azure AD Connect yüklemenizin her zaman güncel olduğundan emin olmak, **otomatik yükseltme** özelliğiyle hiçbir zaman daha kolay olmamıştı. Bu özellik, hızlı yüklemeler ve DirSync yükseltmeleri için varsayılan olarak etkindir. Yeni bir sürüm yayınlandığında, yüklemeniz otomatik olarak yükseltilir.
@@ -71,7 +71,7 @@ Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.
 
 Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
-| Sonuç kodu öneki | Açıklama |
+| Sonuç kodu öneki | Description |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
 | Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
@@ -79,7 +79,7 @@ Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç Iletisi | Açıklama |
+| Sonuç Iletisi | Description |
 | --- | --- |
 | **Yükseltme Iptal edildi** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |

@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073347"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055242"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL ürün ailesinin bir parçası olan Azure SQL yönetilen örneği, tam olarak yönetilen ve tek yeşil platformun hizmet olarak tüm avantajları ile en geniş SQL Server veritabanı altyapısı uyumluluğunu birleştiren akıllı ve ölçeklenebilir bulut veritabanı hizmetidir. SQL yönetilen örneği, en son SQL Server (Enterprise Edition) veritabanı altyapısı ile %100 uyumluluğuna sahiptir. Bu, yaygın güvenlik sorunlarını ele alan yerel bir [sanal ağ (VNet)](../../virtual-network/virtual-networks-overview.md) uygulamasını ve mevcut SQL Server müşterileri için uygun bir [iş modelini](https://azure.microsoft.com/pricing/details/sql-database/) sağlar. SQL yönetilen örneği, mevcut SQL Server müşterilerin Şirket içi uygulamalarını en az uygulama ve veritabanı değişiklikleriyle buluta taşıyıp kaydıramalarına olanak sağlar. Aynı zamanda, SQL yönetilen örneği, yönetim yükünü ve TCO 'ları büyük ölçüde azaltan tüm PaaS yeteneklerini (otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri, [otomatik yedeklemeler](../database/automated-backups-overview.md), [yüksek kullanılabilirlik](../database/high-availability-sla.md)) korur.
+Azure SQL yönetilen örneği, tam olarak yönetilen ve tek yeşil platformun hizmet olarak tüm avantajları ile en geniş SQL Server veritabanı altyapısı uyumluluğunu birleştiren akıllı ve ölçeklenebilir bir bulut veritabanı hizmetidir. SQL yönetilen örneği, en son SQL Server (Enterprise Edition) veritabanı altyapısı ile %100 uyumluluğuna sahiptir. Bu, yaygın güvenlik sorunlarını ele alan yerel bir [sanal ağ (VNet)](../../virtual-network/virtual-networks-overview.md) uygulamasını ve mevcut SQL Server müşterileri için uygun bir [iş modelini](https://azure.microsoft.com/pricing/details/sql-database/) sağlar. SQL yönetilen örneği, mevcut SQL Server müşterilerin Şirket içi uygulamalarını en az uygulama ve veritabanı değişiklikleriyle buluta taşıyıp kaydıramalarına olanak sağlar. Aynı zamanda, SQL yönetilen örneği, yönetim yükünü ve TCO 'ları büyük ölçüde azaltan tüm PaaS yeteneklerini (otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri, [otomatik yedeklemeler](../database/automated-backups-overview.md), [yüksek kullanılabilirlik](../database/high-availability-sla.md)) korur.
 
 > [!IMPORTANT]
 > SQL yönetilen örneğinin Şu anda kullanılabildiği bölgelerin listesi için bkz. [Desteklenen bölgeler](resource-limits.md#supported-regions).
@@ -60,7 +60,7 @@ SQL yönetilen örneği 'nin temel özellikleri aşağıdaki tabloda gösterilmi
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
 | VNet-Azure Resource Manager dağıtımı | Yes |
-| VNet-klasik dağıtım modeli | Hayır |
+| VNet-klasik dağıtım modeli | No |
 | Portal desteği | Yes|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -161,7 +161,7 @@ SQL yönetilen örneği, Azure AD ile tümleştirilmiş geleneksel SQL Server ve
 
 SQL yönetilen örneği, [Azure Active Directory tümleştirmeyle](../database/authentication-aad-overview.md)veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../database/authentication-mfa-ssms-configure.md) destekler.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 SQL yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:  
 

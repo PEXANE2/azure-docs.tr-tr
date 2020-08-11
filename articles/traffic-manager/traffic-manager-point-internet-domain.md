@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
-ms.openlocfilehash: 4b0f79ba072c813a7639e87025c19a34e65df023
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69bdf9a0e04b4d9c2a55f1c0f346d601830ded09
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183469"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053074"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Bir şirketin İnternet etki alanını Azure Traffic Manager etki alanına yönlendirme
 
@@ -23,7 +23,7 @@ Traffic Manager profili oluşturduğunuzda, Azure bu profil için otomatik olara
 
 Örneğin, `www.contoso.com` adıyla Traffic Manager `contoso.trafficmanager.net` DNS adına işaret etmek için, aşağıdaki DNS kaynak kaydını oluşturursunuz:
 
-`www.contoso.com IN CNAME contoso.trafficmanager.net`
+`www.contoso.com IN CNAME contoso.trafficmanager.net.`
 
 *Www \. contoso.com* 'e giden tüm trafik istekleri *contoso.trafficmanager.net*'e yönlendirilir.
 

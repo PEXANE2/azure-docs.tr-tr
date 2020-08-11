@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006800"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056151"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market'te bulunan bir teklifi güncelleştirme
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market 'te mevcut bir teklifi güncelleştirme
 
 Mevcut tekliflerinizi, Iş Ortağı Merkezi ' nde [ticari Market portalının](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **genel bakış** sekmesinde görebilirsiniz.
 
-Market 'te Şu anda etkin olan mevcut bir teklifi güncelleştirmek için:
+Ticari Market 'te Şu anda etkin olan mevcut bir teklifi güncelleştirmek için:
 
 1. Güncelleştirmek istediğiniz teklifin adını seçin. Teklifin durumu **Önizleme**, **canlı**, **Yayımlama sürüyor**, **taslak**, **dikkat edilmesi gereken**ya da **kullanılabilir değil** (daha önce teklifi satmayı durdurmayı seçtiyseniz) olarak listelenebilir. Seçildiğinde, bu teklif için **teklif genel bakış** sayfası açılır.
 2. Teklif Genel Bakış sayfasındaki karttan **Güncelleştir** ' i veya güncelleştirmek istediğiniz alan için sol gezinti üzerindeki menü öğesini seçin. **Teklif kurulumu**, **Özellikler**, **teklif listesi**, **Önizleme**, **Teknik yapılandırma**, **plana genel bakış**veya **test sürüşü**güncelleştirmek isteyebilirsiniz.
@@ -74,7 +74,7 @@ Planı eski fiyatla gizlemiş olduğunuza göre, bu planın güncelleştirilmiş
 1. **Taslağı kaydet**'i seçin.
 1. Yeni plan için gerekli tüm bölümleri tamamladıktan sonra **gözden geçir ve Yayımla**' yı seçin. Bu işlem teklifinizi İnceleme ve yayınlama için gönderir. Daha ayrıntılı bilgi edinmek için [gözden geçirin ve ticari Market 'e bir teklif yayımlayın](../review-publish-offer.md) .
 
-## <a name="compare-changes-to-marketplace-offers"></a>Market teklifleriyle yapılan değişiklikleri karşılaştırın
+## <a name="compare-changes-to-commercial-marketplace-offers"></a>Ticari Market teklifleriyle yapılan değişiklikleri karşılaştırın
 
 Bir [yayınlanmış](#compare-changes-to-published-offer) veya [Önizleme](#compare-changes-to-a-preview-offer) teklifinde yaptığınız değişiklikleri **Compare**kullanarak canlı hale getirmeden önce denetleyebilirsiniz.
 
@@ -161,15 +161,17 @@ Teklifi daha sonra yayınlamak istiyorsanız, Yayımlama sürecini üzerinde ba�
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Teklif veya plan satmaya
 
+Çeşitli nedenlerle teklif listelerinizi Microsoft ticari Market 'ten kaldırmaya karar verebilirsiniz. Teklif kaldırma, yeni müşterilerin teklifinizi satın alıp dağıtmamasını sağlar, ancak mevcut müşterileri etkilemez.
+
 Bir teklifi yayımladıktan sonra satışı durdurmak için **teklif genel bakış** sayfasından **satışı durdur** ' u seçin.
 
-Teklifi satmayı durdurmak istediğinizi tamamladıktan sonra, birkaç saat içinde artık Market 'te görünür olmayacaktır ve yeni müşteriler bunu indiremez.
+Teklifi satmayı durdurmak istediğinizi doğruladıktan sonra, birkaç saat içinde ticari Market 'te artık görünmez ve yeni müşteriler bunu indiremez.
 
-Bir planı satmaya durdurmak için **plana genel bakış** sayfasından **satışı durdur** ' u seçin. Bir planı satmaya durdurma seçeneği yalnızca teklifte birden fazla planınız varsa kullanılabilir. Teklifinizin içindeki diğer planları etkilemeden bir plan satmaya izin vermeyi seçebilirsiniz. Planı satmaya durdurmak istediğinizi onaylayın, değişikliğin etkili olması için teklifi yeniden yayımlamanız gerekir. Teklif yeniden yayımlandıktan sonra, plan Market 'te artık görünmez olmayacaktır ve yeni müşteriler bunu indiremez.
+Bir planı satmaya durdurmak için **plana genel bakış** sayfasından **satışı durdur** ' u seçin. Bir planı satmaya durdurma seçeneği yalnızca teklifte birden fazla planınız varsa kullanılabilir. Teklifinizin içindeki diğer planları etkilemeden bir plan satmaya izin vermeyi seçebilirsiniz. Planı satmaya durdurmak istediğinizi onaylayın, değişikliğin etkili olması için teklifi yeniden yayımlamanız gerekir. Teklif yeniden yayımlandıktan sonra, plan ticari Market 'te artık görünmez ve yeni müşteriler bunu indiremez.
 
 Teklifi veya planı önceden almış olan müşteriler onu kullanmaya devam edebilir. Bu kullanıcılar yeniden indirebilir, ancak teklifi veya planı daha sonra güncelleştirip yeniden yayımladığınızda güncelleştirmeleri almaz.
 
-Teklifi/planı satmaya başladıktan sonra, **mevcut olmayan** bir durum Ile Iş Ortağı Merkezi 'Nde ticari Market portalında görmeye devam edersiniz.
+Teklifi/planı satmaya başladıktan sonra, **mevcut olmayan** bir durum Ile Iş Ortağı Merkezi 'nde ticari Market portalında görmeye devam edersiniz.
 
 Bu teklifi veya planı yeniden listeya da satmaya karar verirseniz, [mevcut bir teklifi güncelleştirmek](#update-an-existing-offer-in-the-commercial-marketplace)için yönergeleri izleyin. Herhangi bir değişiklik yaptıktan sonra teklifi veya planı **yayımlamanız** gerektiğini unutmayın.
 

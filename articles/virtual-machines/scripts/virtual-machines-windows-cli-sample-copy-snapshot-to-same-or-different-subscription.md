@@ -1,6 +1,6 @@
 ---
-title: Yönetilen diskin anlık görüntüsünü bir Subscription-CLı örneğine kopyalama
-description: Azure CLI Betik Örneği - CLI ile bir yönetilen diskin anlık görüntüsünü aynı veya farklı aboneliğe kopyalama (taşıma)
+title: Yönetilen diskin anlık görüntüsünü bir abonelik-CLı örneğine kopyalama, Windows VM
+description: Azure CLı betik örneği-bir Windows sanal makinesinde yönetilen bir diskin aynı veya farklı bir aboneliğe sahip olarak kopyasını kopyalama (taşıma)
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 54029e2ccbf592dfcde484728fa9cb969a668edd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b73bf62bfce456e65fde153379690bc9823e6a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010112"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056746"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>CLI ile bir yönetilen diskin anlık görüntüsünü aynı veya farklı aboneliğe kopyalama
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli-on-a-windows-vm"></a>Bir Windows VM 'de yönetilen diskin anlık görüntüsünü CLı ile aynı veya farklı aboneliğe kopyalama
 
 Bu betik bir yönetilen diskin anlık görüntüsünü aynı veya farklı bir aboneliğe kopyalar. Aşağıdaki senaryolar için bu betiği kullanın:
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550972"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055777"
 ---
 # <a name="blob-snapshots"></a>Blob anlık görüntüleri
 
@@ -33,7 +33,7 @@ Blob URI 'si, blob URI 'sinin, anlık görüntünün alındığı saati belirtme
 > Tüm anlık görüntüler, temel Blobun URI 'sini paylaşır. Temel blob ve anlık görüntü arasındaki tek ayrım, eklenen **Tarih saat** değeridir.
 >
 
-Blob herhangi bir sayıda anlık görüntüye sahip olabilir. Anlık görüntüler açıkça silinene kadar kalır, yani bir anlık görüntü kendi temel blobunun temelini tutmaz. Geçerli anlık görüntülerinizi izlemek için temel bloba ilişkili anlık görüntüleri numaralandırabilirsiniz.
+Blob herhangi bir sayıda anlık görüntüye sahip olabilir. Anlık görüntüler, bağımsız olarak ya da temel Blobun blob silme işleminin bir parçası olarak açıkça silinene kadar kalır. Geçerli anlık görüntülerinizi izlemek için temel bloba ilişkili anlık görüntüleri numaralandırabilirsiniz.
 
 Bir Blobun anlık görüntüsünü oluşturduğunuzda, Blobun sistem özellikleri aynı değerlerle anlık görüntüye kopyalanır. Temel Blobun meta verileri, oluşturduğunuz sırada anlık görüntü için ayrı meta veriler belirtmediğiniz müddetçe anlık görüntüye de kopyalanır. Anlık görüntü oluşturduktan sonra, bunu okuyabilir, kopyalayabilir veya silebilirsiniz, ancak değiştiremezsiniz.
 

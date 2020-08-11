@@ -9,18 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465550"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053635"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme
 
 Özel bir etki alanını blob hizmeti uç noktası veya [statik bir Web sitesi](storage-blob-static-website.md) uç noktası ile eşleyebilirsiniz. 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Bu eşleme yalnızca alt etki alanları için geçerlidir (örneğin: `www.contoso.com` ). Web uç noktanızın kök etki alanında kullanılabilir olmasını istiyorsanız (örneğin: `contoso.com` ), Azure CDN kullanmanız gerekir. Rehberlik için, bu makalenin [https özellikli özel etki alanı eşleştirme](#enable-https) bölümüne bakın. Bu makalenin bu bölümüne, özel etki alanınızı kök etki alanını etkinleştirmek üzere gittiğinden, HTTPS 'yi etkinleştirmek için bu bölümdeki adım isteğe bağlıdır. 

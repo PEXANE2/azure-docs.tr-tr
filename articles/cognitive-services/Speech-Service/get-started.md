@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656139"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056474"
 ---
-# <a name="try-the-speech-service-for-free"></a>Konuşma hizmetini ücretsiz ' ' için deneyin
+# <a name="try-the-speech-service-for-free"></a>Konuşma tanıma hizmetini ücretsiz olarak deneyin
 
 Bu makalede, hizmetin neler yapabileceğini keşfedebilmeniz ve gereksinimlerinize uygun olup olmadığına karar vermek için konuşma hizmetini ücretsiz olarak test etmek için bir seçenek belirleyin. Durumunuza ve kullanım örneğine bağlı olarak aşağıdaki iki seçenekten birini belirleyin:
 
@@ -52,7 +52,7 @@ Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.micr
 
 Azure hesabınıza bir konuşma hizmeti kaynağı (ücretsiz veya ücretli katman) eklemek için:
 
-1. Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Portalın sol üst kısmında **kaynak oluştur** ' u seçin. **Kaynak oluştur**' u görmüyorsanız, sol üstteki daraltılan menüyü seçerek her zaman bulabilirsiniz:
 
@@ -87,7 +87,7 @@ Bir abonelikten diğerine geçiş yapmak için, örneğin ücretsiz deneme süre
 
 ## <a name="about-regions"></a>Bölgeler hakkında
 
-- Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, bir konuşma yapılandırması oluştururken gibi bölge kodunu `westus`sağlarsınız.
+- Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, `westus` bir konuşma yapılandırması oluştururken gibi bölge kodunu sağlarsınız.
 - Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](rest-apis.md)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
 - Bölge için oluşturulan anahtarlar yalnızca o bölgede geçerlidir. Bunları diğer bölgelerle birlikte kullanmaya çalışmak, kimlik doğrulama hatalarına neden olur.
 
@@ -96,5 +96,5 @@ Bir abonelikten diğerine geçiş yapmak için, örneğin ücretsiz deneme süre
 10 dakikalık hızlı başlangıçlardan birini tamamlayıp SDK örneklerimize göz atın:
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [konuşma SDK örneklerinde](speech-sdk.md#sample-source-code) konuşmayı tanıma
+> [Hızlı başlangıç: konuşma CLI](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programmer-tool-spx) 
+>  ile konuşmayı tanıma [Konuşma SDK örnekleri](speech-sdk.md#sample-source-code)

@@ -1,14 +1,14 @@
 ---
 title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681077"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056415"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -63,10 +63,10 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>Disk belleği sonuçları
 
-Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**.
-**Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
+Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+ **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**. **Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
 
- hiçbir sütun veya bir sorgunun istediği daha az kaynak olması nedeniyle, sayfalama devre dışı bırakıldığında veya mümkün olmadığında, **Resultkesilebilir** **değeri true** 'dur `id` . **Resultkesilecek** değeri **true**olduğunda **$skipToken** özelliği ayarlı değildir.
+ hiçbir sütun ya da bir sorgunun istediği daha az kaynak olduğunda, sayfalama devre dışı bırakıldığında veya mümkün olmadığında **Resultkesilecek** değeri **true** 'dur `id` . **Resultkesilecek** **değeri true**olduğunda **$skipToken** özelliği ayarlı değildir.
 
 Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve bu kayıtlar Azure CLı ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** ve Azure PowerShell gösterilmektedir:
 

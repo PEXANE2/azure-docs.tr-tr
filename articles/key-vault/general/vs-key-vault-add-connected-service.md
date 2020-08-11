@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8c452ffb40b27ed84061e93c1758b3d403052fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116851"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054449"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -25,97 +25,28 @@ Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikli
 ## <a name="prerequisites"></a>Önkoşullar
 
 - **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
-- **Visual studio 2019 sürüm 16,3** veya üzeri ya da **Web geliştirme** Iş yükünün yüklü olduğu **Visual Studio 2017 sürümü 15,7** . [Şimdi indir](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- Visual Studio 2017 ile ASP.NET (Core değil) için, varsayılan olarak yüklenmeyen .NET Framework 4.7.1 veya sonraki bir geliştirme araçlarına sahip olmanız gerekir. Bunları yüklemek için Visual Studio Yükleyicisi başlatın, **Değiştir**' i seçin ve ardından **tek tek bileşenler**' i seçin, ardından sağ tarafta **ASP.net ve Web geliştirme**' yı genişletin ve **.NET Framework 4.7.1 geliştirme araçları**' nı seçin.
-- Bir ASP.NET 4.7.1 veya üzeri ya da ASP.NET Core 2,0 veya üzeri bir Web projesi açık.
+- **Visual Studio 2019 sürüm 16,3** veya sonraki sürümleri [Şimdi indirin](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+
 
 ## <a name="add-key-vault-support-to-your-project"></a>Projenize Key Vault desteği ekleyin
 
 Başlamadan önce, Visual Studio 'da oturum açtığınızdan emin olun. Azure aboneliğiniz için kullandığınız hesapla oturum açın. Sonra bir ASP.NET 4.7.1 veya üzeri veya ASP.NET Core 2,0 Web projesi açın ve aşağıdaki adımları uygulayın:
 
-1. **Çözüm Gezgini**' de, Key Vault desteğini eklemek istediğiniz projeye sağ tıklayın ve **Add**  >  **bağlı hizmet**Ekle ' yi seçin.
+1. **Çözüm Gezgini**' de, Key Vault desteğini eklemek istediğiniz projeye sağ tıklayın ve **Add**  >  **bağlı hizmet**  >  **Ekle**Ekle ' yi seçin.
    Projenize ekleyebileceğiniz hizmetlerle birlikte Bağlı Hizmet sayfası görüntülenir.
-1. Kullanılabilir hizmetler menüsünde **Azure Key Vault Ile güvenli gizli**dizileri seçin.
+1. Kullanılabilir hizmetler menüsünde **Azure Key Vault** öğesini seçin ve **İleri**' ye tıklayın.
 
-   !["Azure Key Vault Ile güvenli gizli dizileri" seçin](../media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
+   !["Azure Key Vault" öğesini seçin](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. Kullanmak istediğiniz aboneliği seçin ve ardından yeni veya mevcut bir Key Vault seçin. Yeni Key Vault seçerseniz bir **düzenleme** bağlantısı görüntülenir. Yeni Key Vault yapılandırmak için seçin.
+1. Kullanmak istediğiniz aboneliği seçin ve ardından mevcut bir Key Vault seçip **son**' a tıklayın. 
 
-   ![Aboneliğinizi seçme](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Aboneliğinizi seçin](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
-1. **Azure Key Vault Düzenle**' de, Key Vault için kullanmak istediğiniz adı girin.
-
-1. Var olan bir **kaynak grubunu**seçin veya otomatik olarak oluşturulan benzersiz bir adla yeni bir tane oluşturmak için seçin.  Farklı bir ada sahip yeni bir grup oluşturmak istiyorsanız, [Azure Portal](https://portal.azure.com)kullanabilir ve sonra da sayfayı kapatıp yeniden başlatarak kaynak grupları listesini yeniden yükleyebilirsiniz.
-1. Key Vault oluşturulacağı **konumu** seçin. Web uygulamanız Azure 'da barındırılıyorsa, en iyi performans için Web uygulamasını barındıran bölgeyi seçin.
-1. **Fiyatlandırma katmanı**seçin. Ayrıntılar için bkz. [Key Vault fiyatlandırması](https://azure.microsoft.com/pricing/details/key-vault/).
-1. Yapılandırma seçimlerini kabul etmek için **Tamam ' ı** seçin.
-1. Mevcut bir Key Vault seçtikten veya yeni bir Key Vault yapılandırdıktan sonra, bağlı hizmeti eklemek için Visual Studio 'nun **Azure Key Vault** sekmesinde **Ekle** ' yi seçin.
-1. Key Vault için **gizli** dizi sayfasını açmak üzere **Bu Key Vault depolanan gizli dizileri Yönet** bağlantısını seçin. Sayfayı veya projeyi kapattıysanız, **tüm hizmetler** ' i seçip **güvenlik**' in altında **Key Vault**' i seçip Key Vault ' yı seçerek [Azure Portal](https://portal.azure.com) buna gidebilirsiniz.
-1. Oluşturduğunuz Key Vault Key Vault bölümünde, **gizlilikler**' ı ve sonra **Oluştur/içeri aktar**' ı seçin.
-
-   ![Gizli dizi oluştur/Içeri aktar](../media/vs-key-vault-add-connected-service/azure-generate-secrets.png)
-
-1. *MySecret* gibi bir gizli dizi girin ve bir test olarak herhangi bir dize değeri verin, **Oluştur** düğmesini seçin.
-
-   ![Gizli anahtar oluşturma](../media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
-
-1. seçim Başka bir gizli dizi girin, ancak bu süre, bu kez gizli anahtar adlandırarak bir kategoriye konur *--MySecret*. Bu söz dizimi, gizli dizi "MySecret" içeren bir "gizli dizi" kategorisini belirtir.
-
-Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NET 4.7.1 veya ASP.NET Core kullanıyor olmanıza bağlı olarak farklılık belirtir.
+Şimdi Key Vault bağlantısı oluşturulur ve kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NET 4.7.1 veya ASP.NET Core kullanıyor olmanıza bağlı olarak farklılık belirtir.
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>Koddaki gizli dizilerinizdeki erişimi (ASP.NET Core)
 
-1. Çözüm Gezgini, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Bu iki **NuGet paketini bulun ve** yükleme: [Microsoft. Azure. Services. appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve .NET Core 2 için [Microsoft. Azure. keykasasını](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) veya .NET Core 3 için Microsoft[. Azure. keykasası. Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)'u ekleyin.
-
-1. .NET Core 2 için, sekmesini seçin `Program.cs` ve `BuildWebHost` Program sınıfındaki tanımı aşağıdaki şekilde değiştirin:
-
-   ```csharp
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-           WebHost.CreateDefaultBuilder(args)
-               .ConfigureAppConfiguration((ctx, builder) =>
-               {
-                   var keyVaultEndpoint = GetKeyVaultEndpoint();
-                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
-                   {
-                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                       var keyVaultClient = new KeyVaultClient(
-                           new KeyVaultClient.AuthenticationCallback(
-                               azureServiceTokenProvider.KeyVaultTokenCallback));
-                       builder.AddAzureKeyVault(
-                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                   }
-               }
-            ).UseStartup<Startup>();
-
-        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
-    }
-   ```
-
-   .NET Core 3 için aşağıdaki kodu kullanın.
-
-   ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((context, config) =>
-                {
-                    var keyVaultEndpoint = GetKeyVaultEndpoint();
-                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
-                    {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        config.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                    }
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
-    ```
-
-1. Daha sonra *Index.cshtml.cs* gibi sayfa dosyalarından birini açın ve aşağıdaki kodu yazın:
+1. *Index.cshtml.cs* gibi sayfa dosyalarından birini açın ve aşağıdaki kodu yazın:
    1. Bu using yönergesini kullanarak bir başvuru ekleyin `Microsoft.Extensions.Configuration` :
 
        ```csharp
@@ -142,7 +73,7 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
        ```csharp
        public void OnGet()
        {
-           ViewData["Message"] = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+           ViewData["Message"] = "My key val = " + _configuration["<YourSecretNameStoredInKeyVault>"];
        }
        ```
 
@@ -155,32 +86,44 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
 Parolanın Key Vault başarıyla alınmadığını doğrulamak için uygulamayı yerel olarak çalıştırabilirsiniz.
 
 ## <a name="access-your-secrets-aspnet"></a>Gizli dizilerinizdeki erişimi (ASP.NET)
-
 Yapılandırmayı, web.config dosyası `appSettings` çalışma zamanında true değeri ile değiştirilmiş öğede bir kukla değere sahip olacak şekilde ayarlayabilirsiniz. Daha sonra bunu veri yapısı aracılığıyla erişebilirsiniz `ConfigurationManager.AppSettings` .
 
-1. web.config dosyanızı düzenleyin.  AppSettings etiketini bulun, bir öznitelik ekleyin `configBuilders="AzureKeyVault"` ve bir satır ekleyin:
-
-   ```xml
-      <add key="mysecret" value="dummy"/>
-   ```
+1. Çözüm Gezgini, projenize sağ tıklayın ve NuGet Paketlerini Yönet ' i seçin. Araştır sekmesinde [Microsoft.Configuration.ConfigUrationoluşturucular. Azure](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Azure/) ' u bulun ve çalıştırın.
+ 
+1. web.config dosyanızı açın ve aşağıdaki kodu yazın:
+    1. Ekle `configSections` ve `configBuilders` şunları yapın:
+        ```xml
+         <configSections>
+            <section
+                name="configBuilders"
+                type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                restartOnExternalChanges="false"
+                requirePermission="false" />
+         </configSections>
+         <configBuilders>
+            <builders>
+            <add
+                    name="AzureKeyVault"
+                    vaultName="vaultname"
+                    type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=1.0.0.0, Culture=neutral"
+                    vaultUri="https://vaultname.vault.azure.net" />
+            </builders>
+         </configBuilders>
+        ```
+    1. AppSettings etiketini bulun, bir öznitelik ekleyin `configBuilders="AzureKeyVault"` ve bir satır ekleyin:
+        ```xml
+         <add key="<secretNameInYourKeyVault>" value="dummy"/>
+        ```
 
 1. `About`Onay değerini göstermek için *HomeController.cs*içindeki metodu düzenleyin.
 
    ```csharp
    public ActionResult About()
    {
-       ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["mysecret"];
+       ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["<secretNameInYourKeyVault>"];
    }
    ```
 1. Uygulamayı hata ayıklayıcı altında yerel olarak çalıştırın, **hakkında** sekmesine geçin ve Key Vault değerin görüntülendiğini doğrulayın.
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Artık gerekli değilse kaynak grubunu silin. Bu, Key Vault ve ilgili kaynakları siler. Kaynak grubunu portal aracılığıyla silmek için:
-
-1. Portalın üst kısmındaki Arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubunu arama sonuçlarında gördüğünüzde seçin.
-2. **Kaynak grubunu sil**'i seçin.
-3. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını girin ve **Sil**' i seçin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -243,10 +186,9 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 | Tür | Başvuru |
 | --- | --- |
-| NET NuGet | Microsoft.Azure.KeyVault |
-| NET NuGet | Microsoft. Azure. Keykasası. WebKey |
-| NET NuGet | Microsoft.Rest.ClientRuntime |
-| NET NuGet | Microsoft.Rest.ClientRuntime.Azure |
+| NET NuGet | Azure. Identity |
+| NET NuGet | Azure. Security. Keykasa. Keys |
+| NET NuGet | Azure. Security. Keykasa. gizli dizileri |
 
 ### <a name="added-files-for-aspnet-framework"></a>ASP.NET Framework için dosyalar eklendi
 
@@ -256,34 +198,6 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 - Bağlı hizmetler ItemGroup ve dosyaya ConnectedServices.jseklendi.
 - [Eklenen başvurular](#added-references-for-aspnet-framework) bölümünde açıklanan .NET derlemelerine başvurular.
-
-### <a name="webconfig-or-appconfig-changes"></a>web.config veya app.config değişiklikleri
-
-- Aşağıdaki yapılandırma girdileri eklendi:
-
-    ```xml
-    <configSections>
-      <section
-           name="configBuilders"
-           type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-           restartOnExternalChanges="false"
-           requirePermission="false" />
-    </configSections>
-    <configBuilders>
-      <builders>
-        <add
-             name="AzureKeyVault"
-             vaultName="vaultname"
-             type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=1.0.0.0, Culture=neutral"
-             vaultUri="https://vaultname.vault.azure.net" />
-      </builders>
-    </configBuilders>
-    ```
-
-### <a name="changes-on-azure-for-aspnet-framework"></a>ASP.NET Framework için Azure değişiklikleri
-
-- Bir kaynak grubu oluşturdunuz (veya mevcut bir tane kullanıldı).
-- Belirtilen kaynak grubunda bir Key Vault oluşturuldu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

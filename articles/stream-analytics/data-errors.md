@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041056"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053159"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics veri hataları
 
-Veri hataları, verileri işlerken oluşan hatalardır.  Bu hatalar genellikle veri serileştirme, serileştirme ve yazma işlemleri sırasında oluşur.  Veri hataları oluştuğunda, Stream Analytics ayrıntılı bilgileri ve örnek olayları kaynak günlüklerine yazar.  Bazı durumlarda, bu bilgilerin Özeti Portal bildirimleri aracılığıyla da sağlanır.
+Veri hataları, verileri işlerken oluşan hatalardır.  Bu hatalar genellikle veri serileştirme, serileştirme ve yazma işlemleri sırasında oluşur.  Veri hataları oluştuğunda, Stream Analytics ayrıntılı bilgileri ve örnek olayları kaynak günlüklerine yazar. Bu ek ayrıntıları almak için işinizdeki tanılama günlüklerini etkinleştirin. Bazı durumlarda, bu bilgilerin Özeti Portal bildirimleri aracılığıyla da sağlanır.
 
 Bu makalede, giriş ve çıkış verileri hatalarına yönelik farklı hata türleri, nedenler ve kaynak günlüğü ayrıntıları özetlenmektedir.
 

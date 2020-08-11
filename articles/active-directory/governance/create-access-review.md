@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/29/2020
+ms.date: 08/09/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204020"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056202"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -93,7 +93,7 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
     ![Erişim gözden geçirmesi oluşturma-tamamlanma ayarları](./media/create-access-review/upon-completion-settings.png)
 
-1. Engellenen kullanıcılar için otomatik olarak kaldırmak istiyorsanız, **etkinleştirmek**üzere **sonuçları otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
+1. Reddedilen kullanıcılar için erişimi otomatik olarak kaldırmak istiyorsanız, **etkinleştirilecek** **sonuçları kaynağa otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
 
 1. Gözden geçiren tarafından gözden geçirilmemiş kullanıcılar için gözden geçirme süresi içinde gözden **geçirmeli yanıt** verme listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilmiş kullanıcıları etkilemez. Son Gözden geçirenin kararı reddederse, kullanıcının erişimi kaldırılır.
 

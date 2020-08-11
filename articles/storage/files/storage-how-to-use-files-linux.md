@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835723"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053176"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `mount` ' de bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı `/etc/fstab` .
@@ -26,7 +26,7 @@ Linux 'ta bir Azure dosya paylaşımının bağlanması için önerilen yol, SMB
 | CentOS | 7 + |  7,5 + |
 | Debian | 8 + | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12 | 12 SP2 + |
 
 Yukarıdaki tabloda listelenmeyen bir Linux dağıtımını kullanıyorsanız Linux dağıtımının Linux çekirdek sürümünü denetleyerek şifreleme ile SMB 3,0 ' i destekleyip desteklemediğini kontrol edebilirsiniz. Şifreleme ile SMB 3,0, Linux çekirdek sürümü 4,11 ' e eklenmiştir. `uname`Bu komut, kullanımdaki Linux çekirdeğinin sürümünü döndürür:
 
@@ -248,22 +248,22 @@ Linux Kernel 4,18 ' den itibaren, eski nedenler için çağrılan SMB çekirdek 
 
 | Dağıtım | SMB 1 devre dışı bırakabilir |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | Hayır |
-| Ubuntu 18.04 | Evet |
-| Ubuntu 19.04 + | Evet |
-| De, 8-9 | Hayır |
-| De, 10 + | Evet |
-| Fedora 29 + | Evet |
-| CentOS 7 | Hayır | 
-| CentOS 8 + | Evet |
-| Red Hat Enterprise Linux 6. x-7. x | Hayır |
-| Red Hat Enterprise Linux 8 + | Evet |
-| openSUSE artık 15,0 | Hayır |
-| openSUSE artık 15.1 + | Evet |
-| openSUSE Tpoed | Evet |
-| SUSE Linux Enterprise 11. x-12. x | Hayır |
-| SUSE Linux Enterprise 15 | Hayır |
-| SUSE Linux Enterprise 15,1 | Hayır |
+| Ubuntu 14.04-16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| De, 8-9 | No |
+| De, 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE artık 15,0 | No |
+| openSUSE artık 15.1 + | Yes |
+| openSUSE Tpoed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15,1 | No |
 
 Aşağıdaki komutla, Linux dağılımının modül parametresini destekleyip desteklemediğini kontrol edebilirsiniz `disable_legacy_dialects` .
 

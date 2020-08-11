@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279313"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056559"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -88,8 +88,8 @@ Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, duru
 | Kapsayıcı | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
 | Danışmanlık Hizmetleri | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
 | Yönetilen hizmet | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](partner-center-portal/create-new-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
-| Dynamics NAV yönetilen hizmeti | Hayır | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
-| Cortana Intelligence | Hayır | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](partner-center-portal/offer-creation-checklist.md)hakkında daha fazla bilgi edinin. |
+| Dynamics NAV yönetilen hizmeti | No | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
+| Cortana Intelligence | No | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](partner-center-portal/offer-creation-checklist.md)hakkında daha fazla bilgi edinin. |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Iş Ortağı Merkezi 'nde Bulut İş Ortağı Portalı tekliflerimi bulamıyorum
 
@@ -143,7 +143,7 @@ Yayımlayacağınız güncelleştirmeler taslak olarak kaydedilir. Teklifinizi h
 
 ### <a name="enhanced-preview-options"></a>Gelişmiş önizleme seçenekleri
 
-İş Ortağı Merkezi, Gelişmiş filtreleme seçenekleriyle bir [karşılaştırma özelliği](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) içerir. Bu, teklifin önizleme ve canlı sürümleriyle karşılaştırmanıza olanak sağlar.
+İş Ortağı Merkezi, Gelişmiş filtreleme seçenekleriyle bir [karşılaştırma özelliği](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) içerir. Bu, teklifin önizleme ve canlı sürümleriyle karşılaştırmanıza olanak sağlar.
 
 [![Ekran görüntüsü Iş Ortağı Merkezi karşılaştırma özelliğini gösterir.](media/cpp-pc-faq/compare.png "Iş Ortağı Merkezi karşılaştırma özelliğini gösterir")](media/cpp-pc-faq/compare.png#lightbox)
 

@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: d464897c031522b2227c682f9581f0d34c8db64b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518750"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055440"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
 
 Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit**ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosisteminde, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
 
@@ -71,7 +71,7 @@ Azure portal kullanarak depolama hesabınızda değişiklik akışını etkinle�
 
 4. **Veri koruma** ayarlarınızı onaylamak için **Kaydet** düğmesini seçin.
 
-    ![Veri koruma ayarlarını gösteren ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+    ![Veri koruma ayarlarını gösteren ekran görüntüsü.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

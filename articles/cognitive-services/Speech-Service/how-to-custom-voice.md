@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402048"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056695"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
@@ -56,7 +56,7 @@ Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, özel
 4. Başka bir konuşma aboneliğine geçiş yapmak isterseniz, üstteki gezinmede bulunan dişli simgesini kullanın.
 
 > [!NOTE]
-> Özel ses hizmeti 30 günlük ücretsiz deneme anahtarını desteklemez. Hizmeti kullanabilmeniz için önce Azure 'da oluşturulmuş bir F0 veya S0 anahtarınız olmalıdır.
+> Hizmeti kullanabilmeniz için önce Azure 'da oluşturulmuş bir F0 veya S0 anahtarınız olmalıdır.
 
 ## <a name="how-to-create-a-project"></a>Proje oluşturma
 

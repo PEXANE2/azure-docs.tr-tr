@@ -14,17 +14,17 @@ ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5421ea73d13683948baa1cff828cb8422668ed6d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489563"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056797"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak sanal ağ oluşturma
 
 Sanal ağ, sanal makineler (VM) gibi Azure kaynaklarının birbiriyle ve internet ile özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, sanal ağ oluşturmayı öğreneceksiniz. Bir sanal ağ oluşturduktan sonra, sanal ağa iki sanal makine dağıtacaksınız. Daha sonra internet 'ten VM 'lere bağlanır ve yeni sanal ağ üzerinden özel olarak iletişim kurabilirsiniz.
-
+## <a name="prerequisites"></a>Önkoşullar
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -127,6 +127,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, varsayılan bir sanal ağ ve iki sanal makine oluşturdunuz. İnternet 'ten bir sanal makineye bağlanırsınız ve iki VM arasında özel olarak iletişim kuracaksınız. Sanal ağ ayarları hakkında daha fazla bilgi için [Sanal ağı yönetme](manage-virtual-network.md) başlıklı konuya bakın.
-
-Azure, VM 'Ler arasında sınırsız özel iletişime olanak sağlar. Varsayılan olarak, Azure yalnızca İnternet 'ten gelen Windows VM 'lerine gelen Uzak Masaüstü bağlantılarına izin verir. Farklı türlerde VM ağı iletişimleri yapılandırma hakkında daha fazla bilgi edinmek için [ağ trafiğini filtreleme](tutorial-filter-network-traffic.md) öğreticisine gidin.
+Bu hızlı başlangıçta, varsayılan bir sanal ağ ve iki sanal makine oluşturdunuz. İnternet 'ten bir sanal makineye bağlanırsınız ve iki VM arasında özel olarak iletişim kuracaksınız.
+Azure, VM 'Ler arasında sınırsız özel iletişime olanak sağlar. Varsayılan olarak, Azure yalnızca İnternet 'ten gelen Windows VM 'lerine gelen Uzak Masaüstü bağlantılarına izin verir. Farklı türlerde VM ağı iletişimleri yapılandırma hakkında daha fazla bilgi edinmek için sonraki makaleye ilerleyin:
+> [!div class="nextstepaction"]
+> [Ağ trafiğini filtreleme](tutorial-filter-network-traffic.md)
