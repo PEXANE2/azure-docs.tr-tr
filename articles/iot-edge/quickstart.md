@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117259"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061498"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -65,20 +65,24 @@ IoT Edge cihazı:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Yeni sanal makinenin oluşturulup başlatılması birkaç dakika sürebilir. Daha sonra, sanal makinenize bağlanırken kullanmak üzere bir RDP dosyası indirebilirsiniz:
+  Yeni sanal makinenin oluşturulup başlatılması birkaç dakika sürebilir.
+
+  Sanal makineniz başladıktan sonra, sanal makinenize bağlanırken kullanmak için bir RDP dosyası indirebilirsiniz:
 
   1. Azure portal yeni Windows sanal makinenize gidin.
-  1. **Bağlan**'ı seçin.
+  1. **Bağlan**’ı seçin.
   1. **RDP** SEKMESINDE, **RDP dosyasını indir**' i seçin.
 
   Komutuyla belirttiğiniz yönetici adı ve parolayı kullanarak Windows sanal makinenize bağlanmak için bu dosyayı Uzak Masaüstü Bağlantısı açın `az vm create` .
 
 > [!NOTE]
+> Windows sanal makineniz, en son [Windows uzun süreli destek derlemesi](https://docs.microsoft.com/windows/release-information/)olan windows sürüm 1809 (derleme 17763) ile başlar. Windows varsayılan olarak her 22 saatte bir güncelleştirmeleri otomatik olarak denetler. Sanal makinenize bir denetim kurulduktan sonra Windows, Windows için IoT Edge uyumsuz bir sürüm güncelleştirmesini gönderir ve bu, Windows özellikleri için IoT Edge kullanımını engeller. Sanal makinenizin kullanımını 22 saat içinde veya [Windows güncelleştirmelerini geçici olarak duraklatarak](https://support.microsoft.com/help/4028233/windows-10-manage-updates)kısıtlamanızı öneririz.
+>
 > Bu hızlı başlangıçta basitlik için bir Windows Masaüstü sanal makinesi kullanılmaktadır. Üretim senaryolarında genel olarak hangi Windows işletim sistemlerinin kullanılabildiği hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
 >
 > IoT Core çalıştıran cihazlar da dahil olmak üzere kendi Windows cihazınızı IoT Edge yapılandırmaya hazırsanız, [Windows 'a Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge-windows.md)içindeki adımları izleyin.
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 

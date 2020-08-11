@@ -16,17 +16,17 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357775"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061515"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Office 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
 
-Ancak bazı durumlarda, varsayılan yapılandırmada bazı değişiklikler yapmanız gerekir. Aşağıda bazı örnekler verilmiştir:
+Ancak bazı durumlarda, varsayılan yapılandırmada bazı değişiklikler yapmanız gerekir. İşte bazı örnekler:
 
 * [Çoklu Azure AD dizin topolojisini](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)kullanmayı planlıyorsunuz. Ardından belirli bir Azure AD dizini ile eşitlenecek nesneleri denetlemek için bir filtre uygulamanız gerekir.
 * Azure veya Office 365 için bir pilot çalıştıralım ve yalnızca Azure AD 'de kullanıcıların bir alt kümesini istiyorsunuz. Küçük pilot sürümünde, işlevselliği göstermek için bir genel adres listesinin tamamen olması önemli değildir.
@@ -47,7 +47,7 @@ Filtreleme birçok nesneyi aynı anda kaldırabildiğinden, Azure AD 'de herhang
 
 Yanlışlıkla birçok nesneyi silmenizi engellemek için, "[yanlışlıkla Silmeleri engelle](how-to-connect-sync-feature-prevent-accidental-deletes.md)" özelliği varsayılan olarak açık olur. Filtreleme nedeniyle birçok nesneyi silerseniz (varsayılan olarak 500), silmenin Azure AD 'ye gitmesini sağlamak için bu makaledeki adımları izlemeniz gerekir.
 
-Kasım 2015 ' den ([1.0.9125](reference-connect-version-history.md#1091250)) önce bir yapı kullanırsanız, filtre yapılandırmasında bir değişiklik yapın ve parola karma eşitlemesini kullanın, yapılandırmayı tamamladıktan sonra tüm parolaların tam eşitlemesini tetiklemeniz gerekir. Parola tam eşitlemesini tetiklemenin adımları için, bkz. [tüm parolaların tam eşitlemesini tetikleme](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Build 1.0.9125 veya üzeri bir sürümü kullanıyorsanız, normal **tam eşitleme** eylemi, parolaların eşitlenip eşitlenmeyeceğini ve bu ek adımın artık gerekli olmadığını da hesaplar.
+Kasım 2015 ' den ([1.0.9125](reference-connect-version-history.md)) önce bir yapı kullanırsanız, filtre yapılandırmasında bir değişiklik yapın ve parola karma eşitlemesini kullanın, yapılandırmayı tamamladıktan sonra tüm parolaların tam eşitlemesini tetiklemeniz gerekir. Parola tam eşitlemesini tetiklemenin adımları için, bkz. [tüm parolaların tam eşitlemesini tetikleme](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Build 1.0.9125 veya üzeri bir sürümü kullanıyorsanız, normal **tam eşitleme** eylemi, parolaların eşitlenip eşitlenmeyeceğini ve bu ek adımın artık gerekli olmadığını da hesaplar.
 
 Bir filtreleme hatası nedeniyle **Kullanıcı** nesneleri YANLıŞLıKLA Azure AD 'de silinirse, filtreleme yapılandırmalarınızı KALDıRARAK Azure AD 'de Kullanıcı nesnelerini yeniden oluşturabilirsiniz. Ardından dizinlerinizi yeniden eşitlemeniz gerekir. Bu eylem, kullanıcıları Azure AD 'deki geri dönüşüm kutusu 'ndan geri yükler. Ancak, diğer nesne türlerini geri alamazsınız. Örneğin, yanlışlıkla bir güvenlik grubunu silerseniz ve bir kaynak ACL 'SI için kullanıldıysa, Grup ve ACL 'Leri kurtarılamaz.
 
@@ -70,7 +70,7 @@ Her üç saatte bir eşitleme döngüsünü tetikleyen zamanlanmış görevi dev
 
 1. **Başlangıç** menüsünden **Görev Zamanlayıcı** başlatın.
 2. Doğrudan **Görev Zamanlayıcı Kitaplığı**altında, **Azure AD eşitleme Zamanlayıcı**adlı görevi bulun, sağ tıklayın ve **devre dışı bırak**' ı seçin.  
-   ![Görev Zamanlayıcısı](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
+   ![Görev Zamanlayıcı](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
 3. Artık yapılandırma değişiklikleri yapabilir ve eşitleme altyapısını **Synchronization Service Manager** konsolundan el ile çalıştırabilirsiniz.
 
 Tüm filtreleme Değişikliklerinizi tamamladıktan sonra, geri dönüp görevi yeniden **etkinleştirmeyi** unutmayın.
@@ -202,7 +202,7 @@ Eşitleme altyapısını, filtreleme yapılandırması tamamlandıktan sonra yen
 Bu yapılandırmayla, ManagedObjects altında oluşturulan yeni bir OU eşitlenmez.
 
 ## <a name="attribute-based-filtering"></a>Öznitelik tabanlı filtreleme
-Bu adımların çalışması için Kasım 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) veya sonraki bir derlemeyi kullandığınızdan emin olun.
+Bu adımların çalışması için Kasım 2015 ([1.0.9125](reference-connect-version-history.md)) veya sonraki bir derlemeyi kullandığınızdan emin olun.
 
 > [!IMPORTANT]
 >Microsoft, **Azure AD Connect**tarafından oluşturulan varsayılan kuralları değiştirmemesini önerir. Kuralı değiştirmek istiyorsanız klonlayın ve özgün kuralı devre dışı bırakın. Kopyalanmış kuralda herhangi bir değişiklik yapın. Lütfen bunu yaparak (özgün kuralı devre dışı bırakarak), bu kural aracılığıyla etkinleştirilen tüm hata düzeltmeleri veya özellikleri kaçırılacaksınız.
@@ -299,9 +299,9 @@ Aşağıdaki adımları uygulayın:
 Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD 'de değişiklikleri gerçekten yapmadan önce, tüm bu değişikliklerin doğru olduğunu doğrulamak istiyorsunuz.
 
 1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. `csexport "Name of Connector" %temp%\export.xml /f:x` öğesini çalıştırın.  
+2. `csexport "Name of Connector" %temp%\export.xml /f:x` komutunu çalıştırın.  
    Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
-3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` öğesini çalıştırın.
+3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` komutunu çalıştırın.
 4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).
 
