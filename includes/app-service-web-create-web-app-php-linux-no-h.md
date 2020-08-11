@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 3a2bfb28da98260d9ac5040aa2097611ee18b5ca
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 2eb87d7ac5e08fd0ed278d15f387a1debe2a78f7
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848149"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081042"
 ---
-App Service planında bir [Web uygulaması](../articles/app-service/containers/app-service-linux-intro.md) oluşturun `myAppServicePlan` . 
+App Service planında bir [Web uygulaması](../articles/app-service/overview.md#app-service-on-linux) oluşturun `myAppServicePlan` . 
 
 Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `PHP|7.0` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için öğesini çalıştırın [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) . 
 

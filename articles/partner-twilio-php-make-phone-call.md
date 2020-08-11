@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637316"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080567"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Azure 'da PHP uygulamasında Twilio kullanarak telefon araması yapma
 Aşağıdaki örnekte, Azure 'da barındırılan bir PHP Web sayfasından çağrı yapmak için Twilio nasıl kullanabileceğiniz gösterilmektedir. Elde edilen uygulama, aşağıdaki ekran görüntüsünde gösterildiği gibi kullanıcıdan telefon araması değerlerini ister.
@@ -105,7 +105,7 @@ Bu çağrıyı yapmanın yanı sıra, aşağıdaki görüntüde gösterildiği g
 ![Twilio ve PHP kullanarak Azure çağrı yanıtı][twilio_php_response]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
-Bir sonraki adım, [uygulamanızı git Ile Azure Web Apps dağıtmaktır](app-service/app-service-web-get-started-php.md) (Bununla birlikte, ilişkili tüm bilgiler olmasa da). 
+Bir sonraki adım, [uygulamanızı git Ile Azure Web Apps dağıtmaktır](app-service/quickstart-php.md) (Bununla birlikte, ilişkili tüm bilgiler olmasa da). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu kod, Azure 'da PHP 'de Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örnek:

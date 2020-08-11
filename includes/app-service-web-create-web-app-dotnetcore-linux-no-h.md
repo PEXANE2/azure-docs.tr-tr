@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: f397a3df7280b9277b2b7205368ef5788ed321aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5fe447e8a1467530cd0eb4c9d2f8a20a4273876
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206689"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080890"
 ---
-App Service planında bir [Web uygulaması](../articles/app-service/containers/app-service-linux-intro.md) oluşturun. `myAppServicePlan` 
+App Service planında bir [Web uygulaması](../articles/app-service/overview.md#app-service-on-linux) oluşturun `myAppServicePlan` . 
 
-Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı, .NET Core `DOTNETCORE|LTS`3,1 olan olarak ayarlanır. Desteklenen tüm çalışma zamanlarını görmek için öğesini [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)çalıştırın. 
+Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `DOTNETCORE|3.1` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için öğesini çalıştırın [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) . 
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git
 ```
 
 Web uygulaması oluşturulduğunda Azure CLI aşağıda yer alan çıktıdaki gibi bilgiler gösterir:
@@ -49,12 +49,3 @@ Bir Linux kapsayıcısında, Git dağıtımı etkin boş bir web uygulaması olu
 > [!NOTE]
 > Git uzak URL’si `deploymentLocalGitUrl` özelliği içinde `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` biçiminde gösterilir. Bu URL’ye daha sonra ihtiyacınız olacağı için URL’yi kaydedin.
 >
-
-Şu anda .NET Core sürümünü düzgün şekilde yapılandırmak için aşağıdaki ek komutu çalıştırmanız gerekir (önceki adımdan biriyle değiştirin `<app-name>` ):
-
-```azurecli-interactive
-# Bash
-az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
-# PowerShell
-az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
-```

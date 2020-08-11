@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure Dev Spaces ile Azure DevOps kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229338"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080275"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
 
@@ -23,8 +23,8 @@ Bu makalede, geliştirme alanları etkinken Azure Kubernetes Service (AKS) ile s
 
 Bu makalede Azure DevOps ile ilgili yol, ancak Jenkins, TeamCity vb. gibi CI/CD sistemleri için de aynı kavramlar geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
-* [Azure Dev Spaces etkin Azure Kubernetes hizmeti (AKS) kümesi](../get-started-netcore.md)
+## <a name="prerequisites"></a>Ön koşullar
+* Azure Dev Spaces etkin Azure Kubernetes hizmeti (AKS) kümesi
 * [Azure Dev Spaces CLı yüklendi](upgrade-tools.md)
 * [Bir proje ile Azure DevOps organizasyonu](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
@@ -93,7 +93,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Henüz bir yayın tanımı içermeyen yepyeni bir DevOps projesinde çalışıyorsanız, önce devam etmeden önce boş bir yayın tanımı oluşturmanız gerekir. Içeri aktarma seçeneği, var olan bir yayın tanımına sahip olana kadar Kullanıcı arabiriminde görüntülenmez.
 1. Sol tarafta **+ Yeni** düğmesine tıklayın ve ardından Işlem hattını **İçeri Aktar ' a**tıklayın.
 1. **Görüntüle** ' ye tıklayın ve `samples/release.json` projenizden seçin.
-1. **Tamam** düğmesine tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
+1. **Tamam**’a tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
 1. Ardışık düzen bölmesinin sol tarafında, **yapıt balonu Ekle** ' ye tıklayın.
 1. **Kaynak** açılan listesinde, daha önce oluşturduğunuz derleme işlem hattını seçin.
 1. **Varsayılan sürüm**Için, **en son yapı ardışık düzen varsayılan dalından etiketlerle**' ı seçin.
@@ -185,5 +185,7 @@ Geliştirme alanları izleme, uygulamanızın normal çalışma yöntemiyle _de�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
+
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces kullanarak takım geliştirme hakkında bilgi edinin](../team-development-netcore.md)
+> [Azure Dev Spaces nasıl çalışır?](../how-dev-spaces-works.md)

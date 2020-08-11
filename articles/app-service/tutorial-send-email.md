@@ -4,12 +4,12 @@ description: App Service uygulamanızdan iş süreçlerini çağırmayı öğren
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 874c67b0d8d29c163fa5f36b3d100f1d2a013d53
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083251"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080975"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: App Service e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -32,23 +32,23 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](app-service-web-tutorial-dotnetcore-sqldb.md)
+[Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](tutorial-dotnetcore-sqldb-app.md)
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Öğretici: Azure 'da Node.js ve MongoDB uygulaması oluşturma](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Öğretici: Azure 'da Node.js ve MongoDB uygulaması oluşturma](tutorial-nodejs-mongodb-app.md)
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-[Öğretici: Azure 'da PHP ve MySQL uygulaması derleme](app-service-web-tutorial-php-mysql.md)
+[Öğretici: Azure 'da PHP ve MySQL uygulaması derleme](tutorial-php-mysql-app.md)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-[Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması çalıştırma](containers/tutorial-python-postgresql-app.md)
+[Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması çalıştırma](tutorial-python-postgresql-app.md)
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma](containers/tutorial-ruby-postgres-app.md)
+[Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma](tutorial-ruby-postgres-app.md)
 
 ---
 
@@ -152,7 +152,7 @@ Bir örnek görmek için aşağıdaki tercih edilen dil/çerçeve sekmesine tık
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
+ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örnek:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'DA SQL veritaba
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
+ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örnek:
 
 ```csharp
 // requires using System.Net.Http;
@@ -191,7 +191,7 @@ var jsonData = JsonSerializer.Serialize(new
 });
 
 HttpResponseMessage result = await client.PostAsync(
-    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/containers/configure-language-dotnetcore#access-environment-variables
+    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/configure-language-dotnetcore#access-environment-variables
     _configuration["LOGIC_APP_URL"],
     new StringContent(jsonData, Encoding.UTF8, "application/json"));
     
@@ -201,11 +201,11 @@ var statusCode = result.StatusCode.ToString();
 > [!NOTE]
 > Bu kod, tanıtım basitliği için yazılmıştır. Uygulamada, `HttpClient` her istek için bir nesne örneği oluşturmayın. Dayanıklı [http istekleri uygulamak Için ıhttpclientfactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)kılavuzundaki yönergeleri izleyin.
 
-Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NET Core ve SQL veritabanı uygulaması oluşturun](app-service-web-tutorial-dotnetcore-sqldb.md), öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için bunu kullanabilirsiniz `Todo` .
+Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NET Core ve SQL veritabanı uygulaması oluşturun](tutorial-dotnetcore-sqldb-app.md), öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için bunu kullanabilirsiniz `Todo` .
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örneğin:
+Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örnek:
 
 ```javascript
 // Requires npm install --save axios
@@ -228,11 +228,11 @@ var jsonData = {
 
 ```
 
-Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da bir Node.js ve MongoDB uygulaması oluşturun](app-service-web-tutorial-nodejs-mongodb-app.md), [Makale başarıyla kaydedildikten](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)sonra [Create işlevinde](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
+Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da bir Node.js ve MongoDB uygulaması oluşturun](tutorial-nodejs-mongodb-app.md), [Makale başarıyla kaydedildikten](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)sonra [Create işlevinde](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örneğin:
+PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örnek:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -260,11 +260,11 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da BIR php ve MySQL uygulaması oluşturun](app-service-web-tutorial-php-mysql.md), return ifadesinden hemen önce [Route::p OST işlevinde](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
+Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da BIR php ve MySQL uygulaması oluşturun](tutorial-php-mysql-app.md), return ifadesinden hemen önce [Route::p OST işlevinde](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örneğin:
+Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örnek:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -291,11 +291,11 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de PostgreSQL Ile Python (Docgo) Web uygulaması çalıştırın](containers/tutorial-python-postgresql-app.md), bunu, return ifadesinden hemen önce [Route::p OST işlevinde](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)bir e-posta onayı göndermek için kullanabilirsiniz.
+Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de PostgreSQL Ile Python (Docgo) Web uygulaması çalıştırın](tutorial-python-postgresql-app.md), bunu, return ifadesinden hemen önce [Route::p OST işlevinde](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)bir e-posta onayı göndermek için kullanabilirsiniz.
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-Ruby 'de, HTTP POST 'u [Jsonclient](https://www.rubydoc.info/gems/httpclient/JSONClient)ile kolayca gönderebilirsiniz. Örneğin:
+Ruby 'de, HTTP POST 'u [Jsonclient](https://www.rubydoc.info/gems/httpclient/JSONClient)ile kolayca gönderebilirsiniz. Örnek:
 
 ```ruby
 clnt = JSONClient.new
@@ -308,7 +308,7 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-[Linux üzerinde Azure App Service bir Ruby ve Postgres uygulaması oluşturmak](containers/tutorial-ruby-postgres-app.md)için örnek uygulamada bu kodu test ediyorsanız, bu işlemi [ @task.save başarılı olduğunda](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30) [oluşturma](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) eyleminde bir e-posta onayı göndermek için kullanabilirsiniz.
+[Linux üzerinde Azure App Service bir Ruby ve Postgres uygulaması oluşturmak](tutorial-ruby-postgres-app.md)için örnek uygulamada bu kodu test ediyorsanız, bu işlemi [ @task.save başarılı olduğunda](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30) [oluşturma](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) eyleminde bir e-posta onayı göndermek için kullanabilirsiniz.
 
 ---
 

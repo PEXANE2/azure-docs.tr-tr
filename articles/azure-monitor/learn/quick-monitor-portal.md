@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82142627"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080958"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web Uygulamanızı izlemeye başlama
 
 Azure Application Insights ile web uygulamanızı kullanılabilirlik, performans ve kullanım bakımından kolayca izleyebilirsiniz.  Ayrıca, bir kullanıcının bildirmesini beklemeden uygulamanızdaki hataları hızlıca tanımlayıp tespit edebilirsiniz.  Application Insights’tan uygulamanızın verimi ve performansı hakkında topladığınız bilgileri kullanarak, uygulamanızı korumak ve geliştirmek için bilinçli seçimler yapabilirsiniz.
 
-Bu hızlı başlangıç, var olan bir ASP.NET web uygulamasına Application Insights ekleme ve uygulamanızı çözümlemek için kullanabileceğiniz çeşitli yöntemlerden yalnızca biri olan canlı istatistikleri çözümlemeye başlama işlemini gösterir. Bir ASP.NET Web uygulamanız yoksa, [ASP.NET Web uygulaması oluşturma hızlı](../../app-service/app-service-web-get-started-dotnet-framework.md)başlangıcı ' nı izleyerek bir tane oluşturabilirsiniz.
+Bu hızlı başlangıç, var olan bir ASP.NET web uygulamasına Application Insights ekleme ve uygulamanızı çözümlemek için kullanabileceğiniz çeşitli yöntemlerden yalnızca biri olan canlı istatistikleri çözümlemeye başlama işlemini gösterir. Bir ASP.NET Web uygulamanız yoksa, [ASP.NET Web uygulaması oluşturma hızlı](../../app-service/quickstart-dotnet-framework.md)başlangıcı ' nı izleyerek bir tane oluşturabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıcı tamamlamak için:
@@ -44,7 +44,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 4. Aboneliğinizi seçin ve **Kaydet**’e tıklayın.
 
-5. **Proje** > **NuGet paketleri** > **paket kaynağını seçin: NuGet.org** > Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
+5. **Proje**seçin  >  **NuGet paketleri**  >  **paket kaynağını seçin: NuGet.org**  >  Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
 
 6. **Hata Ayıkla** menüsünden **Hata Ayıklamayı Başlat**’ı seçerek veya F5 tuşuna basarak uygulamanızı çalıştırın.
 
@@ -52,7 +52,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Application Insights, uygulamanızın nerede çalıştığına bakmaksızın telemetri verilerini toplar. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
 
-1. **View** -> **Diğer**Windows -> **Application Insights aramasını**görüntüle ' ye tıklayarak Application Insights açın.  Geçerli oturumunuzdaki telemetriye bakın.<BR><br>![Visual Studio'da telemetri](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. **View**  ->  **Diğer Windows**  ->  **Application Insights aramasını**görüntüle ' ye tıklayarak Application Insights açın.  Geçerli oturumunuzdaki telemetriye bakın.<BR><br>![Visual Studio'da telemetri](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. İstek ayrıntılarını görmek için listedeki ilk isteğe tıklayın (Bu örnekte, GET Home/Index). Durum kodu ve yanıt süresinin her ikisinin de istekle ilgili diğer değerli bilgilerle birlikte eklendiğine dikkat edin.<br><br>![Visual Studio'da yanıt ayrıntıları](media/quick-monitor-portal/request-details.png)
 
@@ -68,7 +68,7 @@ Artık Application Insights’ı Azure portalında açarak çalışan uygulaman�
 
     ![Uygulama Eşlemesi](media/quick-monitor-portal/05-appmap.png)
 
-3. Uygulama bileşenlerinden birinde bulunan](media/quick-monitor-portal/app-viewinlogs-icon.png) **günlüklerde (Analiz)** uygulama **Analizi** simgesine ![tıklayın. Bu, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Günlükler (Analiz)** açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. **App Analytics** ![ ](media/quick-monitor-portal/app-viewinlogs-icon.png) Uygulama bileşenlerinden birinde bulunan **günlüklerde (Analiz)** uygulama analizi simgesine tıklayın. Bu, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Günlükler (Analiz)** açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
     ![Analiz](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -76,7 +76,7 @@ Artık Application Insights’ı Azure portalında açarak çalışan uygulaman�
 
     ![Canlı Akış](media/quick-monitor-portal/7livemetrics.png)
 
-    Uygulamanızı Azure'da barındırmaya hazır olduğunuzda, artık yayımlayabilirsiniz. [ASP.NET Web Uygulaması Oluşturma Hızlı Başlangıcı](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) içinde açıklanan adımları izleyin.
+    Uygulamanızı Azure'da barındırmaya hazır olduğunuzda, artık yayımlayabilirsiniz. [ASP.NET Web Uygulaması Oluşturma Hızlı Başlangıcı](../../app-service/quickstart-dotnetcore.md#update-the-app-and-redeploy) içinde açıklanan adımları izleyin.
 
 5. Application Insights izleme özelliği eklemek için Visual Studio'yu kullanıyorsanız istemci tarafı izleme özelliklerini otomatik olarak ekleyebilirsiniz. İstemci tarafı izleme özelliklerini bir uygulamaya el ile eklemek için aşağıdaki JavaScript kodunu uygulamanıza eklemeniz gerekir:
 

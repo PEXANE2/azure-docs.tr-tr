@@ -4,12 +4,12 @@ description: Azure App Service içinde bir ASP.NET uygulamasının nasıl yapıl
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1aeb243b3ff4a1e6bd2ae984510d2ec709776fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908204"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080156"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET uygulaması yapılandırma
 
@@ -18,7 +18,7 @@ ms.locfileid: "84908204"
 
 ASP.NET uygulamalar, derlenmiş ikili dosyalar olarak Azure App Service dağıtılmalıdır. Visual Studio yayımlama aracı çözümü oluşturur ve ardından derlenmiş ikilileri doğrudan dağıtır, ancak App Service dağıtım motoru önce kod deposunu dağıtır ve ardından ikilileri derler.
 
-Bu kılavuz, ASP.NET geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [SQL veritabanı öğreticisi ile](app-service-web-tutorial-dotnet-sqldatabase.md) [ASP.net hızlı başlangıç](app-service-web-get-started-dotnet-framework.md) ve ASP.net izleyin.
+Bu kılavuz, ASP.NET geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [SQL veritabanı öğreticisi ile](app-service-web-tutorial-dotnet-sqldatabase.md) [ASP.net hızlı başlangıç](quickstart-dotnet-framework.md) ve ASP.net izleyin.
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>Desteklenen .NET Framework çalışma zamanı sürümlerini göster
 
@@ -82,7 +82,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>Ayrıntılı özel durumlar sayfası al
 
-ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel hata iletisiyle değiştirilmiştir. Ayrıntılı özel durum sayfasını App Service göstermek için *Web.config* dosyasını açın ve öğesini `<customErrors mode="Off"/>` öğesinin altına ekleyin `<system.web>` . Örneğin:
+ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel hata iletisiyle değiştirilmiştir. Ayrıntılı özel durum sayfasını App Service göstermek için *Web.config* dosyasını açın ve öğesini `<customErrors mode="Off"/>` öğesinin altına ekleyin `<system.web>` . Örnek:
 
 ```xml
 <system.web>
@@ -94,7 +94,7 @@ Güncelleştirilmiş *Web.config*uygulamanızı yeniden dağıtın. Artık aynı
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-[System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace)kullanarak uygulama kodunuzda tanılama iletileri ekleyebilirsiniz. Örneğin: 
+[System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace)kullanarak uygulama kodunuzda tanılama iletileri ekleyebilirsiniz. Örnek: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace
@@ -107,4 +107,4 @@ Trace.TraceInformation("GET /Home/Index"); // Information trace
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure’da SQL Veritabanı ile ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md)
+> [Öğretici: Azure'da SQL Veritabanı ile ASP.NET uygulaması oluşturma](app-service-web-tutorial-dotnet-sqldatabase.md)

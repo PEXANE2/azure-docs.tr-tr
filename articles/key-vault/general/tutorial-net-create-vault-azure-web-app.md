@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513341"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080241"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Öğretici: bir Azure Web uygulamasına .NET ile Key Vault bağlamak için yönetilen bir kimlik kullanma
 
@@ -140,7 +140,7 @@ App Service planı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bi
 
 ### <a name="create-a-remote-web-app"></a>Uzak Web uygulaması oluşturma
 
-App Service planında bir [Azure Web uygulaması](../../app-service/containers/app-service-linux-intro.md) oluşturun `myAppServicePlan` . 
+App Service planında bir [Azure Web uygulaması](../../app-service/overview.md#app-service-on-linux) oluşturun `myAppServicePlan` . 
 
 > [!Important]
 > Key Vault benzer şekilde, bir Azure Web uygulaması benzersiz bir ada sahip olmalıdır. \<your-webapp-name\>Aşağıdaki örnekleri Web uygulamanızın adıyla değiştirin.

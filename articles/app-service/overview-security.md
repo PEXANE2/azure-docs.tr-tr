@@ -5,12 +5,12 @@ keywords: Azure App Service, Web uygulaması, mobil uygulama, API uygulaması, i
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649041"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080309"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service güvenlik
 
@@ -56,7 +56,7 @@ App Service kimlik doğrulaması ve yetkilendirme, Azure Active Directory, Micro
 Bir arka uç hizmetinde kimlik doğrulanırken App Service, gereksinimlerinize bağlı olarak iki farklı mekanizma sağlar:
 
 - **Hizmet kimliği** -uygulamanın kimliğini kullanarak uzak kaynakta oturum açın. App Service, [Azure SQL veritabanı](/azure/sql-database/) veya [Azure Key Vault](/azure/key-vault/)gibi diğer hizmetlerle kimlik doğrulamak için kullanabileceğiniz bir [yönetilen kimliği](overview-managed-identity.md)kolayca oluşturmanıza olanak tanır. Bu yaklaşımın uçtan uca bir öğreticisi için bkz. [yönetilen kimlik kullanarak App Service Azure SQL veritabanı bağlantısını güvenli hale getirme](app-service-web-tutorial-connect-msi.md).
-- **Adına (OBO)** -Kullanıcı adına uzak kaynaklara erişim yetkisi alın. Kimlik doğrulama sağlayıcısı olarak Azure Active Directory, App Service uygulamanız [Microsoft Graph API 'si](../active-directory/develop/microsoft-graph-intro.md) veya App Service BIR uzak API uygulaması gibi uzak bir hizmette temsilci olarak oturum açma işlemi gerçekleştirebilir. Bu yaklaşımın uçtan uca bir öğreticisi için bkz. [kimlik doğrulaması ve kullanıcıların Azure App Service içinde uçtan uca yetki verme](app-service-web-tutorial-auth-aad.md).
+- **Adına (OBO)** -Kullanıcı adına uzak kaynaklara erişim yetkisi alın. Kimlik doğrulama sağlayıcısı olarak Azure Active Directory, App Service uygulamanız [Microsoft Graph API 'si](../active-directory/develop/microsoft-graph-intro.md) veya App Service BIR uzak API uygulaması gibi uzak bir hizmette temsilci olarak oturum açma işlemi gerçekleştirebilir. Bu yaklaşımın uçtan uca bir öğreticisi için bkz. [kimlik doğrulaması ve kullanıcıların Azure App Service içinde uçtan uca yetki verme](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Uzak kaynaklara bağlantı
 

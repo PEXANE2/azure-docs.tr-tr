@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056933"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079595"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 | Herhangi bir türdeki çalışma gönderiliyor | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
 | Ardışık düzen uç noktası yayımlama | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | AKS/ACI kaynağına kayıtlı model dağıtma | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| Dağıtılan bir AKS uç noktasına göre Puanlama | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (AAD kimlik doğrulaması kullanmadığınız zaman) veya `"/workspaces/read"` (belirteç kimlik doğrulamasını kullanırken) |
+| Dağıtılan bir AKS uç noktasına göre Puanlama | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory kimlik doğrulaması kullanmadığınız zaman) veya `"/workspaces/read"` (belirteç kimlik doğrulamasını kullanırken) |
 | Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | Yeni özel rol oluştur | Sahip, katkıda bulunan veya özel rol`Microsoft.Authorization/roleDefinitions/write` | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
 
@@ -374,10 +374,14 @@ Bunlar ayrıca, [kaynak sağlayıcısı işlemleri](/azure/role-based-access-con
 Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırken dikkat etmeniz gereken birkaç nokta aşağıda verilmiştir:
 
 - Azure 'da bir kaynak oluşturduğunuzda bir çalışma alanı söylediğinizde, doğrudan çalışma alanının sahibi değilsiniz. Rolünüz, bu abonelikte yetkilendirdiğiniz en yüksek kapsam rolünden devralınır. Örnek olarak, bir ağ yöneticisiyseniz ve bir Machine Learning çalışma alanı oluşturma izinlerine sahipseniz, bu çalışma alanına karşı ağ yöneticisi rolüne sahip olursunuz ve sahip rolü yoktur.
-- Aynı AAD kullanıcısına eylemlerin/NotActions çakışan bölümleri ile iki rol ataması olduğunda, NotActions 'de listelenen işlemleriniz, başka bir roldeki eylemler olarak listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun
-- İşlem kaynaklarınızı bir sanal ağ içinde dağıtmak için bu VNet kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action" izinlerine açık olarak sahip olmanız gerekir.
-- Yeni rol atamalarınızın yığın genelindeki önbellekteki izinlerle etkili olması için bazen 1 saate kadar zaman alabilir.
+- Aynı Azure Active Directory kullanıcıya eylem/NotActions bölümleri ile aynı olan iki rol ataması olduğunda, bir rolden NotActions bölümünde listelenen işlemler, başka bir roldeki eylemler olarak da listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun
+- İşlem kaynaklarınızı bir sanal ağ içinde dağıtmak için aşağıdaki eylemler için açıkça izinlerinizin olması gerekir:
+    - VNet kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action".
+    - Alt ağ kaynağında "Microsoft. Network/virtualNetworks/subnet/JOIN/Action".
+    
+    Ağ iletişimi ile RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](/azure/role-based-access-control/built-in-roles#networking).
 
+- Yeni rol atamalarınızın yığın genelindeki önbellekteki izinlerle etkili olması için bazen 1 saate kadar zaman alabilir.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>S. Amlcompute kümelerimde Kullanıcı tarafından atanan yönetilen kimlik kullanmak için hangi izinlere ihtiyacım var?
 

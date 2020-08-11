@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 51a340c2fb32de60f20c678e0bc23f2420261e44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849888"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080292"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
@@ -28,49 +28,76 @@ Azure App Service iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
-|**Kimlik Doğrulaması** | 1. hizmet sorumlusu tanımlama <br /> 2. GitHub parolası oluşturma |
-|**Derleme** | 1. ortamı ayarlama <br /> 2. Web uygulamasını oluşturma |
-|**Dağıtma** | 1. Web uygulamasını dağıtma |
+|**Kimlik Doğrulaması** | 1. bir hizmet sorumlusu tanımlayın. <br /> 2. GitHub gizli dizisi oluşturun. |
+|**Derleme** | 1. ortamı ayarlayın. <br /> 2. Web uygulamasını oluşturun. |
+|**Dağıtma** | 1. Web uygulamasını dağıtın. |
 
-## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
+## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
+
+# <a name="user-level-credentials"></a>[Kullanıcı düzeyi kimlik bilgileri](#tab/userlevel)
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
+                            --sdk-auth
 ```
 
-Bu örnekte, kaynaktaki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve uygulama adınızla değiştirin. Çıktı, App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
+Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve uygulama adınızla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın.
 
-> [!NOTE]
-> Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli App Service uygulamasıyla sınırlı olması neden olur.
+> En az erişim sağlamak her zaman iyi bir uygulamadır. Önceki örnekteki kapsam, kaynak grubunun tamamı değil, belirli App Service uygulamasıyla sınırlandırılmıştır.
+
+# <a name="app-level-credentials"></a>[Uygulama düzeyi kimlik bilgileri](#tab/applevel)
+
+Uygulamanızın Yayımla profilini kullanarak uygulama düzeyi kimlik bilgilerini kullanabilirsiniz. Portalda uygulamanızın yönetim sayfasına gidin. **Genel bakış** sayfasında, **Yayımlama profili al** seçeneğini tıklayın.
+
+Daha sonra dosyanın içeriğine ihtiyacınız olacak.
+
+---
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
-Uygulama düzeyi kimlik bilgilerini de kullanabilirsiniz. Örneğin, dağıtım için profili yayımlayın. Gizli anahtarı yapılandırmak için aşağıdaki adımları izleyin:
+# <a name="user-level-credentials"></a>[Kullanıcı düzeyi kimlik bilgileri](#tab/userlevel)
 
-1. **Yayımla profili al** seçeneğini kullanarak portaldan App Service uygulama için yayımlama profilini indirin.
+[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
-2. [GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**
+[Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-    ![kaynaklanır](media/app-service-github-actions/secrets.png)
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
-3. İndirilen yayımlama profili dosyasının içeriğini gizli alanının değer alanına yapıştırın.
+```yaml
+- uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+```
 
-4. Şimdi dalınızdaki iş akışı dosyasında: `.github/workflows/workflow.yml` `publish-profile` Azure Web uygulaması dağıtma eyleminin girişi için parolayı değiştirin.
+# <a name="app-level-credentials"></a>[Uygulama düzeyi kimlik bilgileri](#tab/applevel)
+
+[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
+
+[Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Gizli dizi adını gibi verin `azureWebAppPublishProfile` .
+
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `publish-profile` Azure Web uygulaması dağıtma eyleminin girişi için gizli anahtarı kullanın. Örnek:
     
-    ```yaml
-        - uses: azure/webapps-deploy@v2
-          with:
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-    ```
+```yaml
+- uses: azure/webapps-deploy@v2
+  with:
+    publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
 
-5. Gizli anahtarı, tanımlandıktan sonra aşağıda gösterildiği gibi görürsünüz.
-
-    ![kaynaklanır](media/app-service-github-actions/app-service-secrets.png)
+---
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama
 
@@ -192,43 +219,9 @@ Kodunuzu bir App Service uygulamasına dağıtmak için `azure/webapps-deploy@v2
 | **leyebilir** | Seçim Paket veya klasörün yolu. *. zip, *. war, *. jar veya dağıtılacak bir klasör |
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
 
-### <a name="deploy-using-publish-profile"></a>Yayımlama profili kullanarak dağıtma
+# <a name="user-level-credentials"></a>[Kullanıcı düzeyi kimlik bilgileri](#tab/userlevel)
 
-Aşağıda yayımlama profili kullanılarak Azure 'da bir Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı verilmiştir.
-
-```yaml
-# File: .github/workflows/workflow.yml
-
-on: push
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-    
-    - name: Setup Node 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: 'npm install, build, and test'
-      run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-       
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v2
-          with: 
-            app-name: node-rn
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-```
-
-### <a name="deploy-using-azure-service-principal"></a>Azure hizmet sorumlusu kullanarak dağıtma
-
-Azure hizmet sorumlusu kullanarak Azure 'da Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı aşağıda verilmiştir.
+Azure hizmet sorumlusu kullanarak Azure 'da Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı aşağıda verilmiştir. `creds`Girişin `AZURE_CREDENTIALS` daha önce oluşturduğunuz gizli dizi ile nasıl başvurdığına göz önünde unutmayın.
 
 ```yaml
 on: [push]
@@ -269,11 +262,47 @@ jobs:
         az logout
 ```
 
+# <a name="app-level-credentials"></a>[Uygulama düzeyi kimlik bilgileri](#tab/applevel)
+
+Aşağıda, uygulamanın yayımlama profilini kullanarak Azure 'da bir Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı verilmiştir. `publish-profile`Girişin `azureWebAppPublishProfile` daha önce oluşturduğunuz gizli dizi ile nasıl başvurdığına göz önünde unutmayın.
+
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@master
+    
+    - name: Setup Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: 'npm install, build, and test'
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+       
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+          uses: azure/webapps-deploy@v2
+          with: 
+            app-name: node-rn
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
+
+---
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD için GitHub kullanmanıza ve uygulamalarınızı Azure 'a dağıtmanıza yardımcı olacak belgeler ve örnekler içeren bir şekilde bulabilirsiniz.
 
-- [Azure 'a dağıtılacak eylemler iş akışı](https://github.com/Azure/actions-workflow-samples)
+- [Azure 'a dağıtılacak eylemler iş akışları](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure oturum açma](https://github.com/Azure/login)
 

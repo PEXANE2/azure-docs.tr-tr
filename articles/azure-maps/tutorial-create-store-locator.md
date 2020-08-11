@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: d6ab05d92ec209e10bfc4aec4e4fe2b6ea150099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e69385d174cfb2ea3aa37867d65e0ac9eb5eaff0
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037669"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080805"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
@@ -950,7 +950,7 @@ Bu öğreticide, Azure haritalar 'ı kullanarak temel bir mağaza Konumlandırı
 > * Kullanıcının [bir rota üzerinde konumları filtrelemesine](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)izin verin. 
 > * [Filtre ayarlama](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)özelliğini ekleyin. 
 > * Sorgu dizesi kullanarak bir ilk arama değeri belirtmek için destek ekleyin. Bu seçeneği mağaza bulucusınıza eklediğinizde, kullanıcılar aramaları yer işaretine ekleyebilir ve aramaları paylaşabilir. Ayrıca, bu sayfaya aramaları başka bir sayfadan iletmeniz için kolay bir yöntem sağlar.  
-> * Mağaza bulucuyu bir [Azure App Service Web uygulaması](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)olarak dağıtın. 
+> * Mağaza bulucuyu bir [Azure App Service Web uygulaması](https://docs.microsoft.com/azure/app-service/quickstart-html)olarak dağıtın. 
 > * Verilerinizi bir veritabanında depolayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için bkz. [SQL Server uzamsal veri türlerine genel bakış](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) ve [en yakın komşu Için uzamsal verileri sorgulama](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 > [!div class="nextstepaction"]

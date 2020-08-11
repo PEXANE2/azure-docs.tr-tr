@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: eeac1c3cb7f92a7e407511c6436fe9d0723b2648
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308789"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079952"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 
@@ -49,7 +49,7 @@ Bu uygulama geliştirme öğreticisine başlamadan önce aşağıdakilere sahip 
 
 * [Java Geliştirme Seti (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable).
 * [Java EE Geliştiricileri için Eclipse IDE.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
-* [Java çalışma zamanı ortamı (ör. Tomcat veya Jetty) etkin bir Azure Web Sitesi.](../app-service/app-service-web-get-started-java.md)
+* [Java çalışma zamanı ortamı (ör. Tomcat veya Jetty) etkin bir Azure Web Sitesi.](../app-service/quickstart-java.md)
 
 Bu araçları ilk kez yüklüyorsanız coreservlets.com, öğreticinin hızlı başlangıç bölümünde yükleme işlemini adım adım sağlar [: TomCat7 yükleme ve Çakışan Küreler Ile kullanma](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) .
 

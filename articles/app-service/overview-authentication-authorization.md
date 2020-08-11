@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562387"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080737"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -56,7 +56,7 @@ Kimlik doğrulama ve yetkilendirme modülü, uygulama kodınızdan yalıtılmı�
 
 ### <a name="userapplication-claims"></a>Kullanıcı/uygulama talepleri
 
-Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliği doğrulanmış bir son kullanıcının veya bir istemci uygulamasından mi olsun), istek üst bilgilerine ekleme göre kodunuzun kullanımına sunar. ASP.NET 4,6 uygulamaları için App Service [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) 'ı kimliği doğrulanmış kullanıcının taleplerine göre doldurur. böylece, özniteliği de dahil olmak üzere standart .NET kod modelini izleyebilirsiniz `[Authorize]` . Benzer şekilde, PHP uygulamaları için App Service değişkeni doldurur `_SERVER['REMOTE_USER']` . Java uygulamaları için, talepler [Tomcat servlet 'ten erişilebilir](containers/configure-language-java.md#authenticate-users-easy-auth).
+Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliği doğrulanmış bir son kullanıcının veya bir istemci uygulamasından mi olsun), istek üst bilgilerine ekleme göre kodunuzun kullanımına sunar. ASP.NET 4,6 uygulamaları için App Service [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) 'ı kimliği doğrulanmış kullanıcının taleplerine göre doldurur. böylece, özniteliği de dahil olmak üzere standart .NET kod modelini izleyebilirsiniz `[Authorize]` . Benzer şekilde, PHP uygulamaları için App Service değişkeni doldurur `_SERVER['REMOTE_USER']` . Java uygulamaları için, talepler [Tomcat servlet 'ten erişilebilir](configure-language-java.md#authenticate-users-easy-auth).
 
 [Azure işlevleri](../azure-functions/functions-overview.md)için, `ClaimsPrincipal.Current` .NET kodu için doldurulmamış, ancak istek üst bilgilerinde kullanıcı taleplerini bulabilir veya istek `ClaimsPrincipal` bağlamından ya da bir bağlama parametresi aracılığıyla nesne alabilirsiniz. Daha fazla bilgi için bkz. [istemci kimlikleriyle çalışma](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
@@ -149,7 +149,7 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-[Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](app-service-web-tutorial-auth-aad.md)  
+[Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](tutorial-auth-aad.md)  
 [Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](containers/tutorial-auth-aad.md)  
 App Service kimlik doğrulaması [ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md) 
  [Azure AppService EasyAuth (3. taraf)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 

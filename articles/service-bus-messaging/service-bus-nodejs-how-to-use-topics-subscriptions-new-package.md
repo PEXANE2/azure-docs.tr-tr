@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5afe5eded4937631d25ab94edc1908b7ac83d383
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067486"
+ms.locfileid: "88080635"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: Node.js ve Azure/Service-Bus paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanarak bir Service Bus aboneliğinden ileti almak için Node.js bir program yazmayı öğreneceksiniz [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
@@ -22,7 +22,7 @@ Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanar
 - Birlikte çalışmak için bir konu ve aboneliğiniz yoksa, bunları oluşturmak için [Service Bus konu ve abonelik oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-topics-subscriptions-portal.md) adımlarını izleyin. Service Bus örneğiniz için bağlantı dizesini ve oluşturduğunuz konunun ve aboneliğin adlarını göz önünde bulabilirsiniz. Bu değerleri örneklerde kullanacağız.
 
 > [!NOTE]
-> - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node.js uygulamasının nasıl oluşturulacağı hakkında yönergeler için, bkz. [Azure Web sitesinde bir Node.js uygulaması oluşturma ve dağıtma](../app-service/app-service-web-get-started-nodejs.md)veya [Windows PowerShell kullanarak bulut hizmetiNode.js](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node.js uygulamasının nasıl oluşturulacağı hakkında yönergeler için, bkz. [Azure Web sitesinde bir Node.js uygulaması oluşturma ve dağıtma](../app-service/quickstart-nodejs.md)veya [Windows PowerShell kullanarak bulut hizmetiNode.js](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 > - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paket henüz topcıs ve abonelik oluşturmayı desteklemiyor. [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)Program aracılığıyla onları oluşturmak istiyorsanız lütfen paketi kullanın.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Paketi yüklemek için Düğüm Paket Yöneticisi’ni (NPM) kullanma

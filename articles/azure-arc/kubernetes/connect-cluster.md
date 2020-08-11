@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050085"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080499"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
@@ -91,7 +91,7 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak Grubu oluşturma
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Kümenizin meta verilerini depolamak için bir kaynak grubu kullanın.
 
@@ -172,6 +172,41 @@ Ayrıca, bu kaynağı [Azure Portal](https://portal.azure.com/)görüntüleyebil
 > [!NOTE]
 > Küme eklendikten sonra, küme meta verileri (küme sürümü, aracı sürümü, düğüm sayısı) için Azure portal içinde Azure Arc etkin Kubernetes kaynağının genel bakış sayfasında yüzey olarak 5 ila 10 dakika sürer.
 
+## <a name="connect-using-an-outbound-proxy-server"></a>Giden proxy sunucusu kullanarak bağlanma
+
+Kümeniz giden bir proxy sunucusunun arkasındaysa, Azure CLı ve Arc etkin Kubernetes aracılarının isteklerini giden ara sunucu aracılığıyla yönlendirmesi gerekir. Aşağıdaki yapılandırma şu şekilde elde etmenize yardımcı olur:
+
+1. `connectedk8s`Şu komutu çalıştırarak makinenizde yüklü olan uzantının sürümünü denetleyin:
+
+    ```bash
+    az -v
+    ```
+
+    `connectedk8s`Aracıları giden proxy ile kurmak için >= 0.2.3 uzantı sürümüne ihtiyacınız vardır. Makinenizde sürüm < 0.2.3 varsa, uzantınızın en son sürümünü almak için [güncelleştirme adımlarını](#before-you-begin) izleyin.
+
+2. Azure CLı için gereken ortam değişkenlerini ayarlayın:
+
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
+
+3. Connect komutunu belirtilen proxy parametreleriyle Çalıştır:
+
+    ```bash
+    az connectedk8s connect -n <cluster-name> -g <resource-group> \
+    --proxy-https https://<proxy-server-ip-address>:<port> \
+    --proxy-http http://<proxy-server-ip-address>:<port> \
+    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```
+
+> [!NOTE]
+> 1. --Proxy-Skip-Aralık ' ın altında Excludedcıdr belirtilmesi, küme içi iletişimin aracıların kesilmediğinden emin olmak açısından önemlidir.
+> 2. Yukarıdaki proxy belirtimi yalnızca Arc aracıları için geçerlidir ve sourcecontrolconfiguration içinde kullanılan Flox pod için geçerli değildir. Yay etkin Kubernetes ekibi bu özellik üzerinde etkin bir şekilde çalışıyor ve yakında kullanıma sunulacaktır.
+
+## <a name="azure-arc-agents-for-kubernetes"></a>Kubernetes için Azure Arc aracıları
+
 Azure Arc etkin Kubernetes, ad alanına birkaç işleç dağıtır `azure-arc` . Bu dağıtımları ve pod 'leri buradan görüntüleyebilirsiniz:
 
 ```console
@@ -199,8 +234,6 @@ pod/flux-logs-agent-7c489f57f4-mwqqv            2/2     Running  0       16h
 pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
-
-## <a name="azure-arc-agents-for-kubernetes"></a>Kubernetes için Azure Arc aracıları
 
 Azure Arc etkin Kubernetes, kümenizde çalışan ve ad alanına dağıtılan birkaç aracıdan (işleçlerden) oluşur `azure-arc` .
 

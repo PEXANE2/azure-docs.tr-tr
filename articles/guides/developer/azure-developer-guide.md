@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832816"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080326"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -64,7 +64,7 @@ App Service, DevOps göz önünde bulundurularak tasarlanmıştır. Yayımlama v
 
 > **Ne zaman kullanılır**: mevcut Web uygulamalarını Azure 'a geçirirken ve Web uygulamalarınız için tam olarak yönetilen bir barındırma platformuna ihtiyacınız olduğunda App Service kullanın. Ayrıca, mobil istemcileri destekletmelisiniz veya REST API 'Leri uygulamanızla birlikte kullanıma sunabileceğiniz App Service de kullanabilirsiniz.
 >
-> **Kullanmaya başlayın**: App Service ilk [Web uygulamanızı](../../app-service/app-service-web-get-started-dotnet.md), [Mobil uygulamanızı](../../app-service-mobile/app-service-mobile-ios-get-started.md)veya [API uygulamanızı](../../app-service/app-service-web-tutorial-rest-api.md)oluşturmayı ve dağıtmayı kolaylaştırır.
+> **Kullanmaya başlayın**: App Service ilk [Web uygulamanızı](../../app-service/quickstart-dotnetcore.md), [Mobil uygulamanızı](../../app-service-mobile/app-service-mobile-ios-get-started.md)veya [API uygulamanızı](../../app-service/app-service-web-tutorial-rest-api.md)oluşturmayı ve dağıtmayı kolaylaştırır.
 >
 > **Şimdi deneyin**: App Service, bir Azure hesabına kaydolmadan platformu denemek için kısa süreli bir uygulama sağlamanıza olanak tanır. Platformu deneyin ve [Azure App Service uygulamanızı oluşturun](https://tryappservice.azure.com/).
 

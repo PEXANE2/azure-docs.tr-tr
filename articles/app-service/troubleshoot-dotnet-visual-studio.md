@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857212"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079816"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -28,8 +28,8 @@ Bu öğreticide, [hata ayıklama modunda](https://docs.microsoft.com/visualstudi
 
 Visual Studio Ultimate sahipseniz, hata ayıklama için [IntelliTrace](/visualstudio/debugger/intellitrace) de kullanabilirsiniz. Bu öğreticide IntelliTrace kapsamında değildir.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
-Bu öğretici, [Azure App Service bir ASP.NET uygulaması oluşturma](app-service-web-get-started-dotnet-framework.md)bölümünde ayarladığınız geliştirme ortamı, Web projesi ve App Service uygulamayla birlikte çalışır. WebJobs bölümleri için, [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz uygulamanın olması gerekir.
+## <a name="prerequisites"></a><a name="prerequisites"></a>Kaynakları
+Bu öğretici, [Azure App Service bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde ayarladığınız geliştirme ortamı, Web projesi ve App Service uygulamayla birlikte çalışır. WebJobs bölümleri için, [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz uygulamanın olması gerekir.
 
 Bu öğreticide gösterilen kod örnekleri bir C# MVC web uygulaması içindir, ancak sorun giderme yordamları Visual Basic ve Web Forms uygulamalar için aynıdır.
 
@@ -51,7 +51,7 @@ Visual Studio, [Azure Portal](https://go.microsoft.com/fwlink/?LinkId=529715)bul
 
     Visual Studio 'dan Azure kaynaklarına bağlanma hakkında daha fazla bilgi için bkz. [hesapları, abonelikleri ve yönetici rollerini yönetme](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 2. **Sunucu Gezgini**' de **Azure** ' u genişletin ve **App Service**' ı genişletin.
-3. [Azure App Service ' de ASP.NET uygulaması oluşturma](app-service-web-get-started-dotnet-framework.md)bölümünde oluşturduğunuz uygulamayı içeren kaynak grubunu genişletin ve ardından uygulama düğümüne sağ tıklayıp **ayarları görüntüle**' ye tıklayın.
+3. [Azure App Service ' de ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde oluşturduğunuz uygulamayı içeren kaynak grubunu genişletin ve ardından uygulama düğümüne sağ tıklayıp **ayarları görüntüle**' ye tıklayın.
 
     ![Sunucu Gezgini ayarları görüntüle](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Ayrıntılı hata iletisi yeterli bilgi sağlamıyorsa ve hatayı yerel olarak y
 
 Uzaktan hata ayıklama, Visual Studio 'nun Express sürümlerinde çalışmaz.
 
-Bu bölümde [, Azure App Service ' de bir ASP.NET uygulaması oluşturma](app-service-web-get-started-dotnet-framework.md)bölümünde oluşturduğunuz projeyi kullanarak uzaktan nasıl hata ayıklaması yapılacağı gösterilmektedir.
+Bu bölümde [, Azure App Service ' de bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde oluşturduğunuz projeyi kullanarak uzaktan nasıl hata ayıklaması yapılacağı gösterilmektedir.
 
-1. [Azure App Service bir ASP.NET uygulaması oluşturma](app-service-web-get-started-dotnet-framework.md)bölümünde oluşturduğunuz Web projesini açın.
+1. [Azure App Service bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde oluşturduğunuz Web projesini açın.
 
 1. *Controllers\homecontroller.cs*dosyasını açın.
 
@@ -129,13 +129,13 @@ Bu bölümde [, Azure App Service ' de bir ASP.NET uygulaması oluşturma](app-s
 
 1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yayımla**' ya tıklayın.
 
-1. **Profil** açılır listesinde, [Azure App Service içinde bir ASP.NET uygulaması oluşturma](app-service-web-get-started-dotnet-framework.md)bölümünde kullandığınız profili seçin. Ardından Ayarlar ' a tıklayın.
+1. **Profil** açılır listesinde, [Azure App Service içinde bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde kullandığınız profili seçin. Ardından Ayarlar ' a tıklayın.
 
 1. **Yayımla** Iletişim kutusunda **Ayarlar** sekmesine tıklayın ve ardından **yapılandırmayı** **Hata Ayıkla**olarak değiştirin ve ardından **Kaydet**' e tıklayın.
 
     ![Hata ayıklama modunda Yayımla](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. **Yayımla**’ta tıklayın. Dağıtım tamamlandıktan sonra ve tarayıcınız uygulamanızın Azure URL 'SI için açıldıktan sonra tarayıcıyı kapatın.
+1. **Yayımla**’ya tıklayın. Dağıtım tamamlandıktan sonra ve tarayıcınız uygulamanızın Azure URL 'SI için açıldıktan sonra tarayıcıyı kapatın.
 
 1. **Sunucu Gezgini**, uygulamanıza sağ tıklayın ve ardından **hata ayıklayıcı Ekle**' ye tıklayın.
 
@@ -264,7 +264,7 @@ Günlükler, uygulamanızın dosya sistemindeki *LogFiles* klasöründeki dosyal
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>Uygulama izleme günlükleri oluşturma ve görüntüleme
 Bu bölümde, aşağıdaki görevleri gerçekleştirebilirsiniz:
 
-* [Azure ve ASP.NET kullanmaya başlama](app-service-web-get-started-dotnet-framework.md)bölümünde oluşturduğunuz Web projesine izleme deyimleri ekleyin.
+* [Azure ve ASP.NET kullanmaya başlama](quickstart-dotnet-framework.md)bölümünde oluşturduğunuz Web projesine izleme deyimleri ekleyin.
 * Projeyi yerel olarak çalıştırdığınızda günlükleri görüntüleyin.
 * Azure 'da çalışan uygulama tarafından oluşturulan günlükleri görüntüleyin.
 
@@ -686,5 +686,5 @@ Web sunucusu günlüklerinin çözümlenmesi hakkında daha fazla bilgi için a�
 ### <a name="analyzing-failed-request-tracing-logs"></a>Başarısız istek izleme günlükleri çözümleniyor
 Microsoft TechNet Web sitesi, bu günlüklerin nasıl kullanılacağını anlamak için faydalı olabilecek bir [başarısız Istek izleme](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) bölümü içerir. Ancak, bu belge temel olarak, Azure App Service ' de yapamıyorsanız, IIS 'de başarısız istek izlemeyi yapılandırmaya odaklanmaktadır.
 
-[GetStarted]: app-service-web-get-started-dotnet.md
+[GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

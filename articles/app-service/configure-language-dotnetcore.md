@@ -1,24 +1,27 @@
 ---
-title: Windows ASP.NET Core uygulamalarını yapılandırma
-description: App Service yerel Windows örneklerinde ASP.NET Core uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+title: ASP.NET Core uygulamalarını yapılandırma
+description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir Linux kapsayıcısında, Azure App Service bir ASP.NET Core uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5819fc5b2d6e64d1812dacd88a2a4f840f6e03c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908203"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080173"
 ---
-# <a name="configure-a-windows-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir Windows ASP.NET Core uygulaması yapılandırma
+# <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET Core uygulaması yapılandırma
 
 > [!NOTE]
 > .NET Framework 'de ASP.NET için bkz. [Azure App Service için bir ASP.NET uygulaması yapılandırma](configure-language-dotnet-framework.md)
 
-ASP.NET Core uygulamalar, derlenmiş ikili dosyalar olarak Azure App Service dağıtılacak olmalıdır. Visual Studio yayımlama aracı çözümü oluşturur ve ardından derlenmiş ikilileri doğrudan dağıtır, ancak App Service dağıtım motoru önce kod deposunu dağıtır ve ardından ikilileri derler. Linux uygulamaları hakkında daha fazla bilgi için bkz. [bir Linux ASP.NET Core uygulamasını Azure App Service Için yapılandırma](containers/configure-language-dotnetcore.md).
+ASP.NET Core uygulamalar, derlenmiş ikili dosyalar olarak Azure App Service dağıtılacak olmalıdır. Visual Studio yayımlama aracı çözümü oluşturur ve ardından derlenmiş ikilileri doğrudan dağıtır, ancak App Service dağıtım motoru önce kod deposunu dağıtır ve ardından ikilileri derler.
 
-Bu kılavuz ASP.NET Core geliştiricilere yönelik temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [SQL veritabanı öğreticisi ile](app-service-web-tutorial-dotnetcore-sqldb.md) [ASP.net hızlı başlangıç](app-service-web-get-started-dotnet.md) ve ASP.NET Core izleyin.
+Bu kılavuz ASP.NET Core geliştiricilere yönelik temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [ASP.NET Core hızlı başlangıç](quickstart-dotnetcore.md) ve [ASP.NET Core SQL veritabanı öğreticisiyle](tutorial-dotnetcore-sqldb-app.md) izleyin.
+
+::: zone pivot="platform-windows"  
 
 ## <a name="show-supported-net-core-runtime-versions"></a>Desteklenen .NET Core çalışma zamanı sürümlerini göster
 
@@ -28,9 +31,69 @@ App Service, Windows örnekleri için desteklenen tüm .NET Core sürümleri zat
 dotnet --info
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="show-net-core-version"></a>.NET Core sürümünü göster
+
+Geçerli .NET Core sürümünü göstermek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+Desteklenen tüm .NET Core sürümlerini göstermek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep DOTNETCORE
+```
+
+::: zone-end
+
 ## <a name="set-net-core-version"></a>.NET Core sürümünü ayarla
 
+::: zone pivot="platform-windows"  
+
 ASP.NET Core projeniz için proje dosyasında hedef Framework 'ü ayarlayın. Daha fazla bilgi için bkz. .NET Core belgelerinde [kullanılacak .NET Core sürümünü seçme](https://docs.microsoft.com/dotnet/core/versions/selection) .
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+.NET Core sürümünü 3,1 olarak ayarlamak için [Cloud Shell](https://shell.azure.com) aşağıdaki komutu çalıştırın:
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>Derleme Otomasyonu 'nu özelleştirme
+
+Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
+
+1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
+1. `dotnet restore`NuGet bağımlılıklarını geri yüklemek için ' i çalıştırın.
+1. `dotnet publish`Üretim için bir ikili oluşturmak üzere ' i çalıştırın.
+1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
+
+`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
+
+Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Derleme Otomasyonu 'nu özelleştirmek için ek ortam değişkenleri için bkz. [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+App Service nasıl çalıştığı ve Linux 'ta ASP.NET Core uygulamalar derleme hakkında daha fazla bilgi için bkz. [Oryx belgeleri: .NET Core uygulamaları nasıl algılanır ve oluşturulur](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
+
+::: zone-end
 
 ## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
@@ -115,7 +178,7 @@ App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_pr
 
 - İçindeki ve üst bilgilerini iletmek için, yazılım yazılımını [Forwardedheadersoptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın `X-Forwarded-For` `X-Forwarded-Proto` `Startup.ConfigureServices` .
 - Bilinen ağlara özel IP adresi aralıkları ekleyin, böylece ara yazılım App Service yük dengeleyiciye güvenebilirler.
-- Diğer middlewares çağrılmadan önce içinde [Useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın `Startup.Configure` .
+- Diğer ara yazılım çağrılmadan önce içinde [Useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın `Startup.Configure` .
 
 Üç öğeyi birlikte koymak, kodunuz aşağıdaki örneğe benzer şekilde görünür:
 
@@ -146,7 +209,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çalışacak ASP.NET Core yapılandırma](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
+::: zone pivot="platform-linux"
+
+## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
+
+[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: SQL veritabanı ile uygulama ASP.NET Core](app-service-web-tutorial-dotnetcore-sqldb.md)
+> [Öğretici: SQL veritabanı ile uygulama ASP.NET Core](tutorial-dotnetcore-sqldb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [App Service Linux SSS](faq-app-service-linux.md)
+
+::: zone-end
+

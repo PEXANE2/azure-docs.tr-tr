@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254623"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079918"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Öğretici: Azure App Service web uygulamasına Azure CDN ekleme
 
@@ -43,13 +43,13 @@ Kullanacağınız örnek statik HTML sitesinin ana sayfası:
 Bu öğreticiyi tamamlamak için:
 
 - [Git'i yükleyin](https://git-scm.com/)
-- [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI'yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>Web uygulaması oluşturma
 
-Kullanacağınız web uygulamasını oluşturmak için, [statik HTML hızlı başlangıç](../app-service/app-service-web-get-started-html.md) ila **Uygulamaya göz atma** adımlarını izleyin.
+Kullanacağınız web uygulamasını oluşturmak için, [statik HTML hızlı başlangıç](../app-service/quickstart-html.md) ila **Uygulamaya göz atma** adımlarını izleyin.
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
 
@@ -60,7 +60,7 @@ CDN uç noktanızı dinamik site hızlandırma (DSA) için iyileştirmek istiyor
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>CDN profili ve uç noktası oluşturma
 
-Sol gezinti bölmesinde **Uygulama Hizmetleri**’ni ve sonra [statik HTML hızlı başlangıç](../app-service/app-service-web-get-started-html.md) içinde oluşturduğunuz uygulamayı seçin.
+Sol gezinti bölmesinde **Uygulama Hizmetleri**’ni ve sonra [statik HTML hızlı başlangıç](../app-service/quickstart-html.md) içinde oluşturduğunuz uygulamayı seçin.
 
 ![Portalda, App Service uygulamasını seçin](media/cdn-add-to-web-app/portal-select-app-services.png)
 
@@ -75,8 +75,8 @@ Sol gezinti bölmesinde **Uygulama Hizmetleri**’ni ve sonra [statik HTML hızl
 | Ayar | Önerilen değer | Açıklama |
 | ------- | --------------- | ----------- |
 | **CDN profili** | myCDNProfile | CDN profili, aynı fiyatlandırma katmanına sahip bir CDN uç noktaları koleksiyonudur. |
-| **Fiyatlandırma Katmanı** | Standart Akamai | [Fiyatlandırma katmanı](cdn-features.md), sağlayıcıyı ve kullanılabilir özellikleri belirtir. Bu öğreticide *Standard Akamai* kullanılır. |
-| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | * &lt;Uç nokta adı&gt;*. azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişirsiniz.
+| **Fiyatlandırma katmanı** | Standart Akamai | [Fiyatlandırma katmanı](cdn-features.md), sağlayıcıyı ve kullanılabilir özellikleri belirtir. Bu öğreticide *Standard Akamai* kullanılır. |
+| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | * &lt; Uç nokta adı &gt; *. azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişirsiniz.
 
 CDN profili oluşturmak için **Oluştur**’u seçin.
 
@@ -160,7 +160,7 @@ http://<endpointname>.azureedge.net/index.html
 
 Portalın sol gezinti bölümünde, **Kaynak grupları**’nı ve ardından ve web uygulamanız için oluşturduğunuz kaynak grubunu (myResourceGroup) seçin.
 
-![Kaynak grubu seçin](media/cdn-add-to-web-app/portal-select-group.png)
+![Kaynak grubunu seçme](media/cdn-add-to-web-app/portal-select-group.png)
 
 Kaynak listesinden CDN uç noktanızı seçin.
 

@@ -3,12 +3,12 @@ title: Azure Pipelines derleme ve yayın işlem hatlarında DevTest Labs’i kul
 description: Azure Pipelines derleme ve serbest bırakma işlem hatlarında Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 71af1e0dfe205fe1028f7b82b41f3ed38ebefd3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483083"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080343"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
 Bu makalede, DevTest Labs Azure Pipelines oluşturma ve yayınlama işlem hatları 'nda nasıl kullanılabileceği hakkında bilgiler verilmektedir. 
@@ -26,7 +26,7 @@ Yapı başarıyla tamamlandıktan sonra, **yayın işlem hattı** hazırlama vey
 
 Gerekli Şirket dışında, test ekosisteminin yeniden oluşturulması için gereken tüm bilgilerin, Azure kaynaklarının yapılandırması da dahil olmak üzere derleme yapıtlarında kullanılabilir olması gerekir. Azure kaynakları kullanılırken bir ücret doğurduğuna göre, şirketler bu kaynakların kullanımını denetlemek veya izlemek ister. Bazı durumlarda, kaynakları oluşturmak ve yapılandırmak için kullanılan Azure Resource Manager şablonlar bunun gibi başka bir departman tarafından yönetilebilir. Bu şablonlar, farklı bir depoda depolanabilir. Bir yapının oluşturulduğu ve test edileceği ve hem kodun hem de yapılandırmanın derleme yapıtları içinde depolanması gerektiğinde sistemi üretimde doğru bir şekilde yeniden oluşturmak için gereken ilgi çekici bir duruma yol açar. 
 
-Yapı/test aşamasında DevTest Labs 'i kullanarak, yayın aşamasında, test etmek için kullanılan tam yapılandırmanın üretime dağıtılması için yapı kaynaklarına Azure Resource Manager şablonları ve destekleyici dosyalar ekleyebilirsiniz. Doğru yapılandırmayla **Azure DevTest Labs ortamı oluştur** görevi, Kaynak Yöneticisi şablonlarını derleme yapıtlarına kaydeder. Bu örnek için öğreticideki kodu kullanacaksınız: Azure 'da Web uygulamasını dağıtmak ve test etmek için [Azure App Service 'de .NET Core ve SQL veritabanı Web uygulaması oluşturma](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md).
+Yapı/test aşamasında DevTest Labs 'i kullanarak, yayın aşamasında, test etmek için kullanılan tam yapılandırmanın üretime dağıtılması için yapı kaynaklarına Azure Resource Manager şablonları ve destekleyici dosyalar ekleyebilirsiniz. Doğru yapılandırmayla **Azure DevTest Labs ortamı oluştur** görevi, Kaynak Yöneticisi şablonlarını derleme yapıtlarına kaydeder. Bu örnek için öğreticideki kodu kullanacaksınız: Azure 'da Web uygulamasını dağıtmak ve test etmek için [Azure App Service 'de .NET Core ve SQL veritabanı Web uygulaması oluşturma](../app-service/tutorial-dotnetcore-sqldb-app.md).
 
 ![Genel akış](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -40,7 +40,7 @@ Yapı/test aşamasında DevTest Labs 'i kullanarak, yayın aşamasında, test et
 Yapı işlem hattı bir DevTest Labs ortamı oluşturur ve test için kodu dağıtır.
 
 ## <a name="set-up-a-build-pipeline"></a>Derleme işlem hattı ayarlama
-Azure Pipelines, öğreticideki kodu kullanarak bir derleme işlem hattı oluşturun [: Azure App Service .NET Core ve SQL veritabanı Web uygulaması oluşturma](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Kodu derlemek, test etmek ve yayımlamak için gerekli görevi doldurmayacak **ASP.NET Core** şablonunu kullanın.
+Azure Pipelines, öğreticideki kodu kullanarak bir derleme işlem hattı oluşturun [: Azure App Service .NET Core ve SQL veritabanı Web uygulaması oluşturma](../app-service/tutorial-dotnetcore-sqldb-app.md). Kodu derlemek, test etmek ve yayımlamak için gerekli görevi doldurmayacak **ASP.NET Core** şablonunu kullanın.
 
 ![ASP.NET şablonunu seçin](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 

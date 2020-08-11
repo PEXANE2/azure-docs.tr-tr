@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671618"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080207"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service işletim sistemi işlevselliği
 Bu makalede, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)üzerinde çalışan tüm Windows uygulamaları için kullanılabilen ortak temel işletim sistemi işlevleri açıklanmaktadır. Bu işlevsellik dosya, ağ ve kayıt defteri erişimini ve tanılama günlüklerini ve olaylarını içerir. 
 
 > [!NOTE] 
-> App Service [Linux uygulamaları](containers/app-service-linux-intro.md) kendi kapsayıcılarında çalışır. Konak işletim sistemine erişime izin verilmiyor, kapsayıcıya kök erişiminiz var. Benzer şekilde, [Windows kapsayıcılarında çalışan uygulamalar](app-service-web-get-started-windows-container.md)için, kapsayıcıya yönetici erişimi vardır ancak ana bilgisayar işletim sistemine erişemez. 
+> App Service [Linux uygulamaları](overview.md#app-service-on-linux) kendi kapsayıcılarında çalışır. Konak işletim sistemine erişime izin verilmiyor, kapsayıcıya kök erişiminiz var. Benzer şekilde, [Windows kapsayıcılarında çalışan uygulamalar](quickstart-custom-container.md?pivots=container-windows)için, kapsayıcıya yönetici erişimi vardır ancak ana bilgisayar işletim sistemine erişemez. 
 >
 
 <a id="tiers"></a>
@@ -51,7 +51,7 @@ App Service, Azure PaaS (hizmet olarak platform) altyapısının üstünde çal�
 - Yalnızca App Service (ve müşterilerle erişilemeyen) tarafından kullanılan Azure paketi cspkg dosyalarını içeren bir uygulama sürücüsü
 - "Kullanıcı" sürücüsü (C:\ sürücü), boyutu VM 'nin boyutuna bağlı olarak değişir. 
 
-Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örneğin: 
+Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örnek: 
 
 - Uygulama, diskte yeterli alan olmadığını belirten bir hata oluşturabilir.
 - Kudu konsoluna gözatarken disk hataları görebilirsiniz.
@@ -60,7 +60,7 @@ Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kot
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Ağ sürücüleri (diğer adıyla UNC paylaşımları)
+### <a name="network-drives-unc-shares"></a>Ağ sürücüleri (UNC paylaşımları)
 Uygulama dağıtımını ve bakımını basit hale getiren App Service benzersiz yönlerinden biri, tüm Kullanıcı İçeriklerinin bir dizi UNC paylaşımı üzerinde depolanmasıdır. Bu model, birden çok yük dengeli sunucu içeren şirket içi web barındırma ortamları tarafından kullanılan, içerik depolama alanının ortak düzeniyle birlikte eşleşir. 
 
 App Service içinde, her bir veri merkezinde oluşturulmuş bir dizi UNC paylaşımı vardır. Her bir veri merkezindeki tüm müşteriler için Kullanıcı içeriğinin yüzdesi her bir UNC paylaşımında ayrılır. Ayrıca, tek bir müşterinin aboneliğine ait tüm dosya içeriği her zaman aynı UNC paylaşımında yer alır. 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74980068"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080941"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Hizmet uç noktaları ile Application Gateway tümleştirme
 Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma gerektiren App Service üç çeşidi vardır. Çeşitlemeler, çok kiracılı, Iç Load Balancer (ıLB) App Service Ortamı (Ao) ve dış Ao olarak da bilinen normal App Service içerir. Bu makalede, bunu App Service (çok kiracılı) ile yapılandırma ve ıLB ve dış Ao hakkındaki konuları tartışacak.
@@ -33,7 +33,7 @@ App Service ve Application Gateway oluşturmanın yanı sıra bu yapılandırman
 
 ## <a name="using-azure-portal"></a>Azure portalını kullanma
 Azure portal, kurulumu sağlamak ve yapılandırmak için dört adımı takip edersiniz. Mevcut kaynaklarınız varsa, ilk adımları atlayabilirsiniz.
-1. App Service belgelerindeki hızlı başlangıçlardan birini kullanarak App Service oluşturun, örneğin [.NET Core hızlı başlangıç](../../app-service/app-service-web-get-started-dotnet.md)
+1. App Service belgelerindeki hızlı başlangıçlardan birini kullanarak App Service oluşturun, örneğin [.NET Core hızlı başlangıç](../quickstart-dotnetcore.md)
 2. [Portal Hızlı](../../application-gateway/quick-create-portal.md)başlangıcını kullanarak bir Application Gateway oluşturun, ancak arka uç hedefleri ekle bölümünü atlayın.
 3. [App Service Application Gateway arka ucu olarak](../../application-gateway/configure-web-app-portal.md)yapılandırın, ancak erişimi kısıtla bölümünü atlayın.
 4. Son olarak, [hizmet uç noktalarını kullanarak erişim kısıtlaması](../../app-service/app-service-ip-restrictions.md#service-endpoints)oluşturun.

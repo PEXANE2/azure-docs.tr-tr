@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcıl
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1855fd201d7963fdf2f1b3fa292643908bbb05a0
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007013"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079612"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core-Azure Dev Spaces
 
@@ -34,7 +34,7 @@ Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemeniz
 - Azure geliştirme iş yükü yüklü olan Windows üzerinde Visual Studio 2019. Visual Studio yüklü değilse, [buradan](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)indirin.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesini oluşturma
 
 [Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *myaks*adlı bir aks kümesi oluşturur.
 
@@ -86,11 +86,11 @@ Projenizde, aşağıda gösterildiği gibi başlatma ayarları açılır listesi
 
 ![IIS Express seçeneğinin vurgulandığı ve seçildiği ve Azure Dev Spaces seçeneğinin vurgulandığı Visual Studio Kullanıcı arabiriminin ekran görüntüsü.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-Azure Dev Spaces iletişim kutusunda, *aboneliğinizi* ve *Azure Kubernetes kümenizi*seçin. *Alanı* *varsayılan* olarak ayarlayın ve *herkese açık olarak erişilebilir* onay kutusunu etkinleştirin. *Tamam* düğmesine tıklayın.
+Azure Dev Spaces iletişim kutusunda, *aboneliğinizi* ve *Azure Kubernetes kümenizi*seçin. *Alanı* *varsayılan* olarak ayarlayın ve *herkese açık olarak erişilebilir* onay kutusunu etkinleştirin. *Tamam*’a tıklayın.
 
 ![Azure Dev Spaces iletişim kutusunun ekran görüntüsü.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Bu işlem, hizmetinizi genel olarak erişilebilen bir URL ile *varsayılan* geliştirme alanına dağıtır. Azure Dev Spaces ile çalışacak şekilde yapılandırılmamış bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz. *Tamam* düğmesine tıklayın.
+Bu işlem, hizmetinizi genel olarak erişilebilen bir URL ile *varsayılan* geliştirme alanına dağıtır. Azure Dev Spaces ile çalışacak şekilde yapılandırılmamış bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz. *Tamam*’a tıklayın.
 
 ![Azure Spaces kaynağı Ekle iletişim kutusunun ekran görüntüsü.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
@@ -150,8 +150,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
+
 > [!div class="nextstepaction"]
-> [Birden çok kapsayıcı ve takım geliştirme ile çalışma](multi-service-netcore-visualstudio.md)
+> [Azure Dev Spaces nasıl çalışır?](how-dev-spaces-works.md)
 
 [ingress-update]: how-dev-spaces-works-up.md#how-running-your-code-is-configured
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

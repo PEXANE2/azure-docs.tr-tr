@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482692"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079680"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -64,11 +64,15 @@ App Service planınızı yükselterek, kotalarınızı uygulamanızı artırabil
 > [!IMPORTANT]
 > Ölçüm toplamalarının karışmasını önlemek için **Ortalama yanıt süresi** kullanım dışı olacaktır. **Yanıt süresini** değiştirme olarak kullanın.
 
+> [!NOTE]
+> Bir uygulama için ölçümler, uygulamanın SCM sitesine (kudu) yönelik istekleri içerir.  Bu, kudu kullanarak sitenin logstream 'i görüntüleme isteklerini içerir.  Logstream istekleri birkaç dakika yayılabileceğinden, Istek Süresi ölçümlerini etkileyecektir.  Bu ölçümler otomatik ölçeklendirme mantığı ile kullanılırken kullanıcılar bu ilişkiyi farkında olmalıdır.
+> 
+
 Ölçümler, uygulama veya App Service planının davranışı hakkında bilgi sağlar.
 
 Bir uygulama için kullanılabilir ölçümler şunlardır:
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | --- | --- |
 | **Yanıt süresi** | Uygulamanın isteklere istek görmesi için geçen süre (saniye cinsinden). |
 | **Ortalama yanıt süresi (kullanım dışı)** | Uygulama için geçen ortalama süre (saniye cinsinden). |
@@ -112,9 +116,9 @@ App Service planı için kullanılabilir ölçümler şunlardır:
 > App Service planı ölçümleri yalnızca *temel*, *Standart*ve *Premium* katmanlardaki planlar için kullanılabilir.
 > 
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | --- | --- |
-| **CPU Yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama CPU. |
+| **CPU yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama CPU. |
 | **Bellek yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama bellek. |
 | **Içindeki veriler** | Planın tüm örnekleri genelinde kullanılan ortalama gelen bant genişliği. |
 | **Giden veriler** | Planın tüm örneklerinde kullanılan ortalama giden bant genişliği. |

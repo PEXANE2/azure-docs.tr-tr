@@ -7,12 +7,12 @@ description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir Node.js 
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c27718cc87a1c9401b31ff8c3c77c7b7a8c52292
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7fcb60d3f020d911157735ce9632ed4157e2da4e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420388"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080428"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Hızlı başlangıç: Visual Studio Code ve Node.js-Azure Dev Spaces ile Kubernetes 'te hata ayıklama ve yineleme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Git](https://www.git-scm.com/downloads).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesini oluşturma
 
 [Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *myaks*adlı bir aks kümesi oluşturur.
 
@@ -109,7 +109,7 @@ Hata ayıklamayı durdurmak için hata **Ayıkla** ve hata **ayıklamayı Durdur
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **başlatma sunucusunu**yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **başlatma sunucusunu**yeniden çalıştırabilirsiniz. Örnek:
 
 1. Uygulamanız hala çalışıyorsa, **Hata Ayıkla** ' yı seçin ve durdurmak Için **hata ayıklamayı durdurun** .
 1. [Satır 13 ' `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) i şu şekilde güncelleştir:
@@ -147,7 +147,7 @@ Bu komut Azure Dev Spaces ' de hizmetinizi oluşturur ve çalıştırır. Ayrıc
 
 Hizmet başladıktan sonra tarayıcınızı kullanarak bu sayfaya gidin ve etkileşime geçin.
 
-Hizmet çalışırken, VS Code dön ve *server.js*satırı 13 satırını güncelleştir. Örneğin:
+Hizmet çalışırken, VS Code dön ve *server.js*satırı 13 satırını güncelleştir. Örnek:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
@@ -164,10 +164,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Birden çok kapsayıcı ve takım geliştirme ile çalışma](multi-service-nodejs.md)
+> [Azure Dev Spaces nasıl çalışır?](how-dev-spaces-works.md)
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

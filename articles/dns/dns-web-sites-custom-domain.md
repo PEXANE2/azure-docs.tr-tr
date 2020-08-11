@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939094"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079493"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
 
-Azure DNS'yi web uygulamalarınız için özel etki alanı barındıracak şekilde yapılandırabilirsiniz. Örneğin, bir Azure Web uygulaması oluşturabilir ve kullanıcılarınızın bir tam etki alanı adı (FQDN) olarak www\.contoso.com veya contoso.com kullanarak erişmesini sağlayabilirsiniz.
+Azure DNS'yi web uygulamalarınız için özel etki alanı barındıracak şekilde yapılandırabilirsiniz. Örneğin, bir Azure Web uygulaması oluşturabilir ve kullanıcılarınızın \. bir tam etki alanı adı (FQDN) olarak www contoso.com veya contoso.com kullanarak erişmesini sağlayabilirsiniz.
 
 > [!NOTE]
 > contoso.com bu öğreticide örnek etki alanı olarak kullanılmıştır. contoso.com yerine kendi etki alanı adınızı yazın.
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
-* [Bir App Service uygulaması oluşturun](../app-service/app-service-web-get-started-html.md) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
+* [Bir App Service uygulaması oluşturun](../app-service/quickstart-html.md) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
 
 * Azure DNS'de bir DNS bölgesi oluşturun ve bölgeyi kayıt kuruluşunuzda Azure DNS'ye devredin.
 
@@ -173,9 +173,9 @@ set-AzWebApp `
 Bir tarayıcı açıp `http://www.<your domainname>` ve `http://<you domain name>` adreslerine gidin.
 
 > [!NOTE]
-> `http://` Ön eki eklediğinizden emin olun, aksi takdirde tarayıcınız sizin IÇIN bir URL öngörme girişiminde bulunabilir!
+> Ön eki eklediğinizden emin olun `http://` , aksi takdirde tarayıcınız sizin için BIR URL öngörme girişiminde bulunabilir!
 
-İki URL'de de aynı sayfayı görmeniz gerekir. Örneğin:
+İki URL'de de aynı sayfayı görmeniz gerekir. Örnek:
 
 ![Contoso uygulama hizmeti](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

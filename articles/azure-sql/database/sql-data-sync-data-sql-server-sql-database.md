@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386852"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080703"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -83,7 +83,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | **Dezavantajlar** | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>Başlarken 
+## <a name="get-started"></a>başlarken 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -131,6 +131,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 ### <a name="general-limitations"></a>Genel sınırlamalar
 
 - Tablo, birincil anahtar olmayan bir kimlik sütununa sahip olamaz.
+- Veri eşitleme kullanmak için bir tablonun kümelenmiş bir dizini olmalıdır.
 - Birincil anahtar şu veri türlerine sahip olamaz: sql_variant, binary, varbinary, Image, XML.
 - Aşağıdaki veri türlerini birincil anahtar olarak kullanırken dikkatli olun, çünkü desteklenen duyarlık yalnızca ikinci-saat, DateTime, datetime2, DateTimeOffset olur.
 - Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
@@ -148,7 +149,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.

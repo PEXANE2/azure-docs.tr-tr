@@ -3,12 +3,12 @@ title: .NET kullanarak Azure Event Hubs olay gönderme veya alma (en son)
 description: Bu makalede, Azure Event Hubs en son Azure. Messaging. EventHubs paketini kullanarak olayları gönderen/alan bir .NET Core uygulaması oluşturmak için İzlenecek yol sunulmaktadır.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 292e6e36337f565100c25d655882e60fa2a0bb6d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537148"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080064"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs-.NET (Azure. Messaging. EventHubs) ile olayları gönderme ve olayları alma 
 Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kul
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure Event Hubs yeni başladıysanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
@@ -105,7 +105,7 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
     > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs) bakın
 
 ## <a name="receive-events"></a>Olayları alma
-Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .NET Core konsol uygulamasının nasıl yazılacağı gösterilmektedir. Olay işlemcisi, bu olay hub 'larından kalıcı denetim noktaları ve paralel alma işlemlerini yöneterek Olay Hub 'larından olay almayı basitleştirir. Olay işlemcisi, belirli bir olay hub 'ı ve bir tüketici grubuyla ilişkilendirilir. Olay Hub 'ında birden çok bölümden gelen olayları alır ve bunları, sağladığınız kodu kullanarak işlemeye yönelik bir işleyici temsilcisine geçirme. 
+Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .NET Core konsol uygulamasının nasıl yazılacağı gösterilmektedir. Olay işlemcisi, bu olay hub 'larından kalıcı kontrol noktaları ve paralel alım seçenekleri yöneterek Olay Hub 'larından olay almayı basitleştirir. Olay işlemcisi, belirli bir olay hub 'ı ve bir tüketici grubuyla ilişkilendirilir. Olay Hub 'ında birden çok bölümden gelen olayları alır ve bunları, sağladığınız kodu kullanarak işlemeye yönelik bir işleyici temsilcisine geçirme. 
 
 
 > [!NOTE]
@@ -114,7 +114,7 @@ Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure depolama ve BLOB kapsayıcısı oluşturma
 Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kullanacaksınız. Azure depolama hesabı oluşturmak için bu adımları izleyin. 
 
-1. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)
+1. [Azure Depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md)
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007072"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080618"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -24,11 +24,11 @@ ms.locfileid: "88007072"
 Bu öğreticide, bir [App Service ortamı v1](app-service-app-service-environment-intro.md) 'de (Ao) Web uygulamaları ve App Service planları oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
 > [!NOTE]
-> Bir Web uygulamasının nasıl oluşturulduğunu, ancak bir App Service Ortamı yapmanız gerekmediğini öğrenmek istiyorsanız, bkz. [.NET Web uygulaması oluşturma](../app-service-web-get-started-dotnet.md) veya diğer diller ve çerçeveler için ilgili öğreticilerden biri.
+> Bir Web uygulamasının nasıl oluşturulduğunu, ancak bir App Service Ortamı yapmanız gerekmediğini öğrenmek istiyorsanız, bkz. [.NET Web uygulaması oluşturma](../quickstart-dotnetcore.md) veya diğer diller ve çerçeveler için ilgili öğreticilerden biri.
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktadır. Henüz yapmadıysanız, bkz. [App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma

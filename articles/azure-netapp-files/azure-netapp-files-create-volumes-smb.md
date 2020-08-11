@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533181"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080516"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -172,7 +172,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
         Özellik kaydının durumunu denetleyin: 
 
         > [!NOTE]
-        > **Registrationstate** , üzerinde `Registering` değişiklik yapmadan önce birkaç dakika içinde olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+        > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520809"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080839"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -30,12 +30,12 @@ API 'lerinizi, yüksek düzeyde ölçeklenebilir ve kolay API barındırma sağl
 > [!TIP] 
 > API 'lerinizi Web Apps olarak dağıtabilir olsanız da, API 'lerinizi bulutta ve şirket içinde API 'Ler oluştururken, barındırdığınızda ve kullandığınızda işinizi daha kolay hale getirmek için API Apps olarak dağıtmayı göz önünde bulundurun. API 'lerinizin herhangi bir kodunu değiştirmeniz gerekmez; kodunuzu bir API uygulamasına dağıtmanız yeterlidir. Örneğin, bu dillerle oluşturulan API uygulamalarının nasıl oluşturulacağını öğrenin: 
 > 
-> * [ASP.net](../app-service/app-service-web-get-started-dotnet.md). 
-> * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
-> * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/containers/quickstart-python.md)
-> * [Ruby](../app-service/containers/quickstart-ruby.md)
+> * [ASP.net](../app-service/quickstart-dotnetcore.md). 
+> * [Java](../app-service/quickstart-java.md)
+> * [Node.js](../app-service/quickstart-nodejs.md)
+> * [PHP](../app-service/quickstart-php.md)
+> * [Python](../app-service/quickstart-python.md)
+> * [Ruby](../app-service/quickstart-ruby.md)
 >
 > Logic Apps için derlenmiş API uygulama örnekleri için [GitHub deposunu](https://github.com/logicappsio) veya [blogu](https://aka.ms/logicappsblog)Azure Logic Apps ziyaret edin.
 
@@ -174,7 +174,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 | İstek şunları içerir `triggerState` ? | API yanıtı | 
 | -------------------------------- | -------------| 
 | No | Bir HTTP `202 ACCEPTED` durumu `location` `triggerState` ve geçerli saate ayarlanmış bir üstbilgi ve 15 saniyeye kadar olan bir üst bilgi döndürür `retry-after` . | 
-| Yes | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
+| Evet | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 

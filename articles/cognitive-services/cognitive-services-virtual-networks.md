@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876589"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080907"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Bilişsel Hizmetler sanal ağlarını yapılandırma
 
@@ -40,10 +40,9 @@ Ağ kuralları, REST ve WebSocket dahil olmak üzere Azure bilişsel hizmetler '
 
 ## <a name="supported-regions-and-service-offerings"></a>Desteklenen bölgeler ve hizmet teklifleri
 
-Aşağıda listelenen bilişsel hizmetler, ticari buluttaki ve US Gov buluttaki sanal ağları destekler. Hizmet burada listelenmiyorsa, henüz sanal ağları desteklemez.
+Sanal ağlar (VNet 'ler) bilişsel [Hizmetler 'in kullanılabildiği bölgelerde](https://azure.microsoft.com/global-infrastructure/services/)desteklenir. Bilişsel hizmet listede yoksa, şu anda sanal ağları desteklememektedir.
 
 > [!div class="checklist"]
-
 > * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
 > * [Görüntü İşleme](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
@@ -59,8 +58,8 @@ Aşağıda listelenen bilişsel hizmetler, ticari buluttaki ve US Gov buluttaki 
 ## <a name="service-tags"></a>Hizmet Etiketleri
 
 Bilişsel hizmetler, ağ kuralları yapılandırması için hizmet etiketlerini destekler. Aşağıda listelenen hizmetler, **Biliveservicesmanagement** hizmeti etiketinde bulunur.
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
 > * [Görüntü İşleme](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)

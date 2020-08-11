@@ -3,12 +3,12 @@ title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371252"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080822"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -57,7 +57,7 @@ Bağlantılarınızın izin verilenler listesine eklenecek doğru IP adreslerini
 1. Komut isteminden aşağıdaki komutu çalıştırın: 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Bu IP adresi statiktir. Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
 
@@ -66,7 +66,7 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
 1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. **Yetkili olmayan yanıt** bölümündeki adı aşağıdaki biçimlerden birinde olan bir yere göz önünde edin: 
 

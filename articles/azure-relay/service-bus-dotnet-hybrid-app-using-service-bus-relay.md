@@ -3,12 +3,12 @@ title: Azure Windows Communication Foundation (WCF) geçiş karma şirket içi/b
 description: Azure Relay kullanarak, şirket içi WCF hizmetini bulutta bir Web uygulamasına nasıl kullanıma sunabileceğiniz hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314403"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079969"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay kullanarak bir şirket içi WCF hizmetini bulutta bir Web uygulamasına sunun
 
@@ -244,7 +244,7 @@ Bu bölümde, ürün hizmetinizden alınan verileri görüntüleyen basit bir AS
     ![Kimlik doğrulaması belirtin][18]
 
 1. **Yeni bir ASP.NET Web uygulaması oluşturun**, MVC uygulamasını oluşturmak için **Oluştur** ' u seçin.
-1. Yeni bir Web uygulaması için Azure kaynaklarını yapılandırın. [Web uygulamanızı yayımlama](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)bölümündeki adımları izleyin. Ardından, Bu öğreticiye dönüp bir sonraki adımla devam edin.
+1. Yeni bir Web uygulaması için Azure kaynaklarını yapılandırın. [Web uygulamanızı yayımlama](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)bölümündeki adımları izleyin. Ardından, Bu öğreticiye dönüp bir sonraki adımla devam edin.
 1. **Çözüm Gezgini**, **modeller** ' a sağ tıklayın ve ardından sınıf **Ekle**' yi seçin  >  **Class**.
 1. Sınıfı *Product.cs*olarak adlandırın, sonra **Ekle**' yi seçin.
 
@@ -427,7 +427,7 @@ Sonraki bölüme geçmeden önce her iki uygulamayı da kapatın.
 
 Sonraki adım Azure Web App **Productsportal** ön ucunun yeniden yayımlamaktır:
 
-1. **Çözüm Gezgini**, **productsportal** projesine sağ tıklayın ve **Yayımla**' yı seçin. **Yayımla** sayfasında **Yayımla**' yı seçin.
+1. **Çözüm Gezgini**, **productsportal** projesine sağ tıklayın ve **Yayımla**' yı seçin. **Yayımla** sayfasında **Yayımla**’yı seçin.
 
    > [!NOTE]
    > Dağıtımdan sonra **ProductsPortal** web projesinin otomatik olarak başlatılması durumunda tarayıcıda bir hata iletisi görüntülenebilir. **ProductsServer** uygulaması henüz çalışmadığından bu durumun meydana gelmesi olasıdır.
