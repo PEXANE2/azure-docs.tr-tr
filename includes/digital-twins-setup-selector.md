@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: Azure Digital TWINS kurulum makalesinin sürümleri arasında seçim yapmak için dosya ekleme
 services: digital-twins
 author: baanders
