@@ -3,16 +3,12 @@ title: Sunucular için Azure Arc ile VM Uzantısı yönetimi
 description: Sunucular için Azure Arc (Önizleme), Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809638"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121315"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc ile sanal makine uzantısı yönetimi (Önizleme)
 
@@ -55,7 +51,7 @@ VM uzantıları, Azure portal veya sunucular için Arc tarafından yönetilen ka
 
 Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki ayrıntılar hakkında bilgi edinmek için bkz. [aracıya genel bakış](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu özellik, aboneliğinizdeki aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 

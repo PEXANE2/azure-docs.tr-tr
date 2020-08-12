@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 1474a8ad73f7deb9a7c321f7d7994a7b2b73d624
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87312410"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115229"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, bir Java Web uygulamasını Microsoft Identity platfo
 
 Bu hızlı başlangıcı tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerini ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesaplarını kabul eder. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -57,7 +57,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Web** platformu yapılandırmasını ekleyin.  Bunları `https://localhost:8443/msal4jsample/secure/aad` ve `https://localhost:8443/msal4jsample/graph/me` **yeniden yönlendirme URI 'leri**olarak ekleyin...
->    - **Kaydet**'i seçin.
+>    - **Kaydet**’i seçin.
 > 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
 >
 >    - Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı).
@@ -212,7 +212,7 @@ Web örneğini Tomcat 'e dağıtmak istiyorsanız, kaynak kodunda birkaç deği�
 
 
 > [!IMPORTANT]
-> Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulaması Için sertifika kimlik bilgileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
+> Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulaması Için sertifika kimlik bilgileri](./active-directory-certificate-credentials.md).
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
@@ -254,11 +254,11 @@ import com.microsoft.aad.msal4j.*;
 İzinler ve onay hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [İzinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [İzinler ve onay](./v2-permissions-and-consent.md)
 
 Bu senaryoya yönelik kimlik doğrulama akışı hakkında daha fazla bilgi edinmek için bkz. OAuth 2,0 yetkilendirme kodu akışı:
 
 > [!div class="nextstepaction"]
-> [Yetkilendirme kodu OAuth akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [Yetkilendirme kodu OAuth akışı](./v2-oauth2-auth-code-flow.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885540"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117218"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
 
@@ -62,9 +62,9 @@ Arama ile sorunuz için bir yanıt bulamazsanız, Stack Overflow için yeni bir 
 | ADAL kitaplığı | [adal](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL kitaplığı     | [msal](https://stackoverflow.com/questions/tagged/msal) |
 | OWıN ara yazılımı  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API’si](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | Kimlik doğrulama veya yetkilendirme konularıyla ilgili başka bir alan | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 'den aşağıdaki gönderiler, soru sorma ve kaynak kodu ekleme hakkında ipuçları içermektedir. Topluluk üyelerinin sorunuzu hızlı bir şekilde değerlendirmesine ve yanıt verebilmesini artırmak için bu yönergeleri izleyin:

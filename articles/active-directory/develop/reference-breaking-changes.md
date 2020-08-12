@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026739"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115042"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir?
 
@@ -49,7 +49,7 @@ Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu
 
 1 Haziran 2018 ' de, Azure Kamu için resmi Azure Active Directory (AAD) yetkilisi ' den ' a değiştirilir `https://login-us.microsoftonline.com` `https://login.microsoftonline.us` . Bu değişiklik Ayrıca, Azure Kamu AAD 'nin de Hizmetleri olan GCC High ve DoD Microsoft 365 de uygulanır. ABD kamu kiracısında bir uygulamaya sahipseniz, son noktadaki kullanıcıları oturum açmak için uygulamanızı güncelleştirmeniz gerekir `.us` .  
 
-Azure AD, Mayıs 5 ' ten itibaren bitiş noktası değişikliğini zorunlu hale getirmeye başlayacak ve kamu kullanıcılarının ortak uç nokta () kullanılarak ABD kamu kiracılarında barındırılan uygulamalarda oturum açmasını önlüyor `microsoftonline.com` .  Etkilenen uygulamalar bir hata görmeye başlayacaktır `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Bu hata, uygulamanın genel bulut uç noktasında bir ABD kamu kullanıcısına oturum açmaya çalışıyor olduğunu gösterir. Uygulamanız ortak bir bulut kiracısında ise ve ABD hükümeti kullanıcılarını desteklemek istiyorsanız, [uygulamanızı açıkça destekleyecek şekilde güncelleştirmeniz](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)gerekir. Bu, ABD kamu bulutunda yeni bir uygulama kaydı oluşturulmasını gerektirebilir. 
+Azure AD, Mayıs 5 ' ten itibaren bitiş noktası değişikliğini zorunlu hale getirmeye başlayacak ve kamu kullanıcılarının ortak uç nokta () kullanılarak ABD kamu kiracılarında barındırılan uygulamalarda oturum açmasını önlüyor `microsoftonline.com` .  Etkilenen uygulamalar bir hata görmeye başlayacaktır `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Bu hata, uygulamanın genel bulut uç noktasında bir ABD kamu kullanıcısına oturum açmaya çalışıyor olduğunu gösterir. Uygulamanız ortak bir bulut kiracısında ise ve ABD hükümeti kullanıcılarını desteklemek istiyorsanız, [uygulamanızı açıkça destekleyecek şekilde güncelleştirmeniz](./authentication-national-cloud.md)gerekir. Bu, ABD kamu bulutunda yeni bir uygulama kaydı oluşturulmasını gerektirebilir. 
 
 Bu değişikliğin uygulanması, ABD kamu bulutundaki kullanıcıların uygulamada oturum açma ve ABD devlet kullanıcılarına yönelik uygulamalar için ne sıklıkta oturum açması gerektiğini temel alan aşamalı bir dağıtım kullanılarak yapılır ve ABD hükümeti kullanıcıları tarafından sık kullanılan uygulamalar en son zorlama için geçerlidir. Uygulama, Haziran 2020 ' deki tüm uygulamalarda tamamlanmasını bekliyor. 
 
@@ -98,7 +98,7 @@ HTTP yeniden yönlendirme aracılığıyla login.microsoftonline.com 'den bir uy
 
 **Etkilenen uç noktalar**: v 1.0 ve v 2.0
 
-**Protokol etkilendi**: her yerden gönderi kullanılır ([istemci kimlik bilgileri](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [yetkilendirme kodu satın](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)alma, [ropc](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)ve [yenileme belirteci yeniden satın](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)alma)
+**Protokol etkilendi**: her yerden gönderi kullanılır ([istemci kimlik bilgileri](./v2-oauth2-client-creds-grant-flow.md), [yetkilendirme kodu satın](./v2-oauth2-auth-code-flow.md)alma, [ropc](./v2-oauth-ropc.md), [OBO](./v2-oauth2-on-behalf-of-flow.md)ve [yenileme belirteci yeniden satın](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)alma)
 
 9/2 haftası başlatılırken POST yöntemini kullanan kimlik doğrulama istekleri, daha sıkı HTTP standartları kullanılarak doğrulanacak.  Özellikle, boşluklar ve çift tırnak işaretleri (") artık istek formu değerlerinden kaldırılmayacak. Bu değişikliklerin mevcut istemcileri bozmak için beklenmez ve Azure AD 'ye gönderilen isteklerin her seferinde güvenilir bir şekilde işlenmesini sağlar. Gelecekte (bkz. Yukarıdaki) yinelenen parametreleri reddetmeyi ve isteklerin içindeki ürün reçetesini yoksaymayı planlıyoruz.
 
@@ -113,9 +113,9 @@ Bugün, `?e=    "f"&g=h` ile aynı şekilde ayrıştırılır `?e=f&g=h` `e`  ==
 
 **Geçerlilik tarihi**: 26 Temmuz 2019
 
-**Etkilenen uç noktalar**: [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) ve [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Etkilenen uç noktalar**: [v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) ve [v 2.0](./v2-oauth2-client-creds-grant-flow.md)
 
-**Etkilenen protokol**: [istemci kimlik bilgileri (yalnızca uygulama belirteçleri)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Etkilenen protokol**: [istemci kimlik bilgileri (yalnızca uygulama belirteçleri)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 Bir güvenlik değişikliği, yalnızca uygulama belirteçlerinin (istemci kimlik bilgileri verme aracılığıyla) verildiği şekilde değişiklik gösteren 26 Temmuz 'dan bir sorun oluştu. Daha önce, bu uygulama için, kiracının veya rollerdeki varlığına bakılmaksızın, uygulamaların başka herhangi bir uygulamayı çağırmak için belirteçleri almaya izin verildi.  Bu davranış, kaynaklar (bazen Web API 'Leri olarak adlandırılır) tek kiracılı (varsayılan) olarak ayarlanmış şekilde güncelleştirildiğinden, istemci uygulamasının kaynak kiracısında mevcut olması gerekir.  İstemci ile API arasındaki mevcut onay hala gerekli değildir ve uygulamalar, bir `roles` talebin mevcut olduğundan ve API için beklenen değeri içerdiğinden emin olmak için kendi yetkilendirme denetimlerini yapmaya devam etmelidir.
 

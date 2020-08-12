@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925796"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121536"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -174,7 +174,7 @@ Azure Izleyici günlüklerine aktarılan verilerin güvenliğini sağlamak için
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows için SHA-2 kod Imzalama desteği gereksinimi
-Windows Aracısı, 17 Ağustos 2020 tarihinde yalnızca SHA-2 imzalamayı kullanmaya başlayacaktır. Bu değişiklik, herhangi bir Azure hizmetinin (Azure Izleyici, Azure Otomasyonu, Azure Güncelleştirme Yönetimi, Azure Değişiklik İzleme, Azure Güvenlik Merkezi, Azure Sentinel, Windows Defender ATP) bir parçası olarak eski bir IŞLETIM sistemindeki Log Analytics aracısını kullanarak müşterileri etkiler. Aracıyı eski bir işletim sistemi sürümünde (Windows 7, Windows Server 2008 R2 ve Windows Server 2008) çalıştırmadığınız takdirde değişiklik herhangi bir müşteri eylemi gerektirmez. Eski bir işletim sistemi sürümünde çalışan müşterilerin, 17 Ağustos 2020 tarihinden önce makinelerinde aşağıdaki işlemleri yapması gerekir veya aracıların Log Analytics çalışma alanlarına veri göndermeyi durduracaktır:
+Windows Aracısı 2 Kasım 2020 tarihinde yalnızca SHA-2 oturum açmayı kullanmaya başlayacaktır. Bu değişiklik, herhangi bir Azure hizmetinin (Azure Izleyici, Azure Otomasyonu, Azure Güncelleştirme Yönetimi, Azure Değişiklik İzleme, Azure Güvenlik Merkezi, Azure Sentinel, Windows Defender ATP) bir parçası olarak eski bir IŞLETIM sistemindeki Log Analytics aracısını kullanarak müşterileri etkiler. Aracıyı eski bir işletim sistemi sürümünde (Windows 7, Windows Server 2008 R2 ve Windows Server 2008) çalıştırmadığınız takdirde değişiklik herhangi bir müşteri eylemi gerektirmez. Eski bir işletim sistemi sürümünde çalışan müşterilerin makinelerinde 2 Kasım 2020 tarihinden önce aşağıdaki işlemleri yapması gerekir, yoksa aracıları Log Analytics çalışma alanlarına veri göndermeyi durdurur:
 
 1. IŞLETIM sisteminiz için en son hizmet paketini yükler. Gerekli hizmet paketi sürümleri şunlardır:
     - Windows 7 SP1
@@ -197,10 +197,10 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |
-|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Evet |
+|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Evet |
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

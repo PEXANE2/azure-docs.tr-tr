@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 093214241757bdc3973d88d5a0e6f3157c6178c7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 84f3bbc01d7161dd6d7002102cc006dfae3ce3e4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251140"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118170"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell kullanarak Elastik İş aracısı oluşturma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastik işler](job-automation-overview.md#elastic-database-jobs-preview), bir veya daha fazla Transact-SQL (T-SQL) betiğinin birden fazla veritabanında paralel olarak çalıştırılmasını sağlar.
+[Elastik işler (Önizleme)](job-automation-overview.md#elastic-database-jobs-preview) bir veya daha fazla Transact-SQL (T-SQL) komut dosyasının çok sayıda veritabanı arasında paralel olarak çalıştırılmasını sağlar.
 
 Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gereken adımları öğreneceksiniz:
 
@@ -280,9 +280,9 @@ Aşağıdaki tabloda olası iş yürütme durumları listelenmektedir:
 |**Oluşturulan** | İş yürütmesi yeni oluşturulmuştur ve henüz devam etmiyor.|
 |**Ediyor** | İş yürütmesi Şu anda devam ediyor.|
 |**WaitingForRetry** | İş yürütmesi, işlemini tamamlayamadı ve yeniden denenmayı bekliyor.|
-|**Başarılı oldu** | İşin yürütülmesi başarıyla tamamlandı.|
+|**Başarılı** | İşin yürütülmesi başarıyla tamamlandı.|
 |**SucceededWithSkipped** | İş yürütmesi başarıyla tamamlandı, ancak bazı alt öğeleri atlandı.|
-|**Başaramadı** | İş yürütmesi başarısız oldu ve yeniden deneme süresi bitti.|
+|**Başarısız** | İş yürütmesi başarısız oldu ve yeniden deneme süresi bitti.|
 |**Zaman aşımına uğradı** | İş yürütme zaman aşımına uğradı.|
 |**İptal edildi** | İş yürütmesi iptal edildi.|
 |**Atlandı** | Aynı iş adımının başka bir yürütmesi aynı hedefte zaten çalıştığı için iş yürütmesi atlandı.|

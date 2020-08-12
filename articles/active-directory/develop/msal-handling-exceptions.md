@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204635"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120958"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL özel durumlarını ve hatalarını işleme
 
@@ -76,7 +76,7 @@ MSAL `Classification` , daha iyi bir kullanıcı deneyimi sağlamak için okuyab
 | UserPasswordExpired | Kullanıcının parolasının süresi doldu. | Kullanıcının parolasını sıfırlayabilmesi için Acquiretokenetkileşimli () çağırın. |
 | Promptnewverfailed| Etkileşimli kimlik doğrulaması, parametre istemiyle birlikte çağrıldı = hiçbir şekilde, MSAL, tarayıcı tanımlama bilgilerine dayanmaya zorlanıyor ve tarayıcının görüntülenmesini gerektirmez. Bu başarısız oldu. | Prompt. None olmadan Acquiretokenetkileşimli () çağrısı yapın |
 | AcquireTokenSilentFailed | MSAL SDK, önbellekten belirteç getirmek için yeterli bilgi içermiyor. Bunun nedeni önbellekte hiçbir belirteç olmaması veya bir hesabın bulunamaması olabilir. Hata iletisinde daha fazla ayrıntı vardır.  | Acquiretokenetkileşimli () çağrısı yapın. |
-| Hiçbiri    | Daha fazla ayrıntı sağlanmaz. Durum, etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir. | Acquiretokenetkileşimli () çağrısı yapın. |
+| Yok    | Daha fazla ayrıntı sağlanmaz. Durum, etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir. | Acquiretokenetkileşimli () çağrısı yapın. |
 
 ## <a name="net-code-example"></a>.NET kod örneği
 
@@ -236,7 +236,7 @@ Python için MSAL içinde, çoğu hata API çağrısından bir dönüş değeri 
 * Başarılı bir yanıt anahtarını içerir `"access_token"` . Yanıtın biçimi OAuth2 protokolü tarafından tanımlanır. Daha fazla bilgi için bkz. [5,1 başarılı yanıt](https://tools.ietf.org/html/rfc6749#section-5.1)
 * Bir hata yanıtı içerir `"error"` ve genellikle `"error_description"` . Yanıtın biçimi OAuth2 protokolü tarafından tanımlanır. Daha fazla bilgi için bkz. [5,2 hata yanıtı](https://tools.ietf.org/html/rfc6749#section-5.2)
 
-Bir hata döndürüldüğünde, `"error_description"` anahtar okunabilir bir ileti içerir; bu, genellikle bir Microsoft Identity platform hata kodu içerir. Çeşitli hata kodları hakkında daha fazla bilgi için bkz. [kimlik doğrulama ve yetkilendirme hata kodları](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes).
+Bir hata döndürüldüğünde, `"error_description"` anahtar okunabilir bir ileti içerir; bu, genellikle bir Microsoft Identity platform hata kodu içerir. Çeşitli hata kodları hakkında daha fazla bilgi için bkz. [kimlik doğrulama ve yetkilendirme hata kodları](./reference-aadsts-error-codes.md).
 
 Python için MSAL içinde, çoğu hata bir hata değeri döndürerek işlendiği için özel durumlar nadir bir durumdur. `ValueError`Özel durum yalnızca, API parametrelerinin hatalı biçimlendirilmiş olduğu gibi, kitaplığı nasıl kullanmaya çalıştığınız ile ilgili bir sorun olduğunda oluşturulur.
 
@@ -262,7 +262,7 @@ Bu hatayla sonuçlanan bazı koşullar, kullanıcıların çözebilmesi için ko
 
 MSAL `reason` , daha iyi bir kullanıcı deneyimi sağlamak için kullanabileceğiniz bir alan sunar. Örneğin, `reason` alanı kullanıcıya parolasının dolduğunu veya bazı kaynakları kullanmak için onay sağlamaları gerektiğini söyleyecektir. Desteklenen değerler numaralandırmanın bir parçasıdır `InteractionRequiredExceptionReason` :
 
-| Nedeni | Anlamı | Önerilen Işleme |
+| Neden | Anlamı | Önerilen Işleme |
 |---------|-----------|-----------------------------|
 | `BasicAction` | Durum etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir | `acquireToken`Etkileşimli parametrelerle çağrı |
 | `AdditionalAction` | Koşul, etkileşimli kimlik doğrulama akışı dışındaki sistemle ek düzeltme etkileşimi tarafından çözülebilir. | `acquireToken`Gerçekleştirilecek düzeltici eylemi açıklayan bir ileti göstermek için etkileşimli parametrelerle çağırın. Çağıran uygulama, Kullanıcı düzeltici eylemi tamamlayamamasının olası olması beklenmez, ek eylem gerektiren akışları gizlemeyi tercih edebilir. |

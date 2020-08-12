@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054077"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116776"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -45,6 +45,8 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 | [Güvenlik soruları](#security-questions) | No | Yalnızca SSPR |
 | [E-posta adresi](#email-address) | No | Yalnızca SSPR |
 | [Uygulama parolaları](#app-passwords) | No | Yalnızca belirli durumlarda MFA |
+
+Bu kimlik doğrulama yöntemleri Azure portal yapılandırılabilir ve [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)aracılığıyla giderek giderek daha da yönetilebilir.
 
 Bu makalede, Azure AD 'de bulunan bu farklı kimlik doğrulama ve doğrulama yöntemleri ve belirli sınırlamalar veya kısıtlamalar özetlenmektedir.
 
@@ -297,6 +299,8 @@ Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure
 SSPR kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD self servis parola sıfırlamasının nasıl çalıştığı][concept-sspr].
 
 MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
+
+[Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)kullanarak kimlik doğrulama yöntemlerini yapılandırma hakkında daha fazla bilgi edinin.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

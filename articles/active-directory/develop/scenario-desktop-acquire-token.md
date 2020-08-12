@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846080"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121077"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Zorunlu parametreler
 
-`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir, bu, ``scopes`` belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içerir. Belirteç Microsoft Graph için ise, gerekli kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](https://docs.microsoft.com/graph/api/user-list-contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekir. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir, bu, ``scopes`` belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içerir. Belirteç Microsoft Graph için ise, gerekli kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](/graph/api/user-list-contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekir. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Android 'de, ayrıca gösterildiği gibi ana etkinliği de belirtmeniz gerekir. bu `.WithParentActivityOrWindow` sayede, belirtecin etkileşimden sonra bu üst etkinliğe geri dönmesi sağlanır. Bunu belirtmezseniz, çağrılırken bir özel durum oluşturulur `.ExecuteAsync()` .
 
@@ -278,7 +278,7 @@ MSAL.NET ekibi, bu genişletilebilirlik mekanizmasını kullanmak için UI testl
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>SystemWebViewOptions ile harika bir deneyim sağlayın
 
-MSAL.NET 4,1 ' den şunları [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) belirtebilirsiniz:
+MSAL.NET 4,1 ' den şunları [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) belirtebilirsiniz:
 
 - `BrowserRedirectError` `HtmlMessageError` Sistem Web tarayıcısında oturum açma veya onay hataları durumunda görüntülenecek URI () veya HTML parçası ().
 - `BrowserRedirectSuccess` `HtmlMessageSuccess` Başarılı oturum açma veya onay durumunda görüntülenecek URI () veya HTML parçası ().
@@ -433,13 +433,13 @@ Bir etki alanında veya Azure AD 'ye katılmış makinede bir etki alanı kullan
   - Ya da, kiracı yöneticisinin uygulamayı kullanabilmesi için Kiracıdaki tüm kullanıcılara daha önce sahip olması gerekir.
   - Diğer bir deyişle:
     - Geliştirici, Azure portal için **Izin ver** düğmesini seçti.
-    - Ya da bir kiracı yöneticisi, uygulamanın kaydının **API izinleri** sekmesindeki **{kiracı etki alanı} Için yönetici onayını ver/iptal et** ' i seçti. Daha fazla bilgi için bkz. [Web API 'lerine erişim Izinleri ekleme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis).
-    - Ya da kullanıcıların uygulamayı onaylaması için bir yol sağladınız. Daha fazla bilgi için bkz. [bireysel kullanıcı Izni isteme](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent).
-    - Ya da, kiracı yöneticisinin uygulamayı onaylaması için bir yol sağladınız. Daha fazla bilgi için bkz. [yönetici onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant).
+    - Ya da bir kiracı yöneticisi, uygulamanın kaydının **API izinleri** sekmesindeki **{kiracı etki alanı} Için yönetici onayını ver/iptal et** ' i seçti. Daha fazla bilgi için bkz. [Web API 'lerine erişim Izinleri ekleme](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Ya da kullanıcıların uygulamayı onaylaması için bir yol sağladınız. Daha fazla bilgi için bkz. [bireysel kullanıcı Izni isteme](./v2-permissions-and-consent.md#requesting-individual-user-consent).
+    - Ya da, kiracı yöneticisinin uygulamayı onaylaması için bir yol sağladınız. Daha fazla bilgi için bkz. [yönetici onayı](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 - Bu akış .NET Masaüstü, .NET Core ve UWP uygulamaları için etkinleştirilmiştir.
 
-Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri ve onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
+Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri ve onayı](./v2-permissions-and-consent.md).
 
 ### <a name="learn-how-to-use-it"></a>Nasıl kullanacağınızı öğrenin
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026278"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118680"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -41,7 +41,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 > Kullanılacak Portal, uygulamanızın Microsoft Azure genel bulutta mi yoksa ulusal veya bağımsız bulutta mı çalışmasına bağlı olarak farklılık belirtir. Daha fazla bilgi için bkz. [Ulusal bulutlar](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. Alternatif olarak, Ulusal bulut için [tercih edilen Azure Portal](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) oturum açın.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. Alternatif olarak, Ulusal bulut için [tercih edilen Azure Portal](./authentication-national-cloud.md#app-registration-endpoints) oturum açın.
 2. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Ardından, Portal oturumunuzu istenen Azure Active Directory (Azure AD) kiracısına ayarlayın.
 3. Sol bölmede **Azure Active Directory** hizmetini seçin ve sonra **uygulama kayıtları**  >  **Yeni kayıt**' ı seçin.
 
@@ -68,7 +68,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. **Kimlik doğrulama** menüsünü seçin.
 1. **Gelişmiş ayarlar**  |  **örtük verme** bölümünde **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -91,7 +91,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda**anahtar süresini seçin.
-   1. **Ekle**’yi seçin.
+   1. **Add (Ekle)** seçeneğini belirleyin.
    1. Anahtar değeri göründüğünde, daha sonra için kopyalayın. Bu değer, bir daha görüntülenmez veya başka yollarla alınabilir.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -107,7 +107,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda**bir anahtar süresi seçin.
-   1. **Ekle**’yi seçin.
+   1. **Add (Ekle)** seçeneğini belirleyin.
    1. Anahtar değeri göründüğünde kopyalayın. Buna daha sonra ihtiyacınız olacak.
 ---
 
@@ -119,7 +119,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 > - MyOrg (yalnızca bu kuruluş dizinindeki hesaplar)
 > - AnyOrg (herhangi bir kuruluş dizinindeki hesaplar)
 >
-> Kullanıcılar kendi kişisel Microsoft hesaplarıyla oturum açan bir uygulama (örneğin, Skype, Xbox veya Outlook.com) oluşturabilirsiniz. İlk olarak, çok kiracılı bir uygulama oluşturun. Desteklenen hesap türleri, herhangi bir kuruluş dizinindeki hesaplardır. Ardından, [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) özelliği **2** olarak ve [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) özelliğini `AzureADandPersonalMicrosoftAccount` Azure Portal [uygulama bildiriminde](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) olarak değiştirin. Daha fazla bilgi için ASP.NET Core öğreticisindeki [1,3. adıma](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) bakın. Bu adımı dilediğiniz dilde web uygulamalarına genelleştirebilirsiniz.
+> Kullanıcılar kendi kişisel Microsoft hesaplarıyla oturum açan bir uygulama (örneğin, Skype, Xbox veya Outlook.com) oluşturabilirsiniz. İlk olarak, çok kiracılı bir uygulama oluşturun. Desteklenen hesap türleri, herhangi bir kuruluş dizinindeki hesaplardır. Ardından, [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) özelliği **2** olarak ve [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) özelliğini `AzureADandPersonalMicrosoftAccount` Azure Portal [uygulama bildiriminde](./reference-app-manifest.md) olarak değiştirin. Daha fazla bilgi için ASP.NET Core öğreticisindeki [1,3. adıma](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) bakın. Bu adımı dilediğiniz dilde web uygulamalarına genelleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

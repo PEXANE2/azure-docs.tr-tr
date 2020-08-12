@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099902"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114668"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure sanal ağına Cloud Shell dağıtma
 > [!NOTE]
@@ -103,7 +103,7 @@ Yukarıdaki şablon kullanılarak oluşturulan geçişe gidin, Ayarlar ' da "ağ
 > [!NOTE]
 > Bu adım, her yönetici için Cloud Shell kullanacak şekilde tamamlanmalıdır.
 
-Yukarıdaki adımları tamamladıktan sonra, Azure portal veya üzerinde Cloud Shell gidin https://shell.azure.com .
+Yukarıdaki adımları tamamladıktan sonra, Azure portal veya üzerinde Cloud Shell gidin https://shell.azure.com . Yalıtılmış bir Cloud Shell deneyimine her bağlanmak istediğinizde, bu deneyimlerden biri kullanılmalıdır.
 
 > [!NOTE]
 > Geçmişte Cloud Shell kullanılıyorsa, var olan CloudDrive 'ın çıkarılmalıdır. Bunu `clouddrive unmount` bir etkin Cloud Shell oturumundan çalıştırmak için, sayfanızı yenileyin.

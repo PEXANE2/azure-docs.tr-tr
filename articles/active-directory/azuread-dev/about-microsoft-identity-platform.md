@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236312"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117779"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft Identity Platform'un gelişimi
 
@@ -49,7 +49,7 @@ Azure portal **[uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=20
 
 Azure AD B2C tümleştirme için (sosyal veya yerel kimliklerin kimliğini doğrularken), uygulamanızı bir Azure AD B2C kiracısına kaydetmeniz gerekir. Bu deneyim Ayrıca Azure portal bir parçasıdır.
 
-Herhangi bir Microsoft kimliği için kimlik doğrulaması için Microsoft Identity platformu ile tümleştirilmiş uygulamalarınızı programlı bir şekilde yapılandırmak için [uygulama API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) 'sini kullanın.
+Herhangi bir Microsoft kimliği için kimlik doğrulaması için Microsoft Identity platformu ile tümleştirilmiş uygulamalarınızı programlı bir şekilde yapılandırmak için [uygulama API](/graph/api/resources/application?view=graph-rest-1.0) 'sini kullanın.
 
 ### <a name="msal-libraries"></a>MSAL kitaplıkları
 
@@ -57,7 +57,7 @@ MSAL kitaplığını kullanarak tüm Microsoft kimliklerinin kimliğini doğrula
 
 Uygulamanızı Azure AD B2C ile bütünleştirmek için MSAL kitaplıklarını da kullanabilirsiniz.
 
-Web uygulamaları ve Web API 'Leri oluşturmaya yönelik sunucu tarafı kitaplıkları genel kullanıma sunulmuştur: [ASP.net](https://docs.microsoft.com/aspnet/overview) ve [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Web uygulamaları ve Web API 'Leri oluşturmaya yönelik sunucu tarafı kitaplıkları genel kullanıma sunulmuştur: [ASP.net](/aspnet/overview) ve [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktası
 

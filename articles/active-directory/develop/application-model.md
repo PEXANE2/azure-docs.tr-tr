@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584317"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117490"
 ---
 # <a name="application-model"></a>Uygulama modeli
 
@@ -86,4 +86,4 @@ Uygulama modeli hakkında daha fazla bilgi edinmek için:
 
 * Microsoft Identity platform 'daki uygulama nesneleri ve hizmet sorumluları hakkında daha fazla bilgi için bkz. [Azure AD 'ye uygulamaların nasıl ve neden eklendiğini](active-directory-how-applications-are-added.md) öğrenin.
 * Tek kiracılı uygulamalar ve çok kiracılı uygulamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory](single-and-multi-tenant-apps.md) .
-* Kuruluşların kullanıcıların, genellikle Google hesabı gibi sosyal kimlikler kullanarak kullanıcılara oturum açmasını sağlamak için Azure AD 'nin Azure Active Directory B2C nasıl [Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c) hakkında daha fazla bilgi için bkz..
+* Kuruluşların kullanıcıların, genellikle Google hesabı gibi sosyal kimlikler kullanarak kullanıcılara oturum açmasını sağlamak için Azure AD 'nin Azure Active Directory B2C nasıl [Azure Active Directory B2C](../../active-directory-b2c/index.yml) hakkında daha fazla bilgi için bkz..

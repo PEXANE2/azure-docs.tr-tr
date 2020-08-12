@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 51052994a4d00995910a85546cce57867b6143f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 93a2fd89e21dbf4edee29a27bd18f63f2b835aae
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324786"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121230"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
 
 Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını bir Java Spring uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](https://docs.microsoft.com/java/azure/jdk) .
@@ -69,7 +69,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.1.2</version>
+        <version>1.1.5</version>
     </dependency>
     ```
 
@@ -79,7 +79,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.7</version>
     </dependency>
     ```
 
@@ -191,4 +191,4 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu bir Java Spring uygulamasıyla kullandınız. Daha fazla bilgi için bkz. [Azure 'Da yay](https://docs.microsoft.com/java/azure/spring-framework/). Java Spring uygulamanızı yapılandırma ayarlarını dinamik olarak yenilemek üzere nasıl etkinleştireceğinizi öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-java-spring-app.md)
+> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-java-spring-app.md)

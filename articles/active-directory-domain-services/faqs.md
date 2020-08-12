@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: cc78df7ea904bf85f5f2561319e6fc773244e971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005222"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116708"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) etki alanı Hizmetleri hakkında sık sorulan sorular (SSS)
 
@@ -117,7 +117,11 @@ Hayır. Şema, yönetilen etki alanı için Microsoft tarafından yönetilir. Ş
 Evet. *AAD DC Administrators* grubunun üyelerine, yönetilen etkı alanındaki DNS kayıtlarını değiştirmek Için *DNS yönetici* ayrıcalıkları verilir. Bu kullanıcılar, DNS yönetimi için yönetilen etki alanına katılmış Windows Server çalıştıran bir makinede DNS Yöneticisi konsolunu kullanabilirler. DNS Yöneticisi konsolunu kullanmak için, sunucu üzerinde *uzak sunucu yönetim araçları* isteğe bağlı özelliğinin bir parçası olan *DNS sunucusu araçları*'nı yüklersiniz. Daha fazla bilgi için bkz. [Azure AD Domain Services yönetilen bir etki alanında DNS yönetme](manage-dns.md).
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Yönetilen bir etki alanında parola ömrü ilkesi nedir?
-Azure AD Domain Services yönetilen bir etki alanında varsayılan parola ömrü 90 gündür. Bu parola ömrü, Azure AD 'de yapılandırılan parola ömrü ile eşitlenmez. Bu nedenle, kullanıcıların parolalarının yönetilen etki alanında sona ereceği, ancak Azure AD 'de hala geçerli olduğu bir durum olabilir. Bu senaryolarda, kullanıcıların Azure AD 'de parolasını değiştirmesi ve yeni parolanın yönetilen etki alanınız ile eşitlenmesi gerekir. Ayrıca, Kullanıcı hesapları için *parola-sona erme tarihi* ve *Kullanıcı-değiştirme-oturum açma* öznitelikleri, yönetilen etki alanınız ile eşitlenmez.
+Azure AD Domain Services yönetilen bir etki alanında varsayılan parola ömrü 90 gündür. Bu parola ömrü, Azure AD 'de yapılandırılan parola ömrü ile eşitlenmez. Bu nedenle, kullanıcıların parolalarının yönetilen etki alanında sona ereceği, ancak Azure AD 'de hala geçerli olduğu bir durum olabilir. Bu senaryolarda, kullanıcıların Azure AD 'de parolasını değiştirmesi ve yeni parolanın yönetilen etki alanınız ile eşitlenmesi gerekir. Yönetilen bir etki alanında varsayılan parola ömrünü değiştirmek istiyorsanız, [özel parola ilkeleri oluşturup yapılandırabilirsiniz.](password-policy.md)
+
+Ayrıca, *Disablepasswordexpiasyon* IÇIN Azure AD parola ilkesi, yönetilen bir etki alanıyla eşitlenir. *Disablepasswordexpiasyon* , Azure AD 'de bir kullanıcıya uygulandığında, yönetilen etki alanındaki eşitlenmiş kullanıcının *UserAccountControl* değeri *DONT_EXPIRE_PASSWORD* uygulanmış olur.
+
+Kullanıcılar Azure AD 'de parolalarını sıfırlarken *Forcechangepasswordnextsignın = true* özniteliği uygulanır. Yönetilen bir etki alanı bu özniteliği Azure AD 'den eşitler. Yönetilen etki alanı, Azure AD 'den eşitlenen bir kullanıcı için *Forcechangepasswordnextsignın* değerini algıladığında, yönetilen etki alanındaki *pwdLastSet* özniteliği *0*olarak ayarlanır ve bu, şu anda ayarlanmış parolayı geçersiz kılar.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services AD hesabı kilitleme koruması sağlar mi?
 Evet. Yönetilen etki alanında 2 dakika içinde 5 geçersiz parola denemesi, bir kullanıcı hesabının 30 dakika boyunca kilitlenmesine neden olur. 30 dakika sonra, Kullanıcı hesabı otomatik olarak kilidi açılır. Yönetilen etki alanında geçersiz parola denemeleri, Azure AD 'de Kullanıcı hesabını kilitlemez. Kullanıcı hesabı yalnızca Azure AD Domain Services yönetilen etki alanı içinde kilitlenir. Daha fazla bilgi için bkz. [yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri](password-policy.md).

@@ -14,18 +14,18 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771086"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120635"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory Koşullu Erişimi için geliştirici kılavuzu
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* [Multi-factor authentication](../authentication/concept-mfa-howitworks.md)
+* [Çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md)
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
@@ -33,7 +33,7 @@ Koşullu erişimin tam özellikleri hakkında daha fazla bilgi için, [koşullu 
 
 Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu erişimi nasıl kullanabileceğiniz gösterilmektedir ve ayrıca, üzerinde denetim sahibi olmadığınız ve koşullu erişim ilkeleri uygulanmış olabilecek kaynaklara erişmenin etkileri hakkında bilgi edineceksiniz. Makalede ayrıca, şirket içi akış, Web uygulamaları, Microsoft Graph erişme ve API 'Leri çağırma içindeki Koşullu erişimin etkileri ele alınabilir.
 
-[Tek](quickstart-register-app.md) ve [çok kiracılı](howto-convert-app-to-be-multi-tenant.md) uygulamalar ve [ortak kimlik doğrulama desenleri](authentication-scenarios.md) hakkında bilgi verilir.
+[Tek](quickstart-register-app.md) ve [çok kiracılı](howto-convert-app-to-be-multi-tenant.md) uygulamalar ve [ortak kimlik doğrulama desenleri](./authentication-vs-authorization.md) hakkında bilgi verilir.
 
 > [!NOTE]
 > Bu özelliğin kullanılması için Azure AD Premium P1 lisansı gerekir. Gereksinimlerinize uygun lisansı bulmak için bkz. [Ücretsiz, Temel ve Premium sürümlerinin genel olarak sağlanan özelliklerini karşılaştırma](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -52,7 +52,7 @@ Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu e
 * MSAL.js kullanan tek sayfalı uygulamalar
 * Kaynak çağırma Web Apps
 
-Koşullu erişim ilkeleri uygulamaya uygulanabilir, ancak uygulamanızın eriştiği bir Web API 'sine de uygulanabilir. Koşullu erişim ilkesini yapılandırma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](../conditional-access/app-based-mfa.md).
+Koşullu erişim ilkeleri uygulamaya uygulanabilir, ancak uygulamanızın eriştiği bir Web API 'sine de uygulanabilir. Koşullu erişim ilkesini yapılandırma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](../authentication/tutorial-enable-azure-mfa.md).
 
 Senaryoya bağlı olarak, bir kurumsal müşteri, koşullu erişim ilkelerini istediğiniz zaman uygulayabilir ve kaldırabilir. Yeni bir ilke uygulandığında uygulamanızın çalışmaya devam edebilmesi için, "Challenge" işlemesini uygulamanız gerekir. Aşağıdaki örneklerde, sınama işleme gösterilmektedir.
 
@@ -93,7 +93,7 @@ Geliştiriciler bu zorluğu alabilir ve Azure AD 'ye yeni bir istek ekleyebilir.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-Azure AD koşullu erişimi, [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)eklenen bir özelliktir. [Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.
+Azure AD koşullu erişimi, [Azure AD Premium](../fundamentals/active-directory-whatis.md)eklenen bir özelliktir. [Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.
 
 ### <a name="considerations-for-specific-scenarios"></a>Belirli senaryolara yönelik konular
 
@@ -180,7 +180,7 @@ Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://gith
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* Yetenekler hakkında daha fazla bilgi için bkz. [Azure Active Directory Koşullu erişim](/azure/active-directory/conditional-access/overview).
+* Yetenekler hakkında daha fazla bilgi için bkz. [Azure Active Directory Koşullu erişim](../conditional-access/overview.md).
 * Daha fazla Azure AD kod örneği için bkz. [örnekler](sample-v2-code.md).
 * MSAL SDK ve başvuru belgelerine erişme hakkında daha fazla bilgi için bkz. [Microsoft kimlik doğrulama kitaplığına genel bakış](msal-overview.md).
 * Çok kiracılı senaryolar hakkında daha fazla bilgi edinmek için bkz. [çoklu kiracı düzeniyle Kullanıcı oturumu açma](howto-convert-app-to-be-multi-tenant.md).
