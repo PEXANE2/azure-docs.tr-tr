@@ -49,6 +49,8 @@
       items:
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: Veri yerleşimi
+      href: data-residency.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Ağ İzleyicisi’ni yapılandırma

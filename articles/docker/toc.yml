@@ -8,7 +8,7 @@
 - name: Öğreticiler
   items:
     - name: Docker ve PostgreSQL ile Python Web Uygulaması
-      href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+      href: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - name: 'Docker, Jenkins ve Linux ile CI/CD'
       href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
 - name: Nasıl yapılır kılavuzları
