@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5cc53d909ed090e152af84da49c8e87907f6bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883235"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120618"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
@@ -78,7 +78,7 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 - `policy`, Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin,) içeren bir dizedir `PolicySignUpSignIn` .
 - `ParentActivityOrWindow`Android (etkinlik) için gereklidir ve iOS 'ta Microsoft Windows ve UIViewController üzerinde Windows gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. UI iletişim kutusu hakkında daha fazla bilgi için bkz. [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) on msal wiki.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`, belirli bir ilke için bir hesap bulan bir yöntemdir. Örneğin:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)`, belirli bir ilke için bir hesap bulan bir yöntemdir. Örnek:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -134,7 +134,7 @@ Bir ROPC akışında Kullanıcı adı/parola kullanarak birkaç şeyi fesınız:
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C 'de ROPC akışını yapılandırma
 
-Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve ropc **kullanarak** Kullanıcı akışı için ropc 'yi etkinleştirin. Daha fazla bilgi için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](/azure/active-directory-b2c/configure-ropc).
+Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve ropc **kullanarak** Kullanıcı akışı için ropc 'yi etkinleştirin. Daha fazla bilgi için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](../../active-directory-b2c/configure-ropc.md).
 
 `IPublicClientApplication`yöntemi içerir `AcquireTokenByUsernamePassword` :
 
@@ -182,7 +182,7 @@ Bu tür bir senaryonun belirtisi, `Missing from the token response` `preferred_u
 
 Önerilen geçici çözüm, daha önce açıklanan [ilkeye göre önbelleğe alma](#acquire-a-token-to-apply-a-policy) özelliğini kullanmaktır.
 
-Alternatif olarak, `tid` Azure AD B2C içinde [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) kullanıyorsanız talebi kullanabilirsiniz. Özel ilkeler, [talep dönüşümünü](/azure/active-directory-b2c/claims-transformation-technical-profile)kullanarak uygulamanıza ek talepler döndürebilir.
+Alternatif olarak, `tid` Azure AD B2C içinde [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) kullanıyorsanız talebi kullanabilirsiniz. Özel ilkeler, [talep dönüşümünü](../../active-directory-b2c/claims-transformation-technical-profile.md)kullanarak uygulamanıza ek talepler döndürebilir.
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"Belirteç yanıtında yok" için azaltma
 

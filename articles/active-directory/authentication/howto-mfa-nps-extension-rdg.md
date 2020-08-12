@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848736"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117031"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
@@ -110,6 +110,11 @@ Azure AD kullanıcılarınız için MFA 'yı etkinleştirmek üzere [bulutta azu
 Bir hesap MFA için etkinleştirildikten sonra, ikinci kimlik doğrulama faktörü için kullanılmak üzere bir güvenilen cihaz başarıyla yapılandırılana ve iki adımlı doğrulama kullanarak kimlik doğrulamasından çıkana kadar MFA ilkesi tarafından yönetilen kaynaklarda oturum açılamıyor.
 
 [Azure Multi-Factor Authentication benim Için ne anlama geldiğini](../user-help/multi-factor-authentication-end-user.md) öğrenmek için bu adımları izleyin.
+
+> [!IMPORTANT]
+> Uzak Masaüstü Ağ Geçidi için oturum açma davranışı, Azure Multi-Factor Authentication ile doğrulama kodu girme seçeneği sağlamaz. Telefon doğrulaması için bir kullanıcı hesabı veya anında iletme bildirimleri olan Microsoft Authenticator uygulama için yapılandırılmış olmalıdır.
+>
+> Bu iki kimlik doğrulama yönteminden biri bir kullanıcı için yapılandırılmamışsa, Azure Multi-Factor Authentication sınamasını tamamlayamaz ve Uzak Masaüstü Ağ Geçidi oturum açamaz.
 
 ## <a name="install-and-configure-nps-extension"></a>NPS uzantısını yükleyip yapılandırma
 
@@ -301,7 +306,7 @@ Azure MFA uzantılı NPS sunucusunun, bağlantı yetkilendirme Ilkesi (CAP) içi
 
    ![İsteğe bağlı olarak bağlantı koşullarını belirtin](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. **Tamam**'a tıklayın. İlgili yardım konusunu görüntülemeniz istendiğinde **Hayır**' a tıklayın.
+1. **Tamam**’a tıklayın. İlgili yardım konusunu görüntülemeniz istendiğinde **Hayır**' a tıklayın.
 1. Yeni ilkenizin listenin en üstünde olduğundan, ilkenin etkin olduğundan ve erişim izni verdiğinden emin olun.
 
    ![İlkenizi listenin en üstüne taşıyın](./media/howto-mfa-nps-extension-rdg/image24.png)

@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4737b2ef701f643ff5bec47be29b3139e27fb146
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845162"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119921"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python için ADAL MSAL geçiş kılavuzu
 
@@ -38,19 +38,19 @@ Desteklememektedir
   - OAuth v 2.0
   - OpenID Connect (OıDC)
 
-Daha fazla ayrıntı için bkz. [Microsoft Identity platform (v 2.0) uç noktası hakkında ne fark var?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)
+Daha fazla ayrıntı için bkz. [Microsoft Identity platform (v 2.0) uç noktası hakkında ne fark var?](../azuread-dev/azure-ad-endpoint-comparison.md)
 
 ### <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
-ADAL Python, kaynaklar için belirteçleri alır, ancak MSAL Python kapsamlar için belirteçleri alır. MSAL Python 'daki API yüzeyinde artık kaynak parametresi yok. İstenen izinleri ve istenen kaynakları bildiren dizelerin bir listesi olarak kapsamlar sağlamanız gerekir. Kapsamların bir örneğini görmek için bkz. [Microsoft Graph kapsamları](https://docs.microsoft.com/graph/permissions-reference).
+ADAL Python, kaynaklar için belirteçleri alır, ancak MSAL Python kapsamlar için belirteçleri alır. MSAL Python 'daki API yüzeyinde artık kaynak parametresi yok. İstenen izinleri ve istenen kaynakları bildiren dizelerin bir listesi olarak kapsamlar sağlamanız gerekir. Kapsamların bir örneğini görmek için bkz. [Microsoft Graph kapsamları](/graph/permissions-reference).
 
 `/.default`Uygulamalarınızı v 1.0 uç noktasından (ADAL) Microsoft Identity platform uç noktasına (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com` , eşdeğer kapsam değeri `https://graph.microsoft.com/.default` .  Kaynak URL biçiminde değilse, ancak formun kaynak KIMLIĞI ise `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kapsam değerini kullanmaya devam edebilirsiniz `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
-Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) inceleyin.
+Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](./v2-permissions-and-consent.md) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](./msal-v1-app-scopes.md) inceleyin.
 
 ### <a name="error-handling"></a>Hata işleme
 
-Python için Azure Active Directory kimlik doğrulama kitaplığı (ADAL), `AdalError` bir sorun olduğunu göstermek için özel durumu kullanır. Python için MSAL, genellikle bunun yerine hata kodlarını kullanır. Daha fazla bilgi için bkz. [msal for Python hata işleme](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python).
+Python için Azure Active Directory kimlik doğrulama kitaplığı (ADAL), `AdalError` bir sorun olduğunu göstermek için özel durumu kullanır. Python için MSAL, genellikle bunun yerine hata kodlarını kullanır. Daha fazla bilgi için bkz. [msal for Python hata işleme](./msal-handling-exceptions.md?tabs=python).
 
 ### <a name="api-changes"></a>API değişiklikleri
 
@@ -122,4 +122,4 @@ print("Migration completed")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için [v 1.0 ve v 2.0 karşılaştırması](active-directory-v2-compare.md)bölümüne bakın.
+Daha fazla bilgi için [v 1.0 ve v 2.0 karşılaştırması](../azuread-dev/azure-ad-endpoint-comparison.md)bölümüne bakın.

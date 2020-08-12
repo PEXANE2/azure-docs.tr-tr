@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030971"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114906"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -108,9 +108,9 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Henüz yayınlanmayan özel bir ölçüm üzerinde bir uyarı kuralı tanımlayın
 
-Ölçüm uyarısı kuralı oluştururken, ölçüm adı [Ölçüm tanımları API 'sine](/rest/api/monitor/metricdefinitions/list) göre doğrulandıktan ve var olduğundan emin olur. Bazı durumlarda, özel bir ölçümde, yayılmadan önce bile bir uyarı kuralı oluşturmak istersiniz. Örneğin, (ARM şablonu kullanarak), bu ölçümü izleyen bir uyarı kuralıyla birlikte özel bir ölçümü yayan bir Application Insights kaynağı oluşturur.
+Ölçüm uyarısı kuralı oluştururken, ölçüm adı [Ölçüm tanımları API 'sine](/rest/api/monitor/metricdefinitions/list) göre doğrulandıktan ve var olduğundan emin olur. Bazı durumlarda, özel bir ölçümde, yayılmadan önce bile bir uyarı kuralı oluşturmak istersiniz. Örneğin, (bir Kaynak Yöneticisi şablonu kullanarak), bu ölçümü izleyen bir uyarı kuralıyla birlikte özel bir ölçümü yayan bir Application Insights kaynağı oluşturur.
 
-Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. ARM şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın (ölçüm uyarı kuralları oluşturmak için tüm ARM şablonu örnekleri için, [buraya]( ./alerts-metric-create-templates.md)bakın).
+Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. Kaynak Yöneticisi şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın. Daha fazla bilgi için [ölçüm uyarı kuralları oluşturmaya yönelik tüm Kaynak Yöneticisi Şablon örneklerine](./alerts-metric-create-templates.md)bakın.
 
 ```json
 "criteria": {
@@ -245,7 +245,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örneğin:
+Örnek:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

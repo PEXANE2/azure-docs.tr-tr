@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 6204fcefa60d1a627e6e3d4e6b799efd3ee9298b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ec19d249d183f8888bf9e1eb837e2c860b1ed
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505877"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117150"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 
@@ -43,13 +43,13 @@ Bu makaleyi tamamlayabilmeniz için hem Azure AD hem de Azure aboneliğinizde ye
 Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="assign-the-application-to-a-role"></a>Uygulamayı bir role atama
-Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](/azure/role-based-access-control/built-in-roles).
+Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
 Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için *okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir. Uygulamanın yeniden başlatma, örnekleri başlatma ve durdurma gibi eylemleri yürütmesine izin vermek için, *katkıda bulunan* rolünü seçin.
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Otomatik olarak imzalanan bir sertifikayla hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifika ile hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Yeni-Azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanarak [okuyucu](/azure/role-based-access-control/built-in-roles#reader) rolünü hizmet sorumlusuna atar. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
+Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifika ile hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Yeni-Azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanarak [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolünü hizmet sorumlusuna atar. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
 
 > [!NOTE]
 > New-SelfSignedCertificate cmdlet 'i ve PKI modülü şu anda PowerShell Core 'da desteklenmiyor. 
@@ -224,4 +224,4 @@ Hizmet sorumlusu oluştururken şu hataları alabilirsiniz:
 
 * Parolası olan bir hizmet sorumlusu ayarlamak için bkz. [Azure PowerShell ile Azure hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps).
 * Uygulamaların ve hizmet sorumlularının daha ayrıntılı açıklaması için bkz. [Uygulama Nesneleri ve Hizmet Sorumlusu Nesneleri](app-objects-and-service-principals.md).
-* Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](authentication-scenarios.md).
+* Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](./authentication-vs-authorization.md).

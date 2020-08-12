@@ -12,12 +12,12 @@ ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 5e73744f3d467d08944d0e8800dd6d8824857abd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 439bf51aac4d04ee12968588a4e38c4643b4808a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846998"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120363"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,15 +35,17 @@ Modeli nerede dağıtırsanız dağıtın benzer bir iş akışı kullanılır:
 Dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
 
- 
-::: zone pivot="cli"
-[!INCLUDE [CLI quickstart](../../includes/machine-learning-how-to-deploy-and-where-cli.md)]
-::: zone-end
-
 ::: zone pivot="py-sdk"
+
 [!INCLUDE [SDK quickstart](../../includes/machine-learning-how-to-deploy-and-where-sdk.md)]
+
 ::: zone-end
 
+::: zone pivot="cli"
+
+[!INCLUDE [CLI quickstart](../../includes/machine-learning-how-to-deploy-and-where-cli.md)]
+
+::: zone-end
 
 ### <a name="understanding-service-state"></a>Hizmet durumunu anlama
 
@@ -53,9 +55,9 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
 | Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | Hayır |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
+| Kta | Hizmet, dağıtım sürecinde. | No |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
 | Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
 

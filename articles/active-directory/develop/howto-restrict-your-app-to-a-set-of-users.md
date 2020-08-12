@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445456"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116912"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Nasıl yapılır: Azure AD kiracısındaki bir Kullanıcı kümesiyle Azure AD uygulamanızı kısıtlama
 
@@ -39,7 +39,7 @@ Bir uygulamayı bir Kiracıdaki belirli bir kullanıcı veya güvenlik grubu kü
 - Bir kullanıcı veya yönetici bu uygulamaya alındıktan sonra, OAuth 2.0/OpenID Connect kimlik doğrulaması kullanan doğrudan Azure AD uygulama platformunda oluşturulan uygulamalar.
 
      > [!NOTE]
-     > Bu özellik yalnızca Web uygulaması/Web API 'SI ve kurumsal uygulamalar için kullanılabilir. [Yerel](quickstart-v1-integrate-apps-with-azure-ad.md) olarak kaydedilen uygulamalar, Kiracıdaki bir grup kullanıcı veya güvenlik grubu ile kısıtlanamaz.
+     > Bu özellik yalnızca Web uygulaması/Web API 'SI ve kurumsal uygulamalar için kullanılabilir. [Yerel](./quickstart-register-app.md) olarak kaydedilen uygulamalar, Kiracıdaki bir grup kullanıcı veya güvenlik grubu ile kısıtlanamaz.
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>Kullanıcı atamasını etkinleştirmek için uygulamayı güncelleştirme
 
@@ -95,8 +95,8 @@ Uygulamanızı Kullanıcı atamasını etkinleştirecek şekilde yapılandırdı
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-- [Nasıl yapılır: uygulamanıza uygulama rolleri ekleme](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+- [Nasıl yapılır: uygulamanıza uygulama rolleri ekleme](./howto-add-app-roles-in-azure-ad-apps.md)
 - [Uygulama rollerini kullanarak yetkilendirme ekleme ASP.NET Core Web uygulaması için rol talepleri &](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Uygulamalarınızda güvenlik gruplarını ve uygulama rollerini kullanma (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, artık grup talepleri ve uygulama rolleriyle birlikte](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory uygulama bildirimi](./reference-app-manifest.md)

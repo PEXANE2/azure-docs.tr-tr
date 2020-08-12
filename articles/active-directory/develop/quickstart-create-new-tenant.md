@@ -12,14 +12,14 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256705"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120822"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Hızlı başlangıç: kiracı ayarlama
+# <a name="quickstart-set-up-a-tenant"></a>Hızlı Başlangıç: Kiracıyı ayarlama
 
 Microsoft kimlik platformu geliştiricilerin çok çeşitli özel Microsoft 365 ortamlarını ve kimliklerini hedefleyen uygulamalar derlemesine olanak tanır. Microsoft Identity platform 'u kullanmaya başlamak için, Azure AD kiracısı olarak da adlandırılan bir ortama erişmeniz gerekir. Bu işlem, uygulamaları kaydedebilir ve yönetebilir, Microsoft 365 verilerine erişim sağlayabilir ve özel koşullu erişim ve kiracı kısıtlamaları dağıtabilir.
 
@@ -72,5 +72,5 @@ Sosyal ve yerel hesapların oturumunu açan bir uygulama derlemeye başlamak iç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bir uygulamayı kaydedin](quickstart-register-app.md) ve Microsoft Identity platform ile tümleştirin. 
-* [Kimlik doğrulamanın temellerini](authentication-scenarios.md)öğrenin.
+* [Kimlik doğrulamanın temellerini](./authentication-vs-authorization.md)öğrenin.
 * Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar için bkz. [Azure Active Directory kiracınıza Azure aboneliği ilişkilendirme veya ekleme](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

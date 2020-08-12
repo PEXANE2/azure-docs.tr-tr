@@ -1,16 +1,16 @@
 ---
-title: Azure ışıklı bir müşteriyi bir müşteri ile kullanma
+title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133462"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118884"
 ---
-# <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure ışıklı bir müşteriyi bir müşteri ile kullanma
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
 Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure açık Thouse 'a nasıl oluşturabileceğiniz açıklanmaktadır. Bunu yaptığınızda, müşterinin Temsilcili kaynaklara (abonelikler ve/veya kaynak grupları) [Azure Temsilcili kaynak yönetimi](../concepts/azure-delegated-resource-management.md)kullanılarak kendi Azure Active Directory (Azure AD) kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 
@@ -86,7 +86,7 @@ Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz hizmet sağlay�
 (Get-AzADUser -UserPrincipalName '<yourUPN>').id
 
 # To retrieve the objectId for an SPN
-(Get-AzADApplication -DisplayName '<appDisplayName>').objectId
+(Get-AzADApplication -DisplayName '<appDisplayName>' | Get-AzADServicePrincipal).Id
 
 # To retrieve role definition IDs
 (Get-AzRoleDefinition -Name '<roleName>').id
@@ -120,7 +120,7 @@ Müşterinize eklemek için aşağıdaki bilgilerle teklifiniz için bir [Azure 
 |---------|---------|
 |**mspOfferName**     |Bu tanımı açıklayan bir ad. Bu değer, müşteriye teklifin başlığı olarak gösterilir.         |
 |**mspOfferDescription**     |Teklifinizin kısa bir açıklaması (örneğin, "contoso VM yönetimi teklifi").      |
-|**Managedbytenantıd**     |Kiracı KIMLIĞINIZ.          |
+|**managedByTenantId**     |Kiracı KIMLIĞINIZ.          |
 |**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için **PrincipalId** değerleri, müşterinizin yetkilendirmesinin amacını anlamasına **yardımcı olmak ve** erişim düzeyini belirtmek Için yerleşik bir **roledefinitionıd** değeri ile eşleştirilir.      |
 
 Ekleme işlemi, bir Azure Resource Manager şablonu ( [örnek](https://github.com/Azure/Azure-Lighthouse-samples/)depolarımızda sağlanan) ve yapılandırmanızla eşleşecek şekilde değiştirdiğiniz karşılık gelen bir parametre dosyası gerektirir ve yetkilendirmeleri tanımlar.
@@ -131,7 +131,7 @@ Seçtiğiniz şablon, bir aboneliğin tüm aboneliğini, kaynak grubunu veya bir
 |---------|---------|---------|
 |Abonelik   |[ÜzerindedelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[ÜzerindedelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Kaynak grubu   |[ÜzerindergDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[ÜzerindergDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Abonelik içindeki birden fazla kaynak grubu   |[ÜzerindemultipleRgDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[ÜzerindemultipleRgDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Bir abonelikte birden fazla kaynak grubu   |[ÜzerindemultipleRgDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[ÜzerindemultipleRgDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Abonelik (Azure Marketi 'Nde yayınlanan bir teklifi kullanırken)   |[ÜzerindemarketplaceDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[ÜzerindemarketplaceDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
@@ -254,7 +254,7 @@ Bir müşteri aboneliğinin Azure Mathouse 'a başarıyla eklendi, hizmet sağla
 Hizmet sağlayıcısının kiracısında:
 
 1. [Müşterilerimiz sayfasına](view-manage-customers.md)gidin.
-2. **Müşteriler**' i seçin.
+2. **Müşteriler**’i seçin.
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!IMPORTANT]
@@ -263,7 +263,7 @@ Hizmet sağlayıcısının kiracısında:
 Müşterinin kiracısında:
 
 1. [Hizmet sağlayıcıları sayfasına](view-manage-service-providers.md)gidin.
-2. **Hizmet sağlayıcısı tekliflerini**seçin.
+2. **Hizmet sağlayıcısı teklifleri**’ni seçin.
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!NOTE]

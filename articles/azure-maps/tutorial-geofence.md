@@ -3,18 +3,18 @@ title: 'Öğretici: Microsoft Azure haritasında bölge alanı oluşturma ve cih
 description: Bölge belirleme ayarlamayı öğrenin. Bkz. Azure Maps uzamsal hizmetini kullanarak, bölge sınırına göre cihazları izleme.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1044348e50f4208038739975e7355fb6f4873454
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037652"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121247"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure Haritalar’ı kullanarak bölge sınırı ayarlama
 
@@ -25,7 +25,7 @@ Bu öğreticide, aşağıdaki senaryo bağlamında Azure Maps bölge hizmetleri 
 Azure haritalar, yukarıdaki senaryoda bulunan oluşturma alanını girip çıkarken ekipmanların izlenmesini desteklemeye yönelik çeşitli hizmetler sunar. Bu öğreticide nasıl yapılacağını ele aldık:
 
 > [!div class="checklist"]
-> * İzlemek istediğimiz yapı alanı bölgelerini tanımlayan coğrafi bölge coğrafi [JSON verilerini](geofence-geojson.md) karşıya yükleyin. Azure haritalar hesabınıza Çokgen koordinatları olarak bölge 'leri yüklemek için [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 'sini kullanacağız.
+> * İzlemek istediğimiz yapı alanı alanları ' nı tanımlayan [Bölge sınırlaması coğrafi JSON verilerini](geofence-geojson.md) karşıya yükleyin. Azure haritalar hesabınıza Çokgen koordinatları olarak bölge 'leri yüklemek için [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 'sini kullanacağız.
 > * Tetiklendiğinde bölge bölgesi alanına girdiğinde ve bu alana çıkılırken oluşturma Operations Manager sitesine e-posta bildirimleri gönderecek iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) ayarlayın.
 > * Azure haritalar bölge giriş ve çıkış olaylarına abone olmak için [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) kullanın. İki Logic Apps tanımlanmış HTTP uç noktalarını çağıran iki Web kancası olay aboneliği ayarlayacağız. Logic Apps, daha sonra, bir ekipman için uygun e-posta bildirimlerini daha sonra veya bölge girişi altına alacak şekilde gönderir.
 > * Bir ekipman parçası çıktığında ve bölge alanları girdiğinde bildirim almak için [Arama bölge kümesi API 'sini](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) kullanın.

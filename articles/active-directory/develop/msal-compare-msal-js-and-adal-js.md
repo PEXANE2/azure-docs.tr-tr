@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696427"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120907"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
 
@@ -30,7 +30,7 @@ Bu makalede JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı 
 
 Çoğu durumda Microsoft kimlik platformunu ve MSAL.js kullanarak en son nesil Microsoft kimlik doğrulama kitaplıkları. MSAL.js kullanarak, uygulamanızda Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile oturum açan kullanıcılar için belirteçler elde edersiniz.
 
-Zaten v 1.0 uç noktası (ve ADAL.js) hakkında bilginiz varsa, [v 2.0 uç noktası ile ilgili farklı olanları](active-directory-v2-compare.md)okumak isteyebilirsiniz.
+Zaten v 1.0 uç noktası (ve ADAL.js) hakkında bilginiz varsa, [v 2.0 uç noktası ile ilgili farklı olanları](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
 
 Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)sürümleriyle oturum açması gerekiyorsa ADAL.js kullanmanız gerekir.
 
@@ -73,7 +73,7 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
 
 * Artımlı izin için dinamik kapsamlar.
 
-    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örneğin:
+    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örnek:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
 
 * V 1.0 API 'Leri için kapsamlar
 
-    MSAL.js kullanarak V 1.0 API 'Leri için belirteçler alırken, API `.default` 'Nin uygulama KIMLIĞI URI 'sine kapsam olarak ekleyerek API 'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örneğin:
+    MSAL.js kullanarak V 1.0 API 'Leri için belirteçler alırken, API `.default` 'Nin uygulama KIMLIĞI URI 'sine kapsam olarak ekleyerek API 'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örnek:
 
     ```javascript
     var request = {
@@ -96,4 +96,4 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için [v 1.0 ve v 2.0 karşılaştırması](active-directory-v2-compare.md)bölümüne bakın.
+Daha fazla bilgi için [v 1.0 ve v 2.0 karşılaştırması](../azuread-dev/azure-ad-endpoint-comparison.md)bölümüne bakın.

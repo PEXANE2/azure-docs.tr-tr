@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: aab914caa2647146639aa366f558c80bebcfde54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84810211"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121621"
 ---
 # <a name="vm-sizes"></a>VM boyutları
 
@@ -76,7 +76,7 @@ Buna uygun olarak, `standard` bir çokgen sayısı ile birden çok modeli yükle
 
 Bir modelin veya sahnenin boyut sanal makinesinin Bütçe sınırına katkıda bulunan çokgenler sayısını belirlemenin iki yolu vardır `standard` :
 * Model dönüştürme tarafında, [dönüştürme çıkışı json dosyasını](../how-tos/conversion/get-information.md)alın ve `numFaces` [ *ınputstatistics* bölümündeki](../how-tos/conversion/get-information.md#the-inputstatistics-section) girişi kontrol edin.
-* Uygulamanız dinamik içerikle uğraşıyorsa, işlenen çokgenler sayısı, çalışma zamanı sırasında dinamik olarak sorgulanabilir. Bir [performans değerlendirmesi sorgusu](../overview/features/performance-queries.md#performance-assessment-queries) kullanın ve `polygonsRendered` yapı içindeki üyeyi kontrol edin `FrameStatistics` . Bu zaman uyumsuz sorgudan sonra, kullanıcı eyleminin alınacağından emin olmak için, dama tahtası arka planı her zaman bir gecikmeyle birlikte gönderilir. Kullanıcı eylemi, örneğin model örneklerini gizleyebilir veya silebilir.
+* Uygulamanız dinamik içerikle uğraşıyorsa, işlenen çokgenler sayısı, çalışma zamanı sırasında dinamik olarak sorgulanabilir. Bir [performans değerlendirmesi sorgusu](../overview/features/performance-queries.md#performance-assessment-queries) kullanın ve `polygonsRendered` yapı içindeki üyeyi kontrol edin `FrameStatistics` . `polygonsRendered`Bu alan, `bad` oluşturucunun Çokgen sınırlamasını okuması durumunda olarak ayarlanır. Bu zaman uyumsuz sorgudan sonra, kullanıcı eyleminin alınacağından emin olmak için, dama tahtası arka planı her zaman bir gecikmeyle birlikte gönderilir. Kullanıcı eylemi, örneğin model örneklerini gizleyebilir veya silebilir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

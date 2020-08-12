@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541915"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121094"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama için belirteç alın
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir: `scopes` . `scopes`Parametresi, bir belirtecin gerekli olduğu kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph için ise, her bir Microsoft Graph API 'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvurunun "Izinler" bölümüne gidin.
 
-Örneğin, [kullanıcının kişilerini listelemek](https://docs.microsoft.com/graph/api/user-list-contacts)Için "User. Read", "Contacts. Read" kapsamını kullanın. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Örneğin, [kullanıcının kişilerini listelemek](/graph/api/user-list-contacts)Için "User. Read", "Contacts. Read" kapsamını kullanın. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Android 'de, kullanarak uygulamayı oluştururken üst etkinliği belirtebilirsiniz `PublicClientApplicationBuilder` . Bu sırada üst etkinliği belirtmezseniz, daha sonra `.WithParentActivityOrWindow` aşağıdaki bölümde olduğu gibi kullanarak belirtebilirsiniz. Üst etkinliği belirtirseniz, belirteç, etkileşimden sonra bu üst etkinliğe geri alınır. Bunu belirtmezseniz, `.ExecuteAsync()` çağrı bir özel durum oluşturur.
 
@@ -234,7 +234,7 @@ Sınıfı aşağıdaki sabitleri tanımlar:
 - `ForceLogin`istem gerekli olmasa bile, hizmetin kullanıcıdan kimlik bilgilerini sormasını sağlar.
 
     Bu seçenek, belirteç alımı başarısız olursa ve kullanıcının yeniden oturum açmasını istiyorsanız yararlı olabilir. Bu durumda, MSAL `prompt=login` kimlik sağlayıcısına gönderilir. Bu seçeneği, kuruluş yönetimi 'nin, kullanıcının uygulamanın belirli bölümlerine her erişirken oturum açmasını gerektiren güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
-- `Never`yalnızca .NET 4,5 ve Windows Çalışma Zamanı (WinRT) içindir. Bu sabit kullanıcıya sormaz, ancak gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener. Daha fazla bilgi için bkz. [msal.NET ile Web tarayıcıları kullanma](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
+- `Never`yalnızca .NET 4,5 ve Windows Çalışma Zamanı (WinRT) içindir. Bu sabit kullanıcıya sormaz, ancak gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener. Daha fazla bilgi için bkz. [msal.NET ile Web tarayıcıları kullanma](./msal-net-web-browsers.md).
 
     Bu seçenek başarısız olursa, `AcquireTokenInteractive` BIR UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Daha sonra başka bir parametre kullanmanız gerekir `Prompt` .
 - `NoPrompt`kimlik sağlayıcısına bir istem göndermez.

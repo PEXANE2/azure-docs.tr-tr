@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 3b775d88409a03f6de54b9db3ab62d6988c5bddd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313056"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120890"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL MSAL geçiş kılavuzu
 
@@ -37,15 +37,15 @@ Java için MSAL, Microsoft Identity platformu ile kullanmanızı önerdiğimiz k
 
 ## <a name="differences"></a>Farklılıklar
 
-Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL4J) ile çalışıyorsanız, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)okumak isteyebilirsiniz.
+Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL4J) ile çalışıyorsanız, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
 
 ## <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
-ADAL4J, for Java için MSAL for Java için belirteçleri edinme Java sınıfları için bir dizi MSAL, bir kapsamlar parametresi gerektirir. Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin bir listesidir. Örnek kapsamları görmek için [Microsoft Graph kapsamlarına](https://docs.microsoft.com/graph/permissions-reference) bakın.
+ADAL4J, for Java için MSAL for Java için belirteçleri edinme Java sınıfları için bir dizi MSAL, bir kapsamlar parametresi gerektirir. Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin bir listesidir. Örnek kapsamları görmek için [Microsoft Graph kapsamlarına](/graph/permissions-reference) bakın.
 
 `/.default`Uygulamalarınızı v 1.0 uç noktasından (ADAL) Microsoft Identity platform uç noktasına (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com` , eşdeğer kapsam değeri `https://graph.microsoft.com/.default` .  Kaynak URL biçiminde değilse, ancak formun kaynak KIMLIĞI ise `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kapsam değerini kullanmaya devam edebilirsiniz `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
-Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) inceleyin.
+Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](./v2-permissions-and-consent.md) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](./msal-v1-app-scopes.md) inceleyin.
 
 ## <a name="core-classes"></a>Çekirdek sınıflar
 
@@ -86,9 +86,9 @@ V 1.0 'da, yetkili kullanırsanız, `https://login.microsoftonline.com/common` K
 
 V 1.0 uç noktası (ADAL tarafından kullanılan) yalnızca v 1.0 belirteçlerini yayar.
 
-V 2.0 uç noktası (MSAL tarafından kullanılan), v 1.0 ve v 2.0 belirteçlerini yayabilir. Web API 'sinin uygulama bildiriminin bir özelliği, geliştiricilerin hangi belirteç sürümünün kabul edildiğini seçmesini sağlar. Bkz `accessTokenAcceptedVersion` . [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) başvuru belgeleri.
+V 2.0 uç noktası (MSAL tarafından kullanılan), v 1.0 ve v 2.0 belirteçlerini yayabilir. Web API 'sinin uygulama bildiriminin bir özelliği, geliştiricilerin hangi belirteç sürümünün kabul edildiğini seçmesini sağlar. Bkz `accessTokenAcceptedVersion` . [uygulama bildirimi](./reference-app-manifest.md) başvuru belgeleri.
 
-V 1.0 ve v 2.0 belirteçleri hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+V 1.0 ve v 2.0 belirteçleri hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](./access-tokens.md).
 
 ## <a name="adal-to-msal-migration"></a>ADAL to MSAL geçişi
 

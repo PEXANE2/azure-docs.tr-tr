@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81309518"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115365"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -50,7 +50,7 @@ Uygulamanız, bir Azure Active Directory kiracısıyla kaydedilerek Microsoft Id
     * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `https://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
     * Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örn. `myapp://auth`.
 
-    Web uygulamaları veya yerel uygulamalar için örnekler için bkz. [Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop)'daki hızlı başlangıçlara bakın.
+    Web uygulamaları veya yerel uygulamalar için örnekler için bkz. [Microsoft Identity platform](./index.yml)'daki hızlı başlangıçlara bakın.
 
 1. Bittiğinde **Kaydet**’i seçin.
 
@@ -70,7 +70,7 @@ Azure AD, uygulamanıza benzersiz bir uygulama veya istemci KIMLIĞI atar. Porta
 
 * Desteklenen hesapları yönetmek için bkz. [hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md).
 
-* Bir uygulama oluşturmak ve işlevsellik eklemek için bkz. [Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop)'daki hızlı başlangıçlara bakın.
+* Bir uygulama oluşturmak ve işlevsellik eklemek için bkz. [Microsoft Identity platform](./index.yml)'daki hızlı başlangıçlara bakın.
 
 * Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807630"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119717"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API 'sini çağırma (XAML)
 
@@ -27,7 +27,7 @@ Bu kılavuzda, yerel bir Evrensel Windows Platformu (UWP) uygulamasının bir er
 Bu kılavuzun sonunda, uygulamanız kişisel hesapları kullanarak korumalı bir API çağırır. Örnekler şunlardır outlook.com, live.com ve diğerleri. Uygulamanız Ayrıca, Azure Active Directory (Azure AD) olan herhangi bir şirketten veya kuruluştan iş ve okul hesaplarını da çağırır.
 
 >[!NOTE]
-> Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio gerekir. Evrensel Windows Platformu uygulamalar geliştirmek üzere Visual Studio indirme ve yapılandırma yönergeleri için bkz. [Get Up Set](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
+> Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio gerekir. Evrensel Windows Platformu uygulamalar geliştirmek üzere Visual Studio indirme ve yapılandırma yönergeleri için bkz. [Get Up Set](/windows/uwp/get-started/get-set-up).
 
 >[!NOTE]
 > Microsoft Identity platformu ' na yeni başladıysanız, [bir Evrensel Windows platformu (UWP) uygulaması hızlı başlangıç MICROSOFT Graph API 'Sini çağırın](quickstart-v2-uwp.md).
@@ -42,7 +42,7 @@ Bu kılavuz Microsoft Graph API 'sini sorgulayan bir örnek UWP uygulaması olu�
 
 Bu kılavuz aşağıdaki NuGet paketini kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph Istemci kitaplığı|
@@ -340,7 +340,7 @@ private async Task DisplayMessageAsync(string message)
 
 Şimdi uygulamanızı kaydetmeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**seçin.
 1. **Yeni kayıt**seçeneğini belirleyin. Uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin; Örneğin, *UWP-app-çağıran-MSGraph*.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox) hesaplar**' ı seçin. Sonra devam etmek için **Kaydet** ' i seçin.
@@ -459,7 +459,7 @@ Uygulamanızda ilk kez oturum açtığınızda aşağıdaki görüntüye benzer 
 
 Ayrıca, `AcquireTokenInteractive` `AcquireTokenSilent` **belirteç bilgisi** kutusunda veya aracılığıyla alınan belirteçle ilgili temel bilgileri görürsünüz:
 
-|Özellik  |Biçimlendir  |Description |
+|Özellik  |Biçimlendir  |Açıklama |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Kullanıcıyı tanımlayan Kullanıcı adı.|
 |`Token Expires` |`DateTime` |Belirtecin süresinin dolacağı zaman. Microsoft kimlik doğrulama kitaplığı, belirteci gerektiği şekilde yenileyerek sona erme tarihini genişletir.|

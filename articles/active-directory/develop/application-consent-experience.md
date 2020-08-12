@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885591"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115484"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD uygulama onayı deneyimlerini anlama
 
@@ -28,10 +28,10 @@ Azure Active Directory (Azure AD) uygulama onayı Kullanıcı deneyimi hakkında
 
 Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Bir yöneticiye veya kullanıcıya, kendi kuruluşlarına/bireysel verilerine erişim izni vermeniz istenebilir.
 
-İzin verme için gerçek kullanıcı deneyimi, kullanıcının kiracısında ayarlanan ilkelere, kullanıcının yetki kapsamına (veya role) ve istemci uygulaması tarafından istenen [izin](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) türüne göre farklılık gösterir. Bu, uygulama geliştiricilerinin ve kiracı yöneticilerinin onay deneyimi üzerinde bir denetim sahibi olduğu anlamına gelir. Yöneticiler, kiracısındaki onay deneyimini denetlemek için bir kiracıya veya uygulamaya ilke ayarlama ve devre dışı bırakma esnekliğine sahiptir. Uygulama geliştiricileri ne tür izinlerin istenmekte olduğunu ve kullanıcılara Kullanıcı onay akışı veya yönetici onay akışı aracılığıyla rehberlik etmek istiyorlar.
+İzin verme için gerçek kullanıcı deneyimi, kullanıcının kiracısında ayarlanan ilkelere, kullanıcının yetki kapsamına (veya role) ve istemci uygulaması tarafından istenen [izin](../azuread-dev/v1-permissions-consent.md) türüne göre farklılık gösterir. Bu, uygulama geliştiricilerinin ve kiracı yöneticilerinin onay deneyimi üzerinde bir denetim sahibi olduğu anlamına gelir. Yöneticiler, kiracısındaki onay deneyimini denetlemek için bir kiracıya veya uygulamaya ilke ayarlama ve devre dışı bırakma esnekliğine sahiptir. Uygulama geliştiricileri ne tür izinlerin istenmekte olduğunu ve kullanıcılara Kullanıcı onay akışı veya yönetici onay akışı aracılığıyla rehberlik etmek istiyorlar.
 
 - **Kullanıcı onay akışı** , bir uygulama geliştiricisi kullanıcıları yalnızca geçerli kullanıcı için izin kaydetme amacını taşıyan yetkilendirme uç noktasına yönlendirirse.
-- **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için uygulama geliştiricilerinin, uygulama bildirimindeki özelliğindeki tüm izinleri listebilmeleri gerekir `RequiredResourceAccess` . Daha fazla bilgi için bkz. [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için uygulama geliştiricilerinin, uygulama bildirimindeki özelliğindeki tüm izinleri listebilmeleri gerekir `RequiredResourceAccess` . Daha fazla bilgi için bkz. [uygulama bildirimi](./reference-app-manifest.md).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Onay isteminin yapı taşları
 
@@ -81,6 +81,6 @@ Bir kullanıcının ortak izin senaryolarında görebileceği onay deneyimleri a
     1. Yönetici olmayan kullanıcılar yukarıda gösterilen 2. ii ile aynı ekranı görür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure AD onay çerçevesinin izin nasıl uyguladığı konusunda](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)adım adım bir genel bakış alın.
-- Daha ayrıntılı bilgi edinmek için, çok kiracılı bir uygulamanın "Kullanıcı" ve "Yönetici" onayını uygulamak için [izin çerçevesini nasıl kullandığını](active-directory-devhowto-multi-tenant-overview.md) öğrenin ve daha gelişmiş çok katmanlı uygulama düzenlerini destekler.
+- [Azure AD onay çerçevesinin izin nasıl uyguladığı konusunda](./quickstart-register-app.md)adım adım bir genel bakış alın.
+- Daha ayrıntılı bilgi edinmek için, çok kiracılı bir uygulamanın "Kullanıcı" ve "Yönetici" onayını uygulamak için [izin çerçevesini nasıl kullandığını](./howto-convert-app-to-be-multi-tenant.md) öğrenin ve daha gelişmiş çok katmanlı uygulama düzenlerini destekler.
 - [Uygulamanın yayımcı etki alanını nasıl yapılandıracağınızı](howto-configure-publisher-domain.md)öğrenin.

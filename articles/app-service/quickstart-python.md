@@ -4,12 +4,12 @@ description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına d
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: b258185d2fb7220332ee1287d399f0e49e5708a9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 5463b23a4c19681515197f7d0cf880235ef6c0f2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085496"
+ms.locfileid: "88121553"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -63,6 +63,8 @@ Bu komut, kimlik bilgilerinizi toplamak için bir tarayıcı açar. Komut tamaml
 
 Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure CLı ile Azure komutlarını çalıştırabilirsiniz.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+
 ## <a name="clone-the-sample"></a>Örneği
 
 Aşağıdaki komutla örnek depoyu kopyalayın. (Zaten git yoksa[Git 'ı yükleyebilirsiniz](https://git-scm.com/downloads) .)
@@ -78,6 +80,8 @@ cd python-docs-hello-world
 ```
 
 Örnek kod, kodun bir Flask uygulaması içerdiğini App Service söyleyen bir *Application.py* dosyası içerir. Daha fazla bilgi için bkz. [kapsayıcı başlatma işlemi](configure-language-python.md#container-startup-process).
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
@@ -140,6 +144,8 @@ Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://loca
 
 **Ctrl** + Flask geliştirme sunucusundan çıkmak için Terminal pencerenizde CTRL**C** tuşuna basın.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
 
 Şu komutu kullanarak kodu yerel klasörünüzde (*Python-docs-Hello-World*) dağıtın `az webapp up` :
@@ -157,6 +163,8 @@ Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak g
 
 ![Az WebApp up komutunun örnek çıktısı](./media/quickstart-python/az-webapp-up-output.png)
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+
 [!INCLUDE [AZ Webapp Up Note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
@@ -168,6 +176,8 @@ Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux ka
 ![Azure 'da örnek bir Python uygulaması çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 **Tebrikler!** App Service için Python uygulamanızı dağıttınız.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="redeploy-updates"></a>Güncelleştirmeleri yeniden Dağıt
 
@@ -193,6 +203,8 @@ Dağıtım tamamlandıktan sonra tarayıcı penceresine geri dönün `http://<ap
 
 ![Azure 'da güncelleştirilmiş örnek bir Python uygulaması çalıştırma](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+
 > [!TIP]
 > Visual Studio Code, Python web uygulamalarını App Service dağıtma sürecini kolaylaştıran Python ve Azure App Service için güçlü uzantılar sağlar. Daha fazla bilgi için bkz. [Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/python/tutorial-deploy-app-service-on-linux-01).
 
@@ -212,6 +224,8 @@ Ayrıca, konumundaki tarayıcıdan günlük dosyalarını inceleyebilirsiniz `ht
 
 Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C**yazın.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
 Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri**' ni arayıp seçin.
@@ -228,6 +242,8 @@ Uygulamanın seçilmesi, **genel bakış** sayfasını açar, buradan göz at, d
 
 App Service menüsü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Kaynak grubu, konumunuza bağlı olarak "appsvc_rg_Linux_CentralUS" gibi bir ada sahiptir. Ücretsiz F1 katmanından farklı bir App Service SKU 'SU kullanıyorsanız, bu kaynaklar devam eden maliyetlere (bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/linux/)) sahiptir.
@@ -241,6 +257,8 @@ az group delete
 Komut *. Azure/config* dosyasında önbelleğe alınmış kaynak grubu adını kullanır.
 
 Komutun tamamlanması birkaç dakika sürebilir.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

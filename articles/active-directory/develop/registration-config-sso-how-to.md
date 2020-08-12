@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890475"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120686"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Bir uygulama için çoklu oturum açmayı yapılandırma
 
@@ -26,20 +26,20 @@ OpenID Connect, SAML 2,0 veya WS-beslemelerine yönelik Azure AD aracılığıyl
 
 * Bir mobil uygulama oluşturuyorsanız, aracılı veya aracılı olmayan SSO 'yu etkinleştirmek için ek yapılandırmalara ihtiyacınız olabilir.
 
-Android için bkz. [Android 'de uygulamalar arası SSO 'Yu etkinleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+Android için bkz. [Android 'de uygulamalar arası SSO 'Yu etkinleştirme](../azuread-dev/howto-v1-enable-sso-android.md).<br>
 
-İOS için bkz. [iOS 'Ta uygulamalar arası SSO etkinleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+İOS için bkz. [iOS 'Ta uygulamalar arası SSO etkinleştirme](../azuread-dev/howto-v1-enable-sso-ios.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD SSO 'SU](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO 'SU](../manage-apps/what-is-single-sign-on.md)<br>
 
-[Android 'de uygulamalar arası SSO 'yu etkinleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Android 'de uygulamalar arası SSO 'yu etkinleştirme](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[İOS 'ta çapraz uygulama SSO 'SU etkinleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[İOS 'ta çapraz uygulama SSO 'SU etkinleştirme](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[Uygulamaları AzureAD ile tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Uygulamaları AzureAD ile tümleştirme](./quickstart-register-app.md)<br>
 
-[Microsoft kimlik platformu uç noktasında izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft kimlik platformu uç noktasında izinler ve onay](./v2-permissions-and-consent.md)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

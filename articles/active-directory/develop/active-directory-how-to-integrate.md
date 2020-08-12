@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 50748334a59dd6b3d7601bd8a32ac99bfe90b0fe
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552824"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115705"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Microsoft Identity platformu ile tümleştirme
 
@@ -31,15 +31,15 @@ Uygulamanızın Microsoft Identity platformu ile tümleştirilmesine yönelik ç
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Uygulamanızda oturum açmak için bir yol olarak Microsoft Identity platformunu destekleme
 
-**Oturum açma ve destek maliyetlerini azaltma.** Uygulamanızda oturum açmak için Microsoft Identity platform 'u kullanarak, kullanıcılarınız hatırlayamayacak bir ad ve parolaya sahip olmayacaktır. Bir geliştirici olarak depolamak ve korumak için bir parola daha az olacaktır. Unutulmuş parola sıfırlamaları işlemek gerekmez, tek başına önemli bir tasarruf olabilir. Office 365 ve Microsoft Azure dahil olmak üzere dünyanın en popüler bulut uygulamaları için Microsoft Identity platform güçleri vardır. Milyonlarca kuruluşun yüz milyonlarca kullanıcısı sayesinde, kullanıcılarınız zaten Microsoft Identity platformunda oturum açtı. [Microsoft Identity Platform oturum açma desteği ekleme](authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+**Oturum açma ve destek maliyetlerini azaltma.** Uygulamanızda oturum açmak için Microsoft Identity platform 'u kullanarak, kullanıcılarınız hatırlayamayacak bir ad ve parolaya sahip olmayacaktır. Bir geliştirici olarak depolamak ve korumak için bir parola daha az olacaktır. Unutulmuş parola sıfırlamaları işlemek gerekmez, tek başına önemli bir tasarruf olabilir. Office 365 ve Microsoft Azure dahil olmak üzere dünyanın en popüler bulut uygulamaları için Microsoft Identity platform güçleri vardır. Milyonlarca kuruluşun yüz milyonlarca kullanıcısı sayesinde, kullanıcılarınız zaten Microsoft Identity platformunda oturum açtı. [Microsoft Identity Platform oturum açma desteği ekleme](./authentication-vs-authorization.md)hakkında daha fazla bilgi edinin.
 
 **Uygulamanıza kaydolmayı kolaylaştırın.**  Uygulamanıza kaydolma sırasında Microsoft Identity platform, kayıt formunuzu önceden doldurabilmeniz veya tamamen ortadan kaldırabilmeniz için bir kullanıcı hakkında önemli bilgiler gönderebilir. Kullanıcılar, sosyal medya ve mobil uygulamalarda bulunanlara benzer tanıdık bir onay deneyimi aracılığıyla Azure AD hesabını kullanarak uygulamanıza kaydolabilir. Herhangi bir Kullanıcı, BT katılımı gerekmeden Microsoft Identity platform ile tümleştirilmiş bir uygulamaya kaydolabilir ve oturum açabilir. [Azure AD hesabı oturum açma için uygulamanızı imzalama](../../app-service/configure-authentication-provider-aad.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Kullanıcılara gidin, Kullanıcı sağlamasını yönetin ve uygulamanıza erişimi denetleyin
 
-**Dizindeki kullanıcılara gözatın.**  Kullanıcıların e-posta adresleri yazmalarını istemek yerine, kullanıcılar tarafından, kuruluştaki diğer kişileri aramasına ve bunlara gözatmasına yardımcı olmak için Microsoft Graph API 'sini kullanın. Kullanıcılar, kuruluş hiyerarşisinin ayrıntılarını görüntüleme dahil olmak üzere tanıdık bir adres defteri stili arabirimi kullanarak gözatabilirler. [Microsoft Graph API 'si](https://docs.microsoft.com/graph/overview)hakkında daha fazla bilgi edinin.
+**Dizindeki kullanıcılara gözatın.**  Kullanıcıların e-posta adresleri yazmalarını istemek yerine, kullanıcılar tarafından, kuruluştaki diğer kişileri aramasına ve bunlara gözatmasına yardımcı olmak için Microsoft Graph API 'sini kullanın. Kullanıcılar, kuruluş hiyerarşisinin ayrıntılarını görüntüleme dahil olmak üzere tanıdık bir adres defteri stili arabirimi kullanarak gözatabilirler. [Microsoft Graph API 'si](/graph/overview)hakkında daha fazla bilgi edinin.
 
-**Müşterinizin zaten yönettiği Active Directory grupları ve dağıtım listelerini yeniden kullanın.**  Azure AD, müşterinizin e-posta dağıtımı ve erişim yönetimi için zaten kullandığı grupları içerir. Microsoft Graph API 'sini kullanarak, müşterinizin uygulamanızda ayrı gruplar kümesi oluşturmasını ve yönetmesini istemek yerine bu grupları yeniden kullanın. Grup bilgileri de uygulamanıza oturum açma belirteçlerinde gönderilebilir. [Microsoft Graph API 'si](https://docs.microsoft.com/graph/overview)hakkında daha fazla bilgi edinin.
+**Müşterinizin zaten yönettiği Active Directory grupları ve dağıtım listelerini yeniden kullanın.**  Azure AD, müşterinizin e-posta dağıtımı ve erişim yönetimi için zaten kullandığı grupları içerir. Microsoft Graph API 'sini kullanarak, müşterinizin uygulamanızda ayrı gruplar kümesi oluşturmasını ve yönetmesini istemek yerine bu grupları yeniden kullanın. Grup bilgileri de uygulamanıza oturum açma belirteçlerinde gönderilebilir. [Microsoft Graph API 'si](/graph/overview)hakkında daha fazla bilgi edinin.
 
 **Uygulamanıza kimlerin erişebileceğini denetlemek için Microsoft Identity platform ' i kullanın.**  Azure AD 'deki Yöneticiler ve uygulama sahipleri, belirli kullanıcılara ve gruplara uygulamalara erişim atayabilir. Microsoft Graph API 'sini kullanarak, bu listeyi okuyabilir ve uygulama içinde kaynakların sağlanması ve sağlanması ve erişiminin kaldırılması denetlemek için kullanabilirsiniz.
 
@@ -47,13 +47,13 @@ Uygulamanızın Microsoft Identity platformu ile tümleştirilmesine yönelik ç
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve fazlasına erişim sağlayın
 
-**Microsoft Identity platform, Office 365 ve diğer Microsoft iş hizmetleri için yetkilendirme sunucusudur.**  Uygulamanızda oturum açmak için Microsoft Identity platformunu destek, veya OAuth 2,0 kullanarak geçerli kullanıcı hesaplarınızı Azure AD Kullanıcı hesaplarına bağlamayı destekliyorsa, kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve diğer bilgilere okuma ve yazma erişimi isteyebilirsiniz. Kullanıcı takvimine olayları sorunsuzca yazabilir ve OneDrive 'a dosyaları okuyabilir veya yazabilirsiniz. [Office 365 API 'lerine erişme](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)hakkında daha fazla bilgi edinin.
+**Microsoft Identity platform, Office 365 ve diğer Microsoft iş hizmetleri için yetkilendirme sunucusudur.**  Uygulamanızda oturum açmak için Microsoft Identity platformunu destek, veya OAuth 2,0 kullanarak geçerli kullanıcı hesaplarınızı Azure AD Kullanıcı hesaplarına bağlamayı destekliyorsa, kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve diğer bilgilere okuma ve yazma erişimi isteyebilirsiniz. Kullanıcı takvimine olayları sorunsuzca yazabilir ve OneDrive 'a dosyaları okuyabilir veya yazabilirsiniz. [Office 365 API 'lerine erişme](/previous-versions/office/office-365-api/)hakkında daha fazla bilgi edinin.
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Uygulamanızı Azure ve Office 365 Market konumlarında yükseltin
 
 **Uygulamanızı zaten Azure AD kullanan milyonlarca kuruluşa yükseltin.**  Bu markette arama yapan ve gözatabilen kullanıcılar zaten bir veya daha fazla bulut hizmeti kullanıyor ve bunları nitelikli bulut hizmeti müşterilerine yapıyor. [Azure Marketi](https://azure.microsoft.com/marketplace/partner-program/)'nde uygulamanızı yükseltme hakkında daha fazla bilgi edinin.
 
-**Kullanıcılar uygulamanıza kaydolup Azure AD erişim panelinde ve Office 365 uygulama başlatıcısı 'nda görünür.**  Kullanıcılar daha sonra uygulamanıza hızlı ve kolay bir şekilde geri dönebilir ve kullanıcı etkileşimini geliştirir. [Azure AD erişim paneli](../user-help/active-directory-saas-access-panel-introduction.md)hakkında daha fazla bilgi edinin.
+**Kullanıcılar uygulamanıza kaydolup Azure AD erişim panelinde ve Office 365 uygulama başlatıcısı 'nda görünür.**  Kullanıcılar daha sonra uygulamanıza hızlı ve kolay bir şekilde geri dönebilir ve kullanıcı etkileşimini geliştirir. [Azure AD erişim paneli](../user-help/my-apps-portal-end-user-access.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Cihazdan hizmete ve hizmetten hizmete iletişimi güvenli hale getirme
 
@@ -73,9 +73,9 @@ Microsoft Identity platform ile tümleştirme, ek kod yazmanızı gerektirmeyen 
 
 **Multi-Factor Authentication.**  Microsoft Identity platformu, yerel Multi-Factor Authentication sağlar. BT yöneticileri uygulamanıza erişmek için çok faktörlü kimlik doğrulamasının yapılmasını gerektirebilir. bu sayede, bu desteği kendiniz kodlamayın. [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)hakkında daha fazla bilgi edinin.
 
-**Anormal oturum açma algılaması.**  Microsoft Identity platform günde bir milyardan fazla oturum açma işlemi, şüpheli etkinlikleri algılamak ve BT yöneticilerine olası sorunları bildirmek için makine öğrenimi algoritmalarını kullanmaktır. Microsoft Identity Platform oturum açma 'yı destekleyerek, uygulamanız bu korumanın avantajını alır. [Azure Active Directory Access raporunu görüntüleme](../active-directory-view-access-usage-reports.md)hakkında daha fazla bilgi edinin.
+**Anormal oturum açma algılaması.**  Microsoft Identity platform günde bir milyardan fazla oturum açma işlemi, şüpheli etkinlikleri algılamak ve BT yöneticilerine olası sorunları bildirmek için makine öğrenimi algoritmalarını kullanmaktır. Microsoft Identity Platform oturum açma 'yı destekleyerek, uygulamanız bu korumanın avantajını alır. [Azure Active Directory Access raporunu görüntüleme](../reports-monitoring/overview-reports.md)hakkında daha fazla bilgi edinin.
 
-**Koşullu erişim.**  Çok faktörlü kimlik doğrulamasına ek olarak Yöneticiler, kullanıcıların uygulamanızda oturum açmasını sağlamak için belirli koşulların karşılanmasını gerektirebilir. Ayarlanabilir koşullar, istemci cihazlarının IP adresi aralığını, belirtilen grupların üyeliğini ve erişim için kullanılan cihazın durumunu içerir. [Koşullu erişim Azure Active Directory](../active-directory-conditional-access-azure-portal.md)hakkında daha fazla bilgi edinin.
+**Koşullu erişim.**  Çok faktörlü kimlik doğrulamasına ek olarak Yöneticiler, kullanıcıların uygulamanızda oturum açmasını sağlamak için belirli koşulların karşılanmasını gerektirebilir. Ayarlanabilir koşullar, istemci cihazlarının IP adresi aralığını, belirtilen grupların üyeliğini ve erişim için kullanılan cihazın durumunu içerir. [Koşullu erişim Azure Active Directory](../conditional-access/overview.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="easy-development"></a>Kolay geliştirme
 
@@ -91,5 +91,4 @@ Microsoft Identity platform ile tümleştirme, ek kod yazmanızı gerektirmeyen 
 
 [Kod yazmaya başlayın](v2-overview.md#getting-started).
 
-[Kullanıcıları Microsoft Identity platformu kullanarak imzalama](authentication-scenarios.md)
-
+[Kullanıcıları Microsoft Identity platformu kullanarak imzalama](./authentication-vs-authorization.md)

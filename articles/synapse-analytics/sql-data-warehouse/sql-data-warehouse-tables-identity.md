@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080735"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121332"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda vekil anahtarlar oluşturmak için KIMLIK kullanma
 
@@ -24,7 +24,9 @@ Bu makalede, SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak iç
 
 ## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir?
 
-Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz. IDENTITY özelliği [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)bölümünde ayrıntılı olarak bazı sınırlamalara sahiptir. KIMLIğIN sınırlamalarından biri, benzersiz olması garanti edilmez. KIMLIK ekleme kapalı ve yeniden temelsiz olarak ayarlandığında kimlik değeri daha benzersiz değerlere yol açabilir, ancak tüm durumlarda benzersizlik garantisi vermeyebilir. KIMLIK üzerindeki kısıtlamalar nedeniyle kimlik değerlerini kullanamadığı takdirde, geçerli bir değer tutan ayrı bir tablo oluşturun ve uygulamanızla birlikte tablo ve sayı atamaya erişimi yönetin. 
+Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.
+> [!NOTE]
+> Kullanıcı açıkça "SET IDENTITY_INSERT ON" veya reseeds KIMLIĞIYLE yinelenen bir değer eklediğinde, SYNAPSE SQL 'teki KIMLIK değerinin benzersiz olması garanti edilmez. Ayrıntılar için bkz. [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
 

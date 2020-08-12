@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478629"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116096"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
@@ -173,7 +173,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
-    f. **Kaydet**'i seçin.
+    f. **Kaydet**’i seçin.
 
 10. Uygulamanızı bir kimlik sağlayıcısı tarafından başlatılan çoklu bir oturum açma ile test etmek için, [erişim panelinde](https://myapps.microsoft.com) oturum açın ve uygulama kutucuğunu seçin. SAML belirtecinde, verdiğiniz talep adına sahip kullanıcı için atanan tüm rolleri görmeniz gerekir.
 
@@ -265,7 +265,7 @@ Mevcut bir rolü silmek için aşağıdaki adımları gerçekleştirin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek adımlar için bkz. [uygulama belgeleri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Ek adımlar için bkz. [uygulama belgeleri](../saas-apps/tutorial-list.md).
 
 <!--Image references-->
 <!--Image references-->

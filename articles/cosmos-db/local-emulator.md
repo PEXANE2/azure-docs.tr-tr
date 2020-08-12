@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028250"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119530"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -42,7 +42,7 @@ Azure Cosmos öykünücüsü yerel geliştirici iş istasyonunda çalışan bir 
 * Azure Cosmos öykünücüsü 'nü kullanırken, varsayılan olarak, en fazla 25 sabit boyut kapsayıcısı (yalnızca Azure Cosmos DB SDK 'Ları kullanarak desteklenir) veya Azure Cosmos öykünücüsünü kullanarak 5 sınırsız kapsayıcı oluşturabilirsiniz. Bu değeri değiştirme hakkında daha fazla bilgi için bkz. [PartitionCount değerini ayarlama](#set-partitioncount).
 * Öykünücü 254 karakterlik maksimum kimlik özelliği boyutunu destekler.
 
-## <a name="system-requirements"></a>Sistem Gereksinimleri
+## <a name="system-requirements"></a>Sistem gereksinimleri
 
 Azure Cosmos öykünücüsü, aşağıdaki donanım ve yazılım gereksinimlerine sahiptir:
 
@@ -112,7 +112,7 @@ Kullanıcı ilk kez öykünücüyü kapatması ve öykünücü veri dizinini (%L
 
 ## <a name="developing-with-the-emulator"></a>Öykünücü ile geliştirme
 
-### <a name="sql-api"></a>SQL API’si
+### <a name="sql-api"></a>SQL API
 
 Azure Cosmos öykünücüsünü masaüstünüzde çalışır olduktan sonra, öykünücüle etkileşim kurmak için desteklenen [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) veya [Azure Cosmos DB REST API](/rest/api/cosmos-db/) kullanabilirsiniz. Azure Cosmos öykünücüsü Ayrıca, SQL API Cosmos DB veya Mongo DB API 'SI için kapsayıcılar oluşturmanıza olanak sağlayan yerleşik bir Veri Gezgini içerir ve herhangi bir kod yazmadan öğeleri görüntüleyebilir ve düzenleyebilir.
 
@@ -241,7 +241,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 
 Seçenek listesini görüntülemek için komut satırına `Microsoft.Azure.Cosmos.Emulator.exe /?` yazın.
 
-|**Seçeneği** | **Açıklama** | **Komut**| **Arguments**|
+|**Seçenek** | **Açıklama** | **Komut**| **Arguments**|
 |---|---|---|---|
 |[Bağımsız değişken yok] | Azure Cosmos öykünücüsünü varsayılan ayarlarla başlatır. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Yardım] |Desteklenen komut satırı bağımsız değişkenleri listesini görüntüler.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
@@ -507,6 +507,8 @@ Azure Cosmos öykünücüsü ile karşılaştığınız sorunları gidermeye yar
 - Bir bağlantı sorunuyla karşılaşırsanız, [izleme dosyaları toplayın](#trace-files), bunları sıkıştırın ve [Azure Portal](https://portal.azure.com)bir destek bileti açın.
 
 - **Hizmet Kullanılamıyor** iletisi alırsanız öykünücü, ağ yığınını başlatamıyor olabilir. Pulse secure istemcisinin veya Juniper networks istemcisinin yüklü olup olmadığını denetleyin; bunların ağ filtresi sürücüleri soruna yol açıyor olabilir. Genellikle üçüncü taraf ağ filtresi sürücüleri kaldırıldığında sorun düzeltilir. Alternatif olarak, öykünücü ağ iletişimini normal Winsock 'a geçecek olan/Disablerıo ile öykünücüyü başlatın. 
+
+- " **Yasak" ile karşılaşırsanız "ileti": "istek, Aktarım Protokolü veya şifre içinde yasaklanmış bir şifrelemeyle yapılıyor. Hesap SSL/TLS izin verilen en düşük protokol ayarı... "** bağlantı sorunları, bu durum işletim sisteminde genel değişikliklerden kaynaklanabilir (örneğin, Insider Preview Build 20170) veya varsayılan olarak TLS 1,3 ' i etkinleştiren tarayıcı ayarları olabilir. **Microsoft.Azure.Documents.DocumentClientException: istek, Aktarım Protokolü veya şifre 'nda yasaklanmış bir şifrelemeyle yapılmakta olduğundan, Cosmos öykünücüsüne karşı bir istek yürütmek IÇIN SDK kullanılırken benzer bir hata oluşabilir. Hesap SSL/TLS izin verilen en düşük protokol ayarını denetleyin**. Cosmos öykünücüsü yalnızca TLS 1,2 protokolünü kabul ettiğinden ve bu yana çalıştığından bu süre içinde bu beklenmektedir. Önerilen geçici çözüm, ayarların ve varsayılan olarak TLS 1,2 olarak değiştirilmesini sağlar; IIS Yöneticisi 'ndeki Örneğin, "siteler" e gidin-"varsayılan Web siteleri" > ve bağlantı noktası 8081 için "Site bağlamaları" ' nı bulun ve TLS 1,3 ' i devre dışı bırakmak için düzenleyin. "Ayarlar" seçenekleri aracılığıyla Web tarayıcısı için benzer işlem gerçekleştirilebilir.
 
 - Öykünücü çalışırken bilgisayarınız uyku moduna geçer veya herhangi bir işletim sistemi güncelleştirmesi çalıştırırsa, bir **Service is currently unavailable** (Hizmet şu anda kullanılamıyor) iletisi alabilirsiniz. Windows bildirim tepsisinde görüntülenen simgeye sağ tıklayıp **verileri Sıfırla**' yı seçerek öykünücü verilerini sıfırlayın.
 

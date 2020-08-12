@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552773"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115603"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarı geçişi
 Bu makalede, güvenlik belirteçlerini imzalamak için Microsoft Identity platform tarafından kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Microsoft Identity platform kullanan tüm uygulamaların, anahtar geçişi işlemini programlı bir şekilde işleyebilmesi veya düzenli bir el ile geçiş işlemi kurabilmesi gerekir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
@@ -148,7 +148,7 @@ Visual Studio 2013 ' de Web API şablonu kullanarak bir Web API uygulaması olu�
 
 Kimlik doğrulamasını el ile yapılandırdıysanız, kendi anahtar bilgilerini otomatik olarak güncelleştirmek üzere Web API 'nizi nasıl yapılandıracağınızı öğrenmek için aşağıdaki yönergeleri izleyin.
 
-Aşağıdaki kod parçacığı, Federasyon meta veri belgesinden en son anahtarları nasıl alınacağını ve sonra belirteci doğrulamak için [JWT belirteci işleyicisini](https://msdn.microsoft.com/library/dn205065.aspx) nasıl kullanacağınızı gösterir. Kod parçacığı, bir veritabanı, yapılandırma dosyası veya başka bir yerde olup olmadığı gibi, Microsoft Identity platform 'dan gelecek belirteçleri doğrulamak için anahtarı kalıcı hale getiren kendi önbelleğe alma mekanizmanızı kullanacağınızı varsayar.
+Aşağıdaki kod parçacığı, Federasyon meta veri belgesinden en son anahtarları nasıl alınacağını ve sonra belirteci doğrulamak için [JWT belirteci işleyicisini](/previous-versions/dotnet/framework/security/json-web-token-handler) nasıl kullanacağınızı gösterir. Kod parçacığı, bir veritabanı, yapılandırma dosyası veya başka bir yerde olup olmadığı gibi, Microsoft Identity platform 'dan gelecek belirteçleri doğrulamak için anahtarı kalıcı hale getiren kendi önbelleğe alma mekanizmanızı kullanacağınızı varsayar.
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Kaynakları koruyan ve Visual Studio 2012 ile oluşturulan Web uygulamaları
-Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Microsoft Identity Platform) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
+Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Microsoft Identity Platform) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
 
 Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenecek yol belgelerinden birini kullanarak oluşturduysanız, anahtar aktarma mantığı projenize zaten dahil edilmiştir. Aşağıdaki kodun projenizde zaten var olduğunu fark edeceksiniz. Uygulamanızda zaten bu mantık yoksa, eklemek ve düzgün çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
@@ -288,14 +288,14 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
 WıF v 1.0 üzerinde bir uygulama oluşturduysanız, yeni bir anahtar kullanmak için uygulamanızın yapılandırmasını otomatik olarak yenilemek üzere bir sağlanmayan mekanizma yoktur.
 
 * *En kolay yol* WıF SDK ' da bulunan FedUtil aracı 'nı kullanın. Bu, en son meta veri belgesini alabilir ve yapılandırmanızı güncelleştirebilir.
-* Uygulamanızı, sistem ad alanında yer alan en yeni WıF sürümünü içeren .NET 4,5 ' a güncelleştirin. Daha sonra, uygulama yapılandırmasının otomatik güncelleştirmelerini gerçekleştirmek için [doğrulama verenin adı kayıt defterini (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) kullanabilirsiniz.
+* Uygulamanızı, sistem ad alanında yer alan en yeni WıF sürümünü içeren .NET 4,5 ' a güncelleştirin. Daha sonra, uygulama yapılandırmasının otomatik güncelleştirmelerini gerçekleştirmek için [doğrulama verenin adı kayıt defterini (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) kullanabilirsiniz.
 * Bu kılavuz belgesinin sonundaki yönergelere göre el ile geçiş gerçekleştirin.
 
 Yapılandırmanızı güncelleştirmek için FedUtil kullanma yönergeleri:
 
 1. Visual Studio 2008 veya 2010 için geliştirme makinenizde WıF v 1.0 SDK 'nın yüklü olduğunu doğrulayın. Henüz yüklemediyseniz, [buradan indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=4451) .
 2. Visual Studio 'da çözümü açın ve ardından geçerli projeye sağ tıklayıp **Federasyon meta verilerini Güncelleştir**' i seçin. Bu seçenek kullanılamıyorsa, FedUtil ve/veya WıF v 1.0 SDK yüklü değildir.
-3. Komut isteminde, Federasyon meta verilerinizi güncelleştirmeye başlamak için **Güncelleştir** ' i seçin. Uygulamanın barındırıldığı sunucu ortamına erişiminiz varsa, isteğe bağlı olarak FedUtil 'nin [Otomatik meta veri güncelleştirme zamanlayıcısını](https://msdn.microsoft.com/library/ee517272.aspx)kullanabilirsiniz.
+3. Komut isteminde, Federasyon meta verilerinizi güncelleştirmeye başlamak için **Güncelleştir** ' i seçin. Uygulamanın barındırıldığı sunucu ortamına erişiminiz varsa, isteğe bağlı olarak FedUtil 'nin [Otomatik meta veri güncelleştirme zamanlayıcısını](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))kullanabilirsiniz.
 4. Güncelleştirme işlemini gerçekleştirmek için **son** ' a tıklayın.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Diğer kitaplıkları kullanan veya desteklenen protokollerden herhangi birini uygulayan Web uygulamaları/API 'Leri, kaynakları koruyan

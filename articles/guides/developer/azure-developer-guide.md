@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080326"
+ms.locfileid: "88120584"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -35,7 +35,7 @@ Bu kılavuz, uygulama geliştiricileri için Azure platformuna giriş niteliğin
 
 Azure 'un sunduğu tüm hizmetlerle, çözüm mimarinizi desteklemek için hangi hizmetleri gerektiğini öğrenmek için bir başlatma görevi olabilir. Bu bölümde geliştiricilerin yaygın olarak kullandığı Azure hizmetleri vurgulanmaktadır. Tüm Azure hizmetlerinin listesi için bkz. [Azure belgeleri](../../index.yml).
 
-İlk olarak, Azure 'da uygulamanızı barındırmaya karar vermelisiniz. Tüm altyapınızı bir sanal makine (VM) olarak yönetmeniz gerekir. Azure 'un sağladığı platform yönetimi olanaklarını kullanabilir misiniz? Yalnızca kod yürütmeyi barındırmak için sunucusuz bir çerçeveye ihtiyacınız olabilir mi?
+İlk olarak, Azure 'da uygulamanızı barındırmaya karar vermelisiniz. Tüm altyapınızı bir sanal makine (VM) olarak yönetmeniz gerekiyor mu? Azure 'un sağladığı platform yönetimi olanaklarını kullanabilir misiniz? Yalnızca kod yürütmeyi barındırmak için sunucusuz bir çerçeveye ihtiyacınız olabilir mi?
 
 Uygulamanız için Azure 'un çeşitli seçeneklerini sağladığı bulut depolaması gerekir. Azure 'un kurumsal kimlik doğrulamasının avantajlarından yararlanabilirsiniz. Bulut tabanlı geliştirme ve izleme için de araçlar vardır ve birçok barındırma hizmeti DevOps tümleştirmesi sunar.
 

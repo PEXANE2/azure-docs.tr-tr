@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d3810d3998f82127fc32327f696a2784382b4537
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201950"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117048"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
@@ -47,7 +47,7 @@ Bir uygulamanın çok kiracılı hale getirilbilmesi için Azure AD, uygulamanı
 Varsayılan olarak, Azure portal ile oluşturulan uygulamalar, uygulama oluşturma sırasında genel olarak benzersiz bir uygulama KIMLIĞI URI 'SI kümesine sahiptir, ancak bu değeri değiştirebilirsiniz. Örneğin, kiracınızın adı contoso.onmicrosoft.com ise geçerli bir uygulama KIMLIĞI URI 'SI olur `https://contoso.onmicrosoft.com/myapp` . Kiracınızda doğrulanmış bir etki alanı varsa `contoso.com` , geçerli bir uygulama kimliği URI 'si de olur `https://contoso.com/myapp` . Uygulama Kimliği URI'si bu düzene uygun olmadığında uygulamayı çok kiracılı hale getirme işlemi başarısız olur.
 
 > [!NOTE]
-> Yerel istemci kayıtları ve [Microsoft Identity platform uygulamaları](./active-directory-appmodel-v2-overview.md) , varsayılan olarak çok kiracılı değildir. Bu uygulama kayıtlarını çok kiracılı hale getirmek için herhangi bir işlem yapmanız gerekmez.
+> Yerel istemci kayıtları ve [Microsoft Identity platform uygulamaları](./v2-overview.md) , varsayılan olarak çok kiracılı değildir. Bu uygulama kayıtlarını çok kiracılı hale getirmek için herhangi bir işlem yapmanız gerekmez.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Kodu, istekleri sık karşılaşılan 'a gönderecek şekilde güncelleştirin
 
@@ -141,7 +141,7 @@ Uygulamanızın her biri Azure AD 'de kendi kaydıyla temsil edilen birden çok 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Tek bir kiracıda birden çok katman
 
-Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örneğin:
+Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örnek:
 
 ```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
@@ -201,7 +201,7 @@ Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum aç
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
+[AAD-Samples-MT]: /samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
@@ -226,9 +226,9 @@ Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum aç
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: https://msdn.microsoft.com/library/azure/dn645542.aspx
+[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6

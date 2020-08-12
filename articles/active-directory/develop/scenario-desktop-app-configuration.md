@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 9388ef4aa320147815bec79c2fa4b90bce3cdac1
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846148"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121111"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API 'Lerini çağıran masaüstü uygulaması: kod yapılandırması
 
@@ -107,8 +107,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET masaüstü uygulamasını yapılandırma hakkında daha fazla bilgi edinmek için:
 
-- Üzerinde kullanılabilen tüm değiştiricilerin bir listesi için `PublicClientApplicationBuilder` bkz. Reference documentation [Publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- İçinde gösterilen tüm seçeneklerin bir açıklaması için `PublicClientApplicationOptions` başvuru belgelerindeki [Publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) bölümüne bakın.
+- Üzerinde kullanılabilen tüm değiştiricilerin bir listesi için `PublicClientApplicationBuilder` bkz. Reference documentation [Publicclientapplicationbuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- İçinde gösterilen tüm seçeneklerin bir açıklaması için `PublicClientApplicationOptions` başvuru belgelerindeki [Publicclientapplicationoptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) bölümüne bakın.
 
 ### <a name="complete-example-with-configuration-options"></a>Yapılandırma seçenekleriyle birlikte tüm örnek
 

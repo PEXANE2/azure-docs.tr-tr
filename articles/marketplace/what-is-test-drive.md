@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229457"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121876"
 ---
 # <a name="what-is-a-test-drive"></a>Test sürüşü nedir?
 
@@ -44,7 +44,17 @@ Bu test sürücülerinden birini yapılandırma hakkında ayrıntılı bilgi iç
 
 ### <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
-Bu dağıtım şablonu, çözümünüzü oluşturan tüm Azure kaynaklarını içerir. Bu senaryoya uyan ürünler yalnızca Azure kaynaklarını kullanır. Bu, sanal makine veya Azure Uygulama teklifleri için tek sınama sürücüsü seçeneğidir.
+Bu dağıtım şablonu, çözümünüzü oluşturan tüm Azure kaynaklarını içerir. Bu senaryoya uyan ürünler yalnızca Azure kaynaklarını kullanır. Azure Resource Manager test sürücüsü bu teklif türleri için kullanılabilir: 
+
+- Azure uygulamaları
+- Dynamics 365 for Business Central
+- PowerApps & müşteri katılımı için Dynamics 365
+- Dynamics 365 for Operations
+- SaaS
+- Sanal makineler
+
+>[!NOTE]
+>Bu, sanal makine ve Azure Uygulama teklifleri için tek sınama sürücüsü seçeneğidir.
 
 ### <a name="hosted-test-drive"></a>Barındırılan test sürücüsü
 

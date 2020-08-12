@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845468"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117745"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
 
@@ -264,7 +264,7 @@ Yanıt, UTF8 ve Base64url içinde kodlanmış bir SAML belirteci içeriyor.
 - Bir **OBO çağrısından kaynaklanan BIR SAML onaylama işlemi Için SubjectConfirmationData**: hedef uygulamanın **SubjectConfirmationData**'de bir alıcı değeri olması gerekiyorsa, kaynak uygulama yapılandırmasındaki joker karakter olmayan bir yanıt URL 'si olmalıdır.
 - **SubjectConfirmationData düğümü**: bir SAML yanıtının parçası olmadığından, düğüm bir **InResponseTo** özniteliği içeremez. SAML belirtecini alan uygulamanın, bir **InResponseTo** ÖZNITELIĞI olmadan SAML onaylama işlemi kabul edebilmesi gerekir.
 
-- **Onay**: bir OAuth akışında Kullanıcı verilerini IÇEREN bir SAML belirteci almak için onay verilmelidir. İzinler ve yönetici onayı alma hakkında daha fazla bilgi için, [Azure Active Directory v 1.0 uç noktasındaki izinler ve onay](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)konusuna bakın.
+- **Onay**: bir OAuth akışında Kullanıcı verilerini IÇEREN bir SAML belirteci almak için onay verilmelidir. İzinler ve yönetici onayı alma hakkında daha fazla bilgi için, [Azure Active Directory v 1.0 uç noktasındaki izinler ve onay](./v1-permissions-consent.md)konusuna bakın.
 
 ### <a name="response-with-saml-assertion"></a>SAML onaylama ile yanıt
 

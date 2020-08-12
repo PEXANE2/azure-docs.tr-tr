@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533368"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121468"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 | ---| --- |
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md).|
 | Veri bulma ve sınıflandırma  |Bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics veri bulma & sınıflandırması](data-discovery-and-classification-overview.md).|
-| Esnek veritabanı işleri | Bilgi için bkz. [elastik Işler oluşturma, yapılandırma ve yönetme](elastic-jobs-overview.md). |
+| Elastik veritabanı işleri (Önizleme) | Bilgi için bkz. [elastik Işler oluşturma, yapılandırma ve yönetme](elastic-jobs-overview.md). |
 | Esnek sorgular | Daha fazla bilgi için bkz. [elastik sorguya genel bakış](elastic-query-overview.md). |
 | Elastik işlemler | [Bulut veritabanları arasında dağıtılmış işlemler](elastic-transactions-overview.md). |
 | Azure portal sorgu Düzenleyicisi |Bilgi için bkz. [Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](connect-query-portal.md).|

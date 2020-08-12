@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f4d442831658b276f74146ef91e69b92dec83619
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b844b9c2862d86dab322c4d2df3a96c206ebe8f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553900"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115144"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform kimlik doğrulama kitaplıkları
 
-[Microsoft Identity platform uç noktası](active-directory-v2-compare.md) , sektör standardı OAuth 2,0 ve OpenID Connect 1,0 protokollerini destekler. Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Identity platform uç noktasıyla çalışacak şekilde tasarlanmıştır. OAuth 2,0 ve OpenID Connect 1,0 ' i destekleyen açık kaynaklı kitaplıkları da kullanabilirsiniz.
+[Microsoft Identity platform uç noktası](../azuread-dev/azure-ad-endpoint-comparison.md) , sektör standardı OAuth 2,0 ve OpenID Connect 1,0 protokollerini destekler. Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Identity platform uç noktasıyla çalışacak şekilde tasarlanmıştır. OAuth 2,0 ve OpenID Connect 1,0 ' i destekleyen açık kaynaklı kitaplıkları da kullanabilirsiniz.
 
 Güvenlik geliştirme yaşam döngüsü (SDL) metodolojisini izleyen protokol etki alanı uzmanları tarafından yazılmış kitaplıkları kullanmanızı öneririz. Bu tür yöntemler [, Microsoft 'un izlediği bir][Microsoft-SDL]yöntem içerir. Protokoller için kod kullandıysanız, Microsoft SDL gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
 
@@ -52,7 +52,7 @@ Korumalı bir Web API 'SI çağırmak için bir belirteç almak üzere istemci k
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Tek sayfalı uygulama](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Kavramsal belgeler](msal-overview.md)| [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL angular | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Angular SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Kavramsal belgeler](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Masaüstü uygulaması](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Kavramsal belgeler](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
+| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Masaüstü uygulaması](/azure/active-directory/develop/active-directory-windesktop) | [MSAL.NET](/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Kavramsal belgeler](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Örnekler](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [Belgeleri Readthe](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Örnekler](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Başvuru](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
 | iOS ve macOS | MSAL iOS ve macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS uygulaması](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [MacOS uygulaması](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Kavramsal belgeler](msal-overview.md) | |
@@ -64,8 +64,8 @@ Web uygulamalarını ve Web API 'Lerini korumaya yardımcı olması için ara ya
 
 | Platform | Kitaplık | İndir | Kaynak kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET güvenliği |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[ASP.NET API başvurusu](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| .NET için IdentityModel uzantıları| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[Başvuru](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
+| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET güvenliği |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[ASP.NET API başvurusu](/dotnet/api/?view=aspnetcore-2.0) |
+| ![.NET](media/sample-v2-code/logo_NET.png)| .NET için IdentityModel uzantıları| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[Başvuru](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web uygulaması](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 
 ## <a name="microsoft-supported-libraries-by-os--language"></a>İşletim sistemine/dile göre desteklenen Microsoft kitaplıkları
@@ -102,7 +102,7 @@ Standartlarla uyumlu herhangi bir kitaplık için Microsoft Identity platform u�
 * Kitaplık kodundaki sorunlar ve yeni özellik istekleri için kitaplık sahibine başvurun.
 * Hizmet tarafı protokol uygulamasındaki sorunlar ve yeni özellik istekleri için Microsoft ile iletişim kurun.
 * Protokolde görmek istediğiniz ek özellikler için [bir özellik isteği](https://feedback.azure.com/forums/169401-azure-active-directory) yapın.
-* Microsoft Identity platform uç noktasının OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
+* Microsoft Identity platform uç noktasının OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md) .
 
 ## <a name="related-content"></a>İlgili içerik
 
@@ -114,7 +114,7 @@ Microsoft Identity platform uç noktası hakkında daha fazla bilgi için bkz. [
 [AAD-App-Model-V2-Overview]: v2-overview.md
 [ClientLib-NET-Lib]: https://www.nuget.org/packages/Microsoft.Identity.Client
 [ClientLib-NET-Repo]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
-[ClientLib-NET-Sample]: active-directory-v2-devquickstarts-wpf.md
+[ClientLib-NET-Sample]: ./tutorial-v2-windows-desktop.md
 [ClientLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
 [ClientLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad
 [ClientLib-Node-Sample]:/
@@ -131,7 +131,7 @@ Microsoft Identity platform uç noktası hakkında daha fazla bilgi için bkz. [
 [Microsoft-SDL]: https://www.microsoft.com/sdl/default.aspx
 [ServerLib-Net4-Owin-Oidc-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/
 [ServerLib-Net4-Owin-Oidc-Repo]: https://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oidc-Sample]: active-directory-v2-devquickstarts-dotnet-web.md
+[ServerLib-Net4-Owin-Oidc-Sample]: ./tutorial-v2-asp-webapp.md
 [ServerLib-Net4-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OAuth/
 [ServerLib-Net4-Owin-Oauth-Repo]: https://katanaproject.codeplex.com/
 [ServerLib-Net4-Owin-Oauth-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/

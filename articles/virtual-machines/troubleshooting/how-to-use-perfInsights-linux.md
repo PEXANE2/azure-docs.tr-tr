@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526809"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121400"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
@@ -99,6 +99,7 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat veya/var/log/sa [ `**` ]
   - /var/log/Cloud-Init.log
   - /var/log/Cloud-init-output.log
   - /var/logtecu-Manager.log
@@ -112,7 +113,9 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
 - [Azure sanal makine örneği meta verileri](../windows/instance-metadata-service.md)
 
 >[!Note]
->[ `*` ] PCI bilgileri henüz DEMIN ve SLES dağıtımlarında toplanmadı
+>[ `*` ] PCI bilgileri henüz DEMIN ve SLES dağıtımlarında toplanmadı.
+> 
+>[ `**` ]/var/log/sysstat veya/var/log/SA, sysstat paketi tarafından toplanan sistem etkinlik raporu (SAR) dosyalarını içerir. Sysstat paketi VM 'de yüklü değilse, Perfinsıghts aracı yüklemek için bir öneri sağlar.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>VM 'niz üzerinde Perfinsıghts Linux 'u çalıştırın
 
@@ -121,7 +124,7 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
 #### <a name="tool-requirements"></a>Araç gereksinimleri
 
 - Bu aracın, performans sorunu olan VM 'de çalıştırılması gerekir.
-- Python 2,7, VM 'de yüklü olmalıdır
+- SANAL makinede Python 3. x veya Python 2,7 yüklü olmalıdır.
 
 - Aşağıdaki dağıtımlar Şu anda destekleniyor:
 

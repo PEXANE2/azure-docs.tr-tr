@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9a1f86a78eaac96f2a6202b4ec29e99a0a978ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554381"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116810"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -25,12 +25,12 @@ Bu makalede, Microsoft Identity platformu ile tümleştirilirken en iyi uygulama
 
 Yeni başladıysanız, kimlik doğrulama temelleri, Microsoft Identity platformunda uygulama senaryoları ve daha fazlası hakkında bilgi edinmek için [Microsoft Identity Platform belgelerine](index.yml) göz atın.
 
-Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/active-directory/develop/)ile etkin bir şekilde tümleştirildiğinden emin olmak için aşağıdaki denetim listesini kullanın.
+Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekilde tümleştirildiğinden emin olmak için aşağıdaki denetim listesini kullanın.
 
 > [!TIP]
 > Azure portal *tümleştirme Yardımcısı* , bu en iyi yöntemler ve önerilerin birçoğunu uygulamanıza yardımcı olabilir. Azure portal [uygulama kayıtlarınızın](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) birini seçin ve ardından yardımcı kullanmaya başlamak için **tümleştirme Yardımcısı (Önizleme)** menü öğesini seçin.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft Platformu ilkelerini](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)okuyun ve anlayın. Uygulamanızın, kullanıcıları ve platformu korumak üzere tasarlandıkları koşullara uyduğundan emin olun.
 
@@ -38,7 +38,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 
 ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) Uygulamaları kaydetmek ve yönetmek için kullandığınız hesapla ilişkili bilgilerin güncel olduğundan emin olun.
 
-## <a name="branding"></a>Markalama
+## <a name="branding"></a>Marka
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) , [uygulamalar için marka yönergelerine](howto-add-branding-in-azure-ad-apps.md)uyar.
 
@@ -58,9 +58,9 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 
 ![onay kutusu, ](./media/active-directory-integration-checklist/checkbox-two.svg) Kullanıcı adı/parola ötesine geçer. Kullanıcıların parolalarını doğrudan işleyen [kaynak sahibi parola kimlik bilgisi akışını (ROPC)](v2-oauth-ropc.md)kullanmayın. Bu akış, yüksek derecede güven ve Kullanıcı pozlaması gerektirir ve yalnızca diğer, daha güvenli ve akış kullanılmıyorsa kullanılmalıdır. Bu akış, bazı senaryolarda (DevOps gibi) hala gereklidir, ancak bunu kullanmanın uygulamanıza kısıtlamalar getirdiğinden emin olun.  Daha modern yaklaşımlar için [kimlik doğrulama akışlarını ve uygulama senaryolarını](authentication-flows-app-scenarios.md)okuyun.
 
-![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) Web Apps, Web API 'leri ve Daemon uygulamaları için gizli uygulama kimlik bilgilerinizi koruyun ve yönetin. Parola kimlik bilgilerini (istemci gizli dizileri) değil [sertifika kimlik bilgilerini](active-directory-certificate-credentials.md)kullanın. Parola kimlik bilgisi kullanmanız gerekiyorsa, el ile ayarlama. Kimlik bilgilerini kod veya yapılandırmaya depolamayın ve bu kullanıcıların insanların işlenmesine izin vermez. Mümkünse, [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) veya kimlik bilgilerinizi depolamak ve düzenli aralıklarla döndürmek için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) kullanın.
+![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) Web Apps, Web API 'leri ve Daemon uygulamaları için gizli uygulama kimlik bilgilerinizi koruyun ve yönetin. Parola kimlik bilgilerini (istemci gizli dizileri) değil [sertifika kimlik bilgilerini](active-directory-certificate-credentials.md)kullanın. Parola kimlik bilgisi kullanmanız gerekiyorsa, el ile ayarlama. Kimlik bilgilerini kod veya yapılandırmaya depolamayın ve bu kullanıcıların insanların işlenmesine izin vermez. Mümkünse, [Azure kaynakları için Yönetilen kimlikler](../managed-identities-azure-resources/overview.md) veya kimlik bilgilerinizi depolamak ve düzenli aralıklarla döndürmek için [Azure Key Vault](../../key-vault/general/basic-concepts.md) kullanın.
 
-![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) uygulamanızın en az ayrıcalık izinlerini istediğinizden emin olun. Yalnızca uygulamanızın kesinlikle ihtiyacı olan ve yalnızca ihtiyacınız olduğunda izin ister. Farklı [izin türlerini](v2-permissions-and-consent.md#permission-types)anlayın. Yalnızca gerekli olduğunda uygulama izinlerini kullanın; mümkün olduğunca temsilci izinleri kullanın. Microsoft Graph izinlerinin tam listesi için bu [izin başvurusuna](https://docs.microsoft.com/graph/permissions-reference)bakın.
+![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) uygulamanızın en az ayrıcalık izinlerini istediğinizden emin olun. Yalnızca uygulamanızın kesinlikle ihtiyacı olan ve yalnızca ihtiyacınız olduğunda izin ister. Farklı [izin türlerini](v2-permissions-and-consent.md#permission-types)anlayın. Yalnızca gerekli olduğunda uygulama izinlerini kullanın; mümkün olduğunca temsilci izinleri kullanın. Microsoft Graph izinlerinin tam listesi için bu [izin başvurusuna](/graph/permissions-reference)bakın.
 
 ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) Bir API 'YI Microsoft Identity platformunu kullanarak güvenli hale getiriyorsanız, ortaya çıkarmak gereken izinleri dikkatle düşünün. Çözümünüz için doğru ayrıntı düzeyini ve hangi izinlerin yönetici onayı gerektirdiğini göz önünde bulundurun. Herhangi bir yetkilendirme kararı vermeden önce gelen belirteçlerde beklenen izinleri denetleyin.
 
@@ -68,7 +68,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) kullanıcıların güvenli oturum açmasını sağlamak için modern kimlik doğrulama çözümlerini (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) kullanın.
 
-![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) , OAuth 2,0 ve açık kimlik gibi protokollere doğrudan programmayın. Bunun yerine, [Microsoft kimlik doğrulama kitaplığı 'ndan (msal)](msal-overview.md)yararlanın. MSAL kitaplıkları, güvenlik protokollerini kullanımı kolay bir kitaplıkta güvenli bir şekilde sarmalıdır ve [koşullu erişim](/azure/active-directory/conditional-access/overview) senaryoları, cihaz genelinde [Çoklu oturum açma (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)ve yerleşik belirteç önbelleğe alma desteği için yerleşik destek alabilirsiniz. Daha fazla bilgi için bkz. Microsoft tarafından desteklenen [istemci kitaplıkları](reference-v2-libraries.md#microsoft-supported-client-libraries) ve [Ara yazılım kitaplıkları](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) ve [uyumlu üçüncü taraf istemci kitaplıkları](reference-v2-libraries.md#compatible-client-libraries)listesi.<br/><br/>Kimlik doğrulama protokolleri için kod oluşturmanız gerekiyorsa, [MICROSOFT SDL](https://www.microsoft.com/sdl/default.aspx)gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
+![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) , OAuth 2,0 ve açık kimlik gibi protokollere doğrudan programmayın. Bunun yerine, [Microsoft kimlik doğrulama kitaplığı 'ndan (msal)](msal-overview.md)yararlanın. MSAL kitaplıkları, güvenlik protokollerini kullanımı kolay bir kitaplıkta güvenli bir şekilde sarmalıdır ve [koşullu erişim](../conditional-access/overview.md) senaryoları, cihaz genelinde [Çoklu oturum açma (SSO)](../manage-apps/what-is-single-sign-on.md)ve yerleşik belirteç önbelleğe alma desteği için yerleşik destek alabilirsiniz. Daha fazla bilgi için bkz. Microsoft tarafından desteklenen [istemci kitaplıkları](reference-v2-libraries.md#microsoft-supported-client-libraries) ve [Ara yazılım kitaplıkları](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) ve [uyumlu üçüncü taraf istemci kitaplıkları](reference-v2-libraries.md#compatible-client-libraries)listesi.<br/><br/>Kimlik doğrulama protokolleri için kod oluşturmanız gerekiyorsa, [MICROSOFT SDL](https://www.microsoft.com/sdl/default.aspx)gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) mevcut uygulamaları [Azure Active Directory kimlik doğrulama KITAPLıĞıNDAN (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) [Microsoft kimlik doğrulama kitaplığı](msal-overview.md)'na geçirme. MSAL, Microsoft 'un en son kimlik platformu çözümüdür ve ADAL için tercih edilir. .NET, JavaScript, Android, iOS, macOS ve ayrıca Python ve Java için genel önizlemede bulunur. [Adal.net](msal-net-migration.md), [ADAL.js](msal-compare-msal-js-and-adal-js.md)ve [adal.net ve iOS Broker](msal-net-migration-ios-broker.md) uygulamalarını geçirme hakkında daha fazla bilgi edinin.
 
@@ -110,4 +110,4 @@ V2.0 hakkında ayrıntılı bilgileri keşfedin:
 * [Kimlik belirteçleri başvurusu](id-tokens.md)
 * [Kimlik doğrulama kitaplıkları başvurusu](reference-v2-libraries.md)
 * [Microsoft Identity platformunda izinler ve onay](v2-permissions-and-consent.md)
-* [Microsoft Graph API’si](https://developer.microsoft.com/graph)
+* [Microsoft Graph API](https://developer.microsoft.com/graph)

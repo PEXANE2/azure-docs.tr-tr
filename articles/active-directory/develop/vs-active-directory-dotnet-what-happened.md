@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc23a61c88337c152a764cc0ec90ddbbad25cef1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479122"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114736"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC projem 'e ne oldu (Visual Studio Azure Active Directory bağlı hizmeti)?
 
@@ -162,5 +162,5 @@ Bağlı hizmet eklenirken, Visual Studio 2015, değiştirilen ve kaldırılan do
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory için kimlik doğrulama senaryoları](authentication-scenarios.md)
+- [Azure Active Directory için kimlik doğrulama senaryoları](./authentication-vs-authorization.md)
 - [Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme](quickstart-v2-aspnet-webapp.md)

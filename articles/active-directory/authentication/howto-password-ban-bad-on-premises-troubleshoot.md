@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035494"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116470"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Sorun giderme: şirket içi Azure AD parola koruması
 
@@ -72,7 +72,20 @@ Azure AD parola koruması, Microsoft anahtar dağıtım hizmeti tarafından sağ
 
    Windows Server 2016 ' de, KDS şifreli arabelleklerin biçimini değiştiren bir KDS Güvenlik onarımı eklenmiştir; Bu arabellekler bazen Windows Server 2012 ve Windows Server 2012 R2 'de şifre çözme işlemi başarısız olur. Ters yön, Windows Server 2012 ' de KDS ile şifrelenen ve Windows Server 2012 R2 'nin her zaman Windows Server 2016 ve sonrasında şifresini başarıyla çözmesini sağlayan, sorunsuz bir yönlerdir. Active Directory etki alanlarınızda etki alanı denetleyicileri bu işletim sistemlerinin bir karışımını çalıştırıyorsa, zaman zaman Azure AD parola koruması şifre çözme hatalarının bildirilmesi gerekebilir. Bu hataların zamanlama veya belirtilerini güvenlik düzeltmesinin doğası halinde doğru bir şekilde tahmin etmek ve etki alanı denetleyicisinin belirli bir zamanda verileri hangi Azure AD parolasıyla koruma DC Aracısı tarafından şifreleneceğini belirleyici olmaması mümkün değildir.
 
-   Microsoft bu soruna yönelik bir sorunu araştırmaktadır, ancak henüz hiç ETA yok. Bu sırada, Active Directory etki alanında bu uyumsuz işletim sistemlerinin bir karışımını çalıştırmayan dışında, bu sorun için geçici çözüm yoktur. Diğer bir deyişle, yalnızca Windows Server 2012 ve Windows Server 2012 R2 etki alanı denetleyicilerini çalıştırmalısınız veya yalnızca Windows Server 2016 ve etki alanı denetleyicilerini çalıştırmalısınız.
+   Active Directory etki alanında bu uyumsuz işletim sistemlerinin karışımını çalıştırmayan dışında, bu sorun için geçici çözüm yoktur. Diğer bir deyişle, yalnızca Windows Server 2012 ve Windows Server 2012 R2 etki alanı denetleyicilerini çalıştırmalısınız veya yalnızca Windows Server 2016 ve etki alanı denetleyicilerini çalıştırmalısınız.
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>DC Aracısı ormanın kaydolmadı
+
+Bu sorunun belirtisi, bölümünde yer alan DC yönetim kanalında oturum açan 30016 olaydır:
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+Bu sorunun iki olası nedeni vardır.
+
+1. Orman gerçekten kaydedilmemiş. Sorunu çözmek için lütfen [dağıtım gereksinimleri](howto-password-ban-bad-on-premises-deploy.md)bölümünde açıklandığı gibi Register-AzureADPasswordProtectionForest komutunu çalıştırın.
+1. Orman kaydettirildi, ancak DC Aracısı orman kayıt verilerinin şifresini çözemez. Bu durum, yukarıda listelenen #2 sorun temel nedenine sahiptir ve DC Aracısı altında listelenen, [parola ilkesi dosyalarını şifreleyemez veya şifresini çözemez](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Bu teorik 'i doğrulamanın kolay bir yolu, bu hatayı yalnızca Windows Server 2012 veya Windows Server 2012 R2 2 etki alanı denetleyicileri üzerinde çalışan DC aracılarında, Windows Server 2016 ve üzeri etki alanı denetleyicileri üzerinde çalışan DC aracılarında görecağından emin olun. Geçici çözüm de aynıdır: tüm etki alanı denetleyicilerini Windows Server 2016 veya sonraki bir sürüme yükseltin.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Zayıf parolalar kabul ediliyor ancak olmamalıdır
 

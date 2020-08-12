@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034916"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116402"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
 
@@ -33,9 +33,9 @@ Yeni bir uygulama geliştirirken, Microsoft Identity platform (v 2.0) ve Azure A
 
 * V 1.0 uç noktası yalnızca iş ve okul hesaplarının uygulamanızda oturum açmasını sağlar (Azure AD)
 * Microsoft Identity platform uç noktası, Azure AD 'den ve hotmail.com, outlook.com ve msn.com gibi kişisel Microsoft hesaplarından (MSA) iş ve okul hesaplarının oturum açmasını sağlar.
-* Her iki uç nokta de *[tek kiracılı](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* olarak yapılandırılmış uygulamalar veya kiracıya özgü uç noktayı () işaret edecek şekilde yapılandırılmış *çok kiracılı* uygulamalar için Azure AD dizininin *[Konuk kullanıcılarının](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* oturum açma işlemlerini kabul eder `https://login.microsoftonline.com/{TenantId_or_Name}` .
+* Her iki uç nokta de *[tek kiracılı](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* olarak yapılandırılmış uygulamalar veya kiracıya özgü uç noktayı () işaret edecek şekilde yapılandırılmış *çok kiracılı* uygulamalar için Azure AD dizininin *[Konuk kullanıcılarının](../external-identities/what-is-b2b.md)* oturum açma işlemlerini kabul eder `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
-Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
+Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](/graph/api/user-list-messages?view=graph-rest-1.0)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
 
 Microsoft Identity platform uç noktası için, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak tüketici, eğitim ve kurumsal işletim LDS 'ye erişim elde edebilirsiniz. Azure AD v 1.0 uç noktası yalnızca iş ve okul hesaplarından oturum açma işlemlerini kabul eder.
 
@@ -141,7 +141,7 @@ Microsoft Identity platform uç noktasıyla tümleştirebilmek istediğiniz her 
 
 ### <a name="restrictions-on-redirect-urls"></a>Yeniden yönlendirme URL 'Lerinde kısıtlamalar
 
-Microsoft Identity platform için kayıtlı olan uygulamalar için yeniden yönlendirme URL 'Lerinde kısıtlamalar hakkında en güncel bilgiler için, bkz. Microsoft Identity platform belgelerindeki [URI/yanıt URL 'si kısıtlamalarını ve kısıtlamalarını yeniden yönlendirme](https://docs.microsoft.com/azure/active-directory/develop/reply-url) .
+Microsoft Identity platform için kayıtlı olan uygulamalar için yeniden yönlendirme URL 'Lerinde kısıtlamalar hakkında en güncel bilgiler için, bkz. Microsoft Identity platform belgelerindeki [URI/yanıt URL 'si kısıtlamalarını ve kısıtlamalarını yeniden yönlendirme](../develop/reply-url.md) .
 
 Bir uygulamayı Microsoft Identity platform ile kullanmak üzere nasıl kaydedeceğinizi öğrenmek için, bkz. [yeni uygulama kayıtları deneyimini kullanarak bir uygulamayı kaydetme](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

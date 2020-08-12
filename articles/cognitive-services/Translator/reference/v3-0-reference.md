@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592279"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121026"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -147,11 +147,11 @@ Bir kimlik doğrulama belirteci 10 dakika için geçerlidir. Çevirmene birden �
 
 ## <a name="virtual-network-support"></a>Sanal Ağ desteği
 
-Translator hizmeti artık sınırlı bölgelerde ( `WestUS2` , `EastUS` ,, `SouthCentralUS` `WestUS` , `CentralUSEUAP` , `global` ) sanal ağ özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Translator hizmeti artık Azure genel bulutunun tüm bölgelerinde sanal ağ (VNET) özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Bu özelliği etkinleştirdikten sonra, çeviriciyi çağırmak için özel uç noktasını kullanmanız gerekir. Küresel çevirmen uç noktasını ("api.cognitive.microsofttranslator.com") kullanamazsınız ve bir erişim belirteciyle kimlik doğrulaması yapılamaz.
 
-[Çevirmen kaynağını](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)oluşturduktan sonra özel uç noktayı bulabilirsiniz.
+Bir [çevirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) oluşturup seçili ağlardan ve özel uç noktalardan erişime izin verdikten sonra özel uç noktayı bulabilirsiniz.
 
 |Üst Bilgiler|Açıklama|
 |:-----|:----|

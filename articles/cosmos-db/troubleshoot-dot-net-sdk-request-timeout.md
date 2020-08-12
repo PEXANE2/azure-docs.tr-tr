@@ -7,12 +7,12 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 09442e01fa160d3851169a51230fa4cbef7e0980
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987418"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118578"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Tanılama ve sorun giderme Azure Cosmos DB .NET SDK isteği zaman aşımı
 HTTP 408 hatası, zaman aşımı sınırı gerçekleşmeden önce SDK isteği tamamlayamadıysa oluşur.
@@ -51,6 +51,9 @@ Azure VM 'lerinde çalıştırıyorsanız, [SNAT bağlantı noktası Tükenme K�
 Azure App Service üzerinde çalıştırıyorsanız, [bağlantı hataları sorun giderme kılavuzunu](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) izleyin ve [App Service tanılamayı kullanın](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
 
 #### <a name="solution-3"></a>Çözüm 3:
+Azure Işlevleri üzerinde çalıştırıyorsanız, tüm ilgili hizmetler (Cosmos DB dahil) için tek/statik istemcileri korumaya yönelik [Azure işlevleri önerisi](../azure-functions/manage-connections.md#static-clients) ' nin ve işlev uygulaması barındırmanın türüne ve boyutuna göre [hizmet sınırlarını](../azure-functions/functions-scale.md#service-limits) kontrol ettiğini doğrulayın.
+
+#### <a name="solution-4"></a>Çözüm 4:
 Bir HTTP proxy kullanıyorsanız, SDK 'da yapılandırılan bağlantı sayısını destekleyediğinden emin olun `ConnectionPolicy` .
 Aksi halde bağlantı sorunlarıyla karşılaşın.
 

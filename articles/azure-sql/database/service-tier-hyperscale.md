@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067639"
+ms.locfileid: "88120652"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -105,7 +105,9 @@ Azure depolama, bir veritabanındaki tüm veri dosyalarını içerir. Sayfa sunu
 
 ## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
-Yedeklemeler dosya anlık görüntüsü tabanlıdır ve bu nedenle neredeyse anında yapılır. Depolama ve işlem ayrımı, birincil işlem çoğaltmasındaki işleme yükünü azaltmak için yedekleme/geri yükleme işleminin depolama katmanına itimmesini sağlar. Sonuç olarak, veritabanı yedeklemesi birincil işlem düğümünün performansını etkilemez. Benzer şekilde, geri yükleme işlemi dosya anlık görüntülerine geri dönerek yapılır, bu nedenle veri bir işlem boyutu değildir. Geri yükleme, sabit zamanlı bir işlemdir ve hatta birden çok terabaytlık veritabanları saat veya gün değil dakikalar içinde geri yüklenebilir. Var olan bir yedeklemeyi geri yükleyerek yeni veritabanlarının oluşturulması bu özellikten de yararlanır: terabayt boyutlu veritabanları bile, geliştirme veya test amaçları için veritabanı kopyaları oluşturma, dakikalar içinde dolanabilir.
+Yedeklemeler dosya anlık görüntüsü tabanlıdır ve bu nedenle neredeyse anında yapılır. Depolama ve işlem ayrımı, birincil işlem çoğaltmasındaki işleme yükünü azaltmak için yedekleme/geri yükleme işleminin depolama katmanına itimmesini sağlar. Sonuç olarak, veritabanı yedeklemesi birincil işlem düğümünün performansını etkilemez. Benzer şekilde, dosya anlık görüntülerine geri dönerek bir zaman noktası kurtarma (sür) yapılır ve bu da veri bir işlem boyutu değildir. Aynı Azure bölgesindeki bir hiper ölçek veritabanının geri yüklenmesi, sabit zamanlı bir işlemdir ve hatta birden fazla terabaytlık veritabanları saat veya gün değil dakikalar içinde geri yüklenebilir. Var olan bir yedeklemeyi geri yükleyerek yeni veritabanlarının oluşturulması bu özellikten de yararlanır: terabayt boyutlu veritabanları bile, geliştirme veya test amaçları için veritabanı kopyaları oluşturma, dakikalar içinde dolanabilir.
+
+Hiper ölçekli veritabanlarının coğrafi geri yüklenmesi için bkz. [bir hiper ölçek veritabanını farklı bir bölgeye geri yükleme](#restoring-a-hyperscale-database-to-a-different-region).
 
 ## <a name="scale-and-performance-advantages"></a>Ölçek ve performans avantajları
 
@@ -156,7 +158,7 @@ Hiperscale SLA için bkz. [Azure SQL veritabanı Için SLA](https://azure.micros
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Hiper ölçekli veritabanları için olağanüstü durum kurtarma
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Hiper ölçek veritabanını farklı bir Coğrafya 'ya geri yükleme
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>Hiper ölçek veritabanını farklı bir bölgeye geri yükleme
 
 Azure SQL veritabanındaki bir hiper ölçek veritabanını, bir olağanüstü durum kurtarma işleminin veya detaya gitme, yeniden konumlandırma ya da başka bir nedenden dolayı üzerinde barındırdığı bir bölgeye geri yüklemeniz gerekiyorsa, birincil yöntem, veritabanının coğrafi olarak geri yüklenmesini sağlar. Bu, SQL veritabanı 'ndaki diğer veritabanlarını farklı bir bölgeye geri yüklemek için kullandığınız adımlarla tam olarak aynı adımları içerir:
 

@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: c91c3dfc23c0a8a9dffb38788f3a8fea08096f5c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825064"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120873"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, uygulamanız için Web API 'Lerine erişim için yeni
 
 İstemci, Microsoft Graph API gibi bir kaynak uygulama tarafından kullanıma sunulan bir Web API 'sine erişebilinceye kadar, izin çerçevesi istemcinin istenen izinler için gereken izin iznini almasını sağlar. Varsayılan olarak, tüm uygulamalar Microsoft Graph API 'sinden izin isteyebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Hızlı başlangıç: bir uygulamayı bir Web API 'si göstermek Için yapılandırma](quickstart-configure-app-expose-web-apis.md).
@@ -60,7 +60,7 @@ Ortak istemciler için önerilen yeniden yönlendirme URI 'lerinden seçim yapma
 1. Uygulamanız için bir veya daha fazla yeniden yönlendirme URI 'si seçin. Ayrıca, özel bir yeniden yönlendirme URI 'SI de girebilirsiniz. Ne kullandığınızdan emin değilseniz, kitaplık belgelerine bakın.
 1. **Kaydet**’i seçin.
 
-Belirli kısıtlamalar URI 'Leri yeniden yönlendirme için geçerlidir. Daha fazla bilgi için bkz. [yeniden YÖNLENDIRME URI/yanıt URL kısıtlamaları ve sınırlamaları](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+Belirli kısıtlamalar URI 'Leri yeniden yönlendirme için geçerlidir. Daha fazla bilgi için bkz. [yeniden YÖNLENDIRME URI/yanıt URL kısıtlamaları ve sınırlamaları](./reply-url.md).
 
 > [!NOTE]
 > Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni **kimlik doğrulama** ayarları deneyimini deneyin.

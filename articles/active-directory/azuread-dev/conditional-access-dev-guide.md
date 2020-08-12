@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8895e52209622025f943aaa6a4261b68a7e2899c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034848"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116328"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory Koşullu erişim özelliği için Geliştirici Kılavuzu
 
@@ -26,7 +26,7 @@ ms.locfileid: "87034848"
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* Çok faktörlü kimlik doğrulaması
+* Multi-factor authentication
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
@@ -88,9 +88,9 @@ Geliştiriciler bu zorluğu alabilir ve Azure AD 'ye yeni bir istek ekleyebilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Azure AD koşullu erişimi, [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)eklenen bir özelliktir. [Lisanssız kullanım raporundaki](../active-directory-conditional-access-unlicensed-usage-report.md)lisanslama gereksinimleri hakkında daha fazla bilgi edinebilirsiniz. Geliştiriciler, Azure AD Premium içeren Enterprise Mobility Suite 'e ücretsiz bir abonelik içeren [Microsoft Geliştirici ağı](https://msdn.microsoft.com/dn308572.aspx)'na katılabilir.
+Azure AD koşullu erişimi, [Azure AD Premium](../fundamentals/active-directory-whatis.md)eklenen bir özelliktir. [Lisanssız kullanım raporundaki](../reports-monitoring/overview-reports.md)lisanslama gereksinimleri hakkında daha fazla bilgi edinebilirsiniz. Geliştiriciler, Azure AD Premium içeren Enterprise Mobility Suite 'e ücretsiz bir abonelik içeren [Microsoft Geliştirici ağı](/)'na katılabilir.
 
 ### <a name="considerations-for-specific-scenarios"></a>Belirli senaryolara yönelik konular
 
@@ -177,7 +177,7 @@ Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://gith
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* Yetenekler hakkında daha fazla bilgi için bkz. [Azure Active Directory Koşullu erişim](../active-directory-conditional-access-azure-portal.md).
+* Yetenekler hakkında daha fazla bilgi için bkz. [Azure Active Directory Koşullu erişim](../conditional-access/overview.md).
 * Daha fazla Azure AD kod örneği için bkz. [kod örnekleri GitHub deposu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).
 * ADAL SDK ve başvuru belgelerine erişme hakkında daha fazla bilgi için bkz. [kitaplık Kılavuzu](active-directory-authentication-libraries.md).
 * Çok kiracılı senaryolar hakkında daha fazla bilgi edinmek için bkz. [çoklu kiracı düzeniyle Kullanıcı oturumu açma](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

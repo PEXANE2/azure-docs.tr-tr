@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308598"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119802"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Azure AD B2C ile çalışmak için JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
@@ -44,7 +44,7 @@ Düğüm için MSAL.js Şu anda geliştirme aşamasındadır. Daha fazla bilgi i
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-Web API 'nizi Azure AD B2C korumak için önce kaydetmeniz gerekir. Bkz. ayrıntılı adımlar için [Uygulamanızı kaydetme](../../active-directory-b2c/add-web-application.md) .
+Web API 'nizi Azure AD B2C korumak için önce kaydetmeniz gerekir. Bkz. ayrıntılı adımlar için [Uygulamanızı kaydetme](../../active-directory-b2c/add-web-api-application.md) .
 
 ### <a name="step-2-download-the-sample-application"></a>2. Adım: örnek uygulamayı Indirme
 

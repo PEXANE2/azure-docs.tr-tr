@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 06/25/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 4910dc03cc4ef24b8515271a9197650c4b041f01
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to
+ms.openlocfilehash: 6c2d1b3db422a40f7bcf237c292b48183d99962b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489614"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121281"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -141,6 +141,44 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
   "workspaceid": "<GUID>"
 }
 ```
+
+### <a name="virtual-network-and-private-endpoint"></a>Sanal ağ ve özel uç nokta
+
+Çalışma alanınıza erişimi bir sanal ağla kısıtlamak istiyorsanız, aşağıdaki parametreleri kullanabilirsiniz:
+
+* `--pe-name`: Oluşturulan özel uç noktanın adı.
+* `--pe-auto-approval`: Çalışma alanına özel uç nokta bağlantılarının otomatik olarak onaylanıp onaylanmayacağı.
+* `--pe-resource-group`: İçinde özel uç nokta oluşturulacak kaynak grubu. Sanal ağı içeren aynı grup olmalıdır.
+* `--pe-vnet-name`: İçinde özel uç nokta oluşturmak için var olan sanal ağ.
+* `--pe-subnet-name`: İçinde özel uç nokta oluşturulacak alt ağın adı. Varsayılan değer: `default`.
+
+Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md).
+
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Müşteri tarafından yönetilen anahtar ve yüksek iş etkisi çalışma alanı
+
+Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
+
+Azure Machine Learning __Kurumsal__ bir sürümünü oluşturuyorsanız kendi anahtarınızı sağlayın ' i kullanabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. `--cmk-keyvault`Anahtarı içeren Azure Key Vault belirtmek ve `--resource-cmk-uri` KASADAKI anahtarın URL 'sini belirtmek için parametresini kullanın.
+
+> [!IMPORTANT]
+> `--cmk-keyvault`Ve parametrelerini kullanmadan önce `--resource-cmk-uri` , önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:
+>
+> 1. __Machine Learning uygulamayı__ (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.
+> 1. [Müşteri tarafından yönetilen anahtarları yapılandırma](/azure/cosmos-db/how-to-setup-cmk) bölümündeki adımları izleyerek şunları yapın:
+>     * Azure Cosmos DB sağlayıcıyı kaydetme
+>     * Azure Key Vault oluşturma ve yapılandırma
+>     * Anahtar oluştur
+>
+>     Azure Cosmos DB örneğini el ile oluşturmanız gerekmez, bir tane, çalışma alanı oluşturma sırasında sizin için oluşturulur. Bu Azure Cosmos DB örneği, bu düzene göre bir ad kullanılarak ayrı bir kaynak grubunda oluşturulacak: `<your-resource-group-name>_<GUID>` .
+>
+> Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz. Çalışma alanınız tarafından kullanılan Azure Cosmos DB silerseniz, onu kullanan çalışma alanını da silmeniz gerekir.
+
+Çalışma alanınızda Microsoft 'un topladığı verileri sınırlandırmak için `--hbi-workspace` parametresini kullanın. 
+
+> [!IMPORTANT]
+> Yüksek iş etkisi seçilmesi, yalnızca bir çalışma alanı oluşturulurken yapılabilir. Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz.
+
+Müşteri tarafından yönetilen anahtarlar ve yüksek iş etkisi çalışma alanı hakkında daha fazla bilgi için bkz. [Azure Machine Learning Için kuruluş güvenliği](concept-enterprise-security.md#encryption-at-rest).
 
 ### <a name="use-existing-resources"></a>Mevcut kaynakları kullan
 

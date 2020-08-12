@@ -12,12 +12,12 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: c2673552638c1829b1640724634e365dc6595703
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284430"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118272"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Çoklu oturum kapatma SAML Protokolü
 
@@ -42,7 +42,7 @@ Bulut hizmeti, `LogoutRequest` bir oturumun sonlandırıldığını göstermek I
 
 * `ID`-Bu, oturum kapatma isteğini tanımlar. Değeri `ID` bir sayıyla başlamamalıdır. Tipik uygulama, bir GUID 'nin dize gösterimine **ID** eklemek için kullanılır.
 * `Version`-Bu öğenin değerini **2,0**olarak ayarlayın. Bu değer gereklidir.
-* `IssueInstant`-Bu, `DateTime` koordinat evrensel saat (UTC) değeri ve [gidiş dönüş biçimi ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)içeren bir dizedir. Azure AD bu türden bir değer bekler, ancak bunu zorlamaz.
+* `IssueInstant`-Bu, `DateTime` koordinat evrensel saat (UTC) değeri ve [gidiş dönüş biçimi ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)içeren bir dizedir. Azure AD bu türden bir değer bekler, ancak bunu zorlamaz.
 
 ### <a name="issuer"></a>Veren
 `Issuer`İçindeki öğesi, `LogoutRequest` Azure AD 'deki bulut hizmetindeki **ServicePrincipalNames adlarından** biriyle tam olarak eşleşmelidir. Genellikle, bu, uygulama kaydı sırasında belirtilen **uygulama KIMLIĞI URI** 'sine ayarlanır.

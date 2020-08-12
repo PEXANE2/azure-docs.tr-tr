@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552722"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115586"
 ---
 # <a name="app-registration-reference"></a>Uygulama kayıt başvurusu
 
@@ -26,7 +26,7 @@ Bu belge, Azure portal [uygulama kayıtları](https://aka.ms/appregistrations) d
 
 ## <a name="my-applications-or-converged-applications"></a>Uygulamalarım veya yakınsanmış uygulamalar
 
-Bu liste, Microsoft Identity platform (v 2.0) uç noktasıyla birlikte kullanılmak üzere kaydedilen tüm uygulamalarınızı içerir. Bu uygulamalar, kullanıcıların hem kişisel Microsoft hesapları hem de iş/okul hesaplarıyla Azure Active Directory oturum açabilme özelliğine sahiptir. Kimlik platformu uç noktası hakkında daha fazla bilgi edinmek için bkz. [v 2.0 genel bakış](active-directory-appmodel-v2-overview.md). Bu uygulamalar, Microsoft hesabı kimlik doğrulama uç noktası ile tümleştirme için de kullanılabilir `https://login.live.com` .
+Bu liste, Microsoft Identity platform (v 2.0) uç noktasıyla birlikte kullanılmak üzere kaydedilen tüm uygulamalarınızı içerir. Bu uygulamalar, kullanıcıların hem kişisel Microsoft hesapları hem de iş/okul hesaplarıyla Azure Active Directory oturum açabilme özelliğine sahiptir. Kimlik platformu uç noktası hakkında daha fazla bilgi edinmek için bkz. [v 2.0 genel bakış](./v2-overview.md). Bu uygulamalar, Microsoft hesabı kimlik doğrulama uç noktası ile tümleştirme için de kullanılabilir `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Yalnızca Azure AD uygulamaları
 

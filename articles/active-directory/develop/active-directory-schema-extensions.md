@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552790"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115620"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Taleplerde dizin şema uzantısı özniteliklerini kullanma
 
@@ -34,7 +34,7 @@ Bir dizin şeması uzantısı özniteliği için tanımlayıcı *Extension_xxxxx
 ## <a name="registering-and-using-directory-schema-extensions"></a>Dizin şema uzantılarını kaydetme ve kullanma
 Dizin şeması uzantı öznitelikleri, iki şekilde kaydedilebilir ve doldurulabilir:
 
-- AD Connect 'i oluşturmak ve şirket içi AD 'den verileri onlarla eşitlemek üzere yapılandırarak. Bkz. [Azure AD Connect eşitleme dizini uzantıları](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions).
+- AD Connect 'i oluşturmak ve şirket içi AD 'den verileri onlarla eşitlemek üzere yapılandırarak. Bkz. [Azure AD Connect eşitleme dizini uzantıları](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
 - Kayıt için Microsoft Graph kullanarak Dizin şeması uzantı öznitelikleri [Dizin şeması uzantılarından, değerlerini ayarlayın ve okuyun | Graph API kavramlar](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) ve/veya PowerShell + [genişletme özniteliklerini Azuread PowerShell cmdlet 'leriyle yönetme](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0).
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>AD Connect ile oluşturulan dizin şeması uzantısı özniteliklerinden gelen verilerle talepleri yayma

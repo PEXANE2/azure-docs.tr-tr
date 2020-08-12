@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085185"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119938"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
 
@@ -45,7 +45,7 @@ Microsoft Identity platformu Azure Active Directory v 1.0 ile birkaç önemli fa
 * Azure Active Directory v 1.0 uç noktası, uygulama kaydı sırasında tüm izinlerin önceden bildirilmesini gerektirir. Bu, izinlerin statik olduğu anlamına gelir.
 * Microsoft Identity platformu izinleri dinamik olarak isteyebilmesini sağlar. Uygulamalar, izinleri yalnızca gerekli olduğu gibi isteyebilir ve uygulama onlara ihtiyaç duyarken daha fazla istekte bulunabilir.
 
-Azure Active Directory v 1.0 ile Microsoft Identity platformu arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesi nedir?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Azure Active Directory v 1.0 ile Microsoft Identity platformu arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesi nedir?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL ve MSAL kitaplığı farklılıkları
 
@@ -65,7 +65,7 @@ MSAL ' de, tek bir kaynak tanımlayıcısı yerine, uygulamalar istek başına b
 
 MSAL içinde kapsam sağlamanın iki yolu vardır:
 
-* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örneğin: 
+* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örnek: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -77,7 +77,7 @@ Bu, her uygulama için yerleşik kapsamdır. Uygulama kaydedildiğinde yapıland
 
 Kapsamı kullanmak için `/.default` `/.default` kaynak tanımlayıcısına ekleyin. Örneğin: `https://graph.microsoft.com/.default`. Kaynağınız eğik çizgi () ile sonlanıyorsa, `/` `/.default` baştaki eğik çizgi da dahil olmak üzere yine de, içinde çift eğik çizgi () içeren bir kapsam elde etmeniz gerekir `//` .
 
-"/PST varsayılan" kapsamını kullanma hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) bulabilirsiniz
+"/PST varsayılan" kapsamını kullanma hakkında daha fazla bilgiyi [burada](./v2-permissions-and-consent.md#the-default-scope) bulabilirsiniz
 
 ### <a name="supporting-different-webview-types--browsers"></a>Farklı WebView türlerini destekleme & tarayıcılar
 
@@ -146,7 +146,7 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
 
 1. Uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth` . `<app.bundle.id>`Uygulamanızın paket kimliğiyle değiştirin. ADAL 'dan geçiş yapıyorsanız ve uygulamanız zaten Broker özellikli ise, yapmanız gereken ek bir şey yoktur. Önceki yeniden yönlendirme URI 'SI MSAL ile tamamen uyumludur, bu sayede adım 3 ' e atlayabilirsiniz.
 
-2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için biçim olur `msauth.<app.bundle.id>` . Örneğin:
+2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için biçim olur `msauth.<app.bundle.id>` . Örnek:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -207,7 +207,7 @@ MacOS 'ta MSAL, iOS ve macOS tabanlı uygulamalar ve ADAL hedefi-C tabanlı uygu
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK 'Sı
 
-[INTUNE mam SDK](https://docs.microsoft.com/intune/app-sdk-get-started) , sürüm [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) Ile başlayarak iOS için msal 'i destekler
+[INTUNE mam SDK](/intune/app-sdk-get-started) , sürüm [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) Ile başlayarak iOS için msal 'i destekler
 
 ## <a name="msal-and-adal-in-the-same-app"></a>Aynı uygulamada MSAL ve ADAL
 
