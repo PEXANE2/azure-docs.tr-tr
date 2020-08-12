@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83770985"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118629"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform ve OAuth 2,0 kaynak sahibi parolası kimlik bilgileri
 
@@ -33,7 +33,7 @@ Microsoft Identity platform, bir uygulamanın kullanıcının parolasını doğr
 > * Bir Azure AD kiracısına davet edilen kişisel hesaplar ROPC kullanamaz.
 > * Parolası olmayan hesaplar ROPC aracılığıyla oturum açamaz. Bu senaryo için, bunun yerine uygulamanız için farklı bir akış kullanmanızı öneririz.
 > * Kullanıcıların uygulamada oturum açmak için [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) kullanması gerekiyorsa, bunun yerine engellenecektir.
-> * ROPC, [karma kimlik Federasyonu](/azure/active-directory/hybrid/whatis-fed) senaryolarında (örneğin, Azure AD ve şirket içi hesapların kimliğini doğrulamak IÇIN kullanılan ADFS) desteklenmez. Kullanıcılar, şirket içi kimlik sağlayıcılarına tam sayfa yönlendirirse, Azure AD bu kimlik sağlayıcısına karşı Kullanıcı adını ve parolayı test edemeyebilir. Öte yandan [doğrudan kimlik doğrulaması](/azure/active-directory/hybrid/how-to-connect-pta) , ropc ile desteklenir.
+> * ROPC, [karma kimlik Federasyonu](../hybrid/whatis-fed.md) senaryolarında (örneğin, Azure AD ve şirket içi hesapların kimliğini doğrulamak IÇIN kullanılan ADFS) desteklenmez. Kullanıcılar, şirket içi kimlik sağlayıcılarına tam sayfa yönlendirirse, Azure AD bu kimlik sağlayıcısına karşı Kullanıcı adını ve parolayı test edemeyebilir. Öte yandan [doğrudan kimlik doğrulaması](../hybrid/how-to-connect-pta.md) , ropc ile desteklenir.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
@@ -90,7 +90,7 @@ Aşağıdaki örnekte başarılı bir belirteç yanıtı gösterilmektedir:
 }
 ```
 
-| Parametre | Biçim | Açıklama |
+| Parametre | Biçimlendir | Açıklama |
 | --------- | ------ | ----------- |
 | `token_type` | Dize | Her zaman olarak ayarlayın `Bearer` . |
 | `scope` | Boşlukla ayrılmış dizeler | Erişim belirteci döndürülürse, bu parametre erişim belirtecinin geçerli olduğu kapsamları listeler. |
@@ -113,4 +113,4 @@ Kullanıcı doğru Kullanıcı adını veya parolayı sağlamadıysa veya istemc
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Örnek konsol uygulamasını](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)kullanarak ropc 'nizi kendiniz deneyin.
-* V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
+* V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](../azuread-dev/azure-ad-endpoint-comparison.md)hakkında bilgi edinin.

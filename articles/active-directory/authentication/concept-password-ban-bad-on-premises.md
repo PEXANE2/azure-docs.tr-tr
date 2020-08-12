@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb7c4a4417d64e039793bd96141c965f6437414
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e09ad2991d552cb9886911ac75ea23c690204a71
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050931"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116657"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>Active Directory Domain Services için şirket içi Azure AD parola korumasını zorlayın
 
@@ -87,6 +87,9 @@ Azure AD parola korumasını şirket içi AD DS ortamında dağıtmadan önce, t
 Azure AD parola korumasının bir AD DS ormanında dağıtılması için Azure AD ile ilgili ormanın kaydettirilmesi gerekir. Dağıtılan her Proxy hizmetinin da Azure AD 'ye kayıtlı olması gerekir. Bu orman ve proxy kayıtları, kayıt sırasında kullanılan kimlik bilgileri tarafından örtük olarak belirlenen belirli bir Azure AD kiracısı ile ilişkilendirilir.
 
 AD DS ormanı ve bir orman içindeki tüm dağıtılan proxy hizmetleri aynı kiracıya kaydedilmelidir. Bu ormanda farklı Azure AD kiracılarına Kaydolmakta olan bir AD DS ormanı veya herhangi bir proxy hizmetine sahip olmak desteklenmez. Yanlış yapılandırılmış bir dağıtımın belirtileri, parola ilkelerini indirimeme ' yı içerir.
+
+> [!NOTE]
+> Birden çok Azure AD kiracısına sahip olan müşteriler, Azure AD parola koruma amacıyla her bir ormanı kaydettirmek için tek bir ayırt edici kiracı seçmelidir.
 
 ## <a name="download"></a>İndir
 

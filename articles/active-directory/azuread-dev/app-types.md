@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154959"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116453"
 ---
 # <a name="application-types-in-v10"></a>V 1.0 'daki uygulama türleri
 
@@ -41,7 +41,7 @@ Azure AD tarafından desteklenen beş birincil uygulama senaryosu şunlardır:
 Her uygulama türü hakkında daha fazla bilgi edinmek ve kodla çalışmaya başlamadan önce üst düzey senaryoları anlamak için bağlantıları izleyin. Ayrıca, v 1.0 Endpoint veya v 2.0 uç noktası ile birlikte çalışarak belirli bir uygulamayı yazarken bilmeniz gereken farklılıklar hakkında bilgi edinebilirsiniz.
 
 > [!NOTE]
-> V 2.0 uç noktası tüm Azure AD senaryolarını ve özelliklerini desteklemez. V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için, [v 2.0 sınırlamalarını](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)okuyun.
+> V 2.0 uç noktası tüm Azure AD senaryolarını ve özelliklerini desteklemez. V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için, [v 2.0 sınırlamalarını](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json)okuyun.
 
 Çeşitli diller ve platformlar kullanılarak burada açıklanan uygulama ve senaryolardan herhangi birini geliştirebilirsiniz. Bunlar, kod örnekleri kılavuzunda bulunan tüm kod örnekleri tarafından desteklenir, senaryoya göre [v 1.0 kod örnekleri](sample-v1-code.md) ve [senaryoya göre v 2.0 kod örnekleri](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). Kod örneklerini doğrudan ilgili [GitHub örnek depolarından](https://github.com/Azure-Samples?q=active-directory)da indirebilirsiniz.
 

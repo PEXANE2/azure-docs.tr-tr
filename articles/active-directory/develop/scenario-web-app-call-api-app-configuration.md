@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2da2755af4b44c0b17550676845c38c1a93cf801
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac438b42f25fc82a0a5dd5384205e809e45ff57a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845196"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120094"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 Belirteç önbelleği hakkında daha fazla bilgi edinmek istiyorsanız bkz. [belirteç önbelleği serileştirme seçenekleri](#token-cache)
 
 > [!NOTE]
-> Buradaki kod örneklerini tam olarak anlamak için [ASP.NET Core temelleri](https://docs.microsoft.com/aspnet/core/fundamentals)ve özellikle de [bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)ilgili bilgi sahibi olmanız gerekir.
+> Buradaki kod örneklerini tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi sahibi olmanız gerekir.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -268,7 +268,7 @@ Gizli istemci uygulaması, bir istemci parolası yerine, bir istemci sertifikas�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core öğreticisi, uygulamanızın Startup.cs dosyasında belirteç önbelleği uygulamasına karar vermenize olanak sağlamak için bağımlılık ekleme işlemini kullanır. Microsoft. Identity. Web, [belirteç önbelleği serileştirme](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)bölümünde açıklanan önceden oluşturulmuş belirteç önbelleği serileştiricileri ile gelir. İlginç bir olasılık ASP.NET Core [Dağıtılmış bellek önbellekler](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)' ı seçerdir:
+ASP.NET Core öğreticisi, uygulamanızın Startup.cs dosyasında belirteç önbelleği uygulamasına karar vermenize olanak sağlamak için bağımlılık ekleme işlemini kullanır. Microsoft. Identity. Web, [belirteç önbelleği serileştirme](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)bölümünde açıklanan önceden oluşturulmuş belirteç önbelleği serileştiricileri ile gelir. İlginç bir olasılık ASP.NET Core [Dağıtılmış bellek önbellekler](/aspnet/core/performance/caching/distributed#distributed-memory-cache)' ı seçerdir:
 
 ```csharp
 // Use a distributed token cache by adding:

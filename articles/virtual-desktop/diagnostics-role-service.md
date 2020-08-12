@@ -3,15 +3,15 @@ title: Windows sanal masaüstü Tanılama sorunları-Azure
 description: Sorunları tanılamak için Windows sanal masaüstü Tanılama özelliğini kullanma.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005097"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121417"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows sanal masaüstü sorunlarını tanımla ve Tanıla
 
@@ -60,6 +60,14 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 |8|Connectionkopuk|Istemci ve ağ geçidi veya sunucu bağlantısı kesilen bağlantı. Beklenmedik bir şekilde gerçekleşmediği takdirde eyleme gerek yoktur.|
 |14|UnexpectedNetworkDisconnect|Ağ bağlantısı bırakıldı. Kullanıcıdan tekrar bağlanmasını isteyin.|
 |24|Smarconnectfailed|Konak sanal makinesinde RD Ağ Geçidi doğrudan bir görüş satırı yoktur. Ağ geçidi IP adresinin çözümlenebildiğinden emin olun.|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>Hata: bir uygulama grubuna kullanıcı atamaları eklenemiyor
+
+Bir Kullanıcı bir uygulama grubuna atandıktan sonra, Azure portal "oturum sonlandırma" veya "kimlik doğrulama sorunları hakkında-uzantı Microsoft_Azure_WVD" bildiren bir uyarı görüntüler. Daha sonra atama sayfası yüklenmez ve sonra sayfaların Azure portal (örneğin, Azure Izleyici, Log Analytics, hizmet durumu vb.) yüklenmesini durdurur.
+
+**Neden:** Koşullu erişim ilkesiyle ilgili bir sorun var. Azure portal, SharePoint Online 'a bağımlı olan Microsoft Graph için bir belirteç almaya çalışıyor. Müşterinin, veri depolamaya erişmek için kullanım koşullarını kabul etmesini gerektiren "Microsoft Office 365 veri depolama alanı kullanım koşulları" adlı bir koşullu erişim ilkesi vardır. Ancak, henüz oturum açmamış, Azure portal belirteci alamıyor.
+
+**Çözüm:** Azure portal oturum açmadan önce, önce yöneticinin SharePoint 'te oturum açması ve kullanım koşullarını kabul etmesi gerekir. Bundan sonra, normal gibi Azure portal oturum açabilmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

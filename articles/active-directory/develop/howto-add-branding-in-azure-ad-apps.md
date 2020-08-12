@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478204"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117303"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
@@ -61,13 +61,13 @@ Uygulamanız kaydolma ve oturum açma için ayrı yollar sunabilir. Aşağıdaki
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Uygulama alımı için görsel kılavuz
 
-“Uygulamayı al” bağlantınızın, Microsoft tarafından barındırılan kuruluş verilerine erişmek üzere bir kuruluş yöneticisinin uygulamanızı yetkilendirmesine izin vermek için kullanıcıyı Azure AD erişim verme (yetkilendirme) sayfasına yeniden yönlendirmesi gerekir. Nasıl erişim talep edileceğine ilişkin ayrıntılar [Integrating Applications with Azure Active Directory (Uygulamaları Azure Active Directory ile Tümleştirme)](quickstart-v1-integrate-apps-with-azure-ad.md) makalesinde açıklanmaktadır.
+“Uygulamayı al” bağlantınızın, Microsoft tarafından barındırılan kuruluş verilerine erişmek üzere bir kuruluş yöneticisinin uygulamanızı yetkilendirmesine izin vermek için kullanıcıyı Azure AD erişim verme (yetkilendirme) sayfasına yeniden yönlendirmesi gerekir. Nasıl erişim talep edileceğine ilişkin ayrıntılar [Integrating Applications with Azure Active Directory (Uygulamaları Azure Active Directory ile Tümleştirme)](./quickstart-register-app.md) makalesinde açıklanmaktadır.
 
 Yönetici uygulamanıza eklendikten sonra, bunu kullanıcıların Office 365 uygulama başlatıcısı deneyimine (waffle ve kaynağından erişilebilir) eklemeyi seçebilirler [https://portal.office.com/myapps](https://portal.office.com/myapps) . Bu özelliği tanıtmak istiyorsanız “Bu uygulamayı kuruluşunuza ekleyin” gibi ifadeler kullanabilir ve aşağıdaki gibi bir düğme görüntüleyebilirsiniz:
 
 ![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
 
 > *Zaten Microsoft 'tan Office 365 veya diğer iş Hizmetleri kullanıyorsanız, kuruluşunuzun verilerine> your_app_name <verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla> <your_app_name erişmesine izin verir.*
 

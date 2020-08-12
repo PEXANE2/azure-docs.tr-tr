@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682283"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121179"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -83,7 +83,7 @@ KIMLIK belirtecini Microsoft Identity platform uç noktasından alınan bir orta
 
 Bu senaryoyu eylemde görmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web uygulaması oturum açma kodu örneklerinden birini deneyin.
 
-Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API gibi başka bir Web hizmetine erişmesi gerekebilir. Bu durumda, Web sunucusu uygulaması, [oauth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak birleştirilmiş bir OpenID Connect ve OAuth 2,0 akışında yer geçirir. Bu senaryo hakkında daha fazla bilgi için [Web uygulamaları ve Web API 'leri ile çalışmaya başlama](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)konusunu okuyun.
+Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API gibi başka bir Web hizmetine erişmesi gerekebilir. Bu durumda, Web sunucusu uygulaması, [oauth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak birleştirilmiş bir OpenID Connect ve OAuth 2,0 akışında yer geçirir. Bu senaryo hakkında daha fazla bilgi için [Web uygulamaları ve Web API 'leri ile çalışmaya başlama](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)konusunu okuyun.
 
 
 ## <a name="web-apis"></a>Web API'leri

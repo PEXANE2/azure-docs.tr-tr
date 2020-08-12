@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcb8f709bc75fdf9fe80ee26497acb78cc023327
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383878"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116351"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -99,7 +99,7 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD t
     * Uygulamanızı OpenID Connect kullanarak galerinin listesine eklemek istiyorsanız, gösterildiği gibi **OpenID connect & OAuth 2,0** ' ı seçin.
     * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-- **Saml 2,0** veya **WS-BESLENIR**: uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama ekleme YÖNERGELERINI](../active-directory-saas-custom-apps.md)izleyerek doğrudan bir Azure AD kiracısı ile tümleştirebilirsiniz.
+- **Saml 2,0** veya **WS-BESLENIR**: uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama ekleme YÖNERGELERINI](../manage-apps/view-applications-portal.md)izleyerek doğrudan bir Azure AD kiracısı ile tümleştirebilirsiniz.
 
   ![Bir SAML 2,0 veya WS-beslenir uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 

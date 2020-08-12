@@ -13,12 +13,12 @@ ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 945d6ac15c3cb0b3f98ebb14e6b859b8f356b944
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419844"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119632"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -66,14 +66,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın! Oturum açtıktan sonra, tarayıcınız `https://localhost/myapp/` Adres çubuğunda bir ile yeniden yönlendirilmelidir `code` .
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parametre    | Gerekli/isteğe bağlı | Description |
+| Parametre    | Gerekli/isteğe bağlı | Açıklama |
 |--------------|-------------|--------------|
 | `tenant`    | gerekli    | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** .  |
 | `response_type` | gerekli    | `code`, Yetkilendirme kodu akışı için içermelidir.       |
 | `redirect_uri`  | gerekli | Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Yerel & mobil uygulamalar için varsayılan değerini kullanmanız gerekir `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
 | `scope`  | gerekli    | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  `/authorize`İsteğin bacağı, bu birden fazla kaynağı kapsayabilir ve uygulamanızın çağırmak istediğiniz birden çok Web API 'si için onay almasını sağlar. |
-| `response_mode`   | Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, `query` [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, `query` `fragment` veya kullanabilirsiniz `form_post` . `form_post`yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. Daha fazla bilgi için bkz. [OpenID Connect Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
+| `response_mode`   | Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, `query` [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, `query` `fragment` veya kullanabilirsiniz `form_post` . `form_post`yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. Daha fazla bilgi için bkz. [OpenID Connect Protocol](../azuread-dev/v1-protocols-openid-connect-code.md).  |
 | `state`                 | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Bu değer Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, kimlik doğrulama isteği gerçekleştirilmeden önce (örneğin, bulunan sayfa veya Görünüm) kodlayabilir. |
 | `prompt`  | isteğe bağlı    | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login` , ve ' dir `none` `consent` .<br/><br/>- `prompt=login`, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma 'yı yok eder.<br/>- `prompt=none`Bunun tersi, kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir `interaction_required` hata döndürür.<br/>- `prompt=consent`Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler, böylece kullanıcıdan uygulamaya izin vermesini istenir.<br/>- `prompt=select_account`, oturum veya herhangi bir anımsanan hesap ya da başka bir hesap kullanmayı tamamen seçmek için bir seçenek veya herhangi bir hatırlanan hesap seçim deneyimi sunan çoklu oturum açmayı kesintiye uğratacaktır.<br/> |
 | `login_hint`  | isteğe bağlı    | Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve Kullanıcı adını, talebi kullanarak önceki bir oturum açma işleminden zaten ayıklamış olur `preferred_username` .   |
@@ -122,7 +122,7 @@ error=access_denied
 
 Aşağıdaki tabloda, hata yanıtının parametresinde döndürülebilecek çeşitli hata kodları açıklanmaktadır `error` .
 
-| Hata Kodu  | Description    | İstemci eylemi   |
+| Hata Kodu  | Açıklama    | İstemci eylemi   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
 | `unauthorized_client` | İstemci uygulamasının bir yetkilendirme kodu istemesine izin verilmez. | Bu hata genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
@@ -156,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Bu isteği Postman 'da yürütmeyi deneyin! (Değiştirmeyi unutmayın `code` ) [ ![ Bu Isteği Postman 'da çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Parametre  | Gerekli/isteğe bağlı | Description     |
+| Parametre  | Gerekli/isteğe bağlı | Açıklama     |
 |------------|-------------------|----------------|
 | `tenant`   | gerekli   | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | gerekli  | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atandığı uygulama (ISTEMCI) kimliği. |
@@ -219,7 +219,7 @@ Hata yanıtları şöyle görünür:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Belirteç uç noktası hataları için hata kodları
 
-| Hata Kodu         | Description        | İstemci eylemi    |
+| Hata Kodu         | Açıklama        | İstemci eylemi    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Eksik gerekli bir parametre gibi protokol hatası. | İstek veya uygulama kaydını düzeltemedi ve isteği yeniden gönderin   |
 | `invalid_grant`    | Yetkilendirme kodu veya PKCE kod doğrulayıcısı geçersiz veya süresi doldu. | Uç noktaya yeni bir istek deneyin `/authorize` ve code_verifier parametresinin doğru olduğunu doğrulayın.  |
@@ -277,7 +277,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Bu isteği Postman 'da yürütmeyi deneyin! (Değiştirmeyi unutmayın `refresh_token` ) [ ![ Bu Isteği Postman 'da çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Parametre     | Tür           | Description        |
+| Parametre     | Tür           | Açıklama        |
 |---------------|----------------|--------------------|
 | `tenant`        | gerekli     | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |

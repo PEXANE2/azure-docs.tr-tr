@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986908"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121587"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
+
+> [!NOTE]
+> Sistem durumu kapsayıcısı için Metin Analizi yakın zamanda güncelleştirildi. Son değişiklikler hakkında daha fazla [bilgi için bkz. yenilikler.](../whats-new.md) Listelenen güncelleştirmeleri kullanmak için en son kapsayıcıyı çekmeyi unutmayın.
 
 > [!IMPORTANT] 
 > Sistem durumu Metin Analizi, "olduğu gıbı" ve "tüm hatalarıyla bırlıkte" sağlanmış bir önizleme özelliğidir. Bu nedenle, **sistem durumu için metin analizi (Önizleme) herhangi bir üretim kullanımı için uygulanmamalıdır veya dağıtılmamalıdır.** Sağlık durumu için Metin Analizi, bir tıbbi cihaz, klinik destek, tanılama aracı ya da tanılama, sağlama, azaltma, işleme veya önlemeye yönelik başka bir teknoloji veya Microsoft tarafından bu amaçla kullanılması amaçlanan bir lisans ya da hak sağlanmaz. Bu özellik, profesyonel tıp önerisi veya sağlık görüşlerine, tanılama, işleme ya da sağlık uzmanı 'nın klinik yargılarına veya bu şekilde kullanılmamalıdır. Müşteri, sistem durumu için Metin Analizi herhangi bir kullanım işleminden yalnızca sorumludur. Microsoft, sağlık veya yetenek ile bağlantılı olarak belirtilen herhangi bir malzeme için Metin Analizi, herhangi bir kişinin sistem durumunu veya tıbbi gereksinimlerini karşılamasını garanti etmez. 
@@ -229,7 +232,7 @@ Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.
 Değişkeni uygun değerle değiştirerek dağıttığınız kapsayıcıya bir sorgu göndermek için aşağıdaki örnek kıvrımlı isteği kullanın `serverURL` .
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -269,8 +272,8 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -283,8 +286,8 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -292,8 +295,8 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -339,50 +342,35 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> Değilleme algılandıktan sonra, bazı durumlarda tek bir Olumsuzlaştırma terimi aynı anda birçok terimi ele alabilir. Tanınan bir varlığın değilleme, JSON çıktısında bayrağın Boolean değeri tarafından temsil edilir `isNegated` :
+### <a name="negation-detection-output"></a>Algılama çıkışının Olumsuzlaştırma
+
+Değilleme algılama kullanılırken, bazı durumlarda tek bir olumsuzlama bir kez birkaç terim ele alabilir. Tanınan bir varlığın değilleme, JSON çıktısında bayrağın Boolean değeri tarafından temsil edilir `isNegated` :
 
 ```json
 {
@@ -390,7 +378,7 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -403,6 +391,33 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
       "id": "0000023593"
     },
     ...
+```
+
+### <a name="relation-extraction-output"></a>İlişki ayıklama çıkışı
+
+İlişki ayıklama çıkışı, ilişkinin *kaynağına* ve *hedefine*URI başvuruları içerir. İlişki rolü olan varlıklar `ENTITY` `target` alana atanır. İlişki rolü olan varlıklar `ATTRIBUTE` `source` alana atanır. Kısaltma ilişkileri çift yönlü `source` ve `target` alanları içerir ve `bidirectional` olarak ayarlanır `true` . 
+
+```json
+"relations": [
+  {
+      "relationType": "DosageOfMedication",
+      "score": 1.0,
+      "bidirectional": false,
+      "source": "#/documents/2/entities/0",
+      "target": "#/documents/2/entities/1",
+      "entities": [
+          {
+              "id": "0",
+              "role": "ATTRIBUTE"
+          },
+          {
+              "id": "1",
+              "role": "ENTITY"
+          }
+      ]
+  },
+...
+]
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.

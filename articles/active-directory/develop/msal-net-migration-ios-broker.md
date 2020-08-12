@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75b6559117420ad75b79c58b219400690b25b4cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185822"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117881"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>ADAL.NET 'den MSAL.NET 'ye Microsoft Authenticator kullanan iOS uygulamalarını geçirme
 
@@ -28,7 +28,7 @@ Nereden başlamanız gerekir? Bu makale, Xamarin iOS uygulamanızı ADAL 'dan MS
 ## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, iOS broker ile tümleştirilmiş bir Xamarin iOS uygulamasına zaten sahip olduğunuz varsayılır. Bunu yapmazsanız, doğrudan MSAL.NET 'e taşıyın ve aracı uygulamasını orada başlatın. MSAL.NET içinde iOS Broker 'ı yeni bir uygulamayla çağırma hakkında daha fazla bilgi için [Bu belgelere](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)bakın.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 ### <a name="what-are-brokers"></a>Aracılar nelerdir?
 
@@ -38,7 +38,7 @@ Bunlar şunları etkinleştirir:
 
 - Çoklu oturum açma.
 - Bazı [koşullu erişim ilkeleri](../conditional-access/overview.md)için gereken cihaz kimliği. Daha fazla bilgi için bkz. [cihaz yönetimi](../conditional-access/concept-conditional-access-conditions.md#device-platforms).
-- Uygulama tanımlama doğrulaması, bazı kurumsal senaryolarda de gereklidir. Daha fazla bilgi için bkz. [Intune mobil uygulama yönetimi (MAM)](https://docs.microsoft.com/intune/mam-faq).
+- Uygulama tanımlama doğrulaması, bazı kurumsal senaryolarda de gereklidir. Daha fazla bilgi için bkz. [Intune mobil uygulama yönetimi (MAM)](/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>ADAL 'ten MSAL 'e geçiş
 
@@ -118,7 +118,7 @@ MSAL.NET ' de, iOS için nesne penceresini ayarlamak için iki şey yapmanız ge
 1. İçinde `AppDelegate.cs` , `App.RootViewController` yeni olarak ayarlayın `UIViewController()` . Bu atama, aracı çağrısına bir UIViewController olduğundan emin olmanızı sağlar. Doğru ayarlanmamışsa şu hatayı alabilirsiniz:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. Acquiretokenınteractive çağrısında, kullanın `.WithParentActivityOrWindow(App.RootViewController)` ve kullanacağınız nesne penceresi başvurusunu geçirin.
 
-**Örneğin:**
+**Örnek:**
 
 `App.cs` içinde:
 ```csharp
@@ -151,7 +151,7 @@ ADAL.NET ve MSAL.NET, aracıyı çağırmak ve aracı yanıtını uygulamaya ger
 <tr><td>
 URL şeması, uygulamanız için benzersizdir.
 </td><td>
-Bu 
+Sanal Makineye (VM) bağlı bir veya birden çok işletim sistemi diski içerdiği için 
 
 `CFBundleURLSchemes`ad içermeli 
 
@@ -159,7 +159,7 @@ Bu
 
 ön ek olarak,`CFBundleURLName`
 
-Örneğin, `$"msauth.(BundleId")`
+Örnek: `$"msauth.(BundleId")`
 
 ```csharp
  <key>CFBundleURLTypes</key>
@@ -241,4 +241,4 @@ Yeniden yönlendirme URI 'sini portalda kaydetme hakkında daha fazla bilgi içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Msal.net Ile Xamarin iOS 'a özgü hususlar](msal-net-xamarin-ios-considerations.md)hakkında bilgi edinin. 
+[Msal.net Ile Xamarin iOS 'a özgü hususlar](msal-net-xamarin-ios-considerations.md)hakkında bilgi edinin.

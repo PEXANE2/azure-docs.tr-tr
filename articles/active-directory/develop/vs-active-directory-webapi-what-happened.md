@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b43029f9c955b69e91ea3a65c2b62391ec1da5b4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478867"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114634"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI projem 'e ne oldu (Visual Studio Azure Active Directory bağlı hizmeti)
 
@@ -127,5 +127,5 @@ Bağlı hizmet eklenirken, Visual Studio 2015, değiştirilen ve kaldırılan do
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory için kimlik doğrulama senaryoları](authentication-scenarios.md)
+- [Azure Active Directory için kimlik doğrulama senaryoları](./authentication-vs-authorization.md)
 - [Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme](quickstart-v2-aspnet-webapp.md)

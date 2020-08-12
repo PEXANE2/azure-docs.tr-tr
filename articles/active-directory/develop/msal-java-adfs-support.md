@@ -13,12 +13,12 @@ ms.date: 11/21/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: f1ad755e444968cbbbe9e048be53fb72f65c3b37
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5d01d1143563637e21aaa06a3f997c1507e4d8f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87312648"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114787"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Java için MSAL Active Directory Federasyon Hizmetleri (AD FS) desteği
 
@@ -48,4 +48,4 @@ Or veya ile kullanarak bir belirteç `ConfidentialClientApplication.AcquireToken
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Federasyon durumu için bkz. [ana bölge bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışını yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Federasyon durumu için bkz. [ana bölge bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışını yapılandırma](../manage-apps/configure-authentication-for-federated-users-portal.md)

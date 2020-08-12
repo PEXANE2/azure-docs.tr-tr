@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108728"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122479"
 ---
 ### <a name="verify-that-a-container-is-running"></a>Bir kapsayıcının çalıştığını doğrulama
 
@@ -37,4 +37,4 @@ Kapsayıcının çalıştığını doğrulamak için kullanabileceğiniz çeşit
 |`http://localhost:5000/swagger`|Bu URL aracılığıyla kapsayıcı, uç noktalar ve bir özellik için tam bir belge kümesi sağlar `Try it now` . Bu özellikle, ayarlarınızı bir Web tabanlı HTML biçiminde girebilir ve herhangi bir kod yazmak zorunda kalmadan sorguyu oluşturabilirsiniz. Sorgu çağrıldıktan sonra, gereken HTTP üst bilgilerini ve gövde biçimini göstermek için örnek bir KıVRıMLı komut sağlanır. |
 |`http://localhost:5000/demo`| Bir tarayıcı aracılığıyla istenen bu özellik, giriş metin örnekleri veya sağladığınız bir sorgudan elde edilen sonuçların etkileşimli bir görselleştirmesini sağlar.  |
 
-`http://localhost:5000/text/analytics/v3.0-preview.1/domains/health`Kapsayıcıya bir sorgu göndermek için bu istek URL 'sini kullanın.
+`http://localhost:5000/text/analytics/v3.2-preview.1/entities/health`Kapsayıcıya bir sorgu göndermek için bu istek URL 'sini kullanın.

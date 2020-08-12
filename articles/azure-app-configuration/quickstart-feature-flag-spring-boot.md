@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 2340e728933cc230fb53b9581f4b02b41a9438b6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372068"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121910"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıkların hiçbir Azure kitaplığına **bağımlılığı yoktur.** Bunlar, Spring Boot yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
@@ -64,12 +64,12 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-        <version>1.1.2</version>
+        <version>1.1.5</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.2</version>
+        <version>1.1.5</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -83,12 +83,12 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.7</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.7</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>

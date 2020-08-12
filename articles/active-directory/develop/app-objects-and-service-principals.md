@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 65726a1b43cdbcb5a36d4a6d3f3df97669e1028f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a3e6d918f4ab94c4533e930ea73b5267deb53a4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027275"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115535"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
@@ -91,12 +91,12 @@ Bu örnek senaryoda:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Hem uygulama hem de hizmet sorumlusu nesnelerini sorgulamak için [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz.
-- Bir uygulamanın uygulama nesnesine, Microsoft Graph API 'sini, [Azure Portal][AZURE-Portal] uygulama bildirimi düzenleyicisini veya [Azure AD PowerShell cmdlet 'Lerini](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0)kullanarak, OData [uygulaması varlığıyla][MS-Graph-App-Entity]temsil ederek erişebilirsiniz.
-- Bir uygulamanın hizmet sorumlusu nesnesine, Microsoft Graph API veya [Azure AD PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0)aracılığıyla OData [ServicePrincipal varlığıyla][MS-Graph-Sp-Entity]temsil ederek erişebilirsiniz.
+- Bir uygulamanın uygulama nesnesine, Microsoft Graph API 'sini, [Azure Portal][AZURE-Portal] uygulama bildirimi düzenleyicisini veya [Azure AD PowerShell cmdlet 'Lerini](/powershell/azure/?view=azureadps-2.0)kullanarak, OData [uygulaması varlığıyla][MS-Graph-App-Entity]temsil ederek erişebilirsiniz.
+- Bir uygulamanın hizmet sorumlusu nesnesine, Microsoft Graph API veya [Azure AD PowerShell cmdlet 'leri](/powershell/azure/?view=azureadps-2.0)aracılığıyla OData [ServicePrincipal varlığıyla][MS-Graph-Sp-Entity]temsil ederek erişebilirsiniz.
 
 <!--Image references-->
 
 <!--Reference style links -->
-[MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
-[MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
+[MS-Graph-App-Entity]: /graph/api/resources/application
+[MS-Graph-Sp-Entity]: /graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

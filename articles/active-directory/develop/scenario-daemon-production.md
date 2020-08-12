@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e5d25169aa3daee33a9f02e605cbff91776dc7f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885438"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119173"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Daemon uygulaması-üretime taşı
 
@@ -41,8 +41,8 @@ Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda veri
 
 - Hızlı başlangıç: [bir belirteç alın ve uygulama kimliğini kullanarak bir konsol uygulamasından Microsoft Graph API 'si çağırın](./quickstart-v2-netcore-daemon.md).
 - İçin başvuru belgeleri:
-  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)örneği oluşturuluyor.
-  - [Acquiretokenforclient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)çağrılıyor.
+  - [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)örneği oluşturuluyor.
+  - [Acquiretokenforclient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)çağrılıyor.
 - Diğer örnekler/Öğreticiler:
   - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) , bir kiracı Microsoft Graph sorgulayan kullanıcıları görüntüleyen basit bir .NET Core Daemon konsol uygulamasıdır.
 

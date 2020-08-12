@@ -6,14 +6,14 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 624824f5b6b8f7154ccd7b50da49f3f4bb179bb9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 97f0412141f15ad0a72c02b92cfcf089b61db0cf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542829"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120362"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](../articles/machine-learning/how-to-manage-workspace.md).
 - Bir model. Eğitilen bir modeliniz yoksa, [Bu öğreticide](https://aka.ms/azml-deploy-cloud)verilen model ve bağımlılık dosyalarını kullanabilirsiniz.
@@ -100,12 +100,11 @@ Daha fazla bilgi için [model sınıfına](https://docs.microsoft.com/python/api
 
 Azure Machine Learning dışında eğitilen modellerle çalışma hakkında daha fazla bilgi için bkz. [var olan bir modeli dağıtma](../articles/machine-learning/how-to-deploy-existing-model.md).
 
-
 ## <a name="define-an-entry-script"></a>Giriş betiği tanımlama
 
 [!INCLUDE [write entry script](machine-learning-entry-script.md)]
 
-## <a name="define-an-inference-configuration"></a>Bir çıkarım yapılandırması tanımlama
+## <a name="define-an-inferenceconfig"></a>Bir ınenceconfig tanımlayın
 
 Bir çıkarım yapılandırması, modelinizi içeren Web hizmeti ayarlamayı açıklar. Modeli dağıtırken daha sonra kullanılır.
 
@@ -162,12 +161,9 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 
 ## <a name="choose-a-compute-target"></a>İşlem hedefi seçin
 
-
 [!INCLUDE [aml-compute-target-deploy](aml-compute-target-deploy.md)]
 
-
-
-## <a name="define-a-deployment-configuration"></a>Dağıtım yapılandırması tanımlama
+## <a name="define-a-deploymentconfiguration"></a>Bir DeploymentConfiguration tanımlayın
 
 Modelinizi dağıtılmadan önce dağıtım yapılandırmasını tanımlamanız gerekir. *Dağıtım yapılandırması, Web hizmetini barındıracak işlem hedefine özgüdür.* Örneğin, bir modeli yerel olarak dağıttığınızda, hizmetin istekleri kabul ettiği bağlantı noktasını belirtmeniz gerekir. Dağıtım yapılandırması, giriş betiğinizin bir parçası değil. Model ve giriş betiğini barındıracak işlem hedefinin özelliklerini tanımlamak için kullanılır.
 
@@ -187,7 +183,6 @@ Yerel, Azure Container Instances ve AKS Web Hizmetleri için sınıflar şu kayn
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-
 ## <a name="deploy-your-model"></a>Modelinizi dağıtın
 
 Artık modelinizi dağıtmaya hazırsınız. Aşağıdaki örnekte yerel bir dağıtım gösterilmektedir. Sözdizimi, önceki adımda seçtiğiniz işlem hedefine bağlı olarak değişir.
@@ -203,11 +198,9 @@ print(service.state)
 
 Daha fazla bilgi için bkz. [Localwebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)ve [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)belgeleri.
 
-
 ## <a name="delete-resources"></a>Kaynakları silme
 
 Dağıtılmış bir Web hizmetini silmek için kullanın `service.delete()` .
 Kayıtlı bir modeli silmek için kullanın `model.delete()` .
 
 Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) ve [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)belgeleri.
-

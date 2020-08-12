@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550424"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116606"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)
 
@@ -30,7 +30,7 @@ Bu belge güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkin
 ## <a name="requirements"></a>Gereksinimler
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
+- [Birleşik güvenlik bilgileri kaydı önizlemesini](concept-registration-mfa-sspr-combined.md) etkinleştir
 - Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir * *
 

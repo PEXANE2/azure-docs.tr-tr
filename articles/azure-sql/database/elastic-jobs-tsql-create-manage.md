@@ -1,5 +1,5 @@
 ---
-title: Transact-SQL (T-SQL) ile elastik veritabanı Işleri oluşturma ve yönetme
+title: Transact-SQL (T-SQL) ile elastik veritabanı Işleri oluşturma ve yönetme (Önizleme)
 description: Transact-SQL (T-SQL) kullanarak elastik veritabanı Iş aracısına sahip birçok veritabanı arasında komut dosyalarını çalıştırın.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045042"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119122"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu makalede T-SQL kullanarak esnek ışlerle çalışmaya başlamak için birçok örnek senaryo sunulmaktadır.

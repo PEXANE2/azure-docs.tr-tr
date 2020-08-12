@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu oluşturma PowerShell-Azure
 description: PowerShell cmdlet 'leriyle Windows sanal masaüstü 'nde bir konak havuzu oluşturma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3e4b326b5a78f4b14bdd87e842d8ca485f56831
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002598"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121162"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell ile Windows sanal masaüstü konak havuzu oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "88002598"
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu birden çok RemoteApp grubuyla, bir masaüstü uygulama grubuyla ve birden çok oturum ana bilgisayarıyla ilişkilendirilebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri zaten takip ettiğiniz varsayılmaktadır.
 
@@ -116,6 +116,32 @@ Windows sanal masaüstü aracılarını kaydettirmek için, her bir sanal makine
 
 >[!IMPORTANT]
 >Azure 'da Windows sanal masaüstü ortamınızı güvenli hale getirmeye yardımcı olmak için, VM 'leriniz üzerinde gelen bağlantı noktası 3389 ' i açmanız önerilir. Windows sanal masaüstü, kullanıcıların konak havuzunun VM 'lerine erişmesi için açık bir gelen bağlantı noktası 3389 gerektirmez. Sorun giderme amacıyla bağlantı noktası 3389 ' i açmanız gerekiyorsa, [tam ZAMANıNDA VM erişimi](../security-center/security-center-just-in-time.md)kullanmanızı öneririz. Ayrıca VM 'lerinizi genel bir IP 'ye atamazsınız.
+
+## <a name="update-the-agent"></a>Aracıyı güncelleştirme
+
+Aşağıdaki durumlardan birini kullanıyorsanız aracıyı güncelleştirmeniz gerekir:
+
+- Önceden kaydedilmiş bir oturumu yeni bir konak havuzuna geçirmek istiyorsunuz
+- Oturum Ana bilgisayarı, bir güncelleştirmeden sonra konak havuzunuzdaki görünmüyor
+
+Aracıyı güncelleştirmek için:
+
+1. VM 'de yönetici olarak oturum açın.
+2. **Hizmetler**' e gidin, ardından **rdadgent** ve **Uzak Masaüstü Aracısı yükleyici** süreçlerini durdurun.
+3. Ardından, aracıyı ve önyükleme yükleyicisi msu ' ni bulun. Bunlar, **C:\deployagent** klasöründe konumlanır veya onu yüklediğinizde kaydettiğiniz konuma kaydedilir.
+4. Aşağıdaki dosyaları bulun ve kaldırın:
+     
+     - Microsoft. RDInfra. Rdadgent. Installer-x64-verx. x. x
+     - Microsoft. RDInfra. Rdadgentönyükleme yükleyicisi. Installer-x64
+
+   Bu dosyaları kaldırmak için, her bir dosya adına sağ tıklayın ve ardından **Kaldır**' ı seçin.
+5. İsteğe bağlı olarak, aşağıdaki kayıt defteri ayarlarını da kaldırabilirsiniz:
+     
+     - Bilgisayar \ HKEY_LOCAL_MACHINE \Software\microsoft\rdınfraagent
+     - Bilgisayar \ HKEY_LOCAL_MACHINE \Software\microsoft\rdadgentönyükleme yükleyicisi
+
+6. Bu öğeleri kaldırdıktan sonra, eski ana bilgisayar havuzuyla tüm ilişkilendirmeleri kaldırması gerekir. Bu Konağı hizmete yeniden kaydettirmek isterseniz, [sanal makineleri WINDOWS sanal masaüstü ana bilgisayar havuzuna kaydetme](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)bölümündeki yönergeleri izleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

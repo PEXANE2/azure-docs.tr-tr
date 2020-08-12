@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e758c69f91fb60a83dfcc119b2c7f7aba44384ca
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e210c19f40ed77bd7c1bc1dcfc2f2787e3ea2087
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054670"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120295"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -37,7 +37,7 @@ Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ve .
 
 Çoğu durumda, Microsoft kimlik doğrulama kitaplıklarının en son nesli olan MSAL.NET ve Microsoft Identity platform uç noktasını kullanmak istersiniz. MSAL.NET kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanıza oturum açan kullanıcılar için belirteçler elde edersiniz.
 
-Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL.NET) hakkında zaten bilgi sahibiyseniz, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](active-directory-v2-compare.md)okumak isteyebilirsiniz.
+Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL.NET) hakkında zaten bilgi sahibiyseniz, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
 
 Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)sürümleriyle oturum açması gerekiyorsa adal.NET kullanmanız gerekir. Daha fazla bilgi için bkz. [ADFS desteği](https://aka.ms/msal-net-adfs-support).
 
@@ -161,7 +161,7 @@ V 1.0 ve v 2.0 belirteçleri hakkında daha fazla bilgi için bkz. [Azure Active
 
 ## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V 1.0 belirteçlerini kabul eden bir Web API 'SI için kapsamlar
 
-OAuth2 izinleri, bir v 1.0 Web API (kaynak) uygulamasının istemci uygulamaları için sunduğu izin kapsamlardır. Bu izin kapsamları, izin sırasında istemci uygulamalarına verilebilir. [Azure Active Directory uygulama bildiriminde](active-directory-application-manifest.md)oauth2Permissions hakkında bölümüne bakın.
+OAuth2 izinleri, bir v 1.0 Web API (kaynak) uygulamasının istemci uygulamaları için sunduğu izin kapsamlardır. Bu izin kapsamları, izin sırasında istemci uygulamalarına verilebilir. [Azure Active Directory uygulama bildiriminde](./reference-app-manifest.md)oauth2Permissions hakkında bölümüne bakın.
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının belirli OAuth2 izinlerine erişim istemek için kapsamlar
 

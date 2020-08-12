@@ -2,14 +2,14 @@
 title: Azure 'da sunucusuz kapsayıcılar
 description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi gerekmeden ve daha üst düzey bir Orchestrator 'ı benimsemek zorunda kalmadan, yalıtılmış kapsayıcıları Azure 'da çalıştırmanın en hızlı ve en kolay yolunu sunar.
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498693"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121672"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
@@ -35,10 +35,15 @@ Azure Container Instances Ayrıca, uygulama geliştirme ve sorun giderme konusun
 > [!IMPORTANT]
 > Azure Container Instances 13 Ocak 2020 tarihinden itibaren, sunuculardan ve uygulamalardan gelen tüm güvenli bağlantıların TLS 1,2 kullanması gerekir. TLS 1,0 ve 1,1 desteği kullanımdan kaldırılacak.
 
-## <a name="hypervisor-level-security"></a>Hiper yönetici düzeyinde güvenlik
+## <a name="compliant-deployments"></a>Uyumlu dağıtımlar
+
+### <a name="hypervisor-level-security"></a>Hiper yönetici düzeyinde güvenlik
 
 Geçmişte kapsayıcılar, uygulama bağımlılığı yalıtımı ve kaynak idaresi olanakları sağlıyor ancak birden çok kiracılı zorlu kullanımlar için yeterli kabul edilmiyordu. Azure Container Instances, uygulamanızın bir kapsayıcıda, sanal makinedeki gibi yalıtılmasını sağlar.
 
+### <a name="customer-data"></a>Müşteri verileri
+
+ACı hizmeti, kapsayıcı gruplarınızın beklendiği gibi çalıştığından emin olmak için gereken en düşük müşteri verilerini depolar. Müşteri verilerinin tek bir bölgede depolanması Şu anda yalnızca Asya Pasifik coğrafi bölgenin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri [coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/)olarak depolanır. Daha fazla bilgi için lütfen Azure desteği ile iletişime geçin.
 
 ## <a name="custom-sizes"></a>Özel boyutlar
 

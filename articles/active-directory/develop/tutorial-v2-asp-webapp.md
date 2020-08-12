@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058289"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118238"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -179,7 +179,7 @@ Oturum açma ve oturum kapatma yöntemlerini kullanıma sunmak üzere yeni bir d
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve denetleyici **Ekle**' yi seçin  >  **Controller**.
 2.  **MVC (.NET sürümü) Denetleyici – Boş** girişini seçin.
-3.  **Ekle**’yi seçin.
+3.  **Add (Ekle)** seçeneğini belirleyin.
 4.  **HomeController** olarak adlandırın ve **Ekle**' yi seçin.
 5.  Sınıfa OWıN başvuruları ekleyin:
 
@@ -264,14 +264,14 @@ Visual Studio 'da, oturum açma düğmesini eklemek ve kimlik doğrulamasından 
     ```
 
 ### <a name="more-information"></a>Daha fazla bilgi
- Bu sayfa siyah arka plan üzerinde SVG biçiminde bir oturum açma düğmesi ekler:<br/>![Microsoft ile oturum aç](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Daha fazla oturum açma düğmesi için [marka yönergelerine](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Marka yönergeleri")gidin.
+ Bu sayfa siyah arka plan üzerinde SVG biçiminde bir oturum açma düğmesi ekler:<br/>![Microsoft ile oturum aç](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Daha fazla oturum açma düğmesi için [marka yönergelerine](./howto-add-branding-in-azure-ad-apps.md "Marka yönergeleri")gidin.
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Kullanıcının taleplerini göstermek için bir denetleyici ekleme
 Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini kullanma şeklini gösterir. Bu öznitelik yalnızca kimliği doğrulanmış kullanıcılara izin vererek denetleyiciye erişimi kısıtlar. Aşağıdaki kod, oturum açma kapsamında alınan kullanıcı taleplerini göstermek için özniteliğini kullanır:
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve ardından denetleyici **Ekle**' yi seçin  >  **Controller**.
 2.  **MVC {sürüm} Denetleyici – Boş** girişini seçin.
-3.  **Ekle**’yi seçin.
+3.  **Add (Ekle)** seçeneğini belirleyin.
 4.  **ClaimsController** olarak adlandırın.
 5.  Denetleyici sınıfınızın kodunu aşağıdaki kodla değiştirin. Bu `[Authorize]` özniteliği sınıfına ekler:
 
@@ -403,7 +403,7 @@ Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve
 - Uygulama geliştiricisi, **yönetici onayı**gerektiren herhangi bir ek izin ekler.
 - Ya da kiracı, kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin veremediği ( **Kurumsal uygulamalarda > Kullanıcı ayarları**) yapılandırılır.
 
-Daha fazla bilgi için [Microsoft Identity platform uç noktasındaki izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)bölümüne bakın.
+Daha fazla bilgi için [Microsoft Identity platform uç noktasındaki izinler ve onay](./v2-permissions-and-consent.md)bölümüne bakın.
 
 ### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüle
 
@@ -424,7 +424,7 @@ Denetleyici görünümüne gözatdıktan sonra, kullanıcının temel özellikle
 |**Konu** |Konu |Kullanıcıyı web genelinde benzersiz şekilde tanımlayan bir dize|
 |**Kiracı KIMLIĞI** |Guid | Kullanıcının Azure AD organizasyonunu benzersiz bir şekilde temsil eden bir **GUID**|
 
-Ayrıca, kimlik doğrulama isteğinde olan tüm taleplerin bir tablosunu görmeniz gerekir. Daha fazla bilgi için, [BIR kimlik belirtecinde olan taleplerin listesine](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)bakın.
+Ayrıca, kimlik doğrulama isteğinde olan tüm taleplerin bir tablosunu görmeniz gerekir. Daha fazla bilgi için, [BIR kimlik belirtecinde olan taleplerin listesine](./id-tokens.md)bakın.
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Yetkilendir özniteliğine sahip bir yönteme erişimi test etme (isteğe bağlı)
 
@@ -484,6 +484,6 @@ Microsoft Identity platformu ile Web API 'Lerini çağıran Web uygulamaları ha
 Microsoft Graph çağıran Web uygulamaları oluşturmayı öğrenin:
 
 > [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET öğreticisi](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Microsoft Graph ASP.NET öğreticisi](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

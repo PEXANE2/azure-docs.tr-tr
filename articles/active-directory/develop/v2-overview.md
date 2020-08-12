@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231684"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119564"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Microsoft Identity platformuna genel bakış
 
@@ -43,9 +43,9 @@ Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanı
 Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 
 - [Tek sayfalı uygulama (SPA)](scenario-spa-overview.md)
-- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
-- [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
-- [Korumalı web API'si](scenario-protected-web-api-overview.md)
+- [Kullanıcılar için oturum açan web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Web API’lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
+- [Korumalı web API’si](scenario-protected-web-api-overview.md)
 - [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md)
 - [Masaüstü uygulaması](scenario-desktop-overview.md)
 - [Daemon uygulaması](scenario-daemon-overview.md)
@@ -59,7 +59,7 @@ Uygulamalarınızda kimlik doğrulaması ve yetkilendirmeyi tümleştirmede Micr
 
 Çekirdek kimlik doğrulamasının ve Azure AD kavramlarının bu önerilen makale kümesinde Microsoft Identity platformu için nasıl uygulanacağını öğrenin:
 
-- [Kimlik doğrulaması temel bilgileri](authentication-scenarios.md)
+- [Kimlik doğrulaması temel bilgileri](./authentication-vs-authorization.md)
 - [Uygulama ve hizmet sorumluları](app-objects-and-service-principals.md)
 - [Kitle](v2-supported-account-types.md)
 - [İzinler ve onay](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Uygulamalarınızda kimlik doğrulaması ve yetkilendirmeyi tümleştirmede Micr
 
 [Azure AD B2C](../../active-directory-b2c/overview.md) -kullanıcılarınız Facebook veya Google gibi sosyal hesaplarını kullanarak veya bir e-posta adresi ve parola kullanarak oturum açabilirler.
 
-[Azure AD B2B](../b2b/what-is-b2b.md) -dış KULLANıCıLARı Azure AD kiracınıza "Konuk" kullanıcıları olarak davet edin ve kimlik doğrulama için mevcut kimlik bilgilerini kullanırken yetkilendirme izinlerini atayın.
+[Azure AD B2B](../external-identities/what-is-b2b.md) -dış KULLANıCıLARı Azure AD kiracınıza "Konuk" kullanıcıları olarak davet edin ve kimlik doğrulama için mevcut kimlik bilgilerini kullanırken yetkilendirme izinlerini atayın.
 
 > [!TIP]
 > *Azure Active Directory geliştirici platformu (v 1.0)* belgeleri mi arıyorsunuz? Bkz. [geliştiriciler için Azure Active Directory (v 1.0) genel bakış](../azuread-dev/v1-overview.md).

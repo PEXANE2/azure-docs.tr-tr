@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82593174"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115654"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -154,9 +154,9 @@ Bir cihaz KIMLIĞI veya cihaz kaydıyla ilgili koşullu erişim içeren bazı se
 Daha fazla bilgi için bkz. [Web API 'lerini çağıran mobil uygulama](scenario-mobile-overview.md).
 
 > [!NOTE]
-> MSAL. iOS, MSAL kullanan bir mobil uygulama. Xamarin üzerinde Android veya MSAL.NET, uygulama koruma ilkelerinin uygulanmasını sağlayabilir. Örneğin, ilkeler bir kullanıcının korumalı metni kopyalamasını engelleyebilir. Mobil uygulama Intune tarafından yönetilir ve Intune tarafından yönetilen bir uygulama olarak tanınır. Daha fazla bilgi için bkz. [Microsoft Intune uygulama SDK 'sına genel bakış](https://docs.microsoft.com/intune/app-sdk).
+> MSAL. iOS, MSAL kullanan bir mobil uygulama. Xamarin üzerinde Android veya MSAL.NET, uygulama koruma ilkelerinin uygulanmasını sağlayabilir. Örneğin, ilkeler bir kullanıcının korumalı metni kopyalamasını engelleyebilir. Mobil uygulama Intune tarafından yönetilir ve Intune tarafından yönetilen bir uygulama olarak tanınır. Daha fazla bilgi için bkz. [Microsoft Intune uygulama SDK 'sına genel bakış](/intune/app-sdk).
 >
-> [Intune uygulama SDK 'Sı](https://docs.microsoft.com/intune/app-sdk-get-started) msal kitaplıklarından ayrıdır ve kendi kendıne Azure AD ile etkileşime girer.
+> [Intune uygulama SDK 'Sı](/intune/app-sdk-get-started) msal kitaplıklarından ayrıdır ve kendi kendıne Azure AD ile etkileşime girer.
 
 ### <a name="protected-web-api"></a>Korumalı web API’si
 
@@ -198,7 +198,7 @@ Belirteçleri alma ile ilgili senaryolar Ayrıca OAuth 2,0 kimlik doğrulama ak�
   <tr>
    <td><a href="scenario-spa-overview.md"><img alt="Single-Page App" src="media/scenarios/spa-app.svg"></a></td>
    <td><a href="scenario-spa-overview.md">Tek sayfalı uygulama</a></td>
-   <td><a href="v2-oauth2-implicit-grant-flow.md">İndirgen</a></td>
+   <td><a href="v2-oauth2-implicit-grant-flow.md">Örtük</a></td>
    <td>İş veya okul hesapları, kişisel hesaplar ve Azure Active Directory B2C (Azure AD B2C)</td>
  </tr>
 
@@ -279,7 +279,7 @@ Microsoft kimlik doğrulama kitaplıkları Çoklu platformları destekler:
 - Xamarin.iOS
 - Xamarin.Android
 - Yerel iOS
-- Mac OS
+- macOS
 - Yerel Android
 - Java
 - Python
@@ -305,5 +305,5 @@ Daha fazla bilgi için bkz. [OS/Language tarafından desteklenen Microsoft kitap
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kimlik doğrulama temelleri](authentication-scenarios.md) ve [Microsoft Identity platformunda erişim belirteçleri](access-tokens.md)hakkında daha fazla bilgi edinin.
+* [Kimlik doğrulama temelleri](./authentication-vs-authorization.md) ve [Microsoft Identity platformunda erişim belirteçleri](access-tokens.md)hakkında daha fazla bilgi edinin.
 * [IoT uygulamalarına erişimin güvenliğini sağlama](/azure/architecture/example-scenario/iot-aad/iot-aad)hakkında daha fazla bilgi edinin.

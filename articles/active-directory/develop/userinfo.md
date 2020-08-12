@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 08386e2c54a45fe4a6e35ce6d7ebb51145827a6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268537"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119649"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity platform UserInfo uç noktası
 
@@ -34,7 +34,7 @@ OpenID Connect belirtiminin bir parçası olarak, Kullanıcı hakkında bilgi al
 
 Uygulamanızın alabileceği KIMLIK belirtecinde bulunan bilgiler, UserInfo uç noktasından elde alabileceği bilgilerin bir üst kümesidir.  Bir KIMLIK belirtecini, UserInfo uç noktasını çağırmaya yönelik bir belirteç aldığınızda aynı anda alabilmeniz için, bu KIMLIK belirtecini, Kullanıcı hakkında bilgi edinmek için, UserInfo uç noktasını çağırmak yerine kullanmanızı öneririz.  KIMLIK belirtecinin kullanılması, uygulamanızın başlatılması sırasında yapılan bir veya iki ağ isteğini ortadan kaldıracak ve uygulamanızda gecikme süresini azaltır.
 
-Kullanıcı hakkında daha fazla ayrıntı isterseniz, Office numarası veya iş unvanı gibi bilgileri almak için [Microsoft Graph `/user` API](https://docs.microsoft.com/graph/api/user-get) 'sini çağırmanız gerekir.   KIMLIK ve erişim belirteçlerine ek kullanıcı bilgileri eklemek için [isteğe bağlı talepler](active-directory-optional-claims.md) de kullanabilirsiniz.
+Kullanıcı hakkında daha fazla ayrıntı isterseniz, Office numarası veya iş unvanı gibi bilgileri almak için [Microsoft Graph `/user` API](/graph/api/user-get) 'sini çağırmanız gerekir.   KIMLIK ve erişim belirteçlerine ek kullanıcı bilgileri eklemek için [isteğe bağlı talepler](active-directory-optional-claims.md) de kullanabilirsiniz.
 
 ## <a name="calling-the-userinfo-endpoint"></a>UserInfo uç noktasını çağırma
 

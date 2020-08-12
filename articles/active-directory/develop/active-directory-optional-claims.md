@@ -12,12 +12,12 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552875"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115739"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -31,7 +31,7 @@ Uygulama geliştiricileri, kendi uygulamalarına hangi talepler gönderilmesini 
 
 Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [id_token](id-tokens.md) talep belgeleri.
 
-İsteğe bağlı talepler hem v 1.0, v 2.0 biçim belirteçlerinde hem de SAML belirteçlerinde desteklenirken, v 1.0 'dan v 2.0'a geçiş yaparken bunların büyük bir kısmını sağlarlar. [V 2.0 Microsoft Identity platform uç noktasının](active-directory-appmodel-v2-overview.md) amaçlarından biri, istemciler tarafından en iyi performansı elde etmek için daha küçük belirteç boyutlarıdır. Sonuç olarak, daha önce erişim ve KIMLIK belirteçlerine dahil edilen birkaç talep artık v 2.0 belirteçlerinde mevcut değildir ve özellikle de uygulama başına temelinde sorulmalıdır.
+İsteğe bağlı talepler hem v 1.0, v 2.0 biçim belirteçlerinde hem de SAML belirteçlerinde desteklenirken, v 1.0 'dan v 2.0'a geçiş yaparken bunların büyük bir kısmını sağlarlar. [V 2.0 Microsoft Identity platform uç noktasının](./v2-overview.md) amaçlarından biri, istemciler tarafından en iyi performansı elde etmek için daha küçük belirteç boyutlarıdır. Sonuç olarak, daha önce erişim ve KIMLIK belirteçlerine dahil edilen birkaç talep artık v 2.0 belirteçlerinde mevcut değildir ve özellikle de uygulama başına temelinde sorulmalıdır.
 
 **Tablo 1: uygulanabilirlik**
 
@@ -61,10 +61,10 @@ Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe ba�
 | `fwd`                      | IP adresi.| JWT    |   | İstek sunan istemcinin özgün IPv4 adresini ekler (sanal ağ içinde) |
 | `ctry`                     | Kullanıcının ülkesi/bölgesi | JWT |  | Azure AD, varsa `ctry` isteğe bağlı talebi döndürür ve talebin DEĞERI fr, JP, SZ vb. gibi standart iki harfli bir ülke/bölge kodudur. |
 | `tenant_ctry`              | Kaynak kiracının ülkesi/bölgesi | JWT | | |
-| `xms_pdl`             | Tercih edilen veri konumu   | JWT | | Çoklu coğrafi kiracılar için, tercih edilen veri konumu, kullanıcının bulunduğu coğrafi bölgeyi gösteren üç harfli koddur. Daha fazla bilgi için, [tercih edilen veri konumu hakkında Azure AD Connect belgelerine](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)bakın.<br/>Örneğin: `APC` Asya Pasifik için. |
+| `xms_pdl`             | Tercih edilen veri konumu   | JWT | | Çoklu coğrafi kiracılar için, tercih edilen veri konumu, kullanıcının bulunduğu coğrafi bölgeyi gösteren üç harfli koddur. Daha fazla bilgi için, [tercih edilen veri konumu hakkında Azure AD Connect belgelerine](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)bakın.<br/>Örneğin: `APC` Asya Pasifik için. |
 | `xms_pl`                   | Kullanıcı tarafından tercih edilen dil  | JWT ||Ayarlanmışsa kullanıcının tercih ettiği dil. Konuk erişim senaryolarında, ana kiracılarından kaynaklıdır. Biçimlendirilen LL-CC ("en-US"). |
 | `xms_tpl`                  | Kiracının tercih ettiği dil| JWT | | Ayarlanırsa, kaynak kiracının tercih edilen dili. Biçimlendirildim ("en"). |
-| `ztdid`                    | Sıfır dokunma dağıtım KIMLIĞI | JWT | | [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) için kullanılan cihaz kimliği |
+| `ztdid`                    | Sıfır dokunma dağıtım KIMLIĞI | JWT | | [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) için kullanılan cihaz kimliği |
 | `email`                    | Kullanıcının bir tane varsa, bu kullanıcı için adreslenebilir e-posta.  | JWT, SAML | MSA, Azure AD | Bu değer, Kullanıcı Kiracıdaki bir konuk ise varsayılan olarak dahil edilir.  Yönetilen kullanıcılar (kiracının içindeki kullanıcılar) için, bu isteğe bağlı talep veya yalnızca v 2.0 üzerinde, OpenID kapsamı ile istenmesi gerekir.  Yönetilen kullanıcılar için, e-posta adresinin [Office Yönetim Portalı](https://portal.office.com/adminportal/home#/users)'nda ayarlanması gerekir.|
 | `acct`                | Kiracıdaki Kullanıcı hesabı durumu | JWT, SAML | | Kullanıcı kiracının üyesiyse, değeri olur `0` . Bunlar bir konuğlarsa değer olur `1` . |
 | `groups`| Grup talepleri için isteğe bağlı biçimlendirme |JWT, SAML| |[Uygulama bildiriminde](reference-app-manifest.md), aynı zamanda ayarlanması gereken Groupmembershipclaim ayarıyla birlikte kullanılır. Ayrıntılar için aşağıdaki [Grup taleplerini](#configuring-groups-optional-claims) inceleyin. Grup talepleri hakkında daha fazla bilgi için bkz. [Grup taleplerini yapılandırma](../hybrid/how-to-connect-fed-group-claims.md)
@@ -183,7 +183,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Ad          | Tür                       | Description                                           |
+| Ad          | Tür                       | Açıklama                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -191,12 +191,12 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 ### <a name="optionalclaim-type"></a>OptionalClaim türü
 
-Bir uygulama veya hizmet sorumlusu ile ilişkili isteğe bağlı bir talep içerir. [Optionalclaim](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) türünün ıdtoken, accesstoken ve saml2Token özellikleri bir optionalclaim koleksiyonudur.
+Bir uygulama veya hizmet sorumlusu ile ilişkili isteğe bağlı bir talep içerir. [Optionalclaim](/graph/api/resources/optionalclaims?view=graph-rest-1.0) türünün ıdtoken, accesstoken ve saml2Token özellikleri bir optionalclaim koleksiyonudur.
 Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışını AdditionalProperties alanını kullanarak da değiştirebilirsiniz.
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Ad                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
+| Ad                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |
@@ -205,7 +205,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 ## <a name="configuring-directory-extension-optional-claims"></a>Dizin uzantısı isteğe bağlı taleplerini yapılandırma
 
-Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantıları içerecek şekilde de yapılandırabilirsiniz. Daha fazla bilgi için [Microsoft Graph extensionProperty belgelerine](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0)bakın.
+Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantıları içerecek şekilde de yapılandırabilirsiniz. Daha fazla bilgi için [Microsoft Graph extensionProperty belgelerine](/graph/api/resources/extensionproperty?view=graph-rest-1.0)bakın.
 
 Şema ve açık uzantılar isteğe bağlı talepler, yalnızca AAD grafik stili Dizin uzantıları tarafından desteklenmez. Bu özellik, uygulamanızın kullanabileceği ek kullanıcı bilgilerini eklemek için yararlıdır; Örneğin, kullanıcının ayarlamış olduğu ek bir tanımlayıcı veya önemli bir yapılandırma seçeneği. Bir örnek için bu sayfanın en altına bakın.
 
@@ -232,7 +232,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 **Grupları kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin
 1. Sol taraftaki menüden **Azure Active Directory** seçin
 1. **Yönet** bölümünün altında **uygulama kayıtları** ' yi seçin.
@@ -245,7 +245,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 **Grupları uygulama bildirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin
 1. Sol taraftaki menüden **Azure Active Directory** seçin
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin
@@ -362,10 +362,10 @@ Bu bölümde, uygulamanız için isteğe bağlı talepler özelliğini nasıl ku
 İsteğe bağlı talepler etkinleştirmek ve yapılandırmak için bir uygulamanın kimlik yapılandırmasındaki özellikleri güncelleştirmek üzere kullanılabilecek birden fazla seçenek vardır:
 
 - **Belirteç yapılandırması** Kullanıcı arabirimini kullanabilirsiniz (aşağıdaki örneğe bakın)
-- **Bildirimi** kullanabilirsiniz (aşağıdaki örneğe bakın). Bildirime giriş için önce [Azure AD uygulama bildirimi belgesini anlama](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) makalesini okuyun.
-- Uygulamanızı güncelleştirmek için [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) kullanan bir uygulama yazmak da mümkündür. Microsoft Graph API başvuru kılavuzundaki [optionalclaim](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) türü, isteğe bağlı talepleri yapılandırmanıza yardımcı olabilir.
+- **Bildirimi** kullanabilirsiniz (aşağıdaki örneğe bakın). Bildirime giriş için önce [Azure AD uygulama bildirimi belgesini anlama](./reference-app-manifest.md) makalesini okuyun.
+- Uygulamanızı güncelleştirmek için [MICROSOFT Graph API](/graph/use-the-api?context=graph%2fapi%2f1.0&view=graph-rest-1.0) kullanan bir uygulama yazmak da mümkündür. Microsoft Graph API başvuru kılavuzundaki [optionalclaim](/graph/api/resources/optionalclaims?view=graph-rest-1.0) türü, isteğe bağlı talepleri yapılandırmanıza yardımcı olabilir.
 
-**Örneğinde**
+**Örnek:**
 
 Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML belirteçlerine isteğe bağlı talepler eklemek için **belirteç yapılandırması** Kullanıcı arabirimini ve **bildirimini** kullanacaksınız. Uygulamanın alabileceği her bir belirteç türüne farklı isteğe bağlı talepler eklenecektir:
 
@@ -375,7 +375,7 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Kullanıcı arabirimi yapılandırması:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 
@@ -399,12 +399,12 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Bildirim yapılandırması:**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.
 1. **Yönet** bölümünde, satır içi bildirim düzenleyicisini açmak için **bildirim** ' ı seçin.
-1. Bu düzenleyiciyi kullanarak bildirimi doğrudan düzenleyebilirsiniz. Bildirim, [uygulama varlığının](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)şemasını izler ve bir kez kaydedildikten sonra bildirimi otomatik biçimlendirir. Özelliğe yeni öğeler eklenecektir `OptionalClaims` .
+1. Bu düzenleyiciyi kullanarak bildirimi doğrudan düzenleyebilirsiniz. Bildirim, [uygulama varlığının](./reference-app-manifest.md)şemasını izler ve bir kez kaydedildikten sonra bildirimi otomatik biçimlendirir. Özelliğe yeni öğeler eklenecektir `OptionalClaims` .
 
     ```json
     "optionalClaims": {

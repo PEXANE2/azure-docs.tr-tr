@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8d22e86a37ca386d41374cf0b4811943108d293b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553853"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114566"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -88,7 +88,7 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
 >
-> Konumlar:
+> Burada:
 > - `Enter_the_Application_Id_here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 > - `Enter_the_Tenant_Info_Here` - aşağıdaki seçeneklerden birine ayarlanır:
 >   - Uygulamanız **Bu kuruluş dizinindeki hesapları** destekliyorsa, bu değeri **Kiracı Kimliği** veya **Kiracı adı** (örneğin, contoso.microsoft.com) ile değiştirin
@@ -128,7 +128,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Konumlar: | Description |
+> |Burada: | Açıklama |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -150,7 +150,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar:| Description |
+> |Burada:| Açıklama |
 > |---------|---------|
 > | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -165,7 +165,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar: | Description |
+> |Burada: | Açıklama |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |
@@ -177,4 +177,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Bu hızlı başlangıcın tam bir açıklamasının da içinde olduğu yeni özellikleri ve uygulamaları oluşturma hakkında eksiksiz adım adım kılavuz için Windows masaüstü öğreticisini deneyin.
 
 > [!div class="nextstepaction"]
-> [Graph API'si çağırma öğreticisi](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
+> [Graph API'si çağırma öğreticisi](./tutorial-v2-windows-desktop.md)

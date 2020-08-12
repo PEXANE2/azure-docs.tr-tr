@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154483"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117626"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v 1.0 uç noktasındaki izinler ve onay
 
@@ -33,8 +33,8 @@ Azure Active Directory (Azure AD), hem OAuth hem de OpenID Connect (OIDC) akış
 
 Azure AD iki tür izin tanımlar:
 
-* **Temsilci izinleri** - Oturum açmış kullanıcının olduğu uygulamalar tarafından kullanılır. Bu uygulamalar için, kullanıcı veya yönetici uygulamanın istediği onayları verir ve uygulamaya API çağrıları yaparken oturum açmış kullanıcı adına işlem yapması için temsilci izni verilir. API 'ye bağlı olarak, Kullanıcı API 'ye doğrudan izin vermeyebilir ve bunun yerine [bir yöneticinin "yönetici onayı" sağlaması gerekir](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
-* **Uygulama izinleri** - Oturum açmış kullanıcı olmadan çalıştırılan uygulamalar tarafından kullanılır; örneğin, arka plan hizmetleri veya daemon programları olarak çalıştırılan uygulamalar böyledir. Uygulama izinleri, genellikle güçlü olduklarından ve Kullanıcı sınırları genelinde verilere veya başka türlü yöneticilerle kısıtlanabilecek verilere erişime izin verecek [şekilde yalnızca yöneticiler tarafından](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) yapılabilir. Kaynak uygulamanın sahibi olarak tanımlanan kullanıcılar (yani, izinleri yayımlayan API), sahip oldukları API 'Ler için uygulama izinleri vermek için de izin verilir.
+* **Temsilci izinleri** - Oturum açmış kullanıcının olduğu uygulamalar tarafından kullanılır. Bu uygulamalar için, kullanıcı veya yönetici uygulamanın istediği onayları verir ve uygulamaya API çağrıları yaparken oturum açmış kullanıcı adına işlem yapması için temsilci izni verilir. API 'ye bağlı olarak, Kullanıcı API 'ye doğrudan izin vermeyebilir ve bunun yerine [bir yöneticinin "yönetici onayı" sağlaması gerekir](../develop/howto-convert-app-to-be-multi-tenant.md).
+* **Uygulama izinleri** - Oturum açmış kullanıcı olmadan çalıştırılan uygulamalar tarafından kullanılır; örneğin, arka plan hizmetleri veya daemon programları olarak çalıştırılan uygulamalar böyledir. Uygulama izinleri, genellikle güçlü olduklarından ve Kullanıcı sınırları genelinde verilere veya başka türlü yöneticilerle kısıtlanabilecek verilere erişime izin verecek [şekilde yalnızca yöneticiler tarafından](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) yapılabilir. Kaynak uygulamanın sahibi olarak tanımlanan kullanıcılar (yani, izinleri yayımlayan API), sahip oldukları API 'Ler için uygulama izinleri vermek için de izin verilir.
 
 Etkili izinler, uygulamanızın API istekleri yaparken sahip olacağı izinlerdir. 
 
@@ -75,12 +75,12 @@ Azure AD'deki uygulamalar gerekli kaynaklara veya API'lere erişim kazanmak içi
 * **Statik kullanıcı onayı** - Uygulamanızın etkileşimli çalışmak istediği kaynağı belirttiğinizde [OAuth 2.0 yetkilendirme akışı](v1-protocols-oauth-code.md#request-an-authorization-code) sırasında otomatik olarak gerçekleşir. Statik kullanıcı onayı senaryosunda, uygulamanızın gereken tüm izinleri Azure portalındaki uygulama yapılandırmasında zaten belirtmiş olması gerekir. Kullanıcı (veya uygun olduğunda yönetici) bu uygulamaya onay vermezse, Azure AD kullanıcının şu anda onay vermesini ister. 
 
     Statik bir API kümesine erişim isteyen bir Azure AD uygulamasını kaydetme hakkında daha fazla bilgi edinin.
-* **Dinamik kullanıcı onayı** - v2 Azure AD uygulama modelinin bir özelliğidir. Bu senaryoda, uygulamanız [v2 uygulamaları için OAuth 2.0 yetkilendirme akışı](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) içinde ihtiyacı olan bir dizi izin ister. Kullanıcı henüz onaylamadıysa, bu aşamada onaylaması istenir. [Dinamik onay hakkında daha fazla bilgi edinin](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dinamik kullanıcı onayı** - v2 Azure AD uygulama modelinin bir özelliğidir. Bu senaryoda, uygulamanız [v2 uygulamaları için OAuth 2.0 yetkilendirme akışı](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent) içinde ihtiyacı olan bir dizi izin ister. Kullanıcı henüz onaylamadıysa, bu aşamada onaylaması istenir. [Dinamik onay hakkında daha fazla bilgi edinin](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
     > [!IMPORTANT]
     > Dinamik onay kullanışlı olabilir ama yönetici onayı gerektiren izinlerde çok zorluk çıkarabilir çünkü yönetici onayı deneyimi, onay zamanında söz konusu izinleri bilmiyor olacaktır. Yönetici ayrıcalıklı izinlerine ihtiyacınız varsa veya uygulamanız dinamik onay kullanıyorsa, tüm izinleri Azure portal (yalnızca yönetici onayı gerektiren izinlerin alt kümesi değil) kaydetmeniz gerekir. Bu, kiracı yöneticilerinin tüm kullanıcıları adına onay vermesini sağlar.
   
-* **Yönetici onayı** - Uygulamanızın bazı yüksek ayrıcalıklı izinlere erişmeye ihtiyacı olması durumunda gereklidir. Yönetici onayı, uygulamalara veya kullanıcılara kuruluşunuzun yüksek ayrıcalıklı verilerine erişme yetkisi verilmeden önce yöneticilerin bazı ek denetimler yapabilmesini sağlar. [Yönetici onayı verme hakkında daha fazla bilgi edinin](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Yönetici onayı** - Uygulamanızın bazı yüksek ayrıcalıklı izinlere erişmeye ihtiyacı olması durumunda gereklidir. Yönetici onayı, uygulamalara veya kullanıcılara kuruluşunuzun yüksek ayrıcalıklı verilerine erişme yetkisi verilmeden önce yöneticilerin bazı ek denetimler yapabilmesini sağlar. [Yönetici onayı verme hakkında daha fazla bilgi edinin](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

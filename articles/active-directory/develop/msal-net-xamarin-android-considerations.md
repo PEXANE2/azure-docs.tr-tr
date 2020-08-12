@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d244bbbe96bcea45da5c0860e4af52409123fb7f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652682"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118698"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>MSAL.NET ile Xamarin Android kullanma konuları
 Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı ile Xamarin Android kullandığınızda göz önünde bulundurmanız gerekenler açıklanmaktadır (MSAL.NET).
@@ -56,7 +56,7 @@ var pca = PublicClientApplicationBuilder
 ## <a name="ensure-that-control-returns-to-msal"></a>Denetimin MSAL 'e döndürdüğünden emin olun 
 Kimlik doğrulama akışının etkileşimli kısmı sona erdiğinde, denetimin MSAL 'e geri gitmesini sağlayın. Android 'de, yöntemini geçersiz kılın `OnActivityResult` `Activity` . Ardından `SetAuthenticationContinuationEventArgs` `AuthenticationContinuationHelper` msal sınıfının yöntemini çağırın. 
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -92,7 +92,7 @@ Bu satır, denetim, kimlik doğrulama akışının etkileşimli bölümünün so
 
 Değer için Azure portal kaydettiğiniz paket adını değiştirin `android:host=` . Değer için Azure portal kaydettiğiniz anahtar karmasını değiştirin `android:path=` . İmza karması URL kodlamalı *olmamalıdır.* İmza karmalarınızın başlangıcında önde gelen eğik çizgi ( `/` ) göründüğünden emin olun.
 
-Alternatif olarak, *AndroidManifest.xml*el ile düzenlemeniz yerine [etkinlik kodda oluşturun](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) . Etkinliği kodda oluşturmak için önce özniteliğini ve özniteliğini içeren bir sınıf oluşturun `Activity` `IntentFilter` . 
+Alternatif olarak, *AndroidManifest.xml*el ile düzenlemeniz yerine [etkinlik kodda oluşturun](/xamarin/android/platform/android-manifest#the-basics) . Etkinliği kodda oluşturmak için önce özniteliğini ve özniteliğini içeren bir sınıf oluşturun `Activity` `IntentFilter` . 
 
 XML dosyasının değerlerini temsil eden bir sınıf örneği aşağıda verilmiştir:
 
@@ -160,6 +160,6 @@ Bu örnek, doğru bir dosya yolu içerir:
 
 Daha fazla bilgi için [Microsoft Identity platform kullanan bir Xamarin mobil uygulaması](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)örneğine bakın. Aşağıdaki tabloda README dosyasındaki ilgili bilgiler özetlenmektedir.
 
-| Örnek | Platform | Description |
+| Örnek | Platform | Açıklama |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS, Android, UWP | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin. Forms uygulaması. Uygulama ayrıca Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Topoloji](media/msal-net-xamarin-android-considerations/topology.png) |

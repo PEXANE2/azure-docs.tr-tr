@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886441"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118255"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma
 
@@ -28,11 +28,11 @@ ms.locfileid: "80886441"
 
 ## <a name="developer-guide"></a>Geliştirici kılavuzu
 
-Bu kılavuz, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir Android uygulamasında paylaşılan cihaz modunu uygulamaya yönelik Geliştirici Kılavuzu sağlar. MSAL Android uygulamanızla tümleştirme, bir Kullanıcı oturum açma, Microsoft Graph 'i çağırma ve bir kullanıcının oturumunu kapatma hakkında bilgi edinmek için [msal Android öğreticisine](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) bakın.
+Bu kılavuz, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir Android uygulamasında paylaşılan cihaz modunu uygulamaya yönelik Geliştirici Kılavuzu sağlar. MSAL Android uygulamanızla tümleştirme, bir Kullanıcı oturum açma, Microsoft Graph 'i çağırma ve bir kullanıcının oturumunu kapatma hakkında bilgi edinmek için [msal Android öğreticisine](./tutorial-v2-android.md) bakın.
 
 ### <a name="download-the-sample"></a>Örneği indirme
 
-[Örnek uygulamayı](https://github.com/Azure-Samples/ms-identity-android-java/) GitHub ' dan kopyalayın. Örnek, [tek veya çoklu hesap modunda](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)çalışma özelliğine sahiptir.
+[Örnek uygulamayı](https://github.com/Azure-Samples/ms-identity-android-java/) GitHub ' dan kopyalayın. Örnek, [tek veya çoklu hesap modunda](./single-multi-account.md)çalışma özelliğine sahiptir.
 
 ### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>MSAL SDK 'sını yerel Maven deponuza ekleyin
 
@@ -46,13 +46,13 @@ dependencies{
 
 ### <a name="configure-your-app-to-use-shared-device-mode"></a>Uygulamanızı paylaşılan cihaz modunu kullanacak şekilde yapılandırma
 
-Yapılandırma dosyanızı ayarlama hakkında daha fazla bilgi için [yapılandırma belgelerine](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) bakın.
+Yapılandırma dosyanızı ayarlama hakkında daha fazla bilgi için [yapılandırma belgelerine](./msal-configuration.md) bakın.
 
-MSAL `"shared_device_mode_supported"` yapılandırma `true` dosyanızda olarak ayarlayın.
+`"shared_device_mode_supported"` `true` Msal yapılandırma dosyanızda olarak ayarlayın.
 
-Birden çok hesap modunu desteklemeyi planlamayabilir. Bu, paylaşılan bir cihaz kullanmıyorsanız ve Kullanıcı uygulamada aynı anda birden fazla hesapla oturum açabilir. Öyleyse, olarak `"SINGLE"`ayarlayın `"account_mode"` . Bu, uygulamanızı her zaman alır `ISingleAccountPublicClientApplication`ve msal tümleştirmenizi önemli ölçüde basitleştirir. Varsayılan değeri `"account_mode"` olduğundan `"MULTIPLE"`, mod kullanıyorsanız `"single account"` bu değerin yapılandırma dosyasında değiştirilmesi önemlidir.
+Birden çok hesap modunu desteklemeyi planlamayabilir. Bu, paylaşılan bir cihaz kullanmıyorsanız ve Kullanıcı uygulamada aynı anda birden fazla hesapla oturum açabilir. Öyleyse, olarak ayarlayın `"account_mode"` `"SINGLE"` . Bu, uygulamanızı her zaman alır `ISingleAccountPublicClientApplication` ve msal tümleştirmenizi önemli ölçüde basitleştirir. Varsayılan değeri `"account_mode"` olduğundan `"MULTIPLE"` , mod kullanıyorsanız bu değerin yapılandırma dosyasında değiştirilmesi önemlidir `"single account"` .
 
-Örnek uygulamanın **uygulama**>**ana**>**res**>**Ham** dizinine eklenen auth_config. JSON dosyasına bir örnek aşağıda verilmiştir:
+Örnek uygulamanın **uygulama** > **ana** > **res** > **Ham** dizinine eklenen auth_config.jsdosyasına bir örnek aşağıda verilmiştir:
 
 ```json
 {
@@ -78,9 +78,9 @@ Birden çok hesap modunu desteklemeyi planlamayabilir. Bu, paylaşılan bir ciha
 
 Paylaşılan cihaz modu, Android cihazları birden çok çalışan tarafından paylaşılmak üzere yapılandırmanıza olanak sağlarken, Microsoft kimliği tarafından desteklenen cihaz yönetimini de sağlar. Çalışanlar cihazlarında oturum açabilir ve müşteri bilgilerine hızlıca erişebilir. Bunlar, vardiyası veya göreviyle bitdiklerinde, tek tıklamayla paylaşılan cihazdaki tüm uygulamaların oturumunu açabiliyor ve cihaz bir sonraki çalışanın kullanımına hemen hazır olacaktır.
 
-Paylaşılan `isSharedDevice()` cihaz modundaki bir cihazda bir uygulamanın çalışıp çalışmadığını anlamak için kullanın. Uygulamanız, UX 'e göre değişiklik gerekip gerekmediğini öğrenmek için bu bayrağı kullanabilir.
+`isSharedDevice()`Paylaşılan cihaz modundaki bir cihazda bir uygulamanın çalışıp çalışmadığını anlamak için kullanın. Uygulamanız, UX 'e göre değişiklik gerekip gerekmediğini öğrenmek için bu bayrağı kullanabilir.
 
-İşte nasıl kullanabileceğinizi `isSharedDevice()`gösteren bir kod parçacığı.  Örnek uygulamadaki `SingleAccountModeFragment` sınıfından olur:
+İşte nasıl kullanabileceğinizi gösteren bir kod parçacığı `isSharedDevice()` .  `SingleAccountModeFragment`Örnek uygulamadaki sınıfından olur:
 
 ```Java
 deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
@@ -88,7 +88,7 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 
 ### <a name="initialize-the-publicclientapplication-object"></a>PublicClientApplication nesnesini başlatma
 
-MSAL yapılandırma dosyasında `"account_mode":"SINGLE"` ayarlarsanız, döndürülen uygulama nesnesini güvenli bir `ISingleAccountPublicCLientApplication`şekilde olarak çevirebilirsiniz.
+`"account_mode":"SINGLE"`Msal yapılandırma dosyasında ayarlarsanız, döndürülen uygulama nesnesini güvenli bir şekilde olarak çevirebilirsiniz `ISingleAccountPublicCLientApplication` .
 
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -129,7 +129,7 @@ private IPublicClientApplication mApplication;
 
 ### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Oturum açan kullanıcıyı al ve cihazda bir kullanıcının değişip değişmediğini belirleme
 
-Yöntemi `loadAccount` , oturum açmış kullanıcının hesabını alır. `onAccountChanged` Yöntemi, oturum açmış kullanıcının değişip değişmediğini belirler ve gerekiyorsa temizler:
+`loadAccount`Yöntemi, oturum açmış kullanıcının hesabını alır. `onAccountChanged`Yöntemi, oturum açmış kullanıcının değişip değişmediğini belirler ve gerekiyorsa temizler:
 
 ```java
 private void loadAccount()
@@ -202,20 +202,20 @@ Aşağıdaki adımlarda Azure portal uygulamanızı ayarlama ve cihazınızı pa
 
 ### <a name="register-your-application-in-azure-active-directory"></a>Uygulamanızı Azure Active Directory kaydetme
 
-İlk olarak, uygulamanızı kuruluş kiracınıza kaydedin. Daha sonra uygulamanızın doğru çalışması için auth_config. json ' de aşağıdaki değerleri sağlayın.
+İlk olarak, uygulamanızı kuruluş kiracınıza kaydedin. Daha sonra uygulamanızın doğru çalışması için auth_config.jsaşağıdaki değerleri girin.
 
-Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [Uygulamanızı kaydetme](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application).
+Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [Uygulamanızı kaydetme](./tutorial-v2-android.md#register-your-application).
 
 > [!NOTE]
-> Uygulamanızı kaydettiğinizde lütfen sol taraftaki hızlı başlangıç kılavuzunu kullanın ve ardından **Android**' i seçin. Bu, size uygulamanız için **paket adı** ve **imza karması** sağlamak istediğiniz bir sayfaya yol açacaktır. Bunlar, uygulama yapılandırmanızın çalışmasını sağlamak için çok önemlidir. Ardından, uygulamanız için kullanabileceğiniz ve auth_config. JSON dosyanıza yapıştırdığınız bir yapılandırma nesnesi alacaksınız.
+> Uygulamanızı kaydettiğinizde lütfen sol taraftaki hızlı başlangıç kılavuzunu kullanın ve ardından **Android**' i seçin. Bu, size uygulamanız için **paket adı** ve **imza karması** sağlamak istediğiniz bir sayfaya yol açacaktır. Bunlar, uygulama yapılandırmanızın çalışmasını sağlamak için çok önemlidir. Daha sonra, uygulamanız için kullanabileceğiniz bir yapılandırma nesnesi alacaksınız ve dosyadaki auth_config.jsüzerine yapıştırabilirsiniz.
 
-![Uygulama kaydı ekranı](media/tutorial-v2-shared-device-mode/register-app.png) **Bu değişikliği bana yap** ' ı seçmeniz ve ardından hızlı başlangıç için Azure Portal için gereken değerleri sağlamanız gerekir. Bu işlem tamamlandığında, ihtiyacınız olan tüm yapılandırma dosyalarını oluşturacağız.
+![Uygulama kaydı ekranı ](media/tutorial-v2-shared-device-mode/register-app.png) **Bu değişikliği bana yap** ' ı seçmeniz ve ardından hızlı başlangıç için Azure Portal için gereken değerleri sağlamanız gerekir. Bu işlem tamamlandığında, ihtiyacınız olan tüm yapılandırma dosyalarını oluşturacağız.
 
 ![Uygulama yapılandırma bilgisi ekranı](media/tutorial-v2-shared-device-mode/config-info.png)
 
 ## <a name="set-up-a-tenant"></a>Kiracı ayarlama
 
-Sınama amacıyla kiracınızda şunları ayarlayın: en az iki çalışan, bir bulut cihaz yöneticisi ve bir genel yönetici. Azure portal, kuruluş rollerini değiştirerek bulut cihazı yöneticisini ayarlayın. Azure Portal, **Azure Active Directory** > **Roller ve yöneticiler** > **bulut Cihaz Yöneticisi**' ni seçerek kurumsal rollerinizi erişin. Paylaşılan moda bir cihaz koyabileceğiniz kullanıcıları ekleyin.
+Sınama amacıyla kiracınızda şunları ayarlayın: en az iki çalışan, bir bulut cihaz yöneticisi ve bir genel yönetici. Azure portal, kuruluş rollerini değiştirerek bulut cihazı yöneticisini ayarlayın. Azure Portal, **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi**' ni seçerek kurumsal rollerinizi erişin. Paylaşılan moda bir cihaz koyabileceğiniz kullanıcıları ekleyin.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Paylaşılan modda bir Android cihazı ayarlama
 

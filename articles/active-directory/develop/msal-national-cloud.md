@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81533998"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119456"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
@@ -34,13 +34,13 @@ Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutla
 
 Bu kılavuzda, iş ve okul hesaplarında oturum açma, erişim belirteci alma ve [Azure Kamu bulut](https://azure.microsoft.com/global-infrastructure/government/) ORTAMıNDA Microsoft Graph API 'sini çağırma işlemlerinin nasıl yapılacağı gösterilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
 ### <a name="choose-the-appropriate-identities"></a>Uygun kimlikleri seçin
 
-[Azure Kamu](https://docs.microsoft.com/azure/azure-government/) uygulamaları, kullanıcıların kimliğini doğrulamak IÇIN Azure AD kamu kimliklerini ve Azure AD ortak kimliklerini kullanabilir. Bu kimliklerden herhangi birini kullanabilmeniz için senaryonuz için hangi yetkili uç noktasını seçmeniz gerektiğine karar vermeniz gerekir:
+[Azure Kamu](../../azure-government/index.yml) uygulamaları, kullanıcıların kimliğini doğrulamak IÇIN Azure AD kamu kimliklerini ve Azure AD ortak kimliklerini kullanabilir. Bu kimliklerden herhangi birini kullanabilmeniz için senaryonuz için hangi yetkili uç noktasını seçmeniz gerektiğine karar vermeniz gerekir:
 
 - Azure AD Genel: genellikle Kuruluşunuzda Office 365 (genel veya GCC) veya başka bir uygulamayı desteklemek için bir Azure AD Genel kiracısı zaten varsa kullanılır.
 - Azure AD kamu: genellikle Kuruluşunuzda Office 365 (GCC High veya DoD) desteği için bir Azure AD kamu kiracısı zaten varsa veya Azure AD kamu 'da yeni bir kiracı oluşturmak için kullanılır.
@@ -49,7 +49,7 @@ Karar verdikten sonra, uygulama kaydınızı gerçekleştirdiğiniz özel bir no
 
 ### <a name="get-an-azure-government-subscription"></a>Azure Kamu aboneliği edinme
 
-Azure Kamu aboneliği almak için bkz. [Azure Kamu 'da aboneliğinizi yönetme ve ile bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
+Azure Kamu aboneliği almak için bkz. [Azure Kamu 'da aboneliğinizi yönetme ve ile bağlanma](../../azure-government/documentation-government-manage-subscriptions.md).
 
 Azure Kamu aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/global-infrastructure/government/request/) oluşturun.
 
@@ -70,7 +70,7 @@ Bağımsız bulutları için MSAL.js uygulamanızı etkinleştirmek için:
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-1. [Azure Portal](https://portal.azure.us/) oturum açın.
+1. [Azure portalında](https://portal.azure.us/) oturum açın.
 
    Diğer ulusal bulutlar için Azure portal uç noktaları bulmak için bkz. [uygulama kayıt uç noktaları](authentication-national-cloud.md#app-registration-endpoints).
 
@@ -79,7 +79,7 @@ Bağımsız bulutları için MSAL.js uygulamanızı etkinleştirmek için:
 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si** bölümünde **Web** platformu ' nu seçin ve değeri Web sunucunuza göre uygulamanın URL 'si olarak ayarlayın. Visual Studio ve Node 'da yeniden yönlendirme URL 'sini ayarlama ve alma hakkında yönergeler için sonraki bölümlere bakın.
-1. **Kaydol**’u seçin.
+1. **Kaydet**’i seçin.
 1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini aklınızda edin.
 1. Bu öğretici, [örtük izin akışını](v2-oauth2-implicit-grant-flow.md)etkinleştirmenizi gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
@@ -127,14 +127,14 @@ Bu kodda:
     - Uygulamanız **bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI Kiracı kimliği veya kiracı adı (örneğin, contoso.Microsoft.com) ile değiştirin.
     - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri ile değiştirin `organizations` .
 
-    Tüm ulusal bulutların kimlik doğrulama uç noktalarını bulmak için bkz. [Azure AD kimlik doğrulama uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    Tüm ulusal bulutların kimlik doğrulama uç noktalarını bulmak için bkz. [Azure AD kimlik doğrulama uç noktaları](./authentication-national-cloud.md#azure-ad-authentication-endpoints).
 
     > [!NOTE]
     > Kişisel Microsoft hesapları Ulusal bulutlarda desteklenmez.
 
 - `graphEndpoint`, ABD kamu için Microsoft bulutu 'nın Microsoft Graph uç noktasıdır.
 
-   Tüm ulusal bulutlar için Microsoft Graph uç noktaları bulmak için bkz. [National bulutlar içindeki Microsoft Graph uç noktaları](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   Tüm ulusal bulutlar için Microsoft Graph uç noktaları bulmak için bkz. [National bulutlar içindeki Microsoft Graph uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -150,7 +150,7 @@ MSAL Python uygulamanızı bağımsız bulutlara yönelik olarak etkinleştirmek
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
+- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
 
     Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
 
@@ -173,7 +173,7 @@ Bağımsız bulutları için MSAL Java uygulamanızı etkinleştirmek için:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
+- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
 
 Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
 
@@ -225,6 +225,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - [Ulusal bulutlarda kimlik doğrulama](authentication-national-cloud.md)
-- [Azure Devlet Kurumları](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Almanya](https://docs.microsoft.com/azure/germany/)
+- [Azure Devlet Kurumları](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Almanya](../../germany/index.yml)

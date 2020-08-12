@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884282"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115773"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
@@ -74,7 +74,7 @@ Uygulama nesneleri gibi, hizmet sorumluları da dahil olmak üzere birden çok y
   * Office 365 ' e abone olduğunuzda veya bir denemeye başladığınızda, Office 365 ile ilişkili tüm işlevleri teslim etmek için kullanılan çeşitli hizmetleri temsil eden dizinde bir veya daha fazla hizmet sorumlusu oluşturulur.
   * SharePoint gibi bazı Office 365 Hizmetleri, iş akışları da dahil olmak üzere bileşenler arasında güvenli iletişime izin vermek için sürekli olarak hizmet sorumluları oluşturur.
 * Yönetici, uygulama galerisinden bir uygulama eklediğinde (Ayrıca bu, temel bir uygulama nesnesi oluşturur)
-* [Azure AD uygulama ara sunucusu](/azure/active-directory/manage-apps/application-proxy) kullanmak için uygulama ekleme
+* [Azure AD uygulama ara sunucusu](../manage-apps/application-proxy.md) kullanmak için uygulama ekleme
 * SAML veya parola kullanarak çoklu oturum açma için bir uygulamayı bağlama çoklu oturum açma (SSO)
 * Microsoft Graph API veya PowerShell aracılığıyla programlama yoluyla
 
@@ -104,8 +104,8 @@ Kendinize eklediğiniz uygulamalar (diyagramda **uygulama (sizinkiler)** olarak 
   * Talep dönüştürme kuralları
   * Öznitelik eşlemeleri (Kullanıcı hazırlama)
 * Hizmet sorumlusu ve uygulama nesneleri hakkında daha ayrıntılı bilgi için bkz. Microsoft Graph API başvuru belgeleri:
-  * [Uygulama](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Hizmet sorumlusu](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Uygulama](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Hizmet sorumlusu](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Uygulamalar neden Azure AD ile tümleştirçalışıyor?
 

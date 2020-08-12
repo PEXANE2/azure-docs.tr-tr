@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aaac1beaae70325bee9752ca51a499f2908bdda
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77160769"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119241"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET içinde destek Active Directory Federasyon Hizmetleri (AD FS)
 Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), geliştirmekte olduğunuz uygulamalara OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. Bu uygulamalar daha sonra kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Daha fazla bilgi için, [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)makalesini okuyun.
@@ -58,4 +58,4 @@ MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Federasyon durumu için bkz. [ana bölge bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışını yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Federasyon durumu için bkz. [ana bölge bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışını yapılandırma](../manage-apps/configure-authentication-for-federated-users-portal.md)

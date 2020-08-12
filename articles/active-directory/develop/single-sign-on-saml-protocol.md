@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283002"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118459"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | --- | --- | --- |
 | ID | Gerekli | Azure AD döndürülen yanıtın özniteliğini doldurmak için bu özniteliği kullanır `InResponseTo` . KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli BIR kimliğidir. |
 | Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
-| IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş dönüş biçimine ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)sahip bir tarih saat dizesidir. Azure AD bu türde bir DateTime değeri bekler, ancak bu değeri değerlendirmez veya kullanmaz. |
+| IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş dönüş biçimine ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)sahip bir tarih saat dizesidir. Azure AD bu türde bir DateTime değeri bekler, ancak bu değeri değerlendirmez veya kullanmaz. |
 | AssertionConsumerServiceUrl | İsteğe Bağlı | Sağlanmışsa, bu parametrenin `RedirectUri` Azure AD 'deki bulut hizmeti ile eşleşmesi gerekir. |
 | ForceAuthn | İsteğe Bağlı | Bu bir Boole değeridir. Doğru ise, kullanıcının Azure AD ile geçerli bir oturumu olsa bile yeniden kimlik doğrulaması yapması zorunlu olacaktır. |
 | Ipassive | İsteğe Bağlı | Bu, Azure AD 'nin Kullanıcı etkileşimi olmadan kullanıcının kimlik doğrulaması yapması gerekip gerekmediğini, varsa oturum tanımlama bilgisini kullanmasını belirten bir Boole değeridir. Bu değer doğru ise, Azure AD oturum tanımlama bilgisini kullanarak kullanıcının kimliğini doğrulamaya çalışacaktır. |

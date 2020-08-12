@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: f2be5a4ffb239b445381b5e7c84de15c0bcea371
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b060b1b36edf0bf92f7aac9687b1e833c79a4062
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553916"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120499"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
-Bu hızlı başlangıçta, uygulamanın kendi kimliğini kullanarak bir erişim belirteci alabilir ve sonra dizindeki [kullanıcıların listesini](https://docs.microsoft.com/graph/api/user-list) göstermek IÇIN Microsoft Graph API 'sini çağırabilmeniz için bir .NET Core uygulaması yazmayı öğreneceksiniz. Bu senaryo, kullanıcının kimliği yerine gözetimsiz, katılımsız iş veya Windows hizmeti 'nin bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
+Bu hızlı başlangıçta, uygulamanın kendi kimliğini kullanarak bir erişim belirteci alabilir ve sonra dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek IÇIN Microsoft Graph API 'sini çağırabilmeniz için bir .NET Core uygulaması yazmayı öğreneceksiniz. Bu senaryo, kullanıcının kimliği yerine gözetimsiz, katılımsız iş veya Windows hizmeti 'nin bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2)gerektirir.
 
@@ -95,7 +95,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 >    "ClientId": "Enter_the_Application_Id_Here",
 >    "ClientSecret": "Enter_the_Client_Secret_Here"
 >    ```
->   Konumlar:
+>   Burada:
 >   - `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 >   - `Enter_the_Tenant_Id_Here`-Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >   - `Enter_the_Client_Secret_Here`-Bu değeri, 1. adımda oluşturulan istemci gizli anahtarı ile değiştirin.
@@ -131,7 +131,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Konumlar:
+>> Burada:
 >> * `Enter_the_Tenant_Id_Here`-Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >> * `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 
@@ -151,7 +151,7 @@ cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
-> Konumlar:
+> Burada:
 > * *{ProjectFolder}* , ZIP dosyasını ayıkladığınız klasördür. Örnek **C:\Azure-Samples\active-Directory-dotnetcore-Daemon-v2**
 
 Sonuç olarak Azure AD dizininizde bulunan kullanıcıların listesini görmeniz gerekir.
@@ -198,13 +198,13 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Konumlar: | Description |
+> | Burada: | Açıklama |
 > |---------|---------|
 > | `config.ClientSecret` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config.ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 > | `config.Authority`    | Seçim Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle <https://login.microsoftonline.com/{tenant}> {Tenant}, kiracınızın adı veya kiracı kimliğiniz olduğu genel bulut için.|
 
-Daha fazla bilgi için lütfen [başvuru belgelerine `ConfidentialClientApplication` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) bakın
+Daha fazla bilgi için lütfen [başvuru belgelerine `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) bakın
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
@@ -215,11 +215,11 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Konumlar:| Description |
+> |Burada:| Açıklama |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 
-Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) bakın
+Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) bakın
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

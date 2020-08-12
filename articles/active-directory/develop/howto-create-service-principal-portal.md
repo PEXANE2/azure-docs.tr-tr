@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828940"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117235"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -55,7 +55,7 @@ Abonelik izinlerinizi denetlemek için:
 
 1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Arayın](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
 
@@ -178,7 +178,7 @@ Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluştur
    ![Daha sonra geri alamadığı için gizli değeri kopyalayın](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Kaynaklarda erişim ilkeleri yapılandırma
-Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) gerekir.  
+Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gerekir.  
 
 1. [Azure Portal](https://portal.azure.com), anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.  
 1. **Erişim Ilkesi Ekle**' yi seçin, ardından uygulamanıza vermek istediğiniz anahtar, gizli dizi ve sertifika izinlerini seçin.  Daha önce oluşturduğunuz hizmet sorumlusunu seçin.

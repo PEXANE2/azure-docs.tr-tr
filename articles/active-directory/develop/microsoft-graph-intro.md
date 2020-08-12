@@ -1,5 +1,5 @@
 ---
-title: Microsoft Graph API’si
+title: Microsoft Graph API
 description: Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir.
 author: davidmu1
 services: active-directory
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479523"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119683"
 ---
-# <a name="microsoft-graph-api"></a>Microsoft Graph API’si
+# <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir. Uygulamanızı kaydettikten ve bir kullanıcı veya hizmet için kimlik doğrulama belirteçleri aldıktan sonra, Microsoft Graph API 'sine istek yapabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Graph genel bakış](https://docs.microsoft.com/graph/overview).
+Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir. Uygulamanızı kaydettikten ve bir kullanıcı veya hizmet için kimlik doğrulama belirteçleri aldıktan sonra, Microsoft Graph API 'sine istek yapabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Graph genel bakış](/graph/overview).
 
 Microsoft Graph, aşağıdaki Microsoft 365 hizmetlerindeki verilere erişmek için REST API 'Leri ve istemci kitaplıklarını kullanıma sunar:
 - Office 365 hizmetleri: Delve, Excel, Microsoft kayıtları, Microsoft ekipleri, OneDrive, OneNote, Outlook/Exchange, Planner ve SharePoint
@@ -30,11 +30,11 @@ Microsoft Graph, aşağıdaki Microsoft 365 hizmetlerindeki verilere erişmek i�
 
 ## <a name="versions"></a>Sürümler
 
-Microsoft Graph Şu anda iki sürümü desteklemektedir: v 1.0 ve Beta. V 1.0 sürümü, genel olarak kullanılabilir API 'Leri içerir. Tüm üretim uygulamaları için v 1.0 sürümünü kullanın. Beta, şu anda önizleme aşamasında olan API 'Leri içerir. Beta API 'lerimiz üzerinde önemli değişiklikler sunabileceğimizden, yalnızca geliştirme aşamasında olan uygulamaları test etmek için beta sürümünü kullanmanızı öneririz. üretim uygulamalarınızda Beta API 'Lerini kullanmayın. Daha fazla bilgi için, bkz. [Microsoft Graph Için sürüm oluşturma, destek ve bölme değiştirme ilkeleri](https://docs.microsoft.com/graph/versioning-and-support).
+Microsoft Graph Şu anda iki sürümü desteklemektedir: v 1.0 ve Beta. V 1.0 sürümü, genel olarak kullanılabilir API 'Leri içerir. Tüm üretim uygulamaları için v 1.0 sürümünü kullanın. Beta, şu anda önizleme aşamasında olan API 'Leri içerir. Beta API 'lerimiz üzerinde önemli değişiklikler sunabileceğimizden, yalnızca geliştirme aşamasında olan uygulamaları test etmek için beta sürümünü kullanmanızı öneririz. üretim uygulamalarınızda Beta API 'Lerini kullanmayın. Daha fazla bilgi için, bkz. [Microsoft Graph Için sürüm oluşturma, destek ve bölme değiştirme ilkeleri](/graph/versioning-and-support).
 
-Beta API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph Beta uç noktası başvurusu](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
+Beta API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph Beta uç noktası başvurusu](/graph/api/overview?view=graph-rest-beta)
 
-V 1.0 API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph REST API v 1.0 başvurusu](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
+V 1.0 API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph REST API v 1.0 başvurusu](/graph/api/overview?view=graph-rest-1.0)
 
 ## <a name="get-started"></a>başlarken
 
@@ -42,7 +42,7 @@ Kullanıcı veya e-posta iletisi gibi bir kaynağı okumak veya bir kaynağa yaz
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-Oluşturulan isteğin öğeleri hakkında daha fazla bilgi için bkz [. MICROSOFT Graph API 'Sini kullanma](https://docs.microsoft.com/graph/use-the-api)
+Oluşturulan isteğin öğeleri hakkında daha fazla bilgi için bkz [. MICROSOFT Graph API 'Sini kullanma](/graph/use-the-api)
 
 Hızlı başlangıç örnekleri, Microsoft Graph API 'sinin gücüne nasıl erişekullanacağınızı göstermek için kullanılabilir. Kullanılabilir örnekler, bir kimlik doğrulaması ile iki hizmete erişir: Microsoft hesabı ve Outlook. Her hızlı başlangıç, Microsoft hesabı kullanıcıların profillerinin bilgilerine erişir ve takviminden olayları görüntüler.
 Hızlı başlangıçlarda dört adım vardır:
@@ -51,7 +51,7 @@ Hızlı başlangıçlarda dört adım vardır:
 - Örneği oluşturma
 - Oturum açın ve takviminizde olayları görüntüleyin
 
-Hızlı başlangıcı tamamladığınızda, çalıştırmaya hazırlamış bir uygulamanız vardır. Daha fazla bilgi için [Microsoft Graph hızlı başlangıç hakkında SSS](https://docs.microsoft.com/graph/quick-start-faq)bölümüne bakın. Örnekleri kullanmaya başlamak için bkz. [Microsoft Graph hızlı başlangıç](https://developer.microsoft.com/graph/quick-start).
+Hızlı başlangıcı tamamladığınızda, çalıştırmaya hazırlamış bir uygulamanız vardır. Daha fazla bilgi için [Microsoft Graph hızlı başlangıç hakkında SSS](/graph/quick-start-faq)bölümüne bakın. Örnekleri kullanmaya başlamak için bkz. [Microsoft Graph hızlı başlangıç](https://developer.microsoft.com/graph/quick-start).
 
 ## <a name="tools"></a>Araçlar
 

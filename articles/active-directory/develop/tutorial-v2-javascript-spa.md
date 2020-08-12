@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 303caf36b613e4bcd6a5c48317710b69a3ffbc0a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875226"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118204"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -51,7 +51,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğreticiyi çalıştırmak için [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
 
@@ -323,7 +323,7 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 
  Burada:
  - *\<Enter_the_Application_Id_Here>*, kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
- - *\<Enter_the_Cloud_Instance_Id_Here>*, Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+ - *\<Enter_the_Cloud_Instance_Id_Here>*, Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).
  - *\<Enter_the_Tenant_info_here>* Aşağıdaki seçeneklerden birine ayarlanır:
    - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** (örneğin, *contoso.Microsoft.com*) ile değiştirin.
    - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
@@ -447,7 +447,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
    ```
 
    Burada:
-   - *\<Enter_the_Graph_Endpoint_Here>*, MS Graph API örneğidir. Genel MS Graph API uç noktası için, bu dizeyi ile değiştirin `https://graph.microsoft.com` . Ulusal bulut dağıtımları için lütfen [Graph API belgelerine](https://docs.microsoft.com/graph/deployments)bakın.
+   - *\<Enter_the_Graph_Endpoint_Here>*, MS Graph API örneğidir. Genel MS Graph API uç noktası için, bu dizeyi ile değiştirin `https://graph.microsoft.com` . Ulusal bulut dağıtımları için lütfen [Graph API belgelerine](/graph/deployments)bakın.
 
 1. Ardından adlı bir. js dosyası oluşturun `graph.js` , bu, MICROSOFT Graph API 'SINE Rest çağrısı yapar ve aşağıdaki kodu ekler:
 

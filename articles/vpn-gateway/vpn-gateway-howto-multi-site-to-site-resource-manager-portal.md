@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5a74f1ca8d1055885561a35dbd18899193d3924d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984140"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121434"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasik)](vpn-gateway-multi-site.md)
 >
 > 
@@ -43,7 +43,7 @@ Aşağıdaki öğeleri doğrulayın:
 * VNet 'iniz için sanal ağ geçidi, RouteBased ' dir. PolicyBased VPN ağ geçidiniz varsa, sanal ağ geçidini silmeniz ve RouteBased olarak yeni bir VPN ağ geçidi oluşturmanız gerekir.
 * Bu sanal ağın bağlandığı sanal ağlardan herhangi biri için adres aralıklarının hiçbiri çakışmıyor.
 * Uyumlu VPN cihazınız ve onu yapılandırabilecek birisi var. Bkz. [VPN Cihazları Hakkında](vpn-gateway-about-vpn-devices.md). VPN cihazınızı yapılandırma konusuyla veya şirket içi ağ yapılandırmanızdaki IP adresi aralıklarıyla ilgili fazla bilginiz yoksa size bu ayrıntıları sağlayabilecek biriyle çalışmanız gerekir.
-* VPN cihazınız için dışarıdan kullanıma açık bir genel IP adresiniz vardır. Bu IP adresi bir NAT’nin arkasında olamaz.
+* VPN cihazınız için dışarıdan kullanıma açık bir genel IP adresiniz vardır.
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>1. kısım-bağlantı yapılandırma
 1. Tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve gerekiyorsa Azure hesabınızda oturum açın.

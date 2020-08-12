@@ -3,15 +3,15 @@ title: Windows sanal masaüstü ortamı konak havuzu oluşturma-Azure
 description: Windows sanal masaüstü ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006171"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121383"
 ---
 # <a name="host-pool-creation"></a>Konak havuzu oluşturma
 
@@ -252,6 +252,12 @@ the VM.\\\"
 **Neden:** Bu hata, bir statik yol, güvenlik duvarı kuralı veya NSG 'nin Azure Resource Manager şablonuna bağlı ZIP dosyasının indirilmesini engellediğini nedeniyle oluşur.
 
 **Çözüm:** Statik yolu, güvenlik duvarı kuralını veya NSG 'yi engellemeyi kaldırın. İsteğe bağlı olarak, Azure Resource Manager şablonu json dosyasını bir metin düzenleyicisinde açın, ZIP dosyasına bağlantıyı alın ve kaynağı izin verilen bir konuma indirin.
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>Hata: VM silindikten sonra konak havuzundan bir oturum ana bilgisayarı silinemiyor
+
+**Neden:** VM 'yi silmeden önce oturum konağını silmeniz gerekir.
+
+**Çözüm:** Oturum konağını boşaltma moduna alın, oturum ana bilgisayarındaki tüm kullanıcıların oturumunu kapatın ve ardından Konağı silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

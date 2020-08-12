@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696530"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119887"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>B2C ile Android için MSAL kullanma
 
-Microsoft kimlik doğrulama kitaplığı (MSAL), uygulama geliştiricilerinin [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak sosyal ve yerel kimliklere sahip kullanıcıların kimliğini doğrulamasını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Müşterilerinizin uygulamalarınızı kullandıklarında, nasıl oturum açıp yönetebileceğini özelleştirmek ve denetlemek için bu uygulamayı kullanın.
+Microsoft kimlik doğrulama kitaplığı (MSAL), uygulama geliştiricilerinin [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml)kullanarak sosyal ve yerel kimliklere sahip kullanıcıların kimliğini doğrulamasını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Müşterilerinizin uygulamalarınızı kullandıklarında, nasıl oturum açıp yönetebileceğini özelleştirmek ve denetlemek için bu uygulamayı kullanın.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Bilinen yetkilileri ve yeniden yönlendirme URI 'sini Yapılandır
 
@@ -54,7 +54,7 @@ Uygulamanın yapılandırma dosyası iki bildirmelidir `authorities` . Her ilke 
 }
 ```
 
-, `redirect_uri` Uygulama yapılandırmasında kayıtlı olmalıdır ve `AndroidManifest.xml` [yetkilendirme kodu verme akışı](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)sırasında yeniden yönlendirmeyi desteklemek için içinde.
+, `redirect_uri` Uygulama yapılandırmasında kayıtlı olmalıdır ve `AndroidManifest.xml` [yetkilendirme kodu verme akışı](../../active-directory-b2c/authorization-code-flow.md)sırasında yeniden yönlendirmeyi desteklemek için içinde.
 
 ## <a name="initialize-ipublicclientapplication"></a>Ipublicclientapplication 'ı Başlat
 
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>İlke belirtin
 
-B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, veya parametreleri oluşturulurken bir yan tümce belirtilerek varsayılan dışında bir ilke çağırma elde edilir `fromAuthority` `acquireToken` `acquireTokenSilent` .  Örneğin:
+B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, veya parametreleri oluşturulurken bir yan tümce belirtilerek varsayılan dışında bir ilke çağırma elde edilir `fromAuthority` `acquireToken` `acquireTokenSilent` .  Örnek:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -153,7 +153,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Parola değiştirme ilkelerini işle
 
-Yerel hesap kaydolma veya oturum açma Kullanıcı akışında bir '**parola unuttum?**' görüntülenir bağlantısının. Bu bağlantıya tıkladığınızda parola sıfırlama Kullanıcı akışı otomatik olarak tetiklenemez.
+Yerel hesap kaydolma veya oturum açma Kullanıcı akışında bir '**parola unuttum?**' görüntülenir ücretsiz bir hesap oluşturabilirsiniz. Bu bağlantıya tıkladığınızda parola sıfırlama Kullanıcı akışı otomatik olarak tetiklenemez.
 
 Bunun yerine, hata kodu `AADB2C90118` uygulamanıza döndürülür. Uygulamanız, parolayı sıfırlayan belirli bir kullanıcı akışını çalıştırarak bu hata kodunu işlemelidir.
 
@@ -227,7 +227,7 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>Idtoken talepleri
 
-Idtoken 'da döndürülen talepler, MSAL tarafından değil güvenlik belirteci hizmeti (STS) tarafından doldurulur. Kullanılan kimlik sağlayıcısına (IDP) bağlı olarak bazı talepler bulunmayabilir. Bazı IDPs talepleri Şu anda sağlamıyor `preferred_username` . Bu talep, önbelleğe alma için MSAL tarafından kullanıldığı için, yerine bir yer tutucu değeri `MISSING FROM THE TOKEN RESPONSE` kullanılır. B2C ıdtoken talepleri hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
+Idtoken 'da döndürülen talepler, MSAL tarafından değil güvenlik belirteci hizmeti (STS) tarafından doldurulur. Kullanılan kimlik sağlayıcısına (IDP) bağlı olarak bazı talepler bulunmayabilir. Bazı IDPs talepleri Şu anda sağlamıyor `preferred_username` . Bu talep, önbelleğe alma için MSAL tarafından kullanıldığı için, yerine bir yer tutucu değeri `MISSING FROM THE TOKEN RESPONSE` kullanılır. B2C ıdtoken talepleri hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](../../active-directory-b2c/tokens-overview.md#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Hesapları ve ilkeleri yönetme
 
@@ -239,4 +239,4 @@ Bir ilke için belirteçleri yenilediğinizde `acquireTokenSilent` , `IAccount` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview) Azure Active Directory B2C (Azure AD B2C) hakkında daha fazla bilgi edinin.
+[Azure Active Directory B2C](../../active-directory-b2c/overview.md) Azure Active Directory B2C (Azure AD B2C) hakkında daha fazla bilgi edinin.

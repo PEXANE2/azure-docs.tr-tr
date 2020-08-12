@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6a20bbeef83072b6fb76bd4e9214e63f094736a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b76e77d6d8575fa086f74c956594a344076f7c74
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172616"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118850"
 ---
 # <a name="add-your-application-to-the-azure-active-directory-application-gallery"></a>Uygulamanızı Azure Active Directory Uygulama Galerisine ekleyin
 
@@ -89,14 +89,14 @@ Konuk Kullanıcı aynı zamanda bir Azure AD olan bir giriş kiracıya federe ol
 
 Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD tarafından desteklenen aşağıdaki Federasyon protokollerinden birini uygulamanız gerekir. Ayrıca Azure AD Uygulama Galerisi hüküm ve koşullarını kabul etmeniz gerekir. [Bu Web sitesindeki](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)Azure AD uygulama galerisinin hüküm ve koşullarını okuyun.
 
-- **OpenID Connect**: Open ID Connect protokolünü kullanarak UYGULAMANıZı Azure AD ile tümleştirmek için [geliştiricilerin yönergelerini](v1-authentication-scenarios.md)izleyin.
+- **OpenID Connect**: Open ID Connect protokolünü kullanarak UYGULAMANıZı Azure AD ile tümleştirmek için [geliştiricilerin yönergelerini](../azuread-dev/v1-authentication-scenarios.md)izleyin.
 
     ![Galerideki bir OpenID Connect uygulamasını listeleme](./media/howto-app-gallery-listing/openid.png)
 
     * Uygulamanızı OpenID Connect kullanarak galerinin listesine eklemek istiyorsanız, gösterildiği gibi **OpenID connect & OAuth 2,0** ' ı seçin.
     * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-- **Saml 2,0** veya **WS-BESLENIR**: uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama ekleme YÖNERGELERINI](../active-directory-saas-custom-apps.md)izleyerek doğrudan bir Azure AD kiracısı ile tümleştirebilirsiniz.
+- **Saml 2,0** veya **WS-BESLENIR**: uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama ekleme YÖNERGELERINI](../manage-apps/view-applications-portal.md)izleyerek doğrudan bir Azure AD kiracısı ile tümleştirebilirsiniz.
 
   ![Bir SAML 2,0 veya WS-beslenir uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 

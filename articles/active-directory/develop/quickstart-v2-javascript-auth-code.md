@@ -12,22 +12,22 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311951"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115195"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
 
 Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamasının (SPA), yetkilendirme kodu akışını kullanarak kişisel hesap, iş hesabı ve okul hesaplarının kullanıcılarına nasıl oturum açıp çalıştırabileceklerini gösteren bir kod örneği çalıştırırsınız. Kod örneği Ayrıca, bir Web API 'SI çağırmak için bir erişim belirteci alma, bu durumda Microsoft Graph API 'SI de gösterir. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılır. Örtük akışta MSAL.js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılır. Örtük akışta MSAL.js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](./quickstart-v2-javascript.md).
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -152,7 +152,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here`, API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Ulusal bulutlarda Microsoft Graph hakkında daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](https://docs.microsoft.com/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here`, API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Ulusal bulutlarda Microsoft Graph hakkında daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](/graph/deployments).
 >
 > `graphMeEndpoint` `graphMailEndpoint` Ana (global) Microsoft Graph API hizmetini kullanıyorsanız, *graphConfig.js* dosyadaki ve değerleri aşağıdakine benzer olmalıdır:
 >
@@ -202,4 +202,4 @@ npm install @azure/msal-browser
 Bu hızlı başlangıçta kullanılan uygulamayı oluşturmaya yönelik daha ayrıntılı bir adım adım kılavuz için aşağıdaki öğreticiye bakın:
 
 > [!div class="nextstepaction"]
-> [Oturum açma ve MS Graph >çağırma öğreticisi](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
+> [Oturum açma ve MS Graph >çağırma öğreticisi](./tutorial-v2-javascript-auth-code.md)

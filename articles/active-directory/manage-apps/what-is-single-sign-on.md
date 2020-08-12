@@ -11,13 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5446d945a81d2630d788a866bda00eb118382b93
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 6f3c6351a7bcd87ae25dfae53cb17f634bbef146
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053788"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121519"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
@@ -31,6 +30,14 @@ Bir Yöneticiyseniz veya BT uzmanı varsa, SSO 'nun Azure 'da nasıl uygulandı�
 Çoklu oturum açma, kullanıcıların oturum açma ve uygulama kullanma biçiminde bir çok büyük paketlerini daha ileri sağlar. Çoklu oturum açma tabanlı kimlik doğrulama sistemleri genellikle "Modern kimlik doğrulaması" olarak adlandırılır. Çoklu oturum açma olanağı olduğunu anlamak için bu videoyu inceleyin.
 > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
 
+## <a name="understanding-where-an-app-is-hosted"></a>Uygulamanın nerede barındırıldığını anlama
+Bir uygulama için çoklu oturum açma uyguladığınızda, uygulamanın barındırıldığı yerde bir çok şey vardır. Ağ trafiğinin uygulamaya erişmek için yönlendirildiği şekilde barındırılması önemli bir uygulamadır. Bir uygulama, şirket içi uygulama olarak adlandırılan yerel ağınız üzerinden barındırılıyorsa ve erişiliyorsa, kullanıcıların uygulamayı kullanabilmesi için Internet 'e erişmesine gerek yoktur. Uygulama, bulutta barındırılan uygulama olarak adlandırılan başka bir yerde barındırılıyorsa, kullanıcıların uygulamayı kullanabilmesi için Internet 'e erişmesi gerekir.
+
+> [!TIP]
+> Bulut uygulamalarına hizmet olarak yazılım (SaaS) uygulamaları da denir. 
+
+> [!TIP]
+> Bulut ve Internet terimleri genellikle birbirinin yerine kullanılır. Bunun nedeni, ağ diyagramlarında yapmanız gerekidir. Her bileşeni çizmek uygun olmadığından büyük bilgisayar ağlarını bir diyagram üzerinde bir bulut şekliyle göstermek yaygındır. Internet, en iyi bilinen bir ağ olduğundan, bu koşulların yerine kullanılması kolay bir işlemdir. Ancak, herhangi bir bilgisayar ağı bir buluta dağıtılabilir.
 
 ## <a name="choosing-a-single-sign-on-method"></a>Çoklu oturum açma yöntemi seçme
 

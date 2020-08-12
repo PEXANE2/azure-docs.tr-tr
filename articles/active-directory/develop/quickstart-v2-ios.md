@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554054"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115263"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -101,12 +101,12 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
-> 1. [Azure AD Ulusal bulutları](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)için bir uygulama oluşturuyorsanız, ' Let kGraphEndpoint ' ve ' Let kAuthority ' ile başlayan satırı doğru uç noktalarla değiştirin. Genel erişim için varsayılan değerleri kullanın:
+> 1. [Azure AD Ulusal bulutları](/graph/deployments#app-registration-and-token-service-root-endpoints)için bir uygulama oluşturuyorsanız, ' Let kGraphEndpoint ' ve ' Let kAuthority ' ile başlayan satırı doğru uç noktalarla değiştirin. Genel erişim için varsayılan değerleri kullanın:
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
-> 1. Diğer uç noktalar [burada](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)belgelenmiştir. Örneğin, Azure AD Almanya ile hızlı başlangıcı çalıştırmak için aşağıdakileri kullanın:
+> 1. Diğer uç noktalar [burada](/graph/deployments#app-registration-and-token-service-root-endpoints)belgelenmiştir. Örneğin, Azure AD Almanya ile hızlı başlangıcı çalıştırmak için aşağıdakileri kullanın:
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
@@ -173,7 +173,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Konumlar: | Description |
+> |Burada: | Açıklama |
 > |---------|---------|
 > | `clientId` | *portal.azure.com*’da kaydedilen uygulamanın Uygulama Kimliği |
 > | `authority` | Microsoft Identity platform uç noktası. Çoğu durumda bu *https<span/>://login.microsoftonline.com/common* olur |
@@ -237,7 +237,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Konumlar:| Description |
+> |Burada:| Açıklama |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 
@@ -257,7 +257,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Konumlar: | Description |
+> |Burada: | Açıklama |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir`accountIdentifier` |
@@ -269,6 +269,6 @@ Bu hızlı başlangıç hakkında tam bir açıklama da dahil olmak üzere uygul
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturmayı öğrenin
 
 > [!div class="nextstepaction"]
-> [İOS ve macOS için Graph API öğreticisi çağırma](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [İOS ve macOS için Graph API öğreticisi çağırma](./tutorial-v2-ios.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

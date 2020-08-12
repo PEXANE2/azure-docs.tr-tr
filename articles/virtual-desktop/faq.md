@@ -3,15 +3,15 @@ title: Windows sanal masaüstü hakkında SSS-Azure
 description: Windows sanal masaüstü için sık sorulan sorular ve en iyi uygulamalar.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007497"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121128"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Sanal Masaüstü hakkında SSS
 
@@ -23,7 +23,7 @@ Konak havuzları ve diğer nesneler oluşturmak istiyorsanız, üzerinde çalı�
 
 Uygulama gruplarını kullanıcılara veya Kullanıcı gruplarına yayımlamak için, bir uygulama grubunda Kullanıcı erişimi Yöneticisi rolüne atanmalısınız.
 
-Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. gibi yalnızca kullanıcı oturumlarını yönetmesine izin vermek için özel roller oluşturabilirsiniz. Örneğin:
+Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. gibi yalnızca kullanıcı oturumlarını yönetmesine izin vermek için özel roller oluşturabilirsiniz. Örnek:
 
 ```powershell
 "actions": [
@@ -48,8 +48,6 @@ Bir Kullanıcı bir uygulama grubuna atandığında, hizmet basit bir Azure rol�
 
 Aynı sanal ağdaki (VNET) Kullanıcı Azure AD ile Active Directory eşitlemedikçe, farklı bir Azure AD 'de sanal makineler (VM 'Ler) oluşturabilirsiniz.
 
-Azure Dıthouse, Windows sanal masaüstü ortamının yönetimini tam olarak desteklemez. Açık oturum kullanımı Şu anda Azure AD Kiracı Kullanıcı yönetimini desteklemediğinden, hafif kullanım müşterileri, müşterilerin kullanıcıları yönetmek için kullandığı Azure AD 'de oturum açması gerekir.
-
 ## <a name="what-are-location-restrictions"></a>Konum kısıtlamaları nelerdir?
 
 Tüm hizmet kaynaklarının kendileriyle ilişkili bir konumu vardır. Konak havuzunun konumu, konak havuzu için hizmet meta verilerinin hangi Coğrafya 'da depolandığını belirler. Bir uygulama grubu, bir konak havuzu olmadan bulunamaz. Bir RemoteApp uygulama grubuna uygulamalar eklerseniz, Başlat menüsü uygulamalarını tespit etmek için bir oturum ana bilgisayarına da ihtiyacınız olacaktır. Herhangi bir uygulama grubu eylemi için konak havuzunda ilgili bir veri erişimine de ihtiyacınız olacaktır. Verilerin birden çok konum arasında aktarılmadığından emin olmak için, uygulama grubunun konumu konak havuzunun ile aynı olmalıdır.
@@ -60,7 +58,7 @@ Tüm hizmet kaynaklarının kendileriyle ilişkili bir konumu vardır. Konak hav
 
 Bir PowerShell cmdlet 'ini çalıştırdığınızda yalnızca kaynak adını ve konumunu görürsünüz.
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -72,7 +70,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Bir kaynağın tüm özelliklerini görmek için `format-list` cmdlet 'inin sonuna veya sonuna ekleyin `fl` .
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -80,7 +78,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Belirli özellikleri görmek için, veya sonrasında belirli özellik adlarını ekleyin `format-list` `fl` .
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
@@ -132,3 +130,11 @@ Bu faktörler, konak havuzları için ölçek sınırını etkileyebilir:
 - Her bölge için ve abonelik başına kaç çekirdekli çekirdek oluşturabileceğiniz konusunda kısıtlamalar vardır. Örneğin, bir Kurumsal Anlaşma aboneliğiniz varsa, 350 çekirdek oluşturabilirsiniz. Şablonu her çalıştırdığınızda oluşturabileceğiniz VM 'Lerin sayısını belirleyebilmek için, VM başına varsayılan çekirdek sayısı veya kendi çekirdek sınırınıza göre 350 ' ı bölmeniz gerekir. [Sanal makine limitleriyle](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)daha fazla bilgi edinin-Azure Resource Manager.
 
 - VM ön eki adı ve VM sayısı 15 karakterden daha azdır. Daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları ve kısıtlamaları](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Windows sanal masaüstü ortamlarını Azure açık Thouse ile yönetebilir miyim?
+
+Azure Dıthouse, Windows sanal masaüstü ortamlarını yönetmeyi tam olarak desteklemez. Açık oturum kullanımı Şu anda Azure AD Kiracı Kullanıcı yönetimini desteklemediğinden, hafif kullanım müşterileri, müşterilerin kullanıcıları yönetmek için kullandığı Azure AD 'de oturum açması gerekir.
+
+Ayrıca, CSP Sandbox aboneliklerini Windows sanal masaüstü hizmetiyle birlikte kullanamazsınız. Daha fazla bilgi için bkz. [Integration Sandbox hesabı](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+
+Son olarak, CSP sahip hesabından kaynak sağlayıcısını etkinleştirdiyseniz, CSP müşteri hesapları kaynak sağlayıcıyı değiştiremez.

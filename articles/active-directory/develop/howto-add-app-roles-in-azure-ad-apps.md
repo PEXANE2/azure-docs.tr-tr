@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 0ba348bc9c97ba8be415cac2e5fd7d102d850568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041468"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117082"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -34,7 +34,7 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin.
 1. **Sık Kullanılanlar** veya **tüm dizinler** listesinde, uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
 1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
@@ -95,7 +95,7 @@ Hedef `users` , `applications` veya her ikisini de hedeflemek için uygulama rol
 "availableToOtherTenants": false,
 ```
 
-Tanımlanan rol sayısı, uygulama bildiriminin sahip olduğu limitleri etkiler. [Bildirim limitleri](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) sayfasında ayrıntılı olarak ele alınmıştır.
+Tanımlanan rol sayısı, uygulama bildiriminin sahip olduğu limitleri etkiler. [Bildirim limitleri](./reference-app-manifest.md#manifest-limits) sayfasında ayrıntılı olarak ele alınmıştır.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Rollere Kullanıcı ve Grup atama
 
@@ -128,6 +128,6 @@ Uygulamanıza uygulama rolleri ekledikten sonra, bu rollere kullanıcılar ve gr
 - [Uygulama rollerini kullanarak yetkilendirme ekleme ASP.NET Core Web uygulaması için rol talepleri &](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Microsoft Identity platform (video) ile uygulamalarınızda yetkilendirme uygulama](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory, artık grup talepleri ve uygulama rolleriyle birlikte](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory uygulama bildirimi](./reference-app-manifest.md)
 - [AAD erişim belirteçleri](access-tokens.md)
 - [AAD`id_tokens`](id-tokens.md)

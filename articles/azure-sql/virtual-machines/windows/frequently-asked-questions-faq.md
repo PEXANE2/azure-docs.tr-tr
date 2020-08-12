@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955684"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121451"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 1. **Aynı VM 'ye SQL Server ikinci bir örneğini yükleyebilir miyim? Varsayılan örneğin yüklü özelliklerini değiştirebilir miyim?**
 
-   Evet. SQL Server yükleme medyası **C** sürücüsündeki bir klasörde yer alır. Yeni SQL Server örnekleri eklemek veya makinedeki SQL Server diğer yüklü özelliklerini değiştirmek için bu konumdan **Setup.exe** çalıştırın. Otomatik yedekleme, otomatik düzeltme eki uygulama ve Azure Key Vault tümleştirme gibi bazı özelliklerin yalnızca varsayılan örneğe veya düzgün yapılandırılmış adlandırılmış bir örneğe göre çalışacağını unutmayın (bkz. soru 3). 
+   Evet. SQL Server yükleme medyası **C** sürücüsündeki bir klasörde yer alır. Yeni SQL Server örnekleri eklemek veya makinedeki SQL Server diğer yüklü özelliklerini değiştirmek için bu konumdan **Setup.exe** çalıştırın. Otomatik yedekleme, otomatik düzeltme eki uygulama ve Azure Key Vault tümleştirme gibi bazı özelliklerin yalnızca varsayılan örneğe veya düzgün yapılandırılmış adlandırılmış bir örneğe göre çalışacağını unutmayın (bkz. soru 3). Azure Hibrit Avantajı veya **Kullandıkça Öde** lisans modeli [aracılığıyla yazılım güvencesi](licensing-model-azure-hybrid-benefit-ahb-change.md) kullanan müşteriler, ek lisanslama maliyetleri olmadan sanal makineye birden çok SQL Server örneğini yükleyebilir. Ek SQL Server örnekleri, doğru yapılandırılmadığı müddetçe sistem kaynaklarını zorlayabilir. 
 
 1. **SQL Server'ın varsayılan örneğini kaldırabilir miyim?**
 

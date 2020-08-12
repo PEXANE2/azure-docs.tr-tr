@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 67ce5f898f2f9b6be088a0d01aec908c93ce7418
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446899"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118306"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -71,7 +71,7 @@ ng generate component page-name                  # To add a new page (such as a 
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-Azure portal [tek sayfalı bir uygulamayı kaydetmek için yönergeleri](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) izleyin.
+Azure portal [tek sayfalı bir uygulamayı kaydetmek için yönergeleri](./scenario-spa-app-registration.md) izleyin.
 
 Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimlik** değeri ' ne göz atın.
 
@@ -124,7 +124,7 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
     |Değer adı|Hakkında|
     |---------|---------|
     |Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
-    |Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+    |Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).|
     |Enter_the_Tenant_Info_Here| Aşağıdaki seçeneklerden birine ayarlayın: uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu değeri dizin (KIRACı) kimliği veya kiracı adı (örneğin, **contoso.Microsoft.com**) ile değiştirin. Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin. Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin. |
     |Enter_the_Redirect_Uri_Here|İle değiştirin **http://localhost:4200** .|
 

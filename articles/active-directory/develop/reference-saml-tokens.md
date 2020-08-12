@@ -13,12 +13,12 @@ ms.date: 06/22/2018
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 59ba97ccc0bc4a1a273873d638ef3f519b91e530
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284447"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114974"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML belirteci başvurusu
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD), her kimlik doğrulama akışının işlenmesi
 ## <a name="claims-in-saml-tokens"></a>SAML belirteçlerinde talepler
 
 > [!div class="mx-codeBreakAll"]
-> | Ad | Denk JWT talebi | Açıklama | Örnek |
+> | Name | Denk JWT talebi | Açıklama | Örnek |
 > | --- | --- | --- | ------------|
 > |Hedef kitle | `aud` |Belirtecin amaçlanan alıcısı. Belirteci alan uygulamanın, hedef kitle değerinin doğru olduğunu ve farklı bir hedef kitle için tasarlanan belirteçleri reddetmesini doğrulaması gerekir. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Kimlik Doğrulaması Anı | |Kimlik doğrulamasının gerçekleştiği tarihi ve saati kaydeder. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD), her kimlik doğrulama akışının işlenmesi
 > |Issuedat | `iat` |Belirtecin verildiği saati depolar. Genellikle belirtecin yeniliği ölçmek için kullanılır. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Veren | `iss` |Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Azure AD 'nin döndürdüğü belirteçlerde veren sts.windows.net. Verenin talep değerindeki GUID, Azure AD dizininin kiracı KIMLIĞIDIR. Kiracı KIMLIĞI, dizinin sabit ve güvenilir tanıtıcısıdır. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Soyadı | `family_name` |Kullanıcının Azure AD Kullanıcı nesnesinde tanımlanan soyadı, soyadı veya aile adını sağlar. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Ad | `unique_name` |Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name | `unique_name` |Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Nesne Kimliği | `oid` |Azure AD 'de bir nesnenin benzersiz tanımlayıcısını içerir. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Azure AD 'de sorgulardaki bir nesneyi tanımlamak için nesne KIMLIĞINI kullanın. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Roller | `roles` |Konunun hem doğrudan hem de dolaylı olarak grup üyeliği aracılığıyla verildiğini ve rol tabanlı erişim denetimini zorlamak için kullanılabilir olan tüm uygulama rollerini temsil eder. Uygulama rolleri uygulama bildiriminin özelliği aracılığıyla uygulama başına temelinde tanımlanır `appRoles` . `value`Her uygulama rolünün özelliği, roller talebinde görüntülenen değerdir. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |Konu | `sub` |Uygulamanın kullanıcı gibi, belirtecin hangi ana öğe için onay verdiğini belirtir. Bu değer sabittir ve yeniden atanamaz veya yeniden kullanılamaz, bu nedenle yetkilendirme denetimlerini güvenli bir şekilde gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD sorunları belirteçlerinde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. <br> `SubjectConfirmation`bir talep değil. Belirtecin konusunun nasıl doğrulandığını açıklar. `Bearer`konunun belirtecin elinde olduğunu teyit eden anlamına gelir. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
@@ -154,7 +154,7 @@ Bu, tipik bir SAML belirtecinin örneğidir.
 
 ## <a name="related-content"></a>İlgili içerik
 
-* Microsoft Graph API 'sini kullanarak belirteç yaşam süresi ilkesini yönetme hakkında daha fazla bilgi için bkz. [ilke kaynağı](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta).
+* Microsoft Graph API 'sini kullanarak belirteç yaşam süresi ilkesini yönetme hakkında daha fazla bilgi için bkz. [ilke kaynağı](/graph/api/resources/policy?view=graph-rest-beta).
 * Örnekler de dahil olmak üzere PowerShell cmdlet 'leri aracılığıyla ilkeleri yönetme hakkında daha fazla bilgi ve örnek için bkz. [Azure AD 'de yapılandırılabilir belirteç ömürleri](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
 * Uygulamanıza yönelik belirteçlere [özel ve isteğe bağlı talepler](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ekleyin.
 * [SAML Ile çoklu oturum açma (SSO)](single-sign-on-saml-protocol.md)kullanın.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563322"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120975"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Korumalı Web API 'SI: kapsamları ve uygulama rollerini doğrulama
 
@@ -88,7 +88,7 @@ public class TodoListController : Controller
 
 #### <a name="verify-the-scopes-more-globally"></a>Kapsamları daha küresel olarak doğrulayın
 
-Web API 'niz için ayrıntılı kapsamları tanımlama ve her denetleyicideki kapsamların doğrulanması önerilen yaklaşımdır. Ancak, ASP.NET Core kullanarak, uygulama veya bir denetleyici düzeyinde kapsamları doğrulamak da mümkündür. Ayrıntılar için ASP.NET Core belgelerindeki [talep tabanlı yetkilendirme](https://docs.microsoft.com/aspnet/core/security/authorization/claims) bölümüne bakın.
+Web API 'niz için ayrıntılı kapsamları tanımlama ve her denetleyicideki kapsamların doğrulanması önerilen yaklaşımdır. Ancak, ASP.NET Core kullanarak, uygulama veya bir denetleyici düzeyinde kapsamları doğrulamak da mümkündür. Ayrıntılar için ASP.NET Core belgelerindeki [talep tabanlı yetkilendirme](/aspnet/core/security/authorization/claims) bölümüne bakın.
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,7 +96,7 @@ ASP.NET için yalnızca ile değiştirin `HttpContext.User` `ClaimsPrincipal.Cur
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>Daemon uygulamaları tarafından çağrılan API 'lerde uygulama rollerini doğrulama
 
-Web API 'niz bir [Daemon uygulaması](scenario-daemon-overview.md)tarafından çağrılırsa, bu UYGULAMANıN Web API 'niz için uygulama izni olması gerekir. [Uygulama izinlerini (uygulama rolleri) gösterme](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)bölümünde gösterildiği gıbı, API 'niz bu izinleri gösterir. Uygulama rolü bir örnektir `access_as_application` .
+Web API 'niz bir [Daemon uygulaması](scenario-daemon-overview.md)tarafından çağrılırsa, bu UYGULAMANıN Web API 'niz için uygulama izni olması gerekir. [Uygulama izinlerini (uygulama rolleri) gösterme](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles)bölümünde gösterildiği gıbı, API 'niz bu izinleri gösterir. Uygulama rolü bir örnektir `access_as_application` .
 
 Şimdi API 'nizin aldığı belirtecin `roles` talebi içerdiğini ve bu talebin beklenen değere sahip olduğunu doğrulaması gerekir. Doğrulama kodu, izin verilen izinleri doğrulayan koda benzerdir, ancak denetleyici eylemi kapsamlar yerine roller için test eder:
 

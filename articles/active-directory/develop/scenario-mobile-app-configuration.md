@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 78e3bbfe910ebc3d7f21167c2a15f0c255fdc8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fe084d931ee735f9eaecc58ca5445ae56a951cc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904805"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121060"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
@@ -102,9 +102,9 @@ var pca = PublicClientApplicationBuilder
 
 ##### <a name="find-more-app-building-parameters"></a>Daha fazla uygulama oluşturma parametresi bulun
 
-Üzerinde kullanılabilen tüm yöntemlerin bir listesi için `PublicClientApplicationBuilder` , bkz. [Yöntemler listesi](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+Üzerinde kullanılabilen tüm yöntemlerin bir listesi için `PublicClientApplicationBuilder` , bkz. [Yöntemler listesi](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
 
-İçinde gösterilen tüm seçeneklerin açıklaması için `PublicClientApplicationOptions` [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)bakın.
+İçinde gösterilen tüm seçeneklerin açıklaması için `PublicClientApplicationOptions` [başvuru belgelerine](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)bakın.
 
 ## <a name="tasks-for-xamarin-ios"></a>Xamarin iOS görevleri
 
@@ -218,7 +218,7 @@ Nesne penceresini ayarlamak için şu adımları izleyin:
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. `AcquireTokenInteractive`Çağrısında öğesini kullanın `.WithParentActivityOrWindow(App.RootViewController)` . Kullanacağınız nesne penceresinin başvurusunu geçirin. İşte bir örnek:
+1. `AcquireTokenInteractive`Çağrısında öğesini kullanın `.WithParentActivityOrWindow(App.RootViewController)` . Kullanacağınız nesne penceresinin başvurusunu geçirin. Aşağıda bir örnek verilmiştir:
 
     `App.cs` içinde:
     ```csharp

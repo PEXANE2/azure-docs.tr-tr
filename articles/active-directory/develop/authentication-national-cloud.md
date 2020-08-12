@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 20a158aac6a03dfe0bd8929de9fa66ea215aa29c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d703eab97b087ed6b3e4d9c3519a7e3ee7489cd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194113"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117422"
 ---
 # <a name="national-clouds"></a>Ulusal bulutlar
 
@@ -65,7 +65,7 @@ Uygun bölgeye özgü temel URL 'YI kullanarak Azure AD yetkilendirmesi veya bel
 
 Tek kiracılı uygulamalarda, önceki URL 'Lerdeki "ortak" i kiracı KIMLIĞINIZLE veya adınızla değiştirin. `https://login.microsoftonline.de/contoso.com` bunun bir örneğidir.
 
-## <a name="microsoft-graph-api"></a>Microsoft Graph API’si
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 Ulusal bir bulut ortamında Microsoft Graph API 'Lerini nasıl çağıracağınızı öğrenmek için, [Ulusal bulut dağıtımlarında Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments)' a gidin.
 
@@ -78,7 +78,7 @@ Microsoft Identity platformunu kullanarak bir uygulama oluşturmayı öğrenmek 
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-- [Azure Devlet Kurumları](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Almanya](https://docs.microsoft.com/azure/germany/)
-- [Azure AD kimlik doğrulaması temelleri](authentication-scenarios.md)
+- [Azure Devlet Kurumları](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Almanya](../../germany/index.yml)
+- [Azure AD kimlik doğrulaması temelleri](./authentication-vs-authorization.md)

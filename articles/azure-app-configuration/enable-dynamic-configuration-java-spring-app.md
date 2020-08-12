@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327931"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121570"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: bir Java Spring uygulamasında dinamik yapılandırma kullanma
 
@@ -36,7 +36,7 @@ Sonra, *pom.xml* dosyasını bir metin düzenleyicisinde açın ve için bir ekl
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -46,11 +46,33 @@ Sonra, *pom.xml* dosyasını bir metin düzenleyicisinde açın ve için bir ekl
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-Dosyayı kaydedin, sonra uygulamanızı her zamanki gibi derleyin ve çalıştırın.
+## <a name="run-and-test-the-app-locally"></a>Uygulamayı yerel olarak çalıştırma ve test etme
+
+1. Spring Boot uygulamanızı Maven’le oluşturun ve çalıştırın.
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. Bir tarayıcı penceresi açın ve URL 'ye gidin: `http://localhost:8080` .  Anahtarınızla ilişkili iletiyi görürsünüz. 
+
+    Ayrıca, uygulamanızı test etmek için *kıvrımlı* da kullanabilirsiniz, örneğin: 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. Dinamik yapılandırmayı test etmek için uygulamanızla ilişkili Azure uygulama yapılandırma portalını açın. **Yapılandırma Gezgini**' ni seçin ve görüntülenmiş anahtarın değerini güncelleştirin, örneğin:
+    | Anahtar | Değer |
+    |---|---|
+    | uygulama/yapılandırma. ileti | Merhaba-güncelleştirildi |
+
+1. Yeni iletinin görüntülendiğini görmek için tarayıcı sayfasını yenileyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

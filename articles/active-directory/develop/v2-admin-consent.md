@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868674"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119615"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda yönetici onayı
 
@@ -88,5 +88,5 @@ Başarılı bir yanıtta görülen parametrelere ekleme, hata parametreleri aşa
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bkz. [bir uygulamayı çok kiracılı olarak dönüştürme](howto-convert-app-to-be-multi-tenant.md)
 - [Yetkilendirme kodu verme akışı sırasında OAuth 2,0 protokol katmanında izin nasıl desteklendiğini](v2-oauth2-auth-code-flow.md#request-an-authorization-code)öğrenin.
-- Çok kiracılı bir uygulamanın "Kullanıcı" ve "Yönetici" onayını uygulamak için, daha gelişmiş çok katmanlı uygulama düzenlerini desteklemek için [izin çerçevesini nasıl kullanabileceği hakkında](active-directory-devhowto-multi-tenant-overview.md) bilgi edinin.
+- Çok kiracılı bir uygulamanın "Kullanıcı" ve "Yönetici" onayını uygulamak için, daha gelişmiş çok katmanlı uygulama düzenlerini desteklemek için [izin çerçevesini nasıl kullanabileceği hakkında](./howto-convert-app-to-be-multi-tenant.md) bilgi edinin.
 - [Azure AD uygulama onayı deneyimlerini](application-consent-experience.md) anlama

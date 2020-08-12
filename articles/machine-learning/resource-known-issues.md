@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/06/2020
-ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905505"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120771"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup başarısız olur**: 
+    * Windows üzerinde automl_setup bir Anaconda Isteminden çalıştırın. Miniconda yüklemek için [buraya](https://docs.conda.io/en/latest/miniconda.html)tıklayın.
+    * Komutunu çalıştırarak Conda 64 bit 'ın, 32 bit yerine, yüklü olduğundan emin olun `conda info` . `platform` `win-64` Windows veya Mac için olmalıdır `osx-64` .
+    * Conda 4.4.10 veya üzeri sürümünün yüklü olduğundan emin olun. Komutu ile sürümü kontrol edebilirsiniz `conda -V` . Önceki bir sürümü yüklüyse, şu komutu kullanarak güncelleştirebilirsiniz: `conda update conda` .
+    * 'Un`gcc: error trying to exec 'cc1plus'`
+      *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory`Hatayla karşılaşılırsa, ther komutunu kullanarak derleme Essentials 'ı yüklersiniz `sudo apt-get install build-essential` .
+      * Yeni bir Conda ortamı oluşturmak için automl_setup ilk parametre olarak yeni bir ad geçirin. Kullanarak mevcut Conda ortamlarını görüntüleyin `conda env list` ve ile kaldırın `conda env remove -n <environmentname>` .
+      
+* **automl_setup_linux. sh başarısız**: automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur:`unable to execute 'gcc': No such file or directory`-
+  1. 53 ve 80 giden bağlantı noktalarının etkinleştirildiğinden emin olun. Azure VM 'de, Azure portalından VM 'yi seçip Ağ ' a tıklayarak bunu yapabilirsiniz.
+  2. Şu komutu çalıştırın:`sudo apt-get update`
+  3. Şu komutu çalıştırın:`sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`Yeniden çalıştır
+
+* **Configuration. ipynb başarısız olur**:
+  * Yerel Conda için, automl_setup önce susccessfully çalışmasına sahip olduğundan emin olun.
+  * Subscription_id doğru olduğundan emin olun. Tüm hizmetler ' i ve ardından abonelikler ' i seçerek Azure portalında subscription_id bulun. "<" ve ">" karakterlerinin subscription_id değere dahil edilmemelidir. Örneğin, `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` geçerli biçimi vardır.
+  * Aboneliğe katkıda bulunan veya sahip erişiminin olduğundan emin olun.
+  * Bölgenin desteklenen bölgelerden biri olup olmadığını denetleyin: `eastus2` , `eastus` ,, `westcentralus` `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
+  * Azure portalını kullanarak bölgeye erişim sağlayın.
+  
+* **Otomatik Mlconfig içeri aktarma işlemi başarısız oldu**: otomatik makine öğrenimi sürüm 1.0.76 ' de, yeni sürüme güncelleştirmeden önce önceki sürümün kaldırılmasını gerektiren paket değişiklikleri vardı. `ImportError: cannot import name AutoMLConfig`V 1.0.76 'den v 1.0.76 veya üzeri BIR SDK sürümünden yükseltmeden sonra bu hatayla karşılaşırsanız, şunu çalıştırarak hatayı çözün: `pip uninstall azureml-train automl` ve sonra `pip install azureml-train-auotml` . Automl_setup. cmd betiği bunu otomatik olarak yapar. 
+
+* **Workspace. from_config başarısız oldu**: ws = workspace. from_config () ' çağrısı başarısız olursa-
+  1. Configuration. ipynb Not defterinin başarıyla çalıştığından emin olun.
+  2. Not defteri, çalıştığı klasör altında olmayan bir klasörden çalıştırıldıysa `configuration.ipynb` , aml_config klasörü ve dosyanın içerdiği config.jsdosyayı yeni klasöre kopyalayın. Workspace. from_config Not defteri klasörü veya onun üst klasörü için config.jsokur.
+  3. Yeni bir abonelik, kaynak grubu, çalışma alanı veya bölge kullanılıyorsa, `configuration.ipynb` Not defterini yeniden çalıştırdığınızdan emin olun. config.jsdoğrudan üzerinde değiştirmek, yalnızca belirtilen abonelik altındaki belirtilen kaynak grubunda çalışma alanı zaten mevcutsa çalışır.
+  4. Bölgeyi değiştirmek istiyorsanız, lütfen çalışma alanını, kaynak grubunu veya aboneliği değiştirin. `Workspace.create`, belirtilen bölge farklı olsa da, zaten varsa, bir çalışma alanı oluşturmaz veya güncelleştirmeyecektir.
+  
+* **Örnek Not defteri başarısız oldu**: örnek bir not defteri, önceden yapılan, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız olursa:
+  * Jupyter not defterinde correctcorrect çekirdeğinin seçildiğinden emin olun. Çekirdek, Not Defteri sayfasının sağ üst kısmında görüntülenir. Varsayılan değer azure_automl. Çekirdeğin Not defterinin bir parçası olarak kaydedildiğini unutmayın. Bu nedenle, yeni bir Conda ortamına geçerseniz, not defterinde yeni çekirdeği seçmeniz gerekir.
+      * Azure Notebooks, Python 3,6 olmalıdır. 
+      * Yerel Conda ortamları için, automl_setup içinde belirttiğiniz Conda envioronment adı olmalıdır.
+  * Not defterinin kullandığınız SDK sürümü için olduğundan emin olun. `azureml.core.VERSION`Jupyter Not defteri hücresinde ÇALıŞTıRARAK SDK sürümünü denetleyebilirsiniz. `Branch`Düğmeye tıklayarak `Tags` ve ardından sürümü seçerek örnek Not defterlerinin önceki sürümünü GitHub 'dan indirebilirsiniz.
+
+* **Windows 'da bir sayısal tuş alma işlemi başarısız oluyor**: bazı Windows ortamları, en son Python sürümü 3.6.8 ile bir sayısal tuş, yükleme hatası görür. Bu sorunu görürseniz Python sürüm 3.6.7 ile deneyin.
+
+* **Sayısal tuş takımı içeri aktarma başarısız**: otomatik ml Conda ortamındaki TensorFlow sürümünü denetleyin. Desteklenen sürümler < 1,13 ' dir. Sürüm >= 1,13 olduğunda TensorFlow 'un ortamdan kaldırılması, TensorFlow sürümünü kontrol edebilir ve aşağıdaki gibi kaldırabilirsiniz.
+  1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
+  2. `pip freeze` `tensorflow` Bulunursa, listelenen sürüm < 1,13 olmalıdır.
+  3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall tensorflow` komut kabuğu 'nda, onay için y girin.
 
 ## <a name="deploy--serve-models"></a>Modelleri dağıtma ve sunma
 

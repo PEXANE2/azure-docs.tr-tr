@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7654de8bf26c3eaa3c93c8efcf99577fe88e6f24
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540351"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116334"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory için AppSource sertifikası alma
 
@@ -47,7 +47,7 @@ Uygulamanızda birden çok kiratı etkinleştirmek için şu adımları izleyin:
 
 *Tek kiracılı bir uygulama* , yalnızca tanımlı BIR Azure AD örneğinin kullanıcılarından gelen oturum açma işlemlerini kabul eden bir uygulamadır. Dış kullanıcılar (diğer kuruluşların iş veya okul hesapları dahil olmak üzere), her bir kullanıcıyı bir Konuk hesabı olarak uygulamanın kayıtlı olduğu Azure AD örneğine ekledikten sonra tek kiracılı bir uygulamada oturum açabilir. 
 
-Azure AD [B2B işbirliği](../b2b/what-is-b2b.md) aracılığıyla Azure AD 'ye Konuk hesabı olarak kullanıcı ekleyebilirsiniz ve bunu [programlı](../../active-directory-b2c/code-samples.md)bir şekilde yapabilirsiniz. B2B kullanılırken, kullanıcılar oturum açmak için davetiye gerektirmeyen bir Self Servis Portalı oluşturabilir. Daha fazla bilgi için bkz. [Azure AD B2B Için self servis portalı işbirliği kaydı](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+Azure AD [B2B işbirliği](../external-identities/what-is-b2b.md) aracılığıyla Azure AD 'ye Konuk hesabı olarak kullanıcı ekleyebilirsiniz ve bunu [programlı](../../active-directory-b2c/code-samples.md)bir şekilde yapabilirsiniz. B2B kullanılırken, kullanıcılar oturum açmak için davetiye gerektirmeyen bir Self Servis Portalı oluşturabilir. Daha fazla bilgi için bkz. [Azure AD B2B Için self servis portalı işbirliği kaydı](../external-identities/self-service-portal.md).
 
 Tek kiracılı uygulamalar *Iletişim beni* deneyime etkinleştirebilir, ancak appsource 'un önerdiği tek tıklamayla/ücretsiz deneme deneyimini etkinleştirmek istiyorsanız, uygulamanızda çok kiracılı hale getirebilirsiniz.
 
@@ -108,7 +108,7 @@ AppSource deneme deneyimi hakkında daha fazla bilgi için [Bu videoya](https://
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Azure AD oturum açma işlemlerini destekleyen uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
+- Azure AD oturum açma işlemlerini destekleyen uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](./v1-authentication-scenarios.md).
 - SaaS uygulamanızı AppSource 'ta listeleme hakkında daha fazla bilgi için bkz. [Appsource Iş ortağı bilgileri](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>Destek alma

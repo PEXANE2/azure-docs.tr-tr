@@ -12,12 +12,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 61a3884ce4d1075dbcac61a0c202c3a393d2d943
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904771"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118153"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Kullanıcıları oturum açın ve iOS veya macOS uygulamasından Microsoft Graph çağırın
 
@@ -55,7 +55,7 @@ Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi i
 - [iOS örnek kodu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 - [macOS örnek kodu](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
-## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+## <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 1. Xcode ' u açın ve **Yeni bir Xcode projesi oluştur**' u seçin.
 2. İOS uygulamaları için **iOS**  >  **tek görünüm uygulaması** ' nı seçin ve **İleri ' yi**seçin.
@@ -149,7 +149,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-Yukarıda değiştirmeniz gereken tek değer, `kClientID` [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)olarak atanan değerdir. Bu değer, uygulamayı Azure portal kaydetmek için Bu öğreticinin başındaki adım sırasında kaydettiğiniz MSAL yapılandırma verilerinin bir parçasıdır.
+Yukarıda değiştirmeniz gereken tek değer, `kClientID` [Uygulama Kimliğiniz](./developer-glossary.md#application-id-client-id)olarak atanan değerdir. Bu değer, uygulamayı Azure portal kaydetmek için Bu öğreticinin başındaki adım sırasında kaydettiğiniz MSAL yapılandırma verilerinin bir parçasıdır.
 
 ## <a name="configure-xcode-project-settings"></a>Xcode proje ayarlarını yapılandırma
 
@@ -842,4 +842,4 @@ Oturum açtıktan sonra, uygulama Microsoft Graph uç noktasından döndürülen
 
 ## <a name="get-help"></a>Yardım alın
 
-Bu öğreticiyle veya Microsoft Identity platformu ile ilgili sorun yaşıyorsanız [Yardım ve destek](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) bölümünü ziyaret edin.
+Bu öğreticiyle veya Microsoft Identity platformu ile ilgili sorun yaşıyorsanız [Yardım ve destek](./developer-support-help-options.md) bölümünü ziyaret edin.

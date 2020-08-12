@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129194"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115246"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
 Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel Microsoft hesapları, iş hesapları veya okul hesapları olan kullanıcıların oturumunu nasıl imzalayabileceğinizi öğrenmek için bir kod örneği kullanırsınız. Angular SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/).
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >
 > 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabınızı seçin ve Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Azure portal [tek sayfalı bir uygulamayı kaydetmek](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) için yönergeleri izleyin.
+> 1. Azure portal [tek sayfalı bir uygulamayı kaydetmek](./scenario-spa-app-registration.md) için yönergeleri izleyin.
 > 1. Uygulama kaydlarınızın **kimlik doğrulama** bölmesine yeni bir platform ekleyin ve yenıden yönlendirme URI 'sini kaydedin: `http://localhost:4200/` .
 > 1. Bu hızlı başlangıç, [örtük verme akışını](v2-oauth2-implicit-grant-flow.md)kullanır. **Kimlik belirteçleri** ve **erişim belirteçleri**için **örtülü izin** ayarlarını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulama kullanıcılar üzerinde oturum açar ve bir API çağırır.
 
@@ -99,7 +99,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 >|Değer adı|Açıklama|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
->|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+>|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).|
 >|Enter_the_Tenant_Info_Here| Aşağıdaki seçeneklerden birine ayarlayın: uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu değeri dizin (KIRACı) kimliği veya kiracı adı (örneğin, **contoso.Microsoft.com**) ile değiştirin. Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin. Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin. |
 >|Enter_the_Redirect_Uri_Here|İle değiştirin **http://localhost:4200** .|
 >|Önbellekelocation  | Seçim Kimlik doğrulama durumu için tarayıcı depolamayı ayarlayın. Varsayılan değer **sessionStorage**' dır.   |
@@ -142,5 +142,4 @@ Tarayıcı uygulamayı yükledikten sonra **oturum aç**' ı seçin. İlk kez ot
 Ardından, bir kullanıcı oturumunu nasıl kullanabileceğinizi ve angular öğreticisinde belirteç edinmeyi öğrenin:
 
 > [!div class="nextstepaction"]
-> [Angular öğreticisi](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Angular öğreticisi](./tutorial-v2-angular.md)
