@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087500"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166952"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache HBase verilerini okuyup yazmak için Apache Spark kullanma
 
-Apache HBase genellikle alt düzey API (taramalar, alır ve koyar) ile veya Apache Phoenix kullanarak bir SQL söz dizimi ile sorgulanır. Apache ayrıca Apache Spark HBase bağlayıcısını de sağlar. Bağlayıcı, HBase tarafından depolanan verileri sorgulamak ve değiştirmek için kullanışlı ve performanslı bir alternatiftir.
+Apache HBase genellikle alt düzey API (taramalar, alır ve koyar) ile veya Apache Phoenix kullanarak bir SQL söz dizimi ile sorgulanır. Apache ayrıca Apache Spark HBase bağlayıcısını de sağlar. Bağlayıcı, HBase tarafından depolanan verileri sorgulamak ve değiştirmek için kullanışlı ve verimli bir alternatiftir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -27,11 +27,10 @@ Apache HBase genellikle alt düzey API (taramalar, alır ve koyar) ile veya Apac
 
 ## <a name="overall-process"></a>Genel işlem
 
-Spark kümenizi HDInsight kümenizi sorgulamak üzere etkinleştirmeye yönelik üst düzey işlem aşağıdaki gibidir:
+Spark kümenizi HBase kümenizi sorgulamak üzere etkinleştirmeye yönelik üst düzey işlem aşağıdaki gibidir:
 
 1. Bazı örnek verileri HBase 'de hazırlayın.
-2. HBase küme yapılandırma klasörünüzdeki hbase-site.xml dosyasını edinin (/etc/HBase/conf).
-3. Spark 2 yapılandırma klasörünüze bir hbase-site.xml kopyası yerleştirin (/etc/mini \ sunucu).
+2. hbase-site.xml dosyasını HBase küme yapılandırma klasöründen (/etc/HBase/conf) alın ve hbase-site.xml bir kopyasını Spark 2 yapılandırma klasörünüze yerleştirin (/etc/mini \ sunucu). (Isteğe bağlı: Bu işlemi otomatikleştirmek için HDInsight ekibi tarafından sunulan betiği kullanın)
 4. , `spark-shell` Seçeneğinde Maven koordinatlarıyla Spark HBase bağlayıcısından başvurma komutunu çalıştırın `packages` .
 5. Spark ile HBase arasındaki şemayı eşleyen bir katalog tanımlayın.
 6. RDD veya DataFrame API 'Lerini kullanarak HBase verileriyle etkileşim kurun.
@@ -76,36 +75,77 @@ Bu adımda, Apache HBase 'de, daha sonra Spark kullanarak sorgulayabilmeniz içi
     ```hbase
     exit
     ```
+    
+## <a name="run-scripts-to-set-up-connection-between-clusters"></a>Kümeler arasında bağlantı kurmak için betikleri çalıştırma
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>hbase-site.xml Spark kümesine Kopyala
+Kümeler arasındaki iletişimi ayarlamak için, kümelerinizde iki komut dosyası çalıştırmak için aşağıdaki adımları izleyin. Bu betikler, aşağıdaki ' iletişim el ile ayarlama ' bölümünde açıklanan dosya kopyalama işlemini otomatikleştirebilir. 
 
-Yerel depolamadan hbase-site.xml, Spark kümenizin varsayılan depolama alanının köküne kopyalayın.  Yapılandırmanızı yansıtmak için aşağıdaki komutu düzenleyin.  Ardından, açık SSH oturumunından HBase kümesine şu komutu girin:
+* HBase kümesinden çalıştırdığınız betik, `hbase-site.xml` IP eşleme bilgilerini Spark kümenize bağlı olan varsayılan depolama alanına yükler ve HBase 'e yükler. 
+* Spark kümesinden çalıştırdığınız betik, iki yardımcı betiği düzenli aralıklarla çalıştırmak için iki cron işi ayarlar:  
+    1.  HBase cron işi – `hbase-site.xml` Spark varsayılan depolama hesabından yerel düğüme yeni dosyaları ve HBase IP eşlemesini indirin
+    2.  Spark cron işi – bir Spark ölçeklendirmesinin oluşup olmadığını ve kümenin güvenli olup olmadığını denetler. Öyleyse, `/etc/hosts` yerel olarak depolanan HBase IP eşlemesini dahil etmek için Düzenle
 
-| Söz dizimi değeri | Yeni değer|
-|---|---|
-|[URI düzeni](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Depolama alanınızı yansıtacak şekilde değiştirin.  Aşağıdaki sözdizimi, güvenli aktarım özellikli blob depolamaya yöneliktir.|
-|`SPARK_STORAGE_CONTAINER`|Spark kümesi için kullanılan varsayılan depolama kapsayıcısı adıyla değiştirin.|
-|`SPARK_STORAGE_ACCOUNT`|Spark kümesi için kullanılan varsayılan depolama hesabı adıyla değiştirin.|
+__Note__: devam etmeden önce, Spark kümesinin depolama hesabını HBase kümenize ikincil depolama hesabı olarak eklediğinizden emin olun. Aşağıda gösterildiği gibi betiklerin sırada olduğundan emin olun.
 
-```bash
-hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
-```
 
-Ardından, SSH bağlantınızı HBase kümenize çıkın.
+1. Değişiklikleri aşağıdaki noktalara göre uygulamak için HBase kümenizdeki [betik eylemini](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) kullanın: 
 
-```bash
-exit
-```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Spark kümenize hbase-site.xml koyma
+    |Özellik | Değer |
+    |---|---|
+    |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
+    |Düğüm türleri|Bölge|
+    |Parametreler|`-s SECONDARYS_STORAGE_URL`|
+    |Kalıcı|evet|
 
-1. SSH kullanarak Spark kümenizin baş düğümüne bağlanın. Aşağıdaki komutu `SPARKCLUSTER` Spark kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
+    * `SECONDARYS_STORAGE_URL`Spark tarafı varsayılan depolamanın URL 'sidir. Parametre örneği:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+
+
+2.  Aşağıdaki noktalara göre değişiklikleri uygulamak için Spark kümenizde betik eylemi kullanın:
+
+    |Özellik | Değer |
+    |---|---|
+    |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
+    |Düğüm türleri|Baş, çalışan, Zookeeper|
+    |Parametreler|`-s "SPARK-CRON-SCHEDULE"`(isteğe bağlı) `-h "HBASE-CRON-SCHEDULE"` seçim|
+    |Kalıcı|evet|
+
+
+    * Bu kümenin güncelleştirme olup olmadığını ne sıklıkta otomatik olarak denetlemesini istediğinizi belirtebilirsiniz. Varsayılan:-s "*/1 * * * *"-h 0 (Bu örnekte, Spark cron her dakikada çalışır, ancak HBase cron çalıştırılmıyor)
+    * HBase cron varsayılan olarak ayarlanmamış olduğundan, HBase kümenize ölçeklendirme gerçekleştirirken bu betiği yeniden çalıştırmanız gerekir. HBase kümeniz sık ölçeklenirken, HBase cron işini otomatik olarak ayarlamayı seçebilirsiniz. Örneğin: `-h "*/30 * * * *"` her 30 dakikada bir denetim gerçekleştirmek için betiği yapılandırır. Bu, genel depolama hesabındaki yeni HBase bilgilerinin yerel düğüme indirilmesini otomatik hale getirmek için HBase cron zamanlamasını düzenli aralıklarla çalıştırır.
+    
+    
+
+## <a name="set-up-communication-manually-optional-if-provided-script-in-above-step-fails"></a>İletişimi el ile ayarlayın (Yukarıdaki adımda belirtilen komut dosyası başarısız olursa Isteğe bağlı)
+
+__Note:__ Bu adımların, kümelerden birinin bir ölçeklendirme etkinliğine sahip olduğu her seferinde gerçekleştirmesi gerekir.
+
+1. Yerel depolamadan hbase-site.xml, Spark kümenizin varsayılan depolama alanının köküne kopyalayın.  Yapılandırmanızı yansıtmak için aşağıdaki komutu düzenleyin.  Ardından, açık SSH oturumunından HBase kümesine şu komutu girin:
+
+    | Söz dizimi değeri | Yeni değer|
+    |---|---|
+    |[URI düzeni](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Depolama alanınızı yansıtacak şekilde değiştirin.  Aşağıdaki sözdizimi, güvenli aktarım özellikli blob depolamaya yöneliktir.|
+    |`SPARK_STORAGE_CONTAINER`|Spark kümesi için kullanılan varsayılan depolama kapsayıcısı adıyla değiştirin.|
+    |`SPARK_STORAGE_ACCOUNT`|Spark kümesi için kullanılan varsayılan depolama hesabı adıyla değiştirin.|
+
+    ```bash
+    hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+    ```
+
+2. Ardından, SSH bağlantınızı HBase kümenize çıkın.
+
+    ```bash
+    exit
+    ```
+
+
+3. SSH kullanarak Spark kümenizin baş düğümüne bağlanın. Aşağıdaki komutu `SPARKCLUSTER` Spark kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
     ```
 
-2. `hbase-site.xml`Spark kümenizin varsayılan depolama alanından kümenin yerel depolama alanındaki Spark 2 yapılandırma klasörüne kopyalamak için aşağıdaki komutu girin:
+4. `hbase-site.xml`Spark kümenizin varsayılan depolama alanından kümenin yerel depolama alanındaki Spark 2 yapılandırma klasörüne kopyalamak için aşağıdaki komutu girin:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -125,7 +165,7 @@ exit
     |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
     |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. Bu Spark kabuğu örneğini açık tutun ve [bir katalog ve sorgu tanımlamaya](#define-a-catalog-and-query)devam edin. SHC Core depo sürümleriniz için karşılık gelen jar dosyaları dışındaki ' ı bulamazsanız okumaya devam edin. 
+2. Bu Spark kabuğu örneğini açık tutun ve [bir katalog ve sorgu tanımlamaya](#define-a-catalog-and-query)devam edin. SHC çekirdek deposundaki sürümleriniz için karşılık gelen jar dosyaları dışındaki ' ı bulamazsanız okumaya devam edin. 
 
 Jar dosyaları dışındaki 'ı doğrudan [Spark-HBase-Connector](https://github.com/hortonworks-spark/shc) GitHub dalından oluşturabilirsiniz. Örneğin, Spark 2,3 ve HBase 1,1 ile çalıştırıyorsanız, şu adımları izleyin:
 

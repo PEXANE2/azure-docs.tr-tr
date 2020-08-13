@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760812"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167037"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama
 
 BLOB depolama alanına bir kapsayıcıyı Windows veya Linux tabanlı bir Azure sanal makinesi (VM) veya NFS 3,0 protokolünü kullanarak şirket içinde çalışan bir Windows veya Linux sisteminden bağlayabilirsiniz. Bu makalede adım adım yönergeler sunulmaktadır. Blob depolamada NFS 3,0 protokol desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Storage 'da (Önizleme) ağ dosya sistemi (NFS) 3,0 protokol desteği](network-file-system-protocol-support.md).
 
 > [!NOTE]
-> Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu ve şu bölgelerde kullanılabilir: ABD Doğu, ABD Orta ve Kanada Orta.
+> Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu ve şu bölgelerde kullanılabilir: ABD Doğu, ABD Orta, ABD Orta Batı, Avustralya Güneydoğu, Kuzey Avrupa, UK Batı, Kore Orta, Kore Güney ve Kanada Orta.
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>1. Adım: NFS 3,0 protokol özelliğini aboneliğiniz ile kaydetme
 
@@ -92,7 +92,7 @@ Hesabı yapılandırırken şu değerleri seçin:
 
 |Ayar | Değer|
 |----|---|
-|Konum|Şu bölgelerden biri: ABD Doğu, ABD Orta ve Kanada Orta |
+|Konum|Şu bölgelerden biri: ABD Doğu, ABD Orta, ABD Orta Batı, Avustralya Güneydoğu, Kuzey Avrupa, UK Batı, Kore Orta, Kore Güney ve Kanada Orta |
 |Performans|Premium|
 |Hesap türü|BlockBlobStorage|
 |Çoğaltma|Yerel olarak yedekli depolama (LRS)|
