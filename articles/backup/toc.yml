@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: Azure VM’lerini PowerShell ile yedekleme
       href: tutorial-backup-azure-vm.md
-    - name: Diski geri yükleme
+    - name: Azure CLI ile bir VM’yi geri yükleme
       href: tutorial-restore-disk.md
     - name: Dosyaları tek tek geri yükleme
       href: tutorial-restore-files.md

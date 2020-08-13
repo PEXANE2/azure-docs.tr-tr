@@ -19,6 +19,8 @@
       href: terminology.md
     - name: Roller ve gereksinimler
       href: concepts-roles-permissions.md
+    - name: Fiyatlandırmayı anlama
+      href: concepts-pricing.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -29,12 +31,12 @@
   items:
     - name: İzleme
       href: how-to-monitor.md
-    - name: Veri kümesi eşlemelerini yapılandırma
-      href: how-to-configure-mapping.md
     - name: Sorun giderme
       href: data-share-troubleshoot.md
     - name: Veri kümeleri ekleme
       href: how-to-add-datasets.md
+    - name: Veri kümesi eşlemelerini yapılandırma
+      href: how-to-configure-mapping.md
     - name: Alıcı ekleme
       href: how-to-add-recipients.md
     - name: Davet silme

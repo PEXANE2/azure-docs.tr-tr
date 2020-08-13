@@ -117,30 +117,16 @@
   items:
     - name: Metin okuma belgeleri
       href: index-text-to-speech.yml
-    - name: Genel Bakış
-      items:
-        - name: Metin okuma nedir?
-          href: text-to-speech.md
-        - name: Metin okuma temelleri
-          href: text-to-speech-basics.md
-    - name: Hızlı Başlangıç
-      items:
-        - name: Konuşmayı hoparlöre sentezleme
-          href: quickstarts/text-to-speech.md
-        - name: Konuşmayı ses dosyasına sentezleme
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: Uzun süreli ses ile konuşmayı sentezleme
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: Metin okuma nedir?
+      href: text-to-speech.md
+    - name: Metin okuma için hızlı başlangıç
+      href: get-started-text-to-speech.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: SSML ile sentezi geliştirme
           href: speech-synthesis-markup.md
         - name: Uzun Ses API'siyle konuşmayı sentezleme
           href: long-audio-api.md
-        - name: REST ile seslerin bir listesini alma (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: REST ile metin okumayı dönüştürme (Python)
-          href: quickstart-python-text-to-speech.md
     - name: Özelleştirme
       items:
         - name: Sorumlu dağıtım

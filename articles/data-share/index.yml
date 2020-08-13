@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
-  ms.date: 09/13/2019
-  ms.openlocfilehash: 66350050a84617b789c6a73c38170dc25dad331d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/11/2020
+  ms.openlocfilehash: 43de19b3caa87bf410ad30a237c2c9e91beba63f
+  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73802895"
+  ms.lasthandoff: 08/12/2020
+  ms.locfileid: "88136380"
 landingContent:
 - title: Azure Veri Paylaşımı hakkında
   linkLists:
@@ -24,13 +24,17 @@ landingContent:
     links:
     - text: Azure Veri Paylaşımı nedir?
       url: overview.md
+    - text: Desteklenen veri depoları
+      url: supported-data-stores.md
   - linkListType: concept
     links:
-    - text: Azure Veri Paylaşımı kavramları
+    - text: Azure Veri Paylaşımı terminolojisi
       url: terminology.md
     - text: Azure Veri Paylaşımı rolleri ve gereksinimleri
       url: concepts-roles-permissions.md
-- title: Veri paylaşımı
+    - text: Fiyatlandırmayı anlama
+      url: concepts-pricing.md
+- title: Veri paylaşma ve alma
   linkLists:
   - linkListType: tutorial
     links:
@@ -40,21 +44,25 @@ landingContent:
       url: subscribe-to-data-share.md
   - linkListType: how-to-guide
     links:
-    - text: Veri kümesi eşlemelerini yapılandırma
-      url: how-to-configure-mapping.md
     - text: Veri kümeleri ekleme
       url: how-to-add-datasets.md
+    - text: Veri kümesi eşlemelerini yapılandırma
+      url: how-to-configure-mapping.md
 - title: İzleme ve yönetme
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Veri Paylaşımı’nı izleme
+    - text: Paylaşımınızı izleme
       url: how-to-monitor.md
     - text: Yaygın sorunları giderme
       url: data-share-troubleshoot.md
-    - text: Veri kümeleri ekleme
-      url: how-to-add-datasets.md
+    - text: Alıcı ekleme
+      url: how-to-add-recipients.md
     - text: Davet silme
       url: how-to-delete-invitation.md
     - text: Paylaşım aboneliğini iptal etme
       url: how-to-revoke-share-subscription.md
+    - text: Azure Veri Paylaşımı’nda güvenliğe genel bakış
+      url: security.md
+    - text: Olağanüstü durum kurtarma
+      url: disaster-recovery.md

@@ -46,6 +46,8 @@
       href: how-to-integrate-certificate-authority.md
     - name: Sorun giderme - Sertifikaları içeri aktarma
       href: import-cert-faqs.md
+    - name: Anahtar kasasından sertifikaları dışarı aktarma
+      href: how-to-export-certificate.md
 - name: Başvuru
   items:
     - name: Azure PowerShell

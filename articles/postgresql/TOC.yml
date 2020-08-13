@@ -169,14 +169,16 @@
               href: howto-move-regions-portal.md
     - name: Hiper Ölçek (Citus)
       items:
-        - name: Düğümler
-          href: concepts-hyperscale-nodes.md
         - name: Dağıtılmış veriler
-          href: concepts-hyperscale-distributed-data.md
-        - name: Dağıtım sütunu seçme
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: Tablo birlikte bulundurma
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: Düğümler ve tablolar
+              href: concepts-hyperscale-nodes.md
+            - name: Uygulama türünü belirleme
+              href: concepts-hyperscale-app-type.md
+            - name: Dağıtım sütunu seçme
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: Tablo birlikte bulundurma
+              href: concepts-hyperscale-colocation.md
         - name: Veri erişimi ve güvenlik
           items:
             - name: Güvenlik duvarı kuralları
@@ -341,12 +343,16 @@
       items:
         - name: Kullanıcı oluşturma
           href: howto-hyperscale-create-users.md
-        - name: Ölçek
+        - name: Sunucu grubu boyutu
           href: howto-hyperscale-scaling.md
         - name: Güvenlik duvarını yönetme
           items:
             - name: Azure portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Dağıtılmış veriler
+          items:
+            - name: Tabloları dağıtma ve değiştirme
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: Yüksek kullanılabilirlik
           href: howto-hyperscale-high-availability.md
         - name: İzleme
@@ -361,12 +367,22 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Başvuru
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager şablonu
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Tek sunucu
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: Resource Manager şablonu
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Hiper Ölçek (Citus)
+      items:
+        - name: SQL API işlevleri
+          href: reference-hyperscale-functions.md
+        - name: Sunucu parametreleri
+          href: reference-hyperscale-parameters.md
+        - name: Sistem tabloları
+          href: reference-hyperscale-metadata.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

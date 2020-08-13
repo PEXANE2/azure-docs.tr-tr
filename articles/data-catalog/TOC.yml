@@ -1,10 +1,11 @@
-- name: Veri Kataloğu Belgeleri
+- name: Veri Kataloğu belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Veri Kataloğu nedir?
       href: overview.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Azure Veri Kataloğu oluşturma
       href: data-catalog-get-started.md
@@ -20,8 +21,6 @@
       href: data-catalog-dsr.md
     - name: Azure Veri Kataloğu'nu benimseme
       href: data-catalog-adopting-data-catalog.md
-    - name: Ön koşullar
-      href: data-catalog-prerequisites.md
     - name: SSS
       href: data-catalog-frequently-asked-questions.md
 - name: Nasıl yapılır

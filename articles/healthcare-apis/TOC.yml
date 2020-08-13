@@ -4,6 +4,8 @@
   items:
     - name: FHIR için Azure API'si hakkında
       href: overview.md
+    - name: FHIR için Azure IoT Bağlayıcısı hakkında (önizleme)
+      href: overview.md#azure-iot-connector-for-fhir-preview
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

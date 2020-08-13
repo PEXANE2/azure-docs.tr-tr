@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: Azure Arc özellikli sunucular hakkında
       href: ./servers/overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Sunucu aracıları için Arc’ı etkinleştirme
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: Öğreticiler
+  items:
+    - name: Uyumluluğu değerlendirmek için ilke atama
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: Makineyi izleme
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler

@@ -29,6 +29,8 @@
       href: quickstart-configure-your-solution.md
     - name: IoT için Azure Güvenlik Merkezi’nin modül ikizini oluşturma
       href: quickstart-create-security-twin.md
+    - name: Güvenlik önerilerini araştırma
+      href: quickstart-investigate-security-recommendations.md
     - name: Özel güvenlik uyarıları oluşturma
       href: quickstart-create-custom-alerts.md
     - name: Güvenlik uyarılarını araştırma

@@ -117,10 +117,14 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell aracılığıyla
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: Sorun giderme
-          href: azure-stack-edge-troubleshoot.md
-        - name: Microsoft Desteği’ne başvurma
-          href: azure-stack-edge-contact-microsoft-support.md
+            - name: Sorun giderme
+              items:
+                - name: Günlükler aracılığıyla
+                  href: azure-stack-edge-troubleshoot.md
+                - name: Sorunları sıralama
+                  href: azure-stack-edge-troubleshoot-ordering.md
+                - name: Microsoft Desteği’ne başvurma
+                  href: azure-stack-edge-contact-microsoft-support.md
         - name: İzleme
           href: azure-stack-edge-monitor.md
         - name: Cihazın iade edilmesi
