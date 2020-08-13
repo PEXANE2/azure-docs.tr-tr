@@ -1,23 +1,23 @@
 ---
-title: Azure portal-özel bağlantılarla yönetilen disklere içeri/dışarı aktarma erişimini kısıtlama (Önizleme)
-description: Azure portal ile yönetilen diskleriniz için özel bağlantıları (Önizleme) etkinleştirin. Diskleri yalnızca sanal ağınızda güvenli bir şekilde dışa ve içeri aktarmanıza olanak tanır.
+title: Azure portal-özel bağlantılarla yönetilen disklere içeri/dışarı aktarma erişimini kısıtlama
+description: Şu anda önizleme aşamasında olan Azure portal yönetilen diskleriniz için özel bağlantıları etkinleştirin. Sanal ağınızda bulunan diskleri güvenli bir şekilde dışa ve içe aktarmanıza olanak tanır.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 75b5ba995ff87649ec8a7a96a7c816bf2bec7e44
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535818"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135853"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure portal-özel bağlantılarla yönetilen diskler için içeri/dışarı aktarma erişimini kısıtlama (Önizleme)
+# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal-özel bağlantılarla yönetilen diskler için içeri/dışarı aktarma erişimini kısıtlama
 
-Eklenmemiş yönetilen diskler ve anlık görüntüler için, verileri bölgesel genişletme, olağanüstü durum kurtarma ve adli analiz için verileri okumak üzere diğer bölgelere aktarmaya yönelik bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturabilirsiniz. Ayrıca, VHD 'yi şirket içi diskinizdeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz.  Artık yalnızca Azure sanal ağınızdan içeri ve dışarı aktarmayı kısıtlamak için [özel bağlantılardan](../private-link/private-link-overview.md) (Önizleme) yararlanabilirsiniz. Üstelik, verilerin hiçbir zaman ortak internet üzerinden geçmeyeceğinden ve özel bağlantılar kullandığınızda her zaman güvenli Microsoft omurga ağı içinde hareket etmenizin daha da devam edersiniz. 
+Yönetilen diskler için özel bağlantılar desteği şu anda önizlemededir ve yönetilen disklerin içeri ve dışarı aktarılmasını, yalnızca Azure sanal ağınızda gerçekleşmeleri için kısıtlayabilmenizi sağlar. Eklenmemiş yönetilen diskler ve anlık görüntüler için, verileri bölgesel genişletme, olağanüstü durum kurtarma ve adli analiz için verileri okumak üzere diğer bölgelere aktarmaya yönelik bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturabilirsiniz. Ayrıca, VHD 'yi şirket içi diskinizdeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Sanal ağı ve yönetilen disklerdeki istemciler arasındaki ağ trafiği, Microsoft omurga ağı üzerinde yalnızca sanal ağ ve özel bir bağlantı üzerinden geçiş yaparken, genel İnternet 'te pozlamayı ortadan kaldırır.
 
 Bir özel uç nokta oluşturarak bir disk erişim kaynağı oluşturabilir ve aynı abonelikte sanal ağınızla bağlantı oluşturabilirsiniz. Özel bağlantılar aracılığıyla verileri dışa ve içe aktarmak için bir diski veya anlık görüntüyü disk erişimiyle ilişkilendirmeniz gerekir. Ayrıca, diskin NetworkAccessPolicy özelliğini veya anlık görüntüsünü olarak ayarlamanız gerekir `AllowPrivate` . 
 
@@ -31,7 +31,7 @@ NetworkAccessPolicy özelliğini, `DenyAll` herhangi bir gövdenin bir disk veya
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yönetilen diskleri dışarı ve içeri aktarmak için özel uç noktaları kullanmak üzere, bu özelliği aboneliğinizde etkinleştirmeniz gerekir. mdprivatelinks@microsoftAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle. com adresine bir e-posta gönderin.
 
@@ -46,7 +46,7 @@ Disklerinizin bağlı olduğu sanal makınenın sanal ağını de yüklemeniz ge
 
 1. Yeni bir disk erişim kaynağı oluşturmak için **+ Ekle** ' yi seçin.
 1. Oluştur dikey penceresinde aboneliğinizi, bir kaynak grubunu seçin, bir ad girin ve bir bölge seçin.
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **İncele ve oluştur**’u seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
@@ -83,7 +83,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
     > Seçilen alt ağ için etkin bir ağ güvenlik grubunuz (NGS) varsa, bu yalnızca bu alt ağdaki özel uç noktalar için devre dışı bırakılır. Bu alt ağdaki diğer kaynakların NSG zorlaması olmaya devam edecektir.
 
 1. Uygun alt ağı seçin
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **İncele ve oluştur**’u seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Özel uç nokta oluşturma iş akışı, üçüncü dikey pencerenin ekran görüntüsü. Sanal ağ ve alt ağ vurgulandı.":::
 

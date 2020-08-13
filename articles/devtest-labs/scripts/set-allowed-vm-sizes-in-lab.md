@@ -1,23 +1,15 @@
 ---
 title: 'PowerShell betiği: Azure Lab Services izin verilen VM boyutlarını ayarlama | Microsoft Docs'
-description: Bu makaleler, Azure Lab Services izin verilen sanal makine (VM) boyutlarını ayarlayan bir örnek PowerShell betiği içerir.
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 50ce8034e8c028e3f385baf455c44c6ea33fe6f8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+description: Bu makale, Azure Lab Services izin verilen sanal makine (VM) boyutlarını ayarlayan bir örnek PowerShell betiği içerir.
+ms.devlang: azurecli
+ms.topic: sample
+ms.date: 08/11/2020
+ms.openlocfilehash: 476b86b7c577db17efc39dbac64a527432c916b6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290370"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136159"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Azure Lab Services izin verilen VM boyutlarını ayarlamak için PowerShell 'i kullanma
 
@@ -27,7 +19,7 @@ Bu örnek PowerShell betiği, Azure Lab Services izin verilen sanal makine (VM) 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Laboratuvar**. Betik, mevcut bir laboratuvarınızın olmasını gerektirir. 
 
 ## <a name="sample-script"></a>Örnek betik

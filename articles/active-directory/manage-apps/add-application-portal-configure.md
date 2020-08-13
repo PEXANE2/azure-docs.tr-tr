@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808414"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135496"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
 Önceki hızlı başlangıçta, Azure Active Directory (Azure AD) kiracınıza bir uygulama eklediniz. Bir uygulama eklediğinizde, Azure AD kiracınıza uygulamanın kimlik sağlayıcısı olduğunu bildirmek için izin vermiş olursunuz. Artık uygulama için özelliklerden bazılarını yapılandıracaksınız.
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD kiracınızdaki bir uygulamanın özelliklerini yapılandırmak için şunlar gerekir:
 
@@ -48,37 +48,24 @@ Uygulama özelliklerini düzenlemek için:
     - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların onu [erişim paneli](https://myapps.microsoft.com) ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirler. (Office 365 veya Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)
-4. Gereksinimleriniz için en iyi seçenekleri seçmenize yardımcı olması için aşağıdaki tabloları kullanın.
+    
+    > [!TIP]
+    > Kullanıcıları atamak, gezinme 'nin **Kullanıcılar ve gruplar** bölümünde gerçekleşir.
 
-   - *Atanan* kullanıcılar için davranış:
+    Üç seçenek birbirinden bağımsız olarak değiştirilebilir ve sonuçta ortaya çıkan davranış her zaman belirgin değildir. Yardımcı olabilecek bir tablo aşağıda verilmiştir:
+    
+    | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Uygulamaya atanmış olan veya olmayan kullanıcılar için davranış. |
+    |---|---|---|---|
+    | Evet | Evet | Evet | Atanan kullanıcılar uygulamayı görebilir ve oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Evet | Evet | Hayır  | Atanan kullanımlar uygulamayı göremez, ancak oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Evet | Hayır  | Evet | Atanan kullanıcılar uygulamayı görebilir ve oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez, ancak oturum açabilir. |
+    | Evet | Hayır  | Hayır  | Atanan kullanıcılar uygulamayı göremez, ancak oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez, ancak oturum açabilir. |
+    | Hayır  | Evet | Evet | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Hayır  | Evet | Hayır  | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Hayır  | Hayır  | Evet | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Hayır  | Hayır  | Hayır  | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
 
-       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanan kullanıcı deneyimi | Atanan kullanıcı deneyimi |
-       |---|---|---|---|---|
-       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanan kullanıcılar oturum açabilir mi? | Atanan kullanıcılar uygulamayı görebilir mi?* |
-       | Evet | Evet | Evet | Evet | Evet  |
-       | Evet | Evet | Hayır  | Evet | Hayır   |
-       | Evet | Hayır  | Evet | Evet | Evet  |
-       | Evet | Hayır  | Hayır  | Evet | Hayır   |
-       | Hayır  | Evet | Evet | Hayır  | Hayır   |
-       | Hayır  | Evet | Hayır  | Hayır  | Hayır   |
-       | Hayır  | Hayır  | Evet | Hayır  | Hayır   |
-       | Hayır  | Hayır  | Hayır  | Hayır  | Hayır   |
-
-   - *Atanmayan* kullanıcılar için davranış:
-
-       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanmayan kullanıcı deneyimi | Atanmayan kullanıcı deneyimi |
-       |---|---|---|---|---|
-       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
-       | Evet | Evet | Evet | Hayır  | Hayır   |
-       | Evet | Evet | Hayır  | Hayır  | Hayır   |
-       | Evet | Hayır  | Evet | Evet | Hayır   |
-       | Evet | Hayır  | Hayır  | Evet | Hayır   |
-       | Hayır  | Evet | Evet | Hayır  | Hayır   |
-       | Hayır  | Evet | Hayır  | Hayır  | Hayır   |
-       | Hayır  | Hayır  | Evet | Hayır  | Hayır   |
-       | Hayır  | Hayır  | Hayır  | Hayır  | Hayır   |
-
-     *Kullanıcı uygulamayı erişim panelinde ve Office 365 uygulama başlatıcıda görebilir mi?
+4. İşiniz bittiğinde **Kaydet**' i seçin.
 
 ## <a name="use-a-custom-logo"></a>Özel logo kullanma
 

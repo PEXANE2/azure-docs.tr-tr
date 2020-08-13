@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424077"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135836"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -136,8 +136,8 @@ NAT ağ geçidi tarafından sunulan yalnızca Internet giden senaryosu Internet 
 
 | Yön | Kaynak |
 |:---:|:---:|
-| Gelen | Örnek düzeyi genel IP 'si olan VM |
-| Giden | NAT Gateway |
+| Inbound | Örnek düzeyi genel IP 'si olan VM |
+| Outbound | NAT Gateway |
 
 VM, giden için NAT Gateway kullanır.  Gelen kaynaklı etkilenmemektedir.
 
@@ -151,8 +151,8 @@ VM, giden için NAT Gateway kullanır.  Gelen kaynaklı etkilenmemektedir.
 
 | Yön | Kaynak |
 |:---:|:---:|
-| Gelen | ortak Load Balancer |
-| Giden | NAT Gateway |
+| Inbound | ortak Load Balancer |
+| Outbound | NAT Gateway |
 
 Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmasının yerini NAT ağ geçidi almıştır.  Gelen kaynaklı etkilenmemektedir.
 
@@ -166,8 +166,8 @@ Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmas
 
 | Yön | Kaynak |
 |:---:|:---:|
-| Gelen | Örnek düzeyi genel IP ve genel Load Balancer VM |
-| Giden | NAT Gateway |
+| Inbound | Örnek düzeyi genel IP ve genel Load Balancer VM |
+| Outbound | NAT Gateway |
 
 Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmasının yerini NAT ağ geçidi almıştır.  VM, giden için NAT ağ geçidini de kullanacaktır.  Gelen kaynaklı etkilenmemektedir.
 
@@ -237,7 +237,7 @@ Her NAT ağ geçidi, atanan giden IP adresi başına 64.000 bağlantıyı destek
 
 Kaynak ağ adresi çevirisi (SNAT), bir akışın kaynağını farklı bir IP adresinden kaynaklanan bir şekilde yeniden yazar.  NAT ağ geçidi kaynakları, bağlantı noktası adresi çevirisi (PAT) ile yaygın olarak anılan bir, SNAT değişkenini kullanır. PAT kaynak adresi ve kaynak bağlantı noktasını yeniden yazar. SNAT ile, özel adres sayısı ve bunların çevrilmiş ortak adresleri arasında sabit bir ilişki yoktur.  
 
-### <a name="fundamentals"></a>Temel Bilgiler
+### <a name="fundamentals"></a>Temeller
 
 Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ geçidi, genel IP adresi kaynağı 65.52.0.2 kullanıyor.
 
@@ -322,7 +322,6 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresi ve hedef bağ
 
 - NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
 - IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.  NAT, IPv6 ön ekine sahip bir alt ağa dağıtılamaz.
-- NSG akış günlüğü, NAT kullanılırken desteklenmez.
 - NAT birden çok sanal ağa yayılamaz.
 
 ## <a name="suggestions"></a>Öneriler

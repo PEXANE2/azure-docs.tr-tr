@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824792"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135547"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
-İzleme çözümleri, belirli bir uygulama veya hizmet işleminin ek analizini sağlamak için Azure 'daki hizmetlerden yararlanır. Bu makalede, Azure 'daki çözümleri izleme hakkında kısa bir genel bakış ve bunları kullanma ve yükleme hakkındaki ayrıntılar sunulmaktadır. Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar.
+Azure Izleyici 'de çözüm izleme, belirli bir Azure uygulaması veya hizmeti işleminin analizini sağlar. Bu makalede, Azure 'daki çözümleri izleme hakkında kısa bir genel bakış ve bunları kullanma ve yükleme hakkındaki ayrıntılar sunulmaktadır. Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar.
 
 ## <a name="use-monitoring-solutions"></a>İzleme çözümlerini kullanma
 
-Çalışma alanında yüklü her bir çözümün kutucuğunu görüntülemek için Azure Izleyici 'de **genel bakış** sayfasını açın.
+Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalışma alanında yüklü her bir çözüm için bir kutucuk görüntüler. Bu sayfayı açmak için [Azure Portal](https://ms.portal.azure.com) **Azure izleyici** 'ye gidin. **Öngörüler** menüsünde, **Öngörüler**merkezini açmak için **diğer** ' i seçin ve ardından **Log Analytics çalışma alanları**' na tıklayın.
 
-1. [Azure portalına](https://ms.portal.azure.com) gidin. **İzleme**araması yapın ve seçin.
-1. **Öngörüler** menüsünde, **daha fazla**' yı seçin.
-1. Çalışma alanını veya kutucuklar için kullanılan zaman aralığını değiştirmek için ekranın üst kısmındaki açılan kutuları kullanın.
-1. Bir çözümün kutucuğuna tıklayarak toplanan verilerin daha ayrıntılı analizini içeren görünümünü açın.
+[![Öngörüler Merkezi](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![Genel Bakış](media/solutions/overview.png)
+
+Çalışma alanını veya kutucuklar için kullanılan zaman aralığını değiştirmek için ekranın üst kısmındaki açılan kutuları kullanın. Bir çözümün kutucuğuna tıklayarak toplanan verilerin daha ayrıntılı analizini içeren görünümünü açın.
+
+[![Genel Bakış](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 İzleme çözümleri birden çok Azure kaynağı türü içerebilir ve bir çözüme dahil olan tüm kaynakları diğer kaynaklar gibi görüntüleyebilirsiniz. Örneğin, çözüme dahil edilen herhangi bir günlük sorgusu, [sorgu Gezgini](../log-query/get-started-portal.md#load-queries) 'Ndeki **çözüm sorguları** altında listelenmiştir ve [günlük sorgularıyla](../log-query/log-query-overview.md)geçici analiz gerçekleştirirken bu sorguları kullanabilirsiniz.
 
@@ -101,9 +101,9 @@ Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlar
 
    - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
 
-1. Giriş yapın.
+1. Oturum açın.
 
-   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.  Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.  Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
     ```azurecli
     az login

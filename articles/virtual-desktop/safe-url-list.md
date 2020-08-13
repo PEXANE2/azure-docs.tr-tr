@@ -3,15 +3,15 @@ title: Windows sanal masaüstü güvenli URL listesi-Azure
 description: Windows sanal masaüstü dağıtımınızın istendiği gibi çalıştığından emin olmak için engellemesini kaldırmanız gereken URL 'lerin bir listesi.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067214"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135870"
 ---
 # <a name="safe-url-list"></a>Güvenli URL listesi
 
@@ -27,11 +27,12 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
 |*.core.windows.net|443|Aracı trafiği|AzureCloud|
 |*.servicebus.windows.net|443|Aracı trafiği|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Aracı trafiği|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|Aracı trafiği|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
 |kms.core.windows.net|1688|Windows etkinleştirme|İnternet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
 | 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | Yok |
+| 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/security-overview.md#azure-platform-considerations) | Yok |
 
 >[!IMPORTANT]
 >Windows sanal masaüstü artık FQDN etiketini destekliyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](../firewall/protect-windows-virtual-desktop.md).

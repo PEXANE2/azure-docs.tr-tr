@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5f0d66a515ed13f96645e5916af2b01841950375
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846607"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135751"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
 
@@ -49,6 +49,9 @@ ms.locfileid: "87846607"
 ## <a name="release-notes"></a>Sürüm notları
 
 ### <a name="v2-builds"></a>v2 derlemeleri
+
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* Sık geçiş yollarının kullanılmasına izin veren [v3 SDK](sql-api-sdk-dotnet-standard.md) ile kira deposu uyumluluğu eklendi. Bir uygulama v3 SDK 'ya geçiş yapabilir ve herhangi bir durumu kaybetmeden değişiklik akışı işlemci kitaplığına geri geçirebilir.
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
 * `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` `FeedProcessing.IChangeFeedObserver.CloseAsync` Bölüm bulunamazsa veya hedef çoğaltma okuma oturumuyla güncel değilse, ' a bir kapatma nedeni gönderildiğinde bir durum düzeltildi. Bu durumlarda `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ve `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` kapatma nedenleri artık kullanılıyor.
@@ -193,6 +196,7 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |11 Ağustos 2020 |--- |
 | [2.3.1](#2.3.1) |30 Temmuz 2020 |--- |
 | [2.3.0](#2.3.0) |2 Nisan 2020 |--- |
 | [2.2.8](#2.2.8) |28 Ekim 2019 |--- |

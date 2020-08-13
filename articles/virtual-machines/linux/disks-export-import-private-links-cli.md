@@ -1,23 +1,23 @@
 ---
-title: Azure CLı-özel bağlantılarla yönetilen disklere içeri/dışarı aktarma erişimini kısıtla (Önizleme)
-description: Azure CLı ile yönetilen diskleriniz için özel bağlantıları (Önizleme) etkinleştirin. Diskleri yalnızca sanal ağınızda güvenli bir şekilde dışa ve içeri aktarmanıza olanak tanır.
+title: Azure CLı-özel bağlantılarla yönetilen disklere içeri/dışarı aktarma erişimini kısıtlama
+description: Azure CLı ile yönetilen diskleriniz için özel bağlantıları etkinleştirin. Diskleri yalnızca sanal ağınızda güvenli bir şekilde dışa ve içeri aktarmanıza olanak tanır.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420302"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136414"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLı-özel bağlantılarla yönetilen diskler için içeri/dışarı aktarma erişimini kısıtla (Önizleme)
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLı-özel bağlantılarla yönetilen diskler için içeri/dışarı aktarma erişimini kısıtlama
 
-Yönetilen disklerin dışarı ve içeri aktarılmasını kısıtlamak ve Azure sanal ağınızdaki istemcilerden [özel bir bağlantı](../../private-link/private-link-overview.md) üzerinden verilere güvenli bir şekilde erişmek için [Özel uç noktaları](../../private-link/private-endpoint-overview.md) (Önizleme) kullanabilirsiniz. Özel uç nokta, yönetilen diskler hizmetiniz için sanal ağ adres alanından bir IP adresi kullanır. Sanal ağ ve yönetilen diskler arasındaki ağ trafiği, sanal ağ üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. 
+Yönetilen diskler ile özel bağlantılar için destek şu anda önizlemededir. [Özel uç noktaları](../../private-link/private-endpoint-overview.md) , yönetilen disklerin dışarı ve içeri aktarılmasını kısıtlamak ve Azure sanal ağınızdaki istemcilerden [özel bir bağlantı](../../private-link/private-link-overview.md) üzerinden güvenli bir şekilde erişmek için kullanabilirsiniz. Özel uç nokta, yönetilen diskler hizmetiniz için sanal ağ adres alanından bir IP adresi kullanır. Sanal ağı ve yönetilen disklerdeki istemciler arasındaki ağ trafiği, Microsoft omurga ağı üzerinde yalnızca sanal ağ ve özel bir bağlantı üzerinden geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
 
 Yönetilen diskleri içeri/dışarı aktarmaya yönelik özel bağlantıları kullanmak için, önce bir disk erişim kaynağı oluşturup, özel bir uç nokta oluşturarak bu aboneliği aynı abonelikte bir sanal ağa bağlarsınız. Daha sonra bir disk veya anlık görüntüyü disk erişimi örneğiyle ilişkilendirin. Son olarak, diskin NetworkAccessPolicy özelliğini veya anlık görüntüsünü olarak ayarlayın `AllowPrivate` . Bu, sanal ağınıza erişimi sınırlandırır. 
 

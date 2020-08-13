@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.openlocfilehash: e52fe8e738f2a35204078b27019ea3742c608560
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f775a0e1dcb82afc9a458ce4ee608a52ec06dc4c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122177"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135921"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -36,6 +36,9 @@ Key Vault için bulut tabanlı bir uygulamanın kimlik doğrulamasının en kola
 Azure CLı az keykasa Set-Policy komutunu veya Azure PowerShell set-AzKeyVaultAccessPolicy cmdlet 'ini kullanarak anahtar kasanıza AD grubu izinleri verin. Örnekler için bkz. [uygulama, Azure AD grubu veya anahtar kasanıza Kullanıcı erişimi verin](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps#give-the-principal-access-to-your-key-vault).
 
 Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yönetimi (ıAM) rolü olması gerekir. Aksi takdirde, oturum açamayacak ve aboneliğe erişmek için yetersiz haklarla başarısız olacak. Yönetilen kimlikleri olan Azure AD grupları, belirteci yenilemek ve etkili hale gelmesi için 8 saat kadar sürebilir.
+
+### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Mevcut erişim ilkelerini silmeden ARM şablonuyla Key Vault nasıl yeniden dağırım?
+Şu anda Key Vault ARM redopleyment, Key Vault tüm erişim ilkelerini silecek ve bunları ARM şablonundaki erişim ilkesiyle değiştirecek. Key Vault erişim ilkeleri için artımlı bir seçenek yoktur. Key Vault erişim ilkelerini korumak için, Key Vault ' de var olan erişim ilkelerini okumanız ve ARM şablonunu bu ilkelerle doldurmanız gerekir.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aşağıdaki hata türleri için önerilen sorun giderme adımları
 * HTTP 401: kimliği doğrulanmamış Istek- [sorun giderme adımları](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes#http-401-unauthenticated-request)

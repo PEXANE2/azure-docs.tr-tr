@@ -2,19 +2,19 @@
 title: Azure Key Vault-CLı ile geçici silme kullanma
 description: CLı kod alıntılarını kullanarak geçici silme örneği örnekleri
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385747"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135938"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault geçici silmeyi CLI ile kullanma
 
@@ -33,7 +33,7 @@ CLı için Key Vault özel başvuru bilgileri için bkz. [Azure clı Key Vault b
 
 Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
-| İşlem | Description | Kullanıcı izni |
+| İşlem | Açıklama | Kullanıcı izni |
 |:--|:--|:--|
 |Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Yeni Anahtar Kasası
 
-Yeni bir Anahtar Kasası için geçici silme özelliğinin etkinleştirilmesi, oluşturma Komutunuz için geçici silme etkin bayrağını ekleyerek oluşturma sırasında yapılır.
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+Geçici silme, varsayılan olarak tüm anahtar kasalarında otomatik olarak etkinleştirilir. 31 Aralık 2020 ' e kadar, geçici silme etkin olmadan yeni bir Anahtar Kasası oluşturmak artık mümkün olmayacaktır.
 
 ### <a name="verify-soft-delete-enablement"></a>Geçici silme etkinleştirmeyi doğrula
 

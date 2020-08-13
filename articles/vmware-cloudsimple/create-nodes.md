@@ -1,6 +1,6 @@
 ---
 title: CloudSimple-Azure tarafından VMware çözümü için düğüm sağlama
-description: CloudSimple dağıtımıyla VMWare 'nize nasıl düğüm ekleneceğini öğrenin
+description: Azure portal CloudSimple dağıtımıyla, VMWare 'nize nasıl düğüm ekleneceğini öğrenin. Özel bulut ortamınız için Kullandıkça Öde kapasitesini ayarlayabilirsiniz.
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024815"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140743"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümü için düğüm sağlama
 
@@ -44,7 +44,7 @@ Azure portal düğümleri sağlayın. Daha sonra, CloudSimple özel bulut ortam�
 11. Sağlanacak düğüm sayısını seçin.
 12. **Gözden geçir + oluştur**' u seçin.
 13. Ayarları gözden geçirin. Ayarları değiştirmek için **önceki**'ni tıklatın.
-14. **Oluştur**'u seçin.
+14. **Oluştur**’u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

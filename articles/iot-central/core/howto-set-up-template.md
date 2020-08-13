@@ -7,13 +7,13 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: contperfq1
+ms.openlocfilehash: a75fbeb9a12f61f827411e56c57ff6a4460ab083
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041604"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136278"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama
 
@@ -130,7 +130,7 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 | Birim | Bir telemetri değeri için **mph**, **%** veya ** &deg; C**gibi bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
 | Yorum | Telemetri yeteneği hakkında herhangi bir yorum. |
-| Description | Telemetri yeteneğinin açıklaması. |
+| Açıklama | Telemetri yeteneğinin açıklaması. |
 
 ### <a name="properties"></a>Özellikler
 
@@ -151,7 +151,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Birim | **Mph**, **%** veya ** &deg; C**gibi özellik değeri için bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
 | Yorum | Özellik yeteneği hakkında herhangi bir açıklama. |
-| Description | Özellik yeteneğinin açıklaması. |
+| Açıklama | Özellik yeteneğinin açıklaması. |
 
 ### <a name="commands"></a>Komutlar
 
@@ -166,7 +166,7 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 | Yetenek Türü | Komutundaki. |
 | Komut | `SynchronousExecutionType`. |
 | Yorum | Komut özelliğiyle ilgili herhangi bir yorum. |
-| Description | Komut yeteneğinin açıklaması. |
+| Açıklama | Komut yeteneğinin açıklaması. |
 | İstek | Etkinleştirilirse, istek parametresinin tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
 | Yanıt | Etkinleştirilirse, komut yanıtının tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
 

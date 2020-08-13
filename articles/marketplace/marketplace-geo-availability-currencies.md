@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902108"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136346"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -179,11 +179,7 @@ Yayımlamadan önce herhangi bir fiyatı ayarlamak için, fiyatlandırma elektro
 > [!NOTE]
 > Planınızdaki bir pazar bedeli yayımlandıktan sonra, daha sonra değiştirilemez. Fiyatları yayımlamadan önce fiyatların doğru olduğundan emin olmak için, fiyatlandırma elektronik tablosunu dışarı aktarın ve her pazardaki fiyatları gözden geçirin.
 
-## <a name="rate-changes"></a>Oran değişiklikleri
-
-Yerel fiyatları hesaplamak için kullandığımız ücretler günlük olarak güncelleştirilir. Bu hesaplama, ISV sayfayı kaydettiğinde yapılır ve yayımlamadan önce fiyatları dışa aktarıp inceleyerek tüm ücretleri gözden geçirebilir.
-
-### <a name="retrieving-currency-information-by-api"></a>API 'ye göre para birimi bilgilerini alma
+## <a name="retrieving-currency-information-by-api"></a>API 'ye göre para birimi bilgilerini alma
 
 Ayrı fiyatlar (nasıl ayarlandıklarından bağımsız olarak, kaydedildiği gündeki Exchange ücretleri tarafından etkilenmiş olabilir) bir API kullanılarak alınabilir; para birimi bilgileri olamaz.
 

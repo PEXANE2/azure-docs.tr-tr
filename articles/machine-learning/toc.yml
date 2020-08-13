@@ -161,11 +161,8 @@
             - name: Kullanıcıları ve rolleri yönetme
               href: how-to-assign-roles.md
             - name: Sanal ağları kullanma
-              displayName: 'vnet, blob'
+              displayName: 'vnet, blob, private endpoint, private link'
               href: how-to-enable-virtual-network.md
-            - name: Özel Bağlantı kullanma
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
             - name: TLS ile web hizmetlerinin güvenliğini sağlama
               displayName: ssl
               href: how-to-secure-web-service.md
@@ -457,8 +454,8 @@
         - name: İşlem hatlarında hata ayıklama ve sorun giderme
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Application Insights’ta işlem hatlarında hata ayıklama
-          href: how-to-debug-pipelines-application-insights.md
+        - name: İşlem hattı verilerine yönelik günlükleri Application Insights’a kaydetme
+          href: how-to-log-pipelines-application-insights.md
         - name: Paralel çalıştırma adımını kullanma
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md

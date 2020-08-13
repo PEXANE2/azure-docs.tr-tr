@@ -1,22 +1,22 @@
 ---
-title: Azure yönetilen kimliklerini kullanarak kimlik doğrulama
+title: Uygulama yapılandırmasına erişmek için Yönetilen kimlikler kullanma
 titleSuffix: Azure App Configuration
-description: Azure yönetilen kimliklerini kullanarak Azure Uygulama yapılandırmasında kimlik doğrulama
+description: Yönetilen kimlikleri kullanarak Azure Uygulama yapılandırmasında kimlik doğrulama
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056833"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135479"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Azure yönetilen kimliklerle tümleştirin
+# <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama yapılandırmasına erişmek için Yönetilen kimlikler kullanma
 
-Azure Active Directory [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , bulut uygulamanız için gizli dizi yönetimini basitleştirir. Yönetilen bir kimlikle, kodunuz üzerinde çalıştığı Azure hizmeti için oluşturulan hizmet sorumlusunu kullanabilir. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız. 
+Azure Active Directory [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , bulut uygulamanız için gizli dizi yönetimini basitleştirir. Yönetilen bir kimlikle, kodunuz üzerinde çalıştığı Azure hizmeti için oluşturulan hizmet sorumlusunu kullanabilir. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız.
 
 Azure Uygulama yapılandırması ve .NET Core, .NET Framework ve Java Spring istemci kitaplıklarında yerleşik olarak bulunan yönetilen kimlik desteği vardır. Bunu kullanmanız gerekmese de, yönetilen kimlik gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir gizli dizi olmadan doğrudan kodunuza katıştırabilirsiniz.
 
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -84,7 +84,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. Uygulama yapılandırma deponuzda uç noktayı bulun. Bu URL, Azure portal mağazanın **erişim tuşları** sekmesinde listelenir.
 
-1. *appsettings.js*açın ve aşağıdaki betiği ekleyin. *\<service_endpoint>* Köşeli ayraçları dahil, uygulama yapılandırma deponuzu URL 'siyle değiştirin. 
+1. *appsettings.js*açın ve aşağıdaki betiği ekleyin. *\<service_endpoint>* Köşeli ayraçları dahil, uygulama yapılandırma deponuzu URL 'siyle değiştirin.
 
     ```json
     "AppConfig": {
@@ -183,6 +183,9 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
     Artık diğer uygulama yapılandırma anahtarı gibi Key Vault başvurularına erişebilirsiniz. Yapılandırma sağlayıcısı, `KeyVaultClient` Key Vault kimlik doğrulaması yapmak için yapılandırdığınız ve değeri alacak olan ' i kullanacaktır.
 
+> [!NOTE]
+> `ManagedIdentityCredential`yalnızca yönetilen kimlik kimlik doğrulamasını destekler. Yerel ortamlarda çalışmaz. Kodu yerel olarak çalıştırmak istiyorsanız `DefaultAzureCredential` , hizmet sorumlusu kimlik doğrulamasını da destekleyen kullanmayı göz önünde bulundurun. Ayrıntılar için [bağlantıyı](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) denetleyin.
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>Yerel Git’ten dağıtım
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Yönetilen kimliği diğer dillerde kullanma
 
-.NET Framework ve Java Spring uygulama yapılandırma sağlayıcılarının yönetilen kimlik için yerleşik desteği de vardır. Bu sağlayıcılardan birini yapılandırdığınızda, deponun URL uç noktasını tam bağlantı dizesi yerine kullanabilirsiniz. 
+.NET Framework ve Java Spring uygulama yapılandırma sağlayıcılarının yönetilen kimlik için yerleşik desteği de vardır. Bu sağlayıcılardan birini yapılandırdığınızda, deponun URL uç noktasını tam bağlantı dizesi yerine kullanabilirsiniz.
 
 Örneğin, *App.config* dosyasında aşağıdaki ayarları belirtmek için hızlı başlangıçta oluşturulan .NET Framework konsol uygulamasını güncelleştirebilirsiniz:
 

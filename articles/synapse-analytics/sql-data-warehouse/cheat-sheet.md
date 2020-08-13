@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543325"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136108"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
 
@@ -37,13 +37,13 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 
 ## <a name="data-migration"></a>Veri geçişi
 
-İlk olarak, verilerinizi [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya Azure Blob depolama alanına yükleyin. Daha sonra, PolyBase kullanarak verilerinizi hazırlama tablolarına yükleyin. Aşağıdaki yapılandırmayı kullanın:
+İlk olarak, verilerinizi [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya Azure Blob depolama alanına yükleyin. Sonra, verilerinizi hazırlama tablolarına yüklemek için [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Önizleme) kullanın. Aşağıdaki yapılandırmayı kullanın:
 
 | Tasarım | Öneri |
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
 | Dizinleme | Yığın |
-| Bölümleme | Hiçbiri |
+| Bölümleme | Yok |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
 [Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
@@ -109,7 +109,7 @@ Geçmiş verilerinizde oluşan büyük toplu güncelleştirmeler için, INSERT, 
 
 ## <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
 
- Otomatik istatistikler genel kullanıma sunulduğunda, istatistiklerin el ile Bakımı gereklidir. Verilerinizde *önemli* değişiklikler olacağından, istatistiklerin güncelleştirilmesi önemlidir. Bu, sorgu planlarınızın iyileştirilmesine yardımcı olur. Tüm istatistiklerinizi tutmanız çok uzun sürerse, hangi sütunlarda istatistikler olduğu konusunda daha seçici olun.
+Verilerinizde *önemli* değişiklikler olacağından, istatistiklerin güncelleştirilmesi önemlidir. *Önemli* değişikliklerin oluşup oluşmadığını öğrenmek için bkz. [güncelleştirme istatistikleri](sql-data-warehouse-tables-statistics.md#update-statistics) . Güncelleştirilmiş istatistikler sorgu planlarınızı iyileştirir. Tüm istatistiklerinizi tutmanız çok uzun sürerse, hangi sütunlarda istatistikler olduğu konusunda daha seçici olun.
 
 Güncelleştirmelerin sıklığını da tanımlayabilirsiniz. Örneğin, yeni değerlerin eklenme ihtimali olan tarih sütunlarını her gün güncelleştirmeyi tercih edebilirsiniz. En çok faydayı, birleştirmelerin bulunduğu sütunlar, WHERE yan tümcesinde kullanılan sütunlar ve GROUP BY içinde bulunan sütunlar için istatistik tutarak elde edebilirsiniz.
 

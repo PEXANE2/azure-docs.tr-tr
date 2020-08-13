@@ -1,23 +1,15 @@
 ---
 title: PowerShell-Azure Lab Services VHD dosyasından özel görüntü oluşturma
 description: Bu PowerShell betiği, Azure Lab Services bir VHD dosyasından özel bir görüntü oluşturur.
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: ba522745aceba2b63ed8b71692f50f9a9e5ea676
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.devlang: azurecli
+ms.topic: sample
+ms.date: 08/11/2020
+ms.openlocfilehash: d22e6e1d226e826bf114a0fdb378879b828d9b4a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282611"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136193"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>PowerShell kullanarak Azure Lab Services bir VHD dosyasından özel bir görüntü oluşturun
 
@@ -27,7 +19,7 @@ Bu örnek PowerShell betiği Azure Lab Services içindeki bir VHD dosyasından �
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Laboratuvar**. Betik, mevcut bir laboratuvarınızın olmasını gerektirir. 
 
 ## <a name="sample-script"></a>Örnek betik

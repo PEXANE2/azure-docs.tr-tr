@@ -4,17 +4,17 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068300"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135394"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -128,6 +128,8 @@ Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda
 - Azure CLı kullanarak Web uygulamanıza özel uç nokta dağıtmak için bkz. [Azure CLI Ile Web uygulamasına özel olarak bağlanma][howtoguide2]
 - PowerShell kullanarak Web uygulamanız için özel uç nokta dağıtmak üzere, bkz. [PowerShell Ile Web uygulamasına özel olarak bağlanma][howtoguide3]
 - Azure şablonu kullanarak Web uygulamanıza özel uç nokta dağıtmak için bkz. [Azure şablonuyla Web uygulamasına özel olarak bağlanma][howtoguide4]
+- Uçtan uca örnek, ön uç Web uygulamasını VNet ekleme ve ARM şablonuyla özel uç nokta ile güvenli bir arka uç Web uygulamasına bağlama, bu [hızlı başlangıç][howtoguide5]
+- Uçtan uca örnek, ön uç Web uygulamasını VNet ekleme ve özel uç nokta ile terrayform ile güvenli bir arka uç Web uygulamasına bağlama, bu [örneğe][howtoguide6] bakın
 
 
 <!--Links-->
@@ -144,3 +146,5 @@ Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
 [howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

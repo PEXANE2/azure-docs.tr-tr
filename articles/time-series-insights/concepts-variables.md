@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/12/2020
+ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289945"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140692"
 ---
 # <a name="time-series-model-variables"></a>Zaman serisi model değişkenleri
 
@@ -27,14 +27,14 @@ Aşağıdaki tabloda, her değişken türü için uygun olan özellikler görün
 
 [![Zaman serisi modeli değişken tablosu](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
-#### <a name="numeric-variables"></a>Sayısal değişkenler
+## <a name="numeric-variables"></a>Sayısal değişkenler
 
 | Variable Özelliği | Açıklama |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken değeri | Cihaz veya sensörlerden gelen ve zaman serisi Ifadeleri kullanılarak dönüştürülen hesaplama için kullanılan telemetri değerleri. Sayısal tür değişkenleri *Double*türünde olmalıdır.|
 | Değişken ilişkilendirme | Enterpolasyon, var olan verileri kullanarak bir sinyalin nasıl yeniden oluşturulacağını belirtir. *Adım* ve *Doğrusal* enterpolasyon seçenekleri sayısal değişkenler için kullanılabilir. |
-| Değişken toplama | [Sayısal değişken türleri için desteklenen toplama işlevleri](https://docs.microsoft.com/rest/api/time-series-insights/preview#numeric-variable-kind-1)aracılığıyla hesaplamalar gerçekleştirin. |
+| Değişken toplama | [Sayısal değişken türleri için desteklenen toplama işlevleri](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)aracılığıyla hesaplamalar gerçekleştirin. |
 
 Değişkenler aşağıdaki JSON örneğine uyar:
 
@@ -57,7 +57,7 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 }
 ```
 
-#### <a name="categorical-variables"></a>Kategorik değişkenler
+## <a name="categorical-variables"></a>Kategorik değişkenler
 
 | Variable Özelliği | Açıklama |
 | --- | ---|
@@ -73,7 +73,7 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "$event.Status.Long" 
+     "tsx": "$event.Status.Long"
 },
   "interpolation": {
     "kind": "step",
@@ -97,12 +97,12 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 }
 ```
 
-#### <a name="aggregate-variables"></a>Toplam değişkenleri
+## <a name="aggregate-variables"></a>Toplam değişkenleri
 
 | Variable Özelliği | Açıklama |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
-| Değişken toplama | [Toplu değişken türleri için desteklenen toplama işlevleri](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1)aracılığıyla hesaplamalar gerçekleştirin. |
+| Değişken toplama | [Toplu değişken türleri için desteklenen toplama işlevleri](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)aracılığıyla hesaplamalar gerçekleştirin. |
 
 Değişkenler aşağıdaki JSON örneğine uyar:
 
@@ -123,4 +123,3 @@ Değişkenler, zaman serisi modelinin tür tanımında depolanır ve depolanan t
 * [Zaman serisi modeli](./concepts-model-overview.md)hakkında daha fazla bilgi edinin.
 
 * [Sorgu API 'leri](./concepts-query-overview.md)kullanarak değişkenlerin satır içi tanımlanması hakkında daha fazla bilgi edinin.
-

@@ -1,23 +1,23 @@
 ---
-title: Azure Veri Kataloğu’ndaki veri varlıklarını kaydetme
+title: "Öğretici: Azure Veri Kataloğu 'nda veri varlıklarını kaydetme"
 description: Bu öğreticide, Azure veri kataloğunuza veri varlıklarının nasıl kaydedileceği açıklanmaktadır.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255203"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135887"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Öğretici: Azure Veri Kataloğu 'nda veri varlıklarını kaydetme
 
 Bu öğreticide, katalog ile veritabanı örneğinden veri varlıkları kaydetmek için kayıt aracını kullanırsınız. Kayıt, veri kaynağı ve içerdiği varlıklara ait adlar, türler ve konumlar gibi önemli yapısal meta verilerin ayıklanması ve meta verilerin kataloğa kopyalanması işlemidir. Veri kaynakları ve veri varlıkları olduğu yerde kalır, ancak katalog tarafından daha kolay bulunabilir ve anlaşılabilir hale getirilmeleri için meta veriler kullanılır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Veri varlıklarını kaydetme 
 > * Veri varlıkları ara
@@ -49,7 +49,7 @@ Artık, Azure Veri Kataloğu 'nu kullanarak veritabanı örneğinden veri varlı
 
    ![Azure Veri Kataloğu--Verileri Yayımla düğmesi](media/register-data-assets-tutorial/data-catalog-publish-data.png)
 
-2. kayıt aracını bilgisayarınıza indirmek, yüklemek ve çalıştırmak için **Uygulamayı Başlat** ' ı seçin.
+2. Kayıt aracını bilgisayarınıza indirmek, yüklemek ve çalıştırmak için **Uygulamayı Başlat** ' ı seçin.
 
    ![Azure Veri Kataloğu--Başlat düğmesi](media/register-data-assets-tutorial/data-catalog-launch-application.png)
 
@@ -67,31 +67,31 @@ Artık, Azure Veri Kataloğu 'nu kullanarak veritabanı örneğinden veri varlı
 
 6. Veri varlığınızın meta verilerini kaydedin. Bu örnekte, **ürün** nesnelerini örnek ad alanından kaydedersiniz:
 
-    1. **Sunucu hiyerarşisi** ağacında, veritabanı örneğinizi genişletin ve **SalesLT**öğesini seçin.
+   1. **Sunucu hiyerarşisi** ağacında, veritabanı örneğinizi genişletin ve **SalesLT**öğesini seçin.
 
-    2. CTRL + SELECT kullanarak **Product**, **ProductCategory**, **ProductDescription**ve **ProductModel** ' i seçin.
+   2. CTRL + SELECT kullanarak **Product**, **ProductCategory**, **ProductDescription**ve **ProductModel** ' i seçin.
 
-    3. **Taşı-seçili oku** () seçin **>** . Bu eylem seçilen tüm nesneleri **Kaydedilecek nesneler** listesine taşır.
+   3. **Taşı-seçili oku** () seçin **>** . Bu eylem seçilen tüm nesneleri **Kaydedilecek nesneler** listesine taşır.
 
-          ![Azure Veri Kataloğu öğreticisi--nesnelere göz atma ve seçme](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
+      ![Azure Veri Kataloğu öğreticisi--nesnelere göz atma ve seçme](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
-    4. Verilerin bir anlık görüntü önizlemesini dahil etmek için **Önizleme Ekle**’yi seçin. Anlık görüntü, her tablodan 20 ' ye kadar kayıt içerir ve bu, kataloğa kopyalanırlar.
+   4. Verilerin bir anlık görüntü önizlemesini dahil etmek için **Önizleme Ekle**’yi seçin. Anlık görüntü, her tablodan 20 ' ye kadar kayıt içerir ve bu, kataloğa kopyalanırlar.
 
-    5. Veri profili için nesne istatistiklerinin bir anlık görüntüsünü dahil etmek üzere **Veri Profili Ekle**’yi seçin (örneğin: bir sütun için en küçük, en büyük ve ortalama değerler, satır sayısı).
+   5. Veri profili için nesne istatistiklerinin bir anlık görüntüsünü dahil etmek üzere **Veri Profili Ekle**’yi seçin (örneğin: bir sütun için en küçük, en büyük ve ortalama değerler, satır sayısı).
 
-    6. **Etiket ekle** alanına **Sales, Product, Azure SQL**girin. Bu eylem söz konusu veri varlıklarına arama etiketleri ekler. Etiketler, kullanıcıların kayıtlı bir veri kaynağını bulmasına yardımcı olmak için kullanışlı bir yoludur.
+   6. **Etiket ekle** alanına **Sales, Product, Azure SQL**girin. Bu eylem söz konusu veri varlıklarına arama etiketleri ekler. Etiketler, kullanıcıların kayıtlı bir veri kaynağını bulmasına yardımcı olmak için kullanışlı bir yoludur.
 
-    7. Bu veriler için bir **uzman** adı belirtin (isteğe bağlı).
+   7. Bu veriler için bir **uzman** adı belirtin (isteğe bağlı).
 
-          ![Azure Veri Kataloğu öğreticisi--kaydedilecek nesneler](media/register-data-assets-tutorial/data-catalog-objects-register.png)
+      ![Azure Veri Kataloğu öğreticisi--kaydedilecek nesneler](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. **Kaydol**' u seçin. Azure Veri Kataloğu seçtiğiniz nesneleri kaydeder. Bu alıştırmada, veritabanı örneğinizdeki seçili nesneler kaydedilir. Kayıt aracı, veri varlığından meta verileri ayıklar ve bu verileri Azure Veri Kataloğu hizmetine kopyalar. Veriler şu anda kalan yerde kalır. Veriler, kaynak sistemin yöneticileri ve ilkeleri denetiminde kalır.
+   8. **Kaydol**' u seçin. Azure Veri Kataloğu seçtiğiniz nesneleri kaydeder. Bu alıştırmada, veritabanı örneğinizdeki seçili nesneler kaydedilir. Kayıt aracı, veri varlığından meta verileri ayıklar ve bu verileri Azure Veri Kataloğu hizmetine kopyalar. Veriler şu anda kalan yerde kalır. Veriler, kaynak sistemin yöneticileri ve ilkeleri denetiminde kalır.
 
-          ![Azure Veri Kataloğu--kayıtlı nesneler](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
+      ![Azure Veri Kataloğu--kayıtlı nesneler](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
     9. Kayıtlı veri kaynağı nesnelerinizi görmek için **portalı görüntüle**' yi seçin. Azure Veri Kataloğu portalında, Kılavuz görünümündeki tüm dört tabloyu ve veritabanını gördiğinizi doğrulayın (arama çubuğunun açık olduğunu doğrulayın).
 
-        ![Azure Veri Kataloğu portalındaki nesneler](media/register-data-assets-tutorial/data-catalog-view-portal.png)
+       ![Azure Veri Kataloğu portalındaki nesneler](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
 Bu alıştırmada, kuruluşunuzdaki kullanıcılar tarafından kolayca bulunabilmesi için Azure SQL veritabanı için veritabanı örneğindeki nesneleri kaydettiniz.
 
@@ -119,22 +119,23 @@ Basit arama bir veya daha fazla arama terimi kullanarak bir katalogda arama yapm
 
 2. Arama kutusuna `product` yazın ve **ENTER** tuşuna basın.
 
-    ![Azure Veri Kataloğu--basit metin araması](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
+   ![Azure Veri Kataloğu--basit metin araması](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
 3. Sonuçlarda tüm dört tabloyu ve veritabanını görtığınızdan emin olun. Aşağıdaki görüntüde gösterildiği gibi araç çubuğundaki düğmeleri seçerek **ızgara görünümü** ve **liste görünümü** arasında geçiş yapabilirsiniz. **Vurgula** seçeneği **Açık** olduğu için arama anahtar sözcüğü arama sonuçlarında vurgulanır. Arama sonuçlarında **sayfa başına sonuç** sayısını da belirtebilirsiniz.
 
-    ![Azure Veri Kataloğu--basit metin araması sonuçları](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
+   ![Azure Veri Kataloğu--basit metin araması sonuçları](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 
-    **Aramalar** bölmesi sol tarafta, **Özellikleri** bölmesi sağ taraftadır. **Aramalar** bölmesinde arama ölçütlerini değiştirebilir ve sonuçları filtreleyebilirsiniz. **Özellikler** bölmesinde seçili nesnenin özellikleri ızgara veya liste görünümünde gösterilir.
+   **Aramalar** bölmesi sol tarafta, **Özellikleri** bölmesi sağ taraftadır. **Aramalar** bölmesinde arama ölçütlerini değiştirebilir ve sonuçları filtreleyebilirsiniz. **Özellikler** bölmesinde seçili nesnenin özellikleri ızgara veya liste görünümünde gösterilir.
 
-4. arama sonuçlarında **ürün** ' ı seçin. **Önizleme**, **sütunlar**, **veri profili**ve **belge** sekmelerini seçin ya da alt Bölmeyi genişletmek için oku seçin.  
+4. Arama sonuçlarında **ürün** ' ı seçin. **Önizleme**, **sütunlar**, **veri profili**ve **belge** sekmelerini seçin ya da alt Bölmeyi genişletmek için oku seçin.  
 
-    ![Azure Veri Kataloğu--alt bölme](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
+   ![Azure Veri Kataloğu--alt bölme](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
-    **Önizleme** sekmesinde **Ürün** tablosundaki verilerin bir önizlemesini görürsünüz.  
-5. veri varlığının sütunları ( **ad** ve **veri türü**gibi) hakkındaki ayrıntıları bulmak için **sütunlar** sekmesini seçin.
+   **Önizleme** sekmesinde **Ürün** tablosundaki verilerin bir önizlemesini görürsünüz.
 
-6. veri varlığı içindeki veri profilini (örneğin, satır sayısı, veri boyutu veya bir sütundaki minimum değer) görmek için **veri profili** sekmesini seçin.
+5. Veri varlığının sütunları ( **ad** ve **veri türü**gibi) hakkındaki ayrıntıları bulmak için **sütunlar** sekmesini seçin.
+
+6. Veri varlığı içindeki veri profilini (örneğin, satır sayısı, veri boyutu veya bir sütundaki minimum değer) görmek için **veri profili** sekmesini seçin.
 
 ### <a name="discover-data-assets-with-property-scoping"></a>Özellik kapsamı ile veri varlıklarını bulma
 
@@ -146,13 +147,13 @@ Basit arama bir veya daha fazla arama terimi kullanarak bir katalogda arama yapm
 
 3. Sonuçlarda tabloları ve veritabanını görtığınızdan emin olun.  
 
-    ![Veri Kataloğu--özellik kapsamı arama sonuçları](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
+   ![Veri Kataloğu--özellik kapsamı arama sonuçları](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
 
 ### <a name="save-the-search"></a>Aramayı kaydetme
 
 1. **Geçerli arama** bölümündeki **aramalar** bölmesinde, arama için bir ad girin ve **Kaydet**' i seçin.
 
-    ![Azure Veri Kataloğu--aramayı kaydetme](media/register-data-assets-tutorial/data-catalog-save-search.png)
+   ![Azure Veri Kataloğu--aramayı kaydetme](media/register-data-assets-tutorial/data-catalog-save-search.png)
 
 2. Kayıtlı aramanın **Kayıtlı Aramalar** altında gösterildiğini onaylayın.
 
@@ -166,7 +167,7 @@ Parantezler ile gruplandırma yaparak, özellikle Boole işleçleri ile birlikte
 
 2. Arama sonuçlarında yalnızca **Ürün** tablosunu gördüğünüzü onaylayın.
 
-    ![Azure Veri Kataloğu--gruplandırma araması](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
+   ![Azure Veri Kataloğu--gruplandırma araması](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
 
 ### <a name="comparison-operators"></a>Karşılaştırma işleçleri
 
@@ -180,7 +181,7 @@ Karşılaştırma işleçleri ile sayısal ve tarih veri türlerine sahip özell
 
 4. **Ürün**, **ProductCategory**ve **ProductDescription** tablolarını ve arama sonuçlarında kaydettiğiniz SQL veritabanını görtığınızdan emin olun.
 
-    ![Azure Veri Kataloğu--karşılaştırma arama sonuçları](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
+   ![Azure Veri Kataloğu--karşılaştırma arama sonuçları](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
 Veri varlıklarını bulma hakkında ayrıntılı bilgi için bkz. [veri varlıklarını keşfetme](data-catalog-how-to-discover.md) . Arama sözdizimi hakkında daha fazla bilgi için bkz. [Veri Kataloğu arama söz dizimi başvurusu](/rest/api/datacatalog/#search-syntax-reference).
 
@@ -192,7 +193,7 @@ Bu alıştırmada tek bir veri varlığına (ProductPhoto) açıklama eklersiniz
 
 1. [Azure Veri Kataloğu giriş sayfasına](https://www.azuredatacatalog.com) gidin ve `tags:product` kaydettiğiniz veri varlıklarını bulmak için ile arama yapın.
 
-2. arama sonuçlarında **ProductModel** ' i seçin.  
+2. Arama sonuçlarında **ProductModel** ' i seçin.  
 
 3. **Kolay Ad** için **Ürün görüntüleri** ve **Açıklama** için **Pazarlama malzemeleri için ürün fotoğrafları** yazın.
 
@@ -233,21 +234,21 @@ Bu alıştırmada bağlantı bilgilerini kullanarak veri varlıklarını tümle�
 
 1. Arama sonuçlarından **Ürün**’ü seçin. araç çubuğunda **Aç** ' ı seçin ve **Excel**' i seçin.
 
-    ![Azure Veri Kataloğu--veri varlığına bağlanma](media/register-data-assets-tutorial/data-catalog-connect1.png)
+   ![Azure Veri Kataloğu--veri varlığına bağlanma](media/register-data-assets-tutorial/data-catalog-connect1.png)
 
 2. İndirme açılır penceresinde **Aç** ' ı seçin. Bu deneyim tarayıcıya bağlı olarak farklılık gösterir.
 
 3. **Microsoft Excel güvenlik bildirimi** penceresinde **Etkinleştir**' i seçin.
 
-    ![Azure Veri Kataloğu--Excel güvenlik açılır penceresi](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
+   ![Azure Veri Kataloğu--Excel güvenlik açılır penceresi](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
 
 4. **Verileri Içeri aktar** iletişim kutusunda Varsayılanları tutun ve **Tamam**' ı seçin.
 
-    ![Azure Veri Kataloğu--Excel ile verileri içeri aktarma](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
+   ![Azure Veri Kataloğu--Excel ile verileri içeri aktarma](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
 
 5. Excel'de veri kaynağını görüntüleyin.
 
-    ![Azure Veri Kataloğu--Excel’deki ürün tablosu](media/register-data-assets-tutorial/data-catalog-connect2.png)
+   ![Azure Veri Kataloğu--Excel’deki ürün tablosu](media/register-data-assets-tutorial/data-catalog-connect2.png)
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
@@ -259,7 +260,7 @@ Bu alıştırmada Azure Veri Kataloğu kullanarak bulunan veri varlıklarına ba
 
 3. Veri varlığına erişmek için uygun kimlik doğrulama ve kimlik bilgilerini kullanın. Erişiminiz yoksa **Erişim İsteği** alanındaki bilgileri kullanarak erişim elde edin.
 
-    ![Azure Veri Kataloğu--erişim isteği](media/register-data-assets-tutorial/data-catalog-request-access.png)
+   ![Azure Veri Kataloğu--erişim isteği](media/register-data-assets-tutorial/data-catalog-request-access.png)
 
 Uygulamanızda kullanmak üzere ADO.NET, ODBC ve OLEDB bağlantı dizelerini görüntülemek ve panoya kopyalamak için **bağlantı dizelerini görüntüle** ' yi seçin.
 
@@ -299,18 +300,22 @@ Azure Veri Kataloğu'nda tek bir varlığı veya birden çok varlığı silebili
 
 3. Sonuç listesinden bir öğe seçin ve aşağıdaki görüntüde gösterildiği gibi araç çubuğunda **Sil** ' i seçin:
 
-    ![Azure Veri Kataloğu--ızgara öğesini silme](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
+   ![Azure Veri Kataloğu--ızgara öğesini silme](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
 
-    Liste görünümünü kullanıyorsanız, aşağıdaki görüntüde gösterildiği gibi onay kutusu öğenin solunda bulunur:
+   Liste görünümünü kullanıyorsanız, aşağıdaki görüntüde gösterildiği gibi onay kutusu öğenin solunda bulunur:
 
-    ![Azure Veri Kataloğu--liste öğesini silme](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
+   ![Azure Veri Kataloğu--liste öğesini silme](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
 
-    Ayrıca birden fazla veri varlığı seçebilir ve aşağıdaki görüntüde gösterildiği gibi silebilirsiniz:
+   Ayrıca birden fazla veri varlığı seçebilir ve aşağıdaki görüntüde gösterildiği gibi silebilirsiniz:
 
-    ![Azure Veri Kataloğu--birden fazla veri varlığını silme](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
+   ![Azure Veri Kataloğu--birden fazla veri varlığını silme](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
 
 > [!NOTE]
 > Kataloğun varsayılan davranışı, herhangi bir kullanıcının herhangi bir veri kaynağını kaydetmesine ve herhangi bir kullanıcının herhangi bir kayıtlı veri varlığını silmesine olanak tanımaktır. Azure Veri Kataloğu Standart Sürümü'ne dahil edilen yönetim özellikleri, varlıkların sahipliğini almaya, varlıkları bulabilecek kişileri kısıtlamaya ve varlıkları silebilecek kişileri kısıtlamaya yönelik ek seçenekler sağlar.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğreticiyi izleyerek kullandığınız tüm varlıkları temizlemek için [veri varlıklarını kaldırma](#remove-data-assets) adımlarını izleyin.
 
 ## <a name="summary"></a>Özet
 

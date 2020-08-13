@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799965"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135445"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -41,34 +41,24 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 
 
 ## <a name="destinations"></a>Hedefler
-
-Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. Bu hedefe veri gönderme hakkındaki ayrıntılar için aşağıdaki tablodaki her bir bağlantıyı izleyin.
+Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
 | Hedef | Açıklama |
 |:---|:---|
-| [Log Analytics çalışma alanı](#log-analytics-workspace) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
-| [Olay hub’ları](#event-hub) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar. |
-| [Azure depolama hesabı](#azure-storage) | Günlükleri ve ölçümleri bir Azure depolama hesabına arşivleme, denetim, statik analiz veya yedekleme için faydalıdır. Azure Izleyici günlükleri ve bir Log Analytics çalışma alanıyla karşılaştırıldığında, Azure Storage daha pahalı olur ve Günlükler sonsuza kadar tutulabilirler. |
+| [Log Analytics çalışma alanı](design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
+| [Olay hub’ları](/azure/event-hubs/) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |
+| [Azure depolama hesabı](/azure/storage/blobs/) | Günlükleri ve ölçümleri bir Azure depolama hesabına arşivleme, denetim, statik analiz veya yedekleme için faydalıdır. Azure Izleyici günlükleri ve bir Log Analytics çalışma alanıyla karşılaştırıldığında, Azure Storage daha pahalı olur ve Günlükler sonsuza kadar tutulabilirler.  |
 
 
-## <a name="prerequisites"></a>Önkoşullar
-Tanılama ayarının tüm hedefleri gereken izinlerle oluşturulmalıdır. Her hedefle ilgili önkoşul gereksinimleri için aşağıdaki bölümlere bakın.
+### <a name="destination-requirements"></a>Hedef gereksinimleri
 
-### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
-Henüz bir tane yoksa [Yeni bir çalışma alanı oluşturun](../learn/quick-create-workspace.md) . Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğundan, çalışma alanının kaynakla aynı abonelikte olması gerekmez.
+Tanılama ayarları oluşturulmadan önce tanılama ayarının tüm hedefleri oluşturulmalıdır. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğundan, hedefin kaynak göndermesi ile aynı abonelikte olması gerekmez. Aşağıdaki tabloda, tüm bölgesel kısıtlamalar dahil olmak üzere her bir hedef için benzersiz gereksinimler verilmiştir.
 
-### <a name="event-hub"></a>Olay hub'ı
-Henüz bir tane yoksa [bir olay hub 'ı oluşturun](../../event-hubs/event-hubs-create.md) . Ayarı yapılandıran kullanıcının her iki aboneliğe ve her iki aboneliğe de aynı kiracıda sahip olduğu sürece, Event Hubs ad alanının, günlükleri veren abonelikle aynı abonelikte olması gerekmez.
-
-Ad alanı için paylaşılan erişim ilkesi, akış mekanizmanın sahip olduğu izinleri tanımlar. Event Hubs akışının yönetilmesi, gönderilmesi ve dinlemesi izinlerinin olması gerekir. Event Hubs ad alanınız için Yapılandır sekmesinin altındaki Azure portal paylaşılan erişim ilkeleri oluşturabilir veya değiştirebilirsiniz. Tanılama ayarını akış içerecek şekilde güncelleştirmek için, bu Event Hubs yetkilendirme kuralında ListKey izninizin olması gerekir. 
-
-
-### <a name="azure-storage"></a>Azure depolama
-Henüz yoksa bir [Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md) . Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olması koşuluyla, depolama hesabının, kaynak gönderme günlükleri ile aynı abonelikte olması gerekmez.
-
-Verilere erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Aynı şekilde etkinlik günlüğü ve kaynak günlüklerini birlikte arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.
-
-Verileri sabit depolamaya göndermek için, depolama hesabının sabit ilkesini [BLOB depolama Için ayarlama ve yönetme kuralları](../../storage/blobs/storage-blob-immutability-policies-manage.md)bölümünde açıklandığı gibi ayarlayın. Bu makaledeki korumalı ekleme bloblarını yazmayı etkinleştirme dahil tüm adımları izlemeniz gerekir.
+| Hedef | Gereksinimler |
+|:---|:---|
+| Log Analytics çalışma alanı | Çalışma alanının izlenmekte olan kaynakla aynı bölgede olması gerekmez.|
+| Event Hubs | Ad alanı için paylaşılan erişim ilkesi, akış mekanizmanın sahip olduğu izinleri tanımlar. Event Hubs akışının yönetilmesi, gönderilmesi ve dinlemesi izinlerinin olması gerekir. Tanılama ayarını akış içerecek şekilde güncelleştirmek için, bu Event Hubs yetkilendirme kuralında ListKey izninizin olması gerekir.<br><br>Kaynak bölge ise, Olay Hub 'ı ad alanının izlenmekte olan kaynakla aynı bölgede olması gerekir. |
+| Azure depolama hesabı | Verilere erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Aynı şekilde etkinlik günlüğü ve kaynak günlüklerini birlikte arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.<br><br>Verileri sabit depolamaya göndermek için, depolama hesabının sabit ilkesini [BLOB depolama Için ayarlama ve yönetme kuralları](../../storage/blobs/storage-blob-immutability-policies-manage.md)bölümünde açıklandığı gibi ayarlayın. Bu makaledeki korumalı ekleme bloblarını yazmayı etkinleştirme dahil tüm adımları izlemeniz gerekir.<br><br>Kaynak bölgesel ise, depolama hesabının izlenmekte olan kaynakla aynı bölgede olması gerekir. |
 
 > [!NOTE]
 > Azure portalında geçerli seçeneklerden biri olarak listeleniyor olsa bile, Azure Data Lake Storage 2. Nesil hesapları şu anda tanılama ayarlarının hedefi olarak desteklenmemektedir.

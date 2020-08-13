@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 93ce3b02ef8963a33e485b6560516e1d2b9c1ef5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424026"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135819"
 ---
 # <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
 
@@ -153,7 +153,6 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoic
 
 * NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur. Temel yük dengeleyici gibi temel kaynaklar ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
 * IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.  NAT, IPv6 ön ekine sahip bir alt ağa dağıtılamaz.
-* NSG akış günlüğü, NAT kullanılırken desteklenmez.
 * NAT birden çok sanal ağa yayılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

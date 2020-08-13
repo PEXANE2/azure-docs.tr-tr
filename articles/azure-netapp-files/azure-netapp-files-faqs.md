@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533147"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134505"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -177,6 +177,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 "Izin reddedildi" sorununu önlemek için, `pcuser` bağlama noktasına erişmeden önce Windows Active Directory 'nin dahil olduğundan emin olun. `pcuser`"İzin reddedildi" sorunuyla karşılaşduktan sonra eklerseniz, erişimi yeniden denemeden önce önbellek girişinin Temizleme için 24 saat bekleyin.
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Bir çift protokol birimi oluşturmayı denediğimde, oluşturma işlemi neden "LDAP yapılandırması doğrulanamadı, LDAP yapılandırmasını düzelttikten sonra yeniden dene" hatasıyla başarısız olur.  
+
+AD ana makinesinin işaretçi (PTR) kaydı DNS sunucusunda eksik olabilir. DNS sunucusunda bir geriye doğru arama bölgesi oluşturmanız ve ardından bu geriye doğru arama bölgesine AD ana makinesinin PTR kaydını eklemeniz gerekir.
+
+Örneğin, AD makinenin IP adresinin olduğunu `1.1.1.1` , ad makinenin ana bilgisayar adının (komutunu kullanarak bulunduğu şekilde `hostname` ) olduğunu `AD1` ve etki alanı adının olduğunu varsayalım `myDomain.com` .  Geriye doğru arama bölgesine eklenen PTR kaydı olmalıdır `1.1.1.1`  ->  `AD1.myDomain.com` .
 
 ## <a name="capacity-management-faqs"></a>Kapasite Yönetimi SSS
 

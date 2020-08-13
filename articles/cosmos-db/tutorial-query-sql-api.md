@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921122"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136006"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API’sini kullanarak Azure Cosmos DB’yi sorgulama
 
@@ -64,7 +64,7 @@ Mevcut örnek veri kümesinde sorgular çalıştıran [Sorgu oyun alanı](https:
 SQL sorguları hakkında daha fazla bilgi için bkz:
 * [SQL sorgusu ve SQL sözdizimi](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bu kaynaklardan hiçbiri yok mu? [5 dakikalık hızlı başlangıcı](create-cosmosdb-resources-portal.md) tamamlayın.
 
@@ -113,7 +113,7 @@ Yukarıdaki örnek aile belgesi verildiğinde, SQL sorgusu, KIMLIK alanının e�
 
 ## <a name="example-query-2"></a>Örnek sorgu 2
 
-Sonraki sorgu, ailede KIMLIĞI eşleşen alt öğelerin verilen tüm adlarını `WakefieldFamily` kendi durumlarına göre sıralanmış olarak döndürür.
+Sonraki sorgu, ailede KIMLIĞI eşleşen tüm alt öğelerin verilen adlarını döndürür `WakefieldFamily` .
 
 **Sorgu**
 

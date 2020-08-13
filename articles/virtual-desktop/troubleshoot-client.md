@@ -3,15 +3,15 @@ title: Uzak Masaüstü istemcisi Windows sanal masaüstü-Azure sorunlarını gi
 description: Windows sanal masaüstü kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009401"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134488"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Uzak masaüstü istemcisinde sorun giderme
 
@@ -41,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi gibi başka bir istemciyle bağlanmayı deneyin ve Web istemcisini açıp açmediğinizi denetleyin.
 
-### <a name="opening-another-site-fails"></a>Başka bir site açma başarısız
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>Web istemcisine bağlıyken diğer web siteleri açılamaz
 
-Bu, genellikle ağ bağlantısı sorunlarından veya bir ağ kesintisi nedeniyle oluşur. Ağ desteğiyle iletişim kurmanız önerilir.
+Web istemcisine bağlıyken diğer Web sitelerini açamazsınız, ağ bağlantısı sorunları veya ağ kesintisi olabilir. Ağ desteğiyle iletişim kurmanız önerilir.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup adı çözümleyemiyor
+### <a name="nslookup-cant-resolve-the-name"></a>Nslookup adı çözümleyemiyor
 
-Bu, genellikle ağ bağlantısı sorunlarından veya bir ağ kesintisi nedeniyle oluşur. Ağ desteğiyle iletişim kurmanız önerilir.
+Nslookup adı çözümleyemezse ağ bağlantısı sorunları veya ağ kesintisi olabilir. Ağ desteğiyle iletişim kurmanız önerilir.
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>İstemciniz bağlanamaz, ancak ağınızdaki diğer istemciler bağlanabilir
 
@@ -58,11 +58,13 @@ Web istemcisini kullanırken tarayıcınızın çalışmaya başlaması veya ça
 3. Tarayıcı önbelleğini temizleyin. [Tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU)bölümüne bakın.
 4. Tarayıcıyı özel modda açın.
 
-## <a name="web-client-does-not-show-my-resources"></a>Web istemcisi kaynaklarımı göstermiyor
+## <a name="client-doesnt-show-my-resources"></a>İstemci kaynaklarımı göstermiyor
 
-İlk olarak, kullanmakta olduğunuz Azure Active Directory hesabı kontrol edin. Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, veya özel tarayıcı penceresi kullanmanız gerekir.
+İlk olarak, kullanmakta olduğunuz Azure Active Directory hesabı kontrol edin. Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.
 
 Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız, kaynaklarınıza bağlanmak için [Bu makaledeki](./virtual-desktop-fall-2019/connect-web-2019.md) Web istemcisi bağlantısını kullanın.
+
+Bu işe yaramazsa, uygulama grubunuzun bir çalışma alanıyla ilişkilendirildiğinden emin olun.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web istemcisi yanıt vermeyi durduruyor veya bağlantıyı keser
 
@@ -78,8 +80,8 @@ Web istemcisi kimlik bilgileri isteyip istemediğini devam ederse, şu yönergel
 
 1. Web istemcisi URL 'sinin doğru olduğundan emin olun.
 2. Kullandığınız kimlik bilgilerinin, URL 'ye bağlı Windows sanal masaüstü ortamı için olduğunu doğrulayın.
-3. Tarayıcı tanımlama bilgilerini temizleyin. Daha ayrıntılı bilgi için bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Tarayıcı önbelleğini temizleyin. Daha ayrıntılı bilgi için bkz. [tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU).
+3. Tarayıcı tanımlama bilgilerini temizleyin. Daha fazla bilgi için bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Tarayıcı önbelleğini temizleyin. Daha fazla bilgi için bkz. [tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU).
 5. Tarayıcınızı özel modda açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120873"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140811"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
 
@@ -148,7 +148,7 @@ Bir istemci parolası eklemek için:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Web API’lerine erişim izinleri ekleme
 
-[Graph API oturum açma ve kullanıcı profilini Oku izni](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) varsayılan olarak seçilidir. Her bir Web API 'SI için [iki tür izin](developer-glossary.md#permissions) arasından seçim yapabilirsiniz:
+[Graph API oturum açma ve kullanıcı profilini Oku izni](/graph/permissions-reference#user-permissions) varsayılan olarak seçilidir. Her bir Web API 'SI için [iki tür izin](developer-glossary.md#permissions) arasından seçim yapabilirsiniz:
 
 * **Uygulama izinleri**. İstemci uygulamanızın, Kullanıcı bağlamı olmadan doğrudan kendi kendine Web API 'sine erişmesi gerekir. Bu izin türü yönetici onayı gerektirir. Bu izin masaüstü ve mobil istemci uygulamaları için kullanılamaz.
 * **Temsilci izinleri**. İstemci uygulamanızın, oturum açmış kullanıcı olarak Web API 'sine erişmesi gerekir, ancak erişim, seçilen izinle sınırlı olarak. Yönetici onayı gerektirmediği sürece bu izin türü bir kullanıcı tarafından verilebilir.
