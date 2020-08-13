@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515367"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167904"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -99,7 +99,7 @@ Ardından, kimlik bilgilerinizi projenizin `App.config` dosyasına kaydedin. **�
 ```
 
 > [!NOTE]
-> Azure depolama öykünücüsünün en son sürümü Azure Dosyaları'nı desteklemez. Bağlantı dizeniz, Azure Dosyaları ile çalışmak için buluttaki bir Azure Depolama hesabını hedeflemelidir.
+> Azure depolama öykünücüsünün en son sürümü Azure dosyalarını desteklemez. Bağlantı dizeniz, Azure Dosyaları ile çalışmak için buluttaki bir Azure Depolama hesabını hedeflemelidir.
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
@@ -487,7 +487,7 @@ Azure dosyaları hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın
 ### <a name="conceptual-articles-and-videos"></a>Kavramsal makaleler ve videolar
 
 * [Azure Dosyaları: Windows ve Linux için uyumlu bulut SMB dosya sistemi](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Azure Dosyaları'nı Linux ile kullanma](storage-how-to-use-files-linux.md)
+* [Linux ile Azure Dosyalar’ı kullanma](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage için araç desteği
 

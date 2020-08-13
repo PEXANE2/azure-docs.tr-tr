@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121587"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167700"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -273,7 +273,7 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "length": 11,
                     "text": "itchy sores",
                     "category": "SymptomOrSign",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -287,7 +287,7 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "length": 4,
                     "text": "50mg",
                     "category": "Dosage",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -296,7 +296,7 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "length": 8,
                     "text": "benadryl",
                     "category": "MedicationName",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -343,7 +343,7 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                     "length": 11,
                     "text": "twice daily",
                     "category": "Frequency",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ],

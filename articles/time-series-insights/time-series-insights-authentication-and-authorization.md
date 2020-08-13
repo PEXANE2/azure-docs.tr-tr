@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922651"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168040"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -46,6 +46,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 > Azure Time Series Insights güvenlik ilkenizi yapılandırırken **kaygıları ayırma** (yukarıdaki senaryo için yukarıda açıklanmıştır) ilkesini izleyin.
 
 > [!NOTE]
+
 > * Makale, uygulamanın yalnızca bir kuruluşta çalıştırılması amaçlanan tek kiracılı bir uygulamaya odaklanır.
 > * Genellikle kuruluşunuzda çalışan iş kolu uygulamaları için tek kiracılı uygulamalar kullanırsınız.
 
@@ -115,8 +116,9 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 > [!IMPORTANT]
 > Belirtecin tam olarak kaynağa verilmesi gerekir `https://api.timeseries.azure.com/` (belirtecin "hedef kitle" olarak da bilinir).
+
 > * [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde olacaktır:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
-> * `https://api.timeseries.azure.com/`geçerli ancak `https://api.timeseries.azure.com` değil.
+> * `https://api.timeseries.azure.com/` geçerli ancak `https://api.timeseries.azure.com` değil.
 
 İsteğe bağlı istek üstbilgileri aşağıda açıklanmıştır.
 
@@ -155,7 +157,7 @@ Gerekli URL sorgu dizesi parametreleri API sürümüne bağımlıdır.
 
 | İsteğe bağlı sorgu parametresi | Açıklama | Sürüm |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin, `"PT20S"` aralığında olmalıdır `1-30 s` . Varsayılan değer `30 s` . | Gen1 |
+| `timeout=<timeout>` | HTTP istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin, `"PT20S"` aralığında olmalıdır `1-30 s` . Varsayılan değer `30 s` . | Gen1 |
 | `storeType=<storeType>` | Isınma mağazasının etkinleştirildiği Gen2 ortamları için, veya üzerinde sorgu çalıştırılabilir `WarmStore` `ColdStore` . Sorgudaki bu parametre, sorgunun hangi depoda yürütülmesi gerektiğini tanımlar. Tanımlı değilse, sorgu soğuk depoda yürütülür. Isınma mağazasını sorgulamak için, **Stoyeniden yazma** 'nın olarak ayarlanması gerekir `WarmStore` . Tanımlı değilse, sorgu soğuk depoya karşı yürütülür. | Gen2 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -164,6 +166,6 @@ Gerekli URL sorgu dizesi parametreleri API sürümüne bağımlıdır.
 
 * Gen2 Azure Time Series Insights API kodu örneklerini çağıran örnek kod için [C# kullanarak Query Gen2 Data](./time-series-insights-update-query-data-csharp.md)makalesini okuyun.
 
-* API başvuru bilgileri için [sorgu API 'si başvuru](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) belgelerini okuyun.
+* API başvuru bilgileri için [sorgu API 'si başvuru](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api) belgelerini okuyun.
 
 * [Hizmet sorumlusu oluşturmayı](../active-directory/develop/howto-create-service-principal-portal.md)öğrenin.

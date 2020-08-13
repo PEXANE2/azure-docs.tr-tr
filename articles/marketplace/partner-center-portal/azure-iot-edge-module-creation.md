@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032841"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167190"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -131,7 +131,7 @@ Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -233,7 +233,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 3. Destek adresi (bağlantı)
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
-6. Adı
+6. Name
 7. Özet
 8. Açıklama
 9. Yararlı bağlantılar
@@ -288,9 +288,11 @@ Tek tek (10 ' a kadar) veya bir CSV dosyası karşıya yükleyerek (100 'e kadar
 
 Sonraki bölüme geçmeden önce **Taslağı kaydet** ' i seçin, plana genel bakış ' a tıklayın.
 
-### <a name="plan-overview"></a>Plana genel bakış
+## <a name="plan-overview"></a>Plana genel bakış
 
 Bu sekme, Iş Ortağı Merkezi 'nde aynı teklif dahilinde farklı plan seçenekleri sağlamanıza olanak tanır. Planlar (eskiden SKU olarak adlandırılır), genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi hangi bulutların kullanılabildiği konusunda farklılık gösterebilir. Teklifinizi Market 'te listelemek için en az bir plan ayarlamanız gerekir.
+
+Her teklif için en fazla 100 plan oluşturabilirsiniz: bunların en fazla 45 ' e kadar özel olabilir. [Microsoft ticari Market 'Teki özel tekliflerle](../private-offers.md)ilgili özel planlar hakkında daha fazla bilgi edinin.
 
 Planlarınızı oluşturduktan sonra **plana genel bakış** sekmesi şunları gösterir:
 
@@ -305,7 +307,7 @@ Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı o
 - **Taslağı Sil**: plan durumu bir tasladır.
 - **Satışı durdur plan**: plan durumu canlı olarak yayımlandı.
 
-#### <a name="create-new-plan"></a>Yeni plan oluştur
+### <a name="create-new-plan"></a>Yeni plan oluştur
 
 **Yeni plan oluştur**' u seçin. **Yeni plan** iletişim kutusu görüntülenir.
 
@@ -337,7 +339,7 @@ Bu seçenek yalnızca Azure **kamu** , Azure **bölgeleri**kapsamında seçili o
 
 Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS. Bu programların sertifikalarına yönelik olarak bir açıklama getirmek için, sertifikalarınızı tanımlayan en fazla 100 bağlantı sağlayabilirsiniz. Bunlar program üzerinde doğrudan veya kendi web sitenizde yer alan dökümlerinizin bağlantısı olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
 
-## <a name="plan-listing"></a>Planı listeleme
+### <a name="plan-listing"></a>Planı listeleme
 
 Bu sekme, aynı teklif içindeki her farklı plan için belirli bilgileri görüntüler.
 
@@ -377,7 +379,7 @@ Azure Market planı ayrıntılarına bir örnektir (listelenen tüm fiyatlar yal
 2. Plan adı
 3. Plan açıklaması
 
-## <a name="availability"></a>Kullanılabilirlik
+### <a name="availability"></a>Kullanılabilirlik
 
 Müşterilerin Market 'te arayabilmesi, gözatmasını veya satın almasını sağlamak için yayınlanmış teklifinizi gizlemek istiyorsanız, kullanılabilirlik sekmesinde **planı Gizle** onay kutusunu seçin.
 

@@ -4,14 +4,14 @@ description: Azure Cosmos DB Tablo API'si hakkında sık sorulan soruların yan�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392361"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167598"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB Tablo API'si hakkında sık sorulan sorular
 
@@ -274,7 +274,7 @@ Azure Cosmos DB, kullanılabilirlik, gecikme süresi ve aktarım hızı garantis
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Azure Tablo depolama alanına veri aldığımda, hiçbir zaman kota tam "bildirimi (bir bölümün dolu olduğunu gösterir). Tablo API'si, bu iletiyi alıyorum. Bu teklif beni sınırlıyor ve var olan uygulamamı değiştirmem zorunlu midir?
 
-Azure Cosmos DB gecikme süresi, aktarım hızı, kullanılabilirlik ve tutarlılık garantisi sayesinde sınırsız ölçek sağlayan SLA tabanlı bir sistemdir. Garantili Premium performans sağlamak için, veri boyutlarınızın ve dizininizin yönetilebilir ve ölçeklenebilir olduğundan emin olun. Bölüm anahtarı başına varlık veya öğe sayısı için 10 GB 'lik sınır, harika arama ve sorgu performansı sağlamamız sağlamaktır. Azure depolama için bile uygulamanızın iyi ölçeklendirdiğinden emin olmak için, tüm bilgileri tek bir bölümde depolayarak ve sorgulayarak bir sıcak bölüm *oluşturmamalıdır* .
+Azure Cosmos DB gecikme süresi, aktarım hızı, kullanılabilirlik ve tutarlılık garantisi sayesinde sınırsız ölçek sağlayan SLA tabanlı bir sistemdir. Garantili Premium performans sağlamak için, veri boyutlarınızın ve dizininizin yönetilebilir ve ölçeklenebilir olduğundan emin olun. Bölüm anahtarı başına varlık veya öğe sayısı için 20 GB 'lik sınır, harika arama ve sorgu performansı sağlamamız sağlamaktır. Azure depolama için bile uygulamanızın iyi ölçeklendirdiğinden emin olmak için, tüm bilgileri tek bir bölümde depolayarak ve sorgulayarak bir sıcak bölüm *oluşturmamalıdır* .
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Bu nedenle PartitionKey ve RowKey Tablo API'si hala gereklidir?
 

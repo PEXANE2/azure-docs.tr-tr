@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809774"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167938"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -23,7 +23,7 @@ En yaygın yedekleme hatalarının çoğu, aşağıda listelenen sorun giderme a
 
 ### <a name="step-1-check-azure-vm-health"></a>1. Adım: Azure VM sistem durumunu denetleme
 
-- **Azure VM sağlama durumunun ' çalışıyor ' olduğundan emin olun**: [VM sağlama durumu](../virtual-machines/windows/states-lifecycle.md#provisioning-states) **durdurulmuş/serbest bırakıldı/güncelleştirme** durumundaysa, yedekleme işlemini kesintiye uğratacaktır. *Azure portal > vm > genel bakış >* açın ve **çalışır** durumda olduğundan emin olmak için VM durumunu denetleyin ve yedekleme işlemini yeniden deneyin.
+- **Azure VM sağlama durumunun ' çalışıyor ' olduğundan emin olun**: [VM sağlama durumu](../virtual-machines/states-lifecycle.md#provisioning-states) **durdurulmuş/serbest bırakıldı/güncelleştirme** durumundaysa, yedekleme işlemini kesintiye uğratacaktır. *Azure portal > vm > genel bakış >* açın ve **çalışır** durumda olduğundan emin olmak için VM durumunu denetleyin ve yedekleme işlemini yeniden deneyin.
 - **Bekleyen işletim sistemi güncelleştirmelerini gözden geçirme veya yeniden başlatmalar**: VM 'de bekleyen bir işletim sistemi güncelleştirmesi veya bekleyen yeniden başlatmalar olmadığından emin olun.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>2. Adım: Azure VM Konuk Aracısı hizmet durumunu denetleme
@@ -101,7 +101,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: usererrorvmprovisioningstatefailed<br>
 **Hata iletisi**: VM başarısız sağlama durumunda<br>
 
-Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure portal > VM > ayarları > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin. Daha fazla bilgi için bkz. [sağlama durumları](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
+Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure portal > VM > ayarları > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin. Daha fazla bilgi için bkz. [sağlama durumları](../virtual-machines/states-lifecycle.md#provisioning-states).
 
 - VMSnapshot uzantısı hatalı durumdaysa, başarısız olan uzantıya sağ tıklayın ve kaldırın. İsteğe bağlı yedekleme tetikleyin. Bu eylem, uzantıları yeniden yükleyerek yedekleme işini çalıştıracaktır.  <br>
 - Başka herhangi bir uzantı başarısız durumdaysa, yedeklemeyi kesintiye uğratabilirler. Uzantı sorunlarının çözümlendiğinden emin olun ve yedekleme işlemini yeniden deneyin.
@@ -277,7 +277,7 @@ Aşağıdaki koşullar anlık görüntü görevinin başarısız olmasına neden
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_ `<Geo>` _ `<number>` .
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' e tıklayın.
@@ -306,7 +306,7 @@ Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu eylem geri 
 
 Kaynak grubundaki kilit nedeniyle temizlenmediği geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Hub** menüsünde, **tüm kaynaklar**' a tıklayın, ardından `<Geo>` sanal makinenizin bulunduğu kaynak grubunu aşağıdaki biçimde AzureBackupRG_ _ ' i seçin `<number>` .
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/resource-group.png)

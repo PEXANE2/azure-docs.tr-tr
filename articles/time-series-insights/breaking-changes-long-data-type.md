@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: dpalled
-ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446633"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168006"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 ' de uzun veri türü desteği ekleniyor
 
@@ -66,7 +66,7 @@ IoT Hub kullanıyorsanız yerleşik uç noktaya nasıl erişildiği [yerleşik u
 
 Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de önceden alınan (ve gelecek) sayısal veriler, üzerine kopyalanmaz.
 
-**PropertyValue** özelliği için bu iki sütun arasında verileri sorgulamak istiyorsanız, TSX 'inizdeki **birleşim ()** skaler işlevini kullanmanız gerekir. İşlev, aynı **veri türünün** bağımsız değişkenlerini kabul eder ve bağımsız değişken listesindeki ilk null olmayan değeri döndürür. Daha fazla bilgi için bkz. [Gen2 Data Access concepts Azure Time Series Insights](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions).
+**PropertyValue** özelliği için bu iki sütun arasında verileri sorgulamak istiyorsanız, TSX 'inizdeki **birleşim ()** skaler işlevini kullanmanız gerekir. İşlev, aynı **veri türünün** bağımsız değişkenlerini kabul eder ve bağımsız değişken listesindeki ilk null olmayan değeri döndürür. Daha fazla bilgi için bkz. [Gen2 Data Access concepts Azure Time Series Insights](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>TSX 'de değişken tanımı-sayısal
 
@@ -78,7 +78,7 @@ Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de 
 
 [![Yeni değişken tanımı](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)olarak da kullanabilirsiniz.
+**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)olarak da kullanabilirsiniz.
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>TSX sorgu API 'Leri kullanarak satır içi değişken tanımı-sayısal
 
@@ -126,7 +126,7 @@ Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de 
 }
 ```
 
-**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)olarak da kullanabilirsiniz.
+**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)olarak da kullanabilirsiniz.
 
 > [!NOTE]
 > Bu değişkenleri, kullanılabilecek her yerde güncelleştirmenizi öneririz. Bu konumlar zaman serisi modeli, Kaydedilen sorgular ve Power BI bağlayıcı sorgularını içerir.
@@ -147,7 +147,7 @@ Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de 
 
 **Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)olarak da kullanabilirsiniz.
 
-Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) , **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
+Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) , **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>TSX sorgu API 'Leri kullanarak satır içi değişken tanımı-kategorik
 
@@ -227,7 +227,7 @@ Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerek
 }
 ```
 
-Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax), **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
+Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax), **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
 
 > [!NOTE]
 > Bu değişkenleri, kullanılabilecek her yerde güncelleştirmenizi öneririz. Bu konumlar zaman serisi modeli, Kaydedilen sorgular ve Power BI bağlayıcı sorgularını içerir.

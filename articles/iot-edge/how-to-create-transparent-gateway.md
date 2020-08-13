@@ -4,19 +4,19 @@ description: Azure IoT Edge cihazı, aşağı akış cihazlarından bilgileri i�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782594"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167411"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma
 
@@ -93,15 +93,19 @@ Aşağıdaki dosyaları hazırlayın:
    * Pencerelerin`Restart-Service iotedge`
    * 'Un`sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub 'ı ağ geçidine dağıtma
+## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub ve yönlendirme iletileri dağıtma
 
-IoT Edge bir cihaza ilk kez yüklediğinizde, otomatik olarak yalnızca bir sistem modülü başlatılır: IoT Edge Aracısı. Bir cihaz için ilk dağıtımı oluşturduktan sonra, IoT Edge hub 'ı ikinci sistem modülü de başlatılır.
+Aşağı akış cihazları, IoT Edge hub modülünün bilgileri diğer modüllere yönlendirmesinden veya IoT Hub için sorumlu olduğu ağ geçidi cihazına telemetri ve iletiler gönderir. Ağ Geçidi cihazınızı bu işlev için hazırlamak üzere şunları yaptığınızdan emin olun:
 
-IoT Edge hub, aşağı akış cihazlarından gelen iletileri alırken ve bunları bir sonraki hedefe yönlendirmekten sorumludur. **Edgehub** modülü cihazınızda çalışmıyorsa, cihazınız için bir başlangıç dağıtımı oluşturun. Herhangi bir modül eklemediğinizden, dağıtım boş görünür, ancak her iki sistem modüllerinin de çalıştığından emin olur.
+* IoT Edge hub modülü cihaza dağıtılır.
 
-Azure portal cihaz ayrıntılarını denetleyerek, Visual Studio veya Visual Studio Code cihaz durumunu görüntüleyerek ya da cihazın kendisinde komutunu çalıştırarak bir cihazda hangi modüllerin çalıştığını kontrol edebilirsiniz `iotedge list` .
+  IoT Edge bir cihaza ilk kez yüklediğinizde, otomatik olarak yalnızca bir sistem modülü başlatılır: IoT Edge Aracısı. Bir cihaz için ilk dağıtımı oluşturduktan sonra, ikinci sistem modülü IoT Edge hub 'ı da başlatılır. **Edgehub** modülü cihazınızda çalışmıyorsa, cihazınız için bir dağıtım oluşturun.
 
-**Edgeagent** modülü **edgehub** modülü olmadan çalışıyorsa, aşağıdaki adımları kullanın:
+* IoT Edge hub modülünün yönlendirmeleri, aşağı akış cihazlarından gelen iletileri işleyecek şekilde ayarlanmıştır.
+
+  Ağ geçidi cihazı, aşağı akış cihazlarındaki iletileri işlemek için bir yola sahip olmalıdır, aksi takdirde bu iletiler işlenmez. İletileri ağ geçidi cihazında modüllere veya doğrudan IoT Hub gönderebilirsiniz.
+
+IoT Edge hub modülünü dağıtmak ve gelen iletileri aşağı akış cihazlarından işlemek üzere yollarla yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında IoT Hub'ınıza gidin.
 
@@ -109,13 +113,27 @@ Azure portal cihaz ayrıntılarını denetleyerek, Visual Studio veya Visual Stu
 
 3. **Modülleri Ayarlama**'yı seçin.
 
-4. **İleri: rotalar**' ı seçin.
+4. **Modüller** sayfasında, ağ geçidi cihazına dağıtmak istediğiniz modülleri ekleyebilirsiniz. Bu makalenin amaçları doğrultusunda, bu sayfada açıkça ayarlanması gerekmeyen edgeHub modülünü yapılandırmaya ve dağıtmaya odaklanıyoruz.
 
-5. **Rotalar** sayfasında, bir modülden veya bir aşağı akış cihazdan IoT Hub için tüm iletileri gönderen bir varsayılan yolunuz olmalıdır. Aksi takdirde, aşağıdaki değerlere sahip yeni bir yol ekleyin ve ardından **gözden geçir + oluştur**' u seçin:
-   * **Ad**:`route`
-   * **Değer**:`FROM /messages/* INTO $upstream`
+5. **İleri: rotalar**' ı seçin.
 
-6. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin.
+6. **Rotalar** sayfasında, aşağı akış aygıtlarından gelen iletileri işlemek için bir yol olduğundan emin olun. Örnek:
+
+   * Bir modülden veya bir aşağı akış cihazdan IoT Hub için tüm iletileri gönderen bir yol:
+       * **Ad**:`allMessagesToHub`
+       * **Değer**:`FROM /messages/* INTO $upstream`
+
+   * Tüm aşağı akış cihazlarındaki tüm iletileri IoT Hub 'e gönderen bir yol:
+      * **Ad**:`allDownstreamToHub`
+      * **Değer**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      Bu yol, IoT Edge modüllerinden gelen iletilerden farklı olarak, aşağı akış cihazlarındaki iletilerin bu kendileriyle ilişkili bir modül KIMLIĞI olmadığından dolayı işe yarar. Yolun **WHERE** yan tümcesinin kullanılması, bu sistem özelliğine sahip tüm iletileri filtreleyebileceğimizi sağlar.
+
+      İleti yönlendirme hakkında daha fazla bilgi için bkz. [modülleri dağıtma ve yolları oluşturma](./module-composition.md#declare-routes).
+
+7. Yolunuz veya rotalarınız oluşturulduktan sonra, **gözden geçir + oluştur**' u seçin.
+
+8. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin.
 
 ## <a name="open-ports-on-gateway-device"></a>Ağ Geçidi cihazında bağlantı noktalarını açma
 
@@ -128,25 +146,6 @@ Bir ağ geçidi senaryosunun çalışması için, IoT Edge hub 'ın desteklenen 
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="route-messages-from-downstream-devices"></a>İletileri aşağı akış cihazlarından yönlendir
-
-IoT Edge çalışma zamanı, yukarı akış aygıtlarından gönderilen iletileri, tıpkı modüller tarafından gönderilen iletiler gibi yönlendirebilir. Bu özellik, buluta veri göndermeden önce ağ geçidinde çalışan bir modülde analiz gerçekleştirmenize olanak tanır.
-
-Şu anda, aşağı akış cihazları tarafından gönderilen iletileri yönlendirmenin yolu, modülleri tarafından gönderilen iletilerden farklılaştırılacağından yapılır. Modüller tarafından gönderilen iletiler, **Connectionmoduleıd** adlı bir sistem özelliği içerir, ancak aşağı akış cihazları tarafından gönderilen iletiler değildir. Bu sistem özelliğini içeren tüm iletileri dışlamak için yolun WHERE yan tümcesini kullanabilirsiniz.
-
-Aşağıdaki yol, herhangi bir aşağı akış aygıtından, adlı bir modüle `ai_insights` ve sonra IoT Hub ' ye ileti gönderen bir örnektir `ai_insights` .
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-İleti yönlendirme hakkında daha fazla bilgi için bkz. [modülleri dağıtma ve yolları oluşturma](./module-composition.md#declare-routes).
 
 ## <a name="enable-extended-offline-operation"></a>Genişletilmiş çevrimdışı işlemi etkinleştir
 

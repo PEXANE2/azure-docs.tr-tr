@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399494"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167717"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -39,15 +39,9 @@ Konuşma hizmetinden metin okuma, uygulamalarınızın, araçların veya cihazla
 
 * Konuşma birleştirme biçimlendirme dili (SSML)-konuşmayı metne çıktıları özelleştirmek için kullanılan XML tabanlı bir biçimlendirme dili. SSML ile, aralığı ayarlayabilir, duraklamalar ekleyebilir, söylenişi artırabilir veya yavaşlatır, konuşma hızını artırabilir veya azaltabilir, hacmi artırabilir veya azaltabilirsiniz ve tek bir belgeye birden çok ses özniteliği ekleyebilirsiniz. Bkz. [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
-Metinden konuşmaya hizmeti, [konuşma SDK 'sı](speech-sdk.md)aracılığıyla kullanılabilir. Hızlı başlangıçların çeşitli dillerde ve platformlarda kullanıma sunulduğu birkaç yaygın senaryo vardır:
-
-* [Konuşmayı ses dosyasına sentezleme](quickstarts/text-to-speech-audio-file.md)
-* [Konuşmayı hoparlöre sentezleme](quickstarts/text-to-speech.md)
-* [Uzun biçimli ses zaman uyumsuz olarak sentezleştir](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-İsterseniz, metinden konuşmaya hizmetine [rest](rest-text-to-speech.md)aracılığıyla erişilebilir.
+Metinden konuşmaya başlamak için [hızlı](get-started-text-to-speech.md) başlangıca bakın. Metinden konuşmaya hizmeti, [konuşma SDK 'sı](speech-sdk.md), [REST API](rest-text-to-speech.md)ve [konuşma CLI](spx-overview.md) aracılığıyla kullanılabilir
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -65,7 +59,7 @@ Standart ve sinir seslerinizin yanı sıra, ürün veya marka için benzersiz ö
 Metin okuma hizmeti kullanılırken, noktalama, noktalama dahil olmak üzere her bir karakter için faturalandırılırsınız. SSML belgesinin kendisi faturalanabilir olsa da, metnin, alfabesine ve sıklık gibi bir şekilde konuşmaya dönüştürülmesini ayarlamak için kullanılan isteğe bağlı öğeler faturalanabilir karakter olarak sayılır. Faturalandırılabilir nelerin listesi aşağıda verilmiştir:
 
 - İsteğin SSML gövdesinde metin okuma hizmetine geçilen metin
-- SSML biçimindeki istek gövdesinin metin alanı içindeki `<speak>` ve `<voice>` etiketleri hariç tüm biçimlendirme
+- SSML biçimindeki istek gövdesinin metin alanı içindeki `<speak>` ve etiketleri hariç tüm biçimlendirme `<voice>`
 - Harfler, noktalama, boşluk, sekme, biçimlendirme ve tüm beyaz boşluk karakterleri
 - Unicode 'da tanımlanan her kod noktası
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420116"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168023"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -35,7 +35,7 @@ Kurumsal müşteriler, bulut çözümlerini bulmak, denemek ve satın almak içi
 
 ## <a name="creating-private-offers-using-plans"></a>Planlar kullanarak özel teklifler oluşturma
 
-*Planlarla yeni veya mevcut teklifler*için, yayımcılar yeni planlar (eski adıyla SKU 'lar) oluşturarak ve bunları özel olarak işaretleyerek kolayca yeni ve özel Çeşitlemeler oluşturabilir.  
+*Planlarla yeni veya mevcut teklifler*için, yayımcılar yeni planlar (eski adıyla SKU 'lar) oluşturarak ve bunları özel olarak işaretleyerek kolayca yeni ve özel Çeşitlemeler oluşturabilir. Her teklifin en fazla 45 özel planı olabilir.
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
 

@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 57e99dfd0cec4ee396cc90173f1f22715c7ba760
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046624"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168193"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Azure portal kullanarak Azure Time Series Insights Gen1 ortamınız için bir başvuru veri kümesi oluşturun
 
@@ -30,7 +30,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Zaman serisi öngörüleri başvuru veri modeli hakkında bilgi edinin.</br>
 
-> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
+> [!VIDEO <https://www.youtube.com/embed/Z0NuWQUMv1o>]
 
 ## <a name="add-a-reference-data-set"></a>Başvuru veri kümesi ekleme
 
@@ -116,6 +116,6 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Başvuru verilerini programlamayla yönetin](time-series-insights-manage-reference-data-csharp.md).
+- [Başvuru verilerini programlamayla yönetin](time-series-insights-manage-reference-data-csharp.md).
 
-* Tüm API başvurusu için [başvuru verileri API 'si](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) belgesini okuyun.
+- Tüm API başvurusu için [başvuru verileri API 'si](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) belgesini okuyun.

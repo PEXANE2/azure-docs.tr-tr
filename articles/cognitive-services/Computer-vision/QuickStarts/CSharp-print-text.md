@@ -1,31 +1,31 @@
 ---
-title: 'Hızlı başlangıç: yazdırılan metni Ayıkla (OCR)-REST, C #'
+title: 'Hızlı başlangıç: Görüntü İşleme OCR REST API ve C ile metin Ayıkla #'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, C# ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
+description: Bu hızlı başlangıçta, C# ile Görüntü İşleme REST API OCR işlemini kullanarak görüntüden metin ayıklanır.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ecc0ddbfa48669cad7f486e181fcdb6dbc80851e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835400"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167802"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API ve C kullanarak yazdırılan metni (OCR) Ayıkla #
+# <a name="quickstart-extract-text-using-the-computer-vision-ocr-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme OCR REST API ve C kullanarak metin Ayıkla #
 
-> [!NOTE]
-> Ingilizce dil metnini ayıklıyorsanız, yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı göz önünde bulundurun. [C# hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) başlangıcı kullanılabilir. 
+> [!IMPORTANT]
+> Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Portekizce, Ispanyolca veya Basitleştirilmiş Çince (Önizleme) içinde metin ayıklıyorsanız, daha yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmanızı öneririz. [C# hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) başlangıcı kullanılabilir. 
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) özelliği ile bir görüntüdeki yazdırılmış metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilen bir karakter akışına ayıklayabilir.
+Bu hızlı başlangıçta, Görüntü İşleme REST API [OCR işlemi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) özelliğini kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız. Bu işlemle, yazdırılan metni görüntüde algılayabilir ve tanınan karakterleri makine tarafından kullanılabilen bir karakter akışına ayıklayabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır

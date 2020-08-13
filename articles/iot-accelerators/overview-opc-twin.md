@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826232"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167479"
 ---
 # <a name="what-is-opc-twin"></a>OPC Ikizi nedir?
 
@@ -29,7 +29,7 @@ OPC Ikizi, fabrika İşletmenleri 'nin fabrika ağını taramasını sağlar, b�
 OPC Ikizi, fabrika İşletmenleri 'nin olaylara tepki vermesini ve fabrika katlarını otomatik olarak ya da el ile el ile yeniden yapılandırmasını sağlar. OPC Ikizi, OPC UA sunucusunda Hizmetleri çağırmak için REST API 'Ler sağlar, kendi adres alanına gözatabilir, değişkenleri okuma/yazma ve çalıştırma yöntemleri de sağlar. Örneğin, bir Boiler üretim satırını denetlemek için sıcaklık KPI 'sını kullanır. Sıcaklık algılayıcısı OPC yayımcısı kullanarak verilerde değişiklik yayımlar. Factory işleci, sıcaklığın eşiğe ulaştığı uyarıyı alır. Üretim satırı OPC Ikizi aracılığıyla otomatik olarak aşağı doğru yapılır. Fabrika işlecine soğuk bir şekilde bildirilir.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
-Kimlik doğrulama ve basit bir geliştirici deneyimi için, OPC Ikizi 'yi basit olarak kullanabilirsiniz.
+Basit kimlik doğrulaması ve basit bir geliştirici deneyimi için OPC Ikizi kullanabilirsiniz.
 
 ### <a name="simple-authentication"></a>Basit kimlik doğrulaması 
 OPC Ikizi, uçtan uca Azure Active Directory (AAD) tabanlı kimlik doğrulaması ve denetim kullanır. Örneğin OPC Ikizi, bir makinede bir işlecin ne yaptığını belirlemek için uygulamanın OPC Ikizi üzerine derlenmesini sağlar. Makine tarafında, OPC UA denetimi aracılığıyla yapılır. Bulut tarafında, REST API sabit bir istemci denetim günlüğünü ve AAD kimlik doğrulamasını depolarsınız.

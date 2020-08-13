@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708834"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167989"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL yönetilen örnek içerik başvurusu
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,6 +75,14 @@ Bu makalede, Azure SQL yönetilen örneğini yönetmenize ve yapılandırmanıza
 - [Genişletilmiş olayları bir olay dosyasına depolayın](../database/xevent-code-event-file.md)
 - [Genişletilmiş olayları bir halka arabelleğine depolayın](../database/xevent-code-ring-buffer.md)
 
+### <a name="alerting"></a>Uyarı
+
+- [Yönetilen örnek üzerinde uyarı oluştur](alerts-create.md)
+
+## <a name="operations"></a>İşlemler
+
+- [SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme](user-initiated-failover.md)
+
 ## <a name="develop-applications"></a>Uygulama geliştirme
 
 - [Bağlantı](../database/connect-query-content-reference-guide.md#libraries)
@@ -99,8 +107,6 @@ Bu makalede, Azure SQL yönetilen örneğini yönetmenize ve yapılandırmanıza
 - [SaaS tasarım desenleri](../database/saas-tenancy-app-design-patterns.md)
 - [SaaS video dizinleyicisi](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS uygulama güvenliği](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
