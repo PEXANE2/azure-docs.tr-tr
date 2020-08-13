@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Haritalar Belgeleri
-summary: Microsoft Azure Haritalar, tüm sektörlerden geliştiricilere yönelik güçlü jeo-uzamsal özellikler sağlar. Bu jeo-uzamsal özellikler en yeni eşleme verileriyle birlikte sunulur. Azure Haritalar hem web uygulamalarında hem de mobil uygulamalarda kullanılabilir. Azure Haritalar, Azure ONE API ile uyumlu bir REST API kümesidir. Haritalar, Arama, Yönlendirme, Trafik, Ulaşım, Hava, Saat Dilimleri, Coğrafi Konum, Coğrafi Sınırlama, Harita Verileri ve Uzamsal İşlemler Azure Haritalar’ın sunduğu hizmetlerden sadece birkaçıdır. Web ve Android SDK’ları geliştirmeyi kolay, esnek ve birden çok platform arasında taşınabilir hale getirir.
+summary: Microsoft Azure Haritalar, tüm sektörlerden geliştiricilere yönelik güçlü jeo-uzamsal özellikler sağlar. Bu jeo-uzamsal özellikler en yeni eşleme verileriyle birlikte sunulur. Azure Haritalar hem web uygulamalarında hem de mobil uygulamalarda kullanılabilir. Azure Haritalar, Azure ONE API ile uyumlu bir REST API kümesidir. Haritalar, Arama, Yönlendirme, Trafik, Ulaşım, Hava, Saat Dilimleri, Coğrafi Konum, Coğrafi Sınırlama, Harita Verileri, Oluşturucu ve Uzamsal İşlemler Azure Haritalar’ın sunduğu hizmetlerden sadece birkaçıdır. Web ve Android SDK’ları geliştirmeyi kolay, esnek ve birden çok platform arasında taşınabilir hale getirir.
 metadata:
   title: Azure Haritalar Belgeleri | Microsoft Docs
   description: Azure Haritalar hakkında bilgi edinin ve web veya mobil uygulamanıza jeo-uzamsal hizmetler sağlamak için bunu nasıl kullanacağınızı öğrenin.
@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 0760dce9e64560c8ecb593f41b2d611bd059a639
-  ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+  ms.openlocfilehash: 4e95d7d9afb77dcf8e168a04c9e0f4fc3b266807
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87461757"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88121655"
 landingContent:
 - title: Azure Haritalar hakkında
   linkLists:

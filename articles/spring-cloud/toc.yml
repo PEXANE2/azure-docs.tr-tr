@@ -22,6 +22,8 @@
   items:
     - name: Uygulamayı el ile ölçeklendirme
       href: spring-cloud-tutorial-scale-manual.md
+    - name: Uygulamayı otomatik ölçeklendirme
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Uyarılar ve eylem grupları
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: IntelliJ kullanarak uygulamaları dağıtma
@@ -38,8 +40,6 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: Yönetilen kimlik kullanarak Key Vault'u Azure Spring Cloud uygulamasına bağlama
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Mikro hizmet uygulamaları için otomatik ölçeklendirmeyi ayarlama
-      href: spring-cloud-tutorial-setup-autoscale.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler

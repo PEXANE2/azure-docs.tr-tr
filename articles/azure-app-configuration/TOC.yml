@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: Yapılandırma verilerini içeri veya dışarı aktarma
       href: howto-import-export-data.md
+    - name: Anahtar değerleri için JSON içerik türü kullanma
+      href: howto-leverage-json-content-type.md
     - name: Olayları özel bir uç noktaya yönlendirme
       href: howto-app-configuration-event.md
     - name: Yapılandırma deposunu otomatik olarak yedekleme

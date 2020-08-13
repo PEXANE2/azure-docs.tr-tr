@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: Uygulamanız hakkında
               href: howto-get-app-info.md
+            - name: Roll X.509 sertifikaları
+              href: how-to-roll-x509-certificates.md
         - name: Başka yerlerden yönetme
           items:
             - name: Azure portalından yönetme

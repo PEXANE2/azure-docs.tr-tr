@@ -11,7 +11,11 @@
           expanded: true
           items:
             - name: Ayarlama - Azure portalı
-              href: data-box-quickstart-portal.md
+              items:
+                - name: İçeri aktarma için
+                  href: data-box-quickstart-portal.md
+                - name: Dışarı aktarma için
+                  href: data-box-quickstart-export.md
         - name: Öğreticiler
           items:
             - name: Verileri Azure'a içeri aktarma

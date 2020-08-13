@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: Sanal ağ oluşturma - Azure CLI
       href: quick-create-cli.md
+    - name: Sanal ağ oluşturma - ARM şablonu
+      href: quick-create-template.md
   expanded: true
 - name: Öğreticiler
   items:
