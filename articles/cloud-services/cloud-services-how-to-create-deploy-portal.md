@@ -1,6 +1,6 @@
 ---
 title: Bulut hizmeti oluşturma ve dağıtma | Microsoft Docs
-description: Azure portal kullanarak bir bulut hizmeti oluşturmayı ve dağıtmayı öğrenin.
+description: Bir bulut hizmeti oluşturmak için hızlı oluşturma yöntemini kullanmayı ve Azure 'da bir bulut hizmeti paketini yüklemek ve dağıtmak için karşıya yüklemeyi kullanmayı öğrenin.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811348"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142392"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Bulut hizmeti oluşturma ve dağıtma
 Azure portal bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sunar: *hızlı oluşturma* ve *özel oluşturma*.
@@ -59,7 +59,7 @@ Web rollerinin veya çalışan rollerinin dağıtımlarıyla bir bulut hizmeti o
     ![Bulut hizmetinizi yayımlayın](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Yeni **bulut hizmeti** bölmesinde **DNS adı**için bir değer girin.
 4. Yeni bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
-5. Bir **Konum** seçin.
+5. Bir **konum**seçin.
 6. **Paket**' e tıklayın. Bu, **bir paket yükle** bölmesini açar. Gerekli alanları girin. Rollerinizin herhangi biri tek bir örnek içeriyorsa, **bir veya daha fazla rol tek bir örnek içeriyorsa bile dağıtıma** dikkat edin.
 7. **Dağıtımı Başlat** ' ın seçili olduğundan emin olun.
 8. **Tamam** ' **a tıklayarak bir paket yükle** bölmesini kapatacaktır.

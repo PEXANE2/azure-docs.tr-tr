@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077227"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163739"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight 'ta Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 
@@ -30,6 +30,8 @@ Portaldaki HDInsight küme kaynağı sayfasından **Azure İzleyicisi**' ni seç
 
 ![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+Varsayılan olarak, bu, Edge düğümleri hariç tüm küme düğümlerine OMS aracısını yüklerse. Küme Edge düğümlerinde yüklü bir OMS Aracısı olmadığından, varsayılan olarak Log Analytics Edge düğümlerinde bulunan hiçbir telemetri yoktur.
+
 ## <a name="query-metrics-and-logs-tables"></a>Sorgu ölçümleri ve günlük tabloları
 
 Azure Izleyici günlük tümleştirmesi etkinleştirildikten sonra (Bu işlem birkaç dakika sürebilir) **Log Analytics çalışma alanı** kaynağına gidin ve **Günlükler**' i seçin.
@@ -46,7 +48,7 @@ Günlükler bir dizi örnek sorgu listeler, örneğin:
 | Kullanılamayan bilgisayarlar           | Son 5 saat içinde sinyal göndermediği bilinen tüm bilgisayarları Listele |
 | Kullanılabilirlik oranı               | Bağlı her bilgisayarın kullanılabilirlik oranını hesapla                |
 
-Örnek olarak, yukarıdaki ekran görüntüsünde gösterildiği gibi bu sorguda **Çalıştır** ' ı seçerek **kullanılabilirlik oranı** örnek sorgusunu çalıştırın. Bu, kümenizde her bir düğümün kullanılabilirlik oranını yüzde olarak gösterir. Aynı Log Analytics çalışma alanına ölçümleri göndermek için birden çok HDInsight kümesi etkinleştirdiyseniz, bu kümelerdeki tüm düğümlerin kullanılabilirlik oranını görürsünüz.
+Örnek olarak, yukarıdaki ekran görüntüsünde gösterildiği gibi bu sorguda **Çalıştır** ' ı seçerek **kullanılabilirlik oranı** örnek sorgusunu çalıştırın. Bu, kümenizde her bir düğümün kullanılabilirlik oranını yüzde olarak gösterir. Aynı Log Analytics çalışma alanına ölçümleri göndermek için birden çok HDInsight kümesi etkinleştirdiyseniz, bu kümelerdeki tüm düğümlerin (kenar düğümleri hariç) kullanılabilirlik oranını görürsünüz.
 
 ![Log Analytics çalışma alanı günlüklerinin kullanılabilirlik oranı ' örnek sorgu](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 

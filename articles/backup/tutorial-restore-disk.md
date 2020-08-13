@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure Backup bir VM diskini geri yükleme
+title: Öğretici-Azure CLı ile VM 'Yi geri yükleme
 description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl geri yükleneceğini ve kurtarılan bir sanal makinenin nasıl oluşturulacağını öğrenin.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289474"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141355"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure’da bir diski geri yükleme ve kurtarılan bir VM oluşturma
+# <a name="restore-a-vm-with-azure-cli"></a>Azure CLı ile VM 'yi geri yükleme
 
 Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yüklediğinizde, tüm sanal makineyi veya tek tek dosyaları geri yükleyebilirsiniz. Bu makalede, CLI kullanarak tam bir sanal makinenin nasıl geri yükleneceği açıklanmaktadır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -25,15 +25,15 @@ Disk geri yüklemek ve kurtarılmış bir VM oluşturmak üzere PowerShell kulla
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.18 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.0.18 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici için Azure Backup ile korunmuş olan bir Linux sanal makinesi gerekir. Yanlışlıkla bir sanal makineyi silme ve kurtarma işleminin benzetimini yapmak için, bir kurtarma noktasındaki diskten bir sanal makine oluşturursunuz. Azure Backup ile korunan bir Linux sanal makinesine ihtiyacınız varsa bkz. [CLI ile Azure’da bir sanal makineyi yedekleme](quick-backup-vm-cli.md).
 
 ## <a name="backup-overview"></a>Backup’a genel bakış
 
-Azure bir yedekleme başlattığında sanal makinedeki yedekleme uzantısı, belirli bir noktanın anlık görüntüsünü alır. İlk yedekleme istendiğinde sanal makineye yedekleme uzantısı yüklenir. Azure Backup, yedekleme gerçekleştiğinde sanal makine çalışmıyorsa temel depolamanın anlık görüntüsünü de alabilir.
+Azure bir yedekleme başlattığında sanal makinedeki yedekleme uzantısı, belirli bir noktanın anlık görüntüsünü alır. İlk yedekleme istendiğinde sanal makineye yedekleme uzantısı yüklenir. Azure Backup, yedekleme gerçekleştiğinde VM çalışmıyorsa temel depolamanın anlık görüntüsünü de alabilir.
 
 Varsayılan olarak Azure Backup, bir dosya sisteminin tutarlı yedeklemesini alır. Azure Backup, anlık görüntüyü aldığında veriler Kurtarma Hizmetleri kasasına aktarılır. Verimliliği en üst düzeye çıkarmak için Azure Backup yalnızca önceki yedeklemeden itibaren değişmiş olan veri bloklarını belirler ve aktarır.
 
@@ -101,11 +101,11 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     --restore-as-unmanaged-disk
     ```
 
-Bu işlem, yönetilen diskleri, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yükler ve ' anlık ' geri yükleme işlevlerinden yararlanmaz. CLı 'nın gelecek sürümlerinde, hedef kaynak grubu parametresini veya ' yönetilmeyen--------------------------
+Bu işlem, yönetilen diskleri, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yükler ve ' anlık ' geri yükleme işlevini etkilemez. CLı 'nın gelecek sürümlerinde, hedef kaynak grubu parametresini veya ' yönetilmeyen--------------------------
 
 ### <a name="unmanaged-disks-restore"></a>Yönetilmeyen diskler geri yükleme
 
-Yedeklenen sanal makinede yönetilmeyen diskler varsa ve diskleri kurtarma noktasından geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Varsayılan olarak, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Kullanıcı tüm yönetilmeyen diskleri tek bir yere geri yüklemeyi istiyorsa, söz konusu depolama hesabı da bu disklere yönelik hazırlama konumu olarak da kullanılabilir.
+Yedeklenen sanal makinede, yönetilmeyen diskler varsa ve diskleri kurtarma noktasından geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Varsayılan olarak, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Kullanıcı tüm yönetilmeyen diskleri tek bir yere geri yüklemeyi istiyorsa, söz konusu depolama hesabı da bu disklere yönelik hazırlama konumu olarak da kullanılabilir.
 
 Ek adımlarda, sanal makine oluşturmak için geri yüklenen disk kullanılır.
 
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-Bu sorgunun çıktısı tüm ayrıntıları verir, ancak yalnızca depolama hesabı içeriklerinde ilgileniyoruz. Azure CLı 'nin [sorgu özelliğini](/cli/azure/query-azure-cli?view=azure-cli-latest) kullanarak ilgili ayrıntıları getirebilirsiniz
+Bu sorgunun çıktısı tüm ayrıntıları verecektir, ancak yalnızca depolama hesabı içeriklerinde ilgileniyoruz. Azure CLı 'nin [sorgu özelliğini](/cli/azure/query-azure-cli?view=azure-cli-latest) kullanarak ilgili ayrıntıları getirebilirsiniz
 
 ```azurecli-interactive
 az backup job show \
@@ -204,7 +204,7 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>Dağıtım şablonunu getir
 
-Bir müşterinin depolama hesabı ve verilen kapsayıcı altında olduğundan, şablon doğrudan erişilebilir değildir. Bu şablona erişmek için URL 'nin tamamı (geçici bir SAS belirteci ile birlikte) gereklidir.
+Şablon, müşterinin depolama hesabı ve verilen kapsayıcı altında olduğundan doğrudan erişilebilir değildir. Bu şablona erişmek için URL 'nin tamamı (geçici bir SAS belirteci ile birlikte) gereklidir.
 
 İlk olarak, iş ayrıntılarından şablon blobu URI 'sini ayıklayın
 

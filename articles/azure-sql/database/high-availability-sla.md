@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 04/02/2020
-ms.openlocfilehash: ab3d0a4b33bd2e424141adc9f6b8739380c2947b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/12/2020
+ms.openlocfilehash: 33521a5aed38cacbc7ce87b4a2a917ade866e378
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542017"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142443"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -103,7 +103,7 @@ PowerShell, REST API veya Azure CLı kullanılarak yük devretme başlatılabili
 |:---|:---|:---|:---|
 |Veritabanı|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
 |Elastik havuz|[Invoke-Azsqtalayapışpoolfailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Elastik havuz yük devretme](/rest/api/sql/elasticpools(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
-|Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > Hiper ölçek veritabanlarının okunabilir ikincil çoğaltmaları için yük devretme komutu kullanılamaz.

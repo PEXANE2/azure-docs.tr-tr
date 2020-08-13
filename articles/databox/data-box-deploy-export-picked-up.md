@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845808"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142120"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Öğretici: Azure Data Box Döndür (Önizleme)
 
@@ -176,7 +176,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
 ## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-Japonya, Singapur, Kore ve Batı Avrupa’da Data Box kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin.
+Japonya, Singapur, Kore, Hindistan, Güney Afrika veya Batı Avrupa Data Box kullanıyorsanız ve sipariş oluşturma sırasında kendi kendine yönetilen sevkiyat seçeneğini belirlediyseniz, bu yönergeleri izleyin.
 
 1. Bu adım başarıyla tamamlandıktan sonra Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında gösterilen Yetkilendirme kodunu not alın.
 2. Cihazı kapatın ve kabloları çıkarın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.

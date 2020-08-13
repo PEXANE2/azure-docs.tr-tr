@@ -1,18 +1,21 @@
 ---
 title: Düzeltilebilir bir ilke dağıtma
 description: Azure 'da bir düzeltme görevi kullanan ilkeleri dağıtmak için, müşteri kiracısında bir yönetilen kimlik oluşturmanız gerekir.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: fc13b6209826d4a59d82bca5db63d4ca5c39f9fb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105345"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163263"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Temsilci bir abonelik içinde düzeltilebilir bir ilke dağıtın
 
 [Azure ışıklı kullanım](../overview.md) , hizmet sağlayıcılarının, temsilci bir abonelik içinde ilke tanımları oluşturmalarına ve düzenlemesine izin verir. Ancak, bir [Düzeltme görevi](../../governance/policy/how-to/remediate-resources.md) (yani, [Deployifnotexists](../../governance/policy/concepts/effects.md#deployifnotexists) veya [değişiklik](../../governance/policy/concepts/effects.md#modify) etkisi olan ilkeler) kullanan ilkeleri dağıtmak için, müşteri kiracısında [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md) oluşturmanız gerekir. Bu yönetilen kimlik, şablonu ilke içinde dağıtmak için Azure Ilkesi tarafından kullanılabilir. Bu senaryoyu etkinleştirmek için, hem Azure tarafından atanan kaynak yönetimine ilişkin müşteriyi eklediğinizde hem de ilkeyi dağıtırken gereken adımlar vardır.
+
+> [!TIP]
+> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) aynı işlemlerin aynısını kullanabilir.
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Müşteri kiracısında yönetilen bir kimliğe roller atayabilecek bir kullanıcı oluşturun
 

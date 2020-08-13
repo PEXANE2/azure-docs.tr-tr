@@ -14,12 +14,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bbc90776ca007b84d5f67c50f8550ee9c881c7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506049"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141678"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Privileged Identity Management 'da ayrıcalıklı erişim grubu atamaları (Önizleme) için denetim etkinliği geçmişi
 
@@ -36,7 +36,9 @@ Ayrıcalıklı erişim gruplarının denetim geçmişini görüntülemek için b
 
 1. **Azure AD Privileged Identity Management**açın.
 
-1. **Ayrıcalıklı erişim (Önizleme)** seçeneğini belirleyin.
+1. **Ayrıcalıklı erişim grupları (Önizleme)** seçeneğini belirleyin.
+
+1. Denetim geçmişini görüntülemek istediğiniz ayrıcalıklı erişim grubunu seçin.
 
 1. **Etkinlik**' ın altında **kaynak denetimi**' ni seçin.
 
@@ -46,15 +48,15 @@ Ayrıcalıklı erişim gruplarının denetim geçmişini görüntülemek için b
 
 ## <a name="view-my-audit"></a>Denetmi görüntüle
 
-My Audit, kişisel rol etkinliğinizi görüntülemenize olanak sağlar.
+**My Audit** , ayrıcalıklı bir erişim grubu için kişisel rol etkinliğinizi görüntülemenize olanak sağlar.
 
 1. **Azure AD Privileged Identity Management**açın.
 
-1. **Ayrıcalıklı erişim (Önizleme)** seçeneğini belirleyin.
+1. **Ayrıcalıklı erişim grupları (Önizleme)** seçeneğini belirleyin.
 
-1. Denetim geçmişini görüntülemek istediğiniz üyeyi veya grubu seçin.
+1. Denetim geçmişini görüntülemek istediğiniz ayrıcalıklı erişim grubunu seçin.
 
-1. **Denetmi**seçin.
+1. **Etkinlik**' ın altında **Hesabım**' ı seçin.
 
 1. Geçmişi önceden tanımlanmış bir tarih veya özel Aralık kullanarak filtreleyin.
 

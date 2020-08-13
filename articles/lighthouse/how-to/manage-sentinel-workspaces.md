@@ -3,12 +3,12 @@ title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105277"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163246"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
@@ -17,6 +17,9 @@ Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fa
 Azure Sentinel, uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için tek bir çözüm sunan güvenlik analizlerini ve tehdit bilgilerini sunar. Azure açık bir şekilde, kiracılar genelinde birden çok Azure Sentinel çalışma alanını ölçekli bir şekilde yönetebilirsiniz. Bu, birden çok çalışma alanı genelinde sorgu çalıştırma veya içgörüler elde etmek için bağlı veri kaynaklarınızdaki verileri görselleştirmek ve izlemek üzere çalışma kitapları oluşturmak gibi senaryolara olanak sağlar. Sorgular ve PlayBook 'lar gibi IP, yönetim kiracınızda kalır, ancak müşteri kiracılarında güvenlik yönetimi gerçekleştirmek için kullanılabilir.
 
 Bu konuda, [Azure Sentinel](../../sentinel/overview.md) 'in çapraz kiracı görünürlüğü ve yönetilen güvenlik hizmetleri için ölçeklenebilir bir şekilde nasıl kullanılacağına ilişkin bir genel bakış sunulmaktadır.
+
+> [!TIP]
+> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, bu kılavuz [birden çok kiracıyı yönetmek Için Azure açık Thouse kullanan kuruluşlar](../concepts/enterprise.md)için de geçerlidir.
 
 ## <a name="architectural-considerations"></a>Mimari konuları
 

@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box kendinden yönetilen kargo | Verilerdeki Microsoft Docs
 description: Azure Data Box cihazlar için kendi kendine yönetilen teslim iş akışını açıklar
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608596"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142545"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal Azure Data Box için kendi kendine yönetilen dağıtımı kullanın
 
@@ -28,18 +28,20 @@ Bu makalede, bir Azure Data Box cihazının sıralaması, çekilmesi ve kapatıl
 * Japonya
 * Singapur
 * Güney Kore
+* Hindistan
+* Güney Afrika
 
 ## <a name="use-self-managed-shipping"></a>Otomatik gönderimi kullanma
 
 Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz.
 
 1. Azure Data Box sırasında, **kişi ayrıntıları**altında **+ Sevkiyat Adresi Ekle**' yi seçin.
-   ![Kendi kendine yönetilen kargo](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Otomatik gönderim](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Sevkiyat türü seçerken, **kendi kendine yönetilen sevkiyat** seçeneğini belirleyin. Bu seçenek yalnızca, Önkoşullar bölümünde açıklandığı gibi desteklenen bir bölgedeyse kullanılabilir.
 
 3. Sevkiyat adresinizi girdikten sonra doğrulamanız ve siparişinizi doldurmanız gerekir.
-   ![Kendi kendine yönetilen kargo](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Otomatik gönderim](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Cihaz hazırlandıktan ve BT için bir e-posta bildirimi aldıktan sonra, bir toplama zamanlayabilirsiniz.
 

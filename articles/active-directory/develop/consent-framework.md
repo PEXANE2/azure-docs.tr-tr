@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117320"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141559"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory onay çerçevesi
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) onay çerçevesi, çok kiracılı web ve yerel
 
 Onay çerçevesi, OAuth 2,0 ' de ve yetkilendirme kodu verme ve istemci kimlik bilgileri gibi çeşitli akışlarda, genel veya gizli istemciler kullanılarak oluşturulmuştur. Azure AD, OAuth 2,0 kullanarak bir telefon, tablet, sunucu veya Web uygulaması gibi birçok farklı türde istemci uygulaması oluşturmayı mümkün kılar ve gerekli kaynaklara erişim elde edebilir.
 
-Onay çerçevesini OAuth 2.0 yetkilendirmesi ile kullanma hakkında daha fazla bilgi için bkz. [Azure AD Için](./authentication-vs-authorization.md) [OAuth 2,0 ve Azure AD ve kimlik doğrulama senaryolarını kullanarak Web uygulamalarına erişim yetkisi verme](v2-oauth2-auth-code-flow.md) . Microsoft Graph aracılığıyla Office 365 yetkilendirme erişimi alma hakkında bilgi için bkz. [Microsoft Graph Ile uygulama kimlik doğrulaması](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Onay çerçevesini OAuth 2.0 yetkilendirmesi ile kullanma hakkında daha fazla bilgi için bkz. [Azure AD Için](./authentication-vs-authorization.md) [OAuth 2,0 ve Azure AD ve kimlik doğrulama senaryolarını kullanarak Web uygulamalarına erişim yetkisi verme](v2-oauth2-auth-code-flow.md) . Microsoft Graph aracılığıyla Office 365 yetkilendirme erişimi alma hakkında bilgi için bkz. [Microsoft Graph Ile uygulama kimlik doğrulaması](/graph/).
 
 ## <a name="consent-experience---an-example"></a>Onay deneyimi-bir örnek
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285875"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142188"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -93,7 +93,7 @@ Coğrafi çoğaltma, *Premium* SKU kapsayıcısı kayıt defterlerinin bir özel
 
 Durum externalized veya durumu işleyen kodla eklenebilir. Genellikle, bir veritabanı veya ağ üzerinden çalışan farklı makinelerde çalışan veya aynı makinede işlem dışında çalışan başka bir veri deposu kullanarak externalize.
 
-Kapsayıcılar ve mikro hizmetler, içinde çalışan işlemlerin durumu korumaları durumunda en esnektir. Uygulamalar neredeyse her zaman bir durum içerdiğinden, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı veya Azure SQL veritabanı gibi bir PaaS çözümü kullanın.
+Kapsayıcılar ve mikro hizmetler, içinde çalışan işlemlerin durumu korumaları durumunda en esnektir. Uygulamalar neredeyse her zaman bir durum içerdiğinden Azure Cosmos DB, PostgreSQL için Azure veritabanı, MySQL için Azure veritabanı veya Azure SQL veritabanı gibi bir PaaS çözümü kullanın.
 
 Taşınabilir uygulamalar oluşturmak için aşağıdaki yönergelere bakın:
 

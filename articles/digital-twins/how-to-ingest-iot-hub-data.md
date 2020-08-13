@@ -2,273 +2,246 @@
 title: IoT Hub’dan telemetri alma
 titleSuffix: Azure Digital Twins
 description: IoT Hub cihaz telemetri iletilerini alma bölümüne bakın.
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131574"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163642"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
 Azure dijital TWINS, IoT cihazlarından ve diğer kaynaklardaki verilerle birlikte çalıştırılır. Azure dijital TWINS 'te kullanılacak cihaz verileri için ortak bir kaynak [IoT Hub](../iot-hub/about-iot-hub.md).
 
-Önizleme süresince, verileri Azure dijital TWINS 'e geri alma işlemi, verileri alan ve [Azure işlevi](../azure-functions/functions-overview.md)gibi bir dış işlem kaynağı kurmak ve bu verileri, özellikleri ayarlamak veya [dijital TWINS](concepts-twins-graph.md) 'de telemetri olaylarını Işlemek Için [digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanır. 
+Verileri Azure dijital TWINS 'e geri alma süreci, verileri alan ve özellikleri ayarlamak için [Digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanan bir [Azure işlevi](../azure-functions/functions-overview.md)gibi bir dış işlem kaynağı kurmak veya [dijital TWINS](concepts-twins-graph.md) 'de buna uygun olarak telemetri olayları tetiklemesi için kullanılır. 
 
 Bu nasıl yapılır belgesi, IoT Hub telemetri alabilen bir Azure işlevi yazma işlemini adım adım göstermektedir.
 
-## <a name="example-telemetry-scenario"></a>Örnek telemetri senaryosu
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu örneğe devam etmeden önce, aşağıdaki önkoşulları gerçekleştirmeniz gerekir.
+* **IoT Hub 'ı**. Yönergeler için [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md) konusunun *IoT Hub oluşturma* bölümüne bakın.
+* Dijital ikizi örneğinizi çağırmak için doğru izinlere sahip **bir Azure işlevi** . Bkz. [*nasıl yapılır: yönergelerin verilerini işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md) . 
+* Cihaz telemetrinizi alacak **bir dijital TWINS örneği** . Bkz [ *. nasıl yapılır: Azure dijital TWINS örneği ve kimlik doğrulaması ayarlama*](./how-to-set-up-instance-portal.md) 
+
+### <a name="example-telemetry-scenario"></a>Örnek telemetri senaryosu
 
 Bu nasıl yapılır-bir Azure işlevi kullanarak IoT Hub nasıl Azure dijital TWINS 'e ileti gönderileceğini özetler. Bunun için kullanabileceğiniz birçok olası yapılandırma ve eşleşen strateji vardır, ancak bu makaleye yönelik örnek aşağıdaki bölümleri içerir:
 * Bilinen bir cihaz KIMLIĞIYLE IoT Hub bir termometre aygıtı.
 * Eşleşen bir KIMLIK ile cihazı temsil eden dijital ikizi
-* Bir odayı temsil eden dijital ikizi
 
 > [!NOTE]
 > Bu örnek, cihaz KIMLIĞI ile karşılık gelen dijital ikizi KIMLIĞI arasında basit bir KIMLIK eşleşmesi kullanır, ancak cihazdan ikizi 'e daha karmaşık eşlemeler sağlamak mümkündür (örneğin, bir eşleme tablosu ile).
 
-Termometre cihazı tarafından bir sıcaklık telemetri olayı gönderildiğinde, *odikizi* 'ın *sıcaklık* özelliği güncellenir. Bunun gerçekleşmesini sağlamak için, bir cihazdaki telemetri olayından dijital ikizi Özellik ayarlayıcısından eşleme yaparsınız. [İkizi grafından](concepts-twins-graph.md) topoloji bilgilerini kullanarak *Oda* ikizi ' ı bulabilir ve ardından ikizi özelliğini ayarlayabilirsiniz. Diğer senaryolarda, kullanıcılar eşleşen ikizi bir özellik ayarlamak isteyebilir (Bu örnekte, *123*kimliğine sahip ikizi). Azure dijital TWINS, Telemetri verilerinin TWINS 'e nasıl eşlendiğini belirlemek için size çok esneklik sunar. 
+Termometre cihazı tarafından bir sıcaklık telemetri olayı gönderildiğinde, dijital ikizi 'ın *sıcaklık* özelliği güncellenir. Bu senaryo aşağıdaki diyagramda özetlenmiştir:
 
-Bu senaryo aşağıdaki diyagramda özetlenmiştir:
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Akış grafiğini gösteren diyagram. Grafik IoT Hub bir cihaz, Azure dijital TWINS 'teki bir ikizi üzerinde sıcaklık özelliği güncelleştiren bir Azure Işlevine IoT Hub aracılığıyla sıcaklık telemetri gönderir." border="false":::
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="IoT Hub cihaz, Azure Digital TWINS 'te ikizlerini üzerinde bir sıcaklık özelliğini güncelleştiren bir Azure işlevine IoT Hub, Event Grid veya sistem konuları aracılığıyla sıcaklık telemetri gönderir." border="false":::
+## <a name="add-a-model-and-twin"></a>Model ve ikizi ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+IoT Hub bilgileriyle güncelleştirmek için bir ikizi gerekir.
 
-Bu örneğe devam etmeden önce, aşağıdaki önkoşulları gerçekleştirmeniz gerekir.
-1. IoT Hub 'ı oluşturun. Yönergeler için [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md) konusunun *IoT Hub oluşturma* bölümüne bakın.
-2. IoT Hub olayları işlemek için en az bir Azure işlevi oluşturun. Bkz. nasıl yapılır: Azure dijital TWINS 'e bağlanabilecek ve Azure dijital TWINS API işlevlerini çağırasağlayan temel bir Azure işlevi oluşturmak üzere [*verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md) . Bu işlevin geri kalanı bu işlevi oluşturur.
-3. Hub verileri için bir olay hedefi ayarlayın. [Azure portal](https://portal.azure.com/)IoT Hub örneğinize gidin. *Olaylar*' ın altında, Azure işleviniz için bir abonelik oluşturun. 
+Model şöyle görünür:
+```JSON
+{
+  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+  "@type": "Interface",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure portal: olay aboneliği ekleme":::
+**Bu modeli TWINS örneğinizle karşıya yüklemek**IÇIN Azure CLI 'yı açın ve şu komutu çalıştırın:
+```azurecli-interactive
+az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
+```
 
-4. *Olay aboneliği oluştur* sayfasında, alanları aşağıdaki gibi girin:
-   * *Olay ABONELIĞI ayrıntıları*' nın altında, aboneliği istediğiniz şekilde adlandırın
-   * *Olay türleri*altında, filtre uygulanacak olay türü olarak *cihaz telemetrisi* ' ni seçin.
-      - İsterseniz diğer olay türlerine filtre ekleyin.
-   * *Uç nokta ayrıntıları*altında Azure işlevinizi bir uç nokta olarak seçin
+Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız**gerekecektir. Bir ikizi oluşturmak ve ilk sıcaklık değeri olarak 0,0 ayarlamak için aşağıdaki komutu kullanın.
+```azurecli-interactive
+az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+```
 
-## <a name="create-an-azure-function-in-visual-studio"></a>Visual Studio 'da bir Azure işlevi oluşturma
+Başarılı bir ikizi Create komutunun çıkışı şöyle görünmelidir:
+```json
+{
+  "$dtId": "thermostat67",
+  "$etag": "W/\"0000000-9735-4f41-98d5-90d68e673e15\"",
+  "$metadata": {
+    "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+    "Temperature": {
+      "ackCode": 200,
+      "ackDescription": "Auto-Sync",
+      "ackVersion": 1,
+      "desiredValue": 0.0,
+      "desiredVersion": 1
+    }
+  },
+  "Temperature": 0.0
+}
+```
+
+## <a name="create-an-azure-function"></a>Azure işlevi oluşturma
 
 Bu bölüm, [*nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md)Ile aynı Visual Studio başlangıç adımlarını ve Azure işlevi iskelet 'i kullanır. Çatı, kimlik doğrulamasını işler ve Azure dijital TWINS API 'Leri yanıt olarak çağırabilmeniz için bir hizmet istemcisi oluşturur. 
 
-İskelet işlevinin kalp olması şu şekilde olur:
-
-```csharp
-namespace FunctionSample
-{
-    public static class FooFunction
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("Foo")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            DigitalTwinsClient client = null;
-            try
-            {
-                ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-                DigitalTwinsClientOptions opts = 
-                    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-                                                
-                log.LogInformation($"ADT service client connection created.");
-            }
-            catch (Exception e)
-            {
-                log.LogError($"ADT service client connection failed. " + e.ToString());
-                return;
-            }
-            log.LogInformation(eventGridEvent.Data.ToString());
-        }
-    }
-}
-```
-
 İzleyen adımlarda, IoT Hub IoT telemetri olaylarını işlemek için buna özel kod ekleyeceksiniz.  
 
-## <a name="add-telemetry-processing"></a>Telemetri işleme ekleme
-
+### <a name="add-telemetry-processing"></a>Telemetri işleme ekleme
+    
 Telemetri olayları cihazdan iletiler biçiminde gelir. Telemetri işleme kodu eklemenin ilk adımı, bu cihaz iletisinin ilgili bölümünün Event Grid olayından ayıklanarak oluşur. 
 
-Farklı cihazlar, iletilerini farklı şekilde yapılandırabileceği için, bu adımın kodu bağlı cihaza bağlıdır. 
+Farklı cihazlar, iletilerini farklı şekilde yapılandırabileceği için, **Bu adımın kodu bağlı cihaza bağlıdır.** 
 
-Aşağıdaki kod, telemetri olarak JSON gönderen basit bir cihaz için bir örnek gösterir. Örnek, iletiyi gönderen cihazın cihaz KIMLIĞINI ve sıcaklık değerini ayıklar.
+Aşağıdaki kod, telemetri olarak JSON gönderen basit bir cihaz için bir örnek gösterir. Bu örnek, [*öğretici: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md)konusunda tam olarak araştırılmış. Aşağıdaki kod, iletiyi gönderen cihazın ve sıcaklık değerinin cihaz KIMLIĞINI bulur.
 
 ```csharp
-JObject job = eventGridEvent.Data as JObject;
-string devid = (string)job["systemProperties"].ToObject<JObject>().Property("IoT-hub-connection-device-ID").Value;
-double temp = (double)job["body"].ToObject<JObject>().Property("temperature").Value;
+JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+var temperature = deviceMessage["body"]["Temperature"];
 ```
 
-Bu alıştırmanın amacını, ikizi Graf içindeki bir *odanın* sıcaklığını güncelleştirmeniz gerektiğini unutmayın. Bu, ileti hedefimizin bu cihazla ilişkili dijital ikizi olmadığı, ancak üst öğesi olan *Oda* ikizi olmadığı anlamına gelir. Üst ikizi, yukarıdaki kodu kullanarak telemetri iletisinden ayıkladığınız cihaz KIMLIĞI değerini kullanarak bulabilirsiniz.
-
-Bunu yapmak için Azure dijital TWINS API 'Lerini kullanarak cihaz-temsil eden ikizi (Bu durumda cihazla aynı KIMLIĞE sahip olan) gelen ilişkilere erişin. Gelen ilişkide, üst öğenin KIMLIĞINI aşağıdaki kod parçacığı ile bulabilirsiniz.
-
-Aşağıdaki kod parçacığı, bir ikizi gelen ilişkilerinin nasıl alınacağını gösterir:
+Sonraki kod örneği, KIMLIĞI ve sıcaklık değerini alır ve bu ikizi "Patch" (güncelleştirme yap) için kullanır.
 
 ```csharp
-AsyncPageable<IncomingRelationship> res = client.GetIncomingRelationshipsAsync(twin_id);
-await foreach (IncomingRelationship irel in res)
-{
-    Log.Ok($"Relationship: {irel.RelationshipName} from {irel.SourceId} | {irel.RelationshipId}");
-}
-```
-
-İkizi 'in üst öğesi ilişkinin *SourceId* özelliğinde bulunur.
-
-Bir cihazı yalnızca tek bir gelen ilişkiye sahip olacak şekilde temsil eden bir ikizi modeli için oldukça yaygındır. Bu durumda, döndürülen ilk (ve yalnızca) ilişkiyi seçebilirsiniz. Modelleriniz bu ikizi birden çok ilişki türüne izin veriyor ise, birden çok gelen ilişkilerden seçim yapmak için daha fazla belirtmeniz gerekebilir. Bunu yapmanın yaygın bir yolu, ilişkinin tarafından çekilmesi `RelationshipName` . 
-
-*Odayı*temsil eden üst ikizi kimliğine sahip olduktan sonra, ikizi tarafından "Patch" (güncelleştirme yapabilirsiniz) yapabilirsiniz. Bunu yapmak için aşağıdaki kodu kullanın:
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", temp);
-try
-{
-    await client.UpdateDigitalTwinAsync(twin_id, uou.Serialize());
-    Log.Ok($"Twin '{twin_id}' updated successfully!");
-}
+//Update twin using device temperature
+var uou = new UpdateOperationsUtility();
+uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 ...
 ```
 
-### <a name="full-azure-function-code"></a>Tam Azure işlev kodu
+### <a name="update-your-azure-function-code"></a>Azure işlev kodunuzu güncelleştirme
 
-Önceki örneklerden kodu kullanarak, bağlam içindeki tüm Azure işlevleri aşağıda verilmiştir:
+Önceki örneklerden kodu anladığınıza göre, Visual Studio 'Yu açın ve Azure işlevinizin kodunu bu örnek kodla değiştirin.
 
 ```csharp
-[FunctionName("ProcessHubToDTEvents")]
-public async void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+using System;
+using System.Net.Http;
+using Azure.Core.Pipeline;
+using Azure.DigitalTwins.Core;
+using Azure.DigitalTwins.Core.Serialization;
+using Azure.Identity;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace IotHubtoTwins
 {
-    // After this is deployed, in order for this function to be authorized on Azure Digital Twins APIs,
-    // you'll need to turn the Managed Identity Status to "On", 
-    // grab the Object ID of the function, and assign the "Azure Digital Twins Owner (Preview)" role to this function identity.
+    public class IoTHubtoTwins
+    {
+        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+        private static readonly HttpClient httpClient = new HttpClient();
 
-    DigitalTwinsClient client = null;
-    //log.LogInformation(eventGridEvent.Data.ToString());
-    // Authenticate on Azure Digital Twins APIs
-    try
-    {
-        
-        ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-        client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-        log.LogInformation($"ADT service client connection created.");
-    }
-    catch (Exception e)
-    {
-        log.LogError($"ADT service client connection failed. " + e.ToString());
-        return;
-    }
-
-    if (client != null)
-    {
-        try
+        [FunctionName("IoTHubtoTwins")]
+        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
         {
-            if (eventGridEvent != null && eventGridEvent.Data != null)
+            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
+
+            try
             {
-                #region Open this region for message format information
-                // Telemetry message format
-                //{
-                //  "properties": { },
-                //  "systemProperties": 
-                // {
-                //    "iothub-connection-device-id": "thermostat1",
-                //    "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-                //    "iothub-connection-auth-generation-id": "637199981642612179",
-                //    "iothub-enqueuedtime": "2020-03-18T18:35:08.269Z",
-                //    "iothub-message-source": "Telemetry"
-                //  },
-                //  "body": "eyJUZW1wZXJhdHVyZSI6NzAuOTI3MjM0MDg3MTA1NDg5fQ=="
-                //}
-                #endregion
-
-                // Reading deviceId from message headers
-                log.LogInformation(eventGridEvent.Data.ToString());
-                JObject job = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                string deviceId = (string)job["systemProperties"]["iothub-connection-device-id"];
-                log.LogInformation($"Found device: {deviceId}");
-
-                // Extracting temperature from device telemetry
-                byte[] body = System.Convert.FromBase64String(job["body"].ToString());
-                var value = System.Text.ASCIIEncoding.ASCII.GetString(body);
-                var bodyProperty = (JObject)JsonConvert.DeserializeObject(value);
-                var temperature = bodyProperty["Temperature"];
-                log.LogInformation($"Device Temperature is:{temperature}");
-
-                // Update device Temperature property
-                await AdtUtilities.UpdateTwinProperty(client, deviceId, "/Temperature", temperature, log);
-
-                // Find parent using incoming relationships
-                string parentId = await AdtUtilities.FindParent(client, deviceId, "contains", log);
-                if (parentId != null)
+                //Authenticate with Digital Twins
+                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+                DigitalTwinsClient client = new DigitalTwinsClient(
+                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
+                    { Transport = new HttpClientTransport(httpClient) });
+                log.LogInformation($"ADT service client connection created.");
+            
+                if (eventGridEvent != null && eventGridEvent.Data != null)
                 {
-                    await AdtUtilities.UpdateTwinProperty(client, parentId, "/Temperature", temperature, log);
-                }
+                    log.LogInformation(eventGridEvent.Data.ToString());
 
+                    // Reading deviceId and temperature for IoT Hub JSON
+                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+                    var temperature = deviceMessage["body"]["Temperature"];
+                    
+                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
+
+                    //Update twin using device temperature
+                    var uou = new UpdateOperationsUtility();
+                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                }
+            }
+            catch (Exception e)
+            {
+                log.LogError($"Error in ingest function: {e.Message}");
             }
         }
-        catch (Exception e)
-        {
-            log.LogError($"Error in ingest function: {e.Message}");
-        }
     }
 }
 ```
 
-Gelen ilişkileri bulmak için yardımcı program işlevi:
-```csharp
-public static async Task<string> FindParent(DigitalTwinsClient client, string child, string relname, ILogger log)
+## <a name="connect-your-function-to-iot-hub"></a>İşlevinizi IoT Hub bağlama
+
+1. Hub verileri için bir olay hedefi ayarlayın. [Azure portal](https://portal.azure.com/)IoT Hub örneğinize gidin. **Olaylar**' ın altında, Azure işleviniz için bir abonelik oluşturun. 
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Olay aboneliği eklemeyi gösteren Azure portal ekran görüntüsü.":::
+
+2. **Olay aboneliği oluştur** sayfasında, alanları aşağıdaki gibi girin:
+    1. **Ad**' ın altında, aboneliği istediğiniz şekilde adlandırın.
+    2. **Olay şeması**altında **Event Grid şeması**' nı seçin.
+    3. **Sistem konu adı**altında benzersiz bir ad seçin.
+    4. **Olay türleri**altında, Filtrelenecek olay türü olarak **cihaz telemetrisi** ' ni seçin.
+    5. **Uç nokta ayrıntıları**' nın altında Azure işlevinizi bir uç nokta olarak seçin.
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="Olay aboneliği ayrıntılarını gösteren Azure portal ekran görüntüsü":::
+
+## <a name="send-simulated-iot-data"></a>Sanal IoT verisi gönder
+
+Yeni giriş işlevinizi test etmek için öğreticideki cihaz simülatörünü kullanın [*: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md). Bu öğretici, C# dilinde yazılmış örnek bir proje tarafından çalıştırılır. Örnek kod şurada bulunur: [Azure dijital TWINS örnekleri](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). Bu depoda **Devicesimülatör** projesini kullanıyorsunuz.
+
+Uçtan uca öğreticide, aşağıdaki adımları izleyin:
+1. [*Sanal cihazı IoT Hub Kaydet*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [*Simülasyonu yapılandırma ve çalıştırma*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+
+## <a name="validate-your-results"></a>Sonuçlarınızı doğrulama
+
+Yukarıdaki cihaz simülatörünü çalıştırırken, dijital ikizi 'ın sıcaklık değeri değişecek. Azure CLı 'de, sıcaklık değerini görmek için aşağıdaki komutu çalıştırın.
+
+```azurecli-interactive
+az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+```
+
+Çıktılarınız şöyle bir sıcaklık değeri içermelidir:
+
+```json
 {
-    // Find parent using incoming relationships
-    try
+  "result": [
     {
-        AsyncPageable<IncomingRelationship> rels = client.GetIncomingRelationshipsAsync(child);
-
-        await foreach (IncomingRelationship ie in rels)
-        {
-            if (ie.RelationshipName == relname)
-                return (ie.SourceId);
+      "$dtId": "thermostat67",
+      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$metadata": {
+        "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+        "Temperature": {
+          "ackCode": 200,
+          "ackDescription": "Auto-Sync",
+          "ackVersion": 1,
+          "desiredValue": 69.75806974934324,
+          "desiredVersion": 1
         }
+      },
+      "Temperature": 69.75806974934324
     }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error in retrieving parent:{exc.Status}:{exc.Message}");
-    }
-    return null;
+  ]
 }
 ```
 
-İkizi düzeltme eki uygulamak için yardımcı program işlevi:
-```csharp
-public static async Task UpdateTwinProperty(DigitalTwinsClient client, string twinId, string propertyPath, object value, ILogger log)
-{
-    // If the twin does not exist, this will log an error
-    try
-    {
-        // Update twin property
-        UpdateOperationsUtility uou = new UpdateOperationsUtility();
-        uou.AppendAddOp(propertyPath, value);
-        await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
-    }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error:{exc.Status}/{exc.Message}");
-    }
-}
-```
-
-Artık IoT Hub gelen senaryo verilerini okumak ve yorumlamak için donatılmış bir Azure işleviniz var.
-
-## <a name="debug-azure-function-apps-locally"></a>Azure Function uygulamalarında yerel olarak hata ayıklama
-
-Azure işlevleri Event Grid tetikleyicisiyle yerel olarak hata ayıklaması mümkündür. Bunun hakkında daha fazla bilgi için bkz. [*Event Grid tetikleyiciden yerel olarak hata ayıklama*](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Değer değişikliğini görmek için yukarıdaki sorgu komutunu tekrar tekrar çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

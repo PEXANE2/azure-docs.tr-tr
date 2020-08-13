@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310873"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142256"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Hızlı başlangıç: azureiotsecurity modülü oluşturma ikizi
 
@@ -76,7 +76,7 @@ IoT modülü TWINS için Azure Güvenlik Merkezi 'nin özelliklerini özelleşti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel uyarıların nasıl yapılandırılacağını öğrenmek için sonraki makaleye ilerleyin...
+Güvenlik önerilerini araştırmaya yönelik bilgi edinmek için sonraki makaleye ilerleyin...
 
 > [!div class="nextstepaction"]
-> [Özel uyarıları yapılandırma](quickstart-create-custom-alerts.md)
+> [Güvenlik önerilerini araştır](quickstart-investigate-security-recommendations.md)

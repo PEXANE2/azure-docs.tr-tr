@@ -1,19 +1,19 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507330"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162686"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -53,7 +53,7 @@ VHD 'nizi Azure 'a aktarmayı öğrenmek için bkz. [CLI](../articles/virtual-ma
 
 ### <a name="private-links"></a>Özel bağlantılar
 
-Yönetilen diskler, ağınıza dahili bir yönetilen diski içeri veya dışarı aktarmak için özel bağlantıları kullanarak desteklenir. Özel bağlantılar, eklenmemiş yönetilen diskler ve bu verileri bölgesel genişletme, olağanüstü durum kurtarma ve Forli analiz için diğer bölgelere dışarı aktarmak için kullanabileceğiniz bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturmanıza olanak tanır. Ayrıca, bir VHD 'yi Şirket içindeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Artık, yönetilen disklerin içeri ve dışarı aktarılmasını kısıtlamak için [özel bağlantılardan](../articles/private-link/private-link-overview.md) yararlanarak yalnızca Azure sanal ağınızda yer alabilir. Özel bağlantılar verilerinizin yalnızca güvenli Microsoft omurga ağı içinde hareket etmenizi sağlamanıza olanak tanır.
+Yönetilen diskler için özel bağlantı desteği şu anda önizlemededir ve ağınıza bir yönetilen diski içeri veya dışarı aktarmak için kullanılabilir. Özel bağlantılar, eklenmemiş yönetilen diskler ve bu verileri bölgesel genişletme, olağanüstü durum kurtarma ve Forli analiz için diğer bölgelere dışarı aktarmak için kullanabileceğiniz bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturmanıza olanak tanır. Ayrıca, bir VHD 'yi Şirket içindeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Artık, yönetilen disklerin içeri ve dışarı aktarılmasını kısıtlamak için [özel bağlantılardan](../articles/private-link/private-link-overview.md) yararlanarak yalnızca Azure sanal ağınızda yer alabilir. Özel bağlantılar verilerinizin yalnızca güvenli Microsoft omurga ağı içinde hareket etmenizi sağlamanıza olanak tanır.
 
 Yönetilen bir diski içeri veya dışarı aktarmaya yönelik özel bağlantıları nasıl etkinleştireceğinizi öğrenmek için bkz. [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) veya [Portal](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) makaleleri.
 

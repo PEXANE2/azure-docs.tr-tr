@@ -1,6 +1,6 @@
 ---
 title: Socket.io-Azure kullanarak uygulama Node.js
-description: Azure 'da barındırılan bir node.js uygulamasında socket.io kullanmayı öğrenin.
+description: Bir yuvayı nasıl barındıracağınızı öğrenmek için bu öğreticiyi kullanın. Azure 'da GÇ tabanlı sohbet uygulaması. Socket.IO, bir node.js sunucusu ve istemcileri için gerçek zamanlı iletişim sağlar.
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8029c243052114b9a0932e5372301be84440cf85
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386597"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142477"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure bulut hizmetinde Socket.IO ile Node.js sohbet uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
 
 ![Azure 'da barındırılan hizmeti görüntüleyen bir tarayıcı penceresi][completed-app]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki örneği başarıyla tamamlayabilmeniz için aşağıdaki ürünlerin ve sürümlerin yüklü olduğundan emin olun:
 
 * [Visual Studio 'yu](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) yükler

@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169438"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163195"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -112,7 +112,7 @@ Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğ
 
 1. Sol taraftaki menüde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**altında, **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin ( **Evet**' i seçin). Uygulama bildiriminde **"Allowpublicclient": true** değerinin ayarlandığından emin olun. 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Şimdi *IdentityExperienceFramework* kaydında daha önce sunulan API kapsamına izin verin:
 
@@ -213,6 +213,6 @@ Dosyaları karşıya yüklerken, Azure her birine ön ek ekler `B2C_1A_` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, kimlik sağlayıcısı olarak Azure Active Directory (Azure AD) eklemeyi deneyin. Bu başlangıç kılavuzunda kullanılan temel dosya, Azure AD gibi diğer kimlik sağlayıcılarını eklemek için gereken bazı içerikleri zaten içeriyor.
+Ardından, kimlik sağlayıcısı olarak Azure Active Directory (Azure AD) eklemeyi deneyin. Bu başlangıç kılavuzunda kullanılan temel dosya, Azure AD gibi diğer kimlik sağlayıcılarını eklemek için gereken bazı içerikleri zaten içeriyor. Azure AD 'yi bir kimlik sağlayıcısı olarak ayarlama hakkında daha fazla bilgi için bkz. [Active Directory B2C özel ilkeler kullanarak kayıt ayarlama ve Azure Active Directory hesapla oturum açma](identity-provider-azure-ad-single-tenant-custom.md). 
 
-Azure AD 'yi ve kimlik sağlayıcısını ayarlama hakkında daha fazla bilgi için bkz. [Active Directory B2C özel ilkeler kullanarak kayıt ayarlama ve Azure Active Directory hesabıyla oturum açma](identity-provider-azure-ad-single-tenant-custom.md).
+Özel ilkeler kullanarak ISV tümleştirmesi uygulama hakkında daha fazla bilgi edinmek için [iş ortağı galerimizi](partner-gallery.md) ziyaret edin. 

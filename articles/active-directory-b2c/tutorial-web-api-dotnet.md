@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 280a59d8c378de6b3667560a4eb2b1cf95041f8d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298814"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163892"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir ASP.NET Web API 'sine erişim Izni verme
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticideki adımları ve önkoşulları doldurun [: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme](tutorial-web-app-dotnet.md).
 
@@ -40,22 +40,22 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Web API kaynakları, erişim belirteci sunan istemci uygulamalarına göre korunan kaynak isteklerini kabul etmeden ve bunlara yanıt verebilmeleri için kiracınızda kayıtlı olmalıdır.
 
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *webapi1*.
 1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gerektiği bir uç nokta girin. Bu öğreticide, örnek yerel olarak çalışır ve tarihinde dinler `https://localhost:44332` .
-1. **Kaydol**’u seçin.
+1. **Kaydet**’i seçin.
 1. Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Uygulamalar (eski)** öğesini seçin ve ardından **Ekle**' yi seçin.
@@ -63,7 +63,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 6. **İçerme Web uygulaması/Web API 'si**için **Evet**' i seçin.
 7. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Bu öğreticide, örnek yerel olarak çalışır ve tarihinde dinler `https://localhost:44332` .
 8. **Uygulama kimliği URI 'si**için, Web API 'niz için kullanılan tanımlayıcıyı girin. Tam etki alanı ile birlikte URI tanımlayıcısı sizin için oluşturulur. Örneğin, `https://contosotenant.onmicrosoft.com/api`.
-9. **Oluştur**' a tıklayın.
+9. **Oluştur**’a tıklayın.
 10. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
 
 * * *
@@ -94,7 +94,7 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web 
 ### <a name="configure-the-web-application"></a>Web uygulamasını yapılandırma
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
-1. **Taskwebapp** projesinde **Web. config**dosyasını açın.
+1. **Taskwebapp** projesinde **Web.config**açın.
 1. API’yi yerel olarak çalıştırmak üzere, **api:TaskServiceUrl** için localhost ayarını kullanın. Web.config’i aşağıdaki gibi değiştirin:
 
     ```csharp
@@ -111,7 +111,7 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web 
 
 ### <a name="configure-the-web-api"></a>Web API’sini yapılandırma
 
-1. **Taskservice** projesinde **Web. config**dosyasını açın.
+1. **Taskservice** projesinde **Web.config**açın.
 1. API’yi kiracınızı kullanmak için yapılandırın.
 
     ```csharp
@@ -147,7 +147,7 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web 
 1. İki proje için de **Eylem**’i **Başlat** olarak değiştirin.
 1. Yapılandırmayı kaydetmek için **Tamam** ' ı tıklatın.
 1. İki uygulamayı da çalıştırmak için **F5**'e basın. Her uygulama kendi tarayıcı penceresinde açılır.
-    * `https://localhost:44316/`Web uygulamasıdır.
+    * `https://localhost:44316/` Web uygulamasıdır.
     * `https://localhost:44332/` web API’sidir.
 
 1. Web uygulamasında, Web uygulamasında oturum açmak için **kaydolma/oturum aç** ' ı seçin. Daha önce oluşturduğunuz hesabı kullanın.

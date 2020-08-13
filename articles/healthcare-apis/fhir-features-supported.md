@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843513"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142528"
 ---
 # <a name="features"></a>Özellikler
 
@@ -49,7 +49,7 @@ Desteklenen en son sürüm:`4.0.1`
 | Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self`ve `next` desteklenir                     |
 | aracıların                 | Hayır        | Hayır        | Hayır        |                                                     |
 
-## <a name="search"></a>Arayın
+## <a name="search"></a>Arama
 
 Tüm arama parametresi türleri desteklenir. 
 
@@ -103,7 +103,7 @@ Tüm arama parametresi türleri desteklenir.
 | `_count`                | Evet       | Evet       | Evet       |         |
 | `_summary`              | Kısmi   | Kısmi   | Kısmi   | `_summary=count`desteklenir |
 | `_include`              | Hayır        | Evet       | Hayır        |         |
-| `_revinclude`           | Hayır        | Hayır        | Hayır        |         |
+| `_revinclude`           | Hayır        | Evet       | Hayır        | Dahil edilen öğeler 100 ile sınırlıdır. |
 | `_contained`            | Hayır        | Hayır        | Hayır        |         |
 | `_elements`             | Hayır        | Hayır        | Hayır        |         |
 

@@ -3,12 +3,12 @@ title: Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
 description: Azure Active Directory kiracılar, kullanıcılar ve roller kavramlarını ve bunların Azure Use senaryolarında nasıl kullanılabileceğini anlayın.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105396"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163314"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
 
@@ -16,7 +16,7 @@ Azure 'u açık bir şekilde [kullanmaya](../overview.md)başlamadan önce, Azur
 
 *Kiracı* , Azure AD 'nin adanmış ve güvenilir bir örneğidir. Genellikle, her kiracı tek bir kuruluşu temsil eder. [Azure Temsilcili kaynak yönetimi](azure-delegated-resource-management.md) , kaynakların bir kiracıdan başka bir kiracıya mantıksal olarak projeksiyonunu sağlar. Bu, yönetim kiracısındaki (bir hizmet sağlayıcısına ait olan) kullanıcıların, bir müşterinin kiracısındaki Temsilcili kaynaklara erişmesine olanak sağlar veya [birden çok kiracıya sahip kuruluşların yönetim işlemlerini merkezileştirmelerini](enterprise.md)sağlar.
 
-Bu mantıksal projeksiyonu başarmak için, müşteri kiracısındaki abonelik (veya bir veya daha fazla kaynak grubu), Azure tarafından yetkilendirilen kaynak yönetimi için *eklendi* olmalıdır. Bu ekleme işlemi, [Azure Resource Manager şablonlar aracılığıyla](../how-to/onboard-customer.md) veya [Azure Market 'e genel veya özel bir teklif yayınlayarak](../how-to/publish-managed-services-offers.md)yapılabilir.
+Bu mantıksal projeksiyonu başarmak için, müşteri kiracısındaki bir abonelik (veya bir abonelik içindeki bir veya daha fazla kaynak grubu), Azure açık *eklendi* olmalıdır. Bu ekleme işlemi, [Azure Resource Manager şablonlar aracılığıyla](../how-to/onboard-customer.md) veya [Azure Market 'e genel veya özel bir teklif yayınlayarak](../how-to/publish-managed-services-offers.md)yapılabilir.
 
 Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler*tanımlamanız gerekecektir. Her yetkilendirme, yönetim kiracısında, temsilcili kaynaklara erişimi olacak bir kullanıcı hesabı ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri ayarlayan yerleşik bir rol belirler.
 
@@ -31,7 +31,7 @@ Aşağıdaki özel durumlarla birlikte, tüm [yerleşik roller](../../role-based
 - [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) yerleşik rolü desteklenir, ancak yalnızca [Müşteri kiracısında yönetilen bir kimliğe rol atamanın](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)sınırlı amacı için geçerlidir. Genellikle bu rol tarafından verilen başka hiçbir izin uygulanmaz. Bu rolle bir Kullanıcı tanımlarsanız, bu kullanıcının yönetilen kimliklere atayabileceği yerleşik rolleri de belirtmeniz gerekir.
 
 > [!NOTE]
-> Azure 'a yeni bir ilgili yerleşik rol eklendikten sonra, [Azure Resource Manager şablonları kullanarak bir müşteriyi](../how-to/onboard-customer.md)eklerken atanabilir. [Yönetilen bir hizmet teklifi yayımlanırken](../how-to/publish-managed-services-offers.md)bulut iş ortağı portalı yeni eklenen rol kullanılabilir hale gelmeden önce bir gecikme olabilir.
+> Azure 'a yeni bir ilgili yerleşik rol eklendikten sonra, [Azure Resource Manager şablonları kullanarak bir müşteriyi](../how-to/onboard-customer.md)eklerken atanabilir. [Yönetilen bir hizmet teklifi yayımlanırken](../how-to/publish-managed-services-offers.md), yeni eklenen rol Iş Ortağı Merkezi 'nde kullanılabilir hale gelmeden önce bir gecikme olabilir.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamaya yönelik en iyi uygulamalar
 

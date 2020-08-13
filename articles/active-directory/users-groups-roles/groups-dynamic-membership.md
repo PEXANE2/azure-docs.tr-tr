@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dd3ede40582e8f2c71c0424df025d06ff7f0f79
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728376"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141610"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
-Azure Active Directory (Azure AD) ' de, gruplar için dinamik üyelikleri etkinleştirmek üzere karmaşık öznitelik tabanlı kurallar oluşturabilirsiniz. Dinamik grup üyeliği, Kullanıcı ekleme ve kaldırma yönetim yükünü azaltır. Bu makalede, kullanıcılar veya cihazlar için dinamik üyelik kuralları oluşturmaya yönelik özellikler ve söz dizimi ayrıntılı olarak açıklanır. Güvenlik gruplarında veya Office 365 gruplarında dinamik üyelik için bir kural ayarlayabilirsiniz.
+Azure Active Directory (Azure AD) ' de, gruplar için dinamik üyelikleri etkinleştirmek üzere karmaşık öznitelik tabanlı kurallar oluşturabilirsiniz. Dinamik grup üyeliği, Kullanıcı ekleme ve kaldırma yönetim yükünü azaltır. Bu makalede, kullanıcılar veya cihazlar için dinamik üyelik kuralları oluşturmaya yönelik özellikler ve söz dizimi ayrıntılı olarak açıklanır. Güvenlik gruplarında veya Microsft 365 gruplarında dinamik üyelik için bir kural ayarlayabilirsiniz.
 
 Bir kullanıcının veya cihazın herhangi bir özniteliği değiştiğinde, sistem, değişikliğin herhangi bir grup ekleme veya kaldırma tetikleyip tetikleyemeyeceğini görmek için bir dizindeki tüm dinamik grup kurallarını değerlendirir. Bir kullanıcı veya cihaz bir gruptaki bir kuralı karşılıyorsa, bu grubun üyesi olarak eklenir. Kuralı artık karşılamadığı takdirde bunlar kaldırılır. Dinamik bir grubun bir üyesini el ile ekleyemez veya kaldıramazsınız.
 
@@ -43,7 +43,7 @@ Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş 
 - Beşten fazla ifadeye sahip kural
 - Doğrudan raporlar kuralı
 - [İşleç önceliğini](groups-dynamic-membership.md#operator-precedence) ayarlama
-- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
@@ -127,7 +127,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-" alias@domain " içerir) |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-"SMTP: alias@domain " içerir) |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-"SMTP: alias@domain " içerir) |
 
 Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurallar](#rules-for-devices).
 
@@ -178,7 +178,7 @@ Bir ifadede kullanılan değerler, aşağıdakiler de dahil olmak üzere çeşit
 
 * Dizeler
 * Boolean – true, false
-* Numaralar
+* Sayılar
 * Diziler – sayı dizisi, dize dizisi
 
 Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdiziminin kullanılması önemlidir. Bazı sözdizimi ipuçları şunlardır:
@@ -252,7 +252,7 @@ Birden çok değerli özellikler aynı türdeki nesne koleksiyonlarıdır. -Any 
 | Özellikler | Değerler | Kullanım |
 | --- | --- | --- |
 | assignedPlans | Koleksiyondaki her nesne şu dize özelliklerini kullanıma sunar: capabilityStatus, Service, Serviceplanıd |User. assignedPlans-any (assignedPlan. Serviceplanıd-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-ve assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -Contains "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any ( \_ -Contains "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>-Any ve-All işleçlerini kullanma
 
@@ -269,7 +269,7 @@ assignedPlans, kullanıcıya atanan tüm hizmet planlarını listeleyen bir çok
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Bu bir kural, bir Office 365 (veya diğer Microsoft çevrimiçi hizmeti) özelliğinin etkinleştirildiği tüm kullanıcıları gruplandırmak için kullanılabilir. Daha sonra gruba bir ilke kümesiyle uygulayabilirsiniz.
+Bu bir kural, bir Microsoft 365 (veya diğer Microsoft çevrimiçi hizmeti) özelliğinin etkinleştirildiği tüm kullanıcıları gruplandırmak için kullanılabilir. Daha sonra gruba bir ilke kümesiyle uygulayabilirsiniz.
 
 #### <a name="example-2"></a>Örnek 2
 

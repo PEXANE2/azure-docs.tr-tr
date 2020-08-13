@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121077"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141304"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Zorunlu parametreler
 
-`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir, bu, ``scopes`` belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içerir. Belirteç Microsoft Graph için ise, gerekli kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](/graph/api/user-list-contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekir. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir, bu, ``scopes`` belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içerir. Belirteç Microsoft Graph için ise, gerekli kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](/graph/api/user-list-contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekir. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](/graph/permissions-reference).
 
 Android 'de, ayrıca gösterildiği gibi ana etkinliği de belirtmeniz gerekir. bu `.WithParentActivityOrWindow` sayede, belirtecin etkileşimden sonra bu üst etkinliğe geri dönmesi sağlanır. Bunu belirtmezseniz, çağrılırken bir özel durum oluşturulur `.ExecuteAsync()` .
 

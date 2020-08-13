@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121094"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141287"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama için belirteç alın
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir: `scopes` . `scopes`Parametresi, bir belirtecin gerekli olduğu kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph için ise, her bir Microsoft Graph API 'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvurunun "Izinler" bölümüne gidin.
 
-Örneğin, [kullanıcının kişilerini listelemek](/graph/api/user-list-contacts)Için "User. Read", "Contacts. Read" kapsamını kullanın. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Örneğin, [kullanıcının kişilerini listelemek](/graph/api/user-list-contacts)Için "User. Read", "Contacts. Read" kapsamını kullanın. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](/graph/permissions-reference).
 
 Android 'de, kullanarak uygulamayı oluştururken üst etkinliği belirtebilirsiniz `PublicClientApplicationBuilder` . Bu sırada üst etkinliği belirtmezseniz, daha sonra `.WithParentActivityOrWindow` aşağıdaki bölümde olduğu gibi kullanarak belirtebilirsiniz. Üst etkinliği belirtirseniz, belirteç, etkileşimden sonra bu üst etkinliğe geri alınır. Bunu belirtmezseniz, `.ExecuteAsync()` çağrı bir özel durum oluşturur.
 

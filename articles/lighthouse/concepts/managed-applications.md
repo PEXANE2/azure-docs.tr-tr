@@ -1,24 +1,27 @@
 ---
 title: Azure Lighthouse ve Azure yönetilen uygulamaları
-description: Azure açık ve Azure tarafından yönetilen uygulamalar...
-ms.date: 05/01/2020
+description: Azure 'un birlikte kullanımı ve Azure tarafından yönetilen uygulamaların farklı senaryolara nasıl yardımcı olduğunu ve bunların birlikte nasıl kullanılabileceğini anlayın.
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121614"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163433"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse ve Azure yönetilen uygulamaları
 
 Azure yönetilen uygulamaları ve Azure açık uygulaması, bir hizmet sağlayıcının müşterinin kiracısında bulunan kaynaklara erişmesini sağlayarak çalışır. Aralarındaki farkları ve etkinleştirilmeleri için yardım ettikleri senaryoları ve bunların birlikte nasıl kullanılabileceğini anlamak faydalı olabilir.
 
+> [!TIP]
+> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](enterprise.md) aynı işlem ve araçları kullanabilir.
+
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure hafif kullanımı ve Azure yönetilen uygulamaları karşılaştırması
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
-[Azure açık Thouse](../overview.md)ile bir servis sağlayıcısı, doğrudan bir müşterinin aboneliğine (veya kaynak grubunda) çok çeşitli yönetim görevleri gerçekleştirmeye yönelik bir hizmet sağlayıcıdır. Bu erişim, bir mantıksal projeksiyon aracılığıyla elde edilir ve bu da hizmet sağlayıcılarının kendi kiracısında oturum açmasını ve müşterinin kiracısına ait kaynaklara erişmesini sağlar. Müşteri, hizmet sağlayıcısına hangi abonelikleri veya kaynak gruplarını temsil etmek istediğinizi belirleyebilir ve müşteri bu kaynaklara tam erişim sağlar. Ayrıca, hizmet sağlayıcının erişimini istediğiniz zaman da kaldırabilirler.
+[Azure](../overview.md), bir hizmet sağlayıcı, doğrudan müşterinin aboneliğine (veya kaynak grubuna) çok çeşitli yönetim görevleri gerçekleştirebilir. Bu erişim, bir mantıksal projeksiyon aracılığıyla elde edilir ve bu da hizmet sağlayıcılarının kendi kiracısında oturum açmasını ve müşterinin kiracısına ait kaynaklara erişmesini sağlar. Müşteri, hizmet sağlayıcısına hangi abonelikleri veya kaynak gruplarını temsil etmek istediğinizi belirleyebilir ve müşteri bu kaynaklara tam erişim sağlar. Ayrıca, hizmet sağlayıcının erişimini istediğiniz zaman da kaldırabilirler.
 
 Azure 'un açık olması için, müşteriler, [ARM şablonları dağıtarak](../how-to/onboard-customer.md) veya [Azure Marketi 'Nde yönetilen bir hizmet teklifi](managed-services-offers.md)aracılığıyla [Azure tarafından yetkilendirilen kaynak yönetimi](azure-delegated-resource-management.md) için eklendi. [İş ortağı kimliğinizi bağlayarak](../../cost-management-billing/manage/link-partner-id.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
 

@@ -1,7 +1,7 @@
 ---
 title: Özel bulut VMware bileşenleri
 titleSuffix: Azure VMware Solution by CloudSimple
-description: VMware bileşenlerinin özel buluta nasıl yüklendiğini açıklar
+description: CloudSimple hizmetinin Azure konumlarında yerel olarak VMware 'yi dağıtmanıza nasıl olanak sağladığını öğrenin. Özel bulutlar, Azure bulutunun geri kalanı ile tümleşiktir.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702831"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142511"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
 

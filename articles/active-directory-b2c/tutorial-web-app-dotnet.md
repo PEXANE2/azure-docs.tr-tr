@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b23bed8163ffed6a610eda7677099989e966a646
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298780"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163824"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 * **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
@@ -42,11 +42,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) ekleme
 
-Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
@@ -56,12 +56,12 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Yanıt URL 'si**altında, ekleyin `https://localhost:44316` .
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. Özellikler sayfasında, Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere uygulama KIMLIĞINI kaydedin.
 
 * * *
@@ -85,16 +85,16 @@ Aşağıdaki iki proje örnek çözümde bulunur:
 * **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması ve oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
 * **Taskservice** -oluşturma, okuma, güncelleştirme ve silme görev listesi işlevlerini destekler. API Azure AD B2C tarafından korunur ve TaskWebApp tarafından çağırılır.
 
-Örnek, kiracınızda kayıtlı olan uygulamayı kullanacak şekilde, uygulama KIMLIĞI ve daha önce kaydettiğiniz anahtar dahil olmak üzere değiştirirsiniz. Ayrıca, oluşturduğunuz Kullanıcı akışlarını da yapılandırırsınız. Örnek, yapılandırma değerlerini *Web. config* dosyasında ayarlar olarak tanımlar.
+Örnek, kiracınızda kayıtlı olan uygulamayı kullanacak şekilde, uygulama KIMLIĞI ve daha önce kaydettiğiniz anahtar dahil olmak üzere değiştirirsiniz. Ayrıca, oluşturduğunuz Kullanıcı akışlarını da yapılandırırsınız. Örnek, *Web.config* dosyasında yapılandırma değerlerini ayarlar olarak tanımlar.
 
-Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak şekilde güncelleştirin:
+Web.config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak şekilde güncelleştirin:
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
-1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
+1. **Taskwebapp** projesinde **Web.config** dosyasını açın.
     1. Ve değerlerini, `ida:Tenant` `ida:AadInstance` oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, ile değiştirin `fabrikamb2c` `contoso` .
     1. Değerini, `ida:TenantId` Azure B2C kiracınız için özelliklerde bulabileceğiniz Dizin kimliğiyle değiştirin ( **Azure Active Directory**  >  **Properties**  >  **dizin kimliği**altındaki Azure Portal).
     1. Değerini, `ida:ClientId` kaydettiğiniz uygulama kimliğiyle değiştirin.
-    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. İstemci gizli dizisi, örneğin küçüktür ( `<` ), büyüktür () `>` , ampersan () veya çift tırnak () gibi önceden tanımlanmış XML varlıkları Içeriyorsa `&` `"` , Web. config dosyasına EKLEMEDEN önce bu karakterleri XML ile, istemci gizliliğini kodlayarak kaçış yapmanız gerekir.
+    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. İstemci gizli dizisi, örneğin küçüktür ( `<` ), büyüktür () `>` , ampersan () veya çift tırnak () gibi önceden tanımlanmış XML varlıkları içeriyorsa `&` `"` , bu karakterleri, Web.config eklemeden önce, istemci gizli anahtarını XML kodlayarak kaçış yapmanız gerekir.
     1. Değerini `ida:SignUpSignInPolicyId` ile değiştirin `b2c_1_signupsignin1` .
     1. Değerini `ida:EditProfilePolicyId` ile değiştirin `b2c_1_profileediting1` .
     1. Değerini `ida:ResetPasswordPolicyId` ile değiştirin `b2c_1_passwordreset1` .

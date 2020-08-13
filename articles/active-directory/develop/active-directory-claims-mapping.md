@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 8923cb19c24b0e392026dc0f4b8f67c31956894a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115943"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141542"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -329,7 +329,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
 | Kullanıcı | atanan | kullanıcıya atanan uygulama rollerinin listesi|
 | uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
-| uygulama, kaynak, hedef kitle | objected | ObjectID |
+| uygulama, kaynak, hedef kitle | uzantının | ObjectID |
 | uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi/bölgesi |
 
@@ -413,7 +413,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 | Dönüştürme Tionmethod | Kısıtlamalar |
 | ----- | ----- |
-| ExtractMailPrefix | Yok |
+| ExtractMailPrefix | Hiçbiri |
 | Birleştir | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı

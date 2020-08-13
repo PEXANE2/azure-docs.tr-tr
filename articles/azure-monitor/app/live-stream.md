@@ -4,16 +4,16 @@ description: Özel ölçümler sayesinde web uygulamanızı gerçek zamanlı ola
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321947"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142222"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
-[Application Insights](./app-insights-overview.md)canlı ölçüm akışı kullanarak canlı, üretim içi Web uygulamanızı izleyin. Hizmetinize herhangi bir olumsuz bakış olmadan, ölçümleri ve performans sayaçlarını gerçek zamanlı olarak izlemek için seçin ve filtreleyin. Örnek başarısız isteklerin ve özel durumların yığın izlemelerini inceleyin. [Profil Oluşturucu](./profiler.md) ve [anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)ile birlikte canlı ölçüm akışı, Canlı Web siteniz için güçlü ve olmayan bir tanılama aracı sağlar.
+[Application Insights](./app-insights-overview.md)' dan canlı ölçüm akışı (quickpulse olarak da bilinir) kullanarak canlı, üretim içi Web uygulamanızı izleyin. Hizmetinize herhangi bir olumsuz bakış olmadan, ölçümleri ve performans sayaçlarını gerçek zamanlı olarak izlemek için seçin ve filtreleyin. Örnek başarısız isteklerin ve özel durumların yığın izlemelerini inceleyin. [Profil Oluşturucu](./profiler.md) ve [anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)ile birlikte canlı ölçüm akışı, Canlı Web siteniz için güçlü ve olmayan bir tanılama aracı sağlar.
 
 Canlı Ölçüm Akışı, şunları yapabilirsiniz:
 
@@ -31,19 +31,81 @@ Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Nod
 
 ## <a name="get-started"></a>başlarken
 
-1. Uygulamanıza [Application Insights 'Yi yükler](../azure-monitor-app-hub.yml) .
-2. Standart Application Insights paketlerine ek olarak, canlı ölçüm akışını etkinleştirmek için [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) gereklidir.
-3. Application Insights paketinin **en son sürümüne güncelleştirin** . Visual Studio 'da projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Güncelleştirmeler** sekmesini açın ve tüm Microsoft. ApplicationInsights. * paketlerini seçin.
+1. Canlı ölçümleri etkinleştirmek için dile özgü yönergeleri izleyin.
+   * [ASP.net](./asp-net.md) -canlı ölçümler varsayılan olarak etkindir.
+   * [ASP.NET Core](./asp-net-core.md)-canlı ölçümler varsayılan olarak etkindir.
+   * [.Net/.NET Core konsolu/Worker](./worker-service.md)-Live ölçümleri varsayılan olarak etkinleştirilmiştir.
+   * [.NET uygulamaları-kod kullanarak etkinleştirin](#enable-livemetrics-using-code-for-any-net-application).
+   * [Node.js](./nodejs.md#live-metrics)
 
-    Uygulamanızı yeniden dağıtın.
+2. [Azure Portal](https://portal.azure.com), uygulamanız için Application Insights kaynağını açın ve ardından canlı akış ' yı açın.
 
-3. [Azure Portal](https://portal.azure.com), uygulamanız için Application Insights kaynağını açın ve ardından canlı akış ' yı açın.
+3. Filtrelerinizin müşteri adları gibi hassas verileri kullanacaksanız [Denetim kanalını güvenli hale](#secure-the-control-channel) getirin.
 
-4. Filtrelerinizin müşteri adları gibi hassas verileri kullanacaksanız [Denetim kanalını güvenli hale](#secure-the-control-channel) getirin.
+### <a name="enable-livemetrics-using-code-for-any-net-application"></a>Herhangi bir .NET uygulaması için kod kullanarak Liveölçümlerini etkinleştirin
 
-### <a name="no-data-check-your-server-firewall"></a>Veri yok mu? Sunucu güvenlik duvarınızı denetleyin
+Canlı ölçümler, .NET uygulamaları için önerilen yönergeleri kullanarak ekleme sırasında varsayılan olarak etkin olsa da, aşağıdakiler canlı ölçümleri el ile nasıl ayarlayacağınız gösterilmiştir.
 
-[Canlı ölçüm akışı giden bağlantı noktalarını](./ip-addresses.md#outgoing-ports) , sunucularınızın güvenlik duvarında açık olduğunu kontrol edin.
+1. [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet paketini yükler
+2. Aşağıdaki örnek konsol uygulaması kodu, canlı ölçümleri ayarlamayı gösterir.
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using System;
+using System.Threading.Tasks;
+
+namespace LiveMetricsDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a TelemetryConfiguration instance.
+            TelemetryConfiguration config = TelemetryConfiguration.CreateDefault();
+            config.InstrumentationKey = "INSTRUMENTATION-KEY-HERE";
+            QuickPulseTelemetryProcessor quickPulseProcessor = null;
+            config.DefaultTelemetrySink.TelemetryProcessorChainBuilder
+                .Use((next) =>
+                {
+                    quickPulseProcessor = new QuickPulseTelemetryProcessor(next);
+                    return quickPulseProcessor;
+                })
+                .Build();
+
+            var quickPulseModule = new QuickPulseTelemetryModule();
+
+            // Secure the control channel.
+            // This is optional, but recommended.
+            quickPulseModule.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+            quickPulseModule.Initialize(config);
+            quickPulseModule.RegisterTelemetryProcessor(quickPulseProcessor);
+
+            // Create a TelemetryClient instance. It is important
+            // to use the same TelemetryConfiguration here as the one
+            // used to setup Live Metrics.
+            TelemetryClient client = new TelemetryClient(config);
+
+            // This sample runs indefinitely. Replace with actual application logic.
+            while (true)
+            {
+                // Send dependency and request telemetry.
+                // These will be shown in Live Metrics stream.
+                // CPU/Memory Performance counter is also shown
+                // automatically without any additional steps.
+                client.TrackDependency("My dependency", "target", "http://sample",
+                    DateTimeOffset.Now, TimeSpan.FromMilliseconds(300), true);
+                client.TrackRequest("My Request", DateTimeOffset.Now,
+                    TimeSpan.FromMilliseconds(230), "200", true);
+                Task.Delay(1000).Wait();
+            }
+        }
+    }
+}
+```
+
+Yukarıdaki örnek bir konsol uygulaması için olduğunda, aynı kod tüm .NET uygulamalarında kullanılabilir. Telemetriyi otomatik toplayan başka bir TelemetryModules etkinse, bu modüllerin başlatılmasına yönelik aynı yapılandırmanın de canlı ölçüm modülü için kullanıldığından emin olmak önemlidir.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Canlı Ölçüm Akışı Ölçüm Gezgini ve analiz 'den farklı midir?
 
@@ -53,7 +115,7 @@ Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Nod
 |**Saklama yok**|Veriler grafikte olduğu sırada devam ettirir ve sonra atılır|[90 gün boyunca tutulan veriler](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**İsteğe bağlı**|Veriler yalnızca canlı ölçümler bölmesi açıkken akışlıdır |SDK her yüklendiğinde ve etkinleştirildiğinde veriler gönderilir|
 |**Ücretsiz**|Canlı Akış verileri için ücret alınmaz|[Fiyatlandırmaya](./pricing.md) tabi
-|**Örnekleme**|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. TelemetryProcessors uygulanmıyor.|Olaylar [örneklenebilir](./api-filtering-sampling.md)|
+|**Örnekleme**|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. |Olaylar [örneklenebilir](./api-filtering-sampling.md)|
 |**Denetim kanalı**|Filtre denetim sinyalleri SDK 'ya gönderilir. Bu kanalın güvenli olmasını öneririz.|İletişim, portala tek bir yoldur|
 
 ## <a name="select-and-filter-your-metrics"></a>Ölçümlerinizi seçme ve filtreleme
@@ -97,9 +159,10 @@ Belirli bir sunucu rolü örneğini izlemek isterseniz, sunucuya göre filtre uy
 ## <a name="secure-the-control-channel"></a>Denetim kanalının güvenliğini sağlama
 
 > [!NOTE]
-> Şu anda yalnızca kod tabanı izlemeyi kullanarak kimliği doğrulanmış bir kanal ayarlayabilir ve kodsuz kullanacaksınız Attach kullanarak sunucuların kimliğini doğrulayamamaktadır.
+> Şu anda yalnızca kod tabanlı izleme kullanarak kimliği doğrulanmış bir kanal ayarlayabilir ve kodsuz kullanacaksınız Attach kullanarak sunucuların kimliğini doğrulayamamaktadır.
 
-Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. İzleme anahtarına ek olarak, kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz.
+Canlı ölçümler portalında belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. İzleme anahtarına ek olarak, kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz.
+
 ### <a name="create-an-api-key"></a>API anahtarı oluşturma
 
 ![API anahtarı > API anahtarı ](./media/live-stream/api-key.png)
@@ -107,73 +170,63 @@ Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki can
 
 ### <a name="add-api-key-to-configuration"></a>Yapılandırmaya API anahtarı Ekle
 
-### <a name="classic-aspnet"></a>Klasik ASP.NET
+### <a name="aspnet"></a>ASP.NET
 
 applicationinsights.config dosyasında, QuickPulseTelemetryModule öğesine AuthenticationApiKey değerini ekleyin:
-``` XML
 
+```XML
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
-
 ```
-Veya kodda, QuickPulseTelemetryModule üzerinde ayarlayın:
+
+### <a name="aspnet-core"></a>ASP.NET Çekirdeği
+
+[ASP.NET Core](./asp-net-core.md) uygulamalar için aşağıdaki yönergeleri izleyin.
+
+`ConfigureServices`Startup.cs dosyanızı aşağıdaki şekilde değiştirin:
+
+Aşağıdaki ad alanını ekleyin.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
-
-             TelemetryConfiguration configuration = new TelemetryConfiguration();
-            configuration.InstrumentationKey = "YOUR-IKEY-HERE";
-
-            QuickPulseTelemetryProcessor processor = null;
-
-            configuration.TelemetryProcessorChainBuilder
-                .Use((next) =>
-                {
-                    processor = new QuickPulseTelemetryProcessor(next);
-                    return processor;
-                })
-                        .Build();
-
-            var QuickPulse = new QuickPulseTelemetryModule()
-            {
-
-                AuthenticationApiKey = "YOUR-API-KEY"
-            };
-            QuickPulse.Initialize(configuration);
-            QuickPulse.RegisterTelemetryProcessor(processor);
-            foreach (var telemetryProcessor in configuration.TelemetryProcessors)
-                {
-                if (telemetryProcessor is ITelemetryModule telemetryModule)
-                    {
-                    telemetryModule.Initialize(configuration);
-                    }
-                }
-
 ```
+
+Ardından `ConfigureServices` yöntemi aşağıda gösterildiği gibi değiştirin.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // existing code which include services.AddApplicationInsightsTelemetry() to enable Application Insights.
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+}
+```
+
+ASP.NET Core uygulamalarını yapılandırma hakkında daha fazla bilgi, [ASP.NET Core telemetri modüllerini yapılandırma](./asp-net-core.md#configuring-or-removing-default-telemetrymodules)kılavuzumuza bulunabilir.
+
+### <a name="workerservice"></a>WorkerService
+
+[Workerservice](./worker-service.md) uygulamaları için aşağıdaki yönergeleri izleyin.
+
+Aşağıdaki ad alanını ekleyin.
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+```
+
+Sonra, çağrıdan önce aşağıdaki satırı ekleyin `services.AddApplicationInsightsTelemetryWorkerService` .
+
+```csharp
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+```
+
+WorkerService uygulamalarını yapılandırma hakkında daha fazla bilgi için, [WorkerServices 'de telemetri modülleri yapılandırma](./worker-service.md#configuring-or-removing-default-telemetrymodules)kılavuzumuzdan bulunabilir.
 
 ### <a name="azure-function-apps"></a>Azure İşlev Uygulamaları
 
 Azure Işlev uygulamaları (v2) için bir API anahtarı ile kanalın güvenliğinin sağlanması bir ortam değişkeniyle gerçekleştirilebilir.
 
-Application Insights kaynağınız içinden bir API anahtarı oluşturun ve İşlev Uygulaması **uygulama ayarları** ' na gidin. **Yeni ayar Ekle** ' yi seçin ve bir ad `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` ve API anahtarınıza karşılık gelen bir değer girin.
-
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0 veya üzerini gerektirir)
-
-Startup.cs dosyanızı aşağıdaki şekilde değiştirin:
-
-İlk ekleme
-
-```csharp
-using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-```
-
-Ardından, ConfigureServices yönteminin içinde şunu ekleyin:
-
-```csharp
-services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
-```
+Application Insights kaynağınız içinden bir API anahtarı oluşturun ve İşlev Uygulaması **ayarlar > yapılandırma** ' ya gidin. **Yeni uygulama ayarı** ' nı seçin ve bir ad `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` ve API anahtarınıza karşılık gelen bir değer girin.
 
 Bununla birlikte, tüm bağlı sunucuları tanıyor ve güveniyorsanız, kimlik doğrulamalı kanal olmadan özel filtreleri deneyebilirsiniz. Bu seçenek altı ay boyunca kullanılabilir. Bu geçersiz kılma her yeni oturum için veya yeni bir sunucu çevrimiçi olduğunda gereklidir.
 
@@ -187,7 +240,7 @@ Bununla birlikte, tüm bağlı sunucuları tanıyor ve güveniyorsanız, kimlik 
 
 | Dil                         | Temel ölçümler       | Performans ölçümleri | Özel filtreleme    | Örnek telemetri    | İşleme göre CPU bölme |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +)  |
+| .NET Framework                   | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +)  |
 | .NET Core (Target =. NET Framework)| Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +)  |
 | .NET Core (Target =. NET Core)     | Desteklenen (V 2.4.1 +) | Destekleniyor*          | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | **Desteklenmiyor**    |
 | Azure Işlevleri v2               | Desteklenir           | Desteklenir           | Desteklenir           | Desteklenir           | **Desteklenmiyor**    |
@@ -200,17 +253,15 @@ Temel ölçümler istek, bağımlılık ve özel durum oranını içerir. Perfor
 
 - PerfCounters ölçümleri, Windows için Azure App Service çalıştırılırken desteklenir. (AspNetCore SDK sürümü 2.4.1 veya üzeri)
 - Uygulama herhangi bir Windows makinesinde (VM veya bulut hizmeti ya da şirket içi vb.) çalışırken PerfCounters desteklenir. (AspNetCore SDK Version 2.7.1 veya üzeri), ancak .NET Core 2,0 veya üstünü hedefleyen uygulamalar için.
-- Uygulama her yerde (Linux, Windows, Linux için App Service, kapsayıcılar, vb.) en son beta sürümünde çalışırken PerfCounters desteklenir (ör. AspNetCore SDK Version 2.8.0-Beta1 veya üzeri), ancak .NET Core 2,0 veya üstünü hedefleyen uygulamalar için.
-
-Canlı ölçümler, Node.js SDK 'da varsayılan olarak devre dışıdır. Canlı ölçümleri etkinleştirmek için `setSendLiveMetrics(true)` SDK 'yı başlatırken [yapılandırma yöntemlerinize](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) ekleyin.
+- Uygulama, en son sürümlerde (örneğin, AspNetCore SDK sürümü 2.8.0 veya üzeri), ancak yalnızca .NET Core 2,0 veya üstünü hedefleyen uygulamalar için her yerde (Linux, Windows, Linux için App Service, kapsayıcılar vb.) çalışırken PerfCounters desteklenir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Veri yok mu? Uygulamanız korumalı bir ağda ise: Canlı Ölçüm Akışı diğer Application Insights telemetrisinden farklı IP adresleri kullanır. [Bu IP adreslerinin](./ip-addresses.md) güvenlik duvarınızdaki açık olduğundan emin olun.
+Canlı Ölçüm Akışı, diğer Application Insights telemetrisinden farklı IP adresleri kullanır. [Bu IP adreslerinin](./ip-addresses.md) güvenlik duvarınızdaki açık olduğundan emin olun. Ayrıca, [canlı ölçüm akışı giden bağlantı noktalarını](./ip-addresses.md#outgoing-ports) sunucularınızın güvenlik duvarında açık olduğunu kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Application Insights ile kullanımı izleme](./usage-overview.md)
 * [Tanılama aramasını kullanma](./diagnostic-search.md)
 * [Profil Oluşturucu](./profiler.md)
 * [Anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)
-

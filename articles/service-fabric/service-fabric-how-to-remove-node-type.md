@@ -4,14 +4,14 @@ description: Azure 'da çalışan bir Service Fabric kümesinden düğüm türü
 author: inputoutputcode
 manager: sridmad
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 08/11/2020
 ms.author: chrpap
-ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247243"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163586"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric düğüm türünü kaldırma
 Bu makalede, var olan bir düğüm türünü kümeden kaldırarak bir Azure Service Fabric kümesinin nasıl ölçeklendiriyapılacağı açıklanır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Bir Service Fabric kümesi oluşturduktan sonra, düğüm türünü (sanal makine ölçek kümesi) ve tüm düğümlerini kaldırarak bir kümeyi yatay olarak ölçeklendirebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -59,7 +59,7 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
     - Küme sağlıklı.
     - Düğüm türüne ait düğümlerin hiçbiri çekirdek düğüm olarak işaretlenmiş.
 
-4. Düğüm türü için verileri devre dışı bırakın.
+4. Düğüm türündeki her düğümü devre dışı bırakın.
 
     PowerShell kullanarak kümeye bağlanın ve ardından aşağıdaki adımı çalıştırın.
     
@@ -98,8 +98,20 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
     ```
     
     Düğüm türü için tüm düğümlerin aşağı işaretlendiğinden bekleyin.
+
+6. Özgün sanal makine ölçek kümesindeki düğümleri serbest bırakma
     
-6. Düğüm türü için verileri kaldırın.
+    Ölçek kümesinin dağıtıldığı Azure aboneliğinde oturum açın ve sanal makine ölçek kümesini kaldırın. 
+
+    ```powershell
+    $scaleSetName="myscaleset"
+    $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+    
+    Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
+    ```
+
+    
+7. Düğüm türü için verileri kaldırın.
 
     PowerShell kullanarak kümeye bağlanın ve ardından aşağıdaki adımı çalıştırın.
     
@@ -117,7 +129,7 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
 
     Tüm düğümlerin kümeden çıkarılana kadar bekleyin. Düğümler SFX içinde gösterilmemelidir.
 
-7. Service Fabric bölümden düğüm türünü kaldırın.
+8. Service Fabric bölümden düğüm türünü kaldırın.
 
     - Dağıtım için kullanılan Azure Resource Manager şablonunu bulun.
     - Service Fabric bölümündeki düğüm türüyle ilgili bölümü bulun.
@@ -165,7 +177,7 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
     Ardından şunları doğrulayın:
     - Portalda Service Fabric kaynak, Ready olarak görünür.
 
-8. Düğüm türüyle ilgili kaynakların tüm başvurusunu kaldırın.
+9. ARM şablonundan düğüm türüyle ilişkili kaynaklara yönelik tüm başvuruları kaldırın.
 
     - Dağıtım için kullanılan Azure Resource Manager şablonunu bulun.
     - Şablondaki düğüm türüyle ilişkili sanal makine ölçek kümesini ve diğer kaynakları kaldırın.
@@ -173,6 +185,13 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
 
     Ardından:
     - Dağıtımın tamamlanmasını bekleyin.
+    
+10. Artık kullanımda olmayan düğüm türüyle ilgili kaynakları kaldırın. Örnek Load Balancer ve genel IP. 
+
+    - Bu kaynakları kaldırmak için, belirli kaynak türünü ve API sürümünü belirten 6. adımda kullanılan PowerShell komutunu kullanabilirsiniz. 
+
+> [!Note]
+> Aynı Load Balancer ve IP, düğüm türleri arasında yeniden kullanılırsa bu adım isteğe bağlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Küme [dayanıklılığı özellikleri](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)hakkında daha fazla bilgi edinin.

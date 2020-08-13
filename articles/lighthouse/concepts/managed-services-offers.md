@@ -1,14 +1,14 @@
 ---
 title: Azure Market’teki Yönetilen Hizmet teklifleri
-description: Yönetilen hizmet, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
+description: Yönetilen hizmet teklifleri, Azure Market 'te müşterilere kaynak yönetimi teklifleri satmanızı sağlar.
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406869"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163331"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Market’teki Yönetilen Hizmet teklifleri
 
@@ -18,7 +18,7 @@ Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Ndeki **yö
 
 Yönetilen hizmet, müşterileri Azure 'un kullanımına ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir.
 
-Bundan sonra kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre kuruluşunuzun kiracısında [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla bu kaynaklar üzerinde çalışabilir. Bu işlem, erişim düzeyini tanımlayan rollerle birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
+Bundan sonra, kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre, [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla bu kaynaklar üzerinde yönetim kiracının içinden çalışabilecektir. Bu işlem, erişim düzeyini tanımlayan rollerle birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
 
 ## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
 

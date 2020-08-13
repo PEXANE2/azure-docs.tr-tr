@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233320"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163705"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter ile .NET için bir CI/CD işlem hattı oluşturma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstudio.m
 
 DevOps Starter, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca seçtiğiniz Azure aboneliğindeki Azure kaynaklarını da oluşturur.
 
-1. [Microsoft Azure Portal](https://portal.azure.com)oturum açın.
+1. [Microsoft Azure portalda](https://portal.azure.com) oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın. 
 
@@ -88,7 +88,7 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturdu. Depoyu g�
 
 1. Üç nokta (...) simgesini seçin.  Bu eylem, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli etkinlikleri başlatabileceğiniz bir menü açar.
 
-1. **Düzenle**' yi seçin.
+1. **Düzenle**’yi seçin.
 
     ![Derleme işlem hattı](_img/azure-devops-project-aspnet-core/builddef.png)
 

@@ -1,6 +1,6 @@
 ---
 title: CloudSimple-Service tarafından Azure VMware çözümü
-description: CloudSimple hizmeti ve kavramlarına genel bir bakış sunar.
+description: Genel bakış ile CloudSimple hizmeti hakkında bilgi edinin. Hizmetin oluşturulması, düğüm satın almanızı, düğümleri ayırmanızı ve özel bulutlar oluşturmanızı sağlar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec77209c0995bf5aec0957c8d4d2269f27d743bc
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024970"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142137"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple hizmetine genel bakış
 

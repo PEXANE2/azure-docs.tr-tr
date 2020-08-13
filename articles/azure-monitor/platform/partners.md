@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318343"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142425"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -60,7 +60,7 @@ Circonus, benzersiz iş öngörülerini ve değerlerini sağlamak için gerçek 
 
 Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
 
-[Daha fazla bilgi][cloudhealth-doc]
+[Daha fazla bilgi edinin][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>Cloudmonitorx
 
@@ -134,11 +134,11 @@ NextGen SıEM 'te lider olan LogRhythm, karma tehditleri hızlı bir şekilde al
 
 Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
 
-[Daha fazla bilgi](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
+[Daha fazla bilgi edinin](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 
-Daha fazlasını öğrenin
+Daha fazla bilgi edinin
 - [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
@@ -183,6 +183,16 @@ OpsGenie, Azure tarafından oluşturulan uyarılar için bir dağıtıcı görev
 Önde gelen olay yönetimi çözümü olan Pagerharcı, ölçümler üzerinde Azure uyarıları için birinci sınıf destek sağlamıştır. Pagerharcı Azure Izleyici uyarıları, otomatik ölçeklendirme bildirimleri, etkinlik günlüğü olayları ve Azure hizmetleri için platform düzeyi ölçümlerinde bildirimleri destekler. Bu geliştirmeler, çekirdek Azure platformu için daha fazla görünürlük sağlar. Gerçek zamanlı yanıt için, Pagervergisinin olay yönetimi olanaklarından tam olarak yararlanabilirsiniz. Genişletilmiş Azure tümleştirmesi Web kancaları aracılığıyla mümkün hale getirilir. Web kancaları çözümü hızla ve kolayca ayarlamanıza ve özelleştirmenize olanak tanır.
 
 [Belgelere gidin.][pagerduty-doc]
+
+## <a name="promitor"></a>Promıtor
+
+![Promıtor logosu](./media/partners/promitor.png)
+
+Promıtor, ölçümlerin Atlasme StatusPage, Prometheus ve StatsD gibi sistemlerde kullanılabilir olmasını sağlayan bir Azure Izleyici.
+
+Tüm ölçümleri Azure Izleyici 'ye gönderin ve ihtiyacınız olan yerlerde kullanın.
+
+[Daha fazla bilgi edinin.][promitor-doc]
 
 ## <a name="qradar"></a>QRadar
 
@@ -293,6 +303,7 @@ Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olar
 [newrelic-doc]: https://newrelic.com/azure "Newrelik belgeleri."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie belgeleri."
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "Pagerharcı belgeleri."
+[promitor-doc]: https://promitor.io/ "Promıtor belgeleri."
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar belgeleri."
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic belgeleri."
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 belgeleri."

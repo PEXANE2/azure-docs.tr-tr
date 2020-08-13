@@ -9,25 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82690279"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163671"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
-Microsoft Identity platform, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasına olanak tanır; örneğin, [OAuth 2,0 Istemci kimlik bilgileri, flowv 2.0](v2-oauth2-client-creds-grant-flow.md) ve [Şirket adına akış](v2-oauth2-on-behalf-of-flow.md)verir.
+Microsoft Identity platform, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0 [istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) akışı ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) (OBO) akışı.
 
-Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir JSON Web Token (JWT) onaysıdır.
+Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir [JSON Web Token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) onaysıdır.
 
 ## <a name="assertion-format"></a>Onaylama biçimi
-Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON Web Token](https://jwt.ms/) kitaplığı tercih ettiğiniz dilde kullanabilirsiniz. Belirteç tarafından taşınan bilgiler aşağıdaki gibidir:
+
+Onaylama işlemlerini hesaplamak için, çok sayıda JWT kitaplığı tercih ettiğiniz dilde kullanabilirsiniz. Bilgiler, [üst bilgisinde](#header), [taleplerde](#claims-payload)ve [imzasında](#signature)belirteç tarafından taşınır.
 
 ### <a name="header"></a>Üst bilgi
 
@@ -35,22 +36,22 @@ Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON 
 | --- | --- |
 | `alg` | **RS256** olmalıdır |
 | `typ` | **JWT** olmalıdır |
-| `x5t` | X. 509.440 sertifikası SHA-1 parmak izi olmalıdır |
+| `x5t` | Bir Base64 dize değeri olarak kodlanmış X. 509.440 sertifika karması (sertifikanın SHA-1 *parmak izi*olarak da bilinir). Örneğin, bir X. 509.440 sertifikası karması verildiğinde `84E05C1D98BCE3A5421D225B140B36E86A3D5534` `x5t` talep olacaktır `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
 
 ### <a name="claims-payload"></a>Talepler (yük)
 
 | Parametre |  Açıklamalar |
 | --- | --- |
-| `aud` | Hedef kitle: ** https://login.microsoftonline.com/ *tenant_Id*/OAuth2/Token olmalıdır** |
-| `exp` | Sona erme tarihi: belirtecin süresi dolduğunda tarih. Süre, belirteç geçerliliği sona erene kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir.|
-| `iss` | Veren: client_id (istemci hizmetinin uygulama KIMLIĞI) olmalıdır |
+| `aud` | Hedef kitle:`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `exp` | Sona erme tarihi: belirtecin süresi dolduğunda tarih. Süre, belirteç geçerliliği sona erene kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. Kısa bir süre sonu saati ile 10 dakika arasında bir saat kullanmanızı öneririz.|
+| `iss` | Veren: client_id (istemci hizmetinin*uygulama (istemci) kimliği* ) olmalıdır |
 | `jti` | GUID: JWT KIMLIĞI |
-| `nbf` | Önünde değil: belirtecin kullanılacağı tarih. Süre, belirtecin verilme zamanına kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. |
-| `sub` | Konu: için olduğu gibi `iss` client_id (istemci hizmetinin uygulama kimliği) olmalıdır |
+| `nbf` | Önünde değil: belirtecin kullanılacağı tarih. Süre, onay saatine kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. |
+| `sub` | Konu: için olduğu gibi `iss` , istemci hizmetinin client_id (*uygulama (ISTEMCI) kimliği* ) olmalıdır |
 
 ### <a name="signature"></a>İmza
 
-İmza, [JSON Web Token RFC7519 belirtiminde](https://tools.ietf.org/html/rfc7519) açıklandığı gibi sertifika tarafından hesaplanır
+İmza, [JSON Web Token RFC7519 belirtiminde](https://tools.ietf.org/html/rfc7519)açıklandığı gibi sertifika uygulanarak hesaplanır.
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>Kodu çözülen JWT onaylama örneği
 
@@ -75,10 +76,11 @@ Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON 
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>Kodlanmış JWT onaylama örneği
 
-Aşağıdaki dize, kodlanmış onaylama işlemi örneğidir. Dikkatlice bakarsanız, noktalarla (.) ayırarak üç bölüm olduğunu fark edersiniz:
-* İlk bölüm üstbilgiyi kodluyor
-* İkinci bölüm yükün kodluyor
-* Son bölüm, ilk iki bölümün içeriğinden sertifikalar ile hesaplanan imzadan
+Aşağıdaki dize, kodlanmış onaylama işlemi örneğidir. Dikkatlice bakarsanız, noktalarla () ayırarak üç bölüm olduğunu fark edersiniz `.` :
+
+* İlk bölüm *üstbilgiyi* kodluyor
+* İkinci bölüm, *talepleri* (yük) kodluyor
+* Son bölüm, ilk iki bölümün içeriğinden sertifikalar ile hesaplanan *imzadan*
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
@@ -101,8 +103,8 @@ Aşağıdaki yöntemlerden herhangi birini kullanarak sertifika kimlik bilgisini
 
 Sertifikayı tutan bir sertifika varsa şunları hesaplamanız gerekir:
 
-- `$base64Thumbprint`, sertifika karmasının Base64 kodlaması olan
-- `$base64Value`, sertifika ham verilerinin Base64 kodlaması olan
+- `$base64Thumbprint`-Base64 kodlu sertifika karmasının değeri
+- `$base64Value`-Base64 kodlamalı sertifika ham verileri değeri
 
 Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız gerekir ( `$keyId` ).
 
@@ -125,9 +127,6 @@ Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız
 
    `keyCredentials`Özelliği çok değerli olduğundan, daha zengin anahtar yönetimi için birden fazla sertifika yükleyebilirsiniz.
 
-## <a name="code-sample"></a>Kod örneği
+## <a name="next-steps"></a>Sonraki adımlar
 
-> [!NOTE]
-> Sertifikanın karmasını kullanarak X5T üstbilgisini bir temel 64 dizesine dönüştürerek hesaplamanız gerekir. Bunu C# dilinde gerçekleştirmek için kod `System.Convert.ToBase64String(cert.GetCertHash());` .
-
-[Microsoft Identity platform kullanan kod örneği .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) , bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) gösterilmektedir `New-SelfSignedCertificate` . Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) da kullanabilirsiniz.
+GitHub 'da [Microsoft Identity platform kod örneğini kullanan .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) , bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca PowerShell cmdlet 'ini kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) de gösterilmektedir `New-SelfSignedCertificate` . Ayrıca, sertifika oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için örnek depoda [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) da kullanabilirsiniz.

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289964"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141729"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 içinde zaman serisi modeli
 
@@ -75,7 +75,7 @@ Bu bileşenler, zaman serisi modeli belirtmek ve verilerinizi düzenlemek için 
 
 [![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview)aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
+[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview)aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
 
 ## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 
@@ -129,7 +129,7 @@ Azure Time Series Insights Gen2 ortamı için bir olay kaynağı yapılandırıl
 ```
 
 > [!TIP]
-> Örnek API oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)okuyun.
+> Örnek API oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)okuyun.
 
 ## <a name="time-series-model-hierarchies"></a>Zaman serisi model hiyerarşileri
 
@@ -186,7 +186,7 @@ Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 * `ManufactureDate`üst ve alt öğesi olan bir hiyerarşiyi tanımlar `year` `month` . Her biri `ManufactureDate` birden çok içerebilir `years` , bu da birden fazla bulunabilir `months` .
 
 > [!TIP]
-> Hiyerarşi API 'SI oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
+> Hiyerarşi API 'SI oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)okuyun.
 
 ### <a name="hierarchy-example"></a>Hiyerarşi örneği
 
@@ -231,7 +231,7 @@ Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman se
 [![Zaman serisi model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> API oluşturma, okuma, güncelleştirme ve silme (CRUD) türleri için, [veri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> API oluşturma, okuma, güncelleştirme ve silme (CRUD) türleri için, [veri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api).
 
 ### <a name="type-properties"></a>Tür özellikleri
 
@@ -288,7 +288,7 @@ Zaman serisi model türlerinde, olaylar üzerinde formül ve hesaplama kurallar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.
+* Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) başvuru belgelerini okuyun.
 
 * [Zaman serisi model değişkenleriyle](./concepts-variables.md) oluşturabileceğiniz formülleri ve hesaplamaları keşfet
 

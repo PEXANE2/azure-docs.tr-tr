@@ -1,6 +1,6 @@
 ---
 title: Cloud Services ve yönetim sertifikaları | Microsoft Docs
-description: Microsoft Azure ile sertifika oluşturma ve kullanma hakkında bilgi edinin
+description: Bulut hizmetleri ve Azure 'da yönetim API 'SI ile kimlik doğrulaması için sertifika oluşturma ve dağıtma hakkında bilgi edinin.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024617"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142375"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services’da sertifikalara genel bakış
 Sertifikalar, Azure 'da bulut Hizmetleri ([hizmet sertifikaları](#what-are-service-certificates)) ve yönetim API 'siyle ([yönetim sertifikaları](#what-are-management-certificates)) kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türü için genel bir bakış sağlar ve bunları Azure 'a [oluşturma](#create) ve dağıtma.

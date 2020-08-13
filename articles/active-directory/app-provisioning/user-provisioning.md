@@ -1,5 +1,5 @@
 ---
-title: Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama
+title: Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama nedir?
 description: Birden çok üçüncü taraf SaaS uygulamasında kullanıcı hesaplarını otomatik olarak sağlamak, devre dışı bırakmak ve sürekli güncelleştirmek için Azure AD 'yi nasıl kullanabileceğinizi gösteren bir giriş.
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56243e4d754f33b17238b64df2ba56ade162b3a2
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781099"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163790"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Azure AD ile uygulamalara Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama nedir?
 
 Azure Active Directory (Azure AD) ' de, **uygulama sağlama** terimi, kullanıcıların erişmesi gereken bulut ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bir Azure AD kullanıcısını [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)gibi uygulamalarda sağlamayı içerir.
 
@@ -94,11 +94,8 @@ Galeride listelenen önceden tümleştirilmiş uygulamalar için, otomatik sağl
 SCıM 2,0 ' ı destekleyen diğer uygulamalar için, [SCIM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](use-scim-to-provision-users-and-groups.md)makalesindeki adımları izleyin.
 
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
 - [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)
-- [Öznitelik eşlemeleri için ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md)
-- [Kullanıcı hazırlama için kapsam filtreleri](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [Bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın](use-scim-to-provision-users-and-groups.md)
-- [Azure AD eşitleme API 'sine genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Kullanıcı hazırlama için kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)
