@@ -1,6 +1,6 @@
 ---
 title: Sık sorulan sorular-Azure ayrılmış HSM | Microsoft Docs
-description: Azure ayrılmış HSM hakkındaki farklı konuları kapsayan sık sorulan sorular
+description: Temel bilgiler, birlikte çalışabilirlik, yüksek kullanılabilirlik ve destek gibi Azure adanmış donanım güvenlik modülü hakkında sık sorulan soruların yanıtlarını bulun.
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310394"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189870"
 ---
 # <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
@@ -78,7 +78,7 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 * Doğu Japonya
 * Batı Japonya
 * Kuzey Avrupa
-* Batı Avrupa
+* West Europe
 * Güney Birleşik Krallık
 * Batı Birleşik Krallık
 * Orta Kanada

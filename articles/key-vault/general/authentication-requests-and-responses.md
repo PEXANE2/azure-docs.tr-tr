@@ -1,6 +1,6 @@
 ---
 title: Kimlik doğrulaması, istekler ve yanıtlar
-description: Key Vault kullanmak için AD ile kimlik doğrulama
+description: Azure Key Vault JSON ile biçimlendirilen istekleri ve yanıtları nasıl kullandığını ve anahtar kasası kullanmak için gereken kimlik doğrulamasını öğrenin.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430896"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191788"
 ---
 # <a name="authentication-requests-and-responses"></a>Kimlik doğrulaması, istekler ve yanıtlar
 
@@ -28,15 +28,15 @@ Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/ye
 
  Azure Key Vault nesneleriyle çalışmak için aşağıdaki örnek URL 'Ler verilmiştir:  
 
-- Key Vault kullanımı içinde TESTKEY adlı bir anahtar oluşturmak için`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Key Vault kullanımı içinde TESTKEY adlı bir anahtar oluşturmak için `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- IMPORTEDKEY adlı bir anahtarı Key Vault kullanımı-içine aktarmak için`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORTEDKEY adlı bir anahtarı Key Vault kullanımı-içine aktarmak için `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- Bir Key Vault kullanımı ile MYSECRET adlı bir gizli dizi almak için`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Bir Key Vault kullanımı ile MYSECRET adlı bir gizli dizi almak için `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Key Vault kullanımı içinde TESTKEY adlı bir anahtarı kullanarak bir özeti IMZALAMAK için`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Key Vault kullanımı içinde TESTKEY adlı bir anahtarı kullanarak bir özeti IMZALAMAK için `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Bir Key Vault isteği için olan yetki her zaman aşağıdaki gibidir.`https://{keyvault-name}.vault.azure.net/`  
+  Bir Key Vault isteği için olan yetki her zaman aşağıdaki gibidir.  `https://{keyvault-name}.vault.azure.net/`  
 
   Anahtarlar her zaman/Keys yolu altında depolanır, gizlilikler her zaman/gizlilikler yolu altında depolanır.  
 

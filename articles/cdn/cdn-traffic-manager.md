@@ -1,6 +1,6 @@
 ---
 title: Traffic Manager ile birden çok Azure CDN uç noktası arasında yük devretme
-description: Azure Traffic Manager Azure CDN uç noktalarıyla ayarlama hakkında bilgi edinin.
+description: Azure Traffic Manager kullanarak birden çok Azure Content Delivery Network uç noktası arasında yük devretmeyi ayarlamayı öğrenin.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/18/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d557637815036fa49e83f1d11a948f264d493321
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55e418393d6d446ae0d3557f2d1f4cf98d89293
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888656"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192503"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager birden çok Azure CDN uç noktası arasında yük devretmeyi ayarlama
 
@@ -62,13 +62,13 @@ CDN ve Traffic Manager profillerinizi ayarladıktan sonra, DNS eşlemesi eklemek
 
     a. İlk CNAME girişi için, cdnverify alt etki alanı ile özel etki alanınızı CDN uç noktanıza eşleyin. Bu giriş, adım 2 ' de Traffic Manager eklenen CDN uç noktasına özel etki alanını kaydetmek için gerekli bir adımdır.
 
-      Örneğin: 
+      Örnek: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. İkinci CNAME girdisi için, cdnverify alt etki alanı olmadan özel etki alanınızı CDN uç noktanıza eşleyin. Bu giriş, Traffic Manager özel etki alanını eşler. 
 
-      Örneğin: 
+      Örnek: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -87,7 +87,7 @@ CDN ve Traffic Manager profillerinizi ayarladıktan sonra, DNS eşlemesi eklemek
 
 3.  Özel etki alanının etki alanı sağlayıcısı için Web sitesine geri dönün ve ' de oluşturduğunuz ilk DNS eşlemesini, özel etki alanının ikinci CDN uç noktanıza eşlenmesi için güncelleştirin.
                              
-    Örneğin: 
+    Örnek: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 

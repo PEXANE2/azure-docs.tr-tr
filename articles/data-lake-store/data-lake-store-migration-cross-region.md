@@ -1,6 +1,6 @@
 ---
 title: Bölgeler arası geçiş Azure Data Lake Storage 1. | Microsoft Docs
-description: Azure Data Lake Storage 1. için çapraz bölge geçişi hakkında bilgi edinin.
+description: Yeni bölgelerde kullanıma sunulduğunda Azure Data Lake Storage 1. bir geçişi planlarken ve tamamladıktan sonra dikkate almanız gerekenleri öğrenin.
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba28d767c11c15b2dd70eeed2b39e13b084a7500
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60518446"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191356"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Bölgeler arasında Azure Data Lake Storage 1. geçirme
 
 Azure Data Lake Storage 1. yeni bölgelerde kullanılabilir hale geldiğinde, yeni bölgeden yararlanmak için bir kerelik geçiş yapmak isteyebilirsiniz. Taşımayı planlarken ve tamamladıktan sonra göz önüne almanız gerekenler hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Bir Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/pricing/free-trial/).
 * **İki farklı bölgede Data Lake Storage 1. hesabı**. Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md).

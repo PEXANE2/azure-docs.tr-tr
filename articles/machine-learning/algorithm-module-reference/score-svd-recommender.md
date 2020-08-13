@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455987"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189811"
 ---
 # <a name="score-svd-recommender"></a>SVD Önerenini Puanlama
 
@@ -107,9 +107,6 @@ Skor SVD öneren tarafından döndürülen puanlanmış veri kümesi, her kullan
 
 - İlk sütunda kullanıcı tanımlayıcıları bulunur.
 - **Bir kullanıcı için önerilen en fazla öğe sayısı**için ayarladığınız değere bağlı olarak, bir dizi ek sütun oluşturulur. Her sütunda önerilen bir öğe (tanımlayıcıya göre) bulunur. Öneriler, Kullanıcı öğesi benzeşimi tarafından sıralanır. En yüksek benzeşimi olan öğe, sütun **öğesi 1**' de konur.
-
-> [!WARNING]
-> Bu puanlanmış veri kümesini [değerlendir öneren](evaluate-recommender.md) modülünü kullanarak değerlendiremiyoruz.
 
 
 ##  <a name="technical-notes"></a>Teknik notlar

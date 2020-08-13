@@ -1,6 +1,6 @@
 ---
 title: Node.js için Azure CDN SDK ile çalışmaya başlama | Microsoft Docs
-description: Azure CDN yönetmek için Node.js uygulamaları yazmayı öğrenin.
+description: Azure CDN profillerinin ve uç noktaların oluşturulması ve yönetiminin nasıl otomatikleştirildiğini gösteren basit bir Node.js konsol uygulaması oluşturmayı öğrenin.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 96dc7e8d9fb647779fc2188fe36fe9fbced2e53c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387498"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190698"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN ile geliştirmeye başlama
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "87387498"
 > 
 > 
 
-CDN profillerinin ve uç noktaların oluşturulmasını ve yönetimini otomatikleştirmek için [Node.jsiçin Azure CDN SDK 'sını](https://www.npmjs.com/package/azure-arm-cdn) kullanabilirsiniz.  Bu öğreticide, kullanılabilir işlemlerin birkaçını gösteren basit bir Node.js konsol uygulamasının oluşturulması gösterilmektedir.  Bu öğretici, Node.js için Azure CDN SDK 'sının tüm yönlerini ayrıntılı olarak tanımlamaya yönelik değildir.
+CDN profillerinin ve uç noktaların oluşturulmasını ve yönetimini otomatikleştirmek için [Node.jsiçin Azure CDN SDK 'sını ](https://www.npmjs.com/package/azure-arm-cdn) kullanabilirsiniz.  Bu öğreticide, kullanılabilir işlemlerin birkaçını gösteren basit bir Node.js konsol uygulamasının oluşturulması gösterilmektedir.  Bu öğretici, Node.js için Azure CDN SDK 'sının tüm yönlerini ayrıntılı olarak tanımlamaya yönelik değildir.
 
 Bu öğreticiyi tamamlayabilmeniz için, zaten [Node.js](https://www.nodejs.org) **4. x. x** veya üzeri yüklü ve yapılandırılmış olmalıdır.  Node.js uygulamanızı oluşturmak istediğiniz herhangi bir metin düzenleyicisini kullanabilirsiniz.  Bu öğreticiyi yazmak için [Visual Studio Code](https://code.visualstudio.com)kullandım.  
 

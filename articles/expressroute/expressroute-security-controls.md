@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: güvenlik denetimleri'
-description: Azure ExpressRoute değerlendirme için güvenlik denetimlerinin denetim listesi
+description: Azure ExpressRoute 'daki güvenlik denetimleri hakkında bilgi edinin. bu özellikler, güvenlik açıklarını önlemeye, algılamaya ve bunlara yanıt vermeye yardımcı olan kalitelerdir veya özelliklerdir.
 services: expressroute
 ms.service: expressroute
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4589d1aa768548f2ae9ffa01f289c823c0b2e5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74079923"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192427"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute için güvenlik denetimleri
 
@@ -24,10 +24,10 @@ Bu makale, Azure ExpressRoute 'da yerleşik olarak bulunan güvenlik denetimleri
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| YOK |  |
-| VNet ekleme desteği| YOK | |
+| Hizmet uç noktası desteği| Yok |  |
+| VNet ekleme desteği| Yok | |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Her müşteri kendi yönlendirme etki alanında bulunur ve kendi VNet 'ine tünel |
-| Zorlamalı tünel desteği| YOK | Sınır Ağ Geçidi Protokolü (BGP) üzerinden. |
+| Zorlamalı tünel desteği| Yok | Sınır Ağ Geçidi Protokolü (BGP) üzerinden. |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 
@@ -48,9 +48,9 @@ Bu makale, Azure ExpressRoute 'da yerleşik olarak bulunan güvenlik denetimleri
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  YOK | ExpressRoute müşteri verilerini depolamaz. |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | YOK |  |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Yok | ExpressRoute müşteri verilerini depolamaz. |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Hayır | |
 | Şifrelenmiş API çağrıları| Evet | [Azure Resource Manager](../azure-resource-manager/index.yml) ve https üzerinden. |
 

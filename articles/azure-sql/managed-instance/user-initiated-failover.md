@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 08/12/2020
-ms.openlocfilehash: faef8c29b2a5e75745e36c5d826b4feee2d60a98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169148"
+ms.locfileid: "88191204"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -31,6 +31,9 @@ Aşağıdaki nedenlerden bazıları için SQL yönetilen örneği üzerinde [el 
 - Yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etme
 - Ağ gecikmede yapılan değişiklikler nedeniyle bir yük devretmenin uçtan uca performansını değiştirdiğini doğrulayın
 - Sorgu performansı azalmaları bazı durumlarda, el ile yük devretme, performans sorununu azaltmaya yardımcı olabilir.
+
+> [!NOTE]
+> Üretim ortamına dağıtmadan önce uygulamalarınızın yük devri açısından dayanıklı olmasını sağlamak, üretimde uygulama hatalarının riskini azaltmaya yardımcı olur ve müşterileriniz için uygulama kullanılabilirliğine katkıda bulunur.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde el ile yük devretme başlatma
 

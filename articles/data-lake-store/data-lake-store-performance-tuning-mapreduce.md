@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage 1. performans ayarlama-MapReduce
-description: Azure Data Lake Storage 1. MapReduce performansı ayarlama yönergeleri
+description: Parametreler, kılavuz, örnek hesaplama ve sınırlamalar dahil olmak üzere Azure Data Lake Storage 1. MapReduce için performans ayarlama hakkında bilgi edinin.
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510925"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190204"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. MapReduce için performans ayarlama Kılavuzu
 

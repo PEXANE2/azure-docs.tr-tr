@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8032e8809f7849ab7497da7821788c017adff12d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212063"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192318"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Kaynak sınıflarını Iş yükü gruplarına Dönüştür
 
@@ -44,13 +44,13 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 Bilinen `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , <link> iş yükü grubunu oluşturmak IÇIN Iş yükü grubu oluştur sözdizimini kullanabilirsiniz.  İsteğe bağlı olarak, `MIN_PERCENTAGE_RESOURCE` iş yükü grubu için kaynakları yalıtmak üzere sıfırdan büyük bir değer belirtebilirsiniz.  Ayrıca, isteğe bağlı olarak, `CAP_PERCENTAGE_RESOURCE` iş yükü grubunun kullanabileceği kaynak miktarını sınırlamak için 100 'den daha az bir süre belirtebilirsiniz.  
 
-Aşağıdaki örnek, `MIN_PERCENTAGE_RESOURCE` sistem kaynaklarının% 9,6 `wgDataLoads` ' sini olarak bir sorgunun her zaman çalıştırabilmesini sağlayacak şekilde ' i ayarlar.  Ayrıca, `CAP_PERCENTAGE_RESOURCE` % 38,4 olarak ayarlanır ve bu iş yükü grubunu dört eşzamanlı istek ile sınırlandırır.  `QUERY_EXECUTION_TIMEOUT_SEC`Parametreyi 3600 olarak ayarlayarak 1 saatten uzun süre çalışan herhangi bir sorgu otomatik olarak iptal edilir.
+Düz RC 'yi bir örnek olarak kullanarak, aşağıdaki kod, `MIN_PERCENTAGE_RESOURCE` sistem kaynaklarının %10 ' sini ayırmak için ' i ayarlar `wgDataLoads` ve tek bir sorgunun her zaman çalışmasına izin verir.  Ayrıca, `CAP_PERCENTAGE_RESOURCE` %40 olarak ayarlanır ve bu iş yükü grubunu dört eşzamanlı istek ile sınırlandırır.  `QUERY_EXECUTION_TIMEOUT_SEC`Parametreyi 3600 olarak ayarlayarak 1 saatten uzun süre çalışan herhangi bir sorgu otomatik olarak iptal edilir.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 
@@ -59,7 +59,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 Daha önce, sorguların kaynak sınıflarıyla eşlenmesi [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)ile yapılır.  Aynı işlevselliği elde etmek ve istekleri iş yükü gruplarıyla eşlemek için [Iş yükü SıNıFLANDıRıCıSı oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimini kullanın.  Sp_addrolemember kullanmak yalnızca bir oturum açma temelli kaynakları bir istek ile eşlemenizi sağlar.  Bir sınıflandırıcı, oturum açma hakkında ek seçenekler sağlar, örneğin:
     - etiket
     - oturum
-    - Aşağıdaki örnek, `AdfLogin` oturum açma verilerinden, yukarıda oluşturulan iş yükü grubuna ayarlanmış [seçenek etiketini](sql-data-warehouse-develop-label.md) de içeren sorguları atar `factloads` `wgDataLoads` .
+    - Aşağıdaki örnek, `AdfLogin` oturum açma verilerinden, yukarıda oluşturulan iş yükü grubuna ayarlanmış [seçenek etiketini](sql-data-warehouse-develop-label.md)  de içeren sorguları atar `factloads` `wgDataLoads` .
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  

@@ -1,18 +1,18 @@
 ---
 title: 'Ağ ortakları: Azure ağı | Microsoft Docs'
-description: Bu makale, MSP ağı iş ortaklarının bir listesini sağlar
+description: Azure ağ Iletişimi yönetilen hizmet sağlayıcısı Iş ortağı programı hakkında bilgi edinin ve bulut ve karma ağ hizmetleri sunan iş ortaklarının bir listesini bulun.
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 841c4d85dee829eeebaef17e6ff12343d9940d03
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282118"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192046"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 

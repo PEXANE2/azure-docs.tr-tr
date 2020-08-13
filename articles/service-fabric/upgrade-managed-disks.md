@@ -3,12 +3,12 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542882"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192298"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -24,10 +24,13 @@ Yönetilen diskleri kullanmak için bir Service Fabric küme düğümünü yüks
 
 Bu makale, yönetilen diskleri kullanmak için örnek bir kümenin birincil düğüm türünü yükseltme adımlarında size yol gösterir, ancak herhangi bir küme kapalı kalma süresini önleyerek (aşağıdaki nota bakın). Örnek test kümesinin ilk durumu, beş düğümlü tek bir ölçek kümesi tarafından desteklenen [gümüş dayanıklılığa](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)sahip bir düğüm türünden oluşur.
 
+> [!NOTE]
+> Temel SKU yük dengeleyicinin sınırlamaları, ek ölçek kümesinin eklenmesini engeller. Bunun yerine standart SKU yük dengeleyiciyi kullanmanızı öneririz. Daha fazla bilgi için bkz. [Iki SKU 'nun karşılaştırması](/azure/load-balancer/skus).
+
 > [!CAUTION]
 > Bu yordamı yalnızca küme DNS ( [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)erişimi gibi) üzerinde bağımlılıklara sahipseniz bir kesinti yaşanacaktır. [Ön uç hizmetleri için mimari en iyi uygulaması](/azure/architecture/microservices/design/gateway) , düğüm değiştirmeyi kesinti olmadan mümkün hale getirmek için düğüm türlerinizin önünde bazı tür [yük dengeleyiciler](/azure/architecture/guide/technology-choices/load-balancing-overview) içermelidir.
 
-Yükseltme senaryosunu tamamlaması için kullanacağımız Azure Resource Manager [Şablonlar ve cmdlet 'leri](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) aşağıda bulabilirsiniz. Şablon değişiklikleri, aşağıdaki [birincil düğüm türü için yükseltilen ölçek kümesi dağıtma](#deploy-an-upgraded-scale-set-for-the-primary-node-type) bölümünde açıklanacaktır.
+Yükseltme senaryosunu tamamlaması için kullanacağımız Azure Resource Manager [Şablonlar ve cmdlet 'leri](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) aşağıda bulabilirsiniz. Şablon değişiklikleri, aşağıdaki [birincil düğüm türü için yükseltilen ölçek kümesi dağıtma](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  bölümünde açıklanacaktır.
 
 ## <a name="set-up-the-test-cluster"></a>Test kümesini ayarlama
 
@@ -165,7 +168,7 @@ Birincil düğüm türü için yükseltilmiş ölçek kümesi eklemek üzere öz
 
 #### <a name="parameters"></a>Parametreler
 
-Yeni ölçek kümesinin örnek adı için bir parametre ekleyin. `vmNodeType1Name`Yeni ölçek kümesinin benzersiz olduğunu, sayı ve boyut değerlerinin ise orijinal ölçek kümesiyle aynı olduğunu unutmayın.
+Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekleyin. `vmNodeType1Name`Yeni ölçek kümesinin benzersiz olduğunu, sayı ve boyut değerlerinin ise orijinal ölçek kümesiyle aynı olduğunu unutmayın.
 
 **Şablon dosyası**
 
@@ -174,7 +177,18 @@ Yeni ölçek kümesinin örnek adı için bir parametre ekleyin. `vmNodeType1Nam
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-}
+},
+"nt1InstanceCount": {
+    "type": "int",
+    "defaultValue": 5,
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType1Size": {
+    "type": "string",
+    "defaultValue": "Standard_D2_v2"
+},
 ```
 
 **Parametre dosyası**
@@ -182,6 +196,12 @@ Yeni ölçek kümesinin örnek adı için bir parametre ekleyin. `vmNodeType1Nam
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
+},
+"nt1InstanceCount": {
+    "value": 5
+},
+"vmNodeType1Size": {
+    "value": "Standard_D2_v2"
 }
 ```
 
@@ -199,13 +219,13 @@ Dağıtım şablonu `variables` bölümünde, yeni ölçek kümesinin gelen NAT 
 
 Dağıtım şablonu *kaynakları* bölümünde, yeni sanal makine ölçek kümesini ekleyerek şunları göz önünde bulundurun:
 
-* Yeni ölçek kümesi yeni düğüm türüne başvuruyor:
+* Yeni ölçek kümesi özgün ile aynı düğüm türüne başvuruyor:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* Yeni ölçek kümesi, orijinaliyle aynı yük dengeleyici arka uç adresine ve alt ağına başvurur, ancak farklı yük dengeleyici gelen NAT havuzu kullanır:
+* Yeni ölçek kümesi aynı yük dengeleyici arka uç adresine ve alt ağına başvuruyor (ancak farklı yük dengeleyici gelen NAT havuzu kullanır):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -236,33 +256,6 @@ Dağıtım şablonu *kaynakları* bölümünde, yeni sanal makine ölçek kümes
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
-
-Ardından, `nodeTypes` *Microsoft. servicefabric/kümeler* kaynağı listesine bir giriş ekleyin. `name`Yeni düğüm türüne (*vmNodeType1Name*) başvurması gereken, hariç, özgün düğüm türü girdisiyle aynı değerleri kullanın.
-
-```json
-"nodeTypes": [
-    {
-        "name": "[parameters('vmNodeType0Name')]",
-        ...
-    },
-    {
-        "name": "[parameters('vmNodeType1Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt0applicationEndPort')]",
-            "startPort": "[parameters('nt0applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt0ephemeralEndPort')]",
-            "startPort": "[parameters('nt0ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-    }
-],
-```
 
 Şablon ve parametre dosyalarınızda tüm değişiklikleri yaptıktan sonra, Key Vault başvurularını almak ve güncelleştirmeleri kümenize dağıtmak için sonraki bölüme ilerleyin.
 

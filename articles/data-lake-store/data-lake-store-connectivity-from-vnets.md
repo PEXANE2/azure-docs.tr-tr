@@ -1,6 +1,6 @@
 ---
 title: VNET 'lerden Azure Data Lake Storage 1. bağlanma | Microsoft Docs
-description: Azure sanal ağları 'ndan Azure Data Lake Storage 1. bağlanma
+description: Kaynaklara erişimi kısıtlanmış Azure sanal makinelerinden Azure Data Lake Storage 1. erişimi etkinleştirmeyi öğrenin.
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985416"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191400"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Bir Azure sanal ağı içindeki VM 'lerden erişim Azure Data Lake Storage 1.
 Azure Data Lake Storage 1., genel Internet IP adresleri üzerinde çalışan bir PaaS hizmetidir. Genel Internet 'e bağlanabilecek herhangi bir sunucu, genellikle Azure Data Lake Storage 1. uç noktalara bağlanabilir. Varsayılan olarak, Azure sanal ağları 'nda bulunan tüm VM 'Ler Internet 'e erişebilir ve bu nedenle Azure Data Lake Storage 1. erişebilir. Ancak, VNET 'teki VM 'Lerin Internet erişimi olmayan şekilde yapılandırılması mümkündür. Bu tür sanal makineler için Azure Data Lake Storage 1. erişimi de kısıtlıdır. Azure sanal ağları 'nda VM 'Ler için genel Internet erişimini engelleme, aşağıdaki yaklaşımlardan herhangi biri kullanılarak yapılabilir:

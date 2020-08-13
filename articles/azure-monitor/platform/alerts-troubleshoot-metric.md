@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114906"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190669"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -130,9 +130,9 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
         }
 ```
 
-## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal aracılığıyla ölçüm uyarısı kuralının ARM şablonunu dışarı aktarma
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Ölçüm uyarısı kuralının Azure Resource Manager şablonunu Azure portal aracılığıyla dışarı aktarın
 
-Ölçüm uyarısı kuralının ARM şablonunu dışa aktarmak, JSON sözdizimi ve özelliklerini anlamanıza yardımcı olur ve gelecekteki dağıtımları otomatikleştirmek için kullanılabilir.
+Ölçüm uyarısı kuralının Kaynak Yöneticisi şablonunu dışarı aktarmak, JSON sözdizimi ve özelliklerini anlamanıza yardımcı olur ve gelecekteki dağıtımları otomatikleştirmek için kullanılabilir.
 1. Portalda **kaynak grupları** bölümüne gidin ve kuralı içeren kaynak grubunu seçin.
 2. Genel bakış bölümünde **gizli türleri göster** onay kutusunu işaretleyin.
 3. **Tür** filtresinde *Microsoft. Insights/metricalerts*' i seçin.
@@ -193,7 +193,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
@@ -207,7 +207,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 
    - Platform ölçümü için: ölçüm **görünen adı** değil, [Azure izleyici tarafından desteklenen ölçümler sayfasından](./metrics-supported.md) **ölçüm** adını kullandığınızdan emin olun
 
-   - Özel bir ölçüm için: ölçümün zaten yayıldığından (henüz mevcut olmayan bir özel ölçüm üzerinde bir uyarı kuralı oluşturamazsınız) ve özel ölçümün ad alanını sağladığınızdan emin olun ( [burada](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)bir ARM şablonu örneğine bakın)
+   - Özel bir ölçüm için: ölçümün zaten yayıldığından (henüz mevcut olmayan bir özel ölçüm üzerinde bir uyarı kuralı oluşturamazsınız) ve özel ölçümün ad alanını sağladığınızdan emin olun ( [burada](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)bir kaynak yöneticisi şablon örneğine bakın)
 
 - [Günlüklerde ölçüm uyarıları](./alerts-metric-logs.md)oluşturuyorsanız, uygun bağımlılıkların eklendiğinden emin olun. Bkz. [örnek şablon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 

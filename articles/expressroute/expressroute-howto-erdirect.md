@@ -1,18 +1,18 @@
 ---
 title: "Azure ExpressRoute: ExpressRoute Direct 'i yapılandırma"
-description: Bu sayfa, ExpressRoute Direct 'i yapılandırmanıza yardımcı olur.
+description: Azure ExpressRoute Direct 'in dünya genelindeki eşleme konumlarında doğrudan Microsoft Global Network 'e bağlanması için nasıl Azure PowerShell kullanacağınızı öğrenin.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42803cbc7901be01c88145e2d98f2982434710a1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736263"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192763"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct 'i yapılandırma
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CDN uç noktasını Temizleme | Microsoft Docs
-description: Azure CDN uç noktasından tüm önbelleğe alınmış içeriği temizlemeyi öğrenin.
+description: Azure Content Delivery Network uç noktasındaki tüm önbelleğe alınmış içeriği temizlemeyi öğrenin. Kenar düğümleri, yaşam süresi sona erene kadar varlıkları önbelleğe alırlar.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887307"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192547"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN uç noktasını Temizleme
 ## <a name="overview"></a>Genel Bakış
@@ -52,14 +52,14 @@ Bu öğreticide, bir uç noktanın tüm kenar düğümlerinden varlıkları Temi
    > 
    > 
 4. Kenar düğümlerinden hangi varlıkları temizlemek istediğinizi seçin.  Tüm varlıkları temizlemek istiyorsanız **Tümünü Temizle** onay kutusuna tıklayın.  Aksi takdirde, **yol** metin kutusuna temizlemek istediğiniz her varlığın yolunu yazın. Aşağıdaki biçimler yolunda desteklenir.
-    1. **Tek URL Temizleme**: dosya uzantısıyla veya olmadan tam URL 'yi belirterek tek tek varlığı temizleyin; Örneğin, `/pictures/strasbourg.png` ;`/pictures/strasbourg`
+    1. **Tek URL Temizleme**: dosya uzantısıyla veya olmadan tam URL 'yi belirterek tek tek varlığı temizleyin; Örneğin, `/pictures/strasbourg.png` ; `/pictures/strasbourg`
     2. **Joker karakter Temizleme**: yıldız işareti ( \* ) joker karakter olarak kullanılabilir. Bir uç nokta altında bulunan tüm klasörleri, alt klasörleri ve dosyaları `/*` yolda ve sonra, `/*` Örneğin,,,,,,,,,, ve gibi tüm alt klasörleri ve dosyaları belirtilen bir klasörde temizleyin `/pictures/*` .  Joker karakter Temizleme 'nin şu anda Akamai 'tan Azure CDN desteklenmediğini unutmayın. 
     3. **Kök etki alanı temizleme**: yoldaki bitiş noktasının kökünü "/" ile temizleyin.
    
    > [!TIP]
    > Temizleme için yolların belirtilmesi gerekir ve aşağıdaki [normal ifadeye](/dotnet/standard/base-types/regular-expression-language-quick-reference)uyan GÖRELI bir URL olmalıdır. **Akamai 'dan Azure CDN** tarafından desteklenmeyen, **Tümünü Temizle** ve **joker karakter Temizleme** işlemi şu anda desteklenmiyor.
-   > > Tek URL Temizleme`@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
-   > > Sorgu dizesi`@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
+   > > Tek URL Temizleme `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
+   > > Sorgu dizesi `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > Joker karakter Temizleme `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` . 
    > 
    > Birden fazla varlık listesi oluşturmanıza olanak tanımak için metin girdikten sonra daha fazla **yol** metin kutuları görüntülenecektir.  Üç nokta (...) düğmesine tıklayarak varlıkları listeden silebilirsiniz.

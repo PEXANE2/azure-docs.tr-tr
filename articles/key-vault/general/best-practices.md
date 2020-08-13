@@ -1,6 +1,6 @@
 ---
 title: Key Vault kullanmak için en iyi uygulamalar | Azure Key Vault | Microsoft Docs
-description: Bu belgede, kullanmak için en iyi uygulamalardan bazıları açıklanmaktadır Key Vault
+description: Ayrı anahtar kasalarının ne zaman kullanılacağını, yedekleme, günlüğe kaydetme ve kurtarma seçeneklerini kullanma dahil olmak üzere Azure Key Vault için en iyi yöntemler hakkında bilgi edinin.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386240"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189881"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 

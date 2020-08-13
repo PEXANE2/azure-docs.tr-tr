@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: devre eşlemesini sıfırlama'
-description: ExpressRoute devre eşayarlarını devre dışı bırakma ve etkinleştirme.
+description: Azure PowerShell kullanarak bir Azure ExpressRoute bağlantı hattı eşayarlarını devre dışı bırakmayı ve etkinleştirmeyi öğrenin. Eşlemeleri yapılandırırken, varsayılan olarak etkinleştirilir.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e576fe2f08d54d2642603e3b7974e00feec8ce93
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735260"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192175"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute devre eşayarlarını sıfırlama
 

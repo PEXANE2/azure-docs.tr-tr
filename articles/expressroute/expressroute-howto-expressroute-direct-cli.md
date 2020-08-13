@@ -1,6 +1,6 @@
 ---
 title: "Azure ExpressRoute: ExpressRoute Direct 'i yapılandırma: CLı"
-description: Bu makale, Azure CLı kullanarak ExpressRoute Direct 'i yapılandırmanıza yardımcı olur
+description: Azure CLı kullanarak Azure ExpressRoute Direct 'i, dünyanın her yerindeki eşleme konumlarında doğrudan Microsoft küresel ağına bağlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4cbacf997413c4eba1e8a142925cc6cde58fb0ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d1e1d6ab5a8d4444ad4a5a4748859fd12aa3c1e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488015"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192264"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Direct 'i yapılandırma
 

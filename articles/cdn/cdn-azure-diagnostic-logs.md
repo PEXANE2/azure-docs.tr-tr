@@ -1,7 +1,7 @@
 ---
 title: Tanılama günlükleri
 titleSuffix: Azure Content Delivery Network
-description: Müşteri, Azure CDN için günlük analizini etkinleştirebilir.
+description: Azure tanılama günlüklerini kullanarak Azure Content Delivery Network uç noktanıza kullanım ölçümlerini dışarı aktarabilirsiniz.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: dbaba67a163bb0f948de5ba2ebbdba5497ad5ff9
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116971"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191289"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Tanılama günlükleri-Azure Content Delivery Network
 
@@ -71,7 +71,7 @@ Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımlar�
 
     :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Tanılama günlükleri-depolama." border="true":::
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 ### <a name="send-to-log-analytics"></a>Log Analytics’e gönderme
 
@@ -88,7 +88,7 @@ Günlükler için Log Analytics kullanmak için şu adımları izleyin:
 
    :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Tanılama günlükleri-Log Analytics." border="true":::
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ### <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
 
@@ -105,7 +105,7 @@ Günlükler için bir olay hub 'ı kullanmak için şu adımları izleyin:
 
    :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Tanılama günlükleri-Olay Hub 'ı." border="true":::
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 
 ## <a name="enable-logging-with-powershell"></a>PowerShell ile günlüğe kaydetmeyi etkinleştirme
@@ -221,7 +221,7 @@ Aracı indirmek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/
 
 Aracı şu şekilde kullanabilirsiniz:
 
-1.  GitHub bağlantısını ziyaret edin:[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  GitHub bağlantısını ziyaret edin: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Kodu indirin.
 3.  Derlemek ve yapılandırmak için yönergeleri izleyin.
 4.  Aracı çalıştırın.
@@ -251,32 +251,32 @@ Tüm ölçümler tüm sağlayıcılardan kullanılamaz, ancak bu farklar en az d
 
 |Ölçüm                     | Açıklama | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | Bu süre boyunca toplam istek isabet sayısı. | Yes | Yes |Yes |
-| RequestCountHttpStatus2xx | 2xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 200, 202). | Yes | Yes |Yes |
-| RequestCountHttpStatus3xx | 3xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 300, 302). | Yes | Yes |Yes |
-| RequestCountHttpStatus4xx | 4xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 400, 404). | Yes | Yes |Yes |
-| RequestCountHttpStatus5xx | 5xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 500, 504). | Yes | Yes |Yes |
-| RequestCountHttpStatusOthers | Diğer tüm HTTP kodlarının sayısı (2xx-5xx dışında). | Yes | Yes |Yes |
+| RequestCountTotal         | Bu süre boyunca toplam istek isabet sayısı. | Evet | Evet |Evet |
+| RequestCountHttpStatus2xx | 2xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 200, 202). | Evet | Evet |Evet |
+| RequestCountHttpStatus3xx | 3xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 300, 302). | Evet | Evet |Evet |
+| RequestCountHttpStatus4xx | 4xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 400, 404). | Evet | Evet |Evet |
+| RequestCountHttpStatus5xx | 5xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 500, 504). | Evet | Evet |Evet |
+| RequestCountHttpStatusOthers | Diğer tüm HTTP kodlarının sayısı (2xx-5xx dışında). | Evet | Evet |Evet |
 | RequestCountHttpStatus200 | 200 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
 | RequestCountHttpStatus206 | 206 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
 | RequestCountHttpStatus302 | 302 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
 | RequestCountHttpStatus304 | 304 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
 | RequestCountHttpStatus404 | 404 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
-| RequestCountCacheHit | Önbellek okuması ile sonuçlanan tüm isteklerin sayısı. Varlık doğrudan POP 'tan istemciye sunulur. | Yes | Yes | Hayır  |
-| Requestcountcacheisabetsizlik | Önbellek isabetsizliği ile sonuçlanan tüm isteklerin sayısı. Bir önbellek isabetsizlik, varlığın istemciye en yakın POP üzerinde bulunamadığını ve kaynaktan alındığını gösterir. | Yes | Yes | Hayır |
-| RequestCountCacheNoCache | Bir varlık için, uçta Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen tüm isteklerin sayısı. | Yes | Yes | Hayır |
-| RequestCountCacheUncacheable | Varlığın Cache-Control ve Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların tüm isteklerinin sayısı. Bu sayı, bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Yes | Yes | Hayır |
+| RequestCountCacheHit | Önbellek okuması ile sonuçlanan tüm isteklerin sayısı. Varlık doğrudan POP 'tan istemciye sunulur. | Evet | Evet | Hayır  |
+| Requestcountcacheisabetsizlik | Önbellek isabetsizliği ile sonuçlanan tüm isteklerin sayısı. Bir önbellek isabetsizlik, varlığın istemciye en yakın POP üzerinde bulunamadığını ve kaynaktan alındığını gösterir. | Evet | Evet | Hayır |
+| RequestCountCacheNoCache | Bir varlık için, uçta Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen tüm isteklerin sayısı. | Evet | Evet | Hayır |
+| RequestCountCacheUncacheable | Varlığın Cache-Control ve Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların tüm isteklerinin sayısı. Bu sayı, bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
 | Requestcountcachediğerleri | Yukarıda yer almayan önbellek durumuna sahip tüm isteklerin sayısı. | Hayır | Evet | Hayır  |
-| Yumurresstotal | GB cinsinden giden veri aktarımı | Yes |Yes |Yes |
-| EgressHttpStatus2xx | GB cinsinden 2xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı *. | Yes | Yes | Hayır  |
-| EgressHttpStatus3xx | GB olarak 3xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
-| EgressHttpStatus4xx | GB cinsinden 4xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
-| EgressHttpStatus5xx | GB olarak 5 xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
-| EgressHttpStatusOthers | GB olarak diğer HTTP durum kodlarına sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
-| Yumurresscachehit | CDN pop 'Ları/kenarları üzerindeki CDN önbelleğinden doğrudan teslim edilen yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
-| Yumurresscacheisabetsizlik. | En yakın POP sunucusunda bulunmayan ve kaynak sunucudan alınan yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
-| Yumurresscachenocache | Kenarda Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen varlıkların giden veri aktarımı. | Yes | Yes | Hayır |
-| Yumurresscacheuncacheable | Varlığın Cache-Control ve veya Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların giden veri aktarımı. Bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Yes | Yes | Hayır |
+| Yumurresstotal | GB cinsinden giden veri aktarımı | Evet |Evet |Evet |
+| EgressHttpStatus2xx | GB cinsinden 2xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı *. | Evet | Evet | Hayır  |
+| EgressHttpStatus3xx | GB olarak 3xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır  |
+| EgressHttpStatus4xx | GB cinsinden 4xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır  |
+| EgressHttpStatus5xx | GB olarak 5 xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
+| EgressHttpStatusOthers | GB olarak diğer HTTP durum kodlarına sahip yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır  |
+| Yumurresscachehit | CDN pop 'Ları/kenarları üzerindeki CDN önbelleğinden doğrudan teslim edilen yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
+| Yumurresscacheisabetsizlik. | En yakın POP sunucusunda bulunmayan ve kaynak sunucudan alınan yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
+| Yumurresscachenocache | Kenarda Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen varlıkların giden veri aktarımı. | Evet | Evet | Hayır |
+| Yumurresscacheuncacheable | Varlığın Cache-Control ve veya Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların giden veri aktarımı. Bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
 | Yumurresscachediğerleri | Diğer önbellek senaryoları için giden veri aktarımları. | Hayır | Evet | Hayır |
 
 * Giden veri aktarımı, CDN POP sunucularından istemciye teslim edilen trafiğin anlamına gelir.

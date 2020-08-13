@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde otomatik TLS sertifikası
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: b25c431c7771e3c72280e936b2275f2fd10165b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 485fda708c089fe253ee7ae82edc14275c67b971
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056838"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192195"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) üzerinde bir HTTPS giriş denetleyicisi oluşturma
 
@@ -32,7 +32,7 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 
 Bu makalede ayrıca AKS kümeniz ile aynı kaynak grubunda bir [DNS bölgesi][dns-zone] olan [özel bir etki alanınız][custom-domain] olduğunu varsaymaktadır.
 
-Bu makalede NGıNX giriş denetleyicisini ve CERT-Manager 'ı yüklemek için [helm3][helm] kullanılmaktadır. Held 'nin en son sürümünü kullandığınızdan emin olun. Yükseltme yönergeleri için, bkz. [hela Install docs][helm-install]. Held 'yi yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Held ile uygulama yüklemesi][use-helm].
+Bu makalede NGıNX giriş denetleyicisini ve CERT-Manager 'ı yüklemek için [helm3][helm] kullanılmaktadır. Held 'nin en son sürümünü kullandığınızdan ve *kararlı* ve *jetstack* Held depolarına erişiminizin olduğundan emin olun. Yükseltme yönergeleri için, bkz. [hela Install docs][helm-install]. Held 'yi yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Held ile uygulama yüklemesi][use-helm].
 
 Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
@@ -338,7 +338,7 @@ tls-secret   True    tls-secret   11m
 
 ## <a name="test-the-ingress-configuration"></a>Giriş yapılandırmasını test etme
 
-Merhaba-Dünya girişi için bir Web tarayıcısı açın *. *Kubernetes giriş denetleyicinizin MY_CUSTOM_DOMAIN. HTTPS kullanmaya yönlendirirsiniz, sertifikaya güvenildiğini ve tanıtım uygulamasının Web tarayıcısında gösterildiğini görebilirsiniz. */Hello-World-Two* yolunu ekleyin ve ikinci demo uygulamasının özel başlığa sahip olduğuna dikkat edin.
+Merhaba-Dünya girişi için bir Web tarayıcısı açın *. * Kubernetes giriş denetleyicinizin MY_CUSTOM_DOMAIN. HTTPS kullanmaya yönlendirirsiniz, sertifikaya güvenildiğini ve tanıtım uygulamasının Web tarayıcısında gösterildiğini görebilirsiniz. */Hello-World-Two* yolunu ekleyin ve ikinci demo uygulamasının özel başlığa sahip olduğuna dikkat edin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

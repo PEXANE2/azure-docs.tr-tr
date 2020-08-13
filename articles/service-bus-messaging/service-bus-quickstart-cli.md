@@ -5,26 +5,26 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4b4ce8a19d03a0323af934eac3868fdcc8d50ff
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182518"
+ms.locfileid: "88191265"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Azure CLı kullanarak Service Bus bir ad alanı ve kuyruk oluşturma
 Bu hızlı başlangıçta, Azure CLı kullanarak bir Service Bus ad alanı ve kuyruk oluşturma gösterilmektedir. Ayrıca, bir istemci uygulamanın sıraya/kuyruğa ileti göndermek/almak için kullanabileceği yetkilendirme kimlik bilgilerinin nasıl alınacağını gösterir. 
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free account] oluşturabilirsiniz.
 
 Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz Azure Cloud Shell kullanırsınız. Azure Cloud Shell hakkındaki ayrıntılar için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md). Ayrıca, makinenizde Azure PowerShell [yükleyip](/cli/azure/install-azure-cli) kullanabilirsiniz. 
 
 ## <a name="provision-resources"></a>Kaynak sağlama
 1. [Azure portal](https://portal.azure.com) oturum açın.
-2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın: 
+2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın. CloudShell **PowerShell** modundaysa **Bash** moduna geçin. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell Başlat":::
 3. Bir Azure Kaynak grubu oluşturmak için aşağıdaki komutu çalıştırın. İsterseniz kaynak grubu adını ve konumunu güncelleştirin. 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz
     ```azurecli-interactive
     az servicebus namespace create --resource-group ContosoRG --name ContosoSBusNS --location eastus
     ```
-5. Önceki adımda oluşturduğunuz ad alanında bir sıra oluşturmak için aşağıdaki komutu çalıştırın. Bu örnekte, `ContosoRG` önceki adımda oluşturduğunuz kaynak grubudur. `ContosoSBusNS`, bu kaynak grubunda oluşturulan Service Bus ad alanının adıdır. 
+5. Önceki adımda oluşturduğunuz ad alanında bir sıra oluşturmak için aşağıdaki komutu çalıştırın. Bu örnekte, `ContosoRG` önceki adımda oluşturduğunuz kaynak grubudur. `ContosoSBusNS` , bu kaynak grubunda oluşturulan Service Bus ad alanının adıdır. 
 
     ```azurecli-interactive
     az servicebus queue create --resource-group ContosoRG --namespace-name ContosoSBusNS --name ContosoOrdersQueue

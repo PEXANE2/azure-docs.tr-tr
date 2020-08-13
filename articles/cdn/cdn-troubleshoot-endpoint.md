@@ -1,6 +1,6 @@
 ---
 title: Azure CDN uç noktalar sorunlarını giderme-404 durum kodu
-description: Azure CDN uç noktalarıyla 404 yanıt kodu sorunlarını giderin.
+description: 404 HTTP yanıt durum kodu döndüren Azure Content Delivery Network uç noktalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888672"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192484"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 durum kodu döndüren uç noktalar Azure CDN sorunlarını giderme
 Bu makale, 404 HTTP yanıt durum kodu döndüren Azure Content Delivery Network (CDN) uç noktalarıyla ilgili sorunları gidermenize olanak sağlar.

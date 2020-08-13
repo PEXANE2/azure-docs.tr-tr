@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute: sanal ağı bir devreye bağlama: Azure portal'
-description: VNet 'i Azure ExpressRoute bağlantı hattına bağlayın. Nasıl yapılır adımları.
+description: Azure portal kullanarak bir Azure ExpressRoute bağlantı hattına bir sanal ağ bağlamak için bağlantı oluşturmayı öğrenin.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737079"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190926"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Portalı kullanarak ExpressRoute bağlantı hattına bir sanal ağı bağlama
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -122,7 +122,7 @@ Devre kullanıcısının, devre sahibinden kaynak KIMLIĞI ve yetkilendirme anah
 
    ![Temel bilgiler sayfası](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. **Ayarlar** sayfasında, **sanal ağ geçidini** seçin ve **Yetkilendirmeyi** kullan onay kutusunu işaretleyin.
-6. **Yetkilendirme anahtarını** ve **eş bağlantı devre URI** 'sini girin ve bağlantıya bir ad verin. **Tamam**'a tıklayın. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
+6. **Yetkilendirme anahtarını** ve **eş bağlantı devre URI** 'sini girin ve bağlantıya bir ad verin. **Tamam**’a tıklayın. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
 
    ![Ayarlar sayfası](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. **Özet** sayfasındaki bilgileri gözden geçirin ve **Tamam**' a tıklayın.

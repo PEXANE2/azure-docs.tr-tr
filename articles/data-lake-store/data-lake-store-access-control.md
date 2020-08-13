@@ -1,6 +1,6 @@
 ---
 title: Data Lake Storage 1. | erişim denetimine genel bakış | Microsoft Docs
-description: Erişim denetiminin Azure Data Lake Storage 1. nasıl çalıştığını anlama
+description: Azure Data Lake Storage 1. erişim denetimi modelinin temel bilgileri hakkında bilgi edinin.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847827"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190167"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de erişim denetimi
 
@@ -71,7 +71,7 @@ Data Lake Storage 1. tarafından kullanılan POSIX stili modelde bir öğe için
 
 Aşağıda, Data Lake Storage 1. hesapta belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak bazı yaygın senaryolar verilmiştir.
 
-| Çalışma | Nesne              |    /      | Ağına   | Portland   | Data.txt       |
+| İşlem | Nesne              |    /      | Ağına   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Okuma      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Sonuna ekle | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |

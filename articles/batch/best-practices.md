@@ -1,14 +1,14 @@
 ---
-title: Önerilen uygulamalar
+title: En iyi uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474912"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191810"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -56,6 +56,10 @@ Havuz ayırma arızaları, ilk ayırma veya sonraki yeniden boyutlandırmalarda 
 Toplu Iş havuzlarının Azure 'da kesinti süresi olaylarıyla karşılaşması mümkündür. Senaryonuzu veya Batch için iş akışınızı planlarken ve geliştirirken bunu göz önünde bulundurun.
 
 Bir düğümün başarısız olması durumunda, Batch otomatik olarak bu işlem düğümlerini sizin adınıza kurtarmaya çalışır. Bu, kurtarılan düğüm üzerinde çalışan herhangi bir görevin yeniden çizelgelenmesi tetiklenebilir. Kesilen görevler hakkında daha fazla bilgi edinmek için bkz. [yeniden denemeler tasarlama](#design-for-retries-and-re-execution) .
+
+### <a name="custom-image-pools"></a>Özel görüntü havuzları
+
+Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğunuzda, havuzdaki her bir işlem düğümü için işletim sistemini sağlayan bir VM görüntüsü belirtirsiniz. Havuzu desteklenen bir Azure Marketi görüntüsüyle oluşturabilir veya [paylaşılan görüntü Galerisi görüntüsüyle özel bir görüntü oluşturabilirsiniz](batch-sig-images.md). Özel bir görüntü havuzu oluşturmak için [yönetilen bir görüntü](batch-custom-images.md) de kullanabilirsiniz, ancak mümkün olduğunda paylaşılan görüntü galerisini kullanarak özel görüntüler oluşturmanız önerilir. Paylaşılan görüntü galerisinin kullanılması, havuzları daha hızlı sağlamanıza, büyük miktarlarda VM 'Lere göre ölçeklenmenize ve VM 'Ler sağlanırken güvenilirliği artırmanıza yardımcı olur.
 
 ### <a name="third-party-images"></a>Üçüncü taraf görüntüleri
 

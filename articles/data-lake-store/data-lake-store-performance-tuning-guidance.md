@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage 1. performans ayarı
-description: Performansının Azure Data Lake Storage 1. nasıl ayarlanacağını açıklar.
+description: Olabildiğince fazla okuma ve yazma işlemi gerçekleştirerek, en iyi performansı elde etmek için Azure Data Lake Storage 1. 'teki tüm kullanılabilir üretilen işi kullanmanın ne kadar önemli olduğunu öğrenin.
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281744"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190250"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Performans için Azure Data Lake Storage 1. ayarlama
 
@@ -43,11 +43,11 @@ Kaynak donanım ve ağ bağlantısı performans sorunlarını giderdikten sonra,
 
 | Araç          | Ayarlar | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -a (Eşleyici) | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar | [Bağlantı](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantı](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
+| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -a (Eşleyici) | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar | [Bağlantısının](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantısının](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 

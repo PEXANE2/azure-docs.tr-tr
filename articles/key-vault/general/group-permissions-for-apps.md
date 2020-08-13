@@ -1,6 +1,6 @@
 ---
 title: Azure Anahtar Kasası 'na erişmek için uygulamalara izin verme-Azure Key Vault | Microsoft Docs
-description: Birçok uygulamaya bir anahtar kasasına erişmek için izin verme hakkında bilgi edinin
+description: Hizmet sorumlusunu el ile kaydetmeyi ve bazı durumlarda gerekli olabilecek bir erişim denetimi ilkesi kullanarak Azure Key Vault erişim sağlamayı öğrenin.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1b3f03458211e57f51c39cb5ca8da83943280aa8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406274"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192010"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -33,7 +33,7 @@ Key Vault Access Control hakkında tam Ayrıntılar için bkz. [Azure Key Vault 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
    - [Azure CLı ile Anahtar Kasası oluşturma](../secrets/quick-create-cli.md)

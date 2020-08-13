@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 16065b45a6afea25615b985d3c89445dee48bd1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167734"
+ms.locfileid: "88192410"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,6 +32,13 @@ Bir __sanal ağ__ , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için
 + [Azure sanal ağ hizmeti](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ve [IP ağının](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)genel çalışma bilgileri.
 
 + İşlem kaynaklarınızla kullanılacak önceden var olan bir sanal ağ ve alt ağ.
+
++ Bir sanal ağa veya alt ağa kaynak dağıtmak için, Kullanıcı hesabınızın Azure rol tabanlı erişim denetimlerinde (RBAC) aşağıdaki eylemler için izinleri olmalıdır:
+
+    - Sanal ağ kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action".
+    - Alt ağ kaynağında "Microsoft. Network/virtualNetworks/subnet/JOIN/Action".
+
+    Ağ ile RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](/azure/role-based-access-control/built-in-roles#networking)
 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
@@ -263,7 +270,7 @@ Bir sanal ağda [yönetilen Azure Machine Learning __işlem hedefi__ ](concept-c
 > Bu kaynaklar, aboneliğin [kaynak kotalarıyla](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) sınırlıdır.
 
 
-### <a name="required-ports"></a><a id="mlcports"></a>Gerekli bağlantı noktaları
+### <a name="required-ports"></a><a id="mlcports"></a> Gerekli bağlantı noktaları
 
 Ağ trafiğini genel İnternet ile kısıtlayarak sanal ağın güvenliğini sağlamayı planlıyorsanız Azure Batch hizmetinden gelen iletişimlere izin vermeniz gerekir.
 
@@ -294,7 +301,7 @@ Azure portal NSG kural yapılandırması aşağıdaki görüntülerde gösterilm
 
 ![Machine Learning İşlem giden NSG kuralları](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
-### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a>Sanal ağ ile giden bağlantıyı sınırlayın
+### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> Sanal ağ ile giden bağlantıyı sınırlayın
 
 Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın giden erişimini sınırlandırmak istiyorsanız aşağıdaki adımları kullanın:
 

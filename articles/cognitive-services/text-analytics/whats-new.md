@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121859"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192033"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -33,18 +33,18 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
 
 Aşağıdaki güncelleştirmeler, yalnızca sistem durumu kapsayıcısı için Metin Analizi Ağustos sürümüne özgüdür.
 
-* Sistem durumu için yeni model sürümü Metin Analizi:`2020-07-24`
-* Sistem durumu istekleri için Metin Analizi göndermek üzere yeni URL:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* Sistem durumu için yeni model sürümü Metin Analizi: `2020-07-24`
+* Sistem durumu istekleri için Metin Analizi göndermek üzere yeni URL: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (Bu yeni kapsayıcı görüntüsünde bulunan demo Web uygulamasını kullanmak için bir tarayıcı önbelleği temizleme 'nin gerekli olacağını lütfen unutmayın)
 
 JSON yanıtında aşağıdaki özellikler değiştirildi:
 
 * `type`, `category` olarak yeniden adlandırıldı 
 * `score`, `confidenceScore` olarak yeniden adlandırıldı
 * `category`JSON çıktısının alanındaki varlıklar artık Pascal durumunda. Aşağıdaki varlıklar yeniden adlandırıldı:
-    * `EXAMINATION_RELATION`, olarak yeniden adlandırıldı `RelationalOperator` .
-    * `EXAMINATION_UNIT`, olarak yeniden adlandırıldı `MeasurementUnit` .
-    * `EXAMINATION_VALUE`, olarak yeniden adlandırıldı `MeasurementValue` .
-    * `ROUTE_OR_MODE`yeniden adlandırıldı `MedicationRoute` .
+    * `EXAMINATION_RELATION` , olarak yeniden adlandırıldı `RelationalOperator` .
+    * `EXAMINATION_UNIT` , olarak yeniden adlandırıldı `MeasurementUnit` .
+    * `EXAMINATION_VALUE` , olarak yeniden adlandırıldı `MeasurementValue` .
+    * `ROUTE_OR_MODE` yeniden adlandırıldı `MedicationRoute` .
     * İlişkisel varlık `ROUTE_OR_MODE_OF_MEDICATION` olarak yeniden adlandırıldı `RouteOfMedication` .
 
 Aşağıdaki varlıklar eklendi:
@@ -82,7 +82,7 @@ Kapsayıcı aşağıdaki özellikleri sunar:
 
 Metin analizi API v3, artık aşağıdaki güncelleştirmelerle genel kullanıma sunulmuştur:
 
-* Model sürümü`2020-04-01`
+* Model sürümü `2020-04-01`
 * Her özellik için yeni [veri limitleri](concepts/data-limits.md)
 * [Yaklaşım Analizi (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md) için [dil desteği](language-support.md) güncelleştirildi
 * Varlık bağlama için ayrı uç nokta 
@@ -98,13 +98,13 @@ Metin analizi API v3, artık aşağıdaki güncelleştirmelerle genel kullanıma
    * Olay-spor
 
 JSON yanıtında aşağıdaki özellikler eklendi:
-   * `SentenceText`Yaklaşım Analizi
-   * `Warnings`Her belge için 
+   * `SentenceText` Yaklaşım Analizi
+   * `Warnings` Her belge için 
 
 JSON yanıtında aşağıdaki özelliklerin adları, uygun yerlerde değiştirilmiştir:
 
 * `score`, `confidenceScore` olarak yeniden adlandırıldı
-    * `confidenceScore`iki ondalık duyarlığa sahiptir. 
+    * `confidenceScore` iki ondalık duyarlığa sahiptir. 
 * `type`, `category` olarak yeniden adlandırıldı
 * `subtype`, `subcategory` olarak yeniden adlandırıldı
 
@@ -191,7 +191,7 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 
 * [Metin Analizi API'si nedir?](overview.md)  
 * [Örnek kullanıcı senaryoları](text-analytics-user-scenarios.md)
-* [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

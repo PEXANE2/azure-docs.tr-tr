@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75891261"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192278"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
@@ -50,9 +50,9 @@ Bir saatten uzun süre devam ederse, [GitHub 'da bir sorun açın](https://githu
 SignalR hizmeti, uygulama sunucularından sinyalleri izler.
 Belirli bir süre için sinyaller alınmıyorsa, uygulama sunucusu çevrimdışı kabul edilir. Bu uygulama sunucusuyla eşlenen tüm istemci bağlantılarının bağlantısı kesilecek.
 
-## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>ASP.NET Core SignalR SDK `IUserIdProvider` 'Dan Azure SignalR HIZMETI SDK 'sına geçiş yaparken özel throw özel durumu neden kullanılır?
+## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>`IUserIdProvider`ASP.NET Core SIGNALR SDK 'Dan Azure SignalR hizmeti SDK 'sına geçiş yaparken özel throw özel durumu neden kullanılır?
 
-Parametresi `HubConnectionContext context` , çağrıldığında ASP.NET Core SignalR SDK ve Azure SignalR HIZMETI SDK 'sı `IUserIdProvider` arasında farklıdır.
+Parametresi, `HubConnectionContext context` çağrıldığında ASP.NET Core SIGNALR SDK ve Azure SignalR hizmeti SDK 'sı arasında farklıdır `IUserIdProvider` .
 
 ASP.NET Core SignalR 'de, `HubConnectionContext context` fiziksel istemci bağlantısının tüm özellikler için geçerli değerlerle olan bağlamıdır.
 
@@ -68,3 +68,39 @@ Hayır.
 Azure SignalR hizmeti, ASP.NET Core SignalR 'nin desteklediği üç aktarımı varsayılan olarak sağlar. Yapılandırılamaz. SignalR hizmeti, tüm istemci bağlantıları için bağlantıları ve aktarımları işleyecek.
 
 İstemci tarafı taşımalarını [burada](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)belgelenen şekilde yapılandırabilirsiniz.
+
+## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-showed-in-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>İleti sayısı veya Azure portal gösterilen bağlantı sayısı gibi ölçümlerin anlamı nedir? Ne tür bir toplama türü seçmem gerekir?
+
+Bu ölçümleri nasıl hesaplayabiliriz hakkındaki ayrıntıları [burada](signalr-concept-messages-and-connections.md)bulabilirsiniz.
+
+Azure SignalR hizmeti kaynaklarının genel bakış dikey penceresinde, sizin için uygun toplama türünü zaten seçtik. Ölçümler dikey penceresine giderseniz, [toplama türünü bir](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr) başvuru olarak alabilirsiniz.
+
+## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Hizmet modunun anlamı nedir `Default` / `Serverless` / `Classic` ? Nasıl seçebilirim?
+
+Mod
+* `Default` mod, hub sunucusu **gerektiriyor** . Hub için kullanılabilir sunucu bağlantısı yoksa, istemci bu hub 'a bağlanmaya çalışır.
+* `Serverless` mod hiçbir sunucu bağlantısına izin **vermiyor** , yani tüm sunucu bağlantılarını reddeder, tüm istemcilerin sunucusuz modda olması gerekir.
+* `Classic` mod, karışık bir durum. Hub 'ın sunucu bağlantısı olduğunda, yeni istemci hub sunucusuna yönlendirilir, aksi takdirde istemci sunucusuz moduna girer.
+
+  Bu durum bir sorun oluşmasına neden olabilir, örneğin, tüm sunucu bağlantıları bir süre boyunca kaybedildiğinden, bazı istemciler hub sunucusu 'na yönlendirme yerine sunucusuz moda girer.
+
+Yaparak
+1. Hub sunucusu yok, öğesini seçin `Serverless` .
+1. Tüm Hub 'larda hub sunucuları vardır, öğesini seçin `Default` .
+1. Hub 'lardan bazılarının hub sunucuları var, diğerleri değil, `Classic` ancak bu sorun bir soruna neden olabilir. Bu, daha iyi bir yöntem, diğeri de bir tane olmak üzere iki örnek oluşturur `Serverless` `Default` .
+
+## <a name="any-feature-differences-when-using-azure-signalr-for-aspnet-signalr"></a>ASP.NET SignalR için Azure SignalR kullanırken herhangi bir özellik farkı var mı?
+Azure SignalR kullanırken, ASP.NET SignalR 'nin bazı API 'Leri ve özellikleri artık desteklenmemektedir:
+- Azure SignalR kullanılırken istemciler ve merkez arasında rastgele durum geçirme özelliği (genellikle çağrılır `HubState` ) desteklenmez
+- `PersistentConnection` sınıf, Azure SignalR kullanılırken henüz desteklenmiyor
+- Azure SignalR kullanılırken **süresiz çerçeve taşıması** desteklenmez
+- İstemci çevrimdışıyken Azure SignalR istemciye gönderilen iletileri artık yeniden oynamıyor
+- Azure SignalR kullanırken, bir istemci bağlantısının trafiği her zaman yönlendirilir (aka. **yapışkan**) bağlantı süresince bir App Server örneğine
+
+ASP.NET SignalR desteği uyumlulukla odaklanmıştır, bu nedenle ASP.NET Core SignalR 'tan gelen yeni özelliklerin bazıları desteklenmez. Örneğin, **MessagePack**, **streaming**, vb. yalnızca ASP.NET Core SignalR uygulamalarında kullanılabilir.
+
+SignalR hizmeti, farklı hizmet modu için yapılandırılabilir: `Classic` / `Default` / `Serverles` s. Bu ASP.NET destede `Serverless` mod desteklenmez. Veri düzlemi REST API de desteklenmez.
+
+## <a name="where-do-my-data-reside"></a>Verilerim nerede bulunur?
+
+Azure SignalR hizmeti bir veri işlemcisi hizmeti olarak çalışıyor. Müşteri içeriğini depolamaz ve veri yerleşimi tasarım tarafından taahhüt edilir. Tanılama için Azure depolama gibi diğer Azure hizmetleriyle birlikte Azure SignalR hizmetini kullanıyorsanız, verileri Azure bölgelerinde nasıl tutabileceğiniz hakkında rehberlik için lütfen [buraya](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) bakın.

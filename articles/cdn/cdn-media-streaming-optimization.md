@@ -1,6 +1,6 @@
 ---
 title: Azure CDN ile medya akışı iyileştirmesi
-description: Akıcı medya dosyalarını kesintisiz teslim için iyileştirin
+description: Kısmi önbellek paylaşımı ve önbellek dolgusu bekleme süresi gibi Azure Content Delivery Network 'da akış medyasını iyileştirmek için seçenekler hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206710"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192611"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN ile medya akışı iyileştirmesi 
  
@@ -77,16 +77,16 @@ Genel medya teslimi veya video isteğe bağlı medya teslimi iyileştirme türle
  
 Uç noktasını oluşturduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için iyileştirme uygular. Aşağıdaki bölümde bu işlem açıklanmaktadır. 
 
-### <a name="caching"></a>Önbelleğe alma
+### <a name="caching"></a>Önbelleğe Alma
 
 **Akamai 'den Azure CDN Standard** , varlığın bir akış bildirimi veya parçası olduğunu algılarsa, genel Web tesliminden farklı önbelleğe alma sona erme süreleri kullanır. (Aşağıdaki tablodaki tam listeye bakın.) Her zaman olduğu gibi, kaynaktan gönderilen Cache-Control veya Expires üstbilgileri kabul edilir. Varlık bir medya varlığı değilse, genel Web tesliminin sona erme zamanlarını kullanarak önbelleğe alınır.
 
 Çok sayıda kullanıcı henüz mevcut olmayan bir parça istemesi durumunda, kaynak boşaltması için kısa negatif önbellek süresi faydalıdır. Örnek, paketin kaynaktan kullanılamadığı canlı bir akıştır. Daha uzun önbelleğe alma aralığı, video içeriği genellikle değiştirilmediğinden, isteklerin kaynaktan oluşturulmasına da yardımcı olur.
 
-| Önbelleğe alma  | Genel web teslimi | Genel medya akışı | İsteğe bağlı video medya akışı  
+| Önbelleğe Alma  | Genel web teslimi | Genel medya akışı | İsteğe bağlı video medya akışı  
 |--- | --- | --- | ---
 | Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |365 gün | 365 gün   
-| Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye | 1 saniye
+| Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Yok | 1 saniye | 1 saniye
  
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın  
 

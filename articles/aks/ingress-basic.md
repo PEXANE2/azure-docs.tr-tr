@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesine temel bir NGıNX giriş de
 services: container-service
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a34649bba275fa4b11a4c5a0c0084235d83fd4a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927066"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190778"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti 'nde (AKS) giriş denetleyicisi oluşturma
 
@@ -27,7 +27,7 @@ Aşağıdakileri de yapabilirsiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede NGıNX giriş denetleyicisini yüklemek için [Held 3][helm] kullanılmaktadır.
+Bu makalede NGıNX giriş denetleyicisini yüklemek için [Held 3][helm] kullanılmaktadır. Held 'nin en son sürümünü kullandığınızdan ve *kararlı* Helu deposuna erişiminizin olduğundan emin olun.
 
 Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 

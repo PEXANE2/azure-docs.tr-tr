@@ -1,17 +1,17 @@
 ---
 title: Event Hubs verileri Azure Data Lake Storage 1. olarak yakala
-description: Azure Event Hubs tarafından alınan verileri yakalamak için Azure Data Lake Storage 1. kullanın.
+description: Azure Event Hubs tarafından alınan verileri yakalamak için Azure Data Lake Storage 1. nasıl kullanacağınızı öğrenin. Önkoşulları doğrulayarak başlayın.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515756"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190286"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Event Hubs verileri yakalamak için Azure Data Lake Storage 1. kullanma
 
@@ -48,7 +48,7 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. kök için izin atama")
     
-    **Seç**' e tıklayın.
+    **Seç**’e tıklayın.
 
     c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. Yürütülecek **izinleri** ayarlayın **Execute**. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. **Bir erişim izni girişi ve varsayılan izin girdisi** **olarak ekle** ' ye ayarlayın.
 
@@ -57,7 +57,7 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage 1. kök için izin atama")
 
-    **Tamam**'a tıklayın.
+    **Tamam**’a tıklayın.
 
 1. Verileri yakalamak istediğiniz Data Lake Storage 1. hesabının altındaki klasör için izinler atayın.
 
@@ -69,13 +69,13 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. klasörü için izin atama")
     
-    **Seç**' e tıklayın.
+    **Seç**’e tıklayın.
 
     c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. **Okuma, yazma** ve **yürütme** **izinlerini** ayarlayın. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. Son olarak, **bir erişim izni girişi ve varsayılan izin girişi** **olarak ekle** seçeneğini belirleyin.
 
     ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Data Lake Storage 1. klasörü için izin atama")
     
-    **Tamam**'a tıklayın. 
+    **Tamam**’a tıklayın. 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri yakalamak için Event Hubs yapılandırma
 
@@ -99,7 +99,7 @@ Bu bölümde, bir Event Hubs ad alanı içinde bir olay hub 'ı oluşturacaksın
 
     e. **Örnek yakalama dosya adı biçimlerini** varsayılan değere bırakın. Bu seçenek, yakalama klasörü altında oluşturulan klasör yapısını yönetir.
 
-    f. **Oluştur**'a tıklayın.
+    f. **Oluştur**’a tıklayın.
 
 ## <a name="test-the-setup"></a>Kurulumu test etme
 

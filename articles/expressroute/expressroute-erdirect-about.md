@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute Direct hakkında
-description: Bu sayfada ExpressRoute Direct 'e genel bakış sunulmaktadır
+description: Azure ExpressRoute Direct 'in temel özellikleri ve kullanılabilir SKU 'Lar ve teknik gereksinimler gibi ExpressRoute Direct 'e eklemek için gereken bilgiler hakkında bilgi edinin.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083598"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192348"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
@@ -85,7 +85,7 @@ ExpressRoute Direct, Qınq ve Dot1Q VLAN etiketlemesini destekler.
 
 ## <a name="workflow"></a>İş akışı
 
-[![iş akışı](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![akışıyla](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

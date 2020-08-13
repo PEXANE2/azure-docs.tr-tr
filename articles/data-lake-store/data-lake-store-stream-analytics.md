@@ -1,17 +1,17 @@
 ---
 title: Stream Analytics Data Lake Storage 1.-Azure 'a veri akışı
-description: Verileri Azure Data Lake Storage 1. akışa almak için Azure Stream Analytics kullanın.
+description: Bir Azure Storage blobundan verileri okuyan basit bir senaryoya sahip bir Azure Stream Analytics işi için Azure Data Lake Storage 1. çıktı olarak kullanmayı öğrenin.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515176"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192155"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Azure Data Lake Storage 1. Azure Depolama Blobu veri akışı
 Bu makalede, Azure Data Lake Storage 1. bir Azure Stream Analytics iş için çıktı olarak nasıl kullanacağınızı öğreneceksiniz. Bu makalede, verileri bir Azure depolama blobundan (giriş) okuyan ve verileri Data Lake Storage 1. (çıktı) yazan basit bir senaryo gösterilmektedir.
@@ -58,7 +58,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
    * **Sınırlayıcı**için **sekme**' i seçin.
    * **Kodlama**için **UTF-8**' i seçin.
 
-     **Oluştur**'a tıklayın. Portal şimdi girişi ekler ve ona bağlantıyı sınar.
+     **Oluştur**’a tıklayın. Portal şimdi girişi ekler ve ona bağlantıyı sınar.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>İş için Data Lake Storage 1. çıktısı oluşturma
@@ -86,7 +86,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
    * **Sınırlayıcı**için **sekme**' i seçin.
    * **Kodlama**için **UTF-8**' i seçin.
     
-     **Oluştur**'a tıklayın. Portal şimdi çıktıyı ekler ve ona bağlantıyı sınar.
+     **Oluştur**’a tıklayın. Portal şimdi çıktıyı ekler ve ona bağlantıyı sınar.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 

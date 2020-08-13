@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault genel bakış-Azure Key Vault | Microsoft Docs
-description: Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir.
+description: Azure Key Vault, tüm donanım güvenlik modülleri tarafından desteklenen gizli dizileri, anahtarları ve sertifikaları yönetme olanağı sağlayan güvenli bir gizli diziler deposudur.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216327"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190550"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
@@ -83,4 +83,4 @@ Key Vault, depolama hesapları, olay hub’ları ve günlük analizi ile tümle�
 - [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-certificates.md) hakkında daha fazla bilgi edinin
 - [Hızlı Başlangıç: CLI kullanarak bir Azure Key Vault oluşturma](../secrets/quick-create-cli.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-- [Geliştirici Kılavuzu Key Vault](../general/developers-guide.md)
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

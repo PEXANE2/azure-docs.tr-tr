@@ -1,6 +1,6 @@
 ---
 title: Azure CDN uç noktasında varlıkları önceden yükleme | Microsoft Docs
-description: Azure CDN uç noktasında önbelleğe alınmış içeriği önceden yüklemeyi öğrenin.
+description: Azure Content Delivery Network uç noktasında önbelleğe alınmış içeriği önceden yüklemeyi öğrenin. Bu özellik ürünün belirli sürümlerinde kullanılabilir.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887567"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192581"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN uç noktasında varlıkları önceden yükleme
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -50,8 +50,8 @@ Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeri
    > Metin girmeyi başlattıktan sonra, birden fazla varlık listesi oluşturmanıza izin veren daha fazla **içerik yolu** metin kutusu görünür. Listeden varlıkları silmek için üç nokta (...) düğmesini seçin ve **Sil**' i seçin.
    > 
    > Her içerik yolu, aşağıdaki [normal ifadelere](/dotnet/standard/base-types/regular-expression-language-quick-reference)uyan GÖRELI bir URL olmalıdır:  
-   > - Tek bir dosya yolu yükleyin:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Sorgu dizesiyle tek bir dosya yükle:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - Tek bir dosya yolu yükleyin: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - Sorgu dizesiyle tek bir dosya yükle: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > Her varlığın kendi yolu olması gerektiğinden, önceden yükleme varlıkları için joker karakter işlevselliği yoktur.
    > 

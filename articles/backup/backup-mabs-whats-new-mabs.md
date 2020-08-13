@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032451"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190841"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server 'daki yenilikler (MABS)
 
@@ -25,7 +25,7 @@ MABS v2 [modern yedekleme alanı](backup-mabs-add-storage.md) (MB) tanıtılan, 
 
 MB ile ölçek ve performans elde etmek için, MABS v3 UR1 ile birlikte, bir katmanlı birim olarak (genel depolama alanının %4 ' i), DPM HDD depolaması ile birlikte bir katmanlı birim olarak kullanmanızı öneririz. Katmanlı depolama ile MABS v3 UR1,% 50-70 daha hızlı yedeklemeler sağlar. Katmanlı depolamayı yapılandırma adımları için [katmanlı depolamada MB olarak ayarlanan](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) DPM makalesine başvurun.
 
-### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>Yinelenenleri kaldırma özelliği etkinken ReFS birimleri ve ReFS birimleri için destek
+### <a name="support-for-refs-volumes"></a>ReFS birimleri için destek
 
 MABS v3 UR1 ile ReFS hacminde dağıtılan ReFS birimlerini ve iş yüklerini yedekleyebilirsiniz. ReFS birimlerinde dağıtılan aşağıdaki iş yüklerini yedekleyebilirsiniz:
 
@@ -36,6 +36,8 @@ MABS v3 UR1 ile ReFS hacminde dağıtılan ReFS birimlerini ve iş yüklerini ye
 
 >[!NOTE]
 > ReFS biriminde depolanan Hyper-V VM 'lerinin yedeklenmesi MABS v3 ile desteklenir
+
+>ÖNEMLI Yinelenenleri kaldırılmış ReFS birimlerinin yedeklenmesiyle ilgili birkaç sorun tespit ettik. Bunları düzeltmek için çalışıyoruz ve kullanılabilir bir düzeltme olduğunda bu bölümü güncelliyoruz. Bundan sonra, MABSv3 UR1 ' den yinelenenleri kaldırılmış ReFS birimlerinin yedeklenmesi desteğini kaldırdık.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware Çözüm koruması desteği
 

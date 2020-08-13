@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: Global Reach kullanarak Microsoft Bulut bağlanma'
-description: Bu makalede ExpressRoute Global Reach açıklanmaktadır.
+description: Azure ExpressRoute Global Reach 'ın, şirket içi ağlarınızla özel bir ağ oluşturmak için ExpressRoute devreleri birbirine nasıl bağlayabileceğini öğrenin.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c747253a56476b0fd9431311294d487ef336e69
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636742"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190753"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach hakkında
 ExpressRoute, şirket içi ağlarınızın Microsoft Bulut 'e bağlanması için özel ve dayanıklı bir yoldur. Azure ve Office 365 gibi birçok Microsoft bulut hizmetine, özel veri merkezinizden veya şirket ağınızdan erişebilirsiniz. Örneğin, aynı şehirde bulunan bir ExpressRoute devresini içeren bir Expressvalley ve diğer şube ofisindeki bir ExpressRoute devresini içeren bir şube ofisiniz olabilir. Her iki şube ofisi ABD Batı ve UK Güney Azure kaynaklarıyla yüksek hızlı bağlantıya sahip olabilir. Ancak, şube ofislerde doğrudan veri alışverişi yapılamaz. Diğer bir deyişle 10.0.1.0/24, 10.0.3.0/24 ve 10.0.4.0/24 ' e veri gönderebilir, ancak 10.0.2.0/24 ' e kadar DEĞILDIR.

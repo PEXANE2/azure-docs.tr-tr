@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 148b22e7abc4fca7b9cb104f3616562b74c73004
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ed1104293aabdebd0e31c0c6ec0197fe10b64f06
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084767"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191015"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma
 
@@ -155,7 +155,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 Komutunu kullanarak bağlantı dizesini alın [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) .
 
 ```azurecli-interactive
-az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
+az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
 ```
 
 Komut çıkışında, *\<username>* ve ' yi *\<password>* daha önce kullandığınız veritabanı yönetici kimlik bilgileriyle değiştirin.
@@ -269,7 +269,7 @@ Azure uygulamanıza yönelik bağlantı dizelerini ayarlamak için [`az webapp c
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-ASP.NET Core, bu adlandırılmış bağlantı dizesini ( `MyDbConnection` ), *appsettings.jsüzerinde*belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` *üzerindeappsettings.js*de tanımlanmıştır. App Service ' de çalışırken, App Service tanımlanan bağlantı dizesi *üzerindeappsettings.js*tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında değeri *appsettings.js* kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.
+ASP.NET Core, bu adlandırılmış bağlantı dizesini ( `MyDbConnection` ), *appsettings.jsüzerinde*belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` * üzerindeappsettings.js*de tanımlanmıştır. App Service ' de çalışırken, App Service tanımlanan bağlantı dizesi * üzerindeappsettings.js*tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında değeri *appsettings.js* kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.
 
 Kodunuzda bağlantı dizesinin nasıl başvurulduğunu görmek için bkz. [üretim veritabanına bağlanmak için uygulamayı yapılandırma](#configure-app-to-connect-to-production-database).
 

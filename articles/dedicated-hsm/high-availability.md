@@ -1,6 +1,6 @@
 ---
 title: Yüksek kullanılabilirlik-Azure ayrılmış HSM | Microsoft Docs
-description: Azure adanmış HSM yüksek kullanılabilirlik örneği ve temel konular
+description: Azure adanmış HSM yüksek kullanılabilirliğe yönelik temel konular hakkında bilgi edinin. Bu makale bir örnek içerir.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70882256"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189861"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure adanmış HSM yüksek kullanılabilirlik
 
@@ -25,7 +25,7 @@ Azure adanmış HSM, Microsoft 'un yüksek oranda kullanılabilir veri merkezler
 
 ## <a name="high-availability-example"></a>Yüksek kullanılabilirlik örneği
 
-Yazılım düzeyinde yüksek kullanılabilirlik için HSM cihazlarının nasıl yapılandırılacağı hakkında bilgiler, ' Gemalto Luna Network HSM Yönetim Kılavuzu ' nda bulunur. Bu belge, [Gemalto HSM sayfasında](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)bulunur.
+Yazılım düzeyinde yüksek kullanılabilirlik için HSM cihazlarının nasıl yapılandırılacağı hakkında bilgiler, ' Gemalto Luna Network HSM Yönetim Kılavuzu ' nda bulunur. Bu belge,  [Gemalto HSM sayfasında](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)bulunur.
 
 Aşağıdaki diyagramda, yüksek oranda kullanılabilir bir mimari gösterilmektedir. Bölgede birden çok cihazı ve ayrı bir bölgede eşleştirilmiş birden çok cihazı kullanır. Bu mimari en az dört HSM cihaz ve sanal ağ bileşeni kullanır.
 
@@ -40,6 +40,6 @@ Daha fazla kavram düzeyi konuları:
 * [Fiziksel güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [Desteklenebilirlik](supportability.md)
-* [İzleme](monitoring.md)
+* [İzlemesinin](monitoring.md)
 
 Yüksek kullanılabilirlik için HSM cihazlarını yapılandırma hakkında ayrıntılı bilgi için, lütfen yönetici kılavuzlarıyla ilgili olarak Gemalto müşteri destek portalına başvurun ve Bölüm 6 ' yı inceleyin.

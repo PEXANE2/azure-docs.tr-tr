@@ -3,12 +3,12 @@ title: MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa8e2a33718c17df7b918b2aaa545ca80c473c29
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036734"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190864"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 
@@ -40,7 +40,7 @@ Aşağıdaki bölümlerde, MABS için koruma destek matrisi ayrıntıları veril
 | **İş yükü**               | **Sürüm**                                                  | **Azure Backup Sunucusu yükleme**                       | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | İstemci bilgisayarlar (64-bit) | Windows 10                                                  | Fiziksel sunucu  <br><br>    Hyper-V sanal makine   <br><br>   VMware sanal makinesi | V3 UR1                            | Birim, paylaşma, klasör, dosyalar, yinelenenleri kaldırılmış birimler   <br><br>   Korumalı birimler NTFS olmalıdır. FAT ve FAT32 desteklenmez.  <br><br>    Birimler en az 1 GB olmalıdır. Azure Backup Sunucusu, veri anlık görüntüsünü almak için Birim Gölge Kopyası Hizmeti (VSS) kullanır ve anlık görüntü yalnızca birim en az 1 GB olduğunda geçerlidir. |
-| Sunucular (64-bit)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)  <br><br>    Fiziksel sunucu  <br><br>    Hyper-V sanal makine <br><br>     VMware sanal makinesi  <br><br>    Azure Stack | V3 UR1                            | Birim, paylaşma, klasör, dosya, yinelenenleri kaldırılmış birimler (NTFS ve ReFS)  <br><br>   Sistem durumu ve tam (iş yükü Azure sanal makinesi olarak çalışırken desteklenmez) |
+| Sunucular (64-bit)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)  <br><br>    Fiziksel sunucu  <br><br>    Hyper-V sanal makine <br><br>     VMware sanal makinesi  <br><br>    Azure Stack | V3 UR1                            | Birim, paylaşma, klasör, dosya <br><br>    Yinelenenleri kaldırılmış birimler (yalnızca NTFS)  <br><br>   Sistem durumu ve tam (iş yükü Azure sanal makinesi olarak çalışırken desteklenmez) |
 | Sunucular (64-bit)          | Windows Server 2008 R2 SP1, Windows Server 2008 SP2 ( [Windows Yönetim çerçevesi 4,0](https://www.microsoft.com/download/details.aspx?id=40855)' i yüklemeniz gerekir) | Fiziksel sunucu  <br><br>    Hyper-V sanal makine  <br><br>      VMware sanal makinesi  <br><br>   Azure Stack | V3 UR1                            | Birim, paylaşma, klasör, dosya, sistem durumu/tam kurtarma        |
 | SQL Server                | SQL Server 2019, 2017, 2016 ve [desteklenen SPS](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016), 2014 ve desteklenen [SPS](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) 'ler | Fiziksel sunucu  <br><br>     Hyper-V sanal makine   <br><br>     VMware sanal makinesi  <br><br>   Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)  <br><br>     Azure Stack | V3 UR1                            | Tüm dağıtım senaryoları: veritabanı       <br><br>  MABS v3 UR1, ReFS birimleri üzerinden SQL veritabanlarının yedeklenmesini destekler                  |
 | Exchange                   | Exchange 2019, 2016                                         | Fiziksel sunucu   <br><br>   Hyper-V sanal makine  <br><br>      VMware sanal makinesi  <br><br>   Azure Stack  <br><br>    Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken) | V3 UR1                            | Koruma (tüm dağıtım senaryolarında): tek başına Exchange sunucusu, veritabanı kullanılabilirlik grubu (DAG) altındaki veritabanı  <br><br>    Kurtarma (tüm dağıtım senaryolarında): Posta kutusu, DAG altındaki posta kutusu veritabanları    <br><br>  MABS v3 UR1 ile ReFS üzerinden Exchange yedeklemesi desteklenir |

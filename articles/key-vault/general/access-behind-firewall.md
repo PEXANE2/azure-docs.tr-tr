@@ -1,6 +1,6 @@
 ---
 title: Güvenlik duvarının arkasındaki Key Vault erişim-Azure Key Vault | Microsoft Docs
-description: Güvenlik duvarının arkasındaki bir uygulamadan Azure Anahtar Kasasına nasıl erişebileceğinizi öğrenin
+description: Anahtar kasasına erişmek için bir güvenlik duvarının arkasındaki Anahtar Kasası istemci uygulamasını etkinleştirmek üzere açılacak bağlantı noktaları, konaklar veya IP adresleri hakkında bilgi edinin.
 services: key-vault
 author: amitbapat
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 273579fb3dee1e941e9f464a1956189c8808c694
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834331"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190464"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Güvenlik duvarının ardındayken Azure Anahtar Kasası’na erişme
 
@@ -52,7 +52,7 @@ Anahtar Kasası yönetimi için (CRUD ve erişim ilkesi ayarı), anahtar kasası
 | İşlem türü | Uç nokta:bağlantı noktası |
 | --- | --- |
 | Anahtar Kasası denetim düzlemi işlemleri<br> Azure Resource Manager yoluyla |**Genel**<br> management.azure.com:443<br><br> **Azure Çin:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 |
-| Microsoft Graph API’si |**Genel**<br> graph.microsoft.com:443<br><br> **Azure Çin:**<br> graph.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> graph.microsoft.com:443<br><br> **Azure Almanya:**<br> graph.cloudapi.de:443 |
+| Microsoft Graph API |**Genel**<br> graph.microsoft.com:443<br><br> **Azure Çin:**<br> graph.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> graph.microsoft.com:443<br><br> **Azure Almanya:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Anahtar Kasası işlemleri
 
@@ -68,7 +68,7 @@ Anahtar Kasası hizmeti, PaaS altyapısı gibi diğer Azure kaynaklarını kulla
 * [Geneldir](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 * [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
 * [Almanya](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
-* [Arasında](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+* [Çin](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
 
 Kimlik doğrulama ve Kimlik (Azure Active Directory) genel bir hizmettir ve diğer bölgelere yük devredebilir veya trafiği bilgi vermeden taşıyabilir. Bu senaryoda, [Kimlik Doğrulama ve Kimlik IP Adresleri](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)’nde listelenen tüm IP aralıklarının güvenlik duvarına eklenmesi gerekir.
 

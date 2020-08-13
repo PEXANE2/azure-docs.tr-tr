@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288547"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191142"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM boyutları yerel geçici disk yok 
 Bu makalede, yerel geçici disk (yerel geçici disk yok) olmayan Azure VM boyutları hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır. Bu VM boyutları hakkında daha fazla bilgi için bkz. [dv4 and Dsv4-Series (genel amaçlı Iş yükleri) Için belirtimler](dv4-dsv4-series.md) veya [Ev4 ve Esv4 serisi (bellek Için iyileştirilmiş Iş yükleri) özellikleri](ev4-esv4-series.md).
@@ -56,7 +56,7 @@ Evet.
 [Geri bildirim formunu]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u)doldurun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-Bu belgede, yerel geçici disk ile Azure VM 'lerle ilgili en sık sorulan sorular hakkında daha fazla bilgi edindiniz. Bu VM boyutları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu belgede, yerel geçici disk olmadan Azure VM 'lerle ilgili en sık sorulan sorular hakkında daha fazla bilgi edindiniz. Bu VM boyutları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Dv4 ve Dsv4 serisi için belirtimler (Genel Amaçlı Iş yükü)](dv4-dsv4-series.md)
 - [Ev4 ve Esv4 serisi için belirtimler (bellek için Iyileştirilmiş Iş yükü)](ev4-esv4-series.md)

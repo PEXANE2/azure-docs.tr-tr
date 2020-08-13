@@ -1,6 +1,6 @@
 ---
 title: Günlüğe kaydetme Azure Key Vault | Microsoft Docs
-description: Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak için bu öğreticiyi kullanın.
+description: Bilgileri sağladığınız bir Azure depolama hesabına kaydeden Azure Key Vault için günlüğe kaydetmeyi etkinleştirerek anahtar kasalarınıza erişimi nasıl izleyeceğinizi öğrenin.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 263568ef53ec2353bf00ebcd5b48a212f0f1eb2d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090595"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192800"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -38,7 +38,7 @@ Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak içi
 
 Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md)). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
@@ -184,13 +184,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Bu çıktıdan görebileceğiniz gibi, Bloblar bir adlandırma kuralını izler:`resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Bu çıktıdan görebileceğiniz gibi, Bloblar bir adlandırma kuralını izler: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Tarih ve saat değerleri UTC'yi kullanır.
 
 Birden çok kaynağa yönelik günlükleri toplamak için aynı depolama hesabını kullanabilmeniz için, blob adı içindeki tam kaynak KIMLIĞI, yalnızca ihtiyaç duyduğunuz bloblara erişmek veya onları indirmek için yararlıdır. Ancak bunu yapmadan önce tüm blobların nasıl indirileceğini ele alacağız.
 
-Blobları indirmek için bir klasör oluşturun. Örneğin:
+Blobları indirmek için bir klasör oluşturun. Örnek:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -210,7 +210,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 Bu ikinci komutu çalıştırdığınızda, **/** BLOB adlarındaki sınırlayıcı, hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
 
-Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
+Blobları seçmeli olarak indirmek için jokerleri kullanın. Örnek:
 
 * Birden çok anahtar kasanız varsa ve yalnızca CONTOSOKEYVAULT3 adlı bir anahtar kasası için günlük indirmek isterseniz:
 
@@ -281,7 +281,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **IDENTITY** |REST API isteğinde sunulan belirteçten kimlik. Bu, genellikle bir "Kullanıcı," bir "hizmet sorumlusu" veya "Kullanıcı + AppID" birleşimidir ve bir Azure PowerShell cmdlet 'inin sonucu olan bir istekte bulunur. |
 | **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI (as `id` ), kasa URI 'si veya gizli URI 'yi de içerir. |
 
-**OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
+**OperationName** alan değerleri *objectverb* biçimindedir. Örnek:
 
 * Tüm Anahtar Kasası işlemleri `Vault<action>` , ve gibi biçimdedir `VaultGet` `VaultCreate` .
 * Tüm anahtar işlemleri `Key<action>` , ve gibi biçimdedir `KeySign` `KeyList` .
@@ -291,7 +291,7 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 
 | operationName | REST API komutu |
 | --- | --- |
-| **Kimlik doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
+| **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
 | **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Bir anahtar kasasını silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |

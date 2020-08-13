@@ -3,20 +3,20 @@ title: Sorun giderme & bilinen sorunlar
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning hataları veya hataları bulma ve düzeltme konusunda yardım alın. Bilinen sorunlar, sorun giderme ve geçici çözümler hakkında bilgi edinin.
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120771"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190508"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -203,7 +203,7 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 |Görüntüleri gözden geçirirken yeni etiketlenmiş görüntüler gösterilmez.     |   Etiketlenmiş tüm görüntüleri yüklemek için **ilk** düğmeyi seçin. **İlk** düğme, listenin önüne geri götürür, ancak etiketlenmiş tüm verileri yükler.      |
 |Nesne algılama için etiketleme sırasında Esc tuşuna basmak, sol üst köşede Sıfır boyutlu bir etiket oluşturur. Etiketlerin bu durumda gönderilmesi başarısız oluyor.     |   Yanındaki çapraz işaretine tıklayarak etiketi silin.  |
 
-### <a name="data-drift-monitors"></a><a name="data-drift"></a>Veri kayması izleyicileri
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> Veri kayması izleyicileri
 
 Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
 
@@ -248,6 +248,27 @@ Model veri toplayıcısından, verilerin BLOB depolama hesabınıza gelmesi içi
 ```python
 import time
 time.sleep(600)
+```
+
+* **Gerçek zamanlı uç noktalar için günlük:**
+
+Gerçek zamanlı uç noktaların günlükleri müşteri verileri. Gerçek zamanlı uç nokta sorunlarını gidermek için, günlükleri etkinleştirmek üzere aşağıdaki kodu kullanabilirsiniz. 
+
+[Bu makaledeki](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)Web hizmeti uç noktalarını izleme hakkında daha fazla ayrıntı görüntüleyin.
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+Birden çok kiracınız varsa, önce aşağıdaki kimlik doğrulama kodunu eklemeniz gerekebilir `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>Modelleri eğitme
@@ -306,14 +327,14 @@ time.sleep(600)
     * Windows üzerinde automl_setup bir Anaconda Isteminden çalıştırın. Miniconda yüklemek için [buraya](https://docs.conda.io/en/latest/miniconda.html)tıklayın.
     * Komutunu çalıştırarak Conda 64 bit 'ın, 32 bit yerine, yüklü olduğundan emin olun `conda info` . `platform` `win-64` Windows veya Mac için olmalıdır `osx-64` .
     * Conda 4.4.10 veya üzeri sürümünün yüklü olduğundan emin olun. Komutu ile sürümü kontrol edebilirsiniz `conda -V` . Önceki bir sürümü yüklüyse, şu komutu kullanarak güncelleştirebilirsiniz: `conda update conda` .
-    * 'Un`gcc: error trying to exec 'cc1plus'`
+    * 'Un `gcc: error trying to exec 'cc1plus'`
       *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory`Hatayla karşılaşılırsa, ther komutunu kullanarak derleme Essentials 'ı yüklersiniz `sudo apt-get install build-essential` .
       * Yeni bir Conda ortamı oluşturmak için automl_setup ilk parametre olarak yeni bir ad geçirin. Kullanarak mevcut Conda ortamlarını görüntüleyin `conda env list` ve ile kaldırın `conda env remove -n <environmentname>` .
       
-* **automl_setup_linux. sh başarısız**: automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur:`unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux. sh başarısız**: automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur: `unable to execute 'gcc': No such file or directory`-
   1. 53 ve 80 giden bağlantı noktalarının etkinleştirildiğinden emin olun. Azure VM 'de, Azure portalından VM 'yi seçip Ağ ' a tıklayarak bunu yapabilirsiniz.
-  2. Şu komutu çalıştırın:`sudo apt-get update`
-  3. Şu komutu çalıştırın:`sudo apt-get install build-essential --fix-missing`
+  2. Şu komutu çalıştırın: `sudo apt-get update`
+  3. Şu komutu çalıştırın: `sudo apt-get install build-essential --fix-missing`
   4. `automl_setup_linux.sh`Yeniden çalıştır
 
 * **Configuration. ipynb başarısız olur**:
@@ -329,7 +350,7 @@ time.sleep(600)
   1. Configuration. ipynb Not defterinin başarıyla çalıştığından emin olun.
   2. Not defteri, çalıştığı klasör altında olmayan bir klasörden çalıştırıldıysa `configuration.ipynb` , aml_config klasörü ve dosyanın içerdiği config.jsdosyayı yeni klasöre kopyalayın. Workspace. from_config Not defteri klasörü veya onun üst klasörü için config.jsokur.
   3. Yeni bir abonelik, kaynak grubu, çalışma alanı veya bölge kullanılıyorsa, `configuration.ipynb` Not defterini yeniden çalıştırdığınızdan emin olun. config.jsdoğrudan üzerinde değiştirmek, yalnızca belirtilen abonelik altındaki belirtilen kaynak grubunda çalışma alanı zaten mevcutsa çalışır.
-  4. Bölgeyi değiştirmek istiyorsanız, lütfen çalışma alanını, kaynak grubunu veya aboneliği değiştirin. `Workspace.create`, belirtilen bölge farklı olsa da, zaten varsa, bir çalışma alanı oluşturmaz veya güncelleştirmeyecektir.
+  4. Bölgeyi değiştirmek istiyorsanız, lütfen çalışma alanını, kaynak grubunu veya aboneliği değiştirin. `Workspace.create` , belirtilen bölge farklı olsa da, zaten varsa, bir çalışma alanı oluşturmaz veya güncelleştirmeyecektir.
   
 * **Örnek Not defteri başarısız oldu**: örnek bir not defteri, önceden yapılan, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız olursa:
   * Jupyter not defterinde correctcorrect çekirdeğinin seçildiğinden emin olun. Çekirdek, Not Defteri sayfasının sağ üst kısmında görüntülenir. Varsayılan değer azure_automl. Çekirdeğin Not defterinin bir parçası olarak kaydedildiğini unutmayın. Bu nedenle, yeni bir Conda ortamına geçerseniz, not defterinde yeni çekirdeği seçmeniz gerekir.
@@ -352,7 +373,7 @@ Aşağıdaki hatalar için bu eylemleri gerçekleştirin:
 |---------|---------|
 |Web hizmeti dağıtımında görüntü oluşturma hatası     |  Görüntü yapılandırması için Conda dosyasına bir zar bağımlılığı olarak "pynacl = = 1.2.1" ekleyin       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin. |
-|FPGA hatası     |  FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun:https://aka.ms/aml-real-time-ai       |
+|FPGA hatası     |  FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai       |
 
 ### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>AKS kümesindeki Azure Machine Learning bileşenleri güncelleştiriliyor
 
