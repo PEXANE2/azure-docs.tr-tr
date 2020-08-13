@@ -8,27 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53e29734095506a3f55593f938c2d9aba5903771
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100249"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164164"
 ---
 # <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Gezgini
 
 Bu makalede Azure Time Series Insights Gen2 [demo ortamında](https://insights.timeseries.azure.com/preview/demo)kullanılabilen çeşitli özellikler ve seçenekler açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Time Series Insights Gen2 Explorer ile çalışmaya başlamak için şunları yapmanız gerekir:
 
 * Sağlanmış bir Azure Time Series Insights Gen2 ortamı vardır. [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) öğreticisini okuyarak bir örnek sağlama hakkında daha fazla bilgi edinin.
 * Hesap için oluşturduğunuz Azure Time Series Insights Gen2 ortamına [veri erişimi sağlar](./time-series-insights-data-access.md) . Başkalarının yanı sıra kendinize de erişim sağlayabilirsiniz.
 * Ortama veri göndermek için Azure Time Series Insights Gen2 ortamına bir olay kaynağı ekleyin:
-  * [Bir olay hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin 
+  * [Bir olay hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin
   * [IoT Hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-iothub.md) öğrenin
 
 ## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Gezginini keşfet
@@ -44,7 +44,6 @@ Azure Time Series Insights Gen2 Explorer aşağıdaki yedi öğeden oluşur:
 1. [Grafik paneli](#5-chart-panel): geçerli çalışma grafiğinizi görüntüler.
 1. [Zaman çizelgesi](#6-time-editor-panel): çalışma süresi yayılımını değiştirmenize izin verir.
 1. [Uygulama çubuğu](#7-app-bar): Kullanıcı yönetim seçeneklerinizi (geçerli kiracı gibi) içerir ve bunları ve dil ayarlarını değiştirmenize izin verir.
-
 
 ## <a name="1-environment-panel"></a>1. ortam paneli
 
@@ -79,19 +78,19 @@ Zaman serisi modeli hakkında daha fazla bilgi edinmek için okuma [zamanları d
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiyerarşi ağacı ve arama paneli
 
-Hiyerarşi ağacı ve arama paneli, grafiğinizde görüntülenmesini istediğiniz belirli zaman serisi örneklerini bulmak için [zaman serisi modeli](./concepts-model-overview.md) hiyerarşinizde kolayca arama yapmanıza ve gezinmenize izin verir. Örneklerinizi seçtiğinizde, bunlar yalnızca geçerli grafiğe eklenmez, ancak veri kutusuna da eklenir. 
+Hiyerarşi ağacı ve arama paneli, grafiğinizde görüntülenmesini istediğiniz belirli zaman serisi örneklerini bulmak için [zaman serisi modeli](./concepts-model-overview.md) hiyerarşinizde kolayca arama yapmanıza ve gezinmenize izin verir. Örneklerinizi seçtiğinizde, bunlar yalnızca geçerli grafiğe eklenmez, ancak veri kutusuna da eklenir.
 
 [![Hiyerarşi ağacı ve arama paneli](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 Arama sonuçları bölmesi, göstermek istediğiniz örnekleri bulmayı kolaylaştıran bir hiyerarşi görünümünde veya liste görünümünde sonuçlarınızı görüntülemenize imkan tanır.
- 
+
 ## <a name="4-time-series-well"></a>4. zaman serisi iyi
 
-İyi bir deyişle, seçili zaman serisi model örnekleriyle ilişkili örnek alanları ve diğer meta veriler görüntülenir. Sağ taraftaki onay kutularını seçerek geçerli grafikten belirli örnekleri gizleyebilir veya görüntüleyebilirsiniz. 
+İyi bir deyişle, seçili zaman serisi model örnekleriyle ilişkili örnek alanları ve diğer meta veriler görüntülenir. Sağ taraftaki onay kutularını seçerek geçerli grafikten belirli örnekleri gizleyebilir veya görüntüleyebilirsiniz.
 
   [![Gen2 iyi](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-Öğenin sol tarafındaki kırmızı **silme** (çöp kutusu) denetimini seçerek, geçerli verilerdeki belirli veri öğelerini kaldırabilirsiniz. Ayrıca, her bir öğenin grafikte nasıl görüntülendiğini denetlemenize de olanak tanır. En az/en yüksek gölgeler, veri noktaları ekleyebilir, öğeyi zamanında kaydırabileceğiniz örnek bir şekilde görselleştirmeyi seçebilirsiniz. 
+Öğenin sol tarafındaki kırmızı **silme** (çöp kutusu) denetimini seçerek, geçerli verilerdeki belirli veri öğelerini kaldırabilirsiniz. Ayrıca, her bir öğenin grafikte nasıl görüntülendiğini denetlemenize de olanak tanır. En az/en yüksek gölgeler, veri noktaları ekleyebilir, öğeyi zamanında kaydırabileceğiniz örnek bir şekilde görselleştirmeyi seçebilirsiniz.
 
 Ayrıca, araştırma denetimi zaman vardiyalarını ve dağılım çizimlerini kolayca oluşturmanızı sağlar.  
 
@@ -104,7 +103,7 @@ Ayrıca, araştırma denetimi zaman vardiyalarını ve dağılım çizimlerini k
 
 ## <a name="5-chart-panel"></a>5. Grafik bölmesi
 
-Grafik, zaman serisi örneklerini satır olarak görüntülemenizi sağlar. Grafiği daha büyük hale getirmek için Web denetimlerine tıklayarak ortam paneli, veri modeli ve zaman aralığı denetim masasını daraltabilirsiniz. 
+Grafik, zaman serisi örneklerini satır olarak görüntülemenizi sağlar. Grafiği daha büyük hale getirmek için Web denetimlerine tıklayarak ortam paneli, veri modeli ve zaman aralığı denetim masasını daraltabilirsiniz.
 
   [![Gen2 grafiğe genel bakış](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
@@ -149,7 +148,7 @@ Azure Time Series Insights Gen2 ile çalışırken, önce bir zaman aralığı s
 > [!TIP]
 > Zaman çizelgesinin bir kısmı, ısınma veya turuncu renkte vurgulanır ve bu da, normal mağazada kullanılabilir olan verilerin yayılmasını gösterir.
 
-Çalışma zamanı aralığını seçmek için Azure Time Series Insights Gen2 ' de aşağıdaki Web denetimleri kullanılabilir. 
+Çalışma zamanı aralığını seçmek için Azure Time Series Insights Gen2 ' de aşağıdaki Web denetimleri kullanılabilir.
 
   [![Araştırma iyi denetimi](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
@@ -205,7 +204,7 @@ Azure Time Series Insights Gen2 Explorer iki tema destekler:
 
 ### <a name="gen2-terms-panel"></a>Gen2 terimleri bölmesi
 
-Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kullanmayı deneyen mevcut Gen 1 ortamları için geçerlidir. Gen 1 ürün ve Gen2 ürününü birlikte kullanmak isteyebilirsiniz. Mevcut kullanıcı arabiriminden güncelleştirilmiş gezgin 'e bazı işlevler ekledik, ancak yeni Azure Time Series Insights Gen2 Explorer 'da bir gen 1 ortamı için tam kullanıcı arabirimi deneyimini edinebilirsiniz. 
+Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kullanmayı deneyen mevcut Gen 1 ortamları için geçerlidir. Gen 1 ürün ve Gen2 ürününü birlikte kullanmak isteyebilirsiniz. Mevcut kullanıcı arabiriminden güncelleştirilmiş gezgin 'e bazı işlevler ekledik, ancak yeni Azure Time Series Insights Gen2 Explorer 'da bir gen 1 ortamı için tam kullanıcı arabirimi deneyimini edinebilirsiniz.
 
 Hiyerarşi yerine, Azure Time Series Insights Gen2 terimleri paneli görüntülenir. Terimler paneli ortamınızda sorgular tanımlamanızı sağlar. Ayrıca, bir koşula göre verileri filtrelemek için kullanın.
 
@@ -222,7 +221,7 @@ Azure Time Series Insights Gen2 terms Düzenleyicisi paneli aşağıdaki paramet
 | `IN` | Dize, bool, Double, DateTime, TimeSpan, NULL | Tüm işlenenler aynı türde veya NULL sabit olmalıdır. |
 | `HAS` | Dize | Sağ tarafta yalnızca sabit dize sabit değerlerine izin verilir. Boş dize ve NULL değerlerine izin verilmez. |
 
-Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek için, okuma [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek için, okuma [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 ### <a name="examples-of-where-clauses"></a>WHERE yan tümcelerinin örnekleri
 
@@ -240,10 +239,10 @@ Aşağıdaki görüntüde gösterildiği gibi görünür simgesini seçerek graf
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Verileri](./concepts-ingestion-overview.md) ortamınıza alma hakkında bilgi edinin.
+* [Verileri](./concepts-ingestion-overview.md) ortamınıza alma hakkında bilgi edinin.
 
-- [Depolama](concepts-storage.md)hakkındaki makaleye göz atın.
+* [Depolama](concepts-storage.md)hakkındaki makaleye göz atın.
 
-- Azure Time Series Insights Gen2 'de [veri modelleme](./concepts-model-overview.md) hakkında bilgi edinin.
+* Azure Time Series Insights Gen2 'de [veri modelleme](./concepts-model-overview.md) hakkında bilgi edinin.
 
-- Ortamınızı [tanılamayı ve sorun gidermeyi](./time-series-insights-update-how-to-troubleshoot.md) öğrenin.
+* Ortamınızı [tanılamayı ve sorun gidermeyi](./time-series-insights-update-how-to-troubleshoot.md) öğrenin.

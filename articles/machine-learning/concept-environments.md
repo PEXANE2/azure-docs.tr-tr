@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 828c8a33315f5a76eea780705e2cdf3c2871bd14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc4c39cf26f3ab8d1037222f967789bfbeca05ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012816"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166782"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Başka bir çalıştırma için aynı ortam tanımını kullanıyorsanız, Azure
  * Conda Definition içindeki Python paketlerinin listesi
  * Spark tanımındaki paketlerin listesi 
 
-Karma ortam adına veya sürümüne bağlı değildir. ortamınızı yeniden adlandırırsanız veya var olan bir sürümün özelliklerine ve paketlerine sahip yeni bir ortam oluşturursanız, karma değeri aynı kalır. Ancak, bir Python paketi ekleme veya kaldırma ya da paket sürümünü değiştirme gibi ortam tanımı değişiklikleri, karma değerin değişmesine neden olur. Bir seçkin ortamda yapılan herhangi bir değişikliğin karmayı geçersiz kılacağına ve yeni bir "seçkin" ortamda sonuçlandığına dikkat edin.
+Karma ortam adına veya sürümüne bağlı değildir. ortamınızı yeniden adlandırırsanız veya var olan bir sürümün özelliklerine ve paketlerine sahip yeni bir ortam oluşturursanız, karma değeri aynı kalır. Ancak, bir Python paketi ekleme veya kaldırma ya da paket sürümünü değiştirme gibi ortam tanımı değişiklikleri, karma değerin değişmesine neden olur. Bir ortamdaki bağımlılıkların veya kanalların sırasını değiştirmek yeni bir ortama neden olur ve bu nedenle yeni bir görüntü derlemesi gerektirir. Bir seçkin ortamda yapılan herhangi bir değişikliğin karmayı geçersiz kılacağına ve yeni bir "seçkin" ortamda sonuçlandığına dikkat edin.
 
 Hesaplanan karma değeri, çalışma alanındaki ve genel ACR (ya da yerel çalıştırmalar için işlem hedefi) ile karşılaştırılır. Bir eşleşme varsa, önbelleğe alınmış görüntü çekilir, aksi takdirde bir görüntü derlemesi tetiklenir. Önbelleğe alınmış bir görüntüyü çekme süresi, indirme süresini içerir, ancak yeni oluşturulan bir görüntüyü çekme süresi hem derleme süresini hem de indirme süresini içerir. 
 
@@ -105,7 +105,7 @@ Aşağıdaki diyagramda üç ortam tanımı gösterilmektedir. Bunlardan ikisi f
 >[!IMPORTANT]
 > Örneğin, ayrılmış paket bağımlılığı olan bir ortam oluşturursanız, ```numpy``` Bu ortam, _ortam oluşturma sırasında_yüklenen paket sürümünü kullanmaya devam edecektir. Ayrıca, eşleşen tanımı olan gelecekteki tüm ortamlar eski sürümü kullanmaya devam eder. 
 
-Paketi güncelleştirmek için, örneğin, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin ```numpy==1.18.1``` . İç içe geçmiş olanlar dahil yeni bağımlılıklar yüklenir, daha önce çalışan bir senaryoyu bozabilecek.
+Paketi güncelleştirmek için, örneğin, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin ```numpy==1.18.1``` . İç içe geçmiş olanlar dahil yeni bağımlılıklar yüklenir, daha önce çalışan bir senaryoyu bozabilecek. 
 
 > [!WARNING]
 >  [Environment. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.

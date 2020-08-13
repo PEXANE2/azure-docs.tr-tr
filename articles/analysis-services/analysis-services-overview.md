@@ -4,16 +4,16 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/24/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918946"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164317"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -55,7 +55,7 @@ Bu katman, daha küçük tablo modelleriyle, sınırlı Kullanıcı eşzamanlıl
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
-### <a name="standard-tier"></a>Standart katman
+### <a name="standard-tier"></a>Standart katmanı
 
 Bu katman, kullanıcı eşzamanlılığının elastik olmasını gerektiren ve hızla büyüyen veri modellerine sahip olan görev açısından kritik üretim uygulamalarına yöneliktir. Neredeyse gerçek zamanlı veri modeli güncelleştirmeleri için gelişmiş veri yenilemeyi ve tüm tablo modelleme özelliklerini destekler.
 
@@ -81,13 +81,14 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
-|Güney Brezilya     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Brezilya Güney     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Doğu ABD     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Doğu ABD 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Doğu ABD 2     |     S8, S9, S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Central US     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Central US     |    S8v2, S9v2     |    1     |
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
@@ -102,8 +103,8 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
 |Güney Birleşik Krallık     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Batı Avrupa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Batı Avrupa    |   S8, S9, S8v2, S9v2  |  1  |
+|West Europe     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
+|West Europe    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
@@ -111,7 +112,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Doğu Avustralya     |    S8, S9, S8v2, S9v2    |    1     |
-|Güneydoğu Avustralya     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -167,7 +168,7 @@ Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri d�
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-Kullanıcı kimlik doğrulaması, [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) tarafından işlenir. Kullanıcılar oturum açarken veritabanına rol tabanlı erişim ile bir kuruluş hesabı kimliği kullanır. Kullanıcı kimlikleri, sunucunun içinde bulunduğu abonelik için varsayılan Azure Active Directory’nin üyesi olmalıdır. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
+Kullanıcı kimlik doğrulaması, [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) tarafından işlenir. Kullanıcılar oturum açarken veritabanına rol tabanlı erişim ile bir kuruluş hesabı kimliği kullanır. Kullanıcı kimlikleri, sunucunun içinde bulunduğu abonelik için varsayılan Azure Active Directory’nin üyesi olmalıdır. Daha fazla bilgi için bkz. [Kimlik doğrulaması ve izinler](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Veri güvenliği
 

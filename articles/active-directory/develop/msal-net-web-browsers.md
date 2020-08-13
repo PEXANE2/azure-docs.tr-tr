@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772055"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165830"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
 
@@ -51,8 +51,8 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 | .NET Core     | Hayır | Evet ^ | Sistem |
 | .NET Standard | Hayır | Evet ^ | Sistem |
 | UWP | Evet | Hayır | Ekleme |
-| Xamarin.Android | Yes | Yes  | Sistem |
-| Xamarin.iOS | Yes | Yes  | Sistem |
+| Xamarin.Android | Evet | Evet  | Sistem |
+| Xamarin.iOS | Evet | Evet  | Sistem |
 | Xamarin.Mac| Evet | Hayır | Ekleme |
 
 ^ " http://localhost " Yeniden yönlendirme URI 'si gerektirir

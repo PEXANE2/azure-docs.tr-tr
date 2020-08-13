@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037278"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166714"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -180,7 +180,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
-#### <a name="name"></a>Adı
+#### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler için teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer** adı kutusuna girdiğiniz adla birlikte doldurulur. Bu adı daha sonra değiştirebilirsiniz. Ad:
 
@@ -226,7 +226,7 @@ Müşterilerin destek ekibinize ulaşabilmesi için destek Web sitesini sağlay�
 
 Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş ortakları için iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Adı
+- Name
 - E-posta
 - Telefon
 
@@ -234,7 +234,7 @@ Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş o
 
 Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da dahil olmak üzere iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Adı
+- Name
 - E-posta
 - Telefon
 
@@ -291,6 +291,8 @@ Sonraki bölüme geçmeden önce **Taslağı kaydet** ' i seçin.
 ## <a name="plan-overview"></a>Plana genel bakış
 
 Iş Ortağı Merkezi 'nde aynı teklif dahilinde çeşitli plan seçenekleri sağlayabilirsiniz. Bir teklif en az bir plan (daha önce SKU olarak adlandırılır) gerektirir; Bu, Monaya getirme seyirci kitlesi, Azure bölgesi, özellikleri veya VM görüntülerine göre farklılık gösterebilir.
+
+Her teklif için en fazla 100 plan oluşturabilirsiniz: bunların en fazla 45 ' e kadar özel olabilir. [Microsoft ticari Market 'Teki özel tekliflerle](../private-offers.md)ilgili özel planlar hakkında daha fazla bilgi edinin.
 
 Planlarınızı oluşturduktan sonra, görüntülenecek **plana genel bakış** sekmesini seçin:
 

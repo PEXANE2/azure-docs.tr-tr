@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032790"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166748"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketi 'nde Azure Container teklifi oluşturma
 
@@ -50,7 +50,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -252,9 +252,11 @@ Tek tek (10 ' a kadar) veya bir CSV dosyası karşıya yükleyerek (100 'e kadar
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-### <a name="plan-overview"></a>Plana genel bakış
+## <a name="plan-overview"></a>Plana genel bakış
 
 Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak tanır. Planlar (eskiden SKU olarak adlandırılır), genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi hangi bulutların kullanılabildiği konusunda farklılık gösterebilir. Teklifinizi ticari Market 'te listelemek için en az bir plan ayarlamanız gerekir.
+
+Her teklif için en fazla 100 plan oluşturabilirsiniz: bunların en fazla 45 ' e kadar özel olabilir. [Microsoft ticari Market 'Teki özel tekliflerle](../private-offers.md)ilgili özel planlar hakkında daha fazla bilgi edinin.
 
 Planlarınızı oluşturduktan sonra **plana genel bakış** sekmesi şunları gösterir:
 
@@ -269,7 +271,7 @@ Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı o
 - **Taslağı Sil** – plan durumu bir tasladır.
 - **Satış planını durdur** – plan durumu canlı olarak yayımlandı.
 
-#### <a name="create-new-plan"></a>Yeni plan oluştur
+### <a name="create-new-plan"></a>Yeni plan oluştur
 
 **Yeni plan oluştur**' u seçin. **Yeni plan** iletişim kutusu görüntülenir.
 
@@ -301,7 +303,7 @@ Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi ol
 
 Bu programlara yönelik sertifikalarınızı göstermek için, bunları tanımlayan 100 'e kadar bağlantı sağlayabilirsiniz. Bunlar program üzerinde doğrudan veya kendi web sitenizde yer alan dökümlerinizin bağlantısı olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
 
-## <a name="plan-listing"></a>Planı listeleme
+### <a name="plan-listing"></a>Planı listeleme
 
 Bu sekme, geçerli teklifin içindeki her farklı plan için belirli bilgileri görüntüler.
 
@@ -331,7 +333,7 @@ Bunlar Azure portal plan ayrıntılardır:
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal plan ayrıntılarını gösterir.":::
 
-## <a name="plan-availability"></a>Plan kullanılabilirliği
+### <a name="plan-availability"></a>Plan kullanılabilirliği
 
 Müşterilerin Market 'te arayabilmesi, gözatmasını veya satın almasını sağlamak için yayınlanmış teklifinizi gizlemek istiyorsanız, **kullanılabilirlik** sekmesinde **planı Gizle** onay kutusunu seçin.
 

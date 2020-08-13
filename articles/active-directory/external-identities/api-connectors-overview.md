@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e546c6eac77c4952a0d32d360f49d4251d49d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910281"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165218"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>Self Servis kaydolma 'yı özelleştirmek ve genişletmek için API bağlayıcılarını kullanma 
 
@@ -30,7 +30,7 @@ Geliştirici veya BT Yöneticisi olarak, Web API 'Lerini kullanarak [self servis
 <!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
 - **Özel iş mantığını çalıştırın**. Anında iletme bildirimleri göndermek, kurumsal veritabanlarını güncelleştirmek, izinleri yönetmek, veritabanlarını denetlemek ve başka özel eylemler gerçekleştirmek için bulut sistemlerinizdeki aşağı akış olaylarını tetikleyebilirsiniz.
 
-API Bağlayıcısı, HTTP uç noktası, kimlik doğrulama, istek ve beklenen yanıtı tanımlayarak Azure AD ile API uç noktası arasındaki bir sözleşmeyi temsil eder. Bir API bağlayıcısını yapılandırdıktan sonra, Kullanıcı akışındaki belirli bir adım için etkinleştirebilirsiniz. Kullanıcı kaydolma akışındaki bu adıma ulaştığında, API Bağlayıcısı çağrılır ve bir HTTP POST isteği olarak çalışır ve seçilen talepler bir JSON gövdesinde anahtar-değer çiftleri olarak gönderilir. API yanıtı, Kullanıcı akışının yürütülmesini etkileyebilir. Örneğin, API yanıtı bir kullanıcının kaydolmasını engelleyebilir, kullanıcıdan bilgi yeniden girmelerini veya kullanıcı özniteliklerinin üzerine yazmasına ya da bu özniteliklerin üzerine yazılmasına neden olabilir.
+API Bağlayıcısı, HTTP uç noktası URL 'sini ve kimlik doğrulamasını tanımlayarak API uç noktasını çağırmak için gereken bilgileri Azure Active Directory sağlar. Bir API bağlayıcısını yapılandırdıktan sonra, Kullanıcı akışındaki belirli bir adım için etkinleştirebilirsiniz. Kullanıcı kaydolma akışındaki bu adıma ulaştığında, API Bağlayıcısı çağrılır ve API 'nize bir HTTP POST isteği olarak çalışır ve bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı bilgilerini ("talepler") gönderir. API yanıtı, Kullanıcı akışının yürütülmesini etkileyebilir. Örneğin, API yanıtı bir kullanıcının kaydolmasını engelleyebilir, kullanıcıdan bilgi yeniden girmelerini veya kullanıcı özniteliklerinin üzerine yazmasına ya da bu özniteliklerin üzerine yazılmasına neden olabilir.
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>Bir Kullanıcı akışında bir API bağlayıcısını etkinleştirebileceğiniz durumlar
 
@@ -39,7 +39,8 @@ Bir API bağlayıcısını etkinleştirebileceğiniz bir Kullanıcı akışında
 - Bir kimlik sağlayıcısıyla oturum açtıktan sonra
 - Kullanıcı oluşturmadan önce
 
-Her iki durumda da, API bağlayıcıları kaydolma sırasında çağrılır, oturum açma desteklenmez.
+> [!IMPORTANT]
+> Her iki durumda da, API bağlayıcıları Kullanıcı **kaydı**sırasında çağrılır, oturum açma desteklenmez.
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Bir kimlik sağlayıcısıyla oturum açtıktan sonra
 

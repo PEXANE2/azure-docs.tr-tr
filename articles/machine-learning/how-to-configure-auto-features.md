@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 94595bac2febdef1d3739703f0fa49c9ef15f218
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552493"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166629"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
@@ -106,7 +106,7 @@ Guarddemiryolu|Durum|&nbsp;Tetikleyici için &nbsp; koşul
 **Eksik özellik değerleri imputation** |Geçiril <br><br><br> Bitti| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik değerli imputation](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve bu şekilde karşılaşıldı.
 **Yüksek kardinalite özelliği işleme** |Geçiril <br><br><br> Bitti| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin algılanması. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
 **Doğrulama bölünmüş işleme** |Bitti| Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 satırdan daha az satır*içeriyordu. <br> Eğitilen modelin her yinelemesi, çapraz doğrulama kullanılarak doğrulanmıştı. [Doğrulama verileri](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)hakkında daha fazla bilgi edinin. <br><br> Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 'den fazla satır*içeriyordu. <br> Giriş verileri, modelin doğrulanması için bir eğitim veri kümesine ve bir doğrulama veri kümesine bölündü.
-**Sınıf Dengeleme algılaması** |Geçiril <br><br><br><br><br> Uyarı <br><br><br><br> Bitti| Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)hakkında daha fazla bilgi edinin. <br><br> Girdilerde imledengelenmiş sınıflar algılandı ve bu mantık, dengelemenin uygulanmasını belirledi.
+**Sınıf Dengeleme algılaması** |Geçiril <br><br>Uyarı <br><br>Bitti | Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)hakkında daha fazla bilgi edinin.<br><br><br> Girdilerde imledengelenmiş sınıflar algılandı ve bu mantık, dengelemenin uygulanmasını belirledi.
 **Bellek sorunları algılama** |Geçiril <br><br><br><br> Bitti |<br> Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve olası bellek dışı sorunlar algılandı. Zaman serisi [tahmin yapılandırması](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)hakkında daha fazla bilgi edinin. <br><br><br>Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Gecikme veya sıralı pencere yapılandırması kapatılmış.
 **Sıklık algılama** |Geçiril <br><br><br><br> Bitti |<br> Zaman serisi çözümlenmekte ve tüm veri noktaları algılanan sıklığa göre hizalanır. <br> <br> Zaman serisi çözümlendi ve algılanan sıklığa göre hizalanamayan veri noktaları algılandı. Bu veri noktaları, veri kümesinden kaldırılmıştır. [Zaman serisi tahminiyle ilgili veri hazırlığı](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)hakkında daha fazla bilgi edinin.
 

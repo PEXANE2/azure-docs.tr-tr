@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491978"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163977"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 olay kaynakları
 
@@ -33,34 +33,34 @@ Bir olay kaynağını bağladığınızda, Azure Time Series Insights Gen2 ortam
 
 > [!IMPORTANT]
 >
-> * Azure Time Series Insights Gen2 ortamınıza bir olay kaynağı eklerken yüksek gecikme süresine karşılaşabilirsiniz.
-> Olay kaynağı gecikmesi, IoT Hub veya Olay Hub 'ınızdaki olay sayısına bağlıdır.
-> * Olay kaynak verilerinin ilk kez alındıktan sonra yüksek gecikme süresi alt tarafı olur. Devam eden yüksek gecikme süresi yaşarsanız Azure portal aracılığıyla bir destek bileti gönderebilirsiniz.
+> - Azure Time Series Insights Gen2 ortamınıza bir olay kaynağı eklerken yüksek gecikme süresine karşılaşabilirsiniz.
+> - Olay kaynağı gecikmesi, IoT Hub veya Olay Hub 'ınızdaki olay sayısına bağlıdır.
+> - Olay kaynak verilerinin ilk kez alındıktan sonra yüksek gecikme süresi alt tarafı olur. Devam eden yüksek gecikme süresi yaşarsanız Azure portal aracılığıyla bir destek bileti gönderebilirsiniz.
 
 ## <a name="streaming-ingestion-best-practices"></a>Akış alma en iyi uygulamaları
 
-* Olay kaynağınızdaki verileri tüketmek için Azure Time Series Insights Gen2 ortamınız için her zaman benzersiz bir tüketici grubu oluşturun. Tüketici gruplarını yeniden kullanmak rastgele kesilen kesilebilir ve veri kaybına yol açabilir.
+- Olay kaynağınızdaki verileri tüketmek için Azure Time Series Insights Gen2 ortamınız için her zaman benzersiz bir tüketici grubu oluşturun. Tüketici gruplarını yeniden kullanmak rastgele kesilen kesilebilir ve veri kaybına yol açabilir.
 
-* Azure Time Series Insights Gen2 ortamınızı ve IoT Hub ve/veya Event Hubs aynı Azure bölgesinde yapılandırın. Bir olay kaynaklarını ayrı bir bölgede yapılandırmak mümkün olsa da, bu senaryo desteklenmez ve yüksek kullanılabilirlik garantisi vermeyiz.
+- Azure Time Series Insights Gen2 ortamınızı ve IoT Hub ve/veya Event Hubs aynı Azure bölgesinde yapılandırın. Bir olay kaynağını ayrı bir bölgede yapılandırmak mümkün olsa da, bu senaryo desteklenmez ve yüksek kullanılabilirlik garantisi vermeyiz.
 
-* Ortamınızın [işleme hızı sınırının](./concepts-streaming-ingress-throughput-limits.md) ötesine geçmeyin ve bölüm sayısı sınırı yoktur.
+- Ortamınızın [işleme hızı sınırının](./concepts-streaming-ingress-throughput-limits.md) ötesine geçmeyin ve bölüm sayısı sınırı yoktur.
 
-* Ortamınız verileri işlerken sorunlarla karşılaşıyorsa bildirim almak için bir gecikme [uyarısı](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts) yapılandırın.
+- Ortamınız verileri işlerken sorunlarla karşılaşıyorsa bildirim almak için bir gecikme [uyarısı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) yapılandırın.
 
-* Yalnızca neredeyse gerçek zamanlı ve en son veriler için akış alımı kullanın, geçmiş verileri akışa alma desteklenmez.
+- Yalnızca neredeyse gerçek zamanlı ve en son veriler için akış alımı kullanın, geçmiş verileri akışa alma desteklenmez.
 
-* Özelliklerin nasıl kaçırılması gerektiğini ve JSON [verilerinin düzleştirilmiş ve nasıl depolandığını anlayın.](./concepts-json-flattening-escaping-rules.md)
+- Özelliklerin nasıl kaçırılması gerektiğini ve JSON [verilerinin düzleştirilmiş ve nasıl depolandığını anlayın.](./concepts-json-flattening-escaping-rules.md)
 
-* Olay kaynağı bağlantı dizeleri sağlarken en az ayrıcalık ilkesini izleyin. Event Hubs için, yalnızca *gönderme* talebiyle bir paylaşılan erişim ilkesi yapılandırın ve IoT Hub için yalnızca *hizmet bağlantı* iznini kullanın.
+- Olay kaynağı bağlantı dizeleri sağlarken en az ayrıcalık ilkesini izleyin. Event Hubs için, yalnızca *gönderme* talebiyle bir paylaşılan erişim ilkesi yapılandırın ve IoT Hub için yalnızca *hizmet bağlantı* iznini kullanın.
 
 ### <a name="historical-data-ingestion"></a>Geçmiş veri alımı
 
 Geçmiş verileri içeri aktarmak için akış işlem hattının kullanılması şu anda Azure Time Series Insights Gen2 sürümünde desteklenmemektedir. Eski verileri ortamınıza aktarmanız gerekiyorsa aşağıdaki yönergeleri izleyin:
 
-* Canlı ve geçmiş verileri paralel olarak akışmayın. Verilerin dışına inmek, sorgu performansının düşmesine neden olur.
-* En iyi performansı elde etmek için geçmiş verileri zaman düzenli olarak alma.
-* Aşağıdaki alma işlemi hız sınırları dahilinde kalır.
-* Veriler, sıcak mağaza saklama süresinden daha eskiyse, sıcak mağazayı devre dışı bırakın.
+- Canlı ve geçmiş verileri paralel olarak akışmayın. Verilerin dışına inmek, sorgu performansının düşmesine neden olur.
+- En iyi performansı elde etmek için geçmiş verileri zaman düzenli olarak alma.
+- Aşağıdaki alma işlemi hız sınırları dahilinde kalır.
+- Veriler, sıcak mağaza saklama süresinden daha eskiyse, sıcak mağazayı devre dışı bırakın.
 
 ## <a name="event-source-timestamp"></a>Olay kaynağı zaman damgası
 
@@ -82,10 +82,6 @@ Saat dilimi boşluğu, aşağıdakilerden biri olarak biçimlendirilmelidir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olayların nasıl depolanacağını anlamak için [JSON düzleştirme ve kaçış kurallarını](./concepts-json-flattening-escaping-rules.md) okuyun. 
+- Olayların nasıl depolanacağını anlamak için [JSON düzleştirme ve kaçış kurallarını](./concepts-json-flattening-escaping-rules.md) okuyun.
 
-* Ortamınızın [verimlilik sınırlamalarını](./concepts-streaming-ingress-throughput-limits.md) anlayın
-
-
-
-
+- Ortamınızın [verimlilik sınırlamalarını](./concepts-streaming-ingress-throughput-limits.md) anlayın

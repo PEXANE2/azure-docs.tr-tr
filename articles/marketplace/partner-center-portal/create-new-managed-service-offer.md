@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036615"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166612"
 ---
 # <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
@@ -90,7 +90,7 @@ Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek a
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -175,6 +175,8 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 ## <a name="plan-overview"></a>Plana genel bakış
 
 Her teklifin bir veya daha fazla planı olmalıdır (daha önce SKU 'Lar adı verilir). Farklı fiyatlarla farklı özellik kümelerini desteklemek için veya belirli bir müşterinin sınırlı bir kitlesi için belirli bir planı özelleştirmek üzere birden çok plan ekleyebilirsiniz. Müşteriler, kendileri için kullanılabilir olan planları üst teklif altında görüntüleyebilir.
+
+Her teklif için en fazla 100 plan oluşturabilirsiniz: bunların en fazla 45 ' e kadar özel olabilir. [Microsoft ticari Market 'Teki özel tekliflerle](../private-offers.md)ilgili özel planlar hakkında daha fazla bilgi edinin.
 
 **Plana genel bakış** sayfasında **+ Yeni plan oluştur**' u seçin. Ardından bir **plan kimliği** ve bir **Plan adı**girin. Bu değerlerin her ikisi de en fazla 50 karakter içeren küçük harfli alfasayısal karakterler, tireler ve alt çizgiler içerebilir. Bu değerler müşterilere görünebilir ve teklifi yayımladıktan sonra değiştirilemez.
 

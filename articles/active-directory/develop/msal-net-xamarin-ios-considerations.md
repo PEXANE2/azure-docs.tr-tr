@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 73303d64d7ebeb94290819226e5e5944f95f6e42
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652651"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165711"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>MSAL.NET ile Xamarin iOS kullanma konuları
 Xamarin iOS üzerinde .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullandığınızda şunları yapmalısınız: 
@@ -31,7 +31,7 @@ Xamarin iOS üzerinde .NET için Microsoft kimlik doğrulama kitaplığı 'nı (
 
 ## <a name="implement-openurl"></a>OpenUrl 'Yi Uygula
 
-`OpenUrl` `FormsApplicationDelegate` Türetilmiş sınıfın yöntemini ve çağrısını geçersiz kılın `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` . İşte bir örnek:
+`OpenUrl` `FormsApplicationDelegate` Türetilmiş sınıfın yöntemini ve çağrısını geçersiz kılın `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` . Aşağıda bir örnek verilmiştir:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -114,7 +114,7 @@ Xamarin iOS üzerinde MSAL.NET uygulamaları geliştirirken, iOS 12 ' den web si
 
 Xamarin iOS özellikleri hakkında daha fazla bilgi için, aşağıdaki örneğin README.md dosyasının [iOS 'a özgü dikkat edilecek noktalar](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) paragrafına bakın:
 
-Örnek | Platform | Description
+Örnek | Platform | Açıklama
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Evrensel Windows Platformu (UWP) | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin Forms uygulaması. Uygulama ayrıca Microsoft Graph erişmek için elde edilen belirtecin nasıl kullanılacağını gösterir.
 

@@ -5,12 +5,12 @@ description: Linux düğümlerini güncelleştirmeyi öğrenin ve Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208083"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164249"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama
 
@@ -21,7 +21,7 @@ Windows Server düğümlerini güncel tutma işlemi biraz farklıdır. Windows S
 Bu makalede, yeniden başlatma gerektiren Linux düğümlerini izlemek için açık kaynaklı [kured (Kubernetes önyükleme cini)][kured] nasıl kullanılacağı gösterilmektedir ve ardından çalışan Pod ve düğüm yeniden başlatma işleminin yeniden çizelgeini otomatik olarak işler.
 
 > [!NOTE]
-> `Kured`, dalgalı bir proje tarafından açık kaynaklı bir projem. AKS 'deki bu proje için destek en iyi çaba temelinde sunulmaktadır. #Weave topluluk bolluk kanalında ek destek bulunabilir.
+> `Kured` , dalgalı bir proje tarafından açık kaynaklı bir projem. AKS 'deki bu proje için destek en iyi çaba temelinde sunulmaktadır. #Weave topluluk bolluk kanalında ek destek bulunabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -55,8 +55,8 @@ Yükseltme olayı sırasında aynı Kubernetes sürümünde kalamıyorum. Kubern
 DaemonSet dağıtmak için `kured` , aşağıdaki resmi Kured Held grafiğini yüklersiniz. Bu, bir rol ve küme rolü, bağlamalar ve bir hizmet hesabı oluşturur, ardından kullanarak DaemonSet dağıtır `kured` .
 
 ```console
-# Add the stable Helm repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the Kured Helm repository
+helm repo add kured https://weaveworks.github.io/kured
 
 # Update your local Helm chart repository cache
 helm repo update
@@ -65,7 +65,7 @@ helm repo update
 kubectl create namespace kured
 
 # Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
-helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 Ayrıca `kured` , Prometheus veya bolluk ile tümleştirme gibi ek parametreleri de yapılandırabilirsiniz. Ek yapılandırma parametreleri hakkında daha fazla bilgi için bkz. [kured Held grafiği][kured-install].
@@ -78,7 +78,7 @@ Varsayılan olarak, AKS 'deki Linux düğümleri her akşam güncelleştirme olu
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-Bir düğümün yeniden başlatılmasını gerektiren güncelleştirmeler uygulanmışsa, */var/Run/reboot-dosyasına*bir dosya yazılır. `Kured`Varsayılan olarak her 60 dakikada bir yeniden başlatma gerektiren düğümleri denetler.
+Bir düğümün yeniden başlatılmasını gerektiren güncelleştirmeler uygulanmışsa, */var/Run/reboot-dosyasına*bir dosya yazılır. `Kured` Varsayılan olarak her 60 dakikada bir yeniden başlatma gerektiren düğümleri denetler.
 
 ## <a name="monitor-and-review-reboot-process"></a>Yeniden başlatma işlemini izleme ve gözden geçirme
 
@@ -107,7 +107,7 @@ Windows Server düğümleri kullanan AKS kümelerinde bkz. [aks 'de düğüm hav
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://hub.helm.sh/charts/stable/kured
+[kured-install]: https://github.com/weaveworks/kured/tree/master/charts/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

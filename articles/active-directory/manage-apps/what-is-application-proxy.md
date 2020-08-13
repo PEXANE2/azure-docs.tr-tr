@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080669"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164589"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -99,7 +99,7 @@ Ayrıca, uygulama proxy 'Si, üçüncü taraf tümleştirmeyle veya belirli yap�
 * [**Form veya parola tabanlı kimlik doğrulama**](application-proxy-configure-single-sign-on-password-vaulting.md). Bu kimlik doğrulama yöntemiyle, kullanıcılar ilk kez erişirken Kullanıcı adı ve parola ile uygulama üzerinde oturum açabilirler. İlk oturum açma işleminden sonra Azure AD, uygulamaya Kullanıcı adı ve parola sağlar. Bu senaryoda, kimlik doğrulaması Azure AD tarafından işlenir.
 * [**SAML kimlik doğrulaması**](application-proxy-configure-single-sign-on-on-premises-apps.md). SAML tabanlı çoklu oturum açma, SAML 2,0 veya WS-Federation protokollerini kullanan uygulamalar için desteklenir. SAML çoklu oturum açma ile Azure AD, kullanıcının Azure AD hesabını kullanarak uygulamanın kimliğini doğrular.
 
-Desteklenen yöntemler hakkında daha fazla bilgi için bkz. [Çoklu oturum açma yöntemi seçme](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Desteklenen yöntemler hakkında daha fazla bilgi için bkz. [Çoklu oturum açma yöntemi seçme](sso-options.md#choosing-a-single-sign-on-method).
 
 ### <a name="security-benefits"></a>Güvenlik avantajları
 

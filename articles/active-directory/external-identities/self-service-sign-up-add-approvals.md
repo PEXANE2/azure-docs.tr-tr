@@ -4,19 +4,19 @@ description: Dış kimliklerinizde özel onay iş akışları için API bağlay�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910039"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165267"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
 
@@ -65,7 +65,7 @@ Daha sonra self servis kaydolma Kullanıcı akışınız için [API bağlayıcı
 
   ![Onay durumu API Bağlayıcısı yapılandırmasını denetle](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Onay iste** -Kullanıcı, öznitelik toplama sayfasını tamamladıktan sonra, onay istemek için Kullanıcı hesabı oluşturulmadan önce onay sistemine çağrı gönderin. Onay isteği otomatik olarak verilebilir veya el ile incelenebilir. "Istek onayı" API Bağlayıcısı örneği. Onay sisteminin onay kararı vermesini sağlamak için gereken **talepler ' ı** seçin.
+- **Onay iste** -Kullanıcı, öznitelik toplama sayfasını tamamladıktan sonra, onay istemek için Kullanıcı hesabı oluşturulmadan önce onay sistemine çağrı gönderin. Onay isteği otomatik olarak verilebilir veya el ile incelenebilir. "Istek onayı" API Bağlayıcısı örneği. 
 
   ![Onay API Bağlayıcısı yapılandırması iste](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -90,28 +90,33 @@ Bu bağlayıcıları oluşturmak için [API Bağlayıcısı oluşturma](self-ser
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>API yanıtları ile kaydolma akışını denetleme
 
-Onay sisteminiz, kaydolma akışını denetlemek için iki API uç noktasından [API yanıt türlerini](self-service-sign-up-add-api-connector.md#expected-response-types-from-the-web-api) kullanabilir.
+Onay sisteminiz, kaydolma akışını denetlemek için çağrıldığında yanıtlarını kullanabilir. 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>"Onay durumunu denetle" API Bağlayıcısı için istek ve yanıtlar
 
 "Onay durumunu denetle" API bağlayıcısının API tarafından alınan istek örneği:
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
      "issuerAssignedId":"0123456789"
      }
  ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
  "ui_locales":"en-US"
 }
 ```
+
+API 'ye gönderilen tam talepler, kimlik sağlayıcısı tarafından hangi bilgilerin sağlandığını bağlıdır. ' e-posta ' her zaman gönderilir.
 
 #### <a name="continuation-response-for-check-approval-status"></a>"Onay durumunu denetle" için devamlılık yanıtı
 
@@ -169,12 +174,12 @@ Content-type: application/json
 "Istek onayı" API bağlayıcısının API tarafından alınan bir HTTP isteği örneği:
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -182,11 +187,21 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "city": "Redmond",
- "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+
+API 'ye gönderilen tam talepler, kullanıcıdan hangi bilgilerin toplandığına veya kimlik sağlayıcısı tarafından sağlandığına bağlıdır.
 
 #### <a name="continuation-response-for-request-approval"></a>"Istek onayı" için devamlılık yanıtı
 
@@ -257,7 +272,7 @@ El ile onay aldıktan sonra, özel onay sistemi [Microsoft Graph](https://docs.m
 
 Kullanıcılarınız bir Google veya Facebook hesabıyla oturum açmışsa, [Kullanıcı oluşturma API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)'sini kullanabilirsiniz.
 
-1. Onay sistemi, Kullanıcı akışından gelen HTTP isteğini alır.
+1. Onay sistemi kullanımları Kullanıcı akışından gelen HTTP isteğini alır.
 
 ```http
 POST <Approvals-API-endpoint>

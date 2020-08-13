@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386954"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164232"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Hesapları Azure AD ile paylaşma
 
@@ -55,7 +55,7 @@ Azure AD, tüm parola çoklu oturum açma uygulamalarında tüm Enterprise Mobil
 
 Hesap paylaşımını etkinleştiren Azure AD özellikleri şunlardır:
 
-* [Parola çoklu oturum açma](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [Parola çoklu oturum açma](../manage-apps/sso-options.md#password-based-sso)
 * Parola çoklu oturum açma Aracısı
 * [Grup ataması](groups-self-service-management.md)
 * Özel parola uygulamaları

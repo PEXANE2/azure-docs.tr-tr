@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80050283"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166323"
 ---
 # <a name="confidential-client-assertions"></a>Gizli istemci onayları
 
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD tarafından beklenen talepler şunlardır:
 
-Talep türü | Değer | Description
+Talep türü | Değer | Açıklama
 ---------- | ---------- | ----------
 aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Section 4.1.3]
 exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]

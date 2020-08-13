@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 422ef08995a74b172271e165c0ec7be5010969b4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170543"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164882"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Öğretici: GitHub ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -45,7 +45,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 * GitHub, **SP** tarafından başlatılan SSO 'yu destekler
 
 * GitHub [ **Otomatik** Kullanıcı sağlamayı (kuruluş davetleri) destekler](github-provisioning-tutorial.md)
-* GitHub 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve ne zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* GitHub 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>Galeriden GitHub ekleme
 
@@ -138,8 +138,14 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesine tıklayın.
+
+    ![kullanıcı rolü](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > **Rol Seç** seçeneği devre dışı bırakılır ve varsayılan rol seçili kullanıcı için Kullanıcı olur.
+
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-github-sso"></a>GitHub SSO 'yu yapılandırma
 
@@ -147,11 +153,11 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 2. **Ayarlar** ' a gidin ve **güvenlik** ' e tıklayın.
 
-    ![Ayarlar](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![Ayarlar](./media/github-tutorial/security.png)
 
 3. Çoklu oturum açma yapılandırma alanlarını işaret eden **SAML kimlik doğrulamasını etkinleştir** kutusunu işaretleyin. aşağıdaki adımları uygulayın:
 
-    ![Ayarlar](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![Ayarlar](./media/github-tutorial/saml-sso.png)
 
     a. **Çoklu oturum açma URL 'si** değerini kopyalayın ve bu değeri Azure Portal **temel SAML yapılandırmasındaki** **URL 'yi aç** metin kutusuna yapıştırın.
     
@@ -159,7 +165,7 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 4. Aşağıdaki alanları yapılandırın:
 
-    ![Ayarlar](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![Ayarlar](./media/github-tutorial/configure.png)
 
     a. Oturum açma **URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -175,7 +181,7 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 5. SSO sırasında doğrulama hatası veya hata olmadığını doğrulamak için **Test SAML yapılandırması** ' na tıklayın.
 
-    ![Ayarlar](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![Ayarlar](./media/github-tutorial/test.png)
 
 6. **Kaydet**’e tıklayın
 
@@ -192,21 +198,21 @@ Bu bölümün amacı, GitHub 'da Britta Simon adlı bir Kullanıcı oluşturmakt
 
 2. **Kişiler**' e tıklayın.
 
-    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![People](./media/github-tutorial/people.png "People")
 
 3. **Üyeyi davet et**' e tıklayın.
 
-    ![Kullanıcıları davet et](./media/github-tutorial/tutorial_github_config_github_09.png "Kullanıcıları davet et")
+    ![Kullanıcıları davet et](./media/github-tutorial/invite-member.png "Kullanıcıları davet et")
 
 4. **Üye davet et** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
     a. **E-posta** metin kutusunda Britta Simon hesabının e-posta adresini yazın.
 
-    ![Kişileri davet et](./media/github-tutorial/tutorial_github_config_github_10.png "Kişileri davet et")
+    ![Kişileri davet et](./media/github-tutorial/email-box.png "Kişileri davet et")
 
     b. **Davet gönder**' e tıklayın.
 
-    ![Kişileri davet et](./media/github-tutorial/tutorial_github_config_github_11.png "Kişileri davet et")
+    ![Kişileri davet et](./media/github-tutorial/send-invitation.png "Kişileri davet et")
 
     > [!NOTE]
     > Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler.

@@ -3,17 +3,17 @@ title: Microsoft Azure haritaları için doğru fiyatlandırma katmanını seçi
 description: Azure haritalar fiyatlandırma katmanları hakkında bilgi edinin. Hangi katmanların hangi katmanda sunulmakta olduğunu görün ve fiyatlandırma katmanı seçme ile ilgili önemli noktaları görüntüleyin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036785"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163994"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure haritalar 'da doğru fiyatlandırma katmanını seçin
 
@@ -33,7 +33,7 @@ S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. 
 |-----------------------------------------|:-------------------:|:--------:|
 | Eşleme Işleme                              | ✓                   | ✓       |
 | Uydu Imagery                       |                     | ✓        |
-| Ara                                  | ✓                    | ✓        |
+| Arama                                  | ✓                    | ✓        |
 | Toplu işlem arama                            |                     | ✓        |
 | Yol                                   | ✓                    |✓        |
 | Batch yönlendirme                            |                    | ✓        |
@@ -47,6 +47,7 @@ S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. 
 | Azure haritalar verileri (Önizleme)                |                     | ✓        |
 | Mobility (Önizleme)                       |                     | ✓        |
 | Hava durumu (Önizleme)                        |✓                    |✓        |
+|  Oluşturucu (Önizleme)                         |                   |✓        |
 
 Şu ek noktaları göz önünde bulundurun:
 

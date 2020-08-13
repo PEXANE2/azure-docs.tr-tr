@@ -14,18 +14,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764783"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165048"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Uygulama proxy 'Si ile çoklu oturum açma için parola oluşturma
 
 Azure Active Directory Uygulama Ara Sunucusu, uzak çalışanların da güvenli bir şekilde erişebilmesi için şirket içi uygulamaları yayımlayarak üretkenliği artırmanıza yardımcı olur. Azure portal, bu uygulamalar için çoklu oturum açma (SSO) da ayarlayabilirsiniz. Kullanıcılarınızın yalnızca Azure AD ile kimlik doğrulaması yapması gerekir ve bu uygulamalar, yeniden oturum açmak zorunda kalmadan kurumsal uygulamanıza erişebilirler.
 
-Uygulama proxy 'Si birden çok [Çoklu oturum açma modunu](what-is-single-sign-on.md#choosing-a-single-sign-on-method)destekler. Parola tabanlı oturum açma, kimlik doğrulaması için bir Kullanıcı adı/parola birleşimi kullanan uygulamalara yöneliktir. Uygulamanız için parola tabanlı oturum açmayı yapılandırdığınızda kullanıcılarınızın şirket içi uygulamada bir kez oturum açması gerekir. Bundan sonra, Azure Active Directory oturum açma bilgilerini depolar ve kullanıcılarınız bu uygulamaya uzaktan erişirken uygulamayı otomatik olarak uygulamaya sağlar.
+Uygulama proxy 'Si birden çok [Çoklu oturum açma modunu](sso-options.md#choosing-a-single-sign-on-method)destekler. Parola tabanlı oturum açma, kimlik doğrulaması için bir Kullanıcı adı/parola birleşimi kullanan uygulamalara yöneliktir. Uygulamanız için parola tabanlı oturum açmayı yapılandırdığınızda kullanıcılarınızın şirket içi uygulamada bir kez oturum açması gerekir. Bundan sonra, Azure Active Directory oturum açma bilgilerini depolar ve kullanıcılarınız bu uygulamaya uzaktan erişirken uygulamayı otomatik olarak uygulamaya sağlar.
 
 Uygulamanızı zaten uygulama proxy 'Si ile yayımlamış ve test etmeniz gerekir. Aksi takdirde, [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](application-proxy-add-on-premises-application.md) adımları izleyin ve sonra buraya geri dönün.
 
@@ -45,7 +45,7 @@ Uygulamanızı zaten uygulama proxy 'Si ile yayımlamış ve test etmeniz gereki
 
    ![Parola tabanlı oturum açma seçin ve URL 'nizi girin](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. **Uygulama proxy 'si**seçin. 
 1. **Ön kimlik doğrulama türünü** **Azure Active Directory** olarak değiştirin ve **Kaydet**' i seçin. 
 1. **Kullanıcılar ve gruplar ' ı**seçin.

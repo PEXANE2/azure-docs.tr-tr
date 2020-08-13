@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031515"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166697"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -202,7 +202,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Adı
+#### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -315,6 +315,8 @@ Teknik yapılandırma, [Market ölçüm hizmeti API 'lerini](./marketplace-meter
 ## <a name="plan-overview"></a>Plana genel bakış
 
 Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak sağlar. Bu planlar (eski adıyla SKU 'Lar), plan türü (çözüm şablonu ve yönetilen uygulama), paraya getirme veya hedef kitle bakımından farklı olabilir. Teklifinizi Market 'te listelemek için en az bir plan yapılandırın.
+
+Her teklif için en fazla 100 plan oluşturabilirsiniz: bunların en fazla 45 ' e kadar özel olabilir. [Microsoft ticari Market 'Teki özel tekliflerle](../private-offers.md)ilgili özel planlar hakkında daha fazla bilgi edinin.
 
 Oluşturulduktan sonra, plan adları, kimlikleri, plan türü, kullanılabilirliği (genel veya özel), geçerli yayımlama durumu ve bu sekmede kullanılabilir tüm eylemler görüntülenir.
 

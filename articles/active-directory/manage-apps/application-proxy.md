@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019361"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164929"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -41,7 +41,7 @@ Uygulama proxy 'Si ile birlikte kullanılabilir:
 * [Uzak Masaüstü Ağ Geçidi](application-proxy-integrate-with-remote-desktop-services.md) arkasında barındırılan uygulamalar
 * Microsoft kimlik doğrulama kitaplığı (MSAL) ile tümleştirilmiş zengin istemci uygulamaları
 
-Uygulama proxy 'Si çoklu oturum açmayı destekler. Desteklenen yöntemler hakkında daha fazla bilgi için bkz. [Çoklu oturum açma yöntemi seçme](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Uygulama proxy 'Si çoklu oturum açmayı destekler. Desteklenen yöntemler hakkında daha fazla bilgi için bkz. [Çoklu oturum açma yöntemi seçme](sso-options.md#choosing-a-single-sign-on-method).
 
 Uzak kullanıcılara iç kaynaklara erişim izni vermek için uygulama proxy 'Si önerilir. Uygulama proxy 'Si, VPN veya ters proxy gereksinimini yerine koyar. Şirket ağındaki dahili kullanıcılara yönelik değildir.  Uygulama proxy 'Sini gereksiz şekilde kullanan bu kullanıcılar beklenmedik ve istenmeyen performans sorunları ortaya çıkarabilir.
 

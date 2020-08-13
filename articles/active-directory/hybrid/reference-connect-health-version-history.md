@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446960"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165167"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Sürüm Yayınlama Geçmişi
 Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect Health düzenli olarak güncelleştirir. Bu makalede, yayımlanan sürümleri ve özellikler listelenir.  
@@ -31,6 +31,14 @@ Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect H
 >
 
 Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşiktir. Özellik geri bildirimi [Azure AD Connect yayın geçmişi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) hakkında daha fazla bilgi edinin, [Connect Health Kullanıcı ses kanalı](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) ' nı oylayın
+
+## <a name="april-2020"></a>Nisan 2020
+**Aracı güncelleştirmesi**
+
+- AD FS için Azure AD Connect Health Aracısı (sürüm 3.1.77.0)
+
+   1.   Uyarının yanlış bir şekilde raporlanması için "AD FS hizmeti için geçersiz hizmet asıl adı (SPN)" uyarısıyla ilgili hata düzeltildi.
+
 
 ## <a name="july-2019"></a>Temmuz 2019
 **Aracı güncelleştirmesi**

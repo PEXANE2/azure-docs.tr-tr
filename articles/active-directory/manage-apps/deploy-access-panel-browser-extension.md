@@ -15,16 +15,16 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763440"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164997"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Nasıl yapılır: Grup İlkesi kullanarak Internet Explorer için erişim paneli uzantısını dağıtma
 
-Bu öğreticide, Kullanıcı makinelerinizde Internet Explorer için erişim paneli uzantısını uzaktan yüklemek üzere Grup İlkesi 'nin nasıl kullanılacağı gösterilmektedir. Bu uzantı, [parola tabanlı çoklu oturum açma](what-is-single-sign-on.md#password-based-sso)kullanılarak yapılandırılan uygulamalarda oturum açması gereken Internet Explorer kullanıcıları için gereklidir.
+Bu öğreticide, Kullanıcı makinelerinizde Internet Explorer için erişim paneli uzantısını uzaktan yüklemek üzere Grup İlkesi 'nin nasıl kullanılacağı gösterilmektedir. Bu uzantı, [parola tabanlı çoklu oturum açma](sso-options.md#password-based-sso)kullanılarak yapılandırılan uygulamalarda oturum açması gereken Internet Explorer kullanıcıları için gereklidir.
 
 Yöneticilerin bu uzantının dağıtımını otomatikleştirmesini öneririz. Aksi takdirde, kullanıcılar uzantıyı indirip yüklemelidir, bu da Kullanıcı hatasına açıktır ve yönetici izinleri gerektirir. Bu öğreticide, yazılım dağıtımlarını Grup İlkesi kullanarak otomatikleştirmeye yönelik bir yöntem ele alınmaktadır. [Grup ilkesi hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -37,7 +37,7 @@ Erişim paneli uzantısı, her biri için yönetici izinleri gerektirmeyen [Chro
 
 ## <a name="step-1-create-the-distribution-point"></a>1. Adım: dağıtım noktasını oluşturma
 
-İlk olarak, yükleyici paketini, uzantıyı uzaktan yüklemek istediğiniz makineler tarafından erişilebilen bir ağ konumuna yerleştirmeniz gerekir. Bunu yapmak için şu adımları uygulayın:
+İlk olarak, yükleyici paketini, uzantıyı uzaktan yüklemek istediğiniz makineler tarafından erişilebilen bir ağ konumuna yerleştirmeniz gerekir. Bunu yapmak için şu adımları izleyin:
 
 1. Sunucuda yönetici olarak oturum açın.
 1. **Sunucu Yöneticisi** penceresinde, **Dosyalar ve depolama hizmetleri**' ne gidin.
@@ -91,7 +91,7 @@ Erişim paneli uzantısı, her biri için yönetici izinleri gerektirmeyen [Chro
 
     ![Paylaşılan klasörden yükleme paketini seçin](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. **Yazılım dağıtma** isteminde dağıtım yönteminiz için **atanan** ' ı seçin. Ardından **Tamam**'a tıklayın.
+1. **Yazılım dağıtma** isteminde dağıtım yönteminiz için **atanan** ' ı seçin. Daha sonra, **Tamam**'a tıklayın.
 
 Uzantı artık seçtiğiniz OU 'ya dağıtılır. [Grup İlkesi İle Yazılım Yükleme hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
