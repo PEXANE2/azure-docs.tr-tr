@@ -56,7 +56,7 @@
     - name: VM başlatma takıldı
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM yaşam döngüsü ve durumları
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: Sanal makine önyüklenemiyor
   items:
     - name: Linux

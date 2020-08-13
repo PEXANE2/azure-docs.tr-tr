@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Windows masaüstü
               href: app/windows-desktop.md
+        - name: Diğer araçlar
+          items:
+            - name: Değişiklik analizi
+              href: app/change-analysis.md
     - name: VM'ler için Azure İzleyici
       items:
         - name: Genel Bakış
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: İçgörülerle ilgili sorunları giderme
           href: insights/troubleshoot-workbooks.md
-    - name: Değişiklik analizi
-      items:
-        - name: Değişiklik analizi
-          href: app/change-analysis.md
     - name: Çözümler
       items:
         - name: Genel Bakış

@@ -370,7 +370,7 @@
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Durumlar ve yaşam döngüsü
-      href: states-lifecycle.md
+      href: ../states-lifecycle.md
     - name: İzleme
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Önyükleme tanılaması
