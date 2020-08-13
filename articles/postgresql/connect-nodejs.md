@@ -1,5 +1,5 @@
 ---
-title: PostgreSQL için Azure veritabanı 'na bağlanmak için Node.js kullanın-tek sunucu
+title: "Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak için Node.js kullanın-tek sunucu"
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Node.js kod örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
@@ -13,18 +13,18 @@ ms.custom:
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: c3157bb3e643c8aea4653f7cf12390938ae44d5a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 10c7abf7349a3b2419e81459866920f20c3af6f7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423261"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182740"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node.js kullanma-tek sunucu
 
 Bu hızlı başlangıçta, bir Node.js uygulaması kullanarak PostgreSQL için Azure veritabanı 'na bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

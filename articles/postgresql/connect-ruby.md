@@ -1,5 +1,5 @@
 ---
-title: Ruby ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+title: 'Hızlı başlangıç: Ruby ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Ruby kodu örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74766914"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182553"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: verileri bağlamak ve sorgulamak için Ruby kullanın
+# <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Ruby kullanma-tek sunucu
+
 Bu hızlı başlangıçta, [Ruby](https://www.ruby-lang.org) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Ruby kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -37,7 +38,7 @@ PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgi
  ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-ruby/1-connection-string.png)
 
 > [!NOTE]
-> Azure `@` Postgres Kullanıcı adı içindeki simge, tüm bağlantı dizelerinde olduğu `%40` gibi URL 'yi kodladı. 
+> `@`Azure Postgres Kullanıcı adı içindeki simge, `%40` tüm bağlantı dizelerinde olduğu gibi URL 'yi kodladı. 
 
 ## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.

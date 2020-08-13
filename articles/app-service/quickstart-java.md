@@ -10,16 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8289b21da5009459d2eb7ddc8d26b549f0920317
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085526"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182706"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir Java Web arşivi (WAR) dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
+
+> [!NOTE]
+> Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Aynı zamanda IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
@@ -53,12 +56,12 @@ Dağıtımı yapılandırmak için aşağıdaki Maven komutunu çalıştırabili
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows"  
+::: zone pivot="platform-windows" 
 Şunları seçmeniz istenecek 
 * **İşletim sistemi (varsayılan: `linux` )**
 * **Java sürümü (varsayılan: `1.8` )**
 * **Web kapsayıcısı (varsayılan: `tomcat 8.5` )** 
-
+ 
 **`2`** İlk adımda **Windows** işletim sistemini seçmek için girişe dikkat edin. Diğer yapılandırma, **ENTER**tuşuna basarak varsayılan olarak bırakılabilir. Son olarak, **`Y`** yapılandırmayı tamamlamaya yönelik **onay (Y/N)** istemine basın.
 
 Örnek bir işlem şöyle görünür:
@@ -137,6 +140,13 @@ Confirm (Y/N)? :
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"  
+
+Şunları seçmeniz istenecek 
+* **İşletim sistemi (varsayılan: `linux` )**
+* **Java sürümü (varsayılan: `Java 8` )**
+* **Web kapsayıcısı (varsayılan: `Tomcat 8.5` )** 
+
+Tüm yapılandırmalara, **ENTER**tuşuna basarak varsayılan değer bırakılabilir. Son olarak, **`Y`** yapılandırmayı tamamlamaya yönelik **onay (Y/N)** istemine basın.
 Örnek bir işlem şöyle görünür:
 
 ```cmd
@@ -174,16 +184,7 @@ Confirm (Y/N)? : Y
 ```
 ::: zone-end
 
-> [!NOTE]
-> Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
-
-`pom.xml`Güncelleştirilmiş yapılandırmayı görmek için açın.
-
-```bash
-code pom.xml
-```
-
-App Service yapılandırmasını doğrudan Pod dosyanızda, gerekirse, bazı yaygın olanlar aşağıda listelenmiştir:
+App Service yapılandırmasını doğrudan gerekirse değiştirebilirsiniz `pom.xml` , bazı yaygın olanlar aşağıda listelenmiştir:
 
  Özellik | Gerekli | Açıklama | Sürüm
 ---|---|---|---
@@ -195,11 +196,8 @@ App Service yapılandırmasını doğrudan Pod dosyanızda, gerekirse, bazı yay
 `<runtime>` | true | Çalışma zamanı ortamı yapılandırması, [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)ayrıntıları görebilirsiniz. | 0.1.0 +
 `<deployment>` | true | Dağıtım yapılandırması, ayrıntıları [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)görebilirsiniz. | 0.1.0 +
 
-::: zone pivot="platform-windows"
 `<appName>`Ve `<resourceGroup>` ( `helloworld-1590394316693` `helloworld-1590394316693-rg` demo olarak da buna göre) değerleri hakkında dikkatli olun, daha sonra kullanılır.
-::: zone-end
-::: zone pivot="platform-linux"
-::: zone-end
+
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=quickstart-java&step=config)
 
@@ -216,21 +214,11 @@ Ardından, aşağıdaki komutu kullanarak Java uygulamanızı Azure 'a dağıtab
 mvn package azure-webapp:deploy
 ```
 
-::: zone pivot="platform-windows"
 Dağıtım tamamlandıktan sonra uygulamanız ' `http://<appName>.azurewebsites.net/` `http://helloworld-1590394316693.azurewebsites.net` de (tanıtımda) hazırlanacaktır. Yerel Web tarayıcınızla URL 'yi açın, şunu görmeniz gerekir:
 
-![Azure App Service 'de çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Azure App Service 'de çalışan örnek uygulama](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Tebrikler!** Windows üzerinde App Service için ilk Java uygulamanızı dağıttınız.
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-::: zone-end
-::: zone pivot="platform-linux"
-Dağıtım tamamlandıktan sonra, web tarayıcınızda aşağıdaki URL’yi kullanarak dağıtılan uygulamanın konumuna gidin; örneğin `http://<webapp>.azurewebsites.net`. 
-
-![Azure App Service 'de çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Tebrikler!** Linux üzerinde App Service’e ilk Java uygulamanızı dağıttınız.
+**Tebrikler!** App Service için ilk Java uygulamanızı dağıttınız.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -244,19 +232,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 ```
 
 Bu komutun çalıştırılması bir dakika sürebilir.
-::: zone-end
-
-Dağıtım tamamlandıktan sonra uygulamanız ' `http://<appName>.azurewebsites.net/` `http://helloworld-1590394316693.azurewebsites.net` de (tanıtımda) hazırlanacaktır. Yerel Web tarayıcınızla URL 'yi açın, şunu görmeniz gerekir:
-
-![Azure App Service 'de çalışan örnek uygulama](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Tebrikler!** App Service için ilk Java uygulamanızı dağıttınız.
-
-> [!div class="nextstepaction"]
-> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?quickstart-java&step=deploy)
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

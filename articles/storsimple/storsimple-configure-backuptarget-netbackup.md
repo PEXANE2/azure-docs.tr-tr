@@ -1,6 +1,6 @@
 ---
 title: NetBackup ile bir yedekleme hedefi olarak StorSimple 8000 serisi | Microsoft Docs
-description: VERITAS NetBackup ile StorSimple yedekleme hedefi yapılandırmasını açıklar.
+description: VERITAS NetBackup ile StorSimple yedekleme hedefi yapılandırması ve her iki çözümü tümleştirmek için en iyi uygulamalar hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 34c66c3d5739fdc23323a302e3bedfb1b6301d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077910"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184015"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup ile bir yedekleme hedefi olarak StorSimple
 
@@ -92,10 +92,10 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 
 | Depolama kapasitesi       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Yerel depolama kapasitesi | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Bulut depolama kapasitesi | &gt;200 TiB\* | &gt;500 TiB\* |
+| Yerel depolama kapasitesi | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Bulut depolama kapasitesi | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
+\* Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
 
 **Birincil ve ikincil yedeklemeler için StorSimple kapasiteleri**
 
@@ -259,7 +259,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 | GFS gereksinimi |   | 38 |   |
 | Ek kota  | 4  |   | Toplam 42 GFS gereksinimi  |
 
-\*GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
+\* GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
 
 ## <a name="set-up-netbackup-storage"></a>NetBackup depolaması ayarlama
 
@@ -403,7 +403,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 | Yıllık tam |StorSimple diski (uzun vadeli) | 1 | 1 | 1 |
 |GFS birimleri boyut gereksinimi |  |  |  | 18|
 
-\*Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
+\* Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS örnek zamanlaması: GFS döndürme haftalık, aylık ve yıllık zamanlama
@@ -478,7 +478,7 @@ NetBackup, depolama ve medya yönetimi için çok çeşitli seçenekler sağlad�
 | GFS gereksinimi  |     |     | 38 |
 | Ek kota  | 4  |    | Toplam 42 GFS gereksinimi |
 
-\*GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
+\* GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple bulut anlık görüntüleri
 

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Veri Yöneticisi genel bakış | Microsoft Docs
-description: StorSimple Veri Yöneticisi hizmetine genel bir bakış sağlar
+description: StorSimple Veri Yöneticisi çözümü ve StorSimple verilerini ve diğer Azure hizmetlerini kullanan uygulamaları yazmak için bu hizmeti nasıl kullanabileceğinizi öğrenin.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67876114"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183505"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Veri Yöneticisi çözüme genel bakış
 
@@ -53,7 +53,7 @@ StorSimple Veri Yöneticisi aşağıdaki 7 bölgede kullanılabilir:
  - Batı ABD 2
  - Orta Batı ABD
  - Kuzey Avrupa
- - Batı Avrupa
+ - West Europe
 
 Ancak, StorSimple Veri Yöneticisi aşağıdaki bölgelerdeki verileri dönüştürmek için kullanılabilir. 
 
@@ -72,7 +72,7 @@ Yukarıdaki bölgelerin herhangi birinde bulunan kaynak dağıtımı, aşağıda
     
 Microsoft, tüm bölgelerde Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya çalışır. Ancak, belirli bir bölgedeki kısa dönemler için plansız hizmet kesintileri meydana gelebilir. Böyle durumlarda, kesinti tarafından etkilenmeyen bir bölgede Veri Yöneticisi ve iş tanımını alabilir ve dönüştürme işini çalıştırabilirsiniz. Böyle bir senaryoda bazı ek gecikme süreleriyle karşılaşabilirsiniz, ancak bu durum, bölgesel bir kesinti nedeniyle nadir bir olayda kurtarma stratejiniz olabilir.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 StorSimple Veri Yöneticisi, StorSimple biçiminden yerel biçime dönüştürmek için hizmet veri şifreleme anahtarına ihtiyaç duyuyor. Hizmet veri şifreleme anahtarı, ilk cihaz StorSimple hizmetine kaydolduğunda oluşturulur. Bu anahtar hakkında daha fazla bilgi için, [StorSimple Security](storsimple-8000-security.md)'ye gidin.
 

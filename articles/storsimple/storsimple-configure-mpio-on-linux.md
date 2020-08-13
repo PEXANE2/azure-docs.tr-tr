@@ -1,18 +1,18 @@
 ---
 title: StorSimple Linux ana bilgisayarında MPIO yapılandırma
-description: CentOS 6,6 çalıştıran bir Linux ana bilgisayarına bağlı StorSimple üzerinde MPIO yapılandırma
+description: StorSimple Linux (CentOS 6,6) ana bilgisayar sunucunuzda çok Pasıg/ç (MPIO) yapılandırmak için gereken adımları öğrenin.
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187090"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183650"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
 Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
@@ -214,7 +214,7 @@ Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, c
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. Adım: StorSimple birimlerine yönelik çoklu paşeyi yapılandırma
 Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atlanır. StorSimple cihazlarından birimlerde çok sayıda duruma izin vermek için kara liste özel durumları oluşturmanız gerekir.
 
-1. Dosyayı düzenleyin `/etc/mulitpath.conf` . Şunu yazın:
+1. `/etc/mulitpath.conf` dosyasını düzenleyin. Şunu yazın:
    
     `vi /etc/multipath.conf`
 1. Çok yollu. conf dosyasındaki blacklist_exceptions bölümünü bulun. StorSimple cihazınızın bu bölümde bir kara liste özel durumu olarak listelenmesi gerekir. Bu dosyadaki ilgili satırların açıklamasını aşağıda gösterildiği gibi değiştirebilirsiniz (yalnızca kullandığınız cihazın özel modelini kullanın):
@@ -235,7 +235,7 @@ Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atl
 ### <a name="step-3-configure-round-robin-multipathing"></a>3. Adım: hepsini bir kez deneme çoklu paşeyi yapılandırma
 Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir çoklu yolları dengeli ve hepsini bir kez deneme biçiminde kullanır.
 
-1. Dosyayı düzenleyin `/etc/multipath.conf` . Şunu yazın:
+1. `/etc/multipath.conf` dosyasını düzenleyin. Şunu yazın:
    
     `vi /etc/multipath.conf`
 1. Bölümünün altında, `defaults` öğesini olarak ayarlayın `path_grouping_policy` `multibus` . `path_grouping_policy`Belirtilmemiş multipaths için uygulanacak varsayılan yol gruplama ilkesini belirtir. Varsayılanlar bölümü aşağıda gösterildiği gibi görünecektir.
@@ -352,7 +352,7 @@ Aynı zamanda, hedefe bağlandıktan sonra bazı diskleri görebileceğinizi de 
 
 * SCSI veri yolunu yeniden taramak için aşağıdaki komutu kullanın:
   
-    `$ rescan-scsi-bus.sh`(sg3_utils paketinin parçası)
+    `$ rescan-scsi-bus.sh` (sg3_utils paketinin parçası)
 * Aşağıdaki komutları yazın:
   
     `$ dmesg | grep sd*`
@@ -423,7 +423,7 @@ dm-3 devnode blacklisted, unmonitored
 Daha fazla bilgi için, [çok sayıda sorun giderme](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)bölümüne gidin.
 
 ## <a name="list-of-useful-commands"></a>Faydalı komutların listesi
-| Type | Komut | Açıklama |
+| Tür | Komut | Açıklama |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Iscsı hizmetini Başlat |
 | &nbsp; |`service iscsid stop` |Iscsı hizmetini durdur |
@@ -438,10 +438,10 @@ Daha fazla bilgi için, [çok sayıda sorun giderme](https://access.redhat.com/d
 | **Çoklu yol oluşturma** |`service multipathd start` |Çok yollu Daemon Başlat |
 | &nbsp; |`service multipathd stop` |Çok yollu cini durdur |
 | &nbsp; |`service multipathd restart` |Çok yollu Daemon 'ı yeniden Başlat |
-| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |Çok yollu arka plan programı 'nı önyükleme sırasında başlatılacak şekilde etkinleştir |
+| &nbsp; |`chkconfig multipathd on` </br> VEYA </br> `mpathconf -with_chkconfig y` |Çok yollu arka plan programı 'nı önyükleme sırasında başlatılacak şekilde etkinleştir |
 | &nbsp; |`multipathd -k` |Sorun giderme için etkileşimli konsolu Başlat |
 | &nbsp; |`multipath -l` |Çok yollu bağlantıları ve cihazları listeleme |
-| &nbsp; |`mpathconf --enable` |İçinde örnek mulitpath. conf dosyası oluşturma`/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |İçinde örnek mulitpath. conf dosyası oluşturma `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 127604264850f9845846d0bb6a2768cac23cdc8c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169174"
+ms.locfileid: "88182961"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Sanal makinelerin yaşam döngüsü ve durumları
 
@@ -23,134 +23,192 @@ Azure sanal makineleri (VM 'Ler), *sağlama* ve *Güç* durumlarına kategoriler
 
 Güç durumu, sanal makinenin bilinen son durumunu temsil eder.
 
-![VM güç durumu diyagramı](./media/vm-power-states.png)
+![VM güç durumu diyagramı](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
 Aşağıdaki tabloda her örnek durumunun açıklaması verilmiştir ve örnek kullanım için faturalandırıldığını gösterir.
 
-<table>
-<tr>
-<th>
-Durum
-</th>
-<th>
-Açıklama
-</th>
-<th>
-Örnek kullanım faturalandırması
-</th>
-</tr>
-<tr>
-<td>
-<p><b>Başlatılıyor</b></p>
-</td>
-<td>
-<p>VM başlatılıyor.</p>
-<code>"statuses": [<br>
-   {<br>
-      "code": "PowerState/starting",<br>
-       "level": "Info",<br>
-        "displayStatus": "VM starting"<br>
-    }<br>
-    ]</code><br>
-</td>
-<td>
-<p><b>Faturalandırılmamış</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Çalışıyor</b></p>
-</td>
-<td>
-<p>Bir VM için normal çalışma durumu</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/running",<br>
- "level": "Info",<br>
- "displayStatus": "VM running"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>IP</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Durduruluyor</b></p>
-</td>
-<td>
-<p>Bu, geçici bir durumdur. İşlem tamamlandığında, **durduruldu**olarak gösterilir.</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopping",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopping"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>IP</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Durduruldu</b></p>
-</td>
-<td>
-<p>VM, Konuk işletim sistemi içinden veya PowerOff API 'Leri kullanılarak kapatıldı.</p>
-<p>Donanım hala VM 'ye ayrıldı ve konakta kalır. </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopped",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopped"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Faturalandırılan&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Serbest bırakılıyor</b></p>
-</td>
-<td>
-<p>Geçiş durumu. İşlem tamamlandığında, VM **serbest bırakıldı**olarak gösterilir.</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocating",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocating"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Faturalandırılmamış&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Serbest bırakıldı</b></p>
-</td>
-<td>
-<p>VM başarıyla durdurulmuş ve konaktan kaldırılmış. </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocated",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocated"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Faturalandırılmamış</b></p>
-</td>
-</tr>
-</tbody>
-</table>
+:::row:::
+   :::column span="":::
+
+   **Durum**
+   
+   :::column-end:::
+   :::column span="":::
+
+   **Açıklama**
+
+   :::column-end:::
+   :::column span="":::
+
+   **Örnek kullanım faturalandırılıyor**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Başlatılıyor**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM başlatılıyor.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/starting",
+    "level": "Info",
+    "displayStatus": "VM starting"
+    }
+   ]
+   ```
+   :::column-end:::
+   :::column span="":::
+
+   **Faturalandırılmamış**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Çalışıyor**
+
+   :::column-end:::
+   :::column span="":::
+
+   Bir VM için normal çalışma durumu
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/running",
+    "level": "Info",
+    "displayStatus": "VM running"
+    }
+  ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **IP**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Durduruluyor**
+
+   :::column-end:::
+   :::column span="":::
+
+   Bu, geçici bir durumdur. İşlem tamamlandığında, **durduruldu**olarak gösterilir.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopping",
+    "level": "Info",
+    "displayStatus": "VM stopping"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **IP**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Durduruldu**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM, Konuk işletim sistemi içinden veya PowerOff API 'Leri kullanılarak kapatıldı.
+
+   Donanım hala VM 'ye ayrıldı ve konakta kalır.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopped",
+    "level": "Info",
+    "displayStatus": "VM stopped"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **IP***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Serbest bırakılıyor**
+
+   :::column-end:::
+   :::column span="":::
+
+   Geçiş durumu. İşlem tamamlandığında, VM **serbest bırakıldı**olarak gösterilir.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocating",
+    "level": "Info",
+    "displayStatus": "VM deallocating"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Faturalandırılmamış***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Serbest bırakıldı**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM başarıyla durdurulmuş ve konaktan kaldırılmış.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocated",
+    "level": "Info",
+    "displayStatus": "VM deallocated"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Faturalandırılmamış**
+
+   :::column-end:::
+:::row-end:::
 
 
 Diskler ve ağ gibi bazı Azure kaynaklarının ücretlendirdiği &#42;. Örnekteki yazılım lisansları ücret ödemez.
@@ -171,86 +229,159 @@ Sağlama durumu, sanal makinede Kullanıcı tarafından başlatılan bir denetim
 
 Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, geçiş işlemi durumları aşağıda verilmiştir:
 
-<br>
+:::row:::
+   :::column span="":::
 
-<table>
-<tbody>
-<tr>
-<td width="162">
-<p><b>Durumlar</b></p>
-</td>
-<td width="366">
-<p>Açıklama</p>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Oluşturma</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating",<br>
- "level": "Info",<br>
- "displayStatus": "Creating"<br>
- }</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Bilen</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/updating",<br>
- "level": "Info",<br>
- "displayStatus": "Updating"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Siliniyor</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/deleting",<br>
- "level": "Info",<br>
- "displayStatus": "Deleting"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>İşletim sistemi sağlama durumları</b></p>
-</td>
-<td width="366">
-<p>Bir VM, özelleştirilmiş bir görüntüyle değil bir işletim sistemi görüntüsüyle oluşturulduysa, aşağıdaki alt durumlar gözlemlenebilir:</p>
-<p>1. <b>Osprovisioningınprogress</b> &ndash; VM çalışıyor ve konuk işletim sistemi yüklemesi devam ediyor. <p /> 
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning In progress"<br>
- }<br>
-]</code><br>
-<p>2. <b>Osprovisioningtamamlanmıştır</b> &ndash; Kısa ömürlü durum. Herhangi bir uzantının yüklenmesi gerekmediği takdirde VM hızlı bir şekilde **başarılı** olarak geçiş yapar. Uzantıların yüklenmesi zaman alabilir. <br />
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning Complete"<br>
- }<br>
-]</code><br>
-<p><b>Note</b>: işletim sistemi hatası varsa veya işletim sistemi zaman içinde yüklenemezse, Işletim sistemi sağlama **başarısız** durumuna geçirebilir. Müşteriler, altyapı üzerinde dağıtılan VM için faturalandırılır.</p>
-</td>
-</tr>
-</table>
+   **Durum**
+   
+   :::column-end:::
+   :::column span="2":::
 
+   **Açıklama**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Oluşturma**
+
+   :::column-end:::
+   :::column span="2":::
+
+  ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating",
+    "level": "Info",
+    "displayStatus": "Creating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Bilen**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/updating",
+    "level": "Info",
+    "displayStatus": "Updating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Siliniyor**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/deleting",
+    "level": "Info",
+    "displayStatus": "Deleting"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **İşletim sistemi sağlama durumları**
+   
+   :::column-end:::
+   :::column span="2":::
+
+   **Açıklama**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+
+
+   :::column-end:::
+   :::column span="2":::
+
+   Bir VM, özelleştirilmiş bir görüntüyle değil bir işletim sistemi görüntüsüyle oluşturulduysa, aşağıdaki alt durumlar gözlemlenebilir:
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Osprovisioningınprogress**
+
+   :::column-end:::
+   :::column span="2":::
+
+   VM çalışıyor ve konuk işletim sistemi yüklemesi devam ediyor.
+ 
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningInprogress",
+    "level": "Info",
+    "displayStatus": "OS Provisioning In progress"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Osprovisioningtamamlanmıştır**
+
+   :::column-end:::
+   :::column span="2":::
+   
+   Kısa ömürlü durum. Herhangi bir uzantının yüklenmesi gerekmediği takdirde VM hızlı bir şekilde **başarılı** olarak geçiş yapar. Uzantıların yüklenmesi zaman alabilir.
+   
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningComplete",
+    "level": "Info",
+    "displayStatus": "OS Provisioning Complete"
+    }
+   [
+   ```
+   
+   **Note**: işletim sistemi hatası varsa veya işletim sistemi zaman içinde yüklenemezse, Işletim sistemi sağlama **başarısız** durumuna geçirebilir. Müşteriler, altyapı üzerinde dağıtılan VM için faturalandırılır.
+
+   :::column-end:::
+
+:::row-end:::
 
 İşlem tamamlandıktan sonra, VM aşağıdaki durumlardan birine geçiş yapılır:
 

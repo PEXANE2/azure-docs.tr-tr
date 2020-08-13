@@ -1,18 +1,18 @@
 ---
-title: ARM şablonunu kullanarak PostgreSQL için Azure DB oluşturma
-description: Bu makalede, bir Azure Resource Manager şablonu kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturma hakkında bilgi edinin.
+title: 'Hızlı başlangıç: PostgreSQL için Azure DB-ARM şablonu oluşturma'
+description: Bu makalede, bir Azure Resource Manager şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma hakkında bilgi edinin.
 author: mgblythe
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 5bdcbe620e88700c5607162cd2471f6b2c3e7532
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 00e8910627690d4713a7a86a56262519610c2392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132835"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183862"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 
@@ -20,11 +20,11 @@ PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan Post
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -46,7 +46,7 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https:/
 
 Yapılandırılmış bir işlem ve depolama kaynakları kümesi ile PostgreSQL için Azure veritabanı sunucusu oluşturun. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda fiyatlandırma katmanları-tek sunucu](concepts-pricing-tiers.md). Sunucu, [Azure kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur.
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-managed-postgresql-with-vnet/azuredeploy.json" range="001-233" highlight="151,164,178,201,215":::
 
@@ -212,4 +212,4 @@ read -p "Press [ENTER] to continue: "
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

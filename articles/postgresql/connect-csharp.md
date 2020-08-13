@@ -1,5 +1,5 @@
 ---
-title: C# ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+title: 'Hızlı başlangıç: C# ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz bir C# (.net) kod örneği sağlanmıştır.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,18 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f3240969278c3a57b589df84d97586f97267e051
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74767985"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182927"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: .NET (C#) kullanarak verileri bağlama ve sorgulama
+# <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma-tek sunucu
+
 Bu hızlı başlangıçta, C# uygulaması kullanılarak PostgreSQL için Azure Veritabanı'na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, C# kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB oluşturma - CLI](quickstart-create-server-database-azure-cli.md)

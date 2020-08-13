@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a48e598680ee969f3823dee6699c8c981dff392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833409"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182485"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET ile kapsayıcı özelliklerini ve meta verileri yönetme
 
@@ -29,7 +29,7 @@ Meta veri adı/değer çiftleri geçerli HTTP başlıklardır ve bu nedenle HTTP
 
 ## <a name="retrieve-container-properties"></a>Kapsayıcı özelliklerini al
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Kapsayıcı özelliklerini almak için aşağıdaki yöntemlerden birini çağırın:
 
@@ -40,7 +40,7 @@ Aşağıdaki kod örneği bir kapsayıcının sistem özelliklerini getirir ve b
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 BLOB depolama kaynağı için özellik ve meta veri değerlerinin alınması, iki adımlı bir işlemdir. Bu değerleri okuyabilmeniz için, **Fetchattributes** veya **Fetchattributesasync** yöntemini çağırarak açıkça bunları almanız gerekir. Bu kuralın özel durumu **var ve mevcut** **tsasync** yöntemlerinin, kapsamakta olan uygun **fetchattributes** metodunu çağırmasını sağlar. Bu yöntemlerden birini çağırdığınızda, **Fetchattributes**' i de çağırmanız gerekmez.
 
@@ -80,7 +80,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>Meta verileri ayarlama ve alma
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değer çifti olarak belirtebilirsiniz. Meta verileri ayarlamak için, bir [IDictionary](/dotnet/api/system.collections.idictionary) nesnesine ad-değer çiftleri ekleyin ve ardından değerleri yazmak için aşağıdaki yöntemlerden birini çağırın:
 
@@ -102,7 +102,7 @@ Ardından, aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değer çifti olarak belirtebilirsiniz. Meta verileri ayarlamak için kaynaktaki **meta veri** koleksiyonuna ad-değer çiftleri ekleyin ve ardından değerleri yazmak için aşağıdaki yöntemlerden birini çağırın:
 

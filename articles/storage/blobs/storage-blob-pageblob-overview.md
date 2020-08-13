@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 270461ad0ba5c77f845af13d7cd4a24d0c098b31
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518716"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182468"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -50,13 +50,13 @@ Aşağıdaki diyagramda hesap, kapsayıcılar ve sayfa Blobları arasındaki gen
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Belirtilen boyuttaki boş bir Sayfa Blobu oluşturuluyor
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 İlk olarak, bir kapsayıcıya başvuru alın. Bir Sayfa Blobu oluşturmak için [Getpageblobclient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) metodunu çağırın ve ardından [Pageblobclient. Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) yöntemini çağırın. Oluşturulacak blob 'un en büyük boyutunu geçirin. Bu boyut, 512 baytlık bir katı olmalıdır.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Bir Sayfa Blobu oluşturmak için ilk olarak, aşağıdaki örnekte gösterildiği gibi, depolama hesabınız için blob depolamaya (Şekil 1 ' de*pbaccount* ) birlikte **Storagecredentialsaccountandkey** NESNESIYLE erişmek için temel URI Ile bir **cloudblobclient** nesnesi oluşturacağız. Örnek daha sonra **Cloudblobcontainer** nesnesine bir başvuru oluşturmayı ve daha önce mevcut değilse kapsayıcıyı (*testvhd*'ler) oluşturmayı gösterir. Daha sonra **Cloudblobcontainer** nesnesini kullanarak erişmek için Sayfa Blobu adını (OS4. vhd) belirterek **cloudpageblob** nesnesine bir başvuru oluşturun. Sayfa Blobu oluşturmak için, oluşturulacak blob 'un en büyük boyutunu geçirerek [Cloudpageblob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)' ı çağırın. *Blobsize* , 512 baytlık bir katı olmalıdır.
 
@@ -87,13 +87,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 #### <a name="resizing-a-page-blob"></a>Sayfa Blobu yeniden boyutlandırma
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Oluşturulduktan sonra bir sayfa blobunu yeniden boyutlandırmak için, [Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) yöntemini kullanın. İstenen boyut, 512 baytlık bir katı olmalıdır.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Oluşturulduktan sonra bir sayfa blobunu yeniden boyutlandırmak için, [Resize](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) yöntemini kullanın. İstenen boyut, 512 baytlık bir katı olmalıdır.
 
@@ -105,13 +105,13 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 #### <a name="writing-pages-to-a-page-blob"></a>Sayfa blobuna sayfa yazma
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Sayfa yazmak için [Pageblobclient. UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) metodunu kullanın.  
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Sayfa yazmak için [Cloudpageblob. WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) metodunu kullanın.  
 
@@ -134,13 +134,13 @@ Aşağıdaki diyagramda, 2 ayrı yazma işlemi gösterilmektedir:
 
 #### <a name="reading-pages-from-a-page-blob"></a>Sayfa blobundan sayfaları okuma
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Sayfaları okumak için, sayfa blobundan bir dizi bayt okumak üzere [Pageblobclient. Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) metodunu kullanın. 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Sayfaları okumak için, sayfa blobundan bir bayt aralığı okumak üzere [Cloudpageblob. DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) yöntemini kullanın. 
 
@@ -159,13 +159,13 @@ Aşağıdaki şekilde, 256 ve Aralık boyutu 4352 olan bir okuma işlemi göster
 
 Daha seyrek doldurulmuş bir Blobun varsa, sıfır baytlık yumurtın ve indirme gecikmesini azaltmak için yalnızca geçerli sayfa bölgelerini indirmek isteyebilirsiniz.  
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Hangi sayfaların veri tarafından desteklenen olduğunu anlamak için [Pageblobclient. GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)kullanın. Ardından döndürülen aralıkları numaralandırabilirsiniz ve verileri her bir aralığa indirebilirsiniz. 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Hangi sayfaların veri tarafından desteklenen olduğunu anlamak için [Cloudpageblob. GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges)kullanın. Ardından döndürülen aralıkları numaralandırabilirsiniz ve verileri her bir aralığa indirebilirsiniz. 
 

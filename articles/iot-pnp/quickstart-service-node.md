@@ -3,17 +3,17 @@ title: Azure IoT çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihaz�
 description: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan önizleme cihazına bağlanmak ve bunlarla etkileşim kurmak için Node.js kullanın.
 author: elhorton
 ms.author: elhorton
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 511a61fb1069ce10e94e24ecd3ba6d60470ca40f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424452"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184780"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (Node.js)
 
@@ -23,7 +23,7 @@ IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahib
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Node.js gerekir. [NodeJS.org](https://nodejs.org)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz.
 
@@ -31,12 +31,6 @@ Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürüm�
 
 ```cmd/sh
 node --version
-```
-
-Aşağıdaki komutu çalıştırarak [ıot Tak ve kullan desteğiyle node hizmeti SDK 'sını](https://www.npmjs.com/package/azure-iot-digitaltwins-service) yükler:
-
-```cmd/sh
-npm i azure-iot-digitaltwins-service
 ```
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
@@ -53,15 +47,19 @@ Hub 'a eklediğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdak
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
 ```
 
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Örnek kodla SDK deposunu kopyalayın
+
+Hizmet SDK 'Sı önizlemede olduğundan, [düğüm SDK 'sının önizleme dalından](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)örnekleri kopyalamanız gerekir. Seçtiğiniz bir klasörde bir Terminal penceresi açın. Node.jsGitHub deposu [için Microsoft Azure ıOT SDK 'sının](https://github.com/Azure/azure-iot-sdk-node) **pnp-Preview-Refresh** dalını kopyalamak için aşağıdaki komutu çalıştırın:
+
+```cmd/sh
+git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+```
+
 ## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
 
 Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış örnek bir termostat cihazı kullanabilirsiniz. Örnek cihazı çalıştırmak için:
 
-1. Seçtiğiniz bir klasörde bir Terminal penceresi açın. Node.jsGitHub deposunun [Microsoft Azure ıOT SDK 'sını](https://github.com/Azure/azure-iot-sdk-node) bu konuma kopyalamak için aşağıdaki komutu çalıştırın:
-
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node
-    ```
+1. Bir Terminal penceresi açın ve GitHub 'dan kopyaladığınız Node.js deposu için Microsoft Azure IoT SDK 'sını içeren yerel klasöre gidin.
 
 1. Bu terminal penceresi, **cihaz** terminali olarak kullanılır. Klonlanmış deponuzdaki klasöre gidin ve */Azure-iot-SDK-node/Device/Samples/PNP* klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
 
@@ -90,10 +88,10 @@ Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurm
 1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın. Hizmet SDK 'Sı önizlemede olduğundan, [düğüm SDK 'sının önizleme dalından](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)örnekleri kopyalamanız gerekir:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b public-preview-pnp
+    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     ```
 
-1. Bu kopyalanmış depo dalının klasörüne gidin ve */Azure-iot-Samples-node/Digital-Twins/Samples/Service/JavaScript* klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
+1. Bu kopyalanmış depo dalının klasörüne gidin ve */Azure-iot-SDK-node/digitaltwins/Samples/Service/JavaScript* klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
 
     ```cmd/sh
     npm install
@@ -144,14 +142,14 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
 
 ### <a name="update-a-writable-property"></a>Yazılabilir bir özelliği güncelleştirme
 
-1. Dosya *update_digital_twin_property.js* bir kod düzenleyicisinde açın.
+1. Dosya *update_digital_twin.js* bir kod düzenleyicisinde açın.
 
 1. Örnek kodu gözden geçirin. Cihazınızın dijital ikizi güncelleştirmek için nasıl JSON yaması oluşturacağınız hakkında bilgi alabilirsiniz. Bu örnekte, kod termostat 'nın sıcaklığını 42 değeriyle değiştirir:
 
     ```javascript
     const patch = [{
         op: 'add',
-        path: 'targetTemperature',
+        path: '/targetTemperature',
         value: '42'
       }]
     ```
@@ -159,43 +157,23 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
 1. **Hizmet** terminalinde, özelliği güncelleştirme örneğini çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
-    node update_digital_twin_property.js
-    ```
-
-1. **Hizmet** terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. `thermostat1`Yeni 42 değerini görmek için bileşene kaydırın `targetTemperature` :
-
-    ```json
-    "modelId": "dtmi:com:example:Thermostat;1",
-        "version": 12,
-        "properties": {
-            "desired": {
-                "targetTemperature": "42",
-                "$metadata": {
-                    "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                    "$lastUpdatedVersion": 5,
-                    "targetTemperature": {
-                        "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                        "$lastUpdatedVersion": 5
-                    }
-                },
-                "$version": 5
-            },
-            "reported": {
-                "serialNumber": "123abc",
-                "maxTempSinceLastReboot": 32.279942997143785,
-                "targetTemperature": {
-                    "value": "42",
-                    "ac": 200,
-                    "ad": "Successfully executed patch for targetTemperature",
-                    "av": 2
-                },
+    node update_digital_twin.js
     ```
 
 1. **Cihaz terminalinizde** , cihazın güncelleştirmeyi aldığını görürsünüz:
 
     ```cmd/sh
-    Received an update for targetTemperature: 42
+    The following properties will be updated for root interface:
+    {
+      targetTemperature: {
+        value: 42,
+        ac: 200,
+        ad: 'Successfully executed patch for targetTemperature',
+        av: 2
+      }
+    }
     updated the property
+    Properties have been reported for component
     ```
 
 1. **Hizmet** terminalinizde, özelliğin güncelleştirildiğini onaylamak için aşağıdaki komutu çalıştırın:
@@ -207,15 +185,7 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
 1. **Hizmet** terminali çıkışında, bileşen altındaki dijital ikizi yanıtında `thermostat1` raporlanan hedef sıcaklığın olduğunu görürsünüz. Cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini işleyene kadar bu adımı yineleyin:
 
     ```json
-    "$model": "dtmi:com:example:Thermostat;1",
-    "targetTemperature": {
-      "desiredValue": 42,
-      "desiredVersion": 4,
-      "ackVersion": 4,
-      "ackCode": 200,
-      "ackDescription": "Successfully executed patch for targetTemperature",
-      "lastUpdateTime": "2020-07-09T13:55:30.5062641Z"
-    }
+    targetTemperature: 42,
     ```
 
 ### <a name="invoke-a-command"></a>Komut çağırma
@@ -225,6 +195,8 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
 1. **Hizmet** terminali ' ne gidin. Komutu çağırmak için örneği çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
+    set IOTHUB_COMMAND_NAME=getMaxMinReport
+    set IOTHUB_COMMAND_PAYLOAD=commandpayload
     node invoke_command.js
     ```
 
@@ -245,7 +217,7 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
 1. **Cihaz** terminalinde, komutun kabul edilen olduğunu görürsünüz:
 
     ```cmd/sh
-    MaxMinReport [object Object]
+    MaxMinReport commandpayload
     Response to method 'getMaxMinReport' sent successfully.
     ```
 

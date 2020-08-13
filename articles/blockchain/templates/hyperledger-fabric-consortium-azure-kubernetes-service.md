@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533436"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184219"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -350,10 +350,22 @@ Adımları izleyin:
 Eş istemci uygulamasından, kanaldaki chaincode 'u başlatmak için aşağıdaki komutu yürütün.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 Örnek oluşturma işlevi adı ve bağımsız değişken ayrılmış listesi ' ni `<instantiateFunc>` ve `<instantiateFuncArgs>` sırasıyla geçirin. Örneğin, chaincode_example02. go chaincode 'da, ' `<instantiateFunc>` `init` a ve " `<instantiateFuncArgs>` a" "2000" "b" "1000" olarak ayarlanmış chaincode 'u oluşturmak için.
+
+Ayrıca, bayrağını kullanarak koleksiyonlar yapılandırması JSON dosyasını geçirebilirsiniz `--collections-config` . Ya da, `-t` özel işlemler için kullanılan bir chaincode örneklarken bayrağı kullanarak geçici bağımsız değişkenleri ayarlayın.
+
+Örnek:
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+, \<collectionConfigJSONFilePath\> Özel bir veri chaincode örneklenmesi için tanımlanan koleksiyonları IÇEREN JSON dosyasının yoludur. Aşağıdaki yolda azhlfTool dizinine göre örnek bir koleksiyonlar yapılandırma JSON dosyası bulabilirsiniz: `./samples/chaincode/src/private_marbles/collections_config.json` .
+\<transientArgs\>Dize biçiminde geçerli BIR JSON olarak geçirin. Özel karakterleri kaçış. Örnek: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün. İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, chaincode, kanaldaki tüm eş kuruluşlardaki tüm eşdüzey düğümlerde oluşturulur.  
@@ -377,8 +389,12 @@ Eş kuruluş istemcisinden, chaincode işlevini çağırmak için aşağıdaki k
 Chaincode 'u sorgulamak için aşağıdaki komutu yürütün:  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
+Bunları onaylama, chaincode 'un yüklendiği ve işlemlerin yürütülmesi için çağrıldığı eşlerdir. \<endorsingPeers\>Kapsayan eş düğüm adlarını geçerli eş kuruluştan ayarlamanız gerekir. Verilen chaincode ve kanal birleşiminin boşluklarla ayrılmış olarak onaylama eşlerini listeleyin. Örneğin, `-p "peer1" "peer3"`.
+
+Chaincode 'u yüklemek için azhlfTool kullanıyorsanız, herhangi bir eşdüzey düğüm adını, onaylama eşi bağımsız değişkenine bir değer olarak geçirin. Chaincode, söz konusu kuruluşun her eşdüzey düğümüne yüklenir. 
+
 Sorgu işlevi adı ve bağımsız değişken ayrılmış listesini içinde  `<queryFunction>`   ve sırasıyla geçirin  `<queryFuncArgs>`   . Yeniden chaincode_example02. Bu, "a"  `<queryFunction>`    `query` ve  `<queryArgs>` "a" olarak ayarlanan dünya durumundaki "a" değerini sorgulamak için.  
 
 ## <a name="troubleshoot"></a>Sorun giderme

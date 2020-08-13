@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure StorSimple Veri Yöneticisi işleri için .NET SDK 'Yı kullanma
-description: .NET SDK 'yı kullanarak StorSimple Veri Yöneticisi işleri başlatma hakkında bilgi edinin
+description: StorSimple cihaz verilerini dönüştürmek için StorSimple Veri Yöneticisi hizmeti içinde .NET SDK 'nın nasıl kullanılacağını öğrenin.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514904"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183658"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK kullanarak veri dönüştürmeyi başlatma
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Veri dönüşümü başlatmak için .NET SDK'sını kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -26,7 +26,7 @@ Bir veri dönüştürme işini iki şekilde başlatabilirsiniz:
  
   Bu makalede, bir veri dönüştürme işi başlatmak ve sonra tamamlamak üzere izlemek için örnek bir .NET konsol uygulaması oluşturma işlemi açıklanır. Otomasyon aracılığıyla veri dönüştürmeyi başlatma hakkında daha fazla bilgi edinmek için [Azure Otomasyonu runbook 'U kullanarak veri dönüştürme işlerini tetiklemeniz](storsimple-data-manager-job-using-automation.md)bölümüne gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 *   Çalıştıran bir bilgisayar:

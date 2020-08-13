@@ -1,6 +1,6 @@
 ---
 title: Bulut çözümü sağlayıcısı programı için StorSimple Sanal dizisi dağıtma
-description: StorSimple iş ortakları için StorSimple ve CSP hakkında genel bakış.
+description: CSP iş ortağının mevcut bir müşteriye nasıl müşteri veya yeni bir abonelik ekleyebileceğinizi öğrenin ve ardından CSP 'de StorSimple Sanal dizisi dağıtmak için bir hizmet oluşturabilirsiniz.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77466918"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182230"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı için StorSimple Sanal dizisi dağıtma
 
@@ -29,7 +29,7 @@ StorSimple Sanal dizisi, müşterileri için bulut çözümü sağlayıcısı (C
 
 Bu makalede, CSP iş ortağının mevcut bir müşteriye bir müşteri veya yeni abonelik ekleme ve ardından CSP 'de StorSimple Sanal dizisi dağıtmak üzere bir hizmet oluşturma işlemlerinin nasıl yapılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakileri doğrulayın:
 

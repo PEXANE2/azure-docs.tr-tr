@@ -1,6 +1,6 @@
 ---
 title: Veead ile bir yedekleme hedefi olarak StorSimple 8000 serisi | Microsoft Docs
-description: Veead ile StorSimple yedekleme hedefi yapılandırmasını açıklar.
+description: Her iki çözümü de tümleştirmek için Veead ve en iyi uygulamalarla StorSimple yedekleme hedefi yapılandırması hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077886"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183993"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veead ile yedekleme hedefi olarak StorSimple
 
@@ -94,10 +94,10 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 
 | Depolama kapasitesi | 8100 | 8600 |
 |---|---|---|
-| Yerel depolama kapasitesi | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Bulut depolama kapasitesi | &gt;200 TiB\* | &gt;500 TiB\* |
+| Yerel depolama kapasitesi | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Bulut depolama kapasitesi | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
+\* Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
 
 **Birincil ve ikincil yedeklemeler için StorSimple kapasiteleri**
 
@@ -266,7 +266,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 | GFS gereksinimi |   | 38 |   |
 | Ek kota  | 4  |   | Toplam 42 GFS gereksinimi  |
 
-\*GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
+\* GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
 
 ## <a name="set-up-veeam-storage"></a>Veead depolaması ayarlama
 
@@ -386,7 +386,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 | Yıllık tam |StorSimple diski (uzun vadeli) | 1 | 1 | 1 |
 |GFS birimleri boyut gereksinimi |  |  |  | 18|
 
-\*Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
+\* Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
 
 
 ### <a name="gfs-example-schedule"></a>GFS örnek zamanlaması

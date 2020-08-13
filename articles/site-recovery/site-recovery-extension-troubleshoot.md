@@ -5,17 +5,20 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133759"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184627"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM Uzantısı sorunlarını giderme
 
 Bu makalede, VM Aracısı ve uzantısıyla ilgili Azure Site Recovery hatalarını çözmenize yardımcı olabilecek sorun giderme adımları sunulmaktadır.
 
+## <a name="low-system-resources"></a>Düşük sistem kaynakları
+
+Bu sorun, sistem kullanılabilir belleğin düşük olması durumunda oluşur ve Mobility hizmeti yüklemesi için bellek ayıramayabilir. Yüklemenin devam edebilmesi ve başarıyla tamamlanabilmesi için yeterli bellek boşaldığınızdan emin olun.
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery uzantısı zaman aşımı  
 

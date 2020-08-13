@@ -1,17 +1,17 @@
 ---
 title: StorSimple cihazlarını yönetmek için Azurere PowerShell betikleri kullanın
-description: StorSimple işlerini otomatikleştirmek için Azure Resource Manager betikleri kullanmayı öğrenin
+description: StorSimple 8000 serisi cihazınızı yönetmek için Azure Resource Manager SDK tabanlı betikleri nasıl kullanacağınızı öğrenin.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3b9a7bf243931443b8273253dee7618c0e594aaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020874"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183267"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Resource Manager SDK tabanlı betikleri kullanma
 

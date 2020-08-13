@@ -5,18 +5,18 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 348e37202335cc525f945085658337fbe6bcc561
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341706"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182434"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Öğretici: Azure portalı ve konuları/abonelikleri kullanarak envanter güncelleştirme
 
 Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler esnek ve aracılı mesajlaşmanın yanı sıra ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure portal ve .NET kullanan yayımlama/abonelik kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure portalı kullanarak bir Service Bus konu başlığı ve bunun için bir veya daha fazla abonelik oluşturma
 > * .NET kodu kullanarak konu filtreleri ekleme
@@ -30,7 +30,7 @@ Bu senaryonun bir örneği, birden çok perakende mağazası için stok sınıfl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
@@ -409,7 +409,7 @@ Daha fazla ileti gönderme ve alma örneği için [GitHub’daki Service Bus ör
 Service Bus’ın yayımlama/abone olma özelliklerini kullanma hakkında daha fazla bilgi edinmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [PowerShell ve konular/abonelikler kullanarak stok güncelleştirme](service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Event Grid yoluyla olaylara yanıt verme](service-bus-to-event-grid-integration-example.md)
 
 [Ücretsiz hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

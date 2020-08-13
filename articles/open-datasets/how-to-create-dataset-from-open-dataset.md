@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: db2e493f04d74308b21e8a63222f26b1e2af8546
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e6f3a541f1e9dbca2c9949fb0c5cde28cd43e8e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038295"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183071"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde Azure Machine Learning veri kümeleri oluşturma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Azure açık veri kümeleri, daha doğru modeller için makine öğrenimi çöz�
 
 Daha fazla bilgi için bkz. [açık veri kümeleri nelerdir?](overview-what-are-open-datasets.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
@@ -75,19 +75,21 @@ Açık veri kümelerinden oluşturulan bir veri kümesini kaydettiğinizde, hiç
 
 ## <a name="create-datasets-with-the-studio"></a>Studio ile veri kümeleri oluşturma
 
-Açık veri kümelerinden [Azure Machine Learning Studio](https://ml.azure.com)ile veri kümeleri de oluşturabilirsiniz. Çalışma alanınızda **varlıklar**' ın altındaki **veri kümeleri** sekmesini seçin. **Veri kümesi oluştur** aşağı açılan menüsünde **açık veri kümeleri ' nden**seçim yapın.
+Açık veri kümelerinden [Azure Machine Learning Studio](https://ml.azure.com)ile veri kümeleri de oluşturabilirsiniz.
 
-![UI ile veri kümesini açma](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
+1. Çalışma alanınızda **varlıklar**' ın altındaki **veri kümeleri** sekmesini seçin. **Veri kümesi oluştur** aşağı açılan menüsünde **açık veri kümeleri ' nden**seçim yapın.
 
-Kutucuğunu seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filtreleme seçeneğiniz vardır.) **İleri ' yi**seçin.
+    ![UI ile veri kümesini açma](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
 
-![Veri kümesi seçin](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
+1. Kutucuğunu seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filtreleme seçeneğiniz vardır.) **İleri ' yi**seçin.
 
-Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
+    ![Veri kümesi seçin](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+1. Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, **genel tatiller** veri kümesi için zaman aralığını bir yıla, ülke kodunu Ise yalnızca bizimle filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
 
-Veri kümesi artık veri **kümeleri**altında çalışma alanınızda kullanılabilir. Bunu, oluşturduğunuz diğer veri kümeleriyle aynı şekilde kullanabilirsiniz.
+    ![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+
+    Veri kümesi artık veri **kümeleri**altında çalışma alanınızda kullanılabilir. Bunu, oluşturduğunuz diğer veri kümeleriyle aynı şekilde kullanabilirsiniz.
 
 
 ## <a name="access-datasets-for-your-experiments"></a>Denemeleri için veri kümelerine erişin

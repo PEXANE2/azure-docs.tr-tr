@@ -1,5 +1,5 @@
 ---
-title: Java ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+title: 'Hızlı başlangıç: Java ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Java kod örneği sağlanmıştır.
 author: rachel-msft
 ms.author: raagyema
@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 8b11147c5266be17d188e915bf73a999ea157d24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e73cf35634b29409f8316080952e46825dd1a0d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321420"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182859"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma-tek sunucu
 

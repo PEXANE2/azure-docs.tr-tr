@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer özellikleri | Microsoft Docs
-description: Azure FXT Edge Filer donanımı için fiziksel ve ortam belirtimleri
+description: Microsoft Azure FXT Edge Filer donanımı için fiziksel ve ortam belirtimleri hakkında bilgi edinin.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231308"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184695"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer özellikleri
 
@@ -160,7 +160,7 @@ Bu bölüm, donanımın çevresel ortamı için belirtim sağlar.
 
 Azure FXT Edge filigran, listelenen yönetmeliklere uyar. 
 
-| Category       | Yasal belirtim | 
+| Kategori       | Yasal belirtim | 
 |----------------|--------------------------|
 | Genel güvenlik | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/ıEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
 | EMC            | FCC A, ıCES-003  <br>EN 55032:2012/CıSPPR 32:2012  <br>EN 55032:2015/CıSPPR 32:2015  <br>EN 55024:2010 + A1:2015/CıSPPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/ıEC 61000-3-2:2014 (sınıf D)   <br>EN 61000-3-3:2013/ıEC 61000-3-3:2013 |

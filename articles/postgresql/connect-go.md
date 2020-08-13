@@ -1,5 +1,5 @@
 ---
-title: Go ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+title: 'Hızlı başlangıç: go ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir go programlama dili örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74767934"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182910"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: bağlanmak ve veri sorgulamak için go dilini kullanın
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için go dilini kullanma-tek sunucu
+
 Bu hızlı başlangıçta, [Go](https://golang.org/) dilinde (golang) yazılmış kod kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makalede, Go kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)

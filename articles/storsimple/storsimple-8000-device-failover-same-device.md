@@ -1,6 +1,6 @@
 ---
 title: Öğretici-StorSimple fiziksel cihazını aynı cihaza devreder
-description: StorSimple cihazınızın yükünü aynı cihaza devretmek hakkında bilgi edinin.
+description: Bir olağanüstü durum varsa StorSimple 8000 serisi fiziksel cihazının kendine yük devri için gereken adımları öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511755"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184338"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple fiziksel cihazınızı aynı cihaza devreder
 
@@ -32,7 +32,7 @@ Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kulla
 Fiziksel bir cihazı başka bir fiziksel cihaza devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-physical-device.md)üzere gidin. StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek için, [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)sayfasına gidin.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 

@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510047"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182179"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
@@ -107,7 +107,8 @@ Y **:** Bu platformlar planlı bakımda etkilenirken, bu platformları kullanan 
 Y **:** VM 'leriniz üzerinde herhangi bir bakım bilgisi görmemenizin birkaç nedeni vardır:
 1.  Microsoft iç olarak işaretlenmiş bir abonelik kullanıyorsunuz.
 2.  VM 'niz bakım için zamanlanmadı. VM 'nizin artık bundan etkilenmemesi için bakım dalgasının sonlandırmasını, iptal edildiğini veya değiştirilmesini sağlayabilirsiniz.
-3.  VM listesi görünüminizdeki **bakım** sütunu eklenmemiş. Bu sütunu varsayılan görünüme ekledik, ancak varsayılan olmayan sütunları görmek üzere yapılandırılmış müşterilerin, **bakım** sütununu VM listesi görünümüne el ile eklemesi gerekir.
+3. VM 'yi serbest bırakırsanız ve sonra başlatıdıysanız. Bu, VM 'nin planlı bakım dalga zamanlamalı bir konuma taşınmasına neden olabilir. Bu nedenle VM, bakım bilgilerini daha fazla göstermez. 
+4.  VM listesi görünüminizdeki **bakım** sütunu eklenmemiş. Bu sütunu varsayılan görünüme ekledik, ancak varsayılan olmayan sütunları görmek üzere yapılandırılmış müşterilerin, **bakım** sütununu VM listesi görünümüne el ile eklemesi gerekir.
 
 **S: VM 'IM, ikinci kez bakım için zamanlandı. Kaydol?**
 

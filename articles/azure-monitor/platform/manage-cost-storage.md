@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135428"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184661"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme    
 
@@ -575,9 +575,9 @@ Son 24 saat içinde alınan faturalandırılabilir veri hacmi 50 GB 'den büyük
 - **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
 - **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
    - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
-   - **Sorgunun aranacağı sorgu** `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Farklı bir ETN istiyorsanız 
+   - **Sorgunun aranacağı sorgu** `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - *1440* dakikalık **süre** ve her *1440* **dakikadaki Uyarı sıklığı** , günde bir kez çalıştırılır.
+   - Günde bir kez çalıştırmak için *1440* dakikalık ve **Uyarı sıklığının** her *1440* dakikada bir **zaman aralığı** .
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
    - *24 saat içinde 50 GB 'tan büyük faturalandırılabilir veri hacmi* **adı**
    - **Önem derecesi**: *Uyarı*
@@ -604,7 +604,7 @@ Veri toplama durdurulduğunda OperationStatus değeri **Uyarı** olur. Veri topl
 |Neden koleksiyonun durması| Çözüm| 
 |-----------------------|---------|
 |Çalışma alanınızın günlük tepesine ulaşıldı|Koleksiyonun otomatik olarak yeniden başlatılmasını bekleyin veya en fazla günlük veri birimini yönetme bölümünde açıklanan günlük veri birimi sınırını artırın. Günlük uç sıfırlama zamanı, **günlük uç** sayfasında gösterilir. |
-| Çalışma alanınız [veri alma birimi oranına](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) ulaştı | Tanılama ayarları kullanılarak Azure kaynaklarından gönderilen veriler için varsayılan Alım birimi hız sınırı, çalışma alanı başına yaklaşık 6 GB/dak. Bu, gerçek boyutun günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında değişiklik gösterebileceğinden yaklaşık bir değerdir. Bu sınır, aracılardan veya veri toplayıcı API 'sinden gönderilen verilere uygulanmaz. Verileri daha yüksek bir fiyata tek bir çalışma alanına gönderirseniz, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda Işlem tablosuna gönderilir. Alım biriminiz, hız sınırını aşmaya devam ediyorsa veya bir süre önce bu sınıra ulaşmayı bekliyorsanız, bir e-posta göndererek LAIngestionRate@microsoft.com veya bir destek isteği açarak çalışma alanınıza bir artış isteğinde bulunabilir. Bir veri alma hızı sınırının sorgu tarafından bulunamayacağını belirten Aranacak olay `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` . |
+| Çalışma alanınız [veri alma birimi oranına](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) ulaştı | 500 MB (sıkıştırılmış) için varsayılan bir alım birimi hız eşiği, yaklaşık **6 GB/dak** sıkıştırması bulunan çalışma alanları için geçerlidir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Bu eşik, [Tanılama ayarları](diagnostic-settings.md), [Veri Toplayıcı API 'si](data-collector-api.md) veya aracıları kullanılarak Azure kaynaklarından gönderilen tüm veriler için geçerlidir. Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınızda arttırmayı isteyebilirsiniz. Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfıra kıyasla sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun. Alma birimi oranı eşiğin %80 ' i oranında ulaştı: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Alım birimi oranına ulaşıldı: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |Eski ücretsiz fiyatlandırma katmanının günlük sınırına ulaşıldı |Koleksiyonun otomatik olarak yeniden başlatılmasını veya ücretli bir fiyatlandırma katmanına geçiş yapmak için aşağıdaki güne kadar bekleyin.|
 |Azure aboneliği şu nedenlerle askıya alınmış durumda:<br> Ücretsiz deneme süresi sona erdi<br> Azure Pass 'nin süre geçti<br> Aylık harcama sınırına ulaşıldı (örneğin, bir MSDN veya Visual Studio aboneliği)|Ücretli aboneliğe dönüştürme<br> Limiti Kaldır veya sınır sıfırlanana kadar bekle|
 

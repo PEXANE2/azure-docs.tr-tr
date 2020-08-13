@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253333"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184355"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -52,7 +52,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
 - [Microsoft Graph API 'leri](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları yapmanız gerekir:
 
@@ -92,10 +92,10 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
 1. Kullanım son tarihleri için zamanlamayı belirtmek üzere başlangıç ve **Sıklık** ayarlarını **sona erdir** ' i kullanın. Aşağıdaki tabloda, birkaç örnek ayar için sonuç gösterilmektedir:
 
-   | Başlangıç tarihi | Sıklık | Sonuç |
+   | Başlangıç tarihi | Frequency | Sonuç |
    | --- | --- | --- |
-   | Bugünün tarihi  | Aylık | Bugünden itibaren, kullanıcılar kullanım koşullarını kabul etmeli ve sonra her ay yeniden kabul etmelidir. |
-   | Gelecekteki Tarih  | Aylık | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi gerekir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
+   | Bugünün tarihi  | Aylık olarak | Bugünden itibaren, kullanıcılar kullanım koşullarını kabul etmeli ve sonra her ay yeniden kabul etmelidir. |
+   | Gelecekteki Tarih  | Aylık olarak | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi gerekir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
 
    Örneğin, tarihinden itibaren süre sonu ' nu **1 Ocak** ve sıklık olarak **ayda**bir olarak ayarlarsanız, iki kullanıcı için süre sonu oluşma sıklığı aşağıda verilmiştir:
 
@@ -129,7 +129,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
     Özel koşullu erişim ilkeleri, belirli bir bulut uygulamasına veya kullanıcı grubuna göre ayrıntılı kullanım koşullarını sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşulları](require-tou.md).
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
    Özel bir koşullu erişim şablonu seçtiyseniz, özel koşullu erişim ilkesi oluşturmanıza olanak sağlayan yeni bir ekran görüntülenir.
 
@@ -225,7 +225,7 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 
    ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-tou.png)
 
-1. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
+1. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
 
    Değişikliklerinizi kaydettikten sonra, kullanıcılar bu düzenlemeleri yeniden kabul etmek zorunda olmayacaktır.
 
@@ -255,10 +255,10 @@ Desteklenen platformların ve yazılımların listesi aşağıda verilmiştir.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Diğer |
 > | --- | --- | --- | --- | --- |
-> | **Yerel uygulama** | Evet | Evet | Evet |  |
-> | **Microsoft Edge** | Evet | Evet | Evet |  |
-> | **Internet Explorer** | Evet | Evet | Evet |  |
-> | **Chrome (uzantısıyla)** | Evet | Evet | Evet |  |
+> | **Yerel uygulama** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Chrome (uzantısıyla)** | Yes | Yes | Yes |  |
 
 Cihaz başına kullanım koşulları aşağıdaki kısıtlamalara sahiptir:
 
@@ -363,7 +363,7 @@ Y: Hayır, yönetici bir kullanım koşulları (ad, görünen ad, kullanıcılar
 Y: Şu anda mevcut bir kullanım koşulları belgesini güncelleştiremezsiniz. Kullanım koşullarını belge olarak değiştirmek için yeni bir kullanım koşulları örneği oluşturmanız gerekir.
 
 **S: köprüler PDF belgesi kullanım koşullarınızda yer alıyorsa, son kullanıcılar bunlara tıklamaları gerekir mi?**<br />
-Y: Evet, son kullanıcılar ek sayfalara köprüler seçebiliyor, ancak belge içindeki bölümlerin bağlantıları desteklenmez.
+Y: Evet, son kullanıcılar ek sayfalara köprüler seçebiliyor, ancak belge içindeki bölümlerin bağlantıları desteklenmez. Ayrıca, Azure AD Uygulamaps/MyAccount portalından erişildiğinde PDF kullanım terimleri içindeki köprüler çalışmaz.
 
 **S: Bir kullanım koşulları belgesi birden çok dili destekleyebilir mi?**<br />
 C: Evet. Şu anda bir yöneticinin tek bir kullanım koşulları için yapılandırabilirler 108 farklı dil vardır. Bir yönetici birden çok PDF belgesini karşıya yükleyebilir ve ilgili bir dille (108 kadar) bu belgeleri etiketleyebilir. Son kullanıcılar oturum açtığında, tarayıcı dili tercihini inceliyoruz ve eşleşen belgeyi görüntüyoruz. Eşleşme yoksa, karşıya yüklenen ilk belge olan varsayılan belgeyi görüntüleriz.

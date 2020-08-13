@@ -1,5 +1,5 @@
 ---
-title: PHP ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+title: 'Hızlı başlangıç: PHP ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir PHP kod örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 000f3cd9598bc4bdffa896be47466d157c7df8c1
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74766387"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182723"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: verileri bağlamak ve sorgulamak için PHP kullanın
+# <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için PHP 'yi kullanma-tek sunucu
+
 Bu hızlı başlangıçta, [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, PHP kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)
