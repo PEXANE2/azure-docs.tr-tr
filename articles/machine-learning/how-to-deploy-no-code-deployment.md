@@ -9,12 +9,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544659"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185494"
 ---
 # <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
 
@@ -24,6 +24,8 @@ ms.locfileid: "87544659"
 TensorFlow modellerinin, kod olmayan model dağıtımıyla çalışmak için **savedmodel biçiminde** kaydedilmesi gerekir.
 
 SavedModel oluşturma hakkında bilgi için [Bu bağlantıya](https://www.tensorflow.org/guide/saved_model) bakın.
+
+[DockerHub 'A hizmet veren TensorFlow](https://registry.hub.docker.com/r/tensorflow/serving/tags)'Da "Etiketler" altında listelenen tüm TensorFlow sürümlerini destekliyoruz.
 
 ```python
 from azureml.core import Model
@@ -129,7 +131,7 @@ print(output)
 * [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
-* [Web hizmetini Güncelleştir](how-to-deploy-update-web-service.md)
+* [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)

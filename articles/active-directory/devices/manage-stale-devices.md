@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025650"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184950"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -162,7 +162,7 @@ Windows 10 cihazlarında BitLocker anahtarları yapılandırıldığında, bu an
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot cihazları hakkında neden endişelenmeliyim?
 
-Bir Azure AD cihazı bir Windows Autopilot nesnesiyle ilişkilendirildiğinde, cihazın gelecekte yeniden kullanılması durumunda aşağıdaki üç senaryo meydana gelebilir:
+Bir Windows Autopilot nesnesiyle ilişkili bir Azure AD cihazını sildiğinizde, cihazın gelecekte yeniden kullanılması durumunda aşağıdaki üç senaryo meydana gelebilir:
 - Windows Autopilot Kullanıcı odaklı dağıtımlarla, beyaz gloona kullanmadan yeni bir Azure AD cihazı oluşturulur, ancak bu, ZTDıD ile etiketlenmeyecektir.
 - Windows Autopilot Self-dağıtım modu dağıtımları ile, bir Azure AD cihazının ilişkilendirilmesi bulunamadığı için bunlar başarısız olur.  (Bu, hiçbir "ımpster" cihazlarının kimlik bilgileri olmadan Azure AD 'ye katılmayı denediğinizden emin olmak için bir güvenlik mekanizmasıdır.) Hata, ZTDıD uyuşmazlığını gösterir.
 - Windows Autopilot beyaz eldiven dağıtımlarında, ilişkili bir Azure AD cihazı bulunamadığı için bunlar başarısız olur. (Arka planda, beyaz eldiven dağıtımları aynı güvenlik mekanizmalarına zorlayabilmeleri için aynı kendi kendine dağıtım modu işlemini kullanır.)

@@ -1,223 +1,41 @@
 ---
 title: Service Bus kuyruğu oluşturmak için Azure portal kullanma
-description: Bu hızlı başlangıçta, Azure portal kullanarak Service Bus kuyruğu oluşturmayı öğreneceksiniz. Daha sonra, kuyruğa ileti göndermek ve kuyruktan ileti almak için örnek bir istemci uygulaması kullanırsınız.
+description: Bu hızlı başlangıçta, Azure portal kullanarak ad alanı ve bir sırayı Service Bus nasıl oluşturacağınızı öğreneceksiniz.
 author: spelluru
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 0753259f76c46c5df4246008f3f80ffa5bf35747
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0e5a8698da03ee4d9c7d8b0d4d59eda1be3b1883
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337324"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185511"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Service Bus kuyruğu oluşturmak için Azure portal kullanma
-Bu hızlı başlangıçta, mesajlaşma ad alanı ve o ad alanı içinde bir kuyruk oluşturmak ve söz konusu ad alanında yetkilendirme kimlik bilgilerini almak için [Azure portalı][Azure portal] kullanarak bir Service Bus kuyruğuna nasıl ileti gönderileceği ve Service Bus kuyruğundan nasıl ileti alınacağı açıklanmaktadır. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.
+# <a name="use-azure-portal-to-create-a-service-bus-namespace-and-a-queue"></a>Bir Service Bus ad alanı ve sıra oluşturmak için Azure portal kullanma
+Bu hızlı başlangıçta, [Azure Portal][Azure portal]kullanarak bir Service Bus ad alanı ve kuyruğun nasıl oluşturulacağı gösterilmektedir. Ayrıca, bir istemci uygulamanın sıraya/kuyruğa ileti göndermek/almak için kullanabileceği yetkilendirme kimlik bilgilerinin nasıl alınacağını gösterir. 
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
-
-- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturabilirsiniz.
-- [Visual Studio 2017 Güncelleştirme 3 (sürüm 15.3, 26730.01)](https://www.visualstudio.com/vs) veya sonraki sürümler. Bir kuyruktan ileti gönderen ve iletiyi alan bir örnek oluşturmak için Visual Studio 'Yu kullanırsınız. Örnek, PowerShell kullanarak oluşturduğunuz kuyruğu test etmek için kullanılır. 
-- [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
+Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğiniz olduğundan emin olun. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturabilirsiniz.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="send-and-receive-messages"></a>İleti alma ve gönderme
-
-> [!NOTE]
-> Bu bölümde ileti göndermek ve almak için kullanılan örnek bir .NET örneğidir. Diğer programlama dillerini kullanarak ileti gönderme/alma örnekleri için bkz. [Service Bus örnekleri](service-bus-samples.md). 
-> 
-> Çeşitli programlama dillerini kullanarak ileti gönderme/alma hakkında adım adım yönergeler için aşağıdaki hızlı çalışmaya bakın:
-> - [.NET](service-bus-dotnet-get-started-with-queues.md)
-> - [Java](service-bus-java-how-to-use-queues.md)
-> - [Azure/Service-Bus paketini kullanarakNode.js](service-bus-nodejs-how-to-use-queues-new-package.md)
-> - [Azure-SB paketini kullanarakNode.js](service-bus-nodejs-how-to-use-queues.md)
-> - [PHP](service-bus-php-how-to-use-queues.md)
-> - [Python](service-bus-python-how-to-use-queues.md)
-> - [Ruby](service-bus-ruby-how-to-use-queues.md)
-
-Ad alanı ve kuyruğun sağlanmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu GitHub örnek klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) kodu inceleyebilirsiniz.
-
-Kodu çalıştırmak için aşağıdakileri yapın:
-
-1. [Service Bus GitHub deposunu](https://github.com/Azure/azure-service-bus/) aşağıdaki komutu çalıştırarak kopyalayın:
-
-   ```
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
-3. Örnek `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` klasörüne gidin.
-4. Yönetim kimlik bilgilerini alma bölümünde aldığınız bağlantı dizesi ve kuyruk adını kopyalayın.
-5.  Komut isteminde aşağıdaki komutu yazın:
-
-    ```
-    dotnet build
-    ```
-6.  `bin\Debug\netcoreapp2.0` klasörüne gidin.
-7.  Programı çalıştırmak için aşağıdaki komutu yazın. `myConnectionString` yerine daha önce aldığınız değeri ve `myQueueName` yerine oluşturduğunuz kuyruğun adını koymayı unutmayın:
-
-    ```shell
-    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
-    ``` 
-8. Kuyruğa 10 ileti gönderildiğini ve ardından bunların kuyruktan alındığını gözlemleyin:
-
-   ![program çıktısı](./media/service-bus-quickstart-portal/dotnet.png)
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Kaynak grubu, ad alanı ve kuyruğu kaldırmak için portalı kullanabilirsiniz.
-
-## <a name="understand-the-sample-code"></a>Örnek kodu anlama
-
-Bu bölümde, örnek kodun yaptıkları hakkında daha fazla ayrıntı bulunmaktadır. 
-
-### <a name="get-connection-string-and-queue"></a>Bağlantı dizesini ve kuyruğu alma
-
-Bağlantı dizesi ve sıra adı `Main()` yöntemine komut satırı bağımsız değişkenleri olarak geçirilir. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
-
-```csharp
-static void Main(string[] args)
-{
-    string ServiceBusConnectionString = "";
-    string QueueName = "";
-
-    for (int i = 0; i < args.Length; i++)
-    {
-        var p = new Program();
-        if (args[i] == "-ConnectionString")
-        {
-            Console.WriteLine($"ConnectionString: {args[i+1]}");
-            ServiceBusConnectionString = args[i + 1]; 
-        }
-        else if(args[i] == "-QueueName")
-        {
-            Console.WriteLine($"QueueName: {args[i+1]}");
-            QueueName = args[i + 1];
-        }                
-    }
-
-    if (ServiceBusConnectionString != "" && QueueName != "")
-        MainAsync(ServiceBusConnectionString, QueueName).GetAwaiter().GetResult();
-    else
-    {
-        Console.WriteLine("Specify -Connectionstring and -QueueName to execute the example.");
-        Console.ReadKey();
-    }                            
-}
-```
- 
-`Main()` yöntemi daha sonra zaman uyumsuz ileti döngüsünü (`MainAsync()`) başlatır.
-
-### <a name="message-loop"></a>İleti döngüsü
-
-MainAsync () yöntemi, komut satırı bağımsız değişkenleri olan bir kuyruk istemcisi oluşturur, adlı bir alma iletisi işleyicisini çağırır `RegisterOnMessageHandlerAndReceiveMessages()` ve ileti kümesini gönderir:
-
-```csharp
-static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
-{
-    const int numberOfMessages = 10;
-    queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-    Console.WriteLine("======================================================");
-    Console.WriteLine("Press any key to exit after receiving all the messages.");
-    Console.WriteLine("======================================================");
-
-    // Register QueueClient's MessageHandler and receive messages in a loop
-    RegisterOnMessageHandlerAndReceiveMessages();
-
-    // Send Messages
-    await SendMessagesAsync(numberOfMessages);
-
-    Console.ReadKey();
-
-    await queueClient.CloseAsync();
-}
-```
-
-`RegisterOnMessageHandlerAndReceiveMessages()` yöntemi, basit bir şekilde birkaç ileti işleyicisi seçeneği ayarlar, daha sonra kuyruk istemcisinin `RegisterMessageHandler()` yöntemini çağırarak alma işlemini başlatır:
-
-```csharp
-static void RegisterOnMessageHandlerAndReceiveMessages()
-{
-    // Configure the MessageHandler Options in terms of exception handling, number of concurrent messages to deliver etc.
-    var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
-    {
-        // Maximum number of Concurrent calls to the callback `ProcessMessagesAsync`, set to 1 for simplicity.
-        // Set it according to how many messages the application wants to process in parallel.
-        MaxConcurrentCalls = 1,
-
-        // Indicates whether MessagePump should automatically complete the messages after returning from User Callback.
-        // False below indicates the Complete will be handled by the User Callback as in `ProcessMessagesAsync` below.
-        AutoComplete = false
-    };
-
-    // Register the function that will process messages
-    queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
-} 
-```
-
-### <a name="send-messages"></a>İleti gönderme
-
-İleti oluşturma ve gönderme işlemleri, `SendMessagesAsync()` yönteminde gerçekleşir:
-
-```csharp
-static async Task SendMessagesAsync(int numberOfMessagesToSend)
-{
-    try
-    {
-        for (var i = 0; i < numberOfMessagesToSend; i++)
-        {
-            // Create a new message to send to the queue
-            string messageBody = $"Message {i}";
-            var message = new Message(Encoding.UTF8.GetBytes(messageBody));
-
-            // Write the body of the message to the console
-            Console.WriteLine($"Sending message: {messageBody}");
-
-            // Send the message to the queue
-            await queueClient.SendAsync(message);
-        }
-    }
-    catch (Exception exception)
-    {
-        Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
-    }
-}
-```
-
-### <a name="process-messages"></a>İletileri işleme
-
-`ProcessMessagesAsync()` yöntemi, iletilerin alınmasını onaylar, işler ve tamamlar:
-
-```csharp
-static async Task ProcessMessagesAsync(Message message, CancellationToken token)
-{
-    // Process the message
-    Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
-
-    // Complete the message so that it is not received again.
-    await queueClient.CompleteAsync(message.SystemProperties.LockToken);
-}
-```
-> [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
-
 ## <a name="next-steps"></a>Sonraki adımlar
+Bu makalede, ad alanında bir Service Bus ad alanı ve bir sıra oluşturdunuz. Sıraya/kuyruğa ileti gönderme/alma hakkında bilgi edinmek için **Ileti gönderme ve alma** bölümünde aşağıdaki hızlı başlangıçlardan birine bakın. 
 
-Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. İleti göndermek ve almak için kod yazma hakkında daha fazla bilgi edinmek için **Ileti gönderme ve alma** bölümündeki öğreticilere devam edin. 
-
-> [!div class="nextstepaction"]
-> [İleti alma ve gönderme](service-bus-dotnet-get-started-with-queues.md)
-
+- [.NET](service-bus-dotnet-get-started-with-queues.md)
+- [Java](service-bus-java-how-to-use-queues.md)
+- [JavaScript](service-bus-nodejs-how-to-use-queues-new-package.md)
+- [Python](service-bus-python-how-to-use-queues.md)
+- [PHP](service-bus-php-how-to-use-queues.md)
+- [Ruby](service-bus-ruby-how-to-use-queues.md)
 
 [Ücretsiz hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [service-bus-flow]: ./media/service-bus-quickstart-portal/service-bus-flow.png

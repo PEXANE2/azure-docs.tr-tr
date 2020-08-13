@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
+ms.date: 08/11/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 76c936cb0c1a95ca1bf5919cbf2753fb6f050687
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971020"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185528"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanını sağlama
 
@@ -34,7 +34,7 @@ Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve ç
 
 Azure-SSIS IR’ler hakkında kavramsal bilgiler için bkz. [Azure SSIS tümleştirme çalışma zamanına genel bakış](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
-Bu öğreticide, aşağıdaki adımları tamamlayacaksınız:
+Bu öğreticide aşağıdaki adımları tamamlarsınız:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
@@ -127,93 +127,99 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
 ### <a name="deployment-settings-page"></a>Dağıtım ayarları sayfası
 
-**Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında aşağıdaki adımları izleyin.
+**Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında, SSISDB ve veya Azure-SSIS IR paket depoları oluşturma seçeneklerine sahip olursunuz.
 
-   1. Paketlerinizi SSSıSDB 'ye (proje dağıtım modeli) dağıtmak isteyip istemediğinizi seçmek için, **Azure SQL veritabanı sunucusu/yönetilen örneği tarafından barındırılan BIR SSIS Kataloğu (SSSıSDB) oluştur/yönetilen örnek** ' i seçin. Alternatif olarak, paketlerinizi Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtmak istiyorsanız SSSıSDB oluşturmanıza gerek yoktur.
+#### <a name="creating-ssisdb"></a>SSSıSDB oluşturma
+
+**Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** SAYFASıNDA, paketlerinizi Sssısdb 'ye (proje dağıtım modeli) dağıtmak istiyorsanız, **projelerinizi/paketleri/ortamları/yürütme GÜNLÜKLERINIZI depolamak için Azure SQL veritabanı sunucusu/yönetilen örneği tarafından barındırılan SSIS kataloğunu (sssısdb) oluştur** onay kutusunu seçin. Alternatif olarak, paketlerinizi Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtmak istiyorsanız, SSıSDB oluşturma veya onay kutusunu seçme gereksinimi yoktur.
+
+Dağıtım modelinize bakılmaksızın, Azure SQL yönetilen örneği tarafından barındırılan SQL Server Agent paket yürütmelerini düzenlemek ve zamanlamak için kullanmak istiyorsanız, SSıSDB tarafından etkinleştirilir, bu nedenle yine de onay kutusunu seçin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örnek Aracısı aracılığıyla SSIS paket yürütmelerini zamanlama](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent).
    
-      Dağıtım modelinizi ne olursa olsun, Azure SQL yönetilen örneği tarafından barındırılan SQL Server Agent kullanmak isteyip istemediğinizi belirlemek için bu onay kutusunu işaretleyin. Bu, SSSıSDB tarafından etkinleştirildiğinden paket yürütmelerinin organize edilip planlanmadığını belirleyin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örnek Aracısı aracılığıyla SSIS paket yürütmelerini zamanlama](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent).
+Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağımız SSıSDB 'yi barındırmak için kendi veritabanı sunucunuzu getirmek üzere aşağıdaki adımları izleyin.
+
+   ![SSSıSDB dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
    
-      Bu onay kutusunu seçerseniz, sizin adınıza oluşturacağınız ve yönetecağımız SSıSDB barındırmak için kendi veritabanı sunucunuzu getirmeniz gerekir.
+   1. **Subscription** (Abonelik) alanında SSISDB'yi barındıran Azure aboneliğini seçin. 
 
-      ![SSSıSDB dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   1. **Location** (Konum) alanında SSISDB'yi barındıran veritabanı sunucunuzun konumunu seçin. Tümleştirme çalışma zamanınızla aynı konumu seçmenizi öneririz.
+
+   1. **Catalog Database Server Endpoint** (Katalog Veritabanı Sunucusu Uç Noktası) alanında SSISDB'yi barındıracak veritabanı sunucunuzun uç noktasını seçin. 
    
-      1. **Subscription** (Abonelik) alanında SSISDB'yi barındıran Azure aboneliğini seçin. 
+      Seçili veritabanı sunucusuna bağlı olarak, SSıSDB örneği, elastik havuzun bir parçası olarak veya yönetilen bir örnekte sizin adınıza tek bir veritabanı olarak oluşturulabilir. Bu, genel bir ağda veya bir sanal ağa katılarak erişilebilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [SQL veritabanı ve SQL yönetilen örneği karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).   
 
-      1. **Location** (Konum) alanında SSISDB'yi barındıran veritabanı sunucunuzun konumunu seçin. Tümleştirme çalışma zamanınızla aynı konumu seçmenizi öneririz.
+      SSD 'yi barındırmak için IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek içeren bir Azure SQL veritabanı sunucusu seçerseniz veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
-      1. **Catalog Database Server Endpoint** (Katalog Veritabanı Sunucusu Uç Noktası) alanında SSISDB'yi barındıracak veritabanı sunucunuzun uç noktasını seçin. 
+   1. Veritabanı sunucunuzun SSıSDB 'yi barındıracak kimlik doğrulama yöntemini seçmek için, **ADF 'niz için yönetilen kimlikle Azure AD kimlik doğrulamasını kullan** onay kutusunu seçin. Veri fabrikanızın yönetilen kimliğiyle SQL kimlik doğrulaması ya da Azure AD kimlik doğrulaması ' nı seçersiniz.
+
+      Onay kutusunu seçerseniz, veritabanı sunucunuza erişim izinleri olan bir Azure AD grubuna veri fabrikanızın yönetilen kimliğini eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
    
-         Seçili veritabanı sunucusuna bağlı olarak, SSıSDB örneği, elastik havuzun bir parçası olarak veya yönetilen bir örnekte sizin adınıza tek bir veritabanı olarak oluşturulabilir. Bu, genel bir ağda veya bir sanal ağa katılarak erişilebilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [SQL veritabanı ve SQL yönetilen örneği karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).   
+   1. **Yönetici Kullanıcı adı**IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulaması Kullanıcı adı ' nı girin. 
 
-         SSD 'yi barındırmak için IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek içeren bir Azure SQL veritabanı sunucusu seçerseniz veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+   1. **Yönetici parolası**IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulama parolasını girin. 
 
-      1. Veritabanı sunucunuzun SSıSDB 'yi barındıracak kimlik doğrulama yöntemini seçmek için, **ADF 'niz için Managed Identity Ile AAD kimlik doğrulamasını kullan** onay kutusunu seçin. Veri fabrikanızın yönetilen kimliğiyle SQL kimlik doğrulaması ya da Azure AD kimlik doğrulaması ' nı seçersiniz.
+   1. **Katalog veritabanı hizmet katmanı**IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin.
 
-         Onay kutusunu seçerseniz, veritabanı sunucunuza erişim izinleri olan bir Azure AD grubuna veri fabrikanızın yönetilen kimliğini eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri**' yi seçin.
+
+#### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR paket depoları oluşturma
+
+**Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında, msdb, dosya sistemi veya Azure dosyaları 'Na (paket dağıtım modeli) dağıtılan paketlerinizi Azure-SSIS IR paket depolarıyla yönetmek Istiyorsanız, **Azure SQL yönetilen örneği tarafından barındırılan dosya sistemine/Azure DOSYALARıNA/SQL Server veritabanına (msdb) dağıtılan paketlerinizi yönetmek için paket depolarını oluştur** onay kutusunu seçin.
    
-      1. **Yönetici Kullanıcı adı**IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulaması Kullanıcı adı ' nı girin. 
-
-      1. **Yönetici parolası**IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulama parolasını girin. 
-
-      1. **Katalog veritabanı hizmet katmanı**IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin.
-
-   1. Azure-SSIS IR paket depolarıyla MSDB, dosya sistemi veya Azure dosyalarına (paket dağıtım modeli) dağıtılan paketlerinizi yönetmek isteyip istemediğinizi belirlemek için **Azure SQL yönetilen örneği tarafından barındırılan dosya sistemine/Azure dosyalarına/SQL Server veritabanına (msdb) dağıtılan paketlerinizi yönetmek için paket depolarını oluştur** onay kutusunu seçin.
+Azure-SSIS IR paket deposu, paketleri içeri/dışarı/dışarı ve dışa aktarmanıza/çalıştırmanıza ve [eskı SSIS paket deposuna](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)benzer SSMS 'ler aracılığıyla çalıştırılan Paketleri izlemenize/durdurmasına izin verir. Daha fazla bilgi için bkz. [Azure-SSIS IR paketi depoları Ile SSIS paketlerini yönetme](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store).
    
-      Azure-SSIS IR paket deposu, paketleri içeri/dışarı/dışarı ve dışa aktarmanıza/çalıştırmanıza ve [eskı SSIS paket deposuna](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)benzer SSMS 'ler aracılığıyla çalıştırılan Paketleri izlemenize/durdurmasına izin verir. Daha fazla bilgi için bkz. [Azure-SSIS IR paketi depoları Ile SSIS paketlerini yönetme](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store).
+Bu onay kutusunu seçerseniz, **Yeni**' yi seçerek Azure-SSIS IR birden çok paket deposu ekleyebilirsiniz. Buna karşılık, bir paket deposu birden çok Azure-SSIS IRS tarafından paylaşılabilir.
+
+![MSDB/dosya sistemi/Azure dosyaları için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+
+**Paket deposu Ekle** bölmesinde aşağıdaki adımları izleyin.
    
-      Bu onay kutusunu seçerseniz, **Yeni**' yi seçerek Azure-SSIS IR birden çok paket deposu ekleyebilirsiniz. Buna karşılık, bir paket deposu birden çok Azure-SSIS IRS tarafından paylaşılabilir.
+   1. **Paket deposu adı**için, paket deponuzın adını girin. 
 
-      ![MSDB/dosya sistemi/Azure dosyaları için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+   1. **Paket deposu bağlı hizmeti**için, paketlerinizin dağıtıldığı dosya sistemi/Azure dosyaları/Azure SQL yönetilen örneği için erişim bilgilerini depolayan mevcut bağlı hizmetinizi seçin veya **Yeni**' yi seçerek yeni bir tane oluşturun. **Yeni bağlı hizmet** bölmesinde aşağıdaki adımları izleyin. 
 
-      **Paket deposu Ekle** bölmesinde aşağıdaki adımları izleyin.
-   
-      1. **Paket deposu adı**için, paket deponuzın adını girin. 
+      ![Bağlı hizmetler için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
-      1. **Paket deposu bağlı hizmeti**için, paketlerinizin dağıtıldığı dosya sistemi/Azure dosyaları/Azure SQL yönetilen örneği için erişim bilgilerini depolayan mevcut bağlı hizmetinizi seçin veya **Yeni**' yi seçerek yeni bir tane oluşturun. **Yeni bağlı hizmet** bölmesinde aşağıdaki adımları izleyin. 
-
-         ![Bağlı hizmetler için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
-
-         1. **Ad**için, bağlı hizmetinizin adını girin. 
+      1. **Ad**için, bağlı hizmetinizin adını girin. 
          
-         1. **Açıklama**için, bağlı hizmetinizin açıklamasını girin. 
+      1. **Açıklama**için, bağlı hizmetinizin açıklamasını girin. 
          
-         1. **Tür**Için **Azure dosya depolama**, **Azure SQL yönetilen örneği**veya **dosya sistemi**' ni seçin.
+      1. **Tür**Için **Azure dosya depolama**, **Azure SQL yönetilen örneği**veya **dosya sistemi**' ni seçin.
 
-         1. Her zaman paket depoları için erişim bilgilerini getirmek üzere Azure-SSIS IR kullandığımızdan **Integration Runtime aracılığıyla bağlanmayı**yoksayabilirsiniz.
+      1. Her zaman paket depoları için erişim bilgilerini getirmek üzere Azure-SSIS IR kullandığımızdan **Integration Runtime aracılığıyla bağlanmayı**yoksayabilirsiniz.
 
-         1. **Azure dosya depolama**' yı seçerseniz, aşağıdaki adımları izleyin. 
+      1. **Azure dosya depolama**' yı seçerseniz, aşağıdaki adımları izleyin. 
 
-            1. **Hesap seçme yöntemi**için **Azure aboneliği ' nden** seçim yapın veya **el ile girin**.
+         1. **Hesap seçme yöntemi**için **Azure aboneliği ' nden** seçim yapın veya **el ile girin**.
          
-            1. **Azure aboneliğinden**seçim yaparsanız ilgili **Azure aboneliğini**, **depolama hesabı adını**ve **Dosya payını**seçin.
+         1. **Azure aboneliğinden**seçim yaparsanız ilgili **Azure aboneliğini**, **depolama hesabı adını**ve **Dosya payını**seçin.
             
-            1. **El Ile gir**' i seçerseniz, `\\<storage account name>.file.core.windows.net\<file share name>` **konak**için, `Azure\<storage account name>` **Kullanıcı adı**için ve `<storage account key>` **parola** için girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+         1. **El Ile gir**' i seçerseniz, `\\<storage account name>.file.core.windows.net\<file share name>` **konak**için, `Azure\<storage account name>` **Kullanıcı adı**için ve `<storage account key>` **parola** için girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-         1. **Azure SQL yönetilen örneği**' ni seçerseniz, aşağıdaki adımları izleyin. 
+      1. **Azure SQL yönetilen örneği**' ni seçerseniz, aşağıdaki adımları izleyin. 
 
-            1. El ile veya **Azure Key Vault** gizli olarak depolanacağı **bağlantı dizesini** seçin.
+         1. El ile veya **Azure Key Vault** gizli olarak depolanacağı **bağlantı dizesini** seçin.
          
-            1. **Bağlantı dizesi**' ni seçerseniz, aşağıdaki adımları uygulayın. 
+         1. **Bağlantı dizesi**' ni seçerseniz, aşağıdaki adımları uygulayın. 
 
-               1. **Tam etki alanı adı**için, `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` sırasıyla Azure SQL yönetilen örneğinizin özel veya genel uç noktasını girin. Özel uç noktayı girerseniz, ADF Kullanıcı arabirimine ulaşamadığından **test bağlantısı** geçerli değildir.
+            1. **Tam etki alanı adı**için, `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` sırasıyla Azure SQL yönetilen örneğinizin özel veya genel uç noktasını girin. Özel uç noktayı girerseniz, ADF Kullanıcı arabirimine ulaşamadığından **test bağlantısı** geçerli değildir.
 
-               1. **Veritabanı adı**için girin `msdb` .
+            1. **Veritabanı adı**için girin `msdb` .
                
-               1. **Kimlik doğrulama türü**Için, **SQL kimlik doğrulaması**, **yönetilen kimlik**veya **hizmet sorumlusu**' nı seçin.
+            1. **Kimlik doğrulama türü**Için, **SQL kimlik doğrulaması**, **yönetilen kimlik**veya **hizmet sorumlusu**' nı seçin.
 
-               1. **SQL kimlik doğrulaması**' nı seçerseniz, Ilgili **Kullanıcı adını** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+            1. **SQL kimlik doğrulaması**' nı seçerseniz, Ilgili **Kullanıcı adını** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-               1. **Yönetilen kimlik**' i SEÇERSENIZ, ADF tarafından yönetilen KIMLIĞI Azure SQL yönetilen örneğiniz için erişim izni verin.
+            1. **Yönetilen kimlik**' i SEÇERSENIZ, ADF tarafından yönetilen KIMLIĞI Azure SQL yönetilen örneğiniz için erişim izni verin.
 
-               1. **Hizmet sorumlusu**' nı seçerseniz, ilgili **hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+            1. **Hizmet sorumlusu**' nı seçerseniz, ilgili **hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-         1. **Dosya sistemi**' ni seçerseniz, paketlerinizin **konak**için dağıtıldığı klasörün UNC yolunu ve Ilgili **Kullanıcı adı** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+      1. **Dosya sistemi**' ni seçerseniz, paketlerinizin **konak**için dağıtıldığı klasörün UNC yolunu ve Ilgili **Kullanıcı adı** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-         1. Uygun olduğunda **test bağlantısı** ' nı seçin ve başarılı olursa **Oluştur**' u seçin.
+      1. Uygun olduğunda **test bağlantısı** ' nı seçin ve başarılı olursa **Oluştur**' u seçin.
 
-      Eklenmiş paket depolarınız **dağıtım ayarları** sayfasında görüntülenir. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil**' i seçin.
+   1. Eklenmiş paket depolarınız **dağıtım ayarları** sayfasında görüntülenir. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil**' i seçin.
 
-   1. Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri**' yi seçin.
+Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri**' yi seçin.
 
 ### <a name="advanced-settings-page"></a>Gelişmiş ayarlar sayfası
 

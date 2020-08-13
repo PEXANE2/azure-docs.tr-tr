@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031090"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185630"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -156,12 +156,13 @@ Bulut katmanlama durumu
   - Olay kimliği 9016, bir birim için hayalet kopya oluşturuluyor sonuçları sağlar. Örneğin: boş alan yüzdesi, oturumdaki hayalet dosya sayısı ve hayalet başarısız olan dosya sayısı.
   - Olay kimliği 9029, bir sunucu uç noktası için hayalet kopya oluşturuluyor oturum bilgileri sağlar. Örneğin: oturumda denenen dosya sayısı, oturumda katmanlı dosya sayısı ve zaten katmanlı dosya sayısı.
   
-- Bir sunucudaki geri çekme etkinliğini izlemek için, *uygulamalar ve Services\Microsoft\FileSync\Agent*altında Olay Görüntüleyicisi bulunan telemetri olay GÜNLÜĞÜNDE olay kimliği 9005, 9006, 9009 ve 9059 kullanın.
+- Bir sunucudaki geri çekme etkinliğini izlemek için, *uygulamalar ve Services\Microsoft\FileSync\Agent*altında Olay Görüntüleyicisi bulunan telemetri olay GÜNLÜĞÜNDE olay kimliği 9005, 9006, 9009, 9059 ve 9071 kullanın.
 
   - Olay KIMLIĞI 9005, bir sunucu uç noktası için geri çağırma güvenilirliği sağlar. Örneğin: erişilen toplam benzersiz dosya ve başarısız erişimi olan toplam benzersiz dosya sayısı.
   - Olay KIMLIĞI 9006, bir sunucu uç noktası için geri çağırma hatası dağıtımı sağlar. Örneğin: Toplam başarısız Istek ve hata kodu. Hata kodu başına bir olay günlüğe kaydedilir.
   - Olay KIMLIĞI 9009, bir sunucu uç noktası için geri çağırma oturumu bilgilerini sağlar. Örneğin: DurationSeconds, CountFilesRecallSucceeded ve CountFilesRecallFailed.
   - Olay KIMLIĞI 9059, bir sunucu uç noktası için uygulama geri çağırma dağıtımı sağlar. Örneğin: Shareıd, Application Name ve TotalEgressNetworkBytes.
+  - Olay KIMLIĞI 9071, bir sunucu uç noktası için bulut katmanlama verimliliği sağlar. Örneğin: Totaldıstıntfilecountcachehit, Totaldıstıntfilecountcacheisabetsiz, TotalCacheHitBytes ve TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>Performans sayaçları
 

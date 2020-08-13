@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 095e837043e6322cf85aeaa732f5bcbf7c0fa098
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 13972a1afd0860202eab7a3e3f9c4b9273c44e38
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135391"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185681"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma için kaynak ortamı ayarlama
 
@@ -33,7 +33,7 @@ Makalesinde zaten sahip olduğunuz varsayılır:
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
 3. Makinelerinizin bulunduğu **koruma hedefi**bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
-5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Sonra **Tamam**’ı seçin.
+5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
 
 ## <a name="set-up-the-configuration-server"></a>Yapılandırma sunucusunu ayarlama
 
@@ -82,6 +82,18 @@ Aşağıdaki klasörleri virüsten koruma yazılımından çıkar
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
 7. Yük dengeli işlem sunucusu yükleme dizinini Azure Site Recovery, örnek: C:\Program Files (x86) \Microsoft Azure Site Recovery
+
+## <a name="if-antivirus-software-is-active-on-the-linux-master-target"></a>Linux ana hedefinde virüsten koruma yazılımı etkinse
+
+Aşağıdaki klasörleri virüsten koruma yazılımından çıkar
+
+1.  /usr/local/ASR
+2.  /Usr/local/InMage
+3.  /var/log/vxlogs
+4.  /var/log
+5.  /var/log/ApplicationPolicyLogs
+6.  /Var/log/asrsetuptelemetrisi
+7.  /var/log/ASRsetuptelemetry_uploaded
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

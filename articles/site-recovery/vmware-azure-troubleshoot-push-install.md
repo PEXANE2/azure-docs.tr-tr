@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133529"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185222"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility hizmeti anında yükleme sorunlarını giderme
 
@@ -41,8 +41,8 @@ Windows için (**hata 95107**), Kullanıcı hesabının kaynak bilgisayarda bir 
 * Uzaktan Kullanıcı erişimi denetimini devre dışı bırakan bir kayıt defteri anahtarını el ile eklemek için:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Yeni bir Ekle `DWORD` :`LocalAccountTokenFilterPolicy`
-  * Değeri olarak ayarlayın`1`
+  * Yeni bir Ekle `DWORD` : `LocalAccountTokenFilterPolicy`
+  * Değeri olarak ayarlayın `1`
 
 * Kayıt defteri anahtarını eklemek için, bir komut isteminden aşağıdaki komutu çalıştırın:
 
@@ -204,7 +204,7 @@ Birden çok önyükleme diskine sahip bir sanal makine [desteklenen bir yapılan
 
 Genel Birleşik önyükleme yükleyicisi (GRUB) yapılandırma dosyaları (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/GRUB2/grub.cfg_veya _/etc/default/grub_), parametre **kökünün** değerini içerebilir ve evrensel benzersiz tanımlayıcı (UUID) yerine gerçek cihaz adları olarak **sürdürülür** . VM 'nin yeniden başlatılması sırasında cihaz adlarının değiştirebilmeleri için UUID 'nin yaklaşımını Site Recovery. Örneğin, VM, yük devretme sırasında aynı ada sahip ve sorunlara neden olan bir ad ile çevrimiçi olamıyor olabilir.
 
-Örneğin:
+Örnek:
 
 - Aşağıdaki satır, GRUB dosyası _/Boot/GRUB2/grub.cfg_:
 
@@ -223,7 +223,7 @@ Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
 
 1. Komutu yürüterek cihazın UUID 'sini bulun `blkid \<device name>` .
 
-   Örneğin:
+   Örnek:
 
    ```shell
    blkid /dev/sda1
@@ -257,6 +257,10 @@ Site Recovery Mobility hizmetinde, biri filtre sürücüsü olarak adlandırıla
 ## <a name="insufficient-space-errorid-95524"></a>Yetersiz alan (errorID: 95524)
 
 Mobility Aracısı kaynak makineye kopyalandığında, en az 100 MB boş alan gerekir. Kaynak makinenizin gerekli miktarda boş alana sahip olduğundan emin olun ve işlemi yeniden deneyin.
+
+## <a name="low-system-resources"></a>Düşük sistem kaynakları
+
+Bu sorun, sistem kullanılabilir belleğin düşük olması durumunda oluşur ve Mobility hizmeti yüklemesi için bellek ayıramayabilir. Yüklemenin devam edebilmesi ve başarıyla tamamlanabilmesi için yeterli bellek boşaldığınızdan emin olun.
 
 ## <a name="vss-installation-failures"></a>VSS yükleme sorunları
 

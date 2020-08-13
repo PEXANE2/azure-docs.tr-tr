@@ -1,17 +1,17 @@
 ---
 title: 'Öğretici: Azure FXT Edge Filer önbellek kümesi oluşturma'
-description: Azure FXT Edge Filsi ile karma depolama önbelleği kümesi oluşturma
+description: Azure FXT Edge Filsi ile karma depolama önbelleği kümesi oluşturmayı ve küme ayarlarını yapılandırmak için küme denetim masasında oturum açmayı öğrenin.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693082"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185358"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesi oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları öğreneceksiniz:
 
 Bu yordam, IP adreslerini ve ağ kaynaklarını belirlemek için yapmanız gereken araştırma miktarına bağlı olarak 15 ila 45 dakika arasında sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce bu önkoşulları doldurun:
 

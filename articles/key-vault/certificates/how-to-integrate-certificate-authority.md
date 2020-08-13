@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d558b414bfa27b387a559ff6c8fdb5ada32730fc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964507"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185647"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
@@ -61,7 +61,7 @@ DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasası
     -   **Hesap kimliği**: DigiCert Certcentral hesap kimliğinizi girin
     -   **Hesap parolası**: DigiCert certcentral HESABıNıZDA oluşturduğunuz API anahtarını girin
     -   **Kuruluş kimliği**: DigiCert Certcentral hesabından toplanan OrgID girin 
-    -   **Oluştur**'a tıklayın.
+    -   **Oluştur**’a tıklayın.
    
 6.  Digiccertca 'Nın artık sertifika yetkilileri listesine eklendiğini görürsünüz.
 
@@ -131,6 +131,16 @@ Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifika i�
  ![Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
+
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+- Keykasadan bir DigiCert joker belgesi oluşturabilir miyim? 
+   Evet. Bu, DigiCert hesabınızı nasıl yapılandırdığınıza bağlıdır.
+- Bir EV sertifikası oluşturuyoruz, bunu nasıl belirttik? 
+   Bir sertifika oluştururken Gelişmiş Ilke yapılandırması ' na tıklayın ve ardından sertifika türünü belirtin. Desteklenen değerler şunlardır: OV-SSL, KD-SSL
+- Tümleştiricert aracılığıyla sertifika edinerek tümleştirme aracılığıyla DigiCert sertifikası oluşturmada bir gecikme süresi var mı?
+   Hayır. Bir sertifika oluştururken, bu doğrulama işlemi zaman alabilir ve doğrulamanın aşağıdaki işlem DigiCert 'e bağlı olduğunu belirten bir işlemdir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

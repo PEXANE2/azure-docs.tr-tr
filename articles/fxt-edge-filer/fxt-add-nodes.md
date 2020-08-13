@@ -1,17 +1,17 @@
 ---
 title: 'Öğretici: Azure FXT Edge Filer kümesine düğüm ekleme'
-description: Azure FXT Edge Filer depolama önbelleğine düğüm ekleme
+description: Azure FXT Edge Filer depolama önbelleğine küme düğümleri eklemeyi ve yüksek kullanılabilirlik (HA) özelliğini etkinleştirmeyi öğrenin.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b62927930212fc7e59fc4329a29ceecbe2815e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551956"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185341"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesine küme düğümleri ekleme
 
@@ -68,7 +68,7 @@ Düğüm adı, IP adresi, yazılım sürümü ve uygunluk durumu listede görün
 
 Bir kümedeki tüm düğümlerin işletim sistemi aynı sürümünü kullanması gerekir, ancak bir düğüm eklemeden önce yazılımı güncelleştirmeniz gerekmez. **Birleşime Izin ver** düğmesine tıkladıktan sonra küme JOIN işlemi, kümedeki sürümle eşleşen işletim sistemi yazılımını otomatik olarak denetler ve kurar.
 
-Bu sayfadaki seçenekler hakkında daha fazla bilgi edinmek için küme yapılandırma kılavuzundaki [ **cluster** > FXT düğümlerini](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) okuyun.
+Bu sayfadaki seçenekler hakkında daha fazla bilgi edinmek için küme yapılandırma kılavuzundaki [ **cluster**  >  **FXT düğümlerini** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) okuyun.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. "katılmasına Izin ver" düğmesine tıklayın 
 

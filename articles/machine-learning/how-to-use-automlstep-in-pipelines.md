@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850449"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185664"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 Kod parçacığında ile yaygın olarak kullanılan bir deyim gösterilmektedir `AutoMLConfig` . Daha akıcı olan bağımsız değişkenler, farklı bir sözlükte belirtilir, ancak değişmeme olasılığı düşük olan değerler doğrudan `AutoMLConfig` oluşturucuda belirtilir. Bu durumda, `automl_settings` kısa bir çalıştırma belirtin: çalıştırma, ilk olarak yalnızca 2 yinelemeden veya 15 dakikadan sonra durur.
@@ -346,7 +347,7 @@ Kod parçacığında ile yaygın olarak kullanılan bir deyim gösterilmektedir 
 , `AutoMLStep` `AutoMLConfig` Ve, `PipelineData` ölçümleri ve model verilerini tutmak için oluşturulan nesneler olan ve ' ı alır. 
 
 >[!Important]
-> `passthru_automl_config` `False` `AutoMLStep` Giriş için nesneleri kullanıyorsa, olarak ' i ayarlamanız gerekir `PipelineOutputTabularDataset` .
+> Kullanmadığınız takdirde, `enable_default_model_output` ve ' i ayarlamanız gerekir `enable_default_metrics_output` `False` `AutoMLStep` .
 
 Bu örnekte, otomatik ML işlemi üzerinde çapraz doğrulamalar gerçekleştirecek `training_data` . Bağımsız değişkenle çapraz doğrulama sayısını kontrol edebilirsiniz `n_cross_validations` . Eğitim verilerinizi veri hazırlama adımlarınızın bir parçası olarak zaten ayırdıysanız `validation_data` kendi kendine ayarlayabilirsiniz `Dataset` .
 

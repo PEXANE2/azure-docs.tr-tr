@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c91731d70d5db59ecf5daa726fd42ee42c58f51e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6de08faee78deeb86117084b420eb5043153f62d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116305"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186055"
 ---
 # <a name="ssis-migration-with-azure-sql-managed-instance-as-the-database-workload-destination"></a>SSIS, veritabanı iş yükü hedefi olarak Azure SQL yönetilen örneği ile geçiş
 
@@ -32,7 +32,9 @@ Ssssıs [PAKETLERINI SQL yönetilen örneği 'Ne geçirme](https://docs.microsof
 
 ## <a name="ssis-jobs-to-sql-managed-instance-agent"></a>SSIS işleri SQL yönetilen örnek aracısına
 
-SQL yönetilen örneği, yalnızca şirket içi SQL Server Agent gibi yerel, birinci sınıf bir Scheduler 'a sahiptir.  SSIS işlerinin geçiş aracı henüz kullanılamadığından, betikler/el ile kopyalama aracılığıyla şirket içi SQL Server Agent içinden SQL yönetilen örnek aracısına geçirilmesi gerekir.
+SQL yönetilen örneği, yalnızca şirket içi SQL Server Agent gibi yerel, birinci sınıf bir Scheduler 'a sahiptir.  [SSIS paketlerini Azure SQL yönetilen örnek Aracısı aracılığıyla çalıştırabilirsiniz](how-to-invoke-ssis-package-managed-instance-agent.md).
+
+SSIS işlerinin geçiş aracı henüz kullanılamadığından, betikler/el ile kopyalama aracılığıyla şirket içi SQL Server Agent içinden SQL yönetilen örnek aracısına geçirilmesi gerekir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463544"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185290"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET 'te blob anlık görüntüsü oluşturma ve yönetme
 
@@ -24,7 +24,7 @@ Azure depolama 'daki blob anlık görüntüleri hakkında daha fazla bilgi için
 
 ## <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
 
-# <a name="net-version-12x"></a>[.NET sürüm 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 .NET için Azure depolama istemci kitaplığı 'nın 12. x sürümünü kullanarak bir blok blobunun anlık görüntüsünü oluşturmak için aşağıdaki yöntemlerden birini kullanın:
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET sürüm 11. x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 .NET için Azure depolama istemci kitaplığı 'nın 11. x sürümünü kullanarak bir blok blobunun anlık görüntüsünü oluşturmak için aşağıdaki yöntemlerden birini kullanın:
 
@@ -126,11 +126,11 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 Bir blobu silmek için, önce söz konusu Blobun anlık görüntülerini silmeniz gerekir. Bir anlık görüntüyü tek tek silebilir veya kaynak blobu silindiğinde tüm anlık görüntülerin silineceğini belirtebilirsiniz. Anlık görüntülere sahip olan bir blobu silmeye çalışırsanız hata oluşur.
 
-# <a name="net-version-12x"></a>[.NET sürüm 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 .NET için Azure depolama istemci kitaplığı 'nın 12. x sürümünü kullanarak bir blobu ve anlık görüntülerini silmek için aşağıdaki yöntemlerden birini kullanın ve [Deletesnapshot Tsoption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) sabit listesini ekleyin:
 
-- [Sil](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.delete)
+- [Silme](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.delete)
 - [DeleteAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteasync)
 - [Deleteıfexists](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [Deleteıfexistsasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
@@ -141,11 +141,11 @@ Aşağıdaki kod örneği, .NET 'teki bir Blobun ve anlık görüntülerinin nas
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET sürüm 11. x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 .NET için Azure depolama istemci kitaplığı 'nın 11. x sürümünü kullanarak bir blobu ve anlık görüntülerini silmek için aşağıdaki blob silme yöntemlerinden birini kullanın ve [Deletesnapshot Tsoption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) sabit listesini ekleyin:
 
-- [Sil](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
+- [Silme](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteasync)
 - [Deleteıfexists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [Deleteıfexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)

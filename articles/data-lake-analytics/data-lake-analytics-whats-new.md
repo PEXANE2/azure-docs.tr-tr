@@ -1,21 +1,19 @@
 ---
 title: Son değişiklikleri Data Lake Analytics
 description: Bu makale, Data Lake Analytics yapılan son değişikliklerin sürekli bir listesini sağlar.
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0afd37a9f80fd2778f2b7206f58cec6ff423763e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476337"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184967"
 ---
-# <a name="whats-new-in-data-lake-analytics"></a>Data Lake Analytics yenilikler nelerdir?
+# <a name="whats-new-in-data-lake-analytics"></a>Data Lake Analytics'teki yenilikler
 
 Azure Data Lake Analytics, belirli bileşenler için düzenli aralıklarla güncelleştirilir. En son güncelleştirmeyle güncel kalmak için, bu makalede hakkında bilgi verilmektedir:
 

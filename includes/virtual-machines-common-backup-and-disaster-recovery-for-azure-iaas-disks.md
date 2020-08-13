@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a2474b491abd31b750a15aad7860666c7bd02e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84124336"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186334"
 ---
 Bu makalede, Azure 'da IaaS sanal makineleri (VM) ve disklerinin yedekleme ve olağanüstü durum kurtarma (DR) için nasıl planlanacağı açıklanmaktadır. Bu belgede hem yönetilen hem de yönetilmeyen diskler ele alınmaktadır.
 
@@ -178,7 +178,7 @@ Anlık görüntü, zaman içinde belirli bir noktadaki bir nesnenin gösterimidi
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>VM çalışırken anlık görüntü oluşturma
 
-Herhangi bir zamanda anlık görüntü götürebilseniz de sanal makine çalışıyorsa disklere akışa alınan veriler de vardır. Anlık görüntüler uçuş durumunda olan kısmi işlemler içerebilir. Ayrıca, birden çok disk söz konusu olduğunda, farklı diskler için anlık görüntüler farklı zamanlarda oluşmuş olabilir. Bu senaryolar anlık görüntülerin koordine edilmemiş olmasına neden olabilir. Bu ortak ordinalıma olmaması, özellikle, yedekleme sırasında değişiklik yapılmamakta olan şeritli birimlerde, dosyaları bozulmuş olabilir.
+Herhangi bir zamanda anlık görüntü götürebilseniz de sanal makine çalışıyorsa disklere akışa alınan veriler de vardır. Anlık görüntüler uçuş durumunda olan kısmi işlemler içerebilir. Ayrıca, birden çok disk söz konusu olduğunda, farklı diskler için anlık görüntüler farklı zamanlarda oluşmuş olabilir. Bu senaryolar anlık görüntülerin koordine edilmemiş olmasına neden olabilir. Bu koordinasyon olmaması özellikle, yedekleme sırasında değişiklikler yapılırsa dosyaları bozulmuş olabilecek şeritli birimlerde soruna neden olur.
 
 Bu durumdan kaçınmak için, yedekleme işleminin aşağıdaki adımları uygulaması gerekir:
 
@@ -257,9 +257,6 @@ Coğrafi olarak yedekli depolama ve Okuma Erişimli Coğrafi olarak yedekli depo
 Önemli bir kesinti olması için Azure ekibi, coğrafi Yük devretme tetikleyip birincil DNS girdilerini ikincil depolamaya işaret etmek üzere değiştirebilir. Bu noktada, coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama etkinse, ikincil olarak kullanılan bölgedeki verilere erişebilirsiniz. Diğer bir deyişle, depolama hesabınız coğrafi olarak yedekli depolama ise ve bir sorun varsa ikincil depolamaya yalnızca coğrafi Yük devretme varsa erişebilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure Depolama kesintisi oluşursa yapmanız gerekenler](../articles/storage/common/storage-disaster-recovery-guidance.md).
-
->[!NOTE] 
->Microsoft, yük devretme yapılıp yapılmayacağını denetler. Yük devretme, depolama hesabı başına denetlenemez, bu nedenle bireysel müşteriler tarafından karar vermez. Belirli depolama hesapları veya sanal makine disklerinde olağanüstü durum kurtarma uygulamak için, bu makalede daha önce açıklanan teknikleri kullanmanız gerekir.
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

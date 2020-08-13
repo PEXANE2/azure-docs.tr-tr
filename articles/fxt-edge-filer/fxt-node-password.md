@@ -1,17 +1,17 @@
 ---
 title: 'Öğretici: donanımı başlatma-Azure FXT Edge Filer'
-description: Azure FXT Edge Filer düğümlerinde başlangıç parolası ayarlama
+description: Donanım düğümüne bağlanmayı ve Azure FXT Edge Filer düğümlerinde bir başlangıç parolası ayarlamayı öğrenin.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fae7795cdd61e3eb465285163bcd6c0dd9f7db2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75550900"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184933"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Öğretici: donanım parolalarını ayarlama
 
@@ -34,7 +34,7 @@ Bu adımları, kümenizde kullanacağınız her düğüm için tekrarlayın.
 
 Bu öğreticinin tamamlanabilmesi yaklaşık 15 dakika sürer. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce şu adımları uygulayın: 
 
@@ -80,7 +80,7 @@ Girdiğiniz parola iki şey için kullanılır:
 
 * Bu Azure FXT Edge Filer düğümü için geçici kök paroladır. 
 
-  Bu parola, bu düğümü kullanarak bir küme oluşturduğunuzda veya bu düğümü kümeye eklediğinizde değişecektir. Küme yönetim parolası (kullanıcıyla ``admin``ilişkili), bir kümedeki tüm düğümler için de kök paroladır.
+  Bu parola, bu düğümü kullanarak bir küme oluşturduğunuzda veya bu düğümü kümeye eklediğinizde değişecektir. Küme yönetim parolası (kullanıcıyla ilişkili ``admin`` ), bir kümedeki tüm düğümler için de kök paroladır.
 
 * Bu, Idrac/ıPMı donanım yönetimi bağlantı noktası için uzun süreli paroladır.
 
@@ -98,7 +98,7 @@ Parolayı girdikten sonra, sistem önyüklemeye devam eder. Tamamlandığında, 
 
 ## <a name="sign-in-as-root"></a>Kök olarak oturum aç
 
-``root`` Yeni ayarladığınız parolayla oturum açın. 
+``root``Yeni ayarladığınız parolayla oturum açın. 
 
 ```
 login: root

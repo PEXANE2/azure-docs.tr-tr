@@ -3,7 +3,7 @@ title: Azure 'da desteklenen Linux dağıtımları
 description: Ubuntu, CentOS, Oracle ve SUSE için yönergeler de dahil olmak üzere, Azure tarafından onaylanan dağıtımlara yönelik Linux hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: fd21170c4edc1ed0587ea4d4e067e61590530623
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283325"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185001"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 
@@ -74,6 +74,14 @@ Microsoft, CoreOS kullanıcıları için iki (2) geçiş kanalına sahiptir.
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credadtiv, ücretsiz yazılım kullanarak profesyonel çözümlerin geliştirilmesi ve uygulanması konusunda uzmanlaşmış bağımsız bir danışmanlık ve hizmetler şirketidir. Önde gelen açık kaynaklı uzmanlar olarak, Crefetiv, desteğini kullanan pek çok BT departmanının kullanıldığı Uluslararası tanıma sahiptir. Credadtiv, Microsoft ile birlikte, şu anda Demallik 8 (Jesan) ve 7 ' den önce (Wheezy) ilgili Dekamu görüntülerini hazırlıyor. Her iki görüntü de Azure 'da çalışmak üzere özel olarak tasarlanmıştır ve platform aracılığıyla kolayca yönetilebilir. Credavtiv Ayrıca, Azure için açık kaynak destek merkezleri aracılığıyla uzun süreli bakım ve güncelleştirme görüntülerinin güncelleştirilmesini de destekleyecektir.
+
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+Kinvolk, en az bir şekilde, Kapsayıcılı uygulamalar için bir minimum, sabit ve otomatik güncelleştirme temeli için özgün CoreOS vizyonunu devam ettirerek, yataydaki bir Linux kapsayıcısıdır. En az bir kalda, yatayda yalnızca kapsayıcıları dağıtmak için gereken paketleri içerir. Sabit dosya sistemi tutarlılık ve güvenlik garantisi sağlarken, otomatik güncelleştirme özellikleri, en son güvenlik düzeltmeleriyle her zaman güncel olmasını sağlar. 
+
+En çok 7/24 yanıt, güvenlik ve Teknik Uyarılar ve uzun süreli bir destek kanalı dahil olmak üzere Azure 'a yönelik en iyi duruma getirilmiş görüntüleri içeren isteğe bağlı bir ticari destek aboneliği sunan, Kinvolk 'in genel ekibi ve kapsayıcı teknoloji uzmanlarının, yataybir kapsayıcı Linux tarafından yedeklenir.
+
 
 ### <a name="oracle"></a>Oracle
 

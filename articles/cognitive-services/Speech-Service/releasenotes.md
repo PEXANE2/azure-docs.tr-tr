@@ -11,14 +11,47 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415032"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185324"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
+
+## <a name="new-speech-to-text-locales-2020-august-release"></a>Yeni konuşmayı metne göre yerel ayarlar: 2020-Ağustos yayını
+Konuşmadan metne, Ağustos ayında 1:2 Avrupa dilleri CS-CZ ve HU-HU, 5 Ingilizce yerel ayar ve en Güney Amerika ülke 'leri kapsayan 19 Ispanyolca yerel ayar yayınlandı. Yeni yerel ayarların listesi aşağıda verilmiştir. Lütfen [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)tüm dil listesini görüntüleyin.
+
+| Yerel Ayar  | Dil                          |
+|---------|-----------------------------------|
+| `cs-CZ` | Çekçe (Çek Cumhuriyeti)            | 
+| `en-HK` | İngilizce (Hong Kong)               | 
+| `en-IE` | İngilizce (İrlanda)                 | 
+| `en-PH` | İngilizce (Filipinler)             | 
+| `en-SG` | İngilizce (Singapur)               | 
+| `en-ZA` | İngilizce (Güney Afrika)            | 
+| `es-AR` | İspanyolca (Arjantin)               | 
+| `es-BO` | İspanyolca (Bolivya)                 | 
+| `es-CL` | İspanyolca (Şili)                   | 
+| `es-CO` | İspanyolca (Kolombiya)                | 
+| `es-CR` | İspanyolca (Kosta Rika)              | 
+| `es-CU` | İspanyolca (Küa)                    | 
+| `es-DO` | İspanyolca (Dominik Cumhuriyeti)      | 
+| `es-EC` | İspanyolca (Ekvador)                 | 
+| `es-GT` | İspanyolca (Guatemala)               | 
+| `es-HN` | İspanyolca (Honduras)                | 
+| `es-NI` | İspanyolca (Nikaragua)               | 
+| `es-PA` | İspanyolca (Panama)                  | 
+| `es-PE` | İspanyolca (Peru)                    | 
+| `es-PR` | İspanyolca (Porto Riko)             | 
+| `es-PY` | İspanyolca (Paraguay)                | 
+| `es-SV` | İspanyolca (El Salvador)             | 
+| `es-US` | İspanyolca (ABD)                     | 
+| `es-UY` | İspanyolca (Uruguay)                 | 
+| `es-VE` | İspanyolca (Venezuela)               | 
+| `hu-HU` | Macarca (Macaristan)               | 
+
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>Konuşma SDK 1.13.0:2020-Temmuz sürümü
 
@@ -246,7 +279,7 @@ Sağlıklı olun!
 - JavaScript: `FromHost API` Şirket içi kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için desteği eklendi. [Belgelere bakın](speech-container-howto.md).
 - JavaScript: artık orgads ' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler [orgads](https://github.com/orgads). [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - `OpenSSL`, 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki dizine yüklenmemişse kesintiye neden olabilir `/usr/lib/ssl` . Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
 - C# için döndürülen veri türünü, `WordLevelTimingResult.Offset` `int` `long` `WordLevelTimingResults` konuşma verileri 2 dakikadan uzun olduğunda erişime izin verecek şekilde değiştirdik.
@@ -287,7 +320,7 @@ Sağlıklı olun!
 - `KeywordRecognizer`NuGet ve Unity paketleri aracılığıyla Windows (UWP), Android ve iOS desteği eklendi
 - Zaman uyumsuz toplu işlemlerdeki konuşma dökümü için uzak konuşma Java API 'SI eklendi.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Konuşma taşıma işlevleri ad alanı altına taşındı `Microsoft.CognitiveServices.Speech.Transcription` .
 - Görüşmenin bir parçası olan yöntemler yeni `Conversation` sınıfa taşınır.
@@ -594,7 +627,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)öğreticimize göz atın.
 - Tarayıcıda JavaScript desteği. [JavaScript hızlı](quickstart-js-browser.md)başlangıçmıza göz atın.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Bu sürümle birlikte, bir dizi Son değişiklik yapılmıştır.
   Ayrıntılar için [Bu sayfaya](https://aka.ms/csspeech/breakingchanges_1_0_0) bakın.
@@ -613,7 +646,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - Bağlantı hatalarıyla ilgili ek hata ayrıntısı bilgilerini kullanıma sunun.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Java 'da (Android), `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlev artık bir yol parametresi gerektirmez. Artık tüm desteklenen platformlarda yol otomatik olarak algılanır.
 - `EndpointUrl`Java ve C# ' de özelliğin get-erişimcisi kaldırılmıştır.
@@ -642,7 +675,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - Tanınma sonucu daha fazla alan içeriyor. Bunlar, tanınan metnin ses başlangıcından ve süresinden (her ikisi de her ikisi de) ve tanınma durumunu temsil eden ek değerlere (örneğin, ve) göre denkleştirilir `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Fabrika örnekleri oluşturmak için AuthorizationToken 'ı destekleme.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Tanıma olayları: olay `NoMatch` türü `Error` olayla birleştirildi.
 - C# ' de SpeechOutputFormat, `OutputFormat` C++ ile hizalı kalmak için olarak yeniden adlandırıldı.

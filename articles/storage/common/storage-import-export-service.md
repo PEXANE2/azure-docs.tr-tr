@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512439"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185392"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti nedir?
 
@@ -120,14 +120,15 @@ Azure Içeri/dışarı aktarma hizmeti, tüm Azure depolama hesaplarına veri ko
 
 |Ülke/Bölge  |Ülke/Bölge  |Ülke/Bölge  |Ülke/Bölge  |
 |---------|---------|---------|---------|
-|Doğu ABD    | Kuzey Avrupa        | Orta Hindistan        |US Gov Iowa         |
-|Batı ABD     |Batı Avrupa         | Güney Hindistan        | Doğu US DoD        |
+|Doğu ABD    | Kuzey Avrupa        | Central India        |US Gov Iowa         |
+|Batı ABD     |West Europe         | Güney Hindistan        | Doğu US DoD        |
 |Doğu ABD 2    | Doğu Asya        |  Batı Hindistan        | Orta US DoD        |
 |Batı ABD 2     | Güneydoğu Asya        | Orta Kanada        | Doğu Çin         |
-|Orta ABD     | Doğu Avustralya        | Doğu Kanada        | Kuzey Çin        |
-|Orta Kuzey ABD     |  Güneydoğu Avustralya       | Güney Brezilya        | Güney Birleşik Krallık        |
+|Central US     | Doğu Avustralya        | Doğu Kanada        | Kuzey Çin        |
+|Orta Kuzey ABD     |  Avustralya Güneydoğu       | Brezilya Güney        | Güney Birleşik Krallık        |
 |Orta Güney ABD     | Batı Japonya        |Güney Kore - Orta         | Orta Almanya        |
 |Orta Batı ABD     |  Doğu Japonya       | US Gov Virginia        | Kuzeydoğu Almanya        |
+|Güney Afrika Batı   |  Güney Afrika Kuzey |
 
 ## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
