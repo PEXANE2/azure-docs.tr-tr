@@ -196,7 +196,21 @@
               href: app/pricing.md
             - name: Veri kullanımı ve maliyetlerini günlüğe kaydetme
               href: platform/manage-cost-storage.md
-        - name: Log Analytics çalışma alanları
+    - name: Platform günlükleri
+      items:
+        - name: Genel Bakış
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Etkinlik günlüğü
+          href: platform/activity-log.md
+        - name: Kaynak günlükleri
+          href: platform/resource-logs.md
+        - name: Tanılama ayarları
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: Log Analytics
+      items:
+        - name: Çalışma alanları
           items:
             - name: Çalışma alanı dağıtımını tasarlama
               href: platform/design-logs-deployment.md
@@ -218,119 +232,6 @@
               href: platform/service-providers.md
             - name: Erişimi yönetme
               href: platform/manage-access.md
-        - name: Sanal makine aracıları
-          items:
-            - name: Genel Bakış
-              href: platform/agents-overview.md
-            - name: SSS
-              href: faq.md#agents
-            - name: Azure Tanılama uzantısı
-              items:
-                - name: Genel Bakış
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: Yükleme ve yapılandırma
-                      items:
-                        - name: Yükleme seçenekleri
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Resource Manager şablonu
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: Azure İzleyici Ölçümleri’ne gönderme
-                      items:
-                        - name: Sanal Makine
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: VM ölçek kümesi
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: VM klasik
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: Bulut hizmeti
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Event Hubs’a gönderme
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Günlükler’e gönderme
-                      href: platform/diagnostics-extension-logs.md
-                    - name: Application Insights’a gönderme
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Sürüm geçmişi
-                      href: platform/diagnostics-extension-versions.md
-                    - name: Sorun giderme
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: Genel Bakış
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: Telegraf ile ölçümleri toplama
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics aracısı
-              items:
-                - name: Genel Bakış
-                  href: platform/log-analytics-agent.md
-                - name: Windows aracıları
-                  href: platform/agent-windows.md
-                - name: Linux aracıları
-                  href: platform/agent-linux.md
-                - name: Windows için VM Uzantısı
-                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-                - name: Linux için VM Uzantısı
-                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-                - name: Log Analytics ağ geçidi
-                  href: platform/gateway.md
-                - name: Aracı yönetimi
-                  href: platform/agent-manage.md
-                - name: Aracı Durumu
-                  href: insights/solution-agenthealth.md
-                - name: Veri kaynakları
-                  items:
-                    - name: Genel Bakış
-                      href: platform/agent-data-sources.md
-                    - name: Windows olayları
-                      href: platform/data-sources-windows-events.md
-                    - name: Özel JSON verileri
-                      href: platform/data-sources-json.md
-                    - name: Toplanan performans verileri
-                      href: platform/data-sources-collectd.md
-                    - name: Syslog
-                      href: platform/data-sources-syslog.md
-                    - name: Performans sayaçları
-                      href: platform/data-sources-performance-counters.md
-                    - name: Linux uygulama performansı
-                      href: platform/data-sources-linux-applications.md
-                    - name: IIS günlükleri
-                      href: platform/data-sources-iis-logs.md
-                    - name: Özel günlükler
-                      href: platform/data-sources-custom-logs.md
-                    - name: Özel alanlar
-                      href: platform/custom-fields.md
-            - name: Sorun giderme
-              items:
-                - name: Log Analytics VM Uzantısı
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Log Analytics Windows aracısı
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: Log Analytics Linux aracısı
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-    - name: Platform günlükleri
-      items:
-        - name: Genel Bakış
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: Etkinlik günlüğü
-          href: platform/activity-log.md
-        - name: Kaynak günlükleri
-          href: platform/resource-logs.md
-        - name: Tanılama ayarları
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
         - name: Günlük sorgusuna genel bakış
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
@@ -424,6 +325,135 @@
           href: platform/metric-chart-samples.md
         - name: Ölçüm grafikleri için sorun çözümü
           href: platform/metrics-troubleshoot.md
+    - name: Veri toplama
+      items:
+        - name: Veri toplama kuralları
+          href: platform/data-collection-rule-overview.md
+        - name: Özel ölçümler
+          items:
+            - name: Özel ölçümler
+              href: platform/metrics-custom-overview.md
+            - name: Ölçümler REST API'si
+              href: platform/metrics-store-custom-rest-api.md
+        - name: Özel günlükler
+          items:
+            - name: Log Analytics Veri toplayıcı API’si
+              href: platform/data-collector-api.md
+            - name: Log Analytics Veri Toplayıcı API’si İşlem Hattı örneği
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
+          items:
+            - name: Azure İzleyici Günlükleri bağlayıcısı
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights bağlayıcısı
+              href: app/automate-with-logic-apps.md
+    - name: Aracılar
+      items:
+        - name: Genel Bakış
+          href: platform/agents-overview.md
+        - name: SSS
+          href: faq.md#agents
+        - name: Azure İzleyici Aracısı
+          items:
+            - name: Genel Bakış
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-overview.md
+            - name: Veri toplama
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Azure Tanılama uzantısı
+          items:
+            - name: Genel Bakış
+              href: platform/diagnostics-extension-overview.md
+            - name: Windows
+              displayname: diagnostics extension
+              items:
+                - name: Yükleme ve yapılandırma
+                  items:
+                    - name: Yükleme seçenekleri
+                      href: platform/diagnostics-extension-windows-install.md
+                    - name: PowerShell
+                      href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                    - name: Resource Manager şablonu
+                      href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                - name: Azure İzleyici Ölçümleri’ne gönderme
+                  items:
+                    - name: Sanal Makine
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                    - name: VM ölçek kümesi
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                    - name: VM klasik
+                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                    - name: Bulut hizmeti
+                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                - name: Event Hubs’a gönderme
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: Günlükler’e gönderme
+                  href: platform/diagnostics-extension-logs.md
+                - name: Application Insights’a gönderme
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: Sürüm geçmişi
+                  href: platform/diagnostics-extension-versions.md
+                - name: Sorun giderme
+                  href: platform/diagnostics-extension-troubleshooting.md
+            - name: Linux
+              displayname: diagnostics extension
+              items:
+                - name: Genel Bakış
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: Telegraf ile ölçümleri toplama
+                  href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: Log Analytics aracısı
+          items:
+            - name: Genel Bakış
+              href: platform/log-analytics-agent.md
+            - name: Windows aracıları
+              href: platform/agent-windows.md
+            - name: Linux aracıları
+              href: platform/agent-linux.md
+            - name: Windows için VM Uzantısı
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Linux için VM Uzantısı
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics ağ geçidi
+              href: platform/gateway.md
+            - name: Aracı yönetimi
+              href: platform/agent-manage.md
+            - name: Aracı Durumu
+              href: insights/solution-agenthealth.md
+            - name: Veri kaynakları
+              items:
+                - name: Genel Bakış
+                  href: platform/agent-data-sources.md
+                - name: Windows olayları
+                  href: platform/data-sources-windows-events.md
+                - name: Özel JSON verileri
+                  href: platform/data-sources-json.md
+                - name: Toplanan performans verileri
+                  href: platform/data-sources-collectd.md
+                - name: Syslog
+                  href: platform/data-sources-syslog.md
+                - name: Performans sayaçları
+                  href: platform/data-sources-performance-counters.md
+                - name: Linux uygulama performansı
+                  href: platform/data-sources-linux-applications.md
+                - name: IIS günlükleri
+                  href: platform/data-sources-iis-logs.md
+                - name: Özel günlükler
+                  href: platform/data-sources-custom-logs.md
+                - name: Özel alanlar
+                  href: platform/custom-fields.md
+        - name: Sorun giderme
+          items:
+            - name: Log Analytics VM Uzantısı
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/vmext-troubleshoot.md
+            - name: Log Analytics Windows aracısı
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-windows-troubleshoot.md
+            - name: Log Analytics Linux aracısı
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-linux-troubleshoot.md
     - name: Otomatik Ölçeklendirme
       items:
         - name: Genel Bakış
@@ -1148,29 +1178,6 @@
               href: log-query/dashboard-upgrade.md
         - name: Grafana'ya veri gönderme
           href: platform/grafana-plugin.md
-    - name: Özel veri koleksiyonu ve analiz
-      items:
-        - name: Özel ölçümler
-          items:
-            - name: Özel ölçümler
-              href: platform/metrics-custom-overview.md
-            - name: Ölçümler REST API'si
-              href: platform/metrics-store-custom-rest-api.md
-        - name: Özel günlükler
-          items:
-            - name: Log Analytics Veri toplayıcı API’si
-              href: platform/data-collector-api.md
-            - name: Log Analytics Veri Toplayıcı API’si İşlem Hattı örneği
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Logic Apps
-          items:
-            - name: Azure İzleyici Günlükleri bağlayıcısı
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights bağlayıcısı
-              href: app/automate-with-logic-apps.md
-        - name: REST API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
     - name: System Center tümleştirmesi
       items:
         - name: Operations Manager'ı bağlama
@@ -1274,6 +1281,9 @@
           href: /rest/api/monitor/
         - name: Azure İzleyici Günlükleri
           href: /rest/api/loganalytics
+        - name: REST API için Adım Adım Kılavuz
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: Resource Manager şablonları
       items:
         - name: Azure İzleyici

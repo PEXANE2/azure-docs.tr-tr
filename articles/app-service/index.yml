@@ -6,13 +6,13 @@ metadata:
   description: Azure App Service’te web sitelerini, web uygulamalarını, RESTful API’leri ve mobil arka uçları barındırın. App Service’te başarılı olmanıza yardımcı olacak hızlı başlangıçları, öğreticileri ve örnekleri bulabilirsiniz.
   ms.topic: landing-page
   ms.service: app-service
-  ms.date: 02/26/2020
-  ms.openlocfilehash: e8dcbe7288fb72fb5084f210bf38f7fa55f969a2
-  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 3fc31095ec0d8e1ecdbe44c0751c55164d20e088
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/18/2020
-  ms.locfileid: "84987967"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080037"
 landingContent:
 - title: App Service hakkında
   linkLists:
@@ -20,8 +20,6 @@ landingContent:
     links:
     - text: App Service nedir?
       url: overview.md
-    - text: Linux’ta App Service
-      url: /azure/app-service/containers/
     - text: App Service ortamları
       url: environment/intro.md
     - text: Barındırma seçeneklerini karşılaştırma
@@ -35,19 +33,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: İlk ASP.NET Core uygulaması
-      url: app-service-web-get-started-dotnet.md
-    - text: İlk ASP.NET uygulaması
-      url: app-service-web-get-started-dotnet-framework.md
+      url: quickstart-dotnetcore.md
+    - text: İlk ASP.NET uygulaması (yalnızca Windows)
+      url: quickstart-dotnet-framework.md
     - text: İlk Node.js uygulaması
-      url: app-service-web-get-started-nodejs.md
+      url: quickstart-nodejs.md
     - text: İlk PHP uygulaması
-      url: app-service-web-get-started-php.md
+      url: quickstart-php.md
     - text: İlk Java uygulaması
-      url: app-service-web-get-started-java.md
-    - text: İlk Python uygulaması (Linux üzerinde)
-      url: containers/quickstart-python.md
-    - text: İlk Ruby uygulaması (Linux üzerinde)
-      url: containers/quickstart-ruby.md
+      url: quickstart-java.md
+    - text: İlk Python Flask uygulaması (yalnızca Linux)
+      url: quickstart-python.md
+    - text: İlk Ruby uygulaması (yalnızca Linux)
+      url: quickstart-ruby.md
 - title: Genel görevler
   linkLists:
   - linkListType: tutorial
@@ -62,6 +60,8 @@ landingContent:
     links:
     - text: Tanılama günlüklerini etkinleştirme
       url: troubleshoot-diagnostic-logs.md
+    - text: SSH üzerinden Linux kapsayıcısına bağlanma
+      url: configure-linux-open-ssh-session.md
     - text: Etkin bir etki alanını App Service’e geçirme
       url: manage-custom-dns-migrate-domain.md
 - title: Veritabanıyla CRUD uygulaması
@@ -71,11 +71,17 @@ landingContent:
     - text: SQL Veritabanı ile ASP.NET uygulaması
       url: app-service-web-tutorial-dotnet-sqldatabase.md
     - text: SQL Veritabanı ile ASP.NET Core uygulaması
-      url: app-service-web-tutorial-dotnetcore-sqldb.md
+      url: tutorial-dotnetcore-sqldb-app.md
     - text: Azure MySQL ile PHP (Laravel) uygulaması
-      url: app-service-web-tutorial-php-mysql.md
+      url: tutorial-php-mysql-app.md
     - text: MongoDB ile Node.js (MEAN.js) uygulaması
-      url: app-service-web-tutorial-nodejs-mongodb-app.md
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Cosmos DB ile Java (Spring Boot) uygulaması
+      url: tutorial-java-spring-cosmosdb.md
+    - text: PostgreSQL ile Python (Django) uygulaması
+      url: tutorial-python-postgresql-app.md
+    - text: PostgreSQL ile Ruby (Rails) uygulaması
+      url: tutorial-ruby-postgres-app.md
 - title: Kodunuzu veya içeriğinizi karşıya yükleme
   linkLists:
   - linkListType: deploy
@@ -90,20 +96,28 @@ landingContent:
       url: deploy-content-sync.md
     - text: GitHub, BitBucket vb. ile CI/CD
       url: deploy-continuous-deployment.md
-- title: Kapsayıcılı Windows uygulamalarını çalıştırma
+    - text: Paketten çalıştırma
+      url: deploy-run-package.md
+- title: Özel kapsayıcıları çalıştırma
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Özel Windows kapsayıcısını çalıştırma
-      url: app-service-web-get-started-windows-container.md
+    - text: Özel kapsayıcı çalıştırma
+      url: quickstart-custom-container.md
   - linkListType: tutorial
     links:
-    - text: Eski bir uygulamayı Windows kapsayıcısında Azure’a geçirme
-      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+    - text: Docker Compose uygulaması çalıştırma (yalnızca Linux)
+      url: tutorial-multi-container-app.md
+    - text: Özel yazılımı kapsayıcı içinde Azure’a geçirme
+      url: tutorial-custom-container.md
   - linkListType: how-to-guide
     links:
+    - text: Özel kapsayıcıya CI/CD
+      url: deploy-ci-cd-custom-container.md
     - text: Kapsayıcıyı Depolama Dosyalarına bağlama
       url: configure-connect-to-azure-storage.md
+    - text: GitHub Eylemleriyle dağıtma
+      url: deploy-container-github-action.md
 - title: Yönetme ve tümleştirme
   linkLists:
   - linkListType: concept
@@ -115,7 +129,7 @@ landingContent:
     - text: Yönetilen kimliklerle kaynak erişimini güvenli hale getirme
       url: app-service-web-tutorial-connect-msi.md
     - text: Kullanıcıların kimliklerini doğrulama
-      url: app-service-web-tutorial-auth-aad.md
+      url: tutorial-auth-aad.md
     - text: CORS ile RESTful API’yi barındırma
       url: app-service-web-tutorial-rest-api.md
     - text: Uygulamanıza CDN ekleme

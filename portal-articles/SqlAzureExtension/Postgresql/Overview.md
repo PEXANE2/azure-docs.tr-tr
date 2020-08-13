@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 271bcd188f5152bfdac3eb7895827afca2859fe4
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "62113961"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076855"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>PostgreSQL Belgeleri için Azure Veritabanı
 
@@ -30,8 +30,8 @@ PostgreSQL için Azure Veritabanı, açık kaynak Postgres veritabanı altyapıs
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- Veritabanı Tasarlama: [Azure portalı](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
-- [Python ve CLI kullanarak bir Web Uygulaması oluşturma](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
+- Veritabanı tasarlama: [Azure portalı](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
+- [Python ve CLI kullanarak bir Web Uygulaması oluşturma](/azure/app-service/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Örnekler 
 

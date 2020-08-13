@@ -25,38 +25,8 @@
           href: quickstart-existing-helm-chart.md
     - name: Öğreticiler
       items:
-        - name: Java (VS Code ve CLI)
-          items:
-            - name: 1 - Kullanmaya başlama
-              href: get-started-java.md
-            - name: 2 - Birden çok hizmetle geliştirme
-              href: multi-service-java.md
-            - name: 3 - Ekip geliştirme
-              href: team-development-java.md
-        - name: .NET Core (VS Code ve CLI)
-          items:
-            - name: 1 - Kullanmaya başlama
-              href: get-started-netcore.md
-            - name: 2 - Birden çok hizmetle geliştirme
-              href: multi-service-netcore.md
-            - name: 3 - Ekip geliştirme
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1 - Kullanmaya başlama
-              href: get-started-netcore-visualstudio.md
-            - name: 2 - Birden çok hizmetle geliştirme
-              href: multi-service-netcore-visualstudio.md
-            - name: 3 - Ekip geliştirme
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js (VS Code ve CLI)
-          items:
-            - name: 1 - Kullanmaya başlama
-              href: get-started-nodejs.md
-            - name: 2 - Birden çok hizmetle geliştirme
-              href: multi-service-nodejs.md
-            - name: 3 - Ekip geliştirme
-              href: team-development-nodejs.md
+        - name: Visual Studio ile çalışmaya başlama
+          href: get-started-netcore-visualstudio.md
     - name: Kavramlar
       items:
         - name: Geliştirme Alanları nasıl çalışır?
@@ -83,8 +53,6 @@
           href: how-to/install-dev-spaces.md
         - name: Azure Cloud Shell kullanarak Kubernetes kümesi oluşturma
           href: how-to/create-cluster-cloud-shell.md
-        - name: Azure Dev Spaces'i paylaşma
-          href: how-to/share-dev-spaces.md
         - name: Gizli dizileri yönetme
           href: how-to/manage-secrets.md
         - name: Özel NuGet akışı kullanma

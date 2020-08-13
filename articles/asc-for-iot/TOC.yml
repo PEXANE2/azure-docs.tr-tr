@@ -31,6 +31,8 @@
       href: quickstart-create-security-twin.md
     - name: Özel güvenlik uyarıları oluşturma
       href: quickstart-create-custom-alerts.md
+    - name: Güvenlik uyarılarını araştırma
+      href: quickstart-investigate-security-alerts.md
 - name: Kavramlar
   items:
     - name: Güvenlik aracısında kimlik doğrulaması
