@@ -1,6 +1,6 @@
 ---
 title: Hızlı başlangıç-CloudSimple ile özel bulut-Azure VMware çözümü üzerinde Azure VMware VM oluşturma
-description: CloudSimple özel bulutu üzerinde Azure VMware VM oluşturmayı açıklar
+description: CloudSimple özel bulutu 'nda bir VMware sanal makinesi oluşturmayı öğrenin. Azure portal CloudSimple portalına erişin.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091275"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140862"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
 
@@ -25,7 +25,7 @@ ms.locfileid: "87091275"
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-1. **Tüm hizmetler**’i seçin.
+1. **Tüm Hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. **Genel bakış** sayfasından **Cloudsimple portalına git** ' e tıklayarak cloudsimple Portal için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
@@ -102,7 +102,7 @@ CloudSimple, Kullanıcı adı ile varsayılan bir vCenter Kullanıcı hesabı at
 
 Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Özel bulut ortamınızda bu hizmetleri sağlamak için vCenter 'da bir sanal makine yapılandırabilirsiniz.
 
-Önkoşullar
+Ön koşullar
 
 * VLAN yapılandırılmış bir dağıtılmış bağlantı noktası grubu
 

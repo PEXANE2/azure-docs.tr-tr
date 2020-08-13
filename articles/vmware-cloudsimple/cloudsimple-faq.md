@@ -1,6 +1,6 @@
 ---
 title: SSS-CloudSimple 'a göre Azure VMware çözümü
-description: CloudSimple tarafından Azure VMware çözümü hakkında sık sorulan sorular
+description: CloudSimple ile bağlantı, ağ, güvenlik, depolama, Azure tümleştirmesi ve diğerleri tarafından Azure VMware çözümü için bu sık sorulan sorular.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025070"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140896"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple ile VMware çözümü hakkında sık sorulan sorular
 
@@ -150,7 +150,7 @@ CloudSimple, özel bulutta yüklü uygulamaların yükseltmelerini veya güncell
 
 **Hangi Azure hizmetleri destekleniyor?**
 
-CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örnekler arasında şunlar yer almaktadır:
+CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örneklere şunlar dahildir:
 
 * CloudSimple vCenter için bir kimlik kaynağı olarak **Azure Active Directory** .
 * Özel bulutunuzun yedeklerini, görüntülerini ve diğer verilerini depolamak için **Azure depolama** .

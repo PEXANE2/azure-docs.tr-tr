@@ -1,6 +1,6 @@
 ---
 title: CloudSimple-Nodes 'a göre Azure VMware çözümü genel bakış
-description: CloudSimple düğümleri ve kavramları hakkında bilgi edinin.
+description: Düğümler, sağlanan düğümler, özel bir bulut ve CloudSimple düğümleri SKU 'Ları tarafından VMware çözümü dahil olmak üzere CloudSimple kavramları hakkında bilgi edinin.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024934"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140845"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple düğümlerine genel bakış
 
@@ -38,7 +38,7 @@ Aşağıdaki düğüm türleri, sağlama veya ayırma için kullanılabilir.
 
 | SKU           | CS28-Node                 | CS36-Node                 | CS36m-Node                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
-| Bölge        | Doğu ABD, Batı ABD            | Doğu ABD, Batı ABD            | Batı Avrupa                 |
+| Bölge        | Doğu ABD, Batı ABD            | Doğu ABD, Batı ABD            | West Europe                 |
 | CPU           | 2x 2.2 GHz, 28 çekirdek (56 HT) | 2x 2.3 GHz, 36 çekirdek (72 HT) | 2x 2.3 GHz, 36 çekirdek (72 HT) |
 | RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
 | Önbellek diski    | 1,6-TB NVMe                 | 3,2-TB NVMe                 | 3,2-TB NVMe                 |
