@@ -8,16 +8,20 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557454"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214069"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
-AI zenginleştirme, Azure Bilişsel Arama 'te aranabilir hale getirmek için verileri ayıklar ve zenginleştirir. Ayıklama ve zenginleştirme adımları bilişsel *becerileri*, dizin oluşturma sırasında başvurulan bir *beceri* birleştirilir. Beceri, [yerleşik becerileri](cognitive-search-predefined-skills.md) veya özel becerileri kullanabilir (daha fazla bilgi için bkz. [bir AI zenginleştirme ardışık düzeninde özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md) ).
+![Dizin Oluşturucu aşamaları](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "Dizin Oluşturucu aşamaları")
+
+Bir beceri, aranabilir hale getirmek için verileri çıkaran ve zenginleştiren işlemleri tanımlar. Beceri, metin ve görüntü içeriği kaynak belgelerden ayıklandıktan sonra ve kaynak belgedeki tüm alanlar (isteğe bağlı olarak) bir dizin veya bilgi deposundaki hedef alanlarla eşlendikten sonra yürütülür.
+
+Bir beceri, metin çevirme, anahtar tümceleri ayıklama veya bir görüntü dosyasından optik karakter tanıma gibi belirli bir zenginleştirme işlemini temsil eden bir veya daha fazla bilişsel *beceriler* içerir. Bir beceri oluşturmak için, Microsoft 'tan [yerleşik becerileri](cognitive-search-predefined-skills.md) veya sağladığınız modelleri veya işleme mantığını içeren özel becerileri kullanabilirsiniz (daha fazla bilgi için bkz. [bir AI zenginleştirme ardışık düzeninde özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md) ).
 
 Bu makalede, kullanmak istediğiniz yetenekler için bir zenginleştirme ardışık düzeni oluşturmayı öğreneceksiniz. Bir Azure Bilişsel Arama [dizin oluşturucusuna](search-indexer-overview.md)bir beceri eklenir. Bu makalede ele alınan işlem hattı tasarımının bir parçası, Beceri kendisini tasarlayabilmektedir. 
 
@@ -171,13 +175,13 @@ Yerleşik [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.m
 
 * Yeteneğin adlı bir çıkış vardır ```"organizations"``` . Çıkışlar yalnızca işlem sırasında mevcuttur. Bu çıktıyı bir aşağı akış becerisi girişine zincirlemek için, çıktıyı olarak başvuru yapın ```"/document/organizations"``` .
 
-* Belirli bir belge için değeri, ```"/document/organizations"``` metinden ayıklanan kuruluşların bir dizisidir. Örneğin:
+* Belirli bir belge için değeri, ```"/document/organizations"``` metinden ayıklanan kuruluşların bir dizisidir. Örnek:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-Bazı durumlar, bir dizinin her öğesine ayrı olarak başvurmak için çağrı yapılır. Örneğin, her öğesini ```"/document/organizations"``` ayrı olarak başka bir beceriye (özel Bing varlık arama daha zengin gibi) geçirmek istediğinizi varsayalım. Yola bir yıldız işareti ekleyerek dizinin her öğesine başvurabilirsiniz:```"/document/organizations/*"``` 
+Bazı durumlar, bir dizinin her öğesine ayrı olarak başvurmak için çağrı yapılır. Örneğin, her öğesini ```"/document/organizations"``` ayrı olarak başka bir beceriye (özel Bing varlık arama daha zengin gibi) geçirmek istediğinizi varsayalım. Yola bir yıldız işareti ekleyerek dizinin her öğesine başvurabilirsiniz: ```"/document/organizations/*"``` 
 
 Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıbı izler. ```"/document/content"```Giriş olarak alır ve her içerik örneği için bir yaklaşım puanı döndürür. ```"context"```Alanı açıkça ayarlamazsanız, çıkış (mySentiment) artık bir alt öğesidir ```"/document"``` .
 

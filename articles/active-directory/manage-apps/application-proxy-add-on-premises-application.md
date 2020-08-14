@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 448910453b967fb15d342c22b81dd9733d0dfeb8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165133"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212806"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -32,7 +31,7 @@ Bu öğreticide:
 > * Azure AD kiracınıza şirket içi bir uygulama ekler
 > * Bir sınama kullanıcısının Azure AD hesabı kullanarak uygulamada oturum açmasını doğrular
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD 'ye şirket içi bir uygulama eklemek için şunlar gerekir:
 
@@ -234,6 +233,10 @@ Uygulamanın oturum açma sınamasını test etmek için:
 3. Uygulamanın oturum açmasını sınamak için öncelikle uygulamayı çalıştırdığınızdan emin olun, ardından algılanan sorunların çözüm kılavuzunu gözden geçirmek için tanılama raporunu indirin.
 
 Sorun giderme için bkz. [uygulama proxy 'si sorunlarını ve hata Iletilerini sorun giderme](application-proxy-troubleshoot.md).
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, bu öğreticide oluşturduğunuz kaynakları silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: e7199b6d54a0150845bfc09c38e002e6cc298ee7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c7b4cf688d02ebbcb099f116c0eb7b4ebe7c6074
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066738"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212416"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -240,7 +240,7 @@ Mantıksal uygulamanızı dağıtmaya yönelik ARM şablonunda Azure AD OAuth 'y
 ],
 ```
 
-Bölüm hakkında daha fazla bilgi için `accessControl` bkz. [Azure Resource Manager ŞABLONUNDA gelen IP aralıklarını kısıtlama](#restrict-inbound-ip-template) ve [Microsoft. Logic iş akışları şablon başvurusu](/templates/microsoft.logic/2019-05-01/workflows).
+Bölüm hakkında daha fazla bilgi için `accessControl` bkz. [Azure Resource Manager ŞABLONUNDA gelen IP aralıklarını kısıtlama](#restrict-inbound-ip-template) ve [Microsoft. Logic iş akışları şablon başvurusu](/azure/templates/microsoft.logic/2019-05-01/workflows).
 
 <a name="restrict-inbound-ip"></a>
 
@@ -786,8 +786,8 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. B
 
 Bu tabloda, bir kimlik doğrulama türünü seçebileceğiniz Tetikleyiciler ve eylemlerde kullanılabilir olan kimlik doğrulama türleri tanımlanmaktadır:
 
-| Kimlik doğrulaması türü | Kullanılabilirlik |
-|---------------------|--------------|
+| Kimlik doğrulaması türü | Desteklenen Tetikleyiciler ve eylemler |
+|---------------------|--------------------------------|
 | [Temel](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Web kancası |
 | [İstemci sertifikası](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Web kancası |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure Uygulama Hizmetleri, Azure Işlevleri, HTTP, HTTP + Swagger, HTTP Web kancası |
@@ -836,7 +836,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Evet | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
 | **Türk** | `pfx` | Evet | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. işlevi kullanarak sertifika içeriğini dönüştürün `ToBase64String()` ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **Parola** | `password`| No | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
+| **Parola** | `password`| Hayır | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
 
 Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulamasını `type` olarak belirtir `ClientCertificate` ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -874,9 +874,9 @@ Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkile
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Evet | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
-| **Yetkili** | `authority` | No | <*URL-for-Authority-Token-Issuer*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
+| **Yetkili** | `authority` | Hayır | <*URL-for-Authority-Token-Issuer*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
 | **Kiracı** | `tenant` | Evet | <*Kiracı KIMLIĞI*> | Azure AD kiracısı için kiracı KIMLIĞI |
-| **Hedef kitle** | `audience` | Evet | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin,`https://management.core.windows.net/` |
+| **Hedef kitle** | `audience` | Evet | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/` |
 | **İstemci KIMLIĞI** | `clientId` | Evet | <*istemci KIMLIĞI*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
 | **Kimlik bilgisi türü** | `credentialType` | Evet | Sertifika <br>veya <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
 | **Gizlilikle** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci parolası*> | Yetkilendirme isteğinde bulunan istemci parolası |
@@ -952,7 +952,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 ### <a name="managed-identity-authentication"></a>Yönetilen kimlik doğrulaması
 
-[Yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) seçeneği kullanılabilir olduğunda, mantıksal uygulamanız, oturum açmadan Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara erişimi kimlik doğrulaması için sistem tarafından atanan kimliği veya *tek* el ile oluşturulmuş bir kimlik kimliğini kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığı için kimlik bilgilerinizi güvenli hale getirmeye yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
+[Yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) seçeneği [belirli bir tetikleyici veya eylemde](#add-authentication-outbound)kullanılabiliyorsa, mantıksal uygulamanız, oturum açmadan Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara erişim izni vermek için sistem tarafından atanan kimliği *veya el ile* oluşturulmuş bir kullanıcı tarafından oluşturulmuş kimliği kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığı için kimlik bilgilerinizi güvenli hale getirmeye yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
 
 1. Mantıksal uygulamanızın yönetilen bir kimlik kullanabilmesi [için Azure Logic Apps ' deki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulama](../logic-apps/create-managed-service-identity.md)bölümündeki adımları izleyin. Bu adımlar, mantıksal uygulamanızda yönetilen kimliği etkinleştirir ve bu kimliğin hedef Azure kaynağına erişimini ayarlar.
 

@@ -3,13 +3,13 @@ title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
 description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47fbd446937ea0cfd981cef2d5cdd4759f2583d4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497707"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213152"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
@@ -46,6 +46,21 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 > [!NOTE]  
 > Portalın tümleşik test işlevselliği `Disabled` ayarı yoksayar. Bu, devre dışı bırakılan bir işlevin portalda **Test** penceresinden başlatıldığında hala çalıştığı anlamına gelir. 
+
+## <a name="localsettingsjson"></a>local.settings.json
+
+İşlevler yerel olarak çalıştırılırken aynı şekilde devre dışı bırakılabilir. Adlı bir işlevi devre dışı bırakmak için `HttpExample` , dosyadaki local.settings.jsdeğerler koleksiyonuna aşağıdaki gibi bir giriş ekleyin:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
+    "AzureWebJobs.HttpExample.Disabled": "true"
+  }
+}
+``` 
 
 ## <a name="other-methods"></a>Diğer Yöntemler
 

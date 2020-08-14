@@ -3,17 +3,17 @@ title: Öğretici-Azure portal yeni ilke ataması
 description: Bu öğreticide, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure portal kullanırsınız.
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.openlocfilehash: cdd682e215648f1f819503ac03e15c58b32c79b5
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88172970"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213228"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Öğretici: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
 Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir.
-Bu öğretici, Azure Arc etkin makinelerinizde yüklü Log Analytics aracısına sahip olmayan makineleri tanımlamak üzere, sunucular için Azure Arc (Önizleme) makinelerini ve bunları belirlemek üzere bir ilke ataması oluşturma sürecinde size kılavuzluk edecek.
+Bu öğreticide, Azure Arc etkin sunucularınız (Önizleme) makinelerinizi ve bunları Azure Arc etkin makinelerinizde yüklü Log Analytics aracısına sahip olmayan makineleri tanımlamak üzere bir ilke ataması oluşturma işleminde size kılavuzluk edilecek.
 
 Bu işlemin sonunda, Windows veya Linux için Log Analytics aracısına sahip olmayan makineleri başarıyla tanımlayacaksınız. Bu sanal makineler, ilke ataması ile _uyumsuzdur_.
 
@@ -51,7 +51,7 @@ Bu öğreticide, bir ilke ataması oluşturup yönetilen diskler ilke tanımı _
 
    Kullanılabilir yerleşik ilkelerin kısmi listesi için bkz. [Azure ilke örnekleri](../../../governance/policy/samples/index.md).
 
-1. Önizlemeyi bulmak için ilke tanımları listesinde arama yapın]: Windows tabanlı bir makinede sunucular için yay (Önizleme) aracısını etkinleştirdiyseniz, _ \[ Log Analytics aracısının Windows Azure Arc makineler tanımına yüklenmesi gerekir_ . Linux tabanlı bir makine için, karşılık gelen önizlemeyi bulun _ \[ ]: Linux Azure yay makineleri ilke tanımınızda Log Analytics Aracısı yüklü_ olmalıdır. Bu ilkeye tıklayın ve **Seç**'e tıklayın.
+1. Önizlemeyi bulmak için ilke tanımları listesinde arama yapın]: Windows tabanlı bir makinede yay etkin sunucular (Önizleme) aracısını etkinleştirdiyseniz, _ \[ Log Analytics aracısının Windows Azure Arc makineler tanımına yüklenmesi gerekir_ . Linux tabanlı bir makine için, karşılık gelen önizlemeyi bulun _ \[ ]: Linux Azure yay makineleri ilke tanımınızda Log Analytics Aracısı yüklü_ olmalıdır. Bu ilkeye tıklayın ve **Seç**'e tıklayın.
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Doğru ilke tanımını bulma" border="false":::
 
@@ -97,7 +97,7 @@ Oluşturulan atamayı kaldırmak için şu adımları izleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, bir kapsama ilke tanımı atadınız ve uyumluluk raporunu değerlendirdiniz.
-İlke tanımı, kapsamdaki tüm kaynakların uyumlu olduğunu doğrular ve hangilerinin olduğunu tanımlar. Artık VM'ler için Azure İzleyici olan sunucu için Azure yayı (Önizleme) makinenizi izlemeye hazırsınız.
+İlke tanımı, kapsamdaki tüm kaynakların uyumlu olduğunu doğrular ve hangilerinin olduğunu tanımlar. Artık, Azure Arc etkin sunucuları (Önizleme) makinenizi VM'ler için Azure İzleyici izlemeye hazırsınız.
 
 Performans, çalışan işlem ve bunların bağımlılıklarındaki bağımlılıklarını izleme ve görüntüleme hakkında bilgi edinmek için öğreticiye geçin:
 

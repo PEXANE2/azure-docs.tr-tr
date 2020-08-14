@@ -3,20 +3,21 @@ title: Azure Işlevleri bağlama ifadeleri ve desenleri
 description: Ortak desenleri temel alan farklı Azure Işlevleri bağlama ifadeleri oluşturmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261078"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212606"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Işlevleri bağlama ifadesi desenleri
 
 [Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri*. Dosyadaki *function.js* ve işlev parametreleri ve kodu ' nda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
 
-Çoğu ifade küme ayracı içine alınarak tanımlanır. Örneğin, bir kuyruk tetikleyicisi işlevinde, `{queueTrigger}` kuyruk ileti metnine çözülür. `path`Blob çıkış bağlamasının özelliği ise `container/{queueTrigger}` ve işlev bir kuyruk iletisi tarafından tetikleniyorsa `HelloWorld` adlı bir blob `HelloWorld` oluşturulur.
+Çoğu ifade küme ayracı içinde tanımlanır. Örneğin, bir kuyruk tetikleyicisi işlevinde, `{queueTrigger}` kuyruk ileti metnine çözülür. `path`Blob çıkış bağlamasının özelliği ise `container/{queueTrigger}` ve işlev bir kuyruk iletisi tarafından tetikleniyorsa `HelloWorld` adlı bir blob `HelloWorld` oluşturulur.
 
 Bağlama ifadesi türleri
 
@@ -132,7 +133,7 @@ public static void Run(
 
 ```
 
-Ayrıca dosya adının parçaları için ifadeler de oluşturabilirsiniz. Aşağıdaki örnekte, işlev yalnızca bir desenli eşleşen dosya adlarında tetiklenir:`anyname-anyfile.csv`
+Ayrıca dosya adının parçaları için ifadeler de oluşturabilirsiniz. Aşağıdaki örnekte, işlev yalnızca bir desenli eşleşen dosya adlarında tetiklenir: `anyname-anyfile.csv`
 
 ```json
 {
@@ -155,7 +156,7 @@ Bir tetikleyici tarafından belirtilen veri yüküne ek olarak (bir işlevi teti
 * QueueTrigger-geçerli bir dize olursa ileti içeriği tetikleniyor
 * DequeueCount
 * ExpirationTime
-* Kimlik
+* Id
 * Insertiontime
 * NextVisibleTime
 * PopReceipt

@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd060972e562759fcc1071f2c6549578bd3d4ed9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58fc6726811ac01b585dd51b2086966f7a3f7c51
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015723"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213591"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
-Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directory (Azure AD) PowerShell cmdlet 'lerini kullanmaya yönelik yönergeler içerir. Bu içerik yalnızca Office 365 grupları için geçerlidir (bazen birleştirilmiş gruplar olarak adlandırılır).
+Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directory (Azure AD) PowerShell cmdlet 'lerini kullanmaya yönelik yönergeler içerir. Bu içerik yalnızca Microsoft 365 grupları için geçerlidir (bazen birleştirilmiş gruplar olarak adlandırılır).
 
 > [!IMPORTANT]
 > Bazı ayarlarda Azure Active Directory Premium P1 lisansı gerekir. Daha fazla bilgi için [şablon ayarları](#template-settings) tablosuna bakın.
 
 Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelleme hakkında daha fazla bilgi için,  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)bölümünde açıklandığı gibi ayarlayın.
 
-Office 365 grupları ayarları, bir ayarlar nesnesi ve bir SettingsTemplate nesnesi kullanılarak yapılandırılır. İlk olarak, dizininiz varsayılan ayarlarla yapılandırıldığından, dizininizde herhangi bir ayar nesnesi görmezsiniz. Varsayılan ayarları değiştirmek için, bir ayarlar şablonu kullanarak yeni bir ayar nesnesi oluşturmanız gerekir. Ayarlar şablonları Microsoft tarafından tanımlanır. Birçok farklı ayar şablonu vardır. Dizininizde Office 365 grup ayarlarını yapılandırmak için "Group. Unified" adlı şablonu kullanın. Tek bir grupta Office 365 grup ayarlarını yapılandırmak için, "Group. Unified. Guest" adlı şablonu kullanın. Bu şablon, bir Office 365 grubuna konuk erişimini yönetmek için kullanılır. 
+Microsoft 365 Gruplar ayarları, bir Settings nesnesi ve bir SettingsTemplate nesnesi kullanılarak yapılandırılır. İlk olarak, dizininiz varsayılan ayarlarla yapılandırıldığından, dizininizde herhangi bir ayar nesnesi görmezsiniz. Varsayılan ayarları değiştirmek için, bir ayarlar şablonu kullanarak yeni bir ayar nesnesi oluşturmanız gerekir. Ayarlar şablonları Microsoft tarafından tanımlanır. Birçok farklı ayar şablonu vardır. Dizininiz için Microsoft 365 grup ayarlarını yapılandırmak için, "Group. Unified" adlı şablonu kullanın. Tek bir grupta Microsoft 365 grup ayarlarını yapılandırmak için, "Group. Unified. Guest" adlı şablonu kullanın. Bu şablon bir Microsoft 365 grubuna konuk erişimini yönetmek için kullanılır. 
 
 Cmdlet 'ler Azure Active Directory PowerShell V2 modülünün bir parçasıdır. Modülün bilgisayarınıza nasıl indirileceği ve yükleneceğine ilişkin yönergeler için [PowerShell sürüm 2 Azure Active Directory](https://docs.microsoft.com/powershell/azure/active-directory/overview)makalesine bakın. Modülün sürüm 2 sürümünü [PowerShell galerisinden](https://www.powershellgallery.com/packages/AzureAD/)yükleyebilirsiniz.
 
@@ -53,7 +53,7 @@ PowerShell komutlarını çalıştırmadan önce, Windows PowerShell için grafi
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Dizin düzeyinde ayarlar oluşturma
-Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulanan ayarları oluşturur. Get-AzureADDirectorySettingTemplate cmdlet 'i yalnızca [Graph Için Azure AD PowerShell önizleme modülünde](https://www.powershellgallery.com/packages/AzureADPreview)kullanılabilir.
+Bu adımlar dizin düzeyinde, dizindeki tüm Microsoft 365 gruplarına uygulanan ayarları oluşturur. Get-AzureADDirectorySettingTemplate cmdlet 'i yalnızca [Graph Için Azure AD PowerShell önizleme modülünde](https://www.powershellgallery.com/packages/AzureADPreview)kullanılabilir.
 
 1. DirectorySettings cmdlet 'lerinde, kullanmak istediğiniz SettingsTemplate KIMLIĞINI belirtmeniz gerekir. Bu KIMLIĞI görmüyorsanız, bu cmdlet tüm ayarlar şablonlarının listesini döndürür:
   
@@ -67,7 +67,7 @@ Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulana
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
-   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Office 365 group
+   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Microsoft 365 group
    16933506-8a8d-4f0d-ad58-e1db05a5b929 Company.BuiltIn     Setting templates define the different settings that can be used for the associ...
    4bc7f740-180e-4586-adb6-38b2e9024e6b Application...
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
@@ -149,20 +149,20 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
 
 | **Ayar** | **Açıklama** |
 | --- | --- |
-|  <ul><li>Enablegroupoluşturma<li>Tür: Boolean<li>Varsayılan: true |Yönetici olmayan kullanıcılar tarafından, dizinde Office 365 Grup oluşturmaya izin verilip verilmeyeceğini belirten bayrak. Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
-|  <ul><li>Groupcreationallowedgroupıd<li>Türü: Dize<li>Varsayılan: "" |Enablegroupcreate = = false olduğunda bile üyelerin Office 365 grupları oluşturmalarına izin verilen güvenlik grubunun GUID 'SI. |
+|  <ul><li>Enablegroupoluşturma<li>Tür: Boolean<li>Varsayılan: true |Yönetici olmayan kullanıcılar tarafından dizinde Microsoft 365 grubu oluşturmaya izin verilip verilmeyeceğini belirten bayrak. Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
+|  <ul><li>Groupcreationallowedgroupıd<li>Türü: Dize<li>Varsayılan: "" |Enablegroupcreate = = false olduğunda bile üyelerin Microsoft 365 grupları oluşturmalarına izin verilen güvenlik grubunun GUID 'SI. |
 |  <ul><li>Usagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" |Grup kullanım yönergelerine bir bağlantı. |
 |  <ul><li>ClassificationDescriptions<li>Türü: Dize<li>Varsayılan: "" | Sınıflandırma açıklamalarının virgülle ayrılmış listesi. ClassificationDescriptions değeri yalnızca bu biçimde geçerlidir:<br>$setting ["ClassificationDescriptions"] = "sınıflandırma: Açıklama, sınıflandırma: Açıklama"<br>Sınıflandırma, ClassificationList içindeki bir girdiyle eşleşir.<br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
 |  <ul><li>DefaultClassification<li>Türü: Dize<li>Varsayılan: "" | Hiçbiri belirtilmemişse, bir grup için varsayılan sınıflandırma olarak kullanılacak sınıflandırma.<br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Türü: Dize<li>Varsayılan: "" | Office 365 grupları için yapılandırılmış adlandırma kuralını tanımlayan en fazla 64 karakter uzunluğunda bir dize. Daha fazla bilgi için bkz. [Office 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Türü: Dize<li>Varsayılan: "" | Kullanıcıların Grup adlarında veya diğer adlarla kullanmasına izin verilmeyen, virgülle ayrılmış deyimlerin dizesi. Daha fazla bilgi için bkz. [Office 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
+|  <ul><li>PrefixSuffixNamingRequirement<li>Türü: Dize<li>Varsayılan: "" | Microsoft 365 grupları için yapılandırılmış adlandırma kuralını tanımlayan en fazla 64 karakter uzunluğunda bir dize. Daha fazla bilgi için bkz. [Microsoft 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Türü: Dize<li>Varsayılan: "" | Kullanıcıların Grup adlarında veya diğer adlarla kullanmasına izin verilmeyen, virgülle ayrılmış deyimlerin dizesi. Daha fazla bilgi için bkz. [Microsoft 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Tür: Boolean<li>Varsayılan: "false" | Kullanma
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Tür: Boolean<li>Varsayılan: false | Konuk kullanıcının grupların sahibi olup olmayacağını gösteren Boolean. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Tür: Boolean<li>Varsayılan: true | Konuk kullanıcının Office 365 grupları içeriğine erişip erişemeyeceğini gösteren Boolean.  Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
+|  <ul><li>AllowGuestsToAccessGroups<li>Tür: Boolean<li>Varsayılan: true | Konuk kullanıcının Microsoft 365 Gruplar içeriğine erişip erişemeyeceğini gösteren Boolean.  Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
 |  <ul><li>Guestusagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" | Konuk kullanım yönergelerine bir bağlantının URL 'si. |
 |  <ul><li>AllowToAddGuests<li>Tür: Boolean<li>Varsayılan: true | Bu dizine Konuk ekleme izni verilip verilmeyeceğini gösteren bir Boole değeri. <br>Bu ayar geçersiz kılınabilir ve *Enablemıplas* *true* olarak ayarlanmışsa ve bir konuk ilkesi gruba atanan duyarlılık etiketiyle ilişkilendirildiğinde salt okunurdur.<br>AllowToAddGuests ayarı kuruluş düzeyinde false olarak ayarlandıysa, Grup düzeyindeki tüm AllowToAddGuests ayarı yok sayılır. Yalnızca birkaç grup için konuk erişimini etkinleştirmek istiyorsanız, AllowToAddGuests öğesini kuruluş düzeyinde true olarak ayarlamanız ve ardından belirli gruplar için seçmeli olarak devre dışı bırakmanız gerekir. |
-|  <ul><li>ClassificationList<li>Türü: Dize<li>Varsayılan: "" | Office 365 gruplarına uygulanabilen geçerli sınıflandırma değerlerinin virgülle ayrılmış bir listesi. <br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
-|  <ul><li>Enablemıplas<li>Tür: Boolean<li>Varsayılan: "false" |Microsoft 365 Uyumluluk Merkezi 'nde yayınlanan duyarlılık etiketlerinin Office 365 gruplarına uygulanıp uygulanamayacağını belirten bayrak. Daha fazla bilgi için bkz. [Office 365 grupları Için duyarlılık etiketleri atama](groups-assign-sensitivity-labels.md). |
+|  <ul><li>ClassificationList<li>Türü: Dize<li>Varsayılan: "" | Microsoft 365 gruplarına uygulanabilen geçerli sınıflandırma değerlerinin virgülle ayrılmış listesi. <br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
+|  <ul><li>Enablemıplas<li>Tür: Boolean<li>Varsayılan: "false" |Microsoft 365 Uyumluluk Merkezi 'nde yayınlanan duyarlılık etiketlerinin Microsoft 365 gruplara uygulanıp uygulanamayacağını belirten bayrak. Daha fazla bilgi için bkz. [Microsoft 365 grupları Için duyarlılık etiketleri atama](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Örnek: dizin düzeyindeki gruplar için konuk ilkesini yapılandırma
 1. Tüm ayar şablonlarını al:
@@ -255,7 +255,7 @@ Bu adım dizin düzeyindeki ayarları kaldırır ve dizindeki tüm Office grupla
    Id                                   DisplayName            Description
    --                                   -----------            -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified          ...
-   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Office 365 group
+   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Microsoft 365 group
    4bc7f740-180e-4586-adb6-38b2e9024e6b Application            ...
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy Settings ...
    5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...

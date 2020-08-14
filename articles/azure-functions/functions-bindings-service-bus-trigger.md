@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7738582ec2839a6fddaa01ff0f9921c276c9748d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 262a6612c50148232e814befc76707989befb18b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843122"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212145"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
@@ -299,7 +299,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**subscriptionName**|**SubscriptionName**|İzlenecek aboneliğin adı. Sıra için değil, yalnızca bir konu izlenirken ayarlanır.|
 |**bağlanma**|**Bağlantı**|Bu bağlama için kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, adın yalnızca geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyServiceBus" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı, "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Bağlantı dizesi, belirli bir sıra veya konuyla sınırlı olmamak üzere bir Service Bus ad alanı için olmalıdır. |
 |**accessRights**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve ' dir `listen` . Varsayılan değer, `manage` ' ın `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, `accessRights` "Dinle" olarak ayarlayın. Aksi halde, Işlevler çalışma zamanı yönetme hakları gerektiren işlemleri gerçekleştirmeye çalışırken başarısız olabilir. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
-|**isSessionsEnabled**|**IsSessionsEnabled**|`true`[oturum kullanan](../service-bus-messaging/message-sessions.md) bir kuyruğa veya aboneliğe bağlanılıyorsa. `false`Aksi takdirde, varsayılan değerdir.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true`[oturum kullanan](../service-bus-messaging/message-sessions.md) bir kuyruğa veya aboneliğe bağlanılıyorsa. `false` Aksi takdirde, varsayılan değerdir.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -309,11 +309,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 
-* `string`-İleti metin ise.
-* `byte[]`-İkili veriler için kullanışlıdır.
+* `string` -İleti metin ise.
+* `byte[]` -İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
+* `BrokeredMessage` -, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
 
 Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
@@ -321,10 +321,10 @@ Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri i�
 
 Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 
-* `string`-İleti metin ise.
-* `byte[]`-İkili veriler için kullanışlıdır.
+* `string` -İleti metin ise.
+* `byte[]` -İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* `BrokeredMessage` -, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
 Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 

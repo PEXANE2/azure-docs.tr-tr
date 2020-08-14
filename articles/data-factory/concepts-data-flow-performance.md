@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/27/2020
-ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/12/2020
+ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475347"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212043"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -87,7 +87,7 @@ Verilerinizin önem düzeyini iyi anlamak istiyorsanız anahtar bölümleme iyi 
 > [!TIP]
 > Veri reshuffles bölümlendirme şemasını el ile ayarlama ve Spark iyileştiricinin avantajlarını fark edebilir. En iyi uygulama, gerekmedikçe Bölümlendirmeyi el ile ayarlamanıza gerek kalmaz.
 
-## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>Azure Integration Runtime iyileştirme
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> Azure Integration Runtime iyileştirme
 
 Veri akışları, çalışma zamanında Esnetme yapan Spark kümelerinde çalışır. Kullanılan kümenin yapılandırması, etkinliğin tümleştirme çalışma zamanı 'nda (IR) tanımlanmıştır. Tümleştirme çalışma zamanını tanımlarken yapmanız gereken üç performans konusu vardır: küme türü, küme boyutu ve yaşam süresi.
 
@@ -273,6 +273,29 @@ Bir dönüşümden sonra verileriniz eşit olarak bölünmemişse, yeniden böl�
 
 > [!TIP]
 > Verilerinizi yeniden bölümleyip reshuffle bu verileri içeren aşağı akış dönüşümlerine sahipseniz, birleştirme anahtarı olarak kullanılan bir sütunda karma bölümlendirme kullanın.
+
+## <a name="using-data-flows-in-pipelines"></a>İşlem hatlarında veri akışlarını kullanma 
+
+Birden çok veri akışı ile karmaşık işlem hatları oluştururken, mantıksal akışınız zamanlama ve maliyet üzerinde büyük bir etkiye sahip olabilir. Bu bölümde, farklı mimari stratejilerinin etkileri ele alınmaktadır.
+
+### <a name="executing-data-flows-in-parallel"></a>Veri akışlarını paralel olarak yürütme
+
+Birden çok veri akışını paralel olarak çalıştırırsanız, ADF her etkinlik için ayrı Spark kümeleri çalıştırır. Bu, her bir işin yalıtılmış ve paralel çalışmasına izin verir, ancak aynı anda çalışan birden fazla kümeye yol açacaktır.
+
+Veri akışlarınız paralel olarak yürütülülüsün sonra, birden fazla kullanılmamış ısınma havuzuna yol açacağından, Azure IR yaşam süresi özelliği etkinleştirilmemelidir.
+
+> [!TIP]
+> Her etkinlik için aynı veri akışını birden çok kez çalıştırmak yerine Veri Gölü içinde verilerinizi işleyin ve tek bir veri akışında verileri işlemek için joker karakterler kullanın.
+
+### <a name="execute-data-flows-sequentially"></a>Veri akışlarını ardışık olarak Yürüt
+
+Veri akışı etkinliklerinizi sırayla çalıştırırsanız, Azure IR yapılandırmasında bir TTL ayarlamanız önerilir. ADF, daha hızlı bir küme başlangıç zamanına neden olan işlem kaynaklarını yeniden kullanacaktır. Her etkinlik, her yürütme için yeni bir Spark bağlamı almaya devam eder.
+
+İşlerin ardışık olarak çalıştırılması, uçtan uca yürütmek için büyük olasılıkla en uzun zaman alır, ancak mantıksal işlemler için temiz bir ayrım sağlar.
+
+### <a name="overloading-a-single-data-flow"></a>Tek bir veri akışını aşırı yükleme
+
+Tüm mantığınızı tek bir veri akışının içine yerleştirirseniz, ADF tüm işi tek bir Spark örneği üzerinde yürütür. Bu, maliyetleri azaltmanın bir yolu gibi görünse de, farklı mantıksal akışlar birlikte karıştırıyor ve izlenmesi ve hata ayıklaması zor olabilir. Bir bileşen başarısız olursa, işin diğer tüm bölümleri de başarısız olur. Azure Data Factory ekibi, veri akışlarını bağımsız iş mantığı akışlarıyla düzenlemeyi öneriyor. Veri akışınız çok büyük hale gelirse, bileşenleri ayırmak için bölmek, izleme ve hata ayıklama işlemlerini kolaylaştırır. Bir veri akışındaki dönüştürme sayısında sabit sınır olmadığından, çok fazla olması işi karmaşık hale getirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

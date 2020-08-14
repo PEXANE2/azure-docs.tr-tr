@@ -4,13 +4,13 @@ description: Visual Studio 'dan varsayılan C# ASP.NET Web uygulaması şablonun
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 08/06/2020
-ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 55b8dabfb2f5b3deff8b8435f0121a41333fb655
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc, devcenter, seodec18
+ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085471"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212562"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure’da ASP.NET Framework web uygulaması oluşturma
 
@@ -29,7 +29,7 @@ Visual Studio 2019 zaten yüklüyse:
 - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
 - **Araçlar**  >  **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
 
-## <a name="create-an-aspnet-web-app"></a>ASP.NET Web uygulaması oluşturma<a name="create-and-publish-the-web-app"></a>
+## <a name="create-an-aspnet-web-app"></a>ASP.NET Web uygulaması oluşturma <a name="create-and-publish-the-web-app"></a>
 
 Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
@@ -51,7 +51,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
    ![Uygulamayı yerel olarak çalıştırma](./media/quickstart-dotnet-framework/local-web-app.png)
 
-## <a name="publish-your-web-app"></a>Web uygulamanızı yayımlama<a name="launch-the-publish-wizard"></a>
+## <a name="publish-your-web-app"></a>Web uygulamanızı yayımlama <a name="launch-the-publish-wizard"></a>
 
 1. **Çözüm Gezgini**, **Myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin.
 

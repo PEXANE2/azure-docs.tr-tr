@@ -2,15 +2,16 @@
 title: ASP.NET Core uygulamalarını yapılandırma
 description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir Linux kapsayıcısında, Azure App Service bir ASP.NET Core uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080173"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211911"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET Core uygulaması yapılandırma
 
@@ -80,7 +81,7 @@ Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak d
 1. `dotnet publish`Üretim için bir ikili oluşturmak üzere ' i çalıştırın.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
+`PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
 
 Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
 
@@ -124,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-App Service ve *appsettings.jsüzerinde*aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin App Service değeri değeri *appsettings.js* üzerinden önceliklidir. Değer *üzerindeki yerelappsettings.js* , uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
+App Service ve *appsettings.jsüzerinde*aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin App Service değeri değeri *appsettings.js* üzerinden önceliklidir. Değer * üzerindeki yerelappsettings.js* , uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
 
 > [!NOTE]
 > *appsettings.jsüzerindeki* [Hiyerarşik yapılandırma verilerine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) `:` .NET Core için standart olan sınırlayıcı kullanılarak erişildiğini unutmayın. App Service belirli bir hiyerarşik yapılandırma ayarını geçersiz kılmak için, uygulama ayarı adını anahtarda aynı ayrılmış biçimle ayarlayın. [Cloud Shell](https://shell.azure.com)aşağıdaki örneği çalıştırabilirsiniz:

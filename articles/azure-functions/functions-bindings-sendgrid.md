@@ -3,14 +3,15 @@ title: Azure Işlevleri SendGrid bağlamaları
 description: Azure Işlevleri SendGrid bağlama başvurusu.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697366"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212187"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
 
@@ -36,7 +37,7 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 
 Aşağıdaki örnek, Service Bus kuyruğu tetikleyicisi kullanan bir [C# işlevini](functions-dotnet-class-library.md) ve SendGrid çıkış bağlamayı gösterir.
 
-### <a name="synchronous"></a>Zaman Uyumlu
+### <a name="synchronous"></a>Zaman uyumlu
 
 ```cs
 using SendGrid.Helpers.Mail;
@@ -66,7 +67,7 @@ public class OutgoingEmail
 }
 ```
 
-### <a name="asynchronous"></a>Zaman Uyumsuz
+### <a name="asynchronous"></a>Zaman uyumsuz
 
 ```cs
 using SendGrid.Helpers.Mail;
@@ -203,7 +204,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, SendGrid bağlamasını kullanarak bir e-posta gönderen HTTP ile tetiklenen bir işlev gösterir. Bağlama yapılandırmasında varsayılan değerleri sağlayabilirsiniz. Örneğin, *Kimden* e-posta adresi *üzerindefunction.js*yapılandırılır. 
+Aşağıdaki örnek, SendGrid bağlamasını kullanarak bir e-posta gönderen HTTP ile tetiklenen bir işlev gösterir. Bağlama yapılandırmasında varsayılan değerleri sağlayabilirsiniz. Örneğin, *Kimden* e-posta adresi * üzerindefunction.js*yapılandırılır. 
 
 ```json
 {
@@ -352,7 +353,7 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, dosyasında *function.js* bulunan bağlama yapılandırma özellikleri ve `SendGrid` özniteliği/ek açıklaması listelenmektedir.
+Aşağıdaki tabloda, dosyasında  *function.js* bulunan bağlama yapılandırma özellikleri ve `SendGrid` özniteliği/ek açıklaması listelenmektedir.
 
 | *function.js* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe Bağlı |
 |--------------------------|-------------------------------|-------------|----------|
@@ -360,9 +361,9 @@ Aşağıdaki tabloda, dosyasında *function.js* bulunan bağlama yapılandırma 
 | yön |yok| Olarak ayarlanmalıdır `out` .| Hayır |
 | name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | Hayır |
 | apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
-| -| Alıcı | Alıcının e-posta adresi. | Evet |
-| Kaynak| Başlangıç | Gönderenin e-posta adresi. |  Evet |
-| Konu| Özne | E-postanın konusu. | Evet |
+| şöyle değiştirin:| Amaç | Alıcının e-posta adresi. | Evet |
+| Kaynak| Kaynak | Gönderenin e-posta adresi. |  Evet |
+| subject| Konu | E-postanın konusu. | Evet |
 | metin| Metin | E-posta içeriği. | Evet |
 
 İsteğe bağlı özellikler, bağlamada tanımlanmış ve program aracılığıyla eklenmiş ya da geçersiz kılınan varsayılan değerlere sahip olabilir.
@@ -373,10 +374,10 @@ Aşağıdaki tabloda, dosyasında *function.js* bulunan bağlama yapılandırma 
 
 ## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için başvuruhost.js](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ Azure işlevleri için başvuruhost.js](functions-host-json.md).
 
 > [!NOTE]
-> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
+> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [ Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
 ```json
 {

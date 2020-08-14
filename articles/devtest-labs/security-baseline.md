@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761017"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212307"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -629,8 +629,8 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Azure kaynaklarının yapılandırmasını güvenli bir şekilde depolayın
 **Rehberlik:** Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen durum yapılandırması betikleri gibi güvenli bir şekilde depolamak ve yönetmek için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynaklara erişmek için, Azure DevOps ile tümleşikse, belirli kullanıcılar, yerleşik güvenlik grupları veya Azure Active Directory (Azure AD) içinde tanımlanan gruplar için izin verebilir veya vermeyebilirsiniz.
 
-- [Git öğreticisi Azure Repos](/devops/repos/git/gitworkflow?view=azure-devops)
-- [İzinler ve gruplar hakkında](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Git öğreticisi Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [İzinler ve gruplar hakkında](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
 - [Azure DevTest Labs ile Azure DevOps iş akışı arasında tümleştirme](devtest-lab-dev-ops.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz

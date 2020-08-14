@@ -7,25 +7,26 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798129"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213877"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
-Bu makale, ticari Market teklifleri oluşturmaya ve buna ilgi çekici öneriler sağlar. Aşağıdaki tablolarda, Iş Ortağı Merkezi 'nde teklif bilgilerini tamamlamaya yönelik en iyi uygulamalar ana hatlarıyla verilmiştir. Tekliflerinizin nasıl çalıştığını analiz etmek için Iş Ortağı Merkezi ' nde [Market öngörüleri panosuna](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) gidin. 
+Bu makale, Microsoft ticari Market tekliflerini oluşturma ve ilgi çekici öneriler sunmaktadır. Aşağıdaki tablolarda, Iş Ortağı Merkezi 'nde teklif bilgilerini tamamlamaya yönelik en iyi uygulamalar ana hatlarıyla verilmiştir. Tekliflerinizin nasıl çalıştığını analiz etmek için Iş Ortağı Merkezi ' nde [Market öngörüleri panosuna](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) gidin. 
 
 ## <a name="storefront-offer-details"></a>Storefront teklif ayrıntıları
 
 | Storefront ayarı | En iyi yöntem |
 |:--- |:--- |  
-| Teklif Adı | Uygulamalar için, müşterilerinizin teklifinizi bulmasına yardımcı olmak için arama anahtar sözcükleri içeren net bir başlık sağlayın. <br> <br> Danışmanlık Hizmetleri için şu biçimi izleyin: [teklif adı: [Duration] [teklif türü] (örneğin, contoso: 2 haftalık uygulama) <br> <br> Marka yönergelerine bağlı olarak: Microsoft ticari markalarına ve Microsoft yazılımlarının, ürünlerinin ve hizmetlerinin adlarına başvururken [Microsoft ticari marka ve marka kılavuzlarını](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) ve ilgili, ürüne özgü diğer yönergeleri izleyin. |
+| Teklif Adı | Uygulamalar için, müşterilerinizin teklifinizi bulmasına yardımcı olmak için arama anahtar sözcükleri içeren net bir başlık sağlayın. <br> <br> Danışmanlık Hizmetleri için şu biçimi izleyin: [teklif adı: [Duration] [teklif türü] (örneğin, contoso: 2 haftalık uygulama) |
 | Teklif açıklaması | İlk birkaç cümlede teklifinizin değer teklifini açıklayan net bir açıklama sağlayın.  Bu tümcelerin, arama motoru sonuçlarında kullanılabileceğini aklınızda bulundurun. Değer teklifini temel bileşenler şunlardır: <ul> <li>Ürün veya çözümün açıklaması. </li> <li> Ürün veya çözümden faydalanan Kullanıcı. </li> <li> Müşterinin ürün veya çözüm adreslerine ihtiyacı veya sorun olması gerekir. </li> </ul> <br> Mümkün olduğunda sektör standart sözlüğünü veya avantaj tabanlı bir ifade kullanın.  Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin.  Bunun yerine, teslim ettiğiniz değere odaklanın. <br> <br> Danışmanlık hizmeti listeleri için sağladığınız profesyonel hizmeti açık bir şekilde belirtin. |
 
-Bu bölümdeki tablolarda Market teklifleri oluşturma ve ilgi çekici öneriler sağlanır. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/)'ne gidin. 
+> [!IMPORTANT]
+> Microsoft ticari markaları ve Microsoft yazılımlarının, ürünlerinin ve hizmetlerinin adlarına başvururken, teklif adınızın ve teklif açıklamasının **[Microsoft ticari marka ve marka yönergelerine](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** ve diğer ilgili, ürüne özgü yönergelere bağlı olduğundan emin olun.
 
 ## <a name="storefront-listing-details"></a>Storefront listeleme ayrıntıları
 
@@ -119,19 +120,19 @@ Anahtar sözcükler, müşterilerin arama yaparken teklifinizi bulmasına yardı
 ## <a name="storefront-marketing-details"></a>Storefront pazarlama ayrıntıları
 | Storefront ayarı | En iyi yöntem |
 |:--- |:--- |  
-| Teklif logosu (PNG biçimi, 216 × 216 ve 350 x 350 piksel): uygulama ayrıntıları sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Logonuzu uygulama ayrıntıları listesi sayfasına PNG biçiminde karşıya yükleyin. İş Ortağı Merkezi, gereken logo boyutlarına göre yeniden boyutlandırır. |
-| Teklif logosu (PNG biçimi, 48 × 48 piksel): arama sayfası | İş Ortağı Merkezi, yüklediğiniz büyük logoyu bu logoyu oluşturacaktır. İsteğe bağlı olarak bunu farklı bir görüntüyle değiştirebilirsiniz. |
-| "Daha fazla bilgi" belgeleri | "Daha fazla bilgi" altında destekleyici satış ve pazarlama varlıklarının dahil olduğu bazı örnekler şunlardır:<ul><li>teknik incelemeler</li><li> Broşürler</li><li>denetim listeleri veya</li><li> PowerPoint sunuları</li></ul><br>Tüm dosyaları PDF biçiminde kaydedin. Burada Hedefiniz, müşterileri satmak değil, müşterileri eğitmek için olmalıdır.<br><br>Tüm belgelerinize uygulama giriş sayfanız için bir bağlantı ekleyin ve ziyaretçi ve deneme sürümlerini izlemenize yardımcı olması için URL parametreleri ekleyin. |
+| Teklif logosu (PNG biçimi, 48 &nbsp; &times; &nbsp; 48): arama sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Amblemini PNG biçiminde karşıya yükleyerek teklifinizin arama sayfasına yükleyin. |
+| Teklif logosu (PNG biçimi, 216 &nbsp; &times; &nbsp; 216): uygulama ayrıntıları sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Logonuzu uygulama ayrıntıları listesi sayfasına PNG biçiminde karşıya yükleyin. |
+| "Daha fazla bilgi" belgeleri | "Daha fazla bilgi" altında destekleyici satış ve pazarlama varlıklarının dahil olduğu bazı örnekler şunlardır: <ul> <li> teknik incelemeler, </li> <li> Broşürler </li> <li> denetim listeleri veya </li> <li> PowerPoint sunuları.</li> </ul>Tüm dosyaları PDF biçiminde kaydedin. Burada Hedefiniz, müşterileri satmak değil, müşterileri eğitmek için olmalıdır. <br><br>Tüm belgelerinize uygulama giriş sayfanız için bir bağlantı ekleyin ve ziyaretçi ve deneme sürümlerini izlemenize yardımcı olması için URL parametreleri ekleyin. |
 | Videolar: yalnızca AppSource, danışmanlık hizmetleri ve SaaS teklifleri | En güçlü videolar, sizin teklifinizin değerini, anlatım formunda iletişim kurar:<ul> <li> Müşterinizin, hikayenin herbirini değil, müşteriniz yapın. </li> <li> Videonuzun, hedef müşterinizin sorumlu güçlüklerine ve hedeflerine yönelik olması gerekir. </li> <li> Önerilen Uzunluk: 60-90 saniye.</li> <li> Videoların adını kullanan anahtar arama sözcüklerini ekleyin. </li> <li> Nasıl yapılır, Başlarken veya müşteri referansları gibi ek videolar eklemeyi göz önünde bulundurun. </li> </ul> |
 | Ekran görüntüleri (1280 &nbsp; &times; &nbsp; 720) | En fazla beş ekran görüntüsü ekleyin:<br>Anahtar arama sözcüklerini dosya adlarına ekleyin. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Web sitenizdeki teklif sayfanıza bağlantı
 
-Sitenizdeki AppSource veya Azure Market rozetini Market 'teki listelemenize bağladığınızda, URL 'nin sonuna aşağıdaki sorgu parametrelerini ekleyerek güçlü analiz ve raporlamayı destekleyebilirsiniz:
+Sitenizdeki AppSource veya Azure Market rozetini ticari Market 'teki listelemenize bağladığınızda, URL 'nin sonuna aşağıdaki sorgu parametrelerini ekleyerek güçlü analiz ve raporlamayı destekleyebilirsiniz:
 * **src**: trafiğin appsource 'a yönlendirildiği kaynağı (örneğin, Web sitesi, LinkedIn veya Facebook) dahil edin.
 * **mktcmpıd**: herhangi bir harf, sayı, alt çizgi ve kısa çizgi birleşimine kadar en fazla 16 karakter içerebilen pazarlama kampanyası Kimliğiniz (örneğin, *blogpost_12*).
 
-Aşağıdaki örnek URL, önceki sorgu parametrelerinin her ikisini de içerir:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
+Aşağıdaki örnek URL, önceki sorgu parametrelerinin her ikisini de içerir: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
 AppSource URL 'nize parametreler ekleyerek, [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/)'nde analiz panosu ' nda kampanyanızın verimliliğini gözden geçirebilirsiniz.
 

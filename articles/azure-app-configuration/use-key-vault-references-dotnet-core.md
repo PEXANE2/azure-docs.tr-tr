@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81309043"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213259"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasındaki Key Vault başvurularını kullanma
 
@@ -82,11 +82,11 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin.
 
-1. **+** > **Anahtar Kasası başvurusu**oluştur ' u seçin ve ardından aşağıdaki değerleri belirtin:
+1. **+**  >  **Anahtar Kasası başvurusu**oluştur ' u seçin ve ardından aşağıdaki değerleri belirtin:
     - **Anahtar**: **TestApp: Settings: keyvaultmessage**öğesini seçin.
     - **Etiket**: Bu değeri boş bırakın.
     - **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki bölümde oluşturduğunuz anahtar kasasında bunlara karşılık gelen değerleri girin.
@@ -169,7 +169,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     using Azure.Identity;
     ```
 
-1. Yöntemini çağırarak `CreateWebHostBuilder` `config.AddAzureAppConfiguration` uygulama yapılandırmasını kullanmak için yöntemi güncelleştirin. `ConfigureKeyVault` Seçeneğini ekleyin ve Key Vault doğru kimlik bilgilerini geçirin.
+1. Yöntemini `CreateWebHostBuilder` çağırarak uygulama yapılandırmasını kullanmak için yöntemi güncelleştirin `config.AddAzureAppConfiguration` . Seçeneğini ekleyin `ConfigureKeyVault` ve Key Vault doğru kimlik bilgilerini geçirin.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -214,9 +214,9 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
             .UseStartup<Startup>());
     ```
 
-1. Uygulama yapılandırmasına bağlantıyı başlattığınızda, `ConfigureKeyVault` yöntemini çağırarak Key Vault bağlantısını ayarlarsınız. Başlangıçtan sonra, Key Vault başvuruların değerlerine, normal uygulama yapılandırma anahtarlarının değerlerine erişirken aynı şekilde erişebilirsiniz.
+1. Uygulama yapılandırmasına bağlantıyı başlattığınızda, yöntemini çağırarak Key Vault bağlantısını ayarlarsınız `ConfigureKeyVault` . Başlangıçtan sonra, Key Vault başvuruların değerlerine, normal uygulama yapılandırma anahtarlarının değerlerine erişirken aynı şekilde erişebilirsiniz.
 
-    Bu işlemi eylemde görmek için, **Görünümler** > **giriş** klasöründeki *Index. cshtml* dosyasını açın. İçeriğini şu kodla değiştirin:
+    Bu işlemi eylemde görmek için, **Görünümler**giriş klasöründeki *Index. cshtml* dosyasını açın  >  **Home** . Dosyanın içeriğini aşağıdaki kod ile değiştirin:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -252,7 +252,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     dotnet run
     ```
 
-1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan `http://localhost:5000`Web uygulaması IÇIN varsayılan URL olan öğesine gidin.
+1. Bir tarayıcı penceresi açın ve `http://localhost:5000` yerel olarak barındırılan Web uygulaması için varsayılan URL olan öğesine gidin.
 
     ![Hızlı başlangıç yerel uygulama başlatma](./media/key-vault-reference-launch-local.png)
 

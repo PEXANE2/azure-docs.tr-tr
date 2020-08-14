@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145617"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212640"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -34,6 +34,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
 
 ## <a name="note-before-you-migrate"></a>Geçirmeden önce göz önüne alın
 
+* Yazma deneyiminizi **Kasım, 2, 2020 '** ye geçirmeniz gerekir. 
 * Geçiş tek yönlü bir işlemdir. Geçiş yaptıktan sonra geri gidemezsiniz.
 * Uygulama sahibiyseniz uygulamalar sizinle otomatik olarak geçiş yapılır.
 * Sahip, geçirilecek uygulamaların bir alt kümesini seçemez ve işlem geri alınamaz.

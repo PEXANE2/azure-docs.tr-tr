@@ -8,23 +8,34 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557267"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214027"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI zenginleştirilmiş alanları aranabilir bir dizinle eşleme
 
-Bu makalede, aranabilir bir dizindeki çıkış alanlarına zenginleştirilmiş giriş alanlarını eşlemeyi öğreneceksiniz. [Bir beceri tanımladıktan](cognitive-search-defining-skillset.md)sonra, arama dizininizdeki belirli bir alana doğrudan değer katkıda bulunan herhangi bir yeteneğin çıkış alanlarını eşlemeniz gerekir. 
+![Dizin Oluşturucu aşamaları](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "Dizin Oluşturucu aşamaları")
 
-İçeriği zenginleştirilmiş belgelerden dizine taşımak için çıkış alanı eşlemeleri gereklidir.  Zenginleştirilmiş belge gerçekten bir bilgi ağacıdır ve dizindeki karmaşık türler için destek olsa bile, bazen zenginleştirilmiş ağaç içindeki bilgileri daha basit bir türe (örneğin, dizeler dizisi) dönüştürmek isteyebilirsiniz. Çıkış alanı eşlemeleri, bilgileri düzleştirerek veri şekli dönüştürmeleri gerçekleştirmenize olanak tanır.
+Bu makalede, aranabilir bir dizindeki çıkış alanlarına zenginleştirilmiş giriş alanlarını eşlemeyi öğreneceksiniz. [Bir beceri tanımladıktan](cognitive-search-defining-skillset.md)sonra, arama dizininizdeki belirli bir alana doğrudan değer katkıda bulunan herhangi bir yeteneğin çıkış alanlarını eşlemeniz gerekir.
+
+İçeriği zenginleştirilmiş belgelerden dizine taşımak için çıkış alanı eşlemeleri gereklidir.  Zenginleştirilmiş belge gerçekten bir bilgi ağacıdır ve dizindeki karmaşık türler için destek olsa bile, bazen zenginleştirilmiş ağaç içindeki bilgileri daha basit bir türe (örneğin, dizeler dizisi) dönüştürmek isteyebilirsiniz. Çıkış alanı eşlemeleri, bilgileri düzleştirerek veri şekli dönüştürmeleri gerçekleştirmenize olanak tanır. Çıkış alanı eşlemeleri her zaman beceri yürütmeden sonra gerçekleşir, ancak bu aşamanın bir beceri tanımlı olmasa bile çalışması mümkündür.
+
+Çıkış alanı eşlemelerinin örnekleri:
+
+* Beceri bir parçası olarak, belgenizin her sayfasında bahsedilen kuruluşların adlarını ayıkladıysanız. Artık bu kuruluş adlarından her birini Edm. Collection türünde (EDM. String) dizininizdeki bir alana eşlemek istiyorsunuz.
+
+* Beceri bir parçası olarak, "belge/translated_text" adlı yeni bir düğüm oluşturmuş olursunuz. Bu düğümdeki bilgileri dizininizdeki belirli bir alanla eşlemek istiyorsunuz.
+
+* Bir beceri yok ancak Cosmos DB veritabanından karmaşık bir tür dizinleniyor. Bu karmaşık türdeki bir düğüme ulaşmak ve dizininizdeki bir alanla eşlemek istersiniz.
 
 > [!NOTE]
 > Son zamanlarda çıkış alanı eşlemelerinde işlevleri eşleme işlevlerini etkinleştirdik. Eşleme işlevleri hakkında daha fazla bilgi için bkz. [alan eşleme işlevleri](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings kullanma
+
 Alanları eşlemek için, `outputFieldMappings` Dizin Oluşturucu tanımınıza aşağıda gösterildiği gibi ekleyin:
 
 ```http

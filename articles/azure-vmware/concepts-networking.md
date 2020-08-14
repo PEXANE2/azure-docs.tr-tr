@@ -3,14 +3,14 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde (AVS), ağ ve bağlantı durumları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062848"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214108"
 ---
-# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware çözümü (AVS) önizleme ağı ve karşılıklı bağlantı kavramları
+# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Çözümü (AVS) Önizlemesi ağ ve ara bağlantı kavramları
 
 Azure VMware çözümünüz (AVS) özel bulutları ve şirket içi ortamlar ya da Azure 'daki sanal ağlar arasındaki ağ bağlantısı, özel bulutunuzun erişimine ve kullanılmasına olanak tanır. Bu makalede, ağ ve karşılıklı bağlantı temelini oluşturan bazı önemli kavramlar ele alınacaktır.
 
@@ -48,7 +48,7 @@ Aboneliğinizdeki bir sanal ağdan bağlantı oluşturduğunuzda, ExpressRoute b
 
 Yönlendirme, her özel bulut dağıtımı için otomatik olarak sağlanan ve varsayılan olarak etkinleştirilen Sınır Ağ Geçidi Protokolü (BGP) tabanlıdır. AVS özel bulutları için, aşağıdaki tabloda gösterildiği gibi, alt ağlar için en az/22 önek uzunluğu CıDR ağ adres blokları ile özel bulut ağ adres alanları planlamanız gerekir. Adres bloğu, aboneliğinizdeki ve şirket içi ağlardaki diğer sanal ağlarda kullanılan adres bloklarıyla çakışmamalıdır. Bu adres bloğu, yönetim, sağlama ve vMotion ağları içinde otomatik olarak sağlanır.
 
-Örnek `/22` CIDR ağ adresi bloğu:`10.10.0.0/22`
+Örnek `/22` CIDR ağ adresi bloğu:  `10.10.0.0/22`
 
 Alt ağlar:
 
@@ -77,7 +77,7 @@ Sanal ağda ve şirket içinde tam özel bulut uygulamasına, şirket içi ortam
 
 Aşağıdaki diyagramda, şirket içi ile özel bulut bağlantısı, aşağıdaki kullanım durumlarını sağlar:
 * Etkin/soğuk çapraz vCenter vMotion
-* Şirket içinden AVS 'ye özel bulut yönetimi erişimi
+* Şirket Içinden AVS 'ye özel bulut yönetimi erişimi
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Sanal ağ ve şirket içi tam özel bulut bağlantısı" border="false":::
 

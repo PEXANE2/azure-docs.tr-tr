@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316076"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213303"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure için Redis Cache için ASP.NET Oturum Durumu Sağlayıcısı
 
@@ -92,7 +93,7 @@ Açıklamalı bölüm, her bir özniteliğe yönelik özniteliklerin ve örnek a
 * **ApplicationName** – anahtarları redsıs olarak depolanır `{<Application Name>_<Session ID>}_Data` . Bu adlandırma şeması, birden fazla uygulamanın aynı Redsıs örneğini paylaşmasına olanak sağlar. Bu parametre isteğe bağlıdır ve bunu sağlamazsanız varsayılan bir değer kullanılır.
 * **Connectiontimeoutınmilliseconds** – Bu ayar, StackExchange. redsıs Istemcisinde ConnectTimeout ayarını geçersiz kılmanızı sağlar. Belirtilmezse, varsayılan connectTimeout ayarı 5000 kullanılır. Daha fazla bilgi için bkz. [StackExchange. redsıs yapılandırma modeli](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **Operationtimeoutınmilliseconds** – Bu ayar, StackExchange. redsıs Istemcisinde synctimeout ayarını geçersiz kılmanızı sağlar. Belirtilmemişse, varsayılan syncTimeout ayarı 1000 kullanılır. Daha fazla bilgi için bkz. [StackExchange. redsıs yapılandırma modeli](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **Redisserializertype** -Bu ayar redsıs 'e gönderilen oturum içeriğinin özel serileştirmesini belirtmenize olanak tanır. Belirtilen türün uygulanması `Microsoft.Web.Redis.ISerializer` ve ortak parametresiz oluşturucuyu bildirmesi gerekir. Varsayılan olarak `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` kullanılır.
+* **Redisserializertype** -Bu ayar redsıs 'e gönderilen oturum içeriğinin özel serileştirmesini belirtmenize olanak tanır. Belirtilen türün uygulanması `Microsoft.Web.Redis.ISerializer` ve ortak parametresiz oluşturucuyu bildirmesi gerekir. Varsayılan olarak  `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` kullanılır.
 
 Bu özellikler hakkında daha fazla bilgi için bkz. [ASP.net for the The redsıs for](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)The The The The The The The The The The The The
 

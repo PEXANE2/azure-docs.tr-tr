@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory | grup adlandırma ilkesini zorla | Microsoft Docs
-description: Azure Active Directory 'de Office 365 grupları için adlandırma ilkesi ayarlama
+description: Azure Active Directory Microsoft 365 Gruplar için adlandırma ilkesi ayarlama
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 08/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497095"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213753"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory 'de Office 365 gruplarında bir adlandırma ilkesi zorlaması
+# <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 Gruplar üzerinde bir adlandırma ilkesi zorlama
 
-Kullanıcılarınız tarafından oluşturulan veya düzenlenen Office 365 grupları için tutarlı adlandırma kuralları zorlamak için, Azure Active Directory (Azure AD) içinde kuruluşlarınız için bir grup adlandırma ilkesi ayarlayın. Örneğin, bir grup, üyelik, coğrafi bölge ya da grubu oluşturan bir işlev ile iletişim kurmak için adlandırma ilkesini kullanabilirsiniz. Ayrıca, adres defterindeki grupların sınıflandırmasına yardımcı olması için adlandırma ilkesini de kullanabilirsiniz. İlkeyi, belirli sözcüklerin Grup adlarında ve diğer adlarla kullanılmasını engellemek için kullanabilirsiniz.
+Kullanıcılarınız tarafından oluşturulan veya düzenlenen Microsoft 365 grupları için tutarlı adlandırma kuralları zorlamak için, Azure Active Directory (Azure AD) içinde kuruluşlarınız için bir grup adlandırma ilkesi ayarlayın. Örneğin, bir grup, üyelik, coğrafi bölge ya da grubu oluşturan bir işlev ile iletişim kurmak için adlandırma ilkesini kullanabilirsiniz. Ayrıca, adres defterindeki grupların sınıflandırmasına yardımcı olması için adlandırma ilkesini de kullanabilirsiniz. İlkeyi, belirli sözcüklerin Grup adlarında ve diğer adlarla kullanılmasını engellemek için kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Office 365 grupları için Azure AD adlandırma ilkesi kullanmak, bir veya daha fazla Office 365 grubunun üyesi olan her benzersiz kullanıcı için Azure Active Directory Premium P1 lisansı veya Azure AD Temel EDU lisansı atamanız gerekir.
+> Microsoft 365 Gruplar için Azure AD adlandırma ilkesi kullanmak, bir veya daha fazla Microsoft 365 grubunun üyesi olan her benzersiz kullanıcı için Azure Active Directory Premium P1 lisansı veya Azure AD Temel EDU lisansı atamanız gerekir.
 
 Adlandırma ilkesi, iş yükleri genelinde oluşturulan grupları oluşturmaya veya düzenlemesine (örneğin, Outlook, Microsoft ekipleri, SharePoint, Exchange veya Planner) uygulanır. Hem Grup adına hem de grup diğer adına uygulanır. Azure AD 'de Adlandırma ilkenizi ayarlarsanız ve mevcut bir Exchange grup adlandırma ilkeniz varsa, kuruluşunuzda Azure AD adlandırma ilkesi zorlanır.
 
-Grup adlandırma ilkesi yapılandırıldığında, ilke son kullanıcılar tarafından oluşturulan yeni Office 365 gruplarına uygulanır. Adlandırma ilkesi, genel yönetici veya Kullanıcı Yöneticisi gibi belirli dizin rollerine uygulanmaz (lütfen grup adlandırma ilkesinden muaf tutulan rollerin tamamı için aşağıya bakın). Mevcut Office 365 grupları için, ilke yapılandırma sırasında hemen uygulanmaz. Grup sahibi bu grupların grup adını düzenledikten sonra, adlandırma ilkesi zorlanır.
+Grup adlandırma ilkesi yapılandırıldığında, ilke son kullanıcılar tarafından oluşturulan yeni Microsoft 365 gruplarına uygulanır. Adlandırma ilkesi, genel yönetici veya Kullanıcı Yöneticisi gibi belirli dizin rollerine uygulanmaz (lütfen grup adlandırma ilkesinden muaf tutulan rollerin tamamı için aşağıya bakın). Mevcut Microsoft 365 grupları için, ilke yapılandırma sırasında hemen uygulanmaz. Grup sahibi bu grupların grup adını düzenledikten sonra, adlandırma ilkesi zorlanır.
 
 ## <a name="naming-policy-features"></a>Adlandırma ilkesi özellikleri
 
@@ -253,7 +253,7 @@ Outlook Müşteri Yöneticisi (OCM) | Outlook müşteri yöneticisi, Outlook mü
 Sınıf uygulaması | Sınıf uygulamasında oluşturulan gruplar, adlandırma ilkesiyle uyumlu değildir, ancak adlandırma ilkesi otomatik olarak uygulanmaz ve bir sınıf grubu adı girerken, adlandırma ilkesi önizlemesi kullanıcılara gösterilmez. Kullanıcılar, ön ekler ve sonekler ile zorlanan derslik grubu adını girmelidir. Aksi takdirde, sınıf grubu oluşturma veya düzenleme işlemi hatalarla başarısız olur.
 Power BI | Power BI çalışma alanları, adlandırma ilkesiyle uyumludur.    
 Yammer | Yammer 'da Azure Active Directory hesabıyla oturum açmış bir Kullanıcı bir grup oluşturur veya bir grup adını düzenlediğinde, Grup adı adlandırma ilkesiyle uyumlu olur. Bu, hem Office 365 bağlı grupları hem de diğer tüm Yammer grupları için geçerlidir.<br>Adlandırma ilkesi gerçekleşmeden önce Office 365 bağlantılı bir grup oluşturulduysa, Grup adı adlandırma ilkelerini otomatik olarak takip etmez. Kullanıcı, Grup adını düzenlediklerinde, ön eki ve soneki eklemesi istenir.
-StaffHub  | Çalışan Merkez takımları, adlandırma ilkesini takip etmez, ancak temel alınan Office 365 Grubu bunu yapar. Ekip merkezi takım adı, önekleri ve sonekleri uygulamaz ve özel engellenen kelimeleri denetlemez. Ancak, çalışan Merkez, ön ekleri ve sonekleri uygular ve engellenen kelimeleri temel Office 365 grubundan kaldırır.
+StaffHub  | Çalışan hub takımları, adlandırma ilkesini takip etmez, ancak temel alınan Microsoft 365 Grubu yapar. Ekip merkezi takım adı, önekleri ve sonekleri uygulamaz ve özel engellenen kelimeleri denetlemez. Ancak, çalışan hub 'ı ön ekleri ve sonekleri uygular ve engellenen kelimeleri temel alınan Microsoft 365 grubundan kaldırır.
 Exchange PowerShell | Exchange PowerShell cmdlet 'leri adlandırma ilkesiyle uyumludur. Kullanıcılar, önerilen ön ekler ve son ekler ve grup adı ve grup diğer adında (Mailrumuz) adlandırma ilkesini izolmadıkları takdirde özel engellenen sözcükler için uygun hata iletileri alırlar.
 Azure Active Directory PowerShell cmdlet 'leri | Azure Active Directory PowerShell cmdlet 'leri adlandırma ilkesiyle uyumludur. Kullanıcılar, önerilen ön ekler ve sonekler ve grup adları ve grup diğer adında adlandırma kuralını izolmadıkları takdirde özel engellenen sözcükler için uygun hata iletileri alır.
 Exchange Yönetim Merkezi | Exchange Yönetim Merkezi, adlandırma ilkesiyle uyumludur. Kullanıcılar, önerilen ön ekler ve son ekler ve grup adı ve grup diğer adındaki adlandırma kuralını izlerse, özel engellenen sözcükler için uygun hata iletileri alır.
@@ -264,7 +264,7 @@ Microsoft 365 yönetici merkezi | Microsoft 365 Yönetim Merkezi, adlandırma il
 Bu makaleler, Azure AD grupları hakkında ek bilgiler sağlar.
 
 - [Var olan grupları görme](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Office 365 grupları için süre sonu ilkesi](groups-lifecycle.md)
+- [Microsoft 365 grupları için süre sonu ilkesi](groups-lifecycle.md)
 - [Bir grubun ayarlarını yönetme](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Bir grubun üyelerini yönetme](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [Bir grubun üyeliklerini yönetme](../fundamentals/active-directory-groups-membership-azure-portal.md)

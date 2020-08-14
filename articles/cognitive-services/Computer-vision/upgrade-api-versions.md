@@ -1,7 +1,7 @@
 ---
 title: Görüntü İşleme API'si v 3.0 sürümüne yükseltin
 titleSuffix: Azure Cognitive Services
-description: V 2.0 ve v 2.1 'den Görüntü İşleme API'si 'ın v 3.0'a nasıl yükseltileceğini öğrenin.
+description: V 2.0/v 2.1 'deki Görüntü İşleme v 3.0 okuma API 'sine nasıl yükselteceğinizi öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16add0dce88d0f809dc291d3c9de33e1a853f257
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136508"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214191"
 ---
-# <a name="upgrade-to-v30-of-computer-vision-api-from-v20-and-v21"></a>V 2.0 ve v 2.1 'den v 3.0 Görüntü İşleme API'si yükseltin
+# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>V 2.0/v 2.1 'deki Görüntü İşleme v 3.0 okuma API 'sine yükseltin
 
-Bu kılavuzda, REST API kullanıcıları için v 2.0 veya v 2.1 Görüntü İşleme API'si v 2.1 ' den v 3.0'a geçiş için mevcut kodunuzun nasıl değiştirileceği gösterilmektedir. 
+Bu kılavuzda, mevcut Görüntü İşleme v 2.0 veya v 2.1 REST API kodunuzu v 3.0 okuma işlemlerine nasıl yükselteceğiniz gösterilmektedir. 
 
-## <a name="upgrade-batch-read-file-to-read"></a>Sürümüne `Batch Read File` Yükselt`Read`
+## <a name="upgrade-batch-read-file-to-read"></a>Sürümüne `Batch Read File` Yükselt `Read`
 
 
 1. `Batch Read File`2. x IÇIN API yolunu aşağıdaki gibi değiştirin:
@@ -57,7 +57,7 @@ Bu kılavuzda, REST API kullanıcıları için v 2.0 veya v 2.1 Görüntü İşl
     - Sayfa dizisinin kökünü almak için, JSON hiyerarşisini ' den ' e değiştirin `"recognitionResults"` `"analyzeResult"` / `"readResults"` . Sayfa başına çizgi ve sözcükler JSON hiyerarşisi değişmeden kalır, bu nedenle kod değişikliği gerekli değildir.
     -   Sayfa açısı `"clockwiseOrientation"` olarak yeniden adlandırıldı `"angle"` ve Aralık 0-360 derece-180 180 arasında olacak şekilde değiştirilmiştir. Kodunuza bağlı olarak, çoğu matematik işlevi her iki aralığı de işleyemediğinden değişiklik yapmanız gerekebilir.
     -   V 3.0 API 'SI, isteğe bağlı olarak şu iyileştirmeleri de sağlar:- `"createdDateTime"` ve `"lastUpdatedDateTime"` işleme süresini izleyebilmeniz için eklenir. Daha fazla bilgi için belgelere bakın. 
-        - `"version"`sonuçları oluşturmak için kullanılan API 'nin sürümünü söyler
+        - `"version"` sonuçları oluşturmak için kullanılan API 'nin sürümünü söyler
         - Sözcük başına `"confidence"` eklendi. Bu değer, 0,95 değeri, tanımanın doğru olması için %95 olasılığı olacağı için ayarlanır. Güvenirlik puanı, insan gözden geçirmesi için hangi metnin gönderileceğini seçmek üzere kullanılabilir. 
     
     
@@ -195,12 +195,12 @@ Bu kılavuzda, REST API kullanıcıları için v 2.0 veya v 2.1 Görüntü İşl
     - V2. x içinde `"Get Read Operation Result"` durum olduğunda OCR tanıma JSON döndürür `"Succeeded"` . V 3.0 'da Bu alan `"succeeded"` .
     - Sayfa dizisinin kökünü almak için, JSON hiyerarşisini ' den ' e değiştirin `"recognitionResult"` `"analyzeResult"` / `"readResults"` . Sayfa başına çizgi ve sözcükler JSON hiyerarşisi değişmeden kalır, bu nedenle kod değişikliği gerekli değildir.
     -   V 3.0 API 'SI, isteğe bağlı olarak kullanabileceğiniz aşağıdaki geliştirmeleri de sağlar. Daha fazla ayrıntı için API Başvurusu ' na bakın `"createdDateTime"` ve `"lastUpdatedDateTime"` işleme süresini takip edebilmeniz için eklenmiştir. Daha fazla bilgi için belgelere bakın. 
-        - `"version"`sonuçları oluşturmak için kullanılan API 'nin sürümünü söyler
+        - `"version"` sonuçları oluşturmak için kullanılan API 'nin sürümünü söyler
         - Sözcük başına `"confidence"` eklendi. Bu değer, 0,95 değeri, tanımanın doğru olması için %95 olasılığı olacağı için ayarlanır. Güvenirlik puanı, insan gözden geçirmesi için hangi metnin gönderileceğini seçmek üzere kullanılabilir. 
-        - `"angle"`metnin, saat yönünde (-180, 180]) ölçülen genel yönü.
-        -  `"width"`ve `"height"` size belgenizin boyutlarını verir ve `"unit"` belge türüne bağlı olarak bu boyutların birimini (piksel veya inç) sağlar.
-        - `"page"`çok sayfalı belgeler destekleniyor
-        - `"language"`belgenin giriş dili (isteğe bağlı _dil_ parametresinden).
+        - `"angle"` metnin, saat yönünde (-180, 180]) ölçülen genel yönü.
+        -  `"width"` ve `"height"` size belgenizin boyutlarını verir ve `"unit"` belge türüne bağlı olarak bu boyutların birimini (piksel veya inç) sağlar.
+        - `"page"` çok sayfalı belgeler destekleniyor
+        - `"language"` belgenin giriş dili (isteğe bağlı _dil_ parametresinden).
 
 
     2. X içinde, çıkış biçimi aşağıdaki gibidir: 

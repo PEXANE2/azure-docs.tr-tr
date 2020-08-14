@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844890"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212278"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
 
@@ -317,7 +317,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**tür** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.|
 |**Adı** |**Adı** | Kuyruğun adı. |
@@ -345,7 +345,7 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` *Üzerindefunction.js*özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
+Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` * Üzerindefunction.js*özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
 * JSON olarak seri hale getirilebilir bir nesne
 * `string`
@@ -361,13 +361,13 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Çıkış kuyruğu öğesine, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js*tanımlanan adla eşleşen WHERE aracılığıyla erişilebilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
+Çıkış kuyruğu öğesine, `context.bindings.<NAME>` `<NAME>` * üzerindefunction.js*tanımlanan adla eşleşen WHERE aracılığıyla erişilebilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
-- **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
+- **Dönüş değeri**: `name` * üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
 
 - **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` kuyruk depolama iletisi olarak kalıcıdır.
 
@@ -393,10 +393,10 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
 ## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için başvuruhost.js](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ Azure işlevleri için başvuruhost.js](functions-host-json.md).
 
 > [!NOTE]
-> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
+> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [ Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
 ```json
 {

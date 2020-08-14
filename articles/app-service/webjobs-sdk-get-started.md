@@ -3,15 +3,16 @@ title: Web Işleri SDK 'sını kullanmaya başlama
 description: Olay odaklı arka plan işleme için WebJobs SDK 'ya giriş. Azure hizmetleri ve üçüncü taraf hizmetlerindeki verilere erişme hakkında bilgi edinin.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078317"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212863"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
 
@@ -428,7 +429,7 @@ Bu bölümde, günlüğe kaydetme verilerinin artık Application Insights ve kon
 
 1. Konsol penceresini kapatın.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure’a dağıtın
 
 Dağıtım sırasında, işlevlerinizin çalıştırılacağı bir App Service örneği oluşturursunuz. Azure 'da App Service için bir .NET Core konsol uygulaması yayımladığınızda, otomatik olarak bir WebJob olarak çalıştırılır. Yayımlama hakkında daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma](webjobs-dotnet-deploy-vs.md).
 

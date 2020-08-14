@@ -5,13 +5,14 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a604772a6175f17e6ebc444b6aba126e21e8346d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085484"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212522"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure 'da özel kapsayıcı çalıştırma
 
@@ -204,7 +205,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/az
 > [!IMPORTANT]
 > Kapsayıcı kayıt defterini oluştururken **Yönetici Kullanıcı** seçeneğini **etkinleştirmek** için ayarladığınızdan emin olun. Ayrıca, Azure portal kayıt defteri sayfanızın **erişim tuşları** bölümünden de ayarlayabilirsiniz. App Service erişim için bu ayar gereklidir.
 
-## <a name="sign-in"></a>Oturum açma
+## <a name="sign-in"></a>Oturum açın
 
 Sonra, VS Code başlatın ve App Service uzantısını kullanarak Azure hesabınızda oturum açın. Bunu yapmak için etkinlik çubuğunda Azure logosu ' nu seçin, **App SERVICE** Gezgini ' ne gidin ve **Azure 'da oturum aç** ' ı seçin ve yönergeleri izleyin.
 

@@ -3,14 +3,15 @@ title: Azure Işlevleri SignalR hizmeti tetikleyici bağlama
 description: Azure Işlevlerinden SignalR hizmeti iletileri gönderme hakkında bilgi edinin.
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540239"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212596"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti tetikleme Bağlayıcısı
 
@@ -168,7 +169,7 @@ def main(invocation) -> None:
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle**| yok | Olarak ayarlanmalıdır `SignalRTrigger` .|
 |**Görünüm**| yok | Olarak ayarlanmalıdır `in` .|
@@ -187,7 +188,7 @@ Tetikleyici giriş türü `InvocationContext` ya da özel bir tür olarak bildir
 
 Invocationcontext, SignalR hizmetinden gönderilen iletinin tüm içeriğini içerir.
 
-|Invocationcontext içindeki Özellik | Description|
+|Invocationcontext içindeki Özellik | Açıklama|
 |------------------------------|------------|
 |Arguments| *İleti* kategorisi için kullanılabilir. [Çağırma iletisinde](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *bağımsız değişkenler* içerir|
 |Hata| *Bağlantısı kesilmiş* olay için kullanılabilir. Bağlantı hata olmadan kapalıysa veya hata iletilerini içeriyorsa boş olabilir.|

@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: AKS kümesinde Azure Dev Spaces etkinleştirmeyi ve istemci tarafı araçları yüklemeyi öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407906"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212442"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS kümesinde Azure Dev Spaces etkinleştirme ve istemci tarafı araçları 'nı yüklemeye
 
@@ -78,16 +78,14 @@ Azure Dev Spaces ile oluşturduğunuz herhangi bir ad alanı, iş yükleriyle bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 'de takım geliştirme][team-development-qs]
+> [Azure Dev Spaces nasıl çalışır?](../how-dev-spaces-works.md)
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-qs]: ../quickstart-team-development.md
-
 [az-portal]: https://portal.azure.com
 [az-portal-create-account]: https://azure.microsoft.com/free
 [cli-linux]: https://aka.ms/get-azds-linux

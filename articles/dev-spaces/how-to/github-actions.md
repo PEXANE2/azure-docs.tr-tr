@@ -7,12 +7,12 @@ description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kub
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9cb240add87a14b0d474cec17684ef65a22cc07a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421034"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212503"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -51,7 +51,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 ## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -170,10 +170,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 'de takım geliştirme][team-quickstart]
+> [Azure Dev Spaces nasıl çalışır?](../how-dev-spaces-works.md)
 
 [azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
@@ -190,4 +190,3 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
-[team-quickstart]: ../quickstart-team-development.md

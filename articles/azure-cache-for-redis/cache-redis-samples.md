@@ -4,14 +4,15 @@ description: "Aşağıdaki kod örnekleri ile birlikte Reda için Azure Cache 'i
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-dotnet
 ms.topic: sample
 ms.date: 01/23/2017
-ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 553850173f463a05b13768eb3b9e17703bfa2886
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75433400"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212288"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Redis için Azure Önbelleği örnekleri
 Bu konu, Redsıs örnekleri için Azure önbelleğinin bir listesini, bir önbelleğe bağlanma, önbelleğe veri okuma ve önbellekten veri yazma ve Redsıs sağlayıcıları için ASP.NET Azure önbelleğini kullanma gibi senaryoları kapsayan bir liste sağlar. Bazı örnekler indirilebilir projelerdir ve bazıları adım adım rehberlik sağlar ve kod parçacıkları içerir ancak indirilebilir bir projeye bağlantı vermez.

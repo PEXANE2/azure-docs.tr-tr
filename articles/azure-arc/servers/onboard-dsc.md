@@ -1,18 +1,18 @@
 ---
 title: Windows PowerShell DSC kullanarak bağlı makine aracısını yükler
-description: Bu makalede, Windows PowerShell DSC 'yi kullanarak sunucular için Azure Arc (Önizleme) kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
+description: Bu makalede, Windows PowerShell DSC 'yi kullanarak Azure Arc etkin sunucularını (Önizleme) kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121009"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213077"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC kullanarak bağlı makine aracısını yüklemek
 
-[Windows PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) 'nı (DSC) kullanarak bir Windows bilgisayarı için yazılım yükleme ve yapılandırmasını otomatik hale getirebilirsiniz. Bu makalede, karma Windows makinelerinde sunucular için bağlı makine Aracısı için Azure Arc 'ı yüklemek üzere DSC 'nin nasıl kullanılacağı açıklanır.
+[Windows PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) 'nı (DSC) kullanarak bir Windows bilgisayarı için yazılım yükleme ve yapılandırmasını otomatik hale getirebilirsiniz. Bu makalede, Azure Arc etkin sunucuları (Önizleme) bağlı makine aracısını karma Windows makinelerine yüklemek için DSC 'nin nasıl kullanılacağı açıklanır.
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -20,7 +20,7 @@ ms.locfileid: "88121009"
 
 - [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC modülü
 
-- Bilgisayarları etkileşimli olmayan sunucular için Azure yaya bağlamak üzere bir hizmet sorumlusu. Zaten sunucular için bir hizmet sorumlusu oluşturmadıysanız, [ölçeğe ekleme Için hizmet sorumlusu oluşturma](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bölümünde bulunan adımları izleyin.
+- Makineleri etkileşimli olmayan Azure Arc etkin sunucularına (Önizleme) bağlamak için bir hizmet sorumlusu. Yay etkin sunucular (Önizleme) için bir hizmet sorumlusu oluşturmadıysanız, [ölçeğe ekleme için bir hizmet sorumlusu oluşturma](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bölümünde bulunan adımları izleyin.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>ConnectedMachine DSC modülünü yükler
 
@@ -76,7 +76,7 @@ Aşağıda, kullanılacak PowerShell betiğine geçirdiğiniz parametreler veril
 
 3. Bu, `localhost.mof file` adlı yeni bir klasörde oluşturulur `C:\dsc` .
 
-Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure portalında](https://aka.ms/hybridmachineportal) makinelerinizi görüntüleyin.
+Aracıyı yükledikten ve Azure Arc etkin sunucularına (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure portalında](https://aka.ms/hybridmachineportal) makinelerinizi görüntüleyin.
 
 ## <a name="adding-to-existing-configurations"></a>Mevcut yapılandırmalara ekleme
 

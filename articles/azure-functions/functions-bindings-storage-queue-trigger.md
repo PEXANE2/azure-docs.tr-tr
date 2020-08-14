@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 4abe3a46c854e0856e4db9a60fa7cd6fc9f8b3c8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 2b44728d1f5b2a6985e7e636d9e3593b09d009ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844907"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212961"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -313,7 +313,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle** | yok| Olarak ayarlanmalıdır `queueTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**tür** | yok| Olarak ayarlanmalıdır `queueTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm**| yok | Yalnızca *function.js* dosyasında. Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
 |**Adı** | **Adı**| Yoklamaya yönelik kuyruğun adı. |
@@ -336,7 +336,7 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` *Üzerindefunction.js*özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
+Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` * Üzerindefunction.js*özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
 * Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
 * `string`
@@ -347,7 +347,7 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js*tanımlanan adla eşleşen bir ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
+Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` * üzerindefunction.js*tanımlanan adla eşleşen bir ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -365,7 +365,7 @@ Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expr
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` *üzerindefunction.js*özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
+|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` * üzerindefunction.js*özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
 |`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
 |`ExpirationTime`|`DateTimeOffset`|İletinin süre sonu.|
 |`Id`|`string`|Kuyruk ileti KIMLIĞI.|
@@ -388,7 +388,7 @@ Algoritma aşağıdaki mantığı kullanır:
 - Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti arar
 - Hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler.
 - Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder.
-- En uzun bekleme süresi, `maxPollingInterval` [dosyadakihost.js](functions-host-json.md#queues)özelliği aracılığıyla yapılandırılabilir.
+- En uzun bekleme süresi, `maxPollingInterval` [ dosyadakihost.js](functions-host-json.md#queues)özelliği aracılığıyla yapılandırılabilir.
 
 Yerel geliştirme için en fazla yoklama aralığı varsayılan olarak iki saniyedir.
 
@@ -404,7 +404,7 @@ Sıra tetikleyicisi, bir işlevin bir sıra iletisini birden çok kez işlemesin
 
 ## <a name="hostjson-properties"></a>host.jsözelliklerde
 
-Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ayarlarıhost.js](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
+Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ ayarlarıhost.js](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,19 @@
 ---
 title: Karma makineleri Azure portal Azure 'a bağlama
-description: Bu makalede, Azure portal için Azure yayı 'yi (Önizleme) kullanarak aracıyı yüklemeyi ve makineleri Azure 'a bağlamayı öğreneceksiniz.
+description: Bu makalede, Azure portal Azure Arc etkin sunucularını (Önizleme) kullanarak aracıyı yüklemeyi ve makineleri Azure 'a bağlamayı öğreneceksiniz.
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120992"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213506"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
-El ile bir adım kümesi gerçekleştirerek, ortamınızdaki bir veya az sayıda Windows veya Linux makinesi için sunucu (Önizleme) için Azure yayı 'yi etkinleştirebilirsiniz. Alternatif olarak, sağladığımız bir şablon betiği çalıştırarak otomatikleştirilmiş bir yöntemi kullanabilirsiniz. Bu betik, her iki aracısının de indirilmesini ve yüklenmesini otomatikleştirir.
+Bir adım kümesini el ile gerçekleştirerek ortamınızdaki bir veya az sayıda Windows veya Linux makinesi için Azure Arc etkin sunucularını (Önizleme) etkinleştirebilirsiniz. Alternatif olarak, sağladığımız bir şablon betiği çalıştırarak otomatikleştirilmiş bir yöntemi kullanabilirsiniz. Bu betik, her iki aracısının de indirilmesini ve yüklenmesini otomatikleştirir.
 
 Bu yöntem, aracıyı yüklemek ve yapılandırmak için makinede yönetici izinlerine sahip olmanızı gerektirir. Linux 'ta, kök hesabı kullanarak ve Windows 'ta, yerel Yöneticiler grubunun üyesi olursunuz.
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Betik oluştur** sayfasında, makinenin Azure 'da yönetilmesini istediğiniz aboneliği ve kaynak grubunu seçin. Makine meta verilerinin depolanacağı Azure konumunu seçin.
 
     >[!NOTE]
-    >Sunucular için Azure Arc (Önizleme) yalnızca aşağıdaki bölgeleri destekler:
+    >Azure Arc etkin sunucular (Önizleme) yalnızca aşağıdaki bölgeleri destekler:
     >- EastUS
     >- WestUS2
     >- WestEurope
@@ -147,7 +147,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc ile bağlantıyı doğrulama
 
-Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure portalında](https://aka.ms/hybridmachineportal) makinelerinizi görüntüleyin.
+Aracıyı yükledikten ve Azure Arc etkin sunucularına (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure portalında](https://aka.ms/hybridmachineportal) makinelerinizi görüntüleyin.
 
 ![Başarılı bir sunucu bağlantısı](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

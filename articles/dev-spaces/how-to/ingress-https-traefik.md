@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e6c50dd8d27af8276ddbf47f7a3719ab59d87a7d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3938209e80eb211afc332997b5b241c12a0f6eb9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421595"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212452"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanm
 
 * Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap][azure-account-create] oluşturabilirsiniz.
 * [Yüklü Azure CLI][az-cli].
-* [Azure dev Spaces etkinleştirilmiş Azure Kubernetes hizmeti (AKS) kümesi][qs-cli].
+* [Azure Dev Spaces etkinleştirilmiş Azure Kubernetes hizmeti (AKS) kümesi [QS-CLI].
 * [kubectl][kubectl] yüklendi.
 * [Held 3 yüklendi][helm-installed].
 * [DNS bölgesi][dns-zone]olan [özel bir etki alanı][custom-domain] . Bu makalede, özel etki alanı ve DNS bölgesinin AKS kümeniz ile aynı kaynak grubunda olduğu varsayılır, ancak farklı bir kaynak grubunda özel bir etki alanı ve DNS bölgesi kullanmak mümkündür.
@@ -304,13 +304,13 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 > [!IMPORTANT]
 > DNS değişikliklerinin tamamlanması ve örnek uygulamanızın erişilebilir olması 30 dakika veya daha uzun sürebilir.
 
-Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
+Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örnek:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örneğin:
+Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örnek:
 
 ```yaml
 ...
@@ -363,10 +363,10 @@ azds up
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 'de takım geliştirme][team-development-qs]
+> [Azure Dev Spaces nasıl çalışır?](../how-dev-spaces-works.md)
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
@@ -375,9 +375,6 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 [az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-remove-record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
-[qs-cli]: ../quickstart-cli.md
-[team-development-qs]: ../quickstart-team-development.md
-
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
 [cert-manager]: https://cert-manager.io/

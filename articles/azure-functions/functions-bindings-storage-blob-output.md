@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: d089cb1844356032b956110a7475d839031ef006
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849837"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213059"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama çıkış bağlaması
 
@@ -352,7 +352,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle** | yok | Olarak ayarlanmalıdır `blob` . |
+|**tür** | yok | Olarak ayarlanmalıdır `blob` . |
 |**Görünüm** | yok | `out`Çıkış bağlaması için olarak ayarlanmalıdır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
 |**ada** | yok | İşlev kodundaki blobu temsil eden değişkenin adı.  `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.|
 |**Yolun** |**Blobpath değerini adıyla** | Blob kapsayıcısının yolu. |
@@ -379,8 +379,8 @@ JavaScript 'te, kullanarak blob verilerine erişin `context.bindings.<name from 
 
 Blob depolamaya yazmak için aşağıdaki türler olarak işlev parametreleri bildirebilirsiniz:
 
-* Farklı dizeler`func.Out(str)`
-* Farklı akışlar`func.Out(func.InputStream)`
+* Farklı dizeler `func.Out(str)`
+* Farklı akışlar `func.Out(func.InputStream)`
 
 Ayrıntılar için [Çıkış örneğine](#example) bakın.
 

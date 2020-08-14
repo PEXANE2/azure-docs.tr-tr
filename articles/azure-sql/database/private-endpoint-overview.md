@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063261"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213369"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "87063261"
 > [!IMPORTANT]
 > Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.
 
-## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
+## <a name="data-exfiltration-prevention"></a>Veri sızdırmayı önleme
 
 Azure SQL veritabanı 'nda veri ayıklama, veritabanı yöneticisi gibi yetkili bir kullanıcının verileri bir sistemden ayıklamasına ve kuruluşun dışında başka bir konuma veya sisteme taşımasına yönelik bir veritabanıdır. Örneğin, Kullanıcı, verileri üçüncü tarafa ait bir depolama hesabına taşıtır.
 
@@ -175,9 +175,9 @@ Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den SQL veritabanındaki 
 - [ExpressRoute devresi](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>PolyBase kullanarak Azure SYNAPSE Analytics 'ten Azure depolama 'ya bağlanma
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>PolyBase ve COPY deyimlerini kullanarak Azure SYNAPSE Analytics 'ten Azure depolama 'ya bağlanma
 
-PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir sanal ağ alt ağları kümesine sınırlayıp, PolyBase 'den hesaba olan bağlantı kesilir. Bir sanal ağla güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için [burada](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
+PolyBase ve COPY deyimleri, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir sanal ağ alt ağları kümesine sınırlayıp, PolyBase bağlantısı ve COPY deyiminin hesaba göre kesintiye uğramasını sağlar. Azure SYNAPSE Analytics ile hem içeri ve dışarı aktarma senaryolarını hem de bir sanal ağla güvenli hale getirilmiş Azure depolama 'ya bağlanarak etkinleştirmek için [burada](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

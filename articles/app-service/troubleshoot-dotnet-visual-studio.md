@@ -5,13 +5,13 @@ ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.custom: seodec18
-ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079816"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211982"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -28,7 +28,7 @@ Bu öğreticide, [hata ayıklama modunda](https://docs.microsoft.com/visualstudi
 
 Visual Studio Ultimate sahipseniz, hata ayıklama için [IntelliTrace](/visualstudio/debugger/intellitrace) de kullanabilirsiniz. Bu öğreticide IntelliTrace kapsamında değildir.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Kaynakları
+## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
 Bu öğretici, [Azure App Service bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde ayarladığınız geliştirme ortamı, Web projesi ve App Service uygulamayla birlikte çalışır. WebJobs bölümleri için, [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz uygulamanın olması gerekir.
 
 Bu öğreticide gösterilen kod örnekleri bir C# MVC web uygulaması içindir, ancak sorun giderme yordamları Visual Basic ve Web Forms uygulamalar için aynıdır.
@@ -165,7 +165,7 @@ Bu bölümde [, Azure App Service ' de bir ASP.NET uygulaması oluşturma](quick
 
      ![Yeni değer içeren sayfa hakkında](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a>Web Işlerine uzaktan hata ayıklama
+## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a> Web Işlerine uzaktan hata ayıklama
 Bu bölümde [, Azure WebJobs SDK Ile çalışmaya başlama](https://github.com/Azure/azure-webjobs-sdk/wiki)bölümünde oluşturduğunuz proje ve uygulamayı kullanarak uzaktan hata ayıklama işlemi gösterilmektedir.
 
 Bu bölümde gösterilen özellikler yalnızca güncelleştirme 4 veya sonraki sürümlerde Visual Studio 2013 kullanılabilir.
@@ -556,7 +556,7 @@ Başarısız istek izleme günlükleri, URL yeniden yazma veya kimlik doğrulama
 
 App Service uygulamalar, IIS 7,0 ve üzeri sürümlerde bulunan başarısız istek izleme işlevini kullanır. Ancak hangi hataların günlüğe alınacağını yapılandıran IIS ayarlarına erişiminiz yok. Başarısız istek izlemeyi etkinleştirdiğinizde, tüm hatalar yakalanır.
 
-Visual Studio 'Yu kullanarak başarısız istek izlemeyi etkinleştirebilirsiniz, ancak bunları Visual Studio 'da görüntüleyemezsiniz. Bu Günlükler XML dosyalarıdır. Akış günlüğü hizmeti yalnızca düz metin modu: *. txt*, *. html*ve *. log* dosyalarında okunabilir kabul edilen dosyaları izler.
+Visual Studio 'Yu kullanarak başarısız istek izlemeyi etkinleştirebilirsiniz, ancak bunları Visual Studio 'da görüntüleyemezsiniz. Bu Günlükler XML dosyalarıdır. Akış günlüğü hizmeti yalnızca düz metin modu:  *. txt*, *. html*ve *. log* dosyalarında okunabilir kabul edilen dosyaları izler.
 
 Başarısız istek izleme günlüklerini bir tarayıcıda doğrudan FTP aracılığıyla veya yerel bilgisayarınıza indirmek için FTP aracını kullanarak yerel olarak görüntüleyebilirsiniz. Bu bölümde, bunları doğrudan bir tarayıcıda görüntüleyebilirsiniz.
 

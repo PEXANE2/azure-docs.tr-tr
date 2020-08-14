@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 271787c47b29bc713cc923c7d27852a8e05703ef
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042556"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213933"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -19,8 +19,8 @@ HTTP tetikleyicisi, HTTP isteğiyle bir işlevi çağırmanıza olanak sağlar. 
 
 HTTP ile tetiklenen bir işlev için varsayılan dönüş değeri:
 
-- `HTTP 204 No Content`2. x ve üzeri Işlevlerde boş bir gövdele
-- `HTTP 200 OK`1. x Işlevlerinde boş bir gövdesiyle
+- `HTTP 204 No Content` 2. x ve üzeri Işlevlerde boş bir gövdele
+- `HTTP 200 OK` 1. x Işlevlerinde boş bir gövdesiyle
 
 HTTP yanıtını değiştirmek için bir [Çıkış bağlaması](./functions-bindings-http-webhook-output.md)yapılandırın.
 
@@ -480,7 +480,7 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |

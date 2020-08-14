@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830960"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212749"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -76,7 +76,7 @@ Hizmet hakkında daha fazla bilgi edinmek için bkz. [Mobility hizmeti belgeleri
 
 ### <a name="render-service"></a>İşleme hizmeti
 
-Şu anda önizleme aşamasında olan [render Service v2](https://docs.microsoft.com/est/api/maps/renderv2) , [Get Map kutucuğu v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)'sinin yeni bir sürümünü sunmaktadır. Get Map kutucuğu v2 API 'SI artık müşterilerin Azure haritalar Oluşturucu kullanılarak oluşturulan Azure Maps yol kutucukları, hava durumu kutucukları veya harita kutucukları istemesine olanak tanır. Yeni Get Map kutucuğu v2 API 'sini kullanmanız önerilir.  
+Şu anda önizleme aşamasında olan [render Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) , [Get Map kutucuğu v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)'sinin yeni bir sürümünü sunmaktadır. Get Map kutucuğu v2 API 'SI artık müşterilerin Azure haritalar Oluşturucu kullanılarak oluşturulan Azure Maps yol kutucukları, hava durumu kutucukları veya harita kutucukları istemesine olanak tanır. Yeni Get Map kutucuğu v2 API 'sini kullanmanız önerilir.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Render Service v2 'den bir harita örneği":::
 

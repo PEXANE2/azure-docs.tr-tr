@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59f80b986a9d1a3b2be9aa413ce4175d8eb88bc4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807813"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213832"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>Azure Active Directory 'de Office 365 gruplarına duyarlılık etiketleri atama
+# <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
-Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından Office 365 gruplarına yayınlanan duyarlılık etiketlerinin uygulanmasını destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Bu özellik şu anda genel GA 'dir. Office 365 uygulamaları desteği hakkında daha fazla bilgi için bkz. [duyarlılık etiketleri Için office 365 desteği](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından yayımlanan duyarlılık etiketlerini Microsoft 365 gruplarına uygulamayı destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Bu özellik şu anda genel GA 'dir. Office 365 uygulamaları desteği hakkında daha fazla bilgi için bkz. [duyarlılık etiketleri Için office 365 desteği](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Bu özelliği yapılandırmak için, Azure AD kuruluşunuzda en az bir etkin Azure Active Directory Premium P1 Lisansı olmalıdır.
@@ -99,7 +99,7 @@ Grubunuz oluşturulur ve seçili etiketle ilişkili site ve grup ayarları otoma
 1. **Grupları**seçin.
 1. **Tüm gruplar** sayfasında, etiketi kaldırmak istediğiniz grubu seçin.
 1. **Grup** sayfasında, **Özellikler**' i seçin.
-1. **Kaldır**’ı seçin.
+1. **Kaldır**' ı seçin.
 1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klasik Azure AD sınıflandırmalarını kullanma
@@ -114,7 +114,7 @@ Duyarlılık etiketi seçeneği yalnızca aşağıdaki koşulların tümü karş
 
 1. Etiketler, bu Azure AD kuruluşu için Microsoft 365 Uyumluluk Merkezi 'nde yayımlanır.
 1. Özellik etkin, PowerShell 'de Enablemıplabels true olarak ayarlandı.
-1. Grup bir Office 365 grubudur.
+1. Grup bir Microsoft 365 grubudur.
 1. Kuruluşun etkin bir Azure Active Directory Premium P1 lisansı vardır.
 1. Geçerli oturum açan kullanıcının etiket atamak için yeterli ayrıcalıkları vardır. Kullanıcının bir genel yönetici, Grup Yöneticisi veya grup sahibi olması gerekir.
 
@@ -135,7 +135,7 @@ Etiketler, mevcut bir gruba etiket atama ile aynı adımları kullanarak herhang
 1. **Grupları**seçin.
 1. **Tüm gruplar** sayfasında, etiketlemek istediğiniz grubu seçin.
 1. Seçili grubun sayfasında, **Özellikler** ' i seçin ve listeden yeni bir duyarlılık etiketi seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Yayınlanmış etiketlere yapılan grup ayarı değişiklikleri gruplar üzerinde güncelleştirilmiyor
 
@@ -145,7 +145,7 @@ Değişiklik yapmanız gerekiyorsa, etkilenen gruplara el ile güncelleştirmele
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Microsoft ekipleri, Office 365 grupları ve SharePoint siteleri ile duyarlılık etiketleri kullanma](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Microsoft ekipleri, Microsoft 365 grupları ve SharePoint siteleri ile duyarlılık etiketleri kullanma](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Azure AD PowerShell betiği ile etiket ilkesi el ile değiştirildikten sonra grupları güncelleştirme](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Grup ayarlarınızı düzenleme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [PowerShell komutlarını kullanarak grupları yönetme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

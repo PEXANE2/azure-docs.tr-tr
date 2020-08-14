@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Projenizin Azure Dev Spaces çalışma ile nasıl hazırlanıldığını açıklar
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241640"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213422"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projeyi Azure Dev Spaces için hazırlama
 
@@ -98,17 +98,4 @@ configurations:
 
 Geliştirme alanınızda kodunuzu çalıştırma hakkında daha fazla bilgi edinmek için bkz. [Azure dev Spaces ile kodunuzu çalıştırma nasıl çalışır?][how-it-works-up].
 
-Projenizi Azure dev alanı için hazırlamak üzere Azure Dev Spaces kullanmaya başlamak için aşağıdaki hızlı başlangıçlara bakın:
-
-* [Visual Studio Code ve Java ile hızlıca yineleme ve hata ayıklama][quickstart-java]
-* [Visual Studio Code ve .NET ile hızla yineleme ve hata ayıklama][quickstart-netcore]
-* [Visual Studio Code ve Node.jsile hızlıca yineleme ve hata ayıklama][quickstart-node]
-* [Visual Studio ve .NET Core ile hızla yineleme ve hata ayıklama][quickstart-vs]
-* [Kubernetes 'te uygulama geliştirmek için CLı kullanma][quickstart-cli]
-
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

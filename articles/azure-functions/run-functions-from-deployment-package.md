@@ -3,21 +3,18 @@ title: Azure Işlevlerinizi bir paketten çalıştırın
 description: Azure Işlevleri çalışma zamanının, işlev uygulaması proje dosyalarınızı içeren bir dağıtım paketi dosyası bağlayarak işlevlerinizi çalıştırmasını sağlayabilirsiniz.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79365280"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214235"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
 Azure 'da işlevlerinizi doğrudan işlev uygulamanızdaki bir dağıtım paketi dosyasından çalıştırabilirsiniz. Diğer seçenek, dosyalarınızı `d:\home\site\wwwroot` işlev uygulamanızın dizinine dağıtmaktır.
 
 Bu makalede, işlevlerinizi bir paketten çalıştırmanın avantajları açıklanmaktadır. Ayrıca, işlev uygulamanızda bu işlevselliği nasıl etkinleştireceğinizi gösterir.
-
-> [!IMPORTANT]
-> İşlevlerinizi [Premium bir planda](functions-scale.md#premium-plan)bir Linux işlev uygulamasına dağıttığınızda, her zaman paket dosyasından çalıştırmanız ve [Azure Functions Core Tools kullanarak uygulamanızı yayımlamanız](functions-run-local.md#project-file-deployment)gerekir.
 
 ## <a name="benefits-of-running-from-a-package-file"></a>Bir paket dosyasından çalıştırmanın avantajları
   

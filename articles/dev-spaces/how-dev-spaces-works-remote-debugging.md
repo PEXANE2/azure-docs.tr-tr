@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces ile Azure Kubernetes hizmetinde uzaktan hata ayıklama işlemlerini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241406"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213388"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces ile kodunuzda uzaktan hata ayıklama nasıl yapılır?
 
@@ -30,15 +30,7 @@ Hata ayıklayıcı görüntüsü, istemci tarafı araçları tarafından otomati
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Projenizde uzaktan hata ayıklama için Azure Dev Spaces kullanmaya başlamak için aşağıdaki hızlı başlangıçlara bakın:
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
-* [Visual Studio Code ve Java ile hızlıca yineleme ve hata ayıklama][quickstart-java]
-* [Visual Studio Code ve .NET ile hızla yineleme ve hata ayıklama][quickstart-netcore]
-* [Visual Studio Code ve Node.jsile hızlıca yineleme ve hata ayıklama][quickstart-node]
-* [Visual Studio ve .NET Core ile hızla yineleme ve hata ayıklama][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces nasıl çalışır?](how-dev-spaces-works.md)

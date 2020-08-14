@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-python
-ms.openlocfilehash: a33a739014b33303389b4f880da3687db852633e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850279"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211887"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -137,7 +137,7 @@ Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomat
 ```
 
 > [!NOTE]
-> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği`SystemAssigned,UserAssigned`
+> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği `SystemAssigned,UserAssigned`
 
 Sistem tarafından atanan tür eklendiğinde Azure, uygulamanız için kimlik oluşturma ve yönetme konusunda sizi söyler.
 
@@ -253,7 +253,7 @@ Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomat
 ```
 
 > [!NOTE]
-> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği`SystemAssigned,UserAssigned`
+> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği `SystemAssigned,UserAssigned`
 
 Kullanıcı tarafından atanan türü eklemek, Azure 'un uygulamanız için belirtilen kullanıcı tarafından atanan kimliğini kullanmasını söyler.
 
@@ -330,7 +330,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 > | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın (Şu anda yalnızca "2017-09-01" sağlayan Linux tüketimini kullanmadıkça, Yukarıdaki nota bakın).                                                                                                                                                                                                                                                                 |
 > | X-ıDENTITY-HEADER | Üst bilgi | IDENTITY_HEADER ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.                                                                                                                                                                                                    |
 > | client_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin istemci KIMLIĞI. ,, Veya içeren bir istek üzerinde kullanılamaz `principal_id` `mi_res_id` `object_id` . Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                             |
-> | principal_id      | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin asıl KIMLIĞI. `object_id`Bunun yerine kullanılabilecek bir diğer addır. Client_id, mi_res_id veya object_id içeren bir istekte kullanılamaz. Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır. |
+> | principal_id      | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin asıl KIMLIĞI. `object_id` Bunun yerine kullanılabilecek bir diğer addır. Client_id, mi_res_id veya object_id içeren bir istekte kullanılamaz. Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır. |
 > | mi_res_id         | Sorgu  | Seçim Kullanılacak kullanıcı tarafından atanan kimliğin Azure Kaynak KIMLIĞI. ,, Veya içeren bir istek üzerinde kullanılamaz `principal_id` `client_id` `object_id` . Tüm kimlik parametreleri (, `client_id` , `principal_id` `object_id` ve `mi_res_id` ) atlanırsa, sistem tarafından atanan kimlik kullanılır.                                      |
 
 > [!IMPORTANT]

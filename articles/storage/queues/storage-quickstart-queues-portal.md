@@ -3,17 +3,17 @@ title: 'Hızlı başlangıç: portalda Azure depolama kuyrukları oluşturma'
 description: Bir kuyruk oluşturmak için Azure portal kullanın. Ardından, bir ileti eklemek, ileti özelliklerini görüntülemek ve iletiyi sıradan almak için Azure portal kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/06/2019
+ms.date: 08/13/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808961"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213482"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Hızlı başlangıç: kuyruk oluşturma ve Azure portal bir ileti ekleme
 
@@ -40,8 +40,8 @@ Azure portal bir sıra oluşturmak için aşağıdaki adımları izleyin:
 Sonra, yeni kuyruğa bir ileti ekleyin. İleti boyutu 64 KB 'ye kadar olabilir.
 
 1. Depolama hesabındaki kuyruk listesinden yeni kuyruğu seçin.
-1. Kuyruğa bir ileti eklemek için **+ Ileti Ekle** düğmesini seçin. **İleti metni** alanına bir ileti girin. 
-1. İletinin ne zaman sona ereceğini belirtin. Bir iletinin sıra kalabileceği en uzun süre 7 gündür.
+1. Kuyruğa bir ileti eklemek için **+ Ileti Ekle** düğmesini seçin. **İleti metni** alanına bir ileti girin.
+1. İletinin ne zaman sona ereceğini belirtin. **Süre sonu** alanına girilebilecek geçerli değerler 1 saniye ile 7 gün arasındadır. Açık olarak kaldırılana kadar kuyrukta kalacak bir ileti belirtmek için **ileti seçin hiçbir zaman sona ermez** .
 1. İletiyi Base64 olarak kodlamak isteyip istemediğinizi belirtin. İkili verileri kodlama önerilir.
 1. İletiyi eklemek için **Tamam** düğmesini seçin.
 
