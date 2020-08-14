@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8d48ea133aaabbe9fd44bda545d672e68c93c08d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312192"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205584"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak yol tabanlı yönlendirme kuralları ile uygulama ağ geçidi oluşturma
 
@@ -33,9 +33,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure portal şurada oturum açın:[https://portal.azure.com](https://portal.azure.com)
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
@@ -163,7 +163,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 6. Açılan **http ayarı Ekle** penceresinde **http ayar adı**için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün.
 7. **Yol tabanlı yönlendirme**altında, **yol tabanlı bir kural oluşturmak için birden çok hedef Ekle**' yi seçin.
-8. **Yol**için */images/*\*yazın.
+8. **Yol**için */images/* yazın \* .
 9. **Yol kuralı adı**için *görüntüler*yazın.
 10. **Http ayarı**Için **myhttpsetting** ' i seçin.
 11. **Arka uç hedefi**için **görüntüler**' i seçin.
@@ -173,7 +173,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 15. Ileri ' yi seçin **: Etiketler** ve sonra **İleri: İnceleme + oluştur**.
 
 > [!NOTE]
-> Varsayılan örnekleri işlemek için özel */** yol kuralı eklemeniz gerekmez. Bu otomatik olarak varsayılan arka uç havuzu tarafından işlenir.
+> */* Varsayılan örnekleri işlemek için özel * yol kuralı eklemeniz gerekmez. Bu otomatik olarak varsayılan arka uç havuzu tarafından işlenir.
 
 ### <a name="review--create-tab"></a>Gözden geçir + Oluştur sekmesi
 
@@ -186,25 +186,29 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
     ![Uygulama ağ geçidi genel IP adresini kaydetme](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin, http:\//52.188.72.175:8080.
+2. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin, http: \/ /52.188.72.175:8080.
 
     ![Temel URL’yi uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
    Bağlantı noktası 8080 üzerindeki dinleyici, bu isteği varsayılan arka uç havuzuna yönlendirir.
 
-3. URL 'YI *http://&lt;IP-&gt;adresi: 8080/images/test.htm*olarak değiştirin, &lt;&gt; IP adresini IP adresinizle değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+3. URL 'YI *http:// &lt; IP-adresi &gt; : 8080/Images/test.htm*olarak DEĞIŞTIRIN, &lt; IP adresini &gt; IP adresiniz ile değiştirerek aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
     ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
    Bağlantı noktası 8080 ' deki dinleyici, bu isteği *görüntüler* arka uç havuzuna yönlendirir.
 
-4. URL 'YI *http://&lt;IP-&gt;adresi: 8080/video/test.htm*olarak değiştirin, &lt;&gt; IP adresini IP adresinizle değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+4. URL 'YI *http:// &lt; IP-adresi &gt; : 8080/video/test.htm*olarak DEĞIŞTIRIN, &lt; IP adresini &gt; IP adresiniz ile değiştirerek aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
     ![Video URL’sini uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
    Bağlantı noktası 8080 üzerindeki dinleyici, bu isteği *video* arka uç havuzuna yönlendirir.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Application Gateway uçtan uca TLS 'yi etkinleştirme](application-gateway-backend-ssl.md)
+> [!div class="nextstepaction"]
+> [Azure 'da uçtan uca TLS 'i etkinleştirin Application Gateway](application-gateway-backend-ssl.md)

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 5ac7f5819f07309c319d290f4869707eabb688f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848477"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212762"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için çıkış bağlamasını Azure Cosmos DB
 
@@ -576,7 +576,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**Collectionverimlilik**|**Collectionverimlilik**| `CreateIfNotExists`Doğru olduğunda, oluşturulan koleksiyonun [verimini](../cosmos-db/set-throughput.md) tanımlar.|
 |**connectionStringSetting**    |**ConnectionStringSetting** |Azure Cosmos DB Bağlantı dizenizi içeren uygulama ayarının adı.        |
 |**preferredLocations**| **PreferredLocations**| Seçim Azure Cosmos DB hizmetindeki coğrafi olarak çoğaltılan veritabanı hesapları için tercih edilen konumları (bölgeleri) tanımlar. Değerler virgülle ayrılmalıdır. Örneğin, "Doğu ABD, Orta Güney ABD, Kuzey Avrupa". |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Seçim `true`İle birlikte olarak ayarlandığında `PreferredLocations` , Azure Cosmos DB hizmetindeki [çok bölgeli yazmaları](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) kullanabilir. |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Seçim `true` İle birlikte olarak ayarlandığında `PreferredLocations` , Azure Cosmos DB hizmetindeki [çok bölgeli yazmaları](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) kullanabilir. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -597,7 +597,7 @@ Varsayılan olarak, işlevinizdeki çıkış parametresine yazdığınızda, ver
 
 ## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. 2. x sürümündeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürüm 2. x için başvuruhost.js](functions-host-json.md).
+Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. 2. x sürümündeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ Azure işlevleri sürüm 2. x için başvuruhost.js](functions-host-json.md).
 
 ```json
 {
@@ -616,7 +616,7 @@ Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapı
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve`Gateway`|
+|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
 |leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 

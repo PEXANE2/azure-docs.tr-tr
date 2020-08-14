@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83646292"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210373"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını kullanmak için klavye kullanma (Önizleme)
 
@@ -68,7 +68,7 @@ Erişim anahtarıyla aşağıdaki kısayolları kullanın. Erişim anahtarları 
 | U | Eylem |
 |-|-|
 | Erişim tuşu + R | Çalıştır |
-| Erişim tuşu + P | Yayımlama |
+| Erişim tuşu + P | Yayımla |
 | Erişim tuşu + C | Kopyalama |
 | Erişim tuşu + D | Dağıtma |
 | Erişim tuşu + ı | Çıkarım ardışık düzeni oluştur/güncelleştir |
@@ -79,5 +79,5 @@ Erişim anahtarıyla aşağıdaki kısayolları kullanın. Erişim anahtarları 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yüksek karşıtlığı açma veya tema değiştirme](../azure-portal/azure-portal-change-theme-high-contrast.md)
+- [Yüksek karşıtlığı açma veya tema değiştirme](../azure-portal/set-preferences.md#choose-a-theme-or-enable-high-contrast)
 - [Microsoft 'ta erişilebilirlik ile ilgili araçlar](https://www.microsoft.com/accessibility)

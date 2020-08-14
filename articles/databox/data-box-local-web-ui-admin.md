@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372047"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206178"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
@@ -25,7 +25,7 @@ Bu makale aşağıdaki öğreticileri içerir:
 
 - Destek paketi oluşturma
 - Cihazınızı kapatma ya da yeniden başlatma
-- BOM veya manifest dosyalarını indirin
+- Malzeme reçetesini (BOM) veya bildirim dosyalarını indirin
 - Cihazın kullanılabilir kapasitesini görüntüleme
 - Sağlama toplamı doğrulamasını atlama
 
@@ -53,7 +53,7 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
 ## <a name="shut-down-or-restart-your-device"></a>Cihazınızı kapatma ya da yeniden başlatma
 
-Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu, veri bozulması olasılığını en aza indirir. Cihazı kapatırken devam eden bir veri kopyalama işlemi olmadığından emin olun.
+Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bunun yapılması, veri bozulması olasılığını en aza indirir. Cihazı kapatırken devam eden bir veri kopyalama işlemi olmadığından emin olun.
 
 Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
@@ -62,7 +62,7 @@ Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
     ![Data Box'ı kapatma 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. Onayınız istendiğinde devam etmek için **Tamam**'a tıklayın.
+3. Onay istendiğinde, devam etmek için **Tamam** ' ı seçin.
 
     ![Data Box'ı kapatma 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -81,33 +81,32 @@ Data Box'ınızı yeniden başlatmak için aşağıdaki adımları gerçekleşti
 
 ## <a name="download-bom-or-manifest-files"></a>BOM veya manifest dosyalarını indirin
 
-Ürün reçetesi (BOM) veya bildirim dosyaları, Data Box veya Data Box Heavy kopyalanan dosyaların listesini içerir. Bu dosyalar, cihazı sevk edilecek şekilde hazırlarken bir içeri aktarma sırası için oluşturulur.
+BOM veya manifest dosyaları, Data Box veya Data Box Heavy kopyalanan dosyaların listesini içerir. Bu dosyalar, cihazı sevk edilecek şekilde hazırlarken bir içeri aktarma sırası için oluşturulur.
 
-Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamladığınızdan emin olun. İçeri aktarma siparişiniz için BOM veya manifest dosyalarını indirmek için şu adımları izleyin:
+Başlamadan önce, içeri aktarma siparişiniz için BOM veya manifest dosyalarını indirmek üzere aşağıdaki adımları izleyin:
 
-1. Cihazınız için yerel Web Kullanıcı arabirimine gidin. Cihazın sevkiyat hazırlığı tamamlandığını görürsünüz. Cihaz hazırlığı tamamlandığında, cihazınızın durumu **Sevkiyat Için hazırlık**olarak görüntülenir.
+1. Cihazınız için yerel Web Kullanıcı arabirimine gidin. Cihazınızın **göndermeye hazırlama** adımını tamamladığını doğrulayın. Cihaz hazırlığı tamamlandığında, cihazınızın durumu **Sevkiyat Için hazırlık**olarak görüntülenir.
 
-    ![Cihaz sevk etmeye hazırlanıyor](media/data-box-portal-admin/ready-to-ship.png)
+    ![Cihaz sevk etmeye hazırlanıyor](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
 2. Data Box kopyalanan dosyaların listesini indirmek için **dosya listesini indir** ' i seçin.
 
-    ![Dosya listesini Indir ' i seçin](media/data-box-portal-admin/download-list-of-files.png)
+    <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
 3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne bağlı olarak ayrı dosya listesinin oluşturulduğunu görürsünüz.
 
-    ![Depolama türü ve bağlantı protokolü dosyaları](media/data-box-portal-admin/files-storage-connection-type.png)
+    <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
+    ![Depolama türü ve bağlantı protokolü dosyaları](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
 
    Aşağıdaki tabloda, dosya adları Azure depolama türü ve kullanılan bağlantı protokolü ile eşlenir.
 
     |Dosya adı  |Azure depolama türü  |Kullanılan bağlantı protokolü |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob.txt     |Blok blobları         |SMB/NFS         |
-    |databoxe2etest_PageBlob.txt     |Sayfa blobları         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyaları         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM.txt     |Sayfa blobları         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok blobları         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Yönetilen Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Yönetilen Disk         |SMB/NFS         |
+    |utSAC1_202006051000_BlockBlob-BOM.txt     |Blok blobları         |SMB/NFS         |
+    |utSAC1_202006051000_PageBlob-BOM.txt     |Sayfa blobları         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Dosyaları         |SMB/NFS         |
+    |utsac1_PageBlock_Rest-BOM.txt     |Sayfa blobları         |REST        |
+    |utsac1_BlockBlock_Rest-BOM.txt    |Blok blobları         |REST         |
 
 Data Box Azure veri merkezine döndüğünde Azure Storage hesabına yüklenen dosyaları doğrulamak için bu listeyi kullanın. Örnek bir bildirim dosyası aşağıda gösterilmiştir.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053925"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214048"
 ---
 # <a name="what-is-batch-transcription"></a>Toplu iş dökümü nedir?
 
@@ -44,7 +44,7 @@ Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır. Şu anda bir iş
 
 Kullanımı kolay API 'nin yanında, Özel uç noktaları dağıtmanız gerekmez ve gözlemlemeye yönelik eşzamanlılık gereksinimleriniz yoktur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="subscription-key"></a>Abonelik Anahtarı
 
@@ -63,7 +63,7 @@ Modelleri özelleştirmeyi planlıyorsanız, [akustik özelleştirme](how-to-cus
 
 Toplu Iş dökümü API 'SI aşağıdaki biçimleri destekler:
 
-| Biçimlendir | Bileşeni | Bit hızı | Örnek hız                     |
+| Biçimlendir | Bileşeni | Örnek başına bit sayısı | Örnek hız             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
 | ÇA    | PCM   | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
@@ -333,7 +333,7 @@ Lütfen örnek kodu Abonelik bilgileriniz, hizmet bölgesi, geçiş için ses do
 
 Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)inceleyin. Burada gösterilen tam örnek için alt dizinde [GitHub](https://aka.ms/csspeech/samples) ' a gidin `samples/batch` .
 
-Ses ve döküm durumunu alma hakkında zaman uyumsuz Kurulum ' a göz atın. Oluşturduğunuz istemci bir .NET HTTP istemcsahiptir. `PostTranscriptions`Ses dosyası ayrıntılarını ve durumları almaya yönelik bir yöntemi göndermek için bir yöntem vardır `GetTranscriptions` . `PostTranscriptions`bir tanıtıcı döndürür ve bunu, döküm `GetTranscriptions` durumunu almak için bir tanıtıcı oluşturmak üzere kullanır.
+Ses ve döküm durumunu alma hakkında zaman uyumsuz Kurulum ' a göz atın. Oluşturduğunuz istemci bir .NET HTTP istemcsahiptir. `PostTranscriptions`Ses dosyası ayrıntılarını ve durumları almaya yönelik bir yöntemi göndermek için bir yöntem vardır `GetTranscriptions` . `PostTranscriptions` bir tanıtıcı döndürür ve bunu, döküm `GetTranscriptions` durumunu almak için bir tanıtıcı oluşturmak üzere kullanır.
 
 Geçerli örnek kod özel bir model belirtmiyor. Hizmet, dosya veya dosyaları çözümlemek için temel modeli kullanır. Modeli belirtmek için, özel model için model başvurusuyla aynı yönteme geçiş yapabilirsiniz.
 

@@ -1,20 +1,20 @@
 ---
 title: Media şema örnek denetimleri
 description: Medya şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201909"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208463"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Medya şeması örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları medya şeması 'nın medya denetimleriyle nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[önizlemeyi\]bulun ve seçin: medya denetimlerini denetle** yerleşik ilke girişimi.
+Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin ** \[ \] : medya denetimlerini denetle** yerleşik ilke girişimi.
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md)bakın.
@@ -23,11 +23,11 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1,1-kök erişim anahtarının mevcut olmadığından emin olun
 
-- \[Önizleme\]: güvenilen kökte belirtilen sertifikaları Içermeyen Windows sanal makinelerini denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : güvenilen kökte belirtilen sertifikaları Içermeyen Windows sanal makinelerini denetlemek için önkoşulları dağıtın
 
 ### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1,2-parolalar, PIN 'Ler ve belirteçlerin korunması gerekir
 
-- \[Önizleme\]: en az parola uzunluğu 14 karakter olan Windows VM 'leri denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : en az parola uzunluğu 14 karakter olan Windows VM 'leri denetlemek için önkoşulları dağıtın
 
 ### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1,8-paylaşılan hesap erişimi yasaktır
 
@@ -39,23 +39,23 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="ac--114--system-must-enforce-access-rights"></a>AC-1,14-sistem erişim haklarını zorlayamalıdır.
 
-- \[Önizleme\]: ' Kullanıcı hakları ataması ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : ' Kullanıcı hakları ataması ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC-1,15-güvenlik ile ilgili bilgi veya işlevlere yetkisiz erişimi engelleyin.
 
-- \[Önizleme\]: ' güvenlik seçenekleri-sistem ayarları 'Nda Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' güvenlik seçenekleri-sistem ayarları 'Nda Windows VM yapılandırmalarından denetim sonuçlarını göster
 
 ### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21-görevlerin ayrılması uygun rol ataması aracılığıyla zorlanmalıdır.
 
-- [Önizleme\]: rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
+- [Önizleme \] : rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
 
 ### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40-sistemlerin, güvenilen ağı ve güvenilmeyen ağları aynı anda bağmadığından emin olun.
 
-- \[Önizleme\]: ' güvenlik seçenekleri-ağ erişimi ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : ' güvenlik seçenekleri-ağ erişimi ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1,42 & AC-1,43-çalışanların yalnızca onaylanan bilgi sistemlerine erişimine izin vermek için uzaktan erişim kısıtlı olmalıdır
 
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerinden denetim sonuçlarını göster
 
 ### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1,50-tüm bilgi sistemi bileşenleri için güvenlikle ilgili olayları günlüğe kaydedin.
 
@@ -74,24 +74,24 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL-2,16-ağ cihazları/örnekleri, bu ağ aygıtı/örneği (ELBs, Web uygulaması güvenlik duvarları vb.) tarafından kritik bir güvenlik olayı olarak sınıflandırılan tüm olayları günlüğe içermemelidir.
 
-- \[Önizleme\]: ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
 
 ### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2,17-sunucular/örnekler, bu sunucu/örnek tarafından kritik bir güvenlik olayı olarak sınıflandırılan tüm olayları günlüğe içermemelidir
 
-- \[Önizleme\]: ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
 
 ### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2,19-etki alanı olayları, etki alanı yönetim yazılımıyla ilgili kritik veya yüksek güvenlik olayı olarak sınıflandırılmış tüm olayları günlüğe içermemelidir
 
-- \[Önizleme\]: ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
-- \[Önizleme\]: ' güvenlik seçenekleri-Microsoft ağ istemcisi ' Içindeki Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' güvenlik seçenekleri-Microsoft ağ istemcisi ' Içindeki Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2,20-etki alanı olayları, etki alanı güvenlik denetimlerine göre kritik güvenlik olayı olarak sınıflandırılmış tüm olayları günlüğe içermemelidir
 
-- \[Önizleme\]: ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' güvenlik seçenekleri-hesaplar ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
 
 ### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2,21-etki alanı olayları, etki alanı günlüğüne erişimi veya değişiklikleri günlüğe içermemelidir
 
-- \[Önizleme\]: ' güvenlik seçenekleri-Kurtarma Konsolu ' nda Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' güvenlik seçenekleri-Kurtarma Konsolu ' nda Windows VM yapılandırmalarından denetim sonuçlarını göster
 
 ## <a name="cryptographic-controls"></a>Şifreleme denetimleri
 
@@ -102,11 +102,11 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4,5-dijital sertifikaların onaylanmış bir sertifika yetkilisi tarafından imzalanması gerekir.
 
-- \[Önizleme\]: belirtilen gün sayısı içinde süresi dolan sertifikaları Içeren Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : belirtilen gün sayısı içinde süresi dolan sertifikaları Içeren Windows VM 'lerinden denetim sonuçlarını göster
 
 ### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4,6-dijital sertifikaların bir kullanıcı veya cihaza benzersiz olarak atanması gerekir.
 
-- \[Önizleme\]: belirtilen gün sayısı içinde süresi dolan sertifikaları Içeren Windows sanal makinelerini denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : belirtilen gün sayısı içinde süresi dolan sertifikaları Içeren Windows sanal makinelerini denetlemek için önkoşulları dağıtın
 
 ### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4,7-kayıt kayıtlarının saklanacağı sürenin uzunluğu için şifre çözme özelliğini etkinleştirmek üzere şifreleme malzemelerinin depolanması gerekir.
 
@@ -138,7 +138,7 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 ### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5,14-gereksiz ve/veya güvenli olmayan işlevleri, bağlantı noktalarını ve Hizmetleri belirleyip devre dışı bırakın.
 
 - Ağ arabirimleri IP iletmeyi devre dışı bırakmalıdır
-- \[Önizleme\]: sanal makinenizde IP iletimi devre dışı bırakılmalıdır
+- \[Önizleme \] : sanal makinenizde IP iletimi devre dışı bırakılmalıdır
 
 ### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5,19-güvenlik yapılandırma ayarlarındaki değişiklikleri Izleyin.
 
@@ -160,19 +160,19 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9,2-ağ cihazı yönetim işlevselliğine erişim yetkili kullanıcılarla kısıtlıdır.
 
-- \[Önizleme\]: ' güvenlik seçenekleri-ağ erişimi ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : ' güvenlik seçenekleri-ağ erişimi ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9,3-tüm ağ cihazlarının en güvenli yapılandırmalarına göre yapılandırılması gerekir.
 
-- \[Önizleme\]: ' güvenlik seçenekleri-ağ erişimi ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : ' güvenlik seçenekleri-ağ erişimi ' Içinde Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9,5-bir güvenlik duvarı üzerinden bir sisteme yapılan tüm ağ bağlantıları, düzenli olarak onaylanmalıdır ve denetlenmelidir.
 
-- \[Önizleme\]: ' Windows Güvenlik Duvarı Özellikleri ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme \] : ' Windows Güvenlik Duvarı Özellikleri ' Içindeki Windows VM yapılandırmalarından denetim sonuçlarını göster
 
 ### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9,7-güvenilen bir ağ ile güvenilmeyen veya genel ağ arasındaki herhangi bir sınırında uygun denetimler bulunmalıdır.
 
-- \[Önizleme\]: ' Windows Güvenlik Duvarı Özellikleri ' Içindeki Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
+- \[Önizleme \] : ' Windows Güvenlik Duvarı Özellikleri ' Içindeki Windows VM 'leri yapılandırmasını denetlemek için önkoşulları dağıtın
 
 ## <a name="security-planning"></a>Güvenlik Planlama
 
@@ -236,8 +236,8 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 Media şema örneğinin denetim eşlemesini gözden geçirdiniz. Daha sonra, genel bakış ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="next step action"]
-> [Medya şeması-genel bakış](./control-mapping.md)
-> [medya şeması-dağıtma adımları](./deploy.md)
+> [Medya şeması-genel bakış](./control-mapping.md) 
+>  [Media şema-Deploy adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a98155e76366d0dec794acf1d65e70fa19a544e2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75550154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208083"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Öğretici: NetOp Portal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. En üst portal uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------| --------- |
     | NRC-HESAP KIMLIĞI | "ADFS tanıtım" |
     | NRC-E-POSTA | User. UserPrincipalName |
@@ -118,9 +118,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -142,7 +142,7 @@ Bu bölümde, B. Simon 'u, NetOp portalına erişim vererek Azure çoklu oturum 
 
 ## <a name="configure-netop-portal-sso"></a>NetOp Portal SSO 'yu yapılandırma
 
-**NetOp Portal** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** ve Azure Portal oturum açma URL 'si gerekir. Azure AD kimlik doğrulaması için NetOp portalını yapılandırmak üzere [buradaki](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) belge adım 3 ' teki yönergeleri izleyin.
+**NetOp Portal** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** ve Azure Portal oturum açma URL 'si gerekir. Azure AD kimlik doğrulaması için NetOp portalını yapılandırmak üzere [buradaki](https://kb.netop.com/article/netop-remote-control-portal-adfs-and-azure-ad-integration-456.html) belge adım 3 ' teki yönergeleri izleyin.
 
 ### <a name="create-netop-portal-test-user"></a>NetOp Portal test kullanıcısı oluştur
 
@@ -156,9 +156,9 @@ Erişim panelinde NetOp Portal kutucuğuna tıkladığınızda, SSO 'yu ayarlad�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

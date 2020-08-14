@@ -2,13 +2,14 @@
 title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure Işlevleri, çalışma zamanının birden çok sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081687"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208116"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -59,7 +60,7 @@ Sürüm 1. x 'ten sonra bazı özellikler kaldırıldı, güncelleştirildi veya
 
 * İzlemeyi geliştirmek için, bu ayarı kullanan portaldaki Web Işleri panosu, [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) ayarı kullanılan Azure Application Insights ile değiştirilmiştir [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) . Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
-* Bir işlev uygulamasındaki tüm işlevler aynı dili paylaşmalıdır. Bir işlev uygulaması oluşturduğunuzda, uygulama için bir çalışma zamanı yığını seçmeniz gerekir. Çalışma zamanı yığını, [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) uygulama ayarlarındaki değerle belirtilir. Bu gereksinim, parmak izini ve başlangıç süresini artırmak için eklenmiştir. Yerel olarak geliştirilirken, bu ayarı [dosyalocal.settings.js](functions-run-local.md#local-settings-file)da dahil etmeniz gerekir.
+* Bir işlev uygulamasındaki tüm işlevler aynı dili paylaşmalıdır. Bir işlev uygulaması oluşturduğunuzda, uygulama için bir çalışma zamanı yığını seçmeniz gerekir. Çalışma zamanı yığını, [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) uygulama ayarlarındaki değerle belirtilir. Bu gereksinim, parmak izini ve başlangıç süresini artırmak için eklenmiştir. Yerel olarak geliştirilirken, bu ayarı [ dosyalocal.settings.js](functions-run-local.md#local-settings-file)da dahil etmeniz gerekir.
 
 * Bir App Service planındaki işlevler için varsayılan zaman aşımı 30 dakikaya dönüştürülür. host.jsüzerindeki [functiontimeout](functions-host-json.md#functiontimeout) ayarını kullanarak, zaman aşımını tekrar sınırsız olarak değiştirebilirsiniz.
 

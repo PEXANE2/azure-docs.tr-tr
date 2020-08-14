@@ -4,13 +4,13 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp, fasttrack-edit
+ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273397"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212997"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -69,7 +69,7 @@ Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hata
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
 | **[Ölçümler](../azure-monitor/platform/metrics-charts.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
-| **[Canlı ölçümler](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
+| **[Canlı ölçümler    ](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
 
 ## <a name="query-telemetry-data"></a>Telemetri verilerini sorgulama
 
@@ -143,7 +143,7 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Günlük düzeyi `None` sonraki bölümde açıklanmaktadır. 
 
@@ -192,7 +192,7 @@ Bu örnek aşağıdaki kuralları ayarlar:
 * Kategorisi olan Günlükler için `Host.Aggregator` tüm günlükleri Application Insights gönderin. `Trace`Günlük düzeyi, bazı günlükçülerin çağrı yaptığı `Verbose` , ancak `Trace` dosyada [host.js] kullanılan şeydir.
 * Tüm diğer Günlükler için, `Information` Application Insights için yalnızca düzeyini ve üstünü gönderin.
 
-' Deki kategori değeri, aynı değer ile başlayan tüm kategoriler için günlük kaydı denetimlerinde [host.js] . `Host`,,, vb. için denetim günlük [host.js] `Host.General` `Host.Executor` `Host.Results` .
+' Deki kategori değeri, aynı değer ile başlayan tüm kategoriler için günlük kaydı denetimlerinde [host.js] . `Host` ,,, vb. için denetim günlük [host.js] `Host.General` `Host.Executor` `Host.Results` .
 
 [host.json] , aynı dizeyle başlayan birden çok kategori içeriyorsa, daha uzun olanlar önce eşleştirilir. Çalışma zamanından itibaren `Host.Aggregator` oturum açma haricinde `Error` , ancak şu `Host.Aggregator` düzeyde günlüğe kaydetmek istediğiniz her şeyi istediğinizi varsayalım `Information` :
 
@@ -233,7 +233,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  İşte bir örnek:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ```json
 {
@@ -246,7 +246,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  İşte bir örnek:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -669,7 +669,7 @@ Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir 
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 [Azure CLI](/cli/azure/install-azure-cli)kullanarak akış günlüklerini etkinleştirebilirsiniz. Oturum açmak için aşağıdaki komutları kullanın, aboneliğinizi seçin ve günlük dosyalarını akışla açın:
 
@@ -737,4 +737,4 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Uygulama Bilgileri](/azure/application-insights/)
 * [Günlüğe kaydetme ASP.NET Core](/aspnet/core/fundamentals/logging/)
 
-[Üzerindehost.js]: functions-host-json.md
+[ Üzerindehost.js]: functions-host-json.md

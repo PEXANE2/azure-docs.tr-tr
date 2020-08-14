@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 56099a7d350a29db5a57708bc87b7174cfdb3b29
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 53bd4905cf4b8829d65ce2b10c85260ff3f8926c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079288"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210529"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Node.js kuyrukları oluşturmak ve silmek için Azure kuyruk hizmetini kullanın
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -85,7 +85,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 Sıra oluşturulduysa, `result.created` doğru olur. Sıra varsa, `result.created` false olur.
 
-### <a name="filters"></a>FilTReleri
+### <a name="filters"></a>Filtreler
 İsteğe bağlı filtreleme işlemleri, **QueueService**kullanılarak gerçekleştirilen işlemlere uygulanabilir. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden deneme vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript
@@ -186,8 +186,8 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 ## <a name="how-to-additional-options-for-dequeuing-messages"></a>Nasıl yapılır: sıradan sıraya alma Iletileri için ek seçenekler
 Bir kuyruktan ileti alımını özelleştirmek için iki yol vardır:
 
-* `options.numOfMessages`-Bir ileti toplu işi alın (32 'e kadar.)
-* `options.visibilityTimeout`-Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
+* `options.numOfMessages` -Bir ileti toplu işi alın (32 'e kadar.)
+* `options.visibilityTimeout` -Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
 
 Aşağıdaki örnek, bir çağrıda 15 ileti almak için **GetMessages** yöntemini kullanır. Sonra her iletiyi bir for döngüsü kullanarak işler. Ayrıca, bu yöntemin döndürdüğü tüm iletiler için geçersiz kılma zaman aşımını beş dakikaya ayarlar.
 
@@ -195,7 +195,7 @@ Aşağıdaki örnek, bir çağrıda 15 ileti almak için **GetMessages** yöntem
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
   if(!error){
     // Messages retrieved
-    for(var index in result){
+    for(var index in results){
       // text is available in result[index].messageText
       var message = results[index];
       queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, deleteResponse){

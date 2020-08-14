@@ -3,13 +3,14 @@ title: Azure Işlevleri için PowerShell geliştirici başvurusu
 description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
 author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506137"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207413"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -113,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding`, için belirtilen değere göre farklı davranır `-Name` :
+`Push-OutputBinding` , için belirtilen değere göre farklı davranır `-Name` :
 
 * Belirtilen ad geçerli bir çıkış bağlamasıyla çözülemezse bir hata oluşur.
 
@@ -121,11 +122,11 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * Çıkış bağlaması yalnızca bir tek değeri kabul ettiğinde, `Push-OutputBinding` ikinci kez çağırma bir hata oluşturur.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`sözdizimi
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` sözdizimi
 
 Çağırmak için geçerli parametreler aşağıda verilmiştir `Push-OutputBinding` :
 
-| Ad | Tür | Konum | Description |
+| Ad | Tür | Konum | Açıklama |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
@@ -175,7 +176,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Gönderme-OutputBinding örneği: kuyruk çıkış bağlaması
 
-`Push-OutputBinding`, [Azure kuyruk depolama çıkış bağlaması](functions-bindings-storage-queue-output.md)gibi çıkış bağlamalarına veri göndermek için kullanılır. Aşağıdaki örnekte, sıraya yazılan ileti "output #1" değerine sahiptir:
+`Push-OutputBinding` , [Azure kuyruk depolama çıkış bağlaması](functions-bindings-storage-queue-output.md)gibi çıkış bağlamalarına veri göndermek için kullanılır. Aşağıdaki örnekte, sıraya yazılan ileti "output #1" değerine sahiptir:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -195,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 Sıraya yazıldığında ileti şu dört değeri içerir: "çıkış #1", "çıkış #2", "çıkış #3" ve "çıkış #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`cmdlet
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` cmdlet
 
 `Get-OutputBinding`Çıkış bağlamalarınız için şu anda ayarlanmış olan değerleri almak için cmdlet 'ini kullanabilirsiniz. Bu cmdlet, çıkış bağlamalarının adlarını ilgili değerleriyle içeren bir Hashtable alır. 
 
@@ -212,7 +213,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding`Ayrıca `-Name` , aşağıdaki örnekte olduğu gibi döndürülen bağlamayı filtrelemek için kullanılabilen adlı bir parametresini de içerir:
+`Get-OutputBinding` Ayrıca `-Name` , aşağıdaki örnekte olduğu gibi döndürülen bağlamayı filtrelemek için kullanılabilen adlı bir parametresini de içerir:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -296,14 +297,14 @@ Betiğe geçirilen istek nesnesi, `HttpRequestContext` aşağıdaki özelliklere
 
 | Özellik  | Açıklama                                                    | Tür                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body`, verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | object |
+| **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body` , verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | object |
 | **`Headers`** | İstek üst bilgilerini içeren bir sözlük.                | Sözlük<dize, dize><sup>*</sup> |
 | **`Method`** | İsteğin HTTP yöntemi.                                | string                    |
 | **`Params`**  | İsteğin yönlendirme parametrelerini içeren nesne. | Sözlük<dize, dize><sup>*</sup> |
 | **`Query`** | Sorgu parametrelerini içeren bir nesne.                  | Sözlük<dize, dize><sup>*</sup> |
 | **`Url`** | İsteğin URL 'SI.                                        | string                    |
 
-<sup>*</sup>Tüm `Dictionary<string,string>` anahtarlar büyük/küçük harfe duyarlıdır.
+<sup>*</sup> Tüm `Dictionary<string,string>` anahtarlar büyük/küçük harfe duyarlıdır.
 
 #### <a name="response-object"></a>Yanıt nesnesi
 
@@ -394,7 +395,7 @@ Geçerli sürümü `$PSVersionTable` herhangi bir işlevden yazdırarak görebil
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
 
-İşlevler, bağımlılıkları yönetmek için [PowerShell galerisinden](https://www.powershellgallery.com) yararlanmanızı sağlar. Bağımlılık yönetimi etkinken, gerekli modülleri otomatik olarak indirmek için requirements.psd1 dosyası kullanılır. Bu davranışı `managedDependency` , özelliği, `true` Aşağıdaki örnekte olduğu gibi, [dosyadakihost.js](functions-host-json.md)kökünde ayarlayarak etkinleştirin:
+İşlevler, bağımlılıkları yönetmek için [PowerShell galerisinden](https://www.powershellgallery.com) yararlanmanızı sağlar. Bağımlılık yönetimi etkinken, gerekli modülleri otomatik olarak indirmek için requirements.psd1 dosyası kullanılır. Bu davranışı `managedDependency` , özelliği, `true` Aşağıdaki örnekte olduğu gibi, [ dosyadakihost.js](functions-host-json.md)kökünde ayarlayarak etkinleştirin:
 
 ```json
 {
@@ -420,11 +421,11 @@ requirements.psd1 dosyasını güncelleştirdiğinizde, bir yeniden başlatmanı
 
 Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz içinde başlar `MDMaxBackgroundUpgradePeriod` ve yükseltme işlemi yaklaşık olarak içinde tamamlanır `MDNewSnapshotCheckPeriod` .
 
-| İşlev Uygulaması ayarı              | Varsayılan değer             | Description                                         |
+| İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma ve sonrasında PowerShell Galerisi modül yükseltmelerini denetlemeyi başlatır `MDMaxBackgroundUpgradePeriod` . PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması içinde tamamlanır `MDNewSnapshotCheckPeriod` . Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`(1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son olarak bu denetimi başlatmış bir çalışan varsa modül yükseltmelerini denetlemek gerçekleştirilmez `MDMinBackgroundUpgradePeriod` . |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma ve sonrasında PowerShell Galerisi modül yükseltmelerini denetlemeyi başlatır `MDMaxBackgroundUpgradePeriod` . PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması içinde tamamlanır `MDNewSnapshotCheckPeriod` . Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son olarak bu denetimi başlatmış bir çalışan varsa modül yükseltmelerini denetlemek gerçekleştirilmez `MDMinBackgroundUpgradePeriod` . |
 
 Kendi özel modüllerinizi kullanmak, normal şekilde nasıl yapacağınıza göre biraz farklıdır.
 
@@ -517,7 +518,7 @@ Azure PowerShell, size fazla yazma işleminden tasarruf etmenize yardımcı olma
 
 Bazı işlemler oldukça uzun sürebileceğinden, Azure PowerShell eşzamanlılık içinde de bir değer vardır. Ancak, dikkatli ilerlemeniz gerekir. Bir yarış durumu yaşadığınızı düşünüyorsanız, PSWorkerInProcConcurrencyUpperBound uygulama ayarını olarak ayarlayın `1` ve bunun yerine eşzamanlılık için [dil çalışan işlem düzeyi yalıtımı](functions-app-settings.md#functions_worker_process_count) kullanın.
 
-## <a name="configure-function-scriptfile"></a>Configure işlevi`scriptFile`
+## <a name="configure-function-scriptfile"></a>Configure işlevi `scriptFile`
 
 Varsayılan olarak, `run.ps1` karşılık gelen bir üst dizini paylaşan bir dosya olan bir PowerShell işlevi yürütülür `function.json` .
 
@@ -595,7 +596,7 @@ PowerShell işlevleriyle çalışırken, aşağıdaki bölümlerde yer aldığı
 
 [Sunucusuz barındırma modelinde](functions-scale.md#consumption-plan)Azure işlevleri geliştirirken soğuk başlar. *Soğuk başlatma* , bir isteği işlemek için işlev uygulamanızın çalışmaya başlaması için gereken süreyi ifade eder. İşlev uygulamanız işlem yapılmayan dönemler sırasında kapandığı için, tüketim planında soğuk başlatma daha sık gerçekleşir.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Kullanmak yerine modülleri paketleyin`Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Kullanmak yerine modülleri paketleyin `Install-Module`
 
 Komut dosyası her çağrıdan çalıştırılır. `Install-Module`Betiğinizdeki kullanmaktan kaçının. Bunun yerine `Save-Module` yayımlamadan önce kullanın, böylece işlevinizin modül indirmede zaman harcanmasına sahip olmaması gerekir. Soğuk başlıyorsa işlevlerinizi etkilese, işlev uygulamanızı *her zaman açık* veya bir [Premium plana](functions-scale.md#premium-plan)ayarlanmış bir [App Service plana](functions-scale.md#app-service-plan) dağıtmaya göz önünde bulundurun.
 

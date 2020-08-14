@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844091"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212152"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -300,12 +300,12 @@ Azure Işlevleri 1. x içinde, çalışma zamanı yoksa kuyruğu oluşturur ve `
 
 Çıkış bağlaması için aşağıdaki parametre türlerini kullanın:
 
-* `out T paramName` - `T`herhangi bir JSON-Serializable türü olabilir. İşlev çıktığında parametre değeri null ise, Işlevler bir null nesne ile ileti oluşturur.
-* `out string`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
-* `out byte[]`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
-* `out BrokeredMessage`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
-* `out Message`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
-* `ICollector<T>`ya da `IAsyncCollector<T>` (zaman uyumsuz metotlar için)-birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
+* `out T paramName` - `T` herhangi bir JSON-Serializable türü olabilir. İşlev çıktığında parametre değeri null ise, Işlevler bir null nesne ile ileti oluşturur.
+* `out string` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
+* `out byte[]` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
+* `out BrokeredMessage` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
+* `out Message` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
+* `ICollector<T>` ya da `IAsyncCollector<T>` (zaman uyumsuz metotlar için)-birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
 
 C# işlevleriyle çalışırken:
 
@@ -317,12 +317,12 @@ C# işlevleriyle çalışırken:
 
 Çıkış bağlaması için aşağıdaki parametre türlerini kullanın:
 
-* `out T paramName` - `T`herhangi bir JSON-Serializable türü olabilir. İşlev çıktığında parametre değeri null ise, Işlevler bir null nesne ile ileti oluşturur.
-* `out string`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
-* `out byte[]`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
-* `out BrokeredMessage`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
-* `out Message`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
-* `ICollector<T>`ya da `IAsyncCollector<T>` birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
+* `out T paramName` - `T` herhangi bir JSON-Serializable türü olabilir. İşlev çıktığında parametre değeri null ise, Işlevler bir null nesne ile ileti oluşturur.
+* `out string` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
+* `out byte[]` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
+* `out BrokeredMessage` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
+* `out Message` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
+* `ICollector<T>` ya da `IAsyncCollector<T>` birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
 
 C# işlevleriyle çalışırken:
 
@@ -355,10 +355,10 @@ Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](../servic
 
 ## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada host.jsörnek yalnızca bu bağlamanın ayarlarını içerir. Genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürümü için başvuruhost.js](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada host.jsörnek yalnızca bu bağlamanın ayarlarını içerir. Genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ Azure işlevleri sürümü için başvuruhost.js](functions-host-json.md).
 
 > [!NOTE]
-> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
+> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [ Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
 ```json
 {

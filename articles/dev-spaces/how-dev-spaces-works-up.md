@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Kodunuzu Azure Kubernetes hizmetinde Azure Dev Spaces ile çalıştırma işlemlerini açıklar
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: c343c32f0817cc922784bb25283290dc9ed88d29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072959"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208682"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Kodunuzu Azure Dev Spaces çalışır şekilde çalıştırma
 
@@ -130,7 +130,7 @@ Hele grafiklerini yüklerken Azure Dev Spaces Helu grafiğindeki değerleri geç
 
 Yukarıdaki örnekte, *Install. set. replicaCount* özelliği denetleyiciye geliştirme alanınızda uygulamanızın kaç örnek çalıştırılacağını söyler. Senaryonuza bağlı olarak, bu değeri artırabilirsiniz, ancak uygulamanızın Pod öğesine bir hata ayıklayıcı ekleme etkisi olur. Daha fazla bilgi için bkz. [sorun giderme makalesi][troubleshooting].
 
-Oluşturulan HELI grafiğinde kapsayıcı görüntüsü *{{olarak ayarlanır. Values. Image. Repository}}: {{. Values. Image. Tag}}*. `azds.yaml`Dosya, *install. set. Image. Tag* özelliğini varsayılan olarak *$ (Tag)* olarak tanımlar; bu, {{için değer olarak kullanılır *. Values. Image. Tag}}*. *Install. set. Image. Tag* özelliğini bu şekilde ayarlayarak, uygulamanızın kapsayıcı görüntüsünün Azure dev Spaces çalıştırılırken farklı bir şekilde etiketlenmesine izin verir. Bu özel durumda, görüntü şöyle etiketlenebilir * \<value from image.repository> : $ (etiket)*. Geliştirme alanları tanıması ve AKS kümesindeki kapsayıcıyı bulmak için, *$ (Tag)* değişkenini *Install. set. image. Tag* değeri olarak kullanmanız gerekir.
+Oluşturulan HELI grafiğinde kapsayıcı görüntüsü *{{olarak ayarlanır. Values. Image. Repository}}: {{. Values. Image. Tag}}*. `azds.yaml`Dosya, *install. set. Image. Tag* özelliğini varsayılan olarak *$ (Tag)* olarak tanımlar; bu, {{için değer olarak kullanılır *. Values. Image. Tag}}*. *Install. set. Image. Tag* özelliğini bu şekilde ayarlayarak, uygulamanızın kapsayıcı görüntüsünün Azure dev Spaces çalıştırılırken farklı bir şekilde etiketlenmesine izin verir. Bu özel durumda, görüntü şöyle etiketlenebilir * \<value from image.repository> : $ (etiket)*. Geliştirme alanları tanıması ve AKS kümesindeki kapsayıcıyı bulmak için, *$ (Tag)* değişkenini   *Install. set. image. Tag* değeri olarak kullanmanız gerekir.
 
 Yukarıdaki örnekte `azds.yaml` *Install. set. ınress. Konakları*tanımlanmaktadır. *Install. set. ingress. hosts* özelliği, genel uç noktalar için bir ana bilgisayar adı biçimi tanımlar. Bu özellik ayrıca, denetleyici tarafından belirtilen değerler olan *$ (Spaceprefix)*, *$ (rootspaceprefix)* ve *$ (hostsuffix*) kullanır.
 
@@ -201,14 +201,6 @@ Ağ ve isteklerin nasıl yönlendirildiği hakkında daha fazla bilgi edinmek i�
 
 Hızlı yineleme ve geliştirme için Azure Dev Spaces kullanma hakkında daha fazla bilgi için, bkz. [Kubernetes Ile yerel Işlemin nasıl çalıştığı][how-it-works-local-process-kubernetes] ve [Azure dev Spaces kodunuzda uzaktan hata ayıklamanın][how-it-works-remote-debugging]nasıl çalıştığı.
 
-Projenizi çalıştırmak için Azure Dev Spaces kullanmaya başlamak için aşağıdaki hızlı başlangıçlara bakın:
-
-* [Visual Studio Code ve Java ile hızlıca yineleme ve hata ayıklama][quickstart-java]
-* [Visual Studio Code ve .NET ile hızla yineleme ve hata ayıklama][quickstart-netcore]
-* [Visual Studio Code ve Node.jsile hızlıca yineleme ve hata ayıklama][quickstart-node]
-* [Visual Studio ve .NET Core ile hızla yineleme ve hata ayıklama][quickstart-vs]
-* [Kubernetes 'te uygulama geliştirmek için CLı kullanma][quickstart-cli]
-
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
@@ -216,10 +208,5 @@ Projenizi çalıştırmak için Azure Dev Spaces kullanmaya başlamak için aşa
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

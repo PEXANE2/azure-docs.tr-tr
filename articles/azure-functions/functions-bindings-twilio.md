@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp, H1Hack27Feb2017
+ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540273"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206622"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Işlevleri için Twilio bağlama
 
@@ -327,9 +327,9 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TwilioSms` .
 
-| Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Description|
+| Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Açıklama|
 |---------|---------|---------|----------------------|
-|**türüyle**|**türüyle**| olarak ayarlanmalıdır `twilioSms` .|
+|**tür**|**türüyle**| olarak ayarlanmalıdır `twilioSms` .|
 |**Görünüm**|**Görünüm**| olarak ayarlanmalıdır `out` .|
 |**ada**|**ada**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
 |**accountSid**|**Accountsıdsetting**| **AccountSidSetting**| Bu değer, Twilio hesabı SID 'nizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountSid` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |

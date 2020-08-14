@@ -4,13 +4,13 @@ description: Azure işlevleri 'nde çalıştırmadan önce yerel bilgisayarını
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037040"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207450"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -155,7 +155,7 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 ## <a name="create-a-local-functions-project"></a>Yerel Işlevler projesi oluşturma
 
-İşlevler proje dizini, her bir işlev için kodu içeren alt klasörlerle birlikte, [üzerindehost.js](functions-host-json.md) ve [local.settings.jsüzerinde](#local-settings-file)dosya içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
+İşlevler proje dizini, her bir işlev için kodu içeren alt klasörlerle birlikte, [ üzerindehost.js](functions-host-json.md) ve [local.settings.jsüzerinde](#local-settings-file)dosya içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
 
 Sürüm 3. x/2. x, başlatıldığında projeniz için varsayılan bir dil seçmenizi gerektirir. Sürüm 3. x/2. x ' te, eklenen tüm işlevler varsayılan dil şablonlarını kullan ' ı kullanır. 1. x sürümünde, her bir işlev oluşturduğunuzda dili belirtirsiniz.
 
@@ -189,7 +189,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`, aksi belirtilmediği takdirde sürüm 3. x/2. x-Only olan aşağıdaki seçenekleri destekler:
+`func init` , aksi belirtilmediği takdirde sürüm 3. x/2. x-Only olan aşağıdaki seçenekleri destekler:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
@@ -363,7 +363,7 @@ npm start
 > func host start
 > ```
 
-`func start`Aşağıdaki seçenekleri destekler:
+`func start` Aşağıdaki seçenekleri destekler:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
@@ -472,7 +472,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func run <FunctionName>` ve işlev için giriş verileri sağlayabilirsiniz. Bu komut, Azure portal **Test** sekmesini kullanarak bir işlevi çalıştırmaya benzer.
 
-`func run`Aşağıdaki seçenekleri destekler:
+`func run` Aşağıdaki seçenekleri destekler:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
@@ -547,7 +547,7 @@ Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Geçerli kullanıcının oturum açan bir Docker kayıt defterinin adı. |
-| **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır`kubernetes` |
+| **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır `kubernetes` |
 | **`--name`** | İşlev uygulaması adı. |
 | **`--max`**  | İsteğe bağlı olarak, dağıtılacak maksimum işlev uygulaması örneği sayısını ayarlar. |
 | **`--min`**  | İsteğe bağlı olarak, dağıtılacak en düşük işlev uygulaması örneği sayısını ayarlar. |

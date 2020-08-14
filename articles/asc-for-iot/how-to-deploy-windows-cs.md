@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b9176a16f4d8d2b7ee7f33e00714d811c5f070
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537619"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209081"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows için IoT için Azure Güvenlik Merkezi C# tabanlı güvenlik aracısını dağıtma
 
@@ -29,7 +30,7 @@ Bu kılavuzda, Windows 'da IoT C# tabanlı güvenlik aracısının Azure Güvenl
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Yükleme
+> * Yükle
 > * Dağıtımı doğrulama
 > * Aracıyı kaldırın
 > * Sorun giderme
@@ -63,7 +64,7 @@ Güvenlik aracısını yüklemek için aşağıdaki iş akışını kullanın:
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
@@ -80,7 +81,7 @@ Bu betik aşağıdaki eylemleri yapar:
 
 Ek Yardım için PowerShell 'de Get-Help komutunu kullanın.
 
-Get-Help örneği:```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help örneği:    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>Dağıtım durumunu doğrula
 
@@ -137,7 +138,7 @@ Günlüğe kaydetmeyi açmak için:
 
 1. Hata hakkında daha fazla bilgi için günlük dosyasını gözden geçirin. Günlük dosyası, betiği çalıştırdığımız çalışma dizininde mevcut olacaktır. 
 
-   Günlük dosyası konumu:`.\IoTAgentLog.log`
+   Günlük dosyası konumu: `.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

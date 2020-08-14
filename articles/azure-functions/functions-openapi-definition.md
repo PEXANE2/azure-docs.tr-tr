@@ -4,13 +4,13 @@ description: Azure’da diğer uygulama ve hizmetlerin işlevinize çağrı yapm
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.reviewer: sunayv
-ms.custom: mvc, cc996988-fb4f-47, references_regions
-ms.openlocfilehash: 87f7b47354d3d76d5185b1bf956fd0c422c092bd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
+ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197033"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212919"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management kullanarak sunucusuz bir API için Openapı tanımı oluşturma
 
@@ -138,13 +138,13 @@ Openapı tanımını oluşturmak için:
 
     | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Adı** | Genel olarak benzersiz bir ad | İşlev uygulamanızın adı temel alınarak bir ad oluşturulur. |
+    | **Ad** | Genel olarak benzersiz bir ad | İşlev uygulamanızın adı temel alınarak bir ad oluşturulur. |
     | **Abonelik** | Aboneliğiniz | Bu yeni kaynağın altında oluşturulduğu abonelik. |  
     | **[Kaynak grubu](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Sizin için ayarlanmış olması gereken işlev uygulamanız ile aynı kaynak. |
     | **Konum** | Batı ABD | Batı ABD konumunu seçin. |
     | **Kuruluş adı** | Contoso | Geliştirici portalında kullanılan kuruluşun adı ve e-posta bildirimleri için. |
     | **Yönetici e-postası** | e-postanız | API Management 'den sistem bildirimleri alan e-posta. |
-    | **Fiyatlandırma Katmanı** | Tüketim | Tüketim katmanı tüm bölgelerde kullanılabilir değildir. Tüm fiyatlandırma ayrıntıları için [API Management fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/api-management/) bakın |
+    | **Fiyatlandırma katmanı** | Tüketim | Tüketim katmanı tüm bölgelerde kullanılabilir değildir. Tüm fiyatlandırma ayrıntıları için [API Management fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/api-management/) bakın |
 
     ![Yeni API Management hizmeti oluştur](media/functions-openapi-definition/new-apim-service-openapi.png)
 
@@ -152,7 +152,7 @@ Openapı tanımını oluşturmak için:
 
 1. Azure örneği oluşturduktan sonra, sayfada **etkinleştir Application Insights** seçeneğini etkinleştirir. Günlükleri işlev uygulamasıyla aynı yere göndermek için bunu seçin ve ardından **API bağlantısı**' nı seçin.
 
-1. **Içeri aktarma Azure işlevleri** , **Turbinerepair** işlevi vurgulanmış şekilde açılır. Devam etmek için **Seç**'i seçin.
+1. **Içeri aktarma Azure işlevleri** , **Turbinerepair** işlevi vurgulanmış şekilde açılır. Devam etmek için **Seç** seçeneğini belirleyin.
 
     ![Azure Işlevlerini API Management içine aktarın](media/functions-openapi-definition/import-function-openapi.png)
 

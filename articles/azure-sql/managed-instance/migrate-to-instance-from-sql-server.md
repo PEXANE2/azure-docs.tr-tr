@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087590"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209488"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Yüksek düzeyde, veritabanı geçiş işlemi şöyle görünür:
 
 İlk olarak, SQL yönetilen örneğinin uygulamanızın veritabanı gereksinimleriyle uyumlu olup olmadığını saptayın. SQL yönetilen örneği, SQL Server kullanan mevcut uygulamaların çoğunluğu için kolay yükseltme ve kaydırma geçişi sağlamak üzere tasarlanmıştır. Ancak bazen henüz desteklenmeyen özellikler veya yetenekler gerektirebilir, geçici çözüm uygulama maliyeti de çok yüksektir.
 
-Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. Bazı bildirilmiş engelleme sorunları varsa, [Azure VM 'de SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. Aşağıda bazı örnekler verilmiştir:
+Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. Bazı bildirilmiş engelleme sorunları varsa, [Azure VM 'de SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
 
 - İşletim sistemine veya dosya sistemine doğrudan erişim istiyorsanız, örneğin, SQL Server ile aynı sanal makineye üçüncü taraf veya özel aracılar yüklemek için.
 - FILESTREAM/FileTable, PolyBase ve platformlar arası işlemler gibi hala desteklenmeyen özelliklerde kesin bağımlılığı varsa.
@@ -162,7 +162,7 @@ Yönetilen bir örneğe veritabanı geçişi, çoğu durumda veritabanı ayarlar
 Bir önkoşul olarak, aşağıdaki etkinlikleri tamamladığınızdan emin olun:
 
 - Çeşitli örnek, veritabanı, tempdb ayarları ve konfigürasyonları inceleyerek, yönetilen örnekteki ayarlarınızı kaynak SQL Server örneğindeki ayarlarla hizalayın. İlk performans karşılaştırmayı çalıştırmadan önce uyumluluk düzeyleri veya şifreleme gibi ayarları değiştirdiğinizden emin olun veya etkinleştirdiğiniz yeni özelliklerden bazılarının bazı sorguları etkileyebileceğini riski kabul edin. Geçiş risklerini azaltmak için, veritabanı uyumluluk düzeyini yalnızca performans izleme sonrasında değiştirin.
-- Daha iyi performans elde etmek için dosyaların boyutunu önceden ayırma gibi [genel amaçlı için en iyi depolama uygulama kılavuzunu](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)uygulayın.
+- Daha iyi performans elde etmek için dosyaların boyutunu önceden ayırma gibi [genel amaçlı için en iyi depolama uygulama kılavuzunu](https://techcommunity.microsoft.com)uygulayın.
 - [Yönetilen bir örnek ve SQL Server arasındaki performans farklılıklarına neden olabilecek temel ortam farklılıkları](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)hakkında bilgi edinin ve performansı etkileyebilecek riskleri tanımlayabilir.
 - Yönetilen örneğiniz üzerinde etkinleştirilmiş sorgu deposunu ve otomatik ayarlamayı sakladığınızdan emin olun. Bu özellikler iş yükü performansını ölçmenize ve olası performans sorunlarını otomatik olarak düzeltmenize olanak sağlar. [Daha yeni bir SQL Server sürümüne yükseltme sırasında performans kararlılığını koruyun](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)bölümünde açıklandığı gibi, veritabanı uyumluluk düzeyi değişikliğinden önce ve sonra iş yükü performansı hakkında bilgi almak için en iyi aracı olarak sorgu deposunu nasıl kullanacağınızı öğrenin.
 Şirket içi ortamınızdan mümkün olduğunca uygun olan ortamı hazırladıktan sonra, iş yükünüzü çalıştırmaya başlayabilir ve performansı ölçebilir. Ölçüm süreci, [kaynak SQL Server örneğindeki iş yükü ölçülerinizin temel performansını](#create-a-performance-baseline)oluştururken ölçülmüş parametrelerin aynısını içermelidir.

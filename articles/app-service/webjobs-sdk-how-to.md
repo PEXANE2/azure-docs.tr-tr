@@ -3,15 +3,16 @@ title: WebJobs SDK 'sını kullanma
 description: Web Işleri SDK 'Sı için kod yazma hakkında daha fazla bilgi edinin. Azure ve üçüncü taraf hizmetlerindeki verilere erişen olay odaklı arka plan işleme işleri oluşturun.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807987"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208633"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -73,7 +74,7 @@ Yerel geliştirmeyi daha verimli hale getirmek için Konağı geliştirme modund
 
 | Özellik | Geliştirme ayarı |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`günlük çıkışını en üst düzeye çıkarmak için. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` günlük çıkışını en üst düzeye çıkarmak için. |
 | `Queues.MaxPollingInterval`  | Sıra yöntemlerinin hemen tetiklendiğinden emin olmak için düşük bir değer.  |
 | `Singleton.ListenerLockPeriod` | hızlı yinelemeli geliştirmeye yardımcı olmak için 15 saniye. |
 
@@ -358,7 +359,7 @@ Bazı Tetikleyiciler ve bağlamaların davranışını yapılandırabilirsiniz. 
 * **Sürüm 3. *x*:** `Add<Binding>` yöntemi içinde çağrıldığında yapılandırmayı ayarlayın `ConfigureWebJobs` .
 * **Sürüm 2. *x*:** ' ye geçirdiğiniz bir yapılandırma nesnesindeki özellikleri ayarlayarak yapılandırmayı ayarlayın `JobHost` .
 
-Bu bağlamaya özgü ayarlar, Azure Işlevleri 'ndeki [Proje dosyasındakihost.js](../azure-functions/functions-host-json.md) ayarlara eşdeğerdir.
+Bu bağlamaya özgü ayarlar, Azure Işlevleri 'ndeki [ Proje dosyasındakihost.js](../azure-functions/functions-host-json.md) ayarlara eşdeğerdir.
 
 Aşağıdaki bağlamaları yapılandırabilirsiniz:
 
@@ -470,7 +471,7 @@ static void Main(string[] args)
 }
 ```
 
-Daha fazla ayrıntı için bkz [. v1. x başvurusuhost.js](../azure-functions/functions-host-json-v1.md#queues).
+Daha fazla ayrıntı için bkz [ . v1. x başvurusuhost.js](../azure-functions/functions-host-json-v1.md#queues).
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid bağlama yapılandırması (sürüm 3.* x*)
 
@@ -822,7 +823,7 @@ ASP.NET için geliştirilen günlük çerçevesini öneririz. [Başlarken](webjo
 
 ### <a name="log-filtering"></a>Günlük filtreleme
 
-Bir örnek tarafından oluşturulan her günlük `ILogger` ilişkili bir `Category` ve içerir `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir numaralandırmadır ve tamsayı kodu göreli önemi gösterir:
+Bir örnek tarafından oluşturulan her günlük `ILogger` ilişkili bir `Category` ve içerir `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) bir numaralandırmadır ve tamsayı kodu göreli önemi gösterir:
 
 |LogLevel    |Kod|
 |------------|---|
@@ -832,7 +833,7 @@ Bir örnek tarafından oluşturulan her günlük `ILogger` ilişkili bir `Catego
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Her kategoriyi bağımsız olarak belirli bir şekilde filtreleyebilirsiniz [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Örneğin, `Error` diğer her şey için yalnızca ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 
@@ -840,7 +841,7 @@ Her kategoriyi bağımsız olarak belirli bir şekilde filtreleyebilirsiniz [`Lo
 
 Sürüm 3. SDK 'nın *x* , .NET Core 'da yerleşik olarak bulunan filtrelemeyi temel alır. `LogCategories`Sınıfı, belirli işlevler, Tetikleyiciler veya kullanıcılar için kategoriler tanımlamanıza olanak sağlar. Ayrıca, ve gibi belirli ana bilgisayar durumlarının filtrelerini tanımlar `Startup` `Results` . Bu, günlüğe kaydetme çıkışının ince ayar yapmanıza olanak sağlar. Tanımlı kategorilerde eşleşme bulunmazsa, `Default` iletiyi filtrelemeye karar verirken filtre değere geri döner.
 
-`LogCategories`Aşağıdaki using ifadesini gerektirir:
+`LogCategories` Aşağıdaki using ifadesini gerektirir:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
@@ -996,7 +997,7 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Sonraki adımlar
+## <a name="next-steps"></a><a id="nextsteps"></a> Sonraki adımlar
 
 Bu makale, Web Işleri SDK 'Sı ile çalışmaya yönelik yaygın senaryoları nasıl işleyeceğinizi gösteren kod parçacıkları sağlamıştır. Tam örnekler için bkz. [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 

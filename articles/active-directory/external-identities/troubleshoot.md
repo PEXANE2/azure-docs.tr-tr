@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 824520e04bd4a98b1a00c8369848163a38bcf54b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910007"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206287"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -72,7 +72,7 @@ Dış kullanıcılar, yalnızca "atanan" veya "güvenlik" gruplarına eklenebili
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Dış Kullanıcı kullanılacak e-posta almadı
 
-Davetli kişinin, aşağıdaki adrese izin verildiğinden emin olmak için ISS veya e-posta filtresini denetlemesi gerekir:Invites@microsoft.com
+Davetli kişinin, aşağıdaki adrese izin verildiğinden emin olmak için ISS veya e-posta filtresini denetlemesi gerekir: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Özel iletinin, zaman içinde davet iletilerine dahil edilmediğini fark ediyorum
 
@@ -109,4 +109,4 @@ Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD de
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[B2B işbirliği için destek alın](/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md)
+[B2B işbirliği için destek alın](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)

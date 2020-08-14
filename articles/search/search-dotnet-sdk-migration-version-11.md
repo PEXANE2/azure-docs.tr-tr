@@ -9,24 +9,24 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926680"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211511"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
 [.NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)10,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale 11 sürümüne yükseltmenize yardımcı olur.
 
-Sürüm 11, Azure SDK geliştirme ekibi tarafından yayınlanan, tamamen yeniden tasarlanan bir istemci kitaplığıdır (önceki sürümler Azure Bilişsel Arama geliştirme ekibi tarafından üretildi). Kitaplık, diğer Azure istemci kitaplıklarıyla daha fazla tutarlılık için yeniden tasarlanmıştır, [Azure](https://docs.microsoft.com/dotnet/api/azure.core) üzerinde bir bağımlılık gerçekleştirerek ve [üzerindeSystem.Text.Js](https://docs.microsoft.com/dotnet/api/system.text.json)ve ortak görevler için tanıdık yaklaşımlar uygulama.
+Sürüm 11, Azure SDK geliştirme ekibi tarafından yayınlanan, tamamen yeniden tasarlanan bir istemci kitaplığıdır (önceki sürümler Azure Bilişsel Arama geliştirme ekibi tarafından üretildi). Kitaplık, diğer Azure istemci kitaplıklarıyla daha fazla tutarlılık için yeniden tasarlanmıştır, [Azure](https://docs.microsoft.com/dotnet/api/azure.core) üzerinde bir bağımlılık gerçekleştirerek ve [ üzerindeSystem.Text.Js](https://docs.microsoft.com/dotnet/api/system.text.json)ve ortak görevler için tanıdık yaklaşımlar uygulama.
 
 Yeni sürümde fark ettiğiniz bazı önemli farklılıklar şunlardır:
 
 + Bir paket ve kitaplığı birden çok farklı
 + Yeni bir paket adı: `Azure.Search.Documents` yerine `Microsoft.Azure.Search` .
-+ İki yerine üç istemci: `SearchClient` , `SearchIndexClient` ,`SearchIndexerClient`
++ İki yerine üç istemci: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Bazı görevleri basitleştirecek bir dizi API ve küçük yapısal farklılık içindeki adlandırma farklılıkları
 
 ## <a name="package-and-library-consolidation"></a>Paket ve kitaplık birleştirme
@@ -48,7 +48,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 | Dizin oluşturucular, veri kaynakları, becerileri için kullanılan istemci | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Yeni**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> `SearchIndexClient`Her iki sürümde de bulunur, ancak farklı işlemleri destekler. Sürüm 10 ' da `SearchIndexClient` Dizinler ve diğer nesneler oluşturun. Sürüm 11 ' de `SearchIndexClient` var olan dizinlerle birlikte kullanılır. Kodu güncelleştirirken karışıklık oluşmasını önlemek için, istemci başvurularının güncelleştirildiği sırayı en az bir hale getirin. [Yükseltme adımlarında](#UpgradeSteps) aşağıdaki sıra, herhangi bir dize değiştirme sorununu azaltmaya yardımcı olur.
+> `SearchIndexClient` Her iki sürümde de bulunur, ancak farklı işlemleri destekler. Sürüm 10 ' da `SearchIndexClient` Dizinler ve diğer nesneler oluşturun. Sürüm 11 ' de `SearchIndexClient` var olan dizinlerle birlikte kullanılır. Kodu güncelleştirirken karışıklık oluşmasını önlemek için, istemci başvurularının güncelleştirildiği sırayı en az bir hale getirin. [Yükseltme adımlarında](#UpgradeSteps) aşağıdaki sıra, herhangi bir dize değiştirme sorununu azaltmaya yardımcı olur.
 
 <a name="naming-differences"></a>
 
@@ -61,7 +61,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 | Sürüm 10 | Sürüm 11 eşdeğeri |
 |------------|-----------------------|
 | [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey`( [Önizleme SDK 'sında](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) genel kullanıma açık bir özellik olarak var) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| `EncryptionKey` ( [Önizleme SDK 'sında](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) genel kullanıma açık bir özellik olarak var) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>Dizinler, çözümleyiciler, eş anlamlı haritalar
 
@@ -71,7 +71,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 | [Alan](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [X](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [Itemerror](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyze) (Ayrıca, `AnalyzerName` için `LexicalAnalyzerName` ) |
+| [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (Ayrıca, `AnalyzerName` için `LexicalAnalyzerName` ) |
 | [Analiz Zerequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzerequest) | [Analiz Zetextoptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [Standartçözümleyici](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (Ayrıca, `StandardTokenizerV2` için `LuceneStandardTokenizerV2` ) |
@@ -88,7 +88,7 @@ Alan tanımları basitleştirilmiştir: [Searchablefield](https://docs.microsoft
 | [Dizin Oluşturucu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
 | [DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [İmde](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [Beceri](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskillse) |
+| [Beceri](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
 
 ### <a name="data-import"></a>Veri içeri aktarma
@@ -153,7 +153,7 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
 
 1. Sorgular ve veri içeri aktarma için istemci başvurularını güncelleştirin. [Searchındexclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) örnekleri [searchclient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)olarak değiştirilmelidir. Ad karışıklığı önlemek için, bir sonraki adıma geçmeden önce tüm örnekleri yakalediğinizden emin olun.
 
-1. Dizin, Dizin Oluşturucu, eş anlamlı eşleme ve çözümleyici nesneleri için istemci başvurularını güncelleştirin. [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) örnekleri [searchındexclient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchindexclient)olarak değiştirilmelidir. 
+1. Dizin, Dizin Oluşturucu, eş anlamlı eşleme ve çözümleyici nesneleri için istemci başvurularını güncelleştirin. [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) örnekleri [searchındexclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient)olarak değiştirilmelidir. 
 
 1. Mümkün olduğunca, yeni kitaplığın API 'Lerini kullanmak için sınıfları, yöntemleri ve özellikleri güncelleştirin. [Adlandırma farkları](#naming-differences) bölümünün başlaması için bir yer vardır ancak [değişiklik günlüğünü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)de gözden geçirebilirsiniz.
 

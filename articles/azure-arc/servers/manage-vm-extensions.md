@@ -1,24 +1,24 @@
 ---
-title: Sunucular için Azure Arc ile VM Uzantısı yönetimi
-description: Sunucular için Azure Arc (Önizleme), Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
+title: Azure Arc etkin sunucularla VM Uzantısı yönetimi (Önizleme)
+description: Azure Arc etkin sunucular (Önizleme), Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121315"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213121"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc ile sanal makine uzantısı yönetimi (Önizleme)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc etkin sunucularla sanal makine uzantısı yönetimi (Önizleme)
 
 Sanal makine (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir.
 
-Sunucular için Azure Arc (Önizleme), Azure VM uzantılarını Azure olmayan Windows ve Linux VM 'lerine dağıtmanıza olanak tanıdığından, karma makinenizin şirket içi, kenar ve diğer bulut ortamlarınızın yaşam döngülerinde yönetimini basitleştirir.
+Azure Arc etkin sunucular (Önizleme), Azure VM uzantılarını Azure olmayan Windows ve Linux VM 'lerine dağıtmanıza olanak tanıdığından, karma makinenizin şirket içi, kenar ve diğer bulut ortamlarınızın yaşam döngülerinde yönetimini basitleştirir.
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 
-Sunucular için Azure Arc (Önizleme) VM uzantısı desteği aşağıdaki önemli avantajları sağlar:
+Azure Arc etkin sunucular (Önizleme) VM uzantısı desteği aşağıdaki önemli avantajları sağlar:
 
 * [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md) ' nı kullanarak yapılandırmaları merkezi olarak depolar ve DSC VM Uzantısı aracılığıyla etkinleştirilen karma bağlı makinelerin istenen durumunu koruyun.
 
@@ -47,7 +47,7 @@ Bu önizlemede, Windows ve Linux makinelerinde aşağıdaki VM uzantılarını d
 |Log Analytics aracısı |Linux |Microsoft. EnterpriseCloud. Monitoring |[Linux için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft bağımlılık Aracısı | Linux |Microsoft.Compute | [Linux için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM uzantıları, Azure portal veya sunucular için Arc tarafından yönetilen karma sunuculardaki Azure PowerShell (Önizleme) Azure Resource Manager şablonlarla çalıştırılabilir.
+VM uzantıları, Azure portal veya Arc özellikli sunucular (Önizleme) tarafından yönetilen karma sunucularda Azure PowerShell Azure Resource Manager şablonlarla çalıştırılabilir.
 
 Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki ayrıntılar hakkında bilgi edinmek için bkz. [aracıya genel bakış](agent-overview.md#agent-component-details).
 
@@ -98,7 +98,7 @@ VM uzantıları, Azure portal aracılığıyla, sunucu (Önizleme) tarafından y
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
-VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun dağıtımıyla birlikte yürütülür. Sunucular için Arc tarafından desteklenen VM uzantıları (Önizleme) sayesinde, desteklenen VM uzantısını Linux veya Windows makinelerde Azure PowerShell kullanarak dağıtabilirsiniz. Aşağıdaki her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
+VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun dağıtımıyla birlikte yürütülür. Yay etkin sunucular (Önizleme) tarafından desteklenen VM uzantıları ile, Azure PowerShell kullanarak Linux veya Windows makinelerde desteklenen VM uzantısını dağıtabilirsiniz. Aşağıdaki her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
 
 >[!NOTE]
 >Birden çok uzantı birlikte toplanmış ve işlenebilir olsa da, bunlar hizmet temelli olarak yüklenir. İlk uzantı yüklemesi tamamlandıktan sonra, sonraki uzantının yüklenmesi denenir.
@@ -223,7 +223,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 Özel Betik uzantısını kullanmak için aşağıdaki örnek Windows ve Linux 'ta çalışacak şekilde sunulmaktadır. Özel Betik uzantısı hakkında bilginiz yoksa, bkz. [Windows Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-windows.md) veya [Linux Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-linux.md). Bu uzantıyı karma makinelerle kullanırken anlamanız gereken farklı özellikler vardır:
 
-* Azure VM özel Betik uzantısı ile desteklenen işletim sistemlerinin listesi, sunucular için Azure Arc için geçerli değildir. Sunucular için Arc için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
+* Azure sanal makine özel Betik uzantısı ile desteklenen işletim sistemlerinin listesi, Azure Arc özellikli sunucular için geçerli değildir. Yay etkin sunucular için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
 
 * Azure sanal makine ölçek kümeleri veya klasik VM 'Lerle ilgili yapılandırma ayrıntıları geçerli değildir.
 
@@ -379,7 +379,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 PowerShell DSC uzantısını kullanmak için, Windows ve Linux 'ta çalışmak üzere aşağıdaki örnek verilmiştir. PowerShell DSC Uzantısı hakkında bilginiz yoksa bkz. [DSC uzantı işleyicisine genel bakış](../../virtual-machines/extensions/dsc-overview.md). Bu uzantıyı karma makinelerle kullanırken anlamanız gereken farklı özellikler vardır:
 
-* Azure VM PowerShell DSC Uzantısı ile desteklenen işletim sistemlerinin listesi, sunucular için Azure Arc için geçerli değildir. Sunucular için Arc için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
+* Azure VM PowerShell DSC Uzantısı ile desteklenen işletim sistemlerinin listesi, Azure Arc özellikli sunucular için geçerli değildir. Yay etkin sunucular için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
 
 * Makinelerinizin dışarıdan bir betiği indirmesi ve yalnızca bir ara sunucu üzerinden iletişim kurabilmesi gerekiyorsa, proxy sunucusu çevresel değişkenini ayarlamak için [bağlı makine aracısını yapılandırmanız](manage-agent.md#update-or-remove-proxy-settings) gerekir.
 

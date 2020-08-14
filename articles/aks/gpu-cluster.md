@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) üzerinde yüksek performanslı işl
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244302"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213187"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
 
@@ -52,7 +52,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>NVıDıA sürücülerini yükler
+## <a name="install-nvidia-device-plugin"></a>NVıDıA cihaz eklentisini yükler
 
 Düğümlerdeki GPU 'Ların kullanılabilmesi için, NVıDıA cihaz eklentisi için bir DaemonSet dağıtmanız gerekir. Bu DaemonSet, GPU 'Lar için gerekli sürücüleri sağlamak üzere her düğümde bir pod çalıştırır.
 
@@ -188,7 +188,7 @@ GPU 'YU eylemde görmek için uygun kaynak isteğiyle GPU özellikli bir iş yü
 *Samples-TF-mnist-demo. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Aşağıdaki iş bildirimi bir kaynak sınırı içerir `nvidia.com/gpu: 1` :
 
 > [!NOTE]
-> Sürücülere çağrı yaparken bir sürüm uyumsuzluğu hatası alırsanız (örneğin, CUDA sürücü sürümü CUDA çalışma zamanı sürümü için yetersizse), NVıDıA sürücü matrisi uyumluluk grafiğini gözden geçirin.[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Sürücülere çağrı yaparken bir sürüm uyumsuzluğu hatası alırsanız (örneğin, CUDA sürücü sürümü CUDA çalışma zamanı sürümü için yetersizse), NVıDıA sürücü matrisi uyumluluk grafiğini gözden geçirin. [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1

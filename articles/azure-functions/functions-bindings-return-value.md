@@ -3,14 +3,15 @@ title: Azure Işlevinden dönüş değeri kullanma
 description: Azure Işlevleri için dönüş değerlerini yönetmeyi öğrenin
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74480582"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212173"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure Işlevi dönüş değerini kullanma
 
@@ -20,7 +21,7 @@ Dönüş değerine sahip dillerde bir işlev [Çıkış bağlamasını](./functi
 
 * C# sınıf kitaplığında, çıkış bağlama özniteliğini yöntem dönüş değerine uygulayın.
 * Java 'da, çıkış bağlama ek açıklamasını Function yöntemine uygulayın.
-* Diğer dillerde, `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` .
+* Diğer dillerde, `name` * üzerindefunction.js* özelliğini olarak ayarlayın `$return` .
 
 Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 

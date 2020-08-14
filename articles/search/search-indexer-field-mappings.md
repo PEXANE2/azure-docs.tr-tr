@@ -9,14 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038445"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208761"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
+
+![Dizin Oluşturucu aşamaları](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "Dizin Oluşturucu aşamaları")
 
 Azure Bilişsel Arama Dizinleyicileri kullanırken, bazen giriş verilerinin hedef dizininizin şemasıyla tam olarak eşleşmediğini fark edersiniz. Bu durumlarda, dizin oluşturma işlemi sırasında verilerinizi yeniden şekillendirmek için **alan eşlemelerini** kullanabilirsiniz.
 
@@ -201,7 +203,7 @@ Azure Bilişsel Arama, URL güvenli Base64 kodlamasını ve normal Base64 kodlam
 `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` Sırasıyla kodlama ve kod çözme parametreleri olarak ayarlanmışsa `true` `base64Encode` [HttpServerUtility. urltokenencoding](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) gibi davranır ve `base64Decode` [HttpServerUtility. urltokenşifre çözme](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx)gibi davranır.
 
 > [!WARNING]
-> `base64Encode`Anahtar değerleri üretmek için kullanılırsa, `useHttpServerUtilityUrlTokenEncode` true olarak ayarlanmalıdır. Anahtar değerleri için yalnızca URL-güvenli Base64 kodlaması kullanılabilir. Anahtar değerlerindeki karakterlerle ilgili kısıtlamaların tamamına yönelik [&#40;Azure Bilişsel Arama&#41;adlandırma kuralları](https://docs.microsoft.com/rest/api/searchservice/naming-rules) ' na bakın.
+> `base64Encode`Anahtar değerleri üretmek için kullanılırsa, `useHttpServerUtilityUrlTokenEncode` true olarak ayarlanmalıdır. Anahtar değerleri için yalnızca URL-güvenli Base64 kodlaması kullanılabilir. Anahtar değerlerindeki karakterlerle ilgili kısıtlamaların tamamına yönelik [&#40;Azure Bilişsel Arama&#41;adlandırma kuralları ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) ' na bakın.
 
 Azure Bilişsel Arama .NET kitaplıkları, yerleşik kodlama sağlayan tam .NET Framework kabul eder. `useHttpServerUtilityUrlTokenEncode`Ve `useHttpServerUtilityUrlTokenDecode` seçenekleri bu yerleşik işlevlerden yararlanır. .NET Core veya başka bir çerçeve kullanıyorsanız, bu seçenekleri, `false` çerçevesinin kodlama ve kod çözme işlevlerini doğrudan olarak ayarlamayı ve çağırmayı öneririz.
 
@@ -275,9 +277,9 @@ Bu işlev, "URL Safe" olması için bir dizeyi kodlamak üzere kullanılabilir. 
 
 #### <a name="example---document-key-lookup"></a>Örnek-belge anahtarı arama
 
-`urlEncode`işlev, `base64Encode` yalnızca URL güvensiz karakter dönüştürülürse, diğer karakterlerin olduğu gibi tutulması işlevine alternatif olarak kullanılabilir.
+`urlEncode` işlev, `base64Encode` yalnızca URL güvensiz karakter dönüştürülürse, diğer karakterlerin olduğu gibi tutulması işlevine alternatif olarak kullanılabilir.
 
-Örneğin, giriş dizesi `<hello>` -sonra tür hedef alanı, `(Edm.String)` değer ile doldurulur`%3chello%3e`
+Örneğin, giriş dizesi `<hello>` -sonra tür hedef alanı, `(Edm.String)` değer ile doldurulur `%3chello%3e`
 
 Arama zamanında kodlanmış anahtarı aldığınızda, `urlDecode` Bu işlevi kullanarak özgün anahtar değerini alabilir ve kaynak belgeyi almak için kullanabilirsiniz.
 

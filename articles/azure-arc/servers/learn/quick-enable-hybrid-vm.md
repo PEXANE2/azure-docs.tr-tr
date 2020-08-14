@@ -1,24 +1,24 @@
 ---
-title: Azure Arc etkin sunucularıyla karma makineyi bağlama
-description: Sunucular için Azure Arc ile karma makinenizi bağlamayı ve kaydetmeyi öğrenin.
+title: Karma makineyi Azure Arc etkin sunucularla bağlama (Önizleme)
+description: Azure Arc etkin sunucularıyla (Önizleme) karma makinenizi bağlamayı ve kaydetmeyi öğrenin.
 ms.topic: quickstart
 ms.date: 08/12/2020
-ms.openlocfilehash: 2feb9da3600ef3664b0a75bf2d985d698572ff6f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: eacf75871b1f7cc7fc3b703d8859338578e43456
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88173155"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213607"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama
+# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers-preview"></a>Hızlı başlangıç: Azure Arc etkin sunucularla karma makineyi bağlama (Önizleme)
 
-[Sunucular Için Azure Arc](../overview.md) (Önizleme) Şirket içi, kenar ve çok yüksek ortamlarda barındırılan Windows ve Linux makinelerinizi yönetmenizi ve yönetmenizi sağlar. Bu hızlı başlangıçta, bağlı makine aracısını, sunucular için Arc (Önizleme) tarafından yönetim için Azure dışında barındırılan Windows veya Linux makinenizde dağıtıp yapılandıracaksınız.
+[Azure Arc etkin sunucular](../overview.md) (Önizleme), şirket içi, kenar ve çok yüksek ortamlarda barındırılan Windows ve Linux makinelerinizi yönetmenizi ve yönetmenizi sağlar. Bu hızlı başlangıçta, bağlı makine aracısını, yay özellikli sunucular (Önizleme) tarafından yönetim için Azure dışında barındırılan Windows veya Linux makinenizde dağıtıp yapılandıracaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* Sunucular için yay (Önizleme) karma bağlı makine aracısının dağıtımı, aracıyı yüklemek ve yapılandırmak için makinede yönetici izinlerine sahip olmanızı gerektirir. Linux 'ta, kök hesabı ve Windows 'ta yerel Yöneticiler grubunun üyesi olan bir hesapla.
+* Yay özellikli sunucular (Önizleme) karma bağlı makine aracısının dağıtımına, aracıyı yüklemek ve yapılandırmak için makinede yönetici izinlerinizin olması gerekir. Linux 'ta, kök hesabı ve Windows 'ta yerel Yöneticiler grubunun üyesi olan bir hesapla.
 
 * Başlamadan önce, aracı [önkoşullarını](../agent-overview.md#prerequisites) gözden geçirdiğinizden emin olun ve aşağıdakileri doğrulayın:
 
@@ -28,13 +28,13 @@ ms.locfileid: "88173155"
 
     * Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, [listelenen](../agent-overview.md#networking-configuration) URL 'lerin engellenmediğinden emin olun.
 
-    * Sunucular için Azure Arc (Önizleme) yalnızca [burada](../overview.md#supported-regions)belirtilen bölgeleri destekler.
+    * Azure Arc etkin sunucular (Önizleme) yalnızca [burada](../overview.md#supported-regions)belirtilen bölgeleri destekler.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>Azure Kaynak sağlayıcılarını kaydetme
 
-Sunucular için Azure Arc (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
+Azure Arc etkin sunucular (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 
 * Microsoft. HybridCompute
 * Microsoft. GuestConfiguration
@@ -53,7 +53,7 @@ Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale g
 
 1. **Tüm hizmetler**' e tıklayarak ve ardından **makineler-Azure yay**' i arayıp seçerek Azure yay hizmetini Azure Portal başlatın.
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Tüm hizmetlerde sunucular için yay ara" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 1. **Makineler-Azure yay** sayfasında sol üst kısımdaki **Ekle**' yi veya orta bölmenin altındaki **makine-Azure yayı oluştur** seçeneğini belirleyin.
 
@@ -97,7 +97,7 @@ Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale g
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc ile bağlantıyı doğrulama
 
-Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. Makinenizde [Azure Portal](https://aka.ms/hybridmachineportal)görüntüleyin.
+Aracıyı yükledikten ve Azure Arc etkin sunucularına (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. Makinenizde [Azure Portal](https://aka.ms/hybridmachineportal)görüntüleyin.
 
 :::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Başarılı bir makine bağlantısı" border="false":::
 
@@ -105,7 +105,7 @@ Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şe
 
 Linux veya Windows hibrit makinenizi etkinleştirmiş ve hizmete başarıyla bağlandığınıza göre, Azure Ilkesini Azure 'da uyumluluğu anlamak üzere etkinleştirmeye hazırsınız.
 
-Log Analytics Aracısı yüklü olmayan sunucular için Azure Arc (Önizleme) etkin makinesini nasıl tanımlayacağınızı öğrenmek için öğreticiye geçin:
+Log Analytics aracısının yüklü olmadığı Azure Arc etkin sunucuları (Önizleme) etkin makinesini nasıl tanımlayacağınızı öğrenmek için öğreticiye geçin:
 
 > [!div class="nextstepaction"]
 > [Uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](tutorial-assign-policy-portal.md)

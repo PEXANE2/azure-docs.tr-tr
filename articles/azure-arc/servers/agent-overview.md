@@ -1,18 +1,18 @@
 ---
 title: Bağlı makine Windows aracısına genel bakış
-description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen sunucular için Azure Arc (Önizleme) aracısına yönelik ayrıntılı bir genel bakış sunulmaktadır.
+description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucular (Önizleme) aracısına yönelik ayrıntılı bir genel bakış sunulmaktadır.
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121842"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212981"
 ---
-# <a name="overview-of-azure-arc-for-servers-preview-agent"></a>Sunucular için Azure Arc (Önizleme) aracısına genel bakış
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Azure Arc etkin sunucuları (Önizleme) aracısına genel bakış
 
-Sunucular için Azure Arc (Önizleme) bağlı makine Aracısı, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
+Azure Arc etkin sunucular (Önizleme) bağlı makine Aracısı, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
 ## <a name="agent-component-details"></a>Aracı bileşeni ayrıntıları
 
@@ -65,7 +65,7 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
-Makinelerinizi sunucular için Azure Arc (Önizleme) ile yapılandırmadan önce, bağlanacak makine sayısını planlamak üzere Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirin.
+Makinelerinizi Azure Arc etkin sunucularıyla (Önizleme) yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirin.
 
 ### <a name="transport-layer-security-12-protocol"></a>Aktarım Katmanı Güvenliği 1,2 Protokolü
 
@@ -105,7 +105,7 @@ Hizmetlerin çoğu şu anda bir hizmet etiketi kaydına sahip olmadığından, �
 
 ### <a name="register-azure-resource-providers"></a>Azure Kaynak sağlayıcılarını kaydetme
 
-Sunucular için Azure Arc (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
+Azure Arc etkin sunucular (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**
@@ -248,4 +248,4 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sunucular için Azure Arc 'ı değerlendirmeye başlamak üzere (Önizleme), [Azure Portal Azure 'a karma makineler bağlama](onboard-portal.md)makalesini izleyin.
+Azure Arc etkin sunucularını (Önizleme) değerlendirmeye başlamak için, [Azure Portal Azure 'a karma makineler bağlama](onboard-portal.md)makalesini izleyin.

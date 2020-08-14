@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067367"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214229"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Küme çıkış listesini Kullanıcı tanımlı bir yol ile özelleştirme
 
@@ -19,7 +19,7 @@ AKS kümesinden çıkış, belirli senaryolara uyacak şekilde özelleştirilebi
 
 Bu makalede, genel IP 'Lere izin vermeyen ve kümenin bir ağ sanal gereci (NVA) arkasına oturmasının gerekli olduğu gibi özel ağ senaryolarını desteklemek için bir kümenin çıkış yolunun nasıl özelleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure CLı sürüm 2.0.81 veya üzeri
 * `2020-01-01`Veya daha büyük API sürümü
 
@@ -71,7 +71,8 @@ Kullanıcı tanımlı bir yol kullanarak giden türü olan bir kümenin uygulama
 > [!IMPORTANT]
 > UDR 'nin giden türü, yol tablosundaki NVA 'nın (ağ sanal gereç) 0.0.0.0/0 ve sonraki atlama hedefi için bir yol olmasını gerektirir.
 > Yol tablosunun varsayılan bir 0.0.0.0/0 olması zaten Internet 'e ait bir genel IP 'ye sahip olmadığı için, bu yolun yalnızca bu yolu eklemeniz durumunda çıkış sağlayamayacak. AKS, Internet 'e işaret eden bir 0.0.0.0/0 yolu oluşturmayacağını doğrular, bunun yerine NVA veya Gateway, vb. olur.
-
+> 
+> Bir UDR 'nin giden türü kullanılırken *, yük dengeleyici türünde bir* hizmet yapılandırılmadığı takdirde yük DENGELEYICI genel IP adresi oluşturulmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

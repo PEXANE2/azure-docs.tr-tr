@@ -4,13 +4,13 @@ description: Yönetilen bir kimlik kullanarak veritabanı bağlantısını daha 
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: mvc, cli-validate
-ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc, cli-validate
+ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077739"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213711"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>*, Azure AD 'de yönetilen kimliğin adıdır. Kimlik sistem tarafından atanmışsa, ad App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
+*\<identity-name>* , Azure AD 'de yönetilen kimliğin adıdır. Kimlik sistem tarafından atanmışsa, ad App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
 
 Cloud Shell istemine geri dönmek için `EXIT` yazın.
 

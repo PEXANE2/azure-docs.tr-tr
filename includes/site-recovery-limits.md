@@ -13,21 +13,21 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 590aa7773c099aaa537e1fb9aaf658843b040674
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335128"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88204048"
 ---
 Azure Site Recovery için aşağıdaki sınırlar geçerlidir.
 
 | Sınır tanımlayıcı | Sınır |
 | --- | --- |
 | Abonelik başına kasa sayısı |500 |     
-| Azure kasası başına sunucu sayısı |250 |
-| Azure kasası başına koruma grubu sayısı |Sınır yok |
-| Azure kasası başına kurtarma planı sayısı |Sınır yok |
+| Kurtarma Hizmetleri kasası başına sunucu sayısı |250 |
+| Kurtarma Hizmetleri kasası başına koruma grubu sayısı |Sınır yok |
+| Kurtarma Hizmetleri kasası başına kurtarma planı sayısı |Sınır yok |
 | Koruma grubu başına sunucu sayısı |Sınır yok |
-| Kurtarma planı başına sunucu sayısı |50 |
+| Kurtarma planı başına sunucu sayısı |100 |
 

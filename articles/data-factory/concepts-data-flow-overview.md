@@ -6,36 +6,36 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.custom: references_regions
+ms.date: 08/12/2020
+ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475575"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212063"
 ---
-# <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışları, veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, ölçeği genişletilmiş Apache Spark kümelerini kullanan Azure Data Factory işlem hatları içinde etkinlik olarak yürütülür. Veri akışı etkinlikleri, mevcut Data Factory zamanlama, denetim, akış ve izleme özellikleri aracılığıyla erişebilir.
+## <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
-Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir deneyim sağlar. Veri akışlarınız, ölçeği genişletilmiş veri işleme için yürütme kümenizde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
+Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışları, veri mühendislerinin kod yazmadan veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, ölçeği genişletilmiş Apache Spark kümelerini kullanan Azure Data Factory işlem hatları içinde etkinlik olarak yürütülür. Veri akışı etkinlikleri mevcut Azure Data Factory zamanlama, denetim, akış ve izleme özellikleri kullanılarak gerçekleştirilebilir.
 
-![Mimari](media/data-flow/adf-data-flows.png "Mimari")
+Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir deneyim sağlar. Veri akışlarınız, ölçeklendirilmemiş veri işleme için ADF tarafından yönetilen yürütme kümelerinde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
 ## <a name="getting-started"></a>Başlarken
 
-Bir veri akışı oluşturmak için, **fabrika kaynakları**altındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
+Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları**' nın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 
-![Yeni veri akışı](media/data-flow/newdataflow2.png "Yeni veri akışı")
+![Yeni veri akışı](media/data-flow/new-data-flow.png "Yeni veri akışı")
 
 Bu eylem sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvaline götürür. Kaynak dönüştürmeyi yapılandırmaya başlamak için **Kaynak Ekle** ' yi seçin. Daha fazla bilgi için bkz. [kaynak dönüştürme](data-flow-source.md).
 
-## <a name="data-flow-canvas"></a>Veri akışı tuvali
+## <a name="authoring-data-flows"></a>Veri akışları yazma
 
-Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
+Eşleme veri akışı, dönüştürme mantığını kolayca oluşturmak için tasarlanan benzersiz bir yazma tuvaline sahiptir. Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
 
 ![Tuval](media/data-flow/canvas1.png "Tuval")
 
@@ -44,40 +44,6 @@ Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapı
 Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
 
 ![Tuval](media/data-flow/canvas2.png "Tuval")
-
-### <a name="azure-integration-runtime-data-flow-properties"></a>Azure tümleştirme çalışma zamanı veri akışı özellikleri
-
-![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "Hata ayıklama düğmesi")
-
-ADF 'de veri akışları ile çalışmaya başladığınızda, tarayıcı kullanıcı arabiriminin en üstündeki veri akışları için "hata ayıklama" anahtarını açmak istersiniz. Bu, etkileşimli hata ayıklama, veri önizlemeleri ve ardışık düzen hata ayıklama yürütmeleri için kullanılacak bir Spark kümesi sağlar. Kullanılan kümenin boyutunu özel bir [Azure Integration Runtime](concepts-integration-runtime.md)seçerek ayarlayabilirsiniz. Hata ayıklama oturumu, son veri önizlemeniz veya son hata ayıklama işlem hattı yürütmesinden sonra 60 dakika boyunca etkin kalır.
-
-Veri akışı etkinlikleriyle işlem hatlarınızı çalıştırdığınızda ADF, "Çalıştır" özelliğindeki [etkinlikle](control-flow-execute-data-flow-activity.md) ilişkili Azure Integration Runtime kullanır.
-
-Varsayılan Azure Integration Runtime, verileri önizlemenize ve hata ayıklama işlem hatlarını en az maliyetle hızlı bir şekilde yürütebilmenizi sağlayan küçük 4 çekirdekli tek çalışan düğümü kümesidir. Büyük veri kümelerine yönelik işlemler gerçekleştiriyorsanız daha büyük bir Azure IR yapılandırma ayarlayın.
-
-Azure IR veri akışı özelliklerinde bir TTL ayarlayarak, ADF 'yi bir küme kaynakları havuzunu (VM 'Ler) tutmaya söyleyebilirsiniz. Bu eylem, sonraki etkinliklerde daha hızlı iş yürütmeye neden olur.
-
-#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure tümleştirme çalışma zamanı ve veri akışı stratejileri
-
-##### <a name="execute-data-flows-in-parallel"></a>Veri akışlarını paralel olarak yürütme
-
-Bir işlem hattındaki veri akışlarını paralel olarak çalıştırırsanız, ADF her bir etkinliğe bağlı Azure Integration Runtime ayarlara bağlı olarak her etkinlik yürütmesi için ayrı Spark kümeleri alır. ADF işlem hatlarında paralel yürütmeler tasarlamak için, veri akışı etkinliklerinizi Kullanıcı arabiriminde öncelik kısıtlamaları olmadan ekleyin.
-
-Bu üç seçenekten Bu seçenek büyük olasılıkla en kısa sürede yürütülür. Ancak, her paralel veri akışı ayrı kümelerde aynı anda yürütülür, bu nedenle olayların sıralaması belirleyici değildir.
-
-Veri akışı etkinliklerinizi işlem hatlarınız içinde paralel olarak yürütüyorsunuz, TTL kullanılması önerilmez. Bu eylem, veri akışınız için Azure Integration Runtime aynı anda paralel yürütmelerin, Data Factory 'niz için birden çok ısınma havuzu örneği ile sonuçlanmasına neden olur.
-
-##### <a name="overload-single-data-flow"></a>Tek veri akışını aşırı yükleme
-
-Tüm mantığınızı tek bir veri akışı içinde yerleştirirseniz, ADF aynı iş yürütme bağlamını tek bir Spark küme örneği üzerinde yürütür.
-
-İş kurallarınız ve iş mantığınızın bir araya gelmemesi nedeniyle, bu seçeneğin izlenmesi ve sorun gidermesi daha zor olabilir. Bu seçenek ayrıca daha fazla yeniden kullanılabilirlik sağlamaz.
-
-##### <a name="execute-data-flows-sequentially"></a>Veri akışlarını ardışık olarak Yürüt
-
-Veri akışı etkinliklerinizi ardışık düzende yürütüşuyorsanız ve Azure IR yapılandırmasında bir TTL belirlediyseniz, ADF daha hızlı yürütme süreleri elde eden işlem kaynaklarını (VM 'Ler) yeniden kullanacaktır. Her yürütme için yeni bir Spark bağlamı almaya devam edersiniz.
-
-Bu üç seçenekten, bu eylem büyük olasılıkla uçtan uca yürütülmeye en uzun zaman alır. Ancak, her bir veri akışı adımında mantıksal işlemlerin temiz bir şekilde ayrılmasını sağlar.
 
 ### <a name="configuration-panel"></a>Yapılandırma bölmesi
 
@@ -111,13 +77,85 @@ Hata ayıklama modu açık ise, **veri önizleme** sekmesi her dönüşümde ver
 
 ### <a name="top-bar"></a>Üst çubuk
 
-Üst çubuk, kaydetme ve doğrulama gibi tüm veri akışını etkileyen eylemler içerir. Grafiği **göster** ve **grafiği gizle** düğmelerini kullanarak grafik ve yapılandırma modları arasında da geçiş yapabilirsiniz.
+Üst çubuk, kaydetme ve doğrulama gibi tüm veri akışını etkileyen eylemler içerir. Ayrıca, dönüştürme mantığınızın temel alınan JSON kodunu ve veri akışı komut dosyasını da görüntüleyebilirsiniz. Daha fazla bilgi için [veri akışı betiği](data-flow-script.md)hakkında bilgi edinin.
 
-![Grafiği gizle](media/data-flow/hideg.png "Grafiği gizle")
+## <a name="available-transformations"></a>Kullanılabilir dönüşümler
 
-Grafınızı gizlerseniz, **önceki** ve **sonraki** düğmelerini kullanarak dönüştürme düğümleriniz arasında daha da gezinebilirsiniz.
+Kullanılabilir dönüşümlerinin bir listesini almak için [eşleme veri akışı dönüşümüne genel bakış ' ı](data-flow-transformation-overview.md) görüntüleyin.
 
-![Önceki ve sonraki düğmeler](media/data-flow/showhide.png "önceki ve sonraki düğmeler")
+## <a name="data-flow-activity"></a>Veri akışı etkinliği
+
+Veri [akışı etkinliğini](control-flow-execute-data-flow-activity.md)kullanan ADF işlem hatları içinde veri akışlarını eşleme işlemleri yapılır. Tüm kullanıcılar yapması gereken tümleştirme çalışma zamanının parametre değerlerini ne şekilde kullanacağınızı ve geçisyonunu belirtir. Daha fazla bilgi için [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md#azure-integration-runtime)hakkında bilgi edinin.
+
+## <a name="debug-mode"></a>Hata ayıklama modu
+
+Hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığınızda her bir dönüştürme adımının sonuçlarını etkileşimli olarak görmenizi sağlar. Hata ayıklama oturumu, veri akışı mantığınızı oluştururken ve veri akışı etkinlikleriyle işlem hattı hata ayıklama çalıştırmaları çalışırken kullanılabilir. Daha fazla bilgi için bkz. [hata ayıklama modu belgeleri](concepts-data-flow-debug-mode.md).
+
+## <a name="monitoring-data-flows"></a>Veri akışlarını izleme
+
+Eşleme veri akışı, mevcut Azure Data Factory izleme özellikleri ile tümleşir. Veri akışı izleme çıkışını nasıl anlayacağınızı öğrenmek için bkz. [eşleme veri akışlarını izleme](concepts-data-flow-monitoring.md).
+
+Azure Data Factory ekibi, iş mantığınızı oluşturduktan sonra veri akışlarınızın yürütme süresini iyileştirmenize yardımcı olmak için bir [performans ayarlama Kılavuzu](concepts-data-flow-performance.md) oluşturdu.
+
+## <a name="available-regions"></a>Kullanılabilir bölgeler
+
+Eşleme veri akışları aşağıdaki bölgelerde kullanılabilir:
+
+| Azure bölgesi | ADF 'de veri akışları | SYNAPSE Studio 'daki veri akışları |
+| ------------ | ----------------- | ---------------------------- |
+|  Orta Avustralya | | |  
+| Orta Avustralya 2 | | |
+| Doğu Avustralya | ✓ |  ✓ |
+| Avustralya Güneydoğu   | ✓ | ✓ |
+| Brezilya Güney  | ✓ |  |
+| Orta Kanada | ✓ |  |
+| Central India | ✓ |   ✓ |
+| Central US    | ✓ |   ✓ |
+| Doğu Çin |      | ✓ |
+| Çin Doğu 2  |   |    |
+| Çin bölgesel olmayan | | |
+| Kuzey Çin |     | |
+| Çin Kuzey 2 | |  |
+| Doğu Asya | ✓ | |
+| Doğu ABD   | ✓ | ✓ |
+| Doğu ABD 2 | ✓ | ✓ |
+| Orta Fransa | ✓ | ✓ |
+| Güney Fransa  | | |
+| Almanya Orta (Sovereign) | | |
+| Almanya Bölgesel Olmayan (Sovereign) | | |
+| Almanya Kuzey (genel) | | |
+| Almanya Kuzeydoğu (Sovereign) | | |
+| Almanya Orta Batı (genel) |  | ✓ |
+| Doğu Japonya | ✓ |  |
+| Batı Japonya |  | |
+| Güney Kore - Orta | ✓ |  |
+| Güney Kore - Güney | | |
+| Orta Kuzey ABD  | ✓ | ✓ |
+| Kuzey Avrupa  | ✓ |    |
+| Norveç Doğu | | |
+| Norveç Batı | | |
+| Güney Afrika Kuzey    | ✓ | |
+| Güney Afrika Batı |  |    |
+| Orta Güney ABD  | | ✓ |
+| Güney Hindistan | | |
+| Güneydoğu Asya    | ✓ | ✓ |
+| İsviçre Kuzey |   |  |
+| İsviçre Batı | | |
+| BAE Orta | | |
+| BAE Kuzey |  |    |
+| Güney Birleşik Krallık  | ✓ |   | ✓ |
+| Batı Birleşik Krallık |     | ✓ |
+| Orta US DoD | |  |
+| Doğu US DoD | |  |
+| US Gov Arizona |      |  |
+| US Gov Bölgesel Olmayan | |  |
+| US Gov Texas | |  |
+| US Gov Virginia |     |  |
+| Orta Batı ABD |     | ✓ |
+| West Europe   | ✓ |   ✓ |
+| Batı Hindistan | | |
+| Batı ABD   | ✓ |   |
+| Batı ABD 2 | ✓ |   ✓ | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,13 +6,13 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 49bbc2199c7dc3040a24071b8eb5a91929d88e08
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849251"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206646"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -168,7 +168,7 @@ public void keepAlive(
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md), [timertriggerattribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)' u kullanın.
 
-Özniteliğin Oluşturucusu bir CRON ifadesi ya da olarak alır `TimeSpan` . `TimeSpan`Yalnızca işlev uygulaması App Service bir planda çalışıyorsa kullanabilirsiniz. `TimeSpan`Tüketim veya elastik Premium Işlevleri için desteklenmez.
+Özniteliğin Oluşturucusu bir CRON ifadesi ya da olarak alır `TimeSpan` . `TimeSpan`Yalnızca işlev uygulaması App Service bir planda çalışıyorsa kullanabilirsiniz. `TimeSpan` Tüketim veya elastik Premium Işlevleri için desteklenmez.
 
 Aşağıdaki örnek bir CRON ifadesini gösterir:
 
@@ -219,7 +219,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**tür** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**çizelgesini**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`Yalnızca, App Service planında çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği **%** Şu örnekte gösterildiği gibi, işaretlere kaydırılmış uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
@@ -314,7 +314,7 @@ App Service 'e dağıtılmamış işlev uygulamalarında depolama hesaplarını 
 
 | İşlevler sürümü | Ayar                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2. x (ve üzeri)  | `AzureFunctionsWebHost__hostid`ortam değişkeni |
+| 2. x (ve üzeri)  | `AzureFunctionsWebHost__hostid` ortam değişkeni |
 | 'in               | `id`*üzerindehost.js*                                  |
 
 Tanımlayıcı değeri atlayabilir veya her bir işlev uygulamasının tanımlayıcı yapılandırmasını farklı bir değere el ile ayarlayabilirsiniz.

@@ -3,14 +3,15 @@ title: Azure Işlevleri için Mobile Apps bağlamaları
 description: Azure Işlevleri 'nde Azure Mobile Apps bağlamalarını nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506341"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212237"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Işlevleri için Mobile Apps bağlamaları 
 
@@ -134,7 +135,7 @@ Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `MobileTable` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **türüyle**| yok | "MobileTable" olarak ayarlanmalıdır|
 | **Görünüm**| yok |"In" olarak ayarlanmalıdır|
@@ -292,9 +293,9 @@ Tam bir örnek için bkz. [output-C# örneği](#output---c-example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `MobileTable` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **türüyle**| yok | "MobileTable" olarak ayarlanmalıdır|
+| **tür**| yok | "MobileTable" olarak ayarlanmalıdır|
 | **Görünüm**| yok |"Out" olarak ayarlanmalıdır|
 | **ada**| yok | İşlev imzasında çıkış parametresinin adı.|
 |**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
@@ -310,9 +311,9 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 C# betik işlevlerinde, `out object` Çıkış kaydına erişmek için türünde bir adlandırılmış çıkış parametresi kullanın. C# sınıf kitaplıklarında, `MobileTable` özniteliği aşağıdaki türlerden biriyle kullanılabilir:
 
-* `ICollector<T>`ya `IAsyncCollector<T>` `T` da `JObject` bir özelliği olan herhangi bir tür `public string Id` .
+* `ICollector<T>` ya `IAsyncCollector<T>` `T` da `JObject` bir özelliği olan herhangi bir tür `public string Id` .
 * `out JObject`
-* `out T`veya `out T[]` , `T` özelliği olan herhangi bir tür `public string Id` .
+* `out T` veya `out T[]` , `T` özelliği olan herhangi bir tür `public string Id` .
 
 Node.js işlevlerde, `context.bindings.<name>` Çıkış kaydına erişmek için kullanın.
 

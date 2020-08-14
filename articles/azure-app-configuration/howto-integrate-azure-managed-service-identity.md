@@ -1,26 +1,27 @@
 ---
-title: Uygulama yapılandırmasına erişmek için Yönetilen kimlikler kullanma
+title: Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 titleSuffix: Azure App Configuration
 description: Yönetilen kimlikleri kullanarak Azure Uygulama yapılandırmasında kimlik doğrulama
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135479"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206838"
 ---
-# <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama yapılandırmasına erişmek için Yönetilen kimlikler kullanma
+# <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
 Azure Active Directory [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , bulut uygulamanız için gizli dizi yönetimini basitleştirir. Yönetilen bir kimlikle, kodunuz üzerinde çalıştığı Azure hizmeti için oluşturulan hizmet sorumlusunu kullanabilir. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız.
 
 Azure Uygulama yapılandırması ve .NET Core, .NET Framework ve Java Spring istemci kitaplıklarında yerleşik olarak bulunan yönetilen kimlik desteği vardır. Bunu kullanmanız gerekmese de, yönetilen kimlik gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir gizli dizi olmadan doğrudan kodunuza katıştırabilirsiniz.
 
-Bu makalede, uygulama yapılandırmasına erişmek için yönetilen kimliğin nasıl avantajlarından faydalanabilirsiniz. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce [uygulama yapılandırmasına sahip bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+Bu makalede, uygulama yapılandırmasına erişmek için yönetilen kimliğin nasıl avantajlarından faydalanabilirsiniz. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce  [uygulama yapılandırmasına sahip bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
 
 Bu makalede ayrıca yönetilen kimliği, uygulama yapılandırmasının Key Vault başvurularıyla birlikte nasıl kullanabileceğiniz gösterilmektedir. Tek bir yönetilen kimlik ile, uygulama yapılandırmasından Key Vault ve yapılandırma değerlerinden her iki sırda sorunsuzca erişebilirsiniz. Bu özelliği araştırmak isterseniz, önce [ASP.NET Core Key Vault başvuruları kullanın](./use-key-vault-references-dotnet-core.md) .
 
@@ -184,7 +185,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     Artık diğer uygulama yapılandırma anahtarı gibi Key Vault başvurularına erişebilirsiniz. Yapılandırma sağlayıcısı, `KeyVaultClient` Key Vault kimlik doğrulaması yapmak için yapılandırdığınız ve değeri alacak olan ' i kullanacaktır.
 
 > [!NOTE]
-> `ManagedIdentityCredential`yalnızca yönetilen kimlik kimlik doğrulamasını destekler. Yerel ortamlarda çalışmaz. Kodu yerel olarak çalıştırmak istiyorsanız `DefaultAzureCredential` , hizmet sorumlusu kimlik doğrulamasını da destekleyen kullanmayı göz önünde bulundurun. Ayrıntılar için [bağlantıyı](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) denetleyin.
+> `ManagedIdentityCredential` yalnızca yönetilen kimlik kimlik doğrulamasını destekler. Yerel ortamlarda çalışmaz. Kodu yerel olarak çalıştırmak istiyorsanız `DefaultAzureCredential` , hizmet sorumlusu kimlik doğrulamasını da destekleyen kullanmayı göz önünde bulundurun. Ayrıntılar için [bağlantıyı](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) denetleyin.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

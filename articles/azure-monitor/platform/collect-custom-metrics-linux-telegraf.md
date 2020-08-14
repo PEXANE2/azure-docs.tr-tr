@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505355"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207800"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -127,7 +127,7 @@ Artık Aracı, belirtilen giriş eklentilerinden her bir ölçüm toplayacak ve 
 
 ## <a name="additional-configuration"></a>Ek yapılandırma 
 
-Önceki izlenecek yol, birkaç temel giriş eklentisinden ölçümleri toplamak üzere telegraf aracısının nasıl yapılandırılacağı hakkında bilgi sağlar. Telegraf Aracısı, bazı destekleyici ek yapılandırma seçenekleri ile 150 fazla giriş eklentisi desteği içerir. Etkileyen, [desteklenen eklentilerin bir listesini](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) ve [bunların nasıl yapılandırılacağı](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)hakkında yönergeler yayımlamıştır.  
+Önceki izlenecek yol, birkaç temel giriş eklentisinden ölçümleri toplamak üzere telegraf aracısının nasıl yapılandırılacağı hakkında bilgi sağlar. Telegraf Aracısı, bazı destekleyici ek yapılandırma seçenekleri ile 150 fazla giriş eklentisi desteği içerir. Etkileyen, [desteklenen eklentilerin bir listesini](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/) ve [bunların nasıl yapılandırılacağı](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/)hakkında yönergeler yayımlamıştır.  
 
 Ayrıca, bu kılavuzda, aracının dağıtıldığı VM hakkında ölçümleri göstermek için telegraf aracısını kullandınız. Telegraf Aracısı, diğer kaynaklar için bir toplayıcı ve bir ölçüm ileticisi olarak da kullanılabilir. Aracıyı diğer Azure kaynakları için ölçümleri göstermek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [telegraf Için Azure Izleyici özel ölçüm çıktısı](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md).  
 

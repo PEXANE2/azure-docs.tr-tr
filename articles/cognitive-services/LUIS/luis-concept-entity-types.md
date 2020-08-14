@@ -2,13 +2,13 @@
 title: Varlık türleri-LUSıS
 description: Bir varlık, tahmin çalışma zamanında bir Kullanıcı noktasından verileri ayıklar. _İsteğe bağlı_, ikincil amaç, varlığı bir özellik olarak kullanarak amaç veya diğer varlıkların tahminini de artırır.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 08/06/2020
+ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337628"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207743"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
 
@@ -140,9 +140,16 @@ Bir model. any yalnızca bir [düzende](luis-concept-patterns.md)mevcuttur.
 
 [Sınırdan](luis-limits.md#model-limits)daha fazlasına ihtiyacınız varsa desteğe başvurun. Bunu yapmak için sisteminizle ilgili ayrıntılı bilgiler toplayın, [Luo](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **destek**' i seçin. Azure aboneliğiniz destek hizmetleri içeriyorsa, [Azure teknik desteği](https://azure.microsoft.com/support/options/)'ne başvurun.
 
-## <a name="entity-prediction-status"></a>Varlık tahmin durumu
+## <a name="entity-prediction-status-and-errors"></a>Varlık tahmin durumu ve hataları
 
-Lua portalı, varlığın örnek bir değer için seçtiğiniz varlıktan farklı bir varlık tahmini ne zaman olduğunu gösterir. Bu farklı puan, geçerli eğitilen modele dayalıdır. Aşağıdakilerden birini veya birkaçını kullanarak eğitim hatalarını çözmek için bu bilgileri kullanın:
+Lua portalı, varlığın örnek bir değer için seçtiğiniz varlıktan farklı bir varlık tahmini ne zaman olduğunu gösterir. Bu farklı puan, geçerli eğitilen modele dayalıdır. 
+
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="Lua portalı, varlığın örnek bir değer için seçtiğiniz varlıktan farklı bir varlık tahmini ne zaman olduğunu gösterir.":::
+
+Hata oluşan metin, örnek söylenişi içinde vurgulanır ve örnek söylenişi çizgisi, kırmızı bir üçgen olarak gösterilen bir hata göstergesi içerir. 
+
+Aşağıdakilerden birini veya birkaçını kullanarak varlık hatalarını çözümlemek için bu bilgileri kullanın:
+* Vurgulanan metin yanlış etiketlendi. Düzeltme, gözden geçirme, düzeltme ve yeniden eğitme. 
 * Varlığın kavramını belirlemesine yardımcı olmak için varlık için bir [özellik](luis-concept-feature.md) oluşturun
 * Varlıkla daha fazla [örnek](luis-concept-utterance.md) ekleme ve etiket ekleyin
 * Tahmin uç noktasında alınan her türlü, varlığın kavramını belirlemenize yardımcı olabilecek, [etkin öğrenme önerilerini gözden geçirin](luis-concept-review-endpoint-utterances.md) .

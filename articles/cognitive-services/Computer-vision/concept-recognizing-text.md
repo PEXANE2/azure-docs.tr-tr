@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e2226f70ed3318bb370f0afee003fd9f91153a45
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167886"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207233"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -28,7 +28,18 @@ Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.co
 
 ![OCR, resimleri ve belgeleri ayıklanan metinle yapısal çıktıya dönüştürür](./Images/how-ocr-works.svg)
 
-Okuma API 'SI, iki işlem aracılığıyla OCR özellikleri sağlar- **okuma** ve **okuma sonuçlarını alır**.
+## <a name="input-requirements"></a>Giriş gereksinimleri
+Okuma API 'sinin **okuma** işlemi görüntüleri ve belgeleri giriş olarak alır. Bunlar aşağıdaki gereksinimlere sahiptir:
+
+* Desteklenen dosya biçimleri: JPEG, PNG, BMP, PDF ve TIFF
+* PDF ve TIFF için en fazla 2000 sayfa işlenir. Ücretsiz katman aboneleri için yalnızca ilk iki sayfa işlenir.
+* Dosya boyutu 50 MB 'tan az ve en az 50 x 50 piksel ve en fazla 10000 x 10000 piksel boyutunda olmalıdır.
+* PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
+
+> [!NOTE]
+> **Dil girişi** 
+>
+> [Okuma işleminin](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) dile yönelik isteğe bağlı bir istek parametresi vardır. Bu, belgedeki metnin BCP-47 dili kodudur. Okuma otomatik dil tanımlama ve çok dilli belgelerini destekler, bu nedenle belgeyi belirli bir dil olarak işlenmek üzere zorlamak istiyorsanız yalnızca bir dil kodu sağlayın.
 
 ## <a name="the-read-operation"></a>Okuma işlemi
 
@@ -36,7 +47,7 @@ Okuma API 'SI, iki işlem aracılığıyla OCR özellikleri sağlar- **okuma** v
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
-|İşlem-konum | https://cognitiveservice/vision/v3.0-preview/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f |
+|İşlem-konum | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-read-results-operation"></a>Okuma sonuçlarını al işlemi
 
@@ -112,19 +123,6 @@ Başarılı bir JSON yanıtı örneğine bakın:
 
 C# ve REST API kullanarak OCR uygulamak için, [yazdırılmış ve el ile yazılmış metin](./QuickStarts/CSharp-hand-text.md) hızlı başlangıcını izleyin.
 
-## <a name="input-requirements"></a>Giriş gereksinimleri
-
-Giriş görüntülerinin ve belgelerinin aşağıdaki gereksinimleri vardır:
-* Desteklenen dosya biçimleri: JPEG, PNG, BMP, PDF ve TIFF
-* PDF ve TIFF için en fazla 2000 sayfa işlenir. Ücretsiz katman aboneleri için yalnızca ilk iki sayfa işlenir.
-* Dosya boyutu 50 MB 'tan az ve en az 50 x 50 piksel ve en fazla 10000 x 10000 piksel boyutunda olmalıdır.
-* PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
-
-> [!NOTE]
-> **Dil girişi** 
->
-> [Okuma işleminin](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) dile yönelik isteğe bağlı bir istek parametresi vardır. Bu, belgedeki metnin BCP-47 dili kodudur. Okuma otomatik dil tanımlama ve çok dilli belgelerini destekler, bu nedenle belgeyi belirli bir dil olarak işlenmek üzere zorlamak istiyorsanız yalnızca bir dil kodu sağlayın.
-
 ## <a name="language-support"></a>Dil desteği
 
 ### <a name="printed-text"></a>Yazdırılan metin
@@ -184,6 +182,9 @@ Okuma API 'SI, genellikle karışık dil belgeleri olarak bilinen birden çok fa
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 
 Tüm bilişsel hizmetlerde olduğu gibi, okuma/OCR hizmetlerini kullanan geliştiriciler müşteri verilerinde Microsoft ilkeleriyle uyumlu olmalıdır. Daha fazla bilgi edinmek için [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center/product-overview) ' nde bilişsel Hizmetler sayfasına bakın.
+
+> [!NOTE]
+> Vison 2,0 RecognizeText işlemleri, bu makalede ele alınan yeni okuma API 'SI 'nin kullanım aşamasında kullanım sürecinde. Mevcut müşteriler [okuma işlemlerini kullanarak geçiş](upgrade-api-versions.md)yapması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 354e51d529c504bd04ed40f64b3db14a06384c98
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296398"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210571"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure SYNAPSE Analytics veri tümleştirme iş ortakları
 
@@ -43,7 +43,7 @@ Azure SYNAPSE 'ın SYNAPSE SQL havuzu özelliğini kullanarak veri ambarı çöz
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets, DataOps için bir veri tümleştirme platformu sağlar. BT, verileri bir Azure SYNAPSE veri ambarına tümleştirme tam tasarım-dağıtma-çalışma yaşam döngüsünü sonlandırır. Akış, toplu iş veya değiştirilen veri yakalama verileri teslim yöntemleri aracılığıyla verileri hızla alabilir ve ambardan tümleştirebilirsiniz. Ayrıca, uçtan uca veri akışı görünürlüğü ve dayanıklılığı sağlayan akıllı veri işlem hatları ile sürekli işlemler sağlayabilirsiniz.|[Ürün sayfası](https://streamsets.com/partners/microsoft)|
 | ![Tatatmi](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Taödünç bulutu**<br>Taödünç bulutu, bulutta veya şirket içinde herhangi bir veriyi bağlamak, erişmek ve dönüştürmek için bir kurumsal veri tümleştirme platformudur. Bu, geniş kapsamlı bağlantı, yerleşik veri kalitesi ve en son büyük veri ve bulut teknolojileri için yerel destek sağlayan bir hizmet olarak platform (ıpaas) tümleştirme platformudur. |[Ürün sayfası](https://www.talend.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
 | ![Timexödeme](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**Timexödeme**<br>Timexmenkul, bulma Merkezi, şirketlerin veri içgörülerini 10 kata kadar hızlandıran tümleşik bir veri yönetimi platformu sunarak modern bir veri merkezi oluşturmasına yardımcı olur. Günlük ayıklama, dönüştürme ve yükleme (ETL) veya ayıklama, yükleme ve dönüştürme (ELT), veri erişimi, veri modelleme ve uyumluluk için tek bir platformda Otomasyon ve yetenekler sağlayarak daha fazla. Keşif Merkezi, bulut ölçek analizi için birlikte bulunan bir veri dokusunu sağlar ve analiz ve AI için çeşitli veri siloları, katalog, model, taşıma ve belge verilerini bağlayabilir ve tümleştirmenize olanak tanır. | [Ürün sayfası](https://www.timextender.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
-| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta, kişilerin ve kuruluşların analizler ve analiz edilmek üzere çeşitli verileri keşfetmesine yardımcı olur. Trifacta Wrangler, ölçeklendirmekte olan verileri ve çok sayıda son kullanıcıyı desteklemek için gereken veri denetimi iş yüklerini işlemek üzere tasarlanmıştır.|[Ürün sayfası](https://www.trifacta.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview) |
+| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta, kişilerin ve kuruluşların analizler ve analiz edilmek üzere çeşitli verileri keşfetmesine yardımcı olur. Trifacta Wrangler, ölçeklendirmekte olan verileri ve çok sayıda son kullanıcıyı desteklemek için gereken veri denetimi iş yüklerini işlemek üzere tasarlanmıştır.|[Ürün sayfası](https://www.trifacta.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape RED**<br> WhereScape RED, ETL iş akışlarını kolaylaştırmak için Otomasyon araçlarıyla takımlar sağlayan bir IDE 'dir. IDE, popüler veri hedefleri için en iyi uygulama, iyileştirilmiş yerel kod sağlar. Veri altyapınızı geliştirme, dağıtma ve çalıştırma süresini kesmek için WhereScape RED kullanın.|[Ürün sayfası](https://www.wherescape.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
 
 

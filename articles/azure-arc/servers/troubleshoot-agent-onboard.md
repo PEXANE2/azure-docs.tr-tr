@@ -1,18 +1,18 @@
 ---
-title: Sunucu Aracısı bağlantı sorunları için Azure Arc sorunlarını giderme
-description: Bu makalede, hizmete bağlanmaya çalışırken sunucular için Azure Arc (Önizleme) ile birlikte gelen bağlı makine aracısında sorunları gidermeye ve çözmeye nasıl çözüm yapılacağı açıklanır.
+title: Azure Arc etkin sunucular (Önizleme) Aracısı bağlantı sorunlarını giderme
+description: Bu makalede, hizmete bağlanmaya çalışırken Azure Arc etkin sunucuları (Önizleme) ile birlikte gelen bağlı makine aracısında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118017"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213535"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Bağlı makine Aracısı bağlantı sorunlarını giderme
 
-Bu makalede, Windows veya Linux için Azure Arc Server (Önizleme) bağlı makine aracısını yapılandırmaya çalışırken oluşabilecek sorunları giderme ve çözme hakkında bilgi sağlanır. Hizmetle bağlantı yapılandırılırken hem etkileşimli hem de ölçekli yükleme yöntemleri dahildir. Genel bilgi için bkz. [sunucu Için yay genel bakış](./overview.md).
+Bu makalede, Azure Arc etkin sunucuları (Önizleme) Windows veya Linux için bağlı makine Aracısı 'nı yapılandırmaya çalışırken oluşabilecek sorunların giderilmesi ve çözümlenmesi hakkında bilgi sağlanır. Hizmetle bağlantı yapılandırılırken hem etkileşimli hem de ölçekli yükleme yöntemleri dahildir. Genel bilgiler için bkz. [Arc etkin sunucularına genel bakış](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Aracı ayrıntılı günlüğü
 
@@ -22,13 +22,13 @@ Bu makalenin ilerleyen kısımlarında açıklanan sorun giderme adımlarını t
 
 Aşağıda, etkileşimli bir yükleme gerçekleştirirken Windows için bağlı makine Aracısı ile ayrıntılı günlüğe yazmayı etkinleştirme komutuna bir örnek verilmiştir.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Aşağıda, bir hizmet sorumlusu kullanarak ölçekli bir yükleme gerçekleştirirken Windows için bağlı makine Aracısı ile ayrıntılı günlüğe yazmayı etkinleştirme komutuna bir örnek verilmiştir.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
   --service-principal-id "{serviceprincipalAppID}" `
   --service-principal-secret "{serviceprincipalPassword}" `
@@ -46,13 +46,13 @@ Aşağıda, etkileşimli bir yükleme gerçekleştirirken Linux için bağlı ma
 >[!NOTE]
 >**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
-```
+```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Aşağıda, bir hizmet sorumlusu kullanarak ölçekli bir yükleme gerçekleştirirken Linux için bağlı makine Aracısı ile ayrıntılı günlüğe yazmayı etkinleştirme komutuna bir örnek verilmiştir.
 
-```
+```bash
 azcmagent connect \
   --service-principal-id "{serviceprincipalAppID}" \
   --service-principal-secret "{serviceprincipalPassword}" \

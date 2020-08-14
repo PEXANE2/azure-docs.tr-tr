@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: 94cec26d883c29eb4d43d2f244a9a2b8f7aea9dd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c415ffdaa2eb3ad6a76cd48c3a895b6618dd3986
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183182"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208062"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT Tak ve Kullan önizlemeyi yenileme
 
@@ -80,7 +80,7 @@ Bileşenleri kullanmayan cihazlarda minimum kod değişikliği yapılması gerek
 
 ### <a name="service-sdks"></a>Hizmet SDK'ları
 
-Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/pnp-preview-refresh/digitaltwins/service/readme.md) ve [Python](https://github.com/Azure/azure-iot-sdk-python/blob/digitaltwins-preview/azure-iot-hub/README.md)'da kullanılabilir.
+Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digitaltwins-preview/digitaltwins/service/readme.md) ve [Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/README.md)'da kullanılabilir.
 
 ## <a name="vs-code-extension"></a>VS Code uzantısı
 

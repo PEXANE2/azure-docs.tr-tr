@@ -3,14 +3,15 @@ title: Azure Işlevleri için Notification Hubs bağlamaları
 description: Azure 'da Azure Notification Hub bağlamasını nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 97e43d2348ccbe9bf0aebfd7647f6cc34906948c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540375"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212223"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Notification Hubs
 
@@ -247,7 +248,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 Aşağıdaki tabloda, dosyasında *function.js* ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `NotificationHub` :
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** |yok| Olarak ayarlanmalıdır `notificationHub` . |
 |**Görünüm** |yok| Olarak ayarlanmalıdır `out` . | 
@@ -288,7 +289,7 @@ Bağlantı dizesini var olan bir Bildirim Hub 'ına yapılandırmak için:
 
 1. [Azure Portal](https://portal.azure.com)Bildirim Hub 'ınıza gidin, **erişim ilkeleri**' ni seçin ve **Defaultfullsharedaccesssignature** ilkesinin yanındaki Kopyala düğmesini seçin. Bu, *Defaultfullsharedaccesssignature* ilkesinin bağlantı dizesini Notification Hub 'ınıza kopyalar. Bu bağlantı dizesi, işlevinizin hub 'a bildirim iletileri göndermesini sağlar.
     ![Bildirim Hub 'ı bağlantı dizesini Kopyala](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Azure portal işlev uygulamanıza gidin, **uygulama ayarları**' nı seçin, **myhubconnectionstring**gibi bir anahtar ekleyin, Bildirim Hub 'ınızın kopyalanmış *Defaultfullsharedaccesssignature* değerini değer olarak yapıştırın ve **Kaydet**' e tıklayın.
+1. Azure portal işlev uygulamanıza gidin, **uygulama ayarları**' nı seçin, **myhubconnectionstring**gibi bir anahtar ekleyin, Bildirim Hub 'ınızın kopyalanmış *Defaultfullsharedaccesssignature*  değerini değer olarak yapıştırın ve **Kaydet**' e tıklayın.
 
 Bu uygulama ayarının adı, *function.jsüzerinde* veya .net özniteliğinde çıkış bağlama bağlantısı ayarında yer alır. Bu makalenin önceki bölümlerinde bulunan [yapılandırma bölümüne](#configuration) bakın.
 
