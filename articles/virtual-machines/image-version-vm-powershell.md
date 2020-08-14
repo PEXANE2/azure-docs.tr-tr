@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 681bd0aff909552531d682186d5b22dce5ef33f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010776"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225657"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Önizleme: VM 'den görüntü oluşturma
 
@@ -133,7 +133,7 @@ $job.State
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](../storage/common/storage-redundancy.md) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
+> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek ekleyebilir veya coğrafi olarak [yedekli depolama](../storage/common/storage-redundancy.md) alanı ekleyerek, Premium depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

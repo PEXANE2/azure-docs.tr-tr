@@ -7,14 +7,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 11f80a000f386e661f3eb3f0ffb4969701704c90
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671271"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226232"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -201,17 +201,17 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, dizeyi `YourSubscriptionKey` bilişsel konuşma abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
+1. Menü çubuğundan **Dosya**  >  **Tümünü Kaydet**' i seçin.
 
 ## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı derleyin ve çalıştırın
 
-1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
+1. **Debug**  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın).
 
-1. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
+1. `Started transcribing`İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
     - Konuşma kodunu diğer kişilerle paylaşırsanız ve konuşmaya katılırsanız, bu kişilerin de onların dökümünü görürsünüz.
 
 1. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.
@@ -294,7 +294,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     }
     ```
 
-2. İşlevinizdeki `CreateConversationAsync();` `public static async Task Main(string[] args)` ile değiştirin:
+2. `CreateConversationAsync();` `public static async Task Main(string[] args)` İşlevinizdeki ile değiştirin:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,13 +303,13 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Visual Studio 'ya geri dönün ve dizeyi `YourConversationId` , önceki adımda oluşturduğunuz konuşma kimliğiyle değiştirin.
+4. Visual Studio 'ya geri dönün ve dizeyi, `YourConversationId` önceki adımda oluşturduğunuz konuşma kimliğiyle değiştirin.
 
-5. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
+5. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-6.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
+6. **Debug**  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın).
 
-7. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
+7. `Started transcribing`İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
     - Tarayıcınıza geri giderseniz, yaptığınız gibi, yaptığınız gibi görünmeler burada görünür.
 
 8. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.

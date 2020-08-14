@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030682"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224450"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -314,7 +314,7 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 | Genel | Avrupa | West Europe | `westeurope` |
 | Genel | Fransa | Orta Fransa | `francecentral` |
 | Genel | Fransa | Fransa Güney * | `francesouth` |
-| Genel | Hindistan | Orta Hindistan | `centralindia` |
+| Genel | Hindistan | Central India | `centralindia` |
 | Genel | Hindistan | Güney Hindistan | `southindia` |
 | Genel | Japonya | Doğu Japonya | `japaneast` |
 | Genel | Japonya | Batı Japonya | `japanwest` |
@@ -376,7 +376,7 @@ Bulut katmanlaması etkinleştirilirse, sunucu uç noktasını veya sunucu uç n
 > Çıplak (BMR) geri yükleme beklenmeyen sonuçlara neden olabilir ve şu anda desteklenmemektedir.
 
 > [!Note]  
-> Azure Dosya Eşitleme aracısının 9. sürümünde, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl yapılacağını öğrenin](storage-files-deployment-guide.md).
+> Azure Dosya Eşitleme aracısının 9. sürümünde, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl yapılacağını öğrenin](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service).
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

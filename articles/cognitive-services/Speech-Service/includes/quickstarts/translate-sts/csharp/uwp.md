@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0434ddb1e90789628d14d4782eccb6514fccf8d8
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057710"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226178"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,7 +43,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. `SpeechTranslationFromMicrophone_ButtonClicked`Bu dosyadaki İşleyicide, dizeyi bulun `YourSubscriptionKey` ve abonelik anahtarınızla değiştirin.
 
-1. İşleyicisinde, `SpeechTranslationFromMicrophone_ButtonClicked` dizeyi bulun `YourServiceRegion` ve aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. (Örneğin, `westus` ücretsiz deneme aboneliği için kullanın.)
+1. İşleyicisinde, `SpeechTranslationFromMicrophone_ButtonClicked` dizeyi bulun `YourServiceRegion` ve aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin.
 
 1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya**  >  **Tümünü Kaydet** ' i seçin.
 

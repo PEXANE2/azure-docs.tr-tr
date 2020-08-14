@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031140"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224790"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
 
@@ -31,7 +31,7 @@ Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 |Visual Studio kullanarak C# sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
 |Visual Studio Code kullanarak C# sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
 
-<sup>*</sup>Portalda uzantı paketleri kullanılmaktadır.
+<sup>*</sup> Portalda uzantı paketleri kullanılmaktadır.
 
 ## <a name="extension-bundles"></a><a name="extension-bundles"></a>Uzantı demeti
 
@@ -53,7 +53,7 @@ Uzantı paketlerini kullanmak için, dosyadaki *host.js* aşağıdaki girişi i�
 
 ## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet paketleri
 
-C# sınıf kitaplığı tabanlı işlevler projesi için, uzantı paketleri, sınıf olmayan projeler için özel olarak tasarlanmıştır. 
+C# sınıf kitaplığı tabanlı işlevler projesi için doğrudan uzantıları yüklemelisiniz. Uzantı paketleri özellikle C# sınıf kitaplığı tabanlı olmayan projeler için tasarlanmıştır.
 
 ### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#Visual Studio ile C sınıfı kitaplığı
 
@@ -69,7 +69,7 @@ Belirli bir bağlama için kullanılan paketin adı, söz konusu bağlamaya ili�
 
 `Install-Package`Bağlama başvurmak için kullanırsanız, [uzantı paketleri](#extension-bundles)kullanmanız gerekmez. Bu yaklaşım, Visual Studio 'da oluşturulan sınıf kitaplıkları için özeldir.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>Visual Studio Code ile C# sınıf kitaplığı
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Visual Studio Code ile C# sınıf kitaplığı
 
 **Visual Studio Code**' de, bir C# sınıf kitaplığı projesi için paketleri, .NET Core CLI [DotNet Add Package](/dotnet/core/tools/dotnet-add-package) komutunu kullanarak komut isteminden yükler. Aşağıdaki örnek nasıl bağlama ekleneceğini gösterir:
 

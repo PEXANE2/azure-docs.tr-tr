@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 9c2acc0776af0da43fb19c1037b4d75dbd43c6d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a24ad257b4712c043d7d245433ec129242749524
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671340"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226297"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -102,15 +102,15 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
+1. Menü çubuğundan **Dosya**  >  **Tümünü Kaydet**' i seçin.
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
+1. **Debug**  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın).
 
 1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir. Bu, metne (Bu durumda Almanca 'ya) ve metni dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 

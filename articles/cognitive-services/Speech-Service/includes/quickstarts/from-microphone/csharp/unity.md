@@ -9,17 +9,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 951ae2c48bcdd92f640a37ddbb6430ca62a3b816
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e2302c92cf723b1ab28611d46769290ed54df43c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274838"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226074"
 ---
 > [!NOTE]
 > Unity için konuşma SDK 'Sı, Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatör, ARM32 ve ARM64) destekler
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -35,7 +35,7 @@ Bunu zaten yaptıysanız harika. Şimdi devam edelim.
 1. Unity 'yi açın. Unity 'yi ilk kez kullanıyorsanız **Unity hub** *<version number>* penceresi görüntülenir. (Ayrıca, bu pencereye ulaşmak için Unity hub 'ını doğrudan açabilirsiniz.)
 
    [![Unity hub penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png#lightbox)
-1. **Yeni**' yi seçin. *<version number>* **Unity ile yeni proje oluştur** penceresi görüntülenir.
+1. **Yeni**’yi seçin. **Unity ile yeni proje oluştur** *<version number>* penceresi görüntülenir.
 
    [![Unity hub 'da yeni proje oluşturma](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png#lightbox)
 1. **Proje adı**' nda, **CSharp-Unity**girin.
@@ -51,7 +51,7 @@ Bir süre sonra Unity Düzenleyicisi penceresi görüntülenir.
 
 Şimdi sahemizi en az bir kullanıcı arabirimi ekleyelim. Bu Kullanıcı arabirimi, konuşma tanımayı tetikleme ve sonucu görüntüleyen bir metin alanı içeren bir düğmeden oluşur. [ **Hiyerarşi** penceresinde](https://docs.unity3d.com/Manual/Hierarchy.html), Unity 'nin yeni projeyle oluşturulan örnek bir sahne gösterilmektedir.
 
-1. **Hiyerarşi** penceresinin üst kısmında,**UI** >  **Oluştur** > **düğmesini**seçin.
+1. **Hiyerarşi** penceresinin üst kısmında, UI **Oluştur**  >  **UI**  >  **düğmesini**seçin.
 
    Bu eylem **hiyerarşi** penceresinde görebileceğiniz üç oyun nesnesi oluşturur: **düğme** nesnesi, düğmeyi içeren bir **tuval** nesnesi ve bir **EventSystem** nesnesi.
 
@@ -61,7 +61,7 @@ Bir süre sonra Unity Düzenleyicisi penceresi görüntülenir.
 
 1. [ **Inspector** penceresinde](https://docs.unity3d.com/Manual/UsingTheInspector.html) (varsayılan olarak, sağ tarafta), **POS X** ve **POS Y** özelliklerini **0**olarak ayarlayın, bu nedenle düğme tuvalin ortasında ortalanır.
 
-1. **Hiyerarşi** penceresinde, bir **metin** nesnesi oluşturmak için**UI** > **metni** **Oluştur** > ' u seçin.
+1. **Hiyerarşi** penceresinde, **Create**  >  **UI**  >  bir **metin** nesnesi oluşturmak için UI**metni** oluştur ' u seçin.
 
 1. **Inspector** penceresinde, **POS X** ve **pos Y** özelliklerini **0** ve **120**olarak ayarlayıp **Genişlik** ve **Yükseklik** özelliklerini **240** ve **120**olarak ayarlayın. Bu değerler metin alanının ve düğmenin çakışmadığından emin olmanızı sağlamaktır.
 
@@ -73,23 +73,23 @@ Bir süre sonra Unity Düzenleyicisi penceresi görüntülenir.
 
 Unity projesi için örnek betik kodu eklemek için aşağıdaki adımları izleyin:
 
-1. [Proje penceresinde](https://docs.unity3d.com/Manual/ProjectView.html), yeni bir c# betiği eklemek için**c# betiği** **Oluştur** > ' u seçin.
+1. [Proje penceresinde](https://docs.unity3d.com/Manual/ProjectView.html), **Create**  >  Yeni bir c# betiği eklemek için**c# betiği** oluştur ' u seçin.
 
    [![Unity düzenleyicisinde Proje penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png#lightbox)
-1. Betiği `HelloWorld`adlandırın.
+1. Betiği adlandırın `HelloWorld` .
 
-1. Yeni oluşturulan betiği `HelloWorld` düzenlemek için çift tıklayın.
+1. `HelloWorld`Yeni oluşturulan betiği düzenlemek için çift tıklayın.
 
    > [!NOTE]
-   > Kod düzenleyicisini düzenleme için Unity tarafından kullanılacak şekilde yapılandırmak için,**tercihleri** **Düzenle** > ' yi seçin ve ardından **dış araçlar** tercihlerine gidin. Daha fazla bilgi için bkz. [Unity Kullanıcı el kitabı](https://docs.unity3d.com/Manual/Preferences.html).
+   > Kod düzenleyicisini düzenleme için Unity tarafından kullanılacak şekilde yapılandırmak için, **Edit**  >  **tercihleri**Düzenle ' yi seçin ve ardından **dış araçlar** tercihlerine gidin. Daha fazla bilgi için bkz. [Unity Kullanıcı el kitabı](https://docs.unity3d.com/Manual/Preferences.html).
 
 1. Mevcut betiği şu kodla değiştirin:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Dizeyi `YourSubscriptionKey` bulun ve konuşma hizmeti abonelik anahtarınızla değiştirin.
+1. Dizeyi bulun ve `YourSubscriptionKey` konuşma hizmeti abonelik anahtarınızla değiştirin.
 
-1. Dizeyi `YourServiceRegion` bulun ve aboneliğinizle Ilişkili [bölgeden](https://aka.ms/speech/sdkregion) **bölge tanımlayıcısı** ile değiştirin. Örneğin, ücretsiz denemeyi kullanıyorsanız bölge `westus` olur.
+1. Dizeyi bulun ve `YourServiceRegion` aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) **bölge tanımlayıcısı** ile değiştirin.
 
 1. Değişiklikleri betikte kaydedin.
 
@@ -101,7 +101,7 @@ Unity projesi için örnek betik kodu eklemek için aşağıdaki adımları izle
 
    [![Unity düzenleyicisinde Inspector penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png#lightbox)
 
-1. Aşağı açılan listede, yukarıda oluşturduğumuz `HelloWorld` betiği arayın ve ekleyin. **Inspector** penceresinde, iki başlatılmamış özellik, **çıkış metni** ve **Start ku düğmesi**listelenerek bir **Merhaba Dünya (betik)** bölümü görüntülenir. Bu Unity bileşen özellikleri, `HelloWorld` sınıfının ortak özellikleriyle eşleşir.
+1. Aşağı açılan listede, `HelloWorld` yukarıda oluşturduğumuz betiği arayın ve ekleyin. **Inspector** penceresinde, iki başlatılmamış özellik, **çıkış metni** ve **Start ku düğmesi**listelenerek bir **Merhaba Dünya (betik)** bölümü görüntülenir. Bu Unity bileşen özellikleri, sınıfının ortak özellikleriyle eşleşir `HelloWorld` .
 
 1. **Start ku Button** özelliğinin nesne seçicisini (özelliğin sağ tarafındaki küçük daire simgesini) seçin ve daha önce oluşturduğunuz **düğme** nesnesini seçin.
 
@@ -122,14 +122,14 @@ Artık, uygulamayı Unity Düzenleyicisi içinde çalıştırmaya hazırsınız.
 
    [![Unity düzenleyicisinde oyun görünümü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 
-1. Hata ayıklama iletileri için [ **konsol** penceresini](https://docs.unity3d.com/Manual/Console.html) denetleyin. **Konsol** penceresi görünmüyorsa, menü çubuğuna gidin ve **pencereyi** > göstermek için**genel** > **konsol** ' ı seçin.
+1. Hata ayıklama iletileri için [ **konsol** penceresini](https://docs.unity3d.com/Manual/Console.html) denetleyin. **Konsol** penceresi görünmüyorsa, menü çubuğuna gidin ve **pencereyi**  >  **General**  >  göstermek için genel**konsol** ' ı seçin.
 
 1. Konuşmayı tanımayı tamamladığınızda, uygulamayı durdurmak için Unity Düzenleyici araç çubuğundaki **oynat** düğmesini seçin.
 
 ## <a name="additional-options-to-run-this-application"></a>Bu uygulamayı çalıştırmak için ek seçenekler
 
 Bu uygulama, bir Android uygulaması, Windows tek başına uygulaması veya UWP uygulaması olarak da dağıtılabilir.
-Daha fazla bilgi için bkz. [örnek depomız](https://aka.ms/csspeech/samples). `quickstart/csharp-unity` Klasör bu ek hedeflerin yapılandırmasını açıklar.
+Daha fazla bilgi için bkz. [örnek depomız](https://aka.ms/csspeech/samples). `quickstart/csharp-unity`Klasör bu ek hedeflerin yapılandırmasını açıklar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

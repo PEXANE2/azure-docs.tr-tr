@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829297"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225283"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
@@ -36,7 +36,7 @@ Güvenlik mimarisine ve her özellik kategorisine genel bir bakış için bu hı
 
 Azure Bilişsel Arama 'de, şifreleme bağlantılarla ve iletimlerle başlar ve diskte depolanan içeriğe genişletir. Genel internet üzerindeki arama hizmetleri için Azure Bilişsel Arama, HTTPS bağlantı noktası 443 ' i dinler. Tüm istemciden hizmete bağlantılar TLS 1,2 şifrelemesini kullanır. Önceki sürümler (1,0 veya 1,1) desteklenmez.
 
-Arama hizmeti tarafından dahili olarak işlenen veriler için aşağıdaki tabloda [veri şifreleme modelleri](../security/fundamentals/encryption-atrest.md#data-encryption-models)açıklanmaktadır. Bilgi deposu, artımlı zenginleştirme ve Dizin Oluşturucu tabanlı dizin oluşturma, diğer Azure hizmetlerinde veri yapılarına okuma veya yazma gibi bazı özellikler. Bu hizmetlerin Azure Bilişsel Arama ayrı ayrı şifreleme desteği düzeyleri vardır.
+Arama hizmeti tarafından dahili olarak işlenen veriler için aşağıdaki tabloda [veri şifreleme modelleri](../security/fundamentals/encryption-models.md)açıklanmaktadır. Bilgi deposu, artımlı zenginleştirme ve Dizin Oluşturucu tabanlı dizin oluşturma, diğer Azure hizmetlerinde veri yapılarına okuma veya yazma gibi bazı özellikler. Bu hizmetlerin Azure Bilişsel Arama ayrı ayrı şifreleme desteği düzeyleri vardır.
 
 | Model | Belirlenmesine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gereklilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Kısıtlamalar | Şunlara uygulanır |
 |------------------|-------|-------------|--------------|------------|
@@ -54,7 +54,7 @@ Müşteri tarafından yönetilen anahtarlar, farklı bir bölgede, ancak Azure B
 
 <a name="double-encryption"></a>
 
-### <a name="double-encryption"></a>Çift şifreleme 
+### <a name="double-encryption"></a>Çift şifreleme
 
 Azure Bilişsel Arama 'de, Çift şifreleme CMK 'nin bir uzantısıdır. İki katlı şifreleme (CMK tarafından bir kez ve hizmet tarafından yönetilen anahtarlar tarafından), kapsam içi ve bir veri diskine yazılan uzun süreli depolamayı ve geçici disklere yazılan kısa vadeli depolamayı içeren kapsamlı bir şifreleme olduğu anlaşıldı. CMK ile 1 2020 Ağustos 'Tan önce ve sonrasında CMK arasındaki fark ve Azure Bilişsel Arama 'de CMK 'nin Çift şifreleme özelliği ne kadar bir kez yapılır, geçici disklerde bekleyen verilerin ek şifrelemesi.
 
@@ -74,7 +74,7 @@ Gelen güvenlik özellikleri, güvenlik ve karmaşıklık düzeylerini artırara
 
 ### <a name="public-access-using-api-keys"></a>API anahtarları kullanarak genel erişim
 
-Varsayılan olarak, bir arama hizmetine yönetim için anahtar tabanlı kimlik doğrulaması kullanılarak veya arama hizmeti uç noktasına sorgu erişimi kullanılarak genel bulut üzerinden erişilir. Bir API anahtarı rastgele oluşturulan rakamlardan ve harflerden oluşan bir dizedir. Anahtar türü (yönetici veya sorgu), erişim düzeyini belirler. Geçerli bir anahtarın gönderilmesi, isteğin güvenilir bir varlıktan kaynaklandığı kanıtları kabul edilir. 
+Varsayılan olarak, bir arama hizmetine yönetim için anahtar tabanlı kimlik doğrulaması kullanılarak veya arama hizmeti uç noktasına sorgu erişimi kullanılarak genel bulut üzerinden erişilir. Bir API anahtarı rastgele oluşturulan rakamlardan ve harflerden oluşan bir dizedir. Anahtar türü (yönetici veya sorgu), erişim düzeyini belirler. Geçerli bir anahtarın gönderilmesi, isteğin güvenilir bir varlıktan kaynaklandığı kanıtları kabul edilir.
 
 Arama hizmetinize aşağıdaki API anahtarları tarafından etkinleştirilen iki erişim düzeyi vardır:
 
@@ -92,15 +92,15 @@ Her istekte bir zorunlu anahtar, bir işlem ve bir nesneden oluşan her istekte 
 
 Arama hizmetinize erişimi daha fazla denetlemek için, belirli IP adreslerine veya bir IP adresi aralığına erişime izin veren gelen güvenlik duvarı kuralları oluşturabilirsiniz. Tüm istemci bağlantıları izin verilen bir IP adresi üzerinden yapılmalıdır veya bağlantı reddedildi.
 
-[Gelen erişimi yapılandırmak](service-configure-firewall.md)için portalı kullanabilirsiniz. 
+[Gelen erişimi yapılandırmak](service-configure-firewall.md)için portalı kullanabilirsiniz.
 
-Alternatif olarak, yönetim REST API 'Lerini de kullanabilirsiniz. API sürüm 2020-03-13, [ıprule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) parametresi ile, tek tek veya bir aralıkta, arama hizmetinize erişim vermek istediğiniz IP adreslerini tanımlayarak hizmetinize erişimi kısıtlamanıza olanak sağlar. 
+Alternatif olarak, yönetim REST API 'Lerini de kullanabilirsiniz. API sürüm 2020-03-13, [ıprule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) parametresi ile, tek tek veya bir aralıkta, arama hizmetinize erişim vermek istediğiniz IP adreslerini tanımlayarak hizmetinize erişimi kısıtlamanıza olanak sağlar.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Özel uç nokta (Internet trafiği yok)
 
-Azure Bilişsel Arama için [özel bir uç nokta](../private-link/private-endpoint-overview.md) , bir [sanal ağ](../virtual-network/virtual-networks-overview.md) üzerindeki istemcinin bir [özel bağlantı](../private-link/private-link-overview.md)üzerinden bir arama dizinindeki verilere güvenli bir şekilde erişmesini sağlar. 
+Azure Bilişsel Arama için [özel bir uç nokta](../private-link/private-endpoint-overview.md) , bir [sanal ağ](../virtual-network/virtual-networks-overview.md) üzerindeki istemcinin bir [özel bağlantı](../private-link/private-link-overview.md)üzerinden bir arama dizinindeki verilere güvenli bir şekilde erişmesini sağlar.
 
-Özel uç nokta, arama hizmetinize bağlantı için sanal ağ adres alanından bir IP adresi kullanır. İstemci ile arama hizmeti arasındaki ağ trafiği, sanal ağın ve Microsoft omurga ağındaki özel bir bağlantının üzerinde geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. VNET, kaynaklar arasında, şirket içi ağınızdan ve Internet 'Ten güvenli iletişim sağlar. 
+Özel uç nokta, arama hizmetinize bağlantı için sanal ağ adres alanından bir IP adresi kullanır. İstemci ile arama hizmeti arasındaki ağ trafiği, sanal ağın ve Microsoft omurga ağındaki özel bir bağlantının üzerinde geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. VNET, kaynaklar arasında, şirket içi ağınızdan ve Internet 'Ten güvenli iletişim sağlar.
 
 Bu çözüm en güvenli hale geldiğinden, ek hizmetlerin kullanılması, ek bir maliyettir. bu nedenle, ' de kullanmadan önce avantajların net bir şekilde anlaşıldığından emin olun. veya maliyetler hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/private-link/). Bu bileşenlerin birlikte nasıl çalıştığı hakkında daha fazla bilgi için bu makalenin en üstündeki videoyu izleyin. Özel uç nokta seçeneğinin kapsamı, video 5:48 ' de başlar. Uç noktanın nasıl ayarlanacağı hakkında yönergeler için bkz. [Azure bilişsel arama Için özel uç nokta oluşturma](service-create-private-endpoint.md).
 
@@ -140,7 +140,7 @@ Azure Bilişsel Arama, genel bulut ve Azure Kamu için birden çok küresel, bö
 
 Uyumluluk için Azure [ilkesi](../governance/policy/overview.md) 'Ni kullanarak [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)için yüksek güvenlikli en iyi yöntemleri uygulayabilirsiniz. Azure Güvenlik kıyaslaması, hizmet ve veri tehditlerini azaltmak için gerçekleştirmeniz gereken önemli eylemlerle eşlenen güvenlik denetimlerine yönelik güvenlik önerileri koleksiyonudur. [Ağ güvenliği](../security/benchmarks/security-control-network-security.md), [günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md)dahil olmak üzere 11 güvenlik denetimi ve birkaç ad vermek için [veri koruması](../security/benchmarks/security-control-data-protection.md) vardır.
 
-Azure Ilkesi, Azure 'da yerleşik olarak bulunan ve Azure Güvenlik kıyaslaması dahil olmak üzere birden çok standart için uyumluluğu yönetmenize yardımcı olan bir özelliktir. İyi bilinen kıyaslamalar için Azure Ilkesi, hem ölçütü hem de uyumsuz bir yanıt sağlayan yerleşik tanımları, uyumsuz olmayan bir yanıt sağlar. 
+Azure Ilkesi, Azure 'da yerleşik olarak bulunan ve Azure Güvenlik kıyaslaması dahil olmak üzere birden çok standart için uyumluluğu yönetmenize yardımcı olan bir özelliktir. İyi bilinen kıyaslamalar için Azure Ilkesi, hem ölçütü hem de uyumsuz bir yanıt sağlayan yerleşik tanımları, uyumsuz olmayan bir yanıt sağlar.
 
 Azure Bilişsel Arama için, şu anda bir yerleşik tanım vardır. Bu, tanılama günlüğe kaydetme içindir. Bu yerleşik ile, tanılama günlüğü eksik olan herhangi bir arama hizmetini tanımlayan bir ilke atayabilir ve sonra onu açabilir. Daha fazla bilgi için bkz. [Azure Ilke mevzuatı uyumluluk denetimleri bilişsel arama](security-controls-policy.md).
 

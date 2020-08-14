@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 08/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6fb065e48b744a31bcce2ca3249d0d6bd0216049
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 73a22efdc43911869c27a15c3f6918be4e35bc38
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066432"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225572"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -99,7 +99,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
 | **Hong Kong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | 'Yi | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
-| **Hong Kong2** | [MEGA-ı](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Doğu Asya | 'Yi | Çin Mobile International, Çin telekomünikasyon küresel, PCFA genel sınırlı |
+| **Hong Kong2** | [MEGA-ı](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Doğu Asya | 'Yi | Çin Mobile International, Çin telekomünikasyon küresel, PCFA küresel sınırlı, SingTel |
 | **Cakarta** | Telkoa Endonezya | 4 | yok | 'Yi | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Güney Afrika Kuzey | 'Yi | BCX, Ingiliz Telekoı, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, turuncu, Teraco |
 | **Kuala Lumpur** | [ZAMAN dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | yok | yok | TIME dotCom |

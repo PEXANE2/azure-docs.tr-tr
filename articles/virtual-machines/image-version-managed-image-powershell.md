@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c119ebc8d87c00608fc515099711463f47b8ed1a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901819"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225555"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Yönetilen görüntüden paylaşılan görüntü Galerisi görüntüsüne geçiş
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir. 
 >
-> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](../storage/common/storage-redundancy.md) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
+> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek ekleyebilir veya coğrafi olarak [yedekli depolama](../storage/common/storage-redundancy.md) alanı ekleyerek, Premium depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
 >
 
 ## <a name="delete-the-managed-image"></a>Yönetilen görüntüyü silme

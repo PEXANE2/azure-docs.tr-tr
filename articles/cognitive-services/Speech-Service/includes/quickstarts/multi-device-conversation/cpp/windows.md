@@ -7,14 +7,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 015986ffa687142cf20ca18cff175ac6c5952a11
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1999100be3dd65518db7b5496ad5aaa1a407ee9e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671124"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226476"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -199,17 +199,17 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
+1. Menü çubuğundan **Dosya**  >  **Tümünü Kaydet**' i seçin.
 
 ## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı derleyin ve çalıştırın
 
-1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya <kbd>F5</kbd>tuşuna basın).
+1. **Debug**  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya <kbd>F5</kbd>tuşuna basın).
 
-1. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir
+1. `Started transcribing`İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir
     - Konuşma kodunu diğer kişilerle paylaşırsanız ve konuşmaya katılırsanız, bu kişilerin de onların dökümünü görürsünüz.
 
 1. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için klavyenizde <kbd>CTRL + C</kbd> tuşlarına basın.
@@ -221,7 +221,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Mevcut bir konuşmaya katmak için uygulamayı derleyin ve çalıştırın
 
-1. Aşağıdaki işlevi, `int main()` işlevden hemen önce **HelloWorld. cpp** öğesine kopyalayıp yapıştırın:
+1. Aşağıdaki işlevi, işlevden hemen önce **HelloWorld. cpp** öğesine kopyalayıp yapıştırın `int main()` :
 
     ```cpp
     void JoinExistingConversation(const std::string& conversationId)
@@ -274,7 +274,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     }
     ```
 
-2. İşlevinizdeki `StartNewConversation();` `int main()` ile değiştirin:
+2. `StartNewConversation();` `int main()` İşlevinizdeki ile değiştirin:
 
     ```cpp
     // Set this to the conversation you want to join
@@ -283,13 +283,13 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Visual Studio 'ya geri dönün ve işlevinizde `YourConversationId` `int main()` , önceki adımdaki konuşma kimliğiyle değiştirin.
+4. Visual Studio 'ya geri dönün ve `YourConversationId` `int main()` işlevinizde, önceki ADıMDAKI konuşma kimliğiyle değiştirin.
 
-5. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun hatasız derlenmesi gerekir.
+5. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun hatasız derlenmesi gerekir.
 
-6.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya <kbd>F5</kbd>tuşuna basın).
+6. **Debug**  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya <kbd>F5</kbd>tuşuna basın).
 
-7. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
+7. `Started transcribing`İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
     - Tarayıcınıza geri giderseniz, yaptığınız gibi, yaptığınız gibi görünmeler burada görünür.
 
 8.  Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.

@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905834"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224862"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -115,7 +115,7 @@ Kullanılabilir yapılandırma seçenekleri şunlardır
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
-Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bunlara
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu modüller şunlardır:
 
 - Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
     - Yığın izleme
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Ad | Varsayılan | Açıklama |
+| Name | Varsayılan | Açıklama |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -217,8 +217,8 @@ Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada har
 
 | Uzantılar |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
 
 ## <a name="correlation"></a>Bağıntı
 
@@ -235,7 +235,7 @@ Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada har
 
 `Access-Control-Allow-Headers`Sunucu tarafında yapılandırmaya bağlı olarak, genellikle ve el ile ekleyerek sunucu tarafı listesini genişletmek gereklidir `Request-Id` `Request-Context` .
 
-Erişim-denetim-Izin-üst bilgiler: `Request-Id` , `Request-Context` ,`<your header>`
+Erişim-denetim-Izin-üst bilgiler: `Request-Id` , `Request-Context` , `<your header>`
 
 İstemcinin iletişim kurduğu üçüncü taraf sunuculardan herhangi biri `Request-Id` ve `Request-Context` üst bilgileri kabul edemez ve yapılandırmalarını güncelleştiremezsiniz, bunları yapılandırma özelliği aracılığıyla dışlama listesine koymanız gerekir `correlationHeaderExcludeDomains` . Bu özellik joker karakterleri destekler.
 
@@ -302,7 +302,7 @@ dataset
 ### <a name="drag-and-drop"></a>Sürükleyip bırakma
 
 1. "Uçtan uca işlem ayrıntılarını" görüntülemek için Azure portal bir özel durum telemetrisi öğesi seçin
-2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak şununla sondan düzeltildi`.map`
+2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak şununla sondan düzeltildi `.map`
 3. Kaynak haritalarını, ![ bir yapı klasöründen bir derleme klasöründen Azure Portal yığın üzerine çağrı yığınına sürükleyip bırakma hakkında bir animasyonlu görüntüde Azure Portal çağrı yığınına sürükleyip bırakın.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web temel
@@ -377,7 +377,7 @@ Application Insights JavaScript SDK 'Sı, kaynak kodu görüntülemek veya proje
 
 En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./release-notes.md).
 
-## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
+## <a name="next-steps"></a><a name="next"></a> Sonraki adımlar
 * [Kullanımı İzleme](usage-overview.md)
 * [Özel etkinlikler ve ölçümler](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)

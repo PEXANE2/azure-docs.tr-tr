@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: ef0ee6047bd23206a2c0122b9409e00cee5f0ddf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5a2811b9bfda663892296c6194b401a610d2bbbe
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400603"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226071"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,7 +29,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Bu yeni dosyada `YourSubscriptionKey` dizesini Konuşma hizmeti abonelik anahtarınız ile değiştirin.
 
-1. Dizeyi, `YourServiceRegion` aboneliğinizle ilişkili [olan bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısıyla** değiştirin (örneğin, `westus` ücretsiz deneme aboneliği için).
+1. Dizeyi, `YourServiceRegion` aboneliğinizle ilişkili olan [bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısı** ile değiştirin.
 
 1. Dizeyi `whatstheweatherlike.wav` kendi dosya adı ile değiştirin.
 
@@ -53,7 +53,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Bir **ARM64** (64 bit) sisteminde, uygulamayı derlemek için aşağıdaki komutu çalıştırın.
+* Bir **ARM64**  (64 bit) sisteminde, uygulamayı derlemek için aşağıdaki komutu çalıştırın.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2

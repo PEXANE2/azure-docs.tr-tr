@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2f8e95826a7da3caa3edfe8ec23a6e0725b6bcba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213217"
+ms.locfileid: "88224722"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="set-up-feature-management"></a>Özellik yönetimini ayarlama
 
-`Microsoft.FeatureManagement`.NET Core Feature Manager 'ı kullanmak için NuGet paketine bir başvuru ekleyin.
+`Microsoft.FeatureManagement.AspNetCore` `Microsoft.FeatureManagement` .NET Core Feature Manager 'ı kullanmak için ve NuGet paketlerine bir başvuru ekleyin.
     
 .NET Core Feature Manager, `IFeatureManager` Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, dosyadaki veya ortam değişkenlerinin yerel *appsettings.js* dahil olmak üzere .NET Core tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `IFeatureManager` .NET Core bağımlılığı ekleme 'yi kullanır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
 
@@ -206,6 +206,8 @@ public class HomeController : Controller
 MVC denetleyicileri ' nde, `FeatureGate` bir denetleyici sınıfının veya belirli bir eylemin etkin olup olmadığını denetlemek için özniteliğini kullanırsınız. Aşağıdaki `HomeController` denetleyicinin, `FeatureA` Denetleyici sınıfı içeren *on* herhangi bir eylemde yürütülmesi gerekir:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -216,6 +218,8 @@ public class HomeController : Controller
 Aşağıdaki `Index` eylemin `FeatureA` çalıştırılabilmesi için önce *Açık* olması gerekir:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {

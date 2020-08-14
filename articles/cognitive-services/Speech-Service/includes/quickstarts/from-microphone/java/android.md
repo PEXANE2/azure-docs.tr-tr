@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 2641464e52b80c59b6c6b5a123ad1605c1d41495
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275249"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226567"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -32,7 +32,7 @@ Artık uygulama için temel bir kullanıcı arabirimi oluşturacağız. Ana etki
 
 * TextView öğesini seçin. Sağ üst köşedeki ID özniteliğini `hello` olarak değiştirin.
 
-* `activity_main.xml` Pencerenin sol üst kısmındaki paletten bir düğmeyi metnin üstündeki boş alana sürükleyin.
+* Pencerenin sol üst kısmındaki paletten `activity_main.xml` bir düğmeyi metnin üstündeki boş alana sürükleyin.
 
 * Sağ taraftaki düğme özniteliklerde, `onClick` özniteliği değeri için `onSpeechButtonClicked` girin. Düğme olayını işlemek için bu adla bir yöntem yazacağız. Sağ üst köşedeki ID özniteliğini `button` olarak değiştirin.
 
@@ -58,15 +58,15 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. Ayrıca dizeyi `YourServiceRegion` , [aboneliğinizle ilişkili olan bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısı** ile değiştirin. Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.
+1. Ayrıca dizeyi, `YourServiceRegion` aboneliğinizle ilişkili [olan bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısı** ile değiştirin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 1. Android cihazınızı geliştirme bilgisayarınıza bağlayın. Cihazda [geliştirme modunu ve USB hata ayıklamayı](https://developer.android.com/studio/debug/dev-options) etkinleştirdiğinizden emin olun.
 
-1. Uygulamayı derlemek için CTRL + F9 ' ı seçin veya menü çubuğundan**projeyi** **Oluştur ' u seçin.** > 
+1. Uygulamayı derlemek için CTRL + F9 ' ı seçin veya menü çubuğundan **projeyi oluştur ' u seçin**  >  **Make Project** .
 
-1. Uygulamayı başlatmak için SHIFT + F10 ' i seçin **veya çalıştırmayı Çalıştır** > **' uygulama '** yı seçin.
+1. Uygulamayı başlatmak için SHIFT + F10 ' i seçin **veya çalıştırmayı Çalıştır**  >  **' uygulama '** yı seçin.
 
 1. Görüntülenen dağıtım hedefi penceresinde Android cihazınızı seçin.
 

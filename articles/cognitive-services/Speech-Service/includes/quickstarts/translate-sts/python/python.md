@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: 03042cef3e5b5fb4360223e3c804f1ed2e24c97f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c3ba2289899206a15ace88a29cfbfdfad0f9de5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78924916"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226536"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -88,9 +88,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](../../../../regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](../../../../regions.md) ile değiştirin.
 
-1. Yaptığınız değişiklikleri kaydedin `quickstart.py`.
+1. Yaptığınız değişiklikleri kaydedin `quickstart.py` .
 
 ## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 

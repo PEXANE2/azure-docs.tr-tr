@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/13/2020
+ms.openlocfilehash: fee1285cfb5faefbcb8f7151186d42725d34af0a
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80369232"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224518"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -25,7 +25,24 @@ Bu yedekleme dosyaları Kullanıcı tarafından sunulmamış ve verilemez. Bu ye
 
 ### <a name="backup-frequency"></a>Yedekleme sıklığı
 
-Genellikle tam yedeklemeler haftada bir, değişiklik yedekleri günde iki kez, işlem günlüğü yedekleri ise beş dakikada bir alınır. İlk tam yedekleme, bir sunucu oluşturulduktan hemen sonra zamanlanır. İlk yedekleme, büyük bir geri yüklenen sunucuda daha uzun sürebilir. Yeni bir sunucunun geri yüklenebileceği en erken süre, ilk tam yedeklemenin tamamlandığı zamandır.
+#### <a name="servers-with-up-to-4-tb-storage"></a>4 TB 'a kadar depolama alanı olan sunucular
+
+En fazla 4 TB depolama alanı destekleyen sunucular için, tam yedeklemeler her hafta bir kez gerçekleşir. Değişiklik yedeklemeleri günde iki kez gerçekleşir. İşlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir.
+
+#### <a name="servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı olan sunucular
+[Azure bölgelerinin](concepts-pricing-tiers.md#storage)bir alt kümesinde, tüm yeni sağlanan sunucular 16 TB 'a kadar depolamayı destekleyebilir. Bu büyük depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, bir sunucu oluşturulduktan hemen sonra zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca fark yedeklemelerdir. 
+
+Fark anlık görüntüsü yedeklemeleri günde en az bir kez gerçekleşir. Değişiklik anlık görüntü yedeklemeleri sabit bir zamanlamaya göre gerçekleşmez. Hareket günlüğü (MariaDB), son fark yedeklemesinden bu yana 50 GB aşmadığı takdirde, fark anlık görüntü yedeklemeleri 24 saatte bir gerçekleşir. Bir gün içinde, en fazla altı fark anlık görüntüye izin verilir. 
+
+İşlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. 
+
+### <a name="backup-retention"></a>Yedekleri bekletme
+
+Yedeklemeler, sunucusundaki yedekleme bekletme süresi ayarına göre tutulur. 35 gün günlük bir saklama süresi seçebilirsiniz. Varsayılan saklama süresi 7 gündür. [Azure Portal](howto-restore-server-portal.md#set-backup-configuration) veya [Azure CLI](howto-restore-server-cli.md#set-backup-configuration)kullanarak yedekleme yapılandırmasını güncelleştirerek sunucu oluşturma sırasında veya daha sonra saklama süresini ayarlayabilirsiniz. 
+
+Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Yedekleme bekletme süresi Ayrıca bir geri yükleme perspektifinden kurtarma penceresi olarak da ele alınabilir. Yedekleme saklama süresi içinde bir zaman içindeki bir anlık geri yükleme gerçekleştirmek için gereken tüm yedeklemeler, yedekleme depolama alanında tutulur. Örneğin, yedekleme Bekletme dönemi 7 gün olarak ayarlandıysa, kurtarma penceresi son 7 gün olarak değerlendirilir. Bu senaryoda, son 7 gün içinde sunucuyu geri yüklemek için gereken tüm yedeklemeler korunur. Yedi günlük bir yedekleme bekletme penceresi ile:
+- 4 TB 'a kadar depolama alanı olan sunucular en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
+-   16 TB 'a kadar depolamaya sahip sunucular, son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
 
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 
@@ -36,11 +53,11 @@ MariaDB için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 
-MariaDB için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Genellikle, bu, yedi günlük bir yedekleme bekletme için uygundur. Kullanılan ek yedekleme depolama birimi GB aylık olarak ücretlendirilir.
+MariaDB için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden sunucu yedeklemeleri için kullanılabilir 250 GB ek depolama alanı vardır. 250 GB 'tan fazla yedeklemeler için tüketilen depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/mariadb/)göre ücretlendirilir. 
 
-Örneğin, 250 GB ile bir sunucu sağladıysanız, ek ücret ödemeden 250 GB yedekleme depolama alanı vardır. 250 GB 'tan fazla depolama alanı ücretlendirilir.
+Bir sunucu tarafından tüketilen yedekleme depolama alanını izlemek için Azure portal aracılığıyla Azure Izleyici 'de [kullanılan yedekleme depolama alanı](concepts-monitoring.md) ölçüsünü kullanabilirsiniz. Kullanılan yedekleme depolama ölçümü, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı Service tarafından yönetilmektedir ve daha önce açıklanmıştır. Sunucu üzerindeki ağır hareketsel etkinlik, yedekleme depolama kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur. 
 
-Yedekleme depolama maliyeti hakkında daha fazla bilgi için [MariaDB fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/mariadb/)ziyaret edin.
+Yedekleme depolama maliyetini denetlemenin birincil yolu, uygun yedekleme saklama süresini ayarlayarak ve istediğiniz kurtarma hedeflerinizi karşılamak için doğru yedekleme artıklığı seçeneklerini belirleyerek yapılır. 7 ile 35 gün arasında bir bekletme dönemi seçebilirsiniz. Genel Amaçlı ve bellek için Iyileştirilmiş sunucular, yedeklemeler için coğrafi olarak yedekli depolamaya sahip olmak için seçim yapabilir.
 
 ## <a name="restore"></a>Geri Yükleme
 
@@ -64,9 +81,11 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneği
 
 Son beş dakika içinde zaman içindeki bir noktaya geri yükleyebilmeniz için bir sonraki işlem günlüğü yedeklemesinin tamamlanmasını beklemeniz gerekebilir.
 
-### <a name="geo-restore"></a>Coğrafi Geri Yükleme
+### <a name="geo-restore"></a>Coğrafi geri yükleme
 
-Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hizmeti hizmetin kullanılabildiği başka bir Azure bölgesine geri yükleyebilirsiniz. Coğrafi geri yükleme, sunucunuzun barındırıldığı bölgedeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Bir bölgedeki büyük ölçekli bir olay veritabanı uygulamanızın kullanılamamasına neden olursa, coğrafi olarak yedekli yedeklerden bir sunucuyu başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Coğrafi geri yükleme, sunucunun en son yedeklemesini kullanır. Bir yedeklemenin alınması ve farklı bölgeye çoğaltılma arasında bir gecikme vardır. Bu gecikme bir saat kadar sürebilir. bu nedenle, bir olağanüstü durum oluşursa bir saatlik veri kaybı olabilir.
+Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hizmeti hizmetin kullanılabildiği başka bir Azure bölgesine geri yükleyebilirsiniz. 4 TB 'a kadar depolamayı destekleyen sunucular, coğrafi olarak eşleştirilmiş bölgeye veya 16 TB 'a kadar depolamayı destekleyen herhangi bir bölgeye geri yüklenebilir. 16 TB 'a kadar depolamayı destekleyen sunucular için coğrafi yedeklemeler, 16 TB sunucu destekleyen her bölgede geri yüklenebilir. Desteklenen bölgelerin listesi için, [MariaDB Için Azure veritabanı fiyatlandırma katmanlarını](concepts-pricing-tiers.md) gözden geçirin.
+
+Coğrafi geri yükleme, sunucunuzun barındırıldığı bölgedeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Bir bölgedeki büyük ölçekli bir olay veritabanı uygulamanızın kullanılamamasına neden olursa, coğrafi olarak yedekli yedeklerden bir sunucuyu başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Coğrafi geri yükleme, sunucunun en son yedeklemesini kullanır. Bir yedeklemenin alınması ve farklı bölgeye çoğaltılma arasında bir gecikme vardır. Bu gecikme bir saat kadar sürebilir. bu nedenle, bir olağanüstü durum oluşursa bir saatlik veri kaybı olabilir.
 
 Coğrafi geri yükleme sırasında, değiştirilebilecek sunucu yapılandırması işlem oluşturma, sanal çekirdek, yedekleme saklama süresi ve yedekleme artıklığı seçeneklerini içerir. Coğrafi geri yükleme sırasında fiyatlandırma katmanını (temel, Genel Amaçlı veya bellek için Iyileştirilmiş) veya depolama boyutunu değiştirme desteklenmiyor.
 

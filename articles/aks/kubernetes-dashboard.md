@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499877"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225997"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
@@ -20,7 +20,7 @@ Kubernetes, temel yönetim işlemleri için kullanılabilen bir Web panosu içer
 Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panosu][kubernetes-dashboard]. AKS, açık kaynaklı panonun 2,0 sürümünü ve üstünü kullanır.
 
 > [!WARNING]
-> **AKS Pano eklentisi kullanımdan kaldırma için ayarlanmış.** 
+> **AKS Pano eklentisi kullanımdan kaldırma için ayarlanmış. Bunun yerine [Azure Portal (Önizleme) Içindeki Kubernetes kaynak görünümünü][kubernetes-portal] kullanın.** 
 > * Kubernetes panosu, 1,18 'den daha az bir Kubernetes sürümü çalıştıran kümeler için varsayılan olarak etkindir.
 > * Bu pano eklentisi, Kubernetes 1,18 veya üzeri üzerinde oluşturulan tüm yeni kümeler için varsayılan olarak devre dışı bırakılır. 
  > * Önizleme aşamasında Kubernetes 1,19 ile başlayarak, AKS artık yönetilen kuin-Dashboard eklentisi yüklemesini desteklememektedir. 
@@ -54,8 +54,8 @@ Bu komut, geliştirme sisteminiz ile Kubernetes API 'niz arasında bir ara sunuc
 
 > [!NOTE]
 > Üzerinde Pano görmüyorsanız, `http://127.0.0.1:8001` aşağıdaki adreslere el ile yönlendirme yapabilirsiniz. 1,16 veya üzeri kümeler HTTPS kullanır ve ayrı bir uç nokta gerektirir.
-> * K8s 1,16 veya üzeri:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1,15 ve altı:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
+> * K8s 1,16 veya üzeri: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1,15 ve altı: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -117,7 +117,7 @@ Sunulan ilk ekran bir kubeconfig veya Token gerektiriyor. Her iki seçenek de, b
 
 Hem Azure AD hem de Azure dışı AD özellikli kümeler için bir kubeconfig iletilebilir. Erişim belirteçlerinin geçerli olduğundan emin olun. belirteçlerinizin geçerliliği dolmuşsa, belirteçleri kubectl aracılığıyla yenileyebilirsiniz.
 
-1. Admin kubeconfig 'i ile ayarlama`az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. Admin kubeconfig 'i ile ayarlama `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
 1. `Kubeconfig` `Choose kubeconfig file` Dosya seçicisini açmak için seçin ve tıklayın
 1. Kubeconfig dosyanızı seçin (varsayılan olarak $HOME/5kube/config değerini alır)
 1. Şuna tıklayın: `Sign In`
@@ -209,3 +209,4 @@ Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panos
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: c0f23c864430b6cb2f49f924d5aaa8bde296037c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135972"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225691"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -82,15 +82,11 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Azure Synapse Analytics (eski adı Azure SQL Veri Ambarı)
 - Azure CosmosDB SQL
 - Azure Key Vault
-- Azure Özel Bağlantı
+- Azure özel bağlantı hizmeti
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF tarafından yönetilen sanal ağdan gelen genel uç nokta aracılığıyla giden iletişimler
 - Giden iletişimler için yalnızca bağlantı noktası 443 açılır.
 - Azure depolama ve Azure Data Lake Gen2, ADF tarafından yönetilen sanal ağdan gelen genel uç nokta ile bağlantı için desteklenmez.
-
-### <a name="other-known-issues"></a>Diğer bilinen sorunlar
-CosmosDB bağlantısı için hata ayıklama çalıştırması hem DataFlow hata ayıklama hem de işlem hattı hata ayıklaması dahil değildir.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

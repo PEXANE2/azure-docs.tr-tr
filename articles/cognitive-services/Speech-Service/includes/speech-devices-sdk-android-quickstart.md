@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374965"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226244"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
-Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](../get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](../get-started.md) hesabı gerekir.
 
 Örnek uygulamanın kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -126,7 +126,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    Yeni bir anahtar sözcük kullanmak için ' de aşağıdaki iki satırı güncelleştirin `MainActivity.java` ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için kws-machine.zip:
 
-   - Anahtar sözcük paketini "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" klasörüne kopyalayın.
+   - Anahtar sözcük paketini "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets" klasörüne kopyalayın \" .
    - `MainActivity.java`Anahtar sözcüğüyle ve paket adıyla güncelleştirin:
 
      ```java
@@ -145,12 +145,12 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    | Değişken | Anlamı | Kullanılabilir değerler |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Fiziksel mik yapılandırması | Döngüsel bir geliştirici seti için:`Circular6+1` |
-   |          |         | Doğrusal bir geliştirici seti için:`Linear4` |
-   | `SelectedGeometry` | Yazılım mik yapılandırması | Tüm mikler kullanan bir döngüsel geliştirici seti için:`Circular6+1` |
-   |          |         | Dört miks kullanan dairesel bir geliştirici seti için:`Circular3+1` |
-   |          |         | Tüm mikler kullanan doğrusal bir geliştirme seti için:`Linear4` |
-   |          |         | İki miks kullanan doğrusal bir geliştirici seti için:`Linear2` |
+   | `DeviceGeometry` | Fiziksel mik yapılandırması | Döngüsel bir geliştirici seti için: `Circular6+1` |
+   |          |         | Doğrusal bir geliştirici seti için: `Linear4` |
+   | `SelectedGeometry` | Yazılım mik yapılandırması | Tüm mikler kullanan bir döngüsel geliştirici seti için: `Circular6+1` |
+   |          |         | Dört miks kullanan dairesel bir geliştirici seti için: `Circular3+1` |
+   |          |         | Tüm mikler kullanan doğrusal bir geliştirme seti için: `Linear4` |
+   |          |         | İki miks kullanan doğrusal bir geliştirici seti için: `Linear2` |
 
 1. Uygulamayı derlemek için, **Çalıştır** menüsünde **' uygulama ' Çalıştır '** ı seçin. **Dağıtım hedefi seç** iletişim kutusu görüntülenir.
 

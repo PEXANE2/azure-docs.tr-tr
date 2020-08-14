@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 259fc503b0de6c05196a7cb8096f828080705be8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375622"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226561"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.
 
 Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64 bit Windows üzerinde Java IDE tutulma (v4). 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
-Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](../get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](../get-started.md) hesabı gerekir.
 
 [Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 

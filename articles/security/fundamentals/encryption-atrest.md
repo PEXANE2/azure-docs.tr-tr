@@ -4,8 +4,7 @@ description: Bu makalede, bekleyen veri şifreleme, genel yetenekler ve genel ko
 services: security
 documentationcenter: na
 author: msmbaldwin
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2020
+ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529293"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224501"
 ---
-# <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
+# <a name="azure-data-encryption-at-rest"></a>Azure bekleyen verileri şifreleme
 
 Microsoft Azure, şirketinizin güvenlik ve uyumluluk ihtiyaçlarına göre verileri korumaya yönelik araçlar içerir. Bu kağıdın odakları:
 
@@ -49,7 +48,7 @@ Rest 'de şifreleme, depolanan veriler (bekleyen) için veri koruması sağlar. 
 
 Bekleyen şifreleme, verilerin disk üzerinde şifrelendiğinden emin olmak için, saldırganın şifrelenmemiş verilere erişmesini engellemek üzere tasarlanmıştır. Bir saldırgan şifrelenmiş verileri olan ancak şifreleme anahtarları olmayan bir sabit sürücü alırsa, verileri okumak için saldırganın şifrelemeyi ertelemeniz gerekir. Bu saldırı, sabit bir sürücüdeki şifrelenmemiş verilere erişenden çok daha karmaşık ve kaynak kullanıyor. Bu nedenle, bekleyen şifreleme son derece önerilir ve birçok kuruluş için yüksek öncelikli bir gereksinimdir.
 
-Bekleyen şifreleme, bir kuruluşun veri idare ve uyumluluk çabalarına ihtiyacı olarak da gerekli olabilir. HIPAA, PCI ve Fedratin gibi sektör ve kamu düzenlemeleri, veri koruma ve şifreleme gereksinimleriyle ilgili belirli korumaları düzenleyin. Bekleyen şifreleme, bu düzenlemelerle uyumluluk için gerekli olan zorunlu bir ölçüdür. Microsoft 'un FIPS 140-2 doğrulamasına yaklaşımı hakkında daha fazla bilgi için bkz. [Federal bilgi Işleme standardı (FIPS) yayını 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2). 
+Bekleyen şifreleme, bir kuruluşun veri idare ve uyumluluk çabalarına ihtiyacı olarak da gerekli olabilir. HIPAA, PCI ve Fedratin gibi sektör ve kamu düzenlemeleri, veri koruma ve şifreleme gereksinimleriyle ilgili belirli korumaları düzenleyin. Bekleyen şifreleme, bu düzenlemelerle uyumluluk için gerekli olan zorunlu bir ölçüdür. Microsoft 'un FIPS 140-2 doğrulamasına yaklaşımı hakkında daha fazla bilgi için bkz. [Federal bilgi Işleme standardı (FIPS) yayını 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2).
 
 Uyumluluk ve mevzuat gereksinimlerinin karşılamalarının yanı sıra, bekleyen şifreleme da derinlemesine savunma koruması sağlar. Microsoft Azure, hizmetler, uygulamalar ve veriler için uyumlu bir platform sağlar. Ayrıca kapsamlı tesis ve fiziksel güvenlik, veri erişim denetimi ve denetim sağlar. Ancak, diğer güvenlik ölçülerinden biri başarısız olduğunda ve bekleyen şifreleme bu tür bir güvenlik ölçüsü sağladığından, ek "çakışan" güvenlik önlemleri sağlanması önemlidir.
 
@@ -76,130 +75,7 @@ Rest uygulamasında bir şifrelemede birden fazla şifreleme anahtarı kullanıl
 - **Veri şifreleme anahtarı (dek)** – bir bölümü veya veri bloğunu şifrelemek için kullanılan BIR simetrik AES256 anahtarı.  Tek bir kaynakta birçok bölüm ve birçok veri şifreleme anahtarı olabilir. Farklı bir anahtarla her bir veri bloğunu şifrelemek, şifre çözümleme saldırılarını daha zor hale getirir. Belirli bir bloğu şifreleyen ve şifresini çözen kaynak sağlayıcı veya uygulama örneği, DEKs 'e erişim için gereklidir. Bir DEK yeni bir anahtarla değiştirildiğinde, yalnızca ilişkili bloğundaki veriler yeni anahtarla yeniden şifrelenmelidir.
 - **Anahtar şifreleme anahtarı (kek)** : veri şifreleme anahtarlarını şifrelemek için kullanılan bir şifreleme anahtarı. Key Vault hiçbir şekilde ayrılmayacak anahtar şifreleme anahtarının kullanımı, veri şifreleme anahtarlarının kendilerine şifreli ve denetimli olmasını sağlar. KEK 'e erişimi olan varlık, DEK gerektiren varlıktan farklı olabilir. Bir varlık her bir DEK ' ın erişimini belirli bir bölüme sınırlamak için DEK aracı erişimi sağlayabilir. KEK 'in şifresini çözmek için gerekli olduğundan, KEK, KEK silinerek etkin bir şekilde silinebilen tek bir noktasıdır.
 
-Anahtar şifreleme anahtarlarıyla şifrelenen veri şifreleme anahtarları ayrı olarak saklanır ve yalnızca anahtar şifreleme anahtarına erişimi olan bir varlık bu veri şifreleme anahtarlarının şifresini çözebilir. Farklı anahtar depolama modelleri desteklenir. Sonraki bölümde daha sonra her bir modeli daha ayrıntılı tartışacağız.
-
-## <a name="data-encryption-models"></a>Veri şifreleme modelleri
-
-Çeşitli şifreleme modellerinin ve bunların uzmanlarının ve dezavantajlarını anlamak, Azure 'daki çeşitli kaynak sağlayıcılarının bekleyen şifreleme uygulamasını anlamak için gereklidir. Bu tanımlar, ortak dil ve Taksonomi sağlamak için Azure 'daki tüm kaynak sağlayıcıları genelinde paylaşılır.
-
-Sunucu tarafı şifreleme için üç senaryo vardır:
-
-- Hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
-  - Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir
-  - Microsoft, anahtarları yönetir
-  - Tam bulut işlevselliği
-
-- Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
-  - Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir
-  - Müşteri denetimleri Azure Key Vault aracılığıyla anahtarları
-  - Tam bulut işlevselliği
-
-- Müşteri tarafından denetlenen donanımda müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
-  - Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir
-  - Müşteri tarafından denetlenen donanımda müşteriler denetim anahtarları
-  - Tam bulut işlevselliği
-
-İstemci tarafı şifreleme için aşağıdakileri göz önünde bulundurun:
-
-- Azure hizmetleri şifresi çözülen verileri göremez
-- Müşteriler, anahtarları şirket içinde (veya diğer güvenli depolarda) yönetebilir ve depolar. Anahtarlar Azure hizmetleri için kullanılamaz
-- Azaltılmış bulut işlevselliği
-
-Azure 'daki desteklenen şifreleme modelleri, daha önce bahsedilen "Istemci şifrelemesi" ve "sunucu tarafı şifreleme" olarak iki ana gruba ayrılır. Kullanılan Rest modelindeki şifrelemeden bağımsız olarak Azure Hizmetleri, TLS veya HTTPS gibi güvenli bir taşımanın kullanımını her zaman önerir. Bu nedenle, Aktarımdaki şifrelemeye, Aktarım Protokolü tarafından değinilmesi gerekir ve bekleyen modeldeki şifrelemeyi belirlemede büyük bir faktör olmamalıdır.
-
-### <a name="client-encryption-model"></a>İstemci şifreleme modeli
-
-İstemci şifreleme modeli, kaynak sağlayıcısı veya hizmet tarafından Azure veya çağıran uygulama dışında gerçekleştirilen şifrelemeyi ifade eder. Şifreleme, Azure 'daki hizmet uygulaması veya müşteri veri merkezinde çalışan bir uygulama tarafından gerçekleştirilebilir. Her iki durumda da, bu şifreleme modeli kullanılırken Azure Kaynak sağlayıcısı, verilerin şifresini herhangi bir şekilde çözebilme veya şifreleme anahtarlarına erişim olmadan şifrelenmiş bir veri blobu alır. Bu modelde, anahtar yönetimi çağıran hizmet/uygulama tarafından yapılır ve Azure hizmetine opaktır.
-
-![İstemci](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
-
-### <a name="server-side-encryption-model"></a>Sunucu tarafı şifreleme modeli
-
-Sunucu tarafı şifreleme modelleri, Azure hizmeti tarafından gerçekleştirilen şifrelemeye başvurur. Bu modelde, kaynak sağlayıcısı şifreleme ve şifre çözme işlemlerini gerçekleştirir. Örneğin, Azure Storage verileri düz metin işlemlerinde alabilir ve şifreleme ve şifre çözme işlemlerini dahili olarak gerçekleştirir. Kaynak sağlayıcı, belirtilen yapılandırmaya bağlı olarak Microsoft tarafından veya müşteri tarafından yönetilen şifreleme anahtarlarını kullanabilir.
-
-![Sunucu](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
-
-### <a name="server-side-encryption-key-management-models"></a>Sunucu tarafı şifreleme anahtarı yönetim modelleri
-
-Rest modellerindeki sunucu tarafı şifrelemenin her biri, anahtar yönetiminin farklı özelliklerini gösterir. Bu, şifreleme anahtarlarının nerede ve nasıl oluşturulduğunu, ayrıca erişim modellerini ve anahtar döndürme yordamlarını da içerir.
-
-#### <a name="server-side-encryption-using-service-managed-keys"></a>Hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
-
-Birçok müşteri için, en önemli gereksinim, verilerin bekleyen her durumda şifrelendiğinden emin olunması sağlamaktır. Hizmet tarafından yönetilen anahtarları kullanan sunucu tarafı şifreleme, müşterilerin belirli bir kaynağı (depolama hesabı, SQL DB vb.) şifreleme için işaretlemesini ve anahtar verme, döndürme ve yedekleme gibi tüm anahtar yönetim yönlerini Microsoft 'a bırakarak bu modeli sağlar. Rest 'de şifrelemeyi destekleyen çoğu Azure hizmeti, şifreleme anahtarlarının yönetimini Azure 'a boşaltma için genellikle bu modeli destekler. Azure Kaynak sağlayıcısı anahtarları oluşturur, güvenli depolamaya koyar ve gerektiğinde bunları alır. Bu, hizmetin anahtarlara tam erişimi olduğu ve hizmetin kimlik bilgisi yaşam döngüsü yönetimi üzerinde tam denetime sahip olduğu anlamına gelir.
-
-![lebilmesi](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
-
-Hizmet tarafından yönetilen anahtarlar kullanılarak yapılan sunucu tarafı şifreleme, bu nedenle, müşteri için düşük ek yük ile bekleyen şifreleme gereksinimini hızla ortadan kaldırır. Bir müşteri kullanılabilir olduğunda, genellikle hedef abonelik ve kaynak sağlayıcısı için Azure portal açar ve bunu gösteren bir kutuyu kontrol eder ve verilerin şifrelenmesini ister. Bazı kaynak yöneticileri, hizmet tarafından yönetilen anahtarlarla sunucu tarafında şifreleme varsayılan olarak açık olur.
-
-Microsoft tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, hizmetin anahtarları depolamak ve yönetmek için tam erişimi olduğunu göstermez. Bazı müşteriler daha fazla güvenlik elde ettikleri için anahtarları yönetmek isteyebilir, bu modelin değerlendirmesi sırasında özel bir anahtar depolama çözümüyle ilişkili maliyet ve risk göz önünde bulundurulmalıdır. Çoğu durumda, bir kuruluş, şirket içi bir çözümün kaynak kısıtlamalarının veya risklerin, Rest anahtarlarındaki şifrelemenin bulut yönetimi riskinden daha büyük olabileceğini tespit edebilir.  Ancak, bu model, şifreleme anahtarlarının oluşturulmasını veya yaşam döngüsünü denetlemek veya farklı personele hizmetin şifreleme anahtarlarını (hizmet için genel yönetim modelinden anahtar yönetimi) yönetmekten farklı bir şekilde yönetmesi için yeterli olmayabilir.
-
-##### <a name="key-access"></a>Anahtar erişimi
-
-Hizmet tarafından yönetilen anahtarlarla sunucu tarafı şifreleme kullanıldığında, anahtar oluşturma, depolama ve hizmet erişiminin hepsi hizmet tarafından yönetilir. Genellikle, temel Azure kaynak sağlayıcıları veri şifreleme anahtarlarını verilere yakın bir depoda depolar ve anahtar şifreleme anahtarları güvenli bir dahili depoda depolanırken hızlı bir şekilde kullanılabilir ve erişilebilir olur.
-
-**Avantajlar**
-
-- Basit kurulum
-- Microsoft, anahtar döndürme, yedekleme ve artıklığı yönetir
-- Müşterinin, uygulamayla ilişkili maliyeti veya özel bir anahtar yönetim şeması riski yoktur.
-
-**Dezavantajlar**
-
-- Şifreleme anahtarları üzerinde müşteri denetimi yok (anahtar belirtimi, yaşam döngüsü, iptal, vb.)
-- Hizmet için genel yönetim modelinden anahtar yönetimini ayırma yeteneği yoktur
-
-#### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
-
-Gereksinimin, bekleyen verileri şifrelemek ve şifreleme anahtarlarını denetlemek için gereken senaryolarda, müşteriler Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifrelemeyi kullanabilir. Bazı hizmetler Azure Key Vault yalnızca kök anahtar şifreleme anahtarını saklayabilir ve şifreli veri şifreleme anahtarını verilere daha yakın bir iç konuma saklayabilir. Bu senaryoda müşteriler, kendi anahtarlarını Key Vault (BYOK – Kendi Anahtarını Getir) öğesine getirebilir ya da yenilerini oluşturabilir ve bunları istediğiniz kaynakları şifrelemek için kullanabilir. Kaynak sağlayıcısı şifreleme ve şifre çözme işlemlerini gerçekleştirdiğinde, yapılandırılan anahtar şifreleme anahtarını tüm şifreleme işlemleri için kök anahtar olarak kullanır.
-
-Anahtar şifreleme anahtarlarının kaybolması, veri kaybı anlamına gelir. Bu nedenle anahtarlar silinmemelidir. Anahtarlar her oluşturulduğunda veya döndürüldüğünde yedeklenmelidir. Anahtar şifreleme anahtarlarını depolayan kasalardaki [geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) etkinleştirilmelidir. Anahtar silmek yerine, etkin ayarını false olarak ayarlayın veya bitiş tarihini ayarlayın.
-
-##### <a name="key-access"></a>Anahtar erişimi
-
-Azure Key Vault içindeki müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme modeli, gerektiğinde şifrelemek ve şifresini çözmek için anahtarlara erişen hizmeti içerir. Rest anahtarlarındaki şifrelemeye, bir erişim denetim ilkesi aracılığıyla bir hizmet tarafından erişilebilir hale getirilir. Bu ilke, anahtarı almak için hizmet kimliği erişimine izin verir. İlişkili bir abonelik adına çalışan bir Azure hizmeti, Bu abonelikteki bir kimlikle yapılandırılabilir. Hizmet Azure Active Directory kimlik doğrulaması gerçekleştirebilir ve bu hizmet, abonelik adına işlem gören bir kimlik doğrulama belirteci alabilir. Bu belirteç daha sonra, erişimi verilen bir anahtarı elde etmek için Key Vault sunulabilir.
-
-Şifreleme anahtarlarını kullanan işlemler için, bir hizmet kimliğine şu işlemlerden herhangi birine erişim verilebilir: şifre çözme, şifreleme, unwrapKey, wrapKey, doğrulama, imzalama, alma, listeleme, güncelleştirme, oluşturma, içeri aktarma, silme, yedekleme ve geri yükleme.
-
-Bekleyen verileri şifrelemek veya şifrelerini çözmek için bir anahtar almak üzere Kaynak Yöneticisi hizmet örneğinin çalışacağı hizmet kimliğinin UnwrapKey olması gerekir (şifre çözme anahtarını almak için) ve WrapKey (yeni anahtar oluştururken anahtar kasasına bir anahtar eklemek için).
-
->[!NOTE]
->Key Vault yetkilendirmesi hakkında daha fazla ayrıntı için, [Azure Key Vault belgelerindeki](../../key-vault/general/secure-your-key-vault.md)anahtar kasasının güvenliğini sağlama sayfasına bakın.
-
-**Avantajlar**
-
-- Kullanılan anahtarlar üzerinde tam denetim – şifreleme anahtarları, müşterinin denetiminde müşterinin Key Vault yönetilir.
-- Birden çok hizmeti tek bir ana öğe ile şifreleme yeteneği
-- Hizmet için genel yönetim modelinden anahtar yönetimini ayırt edebilir
-- , Bölgeler arasında hizmet ve anahtar konumunu tanımlayabilir
-
-**Dezavantajlar**
-
-- Müşteri, anahtar erişim yönetimi için tam sorumluluğa sahiptir
-- Müşteri, anahtar yaşam döngüsü yönetimi için tam sorumluluğa sahiptir
-- Ek kurulum & yapılandırma ek yükü
-
-#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Müşteri tarafından denetlenen donanımda müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
-
-Bazı Azure Hizmetleri, ana bilgisayarı kendi anahtarınızı (HYOK) anahtar yönetim modelinize etkinleştirir. Bu yönetim modu, bekleyen verileri şifrelemek ve Microsoft 'un denetimi dışında özel bir depodaki anahtarları yönetmek için gereken senaryolarda faydalıdır. Bu modelde, hizmetin anahtarı bir dış siteden alması gerekir. Performans ve kullanılabilirlik garantisi etkilendi ve yapılandırma daha karmaşıktır. Ayrıca, şifreleme ve şifre çözme işlemleri sırasında hizmetin DEK erişimi olduğundan, bu modelin genel güvenlik garantisi, anahtarların Azure Key Vault ' de müşteri tarafından yönetilme biçimine benzer.  Sonuç olarak, belirli anahtar yönetim gereksinimlerine sahip olmadıkları sürece bu model çoğu kuruluşa uygun değildir. Bu sınırlamalar nedeniyle, çoğu Azure hizmeti, müşteri denetimli donanımda sunucu tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifrelemeyi desteklemez.
-
-##### <a name="key-access"></a>Anahtar erişimi
-
-Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme kullanıldığında, anahtarlar müşteri tarafından yapılandırılan bir sistemde tutulur. Bu modeli destekleyen Azure Hizmetleri, müşterinin sağladığı anahtar deposuyla güvenli bir bağlantı kurmak için bir yol sağlar.
-
-**Avantajlar**
-
-- Kullanılan kök anahtar üzerinde tam denetim – şifreleme anahtarları müşterinin sunduğu bir mağaza tarafından yönetilir
-- Birden çok hizmeti tek bir ana öğe ile şifreleme yeteneği
-- Hizmet için genel yönetim modelinden anahtar yönetimini ayırt edebilir
-- , Bölgeler arasında hizmet ve anahtar konumunu tanımlayabilir
-
-**Dezavantajlar**
-
-- Anahtar depolama, güvenlik, performans ve kullanılabilirlik için tam sorumluluk
-- Anahtar erişim yönetimi için tam sorumluluk
-- Anahtar yaşam döngüsü yönetimi için tam sorumluluk
-- Önemli kurulum, yapılandırma ve devam eden bakım maliyetleri
-- Müşteri veri merkezi ve Azure veri merkezleri arasında ağ kullanılabilirliğine yönelik daha fazla bağımlılık.
+Anahtar şifreleme anahtarlarıyla şifrelenen veri şifreleme anahtarları ayrı olarak saklanır ve yalnızca anahtar şifreleme anahtarına erişimi olan bir varlık bu veri şifreleme anahtarlarının şifresini çözebilir. Farklı anahtar depolama modelleri desteklenir. Daha fazla bilgi için bkz. [veri şifreleme modelleri](encryption-models.md) .
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Microsoft bulut hizmetlerinde bekleyen şifreleme
 
@@ -223,7 +99,7 @@ Hizmet olarak altyapı (IaaS) müşterileri, kullanımda olan çeşitli hizmet v
 
 #### <a name="encrypted-storage"></a>Şifrelenmiş depolama
 
-PaaS gibi IaaS çözümleri, bekleyen verileri depolayan diğer Azure hizmetlerinden yararlanabilir. Bu durumlarda, kullanılan her Azure hizmeti tarafından sağlandığı gibi, bekleyen destek için şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki tabloda, ana depolama, hizmetler ve uygulama platformları ile bekleyen desteklenen şifreleme modeli numaralandırılır. 
+PaaS gibi IaaS çözümleri, bekleyen verileri depolayan diğer Azure hizmetlerinden yararlanabilir. Bu durumlarda, kullanılan her Azure hizmeti tarafından sağlandığı gibi, bekleyen destek için şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki tabloda, ana depolama, hizmetler ve uygulama platformları ile bekleyen desteklenen şifreleme modeli numaralandırılır.
 
 #### <a name="encrypted-compute"></a>Şifrelenmiş işlem
 
@@ -243,7 +119,7 @@ Hizmet olarak altyapı (IaaS) özelliklerinin kullanıldığı tüm müşteriler
 
 #### <a name="azure-storage"></a>Azure depolama
 
-Tüm Azure depolama hizmetleri (BLOB depolama, kuyruk depolama, tablo depolama ve Azure dosyaları), bekleyen sunucu tarafı şifrelemeyi destekler; Ayrıca, bazı hizmetler müşteri tarafından yönetilen anahtarları ve istemci tarafı şifrelemeyi destekler. 
+Tüm Azure depolama hizmetleri (BLOB depolama, kuyruk depolama, tablo depolama ve Azure dosyaları), bekleyen sunucu tarafı şifrelemeyi destekler; Ayrıca, bazı hizmetler müşteri tarafından yönetilen anahtarları ve istemci tarafı şifrelemeyi destekler.
 
 - Sunucu tarafı: tüm Azure depolama hizmetleri, varsayılan olarak, uygulama tarafından saydam olan hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifrelemeyi etkinleştirir. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md). Azure Blob depolama ve Azure dosyaları, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları da destekler. Daha fazla bilgi için [Azure Key Vault depolama hizmeti şifrelemesi müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/storage-encryption-keys-portal.md)konusuna bakın.
 - İstemci tarafı: Azure Blob 'Ları, tablolar ve kuyruklar, istemci tarafı şifrelemeyi destekler. İstemci tarafı şifreleme kullanılırken, müşteriler verileri şifreler ve verileri şifrelenmiş bir blob olarak yükler. Anahtar Yönetimi Müşteri tarafından yapılır. Daha fazla bilgi için bkz. [Istemci tarafı şifreleme ve Microsoft Azure depolama için Azure Key Vault](../../storage/common/storage-client-side-encryption.md).
@@ -256,107 +132,11 @@ Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelli
 
 Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) özelliği aracılığıyla desteklenir. Always Encrypted, istemci tarafından oluşturulan ve depolanan bir anahtarı kullanır. Müşteriler ana anahtarı bir Windows sertifika deposunda, Azure Key Vault veya yerel bir donanım güvenlik modülünde depolayabilirler. SQL Server Management Studio kullanarak, SQL kullanıcıları hangi sütunu şifrelemek için kullanmak istediğiniz anahtarı seçer.
 
-#### <a name="encryption-model-and-key-management-table"></a>Şifreleme modeli ve anahtar yönetimi tablosu
-
-| Ürün, özellik veya hizmet | Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı   | Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı | İstemci-yönetilen anahtarı kullanarak istemci tarafı  |
-|----------------------------------|--------------------|-----------------------------------------|--------------------|
-| **Yapay Zeka ve Makine Öğrenmesi**      |                    |                    |                    |
-| Azure Bilişsel Arama           | Yes                | Yes                | -                  |
-| Azure Bilişsel Hizmetler         | Yes                | Yes                | -                  |
-| Azure Machine Learning           | Yes                | Yes                | -                  |
-| Azure Machine Learning Studio    | Yes                | Önizleme, RSA 2048 bit | -               |
-| Content Moderator                | Yes                | Yes                | -                  |
-| Yüz Tanıma                             | Yes                | Yes                | -                  |
-| Language Understanding           | Yes                | Yes                | -                  |
-| Kişiselleştirme                     | Yes                | Yes                | -                  |
-| Soru-Cevap Oluşturucu                        | Yes                | Yes                | -                  |
-| Konuşma Hizmetleri                  | Yes                | Yes                | -                  |
-| Translator Metin Çevirisi                  | Yes                | Yes                | -                  |
-| Power BI                         | Yes                | Önizleme, RSA 2048 bit | -                  |
-| **Analiz**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | yok\*            | -                  |
-| Event Hubs                       | Yes                | Evet, tüm RSA uzunlukları. | -                  |
-| İşlevler                        | Yes                | Evet, tüm RSA uzunlukları. | -                  |
-| Azure Analysis Services          | Yes                | -                  | -                  |
-| Azure Veri Kataloğu               | Yes                | -                  | -                  |
-| Azure HDInsight                  | Yes                | Tümü                | -                  |
-| Azure Izleyici Application Insights | Yes                | Yes                | -                  |
-| Azure Izleyici Log Analytics      | Yes                | Yes                | -                  |
-| Azure Veri Gezgini              | Yes                | Yes                | -                  |
-| Azure Data Factory               | Yes                | Yes                | -                  |
-| Azure Data Lake Store            | Yes                | Evet, RSA 2048 bit  | -                  |
-| **Kapsayıcılar**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Yes                | Yes                | -                  |
-| Container Instances              | Yes                | Yes                | -                  |
-| Container Registry               | Yes                | Yes                | -                  |
-| **İşlem**                      |                    |                    |                    |
-| Sanal Makineler                 | Yes                | Evet, RSA 2048 bit  | -                  |
-| Sanal makine ölçek kümesi        | Yes                | Evet, RSA 2048 bit  | -                  |
-| SAP HANA                         | Evet                | Evet, RSA 2048 bit  | -                  |
-| App Service                      | Yes                | Yes\*\*            | -                  |
-| Otomasyon                       | Yes                | Yes\*\*            | -                  |
-| Azure İşlevleri                  | Yes                | Yes\*\*            | -                  |
-| Azure Portalı                     | Yes                | Yes\*\*            | -                  |
-| Logic Apps                       | Yes                | Yes                | -                  |
-| Azure Yönetilen Uygulamalar       | Yes                | Yes\*\*            | -                  |
-| Service Bus                      | Yes                | Yes                | -                  |
-| Site Recovery                    | Yes                | Yes                | -                  |
-| **Veritabanları**                    |                    |                    |                    |
-| Sanal Makinelerde SQL Server   | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Azure SQL Veritabanı               | Yes                | Evet, RSA 2048 bit  | Yes                |
-| MariaDB için Azure SQL veritabanı   | Yes                | -                  | -                  |
-| MySQL için Azure SQL veritabanı     | Yes                | Yes                | -                  |
-| PostgreSQL için Azure SQL veritabanı | Yes               | Yes                | -                  |
-| Azure Synapse Analytics          | Yes                | Evet, RSA 2048 bit  | -                  |
-| SQL Server Stretch Database      | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Tablo Depolama                    | Yes                | Yes                | Yes                |
-| Azure Cosmos DB                  | Yes                | Yes                | -                  |
-| Azure Databricks                 | Yes                | Yes                | -                  |
-| Azure Veritabanı Geçiş Hizmeti | Yes                | yok\*              | -                  |
-| **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Yes                | -                  | Yes                |
-| Azure Repos                      | Yes                | -                  | Yes                |
-| **Kimlik**                     |                    |                    |                    |
-| Azure Active Directory           | Yes                | -                  | -                  |
-| Azure Active Directory Domain Services | Yes          | Evet, RSA 2048 bit  | -                  |
-| **Tümleştirme**                  |                    |                    |                    |
-| Service Bus                      | Yes                | Yes                | Yes                |
-| Event Grid                       | Yes                | -                  | -                  |
-| API Management                   | Yes                | -                  | -                  |
-| **IoT Hizmetleri**                 |                    |                    |                    |
-| IoT Hub                          | Yes                | Yes                | Yes                |
-| Cihaz sağlamayı IoT Hub      | Yes                | Yes                | -                  |
-| **Yönetim ve İdare**    |                    |                    |                    |
-| Azure Site Recovery              | Yes                | -                  | -                  |
-| Azure Geçişi                    | Yes                | Yes                | -                  |
-| **Medya**                        |                    |                    |                    |
-| Media Services                   | Yes                | -                  | Yes                |
-| **Güvenlik**                     |                    |                    |                    |
-| IoT için Azure Güvenlik Merkezi    | Yes                | Yes                | -                  |
-| Azure Sentinel                   | Yes                | Yes                | -                  |
-| **Depolama**                      |                    |                    |                    |
-| Blob Depolama                     | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Premium blob depolaması             | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Disk Depolama                     | Yes                | Yes                | -                  |
-| Ultra Disk Depolama               | Yes                | Yes                | -                  |
-| Yönetilen Disk Depolama             | Yes                | Yes                | -                  |
-| Dosya Depolama                     | Yes                | Evet, RSA 2048 bit  | -                  |
-| Dosya Premium depolaması             | Yes                | Evet, RSA 2048 bit  | -                  |
-| Dosya Eşitleme                        | Yes                | Evet, RSA 2048 bit  | -                  |
-| Kuyruk Depolama                    | Yes                | Yes                | Yes                |
-| Avere vFXT                       | Yes                | -                  | -                  |
-| Redis için Azure Cache            | Yes                | yok\*              | -                  |
-| Azure NetApp Files               | Yes                | Yes                | -                  |
-| Arşiv Depolama                  | Yes                | Evet, RSA 2048 bit  | -                  |
-| StorSimple                       | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Azure Backup                     | Yes                | Yes                | Yes                |
-| Data Box                         | Yes                | -                  | Yes                |
-| Data Box Edge                    | Yes                | Yes                | -                  |
-
-\*Bu hizmet, verileri kalıcı olarak tutmaz. Varsa geçici önbellekler bir Microsoft anahtarıyla şifrelenir.
-
-\*\*Bu hizmet, verileri kendi Key Vault, depolama hesabınızda veya müşteri tarafından yönetilen anahtarla sunucu tarafı şifrelemeyi zaten destekleyen diğer veri kalıcı hizmetinde depolamayı destekler.
-
 ## <a name="conclusion"></a>Sonuç
 
 Azure hizmetleri 'nde depolanan müşteri verilerinin korunması, Microsoft 'a ilişkin önemli öneme sahiptir. Azure 'da barındırılan tüm hizmetler, Rest seçeneklerinde şifreleme sağlamaya kararlıdır. Azure Hizmetleri, hizmet tarafından yönetilen anahtarları, müşteri tarafından yönetilen anahtarları veya istemci tarafı şifrelemeyi destekler. Azure Hizmetleri, bekleme kullanılabilirliğine göre şifrelemeyi büyük ölçüde geliştirir ve gelecek aylarda önizleme ve genel kullanılabilirlik için yeni seçenekler planlanmaktadır.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Hizmet tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi edinmek için bkz. [veri şifreleme modelleri](encryption-models.md) .
+- Azure 'un, verileri şifreleyen tehditleri azaltmak için [çift şifrelemeyi](double-encryption.md) nasıl kullandığını öğrenin.

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319907"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225401"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Sanal makine sertifikası sırasında sorunlar ve çözümler 
 
@@ -43,7 +43,7 @@ VM uzantılarını etkinleştirmek için aşağıdakileri yapın:
 1. Linux VM 'nizi seçin.
 1. **Tanılama ayarları**' na gidin.
 1. **Depolama hesabını**güncelleştirerek taban matrislerini etkinleştirin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
    ![Konuk düzeyinde izlemeyi etkinleştir](./media/vm-certification-issues-solutions-1.png)
 
@@ -294,7 +294,7 @@ Azure Marketi 'nden alınan tüm görüntülerin yeniden kullanılabilmesi için
 
 * **Linux**için aşağıdaki Işlem BIR Linux sanal makinesini genelleştirir ve ayrı bir VM olarak yeniden dağıtır.
 
-  SSH penceresinde, aşağıdaki komutu girin:`sudo waagent -deprovision+user`
+  SSH penceresinde, aşağıdaki komutu girin: `sudo waagent -deprovision+user`
 
 * **Windows**için, kullanarak Windows görüntülerini genelleştirdiğinizde `sysreptool` .
 
@@ -314,6 +314,57 @@ Veri diskiyle ilgili hatalara yönelik çözümler için aşağıdaki tabloyu ku
 Windows görüntüsü için Uzak Masaüstü Protokolü (RDP) seçeneği etkinleştirilmemişse, bu hatayı alırsınız. 
 
 Göndermeden önce Windows görüntüleri için RDP erişimini etkinleştirin.
+
+## <a name="bash-history-failed"></a>Bash geçmişi başarısız oldu
+
+Gönderilen görüntinizdeki Bash geçmişinin boyutu 1 kilobayt (KB) daha büyükse bu hatayı görürsünüz. Potansiyel olarak hassas bilgilerin Bash geçmiş dosyanızda yakalandığından emin olmak için Boyut 1 KB 'a kısıtlanır.
+
+Aşağıda "Bash History" öğesini silme adımları verilmiştir.
+
+Adım 1. VM 'yi dağıtın ve Azure portal üzerinde "komut Çalıştır" seçeneğine tıklayın.
+![Azure portal komutu Çalıştır](./media/vm-certification-issues-solutions-3.png)
+
+Adım 2. İlk "Runshellscrıpt" seçeneğini belirleyin ve aşağıdaki komutu çalıştırın.
+
+Komut: "Cat/dev/null > ~/. bash_history && History-c" ![ Azure Portal üzerinde Bash History komutu](./media/vm-certification-issues-solutions-4.png)
+
+3. Adım Komutu başarıyla yürüttükten sonra, sanal makineyi yeniden başlatın.
+
+4. Adım: VM 'yi genelleştirin, görüntü VHD 'sini alın ve VM 'yi durdurun.
+
+5. Adım.     Genelleştirilmiş görüntüyü yeniden gönderebilirsiniz.
+
+## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Seçmeli testler için VM görüntülerinde özel durumlar (özel şablonlar) isteme
+
+Yayımcılar, VM sertifikası sırasında gerçekleştirilen birkaç test için özel durumlar istemek üzere kullanılabilir. Yayımcı isteği desteklemek için kanıt sunmakta olduğu için çok nadir durumlarda özel durumlar sağlanır.
+Sertifika ekibi, her zaman özel durumları reddetme veya onaylama hakkını saklı tutar.
+
+Aşağıdaki bölümlerde, özel durumların istendiği ana senaryolar ve özel durum isteme hakkında konuşacağız.
+
+Özel durum senaryoları
+
+Yayımcıların bu özel durumları genellikle istemesi durumunda üç senaryo/durum vardır. 
+
+* **Bir veya daha fazla test çalışması Için özel durum:** Yayımcılar, test çalışmaları için [Market yayımcısı destek](https://aka.ms/marketplacepublishersupport) isteği özel durumlarına ulaşabilir. 
+
+* **Kilitli VM 'ler/kök erişimi yok:** VM 'lerde yüklü olan güvenlik duvarları gibi yazılımlar olduğundan, birkaç Yayımcı, sanal makinelerin kilitlenebileceği senaryolar vardır. 
+       Bu durumda, yayımcılar [sertifikalı test aracını](https://aka.ms/AzureCertificationTestTool) buradan indirebilir ve raporu [Market yayımcı desteği](https://aka.ms/marketplacepublishersupport) ' nde sağlayabilir
+
+
+* **Özel şablonlar:** Bazı yayımcılar VM 'Leri dağıtmak için özel bir ARM şablonu gerektiren VM görüntülerini yayımlar. Bu durumda, yayımcıların sertifika ekibi tarafından doğrulama için kullanılabilmesi için [Market yayımcı desteği](https://aka.ms/marketplacepublishersupport) ' nde özel şablonlar sağlaması istenir. 
+
+### <a name="information-to-provide-for-exception-scenarios"></a>Özel durum senaryoları için sağlanacak bilgiler
+
+Yayımcılar, yukarıdaki senaryo için aşağıdaki ek bilgilerle özel durumlar istemek üzere [Market yayımcısındaki](https://aka.ms/marketplacepublishersupport) desteğe ulaşmalıdır:
+
+   1.   Yayımcı KIMLIĞI – Iş Ortağı Merkezi portalındaki yayımcı KIMLIĞI
+   2.   Teklif KIMLIĞI/adı – özel durumun istendiği teklif KIMLIĞI/adı 
+   3.   SKU/plan KIMLIĞI – özel durumun istendiği sanal makine teklifinin plan KIMLIĞI/SKU 'su
+   4.    Sürüm: özel durum istenen VM teklifinin sürümü
+   5.   Özel durum türü – testler, kilitli VM, özel şablonlar
+   6.   İsteğin nedeni-bu özel durumun nedeni ve dışarıda bırakılan testler hakkında bilgi 
+   7.   Ek-tüm önem bulgu belgelerini ekleyin. Kilitli VM 'Ler için, test raporunu ve özel şablonlar için ek olarak özel ARM şablonunu sağlayın. Kilitli VM 'Ler için rapor iliştirilemedi ve özel şablonlar için özel ARM şablonu, istek reddine neden olacak
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

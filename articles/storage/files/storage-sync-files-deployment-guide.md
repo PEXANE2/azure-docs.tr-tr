@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903859"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226064"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -74,19 +74,19 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
 
    - Kod bloğunun sağ üst köşesindeki **Deneyin**’i seçin. Azure Cloud Shell **açar,** ancak kodu Cloud Shell otomatik olarak kopyalamaz.
 
-   - Cloud Shell giderek açın[https://shell.azure.com](https://shell.azure.com)
+   - Cloud Shell giderek açın [https://shell.azure.com](https://shell.azure.com)
 
    - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
 
-1. Giriş yapın.
+1. Oturum açın.
 
-   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
+   CLI’nın yerel yüklemesini kullanıyorsanız [az login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
 
    ```azurecli
    az login
    ```
 
-    Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+    Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
 1. [Az FileSync](/cli/azure/ext/storagesync/storagesync) Azure CLI uzantısını yükler.
 
@@ -415,16 +415,19 @@ Sunucu uç noktası eklemek için yeni oluşturulan eşitleme grubuna gidin ve *
 - **Yol**: eşitleme grubunun bir parçası olarak eşitlenecek Windows Server yolu.
 - **Bulut katmanlama**: bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Bulut katmanlaması sayesinde, sık kullanılmayan veya erişilen dosyalar Azure dosyaları için katmanlı olabilir.
 - **Birim boş alanı**: sunucu uç noktasının bulunduğu birimde ayrılacak boş alan miktarı. Örneğin, birim boş alanı tek bir sunucu uç noktasına sahip bir birimde %50 olarak ayarlandıysa, yaklaşık olarak veri miktarı Azure dosyalarına katmanlı olur. Bulut katmanlama özelliğinin etkinleştirilip etkinleştirilmediği bağımsız olarak, Azure dosya paylaşımınızda her zaman eşitleme grubundaki verilerin tamamen bir kopyası bulunur.
+- **İlk indirme modu**: Bu, Azure dosya paylaşımında dosyalar varken, ancak sunucuda olmadığında faydalı olabilecek, aracı sürümü 11 ' den başlayarak isteğe bağlı bir seçimdir. Böyle bir durum, örneğin, başka bir şube ofis sunucusunu bir eşitleme grubuna eklemek için veya hatalı bir sunucuyu olağanüstü durumdan kurtardığınızda bir sunucu uç noktası oluşturursanız olabilir. Bulut katmanlaması etkinleştirilmişse, varsayılan olarak yalnızca ad alanını geri çekmeniz ve başlangıçta dosya içeriği olmaması gerekir. Bu, Kullanıcı erişimi isteklerinin sunucuya hangi dosya içeriğinin geri çekileceğine karar vermesini düşünüyorsanız kullanışlıdır. Bulut katmanlaması devre dışıysa, varsayılan olarak ad alanı önce indirilir ve ardından dosyalar, yerel kapasiteye ulaşılana kadar son değiştirilen zaman damgasına göre geri alınacaktır. Bununla birlikte, ilk indirme modunu yalnızca ad alanı olarak değiştirebilirsiniz. Üçüncü mod yalnızca, bu sunucu uç noktası için bulut katmanlaması devre dışı bırakılmışsa kullanılabilir. Bu mod önce ad alanını geri çekmeyi önler. Dosyalar yalnızca yerel sunucuda görünür ve bu, tam olarak indirme şansı vardır. Bu mod, örneğin bir uygulamanın tam dosyaların mevcut olmasını gerektiriyorsa ve bu dosya ad alanındaki katmanlı dosyalara tolerans uygulamadıysanız yararlı olur.
 
 Sunucu uç noktasını eklemek için **Oluştur**' u seçin. Dosyalarınız artık Azure dosya paylaşımınızda ve Windows Server 'da eşitlenmiş durumda tutulur. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Sunucu uç noktasını oluşturmak için aşağıdaki PowerShell komutlarını yürütün ve `<your-server-endpoint-path>` ve değerlerini istenen değerlerle değiştirdiğinizden emin olun `<your-volume-free-space>` .
+Sunucu uç noktasını oluşturmak için aşağıdaki PowerShell komutlarını yürütün, ve `<your-server-endpoint-path>` ' ı `<your-volume-free-space>` ve isteğe bağlı ilk indirme ilkesi için isteğe bağlı ayarı kontrol ettiğinizden emin olun.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -441,14 +444,16 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
@@ -460,23 +465,24 @@ Yeni bir sunucu uç noktası oluşturmak için [az storagessync Sync-Group Serve
 # Create a new sync group server endpoint 
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
                                                  --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
                                                  --server-local-path d:\myPath
                                                  --storage-sync-service myStorageSyncServiceNAme
                                                  --sync-group-name mySyncGroupName
 
 # Create a new sync group server endpoint with additional optional parameters
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
-                                                 --server-local-path d:\myPath \
                                                  --storage-sync-service myStorageSyncServiceName \
                                                  --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
                                                  --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
-                                                 --tier-files-older-than-days 15 \
-                                                 --volume-free-space-percent 85 \
 
 ```
 
@@ -567,6 +573,40 @@ Birim başına varsayılan en fazla VSS anlık görüntüsü sayısı (64) ve bu
 
 En fazla ise. 64 birim başına VSS anlık görüntüsü sizin için doğru ayar değildir, [Bu değeri bir kayıt defteri anahtarı aracılığıyla değiştirebilirsiniz](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Yeni sınırın etkin olması için, daha önce etkinleştirildiği her birimde önceki sürüm uyumluluğunu etkinleştirmek üzere cmdlet 'i yeniden çalıştırmanız gerekir. Bu, en fazla birim başına en fazla VSS anlık görüntüsü sayısını hesaba koymak için-zorlama bayrağını kullanın. Bu, yeni hesaplanan gün sayısına neden olur. Bu değişikliğin yalnızca yeni katmanlı dosyalar üzerinde etkili olacağını ve yapmış olabileceğiniz VSS zamanlamasıyla ilgili tüm özelleştirmelerin üzerine yazılmasını lütfen unutmayın.
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>Yeni ve değiştirilmiş dosyaları Azure dosya paylaşımından proaktif olarak geri çek
+
+Aracı sürümü 11 ile sunucu uç noktasında yeni bir mod kullanılabilir hale gelir. Bu mod, yerel kullanıcılar herhangi bir dosyaya erişmeden önce bile, küresel olarak dağıtılmış şirketlerin uzak bir bölgedeki sunucu önbelleğinin önceden doldurulmasına olanak tanır. Sunucu uç noktasında etkinleştirildiğinde bu mod, bu sunucunun Azure dosya paylaşımında oluşturulmuş veya değiştirilmiş dosyaları geri çekmesine neden olur.
+
+### <a name="scenario"></a>Senaryo
+
+Küresel olarak dağıtılan bir şirkette ABD 'de ve Hindistan 'daki şube ofisleri bulunur. Sabah (US saat) bilgi çalışanları, yeni bir proje için yeni bir klasör ve yeni dosyalar oluşturur ve tüm gün üzerinde çalışır. Azure Dosya Eşitleme, klasör ve dosyaları Azure dosya paylaşımında (bulut uç noktası) eşitler. Hindistan 'daki bilgi çalışanları proje üzerinde kendi saat dilimlerinde çalışmaya devam edecektir. Her sabah ulaşan yerel Azure Dosya Eşitleme etkin sunucu, Hindistan ekibinin yerel bir önbellekte etkin bir şekilde çalışması için bu yeni dosyaların yerel olarak kullanılabilmesini gerektirir. Bu modu etkinleştirmek, istek üzerine geri çekme nedeniyle ilk dosya erişiminin daha yavaş olmasını engeller ve sunucunun Azure dosya paylaşımında değiştirildikleri anda dosyaları önceden çekmesine olanak tanır.
+
+> [!IMPORTANT]
+> Azure dosya paylaşımında, sunucuya yakın olan değişiklikleri izlemenin, çıkış trafiğinizi ve Azure 'dan faturanızı artırabileceğini unutmayın. Sunucuya geri çekilen dosyalar gerçekten yerel olarak gerekmiyorsa, sunucuya gereksiz geri çağırma olumsuz sonuçlara sahip olabilir. Bu modu, bulutta en son değişikliklere sahip bir sunucuda önbelleğin önceden doldurulmasının, bu sunucudaki dosyaları kullanan kullanıcılar veya uygulamalar üzerinde olumlu bir etkiye sahip olduğunu bildiğiniz durumlarda kullanın.
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>Bir Azure dosya paylaşımında nelerin değiştiğini önceden çekmek için bir sunucu uç noktası etkinleştirin
+
+# <a name="portal"></a>[Portal](#tab/proactive-portal)
+
+1. [Azure Portal](https://portal.azure.com/), depolama eşitleme hizmetinize gidin, doğru eşitleme grubunu seçin ve ardından Azure dosya paylaşımında (bulut uç noktası) yapılan değişiklikleri yakından izlemek istediğiniz sunucu uç noktasını belirleyin.
+1. Bulut katmanlama bölümünde "Azure dosya paylaşma indirmesi" konusunu bulun. Şu anda seçili olan modu görürsünüz ve Azure dosya paylaşma değişikliklerini daha yakından izlemek ve bunları sunucuya geri çekmek için değiştirebilir.
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="Şu anda etkin olan bir sunucu uç noktası için Azure dosya paylaşımının karşıdan yükleme davranışını gösteren bir resim ve bunu değiştirmeye izin veren bir menü açmak için bir düğme.":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+PowerShell 'de sunucu uç noktası özelliklerini [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) cmdlet 'i aracılığıyla değiştirebilirsiniz.
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>DFS Çoğaltma (DFS-R) dağıtımını Azure Dosya Eşitleme geçirme
 Bir DFS-R dağıtımını Azure Dosya Eşitleme 'e geçirmek için:

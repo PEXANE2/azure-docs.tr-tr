@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 4ed3862b08c73264bca0f3bc6ed8e17586c2735c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0bc5a6a77c676931a7c74159fbff476baef5647c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671737"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226548"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -127,7 +127,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin.
 
 1. Proje üzerindeki değişiklikleri kaydedin.
 

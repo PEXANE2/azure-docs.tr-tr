@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186338"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226219"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -64,7 +64,7 @@ ms.locfileid: "88186338"
 | Sütun adı için en fazla karakter | 500 | |
 | Veri dışarı aktarma | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
 
-**Veri alımı birim oranı**
+**<a name="data-ingestion-volume-rate">Veri alımı birim oranı</a>**
 
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Birim hızı sınırı, çok kiracılı ortamdaki ani artış artışlarından Azure Izleyici müşterilerinin korunmasını amaçlamaktadır. 500 MB (sıkıştırılmış) için varsayılan bir alım birimi hız eşiği, yaklaşık **6 GB/dak** sıkıştırması bulunan çalışma alanları için geçerlidir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Bu eşik, [Tanılama ayarları](../articles/azure-monitor/platform/diagnostic-settings.md), [Veri Toplayıcı API 'si](../articles/azure-monitor/platform/data-collector-api.md) veya aracıları kullanılarak Azure kaynaklarından gönderilen tüm veriler için geçerlidir.
 

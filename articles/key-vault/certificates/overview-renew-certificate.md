@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056287"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224569"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Azure Key Vault sertifikası yenileme hakkında
 
@@ -60,8 +60,11 @@ Adımlar, yeni bir sertifika oluşturmaya benzer ve Ayrıntılar [aşağıda]( h
 Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini görüntülemek için sertifika Işlemini görüntüleme adımına geçin.
 
 ### <a name="frequently-asked-questions"></a>Sık sorulan sorular
-Etiketler, sertifikanın otomatik yenilenmesinin ardından çoğaltılacaktır mi?
-Hayır, Kullanıcı etiketlerin kendisini el ile kopyamadıkları takdirde Etiketler çoğaltılmaz.
+* Sertifikanın oto döndürme özelliğini nasıl test edebilirim?
+  1 aylık geçerliliği olan bir sertifika oluşturun ve ardından %1 ' de döndürme için yaşam süresi eylemini ayarlayın. Bu ayar sertifikayı 7,2 saat içinde döndürür.
+  
+* Etiketler, sertifikanın otomatik yenilenmesinin ardından çoğaltılacaktır mi?
+  Hayır, Kullanıcı etiketlerin kendisini el ile kopyamadıkları takdirde Etiketler çoğaltılmaz.
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 *   [Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme](how-to-integrate-certificate-authority.md)

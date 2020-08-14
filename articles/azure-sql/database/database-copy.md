@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530431"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225742"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -118,7 +118,7 @@ Veritabanınızı, T-SQL kullanarak farklı bir abonelikte bulunan bir sunucuya 
 > [Azure Portal](https://portal.azure.com), PowerShell ve Azure CLI, farklı bir aboneliğe veritabanı kopyalamayı desteklemez.
 
 > [!TIP]
-> T-SQL kullanarak veritabanı kopyalama, bir veritabanının farklı bir Azure kiracısındaki abonelikten kopyalanmasını destekler.
+> T-SQL kullanarak veritabanı kopyalama, bir veritabanının farklı bir Azure kiracısındaki abonelikten kopyalanmasını destekler. Bu yalnızca hedef sunucuda oturum açmak için bir SQL kimlik doğrulaması oturum açma işlemi kullanılırken desteklenir.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Kopyalama işleminin ilerlemesini izleme
 

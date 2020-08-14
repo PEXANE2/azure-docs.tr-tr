@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: chlandsi
-ms.openlocfilehash: 3758b035e7840c63c895417d0ed3d8dca0ab618f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2222f19ef4459d5ad3ccfa8a39fac6ab804b62e4
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671679"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226167"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -78,7 +78,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](../../../../regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](../../../../regions.md) ile değiştirin.
 
 1. Yaptığınız değişiklikleri kaydedin `quickstart.py` .
 

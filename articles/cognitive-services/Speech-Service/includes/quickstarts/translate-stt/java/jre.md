@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: b181c810d15695f72e73ef8a3359396686e77a1b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5cbbcaae7b656eb89cd1bc292d89ab184589d71
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925776"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226286"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -27,7 +27,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni boş bir sınıf eklemek için **Dosya** > **Yeni** > **sınıf**' ı seçin.
+1. Java projenize yeni boş bir sınıf eklemek için **Dosya**  >  **Yeni**  >  **sınıf**' ı seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -122,13 +122,13 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` [bölgesiyle](~/articles/cognitive-services/Speech-Service/regions.md)değiştirin.
 
 1. Proje üzerindeki değişiklikleri kaydedin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
-F11 tuşuna basın veya**hata ayıklamayı** **Çalıştır** > ' ı seçin.
+F11 tuşuna basın veya **Run**  >  **hata ayıklamayı**Çalıştır ' ı seçin.
 
 1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir. Bu, metne (Bu durumda Almanca 'ya) ve metni dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 

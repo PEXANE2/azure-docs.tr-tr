@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: jingwang
-ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 26d52eed02c9d25ed2f18afa3a5262ba9224b0ba
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171243"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224875"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory ' deki herhangi bir verinin meta verilerini almak için meta veri al etkinliğini kullanabilirsiniz. Bu etkinliği aşağıdaki senaryolarda kullanabilirsiniz:
@@ -58,7 +59,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 - Bir klasöre karşı meta veri al etkinliğini kullanırken, verilen klasöre yönelik LıST/EXECUTE izninizin olduğundan emin olun.
 - Amazon S3 ve Google Cloud Storage için `lastModified` demet ve anahtar için geçerlidir ancak sanal klasöre uygulanmaz; `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
 - Azure Blob depolama için `lastModified` kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
-- `lastModified`Filtre Şu anda alt öğeleri filtrelemek için geçerlidir ancak belirtilen klasör/dosyanın kendisi için geçerli değildir.
+- `lastModified` Filtre Şu anda alt öğeleri filtrelemek için geçerlidir ancak belirtilen klasör/dosyanın kendisi için geçerli değildir.
 - Klasörler/dosyalar üzerinde joker karakter filtresi, meta veri Al etkinliği için desteklenmiyor.
 - `structure``columnCount`ikili, JSON veya XML dosyalarından meta veriler alınırken desteklenmez.
 
@@ -94,19 +95,42 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 >[!NOTE]
 >Dosya mağazalarından meta veriler alırken ve `modifiedDatetimeStart` veya `modifiedDatetimeEnd` ' ı yapılandırdığınızda, `childItems` yalnızca belirtilen aralıktaki son değiştirme zamanına sahip olan verilen yoldaki dosyaları dahil eder. ' De alt klasörlerdeki öğeler dahil değildir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 **Meta veri Al etkinliği**
 
 ```json
 {
-    "name": "MyActivity",
-    "type": "GetMetadata",
-    "typeProperties": {
-        "fieldList" : ["size", "lastModified", "structure"],
-        "dataset": {
-            "referenceName": "MyDataset",
-            "type": "DatasetReference"
+    "name":"MyActivity",
+    "type":"GetMetadata",
+    "dependsOn":[
+
+    ],
+    "policy":{
+        "timeout":"7.00:00:00",
+        "retry":0,
+        "retryIntervalInSeconds":30,
+        "secureOutput":false,
+        "secureInput":false
+    },
+    "userProperties":[
+
+    ],
+    "typeProperties":{
+        "dataset":{
+            "referenceName":"MyDataset",
+            "type":"DatasetReference"
+        },
+        "fieldList":[
+            "size",
+            "lastModified",
+            "structure"
+        ],
+        "storeSettings":{
+            "type":"AzureBlobStorageReadSettings"
+        },
+        "formatSettings":{
+            "type":"JsonReadSettings"
         }
     }
 }
@@ -116,18 +140,22 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 ```json
 {
-    "name": "MyDataset",
-    "properties": {
-    "type": "AzureBlob",
-        "linkedService": {
-            "referenceName": "StorageLinkedService",
-            "type": "LinkedServiceReference"
+    "name":"MyDataset",
+    "properties":{
+        "linkedServiceName":{
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "typeProperties": {
-            "folderPath":"container/folder",
-            "filename": "file.json",
-            "format":{
-                "type":"JsonFormat"
+        "annotations":[
+
+        ],
+        "type":"Json",
+        "typeProperties":{
+            "location":{
+                "type":"AzureBlobStorageLocation",
+                "fileName":"file.json",
+                "folderPath":"folder",
+                "container":"container"
             }
         }
     }
@@ -140,8 +168,8 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
-veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
+fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
+veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
 formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 

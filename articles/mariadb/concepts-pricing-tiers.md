@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/9/2020
-ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 8/13/2020
+ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954203"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225725"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
@@ -93,13 +93,11 @@ Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçek
 
 ## <a name="backup"></a>Backup
 
-Hizmet, sunucunuzun yedeklerini otomatik olarak alır. 7 ile 35 gün arasında bir bekletme dönemi seçebilirsiniz. Genel Amaçlı ve bellek için Iyileştirilmiş sunucular, yedeklemeler için coğrafi olarak yedekli depolamaya sahip olmak için seçim yapabilir. [Kavramlar makalesinde](concepts-backup.md)yedeklemeler hakkında daha fazla bilgi edinin.
+MariaDB için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Bu miktardan fazla süre içinde kullandığınız tüm yedekleme depolama alanı aylık GB cinsinden ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağlarsanız, sunucu yedeklemeleri için ücretsiz olarak 250 GB ek depolama alanı kullanılabilir. 250 GB 'tan fazla olan yedeklemeler için depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/mariadb/)göre ücretlendirilir. Yedekleme depolama kullanımını etkileyen faktörleri anlamak, yedekleme depolama maliyetini izlemek ve denetlemek için [yedekleme belgelerine](concepts-backup.md)başvurabilirsiniz.
 
 ## <a name="scale-resources"></a>Kaynakları ölçeklendirme
 
 Sunucunuzu oluşturduktan sonra, sanal çekirdekleri, fiyatlandırma katmanını (temel ve dışı), depolama miktarını ve yedekleme saklama süresini bağımsız olarak değiştirebilirsiniz. Sunucu oluşturulduktan sonra yedekleme depolama türünü değiştiremezsiniz. Sanal çekirdek sayısı yukarı veya aşağı ölçeklendirilebilir. Yedekleme saklama süresi 7 ile 35 gün arasında ölçeklendirilebilir veya kapatılabilir. Depolama boyutu yalnızca artırılabilir. Kaynakların ölçeklendirilmesi portal veya Azure CLı aracılığıyla yapılabilir. 
-
-<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
 Vçekirdeklerinin sayısını veya fiyatlandırma katmanını değiştirdiğinizde, yeni işlem tahsisatına göre özgün sunucunun bir kopyası oluşturulur. Yeni sunucu çalışır duruma geçtikten sonra, bağlantılar yeni sunucuya geçer. Sistem yeni sunucuya geçerken yeni bağlantı kurulamaz ve tüm işlenmemiş işlemler geri alınır. Bu süre değişir, ancak çoğu durumda bir dakikadan daha kısadır.
 
@@ -112,6 +110,3 @@ En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Hizmet sınırlamaları](concepts-limits.md)hakkında bilgi edinin.
 - [Azure Portal bir MariaDB sunucusu oluşturmayı](quickstart-create-mariadb-server-database-using-azure-portal.md)öğrenin.
-
-<!--
-- Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

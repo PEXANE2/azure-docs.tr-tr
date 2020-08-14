@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 85124a51b986b6e3d6444b35aa264e136abcdb76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a1cf8bbda448dd991e805456ce8fb942077e8553
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400556"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226163"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -109,7 +109,7 @@ ms.locfileid: "81400556"
 
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin.
 
 1. Dizeyi `whatstheweatherlike.wav` kendi dosya adı ile değiştirin.
 

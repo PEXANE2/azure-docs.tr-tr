@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 36d8d6afde8b1178963b33b9514e53ce0ffccf6f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445899"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224467"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -116,9 +116,27 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
     ```csharp
     private bool loadingLinkedCustomModel = false;
-    public string StorageAccountName;
-    public string BlobContainerName;
-    public string ModelPath;
+
+    [SerializeField]
+    private string storageAccountName;
+    public string StorageAccountName {
+        get => storageAccountName.Trim();
+        set => storageAccountName = value;
+    }
+
+    [SerializeField]
+    private string blobContainerName;
+    public string BlobContainerName {
+        get => blobContainerName.Trim();
+        set => blobContainerName = value;
+    }
+
+    [SerializeField]
+    private string modelPath;
+    public string ModelPath {
+        get => modelPath.Trim();
+        set => modelPath = value;
+    }
 
     [ContextMenu("Load Linked Custom Model")]
     public async void LoadLinkedCustomModel()
@@ -205,17 +223,41 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 
     public class AADAuthentication : BaseARRAuthentication
     {
-        public string accountDomain;
+        [SerializeField]
+        private string accountDomain;
+        public string AccountDomain
+        {
+            get => accountDomain.Trim();
+            set => accountDomain = value;
+        }
 
-        public string activeDirectoryApplicationClientID;
+        [SerializeField]
+        private string activeDirectoryApplicationClientID;
+        public string ActiveDirectoryApplicationClientID
+        {
+            get => activeDirectoryApplicationClientID.Trim();
+            set => activeDirectoryApplicationClientID = value;
+        }
 
-        public string azureTenantID;
+        [SerializeField]
+        private string azureTenantID;
+        public string AzureTenantID
+        {
+            get => azureTenantID.Trim();
+            set => azureTenantID = value;
+        }
 
-        public string azureRemoteRenderingAccountID;
+        [SerializeField]
+        private string azureRemoteRenderingAccountID;
+        public string AzureRemoteRenderingAccountID
+        {
+            get => azureRemoteRenderingAccountID.Trim();
+            set => azureRemoteRenderingAccountID = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
-        string authority => "https://login.microsoftonline.com/" + azureTenantID;
+        string authority => "https://login.microsoftonline.com/" + AzureTenantID;
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
@@ -236,7 +278,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(accountDomain, azureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -260,7 +302,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 
         public override async Task<AuthenticationResult> TryLogin()
         {
-            var clientApplication = PublicClientApplicationBuilder.Create(activeDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
+            var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
             AuthenticationResult result = null;
             try
             {
@@ -323,7 +365,7 @@ Bu kod için, bir erişim belirteci almak üzere [cihaz kod akışını](https:/
 Bu sınıfın bir ARR perspektifinden en önemli bölümü bu satırdır:
 
 ```csharp
-return await Task.FromResult(new AzureFrontendAccountInfo(accountDomain, azureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
 Burada hesap etki alanını, hesap KIMLIĞINI ve erişim belirtecini kullanarak yeni bir **Azurefrontendaccountınfo** nesnesi oluşturacağız. Bu belirteç daha sonra, Kullanıcı daha önce yapılandırılan rol tabanlı izinlere göre yetkilendirildiği sürece, uzak işleme oturumlarını sorgulamak, oluşturmak ve birleştirmek için ARR hizmeti tarafından kullanılır.

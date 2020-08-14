@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419725"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225946"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastik havuzlar Azure SQL veritabanı 'nda birden çok veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,11 +113,11 @@ Aşağıdaki adımlar bir havuzun tek veritabanlarından daha uygun maliyetli ol
 
 DTU tabanlı satın alma modeli için:
 
-En fazla (<VERITABANı başına *Toplam DBs* x *ortalama DTU kullanımı*>, <her veritabanı Için *aynı anda* *en yüksek DTU kullanımı*sayısı)
+En fazla (<VERITABANı başına *Toplam DBs* x *ortalama DTU kullanımı*>, <her veritabanı için *aynı anda en fazla dbs* x maksimum *DTU kullanımı*>)
 
 Sanal çekirdek tabanlı satın alma modeli için:
 
-En fazla (<VERITABANı başına *Toplam DBs* x *Ortalama sanal çekirdek kullanımı*>, <her veritabanı Için *aynı anda* *en yüksek sanal çekirdek kullanımı*sayısı)
+En fazla (<VERITABANı başına *Toplam DBs* x *Ortalama sanal çekirdek kullanımı*>, <her veritabanı Için *aynı anda* *en yüksek sanal çekirdek kullanımı* sayısı>)
 
 2. Havuzdaki tüm veritabanları için gereken bayt sayısını ekleyerek havuz için gereken depolama alanını tahmin edin. Ardından, bu depolama miktarını sağlayan eDTU havuz boyutunu belirleyin.
 3. DTU tabanlı satın alma modeli için 1. ve 2. adım 'daki eDTU tahminlerinin daha büyük bir kısmını alın. Sanal çekirdek tabanlı satın alma modeli için 1. adımdaki sanal çekirdek tahminini alın.

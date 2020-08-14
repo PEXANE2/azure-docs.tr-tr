@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fd19b451638eacbf0d6174154a2688b3523ca4d2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183879"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224365"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Uygulamaları Microsoft kimlik doğrulama kitaplığı 'na geçirme (MSAL)
 
@@ -62,6 +62,9 @@ Y: uygulamanın kaynak koduna sahipseniz, uygulamanın hangi kitaplığı kullan
 
 __S: neden MSAL 'e taşınmalıyım?__  
 Y: MSAL artımlı onay, çoklu oturum açma ve belirteç önbelleği yönetimi dahil olmak üzere ADAL içinde olmayan yeni özellikler içerir. Ayrıca, ADAL 'ın aksine MSAL, 30 Haziran 2022 ' den sonraki güvenlik düzeltme eklerini almaya devam edecektir. [Daha fazla bilgi edinin](msal-overview.md).
+
+__S: Microsoft, kendi uygulamalarını MSAL olarak güncelleştirecek mi?__  
+Evet. Microsoft, destek son tarihine kadar uygulamalarını MSAL 'e geçirme sürecinde, bu da MSAL 'ın devam eden güvenlik ve özellik geliştirmelerinden faydalanabilir.
 
 __S: uygulamalarımı ADAL 'ten MSAL 'ye taşımaya yardımcı olacak bir araç serbest bıraksın mı?__  
 C: Hayır. Kitaplıklar arasındaki farklılıklar, başka bir şekilde MSAL iyileştirmek için harcanacak olan aracı geliştirme ve bakım için ayrılmış kaynaklar gerektirir. Ancak, uygulamanızda gerekli değişiklikleri yapmanıza yardımcı olmak için önceki geçiş kılavuzu kümesini sağlıyoruz.

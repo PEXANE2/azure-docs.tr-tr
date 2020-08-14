@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119530"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225980"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -114,12 +114,13 @@ Kullanıcı ilk kez öykünücüyü kapatması ve öykünücü veri dizinini (%L
 
 ### <a name="sql-api"></a>SQL API
 
-Azure Cosmos öykünücüsünü masaüstünüzde çalışır olduktan sonra, öykünücüle etkileşim kurmak için desteklenen [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) veya [Azure Cosmos DB REST API](/rest/api/cosmos-db/) kullanabilirsiniz. Azure Cosmos öykünücüsü Ayrıca, SQL API Cosmos DB veya Mongo DB API 'SI için kapsayıcılar oluşturmanıza olanak sağlayan yerleşik bir Veri Gezgini içerir ve herhangi bir kod yazmadan öğeleri görüntüleyebilir ve düzenleyebilir.
+Azure Cosmos öykünücüsünü masaüstünüzde çalışır olduktan sonra, öykünücüle etkileşim kurmak için desteklenen [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) veya [Azure Cosmos DB REST API](/rest/api/cosmos-db/) kullanabilirsiniz. Azure Cosmos öykünücüsü Ayrıca, SQL API Cosmos DB veya Mongo DB API 'SI için kapsayıcılar oluşturmanıza olanak sağlayan yerleşik bir Veri Gezgini içerir ve herhangi bir kod yazmadan öğeleri görüntüleyebilir ve düzenleyebilir.
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
-DocumentClient client = new DocumentClient(
-   new Uri("https://localhost:8081"), "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+CosmosClient client = new CosmosClient(
+   "https://localhost:8081", 
+    "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 ```
 
@@ -182,7 +183,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="gremlin-api"></a>Gremlin API
 
-"/EnableGremlinEndpoint" ile yönetici komut isteminden öykünücü başlatın. Alternatif olarak, ortam değişkenini de belirleyebilirsiniz`AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+"/EnableGremlinEndpoint" ile yönetici komut isteminden öykünücü başlatın. Alternatif olarak, ortam değişkenini de belirleyebilirsiniz `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
 * [Apache-tinkerpop-Gremlin-Console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4)' i yükler.
 
@@ -274,7 +275,7 @@ Seçenek listesini görüntülemek için komut satırına `Microsoft.Azure.Cosmo
 | NoUI | Öykünücü kullanıcı arabirimini gösterme. | Microsoft.Azure.Cosmos.Emulator.exe/NOUI | |
 | NoExplorer | Başlangıçta veri gezginini gösterme. |Microsoft.Azure.Cosmos.Emulator.exe/NoExplorer | | 
 | PartitionCount | En fazla bölümlenmiş kapsayıcı sayısını belirtir. Daha fazla bilgi için bkz. [kapsayıcı sayısını değiştirme](#set-partitioncount) . | Microsoft.Azure.Cosmos.Emulator.exe/PartitionCount =\<partitioncount\> | \<partitioncount\>: İzin verilen en fazla tek bölüm kapsayıcısı sayısı. Varsayılan değer 25’tir. Maksimum izin verilen: 250.|
-| DefaultPartitionCount| Bölümlenmiş bir kapsayıcı için varsayılan bölüm sayısını belirtir. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\>Varsayılan değer 25 ' tir.|
+| DefaultPartitionCount| Bölümlenmiş bir kapsayıcı için varsayılan bölüm sayısını belirtir. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\> Varsayılan değer 25 ' tir.|
 | AllowNetworkAccess | Bir ağ üzerinden öykünücüye erişilmesini sağlar. \<key_string\>Ağ erişimini etkinleştirmek için/Key = veya/KeyFile = geçişini de yapmanız gerekir \<file_name\> . | Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/Key = \<key_string\> veya Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
 | NoFirewall | /AllowNetworkAccess seçeneği kullanıldığında güvenlik duvarı kurallarını ayarlamadığınızda. |Microsoft.Azure.Cosmos.Emulator.exe/Nofireduvar | |
 | GenKeyFile | Yeni bir yetkilendirme anahtarı oluşturun ve belirtilen dosyaya kaydedin. Oluşturulan anahtar, /Key veya /KeyFile seçenekleri ile kullanılabilir. | Microsoft.Azure.Cosmos.Emulator.exe/GenKeyFile =\<path to key file\> | |
@@ -428,7 +429,7 @@ Linux Docker kapsayıcısında çalışan bir .NET istemci uygulamanız varsa ve
 
 ## <a name="running-on-mac-or-linux"></a>Mac veya Linux üzerinde çalışıyor<a id="mac"></a>
 
-Şu anda Cosmos öykünücüsü yalnızca Windows üzerinde çalıştırılabilir. Mac veya Linux çalıştıran kullanıcılar, öykünücüyü Parallels veya VirtualBox gibi bir hiper yönetici olarak barındırılan bir Windows sanal makinesinde çalıştırabilir. Bunu etkinleştirme adımları aşağıda verilmiştir.
+Şu anda Cosmos öykünücüsü yalnızca Windows üzerinde çalıştırılabilir. Mac veya Linux çalıştıran kullanıcılar, öykünücüyü Parallels veya VirtualBox gibi bir Hiper yöneticide barındırılan bir Windows sanal makinesinde çalıştırabilir. Bunu etkinleştirme adımları aşağıda verilmiştir.
 
 Windows VM içinde aşağıdaki komutu çalıştırın ve IPv4 adresini unutmayın.
 
@@ -444,7 +445,36 @@ Sonraki adımda, Windows VM 'nin içinden aşağıdaki seçenekleri kullanarak C
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-Son olarak, öykünücü CA sertifikasını Linux veya Mac ortamına aktarmanız gerekir.
+Son olarak, Linux veya Mac ortamında ve öykünücü üzerinde çalışan uygulama arasındaki sertifika güven sürecini çözmemiz gerekir. İki seçeneğiniz vardır:
+
+1. Uygulamada SSL doğrulamasını devre dışı bırakın:
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+
+   .NET Standard 2,1 veya üzeri sürümlerle uyumlu bir çerçevede çalışan tüm uygulamalar için şunları kullanabilirsiniz `CosmosClientOptions.HttpClientFactory` :
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2,0](#tab/ssl-netstd20)
+
+   .NET Standard 2,0 ile uyumlu bir çerçevede çalışan tüm uygulamalar için şunları kullanabilirsiniz `CosmosClientOptions.HttpClientFactory` :
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+
+   Node.js uygulamalar için `package.json` dosyanızı, uygulamayı başlatırken ayarlanacak şekilde değiştirebilirsiniz `NODE_TLS_REJECT_UNAUTHORIZED` :
+
+   ```json
+   "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
+   ```
+
+--- 
+
+> [!NOTE]
+> SSL doğrulamasının devre dışı bırakılması yalnızca geliştirme amacıyla önerilir ve bir üretim ortamında çalıştırıldığında yapılmamalıdır.
+
+2. Öykünücü CA sertifikasını Linux veya Mac ortamına aktarın:
 
 ### <a name="linux"></a>Linux
 

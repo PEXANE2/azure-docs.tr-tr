@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542679"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225827"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu makalede, DTU satın alma modelini kullanan bir elastik havuzda Azure SQL veritabanı 'nda bulunan veritabanları için ayrıntılı kaynak sınırları sağlanmaktadır.
 
-* Azure SQL veritabanı için DTU satın alma modeli kaynak sınırları için bkz. [DTU kaynak limitleri-Azure SQL veritabanı](resource-limits-vcore-elastic-pools.md).
+* Azure SQL veritabanı için DTU satın alma modeli kaynak sınırları için bkz. [DTU kaynak limitleri-Azure SQL veritabanı](resource-limits-dtu-single-databases.md).
 * VCore kaynak sınırları için bkz. [Vcore kaynak limitleri-Azure SQL veritabanı](resource-limits-vcore-single-databases.md) ve [sanal çekirdek kaynak limitleri-elastik havuzlar](resource-limits-vcore-elastic-pools.md).
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastik havuz: depolama boyutları ve işlem boyutları

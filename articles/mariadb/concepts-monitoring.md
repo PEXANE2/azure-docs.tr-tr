@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/13/2020
+ms.openlocfilehash: 088d2c0a11f7d145f0c8a7ccb2c0aac5bd2d140d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413204"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224094"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MariaDB için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sunar.
@@ -28,17 +28,19 @@ Bu ölçümler, MariaDB için Azure veritabanı 'nda kullanılabilir:
 |---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
-|io_consumption_percent|GÇ yüzdesi|Yüzde|Kullanımdaki GÇ yüzdesi. (Temel katman sunucuları için geçerli değildir.)|
+|io_consumption_percent|GÇ yüzdesi|Yüzde|Kullanımdaki GÇ yüzdesi. (Temel katman sunucuları için geçerli değildir)|
 |storage_percent|Depolama yüzdesi|Yüzde|Sunucunun en yüksek sınırının dışında kullanılan depolama alanı yüzdesi.|
 |storage_used|Kullanılan depolama alanı|Bayt|Kullanımdaki depolama miktarı. Hizmet tarafından kullanılan depolama alanı, veritabanı dosyalarını, işlem günlüklerini ve sunucu günlüklerini içerebilir.|
 |serverlog_storage_percent|Sunucu günlüğü depolama yüzdesi|Yüzde|Sunucunun en yüksek sunucu günlük depolama alanı dışında kullanılan sunucu günlük depolama alanı yüzdesi.|
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Kullanımdaki sunucu günlüğü depolama miktarı.|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Bu sunucu için en fazla sunucu günlük depolama alanı.|
 |storage_limit|Depolama sınırı|Bayt|Bu sunucu için en fazla depolama alanı.|
-|active_connections|Etkin Bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
-|connections_failed|Başarısız Bağlantılar|Sayı|Sunucuya yönelik başarısız bağlantı sayısı.|
+|active_connections|Etkin Bağlantılar|Count|Sunucuya etkin bağlantı sayısı.|
+|connections_failed|Başarısız Bağlantılar|Count|Sunucuya yönelik başarısız bağlantı sayısı.|
+|seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Count|Çoğaltma sunucusunun ana sunucuya yönelik olarak geçmesi gereken saniye sayısı. (Temel katman sunucuları için geçerli değildir)|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|
 |network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
+|backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Kullanılan yedekleme depolama alanı miktarı. Bu ölçüm, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı hizmet olarak yönetilir ve [Kavramlar makalesinde](concepts-backup.md)açıklanmıştır. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur.|
 
 ## <a name="server-logs"></a>Sunucu günlükleri
 

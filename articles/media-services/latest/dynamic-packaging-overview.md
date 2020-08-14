@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
+ms.date: 08/13/2020
 ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4f0e8822d734d3c1147eb6d5cbbc8f26a7410a01
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489784"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224076"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -80,8 +80,10 @@ Akış istemciniz aşağıdaki Kesintisiz Akış biçimlerini belirtebilir:
 
 Aşağıdaki adımlarda, Azure Media Services içindeki standart kodlayıcıyla birlikte dinamik ambalajın kullanıldığı ortak bir Media Services akış iş akışı gösterilmektedir.
 
-1. QuickTime/MOV veya MXF dosyası gibi bir giriş dosyasını karşıya yükleyin. Bu dosya, Mezzanine veya kaynak dosya olarak da adlandırılır. Desteklenen biçimlerin listesi için bkz. [Standart kodlayıcı tarafından desteklenen biçimler](media-encoder-standard-formats.md).
+1. MP4, QuickTime/MOV veya desteklenen başka bir dosya biçimi gibi [bir giriş dosyasını karşıya yükleyin](manage-asset-concept.md) . Bu dosya, Mezzanine veya kaynak dosya olarak da adlandırılır. Desteklenen biçimlerin listesi için bkz. [Standart kodlayıcı tarafından desteklenen biçimler](media-encoder-standard-formats.md).
 1. Mezzanine dosyanızı H. bir H.,/AAC MP4 Uyarlamalı bit hızı kümesine [kodlayın](#encode-to-adaptive-bitrate-mp4s) .
+
+    Zaten kodlanmış dosyalarınız varsa ve yalnızca dosyaları kopyalayıp akışa almak istiyorsanız şunu kullanın: [Copyvideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) ve [Copyaudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API 'leri. Sonuç olarak, akış bildirimi (. ISM dosyası) içeren yeni bir MP4 dosyası oluşturulur.
 1. Uyarlamalı bit hızı MP4 kümesini içeren çıkış varlığını yayımlayın. Bir [akış Bulucu](streaming-locators-concept.md)oluşturarak yayımlayabilirsiniz.
 1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. *Akış uç noktası* , tüm bu farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye yöneliktir.
     

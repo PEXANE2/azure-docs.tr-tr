@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489801"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224926"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure Multi-Factor Authentication etkinleştirme ve kullanma
 
@@ -41,6 +41,8 @@ Uygulama parolaları kullandığınızda aşağıdaki noktalar geçerlidir:
 * Uygulama parolası iş veya okul hesabı dışında olmadığı için parolaları önbelleğe alan ve bunları şirket içi senaryolarda kullanan uygulamalar başarısız olabilir. Bu senaryoya bir örnek, şirket içi Exchange e-postalarının bir örneğidir, ancak Arşivlenmiş posta bulutta yer alır. Bu senaryoda, aynı parola çalışmaz.
 * Azure Multi-Factor Authentication bir kullanıcının hesabında etkinleştirildikten sonra, uygulama parolaları Outlook ve Microsoft Skype Kurumsal gibi tarayıcı olmayan birçok istemci ile birlikte kullanılabilir. Ancak, Windows PowerShell gibi tarayıcı olmayan uygulamalar aracılığıyla Uygulama parolaları kullanılarak yönetim eylemleri gerçekleştirilemez. Kullanıcı bir yönetici hesabına sahip olsa bile eylemler gerçekleştirilemez.
     * PowerShell betikleri çalıştırmak için güçlü parolalı bir hizmet hesabı oluşturun ve iki adımlı doğrulama için hesabı etkinleştirmeyin.
+* Bir kullanıcı hesabının güvenliğinin aşıldığını ve hesap parolasının iptal/sıfırlama olduğunu düşünüyorsanız, uygulama parolalarının de güncelleştirilmeleri gerekir. Kullanıcı hesabı parolası iptal edildiğinde/sıfırlandığında, uygulama parolaları otomatik olarak iptal edilmez. Kullanıcı var olan uygulama parolalarını silip yenilerini oluşturmalıdır.
+   * Daha fazla bilgi için bkz. [ek güvenlik doğrulama sayfasından uygulama parolaları oluşturma ve silme](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
 
 >[!WARNING]
 > Uygulama parolaları, istemcilerin hem şirket içi hem de bulut otomatik bulma uç noktaları ile iletişim kurduğu karma ortamlarda çalışmaz. Şirket içinde kimlik doğrulaması yapmak için etki alanı parolaları gereklidir. Bulutta kimlik doğrulaması yapmak için uygulama parolaları gereklidir.
