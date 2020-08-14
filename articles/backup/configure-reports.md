@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: bbb42643e23020742cab66812f58f78f4529fe07
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388081"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192840"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -106,7 +106,7 @@ Bu görünümü kullanarak, önemli bir süre için başarılı bir yedekleme ol
 
 Etkin olmayan kaynakları görüntülemek için **en iyileştirme** sekmesine gidin ve **etkin olmayan kaynaklar** kutucuğuna tıklayın. Bu Kutucuğa tıkladığınızda seçili kapsamda mevcut olan tüm etkin olmayan kaynakların ayrıntılarını içeren bir kılavuz görüntülenir. Varsayılan olarak, kılavuz son 7 günde bir kurtarma noktası olmayan öğeleri gösterir. Farklı bir zaman aralığı için etkin olmayan kaynakları bulmak için sekmenin en üstünde **zaman aralığı** filtresini ayarlayabilirsiniz.
 
-Etkin olmayan bir kaynağı tanımladıktan sonra, bu kaynak için yedekleme öğesi panosuna veya Azure Kaynak dikey penceresine (varsa) giderek sorunu daha fazla inceleyebilirsiniz. Senaryonuza bağlı olarak, makinenin yedeklemesini durdurmayı (artık mevcut değilse) veya korumalı örnek maliyette tasarruf etmek ya da yedeklemelerin güvenilir bir şekilde alındığından emin olmak için makinedeki sorunları gidermek için seçeneğini kullanabilirsiniz.
+Etkin olmayan bir kaynağı tanımladıktan sonra, bu kaynak için yedekleme öğesi panosuna veya Azure Kaynak dikey penceresine (varsa) giderek sorunu daha fazla inceleyebilirsiniz. Senaryonuza bağlı olarak, makinenin yedeklemesini durdurmayı (artık yoksa) seçebilir ve gereksiz yedeklemeleri silebilir ve yedeklemelerin güvenilir bir şekilde alındığından emin olmak için makinedeki sorunları giderebilirsiniz.
 
 ![Sekme ile etkin olmayan kaynakları iyileştirme](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
