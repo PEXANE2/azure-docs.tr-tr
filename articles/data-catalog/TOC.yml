@@ -1,4 +1,4 @@
-- name: Veri Kataloğu belgeleri
+- name: Azure Veri Kataloğu belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -23,7 +23,7 @@
       href: data-catalog-adopting-data-catalog.md
     - name: SSS
       href: data-catalog-frequently-asked-questions.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır kılavuzları
   items:
     - name: Veri kaynaklarını kaydetme
       href: data-catalog-how-to-register.md

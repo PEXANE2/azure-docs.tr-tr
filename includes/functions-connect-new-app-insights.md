@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: functions
 author: ggailey777
 ms.service: azure-functions
@@ -38,4 +38,4 @@ Azure Işlevleri, [Azure Portal]bir işlev uygulamasına Application Insights t�
 
 1. İşlev uygulamanızda **Ayarlar**' ın altında **yapılandırma** ' yı seçin ve ardından **uygulama ayarları**' nı seçin. Adlı bir ayar görürseniz `APPINSIGHTS_INSTRUMENTATIONKEY` , Azure 'da çalışan işlev uygulamanız için Application Insights tümleştirme etkinleştirilir.
 
-[Azure Portalı]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

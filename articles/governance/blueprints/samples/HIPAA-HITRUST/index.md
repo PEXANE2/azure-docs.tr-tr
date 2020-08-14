@@ -1,14 +1,14 @@
 ---
 title: HIPAA HITRUST şema örneğine genel bakış
 description: HIPAA HITRUST şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli HIPAA HITRUST denetimlerini değerlendirmesine yardımcı olur.
-ms.date: 12/3/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: ebe907053b37ebe0ff99248aa181a480c045d533
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9f8b304dc04164cd65ea9568afa260aa63af5b8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75470075"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213361"
 ---
 # <a name="overview-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST şema örneğine genel bakış
 
