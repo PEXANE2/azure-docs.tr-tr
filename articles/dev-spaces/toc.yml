@@ -5,24 +5,6 @@
       items:
         - name: Azure Dev Spaces nedir?
           href: about.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Takım geliştirme
-          href: quickstart-team-development.md
-        - name: Hata ayıklama ve yineleme
-          items:
-            - name: Visual Studio Code ve Java kullanma
-              href: quickstart-java.md
-            - name: Visual Studio Code ve .NET Core kullanma
-              href: quickstart-netcore.md
-            - name: Visual Studio Code ve Node.js kullanma
-              href: quickstart-nodejs.md
-            - name: Visual Studio ve .NET Core kullanma
-              href: quickstart-netcore-visualstudio.md
-        - name: CLI kullanarak geliştirme
-          href: quickstart-cli.md
-        - name: Mevcut Helm grafiğini kullanarak geliştirme
-          href: quickstart-existing-helm-chart.md
     - name: Öğreticiler
       items:
         - name: Visual Studio ile çalışmaya başlama

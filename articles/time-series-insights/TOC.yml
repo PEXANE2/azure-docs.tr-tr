@@ -156,7 +156,7 @@
         - name: Veri Erişimi 1. Nesil
           items:
             - name: Genel Bakış
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1'
             - name: Sorgu
               items:
                 - name: Sorgu
