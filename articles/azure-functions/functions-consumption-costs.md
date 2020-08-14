@@ -3,18 +3,18 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083047"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207773"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
 Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındırma planı vardır: her plan kendi fiyatlandırma modeline sahiptir: 
 
-| Plan | Açıklama |
+| Planlama | Açıklama |
 | ---- | ----------- |
 | [**Tüketim**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
 | [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
@@ -36,6 +36,8 @@ Bellek kullanımı zaman içinde değiştiği için, hesaplama temelde bellek ku
 
 > [!NOTE]
 > CPU kullanımı doğrudan yürütme maliyetinde düşünülmediğinde, işlevin yürütme süresini etkilediğinde maliyeti etkileyebilir.
+
+HTTP ile tetiklenen bir işlev için, işlev kodunuz yürütülmeye başlamadan önce bir hata oluştuğunda bir yürütme ücretsizdir. Bu, API anahtar doğrulaması veya App Service kimlik doğrulama/yetkilendirme özelliği yürütme maliyetinizden bu özelliğin sayılamamasından dolayı platformdan 401 yanıt olduğunu gösterir. Benzer şekilde, isteği işleyen bir işlevden önce platformda meydana geldiğinde 5xx durum kodu yanıtları sayılmaz. İşlev kodunuz yürütülmeye başladıktan sonra platform tarafından oluşturulan 5xx yanıtı, hata işlev kodunuz tarafından çıkarılmasa bile yürütme olarak sayılır.
 
 ## <a name="other-related-costs"></a>Diğer ilgili maliyetler
 
@@ -99,7 +101,7 @@ Yürütme birimlerinin sayısı, yürütme sayısından çok daha fazla olduğu 
 
 Bu grafik `Function Execution Units` , MB cinsinden ölçülen, iki saatlik bir dönemde tüketilen toplam 1.110.000.000 sayısını gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması `1110000000 / 1024000 = 1083.98` GB-saniye tüketilebilir. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasındaki]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 [Azure CLI](/cli/azure/) , ölçümleri almak için komutlar içerir. CLı 'yi yerel bir komut ortamından veya [Azure Cloud Shell](../cloud-shell/overview.md)kullanarak doğrudan portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman dilimine göre saatlik verileri döndürür.
 
@@ -206,7 +208,7 @@ performanceCounters
 
 Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
-| zaman damgası \[ UTC\]          | name          | value       |
+| zaman damgası \[ UTC\]          | name          | değer       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 | Özel baytlar | 209.932.288 |
 | 9/12/2019, 1:06:14 \. 994 | Özel baytlar | 212.189.184 |

@@ -3,12 +3,12 @@ title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2de62af5f7a59837876ed3348bc14de232fdee38
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056415"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206367"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -33,7 +33,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-[REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources), Denetim **$top** ve **queryrequestoptions**'ın bir parçasıdır.
+[REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources), Denetim **$top** ve **queryrequestoptions**'ın bir parçasıdır.
 
 _En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** veya **limit** işleçlerini kullanıyorsa ve **ilk**olarak daha fazla kayıt ile sonuçlanacaksa, döndürülen en fazla kayıt sayısı **birincisine**eşittir. Benzer şekilde, **top** veya **limit** **birinciden**küçükse, döndürülen kayıt kümesi **top** veya **limit**tarafından yapılandırılan daha küçük bir değer olacaktır.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-[REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources), Denetim **$Skip** ve **queryrequestoptions**'ın bir parçasıdır.
+[REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources), Denetim **$Skip** ve **queryrequestoptions**'ın bir parçasıdır.
 
 ## <a name="paging-results"></a>Disk belleği sonuçları
 
-Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
  **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**. **Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
 
  hiçbir sütun ya da bir sorgunun istediği daha az kaynak olduğunda, sayfalama devre dışı bırakıldığında veya mümkün olmadığında **Resultkesilecek** değeri **true** 'dur `id` . **Resultkesilecek** **değeri true**olduğunda **$skipToken** özelliği ayarlı değildir.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > Sayfalama 'un çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt **$skipToken**içermez.
 
-Bir örnek için, REST API belgeleri içindeki [Sonraki sayfa sorgusuna](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) bakın.
+Bir örnek için, REST API belgeleri içindeki [Sonraki sayfa sorgusuna](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query) bakın.
 
 ## <a name="formatting-results"></a>Biçimlendirme sonuçları
 

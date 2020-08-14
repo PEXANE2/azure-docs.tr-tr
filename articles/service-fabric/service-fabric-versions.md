@@ -3,12 +3,12 @@ title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 728d7403ee8e0ac9ccbd69260a718c65389adc43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433191"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205893"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -39,13 +39,14 @@ Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri liste
 | 6,3. * | 6.1.480.* |Sürüm 3,2 ' den küçük veya buna eşit |31 Mart 2019  |
 | 6,4. * | 6.2.301.* |Sürüm 3,3 ' den küçük veya buna eşit |15 Eylül 2019 |
 | 6,5. * | 6.4.617.* |Sürüm 3,4 ' den küçük veya buna eşit |1 Ağustos 2020 |
-| 7.0.466.* | 6.4.664.* |Sürüm 4,0 ' den küçük veya buna eşit|1 Ağustos 2020  |
-| 7.0.466.* | 6,5. * |Sürüm 4,0 ' den küçük veya buna eşit|1 Ağustos 2020 |
-| 7.0.470.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |1 Ağustos 2020  |
-| 7.0.472.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |1 Ağustos 2020  |
+| 7.0.466.* | 6.4.664.* |Sürüm 4,0 ' den küçük veya buna eşit|1 Kasım 2020  |
+| 7.0.466.* | 6,5. * |Sürüm 4,0 ' den küçük veya buna eşit|1 Kasım 2020 |
+| 7.0.470.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |1 Kasım 2020  |
+| 7.0.472.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |1 Kasım 2020  |
 | 7.1.409.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.1.417.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.1.428.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.1.456.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -117,4 +118,5 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 7,1 RTO | 7.1.409.9590 | 7.1.410.1 |
 | 7,1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7,1 CU2 UYGULAMAZSANıZ | 7.1.428.9590 | 7.1.428.1 |
+| 7,1 CU3 | 7.1.456.9590 | 7.1.452.1 |
 

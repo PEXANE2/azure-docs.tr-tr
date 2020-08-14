@@ -3,14 +3,15 @@ title: Azure İşlevleri tetikleyici ve bağlama örneği
 description: Azure Işlev bağlamalarını yapılandırmayı öğrenin
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c95524a5de6696bd0ffe7463451d152a9d3a19b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74227237"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205968"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure İşlevleri tetikleyici ve bağlama örneği
 
@@ -52,7 +53,7 @@ Azure portal *function.js* içeriğini görüntülemek ve düzenlemek için Işl
 
 ## <a name="c-script-example"></a>C# betiği örneği
 
-Bu tetikleyici ve bağlama ile birlikte çalışarak C# betik kodu aşağıda verilmiştir. Kuyruk iletisi içeriğini sağlayan parametre adının olduğunu ve `order` `name` *function.jsüzerinde* Özellik değeri olduğundan, bu adın gerekli olduğunu unutmayın.`order` 
+Bu tetikleyici ve bağlama ile birlikte çalışarak C# betik kodu aşağıda verilmiştir. Kuyruk iletisi içeriğini sağlayan parametre adının olduğunu ve `order` `name` *function.jsüzerinde* Özellik değeri olduğundan, bu adın gerekli olduğunu unutmayın. `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -102,7 +103,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Sınıf kitaplığı örneği
 
-Bir sınıf kitaplığında, aynı tetikleyici ve bağlama bilgileri &mdash; kuyruğu ve tablo adları, depolama hesapları, giriş ve çıkış için işlev parametreleri, &mdash; bir function.jsdosyası yerine öznitelikler tarafından sağlanır. İşte bir örnek:
+Bir sınıf kitaplığında, aynı tetikleyici ve bağlama bilgileri &mdash; kuyruğu ve tablo adları, depolama hesapları, giriş ve çıkış için işlev parametreleri, &mdash; bir function.jsdosyası yerine öznitelikler tarafından sağlanır. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 public static class QueueTriggerTableOutput

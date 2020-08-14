@@ -1,17 +1,17 @@
 ---
-title: Visual Studio ile Azure İşlevleri geliştirme
+title: Visual Studio kullanarak Azure İşlevleri geliştirme
 description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0df65c4cdbf40b49bc265f4accafde67f41dafb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81de0af335e0a233ac568921b298c9bb168eb174
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731070"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209987"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio ile Azure İşlevleri geliştirme  
+# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure İşlevleri geliştirme  
 
 Visual Studio, C# sınıf kitaplığı işlevlerini geliştirmenize, test etmenize ve Azure 'a dağıtmanıza imkan tanır. Azure Işlevleri ile ilk kez bu deneyim varsa bkz. [Azure işlevleri 'ne giriş](functions-overview.md).
 
@@ -112,7 +112,7 @@ C# sınıf kitaplığı işlevlerinde, işlev tarafından kullanılan bağlamala
 
     ![Kuyruk depolama tetikleyicisi işlevi oluşturma](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    Bu tetikleyici örneği, adlı bir anahtarla bağlantı dizesi kullanır `QueueStorage` . Bu bağlantı dizesi ayarını [dosyadalocal.settings.js](functions-run-local.md#local-settings-file)tanımlayın.
+    Bu tetikleyici örneği, adlı bir anahtarla bağlantı dizesi kullanır `QueueStorage` . Bu bağlantı dizesi ayarını [ dosyadalocal.settings.js](functions-run-local.md#local-settings-file)tanımlayın.
 
 4. Yeni eklenen sınıfı inceleyin. `Run()`Özniteliği ile nitelendirilen bir statik yöntem görürsünüz `FunctionName` . Bu öznitelik, yönteminin işlevin giriş noktası olduğunu gösterir.
 

@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078402"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208018"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -297,6 +297,9 @@ Kimlik doğrulama ayarlarınız isteğe bağlı olarak, dağıtımınız tarafı
     1.  `enabled`"True" olarak ayarlayın
     2.  `isAuthFromFile`"True" olarak ayarlayın
     3.  `authFilePath`Dosyanın adına ayarlanır (örneğin, "auth.json")
+
+> [!NOTE]
+> İçin biçimi `authFilePath` platformlar arasında farklılık gösterir. Windows 'ta, hem göreli hem de mutlak yollar desteklenir. Göreli olarak önerilir. Linux için şu anda yalnızca mutlak yollar desteklenir, bu nedenle ayarın değeri "/Home/site/Wwwroot/auth.json" veya benzer olmalıdır.
 
 Bu yapılandırma güncelleştirmesini yaptıktan sonra, bu site için App Service kimlik doğrulaması/yetkilendirme davranışını tanımlamak üzere dosyanın içeriği kullanılacaktır. Azure Resource Manager yapılandırmaya geri dönmek isterseniz, bunu `isAuthFromFile` "false" olarak ayarlayarak yapabilirsiniz.
 

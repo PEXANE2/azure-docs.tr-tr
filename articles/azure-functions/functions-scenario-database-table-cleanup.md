@@ -3,13 +3,14 @@ title: Azure Işlevleri 'ni kullanarak bir veritabanı temizleme görevi gerçek
 description: Düzenli aralıklarla satırları temizlemek için Azure SQL veritabanı 'na bağlanan bir görevi zamanlamak için Azure Işlevleri 'ni kullanın.
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/02/2019
-ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506102"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207256"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma
 
@@ -17,7 +18,7 @@ Bu makalede, Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına veya Az
 
 C# işlevleriyle çalışırken ilk deneyiminize sahipseniz, [Azure Işlevleri C# Geliştirici başvurusunu](functions-dotnet-class-library.md)okumalısınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Sürüm 2. x veya çalışma zamanının sonraki bir sürümünü hedefleyen bir yerel işlev uygulaması oluşturmak için [Visual Studio kullanarak ilk işlevinizi oluşturma](functions-create-your-first-function-visual-studio.md) makalesindeki adımları izleyin. Ayrıca, projenizi Azure 'da bir işlev uygulamasına yayımlamalısınız.
 

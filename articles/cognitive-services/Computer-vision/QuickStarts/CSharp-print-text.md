@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Görüntü İşleme OCR REST API ve C ile metin Ayıkla #'
+title: "Hızlı başlangıç: Görüntü İşleme 2,0 REST API OCR işlemini ve C 'yi kullanarak metin Ayıkla #"
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, C# ile Görüntü İşleme REST API OCR işlemini kullanarak görüntüden metin ayıklanır.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ecc0ddbfa48669cad7f486e181fcdb6dbc80851e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167802"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209184"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-ocr-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme OCR REST API ve C kullanarak metin Ayıkla #
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Hızlı başlangıç: Görüntü İşleme 2,0 REST API OCR işlemini ve C 'yi kullanarak metin Ayıkla #
 
 > [!IMPORTANT]
 > Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Portekizce, Ispanyolca veya Basitleştirilmiş Çince (Önizleme) içinde metin ayıklıyorsanız, daha yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmanızı öneririz. [C# hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) başlangıcı kullanılabilir. 

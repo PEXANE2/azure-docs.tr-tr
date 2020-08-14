@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501959"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210899"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>SYNAPSE Analytics için Azure Güvenlik temeli
 
@@ -328,7 +328,7 @@ Yönetim işlemleri için, açıkça atanması gereken Azure yerleşik rollerini
 
 * [Azure SQL 'de var olan oturum açma işlemlerini ve yönetici hesaplarını yönetme](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Yerleşik Azure rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Azure yerleşik rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1040,7 +1040,7 @@ Veritabanı şifreleme anahtarınızı şifrelemek için müşteri tarafından y
 
 * [Azure Key Vault anahtarlarını geri yükleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Mevcut bir SQL havuzunu geri yükleme](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
 

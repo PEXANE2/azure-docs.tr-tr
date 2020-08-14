@@ -3,17 +3,17 @@ title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830351"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205537"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -306,7 +306,7 @@ Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin
 - **Scripturi** -URI, dosyanın konumuna 
 - noktalı virgülle ayrılmış kabuk komutlarının **satır içi** dizisi.
 - **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
-    * Mac/Linux çalıştıran bir Terminal kullanarak sha256Checksum oluşturmak için:`sha256sum <fileName>`
+    * Mac/Linux çalıştıran bir Terminal kullanarak sha256Checksum oluşturmak için: `sha256sum <fileName>`
 
 
 Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, ön ekine sahip olmaları gerekir `sudo` .
@@ -430,12 +430,13 @@ OS support: Windows
 ```
 
 Özellikleri Özelleştir:
-- **şunu yazın** : windowsupdate.
+- **şunu yazın**  : windowsupdate.
 - **SearchCriteria** -isteğe bağlı, hangi tür güncelleştirmelerin yüklü olduğunu tanımlar (önerilen, önemli vs.), BrowseOnly = 0 ve IsInstalled = 0 (önerilir) varsayılandır.
 - **Filtreler** : isteğe bağlı, güncelleştirmeleri dahil etmek veya hariç tutmak için bir filtre belirtmenize izin verir.
 - **Updatelimit** : isteğe bağlı, kaç güncelleştirme yüklenebileceğini tanımlar, varsayılan 1000.
  
- 
+> [!NOTE]
+> Windows Update Özelleştirici, bekleyen bir Windows yeniden başlatmaları varsa veya uygulama yüklemeleri hala çalışıyorsa başarısız olabilir, genellikle bu hatayı özelleştirme. log ' da görebilirsiniz `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Bir Windows yeniden başlatmasına ekleme yapmayı düşünmenize ve/veya uygulamaların [Sleep] veya Wait komutlarıyla ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) Windows Update çalıştırmadan önce satır içi komutlarda veya betiklerinde) yüklemeyi tamamlaması için yeterli zaman olmasını öneririz.
 
 ### <a name="generalize"></a>Genelleştir 
 Varsayılan olarak, Azure Image Builder, görüntüyü ' genelleştirmek ' için her görüntü özelleştirme aşamasının sonunda ' deprovision ' kodunu da çalıştıracak. Genelleştirmek, görüntünün ayarlandığı bir işlemdir, bu sayede birden fazla VM oluşturmak için yeniden kullanılabilir. Windows VM 'Leri için Azure Image Builder, Sysprep kullanır. Linux için Azure görüntü Oluşturucu ' waagent-deprovision ' çalıştırır. 
@@ -590,7 +591,7 @@ Paylaşılan görüntü galerilerine yönelik özellikleri dağıtma:
 - **tür** -sharedimage  
 - **Gallerımageıd** – paylaşılan görüntü galerisinin kimliği, bu iki biçimde belirlenebilir:
     * Otomatik sürüm oluşturma-görüntü Oluşturucu sizin için bir monoton sürüm numarası oluşturacak, aynı şablondan görüntüleri yeniden oluşturmayı sürdürmek istediğinizde bu faydalıdır: biçim: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
-    * Açık sürüm oluşturma-Image Builder 'ın kullanmasını istediğiniz sürüm numarasını geçirebilirsiniz. Biçim:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+    * Açık sürüm oluşturma-Image Builder 'ın kullanmasını istediğiniz sürüm numarasını geçirebilirsiniz. Biçim: `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.

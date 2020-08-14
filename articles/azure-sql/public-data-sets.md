@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046771"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209532"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Test ve prototipleme için ortak veri kümeleri
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ Depolama ve analiz hizmetleri ile çözümlerini prototip ve test etmek için ku
 | [Airline uçuş gecikmeleri ve diğer taşıma verileri](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Nakliklerdeki (nokta) nakliye için ABD Bakanlığı (BTS), büyük uçak taşıyıcılar tarafından çalıştırılan yurtiçi fışıkların zaman içindeki performansını izler. Zaman içinde, geciktirilen, iptal edilen ve ayrılan fışıklardan oluşan Özet bilgileri görüntülenir... Bu Web sitesine gönderilen Özet tablolarında. " | Dosyalar CSV biçimindedir. |
 | [Trafik pertalimler-US Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "Fars, motor araç trafiği Kilitlenmelerinde çok önemli sakatlama ile ilgili olarak NHTSA, Congress ve American kamu yıllık verileri sağlayan bir ülke genelinde görselleştirmenizdeki." | "Kendi Fatality verilerinizi oluşturma FARS sorgu sistemini kullanarak çevrimiçi olarak çalışır. Ya da tüm FARS verilerini FTP sitesinden sunmak için 1975 adresinden indirebilirsiniz. " |
 | [Toxic kimyasal verileri-EPA Toxity ForeCaster (ToxCast &trade; ) verileri](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA 'nın en güncel, herkese açık bir şekilde, binlerce kimlik üzerinde yüksek aktarım hızı verileri. Bu veriler EPA 'nin ToxCast araştırma çabasıyla oluşturulur. " | Veri kümeleri, elektronik tablolar, R paketleri ve MySQL veritabanı dosyaları gibi çeşitli biçimlerde kullanılabilir. |
-| [Toxic kimyasal verileri-NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "2014 Tox21 veri sınaması, bilimcilerin, Toxic 'de Toxicoloji tarafından test edilmesine yardımcı olacak şekilde tasarlanmıştır. bu şekilde, kıza ve çözer 'ın, ı, | Veri kümeleri SMSETS ve SDF biçimlerinde kullanılabilir. Veriler ~ 10.000 çözer (Tox21 10.000) Tox21 koleksiyonunda "asdeyin etkinlik verileri ve kimyasal yapıları" sağlar. |
+| [Toxic kimyasal verileri-NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21) | "2014 Tox21 veri sınaması, bilimcilerin, Toxic 'de Toxicoloji tarafından test edilmesine yardımcı olacak şekilde tasarlanmıştır. bu şekilde, kıza ve çözer 'ın, ı, | Veri kümeleri SMSETS ve SDF biçimlerinde kullanılabilir. Veriler ~ 10.000 çözer (Tox21 10.000) Tox21 koleksiyonunda "asdeyin etkinlik verileri ve kimyasal yapıları" sağlar. |
 | [NCBI 'daki Biotechnology ve genom verileri](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Genes, genomes ve protesto bileşenleri kapsayan birden çok veri kümesi. | Veri kümeleri metin, XML, BOMBVE diğer biçimlerdeki biçimlerdir. Bir uygulama için kullanılabilir. |
 
 ## <a name="other-statistical-and-scientific-data"></a>Diğer istatistiksel ve bilimsel veriler

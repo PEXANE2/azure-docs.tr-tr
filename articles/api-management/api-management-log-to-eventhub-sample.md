@@ -12,15 +12,16 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254597"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205514"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management, Event Hubs ve Moesif ile API 'lerinizi izleme
 [API Management hizmeti](api-management-key-concepts.md) , HTTP API 'NIZE gönderilen http isteklerinin işlenmesini iyileştirmek için birçok özellik sağlar. Ancak, isteklerin ve yanıtların varlığı geçicidir. İstek yapılır ve arka uç API 'nize API Management hizmeti üzerinden akar. API 'niz isteği ve bir yanıt akışını API tüketicisine geri işler. API Management hizmeti, API 'Lerle ilgili bazı önemli istatistikleri Azure portal panosunda görüntülemeye devam eder, ancak bundan sonra Ayrıntılar kayboluyor.
@@ -163,7 +164,7 @@ Yanıt HTTP iletisini gönderme ilkesi isteğe benzer ve tüm ilke yapılandırm
 Azure Olay Hub 'ından gelen olaylar [AMQP Protokolü](https://www.amqp.org/)kullanılarak alınır. Microsoft Service Bus ekibi, istemci kitaplıklarını tüketen olayları kolaylaştırmak için kullanılabilir hale yaptı. Desteklenen iki farklı yaklaşım vardır; biri *doğrudan tüketicidir* ve diğeri `EventProcessorHost` sınıfını kullanıyor. Bu iki yaklaşımın örnekleri [Event Hubs programlama kılavuzunda](../event-hubs/event-hubs-programming-guide.md)bulunabilir. Farkların kısa sürümü, `Direct Consumer` size tamamen denetim sağlar ve her `EventProcessorHost` bir tesisat işi sizin için çalışır, ancak bu olayları nasıl işleytiğimize ilişkin belirli varsayımlar yapar.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-Bu örnekte, `EventProcessorHost` basitlik için kullanıyoruz, ancak bu senaryo için en iyi seçim olmayabilir. `EventProcessorHost`, belirli bir olay işlemcisi sınıfında iş parçacığı sorunları hakkında endişelenmenize gerek olmadığından emin olun. Ancak, senaryolarımızda iletiyi başka bir biçime dönüştürmekte ve zaman uyumsuz bir yöntem kullanarak başka bir hizmete geçiriyoruz. Paylaşılan durumu güncelleştirme, dolayısıyla iş parçacığı oluşturma riski olmaması gerekmez. Çoğu senaryoda, `EventProcessorHost` büyük olasılıkla en iyi seçenektir ve kesinlikle daha kolay bir seçenektir.
+Bu örnekte, `EventProcessorHost` basitlik için kullanıyoruz, ancak bu senaryo için en iyi seçim olmayabilir. `EventProcessorHost` , belirli bir olay işlemcisi sınıfında iş parçacığı sorunları hakkında endişelenmenize gerek olmadığından emin olun. Ancak, senaryolarımızda iletiyi başka bir biçime dönüştürmekte ve zaman uyumsuz bir yöntem kullanarak başka bir hizmete geçiriyoruz. Paylaşılan durumu güncelleştirme, dolayısıyla iş parçacığı oluşturma riski olmaması gerekmez. Çoğu senaryoda, `EventProcessorHost` büyük olasılıkla en iyi seçenektir ve kesinlikle daha kolay bir seçenektir.
 
 ### <a name="ieventprocessor"></a>Ieventprocessor
 Kullanırken merkezi kavram, `EventProcessorHost` `IEventProcessor` yöntemi içeren arabirimin bir uygulamasını oluşturmaktır `ProcessEventAsync` . Bu yöntemin özünü burada gösterilmektedir:

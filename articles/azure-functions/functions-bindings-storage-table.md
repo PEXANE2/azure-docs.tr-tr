@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853067"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206695"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
 
@@ -575,11 +575,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 * **İçindeki bir satırı okuyun**
 
-  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
+  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
 
 * **Bir veya daha fazla satırı okuyun**
 
-  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
+  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
@@ -588,11 +588,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 * **İçindeki bir satırı okuyun**
 
-  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
+  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
 
 * **Bir veya daha fazla satırı okuyun**
 
-  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
+  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
@@ -746,7 +746,7 @@ module.exports = function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, tablo depolama çıkış bağlamasının nasıl kullanılacağını göstermektedir. Bağlama,,, ve ' a `table` değer atayarak *üzerindefunction.js* yapılandırılır `name` `tableName` `partitionKey` `connection` :
+Aşağıdaki örnek, tablo depolama çıkış bağlamasının nasıl kullanılacağını göstermektedir. Bağlama,,, ve ' a `table` değer atayarak * üzerindefunction.js* yapılandırılır `name` `tableName` `partitionKey` `connection` :
 
 ```json
 {
@@ -944,7 +944,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**tür** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
 |**ada** | yok | Tablo veya varlığı temsil eden işlev kodunda kullanılan değişken adı. `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.| 
 |**tableName** |**TableName** | Tablonun adı.| 
@@ -970,13 +970,13 @@ Alternatif olarak, `CloudTable` Azure Storage SDK kullanarak tabloya yazmak içi
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Çıkış olayına, `context.bindings.<name>` `<name>` `name` *üzerindefunction.js*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
+Çıkış olayına, `context.bindings.<name>` `<name>` `name` * üzerindefunction.js*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Bir işlevden tablo depolama satırı iletisi çıktısı için iki seçenek vardır:
 
-- **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
+- **Dönüş değeri**: `name` * üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
 
 - **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
 

@@ -1,27 +1,22 @@
 ---
-title: 'Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi | Microsoft Docs'
+title: 'Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi'
 description: Bu makalede tüm Azure AD Uygulama Ara Sunucusu sürümleri listelenir ve yeni özellikler ve düzeltilen sorunlar açıklanmaktadır
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-editor: ''
 ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019395"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210871"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi
 Bu makalede, yayımlanan Azure Active Directory (Azure AD) uygulama proxy 'sinin sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, uygulama ara sunucusunu düzenli olarak yeni özellikler ve işlevlerle güncelleştirir. Uygulama proxy bağlayıcıları, yeni bir sürüm yayınlandığında otomatik olarak güncelleştirilir. 
@@ -68,7 +63,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıy�
 07 Nisan 2020: indirilmek üzere yayımlandı
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
--   Bağlayıcılar yalnızca tüm bağlantılar için TLS 1,2 kullanır. Daha fazla ayrıntı için bkz. [bağlayıcı önkoşulları](application-proxy-add-on-premises-application.md#before-you-begin) .
+-   Bağlayıcılar yalnızca tüm bağlantılar için TLS 1,2 kullanır. Daha fazla ayrıntı için bkz. [bağlayıcı önkoşulları](application-proxy-add-on-premises-application.md#prerequisites) .
 - Bağlayıcı ile Azure hizmetleri arasında iyileştirilmiş sinyal. Bu, bağlayıcı ile Azure hizmetleri arasındaki WCF iletişimine yönelik güvenilir oturumları ve WebSocket iletişimleri için DNS önbelleğe alma geliştirmelerini destekler.
 - Bağlayıcı ile arka uç uygulaması arasında bir ara sunucu yapılandırma desteği. Daha fazla bilgi için bkz. [mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md).
 

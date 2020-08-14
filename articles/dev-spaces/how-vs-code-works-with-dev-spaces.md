@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code ve Azure Dev Spaces Kubernetes uygulamalarınızı hata ayıklamanıza ve hızla yinelemenize nasıl yardımcı olduğunu öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307359"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209874"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code nasıl kullanılır Azure Dev Spaces
 
@@ -43,19 +43,15 @@ AKS kümenizi oluşturmanız ve kümenizdeki Azure Dev Spaces Visual Studio Code
 
 Projenizi başlattıktan sonra doğrudan Visual Studio Code bir geliştirme alanında çalışan Java, Node.js ve .NET Core hizmetlerinde hata ayıklaması yapabilirsiniz. Dizindeki başlatma yapılandırması, `.vscode` bir geliştirme alanında hata ayıklama etkinken bir hizmeti çalıştırmaya yönelik ek hata ayıklama bilgileri sağlar. Visual Studio Code Ayrıca, geliştirme boşluklarında çalışan kapsayıcıda hata ayıklama işlemine ekler. böylece kesme noktaları ayarlayabilir, değişkenleri inceleyebilir ve diğer hata ayıklama işlemlerini gerçekleştirebilirsiniz.
 
-## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Visual Studio Code kullanma
+## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki hızlı başlangıçlarda Visual Studio Code ve Azure Dev Spaces uzantısının Azure Dev Spaces ile çalıştığı hakkında bilgi alabilirsiniz:
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
-* [Visual Studio Code ve Java ile hızlıca yineleme ve hata ayıklama][quickstart-java]
-* [Visual Studio Code ve .NET ile hızla yineleme ve hata ayıklama][quickstart-netcore]
-* [Visual Studio Code ve Node.jsile hızlıca yineleme ve hata ayıklama][quickstart-node]
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces nasıl çalışır?](how-dev-spaces-works.md)
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works-prep.md#prepare-your-code
 [csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 [java-extension]: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds
 [maven]: https://maven.apache.org
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md

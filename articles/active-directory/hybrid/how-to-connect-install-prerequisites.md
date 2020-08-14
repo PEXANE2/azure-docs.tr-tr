@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542068"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210908"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -72,7 +72,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
 - Azure AD Connect etki alanı denetleyicisi ve diğer katman 0 kaynaklarıyla aynı şekilde değerlendirin. Daha fazla bilgi için bkz. [Yönetim Katmanı modeli Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - Azure AD Connect sunucusuna yönetici erişimini yalnızca etki alanı yöneticileri veya diğer sıkı kontrollü güvenlik grupları ile sınırlayın.
 - [Ayrıcalıklı erişime sahip tüm personel için adanmış bir hesap](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)oluşturun. Yöneticiler web 'e göz atmamalıdır, e-postalarını kontrol etmemeli ve yüksek ayrıcalıklı hesaplar ile gündelik üretkenlik görevleri yapmaktan önce.
-- [Ayrıcalıklı erişimin güvenliğini sağlama](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)bölümünde sunulan yönergeleri izleyin. 
+- [Ayrıcalıklı erişimin güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)bölümünde sunulan yönergeleri izleyin. 
 - Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olun. Daha fazla bilgi için, bkz. [yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve bir ACL tarafından korunan Active Directory sunucuda depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve ayrıcalıklı erişim iş istasyonları (Paw 'lar) içeren bir ortamı çalıştırmak için ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
 - Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişimi olan tüm personel için adanmış [ayrıcalıklı erişim iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) uygulayın. 
 - Active Directory ortamınızın saldırı yüzeyini azaltmak için bu [ek yönergeleri](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) izleyin.

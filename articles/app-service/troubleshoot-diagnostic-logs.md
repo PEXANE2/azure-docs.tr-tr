@@ -4,13 +4,13 @@ description: Tanılama günlüğünü etkinleştirme ve uygulamanıza izleme ekl
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: seodec18
-ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261350"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207533"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -62,7 +62,7 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
-|**Devre dışı** | Hiçbiri |
+|**Devre dışı** | Yok |
 |**Hata** | Hata, kritik |
 |**Uyarı** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
@@ -108,9 +108,9 @@ Her iki günlük türü de App Service dosya sisteminde depolanır. 50 ' e kadar
 
 ## <a name="add-log-messages-in-code"></a>Koda günlük iletileri ekleme
 
-Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örneğin:
+Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örnek:
 
-- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örneğin:
+- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örnek:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -138,12 +138,12 @@ Günlükleri gerçek zamanlı olarak akışa almadan önce istediğiniz günlük
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örneğin:
+Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örneğin:
+HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -159,8 +159,8 @@ Azure Storage bloblarını bir günlük türü için yapılandırırsanız, Azur
 
 App Service dosya sisteminde depolanan Günlükler için en kolay yol, ZIP dosyasını şu adresten tarayıcıda indirmeniz:
 
-- Linux/kapsayıcı uygulamaları:`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Windows uygulamaları:`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/kapsayıcı uygulamaları: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Windows uygulamaları: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 Linux/kapsayıcı uygulamaları için, ZIP dosyası hem Docker konağının hem de Docker kapsayıcısının konsol çıkış günlüklerini içerir. Ölçekli bir uygulama için, ZIP dosyası her örnek için bir günlük kümesi içerir. App Service dosya sisteminde, bu günlük dosyaları */Home/LogFiles* dizininin içeriğidir.
 
@@ -196,7 +196,7 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 | AppServiceIPSecAuditLogs  | Evet | Evet | IP kurallarından gelen istekler |
 | AppServicePlatformLogs  | TBA dili | Evet | Kapsayıcı günlükleri |
 
-## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar
+## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service Izleme](web-sites-monitor.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)

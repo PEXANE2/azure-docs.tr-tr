@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 460e3f3955778945600bb3a1f9762a0ac50f5805
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311137"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205918"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux için IoT için Azure Güvenlik Merkezi C# tabanlı güvenlik aracısını dağıtma
 
@@ -29,7 +30,7 @@ Bu kılavuzda, Linux üzerinde IoT C# tabanlı güvenlik aracısına yönelik Az
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Yükleme
+> * Yükle
 > * Dağıtımı doğrulama
 > * Aracıyı kaldırın
 > * Sorun giderme
@@ -50,7 +51,7 @@ Güvenlik aracısını dağıtmak için aşağıdaki adımları kullanın:
 
 1. Paketin içeriğini ayıklayın ve _/install_ klasörüne gidin.
 
-1. Çalıştırılarak **ınstallsecurityagent betiğine** çalışan izinleri ekleme`chmod +x InstallSecurityAgent.sh`
+1. Çalıştırılarak **ınstallsecurityagent betiğine** çalışan izinleri ekleme `chmod +x InstallSecurityAgent.sh`
 
 1. Ardından, **kök ayrıcalıklarıyla**aşağıdaki komutu çalıştırın:
 
@@ -72,7 +73,7 @@ Bu betik aşağıdaki eylemleri gerçekleştirir:
 
 - Aracıyı, belirtilen kimlik doğrulama parametreleriyle yapılandırır.
 
-Ek Yardım için, – help parametresiyle betiği çalıştırın:`./InstallSecurityAgent.sh --help`
+Ek Yardım için, – help parametresiyle betiği çalıştırın: `./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Aracıyı kaldırın
 
@@ -116,7 +117,7 @@ Aracıyı kaldırmak için betiği – u parametresiyle çalıştırın: `./Inst
 
    1. Hata hakkında daha fazla bilgi için günlük dosyasını görüntüleyin.
 
-       Günlük dosyası konumu:`/var/ASCIoTAgent/IotAgentLog.log`
+       Günlük dosyası konumu: `/var/ASCIoTAgent/IotAgentLog.log`
 
        Dosya konumu yolunu, 2. adımdaki **LogFilePath** için seçtiğiniz ada göre değiştirin.
 

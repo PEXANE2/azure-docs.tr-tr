@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Görüntü İşleme 3,0 REST API okuma işlemini ve C 'yi kullanarak yazdırılan ve el yazısı metin için OCR #"
+title: "Hızlı başlangıç: Görüntü İşleme 3,0 REST API okuma işlemini ve C 'yi kullanarak metin Ayıkla #"
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Görüntü İşleme 3,0 REST API okuma işlemleri ve C# ' ı kullanarak görüntüye OCR uygulayın.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 36f149019e37949445189045a8a71489f0f26418
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167836"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210144"
 ---
-# <a name="quickstart-ocr-for-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Hızlı başlangıç: Görüntü İşleme 3,0 REST API okuma işlemini ve C 'yi kullanarak yazdırılan ve el yazısı metin için OCR #
+# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Hızlı başlangıç: Görüntü İşleme 3,0 REST API okuma işlemini ve C 'yi kullanarak metin Ayıkla #
 
 Bu hızlı başlangıçta, Görüntü İşleme 3,0 REST API bir parçası olarak sunulan yeni OCR teknolojisini kullanarak bir görüntüden yazdırılmış ve el yazısı metin ayıklayacaksınız. Yeni [okuma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) ve [alma sonucunu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) yöntemleriyle, bir görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilen bir karakter akışına ayıklayabilirsiniz. 
 
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";

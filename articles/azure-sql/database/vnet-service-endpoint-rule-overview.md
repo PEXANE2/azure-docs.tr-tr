@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 880ec24c377091173202098a3c54b5776bf69a98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836624"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210386"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,15 +106,15 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 Azure Depolama da, Azure Depolama hesabınızın bağlantılarını sınırlandırmanıza imkan tanıyan aynı özelliğe sahiptir. Bu özelliği Azure SQL Veritabanı tarafından kullanılan bir Azure Depolama hesabıyla kullanmayı tercih ederseniz sorunlarla karşılaşabilirsiniz. Bundan etkilenen Azure SQL veritabanı ve Azure SQL veri ambarı özelliklerinin bir listesi ve tartışılması daha vardır.
 
-### <a name="azure-synapse-polybase"></a>Azure SYNAPSE PolyBase
+### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure SYNAPSE PolyBase ve COPY deyimleri
 
-PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlandırırsanız, PolyBase 'den hesaba bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
+PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure depolama hesaplarından verileri Azure SYNAPSE Analytics 'e yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlar, PolyBase kullanılırken bağlantı ve depolama hesabına kopyalama ekstresi kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile kopyalama ve PolyBase kullanarak içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 - Bu [kılavuzu](https://docs.microsoft.com/powershell/azure/install-az-ps) kullanarak Azure PowerShell'i yükleyin.
 - Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
-- Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) bakın.
+- Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Bu yapılandırmayı etkinleştirmek, PolyBase ve COPY deyimlerinin, ağ trafiğinin Azure omurgasında kaldığı güçlü kimlik doğrulaması kullanarak depolama hesabına bağlanmasına imkan tanır. Daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) bakın.
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
@@ -227,7 +227,7 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 - [Sanal ağ kuralları: Işlemler][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 
@@ -238,7 +238,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
 
 2. **SQL Server 'lar**için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 

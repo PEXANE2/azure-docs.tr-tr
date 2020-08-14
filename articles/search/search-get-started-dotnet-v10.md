@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4d8a38666991760fbb133e617984ba23788034ca
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910398"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209339"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Hızlı başlangıç: Microsoft. Azure. Search ile v10 arasındaki istemci kitaplığını kullanarak bir arama dizini oluşturma
 
@@ -31,7 +31,7 @@ Bu makalede, uygulamasının nasıl oluşturulacağı açıklanmaktadır. Ayrıc
 > [!NOTE]
 > Bu makaledeki tanıtım kodu, basitlik için Azure Bilişsel Arama sürüm 10 .NET SDK 'sının zaman uyumlu yöntemlerini kullanır. Ancak, üretim senaryolarında bunları ölçeklenebilir ve hızlı bir şekilde korumak için kendi uygulamalarınızda zaman uyumsuz yöntemleri kullanmanızı öneririz. Örneğin, ve `CreateAsync` yerine ve kullanabilirsiniz `DeleteAsync` `Create` `Delete` .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -106,9 +106,9 @@ Bu adım, konsolda anlamlı bir çıktı üretmek için gereklidir. Sonuçlar ko
 
 1. Projenize iki boş sınıf tanımı ekleyin: Address.Methods.cs, Hotel.Methods.cs
 
-1. Address.Methods.cs ' de, varsayılan içeriğin üzerine aşağıdaki kodu, 1-25. [satırları](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25)yazın.
+1. Address.Methods.cs ' de, varsayılan içeriğin üzerine aşağıdaki kodu, 1-25. [satırları](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)yazın.
 
-1. Hotel.Methods.cs ' de, [1-68 satırlarını](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68)kopyalayın.
+1. Hotel.Methods.cs ' de, [1-68 satırlarını](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)kopyalayın.
 
 ## <a name="1---create-index"></a>1-Dizin oluşturma
 
@@ -205,7 +205,7 @@ Oteller dizini basit ve karmaşık alanlardan oluşur; burada basit bir alan "Ho
 
 1. Program.cs ' de, [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak hizmete bağlanmak için sınıfın bir örneğini oluşturun. 
 
-   `SearchServiceClient`, [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) Azure bilişsel arama dizinleri oluşturmak, listelemek, güncelleştirmek veya silmek için ihtiyaç duyduğunuz tüm yöntemleri sağlayan bir özelliğine sahiptir. 
+   `SearchServiceClient` , [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) Azure bilişsel arama dizinleri oluşturmak, listelemek, güncelleştirmek veya silmek için ihtiyaç duyduğunuz tüm yöntemleri sağlayan bir özelliğine sahiptir. 
 
     ```csharp
     using System;
@@ -427,7 +427,7 @@ Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](ht
     }
     ```
 
-    `IndexBatch`Nesneyi başlattığınızda, nesneyi çağırarak onu dizine gönderebilirsiniz [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) . `Documents`, `SearchIndexClient` dizininizdeki belgeleri eklemek, değiştirmek, silmek veya sorgulamak için yöntemler sağlayan öğesinin bir özelliğidir.
+    `IndexBatch`Nesneyi başlattığınızda, nesneyi çağırarak onu dizine gönderebilirsiniz [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) . `Documents` , `SearchIndexClient` dizininizdeki belgeleri eklemek, değiştirmek, silmek veya sorgulamak için yöntemler sağlayan öğesinin bir özelliğidir.
 
     `try` / `catch` Yöntemine yapılan çağrı, `Index` hizmetiniz ağır yük altındaysa meydana gelebilen dizin oluşturma başarısızlıklarını yakalar. Üretim kodunda, başarısız olan belgelerin dizinlenmesini erteleyebilir ve yeniden deneyebilir veya örnek olarak oturum açıp devam edebilir ya da uygulamanızın veri tutarlılığı gereksinimlerini karşılayan başka bir şekilde işleyebilir.
 

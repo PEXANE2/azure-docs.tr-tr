@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924130"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205466"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -356,7 +356,7 @@ Hayır, VNet hizmet uç noktalarının kullanılmasına yönelik ek bir maliyet 
 Evet, olabilir. Sanal ağlar ve Azure hizmet kaynakları aynı ya da farklı aboneliklerde olabilir. Tek gereksinim, hem sanal ağ hem de Azure hizmet kaynaklarının aynı Active Directory (AD) kiracısı altında olması gerekir.
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Sanal ağ ve Azure hizmet kaynakları farklı AD kiracılarına aitse VNet hizmet uç noktalarını açıp VNet ACL 'Lerini ayarlayabilirim miyim?
-Hayır, VNet hizmet uç noktaları ve VNet ACL 'Leri AD kiracılar arasında desteklenmez.
+Evet, Azure depolama için hizmet uç noktaları kullanılırken ve Azure Key Vault mümkündür. Hizmetler 'in geri kalanı için, VNet hizmet uç noktaları ve VNet ACL 'Leri AD kiracılar arasında desteklenmez.
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure sanal ağ geçidi (VPN) veya ExpressRoute ağ geçidi üzerinden bağlı olan bir şirket içi cihazın IP adresi, VNet hizmet uç noktaları üzerinden Azure PaaS hizmeti 'ne erişebilir mi?
 Varsayılan olarak sanal ağlara ayrılmış olan Azure hizmeti kaynaklarına şirket içi ağlardan erişmek mümkün değildir. Şirket içinden gelen trafiğe izin vermek istiyorsanız şirket içi veya ExpressRoute 'un genel (genellikle NAT) IP adreslerine de izin vermeniz gerekir. Bu IP adresleri, Azure hizmet kaynakları için IP güvenlik duvarı yapılandırması üzerinden eklenebilir.

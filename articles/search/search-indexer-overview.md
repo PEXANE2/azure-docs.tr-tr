@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038418"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208795"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -38,7 +38,7 @@ Başlangıçta, yeni bir dizin oluşturucu bir önizleme özelliği olarak duyur
 
 ## <a name="permissions"></a>İzinler
 
-Durum ve tanımlar için istekleri al da dahil olmak üzere dizin oluşturucularla ilgili tüm işlemler, [yönetici API anahtarı](search-security-api-keys.md)gerektirir. 
+Durum ve tanımlar için istekleri al da dahil olmak üzere dizin oluşturucularla ilgili tüm işlemler, [yönetici API anahtarı](search-security-api-keys.md)gerektirir.
 
 <a name="supported-data-sources"></a>
 
@@ -48,13 +48,50 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage 2.](search-howto-index-azure-data-lake-storage.md) (önizlemede)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL veritabanı ve SQL yönetilen örneği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Sanal Makinelerde SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Yönetilen Örnek](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
+## <a name="indexer-stages"></a>Dizin Oluşturucu aşamaları
+
+Bir başlangıç çalıştırmasında, dizin boş olduğunda bir Dizin Oluşturucu, tabloda veya kapsayıcıda belirtilen tüm verilerde okunacaktır. Sonraki çalışmalarda, Dizin Oluşturucu genellikle değişmiş olan verileri algılayabilir ve alabilir. Blob verileri için değişiklik algılama otomatik olarak belirlenir. Azure SQL veya Cosmos DB gibi diğer veri kaynakları için değişiklik algılama özelliğinin etkinleştirilmesi gerekir.
+
+Bir Dizin Oluşturucu, belge almadan dizin oluşturma için "iletim" nihai arama motoruna birden çok adımı uygular veya düzenler. İsteğe bağlı olarak, bir Dizin Oluşturucu, bir beceri tanımlandığından beceri yürütme ve çıkışları çalıştırmaya da benzer.
+
+![Dizin Oluşturucu aşamaları](./media/search-indexer-overview/indexer-stages.png "Dizin Oluşturucu aşamaları")
+
+### <a name="stage-1-document-cracking"></a>1. Aşama: belge çözme
+
+Belge çözme, dosyaları açma ve içeriği ayıklama işlemidir. Veri kaynağının türüne bağlı olarak, Dizin Oluşturucu, Dizin oluşturamayacak olabilecek içeriği ayıklamak için farklı işlemler gerçekleştirmeye çalışır.  
+
+Örnekler:  
+
+* Belge, [Azure SQL veri kaynağındaki](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)bir kayıt olduğunda, Dizin Oluşturucu kayıt için her bir alanı ayıklar.
+* Belge, [Azure Blob depolama veri kaynağındaki](search-howto-indexing-azure-blob-storage.md)bir PDF dosyası olduğunda, Dizin Oluşturucu dosyanın metnini, görüntülerini ve meta verilerini ayıklar.
+* Belge, [Cosmos DB veri kaynağındaki](search-howto-index-cosmosdb.md)bir kayıt olduğunda, Dizin Oluşturucu alanları ve alt alanları Cosmos DB belgesinden ayıklar.
+
+### <a name="stage-2-field-mappings"></a>2. Aşama: alan eşlemeleri 
+
+Dizin Oluşturucu bir kaynak alanından metin ayıklar ve bir dizin veya bilgi deposundaki hedef alana gönderir. Alan adları ve türleri kesişyolduğunda yol net olur. Ancak, çıktıda farklı adlar veya türler isteyebilirsiniz. Bu durumda, dizin oluşturucuya alanı nasıl eşleyeceğinizi bildirmeniz gerekir. Bu adım, belge çözme işleminden sonra, ancak Dizin Oluşturucu kaynak belgelerden okurken dönüşümlerden önce oluşur. Bir [alan eşlemesi](search-indexer-field-mappings.md)tanımladığınızda, kaynak alanın değeri, hedef alana değişiklik olmadan olarak gönderilir. Alan eşlemeleri isteğe bağlıdır.
+
+### <a name="stage-3-skillset-execution"></a>3. Aşama: beceri yürütme
+
+Beceri yürütme, yerleşik veya özel AI işlemesini çağıran isteğe bağlı bir adımdır. Görüntü analizi formunda optik karakter tanıma (OCR) için ihtiyacınız olabilir veya dil çevirisine ihtiyacınız olabilir. Dönüştürme ne olursa olsun, Beceri yürütmesi nerede meydana gelir. Bir Dizin Oluşturucu bir işlem hattıyla, bir [beceri](cognitive-search-defining-skillset.md) "ardışık düzen içinde işlem hattı" olarak düşünebilirsiniz. Bir beceri, yetenekler adlı kendi adım dizisine sahiptir.
+
+### <a name="stage-4-output-field-mappings"></a>4. Aşama: çıkış alanı eşlemeleri
+
+Bir beceri çıkışı aslında zenginleştirilmiş belge olarak adlandırılan bir bilgi ağacıdır. Çıkış alanı eşlemeleri, bu ağacın hangi bölümlerinin dizininizdeki alanlarla eşlendiğini seçmenizi sağlar. [Çıkış alanı eşlemelerini nasıl tanımlayacağınızı](cognitive-search-output-field-mapping.md)öğrenin.
+
+Tam değerleri kaynaktan hedef alanlarla ilişkilendiren alan eşlemeleri gibi, çıkış alanı eşlemeleri, dizin oluşturucunun, zenginleştirilmiş belgedeki dönüştürülmüş değerleri dizindeki hedef alanlarla nasıl ilişkilendirileceğini söyler. İsteğe bağlı olarak kabul edilen alan eşlemelerinin aksine, her zaman bir dizinde bulunması gereken dönüştürülmüş içerikler için bir çıkış alanı eşlemesi tanımlamanız gerekir.
+
+Sonraki görüntüde, Dizin Oluşturucu aşamaları için bir örnek Dizin Oluşturucu [hata ayıklama oturumu](cognitive-search-debug-session.md) temsili gösterilmektedir: belge çözme, alan eşlemeleri, Beceri yürütme ve çıkış alanı eşlemeleri.
+
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="örnek hata ayıklama oturumu" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+
 ## <a name="basic-configuration-steps"></a>Temel yapılandırma adımları
+
 Dizin oluşturucular veri kaynağına özgü özellikler sunabilir. Bu bakımdan, dizin oluşturucu veya veri kaynağı yapılandırmasının bazı boyutları dizin oluşturucu türüne göre farklılık gösterir. Bununla birlikte, tüm dizin oluşturucuların temel birleşimi ve gereksinimleri aynıdır. Tüm dizin oluşturucularda ortak olan adımlar aşağıda ele alınmıştır.
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
@@ -136,6 +173,6 @@ Artık temel fikri anladığınıza göre, atmanız gereken bir sonraki adım he
 * [Azure SQL veritabanı, SQL yönetilen örneği veya bir Azure sanal makinesinde SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
 * [Azure Bilişsel Arama blob Dizin oluşturucuyu kullanarak CSV bloblarını dizine ekleme](search-howto-index-csv-blobs.md)
 * [JSON bloblarını Azure Bilişsel Arama blob Indexer ile dizinleme](search-howto-index-json-blobs.md)

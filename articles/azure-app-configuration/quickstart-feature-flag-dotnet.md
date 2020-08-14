@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 998527a8557db0b0cf271dc8b05d5771660a175c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855021"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209435"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlangıç: .NET Framework uygulamasına özellik bayrakları ekleme
 
@@ -27,7 +28,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 .NET Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -50,7 +51,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)**. **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**'a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**’a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -130,4 +131,4 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 Bu hızlı başlangıçta, uygulama yapılandırmasında bir özellik bayrağı oluşturdunuz ve bunu bir .NET Framework konsol uygulamasıyla kullandınız. Uygulama yeniden başlatılmadan Özellik bayraklarını ve diğer yapılandırma değerlerini dinamik olarak güncelleştirme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-dotnet.md)
+> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-dotnet.md)

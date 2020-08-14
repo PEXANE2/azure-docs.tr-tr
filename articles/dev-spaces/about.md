@@ -6,12 +6,12 @@ ms.topic: overview
 description: Azure Dev Spaces Azure Kubernetes hizmet kümelerinde takımlar için hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sağlar
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ad884d5e054f23269b238b791e250c732d70a9b8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006973"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210650"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces nedir?
 
@@ -42,8 +42,10 @@ Azure Dev Spaces yalnızca [bazı bölgelerde][supported-regions]aks kümeleri t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Takım geliştirme hızlı başlangıç][team-development-quickstart]ile Azure dev Spaces sahip takımlar için hızlı, yinelemeli geliştirme hakkında daha fazla bilgi edinin.
+Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
+
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces nasıl çalışır?](how-dev-spaces-works.md)
 
 [how-dev-spaces-works]: how-dev-spaces-works.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-quickstart]: quickstart-team-development.md

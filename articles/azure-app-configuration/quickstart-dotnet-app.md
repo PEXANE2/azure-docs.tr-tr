@@ -5,15 +5,16 @@ services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: cfa89a7921751541d1044d697237946cd63cbfd8
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 63b7f8b28e339abde326bf3dca34d9ee6d816a31
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732062"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209905"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla .NET Framework uygulaması oluşturma
 
@@ -29,7 +30,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** > **Create** > **anahtar değeri** oluştur ' u seçin:
+6. **Configuration Explorer**  >  **Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**anahtar değeri** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -41,7 +42,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)**. **İleri**’yi seçin.
 
@@ -57,7 +58,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
     System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-1. Projenizin *app. config* dosyasını aşağıdaki gibi güncelleştirin:
+1. Projenizin *App.config* dosyasını aşağıdaki gibi güncelleştirin:
 
     ```xml
     <configSections>
@@ -77,9 +78,9 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
     </appSettings>
     ```
 
-   Uygulama yapılandırma deponuzın bağlantı dizesi, ortam değişkeninden `ConnectionString`okundu. `appSettings` Bölümünün `configBuilders` özelliğindeki `Environment` öğesinden önce `MyConfigStore` yapılandırma oluşturucuyu ekleyin.
+   Uygulama yapılandırma deponuzın bağlantı dizesi, ortam değişkeninden okundu `ConnectionString` . `Environment`Bölümünün özelliğindeki öğesinden önce yapılandırma oluşturucuyu ekleyin `MyConfigStore` `configBuilders` `appSettings` .
 
-1. *Program.cs*'i açın ve çağırarak `Main` `ConfigurationManager`uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin.
+1. *Program.cs*'i açın ve `Main` çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)
@@ -111,7 +112,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. Değeri `AppSettings` `ConfigurationManager` uygulama başlatıldıktan sonra değişmez. Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı kitaplığı, ancak aynı zamanda bir .NET Framework uygulamasında da kullanılabilir. Yapılandırma ayarlarını dinamik olarak yenilemek üzere .NET Framework uygulamanızın nasıl etkinleştirileceğini öğrenmek için bir sonraki öğreticiye geçin.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. Değeri `AppSettings` uygulama başlatıldıktan `ConfigurationManager` sonra değişmez. Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı kitaplığı, ancak aynı zamanda bir .NET Framework uygulamasında da kullanılabilir. Yapılandırma ayarlarını dinamik olarak yenilemek üzere .NET Framework uygulamanızın nasıl etkinleştirileceğini öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-dotnet.md)
+> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-dotnet.md)

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/30/2020
 ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 480e860952c2659d053f8a5659e312feacff2d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 76504da214a3777dba7b2356bea160e86999bb45
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874495"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207541"
 ---
 # <a name="quickstart-personalizer-client-library"></a>Hızlı başlangıç: kişiselleştirici istemci kitaplığı
 
@@ -48,4 +48,4 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Kişiselleştirme nedir?](what-is-personalizer.md)
 * [Kişiselleştirme’yi nerelerde kullanabilirsiniz?](where-can-you-use-personalizer.md)
 * [Sorun giderme](troubleshooting.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)' da bulunabilir.
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)' da bulunabilir.

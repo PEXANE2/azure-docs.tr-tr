@@ -4,15 +4,16 @@ description: Azure Işlevleri ile Azure Uygulama yapılandırması 'nı kullanma
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bae602bd45115fa6e199e886db0539c4f47f5180
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245506"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210021"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 
@@ -28,7 +29,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** > **+** > **anahtar-değer** oluştur ' u seçin:
+6. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -44,7 +45,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Araştır sekmesine **gidin** ve projenize `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet paketini ekleyin. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
+1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Araştır sekmesine **gidin** ve `Microsoft.Extensions.Configuration.AzureAppConfiguration` projenize NuGet paketini ekleyin. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
 
 2. *Function1.cs*'i açın ve .NET Core yapılandırması ve uygulama yapılandırma yapılandırma sağlayıcısının ad alanlarını ekleyin.
 
@@ -53,7 +54,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Tek bir `static` örneği oluşturmak `Configuration` için adlı bir özellik ekleyin `IConfiguration`. Ardından çağırarak `AddAzureAppConfiguration()`uygulama `static` yapılandırmasına bağlanmak için bir Oluşturucu ekleyin. Bu, uygulama başlangıcında yapılandırmayı bir kez yükler. Aynı yapılandırma örneği, daha sonra yapılan çağrılar için de kullanılır.
+3. `static` `Configuration` Tek bir örneği oluşturmak için adlı bir özellik ekleyin `IConfiguration` . Ardından `static` çağırarak uygulama yapılandırmasına bağlanmak için bir Oluşturucu ekleyin `AddAzureAppConfiguration()` . Bu, uygulama başlangıcında yapılandırmayı bir kez yükler. Aynı yapılandırma örneği, daha sonra yapılan çağrılar için de kullanılır.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -66,7 +67,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
     }
     ```
 
-4. Yapılandırmadan değerleri `Run` okumak için yöntemini güncelleştirin.
+4. `Run`Yapılandırmadan değerleri okumak için yöntemini güncelleştirin.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -122,4 +123,4 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir Azure işlevleri uygulamasıyla kullandınız. Yapılandırma ayarlarını dinamik olarak yenilemek üzere Azure Işlevleri uygulamanızı yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-azure-functions-csharp.md)

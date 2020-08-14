@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76899374"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209944"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Öğretici: Azure Uygulama yapılandırmasındaki Özellik bayraklarını yönetme
 
@@ -38,7 +38,7 @@ Uygulama yapılandırması için Azure portal Özellik Yöneticisi, uygulamalar�
 
 Yeni bir özellik bayrağı eklemek için:
 
-1. Özellik bayrağı eklemek için **Özellik Yöneticisi** > **+ Ekle** ' yi seçin.
+1. Özellik bayrağı eklemek için **Özellik Yöneticisi**  >  **+ Ekle** ' yi seçin.
 
     ![Özellik bayrağı listesi](./media/azure-app-configuration-feature-flags.png)
 
@@ -71,7 +71,7 @@ Bir özellik bayrağının durum değerini değiştirmek için:
 
 ## <a name="access-feature-flags"></a>Özellik bayraklarını erişim
 
-Özellik Yöneticisi tarafından oluşturulan özellik bayrakları, normal anahtar değerleri olarak depolanır ve alınır. Bunlar özel bir ad alanı öneki `.appconfig.featureflag`altında tutulur. Temel alınan anahtar değerlerini görüntülemek için yapılandırma Gezgini ' ni kullanın. Uygulamanız, uygulama yapılandırma yapılandırma sağlayıcılarını, SDK 'Ları, komut satırı uzantılarını ve REST API 'Leri kullanarak bu değerleri alabilir.
+Özellik Yöneticisi tarafından oluşturulan özellik bayrakları, normal anahtar değerleri olarak depolanır ve alınır. Bunlar özel bir ad alanı öneki altında tutulur `.appconfig.featureflag` . Temel alınan anahtar değerlerini görüntülemek için yapılandırma Gezgini ' ni kullanın. Uygulamanız, uygulama yapılandırma yapılandırma sağlayıcılarını, SDK 'Ları, komut satırı uzantılarını ve REST API 'Leri kullanarak bu değerleri alabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

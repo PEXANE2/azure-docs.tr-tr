@@ -5,14 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 71f1e2b50daf333e19bc11bce119f37cec28d146
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082786"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209199"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gerekir:
 
@@ -652,19 +652,19 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
 1. Yeni SQL Veritabanı için aşağıdaki ayarları kullanın:
 
-   | Ayar       | Önerilen değer | Description |
+   | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Veritabanı adı** | *ContosoTeamsDatabase* | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Abonelik** | *Aboneliğiniz*  | Önbelleği oluşturmak ve App Service’i barındırmak için kullandığınız aynı aboneliği seçin. |
    | **Kaynak grubu**  | *TestResourceGroup* | **Var olanı kullan**’a tıklayın ve önbelleğinizi ve App Service’i yerleştirdiğiniz aynı kaynak grubunu kullanın. |
-   | **Kaynak seçin** | **Boş veritabanı** | Boş bir veritabanıyla başlayın. |
+   | **Kaynak seçme** | **Boş veritabanı** | Boş bir veritabanıyla başlayın. |
 
 1. **Sunucu** bölümünde, **Gerekli ayarları yapılandır** > **Yeni sunucu oluştur** seçeneklerine tıklayın ve aşağıdaki bilgileri girip **Seç** düğmesine tıklayın:
 
-   | Ayar       | Önerilen değer | Description |
+   | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   | **Sunucu Yöneticisi oturum açma** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
    | **Konum** | *Doğu ABD* | Önbelleği ve App Service’i oluşturduğunuz aynı bölgeyi seçin. |
 
@@ -691,7 +691,7 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
 1. Visual Studio’da **ContosoTeamStats** öğesine sağ tıklayın ve **Yayımla**’yı seçin.
 
-    ![Yayımlama](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Yayımla](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. **Yayımla**’ya tıklayarak, hızlı başlangıçta oluşturduğunuz aynı yayımlama profilini kullanın.
 
@@ -701,7 +701,7 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
     Aşağıdaki tablo örnek uygulamadaki her eylem bağlantısını açıklar:
 
-    | Eylem | Description |
+    | Eylem | Açıklama |
     | --- | --- |
     | Yeni Oluştur |Yeni bir Ekip oluşturun. |
     | Sezonu Oynat |Oyun sezonunu oynatın, ekip istatistiklerini güncelleştirin ve veritabanından tüm güncel olmayan ekip verilerini temizleyin. |

@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033345"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205931"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) uygulama modeli, herhangi bir kuruluşun Azure
 
 Her [RFC 8252 bölümü 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) ve [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), "geridöngü" veya "localhost" yeniden yönlendirme URI 'leri iki özel dikkat ile gelir:
 
-1. `http`Yeniden yönlendirme cihazdan hiçbir şekilde ayrılmadığından URI şemaları kabul edilebilir. Bu nedenle, her ikisi de kabul edilebilir:
+1. `http` Yeniden yönlendirme cihazdan hiçbir şekilde ayrılmadığından URI şemaları kabul edilebilir. Bu nedenle, her ikisi de kabul edilebilir:
     - `http://127.0.0.1/myApp`
     - `https://127.0.0.1/myApp`
 1. Yerel uygulamalar için genellikle gerekli olan kısa ömürlü bağlantı noktası aralıkları nedeniyle, bir yeniden yönlendirme URI 'sini eşleştirmek amacıyla bağlantı noktası bileşeni (örneğin, `:5001` veya `:443` ) yok sayılır. Sonuç olarak, bunların tümü eşdeğer olarak kabul edilir:
@@ -62,9 +62,9 @@ Her [RFC 8252 bölümü 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) ve
 
 Geliştirme açısından, bu birkaç şey anlamına gelir:
 
-1. Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin,-, `web` `native` -veya `spa` -Type yeniden yönlendirmesi).
-1. Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://127.0.0.1/MyWebApp` eşleşmez `http://127.0.0.1/MyNativeApp` .
-1. RFC gözetimi başına, `localhost` yeniden yönlendirme URI 'si içinde kullanmamalısınız. Bunun yerine, gerçek geri döngü IP adresini kullanın `127.0.0.1` . Bu, uygulamanızın yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından bozulmasına engel olur.
+* Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin,-, `web` `native` -veya `spa` -Type yeniden yönlendirmesi).
+* Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://127.0.0.1/MyWebApp` eşleşmez `http://127.0.0.1/MyNativeApp` .
+* RFC gözetimi başına, `localhost` yeniden yönlendirme URI 'si içinde kullanmamalısınız. Bunun yerine, gerçek geri döngü IP adresini kullanın `127.0.0.1` . Bu, uygulamanızın yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından bozulmasına engel olur.
 
     IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
 

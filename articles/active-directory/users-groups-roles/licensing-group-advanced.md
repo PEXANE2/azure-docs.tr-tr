@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727679"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209470"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -130,7 +130,7 @@ Kullanıcıların doğrudan atanmış veya gruptan devralınan bir lisansa sahip
 
 1. `connect-msolservice`Kimlik doğrulaması yapmak ve kuruluşunuza bağlanmak için cmdlet 'ini çalıştırın.
 
-2. `Get-MsolAccountSku`Azure AD kuruluşunda sağlanan tüm Ürün lisanslarını bulmaya yönelik kullanılabilir.
+2. `Get-MsolAccountSku` Azure AD kuruluşunda sağlanan tüm Ürün lisanslarını bulmaya yönelik kullanılabilir.
 
    ![Get-Msolaccountsku cmdlet 'inin ekran görüntüsü](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -205,7 +205,7 @@ Grup tabanlı lisanslama kullanıyorsanız, aşağıdaki sınırlamalar ve bilin
 
 - Grup tabanlı lisanslama şu an için başka grup içeren grupları (iç içe grupları) desteklememektedir. İçine yerleştirilmiş başka bir grup olan bir gruba lisans uyguladığınızda yalnızca grubun birinci düzeyindeki üyelerine lisans atanır.
 
-- Özelliği yalnızca güvenlik grupları ve securityEnabled = TRUE olan Office 365 grupları ile birlikte kullanılabilir.
+- Özelliği yalnızca güvenlik grupları ile ve securityEnabled = TRUE olan Microsoft 365 gruplarıyla kullanılabilir.
 
 - [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com) Şu anda grup tabanlı lisanslamayı desteklemez. Bir Kullanıcı bir gruptan lisans devralırsa, bu lisans Office Yönetim Portalı 'nda normal bir kullanıcı lisansı olarak görüntülenir. Bu lisansı değiştirmeye veya lisansı kaldırmaya çalışırsanız, Portal bir hata mesajı döndürür. Devralınan grup lisansları doğrudan bir kullanıcı üzerinde değiştirilemez.
 

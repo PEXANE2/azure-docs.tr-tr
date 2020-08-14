@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces çalışması için bir Azure Kubernetes hizmet kümesi ayarlamayı açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995896"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207949"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces için küme ayarlama çalışması
 
@@ -19,8 +19,6 @@ Azure Dev Spaces, Kubernetes uygulamalarının hızla yinelenemez ve hata ayıkl
 ## <a name="prepare-your-aks-cluster"></a>AKS kümenizi hazırlama
 
 AKS kümenizi geliştirme alanları için hazırlamak üzere AKS kümenizin [Azure dev Spaces tarafından desteklenen][supported-regions] bir bölgede olduğunu ve Kubernetes 1.10.3 veya üstünü çalıştırdığınızı doğrulayın. ' İ çalıştırarak Azure CLı 'dan Azure Dev Spaces etkinleştirebilirsiniz `az aks use-dev-spaces` .
-
-Geliştirme alanları için AKS kümesi ayarlamaya ilişkin bir örnek için, bkz. [Takım geliştirme hızlı başlangıç][quickstart-team].
 
 AKS kümenizde Azure Dev Spaces etkinleştirildiğinde, kümeniz için denetleyiciyi yükler. Denetleyici AKS kümenizin dışında bulunur. İstemci tarafı araçları ve AKS kümesi arasındaki davranışı ve iletişimi yürütür. Etkinleştirildikten sonra, istemci tarafı araçları kullanarak denetleyiciyle etkileşime geçebilirsiniz.
 
@@ -92,10 +90,8 @@ Komutun bir parçası olarak komut satırından istemci tarafı araçları ' nı
 
 Geliştirme alanınızda kodunuzu hazırlamak ve çalıştırmak için istemci tarafı araçları 'nı kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure dev Spaces bir proje hazırlama nasıl çalışır][how-it-works-prep].
 
-Takım geliştirmesi için Azure Dev Spaces kullanmaya başlamak için Azure Dev Spaces hızlı başlangıçta [Takım geliştirme][quickstart-team] bölümüne bakın.
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

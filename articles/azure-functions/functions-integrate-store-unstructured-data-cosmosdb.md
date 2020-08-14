@@ -3,13 +3,13 @@ title: Azure Cosmos DB ve Işlevleri kullanarak yapılandırılmamış verileri 
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 ms.topic: quickstart
 ms.date: 04/14/2020
-ms.custom: mvc
-ms.openlocfilehash: 09d9bbca7119539f31a4cea056f338cf28dfcd23
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121953"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210883"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
@@ -63,7 +63,7 @@ Bu öğreticiyi tamamlamak için:
 
 Mevcut işlev kodunu aşağıdan seçtiğiniz dildeki kodla değiştirin:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Mevcut C# işlevini aşağıdaki kodla değiştirin:
 
@@ -150,7 +150,7 @@ Bu kod örneği, HTTP İsteği sorgu dizelerini okur ve `taskDocument` nesnesind
 
     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Cosmos DB hizmeti için arama yapın." border="true":::
 
-1. Azure Cosmos DB hesabınızı seçin ve **Veri Gezgini**' ı seçin.
+1. Azure Cosmos DB hesabınızı seçin ve  **Veri Gezgini**' ı seçin.
 
 1. **TaskCollection** düğümlerini genişletin, yeni belge ' yi seçin ve belgenin sorgu dizesi değerlerinizi içerdiğinden, bazı ek meta verilerle birlikte emin olun.
 

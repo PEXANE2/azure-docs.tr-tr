@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004383"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210963"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
 
@@ -77,49 +77,56 @@ Aşağıdaki örnek, varsayılan öğelere eklenen bir metin kutusunu gösterir.
 Temel adımlar için varsayılan davranışı geçersiz kılmanız gerektiğinde yapılandırma öğesini belirtirsiniz. Aşağıdaki örnek, kullanılabilir özellikleri gösterir.
 
 ```json
-"config": {  
-    "basics": {  
-        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
-        "subscription": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
-                    },
+"config": {
+    "basics": {
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
-                    }
-                ]
-            },
-            "resourceProviders": [ "<Resource Provider>" ]
-        },
-        "resourceGroup": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
-                    }
-                ]
-            },
-            "allowExisting": true
-        },
-        "location": {  
-            "label": "Custom label for location",  
-            "toolTip": "provide a useful tooltip",  
-            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
-            "allowedValues": [ "eastus", "westus2" ],  
-            "visible": true  
-        }  
-    }  
-},  
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [
+                "<Resource Provider>"
+            ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {
+            "label": "Custom label for location",
+            "toolTip": "provide a useful tooltip",
+            "resourceTypes": [
+                "Microsoft.Compute/virtualMachines"
+            ],
+            "allowedValues": [
+                "eastus",
+                "westus2"
+            ],
+            "visible": true
+        }
+    }
+},
 ```
 
 İçin `description` kaynağını açıklayan markaşağı etkin bir dize sağlayın. Çok satırlı biçim ve bağlantılar desteklenir.
 
-İçin `location` , geçersiz kılmak istediğiniz konum denetimi özelliklerini belirtin. Geçersiz kılınmayan özellikler, varsayılan değerlerine ayarlanır. `resourceTypes`tam kaynak türü adlarını içeren bir dize dizisini kabul eder. Konum seçenekleri yalnızca kaynak türlerini destekleyen bölgelerle kısıtlıdır.  `allowedValues`   bir bölge dizesi dizisini kabul eder. Yalnızca bu bölgeler açılan menüde görünür.Hem hem de ayarlayabilirsiniz `allowedValues`    `resourceTypes` . Sonuç, her iki listenin kesişmesi olur. Son olarak, `visible` özellik konum açılan listesini koşullu veya tamamen devre dışı bırakmak için kullanılabilir.  
+İçin `location` , geçersiz kılmak istediğiniz konum denetimi özelliklerini belirtin. Geçersiz kılınmayan özellikler, varsayılan değerlerine ayarlanır. `resourceTypes` tam kaynak türü adlarını içeren bir dize dizisini kabul eder. Konum seçenekleri yalnızca kaynak türlerini destekleyen bölgelerle kısıtlıdır.  `allowedValues`   bir bölge dizesi dizisini kabul eder. Yalnızca bu bölgeler açılan menüde görünür.Hem hem de ayarlayabilirsiniz `allowedValues`    `resourceTypes` . Sonuç, her iki listenin kesişmesi olur. Son olarak, `visible` özellik konum açılan listesini koşullu veya tamamen devre dışı bırakmak için kullanılabilir.  
 
 `subscription`Ve `resourceGroup` öğeleri ek doğrulamalar belirtmenize olanak tanır. Doğrulamaları belirtmenin sözdizimi, [metin kutusu](microsoft-common-textbox.md)için özel doğrulama ile aynıdır. Ayrıca `permission` , abonelik veya kaynak grubunda doğrulama belirtebilirsiniz.  
 

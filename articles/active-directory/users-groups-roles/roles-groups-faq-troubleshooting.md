@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476238"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208186"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rol sorunlarını giderme
 
@@ -51,7 +51,7 @@ Y **:** Evet, şunları yapabilirsiniz. En yeni erişim gözden geçirmesi sür�
 
 Y **:** Evet, şunları yapabilirsiniz. Genel yönetici ve Kullanıcı Yöneticisi 'nin bir erişim paketine herhangi bir grup koyma gücü vardır. Genel yönetici için hiçbir değişiklik yapılmadı, ancak Kullanıcı Yöneticisi rol izinlerinde küçük bir değişiklik vardır. Rol atanabilir grubu bir erişim paketine eklemek için, Kullanıcı Yöneticisi ve rol atanabilir grubun sahibi olmanız gerekir. Kurumsal Lisans yönetiminde kimlerin erişim paketi oluşturerişebileceğini gösteren tam tablo aşağıda verilmiştir:
 
-Azure AD dizin rolü | Yetkilendirme Yönetimi rolü | Güvenlik grubu eklenebilir\* | Office 365 grubu eklenebilir\* | Uygulama eklenebilir | SharePoint Online sitesi eklenebilir
+Azure AD dizin rolü | Yetkilendirme Yönetimi rolü | Güvenlik grubu eklenebilir\* | Microsoft 365 grubu eklenebilir\* | Uygulama eklenebilir | SharePoint Online sitesi eklenebilir
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 Genel yönetici | yok | ✔️ | ✔️ | ✔️  | ✔️
 Kullanıcı yöneticisi  | yok  | ✔️  | ✔️  | ✔️
@@ -101,4 +101,4 @@ Y **:** Var olan bir grubu bir role atarsanız, var olan Grup sahibi, yeni üyel
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Rol atamalarını yönetmek için bulut gruplarını kullanma](roles-groups-concept.md)
-- [Rol atanabilir Grup oluşturma](roles-groups-create-eligible.md)
+- [Rol atanabilir grup oluşturma](roles-groups-create-eligible.md)

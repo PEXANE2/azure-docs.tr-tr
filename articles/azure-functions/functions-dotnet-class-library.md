@@ -2,13 +2,14 @@
 title: Azure Işlevleri C# Geliştirici Başvurusu
 description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 7c00dcd3648ef175d4e834fceef3444f7943e70b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288204"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206213"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -138,7 +139,7 @@ Yapı işlemi, derleme klasöründeki bir işlev klasöründe bir *function.js* 
 
 Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](functions-scale.md#how-the-consumption-and-premium-plans-work)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş veya çıkış bağlamaları değildir.
 
-Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına yapılandırma *function.js* yerine bağlama için .net öznitelikleri kullanmasını söyleyen bir özelliği içerir. İşte bir örnek:
+Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına yapılandırma *function.js* yerine bağlama için .net öznitelikleri kullanmasını söyleyen bir özelliği içerir. Aşağıda bir örnek verilmiştir:
 
 ```json
 {
@@ -258,7 +259,7 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Çıktıyı C# ' deki akış günlüklerinizi günlüğe kaydetmek için, [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. `log`Aşağıdaki örnekte olduğu gibi, adını yazmanız önerilir:  
 
@@ -371,7 +372,7 @@ Zorunlu bir bağlamayı aşağıdaki gibi tanımlayın:
   }
   ```
 
-  `BindingTypeAttribute`, bağlamalarınızı tanımlayan .NET özniteliğidir ve `T` Bu bağlama türü tarafından desteklenen bir giriş veya çıkış türüdür. `T`bir `out` parametre türü (gibi `out JObject` ) olamaz. Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak yalnızca [ICollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [ıasynccollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) öğesini kesinlik ile kullanabilirsiniz.
+  `BindingTypeAttribute` , bağlamalarınızı tanımlayan .NET özniteliğidir ve `T` Bu bağlama türü tarafından desteklenen bir giriş veya çıkış türüdür. `T` bir `out` parametre türü (gibi `out JObject` ) olamaz. Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak yalnızca [ICollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [ıasynccollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) öğesini kesinlik ile kullanabilirsiniz.
 
 ### <a name="single-attribute-example"></a>Tek öznitelik örneği
 

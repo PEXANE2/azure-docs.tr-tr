@@ -7,14 +7,15 @@ manager: gwallace
 keywords: Azure işlevleri, işlevler, olay işleme, Warmup, soğuk başlangıç, Premium, dinamik işlem, sunucusuz mimari
 ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383724"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206581"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
@@ -107,7 +108,7 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function.js* dosyadaki bir ısınma tetikleyicisini ve uygulamanıza eklendiğinde her yeni örnekte çalıştırılacak [JavaScript işlevini](functions-reference-node.md) gösterir.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir ısınma tetikleyicisini ve uygulamanıza eklendiğinde her yeni örnekte çalıştırılacak [JavaScript işlevini](functions-reference-node.md)  gösterir.
 
 İşlevinizin adı ```warmup``` (büyük/küçük harf duyarsız) olmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
@@ -226,9 +227,9 @@ Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `WarmupTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `warmupTrigger` . |
+| **tür** | yok| Gerekli-olarak ayarlanmalıdır `warmupTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
 | **ada** | yok| Required-işlev kodunda kullanılan değişken adı.|
 

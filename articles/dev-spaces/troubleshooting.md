@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077042"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210821"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -55,8 +55,6 @@ Azure Dev Spaces CLı yüklü değilse, önce aşağıdaki komutu kullanarak bu 
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-Denetleyiciyi yeniden oluşturmak, CLı veya Visual Studio 'dan yapılabilir. Örnekler için bkz. [.NET Core hızlı başlangıçlarla](quickstart-netcore-visualstudio.md) [Takım geliştirme](quickstart-team-development.md) veya geliştirme.
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Denetleyici adı uzunluğu nedeniyle denetleyici oluşturma başarısız oldu
 
@@ -545,7 +543,7 @@ Bu sorunu düzeltmek için:
 1. Kapsayıcı oluşturma/dağıtım süreciyorsa 2-3 saniye bekleyip hizmete erişmeyi yeniden deneyebilirsiniz. 
 1. Aşağıdaki varlıklarda bağlantı noktası yapılandırmanızı denetleyin:
     * ** [Helb grafiği](https://docs.helm.sh):** `service.port`Ve değerleri ile belirtilir `deployment.containerPort` . YAML scafkatby `azds prep` komutu.
-    * Uygulama kodunda açılan bağlantı noktaları, örneğin Node.js:`var server = app.listen(80, function () {...}`
+    * Uygulama kodunda açılan bağlantı noktaları, örneğin Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>"MyLibrary" tür veya ad alanı adı bulunamadı
 
