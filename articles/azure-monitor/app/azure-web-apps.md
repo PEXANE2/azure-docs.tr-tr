@@ -4,19 +4,19 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079715"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245494"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
 [Azure Uygulama hizmetlerinde](../../app-service/index.yml) çalışan ASP.NET ve ASP.NET Core tabanlı Web uygulamalarında izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
 
 > [!NOTE]
-> **Geliştirme araçları**uzantıları aracılığıyla Application Insights bir site uzantısının el ile eklenmesi  >  **Extensions** kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar içinde bulunur `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
+> **Geliştirme araçları**uzantıları aracılığıyla Application Insights bir site uzantısının el ile eklenmesi  >  **Extensions** kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak  [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar içinde bulunur `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
@@ -114,8 +114,8 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 
 İstemci tarafı izleme, ASP.NET için kabul edilir. İstemci tarafı izlemeyi etkinleştirmek için:
 
-* **Ayarları** seçin > * * * * uygulama ayarları * * * *
-   * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
+* **Ayarlar** **>** **Yapılandırma**
+   * Uygulama ayarları ' nın altında **Yeni bir uygulama ayarı**oluşturun:
 
      Ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -133,10 +133,10 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 
 Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
 
-* **Ayarlar**  >  **uygulama ayarlarını** seçin
-   * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
+* **Ayarlar** **>** **Yapılandırma**
+   * Uygulama ayarları ' nın altında **Yeni bir uygulama ayarı**oluşturun:
 
-     ada`APPINSIGHTS_JAVASCRIPT_ENABLED`
+     ada `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Değer: `false`
 
@@ -213,7 +213,7 @@ Bu seçenek, tüm gerekli ayarlarla yapılandırılmış en son Azure Resource M
 
   ![App Service Web uygulaması şablonu](./media/azure-web-apps/arm-template.png)
 
-Aşağıda bir örnek verilmiştir ve tüm örneklerini `AppMonitoredSite` site adınızla değiştirin:
+Aşağıda bir örnek verilmiştir ve tüm örneklerini  `AppMonitoredSite` site adınızla değiştirin:
 
 ```json
 {
@@ -332,9 +332,9 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 2.8.9 sürümünden yükseltme, ek eylemler olmadan otomatik olarak gerçekleşir. Yeni izleme bitleri, hedef App Service 'e arka planda teslim edilir ve uygulama yeniden başlatıldığında alınır.
 
-Hangi uzantının çalıştırdığınız sürümünü denetlemek için ziyaret edin`http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+Hangi uzantının çalıştırdığınız sürümünü denetlemek için ziyaret edin `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-![URL yolunun ekran görüntüsühttp://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
+![URL yolunun ekran görüntüsü http://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
 
 ### <a name="upgrade-from-versions-100---265"></a>1.0.0-2.6.5 sürümlerinden yükseltme
 
@@ -359,14 +359,14 @@ Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar
 1. Uygulamasının aracılığıyla izlendiğinden emin olun `ApplicationInsightsAgent` .
     * `ApplicationInsightsAgent_EXTENSION_VERSION`Uygulama ayarının "~ 2" değerine ayarlanmış olduğunu denetleyin.
 2. Uygulamanın izlenecek gereksinimleri karşıladığından emin olun.
-    * Buraya gidin`https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+    * Buraya gidin `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
     ![https://yoursitename.scm.azurewebsites/applicationinsightsSonuç sayfasının ekran görüntüsü](./media/azure-web-apps/app-insights-sdk-status.png)
 
     * `Application Insights Extension Status`Olduğunu onaylayın`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
         * Çalışmıyorsa, [etkinleştirme Application Insights izleme yönergelerini](#enable-application-insights) izleyin
 
-    * Durum kaynağının var olduğunu ve şu şekilde göründüğünü onaylayın:`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
+    * Durum kaynağının var olduğunu ve şu şekilde göründüğünü onaylayın: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Benzer bir değer yoksa, uygulamanın Şu anda çalışmadığı veya desteklenmediği anlamına gelir. Uygulamanın çalıştığından emin olmak için, uygulama URL 'si/uygulama uç noktalarını el ile ziyaret etmeyi deneyin, bu, çalışma zamanı bilgilerinin kullanılabilir hale gelmesini sağlar.
 
     * `IKeyExists`Olduğunu onaylayın`true`

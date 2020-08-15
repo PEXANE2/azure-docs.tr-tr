@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037142"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245443"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -77,13 +77,14 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     > [!NOTE]
     > BLOB depolama hesaplarından veya *Premium* genel amaçlı (GPv1 veya GPv2) depolama hesaplarından Azure dosya paylaşımları oluşturamazsınız. Standart Azure dosya paylaşımlarının yalnızca *Standart* genel amaçlı hesaplarda oluşturulması gerekir ve Premium Azure dosya paylaşımları yalnızca dosya depolama depolama hesaplarında oluşturulmalıdır. *Premium* genel amaçlı (GPv1 ve GPv2) depolama hesapları yalnızca Premium sayfa Blobları içindir. 
 
+* <a id="file-locking"></a>
+  **Azure dosyaları dosya kilitlemeyi destekliyor mu?**  
+    Evet, Azure dosyaları SMB/Windows stili dosya kilitlemeyi tam olarak destekler, [bkz. Ayrıntılar](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+
 * <a id="give-us-feedback"></a>
   **Gerçekten Azure dosyalarına eklenen belirli bir özelliği görmek istiyorum. Eklenebilir mi?**  
     Azure dosyaları ekibi, hizmetimiz ile ilgili tüm geri bildirimleri ve tüm geri bildirimlerinizi duymakla ilgileniyor. Lütfen [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)'daki özellik isteklerini oylayın! Birçok yeni özellik ile size çok fazla göz ımızı umuyoruz.
 
-  **Azure dosyaları dosya kilitlemeyi destekliyor mu?**  
-    Evet, Azure dosyaları SMB/Windows stili dosya kilitlemeyi tam olarak destekler, [bkz. Ayrıntılar](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
-    
 ## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 * <a id="afs-region-availability"></a>
@@ -208,6 +209,13 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 **Azure dosyaları hangi veri uyumluluk ilkelerini destekler?**  
 
    Azure dosyaları, Azure depolama 'daki diğer depolama hizmetlerinde kullanılan depolama mimarisinin üstünde çalışır. Azure dosyaları, diğer Azure Storage hizmetlerinde kullanılan aynı veri uyumluluk ilkelerini uygular. Azure depolama veri uyumluluğu hakkında daha fazla bilgi için [Azure depolama uyumluluk teklifleri](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)' ne başvurabilirsiniz ve [Microsoft Güven Merkezi](https://microsoft.com/trustcenter/default.aspx)' ne gidebilirsiniz.
+
+* <a id="file-auditing"></a>
+**Azure dosyalarındaki dosya erişimini ve değişiklikleri nasıl denetleyeceğinizi?**
+
+  Azure dosyaları için denetim işlevlerini sağlayan iki seçenek vardır:
+  - Kullanıcılar Azure dosya paylaşımıyla doğrudan erişiyorsa, dosya değişikliklerini ve Kullanıcı erişimini izlemek için [Azure depolama günlükleri (Önizleme)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) kullanılabilir. Bu Günlükler, sorun giderme amacıyla kullanılabilir ve istekler en iyi çaba temelinde günlüğe kaydedilir.
+  - Kullanıcılar, Azure Dosya Eşitleme aracısının yüklü olduğu bir Windows Server aracılığıyla Azure dosya paylaşımıyla erişiyorsa, Windows Server 'da dosya değişikliklerini ve Kullanıcı erişimini izlemek için bir [Denetim ilkesi](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) veya üçüncü taraf ürün kullanın. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS kimlik doğrulaması
 * <a id="ad-support-devices"></a>
@@ -274,7 +282,6 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 **Dizin/dosya Windows ACL 'Lerini al/ayarla/Kopyala desteği için REST API 'Ler var mı?**
 
     Evet, [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz. Ayrıca REST tabanlı araçlarda kalıcı Windows ACL 'Leri de destekliyoruz: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
-
 
 ## <a name="on-premises-access"></a>Şirket içi erişim
 
