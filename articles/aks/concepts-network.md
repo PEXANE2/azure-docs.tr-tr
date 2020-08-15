@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS), Kubernetes kullanan ve Azure C
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387770"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243913"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
 
@@ -73,6 +73,8 @@ Daha fazla bilgi için bkz. [AKS kümesi için Kubernetes kullanan ağını yap�
 
 Azure CNI seçeneğinde her pod, alt ağdan doğrudan erişilebilen bir IP adresi alır. Bu IP adresleri, ağ alanınızda benzersiz olmalı ve önceden planlanmalıdır. Her düğümün desteklediği en fazla sayıda düğüm için bir yapılandırma parametresi vardır. Düğüm başına düşen IP adresi sayısı, bu düğüm için önde ayrılır. Bu yaklaşım daha fazla planlama gerektirir, aksi takdirde IP adresi tükenmesi veya uygulamanızın beklentilerinde daha büyük bir alt ağda kümeleri yeniden oluşturma gereksinimine yol açabilir.
 
+Kubenet 'ın aksine, aynı sanal ağdaki uç noktalara giden trafik, düğümün birincil IP 'si için NAT değildir. Sanal ağ içindeki trafiğin kaynak adresi Pod IP 'dir. Sanal ağ dışındaki trafik, düğümün birincil IP 'si için hala NAT 'Lar sağlar.
+
 Düğümler [Azure Container Networking Interface (CNı)][cni-networking] Kubernetes eklentisini kullanır.
 
 ![Her biri tek bir Azure VNet 'e bağlanan köprülerle iki düğüm gösteren diyagram][advanced-networking-diagram]
@@ -114,7 +116,7 @@ Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem
 * Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
 * Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örneğin:
+Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
 
 * Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken bu kaynakları destekliyoruz.
 * Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak üzere bu AKS tarafından yönetilen kaynakları el ile değiştirmek desteklenmez.

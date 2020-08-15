@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836403"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245375"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
 Bu makalede, Azure Container Registry hakkında sık sorulan sorular ve bilinen sorunlar ele alınmaktadır.
+
+Kayıt defteri sorunlarını giderme kılavuzu için bkz.:
+* [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md)
+* [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
+* [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Kaynak yönetimi
 
@@ -261,10 +266,10 @@ Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarla
 
 ## <a name="diagnostics-and-health-checks"></a>Tanılama ve durum denetimleri
 
-- [Sistem durumunu denetle`az acr check-health`](#check-health-with-az-acr-check-health)
+- [Sistem durumunu denetle `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull hata vererek başarısız oldu: net/http: bağlantı beklenirken istek iptal edildi (üst bilgiler beklenirken Istemci. zaman aşımı aşıldı)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [Docker Push başarılı oldu, ancak docker pull hata vererek başarısız oluyor: kimlik doğrulaması gerekli](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [`az acr login`başarılı oldu, ancak Docker komutları hata vererek başarısız oluyor: kimlik doğrulaması gerekli](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` başarılı oldu, ancak Docker komutları hata vererek başarısız oluyor: kimlik doğrulaması gerekli](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [Docker Daemon 'un hata ayıklama günlüklerini etkinleştirin ve alın](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Yeni Kullanıcı izinleri güncelleştirmeden hemen sonra etkili olmayabilir](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Kimlik doğrulama bilgileri doğrudan REST API çağrılarında doğru biçimde verilmez](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
@@ -274,7 +279,7 @@ Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarla
 - [Depo biçimi geçersiz veya desteklenmiyor](#repository-format-is-invalid-or-unsupported)
 - [Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Sistem durumunu denetle`az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Sistem durumunu denetle `az acr check-health`
 
 Ortak ortam ve kayıt defteri sorunlarını gidermek için bkz. [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md).
 
@@ -453,8 +458,8 @@ Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım bel
 
 #### <a name="prerequisites"></a>Önkoşullar
 
-- Fiddler 'da https şifresini çözmeyi etkinleştir:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin:<https://docs.docker.com/docker-for-windows/#proxies>
+- Fiddler 'da https şifresini çözmeyi etkinleştir:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>
 - Tamamlandığında ' i döndürtığınızdan emin olun.  Docker bu etkin ve Fiddler çalışmadığı için çalışmaz.
 
 #### <a name="windows-containers"></a>Windows kapsayıcıları

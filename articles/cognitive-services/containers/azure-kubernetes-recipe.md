@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128582"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244505"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Metin Analizi dil algılama kapsayıcısını Azure Kubernetes hizmetine dağıtma
 
@@ -25,7 +25,7 @@ Dil algılama kapsayıcısını dağıtmayı öğrenin. Bu yordam, yerel Docker 
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir. Azure Cloud Shell kullanmayın.
 
-* Bir Azure aboneliği kullanın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Bir Azure aboneliği kullanın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services) oluşturun.
 * Bu yordamda kullanılan [örneği](https://github.com/Azure-Samples/cognitive-services-containers-samples) kopyalayabilmeniz için işletim sisteminiz için [Git](https://git-scm.com/downloads) .
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Docker altyapısı](https://www.docker.com/products/docker-engine) ve DOCKER CLI 'nın konsol penceresinde çalışıp çalışmadığını doğrulama.
@@ -313,17 +313,17 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
 
     Dil ön uç dağıtım ayarları|Amaç|
     |--|--|
-    |Satır 32<br> `image`özelliði|Container Registry ön uç görüntüsünün görüntü konumu<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Satır 44<br> `name`özelliði|Resim için, önceki bölümde olduğu gibi bilinen gizli dizi Container Registry `<client-secret>` .|
+    |Satır 32<br> `image` özelliði|Container Registry ön uç görüntüsünün görüntü konumu<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |Satır 44<br> `name` özelliði|Resim için, önceki bölümde olduğu gibi bilinen gizli dizi Container Registry `<client-secret>` .|
 
 1. `language.yml`Kendi kapsayıcı kayıt defteri görüntü adlarınızı, gizli anahtar ve metin analizi ayarlarınızı eklemek için aşağıdaki tabloya göre dil dağıtım çizgilerini değiştirin.
 
     |Dil dağıtım ayarları|Amaç|
     |--|--|
-    |Satır 78<br> `image`özelliði|Container Registry dil görüntüsünün görüntü konumu<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Satır 95<br> `name`özelliði|Resim için, önceki bölümde olduğu gibi bilinen gizli dizi Container Registry `<client-secret>` .|
-    |Satır 91<br> `apiKey`özelliði|Metin analizi kaynak anahtarınız|
-    |Satır 92<br> `billing`özelliði|Metin analizi kaynağınız için faturalandırma uç noktası.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Satır 78<br> `image` özelliði|Container Registry dil görüntüsünün görüntü konumu<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |Satır 95<br> `name` özelliði|Resim için, önceki bölümde olduğu gibi bilinen gizli dizi Container Registry `<client-secret>` .|
+    |Satır 91<br> `apiKey` özelliði|Metin analizi kaynak anahtarınız|
+    |Satır 92<br> `billing` özelliði|Metin analizi kaynağınız için faturalandırma uç noktası.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     **Apikey** ve **faturalandırma uç noktası** Kubernetes Orchestration tanımının bir parçası olarak ayarlandığı için, Web sitesi kapsayıcısının bu ilgili bilgileri bilmeleri veya isteğin bir parçası olarak iletilmesi gerekmez. Web sitesi kapsayıcısı, Orchestrator adına göre dil algılama kapsayıcısını ifade eder `language` .
 

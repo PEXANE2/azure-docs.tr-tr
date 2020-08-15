@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002995"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245817"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1-kaynak grubu ve birincil yönetilen örnek oluşturma
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>Kaynak grubu ve birincil yönetilen örnek oluşturma
 
 Bu adımda, Azure portal veya PowerShell 'i kullanarak yük devretme grubunuz için kaynak grubunu ve birincil yönetilen örneği oluşturacaksınız. 
 
@@ -404,7 +404,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturu
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2-ikincil sanal ağ oluşturma
+## <a name="create-secondary-virtual-network"></a>İkincil sanal ağ oluştur
 
 Yönetilen örneğinizi oluşturmak için Azure portal kullanıyorsanız, birincil ve ikincil yönetilen örnek alt ağının çakışan aralıklar olmadığından, sanal ağı ayrı olarak oluşturmanız gerekecektir. Yönetilen örneğinizi yapılandırmak için PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
 
@@ -432,7 +432,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
     | **Adres alanı** | Sanal ağınız için gibi adres alanı `10.128.0.0/16` . | 
     | **Abonelik** | Birincil yönetilen örneğinizin ve kaynak grubunuzun bulunduğu abonelik. |
     | **Bölge** | İkincil yönetilen örneğinizi dağıtacağınız konum. |
-    | **Alt ağ** | Alt ağınızın adı. `default`Varsayılan olarak sizin için sağlanır. |
+    | **Alt ağ** | Alt ağınızın adı. `default` Varsayılan olarak sizin için sağlanır. |
     | **Adres aralığı**| Alt ağınızın adres aralığı. Bunun gibi, birincil yönetilen örneğinizin sanal ağı tarafından kullanılan alt ağ adres aralığından farklı olması gerekir `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
 
@@ -444,7 +444,7 @@ Bu adım yalnızca SQL yönetilen örneği dağıtmak için Azure portal kullan�
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3-ikincil bir yönetilen örnek oluşturma
+## <a name="create-a-secondary-managed-instance"></a>İkincil yönetilen örnek oluşturma
 Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu, iki yönetilen örnek arasında ağ iletişimini de yapılandıracaksınız. 
 
 İkinci yönetilen örneğiniz şunları sağlamalıdır:
@@ -734,9 +734,9 @@ PowerShell kullanarak ikincil yönetilen örnek oluşturun.
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4-birincil ağ geçidi oluşturma 
+## <a name="create-a-primary-gateway"></a>Birincil ağ geçidi oluşturma 
 
-Yük devretme grubuna katılacak iki yönetilen örnek için, ağ iletişimine izin vermek üzere iki yönetilen örneğin sanal ağları arasında bir ExpressRoute ya da bir ağ geçidi olmalıdır. İki VPN ağ geçidini bağlamak yerine [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmayı seçerseniz, [adım 7](#7---create-a-failover-group)' ye atlayın.  
+Yük devretme grubuna katılacak iki yönetilen örnek için, ağ iletişimine izin vermek üzere iki yönetilen örneğin sanal ağları arasında bir ExpressRoute ya da bir ağ geçidi olmalıdır. İki VPN ağ geçidini bağlamak yerine [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmayı seçerseniz, [adım 7](#create-a-failover-group)' ye atlayın.  
 
 Bu makalede, iki VPN ağ geçidini oluşturma ve bunları bağlama adımları sağlanır, ancak bunun yerine ExpressRoute 'u yapılandırdıysanız yük devretme grubunu oluşturmaya devam edebilirsiniz. 
 
@@ -767,7 +767,6 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı**' ı seçin. |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
-    | **Konum**| Birincil yönetilen örneğinizin ve birincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-primary` . |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `primary-gateway-IP` . |
@@ -831,7 +830,7 @@ PowerShell kullanarak birincil yönetilen örneğinizin sanal ağı için ağ ge
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5-ikincil ağ geçidi oluşturma 
+## <a name="create-secondary-gateway"></a>İkincil ağ geçidi oluştur 
 Bu adımda, Azure portal kullanarak ikincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
 
 
@@ -849,8 +848,7 @@ Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını 
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı**' ı seçin. |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |
-   | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
-   | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-secondary` . |
+   | **Sanal ağ**| İkincil yönetilen örnek için sanal ağı seçin (örneğin,) `vnet-sql-mi-secondary` . |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
    | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
@@ -883,7 +881,7 @@ PowerShell kullanarak ikincil yönetilen örneğin sanal ağı için ağ geçidi
                      -VirtualNetwork $secondaryVirtualNetwork
    $drLocation = $secondaryVirtualNetwork.Location
    
-   Write-host "Creating primary gateway..."
+   Write-host "Creating secondary gateway..."
    Write-host "This will take some time."
    $secondaryGWPublicIP = New-AzPublicIpAddress -Name $secondaryGWPublicIPAddress -ResourceGroupName $resourceGroupName `
             -Location $drLocation -AllocationMethod Dynamic
@@ -911,7 +909,7 @@ PowerShell kullanarak ikincil yönetilen örneğin sanal ağı için ağ geçidi
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6-ağ geçitlerini bağlama
+## <a name="connect-the-gateways"></a>Ağ geçitlerini bağlama
 Bu adımda iki sanal ağın iki ağ geçidi arasında çift yönlü bir bağlantı oluşturun. 
 
 
@@ -923,21 +921,24 @@ Azure portal kullanarak iki ağ geçidini bağlayın.
 1. Azure portal **kaynak oluştur** ' u seçin [Azure portal](https://portal.azure.com).
 1. Arama `connection` kutusuna yazın ve ardından arama yapmak için ENTER tuşuna basın. Bu, sizi Microsoft tarafından yayımlanan **bağlantı** kaynağına götürür.
 1. Bağlantınızı oluşturmak için **Oluştur** ' u seçin. 
-1. **Temel bilgiler** sekmesinde, aşağıdaki değerleri seçip **Tamam**' ı seçin. 
+1. **Temel bilgiler** sayfasında, aşağıdaki değerleri seçip **Tamam**' ı seçin. 
     1. `VNet-to-VNet` **Bağlantı türü**için seçin. 
     1. Açılan listeden aboneliğinizi seçin. 
     1. Açılan kutuda SQL yönetilen örneği için kaynak grubunu seçin. 
     1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin. 
-1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
-    1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `Primary-Gateway` .  
-    1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `Secondary-Gateway` . 
+1. **Ayarlar** sayfasında, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
+    1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `primaryGateway` .  
+    1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `secondaryGateway` . 
     1. **Çift yönlü bağlantı oluştur**' un yanındaki onay kutusunu işaretleyin. 
     1. Varsayılan birincil bağlantı adını bırakın ya da seçtiğiniz bir değerle yeniden adlandırın. 
     1. Bağlantı için, gibi bir **paylaşılan anahtar (PSK)** sağlayın `mi1m2psk` . 
+    1. Ayarlarınızı kaydetmek için **Tamam ' ı** seçin. 
 
-   ![Ağ Geçidi bağlantısı oluştur](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![Ağ Geçidi bağlantısı oluştur](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantıyı oluşturmak için **Tamam** ' ı seçin. 
+    
+
+1. **Gözden geçir + oluştur** sayfasında, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantınızı oluşturmak için **Tamam** ' ı seçin. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -970,7 +971,7 @@ PowerShell kullanarak iki ağ geçidini bağlayın.
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7-yük devretme grubu oluşturma
+## <a name="create-a-failover-group"></a>Yük devretme grubu oluşturma
 Bu adımda, yük devretme grubunu oluşturacak ve yönetilen örneklerin her ikisini de ekleyecek. 
 
 
@@ -1013,7 +1014,7 @@ PowerShell kullanarak yük devretme grubunu oluşturun.
 ---
 
 
-## <a name="8---test-failover"></a>8-yük devretme testi
+## <a name="test-failover"></a>Yük devretme testi
 Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz. 
 
 

@@ -3,30 +3,30 @@ title: 'Hızlı başlangıç: tarayıcı-LUO ile tahmin için sorgu'
 description: Bu hızlı başlangıçta, kullanıcının bir tarayıcıda konuşma metinleriyle aynı olduğunu öğrenmek için kullanılabilir bir genel LUL uygulaması kullanın.
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769979"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246004"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Hızlı başlangıç: Kullanıcı metniyle sorgu tahmini çalışma zamanı
 
 Bir LUIS tahmin uç noktasının ne döndüğünü anlamak için bir tahmin sonucunu bir Web tarayıcısında görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir ortak uygulamayı sorgulamak için şunlar gerekir:
 
 * Language Understanding (LUSıS) kaynak bilgileriniz:
-    * [Luo portalından](https://www.luis.ai/)elde edilebilir **tahmin anahtarı** . Zaten anahtar oluşturmak için bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)için kaydolabilirsiniz.
+    * [Luo portalından](https://www.luis.ai/)elde edilebilir **tahmin anahtarı** . Zaten anahtar oluşturmak için bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services)için kaydolabilirsiniz.
     * **Tahmin uç noktası** alt etki alanı-aynı zamanda lusıs kaynağınızın **adıdır** .
-* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
+* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Tahminleri görmek için tarayıcıyı kullanın
 
 1. Bir web tarayıcısı açın.
-1. Kendi LUSıS tahmin anahtarınızla değiştirerek `YOUR-KEY` aşağıdaki URL 'leri kullanın. İstekler GET isteklerdir ve bir sorgu dizesi parametresi olarak LUSıS tahmin anahtarınızla yetkilendirmeyi içerir.
+1. `YOUR-KEY`Kendı Lusıs tahmin anahtarınızla değiştirerek aşağıdaki URL 'leri kullanın. İstekler GET isteklerdir ve bir sorgu dizesi parametresi olarak LUSıS tahmin anahtarınızla yetkilendirmeyi içerir.
 
     #### <a name="v3-prediction-request"></a>[V3 tahmin isteği](#tab/V3-1-1)
 

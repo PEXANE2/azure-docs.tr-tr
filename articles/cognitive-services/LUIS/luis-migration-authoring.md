@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212640"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245460"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -52,7 +52,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
 
 ## <a name="migration-prerequisites"></a>Geçiş önkoşulları
 
-* Geçerli bir Azure aboneliğiyle ilişkilendirilmesi gerekir. Kiracı yöneticinizden aboneliğinizi size eklemesini isteyin veya [ücretsiz bir abonelik için kaydolun](https://azure.microsoft.com/free/).
+* Geçerli bir Azure aboneliğiyle ilişkilendirilmesi gerekir. Kiracı yöneticinizden aboneliğinizi size eklemesini isteyin veya [ücretsiz bir abonelik için kaydolun](https://azure.microsoft.com/free/cognitive-services).
 * LUSıS portalından veya Azure portal bir LUSıS Azure yazma kaynağı oluşturmanız gerekir. LUO portalından bir yazma kaynağı oluşturma, sonraki bölümde ele alınan geçiş akışının bir parçasıdır.
 * Uygulamalar üzerinde ortak çalışan değilseniz, uygulamalar otomatik olarak geçirilmez. Bu uygulamaları dışa aktararak veya [dışa aktarma API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak yedeklemenizi öneririz. Geçişten sonra uygulamayı LUO 'ya geri aktarabilirsiniz. İçeri aktarma işlemi, sahip olduğunuz yeni bir uygulama KIMLIĞIYLE yeni bir uygulama oluşturur.
 * Uygulamanın sahibiyseniz, otomatik olarak geçiş yapacağından uygulamalarınızı dışarı aktarmanız gerekmez. Uygulamanın ortak çalışan listesini kaydetmenizi öneririz. Bu listeye sahip e-posta şablonu, isteğe bağlı olarak geçiş işleminin bir parçası olarak sağlanır.
@@ -60,7 +60,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
 
 |Portal|Amaç|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| Tahmin ve yazma kaynakları oluşturun.<br> Kaynaklara katkıda bulunanlar atayın.|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| Tahmin ve yazma kaynakları oluşturun.<br> Kaynaklara katkıda bulunanlar atayın.|
 |[LUIS](https://www.luis.ai)| Yeni yazma kaynaklarına geçiş yapın.<br> Geçiş akışında yeni yazma kaynakları oluşturun.<br> **Manage**  >  **Azure kaynaklarını** Yönet sayfasından, tahmine ve yazma kaynaklarını uygulamalara atayın veya atamayı kaldırma. <br> Uygulamaları bir yazma kaynağından diğerine taşıyın.  |
 
 > [!Note]

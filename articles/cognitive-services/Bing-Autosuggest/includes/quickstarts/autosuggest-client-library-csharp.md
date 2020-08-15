@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5d325ac8da43f020f4ab39244d2e6a7dc6ed72b7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156704"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246259"
 ---
 .NET için Bing Otomatik Öneri istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
@@ -23,7 +23,7 @@ Kısmi sorgu dizelerine göre arama önerileri almak için .NET için Bing Otoma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free/).
+* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services).
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -31,12 +31,12 @@ Kısmi sorgu dizelerine göre arama önerileri almak için .NET için Bing Otoma
 ## <a name="create-environment-variables"></a>Ortam değişkenlerini oluşturma
 
 >[!NOTE]
-> 1 Temmuz 2019 ' den sonra oluşturulan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> 1 Temmuz 2019 ' den sonra oluşturulan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
 
 Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`: İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `AUTOSUGGEST_ENDPOINT`: API istekleri göndermek için kaynak uç noktası. Şöyle görünmelidir: `https://<your-custom-subdomain>.api.cognitive.microsoft.com` . 
+* `AUTOSUGGEST_ENDPOINT`: API istekleri göndermek için kaynak uç noktası. Şöyle görünmelidir: `https://<your-custom-subdomain>.api.cognitive.microsoft.com` .
 
 İşletim sisteminiz için yönergeleri kullanın.
 <!-- replace the below endpoint and key examples -->
@@ -72,9 +72,9 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 ## <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun.
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `bing-autosuggest-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `bing-autosuggest-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -86,7 +86,7 @@ Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile
 dotnet build
 ```
 
-Derleme çıktısı hiçbir uyarı veya hata içermemelidir. 
+Derleme çıktısı hiçbir uyarı veya hata içermemelidir.
 
 ```console
 ...

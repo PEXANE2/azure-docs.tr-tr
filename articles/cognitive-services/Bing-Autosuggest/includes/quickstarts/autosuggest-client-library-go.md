@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156511"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246556"
 ---
-Go için Bing Otomatik Öneri istemci kitaplığı ile çalışmaya başlayın. Kitaplığı yüklemek için bu adımları izleyin ve temel görevler için örneklerimizi deneyin. 
+Go için Bing Otomatik Öneri istemci kitaplığı ile çalışmaya başlayın. Kitaplığı yüklemek için bu adımları izleyin ve temel görevler için örneklerimizi deneyin.
 
 Kısmi sorgu dizelerine göre arama önerilerini almak için Go için Bing Otomatik Öneri istemci Kitaplığı ' nı kullanın.
 
@@ -23,7 +23,7 @@ Kısmi sorgu dizelerine göre arama önerilerini almak için Go için Bing Otoma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free/).
+* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services).
 * En son [Go](https://golang.org/dl/)sürümü.
 
 Azure kaynağı oluşturarak Bing Otomatik Öneri istemci kitaplığını kullanmaya başlayın. Sizin için doğru olan kaynak türünü seçin:
@@ -33,12 +33,12 @@ Azure kaynağı oluşturarak Bing Otomatik Öneri istemci kitaplığını kullan
 ## <a name="create-environment-variables"></a>Ortam değişkenlerini oluşturma
 
 >[!NOTE]
-> 1 Temmuz 2019 ' den sonra oluşturulan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> 1 Temmuz 2019 ' den sonra oluşturulan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
 
 Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`: İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `AUTOSUGGEST_ENDPOINT`: API istekleri göndermek için kaynak uç noktası. Şöyle görünmelidir:`https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_ENDPOINT`: API istekleri göndermek için kaynak uç noktası. Şöyle görünmelidir: `https://<your-custom-subdomain>.api.cognitive.microsoft.com`
 
 İşletim sisteminiz için yönergeleri kullanın.
 <!-- replace the below endpoint and key examples -->
@@ -74,7 +74,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 ## <a name="create-a-new-go-project"></a>Yeni bir go projesi oluştur
 
-Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için yeni bir çalışma alanı oluşturun ve bu projeye gidin. Çalışma alanınız üç klasör içerir: 
+Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için yeni bir çalışma alanı oluşturun ve bu projeye gidin. Çalışma alanınız üç klasör içerir:
 
 * **src**: Bu dizin, kaynak kodu ve paketleri içerir. Komutuyla yüklenmiş tüm paketler `go get` burada yer alır.
 * **pkg**: Bu dizin, derlenmiş go paketi nesnelerini içerir. Bu dosyaların hepsi bir `.a` uzantısı vardır.
@@ -92,7 +92,7 @@ $ cd my-app
 
 ## <a name="install-the-client-library-for-go"></a>Go için istemci kitaplığını yükler
 
-Şimdi Go için istemci kitaplığını yükleyelim: 
+Şimdi Go için istemci kitaplığını yükleyelim:
 
 ```bash
 $ go get -u <library-location-or-url>
@@ -154,10 +154,10 @@ Bu kod örnekleri, Go için Bing Otomatik Öneri istemci kitaplığını kullana
 
 ### <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-> [!NOTE] 
+> [!NOTE]
 > Bu hızlı başlangıçta, adlı [created an environment variable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) Bing otomatik öneri anahtarınız `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` ve adlı uç nokta için bir ortam değişkeni oluşturdunuz `BING_AUTOSUGGEST_ENDPOINT` .
 
-`main()`İşlevinde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. 
+`main()`İşlevinde, uç nokta ve anahtarınızla bir istemci örneği oluşturun.
 
 ```go
 // Get the context, which is required by the SDK methods.

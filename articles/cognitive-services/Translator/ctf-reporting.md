@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584680"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244135"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Collaborative Translation Framework (CTF) raporlamasını kullanma
 
@@ -29,11 +29,11 @@ Işbirlikçi Çeviri Çerçevesi (CTF) Raporlama API 'SI, CTF deposundaki istati
 * Kaynak cümle eşleşmesi gerekmeden çevrilmiş içeriği ve toplam sayısını döndürür.
 * Otomatik çeviriyi döndürmez (makine çevirisi).
 
-## <a name="endpoint"></a>Uç Nokta
+## <a name="endpoint"></a>Uç Noktası
 CTF Raporlama API 'sinin uç noktası https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Yöntemler
-| Name | Açıklama|
+| Ad | Açıklama|
 |:---|:---|
 | GetUserTranslationCounts yöntemi | Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. |
 | Getuserçeviriler yöntemi | Kullanıcı tarafından oluşturulan çevirileri alır. |
@@ -50,7 +50,7 @@ Bu yöntemler şunları sağlar:
 
 Bu yöntem, Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. Bu, uriPrefix, from, to, User, Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çeviri sayısı listesini sağlar.
 
-**Söz dizimi**
+**Syntax**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -76,7 +76,7 @@ Bu yöntem, Kullanıcı tarafından oluşturulan çevirilerin sayısını alır.
 | appId | **Gerekli** Yetkilendirme üst bilgisi kullanılırsa, AppID alanını boş bırakın başka bir "taşıyıcı" + "" + erişim belirteci içeren bir dize belirtin.|
 | Uriön Eki | **Isteğe bağlı** Çeviri URI 'sinin önekini içeren bir dize.|
 | Kaynak | **Isteğe bağlı** Çeviri metninin dil kodunu temsil eden bir dize. |
-| - | **Isteğe bağlı** Metnin çevrilmesi için dil kodunu temsil eden bir dize.|
+| şöyle değiştirin: | **Isteğe bağlı** Metnin çevrilmesi için dil kodunu temsil eden bir dize.|
 | Minderecelendirme| **Isteğe bağlı** Çevrilmiş metin için en düşük kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
 | Maxderecelendirme| **Isteğe bağlı** Çevrilmiş metin için maksimum kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
 | kullanıcı | **Isteğe bağlı** Gönderimi oluşturana göre sonucu filtrelemek için kullanılan bir dize. |
@@ -84,7 +84,7 @@ Bu yöntem, Kullanıcı tarafından oluşturulan çevirilerin sayısını alır.
 | minDateUtc| **Isteğe bağlı** Çevirileri almak istediğiniz tarih. Tarih UTC biçiminde olmalıdır. |
 | maxDateUtc| **Isteğe bağlı** Çevirileri almak istediğinize kadar olan tarih. Tarih UTC biçiminde olmalıdır. |
 | Atla| **Isteğe bağlı** Bir sayfada atlamak istediğiniz sonuç sayısı. Örneğin, bu parametre için sonuçların ilk 20 satırını atla ve 21. sonuç kaydından göster ' i istiyorsanız, bu parametre için 20 belirtin. Bu parametre için varsayılan değer 0 ' dır.|
-| almanız | **Isteğe bağlı** Almak istediğiniz sonuç sayısı. Her istek için maksimum sayı 100 ' dir. Varsayılan değer 100'dür.|
+| take | **Isteğe bağlı** Almak istediğiniz sonuç sayısı. Her istek için maksimum sayı 100 ' dir. Varsayılan değer 100'dür.|
 
 > [!NOTE]
 > Atlama ve alma isteği parametreleri çok sayıda sonuç kaydı için sayfalandırmayı etkinleştirir.
@@ -95,10 +95,10 @@ Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCo
 
 | Alan | Açıklama |
 |:---|:---|
-| Sayı| Alınan sonuçların sayısı|
-| Başlangıç | Kaynak dili|
+| Count| Alınan sonuçların sayısı|
+| Kaynak | Kaynak dili|
 | Derecelendirme| AddTranslation () yöntem çağrısında gönderenin tarafından uygulanan derecelendirme|
-| Alıcı| Hedef dil|
+| Amaç| Hedef dil|
 | Kullanılmamışsa| AddTranslation () yöntem çağrısında uygulanan URI|
 | Kullanıcı| Kullanıcı adı|
 
@@ -113,7 +113,7 @@ Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCo
 > [!NOTE]
 > Kota, hizmetin tüm kullanıcıları arasında eşitliği sağlamak için ayarlanacak.
 
-**Githıb 'teki kod örneklerini görüntüle**
+**GitHub 'daki kod örneklerini görüntüle**
 * [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
@@ -121,7 +121,7 @@ Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCo
 
 Bu yöntem, Kullanıcı tarafından oluşturulan çevirileri alır. Bu, uriPrefix, from, to, User ve Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çevirileri sağlar.
 
-**Söz dizimi**
+**Syntax**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -147,7 +147,7 @@ Bu yöntem, Kullanıcı tarafından oluşturulan çevirileri alır. Bu, uriPrefi
 | appId | **Gerekli** Yetkilendirme üst bilgisi kullanılırsa, AppID alanını boş bırakın başka bir "taşıyıcı" + "" + erişim belirteci içeren bir dize belirtin.|
 | Uriön Eki| **Isteğe bağlı** Çeviri URI 'sinin önekini içeren bir dize.|
 | Kaynak| **Isteğe bağlı** Çeviri metninin dil kodunu temsil eden bir dize.|
-| -| **Isteğe bağlı** Metnin çevrilmesi için dil kodunu temsil eden bir dize.|
+| şöyle değiştirin:| **Isteğe bağlı** Metnin çevrilmesi için dil kodunu temsil eden bir dize.|
 | Minderecelendirme| **Isteğe bağlı** Çevrilmiş metin için en düşük kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
 | Maxderecelendirme| **Isteğe bağlı** Çevrilmiş metin için maksimum kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
 | kullanıcı| **Seçim. Gönderimi oluşturana göre sonucu filtrelemek için kullanılan bir dize**|
@@ -155,7 +155,7 @@ Bu yöntem, Kullanıcı tarafından oluşturulan çevirileri alır. Bu, uriPrefi
 | minDateUtc| **Isteğe bağlı** Çevirileri almak istediğiniz tarih. Tarih UTC biçiminde olmalıdır.|
 | maxDateUtc| **Isteğe bağlı** Çevirileri almak istediğinize kadar olan tarih. Tarih UTC biçiminde olmalıdır.|
 | Atla| **Isteğe bağlı** Bir sayfada atlamak istediğiniz sonuç sayısı. Örneğin, bu parametre için sonuçların ilk 20 satırını atla ve 21. sonuç kaydından göster ' i istiyorsanız, bu parametre için 20 belirtin. Bu parametre için varsayılan değer 0 ' dır.|
-| almanız| **Isteğe bağlı** Almak istediğiniz sonuç sayısı. Her istek için maksimum sayı 100 ' dir. Varsayılan değer 50 ' dir.|
+| take| **Isteğe bağlı** Almak istediğiniz sonuç sayısı. Her istek için maksimum sayı 100 ' dir. Varsayılan değer 50 ' dir.|
 
 > [!NOTE]
 > Atlama ve alma isteği parametreleri çok sayıda sonuç kaydı için sayfalandırmayı etkinleştirir.
@@ -167,10 +167,10 @@ Sonuç kümesi **Usertranslation**dizisini içerir. Her UserTranslation aşağı
 | Alan | Açıklama |
 |:---|:---|
 | CreatedDateUtc| AddTranslation () kullanılarak girişin oluşturulma tarihi|
-| Başlangıç| Kaynak dili|
+| Kaynak| Kaynak dili|
 | OriginalText| İstek gönderilirken kullanılan kaynak dili metni|
 |Derecelendirme |AddTranslation () yöntem çağrısında gönderenin tarafından uygulanan derecelendirme|
-|Alıcı|    Hedef dil|
+|Amaç|    Hedef dil|
 |TranslatedText|    AddTranslation () yöntem çağrısında gönderildiği şekilde çeviri|
 |Kullanılmamışsa|   AddTranslation () yöntem çağrısında uygulanan URI|
 |Kullanıcı   |Kullanıcı adı|

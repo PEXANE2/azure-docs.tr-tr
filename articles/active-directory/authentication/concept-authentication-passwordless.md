@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 105f911b97e01a4b05673fc67b51c677df15eb89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2055730505b360ef8d5bf50cd83532627fb8e08
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051278"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245426"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
 Multi-Factor Authentication (MFA) gibi özellikler, kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar genellikle parolalarını anımsamak için gereken ek güvenlik katmanını öğreniyor. Parola kaldırılıp, sizin veya bildiğiniz bir şey ile değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
 
-| Kimlik doğrulaması  | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
+| Kimlik Doğrulaması  | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
 | --- | --- | --- |
 | Parolasız | Windows 10 cihaz, telefon veya güvenlik anahtarı | Biyometrik veya PIN |
 
@@ -120,7 +120,7 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 | Sağlayıcı | İletişim |
 | --- | --- |
 | Yılıco | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| Feian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
+| Feian | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
 | CIHAZDAN | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurlik | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | TrustKey çözümleri | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |

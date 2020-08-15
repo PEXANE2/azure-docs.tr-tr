@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206877"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244780"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için S2S VPN 'i yedekleme olarak kullanma
 
-[ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma Için tasarlama][DR-PP]başlıklı makalede, bir ExpressRoute özel eşleme bağlantısı için yedekleme bağlantısı çözümü gereksinimi ve coğrafi olarak yedekli ExpressRoute devrelerinin amaç için nasıl kullanılacağı ele alınmıştır. Bu makalede, bir ExpressRoute özel eşlemesi için siteden siteye (S2S) VPN 'i nasıl kullanacağınızı ve koruyacağınızı düşünmemize izin verin. 
+[ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma Için tasarlama][DR-PP]başlıklı makalede, bir ExpressRoute özel eşleme bağlantısı için yedekleme bağlantısı çözümü gereksinimi ve coğrafi olarak yedekli ExpressRoute devrelerinin amaç için nasıl kullanılacağı ele alınmıştır. Bu makalede, bir ExpressRoute özel eşlemesi için bir yedekleme olarak siteden siteye (S2S) VPN 'yi nasıl kullanacağınızı ve koruyacağınızı düşünmemize izin verin. 
 
 Coğrafi olarak yedekli ExpressRoute devrelerinin aksine, ExpressRoute-VPN olağanüstü durum kurtarma birleşimini yalnızca etkin-pasif modda kullanabilirsiniz. Pasif modda yedek ağ bağlantısı kullanmanın önemli bir zorluğu, pasif bağlantının genellikle birincil bağlantıyla birlikte başarısız olmasına neden olur. Pasif bağlantı hatalarının yaygın nedenlerinden biri etkin bakım olmamasıdır. Bu nedenle, bu makalede bir ExpressRoute özel eşlemesini yedekleyen S2S VPN bağlantısını doğrulamaya ve etkin bir şekilde korumaya odaklanalım.
 
@@ -116,7 +116,7 @@ Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
 
 ### <a name="configuring-for-symmetric-traffic-flow"></a>Simetrik trafik akışı için yapılandırma
 
-Verilen şirket içi bir rota hem ExpressRoute hem de S2S VPN aracılığıyla tanıtıldığında Azure, ExpressRoute yolunu tercih edebiliyoruz. Azure 'un aynı ExpressRoute üzerinden S2S VPN yolunu tercih etmeye zorlamak için, VPN bağlantısı aracılığıyla daha fazla özel yol (daha büyük alt ağ maskesiyle daha uzun ön ek) duyurmanız gerekir. Buradaki amaç VPN bağlantılarını yalnızca geri olarak kullanmaktır. Bu nedenle, Azure 'un varsayılan yol seçimi davranışı hedefimize göre çevrimiçi. 
+Verilen şirket içi bir rota hem ExpressRoute hem de S2S VPN aracılığıyla tanıtıldığında Azure, ExpressRoute yolunu tercih edebiliyoruz. Azure 'un aynı ExpressRoute üzerinden S2S VPN yolunu tercih etmeye zorlamak için, VPN bağlantısı aracılığıyla daha fazla özel yol (daha büyük alt ağ maskesiyle daha uzun ön ek) duyurmanız gerekir. Buradaki amaç VPN bağlantılarını yalnızca yedekleme olarak kullanmaktır. Bu nedenle, Azure 'un varsayılan yol seçimi davranışı hedefimize göre çevrimiçi. 
 
 Şirket içinden Azure 'a giden trafiğin aynı zamanda S2S VPN üzerinden ExpressRoute yolunu tercih ettiği bir sorumluluktur. Şirket içi kurulumumuzdaki CE yönlendiricilerinin ve güvenlik duvarlarının varsayılan yerel tercihi 100 ' dir. Bu nedenle, ExpressRoute özel eşayarları 100 ' den büyük olan yolların yerel tercihini yapılandırarak (150), Azure 'a hedeflenen trafiği, düzenli durumda ExpressRoute devresini tercih edebiliriz.
 

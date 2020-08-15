@@ -4,12 +4,12 @@ description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 772777c48c8d16197cd8a73586f6549837d7d080
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372408"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245953"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -94,9 +94,6 @@ Microsoft, yalnızca hizmeti sağlamak için verileri kullanır.
 ## <a name="where-is-the-data-held"></a>Veriler nerede tutulur?
 * Yeni bir Application Insights kaynağı oluştururken konum ' u seçebilirsiniz. [Burada](https://azure.microsoft.com/global-infrastructure/services/?products=all)bölge başına Application Insights kullanılabilirliği hakkında daha fazla bilgi edinebilirsiniz.
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Uygulamamın ABD, Avrupa veya Güneydoğu Asya 'da barındırılması anlamına geliyor mu?
-* Hayır. Uygulamanız, kendi şirket içi konaklarınızdaki veya buluttaki herhangi bir yerde çalıştırılabilir.
-
 ## <a name="how-secure-is-my-data"></a>Verilerim ne kadar güvenlidir?
 Application Insights bir Azure hizmetidir. Güvenlik ilkeleri, [Azure Güvenlik, gizlilik ve uyumluluk teknik incelemesi](https://go.microsoft.com/fwlink/?linkid=392408)bölümünde açıklanmıştır.
 
@@ -129,7 +126,7 @@ Bir müşterinin bu dizini belirli güvenlik gereksinimleriyle yapılandırması
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`kalıcı veriler için kullanılır. Bu konum, yapılandırma dizininden yapılandırılamaz ve bu klasöre erişim izinleri, gerekli kimlik bilgileriyle belirli bir kullanıcıyla kısıtlıdır. (Daha fazla bilgi için bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
+`C:\Users\username\AppData\Local\Temp` kalıcı veriler için kullanılır. Bu konum, yapılandırma dizininden yapılandırılamaz ve bu klasöre erişim izinleri, gerekli kimlik bilgileriyle belirli bir kullanıcıyla kısıtlıdır. (Daha fazla bilgi için bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
 ###  <a name="net"></a>.NET
 
@@ -271,13 +268,13 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Sunucubağlamı |Makine adı, yerel ayar, işletim sistemi, cihaz, Kullanıcı oturumu, Kullanıcı bağlamı, işlem |
 | Temsilc |IP adresi, zaman damgası, işletim sistemi, tarayıcıdan coğrafi konum |
 | Ölçümler |Ölçüm adı ve değeri |
-| Olaylar |Olay adı ve değeri |
+| Ekinlikler |Olay adı ve değeri |
 | PageViews |URL ve sayfa adı ya da ekran adı |
 | İstemci perf |URL/sayfa adı, tarayıcı yükleme süresi |
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası,`thread id` |
+| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
 | Çökme |`Process id`, `parent process id` ,, `crash thread id` Uygulama Düzeltme Eki, `id` , derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |

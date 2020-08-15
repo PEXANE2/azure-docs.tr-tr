@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0a1fb386776a3ab1a3b7689c69dea7dc717d1e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: afc9a32c4f0fa5b4b6a2f6c0ec56bbc35b6dde68
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213776"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244508"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -79,7 +79,7 @@ Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azur
 
 3. **Süre sonu** sayfasında şunları yapabilirsiniz:
 
-    - Grup ömrünü gün cinsinden ayarlayın. Önceden ayarlanmış değerlerden birini veya özel bir değeri seçebilirsiniz (31 gün veya daha fazla olmalıdır).
+    - Grup ömrünü gün cinsinden ayarlayın. Önceden ayarlanmış değerlerden birini veya özel bir değeri seçebilirsiniz (30 gün veya daha fazla olmalıdır).
     - Bir grubun sahibi olmadığında yenileme ve sona erme bildirimlerinin gönderilmesi gereken bir e-posta adresi belirtin.
     - Hangi Microsoft 365 gruplarının sona ereceğini seçin. Süre sonunu şu şekilde ayarlayabilirsiniz:
       - **Tümü** Microsoft 365 grupları

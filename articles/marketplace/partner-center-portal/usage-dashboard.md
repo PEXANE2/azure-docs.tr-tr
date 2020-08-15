@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319924"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245341"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft ticari Market Analytics 'teki kullanım panosu
 
@@ -111,6 +111,8 @@ Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 5
 - **Plana göre fazla kullanım eğilimi**: seçili ölçüm boyutunun kullanım miktarının planlara göre eğilimini temsil eder. Görüntülenecek planlar, seçilen teklif için en yüksek kullanım miktarına sahip olan ilk beş planı temsil eder.
 - **Önde gelen 50 müşterilere göre fazla kullanım eğilimi**: en yüksek kullanım saatlerine sahip en iyi 50 teklifleri ***öncü bir panoda*** görüntülenir ve özel ölçerin en yüksek kullanımıyla derecelendirilir. Seçili ölçüm boyutunun kullanım eğilimini görüntülemek için öncü panoda bir müşteri seçin.
 - **Popüler müşterilere göre fazla kullanım eğilimi**: genel kullanım yüzdesi ' ne katkıda bulunan en iyi müşteri yüzdebirlik 'leri sunar. Üst müşteri yüzdebirlik 'i X ekseni boyunca ve müşterinin kullanım miktarına göre belirlenir. Y ekseni kullanım miktarını görüntüler. Çizgi grafik boyunca noktaların üzerine gelerek ayrıntıları gösterebilirsiniz.
+
+Özel ölçümler kullanan birden çok teklifinizi varsa, ölçülen faturalandırma kullanımı raporu, özel ölçüm boyutlarına göre tüm tekliflerinizin kullanım bilgilerini gösterir.
 
 > [!NOTE]
 > Bu sayfadaki kullanım ayrıntıları ve tüm grafikler sayfa filtresi için seçili ölçüm boyutu için görüntülenir.

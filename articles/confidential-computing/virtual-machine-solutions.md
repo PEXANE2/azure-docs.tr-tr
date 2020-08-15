@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985435"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245861"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
 
 Bu makalede, [Intel Software Guard uzantısı](https://software.intel.com/sgx) (Intel SGX) tarafından desteklenen Intel Işlemcileri çalıştıran Azure gizli bilgi işlem sanal makinelerini (VM 'ler) dağıtma hakkında bilgiler yer almaktadır. 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Azure gizli bilgi işlem VM'si boyutları
+## <a name="azure-confidential-computing-vm-sizes"></a>Azure gizli bilgi işlem VM boyutları
 
 Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumak için tasarlanmıştır 
 
@@ -32,41 +32,18 @@ Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerin
 Kullanılabilir bölgeler ve kullanılabilirlik bölgelerinde genel olarak kullanılabilen tüm gizli işlem VM boyutlarının bir listesini almak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'de aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-Mayıs 2020 itibariyle, bu SKU 'Lar aşağıdaki bölgelerde ve kullanılabilirlik bölgelerinde kullanılabilir:
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 Yukarıdaki boyutların daha ayrıntılı bir görünümü için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Adanmış ana bilgisayar gereksinimleri
@@ -101,17 +78,17 @@ Azure 'da sanal makineler kullanırken, kapalı kalma süresini önlemek için y
 
 Azure gizli bilgi işlem, şu anda Kullanılabilirlik Alanları aracılığıyla bölge yedekliliği desteklemez. Gizli bilgi işlem için en yüksek kullanılabilirlik ve yedeklilik için [kullanılabilirlik kümelerini](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)kullanın. Donanım kısıtlamaları nedeniyle, gizli bilgi işlem örneklerinin kullanılabilirlik kümelerinin yalnızca en fazla 10 güncelleştirme etki alanı olabilir. 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu aracılığıyla dağıtma 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) şablonuyla dağıtım
 
 Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve Etiketler gibi yönetim özelliklerini kullanabilirsiniz.
 
-Azure Resource Manager şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../azure-resource-manager/templates/overview.md).
+ARM şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../azure-resource-manager/templates/overview.md).
 
-Bir Azure Resource Manager şablonunda bir DCsv2 serisi VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olun.
+ARM şablonunda bir DCsv2 serisi VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olun.
 
-### <a name="vm-size"></a>VM Boyutu
+### <a name="vm-size"></a>VM boyutu
 
-Sanal makine kaynağında Azure Resource Manager şablonunuzda aşağıdaki boyutlardan birini belirtin. Bu dize, **özelliklerde** **VMSize** olarak konur.
+Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini belirtin. Bu dize, **özelliklerde** **VMSize** olarak konur.
 
 ```json
   [
@@ -153,7 +130,7 @@ Sanal makine kaynağında Azure Resource Manager şablonunuzda aşağıdaki boyu
       }
 ```
 
-## <a name="next-steps"></a>Sonraki Adımlar 
+## <a name="next-steps"></a>Sonraki adımlar 
 
 Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken niteliklerin ve yapılandırmaların öğrenildiği hakkında bilgi edindiniz. Artık bir DCsv2 serisi VM dağıtmak için Microsoft Azure Market gidebilirsiniz.
 

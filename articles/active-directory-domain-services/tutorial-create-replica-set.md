@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506463"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245103"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services dayanıklılık veya coğrafi konum için çoğaltma kümeleri oluşturma ve kullanma (Önizleme)
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -42,11 +42,11 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
-* Azure AD kiracınızda çoğaltma kümeleri kullanılarak oluşturulmuş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+* Azure Resource Manager dağıtım modeli kullanılarak oluşturulan ve Azure AD kiracınızda yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
     * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun ve yapılandırın][tutorial-create-instance].
 
     > [!IMPORTANT]
-    > Çoğaltma kümelerini kullanan bir yönetilen etki alanı oluşturun. Bu önizleme öncesinde oluşturulan mevcut bir yönetilen etki alanı çoğaltma kümelerini desteklemiyor. Ayrıca, yönetilen etki alanınız için en az *Kurumsal* SKU kullanmanız gerekir. Gerekirse, [yönetilen bir etki alanı için SKU 'yu değiştirin][howto-change-sku].
+    > Klasik dağıtım modeli kullanılarak oluşturulan yönetilen etki alanları çoğaltma kümelerini kullanamaz. Ayrıca, yönetilen etki alanınız için en az *Kurumsal* SKU kullanmanız gerekir. Gerekirse, [yönetilen bir etki alanı için SKU 'yu değiştirin][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 

@@ -3,18 +3,23 @@ title: Kayıt defteri sistem durumunu denetle
 description: Yerel Docker yapılandırması ve kayıt defteri bağlantısı dahil olmak üzere bir Azure Container Registry kullanırken sık karşılaşılan sorunları belirlemek için hızlı tanılama komutunu çalıştırmayı öğrenin
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456429"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245392"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry 'nin sistem durumunu denetleme
 
 Azure Container Registry kullanırken, zaman zaman sorunlarla karşılaşabilirsiniz. Örneğin, yerel ortamınızda Docker ile ilgili bir sorun nedeniyle bir kapsayıcı görüntüsünü çekmeyebilirsiniz. Ya da bir ağ sorunu, kayıt defterine bağlanmanızı engelleyebilir. 
 
 İlk tanılama adımı olarak, ortamın sistem durumu ve isteğe bağlı olarak bir hedef kayıt defterine erişim hakkında bilgi almak için [az ACR Check-Health][az-acr-check-health] komutunu çalıştırın. Bu komut, Azure CLı sürüm 2.0.67 veya sonraki sürümlerinde kullanılabilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
+
+Ek kayıt defteri sorunlarını giderme kılavuzu için bkz.:
+* [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md)
+* [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
+* [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Çalıştır az ACR Check-Health
 
@@ -33,7 +38,7 @@ az acr check-health
 
 ### <a name="check-the-environment-and-a-target-registry"></a>Ortamı ve hedef kayıt defterini denetleme
 
-Bir kayıt defterine erişimi denetlemek ve yerel ortam denetimleri gerçekleştirmek için bir hedef kayıt defteri adı geçirin. Örneğin:
+Bir kayıt defterine erişimi denetlemek ve yerel ortam denetimleri gerçekleştirmek için bir hedef kayıt defteri adı geçirin. Örnek:
 
 ```azurecli
 az acr check-health --name myregistry

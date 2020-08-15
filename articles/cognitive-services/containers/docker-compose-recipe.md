@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878791"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244304"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose kullanarak birden çok kapsayıcı dağıtma
 
@@ -25,11 +25,11 @@ Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağı
 
 Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede okuma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir:
 
-* Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services) oluşturun.
 * [Docker altyapısı](https://www.docker.com/products/docker-engine). Docker CLı 'nın konsol penceresinde çalıştığından emin olun.
 * Doğru fiyatlandırma katmanına sahip bir Azure kaynağı. Yalnızca şu fiyatlandırma katmanları bu kapsayıcmayla çalışır:
   * Yalnızca F0 veya standart fiyatlandırma katmanıyla **görüntü işleme** kaynak.
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>Test kapsayıcıları
 
-Ana makinede bir tarayıcı açın ve *Docker-Compose. YAML* dosyasından belirtilen bağlantı noktasını kullanarak http://localhost:5021/swagger/index.html **localhost** 'a gidin. Örneğin, form tanıyıcı uç noktasını test etmek için API 'deki **TRY It** özelliğini kullanabilirsiniz. Her iki kapsayıcı de Swagger sayfası kullanılabilir ve test edilebilir olmalıdır.
+Ana makinede bir tarayıcı açın ve *Docker-Compose. YAML* dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin http://localhost:5021/swagger/index.html . Örneğin, form tanıyıcı uç noktasını test etmek için API 'deki **TRY It** özelliğini kullanabilirsiniz. Her iki kapsayıcı de Swagger sayfası kullanılabilir ve test edilebilir olmalıdır.
 
 ![Form tanıyıcı kapsayıcısı](media/form-recognizer-swagger-page.png)
 

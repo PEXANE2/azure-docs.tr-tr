@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507906"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245324"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler
 
@@ -67,9 +67,9 @@ Başlamadan önce Şu önkoşullara göz atın:
 
 8.  RDP oturumunda, aşağıdaki iki dosyayı yükleyin. Windows 'u kullandığınız için dosyaları RDP oturumuna sürükleyip bırakabilirsiniz:
 
-    -   ** \_50.exe**, kurumsal sunucu yükleme dosyası.
+    -   `es\_50.exe`, kurumsal sunucu yükleme dosyası.
 
-    -   **mflik**, ilgili lisans dosyası — kurumsal sunucu bu olmadan yüklenmez.
+    -   `mflic`, ilgili lisans dosyası — Enterprise Server bu olmadan yüklenmez.
 
 9.  Yüklemeyi başlatmak için dosyaya çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin.
 
@@ -87,11 +87,11 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 1.  Micro Focus lisans yönetimini başlatın.
 
-2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, daha önce VM 'ye yüklenen **mflik** dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
+2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
 
     ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-3.png)
 
-3.  Enterprise Server 'ın yüklendiğini doğrulayın. Şu URL 'YI kullanarak bir tarayıcıdan Enterprise Server yönetim sitesini başlatmayı deneyin: <http://localhost:86/> . Kurumsal sunucu yönetim sayfası gösterildiği gibi görüntülenir.
+3.  Enterprise Server 'ın yüklendiğini doğrulayın. Şu URL 'YI kullanarak bir tarayıcıdan Enterprise Server yönetim sitesini başlatmayı deneyin: `http://localhost:86/` . Kurumsal sunucu yönetim sayfası gösterildiği gibi görüntülenir.
 
     ![Kurumsal sunucu yönetim sayfası](media/install-image-4.png)
 
@@ -103,9 +103,9 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 3.  RDP oturumunda, aşağıdaki iki dosyayı yükleyin (isterseniz sürükleyip bırakın):
 
-    -   **edvs2017.exe**, kurumsal sunucu yükleme dosyası.
+    -   `edvs2017.exe`, kurumsal sunucu yükleme dosyası.
 
-    -   **mflik**, karşılık gelen lisans dosyası (Kurumsal Geliştirici bu olmadan yüklenmez).
+    -   `mflic`, ilgili lisans dosyası (Kurumsal Geliştirici bu olmadan yüklenmez).
 
 4.  Yüklemeyi başlatmak için **edvs2017.exe** dosyasına çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin. İsterseniz, büyük olasılıkla ihtiyaç duyacağınız bu Terminal öykünücüsünü yüklemek için **Rumba 9,5 'Yi yükleyebilirsiniz** .
 
@@ -117,7 +117,7 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
 
-7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, daha önce VM 'ye yüklenen **mflik** dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
+7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen dosyaya gidin ve  **Lisansları Yükleme ' yi**seçin.
 
     ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-7.png)
 

@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921929"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245511"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Öğretici: toplu algılama ve Power BI kullanarak anomali görselleştirin
 
 Toplu iş olarak ayarlanan zaman serisi verilerinin içindeki bozukluklar bulmak için bu öğreticiyi kullanın. Power BI Masaüstü 'nü kullanarak bir Excel dosyası alır, anomali algılayıcı API 'sine yönelik verileri hazırlar ve bunun genelinde istatistiksel bozukluklar görselleştirebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Zaman serisi veri kümesini içeri ve dışarı dönüştürmek için Power BI Desktop kullanma
@@ -29,10 +29,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Beklenen ve görülen değerler ve anomali algılama sınırları dahil olmak üzere verilerinizde bulunan anormallikleri görselleştirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
-* [Azure aboneliği](https://azure.microsoft.com/free/)
+* [Azure aboneliği](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)ücretsiz olarak kullanılabilir.
 * Zaman serisi veri noktaları içeren bir Excel dosyası (. xlsx). Bu hızlı başlangıçta örnek veriler [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 'da bulunabilir
-* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal bir anomali algılayıcı kaynağı oluşturun. 
+* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal bir anomali algılayıcı kaynağı oluşturun.
     * Uygulamanızı anomali algılayıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu daha sonra hızlı başlangıçta yapacaksınız.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -52,19 +52,19 @@ Ana Power BI Desktop penceresinde, **giriş** şeridi ' ne tıklayın. Şeridin 
 
 ![Power BI ' de veri kaynağı "Gezgini" ekranının görüntüsü](../media/tutorials/navigator-dialog-box.png)
 
-Power BI, ilk sütundaki zaman damgasını bir `Date/Time` veri türüne dönüştürür. Bu zaman damgaları, anomali algılayıcısı API 'sine gönderilmek üzere metne dönüştürülemelidir. Power Query Düzenleyicisi otomatik olarak açılmazsa Giriş sekmesinde **sorguları Düzenle** ' ye tıklayın. 
+Power BI, ilk sütundaki zaman damgasını bir `Date/Time` veri türüne dönüştürür. Bu zaman damgaları, anomali algılayıcısı API 'sine gönderilmek üzere metne dönüştürülemelidir. Power Query Düzenleyicisi otomatik olarak açılmazsa Giriş sekmesinde **sorguları Düzenle** ' ye tıklayın.
 
 Power Query düzenleyicisinde **Dönüştür** şeridine tıklayın. **Herhangi bir sütun** grubunda, **veri türü:** açılan menü menüsünü açın ve **metin**' i seçin.
 
 ![Power BI ' de veri kaynağı "Gezgini" ekranının görüntüsü](../media/tutorials/data-type-drop-down.png)
 
-Sütun türünü değiştirme hakkında bir bildirim aldığınızda, **geçerli Değiştir**' e tıklayın. Daha sonra, **kapat &** **giriş** şeridinde Uygula veya **Uygula** ' ya tıklayın. 
+Sütun türünü değiştirme hakkında bir bildirim aldığınızda, **geçerli Değiştir**' e tıklayın. Daha sonra, **kapat &** **giriş** şeridinde Uygula veya **Uygula** ' ya tıklayın.
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Verileri göndermek ve yanıtı biçimlendirmek için bir işlev oluşturma
 
 Veri dosyasını anomali algılayıcı API 'sine biçimlendirmek ve göndermek için yukarıda oluşturulan tabloda bir sorgu çağırabilirsiniz. Power Query düzenleyicisinde, **giriş** şeridinde, **Yeni kaynak** açılan menüsünü açın ve **boş sorgu**' ya tıklayın.
 
-Yeni sorgunuzun seçili olduğundan emin olun ve ardından **Gelişmiş Düzenleyici**' ye tıklayın. 
+Yeni sorgunuzun seçili olduğundan emin olun ve ardından **Gelişmiş Düzenleyici**' ye tıklayın.
 
 ![Power BI içindeki "Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/advanced-editor-screen.png)
 
@@ -84,7 +84,7 @@ Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye gö
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
-                    
+
                      Table.Column(inputTable, "Timestamp")
                      ,Table.Column(inputTable, "Value")
                      , Record.Field(jsonresp, "IsAnomaly") as list
@@ -96,7 +96,7 @@ Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye gö
 
                   }, {"Timestamp", "Value", "IsAnomaly", "ExpectedValues", "UpperMargin", "LowerMargin", "IsPositiveAnomaly", "IsNegativeAnomaly"}
                ),
-    
+
     respTable1 = Table.AddColumn(respTable , "UpperMargins", (row) => row[ExpectedValues] + row[UpperMargin]),
     respTable2 = Table.AddColumn(respTable1 , "LowerMargins", (row) => row[ExpectedValues] -  row[LowerMargin]),
     respTable3 = Table.RemoveColumns(respTable2, "UpperMargin"),
@@ -112,7 +112,7 @@ Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye gö
  in results
 ```
 
-Aşağıdaki parametre girin ' i seçerek veri sayfanızda sorguyu `Sheet1` çağırın **Enter Parameter**ve **çağır**' a tıklayın. 
+Aşağıdaki parametre girin ' i seçerek veri sayfanızda sorguyu `Sheet1` çağırın **Enter Parameter**ve **çağır**' a tıklayın.
 
 !["Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/invoke-function-screenshot.png)
 
@@ -121,23 +121,23 @@ Aşağıdaki parametre girin ' i seçerek veri sayfanızda sorguyu `Sheet1` ça�
 > [!NOTE]
 > Veri gizliliği ve erişimi için kuruluşunuzun ilkelerine dikkat edin. Daha fazla bilgi için bkz. [Power BI Desktop gizlilik düzeyleri](https://docs.microsoft.com/power-bi/desktop-privacy-levels) .
 
-Bir dış veri kaynağı kullandığından sorguyu çalıştırmaya çalıştığınızda bir uyarı iletisi alabilirsiniz. 
+Bir dış veri kaynağı kullandığından sorguyu çalıştırmaya çalıştığınızda bir uyarı iletisi alabilirsiniz.
 
 ![Power BI tarafından oluşturulan bir uyarıyı gösteren resim](../media/tutorials/blocked-function.png)
 
-Bu hatayı onarmak için **Dosya**ve **Seçenekler ve ayarlar**' a tıklayın. **Seçenekler**' e tıklayın. **Geçerli dosyanın**altında **Gizlilik**' i seçin ve **gizlilik düzeylerini yoksayın ve potansiyel olarak performansı geliştirebilirsiniz**. 
+Bu hatayı onarmak için **Dosya**ve **Seçenekler ve ayarlar**' a tıklayın. **Seçenekler**' e tıklayın. **Geçerli dosyanın**altında **Gizlilik**' i seçin ve **gizlilik düzeylerini yoksayın ve potansiyel olarak performansı geliştirebilirsiniz**.
 
 Ayrıca, API 'ye nasıl bağlanmak istediğinizi belirtmenizi isteyen bir ileti alabilirsiniz.
 
 ![Erişim kimlik bilgilerini belirtme isteğini gösteren bir görüntü](../media/tutorials/edit-credentials-message.png)
 
-Bu hatayı onarmak için iletideki **kimlik bilgilerini düzenle** ' ye tıklayın. İletişim kutusu görüntülendikten sonra, API 'ye anonim olarak bağlanmak için **anonim** ' i seçin. Ardından **Bağlan**’a tıklayın. 
+Bu hatayı onarmak için iletideki **kimlik bilgilerini düzenle** ' ye tıklayın. İletişim kutusu görüntülendikten sonra, API 'ye anonim olarak bağlanmak için **anonim** ' i seçin. Ardından **Bağlan**’a tıklayın.
 
 Ardından, değişiklikleri uygulamak için **giriş** şeridindeki **Kapat & Uygula** ' ya tıklayın.
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>Anomali algılayıcı API 'SI yanıtını görselleştirin
 
-Ana Power BI ekranında, verileri görselleştirmek için yukarıda oluşturulan sorguları kullanmaya başlayın. Önce **Görselleştirmelerde** **çizgi grafik** ' i seçin. Sonra çağrılan işlevden zaman damgasını çizgi grafiğinin **eksenine**ekleyin. Sağ tıklayın ve **zaman damgası**' nı seçin. 
+Ana Power BI ekranında, verileri görselleştirmek için yukarıda oluşturulan sorguları kullanmaya başlayın. Önce **Görselleştirmelerde** **çizgi grafik** ' i seçin. Sonra çağrılan işlevden zaman damgasını çizgi grafiğinin **eksenine**ekleyin. Sağ tıklayın ve **zaman damgası**' nı seçin.
 
 ![Zaman damgası değerine sağ tıklayın](../media/tutorials/timestamp-right-click.png)
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: e1076c7bb480a52c9436e336a49169953d0d8285
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135779"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243726"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 
@@ -75,9 +75,10 @@ Bu senaryoda, işlev uygulaması Aquarium 'un sıcaklığını okur ve sonra bu 
 
 ### <a name="assign-the-role-using-azure-cli"></a>Azure CLı kullanarak rol atama
 
-Azure CLı kullanarak rolü atamak için aşağıdaki komutları kullanın:
+Azure CLı kullanarak rolü atamak için, Azure Cloud Shell açın ve aşağıdaki komutları çalıştırın:
 
 ```azurecli-interactive
+
 scope=$(az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id)
 
 principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId)

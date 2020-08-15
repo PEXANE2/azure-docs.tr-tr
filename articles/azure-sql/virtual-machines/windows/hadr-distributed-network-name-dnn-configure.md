@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169825"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245545"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>FCı için dağıtılmış ağ adı yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,7 +126,7 @@ Olası sahipleri güncelleştirmek için şu adımları izleyin:
 
 ## <a name="restart-sql-server-instance"></a>SQL Server örneğini yeniden Başlat 
 
-SQL Server örneğini yeniden başlatmak için Yük Devretme Kümesi Yöneticisi kullanın. Şu adımları izleyin:
+SQL Server örneğini yeniden başlatmak için Yük Devretme Kümesi Yöneticisi kullanın. Şu adımları uygulayın:
 
 1. Yük Devretme Kümesi Yöneticisi SQL Server kaynağına gidin.
 1. SQL Server kaynağına sağ tıklayın ve çevrimdışına alın. 
@@ -156,6 +156,29 @@ Yük devretmeyi sınamak için aşağıdaki adımları izleyin:
 Bağlantıyı sınamak için aynı sanal ağdaki başka bir sanal makinede oturum açın. **SQL Server Management Studio** açın ve DNN DNS adını kullanarak SQL Server FCI 'ye bağlanın.
 
 Gerekirse, [SQL Server Management Studio indirebilirsiniz](/sql/ssms/download-sql-server-management-studio-ssms).
+
+## <a name="avoid-ip-conflict"></a>IP çakışmasını önleyin
+
+Bu, FCı kaynağı tarafından kullanılan sanal IP (VIP) adresinin Azure 'daki başka bir kaynağa yinelenen olarak atanmasını önlemeye yönelik isteğe bağlı bir adımdır. 
+
+Müşteriler artık SQL Server FCı 'ya bağlanmak için DNN 'yi kullansa da, sanal ağ adı (VNN) ve sanal IP, FCı altyapısının gerekli bileşenleri olduklarından silinemez. Ancak, Azure 'da sanal IP adresini artık bir yük dengeleyici ayırdığından, sanal ağdaki başka bir kaynağa, FCı tarafından kullanılan sanal IP adresiyle aynı IP adresinin atanması riski vardır. Bu muhtemelen yinelenen bir IP çakışma sorununa neden olabilir. 
+
+IP adresini ayırmak için bir APIPA adresi veya ayrılmış bir ağ bağdaştırıcısı yapılandırın. 
+
+### <a name="apipa-address"></a>APIPA adresi
+
+Yinelenen IP adresleri kullanmaktan kaçınmak için, bir APIPA adresi yapılandırın (bağlantı yerel adresi olarak da bilinir). Bunun için aşağıdaki komutu çalıştırın:
+
+```powershell
+Get-ClusterResource "virtual IP address" | Set-ClusterParameter 
+    –Multiple @{"Address”=”169.254.1.1”;”SubnetMask”=”255.255.0.0”;"OverrideAddressMatch"=1;”EnableDhcp”=0}
+```
+
+Bu komutta, "sanal IP adresi" kümelenmiş VIP adresi kaynağının adıdır ve "169.254.1.1", VIP adresi için seçilen APIPA adresidir. İşletmenize en uygun adresi seçin. `OverrideAddressMatch=1`APIPA adres alanı dahil olmak üzere, IP adresinin herhangi bir ağda olmasını sağlamak üzere ayarlanır. 
+
+### <a name="dedicated-network-adapter"></a>Adanmış ağ bağdaştırıcısı
+
+Alternatif olarak, Azure 'da sanal IP adresi kaynağı tarafından kullanılan IP adresini ayırmak için bir ağ bağdaştırıcısı yapılandırın. Ancak, bu adres, alt ağ adres alanındaki adresi kullanır ve ağ bağdaştırıcısının herhangi bir amaçla kullanılmadığından emin olmanın ek yükü vardır.
 
 ## <a name="limitations"></a>Sınırlamalar
 

@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 08/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366a302e4683c74e2ba62d76c066365a3c81b045
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ea95603ea630a1320db5698092f6748e36a9934
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051875"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245766"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -30,8 +30,8 @@ Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleşt
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir:
 
-| Dekont numarası | Başlık |
-| --- | --- |
+| Dekont numarası |Başlık |
+| --- |--- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
 | [1999351] |SAP için gelişmiş Azure Izleme sorunlarını giderme |
@@ -54,10 +54,10 @@ Desteklenen SAP ürünleri ve Azure VM türleri hakkında daha fazla bilgi için
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için Linux, UNIX ve Windows yapılandırma yönergeleri için IBM DB2
 ### <a name="storage-configuration"></a>Depolama Yapılandırması
-Tüm veritabanı dosyaları, doğrudan bağlı disklere bağlı olarak NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve Azure sayfa BLOB depolama ( <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> ) veya yönetilen diskler () temel alınarak hesaplanır <https://docs.microsoft.com/azure/storage/storage-managed-disks-overview> . Aşağıdaki Azure Dosya Hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
+SAP iş yükü için Azure Depolama türleri 'ne genel bakış için [Azure depolama TÜRLERI SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) yükleri makalesine başvurun. tüm veritabanı dosyaları Azure blok depolama 'nın bağlı disklerinde depolanmalıdır (Windows: NFFS, Linux: XFS, ext4 veya ext3). Aşağıdaki Azure hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+* [Microsoft Azure dosya hizmeti](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Azure sayfa BLOB depolama veya yönetilen diskleri temel alan diskleri kullanarak, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için önemli noktalara](dbms_guide_general.md) yapılan DEYIMLER DB2 DBMS ile dağıtımlar için de geçerlidir.
 
@@ -67,13 +67,65 @@ Disk başına geçerli ıOPS kotası yeterli olduğu sürece, tüm veritabanı d
 
 Performans konuları için SAP yükleme kılavuzlarındaki Bölüm ' veri güvenliği ve veritabanı dizinleri için performans konuları ' bölümüne da bakın.
 
-Alternatif olarak, Windows Storage havuzlarını (yalnızca Windows Server 2012 ve üzeri sürümlerde mevcuttur), birden çok disk üzerinde bir büyük mantıksal cihaz oluşturmak için [SAP iş yüküne yönelik Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md) açıklanmaktadır.
+Alternatif olarak, birden çok disk üzerinde bir büyük mantıksal cihaz oluşturmak için, Windows Storage havuzlarını (yalnızca Windows Server 2012 ve üzeri sürümlerde kullanılabilir), [Azure sanal MAKINELER DBMS dağıtımı](dbms_guide_general.md) veya Linux üzerinde mdaddm Için açıklanan konular açıklanmaktadır.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir `-LogicalSectorSizeDefault` . Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md)okunabilir.
+
+## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>IBM DB2 dağıtımı için VM ve disk yapısı önerisi
+
+SAP NetWeaver uygulamaları için IBM DB2, SAP destek notunun [1928533]' de listelenen herhangi bir sanal makine türünde desteklenir.  IBM DB2 veritabanını çalıştırmaya yönelik önerilen VM aileleri, büyük çok terabaytlık veritabanları için Esd_v4/Eas_v4/Es_v3 ve a/M_v2 serisidir. IBM DB2 işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. 
+
+Aşağıda, küçük ve çok büyük olan DB2 dağıtımları üzerinde SAP 'nin çeşitli boyutları ve kullanımları için temel bir yapılandırma verilmiştir:
+
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Çok küçük SAP sistemi: veritabanı boyutu 50-200 GB: örnek çözüm Yöneticisi
+| VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E4ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
+|vCPU: 4 |/DB2/ <SID> /sapdata |P6 |4 |960  |200  |256  |14,000  |680  |256 KB |ReadOnly |
+|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Küçük SAP sistemi: veritabanı boyutu 200-750 GB: Small Business Suite
+| VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E16ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4,400  |500  |1,024  |14,000  |680  |256 KB |ReadOnly |
+|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Orta SAP sistem: veritabanı boyutu 500-1000 GB: Small Business Suite
+| VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E32ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10,000  |400  |2,048  |10,000  |400  |256 KB |ReadOnly |
+|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P20 |2 |4,600  |300  |1,024  |7,000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Büyük SAP sistemi: veritabanı boyutu 750-2000 GB: Iş paketi
+| VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E64ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20,000  |800  |4,096  |20,000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P20 |4 |9,200  |600  |2,048  |14,000  |680  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+
+#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>Büyük çok terabaytlık SAP sistemi: veritabanı boyutu 2TB +: küresel Iş paketi sistemi
+| VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|M128s |/DB2 |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30,000  |1,000  |8,192  |30,000  |1,000  |256 KB |ReadOnly |
+|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4,600  |300  |1,024  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P30 |4 |20,000  |800  |4,096  |20,000  |800  |64 KB |WriteAccelerator |
+| |/DB2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1,024  |5,000  |200  || |
+
 
 ### <a name="backuprestore"></a>Yedekleme/Geri Yükleme
 LUW için IBM DB2 yedekleme/geri yükleme işlevselliği, standart Windows Server Işletim sistemleri ve Hyper-V ile aynı şekilde desteklenir.
@@ -95,6 +147,15 @@ Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak 
 >Windows üzerinde DB2, Windows VSS teknolojisini desteklemez. Sonuç olarak, DB2 DBMS 'nin dağıtıldığı VM 'Ler için Azure Backup hizmetinin uygulamayla tutarlı VM yedeklemesi yararlanılabilir olamaz.
 
 ### <a name="high-availability-and-disaster-recovery"></a>Yüksek Kullanılabilirlik ve Olağanüstü Durum Kurtarma
+
+#### <a name="linux-pacemaker"></a>Linux Paceyapıcısı
+
+Paceyapıcısı ile DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. Hem SLES hem de RHEL işletim sistemleri desteklenir. Bu yapılandırma, SAP için IBM DB2 'ın yüksek oranda kullanılabilirliğini mümkün. Dağıtım Kılavuzu:
+* SLES: [pacemaker ile SuSE Linux Enterprise Server Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliği](dbms-guide-ha-ibm.md) 
+* RHEL: [Red Hat Enterprise Linux sunucusundaki Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliği](high-availability-guide-rhel-ibm-db2-luw.md)
+
+#### <a name="windows-cluster-server"></a>Windows küme sunucusu
+
 Microsoft Cluster Server (MSCS) desteklenmez.
 
 DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. HA yapılandırmasının sanal makinelerinde çalışma adı çözümlemesi varsa, Azure 'daki kurulum, şirket içinde gerçekleştirilen kurulumdan farklı değildir. Yalnızca IP çözümlemesi kullanılması önerilmez.

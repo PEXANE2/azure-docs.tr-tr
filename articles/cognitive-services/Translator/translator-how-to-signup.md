@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15204a081f001d421574daa7f5ec2bac40152a19
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995760"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244321"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Çevirmene kaydolma
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-- Hesabınız yok mu? Deneme yapmak için [ücretsiz hesap](https://azure.microsoft.com/free/) oluşturabilirsiniz.
+- Hesabınız yok mu? Deneme yapmak için [ücretsiz hesap](https://azure.microsoft.com/free/cognitive-services) oluşturabilirsiniz.
 - Zaten bir hesabınız var mı? [Oturum aç](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-for-translator"></a>Çevirmen için abonelik oluşturma

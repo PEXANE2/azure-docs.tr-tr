@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826560"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245579"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Otomatik yük devretme grupları, bir sunucudaki bir veritabanı grubunun veya bir yönetilen örnek içindeki tüm veritabanlarının çoğaltma ve yük devretmesini başka bir bölgeye yönetmenizi sağlar. Bu, var olan [etkin coğrafi çoğaltma](active-geo-replication-overview.md) özelliğinin en üstünde, coğrafi olarak çoğaltılan veritabanlarının dağıtım ve yönetimini kolaylaştırmak için tasarlanan, bildirime dayalı bir soyutlamadır. Yük devretmeyi el ile başlatabilir veya Kullanıcı tanımlı bir ilkeye göre Azure hizmetine temsilci seçebilirsiniz. İkinci seçenek, birincil bölgede SQL veritabanının veya SQL yönetilen örnek kullanılabilirliğinin tamamen veya kısmen kaybedilmesiyle sonuçlanan çok önemli bir hatadan veya diğer plansız bir olaydan sonra, ikincil bölgede birden fazla ilişkili veritabanını otomatik olarak kurtarmanıza olanak sağlar. Yük devretme grubu, genellikle aynı uygulama tarafından kullanılan bir veya daha fazla veritabanı içerebilir. Ayrıca, salt okunur sorgu iş yüklerini boşaltmak için okunabilir ikincil veritabanlarını da kullanabilirsiniz. Otomatik yük devretme grupları birden çok veritabanı içerdiğinden, bu veritabanlarının birincil sunucuda yapılandırılması gerekir. Otomatik yük devretme grupları gruptaki tüm veritabanlarının, farklı bir bölgedeki yalnızca bir ikincil sunucuya veya örneğe çoğaltılmasını destekler.
+Otomatik yük devretme grupları özelliği, bir sunucudaki bir veritabanı grubunun veya yönetilen bir örnekteki tüm veritabanlarının çoğaltmasını ve başka bir bölgeye yük devretmesini yönetmenizi sağlar. Bu, var olan [etkin coğrafi çoğaltma](active-geo-replication-overview.md) özelliğinin en üstünde, coğrafi olarak çoğaltılan veritabanlarının dağıtım ve yönetimini kolaylaştırmak için tasarlanan, bildirime dayalı bir soyutlamadır. Yük devretmeyi el ile başlatabilir veya Kullanıcı tanımlı bir ilkeye göre Azure hizmetine temsilci seçebilirsiniz. İkinci seçenek, birincil bölgede SQL veritabanının veya SQL yönetilen örnek kullanılabilirliğinin tamamen veya kısmen kaybedilmesiyle sonuçlanan çok önemli bir hatadan veya diğer plansız bir olaydan sonra, ikincil bölgede birden fazla ilişkili veritabanını otomatik olarak kurtarmanıza olanak sağlar. Yük devretme grubu, genellikle aynı uygulama tarafından kullanılan bir veya daha fazla veritabanı içerebilir. Ayrıca, salt okunur sorgu iş yüklerini boşaltmak için okunabilir ikincil veritabanlarını da kullanabilirsiniz. Otomatik yük devretme grupları birden çok veritabanı içerdiğinden, bu veritabanlarının birincil sunucuda yapılandırılması gerekir. Otomatik yük devretme grupları gruptaki tüm veritabanlarının, farklı bir bölgedeki yalnızca bir ikincil sunucuya veya örneğe çoğaltılmasını destekler.
 
 > [!NOTE]
 > Aynı veya farklı bölgelerde birden çok Azure SQL veritabanı ikincil öğesini isterseniz, [etkin coğrafi çoğaltma](active-geo-replication-overview.md)kullanın.
@@ -203,7 +203,7 @@ Değişiklik sırasını göstermek için sunucu A 'nın birincil sunucu olduğu
 1. Birincil sunucuyu B 'ye geçirmek için planlı bir yük devretme gerçekleştirin. Sunucu A, yeni ikincil sunucu olacak. Yük devretme işlemi birkaç dakika kapalı kalma süresine neden olabilir. Gerçek süre, yük devretme grubunun boyutuna bağlı olacaktır.
 2. [Etkin coğrafi çoğaltma](active-geo-replication-overview.md)kullanarak sunucu B 'de sunucu C 'ye her bir veritabanının ek ikincil sürümlerini oluşturun. Sunucu B üzerindeki her bir veritabanı, biri sunucu A ve sunucu C 'de olmak üzere iki ikincil adına sahip olur. Bu, geçiş sırasında birincil veritabanlarının korunduğundan emin olmaya devam edecektir.
 3. Yük devretme grubunu silin. Bu noktada, oturum açma işlemleri başarısız olur. Bunun nedeni, yük devretme grubu dinleyicilerinin SQL diğer adlarının silindiği ve ağ geçidinin yük devretme grubu adını tanıyamayacağı içindir.
-4. Yük devretme grubunu, A ve C sunucuları arasında aynı adla yeniden oluşturun. Bu noktada, oturum açmalar başarısız olur.
+4. B ve C sunucuları arasında aynı ada sahip yük devretme grubunu yeniden oluşturun. Bu noktada, oturum açmalar başarısız olur.
 5. B üzerindeki tüm birincil veritabanlarını yeni yük devretme grubuna ekleyin.
 6. B ve C 'ye geçiş yapmak için yük devretme grubunun planlı bir yük devretmesini gerçekleştirin. Artık sunucu C birincil ve B-ikincil olur. A sunucusundaki tüm ikincil veritabanları, C 'deki temelinde otomatik olarak bağlanır. Adım 1 ' de olduğu gibi, yük devretme işlemi birkaç dakika kapalı kalma süresine yol açabilir.
 7. Sunucu A ' yı bırakın. İçindeki tüm veritabanları otomatik olarak silinir.
@@ -231,7 +231,7 @@ Yük devretmeden sonra birincil SQL yönetilen örneğine kesintiye uğramayan b
 > [!IMPORTANT]
 > Alt ağda oluşturulan ilk yönetilen örnek, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.
 
-İkincil SQL yönetilen örneğini birincil örnekle aynı DNS bölgesinde oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
+İkincil SQL yönetilen örneğini birincil örnekle aynı DNS bölgesinde oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>İki örnek arasında çoğaltma trafiği etkinleştiriliyor
 
@@ -378,10 +378,10 @@ Bu dizi, daha düşük bir SKU 'daki ikincil öğenin aşırı yüklendiği ve y
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Kritik verilerin kaybını önlemek
 
-Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi tamamladıktan hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. Çağırma, `sp_wait_for_database_copy_sync` son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. `sp_wait_for_database_copy_sync`belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
+Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi tamamladıktan hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. Çağırma, `sp_wait_for_database_copy_sync` son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. `sp_wait_for_database_copy_sync` belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`Yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. Bir yordam çağrısının neden olduğu gecikme `sp_wait_for_database_copy_sync` önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
+> `sp_wait_for_database_copy_sync` Yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. Bir yordam çağrısının neden olduğu gecikme `sp_wait_for_database_copy_sync` önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Yük devretme grupları ve zaman içinde bir noktaya geri yükleme
 

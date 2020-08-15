@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020660"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245409"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Öğretici: Azure Time Series Insights Gen1 ortamı oluşturma
 
@@ -37,13 +37,13 @@ Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Ser
 
 ## <a name="review-video"></a>Videoyu gözden geçirin
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Azure IoT Çözüm Hızlandırıcısı kullanarak veri oluşturma ve Azure Time Series Insights kullanmaya başlama hakkında bilgi edinin. </br>
+Azure IoT Çözüm Hızlandırıcısı kullanarak veri oluşturma ve Azure Time Series Insights kullanmaya başlama hakkında bilgi edinin.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Time Series Insights ortamı, cihaz verilerinin toplandığı ve depolandığı yerdir. Depolanan [Azure Time Series Insights Gezgini](time-series-quickstart.md) ve [Azure Time Series Insights sorgu API 'si](/rest/api/time-series-insights/ga-query-api) , verileri sorgulamak ve analiz etmek için kullanılabilir.
+Azure Time Series Insights ortamı, cihaz verilerinin toplandığı ve depolandığı yerdir. Depolanan [Azure Time Series Insights Gezgini](time-series-quickstart.md) ve [Azure Time Series Insights sorgu API 'si](/rest/api/time-series-insights/gen1-query-api) , verileri sorgulamak ve analiz etmek için kullanılabilir.
 
 Azure IoT Hub, Azure bulutuna güvenli bir şekilde bağlanmak ve veri aktarmak için öğreticide tüm cihazlar (benzetimli veya fiziksel) tarafından kullanılan olay kaynağıdır.
 
@@ -98,7 +98,7 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
    Parametre|Açıklama
    ---|---
-   **Ortam adı** | Azure Time Series Insights ortamı için benzersiz bir ad seçin. Adlar Azure Time Series Insights Gezgini ve [sorgu API 'leri](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)tarafından kullanılır.
+   **Ortam adı** | Azure Time Series Insights ortamı için benzersiz bir ad seçin. Adlar Azure Time Series Insights Gezgini ve [sorgu API 'leri](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)tarafından kullanılır.
    **Abonelik** | Abonelikler, Azure kaynaklarına yönelik kapsayıcılardır. Azure Time Series Insights ortamını oluşturmak için bir abonelik seçin.
    **Kaynak grubu** | Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. Mevcut bir kaynak grubunu seçin veya Azure Time Series Insights ortam kaynağı için yeni bir tane oluşturun.
    **Konum** | Azure Time Series Insights ortamınız için bir veri merkezi bölgesi seçin. Ek gecikmeyi önlemek için, diğer IoT kaynaklarıyla aynı bölgede Azure Time Series Insights ortamı oluşturun.
@@ -197,7 +197,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Azure Time Series Insights ortamına veri akışı sağlamak için bir cihaz benzetimi çalıştırın.
 > * Sanal telemetri verilerini doğrulayın.
 
-Artık kendi Azure Time Series Insights ortamınızı oluşturmayı bildiğinize göre, bir Azure Time Series Insights ortamından veri tüketen bir Web uygulaması oluşturmayı öğrenin:
+Kendi Azure Time Series Insights ortamınızı oluşturmayı öğrenmiş olduğunuza göre, bir Azure Time Series Insights ortamından veri tüketen bir Web uygulaması oluşturmayı öğrenin:
 
 > [!div class="nextstepaction"]
 > [Barındırılan istemci SDK görselleştirme örneklerini oku](https://tsiclientsample.azurewebsites.net/)

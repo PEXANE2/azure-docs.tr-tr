@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317578"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245681"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde İndirilenler Panosu
 
@@ -25,9 +25,7 @@ Indirmeler panosuna erişmek için ticari Market altında **[analiz](https://par
 
 ## <a name="downloads-dashboard"></a>İndirmeler panosu
 
-**Çözümle** menüsünün **indirmeler** panosu, müşteri veya sipariş verilerini 1000 ' den fazla satırı içeren indirmelere yönelik istekleri görüntüler.
-
-1000 ' den fazla veri satırı içeren bir indirme isteğinde bulunduğunda, **indirmeler** panosuna bir bağlantı içeren bir açılır bildirim ve e-posta alacaksınız. Bu veri İndirmeleri 30 günlük bir dönemde kullanıma sunulacaktır ve sonra kaldırılır.
+**Çözümle** menüsünün **indirmeler** panosu, müşteri veya sipariş verilerini 1000 ' den fazla satırı içeren indirmelere yönelik istekleri görüntüler. Bu veri İndirmeleri 30 gün boyunca kullanıma sunulacaktır ve sonra kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
