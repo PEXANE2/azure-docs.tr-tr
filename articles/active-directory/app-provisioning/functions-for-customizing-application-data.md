@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003248"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235681"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de öznitelik eşlemeleri için ifadeler yazma
 
@@ -49,7 +49,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
@@ -67,7 +67,7 @@ Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 oldu
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **value1** |Gerekli |sayı |Değer2 ile birlikte olması gereken sayısal değer|
 | **value2** |Gerekli |sayı |Değer1 ile birlikte olması gereken sayısal değer|
@@ -84,7 +84,7 @@ BitAnd (&HF, &HF7)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli | ifade | Herhangi bir geçerli ifade |
 
@@ -100,7 +100,7 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **source1 ... Kaynakcen** | Gerekli | Dize |Gerekli, değişken sayısı. Genellikle kaynak nesneden özniteliğin adı. |
 | **Değerinin** | İsteğe Bağlı | Dize | Tüm kaynak değerleri NULL olduğunda kullanılacak varsayılan değer. Boş dize ("") olabilir.
@@ -113,7 +113,7 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |64 tabanına dönüştürülecek dize|
 
@@ -129,7 +129,7 @@ ConvertToBase64 ("Hello World!")
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |UTF8 onaltılı olarak dönüştürülecek dize|
 
@@ -145,7 +145,7 @@ ConvertToUTF8Hex ("Hello World!")
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |özniteliği |Sayılacak öğeleri olan çok değerli öznitelik|
 
@@ -157,7 +157,7 @@ ConvertToUTF8Hex ("Hello World!")
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **deeri** |Gerekli | sayısal, başvuru veya Boole | Sayısal bir değer, başvuru özniteliği veya Boole olabilir. |
 
@@ -173,7 +173,7 @@ CStr ([DN])
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **deeri** |Gerekli | Tarih | Tarih saat türüne dönüştürülecek AD tarihi |
 
@@ -190,10 +190,10 @@ DateFromNum (129699324000000000)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-| **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) .. |
+| **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [/DotNet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 | **outputFormat** |Gerekli |Dize |Çıkış tarihinin biçimi. |
 
 ---
@@ -210,7 +210,7 @@ DateFromNum (129699324000000000)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **koşul** |Gerekli |Değişken veya Ifade |Doğru veya yanlış olarak değerlendirilebilen herhangi bir değer veya ifade. |
 | **valueIfTrue** |Gerekli |Değişken veya dize | Koşul true olarak değerlendirilirse döndürülen değer. |
@@ -227,7 +227,7 @@ IıF ([Country] = "USA", [Ülke], [departman])
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **value1** |Gerekli |Dize |Aranacak dize |
 | **value2** |Gerekli |Dize |Bulunan dize |
@@ -249,7 +249,7 @@ InStr ("yineleniyor", "e", 3, vbBinaryCompare)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
@@ -266,7 +266,7 @@ Bu işlevin tersi ısun olarak adlandırılmıştır.
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
@@ -282,7 +282,7 @@ IsNullOrEmpty ([displayName])
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
@@ -297,7 +297,7 @@ Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), 
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
@@ -309,7 +309,7 @@ Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), 
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Öznitelik |Aranacak çok değerli öznitelik |
 | **indeks** |Gerekli |Tamsayı | Çoklu değerli dizedeki bir öğenin dizini|
@@ -327,7 +327,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ayırıcı** |Gerekli |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
 | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
@@ -343,7 +343,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Dize** |Gerekli |Öznitelik | Karakterlerin döndürdüğü dize |
 | **NumChars** |Gerekli |Tamsayı | Dizenin başından (solda) döndürülecek karakter sayısını tanımlayan sayı|
@@ -360,7 +360,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
 | **başından** |Gerekli |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
@@ -374,7 +374,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
@@ -386,7 +386,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
@@ -394,11 +394,11 @@ Sol ("John tikan", 3)
 ### <a name="numfromdate"></a>NumFromDate
 **Çalışmayacaktır**<br> NumFromDate (değer)
 
-**Açıklama:**<br> NumFromDate işlevi, bir DateTime değerini [AccountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)gibi öznitelikleri ayarlamak için gereken Active Directory biçime dönüştürür. Workday ve başarılı faktörlerdeki bulut HR uygulamalarından alınan DateTime değerlerini eşdeğer AD gösterimlerine dönüştürmek için bu işlevi kullanın. 
+**Açıklama:**<br> NumFromDate işlevi, bir DateTime değerini [AccountExpires](/windows/win32/adschema/a-accountexpires)gibi öznitelikleri ayarlamak için gereken Active Directory biçime dönüştürür. Workday ve başarılı faktörlerdeki bulut HR uygulamalarından alınan DateTime değerlerini eşdeğer AD gösterimlerine dönüştürmek için bu işlevi kullanın. 
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **deeri** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx .. |
 
@@ -420,7 +420,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Çoklu değerli öznitelik |Yinelenen öğeleri kaldırılacak birden çok değerli öznitelik|
 
@@ -454,7 +454,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
 | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
@@ -479,7 +479,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
@@ -492,7 +492,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
@@ -504,7 +504,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
@@ -517,7 +517,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
@@ -529,7 +529,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
@@ -544,7 +544,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -557,7 +557,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -574,7 +574,7 @@ Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlay
 
 **Parametrelere**<br> 
 
-| Ad | Gerekli/yinelenen | Tür | Notlar |
+| Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Dize** |Gerekli |Çoklu değerli öznitelik |Bir sözcüğün döndürdüğü dize.|
 | **WordNumber** |Gerekli | Tamsayı | Hangi sözcük sayısının dönmesi gerektiğini tanımlayan sayı|

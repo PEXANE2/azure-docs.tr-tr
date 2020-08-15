@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073856"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236752"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’ta hazırlık ortamları ayarlama
 <a name="Overview"></a>
@@ -238,7 +238,7 @@ Varsayılan olarak, uygulamanın üretim URL 'sine () yönelik tüm istemci iste
 
 1. Uygulamanızın kaynak sayfasına gidin ve **dağıtım yuvaları**' nı seçin.
 
-2. Yönlendirmek istediğiniz yuvanın **trafik%** sütununda, yönlendirmek istediğiniz toplam trafik miktarını göstermek için bir yüzde (0 ile 100 arasında) belirtin. **Kaydet**'i seçin.
+2. Yönlendirmek istediğiniz yuvanın **trafik%** sütununda, yönlendirmek istediğiniz toplam trafik miktarını göstermek için bir yüzde (0 ile 100 arasında) belirtin. **Kaydet**’i seçin.
 
     ![Trafik yüzdesini ayarlama](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -423,7 +423,6 @@ Bazı yaygın değiştirme hataları aşağıda verilmiştir:
       ...
     </conditions>
     ```
-- Bazı [IP kısıtlama kuralları](app-service-ip-restrictions.md) değiştirme IŞLEMININ uygulamanıza http istekleri göndermesini engelleyebilir. İle başlayan `10.` ve dağıtımınıza iç olan IPv4 adresi aralıkları `100.` . Uygulamanıza bağlanmasına izin vermeniz gerekir.
 
 - Yuva değiştirildikten sonra, uygulama beklenmeyen yeniden başlatmalar ile karşılaşabilir. Bunun nedeni, bir değiştirme işleminden sonra, ana bilgisayar adı bağlama yapılandırması eşitlemeden sonra yeniden başlatmalara neden olmaz. Ancak, bazı temel depolama olayları (örneğin, depolama birimi yük devretme işlemleri), bu tutarsızlıkları algılayabilir ve tüm çalışan süreçlerini yeniden başlamaya zorlayabilir. Bu tür yeniden başlatma türlerini en aza indirmek için *Tüm yuvalarda* [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` uygulama ayarını](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) ayarlayın. Ancak, bu uygulama ayarı Windows Communication Foundation (WCF) *uygulamalarıyla çalışmaz.*
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283104"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235647"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
 
@@ -54,7 +54,7 @@ Azure AD, uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirmek ü
 
 * [Azure AD sağlama hizmeti](../app-provisioning/user-provisioning.md) , Azure AD 'den uygulamanıza (giden sağlama) ve UYGULAMANıZDAN Azure AD 'ye (gelen sağlama) yönelik sağlama ve sağlamayı kaldırmayı yönetir. Hizmet, uygulamanız tarafından sağlanmış olan etki alanları arası kimlik yönetimi (SCıM) Kullanıcı yönetimi API uç noktaları için sisteme bağlanır.
 
-* [Microsoft Graph](https://docs.microsoft.com/graph/)kullanılırken, UYGULAMANıZ Microsoft Graph API 'Sini SORGULAYARAK Azure AD 'den uygulamanıza yönelik kullanıcı ve grupların gelen ve giden sağlamasını yönetir.
+* [Microsoft Graph](/graph/)kullanılırken, UYGULAMANıZ Microsoft Graph API 'Sini SORGULAYARAK Azure AD 'den uygulamanıza yönelik kullanıcı ve grupların gelen ve giden sağlamasını yönetir.
 
 * Uygulamanız Federasyon için SAML kullanıyorsa, tam zamanında Security Assertion Markup Language (SAML JıT) Kullanıcı sağlama etkinleştirilebilir. Kullanıcı sağlamak için SAML belirtecinde gönderilen talep bilgilerini kullanır.
 
@@ -72,8 +72,8 @@ Uygulamanız için hangi tümleştirme seçeneğinin kullanılacağını belirle
 | Konuk hesaplarını (B2B) destekleme| √| √| √ |
 | Kurumsal olmayan hesapları destekleme (B2C)| X| √| √ |
 
-<sup>*</sup>– Azure AD Connect kullanıcıları AD 'den Azure AD 'ye eşitlemek için kurulum gereklidir.  
-<sup>+</sup >– Sağlama için SCıM kullanılması, uygulamanızı başka amaçlar için MIcrosoft Graph ile tümleştirmenizi engellemez.
+<sup>*</sup> – Azure AD Connect kullanıcıları AD 'den Azure AD 'ye eşitlemek için kurulum gereklidir.  
+<sup>+</sup >– Sağlama için SCıM kullanılması, uygulamanızı başka amaçlar için Microsoft Graph tümleştirmenizi gerektirmez.
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD sağlama hizmeti (SCıM)
 
@@ -89,7 +89,7 @@ Azure AD sağlama hizmeti kullanıcılarının SCıM hakkında daha fazla bilgi 
 
 ## <a name="microsoft-graph-for-provisioning"></a>Sağlama için Microsoft Graph
 
-Sağlama için Microsoft Graph kullandığınızda, grafikte kullanılabilen tüm zengin Kullanıcı verilerine erişebilirsiniz. Kullanıcı ve grupların ayrıntılarına ek olarak, kullanıcının rolleri, Yöneticisi ve doğrudan raporları, sahip olunan cihazlar ve [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)bulunan yüzlerce diğer veri parçası gibi ek bilgiler de getirebilirsiniz. 
+Sağlama için Microsoft Graph kullandığınızda, grafikte kullanılabilen tüm zengin Kullanıcı verilerine erişebilirsiniz. Kullanıcı ve grupların ayrıntılarına ek olarak, kullanıcının rolleri, Yöneticisi ve doğrudan raporları, sahip olunan cihazlar ve [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0)bulunan yüzlerce diğer veri parçası gibi ek bilgiler de getirebilirsiniz. 
 
 15.000.000 ' den fazla kuruluş ve Fortune 500 şirketlerinin %90 ' si, Office 365, Microsoft Azure, Enterprise Mobility Suite veya Microsoft 365 gibi Microsoft bulut hizmetlerine abone olurken Azure AD 'yi kullanır. Uygulamanızı, çalışan ekleme (ve sonlandırma), profil bakımı ve daha fazlası gibi yönetim iş akışlarıyla tümleştirmek için Microsoft Graph kullanabilirsiniz. 
 
@@ -97,9 +97,9 @@ Sağlama için Microsoft Graph kullanma hakkında daha fazla bilgi edinin:
 
 * [Microsoft Graph giriş sayfası](https://developer.microsoft.com/graph)
 
-* [Microsoft Graph’a genel bakış](https://docs.microsoft.com/graph/overview)
+* [Microsoft Graph’a genel bakış](/graph/overview)
 
-* [Microsoft Graph auth 'ye Genel Bakış](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph auth 'ye Genel Bakış](/graph/auth/)
 
 * [Microsoft Graph kullanmaya başlama](https://developer.microsoft.com/graph/get-started)
 

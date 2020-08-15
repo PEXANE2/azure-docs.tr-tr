@@ -2,18 +2,18 @@
 title: Azure depolama tablo tasarımı için yönergeler | Microsoft Docs
 description: Azure depolama tablo hizmetinizi, okuma ve yazma işlemlerini verimli bir şekilde destekleyecek şekilde tasarlama yönergelerini anlayın.
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5671cc71683061becbdbbce5d855e55cbaa7c595
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f84707e454a8b1f5d5947478fe65108a142a9757
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035408"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236327"
 ---
 # <a name="guidelines-for-table-design"></a>Tablo tasarımı için yönergeler
 

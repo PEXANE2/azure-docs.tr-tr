@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203017"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235069"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Kullanıcı hazırlama durumunu denetleme
 
@@ -30,7 +30,7 @@ Otomatik sağlamayı ilk yapılandırdığınızda, sayfanın en altındaki **ge
 - Şu anda çalışmakta olan veya en son tamamlanan sağlama döngüsünün (ilk veya artımlı) türü.
 - Tamamlanan sağlama döngüsünün yüzdesini gösteren bir **ilerleme çubuğu** . Yüzde değeri, sağlanan sayfa sayısını yansıtır. Her sayfanın birden çok kullanıcı veya grup içerebileceğini unutmayın. bu nedenle yüzde, izin sağlanan Kullanıcı, Grup veya rol sayısıyla doğrudan bağıntılı değildir.
 - Görünümü güncelleştirilmesini sağlamak için kullanabileceğiniz bir **yenileme** düğmesi.
-- Bağlayıcı veri deposundaki **Kullanıcı** ve **grupların** sayısı. Sayma, sağlama kapsamına her bir nesne eklendiğinde artar. Kullanıcı geçici olarak silinmiş veya kalıcı olarak siliniyorsa, bu, nesneyi bağlayıcı veri deposundan kaldırmadığından, sayı aşağı gitmeyecektir. CD [sıfırlandıktan](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) sonra sayı ilk eşitleme yeniden hesaplanacak 
+- Bağlayıcı veri deposundaki **Kullanıcı** ve **grupların** sayısı. Sayma, sağlama kapsamına her bir nesne eklendiğinde artar. Kullanıcı geçici olarak silinmiş veya kalıcı olarak siliniyorsa, bu, nesneyi bağlayıcı veri deposundan kaldırmadığından, sayı aşağı gitmeyecektir. CD [sıfırlandıktan](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) sonra sayı ilk eşitleme yeniden hesaplanacak 
 - Bireysel kullanıcıların sağlama durumu da dahil olmak üzere, Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler hakkındaki ayrıntılar için Azure AD sağlama günlüklerini **görüntüleme** (aşağıdaki [sağlama günlüklerini kullanma](#use-provisioning-logs-to-check-a-users-provisioning-status) bölümüne bakın).
 
 Bir sağlama süresi tamamlandıktan sonra, tarihe göre **İstatistikler** bölümü, son döngüsünün tamamlanma tarihi ve süresiyle birlikte tarih olarak sağlanan Toplam Kullanıcı ve grup sayısını gösterir. **Etkınlık kimliği** en son sağlama döngüsünü benzersiz şekilde tanımlar. **Iş kimliği** , sağlama işi için benzersiz bir tanımlayıcıdır ve kiracınızdaki uygulamaya özeldir.
@@ -99,4 +99,4 @@ Bir **Başlangıç döngüsünün**tamamlanışında geçen süreyi etkileyen fa
 - Performans bir sorun haline gelirse ve kiracınızdaki Kullanıcı ve grupların çoğunu sağlamaya çalışıyorsanız, kapsam filtrelerini kullanın. Kapsam filtreleri, kullanıcıları belirli öznitelik değerlerine göre filtreleyerek, sağlama hizmetinin Azure AD 'den ayıklayan verileri ayarlamanıza olanak sağlar. Kapsam filtreleri hakkında daha fazla bilgi için bkz. [kapsam filtreleriyle öznitelik tabanlı uygulama sağlama](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Active Directory ile SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](user-provisioning.md)
+[Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatik hale getirme](user-provisioning.md)

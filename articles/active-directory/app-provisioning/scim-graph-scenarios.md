@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781693"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235511"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Kullanıcı sağlamak ve uygulamanızı gereken verilere göre zenginleştirmek için SCıM ve Microsoft Graph birlikte kullanma
 
-**Hedef kitle:** Bu makale, Azure Active Directory (Azure AD) ile tümleştirilecek uygulamalar oluşturmaya yönelik geliştiricilere yöneliktir. Daha önce Azure AD ile tümleştirilmiş olan zoom, ServiceNow ve DropBox gibi uygulamaları kullanmak istiyorsanız, bu makaleyi atlayabilir ve uygulamaya özgü [öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) inceleyebilir veya [sağlama hizmeti 'nin nasıl çalıştığını](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)inceleyebilirsiniz.
+**Hedef kitle:** Bu makale, Azure Active Directory (Azure AD) ile tümleştirilecek uygulamalar oluşturmaya yönelik geliştiricilere yöneliktir. Daha önce Azure AD ile tümleştirilmiş olan zoom, ServiceNow ve DropBox gibi uygulamaları kullanmak istiyorsanız, bu makaleyi atlayabilir ve uygulamaya özgü [öğreticileri](../saas-apps/tutorial-list.md) inceleyebilir veya [sağlama hizmeti 'nin nasıl çalıştığını](./how-provisioning-works.md)inceleyebilirsiniz.
 
-**Yaygın senaryolar**
+**Genel senaryolar**
 
-Azure AD, sağlama için kullanıma hazır bir hizmet ve uygulamalarınızı oluşturmak için genişletilebilir bir platform sağlar. Karar ağacı, bir geliştiricinin sağlamayı otomatik hale getirmek için [SCIM](https://aka.ms/scimoverview) ve [Microsoft Graph](https://docs.microsoft.com/graph/overview) nasıl kullandığını özetler. 
+Azure AD, sağlama için kullanıma hazır bir hizmet ve uygulamalarınızı oluşturmak için genişletilebilir bir platform sağlar. Karar ağacı, bir geliştiricinin sağlamayı otomatik hale getirmek için [SCIM](https://aka.ms/scimoverview) ve [Microsoft Graph](/graph/overview) nasıl kullandığını özetler. 
 
 > [!div class="checklist"]
 > * Uygulamamda otomatik olarak Kullanıcı oluşturma
@@ -97,15 +97,15 @@ Uygulamam çeşitli kaynaklara erişmek için grupları kullanır ve müşterile
 ## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Senaryo 4: ekipler, Outlook ve OneDrive gibi Microsoft hizmetlerinden alınan verilerle uygulamamı zenginleştirin
 Uygulamam Microsoft ekiplerinde yerleşik olarak bulunur ve ileti verilerini kullanır. Ayrıca, OneDrive 'daki kullanıcılar için dosyaları depolarız. Uygulamamı bu hizmetlerdeki ve Microsoft genelindeki verilerle nasıl zenginleştirebilirsiniz?
 
-**Öneri:** [Microsoft Graph](https://docs.microsoft.com/graph/) , Microsoft verilerine erişmek için giriş noktasıdır. Her iş yükü API 'Leri, gerek duyduğunuz verilerle birlikte kullanıma sunar. Microsoft Graph, yukarıdaki senaryolar için [SCIM sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) ile birlikte kullanılabilir. Gerekli olan herhangi bir veriyi almak için Graph 'ta çağırma yaparken, uygulamanızda temel kullanıcı özniteliklerini sağlamak için SCıM kullanabilirsiniz. 
+**Öneri:** [Microsoft Graph](/graph/) , Microsoft verilerine erişmek için giriş noktasıdır. Her iş yükü API 'Leri, gerek duyduğunuz verilerle birlikte kullanıma sunar. Microsoft Graph, yukarıdaki senaryolar için [SCIM sağlama](./use-scim-to-provision-users-and-groups.md) ile birlikte kullanılabilir. Gerekli olan herhangi bir veriyi almak için Graph 'ta çağırma yaparken, uygulamanızda temel kullanıcı özniteliklerini sağlamak için SCıM kullanabilirsiniz. 
 
 ## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Senaryo 5: takımlar, Outlook ve Azure AD gibi Microsoft hizmetlerinde yapılan değişiklikleri Izleyin
 Ekipler ve Outlook iletilerindeki değişiklikleri izleyebilmem ve bunlara gerçek zamanlı olarak yanıt vermek istiyorum. Uygulamama bu değişiklikleri nasıl gönderebilirim?
 
-**Öneri:** Microsoft Graph çeşitli kaynaklar için [değişiklik bildirimleri](https://docs.microsoft.com/graph/webhooks) ve [değişiklik izleme](https://docs.microsoft.com/graph/delta-query-overview) sağlar. Değişiklik bildirimlerinin aşağıdaki sınırlamalarını aklınızda edin:
+**Öneri:** Microsoft Graph çeşitli kaynaklar için [değişiklik bildirimleri](/graph/webhooks) ve [değişiklik izleme](/graph/delta-query-overview) sağlar. Değişiklik bildirimlerinin aşağıdaki sınırlamalarını aklınızda edin:
 - Bir olay alıcısı bir olayı ortaya atırsa, ancak herhangi bir nedenden dolayı üzerinde davranmazsa, olay kaybolabilir.
 - Değişikliklerin alındığı sıranın kronolojik olması garanti edilmez.
-- Değişiklik bildirimleri yukarıdaki nedenlerden dolayı her zaman [kaynak verilerini](https://docs.microsoft.com/graph/webhooks-with-resource-data) içermez, geliştiriciler genellikle değişiklik bildirimlerini, eşitleme senaryolarında değişiklik izleme ile birlikte kullanır. 
+- Değişiklik bildirimleri yukarıdaki nedenlerden dolayı her zaman [kaynak verilerini](/graph/webhooks-with-resource-data) içermez, geliştiriciler genellikle değişiklik bildirimlerini, eşitleme senaryolarında değişiklik izleme ile birlikte kullanır. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Senaryo 6: Azure AD 'de Kullanıcı ve grup sağlama
 Uygulamam, müşterilerin Azure AD 'de ihtiyacı olan bir kullanıcı hakkında bilgi oluşturuyor. Bu, işe alma 'yı yönetenden bir ık uygulaması, kullanıcılar için telefon numarası oluşturan bir iletişim uygulaması veya Azure AD 'de değerli veriler üreten bir diğer uygulama olabilir. Azure AD 'deki Kullanıcı kaydı bu verilerle doldurulmi Nasıl yaparım?? 
@@ -117,5 +117,5 @@ Uygulamam, müşterilerin Azure AD 'de ihtiyacı olan bir kullanıcı hakkında 
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [Eşitleme Microsoft Graph belgelerini gözden geçirin](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Eşitleme Microsoft Graph belgelerini gözden geçirin](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Özel bir SCıM uygulamasını Azure AD ile tümleştirme](use-scim-to-provision-users-and-groups.md)

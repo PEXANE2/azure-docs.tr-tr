@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533570"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236310"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -85,6 +85,9 @@ Dosyaları tanımladıktan ve yerel bir depolama konumuna kopyaladıktan sonra e
 Diskler kaldırıldıktan sonra bir ileti alırsınız. Diskleri kaldırabilmeniz için yenilemenin bağlantısının yenilenmesi birkaç dakika sürebilir.
 
 Linux 'ta, kurtarma noktası bağlantısı kapatıldıktan sonra, işletim sistemi ilgili bağlama yollarını otomatik olarak kaldırmaz. Bağlama yolları "yalnız," birimleri olarak bulunur ve görünür, ancak dosyalara erişirken/yazarken bir hata oluşturur. Bunlar el ile kaldırılabilirler. Betiği çalıştırıldığında, önceki kurtarma noktalarından mevcut olan tüm birimleri tanımlar ve izin üzerine temizler.
+
+> [!NOTE]
+> Gerekli dosyalar geri yüklendikten sonra bağlantı kapalı olduğundan emin olun. Özellikle, komut dosyasının yürütüldüğü makinenin da yedekleme için yapılandırıldığı senaryoda bu önemlidir. Bağlantının hala açık olması durumunda, sonraki yedekleme "UserErrorUnableToOpenMount" hatası ile başarısız olabilir. Bu durum, bağlı sürücülerin/birimlerin kullanılabilir olduğu varsayıcağından ve erişilen depolama (örneğin, Iscsı hedef sunucusu) kullanılamadığından başarısız olabileceği için oluşur. Bağlantı temizliği bu sürücüleri/birimleri kaldırır, bu nedenle yedekleme sırasında kullanılamaz.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Betiği çalıştırmak için doğru makineyi seçme
 
@@ -242,7 +245,7 @@ Aşağıdaki komut tüm RAID disklerinin ayrıntılarını görüntüler:
 mdadm –detail –scan
 ```
 
- İlgili RAID diski şöyle görüntülenir`/dev/mdm/<RAID array name in the protected VM>`
+ İlgili RAID diski şöyle görüntülenir `/dev/mdm/<RAID array name in the protected VM>`
 
 RAID diskinde fiziksel birimler varsa bağlama komutunu kullanın:
 
@@ -265,7 +268,7 @@ Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumlu
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Linux işletim sistemi için
 
@@ -300,10 +303,10 @@ Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişim
 
 - `download.microsoft.com`
 - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Azure ortak bölgeleri için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Azure Çin 21Vianet için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Azure ABD kamu için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Azure Almanya için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure ortak bölgeleri için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure Çin 21Vianet için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure ABD kamu için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Almanya için)
 - Giden bağlantı noktaları 53 (DNS), 443, 3260
 
 > [!NOTE]

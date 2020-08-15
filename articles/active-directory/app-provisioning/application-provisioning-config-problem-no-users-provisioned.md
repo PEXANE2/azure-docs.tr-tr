@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782288"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234797"
 ---
 # <a name="no-users-are-being-provisioned"></a>Hiçbir kullanıcı sağlanmıyor 
 >[!NOTE]
@@ -58,13 +58,13 @@ Bir Kullanıcı sağlama günlüklerinde "atlandı" olarak görünüyorsa, neden
 - **Gerekli bir öznitelik eksik veya Kullanıcı için doldurulmamış.** Sağlamayı ayarlarken göz önünde bulundurmanız gereken önemli bir şey, Azure AD 'den uygulamaya hangi kullanıcı (veya grup) özelliklerinin akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmaktır. Bu yapılandırma, iki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan "eşleşen özelliği" ayarlamayı içerir. Bu önemli süreç hakkında daha fazla bilgi için bkz. [Azure Active Directory SaaS uygulamaları Için Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](customize-application-attributes.md).
 - **Gruplar Için öznitelik eşlemeleri:** Bazı uygulamalarda destekleniyorsa, üyelere ek olarak grup adı ve grup ayrıntılarının sağlanması. **Sağlama** sekmesinde gösterilen Grup nesneleri **eşlemesini** etkinleştirerek veya devre dışı bırakarak bu işlevselliği etkinleştirebilir veya devre dışı bırakabilirsiniz. Sağlama grupları etkinleştirilmişse, "eşleşen KIMLIK" için uygun bir alanın kullanıldığından emin olmak üzere öznitelik eşlemelerini gözden geçirdiğinizden emin olun. Eşleşen KIMLIK görünen ad veya e-posta diğer adı olabilir. Eşleşen özellik boşsa veya Azure AD 'de bir grup için doldurulmamışsa, Grup ve üyeleri sağlanmadı.
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>Varsayılan erişim rolüne atanan kullanıcıları sağlama
-Galeriden bir uygulamadaki varsayılan role "varsayılan erişim" rolü denir. Geçmişte, bu role atanan kullanıcılar sağlanmadı ve [sağlama günlüklerinde](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) "etkin değil" olması nedeniyle atlanan olarak işaretlendi. 
+Galeriden bir uygulamadaki varsayılan role "varsayılan erişim" rolü denir. Geçmişte, bu role atanan kullanıcılar sağlanmadı ve [sağlama günlüklerinde](../reports-monitoring/concept-provisioning-logs.md) "etkin değil" olması nedeniyle atlanan olarak işaretlendi. 
 
 **04/16/2020 sonra oluşturulan yapılandırmaların sağlanması Için davranış:** Varsayılan erişim rolüne atanan kullanıcılar, diğer tüm rollerle aynı şekilde değerlendirilir. Varsayılan erişim atanmış bir Kullanıcı, "etkin değil" olarak atlanmaz. 
 
 **04/16/2020 öncesi oluşturulan yapılandırmaların sağlanması Için davranış:** Sonraki 3 ay boyunca, davranış bugün olduğu gibi devam edecektir. Varsayılan erişim rolüne sahip kullanıcılar, etkin olmayan şekilde atlanır. 2020 Temmuz 'dan sonra, davranış tüm uygulamalar için Tekdüzen olur. "Etkin değil" olması nedeniyle, varsayılan erişim rolüne sahip kullanıcıları sağlamayı atlayacağız. Bu değişiklik, hiçbir müşteri eylemi gerekmeden Microsoft tarafından yapılır. Bu değişiklikten sonra bile bu kullanıcıların atlanmasını sürdürmek istiyorsanız, lütfen kapsam dışı olduklarından emin olmak için uygun kapsam filtrelerini uygulayın veya kullanıcının atamasını kaldırmanız gerekir.  
 
-Bu değişiklikler hakkında sorularınız için lütfenprovisioningfeedback@microsoft.com
+Bu değişiklikler hakkında sorularınız için lütfen provisioningfeedback@microsoft.com
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

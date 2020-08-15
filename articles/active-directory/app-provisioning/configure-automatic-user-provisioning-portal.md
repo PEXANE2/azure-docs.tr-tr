@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781999"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234848"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
 Bu makalede, destekleyen uygulamalar için otomatik Kullanıcı hesabı sağlamayı ve sağlamayı kaldırmayı yönetmeye yönelik genel adımlar açıklanmaktadır. *Kullanıcı hesabı sağlama* , bir uygulamanın yerel kullanıcı profili deposundaki kullanıcı hesabı kayıtlarını oluşturma, güncelleştirme ve/veya devre dışı bırakma işlemidir. Çoğu bulut ve SaaS uygulaması kullanıcı rolünü ve izinlerini kullanıcının kendi yerel kullanıcı profili deposunda depolar ve bu tür bir Kullanıcı kaydının, çoklu oturum açma ve çalışma için Kullanıcı yerel deposunda bulunması *gerekir* . Otomatik Kullanıcı hesabı sağlama hakkında daha fazla bilgi için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md).
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD), Azure AD ile otomatik sağlama için etkinleştirilen binlerce önceden tümleştirilmiş uygulamayı içeren bir galersahiptir. [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesinde](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)uygulamanıza özgü sağlama kurulum öğreticisini bularak başlatmanız gerekir. Büyük olasılıkla, sağlama bağlantısı oluşturmak için hem uygulamayı hem de Azure AD 'yi yapılandırmaya yönelik adım adım yönergeler bulacaksınız.
+> Azure Active Directory (Azure AD), Azure AD ile otomatik sağlama için etkinleştirilen binlerce önceden tümleştirilmiş uygulamayı içeren bir galersahiptir. [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesinde](../saas-apps/tutorial-list.md)uygulamanıza özgü sağlama kurulum öğreticisini bularak başlatmanız gerekir. Büyük olasılıkla, sağlama bağlantısı oluşturmak için hem uygulamayı hem de Azure AD 'yi yapılandırmaya yönelik adım adım yönergeler bulacaksınız.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Portaldaki uygulamalarınızı bulma
 
@@ -83,6 +83,6 @@ Desteklenen özelleştirmeler şunlardır:
 
 Hazırlama işlemi bir uygulama için ilk kez etkinleştiriliyorsa, **sağlama durumunu** **Açık**olarak değiştirerek hizmeti açın. Bu değişiklik, Azure AD sağlama hizmeti 'nin bir başlangıç döngüsünü çalıştırmasına neden olur. **Kullanıcılar ve gruplar** bölümünde atanan kullanıcıları okur, hedef uygulamayı kendileri için sorgular ve ardından Azure AD **eşlemeleri** bölümünde tanımlanan sağlama eylemlerini çalıştırır. Bu işlem sırasında, sağlama hizmeti, hangi kullanıcı hesaplarının yönettiği hakkında önbelleğe alınmış verileri depolar, bu nedenle atama için kapsamda olmayan hedef uygulamalar içinde yönetilmeyen hesaplar, sağlama işlemlerinden etkilenmez. İlk döngüden sonra sağlama hizmeti, Kullanıcı ve Grup nesnelerini 40 dakikalık bir aralıkta otomatik olarak eşitler.
 
-Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı** olarak değiştirin. Bu durumda, Azure uygulamadaki hiçbir Kullanıcı veya Grup nesnesini oluşturmaz, güncelleştirmez veya kaldırmaz. Durumu yeniden **Açık** olarak değiştirin ve hizmet kaldığınız yerden gelir.
+Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı**  olarak değiştirin. Bu durumda, Azure uygulamadaki hiçbir Kullanıcı veya Grup nesnesini oluşturmaz, güncelleştirmez veya kaldırmaz. Durumu yeniden **Açık** olarak değiştirin ve hizmet kaldığınız yerden gelir.
 
-**Geçerli durumu temizle ve yeniden başlatma eşitlemesi** bir başlangıç döngüsünü tetikler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu, uygulamanız Şu anda karantinaya alındı veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerektiğinde yararlı olabilir. İlk döngüsünün değerlendirilmesi gereken nesne sayısı nedeniyle, tipik artımlı döngüden daha uzun sürdüğüne göz önünde unutmayın. [Burada](application-provisioning-when-will-provisioning-finish-specific-user.md)ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz. 
+**Geçerli durumu temizle ve yeniden başlatma eşitlemesi** bir başlangıç döngüsünü tetikler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu, uygulamanız Şu anda karantinaya alındı veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerektiğinde yararlı olabilir. İlk döngüsünün değerlendirilmesi gereken nesne sayısı nedeniyle, tipik artımlı döngüden daha uzun sürdüğüne göz önünde unutmayın. [Burada](application-provisioning-when-will-provisioning-finish-specific-user.md)ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz.

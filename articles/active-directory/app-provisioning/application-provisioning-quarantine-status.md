@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203027"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234762"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -34,7 +34,7 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 
 - Azure Portal, **Azure Active Directory**  >  **Denetim günlüklerine** gidin > **etkinliğe** filtre uygula: karantinaya alma ve karantina geçmişini gözden geçirme. Yukarıda açıklanan ilerleme çubuğundaki görünüm, sağlama işleminin şu anda karantinada olup olmadığını gösterir. denetim günlükleri, bir uygulamanın karantina geçmişini görmenizi sağlar. 
 
-- Sağlama işinin durumunu programlı bir şekilde almak için Microsoft Graph isteği [Al işini](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) kullanın:
+- Sağlama işinin durumunu programlı bir şekilde almak için Microsoft Graph isteği [Al işini](/graph/api/synchronization-synchronizationjob-get?tabs=http&view=graph-rest-beta) kullanın:
 
 ```microsoft-graph
         GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
@@ -52,15 +52,15 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 |---|---|
 |**SCIM uyumluluk sorunu:** Beklenen HTTP/200 Tamam yanıtı yerine bir HTTP/404 bulunamadı yanıtı döndürüldü. Bu durumda, Azure AD sağlama hizmeti hedef uygulamaya bir istek yaptı ve beklenmeyen bir yanıt aldı.|Uygulamanın kiracı URL 'sini belirtmesini gerektirip gerektirmediğini ve URL 'nin doğru olduğundan emin olmak için yönetici kimlik bilgileri bölümüne bakın. Bir sorun görmüyorsanız, hizmetin SCıM uyumlu olduğundan emin olmak için lütfen uygulama geliştiricisine başvurun. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Geçersiz kimlik bilgileri:** Hedef uygulamaya erişim yetkisi verme girişiminde, belirtilen kimlik bilgilerinin geçersiz olduğunu belirten hedef uygulamadan bir yanıt aldık.|Lütfen sağlama yapılandırma Kullanıcı arabiriminin yönetici kimlik bilgileri bölümüne gidin ve geçerli kimlik bilgileriyle erişime yeniden yetki verin. Uygulama Galeri 'de ise, gereken ek adımlar için uygulama yapılandırma öğreticisini gözden geçirin.|
-|**Yinelenen roller:** Salesforce ve Zendesk gibi belirli uygulamalardan içeri aktarılan roller benzersiz olmalıdır. |Azure portal uygulama [bildirimine](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) gidin ve yinelenen rolü kaldırın.|
+|**Yinelenen roller:** Salesforce ve Zendesk gibi belirli uygulamalardan içeri aktarılan roller benzersiz olmalıdır. |Azure portal uygulama [bildirimine](../develop/reference-app-manifest.md) gidin ve yinelenen rolü kaldırın.|
 
  Sağlama işinin durumunu almak için bir Microsoft Graph isteği, karantinaya alma işleminin aşağıdaki nedenini gösterir:
 
-- `EncounteredQuarantineException`geçersiz kimlik bilgilerinin sağlandığını belirtir. Sağlama Hizmeti, kaynak sistemle hedef sistem arasında bir bağlantı kuramıyor.
+- `EncounteredQuarantineException` geçersiz kimlik bilgilerinin sağlandığını belirtir. Sağlama Hizmeti, kaynak sistemle hedef sistem arasında bir bağlantı kuramıyor.
 
-- `EncounteredEscrowProportionThreshold`sağlamanın Emanet eşiğini aştığını gösterir. Bu durum, sağlama olaylarının %60 ' inden fazlası başarısız olduğunda meydana gelir.
+- `EncounteredEscrowProportionThreshold` sağlamanın Emanet eşiğini aştığını gösterir. Bu durum, sağlama olaylarının %60 ' inden fazlası başarısız olduğunda meydana gelir.
 
-- `QuarantineOnDemand`uygulamanızla ilgili bir sorun tespit ettiğimiz ve bunu el ile karantinaya ayarlamış olduğumuz anlamına gelir.
+- `QuarantineOnDemand` uygulamanızla ilgili bir sorun tespit ettiğimiz ve bunu el ile karantinaya ayarlamış olduğumuz anlamına gelir.
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Uygulamamı karantinaya alma Nasıl yaparım??
 
@@ -74,11 +74,10 @@ Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Uygulamanın sağ
 
 - Sağlama işini yeniden başlatmak için Azure portal kullanın. Uygulamanın **sağlama** sayfasında, **Ayarlar**' ın altında, **durumu temizle ve eşitlemeyi yeniden Başlat** ' ı seçin ve **sağlama durumunu** **Açık**olarak ayarlayın. Bu eylem, sağlama hizmetini tamamen yeniden başlatır ve bu işlem biraz zaman alabilir. Tam bir başlangıç döngüsünün yeniden çalışması için, escrows 'yi temizler, uygulamayı karantinadan kaldırır ve tüm filigranları temizler.
 
-- [Sağlama işini yeniden başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Et 'ları kaldırmayı seçebilirsiniz (karantina durumuna göre tahakkuk eden Emanet sayacını yeniden başlatmak için), karantinayı temizleyebilir (uygulamayı karantinadan kaldırmak için) veya filigranları temizleyebilirsiniz. Aşağıdaki isteği kullanın:
+- [Sağlama işini yeniden başlatmak](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Et 'ları kaldırmayı seçebilirsiniz (karantina durumuna göre tahakkuk eden Emanet sayacını yeniden başlatmak için), karantinayı temizleyebilir (uygulamayı karantinadan kaldırmak için) veya filigranları temizleyebilirsiniz. Aşağıdaki isteği kullanın:
  
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```
 
-"{İd}" öğesini uygulama KIMLIĞI değeriyle değiştirin ve "{JobId}" öğesini [eşitleme Işinin kimliğiyle](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal)değiştirin. 
-
+"{İd}" öğesini uygulama KIMLIĞI değeriyle değiştirin ve "{JobId}" öğesini [eşitleme Işinin kimliğiyle](/graph/api/resources/synchronization-configure-with-directory-extension-attributes?tabs=http&view=graph-rest-beta#list-synchronization-jobs-in-the-context-of-the-service-principal)değiştirin.

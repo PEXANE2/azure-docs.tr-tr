@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554344"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235987"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -38,15 +38,15 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | hizmet | global | 1-50 | Alfasayısal ve kısa çizgi.<br><br>Mektupla başlayın ve alfasayısal ile bitemez. |
 > | hizmet/API 'ler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/sorunlar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/sorunlar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/ekler | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/açıklamalar | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/işlemler | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/işlemler/Etiketler | çalışmasını | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/yayınlar | API | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
-> | hizmet/API 'ler/şemalar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API/tagDescriptions | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/Etiketler | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/işlemler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/işlemler/Etiketler | operation | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/yayınlar | api | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
+> | hizmet/API 'ler/şemalar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API/tagDescriptions | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/Etiketler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API-sürüm-ayarlar | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/authorizationServers | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/arka uçlar | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
@@ -185,7 +185,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | Kapsayıcı grupları | kaynak grubu | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
+> | Kapsayıcı grupları | kaynak grubu | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık kısa çizgiler kullanılamaz. |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
@@ -322,7 +322,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | sunucular/firewallRules | larý | 1-128 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/virtualNetworkRules | larý | 1-128 | Alfasayısal karakterler ve kısa çizgiler. |
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
@@ -392,6 +392,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
+> | actionGroups | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`/` <br><br>Boşluk veya nokta ile bitemez.  |
 > | bileşenleri | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`%&\?/` <br><br>Boşluk veya nokta ile bitemez.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
@@ -542,7 +543,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | çözümler | çalışma alanı | YOK | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
+> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -652,7 +653,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | storageAccounts/managementPolicies | depolama hesabı |  | Olmalıdır `default` . |
 > | blob | kapsayıcı | 1-1024 | Herhangi bir URL karakteri, büyük/küçük harfe duyarlı |
 > | kuyruk | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
-> | tablo | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | table | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 
@@ -686,15 +687,16 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | lý | kaynak grubu | 1-90 | Şu kullanılamıyor:<br>`'<>%&:\?/#` |
-> | ortamlar/accessPolicies | environment | 1-90 | Şu kullanılamıyor:<br> `'<>%&:\?/#` |
-> | ortamlar/eventSources | environment | 1-90 | Şu kullanılamıyor:<br>`'<>%&:\?/#` |
-> | ortamlar/Referencedataset 'ler | environment | 3-63 | Alfasayısal karakterler |
+> | ortamlar/accessPolicies | ortam | 1-90 | Şu kullanılamıyor:<br> `'<>%&:\?/#` |
+> | ortamlar/eventSources | ortam | 1-90 | Şu kullanılamıyor:<br>`'<>%&:\?/#` |
+> | ortamlar/Referencedataset 'ler | ortam | 3-63 | Alfasayısal karakterler |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
+> | sertifikalar | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`/` <br><br>Boşluk veya nokta ile bitemez.  | 
 > | serverfarms | kaynak grubu | 1-40 | Alfasayısal karakterler ve kısa çizgiler. |
 > | Siteler | global | 2-60 | Alfasayısal ve kısa çizgi içerir.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | siteler/yuvalar | Site | 2-59 | Alfasayısal karakterler ve kısa çizgiler. |

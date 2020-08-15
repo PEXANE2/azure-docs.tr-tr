@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445643"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235715"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -50,7 +50,7 @@ Azure AD, Uygulama Galerisi menüsünde sağlanan şablonları kullanarak herhan
 
 Otomatik olarak sağlamak istediğiniz uygulamalar için uygun lisanslara sahip olmanız gerekir. Uygulamaya atanan kullanıcıların uygulama rolleri için uygun lisanslara sahip olup olmadığını uygulama sahipleriyle tartışın. Azure AD, rollere göre otomatik sağlamayı yönetirse, Azure AD 'de atanan roller uygulama lisanslarına göre hizalanmalıdır. Uygulamaya ait yanlış lisanslar, bir kullanıcının sağlanması/güncelleştirilmesi sırasında hatalara neden olabilir.
 
-### <a name="terms"></a>Koşullar
+### <a name="terms"></a>Terimler
 
 Bu makale aşağıdaki terimleri kullanır:
 
@@ -70,7 +70,7 @@ Bu makale aşağıdaki terimleri kullanır:
 | - | - |
 | İsteğe bağlı web seminerleri| [Kurumsal uygulamalarınızı Azure AD ile yönetme](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Azure AD 'nin, kurumsal SaaS uygulamalarınıza yönelik SSO ve erişim denetimi için en iyi yöntemleri almanıza nasıl yardımcı olabileceğini öğrenin. |
 | Videolar| [Etkin Azure dizininde kullanıcı hazırlama nedir?](https://youtu.be/_ZjARPpI6NI) <br> [Active Directory 'de Kullanıcı hazırlama nasıl dağıtılır?](https://youtu.be/pKzyts6kfrw) <br> [Salesforce 'ı Azure AD ile tümleştirme: Kullanıcı sağlamasını otomatikleştirme](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
-| Çevrimiçi kurslar| SkillUp çevrimiçi: [kimlikleri yönetme](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Azure AD 'yi birçok SaaS uygulaması ile tümleştirmeyi ve bu uygulamalara Kullanıcı erişimini güvenli hale getirme hakkında bilgi edinin. |
+| Çevrimiçi kurslar| SkillUp çevrimiçi:  [kimlikleri yönetme](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Azure AD 'yi birçok SaaS uygulaması ile tümleştirmeyi ve bu uygulamalara Kullanıcı erişimini güvenli hale getirme hakkında bilgi edinin. |
 | Kitaplar| [Web uygulamaları için Azure Active Directory (Geliştirici Başvurusu) 1. sürümde modern kimlik doğrulaması](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Bu yeni ortamlar için Active Directory kimlik doğrulama çözümleri oluşturmaya yönelik yetkili, derinlemesine bir kılavuzdur. |
 | Öğreticiler| [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticilerin listesine](../saas-apps/tutorial-list.md)bakın. |
 | SSS| Otomatik Kullanıcı sağlama hakkında [sık sorulan sorular](../app-provisioning/user-provisioning.md) |
@@ -157,7 +157,7 @@ Otomatik sağlamayı etkinleştirmek ve yapılandırmak için gereken gerçek ad
 
 Aksi takdirde, aşağıdaki adımları izleyin:
 
-1. Önceden tümleştirilmiş Kullanıcı sağlama Bağlayıcısı için [bir Istek oluşturun](../develop/howto-app-gallery-listing.md) . Ekibimiz, SCıM destekliyorsa, uygulamanızı platformumuza eklemek için sizinle ve uygulama geliştiricimize çalışacağız.
+1. Önceden tümleştirilmiş Kullanıcı sağlama Bağlayıcısı için [bir Istek oluşturun](../azuread-dev/howto-app-gallery-listing.md) . Ekibimiz, SCıM destekliyorsa, uygulamanızı platformumuza eklemek için sizinle ve uygulama geliştiricimize çalışacağız.
 
 1. Uygulama için [Byoa SCıM](../app-provisioning/use-scim-to-provision-users-and-groups.md) genel Kullanıcı sağlama desteğini kullanın. Bu, Azure AD 'nin uygulamayı önceden tümleşik sağlama Bağlayıcısı olmadan uygulamaya sağlaması için bir gereksinimdir.
 

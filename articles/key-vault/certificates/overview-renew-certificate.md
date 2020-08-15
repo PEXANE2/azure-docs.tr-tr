@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224569"
+ms.locfileid: "88236072"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Azure Key Vault sertifikası yenileme hakkında
 
@@ -64,7 +64,7 @@ Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanı
   1 aylık geçerliliği olan bir sertifika oluşturun ve ardından %1 ' de döndürme için yaşam süresi eylemini ayarlayın. Bu ayar sertifikayı 7,2 saat içinde döndürür.
   
 * Etiketler, sertifikanın otomatik yenilenmesinin ardından çoğaltılacaktır mi?
-  Hayır, Kullanıcı etiketlerin kendisini el ile kopyamadıkları takdirde Etiketler çoğaltılmaz.
+  Evet, Etiketler otomatik yenilemeyle sonra çoğaltılır.
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 *   [Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme](how-to-integrate-certificate-authority.md)

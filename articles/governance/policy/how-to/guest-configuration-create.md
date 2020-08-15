@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045136"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236548"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -106,9 +106,9 @@ Nedenler özelliği, bir makine uyumsuz olduğunda bilgilerin nasıl sunulduğun
 Hizmet tarafından Özellikler **kodu** ve **tümceciği** bekleniyor. Özel bir kaynak yazarken, **ifadenin**değeri olarak kaynağın uyumlu olmadığı bir nedenden dolayı göstermek istediğiniz metni (genellikle stdout) ayarlayın. **Kodun** , denetimi yapmak için kullanılan kaynakla ilgili bilgileri açıkça görüntülemesi için özel biçimlendirme gereksinimleri vardır. Bu çözüm, Konuk yapılandırmasını Genişletilebilir hale getirir. Çıktı, **tümcecik** özelliği için bir dize değeri olarak döndürülemedikçe, herhangi bir komut çalıştırılabilir.
 
 - **Kod** (dize): kaynağın adı, tekrarlanması ve bir tanımlayıcı olarak boşluk olmayan kısa bir ad. Bu üç değer, boşluk olmadan iki nokta ile sınırlandırılmalıdır.
-  - Örnek şöyle olabilir`registry:registry:keynotpresent`
+  - Örnek şöyle olabilir `registry:registry:keynotpresent`
 - **Tümcecik** (dize): ayarın neden uyumlu olmadığını açıklamak için okunabilir metin.
-  - Örnek şöyle olabilir`The registry key $key is not present on the machine.`
+  - Örnek şöyle olabilir `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -307,6 +307,8 @@ Konuk yapılandırması özel ilke paketi oluşturulduktan ve karşıya yüklend
 - **Sürüm**: ilke sürümü.
 - **Yol**: ilke tanımlarının oluşturulduğu hedef yol.
 - **Platform**: Konuk yapılandırma ilkesi ve içerik paketi için hedef platform (Windows/Linux).
+- **Etiket** , ilke tanımına bir veya daha fazla etiket filtresi ekler
+- **Kategori** , ilke tanımındaki kategori meta verileri alanını ayarlar
 
 Aşağıdaki örnek, özel bir ilke paketinden belirtilen yolda ilke tanımlarını oluşturur:
 
@@ -323,19 +325,11 @@ New-GuestConfigurationPolicy `
 
 Aşağıdaki dosyalar tarafından oluşturulmuştur `New-GuestConfigurationPolicy` :
 
-- **ÜzerindeauditIfNotExists.js**
-- **ÜzerindedeployIfNotExists.js**
-- **ÜzerindeInitiative.js**
+- ** ÜzerindeauditIfNotExists.js**
+- ** ÜzerindedeployIfNotExists.js**
+- ** ÜzerindeInitiative.js**
 
 Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
-
-> [!Note]
-> En son Konuk yapılandırma modülü yeni bir parametre içerir:
-> - **Etiket** , ilke tanımına bir veya daha fazla etiket filtresi ekler
->   - [Etiketleri kullanarak Konuk yapılandırma Ilkelerini filtreleme](#filtering-guest-configuration-policies-using-tags)bölümüne bakın.
-> - **Kategori** , ilke tanımındaki kategori meta verileri alanını ayarlar
->   - Parametresi dahil edilmazsa kategori, Konuk yapılandırması varsayılan olarak ayarlanır.
-> Bu özellikler önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.1 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Son olarak, cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` .
 
@@ -377,9 +371,6 @@ New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Etiketleri kullanarak Konuk yapılandırma ilkelerini filtreleme
-
-> [!Note]
-> Bu özellik önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.1 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Konuk yapılandırma modülündeki cmdlet 'ler tarafından oluşturulan ilke tanımları, isteğe bağlı olarak etiketler için bir filtre içerebilir. Öğesinin **Tag** parametresi, `New-GuestConfigurationPolicy` tek bir etiket dizesi içeren bir diyez tabloları dizisini destekler. Etiketler, `If` ilke tanımının bölümüne eklenir ve bir ilke ataması tarafından değiştirilemez.
 
@@ -439,10 +430,6 @@ New-GuestConfigurationPolicy
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Üçüncü taraf araçlarla Konuk yapılandırmasını genişletme
-
-> [!Note]
-> Bu özellik önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.3 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
-> Version 1.20.3 sürümünde bu özellik yalnızca Windows makinelerini denetleyen ilke tanımları için kullanılabilir
 
 Konuk yapılandırması için yapıt paketleri, üçüncü taraf araçları içerecek şekilde genişletilebilir.
 Konuk yapılandırmasını genişletme iki bileşenin geliştirilmesini gerektirir.
@@ -574,11 +561,6 @@ New-GuestConfigurationPackage `
 - **contentHash**: Bu özellik, cmdlet 'i tarafından otomatik olarak güncelleştirilir `New-GuestConfigurationPolicy` . Tarafından oluşturulan paketin karma değeridir `New-GuestConfigurationPackage` . Özelliği, yayımladığınız dosya için doğru olmalıdır `.zip` . Yalnızca **contentUri** özelliği güncelleştirilirse, uzantı içerik paketini kabul etmez.
 
 Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.
-
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows grup ilkesi içeriğini Azure Ilke Konuk yapılandırması 'na dönüştürme
-
-Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen durum yapılandırması sözdiziminin bir uygulamasıdır. DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı. Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için [hızlı başlangıç: Grup ILKESI DSC 'ye dönüştürme](/powershell/scripting/dsc/quickstarts/gpo-quickstart)makalesine bakın.
-İçerik dönüştürüldükten sonra, bir paket oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olur.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>İsteğe bağlı: Konuk yapılandırma paketleri Imzalanıyor
 

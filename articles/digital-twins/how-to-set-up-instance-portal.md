@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009690"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235001"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -127,6 +127,9 @@ Aşağıdaki *API Izinleri iste* sayfasında *Kuruluşumun kullandığı API* 'l
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Azure dijital TWINS 'i gösteren ' API Izinleri ıste ' sayfasının arama sonucunun görünümü":::
 
+>[!NOTE]
+> Hizmetin önceki genel önizlemesinden (2020 Temmuz 'dan önce) mevcut bir Azure dijital TWINS örneğiniz varsa, bunun yerine *Azure akıllı boşluklar hizmeti* 'ne bakmanız gerekir. Bu, aynı API kümesi için daha eski bir addır ve bu adımın ötesinde deneyiminizi değiştirmez.
+
 Ardından, bu API 'Lere verilecek izinleri seçersiniz. **Oku (1)** iznini genişletin ve bu uygulama kayıt okuyucuyu ve yazıcı izinlerini vermek için *Read. Write* yazan kutusunu işaretleyin.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Azure Digital TWINS API 'Leri için ' Read. Write ' izinleri seçilerek ' API Izinleri ıste ' sayfasının görünümü":::
@@ -139,7 +142,7 @@ Bittiğinde *Izinleri Ekle* düğmesine basın.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure dijital TWINS için ' okuma/yazma erişimi ' gösteren Azure AD uygulama kaydı için API izinlerinin Portal görünümü":::
 
-Ayrıca, API izinleri eklenirken Azure dijital TWINS bilgileriyle otomatik olarak güncellenen Azure Digital TWINS ile *ilgilimanifest.jsüzerinde*uygulama kaydı içinde olan bağlantıyı doğrulayabilirsiniz.
+Ayrıca, API izinleri eklenirken Azure dijital TWINS bilgileriyle otomatik olarak güncellenen Azure Digital TWINS ile * ilgilimanifest.jsüzerinde*uygulama kaydı içinde olan bağlantıyı doğrulayabilirsiniz.
 
 Bunu yapmak için menüden *bildirim* ' ı seçerek uygulama kaydının bildirim kodunu görüntüleyin. Kod penceresinin en altına kaydırın ve altındaki bu alanları bulun `requiredResourceAccess` . Değerler aşağıdaki ekran görüntüsünde olanlarla eşleşmelidir:
 

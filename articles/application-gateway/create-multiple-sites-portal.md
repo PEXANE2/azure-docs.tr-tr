@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290151"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236196"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak birden çok Web sitesini barındırmak için bir uygulama ağ geçidi oluşturma ve yapılandırma
 
@@ -33,9 +33,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure portal şurada oturum açın:[https://portal.azure.com](https://portal.azure.com)
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
@@ -203,7 +203,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Arka uç sunucuları ekleme](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 7. *FabrikamVM* ve arabirimini *fabrikamPool*öğesine eklemek için tekrarlayın.
 
 Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
@@ -237,7 +237,7 @@ Kaynak grubunu kaldırmak için:
 1. Azure portal sol menüsünde **kaynak grupları**' nı seçin.
 2. **Kaynak grupları** sayfasında, listede **myResourceGroupAG** araması yapın ve ardından seçin.
 3. **Kaynak grubu sayfasında**, **kaynak grubunu sil**' i seçin.
-4. **Kaynak grubu adını yazmak** için *MyResourceGroupAG* girin ve **Sil** ' i seçin.
+4. **Kaynak grubu adını yazmak** için *MyResourceGroupAG* girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

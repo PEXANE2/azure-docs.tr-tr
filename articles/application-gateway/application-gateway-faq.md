@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810012"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236123"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -259,7 +259,7 @@ Yalnızca özel IP erişimi için örnek NSG yapılandırması: ![ yalnızca öz
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Application Gateway hangi sertifikaları destekler?
 
-Application Gateway, otomatik olarak imzalanan sertifikaları, sertifika yetkilisi (CA) sertifikaları, Genişletilmiş Doğrulama (EV) sertifikaları ve joker karakter sertifikalarını destekler.
+Application Gateway, otomatik olarak imzalanan sertifikalar, sertifika yetkilisi (CA) sertifikaları, Genişletilmiş Doğrulama (EV) sertifikaları, çok etki alanı (SAN) sertifikaları ve joker karakter sertifikaları destekler.
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Hangi şifreleme paketleri Application Gateway destekler?
 
@@ -346,7 +346,7 @@ Sertifika yetkilisi (CA) tarayıcı üyeleri son yayınlanan raporlar, müşteri
 
 Sektörün uyumluluk gereksinimlerine göre, CA satıcıları uyumlu olmayan CA 'Ları iptal etmeyi ve müşterilere sertifikalarının yeniden verilmesini gerektiren uyumlu CA 'ları vermeyi başladık.Microsoft, Azure hizmetlerine yönelik olası etkiyi en aza indirmek için bu satıcılarla yakından işbirliği yapıyor, **ancak "kendi sertifikasını getir" (BYOC) senaryolarında kullanılan kendi kendine verilen sertifika veya sertifikalarınız, beklenmedik şekilde iptal edilmesinden hala devam**etmektedir.
 
-Uygulamanız tarafından kullanılan sertifikaların iptal edilip edilmediğini denetlemek için, [DigiCert duyurusu](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) ve [sertifika iptal izleyici](https://misissued.com/#revoked)başvurusu. Sertifikalarınız iptal edildiyse veya iptal edildiğinde, uygulamalarınızda kullanılan CA satıcısından yeni sertifikalar istemeniz gerekir. Sertifikaların beklenmedik şekilde iptal edildiği veya iptal edilmiş bir sertifikayı güncelleştirme nedeniyle, uygulamanızın kullanılabilirliğinin kesintiye uğramasını önlemek için, BYOC 'yi destekleyen çeşitli Azure hizmetlerinin düzeltme bağlantıları için lütfen Azure Updates gönderimize bakın:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+Uygulamanız tarafından kullanılan sertifikaların iptal edilip edilmediğini denetlemek için, [DigiCert duyurusu](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) ve [sertifika iptal izleyici](https://misissued.com/#revoked)başvurusu. Sertifikalarınız iptal edildiyse veya iptal edildiğinde, uygulamalarınızda kullanılan CA satıcısından yeni sertifikalar istemeniz gerekir. Sertifikaların beklenmedik şekilde iptal edildiği veya iptal edilmiş bir sertifikayı güncelleştirme nedeniyle, uygulamanızın kullanılabilirliğinin kesintiye uğramasını önlemek için, BYOC 'yi destekleyen çeşitli Azure hizmetlerinin düzeltme bağlantıları için lütfen Azure Updates gönderimize bakın: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
 Application Gateway belirli bilgiler için aşağıya bakın-
 

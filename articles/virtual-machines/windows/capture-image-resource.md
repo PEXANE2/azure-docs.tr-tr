@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284651"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236616"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure’da genelleştirilmiş bir VM’nin yönetilen görüntüsünü oluşturma
 
@@ -39,13 +39,15 @@ Windows VM 'nizi genelleştirmek için aşağıdaki adımları izleyin:
 
 1. Windows sanal makinenizde oturum açın.
    
-2. Yönetici olarak bir komut Istemi penceresi açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe` .
+2. Yönetici olarak bir komut Istemi penceresi açın. 
+
+3. Panther dizinini (C:\Windows\Panther) silin. Ardından, dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe` .
    
-3. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimini (OOBE) girin** ve **generalize** onay kutusunu seçin.
+4. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimini (OOBE) girin** ve **generalize** onay kutusunu seçin.
    
-4. **Kapalı seçenekleri**Için, **kapanıyor**' ı seçin.
+5. **Kapalı seçenekleri**Için, **kapanıyor**' ı seçin.
    
-5. **Tamam**’ı seçin.
+6. **Tamam**’ı seçin.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
 

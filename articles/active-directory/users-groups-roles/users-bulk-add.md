@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423618"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236565"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -33,6 +33,9 @@ Yönetim Portalı 'nda kullanıcıları toplu olarak oluşturmak için, genel y�
 Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı olması için toplu karşıya yükleme CSV şablonunu indirin ve girin. İndirmediğiniz CSV şablonu şu örnekteki gibi görünebilir:
 
 ![Her satır ve sütunun amacını ve değerlerini açıklayan karşıya yükleme ve çağrı aşımları için elektronik tablo](./media/users-bulk-add/create-template-example.png)
+
+> [!WARNING]
+> CSV şablonuna yalnızca bir girdi eklemeye çalışırsanız, satır 3 ' ü korumanız ve yeni girdinizi satır 4 ' e eklemeniz gerekir. 
 
 ### <a name="csv-template-structure"></a>CSV şablonu yapısı
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829705"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235477"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -156,7 +156,7 @@ SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsa
 
 Azure AD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken bu genel yönergeleri izleyin:
 
-* `id`Tüm kaynaklar için gerekli bir özelliktir. Kaynak döndüren her yanıt, sıfır üye hariç olmak üzere her bir kaynağın bu özelliğe sahip olduğundan emin olmalıdır `ListResponse` .
+* `id` Tüm kaynaklar için gerekli bir özelliktir. Kaynak döndüren her yanıt, sıfır üye hariç olmak üzere her bir kaynağın bu özelliğe sahip olduğundan emin olmalıdır `ListResponse` .
 * Bir sorgu/filtre isteğine yanıt her zaman bir olmalıdır `ListResponse` .
 * Gruplar isteğe bağlıdır, ancak yalnızca SCıM uygulamasının yama isteklerini desteklemesi durumunda desteklenir.
 * Bu, tüm kaynağı yama yanıtına dahil etmek için gerekli değildir.
@@ -333,7 +333,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *GET/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Yanıt
+##### <a name="response"></a><a name="response-2"></a>Yanıtıyla
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -374,7 +374,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users al? Filter = userName EQ "varolmayan kullanıcı"*
 
-##### <a name="response"></a><a name="response-3"></a>Yanıt
+##### <a name="response"></a><a name="response-3"></a>Yanıtıyla
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -411,7 +411,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Yanıt
+##### <a name="response"></a><a name="response-4"></a>Yanıtıyla
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -455,7 +455,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Yanıt
+##### <a name="response"></a><a name="response-5"></a>Yanıtıyla
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -504,7 +504,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Yanıt
+##### <a name="response"></a><a name="response-14"></a>Yanıtıyla
 
 ```json
 {
@@ -544,7 +544,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users/5171a35d82074e068ce2 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-6"></a>Yanıt
+##### <a name="response"></a><a name="response-6"></a>Yanıtıyla
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -571,7 +571,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Yanıt
+##### <a name="response"></a><a name="response-7"></a>Yanıtıyla
 
 *HTTP/1.1 201 oluşturuldu*
 ```json
@@ -596,7 +596,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1 alın*
 
-##### <a name="response"></a><a name="response-8"></a>Yanıt
+##### <a name="response"></a><a name="response-8"></a>Yanıtıyla
 *HTTP/1.1 200 TAMAM*
 ```json
 {
@@ -617,7 +617,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 ##### <a name="request"></a><a name="request-9"></a>İstek
 */Groups al? excludedAttributes = Members&Filter = displayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Yanıt
+##### <a name="response"></a><a name="response-9"></a>Yanıtıyla
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -657,7 +657,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Yanıt
+##### <a name="response"></a><a name="response-10"></a>Yanıtıyla
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -680,7 +680,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Yanıt
+##### <a name="response"></a><a name="response-11"></a>Yanıtıyla
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -703,7 +703,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Yanıt
+##### <a name="response"></a><a name="response-12"></a>Yanıtıyla
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -713,7 +713,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/cdb1ce18f65944079d37 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-13"></a>Yanıt
+##### <a name="response"></a><a name="response-13"></a>Yanıtıyla
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -751,7 +751,7 @@ Azure AD sağlama hizmeti şu anda AzureActiveDirectory ve AzureActiveDirectoryD
 
 Şemanızı tasarladıktan ve Azure AD SCıM uygulamasını anladığınıza göre, SCıM uç noktanızı geliştirmeye başlamanızı sağlayabilirsiniz. Sıfırdan başlamak ve uygulamayı tamamen kendi kendinize oluşturmak yerine, SCıM topluluğu tarafından yayımlanan bir dizi açık kaynaklı SCıM kitaplıklarını kullanabilirsiniz.
 
-Azure AD sağlama ekibi tarafından yayımlanan açık kaynaklı .NET Core [başvuru kodu](https://aka.ms/SCIMReferenceCode) , geliştirmeye başlayabilmenizi sağlayan bir kaynaktır. SCıM uç noktanızı oluşturduktan sonra test etmek isteyeceksiniz. Başvuru kodunun bir parçası olarak verilen [Postman testleri](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) koleksiyonunu kullanabilir veya [yukarıda](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)belirtilen örnek istekler/yanıtlar üzerinden çalıştırabilirsiniz.  
+Azure AD sağlama ekibi tarafından yayımlanan açık kaynaklı .NET Core [başvuru kodu](https://aka.ms/SCIMReferenceCode) , geliştirmeye başlayabilmenizi sağlayan bir kaynaktır. SCıM uç noktanızı oluşturduktan sonra test etmek isteyeceksiniz. Başvuru kodunun bir parçası olarak verilen [Postman testleri](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) koleksiyonunu kullanabilir veya [yukarıda](#user-operations)belirtilen örnek istekler/yanıtlar üzerinden çalıştırabilirsiniz.  
 
    > [!Note]
    > Başvuru kodu, SCıM uç noktanızı oluşturmaya başlamanıza ve "olduğu gıbı" sağlanmaya yardımcı olmak için tasarlanmıştır. Topluluk katkılarına, kodu oluşturmaya ve tutmaya yardımcı olmak için hoş geldiniz.
@@ -796,10 +796,10 @@ SCıM hizmeti, kök sertifika yetkilisinin aşağıdaki adlardan biri olduğu bi
 
 .NET Core SDK, geliştirme sırasında kullanılabilecek bir HTTPS geliştirme sertifikası içerir, sertifika ilk çalıştırma deneyiminin bir parçası olarak yüklenir. ASP.NET Core Web uygulamasını nasıl çalıştırdığınıza bağlı olarak, farklı bir bağlantı noktasını dinler:
 
-* Microsoft. SCıM. WebHostSample:https://localhost:5001
-* IIS Express:https://localhost:44359/
+* Microsoft. SCıM. WebHostSample: https://localhost:5001
+* IIS Express: https://localhost:44359/
 
-ASP.NET Core ' de HTTPS hakkında daha fazla bilgi için aşağıdaki bağlantıyı kullanın: [ASP.NET Core https 'Yi zorla](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+ASP.NET Core ' de HTTPS hakkında daha fazla bilgi için aşağıdaki bağlantıyı kullanın: [ASP.NET Core https 'Yi zorla](/aspnet/core/security/enforcing-ssl)
 
 ### <a name="handling-endpoint-authentication"></a>Uç nokta kimlik doğrulamasını işleme
 
@@ -1168,12 +1168,12 @@ Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tar
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>5. Adım: uygulamanızı Azure AD Uygulama Galerisi 'nde yayımlama
 
-Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](../develop/howto-app-gallery-listing.md)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](../saas-apps/tutorial-list.md) yayınlama konusunda sizinle birlikte çalışacaktır. 
+Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](../azuread-dev/howto-app-gallery-listing.md)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](../saas-apps/tutorial-list.md) yayınlama konusunda sizinle birlikte çalışacaktır. 
 
 ### <a name="gallery-onboarding-checklist"></a>Galeri ekleme denetim listesi
 Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağıtım deneyimine sahip olduğundan emin olmak için aşağıdaki denetim listesini izleyin. Bu bilgiler, galeriye ekleme sırasında sizin için toplanacaktır. 
 > [!div class="checklist"]
-> * [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) Kullanıcı ve grup uç noktasını destekleme (yalnızca bir tane gereklidir ancak her ikisi de önerilir)
+> * [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) Kullanıcı ve grup uç noktasını destekleme (yalnızca bir tane gereklidir ancak her ikisi de önerilir)
 > * Her kiracı için saniyede en az 25 istek desteklenir (gerekli)
 > * Mühendisler için mühendislik ve destek kişileri oluşturun müşteri galerisini ekleme (gerekli)
 > * uygulamanız için 3 süresi dolan test kimlik bilgileri (gerekli)

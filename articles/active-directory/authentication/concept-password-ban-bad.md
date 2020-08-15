@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050866"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235307"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Parola korumasını Azure Active Directory kullanarak kötü parolaları kaldırın
 
 Birçok güvenlik kılavuzu, aynı parolayı birden fazla yerde kullanmanıza, karmaşık hale getirmek ve *Password123*gibi basit parolalardan kaçınmanızı önerir. Kullanıcılarınıza [parolaların nasıl seçlenebileceğine ilişkin yönergeler](https://www.microsoft.com/research/publication/password-guidance)sağlayabilirsiniz, ancak zayıf veya güvenli olmayan parolalar genellikle hala kullanılır. Azure AD parola koruması, bilinen zayıf parolaları ve bunların türevlerini algılar ve engeller ve ayrıca kuruluşunuza özgü ek zayıf terimleri engelleyebilir.
 
-Azure AD parola koruması ile, varsayılan genel yasaklanmış parola listeleri tüm bulut kullanıcılarına otomatik olarak uygulanır. Kendi iş ve güvenlik gereksinimlerinizi desteklemek için girişleri özel yasaklanmış bir parola listesinde tanımlayabilirsiniz. Kullanıcılar parolalarını değiştirdiğinde veya sıfırlarsam, bu yasaklanmış parola listeleri, güçlü parolaların kullanımını zorlamak üzere denetlenir.
+Azure AD parola koruması ile, varsayılan genel yasaklanmış parola listeleri bir Azure AD kiracısındaki tüm kullanıcılara otomatik olarak uygulanır. Kendi iş ve güvenlik gereksinimlerinizi desteklemek için girişleri özel yasaklanmış bir parola listesinde tanımlayabilirsiniz. Kullanıcılar parolalarını değiştirdiğinde veya sıfırlarsam, bu yasaklanmış parola listeleri, güçlü parolaların kullanımını zorlamak üzere denetlenir.
 
 Yalnızca Azure AD parola koruması tarafından zorlanan güçlü parolalara güvenmek üzere [azure Multi-Factor Authentication](concept-mfa-howitworks.md)gibi ek özellikler kullanmanız gerekir. Oturum açma olaylarınız için birden çok güvenlik katmanını kullanma hakkında daha fazla bilgi için, [PA $ $Word bunun önemi yoktur](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
@@ -37,7 +37,7 @@ Azure AD Kimlik Koruması takım, Azure AD güvenlik telemetri verilerini sürek
 
 Bir Azure AD kiracısındaki herhangi bir kullanıcı için bir parola değiştirildiğinde veya sıfırlandığında, parolanın gücünü doğrulamak için genel yasaklanmış parola listesinin geçerli sürümü kullanılır. Bu doğrulama denetimi, tüm Azure AD müşterileri için daha güçlü parolalara neden olur.
 
-Global yasaklanmış parola listesi, bir Azure AD kiracısındaki tüm bulut kullanıcılarına otomatik olarak uygulanır. Etkinleştirilecek veya yapılandırılacak bir şey yok ve devre dışı bırakılamaz.
+Genel yasaklanmış parola listesi, bir Azure AD kiracısındaki tüm kullanıcılara otomatik olarak uygulanır. Etkinleştirilecek veya yapılandırılacak bir şey yok ve devre dışı bırakılamaz. Bu genel yasaklanmış parola listesi kullanıcılara Azure AD aracılığıyla kendi parolalarını değiştirdiklerinde veya sıfırlarlarsa uygulanır.
 
 > [!NOTE]
 > Cyber-Dolandırıcılar, yaygın zayıf parolaları ve değişimleri belirlemek için saldırılarına karşı benzer stratejileri de kullanır. Microsoft, güvenliği artırmak için genel yasaklanmış parola listesinin içeriğini yayımlamaz.
@@ -99,7 +99,7 @@ Global yasaklanmış listesi bazı üçüncü taraf toplu listelerine karşıla�
 
 ## <a name="on-premises-hybrid-scenarios"></a>Şirket içi karma senaryolar
 
-Birçok kuruluşun şirket içi Active Directory Domain Services (AD DS) ortamları içeren bir karma kimlik modeli vardır. Azure AD parola korumasının güvenlik avantajlarını AD DS ortamınıza uzatmak için, bileşenleri şirket içi sunucularınıza yükleyebilirsiniz. Bu aracılar, şirket içi AD DS ortamındaki parola değiştirme olaylarını yalnızca bulutta bulunan kullanıcılarla aynı parola ilkesiyle uyum sağlamak için gerektirir.
+Birçok kuruluşun şirket içi Active Directory Domain Services (AD DS) ortamları içeren bir karma kimlik modeli vardır. Azure AD parola korumasının güvenlik avantajlarını AD DS ortamınıza uzatmak için, bileşenleri şirket içi sunucularınıza yükleyebilirsiniz. Bu aracılar, Azure AD ile aynı parola ilkesiyle uyum sağlamak için şirket içi AD DS ortamında parola değiştirme olayları gerektirir.
 
 Daha fazla bilgi için bkz. [Azure AD parola korumasını AD DS Için zorlama](concept-password-ban-bad-on-premises.md).
 

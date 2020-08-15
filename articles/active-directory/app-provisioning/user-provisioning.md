@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 56243e4d754f33b17238b64df2ba56ade162b3a2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163790"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235409"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama nedir?
 
@@ -59,7 +59,7 @@ Azure AD, birçok popüler SaaS uygulaması ve insan kaynakları sistemi için �
 
    ![Salesforce logosu](./media/user-provisioning/gallery-app-logos.png)
 
-   Sağlama için yeni bir uygulama istemek istiyorsanız [uygulamanızın uygulama galerimiz ile tümleştirmesini](../develop/howto-app-gallery-listing.md)isteyebilirsiniz. Bir Kullanıcı sağlama isteği için uygulamanın SCıM ile uyumlu bir uç noktaya sahip olmasını gerektiririz. Uygulamayı platformumuza hızlı bir şekilde sunabilmeniz için lütfen uygulama satıcısının SCıM standardını izlediğinden emin olun.
+   Sağlama için yeni bir uygulama istemek istiyorsanız [uygulamanızın uygulama galerimiz ile tümleştirmesini](../azuread-dev/howto-app-gallery-listing.md)isteyebilirsiniz. Bir Kullanıcı sağlama isteği için uygulamanın SCıM ile uyumlu bir uç noktaya sahip olmasını gerektiririz. Uygulamayı platformumuza hızlı bir şekilde sunabilmeniz için lütfen uygulama satıcısının SCıM standardını izlediğinden emin olun.
 
 * **SCıM 2,0 ' i destekleyen uygulamalar**. SCıM 2,0 tabanlı kullanıcı yönetimi API 'Leri uygulayan uygulamaları genel olarak bağlama hakkında daha fazla bilgi için bkz. [SCIM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](use-scim-to-provision-users-and-groups.md).
 

@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905355"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235254"
 ---
 # <a name="get-started-with-storage-explorer"></a>Depolama Gezgini ile çalışmaya başlama
 
@@ -31,7 +31,7 @@ Aşağıdaki Windows destek sürümleri Depolama Gezgini:
 
 * Windows 10 (önerilir)
 * Windows 8
-* Windows 7
+* Windows 7
 
 Tüm Windows sürümleri için Depolama Gezgini en az .NET Framework 4.7.2 gerektirir.
 
@@ -76,7 +76,7 @@ Depolama Gezgini depolama hesaplarına bağlamak için birçok yol sağlar. Gene
 * [Aboneliklerinize ve kaynaklarına erişmek için Azure 'da oturum açın](#sign-in-to-azure)
 * [Belirli bir depolama alanı veya CosmosDB kaynağı iliştirme](#attach-a-specific-resource)
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure’da oturum açma
 
 > [!NOTE]
 > Oturum açtıktan sonra kaynakları tam olarak erişmek için Depolama Gezgini hem yönetim (Azure Resource Manager) hem de veri katmanı izinleri gerektirir. Bu, depolama hesabınıza, hesaptaki kapsayıcılara ve kapsayıcılardaki verilere erişmenizi sağlayan Azure Active Directory (Azure AD) izinlerinin olması gerektiği anlamına gelir. Yalnızca veri katmanında izinleriniz varsa, [Azure AD aracılığıyla bir kaynak eklemeyi](#add-a-resource-via-azure-ad)düşünün. Depolama Gezgini gerekli olan belirli izinler hakkında daha fazla bilgi için, bkz. [Azure Depolama Gezgini sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues).
@@ -109,7 +109,7 @@ Depolama Gezgini bir kaynağa eklemenin birkaç yolu vardır:
 * [Bir bağlantı dizesi kullanın](#use-a-connection-string). Depolama hesabına yönelik bir bağlantı dizeniz varsa bu seçeneği kullanın. Depolama Gezgini hem anahtar hem de [paylaşılan erişim imzası](storage/common/storage-dotnet-shared-access-signature-part-1.md) bağlantı dizelerini destekler.
 * [Paylaşılan erişim imzası URI 'Si kullanın](#use-a-shared-access-signature-uri). Blob kapsayıcısına, dosya paylaşımında, kuyrukta veya tabloda [paylaşılan erişim imzası URI 'si](storage/common/storage-dotnet-shared-access-signature-part-1.md) varsa, kaynağa eklemek için onu kullanın. Paylaşılan erişim imzası URI 'SI almak için [Depolama Gezgini](#generate-a-sas-in-storage-explorer) ya da [Azure Portal](https://portal.azure.com)kullanabilirsiniz.
 * [Bir ad ve anahtar kullanın](#use-a-name-and-key). Depolama hesabınızda hesap anahtarlarından birini biliyorsanız, bu seçeneği kullanarak hızlı bir şekilde bağlantı oluşturabilirsiniz. Azure Portal **ayarları**  >  **erişim tuşları** ' nı seçerek depolama hesabı sayfasında anahtarlarınızı bulun. [Azure portal](https://portal.azure.com)
-* [Yerel bir öykünücüye ekleyin](#attach-to-a-local-emulator). Kullanılabilir Azure Storage öykünücülerinden birini kullanıyorsanız, öykünücüye kolayca bağlanmak için bu seçeneği kullanın.
+* [Yerel bir öykünücüye ekleyin](#attach-to-a-local-emulator). Kullanılabilir Azure Storage Öykünücülerinden birini kullanıyorsanız, öykünücüye kolayca bağlanmak için bu seçeneği kullanın.
 * [Bir bağlantı dizesi kullanarak bir Azure Cosmos DB hesabına bağlanın](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string). CosmosDB örneğine bir bağlantı dizeniz varsa bu seçeneği kullanın.
 * [URI 'ye göre Azure Data Lake Store bağlanın](#connect-to-azure-data-lake-store-by-uri). Azure Data Lake Store URI 'SI varsa bu seçeneği kullanın.
 

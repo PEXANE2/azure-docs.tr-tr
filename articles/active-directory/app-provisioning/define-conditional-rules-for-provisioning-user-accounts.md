@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781965"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235833"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -94,7 +94,7 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
    
    j. **Greater_Than_OR_EQUALS.** Değerlendirilen öznitelik değerden büyük veya bu değere eşitse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
    
-   k. **İçermektedir.** Değerlendirilen öznitelik, [burada](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)açıklanan dize değerini (büyük/küçük harfe duyarlı) içeriyorsa "true" döndürür. 
+   k. **İçermektedir.** Değerlendirilen öznitelik, [burada](/dotnet/api/system.string.contains?view=netframework-4.8)açıklanan dize değerini (büyük/küçük harfe duyarlı) içeriyorsa "true" döndürür. 
 
 
 >[!IMPORTANT] 
@@ -130,4 +130,3 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 * [Hesap sağlama bildirimleri](../app-provisioning/user-provisioning.md)
 * [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamayı etkinleştirmek için SCıM kullanın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
-

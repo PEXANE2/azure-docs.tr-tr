@@ -3,12 +3,12 @@ title: Linux için konuk yapılandırma ilkeleri oluşturma
 description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026721"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236599"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için konuk yapılandırma ilkeleri oluşturma
 
@@ -50,6 +50,10 @@ Modülün yüklenebildiği işletim sistemleri:
 - Linux
 - macOS
 - Windows
+
+> [!NOTE]
+> ' Test-GuestConfigurationPackage ' cmdlet 'i, OMı üzerindeki bir bağımlılık nedeniyle OpenSSL sürüm 1,0 gerektirir.
+> Bu, OpenSSL 1,1 veya üzeri ile herhangi bir ortamda hata oluşmasına neden olur.
 
 Konuk yapılandırması kaynak modülü için aşağıdaki yazılımlar gereklidir:
 
@@ -260,6 +264,8 @@ Konuk yapılandırması özel ilke paketi oluşturulduktan ve karşıya yüklend
 - **Sürüm**: ilke sürümü.
 - **Yol**: ilke tanımlarının oluşturulduğu hedef yol.
 - **Platform**: Konuk yapılandırma ilkesi ve içerik paketi için hedef platform (Windows/Linux).
+- **Etiket** , ilke tanımına bir veya daha fazla etiket filtresi ekler
+- **Kategori** , ilke tanımındaki kategori meta verileri alanını ayarlar
 
 Aşağıdaki örnek, özel bir ilke paketinden belirtilen yolda ilke tanımlarını oluşturur:
 
@@ -276,19 +282,11 @@ New-GuestConfigurationPolicy `
 
 Aşağıdaki dosyalar tarafından oluşturulmuştur `New-GuestConfigurationPolicy` :
 
-- **ÜzerindeauditIfNotExists.js**
-- **ÜzerindedeployIfNotExists.js**
-- **ÜzerindeInitiative.js**
+- ** ÜzerindeauditIfNotExists.js**
+- ** ÜzerindedeployIfNotExists.js**
+- ** ÜzerindeInitiative.js**
 
 Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
-
-> [!Note]
-> En son Konuk yapılandırma modülü yeni bir parametre içerir:
-> - **Etiket** , ilke tanımına bir veya daha fazla etiket filtresi ekler
->   - [Etiketleri kullanarak Konuk yapılandırma Ilkelerini filtreleme](#filtering-guest-configuration-policies-using-tags)bölümüne bakın.
-> - **Kategori** , ilke tanımındaki kategori meta verileri alanını ayarlar
->   - Parametresi dahil edilmemelidir, kategori varsayılan olarak Konuk yapılandırması olur.
-> Bu özellikler Şu anda önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.1 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Son olarak, cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` .
 Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` .
@@ -404,9 +402,6 @@ Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açık
 
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Etiketleri kullanarak Konuk yapılandırma ilkelerini filtreleme
-
-> [!Note]
-> Bu özellik şu anda önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.1 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Konuk yapılandırma modülündeki cmdlet 'ler tarafından oluşturulan ilkeler, isteğe bağlı olarak etiketler için bir filtre içerebilir. Öğesinin **-Tag** parametresi, `New-GuestConfigurationPolicy` tek bir etiket dizesi içeren bir diyez tabloları dizisini destekler. Etiketler, `If` ilke tanımının bölümüne eklenecektir ve bir ilke ataması tarafından değiştirilemez.
 

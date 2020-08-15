@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17660df34c8039ae96440c417aef051d51a5c91c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782067"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234763"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API 'Leri kullanarak sağlamayı yapılandırma
 
@@ -48,7 +48,7 @@ Azure portal, bireysel uygulamalar için tek seferde sağlamayı yapılandırman
 1. Oturum açma başarılı olduğunda, Kullanıcı hesabı ayrıntılarını sol bölmede görürsünüz.
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>Galeri uygulaması şablon tanımlayıcısını alma
-Azure AD uygulama galerisindeki uygulamaların her biri, uygulamanın meta verilerini açıklayan bir [uygulama şablonuna](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) sahiptir. Bu şablonu kullanarak, yönetim için kiracınızda uygulama ve hizmet sorumlusu örneği oluşturabilirsiniz.
+Azure AD uygulama galerisindeki uygulamaların her biri, uygulamanın meta verilerini açıklayan bir [uygulama şablonuna](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta) sahiptir. Bu şablonu kullanarak, yönetim için kiracınızda uygulama ve hizmet sorumlusu örneği oluşturabilirsiniz.
 
 #### <a name="request"></a>*İstek*
 
@@ -61,7 +61,7 @@ Azure AD uygulama galerisindeki uygulamaların her biri, uygulamanın meta veril
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 
 <!-- {
   "blockType": "response",
@@ -100,7 +100,7 @@ Content-type: application/json
 
 ### <a name="create-the-gallery-application"></a>Galeri uygulaması oluşturma
 
-Kiracınızda uygulamanın ve hizmet sorumlusunun [bir örneğini oluşturmak](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) için son adımdaki uygulamanız için ALıNAN şablon kimliğini kullanın.
+Kiracınızda uygulamanın ve hizmet sorumlusunun [bir örneğini oluşturmak](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta) için son adımdaki uygulamanız için ALıNAN şablon kimliğini kullanın.
 
 #### <a name="request"></a>*İstek*
 
@@ -118,7 +118,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 
 
 <!-- {
@@ -169,7 +169,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>Sağlama bağlayıcısının şablonunu alma
 
-Galerisindeki sağlama için etkinleştirilen uygulamaların, yapılandırmayı kolaylaştırmak için şablonları vardır. [Sağlama yapılandırması şablonunu almak](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)için aşağıdaki isteği kullanın. KIMLIĞI sağlamanız gerekeceğini unutmayın. KIMLIK, bu örnekte ServicePrincipal olan önceki kaynağa başvurur. 
+Galerisindeki sağlama için etkinleştirilen uygulamaların, yapılandırmayı kolaylaştırmak için şablonları vardır. [Sağlama yapılandırması şablonunu almak](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta)için aşağıdaki isteği kullanın. KIMLIĞI sağlamanız gerekeceğini unutmayın. KIMLIK, bu örnekte ServicePrincipal olan önceki kaynağa başvurur. 
 
 #### <a name="request"></a>*İstek*
 
@@ -182,7 +182,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 ```
 
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -207,7 +207,7 @@ HTTP/1.1 200 OK
 ```
 
 ### <a name="create-the-provisioning-job"></a>Sağlama işini oluşturma
-Sağlamayı etkinleştirmek için öncelikle [bir iş oluşturmanız](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)gerekir. Bir sağlama işi oluşturmak için aşağıdaki isteği kullanın. İş için kullanılacak şablonu belirtirken önceki adımdaki TemplateId 'yi kullanın.
+Sağlamayı etkinleştirmek için öncelikle [bir iş oluşturmanız](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)gerekir. Bir sağlama işi oluşturmak için aşağıdaki isteği kullanın. İş için kullanılacak şablonu belirtirken önceki adımdaki TemplateId 'yi kullanın.
 
 #### <a name="request"></a>*İstek*
 <!-- {
@@ -223,7 +223,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -261,7 +261,7 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>Uygulamayla bağlantıyı test etme
 
-Üçüncü taraf uygulamayla bağlantıyı test edin. Aşağıdaki örnek, clientSecret ve secretToken gerektiren bir uygulama içindir. Her uygulamanın gereksinimleri vardır. Uygulamalar genellikle ClientSecret yerine BaseAddress kullanır. Uygulamanızın gerektirdiği kimlik bilgilerini belirlemek için uygulamanızın sağlama yapılandırma sayfasına gidin ve geliştirici modunda Bağlantıyı Sına ' ya tıklayın. Ağ trafiği, kimlik bilgileri için kullanılan parametreleri gösterir. Kimlik bilgilerinin tam listesi [burada](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)bulunabilir. 
+Üçüncü taraf uygulamayla bağlantıyı test edin. Aşağıdaki örnek, clientSecret ve secretToken gerektiren bir uygulama içindir. Her uygulamanın gereksinimleri vardır. Uygulamalar genellikle ClientSecret yerine BaseAddress kullanır. Uygulamanızın gerektirdiği kimlik bilgilerini belirlemek için uygulamanızın sağlama yapılandırma sayfasına gidin ve geliştirici modunda Bağlantıyı Sına ' ya tıklayın. Ağ trafiği, kimlik bilgileri için kullanılan parametreleri gösterir. Kimlik bilgilerinin tam listesi [burada](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta)bulunabilir. 
 
 #### <a name="request"></a>*İstek*
 ```msgraph-interactive
@@ -273,7 +273,7 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
     ]
 }
 ```
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -285,7 +285,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>Kimlik bilgilerinizi kaydedin
 
-Sağlamayı yapılandırmak için Azure AD ile uygulama arasında bir güven oluşturulması gerekir. Üçüncü taraf uygulamasına erişimi yetkilendirin. Aşağıdaki örnek, clientSecret ve secretToken gerektiren bir uygulama içindir. Her uygulamanın gereksinimleri vardır. Kullanılabilir seçenekleri görmek için [API belgelerini](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) gözden geçirin. 
+Sağlamayı yapılandırmak için Azure AD ile uygulama arasında bir güven oluşturulması gerekir. Üçüncü taraf uygulamasına erişimi yetkilendirin. Aşağıdaki örnek, clientSecret ve secretToken gerektiren bir uygulama içindir. Her uygulamanın gereksinimleri vardır. Kullanılabilir seçenekleri görmek için [API belgelerini](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta) gözden geçirin. 
 
 #### <a name="request"></a>*İstek*
 ```msgraph-interactive
@@ -299,7 +299,7 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 }
 ```
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -310,7 +310,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="step-4-start-the-provisioning-job"></a>4. Adım: sağlama işini başlatma
-Sağlama işi yapılandırıldığına göre, [işi başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)için aşağıdaki komutu kullanın. 
+Sağlama işi yapılandırıldığına göre, [işi başlatmak](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)için aşağıdaki komutu kullanın. 
 
 
 #### <a name="request"></a>*İstek*
@@ -322,7 +322,7 @@ Sağlama işi yapılandırıldığına göre, [işi başlatmak](https://docs.mic
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/start
 ```
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -348,7 +348,7 @@ Sağlama işi çalışıyor olduğuna göre, geçerli sağlama döngüsünün il
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
 ```
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -392,13 +392,13 @@ Content-length: 2577
 
 
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Sağlama günlüklerini kullanarak sağlama olaylarını izleme
-Sağlama işinin durumunu izlemeye ek olarak, gerçekleşen tüm olayları sorgulamak için [sağlama günlüklerini](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) kullanabilirsiniz (örneğin, belirli bir kullanıcı için sorgu ve başarıyla sağlanıp sağlanmadığını belirleme).
+Sağlama işinin durumunu izlemeye ek olarak, gerçekleşen tüm olayları sorgulamak için [sağlama günlüklerini](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) kullanabilirsiniz (örneğin, belirli bir kullanıcı için sorgu ve başarıyla sağlanıp sağlanmadığını belirleme).
 
 #### <a name="request"></a>*İstek*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -526,5 +526,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [Eşitleme Microsoft Graph belgelerini gözden geçirin](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Eşitleme Microsoft Graph belgelerini gözden geçirin](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Özel bir SCıM uygulamasını Azure AD ile tümleştirme](use-scim-to-provision-users-and-groups.md)

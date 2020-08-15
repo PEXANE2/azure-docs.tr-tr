@@ -1,6 +1,6 @@
 ---
 title: Azure Windows Sanal Makinelerinde SQL Server'a Genel Bakış | Microsoft Docs
-description: Azure Sanal Makineler’de tam SQL Server sürümlerini çalıştırma hakkında bilgi edinin.
+description: Şirket içi donanımları yönetmek zorunda kalmadan Bulutta Azure sanal makinelerinde SQL Server tam sürümlerinin nasıl çalıştırılacağını öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 161722d1f80e4bada35548b4e2b4e903c56215ec
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926703"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236378"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure sanal makinelerinde SQL Server nedir (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 > [!TIP]
 > SQL Server görüntülerinin fiyatlandırmasının nasıl anlaşılmasıyla ilgili daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için fiyatlandırma Kılavuzu](pricing-guidance.md). 
 
-### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Kullandıkça öde
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a> Kullandıkça öde
 Şu tabloda, kullandıkça öde SQL Server resimlerinin bir matrisi verilmektedir.
 
 | Sürüm | İşletim sistemi | Sürüm |
@@ -74,7 +74,7 @@ Kullanılabilir Linux üzerinde SQL Server sanal makine görüntülerini görmek
 > [!NOTE]
 > Kullanım başına ödeme SQL Server VM lisans modelini kendi lisansınızı kullanacak şekilde değiştirmek mümkündür. Daha fazla bilgi için bkz. [SQL Server VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-### <a name="bring-your-own-license"></a><a id="BYOL"></a>Kendi lisansınızı getirin
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> Kendi lisansınızı getirin
 Ayrıca kendi lisansınızı getirebilirsiniz (KLG). Bu senaryoda, SQL Server Lisans için hiçbir ek bir ücret olmadan yalnızca VM için ödeme yaparsınız.  Kendi lisansınızı getirmek, sürekli üretim iş yüklerinde zaman içinde paradan tasarruf etmenizi sağlayabilir. Bu seçeneği kullanmaya yönelik gereksinimler için bkz. [SQL Server Azure VM’leri için fiyatlandırma kılavuzu](pricing-guidance.md#byol).
 
 Kendi lisansınızı getirmek için, mevcut bir ödeme kullanım SQL Server VM dönüştürebilir ya da önekli **{KLG}** ile bir görüntü dağıtabilirsiniz. Lisans modelinizi kullanım başına ödeme ve KLG arasında değiştirme hakkında daha fazla bilgi için bkz. [SQL Server VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
@@ -128,7 +128,7 @@ Ayrıntılar için bkz.
 - [Yönetilen örnek oluşturma](../../managed-instance/instance-create-quickstart.md)
 - [SQL Server sanal makinesi oluşturma](sql-vm-create-portal-quickstart.md)
 
-## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a>SQL Server VM görüntü yenileme ilkesi
+## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM görüntü yenileme ilkesi
 Azure desteklenen her işletim sistemi, sürüm ve sürüm bileşimi için yalnızca tek bir sanal makine görüntüsü tutar. Diğer bir deyişle, zaman içinde görüntüler yenilenir ve eski görüntüler kaldırılır. Daha fazla bilgi için [SQL Server VM'leri SSS](frequently-asked-questions-faq.md#images) makalesindeki **Görüntüler** bölümüne bakın.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Müşteri deneyimini geliştirme programı (CEIP)

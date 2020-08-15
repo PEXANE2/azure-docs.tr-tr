@@ -3,17 +3,17 @@ title: Tablo depolama-Azure depolama için performans ve ölçeklenebilirlik den
 description: Yüksek performanslı uygulamalar geliştirirken tablo depolamayla kullanılmak üzere kanıtlanmış uygulamaların denetim listesi.
 services: storage
 author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
-ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75749557"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236395"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 

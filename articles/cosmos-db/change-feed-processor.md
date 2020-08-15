@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119418"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236480"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -95,11 +95,23 @@ Bu üç koşul geçerliyse, değişiklik akışı işlemcisi, eşit bir dağıt�
 
 Cosmos kapsayıcılarının içindeki ve içindeki veri hareketleri her zaman RUs kullandığından, kullanılan ru için ücretlendirilirsiniz. Kira kapsayıcısı tarafından tüketilen RUs için ücretlendirilirsiniz.
 
+## <a name="where-to-host-the-change-feed-processor"></a>Değişiklik akışı işlemcisinin nerede barındırkaydedileceği
+
+Değişiklik akışı işlemcisi, uzun süre çalışan işlemleri veya görevleri destekleyen herhangi bir platformda barındırılabilir:
+
+* Sürekli çalışan bir [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
+* [Azure sanal makinesindeki](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines)bir işlem.
+* [Azure Kubernetes hizmetinde](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service)bir arka plan işi.
+* Bir [ASP.NET barındırılan hizmeti](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
+
+Değişiklik akışı işlemcisi kısa süreli ortamlarda çalışabilir, ancak kira kapsayıcısı durumu koruduğundan, bu ortamların başlangıç ve durdurma döngüleri bildirimleri almaya yönelik gecikme ekler (ortamın her başlatılışında işlemciyi başlatma yükünden kaynaklanır).
+
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub 'da kullanım örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [GitHub 'da ek örnekler](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub 'da örnek uygulamayı tamamlıyorum](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub 'da ek kullanım örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Değişiklik akışı işlemcisi için Cosmos DB Workshop Labs](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

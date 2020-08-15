@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743584"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234780"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Yaygın yönlendirme sorunlarını giderme
 
@@ -102,7 +102,7 @@ Bu belirtinin birkaç olası nedeni vardır:
          - Örnek olarak, arka uç yalnızca HTTP isteklerini kabul ediyorsa aşağıdaki yapılandırma geçerli olacaktır:
             - _Kabul edilen protokoller_ http ve https 'dir. _İletme Protokolü_ http 'dir. HTTPS izin verilen bir protokol olduğundan ve bir istek HTTPS olarak verildiyse, ön kapı HTTPS kullanarak iletmeyi dener.
 
-            - _Kabul edilen protokoller_ http. _İletme Protokolü_ , istek ya da https ile eşleşiyor.
+            - _Kabul edilen protokoller_ http. _İletme Protokolü_ , istek ya da http ile eşleşiyor.
 
     - _URL yeniden yazma_ varsayılan olarak devre dışıdır ve yalnızca kullanılabilir hale getirmek istediğiniz arka uç barındırılan kaynakların kapsamını daraltmak istiyorsanız bu alanı kullanmanız gerekir. Devre dışı bırakıldığında, ön kapıda aldığı istek yolunu iletecektir. Bu alan yanlış yapılandırılmış ve ön kapı, bir HTTP 404 durum kodu döndüren arka uçta bir kaynak istiyor olabilir.
 

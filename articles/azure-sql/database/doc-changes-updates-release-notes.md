@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121468"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236582"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,6 +97,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 
 |Sorun  |Keşfedilen Tarih  |Durum  |Çözümlenme tarihi  |
 |---------|---------|---------|---------|
+|[Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor](#service-principal-cannot-access-azure-ad-and-akv)|Ağu 2020|Geçici çözüm vardır||
 |[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Kaynak grubundaki izinler SQL yönetilen örneği 'ne uygulanmadı](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Şub 2020|Geçici çözüm vardır||
@@ -110,7 +111,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |[İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Eyl 2019|Geçici çözüm vardır||
 |[Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|Ağu 2019|Geçici çözüm vardır||
 |[Azure AD oturum açma türleri için kimliğe bürünme desteklenmiyor](#impersonation-of-azure-ad-login-types-is-not-supported)|2019 Tem|Geçici çözüm yok||
-|[@querysp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Geçici çözüm yok||
+|[@query sp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Geçici çözüm yok||
 |[İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Geçici çözüm yok||
 |[GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor](#temporary-database-is-used-during-restore-operation)||Geçici çözüm vardır||
 |[TEMPDB yapısı ve içerik yeniden oluşturuluyor](#tempdb-structure-and-content-is-re-created)||Geçici çözüm yok||
@@ -124,6 +125,11 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |Güvenli bağlantı kullanan harici (Azure dışı) posta sunucularıyla veritabanı posta özelliği||Çözümlendi|Eki 2019|
 |Kapsanan veritabanları SQL yönetilen örneği 'nde desteklenmiyor||Çözümlendi|Ağu 2019|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor
+
+Bazı durumlarda, Azure AD ve Azure Key Vault (AKV) hizmetlerine erişmek için kullanılan hizmet sorumlusu ile ilgili bir sorun var olabilir. Sonuç olarak, bu sorun SQL yönetilen örneği ile birlikte Azure AD kimlik doğrulaması ve saydam veritabanı şifrelemesi (TDE) kullanımını etkiler. Bu durum aralıklı bir bağlantı sorunu veya dış SAĞLAYıCıDAN oturum açma/Kullanıcı oluşturma ya da oturum açma/kullanıcı olarak yürütme gibi deyimleri çalıştırabilmeyebilir. Yeni bir Azure SQL yönetilen örneği üzerinde, müşteri tarafından yönetilen anahtarla TDE ayarlama, bazı durumlarda da çalışmayabilir.
+
+**Geçici çözüm**: herhangi bir güncelleştirme komutunu YÜRÜTMEDEN önce SQL yönetilen Örneğinizde bu sorunun oluşmasını önlemek için veya güncelleştirme komutlarından sonra bu sorunla karşılaştıysanız, Azure Portal 'a gıdın, SQL yönetilen örnek [Active Directory yönetici dikey penceresine](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)erişin. "Yönetilen örnek 'in Azure Active Directory erişmek için bir hizmet sorumlusu olması gerekir" hata iletisini görebildiğinizi doğrulayın. Hizmet sorumlusu oluşturmak için buraya tıklayın. Bu hata iletisiyle karşılaştıysanız, üzerine tıklayın ve bu hata çözümlenene kadar sunulan adım adım yönergeleri izleyin.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir
 
@@ -205,7 +211,7 @@ Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Re
 -   Diğer ad Azure AD kullanıcıları. Bu durumda şu hata döndürülür: `15517` .
 - Azure AD oturum açmaları ve Azure AD uygulamalarına veya hizmet sorumlularına göre kullanıcılar. Bu durumda aşağıdaki hatalar döndürülür: `15517` ve `15406` .
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail içinde parametre desteklenmiyor
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query sp_send_db_mail içinde parametre desteklenmiyor
 
 `@query` [Sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) yordamındaki parametresi çalışmıyor.
 
@@ -229,7 +235,7 @@ Bir veritabanı SQL yönetilen örneği 'ne geri yüklerken, geri yükleme hizme
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
 
-`tempdb`Veritabanı her zaman 12 veri dosyasına bölünür ve dosya yapısı değiştirilemez. Dosya başına en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb` . `Tempdb`örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de yapılan tüm değişiklikler `tempdb` korunmaz.
+`tempdb`Veritabanı her zaman 12 veri dosyasına bölünür ve dosya yapısı değiştirilemez. Dosya başına en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb` . `Tempdb` örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de yapılan tüm değişiklikler `tempdb` korunmaz.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Küçük veritabanı dosyalarıyla depolama alanını aşma
 
@@ -266,7 +272,7 @@ SQL yönetilen örneği 'nde kullanılabilen hata günlükleri kalıcı değil v
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor
 
-**(Mart 2020 ' de çözümlendi)** `TransactionScope`Aynı işlem kapsamında aynı örnek içindeki iki veritabanına iki sorgu gönderilirse .net 'teki sınıfı çalışmaz:
+**(Mart 2020 ' de çözümlendi)** `TransactionScope` Aynı işlem kapsamında aynı örnek içindeki iki veritabanına iki sorgu gönderilirse .net 'teki sınıfı çalışmaz:
 
 ```csharp
 using (var scope = new TransactionScope())

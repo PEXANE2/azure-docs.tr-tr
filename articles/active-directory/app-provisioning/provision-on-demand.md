@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313617"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235545"
 ---
 # <a name="on-demand-provisioning"></a>İsteğe bağlı sağlama
 Bir kullanıcıyı bir uygulamaya Saniyeler içinde sağlamak için isteğe bağlı sağlama kullanın. Diğer şeyler arasında bu özelliği kullanarak şunları yapabilirsiniz:
@@ -47,9 +47,9 @@ Sağlama Hizmeti, "test kullanıcısı" için bir istek yaparak hedef uygulamaya
 
 #### <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
-* Hedef uygulamaya gizli belirteç ve kiracı URL 'SI gibi geçerli kimlik bilgileri sağladığınızdan emin olun. Gerekli kimlik bilgileri uygulamaya göre farklılık gösterir. Ayrıntılı yapılandırma öğreticileri için bkz. [öğretici listesi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
+* Hedef uygulamaya gizli belirteç ve kiracı URL 'SI gibi geçerli kimlik bilgileri sağladığınızdan emin olun. Gerekli kimlik bilgileri uygulamaya göre farklılık gösterir. Ayrıntılı yapılandırma öğreticileri için bkz. [öğretici listesi](../saas-apps/tutorial-list.md). 
 * Hedef uygulamanın, **öznitelik eşlemeleri** bölmesinde tanımlanan eşleşen özniteliklere göre filtrelemeyi desteklediğinden emin olun. Desteklenen filtreleri anlamak için uygulama geliştiricisi tarafından sunulan API belgelerini denetlemeniz gerekebilir.
-* Etki alanları arası kimlik yönetimi (SCıM) uygulamalarına yönelik sistem için Postman gibi bir araç kullanabilirsiniz. Bu tür araçlar, Azure Active Directory (Azure AD) sağlama hizmeti 'nin beklediği şekilde uygulamanın yetkilendirme isteklerine yanıt vermesini sağlamanıza yardımcı olur. [Örnek bir isteğe](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3)göz atın.
+* Etki alanları arası kimlik yönetimi (SCıM) uygulamalarına yönelik sistem için Postman gibi bir araç kullanabilirsiniz. Bu tür araçlar, Azure Active Directory (Azure AD) sağlama hizmeti 'nin beklediği şekilde uygulamanın yetkilendirme isteklerine yanıt vermesini sağlamanıza yardımcı olur. [Örnek bir isteğe](./use-scim-to-provision-users-and-groups.md#request-3)göz atın.
 
 ### <a name="step-2-import-user"></a>2. Adım: Kullanıcı Içeri aktarma
 
@@ -76,7 +76,7 @@ Ardından, sağlama hizmeti kullanıcıyı kaynak sistemden alır. Hizmetin ald�
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>3. Adım: kullanıcının kapsamda olup olmadığını belirleme
 
-Ardından, sağlama hizmeti kullanıcının sağlama [kapsamında](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) olup olmadığını belirler. Hizmet şöyle dikkate alır:
+Ardından, sağlama hizmeti kullanıcının sağlama [kapsamında](./how-provisioning-works.md#scoping) olup olmadığını belirler. Hizmet şöyle dikkate alır:
 
 * Kullanıcının uygulamaya atanıp atanmayacağı.
 * Kapsamın **atandı** veya **Tümünü Eşitle**olarak ayarlanmış olup olmadığı.
@@ -94,8 +94,8 @@ Ardından, sağlama hizmeti kullanıcının sağlama [kapsamında](https://docs.
 
 #### <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
-* Geçerli bir kapsam rolü tanımlamış olduğunuzdan emin olun. Örneğin, [Greater_Than işlecini](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) tamsayı olmayan bir değerle kullanmaktan kaçının.
-* Kullanıcının gerekli rolü yoksa, [varsayılan erişim rolüne atanmış kullanıcıları sağlama ipuçlarını](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role)gözden geçirin.
+* Geçerli bir kapsam rolü tanımlamış olduğunuzdan emin olun. Örneğin, [Greater_Than işlecini](./define-conditional-rules-for-provisioning-user-accounts.md#create-a-scoping-filter) tamsayı olmayan bir değerle kullanmaktan kaçının.
+* Kullanıcının gerekli rolü yoksa, [varsayılan erişim rolüne atanmış kullanıcıları sağlama ipuçlarını](./application-provisioning-config-problem-no-users-provisioned.md#provisioning-users-assigned-to-the-default-access-role)gözden geçirin.
 
 ### <a name="step-4-match-user-between-source-and-target"></a>4. Adım: kullanıcıdan kaynak ve hedef arasında eşleşme
 
@@ -129,7 +129,7 @@ Bir kullanıcının başarılı bir şekilde sağlanmasından sonra neleri göre
 
 #### <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
-* Değişiklikleri dışarı aktarma sorunları büyük ölçüde farklılık gösterebilir. Genel hatalara yönelik [günlükleri sağlama belgelerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) denetleyin.
+* Değişiklikleri dışarı aktarma sorunları büyük ölçüde farklılık gösterebilir. Genel hatalara yönelik [günlükleri sağlama belgelerini](../reports-monitoring/concept-provisioning-logs.md#error-codes) denetleyin.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -150,4 +150,4 @@ Bir kullanıcının başarılı bir şekilde sağlanmasından sonra neleri göre
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sağlama sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem)
+* [Sağlama sorunlarını giderme](./application-provisioning-config-problem.md)

@@ -4,12 +4,12 @@ description: SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Unde
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a7769d04d3cf41cee9f28b49d38e80deeaddcf9
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 01cbaf5a7e8eb733680381da21a7b1f9aa5c2cea
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404999"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236004"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding için SDK, REST ve CLı geliştirici kaynakları (LUSıS)
 
@@ -84,13 +84,13 @@ Aşağıdaki tabloda, önceki tabloda küme ayraçları ile belirtilen parametre
 
 ### <a name="language-based-sdks"></a>Dil tabanlı SDK 'lar
 
-|Dil |Başvuru belgeleri|Paket|Hızlı başlangıçlar|
+|Dil |Başvuru belgeleri|Paket|Hızlı Başlangıçlar|
 |--|--|--|--|
-|C#|[Yazma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Hızlı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet yazma](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet tahmini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Yazma](sdk-authoring.md?pivots=programming-language-csharp)<br>[Sorgu tahmini](sdk-query-prediction-endpoint.md?pivots=programming-language-csharp)|
+|C#|[Yazma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Hızlı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet yazma](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet tahmini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Yazma](quickstart-sdk.md?pivots=programming-language-csharp)<br>[Sorgu tahmini](quickstart-sdk.md?pivots=programming-language-csharp)|
 |Go|[Yazma ve tahmin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[Yazma ve tahmin](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven yazma](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven tahmini](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Yazma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Hızlı](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM tahmini](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Yazma](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)<br>[Hızlı](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)|
-|Python|[Yazma ve tahmin](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Yazma](sdk-authoring.md?pivots=programming-language-python)<br>[Hızlı](sdk-query-prediction-endpoint.md?pivots=programming-language-python)|
+|JavaScript|[Yazma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Hızlı](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM tahmini](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Yazma](quickstart-sdk.md?pivots=programming-language-javascript)<br>[Hızlı](quickstart-sdk.md?pivots=programming-language-javascript)|
+|Python|[Yazma ve tahmin](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Yazma](quickstart-sdk.md?pivots=programming-language-python)<br>[Hızlı](quickstart-sdk.md?pivots=programming-language-python)|
 
 
 ### <a name="containers"></a>Kapsayıcılar

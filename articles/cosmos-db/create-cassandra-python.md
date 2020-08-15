@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2521a579538b272ac4990c3d390fb1aa6f2e58a0
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f376a1f3601c976ff1efdaee1da6181510a9cf64
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876538"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234950"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: Python SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -68,68 +68,29 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir Cassandra hesa
 
 Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıklarının tümü *pyquickstart.py* dosyasından alınır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
-* Kullanıcı adı ve parola değerleri, Azure portalındaki bağlantı dizesi sayfası kullanılarak ayarlanmıştır. `path\to\cert` bir X509 sertifikasının yolunu sağlar. 
+* , `cluster` İle başlatılır `contactPoint` ve `port` Azure Portal alınan bilgiler. `cluster`Sonra, yöntemini kullanarak Azure Cosmos DB Cassandra API bağlanır `connect()` . Yetkili bir bağlantı, Kullanıcı adı, parola ve varsayılan sertifika veya yapılandırma dosyası içinde bir tane sağlarsanız açık bir sertifika kullanılarak oluşturulur.
 
-   ```python
-    ssl_opts = {
-            'ca_certs': 'path\to\cert',
-            'ssl_version': ssl.PROTOCOL_TLSv1_2
-            }
-    auth_provider = PlainTextAuthProvider( username=cfg.config['username'], password=cfg.config['password'])
-    cluster = Cluster([cfg.config['contactPoint']], port = cfg.config['port'], auth_provider=auth_provider, ssl_options=ssl_opts)
-    session = cluster.connect()
-   
-   ```
-
-* `cluster`, contactPoint bilgileriyle başlatılır. ContactPoint, Azure portalından alınır.
-
-    ```python
-   cluster = Cluster([cfg.config['contactPoint']], port = cfg.config['port'], auth_provider=auth_provider)
-    ```
-
-* `cluster`, Azure Cosmos DB Cassandra API’sine bağlanır.
-
-    ```python
-    session = cluster.connect()
-    ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="authenticateAndConnect":::
 
 * Yeni bir anahtar alanı oluşturulur.
 
-    ```python
-   session.execute('CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }')
-    ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="createKeyspace":::
 
 * Yeni bir tablo oluşturulur.
 
-   ```
-   session.execute('CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)');
-   ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="createTable":::
 
 * Anahtar/değer varlıkları eklenir.
 
-    ```Python
-    insert_data = session.prepare("INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)")
-    session.execute(insert_data, [1,'Lybkov','Seattle'])
-    session.execute(insert_data, [2,'Doniv','Dubai'])
-    session.execute(insert_data, [3,'Keviv','Chennai'])
-    session.execute(insert_data, [4,'Ehtevs','Pune'])
-    session.execute(insert_data, [5,'Dnivog','Belgaum'])
-    ....
-    
-    ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="insertData":::
 
 * Tüm anahtar değerlerini almak için sorgu.
 
-    ```Python
-    rows = session.execute('SELECT * FROM uprofile.user')
-    ```  
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="queryAllItems":::
     
 * Bir anahtar-değeri almak için sorgu.
 
-    ```Python
-    
-    rows = session.execute('SELECT * FROM uprofile.user where user_id=1')
-    ```  
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="queryByID":::
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 

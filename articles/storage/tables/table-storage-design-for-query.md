@@ -2,18 +2,18 @@
 title: Sorgular için Azure Tablo Depolaması tasarlama | Microsoft Docs
 description: Azure Tablo depolamadaki sorgular için tabloları tasarlayın. Uygun bir bölüm anahtarı seçin, sorguları iyileştirin ve tablo hizmeti için verileri sıralayın.
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926255"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236344"
 ---
 # <a name="design-for-querying"></a>Sorgulama için tasarım
 Tablo hizmeti çözümleri yoğun bir şekilde okunabilir, yoğun yazma veya ikisinin karışımı olabilir. Bu makalede, tablo hizmetinizi, okuma işlemlerini verimli bir şekilde destekleyecek şekilde tasarlarken göz önünde bulundurmanız gereken noktalar ele alınmaktadır. Genellikle, okuma işlemlerini etkin şekilde destekleyen bir tasarım, yazma işlemleri için de etkilidir. Bununla birlikte, [veri değişikliği Için tasarım tasarımında](table-storage-design-for-modification.md)bahsedilen yazma işlemlerini desteklemek için tasarlanırken dikkate alınması gereken ek hususlar vardır.

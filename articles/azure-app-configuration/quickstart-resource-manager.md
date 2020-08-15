@@ -3,439 +3,119 @@ title: Azure Uygulama yapılandırması hızlı başlangıç ile otomatik VM da�
 description: Bu hızlı başlangıçta, Azure uygulama yapılandırma deposu dağıtmak için Azure PowerShell modülünün ve Azure Resource Manager şablonlarının nasıl kullanılacağı gösterilmektedir. Ardından, bir VM dağıtmak için depodaki değerleri kullanın.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 04/14/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82137561"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235188"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla otomatik VM dağıtımı
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla otomatik VM dağıtımı (ARM şablonu)
 
-Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure uygulama yapılandırma deposu dağıtmak için Azure PowerShell ve Azure Resource Manager şablonlarının nasıl kullanılacağı gösterilmektedir. Daha sonra, bir VM 'yi dağıtmak için depodaki anahtar değerlerini nasıl kullanacağınızı öğrenirsiniz.
-
-Uygulama yapılandırma deposu oluşturmak için önkoşul şablonunu kullanır ve ardından Azure portal veya Azure CLı kullanarak depoya anahtar değerleri ekleyebilirsiniz. Birincil şablon var olan bir yapılandırma deposundan mevcut anahtar-değer yapılandırmalarına başvurur. Alınan değerler, bu örnekteki bir VM gibi, şablon tarafından oluşturulan kaynakların özelliklerini ayarlamak için kullanılır.
+Azure Resource Manager şablonları ve Azure PowerShell kullanarak bir Azure uygulama yapılandırma deposu dağıtma, depoya anahtar değerleri ekleme ve bu örnekteki Azure sanal makinesi gibi bir Azure kaynağını dağıtmak için depodaki anahtar değerlerini kullanma hakkında bilgi edinin.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="before-you-begin"></a>Başlamadan önce
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="review-the-templates"></a>Şablonları gözden geçirin
 
-`Connect-AzAccount` Komutuyla Azure aboneliğinizde oturum açın ve açılır tarayıcıda Azure kimlik bilgilerinizi girin:
+Bu hızlı başlangıçta kullanılan şablonlar [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/)alınır. [İlk şablon](https://azure.microsoft.comresources/templates/101-app-configuration-store/) bir uygulama yapılandırma deposu oluşturur:
 
-```azurepowershell-interactive
-# Connect to your Azure account
-Connect-AzAccount
-```
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 
-Birden fazla aboneliğiniz varsa, aşağıdaki cmdlet 'leri çalıştırarak bu hızlı başlangıç için kullanmak istediğiniz aboneliği seçin. Aboneliğinizin adıyla değiştirmeyi `<your subscription name>` unutmayın:
+Şablonda bir Azure kaynağı tanımlanmıştır:
 
-```azurepowershell-interactive
-# List all available subscriptions.
-Get-AzSubscription
+- [Microsoft. AppConfiguration/Configurationmağazaların](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): bir uygulama yapılandırma deposu oluşturun.
 
-# Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
-```
+[İkinci şablon](https://azure.microsoft.com/resources/templates/101-app-configuration/) , depodaki anahtar değerlerini kullanarak bir sanal makine oluşturur. Bu adımdan önce, portal veya Azure CLı kullanarak anahtar değerleri eklemeniz gerekir.
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+## <a name="deploy-the-templates"></a>Şablonları dağıtma
 
-```azurepowershell-interactive
-$resourceGroup = "StreamAnalyticsRG"
-$location = "WestUS2"
-New-AzResourceGroup `
-    -Name $resourceGroup `
-    -Location $location
-```
+### <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposu dağıtma
+1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir uygulama yapılandırma deposu oluşturur.
 
-SANAL makineye anahtar değerleri uygulayabilmeniz için önce var olan bir Azure uygulama yapılandırma deposuna sahip olmanız gerekir. Bu bölümde, bir Azure Resource Manager şablonu kullanarak bir Azure uygulama yapılandırma deposunun nasıl dağıtılacağı anlatılmaktadır. Zaten bir uygulama yapılandırma depoluize sahipseniz bu makalenin sonraki bölümüne geçebilirsiniz. 
+    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-1. Aşağıdaki JSON kodunu kopyalayın ve *prereq. azuredeploy. JSON*adlı yeni bir dosyaya yapıştırın.
+1. Aşağıdaki değerleri seçin veya girin.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "type": "string",
-        "metadata": {
-          "description": "Specifies the name of the app configuration store."
-        }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Specifies the Azure location where the app configuration store should be created."
-        }
-      },
-      "skuName": {
-        "type": "string",
-        "defaultValue": "standard",
-        "metadata": {
-          "description": "Specifies the SKU of the app configuration store."
-        }
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.AppConfiguration/configurationStores",
-        "name": "[parameters('configStoreName')]",
-        "apiVersion": "2019-10-01",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "[parameters('skuName')]"
-        }
-      }
-    ]
-   }
-   ```
+    - **abonelik**: uygulama yapılandırma deposunu oluşturmak Için kullanılan Azure aboneliğini seçin.
+    - **Kaynak grubu**: var olan bir kaynak grubunu kullanmak istemediğiniz müddetçe yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin.
+    - **Bölge**: kaynak grubu için bir konum seçin.  Örneğin, **Doğu ABD**.
+    - **Yapılandırma deposu adı**: yeni bir uygulama yapılandırma deposu adı girin.
+    - **Konum**: uygulama yapılandırma deposunun konumunu belirtin.  Varsayılan değeri kullanın.
+    - **SKU adı**: uygulama yapılandırma deposunun SKU adını belirtin. Varsayılan değeri kullanın.
 
-1. Aşağıdaki JSON kodunu kopyalayın ve *prereq. azuredeploy. Parameters. JSON*adlı yeni bir dosyaya yapıştırın. Yapılandırma deponuzda benzersiz bir ad ile **Get-UNIQUE** değerini değiştirin.
+1. **Gözden geçir + oluştur**’u seçin.
+1. Sayfanın **doğrulama geçtiğini**gösterdiğini doğrulayın ve ardından **Oluştur**' u seçin.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "value": "GET-UNIQUE"
-      }
-    }
-   }
-   ```
+Kaynak grubu adını ve uygulama yapılandırma deposu adını bir yere getirin.  Sanal makineyi dağıtırken bu değerlere ihtiyacınız vardır
+### <a name="add-vm-configuration-key-values"></a>VM yapılandırması anahtar değerlerini ekleme
 
-1. PowerShell pencerenizde, Azure uygulama yapılandırma deposunu dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametresi dosya yolunu değiştirmeyi unutmayın.
+Bir uygulama yapılandırma deposu oluşturduktan sonra, depoya anahtar değerler eklemek için Azure portal veya Azure CLı 'yi kullanabilirsiniz.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" `
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
-   ```
+1. [Azure Portal](https://portal.azure.com)oturum açın ve ardından yeni oluşturulan uygulama yapılandırma deposuna gidin.
+1. Sol menüden **yapılandırma Gezgini** ' ni seçin.
+1. Aşağıdaki anahtar-değer çiftlerini eklemek için **Oluştur** ' u seçin:
 
-## <a name="add-vm-configuration-key-values"></a>VM yapılandırması anahtar değerlerini ekleme
+   |Anahtar|Değer|Etiketle|
+   |-|-|-|
+   |windowsOsVersion|2019-veri merkezi|şablon|
+   |diskSizeGB|1023|şablon|
 
-Bir Azure Resource Manager şablonu kullanarak bir uygulama yapılandırma deposu oluşturabilirsiniz, ancak Azure portal veya Azure CLı kullanarak anahtar değerleri eklemeniz gerekir. Bu hızlı başlangıçta Azure portal kullanarak anahtar değerleri eklersiniz.
+   **Içerik türünü** boş tut.
 
-1. Dağıtım tamamlandıktan sonra, [Azure Portal](https://portal.azure.com)yeni oluşturulan uygulama yapılandırma deposuna gidin.
+Azure CLı 'yi kullanmak için bkz. [Azure uygulama yapılandırma deposundaki anahtar değerleriyle çalışma](./scripts/cli-work-with-keys.md).
 
-1. **Ayarlar** > **erişim anahtarları**' nı seçin. Birincil salt okunurdur anahtar bağlantı dizesini bir yere unutmayın. Uygulamanızı oluşturduğunuz uygulama yapılandırma deposuyla iletişim kuracak şekilde yapılandırmak için bu bağlantı dizesini daha sonra kullanacaksınız.
-
-1. Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma **Gezgini** > **Oluştur** ' u seçin:
-
-   |Anahtar|Değer|
-   |-|-|
-   |windowsOsVersion|2019-veri merkezi|
-   |diskSizeGB|1023|
-  
-   **Etiket**için *şablon* girin, ancak **içerik türünü** boş tutun.
-
-## <a name="deploy-vm-using-stored-key-values"></a>Depolanan anahtar değerlerini kullanarak VM 'yi dağıtma
+### <a name="deploy-vm-using-stored-key-values"></a>Depolanan anahtar değerlerini kullanarak VM 'yi dağıtma
 
 Artık anahtar değerlerini depoya eklemişseniz, bir Azure Resource Manager şablonu kullanarak bir VM dağıtmaya hazırsınız demektir. Şablon, oluşturduğunuz **Windowsosversion** ve **disksizegb** anahtarlarına başvurur.
 
 > [!WARNING]
 > ARM şablonları, özel bağlantısı etkinleştirilmiş bir uygulama yapılandırma deposundaki anahtarlara başvuramaz.
 
-1. Aşağıdaki JSON kodunu kopyalayın ve *azuredeploy. JSON*adlı yeni bir dosyaya yapıştırın veya [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)dosyayı indirin.
+1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon, uygulama yapılandırma deposundaki depolanan anahtar değerlerini kullanarak bir sanal makine oluşturur.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Admin user name."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "appConfigStoreName": {
-            "type": "string",
-            "metadata": {
-                "description": "App configuration store name."
-            }
-        },
-        "appConfigStoreResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the resource group for the app config store."
-            }
-        },
-        "domainNameLabel": {
-            "type": "string",
-            "metadata": {
-                "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_D2_v3",
-            "metadata": {
-                "description": "Size of the VM"
-            }
-        },
-        "vmSkuKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM windows sku"
-            }
-        },
-        "diskSizeKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM disk size"
-            }
-        },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the storage account."
-            }
-        }
-    },
-    "variables": {
-        "nicName": "myVMNic",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet",
-        "subnetPrefix": "10.0.0.0/24",
-        "publicIPAddressName": "myPublicIP",
-        "vmName": "SimpleWinVM",
-        "virtualNetworkName": "MyVNET",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-        "appConfigRef": "[resourceId(parameters('appConfigStoreResourceGroup'), 'Microsoft.AppConfiguration/configurationStores', parameters('appConfigStoreName'))]",
-        "windowsOSVersionParameters": {
-            "key": "[parameters('vmSkuKey')]",
-            "label": "template"
-        },
-        "diskSizeGBParameters": {
-            "key": "[parameters('diskSizeKey')]",
-            "label": "template"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-        },
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('domainNameLabel')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('nicName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2018-10-01",
-            "name": "[variables('vmName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "osProfile": {
-                    "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "createOption": "FromImage"
-                    },
-                    "dataDisks": [
-                        {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
-                            "lun": 0,
-                            "createOption": "Empty"
-                        }
-                    ]
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
-                    }
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "hostname": {
-            "type": "string",
-            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-        }
-    }
-   }
-   ```
+    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
 
-1. Aşağıdaki JSON kodunu kopyalayıp *azuredeploy. Parameters. JSON*adlı yeni bir dosyaya yapıştırın veya [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)dosyayı indirin.
+1. Aşağıdaki değerleri seçin veya girin.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminPassword": {
-        "value": "GEN-PASSWORD"
-      },
-      "appConfigStoreName":{
-        "value": "GEN-APPCONFIGSTORE-NAME"
-      },
-      "appConfigStoreResourceGroup": {
-         "value": "GEN-APPCONFIGSTORE-RESOURCEGROUP-NAME"
-      },
-      "vmSkuKey":{
-        "value": "GEN-APPCONFIGSTORE-WINDOWSOSVERSION"
-      },
-      "diskSizeKey" :{
-         "value": "GEN-APPCONFIGSTORE-DISKSIZEGB"
-      },
-      "adminUsername":{
-        "value": "GEN-UNIQUE"
-      },
-      "storageAccountName":{
-        "value": "GEN-UNIQUE"
-      },
-      "domainNameLabel":{
-        "value": "GEN-UNIQUE"
-      }
-    }
-   }
-   ```
+    - **abonelik**: sanal makineyi oluşturmak Için kullanılan Azure aboneliğini seçin.
+    - **Kaynak grubu**: uygulama yapılandırma deposuyla aynı kaynak grubunu belirtin ya da yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin.
+    - **Bölge**: kaynak grubu için bir konum seçin.  Örneğin, **Doğu ABD**.
+    - **Konum**: sanal makinenin konumunu belirtin. Varsayılan değeri kullanın.
+    - **Yönetici Kullanıcı adı**: sanal makine için Yönetici Kullanıcı adı belirtin.
+    - **Yönetici parolası**: sanal makine için bir yönetici parolası belirtin.
+    - **Etki alanı adı etiketi**: benzersiz bir etki alanı adı belirtin.
+    - **Depolama hesabı adı**: sanal makineyle ilişkili bir depolama hesabı için benzersiz bir ad belirtin.
+    - **Uygulama yapılandırma deposu kaynak grubu**: uygulama yapılandırma deponuzi içeren kaynak grubunu belirtin.
+    - **Uygulama yapılandırma deposu adı**: Azure uygulama yapılandırma deponuzın adını belirtin.
+    - **VM SKU anahtarı**: **Windowsosversion**belirtin.  Bu, depoya eklediğiniz anahtar değer adıdır.
+    - **Disk boyutu anahtarı**: **disksizegb**belirtin. Bu, depoya eklediğiniz anahtar değer adıdır.
 
-   Şablondaki parametre değerlerini aşağıdaki değerlerle değiştirin:
+1. **Gözden geçir + oluştur**’u seçin.
+1. Sayfanın **doğrulama geçtiğini**gösterdiğini doğrulayın ve ardından **Oluştur**' u seçin.
 
-   |Parametre|Değer|
-   |-|-|
-   |adminPassword|VM için yönetici parolası.|
-   |appConfigStoreName|Azure uygulama yapılandırma deponuzın adı.|
-   |appConfigStoreResourceGroup|Uygulama yapılandırma deponuzi içeren kaynak grubu.|
-   |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
-   |adminUsername|VM için Yönetici Kullanıcı adı.|
-   |storageAccountName|VM ile ilişkili bir depolama hesabı için benzersiz bir ad.|
-   |Etkialanıadetiketi|Benzersiz bir etki alanı adı.|
+## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. PowerShell pencerenizde, VM 'yi dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametresi dosya yolunu değiştirmeyi unutmayın.
-
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>"
-       -TemplateFile "<path to azuredeploy.json>" `
-       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
-   ```
-
-Tebrikler! Azure Uygulama yapılandırması 'nda depolanan yapılandırmaları kullanarak bir VM dağıttık.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve ardından yeni oluşturulan sanal makineye gidin.
+1. Sol menüden **genel bakış** ' ı seçin ve **SKU** 'nun **2019-Datacenter**olduğunu doğrulayın.
+1. Sol menüden **diskler** ' i seçin ve veri diskinin boyutunun **2013**olduğunu doğrulayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

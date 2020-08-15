@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781731"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235834"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Nasıl yapılır: sağlama yapılandırmasını dışarı aktarma ve bilinen iyi bir duruma geri alma
 
@@ -39,8 +39,8 @@ Yapılandırmanızı dışarı aktarmak için:
 
 Yapılandırmanızı dışa aktarma ve kaydetme, yapılandırmanızın önceki bir sürümüne geri dönme olanağı sağlar. Sağlama yapılandırmanızı dışa aktarıp daha sonra kullanmak üzere öznitelik eşlemelerinizde veya kapsam filtrelerinizde değişiklik yaptığınızda kaydetmeniz önerilir. Tüm yapmanız gereken, yukarıdaki adımlarda indirdiğiniz JSON dosyasını açın, JSON dosyasının tüm içeriğini kopyalayın, şema düzenleyicisinde JSON yükünün tüm içeriğini değiştirin ve kaydedin. Etkin bir sağlama çevrimi varsa, işlem tamamlanır ve sonraki döngüde güncelleştirilmiş şema kullanılır. Sonraki döngüde bir başlangıç döngüsünün olması gerekir. Bu, yeni yapılandırmaya göre her kullanıcı ve grubu yeniden değerlendirmelidir. Önceki bir yapılandırmaya geri döndüğünüzde aşağıdakileri göz önünde bulundurun:
 
-- Kullanıcılar, kapsam içinde olup olmadıklarını anlamak için yeniden değerlendirilir. Kapsam filtreleri değiştirildiyse, bir Kullanıcı kapsam içinde değilse, devre dışı bırakılacak. Çoğu durumda bu istenen davranış olsa da, bunu engellemek isteyebileceğiniz ve [kapsam silme işlevinin atlanmasını](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kullanabileceğiniz zamanlar vardır. 
-- Sağlama yapılandırmanızın değiştirilmesi hizmeti yeniden başlatır ve bir [Başlangıç döngüsünü](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)tetikler.
+- Kullanıcılar, kapsam içinde olup olmadıklarını anlamak için yeniden değerlendirilir. Kapsam filtreleri değiştirildiyse, bir Kullanıcı kapsam içinde değilse, devre dışı bırakılacak. Çoğu durumda bu istenen davranış olsa da, bunu engellemek isteyebileceğiniz ve [kapsam silme işlevinin atlanmasını](./skip-out-of-scope-deletions.md) kullanabileceğiniz zamanlar vardır. 
+- Sağlama yapılandırmanızın değiştirilmesi hizmeti yeniden başlatır ve bir [Başlangıç döngüsünü](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental)tetikler.
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı ve içeri aktarma
 

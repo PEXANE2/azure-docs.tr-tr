@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697333"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236803"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışını okuma
 
-Anında iletme modeli veya çekme modeli kullanarak Azure Cosmos DB değişiklik akışı ile çalışabilirsiniz. Bir anında iletme modeliyle istemci istekleri bir sunucudan çalışarak bir değişikliği işlemek için iş mantığına sahiptir. Ancak, son işlenen değişiklikler için değişiklik ve depolama durumunu denetlemenin karmaşıklığı sunucuda işlenir.
+Anında iletme modeli veya çekme modeli kullanarak Azure Cosmos DB değişiklik akışı ile çalışabilirsiniz. Bir anında iletme modeliyle, bir sunucu (değişiklik akışı), bu çalışmayı işlemek için iş mantığı olan bir istemciye işi gönderir. Ancak, son işlenen çalışmanın çalışma ve depolama durumunu denetleme karmaşıklığı sunucuda işlenir.
 
-Bir istek modeliyle sunucu, genellikle bir merkezi iş sırasından isteyerek çalışır. Bu durumda, yalnızca değişiklikleri işlemek için iş mantığı yoktur, ayrıca son işlenen değişiklik için durumu depolar, birden çok istemcide yük dengelemeyi işleme, paralel değişiklikleri işleme ve hataları işleme.
+Bir çekme modeliyle, istemci işi sunucudan çekmeniz gerekir. Bu durumda, yalnızca çalışmayı işlemek için iş mantığı yoktur, ancak son işlenen iş için durumu depolar, birden fazla istemci genelinde yük dengelemeyi işleme, paralel olarak çalışmayı işleme ve hataları işleme.
 
 Azure Cosmos DB değişiklik akışından okurken, endişelenmenize gerek duymayabilmeniz için genellikle bir anında iletme modeli kullanmanızı öneririz:
 

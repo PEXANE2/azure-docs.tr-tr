@@ -1,19 +1,19 @@
 ---
-title: Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
+title: Azure Haritalar ile tümleştirme
 titleSuffix: Azure Digital Twins
-description: Azure haritalar 'da gösterilen bilgileri güncelleştirmek için ikizi Graph ve Azure dijital TWINS bildirimlerini kullanabileceğiniz bir Azure işlevi oluşturma bölümüne bakın.
+description: Azure haritalar ınkapısı haritasını güncelleştirmek için ikizi grafiğini ve Azure dijital TWINS bildirimlerini kullanan bir Azure işlevi oluşturma bölümüne bakın.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131421"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235919"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 

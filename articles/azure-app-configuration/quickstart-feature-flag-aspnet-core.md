@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: c59bf14c03d9f7c0c835c5a19cf5ed92acea3501
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214209"
+ms.locfileid: "88235273"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
@@ -115,7 +115,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 1. Gizli dizi adlı **ConnectionString: AppConfig** adında bir gizli dizi ekleyin.
 
-    Bu gizli anahtar, uygulama yapılandırma deponuza erişmek için bağlantı dizesini içerir. `<your_connection_string>`Aşağıdaki komutta bulunan değeri, uygulama yapılandırma deponuzdaki bağlantı dizesiyle değiştirin. Bağlantı dizesini Azure portal **erişim tuşları** altında bulabilirsiniz.
+    Bu gizli anahtar, uygulama yapılandırma deponuza erişmek için bağlantı dizesini içerir. `<your_connection_string>`Aşağıdaki komutta bulunan değeri, uygulama yapılandırma deponuzdaki bağlantı dizesiyle değiştirin. Azure portal **erişim anahtarları** altında birincil salt okuma anahtarı bağlantı dizesini bulabilirsiniz.
 
     Bu komut, *.csproj* dosyası ile aynı dizinde yürütülmelidir.
 

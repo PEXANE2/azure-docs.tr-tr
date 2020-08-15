@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445564"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235714"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -56,7 +56,7 @@ Azure AD Kullanıcı sağlama ile bulut HR uygulaması tümleştirmesi ideal ola
 
 Kullanıcı hazırlama devam eden kimlik yönetimi için bir temel oluşturur. Yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
-### <a name="terms"></a>Koşullar
+### <a name="terms"></a>Terimler
 
 Bu makale aşağıdaki terimleri kullanır:
 
@@ -79,9 +79,9 @@ Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yap
 
 Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) .
+- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  .
 - Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) rolü
 - Bulut HR uygulamasının test ve üretim örneği.
 - Bulut HR uygulamasındaki Yönetici izinleri bir sistem tümleştirme kullanıcısı oluşturur ve test amacıyla çalışan verilerini test etmek için değişiklikler yapar.
@@ -167,7 +167,7 @@ Bulut HR uygulaması ve Active Directory arasındaki sağlama tümleştirmesi i�
 - Azure AD Connect sağlama Aracısı
 - Active Directory etki alanı
 
-Azure AD Connect sağlama Aracısı dağıtım topolojisi, tümleştirmeyi planladığınız bulut HR uygulama kiracılarının ve Active Directory alt etki alanlarının sayısına bağlıdır. Birden çok Active Directory etki alanı varsa, Active Directory etki alanlarının bitişik veya [ayrık](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)olmasına bağlıdır.
+Azure AD Connect sağlama Aracısı dağıtım topolojisi, tümleştirmeyi planladığınız bulut HR uygulama kiracılarının ve Active Directory alt etki alanlarının sayısına bağlıdır. Birden çok Active Directory etki alanı varsa, Active Directory etki alanlarının bitişik veya [ayrık](/windows-server/identity/ad-ds/plan/disjoint-namespace)olmasına bağlıdır.
 
 Kararınız temelinde dağıtım senaryolarından birini seçin:
 
@@ -257,7 +257,7 @@ Varsayılan olarak, sağlama bağlayıcı uygulaması, Kullanıcı hesabının e
 
 Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| İşleme | Gereksinimler |
+| İşlem | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Kimlik yaşam döngüsü perspektifinden, yeniden oluşturma işlemlerinin nasıl yapılacağını nasıl işleyeceğinizi? Eski çalışan kimliklerini saklayın mi? |
 | | Gelecekteki ilerletlerinizi mi işletin, yoksa Active Directory hesapları mı oluşturdunuz? Bu hesaplar etkin veya devre dışı durumda mı oluşturulmuş? |
@@ -276,7 +276,7 @@ Her bir bulut HR uygulaması, eşlemeleri Active Directory için varsayılan bul
 
 Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| İşleme | Gereksinimler |
+| İşlem | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Active Directory hesabı oluşturma işlemi el ile, otomatikleştirilmiş veya kısmen otomatikleştirilebilir mi? |
 | | Bulut HR uygulamasından Active Directory 'e özel öznitelikler yaymaya planlansın mı? |
@@ -313,7 +313,7 @@ Bu ifadeyle, Municipitesi değeri Dallas, Austin, Seattle veya Londra ise, Kulla
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Yeni Kullanıcı hesaplarının parola teslimini planlayın
 
-Birleştiriciler sürecini başlattığınızda, Yeni Kullanıcı hesaplarının geçici bir parolasını ayarlayıp teslim etmeniz gerekir. Azure AD Kullanıcı sağlama ile bulut HR ile Kullanıcı için Azure AD [self servis parola sıfırlama](../authentication/quickstart-sspr.md) (SSPR) özelliğini bir gün boyunca alabilirsiniz.
+Birleştiriciler sürecini başlattığınızda, Yeni Kullanıcı hesaplarının geçici bir parolasını ayarlayıp teslim etmeniz gerekir. Azure AD Kullanıcı sağlama ile bulut HR ile Kullanıcı için Azure AD [self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md) (SSPR) özelliğini bir gün boyunca alabilirsiniz.
 
 SSPR, BT yöneticilerinin kullanıcıların parolalarını sıfırlamalarını veya hesaplarının kilidini açmalarına olanak tanımak için basit bir araçtır. Bulut HR uygulamasından **Mobil sayı** özniteliğini Active Directory ve Azure AD ile eşitlemek için sağlayabilirsiniz. **Cep telefonu numarası** ÖZNITELIĞI Azure AD 'de olduktan sonra, Kullanıcı hesabı için SSPR 'yi etkinleştirebilirsiniz. Ardından, bir gün sonra Yeni Kullanıcı, kimlik doğrulaması için kayıtlı ve doğrulanan mobil numarayı kullanabilir.
 

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782016"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235086"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Öğretici: otomatik Kullanıcı hesabı sağlama üzerinde raporlama
 
-Azure Active Directory (Azure AD), uçtan uca kimlik yaşam döngüsü yönetimi amacıyla SaaS uygulamalarındaki ve diğer sistemlerdeki Kullanıcı hesaplarının sağlamasını otomatik hale getirmeye yardımcı olan bir [Kullanıcı hesabı sağlama hizmeti](user-provisioning.md) içerir. Azure AD, [burada](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)Kullanıcı sağlama öğreticilerine sahip tüm uygulamalar ve sistemler için önceden tümleştirilmiş Kullanıcı sağlama bağlayıcılarını destekler.
+Azure Active Directory (Azure AD), uçtan uca kimlik yaşam döngüsü yönetimi amacıyla SaaS uygulamalarındaki ve diğer sistemlerdeki Kullanıcı hesaplarının sağlamasını otomatik hale getirmeye yardımcı olan bir [Kullanıcı hesabı sağlama hizmeti](user-provisioning.md) içerir. Azure AD, [burada](../saas-apps/tutorial-list.md)Kullanıcı sağlama öğreticilerine sahip tüm uygulamalar ve sistemler için önceden tümleştirilmiş Kullanıcı sağlama bağlayıcılarını destekler.
 
 Bu makalede, kurulumu yapıldıktan sonra sağlama işlerinin durumunun nasıl denetleneceği ve bireysel kullanıcıların ve grupların sağlanmasından nasıl giderileceği açıklanmaktadır.
 

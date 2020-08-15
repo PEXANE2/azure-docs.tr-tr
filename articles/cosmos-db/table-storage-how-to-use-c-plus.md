@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: e6d61e329ba91f53b11ace4d258b35950e188dcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d38fa2afe35976283e5129eab7d7f8ef3a1103b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771211"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236497"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini C++ ile kullanma
 
@@ -35,7 +35,7 @@ Bu kılavuzda, Azure Tablo Depolama hizmetini veya Azure Cosmos DB Tablo API'si 
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+### <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -78,7 +78,7 @@ Bu örnekte, Azure depolama bağlantı dizesinin tutulacağı statik bir alanın
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-İçin `<your_storage_account>`depolama hesabınızın adını kullanın. <your_storage_account_key> için, [Azure Portal](https://portal.azure.com)listelenen depolama hesabı için erişim anahtarını kullanın. Depolama hesapları ve erişim anahtarları hakkında bilgi için bkz. [depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md).
+İçin depolama hesabınızın adını kullanın `<your_storage_account>` . <your_storage_account_key> için, [Azure Portal](https://portal.azure.com)listelenen depolama hesabı için erişim anahtarını kullanın. Depolama hesapları ve erişim anahtarları hakkında bilgi için bkz. [depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md).
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB bağlantı dizesini ayarlama
 
@@ -89,9 +89,9 @@ Bu örnek, Azure Cosmos DB bağlantı dizesinin tutulacağı statik bir alanın 
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_cosmos_db_account>;AccountKey=<your_cosmos_db_account_key>;TableEndpoint=<your_cosmos_db_endpoint>"));
 ```
 
-İçin `<your_cosmos_db_account>`Azure Cosmos DB hesabınızın adını kullanın. İçin `<your_cosmos_db_account_key>`birincil anahtarınızı girin. [Azure Portal](https://portal.azure.com) listelenen uç noktayı girin `<your_cosmos_db_endpoint>`.
+İçin Azure Cosmos DB hesabınızın adını kullanın `<your_cosmos_db_account>` . İçin birincil anahtarınızı girin `<your_cosmos_db_account_key>` . [Azure Portal](https://portal.azure.com) listelenen uç noktayı girin `<your_cosmos_db_endpoint>` .
 
-Uygulamanızı yerel Windows tabanlı bilgisayarınızda test etmek için, [Azure SDK](https://azure.microsoft.com/downloads/) ile birlikte yüklenen Azure depolama öykünücüsünü kullanabilirsiniz. Depolama öykünücüsü, yerel geliştirme makinenizde mevcut olan Azure Blob, Kuyruk ve Tablo hizmetlerini benzeten bir yardımcı programdır. Aşağıdaki örnek, bağlantı dizesini yerel depolama öykünücüsünüzün tutacak statik bir alanın nasıl bildirilemeyeceğini göstermektedir:  
+Uygulamanızı yerel Windows tabanlı bilgisayarınızda test etmek için [Azure SDK](https://azure.microsoft.com/downloads/)ile birlikte yüklenen Azure Storage öykünücüsü ' nü kullanabilirsiniz. Depolama öykünücüsü, yerel geliştirme makinenizde bulunan Azure blob, kuyruk ve tablo hizmetlerinin benzetimini yapan bir yardımcı programdır. Aşağıdaki örnek, bağlantı dizesini yerel depolama öykünücüsünüzün tutacak statik bir alanın nasıl bildirilemeyeceğini göstermektedir:  
 
 ```cpp
 // Define the connection string with Azure storage emulator.
@@ -102,14 +102,14 @@ Azure Storage öykünücüsü 'nü başlatmak için Windows masaüstünüzden, *
 
 ### <a name="retrieve-your-connection-string"></a>Bağlantı dizenizi alma
 
-Depolama hesabı bilgilerinizi temsil `cloud_storage_account` etmek için sınıfını kullanabilirsiniz. Depolama hesabı bilgilerinizi depolama bağlantı dizesinden almak için `parse` yöntemini kullanın.
+`cloud_storage_account`Depolama hesabı bilgilerinizi temsil etmek için sınıfını kullanabilirsiniz. Depolama hesabı bilgilerinizi depolama bağlantı dizesinden almak için `parse` yöntemini kullanın.
 
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Ardından, bir `cloud_table_client` sınıfa bir başvuru alın. Bu sınıf, tablo depolama hizmeti içinde depolanan tablolar ve varlıklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod, daha önce `cloud_table_client` aldığınız depolama hesabı nesnesini kullanarak bir nesne oluşturur:  
+Ardından, bir sınıfa bir başvuru alın `cloud_table_client` . Bu sınıf, tablo depolama hizmeti içinde depolanan tablolar ve varlıklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod, `cloud_table_client` daha önce aldığınız depolama hesabı nesnesini kullanarak bir nesne oluşturur:  
 
 ```cpp
 // Create the table client.
@@ -120,7 +120,7 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 
 ### <a name="create-a-table"></a>Bir tablo oluşturma
 
-Bir `cloud_table_client` nesnesi, tablolar ve varlıklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir `cloud_table_client` nesnesi oluşturur ve yeni bir tablo oluşturmak için onu kullanır.
+Bir `cloud_table_client` nesnesi, tablolar ve varlıklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir nesnesi oluşturur `cloud_table_client` ve yeni bir tablo oluşturmak için onu kullanır.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -138,9 +138,9 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
 
-Bir tabloya varlık eklemek için, yeni `table_entity` bir nesne oluşturun ve bunu öğesine `table_operation::insert_entity`geçirin. Aşağıdaki kod, satır anahtarı olarak müşterinin adını, bölüm anahtarı olarak soyadını kullanır. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar, farklı bölüm anahtarları olan varlıklardan daha hızlı sorgulanabilir. Farklı bölüm anahtarlarının kullanılması, daha fazla paralel işlem ölçeklenebilirliği sağlar. Daha fazla bilgi için bkz. [Microsoft Azure depolama performansı ve ölçeklenebilirliği yapılacaklar listesi](../storage/common/storage-performance-checklist.md).
+Bir tabloya varlık eklemek için, yeni bir `table_entity` nesne oluşturun ve bunu öğesine geçirin `table_operation::insert_entity` . Aşağıdaki kod, satır anahtarı olarak müşterinin adını, bölüm anahtarı olarak soyadını kullanır. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar, farklı bölüm anahtarları olan varlıklardan daha hızlı sorgulanabilir. Farklı bölüm anahtarlarının kullanılması, daha fazla paralel işlem ölçeklenebilirliği sağlar. Daha fazla bilgi için bkz. [Microsoft Azure depolama performansı ve ölçeklenebilirliği yapılacaklar listesi](../storage/common/storage-performance-checklist.md).
 
-Aşağıdaki kod, depolanacak bazı müşteri verileriyle yeni `table_entity` bir örneğini oluşturur. Sonraki kod, bir `table_operation::insert_entity` tabloya varlık eklemek `table_operation` için bir nesne oluşturmak için çağırır ve yeni tablo varlığını onunla ilişkilendirir. Son olarak, kod `execute` `cloud_table` nesnesi üzerinde yöntemini çağırır. Yeni `table_operation` , tabloya yeni müşteri varlığını `people` eklemek için tablo hizmetine bir istek gönderir.  
+Aşağıdaki kod, `table_entity` depolanacak bazı müşteri verileriyle yeni bir örneğini oluşturur. Sonraki kod, `table_operation::insert_entity` `table_operation` bir tabloya varlık eklemek için bir nesne oluşturmak için çağırır ve yeni tablo varlığını onunla ilişkilendirir. Son olarak, kod `execute` nesnesi üzerinde yöntemini çağırır `cloud_table` . Yeni, tabloya `table_operation` yeni müşteri varlığını eklemek Için tablo hizmetine bir istek gönderir `people` .  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -173,7 +173,7 @@ azure::storage::table_result insert_result = table.execute(insert_operation);
 
 ### <a name="insert-a-batch-of-entities"></a>Toplu işlem varlık yerleştirme
 
-Tablo hizmetine tek bir yazma işlemiyle çok sayıda varlık ekleyebilirsiniz. Aşağıdaki kod, bir `table_batch_operation` nesnesi oluşturur ve buna üç ekleme işlemi ekler. Her ekleme işlemi, yeni bir varlık nesnesi oluşturularak, değerlerini ayarlayarak ve ardından varlığı yeni bir ekleme işlemi ile `insert` ilişkilendirmek için `table_batch_operation` nesnesi üzerinde çağırarak eklenir. Ardından, kod işlemi çalıştırmak `cloud_table.execute` için çağırır.  
+Tablo hizmetine tek bir yazma işlemiyle çok sayıda varlık ekleyebilirsiniz. Aşağıdaki kod, bir `table_batch_operation` nesnesi oluşturur ve buna üç ekleme işlemi ekler. Her ekleme işlemi, yeni bir varlık nesnesi oluşturularak, değerlerini ayarlayarak ve ardından `insert` `table_batch_operation` varlığı yeni bir ekleme işlemi ile ilişkilendirmek için nesnesi üzerinde çağırarak eklenir. Ardından, kod `cloud_table.execute` işlemi çalıştırmak için çağırır.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -223,7 +223,7 @@ std::vector<azure::storage::table_result> results = table.execute_batch(batch_op
 
 Toplu işlemlerde dikkat edilecek bazı noktalar:
 
-* `insert`Tek bir toplu işte 100, `delete`, `merge` `replace` `insert-or-merge`,, ve `insert-or-replace` işlemlerini herhangi bir bileşimde yapabilirsiniz.  
+* `insert` `delete` Tek bir toplu işte 100,,, `merge` , `replace` `insert-or-merge` ve `insert-or-replace` işlemlerini herhangi bir bileşimde yapabilirsiniz.  
 * Toplu işlemdeki tek işlem ise, toplu işlem bir alma işlemine sahip olabilir.  
 * Tek bir toplu işlemdeki tüm varlıkların bölüm anahtarları aynı olmalıdır.  
 * Toplu işlem 4 MB veri yükü ile sınırlıdır.  
@@ -232,7 +232,7 @@ Toplu işlemlerde dikkat edilecek bazı noktalar:
 
 ### <a name="retrieve-all-entities-in-a-partition"></a>Tüm varlıkları bir bölüme alma
 
-Bir bölümdeki tüm varlıklar için bir tabloyu sorgulamak üzere bir `table_query` nesnesi kullanın. Aşağıdaki kod örneği, bölüm anahtarı `Smith` olan varlıklar için bir filtre belirtir. Bu örnek sorgu sonuçlarındaki her varlığın alanlarını konsola yazdırır.  
+Bir bölümdeki tüm varlıklar için bir tabloyu sorgulamak üzere bir `table_query` nesnesi kullanın. Aşağıdaki kod örneği, bölüm anahtarı olan varlıklar için bir filtre belirtir `Smith` . Bu örnek sorgu sonuçlarındaki her varlığın alanlarını konsola yazdırır.  
 
 > [!NOTE]
 > Bu yöntemler şu anda Azure Cosmos DB’de C++ için desteklenmemektedir.
@@ -271,7 +271,7 @@ Bu örnekteki sorgu, filtre ölçütleriyle eşleşen tüm varlıkları döndür
 
 ### <a name="retrieve-a-range-of-entities-in-a-partition"></a>Bir bölüme bir grup varlık alma
 
-Bir bölümdeki tüm varlıkları sorgulamak istemiyorsanız, bir Aralık belirtebilirsiniz. Bölüm anahtarı filtresini bir satır anahtarı filtresiyle birleştirin. Aşağıdaki kod örneği, Bölüm anahtarının (ilk ad) alfabeden `Smith` `E` daha önceki bir harfle başladığı bölümdeki tüm varlıkları almak için iki filtre kullanır ve ardından sorgu sonuçlarını yazdırır.  
+Bir bölümdeki tüm varlıkları sorgulamak istemiyorsanız, bir Aralık belirtebilirsiniz. Bölüm anahtarı filtresini bir satır anahtarı filtresiyle birleştirin. Aşağıdaki kod örneği, bölüm `Smith` anahtarının (ilk ad) Alfabeden daha önceki bir harfle başladığı bölümdeki tüm varlıkları almak için iki filtre kullanır `E` ve ardından sorgu sonuçlarını yazdırır.  
 
 > [!NOTE]
 > Bu yöntemler şu anda Azure Cosmos DB’de C++ için desteklenmemektedir.
@@ -312,7 +312,7 @@ for (; it != end_of_results; ++it)
 
 ### <a name="retrieve-a-single-entity"></a>Tek bir varlık alma
 
-Tek, belirli bir varlığı almak üzere bir sorgu yazabilirsiniz. Aşağıdaki kod, müşteriyi `table_operation::retrieve_entity` `Jeff Smith`belirtmek için kullanır. Bu yöntem bir koleksiyon yerine yalnızca bir varlık döndürür ve döndürülen değer içinde `table_result`bulunur. Bir sorguda hem bölüm hem de satır anahtarını belirtmek Tablo hizmetinden tek bir varlık almanın en hızlı yoludur.  
+Tek, belirli bir varlığı almak üzere bir sorgu yazabilirsiniz. Aşağıdaki kod, `table_operation::retrieve_entity` müşteriyi belirtmek için kullanır `Jeff Smith` . Bu yöntem bir koleksiyon yerine yalnızca bir varlık döndürür ve döndürülen değer içinde bulunur `table_result` . Bir sorguda hem bölüm hem de satır anahtarını belirtmek Tablo hizmetinden tek bir varlık almanın en hızlı yoludur.  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -338,7 +338,7 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
 
 ### <a name="replace-an-entity"></a>Bir varlığı değiştirme
 
-Bir varlığı değiştirmek için Tablo hizmetinden alın, varlık nesnesini değiştirin ve değişiklikleri Tablo hizmetine geri kaydedin. Aşağıdaki kod mevcut bir müşterinin telefon numarasını ve e-posta adresini değiştirir. Çağırmak `table_operation::insert_entity`yerine, bu kod kullanır `table_operation::replace_entity`. Bu yaklaşım, sunucudaki varlık alındıktan sonra değiştirilmemişse varlığın sunucu üzerinde tamamen değiştirilmesini sağlar. Değiştirildiyse, işlem başarısız olur. Bu hata, uygulamanızın başka bir bileşen tarafından alma ve güncelleştirme arasında yapılan bir değişikliğin üzerine yazılmasını engeller. Bu hatanın doğru işlemesi, varlığın yeniden alınması, değişikliklerinizin hala geçerli olması ve daha sonra başka bir `table_operation::replace_entity` işlem yapması işlemidir.  
+Bir varlığı değiştirmek için Tablo hizmetinden alın, varlık nesnesini değiştirin ve değişiklikleri Tablo hizmetine geri kaydedin. Aşağıdaki kod mevcut bir müşterinin telefon numarasını ve e-posta adresini değiştirir. Çağırmak yerine `table_operation::insert_entity` , bu kod kullanır `table_operation::replace_entity` . Bu yaklaşım, sunucudaki varlık alındıktan sonra değiştirilmemişse varlığın sunucu üzerinde tamamen değiştirilmesini sağlar. Değiştirildiyse, işlem başarısız olur. Bu hata, uygulamanızın başka bir bileşen tarafından alma ve güncelleştirme arasında yapılan bir değişikliğin üzerine yazılmasını engeller. Bu hatanın doğru işlemesi, varlığın yeniden alınması, değişikliklerinizin hala geçerli olması ve daha sonra başka bir `table_operation::replace_entity` işlem yapması işlemidir.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -370,7 +370,7 @@ azure::storage::table_result replace_result = table.execute(replace_operation);
 
 ### <a name="insert-or-replace-an-entity"></a>Varlık ekleme veya değiştirme
 
-`table_operation::replace_entity`varlık sunucudan alındıktan sonra değiştirilmişse, işlemler başarısız olur. Ayrıca, başarılı olması için `table_operation::replace_entity` , varlığı önce sunucudan almalısınız. Bazen varlığın sunucuda mevcut olup olmadığını bilemezsiniz. Güncelleştirmelerinizin tümünün üzerine yazması gerektiğinden, içinde depolanan geçerli değerler ilgisizdir. Bu sonucu başarmak için bir `table_operation::insert_or_replace_entity` işlem kullanın. Bu işlem, varlık yoksa varlığı ekler. Varsa, işlem varlığın yerini alır. Aşağıdaki kod örneğinde, için `Jeff Smith` Müşteri varlığı almaya devam eder, ancak daha sonra kullanarak `table_operation::insert_or_replace_entity`sunucuya geri kaydedilir. Varlığa alma ve güncelleştirme işlemleri arasında yapılan tüm güncelleştirmelerin üzerine yazılacaktır.  
+`table_operation::replace_entity` varlık sunucudan alındıktan sonra değiştirilmişse, işlemler başarısız olur. Ayrıca, başarılı olması için, varlığı önce sunucudan almalısınız `table_operation::replace_entity` . Bazen varlığın sunucuda mevcut olup olmadığını bilemezsiniz. Güncelleştirmelerinizin tümünün üzerine yazması gerektiğinden, içinde depolanan geçerli değerler ilgisizdir. Bu sonucu başarmak için bir işlem kullanın `table_operation::insert_or_replace_entity` . Bu işlem, varlık yoksa varlığı ekler. Varsa, işlem varlığın yerini alır. Aşağıdaki kod örneğinde, için Müşteri varlığı `Jeff Smith` almaya devam eder, ancak daha sonra kullanarak sunucuya geri kaydedilir `table_operation::insert_or_replace_entity` . Varlığa alma ve güncelleştirme işlemleri arasında yapılan tüm güncelleştirmelerin üzerine yazılacaktır.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -403,7 +403,7 @@ azure::storage::table_result insert_or_replace_result = table.execute(insert_or_
 
 ### <a name="query-a-subset-of-entity-properties"></a>Giriş özellikleri alt kümesi sorgulama
 
-Tabloya gönderilen bir sorgu, bir varlıktan yalnızca birkaç özellik alabilir. Aşağıdaki kodda bulunan sorgu, yalnızca tablodaki varlıkların `table_query::set_select_columns` e-posta adreslerini döndürmek için yöntemini kullanır.  
+Tabloya gönderilen bir sorgu, bir varlıktan yalnızca birkaç özellik alabilir. Aşağıdaki kodda bulunan sorgu, `table_query::set_select_columns` yalnızca tablodaki varlıkların e-posta adreslerini döndürmek için yöntemini kullanır.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -449,7 +449,7 @@ for (; it != end_of_results; ++it)
 
 ### <a name="delete-an-entity"></a>Bir varlığı silme
 
-Bir varlığı aldıktan sonra silebilirsiniz. Bir varlığı aldıktan sonra, silinecek varlıkla `table_operation::delete_entity` çağırın. Sonra `cloud_table.execute` yöntemi çağırın. Aşağıdaki kod, bölüm anahtarı `Smith` ve bir satır anahtarı olan bir varlığı alır ve siler. `Jeff`
+Bir varlığı aldıktan sonra silebilirsiniz. Bir varlığı aldıktan sonra, `table_operation::delete_entity` Silinecek varlıkla çağırın. Sonra yöntemi çağırın `cloud_table.execute` . Aşağıdaki kod, bölüm anahtarı ve bir satır anahtarı olan bir varlığı alır ve siler `Smith` `Jeff` .
 
 ```cpp
 // Retrieve the storage account from the connection string.

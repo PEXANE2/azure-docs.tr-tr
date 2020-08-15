@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445611"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235732"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -44,7 +44,7 @@ Azure AD sağlama hizmeti otomatik sağlama için [SCIM 2,0 protokolünü](https
 
 Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik Kullanıcı sağlamayı yapılandırırken, geçerli kimlik bilgilerini girmeniz gerekir. Uygulama öğreticisine başvurarak uygulamanın kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Azure portal, Azure AD 'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmasını sağlayarak kimlik bilgilerini sınayabileceksiniz.
 
-SAML tabanlı çoklu oturum açma, uygulama için de yapılandırılmışsa Azure AD 'nin iç, uygulama başına depolama sınırı 1024 bayttır. Bu sınır, bir uygulamanın tek bir örneğiyle ilişkili tüm sertifikaları, gizli belirteçleri, kimlik bilgilerini ve ilgili yapılandırma verilerini (Azure AD 'de hizmet sorumlusu kaydı olarak da bilinir) içerir. SAML tabanlı çoklu oturum açma yapılandırıldığında, SAML belirteçlerini imzalamak için kullanılan sertifika, genellikle alanın yüzde 50 ' ünü kullanır. Kullanıcı hazırlama kurulumu sırasında girdiğiniz ek öğeler (gizli belirteçler, URI 'Ler, bildirim e-posta adresleri, Kullanıcı adları ve parolalar) depolama sınırını aşabilir. Daha fazla bilgi için, bkz. [Kullanıcı sağlama yapılandırılırken yönetici kimlik bilgilerini kaydetme sorunu](../manage-apps/application-provisioning-config-problem-storage-limit.md).
+SAML tabanlı çoklu oturum açma, uygulama için de yapılandırılmışsa Azure AD 'nin iç, uygulama başına depolama sınırı 1024 bayttır. Bu sınır, bir uygulamanın tek bir örneğiyle ilişkili tüm sertifikaları, gizli belirteçleri, kimlik bilgilerini ve ilgili yapılandırma verilerini (Azure AD 'de hizmet sorumlusu kaydı olarak da bilinir) içerir. SAML tabanlı çoklu oturum açma yapılandırıldığında, SAML belirteçlerini imzalamak için kullanılan sertifika, genellikle alanın yüzde 50 ' ünü kullanır. Kullanıcı hazırlama kurulumu sırasında girdiğiniz ek öğeler (gizli belirteçler, URI 'Ler, bildirim e-posta adresleri, Kullanıcı adları ve parolalar) depolama sınırını aşabilir. Daha fazla bilgi için, bkz. [Kullanıcı sağlama yapılandırılırken yönetici kimlik bilgilerini kaydetme sorunu](./application-provisioning-config-problem-storage-limit.md).
 
 ## <a name="mapping-attributes"></a>Öznitelikleri eşleme
 
@@ -54,7 +54,7 @@ Azure AD Kullanıcı nesneleri ve her bir SaaS uygulamasının Kullanıcı nesne
 
 Sağlamayı ayarlarken, hangi kullanıcı (veya grup) özelliklerinin Azure AD 'den uygulamaya akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmanız önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği (**Bu özniteliği kullanarak nesneleri Eşleştir**) gözden geçirin ve yapılandırın.
 
-Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, var olan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz. Ayrıntılar için bkz. [SaaS uygulamaları için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](../manage-apps/customize-application-attributes.md).
+Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, var olan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz. Ayrıntılar için bkz. [SaaS uygulamaları için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](./customize-application-attributes.md).
 
 Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemelerinin türlerinden biri bir ifade eşlemedir. Bu eşlemeler için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenizi sağlayan bir betik benzeri ifade yazmalısınız. Ayrıntılar için bkz. [öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md).
 
@@ -81,13 +81,13 @@ Bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik t
 
 ### <a name="b2b-guest-users"></a>B2B (konuk) kullanıcıları
 
-Azure AD Kullanıcı sağlama hizmeti 'ni kullanarak Azure AD 'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlayabilirsiniz. Ancak, B2B kullanıcılarının Azure AD 'yi kullanarak SaaS uygulamasında oturum açması için, SaaS uygulamasının SAML tabanlı çoklu oturum açma yeteneğine belirli bir şekilde yapılandırılmış olması gerekir. SaaS uygulamalarının B2B kullanıcılarından oturum açma işlemlerini desteklemesi için nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [B2B işbirliği Için SaaS uygulamalarını yapılandırma](../b2b/configure-saas-apps.md).
+Azure AD Kullanıcı sağlama hizmeti 'ni kullanarak Azure AD 'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlayabilirsiniz. Ancak, B2B kullanıcılarının Azure AD 'yi kullanarak SaaS uygulamasında oturum açması için, SaaS uygulamasının SAML tabanlı çoklu oturum açma yeteneğine belirli bir şekilde yapılandırılmış olması gerekir. SaaS uygulamalarının B2B kullanıcılarından oturum açma işlemlerini desteklemesi için nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [B2B işbirliği Için SaaS uygulamalarını yapılandırma](../external-identities/configure-saas-apps.md).
 
 Konuk Kullanıcı için userPrincipalName genellikle "alias # EXT #" olarak depolandığını unutmayın @domain.com . userPrincipalName, öznitelik eşlemelerinizde kaynak özniteliği olarak dahil edildiğinde, #EXT # userPrincipalName öğesinden çıkarılır. #EXT # öğesinin mevcut olmasını istiyorsanız, userPrincipalName değerini kaynak öznitelik olarak originalUserPrincipalName ile değiştirin. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Sağlama döngüleri: Ilk ve artımlı
 
-Azure AD kaynak sistem olduğunda, sağlama hizmeti, kullanıcıları ve grupları izlemek için [Microsoft Graph verilerdeki değişiklikleri izlemek üzere Delta sorgusunu](https://docs.microsoft.com/graph/delta-query-overview) kullanır. Sağlama Hizmeti, kaynak sistem ve hedef sisteme karşı bir başlangıç döngüsü çalıştırır ve ardından düzenli artımlı Döngülerde çalışır.
+Azure AD kaynak sistem olduğunda, sağlama hizmeti, kullanıcıları ve grupları izlemek için [Microsoft Graph verilerdeki değişiklikleri izlemek üzere Delta sorgusunu](/graph/delta-query-overview) kullanır. Sağlama Hizmeti, kaynak sistem ve hedef sisteme karşı bir başlangıç döngüsü çalıştırır ve ardından düzenli artımlı Döngülerde çalışır.
 
 ### <a name="initial-cycle"></a>Başlangıç çevrimi
 
@@ -154,11 +154,11 @@ Kaynak sistemdeki etkilenen kullanıcının öznitelik değerlerini ayarlayarak 
 
 ### <a name="quarantine"></a>Karantina
 
-Hedef sisteme karşı gerçekleştirilen çağrıların çoğu veya hepsi bir hata nedeniyle (örneğin, geçersiz yönetici kimlik bilgileri) başarısız olursa, sağlama işi "Karantina" durumuna geçer. Bu durum, [sağlama Özeti raporunda](../manage-apps/check-status-user-account-provisioning.md) ve Azure Portal e-posta bildirimleri yapılandırılmışsa e-postayla belirtilir.
+Hedef sisteme karşı gerçekleştirilen çağrıların çoğu veya hepsi bir hata nedeniyle (örneğin, geçersiz yönetici kimlik bilgileri) başarısız olursa, sağlama işi "Karantina" durumuna geçer. Bu durum, [sağlama Özeti raporunda](./check-status-user-account-provisioning.md) ve Azure Portal e-posta bildirimleri yapılandırılmışsa e-postayla belirtilir.
 
 Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez yavaş şekilde azaltılır.
 
-Tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlaması durumunda sağlama işi karantinadan çıkar. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır. [Burada karantina durumu hakkında](../manage-apps/application-provisioning-quarantine-status.md)daha fazla bilgi edinin.
+Tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlaması durumunda sağlama işi karantinadan çıkar. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır. [Burada karantina durumu hakkında](./application-provisioning-quarantine-status.md)daha fazla bilgi edinin.
 
 ### <a name="how-long-provisioning-takes"></a>Sağlamanın tamamlanma süresi
 
@@ -166,7 +166,7 @@ Performans, sağlama işinizin ilk sağlama döngüsünü mi yoksa artımlı bir
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Kullanıcıların düzgün şekilde sağlandığını söylemek
 
-Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler, Azure AD [sağlama günlüklerine (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. Günlükler, kaynak ve hedef sistemlere yapılan tüm okuma ve yazma işlemlerini ve her işlem sırasında okunan veya yazılan kullanıcı verilerini içerir. Azure portal sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [sağlama Raporlama Kılavuzu](../manage-apps/check-status-user-account-provisioning.md).
+Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler, Azure AD [sağlama günlüklerine (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. Günlükler, kaynak ve hedef sistemlere yapılan tüm okuma ve yazma işlemlerini ve her işlem sırasında okunan veya yazılan kullanıcı verilerini içerir. Azure portal sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [sağlama Raporlama Kılavuzu](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Serbest sağlama
 
@@ -190,8 +190,8 @@ Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kirac�
 
 [Otomatik kullanıcı sağlama dağıtımı planlama](../app-provisioning/plan-auto-user-provisioning.md)
 
-[Galeri uygulaması için sağlamayı yapılandırma](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[Galeri uygulaması için sağlamayı yapılandırma](./configure-automatic-user-provisioning-portal.md)
 
 [Kendi uygulamanızı oluştururken bir SCıM uç noktası oluşturun ve sağlamayı yapılandırın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[Kullanıcılara yapılandırma ve uygulama sağlama ile ilgili sorunları giderin](../manage-apps/application-provisioning-config-problem.md).
+[Kullanıcılara yapılandırma ve uygulama sağlama ile ilgili sorunları giderin](./application-provisioning-config-problem.md).
