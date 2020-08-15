@@ -22,11 +22,7 @@
     - name: Tarayıcıyı kullanma
       href: luis-get-started-get-intent-from-browser.md
     - name: SDL kullanma
-      items:
-        - name: Yazma uygulaması
-          href: sdk-authoring.md
-        - name: Sorgu tahmin uç noktası
-          href: sdk-query-prediction-endpoint.md
+      href: quickstart-sdk.md
     - name: REST API'lerini kullanma
       items:
         - name: Amaç alma

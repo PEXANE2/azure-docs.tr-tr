@@ -3,19 +3,19 @@ title: Azure üzerinde Docker belgeleri
 summary: Docker, Linux ve Windows üzerindeki kapsayıcılarla hızlı bir şekilde çalışmanıza olanak sağlayan popüler bir kapsayıcı yönetimi ve görüntüleme platformudur. Azure üzerinde Docker kullanmayı öğrenin.
 metadata:
   title: Azure üzerinde Docker belgeleri
-  description: Docker, Linux ve Windows üzerindeki kapsayıcılarla hızlı bir şekilde çalışmanıza olanak sağlayan popüler bir kapsayıcı yönetimi ve görüntüleme platformudur. Azure üzerinde Docker kullanmayı öğrenin.
+  description: Docker, Linux ve Windows üzerindeki kapsayıcılarla hızlı bir şekilde çalışmanıza olanak sağlayan popüler bir kapsayıcı yönetimi ve görüntüleme platformudur.
   services: multiple
   ms.service: multiple
   ms.topic: landing-page
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 9205a47ee0ba3e6e0b328c8f481b15fe593ec5fb
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+  ms.openlocfilehash: 94d5dd74aad11e2271de52dd082cfb9287eb10c1
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88080394"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224586"
 landingContent:
 - title: Azure'da Docker dağıtma
   linkLists:

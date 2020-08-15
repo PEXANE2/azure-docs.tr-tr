@@ -17,7 +17,7 @@
       items:
         - name: REST API
           items:
-            - name: 'C# kullanma'
+            - name: C# kullanma
               href: call-endpoint-csharp.md
             - name: Java'yı kullanma
               href: call-endpoint-java.md
@@ -103,7 +103,7 @@
     - name: Bilgi Bankası
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: API anahtarını alma
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Deneyin!
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: Bing Özel Arama uç noktası

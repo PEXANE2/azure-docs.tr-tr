@@ -11,7 +11,7 @@
   items:
     - name: REST API'leri
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Başlayın
           href: quickstarts/go.md
@@ -88,7 +88,7 @@
 - name: Kaynaklar
   items:
     - name: API anahtarını alma
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Bing Web Araması uç noktası
       href: web-search-endpoints.md
     - name: Fiyatlandırma
