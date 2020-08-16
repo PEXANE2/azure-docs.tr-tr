@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511913"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258608"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure veri paylaşımında desteklenen veri depoları
 
@@ -26,11 +26,11 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Veri deposu | Anlık görüntü tabanlı paylaşım | Yerinde paylaşım 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama |✓ | |
-| Azure Data Lake Storage Gen1 |✓ | |
+| Azure Data Lake Storage 1. Nesil |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Veritabanı |Genel Önizleme | |
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |Genel Önizleme | |
-| Azure Veri Gezgini | |Genel Önizleme |
+| Azure Veri Gezgini | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Veri deposu destek matrisi
 
@@ -38,10 +38,10 @@ Azure veri paylaşımında, ' deki verileri kabul etmek için bir veri deposunda
 
 Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandırırken kullandığı farklı birleşimler ve seçimler ayrıntılı olarak verilmiştir. Veri kümesi eşlemelerini yapılandırma hakkında daha fazla bilgi için bkz. [veri kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md).
 
-| Veri deposu | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics | Azure Veri Gezgini
+| Veri deposu | Azure Blob Depolama Alanı | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics | Azure Veri Gezgini
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama | ✓ || ✓ ||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
+| Azure Data Lake Storage 1. Nesil | ✓ | | ✓ ||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
 | Azure SQL Veritabanı | ✓ | | ✓ | ✓ | ✓ ||
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
@@ -62,9 +62,7 @@ SQL tabanlı kaynaklardan paylaşım, güvenlik duvarı kuralları ve izinleriyl
 ## <a name="share-from-azure-data-explorer"></a>Azure Veri Gezgini paylaşma
 Azure veri paylaşımında, Azure Veri Gezgini kümelerinden veritabanlarını yerinde paylaşma özelliği de desteklenir. Veri sağlayıcısı veritabanı veya küme düzeyinde paylaşabilir. Veritabanı düzeyinde paylaşıldığında, veri tüketicisi yalnızca veri sağlayıcısı tarafından paylaşılan belirli veritabanına erişebilir. Küme düzeyinde paylaşıldığında veri tüketicisi, veri sağlayıcısı tarafından oluşturulan gelecekteki veritabanları da dahil olmak üzere sağlayıcının kümesindeki tüm veritabanlarına erişebilir.
 
-Paylaşılan veritabanlarına erişmek için veri tüketicisinin kendi Azure Veri Gezgini kümesine sahip olması gerekir. Veri tüketicisinin Azure Veri Gezgini kümesinin, veri sağlayıcının Azure Veri Gezgini kümesiyle aynı Azure veri merkezinde bulunması gerekir. İlişki paylaşımı oluşturulduğunda Azure veri paylaşımı, sağlayıcı ve tüketicinin Azure Veri Gezgini kümeleri arasında bir sembolik bağlantı oluşturur.
-
-Azure Veri Gezgini, iki veri alma modunu destekler: Batch ve streaming. Paylaşılan veritabanındaki Batch 'ten alınan veriler, veri tüketici tarafında birkaç saniye ile birkaç dakika arasında görünür. Akışdan alınan verilerin veri tüketici tarafında görünmesi 24 saate kadar sürebilir. 
+Paylaşılan veritabanlarına erişmek için veri tüketicisinin kendi Azure Veri Gezgini kümesine sahip olması gerekir. Veri tüketicisinin Azure Veri Gezgini kümesinin, veri sağlayıcının Azure Veri Gezgini kümesiyle aynı Azure veri merkezinde bulunması gerekir. İlişki paylaşımı oluşturulduğunda Azure veri paylaşımı, sağlayıcı ve tüketicinin Azure Veri Gezgini kümeleri arasında bir sembolik bağlantı oluşturur. Kaynak Azure Veri Gezgini kümesine toplu işlem modu kullanılarak alınan veriler, birkaç saniye içinde birkaç dakika içinde hedef kümede görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

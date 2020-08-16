@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d7e3992f12e39dd819bc18d5deb9f8b6da935616
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513154"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258686"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
 
@@ -98,7 +98,7 @@ Yönlendiricide dört yönlendirme durumu olabilir: sağlanan, sağlama, başar�
 * **Hiçbiri** durum, sanal hub 'ın yönlendirici sağlamadığını gösterir. Bu durum, sanal WAN *temel*tür ise veya sanal hub 'ın kullanılabilir hale getirilmesinden önce dağıtılması durumunda gerçekleşebilir.
 * **Hatalı** durum, örnekleme sırasında hata olduğunu gösterir. Yönlendiriciyi başlatmak veya sıfırlamak için Azure portal sanal hub genel bakış sayfasına giderek, **yönlendirici sıfırlama** seçeneğini bulabilirsiniz.
 
-Her sanal hub yönlendiricisi, 50 Gbps 'e kadar toplam üretimi destekler. Sanal ağ bağlantıları arasındaki bağlantı, sanal bir WAN 'daki tüm VNET 'lerde toplam 2000 VM iş yükünü varsayar.
+Her sanal hub yönlendiricisi, 50 Gbps 'e kadar toplam üretimi destekler. Sanal ağ bağlantıları arasındaki bağlantı, sanal bir hub 'a bağlı tüm VNET 'lerde toplam 2000 VM iş yükünü varsayar.
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN ve ExpressRoute arasında geçiş bağlantısı
 

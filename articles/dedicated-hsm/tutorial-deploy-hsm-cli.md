@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02b15f88e05abc918100f5e6b1ad1cdd60954a9d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e4403252396aab91fa960ed7258d433e27db950a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486995"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258244"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Öğretici: CLı kullanarak mevcut bir sanal ağa HSMs dağıtma
 
@@ -36,9 +36,9 @@ Tipik, yüksek kullanılabilirlik, çok bölgeli bir dağıtım mimarisi aşağ�
 
 Bu öğretici, var olan bir sanal ağla tümleştirildiği bir dizi HSM 'ye ve gerekli ExpressRoute Gateway 'e odaklanır (yukarıdaki VM 1 ' e bakın).  Diğer tüm kaynaklar standart Azure kaynaklarıdır. Aynı tümleştirme işlemi, yukarıdaki VNET 3 ' te alt ağ 4 ' te HSM 'ler için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure ayrılmış HSM Şu anda Azure portal kullanılamıyor. Hizmetle tüm etkileşim, komut satırı aracılığıyla veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell komut satırı (CLı) arabirimini kullanacaktır. Azure CLı 'yi yeni kullanmaya başladıysanız, başlangıç yönergelerini buradan izleyin: [Azure clı 2,0 kullanmaya](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)başlayın.
+Azure ayrılmış HSM Şu anda Azure portal kullanılamıyor. Hizmetle tüm etkileşim, komut satırı aracılığıyla veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell komut satırı (CLı) arabirimini kullanacaktır. Azure CLı 'yi yeni kullanmaya başladıysanız, başlangıç yönergelerini buradan izleyin: [Azure clı 2,0 kullanmaya](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)başlayın.
 
 Varsayımlar:
 
@@ -73,12 +73,12 @@ Bir HSM 'nin bir müşterinin sanal ağına sağlanması için sanal ağ ve alt 
 
 Dosyalar alındıktan sonra, kaynaklar için tercih ettiğiniz adları eklemek üzere parametre dosyasını düzenlemeniz gerekir. "Değer": "" ile satırları düzenleyin.
 
-- `namingInfix`HSM kaynaklarının adları için ön ek
-- `ExistingVirtualNetworkName`HSM 'ler için kullanılan sanal ağın adı
-- `DedicatedHsmResourceName1`Veri merkezi damgası 1 ' deki HSM kaynağının adı
-- `DedicatedHsmResourceName2`Veri merkezi damgasında HSM kaynağının adı 2
-- `hsmSubnetRange`HSMs için alt ağ IP adresi aralığı
-- `ERSubnetRange`VNET ağ geçidi için alt ağ IP adresi aralığı
+- `namingInfix` HSM kaynaklarının adları için ön ek
+- `ExistingVirtualNetworkName` HSM 'ler için kullanılan sanal ağın adı
+- `DedicatedHsmResourceName1` Veri merkezi damgası 1 ' deki HSM kaynağının adı
+- `DedicatedHsmResourceName2` Veri merkezi damgasında HSM kaynağının adı 2
+- `hsmSubnetRange` HSMs için alt ağ IP adresi aralığı
+- `ERSubnetRange` VNET ağ geçidi için alt ağ IP adresi aralığı
 
 Bu değişikliklere bir örnek aşağıdaki gibidir:
 
@@ -246,7 +246,7 @@ az group deployment delete \
 Öğreticideki adımları tamamladıktan sonra, özel HSM kaynakları sağlanır ve HSM ile iletişimi etkinleştirmek için gerekli HSM 'ler ve daha fazla ağ bileşeni içeren bir sanal ağınız vardır.  Artık bu dağıtımı tercih ettiğiniz dağıtım mimariniz için gereken diğer kaynaklarla karmaşıklama eden bir pozisyonda olursunuz. Dağıtımınızı planlamaya yardımcı olma hakkında daha fazla bilgi için bkz. kavramlar belgeleri.
 Birincil bölgedeki iki HSM 'yi raf düzeyinde adresleyen ve bir ikincil bölgedeki iki HSM 'nin bölgesel kullanılabilirliği ele aldığı bir tasarımın olması önerilir. Bu öğreticide kullanılan şablon dosyası, iki HSM dağıtımı için temel olarak kolayca kullanılabilir, ancak parametrelerinizi karşılamak için parametrelerinin değiştirilmesini gerektirir.
 
-* [Yüksek kullanılabilirlik](high-availability.md)
+* [Yüksek Kullanılabilirlik](high-availability.md)
 * [Fiziksel güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [Desteklenebilirlik](supportability.md)

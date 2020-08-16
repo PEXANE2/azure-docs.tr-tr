@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284379"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258539"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -96,6 +96,8 @@ Azure Blob depolama nesne sayısı, toplam boyut ve işlemler hakkında zeka kul
 
 Kısa süreli IaaS VM 'Leri veya durum bilgisiz iş yükleri olan VM 'Ler için kısa ömürlü işletim sistemi diski kullanılması tercih edilir. Danışman, kısa ömürlü işletim sistemi diskinden faydalanabilir kaynaklar için öneriler sağlar.
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>Azure Veri Gezgini tablo önbelleğini azaltma-küme maliyeti iyileştirmesi (Önizleme) için süre (ilke)
+Danışman, Tablo önbelleği ilkesinin azaltılacağı kaynakları tanımlar. Bu, düşük CPU kullanımı, bellek ve yüksek önbellek boyutu yapılandırmasına sahip Azure Veri Gezgini küme düğümlerini boşaltacaktır.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 

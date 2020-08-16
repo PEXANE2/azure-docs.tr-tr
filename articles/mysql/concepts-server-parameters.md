@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835995"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258544"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -98,7 +98,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında güncelleştirilebilen bir şekilde yapılandırılabilir.
+> `innodb_file_per_table` yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında güncelleştirilebilen bir şekilde yapılandırılabilir.
 
 MySQL, InnoDB tablosunu tablo oluşturma sırasında verdiğiniz yapılandırmaya göre farklı Tablespaces halinde depolar. [Sistem tablo](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) alanı, InnoDB veri sözlüğü için depolama alanıdır. [Tablo başına dosya tablosu](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) , tek bir InnoDB tablosunun verilerini ve dizinlerini içerir ve dosya sisteminde kendi veri dosyasında depolanır. Bu davranış, `innodb_file_per_table` sunucu parametresi tarafından denetlenir. `innodb_file_per_table`İçin ayarı `OFF` , InnoDB 'in, sistem tablo tablosu 'nda tablo oluşturmasına neden olur. Aksi halde, InnoDB tablo başına tabloalanları içinde tablo oluşturur.
 
@@ -212,6 +212,9 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 "Satır boyutu çok büyük (> 8126) şuna benzer bir hata alırsanız, **innodb_strict_mode**parametresini kapatmak isteyebilirsiniz. Satır veri boyutu 8k ' den daha büyükse, verilerin sunucu düzeyinde genel olarak değiştirilmesine izin verilmez, çünkü bu, veri kaybına neden olan bir hata olmadan veriler kesilir. **innodb_strict_mode** Şemayı sayfa boyutu sınırına uyacak şekilde değiştirmenizi öneririz. 
 
 Bu parametre, kullanılarak bir oturum düzeyinde ayarlanabilir `init_connect` . **İnnodb_strict_mode** , oturum düzeyinde ayarlamak için, [listede bulunmayan ayar parametresi](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)' ne bakın.
+
+> [!NOTE]
+> Bir okuma Çoğaltma sunucunuz varsa, bir ana sunucudaki oturum düzeyinde **innodb_strict_mode** olarak ayarlanması çoğaltmayı keser. Okuma çoğaltmalarınızı varsa parametre kümesinin kapalı kalmasını öneririz.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

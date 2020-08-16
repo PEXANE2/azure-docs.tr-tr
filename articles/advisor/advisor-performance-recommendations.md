@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057576"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257466"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -20,7 +20,7 @@ Belirli bir uç noktanın sorgulara yanıt vermemesi durumunda bitiş noktaları
 
 Azure Advisor, daha uzun TTL yapılandırılmış Traffic Manager profillerini tanımlar. Bu, profilin [hızlı yük devretme](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/)için yapılandırılıp yapılandırılmadığını bağlı olarak, TTL 'yi 20 saniye veya 60 saniye olarak yapılandırmanızı önerir.
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>SQL Veritabanı Danışmanı kullanarak veritabanı performansını iyileştirme
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>SQL Veritabanı Danışmanı kullanarak veritabanı performansını iyileştirme (geçici olarak devre dışı)
 
 Azure Danışmanı, tüm Azure kaynaklarınız için önerilerin tutarlı, birleştirilmiş bir görünümünü sağlar. Veritabanlarınızın performansını iyileştirmeye yönelik öneriler getirmek için SQL Veritabanı Danışmanı ile tümleşir.SQL Veritabanı Danışmanı kullanım geçmişinizi çözümleyerek veritabanlarınızın performansını değerlendirir. Daha sonra veritabanının tipik iş yükünü çalıştırmaya en uygun öneriler sunar.
 
@@ -151,6 +151,22 @@ Advisor varsayılan dizin oluşturma ilkesini kullanan, ancak özel bir dizin ol
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB sorgu sayfası boyutunu (Maxıtemcount)-1 olarak ayarlayın 
 
 Azure Advisor, 100 sorgu sayfası boyutunu kullanan Azure Cosmos DB kapsayıcıları tanımlar. Daha hızlı taramalar için bir sayfa boyutu-1 kullanılmasını önerir. [Maxıtemcount hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Küme performansını geliştirmek için HBase kümenizdeki hızlandırılmış yazma özelliğini kullanmayı düşünün
+Azure Advisor, son 7 gün içinde sistem günlüklerini analiz eder ve kümenizin aşağıdaki senaryolarla karşılaşıp karşılaşdığını tanımlar:
+1. Yüksek WAL eşitleme süresi gecikmesi 
+2. Yüksek yazma isteği sayısı (1000 avg_write_requests/second/node için en az 3 adet bir saatlik zaman penceresi)
+
+Bu koşullar, kümenizin yüksek yazma gecikme sürelerine sahip olduğunu gösterir. Bunun nedeni, kümenizde gerçekleştirilen ağır iş yükünün olması olabilir. Kümenizin performansını artırmak için, Azure HDInsight HBase tarafından sunulan hızlandırılmış yazma özelliğini kullanmayı düşünmek isteyebilirsiniz. HDInsight Apache HBase kümeleri için Hızlandırılmış Yazma İşlemleri özelliği, bulut depolaması kullanmak yerine her bir RegionServer örneğine (çalışan düğümü) premium SSD yönetilen diskler ekler. Sonuç olarak, uygulamalarınız için düşük yazma gecikme süresine ve daha iyi dayanıklılığa sahip olursunuz. Bu özellik hakkında daha fazla [bilgi edinmek için daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Daha iyi performans için Azure Veri Gezgini tablo önbelleği-süre (ilke) gözden geçirin (Önizleme)
+Bu öneri, yapılandırılan önbellek döneminin (ilke) ötesinde çok sayıda sorguya sahip olan Azure Veri Gezgini tablolarını (önbelleğe alma verilerine erişen sorgu yüzdesine göre ilk 10 tabloyu görürsünüz) gösterir. Kümenin performansını geliştirmek için önerilen eylem: Bu tablodaki sorguları, gereken en düşük zaman aralığıyla (tanımlanan ilke dahilinde) sınırlayın. Alternatif olarak, tüm zaman aralığındaki veriler gerekliyse, önbellek süresini önerilen değere yükseltin.
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL geçici tablo boyutlandırmasını iyileştirerek performansı artırma
+Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları nedeniyle gereksiz g/ç yükünü ortadan kaldırır. Bu, gereksiz disk tabanlı işlemlere ve düşük performansa neden olabilir. Disk tabanlı işlemlerin sayısını azaltmak için 'tmp_table_size' ve 'max_heap_table_size' parametre değerlerini artırmanızı öneririz. [Daha fazla bilgi](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Düğümler arasında iş yükünü dağıtmak için sunucu grubundaki verileri dağıtın
+Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225623"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258234"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -85,7 +85,7 @@ Bu bölüm, sanal masaüstü altyapısı çözümlerine yönelik başvurular sa�
 
 ### <a name="windows-virtual-desktop"></a>Windows Sanal Masaüstü
 
-* [Azure NetApp Files ile Windows sanal masaüstü 'Nü kullanma](solutions-windows-virtual-desktop.md)
+* [Windows sanal masaüstü ile Azure NetApp Files kullanmanın avantajları](solutions-windows-virtual-desktop.md)
 * [Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Kuruluş ölçeğinde Windows sanal masaüstü](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

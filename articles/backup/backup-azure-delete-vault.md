@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055210"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257962"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -43,8 +43,9 @@ Bir kasayı doğru bir şekilde silmek için şu sırada bulunan adımları izle
 - **3. adım**: herhangi bir korumalı öğe olup olmadığını doğrulamak için aşağıdaki üç yeri denetlemeniz gerekir:
 
   - **Bulut korumalı öğeler**: **yedekleme öğeleri**> kasa panosu menüsüne gidin. Burada listelenen tüm öğeler, yedeklemeyi **durdurma** veya yedekleme verilerini yedekleme verileriyle birlikte **silme** ile kaldırılmalıdır.  Bu öğeleri kaldırmak için [aşağıdaki adımları izleyin](#delete-protected-items-in-the-cloud) .
+  - **SQL Server örneği**: **Yedekleme altyapısı**  >  **Korumalı sunucuları**> kasa panosu menüsüne gidin. Korumalı sunucular ' da, kaydı kaldırmak istediğiniz sunucuyu seçin. Kasayı silmek için tüm sunucuların kaydını kaldırmanız gerekir. Korumalı sunucuya sağ tıklayın ve **kayıt kaldır**' ı seçin.
   - **Mars korumalı sunucular**: **Yedekleme altyapısı**  >  **Korumalı sunucuları**> kasa panosu menüsüne gidin. MARS korumalı sunucularınız varsa burada listelenen tüm öğelerin, yedekleme verileriyle birlikte silinmesi gerekir. MARS korumalı sunucularını silmek için [Bu adımları izleyin](#delete-protected-items-on-premises) .
-  - **Mabs veya DPM Yönetim sunucuları**: **Yedekleme altyapısı**  >  **yedekleme yönetim sunucuları**> kasa panosu menüsüne gidin. DPM veya Azure Backup Sunucusu (MABS) varsa, burada listelenen tüm öğelerin, yedekleme verileriyle birlikte silinmesi veya kaydı kaldırılmalıdır. Yönetim sunucularını silmek için [aşağıdaki adımları izleyin](#delete-protected-items-on-premises) .
+   - **Mabs veya DPM Yönetim sunucuları**: **Yedekleme altyapısı**  >  **yedekleme yönetim sunucuları**> kasa panosu menüsüne gidin. DPM veya Azure Backup Sunucusu (MABS) varsa, burada listelenen tüm öğelerin, yedekleme verileriyle birlikte silinmesi veya kaydı kaldırılmalıdır. Yönetim sunucularını silmek için [aşağıdaki adımları izleyin](#delete-protected-items-on-premises) .
 
 - **4. adım**: tüm kayıtlı depolama hesaplarının silindiğinden emin olmanız gerekir. **Yedekleme altyapısı**  >  **depolama hesaplarına**> kasa panosu menüsüne gidin. Burada listelenen depolama hesaplarınız varsa, bunların tümünün kaydını silmeniz gerekir. Hesabın kaydını silme hakkında bilgi edinmek için bkz. [depolama hesabının kaydını silme](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -84,7 +85,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 1. Kasa panosu menüsünden **Yedekleme altyapısı**' nı seçin.
 2. Şirket içi senaryonuza bağlı olarak, aşağıdaki seçeneklerden birini seçin:
 
-      - MARS için **korumalı sunucular** ' ı seçin ve ardından **Aracı Azure Backup**. Ardından, silmek istediğiniz sunucuyu seçin.
+      - MARS için **korumalı sunucular** ' ı seçin ve ardından  **Aracı Azure Backup**. Ardından, silmek istediğiniz sunucuyu seçin.
 
         ![MARS için, kendi panosunu açmak için kasanızı seçin.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
@@ -235,7 +236,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için:
 
     Aşağıdaki istem nerede görünür:
 
-    *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/>[Y] Evet [A] Evet [A] Evet [A] Hayır [N] tüm [S] askıya alma [?] Yardım (varsayılan: "Y"):*
+    *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] tüm [S] askıya alma [?] Yardım (varsayılan: "Y"):*
 
 - MABS (Microsoft Azure Backup Server) veya DPM (System Center Data Protection Manager) ile Azure 'a korunan şirket içi makineler için, Azure 'daki yedeklenen verileri silmek üzere aşağıdaki komutu kullanın.
 

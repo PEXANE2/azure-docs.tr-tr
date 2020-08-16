@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2cae29bb4edaf7040b1cb41293c902f975a03f23
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166319"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Öğretici: Azure AD SAML araç seti ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure AD SAML araç takımını Azure Active Directory (Azure A
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -107,9 +107,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -139,7 +139,7 @@ Bu bölümde, Azure AD SAML araç seti 'ne erişim vererek Azure çoklu oturum a
 
     ![Azure AD SAML araç seti SAML yapılandırması](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**’a tıklayın.
 
     ![Azure AD SAML araç seti SSO oluştur](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -155,13 +155,13 @@ Bu bölümde, Azure AD SAML araç seti 'ne erişim vererek Azure çoklu oturum a
 
     1. **Dosya Seç** ' e tıklayın ve Azure Portal indirdiğiniz **sertifika (ham)** dosyasını karşıya yükleyin.
 
-    1. **Oluştur**' a tıklayın.
+    1. **Oluştur**’a tıklayın.
 
     1. SAML araç seti SSO yapılandırma sayfasında oturum açma URL 'sini, tanımlayıcıyı ve ACS URL değerlerini kopyalayın ve Azure portal **temel SAML yapılandırması bölümünde** , değer kutularına yapıştırın.
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Azure AD SAML araç seti test kullanıcısı oluşturma
 
-Bu bölümde, Azure AD SAML araç seti 'nde B. Simon adlı bir Kullanıcı oluşturulur. Azure AD SAML araç seti, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Azure AD SAML araç setinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Azure AD SAML araç seti 'nde B. Simon adlı bir Kullanıcı oluşturulur. Lütfen yeni bir Kullanıcı kaydederek ve tüm Kullanıcı ayrıntılarını sunarak araçta bir test kullanıcısı oluşturun. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -171,9 +171,9 @@ Erişim panelinde Azure AD SAML araç seti kutucuğuna tıkladığınızda, SSO 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

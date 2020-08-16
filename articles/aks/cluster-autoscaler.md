@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130843"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257514"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir kümeyi uygulama taleplerini karşılayacak şekilde otomatik olarak ölçeklendirme
 
@@ -20,12 +20,6 @@ Bu makalede, bir AKS kümesinde Küme otomatik olarak nasıl etkinleştirileceğ
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu makalede, Azure CLı sürüm 2.0.76 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
-
-## <a name="limitations"></a>Sınırlamalar
-
-Küme otomatik Scaler 'ı kullanan AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
-
-* HTTP uygulama yönlendirme eklentisi kullanılamıyor.
 
 ## <a name="about-the-cluster-autoscaler"></a>Küme otomatik yüklemesi hakkında
 
@@ -44,7 +38,7 @@ Hem yatay Pod otomatik Scaler hem de Cluster otomatik Scaler, gereken düğüm s
 
 Küme otomatik olarak ölçeklendirilmesine nasıl ölçeklenebileceğinize ilişkin daha fazla bilgi için bkz [. küme otomatik Scaler 'ın bir düğümü kaldırmasını engelleyebilir][autoscaler-scaledown]
 
-Küme otomatik yüklemesi, ölçek olayları ve kaynak eşikleri arasındaki zaman aralıkları gibi şeyler için başlangıç parametrelerini kullanır. Kümenin otomatik olarak kullandığı parametreler hakkında daha fazla bilgi için bkz [. küme otomatik Scaler parametreleri nedir?][autoscaler-parameters]
+Küme otomatik yüklemesi, ölçek olayları ve kaynak eşikleri arasındaki zaman aralıkları gibi şeyler için başlangıç parametrelerini kullanır. Küme otomatik tarafından kullanılan parametreler hakkında daha fazla bilgi için bkz. [Otomatik Scaler profilini kullanma](#using-the-autoscaler-profile).
 
 Küme ve yatay Pod otomatik scalers birlikte çalışabilir ve genellikle bir kümede dağıtılır. Birleştirildiğinde, yatay Pod otomatik Scaler, uygulama talebini karşılamak için gereken sayıda Pod çalıştırmaya odaklanılmıştır. Küme otomatik yüklemesi, zamanlanmış pods 'yi desteklemek için gereken düğüm sayısını çalıştırmaya odaklanır.
 
@@ -165,7 +159,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örneğin:
+Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örnek:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -182,7 +176,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik Scaler profilini ayarlama
 
-Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örneğin:
+Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az aks create \

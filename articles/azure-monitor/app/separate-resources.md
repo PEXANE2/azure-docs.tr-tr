@@ -3,12 +3,12 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420575"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258723"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
@@ -39,9 +39,9 @@ Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. T
 - Service Fabric uygulamalar ve klasik bulut hizmetleri için SDK otomatik olarak Azure rol ortamından okur ve bunları ayarlar. Diğer tüm uygulama türleri için büyük olasılıkla bunu açıkça ayarlamanız gerekecektir.
 -   Canlı ölçüm deneyimi, rol adına göre bölmeyi desteklemez.
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dinamik izleme anahtarı
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dinamik izleme anahtarı
 
-Kod üretim aşamaları arasında taşındığı için Ikey 'in değiştirilmesini kolaylaştırmak için yapılandırma dosyası yerine kodu olarak ayarlayın.
+Kod üretim aşamaları arasında taşındığı için Ikey 'in değiştirilmesini kolaylaştırmak için, sabit kodlanmış/statik bir değer kullanmak yerine anahtara dinamik olarak kod içinde başvurun.
 
 Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı ayarlayın:
 

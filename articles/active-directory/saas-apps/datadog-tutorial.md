@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/13/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7329c042618623806f28aacf5282e1ab6c718c5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 37cb55d6e2113b70ab196893a8d8d370ac1c9483
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79485583"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Öğretici: Dataköpek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile veri Köminin nasıl tüm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -44,7 +44,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Dataköpek **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Veri köklerinizi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infili korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Veri köklerinizi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 
 ## <a name="adding-datadog-from-the-gallery"></a>Galeriden veri köpek ekleme
@@ -59,7 +59,7 @@ Veri köbir kısmını Azure AD 'ye tümleştirmeyi yapılandırmak için galeri
 1. Sonuçlar panelinden **Dataköpek** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datadog"></a>Dataköpek için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-datadog"></a>Dataköpek için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu dataköpek ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve veri Köpedeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Dataköpek istemci destek ekibine](mailto:xuefwu@microsoft.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Dataköpek istemci destek ekibine](mailto:support@datadoghq.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **Kaydet**’e tıklayın.
 
@@ -109,9 +109,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -134,11 +134,11 @@ Bu bölümde, veri köpek erişimine izin vererek Azure çoklu oturum açma öze
 
 ## <a name="configure-datadog-sso"></a>Dataköpek SSO 'SU yapılandırma
 
-**Dataköpek** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [dataköpek destek ekibine](mailto:xuefwu@microsoft.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Dataköpek** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [dataköpek destek ekibine](mailto:support@datadoghq.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-datadog-test-user"></a>Dataköpek test kullanıcısı oluştur
 
-Bu bölümde, Dataköpek içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Dataköpek platformunda kullanıcıları eklemek için [dataköpek destek ekibi](mailto:xuefwu@microsoft.com) ile çalışın.
+Bu bölümde, Dataköpek içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Dataköpek platformunda kullanıcıları eklemek için [dataköpek destek ekibi](mailto:support@datadoghq.com) ile çalışın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -148,9 +148,9 @@ Erişim panelinde Dataköpek kutucuğunu tıklattığınızda, SSO 'yu ayarladı
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

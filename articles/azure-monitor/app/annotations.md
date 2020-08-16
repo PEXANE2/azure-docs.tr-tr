@@ -2,13 +2,13 @@
 title: Application Insights için sürüm ek açıklamaları | Microsoft Docs
 description: Application Insights içinde Ölçüm Gezgini grafiklerinize dağıtım veya yapı işaretçileri ekleyin.
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320672"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258412"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 'de ölçüm grafiklerindeki ek açıklamalar
 
@@ -68,6 +68,10 @@ Azure Pipelines sürüm şablonlarınızın her biri için ayrı bir API anahtar
    ![Azure DevOps değişkenleri sekmesinde Ekle ' yi seçin, ApiKey değişkenini adlandırın ve değer altına API anahtarını yapıştırın.](./media/annotations/7-paste-api-key.png)
    
 1. Şablonu kaydetmek için ana yayın şablonu penceresinde **Kaydet** ' i seçin.
+
+
+   > [!NOTE]
+   > API anahtarları için sınırlar [REST API hız limitleri belgelerinde](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)açıklanmıştır.
 
 ## <a name="view-annotations"></a>Ek açıklamaları görüntüle
 

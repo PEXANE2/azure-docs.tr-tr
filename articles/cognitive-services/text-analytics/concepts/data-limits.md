@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986823"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258279"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Metin Analizi API'si için veri ve hız sınırları
 <a name="data-limits"></a>
@@ -31,8 +31,8 @@ Boyut sınırlarını bulmak için bu makaleyi kullanın ve Metin Analizi API'si
 
 | Sınır | Değer |
 |------------------------|---------------|
-| Tek belge için maksimum boyut | [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ile ölçülen 5.120 karakter. |
-| İsteğin tamamının maksimum boyutu | 1 MB |
+| Tek belge için maksimum boyut | [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ile ölçülen 5.120 karakter. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
+| İsteğin tamamının maksimum boyutu | 1 MB. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
 
 Tek bir istekte gönderebilmeniz için en fazla belge sayısı, kullanmakta olduğunuz API sürümüne ve özelliğine bağlı olacaktır.
 
@@ -48,7 +48,7 @@ Aşağıdaki sınırlar API 'nin v3 sürümünde değiştirilmiştir. Aşağıda
 | Anahtar İfade Ayıklama | 10 |
 | Adlandırılmış Varlık Tanıma | 5 |
 | Varlık Bağlama | 5 |
-
+| Sistem durumu kapsayıcısı için Metin Analizi | 1000 |
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
 | Özellik | Istek başına en fazla belge | 
@@ -63,7 +63,7 @@ Aşağıdaki sınırlar API 'nin v3 sürümünde değiştirilmiştir. Aşağıda
 
 ## <a name="rate-limits"></a>Hız sınırları
 
-Oran sınırınız [fiyatlandırma katmanınızda](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)farklılık gösterecektir. Bu sınırlar, her iki API sürümü için de aynıdır.
+Oran sınırınız [fiyatlandırma katmanınızda](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)farklılık gösterecektir. Bu sınırlar, her iki API sürümü için de aynıdır. Bu hız limitleri, ayarlanan hız sınırına sahip olmayan sistem durumu kapsayıcısı için Metin Analizi uygulanmaz.
 
 | Katman          | Saniyedeki istek | Dakika başına istek |
 |---------------|---------------------|---------------------|

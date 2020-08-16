@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: c6c1b30716b52554afebe39562692de181dd7d1a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3e15adcac184a0609de3197181cb8c475a962e8d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921226"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258370"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
@@ -64,7 +64,7 @@ Yüksek aktarım hızı düzeylerinde (50.000 RU/sn 'den fazla) test ediyorsanı
 > [!NOTE] 
 > Yüksek CPU kullanımı, artan gecikme süresine ve istek zaman aşımı özel durumlarına neden olabilir.
 
-## <a name="networking"></a><a id="networking"></a>İşlemleri
+## <a name="networking"></a><a id="networking"></a> İşlemleri
 
 **Bağlantı ilkesi: doğrudan bağlantı modunu kullan**
 
@@ -79,14 +79,12 @@ Yüksek aktarım hızı düzeylerinde (50.000 RU/sn 'den fazla) test ediyorsanı
   * Doğrudan mod
 
     Doğrudan mod, TCP protokolü üzerinden bağlantıyı destekler.
-
-Ağ Geçidi modunda, Azure Cosmos DB MongoDB için Azure Cosmos DB API kullandığınızda 443 bağlantı noktasını ve 10250, 10255 ve 10256 bağlantı noktalarını kullanır. 10250 numaralı bağlantı noktası, coğrafi çoğaltma olmadan bir varsayılan MongoDB örneğiyle eşlenir. 10255 ve 10256 bağlantı noktaları, coğrafi çoğaltma içeren MongoDB örneğiyle eşlenir.
      
-Doğrudan modda TCP kullandığınızda, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından, 10000 ve 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir ( [Özel uç noktalarında](./how-to-configure-private-endpoints.md)doğrudan mod KULLANıLıRKEN, TCP bağlantı noktalarının tam aralığı-0 ile 65535 arasında). Bu bağlantı noktaları açık değilse ve TCP kullanmaya çalışırsanız, 503 hizmetinde kullanılamayan bir hata alırsınız. Bu tabloda, çeşitli API 'Ler ve her API için kullanılan hizmet bağlantı noktaları için kullanılabilen bağlantı modları gösterilmektedir:
+Doğrudan modda TCP kullandığınızda, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından 10000 ve 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir. [Özel uç noktalarında](./how-to-configure-private-endpoints.md)doğrudan mod KULLANıLıRKEN, TCP bağlantı noktalarının tam aralığı-0 ile 65535 arasında olmalıdır. Bu bağlantı noktaları açık değilse ve TCP protokolünü kullanmaya çalışırsanız, 503 hizmetinde kullanılamayan bir hata alırsınız. Aşağıdaki tabloda, çeşitli API 'Ler ve her API için kullanılan hizmet bağlantı noktaları için kullanılabilen bağlantı modları gösterilmektedir:
 
 |Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
 |---------|---------|---------|---------|
-|Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+|Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br> 10250 numaralı bağlantı noktası, coğrafi çoğaltma olmadan MongoDB örneği için varsayılan Azure Cosmos DB API 'sine eşlenir. Ancak 10255 ve 10256 bağlantı noktaları, coğrafi çoğaltma içeren örnekle eşlenir.   |
 |Direct    |     TCP    |  .NET SDK    | Ortak/hizmet uç noktaları kullanılırken: 10000 ile 20000 arasında bağlantı noktaları<br>Özel uç noktalar kullanılırken: 0 ila 65535 aralığındaki bağlantı noktaları |
 
 Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifreleme için TLS kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
@@ -121,10 +119,10 @@ Seyrek erişiminizin olduğu senaryolarda ve ağ geçidi modu erişimiyle karş�
 
 **İlk istekte başlangıç gecikmesini önlemek için OpenAsync çağrısı yapın**
 
-Varsayılan olarak, ilk isteğin, adres yönlendirme tablosunu getirmesi gerektiğinden gecikme süresi daha yüksektir. [SDK v2](sql-api-sdk-dotnet.md)'yi kullandığınızda, `OpenAsync()` ilk istekte bu başlangıç gecikmesini önlemek için başlatma sırasında bir kez çağrı yapın. Çağrı şöyle görünür:`await client.OpenAsync();`
+Varsayılan olarak, ilk isteğin, adres yönlendirme tablosunu getirmesi gerektiğinden gecikme süresi daha yüksektir. [SDK v2](sql-api-sdk-dotnet.md)'yi kullandığınızda, `OpenAsync()` ilk istekte bu başlangıç gecikmesini önlemek için başlatma sırasında bir kez çağrı yapın. Çağrı şöyle görünür: `await client.OpenAsync();`
 
 > [!NOTE]
-> `OpenAsync`, hesaptaki tüm kapsayıcılar için adres yönlendirme tablosunu elde etmek üzere istek üretir. Çok sayıda kapsayıcı içeren, ancak uygulaması bunların bir alt kümesine eriştiği hesaplar için, `OpenAsync` başlatmayı yavaş hale getirmek için gereksiz bir trafik miktarı oluşturur. Bu nedenle `OpenAsync` , uygulama başlangıcını yavaşladığı için kullanmak Bu senaryoda yararlı olmayabilir.
+> `OpenAsync` , hesaptaki tüm kapsayıcılar için adres yönlendirme tablosunu elde etmek üzere istek üretir. Çok sayıda kapsayıcı içeren, ancak uygulaması bunların bir alt kümesine eriştiği hesaplar için, `OpenAsync` başlatmayı yavaş hale getirmek için gereksiz bir trafik miktarı oluşturur. Bu nedenle `OpenAsync` , uygulama başlangıcını yavaşladığı için kullanmak Bu senaryoda yararlı olmayabilir.
 
 **Performans için aynı Azure bölgesindeki istemcileri birlikte bulun**
 
@@ -158,8 +156,8 @@ Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üze
 **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
 SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . Paralel sorgular, seri karşılığından daha iyi sorgu gecikmesi ve verimlilik sağlamak üzere tasarlanmıştır. Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki parametre sağlar: 
-- `MaxDegreeOfParallelism`paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
-- `MaxBufferedItemCount`önceden getirilen sonuçların sayısını denetler.
+- `MaxDegreeOfParallelism` paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
+- `MaxBufferedItemCount` önceden getirilen sonuçların sayısını denetler.
 
 ***Paralellik derecesi ayarlama***
 
@@ -204,7 +202,7 @@ Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısın
 > [!NOTE] 
 > `maxItemCount`Özelliği yalnızca sayfalandırma için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
 
-Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
+Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -231,7 +229,7 @@ collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabas
 
 Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Trafiği
+## <a name="throughput"></a><a id="measure-rus"></a> Trafiği
 
 **Düşük Istek birimleri/ikinci kullanım için ölçme ve ayarlama**
 

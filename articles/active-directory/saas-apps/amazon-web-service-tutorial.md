@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e23f516fe31b4a21232f75286540e6c0d9019d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a68a282a907817f1921acea911754bf78834b35
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923025"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257772"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -117,10 +117,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. AWS uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Ad  | Kaynak özniteliği  | Ad Alanı |
+    | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
-    | Role            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
+    | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | "900 saniye (15 dakika) ila 43200 saniye (12 saat) arasında bir değer belirtin" |  `https://aws.amazon.com/SAML/Attributes` |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** (3. adım) iletişim kutusunda **sertifika ekle**' yi seçin.
@@ -352,7 +352,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
     d. **Kaydet**' i seçerek ayarı kaydedin.
 
-3. **Ayarlar** bölümünde, **sağlama durumu**için **Açık**' ı seçin. Ardından **Kaydet**’i seçin.
+3. **Ayarlar** bölümünde, **sağlama durumu**için **Açık**' ı seçin. Sonra **Kaydet**'i seçin.
 
     ![Vurgulanan Ayarlar bölümünün ekran görüntüsü](./media/amazon-web-service-tutorial/provisioning2.png)
 
@@ -385,8 +385,6 @@ Erişim panelinde Amazon Web Services (AWS) kutucuğuna tıkladığınızda, SSO
 * Rollerin AWS 'den Azure AD 'ye aktarılmak için aşağıdaki gereksinimleri karşılaması gerekir:
 
   * Roller tam olarak bir SAML sağlayıcısına sahip olmalıdır ve AWS 'de tanımlı
-
-  * İçeri aktarılmakta olan bir rol için, ARN ve SAML sağlayıcı ARN rolünün Birleşik uzunluğu 119 karakter veya daha az olmalıdır
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

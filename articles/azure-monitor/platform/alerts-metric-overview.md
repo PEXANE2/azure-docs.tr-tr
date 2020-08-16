@@ -1,15 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-ms.date: 07/16/2020
+ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327149"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258431"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -135,12 +135,15 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Devlet | Çin |
+| Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler  | **Evet** | Hayır | Hayır |
-| SQL Server veritabanları | **Evet** | **Evet** | Hayır |
-| SQL Server elastik havuzlar | **Evet** | **Evet** | Hayır |
-| Veri kutusu uç cihazları | **Evet** | **Evet** | Hayır |
+| SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
+| SQL Server elastik havuzlar | **Evet** | **Evet** | **Evet** |
+| NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |
+| NetApp dosyaları birimleri | **Evet** | **Evet** | **Evet** |
+| Anahtar kasaları | **Evet** | **Evet** | **Evet** |
+| Veri kutusu uç cihazları | **Evet** | **Evet** | **Evet** |
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 

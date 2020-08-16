@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 52700df5c2977f33c988fcb34cdc3d67844d1d49
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924914"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257570"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için yakınlaştırmayı yapılandırma
 
@@ -50,7 +50,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için yakınlaştırmayı yapılandırma
 
-1. [Yakınlaştırma yönetici konsolunda](https://zoom.us/signin)oturum açın. Sol gezinti bölmesindeki **geliştiriciler Için gelişmiş > önizlemesi** ' ne gidin.
+1. [Yakınlaştırma yönetici konsolunda](https://zoom.us/signin)oturum açın. Sol gezinti bölmesinde **gelişmiş > Uygulama marketi** ' ne gidin.
 
     ![Tümleştirmeleri Yakınlaştır](media/zoom-provisioning-tutorial/zoom01.png)
 

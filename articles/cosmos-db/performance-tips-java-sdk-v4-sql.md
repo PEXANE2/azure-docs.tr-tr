@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d8ad191476416bc6ced35c4086d336b7f0a926cb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327846"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258306"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -47,7 +47,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Veri düzlemi istekleri için bağlantı modu, aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemleri kullanılarak Azure Cosmos db istemci Oluşturucusu 'nda yapılandırılır. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , *gatewaymode ()* için *gatewayconnectionconfig* .)
     
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
     # <a name="async"></a>[Eş](#tab/api-async)
 
@@ -65,7 +65,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     *Directmode ()* yönteminin aşağıdaki nedenlerle ek bir geçersiz kılma işlemi vardır. Veritabanı ve kapsayıcı CRUD gibi denetim düzlemi işlemleri *her zaman* ağ geçidi modunu kullanır; Kullanıcı, veri düzlemi işlemleri için doğrudan modu yapılandırmışsa, denetim düzlemi işlemleri varsayılan ağ geçidi modu ayarlarını kullanır. Bu, çoğu kullanıcıya uygun değildir. Ancak, veri düzlemi işlemleri için doğrudan mod ve denetim düzlemi ağ geçidi modu parametrelerinin tunyeteneğinin olmasını isteyen kullanıcıların aşağıdaki *Directmode ()* geçersiz kılmayı kullanması gerekir:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
     # <a name="async"></a>[Eş](#tab/api-async)
 
@@ -133,7 +133,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Aşağıdaki kod parçacıkları, sırasıyla Azure Cosmos DB istemcinizi zaman uyumsuz API veya eşitleme API 'SI işlemi için başlatmayı gösterir:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
     # <a name="async"></a>[Eş](#tab/api-async)
 
@@ -316,7 +316,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
-    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
     Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](indexing-policies.md).
 

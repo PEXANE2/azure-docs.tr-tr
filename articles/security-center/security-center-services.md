@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519261"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258619"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
 Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal makineleri ve sunucuları için kullanılabilen özellikleri gösterilmektedir.
 
-## <a name="supported-features-for-virtual-machines-and-servers"></a>Sanal makineler ve sunucular için desteklenen özellikler<a name="vm-server-features"></a>
+## <a name="supported-features-for-virtual-machines-and-servers"></a>Sanal makineler ve sunucular için desteklenen özellikler <a name="vm-server-features"></a>
 
 ### <a name="windows-machines"></a>[**Windows makineleri**](#tab/features-windows)
 
@@ -80,7 +80,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 >Yalnızca standart fiyatlandırma katmanında bulunan özelliklerle denemeler yapmak için ücretsiz katman kullanıcıları 30 günlük bir denemeye kaydolabilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 
-## <a name="supported-endpoint-protection-solutions"></a>Desteklenen Endpoint Protection çözümleri<a name="endpoint-supported"></a>
+## <a name="supported-endpoint-protection-solutions"></a>Desteklenen Endpoint Protection çözümleri <a name="endpoint-supported"></a>
 
 Aşağıdaki tabloda bir matrisi verilmiştir:
 
@@ -91,13 +91,13 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 
 | Uç Nokta Koruma| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Yes |
-| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Yes |
-| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
-| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | No | Yes**\*** |
-| Sophos v9 +| Linux sunucu ailesi  | No | Yes**\***  |
+| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016 veya üzeri| Hayır, işletim sisteminde yerleşik| Evet |
+| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
+| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Evet |
+| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
+| McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  **\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 

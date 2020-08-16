@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512512"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257434"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Öğretici: PowerShell kullanarak var olan bir sanal ağa HSM 'leri dağıtma
 
@@ -40,7 +40,7 @@ Bu öğretici, mevcut bir sanal ağla tümleştirildiği bir dizi HSM 'ye ve ger
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure ayrılmış HSM Azure portal Şu anda kullanılamıyor, bu nedenle hizmetle tüm etkileşim komut satırı veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell PowerShell 'i kullanacaktır. PowerShell 'i kullanmaya yeni başladıysanız başlangıç yönergelerini buradan izleyin: [Azure PowerShell kullanmaya](https://docs.microsoft.com/powershell/azure/get-started-azureps)başlayın.
+Azure ayrılmış HSM Azure portal Şu anda kullanılamıyor, bu nedenle hizmetle tüm etkileşim komut satırı veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell PowerShell 'i kullanacaktır. PowerShell 'i kullanmaya yeni başladıysanız başlangıç yönergelerini buradan izleyin: [Azure PowerShell kullanmaya](/powershell/azure/get-started-azureps)başlayın.
 
 Varsayımlar:
 
@@ -72,12 +72,12 @@ Bir HSM cihazı, müşterilerin sanal ağına temin edilir. Bu, bir alt ağ gere
 
 Dosyalar alındıktan sonra, kaynaklar için tercih ettiğiniz adları eklemek üzere parametre dosyasını düzenlemeniz gerekir. Bu, satırları "değer": "" ile düzenlemeniz anlamına gelir.
 
-- `namingInfix`HSM kaynaklarının adları için ön ek
-- `ExistingVirtualNetworkName`HSM 'ler için kullanılan sanal ağın adı
-- `DedicatedHsmResourceName1`Veri merkezi damgası 1 ' deki HSM kaynağının adı
-- `DedicatedHsmResourceName2`Veri merkezi damgasında HSM kaynağının adı 2
-- `hsmSubnetRange`HSMs için alt ağ IP adresi aralığı
-- `ERSubnetRange`VNET ağ geçidi için alt ağ IP adresi aralığı
+- `namingInfix` HSM kaynaklarının adları için ön ek
+- `ExistingVirtualNetworkName` HSM 'ler için kullanılan sanal ağın adı
+- `DedicatedHsmResourceName1` Veri merkezi damgası 1 ' deki HSM kaynağının adı
+- `DedicatedHsmResourceName2` Veri merkezi damgasında HSM kaynağının adı 2
+- `hsmSubnetRange` HSMs için alt ağ IP adresi aralığı
+- `ERSubnetRange` VNET ağ geçidi için alt ağ IP adresi aralığı
 
 Bu değişikliklere bir örnek aşağıdaki gibidir:
 
@@ -259,7 +259,7 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 Öğreticideki adımları tamamladıktan sonra, adanmış HSM kaynakları sanal ağınızda sağlanır ve kullanılabilir. Artık bu dağıtımı tercih ettiğiniz dağıtım mimariniz için gereken diğer kaynaklarla karmaşıklama eden bir pozisyonda olursunuz. Dağıtımınızı planlamaya yardımcı olma hakkında daha fazla bilgi için bkz. kavramlar belgeleri. Birincil bölgedeki iki HSM 'yi raf düzeyinde adresleyen ve bir ikincil bölgedeki iki HSM 'nin bölgesel kullanılabilirliği ele aldığı bir tasarımın olması önerilir. Bu öğreticide kullanılan şablon dosyası, iki HSM dağıtımı için temel olarak kolayca kullanılabilir, ancak parametrelerinizi karşılamak için parametrelerinin değiştirilmesini gerektirir.
 
-* [Yüksek kullanılabilirlik](high-availability.md)
+* [Yüksek Kullanılabilirlik](high-availability.md)
 * [Fiziksel güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [İzleme](monitoring.md)

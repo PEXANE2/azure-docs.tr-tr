@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512100"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258671"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure veri paylaşımının kullanıldığı verileri kabul edin ve alın  
 
@@ -23,7 +23,7 @@ Bu öğreticide, Azure veri paylaşma kullanarak bir veri paylaşımının davet
 > * Verileriniz için bir hedef belirtin
 > * Zamanlanmış yenileme için veri paylaşımınıza abonelik oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir veri paylaşma davetini kabul etmeden önce, aşağıda listelenen birkaç Azure kaynağı sağlamalısınız. 
 
 Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün tamamlandığından emin olun. 
@@ -93,38 +93,35 @@ Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün 
 
    **Alınan paylaşma adı** alanı için, veriler tarafından belirtilen varsayılanı bırakabilir veya alınan paylaşıma yönelik yeni bir ad belirtebilirsiniz. 
 
-   ![Hedef veri paylaşma hesabı](./media/target-data-share.png "Hedef veri paylaşma hesabı") 
-
-1. Kullanım koşullarını kabul ettikten ve paylaşımınız için bir konum belirttikten sonra *kabul et ve Yapılandır*' ı seçin. Bir paylaşma aboneliği oluşturulacak.
-
-   Anlık görüntü tabanlı paylaşım için bir sonraki ekranda, verilerinize kopyalanacak bir hedef depolama hesabı seçmeniz istenir. 
+   Kullanım koşullarını kabul ettikten ve alınan paylaşımınızı yönetmek için bir veri paylaşma hesabı belirttikten sonra **kabul et ve Yapılandır**' ı seçin. Bir paylaşma aboneliği oluşturulacak. 
 
    ![Kabul etme seçenekleri](./media/accept-options.png "Kabul etme seçenekleri") 
 
-   Şimdi daveti kabul etmek ancak hedef veri deponuzu daha sonra yapılandırmak isterseniz, *kabul et ve Yapılandır*' ı seçin. Depolama alanınızı daha sonra yapılandırmaya devam etmek için veri paylaşma yapılandırmanızı nasıl sürdürüleceği hakkında ayrıntılı adımlar için bkz. veri [kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md) sayfası. 
-
-   Yerinde paylaşım için, veri paylaşımı yapılandırmanızı nasıl sürdürüleceği hakkında ayrıntılı adımlar için bkz. veri [kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md) sayfası. 
+   Bu sizi, veri paylaşma hesabınızda alınan paylaşımınızdan size götürür. 
 
    Daveti kabul etmek istemiyorsanız *Reddet*' i seçin. 
 
-## <a name="configure-storage"></a>Depolama alanını yapılandırma
-1. *Hedef depolama ayarları*altında, verilerinizi almak istediğiniz aboneliği, kaynak grubunu ve depolama hesabını seçin. 
+## <a name="configure-received-share"></a>Alınan paylaşma yapılandırma
+Verileri almak istediğiniz yeri yapılandırmak için aşağıdaki adımları izleyin.
 
-   ![Hedef depolama ayarları](./media/target-storage-settings.png "Hedef depolama") 
+1. **Veri kümeleri** sekmesini seçin. hedef atamak istediğiniz veri kümesinin yanındaki kutuyu işaretleyin. Hedef veri deposu seçmek için **+ hedefe eşle** öğesini seçin. 
 
-1. Verilerinizin düzenli olarak güncelleştirilmesini sağlamak için, anlık görüntü ayarlarını etkinleştirdiğinizden emin olun. Veri sağlayıcınız onu veri paylaşımında içerdiğine yalnızca bir anlık görüntü ayarı görürsünüz. 
+   ![Hedefle eşle](./media/dataset-map-target.png "Hedefle eşle") 
 
-   ![Anlık görüntü ayarları](./media/snapshot-settings.png "Anlık görüntü ayarları") 
+1. Verilerin içinde olmasını istediğiniz hedef veri deposu türünü seçin. Hedef veri deposundaki tüm veri dosyaları veya tablolar aynı yol ve ada sahip olacak şekilde üzerine yazılır. 
 
-1. *Kaydet*'i seçin. 
+   Yerinde paylaşım için, belirtilen konumda bir veri deposu seçin. Konum, veri sağlayıcısının kaynak veri deposunun bulunduğu Azure veri merkezindedir. Veri kümesi eşlendikten sonra, verilere erişmek için Hedef yoldaki bağlantıyı takip edebilirsiniz.
 
-> [!IMPORTANT]
-> SQL tabanlı verileri alıyorsanız ve bu verileri SQL tabanlı bir kaynağa almak istiyorsanız, veri kümeniz için hedef olarak SQL Server yapılandırmayı öğrenmek üzere [bir veri kümesi eşleme](how-to-configure-mapping.md) nasıl yapılır Kılavuzu ' nu ziyaret edin. 
+   ![Hedef depolama hesabı](./media/dataset-map-target-sql.png "Hedef depolama") 
+
+1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verilere düzenli güncelleştirme sağlamak üzere bir anlık görüntü zamanlaması oluşturmışsa, **anlık görüntü zamanlaması sekmesini seçerek** de anlık görüntü zamanlamasını etkinleştirebilirsiniz. anlık görüntü zamanlamasının yanındaki kutuyu işaretleyin ve **+ Etkinleştir**' i seçin.
+
+   ![Anlık görüntü zamanlamasını etkinleştir](./media/enable-snapshot-schedule.png "Anlık görüntü zamanlamasını etkinleştir")
 
 ## <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleyin
 Bu adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
 
-1. Alınan paylaşımlar-> Ayrıntılar sekmesinde bir anlık görüntüyü **tetikleyici anlık görüntüsünü**seçerek tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. 
+1. **Ayrıntılar** sekmesini ve ardından **tetikleyici anlık görüntüsünü**seçerek bir anlık görüntü tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. 
 
    ![Görüntüyü Tetikle](./media/trigger-snapshot.png "Görüntüyü Tetikle") 
 
@@ -133,7 +130,7 @@ Bu adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
    ![Tüketici veri kümeleri](./media/consumer-datasets.png "Tüketici veri kümesi eşleme") 
 
 ## <a name="view-history"></a>Geçmişi görüntüleme
-Anlık görüntülerinizin geçmişini görüntülemek için, alınan paylaşımlar-> geçmişi ' ne gidin. Burada, son 60 gün için oluşturulan tüm anlık görüntülerin geçmişini bulacaksınız. 
+Bu adım yalnızca anlık görüntü tabanlı paylaşım için geçerlidir. Anlık görüntülerinizin geçmişini görüntülemek için **Geçmiş** sekmesini seçin. Burada, son 30 gün için oluşturulan tüm anlık görüntülerin geçmişini bulacaksınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, bir Azure veri paylaşımının nasıl kabul edileceği ve alınacağı hakkında daha fazla öğrendiniz. Azure veri paylaşımında kavramlar hakkında daha fazla bilgi edinmek için bkz. [Azure veri paylaşma terminolojisi](terminology.md).

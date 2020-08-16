@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d354a36a053f8d57bc6ffc57fb76de1a85aa098
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70743978"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Öğretici: yakınlaştırma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, yakınlaştırmayı Azure Active Directory (Azure AD) ile tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -87,6 +87,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<companyname>.zoom.us`
 
+    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.zoom.us`
+
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
@@ -112,9 +114,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
     1. **Ad** alanına `B.Simon` girin.  
-    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1. **Oluştur**' a tıklayın.
+    1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -140,13 +142,13 @@ Bu bölümde, yakınlaştırma erişimi vererek Azure çoklu oturum açma özell
 
 2. **Çoklu oturum açma** sekmesine tıklayın.
 
-    ![Çoklu oturum açma sekmesi](./media/zoom-tutorial/ic784700.png "Çoklu oturum açma")
+    ![Çoklu oturum açma sekmesi](./media/zoom-tutorial/zoom-sso1.png "Çoklu oturum açma")
 
 3. **Güvenlik denetimi** sekmesine tıklayın ve ardından **Çoklu oturum açma** ayarlarına gidin.
 
 4. Çoklu oturum açma bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açma bölümü](./media/zoom-tutorial/ic784701.png "Çoklu oturum açma")
+    ![Çoklu oturum açma bölümü](./media/zoom-tutorial/zoom-sso2.png "Çoklu oturum açma")
 
     a. **Oturum açma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -166,10 +168,10 @@ Bu bölümde, yakınlaştırma erişimi vererek Azure çoklu oturum açma özell
 
     f. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın. 
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Değişiklikleri Kaydet**’e tıklayın.
 
     > [!NOTE]
-    > Daha fazla bilgi için yakınlaştırma belgelerini ziyaret edin[https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
+    > Daha fazla bilgi için yakınlaştırma belgelerini ziyaret edin [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
 
 ### <a name="create-zoom-test-user"></a>Yakınlaştırma testi kullanıcısı oluştur
 
@@ -186,9 +188,9 @@ Erişim panelinde yakınlaştırma kutucuğuna tıkladığınızda, SSO 'yu ayar
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

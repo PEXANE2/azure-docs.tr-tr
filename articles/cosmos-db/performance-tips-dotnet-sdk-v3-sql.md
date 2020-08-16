@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987265"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258340"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -71,15 +71,12 @@ Yüksek aktarım hızı düzeylerinde (50.000 RU/sn 'den fazla) test ediyorsanı
      Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin Azure Cosmos DB her okunışında veya üzerine yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması olduğundan doğrudan mod daha iyi performans sunar. Ayrıca, sınırlı sayıda soket bağlantısı olan ortamlarda uygulamalar çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
 
      Azure Işlevlerinde SDK kullandığınızda, özellikle [Tüketim planında](../azure-functions/functions-scale.md#consumption-plan), [bağlantılardaki geçerli limitlerin](../azure-functions/manage-connections.md)farkında olun. Bu durumda, Azure Işlevleri uygulamanızdaki diğer HTTP tabanlı istemcilerle de çalışıyorsanız ağ geçidi modu daha iyi olabilir.
-
-
-Ağ Geçidi modunda, Azure Cosmos DB MongoDB için Azure Cosmos DB API kullandığınızda 443 bağlantı noktasını ve 10250, 10255 ve 10256 bağlantı noktalarını kullanır. 10250 numaralı bağlantı noktası, coğrafi çoğaltma olmadan bir varsayılan MongoDB örneğiyle eşlenir. 10255 ve 10256 bağlantı noktaları, coğrafi çoğaltma içeren MongoDB örneğiyle eşlenir.
      
-Doğrudan modda TCP kullandığınızda, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından, 10000 ve 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir ( [Özel uç noktalarında](./how-to-configure-private-endpoints.md)doğrudan mod KULLANıLıRKEN, TCP bağlantı noktalarının tam aralığı-0 ile 65535 arasında). Bağlantı noktaları, standart Azure VM yapılandırması için varsayılan olarak açıktır. Bu bağlantı noktaları açık değilse ve TCP kullanmaya çalışırsanız, 503 hizmetinde kullanılamayan bir hata alırsınız. Bu tabloda, çeşitli API 'Ler ve her API için kullanılan hizmet bağlantı noktaları için kullanılabilen bağlantı modları gösterilmektedir:
+Doğrudan modda TCP kullandığınızda, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından 10000 ve 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir. [Özel uç noktalarında](./how-to-configure-private-endpoints.md)doğrudan mod KULLANıLıRKEN, TCP bağlantı noktalarının tam aralığı-0 ile 65535 arasında olmalıdır. Bağlantı noktaları, standart Azure VM yapılandırması için varsayılan olarak açıktır. Bu bağlantı noktaları açık değilse ve TCP kullanmaya çalışırsanız, 503 hizmetinde kullanılamayan bir hata alırsınız. Aşağıdaki tabloda, çeşitli API 'Ler ve her API için kullanılan hizmet bağlantı noktaları için kullanılabilen bağlantı modları gösterilmektedir:
 
 |Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
 |---------|---------|---------|---------|
-|Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+|Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br> 10250 numaralı bağlantı noktası, coğrafi çoğaltma olmadan MongoDB örneği için varsayılan Azure Cosmos DB API 'sine eşlenir. Ancak 10255 ve 10256 bağlantı noktaları, coğrafi çoğaltma içeren örnekle eşlenir.   |
 |Direct    |     TCP    |  .NET SDK    | Ortak/hizmet uç noktaları kullanılırken: 10000 ile 20000 arasında bağlantı noktaları<br>Özel uç noktalar kullanılırken: 0 ila 65535 aralığındaki bağlantı noktaları |
 
 Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifreleme için TLS kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
@@ -167,8 +164,8 @@ Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üze
 **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
 SQL .NET SDK Paralel sorguları destekler, bu, bölümlenmiş bir kapsayıcıyı paralel olarak sorgulamanızı sağlar. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs) . Paralel sorgular, seri karşılığından daha iyi sorgu gecikmesi ve verimlilik sağlamak üzere tasarlanmıştır. Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki parametre sağlar: 
-- `MaxConcurrency`paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
-- `MaxBufferedItemCount`önceden getirilen sonuçların sayısını denetler.
+- `MaxConcurrency` paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
+- `MaxBufferedItemCount` önceden getirilen sonuçların sayısını denetler.
 
 ***Eşzamanlılık derecesi ayarlama***
 

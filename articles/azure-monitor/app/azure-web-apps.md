@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245494"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258739"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -123,8 +123,6 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 
    * Ayarları **Kaydedin** ve uygulamanızı **Yeniden başlatın**.
 
-![Uygulama ayarları Kullanıcı arabiriminin ekran görüntüsü](./media/azure-web-apps/appinsights-javascript-enabled.png)
-
 İstemci tarafı izlemeyi devre dışı bırakmak için, uygulama ayarlarından ilişkili anahtar değer çiftini kaldırın ya da değeri false olarak ayarlayın.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
@@ -141,8 +139,6 @@ Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
      Değer: `false`
 
    * Ayarları **Kaydedin** ve uygulamanızı **Yeniden başlatın**.
-
-![Uygulama ayarları Kullanıcı arabiriminin ekran görüntüsü](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

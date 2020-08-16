@@ -3,31 +3,16 @@ title: Danışman ile uygulamanızın güvenilirliğini geliştirme
 description: İş açısından kritik Azure dağıtımlarınızda güvenilirliği sağlamak ve geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057680"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258495"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
 
 Azure Advisor, iş açısından kritik uygulamalarınızın devamlılığını sağlamanıza ve iyileştirmenize yardımcı olur. Danışman panosunun **güvenilirlik** sekmesinde, Advisor 'ın güvenilirlik önerilerini edinebilirsiniz.
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Sanal makine hata toleransı sağlayın
-
-Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz. Danışman, bir kullanılabilirlik kümesinin parçası olmayan sanal makineleri tanımlar ve bunları bir tane içine taşımayı önerir. Bu yapılandırma, planlı veya planlanmamış bakım sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve Azure sanal makine SLA 'sını karşılar. Sanal makine için bir kullanılabilirlik kümesi oluşturmayı veya var olan bir kullanılabilirlik kümesine sanal makineyi eklemeyi seçebilirsiniz.
-
-> [!NOTE]
-> Bir kullanılabilirlik kümesi oluşturmayı seçerseniz, buna en az bir sanal makine eklemeniz gerekir. Bir kesinti sırasında en az bir makinenin kullanılabilir olduğundan emin olmak için bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz.
-
-## <a name="ensure-availability-set-fault-tolerance"></a>Kullanılabilirlik kümesi hata toleransı sağlayın
-
-Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz. Danışman tek bir sanal makine içeren kullanılabilirlik kümelerini tanımlar ve kendisine bir veya daha fazla sanal makine eklenmesini önerir.Bu yapılandırma, planlı veya planlanmamış bakım sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve Azure sanal makine SLA 'sını karşılar.Bir sanal makine oluşturmayı veya var olan bir sanal makineyi kullanılabilirlik kümesine eklemeyi seçebilirsiniz.  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Veri güvenilirliğini artırmak için yönetilen diskleri kullanma
-
-Depolama hesaplarını veya depolama ölçek birimlerini paylaşan diskler içeren bir kullanılabilirlik kümesindeki sanal makineler, kesintiler sırasında tek depolama ölçek birimlerine yönelik hatalara dayanıklı değildir. Advisor bu kullanılabilirlik kümelerini tanımlar ve Azure yönetilen disklere geçiş yapmanızı önerir. Bu geçiş, kullanılabilirlik kümesindeki sanal makinelerin disklerinin, tek bir hata noktası oluşmasını önlemek için yeterince yalıtılmış olmasını sağlar. 
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Denetim noktası ağ sanal gereç görüntünüzün sürümünü denetleyin
 
@@ -73,6 +58,21 @@ Azure Danışmanı, temel SKU kullanan tüm VPN ağ geçitlerini denetler ve bun
 - Etkin-etkin yapılandırma seçenekleri. 
 - Özel IPSec/ıKE ilkesi. 
 - Daha yüksek kararlılık ve kullanılabilirlik.
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>Sanal makine hata toleransı sağlayın (geçici olarak devre dışı)
+
+Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz. Danışman, bir kullanılabilirlik kümesinin parçası olmayan sanal makineleri tanımlar ve bunları bir tane içine taşımayı önerir. Bu yapılandırma, planlı veya planlanmamış bakım sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve Azure sanal makine SLA 'sını karşılar. Sanal makine için bir kullanılabilirlik kümesi oluşturmayı veya var olan bir kullanılabilirlik kümesine sanal makineyi eklemeyi seçebilirsiniz.
+
+> [!NOTE]
+> Bir kullanılabilirlik kümesi oluşturmayı seçerseniz, buna en az bir sanal makine eklemeniz gerekir. Bir kesinti sırasında en az bir makinenin kullanılabilir olduğundan emin olmak için bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz.
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Kullanılabilirlik kümesi hata toleransı sağlayın (geçici olarak devre dışı)
+
+Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz. Danışman tek bir sanal makine içeren kullanılabilirlik kümelerini tanımlar ve kendisine bir veya daha fazla sanal makine eklenmesini önerir.Bu yapılandırma, planlı veya planlanmamış bakım sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve Azure sanal makine SLA 'sını karşılar.Bir sanal makine oluşturmayı veya var olan bir sanal makineyi kullanılabilirlik kümesine eklemeyi seçebilirsiniz.  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Veri güvenilirliğini artırmak için yönetilen diskleri kullanma (geçici olarak devre dışı)
+
+Depolama hesaplarını veya depolama ölçek birimlerini paylaşan diskler içeren bir kullanılabilirlik kümesindeki sanal makineler, kesintiler sırasında tek depolama ölçek birimlerine yönelik hatalara dayanıklı değildir. Advisor bu kullanılabilirlik kümelerini tanımlar ve Azure yönetilen disklere geçiş yapmanızı önerir. Bu geçiş, kullanılabilirlik kümesindeki sanal makinelerin disklerinin, tek bir hata noktası oluşmasını önlemek için yeterince yalıtılmış olmasını sağlar. 
 
 ## <a name="repair-invalid-log-alert-rules"></a>Geçersiz günlük uyarısı kurallarını Onar
 
