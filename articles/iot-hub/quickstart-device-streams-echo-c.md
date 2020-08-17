@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/17/2020
 ms.locfileid: "83727187"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C 'deki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
@@ -26,7 +26,7 @@ Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure
 
 * [IoT Hub cihaz akışları aracılığıyla C# ' deki cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-csharp.md)
 
-* [IoT Hub cihaz akışları aracılığıyla Node. js ' de cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-nodejs.md)
+* [IoT Hub cihaz akışları aracılığıyla Node.js cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-nodejs.md)
 
 Bu hızlı başlangıçta cihaz tarafı C uygulaması aşağıdaki işlevlere sahiptir:
 
@@ -40,7 +40,7 @@ Kod, bir cihaz akışının başlatma sürecini ve veri göndermek ve almak içi
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulların olması gerekir:
 
@@ -58,7 +58,7 @@ Aşağıdaki önkoşulların olması gerekir:
 
 Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 
-  * Orta ABD
+  * Central US
   * EUAP Orta ABD
   * Kuzey Avrupa
   * Güneydoğu Asya
@@ -194,7 +194,7 @@ Daha önce belirtildiği gibi, IoT Hub C SDK 'Sı yalnızca cihaz tarafında cih
 
 * [IoT Hub cihaz akışları aracılığıyla C# ' de bir cihaz uygulamasıyla iletişim kurma](./quickstart-device-streams-echo-csharp.md)
 
-* [IoT Hub cihaz akışları aracılığıyla Node. js ' de bir cihaz uygulamasıyla iletişim kurma](./quickstart-device-streams-echo-nodejs.md)
+* [IoT Hub cihaz akışları aracılığıyla Node.js bir cihaz uygulamasıyla iletişim kurma](./quickstart-device-streams-echo-nodejs.md)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
