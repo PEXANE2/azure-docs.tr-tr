@@ -1,18 +1,18 @@
 ---
 title: Azure savunma | Microsoft Docs
-description: Azure savunma hakkında bilgi edinin
+description: RDP/SSH bağlantı noktalarını dışarıdan açığa çıkarmadan sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlayan Azure savunma hakkında bilgi edinin.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411116"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270351"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
 

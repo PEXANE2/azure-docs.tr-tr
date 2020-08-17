@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84297913"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270674"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -134,7 +134,7 @@ Evet, bkz. [dil özelleştirmesi](user-flow-language-customization.md). 36 dil i
 
 Azure AD B2C kiracınızı silmek için aşağıdaki adımları izleyin.
 
-Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalar (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalar (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
@@ -154,7 +154,7 @@ Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalar (es
 1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
-1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.
+1. **Genel bakış** sayfasında, **kiracı Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 

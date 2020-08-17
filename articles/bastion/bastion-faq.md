@@ -1,18 +1,18 @@
 ---
 title: Azure savunma hakkında SSS | Microsoft Docs
-description: Azure savunma için SSS
+description: Kullanılabilirlik, kaç tane eşzamanlı oturum desteklendiği, yapılandırma sonrası sorunlar ve fiyatlandırmayla ilgili sık sorulan soruların adreslendirmesi.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: charwen
-ms.openlocfilehash: a37ca4b9977a1d2bd51a6153f4da1b65c1c916be
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: e546888689ff290c750d594f1e737857049bf1ff
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276133"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270555"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion SSS
 

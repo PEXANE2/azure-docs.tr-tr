@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs bir laboratuvara etiket ekleme | Microsoft Docs
-description: Azure DevTest Labs laboratuvara nasıl etiket ekleneceğini öğrenin
+description: Azure DevTest Labs özel Etiketler oluşturmayı ve kaynakları kategorilere ayırmak için etiketleri kullanmayı öğrenin. Aboneliğinizde etiketi olan tüm kaynakları görebilirsiniz.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287583"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270742"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvara etiket ekleme
 

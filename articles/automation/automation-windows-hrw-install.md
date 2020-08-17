@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448042"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270589"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -18,7 +18,7 @@ Runbook 'u doğrudan rolü barındıran makinede ve bu yerel kaynakları yönetm
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun.
 
@@ -138,9 +138,15 @@ PowerShell komut satırı kabuğu 'nda indirdiğiniz betiği içeren klasöre gi
 Betiği çalıştırdıktan sonra Azure ile kimlik doğrulaması yapmanız istenir. Abonelik yöneticileri rolünün üyesi ve aboneliğin ortak Yöneticisi olan bir hesapla oturum açmalısınız.
 
 ```powershell-interactive
-.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <nameOfAutomationAccount> -AAResourceGroupName <nameOfResourceGroup>`
--OMSResourceGroupName <nameOfOResourceGroup> -HybridGroupName <nameOfHRWGroup> `
--SubscriptionID <subscriptionId> -WorkspaceName <nameOfLogAnalyticsWorkspace>
+$NewOnPremiseHybridWorkerParameters = @{
+  AutomationAccountName = <nameOfAutomationAccount>
+  AAResourceGroupName   = <nameOfResourceGroup>
+  OMSResourceGroupName  = <nameOfResourceGroup>
+  HybridGroupName       = <nameOfHRWGroup>
+  SubscriptionID        = <subscriptionId>
+  WorkspaceName         = <nameOfLogAnalyticsWorkspace>
+}
+.\New-OnPremiseHybridWorker.ps1 @NewOnPremiseHybridWorkerParameters
 ```
 
 ### <a name="step-4---install-nuget"></a>4. adım-NuGet 'i yükler

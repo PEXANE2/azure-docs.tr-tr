@@ -1,18 +1,18 @@
 ---
 title: 'Azure savunma Konağı oluşturma: Portal'
-description: Bu makalede, portalı kullanarak bir Azure savunma Konağı oluşturmayı öğrenin
+description: Bu makalede, bir sanal ağdaki tüm sanal makinelere RDP/SSH bağlantısı sağlayan bir Azure savunma ana bilgisayarı oluşturma hakkında bilgi edinin.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744281"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270759"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Portalı kullanarak bir Azure savunma Konağı oluşturma
 
@@ -30,7 +30,7 @@ Aşağıdaki Azure ortak bölgelerinde kullanıma sunulmuştur:
 
 Bu bölüm Azure portal yeni bir Azure savunma kaynağı oluşturmanıza yardımcı olur.
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 1. **Yeni** sayfada, *marketi ara* **alanında, giriş yazın ve**ardından arama sonuçlarına ulaşmak için **ENTER** ' a tıklayın.
 
