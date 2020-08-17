@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439364"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271286"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Öğretici: Azure Machine Learning'i bir IoT Edge modülü olarak dağıtma (önizleme)
 
@@ -49,7 +49,7 @@ Bulut kaynakları:
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * Azure Machine Learning çalışma alanı. Bir tane oluşturmak için Azure Machine Learning kullanmaya başlamak ve nasıl kullanılacağını öğrenmek için [Azure Portal kullanma](../machine-learning/tutorial-1st-experiment-sdk-setup.md) bölümündeki yönergeleri izleyin.
-  * Çalışma alanı adı, kaynak grubu ve abonelik KIMLIĞI ' ni bir yere getirin. Bu değerler, Azure portal çalışma alanına genel bakış üzerinden kullanılabilir. Bu değerleri öğreticide daha sonra çalışma alanı kaynaklarınıza bir Azure Not defteri bağlamak için kullanacaksınız.
+  * Çalışma alanı adı, kaynak grubu ve abonelik KIMLIĞI ' ni bir yere getirin. Bu değerler, Azure portal çalışma alanına genel bakış üzerinden kullanılabilir. Azure Notebooks bir dosyayı çalışma alanı kaynaklarınıza bağlamak için öğreticide daha sonra bu değerleri kullanacaksınız.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning modülünü oluşturun ve dağıtın
 

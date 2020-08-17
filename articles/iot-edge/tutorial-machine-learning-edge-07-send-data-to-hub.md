@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 718f4c0b41400ae2e35b88820b2d4154dab23111
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610090"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272833"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 
@@ -109,7 +109,7 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
 1. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak cihazımızın sonuçlarını gözlemleyebiliriz.
 
@@ -225,7 +225,7 @@ Bu uçtan uca öğretici tarafından kullanılan kaynakları keşfetmeye çalı�
 
 1. Geliştirme VM 'si, IoT Edge VM, IoT Hub, depolama hesabı, Machine Learning çalışma alanı hizmeti (ve oluşturulan kaynaklar: kapsayıcı kayıt defteri, Application Insights, Anahtar Kasası, depolama hesabı) tutmak üzere oluşturulan kaynak gruplarını silin.
 
-1. [Azure not defterlerinde](https://notebooks.azure.com)makine öğrenimi projesini silin.
+1. Machine Learning projesini [Azure Notebooks](https://notebooks.azure.com)silin.
 
 1. Depoyu yerel olarak klondıysanız, yerel depoya başvuran tüm PowerShell veya VS Code pencerelerini kapatın ve sonra depo dizinini silin.
 

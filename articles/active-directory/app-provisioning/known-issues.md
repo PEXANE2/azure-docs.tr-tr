@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 08/12/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 127629cb0102c2736995364db9202cd837d99a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214291"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271014"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
 Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
@@ -66,9 +66,11 @@ Azure AD Şu anda null öznitelikler sağlayamaz. Kullanıcı nesnesinde bir öz
 - İç içe grupların sağlanması desteklenmez. 
 - Bu kiracılar için sağlama, kiracının boyutu nedeniyle desteklenmiyor. 
 
+**Sağlama aralığı düzeltildi** Sağlama döngüleri arasındaki [süre](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) Şu anda yapılandırılamaz. 
+
 **Değişiklikler hedef uygulamadan Azure AD 'ye taşınmıyor**
 
-Uygulama sağlama hizmeti dış uygulamalarda yapılan değişikliklerden haberdar değildir. Bu nedenle, geri alınacak bir eylem yapılmaz. Uygulama sağlama hizmeti, Azure AD 'de yapılan değişiklikleri temel alır.  
+Uygulama sağlama hizmeti dış uygulamalarda yapılan değişikliklerden haberdar değildir. Bu nedenle, geri alınacak bir eylem yapılmaz. Uygulama sağlama hizmeti, Azure AD 'de yapılan değişiklikleri temel alır. 
 
 **Sağlama çevrimi tamamlanana kadar devam ediyor**
 

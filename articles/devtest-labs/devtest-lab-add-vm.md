@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs 'de laboratuvara VM ekleme | Microsoft Docs
-description: Azure DevTest Labs ' de bir laboratuvara sanal makine eklemeyi öğrenin
+description: Azure DevTest Labs bir laboratuvara sanal makine eklemek için Azure portal nasıl kullanacağınızı öğrenin. Özel bir görüntü veya formül olan bir tabanı seçebilirsiniz.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a872fdaa3d7d5b2cf5aff17ea15d07604dc287b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483967"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270725"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuvara VM ekleme
 [İlk sanal makineyi zaten oluşturduysanız](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), büyük olasılıkla önceden yüklenmiş bir [Market görüntüsünden](devtest-lab-configure-marketplace-images.md)olabilirsiniz. Bundan sonra laboratuvarıza sonraki VM 'Ler eklemek istiyorsanız, [özel bir görüntü](devtest-lab-create-template.md) veya [Formül](devtest-lab-manage-formulas.md)olan bir *tabanı* da seçebilirsiniz. Bu öğreticide, DevTest Labs içindeki bir laboratuvara VM eklemek için Azure portal kullanma adımları gösterilmektedir.

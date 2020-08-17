@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT kümesi ayarlama-Azure
-description: Azure için avere vFXT içindeki performansı iyileştirmek için özel ayarlara genel bakış
+description: Azure için avere vFXT içindeki vFXT kümeleri için bir destek temsilcisiyle çalışarak, bazı özel ayarlama hakkında bilgi edinin.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 2d06e3cc80f05cc86980dd2570d1d4d203295ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d9f81c9438cb992f81bd3e6319532d67db75552
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505299"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272391"
 ---
 # <a name="cluster-tuning"></a>Küme ayarlama
 

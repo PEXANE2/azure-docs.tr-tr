@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT-Azure 'ı bağlama
-description: Azure için avere vFXT ile istemcileri bağlama
+description: Azure için avere vFXT 'deki vFXT kümenize istemcileri bağlamayı ve Küme düğümleriniz arasında istemci trafiği yükünü nasıl dengeleyeceğinizi öğrenin.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229576"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272580"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT kümesini takma
 
@@ -64,7 +64,7 @@ Yukarıdaki işlev, [avere vFXT örnekleri](https://github.com/Azure/Avere#tutor
 > [!NOTE]
 > Avere vFXT kümenizi oluştururken yeni bir blob kapsayıcısı oluşturmadıysanız, istemcileri bağlamaya çalışmadan önce depolama birimi [yapılandırma](avere-vfxt-add-storage.md) bölümünde açıklandığı gibi depolama sistemleri ekleyin.
 
-Komut, istemcinizden ``mount`` vFXT kümesindeki sanal sunucuyu (vServer) yerel dosya sisteminde bir yola eşler. Biçim``mount <vFXT path> <local path> {options}``
+Komut, istemcinizden ``mount`` vFXT kümesindeki sanal sunucuyu (vServer) yerel dosya sisteminde bir yola eşler. Biçim ``mount <vFXT path> <local path> {options}``
 
 Mount komutunun üç öğesi vardır:
 
@@ -76,7 +76,7 @@ Mount komutunun üç öğesi vardır:
 
 VServer yolu, *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin*yoludur. Ad alanı birleşimi, depolama sistemi eklendiğinde tanımlanan bir sanal yoldur.
 
-Kümeniz BLOB depolama ile oluşturulduysa, bu kapsayıcının ad alanı yolu`/msazure`
+Kümeniz BLOB depolama ile oluşturulduysa, bu kapsayıcının ad alanı yolu `/msazure`
 
 Örnek: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 

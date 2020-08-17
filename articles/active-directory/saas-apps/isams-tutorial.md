@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c9f9065fdb2be86438f1517c07de1ce45f5623
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: aea7e18a7ccfb42a3ef641150d74c0ce54eaee04
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187243"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272883"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Öğretici: ISAMs ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, ISAMs 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -147,21 +147,15 @@ Bu bölümde, ISAMs 'e erişim izni vererek Azure çoklu oturum açma özelliği
 
     ![Yapılandırma](./media/isams-tutorial/configure-isams.png)
 
-    a. **Ad** metin kutusuna şu şekilde geçerli bir ad verin`Saml2 Azure`
+    a. **Ad** metin kutusuna, gibi geçerli bir ad verin `Saml2 Azure` . Bu, oturum açma sayfasında görünecek olan addır.
 
-    b. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    b. Meta veri URL 'SI kutusuna, Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini girin.
+    
+    c. **Içeri aktar**' a basın.
+    
+    d. **Etkin Istemci uygulamaları** bölümündeki **uygulamalar** ListBox bölümünde, sağlayıcınızın oturum açma sayfasında görüntülenmesini istediğiniz tüm ISAMs uygulamalarını seçin.
 
-    c. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **varlık kimliği** değerini yapıştırın.
-
-    d. Açılan listeden **zorunlu kimlik doğrulamasını** **false** olarak ayarlayın.
-
-    e. **User özniteliği ifade** metin kutusunu geçerli bir Kullanıcı adı ile doldur.
-
-    f. İndirilen **sertifikayı** Azure Portal Not defteri ' nden açın ve Içeriği **x509 parmak izi** metin kutusuna yapıştırın.
-
-    örneğin: Açılan listeden **Izleyiciyi devre dışı bırak kısıtlama** değerini **false** olarak ayarlayın.
-
-    h. **Kaydet & kapat**' a tıklayın.
+    e. **Kaydet & kapat**' a tıklayın.
 
 ### <a name="create-isams-test-user"></a>ISAMs test kullanıcısı oluşturma
 
@@ -186,9 +180,9 @@ Erişim panelinde ISAMs kutucuğuna tıkladığınızda, SSO 'yu ayarladığın�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

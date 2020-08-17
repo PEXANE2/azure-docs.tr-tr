@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 210fc244aebf0b13a996df69e2cf84763a9adf9e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017525"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272918"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: Expensewith Azure Active Directory ile tümleştirin
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Expense'in nasıl tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -127,7 +127,15 @@ Bu bölümde, ' de Expense'e erişim izni vererek Azure çoklu oturum açma öze
 
 ## <a name="configure-expensein-sso"></a>SSO 'Da Expenseconfigure
 
-1. Yeni bir Web tarayıcı penceresi açın ve bir yönetici olarak şirket sitesinde Expenseoturumunuzu açın.
+1. ' De Expenseın içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya Uzantı eklendikten sonra, ' yi **Ayarla** ' ya tıklayın, sizi uygulamada expensesize yönlendirir. Buradan, adresinden Expenseın üzerinde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. Expenseas 'yi el ile ayarlamak istiyorsanız şirket sitesindeki Expenseşirketinizde yönetici olarak oturum açın.
 
 1. Sayfanın üst kısmındaki **yönetici** ' ye tıklayın, ardından **Çoklu oturum açma** ' ya gidin ve **Sağlayıcı Ekle**' ye tıklayın.
 

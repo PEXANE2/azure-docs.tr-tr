@@ -3,12 +3,12 @@ title: Azure Relay Karma Bağlantılar protokol Kılavuzu | Microsoft Docs
 description: Bu makalede, dinleyici ve gönderici rollerinde istemcileri bağlamak için Karma Bağlantılar geçişine sahip istemci tarafı etkileşimleri açıklanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316646"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272018"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Karma Bağlantılar Protokolü
 
@@ -136,8 +136,8 @@ Sorgu dizesi parametre seçenekleri aşağıdaki gibidir.
 | Parametre        | Gerekli | Açıklama
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Evet      | Dinleyici rolü için parametre **SB-HC-Action = dinleme** olmalıdır
-| `{path}`         | Evet      | Bu dinleyiciyi kaydettirmek için önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yolu. Bu ifade, sabit `$hc/` yol kısmına eklenir.
-| `sb-hc-token`    | Evet\*    | Dinleyici, **dinleme** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
+| `{path}`         | Yes      | Bu dinleyiciyi kaydettirmek için önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yolu. Bu ifade, sabit `$hc/` yol kısmına eklenir.
+| `sb-hc-token`    | Yes\*    | Dinleyici, **dinleme** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
 | `sb-hc-id`       | Hayır       | Bu istemci tarafından sağlanan isteğe bağlı KIMLIK, uçtan uca tanılama izlemesini sağlar.
 
 WebSocket bağlantısı, karma bağlantı yolunun kaydedilmediği veya geçersiz ya da eksik bir belirteç ya da başka bir hata nedeniyle başarısız olursa, normal HTTP 1,1 durum geri bildirim modeli kullanılarak hata geri bildirimi sağlanır. Durum açıklaması, Azure destek personeline iletilebiliyor bir hata izleme kimliği içeriyor:
@@ -195,11 +195,11 @@ Kabul etme yuvasını oluşturmak için URL 'nin olduğu gibi kullanılması ger
 
 | Parametre      | Gerekli | Açıklama
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için parametresi olmalıdır`sb-hc-action=accept`
-| `{path}`       | Evet      | (aşağıdaki paragrafa bakın)
+| `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için parametresi olmalıdır `sb-hc-action=accept`
+| `{path}`       | Yes      | (aşağıdaki paragrafa bakın)
 | `sb-hc-id`     | Hayır       | Önceki **kimlik**açıklamasına bakın.
 
-`{path}`, bu dinleyicinin kaydedileceği önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yoludur. Bu ifade, sabit `$hc/` yol kısmına eklenir.
+`{path}` , bu dinleyicinin kaydedileceği önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yoludur. Bu ifade, sabit `$hc/` yol kısmına eklenir.
 
 `path`İfade, bir sonek ve eğik çizgiden sonra kayıtlı adı izleyen bir sorgu dizesi ifadesiyle genişletilebilir.
 Bu, gönderici istemcisinin HTTP üstbilgilerini içermesi mümkün olmadığında, dağıtım bağımsız değişkenlerini kabul eden dinleyiciye geçmesini sağlar. Bu işlem, dinleyici çerçevesinin sabit yol bölümünü ve kayıtlı adı yoldan ayrıştırır ve geri kalan bir sorgu dizesi bağımsız değişkeni olmadan, `sb-` bağlantının kabul edilip edilmeyeceğini belirleyerek uygulamanın kullanımına açık hale getirir.
@@ -232,8 +232,8 @@ Bir hata varsa hizmet aşağıdaki gibi yanıt verebilir:
 
 | Param                   | Gerekli | Açıklama                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-HC-statusCode        | Evet      | Sayısal HTTP durum kodu.                |
-| SB-HC-statusDescription | Evet      | Red için insan tarafından okunabilen neden. |
+| SB-HC-statusCode        | Yes      | Sayısal HTTP durum kodu.                |
+| SB-HC-statusDescription | Yes      | Red için insan tarafından okunabilen neden. |
 
 Sonuç URI 'SI daha sonra bir WebSocket bağlantısı kurmak için kullanılır.
 
@@ -294,16 +294,16 @@ Gövdesi olmayan bir istek için yalnızca bir metin çerçevesi vardır.
 * **id** – dize. Bu istek için benzersiz tanımlayıcı.
 * **RequestHeaders** : Bu nesne, gönderen tarafından bitiş noktasına VERILEN tüm HTTP üstbilgilerini ve [yukarıda](#request-operation)açıklandığı gibi yetkilendirme bilgilerini ve ağ geçidiyle kesinlikle bağlantıyla ilişkili üst bilgileri içerir. Özellikle, [RFC7230](https://tools.ietf.org/html/rfc7230)içinde tanımlanan veya ayrılan tüm üstbilgiler `Via` çıkarılır ve iletilmez:
 
-  * `Connection`(RFC7230, Bölüm 6,1)
-  * `Content-Length`(RFC7230, Section 3.3.2)
-  * `Host`(RFC7230, Bölüm 5,4)
-  * `TE`(RFC7230, Bölüm 4,3)
-  * `Trailer`(RFC7230, Bölüm 4,4)
-  * `Transfer-Encoding`(RFC7230, Section 3.3.1)
-  * `Upgrade`(RFC7230, Bölüm 6,7)
-  * `Close`(RFC7230, Bölüm 8,1)
+  * `Connection` (RFC7230, Bölüm 6,1)
+  * `Content-Length`  (RFC7230, Section 3.3.2)
+  * `Host`  (RFC7230, Bölüm 5,4)
+  * `TE`  (RFC7230, Bölüm 4,3)
+  * `Trailer`  (RFC7230, Bölüm 4,4)
+  * `Transfer-Encoding`  (RFC7230, Section 3.3.1)
+  * `Upgrade` (RFC7230, Bölüm 6,7)
+  * `Close`  (RFC7230, Bölüm 8,1)
 
-* **Requesttarget** – dize. Bu özellik isteğin ["Istek hedefini" (RFC7230, bölüm 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) tutar. Bu, tüm önekli parametrelerin önüne dahil olan sorgu dizesi bölümünü içerir `sb-hc-` .
+* **Requesttarget** – dize. Bu özellik isteğin  ["Istek hedefini" (RFC7230, bölüm 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) tutar. Bu, tüm önekli parametrelerin önüne dahil olan sorgu dizesi bölümünü içerir `sb-hc-` .
 * **Yöntem** -dize. Bu, [RFC7231 başına, Bölüm 4 '](https://tools.ietf.org/html/rfc7231#section-4)te istek yöntemidir. `CONNECT`Yöntem kullanılmamalıdır.
 * **gövde** – Boolean. Bir veya daha fazla ikili gövde çerçevesinin takip edilip edilmeyeceğini gösterir.
 
@@ -367,7 +367,7 @@ Yanıt, "Response" adlı bir JSON nesnesidir. Gövde içeriğini işlemeye yöne
 
 | Parametre      | Gerekli | Açıklama
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için parametresi olmalıdır`sb-hc-action=request`
+| `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için parametresi olmalıdır `sb-hc-action=request`
 
 Bir hata varsa hizmet aşağıdaki gibi yanıt verebilir:
 
@@ -426,8 +426,8 @@ Sorgu dizesi parametre seçenekleri aşağıdaki gibidir:
 | Param          | Gerekli mi? | Açıklama
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Evet       | Gönderen rolü için parametresi olmalıdır `sb-hc-action=connect` .
-| `{path}`       | Evet       | (aşağıdaki paragrafa bakın)
-| `sb-hc-token`  | Evet\*     | Dinleyici, **Gönder** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
+| `{path}`       | Yes       | (aşağıdaki paragrafa bakın)
+| `sb-hc-token`  | Yes\*     | Dinleyici, **Gönder** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
 | `sb-hc-id`     | Hayır        | Uçtan uca tanılama izlemeyi sağlayan ve kabul etme el sıkışması sırasında dinleyici için kullanılabilir hale getirilen isteğe bağlı bir KIMLIK.
 
  , `{path}` Bu dinleyicinin kaydedileceği önceden yapılandırılmış karma BAĞLANTıNıN URL kodlamalı ad alanı yoludur. `path`İfade, daha fazla iletişim kurmak için bir sonek ve sorgu dizesi ifadesiyle genişletilebilir. Karma bağlantı yolun altına kayıtlıysa `hyco` , `path` ifadeye `hyco/suffix?param=value&...` sonra burada tanımlanan sorgu dizesi parametreleri gelebilir. Ardından, bir bütün ifade aşağıdaki gibi olabilir:
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _Ad alanı-adresi_ , genellikle formun karma bağlantısını barındıran Azure Relay ad alanının tam etki alanı adıdır `{myname}.servicebus.windows.net` .
 
-İstek, uygulama tanımlı olanlar da dahil olmak üzere rastgele ek HTTP üstbilgileri içerebilir. RFC7230 içinde doğrudan tanımlanmış olanlar hariç ( [istek iletisini](#Request message)görüntüle) dinleyiciye Flow ve `requestHeader` **istek** iletisinin nesnesinde bulunan tüm sağlanan üst bilgiler.
+İstek, uygulama tanımlı olanlar da dahil olmak üzere rastgele ek HTTP üstbilgileri içerebilir. RFC7230 içinde doğrudan tanımlanmış olanlar hariç ( [istek iletisini](#request-message)görüntüle) dinleyiciye Flow ve `requestHeader` **istek** iletisinin nesnesinde bulunan tüm sağlanan üst bilgiler.
 
 Sorgu dizesi parametre seçenekleri aşağıdaki gibidir:
 

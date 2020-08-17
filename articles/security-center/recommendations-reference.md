@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8038ace4469123e50d98d9296a1aecf0107efbf2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1609fc720474f92b3a3fa8c0631452164a7e4d0f
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262560"
+ms.locfileid: "88272035"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -181,6 +181,7 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |**Aboneliğiniz için en fazla 3 sahip belirtilmelidir**|Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için üçten az abonelik sahibi belirleyin.<br>(İlgili ilke: aboneliğiniz için en fazla 3 sahip belirtilmelidir)|Yüksek|H|Abonelik|
 |**Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir**|Azure Güvenlik Merkezi, ek bir güvenlik zekası katmanı sağlayan Azure Key Vault için Azure yerel, Gelişmiş tehdit koruması içerir.<br>Önemli: bu öneriyi kaldırmak, AKV kasalarınızı koruma ücretlerine neden olur. Bu abonelikte bir AKıŞ Kasası yoksa, hiçbir ücret alınmaz. Gelecekte bu abonelikte herhangi bir AKG Kasası oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br>(İlgili ilke: [Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047))|Yüksek|**E**|Abonelik|
 |**Key Vault tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar.<br>(İlgili ilke: Key Vault içindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**E**|Key Vault|
+|**Hizmet sorumluları, yönetim sertifikaları yerine aboneliklerinizi korumak için kullanılmalıdır**|Yönetim sertifikaları kendileriyle ilişkili oldukları abonelikleri yönetmek için bu kişilerle kimlik doğrulayan herkese izin verir. Abonelikleri daha güvenli bir şekilde yönetmek için, Kaynak Yöneticisi ile hizmet sorumlularını kullanmak, bir sertifika tehlikeye düşmesi durumunda bombyi sınırlamak için önerilir. Ayrıca kaynak yönetimini otomatikleştirir.|Orta|Hayır|Abonelik|
 ||||||
 
 

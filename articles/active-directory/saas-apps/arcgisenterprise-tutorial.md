@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 816315ee97ac51d40bd5787cc58ef601160ba157
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905032"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Öğretici: ArcGIS Enterprise ile tümleştirme Azure Active Directory
 
@@ -35,7 +34,7 @@ ArcGIS Enterprise 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ArcGIS Enterprise ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -48,8 +47,6 @@ ArcGIS Enterprise ile Azure AD tümleştirmesini yapılandırmak için aşağıd
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
-
-
 
 * ArcGIS Enterprise **SP ve IDP** tarafından başlatılan SSO 'yu destekler
 * ArcGIS Enterprise **yalnızca zamanında** Kullanıcı sağlamasını destekler
@@ -132,21 +129,30 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Argıs Kurumsal Çoklu oturum açmayı yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, argıs Kurumsal Şirket sitenizde yönetici olarak oturum açın.
+1. ArcGIS Enterprise içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-2. **Kuruluş >Ayarları Düzenle**' yi seçin.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya uzantı ekledikten sonra, ArcGIS **Enterprise 'ı ayarla** ' ya tıklayarak sizi ArcGIS kurumsal uygulamasına yönlendirebilirsiniz. Buradan, ArcGIS Enterprise 'ta oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. Argıs Enterprise 'ı el ile ayarlamak istiyorsanız, argıs Kurumsal Şirket sitenizde yönetici olarak oturum açın.
+
+
+1. **Kuruluş >Ayarları Düzenle**' yi seçin.
 
     ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. **Güvenlik** sekmesini seçin.
+1. **Güvenlik** sekmesini seçin.
 
     ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. **SAML bölümü aracılığıyla kurumsal oturum açma işlemlerine** aşağı KAYDıRıN ve **Kurumsal oturum açma ayarla**' yı seçin.
+1. **SAML bölümü aracılığıyla kurumsal oturum açma işlemlerine** aşağı KAYDıRıN ve **Kurumsal oturum açma ayarla**' yı seçin.
 
     ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. **Kimlik sağlayıcısını ayarla** bölümünde aşağıdaki adımları uygulayın:
+1. **Kimlik sağlayıcısını ayarla** bölümünde aşağıdaki adımları uygulayın:
 
     ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure4.png)
 

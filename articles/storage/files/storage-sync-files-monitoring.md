@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185630"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271065"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -135,7 +135,7 @@ Kayıtlı sunucu, eşitleme ve bulut katmanlama durumunu izlemek için sunucuda 
 
 Eşitleme durumu
 
-- Olay KIMLIĞI 9102, eşitleme oturumu tamamlandıktan sonra günlüğe kaydedilir. Eşitleme oturumlarının başarılı olup olmadığını (**HRESULT = 0**) ve öğe başına Eşitleme hataları olup olmadığını öğrenmek için bu olayı kullanın. Daha fazla bilgi için bkz. [eşitleme durumu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ve [öğe başına hatalar](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) belgeleri.
+- Olay KIMLIĞI 9102, eşitleme oturumu tamamlandıktan sonra günlüğe kaydedilir. Eşitleme oturumlarının başarılı olup olmadığını (**HRESULT = 0**) ve öğe başına Eşitleme hataları olup olmadığını (**Peritemerrorcount**) öğrenmek için bu olayı kullanın. Daha fazla bilgi için bkz. [eşitleme durumu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ve  [öğe başına hatalar](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) belgeleri.
 
   > [!Note]  
   > Bazen eşitleme oturumları genel başarısız olur ya da sıfır olmayan bir PerItemErrorCount sayısına sahiptir. Ancak, yine de ilerleme durumu ve bazı dosyalar başarıyla eşitlenir. Bunu, AppliedFileCount, AppliedDirCount, AppliedTombstoneCount ve AppliedSizeBytes gibi uygulanan alanlarda görebilirsiniz. Bu alanlar, oturumun ne kadarının başarılı olduğunu bildirir. Bir satırda birden çok eşitleme oturumu başarısız görürseniz ve artan uygulanmış sayımla karşılaşırsanız, bir destek bileti açmadan önce yeniden denemek için eşitleme süresi verin.
@@ -196,7 +196,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
 5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **eşitleme oturumu sonucu** ' na tıklayın.  
 6. Aşağıdaki boyut yapılandırmasını seçin: 
     - Boyut adı: **sunucu uç noktası adı**  
-    - İşlecinde**=** 
+    - İşlecinde **=** 
     - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
 7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
     - Eşik **statik** olarak ayarlandı 
@@ -218,7 +218,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
 5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **eşitleme değil dosyalar** ' a tıklayın.  
 6. Aşağıdaki boyut yapılandırmasını seçin: 
      - Boyut adı: **sunucu uç noktası adı**  
-     - İşlecinde**=** 
+     - İşlecinde **=** 
      - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
 7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
      - Eşik **statik** olarak ayarlandı 
@@ -240,7 +240,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
 5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **sunucu çevrimiçi durumu** ' na tıklayın.  
 6. Aşağıdaki boyut yapılandırmasını seçin: 
      - Boyut adı: **sunucu adı**  
-     - İşlecinde**=** 
+     - İşlecinde **=** 
      - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
 7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
      - Eşik **statik** olarak ayarlandı 
@@ -262,7 +262,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
 5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **bulut katmanlama geri çağırma boyutu** ' na tıklayın.  
 6. Aşağıdaki boyut yapılandırmasını seçin: 
      - Boyut adı: **sunucu adı**  
-     - İşlecinde**=** 
+     - İşlecinde **=** 
      - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
 7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
      - Eşik **statik** olarak ayarlandı 

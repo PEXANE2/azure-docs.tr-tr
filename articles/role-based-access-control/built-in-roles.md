@@ -7,16 +7,16 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448900"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272000"
 ---
-# <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
+# <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
 [Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Rol atamaları, Azure kaynaklarına erişimi denetlemenize olanak sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
 
@@ -30,9 +30,9 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | Yerleşik rol | Açıklama | ID |
 > | --- | --- | --- |
 > | **Genel** |  |  |
-> | [Katkıda Bulunan](#contributor) | Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [Sahibi](#owner) | Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [Okuyucu](#reader) | Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [Katkıda Bulunan](#contributor) | Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza izin vermez. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Sahibi](#owner) | Azure RBAC 'de rol atama özelliği de dahil olmak üzere tüm kaynakları yönetmek için tam erişim verir. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Okuyucu](#reader) | Tüm kaynakları görüntüleyin, ancak herhangi bir değişiklik yapmanıza izin vermez. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Kullanıcı Erişimi Yöneticisi](#user-access-administrator) | Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **İşlem** |  |  |
 > | [Klasik sanal makine Katılımcısı](#classic-virtual-machine-contributor) | Klasik sanal makineleri yönetmenizi sağlar ancak bunlara yönelik erişimi, bağlı oldukları sanal ağ veya depolama hesabı için değil. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
@@ -63,7 +63,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Okuyucu ve veri erişimi](#reader-and-data-access) | Her şeyi görüntülemenize izin verir, ancak bir depolama hesabını veya kapsanan kaynağı silmenize veya oluşturmanıza izin vermez. Ayrıca depolama hesabı anahtarlarına erişim aracılığıyla bir depolama hesabında bulunan tüm verilere okuma/yazma erişimi de sağlar. | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Depolama Hesabı Katılımcısı](#storage-account-contributor) | Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar. | 17d1049b-9a84-46fb-8F53-869881c3d3ab |
 > | [Depolama hesabı anahtar operatörü hizmet rolü](#storage-account-key-operator-service-role) | Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [Depolama Blobu veri Katılımcısı](#storage-blob-data-contributor) | Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [Depolama Blob Verileri Katkıda Bulunanı](#storage-blob-data-contributor) | Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | [Depolama Blobu veri sahibi](#storage-blob-data-owner) | , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Depolama Blobu veri okuyucusu](#storage-blob-data-reader) | Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Depolama Blobu Delegator](#storage-blob-delegator) | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
@@ -161,7 +161,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | **DevOps** |  |  |
 > | [DevTest Labs kullanıcısı](#devtest-labs-user) | Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. | 76283e04-6283-4c54-8F91-bcf1374a3c64 |
 > | [Laboratuvar Oluşturucu](#lab-creator) | Azure Laboratuvar hesaplarınız altında yeni laboratuvarlar oluşturmanızı sağlar. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
-> | **İzleyici** |  |  |
+> | **İzleme** |  |  |
 > | [Application Insights bileşeni Katılımcısı](#application-insights-component-contributor) | Application Insights bileşenlerini yönetebilir | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. Kullanıcılara Application Insights Snapshot Debugger rolü verirken, rolü doğrudan kullanıcıya vermeniz gerekir. Rol, özel bir role eklendiğinde tanınmaz. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Katkıda bulunan izleniyor](#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
@@ -207,7 +207,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 
 ### <a name="contributor"></a>Katılımcı
 
-Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
+Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza izin vermez. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -229,7 +229,7 @@ Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla 
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything except access to resources.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -256,7 +256,7 @@ Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla 
 
 ### <a name="owner"></a>Sahip
 
-Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
+Azure RBAC 'de rol atama özelliği de dahil olmak üzere tüm kaynakları yönetmek için tam erişim verir. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -274,7 +274,7 @@ Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha f
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything, including access to resources.",
+  "description": "Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "permissions": [
@@ -295,7 +295,7 @@ Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha f
 
 ### <a name="reader"></a>Okuyucu
 
-Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
+Tüm kaynakları görüntüleyin, ancak herhangi bir değişiklik yapmanıza izin vermez. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -313,7 +313,7 @@ Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıd�
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view everything, but not make any changes.",
+  "description": "View all resources, but does not allow you to make any changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "permissions": [
@@ -2094,7 +2094,7 @@ Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmas�
 }
 ```
 
-### <a name="storage-blob-data-contributor"></a>Depolama Blobu veri Katılımcısı
+### <a name="storage-blob-data-contributor"></a>Depolama Blob Verileri Katkıda Bulunanı
 
 Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -3026,6 +3026,7 @@ Küme Yöneticisi kimlik bilgisi eylemini listeleyin. [Daha fazla bilgi](../aks/
 > | --- | --- |
 > | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/listclusteradmincredential/Action | Yönetilen kümenin clusterAdmin kimlik bilgisini listeleyin |
 > | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/accessprofiles/listcredential/Action | Liste kimlik bilgisini kullanarak rol adına göre yönetilen küme erişim profili al |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/Read | Yönetilen bir küme al |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3045,7 +3046,8 @@ Küme Yöneticisi kimlik bilgisi eylemini listeleyin. [Daha fazla bilgi](../aks/
     {
       "actions": [
         "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
-        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action"
+        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3066,6 +3068,7 @@ Küme kullanıcı kimlik bilgilerini Listele eylemi. [Daha fazla bilgi](../aks/c
 > | Eylemler | Açıklama |
 > | --- | --- |
 > | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/listclusterusercredential/Action | Yönetilen kümenin clusterUser kimlik bilgisini listeleyin |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/Read | Yönetilen bir küme al |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3084,7 +3087,8 @@ Küme kullanıcı kimlik bilgilerini Listele eylemi. [Daha fazla bilgi](../aks/c
   "permissions": [
     {
       "actions": [
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6811,6 +6815,8 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Activitylogalerts/* |  |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Öngörüler bileşenleri oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/datacollectionkuralları/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Datacollectionruleassociations/* |  |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/eventTypes/* | Bir abonelikteki etkinlik günlüğü olaylarını (yönetim olayları) listeleyin. Bu izin, etkinlik günlüğüne hem programlı hem de portala erişim için geçerlidir. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Logdefinitions/* | Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin. |
@@ -6860,6 +6866,8 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionRules/*",
+        "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
         "Microsoft.Insights/eventtypes/*",
         "Microsoft.Insights/LogDefinitions/*",

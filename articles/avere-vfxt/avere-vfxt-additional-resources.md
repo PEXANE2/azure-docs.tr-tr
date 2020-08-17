@@ -1,17 +1,17 @@
 ---
 title: Azure için avere vFXT hakkında ek bağlantılar
-description: Azure için avere vFXT hakkında ek bilgilere bağlantılar
+description: Avere Cluster belgeleri ve vFXT yönetim belgeleri dahil olmak üzere Azure için avere vFXT hakkında daha fazla bilgi için bu kaynakları kullanın.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9a9f8e6d2a279871ded3dff614be99dd2901df
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153777"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271099"
 ---
 # <a name="additional-documentation"></a>Diğer belgeler
 

@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT Storage 'ı Yapılandırma-Azure
-description: Azure için avere vFXT 'nize arka uç depolama sistemi ekleme
+description: Azure için avere vFXT içindeki bir küme için arka uç depolama sisteminin nasıl ekleneceğini öğrenin. Kümeyle bir Azure Blob kapsayıcısı oluşturduysanız, kullanıma hazırız.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505758"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271150"
 ---
 # <a name="configure-storage"></a>Depolama alanını yapılandırma
 
@@ -49,7 +49,7 @@ Bir NAS Core fili eklemek için aşağıdaki adımları izleyin:
 
 1. **Core Filer**  >  Sol taraftaki çekirdek**filleri Yönet** ' e tıklayın.
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 

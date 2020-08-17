@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs | laboratuvarınızda bir yapıt deposu ekleyin | Microsoft Docs
-description: Azure DevTest Labs 'de laboratuvarınızda yapıt deposu eklemeyi öğrenin.
+description: Ortak yapıt deposunda kullanılabilir olmayan depolama araçlarını Azure DevTest Labs ' de laboratuvarınız için kendi yapıt deponuzu belirtmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013489"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270997"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs 'de laboratuvarınızda yapıt deposu ekleme
 DevTest Labs, VM oluşturma sırasında veya VM oluşturulduktan sonra VM 'ye eklenecek bir yapıt belirtmenize olanak tanır. Bu yapıt, VM 'ye yüklemek istediğiniz bir araç veya uygulama olabilir. Yapıtlar, GitHub veya Azure DevOps git deposundan yüklenen bir JSON dosyasında tanımlanır.
@@ -19,7 +19,7 @@ Bu makalede, Azure portal, Azure Kaynak Yönetimi şablonlarını ve Azure Power
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri alın. Aşağıdaki bölümlerde **GitHub** veya **Azure DevOps**üzerinde barındırılan depolarda gerekli bilgilerin nasıl alınacağı açıklanır.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub deposu kopya URL 'sini ve kişisel erişim belirtecini al
@@ -71,7 +71,7 @@ Bu bölümde, Azure portal bir laboratuvara yapıt deposu ekleme adımları sağ
    5. **Klasör yolları**. Yapıtı veya Kaynak Yöneticisi şablonu tanımlarınızı içeren kopya URL 'sine göre en az bir klasör yolu girin. Bir alt dizin belirttiğinizde, klasör yolunda eğik çizgi eklediğinizden emin olun.
 
         ![Depolar alanı](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullan
 Azure Kaynak Yönetimi (Azure Resource Manager) şablonları, Azure 'da oluşturmak istediğiniz kaynakları tanımlayan JSON dosyalarıdır. Bu şablonlar hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md).

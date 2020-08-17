@@ -1,17 +1,17 @@
 ---
 title: Dağıtıma genel bakış-Azure için avere vFXT
-description: Azure için avere vFXT dağıtmaya genel bakış
+description: Bu genel bakışta Azure kümesi için avere vFXT dağıtmayı öğrenin. İlgili makalelerde belirli dağıtım yönergeleri vardır.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c63fdf2164dd4dce12912669eec29c79755cc2a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153692"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271235"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
 

@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs paylaşılan görüntü galerisini yapılandırma | Microsoft Docs
-description: Azure DevTest Labs paylaşılan görüntü galerisini yapılandırma hakkında bilgi edinin
+description: Azure DevTest Labs, kullanıcıların laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlayan bir paylaşılan görüntü galerisini nasıl yapılandıracağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483797"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271048"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs’de paylaşılan resim galerisi yapılandırma
 DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md) özelliğini desteklemektedir. Laboratuvar kullanıcılarının laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlar. Ayrıca, özel yönetilen VM görüntüleriniz etrafında yapı ve kuruluş oluşturmanıza de yardımcı olur. Paylaşılan görüntü Galerisi özelliği şunları destekler:
@@ -25,7 +25,7 @@ Korumanız gereken çok sayıda yönetilen görüntünüz varsa ve bunları şir
 > [!NOTE]
 > Paylaşılan görüntü Galerisi hizmeti ile ilişkili maliyetler hakkında bilgi edinmek için bkz. [paylaşılan görüntü Galerisi Için faturalama](../virtual-machines/windows/shared-image-galleries.md#billing).
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 - Tek seferde laboratuvara yalnızca bir paylaşılan görüntü Galerisi ekleyebilirsiniz. Başka bir galeri eklemek istiyorsanız, var olan birini ayırmanız ve bir tane eklemeniz gerekir. 
 - DevTest Labs Şu anda laboratuvar aracılığıyla galeriye görüntü yüklemeyi desteklemiyor. 
 - Paylaşılan görüntü Galerisi görüntüsünü kullanarak bir sanal makine oluştururken, DevTest Labs her zaman bu görüntünün yayımlanan en son sürümünü kullanır. Ancak görüntüde birden çok sürüm varsa, Kullanıcı sanal makine oluşturma sırasında Gelişmiş Ayarlar sekmesine giderek önceki bir sürümden makine oluşturmayı tercih edebilir.  

@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235970"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271201"
 ---
 # <a name="modeling-relationships"></a>İlişkileri modelleme
 Bu makalede, Azure Tablo depolama çözümlerinizi tasarlamanıza yardımcı olacak modelleme süreci ele alınmaktadır.
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, bir-çok ilişkisine sahip olan çalışan ve departman va
 <td>
 <ul>
 <li>Bir departman varlığını tek bir işlemle güncelleştirebilirsiniz.</li>
-<li>Bir çalışan varlığını güncelleştirdiğinizde/eklediğinizde/sildiğinizde bir departman varlığını değiştirme gereksinimine sahipseniz tutarlılığı sürdürmek için EGT kullanabilirsiniz. Örneğin, her departman için bir departman çalışan sayısı bulundurursunuz.</li>
+<li>Bir çalışan varlığını güncelleştirdiğinizde/eklediğinizde/sildiğinizde bir departman varlığını değiştirme gereksinimine sahipseniz tutarlılığı sağlamak için bir varlık grubu Işlemi * (EGT) kullanabilirsiniz. Örneğin, her departman için bir departman çalışan sayısı bulundurursunuz.</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ Aşağıdaki tabloda, bir-çok ilişkisine sahip olan çalışan ve departman va
 </td>
 </tr>
 </table>
+
+* daha fazla bilgi için bkz. [varlık grubu işlemleri](table-storage-design.md#entity-group-transactions)  
+
 
 Bu seçenekler arasında seçim yapma ve uzmanlarının ve dezavantajlarının en önemli olduğu, belirli uygulama senaryolarınıza bağlıdır. Örneğin, departman varlıklarını ne sıklıkla değiştirirsiniz? Tüm çalışan sorgularınızın ek departman bilgileri olması gerekir; bölümlerinizde veya depolama hesabınızda ölçeklenebilirlik limitleriniz ne kadar yakınlanıyor?  
 

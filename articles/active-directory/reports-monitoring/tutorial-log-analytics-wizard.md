@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 337b75412751fb15e3fc1746666a8efb385a8939
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854600"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271272"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Öğretici: Log Analytics Sihirbazı 'nı yapılandırma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Hızlı başlangıç şablonunu kullanarak özel çalışma kitabı oluşturma
 > * Varolan çalışma kitabı şablonuna sorgu ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - En az bir P1 lisanslı Yöneticisi olan bir Azure aboneliği. Azure aboneliğiniz yoksa, [ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -88,7 +88,7 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
 5. **Gözden Geçir ve Oluştur**’a tıklayın.
 
-    ![Gözden geçirme ve oluşturma](./media/tutorial-log-analytics-wizard/review-create.png)
+    ![Gözden geçir ve oluştur](./media/tutorial-log-analytics-wizard/review-create.png)
 
 6. **Oluştur** ' a tıklayın ve dağıtımın başarılı olmasını bekleyin. Yeni çalışma alanını görmek için sayfayı yenilemeniz gerekebilir.
 
@@ -152,7 +152,7 @@ Koşullu erişimin başarılı olduğu oturum açma işlemlerini inceleyin
 
 Kaç başarı olduğunu say
 
-' Signınlogs | Burada ConditionalAccessStatus = = "başarılı" | Project UserDisplayName, ConditionalAccessStatus | biriktirme
+`SigninLogs | where ConditionalAccessStatus == "success" | project UserDisplayName, ConditionalAccessStatus | count`
 
 
 Kullanıcıya göre başarılı oturum açma işlemlerinin toplam sayısı:
@@ -328,7 +328,7 @@ Bu yordamda, hızlı başlangıç şablonunu kullanarak nasıl yeni bir çalış
 
     ![Sorgu Ekle](./media/tutorial-log-analytics-wizard/add-query.png)
 
-9. Sorgu metin kutusuna şunu yazın:`SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
+9. Sorgu metin kutusuna şunu yazın: `SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
 10. **Sorguyu Çalıştır**' a tıklayın.
 
@@ -371,7 +371,7 @@ Bu yordam, var olan bir çalışma kitabı şablonuna nasıl sorgu ekleneceğini
 
     ![Çalışma kitabı sorgusu Ekle](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
-7. Sorgu metin kutusuna şunu yazın:`SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
+7. Sorgu metin kutusuna şunu yazın: `SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
 8. **Sorguyu Çalıştır**' a tıklayın.
 

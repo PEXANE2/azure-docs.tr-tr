@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9aafe6af0157ec187e787006d6c04bc1c5c8a8b0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033877"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271218"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Öğretici: Atlasduyi bulutunu Azure Active Directory tümleştirin
 
@@ -77,6 +77,16 @@ Azure AD SSO 'yu Atlasduyi bulutu ile yapılandırmak ve test etmek için aşağ
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+
+1. Atlasduyi bulutu 'ndaki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya uzantı ekledikten sonra, **atlasme bulutunu ayarla** ' ya tıklayarak sizi atlasme bulut uygulamasına yönlendirirsiniz. Buradan, Atlasduyi bulutu 'nda oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracaktır.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. Atlasduyi bulutu 'nı el ile ayarlamak istiyorsanız, Atlasme bulut şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin.
 
 1. Başlamadan önce Atlasbir ürün örneğinize gidip örnek URL 'sini kopyalayıp kaydedin
    > [!NOTE]

@@ -1,7 +1,7 @@
 ---
 title: Azure NSG akış günlüklerini görselleştirme-Power BI
 titleSuffix: Azure Network Watcher
-description: Bu sayfada, NSG akış günlüklerinin Power BI nasıl görselleştirilmesi açıklanmaktadır.
+description: Azure ağ Izleyicisi 'nde IP trafiği hakkındaki bilgileri görüntülemenize olanak tanımak üzere ağ güvenlik grubu akış günlüklerini görselleştirmek için Power BI nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738558"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272646"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Power BI ile ağ güvenlik grubu akış günlüklerini görselleştirme
 
@@ -111,7 +111,7 @@ Bu şablonu gereksinimlerinize uygun şekilde özelleştirebilirsiniz. Ağ güve
 
 ## <a name="notes"></a>Notlar
 
-* Günlükler varsayılan olarak saklanır`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Günlükler varsayılan olarak saklanır `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
     * Başka bir dizinde diğer veriler varsa, verilerin çekme ve işleme sorgularının değiştirilmesi gerekir.
 

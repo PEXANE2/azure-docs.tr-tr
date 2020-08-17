@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78c702f5ea4ae403c4183a1cc311aaed94eb0c7d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089036"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272629"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Öğretici: TargetProcess ile tümleştirme Azure Active Directory
 
@@ -32,7 +32,7 @@ TargetProcess 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -70,7 +70,7 @@ TargetProcess 'in Azure AD ile tümleştirilmesini yapılandırmak için galeris
 
      ![Sonuç listesinde TargetProcess](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
 Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre TargetProcess ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve TargetProcess içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
@@ -133,25 +133,27 @@ Azure AD çoklu oturum açmayı TargetProcess ile yapılandırmak için aşağı
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. Tarayıcıya Uzantı eklendikten sonra, **Kurulum TargetProcess** öğesine tıkladığınızda sizi TargetProcess uygulamasına yönlendirebilirsiniz. Buradan, TargetProcess 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+1. Tarayıcıya Uzantı eklendikten sonra, **Kurulum TargetProcess** öğesine tıkladığınızda sizi TargetProcess uygulamasına yönlendirebilirsiniz. Buradan, TargetProcess 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
 
     **Uygulamayı el ile yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:**
 
-3. TargetProcess uygulamanızda yönetici olarak oturum açın.
+1. TargetProcess uygulamanızda yönetici olarak oturum açın.
 
-4. Üstteki menüde **Kurulum**' a tıklayın.
+1. Üstteki menüde **Kurulum**' a tıklayın.
 
     ![Kurulum](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. **Ayarlar** sekmesi ' ne tıklayın.
+1. **Ayarlar** sekmesi ' ne tıklayın.
 
     ![Ayarlar](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. **Çoklu oturum açma** sekmesine tıklayın.
+1. **Çoklu oturum açma** sekmesine tıklayın.
 
     ![Çoklu oturum açma ' ya tıklayın](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-7. Çoklu oturum açma ayarları iletişim kutusunda, aşağıdaki adımları uygulayın:
+1. Çoklu oturum açma ayarları iletişim kutusunda, aşağıdaki adımları uygulayın:
 
     ![Çoklu oturum açmayı yapılandırma](./media/target-process-tutorial/tutorial_target_process_08.png)
 
@@ -183,12 +185,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

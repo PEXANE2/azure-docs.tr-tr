@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT-Azure desteğini etkinleştir
-description: Azure için avere vFXT 'den destek yüklemelerini etkinleştirme
+description: Azure için avere vFXT 'den, Müşteri Hizmetleri sağlamaya yardımcı olmak üzere, kümenizin destek verilerini otomatik olarak yüklemeyi nasıl etkinleştireceğinizi öğrenin.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505486"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272737"
 ---
 # <a name="enable-support-uploads"></a>Destek karşıya yüklemelerini etkinleştirme
 

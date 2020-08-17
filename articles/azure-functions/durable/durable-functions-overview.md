@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499390"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272357"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -25,6 +25,7 @@ Dayanıklı İşlevler Şu anda aşağıdaki dilleri desteklemektedir:
 * **JavaScript**: yalnızca Azure işlevleri çalışma zamanının 2. x sürümü için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.7.0 gerektirir. 
 * **Python**: dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.8.5 gerektirir. 
 * **F #**: önceden derlenmiş sınıf kitaplıkları ve F # betiği. F # betiği yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
+* **PowerShell**: dayanıklı işlevler desteği şu anda genel önizlemededir. Yalnızca Azure Işlevleri çalışma zamanı ve PowerShell 7 sürümü 3. x için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 2.2.2 gerektirir. Şu anda yalnızca şu desenler destekleniyor: [işlev zinciri](#chaining), [fan-çıkış/fan](#fan-in-out), [zaman uyumsuz HTTP API 'leri](#async-http).
 
 Dayanıklı İşlevler tüm [Azure işlevleri dillerini](../supported-languages.md)destekleme amacını içerir. Ek dilleri desteklemek için işin en son durumunun [dayanıklı işlevler sorunlar listesine](https://github.com/Azure/azure-functions-durable-extension/issues) bakın.
 
@@ -119,6 +120,19 @@ main = df.Orchestrator.create(orchestrator_function)
 > [!NOTE]
 > `context`Python 'daki nesnesi düzenleme bağlamını temsil eder. Düzenleme bağlamındaki özelliğini kullanarak ana Azure Işlevleri bağlamına erişin `function_context` .
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+`Invoke-ActivityFunction`Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için komutunu kullanabilirsiniz. Anahtar olmadan kod her çağırdığında `Invoke-ActivityFunction` `NoWait` , dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki çağrıdan devam eder `Invoke-ActivityFunction` . Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>#2 desenli desenler: fan çıkış/fan
@@ -156,7 +170,7 @@ public static async Task Run(
 }
 ```
 
-Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `Task.WhenAll`çağrılan tüm işlevlerin bitmesini beklemek için çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `Task.WhenAll` çağrılan tüm işlevlerin bitmesini beklemek için çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
 
 Çağrısında gerçekleşen otomatik onay `await` `Task.WhenAll` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
 
@@ -182,7 +196,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `context.df.Task.all`Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `context.df.Task.all` Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
 
 Çağrısında gerçekleşen otomatik onay `yield` `context.df.Task.all` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
 
@@ -208,9 +222,33 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `context.task_all`Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `context.task_all` Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
 
 Çağrısında gerçekleşen otomatik onay `yield` `context.task_all` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . Lütfen `NoWait` işlev çağrısında anahtarın kullanımını unutmayın `F2` : Bu anahtar, Orchestrator 'ın etkinlik tamamlama olmadan çağırma işlemine devam etmesine olanak sağlar `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `Wait-ActivityFunction`Komutu çağrılan tüm işlevlerin bitmesini beklemek için çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+
+Çağrıda gerçekleşen otomatik onay `Wait-ActivityFunction` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+İzleyici Şu anda PowerShell 'de desteklenmiyor.
+
 ---
 
 Bir istek alındığında, bu iş KIMLIĞI için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngünün çıkış yapılıncaya kadar bir durumu yoklar. Dayanıklı bir Zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş gerçekleştirilebilir veya düzenleme sona erdirmek üzere. `nextCheck`Aştığında `expiryTime` , izleyici sona erer.
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 Dayanıklı Zamanlayıcı 'yı oluşturmak için çağrısı yapın `context.create_timer` . Bildirim tarafından alınır `context.wait_for_external_event` . Ardından, `context.task_any` ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+İnsan etkileşimi Şu anda PowerShell 'de desteklenmiyor.
+
 ---
 
 Dış istemci, [YERLEŞIK HTTP API 'lerini](durable-functions-http-api.md#raise-event)kullanarak olay bildirimini bekleyen bir Orchestrator işlevine teslim edebilir:
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+İnsan etkileşimi Şu anda PowerShell 'de desteklenmiyor.
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 Kalıcı varlıklar Şu anda Python 'da desteklenmiyor.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Kalıcı varlıklar Şu anda PowerShell 'de desteklenmemektedir.
+
 ---
 
 İstemciler, [varlık istemci bağlamasını](durable-functions-bindings.md#entity-client)kullanarak bir varlık işlevi için ("sinyal" olarak da bilinir) *işlemleri* sıraya alabilir.
@@ -623,6 +677,10 @@ module.exports = async function (context) {
 
 Kalıcı varlıklar Şu anda Python 'da desteklenmiyor.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Kalıcı varlıklar Şu anda PowerShell 'de desteklenmemektedir.
+
 ---
 
 Varlık işlevleri, C# ve JavaScript için [Dayanıklı İşlevler 2,0](durable-functions-versions.md) ve üzeri sürümlerde kullanılabilir.
@@ -649,7 +707,7 @@ Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 daki
 
 Her iki hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 Aşağıdaki videoda Dayanıklı İşlevler avantajları vurgulanmıştır:
 

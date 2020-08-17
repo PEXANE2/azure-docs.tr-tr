@@ -1,17 +1,17 @@
 ---
 title: Azure için avere vFXT desteği alma
-description: Azure için avere vFXT hakkında Destek biletleri açma açıklaması
+description: Azure portal aracılığıyla bir destek bileti oluşturarak Azure için avere vFXT dağıtma veya kullanma sırasında oluşabilecek sorunları nasıl ele alabileceğinizi öğrenin.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847351"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271116"
 ---
 # <a name="get-help-with-your-system"></a>Sisteminizle ilgili yardım alın
 
@@ -43,7 +43,7 @@ Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için a
 
     ![Azure portal yeni bir destek isteği ekranının ekran görüntüsü. Temel bilgiler sekmesi seçilidir. Ekran öğeleri, sorun türünü, aboneliği, hizmeti, Özeti ve sorun türünü içerir.](media/ticket-basics.png)
 
-   Devam etmek için **İleri** 'ye tıklayın.
+   Devam etmek için **İleri**'ye tıklayın.
 
 1. Destek formunun ikinci sayfası, Özet açıklamasına göre sorunu düzeltmeye yönelik öneriler içerir. Hala bir destek bileti oluşturmanız gerekiyorsa alt kısımdaki **İleri** düğmesine tıklayın.
 
