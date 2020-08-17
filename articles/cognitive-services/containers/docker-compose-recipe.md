@@ -25,7 +25,7 @@ Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağı
 
 Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede okuma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir:
 

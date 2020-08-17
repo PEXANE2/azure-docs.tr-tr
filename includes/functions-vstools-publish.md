@@ -19,7 +19,7 @@ ms.locfileid: "84231518"
 
 1. **Bir yayımlama hedefi seçin**alanında, aşağıdaki tabloda belirtilen yayımlama seçeneklerini kullanın: 
 
-    | Seçenek      | Description                                |
+    | Seçenek      | Açıklama                                |
     | ------------ |  -------------------------------------------------- |
     | **Azure Işlevleri tüketim planı** | Bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir Azure bulut ortamında bir işlev uygulaması oluşturun. Bir tüketim planı kullandığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. Tüketim planı dışında bir planda çalıştırırsanız, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md)yönetmeniz gerekir.| 
     | **Yeni oluştur** | Azure 'da, ilgili kaynaklarla yeni bir işlev uygulaması oluşturulur. <br/>**Varolanı Seç**' i seçerseniz, mevcut Işlev uygulamasındaki Azure 'daki tüm dosyaların yerel projedeki dosyalarla üzerine yazılır. Bu seçeneği yalnızca, var olan bir işlev uygulamasına güncelleştirmeleri yeniden yayımladığınızda kullanın. |
@@ -32,14 +32,14 @@ ms.locfileid: "84231518"
 
 1. **App Service: Yeni oluştur**' da, aşağıdaki tabloda belirtilen değerleri kullanın:
 
-    | Ayar      | Değer  | Description                                |
+    | Ayar      | Değer  | Açıklama                                |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. Bu adı kabul edin veya yeni bir ad girin. Geçerli karakterler şunlardır: `a-z` , `0-9` , ve `-` . |
+    | **Ad** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. Bu adı kabul edin veya yeni bir ad girin. Geçerli karakterler şunlardır: `a-z` , `0-9` , ve `-` . |
     | **Abonelik** | Aboneliğiniz | Kullanılacak Azure aboneliği. Bu aboneliği kabul edin veya açılan listeden yeni bir tane seçin. |
     | **[Kaynak grubu](../articles/azure-resource-manager/management/overview.md)** | Kaynak grubunuzun adı |  İşlev uygulamanızın oluşturulacağı kaynak grubu. Açılan listeden var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni** ' yi seçin.|
-    | **[Barındırma planı](../articles/azure-functions/functions-scale.md)** | Barındırma planınızın adı | Sunucusuz bir plan yapılandırmak için **Yeni** ' yi seçin. **Boyut**' un altında **tüketimi** seçtiğinizden emin olun. Projenizi bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. **Tüketim**dışında bir planda çalıştırırsanız, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md)yönetmeniz gerekir.  |
+    | **[Barındırma Planı](../articles/azure-functions/functions-scale.md)** | Barındırma planınızın adı | Sunucusuz bir plan yapılandırmak için **Yeni** ' yi seçin. **Boyut**' un altında **tüketimi** seçtiğinizden emin olun. Projenizi bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. **Tüketim**dışında bir planda çalıştırırsanız, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md)yönetmeniz gerekir.  |
     | **Konum** | App Service 'in konumu | Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlerden bir **konum** seçin. |
-    | **[Azure Depolama](../articles/storage/common/storage-account-create.md)** | Genel amaçlı depolama hesabı | Işlevler çalışma zamanı için bir Azure depolama hesabı gereklidir. Genel amaçlı bir depolama hesabı yapılandırmak için **Yeni** ' yi seçin. [Depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılayan mevcut bir hesabı da seçebilirsiniz.  |
+    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Genel amaçlı depolama hesabı | Işlevler çalışma zamanı için bir Azure depolama hesabı gereklidir. Genel amaçlı bir depolama hesabı yapılandırmak için **Yeni** ' yi seçin. [Depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılayan mevcut bir hesabı da seçebilirsiniz.  |
 
     ![App Service Oluştur iletişim kutusu](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 

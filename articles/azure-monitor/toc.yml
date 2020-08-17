@@ -494,6 +494,8 @@
               href: platform/alerts-metric.md
             - name: Dinamik eşikleri kullanma
               href: platform/alerts-dynamic-thresholds.md
+            - name: Çok sayıda zaman serisi için tek tek uyarılar
+              href: platform/alerts-metric-multiple-time-series-single-rule.md
             - name: Günlüklerde ölçüm uyarıları
               href: platform/alerts-metric-logs.md
             - name: Resource Manager şablonunu kullanma

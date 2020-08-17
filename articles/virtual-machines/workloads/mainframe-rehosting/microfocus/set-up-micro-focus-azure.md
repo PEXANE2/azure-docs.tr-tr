@@ -29,7 +29,7 @@ Bu kurulum, Azure Marketi 'nden Windows Server 2016 görüntüsünü çalıştı
 
 Enterprise Server için karşılık gelen geliştirme ortamı, Microsoft Visual Studio 2017 veya üzeri, Visual Studio Community (indirme için ücretsiz) veya çakışan küreler üzerinde çalışan Enterprise Developer ' dır. Bu makalede, Visual Studio 2017 veya üzeri yüklü bir Windows Server 2016 sanal makinesi kullanılarak nasıl dağıtılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce Şu önkoşullara göz atın:
 

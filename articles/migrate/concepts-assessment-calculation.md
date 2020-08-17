@@ -3,14 +3,14 @@ title: Azure sanal makine değerlendirmelerinde Azure geçişi sunucu değerlend
 description: Azure geçişi sunucu değerlendirmesinde değerlendirmeler hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825999"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261863"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure geçişi ile Azure VM değerlendirmeleri: Sunucu değerlendirmesi
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>Sunucu değerlendirmesi genel bakış (Azure VM 'lerine geçiş)
 
 Bu makalede, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracında değerlendirmelere genel bakış sunulmaktadır. Araç, Azure 'a geçiş için şirket içi VMware sanal makinelerini, Hyper-V VM 'lerini ve fiziksel sunucuları değerlendirebilirler.
 
@@ -112,7 +112,7 @@ Hesaplamalar önceki sıradadır. Bir makine sunucusu, yalnızca öncekini geçe
 
 Sunucu değerlendirmesi 'nde bir Azure VM değerlendirmesi 'ne dahil edilmiştir:
 
-**Özelliði** | **Ayrıntılar**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Hedef konum** | Geçirmek istediğiniz konum. Sunucu değerlendirmesi Şu anda bu hedef Azure bölgelerini destekliyor:<br/><br/> Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta Hindistan, Orta ABD, Çin Doğu, Çin Kuzey, Doğu Asya, Doğu ABD, Doğu ABD 2, Almanya Orta, Almanya Kuzeydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, UK Batı, US gov Arizona, US Gov Teksas, US Gov Virginia , Orta Batı ABD, Batı Avrupa, Batı Hindistan, Batı ABD ve Batı ABD 2.
 **Hedef depolama diski (örneğin, boyutlandırma)** | Azure 'da depolama için kullanılacak disk türü. <br/><br/> Hedef depolama diskini Premium tarafından yönetilen, Standart SSD yönetilen veya Standart HDD yönetilen olarak belirtin.
@@ -122,9 +122,9 @@ Sunucu değerlendirmesi 'nde bir Azure VM değerlendirmesi 'ne dahil edilmiştir
 **Performans geçmişi** | Performans tabanlı boyutlandırma ile kullanılır. Performans geçmişi performans verileri değerlendirilirken kullanılan süreyi belirtir.
 **Yüzdebirlik kullanımı** | Performans tabanlı boyutlandırma ile kullanılır. Yüzdebirlik kullanımı, doğru hale getirmek için kullanılan performans örneğinin yüzdebirlik değerini belirtir.
 **VM serisi** | Doğru hale getirmek için göz önünde bulundurulması istediğiniz Azure VM Serisi. Örneğin, Azure 'da bir serisi VM gerektiren bir üretim ortamınız yoksa, seri listesinden bir serisi dışarıda bırakabilirsiniz.
-**Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. VM 'Ler için CPU, RAM, disk ve ağ kullanım verilerine uygulanır. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımındaki bir 10 çekirdekli VM normalde iki çekirdekli bir VM ile sonuçlanır. 2,0, bir BT faktörü ile bunun yerine dört çekirdekli bir VM olur.
+**Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. VM 'Ler için CPU, RAM, disk ve ağ verilerine uygulanır. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımındaki bir 10 çekirdekli VM normalde iki çekirdekli bir VM ile sonuçlanır. 2,0, bir BT faktörü ile bunun yerine dört çekirdekli bir VM olur.
 **Teklif** | Kayıtlı olduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) . Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
-**Birimindeki** | Hesabınız için faturalandırma para birimi.
+**Para birimi** | Hesabınız için faturalandırma para birimi.
 **İndirim (%)** | Azure teklifinin üzerine aldığınız, aboneliğe özgü tüm indirimler. Varsayılan ayar, %0’dır.
 **VM çalışma süresi** | Sürekli olarak çalışmayan Azure VM 'Leri için her ay gün ve saat başına gün cinsinden süre. Maliyet tahminleri bu süreye göre hesaplanır.<br/><br/> Varsayılan değerler ayda 31 gün ve günde 24 saat değerlerdir.
 **Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Ayarın varsayılan değeri "Evet" ise, Windows dışındaki işletim sistemleri için Azure fiyatları Windows VM 'Leri olarak kabul edilir.
@@ -151,8 +151,8 @@ Azure VM değerlendirmesi için sunucu değerlendirmesi, Azure VM 'lerinde çal�
 Özellik | Ayrıntılar | Azure hazırlık durumu
 --- | --- | ---
 **Önyükleme türü** | Azure, UEFı değil, BIOS 'un önyükleme türü olan VM 'Leri destekler. | Önyükleme türü UEFı ise koşullu olarak hazırlanıyor
-**Çekirdekler** | Her makinede en fazla 128 çekirdek olmalıdır; bu, bir Azure VM 'nin desteklediği maksimum sayıdır.<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan çekirdekleri dikkate alır. Değerlendirme ayarları bir rahatetken belirtirseniz, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi, rakip etmenini uygulamadan ayrılmış çekirdekleri kullanır. | Çekirdek sayısı sınırın içindeyse, hazırlanıyor
-**KOÇ** | Her makinede 3.892 GB 'den fazla RAM olması gerekir. bu boyut, en büyük boyut olan bir Azure ı serisi Standard_M128m &nbsp; <sup>2</sup> VM destekler. [Daha fazla bilgi edinin](../virtual-machines/sizes.md).<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan RAM 'i dikkate alır. Bir rakip faktörü belirtilmişse, kullanılan RAM, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Geçmiş yoksa, ayrılan RAM bir rahatörün uygulaması olmadan kullanılır.<br/><br/> | RAM miktarı sınırın içindeyse hazırlanıyor
+**Çekirdekler** | Her makinede en fazla 128 çekirdek olmalıdır; bu, bir Azure VM 'nin desteklediği maksimum sayıdır.<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan çekirdekleri dikkate alır. Değerlendirme ayarları bir rahatetken belirtirseniz, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Performans geçmişi yoksa, Azure geçişi, rahatlık faktörünü uygulamak için ayrılmış çekirdekleri kullanır. | Çekirdek sayısı sınırın içindeyse, hazırlanıyor
+**KOÇ** | Her makinede 3.892 GB 'den fazla RAM olması gerekir. bu boyut, en büyük boyut olan bir Azure ı serisi Standard_M128m &nbsp; <sup>2</sup> VM destekler. [Daha fazla bilgi edinin](../virtual-machines/sizes.md).<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan RAM 'i dikkate alır. Bir rakip faktörü belirtilmişse, kullanılan RAM, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Geçmiş yoksa, bir rakip faktörü uygulamak için ayrılan RAM kullanılır.<br/><br/> | RAM miktarı sınırın içindeyse hazırlanıyor
 **Depolama diski** | Bir diskin ayrılan boyutu 32 TB 'tan fazla olmamalıdır. Azure, Azure Ultra SSD diskleriyle 64 TB diskleri destekler, ancak Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD desteklemediği için, disk boyutu sınırı olarak 32 TB 'yi kontrol eder. <br/><br/> İşletim sistemi diski de dahil olmak üzere makineye bağlı disk sayısı 65 veya daha az olmalıdır. | Disk boyutu ve sayı limitlerin içindeyse,
 **Ağ** | Bir makinenin kendisine bağlı 32 ' den fazla ağ arabirimi (NIC) olmaması gerekir. | NIC sayısı sınırın içindeyse, hazırlanıyor
 

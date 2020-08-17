@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Elektronik tasarım otomasyonu için Azure NetApp Files kullanmanın avantajları
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Azure NetApp Files ile Windows Sanal Masaüstü kullanma
+              href: solutions-windows-virtual-desktop.md
     - name: Azure NetApp Files hakkında SSS
       href: azure-netapp-files-faqs.md
 - name: Nasıl yapılır kılavuzları
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: NFSv4.1 varsayılan etki alanını yapılandırma
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: NFSv4.1 Kerberos şifrelemesini yapılandırma
+          href: configure-kerberos-encryption.md
+        - name: Azure NetApp Files için NFS istemcisini yapılandırma
+          href: configure-nfs-clients.md
         - name: NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
           href: azure-netapp-files-configure-export-policy.md
     - name: SMB birimi oluşturma
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Çift protokollü birim oluşturma
+      href: create-volumes-dual-protocol.md
     - name: Windows veya Linux sanal makineleri için birimi bağlama veya ayırma
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Anlık görüntüleri yönetme
       href: azure-netapp-files-manage-snapshots.md
     - name: Kapasitesi havuzunu veya birimi yeniden boyutlandırma
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Birimin hizmet düzeyini dinamik olarak değiştirme
+      href: dynamic-change-volume-service-level.md
     - name: Geliştirme
       items:
         - name: REST API

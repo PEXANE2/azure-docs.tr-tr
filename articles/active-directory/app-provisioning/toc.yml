@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: Uygulama sağlama sorunlarını giderme
       items:
-        - name: Uygulama hazırlama sorunlarını giderme
+        - name: Bilinen sorunlar
+          href: known-issues.md
+        - name: Yapılandırma sorunlarını giderme
           href: application-provisioning-config-problem.md
         - name: Karantina durumu
           href: application-provisioning-quarantine-status.md

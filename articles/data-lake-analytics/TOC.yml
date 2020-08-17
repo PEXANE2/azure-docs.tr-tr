@@ -1,4 +1,4 @@
-- name: Data Lake Analytics Belgeleri
+- name: Data Lake Analytics belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -32,7 +32,7 @@
           href: ./security-controls-policy.md
         - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
           href: security-baseline.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır kılavuzları
   items:
     - name: Data Lake Analytics'i yönetme
       items:

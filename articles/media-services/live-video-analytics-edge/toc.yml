@@ -30,6 +30,11 @@
       href: event-based-video-recording-tutorial.md
     - name: Çok günlük kayıtları yürütme
       href: playback-multi-day-recordings-tutorial.md
+    - name: Canlı videoyu analiz etme
+      items:
+        - name: HTTP uzantısı aracılığıyla OVMS ile
+          displayName: 'intel, OpenVINO'
+          href: use-intel-openvino-tutorial.md
 - name: Örnekler
   items:
     - name: IoT Edge’de Canlı Video Analizi C# örnekleri

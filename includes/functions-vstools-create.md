@@ -25,12 +25,12 @@ Visual Studio 'daki Azure Işlevleri proje şablonu, Azure 'da bir işlev uygula
 
 1. **Yeni Azure işlevleri uygulama ayarları oluşturma** için aşağıdaki tablodaki değerleri kullanın:
 
-    | Ayar      | Değer  | Description                      |
+    | Ayar      | Değer  | Açıklama                      |
     | ------------ |  ------- |----------------------------------------- |
     | **İşlevler çalışma zamanı** | **Azure Işlevleri v3 <br /> (.NET Core)** | Bu değer, .NET Core 3. x ' i destekleyen Azure Işlevlerinin sürüm 3. x çalışma zamanını kullanan bir işlev projesi oluşturur. Azure İşlevleri 1.x, .NET Framework’ü destekler. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](../articles/azure-functions/functions-versions.md).   |
     | **İşlev şablonu** | **HTTP tetikleyicisi** | Bu değer, bir HTTP isteği tarafından tetiklenen bir işlev oluşturur. |
     | **Depolama hesabı (AzureWebJobsStorage)**  | **Depolama öykünücüsü** | Azure Işlevi için bir depolama hesabı gerektiğinden, projenizi Azure 'da yayımladığınızda bir tane atanır veya oluşturulur. HTTP tetikleyicisi, Azure depolama hesabı bağlantı dizesi kullanmaz; diğer tüm tetikleyici türleri için geçerli bir Azure depolama hesabı bağlantı dizesi gerekir.  |
-    | **Yetkilendirme düzeyi** | **Anonim** | Oluşturulan işlev, anahtar gerektirmeden herhangi bir istemci tarafından tetiklenebilir. Bu yetkilendirme ayarı yeni işlevinizi test etmenizi kolaylaştırır. Anahtarlar ve yetkilendirme hakkında daha fazla bilgi için bkz. [Yetkilendirme anahtarları](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) ve [http ve Web kancası bağlamaları](../articles/azure-functions/functions-bindings-http-webhook.md). |
+    | **Yetkilendirme düzeyi** | **Deðeri** | Oluşturulan işlev, anahtar gerektirmeden herhangi bir istemci tarafından tetiklenebilir. Bu yetkilendirme ayarı yeni işlevinizi test etmenizi kolaylaştırır. Anahtarlar ve yetkilendirme hakkında daha fazla bilgi için bkz. [Yetkilendirme anahtarları](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) ve [http ve Web kancası bağlamaları](../articles/azure-functions/functions-bindings-http-webhook.md). |
     
     
     ![Azure Işlevleri proje ayarları](./media/functions-vs-tools-create/functions-project-settings.png)

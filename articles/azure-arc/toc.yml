@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Sunucu aracıları için Arc’ı etkinleştirme
+    - name: Azure Arc özellikli sunucular aracısını etkinleştirme
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: Öğreticiler
   items:

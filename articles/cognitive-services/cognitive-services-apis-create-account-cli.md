@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](https://do
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Geçerli bir Azure aboneliği-ücretsiz olarak [bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services) .
 * [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -95,7 +95,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Arayın
+### <a name="search"></a>Arama
 
 | Hizmet            | Tip                  |
 |--------------------|-----------------------|

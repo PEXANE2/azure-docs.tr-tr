@@ -67,7 +67,9 @@
       items:
         - name: Kimlik doğrulama ve yetkilendirme
           href: time-series-insights-authentication-and-authorization.md
-        - name: C# kullanarak verileri sorgulama
+        - name: C# kullanarak verileri sorgulama - 2. Nesil
+          href: time-series-insights-update-query-data-csharp.md
+        - name: C# kullanarak verileri sorgulama - 1. Nesil
           href: time-series-insights-query-data-csharp.md
         - name: C# içinde başvuru verilerini yönetme
           href: time-series-insights-manage-reference-data-csharp.md

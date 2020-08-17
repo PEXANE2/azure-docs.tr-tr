@@ -58,7 +58,7 @@ Bu bölümde, çıkış kuyruğuna bir ileti yazan kodu ekleyeceksiniz. İleti, 
 
 1. İşlev dilinize uygun işlev kodunu kullanın:
 
-    # <a name="c"></a>[,\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Yöntem imzasına aşağıdaki örnekte gösterildiği gibi bir **outputQueueItem** parametresi ekleyin.
 

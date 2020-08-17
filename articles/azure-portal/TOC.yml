@@ -27,20 +27,16 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure portalı tercihlerinizi ayarlama
+    - name: Azure portal ayarlarını ve tercihlerini yönetme
       href: set-preferences.md
-    - name: Tüm kullanıcılar için etkinlik dışı zaman aşımı ayarlarını belirleme
-      href: admin-timeout.md
-    - name: Yüksek karşıtlığı açma veya tema değiştirme
-      href: azure-portal-change-theme-high-contrast.md
     - name: 'Ekleme, kaldırma ve sık kullanılanları sıralama'
       href: azure-portal-add-remove-sort-favorites.md
-    - name: Azure panoları oluşturma ve paylaşma
-      href: azure-portal-dashboards.md
-    - name: Özel Markdown kutucuğunu kullanma
-      href: azure-portal-markdown-tile.md
-    - name: Kullanıcı ayarlarını dışarı aktarma veya silme
-      href: azure-portal-export-delete-settings.md
+    - name: Azure panoları oluşturma
+      items:
+        - name: Azure panoları oluşturma ve paylaşma
+          href: azure-portal-dashboards.md
+        - name: Özel Markdown kutucuğunu kullanma
+          href: azure-portal-markdown-tile.md
     - name: Azure portalı nasıl yapılır video serisi
       href: azure-portal-video-series.md
     - name: Destek isteklerini oluşturma ve yönetme

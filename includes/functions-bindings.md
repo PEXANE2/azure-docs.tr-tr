@@ -17,7 +17,7 @@ Bu tabloda, Azure Işlevleri çalışma zamanının ana sürümlerinde desteklen
 
 | Tür | 'in | 2. x ve üzeri<sup>1</sup> | Tetikleyici | Girdi | Çıktı |
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [BLOB depolama](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
+| [Blob depolama](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|

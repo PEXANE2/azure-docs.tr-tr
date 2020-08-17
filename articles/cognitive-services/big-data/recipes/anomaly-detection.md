@@ -28,7 +28,7 @@ Kuramsal senaryo, IoT cihazlarının [Buhar es](https://en.wikipedia.org/wiki/St
 
 Veride rastgele bir sıklıkta bir grup olabilir. Bu durumlarda, RPM değerleri devreye alınacaktır ve bu, devre koruması için MW çıkış olacaktır. Bu düşünce, verileri aynı zamanda, ancak farklı sinyallerle aynı anda görmenizde yarar vardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Spark havuzuyla](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) yapılandırılmış [Azure SYNAPSE çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)

@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190898"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262781"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -100,6 +100,10 @@ VM 'niz veya VM kaynak grubunuz için büyük/küçük harf (büyük veya küç�
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>Bir VM 'ye bağlı seçmeli diskleri yedekleyebilir veya geri yükleyebilir miyim?
 
 Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir. Daha fazla bilgi için bkz. [Azure VM 'ler Için seçmeli disk yedekleme ve geri yükleme](selective-disk-backup-restore.md).
+
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Yönetilen kimlikler, yedekleme sırasında bir kiracı değişikliği gerçekleşirse saklanır mi?
+
+[Kiracı değişikliği](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) gerçekleşirse, yedeklemelerin yeniden çalışması için [yönetilen kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
 ## <a name="restore"></a>Geri Yükleme
 

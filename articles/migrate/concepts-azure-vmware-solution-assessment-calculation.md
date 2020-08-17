@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387957"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261846"
 ---
-# <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure geçişi 'nde AVS değerlendirmeleri: Sunucu değerlendirmesi
+# <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Sunucu değerlendirmesi genel bakış (Azure VMware çözümüne geçiş)
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızın ve iş yüklerinizin bulmayı, değerlendirmesini ve geçişini izlemek için bir merkezi Merkez sağlar. Ayrıca, özel ve genel bulut örneklerinizi Azure 'da izler. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sunar.
 
@@ -128,7 +128,7 @@ Sunucu değerlendirmesinde bir AVS değerlendirmesi aşağıda verilmiştir:
 **Yüzdebirlik kullanımı** | Sağ boyutlandırmanın kabul edileceği performans örneği kümesinin yüzdebirlik değerini belirtir. Bu özellik yalnızca boyutlandırma performans tabanlı olduğunda geçerlidir.
 **Konfor katsayısı** | Azure geçişi sunucu değerlendirmesi, değerlendirme sırasında bir arabellek (rahatetken) kabul eder. Bu tampon, VM’lerin makine kullanım verilerinin (CPU, bellek, disk ve ağ) üzerine uygulanır. Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar.<br/><br/> Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur. 
 **Teklif** | Kayıtlı olduğunuz [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) görüntüler. Azure Geçişi, buna göre bir maliyet tahmini oluşturur.
-**Birimindeki** | Hesabınız için faturalandırma para birimini gösterir. 
+**Para birimi** | Hesabınız için faturalandırma para birimini gösterir. 
 **İndirim (%)** | Azure teklifinin üzerine aldığınız aboneliğe özgü tüm indirimi listeler. Varsayılan ayar, %0’dır. 
 **Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Düğüm tabanlı fiyat nedeniyle Azure VMware Çözüm fiyatlandırması üzerinde hiçbir etkisi olmamasına karşın, müşteriler Azure hibrit avantajlarını kullanarak AVS 'ye şirket içi işletim sistemi lisanslarını (Microsoft tabanlı) uygulayabilir. Diğer yazılım işletim sistemi satıcılarının, RHEL gibi kendi lisans şartlarını sağlaması gerekecektir. 
 **vCPU fazla abonelik** | AVS düğümündeki bir fiziksel çekirdeğe bağlı sanal çekirdek sayısının oranını belirtir. Hesaplamalardaki varsayılan değer 4 vCPU: AVS 'de 1 fiziksel çekirdek olur. <br/><br/> API kullanıcıları bu değeri bir tamsayı olarak ayarlayabilir. VCPU fazla aboneliği > 4:1 ' nin, CPU kullanımına bağlı olarak iş yüklerini etkileyebileceğini unutmayın. 

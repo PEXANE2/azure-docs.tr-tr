@@ -78,12 +78,16 @@
   items:
     - name: Veri güvenliği ve şifreleme
       href: encryption-overview.md
+    - name: Çift şifreleme
+      href: double-encryption.md
     - name: Disk şifrelemesi
       items:
         - name: En iyi uygulamalar
           href: data-encryption-best-practices.md
-        - name: Bekleyen veri şifreleme
+        - name: Bekleme sırasında veri şifrelemesi
           href: encryption-atrest.md
+        - name: Veri şifreleme modelleri
+          href: encryption-models.md
         - name: Sanal makineler için Azure Disk Şifrelemesi
           href: azure-disk-encryption-vms-vmss.md
     - name: Veritabanı güvenliği

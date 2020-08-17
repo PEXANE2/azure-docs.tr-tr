@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182961"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261897"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Sanal makinelerin yaşam döngüsü ve durumları
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda her örnek durumunun açıklaması verilmiştir ve örnek k
 :::row:::
    :::column span="":::
 
-   **Durum**
+   **Durumunda**
    
    :::column-end:::
    :::column span="":::
@@ -76,7 +76,7 @@ Aşağıdaki tabloda her örnek durumunun açıklaması verilmiştir ve örnek k
 :::row:::
    :::column span="":::
 
-   **Çalışıyor**
+   **Çalışma**
 
    :::column-end:::
    :::column span="":::
@@ -232,7 +232,7 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 :::row:::
    :::column span="":::
 
-   **Durum**
+   **Durumunda**
    
    :::column-end:::
    :::column span="2":::
@@ -423,6 +423,8 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 Azure Kaynak Gezgini, VM çalıştırma durumunu görüntülemek için basit bir kullanıcı arabirimi sağlar: [Kaynak Gezgini](https://resources.azure.com/).
 
 Sağlama durumları VM özellikleri ve örnek görünümünde görülebilir. Güç durumları VM 'nin örnek görünümünde kullanılabilir.
+
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

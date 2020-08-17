@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236310"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262679"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -32,7 +32,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 3. Yedekleme panosu menüsünde **dosya kurtarma**' yı seçin.
 
-    ![Dosya Kurtarma düğmesi](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Dosya kurtarma seçin](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     **Dosya kurtarma** menüsü açılır.
 
@@ -42,7 +42,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 5. Kurtarma noktasından dosya kopyalamak için kullanılan yazılımı indirmek için, **yürütülebilir dosyayı indir** (Windows Azure VM 'ler için) veya **betiği Indir** (Linux Azure VM 'leri için bir Python betiği oluşturulur).
 
-    ![Oluşturulan parola](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![Yürütülebilir dosyayı indir](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure, yürütülebilir dosyayı veya betiği yerel bilgisayara indirir.
 
@@ -56,7 +56,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 7. Betiği yürütmek için [doğru makineye sahip](#selecting-the-right-machine-to-run-the-script) olduğunuzdan emin olun. Doğru makine, betiği indirdiğiniz makinada sahip ise, indirme bölümüne devam edebilirsiniz. İndirme konumundan (genellikle *indirmeler* klasörü), çalıştırılabilir veya betiğe sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve **ENTER**tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
 
-    ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Yürütülebilir çıkış](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. Linux makinelerinde, bir Python betiği oluşturulur. Bunlardan birinin betiği indirmesi ve ilgili/uyumlu Linux sunucusuna kopyalanması gerekir. İle yürütmek için izinleri değiştirmeniz gerekebilir ```chmod +x <python file name>``` . Sonra Python dosyasını ile çalıştırın ```./<python file name>``` .
 

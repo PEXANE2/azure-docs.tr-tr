@@ -1,14 +1,14 @@
 ---
 title: Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) için çevrimdışı yedekleme-önceki sürümler
-description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
+description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM 'nin önceki sürümleri ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186954"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261931"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
 
@@ -58,7 +58,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
     | Sovereign bulut bölgesi | Azure yayımlama ayarları dosyası bağlantısı |
     | --- | --- |
-    | Amerika Birleşik Devletleri | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Birleşik Devletler | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | Çin | [Bağlantı](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * Yayımlama ayarları dosyasını indirdiğiniz abonelikte Kaynak Yöneticisi dağıtım modeliyle bir Azure depolama hesabı oluşturuldu. Depolama hesabında, hedef olarak kullanılacak yeni bir blob kapsayıcısı oluşturun.
@@ -99,7 +99,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 Çevrimdışı yedekleme sertifikasını çevrimdışı yedekleme için daha önce oluşturulmuş bir Azure Active Directory uygulamasına el ile yüklemek için aşağıdaki adımları izleyin.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**gidin.
 1. Sahip olan **uygulamalar** sekmesinde görünen ad biçimiyle bir uygulama bulun `AzureOfflineBackup _<Azure User Id` .
 

@@ -44,6 +44,8 @@
           items:
             - name: Azure portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM şablonu
               href: service-bus-resource-manager-namespace-topic.md
         - name: İleti yayımlama ve iletilere abone olma
@@ -62,12 +64,8 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: Öğreticiler
   items:
-    - name: Envanteri güncelleştirme - PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: Envanteri güncelleştirme - Portal
+    - name: Envanteri güncelleştirme
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Envanteri güncelleştirme - CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: Event Grid yoluyla olaylara yanıt verme
       href: service-bus-to-event-grid-integration-example.md
 - name: Örnekler

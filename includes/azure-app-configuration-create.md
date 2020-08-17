@@ -19,18 +19,18 @@ ms.locfileid: "77619325"
 
     ![Oluştur’u seçin](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
-1. **Uygulama yapılandırması** > **Oluştur** bölmesinde, aşağıdaki ayarları girin:
+1. **Uygulama yapılandırması**  >  **Oluştur** bölmesinde, aşağıdaki ayarları girin:
 
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
-    | **Kaynak adı** | Genel olarak benzersiz bir ad | Uygulama yapılandırma deposu kaynağı için kullanılacak benzersiz bir kaynak adı girin. Ad, 5 ila 50 karakter arasında bir dize olmalı ve yalnızca rakam, harf ve `-` karakter içermelidir. Ad, `-` karakteriyle başlayamaz veya bitemez.  |
+    | **Kaynak adı** | Genel olarak benzersiz bir ad | Uygulama yapılandırma deposu kaynağı için kullanılacak benzersiz bir kaynak adı girin. Ad, 5 ila 50 karakter arasında bir dize olmalı ve yalnızca rakam, harf ve `-` karakter içermelidir. Ad, karakteriyle başlayamaz veya bitemez `-` .  |
     | **Abonelik** | Aboneliğiniz | Uygulama yapılandırmasını test etmek için kullanmak istediğiniz Azure aboneliğini seçin. Hesabınızda yalnızca bir abonelik varsa, bu otomatik olarak seçilir ve **abonelik** listesi gösterilmez. |
     | **Kaynak grubu** | *AppConfigTestResources* | Uygulama yapılandırma deposu kaynağınız için bir kaynak grubu seçin veya oluşturun. Bu grup, kaynak grubunu silerek aynı anda silmek isteyebileceğiniz birden çok kaynağı düzenlemek için yararlıdır. Daha fazla bilgi için [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](/azure/azure-resource-manager/resource-group-overview) konusunu inceleyin. |
-    | **Konum** | *Orta ABD* | Uygulama yapılandırma deponuzın barındırıldığı coğrafi konumu belirtmek için **konum** ' i kullanın. En iyi performansı elde etmek için, kaynağı uygulamanızın diğer bileşenleriyle aynı bölgede oluşturun. |
-    | **Fiyatlandırma Katmanı** | *Ücretsiz* | İstediğiniz fiyatlandırma katmanını seçin. Daha fazla ayrıntı için lütfen [uygulama yapılandırma fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/app-configuration/)bakın.
+    | **Konum** | *Central US* | Uygulama yapılandırma deponuzın barındırıldığı coğrafi konumu belirtmek için **konum** ' i kullanın. En iyi performansı elde etmek için, kaynağı uygulamanızın diğer bileşenleriyle aynı bölgede oluşturun. |
+    | **Fiyatlandırma katmanı** | *Ücretsiz* | İstediğiniz fiyatlandırma katmanını seçin. Daha fazla ayrıntı için lütfen [uygulama yapılandırma fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/app-configuration/)bakın.
 
     ![Uygulama yapılandırma deposu kaynağı oluşturma](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
 1. **Oluştur**’u seçin. Dağıtım birkaç dakika sürebilir.
 
-1. Dağıtım bittikten sonra **Ayarlar** > **erişim Anahtarlar**' ı seçin. Birincil salt okunurdur anahtar bağlantı dizesini bir yere unutmayın. Uygulamanızı oluşturduğunuz uygulama yapılandırma deposuyla iletişim kuracak şekilde yapılandırmak için bu bağlantı dizesini daha sonra kullanacaksınız.
+1. Dağıtım bittikten sonra **Ayarlar**  >  **erişim Anahtarlar**' ı seçin. Birincil salt okunurdur anahtar bağlantı dizesini bir yere unutmayın. Uygulamanızı oluşturduğunuz uygulama yapılandırma deposuyla iletişim kuracak şekilde yapılandırmak için bu bağlantı dizesini daha sonra kullanacaksınız.

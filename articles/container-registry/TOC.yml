@@ -148,6 +148,12 @@
         - name: Sorun giderme
           expanded: false
           items:
+            - name: Oturum açma sorunlarını giderme
+              href: container-registry-troubleshoot-login.md
+            - name: Ağ sorunlarını giderme
+              href: container-registry-troubleshoot-access.md
+            - name: Kayıt defteri performansı sorunlarını giderme
+              href: container-registry-troubleshoot-performance.md
             - name: Yaygın sorunları algılama
               href: container-registry-check-health.md
             - name: SSS

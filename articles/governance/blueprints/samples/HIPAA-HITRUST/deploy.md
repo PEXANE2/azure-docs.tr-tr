@@ -62,7 +62,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel bilgiler
+   - Temel Bilgiler
 
      - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.

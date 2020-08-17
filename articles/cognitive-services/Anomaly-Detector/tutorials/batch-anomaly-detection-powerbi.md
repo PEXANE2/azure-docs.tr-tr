@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Batch anomali algılama için anomali algılayıcı API 'siyle Power BI Desktop tümleştirme
 > * Beklenen ve görülen değerler ve anomali algılama sınırları dahil olmak üzere verilerinizde bulunan anormallikleri görselleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Azure aboneliği](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)ücretsiz olarak kullanılabilir.
 * Zaman serisi veri noktaları içeren bir Excel dosyası (. xlsx). Bu hızlı başlangıçta örnek veriler [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 'da bulunabilir

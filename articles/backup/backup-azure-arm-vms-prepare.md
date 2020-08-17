@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533606"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261948"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -140,7 +140,7 @@ Anlık görüntü aşaması, **anlık geri yüklemeler** için disklerle birlikt
 
 Aşağıda verilen şekilde **yedekleme işi** ayrıntıları bölmesinden denetlenebilir ön uç yedekleme işi için bir tane olmak üzere arka uçta çalışan Iki **alt görev** vardır:
 
-  ![Yedekleme Işi durumu](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+  ![Yedekleme Işi durumu alt görevleri](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
 **Verileri kasaya aktar** aşamasına kadar, disklerin boyutuna, disk başına dalgalanma ve diğer birçok etkene göre tamamlanması çok gün sürebilir.
 

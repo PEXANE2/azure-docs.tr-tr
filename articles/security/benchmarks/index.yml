@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
-  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/30/2020
-  ms.locfileid: "82607767"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88213556"
 landingContent:
 - title: Azure Güvenlik Karşılaştırması hakkında
   linkLists:
@@ -28,7 +28,13 @@ landingContent:
       url: introduction.md
     - text: Azure güvenlik denetimlerine genel bakış
       url: overview.md
-- title: Güvenlik denetimleri
+    - text: Bulutta paylaşılan sorumluluk
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure Güvenlik Merkezi
+      url: ../../security-center/index.yml
+    - text: Azure güvenliğinin temelleri
+      url: ../fundamentals/index.yml
+- title: Azure Güvenlik Karşılaştırması denetimleri
   linkLists:
   - linkListType: overview
     links:
@@ -44,13 +50,95 @@ landingContent:
       url: security-control-vulnerability-management.md
     - text: Daha fazla göster
       url: security-control-inventory-asset-management.md
-- title: Azure Güvenliği ile ilgili diğer bilgiler
+- title: İşlem güvenlik temelleri
   linkLists:
-  - linkListType: learn
+  - linkListType: overview
     links:
-    - text: Azure güvenliğinin temelleri
-      url: ../fundamentals/index.yml
-    - text: Bulutta paylaşılan sorumluluk
-      url: ../fundamentals/shared-responsibility.md
-    - text: Azure Güvenlik Merkezi
-      url: ../../security-center/index.yml
+    - text: Linux Sanal Makineleri
+      url: ../../virtual-machines/linux/security-baseline.md
+    - text: Windows Sanal Makineleri
+      url: ../../virtual-machines/windows/security-baseline.md
+    - text: Sanal Makine Ölçek Kümeleri
+      url: ../../virtual-machine-scale-sets/security-baseline.md
+    - text: Batch
+      url: ../../batch/security-baseline.md
+    - text: Azure İşlevleri
+      url: ../../azure-functions/security-baseline.md
+- title: Kapsayıcılar güvenlik temelleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Container Instances
+      url: ../../container-instances/security-baseline.md
+    - text: Container Kayıt Defteri
+      url: ../../container-registry/security-baseline.md
+    - text: Service Fabric
+      url: ../../service-fabric/security-baseline.md
+- title: Analytics güvenlik temelleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Veri Gezgini
+      url: /azure/data-explorer/security-baseline
+    - text: Data Lake Analytics
+      url: ../../data-lake-analytics/security-baseline.md
+    - text: Databricks
+      url: ../../azure-databricks/security-baseline.md
+    - text: Data Factory
+      url: ../../data-factory/security-baseline.md
+    - text: HDInsight
+      url: ../../hdinsight/security-baseline.md
+- title: Veritabanları güvenlik temelleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Redis için Azure Cache
+      url: ../../azure-cache-for-redis/security-baseline.md
+    - text: MariaDB için Azure Veritabanı
+      url: ../../mariadb/security-baseline.md
+    - text: MySQL için Azure Veritabanı
+      url: ../../mysql/security-baseline.md
+    - text: PostgreSQL için Azure Veritabanı
+      url: ../../postgresql/security-baseline.md
+    - text: Azure SQL Veritabanı
+      url: ../../sql-database/security-baseline.md
+- title: Ağ güvenlik temelleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Application Gateway
+      url: ../../application-gateway/security-baseline.md
+    - text: DDOS Koruması
+      url: ../fundamentals/ddos-protection-security-baseline.md
+    - text: Azure ExpressRoute
+      url: ../../expressroute/security-baseline.md
+    - text: Azure Güvenlik Duvarı
+      url: ../../firewall/security-baseline.md
+    - text: Ağ İzleyicisi
+      url: ../../network-watcher/security-baseline.md
+- title: Güvenlik temelleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault
+      url: ../../key-vault/security-baseline.md
+    - text: Güvenlik Merkezi
+      url: ../../security-center/security-baseline.md
+    - text: Müşteri Kasası
+      url: ../fundamentals/customer-lockbox-security-baseline.md
+    - text: Azure İlkesi
+      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+- title: Yönetim ve Tümleştirme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Otomasyon
+      url: ../../automation/security-baseline.md
+    - text: Backup
+      url: ../../backup/security-baseline.md
+    - text: API Management
+      url: ../../api-management/security-baseline.md
+    - text: Event Grid
+      url: ../../event-hubs/security-baseline.md
+    - text: Logic Apps
+      url: ../../logic-apps/security-baseline.md
