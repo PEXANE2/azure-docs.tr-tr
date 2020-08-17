@@ -3,12 +3,12 @@ title: Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513906"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263070"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -111,14 +111,14 @@ Kurtarma Hizmetleri Kasası depolama çoğaltma seçeneği, coğrafi olarak yede
 
 Depolama çoğaltma ayarını düzenlemek için:
 
-1. Kasa panosunu ve Ayarlar menüsünü açmak için kasanızı seçin. **Ayarlar** menüsü açılmazsa, kasa panosunda **Tüm ayarlar** ' a tıklayın.
-2. **Ayarlar** menüsünde, yedekleme **Backup Infrastructure**  >  **yapılandırma** menüsünü açmak için altyapıyı yedekle**yedekleme yapılandırması** ' na tıklayın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
+1. Kasa panosunu ve Ayarlar menüsünü açmak için kasanızı seçin. **Ayarlar** menüsü açılmazsa, kasa panosunda **Tüm ayarlar** ' ı seçin.
+2. **Ayarlar** menüsünde, yedekleme **altyapısı**  >  **yedekleme yapılandırması** ' nı seçerek **yedekleme yapılandırma** menüsünü açın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
 
     ![Yedekleme kasalarının listesi](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
 ## <a name="download-azure-backup-server-installer"></a>Azure Backup Sunucusu yükleyiciyi indir
 
-Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup Sunucusu yükleyicisini [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=55269)' nden indirebilirsiniz. Ayrıca, kurtarma hizmetleri kasasını yapılandırırken Azure Backup Sunucusu yükleyiciyi de indirebilirsiniz. Aşağıdaki adımlar, bir kurtarma hizmetleri kasasını yapılandırırken yükleyiciyi Azure portal karşıdan yükleme işleminde size kılavuzluk yapar.
+Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup Sunucusu yükleyicisini [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=55269)' nden indirebilirsiniz. Ayrıca, kurtarma hizmetleri kasasını yapılandırırken Azure Backup Sunucusu yükleyicisi de indirebilirsiniz. Aşağıdaki adımlar, bir kurtarma hizmetleri kasasını yapılandırırken yükleyiciyi Azure portal karşıdan yükleme işleminde size kılavuzluk yapar.
 
 1. Azure Stack sanal makinenizden [Azure Portal Azure aboneliğinizde oturum açın](https://portal.azure.com/).
 2. Sol taraftaki menüden **tüm hizmetler**' i seçin.
@@ -133,9 +133,9 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
 4. Kurtarma Hizmetleri kasaları listesinden, kendi panosunu açmak için kasanızı seçin.
 
-    ![Tüm Hizmetler iletişim kutusunda kurtarma hizmetleri yazın](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
+    ![Panoyu açmak için kasanızı seçin](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. Kasanın Başlarken menüsünde, Başlangıç Sihirbazı 'nı açmak için **Yedekle** ' ye tıklayın.
+5. Kasanın Başlarken menüsünde, Başlangıç Sihirbazı 'nı açmak için **Yedekle** ' yi seçin.
 
     ![Yedekleme başlangıç](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
@@ -143,25 +143,25 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
     ![Yedekleme-hedefler-varsayılan-açılan](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. Yedekleme menüsünde, **iş yükünüzün çalıştırıldığı konum** menüsünde **Şirket içi**' ı seçin. **Neleri yedeklemek istiyorsunuz?** açılan menüsünde, Azure Backup sunucusu kullanarak korumak istediğiniz iş yüklerini seçin. Hangi iş yüklerini seçdiğinizden emin değilseniz, **Hyper-V sanal makineler** ' i seçin ve ardından **altyapıyı hazırla**' ya tıklayın.
+6. Yedekleme menüsünde, **iş yükünüzün çalıştırıldığı konum** menüsünde **Şirket içi**' ı seçin. **Neleri yedeklemek istiyorsunuz?** açılan menüsünde, Azure Backup sunucusu kullanarak korumak istediğiniz iş yüklerini seçin. Hangi iş yüklerini seçdiğinizden emin değilseniz, **Hyper-V sanal makineler** ' i seçin ve ardından **altyapıyı hazırla**' yı seçin.
 
     ![amaç olarak şirket içi ve iş yükleri](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
     **Altyapıyı hazırla** menüsü açılır.
 
-7. **Altyapıyı hazırla** menüsünde, Azure Backup sunucusu yükleme dosyalarını indirmek üzere bir Web sayfası açmak için **İndir** ' e tıklayın.
+7. **Altyapıyı hazırla** menüsünde, Azure Backup sunucusu yükleme dosyalarını indirmek üzere bir Web sayfası açmak için **İndir** ' i seçin.
 
     ![Başlarken Sihirbazı değişikliği](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
 
     Azure Backup Sunucusu için indirilebilir dosyaları barındıran Microsoft Web sayfası açılır.
 
-8. Microsoft Azure Backup sunucusu indirme sayfasında bir dil seçin ve **İndir**' e tıklayın.
+8. Microsoft Azure Backup sunucusu indirme sayfasında bir dil seçin ve **İndir**' i seçin.
 
     ![İndirme Merkezi açılır](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Azure Backup Sunucusu yükleyicisi sekiz dosyadan oluşur-bir yükleyici ve yedi. bin dosyası. Tüm gerekli dosyaları seçmek için **dosya adını** denetleyin ve **İleri**' ye tıklayın. Tüm dosyaları aynı klasöre indirin.
+9. Azure Backup Sunucusu yükleyicisi sekiz dosyadan oluşur-bir yükleyici ve yedi. bin dosyası. Tüm gerekli dosyaları seçmek için **dosya adını** denetleyin ve **İleri ' yi**seçin. Tüm dosyaları aynı klasöre indirin.
 
-    ![İndirme Merkezi 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
+    ![İndirme Merkezi, seçili dosyalar](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
     Tüm yükleme dosyalarının karşıdan yükleme boyutu 3 GB 'den büyük. 10 Mbps bir indirme bağlantısında, tüm yükleme dosyalarını indirmek 60 dakikaya kadar sürebilir. Dosyalar, belirtilen indirme konumunuza indirilir.
 
@@ -169,55 +169,55 @@ Azure Backup Sunucusu yükleyicisini indirmenin iki yolu vardır. Azure Backup S
 
 Tüm dosyaları Azure Stack sanal makinenize indirdikten sonra, indirme konumuna gidin. Azure Backup Sunucusu yüklemenin ilk aşaması, dosyaları ayıklamanız.
 
-![İndirme Merkezi 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
+![MABS yükleyicisini indir](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. Yüklemeyi başlatmak için indirilen dosyalar listesinden **MicrosoftAzureBackupserverInstaller.exe**' ye tıklayın.
+1. Yüklemeyi başlatmak için indirilen dosyalar listesinden **MicrosoftAzureBackupserverInstaller.exe**' yi seçin.
 
     > [!WARNING]
     > Kurulum dosyalarını ayıklamak için en az 4 GB boş alan gerekir.
     >
 
-2. Azure Backup Sunucusu sihirbazında, **İleri** ' ye tıklayarak devam edin.
+2. Azure Backup Sunucusu sihirbazında, devam etmek için **İleri** ' yi seçin.
 
     ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. Azure Backup Sunucusu dosyaları için yolu seçin ve **İleri**' ye tıklayın.
+3. Azure Backup Sunucusu dosyaları için yolu seçin ve **İleri**' yi seçin.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
+   ![Dosyalar için hedef seçin](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Ayıklama konumunu doğrulayın ve **Ayıkla**' ya tıklayın.
+4. Ayıklama konumunu doğrulayın ve **Ayıkla**' yı seçin.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
+   ![Ayıklama konumunu doğrula](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
 5. Sihirbaz dosyaları ayıklar ve yükleme işlemini yeniden işler.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
+   ![Sihirbaz dosyaları ayıklar](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Ayıklama işlemi tamamlandıktan sonra **son**' a tıklayın. Varsayılan olarak, **setup.exeÇalıştır** seçilidir. **Son**' a tıkladığınızda, Setup.exe Microsoft Azure Backup sunucusunu belirtilen konuma yükleyecek.
+6. Ayıklama işlemi tamamlandıktan sonra **son**' u seçin. Varsayılan olarak, **setup.exeÇalıştır ** seçilidir. **Son**' u seçtiğinizde, Setup.exe Microsoft Azure Backup sunucusunu belirtilen konuma yükleyecek.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
+   ![Kurulum Microsoft Azure Backup sunucusu dosyalarını ayıklar](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
 ## <a name="install-the-software-package"></a>Yazılım paketini yükler
 
-Önceki adımda, ayıklama aşamasından çıkmak ve Azure Backup Sunucusu Kurulum Sihirbazı 'nı başlatmak için **son** ' a tıkladınız.
+Önceki adımda, ayıklama aşamasından çıkmak için **son** ' u seçin ve Azure Backup sunucusu Kurulum Sihirbazı ' nı başlatın.
 
-![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
+![Microsoft Azure Backup Kurulum Sihirbazı başlar](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunucusu yükleyicisindeki Data Protection Manager ve DPM başvurularını görürsünüz. Azure Backup Sunucusu ve Data Protection Manager ayrı ürünlerdir, ancak bu ürünler yakından ilgilidir.
+Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunucusu yükleyicisindeki Data Protection Manager ve DPM 'ye yönelik başvuruları görürsünüz. Azure Backup Sunucusu ve Data Protection Manager ayrı ürünlerdir, ancak bu ürünler yakından ilgilidir.
 
-1. Kurulum sihirbazını başlatmak için **Microsoft Azure Backup sunucu**' ya tıklayın.
+1. Kurulum sihirbazını başlatmak için **Microsoft Azure Backup Server**' ı seçin.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
+   ![Microsoft Azure Backup sunucusu seçin](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. **Hoş Geldiniz** ekranında **İleri**’ye tıklayın.
+2. **Hoş geldiniz** ekranında **İleri**' yi seçin.
 
-    ![Azure Backup Sunucusu-hoş geldiniz ve önkoşul denetimi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
+    ![Azure Backup Sunucusu-hoş geldiniz](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
-3. **Önkoşul denetimleri** ekranında, Azure Backup sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını öğrenmek için **Denetle** ' ye tıklayın.
+3. **Önkoşul denetimleri** ekranında, Azure Backup sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını belirlemek için **Denetle** ' yi seçin.
 
-    ![Azure Backup Sunucusu-hoş geldiniz ve önkoşul denetimi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
+    ![Azure Backup Sunucusu-önkoşul denetimi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Ortamınız gerekli önkoşullara sahipse, makinenin gereksinimleri karşıladığını belirten bir ileti görürsünüz. **İleri**’ye tıklayın.  
+    Ortamınız gerekli önkoşullara sahipse, makinenin gereksinimleri karşıladığını belirten bir ileti görürsünüz. **İleri**’yi seçin.  
 
     ![Azure Backup Sunucusu-önkoşul denetimi başarılı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -225,85 +225,85 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
     ![Azure Backup Sunucusu yükleme önkoşulları karşılanmadı](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure Backup sunucu SQL Server gerektiriyor. Azure Backup Sunucusu yükleme paketi, uygun SQL Server ikilileriyle paketlenmiş olarak sunulur. Kendi SQL yüklemenizi kullanmak istiyorsanız, bunu yapabilirsiniz. Ancak önerilen seçim, yükleyicinin SQL Server yeni bir örneğini eklemesine izin verir. Seçtiğiniz ortamınızda çalıştığından emin olmak için **Denetle ve yüklensin**' e tıklayın.
+4. Microsoft Azure Backup sunucu SQL Server gerektiriyor. Azure Backup Sunucusu yükleme paketi, uygun SQL Server ikilileriyle paketlenmiş olarak sunulur. Kendi SQL yüklemenizi kullanmak istiyorsanız, bunu yapabilirsiniz. Ancak önerilen seçim, yükleyicinin SQL Server yeni bir örneğini eklemesine izin verir. Seçtiğiniz ortamınızda çalıştığından emin olmak için **Denetle ve yüklensin**' i seçin.
 
    > [!NOTE]
    > Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmayacak. Azure Backup Sunucusu tarafından kullanılan örnek yerel olmalıdır.
    >
 
-    ![Azure Backup Sunucusu-hoş geldiniz ve önkoşul denetimi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
+    ![Azure Backup Sunucusu-SQL ayarları](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    Denetimi yaptıktan sonra, sanal makinede Azure Backup Sunucusu yüklemek için gerekli önkoşullar varsa **İleri**' ye tıklayın.
+    Denetimi yaptıktan sonra, sanal makinede Azure Backup Sunucusu yüklemek için gerekli önkoşullar varsa, **İleri**' yi seçin.
 
-    ![Azure Backup Sunucusu-hoş geldiniz ve önkoşul denetimi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
+    ![Azure Backup Sunucusu gereksinimleri karşılandı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    Makineyi yeniden başlatma önerisiyle bir hata oluşursa makineyi yeniden başlatın. Makineyi yeniden başlattıktan sonra yükleyiciyi yeniden başlatın ve **SQL ayarları** ekranına geldiğinizde **yeniden denetle**' ye tıklayın.
+    Makineyi yeniden başlatma önerisiyle bir hata oluşursa makineyi yeniden başlatın. Makineyi yeniden başlattıktan sonra yükleyiciyi yeniden başlatın ve **SQL ayarları** ekranına geldiğinizde **yeniden denetle**' yi seçin.
 
-5. **Yükleme ayarları**' nda, Microsoft Azure Backup sunucusu dosyalarının yüklenmesi için bir konum belirtin ve **İleri**' ye tıklayın.
+5. **Yükleme ayarları**' nda, Microsoft Azure Backup sunucusu dosyalarının yüklenmesi için bir konum belirtin ve **İleri**' yi seçin.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
+    ![Dosyaların yüklenmesi için konum belirtin](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
     Azure 'a yedeklemek için karalama konumu gereklidir. Karalama konumunun boyutunun Azure 'a yedeklenmek üzere planlandığı verilerin en az %5 ' ine eşit olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [veri depolamayı hazırlama](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
-6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri**' ye tıklayın.
+6. **Güvenlik ayarları** ekranında, kısıtlı yerel kullanıcı hesapları için güçlü bir parola girin ve **İleri ' yi**seçin.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
+    ![Güvenlik ayarları ekranı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
-7. **Microsoft Update katılım** ekranında, güncelleştirmeleri denetlemek için *Microsoft Update* kullanmak Isteyip istemediğinizi seçin ve **İleri**' ye tıklayın.
+7. **Microsoft Update katılım** ekranında, güncelleştirmeleri denetlemek için *Microsoft Update* kullanmak Isteyip istemediğinizi seçin ve **İleri**' yi seçin.
 
    > [!NOTE]
    > Windows ve Microsoft Azure Backup Server gibi diğer ürünler için güvenlik ve önemli güncelleştirmeler sunan Microsoft Update Windows Update yeniden yönlendirmenizi öneririz.
    >
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Microsoft Update kabul etme ekranı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
-8. *Ayarların özetini* gözden geçirin ve **yükler**' e tıklayın.
+8. *Ayarların özetini* gözden geçirin ve **yüklemeyi**seçin.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
+    ![Ayarların Özeti](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
     Azure Backup Sunucusu yüklemeyi bitirdiğinde, yükleyici Microsoft Azure Kurtarma Hizmetleri Aracı yükleyicisini hemen başlatır.
 
-9. Microsoft Azure Kurtarma Hizmetleri Aracısı yükleyicisi açılır ve Internet bağlantısını denetler. Internet bağlantısı varsa, yükleme işlemine devam edin. Bağlantı yoksa, Internet 'e bağlanmak için proxy ayrıntılarını sağlayın. Proxy ayarlarınızı belirledikten sonra **İleri**' ye tıklayın.
+9. Microsoft Azure Kurtarma Hizmetleri Aracısı yükleyicisi açılır ve Internet bağlantısını denetler. Internet bağlantısı varsa, yükleme işlemine devam edin. Bağlantı yoksa, Internet 'e bağlanmak için proxy ayrıntılarını sağlayın. Proxy ayarlarınızı belirledikten sonra **İleri**' yi seçin.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
+    ![Ara sunucu yapılandırması](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı yüklemek için, **yüklensin**' e tıklayın.
+10. Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı yüklemek için, **yüklensin**' i seçin.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
+    ![Aracı yüklemesi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
     Azure Backup Aracısı olarak da bilinen Microsoft Azure Kurtarma Hizmetleri Aracısı, kurtarma hizmetleri kasasıyla Azure Backup Sunucusu yapılandırır. Azure Backup Sunucusu yapılandırıldıktan sonra, verileri her zaman aynı kurtarma hizmetleri kasasında yedekler.
 
-11. Microsoft Azure Kurtarma Hizmetleri Aracısı yüklemeyi tamamladığında sonraki aşamayı başlatmak için **İleri** ' ye tıklayın: kurtarma hizmetleri kasasıyla Azure Backup sunucusu kaydetme.
+11. Microsoft Azure Kurtarma Hizmetleri Aracısı yüklemeyi tamamladığında sonraki aşamayı başlatmak için **İleri** ' yi seçin: kurtarma hizmetleri kasasıyla Azure Backup sunucusu kaydetme.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
+    ![Aracı yüklemesi başarıyla tamamlandı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
     Yükleyici, **sunucu kaydetme Sihirbazı 'nı**başlatır.
 
-12. Azure aboneliğinize ve kurtarma hizmetleri kasanıza geçiş yapın. **Altyapıyı hazırla** menüsünde, kasa kimlik bilgilerini Indirmek için **İndir** ' e tıklayın. 2. adımdaki **İndir** düğmesi etkin değilse, düğmeyi etkinleştirmek için **zaten indirilmiş ' i veya en son Azure Backup sunucusu yüklemesini** kullanın. Kasa kimlik bilgileri, İndirmeleri depoladığınız konuma indirilir. Bir sonraki adımda ihtiyaç duyacağınız için bu konumu unutmayın.
+12. Azure aboneliğinize ve kurtarma hizmetleri kasanıza geçiş yapın. **Altyapıyı hazırla** menüsünde, kasa kimlik bilgilerini Indirmek için **İndir** ' i seçin. 2. adımdaki **İndir** düğmesi etkin değilse, düğmeyi etkinleştirmek için **zaten indirilmiş ' i veya en son Azure Backup sunucusu yüklemesini** kullanın. Kasa kimlik bilgileri, İndirmeleri depoladığınız konuma indirilir. Bir sonraki adımda ihtiyaç duyacağınız için bu konumu unutmayın.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
+    ![Kasa kimlik bilgilerini indirme](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
 
-13. **Kasa kimliği** menüsünde, kurtarma hizmetleri Kasası kimlik bilgilerini bulmak Için, **Araştır** ' a tıklayın.
+13. **Kasa kimliği** menüsünde, kurtarma hizmetleri Kasası kimlik bilgilerini bulmak için **Araştır** ' ı seçin.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
+    ![Kasa tanımlama menüsü](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    **Kasa kimlik bilgilerini seçin** iletişim kutusunda, indirme konumuna gidin, kasa kimlik bilgilerinizi seçin ve **Aç**' a tıklayın.
+    **Kasa kimlik bilgilerini seçin** iletişim kutusunda, indirme konumuna gidin, kasa kimlik bilgilerinizi seçin ve **Aç**' ı seçin.
 
-    Kimlik bilgilerinin yolu, kasa kimliği menüsünde görüntülenir. Şifreleme ayarına ilerlemek için **İleri** ' ye tıklayın.
+    Kimlik bilgilerinin yolu, kasa kimliği menüsünde görüntülenir. **Şifreleme ayarlarına**Ilerlemek için **İleri ' yi** seçin.
 
-14. **Şifreleme ayarı** iletişim kutusunda, yedekleme şifrelemesi için bir parola ve parolayı depolamak için bir konum belirtin ve **İleri**' ye tıklayın.
+14. **Şifreleme ayarı** iletişim kutusunda, yedekleme şifrelemesi için bir parola ve parolayı depolamak için bir konum belirtin ve **İleri**' yi seçin.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
+    ![Şifreleme ayarları](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
     Kendi parolanızı sağlayabilir veya sizin için bir tane oluşturmak üzere parola oluşturucusunu kullanabilirsiniz. Parola sizindir ve Microsoft bu parolayı kaydetmez veya yönetmez. Bir olağanüstü duruma hazırlanmak için parolanızı erişilebilir bir konuma kaydedin.
 
-    **İleri**' ye tıkladığınızda, Azure Backup sunucusu kurtarma hizmetleri kasasına kaydedilir. Yükleyici SQL Server ve Azure Backup Sunucusu yüklemeye devam eder.
+    **İleri**' yi seçtiğinizde, Azure Backup sunucusu kurtarma hizmetleri kasasına kaydedilir. Yükleyici SQL Server ve Azure Backup Sunucusu yüklemeye devam eder.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
+    ![Kurulum, SQL ve Azure Backup Sunucusu 'yi yüklüyor](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
 
-15. Yükleyici tamamlandığında, durum tüm yazılımın başarıyla yüklendiğini gösterir.
+15. Yükleyici tamamlandığında, **durum** tüm yazılımın başarıyla yüklendiğini gösterir.
 
-    ![Azure Backup Sunucusu PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
+    ![Yazılım başarıyla yüklendi](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
 
     Yükleme tamamlandığında, sunucu masaüstünde Azure Backup Sunucusu konsolu ve Azure Backup Sunucusu PowerShell simgeleri oluşturulur.
 
@@ -318,7 +318,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için ```Get-DPMCloudConnection``` Azure Backup sunucusu PowerShell konsolundaki cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
+Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için ```Get-DPMCloudConnection``` Azure Backup sunucusu PowerShell konsolundaki cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi takdirde bağlantı yok.
 
 Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Aboneliğinizin durumunu öğrenmek ve yönetmek için [abonelik portalında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)oturum açın.
 
@@ -327,10 +327,10 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 | Bağlantı durumu | Azure Aboneliği | Azure'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
 | --- | --- | --- | --- | --- | --- |
 | Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
-| Bağlı |Süre Sonu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Bağlı |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 | Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Süre Sonu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Kesilen bağlantı > 15 gün |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma

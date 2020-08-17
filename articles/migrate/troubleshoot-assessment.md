@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460992"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263036"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -28,7 +28,7 @@ Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
 Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
 Desteklenmeyen Windows işletim sistemi | Azure yalnızca [Seçili Windows işletim sistemi sürümlerini](https://aka.ms/WSosstatement)destekler. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
-Koşullu olarak onaylama Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
+Koşullu olarak onaylama Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün. Ayrıca daha fazla ayrıntı için [buraya](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) başvurun.
 Hazırlanmamış Linux işletim sistemi | Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. Azure 'a geçiş yapmadan önce, [onaylı bir Linux sürümüne](../virtual-machines/linux/endorsed-distros.md) yükseltmeyi düşünün.
 Bilinmeyen işletim sistemi | VM 'nin işletim sistemi vCenter Server içinde "Other" olarak belirtilmiştir. Bu davranış, Azure geçişi 'nin VM 'nin Azure 'un hazır olduğunu doğrulamasını engeller. Makineyi geçirmeden önce işletim sisteminin Azure tarafından [desteklendiğinden](https://aka.ms/azureoslist) emin olun.
 Desteklenmeyen bit sürümü | 32 bitlik bir işletim sistemi olan VM 'Ler Azure 'da önbaşlatılabilir, ancak Azure 'a geçmeden önce 64 bit 'e yükseltmeniz önerilir.
@@ -64,7 +64,7 @@ VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesind
 - [Azure Linux desteğini](https://aka.ms/migrate/selfhost/azureendorseddistros)inceleyerek, ŞIRKET içi VM 'de çalışan Linux Işletim sisteminin Azure 'da olup olmadığını belirleyebilirsiniz.
 -  Doğrulanan dağıtımı doğruladıktan sonra bu uyarıyı yoksayabilirsiniz.
 
-Bu boşluk, VMware VM 'lerinde [uygulama bulma](./how-to-discover-applications.md) etkinleştirilerek çözülebilir. Sunucu değerlendirmesi, belirtilen konuk kimlik bilgilerini kullanarak VM 'den algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
+Bu boşluk, VMware VM 'lerinde [uygulama bulma](./how-to-discover-applications.md) etkinleştirilerek çözülebilir. Sunucu Değerlendirmesi, sağlanan konuk kimlik bilgilerini kullanarak VM’de algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
 
 ## <a name="operating-system-version-not-available"></a>İşletim sistemi sürümü kullanılamıyor
 
@@ -74,10 +74,9 @@ Fiziksel sunucular için işletim sistemi ikincil sürüm bilgileri kullanılabi
 
 Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme türüne göre geçerli şirket içi ayırmadan daha fazla çekirdek ve bellek ile önerebilir:
 
-
 - VM SKU 'SU önerisi, değerlendirme özelliklerine bağlıdır.
 - Bu, sunucu değerlendirmesi: *performans tabanlı*veya *Şirket içi olarak*gerçekleştirdiğiniz değerlendirme türünden etkilenir.
-- Performans tabanlı değerlendirmelere yönelik sunucu değerlendirmesi, şirket içi sanal makinelerinize yönelik doğru hedef VM SKU 'sunu belirlemede şirket içi VM 'lerin (CPU, bellek, disk ve ağ kullanımı) kullanım verilerini dikkate alır. Ayrıca, etkin kullanımı belirlerken bir rahatlık faktörü ekler.
+- Performans tabanlı değerlendirmelere yönelik sunucu değerlendirmesi, şirket içi sanal makinelerinize yönelik doğru hedef VM SKU 'sunu belirlemede şirket içi VM 'lerin (CPU, bellek, disk ve ağ kullanımı) kullanım verilerini dikkate alır. Ayrıca etkili kullanımı saptarken de bir konfor katsayısı ekler.
 - Şirket içi boyutlandırma için performans verileri göz önünde bulundurulmaz ve hedef SKU, şirket içi ayırmaya göre önerilir.
 
 Bunun önerileri nasıl etkileyebileceğini göstermek için bir örnek alalım:
@@ -88,7 +87,7 @@ Dört çekirdekli ve sekiz GB bellek içeren, %50 CPU kullanımı ve %50 bellek 
 - Değerlendirme, etkin CPU ve bellek kullanımı 50 (4 çekirdek * 1,3 = 2,6 çekirdekler 50 ve 8 GB bellek * 1,3 = 5,3-GB bellek) temel alınarak, dört çekirdekli sanal makine SKU 'SU (en yakın desteklenen çekirdek sayısı) ve sekiz GB bellek (en yakın desteklenen bellek boyutu) önerilir.
 - Değerlendirme boyutlandırma hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md#types-of-assessments) .
 
-## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure disk SKU 'Ları, Azure VM değerlendirmesinde Şirket içinden daha büyük
+## <a name="why-is-the-recommended-azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM değerlendirmesinde önerilen Azure disk SKU 'Ları neden Şirket içinden daha büyük?
 
 Azure geçişi sunucu değerlendirmesi, değerlendirme türüne göre daha büyük bir disk önerebilir.
 - Sunucu değerlendirmesinde disk boyutlandırma iki değerlendirme özelliklerine bağlıdır: boyutlandırma ölçütleri ve depolama türü.
@@ -97,14 +96,26 @@ Azure geçişi sunucu değerlendirmesi, değerlendirme türüne göre daha büy�
 
 Örnek olarak, 32 GB bellek içeren bir şirket içi diskiniz varsa, ancak diskin toplanmış okuma ve yazma ıOPS değeri 800 ıOPS ise, sunucu değerlendirmesi bir Premium disk önerir (daha yüksek ıOPS gereksinimleri nedeniyle) ve ardından gerekli ıOPS ve boyutu destekleyebilen bir disk SKU 'SU önerir. Bu örnekteki en yakın eşleşme P15 (256 GB, 1100 IOPS) olabilir. Şirket içi diskin gerektirdiği boyut 32 GB olsa da, şirket içi diskin yüksek ıOPS gereksinimi nedeniyle sunucu değerlendirmesi daha büyük bir disk önerir.
 
-## <a name="utilized-corememory-percentage-missing"></a>Kullanılan çekirdek/bellek yüzdesi eksik
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Değerlendirme raporumda bazı/tüm VM'lerin performans verileri neden eksik?
 
-Sunucu değerlendirmesi, "PercentageOfCoresUtilizedMissing" veya "PercentageOfMemoryUtilizedMissing" raporlarını Azure geçiş gereci ilgili şirket içi VM 'Ler için performans verilerini toplayamayacak şekilde bildirir.
+"Performans tabanlı" değerlendirmede Azure Geçişi aleti şirket içi VM’ler için performans verilerini toplayamazsa değerlendirme raporu dışarı aktarmasında 'PercentageOfCoresUtilizedMissing' veya 'PercentageOfMemoryUtilizedMissing' hatası verir. Lütfen şunu denetleyin:
 
-- Bu durum, değerlendirme süresi boyunca VM 'Ler kapatılmışsa ortaya çıkabilir. Gereç, devre dışı bırakıldığında bir VM için performans verilerini toplayamıyor.
-- Yalnızca bellek sayaçları eksikse ve Hyper-V VM 'lerini değerlendirmeye çalışıyorsanız, bu VM 'lerde etkin bir dinamik bellek olup olmadığını kontrol edin. Yalnızca Hyper-V VM 'Leri için bir Azure geçişi gerecinin, dinamik belleği etkin olmayan VM 'Ler için bellek kullanım verilerini toplayamediği bilinen bir sorun vardır.
-- Performans sayaçlarından herhangi biri eksikse, Azure geçişi sunucu değerlendirmesi ayrılmış çekirdeğe ve belleğe geri döner ve buna karşılık gelen VM boyutunu önerir.
+- Değerlendirmeyi oluşturduğunuz süre boyunca VM'lerin açılıp açılmadığı
+- Yalnızca bellek sayaçları eksikse ve Hyper-V sanal makinelerini değerlendirmeye çalışıyorsanız, bu sanal makinelerde dinamik belleğin etkinleştirilip etkinleştirilmediğini denetleyin. Bu bilinen bir sorundur ve şu anda Azure Geçişi aletinin bu tür VM'ler için bellek kullanımı bilgilerini toplayamamasından kaynaklanır.
 - Tüm performans sayaçları eksikse, değerlendirme için bağlantı noktası erişim gereksinimlerinin karşılandığından emin olun. [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) ve [fiziksel](./migrate-support-matrix-physical.md#port-access) sunucu değerlendirmesi için bağlantı noktası erişim gereksinimleri hakkında daha fazla bilgi edinin.
+Not - Performans sayaçlarından biri eksikse, Azure Geçişi: Sunucu Değerlendirmesi şirket içinde ayrılmış çekirdeklere/belleğe geri döner ve buna uygun bir sanal makine boyutu önerir.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Değerlendirmemin güvenilirlik derecesi neden düşük?
+
+"Performans tabanlı" değerlendirmeler için güvenilirlik derecesi, değerlendirmeyi hesaplarken gereken [kullanılabilir veri noktaları](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) yüzdesi temelinde hesaplanır. Değerlendirme güvenilirlik derecesinin düşük olmasının nedenlerini aşağıda bulunabilirsiniz:
+
+- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin değerlendirmeyi bir hafta olarak ayarlanmış performans süresiyle oluşturuyorsanız, toplanacak tüm veri noktalarının keşfini başlattıktan sonra en az bir hafta beklemeniz gerekir. Süreyi bekleyemiyorsanız, performans süresini daha kısa olacak şekilde değiştirin ve değerlendirmeyi 'Yeniden Hesaplayın'.
+ 
+- Sunucu Değerlendirmesi, değerlendirme süresi içinde VM'lerin bir bölümü veya tümü için performans verilerini toplayamadı. Değerlendirme süresi boyunca VM'lerin açık olup olmadığını, 443 numaralı bağlantı noktasında giden bağlantılara izin verilip verilmediğini denetleyin. Hyper-V VM'leri için dinamik bellek etkinleştirildiyse bellek sayaçları eksik olabilir ve bu da düşük güvenilirlik derecelendirmesine yol açar. Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi 'Yeniden Hesaplayın'. 
+
+- Sunucu Değerlendirmesi'nde bulma işlemi başlatıldıktan sonra birkaç VM oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
+
+Güvenilirlik derecesi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based).
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>İşletim sistemi lisansı bir Azure VM değerlendirmesine dahil midir?
 
@@ -133,10 +144,6 @@ Hyper-V Sanallaştırması etkin olan bir fiziksel sunucu söz konusu olduğunda
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Fiziksel sunucular için gerçek sayıdan yüksek bulunan NIC sayısı
 
 Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Azure geçişi Şu anda bu sunucularda fiziksel ve Sanal bağdaştırıcıları tespit eder. Bu nedenle, hayır. bulunan NIC 'ler gerçek değerden daha yüksek.
-
-
-## <a name="low-confidence-rating-on-physical-server-assessments"></a>Fiziksel sunucu değerlendirmelerinde düşük güvenilirlikli derecelendirme
-Derecelendirme, değerlendirmeyi hesaplamak için gereken veri noktalarının kullanılabilirliğine göre atanır. Hyper-V Sanallaştırması 'nın etkin olduğu fiziksel sunucular söz konusu olduğunda, fiziksel sunucu değerlendirmelerine doğru şekilde en düşük güvenilirlik derecelendirmesinin atanabileceği bilinen bir ürün boşluğu vardır. Azure geçişi Şu anda bu sunucularda fiziksel ve Sanal bağdaştırıcıları tespit eder. Ağ aktarım hızı, bulunan ancak fiziksel ağ bağdaştırıcılarında bulunmayan sanal ağ bağdaştırıcılarında yakalanır. Fiziksel ağ bağdaştırıcılarında veri noktalarının yokluğu nedeniyle, güven derecelendirmesi etkilenerek düşük bir derecelendirmeye neden olabilir. Bu, ileride gönderilecek bir ürün eksikmidir.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Kamu 'da bağımlılık görselleştirmesi
 
@@ -193,7 +200,7 @@ Azure Geçişi şu anda OMS çalışma alanı oluşturulmasını Doğu ABD, Gün
 Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse, **Gezinti ayarında girişleri temizle** ' yi temizleyin.
+2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse,  **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.
    - Microsoft Edge ve Internet Explorer 'da kayıt otomatik olarak başlamalıdır. Aksi takdirde, yeşil oynatma düğmesini seçin.

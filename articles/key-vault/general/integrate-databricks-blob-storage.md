@@ -1,23 +1,23 @@
 ---
 title: Azure Databricks ve Azure Key Vault'u kullanarak Azure Blob Depolama'ya erişme
 description: Bu öğreticide, Azure Key Vault depolanan bir gizli dizi kullanarak Azure Databricks Azure Blob depolamaya nasıl erişebileceğinizi öğreneceksiniz.
-author: taytran0
-ms.author: t-trtr
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: 50ea93dea62b6e4e333e58550b2750897c7e0a77
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 9b3d07eae9e47b7a8466cfb32f03b8790c079f02
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988918"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263002"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Öğretici: Azure Databricks ve Azure Key Vault kullanarak Azure Blob depolamaya erişin
 
 Bu öğreticide, Azure Key Vault depolanan bir gizli dizi kullanarak Azure Databricks Azure Blob depolamaya nasıl erişebileceğinizi öğreneceksiniz. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure CLı ile bir depolama hesabı ve BLOB kapsayıcısı oluşturma

@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083744"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263393"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -121,7 +121,7 @@ Azure Site Recovery mikro hizmetleri arasındaki tüm iletişimler TLS 1,2 proto
 
 - Kaynak Yöneticisi tabanlı depolama hesapları (Standart tür):
   - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
-  - [Depolama Blobu veri Katılımcısı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Depolama Blob Verileri Katkıda Bulunanı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Kaynak Yöneticisi tabanlı depolama hesapları (Premium türü):
   - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
   - [Depolama Blobu veri sahibi](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -247,6 +247,75 @@ Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı i
 
 >[!Note]
 >Özel betikleri desteklemek için Site Recovery Agent sürümü 9,24 veya üzeri olmalıdır.
+
+## <a name="replication-policy"></a>Çoğaltma ilkesi
+
+### <a name="what-is-a-replication-policy"></a>Çoğaltma ilkesi nedir?
+
+Çoğaltma İlkesi, kurtarma noktalarının bekletme geçmişine yönelik ayarları tanımlar. İlke, uygulamayla tutarlı anlık görüntülerin sıklığını da tanımlar. Varsayılan olarak, Azure Site Recovery varsayılan ayarları ile yeni bir çoğaltma ilkesi oluşturur:
+
+- Kurtarma noktalarının bekletme geçmişi için 24 saat.
+- uygulamayla tutarlı anlık görüntülerin sıklığı için 4 saat.
+
+[Çoğaltma ayarları hakkında daha fazla bilgi edinin](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Kilitlenme ile tutarlı bir kurtarma noktası nedir?
+
+Kilitlenme ile tutarlı bir kurtarma noktası, anlık görüntü sırasında sunucudan güç kablosunu çektiği gibi disk üzerindeki verilere sahiptir. Kilitlenme ile tutarlı kurtarma noktası, anlık görüntü çekilirken bellekte olan herhangi bir şeyi içermez.
+
+Günümüzde, çoğu uygulama kilitlenme ile tutarlı anlık görüntülerden iyi bir şekilde kurtarabilir. Kilitlenme ile tutarlı bir kurtarma noktası, genellikle veritabanı olmayan işletim sistemleri ve dosya sunucuları, DHCP sunucuları ve yazdırma sunucuları gibi uygulamalar için yeterlidir.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Kilitlenme ile tutarlı kurtarma noktası oluşturma sıklığı nedir?
+
+Site Recovery 5 dakikada bir çökme ile tutarlı bir kurtarma noktası oluşturur.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Uygulamayla tutarlı kurtarma noktası nedir?
+
+Uygulamayla tutarlı kurtarma noktaları uygulamayla tutarlı anlık görüntülerden oluşturulur. Uygulamayla tutarlı kurtarma noktaları aynı verileri çökme ile tutarlı anlık görüntülerle yakalar, ayrıca bellekteki verileri ve işlemdeki tüm işlemleri de yakalarsınız.
+
+Ek içerikleri nedeniyle, uygulamayla tutarlı anlık görüntüler en çok söz konusu ve en uzun sürer. Veritabanı işletim sistemleri ve SQL Server gibi uygulamalar için uygulamayla tutarlı kurtarma noktaları öneririz.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Uygulamayla tutarlı kurtarma noktalarının uygulama performansı üzerindeki etkisi nedir?
+
+Uygulamayla tutarlı kurtarma noktaları, bellekteki ve işlemdeki tüm verileri yakalar. Kurtarma noktaları bu verileri yakaladığı için, uygulamayı sessiz bir şekilde açmak için Windows üzerinde Birim Gölge Kopyası Hizmeti gibi bir çerçeve gerektirir. Yakalama işlemi sık sık ise, iş yükü zaten meşgul olduğunda performansı etkileyebilir. Veritabanı olmayan iş yükleri için uygulamayla tutarlı kurtarma noktaları için düşük bir sıklık kullanmanızı önermiyoruz. Veritabanı iş yükü için bile 1 saat yeterlidir.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Uygulamayla tutarlı kurtarma noktası oluşturma işlemi için en düşük sıklık nedir?
+
+Site Recovery, en az 1 saatlik bir sıklıkta uygulamayla tutarlı bir kurtarma noktası oluşturabilir.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Kurtarma noktaları nasıl oluşturulup kaydedilir?
+
+Site Recovery kurtarma noktaları oluşturma hakkında bilgi edinmek için bir çoğaltma ilkesi örneği görelim. Bu çoğaltma ilkesinde, 24 saatlik bir bekletme penceresi ve 1 saatlik uygulamayla tutarlı sıklık anlık görüntüsüne sahip bir kurtarma noktası bulunur.
+
+Site Recovery 5 dakikada bir çökme ile tutarlı bir kurtarma noktası oluşturur. Bu sıklığı değiştiremezsiniz. Son bir saat için, 12 çökme ile tutarlı nokta ve 1 uygulamayla tutarlı nokta arasından seçim yapabilirsiniz. Zaman ilerledikçe Site Recovery, tüm kurtarma noktalarını son saatin ötesinde ayıklar ve yalnızca saat başına 1 kurtarma noktası kaydeder.
+
+Aşağıdaki ekran görüntüsünde örnek gösterilmektedir. Ekran görüntüsünde:
+
+- Son saat içinde, 5 dakikalık bir sıklıkta kurtarma noktaları vardır.
+- Son saatin ötesinde Site Recovery yalnızca 1 kurtarma noktası tutar.
+
+   ![Oluşturulan kurtarma noktalarının listesi](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Ne kadar geri kurtarabilirim?
+
+Kullanabileceğiniz en eski kurtarma noktası 72 saattir.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>24 saat olan bir çoğaltma ilkem var. Bir sorun Site Recovery, 24 saatten uzun bir bir kurtarma noktası oluşturmasını engelliyorsa ne olur? Önceki kurtarma noktalarım kaybedilir mi?
+
+Hayır, Site Recovery önceki tüm kurtarma noktalarınızı tutacaktır. Kurtarma noktalarının bekletme penceresine bağlı olarak, Site Recovery en eski noktayı yalnızca yeni noktaları oluşturursa değiştirir. Sorun nedeniyle, Site Recovery yeni kurtarma noktası üretemiyor. Yeni kurtarma noktaları olana kadar, bekletme penceresine erişduktan sonra tüm eski noktaların kalması gerekir.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM 'de çoğaltma etkinleştirildikten sonra, çoğaltma ilkesini nasıl değiştirebilirim?
+
+**Site Recovery Vault**  >  **Altyapı**  >  **çoğaltma ilkelerine**Site Recovery kasa Site Recovery gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Tüm kurtarma noktaları VM 'nin ya da bir Farklıdan oluşan tüm bir kopyası mı?
+
+Oluşturulan ilk kurtarma noktasının tamamen kopyası vardır. Tüm ardışık kurtarma noktalarında delta değişiklikleri vardır.
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Kurtarma noktalarının bekletme döneminin artırılması depolama maliyetini arttırır mi?
+
+Evet, bekletme süresini 24 saat ile 72 saate artırırsanız Site Recovery, kurtarma noktalarını ek 48 saat boyunca kaydeder. Eklenen süre, depolama ücretlerine tabi olacaktır. Örneğin, tek bir kurtarma noktası, ayda $0,16 GB başına maliyet ile 10 GB 'lik Delta değişikliklere sahip olabilir. Ek ücretler ayda $1,60 × 48 olacaktır.
+
 
 ## <a name="failover"></a>Yük devretme
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure 'a yük devretdiğimde yük devretmeden sonra Azure VM 'lerine nasıl erişebilirim?

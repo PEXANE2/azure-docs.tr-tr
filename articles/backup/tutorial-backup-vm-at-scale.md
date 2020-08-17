@@ -4,12 +4,12 @@ description: Bu öğreticide, bir kurtarma hizmetleri Kasası oluşturmayı, bir
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372561"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263427"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 
@@ -156,7 +156,7 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu öğretic
 
 1. Yedekleme **öğeleri menüsünü açmak Için** **Myrecoveryserviceskasa** panosunda **3** ' ü seçin.
 
-    ![Yedekleme öğeleri](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Yedekleme öğeleri menüsünü aç](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. **Yedekleme öğeleri** menüsünde **Azure sanal makine** ' yi seçerek kasayla ilişkili sanal makinelerin listesini açın.
 
@@ -185,7 +185,7 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu öğretic
 
 1. Kasada daha fazla öğe yoksa **Sil**' i seçin.
 
-    ![Kasayı silmek için Yedeklemeyi Durdur ' u seçin](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![Sil ' i seçin](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     Kasa silindikten sonra kurtarma hizmetleri kasaları listesine geri dönersiniz.
 

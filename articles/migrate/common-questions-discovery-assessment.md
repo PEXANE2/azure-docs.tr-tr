@@ -3,12 +3,12 @@ title: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi ile i
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829892"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263512"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
 
@@ -36,23 +36,34 @@ En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanara
 - Bu değerlendirme türünü kullanarak [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md) geçiş için şirket Içi [VMware VM](how-to-set-up-appliance-vmware.md) 'Lerinizi değerlendirmek istediğinizde **Azure VMware çözümü (AVS)** değerlendirmelerini kullanın. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Her iki tür değerlendirmeyi de çalıştırmak için yalnızca VMware makinelerini içeren ortak bir grup kullanabilirsiniz. Azure Geçişi'nde AVS değerlendirmelerini ilk kez çalıştırıyorsanız, yeni bir VMware makineleri grubu oluşturmanızın önerildiğini aklınızda bulundurun.
+ 
+
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Değerlendirme raporumda bazı/tüm VM'lerin performans verileri neden eksik?
+
+"Performans tabanlı" değerlendirmede Azure Geçişi aleti şirket içi VM’ler için performans verilerini toplayamazsa değerlendirme raporu dışarı aktarmasında 'PercentageOfCoresUtilizedMissing' veya 'PercentageOfMemoryUtilizedMissing' hatası verir. Lütfen şunu denetleyin:
+
+- Değerlendirmeyi oluşturduğunuz süre boyunca VM'lerin açılıp açılmadığı
+- Yalnızca bellek sayaçları eksikse ve Hyper-V sanal makinelerini değerlendirmeye çalışıyorsanız, bu sanal makinelerde dinamik belleğin etkinleştirilip etkinleştirilmediğini denetleyin. Bu bilinen bir sorundur ve şu anda Azure Geçişi aletinin bu tür VM'ler için bellek kullanımı bilgilerini toplayamamasından kaynaklanır.
+- Tüm performans sayaçları eksikse 443 numaralı bağlantı noktasından giden bağlantılara (HTTPS) izin verildiğinden emin olun.
+
+Not - Performans sayaçlarından biri eksikse, Azure Geçişi: Sunucu Değerlendirmesi şirket içinde ayrılmış çekirdeklere/belleğe geri döner ve buna uygun bir sanal makine boyutu önerir.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Değerlendirmemin güvenilirlik derecesi neden düşük?
+
+"Performans tabanlı" değerlendirmeler için güvenilirlik derecesi, değerlendirmeyi hesaplarken gereken [kullanılabilir veri noktaları](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) yüzdesi temelinde hesaplanır. Değerlendirme güvenilirlik derecesinin düşük olmasının nedenlerini aşağıda bulunabilirsiniz:
+
+- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin değerlendirmeyi bir hafta olarak ayarlanmış performans süresiyle oluşturuyorsanız, toplanacak tüm veri noktalarının keşfini başlattıktan sonra en az bir hafta beklemeniz gerekir. Süreyi bekleyemiyorsanız, performans süresini daha kısa olacak şekilde değiştirin ve değerlendirmeyi 'Yeniden Hesaplayın'.
+ 
+- Sunucu Değerlendirmesi, değerlendirme süresi içinde VM'lerin bir bölümü veya tümü için performans verilerini toplayamadı. Değerlendirme süresi boyunca VM'lerin açık olup olmadığını, 443 numaralı bağlantı noktasında giden bağlantılara izin verilip verilmediğini denetleyin. Hyper-V VM'leri için dinamik bellek etkinleştirildiyse bellek sayaçları eksik olabilir ve bu da düşük güvenilirlik derecelendirmesine yol açar. Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi 'Yeniden Hesaplayın'. 
+
+- Sunucu Değerlendirmesi'nde bulma işlemi başlatıldıktan sonra birkaç VM oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
+
+Güvenilirlik derecesi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based).
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Azure VMware çözümü (AVS) değerlendirmesi oluştururken bazı grupları göremiyorum
 
 - AVS değerlendirmesi yalnızca VMware makineleri içeren gruplarda yapılabilir. AVS değerlendirmesi yapmayı amaçlıyorsanız VMware dışı tüm makineleri gruptan kaldırın.
 - Azure Geçişi'nde AVS değerlendirmelerini ilk kez çalıştırıyorsanız, yeni bir VMware makineleri grubu oluşturmanız önerilir.
-
-## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Nasıl yaparım? AVS değerlendirmesinde FTT-RAID düzeyi ' ni seçin.
-
-AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler sanal makineler için gerekli hizmet düzeyini garanti eder çünkü depolamanın sanal makineye nasıl ayrıldığını belirler. Kullanılabilir FTT-Raid Bileşimleri şunlardır: 
-
-**Tolerans Hataları (FTT)** | **RAID Yapılandırması** | **Gereken Minimum Konak Sayısı** | **Boyutlandırmada dikkat edilmesi gerekenler**
---- | --- | --- | --- 
-1 | RAID-1 (Yansıtma) | 3 | 100 GB sanal makine 200 GB kullanır.
-1 | RAID-5 (Silinme Kodlaması) | 4 | 100 GB sanal makine 133,33 GB kullanır
-2 | RAID-1 (Yansıtma) | 5 | 100 GB sanal makine 300 GB kullanır.
-2 | RAID-6 (Silinme Kodlaması) | 6 | 100 GB sanal makine 150 GB kullanır.
-3 | RAID-1 (Yansıtma) | 7 | 100 GB sanal makine 400 GB kullanır.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure Kamu 'da bazı VM türlerini göremiyorum
 

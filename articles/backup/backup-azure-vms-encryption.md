@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a5c12f9f9177c4495a82ced2b3c7d0c5edcdd78e
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405811"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262798"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -70,13 +70,13 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
     - Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle depolandığını belirtir.
     - Varsayılan ilkenin ayrıntıları, açılan menü altında listelenir.
 
-    ![Senaryo dikey penceresini açma](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
+    ![Yedekleme ilkesi seçin](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
 1. Varsayılan ilkeyi kullanmak istemiyorsanız, **Yeni oluştur**' u seçin ve [özel bir ilke oluşturun](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
 1. **Sanal makineler**altında **Ekle**' yi seçin.
 
-    ![Senaryo dikey penceresini açma](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+    ![Sanal makine Ekle](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
 1. Seçme ilkesini kullanarak yedeklemek istediğiniz şifrelenmiş VM 'Leri seçin ve **Tamam**' ı seçin.
 
@@ -131,7 +131,7 @@ Azure Backup, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek
 
     ![Azure Backup seçimi](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. **Ekle**'yi seçin. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
+1. **Ekle**’yi seçin. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
 
     ![Erişim ilkeleri](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

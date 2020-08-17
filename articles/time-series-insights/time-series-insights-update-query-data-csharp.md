@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac65f1927aa890e5eaed757d7db054f2c2bbad3d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 19c21f1e95127d064d90d5c6915b4dd67871adaa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243743"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263495"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen2 ortamından veri sorgulama
 
@@ -65,13 +65,13 @@ Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 
 **Build**  >  **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin.
 
-Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örnek:
+Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örneğin:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 
 ## <a name="c-sample-code"></a>C# örnek kodu
 
-C# örnek kodu, [csharpquery-example](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) adresinde bulunabilir
+C# örnek kodu, [csharpquery-example](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) adresinde bulunabilir
 
 > [!NOTE]
 >

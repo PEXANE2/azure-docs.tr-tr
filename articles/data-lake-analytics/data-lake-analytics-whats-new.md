@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: 0afd37a9f80fd2778f2b7206f58cec6ff423763e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184967"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263189"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Data Lake Analytics'teki yenilikler
 
@@ -33,14 +33,13 @@ Azure Data Lake Analytics işini herhangi bir araçlardan gönderdiğinizde işi
 
 Çalışma zamanı sürümü düzenli olarak güncelleştirilir. Ve önceki çalışma zamanı bir süredir kullanılabilir tutulacak. Yeni bir beta sürümü önizleme için hazır olduğunda, bu sürüm de kullanılabilir olacaktır.
 
-Şu anda kullanılabilir çalışma zamanı sürümleri aşağıda verilmiştir.
+> [!CAUTION]
+> - Varsayılandan farklı bir çalışma zamanı seçilmesi, U-SQL işlerinizi bölmek için olası olur. Üretim için varsayılan olmayan bu sürümlerin kullanılması önemle önerilir, ancak yalnızca test amaçlıdır.
+> - Varsayılan olmayan çalışma zamanı sürümünün sabit bir yaşam döngüsü vardır. Otomatik olarak bu süre dolacaktır.
 
-- Yayın-20200124live_adl_16283022_2-- **geçerli varsayılan sürümü** >
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+Aşağıdaki sürüm, geçerli varsayılan çalışma zamanı sürümüdür.
+
+- Yayın-20200124live_adl_16283022_2
 
 U-SQL çalışma zamanı hatalarıyla ilgili sorunları giderme hakkında daha fazla bilgiye ulaşmak için [u-SQL çalışma zamanı hatalarında sorun giderme](runtime-troubleshoot.md)bölümüne bakın.
 

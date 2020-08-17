@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796634"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262967"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişi
 
 - Şirket ağınızdaki ve intranetinizdeki uygulamalar gibi iç kaynaklar, kendi kuruluşunuz tarafından geliştirilen tüm bulut uygulamalarıyla birlikte. Kuruluşunuz için kiracı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Active Directory yeni kiracı oluşturma](active-directory-access-create-new-tenant.md).
 
-Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Office 365 ' deki temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
+Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Office 365 ' deki temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
 
 ## <a name="who-uses-azure-ad"></a>Azure AD 'yi kimler kullanıyor?
 

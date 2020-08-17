@@ -4,12 +4,12 @@ description: Azure portal kullanarak bir Azure sanal makinesini bir kurtarma nok
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006341"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263019"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -53,7 +53,7 @@ Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme i
 
 1. Geri yüklemek istediğiniz VM ile ilişkili kasada, **yedekleme öğeleri**  >  **Azure sanal makinesi**' ni seçin.
 1. Bir VM seçin. Varsayılan olarak, VM panosunda son 30 günün kurtarma noktaları görüntülenir. 30 günden daha eski kurtarma noktalarını görüntüleyebilir veya tarihlere, zaman aralıklarına ve farklı anlık görüntü tutarlılığı türlerine göre kurtarma noktalarını bulmak için filtre uygulayabilirsiniz.
-1. VM 'yi geri yüklemek için **VM 'Yi geri yükle**'ye tıklayın.
+1. VM 'yi geri yüklemek için **VM 'Yi geri yükle**' yi seçin.
 
     ![Geri yükleme noktası](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme i
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
 
-[Geri yükleme seçeneklerinden](#restore-options)biri olarak, bir geri yükleme noktasından bir disk oluşturabilirsiniz. Ardından, aşağıdakilerden birini yapabilirsiniz:
+[Geri yükleme seçeneklerinden](#restore-options)biri olarak, bir geri yükleme noktasından bir disk oluşturabilirsiniz. Ardından disk ile aşağıdaki eylemlerden birini yapabilirsiniz:
 
 - Ayarları özelleştirmek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın ve VM dağıtımını tetikleyin. Varsayılan şablon ayarlarını düzenlersiniz ve VM dağıtımı için şablonu gönderebilirsiniz.
 - [Geri yüklenen diskleri](../virtual-machines/windows/attach-managed-disk-portal.md) var olan bir sanal makineye ekleyin.
@@ -95,7 +95,7 @@ Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme i
 1. **Kaynak grubu**' nda, geri yüklenen diskler için var olan bir kaynak grubunu seçin veya genel olarak benzersiz bir adla yeni bir tane oluşturun.
 1. **Hazırlama konumu**' nda, VHD 'lerin kopyalanacağı depolama hesabını belirtin. [Daha fazla bilgi edinin](#storage-accounts).
 
-    ![Kurtarma yapılandırması tamamlandı](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![Kaynak grubunu ve hazırlama konumunu seçin](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Geri yükleme işlemini tetiklemek için **geri yükle** ' yi seçin.
 
@@ -192,7 +192,7 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 
 VM 'Leri geri yüklemeniz gerekebilecek bazı yaygın senaryolar vardır.
 
-**Senaryo** | **Yönerge**
+**Senaryo** | **Rehber**
 --- | ---
 **Karma kullanım teklifi kullanarak VM 'Leri geri yükleme** | Bir Windows VM [karma kullanım avantajı (hub) lisanslama](../virtual-machines/windows/hybrid-use-benefit-licensing.md)kullanıyorsa, diskleri geri yükleyin ve belirtilen şablonu ( **Lisans türü** **Windows_Server**olarak ayarlanmış olan) veya PowerShell 'i kullanarak yeni bir VM oluşturun.  Bu ayar VM oluşturulduktan sonra da uygulanabilir.
 **Azure veri merkezi olağanüstü durum sırasında VM 'Leri geri yükleme** | Kasa GRS kullanıyorsa ve VM için birincil veri merkezi kapalıysa, Azure Backup yedeklenen VM 'Leri eşleştirilmiş veri merkezine geri yüklemeyi destekler. Eşleştirilmiş veri merkezinde bir depolama hesabı seçin ve normal olarak geri yükleyin. Azure Backup, geri yüklenen VM 'yi oluşturmak için eşleştirilmiş bölgedeki işlem hizmetini kullanır. Veri merkezi dayanıklılığı hakkında [daha fazla bilgi edinin](/azure/architecture/resiliency/recovery-loss-azure-region) .<br><br> Kasa GRS kullanıyorsa, [çapraz bölge geri yükleme](#cross-region-restore)yeni özelliğini seçebilirsiniz. Bu, tam veya kısmi kesinti senaryolarında ikinci bir bölgeye geri yükleme yapmanızı sağlar veya hiç kesinti olmasa bile.

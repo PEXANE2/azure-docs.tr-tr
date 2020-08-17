@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: toplu iş soruları ile test bilgi tabanı'
 description: Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 498f84c97fdc022e460dec453b1d65bb8088b787
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337742"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263155"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Hızlı başlangıç: toplu sorularla ve beklenen yanıtlardan test Bilgi Bankası
 
@@ -25,7 +25,7 @@ Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Ce
 
 Soru-Cevap Oluşturma portalında [oturum açın](https://www.qnamaker.ai/) .
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Çoklu çift örnek. docx dosyasından yeni bir Bilgi Bankası oluşturun
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Çoklu açma sample.docx dosyasından yeni bir Bilgi Bankası oluşturun
 
 1. Araç çubuğundan **Bilgi Bankası oluştur** ' u seçin.
 1. **1. adımı** atlayın, var olan kaynak bilgilerinizi seçmek için **Adım 2** ' ye kadar bir soru-cevap oluşturma kaynağınız olması gerekir:
@@ -42,7 +42,7 @@ Soru-Cevap Oluşturma portalında [oturum açın](https://www.qnamaker.ai/) .
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Varsayılan yanıt metni**| `Batch test - default answer not found.`|
     |**+ Dosya Ekle**|Ön koşullarda indirilen `.docx` dosya listesini seçin.|
-    |**Chit-sohbet**|**Profesyonel** seçin|
+    |**Günlük konuşma**|**Profesyonel** seçin|
 
 1. **5. adımda**, **KB 'nizi oluştur**' u seçin.
 
@@ -56,16 +56,16 @@ Soru-Cevap Oluşturma portalında [oturum açın](https://www.qnamaker.ai/) .
     |Gerekli veriler| Örnek|
     |--|--|
     |Yayınlanan konak|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Yayınlanan anahtar|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karakter dizesi sonra gösteriliyor `Endpoint` )|
-    |Uygulama Kimliği|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 bir parçası olarak gösterilen karakter dizesi `POST` ) |
+    |Yayınlanan anahtar|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (32 karakter dizesi sonra gösteriliyor `Endpoint` )|
+    |Uygulama Kimliği|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 bir parçası olarak gösterilen karakter dizesi `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Soru kimlikleriyle Batch test dosyası oluşturma
 
-Batch test aracını kullanmak için metin düzenleyici ile adlı bir dosya oluşturun `batch-test-data-1.tsv` . Dosyanın aşağıdaki sütunları bir sekmeyle ayrılmış olması gerekir.
+Batch test aracını kullanmak için metin düzenleyici ile adlı bir dosya oluşturun `batch-test-data-1.tsv` . Dosya UTF-8 biçiminde olmalıdır ve bir sekme ile ayrılmış olan aşağıdaki sütunların olması gerekir.
 
 |TSV giriş dosyası alanları|Notlar|Örnek|
 |--|--|--|
-|Bilgi Bankası KIMLIĞI|Bilgi Bankası KIMLIĞINIZ Yayımla sayfasında bulunur. Tek bir dosyada farklı Bilgi Bankası kimliklerini kullanarak tek bir dosyada aynı hizmette bulunan birçok bilgi bankasını test edin.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 bir parçası olarak gösterilen karakter dizesi `POST` ) |
+|Bilgi Bankası KIMLIĞI|Bilgi Bankası KIMLIĞINIZ Yayımla sayfasında bulunur. Tek bir dosyada farklı Bilgi Bankası kimliklerini kullanarak tek bir dosyada aynı hizmette bulunan birçok bilgi bankasını test edin.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 bir parçası olarak gösterilen karakter dizesi `POST` ) |
 |Soru|Kullanıcının girebileceği soru metni. en fazla 1.000 karakter.|`How do I sign out?`|
 |Meta veri etiketleri|isteğe bağlı|`topic:power`_anahtar: değer_ biçimini kullanır|
 |Üst parametre|isteğe bağlı|`25`|
@@ -130,7 +130,7 @@ Veri kaynağı ve işlemi otomatikleştiriltiğinden, doğru değerleri belirley
 |Sütun numarası|İsteğe bağlı sütun|Veri konumu|
 |--|--|--|
 |3|meta veriler|Mevcut _anahtar: değer_ çiftleri için mevcut bilgi bankasını dışarı aktarın.|
-|4|üst|Varsayılan değeri `25` önerilir.|
+|4|top|Varsayılan değeri `25` önerilir.|
 |5|Soru ve yanıt kümesi KIMLIĞI|KIMLIK değerleri için mevcut bilgi bankasını dışarı aktarın. Ayrıca, kimlikler çıkış dosyasında döndürülmediğine dikkat edin.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Bilgi Bankası 'na meta veri ekleme

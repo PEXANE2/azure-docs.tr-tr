@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6e4f71be1dc3cdaeb01069f234531da29a7b4977
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498710"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263104"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux VM’leri Oluşturma ve Yönetme
 
@@ -251,10 +251,10 @@ Bir Azure VM’si birçok güç durumuna sahip olabilir. Bu durum VM’nin hiper
 
 ### <a name="power-states"></a>Güç durumları
 
-| Güç Durumu | Description
+| Güç Durumu | Açıklama
 |----|----|
 | Başlatılıyor | Sanal makinenin başlatıldığını gösterir. |
-| Çalışıyor | Sanal makinenin çalıştığını gösterir. |
+| Çalışma | Sanal makinenin çalıştığını gösterir. |
 | Durduruluyor | Sanal makinenin durdurulmakta olduğunu gösterir. | 
 | Durduruldu | Sanal makinenin durdurulduğunu gösterir. Durduruldu durumundaki sanal makinelere bilgi işlem ücretleri uygulanmaya devam eder.  |
 | Serbest bırakılıyor | Sanal makinenin serbest bırakılmakta olduğunu gösterir. |
@@ -279,6 +279,8 @@ ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
 ```
+
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
 
 ## <a name="management-tasks"></a>Yönetim görevleri
 

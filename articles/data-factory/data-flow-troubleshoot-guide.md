@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829129"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263478"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışları sorunlarını giderme
 
@@ -70,6 +70,13 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 - **Nedenler**: Bu bir arka uç hizmet hatasıdır. İşlemi yeniden deneyebilir ve hata ayıklama oturumunuzu da yeniden başlatabilirsiniz.
 - **Öneri**: yeniden dene ve yeniden Başlat sorunu çözmezse, müşteri desteğine başvurun.
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Hata kodu: hata ayıklama veri önizlemesi, birleşimde çıkış verisi yok
+
+- **İleti**: çok az sayıda satır örneklenmemesinin nedeni büyük miktarda null değer veya eksik değer vardır. Hata ayıklama satırı sınırını güncelleştirmeyi ve verileri yenilemeyi deneyin.
+- **Nedenler**: JOIN koşulu hiçbir satırla eşleşmedi veya veri önizleme sırasında yüksek sayıda null değer ile sonuçlandı.
+- **Öneri**: hata ayıklama ayarları ' na gidin ve kaynak satır sınırında satır sayısını artırın. Daha fazla veri işlemek için yeterince büyük bir veri akışı kümesiyle Select ve Azure IR sahip olduğunuzdan emin olun.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu
 
 1. Veri kümesi bağlantılarınızın durumunu denetleyin. Her kaynak ve havuz dönüşümünde, kullandığınız her veri kümesi için bağlı hizmeti ziyaret edin ve bağlantıları test edin.
@@ -79,9 +86,9 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
-*  [Data Factory blogu](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory blogu](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure videoları](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)

@@ -3,12 +3,12 @@ title: Sistem durumunu bir Windows sunucusuna geri yükleme
 description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yüklemek için adım adım açıklama.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067365"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263444"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -28,15 +28,15 @@ Aşağıdaki adımlarda, Windows Server yapılandırmanızın önceki bir duruma
 
     Masaüstü uygulaması, arama sonuçlarında görünmelidir.
 
-2. Sihirbazı başlatmak için **verileri kurtar** ' ı tıklatın.
+2. Sihirbazı başlatmak için **verileri kurtar** ' ı seçin.
 
     ![Verileri kurtar](./media/backup-azure-restore-windows-server/recover.png)
 
-3. **Başlarken** bölmesinde, verileri aynı sunucuya veya bilgisayara geri yüklemek Için, **Bu sunucuyu ( `<server name>` )** seçin ve **İleri**' ye tıklayın.
+3. **Başlarken** bölmesinde, verileri aynı sunucuya veya bilgisayara geri yüklemek Için, **Bu sunucuyu ( `<server name>` )** seçin ve **İleri**' yi seçin.
 
     ![Verileri aynı makineye geri yüklemek için bu sunucu seçeneğini belirleyin](./media/backup-azure-restore-system-state/samemachine.png)
 
-4. **Kurtarma modunu seçin** bölmesinde **sistem durumu** ' nu seçin ve ardından **İleri**' ye tıklayın.
+4. **Kurtarma modunu seçin** bölmesinde **sistem durumu** ' nu seçin ve ardından **İleri**' yi seçin.
 
     ![Dosyalara gözatamıyorum](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
@@ -46,15 +46,15 @@ Aşağıdaki adımlarda, Windows Server yapılandırmanızın önceki bir duruma
 
     ![Birim ve Tarih](./media/backup-azure-restore-system-state/select-date.png)
 
-6. Geri yüklenecek kurtarma noktasını seçtikten sonra **İleri**' ye tıklayın.
+6. Geri yüklenecek kurtarma noktasını seçtikten sonra **İleri**' yi seçin.
 
     Azure Backup, yerel kurtarma noktasını takar ve bunu bir kurtarma birimi olarak kullanır.
 
-7. Sonraki bölmede, kurtarılan sistem durumu dosyalarının hedefini belirtin. Ardından, Windows Gezgini 'ni açmak ve istediğiniz dosya ve klasörleri bulmak için **Araştır** ' a tıklayın. **Her iki sürüme de sahip olmak için kopya oluştur**seçeneği, tüm sistem durumu arşivi kopyasını oluşturmak yerine, mevcut bir sistem durumu dosya arşivinde tek tek dosyaların kopyalarını oluşturur.
+7. Sonraki bölmede, kurtarılan sistem durumu dosyalarının hedefini belirtin. Ardından, Windows Gezgini 'ni açmak ve istediğiniz dosya ve klasörleri bulmak için **Araştır** ' ı seçin. **Her iki sürüme de sahip olmak için kopya oluştur**seçeneği, tüm sistem durumu arşivi kopyasını oluşturmak yerine, mevcut bir sistem durumu dosya arşivinde tek tek dosyaların kopyalarını oluşturur.
 
     ![Kurtarma seçenekleri](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-8. **Onay** bölmesinde Kurtarma ayrıntılarını doğrulayın ve **kurtar**' a tıklayın.
+8. **Onay** bölmesinde Kurtarma ayrıntılarını doğrulayın ve **kurtar**' ı seçin.
 
    ![kurtarma eylemini onaylamak için kurtar 'a tıklayın](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -78,7 +78,7 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 
 1. *Hedef makinede* **Microsoft Azure Backup** ek bileşenini açın.
 2. *Hedef makinenin* ve *kaynak makinenin* aynı kurtarma hizmetleri kasasında kayıtlı olduğundan emin olun.
-3. İş akışını başlatmak için **verileri kurtar** ' ı tıklatın.
+3. İş akışını başlatmak için **verileri kurtar** ' ı seçin.
 4. **Başka bir sunucu** seçin
 
     ![Başka bir sunucu](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -86,23 +86,23 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 5. *Örnek kasaya*karşılık gelen kasa kimlik bilgileri dosyasını sağlayın. Kasa kimlik bilgileri dosyası geçersiz (veya dolmuşsa), Azure portal *örnek kasasından* yeni bir kasa kimlik bilgileri dosyası indirin. Kasa kimlik bilgileri dosyası sağlandığında, kasa kimlik bilgileri dosyasıyla ilişkili kurtarma hizmetleri Kasası görüntülenir.
 
 6. Yedekleme sunucusunu seçin bölmesinde, görünen makineler listesinden *kaynak makineyi* seçin.
-7. Kurtarma modunu seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' ye tıklayın.
+7. Kurtarma modunu seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' yi seçin.
 
-    ![Arayın](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Ara](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **Birim ve tarih seçin** bölmesinde takvimde, bir kurtarma noktası seçin. Herhangi bir kurtarma noktasından dilediğiniz zaman geri yükleyebilirsiniz. **Kalın yazı** tarihi, en az bir kurtarma noktasının kullanılabilirliğini gösterir. Bir tarih seçtiğinizde, birden fazla kurtarma noktası varsa, **zaman** açılan menüsünde belirli bir kurtarma noktasını seçin.
 
     ![Öğe ara](./media/backup-azure-restore-system-state/select-date.png)
 
-9. Geri yüklenecek kurtarma noktasını seçtikten sonra **İleri**' ye tıklayın.
+9. Geri yüklenecek kurtarma noktasını seçtikten sonra **İleri**' yi seçin.
 
-10. **Sistem durumu kurtarma modunu seçin** bölmesinde sistem durumu dosyalarının kurtarılmasını istediğiniz hedefi belirtin ve ardından **İleri**' ye tıklayın.
+10. **Sistem durumu kurtarma modunu seçin** bölmesinde sistem durumu dosyalarının kurtarılmasını istediğiniz hedefi belirtin, ardından **İleri**' yi seçin.
 
     ![Şifreleme](./media/backup-azure-restore-system-state/recover-as-files.png)
 
     **Her iki sürüme de sahip olmak için kopya oluştur**seçeneği, tüm sistem durumu arşivi kopyasını oluşturmak yerine, mevcut bir sistem durumu dosya arşivinde tek tek dosyaların kopyalarını oluşturur.
 
-11. Onay bölmesinde Kurtarma ayrıntılarını doğrulayın ve **kurtar**' ı tıklatın.
+11. Onay bölmesinde Kurtarma ayrıntılarını doğrulayın ve **kurtar**' ı seçin.
 
     ![kurtarma işlemini onaylamak için kurtar düğmesine tıklayın](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -122,9 +122,9 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 
     ![geri yüklemek için yerel yedekleme 'yi seçin](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
 
-1. Yerel yedekleme konsolunda, **Eylemler bölmesinde**, Kurtarma Sihirbazı 'nı açmak için **kurtar** ' ı tıklatın.
+1. Yerel yedekleme konsolunda, **Eylemler bölmesinde**, Kurtarma Sihirbazı 'nı açmak için **kurtar** ' ı seçin.
 
-1. **Başka bir konumda depolanan bir yedek**seçeneğini belirleyin ve **İleri**' ye tıklayın.
+1. **Başka bir konumda depolanan bir yedek**seçeneğini belirleyin ve **İleri**' yi seçin.
 
    ![farklı bir sunucuya kurtarmayı seçin](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
@@ -132,15 +132,15 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 
     ![Yerel sunucu veya başka bir sunucudan kurtarma yapılıp yapılmayacağını seçin](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-1. *WindowsImageBackup* dizininin yolunu girin veya bu dizini içeren yerel sürücüyü (örneğin, D:\windowsımagebackup) seçin, Azure kurtarma hizmetleri Aracısı 'Nı kullanarak sistem durumu dosyalarının kurtarmasının bir parçası olarak kurtarıldı ve **İleri**' ye tıklayın.
+1. *WindowsImageBackup* dizininin yolunu girin veya bu dizini içeren yerel sürücüyü (örneğin, d:\windowsımagebackup) seçin, Azure kurtarma hizmetleri Aracısı kullanılarak sistem durumu dosyalarının kurtarmasının bir parçası olarak kurtarıldı ve **İleri**' yi seçin.
 
     ![paylaşılan dosyanın yolu](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
-1. Geri yüklemek istediğiniz sistem durumu sürümünü seçin ve **İleri**' ye tıklayın.
+1. Geri yüklemek istediğiniz sistem durumu sürümünü seçin ve **İleri**' yi seçin.
 
-1. Kurtarma türünü seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' ye tıklayın.
+1. Kurtarma türünü seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' yi seçin.
 
-1. Sistem durumu kurtarma konumu için **özgün konum**' u seçin ve **İleri**' ye tıklayın.
+1. Sistem durumu kurtarma konumu için **özgün konum**' u seçin ve **İleri**' yi seçin.
 
     Bir etki alanı denetleyicisini geri yüklüyorsanız, aşağıdaki ek seçeneği görürsünüz:
 
@@ -149,14 +149,14 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
     >[!NOTE]
     >Yalnızca tüm Active Directory verileri Yetkilendirmeli geri yükleme Işlemini açık bir şekilde düşünüyorsanız, yalnızca "Active Directory dosyalarının yetkili geri yüklemesini gerçekleştir" seçeneğini belirleyin.
 
-1. Onay ayrıntılarını gözden geçirin, yeniden başlatma ayarlarını doğrulayın ve geri yüklenen sistem durumu dosyalarını uygulamak için **kurtar** ' ı tıklatın.
+1. Onay ayrıntılarını gözden geçirin, yeniden başlatma ayarlarını doğrulayın, geri yüklenen sistem durumu dosyalarını uygulamak için **kurtar** ' ı seçin.
 
     ![geri yükleme sistem durumu dosyalarını Başlat](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
     >Geri yüklemeyi DSRM modunda gerçekleştiriyorsanız **sunucu seçeneğini otomatik olarak yeniden Başlat** ' ı seçmeyin.
 
-1. Bir geri yüklemeyi başarıyla tamamladıktan sonra, sunucuyu normal modda yeniden başlatmanız gerekir. Bir komut istemi açın ve şunu yazın:`bcdedit /deletevalue safeboot`
+1. Bir geri yüklemeyi başarıyla tamamladıktan sonra, sunucuyu normal modda yeniden başlatmanız gerekir. Bir komut istemi açın ve şunu yazın: `bcdedit /deletevalue safeboot`
 1. Sunucuyu yeniden başlatın.
 
 ## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>Bir etki alanı denetleyicisinde sistem durumu kurtarmaya yönelik özel konular
@@ -199,7 +199,7 @@ Bu makale yalnızca, AD DS yetkisiz geri yükleme ve SYSVOL klasörünün yetkil
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
         ```
 
-1. Bir geri yüklemeyi başarıyla tamamladıktan sonra, sunucuyu normal modda yeniden başlatmanız gerekir. Bir komut istemi açın ve şunu yazın:`bcdedit /deletevalue safeboot`
+1. Bir geri yüklemeyi başarıyla tamamladıktan sonra, sunucuyu normal modda yeniden başlatmanız gerekir. Bir komut istemi açın ve şunu yazın: `bcdedit /deletevalue safeboot`
 1. Sunucuyu yeniden başlatın.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Başarısız Sistem Durumu geri yükleme sorunlarını giderme
@@ -210,15 +210,15 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa Win
 
 2. Kullanılabilir üç seçenekten sorun giderme ' yi seçin.
 
-    ![menüyü açma](./media/backup-azure-restore-system-state/winre-1.png)
+    ![Sorun giderme seçin](./media/backup-azure-restore-system-state/winre-1.png)
 
 3. **Gelişmiş Seçenekler** ekranından **komut istemi** ' ni seçin ve Sunucu Yöneticisi Kullanıcı adını ve parolasını belirtin.
 
-   ![menüyü açma](./media/backup-azure-restore-system-state/winre-2.png)
+   ![Komut Istemi seçin](./media/backup-azure-restore-system-state/winre-2.png)
 
 4. Sunucu Yöneticisi Kullanıcı adını ve parolasını belirtin.
 
-    ![menüyü açma](./media/backup-azure-restore-system-state/winre-3.png)
+    ![Parolayı girin](./media/backup-azure-restore-system-state/winre-3.png)
 
 5. Komut istemi 'ni yönetici modunda açtığınızda, sistem durumu yedekleme sürümlerini almak için aşağıdaki komutu çalıştırın.
 
@@ -234,7 +234,7 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa Win
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
-    ![Sistem durumu yedekleme sürümlerini al](./media/backup-azure-restore-system-state/winre-5.png)
+    ![Kullanılabilir tüm birimleri al](./media/backup-azure-restore-system-state/winre-5.png)
 
 7. Aşağıdaki komut, sistem durumu yedeklemesinin parçası olan tüm birimleri kurtarır. Bu adımın yalnızca sistem durumunun parçası olan kritik birimleri kurtardığını unutmayın. Tüm sistem dışı veriler silinir.
 
@@ -242,7 +242,7 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa Win
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
 
-     ![Sistem durumu yedekleme sürümlerini al](./media/backup-azure-restore-system-state/winre-6.png)
+     ![Tüm birimleri kurtar](./media/backup-azure-restore-system-state/winre-6.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
