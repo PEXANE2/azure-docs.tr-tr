@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042317"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509969"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA yüklemesi
 ## <a name="introduction"></a>Giriş
@@ -29,7 +29,7 @@ Bu kılavuz, Azure sanal makinelerinde HANA 'yı başarıyla dağıtmak için do
 > [!NOTE]
 > Bu kılavuzda, Azure VM 'lerine SAP HANA dağıtımları açıklanmaktadır. SAP HANA HANA büyük örneklerine dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) nasıl yüklenir ve yapılandırılır](./hana-installation.md).
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzda, hakkında bilgi sahibi olduğunuz varsayılır:
 * SAP HANA ve SAP NetWeaver ve bunların Şirket içinde nasıl yükleneceği.
 * Azure 'da SAP HANA ve SAP uygulama örnekleri yüklemek ve çalıştırmak.
@@ -72,7 +72,7 @@ Bu aşamada, sanal makineleri yüklemek için VM 'leri dağıtmaya yönelik adı
     -  [SAP destek notunun #2382421-ağ yapılandırmasını HANA ve işletim sistemi düzeyinde Iyileştirme](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. SAP HANA için Azure depolama türünü seçin. Bu adımda, SAP HANA yüklemesi için depolama düzenine karar vermeniz gerekir. Bağlı Azure disklerini ya da yerel Azure NFS paylaşımlarını kullanacaksınız. Azure depolama, kullanılabilir olan veya desteklenen farklı Azure Depolama türleri bileşimleri, [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md)belgelenmiştir. Başlangıç noktası olarak belgelenen konfigürasyonları alın. Üretim dışı sistemler için, daha düşük aktarım hızı veya ıOPS yapılandırabilirsiniz. Üretim amacıyla, biraz daha fazla üretilen iş ve ıOPS yapılandırmanız gerekebilir.
-2. [Azure yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md) 'YI, DBMS işlem günlüklerini içeren birimleriniz için yapılandırdığınızdan emin olun veya M serisi veya Mv2 serisi VM kullanırken günlükleri yineleyin. Yazma Hızlandırıcısı açıklanan sınırlamalara göz önünde bulundurun.
+2. [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) 'YI, DBMS işlem günlüklerini içeren birimleriniz için yapılandırdığınızdan emin olun veya M serisi veya Mv2 serisi VM kullanırken günlükleri yineleyin. Yazma Hızlandırıcısı açıklanan sınırlamalara göz önünde bulundurun.
 2. Dağıtılan VM 'ler üzerinde [Azure hızlandırılmış ağ oluşturma](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin.
 
 > [!NOTE]

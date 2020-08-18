@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fd20819d17861ed5171bf61e4c485fcceba7985
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006120"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509612"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -25,7 +25,7 @@ Windows sanal masaüstündeki Microsoft ekipleri sohbet ve işbirliğini destekl
 
 Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü istemcisi, takımlar ve toplantılar için ses ve videoyu yerel olarak işler. Windows sanal masaüstündeki Microsoft ekiplerini, iyileştirilmiş çağrı ve toplantılar olmadan diğer istemcilerle kullanmaya devam edebilirsiniz. Takımlar sohbeti ve işbirliği özellikleri tüm platformlarda desteklenir. Uzak oturumunuzdaki yerel cihazları yeniden yönlendirmek için [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini Özelleştir](#customize-remote-desktop-protocol-properties-for-a-host-pool)' e bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
@@ -36,7 +36,7 @@ Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işle
 
 ## <a name="install-the-teams-desktop-app"></a>Takımlar masaüstü uygulamasını yükler
 
-Bu bölümde, Windows 10 çoklu oturum veya Windows 10 Enterprise VM yansımanıza takımlar masaüstü uygulamasını nasıl yükleyeceğiniz gösterilmektedir. Daha fazla bilgi edinmek için bkz. [VDI üzerinde takımlar masaüstü uygulamasını yüklemeyi veya güncelleştirmeyi](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/)deneyin.
+Bu bölümde, Windows 10 çoklu oturum veya Windows 10 Enterprise VM yansımanıza takımlar masaüstü uygulamasını nasıl yükleyeceğiniz gösterilmektedir. Daha fazla bilgi edinmek için bkz. [VDI üzerinde takımlar masaüstü uygulamasını yüklemeyi veya güncelleştirmeyi](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi)deneyin.
 
 ### <a name="prepare-your-image-for-teams"></a>Görüntünüzü takımlar için hazırlama
 
@@ -71,17 +71,17 @@ Aşağıdaki tabloda WebSocket hizmetinin en son sürümleri listelenmektedir:
 
 Ekipler masaüstü uygulamasını makine başına veya Kullanıcı başına yükleme kullanarak dağıtabilirsiniz. Microsoft ekiplerinizi Windows sanal masaüstü ortamınıza yüklemek için:
 
-1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
+1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
 
-      > [!NOTE]
-      > Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
+      > [!IMPORTANT]
+      > Ekipler masaüstü istemci sürümünün en son güncelleştirmesi, ekiplerin sohbet, kanallar ve takvim 'de UTC saat dilimi olduğunu göstermiştir bir sorunu düzeltti. İstemcinin yeni sürümü, uzak oturum saat dilimini gösterecektir.
 
 2. MSI 'yi konak VM 'ye yüklemek için aşağıdaki komutlardan birini çalıştırın:
 
     - Kullanıcı başına yükleme
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name>
         ```
 
         Bu işlem, takımları **% AppData%** Kullanıcı klasörüne yükleyecek olan varsayılan yüklemedir. Ekipler, kalıcı olmayan bir kurulumda Kullanıcı başına yükleme ile düzgün çalışmaz.
@@ -89,13 +89,13 @@ Ekipler masaüstü uygulamasını makine başına veya Kullanıcı başına yük
     - Makine başına yükleme
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
         Bu, ekipleri 64 bitlik bir işletim sisteminde Program Files (x86) klasörüne ve 32 bit işletim sistemindeki Program Files klasörüne yüklenir. Bu noktada, altın görüntü kurulumu tamamlanmıştır. Kalıcı olmayan kurulum için makine başına takımlar yükleme gerekir.
 
-        Ekipleri bir oturumda bir sonraki açışınızda kimlik bilgileriniz istenir.
-
+        Ekipler yüklenirken ayarlanmış olabilecek iki bayrak vardır, **AllUser = 1** ve **ALLUSERS = 1**. Bu parametreler arasındaki farkı anlamak önemlidir. **AllUser = 1** PARAMETRESI yalnızca VDI ortamlarında, makine başına yükleme belirtmek için kullanılır. **ALLUSERS = 1** parametresi VDI olmayan ve VDI ortamlarında kullanılabilir. Bu parametreyi ayarladığınızda, takımlar makine genelinde yükleyici, Denetim Masası 'ndaki program ve Özellikler ' in yanı sıra Windows ayarlarındaki uygulamalar & Özellikler ' de görünür. Makinede yönetici kimlik bilgilerine sahip tüm kullanıcılar takımları kaldırabilir. 
+       
         > [!NOTE]
         > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
 
@@ -125,12 +125,11 @@ WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, t
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
-Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış bir ortamda takımlar kullanmaktan farklıdır. Sanallaştırılmış ortamlarda ekiplerin sınırlamaları hakkında daha fazla bilgi için, [sanallaştırılmış Masaüstü Altyapısı Için takımları](/microsoftteams/teams-for-vdi#known-issues-and-limitations/)inceleyin.
+Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış bir ortamda takımlar kullanmaktan farklıdır. Sanallaştırılmış ortamlarda ekiplerin sınırlamaları hakkında daha fazla bilgi için, [sanallaştırılmış Masaüstü Altyapısı Için takımları](/microsoftteams/teams-for-vdi#known-issues-and-limitations)inceleyin.
 
 ### <a name="client-deployment-installation-and-setup"></a>İstemci dağıtımı, yükleme ve kurulum
 
 - Makine başına yüklemede, VDı 'daki takımlar, VDı ekipleri olmayan ekipler istemcilerinin de aynı şekilde otomatik olarak güncellenmez. İstemciyi güncelleştirmek için yeni bir MSI yükleyerek VM görüntüsünü güncelleştirmeniz gerekir.
-- Takımlar şu anda yalnızca sohbet, kanallar ve takvim 'de UTC saat dilimini gösterir.
 - Takımlar için medya iyileştirmesi yalnızca Windows 10 çalıştıran makinelerde Windows Masaüstü istemcisi için desteklenir.
 - Bir uç noktada tanımlanan açık HTTP proxy 'lerinin kullanımı desteklenmez.
 
@@ -143,7 +142,7 @@ Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış b
 - WebRTC sınırlamaları nedeniyle, gelen ve giden video akış çözünürlüğü 720p ile sınırlıdır.
 - Takımlar uygulaması, diğer cihazlarla HID düğmelerini veya LED denetimlerini desteklemez.
 
-Ekipler, sanallaştırılmış ortamlarla ilgili olmayan bilinen sorunlar için bkz. [kuruluşunuzdaki destek takımları](/microsoftteams/known-issues/)
+Ekipler, sanallaştırılmış ortamlarla ilgili olmayan bilinen sorunlar için bkz. [kuruluşunuzdaki destek takımları](/microsoftteams/known-issues)
 
 ## <a name="uservoice-site"></a>UserVoice sitesi
 
@@ -165,8 +164,8 @@ Bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini, çok Monito
 
 Ekipleri medya iyileştirmesi ile kullanılırken cihaz yeniden yönlendirmelerini etkinleştirme gerekli değildir. Medya iyileştirmesi olmadan takımlar kullanıyorsanız, mikrofon ve kamera yeniden yönlendirmeyi etkinleştirmek için aşağıdaki RDP özelliklerini ayarlayın:
 
-- `audiocapturemode:i:1`Yerel cihazdan ses yakalamaya izin verebilir ve Uzak oturumdaki ses uygulamalarını yeniden yönlendirir.
-- `audiomode:i:0`Yerel bilgisayarda ses çalar.
-- `camerastoredirect:s:*`Tüm kameraları yeniden yönlendirir.
+- `audiocapturemode:i:1` Yerel cihazdan ses yakalamaya izin verebilir ve Uzak oturumdaki ses uygulamalarını yeniden yönlendirir.
+- `audiomode:i:0` Yerel bilgisayarda ses çalar.
+- `camerastoredirect:s:*` Tüm kameraları yeniden yönlendirir.
 
 Daha fazla bilgi edinmek için, [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini özelleştirin](customize-rdp-properties.md)' i inceleyin.

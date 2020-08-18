@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698776"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509101"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
 Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede hem desteklenen hem de desteklenmeyen yapılandırmalar bulunur.
@@ -120,7 +120,7 @@ Bu senaryoda, bir (veya daha fazla) kaynak ormanı tüm hesap ormanlarına güve
 ## <a name="office-365-and-topology-considerations"></a>Office 365 ve topoloji konuları
 Bazı Office 365 iş yükleri desteklenen topolojilerde belirli kısıtlamalara sahiptir:
 
-| İş yükü | Kısıtlamalar |
+| İş Yükü | Kısıtlamalar |
 | --------- | --------- |
 | Exchange Online | Exchange Online tarafından desteklenen karma topolojiler hakkında daha fazla bilgi için bkz. [birden çok Active Directory ormanlı karma dağıtımlar](https://technet.microsoft.com/library/jj873754.aspx). |
 | Skype Kurumsal | Birden çok şirket içi orman kullandığınızda yalnızca hesap-kaynak orman topolojisi desteklenir. Daha fazla bilgi için bkz. [Skype Kurumsal Sunucu Için ortam gereksinimleri 2015](https://technet.microsoft.com/library/dn933910.aspx). |
@@ -191,6 +191,11 @@ Azure AD kiracılar tasarıma göre yalıtılmıştır. Bu görevler desteklenme
 ![Birden çok orman ve birden çok dizin için topolojide GALSync](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 İki Exchange kuruluşu arasında kullanıcıları eşitlemek için FIM 2010 veya MıM 2016 ' i şirket içi olarak (GALSync aracılığıyla) kullanabilirsiniz. Bir kuruluştaki kullanıcılar diğer kuruluşta yabancı Kullanıcı/kişi olarak görünür. Bu farklı şirket içi Active Directory örnekleri, kendi Azure AD kiracılarıyla eşitlenebilir.
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>Azure AD Connect arka uca erişmek için yetkisiz istemcileri kullanma
+![Azure AD Connect arka uca erişmek için yetkisiz istemcileri kullanma](./media/plan-connect-topologies/other-client-unsupported.png)
+
+Azure Active Directory Connect sunucusu Azure Active Directory Connect arka ucu üzerinden Azure Active Directory iletişim kurar. Bu arka uca iletişim kurmak için kullanılabilecek tek yazılım Azure Active Directory Connect. Diğer yazılımlar veya yöntemler kullanılarak Azure Active Directory Connect arka ucu ile iletişim kurmak desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu senaryolar için Azure AD Connect yükleme hakkında bilgi edinmek için bkz. [özel Azure AD Connect yüklemesi](how-to-connect-install-custom.md).

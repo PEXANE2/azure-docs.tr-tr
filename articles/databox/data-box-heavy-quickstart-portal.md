@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Microsoft Azure Data Box Heavy| Microsoft Docs'
-description: Azure portalında Azure Data Box Heavy'yi hızla dağıtmayı öğrenin
+description: Bu hızlı başlangıçta, Azure portalı kullanarak Azure Data Box Heavy'yi dağıtmayı, bunun için kablolamayı, yapılandırmayı ve verileri Azure'a yüklemek için kopyalamayı öğreneceksiniz.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199120"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920798"
 ---
 ::: zone target = "docs"
 

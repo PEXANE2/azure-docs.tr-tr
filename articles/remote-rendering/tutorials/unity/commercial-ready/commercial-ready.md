@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076419"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510938"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Öğretici: ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma
 
@@ -23,7 +23,7 @@ Bu öğreticide şunları öğrenirsiniz:
 > * Oturum yükleme süresi etrafında Kullanıcı deneyimini iyileştirme
 > * Ağ gecikmesi ile ilgili önemli noktalar
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: Azure uzaktan işleme ve model depolamanın güvenliğini sağlama](../security/security.md).
 
@@ -78,13 +78,13 @@ Daha fazla bilgi için şu adresi ziyaret edin:
 
 Kullanım durumu, uygulama başlatmasının 3B model görüntülemeye hızlı bir şekilde başlatılmasını gerektirebilir. Örneğin, her şeyin güncel ve çalışır hale geldiğinden önemli bir toplantıda yer vardır. Bir CAD uygulaması ve karma gerçeklik arasındaki hızlı tasarım yinelemesinin, verimlilik açısından önemli olduğu bir CAD 3D model incelemesi, başka bir örnektir.
 
-Azure uzaktan Işleme için önceden işlenmiş 3B modeller gerekir ve Azure Şu anda bir VM oluşturmak ve işleme için bir model yüklemek üzere birkaç dakika sürer. Bu işlemi olabildiğince sorunsuz ve hızlı hale getirmek, 3D model verilerinin ve ARR oturumunun bir süre önce hazırlanmasını gerektirir.
+Azure uzaktan Işleme için önceden işlenmiş 3B modeller gerekir ve Azure Şu anda bir oturum oluşturmak ve işleme için bir model yüklemek üzere birkaç dakika sürer. Bu işlemi olabildiğince sorunsuz ve hızlı hale getirmek, 3D model verilerinin ve ARR oturumunun bir süre önce hazırlanmasını gerektirir.
 
 Burada paylaşılan öneriler şu anda standart Azure uzaktan Işleme 'nin bir parçası değildir, ancak daha hızlı başlangıç süreleri için bunları kendi kendinize uygulayabilirsiniz.
 
 ### <a name="initiate-early"></a>Erken Başlat
 
-Başlangıç süresini azaltmak için, en basit çözüm, sanal makinenin oluşturulmasını ve başlatılmasını Kullanıcı iş akışında mümkün olduğunca erken taşıyamaktır. Bir strateji, bir ARR oturumunun gerekli olacağı bilindiğinde oturumu başlatmaktır. Bu, genellikle kullanıcının Azure uzaktan Işleme ile kullanmak üzere bir 3B modeli Azure Blob depolamaya yüklemeye başladığı zaman olur. Bu durumda, oturum oluşturma ve VM başlatması, 3D model karşıya yüklenirken her iki iş akışı da paralel olarak çalışacak şekilde aynı anda başlatılabilir.
+Başlangıç süresini azaltmak için, en basit çözüm, oturum oluşturma ve başlatma özelliğini Kullanıcı iş akışında mümkün olduğunca erken taşıyamaktır. Bir strateji, bir ARR oturumunun gerekli olacağı bilindiğinde oturumu başlatmaktır. Bu, genellikle kullanıcının Azure uzaktan Işleme ile kullanmak üzere bir 3B modeli Azure Blob depolamaya yüklemeye başladığı zaman olur. Bu durumda, oturum oluşturma ve başlatma aynı anda, her iki iş akışı paralel olarak çalışacak şekilde, 3B modeliyle karşıya yüklenirken başlatılabilir.
 
 Bu işlem, seçilen Azure Blob depolama giriş ve çıkış kapsayıcılarının Azure uzaktan Işleme oturumuyla aynı bölgesel veri merkezinde olduğundan emin olarak kolaylaştırılabilir.
 
@@ -92,41 +92,41 @@ Bu işlem, seçilen Azure Blob depolama giriş ve çıkış kapsayıcılarının
 
 Azure uzaktan Işleme için gelecekteki bir ihtiyacınız olduğunu biliyorsanız, Azure uzaktan Işleme oturumunun başlatılması için belirli bir tarih ve saat zamanlayabilirsiniz.
 
-Bu seçenek, insanların her ikisi de bir 3B modeli yükleyebilecekleri ve gelecekte görüntülemek için zaman zamanlabileceği bir Web portalı üzerinden sunulabilir. Bu, standart veya Premium işleme gibi diğer tercihleri sormak için de iyi bir yerdir. Premium işleme, ideal boyutun otomatik olarak belirlenmesi veya Azure bölgesinin belirtilen sürede kullanılabilir VM 'Lere sahip olduğundan emin olmak için ihtiyaç duyduğu bir varlık karışımı göstermek için uygun olabilir.
+Bu seçenek, insanların her ikisi de bir 3B modeli yükleyebilecekleri ve gelecekte görüntülemek için zaman zamanlabileceği bir Web portalı üzerinden sunulabilir. Bu, [*Standart*](../../../reference/vm-sizes.md) veya [*Premium*](../../../reference/vm-sizes.md) işleme gibi diğer tercihleri sormak için de iyi bir yerdir. *Premium* işleme, ideal boyutun otomatik olarak belirlenmesi veya Azure bölgesinin belirtilen sürede kullanılabilir VM 'lere sahip olduğundan emin olmak için ihtiyaç duyduğu bir varlık karışımı göstermek için uygun olabilir.
 
 ### <a name="session-pooling"></a>Oturum havuzu oluşturma
 
 En zorlu koşullarda, bir veya daha fazla oturumun her zaman oluşturulduğu ve başlatıldığı başka bir seçenek de oturum havuzdur. Bu işlem, isteyen bir kullanıcı tarafından hemen kullanılmak üzere bir oturum havuzu oluşturur. Bu yaklaşımın aşağı tarafında, VM başlatıldıktan sonra hizmet için faturalandırma başlatılır. Bir oturum havuzunu her zaman çalışır durumda tutmak, ancak analizler temel alınarak, en yüksek yükleri tahmin etmek ve oturum gerektiğinde tahmin etmek ve oturum havuzunu uygun şekilde artırma ve azaltma olanağı sağlamak için yukarıdaki zamanlama stratejisiyle birleştirilebilir.
 
-Bu strateji aynı zamanda standart ve Premium oturumlardaki iki tür arasında geçiş yapmak için çok daha hızlı bir şekilde bir Premium karmaşıklık modelinin görüntülendiği, ardından bir standart içinde çalışıdığı durumlar gibi tek bir kullanıcı oturumunda bu seçimi iyileştirmenize yardımcı olur. Bu Kullanıcı oturumları oldukça uzunsa, önemli maliyet tasarrufları olabilir.
+Bu strateji aynı zamanda *Standart* ve *Premium* oturumlardaki iki tür arasında geçiş yapmak için çok daha hızlı bir şekilde bir *Premium* karmaşıklık modelinin görüntülendiği, ardından bir *Standart*içinde çalışıdığı durumlar gibi tek bir kullanıcı oturumunda bu seçimi iyileştirmenize yardımcı olur. Bu Kullanıcı oturumları oldukça uzunsa, önemli maliyet tasarrufları olabilir.
 
 Azure uzaktan Işleme oturumları hakkında daha fazla bilgi için şu işlemleri inceleyin:
 
 * [Remote Rendering Oturumları](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
 
-## <a name="standard-vs-premium-vm-routing-strategies"></a>Standart ve Premium VM yönlendirme stratejileri
+## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standart ve Premium sunucu boyut yönlendirme stratejileri
 
-Standart veya Premium bir sanal makinenin oluşturulup oluşturulmayacağını seçme gereksinimi, Kullanıcı deneyiminizi ve uçtan uca sisteminizin tasarlanmasıyla bir zorluk gösterir. Yalnızca Premium oturumlarını kullanmak bir seçenektir, ancak standart oturumlar çok daha az Azure işlem kaynaklarını kullanır ve Premium 'dan daha ucuz olur. Bu, mümkün olduğunda standart oturumları kullanmak için güçlü bir işlem sağlar ve yalnızca gerektiğinde Premium kullanır.
+*Standart* veya *Premium* sunucu boyutunun oluşturulup oluşturulmayacağını seçme gereksinimi, Kullanıcı deneyiminizi ve uçtan uca sistemi tasarlama konusunda bir zorluk gösterir. Yalnızca *Premium* oturumlarını kullanmak bir seçenektir, ancak *Standart* oturumlar çok daha az Azure Işlem kaynaklarını kullanır ve *Premium*'dan daha ucuz olur. Bu, mümkün olduğunda *Standart* oturumları kullanmak için güçlü bir işlem sağlar ve yalnızca gerektiğinde *Premium* kullanır.
 
 Burada, oturum seçimlerini yönetme isteğini ele almak için birkaç seçeneği en çok kapsamlı olarak paylaşıyoruz.
 
 ### <a name="use-only-standard-or-premium"></a>Yalnızca standart veya Premium kullanın
 
-Gereksinimleriniz *her zaman* standart ve Premium arasındaki eşiğin altına düşecek şekilde, bu, kararınızı önemli ölçüde basitleştirir. Yalnızca standart kullanın. Yüklenen varlıkların toplam karmaşıklığı, standart bir oturum için çok karmaşık olarak reddedildiğinde, kullanıcı deneyiminin etkisinin önemli olmasına dikkat edin.
+Gereksinimleriniz *her zaman* *Standart* ve *Premium*arasındaki eşiğin altına düşecek şekilde, bu, kararınızı önemli ölçüde basitleştirir. Yalnızca *Standart*kullanın. Yüklenen varlıkların toplam karmaşıklığı, *Standart* bir oturum için çok karmaşık olarak reddedildiğinde, kullanıcı deneyiminin etkisinin önemli olmasına dikkat edin.
 
-Benzer şekilde, standart ve Premium arasındaki eşiği aşmamak için kullanılan büyük bir bölümü beklediğinizi veya maliyet kullanım ihtimalinde bir anahtar faktörü değilse, her zaman Premium ' u seçerek basit tutma seçeneği de vardır.
+Benzer şekilde, *Standart* ve *Premium*arasındaki eşiği aşmamak için kullanılan büyük bir bölümü beklediğinizi veya maliyet kullanım ihtimalinde bir anahtar faktörü değilse, her zaman *Premium* ' u seçerek basit tutma seçeneği de vardır.
 
 ### <a name="ask-the-user"></a>Kullanıcıdan sorun
 
-Hem standart hem de Premium desteklemek istiyorsanız, örnek oluşturulacak sanal makine oturumu türünü belirlemenin en kolay yolu kullanıcıdan görüntülenecek 3D varlıkları seçtiğinde bunu sormasını belirlemektir. Bu yaklaşımdaki zorluk, kullanıcının 3B varlığın karmaşıklığını ve hatta görüntülenecek birden çok varlığı anlamasına gerek duyduğu bir sorundur. Genellikle, bu nedenle önerilmez. Kullanıcı yanlış seçerse ve standart seçerse, sonuçta elde edilen kullanıcı deneyimi inopportune bir anda tehlikeye girebilir.
+Hem *Standart* hem de *Premium*desteklemek istiyorsanız, hangi tür bir oturum örneklendirileyeceğini belirlemenin en kolay yolu kullanıcıdan görüntülenecek 3D varlıkları seçtiğinde bunu istemesi yöntemidir. Bu yaklaşımdaki zorluk, kullanıcının 3B varlığın karmaşıklığını ve hatta görüntülenecek birden çok varlığı anlamasına gerek duyduğu bir sorundur. Genellikle, bu nedenle önerilmez. Kullanıcı yanlış seçerse ve *Standart*seçerse, sonuçta elde edilen kullanıcı deneyimi inopportune bir anda tehlikeye girebilir.
 
 ### <a name="analyze-the-3d-model"></a>3B modeli çözümle
 
-Başka bir görece basit yaklaşım, seçili 3B varlıkların karmaşıklığını analiz etmek değildir. Model karmaşıklığı standart için eşiğin altındaysa standart bir oturum başlatın, aksi takdirde Premium oturumu başlatın. Burada, sınama, bir standart oturumun karmaşıklık eşiğini aşabileceğinden birden çok modeli görüntülemek için son kullanılan bir oturum, farklı bir 3B varlık sırası için aynı oturumu sorunsuz bir şekilde kullanmayabilir.
+Başka bir görece basit yaklaşım, seçili 3B varlıkların karmaşıklığını analiz etmek değildir. Model karmaşıklığı *Standart*için eşiğin altındaysa *Standart* bir oturum başlatın, aksi takdirde *Premium* oturumu başlatın. Burada, sınama, bir *Standart* oturumun karmaşıklık eşiğini aşabileceğinden birden çok modeli görüntülemek için son kullanılan bir oturum, farklı bir 3B varlık sırası için aynı oturumu sorunsuz bir şekilde kullanmayabilir.
 
 ### <a name="automatic-switching"></a>Otomatik anahtarlama
 
-Standart ve Premium oturumlar arasında otomatik geçiş yapmak, bir sistem tasarımında oturum havuzunu de içeren çok sayıda fikir verebilir. Bu strateji, kaynak kullanımının daha iyi duruma getirilmesini sağlar. Kullanıcı modelleri görüntülenmek üzere yüklerken karmaşıklık belirlenir ve oturum havuzu hizmetinden doğru oturum boyutu istenir.
+*Standart* ve *Premium* oturumlar arasında otomatik geçiş yapmak, bir sistem tasarımında oturum havuzunu de içeren çok sayıda fikir verebilir. Bu strateji, kaynak kullanımının daha iyi duruma getirilmesini sağlar. Kullanıcı modelleri görüntülenmek üzere yüklerken karmaşıklık belirlenir ve oturum havuzu hizmetinden doğru oturum boyutu istenir.
 
 ## <a name="working-with-networks"></a>Ağlarla çalışma
 
@@ -213,7 +213,7 @@ Tahmin edilen kullanım örneğine bağlı olarak, bir kullanıcının görünt�
 
 Kullanım örneği, aynı 3B varlığın birden çok kez karşıya yüklenebildiği kullanım desenlerine sahipse, arka uç, bir modelin birden çok sonraki seçim için yalnızca bir kez önceden işleneceği şekilde, ARR ile kullanım için dönüştürülen modelleri izler. Bir tasarım incelemesi örneği, bir ekibin ortak bir orijinal 3B varlığa erişebileceği bir örnektir. Her ekip üyesinin, çalışma akışındaki bir noktada ARR 'yi kullanarak modeli incelemesi beklenir. Daha sonra yalnızca ilk görünüm, önceden işleme adımını tetikler. Sonraki görünümler, SAS çıkış kapsayıcısındaki ilişkili işleme sonrası dosyasını arayacaktır.
 
-Kullanım örneğine bağlı olarak, aynı oturumda birlikte görüntülenecek her bir 3B varlık veya varlık grubu için doğru Azure uzaktan Işleme VM boyutunu, standart veya Premium 'u belirlenmesi ve potansiyel olarak kalıcı hale getirmek isteyeceksiniz.  
+Kullanım örneğine bağlı olarak, aynı oturumda birlikte görüntülenecek her bir 3B varlık veya varlık grubu için doğru Azure uzaktan Işleme sunucusu boyutunu, *Standart* veya *Premium*'u belirlenmesi ve potansiyel olarak kalıcı hale getirmek isteyeceksiniz.  
 
 ### <a name="on-device-model-selection-list"></a>Cihaz üzerinde model seçim listesi
 

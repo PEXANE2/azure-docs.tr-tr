@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805002"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509306"
 ---
 # <a name="get-information-about-a-converted-model"></a>Dönüştürülmüş bir model hakkında bilgi alma
 
@@ -100,7 +100,7 @@ Bu bölüm, kaynak dosya biçimiyle ilgili bilgileri kaydeder.
 Bu bölüm, kaynak sahneyi hakkında bilgi sağlar. Bu bölümdeki değerler ve kaynak modeli oluşturan araçtaki eşdeğer değerler arasında genellikle tutarsızlıklar olur. Bu farklar beklenmektedir, çünkü model dışa aktarma ve dönüştürme adımları sırasında değiştirilir.
 
 * `numMeshes`: Her parçanın tek bir malzemeye başvurmasına neden olan kafes bölümlerinin sayısı.
-* `numFaces`: Tüm modeldeki _üçgenin_ toplam sayısı. Ağ dönüştürme sırasında triangulated olduğunu unutmayın. Bu sayı, [Standart Işleme VM boyutundaki](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)Çokgen sınırına katkıda bulunur.
+* `numFaces`: Tüm modeldeki _üçgenin_ toplam sayısı. Ağ dönüştürme sırasında triangulated olduğunu unutmayın. Bu sayı, [standart işleme sunucusu boyutundaki](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)Çokgen sınırına katkıda bulunur.
 * `numVertices`: Tüm modeldeki köşelerin toplam sayısı.
 * `numMaterial`: Tüm modeldeki Toplam malzeme sayısı.
 * `numFacesSmallestMesh`: Modelin en küçük ağı içindeki üçgenin sayısı.

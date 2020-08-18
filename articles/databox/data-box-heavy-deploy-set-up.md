@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Heavy ayarlama öğreticisi| Microsoft Docs
-description: Azure Data Box Heavy için kabloları bağlamayı ve bağlanmayı öğrenin
+description: Bu öğreticide Azure Data Box Heavy'nizin kablolarını takmayı, Azure Data Box Heavy'ye bağlanmayı ve Azure Data Box Heavy'yi açmayı öğreneceksiniz.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 15e031bcdcac7bd84d58286f5bdb5a7b6cd0c973
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c38ff7e642017afe5f220ae26d3a04c2c0b706ee
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199202"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920951"
 ---
 ::: zone target = "docs"
 

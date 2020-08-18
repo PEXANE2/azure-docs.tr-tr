@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510904"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
 
@@ -59,7 +59,7 @@ Sayfa boyutu genellikle 2048 KB 'tır. Ayrıntılar için bkz. [Linux 'ta çok b
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ate dağıtımları için VM ve disk yapısına yönelik öneriler
 
-SAP NetWeaver uygulamaları için SAP Ao, SAP [destek notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir sanal makine türü için desteklenir #1928533 orta büyüklükte SAP Ao veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük multi-terabaytlık veritabanları, d serisi VM türlerinden faydalanabilir. SAP Ao işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. SAP ASE 'nin günlük yazma Işlemlerini gerçekleştirme yöntemi nedeniyle Yazma Hızlandırıcısı, SAP ASE ile dikkatle test edilmelidir.  [Sap destek notuna #2816580](../../windows/how-to-enable-write-accelerator.md) inceleyin ve bir performans testi çalıştırmayı deneyin.  
+SAP NetWeaver uygulamaları için SAP Ao, SAP [destek notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir sanal makine türü için desteklenir #1928533 orta büyüklükte SAP Ao veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük multi-terabaytlık veritabanları, d serisi VM türlerinden faydalanabilir. SAP Ao işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. SAP ASE 'nin günlük yazma Işlemlerini gerçekleştirme yöntemi nedeniyle Yazma Hızlandırıcısı, SAP ASE ile dikkatle test edilmelidir.  [Sap destek notuna #2816580](../../how-to-enable-write-accelerator.md) inceleyin ve bir performans testi çalıştırmayı deneyin.  
 Yazma Hızlandırıcısı yalnızca işlem günlüğü diski için tasarlanmıştır. Disk düzeyi önbelleği NONE olarak ayarlanmalıdır. Azure Yazma Hızlandırıcısı diğer DBMS ile benzer iyileştirmeler göstermezse şaşırmayın. SAP ATıCı 'in işlem günlüğüne yazdığı yönteme bağlı olarak, Azure Yazma Hızlandırıcısı tarafından hiçbir hızlandırma olmaması olabilir.
 Veri cihazları ve günlük cihazları için ayrı diskler önerilir.  Sistem veritabanları sybgüvenlik ve `saptools` adanmış diskler gerektirmez ve SAP veritabanı verilerini ve günlük cihazlarını içeren disklere yerleştirilebilecek 
 

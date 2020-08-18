@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: c49894c722897233afa6325def1d3e17562d2dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075104"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836862"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Kurumsal aktarımlar
 
@@ -98,7 +98,7 @@ Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha
 
 ## <a name="subscription-transfer-effects"></a>Abonelik aktarımının etkileri
 
-Bir Azure aboneliği aynı Azure Active Directory kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [rol tabanlı erişim denetimine (RBAC)](../../role-based-access-control/overview.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları aynı erişime sahip olmaya devam eder.
+Bir Azure aboneliği aynı Azure Active Directory kiracısındaki bir hesaba aktarılırsa abonelikteki kaynakları yönetmek için [Azure rol tabanlı erişim denetimine (Azure RBAC)](../../role-based-access-control/overview.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları aynı erişime sahip olmaya devam eder.
 
 Aboneliğe RBAC erişimi olan kullanıcıları görüntülemek için:
 

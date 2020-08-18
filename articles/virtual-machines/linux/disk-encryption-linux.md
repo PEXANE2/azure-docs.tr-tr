@@ -1,5 +1,5 @@
 ---
-title: Linux VM’lerde Azure Disk Şifrelemesi senaryoları
+title: Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
 description: Bu makale çeşitli senaryolar için Linux VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 88a0239409d29700d95b8949c1499dd30f50bb5f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372663"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510734"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
 
 
 Linux sanal makineleri için Azure disk şifrelemesi (VM 'Ler), işletim sistemi diskinin ve veri disklerinin tam disk şifrelemesini sağlamak için Linux 'un DM-Crypt özelliğini kullanır. Ayrıca, EncryptFormatAll özelliği kullanılırken geçici disk şifrelemesi de sağlar.
@@ -413,7 +413,7 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - "İç içe bağlama noktaları" olan bir VM. diğer bir deyişle, tek bir yolda birden çok bağlama noktası ("/1stmountpoint/Data/2stbağlamanoktası" gibi).
 - Bir işletim sistemi klasörünün üzerine bağlanmış bir veri sürücüsüne sahip bir VM.
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
-- Bir veri diski, müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenen bir VM 'ye veya Ade ile ŞIFRELENEN bir VM 'deki bir VERI diskine SSE + CMK uygulayarak bir sanal makineye uygulanıyor.
+- Diskler, müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenmiş olan veya *hıç* olan bir VM 'ye uygulanıyor. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - [Müşteri tarafından yönetilen ANAHTARLARLA](disk-encryption.md)Ade ile ŞIFRELENEN bir VM 'yi sunucu tarafı şifrelemeye geçirme.
 
 ## <a name="next-steps"></a>Sonraki adımlar

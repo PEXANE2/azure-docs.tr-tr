@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119384"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510292"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı
 
@@ -27,10 +27,10 @@ Bu özellik şu anda aşağıdaki Azure Cosmos DB API 'Leri ve istemci SDK 'Lar�
 
 | **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Yes | Yes | Yes | Evet | Hayır |
-|Java|Yes|Yes|Yes|Evet|Hayır|
-|Python|Yes|Yes|Yes|Evet|Hayır|
-|Node/JS|Yes|Yes|Yes|Evet|Hayır|
+| .NET | Yes | Yes | Yes | Yes | Hayır |
+|Java|Yes|Yes|Yes|Yes|Hayır|
+|Python|Yes|Yes|Yes|Yes|Hayır|
+|Node/JS|Yes|Yes|Yes|Yes|Hayır|
 
 ## <a name="change-feed-and-different-operations"></a>Akışı ve farklı işlemleri değiştirme
 
@@ -56,7 +56,7 @@ Bir öğede TTL (yaşam süresi) özelliği ayarlanırsa, değişiklik akışı 
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Akışı ve _etag _lsn veya _ts değiştirme
 
-_Etag biçimi dahili olur ve herhangi bir zamanda değiştirebileceğinden buna bağımlılığı almanız gerekir. _ts bir değiştirme veya oluşturma zaman damgası. Kronolojik karşılaştırma için _ts kullanabilirsiniz. _lsn yalnızca değişiklik akışı için eklenen bir toplu iş KIMLIĞIDIR; işlem KIMLIĞINI temsil eder. Birçok öğe aynı _lsn sahip olabilir. FeedResponse üzerinde ETag, öğede gördüğünüz _etag farklıdır. _etag bir iç tanımlayıcıdır ve eşzamanlılık denetimi öğenin sürümü hakkında bilgi için kullanılır, ancak ETag, akışı sıralama için kullanılır.
+_Etag biçimi dahili olur ve herhangi bir zamanda değiştirebileceğinden buna bağımlılığı almanız gerekir. _ts bir değiştirme veya oluşturma zaman damgası. Kronolojik karşılaştırma için _ts kullanabilirsiniz. _lsn yalnızca değişiklik akışı için eklenen bir toplu iş KIMLIĞIDIR; işlem KIMLIĞINI temsil eder. Birçok öğe aynı _lsn sahip olabilir. FeedResponse üzerinde ETag, öğede gördüğünüz _etag farklıdır. _etag bir iç tanımlayıcıdır ve eşzamanlılık denetimi için kullanılır. _Etag özelliği öğenin sürümünü belirtir, ancak ETag özelliği akışın sıralaması için kullanılır.
 
 ## <a name="working-with-change-feed"></a>Değişiklik akışı ile çalışma
 

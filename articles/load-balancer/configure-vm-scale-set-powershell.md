@@ -6,24 +6,24 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 858315008434f511e3adc0a91d591d924634fc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809497"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510071"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Azure PowerShell kullanarak var olan bir Azure Load Balancer sanal makine ölçek kümesi yapılandırma
 
-Bu makalede, bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğreneceksiniz. 
+Bu makalede, bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği.
 - Abonelikte sanal makine ölçek kümesinin dağıtılacağı mevcut bir standart SKU yük dengeleyici.
 - Sanal makine ölçek kümesi için bir Azure sanal ağı.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Aşağıdaki örnek, ile bir sanal makine ölçek kümesi dağıtır:
 - **Mysubnet** adlı alt ağ
 - **Myresourcegroup** adlı kaynak grubu
 
-```azureppowershell-interactive
+```azurepowershell-interactive
 
 $rsg = "myResourceGroup"
 $loc = "East US 2"
@@ -87,4 +87,3 @@ Bu makalede, mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi da�
 
 - [Azure Load Balancer nedir?](load-balancer-overview.md)
 - [Sanal makine ölçek kümeleri nedir?](../virtual-machine-scale-sets/overview.md)
-                                

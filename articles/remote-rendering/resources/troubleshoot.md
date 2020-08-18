@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563276"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509289"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -105,7 +105,7 @@ Bu iki adım yardımcı olduysa, video çerçevelerinin istemci tarafından alı
 
 **Model, seçilen VM 'nin sınırlarını, özellikle de en yüksek sayıda poligonu aşıyor:**
 
-Belirli [VM boyut sınırlarına](../reference/limits.md#overall-number-of-polygons)bakın.
+Belirli [sunucu boyutu sınırlarına](../reference/limits.md#overall-number-of-polygons)bakın.
 
 **Model, bu kameranın Frustum içinde değil:**
 
@@ -148,7 +148,7 @@ Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dama tahtası stili, model yüklendikten sonra işlenir
 
-İşlenmiş görüntü şuna benzer: ![ dama tahtası, ](../reference/media/checkerboard.png) [Standart VM boyutu için Çokgen sınırlarına](../reference/vm-sizes.md)rastlanıyor. Azaltmak için **PREMIUM VM** boyutuna geçin veya görünür çokgenler sayısını azaltın.
+İşlenmiş görüntü şuna benzer: ![ dama tahtası ](../reference/media/checkerboard.png) daha sonra [Standart yapılandırma boyutu için Çokgen sınırlarına](../reference/vm-sizes.md)rastlanıyor. Azaltmak için, **Premium** yapılandırma boyutuna geçin veya görünür çokgenler sayısını azaltın.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 'de işlenen görüntü, baş aşağı
 

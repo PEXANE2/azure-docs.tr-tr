@@ -3,12 +3,12 @@ title: Resource Manager ve klasik dağıtım
 description: Resource Manager dağıtım modeli ile klasik (veya Hizmet Yönetimi) dağıtım modeli arasındaki farklılıkları açıklar.
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057577"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511414"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlama
 
@@ -108,7 +108,7 @@ Aşağıdaki tabloda İşlem, Ağ ve Depolama kaynak sağlayıcılarının etkil
 | Depolama Hesapları |Sanal makine, işletim sistemi, geçici ve ek veri diskleri için sanal sabit diskleri depolayan bir depolama hesabı gerektirir. |Sanal makine, disklerini blob depolamada depolamak için bir depolama hesabı gerektirir. |
 | Kullanılabilirlik Kümeleri |Platformun uygunluğu Sanal Makinelerde "AvailabilitySetName" yapılandırılarak belirtilirdi. Hata etki alanlarının en yüksek sayısı 2’ydi. |Kullanılabilirlik kümesi, Microsoft.Compute Sağlayıcısı tarafından sağlanan bir kaynaktır. Yüksek kullanılabilirliğin gerektiği Sanal Makineler Kullanılabilirlik Kümesi içinde bulunmalıdır. Hata etki alanlarının en yüksek sayısı artık 3’tür. |
 | Benzeşim Grupları |Benzeşim Grupları Sanal Ağlar oluşturmak için gerekliydi. Ancak, bölgesel sanal ağların kullanıma sunulmasıyla birlikte artık gerekli değildir. |Basitleştirmek için, Benzeşim Grupları kavramı Azure Resource Manager aracılığıyla sunulan API'lerde yok. |
-| Yük Dengeleme |Bulut Hizmeti oluşturulması dağıtılan Virtual Machines için örtük yük dengeleyici sağlar. |Load Balancer, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Yük dengeli olması gereken Virtual Machines’in birincil ağ arabirimi yük dengeleyiciye baş vurmalıdır. Yük Dengeleyiciler dahili ve harici olabilir. Bir yük dengeleyici örneği, bir sanal makinenin NIC’sini içeren IP adresleri arka uç havuzuna (isteğe bağlı) ve bir yük dengeleyici genel ya da özel IP adresine (isteğe bağlı) başvurur. |
+| YükDengeleme |Bulut Hizmeti oluşturulması dağıtılan Virtual Machines için örtük yük dengeleyici sağlar. |Load Balancer, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Yük dengeli olması gereken Virtual Machines’in birincil ağ arabirimi yük dengeleyiciye baş vurmalıdır. Yük Dengeleyiciler dahili ve harici olabilir. Bir yük dengeleyici örneği, bir sanal makinenin NIC’sini içeren IP adresleri arka uç havuzuna (isteğe bağlı) ve bir yük dengeleyici genel ya da özel IP adresine (isteğe bağlı) başvurur. |
 | Sanal IP Adresi |Bulut hizmetine bir VM eklendiğinde, Cloud Services varsayılan VIP’yi (Sanal IP Adresi) alır. Sanal IP Adresi örtük yük dengeleyiciyle ilişkili adrestir. |Genel IP Adresi, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Genel IP adresi statik (ayrılmış) veya dinamik olabilir. Dinamik genel IP’ler bir Yük Dengeleyiciye atanabilir. Genel IP’ler Güvenlik Grupları kullanılarak güvenli hale getirilebilir. |
 | Ayrılmış IP Adresi |Azure’da bir IP adresini ayırabilir ve IP Adresinin yapışkan olmasını sağlamak için bunu Bulut Hizmetiyle ilişkilendirebilirsiniz. |Genel IP adresi, statik modda oluşturulabilir ve bir ayrılmış IP adresi ile aynı özelliği sunar. |
 | Genel IP Adresi (PIP) / VM |Genel IP Adresleri ayrıca bir VM ile doğrudan ilişkilendirilebilir. |Genel IP Adresi, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Genel IP Adresi statik (ayrılmış) veya dinamik olabilir. |
@@ -122,7 +122,7 @@ Farklı dağıtım modellerinden sanal ağları bağlama hakkında bilgi almak i
 
 Kaynaklarınızı klasik dağıtımdan Kaynak Yöneticisi dağıtımına geçirmeye hazırsanız, bkz.:
 
-1. [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+1. [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 2. [IaaS kaynaklarının Klasik modelden Azure Resource Manager’a platform destekli geçişi](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [Azure PowerShell’i kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [Azure CLI kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)

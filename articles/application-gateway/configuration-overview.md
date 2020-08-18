@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438920"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511091"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -38,11 +38,13 @@ Uygulama ağ geçidi, sanal ağınızdaki adanmış bir dağıtımdır. Sanal a�
 
 Application Gateway, örnek başına bir özel IP adresi ve özel bir ön uç IP yapılandırılmışsa başka bir özel IP adresi kullanır.
 
-Azure, iç kullanım için her alt ağda beş IP adresini de ayırır: ilk dört ve son IP adresi. Örneğin, özel ön uç IP 'si olmayan 15 Application Gateway örnekleri göz önünde bulundurun. Bu alt ağ için en az 20 IP adresiniz olması gerekir: iç kullanım için beş ve Application Gateway örnekleri için 15. Bu nedenle,/27 veya daha büyük bir alt ağ boyutu gerekir.
+Azure, iç kullanım için her alt ağda beş IP adresini de ayırır: ilk dört ve son IP adresi. Örneğin, özel ön uç IP 'si olmayan 15 Application Gateway örnekleri göz önünde bulundurun. Bu alt ağ için en az 20 IP adresiniz olması gerekir: iç kullanım için beş ve Application Gateway örnekleri için 15.
 
-27 Application Gateway örnekleri ve bir özel ön uç IP 'si için IP adresi olan bir alt ağ düşünün. Bu durumda, uygulama ağ geçidi örnekleri için, biri özel ön uç için, diğeri de iç kullanım için beş IP adresi 33 gerekir: 27. Bu nedenle,/26 alt ağ boyutuna veya daha büyük bir ağa ihtiyacınız vardır.
+27 Application Gateway örnekleri ve bir özel ön uç IP 'si için IP adresi olan bir alt ağ düşünün. Bu durumda, uygulama ağ geçidi örnekleri için, biri özel ön uç için, diğeri de iç kullanım için beş IP adresi 33 gerekir: 27.
 
-En az/28 olan bir alt ağ boyutu kullanmanızı öneririz. Bu boyut size 11 kullanılabilir IP adresi sağlar. Uygulamanızın yüklemesi 10 ' dan fazla Application Gateway örneği gerektiriyorsa, bir/27 veya/26 alt ağ boyutu düşünün.
+Application Gateway (Standart veya WAF) SKU, en fazla 32 örneği destekleyebilir (32 örnek IP adresi + 1 özel ön uç IP + 5 Azure ayrılmış) – bu nedenle, en az bir alt ağ boyutu/26 önerilir
+
+Application Gateway (Standard_v2 veya WAF_v2 SKU) en fazla 125 örneği destekleyebilir (125 örnek IP adresi + 1 özel ön uç IP + 5 Azure ayrılmış) – bu nedenle en düşük alt ağ boyutu/24 önerilir
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Application Gateway alt ağındaki ağ güvenlik grupları
 

@@ -3,12 +3,12 @@ title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003498"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509884"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -73,19 +73,19 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -135,7 +135,7 @@ Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz A
      <a name="migrate-from-v1"></a>
      > [!NOTE]
      > **Eklentiyi etkinleştir** düğmesi gri ise, abonelik henüz önizlemeye eklenmedi. **Eklentiyi devre dışı bırak** düğmesi etkinse ve bir geçiş uyarısı v2 iletisi görüntülenirse, v1 eklentisi yüklenir ve v2 ilke tanımları atanmadan önce kaldırılmalıdır. _Kullanımdan kaldırılan_ v1 eklentisi, 24 Ağustos 2020 ' den itibaren v2 eklentisi ile otomatik olarak değiştirilebilir. İlke tanımlarının yeni v2 sürümlerinin atanması gerekir. Şimdi yükseltmek için aşağıdaki adımları izleyin:
-     > 
+     >
      > 1. AKS kümenizin, AKS kümenizdeki **ilkeler (Önizleme)** sayfasını ziyaret ederek v1 eklentisinin yüklü olduğunu doğrulayın ve "geçerli küme Azure ilke eklentisi 'ni kullanır..." İleti.
      > 1. [Eklentiyi kaldırın](#remove-the-add-on-from-aks).
      > 1. Eklentinin v2 sürümünü yüklemek için **eklentiyi etkinleştir** düğmesini seçin.
@@ -185,16 +185,16 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -205,7 +205,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Azure Arc için Kubernetes kümeniz etkinleştirildi. Daha fazla bilgi için bkz. [Azure yaya bir Kubernetes kümesi ekleme](../../../azure-arc/kubernetes/connect-cluster.md).
 
-1. Azure Arc etkin Kubernetes kümesinin tam Azure Kaynak KIMLIĞINE sahip olmalıdır. 
+1. Azure Arc etkin Kubernetes kümesinin tam Azure Kaynak KIMLIĞINE sahip olmalıdır.
 
 1. Eklenti için bağlantı noktalarını açın. Azure Ilke eklentisi bu etki alanlarını ve bağlantı noktalarını, ilke tanımlarını ve atamalarını getirmek ve kümenin uyumluluğunu Azure Ilkesine geri bildirmek için kullanır.
 
@@ -226,7 +226,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -289,16 +289,16 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -310,7 +310,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -393,25 +393,24 @@ Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik ye
 
 1. **Kapsamı** , ilke atamasının uygulanacağı Kubernetes kümesinin yönetim grubu, abonelik veya kaynak grubu olarak ayarlayın.
 
-   > [!NOTE]    
+   > [!NOTE]
    > Kubernetes tanımı için Azure Ilkesi atarken, **kapsamın** küme kaynağını içermesi gerekir. AKS motoru kümesi için **kapsam** , kümenin kaynak grubu olmalıdır.
 
-1. İlke atamaya, kolayca tanımlamak için kullanabileceğiniz bir **ad** ve **Açıklama** sağlayın.    
+1. İlke atamaya, kolayca tanımlamak için kullanabileceğiniz bir **ad** ve **Açıklama** sağlayın.
 
-1. [İlke zorlamasını](./assignment-structure.md#enforcement-mode) değerlerden birine ayarlayın    
-   öğrenin.   
+1. [İlke zorlamayı](./assignment-structure.md#enforcement-mode) aşağıdaki değerlerden birine ayarlayın.
 
-   - **Etkin** -ilkeyi kümede zorunlu tutun. İhlal eden Kubernetes giriş istekleri reddedilir.    
+   - **Etkin** -ilkeyi kümede zorunlu tutun. İhlal eden Kubernetes giriş istekleri reddedilir.
 
    - **Devre dışı** -ilke kümede zorlanmayın. İhlal eden Kubernetes giriş istekleri reddedildi. Uyumluluk değerlendirmesi sonuçları hala kullanılabilir. Küme çalıştırmaya yönelik yeni ilke tanımları kullanıma sunulmaya devam ederken, ihlal olan giriş istekleri reddedilerek ilke tanımını test etmek için _devre dışı_ seçeneği yararlıdır.
 
-1. **İleri**’yi seçin. 
+1. **İleri**’yi seçin.
 
-1. **Parametre değerlerini** ayarla 
+1. **Parametre değerlerini** ayarla
 
    - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _KUVE sistem_, _Gatekeeper-System_ve _Azure-Arc_.
 
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
 Alternatif olarak, bir Kubernetes ilkesini bulmak ve atamak için [Ilke atama-Portal](../assign-policy-portal.md) hızlı başlangıcı ' nı kullanın. ' Denetim VM 'leri ' örneği yerine bir Kubernetes ilke tanımı arayın.
 
@@ -436,7 +435,7 @@ Her 15 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değ
 > [!NOTE]
 > Kubernetes kümeleriniz için Azure Ilkesindeki her uyumluluk raporu, son 45 dakika içindeki tüm ihlalleri içerir. Zaman damgası, bir ihlalin ne zaman oluştuğunu gösterir.
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Bir Kubernetes denetleyicisi/kapsayıcısı olarak, _Azure-Policy_ ve _Gatekeeper_ Pod, Kubernetes kümesinde Günlükler tutar. Günlükler, Kubernetes kümesinin **Öngörüler** sayfasında gösterilebilir.
 Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile Kubernetes küme Performansınızı izleme](../../../azure-monitor/insights/container-insights-analyze.md).

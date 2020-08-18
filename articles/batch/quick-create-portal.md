@@ -2,20 +2,20 @@
 title: Azure hızlı başlangıç-Azure portal ilk Batch işinizi çalıştırın
 description: Batch hesabı, bir işlem düğümleri havuzu ve havuzda temel görevleri çalıştıran bir iş oluşturmak için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: f9af6a2f0fbbbd799b781480d499adf124b4cb7d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225350"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511380"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında ilk Batch işinizi çalıştırma
 
 Batch hesabı, bir işlem düğümleri Havuzu (sanal makineler) ve havuzdaki görevleri çalıştıran bir iş oluşturmak için Azure portal kullanarak Azure Batch kullanmaya başlayın. Bu hızlı başlangıcı tamamladıktan sonra Batch hizmetinin temel kavramlarını anlayacaksınız ve toplu Işi daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -23,7 +23,7 @@ Batch hesabı, bir işlem düğümleri Havuzu (sanal makineler) ve havuzdaki gö
 
 Test amacıyla örnek bir Batch hesabı oluşturmak için bu adımları izleyin. Havuzlar ve işler oluşturmak için bir Batch hesabı gerekir. Burada gösterildiği gibi, bir Azure depolama hesabını Batch hesabına bağlayabilirsiniz. Bu hızlı başlangıç için gerekli olmamasına karşın, depolama hesabı uygulamaları dağıtmak ve çoğu gerçek yaşam iş yükleri için giriş ve çıkış verilerini depolamak üzere yararlıdır.
 
-1. Azure Portal, **kaynak**  >  **Hesaplama**  >  **toplu işlem hizmeti**oluştur ' u seçin. 
+1. [Azure Portal](https://portal.azure.com), **kaynak**  >  **Hesaplama**  >  **toplu işlem hizmeti**oluştur ' u seçin. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Azure Marketi 'nde Batch hizmetinin ekran görüntüsü.":::
 
@@ -83,7 +83,7 @@ Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirt
 
 İlk görevi oluşturmak için:
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. *mytask* adlı bir **Görev Kimliği** girin.
 

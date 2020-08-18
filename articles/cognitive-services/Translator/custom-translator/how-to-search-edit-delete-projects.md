@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996746"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510385"
 ---
 # <a name="search-edit-and-delete-projects"></a>Projeleri arama, düzenleme ve silme
 
@@ -24,36 +24,35 @@ ms.locfileid: "83996746"
 
 Filtre aracı, farklı filtre koşullarına göre projelerde arama yapmanıza olanak tanır. Proje adı, durum, kaynak ve hedef dil gibi filtreler ve projenin kategorisi.
 
-1.  Filtre düğmesine tıklayın.
+1. Filtre düğmesine tıklayın.
 
     ![Proje ara](media/how-to/how-to-search-project.png)
 
-1.  Şu alanların herhangi birine (veya tümüne) göre filtre uygulayabilirsiniz: proje adı, durum, kaynak dili, hedef dil ve kategori.
+2. Şu alanların herhangi birine (veya tümüne) göre filtre uygulayabilirsiniz: proje adı, kaynak dili, hedef dil, kategori ve proje kullanılabilirliği.
 
-2.  Uygula ' ya tıklayın.
+3. Uygula ' ya tıklayın.
 
     ![Proje filtresi seçeneklerini ara](media/how-to/how-to-search-project-filters.png)
 
-3.  "Temizle" düğmesine dokunarak tüm projelerinizi görüntülemek için filtreyi temizleyin.
-
+4. "Temizle" düğmesine dokunarak tüm projelerinizi görüntülemek için filtreyi temizleyin.
 
 ## <a name="edit-a-project"></a>Projeyi düzenleme
 
 Özel çevirici, bir projenin adını ve açıklamasını düzenlemenize olanak tanır. Kategori, kaynak dili ve hedef dil gibi diğer proje meta verileri düzenleme için kullanılamaz. Aşağıdaki adımlarda projenin nasıl düzenleneceği açıklanır.
 
-1.  Bir projenin üzerine geldiğinizde görüntülenen kurşun kalem simgesine tıklayın.
+1. Bir projenin üzerine geldiğinizde görüntülenen kurşun kalem simgesine tıklayın.
 
     ![Projeyi Düzenle](media/how-to/how-to-edit-project.png)
 
-2.  İletişim kutusunda proje adını ya da projenin açıklamasını değiştirebilir, ancak proje etiketi, kategorisi veya Dil çiftini değiştiremezsiniz.
+2. İletişim kutusunda proje adı, projenin açıklaması, Kategori açıklaması ve bir model dağıtılmamışsa proje etiketi de değiştirebilirsiniz. Proje oluşturulduktan sonra kategori veya Dil çiftini değiştiremezsiniz.
 
     ![Projeyi Düzenle iletişim kutusu](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Filtre düğmesine tıklayın.
+3. "Kaydet" düğmesine tıklayın.
 
 ## <a name="delete-a-project"></a>Projeyi silme
 
-Artık ihtiyaç kalmadığında bir projeyi silebilirsiniz. Aşağıdaki adımlarda projenin nasıl silineceği açıklanır.
+Artık ihtiyaç kalmadığında bir projeyi silebilirsiniz. Projenin dağıtılmış, eğitim gönderilen, veri işleme, dağıtma vb. gibi etkin durumda modeller içermediğinden, silme işlemi başarısız olur. Aşağıdaki adımlarda projenin nasıl silineceği açıklanır.
 
 1. Herhangi bir proje kaydında üzerine gelin ve çöp kutusu simgesine tıklayın.
 

@@ -2,14 +2,14 @@
 title: Azure hızlı başlangıç-Batch hesabı oluşturma-Azure Resource Manager şablonu
 description: Azure CLI ile bir Batch işi çalıştırmayı hızlı bir şekilde öğrenin. Komut satırından veya betiklerden Azure kaynaklarını oluşturun ve yönetin.
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c59e8891678d9fc1af7c4fe78e4ee2d267ec99b4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086135"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511397"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Batch hesabı oluşturma
 
@@ -17,11 +17,11 @@ ms.locfileid: "86086135"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin bir Azure aboneliğiniz olmalıdır.
 
@@ -29,7 +29,7 @@ Etkin bir Azure aboneliğiniz olmalıdır.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json" range="1-80" highlight="36-69":::
 

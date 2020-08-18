@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502180"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509867"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -29,7 +29,7 @@ Azure depolama, üç tür paylaşılan erişim imzasını destekler:
 
     Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- **Hizmet SAS.** Hizmet SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hizmet SAS, Azure depolama hizmetlerinden yalnızca birindeki bir kaynağa erişim temsilcisi seçer: BLOB depolama, kuyruk depolama, tablo depolama veya Azure dosyaları. 
+- **Hizmet SAS.** Hizmet SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hizmet SAS, Azure depolama hizmetlerinden yalnızca birindeki bir kaynağa erişim temsilcisi seçer: BLOB depolama, kuyruk depolama, tablo depolama veya Azure dosyaları.
 
     Hizmet SAS hakkında daha fazla bilgi için bkz. [HIZMET SAS oluşturma (REST API)](/rest/api/storageservices/create-service-sas).
 
@@ -38,7 +38,7 @@ Azure depolama, üç tür paylaşılan erişim imzasını destekler:
     Hesap SAS 'si hakkında daha fazla bilgi için [bir hesap SAS (REST API) oluşturun](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
-> Microsoft, Azure AD kimlik bilgilerini, daha kolay tehlikeye giren hesap anahtarını kullanmak yerine en iyi güvenlik uygulaması olarak mümkün olduğunca kullanmanızı önerir. Uygulama tasarımınız blob depolamaya erişim için paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için mümkün olduğunda bir Kullanıcı temsili SAS oluşturmak için Azure AD kimlik bilgilerini kullanın.
+> Microsoft, Azure AD kimlik bilgilerini, daha kolay tehlikeye giren hesap anahtarını kullanmak yerine en iyi güvenlik uygulaması olarak mümkün olduğunca kullanmanızı önerir. Uygulama tasarımınız blob depolamaya erişim için paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için mümkün olduğunda bir Kullanıcı temsili SAS oluşturmak için Azure AD kimlik bilgilerini kullanın. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
 
 Paylaşılan erişim imzası, iki formdan birini alabilir:
 
@@ -52,15 +52,27 @@ Paylaşılan erişim imzası, iki formdan birini alabilir:
 
 Paylaşılan erişim imzası, bir veya daha fazla depolama kaynağını işaret eden ve özel bir sorgu parametreleri kümesi içeren bir belirteç içeren imzalı bir URI 'dir. Belirteç, kaynaklara istemci tarafından nasıl erişildiğini gösterir. Sorgu parametrelerinden biri olan imza SAS parametrelerinden oluşturulur ve SAS oluşturmak için kullanılan anahtarla imzalanır. Bu imza, depolama kaynağına erişimi yetkilendirmek için Azure depolama tarafından kullanılır.
 
-### <a name="sas-signature"></a>SAS imzası
+### <a name="sas-signature-and-authorization"></a>SAS imzası ve yetkilendirme
 
-SAS 'yi iki şekilde imzalayabilirsiniz:
+SAS belirtecini iki şekilde imzalayabilirsiniz:
 
 - Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir *Kullanıcı temsili anahtarıyla* . Kullanıcı temsili SAS, Kullanıcı temsili anahtarıyla imzalanır.
 
     Kullanıcı temsilci anahtarını almak ve SAS oluşturmak için, bir Azure AD güvenlik sorumlusuna **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini Içeren bir Azure rolü atanmalıdır. Kullanıcı temsilciliğini almaya yönelik izinlere sahip Azure rolleri hakkında ayrıntılı bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- Depolama hesabı anahtarıyla. Depolama hesabı anahtarıyla bir hizmet SAS ve hesap SAS 'si imzalanır. Hesap anahtarı ile imzalanmış bir SAS oluşturmak için, bir uygulamanın hesap anahtarına erişimi olması gerekir.
+- Depolama hesabı anahtarı (paylaşılan anahtar) ile. Depolama hesabı anahtarıyla bir hizmet SAS ve hesap SAS 'si imzalanır. Hesap anahtarı ile imzalanmış bir SAS oluşturmak için, bir uygulamanın hesap anahtarına erişimi olması gerekir.
+
+Bir istek bir SAS belirteci içerdiğinde, bu istek, SAS belirtecinin nasıl imzalandığını temel alarak yetkilendirilir. SAS belirteci oluşturmak için kullandığınız erişim anahtarı veya kimlik bilgileri, SAS sahibi olan bir istemciye erişim sağlamak için Azure depolama tarafından da kullanılır.
+
+Aşağıdaki tabloda, Azure depolama 'ya yönelik bir isteğe dahil edildiğinde her bir SAS belirteci türünün nasıl yetkilendirildiği özetlenmektedir:
+
+| SAS türü | Yetkilendirme türü |
+|-|-|
+| Kullanıcı temsili SAS (yalnızca BLOB depolama) | Azure AD |
+| Hizmet SAS | Paylaşılan Anahtar |
+| Hesap SAS | Paylaşılan Anahtar |
+
+Microsoft, üstün güvenlik için mümkün olduğunda Kullanıcı temsili SAS kullanılmasını önerir.
 
 ### <a name="sas-token"></a>SAS belirteci
 

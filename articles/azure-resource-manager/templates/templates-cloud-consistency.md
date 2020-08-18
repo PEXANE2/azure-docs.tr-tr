@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055248"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509765"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Bulut tutarlılığı için ARM şablonları geliştirme
 
@@ -570,7 +570,7 @@ Buna karşılık, bir şablonda yönetilen disk yapılandırması belirtmek içi
 }
 ```
 
-Aynı değişiklikler [veri disklerini](../../virtual-machines/windows/using-managed-disks-template-deployments.md)de uygular.
+Aynı değişiklikler [veri disklerini](../../virtual-machines/using-managed-disks-template-deployments.md)de uygular.
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Azure Stack ' de VM uzantılarının kullanılabildiğini doğrulama
 

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7db0a5bd4697c99c071d685903dfc394c2b49f25
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102693"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835808"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -32,7 +32,7 @@ Diğer Azure aboneliklerini CSP iş ortağına aktarmak isteyen abonenin kaynak 
 1. Kaynak ve hedef CSP aboneliklerinin aynı Azure Active Directory (Azure AD) kiracısında olduğundan emin olun.  
     Azure CSP aboneliğinin Azure AD kiracısını değiştiremezsiniz. Bunun yerine kaynak aboneliği CSP Azure AD kiracısına eklemeniz veya onunla ilişkilendirmeniz gerekir. Daha fazla bilgi için bkz. [Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
     > [!IMPORTANT]
-    > - Bir aboneliği farklı bir Azure AD dizini ile ilişkilendirdiğinizde [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/role-assignments-portal.md) ile atanmış rollere sahip olan kullanıcılar erişimlerini kaybeder. Hizmet Yöneticisi ve Ortak Yöneticiler dahil olmak üzere klasik abonelik yöneticileri de erişimi kaybeder.
+    > - Aboneliği farklı bir Azure AD dizini ile ilişkilendirdiğinizde [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) ile atanmış rollere sahip olan kullanıcılar erişimlerini kaybeder. Hizmet Yöneticisi ve Ortak Yöneticiler dahil olmak üzere klasik abonelik yöneticileri de erişimi kaybeder.
     > - Abonelik farklı bir dizinle ilişkilendirildiğinde İlke Atamaları da abonelikten kaldırılır.
 1. Aktarımı gerçekleştirmek için kullandığınız kullanıcı hesabının iki abonelikte de [RBAC](add-change-subscription-administrator.md) sahip erişimine sahip olması gerekir.
 1. Başlamadan önce tüm Azure kaynaklarının kaynak abonelikten hedef aboneliğe taşınabileceğini [doğrulayın](/rest/api/resources/resources/validatemoveresources).  

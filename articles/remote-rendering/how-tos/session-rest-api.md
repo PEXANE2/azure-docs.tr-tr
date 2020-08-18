@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681252"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509850"
 ---
 # <a name="use-the-session-management-rest-api"></a>Oturum yönetimi REST API’yi kullanma
 
@@ -71,9 +71,9 @@ Bu komut bir oturum oluşturur. Yeni oturumun KIMLIĞINI döndürür. Tüm diğe
 
 **İstek gövdesi:**
 
-* maxLeaseTime (TimeSpan): VM 'nin otomatik olarak kullanımdan kaldırılacağı zaman aşımı değeri
+* maxLeaseTime (TimeSpan): oturum otomatik olarak kullanımdan kaldırılacak zaman aşımı değeri
 * modeller (dizi): önyükleme için varlık kapsayıcısı URL 'Leri
-* Boyut (dize): VM boyutu (**"standart"** veya **"Premium"**). Bkz. belirli [VM boyut sınırlamaları](../reference/limits.md#overall-number-of-polygons).
+* Boyut (dize): yapılandırılacak sunucu boyutu ([**"standart"**](../reference/vm-sizes.md) veya [**"Premium"**](../reference/vm-sizes.md)). Bkz. belirli [boyut sınırlamaları](../reference/limits.md#overall-number-of-polygons).
 
 **Lerinde**
 
@@ -130,7 +130,7 @@ Bu komut, bir oturumun parametrelerini güncelleştirir. Şu anda yalnızca bir 
 
 **İstek gövdesi:**
 
-* maxLeaseTime (TimeSpan): VM 'nin otomatik olarak kullanımdan kaldırılacağı zaman aşımı değeri
+* maxLeaseTime (TimeSpan): oturum otomatik olarak kullanımdan kaldırılacak zaman aşımı değeri
 
 **Lerinde**
 

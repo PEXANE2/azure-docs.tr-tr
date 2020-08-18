@@ -8,17 +8,17 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 57a070aa5931349d94597c629a09ab7662e327fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530019"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922464"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure Aboneliği yöneticileri ekleme veya değiştirme
 
 
-Azure kaynaklarına erişimi yönetmek için uygun yönetici rolüne sahip olmanız gerekir. Azure, aralarından seçim yapabileceğiniz çeşitli yerleşik rollerle [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) adlı bir yetkilendirme sistemine sahiptir. Bu rolleri, yönetim grubu, abonelik veya kaynak grubu gibi farklı kapsamlara atayabilirsiniz. Varsayılan olarak, yeni bir Azure aboneliği oluşturan kişi, diğer kullanıcıların yönetici erişimini başka bir aboneliğe atayabilir.
+Azure kaynaklarına erişimi yönetmek için uygun yönetici rolüne sahip olmanız gerekir. Azure, aralarından seçim yapabileceğiniz çeşitli yerleşik rollerle [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) adlı bir yetkilendirme sistemine sahiptir. Bu rolleri, yönetim grubu, abonelik veya kaynak grubu gibi farklı kapsamlara atayabilirsiniz. Varsayılan olarak, yeni bir Azure aboneliği oluşturan kişi, diğer kullanıcıların yönetici erişimini başka bir aboneliğe atayabilir.
 
 Bu makalede, abonelik kapsamında RBAC kullanılarak bir kullanıcı için yönetici rolünün nasıl ekleneceği veya değiştirileceği açıklanmaktadır.
 

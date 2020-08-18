@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdce2890de1594635e9302260dc4036cb7c58707
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 61401fc15f6f1003f6969787854fad65bfb6a5ab
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245528"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511244"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -173,7 +173,7 @@ ms.locfileid: "88245528"
 
 [msdn-set-Azvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
-[planning-guide]:planning-guide.md  
+[planning-guide]:planning-guide.md
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff
 [planning-guide-11]:planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058
 [planning-guide-11.4.1]:planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77
@@ -342,7 +342,7 @@ Belge boyunca aşağıdaki terimleri kullanırız:
 * Azure Izleme uzantısı, gelişmiş Izleme ve SAP için Azure uzantısı: bir ve aynı öğeyi tanıtın. SAP konak aracısına Azure altyapısı hakkında bazı temel veriler sağlamak için, sizin tarafınızdan dağıtılması gereken bir VM uzantısını açıklar. SAP 'de SAP notları, Izleme uzantısı veya Gelişmiş izleme olarak bu şekilde ifade edebilir. Azure 'da **SAP Için Azure uzantısı**olarak buna başvuruyoruz.
 
 > [!NOTE]
-> SAP sistemleri çalıştıran Azure sanal makinelerinin, şirket içi bir etki alanının üyesi olduğu SAP sistemlerinin şirket içi veya karma dağıtımları, üretim SAP sistemlerinde desteklenir. Şirket içi veya karma Yapılandırma parçaları dağıtmak veya Azure 'a tam SAP landscapes desteği için desteklenir. Azure 'da tam SAP 'nin tamamen çalıştırılması, bu VM 'Lerin şirket içi etki alanı ve ADS/OpenLDAP kapsamında olmasını gerektirir. 
+> SAP sistemleri çalıştıran Azure sanal makinelerinin, şirket içi bir etki alanının üyesi olduğu SAP sistemlerinin şirket içi veya karma dağıtımları, üretim SAP sistemlerinde desteklenir. Şirket içi veya karma Yapılandırma parçaları dağıtmak veya Azure 'a tam SAP landscapes desteği için desteklenir. Azure 'da tam SAP 'nin tamamen çalıştırılması, bu VM 'Lerin şirket içi etki alanı ve ADS/OpenLDAP kapsamında olmasını gerektirir.
 >
 >
 
@@ -355,7 +355,7 @@ Azure belgelerindeki SAP iş yükünün giriş noktası [burada](./get-started.m
 - Azure 'da çeşitli DBMS sistemleri için SAP DBMS Kılavuzu
 - Azure 'da SAP iş yükü için yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 - Azure 'da SAP HANA çalıştırmak için özel kılavuz
-- SAP HANA DBMS için Azure HANA büyük örneklerine özgü rehberlik 
+- SAP HANA DBMS için Azure HANA büyük örneklerine özgü rehberlik
 
 
 > [!IMPORTANT]
@@ -365,7 +365,7 @@ Azure belgelerindeki SAP iş yükünün giriş noktası [burada](./get-started.m
 
 Aşağıdaki SAP notları, Azure 'daki SAP konusuyla ilgilidir:
 
-| Dekont numarası | Başlık |
+| Dekont numarası | Title |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve boyutlandırma |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -386,7 +386,7 @@ Ayrıca, Linux için tüm SAP notlarını içeren [SCN wiki](https://wiki.scn.sa
 ## <a name="possible-scenarios"></a>Olası senaryolar
 SAP, genellikle kuruluşlar içindeki en önemli iş uygulamalarından biri olarak görülür. Bu uygulamaların mimarisi ve işlemleri çok karmaşıktır ve kullanılabilirlik ve performans açısından gereksinimleri karşıladığınızdan emin olmanızı sağlar.
 
-Böylece kuruluşlar, üzerinde iş açısından kritik iş süreçlerini çalıştırmak için hangi bulut sağlayıcısının seçeceğini dikkatle düşünmeleri gerekir. Azure, iş açısından kritik SAP uygulamaları ve iş süreçlerine yönelik ideal genel bulut platformudur. Neredeyse tüm mevcut SAP NetWeaver ve S/4HANA sistemleri çok çeşitli Azure altyapısına sahip olmak üzere bugün Azure 'da barındırılabilir. Azure, çok sayıda terabayt belleği ve 200 ' den fazla CPU içeren VM 'Ler sağlar. Azure 'un ötesinde, 24 TB 'a varan ve 120 TB 'a kadar genişleme dağıtım SAP HANA genişleme HANA dağıtımlarına izin veren [Hana büyük örnekleri](./hana-overview-architecture.md)sunmaktadır. Günümüzde, neredeyse tüm şirket içi SAP senaryolarının Azure 'da da çalıştırılabileceği bir durum olabilir. 
+Böylece kuruluşlar, üzerinde iş açısından kritik iş süreçlerini çalıştırmak için hangi bulut sağlayıcısının seçeceğini dikkatle düşünmeleri gerekir. Azure, iş açısından kritik SAP uygulamaları ve iş süreçlerine yönelik ideal genel bulut platformudur. Neredeyse tüm mevcut SAP NetWeaver ve S/4HANA sistemleri çok çeşitli Azure altyapısına sahip olmak üzere bugün Azure 'da barındırılabilir. Azure, çok sayıda terabayt belleği ve 200 ' den fazla CPU içeren VM 'Ler sağlar. Azure 'un ötesinde, 24 TB 'a varan ve 120 TB 'a kadar genişleme dağıtım SAP HANA genişleme HANA dağıtımlarına izin veren [Hana büyük örnekleri](./hana-overview-architecture.md)sunmaktadır. Günümüzde, neredeyse tüm şirket içi SAP senaryolarının Azure 'da da çalıştırılabileceği bir durum olabilir.
 
 Senaryolar ve desteklenmeyen bazı senaryolar hakkında kaba bir açıklama için bkz. [Azure sanal makinesi desteklenen senaryolarda belge SAP iş yükü](./sap-planning-supported-configurations.md).
 
@@ -412,14 +412,14 @@ Azure 'da desteklenen SAP bileşenleriyle ilgili ayrıntılar, desteklenen Azure
 
 
 ## <a name="azure-regions"></a><a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure bölgeleri
-Microsoft 'un Azure hizmetleri Azure bölgelerinde toplanır. Azure bölgesi, farklı Azure hizmetlerini barındıran ve çalıştıran donanım ve altyapıyı içeren bir veya veri merkezinden oluşan bir koleksiyondur. Bu altyapı, işlem düğümleri veya depolama düğümleri olarak çalışan çok sayıda düğüm içerir veya ağ işlevselliği çalıştırır. 
+Microsoft 'un Azure hizmetleri Azure bölgelerinde toplanır. Azure bölgesi, farklı Azure hizmetlerini barındıran ve çalıştıran donanım ve altyapıyı içeren bir veya veri merkezinden oluşan bir koleksiyondur. Bu altyapı, işlem düğümleri veya depolama düğümleri olarak çalışan çok sayıda düğüm içerir veya ağ işlevselliği çalıştırır.
 
-Farklı Azure bölgelerinin bir listesi için [Azure coğrafi graflarını](https://azure.microsoft.com/global-infrastructure/geographies/)gözden geçirin. Tüm Azure bölgeleri aynı hizmetleri sunmaz. Çalıştırmak istediğiniz SAP ürününe ve onunla ilgili işletim sistemi ve DBMS 'ye bağlı olarak, belirli bir bölgenin ihtiyacınız olan sanal makine türlerini sunmadığından bir durum ortaya çıkabilir. Bu, genelde, genellikle e/Mv2 VM Serisi VM 'lerinin olması gereken SAP HANA çalıştırmak için geçerlidir. Bu VM aileleri yalnızca bölgelerin bir alt kümesinde dağıtılır. [Bölgeye göre kullanılabilir site ürünlerinin](https://azure.microsoft.com/global-infrastructure/services/)yardım 'ına sahip BÖLGELERIN hangi VM, tür, Azure depolama türü veya diğer Azure hizmetlerinin kullanılabilir olduğunu bulabilirsiniz. Planlamanızı başlattığınızda ve birincil bölge ve sonunda ikincil bölge olarak belirli bölgelere göz önünde bulundurmanız durumunda, önce gerekli hizmetlerin bu bölgelerde kullanılabilir olup olmadığını araştırmanız gerekir. 
+Farklı Azure bölgelerinin bir listesi için [Azure coğrafi graflarını](https://azure.microsoft.com/global-infrastructure/geographies/)gözden geçirin. Tüm Azure bölgeleri aynı hizmetleri sunmaz. Çalıştırmak istediğiniz SAP ürününe ve onunla ilgili işletim sistemi ve DBMS 'ye bağlı olarak, belirli bir bölgenin ihtiyacınız olan sanal makine türlerini sunmadığından bir durum ortaya çıkabilir. Bu, genelde, genellikle e/Mv2 VM Serisi VM 'lerinin olması gereken SAP HANA çalıştırmak için geçerlidir. Bu VM aileleri yalnızca bölgelerin bir alt kümesinde dağıtılır. [Bölgeye göre kullanılabilir site ürünlerinin](https://azure.microsoft.com/global-infrastructure/services/)yardım 'ına sahip BÖLGELERIN hangi VM, tür, Azure depolama türü veya diğer Azure hizmetlerinin kullanılabilir olduğunu bulabilirsiniz. Planlamanızı başlattığınızda ve birincil bölge ve sonunda ikincil bölge olarak belirli bölgelere göz önünde bulundurmanız durumunda, önce gerekli hizmetlerin bu bölgelerde kullanılabilir olup olmadığını araştırmanız gerekir.
 
 ### <a name="availability-zones"></a>Kullanılabilirlik Alanları
 Azure bölgelerinin birkaçı Kullanılabilirlik Alanları adlı bir kavram uyguladık. Kullanılabilirlik Alanları bir Azure bölgesindeki fiziksel konumlardan farklıdır. Her Kullanılabilirlik Alanı bağımsız enerji, soğutma ve ağ kaynaklarıyla donatılmış bir veya daha fazla veri merkezinden oluşur. Örneğin, iki sanal makineyi Azure 'un iki Kullanılabilirlik Alanları arasında dağıtma ve SAP DBMS sisteminiz için yüksek kullanılabilirlik çerçevesi uygulama veya SAP Merkezi Hizmetleri, Azure 'da en iyi SLA 'yı sağlar. Azure 'daki bu belirli sanal makine SLA 'Sı için, [sanal makine](https://azure.microsoft.com/support/legal/sla/virtual-machines/)SLA 'larının en son sürümünü denetleyin. Azure bölgelerinin son yıllarda hızla geliştirildiği ve uzadığından, Azure bölgelerinin topolojisi, fiziksel veri merkezlerinin sayısı, bu veri merkezleri arasındaki mesafe ve Azure Kullanılabilirlik Alanları arasındaki mesafe farklı olabilir. Ve ile ağ gecikmesi.
 
-Kullanılabilirlik Alanları prensibi, Hana [büyük örneklerindeki](./hana-overview-architecture.md)Hana 'ya özgü hizmet için geçerlidir. HANA büyük örneklerine yönelik hizmet düzeyi sözleşmeleri [Azure üzerinde SAP HANA büyük örnekleri Için SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/) makalesinde bulunabilir 
+Kullanılabilirlik Alanları prensibi, Hana [büyük örneklerindeki](./hana-overview-architecture.md)Hana 'ya özgü hizmet için geçerlidir. HANA büyük örneklerine yönelik hizmet düzeyi sözleşmeleri [Azure üzerinde SAP HANA büyük örnekleri Için SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/) makalesinde bulunabilir
 
 
 ### <a name="fault-domains"></a><a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Hata etki alanları
@@ -435,18 +435,18 @@ Yükseltme etki alanları, birden çok VM 'de çalışan SAP örneklerinden olu�
 ### <a name="azure-availability-sets"></a><a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure kullanılabilirlik kümeleri
 Tek bir Azure kullanılabilirlik kümesindeki Azure sanal makineleri, farklı hata ve yükseltme etki alanları üzerinden Azure yapı denetleyicisi tarafından dağıtılır. Farklı hata ve yükseltme etki alanları üzerinden dağıtımın amacı, bir SAP sisteminin tüm VM 'lerinin altyapı bakımı veya bir hata etki alanındaki bir hata durumunda kapatılmasını önlemektir. Varsayılan olarak, VM 'Ler bir kullanılabilirlik kümesinin parçası değildir. Bir VM 'nin bir kullanılabilirlik kümesinde katılımı, bir VM 'nin yeniden yapılandırılması ve yeniden dağıtılması ile dağıtım sırasında veya sonrasında tanımlanır.
 
-Azure kullanılabilirlik kümeleri kavramını ve kullanılabilirlik kümelerinin hata ve yükseltme etki alanlarıyla ilişkisini anlamak için [Bu makaleyi][virtual-machines-manage-availability]okuyun. 
+Azure kullanılabilirlik kümeleri kavramını ve kullanılabilirlik kümelerinin hata ve yükseltme etki alanlarıyla ilişkisini anlamak için [Bu makaleyi][virtual-machines-manage-availability]okuyun.
 
-Kullanılabilirlik kümelerini tanımladığınızda ve tek bir kullanılabilirlik kümesi içinde farklı VM ailelerinin çeşitli sanal makinelerini karışmaya çalıştığınızda, bu tür bir kullanılabilirlik kümesine belirli bir sanal makine türü dahil etmeniz için sorunlarla karşılaşabilirsiniz. Bunun nedeni, kullanılabilirlik kümesinin belirli bir işlem Konakları türü içeren ölçek birimine bağlanmasının nedenidir. Ve belirli türde bir işlem konağı yalnızca belirli türlerde VM aileleri çalıştırabilir. Örneğin, bir kullanılabilirlik kümesi oluşturur ve ilk VM 'yi kullanılabilirlik kümesine dağıtırsanız ve Esv3 ailesinin bir VM türünü seçip ikinci VM olarak bir M ailesinin VM 'si olarak dağıtmayı denerseniz, ikinci ayırmada ret edilir. Bunun nedeni, Esv3 ailesi VM 'lerinin M ailesinin sanal makinelerle aynı ana bilgisayar donanımında çalışmadığı nedenidir. Aynı sorun, VM 'Leri yeniden boyutlandırmaya çalışırken ve bir VM 'yi Esv3 ailesinden M ailesinin bir sanal makine türüne taşımaya çalıştığınızda meydana gelebilir. Aynı konak donanımında barındırılmayan bir VM ailesine yeniden boyutlandırma durumunda, kullanılabilirlik kümesindeki tüm VM 'Leri kapatmanız ve diğer ana makine türünde çalıştırabilmek için yeniden boyutlandırmanız gerekir. Kullanılabilirlik kümesi içinde dağıtılan VM 'lerin SLA 'ları için [sanal makine SLA 'ları](https://azure.microsoft.com/support/legal/sla/virtual-machines/)makalesine bakın. 
+Kullanılabilirlik kümelerini tanımladığınızda ve tek bir kullanılabilirlik kümesi içinde farklı VM ailelerinin çeşitli sanal makinelerini karışmaya çalıştığınızda, bu tür bir kullanılabilirlik kümesine belirli bir sanal makine türü dahil etmeniz için sorunlarla karşılaşabilirsiniz. Bunun nedeni, kullanılabilirlik kümesinin belirli bir işlem Konakları türü içeren ölçek birimine bağlanmasının nedenidir. Ve belirli türde bir işlem konağı yalnızca belirli türlerde VM aileleri çalıştırabilir. Örneğin, bir kullanılabilirlik kümesi oluşturur ve ilk VM 'yi kullanılabilirlik kümesine dağıtırsanız ve Esv3 ailesinin bir VM türünü seçip ikinci VM olarak bir M ailesinin VM 'si olarak dağıtmayı denerseniz, ikinci ayırmada ret edilir. Bunun nedeni, Esv3 ailesi VM 'lerinin M ailesinin sanal makinelerle aynı ana bilgisayar donanımında çalışmadığı nedenidir. Aynı sorun, VM 'Leri yeniden boyutlandırmaya çalışırken ve bir VM 'yi Esv3 ailesinden M ailesinin bir sanal makine türüne taşımaya çalıştığınızda meydana gelebilir. Aynı konak donanımında barındırılmayan bir VM ailesine yeniden boyutlandırma durumunda, kullanılabilirlik kümesindeki tüm VM 'Leri kapatmanız ve diğer ana makine türünde çalıştırabilmek için yeniden boyutlandırmanız gerekir. Kullanılabilirlik kümesi içinde dağıtılan VM 'lerin SLA 'ları için [sanal makine SLA 'ları](https://azure.microsoft.com/support/legal/sla/virtual-machines/)makalesine bakın.
 
-Kullanılabilirlik kümesi ve ilgili güncelleştirme ve hata etki alanı prensibi, [Hana büyük örnek](./hana-overview-architecture.md)Hana 'ya özgü hizmet için geçerlidir. HANA büyük örneklerine yönelik hizmet düzeyi sözleşmeleri, [Azure üzerinde SAP HANA büyük örnekleri Için SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)makalesinde bulunabilir. 
+Kullanılabilirlik kümesi ve ilgili güncelleştirme ve hata etki alanı prensibi, [Hana büyük örnek](./hana-overview-architecture.md)Hana 'ya özgü hizmet için geçerlidir. HANA büyük örneklerine yönelik hizmet düzeyi sözleşmeleri, [Azure üzerinde SAP HANA büyük örnekleri Için SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)makalesinde bulunabilir.
 
 > [!IMPORTANT]
 > Azure Kullanılabilirlik Alanları ve Azure kullanılabilirlik kümelerinin kavramları birbirini dışlıyor. Yani, bir çift veya birden çok VM 'yi belirli bir kullanılabilirlik alanına veya Azure kullanılabilirlik kümesine dağıtabileceğiniz anlamına gelir. Ancak ikisini birden değil.
 
 ### <a name="azure-paired-regions"></a>Azure eşlenmiş bölgeler
 Azure, bu sabit bölge çiftleri arasında belirli verilerin çoğaltılmasının etkinleştirildiği Azure bölge çiftlerini sunmaktadır. Bölge eşleştirme, [iş sürekliliği ve olağanüstü durum kurtarma (BCDR) makalesinde belgelenmiştir: Azure eşleştirilmiş bölgeleri](../../../best-practices-availability-paired-regions.md). Makalede açıklandığı gibi, verilerin çoğaltılması, eşleştirilmiş bölgeye çoğaltmak için sizin tarafınızdan yapılandırılabilen Azure Depolama türleri ile bağlantılıdır. Ayrıca, [İkincil bölgede depolama yedekliliği](../../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)makalesine bakın. Böyle bir çoğaltmaya izin veren Depolama türleri, DBMS iş yükü için uygun olmayan depolama türlerdir. Bu nedenle, Azure depolama çoğaltma 'nın kullanılabilirliği Azure Blob depolama (yedekleme amaçları için) veya diğer yüksek gecikmeli depolama senaryolarında sınırlı olacaktır. Eşleştirilmiş bölgeleri ve birincil veya ikincil bölgeniz olarak kullanmak istediğiniz hizmetleri denetlebildiğiniz için, birincil bölgenizde kullanmayı düşündüğünüz Azure hizmetlerinin ve/veya VM türlerinin eşleştirilmiş bölgede kullanılamadığı durumlarla karşılaşabilirsiniz. Ya da Azure eşlenmiş bölgesinin veri uyumluluğun kabul edilebileceği bir durumla karşılaşabilirsiniz. Bu gibi durumlarda, eşlenmiş olmayan bir bölgeyi ikincil/olağanüstü durum kurtarma bölgesi olarak kullanmanız gerekir. Böyle bir durumda, Azure 'un kendi çoğaltmasıyla ilgili verilerden bazılarının çoğaltılmasını dikkatli olmanız gerekir. Active Directory ve DNS 'nizi olağanüstü durum kurtarma bölgenize nasıl çoğaltacağınız hakkında bir örnek, [Active Directory ve DNS için olağanüstü durum kurtarma kurulumu](../../../site-recovery/site-recovery-active-directory.md) makalesinde açıklanmaktadır.
- 
+
 
 ## <a name="azure-virtual-machine-services"></a>Azure sanal makine Hizmetleri
 Azure, dağıtmayı seçebileceğiniz çok çeşitli sanal makineler sunar. Ön teknoloji ve altyapı satın alımlarına gerek yoktur. Azure VM hizmeti teklifi, Web uygulamasını ve bağlı uygulamaları barındırmak, ölçeklendirmek ve yönetmek için isteğe bağlı bilgi işlem ve depolama sağlayarak uygulamaların sürdürülmesi ve işletim sistemlerini basitleştirir. Altyapı yönetimi, birçok farklı fiyatlandırma modeli seçeneğiyle, kullanım ihtiyaçlarını karşılamak için yüksek kullanılabilirlik ve dinamik ölçeklendirme için tasarlanan bir platform ile otomatiktir.
@@ -455,20 +455,20 @@ Azure, dağıtmayı seçebileceğiniz çok çeşitli sanal makineler sunar. Ön 
 
 Azure sanal makineler ile Microsoft, özel sunucu görüntülerini IaaS örnekleri olarak Azure 'a dağıtmanızı sağlar. Ya da Azure görüntü galerisindeki çok sayıda tüketilebilir işletim sistemi görüntüsü arasından seçim yapabilirsiniz.
 
-Azure sanal makine hizmeti, işlemsel bir perspektiften, şirket içinde dağıtılan sanal makineler gibi benzer deneyimler sağlar. Yönetim, işlemler ve ayrıca söz konusu işletim sisteminin bir Azure VM 'de ve bu VM 'deki uygulamalarında çalışan düzeltme eki uygulama sorumluluğu size yöneliktir. Microsoft, bu VM 'yi Azure altyapısında barındırmanın ötesinde daha fazla hizmet sağlamıyor (hizmet olarak altyapı-IaaS). Müşteri dağıtımı olarak kullandığınız SAP iş yükü için, Microsoft 'un IaaS tekliflerinin ötesinde hiçbir teklifi yoktur. 
+Azure sanal makine hizmeti, işlemsel bir perspektiften, şirket içinde dağıtılan sanal makineler gibi benzer deneyimler sağlar. Yönetim, işlemler ve ayrıca söz konusu işletim sisteminin bir Azure VM 'de ve bu VM 'deki uygulamalarında çalışan düzeltme eki uygulama sorumluluğu size yöneliktir. Microsoft, bu VM 'yi Azure altyapısında barındırmanın ötesinde daha fazla hizmet sağlamıyor (hizmet olarak altyapı-IaaS). Müşteri dağıtımı olarak kullandığınız SAP iş yükü için, Microsoft 'un IaaS tekliflerinin ötesinde hiçbir teklifi yoktur.
 
 Microsoft Azure platformu çok kiracılı bir platformdur. Sonuç olarak, Azure VM 'Leri barındıran depolama, ağ ve işlem kaynakları, kiracılar arasında paylaşılan birkaç özel durum ile sağlanır. Akıllı daraltma ve kota mantığı, bir kiracının başka bir kiracının (gürültülü komşu) performansını farklı bir şekilde etkileyerek engel olmak için kullanılır. Özellikle SAP HANA için Azure platformunu sertifikalamak için, Microsoft 'un, birden çok VM 'nin aynı konakta SAP 'ye düzenli olarak çalıştırılabileceği durumlarda kaynak yalıtımını kanıtlamasını sağlaması gerekir. Azure 'daki mantığın bant genişliğine karşı küçük, çok az paylaşılan platformlar, kaynakların şirket içi dağıtımlarıyla karşılaşabileceğine göre kaynak/bant genişliği kullanılabilirliği bölümünde daha büyük farklar ortaya çıkaracak şekilde çalışır. Azure üzerindeki bir SAP sisteminin, şirket içi bir sistem tarafından daha büyük farklar yaşayabileceğiniz, hesaba alınması olasılığı vardır.
 
 ### <a name="azure-virtual-machines-for-sap-workload"></a>SAP iş yükü için Azure sanal makineleri
 
-SAP iş yükü için seçimi, SAP iş yükü ve SAP HANA iş yükü için uygun olan farklı VM ailelerine doğru şekilde kapattık. Doğru sanal makine türünü ve SAP iş yükü aracılığıyla çalışma özelliğini nasıl bulacağınız, [Azure dağıtımları Için HANGI SAP yazılımlarının desteklendiği](./sap-supported-product-on-azure.md)belgede açıklanmaktadır. 
+SAP iş yükü için seçimi, SAP iş yükü ve SAP HANA iş yükü için uygun olan farklı VM ailelerine doğru şekilde kapattık. Doğru sanal makine türünü ve SAP iş yükü aracılığıyla çalışma özelliğini nasıl bulacağınız, [Azure dağıtımları Için HANGI SAP yazılımlarının desteklendiği](./sap-supported-product-on-azure.md)belgede açıklanmaktadır.
 
 > [!NOTE]
 > SAP iş yükü için sertifikalı VM türleri, CPU ve bellek kaynaklarının aşırı sağlanması değildir.
 
 Yalnızca desteklenen VM türlerinin seçiminin ötesinde, bu VM türlerinin, [bölgeye göre kullanılabilir site ürünlerini](https://azure.microsoft.com/global-infrastructure/services/)temel alan belirli bir bölgede kullanılabilir olup olmadığını da denetlemeniz gerekir. Ancak daha fazla önemli olsun, şunları değerlendirmeniz gerekir:
 
-- Farklı VM türlerindeki CPU ve bellek kaynakları 
+- Farklı VM türlerindeki CPU ve bellek kaynakları
 - Farklı VM türlerindeki ıOPS bant genişliği
 - Farklı VM türlerinin ağ özellikleri
 - İliştirilebilecek disk sayısı
@@ -487,23 +487,23 @@ Farklı hizmet sunan farklı hizmet tekliflerindeki her birinin fiyatlandırmas�
 
 - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../windows/reserved-vm-instance-size-flexibility.md)
-- [Azure rezervasyon indirimini sanal makinelere uygulama](../../../cost-management-billing/manage/understand-vm-reservation-charges.md) 
+- [Azure rezervasyon indirimini sanal makinelere uygulama](../../../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
 Spot fiyatlandırma hakkında daha fazla bilgi için [Azure spot sanal makineler](https://azure.microsoft.com/pricing/spot/)makalesini okuyun. Aynı VM türünün fiyatlandırması farklı Azure bölgeleri arasında da farklı olabilir. Bazı müşteriler için daha az maliyetli bir Azure bölgesine dağıtılması gerekir.
 
 Ayrıca, Azure adanmış bir konağın kavramlarını da sunmaktadır. Adanmış konak kavramı, Azure tarafından gerçekleştirilen düzeltme eki uygulama döngülerinde daha fazla denetim sağlar. Düzeltme eki uygulama, kendi zamanlamalarınız doğrultusunda zaman alabilir. Bu teklif, müşterileri normal iş yükü döngüsünü izleyemeyebilir iş yüküne yönelik olarak hedefler. Azure ayrılmış ana bilgisayar teklifleri kavramlarını okumak için, [Azure adanmış ana bilgisayar](../../windows/dedicated-hosts.md)makalesini okuyun. Bu teklifin kullanılması SAP iş yükü için desteklenir ve altyapı ve Microsoft 'un nihai bakım planları üzerinde daha fazla denetime sahip olmak isteyen çeşitli SAP müşterileri tarafından kullanılır. Microsoft 'un sanal makineleri barındıran Azure altyapısını nasıl koruduğu ve düzeltme eklerinin bulunduğu hakkında daha fazla bilgi için, [Azure 'da sanal makineler Için bakım](../../maintenance-and-updates.md)makalesini okuyun.
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>1. nesil ve 2. nesil sanal makineler
-Microsoft 'un Hiper Yöneticisi iki farklı nesil sanal makineyi işleyebilir. Bu biçimler 1. **kuşak** ve **2. nesil**olarak adlandırılır. **2. nesil** Windows Server 2012 hiper yönetici ile 2012 yılında sunulmuştur. Azure, 1. nesil sanal makineler kullanarak başladı. Azure sanal makinelerini dağıtırken, varsayılan olarak 1. kuşak biçimini kullanmaya devam etmektedir. Ayrıca 2. nesil VM biçimlerini de dağıtabilirsiniz. [Azure üzerinde 2. nesil VM 'ler Için destek](../../windows/generation-2.md) makalesinde 2. nesil VM olarak DAĞıTıLABILECEK Azure VM aileleri listelenir. Bu makalede ayrıca, 2. nesil sanal makinelerin Hyper-V özel bulutu ve Azure üzerinde çalıştırılabilen önemli işlevsel farklılıkları listelenmektedir. Daha önemli bu makalede, 1. nesil sanal makineler ve 2. nesil VM 'Ler arasındaki işlevsel farklılıklar Azure 'da çalıştırılanlar için de listelenmiştir. 
+Microsoft 'un Hiper Yöneticisi iki farklı nesil sanal makineyi işleyebilir. Bu biçimler 1. **kuşak** ve **2. nesil**olarak adlandırılır. **2. nesil** Windows Server 2012 hiper yönetici ile 2012 yılında sunulmuştur. Azure, 1. nesil sanal makineler kullanarak başladı. Azure sanal makinelerini dağıtırken, varsayılan olarak 1. kuşak biçimini kullanmaya devam etmektedir. Ayrıca 2. nesil VM biçimlerini de dağıtabilirsiniz. [Azure üzerinde 2. nesil VM 'ler Için destek](../../windows/generation-2.md) makalesinde 2. nesil VM olarak DAĞıTıLABILECEK Azure VM aileleri listelenir. Bu makalede ayrıca, 2. nesil sanal makinelerin Hyper-V özel bulutu ve Azure üzerinde çalıştırılabilen önemli işlevsel farklılıkları listelenmektedir. Daha önemli bu makalede, 1. nesil sanal makineler ve 2. nesil VM 'Ler arasındaki işlevsel farklılıklar Azure 'da çalıştırılanlar için de listelenmiştir.
 
 > [!NOTE]
-> Azure 'da çalışan 1. nesil ve 2. nesil VM 'lerin işlevsel farklılıkları vardır. Bu farklılıkların bir listesini görmek için  [Azure 'da 2. nesil VM 'ler Için destek](../../windows/generation-2.md) makalesini okuyun.  
- 
-Var olan bir VM 'yi bir nesle başka bir nesle taşımak mümkün değildir. Sanal makine üretimini değiştirmek için, oluşturma işlemi için gereken yeni bir VM 'yi dağıtmanız ve neslin sanal makinesinde çalıştırdığınız yazılımı yeniden yüklemeniz gerekir. Bu değişiklik yalnızca VM 'nin temel VHD görüntüsünü etkiler ve veri diskleri veya bağlı NFS ya da SMB paylaşımlarını etkilemez. Örneğin, 1. nesil bir VM 'de, başlangıçta atanan veri diskleri, NFS veya SMB paylaşımları. 
+> Azure 'da çalışan 1. nesil ve 2. nesil VM 'lerin işlevsel farklılıkları vardır. Bu farklılıkların bir listesini görmek için  [Azure 'da 2. nesil VM 'ler Için destek](../../windows/generation-2.md) makalesini okuyun.
+
+Var olan bir VM 'yi bir nesle başka bir nesle taşımak mümkün değildir. Sanal makine üretimini değiştirmek için, oluşturma işlemi için gereken yeni bir VM 'yi dağıtmanız ve neslin sanal makinesinde çalıştırdığınız yazılımı yeniden yüklemeniz gerekir. Bu değişiklik yalnızca VM 'nin temel VHD görüntüsünü etkiler ve veri diskleri veya bağlı NFS ya da SMB paylaşımlarını etkilemez. Örneğin, 1. nesil bir VM 'de, başlangıçta atanan veri diskleri, NFS veya SMB paylaşımları.
 
 > [!NOTE]
 > 2020 Mayıs 'un başlangıcından itibaren 2. nesil sanal makineler olarak Mv1 VM ailesi VM 'Leri dağıtmak mümkündür. Bu şekilde, Mv1 ve Mv2 ailesi sanal makineleri arasında daha az bir değer azaltmak ve azaltmak mümkündür.
- 
+
 
 ### <a name="storage-microsoft-azure-storage-and-data-disks"></a><a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Depolama: Microsoft Azure Depolama ve veri diskleri
 Microsoft Azure Sanal Makineler farklı depolama türlerini kullanır. SAP 'yi Azure sanal makine Hizmetleri 'nde uygularken, bu iki ana depolama türü arasındaki farklılıkları anlamak önemlidir:
@@ -515,23 +515,23 @@ VM dağıtıldıktan sonra Azure VM 'Ler kalıcı olmayan diskler sunar. VM 'nin
 
 ---
 > ![Windows][Logo_Windows] Windows
-> 
+>
 > Sürücü D:\ Azure VM 'de, Azure işlem düğümündeki bazı yerel diskler tarafından desteklenen kalıcı olmayan bir sürücüdür. Kalıcı olmadığı için bu, D:\ ' deki içerikte yapılan tüm değişikliklerin yapıldığı anlamına gelir. VM yeniden başlatıldığında sürücü kaybedilir. "Tüm değişiklikler", depolanan dosyalar, oluşturulan dizinler, yüklü uygulamalar vb. gibi.
-> 
+>
 > ![Linux][Logo_Linux] Linux
-> 
+>
 > Linux Azure VM 'Leri, Azure işlem düğümündeki yerel disklerle desteklenen kalıcı olmayan bir sürücü olan/mnt/Resource dizininde otomatik olarak bir sürücü bağlayabilir. Kalıcı olmadığı için bu,/mnt/Resource dosyasındaki içerikte yapılan tüm değişikliklerin VM yeniden başlatıldığında kaybedildiği anlamına gelir. Depolanan dosyalar, oluşturulan dizinler, yüklü uygulamalar vb. gibi değişiklikler tarafından yapılır.
-> 
-> 
+>
+>
 
 #### <a name="azure-storage-accounts"></a>Azure Depolama hesapları
 
-Azure 'da hizmet veya VM 'Leri dağıttığınızda, VHD 'lerin ve VM görüntülerinin dağıtımı, Azure depolama hesapları adlı birimlerde düzenlenir. [Azure depolama hesaplarının](../../../storage/common/storage-account-overview.md) , IOPS, aktarım hızı veya içerdikleri boyutlarda sınırlamaları vardır. Geçmişte belgelenen Bu sınırlamalar: 
+Azure 'da hizmet veya VM 'Leri dağıttığınızda, VHD 'lerin ve VM görüntülerinin dağıtımı, Azure depolama hesapları adlı birimlerde düzenlenir. [Azure depolama hesaplarının](../../../storage/common/storage-account-overview.md) , IOPS, aktarım hızı veya içerdikleri boyutlarda sınırlamaları vardır. Geçmişte belgelenen Bu sınırlamalar:
 
 - [Standart depolama hesapları için ölçeklenebilirlik hedefleri](../../../storage/common/scalability-targets-standard-account.md)
 - [Premium Sayfa Blobu depolama hesapları için ölçeklenebilirlik hedefleri](../../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
-Azure 'da SAP dağıtımı planlarken önemli bir rol yürütülüm. Bir depolama hesabındaki kalıcı disklerin sayısını yönettiğinizde. Depolama hesaplarını yönetmeniz ve sonunda daha kalıcı diskler oluşturmak için yeni depolama hesapları oluşturmanız gerekir. 
+Azure 'da SAP dağıtımı planlarken önemli bir rol yürütülüm. Bir depolama hesabındaki kalıcı disklerin sayısını yönettiğinizde. Depolama hesaplarını yönetmeniz ve sonunda daha kalıcı diskler oluşturmak için yeni depolama hesapları oluşturmanız gerekir.
 
 Son yıllarda, [Azure yönetilen disklerin](../../windows/managed-disks-overview.md) tanıtımı sizi bu görevlerden daha fazla karşılamış. SAP dağıtımları için öneri, Azure depolama hesaplarını kendiniz yönetmek yerine Azure tarafından yönetilen disklerden faydalanır. Azure yönetilen diskler, diskler farklı depolama hesaplarına dağıtılır, bu nedenle ayrı depolama hesaplarının sınırları aşılmaz.
 
@@ -681,7 +681,7 @@ Bir SAP sisteminin Azure sanal makine Hizmetleri 'ne uygun olup olmadığını v
 
 ![Azure 'da SAP dağıtma olanağı için karar ağacı][planning-guide-figure-700]
 
-1. İle başlamak için en önemli bilgiler, belirli bir SAP sistemine yönelik SAPS gereksinimidir. SAP sistemi 2 katmanlı bir yapılandırmada şirket içinde zaten dağıtılmış olsa bile, SAPS gereksinimlerinin DBMS bölümüne ve SAP uygulama bölümüne ayrılması gerekir. Mevcut sistemlerde, kullanılan donanımla ilgili olan SAPS 'ler, mevcut SAP kıyaslamaları temelinde belirlenebilir veya tahmin edilebilir. Sonuçlar [burada](https://sap.com/about/benchmark.html)bulunabilir. Yeni dağıtılan SAP sistemlerinde, sistemin SAPS gereksinimlerini belirleyecek bir boyutlandırma alıştırması yapmanız gerekir. 
+1. İle başlamak için en önemli bilgiler, belirli bir SAP sistemine yönelik SAPS gereksinimidir. SAP sistemi 2 katmanlı bir yapılandırmada şirket içinde zaten dağıtılmış olsa bile, SAPS gereksinimlerinin DBMS bölümüne ve SAP uygulama bölümüne ayrılması gerekir. Mevcut sistemlerde, kullanılan donanımla ilgili olan SAPS 'ler, mevcut SAP kıyaslamaları temelinde belirlenebilir veya tahmin edilebilir. Sonuçlar [burada](https://sap.com/about/benchmark.html)bulunabilir. Yeni dağıtılan SAP sistemlerinde, sistemin SAPS gereksinimlerini belirleyecek bir boyutlandırma alıştırması yapmanız gerekir.
 1. Mevcut sistemlerde, DBMS sunucusunda g/ç birimi ve saniye başına g/ç işlemleri ölçülmelidir. Yeni planlanmış sistemlerde, yeni sistem için boyutlandırma alıştırması, DBMS tarafında g/ç gereksinimlerine ilişkin kaba fikirler de vermelidir. Emin değilseniz, sonunda bir kavram kanıtı uygulamanız gerekir.
 1. DBMS sunucusunun SAPS gereksinimini Azure 'un sağladığı farklı VM türleri ile karşılaştırın. Farklı Azure VM türlerinin SAPS 'si ile ilgili bilgiler SAP Note [1928533]' de belgelenmiştir. Veritabanı katmanı, dağıtımların çoğunda ölçeklendirolmayan bir SAP NetWeaver sistemindeki katman olduğundan, odak DBMS VM 'sinde olmalıdır. Buna karşılık, SAP uygulama katmanı da genişletilebilir. SAP tarafından desteklenen Azure VM türlerinden hiçbiri gerekli SAPS 'leri sunabiliyorsa, planlı SAP sisteminin iş yükü Azure üzerinde çalıştırılamaz. Sistemi şirket içinde dağıtmanız ya da sistem için iş yükü birimini değiştirmeniz gerekir.
 1. [Burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]belgelendiği gibi, Azure Standart depolama veya Premium Depolama kullanıp kullanmayacağınızı bağımsız olarak disk başına bir IOPS kotası uygular. VM türüne bağlı olarak, birbirine bağlanan veri disklerinin sayısı farklılık gösterir. Sonuç olarak, her farklı VM türüyle elde edilebilir maksimum ıOPS numarasını hesaplayabilirsiniz. Veritabanı dosyası düzenine bağlı olarak, Konuk işletim sisteminde tek bir birim olacak şekilde disk şeridi oluşturabilirsiniz. Ancak, dağıtılmış bir SAP sisteminin geçerli ıOPS birimi, Azure 'un en büyük VM türüne ait hesaplanan sınırları aşarsa ve daha fazla bellekle telafi şansı yoksa, SAP sisteminin iş yükü ciddi bir şekilde etkilenebilir. Bu gibi durumlarda, Azure 'da sistemi dağıtmayan bir noktaya basabilirsiniz.
@@ -725,7 +725,7 @@ Azure PowerShell cmdlet 'lerinin nasıl yükleneceği, güncelleştirilmesi ve y
 Bkz. örnek: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
-SAP için Azure uzantısı 'nın dağıtımı (Bu belgedeki [SAP Için Azure uzantısı][planning-guide-9.1] bölümüne bakın) yalnızca POWERSHELL veya CLI aracılığıyla yapılabilir. Bu nedenle, Azure 'da SAP NetWeaver sistemi dağıtma veya yönetme sırasında PowerShell veya CLı 'yi ayarlamak ve yapılandırmak zorunludur.  
+SAP için Azure uzantısı 'nın dağıtımı (Bu belgedeki [SAP Için Azure uzantısı][planning-guide-9.1] bölümüne bakın) yalnızca POWERSHELL veya CLI aracılığıyla yapılabilir. Bu nedenle, Azure 'da SAP NetWeaver sistemi dağıtma veya yönetme sırasında PowerShell veya CLı 'yi ayarlamak ve yapılandırmak zorunludur.
 
 Azure daha fazla işlevsellik sağladığından cmdlet 'lerin güncelleştirilmesini gerektiren yeni PS cmdlet 'leri eklenecektir. Bu nedenle, <https://azure.microsoft.com/downloads/> cmdlet 'lerin yeni bir sürümü için ayda en az bir kez Azure indirme sitesini denetlemek mantıklı olur. Yeni sürüm eski sürümün üzerine yüklenir.
 
@@ -748,7 +748,7 @@ Ayrıca, Azure CLı 'yı kullanarak SAP için Azure uzantısı 'nı dağıtmak �
 ## <a name="first-steps-planning-a-deployment"></a>İlk adımlar bir dağıtımı planlama
 Dağıtım planlamadaki ilk adım SAP çalıştırmak için kullanılabilen VM 'Leri denetetmez. İlk adım, zaman alan bir işlemdir, ancak en önemlileri, şirketinizin iş yükünü veya iş sürecini genel buluta dağıtmak için gereken sınır koşullarına göre, şirketinizdeki uyumluluk ve güvenlik ekipleriyle birlikte çalışır. Şirketiniz Azure 'da daha önce başka yazılımlar dağıttıysanız, işlem kolay olabilir. Şirketiniz, yolculuğun başlangıcında daha fazlaysa, belirli SAP verilerinin ve SAP iş işlemlerinin genel bulutta barındırılmasına izin veren sınır koşullarını ve güvenlik koşullarını anlamak için daha büyük tartışmalar yapmanız gerekebilir.
 
-Yararlı yardım olarak Microsoft 'un sağlayabilmesini sağlayacak uyumluluk tekliflerinin bir listesi için [Microsoft Uyumluluk tekliflerini](/microsoft-365/compliance/offering-home) işaret edebilirsiniz. 
+Yararlı yardım olarak Microsoft 'un sağlayabilmesini sağlayacak uyumluluk tekliflerinin bir listesi için [Microsoft Uyumluluk tekliflerini](/microsoft-365/compliance/offering-home) işaret edebilirsiniz.
 
 Bekleyen veriler için veri şifreleme veya Azure hizmetindeki diğer şifreleme gibi diğer sorunlar, [Azure şifrelemesi 'ne genel bakış](../../../security/fundamentals/encryption-overview.md)bölümünde belgelenmiştir.
 
@@ -939,8 +939,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
 
 #### <a name="powershell"></a>PowerShell
 
-* Yönetilen disk indiriliyor  
-  Önce yönetilen diskin temel blobuna erişim almanız gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
+* Yönetilen disk indiriliyor, önce yönetilen diskin temel blobuna erişmeniz gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
 
   ```powershell
   $access = Grant-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
@@ -954,20 +953,18 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
   Revoke-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
   ```
 
-* VHD indirme  
-  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, `Save-AzVhd` VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefteki PowerShell cmdlet 'ini kullanabilirsiniz. Bunu yapmak için, Azure portal ' depolama bölümünde bulabileceğiniz VHD 'nin URL 'SI gerekir (depolama hesabına ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin nereye kopyalanabilmesi gerektiğini bilmeniz gerekir.
+* Bir VHD 'yi indirme SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, `Save-AzVhd` VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefteki PowerShell cmdlet 'ini kullanabilirsiniz. Bunu yapmak için, Azure portal ' depolama bölümünde bulabileceğiniz VHD 'nin URL 'SI gerekir (depolama hesabına ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin nereye kopyalanabilmesi gerektiğini bilmeniz gerekir.
 
   Ardından, kaynak URI 'sini indirmek üzere VHD 'nin URL 'si olarak ve LocalFilePath öğesini VHD 'nin fiziksel konumu (adı dahil) olarak tanımlayarak komutunu kullanabilirsiniz. Komut şu şekilde görünebilir:
 
-  ```powerhell
+  ```powershell
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
   Save-AzVhd cmdlet 'i hakkında daha fazla bilgi için buraya bakın <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
 #### <a name="azure-cli"></a>Azure CLI
-* Yönetilen disk indiriliyor  
-  Önce yönetilen diskin temel blobuna erişim almanız gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
+* Yönetilen disk indiriliyor, önce yönetilen diskin temel blobuna erişmeniz gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
 
   ```azurecli
   az disk grant-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --duration-in-seconds 3600
@@ -975,8 +972,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
   az disk revoke-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>"
   ```
 
-* VHD indirme   
-  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, `_azure storage blob download_` VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefte Azure CLI komutunu kullanabilirsiniz. Bunu yapmak için, VHD 'nin adı ve kapsayıcısına ihtiyacınız vardır. Bu, Azure portal ' depolama bölümünde ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin ' ye kopyalanması gereken yeri bilmeniz gerekir.
+* Bir VHD 'YI indirme SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, `_azure storage blob download_` VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefte Azure CLI komutunu kullanabilirsiniz. Bunu yapmak için, VHD 'nin adı ve kapsayıcısına ihtiyacınız vardır. Bu, Azure portal ' depolama bölümünde ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin ' ye kopyalanması gereken yeri bilmeniz gerekir.
 
   Ardından, indirilecek VHD 'nin kapsayıcısını ve kapsayıcısını ve hedefi VHD 'nin fiziksel hedef konumu (adı dahil) olarak tanımlayarak komutunu kullanabilirsiniz. Komut şu şekilde görünebilir:
 
@@ -1251,7 +1247,7 @@ Bu belgede daha sonra, şirket içi sistemler ve Azure sistemleri arasında site
 Azure Resource Manager ile, artık eski Klasik modelde olduğu gibi varsayılan uç nokta yoktur. Bir Azure Resource Manager VM 'nin tüm bağlantı noktaları şu kadar sürede açıktır:
 
 1. Alt ağ veya ağ arabirimi için ağ güvenlik grubu tanımlanmadı. Azure VM 'lerine yönelik ağ trafiğine, "ağ güvenlik grupları" adı verilir. Daha fazla bilgi için bkz. [Ağ Güvenlik Grubu (NSG) nedir?][virtual-networks-nsg]
-2. Ağ arabirimi için tanımlı Azure Load Balancer yok   
+2. Ağ arabirimi için tanımlı Azure Load Balancer yok
 
 [Bu makalede][virtual-machines-azure-resource-manager-architecture]açıklandığı gibi klasik model ve ARM arasındaki mimari farkını inceleyin.
 
@@ -1540,7 +1536,7 @@ Aynı eğitim/tanıtım çelerine ait klonlarla adlandırma çakışmalarını e
 
 Yalnızca kaynak grupları değil, eğitim veya tanıtım ağları 'nın sanal ağlar tarafından ayrılması nedenleri:
 
-* SAP yatay ayarı için kendi AD/OpenLDAP gerekir ve bir etki alanı sunucusunun her bir landscapın parçası olması gerekir.  
+* SAP yatay ayarı için kendi AD/OpenLDAP gerekir ve bir etki alanı sunucusunun her bir landscapın parçası olması gerekir.
 * SAP yatay ayarı, sabit IP adresleriyle çalışması gereken bileşenlere sahiptir.
 
 Azure sanal ağları ve bunların nasıl tanımlanacağı hakkında daha fazla ayrıntı, [Bu makalede][virtual-networks-create-vnet-arm-pportal]bulunabilir.
@@ -1753,7 +1749,7 @@ Bu nedenle belgenin odağının genel veya SAP NetWeaver ABAP yığınında SAP 
 
 ![Sunulan SAP portalı][planning-guide-figure-2700]
 
-Bazı müşterilerin özel bir dağıtım senaryosu, sanal makine Konağı, siteden siteye VPN tüneli veya ExpressRoute aracılığıyla şirket ağına bağlıyken SAP Enterprise Portal Internet 'e doğrudan maruz kalmaktır. Böyle bir senaryoda, belirli bağlantı noktalarının açık olduğundan ve güvenlik duvarı veya ağ güvenlik grubu tarafından engellenmediğinden emin olmanız gerekir. 
+Bazı müşterilerin özel bir dağıtım senaryosu, sanal makine Konağı, siteden siteye VPN tüneli veya ExpressRoute aracılığıyla şirket ağına bağlıyken SAP Enterprise Portal Internet 'e doğrudan maruz kalmaktır. Böyle bir senaryoda, belirli bağlantı noktalarının açık olduğundan ve güvenlik duvarı veya ağ güvenlik grubu tarafından engellenmediğinden emin olmanız gerekir.
 
 İlk portal URI 'SI, http (s): `<Portalserver`>: bağlantı noktasının ' de SAP tarafından belgelendiği şekilde OLUŞTURULDUĞU 5XX00/ırj <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm> .
 
@@ -1792,7 +1788,7 @@ Azure 'da SAP yüksek kullanılabilirlik, şirket içi fiziksel veya sanal ortam
 
 Hesaplamanın temeli ayda 30 gün veya 43200 dakikadır. Bu nedenle,% 0,05 kesinti süresi 21,6 dakikaya karşılık gelir. Her zamanki gibi, farklı hizmetlerin kullanılabilirliği aşağıdaki şekilde çarpılacaktır:
 
-(Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100) 
+(Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100)
 
 Like
 
@@ -1824,7 +1820,7 @@ Linux 'ta Windows Server Yük Devretme Kümelemesi (WSFC) veya Paceyapıcısı g
 >
 >
 
-Yüksek kullanılabilirlik için başka bir önemli altyapı öğesi depolama alanı. Örneğin Azure Storage SLA% 99,9 kullanılabilir. Biri, disklerinin bulunduğu tüm VM 'Leri tek bir Azure depolama hesabına dağıttığında, olası Azure depolama alanı, bu Azure depolama hesabına yerleştirilmiş tüm VM 'lerin ve ayrıca bu sanal makinelerin içinde çalışan tüm SAP bileşenleri üzerinde kullanılamamasına neden olur.  
+Yüksek kullanılabilirlik için başka bir önemli altyapı öğesi depolama alanı. Örneğin Azure Storage SLA% 99,9 kullanılabilir. Biri, disklerinin bulunduğu tüm VM 'Leri tek bir Azure depolama hesabına dağıttığında, olası Azure depolama alanı, bu Azure depolama hesabına yerleştirilmiş tüm VM 'lerin ve ayrıca bu sanal makinelerin içinde çalışan tüm SAP bileşenleri üzerinde kullanılamamasına neden olur.
 
 Tüm VM 'Leri tek bir Azure Storage hesabına koymak yerine, her sanal makine için ayrılmış depolama hesapları da kullanabilirsiniz ve bu şekilde, birden çok bağımsız Azure depolama hesabı kullanarak genel VM ve SAP uygulamasının kullanılabilirliğini artırabilirsiniz.
 
@@ -1942,7 +1938,7 @@ SAP örnekleri için otomatik başlatma ile ilgili ek bilgilere buradan bakın:
 #### <a name="location-of-3-tier-sap-configurations"></a>3 katmanlı SAP yapılandırmalarının konumu
 Uygulama katmanının kendisini veya uygulama ve DBMS katmanını şirket içi ve Azure arasında ayırmak desteklenmez. SAP sistemi, şirket içinde ya da Azure 'da tamamen dağıtılır. Ayrıca, bazı uygulama sunucularının şirket içinde ve başkalarının Azure 'da çalıştırılmasını da desteklemez. Bu, tartışmanın başlangıç noktasıdır. Ayrıca, bir SAP sisteminin ve SAP uygulama sunucusu katmanının iki farklı Azure bölgesinde dağıtılan DBMS bileşenlerine sahip olmak için de destekliyoruz. Örneğin, Orta ABD Batı ABD ve SAP uygulama katmanındaki DBMS. Bu tür yapılandırmaların desteklenmesinin nedeni SAP NetWeaver mimarisinin gecikme süresinin duyarlılığı olur.
 
-Bununla birlikte, geçen yılın veri merkezi iş ortaklarının Azure bölgelerine birlikte ortak konumlar geliştirildiği bir kurs üzerinden. Bu ortak konumlar genellikle bir Azure bölgesindeki fiziksel Azure veri merkezlerine yakın yakındadır. Azure 'a ExpressRoute aracılığıyla ortak konumdaki varlıkların kısa uzaklığı ve bağlantısı, 2 milisaniyeden daha kısa bir gecikme süresine neden olabilir. Böyle durumlarda, bu tür bir ortak konumda DBMS katmanını (depolama SAN/NAS dahil) bulmak için Azure 'daki SAP uygulama katmanı da mümkündür. [Hana büyük örnekleri](./hana-overview-architecture.md). 
+Bununla birlikte, geçen yılın veri merkezi iş ortaklarının Azure bölgelerine birlikte ortak konumlar geliştirildiği bir kurs üzerinden. Bu ortak konumlar genellikle bir Azure bölgesindeki fiziksel Azure veri merkezlerine yakın yakındadır. Azure 'a ExpressRoute aracılığıyla ortak konumdaki varlıkların kısa uzaklığı ve bağlantısı, 2 milisaniyeden daha kısa bir gecikme süresine neden olabilir. Böyle durumlarda, bu tür bir ortak konumda DBMS katmanını (depolama SAN/NAS dahil) bulmak için Azure 'daki SAP uygulama katmanı da mümkündür. [Hana büyük örnekleri](./hana-overview-architecture.md).
 
 ### <a name="offline-backup-of-sap-systems"></a>SAP sistemlerinin çevrimdışı yedeklemesi
 Seçilen SAP yapılandırmasına (2 katmanlı veya 3 katmanlı) bağlı olarak, yedeklemeniz gerekir. VM 'nin içeriği ve veritabanının bir yedeklemesi vardır. DBMS ile ilgili yedeklemelerin veritabanı yöntemleriyle yapılması bekleniyor. Farklı veritabanları için ayrıntılı bir açıklama, [DBMS kılavuzunda][dbms-guide]bulunabilir. Diğer yandan, SAP verileri, bu bölümde açıklandığı gibi çevrimdışı bir şekilde (veritabanı içeriği de dahil), sonraki bölümde açıklandığı gibi, çevrimiçi olarak da yedeklenebilir.
@@ -1971,7 +1967,7 @@ SAP sisteminde bulunan diğer VM 'Ler Azure sanal makine yedekleme işlevi kulla
 >
 > Azure sanal makine yedeklemesi hakkında bilgi almak için Buradan başlayın: <https://docs.microsoft.com/azure/backup/backup-azure-vms> .
 >
-> Diğer olanaklar, bir Azure sanal makinesinde yüklü Microsoft Data Protection Manager birleşimini kullanmak ve veritabanlarını yedeklemek/geri yüklemek için Azure Backup. Daha fazla bilgiyi burada bulabilirsiniz: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> .  
+> Diğer olanaklar, bir Azure sanal makinesinde yüklü Microsoft Data Protection Manager birleşimini kullanmak ve veritabanlarını yedeklemek/geri yüklemek için Azure Backup. Daha fazla bilgiyi burada bulabilirsiniz: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> .
 >
 > ![Linux][Logo_Linux] Linux
 >

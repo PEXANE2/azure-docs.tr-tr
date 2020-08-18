@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511151"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -114,7 +114,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Genel olarak, [Azure Standart HDD disklerinin](../../windows/disks-types.md#standard-hdd)kullanımını önermiyoruz.
         - Uzaktan performansa duyarlı tüm DBMS VM 'Leri için [Azure Premium Depolama](../../windows/disks-types.md#premium-ssd) kullanın.
         - [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanın.
-        - D serisi olan DBMS günlük sürücüleri için Azure Yazma Hızlandırıcısı kullanın. [Yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md)' de belgelendiği gibi yazma Hızlandırıcısı limitlerinin ve kullanımlardan haberdar olun.
+        - D serisi olan DBMS günlük sürücüleri için Azure Yazma Hızlandırıcısı kullanın. [Yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)' de belgelendiği gibi yazma Hızlandırıcısı limitlerinin ve kullanımlardan haberdar olun.
         - Farklı DBMS türleri için [SAP ile ilgili genel DBMS belgelerini](./dbms_guide_general.md) ve genel belgenin Işaret ettiği DBMS 'ye özgü belgeleri denetleyin.
         - SAP HANA hakkında daha fazla bilgi için bkz. [Azure 'da altyapı yapılandırmalarına ve işlemlerine SAP HANA](./hana-vm-operations.md).
         - Azure veri disklerini, cihaz KIMLIĞI kullanarak bir Azure Linux sanal makinesine hiçbir şekilde bağlama. Bunun yerine, evrensel benzersiz tanımlayıcıyı (UUID) kullanın. Örneğin, Azure veri disklerini bağlamak için grafiksel araçlar kullanırken dikkatli olun. UUID 'nin diskleri bağlamak için kullanıldığından emin olmak için/etc/fstab içindeki girdileri çift kontrol edin. Daha fazla ayrıntı için [Bu makaleyi](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)bulabilirsiniz.

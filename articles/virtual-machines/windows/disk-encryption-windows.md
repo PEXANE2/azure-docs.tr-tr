@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291965"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509170"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -132,7 +132,7 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | Parametre | Açıklama |
 | --- | --- |
 | vmName | Şifreleme işleminin çalıştırılacağı sanal makinenin adı. |
-| keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz`az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
+| keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Anahtar kasasını içeren kaynak grubunun adı|
 |  keyEncryptionKeyURL 'Si | Anahtar şifreleme anahtarının https:// &lt; keykasaadı &gt; . Vault.Azure.net/Key/ &lt; anahtar-adı biçimindeki URL 'si &gt; . Bir KEK kullanmak istemiyorsanız, bu alanı boş bırakın. |
 | Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ve _hepsi_. 
@@ -264,7 +264,7 @@ Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler i�
 - Şifrelenmiş bir sanal makinenin görüntüsünü veya anlık görüntüsünü oluşturma ve ek VM 'Leri dağıtmak için kullanma.
 - Gen2 VM 'Ler (bkz. [Azure 'da 2. nesil VM 'ler Için destek](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
-- Bir veri diski, müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenen bir VM 'ye veya Ade ile ŞIFRELENEN bir VM 'deki bir VERI diskine SSE + CMK uygulayarak bir sanal makineye uygulanıyor.
+- Diskler, müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenmiş olan veya *hıç* olan bir VM 'ye uygulanıyor. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - [Müşteri tarafından yönetilen ANAHTARLARLA](disk-encryption.md)Ade ile ŞIFRELENEN bir VM 'yi sunucu tarafı şifrelemeye geçirme.
 
 

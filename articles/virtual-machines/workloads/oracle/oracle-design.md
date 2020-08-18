@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507939"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510020"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure 'da Oracle veritabanı tasarlama ve uygulama
 
@@ -187,7 +187,7 @@ G/ç gereksinimlerinden oluşan net bir resme sahip olduktan sonra, bu gereksini
 - G/ç 'yi (hem veri hem de dizinler için) azaltmak için veri sıkıştırmayı kullanın.
 - Yineleme günlüklerini, sistemi ve temps 'yi ayırın ve ayrı veri disklerinde TS 'yi geri alın.
 - Herhangi bir uygulama dosyasını varsayılan işletim sistemi disklerine yerleştirmeyin (/dev/sda). Bu diskler hızlı VM önyükleme süreleri için en iyi duruma getirilmemiştir ve uygulamanız için iyi performans sağlamabilirler.
-- Premium depolamada, d serisi VM 'Ler kullanırken, yeniden yineleme diski üzerinde [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md) etkinleştirin.
+- Premium depolamada, d serisi VM 'Ler kullanırken, yeniden yineleme diski üzerinde [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) etkinleştirin.
 
 ### <a name="disk-cache-settings"></a>Disk önbelleği ayarları
 

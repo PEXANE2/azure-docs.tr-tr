@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ea95603ea630a1320db5698092f6748e36a9934
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 3db8ece7cd1d3ef57b51b164fad3340b80882369
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245766"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510207"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -30,7 +30,7 @@ Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleşt
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir:
 
-| Dekont numarası |Başlık |
+| Dekont numarası |Title |
 | --- |--- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -73,7 +73,7 @@ Alternatif olarak, birden çok disk üzerinde bir büyük mantıksal cihaz oluş
 
 Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir `-LogicalSectorSizeDefault` . Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md)okunabilir.
+Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)okunabilir.
 
 ## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>IBM DB2 dağıtımı için VM ve disk yapısı önerisi
 

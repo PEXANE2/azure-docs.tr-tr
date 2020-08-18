@@ -1,32 +1,34 @@
 ---
-title: Azure Batch işini çalıştırmak için Python API kullanma
-description: Batch Python istemci kitaplığını kullanarak Azure Batch bir örnek işi ve görevleri hızlıca çalıştırın. Batch hizmetinin temel kavramlarını öğrenin.
+title: Hızlı başlangıç-Azure Batch işini çalıştırmak için Python API kullanma
+description: Bu hızlı başlangıçta, Batch Python istemci kitaplığını kullanarak bir Azure Batch örnek iş ve görev çalıştırırsınız. Batch hizmetinin temel kavramlarını öğrenin.
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852574"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511023"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Hızlı başlangıç: Azure Batch işini çalıştırmak için Python API kullanma
 
-Bu hızlı başlangıçta, bir uygulamadan Azure Batch işini çalıştırmak için Python API 'sini kullanırsınız. Uygulama, giriş veri dosyalarını Azure depolama 'ya yükler ve toplu işlem düğümleri *havuzu* oluşturur (sanal makineler). Ardından, temel bir komut kullanarak havuzdaki her bir giriş dosyasını işlemek için *Görevler* çalıştıran bir *iş* oluşturur.
+Bir uygulamadan Azure Batch iş çalıştırmak için Python API 'sini kullanarak Azure Batch kullanmaya başlayın. Uygulama, giriş veri dosyalarını Azure depolama 'ya yükler ve toplu işlem düğümleri havuzu oluşturur (sanal makineler). Ardından, temel bir komut kullanarak havuzdaki her bir giriş dosyasını işlemek için görevler çalıştıran bir iş oluşturur.
 
-Burada Batch hizmetinin temel kavramlarını öğrenirsiniz ve daha büyük ölçekte daha gerçekçi iş yükleri ile Batch 'i denemeye hazır olursunuz.
+Bu hızlı başlangıcı tamamladıktan sonra Batch hizmetinin temel kavramlarını anlayacaksınız ve toplu Işi daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
 ![Azure Batch iş akışına genel bakış](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- **Azure Batch** hesabı ve bağlı **Azure depolama** hesabı. Bu hesapları oluşturmak için [Azure Portal](quick-create-portal.md) veya [CLI](quick-create-cli.md) kullanın.
-- [PIP](https://pip.pypa.io/en/stable/installing/) Package Manager dahil [Python](https://python.org/downloads), sürüm 2,7 veya 3,3 ya da üzeri
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+- Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın.
+
+- [PIP](https://pip.pypa.io/en/stable/installing/) Paket Yöneticisi de dahil olmak üzere [Python](https://python.org/downloads) sürüm 2,7 veya 3,3 veya üzeri
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -50,7 +52,7 @@ Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 pip install -r requirements.txt
 ```
 
-`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
+`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -68,7 +70,7 @@ Batch iş akışını çalışır durumda görmek için betiği çalıştırın:
 python python_quickstart_client.py
 ```
 
-Betiği çalıştırdıktan sonra, uygulamanın her bir parçasının ne işe yaradığını öğrenmek üzere kodu gözden geçirin. 
+Betiği çalıştırdıktan sonra, uygulamanın her bir parçasının ne işe yaradığını öğrenmek üzere kodu gözden geçirin.
 
 Örnek uygulamayı çalıştırdığınızda, konsol çıktısı aşağıdakine benzer. Yürütme sırasında, havuzun işlem düğümleri başlatıldığı sırada `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` konumunda bir duraklama yaşarsınız. Görevler, ilk işlem düğümünü çalışır çalışmaz çalışmak üzere kuyruğa alınır. Batch hesabınızdaki havuz, işlem düğümleri, iş ve görevleri izlemek için [Azure portalında](https://portal.azure.com) Batch hesabınıza gidin.
 
@@ -102,9 +104,9 @@ Varsayılan yapılandırmasında uygulama çalıştırıldığında tipik yürü
 
 Bu hızlı başlangıçtaki Python uygulaması şunları yapar:
 
-* Azure depolama hesabınızdaki blob kapsayıcısına üç küçük metin dosyası yükler. Bu dosyalar, Batch görevleri tarafından işlenecek girdilerdir.
-* Ubuntu 18,04 LTS çalıştıran iki işlem düğümü havuzu oluşturur.
-* Düğümler üzerinde çalıştırılacak bir iş ve üç görev oluşturur. Her görev bir Bash kabuk komut satırı kullanarak giriş dosyalarından birini işler.
+- Azure depolama hesabınızdaki blob kapsayıcısına üç küçük metin dosyası yükler. Bu dosyalar, Batch görevleri tarafından işlenecek girdilerdir.
+- Ubuntu 18,04 LTS çalıştıran iki işlem düğümü havuzu oluşturur.
+- Düğümler üzerinde çalıştırılacak bir iş ve üç görev oluşturur. Her görev bir Bash kabuk komut satırı kullanarak giriş dosyalarından birini işler.
 * Görevler tarafından döndürülen dosyaları gösterir.
 
 Ayrıntılar için `python_quickstart_client.py` dosyasına ve aşağıdaki bölümlere bakın.
@@ -182,7 +184,7 @@ batch_service_client.job.add(job)
 
 Uygulama, [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) sınıfını kullanarak görev nesnelerinin bir listesini oluşturur. Her görev, `command_line` parametresini kullanarak girdi `resource_files` nesnesini işler. Örnekte, komut satırı metin dosyasını göstermek üzere Bash kabuk `cat` komutunu çalıştırır. Bu komut, tanıtım amaçlı basit bir örnektir. Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirttiğiniz yerdir. Batch, işlem düğümlerine uygulama ve betik dağıtmanın birkaç yolunu sağlar.
 
-Sonra uygulama, [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) yöntemi ile görevleri işe ekler ve işlem düğümleri üzerinde çalışmak üzere kuyruğa alır. 
+Sonra uygulama, [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) yöntemi ile görevleri işe ekler ve işlem düğümleri üzerinde çalışmak üzere kuyruğa alır.
 
 ```python
 tasks = list()

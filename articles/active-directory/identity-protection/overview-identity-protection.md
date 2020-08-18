@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019620"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509119"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Kimlik Koruması nedir?
+# <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
 Kimlik koruması, kuruluşların üç önemli görevi yerine getirmelerine olanak tanıyan bir araçtır:
 
@@ -69,6 +70,12 @@ Yöneticiler algılamaları gözden geçirebilir ve gerekirse el ile eylem gerç
 
 Makalesinde daha fazla bilgi bulabilirsiniz [: riski araştırma](howto-identity-protection-investigate-risk.md).
 
+### <a name="risk-levels"></a>Risk düzeyleri
+
+Kimlik koruması, riski üç katmana kategorilere ayırır: düşük, orta ve yüksek. 
+
+Microsoft, riskin nasıl hesaplandığına ilişkin belirli ayrıntıları sağlamadığında, her bir düzeyin, kullanıcının veya oturum açma güvenliğinin tehlikeye girdiği daha yüksek güvenilirliğe neden olduğunu varsayalım. Örneğin, bir kullanıcı için bilmediğiniz bir oturum açma özelliklerinin bir örneği, başka bir kullanıcı için sızdırıcı kimlik bilgileri olarak tehdit etmeyebilir.
+
 ## <a name="exporting-risk-data"></a>Risk verileri dışarı aktarılıyor
 
 Kimlik Koruması verileri, arşiv ve daha fazla araştırma ve bağıntı için diğer araçlara aktarılabilir. Microsoft Graph tabanlı API 'Ler, kuruluşların bu verileri SıEM gibi bir araçla daha fazla işlenmek üzere toplamasına olanak tanır. Kimlik koruma API 'sine erişme hakkında bilgiler, [Azure Active Directory kimlik koruması ve Microsoft Graph kullanmaya başlama](howto-identity-protection-graph-api.md) hakkında bilgi edinebilirsiniz.
@@ -94,7 +101,7 @@ Koşullu erişim yöneticileri Ayrıca, bir koşul olarak oturum açma riskini g
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Yetenek | Ayrıntılar | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Ücretsiz/Office 365 uygulamaları |
+| Özellik | Ayrıntılar | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Ücretsiz/Office 365 uygulamaları |
 | --- | --- | --- | --- | --- |
 | Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla) | Yes | Hayır | Hayır |
 | Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla) | Yes | Hayır | Hayır |

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 56d947a6b2d236a04f2b71421a235120a9f02c76
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 52e305f9d50ab0f383810778be681ac41be97c72
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994198"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509815"
 ---
 # <a name="view-model-details"></a>Model ayrıntılarını görüntüleme
 
@@ -22,25 +22,25 @@ Proje altındaki modeller sekmesi, bu projedeki tüm modelleri gösterir. Bu pro
 
 Projedeki her model için bu ayrıntılar görüntülenir.
 
-1.  Model adı: belirli bir modelin model adını gösterir.
+1. Model adı: belirli bir modelin model adını gösterir.
 
-2.  Durum: belirli bir modelin durumunu gösterir. Yeni eğitiminizi kabul edilene kadar gönderildi durumuna sahip olur. Hizmet belgelerinizin içeriğini değerlendirirken durum veri işleme olarak değişir. Belgelerinizin değerlendirmesi tamamlandığında durum çalışır olarak değişir ve sizin için otomatik olarak oluşturulan ayarlama ve test kümeleri de dahil olmak üzere eğitimin parçası olan Tümcelerin sayısını görebilirsiniz. Modellerin durumunu açıklayan model durumunun listesi aşağıda verilmiştir.
+2. Durum: belirli bir modelin durumunu gösterir. Yeni eğitiminizi kabul edilene kadar gönderildi durumuna sahip olur. Hizmet belgelerinizin içeriğini değerlendirirken durum veri işleme olarak değişir. Belgelerinizin değerlendirmesi tamamlandığında durum çalışır olarak değişir ve sizin için otomatik olarak oluşturulan ayarlama ve test kümeleri de dahil olmak üzere eğitimin parçası olan Tümcelerin sayısını görebilirsiniz. Modellerin durumunu açıklayan model durumunun listesi aşağıda verilmiştir.
 
-    -  Gönderildi: Arka ucun bu modelin belgelerini işleolduğunu belirtir.
+    - Gönderildi: Arka ucun bu modelin belgelerini işleolduğunu belirtir.
 
-    -  Sıraya alındı: eğitimin bu model için MT sistemine sıraya konmakta olduğunu belirtir.
+    - Sıraya alındı: eğitimin bu model için MT sistemine sıraya konmakta olduğunu belirtir.
 
-    -  Çalışıyor: eğitimin bu model için MT sisteminde çalıştığını belirtir.
+    - Çalışıyor: eğitimin bu model için MT sisteminde çalıştığını belirtir.
 
-    -  Başarılı: Bu eğitimin MT sisteminde başarılı olduğunu ve bir modelin kullanılabildiğini belirtir. Bu durumda, bu model için bir BLEU puanı görüntülenir.
+    - Başarılı: Bu eğitimin MT sisteminde başarılı olduğunu ve bir modelin kullanılabildiğini belirtir. Bu durumda, bu model için bir BLEU puanı görüntülenir.
 
-    -  Dağıtıldı: başarılı eğitilen modelin dağıtım için MT sistemine gönderildiğini belirtir.
+    - Dağıtıldı: başarılı eğitilen modelin dağıtım için MT sistemine gönderildiğini belirtir.
 
-    -  Dağıtımı geri al: dağıtılan modelin dağıtım kaldırmadığını belirtir.
+    - Dağıtımı geri al: dağıtılan modelin dağıtım kaldırmadığını belirtir.
 
-    -  Dağıtılmamış: bir modelin dağıtım işleminin başarıyla tamamlandığını belirtir.
+    - Dağıtılmamış: bir modelin dağıtım işleminin başarıyla tamamlandığını belirtir.
 
-    -  Eğitim başarısız oldu: eğitimin başarısız olduğunu belirtir. Bir eğitim hatası oluşursa, eğitim işini yeniden deneyin. Hata devam ederse bizimle iletişim kurun. Başarısız modeli silmeyin.
+    - Eğitim başarısız oldu: eğitimin başarısız olduğunu belirtir. Bir eğitim hatası oluşursa, eğitim işini yeniden deneyin. Hata devam ederse bizimle iletişim kurun. Başarısız modeli silmeyin.
 
     - DataProcessingFailed: modele ait bir veya daha fazla belge için veri işlemenin başarısız olduğunu belirtir.
 
@@ -48,19 +48,19 @@ Projedeki her model için bu ayrıntılar görüntülenir.
 
     - MigratedDraft: hub 'dan özel çevirmene geçişten sonra modelin taslak durumunda olduğunu belirtir.
 
-4.  BLEU puanı: çeviri sisteminizin kalitesini belirten, modelin BLEU (Iki dilli değerlendirme düşük Incelemesi) sayısını gösterir. Bu puan, bu eğitimin sonucu olan çeviri sistemi tarafından yapılan çevirilerin, test veri kümesindeki başvuru cümleleriyle ne kadar yakın olduğunu söyler. Eğitim başarıyla tamamlandıysanız BLEU puanı görüntülenir. Eğitim tamamlanmamış/başarısız olursa, herhangi bir BLEK puanı görmezsiniz.
+3. BLEU puanı: çeviri sisteminizin kalitesini belirten, modelin BLEU (Iki dilli değerlendirme düşük Incelemesi) sayısını gösterir. Bu puan, bu eğitimin sonucu olan çeviri sistemi tarafından yapılan çevirilerin, test veri kümesindeki başvuru cümleleriyle ne kadar yakın olduğunu söyler. Eğitim başarıyla tamamlandıysanız BLEU puanı görüntülenir. Eğitim tamamlanmamış/başarısız olursa, herhangi bir BLEK puanı görmezsiniz.
 
-5.  Eğitim tümce sayısı: eğitim kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
+4. Eğitim tümce sayısı: eğitim kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
 
-6.  Cümle sayısını ayarlama: ayarlama kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
+5. Cümle sayısını ayarlama: ayarlama kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
 
-7.  Eğitim tümce sayısı: test kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
+6.  Eğitim tümce sayısı: test kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
 
-8.  Mono tümce sayısı: Mono kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
+7.  Mono tümce sayısı: Mono kümesi olarak kullanılan Tümcelerin toplam sayısını gösterir.
 
-9.  Dağıtım eylemi düğmesi: başarılı bir eğitilen model Için dağıtılmamışsa "Dağıt" düğmesi görüntülenir. Bir model dağıtılmışsa, "dağıtım geri al" düğmesi gösterilir.
+8.  Dağıtım eylemi düğmesi: başarılı bir eğitilen model Için dağıtılmamışsa "Dağıt" düğmesi görüntülenir. Bir model dağıtılmışsa, "dağıtım geri al" düğmesi gösterilir.
 
-10. Sil: modeli silmek istiyorsanız bu düğmeyi kullanabilirsiniz. Bir modelin silinmesi, bu modeli oluşturmak için kullanılan belgelerden hiçbirini silmez.
+9. Sil: modeli silmek istiyorsanız bu düğmeyi kullanabilirsiniz. Bir modelin silinmesi, bu modeli oluşturmak için kullanılan belgelerden hiçbirini silmez.
 
     ![Model ayrıntılarını görüntüleme](media/how-to/how-to-view-model-details.png)
 

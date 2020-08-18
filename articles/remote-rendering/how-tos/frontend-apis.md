@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552689"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509986"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Kimlik doğrulaması için Azure Ön Uç API’lerini kullanma
 
@@ -60,11 +60,11 @@ Hesap bilgileri, [Hesap bilgilerini alma](create-an-account.md#retrieve-the-acco
 
 ## <a name="azure-frontend"></a>Azure ön ucu
 
-İlgili sınıflar ```AzureFrontend``` ve ' dir ```AzureSession``` . ```AzureFrontend```, aşağıdakiler dahil olmak üzere hesap yönetimi ve hesap düzeyi işlevsellik için kullanılır: varlık dönüştürme ve işleme oturumu oluşturma. ```AzureSession```, oturum düzeyi işlevselliği için kullanılır ve şunları içerir: oturum güncelleştirme, sorgular, yenileme ve kullanımdan kaldırma.
+İlgili sınıflar ```AzureFrontend``` ve ' dir ```AzureSession``` . ```AzureFrontend``` , aşağıdakiler dahil olmak üzere hesap yönetimi ve hesap düzeyi işlevsellik için kullanılır: varlık dönüştürme ve işleme oturumu oluşturma. ```AzureSession``` , oturum düzeyi işlevselliği için kullanılır ve şunları içerir: oturum güncelleştirme, sorgular, yenileme ve kullanımdan kaldırma.
 
 Her açılan/oluşturulan ```AzureSession``` , oluşturulduğu ön uç için bir başvuru tutacaktır. Temiz bir şekilde kapatmak için, ön uç serbest bırakılmadan önce tüm oturumların serbest bırakılmalıdır.
 
-Bir oturumun ayırmayı kaldırma işlemi, Azure 'daki VM 'yi durdurmaz, `AzureSession.StopAsync` açıkça çağrılmalıdır.
+Bir oturumun ayırmayı kaldırma işlemi, Azure üzerindeki sunucuyu durdurmayacak, `AzureSession.StopAsync` açıkça çağrılmalıdır.
 
 Bir oturum oluşturulduktan ve durumu hazırlanıyor olarak işaretlendiğinde, ile uzaktan işleme çalışma zamanına bağlanabilir `AzureSession.ConnectToRuntime` .
 

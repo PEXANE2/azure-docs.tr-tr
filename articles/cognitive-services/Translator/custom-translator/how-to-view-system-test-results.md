@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509694"
 ---
 # <a name="view-system-test-results"></a>Sistem test sonuçlarını görüntüleme
 
@@ -54,11 +54,11 @@ Bir zip dosyası indirmek için çevirileri Indir bağlantısına tıklayın. ZI
 
 Bu indirilen ZIP arşivi üç dosya içerir.
 
-1.  **Custom. mt. txt:** Bu dosya, kullanıcının verileriyle eğitilen model tarafından gerçekleştirilen hedef dilde kaynak dil cümlelerini makine çevirileri içerir.
+1.  **custom.mt.txt:** Bu dosya, kullanıcının verileriyle eğitilen model tarafından gerçekleştirilen hedef dilde kaynak dil cümlelerini makine çevirileri içerir.
 
-2.  **ref. txt:** Bu dosya, hedef dilde kaynak dil cümlelerini Kullanıcı tarafından sağlanmış çevirileri içerir.
+2.  **ref.txt:** Bu dosya, hedef dilde kaynak dil cümlelerini Kullanıcı tarafından sağlanmış çevirileri içerir.
 
-3.  **kaynak. txt:** Bu dosya, kaynak dilde cümleler içeriyor.
+3.  **source.txt:** Bu dosya, kaynak dilde cümleler içeriyor.
 
     ![İndirilen sistem testi sonuçları](media/how-to/how-to-download-system-test.png)
 
@@ -92,7 +92,7 @@ Dağıtım ayarlarını güncelleştirmek için:
 
     ![Modeli dağıt](media/how-to/how-to-update-undeploy-model.png)
 
-3.  **Güncelleştir** seçeneğini belirleyin.
+3.  **Güncelleştir**’i seçin.
 4.  Modelinizin dağıtılmasını veya dağıtılmasını istediğiniz bölge (ler) i için **dağıtılan** veya **dağıtılan** ' ı seçin ve ardından **Kaydet**' e tıklayın.
 
     ![Modeli dağıt](media/how-to/how-to-undeploy-model.png)
@@ -102,6 +102,6 @@ Dağıtım ayarlarını güncelleştirmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla dağıtılan özel çeviri modelinizi kullanmaya başlayın.
+- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla kullanmaya başlayın.
 - Çalışma alanınızı paylaşmak için [ayarları yönetmeyi](how-to-manage-settings.md) öğrenin, abonelik anahtarını yönetin.
 - [Çalışma alanınızı ve projenizi](how-to-migrate.md) [Microsoft Translator hub 'ından](https://hub.microsofttranslator.com) nasıl geçirebileceğinizi öğrenin

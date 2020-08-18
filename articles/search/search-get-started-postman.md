@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 07c5e73ecd53bad0e5d5ec7959b288e0b6237a87
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 08/17/2020
+ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171933"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510921"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Postman 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -25,13 +25,13 @@ ms.locfileid: "86171933"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-[Azure BILIŞSEL arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice) keşfetmeye yönelik en kolay yollarından bırı, http isteklerini oluşturmak ve yanıtları Incelemek Için Postman veya başka bir Web testi aracı kullanmaktır. Doğru araçlar ve bu yönergelerden yararlanarak herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
+Bu makalede, istekleri göndermek ve almak için [Azure BILIŞSEL arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice) ve API istemcisini kullanarak REST API isteklerini etkileşimli olarak nasıl ifade edeceğinizi açıklanmaktadır. Bir API istemcisiyle bu yönergelerle, herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
 
-Bu makalede, isteklerin etkileşimli olarak nasıl formülleneceği açıklanır. Alternatif olarak, önceden tanımlanmış istekleri kullanmak için [bir Postman koleksiyonunu indirebilir ve içeri aktarabilirsiniz](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) .
+Makale Postman uygulamasını kullanır. Önceden tanımlanmış istekleri kullanmayı tercih ediyorsanız [bir Postman koleksiyonunu indirebilir ve içeri aktarabilirsiniz](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) . 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
@@ -61,14 +61,14 @@ Her iki araç için de bir komut seçmeniz gerekir (GET, POST, PUT, vb.), bir UR
 
 HTTPS ön ekine, hizmetin adına, bir nesnenin adına (Bu durumda, dizinler koleksiyonuna) ve [api sürümüne](search-api-versions.md)dikkat edin. Api sürümü, geçerli sürüm için olarak belirtilen, gerekli küçük harfli bir dizedir `?api-version=2020-06-30` . API sürümleri düzenli olarak güncelleştirilir. api-version parametresini her isteğe dahil etmeniz hangisinin kullanıldığıyla ilgili tam denetim sahibi olmanızı sağlar.  
 
-İstek üst bilgisi bileşimi iki öğe, içerik türü ve Azure Bilişsel Arama kimlik doğrulaması için kullanılan API anahtarını içerir. Yönetici API anahtarını (-AZURE-SEARCH-ADMIN-API-KEY) geçerli bir değerle değiştirin. 
+İstek üst bilgisi bileşimi iki öğe içerir: `Content-Type` ve `api-key` Azure bilişsel arama kimlik doğrulaması için kullanılır. Yönetici API anahtarını (-AZURE-SEARCH-ADMIN-API-KEY) geçerli bir değerle değiştirin. 
 
 ```http
 api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
 Content-Type: application/json
 ```
 
-Postman 'da, aşağıdaki ekran görüntüsü gibi görünen bir istek girin. Fiil olarak **Al** ' ı SEÇIN, URL 'yi sağlayın ve **Gönder**' e tıklayın. Bu komut Azure Bilişsel Arama bağlanır, dizinler koleksiyonunu okur ve başarılı bir bağlantıda HTTP durum kodu 200 döndürür. Hizmetiniz zaten dizinler içeriyorsa, yanıt Dizin tanımlarını da içerir.
+Postman 'da, aşağıdaki ekran görüntüsü gibi görünen bir istek girin. Komut olarak **Al** ' ı SEÇIN, URL 'yi sağlayın ve **Gönder**' e tıklayın. Bu komut Azure Bilişsel Arama bağlanır, dizinler koleksiyonunu okur ve başarılı bir bağlantıda HTTP durum kodu 200 döndürür. Hizmetiniz zaten dizinler içeriyorsa, yanıt Dizin tanımlarını da içerir.
 
 ![Postman istek URL 'SI ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'SI ve üstbilgisi")
 
@@ -80,7 +80,7 @@ URL, dizin adını içerecek şekilde genişletilir `hotels` .
 
 Bunu Postman 'da yapmak için:
 
-1. Fiili öğesini **koymak**için değiştirin.
+1. Komutunu **koymak**için değiştirin.
 
 2. Bu URL 'ye kopyalayın `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30` .
 
@@ -92,7 +92,7 @@ Bunu Postman 'da yapmak için:
 
 ### <a name="index-definition"></a>Dizin tanımı
 
-Alanlar koleksiyonu belge yapısını tanımlar. Her belge bu alanlara sahip olmalıdır ve her bir alan bir veri türüne sahip olmalıdır. Dize alanları tam metin araması için kullanılır. Bu nedenle içerikte arama yapılabilmesini istiyorsanız sayısal verileri dize olarak ayarlamak isteyebilirsiniz.
+Alanlar koleksiyonu belge yapısını tanımlar. Her belge bu alanlara sahip olmalıdır ve her bir alan bir veri türüne sahip olmalıdır. Dize alanları tam metin aramasında kullanılır. Aranabilir olması için sayısal verilerin olması gerekiyorsa, sayısal verileri dizeler olarak atamalısınız.
 
 Alan öznitelikleri izin verilen eylemi belirler. REST API'leri varsayılan olarak birçok eyleme izin verir. Örneğin tüm dizelerde arama, getirme, filtreleme ve modelleme özellikleri varsayılan olarak etkindir. Genellikle, öznitelikleri yalnızca bir davranışı kapatmanız gerektiğinde ayarlamanız gerekir.
 
@@ -128,13 +128,13 @@ Bu isteği gönderdiğinizde dizinin başarıyla oluşturulduğunu belirten HTTP
 
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-Dizini oluşturma ve dizini doldurma ayrı adımlardır. Azure Bilişsel Arama, dizin, JSON belgeleri olarak sağlayabilmeniz için tüm aranabilir verileri içerir. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
+Dizini oluşturma ve dizini doldurma ayrı adımlardır. Azure Bilişsel Arama 'de Dizin, tüm aranabilir verileri içerir. Bu senaryoda, veriler JSON belgeleri olarak sağlanır. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
 
 URL, `docs` koleksiyonları ve işlemi içerecek şekilde genişletilir `index` .
 
 Bunu Postman 'da yapmak için:
 
-1. Fiili **POST** olarak değiştirin.
+1. Komutu **Post**olarak değiştirin.
 
 2. Bu URL 'ye kopyalayın `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30` .
 
@@ -241,13 +241,13 @@ Birkaç saniye içinde oturum listesinde bir HTTP 201 yanıtı görmeniz gerekir
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Artık bir dizin ve belge yüklendikten sonra, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bunlara yönelik sorgular verebilirsiniz REST API.
+Artık bir dizin ve belge kümesi yüklendikten sonra, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bunlara yönelik sorgular verebilirsiniz REST API.
 
 URL, arama işleci kullanılarak belirtilen bir sorgu ifadesi içerecek şekilde genişletilir.
 
 Bunu Postman 'da yapmak için:
 
-1. **Alınacak**fiili ' i değiştirin.
+1. Komutunu **almak**için değiştirin.
 
 2. Bu URL 'ye kopyalayın `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30` .
 

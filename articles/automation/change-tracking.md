@@ -3,14 +3,14 @@ title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447931"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511057"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -26,10 +26,10 @@ Bu makalede, Azure Otomasyonu 'nda Değişiklik İzleme ve envanter sunulmaktad�
 > [!NOTE]
 > Azure Resource Manager özellik değişikliklerini izlemek için bkz. Azure Kaynak Grafiği [değişiklik geçmişi](../governance/resource-graph/how-to/get-resource-changes.md).
 
-Değişiklik İzleme ve envanter, verileri Azure Izleyici 'den alır. Log Analytics çalışma alanlarına bağlı sanal makineler, izlenen sunuculardaki yüklü yazılım, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları değişikliklerle ilgili verileri toplamak için Log Analytics aracılarını kullanır. Veriler kullanılabilir olduğunda, aracılar işlenmek üzere Azure Izleyici 'ye gönderir. Azure Izleyici alınan verilere yönelik mantığı uygular, kaydeder ve kullanılabilir hale getirir. 
+Değişiklik İzleme ve envanter, verileri Azure Izleyici 'den alır. Log Analytics çalışma alanlarına bağlı sanal makineler, izlenen sunuculardaki yüklü yazılım, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları değişikliklerle ilgili verileri toplamak için Log Analytics aracısını kullanır. Veriler kullanılabilir olduğunda, aracı bunu işlenmek üzere Azure Izleyici 'ye gönderir. Azure Izleyici alınan verilere yönelik mantığı uygular, kaydeder ve kullanılabilir hale getirir.
 
 > [!NOTE]
-> Değişiklik İzleme ve envanter özelliğini kullanmak için, tüm VM 'lerinizi Otomasyon hesabının aynı abonelik ve bölgesine bulmanız gerekir.
+> Değişiklik İzleme ve envanter, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](./how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki VM 'Leri yönetme özelliğini etkilemez.
 
 Değişiklik İzleme ve Inventory Şu anda aşağıdaki öğeleri desteklemiyor:
 
@@ -53,7 +53,7 @@ Değişiklik İzleme ve envanter Şu anda aşağıdaki sorunları yaşıyor:
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Resmi işletim sistemi sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Özelliği, bir dizi Linux işletim sisteminde de desteklenir. Log Analytics destekleyen işletim sistemleri için bkz. [Log Analytics aracısına genel bakış](../azure-monitor/platform/log-analytics-agent.md).
+Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Resmi işletim sistemi sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Özelliği, bir dizi Linux işletim sisteminde de desteklenir. Desteklenen işletim sistemlerinin listesi için bkz. [Log Analytics aracısına genel bakış](../azure-monitor/platform/log-analytics-agent.md).
 
 TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -78,7 +78,7 @@ Değişiklik izleme grafiğini ve değişiklik türü ve zaman aralıklarına g�
 
 Ayrıntılarını görüntülemek için bir değişikliğe veya olaya tıklayabilirsiniz. Kullanılabilir değişiklik türleri şunlardır:
 
-- Olaylar
+- Ekinlikler
 - Daemon 'ları
 - Dosyalar
 - Kayıt Defteri

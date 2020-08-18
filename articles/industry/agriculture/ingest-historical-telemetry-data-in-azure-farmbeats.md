@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061211"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510275"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -33,7 +33,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 - Gizli anahtar
 - EventHub bağlantı dizesi
 
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 > [!NOTE]
 > Aşağıdaki adımları uygulamak için yönetici olmanız gerekir.
@@ -58,13 +58,13 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
 5. Giriş dizininize gidin.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     cd
     ```
-    
+
 6. Aşağıdaki komutu çalıştırın. Bu, Azure AD istekleri için kullanılmak üzere kimliği doğrulanmış bir hesabı bağlar
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
@@ -78,7 +78,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
 8. Aşağıdaki betiği çalıştırın. Betik, **Azure Active Directory**  >  **genel bakış** sayfasından elde edilen Kiracı kimliğini ister.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1
 
@@ -108,7 +108,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |          Üretici            |         Üreticinin adı    |
 |  ProductCode                    |  Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800.  |
 |            Bağlantı noktaları          |     Bağlantı noktası adı ve türü, dijital veya analog.
-|     Name                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+|     Adı                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
       Açıklama     | Modelin anlamlı bir açıklamasını sağlayın.
 |    Özellikler          |    Üreticiden ek özellikler.   |
 |    **Cihaz**             |                      |
@@ -117,7 +117,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |  Reportingınterval        |   Saniye cinsinden raporlama aralığı.
 |  Konum            |  Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
 |Parentdeviceıd       |    Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır.  |
-|    Name            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
+|    Adı            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
 |     Açıklama       |      Anlamlı bir açıklama sağlayın. |
 |     Özellikler    |  Üreticiden ek özellikler.
 |     **SensorModel**        |          |
@@ -129,7 +129,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |    Sensorölçüleri > türü    |Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler AmbientTemperature, CO2, Depth, Elektriicalttivity, Leafwetlik, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salinity, Soılmoisture, Soalıngıl, Soalınş Daha fazla eklemek için/ExtendedType API 'sine bakın.|
 |        Sensorölçüleri > birimi              | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIS, PSI, milimetre ölçüm, Santimeter, ölçüm, Inç, fit, mil, kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın.|
 |    Sensorölçüleri > AggregationType    |  Değerler None, Average, Maximum, minimum veya Standardsapması olabilir.  |
-|          Name            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
+|          Adı            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
 |    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın.|
 |   Özellikler       |  Üreticiden ek özellikler.|
 |    **Algılayıcısı**      |          |
@@ -138,7 +138,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | Konum          |  Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).|
 |   Bağlantı noktası > adı        |  Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir.|
 |    DeviceID  |    Algılayıcıın bağlı olduğu cihazın KIMLIĞI. |
-| Name            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
+| Adı            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
 |    Açıklama      | Anlamlı bir açıklama sağlayın.|
 |    Özellikler        |Üreticiden ek özellikler.|
 
@@ -148,7 +148,7 @@ Nesneler hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeat
 
 Bir API isteği oluşturmak için, HTTP (POST) yöntemini, API hizmeti URL 'sini ve sorgulanacak bir kaynağa yönelik URI 'yi birleştiren, verileri gönderecek, oluşturacak veya silebileceğiniz bir kaynağa birleştirmelisiniz. Daha sonra bir veya daha fazla HTTP istek üst bilgisi eklersiniz. API hizmetinin URL 'si API uç noktasıdır, diğer bir deyişle, Datahub URL 'SI (https:// \<yourdatahub> . azurewebsites.net).
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Farmrets veri hub 'ı, önceki bölümde oluşturulan aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825013"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510870"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -84,7 +84,7 @@ Ayrıntılara geçmeden önce belgenin başlangıcında bulunan Özet ve öneril
 | DBMS günlük birimi HANA olmayan/Mv2 VM aileleri | desteklenmiyor | kısıtlı uygun (üretim dışı) | Orta ölçekli iş yüküne uygun | Önerilen | desteklenmiyor |
 
 
-<sup>1</sup> [Azure yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md) for log/Mv2 VM aileleri ile günlük/yineleme günlüğü birimleri <sup>2</sup> ' nin kullanımıyla birlikte, ANF kullanarak/Hana/Data ve/Hana/log ' in ANF üzerinde olması gerekir 
+<sup>1</sup> [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) for log/Mv2 VM aileleri ile günlük/yineleme günlüğü birimleri <sup>2</sup> ' nin kullanımıyla birlikte, ANF kullanarak/Hana/Data ve/Hana/log ' in ANF üzerinde olması gerekir 
 
 Farklı depolama türleri listesinden bekleneceğiniz özellikler şöyle olabilir:
 
@@ -101,7 +101,7 @@ Farklı depolama türleri listesinden bekleneceğiniz özellikler şöyle olabil
 | Coğrafi artıklık | yönetilen diskler için değil | yönetilen diskler için değil | hayır | hayır | hayır |
 
 
-günlük/Mv2 günlük birimlerine yönelik olarak d/VM aileleri için [Azure yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md) kullanımı ile <sup>1</sup>
+günlük/Mv2 günlük birimlerine yönelik olarak d/VM aileleri için [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) kullanımı ile <sup>1</sup>
 
 <sup>2</sup> maliyet, sağlanan IOPS ve aktarım hızına bağlıdır
 
@@ -137,7 +137,7 @@ SAP iş yükünün yetenek matrisi şöyle görünür:
 | Özellik| Yorum| Notlar/bağlantılar | 
 | --- | --- | --- | 
 | İşletim sistemi temel VHD | uçtan | Tüm sistemler |
-| Veri diski | uçtan | Tüm sistemler- [SAP HANA için özel](../../windows/how-to-enable-write-accelerator.md) |
+| Veri diski | uçtan | Tüm sistemler- [SAP HANA için özel](../../how-to-enable-write-accelerator.md) |
 | SAP Genel aktarım dizini | EVET | [Desteklenir](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | uçtan | Tüm sistemler |
 | Yedekleme depolama alanı | uçtan | yedeklemelerin kısa vadeli depolaması için |
@@ -149,12 +149,12 @@ SAP iş yükünün yetenek matrisi şöyle görünür:
 | Disk başına maksimum ıOPS | 20.000 [disk boyutuna bağımlı](https://azure.microsoft.com/pricing/details/managed-disks/) | [VM sınırlarını](../../sizes.md) de göz önünde bulundurun |
 | Verimlilik SLA 'Sı | EVET | - |
 | Doğrusal olarak kapasiteye işleme | köşeli ayraçlar içinde yarı doğrusal | [Yönetilen disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA sertifikalı | EVET | [SAP HANA için özel](../../windows/how-to-enable-write-accelerator.md) |
+| HANA sertifikalı | EVET | [SAP HANA için özel](../../how-to-enable-write-accelerator.md) |
 | Olası disk anlık görüntüleri | EVET | - |
-| Azure Backup VM anlık görüntülerini mümkün | EVET | [yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md) önbelleğe alınan diskler hariç  |
+| Azure Backup VM anlık görüntülerini mümkün | EVET | [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) önbelleğe alınan diskler hariç  |
 | Maliyetler | UZUNLUKTA | - |
 
-Azure Premium Depolama, Azure Premium Depolama ile sunulan yaygın önbelleğe alma türleriyle SAP HANA depolama gecikme KPI 'lerini yerine getirmez. SAP HANA günlük yazma işlemleri için depolama gecikme KPI 'Larını karşılamak için, [yazma Hızlandırıcısı etkinleştirme](../../windows/how-to-enable-write-accelerator.md)makalesinde açıklandığı gibi Azure yazma Hızlandırıcısı önbelleğe alma kullanmanız gerekir. Azure Yazma Hızlandırıcısı, işlem günlüğü yazmaları ve kayıt günlüğü yazmaları için diğer tüm DBMS sistemleri avantajlarına sahiptir. Bu nedenle, tüm SAP DBMS dağıtımları genelinde kullanılması önerilir. SAP HANA için Azure Yazma Hızlandırıcısı Azure Premium Depolama ile birlikte kullanımı zorunludur.
+Azure Premium Depolama, Azure Premium Depolama ile sunulan yaygın önbelleğe alma türleriyle SAP HANA depolama gecikme KPI 'lerini yerine getirmez. SAP HANA günlük yazma işlemleri için depolama gecikme KPI 'Larını karşılamak için, [yazma Hızlandırıcısı etkinleştirme](../../how-to-enable-write-accelerator.md)makalesinde açıklandığı gibi Azure yazma Hızlandırıcısı önbelleğe alma kullanmanız gerekir. Azure Yazma Hızlandırıcısı, işlem günlüğü yazmaları ve kayıt günlüğü yazmaları için diğer tüm DBMS sistemleri avantajlarına sahiptir. Bu nedenle, tüm SAP DBMS dağıtımları genelinde kullanılması önerilir. SAP HANA için Azure Yazma Hızlandırıcısı Azure Premium Depolama ile birlikte kullanımı zorunludur.
 
 
 
@@ -333,7 +333,7 @@ Azure Standart HDD depolama, Azure altyapısı 2014 yılında SAP NetWeaver iş 
 ## <a name="azure-vm-limits-in-storage-traffic"></a>Depolama trafiğinden Azure VM sınırları
 Şirket içi senaryolara karşı, seçtiğiniz tek VM türü, elde ettiğiniz depolama bant genişliği için önemli bir rol oynar. Farklı depolama türleri için şunları göz önünde bulundurmanız gerekir:
 
-| Depolama türü| Linux | Windows | Açıklamalar |
+| Depolama türü| Linux | Windows | Yorumlar |
 | --- | --- | --- | --- |
 | Standart HDD | [Azure 'da Linux VM 'Leri için Boyutlar](../../sizes.md) | [Azure 'da Windows VM 'Leri için Boyutlar](../../sizes.md) | Orta veya büyük VM 'lerin depolama sınırlarına dokunmaya çok zor olabilir |
 | Standart SSD | [Azure 'da Linux VM 'Leri için Boyutlar](../../sizes.md) | [Azure 'da Windows VM 'Leri için Boyutlar](../../sizes.md) | Orta veya büyük VM 'lerin depolama sınırlarına dokunmaya çok zor olabilir |
@@ -352,7 +352,7 @@ Azure VM 'lerini bir SAP sisteminin yaşam döngüsünde ayarlarken, yeni ve dah
 
 
 ## <a name="striping-or-not-striping"></a>Şeritleme veya şeridi yok
-Birden çok Azure diskinin daha büyük bir birimde bir dizi kümesi oluşturulması, tek tek disklerin ıOPS ve üretilen iş verimini tek bir birimde birikmesini sağlar. Yalnızca Azure Standart depolama ve Azure Premium Depolama için kullanılır. Aktarım hızını ve ıOPS 'yi bir diskin kapasitesinden bağımsız olarak yapılandırabileceğiniz Azure Ultra disk, Stripe kümelerinin kullanımını gerektirmez. NFS veya SMB tabanlı paylaşılan birimler şeritli olamaz. Azure Premium Depolama verimlilik ve ıOPS 'nin doğrusal olmayan doğası nedeniyle, büyük tek Azure Premium Depolama disklerinden aynı ıOPS ve aktarım hızı ile daha küçük kapasite sağlayabilirsiniz. Bu, Azure Premium Depolama kullanarak daha düşük maliyetli verimlilik veya ıOPS elde etme yöntemidir. Örnek:
+Birden çok Azure diskinin daha büyük bir birimde bir dizi kümesi oluşturulması, tek tek disklerin ıOPS ve üretilen iş verimini tek bir birimde birikmesini sağlar. Yalnızca Azure Standart depolama ve Azure Premium Depolama için kullanılır. Aktarım hızını ve ıOPS 'yi bir diskin kapasitesinden bağımsız olarak yapılandırabileceğiniz Azure Ultra disk, Stripe kümelerinin kullanımını gerektirmez. NFS veya SMB tabanlı paylaşılan birimler şeritli olamaz. Azure Premium Depolama verimlilik ve ıOPS 'nin doğrusal olmayan doğası nedeniyle, büyük tek Azure Premium Depolama disklerinden aynı ıOPS ve aktarım hızı ile daha küçük kapasite sağlayabilirsiniz. Bu, Azure Premium Depolama kullanarak daha düşük maliyetli verimlilik veya ıOPS elde etme yöntemidir. Örneğin:
 
 - İki P15 Premium Depolama diski arasında şeritleme size 
 - 250 MIB/sn. Bu tür bir birimde 512 GiB kapasitesi vardır. Saniyede 250 MIB üretilen işi sağlayan tek bir diske sahip olmak istiyorsanız, 2 TiB kapasiteye sahip bir P40 disk seçmeniz gerekir. 

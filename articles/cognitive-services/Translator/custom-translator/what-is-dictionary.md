@@ -6,27 +6,27 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510768"
 ---
 # <a name="what-is-a-dictionary"></a>Sözlük nedir?
 
-Sözlük, deyimlerin veya Tümcelerin bir listesini ve bunlara karşılık gelen çevirileri belirten, hizalanmış bir belge çiftidir. Çevirmenin, sözlükte sağladığınız çeviriyi kullanarak her zaman kaynak tümceciği veya cümle örneklerini çevirmesini istediğinizde, öğreticinizdeki bir sözlüğü kullanın. Sözlüklerde bazen ışlar veya terim tabanı denir. Sözlüğü, listenizin tüm terimleri için "Kopyala ve Değiştir" zorlaması olarak düşünebilirsiniz. Ayrıca, özel çevirmen özelliği, çevirisi kalitesini artırmak için kendi genel amaçlı sözlüklerini oluşturur ve kullanır. Bununla birlikte, bir müşteri tarafından sağlanmış sözlük bu şekilde görünür ve öncelikle kelimeleri veya cümleleri aramak için aranır.
+Sözlük, deyimlerin veya Tümcelerin bir listesini ve bunlara karşılık gelen çevirileri belirten, hizalanmış bir belge çiftidir. Microsoft Translator 'ın, sözlükte sağladığınız çeviriyi kullanarak her zaman kaynak tümceciği veya cümle örneklerini çevirmesini istediğinizde, öğreticinizdeki bir sözlüğü kullanın. Sözlüklerde bazen ışlar veya terim tabanı denir. Sözlüğü, listenizin tüm terimleri için "Kopyala ve Değiştir" zorlaması olarak düşünebilirsiniz. Ayrıca, Microsoft özel çevirmen hizmeti, çevirisi kalitesini artırmak için kendi genel amaçlı sözlüklerini oluşturur ve kullanır. Bununla birlikte, bir müşteri tarafından sağlanmış sözlük bu şekilde görünür ve öncelikle kelimeleri veya cümleleri aramak için aranır.
 
 Sözlükler yalnızca kendi arkasındaki tam olarak desteklenen bir Microsoft genel sinir Network modeline sahip olan dil çiftlerindeki projeler için geçerlidir. [Dillerin tüm listesini görüntüleyin](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Tümcecik sözlüğü
-Modelinize eğitim altına bir tümcecik sözlüğü eklediğinizde, listelenen herhangi bir sözcük veya tümcecik, belirttiğiniz şekilde çevrilir. Cümlenin geri kalanı her zamanki gibi çevrilir. Sözlükteki kaynak ve hedef dosyada aynı çevrilmemiş tümceciği sağlayarak çevrilmemesi gereken tümcecikleri belirtmek için bir tümcecik sözlüğü kullanabilirsiniz.
+Tümcecik sözlüğü büyük/küçük harfe duyarlıdır. Tam bul ve değiştir işlemidir. Modelinize eğitim altına bir tümcecik sözlüğü eklediğinizde, listelenen herhangi bir sözcük veya tümcecik, belirttiğiniz şekilde çevrilir. Cümlenin geri kalanı her zamanki gibi çevrilir. Sözlükteki kaynak ve hedef dosyada aynı çevrilmemiş tümceciği sağlayarak çevrilmemesi gereken tümcecikleri belirtmek için bir tümcecik sözlüğü kullanabilirsiniz.
 
 ## <a name="sentence-dictionary"></a>Tümce sözlüğü
-Tümce sözlüğü, kaynak tümce için tam bir hedef çevirisi belirtmenize olanak tanır. Bir cümle sözlüğü eşleşmesi gerçekleşmesi için, gönderilen tümcenin tamamının kaynak sözlük girdisiyle eşleşmesi gerekir.  Cümlenin yalnızca bir kısmı eşleşiyorsa giriş eşleşmez.  Bir eşleşme algılandığında, tümce sözlüğünün hedef girdisi döndürülür.
+Tümce sözlüğü büyük/küçük harfe duyarlıdır. Tümce sözlüğü, kaynak tümce için tam bir hedef çevirisi belirtmenize olanak tanır. Bir cümle sözlüğü eşleşmesi gerçekleşmesi için, gönderilen tümcenin tamamının kaynak sözlük girdisiyle eşleşmesi gerekir. Kaynak sözlüğü girdisi noktalama işaretleri ile sonlanıyorsa, eşleşme sırasında yok sayılır. Cümlenin yalnızca bir kısmı eşleşiyorsa giriş eşleşmez.  Bir eşleşme algılandığında, tümce sözlüğünün hedef girdisi döndürülür.
 
 ## <a name="dictionary-only-trainings"></a>Sözlük-yalnızca insanlar
 Yalnızca Sözlük verilerini kullanarak bir modeli eğitebilirsiniz. Bunu yapmak için, dahil etmek istediğiniz Sözlük belgesi (veya birden fazla Sözlük belgesi) seçin ve model oluştur ' a dokunun. Bu yalnızca bir sözlük eğitimi olduğundan, en az sayıda eğitim cümleleri gerekli değildir. Modelinize, genellikle standart bir eğitimin daha hızlı bir şekilde eğitim tamamlanmıştır.  Elde edilen modeller, eklediğiniz sözlüklerin eklenmesiyle çeviri için Microsoft taban çizgisi modellerini kullanacaktır.  Test raporu alacaksınız.
@@ -40,6 +40,7 @@ Yalnızca Sözlük verilerini kullanarak bir modeli eğitebilirsiniz. Bunu yapma
 - Tümcecik sözlüğü gelişigüzel kullanılmalıdır. Bu nedenle, tümce içindeki bir ifade değiştirildiğinde, tümcenin geri kalanını çevirmek için bu tümce içindeki bağlamın kaybedilmesi veya sınırlı olduğunu unutmayın. Sonuç olarak, tümce içindeki ifade veya sözcük sağlanan sözlüğe göre çevirirken, tümcenin genel çeviri kalitesi genellikle zarar görür.
 - Tümcecik sözlüğü ürün adları ("Microsoft SQL Server"), uygun adlar ("şehir Hamburg") veya ürünün özellikleri ("Pivot tablosu") gibi bileşik adlarla iyi bir şekilde çalışacaktır. Bunlar genellikle kaynakta veya hedef dilde oldukça büyük olduklarından, fiiller veya sıfatlar için eşit bir şekilde çalışmaz. En iyi uygulamalar, tümcecik sözlüğü girişlerinin her şeyi, ancak bileşik isimleri önlemeyi önler.
 - Tümcecik sözlüğü kullanılırken, büyük harfler ve noktalama önemli. Sözlük girişleri yalnızca kaynak sözlük dosyasında belirtilen büyük/küçük harfleri ve noktalama işaretlerini kullanan giriş cümlesinde sözcüklerle ve tümceciklerden eşleşir. Ayrıca Çeviriler, hedef sözlük dosyasında belirtilen büyük/küçük harfleri ve noktalama işaretlerini yansıtır. Örneğin, kaynak dosyada "US" ve "EE" belirten bir tümcecik sözlüğü kullanan, Ingilizce bir Ispanyolca sisteme eğitim yaptıysanız. UU. " hedef dosyada. "ABD" (büyük değil) sözcüğünü içeren bir tümcenin çevirisini istediğinizde, bu sözlük eşleşmez. Ancak "ABD" (büyük harfli) sözcüğünü içeren bir tümcenin çevirisini istemeniz durumunda sözlük eşleşir ve çeviri "EE" içerir. UU. " Çevirinin büyük küçük harf ve noktalama işaretlerinin, sözlük hedef dosyasında belirtilenden farklı olabileceğini ve kaynaktaki büyük harfle ve noktalama işaretlerinden farklı olabileceğini unutmayın. Hedef dilin kurallarını izler.
+- Tümce sözlüğü kullanılırken cümle noktalama işaretlerinin sonuna göz ardı edilir. Örneğin, kaynak sözlüğünüz "Bu tümce noktalama işaretiyle biter!" içeriyorsa, "Bu cümle bitişi noktalama işaretleri" içeren tüm çeviri istekleri eşleşir.
 - Bir sözcük, sözlük dosyasında birden çok kez görünürse, sistem her zaman belirtilen son girişi kullanır. Bu nedenle, sözlüğünüz aynı kelimenin birden fazla çevirisi içermemelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

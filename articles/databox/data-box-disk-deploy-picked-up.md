@@ -1,20 +1,20 @@
 ---
 title: Microsoft Azure Data Box Disk'i geri göndermeye yönelik öğretici | Microsoft Docs
-description: Azure Data Box Disk'inizi Microsoft'a nasıl gönderebileceğinizi öğrenmek için bu öğreticiyi kullanın
+description: Bu öğreticide Azure Data Box Disk'inizi iade etmeyi öğrenin. Teslim alma yönergeleri, cihazı iade ettiğiniz yere bağlı olarak değişir.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039472"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923790"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 
 1. Sağlanan iade sevkiyatı etiketini kullanın ve bunun üzerinde TAU kodunun (referans numarası) bulunduğundan emin olun. Sağlanan sevkiyat etiketi eksikse veya başka bir sorununuz varsa şuraya e-posta gönderin [Data Box için Asya bölgesi İşlemleri](mailto:adbo@microsoft.com). Konu üst bilgisi olarak sipariş adını ve karşılaştığınız sorunun ayrıntılarını belirtin.
 2. Etiketi kutuya iliştirin.
-3. Şu bağlantıdan çevrimiçi olarak bir teslim alma rezervasyonu yapın: https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
+3. https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference adresinde çevrimiçi olarak bir teslim alma rezervasyonu yapın.
 
 ### <a name="japan"></a>[Japonya](#tab/in-japan)
 
@@ -138,7 +138,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
    Herhangi bir sorunla karşılaşırsanız, adbo@microsoft.com üzerinden Data Box İşlemleri Asya’ya ulaşın. Konu başlığında iş adını ve karşılaşılan sorunu sağlayın.
 
 3. Paketi kuryeye teslim edin.
+
+### <a name="south-africa"></a>[Güney Afrika](#tab/in-sa)
+
+Cihazı Güney Afrika’da iade ediyorsanız aşağıdaki adımları uygulayın.
+
+1. Verilen gönderim etiketini kutuya iliştirin. Bu etiket izleme numarasını içerir. Gönderim etiketi yoksa **Genel bakış > Gönderim etiketini indir** bölümünde yeni bir etiket indirebilirsiniz.
+
+2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
+
+3. DHL ile teslim alma rezervasyonu yapmak için:
+
+    * +27(0) 11 9213600 numaralı telefondan müşteri hizmetleri iletişim merkezini arayın, 1'i seçin ve ardından irsaliye numarasını belirtin.
+    * Teslim alma rezervasyonu yapmak için saat 14:00’dan (Güney Afrika Standart Saati, ZA) önce aramanız gerekir.  
+    * Teslim alma işlemini düzenlemek için aşağıdaki e-posta şablonunu kullanarak [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine e-posta gönderin:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * Alternatif olarak, paketi en yakın DHL hizmet noktasına da bırakabilirsiniz.
+
+4. Herhangi bir sorunla karşılaşırsanız [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine karşılaştığınız sorunun ayrıntılarını içeren bir e-posta gönderin ve Konu: satırına irsaliye numarasını ekleyin. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
 
 ### <a name="china"></a>[Çin](#tab/in-china)
 
@@ -231,7 +257,3 @@ Data Box Disk’ten Azure Depolama hesabına yapılan veri yüklemesini doğrula
 > [Azure Data Box Disk’ten veri yüklemesini doğrulama](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

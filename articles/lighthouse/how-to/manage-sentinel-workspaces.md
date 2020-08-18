@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163246"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511261"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
@@ -69,9 +69,9 @@ Azure ['Da Azure Izleyici çalışma kitapları](../../sentinel/overview.md#work
 
 Çalışma kitaplarını, bu müşteriye özgü senaryolar için yönettiğiniz tek bir kiracıya doğrudan da dağıtabilirsiniz.
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Azure Sentinel çalışma alanları genelinde sorguları çalıştırma
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Azure Sentinel çalışma alanları genelinde Log Analytics ve sorguları çalıştırma
 
-Tehdit algılama için Log Analytics sorguları, yönetim kiracısında merkezi olarak oluşturabilir ve kaydedebilirsiniz. Bu sorgular daha sonra tüm müşterilerinizin Azure Sentinel çalışma alanlarında UNION işleci ve Workspace () ifadesi kullanılarak çalıştırılabilir. Daha fazla bilgi için bkz. [çapraz çalışma alanı sorgulama](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+Tehdit algılama için Log Analytics sorguları, [sorguları](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)yönetme dahil olmak üzere, yönetim kiracısında merkezi olarak oluşturabilir ve kaydedebilirsiniz. Bu sorgular daha sonra tüm müşterilerinizin Azure Sentinel çalışma alanlarında UNION işleci ve Workspace () ifadesi kullanılarak çalıştırılabilir. Daha fazla bilgi için bkz. [çapraz çalışma alanı sorgulama](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Çoklu çalışma alanları yönetimi için Otomasyonu kullanma
 

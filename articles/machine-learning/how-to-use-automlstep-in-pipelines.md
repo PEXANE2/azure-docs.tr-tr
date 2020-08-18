@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c2fc0b0bc1b59bcb3fa4a84235135d9b8ff1fc27
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185664"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510258"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Bir işlem hattındaki otomatikleştirilen ML bir nesne tarafından temsil edili
 
 İlk _olarak BIR ml_ ardışık düzenine veri taşımanın tercih edilen yolu, `Dataset` nesneleriyle birlikte. Adımlar _arasında_ veri taşımak için tercih edilen yöntem nesneleriyle birlikte bulunur `PipelineData` . İle birlikte kullanılabilmesi için `AutoMLStep` `PipelineData` nesnenin bir nesnesine dönüştürülmesi gerekir `PipelineOutputTabularDataset` . Daha fazla bilgi için bkz. [ml işlem hatlarından giriş ve çıkış verileri](how-to-move-data-in-out-of-pipelines.md).
 
-, `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig`, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
+, `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig` , [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
 
 Bir `Pipeline` üzerinde çalışır `Experiment` . İşlem hattı, `Run` her adım bir alt öğe için içerir `StepRun` . Otomatikleştirilmiş ML 'nin çıkışları `StepRun` eğitim ölçümleri ve en yüksek performanslı modeldir.
 
@@ -250,7 +250,7 @@ dataprep_step = PythonScriptStep(
 
 Bir otomatik ML ardışık düzen adımını yapılandırma sınıfı ile yapılır `AutoMLConfig` . Bu esnek sınıf, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)bölümünde açıklanmaktadır. Veri girişi ve çıkışı, bir ML ardışık düzeninde özel dikkat gerektiren yapılandırmanın tek yönlerine göre yapılır. İşlem hatlarında giriş ve çıkış `AutoMLConfig` aşağıda ayrıntılı olarak ele alınmıştır. Verilerin ötesinde, ML ardışık düzenleri avantajı farklı adımlar için farklı işlem hedefleri kullanabilme olanağıdır. `ComputeTarget`Yalnızca OTOMATIKLEŞTIRILMIŞ ml işlemi için daha güçlü bir işlem kullanmayı tercih edebilirsiniz. Bunun yapılması, nesnenin parametresine daha güçlü atama yapmak kadar basittir `RunConfiguration` `AutoMLConfig` `run_configuration` .
 
-### <a name="send-data-to-automlstep"></a>Verileri buraya gönder`AutoMLStep`
+### <a name="send-data-to-automlstep"></a>Verileri buraya gönder `AutoMLStep`
 
 Bir ML ardışık düzeninde, giriş verileri bir `Dataset` nesne olmalıdır. En yüksek performanslı yol, giriş verilerini nesne biçiminde sağlamaktır `PipelineOutputTabularDataset` . Nesne gibi, veya üzerinde bu türde bir nesne `parse_parquet_files()` oluşturun `parse_delimited_files()` `PipelineOutputFileDataset` `prepped_data_path` .
 
@@ -273,10 +273,10 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 | Teknik | Avantajlar ve dezavantajları | 
 |-|-|
 |`PipelineOutputTabularDataset`| Daha yüksek performans | 
-|| Doğal yol`PipelineData` | 
+|| Doğal yol `PipelineData` | 
 || İşlem hattı çalıştırıldıktan sonra veriler kalıcı değil |
 || [Tekniği gösteren not defteri `PipelineOutputTabularDataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
-| Kaydedilmeyecek`Dataset` | Düşük performans |
+| Kaydedilmeyecek `Dataset` | Düşük performans |
 | | Birçok şekilde oluşturulabilir | 
 | | Veriler devam ettirir ve çalışma alanı boyunca görünür |
 | | [Kayıtlı tekniği gösteren not defteri `Dataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
@@ -337,17 +337,17 @@ Kod parçacığında ile yaygın olarak kullanılan bir deyim gösterilmektedir 
 
 `automl_settings`Sözlük, `AutoMLConfig` oluşturucuya kwarg olarak geçirilir. Diğer parametreler karmaşık değildir:
 
-- `task``classification`Bu örnek için olarak ayarlanır. Diğer geçerli değerler şunlardır `regression` ve`forecasting`
-- `path`ve `debug_log` hata ayıklama bilgilerinin yazılacağı projenin ve yerel bir dosyanın yolunu açıklama 
-- `compute_target`daha önce tanımlanan, `compute_target` Bu örnekte ucuz BIR CPU tabanlı makinedir. Oto ml 'nin derin öğrenme tesislerini kullanıyorsanız, işlem hedefini GPU tabanlı olacak şekilde değiştirmek isteyebilirsiniz
-- `featurization`, olarak ayarlanır `auto` . Diğer ayrıntılar, otomatik ML yapılandırma belgesinin [veri Korleştirme](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) bölümünde bulunabilir 
+- `task``classification`Bu örnek için olarak ayarlanır. Diğer geçerli değerler şunlardır `regression` ve `forecasting`
+- `path` ve `debug_log` hata ayıklama bilgilerinin yazılacağı projenin ve yerel bir dosyanın yolunu açıklama 
+- `compute_target` daha önce tanımlanan, `compute_target` Bu örnekte ucuz BIR CPU tabanlı makinedir. Oto ml 'nin derin öğrenme tesislerini kullanıyorsanız, işlem hedefini GPU tabanlı olacak şekilde değiştirmek isteyebilirsiniz
+- `featurization` , olarak ayarlanır `auto` . Diğer ayrıntılar, otomatik ML yapılandırma belgesinin [veri Korleştirme](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) bölümünde bulunabilir 
 - `training_data``PipelineOutputTabularDataset`veri hazırlama adımının çıktılarından yapılan nesnelere ayarlanır 
-- `label_column_name`tahmin etmek için ilgilendiğiniz sütunu belirtir 
+- `label_column_name` tahmin etmek için ilgilendiğiniz sütunu belirtir 
 
 , `AutoMLStep` `AutoMLConfig` Ve, `PipelineData` ölçümleri ve model verilerini tutmak için oluşturulan nesneler olan ve ' ı alır. 
 
 >[!Important]
-> Kullanmadığınız takdirde, `enable_default_model_output` ve ' i ayarlamanız gerekir `enable_default_metrics_output` `False` `AutoMLStep` .
+> `enable_default_model_output`Yalnızca kullanıyorsanız ve ' i ayarlamanız gerekir `enable_default_metrics_output` `True` `AutoMLStepRun` .
 
 Bu örnekte, otomatik ML işlemi üzerinde çapraz doğrulamalar gerçekleştirecek `training_data` . Bağımsız değişkenle çapraz doğrulama sayısını kontrol edebilirsiniz `n_cross_validations` . Eğitim verilerinizi veri hazırlama adımlarınızın bir parçası olarak zaten ayırdıysanız `validation_data` kendi kendine ayarlayabilirsiniz `Dataset` .
 

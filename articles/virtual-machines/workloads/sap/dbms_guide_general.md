@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827427"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510241"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -82,7 +82,7 @@ Azure 'da SAP iş yükünde başka makaleler de mevcuttur. [Azure 'Da SAP iş y�
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir.
 
-| Dekont numarası | Başlık |
+| Dekont numarası | Title |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -205,7 +205,7 @@ Aşağıdaki öneriler, bu g/ç özelliklerinin standart DBMS için olduğunu va
 
 Standart depolama için olası önbellek türleri şunlardır:
 
-* Hiçbiri
+* Yok
 * Okuma
 * Okuma/Yazma
 
@@ -213,7 +213,7 @@ Tutarlı ve belirleyici performans sağlamak için, DBMS ile ilgili veri dosyala
 
 Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttur:
 
-* Hiçbiri
+* Yok
 * Okuma
 * Okuma/yazma
 * Hiçbiri + yalnızca Azure a serisi VM 'Ler için olan Yazma Hızlandırıcısı
@@ -221,7 +221,7 @@ Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttur:
 
 Premium Depolama için SAP veritabanının **veri dosyaları Için okuma önbelleği** kullanmanızı ve **günlük dosyalarının diskleri için önbelleğe alma**seçeneğini seçmenizi öneririz.
 
-D serisi dağıtımlar için, DBMS dağıtımınız için Azure Yazma Hızlandırıcısı kullanmanızı öneririz. Ayrıntılar, kısıtlamalar ve Azure Yazma Hızlandırıcısı dağıtımı için bkz. [Enable yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md).
+D serisi dağıtımlar için, DBMS dağıtımınız için Azure Yazma Hızlandırıcısı kullanmanızı öneririz. Ayrıntılar, kısıtlamalar ve Azure Yazma Hızlandırıcısı dağıtımı için bkz. [Enable yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure kalıcı olmayan diskler

@@ -6,19 +6,19 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962960"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510588"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
-Özel çevirici ayarları sayfasında, yeni bir çalışma alanı oluşturabilir, çalışma alanınızı paylaşabilir ve Microsoft çeviri abonelik anahtarınızı ekleyebilir veya değiştirebilirsiniz.
+Özel çevirici ayarları sayfasında, çalışma alanınızı paylaşabilir, Translator abonelik anahtarınızı değiştirebilir ve çalışma alanını silebilirsiniz.
 
 Ayarlar sayfasına erişmek için:
 
@@ -33,23 +33,35 @@ Modelleri eğitmek veya dağıtmak için çalışma alanınız ile ilişkili bir
 
 Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
-1. Çevirmene abone olun. Bu makalede, çevirmen için nasıl abone olunacağı gösterilmektedir.
+1. Bir çevirmen kaynağı oluşturmak için abone olun. Nasıl abone olunacağı ve bir çevirmen anahtarı elde edebilmek için [çevirmene kaydolma](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) konusuna uyun.
 2. Çevirmen aboneliğinizin anahtarını aklınızda edin. KEY1 veya key2 seçeneklerinden biri kabul edilebilir.
 3. Özel çevirmen portalına geri gidin.
 
-### <a name="add-existing-key"></a>Mevcut anahtarı Ekle
+## <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluşturma
 
-1.    Çalışma alanınızın "Ayarlar" sayfasına gidin.
-2.    Anahtar Ekle 'ye tıklayın
+1. "Özel çevirici" kenar çubuğunda "+ çalışma alanı oluştur" düğmesine tıklayın.
 
-   ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key.png)
+    ![Yeni çalışma alanı oluştur](media/how-to/create-new-workspace.png)
 
-3. İletişim kutusunda, Translator aboneliğiniz için anahtarı girin ve ardından "Ekle" düğmesine tıklayın.
+2. İletişim kutusunda yeni çalışma alanının adını girin.
+3. "Ileri" ye tıklayın.
+4. Abonelik türünü seçin.
+5. Abonelik Bölgesi ' ni seçin. Çevirmen kaynak anahtarı oluşturulurken bölgenin Seçili bölge ile eşleşmesi gerekir.
+6. Translator aboneliğiniz için anahtarı girin ve ardından "Kaydet" düğmesine tıklayın.
+
+    ![Yeni çalışma alanı oluştur iletişim kutusu](media/how-to/create-new-workspace-dialog.png)
+
+
+### <a name="modify-existing-key"></a>Mevcut anahtarı Değiştir
+
+1. Çalışma alanınızın "Ayarlar" sayfasına gidin.
+2. Anahtarı Değiştir 'e tıklayın
+
+    ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key.png)
+
+3. İletişim kutusunda, Translator aboneliğiniz için anahtarı girin ve ardından "Kaydet" düğmesine tıklayın.
 
     ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key-dialog.png)
-4.    Bir anahtar ekledikten sonra, anahtarı dilediğiniz zaman değiştirebilir veya silebilirsiniz.
-
-   ![Ekleme sonrasında abonelik anahtarı](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Çalışma alanınızı yönetme
 
@@ -57,50 +69,50 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
 Çalışmanızın farklı bir kısmının farklı kişilerle paylaşılması gerekiyorsa, birden çok çalışma alanı oluşturmak yararlı olabilir.
 
-## <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluşturma
-
-1.    Çalışma alanı "ayarları" sayfasına gidin.
-2.    "Yeni çalışma alanı oluştur" bölümünde "yeni çalışma alanı" düğmesine tıklayın.
-
-   ![Yeni çalışma alanı oluştur](media/how-to/create-new-workspace.png)
-
-4.    İletişim kutusunda yeni çalışma alanının adını girin.
-5.    "Oluştur" a tıklayın.
-
-   ![Yeni çalışma alanı oluştur iletişim kutusu](media/how-to/create-new-workspace-dialog.png)
-
 ## <a name="share-your-workspace"></a>Çalışma alanınızı paylaşma
 
 Özel çevirmende, çalışmanızın farklı bir kısmının farklı kişilerle paylaşılması gerekiyorsa, çalışma alanınızı başkalarıyla paylaşabilirsiniz.
 
-1.    Çalışma alanı "ayarları" sayfasına gidin.
-2.    "Paylaşım ayarları" bölümünde "paylaşım" düğmesine tıklayın.
+1. Çalışma alanı "ayarları" sayfasına gidin.
+2. "Paylaşım ayarları" bölümünde "kişi ekle" düğmesine tıklayın.
 
-   ![Çalışma alanını paylaşma](media/how-to/share-workspace.png)
+    ![Çalışma alanını paylaşma](media/how-to/share-workspace.png)
 
-3.    İletişim kutusunda, bu çalışma alanının paylaşılacağını istediğiniz, virgülle ayrılmış bir e-posta adresi listesi girin. İle özel çevirmende oturum açmak için kişinin kullandığı e-posta adresiyle paylaşımda olduğunuzdan emin olun. Ardından uygun paylaşım düzeyini seçin.
+3. İletişim kutusunda, bu çalışma alanının paylaşılacağını istediğiniz, virgülle ayrılmış bir e-posta adresi listesi girin. İle özel çevirmende oturum açmak için kişinin kullandığı e-posta adresiyle paylaşımda olduğunuzdan emin olun. Ardından uygun paylaşım düzeyini seçin ve "Kaydet" düğmesine tıklayın.
 
-4.    Çalışma alanınız "My Workspace" varsayılan adına sahipse, çalışma alanınızı paylaşmadan önce değiştirmeniz gerekecektir.
-5.    "Kaydet" e tıklayın.
+    ![Çalışma alanını paylaşma iletişim kutusu](media/how-to/share-workspace-dialog.png)
+
+4. Çalışma alanınız "My Workspace" varsayılan adına sahipse, çalışma alanınızı paylaşmadan önce değiştirmeniz gerekecektir.
+5. "Kaydet" e tıklayın.
 
 ## <a name="sharing-permissions"></a>Paylaşım izinleri
 
-1.    **Okuyucu:** Çalışma alanındaki bir okuyucu, çalışma alanındaki tüm bilgileri görüntüleyebilecektir.
+1. **Okuyucu:** Çalışma alanındaki bir okuyucu, çalışma alanındaki tüm bilgileri görüntüleyebilecektir.
 
-2.    **Düzenleyici:** Çalışma alanındaki bir düzenleyici belge ekleyebilir, modelleri eğitebilir ve belge ve projeleri silebilir. Abonelik anahtarı ekleyebilirler, ancak çalışma alanının kimlerle paylaşıldığını değiştiremezler, çalışma alanını silebilir veya çalışma alanı adını değiştirebilirsiniz.
+2. **Düzenleyici:** Çalışma alanındaki bir düzenleyici belge ekleyebilir, modelleri eğitebilir ve belge ve projeleri silebilir. Abonelik anahtarı ekleyebilirler, ancak çalışma alanının kimlerle paylaşıldığını değiştiremezler, çalışma alanını silebilir veya çalışma alanı adını değiştirebilirsiniz.
 
-3.    **Sahip:** Bir sahibin çalışma alanı üzerinde tam izinleri vardır.
+3. **Sahip:** Bir sahibin çalışma alanı üzerinde tam izinleri vardır.
 
 ## <a name="change-sharing-permission"></a>Paylaşım iznini Değiştir
 
 Bir çalışma alanı paylaşıldığında, "paylaşım ayarları" bölümü, bu çalışma alanının paylaşıldığı tüm e-posta adreslerini gösterir. Çalışma alanına sahip erişiminiz varsa, her bir e-posta adresi için varolan paylaşım iznini değiştirebilirsiniz.
 
-1.    Her e-posta için "paylaşım ayarları" bölümünde, bir açılan menü, geçerli izin düzeyini gösterir.
+1. Her e-posta için "paylaşım ayarları" bölümünde, bir açılan menü, geçerli izin düzeyini gösterir.
 
-2.    Açılır menüye tıklayın ve bu e-posta adresine atamak istediğiniz yeni izin düzeyini seçin.
+2. Açılır menüye tıklayın ve bu e-posta adresine atamak istediğiniz yeni izin düzeyini seçin.
 
-   ![İzin ayarlarını paylaşma](media/how-to/sharing-permission-settings.png)
+    ![İzin ayarlarını paylaşma](media/how-to/sharing-permission-settings.png)
+
+## <a name="pin-your-workspace"></a>Çalışma alanınızı sabitleme
+
+Oluşturulan ilk çalışma alanınız varsayılan olarak sabitlenmiştir. Her oturum açışınızda, sabitlenmiş çalışma alanınız site yüküne göre görüntülenir. Birden çok çalışma alanı oluşturduysanız ve oturum açtığınızda bunlardan birini varsayılan yapmanız istenirse, onu sabitetmeniz gerekir.
+
+1. Kenar çubuğunda, sabitlemek istediğiniz çalışma alanının adına tıklayın.
+2. Çalışma alanınızın "Ayarlar" sayfasına gidin.
+3. Sabitleme simgesine tıklayın.
+
+    ![Çalışma alanını sabitle](media/how-to/how-to-pin-workspace.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Çalışma alanınızı ve projenizi](how-to-migrate.md) [Microsoft Translator hub 'ından](https://hub.microsofttranslator.com) nasıl geçirebileceğinizi öğrenin
+- [Çalışma alanınızı ve projelerinizi oluşturmayı](workspace-and-project.md) öğrenin

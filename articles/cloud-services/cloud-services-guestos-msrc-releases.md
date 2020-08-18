@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/15/2020
+ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 21dcc10be255c0795058886188b4380266679963
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258294"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510173"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -79,33 +79,30 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 
 ## <a name="july-2020-guest-os"></a>Temmuz 2020 Konuk işletim sistemi
->[!NOTE]
->Temmuz Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Temmuz Konuk işletim sisteminde bulunur. Bu liste değişikliğe tabidir.
-
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-07 |  [4565479]  |  Internet Explorer | 2,100, 3,87, 4,80 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565511]  |  En son toplu güncelleştirme (LCU) | 5,45 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4558998]  |  En son toplu güncelleştirme (LCU) | 6,21 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565524]  |  Aylık toplu | 2,100 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565616]  |  Aylık toplu | 2,100 | 16 Tem, 2020 |
-|  Rel 20-07 |  [4565354]  |  Hizmet yığını güncelleştirmesi | 2,100 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565612]  |  Aylık toplu | 2,100 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565615]  |  Aylık toplu | 3,87 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4566426]  |  Hizmet yığını güncelleştirmesi | 3,87 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565537]  |  Aylık toplu | 3,87 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565610]  |  Aylık toplu | 3,87 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565541]  |  Aylık toplu | 4,80 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4566425]  |  Hizmet yığını güncelleştirmesi | 4,80 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565614]  |  Aylık toplu | 4,80 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565613]  |  Aylık toplu | 4,80 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565912]  |  Hizmet yığını güncelleştirmesi | 5,45 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4565628]  |  Aylık toplu | 5,45 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4494175]  |  Mikro kod | 5,45 | 25 Şubat 2020 |
-|  Rel 20-07 |  [4565632]  |  Aylık toplu | 6,21 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4558997]  |  Hizmet yığını güncelleştirmesi | 6,21 | 14 Temmuz 2020 |
-|  Rel 20-07 |  [4494174]  |  Mikro kod | 6,21 | 25 Şubat 2020 |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | [2,100], [3,87], [4,80] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565511]  |  En son toplu güncelleştirme (LCU) | [5,45] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4558998]  |  En son toplu güncelleştirme (LCU) | [6,21] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565524]  |  Aylık toplu | [2,100] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565616]  |  Aylık toplu | [2,100] | 16 Tem, 2020 |
+|  Rel 20-07 |  [4565354]  |  Hizmet yığını güncelleştirmesi | [2,100] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565612]  |  Aylık toplu | [2,100] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565615]  |  Aylık toplu | [3,87] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4566426]  |  Hizmet yığını güncelleştirmesi | [3,87] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565537]  |  Aylık toplu | [3,87] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565610]  |  Aylık toplu | [3,87] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565541]  |  Aylık toplu | [4,80] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4566425]  |  Hizmet yığını güncelleştirmesi | [4,80] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565614]  |  Aylık toplu | [4,80] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565613]  |  Aylık toplu | [4,80] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565912]  |  Hizmet yığını güncelleştirmesi | [5,45] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4565628]  |  Aylık toplu | [5,45] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4494175]  |  Mikro kod | [5,45] | 25 Şubat 2020 |
+|  Rel 20-07 |  [4565632]  |  Aylık toplu | [6,21] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4558997]  |  Hizmet yığını güncelleştirmesi | [6,21] | 14 Temmuz 2020 |
+|  Rel 20-07 |  [4494174]  |  Mikro kod | [6,21] | 25 Şubat 2020 |
 
 
 [4565479]: https://support.microsoft.com/kb/4565479
@@ -129,6 +126,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4565632]: https://support.microsoft.com/kb/4565632
 [4558997]: https://support.microsoft.com/kb/4558997
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="june-2020-guest-os"></a>Haziran 2020 Konuk işletim sistemi

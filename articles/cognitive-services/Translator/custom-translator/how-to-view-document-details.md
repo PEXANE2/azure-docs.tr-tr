@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994251"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509593"
 ---
 # <a name="view-document-details"></a>Belge ayrıntılarını görüntüleme
 
@@ -22,7 +22,7 @@ Belge listesi sayfası, çalışma alanınızdaki ilk 10 belgeyi gösterir. Belg
 
 Belge ayrıntıları sayfasını görüntülemek için tek bir belgeye tıklayın. Belge ayrıntıları sayfası, belgedeki ayıklanan Tümcelerin listesini görüntüler.
 
-- Varsayılan olarak, açılan alanda "kaynak" dili seçilidir, ancak hedef dilde cümleleri görüntülemek için geçiş yapabilirsiniz.
+- Varsayılan olarak, "yan yana" kaynak ve hedef diller görünümü açılır alanda seçilidir, ancak kaynak veya hedef dilde cümleleri görüntülemek için geçiş yapabilirsiniz.
 - Her sayfa için varsayılan olarak 20 cümle görüntülenir. Sayfalar arasında gezinmek için sayfalandırma denetimini kullanabilirsiniz.
 
 ![Belge ayrıntıları](media/how-to/how-to-view-document-details.png)
@@ -32,11 +32,11 @@ Belge ayrıntıları sayfasını görüntülemek için tek bir belgeye tıklayı
 Kullanıcının bir belgeyi silmesi için belgeyi silmesi için bir çalışma alanı sahibi olması gerekir. Ek olarak, bir belge bir model tarafından kullanılıyorsa, eğitim sürecinin herhangi bir bölümünde veya dağıtım sürecinin herhangi bir bölümünde bulunan belge silinemez.
 
 1. Belge sayfasına git
-2.  Herhangi bir belge kaydına gelin ve çöp kutusu simgesine tıklayın.
+2. Herhangi bir belge kaydına gelin ve çöp kutusu simgesine tıklayın.
 
     ![Belgeyi silme](media/how-to/how-to-delete-document-1.png)
 
-3.  Silmeyi onaylayın.
+3. Silmeyi onaylayın.
 
     ![Silmeyi Onayla](media/how-to/how-to-delete-document-confirm.png)
 

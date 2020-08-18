@@ -1,29 +1,31 @@
 ---
-title: Azure Hızlı Başlangıç - Batch işi çalıştırma - .NET
-description: Batch .NET istemci kitaplığı ile bir C# uygulamasından Azure Batch örnek işi ve görevleri hızlıca çalıştırın.
+title: Hızlı başlangıç-.NET API ile ilk Azure Batch işinizi çalıştırma
+description: Bu hızlı başlangıçta, Batch .NET istemci kitaplığı ile bir C# uygulamasından bir Azure Batch örnek iş ve görev çalıştırırsınız.
 ms.topic: quickstart
-ms.date: 11/29/2018
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f17fc2103e4b8512e050d79f5a639b38d90a2a95
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117225"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511040"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Hızlı Başlangıç: .NET API ile ilk Azure Batch işinizi çalıştırma
 
-Bu hızlı başlangıç, Azure Batch .NET API üzerinde derlenmiş bir C# uygulamasından Azure Batch işi çalıştırır. Uygulama, Azure depolamaya birkaç veri dosyası yükler ve sonra Batch işlem düğümlerinin (sanal makine) *havuzunu* oluşturur. Daha sonra, temel bir komut kullanarak havuz üzerindeki her bir giriş dosyasını işlemek üzere *görevler* çalıştıran örnek bir *iş* oluşturur. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
+Azure Batch .NET API 'SI üzerinde oluşturulmuş bir C# uygulamasından iş çalıştırarak Azure Batch kullanmaya başlayın. Uygulama, Azure depolamaya birkaç veri dosyası yükler ve sonra Batch işlem düğümlerinin (sanal makine) havuzunu oluşturur. Daha sonra, temel bir komut kullanarak havuz üzerindeki her bir giriş dosyasını işlemek üzere görevler çalıştıran örnek bir iş oluşturur.
 
-![Hızlı başlangıç uygulama iş akışı](./media/quick-run-dotnet/sampleapp.png)
+Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+![Azure Batch uygulama iş akışına genel bakış gösteren diyagram.](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) . 
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın. 
+- Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın.
+
+- [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) . 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -56,15 +58,15 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 [!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 Batch iş akışını uygulamalı olarak görmek için uygulamayı Visual Studio'da veya `dotnet build` ve `dotnet run` komutlarıyla komut satırında derleyip çalıştırın. Uygulamayı çalıştırdıktan sonra, uygulamanın her bir parçasının ne işe yaradığını öğrenmek üzere kodu gözden geçirin. Örneğin Visual Studio'da:
 
-* Çözüm Gezgini'nde çözüme sağ tıklayın ve **Derleme Çözümü**’ne tıklayın. 
+- Çözüm Gezgini'nde çözüme sağ tıklayın ve **Derleme Çözümü**’ne tıklayın. 
 
-* İstenirse, herhangi bir NuGet paketinin geri yüklenmesini onaylayın. Eksik paketleri indirmeniz gerekirse, [NuGet Paket Yöneticisi](https://docs.nuget.org/consume/installing-nuget)’nin yüklü olduğundan emin olun.
+- İstenirse, herhangi bir NuGet paketinin geri yüklenmesini onaylayın. Eksik paketleri indirmeniz gerekirse, [NuGet Paket Yöneticisi](https://docs.nuget.org/consume/installing-nuget)’nin yüklü olduğundan emin olun.
 
-Ardından çalıştırın. Örnek uygulamayı çalıştırdığınızda, konsol çıktısı aşağıdakine benzer. Yürütme sırasında, havuzun işlem düğümleri başlatıldığı sırada `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` konumunda bir duraklama yaşarsınız. Görevler, ilk işlem düğümünü çalışır çalışmaz çalışmak üzere kuyruğa alınır. Havuz, işlem düğümleri, iş ve görevleri izlemek için [Azure portalında](https://portal.azure.com) Batch hesabınıza gidin.
+Örnek uygulamayı çalıştırdığınızda, konsol çıktısı aşağıdakine benzer. Yürütme sırasında, havuzun işlem düğümleri başlatıldığı sırada `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` konumunda bir duraklama yaşarsınız. Görevler, ilk işlem düğümünü çalışır çalışmaz çalışmak üzere kuyruğa alınır. Havuz, işlem düğümleri, iş ve görevleri izlemek için [Azure portalında](https://portal.azure.com) Batch hesabınıza gidin.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -93,17 +95,16 @@ stderr:
 
 Varsayılan yapılandırmasında uygulama çalıştırıldığında tipik yürütme süresi yaklaşık 5 dakikadır. En çok süren işlem ilk havuz kurulumudur. İşi yeniden çalıştırmak için önceki çalıştırmadan işi silin ve havuzu silmeyin. Önceden yapılandırılmış bir havuzda işin tamamlanması birkaç saniye sürer.
 
-
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
 Bu hızlı başlangıçtaki .NET uygulaması şunları yapar:
 
-* Azure depolama hesabınızdaki blob kapsayıcısına üç küçük metin dosyası yükler. Bu dosyalar, Batch tarafından işlenecek girişlerdir.
-* Windows Server çalıştıran bir işlem düğümleri havuzu oluşturur.
-* Düğümler üzerinde çalıştırılacak bir iş ve üç görev oluşturur. Her görev bir Windows komut satırı kullanarak giriş dosyalarından birini işler. 
-* Görevler tarafından döndürülen dosyaları gösterir.
+- Azure depolama hesabınızdaki blob kapsayıcısına üç küçük metin dosyası yükler. Bu dosyalar, Batch tarafından işlenecek girişlerdir.
+- Windows Server çalıştıran bir işlem düğümleri havuzu oluşturur.
+- Düğümler üzerinde çalıştırılacak bir iş ve üç görev oluşturur. Her görev bir Windows komut satırı kullanarak giriş dosyalarından birini işler. 
+- Görevler tarafından döndürülen dosyaları gösterir.
 
-Ayrıntılar için `Program.cs` dosyasına ve aşağıdaki bölümlere bakın. 
+Ayrıntılar için `Program.cs` dosyasına ve aşağıdaki bölümlere bakın.
 
 ### <a name="preliminaries"></a>Başlangıç bilgileri
 
@@ -245,7 +246,6 @@ Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta, bir Batch havuzu ve bir Batch işi oluşturmak amacıyla Batch .NET API’si kullanılarak oluşturulan küçük bir uygulamayı çalıştırdınız. İş, örnek görevler çalıştırmış ve düğümler üzerinde oluşturulan çıktıyı indirmiştir. Batch hizmetinin temel kavramlarını anladıktan sonra, Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazırsınız. Azure Batch hakkında daha fazla bilgi almak ve bir gerçek yaşam uygulaması ile paralel iş yükü açıklaması görmek için Batch .NET öğreticisine geçin.
-
 
 > [!div class="nextstepaction"]
 > [.NET ile paralel iş yükü işleme](tutorial-parallel-dotnet.md)

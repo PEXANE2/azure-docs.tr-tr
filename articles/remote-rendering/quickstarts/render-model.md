@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565509"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509374"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 >* Unity için ARR hızlı başlangıç örnek uygulamasını edinme ve derleme
 >* ARR hızlı başlangıç örnek uygulamasında bir model işleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure uzaktan Işleme hizmetine erişim sağlamak için önce [bir hesap oluşturmanız](../how-tos/create-an-account.md)gerekir.
 
@@ -84,7 +84,7 @@ Daha sonra bu projeyi bir HoloLens 'e dağıtmak ve bu cihazdan uzaktan Işleme 
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Oturum oluşturma ve varsayılan modeli görüntüleme
 
-Oturumu başlatmak için Unity 'nin **oynat** düğmesine basın. *Oyun* panelindeki görünüm penceresinin alt kısmında durum metni içeren bir kaplama görmeniz gerekir. Oturum, bir dizi durum geçişine devam edecektir. **Başlangıç** durumunda uzak VM, birkaç dakika sürer. Başarılı olduğunda, **hazırlık** durumuna geçer. Artık oturum, bu VM üzerinde işleme çalışma zamanına ulaşmaya çalıştığı **bağlantı** durumuna girer. Başarılı olduğunda, örnek **bağlı** duruma geçiş yapar. Bu noktada, işleme için model indirilbaşlayacaktır. Modelin boyutu nedeniyle indirme birkaç dakika daha sürebilir. Daha sonra uzaktan işlenen model görüntülenir.
+Oturumu başlatmak için Unity 'nin **oynat** düğmesine basın. *Oyun* panelindeki görünüm penceresinin alt kısmında durum metni içeren bir kaplama görmeniz gerekir. Oturum, bir dizi durum geçişine devam edecektir. **Başlangıç** durumunda sunucu, birkaç dakika sürer. Başarılı olduğunda, **hazırlık** durumuna geçer. Artık oturum, **bağlantı** durumunu girer, burada bu sunucudaki işleme çalışma zamanına ulaşmaya çalışır. Başarılı olduğunda, örnek **bağlı** duruma geçiş yapar. Bu noktada, işleme için model indirilbaşlayacaktır. Modelin boyutu nedeniyle indirme birkaç dakika daha sürebilir. Daha sonra uzaktan işlenen model görüntülenir.
 
 ![Örnekten çıkış](media/arr-sample-output.png)
 

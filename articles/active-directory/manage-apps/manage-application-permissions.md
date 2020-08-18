@@ -1,6 +1,6 @@
 ---
 title: Kullanıcı ve yönetici izinlerini yönetme-Azure Active Directory | Microsoft Docs
-description: Azure AD 'de uygulama için izinleri incelemeyi ve yönetmeyi öğrenin. Örneğin, bir uygulamaya verilen tüm izinleri iptal etmek istiyorsanız.
+description: Azure AD 'de uygulama için izinleri incelemeyi ve yönetmeyi öğrenin. Örneğin, bir uygulamaya verilen tüm izinleri iptal edin.
 services: active-directory
 author: mimart
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d878c7b2f78d037e89235f3bb30c02fd11a7ae
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277652"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510887"
 ---
-# <a name="take-action-on-overpriviledged-or-suspicious-application-in-azure-active-directory"></a>Fazla ayrıcalıklı veya Azure Active Directory şüpheli uygulama üzerinde işlem gerçekleştirin
+# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory fazla ayrıcalıklı veya şüpheli uygulamalarda işlem yapın
 
-Uygulama izinlerini incelemeyi ve yönetmeyi öğrenin. Senaryoya bağlı olarak, bu makale uygulamanızın güvenliğini sağlamak için gerçekleştirebileceğiniz farklı eylemler sağlar. Bu, Kullanıcı veya yönetici izni aracılığıyla Azure Active Directory (Azure AD) kiracısına eklenen tüm uygulamalar için geçerlidir.
+Uygulama izinlerini incelemeyi ve yönetmeyi öğrenin. Bu makalede, senaryonuza göre uygulamanızı güvenli hale getirmek için uygulayabileceğiniz farklı eylemler sunulmaktadır. Bu eylemler, Kullanıcı veya yönetici izni aracılığıyla Azure Active Directory (Azure AD) kiracısına eklenen tüm uygulamalar için geçerlidir.
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki eylemleri gerçekleştirebilmek için genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açmanız gerekir.
+Aşağıdaki işlemleri yapmak için, genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açmanız gerekir.
 
 Uygulamalara erişimi kısıtlamak için Kullanıcı ataması yapmanız ve ardından kullanıcılara veya grupları uygulamaya atamanız gerekir.  Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
 
@@ -38,71 +38,73 @@ Eylemleri gerçekleştirmek üzere bağlamsal PowerShell betikleri almak için A
 3. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
 4. **İzinler**' i seçin. Komut çubuğunda, **Izinleri gözden geçir**' i seçin.
 
-![İzinleri gözden geçir](./media/manage-application-permissions/review-permissions.png)
+![İzinleri gözden geçir penceresinin ekran görüntüsü.](./media/manage-application-permissions/review-permissions.png)
 
-## <a name="i-want-to-control-access-to-an-application"></a>Bir uygulamaya erişimi denetlemek istiyorum
 
-Üzerinde kullanıcı atama ayarını açıp bu uygulamaya erişimi kısıtlamanız önerilir.
+## <a name="control-access-to-an-application"></a>Bir uygulamaya erişimi denetleme
+
+**Kullanıcı atama** ayarını açarak uygulamaya erişimi kısıtlamanız önerilir.
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 3. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-4. **Özellikler** ' i seçin ve ardından Kullanıcı gereksinimi gerekli ayarını Evet olarak ayarlayın.
-5. **Kullanıcı ve gruplar** ' ı seçin ve ardından uygulamaya atanan istenmeyen kullanıcıları kaldırın.
-6. Uygulamaya Kullanıcı veya grup atayın.
+4. **Özellikler**' i seçin ve **gerekli Kullanıcı gereksinimini** **Evet**olarak ayarlayın.
+5. **Kullanıcı ve gruplar**' ı seçin ve ardından uygulamaya atanan istenmeyen kullanıcıları kaldırın.
+6. Uygulamaya Kullanıcı veya Grup atama.
 
-İsteğe bağlı, PowerShell kullanarak uygulamaya atanan tüm kullanıcıları kaldırabilirsiniz.
+İsteğe bağlı olarak, PowerShell kullanarak uygulamaya atanan tüm kullanıcıları kaldırabilirsiniz.
 
-## <a name="i-want-to-revoke-all-permissions-for-an-application"></a>Bir uygulama için tüm izinleri iptal etmek istiyorum
+## <a name="revoke-all-permissions-for-an-application"></a>Bir uygulama için tüm izinleri iptal et
 
-PowerShell 'in kullanılması, bu uygulamaya verilen tüm izinleri iptal eder.
+PowerShell betiğini kullanmak, bu uygulamaya verilen tüm izinleri iptal eder.
 
 > [!NOTE]
-> Verilen geçerli izin iptal edildiğinde, kullanıcılara reconseing için kullanıcılar tarafından durdurulmayacaktır. Kullanıcıların uygulamaya yarışmasına engel olmak istiyorsanız, [son kullanıcıların uygulamaları nasıl kabul](configure-user-consent.md)ettıklarını okuyun.
+> Verilen geçerli izin iptal etmek, kullanıcıların uygulamaya yeniden onay duymasına gerek kalmaz. Kullanıcıların uygulamayı engellenmesini engellemek isterseniz, [kullanıcıların uygulamaları nasıl kabul](configure-user-consent.md)ettıklarını okuyun.
 
-İsteğe bağlı olarak, kullanıcıların uygulamaya erişimini engellemek için uygulamayı devre dışı bırakabilir ve uygulamanın verilerinize erişimini engelleyebilirsiniz.
+İsteğe bağlı olarak, kullanıcıların uygulamaya erişmesini ve uygulamanın verilerinize erişimini önlemek için uygulamayı devre dışı bırakabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 3. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-4. **Özellikler** ' i seçin ve ardından kullanıcıların oturum açması için etkin ' i ayarlayın. Hayır.
+4. **Özellikler**' i seçin ve ardından **kullanıcıların oturum açması için etkin** ' i **ayarlayın.**
 
-## <a name="application-is-suspicious-and-i-want-to-investigate"></a>Uygulama şüpheli ve araştırmak istiyorum
+## <a name="investigate-a-suspicious-application"></a>Şüpheli bir uygulamayı araştırın
 
-Üzerinde kullanıcı atama ayarını açıp Kullanıcı ve yöneticilerin uygulamaya verdiği izinleri gözden geçirerek bu uygulamaya erişimi kısıtlamanız önerilir.
+**Kullanıcı atama** ayarını açarak uygulamaya erişimi kısıtlamanız önerilir. Ardından, kullanıcıların ve yöneticilerin uygulamaya verdiği izinleri gözden geçirin.
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 3. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 5. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-6. **Özellikler** ' i seçin ve ardından Kullanıcı gereksinimi gerekli ayarını Evet olarak ayarlayın.
-7. **İzinler** ' i seçin ve yönetici ve Kullanıcı tarafından onaylanan izinleri gözden geçirin.
+6. **Özellikler**' i seçin ve **gerekli Kullanıcı gereksinimini** **Evet**olarak ayarlayın.
+7. **İzinler**' i seçin ve yönetici ve Kullanıcı tarafından onaylanan izinleri gözden geçirin.
 
-İsteğe bağlı, şunları yapabilirsiniz:
+İsteğe bağlı olarak, PowerShell kullanarak şunları yapabilirsiniz:
 
-- PowerShell kullanarak, uygulamanın oturum açmasını durdurmak için atanan tüm kullanıcıları kaldırın.
-- PowerShell kullanarak, uygulamaya erişimi olan kullanıcılar için yenileme belirteçlerini geçersiz kılar.
-- PowerShell kullanarak bu uygulama için tüm izinleri iptal et
-- Kullanıcıları erişimini engellemek ve bu uygulamaların verilerinize erişimini durdurmak için uygulamayı devre dışı bırakın.
+- Uygulamanın oturum açmasını engellemek için atanan tüm kullanıcıları kaldırın.
+- Uygulamaya erişimi olan kullanıcılar için yenileme belirteçlerini geçersiz kılar.
+- Uygulamanın tüm izinlerini iptal edin.
+
+Ya da kullanıcının erişimini engellemek ve uygulamanın verilerinize erişimini durdurmak için uygulamayı devre dışı bırakabilirsiniz.
 
 
-## <a name="application-is-malicious-and-im-compromised"></a>Uygulama kötü amaçlı ve tehlikede
+## <a name="disable-a-malicious-application"></a>Kötü amaçlı uygulamayı devre dışı bırakma 
 
-Kullanıcıların uygulamaya ve uygulamanın verilerinize erişmesini engellemek için uygulamayı devre dışı bırakmanızı öneririz. Bunun yerine uygulamayı silerseniz, son kullanıcılar uygulamaya reconsent ve verilerinize erişim verebilir.
+Kullanıcıların erişimini engellemek ve uygulamanın verilerinize erişmesini önlemek için uygulamayı devre dışı bırakmanızı öneririz. Bunun yerine uygulamayı silerseniz, kullanıcılar uygulamayı yeniden onaylamasına ve verilerinize erişim izni verebilir.
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 3. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-4. **Özellikler** ' i seçin ve ardından nesne kimliğini kopyalayın.
+4. **Özellikler**' i seçin ve ardından nesne kimliğini kopyalayın.
 
 ### <a name="powershell-commands"></a>PowerShell komutları
 
 
-Hizmet sorumlusu nesne KIMLIĞINI al
+Hizmet sorumlusu nesne KIMLIĞINI alın.
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 3. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-4. **Özellikler** ' i seçin ve ardından nesne kimliğini kopyalayın.
+4. **Özellikler**' i seçin ve ardından nesne kimliğini kopyalayın.
 
 ```powershell
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
@@ -128,7 +130,7 @@ Uygulamaya atanan tüm kullanıcıları kaldırın.
     }
  ```
 
-Uygulamaya verilen izinleri iptal et
+Uygulamaya verilen izinleri iptal et.
 
 ```powershell
     Connect-AzureAD
@@ -152,7 +154,7 @@ Uygulamaya verilen izinleri iptal et
         Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
     }
 ```
-Yenileme belirteçlerini geçersiz kıl
+Yenileme belirteçlerini geçersiz kılar.
 ```powershell
         Connect-AzureAD
 

@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888295"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510802"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
-Tüm 60 ve metin çeviri dillerinden ve bunlardan herhangi birine dönüştürmek için çeviriciyi kullanın. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda varsayılan olarak v3 of Translator kullanılarak kullanılabilir.
+Tüm 70 + metin çevirisi dillerinden ve bunlardan birine dönüştürmek için çeviriciyi kullanın. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda varsayılan olarak v3 of Translator kullanılarak kullanılabilir.
 
 Ayrıca, kendi iş ve sektöründe kullanılan terminolojiyi anlayan sinir çeviri sistemleri oluşturmak ve uygulamanıza konuşma çevirisi eklemek için Microsoft konuşma hizmeti ile birlikte çeviriciyi de kullanabilirsiniz.
 
@@ -47,6 +47,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Geleneksel Çince|   `zh-Hant`       |
 |Hırvatça|  `hr`    |
 |Çekçe| `cs`    |
+|Dili|  `prs`   |
 |Danca|    `da`        |
 |Felemenkçe| `nl`|
 |İngilizce|   `en`    |
@@ -83,6 +84,8 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Maori dili| `mi`  |
 |Marathi| `mr`  |
 |Norveççe| `nb`    |
+|Odia|  `or`    |
+|Peştuca|    `ps`    |
 |Farsça|   `fa`    |
 |Lehçe|    `pl`    |
 |Portekizce (Brezilya)|   `pt-br` |
@@ -185,26 +188,26 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 
 | Dil    | Dil kodu | Komut Dosyası | Hedef/Kaynak | Komut Dosyası|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arapça | `ar` | Arapça`Arab` | <--> | Tin`Latn` |
-| Bangla  | `bn` | Bengali`Beng` | <--> | Tin`Latn` |
-| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Tin`Latn` |
-| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Geleneksel Çince`Hant`|
-| Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Tin`Latn` |
-| Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Basitleştirilmiş Çince`Hans` |
-| Gucerat dili | `gu`  | Gucerat dili`Gujr` | --> | Tin`Latn` |
-| İbranice | `he` | İbranice`Hebr` | <--> | Tin`Latn` |
-| Hintçe | `hi` | Devanagari`Deva` | <--> | Tin`Latn` |
-| Japonca | `ja` | Japonca`Jpan` | <--> | Tin`Latn` |
-| Kannada dili | `kn` | Kannada dili`Knda` | --> | Tin`Latn` |
-| Malayalam dili | `ml` | Malayalam dili`Mlym` | --> | Tin`Latn` |
-| Marathi | `mr` | Devanagari`Deva` | --> | Tin`Latn` |
-| Odia | `or` | Oriya`Orya` | <--> | Tin`Latn` |
-| Pencap dili | `pa` | Gurmukhi`Guru`  | <--> | Tin`Latn`  |
-| Sırpça (Kiril) | `sr-Cyrl` | V`Cyrl`  | --> | Tin`Latn` |
-| Sırpça (Latin) | `sr-Latn` | Tin`Latn` | --> | V`Cyrl`|
-| Tamil dili | `ta` | Tamil dili`Taml` | --> | Tin`Latn` |
-| Telugu dili | `te` | Telugu dili`Telu` | --> | Tin`Latn` |
-| Tayca | `th` | Tay dili`Thai` | --> | Tin`Latn` |
+| Arapça | `ar` | Arapça `Arab` | <--> | Tin `Latn` |
+| Bangla  | `bn` | Bengali `Beng` | <--> | Tin `Latn` |
+| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Tin `Latn` |
+| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Geleneksel Çince `Hant`|
+| Geleneksel Çince | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Tin `Latn` |
+| Geleneksel Çince | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Basitleştirilmiş Çince `Hans` |
+| Gucerat dili | `gu`  | Gucerat dili `Gujr` | --> | Tin `Latn` |
+| İbranice | `he` | İbranice `Hebr` | <--> | Tin `Latn` |
+| Hintçe | `hi` | Devanagari `Deva` | <--> | Tin `Latn` |
+| Japonca | `ja` | Japonca `Jpan` | <--> | Tin `Latn` |
+| Kannada dili | `kn` | Kannada dili `Knda` | --> | Tin `Latn` |
+| Malayalam dili | `ml` | Malayalam dili `Mlym` | --> | Tin `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Tin `Latn` |
+| Odia | `or` | Oriya `Orya` | <--> | Tin `Latn` |
+| Pencap dili | `pa` | Gurmukhi `Guru`  | <--> | Tin `Latn`  |
+| Sırpça (Kiril) | `sr-Cyrl` | V `Cyrl`  | --> | Tin `Latn` |
+| Sırpça (Latin) | `sr-Latn` | Tin `Latn` | --> | V `Cyrl`|
+| Tamil dili | `ta` | Tamil dili `Taml` | --> | Tin `Latn` |
+| Telugu dili | `te` | Telugu dili `Telu` | --> | Tin `Latn` |
+| Tayca | `th` | Tay dili `Thai` | --> | Tin `Latn` |
 
 ### <a name="dictionary"></a>Sözlük
 
