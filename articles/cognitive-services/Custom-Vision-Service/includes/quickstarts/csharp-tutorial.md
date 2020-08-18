@@ -2,22 +2,22 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: de0c8fd674872a48a302a76a3f0951df13041206
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134113"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508566"
 ---
-Bu makalede, Özel Görüntü İşleme SDK'sını C# ile kullanarak görüntü sınıflandırma modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi .NET uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _olmadan_ bir sınıflandırma modeli oluşturma ve kullanma sürecini yapmak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../getting-started-build-a-classifier.md) bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak Için C# ile Özel Görüntü İşleme istemci kitaplığını kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlanmaktadır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi .NET uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _olmadan_ bir sınıflandırma modeli oluşturma ve kullanma sürecini yapmak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../getting-started-build-a-classifier.md) bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Herhangi bir [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) sürümü
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Özel Görüntü İşleme SDK 'sını ve örnek kodu alın
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Özel Görüntü İşleme istemci kitaplığı ve örnek kodu alın
 
 Özel Görüntü İşleme kullanan bir .NET uygulaması yazmak için Özel Görüntü İşleme NuGet paketleri gerekir. Bu paketler, indirileceği örnek projeye dahildir, ancak bunlara ayrı ayrı erişebilirsiniz.
 
@@ -32,7 +32,7 @@ Bu Visual Studio projesi, [Özel Görüntü İşleme web sitesi](https://customv
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-_Program.cs_ dosyasını açın ve kodu inceleyin. Eğitim ve tahmin anahtarlarınız için sırasıyla ve `CUSTOM_VISION_PREDICTION_KEY`olarak adlı `CUSTOM_VISION_TRAINING_KEY` [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Betik bu değişkenlere bakar.
+_Program.cs_ dosyasını açın ve kodu inceleyin. Eğitim ve tahmin anahtarlarınız için sırasıyla ve olarak adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `CUSTOM_VISION_TRAINING_KEY` `CUSTOM_VISION_PREDICTION_KEY` . Betik bu değişkenlere bakar.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 
@@ -72,7 +72,7 @@ Tahmin uç noktası, bir görüntüyü geçerli modele göndermek ve sınıfland
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>Varsayılan tahmin uç noktasına bir görüntü gönderme
 
-Bu betikte, test görüntüsü **LoadImagesFromDisk** yönteminde yüklenir ve modelin tahmin çıkışı konsolda görüntülenir. `publishedModelName` Değişkenin değeri, özel görüntü işleme portalının **performans** sekmesinde bulunan "Yayınlanan as" değerine karşılık gelmelidir. 
+Bu betikte, test görüntüsü **LoadImagesFromDisk** yönteminde yüklenir ve modelin tahmin çıkışı konsolda görüntülenir. Değişkenin değeri, `publishedModelName` özel görüntü işleme portalının **performans** sekmesinde bulunan "Yayınlanan as" değerine karşılık gelmelidir. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
 

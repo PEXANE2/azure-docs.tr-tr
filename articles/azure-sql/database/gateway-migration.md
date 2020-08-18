@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759708"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507527"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,21 +28,43 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
 ### <a name="september-2020"></a>Eylül 2020
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, **15 eylül 2020**' de müşteri trafiğini kabul etmeye başlayacaktır:
 
-Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, 10 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlayacaktır:
+- Avustralya Güneydoğu: 13.77.48.10
+- Kanada Doğu: 40.86.226.166, 52.242.30.154
+- UK Güney: 51.140.184.11, 51.105.64.0
+
+Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, **15 eylül 2020** ' de müşteri trafiğini kabul etmeye başlayacaktır:
+
+- Avustralya Güneydoğu: 191.239.192.109 ve 13.73.109.251
+- Orta ABD: 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96 ve 104.208.21.1
+- Doğu Asya: 191.234.2.139, 52.175.33.150 ve 13.75.32.4
+- Doğu ABD: 40.121.158.30, 40.79.153.12, 191.238.6.43 ve 40.78.225.32
+- Doğu ABD 2:40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107 ve 104.208.150.3
+- Fransa Orta: 40.79.137.0 ve 40.79.129.1
+- Japonya Batı: 104.214.148.156, 40.74.100.192, 191.238.68.11 ve 40.74.97.10
+- Orta Kuzey ABD: 23.96.178.199, 23.98.55.75 ve 52.162.104.33
+- Güneydoğu Asya: 104.43.15.0, 23.100.117.95 ve 40.78.232.3
+- Batı ABD: 104.42.238.205, 23.99.34.75 ve 13.86.216.196
+
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, **10 eylül 2020**' de müşteri trafiğini kabul etmeye başlayacaktır:
 
 - Orta Batı ABD: 13.78.248.43 
 - Güney Afrika Kuzey: 102.133.120.2  
 
-Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, 1 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlayacaktır:
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, **1 eylül 2020**' de müşteri trafiğini kabul etmeye başlayacaktır:
 
 - Kuzey Avrupa: 13.74.104.113 
 - Batı ABD2:40.78.248.10 
 - Batı Avrupa: 52.236.184.163 
 - Orta Güney ABD: 20.45.121.1, 20.49.88.1 
 
-Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, 1 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlar. :
+Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, **1 eylül 2020** ' de müşteri trafiğini kabul etmeye başlayacaktır:
 - Japonya Doğu: 40.79.184.8, 40.79.192.5
+
+# <a name="completed"></a>[Tamamlandı](#tab/completed-ip)
+
+Aşağıdaki ağ geçidi geçişleri tamamlanmıştır: 
 
 ### <a name="august-2020"></a>Ağustos 2020
 
@@ -53,10 +75,6 @@ Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
 - Batı ABD 2:40.78.240.8
 
 Bu SQL ağ geçitleri, 10 Ağustos 2020 ' de müşteri trafiğini kabul etmeye başlar. 
-
-# <a name="completed"></a>[Tamamlandı](#tab/completed-ip)
-
-Aşağıdaki ağ geçidi geçişleri tamamlanmıştır: 
 
 ### <a name="october-2019"></a>Ekim 2019
 - Brezilya Güney
@@ -96,7 +114,7 @@ TCP bağlantı noktası 1433 ve bağlantı noktası aralığı 11000-11999 ' dek
 
 4,0 sürümünün altında Microsoft JDBC sürücüsü kullanılarak gerçekleştirilen uygulamalardan yapılan bağlantılar sertifika doğrulaması başarısız olabilir. Microsoft JDBC 'nın daha düşük sürümleri, sertifikanın konu alanında ortak adı (CN) kullanır. Risk azaltma, Hostnameincercertificate özelliğinin *. database.windows.net olarak ayarlandığından emin olunması. Hostnameincercertificate özelliğinin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [şifreleme Ile bağlanma](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
-Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı veya SQL yönetilen örneği için bir destek isteği dosyası kullanın:https://aka.ms/getazuresupport
+Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı veya SQL yönetilen örneği için bir destek isteği dosyası kullanın: https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

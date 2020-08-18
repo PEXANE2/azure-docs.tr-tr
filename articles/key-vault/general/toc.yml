@@ -138,6 +138,8 @@
           href: move-region.md
 - name: Başvuru
   items:
+    - name: İstemci kitaplıkları
+      href: client-libraries.md
     - name: REST API hata kodları - Azure Key Vault
       href: rest-error-codes.md
     - name: Ortak parametreler ve üst bilgiler

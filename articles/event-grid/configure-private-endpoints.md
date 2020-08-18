@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Grid konular veya etki alanı için özel 
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7796c4160cbf40a241db901e31cc91edc361b00d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495293"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508847"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, konu veya etki alanınız için VNet adres alanından bir IP adresi kullanır. Daha fazla kavramsal bilgi için bkz. [ağ güvenliği](network-security.md).
@@ -68,9 +68,9 @@ Bu bölümde, bir konu veya etki alanı için özel bir uç nokta oluşturmak ü
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
@@ -78,7 +78,7 @@ Dört sağlama durumu vardır:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
 Aşağıdaki bölümlerde, özel bir uç nokta bağlantısını onaylama veya reddetme işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Arama çubuğuna **Event Grid konuları** ' nı veya **Event Grid etki alanlarını**yazın.
 1. Yönetmek istediğiniz **konuyu** veya **etki alanını** seçin.
 1. **Ağ** sekmesini seçin.
@@ -151,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki komutu çalıştırarak CLı için Azure Event Grid uzantısını güncelleştirin: 
 
 ```azurecli-interactive
@@ -366,13 +366,13 @@ $body = @{"location"="<LOCATION>"; "properties"=@{"publicNetworkAccess"="disable
 
 # create topic
 Invoke-RestMethod -Method 'Put'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01"  `
     -Headers $Headers  `
     -Body $body
 
 # verify that the topic was created
 $topic=Invoke-RestMethod -Method 'Get'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview"   `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01"   `
     -Headers $Headers  
 
 # create private link service connection
@@ -399,7 +399,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName <RESOURCE GROUP NAME
 
 # verify that the endpoint was created
 Invoke-RestMethod -Method 'Get'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections?api-version=2020-04-01-preview"   `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections?api-version=2020-06-01"   `
     -Headers $Headers   `
     | ConvertTo-Json -Depth 5
 
@@ -445,13 +445,13 @@ $approvedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"=
 
 # approve endpoint connection
 Invoke-RestMethod -Method 'Put'  `
-    -Uri "https://management.azure.com/subscriptions/<AzuRE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AzuRE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01"  `
     -Headers $Headers  `
     -Body $approvedBody
 
 # confirm that the endpoint connection was approved
 Invoke-RestMethod -Method 'Get'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01"  `
     -Headers $Headers
 
 ```
@@ -468,13 +468,13 @@ $rejectedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"=
 
 # reject private endpoint
 Invoke-RestMethod -Method 'Put'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01"  `
     -Headers $Headers  `
     -Body $rejectedBody
 
 # confirm that endpoint was rejected
 Invoke-RestMethod -Method 'Get' 
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview" ` 
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01" ` 
     -Headers $Headers
 ```
 

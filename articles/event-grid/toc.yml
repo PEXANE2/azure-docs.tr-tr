@@ -236,7 +236,7 @@
       items:
         - name: Özel uç noktaları yapılandırma
           href: configure-private-endpoints.md
-        - name: IP güvenlik duvarını yapılandırma (önizleme)
+        - name: IP güvenlik duvarını yapılandırma
           href: configure-firewall.md
         - name: AAD ile Web Kancası güvenliğini sağlama
           href: secure-webhook-delivery.md

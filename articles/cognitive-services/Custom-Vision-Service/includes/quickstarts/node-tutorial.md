@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1a89b311a524e6ef0d8e1fc8145f7e13d10bb6b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406053"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508582"
 ---
-Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Node.js ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Bu örneği, kendi Node.js uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](../../getting-started-build-a-classifier.md) konusuna bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Node.js Özel Görüntü İşleme istemci kitaplığını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Bu örneği, kendi Node.js uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](../../getting-started-build-a-classifier.md) konusuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -19,9 +19,9 @@ Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Node.js il
 - [NPM](https://www.npmjs.com/) yüklendi.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
+## <a name="install-the-custom-vision-client-library"></a>Özel Görüntü İşleme istemci kitaplığını yükler
 
-Node.js için Özel Görüntü İşleme hizmet SDK 'sını yüklemek için PowerShell 'de aşağıdaki komutu çalıştırın:
+Node.js için Özel Görüntü İşleme hizmeti istemci kitaplığını yüklemek için PowerShell 'de aşağıdaki komutu çalıştırın:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

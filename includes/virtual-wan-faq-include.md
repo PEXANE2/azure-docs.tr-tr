@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375031"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507595"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -187,7 +187,7 @@ Hayır. Sanal WAN, her siteden ExpressRoute gerektirmez. Siteleriniz ExpressRout
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Azure sanal WAN kullanılırken bir ağ performansı veya bağlantı sınırı var mı?
 
-Ağ aktarım hızı, sanal bir WAN hub 'ında hizmet başına. İstediğiniz sayıda sanal WAN 'ınız olabilir, ancak her sanal WAN, bölge başına 1 hub 'a izin verir. Her hub 'da, VPN toplam aktarım hızı 20 Gbps 'e kadar, ExpressRoute toplam aktarım hızı 20 Gbps 'e kadar, kullanıcı VPN/Noktadan siteye VPN toplam verimlilik ise 20 Gbps 'ye kadar olur. Sanal hub 'daki yönlendirici, VNet 'ten VNet 'e trafik akışları için 50 Gbps 'e kadar destekler ve sanal WAN hub 'lardaki tüm sanal ağlarda toplam 2000 VM iş yükünü varsayar.
+Ağ aktarım hızı, sanal bir WAN hub 'ında hizmet başına. İstediğiniz sayıda sanal WAN 'ınız olabilir, ancak her sanal WAN, bölge başına 1 hub 'a izin verir. Her hub 'da, VPN toplam aktarım hızı 20 Gbps 'e kadar, ExpressRoute toplam aktarım hızı 20 Gbps 'e kadar, kullanıcı VPN/Noktadan siteye VPN toplam verimlilik ise 20 Gbps 'ye kadar olur. Sanal hub 'daki yönlendirici, VNet-VNet trafik akışları için en fazla 50 Gbps destekler ve tek bir sanal hub 'a bağlı tüm VNET 'lerde toplam 2000 VM iş yükünü varsayar.
 
 VPN siteleri bir hub 'a bağlandığında bağlantıları bu şekilde görür. Sanal WAN, sanal hub başına en fazla 1000 bağlantıyı veya 2000 IPSec Tünelini destekler. Uzak kullanıcılar sanal hub 'a bağlandıklarında, sanal hub 'da P2S VPN ağ geçidi için seçilen ölçek birimine (bant genişliği) bağlı olarak en fazla 10.000 kullanıcıyı destekleyen P2S VPN ağ geçidine bağlanır.
 

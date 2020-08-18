@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de905c61642c36a07c7f87e0be910b0f035bffc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555257"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507442"
 ---
 # <a name="what-is-risk"></a>Risk nedir?
 
@@ -50,9 +50,9 @@ Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacı
 | Risk algılama | Algılama türü | Açıklama |
 | --- | --- | --- |
 | Anonim IP adresi | Gerçek zamanlı | Bu risk algılama türü, anonim bir IP adresinden (örneğin, Tor tarayıcısı veya anonim VPN) oturum açma işlemlerini gösterir. Bu IP adresleri genellikle kötü amaçlı olabilecek bir amaç için oturum açma telemetrisini (IP adresi, konum, cihaz vb.) gizlemek isteyen aktörler tarafından kullanılır. |
-| Atipik seyahat | Çevrimdışı | Bu risk algılama türü, coğrafi olarak uzak konumlardan kaynaklanan iki oturum açma işlemini tanımlar. Bu konumlar, konumların en az birinin Kullanıcı için de normal bir şekilde (geçmiş davranışa göre) de olabileceğini belirtir. Bu makine öğrenimi algoritması, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını belirten, iki oturum açma işlemi ve kullanıcının ilk konumdan ikincisine geçebileceği zaman arasındaki süreyi dikkate alır. <br><br> Algoritma, kuruluştaki diğer kullanıcılar tarafından düzenli olarak kullanılan VPN 'Ler ve konumlar gibi mümkün olmayan seyahat koşullarına katkıda bulunan açık "yanlış pozitif sonuçlar" i yoksayar. Sistemin ilk öğrenme süresi en fazla 14 gün veya 10 oturum açma, yeni bir kullanıcının oturum açma davranışını öğreniyor. |
+| Olağandışı yolculuk | Çevrimdışı | Bu risk algılama türü, coğrafi olarak uzak konumlardan kaynaklanan iki oturum açma işlemini tanımlar. Bu konumlar, konumların en az birinin Kullanıcı için de normal bir şekilde (geçmiş davranışa göre) de olabileceğini belirtir. Bu makine öğrenimi algoritması, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını belirten, iki oturum açma işlemi ve kullanıcının ilk konumdan ikincisine geçebileceği zaman arasındaki süreyi dikkate alır. <br><br> Algoritma, kuruluştaki diğer kullanıcılar tarafından düzenli olarak kullanılan VPN 'Ler ve konumlar gibi mümkün olmayan seyahat koşullarına katkıda bulunan açık "yanlış pozitif sonuçlar" i yoksayar. Sistemin ilk öğrenme süresi en fazla 14 gün veya 10 oturum açma, yeni bir kullanıcının oturum açma davranışını öğreniyor. |
 | Kötü amaçlı yazılım bağlı IP adresi | Çevrimdışı | Bu risk algılama türü, bir bot sunucusuyla etkin bir şekilde iletişim kuran bilinen kötü amaçlı yazılımdan etkilenen IP adreslerinden oturum açma işlemlerini gösterir. Bu algılama, Kullanıcı cihazının IP adresleri, bot sunucusu etkinken bir bot sunucusu ile iletişim içinde olan IP adreslerine göre belirlenir. |
-| Bilmediğiniz oturum açma özellikleri | Gerçek zamanlı | Bu risk algılama türü, anormal oturum açma işlemlerini aramak için geçen oturum açma geçmişini (IP, Enlem/Boylam ve ASN) dikkate alır. Sistem, bir kullanıcı tarafından kullanılan önceki konumlara ilişkin bilgileri depolar ve bu "tanıdık" konumları dikkate alır. Risk algılama, oturum açma, zaten tanıdık konumlar listesinde olmayan bir konumdan gerçekleştirildiğinde tetiklenir. Yeni oluşturulan kullanıcılar "öğrenme modunda", algoritmalarımız kullanıcının davranışını öğrenirken, bilinmeyen oturum açma özelliklerinin risk algılamalarının devre dışı bırakıldığına ilişkin bir süre için "öğrenme modunda" olacaktır. Öğrenme modu süresi dinamiktir ve kullanıcının oturum açma desenleriyle ilgili yeterli bilgi toplamak için algoritmanın ne kadar zaman aldığını bağlıdır. En kısa süre beş gündür. Bir Kullanıcı, uzun bir süre etkinlik dışı kaldıktan sonra öğrenme moduna geçebilir. Sistem ayrıca tanıdık cihazlardan oturum açma işlemlerini ve coğrafi olarak tanıdık bir konuma yakın konumları yoksayar. <br><br> Bu algılamayı Ayrıca temel kimlik doğrulaması (veya eski protokoller) için de çalıştırdık. Bu protokollerin istemci KIMLIĞI gibi modern özellikleri olmadığından, hatalı pozitif sonuçları azaltmak için sınırlı telemetri vardır. Müşterilerimizin modern kimlik doğrulamasına taşınmasını öneririz. |
+| Bilinmeyen oturum açma özellikleri | Gerçek zamanlı | Bu risk algılama türü, anormal oturum açma işlemlerini aramak için geçen oturum açma geçmişini (IP, Enlem/Boylam ve ASN) dikkate alır. Sistem, bir kullanıcı tarafından kullanılan önceki konumlara ilişkin bilgileri depolar ve bu "tanıdık" konumları dikkate alır. Risk algılama, oturum açma, zaten tanıdık konumlar listesinde olmayan bir konumdan gerçekleştirildiğinde tetiklenir. Yeni oluşturulan kullanıcılar "öğrenme modunda", algoritmalarımız kullanıcının davranışını öğrenirken, bilinmeyen oturum açma özelliklerinin risk algılamalarının devre dışı bırakıldığına ilişkin bir süre için "öğrenme modunda" olacaktır. Öğrenme modu süresi dinamiktir ve kullanıcının oturum açma desenleriyle ilgili yeterli bilgi toplamak için algoritmanın ne kadar zaman aldığını bağlıdır. En kısa süre beş gündür. Bir Kullanıcı, uzun bir süre etkinlik dışı kaldıktan sonra öğrenme moduna geçebilir. Sistem ayrıca tanıdık cihazlardan oturum açma işlemlerini ve coğrafi olarak tanıdık bir konuma yakın konumları yoksayar. <br><br> Bu algılamayı Ayrıca temel kimlik doğrulaması (veya eski protokoller) için de çalıştırdık. Bu protokollerin istemci KIMLIĞI gibi modern özellikleri olmadığından, hatalı pozitif sonuçları azaltmak için sınırlı telemetri vardır. Müşterilerimizin modern kimlik doğrulamasına taşınmasını öneririz. |
 | Yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış | Çevrimdışı | Bu algılama, bir yöneticinin riskli kullanıcılar Kullanıcı arabiriminde veya riskyUsers API 'sini kullanarak ' Kullanıcı güvenliğinin aşılmasına karşı ' yı seçtiğinizi gösterir. Bu kullanıcının hangi yönetici tarafından tehlikede olduğunu görmek için kullanıcının risk geçmişini (UI veya API aracılığıyla) denetleyin. |
 | Kötü amaçlı IP adresi | Çevrimdışı | Bu algılama, kötü amaçlı bir IP adresinden oturum açma işlemini gösterir. IP adresi veya diğer IP saygınlığı kaynaklarından alınan geçersiz kimlik bilgileri nedeniyle, bir IP adresi yüksek hata ücretleri temelinde kötü amaçlı olarak değerlendirilir. |
 | Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilir. Bu algılama, ortamınızı profiller ve iletileri veya klasörleri silen veya taşıyan şüpheli kurallar bir kullanıcının gelen kutusunda ayarlandığında uyarıları tetikler. Bu algılama, Kullanıcı hesabının güvenliğinin aşıldığını, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzda istenmeyen posta veya kötü amaçlı yazılım dağıtmak için kullanıldığını belirtebilir. |
@@ -65,6 +65,12 @@ Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacı
 | Ek risk algılandı | Gerçek zamanlı veya çevrimdışı | Bu algılama, yukarıdaki Premium algılamalardan birinin algılandığını gösterir. Premium algılamalar yalnızca Azure AD Premium P2 müşterilerine görünür olduğundan, müşteriler için Azure AD Premium P2 lisansları olmayan "ek risk algılandı" olarak adlandırılmış olurlar. |
 
 ## <a name="common-questions"></a>Sık sorulan sorular
+
+### <a name="risk-levels"></a>Risk düzeyleri
+
+Kimlik koruması, riski üç katmana kategorilere ayırır: düşük, orta ve yüksek. 
+
+Microsoft, riskin nasıl hesaplandığına ilişkin belirli ayrıntıları sağlamadığında, her bir düzeyin, kullanıcının veya oturum açma güvenliğinin tehlikeye girdiği daha yüksek güvenilirliğe neden olduğunu varsayalım. Örneğin, bir kullanıcı için bilmediğiniz bir oturum açma özelliklerinin bir örneği, başka bir kullanıcı için sızdırıcı kimlik bilgileri olarak tehdit etmeyebilir.
 
 ### <a name="leaked-credentials"></a>Sızdırılan kimlik bilgileri
 

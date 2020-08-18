@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927428"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508613"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure Machine Learning Enterprise ve Basic sürümleri 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enterprise (Preview) ve temel Azure Machine Learning sürümleri 
 
 Azure Machine Learning, Machine Learning gereksinimleriniz için tasarlanmış iki sürüm sunar. Bu sürümler, geliştiricilerin ve veri bilimcilerinin çalışma alanından hangi makine öğrenimi araçlarının kullanılabilir olduğunu tespit.
 
@@ -23,7 +23,7 @@ Azure Machine Learning, Machine Learning gereksinimleriniz için tasarlanmış i
 
 Her çalışma alanı oluşturduğunuzda sürümü atarsınız. Müşteriler, bu süre boyunca işlem ve diğer Azure kaynakları üzerinden oluşan maliyetlerden sorumludur. [Azure Machine Learning maliyetlerini yönetmeyi](concept-plan-manage-cost.md)öğrenin.
 
-[Temel bir çalışma alanını Enterprise Edition 'a yükseltmeyi](how-to-manage-workspace.md#upgrade)öğrenin. 
+[Temel bir çalışma alanını Enterprise (Preview) sürümüne yükseltmeyi](how-to-manage-workspace.md#upgrade)öğrenin. 
 
 ## <a name="whats-in-each-edition"></a>Her sürümde neler vardır
 

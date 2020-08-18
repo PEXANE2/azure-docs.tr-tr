@@ -9,18 +9,65 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b1f45cad5def0e7d9a576a05299b065705ff3e30
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d93e01cdec79f739367dc219d81028c1abc2d66e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553453"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508218"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin.
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
+
+## <a name="2020-08-17"></a>2020-08-17
+
+### <a name="azure-machine-learning-sdk-for-python-v1120"></a>Python v 1.12.0 için SDK Azure Machine Learning
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **Azure-CLI-ml**
+    + Oluşturulan paket görüntüsünün yeniden adlandırılmasını etkinleştirmek için model. Package () image_name ve image_label parametreleri ekleyin.
+  + **azureml-automl-core**
+    + Okuma sırasında içerik değiştirildiğinde, reml, dataprep 'ten yeni bir hata kodu oluşturur.
+  + **azureml-automl-runtime**
+    + Veriler eksik değerler içerdiğinde Kullanıcı için uyarılar eklendi ancak korleştirme kapalı.
+    + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
+    + Okuma sırasında içerik değiştirildiğinde, reml, dataprep 'ten yeni bir hata kodu oluşturur.
+    + Tahmin ölçümlerinin gren tarafından gerçekleşmesi için normalleştirme güncelleştirildi.
+    + Geriye doğru geri dönüş özellikleri devre dışı bırakıldığında tahmin satışlarından oluşan gelişmiş hesaplama.
+    + Oto ml 'den sonra açıklamalar hesaplanırken, bool seyrek matris işleme düzeltildi.
+  + **azureml-core**
+    + Yeni bir yöntem `run.get_detailed_status()` artık geçerli çalışma durumunun ayrıntılı açıklamasını gösterir. Şu anda yalnızca durum açıklaması gösteriliyor `Queued` .
+    + Oluşturulan paket görüntüsünün yeniden adlandırılmasını etkinleştirmek için model. Package () image_name ve image_label parametreleri ekleyin.
+    + `set_pip_requirements()`Tüm PIP bölümünü aynı anda ayarlamak için yeni yöntem [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) .
+    + Kimlik bilgisini kaydetmeyi etkinleştirme-daha az ADLS 2. veri deposu.
+    + Yanlış bir veri kümesi türü indirilmeye veya bağlamaya çalışırken geliştirilmiş hata iletisi.
+    + Zaman serisi veri kümesi filtresi örnek Not defterini, filtre iyileştirmesi sağlayan partition_timestamp daha fazla örneklerle güncelleştirin.
+    + SDK ve CLI 'yi, Özel uç nokta bağlantısı silinirken Armresourceıd yerine SubscriptionID, resourceGroup, Çalışmakimliği ve peConnectionName parametrelerini kabul edecek şekilde değiştirin.
+    + Deneysel dekoratör daha kolay tanımlama için sınıf adını gösterir.
+    + Modeller içindeki varlıkların açıklamaları artık bir çalıştırmaya göre otomatik olarak oluşturulmaz.
+  + **azureml-datadrift**
+    + Datadriftalgılayıcısı 'nda create_from_model API 'sini kullanım dışı olacak şekilde işaretleyin.
+  + **azureml-dataprep**
+    + Yanlış bir veri kümesi türü indirilmeye veya bağlamaya çalışırken geliştirilmiş hata iletisi.
+  + **azureml-pipeline-core**
+    + Kayıtlı veri kümelerini içeren ardışık düzen grafiğinin serisi kaldırılırken hata düzeltildi.
+  + **azureml-pipeline-steps**
+    + RScriptStep, azureml. Core. Environment öğesinden RSection 'ı destekler.
+    + Ortak API 'den passthru_automl_config parametresi kaldırıldı `AutoMLStep` ve bu parametre yalnızca iç parametreye dönüştürüldü.
+  + **azureml-train-automl-client**
+    + Yerel zaman uyumsuz kaldırıldı, yönetilen ortam, oto ml 'den çalışır. Tüm yerel çalıştırmalar çalıştırmanın başlatıldığı ortamda çalışır.
+    + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
+    + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
+  + **azureml-train-automl-runtime**
+    + Okuma sırasında içerik değiştirildiğinde, reml, dataprep 'ten yeni bir hata kodu oluşturur.
+    + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
+    + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
+  + **azureml-train-core**
+    + Bir Through parametreye geçirilen PIP gereksinimleri dosyasında PIP seçeneklerini belirtme (ör. ek-dizin-URL) desteği eklendi [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) `pip_requirements_file` .
+
 
 ## <a name="2020-08-03"></a>2020-08-03
 
@@ -36,7 +83,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Artık hata hakkında daha fazla bilgi bulunmuştur, oto ml 'de işlenmeyen özel durumlar, bilinen bir sorunlar HTTP sayfasına işaret ediyor.
   + **azureml-core**
     + Model adları 255 karakter uzunluğunda olabilir.
-    + Environment. get_image_details () dönüş nesnesi türü değişti. `DockerImageDetails`sınıf değiştirildi `dict` , görüntü ayrıntıları yeni sınıf özelliklerinden kullanılabilir. Değişiklikler geriye dönük olarak uyumludur.
+    + Environment. get_image_details () dönüş nesnesi türü değişti. `DockerImageDetails` sınıf değiştirildi `dict` , görüntü ayrıntıları yeni sınıf özelliklerinden kullanılabilir. Değişiklikler geriye dönük olarak uyumludur.
     + Bağımlılıklar yapısını korumak için ortam. from_pip_requirements () hatasını çözme
     + Aynı listeye bir int ve Double dahil edilmediğinde log_list başarısız olduğu bir hata düzeltildi.
     + Mevcut bir çalışma alanında özel bağlantı etkinleştirilirken, çalışma alanıyla ilişkili işlem hedefleri varsa, bu hedeflerin çalışma alanı özel uç noktası ile aynı sanal ağın arkasında olmaması durumunda çalışmadığına lütfen emin olun.
@@ -97,7 +144,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Get_model_path (), otomatik ml otomatik olarak oluşturulan Puanlama betiğinde AZUREML_MODEL_DIR ortam değişkeniyle değiştirdi. Ayrıca, Init () sırasında oluşan sorunları izlemek için telemetri eklenmiştir.
     + , `enable_cache` Oto Mlconfig 'in bir parçası olarak belirtme özelliği kaldırıldı
     + Belirli bir tahmin çalıştırmaları sırasında çalışan hizmet hatalarıyla başarısız olabileceği bir hata düzeltildi
-    + Sırasında belirli modeller etrafında geliştirilmiş hata işleme`get_output`
+    + Sırasında belirli modeller etrafında geliştirilmiş hata işleme `get_output`
     + Y transformatörü ile sınıflandırma için fitted_model. fit (X, y) çağrısı düzeltildi
     + Foratama görevleri için özelleştirilmiş ileri sarma dolgusu etkinleştirildi
     + Bir dict biçiminde tahmin parametreleri yerine yeni bir Foredıseingparameters sınıfı kullanılacak
@@ -122,7 +169,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   + **azureml-mlflow**
     + AzureML-MLflow ile yerel file://modellerini dağıtmaya yönelik destek ekleme
     + Ws. get_mlflow_tracking_uri () içindeki _with_auth param 'ı kullanımdan kaldırma
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + Son yayınlanan Covıd-19 izleme veri kümeleri artık SDK ile kullanılabilir
   + **azureml-pipeline-core**
     + "Azureml-Varsayılanlar", PIP bağımlılığının parçası olarak dahil edilmediğinden günlüğe çıkış uyarısı
@@ -146,7 +193,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
 ### <a name="azure-machine-learning-sdk-for-python-v180"></a>Python v 1.8.0 için SDK Azure Machine Learning
   
   + **Önizleme özellikleri**
-    + **azureml-contrib-eşitliği** `azureml-contrib-fairness`Paket, açık kaynak eşitliği değerlendirmesi ve unfairness azaltma paketi [Fairlearn](https://fairlearn.github.io) ve Azure Machine Learning Studio arasında tümleştirme sağlar. Bu paket özellikle, model eşitliği değerlendirme panoları 'nın bir AzureML çalışmasının parçası olarak karşıya yüklenmesini ve Azure Machine Learning Studio 'da gösterilmesini sağlar
+    + **azureml-contrib-eşitliği** `azureml-contrib-fairness` Paket, açık kaynak eşitliği değerlendirmesi ve unfairness azaltma paketi [Fairlearn](https://fairlearn.github.io) ve Azure Machine Learning Studio arasında tümleştirme sağlar. Bu paket özellikle, model eşitliği değerlendirme panoları 'nın bir AzureML çalışmasının parçası olarak karşıya yüklenmesini ve Azure Machine Learning Studio 'da gösterilmesini sağlar
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **Azure-CLI-ml**
@@ -159,7 +206,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Kullanıcı, bir şekilde devre dışı bırakıldığında sınıf Dengeleme özelliği artık etkinleştirilmeyecektir.  
   + **azureml-contrib-IOP**
     + CmAks işlem türü destekleniyor. Eğitim işi için kendi AKS kümenizi çalışma alanına ekleyebilirsiniz.
-  + **azureml-contrib-notebook**
+  + **azureml-contrib-Not defteri**
     + Belge, azureml-contrib-Not defteri paketine yönelik iyileştirmeler.
   + **azureml-contrib-pipeline-steps**
     + Belge, azureml-contrib--işlem hattı-adımlar paketine yönelik iyileştirmeler.
@@ -187,7 +234,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   + **azureml-mlflow**
     + Belge için azureml-mlflow geliştirmeleri.
     + MLFlow ile AML modeli kayıt defteri desteği ekler.
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + Python 3,8 için destek eklendi
   + **azureml-pipeline-core**
     + `PipelineDataset`Uygulamasının, bir iç sınıf olduğundan emin olmak için güncelleştirilmiş belgeleri.
@@ -294,7 +341,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
       + Process_count_per_node için varsayılan değer 1 ' e değiştirilir. Kullanıcı daha iyi performans için bu değeri ayarlamanız gerekir. En iyi uygulama, GPU veya CPU düğümü sayısı olarak ayarlanmalıdır.
       + ParallelRunStep hiçbir paket eklemez, kullanıcının ortam tanımında **azureml-Core** ve **azureml-dataprep [Pandas, sigortası]** paketleri içermesi gerekir. User_managed_dependencies ile özel Docker görüntüsü kullanılıyorsa, kullanıcının görüntüye Conda yüklemesi gerekir.
       
-+ **Yeni değişiklikler**
++ **Son değişiklikler**
   + **azureml-pipeline-steps**
     + , Bir loadmlconfig için geçerli bir giriş türü olarak azureml. dprep. Dataflow kullanımı kullanım dışı bırakıldı
   + **azureml-train-automl-client**
@@ -316,7 +363,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Oto ml 'de geliştirilmiş günlük
     + Veri hazırlığı özel durumları için ayrıntılı hata işleme eklendi
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
-    + `azureml-train-automl-runtime`ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
+    + `azureml-train-automl-runtime` ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
     + Tahmin görevlerinde özel özellikler için hata işleme geliştirildi.
     + Tahmin veri kümesi frekansı algılama mekanizması geliştirilmiştir.
     + Bazı veri kümelerinde Prophet modeli eğitiminde sorun düzeltildi.
@@ -349,7 +396,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   + **azureml-interpret**
     + Belge, azureml için güncelleştirme paketi.
     + En son SKLE uyumlu olacak şekilde düzeltilen düzeltme paketleri ve Not defterleri
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + hiçbir veri döndürülmediğinde, None döndürün.
     + To_pandas_dataframe performansını geliştirir.
   + **azureml-pipeline-core**
@@ -371,13 +418,13 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Giriş verileri için geçerli bir tür olarak kullanımdan kaldırılan azureml. dprep. Dataflow.
     + Mac henüz sürüm 10 ' da kullanılamadığından cudatoolkit = 9.0 'a ait olacak şekilde güncelleştirildi.
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
-    + `azureml-train-automl-runtime`ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
+    + `azureml-train-automl-runtime` ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
     + Kullanıcılara tahmin oluşturmak için sırasında geride özellikleri ekleme izni veren işlevsellik eklenmiştir.
   + **azureml-train-automl-runtime**
     + Oto ml 'de geliştirilmiş günlük
     + Veri hazırlığı özel durumları için ayrıntılı hata işleme eklendi
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
-    + `azureml-train-automl-runtime`ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
+    + `azureml-train-automl-runtime` ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
     + Kullanıcı hatasını doğru şekilde görüntülemesi için hata iletisi güncelleştirmeleri.
     + Training_data birlikte kullanılacak cv_split_column_names desteği
   + **azureml-train-core**
@@ -498,7 +545,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + AmlCompute kümeleri, sağlama sırasında kümede yönetilen bir kimlik ayarlamayı desteklemektedir. Yalnızca sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan bir kimlik kullanmak isteyip istemediğinizi belirtin ve ikinci durum durumunda bir IdentityId geçirin. Daha sonra, depolama veya ACR gibi çeşitli kaynaklara erişim izinleri ayarlayarak, AmlCompute 'in bugün kullandığı belirteç tabanlı bir yaklaşım yerine, verilerin güvenli bir şekilde veriye erişmesi için kullanılması gerekir. Parametreler hakkında daha fazla bilgi için SDK başvurumuza göz atın.
   
 
-+ **Yeni değişiklikler**
++ **Son değişiklikler**
   + AmlCompute kümeleri, çalışma tabanlı oluşturma sürecinin iki haftada kullanım dışı bırakıldığımızda bir önizleme özelliği destekliyordu. Her zaman Amlcompute sınıfını kullanarak kalıcı işlem hedefleri oluşturmaya devam edebilirsiniz, ancak Run config içinde işlem hedefi olarak "amlcompute" tanımlayıcısını belirtmeyle ilgili yaklaşım yakın gelecekte desteklenmeyecektir. 
 
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -561,7 +608,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + **azureml-train-automl-runtime**
     + Eğitim sonrası işlemleri etrafında ek telemetri eklendi.
     + seyrek bir oto e2e desteği eklendi
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + Service Monitor için ek telemetri eklendi.
     + Kararlılığı artırmak için Blobun ön kapısını etkinleştirin 
 
@@ -569,7 +616,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Python v 1.2.0 için SDK Azure Machine Learning
 
-+ **Yeni değişiklikler**
++ **Son değişiklikler**
   + Python 2,7 için bırakma desteği
 
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -604,7 +651,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + **Python 2,7**
     + Python 2,7 ' i desteklemeye yönelik son sürüm
 
-+ **Yeni değişiklikler**
++ **Son değişiklikler**
   + **Anlamsal Sürüm Oluşturma 2.0.0**
     + Sürüm 1,1 ' den başlayarak Azure ML Python SDK 'Sı 2.0.0 anlam sürümü oluşturma. [Buradan daha fazla bilgi edinin](https://semver.org/). Sonraki tüm sürümler yeni numaralandırma düzenini ve anlamsal sürüm oluşturma sözleşmesini takip edecektir. 
 
@@ -659,7 +706,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Kullanıcı, WebServices için anahtarlar yeniden oluşturulurken kimlik doğrulama anahtarı için bir değer belirtebilir.
     + Büyük harfler veri kümesinin giriş adı olarak kullanılamayan hata düzeltildi.
   + **azureml-varsayılanlar**
-    + `azureml-dataprep`, ' nin parçası olarak yüklenir `azureml-defaults` . Veri kümelerini bağlamak için işlem hedeflerine veri Prep [sigortası] el ile yüklemek artık gerekli değildir.
+    + `azureml-dataprep` , ' nin parçası olarak yüklenir `azureml-defaults` . Veri kümelerini bağlamak için işlem hedeflerine veri Prep [sigortası] el ile yüklemek artık gerekli değildir.
   + **azureml-interpret**
     + Toplu olarak güncelleştirildi-0,6-Community 'e yorumlayın. *
     + Azureml, yorumlamaya (0.5.0) göre güncelleştirildi-Community
@@ -670,7 +717,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + **azureml-pipeline-core**
     + Ardışık düzen toplu işlem Puanlama Not defteri artık ParallelRunStep kullanıyor
     + Bağımsız değişken listesini değiştirirken PythonScriptStep sonuçlarının yanlış şekilde yeniden kullanılabildiği bir hata düzeltildi
-    + Üzerinde parse_ * yöntemleri çağrılırken sütunları ayarlama özelliği eklendi`PipelineOutputFileDataset`
+    + Üzerinde parse_ * yöntemleri çağrılırken sütunları ayarlama özelliği eklendi `PipelineOutputFileDataset`
   + **azureml-pipeline-steps**
     + , `AutoMLStep` `azureml-pipeline-steps` Paketini pakete taşıdı. İçinde kullanım `AutoMLStep` dışı `azureml-train-automl-runtime` .
     + Veri kümesi için PythonScriptStep girişi olarak belge örneği eklendi
@@ -767,7 +814,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Python v 1.1.0 RC0 için SDK Azure Machine Learning (ön sürüm)
 
-+ **Yeni değişiklikler**
++ **Son değişiklikler**
   + **Anlamsal Sürüm Oluşturma 2.0.0**
     + Sürüm 1,1 ' den başlayarak Azure ML Python SDK 'Sı 2.0.0 anlam sürümü oluşturma. [Buradan daha fazla bilgi edinin](https://semver.org/). Sonraki tüm sürümler yeni numaralandırma düzenini ve anlamsal sürüm oluşturma sözleşmesini takip edecektir. 
   
@@ -897,7 +944,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Python v 1.0.76 için SDK Azure Machine Learning
 
-+ **Yeni değişiklikler**
++ **Son değişiklikler**
   + Azureml-eğitme-oto ml yükseltme sorunları
     + Azureml-tren-oto ml>= 1.0.76 'ten azureml-tren-oto ml<1.0.76 'e yükseltmek kısmi yüklemelere neden olabilir ve bazı oto ml içeri aktarımlarının başarısız olmasına neden olabilir. Bu sorunu çözmek için konumunda bulunan kurulum betiğini çalıştırabilirsiniz https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd . Ya da doğrudan PIP kullanıyorsanız şunları yapabilirsiniz:
       + "PIP install--Upgrade azureml-tren-oto"
@@ -910,7 +957,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + **azureml-automl-runtime**
     + Artık İkili Sınıflandırma görevleri için Ortalama skaler ölçümleri hesaplarken, oto 'nin her ikisi de doğru ve yanlış sınıfları hesaba götürecektir.
     + AzureML-oto ml-Core içindeki makine öğrenimi ve eğitim kodu, yeni bir AzureML-oto ml-Runtime paketine taşındı.
-  + **azureml-contrib-veri kümesi**
+  + **azureml-contrib-dataset**
     + `to_pandas_dataframe`Etiketli bir veri kümesinde, indirme seçeneğiyle çağrılırken, artık mevcut dosyaların üzerine yazılıp yazılmayacağını belirtebilirsiniz.
     + Çağrılırken `keep_columns` veya `drop_columns` bir zaman serisi, etiket veya resim sütunu atıldığı zaman, ilgili yetenekler veri kümesi için de bırakılır.
     + Nesne algılama görevi için pytorch yükleyicisindeki bir sorun düzeltildi.
@@ -1001,8 +1048,8 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 | Web tabanlı araç | Açıklama | Sürüm |
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | Temel & kurumsal |
-| [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | Kurumsal |
-| [Tasarımcı](concept-designer.md) (Önizleme) | Daha önce tasarımcı olarak bilinen sürükle ve bırak makine öğrenimi modelleme aracı | Kurumsal |
+| [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | Enterprise |
+| [Tasarımcı](concept-designer.md) (Önizleme) | Daha önce tasarımcı olarak bilinen sürükle ve bırak makine öğrenimi modelleme aracı | Enterprise |
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure Machine Learning tasarımcı geliştirmeleri
@@ -1067,7 +1114,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **Azure-CLI-ml**
     + CLı artık model paketlemeyi destekliyor.
-    + Veri kümesi CLı eklendi. Daha fazla bilgi için:`az ml dataset --help`
+    + Veri kümesi CLı eklendi. Daha fazla bilgi için: `az ml dataset --help`
     + Bir ınenceconfig örneği olmadan desteklenen modellerin (ONNX, scikit-öğren ve TensorFlow) dağıtımı ve paketlenmesi için destek eklendi.
     + SDK ve CLı 'de hizmet dağıtımı (acı ve AKS) için üzerine yazma bayrağı eklendi. Sağlanmışsa, zaten adlı hizmet varsa mevcut hizmetin üzerine yazar. Hizmet yoksa, yeni hizmet oluşturacaktır.
     + Modeller, Onnx ve TensorFlow olmak üzere iki yeni çerçeve ile kaydedilebilir. -Model kaydı, örnek giriş verilerini, örnek çıkış verilerini ve model için kaynak yapılandırmasını kabul eder.
@@ -1103,7 +1150,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
     + Etiketleri çalıştırmalardan kaldırmak için denemeleri eklenen işlevden etiket ekleme ve kaldırma işlevselliği eklendi
     + SDK ve CLı 'de hizmet dağıtımı (acı ve AKS) için üzerine yazma bayrağı eklendi. Sağlanmışsa, zaten adlı hizmet varsa mevcut hizmetin üzerine yazar. Hizmet yoksa, yeni hizmet oluşturacaktır.
   + [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift)
-    + Öğesinden `azureml-contrib-datadrift` öğesine taşındı`azureml-datadrift`
+    + Öğesinden `azureml-contrib-datadrift` öğesine taşındı `azureml-datadrift`
     + Değişikliklerini ve diğer istatistiksel ölçüler için zaman serisi veri kümelerini izleme desteği eklendi
     + Yeni yöntemler `create_from_model()` ve `create_from_dataset()` [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) sınıfı. `create()`Yöntem kullanım dışı olacaktır.
     + Azure Machine Learning Studio 'daki Python ve Kullanıcı arabirimindeki görselleştirmelerin ayarlamaları.
@@ -1260,7 +1307,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
     + İşlem hattı olarak tahmin için Prophet eklendi `timeseries` (yalnızca Önizleme)
 
   + **azureml-contrib-datadrift**
-    + Paketler, azureml-contrib-datadrift ile azureml-datadrift arasında yeniden konumlandırılır. `contrib`paket sonraki bir sürümde kaldırılacak
+    + Paketler, azureml-contrib-datadrift ile azureml-datadrift arasında yeniden konumlandırılır. `contrib` paket sonraki bir sürümde kaldırılacak
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-automl-core**
@@ -1289,7 +1336,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
   + **[azureml-core](https://docs.microsoft.com/python/api/azureml-core/azureml.core)**
     + Model nesnesi aracılığıyla depolamada SAS URL 'sini depolama sırasında modele alma özelliği eklendi. Ex: model. [get_sas_url ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model#get-sas-urls--)
     + Çalıştırmayı tanıtın. gönderilen çalışma ile ilişkili veri kümelerini almak için [' DataSet '] [get_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--)
-    + API ekleyin `Dataset.Tabular` .[ ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-json-lines-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-)JSON satırları dosyalarından bir TabularDataset oluşturmak için from_json_lines_files (). TabularDataset 'teki JSON satırları dosyalarında bu tablo verileri hakkında bilgi edinmek için lütfen https://aka.ms/azureml-data belgeler için ziyaret edin.
+    + API ekleyin `Dataset.Tabular` .[ ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-json-lines-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) JSON satırları dosyalarından bir TabularDataset oluşturmak için from_json_lines_files (). TabularDataset 'teki JSON satırları dosyalarında bu tablo verileri hakkında bilgi edinmek için lütfen https://aka.ms/azureml-data belgeler için ziyaret edin.
     + [Supported_vmsizes ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-) IŞLEVINE ek VM boyut alanları (Işletim sistemi diski, GPU sayısı) eklendi
     + Çalışmayı, özel ve genel IP 'yi, bağlantı noktasını vb. göstermek için [list_nodes ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) işlevine ek alanlar eklendi.
     + [Küme](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--) `--remotelogin_port_public_access` oluşturma sırasında SSH bağlantı noktasını açık veya kapalı bırakmak istediğinize bağlı olarak, etkin veya devre dışı olarak ayarlanabilir bir yeni alan belirtme özelliği. Bunu belirtmezseniz, küme bir sanal ağın içine dağıtıp dağıtdığınıza bağlı olarak bağlantı noktasını açar veya kapatır.
@@ -1427,7 +1474,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
         ```
 
     + `partition_format`Ve için bağımsız değişken olarak tanıtın `Dataset.Tabular.from_delimited_files` `Dataset.Tabular.from_parquet.files` . Her veri yolunun bölüm bilgileri, belirtilen biçime göre sütunlarda ayıklanır. ' {column_name} ' dize sütunu oluşturuyor ve ' {column_name: yyyy/aa/gg/HH/mm/ss} ' DateTime sütunu oluşturuyor; burada ' yyyy ', ' AA ', ' gg ', ' HH ', ' mm ' ve ' ss ', DateTime türü için Year, month, Day, Hour, Minute ve Second 'ı ayıklamak için kullanılır. Partition_format, dosya yolunun sonuna kadar ilk bölüm anahtarının konumundan başlamalıdır. Örneğin, '. ' yolu veriliyor. /USA/2019/01/01/data.csv ' bölümü ülkeye ve zamana göre, partition_format = '/{Country}/{PartitionDate: yyyy/aa/gg}/data.csv ', ' ABD ' değeri ve ' PartitionDate ' tarih sütunu ' 2019-01-01 ' değerine sahip ' Country ' dize sütununu oluşturur.
-    + `to_csv_files`ve `to_parquet_files` yöntemleri öğesine eklenmiştir `TabularDataset` . Bu yöntemler `TabularDataset` `FileDataset` , verileri belirtilen biçimdeki dosyalara dönüştürerek, ve arasında dönüştürmeyi etkinleştirir.
+    + `to_csv_files` ve `to_parquet_files` yöntemleri öğesine eklenmiştir `TabularDataset` . Bu yöntemler `TabularDataset` `FileDataset` , verileri belirtilen biçimdeki dosyalara dönüştürerek, ve arasında dönüştürmeyi etkinleştirir.
     + Model. Package () tarafından oluşturulan bir Dockerfile dosyasını kaydederken otomatik olarak temel görüntü kayıt defterinde oturum açın.
     + ' gpu_support ' artık gerekli değildir; AML artık kullanılabilir olduğunda NVIDIA Docker uzantısını otomatik olarak algılar ve kullanır. Daha sonraki bir sürümde kaldırılacak.
     + PipelineDrafts oluşturma, güncelleştirme ve kullanma desteği eklendi.
@@ -1504,7 +1551,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
     + Karşıya yükleme ile ilgili açıklamaları bir model KIMLIĞI eklemek için parametresi eklendi.
     + `is_raw`Bellekteki açıklamaları etiketleme ve karşıya yükleme eklendi.
     + Azureml-açıkla-model paketi için pytorch desteği ve Testleri eklendi.
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + Otomatik test ortamını algılayıp günlüğe kaydetmeyi destekler.
     + Ülke ve ZIP tarafından nüfusu almak için sınıflar eklendi.
   + **azureml-pipeline-core**
@@ -1531,7 +1578,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
   + , `read_parquet` Spark 'ta çalışırken performansı önemli ölçüde iyileştirildi.
   + `column_type_builder`Belirsiz tarih biçimleri içeren tek bir sütun olması durumunda başarısız olan bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
   + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda bulunan **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerektiğini unutmayın.
@@ -1646,7 +1693,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
     + AKS WebServices içinde belirteç kimlik doğrulaması desteği ekleyin.
     + `get_token()`Nesnelere yöntem ekleyin `Webservice` .
     + Machine Learning veri kümelerini yönetmek için CLı desteği eklendi.
-    + `Datastore.register_azure_blob_container`Artık isteğe bağlı olarak `blob_cache_timeout` , bu veri deposu için önbellek süre sonunu etkinleştirmek üzere blobsigortası 'nin Mount parametrelerini yapılandıran bir değer (saniye cinsinden) alır. Varsayılan değer zaman aşımı değildir, yani bir blob okunarak iş bitene kadar yerel önbellekte kalır. Çoğu iş bu ayarı tercih eder, ancak bazı işlerin, düğümlerine sığacak kadar büyük bir veri kümesinden daha fazla veri okuması gerekir. Bu işler için, bu parametrenin ayarlanması başarılı olur. Bu parametreyi ayarlarken dikkatli olmanız gerekir: değeri çok düşük olarak ayarlamak, bir dönem içinde kullanılan verilerin yeniden kullanılmadan önce süresinin dolmasına neden olabilir. Bu, tüm okumaların, eğitim sürelerini olumsuz yönde etkileyen yerel önbellek yerine blob depolamadan (ağ) yapılacağı anlamına gelir.
+    + `Datastore.register_azure_blob_container` Artık isteğe bağlı olarak `blob_cache_timeout` , bu veri deposu için önbellek süre sonunu etkinleştirmek üzere blobsigortası 'nin Mount parametrelerini yapılandıran bir değer (saniye cinsinden) alır. Varsayılan değer zaman aşımı değildir, yani bir blob okunarak iş bitene kadar yerel önbellekte kalır. Çoğu iş bu ayarı tercih eder, ancak bazı işlerin, düğümlerine sığacak kadar büyük bir veri kümesinden daha fazla veri okuması gerekir. Bu işler için, bu parametrenin ayarlanması başarılı olur. Bu parametreyi ayarlarken dikkatli olmanız gerekir: değeri çok düşük olarak ayarlamak, bir dönem içinde kullanılan verilerin yeniden kullanılmadan önce süresinin dolmasına neden olabilir. Bu, tüm okumaların, eğitim sürelerini olumsuz yönde etkileyen yerel önbellek yerine blob depolamadan (ağ) yapılacağı anlamına gelir.
     + Model açıklaması artık kayıt sonrasında düzgün şekilde güncelleştirilebilen olabilir
     + Model ve resim silme artık, bunlara bağlı yukarı akış nesneleri hakkında daha fazla bilgi sağlar ve bu da silmenin başarısız olmasına neden olur
     + Azureml. mlflow kullanarak uzak çalıştırmaların kaynak kullanımını geliştirme.
@@ -1705,7 +1752,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
 ### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Python v 1.0.48 için SDK Azure Machine Learning
 
 + **Yeni özellikler**
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + **azureml-contrib-OPENDATASET** 'ler artık **azureml-OPENDATASET**olarak kullanılabilir. Eski paket çalışmaya devam edebilir, ancak daha zengin özellikler ve geliştirmeler için, daha zengin bir şekilde veri taşımaya yönelik **azureml ile openopendataset** kullanmanızı öneririz.
     + Bu yeni paket, açık veri kümelerini Azure Machine Learning çalışma alanında veri kümesi olarak kaydetmenize ve veri kümesinin sunduğu işlevleri kullanmanıza olanak tanır.
     + Ayrıca, açık veri kümelerini Pandas/SPARK dataframes olarak kullanma gibi mevcut özellikleri ve hava durumu gibi bazı veri kümelerinde konum birleştirmelerini da içerir.
@@ -1750,7 +1797,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
     + Dizeler artık otomatik hiper parametre ayarlama için işlem hedefi olarak kabul edilir.
     + Auto_prepare_environment kullanılmamış RunConfiguration ayarı kullanım dışı bırakıldı.
     + Kullanım dışı bırakılan parametreler `conda_dependencies_file_path` ve `pip_requirements_file_path` `conda_dependencies_file` `pip_requirements_file` sırasıyla.
-  + **azureml-opendatasets**
+  + **azureml-OPENDATASET 'ler**
     + SPARK olmayan sürümde önemli performansı önemli ölçüde zenginleştirin.
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -1813,7 +1860,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
   + Artık var olan bir uzak işlem kümesinde çalışan bir betiği yeniden gönderebilirsiniz.
   + Artık, işlem hatları sekmesinde yeni parametrelerle yayınlanmış bir işlem hattı çalıştırabilirsiniz.
   + Çalışma ayrıntıları artık yeni bir Snapshot dosya görüntüleyicisini destekliyor. Belirli bir çalıştırma gönderdiğinizde dizinin anlık görüntüsünü görüntüleyebilirsiniz. Çalıştırmaya başlamak için gönderilen Not defterini de indirebilirsiniz.
@@ -1872,7 +1919,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Source_directory_data_store özelliğini, [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)Için sağlanan [runconfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 + **Yeni özellikler**
   + Raporlar için yeni Sürükle ve bırak tablosu Düzenleyicisi deneyimi. Kullanıcılar bir sütunu, tablonun önizlemesinin görüntüleneceği tablo alanına kadar iyi sürükleyebilirsiniz. Sütunlar yeniden düzenlenebilir.

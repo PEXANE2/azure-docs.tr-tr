@@ -43,7 +43,7 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Elektronik tasarım otomasyonu için Azure NetApp Files kullanmanın avantajları
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
-            - name: Azure NetApp Files ile Windows Sanal Masaüstü kullanma
+            - name: Windows Sanal Masaüstü ile Azure NetApp Files kullanmanın avantajları
               href: solutions-windows-virtual-desktop.md
     - name: Azure NetApp Files hakkında SSS
       href: azure-netapp-files-faqs.md

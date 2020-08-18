@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure AD Kimlik Koruması nedir?
+    - name: Kimlik Koruması nedir?
       href: overview-identity-protection.md
 - name: Kavramlar
   expanded: false
