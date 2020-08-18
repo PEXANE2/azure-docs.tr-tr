@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563934"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506550"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -151,7 +151,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
 * `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı
-* Bir bölümdeki diğer özellikler `$metadata` . Bunlara
+* Bir bölümdeki diğer özellikler `$metadata` . Bu modüller şunlardır:
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
@@ -181,6 +181,8 @@ Bir Digital ikizi özelliklerini güncelleştirmek için, değiştirmek istediğ
 await client.UpdateDigitalTwin(id, patch);
 ```
 
+Bir yama çağrısı, tek bir ikizi üzerinde dilediğiniz kadar özelliği güncelleştirebilir (hatta bunların hepsi de). Birden çok TWINS genelinde özellikleri güncelleştirmeniz gerekiyorsa, her bir ikizi için ayrı bir güncelleştirme çağrısının olması gerekir.
+
 > [!TIP]
 > Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha önce](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekirse yeni güncellenen TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
 
@@ -204,6 +206,7 @@ JSON yama kodu örneği aşağıda verilmiştir. Bu belge, uygulandığı dijita
 Düzeltme eklerini el ile veya [SDK](how-to-use-apis-sdks.md)'daki bir serileştirme Yardımcısı sınıfını kullanarak oluşturabilirsiniz. Her birine bir örnek aşağıda verilmiştir.
 
 #### <a name="create-patches-manually"></a>Düzeltme eklerini el ile oluşturma
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -278,6 +281,19 @@ Bu durumun düzeltme ekinin hem model hem de ikizi 'ın sıcaklık özelliğini 
   }
 ]
 ```
+
+### <a name="handle-conflicting-update-calls"></a>Çakışan güncelleştirme çağrılarını işle
+
+Azure dijital TWINS, tüm gelen isteklerin diğer bir tarihten sonra işlenmesini sağlar. Bu, birden çok işlev aynı anda bir ikizi üzerinde aynı özelliği güncelleştirmeye çalışırsa bile, çakışmayı işlemek için açık kilitleme kodu yazmanıza **gerek yoktur** .
+
+Bu davranış, ikizi esasına göre yapılır. 
+
+Örnek olarak, bu üç çağrının aynı anda ulaştığını gösteren bir senaryo düşünün: 
+*   *Twin1* üzerinde yazma özelliği
+*   *Twin1* üzerinde B özelliği yazma
+*   *Twin2* üzerinde yazma özelliği
+
+*Twin1* değiştiren iki çağrı diğerinden sonra yürütülür ve değişiklik iletileri her değişiklik için oluşturulur. *Twin2* değiştirme çağrısı, bir çakışma olmadan eşzamanlı olarak yürütülemeyebilir.
 
 ## <a name="delete-a-digital-twin"></a>Dijital ikizi silme
 

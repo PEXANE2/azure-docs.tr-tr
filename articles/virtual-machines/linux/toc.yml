@@ -418,7 +418,7 @@
         - name: Geçişe Genel Bakış
           href: migration-classic-resource-manager-overview.md
         - name: Geçişe derinlemesine bakış
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: Geçiş planlaması
           href: migration-classic-resource-manager-plan.md
         - name: CLI kullanarak geçirme
@@ -428,7 +428,7 @@
         - name: Geçiş için topluluk araçları
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: SSS
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: Görüntüleri Kullanma
       displayName: 'SIG, AMI, image'
       items:
@@ -954,7 +954,7 @@
           href: detach-disk.md
         - name: ARM şablonu ile diskleri dağıtma
           displayName: 'Azure Resource Manager, ARM'
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: Paylaşılan diskleri etkinleştirme
           href: disks-shared-enable.md
         - name: Diske VHD yükleme - CLI
@@ -1004,7 +1004,7 @@
         - name: Performans
           items:
             - name: Yazma hızlandırıcıyı kullanma
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: Ultra diskleri kullanma
               href: disks-enable-ultra-ssd.md
             - name: Disk kıyaslama

@@ -15,7 +15,7 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Machine Learning’de veri kümeleri
-      href: how-to-create-dataset-from-open-dataset.md
+      href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
 - name: Örnekler
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922005"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506337"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure PowerShell kullanarak bir şirket içi etki alanına Azure Active Directory Domain Services kaynak ormanı ve giden orman güveni oluşturma
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 > [!IMPORTANT]
 > Yönetilen etki alanı kaynak ormanları Şu anda Azure HDInsight veya Azure dosyalarını desteklememektedir. Varsayılan yönetilen etki alanı kullanıcı ormanları, bu ek hizmetlerden her ikisini de destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -88,7 +88,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
 1. İlk olarak, [New-AzResourceGroup][New-AzResourceGroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnekte, kaynak grubu *Myresourcegroup* olarak adlandırılır ve *westus* bölgesinde oluşturulur. Kendi adınızı ve istediğiniz bölgeyi kullanın:
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -102,7 +102,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
 1. Betiği için gereken aşağıdaki parametreleri gözden geçirin `New-AzureAaddsForest` . Önkoşul **Azure PowerShell** ve **Azure AD PowerShell** modüllerine de sahip olduğunuzdan emin olun. Uygulama ve şirket içi bağlantı sağlamak için sanal ağ gereksinimlerini planladığınızdan emin olun.
 
-    | Ad                         | Betik parametresi          | Açıklama |
+    | Adı                         | Betik parametresi          | Açıklama |
     |:-----------------------------|---------------------------|:------------|
     | Abonelik                 | *-Azuyeniden gönderilirken Scriptionıd*    | Azure AD DS faturalandırma için kullanılan abonelik KIMLIĞI. [Get-AzureRMSubscription][Get-AzureRMSubscription] cmdlet 'ini kullanarak Aboneliklerin listesini alabilirsiniz. |
     | Kaynak Grubu               | *-aaddsResourceGroupName* | Yönetilen etki alanı ve ilişkili kaynaklar için kaynak grubunun adı. |
@@ -112,7 +112,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
     `New-AzureAaddsForest`Bu kaynaklar zaten mevcut değilse betik Azure sanal ağını ve azure AD DS alt ağını oluşturabilir. Komut dosyası, belirtildiğinde, isteğe bağlı olarak iş yükü alt ağlarını oluşturabilir:
 
-    | Ad                              | Betik parametresi                  | Açıklama |
+    | Adı                              | Betik parametresi                  | Açıklama |
     |:----------------------------------|:----------------------------------|:------------|
     | Sanal ağın adı              | *-Aaddsvbir ağ adı*                  | Yönetilen etki alanı için sanal ağın adı.|
     | Adres alanı                     | *-Aaddsvnetcıdraddressspace*      | CıDR gösteriminde sanal ağın adres aralığı (sanal ağ oluşturuluyoruz).|
@@ -123,7 +123,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
 1. Şimdi betiği kullanarak bir yönetilen etki alanı kaynak ormanı oluşturun `New-AzureAaaddsForest` . Aşağıdaki örnek, *addscontoso.com* adlı bir orman oluşturur ve bir iş yükü alt ağı oluşturur. Kendi parametre adlarınızı ve IP adresi aralıklarını veya var olan sanal ağları sağlayın.
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Şimdi aşağıdaki bilgileri komut dosyasına girin:
 
-| Ad                               | Betik parametresi     | Açıklama |
+| Adı                               | Betik parametresi     | Açıklama |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS etki alanı adı            | *-ManagedDomainFqdn* | Yönetilen etki alanının FQDN 'SI (örneğin, *aaddscontoso.com* ) |
 | Şirket içi AD DS etki alanı adı      | *-TrustFqdn*         | *OnPrem.contoso.com* gibi güvenilir ormanın FQDN 'si |
@@ -204,7 +204,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Aşağıdaki örnek, *OnPrem.contoso.com*Için *Myazureaddstrust* adlı bir güven ilişkisi oluşturur. Kendi parametre adlarınızı ve parolalarınızı kullanın:.
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

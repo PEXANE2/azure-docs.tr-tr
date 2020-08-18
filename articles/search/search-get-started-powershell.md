@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: eb7dcc0956cd9ce214ad3894aa8cc2b99beed942
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519822"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506014"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir 
 
 Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki alanlardan biri `Edm.String` belge kimliği için *anahtar* olarak atanmalıdır.
 
-Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Diğer izlenecek yollarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Bu hızlı başlangıçta breçekimi için kırpıyoruz.
+Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Bu, makalelerdeki diğer adımlarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Alan tanımları, bu hızlı başlangıçta breçekimi için kırpılmış.
 
 1. Dizin şemasını içeren bir **$Body** nesnesi oluşturmak için bu örneği PowerShell 'e yapıştırın.
 
@@ -378,7 +378,7 @@ Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. 
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
-# Apply a filter to the index to find hotels rated 4 or highter
+# Apply a filter to the index to find hotels rated 4 or higher
 # Returns the HotelName and Rating. Two documents match.
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 

@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847713"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507123"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning kullanarak, zaman uyumsuz ve paralel olarak büyük miktarlarda verilerde toplu çıkarımı çalıştırmayı öğrenin. ParallelRunStep, kutudan paralellik özellikleri sağlar.
+Bu makalede, büyük miktarlarda veriyi hızla değerlendirmek için Azure Machine Learning modelinizi paralel olarak nasıl çalıştırabileceğiniz gösterilmektedir. 
 
-ParallelRunStep sayesinde, daha fazla üretkenlik ve iyileştirilmiş maliyetle terabaytlarca yapılandırılmış veya yapılandırılmamış veriler üzerinde çevrimdışı ınmalları büyük makine kümelerine ölçeklendirmeniz basittir.
+Büyük veri kümeleri üzerinde veya karmaşık modellerle sınırlama zaman alabilir. `ParallelRunStep`Sınıfı, genel sonuçları daha hızlı bir şekilde elde etmenizi sağlar. Tek bir değerlendirme çalıştırmak oldukça hızlı olsa da birçok senaryo (nesne algılama, video işleme, doğal dil işleme vb.) birçok değerlendirme çalıştırmayı içerir. 
+
+İle `ParallelRunStep` , toplu iş ınlaların büyük makine kümelerine ölçeklendirilmesi basittir. Bu tür kümeler, geliştirilmiş üretkenlik ve iyileştirilmiş maliyetle terabaytlarca yapılandırılmış veya yapılandırılmamış verileri işleyebilir.
 
 Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 
@@ -35,7 +37,7 @@ Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 > 1. Yeni veri girişi ve parametreleriyle toplu çıkarımı çalıştırmayı yeniden gönderin. 
 > 1. Sonuçlara bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -52,7 +54,7 @@ Aşağıdaki eylemler bir toplu çıkarım ardışık düzeni çalıştırmak i�
 
 ### <a name="configure-workspace"></a>Çalışma alanını yapılandırma
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()`dosyadaki config.jsokur ve ayrıntıları WS adlı bir nesneye yükler.
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()` dosyadaki config.jsokur ve ayrıntıları WS adlı bir nesneye yükler.
 
 ```python
 from azureml.core import Workspace
@@ -134,7 +136,7 @@ def_data_store = ws.get_default_datastore()
 
 Toplu çıkarım girişleri, paralel işleme için bölümlemek istediğiniz veri. Toplu çıkarım ardışık düzeni, aracılığıyla veri girişlerini kabul eder [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
 
-`Dataset`Azure Machine Learning verileri keşfetmek, dönüştürmek ve yönetmek içindir. İki tür vardır: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ve [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . Bu örnekte, `FileDataset` giriş olarak kullanacaksınız. `FileDataset`dosyaları, işlem için indirme veya işleme özelliğini sağlar. Bir veri kümesi oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine kümeleme dönüştürmeleri uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir.
+`Dataset` Azure Machine Learning verileri keşfetmek, dönüştürmek ve yönetmek içindir. İki tür vardır: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ve [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . Bu örnekte, `FileDataset` giriş olarak kullanacaksınız. `FileDataset` dosyaları, işlem için indirme veya işleme özelliğini sağlar. Bir veri kümesi oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine kümeleme dönüştürmeleri uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir.
 
 Azure Machine Learning veri kümeleri hakkında daha fazla bilgi için bkz. [veri kümeleri oluşturma ve erişim (Önizleme)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -157,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>Çıktıyı oluşturma
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)nesneler, işlem hattı adımları arasında ara verileri aktarmak için kullanılır. Bu örnekte, çıkarım çıkışı için kullanırsınız.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesneler, işlem hattı adımları arasında ara verileri aktarmak için kullanılır. Bu örnekte, çıkarım çıkışı için kullanırsınız.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -287,14 +289,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>ParallelRunConfig kullanarak parametreleri belirtme
 
-`ParallelRunConfig`, `ParallelRunStep` Azure Machine Learning işlem hattının içinde örnek için önemli bir yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdaki girdilerin tümü de dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
+`ParallelRunConfig` , `ParallelRunStep` Azure Machine Learning işlem hattının içinde örnek için önemli bir yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdaki girdilerin tümü de dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
 - `entry_script`: Birden çok düğümde paralel olarak çalıştırılacak yerel dosya yolu olarak bir Kullanıcı betiği. Varsa `source_directory` , göreli bir yol kullanın. Aksi takdirde, makinede erişilebilen herhangi bir yolu kullanın.
 - `mini_batch_size`: Tek bir çağrıya geçirilen mini toplu iş boyutu `run()` . (isteğe bağlı; varsayılan değer `10` `FileDataset` ve `1MB` için dosyalarıdır `TabularDataset` .)
     - İçin `FileDataset` , en az değeri olan dosya sayısıdır `1` . Birden çok dosyayı tek bir mini toplu işte birleştirebilirsiniz.
     - İçin `TabularDataset` , verilerin boyutudur. Örnek değerler şunlardır,, `1024` `1024KB` `10MB` ve `1GB` . Önerilen değer `1MB` . Mini toplu iş, `TabularDataset` hiçbir zamanı çapraz dosya sınırlarına sahip olmayacaktır. Örneğin, çeşitli boyutlarda. csv dosyalarınız varsa en küçük dosya 100 KB 'tır ve en büyük değer 10 MB 'tır. Ayarlarsanız `mini_batch_size = 1MB` , boyutu 1 MB 'tan küçük olan dosyalar bir mini toplu işlem olarak kabul edilir. Boyutu 1 MB 'tan büyük olan dosyalar birden çok mini toplu iş içine bölünür.
 - `error_threshold`: `TabularDataset` `FileDataset` İşlem sırasında yok sayılacak olması gereken için kayıt hatalarının ve dosya hatalarının sayısı. Tüm girdinin hata sayısı bu değerin üzerine gittiğinde, iş iptal edilir. Hata eşiği, yönteme gönderilen tek bir mini toplu iş için değil, tüm giriş içindir `run()` . Aralık `[-1, int.max]` . `-1`Bölüm, işlem sırasında tüm hataların yoksayıyor olduğunu gösterir.
 - `output_action`: Aşağıdaki değerlerden biri çıktının nasıl düzenleneceğini gösterir:
-    - `summary_only`: Kullanıcı betiği çıktıyı depolayacaktır. `ParallelRunStep`yalnızca hata eşiği hesaplaması için çıktıyı kullanır.
+    - `summary_only`: Kullanıcı betiği çıktıyı depolayacaktır. `ParallelRunStep` yalnızca hata eşiği hesaplaması için çıktıyı kullanır.
     - `append_row`: Tüm girişler için, Line ile ayrılmış tüm çıktıları eklemek için çıkış klasöründe yalnızca bir dosya oluşturulur.
 - `append_row_file_name`: Append_row output_action için çıkış dosyası adını özelleştirmek için (isteğe bağlı; varsayılan değer `parallel_run_step.txt` ).
 - `source_directory`: İşlem hedefinde yürütülecek tüm dosyaları içeren klasörlere yönelik yollar (isteğe bağlı).

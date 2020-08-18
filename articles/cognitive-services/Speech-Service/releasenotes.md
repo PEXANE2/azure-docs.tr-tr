@@ -11,17 +11,63 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505814"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
+## <a name="text-to-speech-2020-august-release"></a>Metinden konuşmaya 2020-Ağustos yayını
+
+### <a name="new-features"></a>Yeni özellikler
+
+* **Sınır TTS: yeni konuşma stili `en-US` Aria sesi**. AriaNeural, haberleri okurken bir Newscaster gibi sesçine benzer. ' Newscast-resmi ' stili daha ciddi bir şekilde, ' newscast-normal ' stili daha gevşek ve resmi olmayan bir şekilde ses. Bkz. [SSML 'de konuşma stillerini kullanma](speech-synthesis-markup.md).
+
+* **Özel ses: eğitim verileri kalitesini otomatik olarak denetlemek için yeni bir özellik yayımlanmıştır**. Verilerinizi karşıya yüklediğinizde, veri denetimi özelliği, sesinizin ve yazılı betiklerinizin çeşitli yönlerini inceleyerek, eğitilen ses modelinin kalitesini artırmak için verileri otomatik olarak düzeltir veya sorunları gidermeye çalışır. Bu, sesinizin hacmini, gürültü düzeyini, konuşmayı telaffuz doğruluğunu, bir konuşma boyutunu normalleştirilmiş metinle, ses ve betik biçiminin yanı sıra seste sessizlik olarak ele alır. 
+
+* **Ses Içeriği oluşturma: daha güçlü ses ayarlama ve ses yönetimi özelliklerini etkinleştirmeye yönelik yeni özellikler kümesi**.
+
+    * Telaffuz: telaffuz ayarlama özelliği en son Fonem kümesine güncelleştirilir. Kitaplıktan doğru Fonem öğesini seçebilir ve seçtiğiniz sözcüklerin söylenişini geliştirebilirsiniz. 
+
+    * İndir: ses "Indir"/"dışarı aktar" özelliği, her paragraf tarafından audios oluşturmayı destekleyecek şekilde geliştirilmiştir. Aynı dosya/SSML içindeki farklı içerikleri kolayca düzenleyerek birden çok ses çıkışı oluşturabilirsiniz. "Indir" dosya yapısı da iyileştiriliyor. Şimdi, tüm audios 'yi tek bir klasörde kolayca alabilirsiniz. 
+
+    * Görev durumu: çok dosya dışarı aktarma deneyimi geliştirildi. Geçmişte birden çok dosyayı dışarı aktardığınızda, dosyalardan biri başarısız olursa, tüm görev başarısız olur. Ancak şimdi, diğer tüm dosyalar başarıyla verilecek. Görev raporu, daha ayrıntılı ve yapılandırılmış bilgilerle zenginleştirılmıştır. Tüm başarısız dosyalar ve cümleler için günlükleri artık raporla kontrol edebilirsiniz. 
+
+    * SSML belgeleri: tüm ayarlama özelliklerinin nasıl kullanılacağına ilişkin kuralları kontrol etmenize yardımcı olmak için SSML belgesine bağlanır.
+
+* **Ses listesi API 'Si, Kullanıcı dostu görünen adı ve sinir sesleri için desteklenen konuşma stillerini içerecek şekilde güncelleştirilir**.
+
+### <a name="general-tts-voice-quality-improvements"></a>Genel TTS ses kalitesi geliştirmeleri
+
+* İçin küçültülmüş sözcük düzeyi Söyleniş hatası% `ru-RU` (hata %56 oranında azaltılır) ve `sv-SE` (hata %49 oranında azaltılır)
+
+* `en-US`%40 tarafından sinir sesde okuma Polyphony Word ile iyileştirilmiş. "Okuma", "canlı", "içerik", "kayıt", "nesne" vb. Polyphony kelimelerine örnek olarak verilebilir. 
+
+* ' Deki soru tonu naturalness geliştirildi `fr-FR` . MOS (ortalama görüşün puanı) Kazancı: + 0,28
+
+* Aşağıdaki seslerle ilgili olarak, %40 oranında uyumluluk ve genel performans hızına sahip vocoders güncelleştirildi.
+
+    | Yerel Ayar | Ses |
+    |---|---|    
+    | `en-GB` | MIA |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Denıse |
+    | `ja-JP` | NANAMI |
+    | `ko-KR` | Paz-Hi |
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+
+* Ses Içeriği oluşturma aracı ile bir dizi hata düzeltildi 
+    * Otomatik yenileme ile ilgili sorun düzeltildi. 
+    * Güney Doğu Asya bölgesinde zh-CN içindeki stil sesiyle ilgili sorunlar düzeltildi
+    * ' Break ' etiketiyle dışarı aktarma hatası, noktadaki hatalar da dahil olmak üzere kararlılık sorunu düzeltildi    
+
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Yeni konuşmayı metne göre yerel ayarlar: 2020-Ağustos yayını
-Konuşmadan metne, Ağustos ayında 1:2 Avrupa dilleri CS-CZ ve HU-HU, 5 Ingilizce yerel ayar ve en Güney Amerika ülke 'leri kapsayan 19 Ispanyolca yerel ayar yayınlandı. Yeni yerel ayarların listesi aşağıda verilmiştir. Lütfen [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)tüm dil listesini görüntüleyin.
+Konuşmadan metne, Ağustos ayında 2 Avrupa dilleri `cs-CZ` ve `hu-HU` 5 İngilizce yerel ayar ve en Güney Amerika ülkelerinden oluşan 19 ' a kadar yeni yerel ayar yayınlandı. Yeni yerel ayarların listesi aşağıda verilmiştir. Lütfen [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)tüm dil listesini görüntüleyin.
 
 | Yerel Ayar  | Dil                          |
 |---------|-----------------------------------|
@@ -281,7 +327,7 @@ Sağlıklı olun!
 
 **Son değişiklikler**
 
-- `OpenSSL`, 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki dizine yüklenmemişse kesintiye neden olabilir `/usr/lib/ssl` . Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
+- `OpenSSL` , 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki dizine yüklenmemişse kesintiye neden olabilir `/usr/lib/ssl` . Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
 - C# için döndürülen veri türünü, `WordLevelTimingResult.Offset` `int` `long` `WordLevelTimingResults` konuşma verileri 2 dakikadan uzun olduğunda erişime izin verecek şekilde değiştirdik.
 - `PushAudioInputStream``PullAudioInputStream` `AudioStreamFormat` Ayrıca, isteğe bağlı olarak, bunlar oluşturulduğunda belirtilen konuşma hizmetine WAV başlık bilgilerini gönderin. Müşterilerin artık [desteklenen ses girişi biçimini](how-to-use-audio-input-streams.md)kullanması gerekir. Diğer tüm biçimler, en uygun tanıma sonuçlarını alır veya başka sorunlara neden olabilir. 
 
@@ -332,8 +378,8 @@ Sağlıklı olun!
 
 **Örnekler**
 
-- İçin Xamarin örneği`KeywordRecognizer`
-- İçin Unity örneği`KeywordRecognizer`
+- İçin Xamarin örneği `KeywordRecognizer`
+- İçin Unity örneği `KeywordRecognizer`
 - Otomatik Kaynak Dil Algılama için C++ ve Java örnekleri.
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Konuşma SDK 1.7.0:2019-Eylül sürümü
@@ -356,8 +402,8 @@ Sağlıklı olun!
 - Bazı bağlantı özelliklerinde benzersiz olmayan UUID 'ler ile ilgili sorun düzeltildi
 - Swift bağlamalarında null değer alabilme belirticileri hakkında birkaç uyarı düzeltildi (küçük kod değişiklikleri gerektirebilir)
 - WebSocket bağlantılarına neden olan bir hata düzeltildi ağ yükü altında düzgün şekilde kapatılacak
-- Android 'de, bazen tarafından kullanılan yinelenen izlenme kimliklerine neden olan bir sorun düzeltildi`DialogServiceConnector`
-- Birden çok yönlü etkileşimler genelinde bağlantı kararlılığı ve `Canceled` ile ortaya çıkabilecek hataların (olaylar aracılığıyla) raporlanması için geliştirmeler`DialogServiceConnector`
+- Android 'de, bazen tarafından kullanılan yinelenen izlenme kimliklerine neden olan bir sorun düzeltildi `DialogServiceConnector`
+- Birden çok yönlü etkileşimler genelinde bağlantı kararlılığı ve `Canceled` ile ortaya çıkabilecek hataların (olaylar aracılığıyla) raporlanması için geliştirmeler `DialogServiceConnector`
 - `DialogServiceConnector`oturum başlar, etkin bir işlem sırasında çağrılırken de dahil olmak üzere artık olayları doğru şekilde sağlayacak `ListenOnceAsync()``StartKeywordRecognitionAsync()`
 - Alınmakta olan etkinliklerle ilişkili bir kilitlenme olduğunu biliyor `DialogServiceConnector`
 
@@ -374,14 +420,14 @@ Sağlıklı olun!
 - UWP ve Unity 'de metin okuma için hızlı başlangıç örnekleri
 - İOS 'ta Swift için hızlı başlangıç örneği
 - Konuşma & Amaç Tanıma ve çevirisi için Unity örnekleri
-- İçin güncelleştirilmiş hızlı başlangıç örnekleri`DialogServiceConnector`
+- İçin güncelleştirilmiş hızlı başlangıç örnekleri `DialogServiceConnector`
 
 **Geliştirmeler/değişiklikler**
 
 - İletişim kutusu ad alanı:
   - `SpeechBotConnector`, `DialogServiceConnector` olarak yeniden adlandırıldı
   - `BotConfig`, `DialogServiceConfig` olarak yeniden adlandırıldı
-  - `BotConfig::FromChannelSecret()`ile yeniden eşlendi`DialogServiceConfig::FromBotSecret()`
+  - `BotConfig::FromChannelSecret()` ile yeniden eşlendi `DialogServiceConfig::FromBotSecret()`
   - Var olan tüm doğrudan hat konuşma istemcileri yeniden adlandırmadan sonra desteklenmeye devam eder
 - Proxy, kalıcı bağlantıyı destekleyecek şekilde TTS REST bağdaştırıcısını güncelleştirme
 - Geçersiz bir bölge geçirildiğinde hata iletisini geliştir
@@ -544,7 +590,7 @@ Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıd
   - JavaScript için konuşma SDK 'Sı açık kaynaklıdır. Kaynak kodu [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)' da kullanılabilir.
   - Artık Node.js destekliyoruz, [burada](quickstart-js-node.md)daha fazla bilgi bulabilirsiniz.
   - Ses oturumları için uzunluk kısıtlaması kaldırılmıştır, otomatik olarak yeniden bağlanma işlemi, kapak altında otomatik olarak gerçekleşir.
-- `Connection`nesne
+- `Connection` nesne
   - İçinden `Recognizer` bir `Connection` nesnesine erişebilirsiniz. Bu nesne, hizmet bağlantısını açık bir şekilde başlatabilmeniz ve olaylara bağlanıp bağlantıyı kesmeye abone olmanızı sağlar.
     (Bu özellik JavaScript ve Python 'da henüz kullanılamaz.)
 - Ubuntu 18,04 desteği.
@@ -671,7 +717,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 **İşlevsel değişiklikler**
 
-- `StartContinuousRecognitionAsync()`uzun süre çalışan tanımayı destekler.
+- `StartContinuousRecognitionAsync()` uzun süre çalışan tanımayı destekler.
 - Tanınma sonucu daha fazla alan içeriyor. Bunlar, tanınan metnin ses başlangıcından ve süresinden (her ikisi de her ikisi de) ve tanınma durumunu temsil eden ek değerlere (örneğin, ve) göre denkleştirilir `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Fabrika örnekleri oluşturmak için AuthorizationToken 'ı destekleme.
 

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758869"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507102"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering Oturumları
 
@@ -40,10 +40,10 @@ Her oturum birden çok aşamaya gider.
 
 ARR 'nin [Yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md#create-a-session)istediğinizde, ilk şey bir oturum [UUID 'si](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmemelidir. Bu UUID, oturum hakkındaki bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün boyunca kalıcıdır, bu sayede oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç**olarak bildirilir.
 
-Ardından, Azure uzaktan Işleme oturumunuzu barındırabileceğinizi bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları ayıracaktır. Bunun nedeni, bölgeler arasında ağ gecikmesi, bir deneyim sağlamak için çok yüksek olabilir. İkinci faktör, belirlediğiniz istenen *boyutdır* . Her bölgede, *Standart* veya *Premium* boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyuttaki tüm sunucular Şu anda bölgenizde kullanılıyorsa, oturum oluşturma başarısız olur. Hatanın nedeni [sorgulanamaz](../how-tos/session-rest-api.md#get-sessions-properties).
+Ardından, Azure uzaktan Işleme oturumunuzu barındırabileceğinizi bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları ayıracaktır. Bunun nedeni, bölgeler arasında ağ gecikmesi, bir deneyim sağlamak için çok yüksek olabilir. İkinci faktör, belirlediğiniz istenen *boyutdır* . Her bölgede, [*Standart*](../reference/vm-sizes.md) veya [*Premium*](../reference/vm-sizes.md) boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyuttaki tüm sunucular Şu anda bölgenizde kullanılıyorsa, oturum oluşturma başarısız olur. Hatanın nedeni [sorgulanamaz](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> *Standart* bir VM boyutu istemeniz durumunda istek yüksek talebe göre başarısız olursa, bir *Premium* sunucu isteğinde bulunulmasının da başarısız olduğunu göstermez. Bu, sizin için bir seçenek ise, bir *Premium* sanal makineye geri düşmenize deneyebilirsiniz.
+> *Standart* bir sunucu boyutu istemeniz durumunda istek yüksek talebe göre başarısız olursa, bu da bir *Premium* sunucu isteğinin başarısız olacağını göstermez. Bu, sizin için bir seçenek ise, bir *Premium* sunucu boyutuna geri düşmesini deneyebilirsiniz.
 
 Hizmet uygun bir sunucu bulduğunda, bir Azure uzaktan Işleme konağına dönüştürmek için doğru sanal makineyi (VM) üzerine kopyalamanız gerekir. Bu işlem birkaç dakika sürer. Daha sonra VM 'nin önyüklendi ve **oturum durumu** , **Ready**olarak geçiş yapar.
 
@@ -72,7 +72,7 @@ Bir oturum, bazı hatalar nedeniyle durdurulmuş de olabilir.
 Her durumda, bir oturum durdurulduğunda daha fazla faturalandırılmaz.
 
 > [!WARNING]
-> Bir oturuma bağlanıp, ne kadar süreyle faturalandırmayı etkilemediği. Hizmetin ödedikleriniz, *oturum süresine*bağlıdır, bu da bir sunucunun sizin için özel olarak ayırdığı zaman ve istenen donanım ÖZELLIKLERI (VM boyutu) anlamına gelir. Bir oturum başlatırsanız, beş dakikaya bağlanıp oturumu durdurmayın, böylece kira süresi dolana kadar çalışmaya devam eder, tam oturum kiralama süresi için faturalandırılırsınız. Buna karşılık, *en fazla kiralama süresi* genellikle bir güvenlik ağı olur. Sekiz saatlik bir kira süresi ile oturum isteyip istemenizden bağımsız olarak, oturumu daha sonra el ile durdurursanız beş dakika boyunca kullanın.
+> Bir oturuma bağlanıp, ne kadar süreyle faturalandırmayı etkilemediği. Hizmetin ödedikleriniz, *oturum süresine*bağlıdır, bu da bir sunucunun sizin için özel olarak ayırdığı zaman ve istenen donanım özellikleri ( [ayrılan boyut](../reference/vm-sizes.md)) anlamına gelir. Bir oturum başlatırsanız, beş dakikaya bağlanıp oturumu durdurmayın, böylece kira süresi dolana kadar çalışmaya devam eder, tam oturum kiralama süresi için faturalandırılırsınız. Buna karşılık, *en fazla kiralama süresi* genellikle bir güvenlik ağı olur. Sekiz saatlik bir kira süresi ile oturum isteyip istemenizden bağımsız olarak, oturumu daha sonra el ile durdurursanız beş dakika boyunca kullanın.
 
 #### <a name="extend-a-sessions-lease-time"></a>Bir oturumun kira süresini genişletme
 
@@ -138,7 +138,7 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 Birden çok `AzureFrontend` ve `AzureSession` örnek, koddan korunabilir, değiştirilebilir ve sorgulanabilir. Ancak tek seferde yalnızca bir cihaz bağlanabilir `AzureSession` .
 
-Bir sanal makinenin ömrü `AzureFrontend` örneğe veya örneğe bağlı değildir `AzureSession` . `AzureSession.StopAsync`bir oturumu durdurmak için çağrılmalıdır.
+Bir sanal makinenin ömrü `AzureFrontend` örneğe veya örneğe bağlı değildir `AzureSession` . `AzureSession.StopAsync` bir oturumu durdurmak için çağrılmalıdır.
 
 Kalıcı oturum KIMLIĞI ile `AzureSession.SessionUUID()` yerel olarak sorgulanabilir ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu `AzureFrontend.OpenSession` oturuma bağlamak için çağrı yapabilir.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: 3e15adcac184a0609de3197181cb8c475a962e8d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bc73292d7ed01468fc31e5a6203a4ba53a6425a2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258370"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505776"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
@@ -72,7 +72,7 @@ Yüksek aktarım hızı düzeylerinde (50.000 RU/sn 'den fazla) test ediyorsanı
 
   * Ağ Geçidi modu (varsayılan)
       
-    Ağ Geçidi modu tüm SDK platformlarında desteklenir ve [Microsoft.Azure.DocumentDB SDK 'sı](sql-api-sdk-dotnet.md)için varsayılan olarak yapılandırılır. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin Azure Cosmos DB her okunışında veya üzerine yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması olduğundan doğrudan mod daha iyi performans sunar. Ayrıca, sınırlı sayıda soket bağlantısı olan ortamlarda uygulamalar çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
+    Ağ Geçidi modu tüm SDK platformlarında desteklenir ve [Microsoft.Azure.DocumentDB SDK 'sı](sql-api-sdk-dotnet.md)için varsayılan olarak yapılandırılır. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağ içinde çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir DNS uç noktasını kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin Azure Cosmos DB her okunışında veya üzerine yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması olduğundan doğrudan mod daha iyi performans sunar. Ayrıca, sınırlı sayıda soket bağlantısı olan ortamlarda uygulamalar çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
 
     Azure Işlevlerinde SDK kullandığınızda, özellikle [Tüketim planında](../azure-functions/functions-scale.md#consumption-plan), [bağlantılardaki geçerli limitlerin](../azure-functions/manage-connections.md)farkında olun. Bu durumda, Azure Işlevleri uygulamanızdaki diğer HTTP tabanlı istemcilerle de çalışıyorsanız ağ geçidi modu daha iyi olabilir.
 
@@ -202,7 +202,7 @@ Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısın
 > [!NOTE] 
 > `maxItemCount`Özelliği yalnızca sayfalandırma için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
 
-Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
+Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

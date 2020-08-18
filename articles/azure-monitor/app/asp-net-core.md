@@ -3,12 +3,12 @@ title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Doc
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475524"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270929"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -30,7 +30,7 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 > [!NOTE]
 > ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
@@ -103,18 +103,22 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örnek:
+    Örneğin:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    * `APPINSIGHTS_INSTRUMENTATIONKEY`genellikle [Azure Web Apps](./azure-web-apps.md?tabs=net)' de kullanılır, ancak bu SDK 'nın desteklendiği her yerde de kullanılabilir. (Kodsuz kullanacaksınız Web uygulaması izleme yapıyorsanız, bağlantı dizelerini kullanmıyorsanız bu biçim gereklidir.)
+    * `APPINSIGHTS_INSTRUMENTATIONKEY` genellikle [Azure Web Apps](./azure-web-apps.md?tabs=net)' de kullanılır, ancak bu SDK 'nın desteklendiği her yerde de kullanılabilir. (Kodsuz kullanacaksınız Web uygulaması izleme yapıyorsanız, bağlantı dizelerini kullanmıyorsanız bu biçim gereklidir.)
 
     İzleme anahtarlarını ayarlama yerine artık [bağlantı dizelerini](./sdk-connection-string.md?tabs=net)de kullanabilirsiniz.
 
     > [!NOTE]
     > Diğer seçenekler üzerinde WINS olan ortam değişkeni üzerinden WINS kodunda belirtilen bir izleme anahtarı `APPINSIGHTS_INSTRUMENTATIONKEY` .
+
+### <a name="user-secrets-and-other-configuration-providers"></a>Kullanıcı gizli dizileri ve diğer yapılandırma sağlayıcıları
+
+İzleme anahtarını ASP.NET Core Kullanıcı gizlilikleri içinde depolamak veya başka bir yapılandırma sağlayıcısından almak istiyorsanız, aşırı yüklemeyi bir `Microsoft.Extensions.Configuration.IConfiguration` parametresiyle kullanabilirsiniz. Örneğin, `services.AddApplicationInsightsTelemetry(Configuration);`.
 
 ## <a name="run-your-application"></a>Uygulamanızı çalıştırma
 
@@ -143,7 +147,7 @@ ASP.NET Core [performans sayaçları](./web-monitor-performance.md) için destek
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`Varsayılan olarak etkindir ve .NET Core 3. X uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
+`EventCounterCollectionModule` Varsayılan olarak etkindir ve .NET Core 3. X uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Web uygulamaları için istemci tarafı telemetrisini etkinleştir
 
@@ -199,16 +203,16 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-İçindeki ayarların tam listesi`ApplicationInsightsServiceOptions`
+İçindeki ayarların tam listesi `ApplicationInsightsServiceOptions`
 
 |Ayar | Açıklama | Varsayılan
 |---------------|-------|-------
-|EnablePerformanceCounterCollectionModule  | Etkinleştir/devre dışı bırak`PerformanceCounterCollectionModule` | true
-|EnableRequestTrackingTelemetryModule   | Etkinleştir/devre dışı bırak`RequestTrackingTelemetryModule` | true
-|EnableEventCounterCollectionModule   | Etkinleştir/devre dışı bırak`EventCounterCollectionModule` | true
-|EnableDependencyTrackingTelemetryModule   | Etkinleştir/devre dışı bırak`DependencyTrackingTelemetryModule` | true
-|EnableAppServicesHeartbeatTelemetryModule  |  Etkinleştir/devre dışı bırak`AppServicesHeartbeatTelemetryModule` | true
-|EnableAzureInstanceMetadataTelemetryModule   |  Etkinleştir/devre dışı bırak`AzureInstanceMetadataTelemetryModule` | true
+|EnablePerformanceCounterCollectionModule  | Etkinleştir/devre dışı bırak `PerformanceCounterCollectionModule` | true
+|EnableRequestTrackingTelemetryModule   | Etkinleştir/devre dışı bırak `RequestTrackingTelemetryModule` | true
+|EnableEventCounterCollectionModule   | Etkinleştir/devre dışı bırak `EventCounterCollectionModule` | true
+|EnableDependencyTrackingTelemetryModule   | Etkinleştir/devre dışı bırak `DependencyTrackingTelemetryModule` | true
+|EnableAppServicesHeartbeatTelemetryModule  |  Etkinleştir/devre dışı bırak `AppServicesHeartbeatTelemetryModule` | true
+|EnableAzureInstanceMetadataTelemetryModule   |  Etkinleştir/devre dışı bırak `AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | true
 |Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | true
 |Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartbeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
@@ -281,13 +285,13 @@ Application Insights, Kullanıcı tarafından el ile izlemeye gerek duymadan bel
 
 Aşağıdaki otomatik koleksiyon modülleri varsayılan olarak etkinleştirilmiştir. Bu modüller, otomatik olarak telemetri toplamanın sorumluluğundadır. Varsayılan davranışlarını değiştirecek şekilde devre dışı bırakabilir veya yapılandırabilirsiniz.
 
-* `RequestTrackingTelemetryModule`-Gelen web isteklerinden Requesttelemetri toplar.
-* `DependencyTrackingTelemetryModule`-Giden http çağrılarından ve SQL çağrılarından [Dependencytelemetri](./asp-net-dependencies.md) toplar.
-* `PerformanceCollectorModule`-Windows PerformanceCounters sayaçlarını toplar.
-* `QuickPulseTelemetryModule`-Canlı ölçüm portalında göstermek için telemetri toplar.
-* `AppServicesHeartbeatTelemetryModule`-Uygulamanın barındırıldığı Azure App Service ortamı hakkında, kalpler (özel ölçümler olarak gönderilir) toplar.
-* `AzureInstanceMetadataTelemetryModule`-Uygulamanın barındırıldığı Azure VM ortamı hakkında (özel ölçümler olarak gönderilen) kalpler toplar.
-* `EventCounterCollectionModule`- [Eventcounters toplar.](eventcounters.md) Bu modül yeni bir özelliktir ve SDK sürümü 2.8.0 ve üzeri sürümlerde kullanılabilir.
+* `RequestTrackingTelemetryModule` -Gelen web isteklerinden Requesttelemetri toplar.
+* `DependencyTrackingTelemetryModule` -Giden http çağrılarından ve SQL çağrılarından [Dependencytelemetri](./asp-net-dependencies.md) toplar.
+* `PerformanceCollectorModule` -Windows PerformanceCounters sayaçlarını toplar.
+* `QuickPulseTelemetryModule` -Canlı ölçüm portalında göstermek için telemetri toplar.
+* `AppServicesHeartbeatTelemetryModule` -Uygulamanın barındırıldığı Azure App Service ortamı hakkında, kalpler (özel ölçümler olarak gönderilir) toplar.
+* `AzureInstanceMetadataTelemetryModule` -Uygulamanın barındırıldığı Azure VM ortamı hakkında (özel ölçümler olarak gönderilen) kalpler toplar.
+* `EventCounterCollectionModule` - [Eventcounters toplar.](eventcounters.md) Bu modül yeni bir özelliktir ve SDK sürümü 2.8.0 ve üzeri sürümlerde kullanılabilir.
 
 Herhangi bir Varsayılanı yapılandırmak için, `TelemetryModule` `ConfigureTelemetryModule<T>` `IServiceCollection` Aşağıdaki örnekte gösterildiği gibi genişletme yöntemini üzerinde kullanın.
 

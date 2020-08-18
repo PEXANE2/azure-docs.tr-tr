@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170505"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506031"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -103,7 +103,7 @@ Dış bir Azure AD dizini veya etki alanını bağlı bir kuruluş olarak ekleme
 
 Bağlı kuruluş farklı bir etki alanına değişirse, kuruluşun adı değişir veya sponsorları değiştirmek istiyorsanız, bu bölümdeki yönergeleri izleyerek bağlı organizasyonu güncelleştirebilirsiniz.
 
-**Önkoşul rolü**: *genel yönetici*, *Kullanıcı Yöneticisi*veya *Konuk davetci*
+**Önkoşul rolü**: *genel yönetici* veya *Kullanıcı Yöneticisi*
 
 1. Azure portal **Azure Active Directory**' i seçin ve ardından **Identity idare**' ı seçin.
 
@@ -120,7 +120,7 @@ Bağlı kuruluş farklı bir etki alanına değişirse, kuruluşun adı değişi
 
 Artık dış Azure AD dizini veya etki alanı ile bir ilişkiniz yoksa bağlı kuruluşu silebilirsiniz.
 
-**Önkoşul rolü**: *genel yönetici*, *Kullanıcı Yöneticisi*veya *Konuk davetci*
+**Önkoşul rolü**: *genel yönetici* veya *Kullanıcı Yöneticisi*
 
 1. Azure portal **Azure Active Directory**' i seçin ve ardından **Identity idare**' ı seçin.
 

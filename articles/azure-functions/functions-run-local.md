@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207450"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505725"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -164,6 +164,9 @@ Terminal penceresinde veya bir komut isteminden, projeyi ve yerel Git deposunu o
 ```
 func init MyFunctionProj
 ```
+
+>[!IMPORTANT]
+> Java, ilk HTTP tetiklemeli işlevinizle birlikte yerel Işlevler projesini oluşturmak için bir Maven ıbetype kullanır. Java projenizi oluşturmak için şu komutu kullanın: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Maven arşiv EType kullanan bir örnek için bkz. [komut satırı hızlı başlangıç](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).  
 
 Bir proje adı sağladığınızda, bu ada sahip yeni bir klasör oluşturulur ve başlatılır. Aksi takdirde, geçerli klasör başlatılır.  
 Sürüm 3. x/2. x ' te, komutunu çalıştırdığınızda projeniz için bir çalışma zamanı seçmeniz gerekir. 
@@ -329,11 +332,19 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 Bir Işlevler projesi çalıştırmak için, Işlevler ana bilgisayarını çalıştırın. Konak, projedeki tüm işlevler için Tetikleyicileri mümkün. Başlat komutu, Proje dilinize bağlı olarak farklılık gösterir.
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -504,6 +515,9 @@ Yerel kodunuzu Azure 'da bir işlev uygulamasına yayımlamak için şu `publish
 ```
 func azure functionapp publish <FunctionAppName>
 ```
+
+>[!IMPORTANT]
+> Java, yerel projenizi Azure 'da yayımlamak için Maven 'yi kullanır. Azure 'da yayımlamak için şu komutu kullanın: `mvn azure-functions:deploy` . Azure kaynakları ilk dağıtım sırasında oluşturulur.
 
 Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde mevcut olmayan bir ' a yayımlamayı denerseniz bir hata alırsınız `<FunctionAppName>` . Azure CLı kullanarak komut isteminden veya Terminal penceresinde bir işlev uygulaması oluşturmayı öğrenmek için bkz. [sunucusuz yürütme için işlev uygulaması oluşturma](./scripts/functions-cli-create-serverless.md). Varsayılan olarak, bu komut, [uzak derlemeyi](functions-deployment-technologies.md#remote-build) kullanır ve uygulamanızı [dağıtım paketinden çalıştırmak](run-functions-from-deployment-package.md)üzere dağıtır. Bu önerilen dağıtım modunu devre dışı bırakmak için `--nozip` seçeneğini kullanın.
 

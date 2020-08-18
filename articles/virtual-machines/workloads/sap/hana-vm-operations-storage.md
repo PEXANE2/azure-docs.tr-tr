@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080533"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506405"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -42,7 +42,7 @@ Depolama türlerinin bir listesi ve ıOPS ve depolama aktarım hızı içindeki 
 
 Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şunlardır: 
 
-- Azure Premium Storage- **/Hana/log** Azure [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md)tarafından desteklenmelidir. **/Hana/Data** birimi Azure yazma hızlandırıcısı veya ultra disk olmadan Premium depolamaya yerleştirilebilecek
+- Azure Premium Storage- **/Hana/log** Azure [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)tarafından desteklenmelidir. **/Hana/Data** birimi Azure yazma hızlandırıcısı veya ultra disk olmadan Premium depolamaya yerleştirilebilecek
 - En azından **/Hana/log** birimi Için Azure Ultra disk. **/Hana/Data** Volume, Azure yazma Hızlandırıcısı olmayan Premium depolamaya veya daha hızlı yeniden başlatma süreleriyle elde edilebilir.
 - **NFS v 4.1** , **/Hana/log ve/Hana/Data**için Azure NetApp Files en üstünde bulunan birimleri. /Hana/Shared birimi NFS v3 veya NFS v 4.1 protokolünü kullanabilir
 
@@ -75,7 +75,7 @@ Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SA
 Azure Yazma Hızlandırıcısı, yalnızca Azure a serisi VM 'Leri için kullanılabilen bir işlevdir. Ad olduğu gibi, işlevselliğin amacı, Azure Premium depolamada yazma işlemleri için g/ç gecikmesini geliştirmedir. SAP HANA için, Yazma Hızlandırıcısı yalnızca **/Hana/log hacminde** kullanılması gerekir. Bu nedenle, **/Hana/Data** ve **/Hana/log** , Azure yazma Hızlandırıcısı yalnızca **/Hana/log** birimini desteklemeye yönelik ayrı birimlerdir. 
 
 > [!IMPORTANT]
-> Azure Premium Depolama kullanılırken, **/Hana/log** birimi için Azure [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md) kullanımı zorunludur. Yazma Hızlandırıcısı yalnızca Premium Depolama ve yalnızca d serisi ve Mv2 serisi VM 'Ler için kullanılabilir. Yazma Hızlandırıcısı, Esv3 veya Edsv4 gibi diğer Azure VM aileleriyle birlikte çalışmıyor.
+> Azure Premium Depolama kullanılırken, **/Hana/log** birimi için Azure [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) kullanımı zorunludur. Yazma Hızlandırıcısı yalnızca Premium Depolama ve yalnızca d serisi ve Mv2 serisi VM 'Ler için kullanılabilir. Yazma Hızlandırıcısı, Esv3 veya Edsv4 gibi diğer Azure VM aileleriyle birlikte çalışmıyor.
 
 Aşağıdaki Azure Premium disklerine yönelik önbelleğe alma önerileri, şunun gibi SAP HANA için g/ç özelliklerinin olduğunu varsayar:
 
@@ -194,7 +194,7 @@ Diğer birimlerde yapılandırma şöyle görünür:
 
 Farklı önerilen birimler için depolama aktarım hızının, çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü **/Hana/Data** ve **/Hana/log**için daha yüksek birimler gerektiriyorsa, Azure Premium Depolama VHD 'lerinin sayısını artırmanız gerekir. Listelenmiş olandan daha fazla VHD 'ye sahip bir birimi boyutlandırma, ıOPS 'yi ve g/ç verimini Azure sanal makine türü sınırları içinde arttırır.
 
-Azure Yazma Hızlandırıcısı yalnızca [Azure yönetilen disklerle](https://azure.microsoft.com/services/managed-disks/)birlikte çalışmaktadır. Bu nedenle, en azından **/Hana/log** birimini oluşturan Azure Premium Depolama disklerinin yönetilen diskler olarak dağıtılması gerekir. [Yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md)makalesinde Azure yazma Hızlandırıcısı hakkında daha ayrıntılı yönergeler ve kısıtlamalar bulabilirsiniz.
+Azure Yazma Hızlandırıcısı yalnızca [Azure yönetilen disklerle](https://azure.microsoft.com/services/managed-disks/)birlikte çalışmaktadır. Bu nedenle, en azından **/Hana/log** birimini oluşturan Azure Premium Depolama disklerinin yönetilen diskler olarak dağıtılması gerekir. [Yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)makalesinde Azure yazma Hızlandırıcısı hakkında daha ayrıntılı yönergeler ve kısıtlamalar bulabilirsiniz.
 
 Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) ailesi ve [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)'Nin Hana sertifikalı VM 'leri için, **/Hana/Data** ve **/Hana/log** birimi için ANF gerekir. Ya da yalnızca **/Hana/log** birimi için Azure Premium depolama yerine Azure Ultra Disk Storage 'ı kullanmanız gerekir. Sonuç olarak, Azure Premium depolamada bulunan **/Hana/Data** birimi için yapılandırma şöyle görünebilir:
 
@@ -352,9 +352,9 @@ Bu tür yapılandırmalara daha az maliyetli bir alternatif şöyle görünebili
 | M416ms_v2 | 11400 GiB | 2.000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Birleşik veri ve günlük birimi için Yazma Hızlandırıcısı kullanmak, ıOPS oranını 20.000<sup>2</sup> olarak sınırlandırır |
 
 
-<sup>1</sup> [Azure yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md) , Ev4 ve Ev4 VM aileleri ile birlikte kullanılamaz. Azure Premium Depolama kullanmanın sonucu olarak, g/ç gecikmesi 1 MS 'den az olmaz
+<sup>1</sup> [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) , Ev4 ve Ev4 VM aileleri ile birlikte kullanılamaz. Azure Premium Depolama kullanmanın sonucu olarak, g/ç gecikmesi 1 MS 'den az olmaz
 
-<sup>2</sup> VM ailesi [Azure yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md)destekler, ancak yazma hızlandırıcısının ıOPS sınırının disk yapılandırması IOPS özelliklerini sınırlayabileceği bir olasılık vardır
+<sup>2</sup> VM ailesi [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)destekler, ancak yazma hızlandırıcısının ıOPS sınırının disk yapılandırması IOPS özelliklerini sınırlayabileceği bir olasılık vardır
 
 SAP HANA için veri ve günlük birimini birleştirme durumunda, şeritli birimi oluşturan diskler okuma önbelleği veya okuma/yazma önbelleği etkin olmamalıdır.
 

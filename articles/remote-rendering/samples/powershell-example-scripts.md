@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052290"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506520"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
@@ -26,21 +26,21 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 Örnek betikleri yürütmek için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
 
 1. Azure PowerShell'i yükleme:
-    1. Yönetici haklarıyla bir PowerShell açın
-    1. Çalışmaz`Install-Module -Name Az -AllowClobber`
+    1. Yönetici haklarına sahip bir PowerShell penceresi açın.
+    1. Çalışmaz `Install-Module -Name Az -AllowClobber`
 
 1. Betikleri çalıştırma hakkında hata alırsanız [yürütme ilkenizin](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) uygun şekilde ayarlandığından emin olun:
-    1. Yönetici haklarıyla bir PowerShell açın
-    1. Çalışmaz`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+    1. Yönetici haklarına sahip bir PowerShell penceresi açın.
+    1. Çalışmaz `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Azure depolama hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Azure uzaktan Işleme hesabınızı içeren aboneliğinizde oturum açın:
-    1. Bir PowerShell açın
+    1. PowerShell penceresini açın.
     1. Şunu çalıştırın: `Connect-AzAccount` ve ekrandaki yönergeleri izleyin.
 
-> [!NOTE]
-> Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
+    > [!NOTE]
+    > Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
 1. [Azure uzaktan Işleme GithHub deposundan](https://github.com/Azure/azure-remote-rendering) *betikler* klasörünü indirin.
 
@@ -77,7 +77,7 @@ Dosyaların yanında, `.ps1` doldurmanız gereken bir sorun var `arrconfig.json`
 > Çift ters eğik çizgi kullanarak LocalAssetDirectoryPath yolundaki ters eğik çizgileri doğru bir şekilde atladığınızdan emin olun: " \\ \\ " ve ınputfolderpath ve ınputassetpath gibi tüm diğer yollarda eğik çizgileri "/" kullanın.
 
 > [!CAUTION]
-> İsteğe bağlı değerler doldurulmalıdır veya anahtar ve değeri tamamen kaldırmanız gerekir. Örneğin, `"outputAssetFileName"` parametresini kullanmazsanız, içindeki tüm satırı silmeniz gerekir `arrconfig.json` .
+> İsteğe bağlı değerler doldurulmalıdır veya anahtar ve değeri tamamen kaldırmanız gerekir. Örneğin,  `"outputAssetFileName"` parametresini kullanmazsanız, içindeki tüm satırı silmeniz gerekir `arrconfig.json` .
 
 ### <a name="accountsettings"></a>accountSettings
 
@@ -86,9 +86,9 @@ Dosyaların yanında, `.ps1` doldurmanız gereken bir sorun var `arrconfig.json`
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-**RenderingSession.ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
+**RenderingSession.ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir:
 
-- **VMSize:** Sanal makinenin boyutunu seçer. *Standart* veya *Premium*' u seçin. Artık ihtiyacınız olmadığında işleme oturumlarını kapatın.
+- **VMSize:** Sanal makinenin boyutunu seçer. [*Standart*](../reference/vm-sizes.md) veya [*Premium*](../reference/vm-sizes.md)' u seçin. Artık ihtiyacınız olmadığında işleme oturumlarını kapatın.
 - **Maxleasetime:** VM 'nin kiralanmasını istediğiniz süre. Kira süresi dolarsa kapatılacak. Kira süresi daha sonra genişletilebilir (aşağıya bakın).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Bağlı depolama hesabı kullanmak, paylaşılan erişim Imzaları oluşturmaya 
 .\Conversion.ps1
 ```
 
-1. İçinde yer alan tüm dosyaları `assetConversionSettings.modelLocation` verilen ' ın altındaki giriş blobu kapsayıcısına yükleyin`inputFolderPath`
+1. İçindeki içindeki tüm dosyaları verilen ' `assetConversionSettings.modelLocation` ın altındaki giriş blobu kapsayıcısına `inputFolderPath` yükleyin.
 1. Model [dönüştürmeyi](../how-tos/conversion/model-conversion.md) kapatmak için [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırın
-1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın
-1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
+1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın.
+1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu).
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Paylaşılan erişim Imzaları aracılığıyla depolamaya erişim
 
@@ -202,13 +202,13 @@ Bağlı depolama hesabı kullanmak, paylaşılan erişim Imzaları oluşturmaya 
 
 Şunları yapmak gerekir:
 
-1. Yerel dosyayı öğesinden `assetConversionSettings.localAssetDirectoryPath` giriş blobu kapsayıcısına yükleme
-1. Giriş kapsayıcısı için SAS URI 'SI oluşturma
-1. Çıkış kapsayıcısı için SAS URI 'SI oluşturma
-1. Model [dönüştürmeyi](../how-tos/conversion/model-conversion.md) kapatmak için [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırın
-1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın
-1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
-1. Çıkış blob kapsayıcısında bir SAS URI 'sini dönüştürülen modele çıkış
+1. Yerel dosyayı öğesinden `assetConversionSettings.localAssetDirectoryPath` giriş blobu kapsayıcısına yükleyin.
+1. Giriş kapsayıcısı için bir SAS URI 'SI oluşturun.
+1. Çıkış kapsayıcısı için bir SAS URI 'SI oluşturun.
+1. Model [dönüştürmeyi](../how-tos/conversion/model-conversion.md)kapatmak için [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırın.
+1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın.
+1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu).
+1. Çıkış blob kapsayıcısında dönüştürülen modele bir SAS URI 'SI çıkışı.
 
 ### <a name="additional-command-line-options"></a>Ek komut satırı seçenekleri
 
@@ -249,7 +249,7 @@ Aşağıdaki komut satırı anahtarlarını kullanarak yapılandırma dosyasınd
 
 İşlemin tek tek adımlarını çalıştırmak istiyorsanız şunları kullanabilirsiniz:
 
-Yalnızca verilen LocalAssetDirectoryPath 'ten verileri karşıya yükle
+Yalnızca verilen LocalAssetDirectoryPath öğesinden verileri karşıya yükleyin.
 
 ```PowerShell
 .\Conversion.ps1 -Upload

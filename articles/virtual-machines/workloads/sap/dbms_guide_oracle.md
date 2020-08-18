@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832272"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504951"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -318,7 +318,7 @@ Oracle yazılımı, Microsoft Azure üzerinde çalıştırmak için Oracle taraf
 
 Aşağıdaki SAP notları Azure 'da SAP ile ilgilidir.
 
-| Dekont numarası | Başlık |
+| Dekont numarası | Title |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -372,12 +372,12 @@ Desteklenen Azure VM türlerini belirlemek için bkz. SAP Note [1928533].
 
 En düşük yapılandırma aşağıdaki gibidir: 
 
-| Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
+| Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium | Yok | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -385,15 +385,15 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 Performans yapılandırması aşağıdaki gibidir:
 
-| Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
+| Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Hiçbiri | Kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium | Hiçbiri | Kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium | Yok | Kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium | Yok | Kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium | Hiçbiri | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -404,7 +404,7 @@ Daha fazla ıOPS gerekliyse, birden çok bağlı disk üzerinde bir büyük mant
 
 
 #### <a name="write-accelerator"></a>Yazma Hızlandırıcısı
-Azure d serisi VM 'Ler için, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium Depolama ile karşılaştırıldığında faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md).
+Azure d serisi VM 'Ler için, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium Depolama ile karşılaştırıldığında faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Yedekleme/geri yükleme
@@ -462,12 +462,12 @@ Desteklenen Azure VM türlerini belirlemek için bkz. SAP Note [1928533].
 
 En düşük yapılandırma:
 
-| Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
+| Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Yok | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -476,15 +476,15 @@ Oracle 'ın çevrimiçi yineleme günlüklerinin barındırılmasına yönelik d
 
 Performans yapılandırması:
 
-| Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
+| Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Hiçbiri | Kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium | Yok | Kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium | Yok | Kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -498,7 +498,7 @@ Daha fazla ıOPS gerekliyse, birden fazla bağlı diske göre büyük bir mantı
 
 
 #### <a name="write-accelerator"></a>Yazma Hızlandırıcısı
-Azure n serisi VM 'Ler için, Azure Yazma Hızlandırıcısı kullandığınızda, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md).
+Azure n serisi VM 'Ler için, Azure Yazma Hızlandırıcısı kullandığınızda, çevrimiçi yineleme günlüklerine yazma gecikmesi, Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Çevrimiçi yineleme günlük dosyaları için kullanılan Azure Premium Depolama alanını temel alan diskler (VHD 'ler) için Azure Yazma Hızlandırıcısı 'yi etkinleştirin. Daha fazla bilgi için bkz. [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Yedekleme/geri yükleme

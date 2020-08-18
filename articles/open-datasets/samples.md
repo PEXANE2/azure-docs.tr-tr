@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c24363caac1db8dd8ce21b690ef989b2beb97f2d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930327"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506065"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Örnek jupi Not defterleri açık veri kümeleriyle verilerin nasıl zenginleştiralınacağını gösterir 
 Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri kümelerinin nasıl yükleneceğini ve bunları zenginleştirmek için bunları nasıl kullanacağınızı gösterir. Teknikler, verileri işlemek için Apache Spark ve Pandas kullanımını içerir.
@@ -35,7 +35,7 @@ Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri k
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>NOAA ıMD verileri ile NYC TAXI verilerini birleştirin 
 |Not Defteri        | Açıklama                                    |
 |----------------|------------------------------------------------|
-|[Vergilenme verileri hava durumu verileri ile zenginleştirdim-Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | NYC yeşil TAXI verilerini yükleyin (1 aydan fazla) ve bir Pandas dataframe içindeki hava durumu verileriyle zenginleştirin. Bu örnek, yöntemini `get_pandas_limit` geçersiz kılar ve Data Load performansını veri miktarıyla dengeler.|
+|[Vergilenme verileri hava durumu verileri ile zenginleştirdim-Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | NYC yeşil TAXI verilerini yükleyin (1 aydan fazla) ve bir Pandas dataframe içindeki hava durumu verileriyle zenginleştirin. Bu örnek, yöntemini geçersiz kılar `get_pandas_limit` ve Data Load performansını veri miktarıyla dengeler.|
 |[Vergilenme verileri hava durumu verileriyle zenginleştirir – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | Spark dataframe 'de NYC yeşil TAXI verilerini yükleyin ve hava durumu verileriyle zenginleştirin.  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -43,3 +43,4 @@ Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri k
 * [Öğretici: otomatik makine öğrenimi ve açık bir veri kümesi ile gerileme modelleme](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Açık veri kümeleri için Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure Açık Veri Kümeleri kataloğu](https://azure.microsoft.com/services/open-datasets/catalog/)
+* [Açık veri kümesinden Azure Machine Learning veri kümesi oluşturma](how-to-create-azure-machine-learning-dataset-from-open-dataset.md)

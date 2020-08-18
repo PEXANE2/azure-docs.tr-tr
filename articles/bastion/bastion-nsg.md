@@ -1,18 +1,18 @@
 ---
 title: Azure 'da VM 'Ler ve NSG 'lerle çalışma
-description: Bu makalede Azure savunma ile NSG erişimini birleştirme işlemi açıklanır
+description: Azure ile ağ güvenlik grupları 'nı kullanabilirsiniz. Bu yapılandırma için gereken alt ağlar hakkında bilgi edinin.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112228"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270538"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimiyle ve Azure ile çalışma
 
@@ -50,7 +50,7 @@ Azure savunma, özellikle ***AzureBastionSubnet***'e dağıtılır.
    * **Azure 'da diğer genel uç noktalara giden trafik çıkışı:** Azure savunma 'nın Azure 'daki çeşitli genel uç noktalara bağlanabililmesi gerekir (örneğin, tanılama günlüklerini ve ölçüm günlüklerini depolamak için). Bu nedenle, Azure savunma 'nın 443 'e giden ve **Azurecı** hizmeti etiketi için çıkış yapması gerekir.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Giden":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Outbound":::
 
 ### <a name="target-vm-subnet"></a>Hedef VM alt ağı
 Bu, RDP/SSH yapmak istediğiniz hedef sanal makineyi içeren alt ağıdır.

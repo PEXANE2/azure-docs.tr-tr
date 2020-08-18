@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 480e22b319edd03dc9bb9d666dd43718fb3c841b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387005"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507039"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 
@@ -37,7 +37,7 @@ Ağınızı Azure 'da oluştururken, aşağıdaki evrensel tasarım ilkelerini g
 
 - Çakışmayan adres alanlarının bulunduğundan emin olun. VNet adres alanının (CıDR bloğu) kuruluşunuzun diğer ağ aralıklarıyla çakışmadığından emin olun.
 - Alt ağlarınız VNet 'in tüm adres alanını kapsamamalıdır. Daha önce planlayın ve daha sonra adres alanı ayırın.
-- Birden çok küçük VNET 'ten daha az büyük VNET kullanmanız önerilir. Bu, yönetim yükünü engeller.
+- Birden çok küçük VNET yerine daha az büyük sanal ağ kullanmanız önerilir. Bu, yönetim yükünü engeller.
 - Ağ güvenlik gruplarını (NSG 'ler) bunların altındaki alt ağlara atayarak VNet 'iniz için güvenli hale getirin.
 
 ## <a name="communicate-with-the-internet"></a>İnternet ile iletişim kurma

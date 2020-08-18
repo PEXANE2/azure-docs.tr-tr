@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876725"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505589"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -40,10 +40,11 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 ### <a name="operating-system"></a>İşletim sistemi
 
 Linux çalıştıran düğümler için DSC Linux uzantısı, [POWERSHELL DSC belgelerinde](/powershell/scripting/dsc/getting-started/lnxgettingstarted)listelenen tüm Linux dağıtımlarını destekler.
- 
+
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-DSCForLinux uzantısı, hedef sanal makinenin internet 'e bağlanmasını gerektirir. Örneğin, YAZMAÇ uzantısının Automation hizmetine bağlantısı olması gerekir. Çekme, çekme, çekme gibi diğer eylemler için Azure depolama ve GitHub bağlantısı gerekir. Bu, müşteri tarafından sunulan ayarlara bağlıdır.
+DSCForLinux uzantısı, hedef sanal makinenin internet 'e bağlanmasını gerektirir. Örneğin, YAZMAÇ uzantısının Automation hizmetine bağlantısı olması gerekir.
+Çekme, çekme, çekme gibi diğer eylemler için Azure depolama ve GitHub bağlantısı gerekir. Bu, müşteri tarafından sunulan ayarlara bağlıdır.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -55,13 +56,13 @@ Desteklenen tüm ortak yapılandırma parametreleri şunlardır:
 * `ResourceName`: (isteğe bağlı, dize) özel kaynak modülünün adı.
 * `ExtensionAction`: (isteğe bağlı, dize) bir uzantının ne yaptığını belirtir. Geçerli değerler kayıt, gönderim, çekme, yükleme ve kaldırma. Belirtilmemişse, varsayılan olarak bir gönderme eylemi olarak kabul edilir.
 * `NodeConfigurationName`: (isteğe bağlı, dize) uygulanacak düğüm yapılandırmasının adı.
-* `RefreshFrequencyMins`: (isteğe bağlı, int) DSC 'nin çekme sunucusundan yapılandırmayı ne sıklıkta (dakika cinsinden) alacağını belirtir. 
+* `RefreshFrequencyMins`: (isteğe bağlı, int) DSC 'nin çekme sunucusundan yapılandırmayı ne sıklıkta (dakika cinsinden) alacağını belirtir.
        Çekme sunucusundaki yapılandırma hedef düğümdeki geçerli olandan farklıysa, bu, bekleyen depoya kopyalanıp uygulanır.
 * `ConfigurationMode`: (isteğe bağlı, dize) DSC 'nin yapılandırmayı nasıl uygulayacağınızı belirtir. Geçerli değerler yalnızca Apply, ApplyAndMonitor ve Applyandadutocorrect.
 * `ConfigurationModeFrequencyMins`: (isteğe bağlı, int), ne sıklıkta (dakika cinsinden) DSC 'nin yapılandırmanın istenen durumda olmasını sağlar.
 
 > [!NOTE]
-> 2,3 'den önceki bir sürümü kullanıyorsanız, mode parametresi ExtensionAction ile aynı olur. Mod aşırı yüklenmiş bir terim gibi görünüyor. Karışıklığın önüne geçmek için, 2,3. sürümden ExtensionAction kullanılır. Uzantı, geriye dönük uyumluluk için hem modu hem de ExtensionAction 'ı destekler. 
+> 2,3 'den önceki bir sürümü kullanıyorsanız, mode parametresi ExtensionAction ile aynı olur. Mod aşırı yüklenmiş bir terim gibi görünüyor. Karışıklığın önüne geçmek için, 2,3. sürümden ExtensionAction kullanılır. Uzantı, geriye dönük uyumluluk için hem modu hem de ExtensionAction 'ı destekler.
 >
 
 ### <a name="protected-configuration"></a>Korumalı yapılandırma
@@ -269,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Azure Otomasyonu 'na ekleme gibi dağıtım sonrası yapılandırma gerektiren bir veya daha fazla sanal makine dağıttığınızda şablonlar idealdir. 
+Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Azure Otomasyonu 'na ekleme gibi dağıtım sonrası yapılandırma gerektiren bir veya daha fazla sanal makine dağıttığınızda şablonlar idealdir.
 
 Örnek Kaynak Yöneticisi şablonu [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) ve [201-DSC-Linux-genel-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu)olur.
 
@@ -323,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 Aşağıdakileri çalıştırarak Azure hizmet yönetimi modunda Azure hesabınızda oturum açabilirsiniz:
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 Ve şunu çalıştırarak DSCForLinux uzantısını dağıtın:
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -362,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 Aşağıdakileri çalıştırarak Azure hesabınızda Azure Resource Manager modunda oturum açabilirsiniz:
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -370,7 +371,7 @@ Azure PowerShell Azure Resource Manager ile birlikte kullanma hakkında daha faz
 
 Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'

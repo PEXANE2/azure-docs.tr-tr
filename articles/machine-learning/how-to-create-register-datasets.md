@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037550"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507204"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -25,7 +25,7 @@ ms.locfileid: "88037550"
 
 Bu makalede, yerel veya uzak denemeleri verilerinize erişmek için Azure Machine Learning veri kümeleri oluşturmayı öğreneceksiniz. Veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
-Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz ve veri kaynaklarınızın bütünlüğünü riske çıkarmazsınız. Ayrıca, veri kümeleri, iş akışı performans hızına yardımcı olan geç değerlendirilir. Veri mağazalarından, genel URL 'Lerden ve [Azure açık veri](../open-datasets/how-to-create-dataset-from-open-dataset.md)kümelerinden veri kümeleri oluşturabilirsiniz.
+Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz ve veri kaynaklarınızın bütünlüğünü riske çıkarmazsınız. Ayrıca, veri kümeleri, iş akışı performans hızına yardımcı olan geç değerlendirilir. Veri mağazalarından, genel URL 'Lerden ve [Azure açık veri](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)kümelerinden veri kümeleri oluşturabilirsiniz.
 
 Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
@@ -232,7 +232,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 
 [Azure açık veri](https://azure.microsoft.com/services/open-datasets/) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini eğitmenize yardımcı olan hava durumu, Census, tatiller, genel güvenlik ve konum için genel etki alanı verilerini içerir. Açık veri kümeleri bulutta Microsoft Azure ve hem SDK hem de Studio 'ya dahildir.
 
-[Azure açık veri kümelerinden Azure Machine Learning veri kümeleri](../open-datasets/how-to-create-dataset-from-open-dataset.md)oluşturmayı öğrenin. 
+[Azure açık veri kümelerinden Azure Machine Learning veri kümeleri](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)oluşturmayı öğrenin. 
 
 ## <a name="train-with-datasets"></a>Veri kümeleriyle eğitme
 

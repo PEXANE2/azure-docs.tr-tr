@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689774"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272459"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platformu ve OAuth 2,0 cihaz yetkilendirmesi verme akışı
 
@@ -51,17 +51,17 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parametre | Koşul | Description |
+| Parametre | Koşul | Açıklama |
 | --- | --- | --- |
 | `tenant` | Gerekli | /Common,/tüketicileri veya/Organizations. olabilir.  Ayrıca, GUID veya kolay ad biçiminde izin istemek istediğiniz dizin kiracısı de olabilir.  |
 | `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `scope` | Önerilen | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  |
+| `scope` | Gerekli | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  |
 
 ### <a name="device-authorization-response"></a>Cihaz yetkilendirme yanıtı
 
 Başarılı bir yanıt, kullanıcının oturum açmasını sağlamak için gerekli bilgileri içeren bir JSON nesnesi olacaktır.
 
-| Parametre | Biçimlendir | Description |
+| Parametre | Biçimlendir | Açıklama |
 | ---              | --- | --- |
 |`device_code`     | Dize | İstemci ile yetkilendirme sunucusu arasındaki oturumu doğrulamak için kullanılan uzun bir dize. İstemci, yetkilendirme sunucusundan erişim belirtecini istemek için bu parametreyi kullanır. |
 |`user_code`       | Dize | Bir ikincil cihazda oturumu tanımlamak için kullanılan kullanıcıya gösterilen kısa bir dize.|
@@ -93,7 +93,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | Parametre | Gerekli | Açıklama|
 | -------- | -------- | ---------- |
 | `tenant`  | Gerekli | İlk istekte aynı kiracı veya kiracı diğer adı kullanıldı. |
-| `grant_type` | Gerekli | Olmalıdır`urn:ietf:params:oauth:grant-type:device_code`|
+| `grant_type` | Gerekli | Olmalıdır `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Gerekli | `client_id`İlk istekte kullanılan ile aynı olmalıdır. |
 | `device_code`| Gerekli | `device_code`Cihaz yetkilendirme isteğinde döndürüldü.  |
 
@@ -101,7 +101,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 Cihaz kod akışı bir yoklama protokolüdür, bu nedenle kullanıcının kimlik doğrulaması tamamlanmadan önce hata alması beklenir.
 
-| Hata | Description | İstemci eylemi |
+| Hata | Açıklama | İstemci eylemi |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Kullanıcı kimlik doğrulamasını tamamlamadı, ancak akışı iptal edilmedi. | İsteği en az saniye sonra tekrarlayın `interval` . |
 | `authorization_declined` | Son Kullanıcı Yetkilendirme isteğini reddetti.| Yoklamayı durdurun ve kimliği doğrulanmamış bir duruma dönün.  |
@@ -123,7 +123,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
 }
 ```
 
-| Parametre | Biçimlendir | Description |
+| Parametre | Biçimlendir | Açıklama |
 | --------- | ------ | ----------- |
 | `token_type` | Dize| Always "taşıyıcı. |
 | `scope` | Boşlukla ayrılmış dizeler | Erişim belirteci döndürülürse, bu, erişim belirtecinin geçerli olduğu kapsamları listeler. |

@@ -2,22 +2,21 @@
 title: PowerShell örneği-uygulama proxy 'Si uygulamaları için genişletilmiş bilgileri listeleyin
 description: Tüm Azure Active Directory (Azure AD) uygulama proxy uygulamalarını, uygulama KIMLIĞI (AppID), adı (DisplayName), dış URL (ExternalUrl), iç URL (InternalUrl) ve kimlik doğrulama türü (ExternalAuthenticationType) ile birlikte listeleyen PowerShell örneği.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58de8c081dbb0323a2d9638777e29d879172072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8994abc61e27a9d7c7097aacab92282f0c47c989
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482146"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506956"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Tüm uygulama proxy 'Si uygulamalarını al ve genişletilmiş bilgileri Listele
 

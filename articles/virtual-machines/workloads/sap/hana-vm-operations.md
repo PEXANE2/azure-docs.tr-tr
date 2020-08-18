@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01eecf24802bc43aebfa7b02105a2b1aa679a52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051947"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506439"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -29,7 +29,7 @@ Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyap�
 - [SAP Yükleme Kılavuzu](https://service.sap.com/instguides)
 - [SAP notları](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
 - [Azure sanal makineleri](../../linux/tutorial-manage-vm.md)
@@ -259,7 +259,7 @@ M64-32ms VM 'nin belleği çok fazlaysa, GÇ yükü özellikle okuma yoğunluklu
 
 Özellikle iş yükünün okuma açısından yoğun olması durumunda, veritabanı yazılımının veri birimleri için önerilen "salt okunurdur" Azure ana bilgisayar önbelleğini açmak üzere GÇ performansını artırabilir. İşlem günlüğü için Azure konak disk önbelleğinin "none" olması gerekir. 
 
-Günlük biriminin boyutuna ilişkin önerilen bir başlangıç noktası, veri boyutunun %15 ' i için buluşsal bir değer. Günlük biriminin oluşturulması, maliyet ve verimlilik gereksinimlerine bağlı olarak farklı Azure disk türleri kullanılarak gerçekleştirilebilir. Günlük birimi için yüksek g/ç verimlilik gereklidir.  M64-32ms VM türünün kullanılması durumunda [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md)etkinleştirilmesi zorunludur. Azure Yazma Hızlandırıcısı, işlem günlüğü için en iyi disk yazma gecikmesi sağlar (yalnızca M serisi için kullanılabilir). VM türü başına en fazla disk sayısı gibi göz önünde bulundurmanız gereken bazı öğeler vardır. Yazma Hızlandırıcısı ayrıntılarını [burada](../../windows/how-to-enable-write-accelerator.md) bulabilirsiniz
+Günlük biriminin boyutuna ilişkin önerilen bir başlangıç noktası, veri boyutunun %15 ' i için buluşsal bir değer. Günlük biriminin oluşturulması, maliyet ve verimlilik gereksinimlerine bağlı olarak farklı Azure disk türleri kullanılarak gerçekleştirilebilir. Günlük birimi için yüksek g/ç verimlilik gereklidir.  M64-32ms VM türünün kullanılması durumunda [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)etkinleştirilmesi zorunludur. Azure Yazma Hızlandırıcısı, işlem günlüğü için en iyi disk yazma gecikmesi sağlar (yalnızca M serisi için kullanılabilir). VM türü başına en fazla disk sayısı gibi göz önünde bulundurmanız gereken bazı öğeler vardır. Yazma Hızlandırıcısı ayrıntılarını [burada](../../how-to-enable-write-accelerator.md) bulabilirsiniz
 
 
 Günlük birimini boyutlandırma hakkında birkaç örnek aşağıda verilmiştir:

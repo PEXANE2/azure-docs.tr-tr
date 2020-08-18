@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192410"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506524"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 
 Çalışma alanınızı ve depolama hesabınızı birbirlerine erişebilecek şekilde aynı sanal ağa ekleyin.
 
-1. Çalışma alanınızı sanal ağa bağlamak için [Azure özel bağlantısını etkinleştirin](how-to-configure-private-link.md). Bu özellik şu anda önizleme aşamasındadır ve ABD Doğu, ABD Batı 2 ABD Orta Güney bölgelerinde kullanılabilir.
+1. Çalışma alanınızı sanal ağa bağlamak için [Azure özel bağlantısını etkinleştirin](how-to-configure-private-link.md). Bu özellik şu anda önizleme aşamasındadır ve ABD Doğu ve ABD Batı 2 bölgelerinde kullanılabilir.
 
 1. Depolama hesabınızı sanal ağa bağlamak için [güvenlik duvarları ve sanal ağlar ayarlarını yapılandırın](#use-a-storage-account-for-your-workspace).
 
@@ -832,4 +832,4 @@ Sanal bir makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 * [Eğitim ortamlarını ayarlama](how-to-set-up-training-targets.md)
 * [Özel uç noktaları ayarlama](how-to-configure-private-link.md)
 * [Modellerin dağıtılacağı yerler](how-to-deploy-and-where.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042284"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506489"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimleri ayarlama 
 
@@ -32,6 +32,9 @@ Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin mik
 - **Orta önem derecesine** sahip uyarılar için günde en fazla **iki** e-posta
 - **düşük önem derecesi** uyarıları için günde en fazla **bir** e-posta
 
+
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Güvenlik uyarıları hakkında e-posta alacak kişinin ayrıntılarını yapılandırma." :::
+
 ## <a name="availability"></a>Kullanılabilirlik
 
 |Görünüş|Ayrıntılar|
@@ -39,13 +42,11 @@ Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin mik
 |Yayın durumu:|Genel olarak kullanılabilir|
 |Fiyat|Ücretsiz katmanı|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi**<br>**Abonelik sahibi** |
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov (kısmi)<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov (kısmi)<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
-
-
-## <a name="set-up-email-notifications-for-alerts"></a>Uyarılar için e-posta bildirimleri ayarlama<a name="email"></a>
+## <a name="set-up-email-notifications-for-alerts"></a>Uyarılar için e-posta bildirimleri ayarlama <a name="email"></a>
 
 Kişilere veya belirli Azure rollerine sahip tüm kullanıcılara e-posta bildirimleri gönderebilirsiniz.
 
@@ -64,3 +65,4 @@ Güvenlik uyarıları hakkında daha fazla bilgi edinmek için aşağıdakilere 
 
 * [Güvenlik uyarıları-bir başvuru kılavuzu](alerts-reference.md) -Azure Güvenlik Merkezi 'Nin tehdit koruması modülünde görebileceğiniz güvenlik uyarılarını öğrenin
 * [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) --güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin
+- [Iş akışı Otomasyonu](workflow-automation.md) --özel bildirim mantığı ile uyarılara olan yanıtları otomatikleştirin

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041995"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272510"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -43,7 +43,7 @@ Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı ve
 
 
 
-## <a name="threat-protection-for-windows-machines"></a>Windows makineleri için tehdit koruması<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Windows makineleri için tehdit koruması <a name="windows-machines"></a>
 
 Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak için Azure hizmetleri ile tümleşir. Güvenlik Merkezi, tüm bu hizmetlerden gelen uyarıları ve düzeltme önerilerini kullanımı kolay bir biçimde sunar.
 
@@ -74,7 +74,7 @@ Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak içi
 
 
 
-## <a name="threat-protection-for-linux-machines"></a>Linux makineleri için tehdit koruması<a name="linux-machines"></a>
+## <a name="threat-protection-for-linux-machines"></a>Linux makineleri için tehdit koruması <a name="linux-machines"></a>
 
 Güvenlik Merkezi, en yaygın Linux denetim çerçevelerinden biri olan **auditd**'Yi kullanarak Linux makinelerden gelen denetim kayıtlarını toplar. auditd, ana hat çekirdekte yer yaşar. 
 
@@ -91,7 +91,7 @@ Güvenlik Merkezi, en yaygın Linux denetim çerçevelerinden biri olan **auditd
 
 
 
-## <a name="threat-protection-for-azure-app-service"></a>Azure App Service için tehdit koruması<a name="app-services"></a>
+## <a name="threat-protection-for-azure-app-service"></a>Azure App Service için tehdit koruması <a name="app-services"></a>
 
 > [!NOTE]
 > Bu hizmet şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
@@ -110,7 +110,7 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 
 
 
-## <a name="threat-protection-for-containers"></a>Kapsayıcılar için tehdit koruması<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Kapsayıcılar için tehdit koruması <a name="azure-containers"></a>
 
 ### <a name="availability"></a>Kullanılabilirlik
 
@@ -119,7 +119,7 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 |Yayın durumu:|Genel olarak kullanılabilir|
 |Fiyat|Standart katmanı|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -131,7 +131,7 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>SQL veritabanı ve SQL veri ambarı için tehdit koruması<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>SQL veritabanı ve SQL veri ambarı için tehdit koruması <a name="data-sql"></a>
 
 Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar.
 
@@ -147,7 +147,7 @@ Daha fazla bilgi için bkz.
 
 
 
-## <a name="threat-protection-for-azure-storage"></a>Azure depolama için tehdit koruması<a name="azure-storage"></a>
+## <a name="threat-protection-for-azure-storage"></a>Azure depolama için tehdit koruması <a name="azure-storage"></a>
 
 ### <a name="availability"></a>Kullanılabilirlik
 
@@ -155,7 +155,7 @@ Daha fazla bilgi için bkz.
 |----|:----|
 |Yayın durumu:|[BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)<br>[Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme)<br>[Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Önizleme)|
 |Fiyat|Standart katmanı|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -204,7 +204,7 @@ Daha fazla bilgi için bkz.
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için tehdit koruması<a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için tehdit koruması <a name="cosmos-db"></a>
 
 Azure Cosmos DB uyarıları, Azure Cosmos DB hesaplarına erişmek veya bu hesaplara yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur.
 
@@ -216,7 +216,7 @@ Daha fazla bilgi için bkz.
 
 
 
-## <a name="threat-protection-for-azure-network-layer"></a>Azure ağ katmanı için tehdit koruması<a name="network-layer"></a>
+## <a name="threat-protection-for-azure-network-layer"></a>Azure ağ katmanı için tehdit koruması <a name="network-layer"></a>
 
 Güvenlik Merkezi ağ katmanı analizi, Azure çekirdek yönlendiricileri tarafından toplanan paket üstbilgileri olan örnek [ıpdüzeltme verilerini](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)temel alır. Güvenlik Merkezi, bu veri akışına bağlı olarak kötü amaçlı trafik etkinliklerini belirlemek ve işaretlemek için makine öğrenimi modellerini kullanır. Ayrıca, Güvenlik Merkezi, IP adreslerini zenginleştirmek için Microsoft Threat Intelligence veritabanını kullanır.
 
@@ -230,7 +230,6 @@ Bazı ağ yapılandırmalarında, güvenlik merkezi 'nin şüpheli ağ etkinliğ
 
 Azure ağ katmanı uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azurenetlayer)bakın.
 
-Güvenlik Merkezi 'nin tehdit koruması uygulamak için ağla ilgili sinyalleri nasıl kullanabileceği hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezi 'Nde BULUŞSAL DNS algılamaları](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 
 
@@ -281,9 +280,9 @@ Azure Key Vault uyarılarının listesi için, [Uyarı tablosuna](alerts-referen
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Diğer Microsoft Hizmetleri için tehdit koruması<a name="alerts-other"></a>
+## <a name="threat-protection-for-other-microsoft-services"></a>Diğer Microsoft Hizmetleri için tehdit koruması <a name="alerts-other"></a>
 
-### <a name="threat-protection-for-azure-waf"></a>Azure WAF için tehdit koruması<a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Azure WAF için tehdit koruması <a name="azure-waf"></a>
 
 Azure Application Gateway, web uygulamalarınız için açıklardan yararlanmaya ve güvenlik açıklarına karşı merkezi koruma sağlayan bir web uygulaması güvenlik duvarı (WAF) sunar.
 
@@ -292,7 +291,7 @@ Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan k
 Azure WAF lisansına sahipseniz, WAF uyarılarınız ek bir yapılandırma gerekmeden Güvenlik Merkezi 'ne akışla kaydedilir. WAF tarafından oluşturulan uyarılar hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı Ayrıntılar kural grupları ve kuralları](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Azure DDoS koruması için tehdit koruması<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Azure DDoS koruması için tehdit koruması <a name="azure-ddos"></a>
 
 Dağıtılmış hizmet reddi (DDoS) saldırılarına kolayca çalıştırılabilir. Özellikle de uygulamalarınızı buluta taşıyorsanız harika bir güvenlik sorunu haline gelmiştir. 
 

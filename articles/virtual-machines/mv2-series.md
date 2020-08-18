@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f6dc732a512368b007a289c3aaabc3123a696d96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836267"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505266"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
@@ -28,7 +28,7 @@ Dinamik Geçiş: desteklenmiyor
 
 Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
-Yazma Hızlandırıcısı: [destekleniyor](./windows/how-to-enable-write-accelerator.md)
+Yazma Hızlandırıcısı: [destekleniyor](./how-to-enable-write-accelerator.md)
 
 |Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|---|

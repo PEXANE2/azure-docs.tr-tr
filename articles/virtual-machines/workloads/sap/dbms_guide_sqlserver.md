@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831065"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505570"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
 
@@ -314,7 +314,7 @@ Bu belge, Azure IaaS 'de SAP iş yükü için SQL Server dağıtımı yaparken g
 
 
 > [!IMPORTANT]
-> Bu belgenin kapsamı, SQL Server Windows sürümüdür. SAP, SAP yazılımıyla SQL Server Linux sürümünü desteklememektedir. Belge, Microsoft Azure platformunun hizmet olarak platform olan Microsoft Azure SQL Veritabanı tartışımamaktadır. Bu yazıda tartışma, Azure sanal makinelerinde şirket içi dağıtımlar için bilinen, Azure 'un hizmet olarak altyapı özelliğinden yararlanarak SQL Server ürünün nasıl çalıştığı konusunda çalışmaktadır. Bu iki teklif arasındaki veritabanı özellikleri ve işlevleri farklıdır ve birbirleriyle karışık olmamalıdır. Ayrıca bkz:<https://azure.microsoft.com/services/sql-database/>
+> Bu belgenin kapsamı, SQL Server Windows sürümüdür. SAP, SAP yazılımıyla SQL Server Linux sürümünü desteklememektedir. Belge, Microsoft Azure platformunun hizmet olarak platform olan Microsoft Azure SQL Veritabanı tartışımamaktadır. Bu yazıda tartışma, Azure sanal makinelerinde şirket içi dağıtımlar için bilinen, Azure 'un hizmet olarak altyapı özelliğinden yararlanarak SQL Server ürünün nasıl çalıştığı konusunda çalışmaktadır. Bu iki teklif arasındaki veritabanı özellikleri ve işlevleri farklıdır ve birbirleriyle karışık olmamalıdır. Ayrıca bkz: <https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
@@ -355,13 +355,13 @@ Yukarıdaki diyagramda basit bir durum görüntülenir. SAP iş yükü, numaras�
 
 
 ### <a name="special-for-m-series-vms"></a>D serisi VM 'Ler için özel
-Azure M serisi VM için, işlem günlüğüne yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, SQL Server işlem günlüğü için birimi oluşturan VHD 'ler (ler) için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md)okunabilir.
+Azure M serisi VM için, işlem günlüğüne yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, SQL Server işlem günlüğü için birimi oluşturan VHD 'ler (ler) için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)okunabilir.
   
 
 ### <a name="formatting-the-disks"></a>Diskleri biçimlendirme
 SQL Server için, SQL Server veri ve günlük dosyaları içeren disklerin NTFS blok boyutu 64 KB olmalıdır. D:\ biçimini biçimlendirmeye gerek yoktur. sürücü. Bu sürücü önceden biçimlendirilen şekilde gelir.
 
-Veritabanlarının geri yüklenmesi veya oluşturulması, dosyaların içeriğini sıfırlama yoluyla veri dosyalarını başlatmadığından emin olmak için, SQL Server hizmetinin üzerinde çalıştığı Kullanıcı bağlamının belirli bir izne sahip olduğundan emin olun. Genellikle Windows Yönetici grubundaki kullanıcılar bu izinlere sahiptir. SQL Server hizmeti Windows olmayan yönetici kullanıcısının kullanıcı bağlamında çalışıyorsa, kullanıcıya **toplu bakım görevlerini gerçekleştirmesi**için bu kullanıcıya atamanız gerekir.  Bu Microsoft Bilgi Bankası makalesindeki ayrıntılara bakın:<https://support.microsoft.com/kb/2574695>
+Veritabanlarının geri yüklenmesi veya oluşturulması, dosyaların içeriğini sıfırlama yoluyla veri dosyalarını başlatmadığından emin olmak için, SQL Server hizmetinin üzerinde çalıştığı Kullanıcı bağlamının belirli bir izne sahip olduğundan emin olun. Genellikle Windows Yönetici grubundaki kullanıcılar bu izinlere sahiptir. SQL Server hizmeti Windows olmayan yönetici kullanıcısının kullanıcı bağlamında çalışıyorsa, kullanıcıya **toplu bakım görevlerini gerçekleştirmesi**için bu kullanıcıya atamanız gerekir.  Bu Microsoft Bilgi Bankası makalesindeki ayrıntılara bakın: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Veritabanı sıkıştırmasının etkisi
 G/ç bant genişliğinin sınırlama faktörü olabileceği yapılandırmalarda, her ölçü, ıOPS 'yi azaltan iş yükünün Azure gibi bir IaaS senaryosunda çalıştırılabileceği şekilde uzamasına yardımcı olabilir. Bu nedenle, henüz yapılmazsa, mevcut bir SAP veritabanını Azure 'a yüklemeden önce hem SAP hem de Microsoft tarafından SQL Server sayfa sıkıştırması uygulanması önerilir.
@@ -487,16 +487,16 @@ SAP tarafından desteklenen veritabanı yansıtma (bkz. SAP Note [965908]) SAP b
 
 Yalnızca bulutta gerçekleştirilen dağıtımlarda, en kolay yöntem, Azure 'daki başka bir etki alanı kurulumunun, bu DBMS VM 'Leri (ve ideal SAP VM 'Leri) bir etki alanı içinde olmasını sağlar.
 
-Bir etki alanı mümkün değilse, bir tane, burada açıklandığı gibi veritabanı yansıtma uç noktaları için sertifikalar da kullanabilir:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Bir etki alanı mümkün değilse, bir tane, burada açıklandığı gibi veritabanı yansıtma uç noktaları için sertifikalar da kullanabilir: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Azure 'da veritabanı yansıtmayı ayarlamaya yönelik bir öğretici şurada bulunabilir:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Azure 'da veritabanı yansıtmayı ayarlamaya yönelik bir öğretici şurada bulunabilir: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>SQL Server Always On
 Her zaman açık SAP şirket içi için desteklenir (bkz. SAP Note [1772688]), Azure 'da SAP ile birlikte desteklenir. Bu noktada Azure, şirket içinde mümkün olduğu için AD/DNS nesnesi oluşturulmasına izin vermediğinden, SQL Server kullanılabilirlik grubu dinleyicisinin (Azure kullanılabilirlik kümesiyle karıştırılmamalıdır) dağıtılmasıyla ilgili bazı özel noktalar vardır. Bu nedenle, belirli bir Azure davranışını aşmak için bazı farklı yükleme adımları gereklidir.
 
 Kullanılabilirlik grubu dinleyicisi kullanan bazı noktalar şunlardır:
 
-* Kullanılabilirlik grubu dinleyicisinin kullanılması yalnızca, sanal makinenin Konuk işletim sistemi olarak Windows Server 2012 veya üzeri olabilir. Windows Server 2012 için, bu düzeltme ekinin uygulandığından emin olmanız gerekir:<https://support.microsoft.com/kb/2854082> 
+* Kullanılabilirlik grubu dinleyicisinin kullanılması yalnızca, sanal makinenin Konuk işletim sistemi olarak Windows Server 2012 veya üzeri olabilir. Windows Server 2012 için, bu düzeltme ekinin uygulandığından emin olmanız gerekir: <https://support.microsoft.com/kb/2854082> 
 * Windows Server 2008 R2 için, bu düzeltme eki mevcut değildir ve her zaman açık, bağlantı dizesinde bir yük devretme ortağı belirtilerek (SAP default. PFL parametresi DBS/,/sunucu-bkz. SAP Not [965908]), veritabanı yansıtmayla aynı şekilde kullanılması gerekir.
 * Bir kullanılabilirlik grubu dinleyicisi kullanılırken, veritabanı VM 'lerinin ayrılmış bir Load Balancer bağlı olması gerekir. Azure 'un her iki VM arada kapatıldığı durumlarda yeni IP adresleri atamasını önlemek için, biri her zaman açık yapılandırmada bu sanal makinelerin ağ arabirimlerine statik IP adresleri atamalıdır ( [Bu][virtual-networks-reserved-private-ip] makalede statik IP adresi tanımlama açıklanmıştır)
 * Azure 'un geçerli işlevselliği ile aynı IP adresini kümenin oluşturulduğu düğüm ile aynı IP adresine atayacağından, kümenin özel bir IP adresi olması gereken bir WSFC küme yapılandırması oluşturulurken gerekli olan özel adımlar vardır. Bu, kümeye farklı bir IP adresi atamak için el ile yapılan bir adımın gerçekleştirilmesi gerektiği anlamına gelir.

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 47e4bb291d031c41c89c88435a795004490e20a1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163642"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505334"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
@@ -24,10 +24,10 @@ Bu nasıl yapılır belgesi, IoT Hub telemetri alabilen bir Azure işlevi yazma 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu örneğe devam etmeden önce, aşağıdaki önkoşulları gerçekleştirmeniz gerekir.
-* **IoT Hub 'ı**. Yönergeler için [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md) konusunun *IoT Hub oluşturma* bölümüne bakın.
-* Dijital ikizi örneğinizi çağırmak için doğru izinlere sahip **bir Azure işlevi** . Bkz. [*nasıl yapılır: yönergelerin verilerini işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md) . 
-* Cihaz telemetrinizi alacak **bir dijital TWINS örneği** . Bkz [ *. nasıl yapılır: Azure dijital TWINS örneği ve kimlik doğrulaması ayarlama*](./how-to-set-up-instance-portal.md) 
+Bu örneğe devam etmeden önce aşağıdaki kaynakları önkoşul olarak ayarlamanız gerekir:
+* **IoT Hub 'ı**. Yönergeler için, [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md)konusunun *IoT Hub oluşturma* bölümüne bakın.
+* Dijital ikizi örneğinizi çağırmak için doğru izinlere sahip **bir Azure işlevi** . Yönergeler için bkz. [*nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md). 
+* Cihaz telemetrinizi alacak **bir Azure dijital TWINS örneği** . Yönergeler için bkz. [*nasıl yapılır: Azure dijital TWINS örneği ve kimlik doğrulaması ayarlama*](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Örnek telemetri senaryosu
 

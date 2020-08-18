@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389539"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505470"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme
 
 Bu makalede belirteç, oturum ve çoklu oturum açma (SSO) yapılandırmalardan Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak nasıl yönetebileceğiniz hakkında bilgi sağlanır.
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW belirteci yaşam süreleri ve talep yapılandırması
+## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT belirteci yaşam süreleri ve talep yapılandırması
 
 Belirteç yaşam sürelerinin ayarlarını değiştirmek için, etkilemek istediğiniz ilkenin bağlı olan taraf dosyasına bir [Claimsproviders](claimsproviders.md) öğesi eklersiniz.  **Claimsproviders** öğesi, [TrustFrameworkPolicy](trustframeworkpolicy.md) öğesinin bir alt öğesidir.
 
@@ -57,7 +57,7 @@ BasePolicy öğesi ve bağlı olan taraf dosyasının RelyingParty öğesi aras�
 - **Belirteç ömrünü Yenile** -yenileme belirteci yaşam süresi değeri **refresh_token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 1209600 saniyedir (14 gün).
 - **Yenileme belirteci kayan pencere ömrü** -yenileme belirtecinize bir kayan pencere ömrü ayarlamak isterseniz, **rolling_refresh_token_lifetime_secs** meta veri öğesi değerini ayarlayın. Varsayılan değer 7776000 ' dir (90 gün). Bir kayan pencere ömrü zorlamak istemiyorsanız, öğesini ile değiştirin `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` .
 - **Veren (ISS) talebi** -veren (İSS) talebi **ıssuanceclaımpattern** meta veri öğesiyle ayarlanır. Geçerli değerler `AuthorityAndTenantGuid` ve ' dir `AuthorityWithTfp` .
-- **Ilke kimliğini temsil eden talep ayarlama** -bu değeri ayarlama seçenekleri `TFP` (güven Framework ilkesi) ve `ACR` (kimlik doğrulama bağlamı başvurusu). `TFP`önerilen değerdir. **Authenticationcontextreferenceclaımpattern** değerini olarak ayarlayın `None` .
+- **Ilke kimliğini temsil eden talep ayarlama** -bu değeri ayarlama seçenekleri `TFP` (güven Framework ilkesi) ve `ACR` (kimlik doğrulama bağlamı başvurusu). `TFP` önerilen değerdir. **Authenticationcontextreferenceclaımpattern** değerini olarak ayarlayın `None` .
 
     **Claimsschema** öğesinde şu öğeyi ekleyin:
 

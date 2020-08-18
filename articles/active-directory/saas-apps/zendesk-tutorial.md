@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 08/13/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70e7067a78b439d3dcaf0b83460296cad7b4485
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff4ff33722ac0697532285cf52d88ef459f5c7d5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80585811"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Öğretici: Zendesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -119,9 +119,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -143,13 +143,21 @@ Bu bölümde, Zendesk 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-zendesk-sso"></a>Zendesk SSO 'yu yapılandırma
 
+1. Bu yapılandırmayı **Zendesk**içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. Tarayıcıya Uzantı eklendikten sonra, **Kurulum Zendesk** öğesine tıkladığınızda sizi Zendesk uygulamasına yönlendirirsiniz. Buradan, Zendesk 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
 1. Zendesk 'i el ile kurmak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Zendesk şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-2. **Yönetici**' ye tıklayın.
+1. **Yönetici**' ye tıklayın.
 
-3. Sol gezinti bölmesinde **Ayarlar**' a ve ardından **güvenlik**' e tıklayın.
+1. Sol gezinti bölmesinde **Ayarlar**' a ve ardından **güvenlik**' e tıklayın.
 
-4. **Güvenlik** sayfasında, aşağıdaki adımları gerçekleştirin:
+1. **Güvenlik** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Güvenlik](./media/zendesk-tutorial/ic773089.png "Güvenlik")
 
@@ -182,7 +190,7 @@ Bu bölümün amacı Zendesk 'te Britta Simon adlı bir Kullanıcı oluşturmakt
 
 3. **Kullanıcı** sekmesini seçin ve **Ekle**' ye tıklayın.
 
-    ![Kullanıcı ekle](./media/zendesk-tutorial/ic773632.png "Kullanıcı ekle")
+    ![Kullanıcı ekle](./media/zendesk-tutorial/ic773632.png "Kullanıcı ekleme")
 4. Sağlamak istediğiniz mevcut bir Azure AD hesabının **adını** ve **e-postasını** yazın ve ardından **Kaydet**' e tıklayın.
 
     ![Yeni kullanıcı](./media/zendesk-tutorial/ic773633.png "Yeni kullanıcı")
@@ -198,9 +206,9 @@ Erişim panelinde Zendesk kutucuğuna tıkladığınızda, SSO 'yu ayarladığı
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

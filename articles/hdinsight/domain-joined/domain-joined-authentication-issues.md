@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218850feea8b0e22b8e11695a3aa3c69173f1ab7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75896132"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504934"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 'ta kimlik doğrulama sorunları
 
@@ -148,7 +148,7 @@ Olmadığına.
 
 ### <a name="resolution"></a>Çözüm
 
-Başarılı olması için, hesabınızı bilmeniz gerekir `sAMAccountName` (Bu, bölge olmadan kısa hesap adıdır). `sAMAccountName`genellikle hesap ön eki olur (Bob gibi `bob@contoso.com` ). Bazı kullanıcılar için farklı olabilir. Bilgilerinizi öğrenmek için dizine gözatıp araymanıza gerek duyarsınız `sAMAccountName` .
+Başarılı olması için, hesabınızı bilmeniz gerekir `sAMAccountName` (Bu, bölge olmadan kısa hesap adıdır). `sAMAccountName` genellikle hesap ön eki olur (Bob gibi `bob@contoso.com` ). Bazı kullanıcılar için farklı olabilir. Bilgilerinizi öğrenmek için dizine gözatıp araymanıza gerek duyarsınız `sAMAccountName` .
 
 Şunları bulmanın yolları `sAMAccountName` :
 
@@ -208,7 +208,7 @@ Bu hata, kullanıcılar ACL 'Leri kullanarak ADLS 2. erişmeyi denediğinde ve K
 
 * Azure Data Lake Storage 1. için, tarayıcı önbelleğini temizleyin ve yeniden ambarı 'nda oturum açın.
 
-* Azure Data Lake Storage 2. için, `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` kullanıcının oturum açmaya çalıştığı kullanıcı için şunu çalıştırın
+* Azure Data Lake Storage 2. için, `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` kullanıcının oturum açmaya çalıştığı kullanıcı için şunu çalıştırın
 
 ---
 

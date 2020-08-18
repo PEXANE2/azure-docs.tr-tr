@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848711"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507187"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -308,6 +308,10 @@ Multi-Factor Authentication kullanıcıları yapılandırma konusunda yardım i�
 
 Bu bölüm VPN sunucusu ile istemci kimlik doğrulaması için MFA 'yı kullanmak üzere VPN yapılandırmaya ilişkin yönergeler sağlar.
 
+> [!NOTE]
+> REQUIRE_USER_MATCH kayıt defteri anahtarı büyük/küçük harfe duyarlıdır. Tüm değerler büyük harf biçiminde ayarlanmalıdır.
+>
+
 NPS uzantısını yükleyip yapılandırdıktan sonra, MFA kullanmak için bu sunucu tarafından işlenen tüm RADIUS tabanlı istemci kimlik doğrulaması gerekir. Tüm VPN kullanıcılarınız Azure Multi-Factor Authentication kayıtlı değilse, aşağıdakilerden birini yapabilirsiniz:
 
 * MFA 'yı kullanacak şekilde yapılandırılmamış kullanıcıların kimliğini doğrulamak için başka bir RADIUS sunucusu ayarlayın.
@@ -319,6 +323,8 @@ _HKLM\SOFTWARE\Microsoft\AzureMfa içinde REQUIRE_USER_MATCH_adlı yeni bir dize
 !["Kullanıcı eşleşmesi ıste" ayarı](./media/howto-mfa-nps-extension-vpn/image34.png)
 
 Değer *true* olarak ayarlandıysa veya boşsa, tüm kimlik doğrulama istekleri MFA sınamasına tabidir. Değer *false*olarak ayarlandıysa, MFA sorunları yalnızca Azure Multi-Factor Authentication kayıtlı olan kullanıcılara verilir. Bir ekleme dönemi sırasında yalnızca test veya üretim ortamlarında *yanlış* ayarını kullanın.
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>Azure Active Directory kiracı KIMLIĞINI edinin
 

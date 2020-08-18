@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/06/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: b56c3dfc755f1b0368ef93d21cec18e7fc14a64b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 480c1e991225f707b6497849b6e8d8b5c4124f21
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246255"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505419"
 ---
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services).
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
@@ -60,26 +60,11 @@ Build succeeded.
 
 Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki yönergeleri ekleyin `using` :
 
-```csharp
-using Azure.AI.FormRecognizer;
-using Azure.AI.FormRecognizer.Models;
-using Azure.AI.FormRecognizer.Training;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_using)]
 
 Sonra uygulamanın **Main** yöntemine aşağıdaki kodu ekleyin. Bu zaman uyumsuz görevi üzerinde daha sonra tanımlayacaksınız. 
 
-```csharp
-static void Main(string[] args)
-{
-    var t1 = RunFormRecognizerClient();
-
-    Task.WaitAll(t1);
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
@@ -112,18 +97,8 @@ Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aş
 
 Yönteminin altında `Main` , ' de başvurulan görevi tanımlayın `Main` . Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak iki istemci nesnesinin kimlik doğrulamasını yapacaksınız. Gerektiğinde, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilmeniz için bir **AzureKeyCredential** nesnesi kullanacaksınız.
 
-```csharp
-static async Task RunFormRecognizerClient()
-{ 
-    string endpoint = Environment.GetEnvironmentVariable(
-        "FORM_RECOGNIZER_ENDPOINT");
-    string apiKey = Environment.GetEnvironmentVariable(
-        "FORM_RECOGNIZER_KEY");
-    var credential = new AzureKeyCredential(apiKey);
-    
-    var trainingClient = new FormTrainingClient(new Uri(endpoint), credential);
-    var recognizerClient = new FormRecognizerClient(new Uri(endpoint), credential);
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
+
 
 ### <a name="call-client-specific-methods"></a>İstemciye özgü yöntemleri çağırma
 
@@ -137,29 +112,7 @@ Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerek
 > [!NOTE]
 > Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)ilgili yöntemlere bakın.
 
-```csharp
-    string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
-    string formUrl = "<SAS-URL-of-a-form-in-blob-storage>";
-    string receiptUrl = "https://docs.microsoft.com/azure/cognitive-services/form-recognizer/media"
-    + "/contoso-allinone.jpg";
-
-    // Call Form Recognizer scenarios:
-    Console.WriteLine("Get form content...");
-    await GetContent(recognizerClient, formUrl);
-
-    Console.WriteLine("Analyze receipt...");
-    await AnalyzeReceipt(recognizerClient, receiptUrl);
-
-    Console.WriteLine("Train Model with training data...");
-    Guid modelId = await TrainModel(trainingClient, trainingDataUrl);
-
-    Console.WriteLine("Analyze PDF form...");
-    await AnalyzePdfForm(recognizerClient, modelId, formUrl);
-
-    Console.WriteLine("Manage models...");
-    await ManageModels(trainingClient, trainingDataUrl) ;
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_calls)]
 
 ## <a name="recognize-form-content"></a>Form içeriğini tanı
 
@@ -167,45 +120,13 @@ Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve
 
 Belirli bir URI 'deki bir dosyanın içeriğini tanımak için **Startrecognizecontentfromuri** metodunu kullanın.
 
-```csharp
-private static async Task GetContent(
-    FormRecognizerClient recognizerClient, string invoiceUri)
-{
-    Response<FormPageCollection> formPages = await recognizerClient
-        .StartRecognizeContentFromUri(new Uri(invoiceUri))
-        .WaitForCompletionAsync();
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+
 
 Döndürülen değer bir **Formpage** nesneleri koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod bu nesneler boyunca yinelenir ve ayıklanan anahtar/değer çiftlerini ve tablo verilerini yazdırır.
 
-```csharp
-    foreach (FormPage page in formPages.Value)
-    {
-        Console.WriteLine($"Form Page {page.PageNumber} has {page.Lines.Count}" + 
-            $" lines.");
-    
-        for (int i = 0; i < page.Lines.Count; i++)
-        {
-            FormLine line = page.Lines[i];
-            Console.WriteLine($"    Line {i} has {line.Words.Count}" + 
-                $" word{(line.Words.Count > 1 ? "s" : "")}," +
-                $" and text: '{line.Text}'.");
-        }
-    
-        for (int i = 0; i < page.Tables.Count; i++)
-        {
-            FormTable table = page.Tables[i];
-            Console.WriteLine($"Table {i} has {table.RowCount} rows and" +
-                $" {table.ColumnCount} columns.");
-            foreach (FormTableCell cell in table.Cells)
-            {
-                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex})" +
-                    $" contains text: '{cell.Text}'.");
-            }
-        }
-    }
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_print)]
+
 
 ## <a name="recognize-receipts"></a>Alındıları tanı
 
@@ -213,96 +134,15 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 
 Bir URI 'den alındıları tanımak için **StartRecognizeReceiptsFromUri** yöntemini kullanın. Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan bir **Recognizedmakbuz** nesneleri koleksiyonudur: Aşağıdaki kod, belirtilen URI 'ye bir alındısı işler ve ana alanları ve değerleri konsola yazdırır.
 
-```csharp
-private static async Task AnalyzeReceipt(
-    FormRecognizerClient recognizerClient, string receiptUri)
-{
-    RecognizedReceiptCollection receipts = await recognizerClient.StartRecognizeReceiptsFromUri(new Uri(receiptUri))
-    .WaitForCompletionAsync();
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
-    foreach (RecognizedReceipt receipt in receipts)
-    {
-    FormField merchantNameField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("MerchantName", out merchantNameField))
-    {
-        if (merchantNameField.Value.Type == FieldValueType.String)
-        {
-            string merchantName = merchantNameField.Value.AsString();
-
-            Console.WriteLine($"Merchant Name: '{merchantName}', with confidence {merchantNameField.Confidence}");
-        }
-    }
-
-    FormField transactionDateField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("TransactionDate", out transactionDateField))
-    {
-        if (transactionDateField.Value.Type == FieldValueType.Date)
-        {
-            DateTime transactionDate = transactionDateField.Value.AsDate();
-
-            Console.WriteLine($"Transaction Date: '{transactionDate}', with confidence {transactionDateField.Confidence}");
-        }
-    }
-```
 
 Sonraki kod bloğu, alış irsaliyesinde algılanan bireysel öğeler arasında yinelenir ve ayrıntılarını konsola yazdırır.
-
-```csharp
-    FormField itemsField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("Items", out itemsField))
-    {
-        if (itemsField.Value.Type == FieldValueType.List)
-        {
-            foreach (FormField itemField in itemsField.Value.AsList())
-            {
-                Console.WriteLine("Item:");
-
-                if (itemField.Value.Type == FieldValueType.Dictionary)
-                {
-                    IReadOnlyDictionary<string, FormField> itemFields = itemField.Value.AsDictionary();
-
-                    FormField itemNameField;
-                    if (itemFields.TryGetValue("Name", out itemNameField))
-                    {
-                        if (itemNameField.Value.Type == FieldValueType.String)
-                        {
-                            string itemName = itemNameField.Value.AsString();
-
-                            Console.WriteLine($"    Name: '{itemName}', with confidence {itemNameField.Confidence}");
-                        }
-                    }
-
-                    FormField itemTotalPriceField;
-                    if (itemFields.TryGetValue("TotalPrice", out itemTotalPriceField))
-                    {
-                        if (itemTotalPriceField.Value.Type == FieldValueType.Float)
-                        {
-                            float itemTotalPrice = itemTotalPriceField.Value.AsFloat();
-
-                            Console.WriteLine($"    Total Price: '{itemTotalPrice}', with confidence {itemTotalPriceField.Confidence}");
-                        }
-                    }
-                }
-            }
-        }
-    }
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_item_print)]
 
 Son olarak kod bloğu, Makbuzdaki toplam değeri yazdırır.
 
-```csharp
-    FormField totalField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("Total", out totalField))
-    {
-        if (totalField.Value.Type == FieldValueType.Float)
-        {
-            float total = totalField.Value.AsFloat();
-
-            Console.WriteLine($"Total: '{total}', with confidence '{totalField.Confidence}'");
-        }
-    }
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_total_print)]
 
 ## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
 
@@ -317,82 +157,25 @@ Eğitim belgelerini el ile etiketlemeden özel modellerinizde bulunan tüm alanl
 
 Aşağıdaki yöntem, belirli bir belge kümesi üzerinde bir model TRAIN ve modelin durumunu konsola yazdırır. 
 
-```csharp
-private static async Task<Guid> TrainModel(
-    FormRecognizerClient trainingClient, string trainingDataUrl)
-{
-    CustomFormModel model = await trainingClient
-        .StartTrainingAsync(new Uri(trainingFileUrl), useTrainingLabels: false).WaitForCompletionAsync();
-    
-    Console.WriteLine($"Custom Model Info:");
-    Console.WriteLine($"    Model Id: {model.ModelId}");
-    Console.WriteLine($"    Model Status: {model.Status}");
-    Console.WriteLine($"    Requested on: {model.RequestedOn}");
-    Console.WriteLine($"    Completed on: {model.CompletedOn}");
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train)]
 
 Döndürülen **Customformmodel** nesnesi, modelin tanıyabileceği form türleri ve her form türünden ayıklayabileceği alanlar hakkında bilgiler içerir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
 
-```csharp
-    foreach (CustomFormSubmodel submodel in model.Submodels)
-    {
-        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
-        foreach (CustomFormModelField field in submodel.Fields.Values)
-        {
-            Console.Write($"    FieldName: {field.Name}");
-            if (field.Label != null)
-            {
-                Console.Write($", FieldLabel: {field.Label}");
-            }
-            Console.WriteLine("");
-        }
-    }
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_response)]
 
 Son olarak, bu yöntem modelin benzersiz KIMLIĞINI döndürür.
 
-```csharp
-    return model.ModelId;
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_return)]
 
 ### <a name="train-a-model-with-labels"></a>Etiketler içeren bir modeli eğitme
 
 Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirsiniz. Etiketlerle eğitim, bazı senaryolarda daha iyi performansa yol açar. Etiketlerle eğitebilmeniz için, eğitim belgelerinin yanı sıra BLOB depolama kapsayıcıda özel etiket bilgi dosyalarına (* \<filename\>.pdf.labels.jsaçık*) sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunları aldıktan sonra, *uselabels* parametresi olarak ayarlanan **Starttrainingasync** yöntemini çağırabilirsiniz `true` .
 
-```csharp
-private static async Task<Guid> TrainModelWithLabelsAsync(
-    FormRecognizerClient trainingClient, string trainingDataUrl)
-{
-    CustomFormModel model = await trainingClient
-    .StartTrainingAsync(new Uri(trainingFileUrl), useTrainingLabels: true).WaitForCompletionAsync();
-    
-    Console.WriteLine($"Custom Model Info:");
-    Console.WriteLine($"    Model Id: {model.ModelId}");
-    Console.WriteLine($"    Model Status: {model.Status}");
-    Console.WriteLine($"    Requested on: {model.RequestedOn}");
-    Console.WriteLine($"    Completed on: {model.CompletedOn}");
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels)]
 
 Döndürülen **Customformmodel** modeli, modelin ayıklayabileceğiniz alanları, her alandaki tahmini doğruluğunu gösterir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
 
-```csharp
-    foreach (CustomFormSubmodel submodel in model.Submodels)
-    {
-        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
-        foreach (CustomFormModelField field in submodel.Fields.Values)
-        {
-            Console.Write($"    FieldName: {field.Name}");
-            if (field.Accuracy != null)
-            {
-                Console.Write($", Accuracy: {field.Accuracy}");
-            }
-            Console.WriteLine("");
-        }
-    }
-    return model.ModelId;
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels_response)]
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formları özel bir model ile analiz etme
 
@@ -403,118 +186,41 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 
 **Startrecognizecustomformsfromuri** metodunu kullanacaksınız. Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan **Recognizedform** nesnelerinin bir koleksiyonudur:
 
-```csharp
-// Analyze PDF form data
-private static async Task AnalyzePdfForm(
-    FormRecognizerClient recognizerClient, Guid modelId, string formUrl)
-{    
-    Response<IReadOnlyList<RecognizedForm>> forms = await recognizerClient
-        .StartRecognizeCustomFormsFromUri(modelId.ToString(), new Uri(formUrl))
-        .WaitForCompletionAsync();
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
 Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 
-```csharp
-    foreach (RecognizedForm form in forms.Value)
-    {
-        Console.WriteLine($"Form of type: {form.FormType}");
-        foreach (FormField field in form.Fields.Values)
-        {
-            Console.WriteLine($"Field '{field.Name}: ");
-    
-            if (field.LabelText != null)
-            {
-                Console.WriteLine($"    Label: '{field.LabelText.Text}");
-            }
-    
-            Console.WriteLine($"    Value: '{field.ValueText.Text}");
-            Console.WriteLine($"    Confidence: '{field.Confidence}");
-        }
-    }
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 
 ## <a name="manage-your-custom-models"></a>Özel modellerinizi yönetin
 
 Bu bölümde, hesabınızda depolanan özel modellerin nasıl yönetileceği gösterilmektedir. Aşağıdaki kod, örnek olarak tek bir yöntemde tüm model yönetimi görevlerini yapar. Aşağıdaki yöntem imzasını kopyalayarak başlayın:
 
-```csharp
-private static async Task ManageModels(
-    FormRecognizerClient trainingClient, string trainingFileUrl)
-{
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage)]
 
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Formtanıyıcı kaynak hesabındaki modellerin sayısını denetleyin
 
 Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğini denetler ve hesap limitine göre karşılaştırır.
 
-```csharp
-    // Check number of models in the FormRecognizer account, 
-    // and the maximum number of models that can be stored.
-    AccountProperties accountProperties = trainingClient.GetAccountProperties();
-    Console.WriteLine($"Account has {accountProperties.CustomModelCount} models.");
-    Console.WriteLine($"It can have at most {accountProperties.CustomModelLimit}" +
-        $" models.");
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_count)]
 
 ### <a name="list-the-models-currently-stored-in-the-resource-account"></a>Şu anda kaynak hesapta depolanan modelleri listeleyin
 
 Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrıntılarını konsola yazdırır.
 
-```csharp
-    // List the first ten or fewer models currently stored in the account.
-    Pageable<CustomFormModelInfo> models = trainingClient.GetModelInfos();
-    
-    foreach (CustomFormModelInfo modelInfo in models.Take(10))
-    {
-        Console.WriteLine($"Custom Model Info:");
-        Console.WriteLine($"    Model Id: {modelInfo.ModelId}");
-        Console.WriteLine($"    Model Status: {modelInfo.Status}");
-        Console.WriteLine($"    Created On: {modelInfo.CreatedOn}");
-        Console.WriteLine($"    Last Modified: {modelInfo.LastModified}");
-    }
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_list)]
 
 ### <a name="get-a-specific-model-using-the-models-id"></a>Modelin KIMLIĞINI kullanarak belirli bir modeli al
 
 Aşağıdaki kod bloğu yeni bir model ( [model eğitme](#train-a-model-without-labels) bölümünde olduğu gibi) ve kimliğini kullanarak ikinci bir başvuru alır.
 
-```csharp
-    // Create a new model to store in the account
-    CustomFormModel model = await trainingClient.StartTrainingAsync(
-        new Uri(trainingFileUrl)).WaitForCompletionAsync();
-    
-    // Get the model that was just created
-    CustomFormModel modelCopy = trainingClient.GetCustomModel(model.ModelId);
-    
-    Console.WriteLine($"Custom Model {modelCopy.ModelId} recognizes the following" +
-        " form types:");
-    
-    foreach (CustomFormSubModel subModel in modelCopy.Models)
-    {
-        Console.WriteLine($"SubModel Form Type: {subModel.FormType}");
-        foreach (CustomFormModelField field in subModel.Fields.Values)
-        {
-            Console.Write($"    FieldName: {field.Name}");
-            if (field.Label != null)
-            {
-                Console.Write($", FieldLabel: {field.Label}");
-            }
-            Console.WriteLine("");
-        }
-    }
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_get)]
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Kaynak hesabındaki bir modeli silme
 
 Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz.
 
-```csharp
-    // Delete the model from the account.
-    trainingClient.DeleteModel(model.ModelId);
-}
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_delete)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -537,11 +243,10 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 Örneğin, geçersiz bir URI ile bir makbuz görüntüsü gönderirseniz, `400` "bozuk istek" belirten bir hata döndürülür.
 
-```csharp Snippet:FormRecognizerBadRequest
+```csharp
 try
 {
     RecognizedReceiptCollection receipts = await client.StartRecognizeReceiptsFromUri(new Uri(receiptUri)).WaitForCompletionAsync();
-
 }
 catch (RequestFailedException e)
 {

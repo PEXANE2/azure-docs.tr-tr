@@ -2,22 +2,21 @@
 title: PowerShell örneği-tüm uygulama proxy Bağlayıcısı gruplarını Listele
 description: Dizininizdeki tüm Azure Active Directory (Azure AD) uygulama proxy Bağlayıcısı gruplarını ve bağlayıcılarını listeleyen PowerShell örneği.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53af7f3f9049edc23ed4226f43e7fe67398c29f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d665ddf7b1902275eebd74bcbf148426ac6ddd
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482120"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506916"
 ---
 # <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Dizindeki tüm bağlayıcı gruplarını ve bağlayıcıları al
 
