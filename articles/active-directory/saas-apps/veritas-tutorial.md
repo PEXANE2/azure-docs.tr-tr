@@ -2,25 +2,21 @@
 title: 'Öğretici: VERITAS Enterprise kasası ile tümleştirme Azure Active Directory. Cloud SSO | Microsoft Docs'
 description: Azure Active Directory ve VERITAS Enterprise Kasası arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin. Cloud SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 43094cabab3cfc93e0dffa59a15867d01b036d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cdb3f30813d2650737cfa43507cef2b1d456573d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087612"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Öğretici: VERITAS Enterprise kasası ile tümleştirme Azure Active Directory. Cloud SSO
 
@@ -32,7 +28,7 @@ VERITAS Enterprise kasasını tümleştirme. Azure AD ile bulut SSO 'SU aşağı
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -109,7 +105,7 @@ Azure AD çoklu oturum açmayı VERITAS Enterprise Kasası. Cloud SSO ile yapıl
 
     b. **Tanımlayıcı** kutusunda, veri merkezine göre URL 'yi kullanın:
 
-    | Veri merkezi| URL'si |
+    | Veri merkezi| URL |
     |----------|----|
     | Kuzey Amerika| `https://auth.lax.archivecloud.net` |
     | Avrupa | `https://auth.ams.archivecloud.net` |
@@ -117,7 +113,7 @@ Azure AD çoklu oturum açmayı VERITAS Enterprise Kasası. Cloud SSO ile yapıl
 
     c. **Yanıt URL** 'si metin kutusunda, veri merkezine göre URL 'yi kullanın:
 
-    | Veri merkezi| URL'si |
+    | Veri merkezi| URL |
     |----------|----|
     | Kuzey Amerika| `https://auth.lax.archivecloud.net` |
     | Avrupa | `https://auth.ams.archivecloud.net` |
@@ -162,11 +158,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

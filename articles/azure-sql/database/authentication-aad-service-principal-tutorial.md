@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294870"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516699"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Öğretici: Azure AD uygulamalarını kullanarak Azure AD kullanıcıları oluşturma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure SQL veritabanı 'nda hizmet sorumlusu kullanıcısı oluşturma
 > - Azure AD hizmet sorumlusu kullanıcısını kullanarak SQL veritabanı 'nda farklı bir Azure AD kullanıcısı oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Mevcut bir [Azure SQL veritabanı](single-database-create-quickstart.md) veya [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) dağıtımı. Bu öğretici için çalışan bir SQL veritabanınız olduğunu varsayıyoruz.
 - Zaten var olan bir Azure Active Directory erişim.
@@ -94,6 +94,8 @@ Gerekli izni vermek için aşağıdaki betiği çalıştırın.
 
 > [!NOTE] 
 > Bu betiğin bir Azure AD veya bir tarafından yürütülmesi gerekir `Global Administrator` `Privileged Roles Administrator` .
+>
+> **Genel önizlemede**, `Directory Readers` rolü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir ve bu da `Global Administrator` `Privileged Roles Administrator` rolü verme gereksinimini atlar `Directory Readers` . Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
 - `<TenantId>` `TenantId` Daha önce topladığınız ile değiştirin.
 - `<server name>`SQL mantıksal sunucu adınızla değiştirin. Sunucunuzun adı ise `myserver.database.windows.net` `<server name>` ile değiştirin `myserver` .
@@ -304,3 +306,4 @@ Azure AD 'de bir hizmet sorumlusu oluşturulduktan sonra, kullanıcıyı SQL ver
 - [SQL DB 'de Azure AD hizmet sorumlusu kimlik doğrulaması-kod örneği](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Azure PowerShell ile bir Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md)

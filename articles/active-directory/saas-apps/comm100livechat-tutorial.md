@@ -2,26 +2,21 @@
 title: 'Öğretici Azure Active Directory: Comm100 Live Chat ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve Comm100 canlı sohbet arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0340d7f3-ab54-49ef-b77c-62a0efd5d49c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41161a2e1bfd5544410bba0cb470bacbf152fd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abeb52155b933c223ee0621e8ab203ac035e5f36
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75561276"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519758"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>Öğretici: Comm100 Canlı sohbetle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -117,9 +112,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -185,7 +180,7 @@ Azure AD kullanıcılarının Comm100 canlı sohbette oturum açmasını sağlam
 
     ![Comm100 canlı sohbet yeni aracı](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. **E-posta** metin kutusuna **\@B. Simon contoso.com**gibi kullanıcının e-postasını girin.
+    a. a. **E-posta** metin kutusuna **B. Simon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
     b. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
 
@@ -205,9 +200,9 @@ Erişim panelinde Comm100 Live Chat kutucuğuna tıkladığınızda, SSO 'yu aya
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

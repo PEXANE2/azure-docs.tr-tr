@@ -2,26 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Velpıc yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını Velpıc 'e otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064130"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532373"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Velpıc yapılandırma
 

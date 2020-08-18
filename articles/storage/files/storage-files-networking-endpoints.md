@@ -4,18 +4,19 @@ description: Azure dosyaları için ağ seçeneklerine genel bakış.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497775"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525906"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure dosyaları ağ uç noktalarını yapılandırma
+
 Azure dosyaları, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
 - Genel bir IP adresi olan ve dünyanın herhangi bir yerinden erişilebilen genel uç noktalar.
 - Bir sanal ağ içinde bulunan ve bu sanal ağın adres alanından özel bir IP adresine sahip olan özel uç noktalar.
@@ -26,13 +27,22 @@ Bu makalede, Azure dosya paylaşımında doğrudan erişim için bir depolama he
 
 Bu nasıl yapılır kılavuzu okumadan önce [Azure dosyaları ağ oluşturma konuları](storage-files-networking-overview.md) okumanız önerilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
+
 - Bu makalede, zaten bir Azure aboneliği oluşturmuş olduğunuz varsayılmaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Bu makalede, Şirket içinden bağlamak istediğiniz bir depolama hesabında bir Azure dosya paylaşımının zaten oluşturulduğunu varsaymış olursunuz. Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
 - Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
+## <a name="endpoint-configurations"></a>Uç nokta yapılandırması
+
+Uç noktalarınızı, depolama hesabınıza yönelik ağ erişimini kısıtlamak için yapılandırabilirsiniz. Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşım vardır:
+
+- [Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun](#create-a-private-endpoint)  ve tüm erişimi genel uç noktaya sınırlayın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
+- [Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın](#restrict-public-endpoint-access). Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişiyorsunuz, ancak erişim yalnızca yapılandırmanızda belirttiğiniz konumlardan alınabilir.
+
+### <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
+
 Depolama hesabınız için özel bir uç nokta oluşturulması, aşağıdaki Azure kaynaklarının dağıtılmasının oluşmasına neden olur:
 
 - **Özel uç nokta**: depolama hesabının özel uç noktasını temsil eden bir Azure kaynağı. Bunu, depolama hesabını ve ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
@@ -106,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç noktanın özel IP adresidir. Bu durumda, yol yerine dosya paylaşımınızı bağlamak için hala storageaccount.file.core.windows.net kullanacağınızı unutmayın `privatelink` .
+Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç noktanın özel IP adresidir. Yol yerine dosya paylaşımınızı bağlamak için yine de storageaccount.file.core.windows.net kullanmanız gerekir `privatelink` .
 
 ```Output
 Server:         127.0.0.53
@@ -120,13 +130,12 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>Genel uç noktaya erişimi kısıtlama
-Depolama hesabı güvenlik duvarı ayarlarını kullanarak genel uç noktaya erişimi kısıtlayabilirsiniz. Genel olarak, bir depolama hesabı için çoğu güvenlik duvarı ilkesi, ağ erişimini bir veya daha fazla sanal ağa kısıtlar. Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşım vardır:
+### <a name="restrict-public-endpoint-access"></a>Genel uç nokta erişimini kısıtlama
 
-- [Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun](#create-a-private-endpoint) ve tüm erişimi genel uç noktaya sınırlayın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
-- Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
+Genel uç nokta erişimini sınırlamak için öncelikle genel uç noktaya genel erişimi devre dışı bırakmanız gerekir. Genel uç noktaya erişimi devre dışı bırakmak özel uç noktaları etkilemez. Genel uç nokta devre dışı bırakıldıktan sonra, erişmeye devam edecek belirli ağları veya IP adreslerini seçebilirsiniz. Genellikle, bir depolama hesabı için güvenlik duvarı ilkelerinin çoğu, ağ erişimini bir veya daha fazla sanal ağa kısıtlar.
 
-### <a name="disable-access-to-the-public-endpoint"></a>Genel uç noktaya erişimi devre dışı bırak
+#### <a name="disable-access-to-the-public-endpoint"></a>Genel uç noktaya erişimi devre dışı bırak
+
 Genel uç noktaya erişim devre dışı bırakıldığında, depolama hesabına hala özel uç noktalar aracılığıyla erişilebilir. Aksi takdirde, depolama hesabının genel uç noktasına yönelik geçerli istekler reddedilir. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -140,7 +149,8 @@ Genel uç noktaya erişim devre dışı bırakıldığında, depolama hesabına 
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Genel uç noktaya erişimi belirli sanal ağlara kısıtlama
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Genel uç noktaya erişimi belirli sanal ağlara kısıtlama
+
 Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sanal ağların içinden genel uç noktaya yönelik isteklere izin vermiş olursunuz. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bu, Özel uç noktalarla veya olmadan kullanılabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -155,6 +165,7 @@ Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sa
 ---
 
 ## <a name="see-also"></a>Ayrıca bkz.
+
 - [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md)
 - [Azure Dosyalar için DNS iletmeyi yapılandırma](storage-files-networking-dns.md)
 - [Azure dosyaları için S2S VPN 'i yapılandırma](storage-files-configure-s2s-vpn.md)

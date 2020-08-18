@@ -2,26 +2,21 @@
 title: 'Öğretici: Leapsome ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ve Leapsome arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cb523e97-add8-4289-b106-927bf1a02188
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28b95e779e2b814b0ae91059c3edd12644d7c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c58c9febcbd8c1007938b16545337f07f1a0da63
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75430935"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519164"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>Öğretici: Leapsome ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -126,9 +121,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -168,7 +163,7 @@ Bu bölümde, Leapsome 'a erişim vererek Azure çoklu oturum açma özelliğini
 
     d. **SSO oturum açma URL 'si (kimlik sağlayıcısı tarafından sağlanmış)** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    e. İndirmiş olduğunuz sertifikayı açıklama olmadan `--BEGIN CERTIFICATE and END CERTIFICATE--` Azure Portal kopyalayın ve **sertifikayı sertifikaya (kimlik sağlayıcısı tarafından sunulur)** metin kutusuna yapıştırın.
+    e. İndirmiş olduğunuz sertifikayı açıklama olmadan Azure portal kopyalayın `--BEGIN CERTIFICATE and END CERTIFICATE--` ve **sertifikayı sertifikaya (kimlik sağlayıcısı tarafından sunulur)** metin kutusuna yapıştırın.
 
     f. **SSO ayarlarını Güncelleştir**' e tıklayın.
 
@@ -184,9 +179,9 @@ Erişim panelinde Leapsome kutucuğuna tıkladığınızda, SSO 'yu ayarladığ�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

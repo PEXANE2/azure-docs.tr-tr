@@ -2,26 +2,21 @@
 title: 'Öğretici: Maxdentitytıon Manager yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Maxdentitymanager yazılımı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847234"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518919"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Öğretici: Maxdentitytıon Manager yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -113,13 +108,13 @@ Bu bölümde, Maxdentitytıon Manager yazılımı için Azure sistemini kullanar
 
 ## <a name="test-with-maxient"></a>Maxbir ile test edin 
 
-Bir destek bileti zaten bir Maxuz uygulama/destek temsilcisiyle açılmadıysa, [support@maxient.com](mailto:support@maxient.com) "kampüs tabanlı kimlik doğrulaması/Azure kurulumu- \< \< okul adı \> \> " konusunun adresine bir e-posta gönderin. E-postanın gövdesinde, **uygulama Federasyon meta verileri URL 'sini**sağlayın. Uygun özniteliklerin yayımlanmakta olduğunu doğrulamak için, bir test bağlantısı ile maxıly personeli yanıt verir.  
+Bir destek bileti zaten bir Maxuz uygulama/destek temsilcisiyle açılmadıysa, [support@maxient.com](mailto:support@maxient.com) "kampüs tabanlı kimlik doğrulaması/Azure kurulumu-" konusuna sahip bir e-posta gönderin \<\<School Name\> \> . E-postanın gövdesinde, **uygulama Federasyon meta verileri URL 'sini**sağlayın. Uygun özniteliklerin yayımlanmakta olduğunu doğrulamak için, bir test bağlantısı ile maxıly personeli yanıt verir.  
     
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

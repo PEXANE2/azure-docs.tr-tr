@@ -2,26 +2,21 @@
 title: 'Öğretici: Cezanne HR yazılımıyla tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile Cezanne HR yazılımı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158707"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Öğretici: Cezanne HR yazılımıyla tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Cezanne HR yazılımını Azure AD ile tümleştirmek aşağıdaki avantajları 
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -157,11 +152,11 @@ Azure AD çoklu oturum açmayı Cezanne HR yazılımıyla yapılandırmak için 
 
     d. **Güvenlik belirteci hizmeti uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    e. Kullanıcı KIMLIĞI öznitelik adı metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. Kullanıcı KIMLIĞI öznitelik adı metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     f. Azure portal indirilen sertifikayı karşıya yüklemek için **karşıya yükle** simgesine tıklayın.
 
-    g. **Tamam** düğmesine tıklayın.
+    örneğin: **Tamam** düğmesine tıklayın.
 
 6. **Kaydet** düğmesine tıklayın.
 
@@ -185,12 +180,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -240,19 +235,19 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
     c. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını yazın.
 
-    d. **E-posta** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-posta adresini yazın.
+    d. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
 4. **Hesap bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
     ![Yeni Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Yeni Kullanıcı")
 
-    a. Kullanıcı **adı** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-postasını yazın.
+    a. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
 
     b. **Parola** metin kutusuna kullanıcının parolasını yazın.
 
     c. **Güvenlik rolü**olarak **İK Professional** ' ı seçin.
 
-    d. **Tamam**'a tıklayın.
+    d. **Tamam** düğmesine tıklayın.
 
 5. **Çoklu oturum açma** sekmesine gidin ve **SAML 2,0 tanımlayıcıları** alanında **Yeni Ekle** ' yi seçin.
 

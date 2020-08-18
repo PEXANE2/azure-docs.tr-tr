@@ -2,25 +2,20 @@
 title: 'Öğretici: Cerner Merkezi için Kullanıcı hazırlama-Azure AD'
 description: Cerner Central 'daki bir listesi 'a otomatik olarak Kullanıcı sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058325"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529874"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cerner Central 'ı yapılandırma
 
@@ -65,25 +60,25 @@ Cerner merkezine Kullanıcı hesapları sağlamak için, Cerner 'den bir Cerner 
 
 1. İlk adım, Cerner ve Azure AD tümleştirmesinin yönettiği kişilerin, yönergeleri tamamlamaya yönelik belgelere erişmek için gereken bir sertifika hesabına sahip olduğundan emin olunması. Gerekirse, ilgili her bir ortamda Cernerler hesapları oluşturmak için aşağıdaki URL 'Leri kullanın.
 
-   * Alandahttps://sandboxcernercare.com/accounts/create
+   * Alanda  https://sandboxcernercare.com/accounts/create
 
-   * Üretimindenhttps://cernercare.com/accounts/create  
+   * Üretiminden  https://cernercare.com/accounts/create  
 
 2. Sonra, Azure AD için bir sistem hesabının oluşturulması gerekir. Korumalı ortamınız ve üretim ortamlarınız için bir sistem hesabı istemek üzere aşağıdaki yönergeleri kullanın.
 
-   * Yönergelerinhttps://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Yönergelerin  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Alandahttps://sandboxcernercentral.com/system-accounts/
+   * Alanda https://sandboxcernercentral.com/system-accounts/
 
-   * Üretimindenhttps://cernercentral.com/system-accounts/
+   * Üretiminden  https://cernercentral.com/system-accounts/
 
 3. Sonra, sistem hesaplarınızın her biri için bir OAuth taşıyıcı belirteci oluşturun. Bunu yapmak için aşağıdaki yönergeleri izleyin.
 
-   * Yönergelerinhttps://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Yönergelerin  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Alandahttps://sandboxcernercentral.com/system-accounts/
+   * Alanda https://sandboxcernercentral.com/system-accounts/
 
-   * Üretimindenhttps://cernercentral.com/system-accounts/
+   * Üretiminden  https://cernercentral.com/system-accounts/
 
 4. Son olarak, yapılandırmayı tamamlamaya yönelik olarak hem korumalı alan hem de üretim ortamları için Kullanıcı Roster bölge kimliklerini edinmeniz gerekir. Bunu elde etme hakkında daha fazla bilgi için bkz https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM .:. 
 
@@ -101,9 +96,9 @@ Cerner merkezine Kullanıcı hesapları sağlamak için, Cerner 'den bir Cerner 
 
    * **Kiracı URL 'si** alanında, aşağıdaki BIÇIMDE bir URL girin ve "User-Roster-Realm-ID" öğesini adım #4 elde ETTIĞINIZ bölge kimliğiyle değiştirin.
 
-    > Alandahttps://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Alanda https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
-    > Üretimindenhttps://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Üretiminden https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * **Gizli belirteç** alanına, adım #3 ' de oluşturduğunuz OAuth taşıyıcı belirtecini girin ve **Bağlantıyı Sına**' yı tıklatın.
 

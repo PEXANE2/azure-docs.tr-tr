@@ -2,26 +2,21 @@
 title: 'Öğretici: Hornbill ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Hornbill arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 173061e4-ac1d-458f-bb9b-e9a2493aab0e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2770a1c5826b8eebaadb6694068afa29118a3037
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 315c6ecaeb466f3a04ed33dc9040ddab49361575
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500059"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>Öğretici: Hornbill ile tümleştirme Azure Active Directory
 
@@ -35,7 +30,7 @@ Hornbill 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Hornbill ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 

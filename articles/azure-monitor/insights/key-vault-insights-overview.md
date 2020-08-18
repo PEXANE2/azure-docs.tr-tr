@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498972"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531268"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme (Önizleme)
 Key Vault için Azure Izleyici (Önizleme), Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
@@ -45,7 +45,7 @@ Key Vault için Azure Izleyici, genel bir izleme çözümü sağlamak için hem 
 
 Azure Izleyici 'den, aboneliğinizdeki birden çok anahtar kasasından gelen istek, gecikme ve başarısızlık ayrıntılarını görüntüleyebilir ve performans sorunlarını ve kısıtlama senaryolarını belirlemenize yardımcı olabilirsiniz.
 
-Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve işlemlerini görüntülemek için aşağıdaki adımları gerçekleştirin:
+Tüm aboneliklerinizde anahtar kasalarınızın kullanımını ve işlemlerini görüntülemek için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın
 

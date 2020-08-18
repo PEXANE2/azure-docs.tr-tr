@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505814"
+ms.locfileid: "88525930"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -26,13 +26,13 @@ ms.locfileid: "88505814"
 
 * **Sınır TTS: yeni konuşma stili `en-US` Aria sesi**. AriaNeural, haberleri okurken bir Newscaster gibi sesçine benzer. ' Newscast-resmi ' stili daha ciddi bir şekilde, ' newscast-normal ' stili daha gevşek ve resmi olmayan bir şekilde ses. Bkz. [SSML 'de konuşma stillerini kullanma](speech-synthesis-markup.md).
 
-* **Özel ses: eğitim verileri kalitesini otomatik olarak denetlemek için yeni bir özellik yayımlanmıştır**. Verilerinizi karşıya yüklediğinizde, veri denetimi özelliği, sesinizin ve yazılı betiklerinizin çeşitli yönlerini inceleyerek, eğitilen ses modelinin kalitesini artırmak için verileri otomatik olarak düzeltir veya sorunları gidermeye çalışır. Bu, sesinizin hacmini, gürültü düzeyini, konuşmayı telaffuz doğruluğunu, bir konuşma boyutunu normalleştirilmiş metinle, ses ve betik biçiminin yanı sıra seste sessizlik olarak ele alır. 
+* **Özel ses: eğitim verileri kalitesini otomatik olarak denetlemek için yeni bir özellik yayımlanmıştır**. Verilerinizi karşıya yüklediğinizde, sistem sesli ve döküm verilerinizin çeşitli yönlerini inceler ve ses modelinin kalitesini artırmak için sorunları otomatik olarak düzeltir veya filtreler. Bu, ses ve betik biçimine ek olarak sesinizin sesini, gürültü düzeyini, konuşma okunuşini, normalleştirmenin normalleştirilmiş metinle, sesin sessizliği ile hizalamasını ele alır. 
 
 * **Ses Içeriği oluşturma: daha güçlü ses ayarlama ve ses yönetimi özelliklerini etkinleştirmeye yönelik yeni özellikler kümesi**.
 
     * Telaffuz: telaffuz ayarlama özelliği en son Fonem kümesine güncelleştirilir. Kitaplıktan doğru Fonem öğesini seçebilir ve seçtiğiniz sözcüklerin söylenişini geliştirebilirsiniz. 
 
-    * İndir: ses "Indir"/"dışarı aktar" özelliği, her paragraf tarafından audios oluşturmayı destekleyecek şekilde geliştirilmiştir. Aynı dosya/SSML içindeki farklı içerikleri kolayca düzenleyerek birden çok ses çıkışı oluşturabilirsiniz. "Indir" dosya yapısı da iyileştiriliyor. Şimdi, tüm audios 'yi tek bir klasörde kolayca alabilirsiniz. 
+    * İndir: ses "Indir"/"dışarı aktar" özelliği, paragrafa göre ses oluşturmayı destekleyecek şekilde geliştirilmiştir. Aynı dosya/SSML içindeki içeriği, birden çok ses çıkışı oluştururken düzenleyebilirsiniz. "Indir" dosya yapısı da iyileştiriliyor. Şimdi, tüm audios 'yi tek bir klasörde kolayca alabilirsiniz. 
 
     * Görev durumu: çok dosya dışarı aktarma deneyimi geliştirildi. Geçmişte birden çok dosyayı dışarı aktardığınızda, dosyalardan biri başarısız olursa, tüm görev başarısız olur. Ancak şimdi, diğer tüm dosyalar başarıyla verilecek. Görev raporu, daha ayrıntılı ve yapılandırılmış bilgilerle zenginleştirılmıştır. Tüm başarısız dosyalar ve cümleler için günlükleri artık raporla kontrol edebilirsiniz. 
 
@@ -42,7 +42,7 @@ ms.locfileid: "88505814"
 
 ### <a name="general-tts-voice-quality-improvements"></a>Genel TTS ses kalitesi geliştirmeleri
 
-* İçin küçültülmüş sözcük düzeyi Söyleniş hatası% `ru-RU` (hata %56 oranında azaltılır) ve `sv-SE` (hata %49 oranında azaltılır)
+* İçin azaltılmış sözcük düzeyi Söyleniş hatası% `ru-RU` (%56 oranında hatalı) ve `sv-SE` (hata %49 oranında azaltılır)
 
 * `en-US`%40 tarafından sinir sesde okuma Polyphony Word ile iyileştirilmiş. "Okuma", "canlı", "içerik", "kayıt", "nesne" vb. Polyphony kelimelerine örnek olarak verilebilir. 
 
@@ -63,8 +63,8 @@ ms.locfileid: "88505814"
 
 * Ses Içeriği oluşturma aracı ile bir dizi hata düzeltildi 
     * Otomatik yenileme ile ilgili sorun düzeltildi. 
-    * Güney Doğu Asya bölgesinde zh-CN içindeki stil sesiyle ilgili sorunlar düzeltildi
-    * ' Break ' etiketiyle dışarı aktarma hatası, noktadaki hatalar da dahil olmak üzere kararlılık sorunu düzeltildi    
+    * Güney Doğu Asya bölgesinde zh-CN ' de ses stilleriyle ilgili sorunlar düzeltildi.
+    * ' Break ' etiketiyle dışarı aktarma hatası ve noktalama işaretleri de dahil olmak üzere, sabit kararlılık sorunu.    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Yeni konuşmayı metne göre yerel ayarlar: 2020-Ağustos yayını
 Konuşmadan metne, Ağustos ayında 2 Avrupa dilleri `cs-CZ` ve `hu-HU` 5 İngilizce yerel ayar ve en Güney Amerika ülkelerinden oluşan 19 ' a kadar yeni yerel ayar yayınlandı. Yeni yerel ayarların listesi aşağıda verilmiştir. Lütfen [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)tüm dil listesini görüntüleyin.

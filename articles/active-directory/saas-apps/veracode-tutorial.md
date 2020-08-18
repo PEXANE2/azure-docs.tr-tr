@@ -2,26 +2,21 @@
 title: 'Öğretici: Veracode | ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ile Veracode arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4fe78050-cb6d-4db9-96ec-58cc0779167f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8c7c70e7956868bf069704eb5fe34db014dd135
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73043566"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Öğretici: Veracode ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -104,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak Veracode şirket sitenizde oturum açın.
 
-1. Üstteki menüden **Ayarlar** > **Yöneticisi**' ni seçin.
+1. Üstteki menüden **Ayarlar**  >  **Yöneticisi**' ni seçin.
    
     ![Ayarlar simgesi ve yönetici vurgulanmış şekilde Veracode yönetiminin ekran görüntüsü](./media/veracode-tutorial/ic802911.png "Yönetim")
 
@@ -129,11 +124,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Kullanıcı veri güncelleştirmeleri**Için **tercih Veracode Kullanıcı verileri**' ni seçin.
 
     c. **SAML öznitelik ayrıntıları**için aşağıdakileri seçin:
-      * **Kullanıcı Rolleri**
+      * **Kullanıcı rolleri**
       * **İlke Yöneticisi**
       * **Geçirenlerin**
       * **Güvenlik lideri**
-      * **İdari**
+      * **Yönetici**
       * **Gönderenin**
       * **Oluşturucu**
       * **Tüm tarama türleri**
@@ -144,12 +139,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden,**Kullanıcılar** >  **Azure Active Directory** >**tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  > **Users**  >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
 
-   1. **Ad**için girin `B.Simon`.  
-   1. **Kullanıcı adı**için öğesini girin username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
+   1. **Ad**için girin `B.Simon` .  
+   1. **Kullanıcı adı**için öğesini girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından gösterilen değeri yazın.
    1. **Oluştur**’u seçin.
 
@@ -157,13 +152,13 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 Bu bölümde, Veracode 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon ' u etkinleştirin.
 
-1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Veracode**' u seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Kullanıcılar ve gruplar sayfasının ekran görüntüsü, Kullanıcı Ekle vurgulanmış olarak](common/add-assign-user.png)
 
@@ -186,9 +181,9 @@ Erişim panelinde **Veracode** ' u SEÇTIĞINIZDE, SSO 'Yu ayarladığınız Ver
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

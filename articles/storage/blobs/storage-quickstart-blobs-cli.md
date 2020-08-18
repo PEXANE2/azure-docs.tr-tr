@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 15e1b52bfa79063cd5d7801a1aaaebc726309a16
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507136"
+ms.locfileid: "88520779"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -78,7 +78,7 @@ az storage account create \
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılardaki blob gruplarını, dosyalarınızı bilgisayarınızdaki dosyalarınıza düzenlemenize benzer şekilde düzenleyebilirsiniz. [az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun. 
+Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılardaki blob gruplarını, dosyalarınızı bilgisayarınızdaki dosyalarınıza düzenlemenize benzer şekilde düzenleyebilirsiniz. [az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun.
 
 Aşağıdaki örnek, kapsayıcıyı oluşturma işlemini yetkilendirmek için Azure AD hesabınızı kullanır. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. Azure rolleri atama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak erişim için bir Azure rolü atama](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
 
@@ -89,21 +89,17 @@ az ad signed-in-user show --query objectId -o tsv | az role assignment create \
     --role "Storage Blob Data Contributor" \
     --assignee @- \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
+
+az storage container create \
+    --account-name <storage-account> \
+    --name <container> \
+    --auth-mode login
 ```
 
 > [!IMPORTANT]
 > Azure rolü atamalarının yayılması birkaç dakika sürebilir.
 
 Ayrıca, kapsayıcıyı oluşturmak için işlemi yetkilendirmek üzere depolama hesabı anahtarını da kullanabilirsiniz. Veri işlemlerini Azure CLı ile yetkilendirme hakkında daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
-
-Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
-
-```azurecli
-az storage container create \
-    --account-name <storage-account> \
-    --name <container> \
-    --auth-mode login
-```
 
 ## <a name="upload-a-blob"></a>Blobu karşıya yükleme
 

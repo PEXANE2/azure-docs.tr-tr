@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, references_regions
+ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495718"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525658"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
@@ -229,6 +229,60 @@ Depolama hesabı bir sanal ağ içinde yer alıyorsa ve bu komutu çağırdığ�
 
 > [!Note]  
 > Dosya paylaşımınızın adı küçük harflerden oluşmalıdır. Dosya paylaşımlarını ve dosyaları adlandırma hakkında tüm ayrıntılar için bkz. [adlandırma ve başvuru paylaşımları, dizinler, dosyalar ve meta veriler](https://msdn.microsoft.com/library/azure/dn167011.aspx).
+
+### <a name="create-a-hot-or-cool-file-share"></a>Sık erişimli veya seyrek erişimli dosya paylaşma oluşturma
+**Genel amaçlı v2 (GPv2) depolama hesabındaki** bir dosya paylaşımı, işlem için iyileştirilmiş, sık erişimli veya seyrek erişimli dosya paylaşımları (veya bir karışımı) içerebilir. İşlem için iyileştirilmiş paylaşımlar tüm Azure bölgelerinde kullanılabilir, ancak sık ve seyrek erişimli dosya paylaşımları yalnızca [bölgelerin bir alt kümesinde](storage-files-planning.md#storage-tiers)kullanılabilir. Azure PowerShell Preview modülünü veya Azure CLı kullanarak sık erişimli veya seyrek erişimli bir dosya paylaşma oluşturabilirsiniz. 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+Azure portal, sık ve seyrek dosya paylaşımları oluşturmayı veya var olan işlem için iyileştirilmiş dosya paylaşımlarını sık erişimli veya seyrek erişimli olarak taşımayı desteklemez. Lütfen PowerShell veya Azure CLı ile bir dosya paylaşma oluşturma yönergelerini görüntüleyin.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+```PowerShell
+# Update the Azure storage module to use the preview version. You may need to close and 
+# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
+# the following:
+# - Run the below cmdlets as an administrator.
+# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
+# Get-Module -ListAvailable -Name PowerShellGet
+Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
+Uninstall-Module -Name Az.Storage
+Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
+
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
+$shareName = "myhotshare"
+
+New-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Hot
+
+# You can also change an existing share's tier.
+Update-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Cool
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Belirli bir katmana bir dosya paylaşımının oluşturulması veya taşınması işlevselliği, en son Azure CLı güncelleştirmesinde bulunabilir. Azure CLı 'nın güncelleştirilmesi, kullanmakta olduğunuz işletim sistemi/Linux dağıtımına özeldir. Azure CLı 'yi sisteminizde güncelleştirme hakkında yönergeler için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+```bash
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2
+# storage accounts. Standard tiers are only available in standard storage accounts.
+shareName="myhotshare"
+
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --name $shareName \
+    --access-tier "Hot"
+```
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure dosyaları dağıtımını planlayın](storage-files-planning.md) veya [Azure dosya eşitleme dağıtımını planlayın](storage-sync-files-planning.md). 

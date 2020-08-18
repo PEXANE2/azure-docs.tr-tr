@@ -2,25 +2,21 @@
 title: 'Öğretici: Lenses.io ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Lenses.io arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2a0d4a7c-a171-48c6-b1c1-f2bd728fb37f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0b8d736ab169ad07bd23a21d3a420bb6a044bf01
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050990"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Öğretici: Lenses.io DataOps portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory.
 
@@ -32,7 +28,7 @@ Bu öğreticide, [lenses.io](https://lenses.io/) dataops portalını Azure Activ
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -90,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki stili kullanarak bir URL yazın: `https://<CUSTOMER_LENSES_BASE_URL>` örn.`https://lenses.my.company.com`
 
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
-    DomainName.`https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
+    DomainName. `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, merme portalı örneğinizin temel URL 'sine göre gerçek oturum açma URL 'SI, yanıt URL 'si ve tanımlayıcı ile güncelleştirin. [LENSES.IO SSO belgelerinde](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)daha fazla bilgi edinebilirsiniz.
@@ -167,11 +163,11 @@ Erişim panelinde Lenses.io kutucuğuna tıkladığınızda, SSO 'yu ayarladığ
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [Lenses.io örneğiniz için SSO kurulum](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
+- [ Lenses.io örneğiniz için SSO kurulum ](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

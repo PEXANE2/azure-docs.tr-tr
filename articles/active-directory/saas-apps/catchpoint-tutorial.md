@@ -2,25 +2,21 @@
 title: 'Öğretici: yakalama noktasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory'
 description: Azure Active Directory ve catch noktası arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ab3eead7-8eb2-4c12-bb3a-0e46ec899d37
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b19e286d299811a950df05f93d221bd710676ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80743502"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Öğretici: Catch noktasıyla çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -108,7 +104,7 @@ Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izle
     | ad alanı | Kullanıcı. atanan |
 
     > [!NOTE]
-    > `namespace` Talebin hesap adıyla eşlenmesi gerekir. Bu hesap adı, bir Azure AD 'de SAML yanıtına geri geçirilecek bir rolle ayarlanmalıdır. Azure AD 'deki roller hakkında daha fazla bilgi için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+    > `namespace`Talebin hesap adıyla eşlenmesi gerekir. Bu hesap adı, bir Azure AD 'de SAML yanıtına geri geçirilecek bir rolle ayarlanmalıdır. Azure AD 'deki roller hakkında daha fazla bilgi için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasına gidin. **SAML Imzalama sertifikası** bölümünde, **sertifika (base64)** bulun. Sertifikayı bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -122,11 +118,11 @@ Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izle
 
 Bu bölümde, B. Simon adlı bir Azure AD test kullanıcısı oluşturmak için Azure portal kullanırsınız.
 
-1. Azure Portal sol bölmeden,**Kullanıcılar** >  **Azure Active Directory** > **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com` girin.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com` girin.
    1. **Parolayı göster** onay kutusunu seçin. Görünen parola değerini aklınızda edin.
    1. **Oluştur**’u seçin.
 
@@ -134,7 +130,7 @@ Bu bölümde, B. Simon adlı bir Azure AD test kullanıcısı oluşturmak için 
 
 Bu bölümde, catch noktasına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirirsiniz.
 
-1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **catch noktası**' nı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -162,10 +158,10 @@ Bu bölümde, catch noktasına erişim vererek Azure çoklu oturum açma özelli
 
    Alan | Değer
    ----- | ----- 
-   **Uzayına** | Geçerli bir ad alanı değeri.
-   **Kimlik sağlayıcısı veren** | Azure portal `Azure AD Identifier` değeri.
-   **Çoklu oturum açma URL 'Si** | Azure portal `Login URL` değeri.
-   **Sertifika** | Azure portal indirilen `Certificate (Base64)` dosyanın içeriği. Görüntülemek ve kopyalamak için Not defteri 'ni kullanın.
+   **Ad Alanı** | Geçerli bir ad alanı değeri.
+   **Kimlik sağlayıcısı veren** | `Azure AD Identifier`Azure Portal değeri.
+   **Çoklu oturum açma URL 'Si** | `Login URL`Azure Portal değeri.
+   **Sertifika** | `Certificate (Base64)`Azure Portal indirilen dosyanın içeriği. Görüntülemek ve kopyalamak için Not defteri 'ni kullanın.
 
    Ayrıca, **meta verileri karşıya yükle** seçeneğini belirleyerek **Federasyon meta veri XML** 'sini de karşıya yükleyebilirsiniz.
 

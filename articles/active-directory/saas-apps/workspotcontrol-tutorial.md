@@ -2,25 +2,21 @@
 title: 'Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve çalışma noktası denetimi için çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ea8e4e9-f61f-4f45-b635-b0e306eda3d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086676"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory
 
@@ -107,17 +103,17 @@ Azure AD çoklu oturum açmayı Iş noktası denetimiyle yapılandırmak için a
     ![Çalışma noktası denetimi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     1. **Tanımlayıcı** metin kutusunda, aşağıdaki düzende bir URL girin:<br/>
-    ***https://<<i> </i>InstanceName>-SAML.workspot.com/SAML/Metadata***
+    ***https://<<i></i> ınstancename>-SAML.workspot.com/SAML/Metadata***
 
     1. **Yanıt URL** 'si metin kutusuna aşağıdaki düzende bir URL girin:<br/>
-    ***https://<<i> </i>InstanceName>-SAML.workspot.com/SAML/assertion***
+    ***https://<<i></i> ınstancename>-SAML.workspot.com/SAML/assertion***
 
 5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla**' yı seçin.
 
     ![Çalışma noktası denetimi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki düzende bir URL girin:<br/>
-    ***https://<<i> </i>InstanceName>-SAML.workspot.com/***
+    ***https://<<i></i> ınstancename>-SAML.workspot.com/***
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile değiştirin. Bu değerleri almak için [Iş noktası denetimi istemci destek ekibine](mailto:support@workspot.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümündeki desenlere de başvurabilirsiniz.
@@ -176,7 +172,7 @@ Bu bölümde, Azure portal bir test kullanıcısı oluşturacaksınız.
 
     1. **Ad** alanına **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** alanına, **brittasimon@* yourcompanydomain. Extension * * * yazın. Örneğin, girin ** BrittaSimon@contoso.<i> </i> com**.
+    1. **Kullanıcı adı** alanına, **brittasimon@* yourcompanydomain. Extension * * * yazın. Örneğin, girin ** BrittaSimon@contoso . <i></i> com**.
 
     1. **Parolayı göster** onay kutusunu seçin. Ardından **parola** kutusunda görüntülenen değeri yazın.
 
@@ -228,7 +224,7 @@ Azure AD kullanıcılarının, çalışma noktası denetiminde oturum açmasın�
 
     1. **Soyadı** metin kutusuna kullanıcının soyadı ( **Simon**gibi) girin.
 
-    1. **E-posta** kutusuna kullanıcının e-posta adresini girin, örneğin ** Brittasimon@contoso<i> </i> . com**.
+    1. **E-posta** kutusuna kullanıcının e-posta adresini girin, örneğin ** Brittasimon@contoso . <i></i> com**.
 
     1. **Rol** açılan listesinden uygun Kullanıcı rolünü seçin.
 

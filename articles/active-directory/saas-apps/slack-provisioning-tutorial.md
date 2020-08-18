@@ -2,25 +2,20 @@
 title: 'Öğretici: bolluk için Kullanıcı hazırlama-Azure AD'
 description: Kullanıcı hesaplarını bolluk 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa97595f9a6ab2a866a8c8ebccde7e53854dbd1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924555"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527834"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bolluk yapılandırma
 
@@ -36,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'den bolluk 'ye Kullanıcı hesaplarını otom
 > * Bolluk ['de çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) (önerilir)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
@@ -68,7 +63,7 @@ Bu bölümde, Azure AD 'nizi bolluk 'in Kullanıcı hesabı sağlama API 'sine b
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı hesabı sağlamayı bolluk olarak yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -187,7 +182,7 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 
 * Bolluk yalnızca **Kullanıcı adı** ve **e-posta**öznitelikleriyle eşleştirmeye izin verir.  
   
-* Ortak erorr kodları resmi bolluk belgelerinde belgelenmiştir-https://api.slack.com/scim#errors
+* Ortak erorr kodları resmi bolluk belgelerinde belgelenmiştir- https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Değişiklik günlüğü
 

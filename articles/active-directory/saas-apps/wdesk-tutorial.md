@@ -2,24 +2,21 @@
 title: 'Öğretici: Wdesk ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile Wdesk arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06900a91-a326-4663-8ba6-69ae741a536e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666977"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524026"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Öğretici: Wdesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -137,11 +134,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -177,7 +174,7 @@ Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini ku
  
      ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. Wdesk Yöneticisi 'nde **güvenlik**' e gidin ve **SAML** > **SAML ayarları**:
+3. Wdesk Yöneticisi 'nde **güvenlik**' e gidin ve **SAML**  >  **SAML ayarları**:
 
     ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
@@ -201,7 +198,7 @@ Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini ku
    
       d. Değişiklikleri kaydetmek için Azure portal **Kaydet** ' e tıklayın.      
 
-6. IDP ayarlarını **Düzenle** iletişim kutusunu açmak Için **IDP ayarlarını yapılandır** öğesine tıklayın. Azure portal kaydettiğiniz **meta veri. xml** dosyasını bulmak Için **Dosya Seç** ' e tıklayın, ardından karşıya yükleyin.
+6. IDP ayarlarını **Düzenle** iletişim kutusunu açmak Için **IDP ayarlarını yapılandır** öğesine tıklayın. Azure portal kaydettiğiniz **Metadata.xml** dosyasını bulmak Için **Dosya Seç** ' e tıklayın, ardından karşıya yükleyin.
     
     ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
@@ -217,7 +214,7 @@ Azure AD kullanıcılarının Wdesk 'de oturum açmasını sağlamak için, Wdes
 
 1. Wdesk 'de güvenlik yöneticisi olarak oturum açın.
 
-2. **Yönetici** > **hesabı Yöneticisi**' ne gidin.
+2. **Yönetici**  >  **hesabı Yöneticisi**' ne gidin.
 
      ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
@@ -227,7 +224,7 @@ Azure AD kullanıcılarının Wdesk 'de oturum açmasını sağlamak için, Wdes
    
     ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser1.png)  
 
-5. **Kullanıcı** metin kutusunda, kullanıcının b.simon@contoso.com Kullanıcı adını girip **devam** düğmesine tıklayın.
+5. **Kullanıcı** metin kutusunda, kullanıcının Kullanıcı adını girip b.simon@contoso.com **devam** düğmesine tıklayın.
 
     ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser3.png)
 
@@ -235,7 +232,7 @@ Azure AD kullanıcılarının Wdesk 'de oturum açmasını sağlamak için, Wdes
   
     ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser4.png)
  
-    a. **E-posta** metin kutusuna kullanıcının e-postasını girin b.simon@contoso.com.
+    a. **E-posta** metin kutusuna kullanıcının e-postasını girin b.simon@contoso.com .
 
     b. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
 

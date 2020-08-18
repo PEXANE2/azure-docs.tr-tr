@@ -2,25 +2,21 @@
 title: 'Öğretici: TOPdesk-public ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve TOPdesk-public arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0873299f-ce70-457b-addc-e57c5801275f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a18cb583b246c3cfbf09f43b9921497de37a3613
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71950416"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Öğretici: Topmasa-genel ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Azure AD ile TOPdesk-Public ' i tümleştirme aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -120,7 +116,7 @@ Azure AD çoklu oturum açmayı TOPdesk-public ile yapılandırmak için aşağ�
 
     d. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.topdesk.net`
 
-    e. **Tanımlayıcı URL** metin kutusunda, TopDesk yapılandırmasından alabileceğiniz TopDesk meta veri URL 'sini girin. Bu, aşağıdaki kalıbı kullanmalıdır:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    e. **Tanımlayıcı URL** metin kutusunda, TopDesk yapılandırmasından alabileceğiniz TopDesk meta veri URL 'sini girin. Bu, aşağıdaki kalıbı kullanmalıdır: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
     
     f. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.topdesk.net/tas/public/login/verify`
     
@@ -195,7 +191,7 @@ Azure AD çoklu oturum açmayı TOPdesk-public ile yapılandırmak için aşağ�
 
     c. TOPdesk destek ekibinden aldığınız logo dosyasını karşıya yüklemek için, **logo simgesi**altında, **Araştır**' a tıklayın.
 
-    d. **Kullanıcı adı öznitelik** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. **Kullanıcı adı öznitelik** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
     e. **Görünen ad** metin kutusuna yapılandırmanız için bir ad yazın.
 
@@ -219,11 +215,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -259,7 +255,7 @@ Azure AD kullanıcılarının Topmasa-genel ' te oturum açmasını sağlamak i�
 
 1. **Topoloji-ortak** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüde **TopDesk \> yeni \> \> destek dosyaları kişisi**' ne tıklayın.
+2. Üstteki menüde **TopDesk \> Yeni \> destek dosyaları \> kişisi**' ne tıklayın.
    
     ![Kişi](./media/topdesk-public-tutorial/ic790628.png "Kişi")
 

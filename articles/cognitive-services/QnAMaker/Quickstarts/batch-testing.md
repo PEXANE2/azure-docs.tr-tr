@@ -3,20 +3,20 @@ title: 'Hızlı başlangıç: toplu iş soruları ile test bilgi tabanı'
 description: Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 498f84c97fdc022e460dec453b1d65bb8088b787
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263155"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531078"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Hızlı başlangıç: toplu sorularla ve beklenen yanıtlardan test Bilgi Bankası
 
 Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Soru-cevap oluşturma bir hizmet oluşturun](create-publish-knowledge-base.md) ya da İngilizce dilini kullanan mevcut bir hizmeti kullanın.
 * [Çoklu çift örnek `.docx` dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) indirin
 * [Batch test aracı](https://aka.ms/qnamakerbatchtestingtool)'nı indirin, dosyadan yürütülebilir dosyayı ayıklayın `.zip` .

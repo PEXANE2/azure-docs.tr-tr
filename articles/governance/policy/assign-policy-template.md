@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: şablonlarla yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir ilke ataması oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
-ms.date: 05/21/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: f4cb4cb1fc56d06ab1e061b2d0e9a031e0e511dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242058"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520881"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -18,11 +18,11 @@ Bu hızlı başlangıç, yönetilen diskler kullanmayan sanal makineleri belirle
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a Azure Ilkesi atamak için ARM şablonunu dağıtma" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Bu hızlı başlangıçta, bir ilke ataması oluşturup _yönetilen diskleri kullanmayan VM 'Leri denetle_adlı yerleşik bir ilke tanımı atayabilirsiniz. Kullanılabilir yerleşik ilkelerin kısmi listesi için bkz. [Azure ilke örnekleri](./samples/index.md).
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
 
@@ -49,12 +49,12 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Ad | Değer |
+   | Name | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. Ekran görüntüsünde, kaynak grubu adı _mypolicyquickstart \<Date in MMDD\> RG_' dir. |
-   | Location | Bir bölge seçin. Örneğin **Orta ABD**. |
-   | İlke atama adı | Bir ilke atama adı belirtin. İsterseniz ilke tanımı ekranını kullanabilirsiniz. Örneğin, **yönetilen disk kullanmayan VM 'Leri denetleyin**. |
+   | Konum | Bir bölge seçin. Örneğin **Orta ABD**. |
+   | İlke atama adı | Bir ilke atama adı belirtin. İsterseniz ilke tanımı ekranını kullanabilirsiniz. Örneğin, _yönetilen disk kullanmayan VM 'Leri denetleyin_. |
    | RG adı | İlkeyi atamak istediğiniz kaynak grubu adını belirtin. Bu hızlı başlangıçta **[resourceGroup (). Name]** varsayılan değerini kullanın. **[resourceGroup ()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** , kaynak grubunu alan bir şablon işlevidir. |
    | İlke tanımı KIMLIĞI | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4C19-B460-a2d36003525a**belirtin. |
    | Yukarıda belirtilen hüküm ve koşulları kabul ediyorum | Seçin |
@@ -70,7 +70,7 @@ Bazı ek kaynaklar:
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Ardından, oluşturduğunuz **yönetilen diskler ilke atamasını kullanmayan VM 'Leri denetle** seçeneğini bulun.
+Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Ardından, oluşturduğunuz _yönetilen diskler ilke atamasını kullanmayan VM 'Leri denetle_ seçeneğini bulun.
 
 :::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="İlke uyumluluğuna genel bakış sayfası" border="false":::
 
@@ -82,9 +82,9 @@ Daha fazla bilgi için bkz. [Uyumluluk nasıl çalıştığını öğrenin](./ho
 
 Oluşturulan atamayı kaldırmak için şu adımları izleyin:
 
-1. Azure İlkesi sayfasının sol tarafından **Uyumluluk**’u (veya **Atamalar**’ı) seçin ve oluşturduğunuz **Yönetilen disk kullanmayan VM'leri denetle** ilke atamasını bulun.
+1. Azure İlkesi sayfasının sol tarafından **Uyumluluk**’u (veya **Atamalar**’ı) seçin ve oluşturduğunuz _Yönetilen disk kullanmayan VM'leri denetle_ ilke atamasını bulun.
 
-1. Yönetilen diskler ilkesi atamasını **kullanmayan VM 'Leri denetle** ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
+1. Yönetilen diskler ilkesi atamasını _kullanmayan VM 'Leri denetle_ ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
 
    :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Uyumluluk genel bakış sayfasından bir atamayı silme" border="false":::
 

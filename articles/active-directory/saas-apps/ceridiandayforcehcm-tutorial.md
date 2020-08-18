@@ -2,26 +2,21 @@
 title: 'Öğretici: Ceriyen Dayzorla HCM ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Ceriyen Dayzorlamalı HCM arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 7adf1eb3-d063-45d6-96a8-fd53b329b3f3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f488f22535c290b5fecbd0ffa9f8867f0b715bac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47e438b53f6aa3c9bc00da77c3532278b99e7269
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158691"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Öğretici: Ceriyen Dayzorlamalı HCM ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Ceriyen Dayzorlamalı HCM 'yi Azure AD ile tümleştirmek aşağıdaki avantajla
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -108,21 +103,21 @@ Azure AD çoklu oturum açma 'yı Ceriyen Dayzorlamalı HCM ile yapılandırmak 
 
     a. **Oturum açma URL 'si** metin kutusunda, kullanıcılarınız tarafından, Seriyen DAYı HCM uygulamanızda oturum açmak için kullanılan URL 'yi yazın.
 
-    | Ortam | URL'si |
+    | Ortam | URL |
     | :-- | :-- |
     | Üretim için | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | Test için | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
 
     b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | Ortam | URL'si |
+    | Ortam | URL |
     | :-- | :-- |
     | Üretim için | `https://ncpingfederate.dayforcehcm.com/sp` |
     | Test için | `https://fs-test.dayforcehcm.com/sp` |
 
     c. Yanıt **URL** metin kutusuna, yanıtı göndermek IÇIN Azure AD tarafından kullanılan URL 'yi yazın.
 
-    | Ortam | URL'si |
+    | Ortam | URL |
     | :-- | :-- |
     | Üretim için | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | Test için | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
@@ -138,7 +133,7 @@ Azure AD çoklu oturum açma 'yı Ceriyen Dayzorlamalı HCM ile yapılandırmak 
     
     | Adı | Kaynak özniteliği|
     | ---------| --------- |
-    | ad  | User. ExtensionAttribute2 |
+    | name  | User. ExtensionAttribute2 |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -156,7 +151,7 @@ Azure AD çoklu oturum açma 'yı Ceriyen Dayzorlamalı HCM ile yapılandırmak 
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -194,12 +189,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

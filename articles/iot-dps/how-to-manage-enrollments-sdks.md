@@ -6,18 +6,19 @@ ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975083"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520665"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure cihaz sağlama hizmeti SDK 'Ları ile cihaz kayıtlarını yönetme
 Bir *cihaz kaydı* , tek bir cihazın veya bazı noktada cihaz sağlama hizmeti 'ne kaydolabileceği bir cihaz grubunun kaydını oluşturur. Kayıt kaydı, istenen IoT Hub 'ı da dahil olmak üzere, bu kayıt kapsamında cihaz (ler) için ilk istenen yapılandırmayı içerir. Bu makalede, Azure IoT sağlama hizmeti SDK 'larını kullanarak sağlama hizmetiniz için cihaz kayıtlarını nasıl yöneteceğiniz gösterilmektedir.  SDK 'lar, Azure IoT SDK 'Ları ile aynı depoda GitHub 'da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Cihaz sağlama hizmeti örneğinden bağlantı dizesini edinin.
 * Kullanılan [kanıtlama mekanizması](concepts-security.md#attestation-mechanism) için cihaz güvenlik yapılarını edinin:
     * [**Güvenilir Platform Modülü (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
@@ -39,7 +40,7 @@ Cihazları sağlama hizmeti ile kaydedebilmeniz için iki yol vardır:
     Bu iş akışını izleyen SDK 'lara sahip bir kayıt grubu oluşturabilirsiniz:
 
     1. Kayıt grubu için, kanıtlama mekanizması X. 509.440 kök sertifikasını kullanır.  ```X509Attestation.createFromRootCertificate```Kayıt için kanıtlama oluşturmak üzere kök sertifika Ile SERVICE SDK API 'sini çağırın.  X. 509.440 kök sertifikası bir ped dosyasında ya da bir dize olarak sağlanır.
-    1. ```EnrollmentGroup```Oluşturulan ve benzersiz kullanarak yeni bir değişken oluşturun ```attestation``` ```enrollmentGroupId``` .  İsteğe bağlı olarak,,, gibi parametreleri ayarlayabilirsiniz ```Device ID``` ```IoTHubHostName``` ```ProvisioningStatus``` .
+    1. ```EnrollmentGroup```Oluşturulan ve benzersiz kullanarak yeni bir değişken oluşturun ```attestation``` ```enrollmentGroupId``` .  İsteğe bağlı olarak, gibi parametreleri de ```IoTHubHostName``` ayarlayabilirsiniz ```ProvisioningStatus``` .
     2. ```createOrUpdateEnrollmentGroup```Kayıt grubu oluşturmak için ile arka uç uygulamanızda SERVICE SDK API 'sini çağırın ```EnrollmentGroup``` .
 
 * **Tek bir kayıt** , kaydedebilen tek bir cihaz için giriştir. Bireysel kayıtlar, kanıtlama mekanizması olarak X. 509.440 sertifikalarını veya SAS belirteçlerini (fiziksel veya sanal TPM 'den) kullanabilir. Benzersiz ilk yapılandırma gerektiren cihazlar için veya kanıtlama mekanizması olarak TPM veya sanal TPM aracılığıyla yalnızca SAS belirteçlerini kullanan cihazlar için ayrı kayıtlar kullanmanızı öneririz. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.

@@ -2,25 +2,21 @@
 title: 'Öğretici Azure Active Directory: Cisco WebEx ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve Cisco WebEx arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01fe4d06d5f73eacee1d1cdaf1963232b84daf05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77046799"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528910"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Öğretici: Cisco WebEx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -120,9 +116,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -187,7 +183,7 @@ Bu bölümde, Cisco WebEx içinde B. Simon adlı bir Kullanıcı oluşturacaksı
 
     b. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını yazın.
 
-    c. **E-posta adresi** metin kutusuna, gibi b.simon@contoso.comkullanıcının e-posta adresini yazın.
+    c. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın b.simon@contoso.com .
 
 5. B. Simon eklemek için artı işaretine tıklayın. Ardından **İleri**' ye tıklayın.
 

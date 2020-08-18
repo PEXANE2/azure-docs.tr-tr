@@ -2,26 +2,21 @@
 title: 'Öğretici: barındırılan Graphite ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ile barındırılan Graphite arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a1ac4d7f-d079-4f3c-b6da-0f520d427ceb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6c5b689d00bd1adad820043840c43f49666655c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158072"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Öğretici: barındırılan Graphite ile Azure Active Directory tümleştirme
 
@@ -33,7 +28,7 @@ Barındırılan Graphite 'yi Azure AD ile tümleştirmek aşağıdaki avantajlar
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -178,12 +173,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -216,7 +211,7 @@ Bu bölümde, barındırılan Graphite erişimi vererek Azure çoklu oturum açm
 Bu bölümde, barındırılan Graphite içinde Britta Simon adlı bir Kullanıcı oluşturulur. Barındırılan Graphite, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı barındırılan Graphite 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!NOTE]
-> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, aracılığıyla <mailto:help@hostedgraphite.com>barındırılan Graphite destek ekibine başvurmanız gerekir.
+> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, aracılığıyla barındırılan Graphite destek ekibine başvurmanız gerekir <mailto:help@hostedgraphite.com> .
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

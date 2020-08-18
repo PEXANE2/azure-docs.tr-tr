@@ -2,26 +2,21 @@
 title: 'Öğretici: LCVista ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile LCVista arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8db80d6e-3275-419f-aa39-6115a7bc9800
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e1c0487a33d8ca90cc8bf43ec53e2707a4d027
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 049381e037d4c6951f23860b64bbcc17356e592f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159619"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Öğretici: LCVista ile tümleştirme Azure Active Directory
 
@@ -33,9 +28,9 @@ LCVista 'Yı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini LCVista ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -141,13 +136,13 @@ Azure AD çoklu oturum açmayı LCVista ile yapılandırmak için aşağıdaki a
 
     c. Azure portal Not defteri ' nden indirdiğiniz meta veri XML dosyasını açın, **X509Certificate** değerini kopyalayın ve **x509 sertifikası** bölümüne yapıştırın.
 
-    d. **First Name öznitelik** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`yapıştırın.
+    d. **First Name öznitelik** metin kutusuna değeri yapıştırın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    e. **Son ad öznitelik** metin kutusunda, değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`yapıştırın.
+    e. **Son ad öznitelik** metin kutusunda, değeri yapıştırın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
-    f. **E-posta özniteliği** metin kutusunda, değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`yapıştırın.
+    f. **E-posta özniteliği** metin kutusunda, değeri yapıştırın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    g. **Kullanıcı adı özniteliği** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`yapıştırın.
+    örneğin: **Kullanıcı adı özniteliği** metin kutusuna değeri yapıştırın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     e. Ayarları kaydetmek için **Kaydet**’e tıklayın.
 
@@ -169,12 +164,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -204,7 +199,7 @@ Bu bölümde, LCVista 'ya erişim vererek Azure çoklu oturum açma özelliğini
 
 ### <a name="create-lcvista-test-user"></a>LCVista test kullanıcısı oluşturma
 
-Bu bölümde, LCVista 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Lcvista platformunda kullanıcıları eklemek için [lcvista istemci desteği ekibi](https://lcvista.com/contact) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, LCVista 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. LCVista platformunda kullanıcıları eklemek için [Lcvista istemci desteği ekibi](https://lcvista.com/contact)ile çalışın   . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

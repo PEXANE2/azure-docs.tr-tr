@@ -3,12 +3,12 @@ title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Doc
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518093"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -36,6 +36,8 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Sunucu tarafı telemetrisini Application Insights etkinleştirme (Visual Studio)
+
+Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-server-side-telemetry-no-visual-studio)kullanın. Bu yordamı yalnızca Visual Studio 'nun Windows sürümü destekler.
 
 1. Projenizi Visual Studio’da açın.
 

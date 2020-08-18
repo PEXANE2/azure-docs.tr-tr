@@ -2,25 +2,21 @@
 title: 'Öğretici: Oracle E-Business Suite-EBS, PeopleSoft ve JDE | için SSOGEN-Azure AD SSO Gateway ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
 description: Oracle E-Business Suite-EBS, PeopleSoft ve JDE için Azure Active Directory ile SSOGEN-Azure AD SSO Gateway arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f4311031-5a4b-468e-be58-324d06220869
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72b91be9875abf07e5f6f828ed32483a5d61eadd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76293683"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524450"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Öğretici: Oracle E-Business Suite-EBS, PeopleSoft ve JDE için SSOGEN-Azure AD SSO ağ geçidiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -110,9 +106,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -136,16 +132,16 @@ Bu bölümde, Oracle E-Business Suite-EBS, PeopleSoft ve JDE için SSOGEN-Azure 
 
 **Oracle E-Business Suite-EBS, PeopleSoft ve JDE SIDE Için Ssogen-Azure AD SSO Gateway** 'de çoklu oturum açmayı yapılandırmak için lütfen aşağıdaki uygulamaya özel SSO kayıt belgelerini bulun:
 
-* Oracle EBS-Azure AD SSO tümleştirmesi:[https://www.ssogen.com/oracle-ebs-sso-ldap/](https://www.ssogen.com/oracle-ebs-sso-ldap/)
-* PeopleSoft-Azure AD SSO tümleştirmesi:[https://www.ssogen.com/peoplesoft-sso/](https://www.ssogen.com/peoplesoft-sso/)
-* JD edi-Azure AD SSO tümleştirmesi:[https://www.ssogen.com/oracle-jde-sso/](https://www.ssogen.com/oracle-jde-sso/)
-* Apache-Azure AD SSO tümleştirmesi:[https://www.ssogen.com/apache-sso-authentication/](https://www.ssogen.com/apache-sso-authentication/)
+* Oracle EBS-Azure AD SSO tümleştirmesi: [https://www.ssogen.com/oracle-ebs-sso-ldap/](https://www.ssogen.com/oracle-ebs-sso-ldap/)
+* PeopleSoft-Azure AD SSO tümleştirmesi: [https://www.ssogen.com/peoplesoft-sso/](https://www.ssogen.com/peoplesoft-sso/)
+* JD edi-Azure AD SSO tümleştirmesi: [https://www.ssogen.com/oracle-jde-sso/](https://www.ssogen.com/oracle-jde-sso/)
+* Apache-Azure AD SSO tümleştirmesi: [https://www.ssogen.com/apache-sso-authentication/](https://www.ssogen.com/apache-sso-authentication/)
 
 ### <a name="create-ssogen-azure-ad-sso-gateway-for-oracle-e-business-suite-ebs-peoplesoft-and-jde-test-user"></a>Oracle E Iş paketi EBS, PeopleSoft ve JDE test kullanıcısı için SSOGEN Azure AD SSO Gateway oluşturma
 
 Azure AD, kimlik doğrulama başarılı olduktan sonra kullanıcı uygulamasına benzersiz kullanıcı tanımlayıcısı (ad KIMLIĞI) gönderir.  Lütfen benzersiz kullanıcı tanımlayıcısının (ad KIMLIĞI) uygulamanızdaki Kullanıcı kaydıyla eşleştiğinden emin olun, FND_USER. Örneğin, Oracle EBS 'de USER_NAME.
 
-Lütfen desteğe [info@ssogen.com](mailto:info@ssogen.com) başvurun [support@ssogen.com](mailto:support@ssogen.com) .
+Lütfen [info@ssogen.com](mailto:info@ssogen.com) desteğe başvurun [support@ssogen.com](mailto:support@ssogen.com) .
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
@@ -155,9 +151,9 @@ Erişim panelinde Oracle E-Business Suite-EBS, PeopleSoft ve JDE kutucuğunun i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

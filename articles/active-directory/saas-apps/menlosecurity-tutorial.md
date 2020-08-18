@@ -2,25 +2,21 @@
 title: 'Öğretici: Menlo güvenliği ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve Menlo güvenliği arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9e63fe6b-0ad0-405d-9e41-6a1a40a41df8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 172fe6a6b5b8e7c649adc58e69e71c54a0f8bde9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cc42414d4aae6a575429e17d577b175f55bf3c01
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Öğretici: Menlo güvenliği ile Azure Active Directory tümleştirme
 
@@ -32,7 +28,7 @@ Menlo güvenliğini Azure AD ile tümleştirmek aşağıdaki avantajları sağla
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -146,7 +142,7 @@ Azure AD çoklu oturum açmayı Menlo güvenliği ile yapılandırmak için aşa
 
     f. **X. 509.440 sertifikası** : Azure portalından indirilen **sertifikayı (base64)** Not defteri 'nde açın ve bu kutuya yapıştırın.
 
-    g. Ayarları kaydetmek için **Kaydet**’e tıklayın.
+    örneğin: Ayarları kaydetmek için **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -166,12 +162,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

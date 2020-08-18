@@ -3,23 +3,19 @@ title: 'Öğretici: Azure Active Directory iş günü geri yazmayı yapılandır
 description: Azure AD 'den Workday 'ye öznitelik geri yazma 'yı nasıl yapılandıracağınızı öğrenin
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041795"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526839"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Öğretici: Azure AD 'den Workday 'ye öznitelik geri yazmayı yapılandırma
 Bu öğreticinin amacı, Azure AD 'deki öznitelikleri Workday 'e geri yazma için gerçekleştirmeniz gereken adımları gösteriyoruz. Workday geri yazma sağlama uygulaması, aşağıdaki Workday özniteliklerine değer atanmasını destekler:
@@ -56,7 +52,7 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
 **Workday geri yazma bağlayıcısını yapılandırmak için:**
 
-1. <https://portal.azure.com> kısmına gidin.
+1. <https://portal.azure.com> öğesine gidin.
 
 2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 

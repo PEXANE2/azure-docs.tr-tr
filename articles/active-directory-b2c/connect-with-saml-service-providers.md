@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020075"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520218"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -41,7 +41,7 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
 | Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * Security Assertion Markup Language (SAML) protokolünü temel olarak anlama.
@@ -267,7 +267,7 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 uygulamanızı Azure AD B2C kaydetme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
@@ -334,7 +334,7 @@ Son adım, SAML bağlı olan taraf uygulamanızda SAML IDP olarak Azure AD B2C e
 
 Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 
-* **Meta veriler**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Meta veriler**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Veren**: meta veri dosyasında EntityId kullanın
 * **Oturum açma URL 'si/SAML uç noktası/SAML URL 'si**: meta veri dosyasındaki değeri denetleyin
 * **Sertifika**: Bu, özel anahtar olmadan *B2C_1A_SamlIdpCert*. Sertifikanın ortak anahtarını almak için:
@@ -350,7 +350,7 @@ Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 
 * Kiracı adını güncelleştirme
 * İlke adını güncelleştirme, örneğin *B2C_1A_signup_signin_saml*
-* Bu veren URI 'sini belirtin:`https://contoso.onmicrosoft.com/app-name`
+* Bu veren URI 'sini belirtin: `https://contoso.onmicrosoft.com/app-name`
 
 **Oturum aç** ' ı seçin ve Kullanıcı oturum açma ekranı ile karşılaşırsınız. Oturum açma sırasında, bir SAML onaylama işlemi örnek uygulamaya geri verilir.
 
@@ -414,6 +414,10 @@ Aşağıdaki SAML bağlı olan taraf (RP) senaryoları kendi meta veri uç nokta
 * Uygulama/hizmet sorumlusu nesnesinde oturum kapatma URL 'SI için çoklu oturum kapatma URL 'Leri veya GÖNDERI bağlama.
 * Uygulama/hizmet sorumlusu nesnesindeki RP isteklerini doğrulamak için imzalama anahtarını belirtin.
 * Uygulama/hizmet sorumlusu nesnesinde belirteç şifreleme anahtarını belirtin.
+* Kimlik sağlayıcısı, kimlik sağlayıcısının Azure AD B2C oturum açma işlemi başlattı.
+
+Aşağıdaki SAML bağlı olan taraf (RP) senaryoları Şu anda desteklenmiyor:
+* Kimlik sağlayıcısı, kimlik sağlayıcısının bir dış kimlik sağlayıcısı olduğu, örneğin ADFS gibi bir oturum açma işlemi başlattı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685299"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516597"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C 'de sakıncalı malzeme için video içeriğini analiz etme #
 
 Bu makalede, [.NET için Content moderator SDK 'yı](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri, yetişkinlere yönelik içerik ve video içeriğini taramak
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Herhangi bir [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) sürümü
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Yerel bir video dosyası (en basit durum) kullanmak istiyorsanız, projeye ekleyin ve `INPUT_FILE` değerini değer olarak girin (göreli yollar yürütme dizinine göre değişir).
 
-Ayrıca, geçerli dizinde _önceden ayarlanmış. JSON_ dosyasını oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örnek:
+Ayrıca, geçerli dizindeki dosyasında _preset.js_ oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örneğin:
 
 ```JSON
 {
@@ -369,10 +369,10 @@ Içerik denetleme işi tamamlandıktan sonra JSON yanıtını çözümleyin. Şu
 - **Başlangıç**, **süre**, **TotalDuration**ve **zaman damgası** "ticks" dir. Sayıyı saniye cinsinden almak için **zaman ölçeğinde** ayırın.
  
 > [!NOTE]
-> - `adultScore`belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen içeriğin olası varlığını ve tahmin Puanını temsil eder.
-> - `racyScore`belirli durumlarda cinsel veya kötü bir şekilde düşünüldüksel olabilecek içeriğin olası varlığını ve tahmin Puanını temsil eder.
-> - `adultScore`ve `racyScore` 0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu önizleme el ile kodlanmış sonuçlar yerine istatistiksel bir modeli kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
-> - `reviewRecommended`, iç puan eşiklerine bağlı olarak doğru ya da yanlış şeklindedir. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
+> - `adultScore` belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen içeriğin olası varlığını ve tahmin Puanını temsil eder.
+> - `racyScore` belirli durumlarda cinsel veya kötü bir şekilde düşünüldüksel olabilecek içeriğin olası varlığını ve tahmin Puanını temsil eder.
+> - `adultScore` ve `racyScore` 0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu önizleme el ile kodlanmış sonuçlar yerine istatistiksel bir modeli kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
+> - `reviewRecommended` , iç puan eşiklerine bağlı olarak doğru ya da yanlış şeklindedir. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
 
 ```json
 {

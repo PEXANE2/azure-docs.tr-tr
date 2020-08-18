@@ -2,25 +2,21 @@
 title: 'Öğretici Azure Active Directory: SignalFx ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve SignalFx arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136423"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521578"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Öğretici: SignalFx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -88,9 +84,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu yönergeleri kullanın.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanları doldurun: 
 
-    a. **Tanımlayıcı**alanına aşağıdaki URL 'yi `https://api.<realm>.signalfx.com/v1/saml/metadata` girin ve signalfx `<realm>` Realm ile değiştirin. 
+    a. **Tanımlayıcı**alanına aşağıdaki URL 'yi girin `https://api.<realm>.signalfx.com/v1/saml/metadata` ve `<realm>` signalfx Realm ile değiştirin. 
 
-    b. **Yanıt URL 'si**' nde aşağıdaki URL 'yi `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` girin ve `<realm>` signalfx Realm Ile değiştirin ve daha önce SIGNALFX kullanıcı arabiriminden kopyaladığınız `<integration ID>` **tümleştirme kimliği** ile değiştirin.
+    b. **Yanıt URL 'si**' nde aşağıdaki URL 'yi girin `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` ve `<realm>` signalfx Realm ile değiştirin ve `<integration ID>` daha önce Signalfx kullanıcı arabiriminden kopyaladığınız **tümleştirme kimliği** ile değiştirin.
 
 1. SignalFx uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. 
     
@@ -119,10 +115,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu yönergeleri kullanın.
 1. Azure portal, sol taraftaki Gezinti penceresinde **Azure Active Directory**' i seçin, ardından **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Sayfanın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özelliklerinde:
-   1. **Kullanıcı adı**alanına, gibi `username@companydomain.extension`girin `b.simon@contoso.com`.
-   1. **Ad**alanına girin `B.Simon`.
+   1. **Kullanıcı adı**alanına, gibi girin `username@companydomain.extension` `b.simon@contoso.com` .
+   1. **Ad**alanına girin `B.Simon` .
    1. **Parolayı göster**' i işaretleyin ve ardından görünen değeri **parolada**kopyalayın. Bu tümleştirmeyi test etmek için sonraki adımda bu bilgilere ihtiyacınız olacaktır. 
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>5. Adım: Azure AD test kullanıcısını atama
 
@@ -163,7 +159,7 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
         * Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * SignalFx uygulamasına erişim panelinden veya kuruluşa atanmış özel bir oturum açma sayfası aracılığıyla erişilebilir. Test kullanıcısı bu konumdan başlayarak tümleştirmeyi test etmelidir.
-    * Test kullanıcısı için **b.simon@contoso.com**bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir.
+    * Test kullanıcısı için bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir **b.simon@contoso.com** .
 
 ### <a name="first-time-logins"></a>İlk kez oturum açma işlemleri
 
@@ -173,9 +169,9 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

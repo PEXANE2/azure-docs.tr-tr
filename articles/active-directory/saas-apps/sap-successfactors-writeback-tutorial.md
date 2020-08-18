@@ -3,23 +3,19 @@ title: 'Öğretici: Azure Active Directory SAP başarıyla geri yazmayı yapıla
 description: Azure AD 'den SAP 'nin başarıyla geri yazma özelliğini yapılandırma hakkında bilgi edinin
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215868b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809942"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534005"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 
@@ -151,7 +147,7 @@ Başarılı bir şekilde yeniden yazma sağlama uygulaması, çalışan merkezi 
 1. Postman 'da, başarılı ' ın koleksiyonuyla ilişkili üç nokta (...) simgesine tıklayın ve aşağıda gösterildiği gibi "e-posta türleri al" adlı "yeni Istek" ekleyin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman e-posta isteği](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Postman e-posta isteği ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
 
 1. "E-posta türünü al" istek panelini açın. 
 1. URL al ' da, aşağıdaki URL 'yi ekleyerek başarılı bir şekilde değiştirin `successFactorsAPITenantName` . 

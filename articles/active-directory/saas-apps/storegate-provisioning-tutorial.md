@@ -2,25 +2,21 @@
 title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Storegate 'i yapılandırma | Microsoft Docs"
 description: Kullanıcı hesaplarını Storeg'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 628fa804-c0e6-4db1-ab6b-46ee9aab4d41
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: 72903a36f88f9092ce1d203b557003083407320b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c889b2c7b11c5e649045e34cdac9e50a3a242b6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524463"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Storegate yapılandırma
 
@@ -124,7 +120,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Azure AD 'de Storeg'in otomatik Kullanıcı sağlamasını yapılandırmak için
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

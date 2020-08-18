@@ -2,26 +2,21 @@
 title: 'Öğretici: Clever ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Clever arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af3c925e-92ec-431d-80cf-2e0861cd4ba5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac9647bf6a9e2e763bcfb6e3d840cdccd2b6c305
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9946abc89a924b1577743b64de234805e411793d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67594999"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520122"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Clever ile tümleştirme
 
@@ -85,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Ortam | URL kalıbı |
     | - | - |
-    | Test etme | `https://test.elephantsdontforget.com/plato`|
+    | Test | `https://test.elephantsdontforget.com/plato`|
     | Üretim | `https://secure.elephantsdontforget.com/plato` |
     | | |
 
@@ -93,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Ortam | URL kalıbı |
     | - | - |
-    | Test etme | `https://test.elephantsdontforget.com/plato/callback?client_name=SAML2Client`|
+    | Test | `https://test.elephantsdontforget.com/plato/callback?client_name=SAML2Client`|
     | Üretim | `https://secure.elephantsdontforget.com/plato/callback?client_name=SAML2Client` |
     | | |
 
@@ -103,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Ortam | URL kalıbı |
     | - | - |
-    | Test etme | `https://test.elephantsdontforget.com/plato/sso/microsoft/index.xhtml`|
+    | Test | `https://test.elephantsdontforget.com/plato/sso/microsoft/index.xhtml`|
     | Üretim | `https://secure.elephantsdontforget.com/plato/sso/microsoft/index.xhtml` |
     | | |
 
@@ -126,9 +121,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

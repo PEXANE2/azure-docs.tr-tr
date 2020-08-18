@@ -2,25 +2,21 @@
 title: 'Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Akamai arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1b7e0d7a-e78f-43a5-af93-b626186e2376
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232398"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523142"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -281,7 +277,7 @@ Akamai üst bilgi tabanlı kimlik doğrulaması
 
     ![Akamai yapılandırma](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 1. **Kimlik doğrulama** sekmesini seçin.
 
@@ -345,7 +341,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Akamai yapılandırma](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 **Kaydet ' e tıklayın ve hizmetler 'e gidin**.
 
@@ -407,7 +403,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     e. Bağlayıcının konumunu belirtin ve bağlayıcıyı seçin.
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kaydet ' **e tıklayın ve hizmetlere gidin**.
 
@@ -540,15 +536,15 @@ Kimlik sağlayıcısını ata
 
 1. Genel sözdizimi aşağıda verilmiştir.
 
-1. Ktpass/Out ActiveDirectorydomain. keytab/Princ `HTTP/yourloginportalurl@ADDomain.com` /mapuser serviceaccount@ADdomain.com /Pass + rdnPass/şifre All/ptype KRB5_NT_PRINCIPAL
+1. Ktpass/Out ActiveDirectorydomain. keytab/Princ `HTTP/yourloginportalurl@ADDomain.com`  /mapuser serviceaccount@ADdomain.com /Pass + rdnPass/şifre All/ptype KRB5_NT_PRINCIPAL
 
 1. Örnek açıklanacak
 
     | Kod Parçacığı | Açıklama |
     | - | - |
     | Ktpass/Out EAADemo. keytab | Çıkış keytab dosyasının adı |
-    | /PrincHTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
-    | /mapusereaadelegation@superdemo.live | EAA temsili hesabı |
+    | /Princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
+    | /mapuser eaadelegation@superdemo.live | EAA temsili hesabı |
     | /Pass RANDOMPASS | EAA temsili hesap parolası |
     | /şifre tüm pType KRB5_NT_PRINCIPAL | Akamai EAA belgelerine başvurun |
     | | |
@@ -597,9 +593,9 @@ Erişim panelinde Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığın
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

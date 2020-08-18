@@ -2,26 +2,21 @@
 title: 'Öğretici: Wandera ile tümleştirme Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ve Wandera arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a4615e56-1deb-423e-ad19-2e74c0d6d17a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4af2fa415c22abe5cd8ac98d510feb44abab0e97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68825288"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524014"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>Öğretici: Wandera ile Azure Active Directory tümleştirme
 
@@ -116,7 +111,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 3. Wandera 'yı el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Wandera şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın sağ üst köşesinde, **Ayarlar** > **yönetimi** > **Çoklu oturum açma** ' ya tıklayın ve ardından aşağıdaki adımları gerçekleştirmek için **SAML 2,0** ' i etkinleştir seçeneğini işaretleyin.
+4. Sayfanın sağ üst köşesinde, **Ayarlar**  >  **yönetimi**  >  **Çoklu oturum açma** ' ya tıklayın ve ardından aşağıdaki adımları gerçekleştirmek için **SAML 2,0** ' i etkinleştir seçeneğini işaretleyin.
 
     ![Wandera yapılandırması](./media/wandera-tutorial/config01.png)
 
@@ -136,9 +131,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

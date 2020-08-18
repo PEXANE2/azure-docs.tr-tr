@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808669"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518331"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
-Kapsayıcılar, konuşma hizmeti API 'Lerinden bazılarını kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için harika. Bu makalede, bir konuşma kapsayıcısının nasıl indirileceği, yükleneceği ve çalıştırılacağı hakkında bilgi edineceksiniz.
+Kapsayıcılar, Konuşma Hizmeti API’lerinin bazılarını kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede bir Konuşma kapsayıcısını indirme, yükleme ve çalıştırmayı öğreneceksiniz.
 
-Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de kenar konumu için iyileştirilmiş bir konuşma uygulaması mimarisi oluşturmasını sağlar. Dört farklı kapsayıcı mevcuttur. İki standart kapsayıcı, **konuşmadan metne** ve **metinden konuşmaya**. İki özel kapsayıcı **özel konuşma tanıma metin** ve **özel metinden konuşmaya**. Konuşma kapsayıcıları, bulut tabanlı Azure konuşma hizmetleriyle aynı [fiyatlandırmaya](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) sahiptir.
+Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de uç yeri için iyileştirilmiş bir konuşma uygulama mimarisi derlemelerini sağlar. Dört farklı kapsayıcı mevcuttur. İki standart kapsayıcı, **konuşmadan metne** ve **metinden konuşmaya**. İki özel kapsayıcı **özel konuşma tanıma metin** ve **özel metinden konuşmaya**. Konuşma kapsayıcıları, bulut tabanlı Azure konuşma hizmetleriyle aynı [fiyatlandırmaya](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) sahiptir.
 
 > [!IMPORTANT]
 > Tüm konuşma kapsayıcıları Şu anda [Genel "geçitli" önizlemenin](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)bir parçası olarak sunulmaktadır. Konuşma kapsayıcıları genel kullanıma (GA) İlerlemede bir duyuru yapılır.
@@ -33,9 +33,9 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 | Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.5.0 |
 | Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.5.0 |
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -107,7 +107,7 @@ Aşağıdaki tabloda, her bir konuşma kapsayıcısı için kaynakların en dü�
 > [!NOTE]
 > En düşük ve önerilen, ana makine kaynaklarından *değil* , Docker sınırlarına dayanır. Örneğin, konuşmadan metne kapsayıcı bellek eşleme, büyük bir dil modelinin bölümlerine eşlenir ve tüm dosyanın belleğe sığması *önerilir* , bu da ek 4-6 GB 'tır. Ayrıca, modellerin bellekte sayfalandığından kapsayıcının ilk çalışması daha uzun sürebilir.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al `docker pull`
 
 Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullanılabilir.
 
@@ -237,7 +237,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [examples](speech-container-configuration.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma `docker run`
 
 Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın `{Endpoint_URI}` `{API_Key}` . Komuta ek [örnekler](speech-container-configuration.md#example-docker-run-commands) `docker run` de mevcuttur.
 
@@ -263,7 +263,7 @@ ApiKey={API_KEY}
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Konuşmayı metne dönüştürme sırasında yaklaşımı çözümleme 
 
-Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örnek: 
+Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örneğin: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -441,7 +441,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Simple.Extensions`yanıtın kök katmanında yaklaşım sonucunu döndürür.
+`Simple.Extensions` yanıtın kök katmanında yaklaşım sonucunu döndürür.
 
 ```json
 {
@@ -480,7 +480,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`yanıtın kök katmanında yaklaşım sonucunu sağlar. `Detailed.Options`yanıtın katmanında sonucu sağlar `NBest` . Bunlar ayrı olarak veya birlikte kullanılabilir.
+`Detailed.Extensions` yanıtın kök katmanında yaklaşım sonucunu sağlar. `Detailed.Options` yanıtın katmanında sonucu sağlar `NBest` . Bunlar ayrı olarak veya birlikte kullanılabilir.
 
 ```json
 {

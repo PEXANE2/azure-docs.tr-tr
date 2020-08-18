@@ -1,6 +1,6 @@
 ---
 title: Azure Içeri/dışarı aktarma aracı v1 'yi ayarlama | Microsoft Docs
-description: Azure Içeri/dışarı aktarma hizmeti için sürücü hazırlama ve onarım aracını ayarlamayı öğrenin. Bu, Içeri/dışarı aktarma aracının v1 anlamına gelir.
+description: Azure Içeri/dışarı aktarma hizmeti için sürücü hazırlama ve onarım aracını ayarlamayı öğrenin. Bu makale, Içeri/dışarı aktarma aracının 1. sürümünü ifade eder.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077824"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530809"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Içeri/dışarı aktarma aracı v1 ayarlanıyor
 Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:  
 
--   Bir içeri aktarma işi oluşturmadan önce, verileri bir Windows Azure veri merkezine alacağınız sabit sürücülere kopyalamak için bu aracı kullanabilirsiniz.  
+-   Bir içeri aktarma işi oluşturmadan önce, verileri bir Windows Azure veri merkezine aktardığınız sabit sürücülere kopyalamak için bu aracı kullanabilirsiniz.  
 
 -   Bir içeri aktarma işi tamamlandıktan sonra, bozuk olan, eksik olan veya diğer bloblarla çakışan Blobları onarmak için bu aracı kullanabilirsiniz.  
 
 -   Tamamlanmış bir dışarı aktarma işinden sürücüleri aldıktan sonra, sürücülerde bozuk veya eksik olan dosyaları onarmak için bu aracı kullanabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar  
+## <a name="prerequisites"></a>Ön koşullar  
 Sürücüleri bir içeri aktarma işi için hazırlıyorsanız, aşağıdaki önkoşulları karşılamanız gerekir:  
 
 -   Etkin bir Azure aboneliğiniz olmalıdır.  
 
--   Aboneliğiniz, içeri aktaralacağınız dosyaları depolamak için yeterli kullanılabilir alana sahip bir depolama hesabı içermelidir.  
+-   Aboneliğiniz, içeri aktardığınız dosyaları depolamak için yeterli kullanılabilir alana sahip bir depolama hesabı içermelidir.  
 
 -   Depolama hesabı için en az bir hesap anahtarı gereklidir.  
 
@@ -253,5 +253,4 @@ Examples:
 * [Bir dışarı aktarma işi için sürücü kullanımını Önizleme](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Kopyalama günlük dosyalarıyla iş durumunu gözden geçirme](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Bir içeri aktarma işini onarma](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Bir dışarı aktarma işini onarma](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Azure İçeri/Dışarı Aktarma Aracı ile ilgili sorunları giderme](storage-import-export-tool-troubleshooting-v1.md)
+* [Bir dışarı aktarma işini onarma](../storage-import-export-tool-repairing-an-export-job-v1.md)

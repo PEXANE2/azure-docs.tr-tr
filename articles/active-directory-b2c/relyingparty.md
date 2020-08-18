@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203750"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521272"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -104,7 +104,7 @@ Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty**
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlkede Kullanıcı yolculuğu için bir tanımlayıcı. Daha fazla bilgi için bkz. [Kullanıcı yolculukları](userjourneys.md) |
+| ReferenceId | Yes | İlkede Kullanıcı yolculuğu için bir tanımlayıcı. Daha fazla bilgi için bkz. [Kullanıcı yolculukları](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>Kullanıcıbağlantısı Neyıdavranışları
 
@@ -125,9 +125,9 @@ Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty**
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kapsam | Evet | Çoklu oturum açma davranışının kapsamı. Olası değerler: `Suppressed` , `Tenant` , `Application` veya `Policy` . `Suppressed`Değer, davranışın bastırıldığını ve kullanıcıdan her zaman bir kimlik sağlayıcı seçimi istendiğini gösterir.  `Tenant`Değer, davranışın Kiracıdaki tüm ilkelere uygulanacağını gösterir. Örneğin, bir kiracı için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Application`Değer, davranışın istek yapan uygulamanın tüm ilkelerine uygulanacağını gösterir. Örneğin, bir uygulama için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Policy`Değer, davranışın yalnızca bir ilke için geçerli olduğunu gösterir. Örneğin, bir güven çerçevesi için iki ilke ile gezinerek bir Kullanıcı, ilkeler arasında geçiş yaparken bir kimlik sağlayıcısı seçimine sorulur. |
-| Keepaliveındays | Evet | Kullanıcının ne kadar süreyle oturum açdığına ilişkin denetim. Değerin 0 olarak ayarlanması, KMSI işlevini devre dışı bırakır. Daha fazla bilgi için bkz. Oturumumu [açık tut](custom-policy-keep-me-signed-in.md). |
-|Enforceıdtokenhintonlogout| Hayır|  Daha önce verilen bir KIMLIK belirtecini, son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirmeye zorlayın. Olası değerler: `false` (varsayılan) veya `true` . Daha fazla bilgi için bkz. [OpenID Connect Ile web oturumu açma](openid-connect.md).  |
+| Kapsam | Yes | Çoklu oturum açma davranışının kapsamı. Olası değerler: `Suppressed` , `Tenant` , `Application` veya `Policy` . `Suppressed`Değer, davranışın bastırıldığını ve kullanıcıdan her zaman bir kimlik sağlayıcı seçimi istendiğini gösterir.  `Tenant`Değer, davranışın Kiracıdaki tüm ilkelere uygulanacağını gösterir. Örneğin, bir kiracı için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Application`Değer, davranışın istek yapan uygulamanın tüm ilkelerine uygulanacağını gösterir. Örneğin, bir uygulama için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Policy`Değer, davranışın yalnızca bir ilke için geçerli olduğunu gösterir. Örneğin, bir güven çerçevesi için iki ilke ile gezinerek bir Kullanıcı, ilkeler arasında geçiş yaparken bir kimlik sağlayıcısı seçimine sorulur. |
+| Keepaliveındays | Yes | Kullanıcının ne kadar süreyle oturum açdığına ilişkin denetim. Değerin 0 olarak ayarlanması, KMSI işlevini devre dışı bırakır. Daha fazla bilgi için bkz. Oturumumu [açık tut](custom-policy-keep-me-signed-in.md). |
+|Enforceıdtokenhintonlogout| No|  Daha önce verilen bir KIMLIK belirtecini, son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirmeye zorlayın. Olası değerler: `false` (varsayılan) veya `true` . Daha fazla bilgi için bkz. [OpenID Connect Ile web oturumu açma](openid-connect.md).  |
 
 
 ## <a name="journeyinsights"></a>Bağlantı, Neyelik
@@ -136,12 +136,12 @@ I, **Newınghts** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Evet | Değer olmalıdır `ApplicationInsights` . |
-| Instrumentationkey | Evet | Application Insights öğesi için izleme anahtarını içeren dize. |
-| DeveloperMode | Evet | Olası değerler: `true` veya `false` . `true`Application Insights, işlem hattı aracılığıyla Telemetriyi bir şekilde yükseltir. Bu ayar geliştirme için iyidir, ancak yüksek birimlerde kısıtlıdır. ayrıntılı etkinlik günlükleri yalnızca özel ilkelerin geliştirilmesine yardımcı olmak için tasarlanmıştır. Üretim ortamında geliştirme modunu kullanmayın. Günlükler, geliştirme sırasında kimlik sağlayıcılardan gelen ve giden tüm talepleri toplar. Üretimde kullanılıyorsa, geliştirici, sahip oldukları App Insights günlüğünde toplanan PII (özel olarak tanımlanabilen bilgiler) için sorumluluğu kabul eder. Bu ayrıntılı Günlükler yalnızca bu değer olarak ayarlandığında toplanır `true` .|
-| ClientEnabled | Evet | Olası değerler: `true` veya `false` . `true`, İzleme sayfası görünümü ve istemci tarafı hataları için Application Insights istemci tarafı betiği gönderir. |
-| Sunucuetkin | Evet | Olası değerler: `true` veya `false` . Varsa `true` , Application Insights için var olan Kullanıcıgünneyıkaydedicisi JSON 'sini özel bir olay olarak gönderir. |
-| TelemetryVersion | Evet | Değer olmalıdır `1.0.0` . |
+| TelemetryEngine | Yes | Değer olmalıdır `ApplicationInsights` . |
+| Instrumentationkey | Yes | Application Insights öğesi için izleme anahtarını içeren dize. |
+| DeveloperMode | Yes | Olası değerler: `true` veya `false` . `true`Application Insights, işlem hattı aracılığıyla Telemetriyi bir şekilde yükseltir. Bu ayar geliştirme için iyidir, ancak yüksek birimlerde kısıtlıdır. ayrıntılı etkinlik günlükleri yalnızca özel ilkelerin geliştirilmesine yardımcı olmak için tasarlanmıştır. Üretim ortamında geliştirme modunu kullanmayın. Günlükler, geliştirme sırasında kimlik sağlayıcılardan gelen ve giden tüm talepleri toplar. Üretimde kullanılıyorsa, geliştirici, sahip oldukları App Insights günlüğünde toplanan PII (özel olarak tanımlanabilen bilgiler) için sorumluluğu kabul eder. Bu ayrıntılı Günlükler yalnızca bu değer olarak ayarlandığında toplanır `true` .|
+| ClientEnabled | Yes | Olası değerler: `true` veya `false` . `true`, İzleme sayfası görünümü ve istemci tarafı hataları için Application Insights istemci tarafı betiği gönderir. |
+| Sunucuetkin | Yes | Olası değerler: `true` veya `false` . Varsa `true` , Application Insights için var olan Kullanıcıgünneyıkaydedicisi JSON 'sini özel bir olay olarak gönderir. |
+| TelemetryVersion | Yes | Değer olmalıdır `1.0.0` . |
 
 Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md)
 
@@ -163,7 +163,7 @@ Aşağıdaki örnek, `campaignId` sorgu dizesinde değeri olan adlı bir paramet
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Name | Evet | Anahtar değer çiftinin adı. |
+| Ad | Yes | Anahtar değer çiftinin adı. |
 
 Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullanıcı arabirimini yapılandırma](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -173,7 +173,7 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Değer olmalıdır `PolicyProfile` . |
+| Id | Yes | Değer olmalıdır `PolicyProfile` . |
 
 **Teknisyen** aşağıdaki öğeleri içerir:
 
@@ -190,9 +190,17 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Name | Evet | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OpenIdConnect` veya `SAML2` . `OpenIdConnect`Değer, OpenID Foundation belirtimine göre OpenID Connect 1,0 Protokol standardını temsil eder. , `SAML2` Oassıs belirtimine göre SAML 2,0 Protokol standardını temsil eder. |
+| Ad | Yes | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OpenIdConnect` veya `SAML2` . `OpenIdConnect`Değer, OpenID Foundation belirtimine göre OpenID Connect 1,0 Protokol standardını temsil eder. , `SAML2` Oassıs belirtimine göre SAML 2,0 Protokol standardını temsil eder. |
 
-## <a name="outputclaims"></a>Outputclaim
+### <a name="metadata"></a>Meta veri
+
+Protokol olduğunda `SAML` , meta veri öğesi aşağıdaki öğeleri içerir.
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | No | Azure AD B2C SAML Yanıtını imzalamak için kullandığı yöntem. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. SAML onaylama 'yı yapılandırmak için bkz. [SAML verenin teknik profil meta verileri](saml-issuer-technical-profile.md#metadata). |
+
+### <a name="outputclaims"></a>Outputclaim
 
 **Outputclaim** öğesi aşağıdaki öğeyi içerir:
 
@@ -204,21 +212,22 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Evet | İlke dosyasında **Claimsschema** bölümünde zaten tanımlanmış bir **ClaimType** başvurusu. |
-| Değerinin | Hayır | Talep değeri boş ise kullanılabilecek varsayılan değer. |
-| PartnerClaimType | Hayır | Talebi, ClaimType tanımında yapılandırıldığı şekilde farklı bir adla gönderir. |
+| ClaimTypeReferenceId | Yes | İlke dosyasında **Claimsschema** bölümünde zaten tanımlanmış bir **ClaimType** başvurusu. |
+| Değerinin | No | Talep değeri boş ise kullanılabilecek varsayılan değer. |
+| PartnerClaimType | No | Talebi, ClaimType tanımında yapılandırıldığı şekilde farklı bir adla gönderir. |
 
 ### <a name="subjectnaminginfo"></a>Subjectnamingınfo
 
 **Subjectnameingınfo** öğesiyle, belirteç konusunun değerini denetlersiniz:
 - **JWT belirteci** - `sub` talep. Bu, belirtecin, uygulamanın kullanıcısı gibi bilgileri onaylama konusunda bir sorumluyla ilgilidir. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi güvenli yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur. Daha fazla bilgi için bkz. [belirteç, oturum ve çoklu oturum açma yapılandırması](session-behavior.md).
-- **SAML belirteci** - `<Subject><NameID>` Konu öğesini tanımlayan öğe.
+- **SAML belirteci** - `<Subject><NameID>` Konu öğesini tanımlayan öğe. NameID biçimi değiştirilebilir.
 
 **Subjectnamingınfo** öğesi aşağıdaki özniteliği içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimType | Evet | Çıkış talebinin **Partnerclaimtype**öğesine bir başvuru. Çıkış taleplerinin bağlı olan taraf ilkesi **Outputclaim** koleksiyonunda tanımlanması gerekir. |
+| ClaimType | Yes | Çıkış talebinin **Partnerclaimtype**öğesine bir başvuru. Çıkış taleplerinin bağlı olan taraf ilkesi **Outputclaim** koleksiyonunda tanımlanması gerekir. |
+| Biçimlendir | No | SAML onay kutusunda döndürülen **NameID biçimini** ayarlamak Için SAML bağlı olan taraflar için kullanılır. |
 
 Aşağıdaki örnekte, bir OpenID Connect bağlı olan tarafın nasıl tanımlanacağı gösterilmektedir. Konu adı bilgisi şu şekilde yapılandırılır `objectId` :
 
@@ -248,4 +257,25 @@ JWT belirteci `sub` Kullanıcı ObjectID ile olan talebi içerir:
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+Aşağıdaki örnek, bir SAML bağlı olan tarafın nasıl tanımlanacağını göstermektedir. Konu adı bilgisi olarak yapılandırılır `objectId` ve NameID `format` sağlanmış olur:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

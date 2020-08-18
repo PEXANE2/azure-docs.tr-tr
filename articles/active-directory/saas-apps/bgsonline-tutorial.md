@@ -2,26 +2,21 @@
 title: 'Öğretici: BGS Online ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve BGS Online arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4fd6b29b-1b46-4fd1-9f5e-16b1c9d892cd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bccd90340fe8f8dfd5393a391899caf92dd2251f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf73b15e42afd95f6e7dd09db630957be02ea257
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158878"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Öğretici: BGS Online ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Azure AD ile BGS 'yi çevrimiçi tümleştirme, aşağıdaki avantajları sağla
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -108,15 +103,15 @@ Azure AD çoklu oturum açmayı BGS Online ile yapılandırmak için aşağıdak
 
     a. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    Üretim ortamı için bu kalıbı kullanın`https://<company name>.millwardbrown.report`
+    Üretim ortamı için bu kalıbı kullanın `https://<company name>.millwardbrown.report`
 
-    Test ortamı için bu kalıbı kullanın`https://millwardbrown.marketingtracker.nl/mt5/`
+    Test ortamı için bu kalıbı kullanın `https://millwardbrown.marketingtracker.nl/mt5/`
 
     b. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    Üretim ortamı için bu kalıbı kullanın`https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx`
+    Üretim ortamı için bu kalıbı kullanın `https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx`
 
-    Test ortamı için bu kalıbı kullanın`https://millwardbrown.marketingtracker.nl/mt5/sso/saml/AssertionConsumerService.aspx`
+    Test ortamı için bu kalıbı kullanın `https://millwardbrown.marketingtracker.nl/mt5/sso/saml/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [BGS çevrimiçi destek ekibine](mailTo:bgsdashboardteam@millwardbrown.com) başvurun.
@@ -157,12 +152,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

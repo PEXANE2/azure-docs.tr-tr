@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 234d6af25f37bf04d3240177142d5ef919e8dd2d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903485"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517923"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
 Bu hızlı başlangıçta, el ile etiketlenmiş verileri içeren özel bir modeli eğitebilmeniz için örnek etiketleme aracı ile REST API tanıyıcı formunu kullanacaksınız. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
@@ -159,18 +159,18 @@ Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları 
 
 Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 * `string`
-    * Varsayılan, `no-whitespaces` ,`alphanumeric`
+    * Varsayılan, `no-whitespaces` , `alphanumeric`
 * `number`
-    * varsayılanını`currency`
+    * varsayılanını `currency`
 * `date` 
-    * Varsayılan, `dmy` , `mdy` ,`ymd`
+    * Varsayılan, `dmy` , `mdy` , `ymd`
 * `time`
 * `integer`
 
 > [!NOTE]
 > Tarih biçimlendirme için şu kurallara bakın:
 > 
-> Aşağıdaki karakterler DMY Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örnek:
+> Aşağıdaki karakterler DMY Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020

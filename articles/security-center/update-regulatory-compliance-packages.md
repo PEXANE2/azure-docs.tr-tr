@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873333"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522615"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
 
@@ -73,6 +73,8 @@ Aşağıdaki adımlarda, desteklenen mevzuata standartlarından biriyle uyumlulu
     - **Kanada PBMM**
     
     ![Azure Güvenlik Merkezi 'nin mevzuat uyumluluk panosuna mevzuat paketleri ekleme](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. **Ekle** ' yi seçin ve belirli bir girişim için kapsam, parametre ve düzeltme gibi tüm gerekli ayrıntıları girin.
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan, mevzuat uyumluluk panosuna geri dönmek için **yasal uyumluluk** ' i seçin.
     * Yeni standart, sektör & mevzuat standartları listenizde görünür. 

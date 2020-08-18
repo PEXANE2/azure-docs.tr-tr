@@ -2,25 +2,21 @@
 title: 'Öğretici: yalnızca Visiile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ve bir arada çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d5137936-abb0-4247-aa0d-44a22034355f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d95247593734b4744dcb49163564b3db9e704bf
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 1a1e2716d3f2328ebd64bbb5b6b70036ac991b56
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88259302"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531931"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>Öğretici: Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -32,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Görünürlübir şekilde
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -95,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki, daha fazla uygulama daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name |  Kaynak özniteliği|
+    | Adı |  Kaynak özniteliği|
     | ----------- | --------- |
     | city | Kullanıcı. City |
     | lastName | User. soyadı |
