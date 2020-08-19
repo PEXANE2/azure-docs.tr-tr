@@ -2,26 +2,21 @@
 title: 'Öğretici: Genesys tarafından Purecg ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Genesys tarafından Azure Active Directory ve Purecg arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e16a46db-5de2-4681-b7e0-94c670e3e54e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0433b7287fc00da09fcf303fbcb8d74bf4e3b196
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800123"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Öğretici: Genesys tarafından Purecg ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Genesys tarafından Purec
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -51,7 +46,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 ## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>Galeriden Genesys 'e göre Purecg ekleme
 
-Genesys tarafından Azure AD 'ye göre purecı tümleştirmesini yapılandırmak için, Genesys tarafından yönetilen SaaS uygulamaları listenize, Genesys 'e göre pureci 'yi eklemeniz gerekir. Bunu yapmak için şu adımları uygulayın:
+Genesys tarafından Azure AD 'ye göre purecı tümleştirmesini yapılandırmak için, Genesys tarafından yönetilen SaaS uygulamaları listenize, Genesys 'e göre pureci 'yi eklemeniz gerekir. Bunu yapmak için şu adımları izleyin:
 
 1. Bir iş veya okul hesabı kullanarak veya kişisel bir Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
@@ -123,7 +118,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. Ayrıca, Genesys uygulamasına göre Purecı, aşağıdaki tabloda gösterildiği gibi SAML yanıtına birkaç özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gerektiğinde bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
     | E-posta | User. UserPrincipalName |
     | OrganizationName | `Your organization name` |
@@ -146,7 +141,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, Kullanıcı adını şu biçimde girin: username@companydomain.extension . Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
-   1. **Oluştur**'u seçin.
+   1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -214,7 +209,7 @@ Azure AD kullanıcılarının Genesys tarafından purecg 'de oturum açmasını 
 
     b. **E-posta** kutusuna kullanıcının e-postasını girin. Örneğin: **b. Simon \@ contoso.com**.
 
-    c. **Oluştur**'u seçin.
+    c. **Oluştur**’u seçin.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
@@ -224,7 +219,7 @@ Erişim panelinde **Genesys** kutucuğunu seçtiğinizde, için SSO 'Yu ayarlad�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure AD 'de uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

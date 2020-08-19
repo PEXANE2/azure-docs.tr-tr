@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527005"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551716"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Öğretici: Azure’da Linux sanal makineleri için dosyaları yedekleme ve geri yükleme
 
@@ -42,10 +42,10 @@ Veri aktarımı tamamlandığında, anlık görüntü kaldırılır ve bir kurta
 ## <a name="create-a-backup"></a>Yedekleme oluşturma
 Bir Kurtarma Hizmetleri Kasasına zamanlanmış günlük yedekleme oluşturun:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Sol taraftaki menüden **Sanal makineler**'i seçin. 
 3. Listeden yedekleyeceğiniz VM'yi seçin.
-4. VM dikey penceresinde, **Ayarlar** bölümünden **Yedekleme**’ye tıklayın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.
+4. VM dikey penceresinde, **işlemler** bölümünde, **Yedekle**' ye tıklayın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.
 5. **Kurtarma Hizmetleri kasası**’nda **Yeni oluştur**’a tıklayıp yeni kasa için ad belirtin. Sanal makineyle aynı Kaynak Grubunda ve konumda yeni bir kasa oluşturulur.
 6. **Yedekleme ilkesi**’ne tıklayın. Bu örnek için varsayılanları tutun ve **Tamam**’a tıklayın.
 7. **Yedeklemeyi etkinleştir** dikey penceresinde **Yedeklemeyi Etkinleştir** seçeneğine tıklayın. Bu işlem, varsayılan zamanlamaya göre günlük bir yedekleme oluşturur.

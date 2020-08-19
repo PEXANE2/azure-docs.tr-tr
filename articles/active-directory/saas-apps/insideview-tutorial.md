@@ -2,25 +2,21 @@
 title: 'Öğretici: InsideView ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Bu öğreticide, Azure Active Directory ile dışarıdan görüntüleme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c489a7ab-6b1f-4efb-8a66-8bc13bca78c3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 4278f00b1026fe4d1b95634540d6d035d43ca5ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202460"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Öğretici: InsideView ile tümleştirme Azure Active Directory
 
@@ -33,7 +29,7 @@ Bu tümleştirme bu avantajları sağlar:
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -56,7 +52,7 @@ InsideView 'ın Azure AD 'ye tümleştirmesini ayarlamak için Galeriden yöneti
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin:
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin:
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -143,13 +139,13 @@ Azure AD çoklu oturum açma 'yı InsideView ile yapılandırmak için şu adım
 
     1. Azure portal indirdiğiniz ham sertifikayı açın. Sertifikanın içeriğini panoya kopyalayın ve ardından içeriği **STS sertifikası** kutusuna yapıştırın.
 
-    1. **CRM Kullanıcı kimliği eşleme** kutusuna girin **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**.
+    1. **CRM Kullanıcı kimliği eşleme** kutusuna girin **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    1. **CRM e-posta eşleme** kutusuna girin **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**.
+    1. **CRM e-posta eşleme** kutusuna girin **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    1. **CRM adı eşleme** kutusuna yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`**.
+    1. **CRM adı eşleme** kutusuna yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    1. **CRM soyadı eşleme** kutusuna girin **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`**.  
+    1. **CRM soyadı eşleme** kutusuna girin **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .  
 
     1. **Kaydet**’i seçin.
 
@@ -171,7 +167,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@\<\< yourcompanydomain> yazın. Uzantı>**. (Örneğin, BrittaSimon@contoso.com.)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

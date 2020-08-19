@@ -2,25 +2,21 @@
 title: 'Öğretici: Hrçalışmalar çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Hrçalışmalerde çoklu oturum açma arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c4c5d434-3f8a-411e-83a5-c3d5276ddc0a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b20ce5f754333aec78513e32901b0608f8bee3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75638782"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549171"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Öğretici: Hrçalışmalar çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -102,9 +98,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -136,7 +132,7 @@ Bu bölümde, Hruse çoklu oturum açma 'ya erişim vererek Azure çoklu oturum 
 
 1. Hrçalışmaları çoklu oturum açmayı el ile kurmak istiyorsanız, yeni bir Web tarayıcısı penceresi açın ve Hrçalışmaçoklu oturum açma şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. Menü çubuğunun sol tarafındaki **yönetici** > **temelleri** > **güvenliğine** > **Çoklu oturum açma** ' ya tıklayın ve aşağıdaki adımları uygulayın:
+1. **Administrator**  >  **Basics**  >  **Security**  >  Menü çubuğunun sol tarafındaki yönetici temelleri güvenliğine**Çoklu oturum açma** ' ya tıklayın ve aşağıdaki adımları uygulayın:
 
     ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
@@ -158,7 +154,7 @@ Azure AD kullanıcılarını etkinleştirmek için, hr, çoklu oturum açma 'da 
 
 1. Hrçalışmalerde yönetici olarak çoklu oturum açma oturumu açın.
 
-1. **Yönetici** > **Persons**kişileri > menü çubuğunun sol tarafından**Yeni kişiyi** **kişiler** > ' e tıklayın.
+1. **Yönetici**  >  **kişileri**  >  **Persons**  >  menü çubuğunun sol tarafından**Yeni kişiyi** kişiler ' e tıklayın.
 
      ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
@@ -178,9 +174,9 @@ Erişim panelinde Hrçalışmaçoklu oturum açma kutucuğuna tıkladığınızd
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

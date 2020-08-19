@@ -2,25 +2,21 @@
 title: 'Öğretici: pega sistemleriyle tümleştirme Azure Active Directory | Microsoft Docs'
 description: Bu öğreticide, Azure Active Directory ve pega sistemleri arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31acf80f-1f4b-41f1-956f-a9fbae77ee69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026813"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Öğretici: pega sistemleriyle tümleştirme Azure Active Directory
 
@@ -57,7 +53,7 @@ Pega sistemlerinin Azure AD 'ye tümleştirmesini ayarlamak için galerideki peg
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin.
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -158,7 +154,7 @@ Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak içi
 
     1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini seçin.
 
-    1. **Tamam ' ı**seçin.
+    1. **Tamam**'ı seçin.
 
     1. **Kaydet**’i seçin.
 
@@ -180,7 +176,7 @@ Azure AD çoklu oturum açmayı pega sistemleriyle birlikte yapılandırmak içi
 
 1. **Pega sistemleri** tarafında çoklu oturum açmayı yapılandırmak için, başka bir tarayıcı penceresinde yönetici hesabıyla pega portalında oturum açın.
 
-2.  > **SysAdmin**Sysadmin > **kimlik doğrulama hizmeti** **Oluştur**' u seçin:
+2. **Create**  >  **Sysadmin**  >  **kimlik doğrulama hizmeti**oluştur ' u seçin:
 
     ![Kimlik doğrulama hizmeti seçin](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -234,7 +230,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     a. **Ad** kutusuna **Brittasıon**yazın.
   
-    b. **Kullanıcı adı** kutusuna **brittasimon@\<\< yourcompanydomain> yazın. Uzantı>**. (Örneğin, BrittaSimon@contoso.com.)
+    b. **Kullanıcı adı** kutusuna **brittasimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
 
     c. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

@@ -2,25 +2,21 @@
 title: 'Öğretici: Trend mikro Web Güvenliği (TMWS) ile Azure AD SSO tümleştirmesi'
 description: Azure Active Directory ve trend mikro Web Güvenliği (TMWS) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 827285d3-8e65-43cd-8453-baeda32ef174
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d09af492439beb931b4ab1cd08ccb9e1d82fc3f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583156"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Öğretici: Trend mikro Web Güvenliği (TMWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -119,8 +115,8 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Azure portal sol bölmesinde **Azure Active Directory**' ı seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** kutusuna girin `B.Simon`.  
-   1. **Kullanıcı adı** kutusuna ***kullanıcıadı*@* şirketetkialanı yazın *.* Uzantı***. Örneğin, `B.Simon@contoso.com`.
+   1. **Ad** kutusuna girin `B.Simon` .  
+   1. **Kullanıcı adı** kutusuna ***kullanıcıadı *@* şirketetkialanı yazın *.* Uzantı***. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
 
@@ -171,7 +167,7 @@ Bu bölümde, TMWS 'ye erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. **Izin verme** alanı ' nda, ** *yönetici hesabınız* için yönetici onayı ver ' i (varsayılan dizin)** seçin ve ardından **Evet**' i seçin. İstenen izinler için yönetici onayı verildiğini doğrulamak üzere bir ileti görüntülenir.
 
-1. **Genel Bakış**’ı seçin. 
+1. **Genel bakış**'ı seçin. 
 
 1. Sağ bölmede gördüğünüz **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliğini** kaydedin. Daha sonra bu bilgileri TMWS 'ye girersiniz. Ayrıca, sağ bölmede gördüğünüz etki alanı adını **yönetmek ve kaydetmek > Azure Active Directory** altında **özel etki alanı adları** ' nı da seçebilirsiniz.
 
@@ -179,7 +175,7 @@ Bu bölümde, TMWS 'ye erişim vererek Azure çoklu oturum açma özelliğini ku
 
 Uygulama tarafında TMWS SSO 'yu yapılandırmak için bu adımları izleyin.
 
-1. Tmws yönetim konsolunda oturum açın ve **Yönetim** > **kullanıcıları & kimlik doğrulaması** > **Dizin Hizmetleri**' ne gidin.
+1. Tmws yönetim konsolunda oturum açın ve **Yönetim**  >  **kullanıcıları & kimlik doğrulaması**  >  **Dizin Hizmetleri**' ne gidin.
 
 1. Ekranın üst bölümünde **burayı** seçin.
 
@@ -220,7 +216,7 @@ Uygulama tarafında TMWS SSO 'yu yapılandırmak için bu adımları izleyin.
 Azure AD hizmetini yapılandırdıktan ve Kullanıcı kimlik doğrulama yöntemi olarak Azure AD 'yi belirttikten sonra, kurulumunuzu doğrulamak için TMWS ara sunucusunda oturum açabilirsiniz. Azure AD oturum açma Hesabınızı doğruladıktan sonra, internet 'i ziyaret edebilirsiniz.
 
 > [!NOTE]
-> Tmws, Azure AD portalındaki çoklu oturum açmayı test etmeyi desteklemez, **genel bakış** > **Çoklu oturum açma** > altında yeni kurumsal uygulamanızın**SAML** > **testinde** çoklu oturum açma ayarı yapın.
+> Tmws, Azure AD portalındaki çoklu oturum açmayı test etmeyi desteklemez, **genel bakış**  >  **Çoklu oturum açma**altında  >  Yeni kurumsal uygulamanızın**SAML testinde çoklu oturum açma ayarı**yapın  >  **Test** .
 
 1. Tüm tanımlama bilgilerinin tarayıcısını temizleyin ve ardından tarayıcıyı yeniden başlatın. 
 
@@ -228,7 +224,7 @@ Azure AD hizmetini yapılandırdıktan ve Kullanıcı kimlik doğrulama yöntemi
 
 1. Herhangi bir internet web sitesini ziyaret edin. TMWS, sizi TMWS captive portalına yönlendirdirecektir.
 
-1. Active Directory bir hesap (Biçim: *etki alanı*\\*sAMAccountName* veya *sAMAccountName*@*etki alanı*), e-posta adresi veya UPN belirtin ve ardından **oturum aç**' ı seçin. TMWS sizi Azure AD oturum açma penceresine gönderir.
+1. Active Directory bir hesap (Biçim: *etki alanı* \\ *sAMAccountName* veya *sAMAccountName* @ *etki alanı*), e-posta adresi veya UPN belirtin ve ardından **oturum aç**' ı seçin. TMWS sizi Azure AD oturum açma penceresine gönderir.
 
 1. Azure AD oturum açma penceresinde Azure AD hesabınızın kimlik bilgilerini girin. Şimdi TMWS 'de oturum açmanız gerekir.
 
@@ -236,7 +232,7 @@ Azure AD hizmetini yapılandırdıktan ve Kullanıcı kimlik doğrulama yöntemi
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

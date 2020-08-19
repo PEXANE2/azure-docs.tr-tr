@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de depolama, veri şifreleme ve ye
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562847"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551804"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde depolama ve yedeklemeler için en iyi uygulamalar
 
@@ -35,7 +35,7 @@ Aşağıdaki tabloda kullanılabilir depolama türleri ve bunların özellikleri
 | Kullanım örneği | Birim eklentisi | Bir kez oku/yaz | Salt okunurdur | Okuma/yazma çok | Windows Server kapsayıcısı desteği |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Paylaşılan yapılandırma       | Azure Dosyaları   | Yes | Yes | Yes | Yes |
-| Yapılandırılmış uygulama verileri        | Azure Diskleri   | Evet | Hayır  | Hayır  | Evet |
+| Yapılandırılmış uygulama verileri        | Azure Diskleri   | Yes | Hayır  | Hayır  | Yes |
 | Yapılandırılmamış veriler, dosya sistemi işlemleri | [Blobsigortası][blobfuse] | Yes | Yes | Yes | Hayır |
 
 AKS 'teki birimler için belirtilen iki birincil depolama türü, Azure diskleri veya Azure dosyaları tarafından desteklenir. Güvenliği artırmak için her iki depolama türü de, bekleyen verileri şifreleyen varsayılan olarak Azure Depolama Hizmeti Şifrelemesi (SSE) kullanır. Diskler Şu anda AKS düğüm düzeyinde Azure disk şifrelemesi kullanılarak şifrelenemez.
@@ -88,7 +88,7 @@ Depolama sınıfı seçenekleri hakkında daha fazla bilgi için bkz. [depolama 
 
 ## <a name="secure-and-back-up-your-data"></a>Verilerinizin güvenliğini sağlama ve yedekleme
 
-**En iyi Yöntem Kılavuzu** -depolama türü için Velero veya Azure Site Recovery gibi uygun bir aracı kullanarak verilerinizi yedekleyin. Bu yedeklemelerin bütünlüğünü ve güvenliğini doğrulayın.
+**En iyi Yöntem Kılavuzu** -depolama türü için Velero veya Azure Backup gibi uygun bir aracı kullanarak verilerinizi yedekleyin. Bu yedeklemelerin bütünlüğünü ve güvenliğini doğrulayın.
 
 Uygulamalarınız disklerde veya dosyalarda kalıcı olarak verileri depolayıp tükettiğinizde, bu verilerin düzenli yedeklemelerini veya anlık görüntülerini almanız gerekir. Azure diskleri, yerleşik anlık görüntü teknolojilerini kullanabilir. Anlık görüntü işlemini gerçekleştirmeden önce, uygulamanızın diske yazma işlemlerini boşaltmaya yönelik arama yapmanız gerekebilir. [Velero][velero] , ek küme kaynakları ve yapılandırmalarının yanı sıra kalıcı birimleri yedekleyebilir. [Uygulamalarınızdan durum kaldıramazsa][remove-state], verileri kalıcı birimlerden yedekleyin ve veri bütünlüğünü ve gerekli işlemleri doğrulamak için geri yükleme işlemlerini düzenli olarak test edin.
 

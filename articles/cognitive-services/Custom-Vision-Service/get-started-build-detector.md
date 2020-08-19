@@ -10,20 +10,20 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834465"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549556"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme bir nesne algılayıcısı oluşturma
 
 Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir nesne algılayıcısı oluşturmayı öğreneceksiniz. Bir algılayıcı modeli oluşturduğunuzda, nesne algılama için Özel Görüntü İşleme hizmetini kullanabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Algılayıcı modelinize eğiten bir görüntü kümesi. GitHub üzerinde [örnek görüntüler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) kümesini kullanabilirsiniz. Ya da aşağıdaki ipuçlarını kullanarak kendi görüntülerinizi seçebilirsiniz.
 

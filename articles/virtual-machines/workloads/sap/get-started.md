@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/14/2020
+ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1152eb11d3452743daa5bcb39fb593dddf94452
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 5cee26f9c1674030903e8be6dac80f6615317a67
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245936"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551676"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -88,6 +88,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 08/17/2020: SAP NetWeaver sistemlerini Şirket içinden Azure 'a taşımak için Azure Site Recovery kullanma hakkında bilgi ekleyin. [Azure sanal makineler planlama ve uygulama için, SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: [IBM DB2 Azure sanal makineleri için disk yapılandırma önerisi, SAP Için Azure sanal MAKINELER DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - 08/11/2020: RHEL 7,6, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) , ı türünde HLI birimler için kullanılabilir işletim sistemi olarak ekleniyor
 - 08/10/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) SAP HANA depolama yapılandırması ve [Azure 'da SAP iş yükleri için bazı güncelleştirmeler yapma: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

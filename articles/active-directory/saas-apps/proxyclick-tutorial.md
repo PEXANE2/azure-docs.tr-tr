@@ -2,25 +2,21 @@
 title: 'Öğretici: Proxyclick ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Bu öğreticide, Azure Active Directory ve Proxyclick arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 6a4d1c8a390ebd1194d14c057bb32d3111bf39be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3974c5e2a46ede6ef3f92d74759f58ed55b8497
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093504"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Öğretici: Proxyclick ile tümleştirme Azure Active Directory
 
@@ -33,7 +29,7 @@ Bu tümleştirme bu avantajları sağlar:
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -56,7 +52,7 @@ Proxyclick 'in Azure AD 'ye tümleştirmesini ayarlamak için galerideki yöneti
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin:
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin:
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -185,7 +181,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@\<\< yourcompanydomain> yazın. Uzantı>**. (Örneğin, BrittaSimon@contoso.com.)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 
@@ -237,7 +233,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
     ![İş arkadaşı bölümü ekleme](./media/proxyclick-tutorial/user3.png)
 
-    1. **E-posta** kutusuna kullanıcının e-posta adresini girin. Bu durumda, **brittasıon\@contoso.com**.
+    1. **E-posta** kutusuna kullanıcının e-posta adresini girin. Bu durumda, **brittasıon \@ contoso.com**.
 
     1. **Ilk ad** kutusuna kullanıcının adını girin. Bu durumda, **Britta**.
 

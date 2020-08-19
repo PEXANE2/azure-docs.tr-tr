@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için belirsizlik yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını belirsizlik 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 34718201-4f0e-4260-9af0-b3b70a1e8265
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b552b175074262d961e455a2b46727d0fa656b45
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 08fe2cd87200e1a22f36ab01b58c6cf82fd1f007
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920492"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550833"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için belirsizlik yapılandırma
 
@@ -37,7 +33,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [belir
 > * Kullanıcı özniteliklerinin Azure AD ve belirsizlik arasında eşitlenmiş olmasını sağlama
 > * Belirsizlik için [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/fuze-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -84,7 +80,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Azure AD 'de belirsizlik için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

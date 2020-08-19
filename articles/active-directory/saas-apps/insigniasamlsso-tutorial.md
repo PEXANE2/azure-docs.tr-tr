@@ -2,25 +2,21 @@
 title: "Öğretici: Insignia SAML SSO 'SU ile Azure Active Directory tümleştirme | Microsoft Docs"
 description: Azure Active Directory ile Insignia SAML SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 828c981c-c3dd-4eb2-8699-0f732baa43f6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 436b3d7005750c4f80e7bdd50449e36e11cee882
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9d3463e04f06e02f8d27e633a10c22069ad9b57f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209619"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Öğretici: Insignia SAML SSO ile tümleştirme Azure Active Directory
 

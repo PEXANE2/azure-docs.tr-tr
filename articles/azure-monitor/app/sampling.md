@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460372"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549574"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -34,10 +34,10 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | ASP.NET Çekirdeği | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Node.JS | Hayır | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
-| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -187,6 +187,8 @@ Yukarıdaki kod, uyarlamalı örneklemeyi devre dışı bırakacak. Daha fazla �
 > Örnekleme yapılandırmak için bu yöntemi kullanırsanız, lütfen `aiOptions.EnableAdaptiveSampling` çağrılırken özelliğini olarak ayarladığınızdan emin olun `false` `AddApplicationInsightsTelemetry()` .
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility
+
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
     var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -448,7 +450,7 @@ Diğer örnekleme türleri gibi, algoritma ilgili telemetri öğelerini korur. �
 
 Örnekleme tarafından atılan veri noktaları, [sürekli dışarı aktarma](./export-telemetry.md)gibi Application Insights hiçbir özellik için kullanılamaz.
 
-Uyarlamalı veya sabit oran örnekleme işlemi sırasında giriş örnekleme işlemi çalışmıyor. ASP.NET SDK veya ASP.NET Core SDK kullanılırken veya [Azure App Service](azure-web-apps.md) ya da Durum İzleyicisi kullanılarak Application Insights etkinleştirildiğinde Uyarlamalı örnekleme varsayılan olarak etkindir. Telemetri Application Insights hizmet uç noktası tarafından alındığında, telemetri incelenir ve örnekleme hızının %100 ' den (Telemetriyi örneklendirmekte olduğunu gösterir), ayarladığınız Alım örnekleme hızının yok sayılır.
+Uyarlamalı veya sabit oran örnekleme işlemi sırasında giriş örnekleme işlemi çalışmıyor. ASP.NET SDK veya ASP.NET Core SDK kullanılırken veya [Azure App Service ](azure-web-apps.md) ya da Durum İzleyicisi kullanılarak Application Insights etkinleştirildiğinde Uyarlamalı örnekleme varsayılan olarak etkindir. Telemetri Application Insights hizmet uç noktası tarafından alındığında, telemetri incelenir ve örnekleme hızının %100 ' den (Telemetriyi örneklendirmekte olduğunu gösterir), ayarladığınız Alım örnekleme hızının yok sayılır.
 
 > [!WARNING]
 > Portal kutucuğunda gösterilen değer, alma örneklemesi için ayarladığınız değeri gösterir. Herhangi bir SDK örnekleme (Uyarlamalı veya sabit oran örnekleme) işleminde varsa, gerçek örnekleme hızını temsil etmez.

@@ -2,25 +2,21 @@
 title: 'Öğretici: MyWorkDrive ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile MyWorkDrive arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa0fe40ec28aea7f82ee0e635b3c42140a472816
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478873"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552450"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Öğretici: MyWorkDrive 'ı Azure Active Directory ile tümleştirme
 
@@ -120,7 +116,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Azure Uygulama Federasyon meta verileri URL 'si** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL** 'sinin değerini yapıştırın.
 
-    d. **Kaydet** 'e tıklayın
+    d. **Kaydet**’e tıklayın
 
     > [!NOTE]
     > Daha fazla bilgi için, [Myworkdrive Azure AD desteği makalesini](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)inceleyin.
@@ -133,9 +129,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

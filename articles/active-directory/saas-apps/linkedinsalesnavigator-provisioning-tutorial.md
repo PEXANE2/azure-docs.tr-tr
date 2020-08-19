@@ -2,25 +2,20 @@
 title: 'Öğretici: Kullanıcı hazırlama-LinkedIn Sales Navigator, Azure AD'
 description: LinkedIn Sales Navigator 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve serbest bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869737"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549713"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için LinkedIn Sales Navigator 'ı yapılandırma
 
@@ -87,7 +82,7 @@ Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hes
 
 6. Sayfadan çıkmadan önce erişim belirtecinizi panonuza veya bilgisayarınıza kaydedin.
 
-7. Ardından [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
+7. Ardından [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory > Enterprise Apps > tüm uygulamalar**  bölümüne gidin.
 
 8. Çoklu oturum açma için LinkedIn Sales Navigator 'ı zaten yapılandırdıysanız, arama alanını kullanarak LinkedIn Sales Navigator örneğinizi arayın. Aksi takdirde, uygulama galerisinde **LinkedIn Sales Navigator** **Ekle** ve ara ' yı seçin. Arama sonuçlarından LinkedIn Sales Navigator ' ı seçin ve uygulama listenize ekleyin.
 

@@ -2,26 +2,21 @@
 title: 'Öğretici: Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve bandı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 82367f62-173e-4e14-bf84-d8f611706086
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026967"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Öğretici: bandı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -107,9 +102,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -141,11 +136,11 @@ Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma
 
 3. Bandı el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak, bir yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişimi yönetimi** > **kimlik doğrulama ayarları**' na tıklayın.
+4. Sayfanın sağ üst kısmında, **sürekli güvenlik**  >  **erişimi yönetimi**  >  **kimlik doğrulama ayarları**' na tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure01.png)
 
-5. **SSO sağlayıcıları** bölümünde, **+ SSO sağlayıcıları** > Ekle**SAML**' ye tıklayın.
+5. **SSO sağlayıcıları** bölümünde, **+ SSO sağlayıcıları Ekle**  >  **SAML**' ye tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure03.png)
 
@@ -169,7 +164,7 @@ Azure AD kullanıcılarının, ana oturum açmasını sağlamak için, bu kullan
 
 1. Yönetici olarak oturum açın.
 
-1. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişimi yönetimi** > **kullanıcıları**' na tıklayın.
+1. Sayfanın sağ üst kısmında, **sürekli güvenlik**  >  **erişimi yönetimi**  >  **kullanıcıları**' na tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure04.png)
 
@@ -181,7 +176,7 @@ Azure AD kullanıcılarının, ana oturum açmasını sağlamak için, bu kullan
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure06.png)
 
-    a. **E-posta adresi (es)** metin kutusuna kullanıcının e-postasını girin `B.simon@contoso.com`.
+    a. **E-posta adresi (es)** metin kutusuna kullanıcının e-postasını girin `B.simon@contoso.com` .
 
     b. **Kullanıcı gruplarınızı**seçin.
 
@@ -195,9 +190,9 @@ Erişim panelinde bir ara Kutucuğa tıkladığınızda, SSO 'yu ayarladığın�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

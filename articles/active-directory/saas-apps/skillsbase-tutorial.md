@@ -2,25 +2,21 @@
 title: 'Öğretici: beceriler tabanıyla Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve beceriler tabanı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 237d90c4-8243-4f80-a305-b5ad9204159e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60f8e4408a3a7d4f05bc820f0c0a825106b47009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017159"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Öğretici: beceriler tabanıyla Azure Active Directory tümleştirme
 
@@ -34,7 +30,7 @@ Beceri tabanını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini beceriler tabanıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 

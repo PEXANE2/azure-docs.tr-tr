@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499186"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551850"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -71,7 +71,9 @@ Coğrafi çoğaltma ile Azure Active Directory kullanırken, hem birincil hem de
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Azure AD yöneticisi sağlama (SQL yönetilen örneği)
 
 > [!IMPORTANT]
-> Yalnızca bir Azure SQL yönetilen örneği sağlıyorsanız bu adımları izleyin. Bu işlem, yalnızca genel/şirket yöneticisi veya Azure AD 'de ayrıcalıklı rol yöneticisi tarafından yürütülebilir. Aşağıdaki adımlarda, dizinde farklı ayrıcalıklara sahip kullanıcılar için izin verme işlemi açıklanır.
+> Yalnızca bir Azure SQL yönetilen örneği sağlıyorsanız bu adımları izleyin. Bu işlem, yalnızca genel/şirket yöneticisi veya Azure AD 'de ayrıcalıklı rol yöneticisi tarafından yürütülebilir.
+>
+> **Genel önizlemede**, **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen örnek kimliğini bu grubun bir üyesi olarak ekleyebilir, bu da SQL yönetilen örneği için bir Azure AD yöneticisi sağlamanıza olanak tanır. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
 SQL yönetilen örneğinizin, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşturma aracılığıyla kullanıcıların kimlik doğrulaması gibi görevleri başarılı bir şekilde gerçekleştirmek için Azure AD 'yi okuma izinlerine ihtiyacı vardır. Bunun çalışması için, Azure AD 'yi okumak üzere SQL yönetilen örneği iznini vermeniz gerekir. Azure portal veya PowerShell 'i kullanarak bunu yapabilirsiniz.
 
@@ -188,7 +190,7 @@ Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutlar�
 
 SQL yönetilen örneğiniz için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler aşağıdaki tabloda listelenmiştir:
 
-| Cmdlet adı | Description |
+| Cmdlet adı | Açıklama |
 | --- | --- |
 | [Set-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikte SQL yönetilen örneği için bir Azure AD yöneticisi sağlar. (Geçerli abonelikte olmalıdır)|
 | [Remove-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikteki SQL yönetilen örneği için bir Azure AD yöneticisini kaldırır. |
@@ -277,7 +279,7 @@ PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çal
 
 SQL veritabanı ve Azure SYNAPSE için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler:
 
-| Cmdlet adı | Description |
+| Cmdlet adı | Açıklama |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır.|
@@ -528,7 +530,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="troubleshoot-azure-ad-authentication"></a>Azure AD kimlik doğrulaması sorunlarını giderme
 
-Azure AD kimlik doğrulamasıyla ilgili sorunları gidermeye yönelik yönergeler aşağıdaki blogda bulunabilir:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+Azure AD kimlik doğrulamasıyla ilgili sorunları gidermeye yönelik yönergeler aşağıdaki blogda bulunabilir: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

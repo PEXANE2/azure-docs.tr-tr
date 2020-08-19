@@ -2,26 +2,21 @@
 title: 'Öğretici: HubSpot ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile HubSpot arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944443"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Öğretici: HubSpot ile tümleştirme Azure Active Directory
 
@@ -61,7 +56,7 @@ Hubleke 'yi Azure AD ile bütünleştirmek için, yönetilen SaaS uygulamaları 
 
     ![Azure Active Directory seçeneği](common/select-azuread.png)
 
-1. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -106,9 +101,9 @@ Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapıland
 
 1. **Temel SAML yapılandırması** bölmesinde, *IDP tarafından başlatılan modu*yapılandırmak için aşağıdaki adımları izleyin:
 
-    1. **Tanımlayıcı** kutusuna şu düzene sahıp bir URL girin: https:\//api.HubSpot.com/login-api/v1/SAML/Login?portalId =\<Customer ID.\>
+    1. **Tanımlayıcı** kutusuna şu düzene sahıp bir URL girin: https: \/ /api.HubSpot.com/login-api/v1/SAML/Login?portalId = \<CUSTOMER ID\> .
 
-    1. **Yanıt URL 'si** kutusuna şu düzene sahıp bir URL girin: https:\//api.HubSpot.com/login-api/v1/SAML/ACS?portalId =\<Customer ID.\>
+    1. **Yanıt URL 'si** kutusuna şu düzene sahıp bir URL girin: https: \/ /api.HubSpot.com/login-api/v1/SAML/ACS?portalId = \<CUSTOMER ID\> .
 
     ![HubSpot etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -119,7 +114,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapıland
 
     1. **Ek URL 'Ler ayarla**' yı seçin.
 
-    1. **Oturum açma URL 'si** kutusuna **https:\//App.HubSpot.com/login**girin.
+    1. **Oturum açma URL 'si** kutusuna **https: \/ /app.HubSpot.com/login**girin.
 
     ![Ek URL ayarla seçeneği](common/metadata-upload-additional-signon.png)
 
@@ -171,7 +166,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapıland
 
 Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal,**Kullanıcılar** >  **Azure Active Directory** > **tüm kullanıcılar**' ı seçin.
+1. Azure Portal, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
 
     ![Kullanıcılar ve tüm kullanıcılar seçenekleri](common/users.png)
 
@@ -183,7 +178,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna, **Şirket içi etki alanı> brittasıon\@\<yazın.\< uzantı\>**. Örneğin, **brittasıon\@contoso.com**.
+    1. **Kullanıcı adı** kutusuna **brittasıon yazın \@ \<your-company-domain> . \<extension\> ** Örneğin, **brittasıon \@ contoso.com**.
 
     1. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
 
@@ -195,7 +190,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
 Bu bölümde, Azure çoklu oturum açma 'yı kullanabilmesi için, Gsıtta, Gleke 'e erişim izni verirsiniz.
 
-1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar** > **HubSpot**' ı seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **HubSpot**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -207,7 +202,7 @@ Bu bölümde, Azure çoklu oturum açma 'yı kullanabilmesi için, Gsıtta, Glek
 
     ![Kullanıcılar ve gruplar seçeneği](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. Sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
@@ -237,7 +232,7 @@ Hubın içinde bir kullanıcı hesabı sağlamak için:
 
     ![HubSpot 'da kullanıcı oluştur seçeneği](./media/hubspot-tutorial/user2.png)
 
-1. **E-posta addess 'Leri Ekle** kutusunda, kullanıcının e-posta adresini brittasıon\@contoso.com biçiminde girin ve ardından **İleri**' yi seçin.
+1. **E-posta addess 'Leri Ekle** kutusunda, kullanıcının e-posta adresini brittasıon contoso.com biçiminde girin \@ ve ardından **İleri**' yi seçin.
 
     ![Hubın kullanıcıları Oluştur bölümünde e-posta adresi ekle (es) kutusu](./media/hubspot-tutorial/user3.png)
 

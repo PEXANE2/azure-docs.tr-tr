@@ -2,25 +2,21 @@
 title: 'Öğretici: ForeSee CX Suite ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve ForeSee CX Suite arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fb0ed4a48eaef2168791abbaf94fb8991fa14132
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67550401"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Öğretici: ForeSee CX Suite ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ ForeSee CX paketini Azure AD ile tümleştirme, aşağıdaki avantajları sağla
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -119,7 +115,7 @@ Azure AD çoklu oturum açmayı ForeSee CX Suite ile yapılandırmak için aşa�
 
     a. **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://cxsuite.foresee.com/`
 
-    b. **Tanımlayıcı** metin kutusuna şu stili kullanarak bir URL yazın: https:\//www.okta.com/SAML2/Service-Provider/\<UniqueId>
+    b. **Tanımlayıcı** metin kutusuna şu stili kullanarak bir URL yazın: https: \/ /www.okta.com/SAML2/Service-Provider/\<UniqueID>
 
     > [!Note]
     > **Tanımlayıcı** değeri otomatik olarak alamazsanız, lütfen değeri yukarıdaki düzene göre el ile girin. Tanımlayıcı değeri gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için, [bkz. CX Suite istemci desteği ekibine](mailto:support@foresee.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -160,11 +156,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

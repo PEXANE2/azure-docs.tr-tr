@@ -2,25 +2,21 @@
 title: 'Öğretici: getAbstract ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve getAbstract arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a7de0dfadd7af4f5baca30a037651b4201278cba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902227"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Öğretici: getAbstract ile tümleştirme Azure Active Directory
 
@@ -34,7 +30,7 @@ GetAbstract 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini getAbstract ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -113,15 +109,15 @@ Azure AD çoklu oturum açmayı getAbstract ile yapılandırmak için aşağıda
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:
 
-    Aşama/pre_production için:`https://int.getabstract.com`
+    Aşama/pre_production için: `https://int.getabstract.com`
 
-    Üretim için:`https://www.getabstract.com`
+    Üretim için: `https://www.getabstract.com`
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
     
-    Aşama/pre_production için:`https://int.getabstract.com/ACS.do`
+    Aşama/pre_production için: `https://int.getabstract.com/ACS.do`
     
-    Üretim için:`https://www.getabstract.com/ACS.do`
+    Üretim için: `https://www.getabstract.com/ACS.do`
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -129,9 +125,9 @@ Azure AD çoklu oturum açmayı getAbstract ile yapılandırmak için aşağıda
     
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    Aşama/pre_production için:`https://int.getabstract.com/portal/<org_username>`
+    Aşama/pre_production için: `https://int.getabstract.com/portal/<org_username>`
     
-    Üretim için:`https://www.getabstract.com/portal/<org_username>`
+    Üretim için: `https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
     > Bu değer gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [getAbstract istemci destek ekibine](https://www.getabstract.com/en/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

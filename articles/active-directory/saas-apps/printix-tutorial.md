@@ -2,25 +2,20 @@
 title: 'Öğretici: Printix ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Printix arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 4aea7320-b2d5-49e0-9b63-aeaff0f6fe66
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "62111466"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Öğretici: Printix ile tümleştirme Azure Active Directory
 
@@ -34,7 +29,7 @@ Printix 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Printix ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -184,7 +179,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** ' i seçin ve **parola**değerini yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
  
 ### <a name="creating-a-printix-test-user"></a>Bir Printix test kullanıcısı oluşturma
 

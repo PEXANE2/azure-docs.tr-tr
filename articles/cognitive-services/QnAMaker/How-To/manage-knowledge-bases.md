@@ -3,12 +3,12 @@ title: Bilgi temellerini yönetme-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, Bilgi Bankası ayarları ve içeriğine erişim sağlayarak bilgi tabanlarınızı yönetmenizi sağlar.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756808"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551787"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Bilgi Bankası oluşturma ve ayarları yönetme
 
@@ -17,7 +17,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
-> * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+> * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/cognitive-services/).
 > * Azure portal oluşturulan [soru-cevap oluşturma kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) . Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
 
 ## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
@@ -36,7 +36,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
 
    ![Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. **Adım 3**' te bilgi tabanınızı `My Sample QnA KB`adlandırın.
+1. **Adım 3**' te bilgi tabanınızı adlandırın `My Sample QnA KB` .
 
 1. **4. adımda**ayarları aşağıdaki tabloyla yapılandırın:
 
@@ -45,7 +45,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Varsayılan yanıt metni**| `Quickstart - default answer not found.`|
     |**+ URL Ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-sohbet**|**Profesyonel** seçin|
+    |**Günlük konuşma**|**Profesyonel** seçin|
 
 1. **5. adımda**, **KB 'nizi oluştur**' u seçin.
 
@@ -63,7 +63,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
 
 1. Üzerinde düzenleme yapmak için belirli bir Bilgi Bankası seçin.
 
-1.  **Ayarlar**' ı seçin. Aşağıdaki liste değiştirebileceğiniz alanları içerir.
+1.  **Ayarlar**'ı seçin. Aşağıdaki liste değiştirebileceğiniz alanları içerir.
 
        |Hedef|Eylem|
        |--|--|
@@ -71,8 +71,8 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
        |URL 'YI Sil|Sil simgesini seçerek çöp kutusu ' nu seçerek mevcut URL 'Leri silebilirsiniz.|
        |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
        |Dosya ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
-    |İçeri Aktarma|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
-    |Güncelleştirme|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Ayrıca, gerekirse yönetim katmanını Azure portal de güncelleştirebilirsiniz.
+    |İçeri Aktar|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
+    |Güncelleştir|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Ayrıca, gerekirse yönetim katmanını Azure portal de güncelleştirebilirsiniz.
 
   1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.
 

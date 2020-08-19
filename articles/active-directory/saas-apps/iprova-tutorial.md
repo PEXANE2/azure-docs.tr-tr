@@ -2,25 +2,21 @@
 title: 'Öğretici: iProva ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve iProva arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7092ea68f2b7f35e372013a94108e43a83c8777
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 187ec5c42c733837689de95c8111b557519f8b7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608664"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552852"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Öğretici: iProva ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +28,7 @@ Bu öğreticide, iProva 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -111,7 +107,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. İProva uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği| Ad Alanı  |
+    | Adı | Kaynak özniteliği| Ad Alanı  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -129,7 +125,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -159,7 +155,7 @@ Bu bölümde, iProva 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 4. Kullanıcılar **ve Kullanıcı grupları** panelinde **Kullanıcılar** ' ı seçin.
 
-5. **Add (Ekle)** seçeneğini belirleyin.
+5. **Ekle**’yi seçin.
 
 6. Kullanıcı **adı** kutusuna, gibi kullanıcının Kullanıcı adını girin `B.Simon@contoso.com` .
 
@@ -181,7 +177,7 @@ Bu bölümde, iProva 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 4. **Sistem ayarları** panelinde **genel** ' i seçin.
 
-5. **Düzenle**' yi seçin.
+5. **Düzenle**’yi seçin.
 
 6. **Access Control**'a gidin.
 
@@ -209,7 +205,7 @@ Bu bölümde, iProva 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 16. **Kullanılacak talep** açılan kutusunda **deposundaki kullanıcıların windowsaccountname**' yi seçin.
 
-17. **Son**'u seçin.
+17. **Son**’u seçin.
 
 18. Şimdi **Genel Ayarları Düzenle** ekranına geri dönersiniz. Sayfanın alt kısmına gidin ve yapılandırmanızı kaydetmek için **Tamam** ' ı seçin.
 
@@ -221,9 +217,9 @@ Erişim panelinde iProva kutucuğuna tıkladığınızda, SSO 'yu ayarladığın
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

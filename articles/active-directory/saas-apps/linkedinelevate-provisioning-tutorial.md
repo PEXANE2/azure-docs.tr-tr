@@ -2,25 +2,20 @@
 title: 'Öğretici: LinkedIn yükseltme için Kullanıcı hazırlama-Azure AD'
 description: Kullanıcı hesaplarını LinkedIn 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057422"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549781"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için LinkedIn yükseltmeyi yapılandırma
 
@@ -86,7 +81,7 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
 6. Sayfadan çıkmadan önce erişim belirtecinizi panonuza veya bilgisayarınıza kaydedin.
 
-7. Ardından [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
+7. Ardından [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory > Enterprise Apps > tüm uygulamalar**  bölümüne gidin.
 
 8. Çoklu oturum açma için LinkedIn yükseltmeyi zaten yapılandırdıysanız arama alanını kullanarak LinkedIn 'in örneğini arayın. Aksi takdirde, uygulama galerisinde **LinkedIn** 'e **Ekle** ve ara ' yı seçin. Arama sonuçlarından LinkedIn Yükselt ' i seçin ve uygulama listenize ekleyin.
 

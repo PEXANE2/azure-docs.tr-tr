@@ -2,24 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Atlasduyma bulutu yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını Atlasme bulutuna otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 12e94cfd576ced8c0e2768dd508e7f6f1a0056eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927479"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549398"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Atlasduyma bulutu yapılandırma
 
@@ -34,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [Atlas
 > * Atlasduyi bulutu 'nda grupları ve grup üyeliklerini sağlama
 > * Atlasme bulutu ['Nda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

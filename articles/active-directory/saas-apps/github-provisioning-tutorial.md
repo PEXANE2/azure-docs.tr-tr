@@ -2,25 +2,20 @@
 title: 'Öğretici: GitHub için Kullanıcı hazırlama-Azure AD'
 description: Kullanıcı hesaplarını GitHub 'a otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057660"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550679"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub 'ı yapılandırma
 

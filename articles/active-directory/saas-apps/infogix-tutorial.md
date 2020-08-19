@@ -2,25 +2,21 @@
 title: 'Öğretici: ınfogix Data3Sixty yönetmeyle Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve ınfogix Data3Sixty yönetme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aa3109b8-bdbe-45ae-933a-2eb4dc03855c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c46fe09691c270338e7ce60f8f0753e8c9b84948
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100355"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Öğretici: ınfogix Data3Sixty yönetir ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Infogix Data3Sixty yönetmesinin Azure AD ile tümleştirilmesi aşağıdaki ava
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -129,7 +125,7 @@ Azure AD çoklu oturum açmayı ınfogix Data3Sixty yönetir ile yapılandırmak
     | -----------| -------------- |
     | FirstName  | Kullanıcı. |
     | Soyadı   | User. soyadı |
-    | kullanıcı adı   | Kullanıcı. Mail    |
+    | username   | Kullanıcı. Mail    |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -147,7 +143,7 @@ Azure AD çoklu oturum açmayı ınfogix Data3Sixty yönetir ile yapılandırmak
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 8. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -190,7 +186,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

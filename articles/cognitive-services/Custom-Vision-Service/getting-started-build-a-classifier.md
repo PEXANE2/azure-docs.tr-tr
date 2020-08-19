@@ -10,20 +10,20 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 954ea8d544baa2538e1b92a9f03b7a48169e7360
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834448"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551361"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
 
 Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir sınıflandırıcı oluşturmayı öğreneceksiniz. Bir sınıflandırıcı modeli oluşturduktan sonra, görüntü sınıflandırması için Özel Görüntü İşleme hizmetini kullanabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sınıflandırıcınızı eğiten bir görüntü kümesi. Görüntüleri seçme hakkında ipuçları için aşağıya bakın.
 

@@ -2,25 +2,21 @@
 title: 'Öğretici: N2F-harcama raporlarıyla tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve N2F-gider raporları arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f56d53d7-5a08-490a-bfb9-78fefc2751ec
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 11f5e2f7763008c3af09c5367d90265af6a9653a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161294"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Öğretici: N2F-harcama raporlarıyla tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ N2F-gider raporlarını Azure AD ile tümleştirmek aşağıdaki avantajları sa
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -173,12 +169,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -230,7 +226,7 @@ Azure AD kullanıcılarının N2F-harcama raporlarında oturum açmasını sağl
 
     ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. **E-posta adresi** metin kutusuna, **brittasıon\@contoso.com**gibi kullanıcının e-posta adresini girin.
+    a. **E-posta adresi** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-posta adresini girin.
 
     b. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
 

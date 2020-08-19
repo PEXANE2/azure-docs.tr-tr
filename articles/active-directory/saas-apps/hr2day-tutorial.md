@@ -2,25 +2,21 @@
 title: 'Öğretici: HR2day by Merces ile tümleştirme Azure Active Directory Microsoft Docs'
 description: Merces tarafından Azure Active Directory ve HR2day arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c50e29e1373e9a9c01e9f5812c4146de070144a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81866792"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Öğretici: HR2day by Merces ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ HR2day tarafından Azure AD ile tümleştirme, aşağıdaki avantajları sağlar
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -142,7 +138,7 @@ HR2day tarafından Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -163,7 +159,7 @@ HR2day tarafından Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 **HR2day tarafından** tek oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' dan HR2day ' den [Merces destek ekibine](mailto:servicedesk@merces.nl)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 > [!NOTE]
-> Bu tümleştirmenin, bu tümleştirmenin, **https:\//HR2day.Force.com/InstanceName**DÜZENIYLE ayarlanması için varlık kimliğine Ihtiyacı olduğunu belirten Merces ekibine bahsetme.
+> Bu tümleştirmenin, bu tümleştirmenin, **https: \/ /HR2day.Force.com/InstanceName**düzeniyle AYARLANMASı için varlık kimliğine Ihtiyacı olduğunu belirten Merces ekibine bahsetme.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -188,7 +184,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

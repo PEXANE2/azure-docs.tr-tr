@@ -2,26 +2,21 @@
 title: 'Öğretici: SAP HANA ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve SAP HANA arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a34fe5637e895ea69b6fc4c277b7722b306c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161190"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552297"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Öğretici: SAP HANA ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ SAP HANA Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -148,7 +143,7 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
 
 ### <a name="configure-sap-hana-single-sign-on"></a>SAP HANA çoklu oturum açmayı yapılandırma
 
-1. SAP HANA tarafında çoklu oturum açmayı yapılandırmak için, ilgili HTTPS uç noktasına giderek **Hana XSA Web konsolunuza** oturum açın.
+1. SAP HANA tarafında çoklu oturum açmayı yapılandırmak için, ilgili HTTPS uç noktasına giderek **Hana XSA Web konsolunuza**  oturum açın.
 
     > [!NOTE]
     > Varsayılan yapılandırmada URL, kimliği doğrulanmış bir SAP HANA veritabanı kullanıcısının kimlik bilgilerini gerektiren bir oturum açma ekranına yeniden yönlendirir. Oturum açan kullanıcının SAML yönetim görevlerini gerçekleştirmek için izinleri olmalıdır.
@@ -196,12 +191,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -247,7 +242,7 @@ Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, aşağıdaki adımları uy
 
 3. SAML ıDP eklemek için **Ekle** ' yi seçin.  Uygun SAML ıDP 'yi seçip **Tamam**' ı seçin.
 
-4. **Dış kimliği** ekleyin (Bu durumda, Brittasıon) veya **birini**seçin. Sonra **Tamam**’ı seçin.
+4. **Dış kimliği** ekleyin (Bu durumda, Brittasıon) veya **birini**seçin. Ardından **Tamam**’ı seçin.
 
    > [!Note]
    > **Herhangi bir** onay kutusu seçili DEĞILSE, Hana 'daki Kullanıcı adının, etki alanı sonekinin önüne, UPN 'deki Kullanıcı adıyla tam olarak eşleşmesi gerekir. (Örneğin, BrittaSimon@contoso.com Hana 'Da Brittasıon olur.)

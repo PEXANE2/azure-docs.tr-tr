@@ -2,26 +2,21 @@
 title: 'Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ile ENVI MMNE arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ab89f8ee-2507-4625-94bc-b24ef3d5e006
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1689517042713e9a3ce75c6ada822cb3d6ff138
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158261"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Envi MMSıS 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -161,7 +156,7 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
     b. **Dosya Seç simgesini**seçerek Azure Portal indirilen meta veri dosyasını karşıya yükleyin.
 
-    c. **Tamam**'a tıklayın.
+    c. **Tamam**’a tıklayın.
 
 7. İndirilen meta veri dosyasını karşıya yükledikten sonra, alanlar otomatik olarak doldurulur. **Güncelleştir** 'e tıklayın
 
@@ -185,12 +180,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**yazın.
   
-    b. **Kullanıcı adı** alanına **brittasıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -238,7 +233,7 @@ Azure AD kullanıcılarının, ENVI MMO 'da oturum açmasını sağlamak için, 
 
     ![Çalışan Ekle](./media/envimmis-tutorial/user3.png)
 
-    a. **Kullanıcı adı** metin kutusuna **brittasıon\@contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
+    a. **Kullanıcı adı** metin kutusuna **brittasıon \@ contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
     
     b. **Ilk ad** metin kutusuna, **Britta**gibi brittasıın adını yazın.
 
@@ -246,11 +241,11 @@ Azure AD kullanıcılarının, ENVI MMO 'da oturum açmasını sağlamak için, 
 
     d. Metin kutusunun **başlığında** kullanıcının başlığını girin.
     
-    e. **E-posta adresi** metin kutusuna **brittasıon\@contoso.com**gibi Britta Simon hesabının e-posta adresini yazın.
+    e. **E-posta adresi** metin kutusuna **brittasıon \@ contoso.com**gibi Britta Simon hesabının e-posta adresini yazın.
 
-    f. **SSO Kullanıcı adı** metin kutusuna **\@brittasıon contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
+    f. **SSO Kullanıcı adı** metin kutusuna **brittasıon \@ contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

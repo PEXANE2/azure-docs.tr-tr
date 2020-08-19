@@ -2,26 +2,21 @@
 title: 'Öğretici: argıs Online ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve ArcGIS arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b1de1b643a3cc0b3dbcf9d33c21924a7fe50e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28e15cb7e0b519932eeee3a6a6445449affe2f35
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500081"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Öğretici: ArcGIS Online ile tümleştirme Azure Active Directory
 
@@ -35,7 +30,7 @@ Azure AD ile ArcGIS 'yi çevrimiçi tümleştirme aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ArcGIS Online ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 

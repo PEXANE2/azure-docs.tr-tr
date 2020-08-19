@@ -2,25 +2,21 @@
 title: 'Öğretici: Mimecast kişisel portalı ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve Mimecast kişisel portalı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d28835472198a1fddc5f7ed0fe5f0037b602f039
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848496"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549101"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Öğretici: Mimecast kişisel portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -84,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | Bölge  |  Değer | 
+    | Region  |  Değer | 
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/sso/<accountcode>`|
@@ -97,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
 
-    | Bölge  |  Değer |
+    | Region  |  Değer |
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/login/saml`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/login/saml`|
@@ -109,7 +105,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:
 
-    | Bölge  |  Değer |
+    | Region  |  Değer |
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/login/saml`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/login/saml`|
@@ -133,7 +129,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -230,9 +226,9 @@ Erişim panelinde Mimecast kişisel portalı kutucuğuna tıkladığınızda, SS
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

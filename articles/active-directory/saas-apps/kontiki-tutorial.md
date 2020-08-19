@@ -2,26 +2,21 @@
 title: 'Öğretici: Kontiki ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile Kontiki arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5e5413-da4c-40d8-b1d0-f03ecfef030b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098500"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Öğretici: Kontiki ile tümleştirme Azure Active Directory
 
@@ -61,7 +56,7 @@ Kontiki 'yı Azure AD ile bütünleştirmek için, yönetilen SaaS uygulamaları
 
     ![Azure Active Directory seçeneği](common/select-azuread.png)
 
-1. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -131,7 +126,7 @@ Kontiki tarafında çoklu oturum açmayı yapılandırmak için, indirilen Feder
 
 Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal,**Kullanıcılar** >  **Azure Active Directory** > **tüm kullanıcılar**' ı seçin.
+1. Azure Portal, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
 
     ![Kullanıcılar ve tüm kullanıcılar seçenekleri](common/users.png)
 
@@ -143,7 +138,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna, **Şirket içi etki alanı> brittasıon\@\<yazın.\< Uzantı>**. Örneğin, **brittasıon\@contoso.com**.
+    1. **Kullanıcı adı** kutusuna **brittasıon yazın \@ \<your-company-domain> . \<extension> ** Örneğin, **brittasıon \@ contoso.com**.
 
     1. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
 
@@ -155,7 +150,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
 Bu bölümde, Azure çoklu oturum açma 'yı kullanabilmesi için Kontiki 'a Britta Simon erişimi verirsiniz.
 
-1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar** > **konşimento**' i seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **konşimento**' i seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -167,7 +162,7 @@ Bu bölümde, Azure çoklu oturum açma 'yı kullanabilmesi için Kontiki 'a Bri
 
     ![Kullanıcılar ve gruplar seçeneği](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. Sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 

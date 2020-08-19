@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664903"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553173"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak bir veri kaynağına Dizin Oluşturucu bağlantısı kurma
 
 > [!IMPORTANT] 
-> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda geçitli genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
-> [Bu formu](https://aka.ms/azure-cognitive-search/mi-preview-request)doldurarak önizlemeye erişim isteğinde bulabilirsiniz.
+> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 
 Azure Bilişsel Arama 'de [Dizin Oluşturucu](search-indexer-overview.md) , veri kaynağınızdan Azure bilişsel arama veri çekmek için bir yol sağlayan bir gezgin. Dizin Oluşturucu, oluşturduğunuz veri kaynağı nesnesinden bir veri kaynağı bağlantısı edinir. Veri kaynağı nesnesi genellikle hedef veri kaynağı için kimlik bilgilerini içerir. Örneğin, bir BLOB depolama kapsayıcısından veri indekslemek istiyorsanız veri kaynağı nesnesi bir Azure depolama hesabı anahtarı içerebilir.
 

@@ -2,25 +2,21 @@
 title: 'Öğretici: Riskware ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Riskware arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72027106"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Öğretici: Riskware ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Riskware Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -168,7 +164,7 @@ Azure AD çoklu oturum açmayı Riskware ile yapılandırmak için aşağıdaki 
 
     f. **Gönderi formu alanı** metin kutusuna, SAMLResponse gibi SAML Içeren Post yanıtında bulunan alan adını yazın
 
-    g. **XML Identity Tag Name** metin kutusunda, NAMEıD gibi SAML yanıtında benzersiz tanımlayıcıyı içeren özniteliği yazın.
+    örneğin: **XML Identity Tag Name** metin kutusunda, NAMEıD gibi SAML yanıtında benzersiz tanımlayıcıyı içeren özniteliği yazın.
 
     h. İndirilen **meta veri XML** dosyasını Not defteri 'nde Azure Portal açın, meta veri dosyasından sertifikayı kopyalayın ve **sertifika** metin kutusuna yapıştırın
 
@@ -208,7 +204,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -268,7 +264,7 @@ Azure AD kullanıcılarının Riskware 'de oturum açmasını sağlamak için, R
 
     a. **Kimlik doğrulama** bölümünde, SSO Için Azure yapılandırması gibi kurulumunu yaptığınız **kimlik doğrulama** modunu seçin.
 
-    b. **Oturum açma ayrıntıları** bölümünde, **Kullanıcı kimliği** metin kutusunda, kullanıcının e-postasını girin `brittasimon@contoso.com`.
+    b. **Oturum açma ayrıntıları** bölümünde, **Kullanıcı kimliği** metin kutusunda, kullanıcının e-postasını girin `brittasimon@contoso.com` .
 
     c. **Parola** metin kutusuna kullanıcının parolasını girin.
 

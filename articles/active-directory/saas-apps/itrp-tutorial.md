@@ -2,25 +2,21 @@
 title: 'Öğretici: IRP ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Bu öğreticide, Azure Active Directory ile IRP arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261202"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Öğretici: IRP ile tümleştirme Azure Active Directory
 
@@ -33,7 +29,7 @@ Bu tümleştirme bu avantajları sağlar:
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -56,7 +52,7 @@ IRP 'yi Azure AD 'ye tümleştirmeyi ayarlamak için Galeriden yönetilen SaaS u
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin:
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin:
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -179,7 +175,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@\<\< yourcompanydomain> yazın. Uzantı>**. (Örneğin, BrittaSimon@contoso.com.)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 
@@ -227,7 +223,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
     ![Kişi Seç](./media/itrp-tutorial/ic775587.png "Kişi Seç")
 
-1. Yeni bir kişi eklemek için**+** artı işaretini () seçin:
+1. **+** Yeni bir kişi eklemek için artı işaretini () seçin:
 
     ![Artı işaretini seçin](./media/itrp-tutorial/ic775576.png "Artı işaretini seçin")
 

@@ -2,26 +2,21 @@
 title: 'Öğretici: Freedcamp ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Freedcamp arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: bfc73563-017d-458f-b634-162f93e03b74
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101906"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551039"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Öğretici: Freedcamp ile tümleştirin Azure Active Directory
 
@@ -89,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Kullanıcılar ayrıca, kendi müşteri etki alanına göre URL değerlerini girebilir ve bu desenler `freedcamp.com`, kendi uygulama örneğine özgü herhangi bir müşteri etki alanına özgü değer girebilirler. Ayrıca, URL desenleri hakkında daha fazla bilgi için [Freedcamp istemci destek ekibine](mailto:devops@freedcamp.com) başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Kullanıcılar ayrıca, kendi müşteri etki alanına göre URL değerlerini girebilir ve bu desenler, kendi `freedcamp.com` uygulama örneğine özgü herhangi bir müşteri etki alanına özgü değer girebilirler. Ayrıca, URL desenleri hakkında daha fazla bilgi için [Freedcamp istemci destek ekibine](mailto:devops@freedcamp.com) başvurabilirsiniz.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -137,9 +132,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -177,7 +172,7 @@ Azure AD kullanıcılarını etkinleştirmek için Freedcamp 'de oturum açın, 
 
     a. **Kullanıcı Ekle veya davet et**' e tıklayın.
 
-    b. **E-posta** metin kutusuna, gibi `Brittasimon@contoso.com`kullanıcının e-postasını girin.
+    b. **E-posta** metin kutusuna, gibi kullanıcının e-postasını girin `Brittasimon@contoso.com` .
 
     c. **Kullanıcı Ekle**'ye tıklayın.
 

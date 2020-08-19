@@ -2,25 +2,21 @@
 title: 'Öğretici: EY GlobalOne ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve EY GlobalOne arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a4bf1d6e-8af8-49d7-85d2-60f72d3c4633
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a86bb8d2a9785aca3317924ce2a1edc41dfc8a70
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7079ffd5cb2fe643d93dea0f5c9384a7931dc8a6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008687"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550692"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>Öğretici: EY GlobalOne 'i Azure Active Directory tümleştirme
 
@@ -32,7 +28,7 @@ Bu öğreticide, EY GlobalOne 'i Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -88,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, EY GlobalOne uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Ad | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |

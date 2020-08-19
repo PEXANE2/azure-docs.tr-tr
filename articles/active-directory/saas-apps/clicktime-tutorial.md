@@ -2,26 +2,21 @@
 title: 'Öğretici: tıklama saati ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile tıklama saati arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256126"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Öğretici: tıklama saati ile tümleştirme Azure Active Directory
 
@@ -35,7 +30,7 @@ Tıklama saatini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini tıklama saati ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 

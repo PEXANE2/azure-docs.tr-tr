@@ -2,26 +2,21 @@
 title: 'Öğretici Azure Active Directory: BeyondTrust uzaktan destek ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve BeyondTrust uzaktan desteği arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 193b163f-bdee-4974-b16d-777c51b991df
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74081995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549307"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Öğretici: BeyondTrust uzak desteğiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -132,9 +127,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -162,9 +157,9 @@ Bu bölümde, BeyondTrust uzak destek 'e erişim vererek Azure çoklu oturum aç
 
     ![BeyondTrust uzaktan desteğini yapılandırma](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
-1. Support.example.com 'ın gerecinizin birincil ana bilgisayar adı olduğu ve yönetici kimlik `https://support.example.com/login` bilgilerinizi **support.example.com** kullanarak kimlik doğrulayan Beyondtrust Remote Support/Login arabirimine gidin.
+1. `https://support.example.com/login` **Support.example.com** 'ın gerecinizin birincil ana bilgisayar adı olduğu ve yönetici kimlik bilgilerinizi kullanarak kimlik doğrulayan BeyondTrust Remote Support/Login arabirimine gidin.
 
-1. **Kullanıcılar & güvenlik** > **güvenlik sağlayıcıları**' na gidin.
+1. **Kullanıcılar & güvenlik**  >  **güvenlik sağlayıcıları**' na gidin.
 
 1. Açılan menüden **SAML** ' yi seçin ve **sağlayıcı oluştur** düğmesine tıklayın.
 
@@ -186,7 +181,7 @@ Kullanıcı sağlama ayarlarını burada yapılandıracağız. Bu bölümde kull
 ![Kullanıcı oluşturuluyor](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
-> Alternatif olarak, SAML2 güvenlik sağlayıcısı üzerinde varsayılan bir grup ilkesi ayarlanabilir. Bu seçeneği tanımlayarak, bu, SAML aracılığıyla kimlik doğrulayan tüm kullanıcıları Grup İlkesi içinde belirtilen izinler olarak atar. Genel Üyeler ilkesi, kimlik doğrulamasını test etmek ve doğru ilkelere Kullanıcı atamak için kullanılabilen sınırlı izinlerle, BeyondTrust uzak destek/ayrıcalıklı uzaktan erişim içinde bulunur. Kullanıcılar, ilk başarılı kimlik doğrulama girişimine kadar güvenlik & > Kullanıcı aracılığıyla SAML2 Users listesine doldurmaz. Grup ilkeleriyle ilgili ek bilgiler aşağıdaki bağlantıda bulunabilir:`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
+> Alternatif olarak, SAML2 güvenlik sağlayıcısı üzerinde varsayılan bir grup ilkesi ayarlanabilir. Bu seçeneği tanımlayarak, bu, SAML aracılığıyla kimlik doğrulayan tüm kullanıcıları Grup İlkesi içinde belirtilen izinler olarak atar. Genel Üyeler ilkesi, kimlik doğrulamasını test etmek ve doğru ilkelere Kullanıcı atamak için kullanılabilen sınırlı izinlerle, BeyondTrust uzak destek/ayrıcalıklı uzaktan erişim içinde bulunur. Kullanıcılar, ilk başarılı kimlik doğrulama girişimine kadar güvenlik & > Kullanıcı aracılığıyla SAML2 Users listesine doldurmaz. Grup ilkeleriyle ilgili ek bilgiler aşağıdaki bağlantıda bulunabilir: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
@@ -196,9 +191,9 @@ Erişim panelinde BeyondTrust uzak destek kutucuğuna tıkladığınızda, SSO '
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

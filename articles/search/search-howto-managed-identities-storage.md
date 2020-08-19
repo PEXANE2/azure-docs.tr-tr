@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084084"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553089"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak bir Azure depolama hesabına bağlantı kurma
 
 > [!IMPORTANT] 
-> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda geçitli genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
-> [Bu formu](https://aka.ms/azure-cognitive-search/mi-preview-request)doldurarak önizlemeye erişim isteğinde bulabilirsiniz.
+> Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 
 Bu sayfada, veri kaynağı nesne bağlantı dizesinde kimlik bilgileri sağlamak yerine yönetilen kimlik kullanarak bir Azure depolama hesabına Dizin Oluşturucu bağlantısının nasıl ayarlanacağı açıklanır.
 
@@ -69,12 +68,14 @@ Bu adımda, Azure Bilişsel Arama Service 'e depolama hesabınızdan veri okuma 
 
 ### <a name="3---create-the-data-source"></a>3-veri kaynağını oluşturma
 
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak bir depolama hesabından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
+
 Bir depolama hesabından dizin oluştururken, veri kaynağı aşağıdaki gerekli özelliklere sahip olmalıdır:
 
 * **ad** , arama hizmetinizin içindeki veri kaynağının benzersiz adıdır.
 * **türüyle**
-    * Azure Blob depolama:`azureblob`
-    * Azure Tablo Depolaması:`azuretable`
+    * Azure Blob depolama: `azureblob`
+    * Azure Tablo Depolaması: `azuretable`
     * Azure Data Lake Storage 2.: [Bu form](https://aka.ms/azure-cognitive-search/mi-preview-request)kullanılarak önizlemeye kaydolduktan sonra **tür** sunulacaktır.
 * **Credentials**
     * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi yönetilen kimlik kullanmaktan farklı. Burada, hesap anahtarı veya parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, depolama hesabının abonelik KIMLIĞINI, depolama hesabının kaynak grubunu ve depolama hesabı adını içermelidir.
@@ -96,8 +97,6 @@ api-key: [admin key]
     "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
 }   
 ```
-
-Azure portal ve [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) , Yönetilen kimlikler bağlantı dizesini de destekler. Azure portal, bu sayfanın en üstündeki bağlantıyı kullanarak önizlemeye kaydolurken size sağlanacak bir özellik bayrağı gerektirir. 
 
 ### <a name="4---create-the-index"></a>4-dizin oluşturma
 

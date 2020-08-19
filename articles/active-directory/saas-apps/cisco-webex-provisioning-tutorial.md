@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı hazırlama için Cisco WebEx yapılandırma | Microsoft Docs'
 description: Cisco WebEx 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 0075783c049e7f48645f768026dd9d5ec0ead821
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77058527"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551311"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cisco WebEx 'ı yapılandırma
 
@@ -101,7 +97,7 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de kullanıcı atamalarını t
 
     ![Cisco WebEx sağlama](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  **Kiracı URL 'si** alanında, biçiminde bir değer girin `https://api.ciscoweb.com/v1/scim/[OrgId]`. `[OrgId]` [Cisco WebEx denetim hub](https://admin.webex.com/login)'ınızı almak için oturum açın. Sol alt kısımdaki kuruluş adına tıklayın ve değeri **kuruluş kimliği**' nden kopyalayın. 
+6.  **Kiracı URL 'si** alanında, biçiminde bir değer girin `https://api.ciscoweb.com/v1/scim/[OrgId]` . `[OrgId]` [Cisco WebEx denetim hub](https://admin.webex.com/login)'ınızı almak için oturum açın. Sol alt kısımdaki kuruluş adına tıklayın ve değeri **kuruluş kimliği**' nden kopyalayın. 
 
     * **Gizli belirteç**değerini almak Için bu [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)'ye gidin. Görüntülenen WebEx oturum açma sayfasında, kuruluşunuzun tam Cisco WebEx yönetici hesabıyla oturum açın. Siteye ulaşılamadığını gösteren bir hata sayfası görüntülenir, ancak bu normaldir.
 
