@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735139"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516512"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Öğretici: bir fotoğraftan içerikle modern okuyucu Başlatan bir iOS uygulaması oluşturma (Swift)
 
@@ -24,9 +24,9 @@ Görüntü İşleme bilişsel [Hizmetler okuma API 'si](https://docs.microsoft.c
 
 Bu öğreticide, sıfırdan bir iOS uygulaması oluşturacaksınız ve okuma API 'SI ile modern okuyucu kullanarak tam ekran okuyucu SDK 'sını tümleştirirsiniz. Bu öğreticinin tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)ulaşabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
@@ -81,7 +81,7 @@ AppDelegate. Swift dosyasını açın ve dosyayı aşağıdaki kodla değiştiri
 
 ViewController. Swift ' i PictureLaunchViewController. Swift olarak yeniden adlandırıp dosyayı aşağıdaki kodla değiştirin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 Bir simülatör veya cihaz hedefi seçerek Xcode 'da arşiv şemasını ayarlayın.
 ![Arşiv şeması](./media/ios/xcode-archive-scheme.png)<br/>

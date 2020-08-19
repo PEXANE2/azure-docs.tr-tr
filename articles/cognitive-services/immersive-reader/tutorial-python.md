@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876572"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516394"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma
 
@@ -27,9 +27,9 @@ ms.locfileid: "87876572"
 > * Erişim belirteci alın.
 > * Örnek içerikle tam ekran okuyucuyu başlatın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Git](https://git-scm.com/).
@@ -217,7 +217,7 @@ sudo nano /etc/paths
 - Dosyanın sonuna gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin, örneğin `PATH=$PATH:/usr/local/bin` .
 - Çıkmak için **CTRL + X** ' i seçin.
 - Değiştirilen arabelleği kaydetmek için **Y** girin.
-- Hepsi bu! Bunu test etmek için yeni bir Terminal penceresinde girin `echo $PATH` .
+- İşte bu kadar! Bunu test etmek için yeni bir Terminal penceresinde girin `echo $PATH` .
 
 Flask 'yi yükler.
 

@@ -17,15 +17,15 @@ ms.locfileid: "80875068"
 ---
 ## <a name="gathering-required-parameters"></a>Gerekli parametreler toplanıyor
 
-Gerekli olan tüm bilişsel hizmetler için üç birincil parametre vardır. Son Kullanıcı Lisans Sözleşmesi 'nin `accept`(EULA) değeri ile mevcut olması gerekir. Ayrıca, hem bir uç nokta URL 'SI hem de API anahtarı gereklidir.
+Gerekli olan tüm bilişsel hizmetler için üç birincil parametre vardır. Son Kullanıcı Lisans Sözleşmesi 'nin (EULA) değeri ile mevcut olması gerekir `accept` . Ayrıca, hem bir uç nokta URL 'SI hem de API anahtarı gereklidir.
 
-### <a name="endpoint-uri-endpoint_uri"></a>Uç nokta URI 'SI`{ENDPOINT_URI}`
+### <a name="endpoint-uri-endpoint_uri"></a>Uç nokta URI 'SI `{ENDPOINT_URI}`
 
 **Uç nokta** URI değeri, karşılık gelen bilişsel hizmet kaynağının Azure Portal *genel bakış* sayfasında bulunur. *Genel bakış* sayfasına gidin, uç noktanın üzerine gelin ve bir `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simge görüntülenir. Gerektiğinde kopyalayın ve kullanın.
 
 ![Uç nokta URI 'sini daha sonra kullanılmak üzere toplayın](../media/overview-endpoint-uri.png)
 
-### <a name="keys-api_key"></a>Belirlenmesine`{API_KEY}`
+### <a name="keys-api_key"></a>Belirlenmesine `{API_KEY}`
 
 Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve ilgili bilişsel hizmet kaynağının Azure portal tuşları sayfasında kullanılabilir. *Anahtarlar* sayfasına gidin ve `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simgesine tıklayın.
 

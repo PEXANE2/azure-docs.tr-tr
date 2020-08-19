@@ -29,7 +29,7 @@ Aşağıdaki komutu yürütün `docker run` . Aşağıdaki yer tutucuları kendi
 | **{API_KEY}** | Metin Analizi kaynağınız için anahtar. Bunu, kaynağın **anahtar ve uç nokta** sayfasında, Azure Portal bulabilirsiniz. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Metin Analizi API'si erişmek için uç nokta. Bunu, kaynağın **anahtar ve uç nokta** sayfasında, Azure Portal bulabilirsiniz. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 | **{IMAGE_ID}** | Kapsayıcının görüntü KIMLIĞI. | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | Kapsayıcının giriş dizini. | Pencerelerin`C:\healthcareMount` <br> Linux/MacOS:`/home/username/input` |
+| **{INPUT_DIR}** | Kapsayıcının giriş dizini. | Pencerelerin `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \

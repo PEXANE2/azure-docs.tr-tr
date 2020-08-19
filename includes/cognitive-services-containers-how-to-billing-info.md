@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "77474200"
 ---
-Kapsayıcıya yönelik sorgular, `ApiKey`Için kullanılan Azure kaynağının fiyatlandırma katmanında faturalandırılır.
+Kapsayıcıya yönelik sorgular, için kullanılan Azure kaynağının fiyatlandırma katmanında faturalandırılır `ApiKey` .
 
 Azure bilişsel hizmetler kapsayıcıları, ölçüm/faturalandırma uç noktasına bağlı kalmadan çalıştırılmak üzere lisanslanmaz. Her zaman Faturalandırma bitiş noktasıyla faturalandırma bilgilerini iletmek için kapsayıcıları etkinleştirmeniz gerekir. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenen resim veya metin gibi) Microsoft 'a göndermez.
 
@@ -25,6 +25,6 @@ Aşağıdaki seçeneklerden üçü de geçerli değerlerle sağlandığında <a 
 
 | Seçenek | Açıklama |
 |--------|-------------|
-| `ApiKey` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının API anahtarı.<br/>Bu seçeneğin değeri, içinde `Billing`belirtilen sağlanan kaynak IÇIN bir API anahtarı olarak ayarlanmalıdır. |
+| `ApiKey` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının API anahtarı.<br/>Bu seçeneğin değeri, içinde belirtilen sağlanan kaynak için bir API anahtarı olarak ayarlanmalıdır `Billing` . |
 | `Billing` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının uç noktası.<br/>Bu seçeneğin değeri, sağlanan bir Azure kaynağının uç nokta URI 'sine ayarlanmalıdır.|
 | `Eula` | Kapsayıcının lisansını kabul ettiğinizi gösterir.<br/>Bu seçeneğin değeri **kabul**edilecek şekilde ayarlanmalıdır. |

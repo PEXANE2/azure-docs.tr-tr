@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3df1ccadb69f02272c44a0ba574805c816151dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405985"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520949"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js kullanarak bir LUSıS uygulaması programlama yoluyla oluşturma
 
@@ -27,7 +27,7 @@ LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapa
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-how-to-azure-subscription.md#authoring-key) bulun. Yazma API 'Lerini çağırmak için bu anahtarı kullanırsınız.
-* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 * Bu makale, kuramsal bir şirketin kullanıcı isteklerinin günlük dosyaları için bir CSV ile başlar. [Buradan](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)indirin.
 * En son Node.js NPM ile birlikte yükler. [Buradan](https://nodejs.org/en/download/)indirin.
 * **[Önerilir]** IntelliSense ve hata ayıklama için Visual Studio Code, [buradan](https://code.visualstudio.com/) ücretsiz indirin.

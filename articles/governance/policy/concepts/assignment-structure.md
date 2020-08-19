@@ -1,14 +1,14 @@
 ---
 title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
-ms.date: 04/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205050"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520722"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -22,7 +22,7 @@ Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için 
 - zorlama modu
 - Dışlanan kapsamlar
 - ilke tanımı
-- parametreler
+- parameters
 
 Örneğin, aşağıdaki JSON, _Donotenzorlama_ modunda dinamik parametrelerle bir ilke atamasını göstermektedir:
 
@@ -63,8 +63,8 @@ Bu özellik aşağıdaki değerlere sahiptir:
 
 |Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
-|Etkin |Varsayılan |string |Yes |Evet |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
-|Devre dışı |Donotenzorlamalı |string |Evet |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
+|Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
+|Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
 İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
 
@@ -75,12 +75,11 @@ Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları i�
 ## <a name="policy-definition-id"></a>İlke tanımı KIMLIĞI
 
 Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olmalıdır.
-`policyDefinitionId`dizi değil bir dizedir. Bunun yerine bir [girişim](./initiative-definition-structure.md) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
+`policyDefinitionId` dizi değil bir dizedir. Bunun yerine bir [girişim](./initiative-definition-structure.md) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
 
 ## <a name="parameters"></a>Parametreler
 
-İlke atamasının bu segmenti, [ilke tanımı veya girişim tanımında](./definition-structure.md#parameters)tanımlanan parametrelerin değerlerini sağlar.
-Bu tasarım, farklı kaynaklarla bir ilke veya girişim tanımını yeniden kullanmayı mümkün kılar, ancak farklı iş değerlerini veya sonuçlarını denetleyebilir.
+İlke atamasının bu segmenti, [ilke tanımı veya girişim tanımında](./definition-structure.md#parameters)tanımlanan parametrelerin değerlerini sağlar. Bu tasarım, farklı kaynaklarla bir ilke veya girişim tanımını yeniden kullanmayı mümkün kılar, ancak farklı iş değerlerini veya sonuçlarını denetleyebilir.
 
 ```json
 "parameters": {

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010810"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522300"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -73,14 +73,14 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 > 
 > Bunun nedeni, `/secrets` yol değil, özel anahtar dahil olmak üzere tam sertifikayı döndürmektedir `/certificates` . Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> ' AuthenticationSettings ' özelliği, VM 'nin birden çok atanmış kimliği olduğunda senaryolar için isteğe bağlıdır.
-> Key Vault kimlik doğrulaması için kullanılacak kimliğin kullanılmasına izin verir.
+> [!IMPORTANT]
+> ' AuthenticationSettings ' özelliği yalnızca **Kullanıcı tarafından atanan kimlikleri**olan VM 'ler için **gereklidir** .
+> Key Vault kimlik doğrulaması için kullanılacak kimliği belirtir.
 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |

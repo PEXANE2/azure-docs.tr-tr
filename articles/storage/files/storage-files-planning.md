@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037176"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520541"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -103,7 +104,7 @@ Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](h
 ## <a name="storage-tiers"></a>Depolama katmanları
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çalışabilirlik, Premium dosya paylaşımları ve standart dosya paylaşımları arasında aynıdır, ancak bazı önemli farklılıklar vardır:
+Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çalışabilirlik, Premium dosya paylaşımları ve standart dosya paylaşımları (işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli dosya paylaşımları dahil) arasında aynıdır, ancak bazı önemli farklılıklar vardır:
 - **Faturalama modeli**
     - Premium dosya paylaşımları, sağlanan bir faturalandırma modeli kullanılarak faturalandırılır, bu da gerçekte sizin için gereken depolama alanı yerine ne kadar depolama alanı temin ettiğiniz anlamına gelir. 
     - Standart dosya paylaşımları, bir Kullandıkça Öde modeli kullanılarak faturalandırılır. Bu, gerçekten ne kadar depolama alanı tükettiğini belirten temel bir depolama maliyeti ve daha sonra paylaşımı nasıl kullandığınızı temel alarak ek bir işlem maliyeti içerir. Standart dosya paylaşımlarında, Azure dosya paylaşımını daha fazla kullandığınızda (okuma/yazma/bağlama) faturanız artar.

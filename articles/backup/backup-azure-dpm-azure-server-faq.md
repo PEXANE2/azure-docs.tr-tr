@@ -4,12 +4,12 @@ description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) ve DPM (Data Pr
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173153"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522938"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Sunucusu ve DPM-SSS
 
@@ -36,6 +36,10 @@ Evet. Ancak önce DPM 'yi ayarlamanız ve ardından Azure Backup aracısını y�
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>UR7 SÜRÜMLERIYLE ve en son Azure Backup aracısını yükledikten sonra neden dış DPM sunucusu ekleyemiyorum?
 
 Buluta korunan veri kaynakları olan DPM sunucuları için (güncelleştirme paketi 7 ' den önceki bir güncelleştirme paketi kullanılarak), **dış DPM sunucusu Ekle**' yi başlatmak için UR7 sürümleriyle ve en son Azure Backup aracısını yükledikten sonra en az bir gün beklemeniz gerekir. DPM koruma gruplarının meta verilerini Azure 'a yüklemek için bir günlük zaman aralığı gereklidir. Koruma grubu meta verileri gecelik bir iş aracılığıyla ilk kez karşıya yüklenir.
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Virüsten koruma yazılımı için dışlamaları yapılandırmaya yönelik öneriler var mı?
+
+Evet, virüsten koruma dışlamayı yapılandırmak önerilir. DPM için dışlamaları için bkz. [DPM sunucusunda virüsten koruma yazılımı çalıştırma](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). MABS için dışlamaları için bkz. [mabs sunucusu için virüsten koruma yapılandırma](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware ve Hyper-V yedeklemesi
 

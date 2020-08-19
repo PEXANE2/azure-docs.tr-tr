@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: dylankil
 ms.custom: devx-track-java
-ms.openlocfilehash: f8420a42b87481b5e51b383ace1ba8a510d2a6a7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 637b4d988a4845369a441dce55f0043d873879f6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366747"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516444"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-android-java-code-sample"></a>Öğretici: Android Java kod örneğini kullanarak modern okuyucu başlatma
 
@@ -27,7 +27,7 @@ ms.locfileid: "87366747"
 > * Erişim belirteci alın.
 > * Örnek içerikle tam ekran okuyucuyu başlatın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

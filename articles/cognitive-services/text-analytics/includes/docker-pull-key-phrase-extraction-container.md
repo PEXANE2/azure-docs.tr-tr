@@ -18,7 +18,7 @@ ms.locfileid: "80877120"
 ---
 #### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Anahtar İfade Ayıklama kapsayıcısı için Docker Pull
 
-Microsoft Container Registry [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Microsoft Container Registry bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
 
 Metin Analizi kapsayıcıları için kullanılabilir etiketlerin tam açıklaması için, Docker Hub 'ındaki [anahtar ifade ayıklama](https://go.microsoft.com/fwlink/?linkid=2018757) kapsayıcısına bakın.
 

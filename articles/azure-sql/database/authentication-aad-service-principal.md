@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: bfe609dc480dcdb71f162ca1bfd383a27257fedc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321709"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516631"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL ile hizmet sorumlusu Azure Active Directory
 
@@ -80,6 +80,8 @@ Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD ne
 
 > [!IMPORTANT]
 > 1 ve 2. adımlar yukarıdaki sırada yürütülmelidir. İlk olarak, sunucu kimliğini oluşturun veya atayın ve ardından [**Dizin okuyucuları**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) iznini vererek. Bu adımlardan birini atlayarak veya her ikisi de Azure AD uygulaması adına Azure SQL 'de Azure AD nesne oluşturma sırasında bir yürütme hatasına neden olur. Azure AD uygulaması adına bir Azure AD kullanıcısı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure AD uygulamaları kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md).
+>
+> **Genel önizlemede**, **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir, bu da bir **genel yönetici** veya **ayrıcalıklı roller yöneticisinin** **Dizin okuyucuları** rolünü vermesi gereksinimini atlar. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>Sorun giderme ve genel önizlemeye yönelik sınırlamalar
 

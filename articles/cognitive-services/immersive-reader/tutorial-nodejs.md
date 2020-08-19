@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c64fc95c44aad81087cada23639e3b13bf478056
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a8cd8bacc749ef44ee23e98709f04f75757f5919
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407192"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516342"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Öğretici: tam ekran okuyucuyu (Node.js) başlatın
 
@@ -30,9 +30,9 @@ ms.locfileid: "87407192"
 > * Tam ekran okuyucu arabiriminin dilini belirtin
 > * Matematik içerikli modern okuyucuyu başlatın
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Node.js](https://nodejs.org/) ve [Yarn](https://yarnpkg.com)

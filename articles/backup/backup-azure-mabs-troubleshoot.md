@@ -4,12 +4,12 @@ description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054834"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522853"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -20,13 +20,46 @@ Azure Backup Sunucusu kullanırken karşılaştığınız hataların sorunların
 Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıdaki doğrulamayı gerçekleştirmenizi öneririz:
 
 - [Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının güncel olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS aracısı ile Azure arasında ağ bağlantısı sağlandığından emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [MARS Aracısı ve Azure arasında ağ bağlantısı olduğundan emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Kurtarma Hizmetleri'nin çalıştığından emin olun (Hizmet konsolunda). Gerekirse yeniden başlatın ve işlemi yeniden deneyin
 - [Boş klasör konumunda %5-10 oranında kullanılabilir alan olduğundan emin olun](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - Kayıt başarısız olursa, yüklemeye çalıştığınız sunucunun Azure Backup Sunucusu başka bir kasada zaten kayıtlı olmadığından emin olun
 - Göndermeli yükleme başarısız olursa DPM aracısının zaten mevcut olup olmadığını kontrol edin. Varsa aracıyı kaldırıp tekrar yüklemeyi deneyin
 - [Azure Backup ile çakışan başka bir işlem veya virüsten koruma yazılımı olmadığından emin olun](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - SQL Aracısı hizmetinin çalıştığından ve MABS sunucusunda otomatik olarak ayarlandığından emin olun<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>MABS sunucusu için virüsten koruma yapılandırma
+
+MABS, en popüler virüsten koruma yazılımı ürünleri ile uyumludur. Çakışmaları önlemek için aşağıdaki adımları öneririz:
+
+1. **Gerçek zamanlı Izlemeyi devre dışı bırak** -aşağıdaki için virüsten koruma yazılımı tarafından gerçek zamanlı izlemeyi devre dışı bırakın:
+    - `C:\Program Files<MABS Installation path>\XSD` klasörde
+    - `C:\Program Files<MABS Installation path>\Temp` klasörde
+    - Modern Yedekleme Alanı biriminin sürücü harfi
+    - Çoğaltma ve aktarım günlükleri: bunu yapmak Için, klasöründe bulunan **dpmra.exe**gerçek zamanlı izlemesini devre dışı bırakın `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Gerçek zamanlı izleme performansı düşürür çünkü virüsten koruma yazılımı, korumalı sunucu ile her eşitlediğinde çoğaltmaları tarar ve MABS çoğaltmaları çoğaltmalar üzerinde her değişiklik uygularsa etkilenen tüm dosyaları tarar.
+    - Yönetici Konsolu: performans üzerindeki etkileri önlemek Için **csc.exe** işleminin gerçek zamanlı izlemesini devre dışı bırakın. **csc.exe** süreci C \# derleyicisidir ve virüsten koruma yazılımı, **csc.exe** işleminin xml iletileri oluştururken gösterdiği dosyaları taradığından gerçek zamanlı izleme performansı düşürebilir. **CSC.exe** aşağıdaki yollarda bulunur:
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - MABS sunucusunda yüklü olan MARS Aracısı için aşağıdaki dosyaları ve konumları dışlanmasını öneririz:
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` işlem olarak
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - Karalama konumu (Standart konumu kullanmıyorsanız)
+2. **Korunan sunucuda gerçek zamanlı Izlemeyi devre dışı bırak**: klasörde bulunan **dpmra.exe**gerçek zamanlı izlemeyi korumalı sunucuda devre dışı bırakın `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` .
+3. Virüsten **koruma yazılımını korunan sunuculardaki ve MABS sunucusundaki virüslü dosyaları silecek şekilde yapılandırın**: çoğaltmalarda ve kurtarma noktalarında veri bozulmasını engellemek için, virüsten koruma yazılımını, virüslü dosyaları otomatik olarak temizlemek veya karantinaya almak yerine silmek üzere yapılandırın. Otomatik Temizleme ve karantinaya alma, virüsten koruma yazılımının dosyaları değiştirmesine ve MABS 'lerin tespit edememesine neden olabilir.
+
+Bir tutarlılık ile el ile eşitleme çalıştırmalısınız. Çoğaltma tutarsız olarak işaretlenmiş olsa da, virüsten koruma yazılımının çoğaltmadan bir dosya sildiği her seferinde işi denetleyin.
+
+### <a name="mabs-installation-folders"></a>MABS yükleme klasörleri
+
+DPM için varsayılan yükleme klasörleri aşağıdaki gibidir:
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+Ayrıca, Install Folder yolunu bulmak için aşağıdaki komutu çalıştırabilirsiniz:
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>Sağlanan kasa kimlik bilgileri geçersiz
 

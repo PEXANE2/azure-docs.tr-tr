@@ -18,7 +18,7 @@ ms.locfileid: "80877100"
 ---
 #### <a name="docker-pull-for-the-language-detection-container"></a>Dil Algılama kapsayıcısı için Docker Pull
 
-Microsoft Container Registry [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Microsoft Container Registry bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
 
 Metin Analizi kapsayıcıları için kullanılabilir etiketlerin tam açıklaması için, Docker Hub 'ındaki [dil algılama](https://go.microsoft.com/fwlink/?linkid=2018759) kapsayıcısına bakın.
 

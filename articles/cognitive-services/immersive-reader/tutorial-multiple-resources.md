@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407209"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516291"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Öğretici: birden çok modern okuyucu kaynağını tümleştirme
 
@@ -25,9 +25,9 @@ ms.locfileid: "87407209"
 > * Var olan bir kaynak grubu altında birden çok modern okuyucu kaynağı oluşturma
 > * Birden çok kaynak kullanarak tam ekran okuyucu başlatma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * NodeJS ile modern okuyucuyu Başlatan bir Web uygulaması oluşturmak için [hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcı izleyin. Bu hızlı başlangıçta, tek bir tam ekran okuyucu kaynağı yapılandırırsınız. Bu öğreticide bunun üzerine oluşturacağız.
 
@@ -79,7 +79,7 @@ SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 
 Ortak olmaması gereken gizli dizileri içerdiğinden, bu dosyayı kaynak denetimine yürütmemeyi unutmayın.
 
-Daha sonra, oluşturduğum _routes\index.js_ dosyayı, birden çok kaynaklarımızı destekleyecek şekilde değiştirmektir. İçeriğini aşağıdaki kodla değiştirin.
+Daha sonra, oluşturduğum  _routes\index.js_ dosyayı, birden çok kaynaklarımızı destekleyecek şekilde değiştirmektir. İçeriğini aşağıdaki kodla değiştirin.
 
 Daha önce olduğu gibi, bu kod hizmet sorumlusu parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API uç noktası oluşturur. Bu kez, kullanıcının bir kaynak konumu belirtmesini ve bunu bir sorgu parametresi olarak iletmesini sağlar. Ardından, belirteci ve ilgili alt etki alanını içeren bir nesne döndürür.
 
