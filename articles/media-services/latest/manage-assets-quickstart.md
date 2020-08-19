@@ -3,12 +3,15 @@ title: İçeriği karşıya yüklemek, kodlamak ve akışa almak için Portal '�
 description: Bu hızlı başlangıçta, Azure Media Services ile içeriği karşıya yüklemek, kodlamak ve akışa almak için Portal 'ın nasıl kullanılacağı gösterilir.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053359"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605658"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 
@@ -28,7 +31,6 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
 
   * [Bulutta karşıya yükleme ve depolama](storage-account-concept.md)
   * [Varlık kavramı](assets-concept.md)
-  * [Varlıkları yönetme](manage-asset-concept.md)
 * Yüksek kaliteli dijital medya dosyanızı bir varlığa (bir giriş varlığı) yükledikten sonra, (kodlama veya çözümleme) işlemi gerçekleştirebilirsiniz. İşlenen içerik başka bir varlığa (çıkış varlığı) gider. 
     * Karşıya yüklenen Dosyanızı çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlerde [kodlayın](encoding-concept.md) .
     * Karşıya yüklenen dosyayı [çözümleyin](analyzing-video-audio-files-concept.md) . 

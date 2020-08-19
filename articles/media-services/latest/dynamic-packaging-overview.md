@@ -2,7 +2,7 @@
 title: Azure Media Services v3 'de dinamik paketleme
 titleSuffix: Azure Media Services
 description: Bu makale, Azure Media Services içindeki dinamik paketlemeye genel bakış sunar.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/13/2020
-ms.author: juliako
-ms.openlocfilehash: 4f0e8822d734d3c1147eb6d5cbbc8f26a7410a01
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224076"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604579"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -80,7 +80,7 @@ Akış istemciniz aşağıdaki Kesintisiz Akış biçimlerini belirtebilir:
 
 Aşağıdaki adımlarda, Azure Media Services içindeki standart kodlayıcıyla birlikte dinamik ambalajın kullanıldığı ortak bir Media Services akış iş akışı gösterilmektedir.
 
-1. MP4, QuickTime/MOV veya desteklenen başka bir dosya biçimi gibi [bir giriş dosyasını karşıya yükleyin](manage-asset-concept.md) . Bu dosya, Mezzanine veya kaynak dosya olarak da adlandırılır. Desteklenen biçimlerin listesi için bkz. [Standart kodlayıcı tarafından desteklenen biçimler](media-encoder-standard-formats.md).
+1. MP4, QuickTime/MOV veya desteklenen başka bir dosya biçimi gibi [bir giriş dosyasını karşıya yükleyin](job-input-from-http-how-to.md) . Bu dosya, Mezzanine veya kaynak dosya olarak da adlandırılır. Desteklenen biçimlerin listesi için bkz. [Standart kodlayıcı tarafından desteklenen biçimler](media-encoder-standard-formats.md).
 1. Mezzanine dosyanızı H. bir H.,/AAC MP4 Uyarlamalı bit hızı kümesine [kodlayın](#encode-to-adaptive-bitrate-mp4s) .
 
     Zaten kodlanmış dosyalarınız varsa ve yalnızca dosyaları kopyalayıp akışa almak istiyorsanız şunu kullanın: [Copyvideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) ve [Copyaudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API 'leri. Sonuç olarak, akış bildirimi (. ISM dosyası) içeren yeni bir MP4 dosyası oluşturulur.

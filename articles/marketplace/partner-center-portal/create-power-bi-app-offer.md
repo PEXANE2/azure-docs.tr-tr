@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030783"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604636"
 ---
-# <a name="create-a-power-bi-app-offer"></a>Power BI uygulama teklifi oluşturma
+# <a name="create-a-power-bi-app-offer"></a>Power BI uygulaması teklifi oluşturma
 
 Bu makalede, Microsoft [Appsource](https://appsource.microsoft.com/)'a Power BI bir uygulama teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
 
@@ -29,7 +29,7 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca çevrimiçi mağazalarda görünür. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
 
 > [!IMPORTANT]
 > **Power BI hizmet uygulaması** gösterilmemişse veya etkinleştirilmemişse, hesabınız bu teklif türünü oluşturmak için izne sahip olmaz. Lütfen bir Geliştirici hesabına kaydolma dahil olmak üzere bu teklif türü için tüm [gereksinimleri](create-power-bi-app-overview.md) karşıladığınızı kontrol edin.

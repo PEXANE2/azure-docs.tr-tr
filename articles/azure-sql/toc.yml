@@ -65,6 +65,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Güvenlik açığı değerlendirme kuralları
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Güvenlik açığı taramalarını depolama alanında depolama
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Oturum açmalar, kullanıcı hesapları, roller ve izinler'
               href: database/logins-create-manage.md
             - name: Azure AD Kimlik Doğrulaması
@@ -80,6 +82,8 @@
                   href: database/conditional-access-configure.md
                 - name: Hizmet sorumluları (Uygulamalar)
                   href: database/authentication-aad-service-principal.md
+                - name: Dizin Okuyucuları rolü
+                  href: database/authentication-aad-directory-readers-role.md
             - name: Saydam Veri Şifrelemesi (TDE)
               items:
                 - name: Genel Bakış
@@ -143,12 +147,14 @@
               href: database/long-term-backup-retention-configure.md
         - name: Güvenlik
           items:
-            - name: Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama
-              href: database/authentication-aad-guest-users.md
+            - name: Azure AD Kimlik Doğrulaması
+              items:
+                - name: Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama
+                  href: database/authentication-aad-guest-users.md
+                - name: Gruplara Dizin Okuyucuları rolü atama
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: KAG ile TDE Yapılandırması
               href: database/transparent-data-encryption-byok-configure.md
-            - name: Güvenlik açığı taramalarını depolama alanında depolama
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Always Encrypted
               items:
                 - name: Azure Key Vault kullanma
@@ -207,12 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: Java ve JDBC kullanma
+                  href: database/connect-query-java.md
                 - name: Spring Verilerini Kullanma JDBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Verilerini Kullanma JPA
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data R2DBC’yi kullanma
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL Veritabanı (SQL DB)
   items:
     - name: Belgeler
@@ -402,11 +410,11 @@
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Spring Data JDBC ile Java
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data JPA ile Java
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data R2DBC ile Java
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP

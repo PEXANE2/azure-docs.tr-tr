@@ -1,4 +1,4 @@
-- name: VM boyutları
+- name: Sunucu boyutları
   href: vm-sizes.md
 - name: Model biçimleri için malzeme eşleme
   href: material-mapping.md

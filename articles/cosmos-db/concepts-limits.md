@@ -5,37 +5,40 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/19/2020
+ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391851"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605768"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
 Bu makale, Azure Cosmos DB’deki farklı kaynaklara sunulan varsayılan kotalara ilişkin bir genel bakış sunar.
 
-## <a name="storage-and-throughput"></a>Depolama ve aktarım hızı
+## <a name="storage-and-database-operations"></a>Depolama ve veritabanı işlemleri
 
-Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritabanları, kapsayıcılar ve öğeler oluşturarak](databases-containers-items.md)hesabınızdaki verileri yönetebilirsiniz. [İstek birimi (ru/s veya Rus)](request-units.md)bakımından bir kapsayıcı düzeyinde veya veritabanı düzeyinde üretilen iş sağlayabilirsiniz. Aşağıdaki tabloda kapsayıcı/veritabanı başına depolama ve işleme sınırları listelenmektedir.
+Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritabanları, kapsayıcılar ve öğeler oluşturarak](databases-containers-items.md)hesabınızdaki verileri yönetebilirsiniz.
+
+### <a name="provisioned-throughput"></a>Sağlanan aktarım hızı
+
+[İstek birimi (ru/s veya Rus)](request-units.md)bakımından bir kapsayıcı düzeyinde veya veritabanı düzeyinde üretilen iş sağlayabilirsiniz. Aşağıdaki tabloda kapsayıcı/veritabanı başına depolama ve işleme sınırları listelenmektedir.
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
-| Maksimum ru/(mantıksal) bölüm anahtarı | 10,000 |
-| Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 20 GB |
+| Maksimum ru/(mantıksal) Bölüm | 10,000 |
+| Tüm öğelerin tamamında (mantıksal) bölüm başına maksimum depolama alanı | 20 GB |
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız |
 | Veritabanı başına en fazla depolama alanı | Sınırsız |
-| Hesap başına en fazla ek boyutu (ek özelliği amorti edilir) | 2 GB |
+| Hesap başına en büyük ek boyutu (ek özelliği kullanım dışı) | 2 GB |
 | 1 GB başına gereken minimum ru | 10 RU/sn |
 
 > [!NOTE]
 > Depolama veya işleme için daha fazla sınır gerektiren bölüm anahtarlarına sahip iş yüklerini yönetmeye yönelik en iyi yöntemler hakkında bilgi edinmek için bkz. [yapay bir bölüm anahtarı oluşturma](synthetic-partition-keys.md).
->
 
 Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 RU/sn aktarım hızına sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
 
@@ -47,7 +50,6 @@ Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı
 
 > [!NOTE]
 > Bazı durumlarda, aktarım hızını %10 ' dan küçük bir süre düşürübiliyor olabilirsiniz. Kapsayıcı başına en az ru 'yı tam olarak almak için API 'YI kullanın.
->
 
 Özet bölümünde, sağlanan en düşük RU sınırları aşağıda verilmiştir. 
 
@@ -58,6 +60,18 @@ Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı
 | Paylaşılan bir üretilen iş veritabanı içinde kapsayıcı başına en az ru | 100 |
 
 Cosmos DB, SDK veya Portal aracılığıyla kapsayıcı veya veritabanı başına esnek işleme (ru) boyutunu destekler. Her kapsayıcı, en düşük ve en yüksek değerler arasında zaman uyumlu olarak ve 10 ila 100 kez bir ölçek aralığı içinde ölçeklendirebilir. İstenen üretilen iş değeri aralığın dışındaysa, ölçekleme zaman uyumsuz olarak gerçekleştirilir. Zaman uyumsuz ölçeklendirmenin, kapsayıcıda istenen işleme ve veri depolama boyutuna bağlı olarak tamamlanması dakika sürebilir.  
+
+### <a name="serverless"></a>Sunucusuz
+
+[Sunucusuz](serverless.md) , Azure Cosmos DB kaynaklarınızı tüketim tabanlı bir biçimde kullanmanıza olanak sağlar. Aşağıdaki tabloda, kapsayıcı/veritabanı başına depolama ve üretilen iş işleme sınırları listelenmektedir.
+
+| Kaynak | Sınır |
+| --- | --- |
+| Kapsayıcı başına en fazla RU/sn | 5.000 |
+| (Mantıksal) bölüm başına en fazla RU/sn | 5.000 |
+| Tüm öğelerin tamamında (mantıksal) bölüm başına maksimum depolama alanı | 20 GB |
+| En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
+| Kapsayıcı başına en fazla depolama alanı | 50 GB |
 
 ## <a name="control-plane-operations"></a>Denetim düzlemi işlemleri
 
@@ -75,12 +89,22 @@ Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır
 
 ## <a name="per-account-limits"></a>Hesap başına sınırlar
 
+### <a name="provisioned-throughput"></a>Sağlanan aktarım hızı
+
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | En fazla veritabanı sayısı | Sınırsız |
 | Paylaşılan işleme ile veritabanı başına en fazla kapsayıcı sayısı |25 |
 | Adanmış aktarım hızı olan veritabanı veya hesap başına en fazla kapsayıcı sayısı  |sınırsız |
 | En fazla bölge sayısı | Sınır yok (tüm Azure bölgeleri) |
+
+### <a name="serverless"></a>Sunucusuz
+
+| Kaynak | Sınır |
+| --- | --- |
+| En fazla veritabanı sayısı | Sınırsız |
+| Hesap başına en fazla kapsayıcı sayısı  | 100 |
+| En fazla bölge sayısı | 1 (herhangi bir Azure bölgesi) |
 
 ## <a name="per-container-limits"></a>Kapsayıcı başına sınırlar
 
@@ -89,13 +113,13 @@ Kullandığınız API 'ye bağlı olarak bir Azure Cosmos kapsayıcısı bir kol
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | En fazla veritabanı veya kapsayıcı adı uzunluğu | 255 |
-| Kapsayıcı başına en fazla saklı yordam | 100<sup>*</sup>|
-| Kapsayıcı başına en fazla UDF | 250<sup>*</sup>|
-| Dizin oluşturma ilkesindeki en fazla yol sayısı| 100<sup>*</sup>|
-| Kapsayıcı başına en fazla benzersiz anahtar sayısı|(<sup>*</sup>|
-| Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|k<sup>*</sup>|
+| Kapsayıcı başına en fazla saklı yordam | 100 <sup>*</sup>|
+| Kapsayıcı başına en fazla UDF | 250 <sup>*</sup>|
+| Dizin oluşturma ilkesindeki en fazla yol sayısı| 100 <sup>*</sup>|
+| Kapsayıcı başına en fazla benzersiz anahtar sayısı|( <sup>*</sup>|
+| Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|k <sup>*</sup>|
 
-<sup>*</sup>Azure desteği ile iletişime geçerek bu kapsayıcı başına limitlerin herhangi birini artırabilirsiniz.
+<sup>*</sup> Azure desteği ile iletişime geçerek bu kapsayıcı başına limitlerin herhangi birini artırabilirsiniz.
 
 ## <a name="per-item-limits"></a>Öğe başına sınırlar
 
@@ -149,7 +173,7 @@ Otomatik ölçeklendirme ile işleme ve depolama limitlerinin daha ayrıntılı 
 | Sistemin ölçekleyebilir en az RU/sn | `0.1 * Tmax`|
 | Geçerli RU/s, sistem şu şekilde ölçeklendirilir  |  `0.1*Tmax <= T <= Tmax`, kullanıma göre|
 | Saat başına minimum faturalanabilir RU/sn| `0.1 * Tmax` <br></br>Faturalandırma, sistem saatte bir veya daha yüksek olan en yüksek RU/sn için faturalandırdığınız saat başına yapılır `0.1*Tmax` . |
-| Bir kapsayıcı için en düşük otomatik ölçeklendirme en büyük RU/sn  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`En yakın 1000 RU/sn 'ye yuvarlanır |
+| Bir kapsayıcı için en düşük otomatik ölçeklendirme en büyük RU/sn  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` En yakın 1000 RU/sn 'ye yuvarlanır |
 | Bir veritabanı için en düşük otomatik ölçeklendirme en büyük RU/sn  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`, en yakın 1000 RU/sn 'ye yuvarlanır. <br></br>Göz önünde, veritabanınızda 25 ' ten fazla kapsayıcı varsa, sistem ek kapsayıcı başına en az RU/sn 1000 olan en düşük otomatik ölçeklendirme sayısını artırır. Örneğin, 30 kapsayıcılarınız varsa, ayarlayabileceğiniz en düşük otomatik ölçeklendirme RU/sn, 9000 RU/sn 'dir (900-9000 RU/s arasında ölçeklenirken).
 
 ## <a name="sql-query-limits"></a>SQL sorgu sınırları
@@ -159,14 +183,14 @@ Cosmos DB, [SQL](how-to-sql-query.md)kullanılarak öğelerin sorgulanmasını d
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | Maksimum SQL sorgusu uzunluğu| 256 KB |
-| Sorgu başına en fazla birleşim| e<sup>*</sup>|
-| Sorgu başına en fazla UDF| (<sup>*</sup>|
+| Sorgu başına en fazla birleşim| e <sup>*</sup>|
+| Sorgu başına en fazla UDF| ( <sup>*</sup>|
 | Çokgen başına en fazla punto| 4096 |
 | Kapsayıcı başına en fazla dahil edilen yol| 500 |
 | Kapsayıcı başına çıkarılan en fazla yol sayısı| 500 |
 | Bileşik dizindeki maksimum Özellikler| 8 |
 
-<sup>*</sup>Azure desteği ile iletişime geçerek bu SQL sorgu sınırlarını artırabilirsiniz.
+<sup>*</sup> Azure desteği ile iletişime geçerek bu SQL sorgu sınırlarını artırabilirsiniz.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API 'sine özgü sınırlar
 

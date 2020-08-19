@@ -4,15 +4,15 @@ description: Tarih ve saat SQL sistem işlevlerini tarih saat ve zaman damgası 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 460abbc0b2a2f277aaeed57c5b938de530696776
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224960"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605185"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Tarih ve saat işlevleri (Azure Cosmos DB)
 
@@ -20,7 +20,7 @@ Tarih ve saat işlevleri Azure Cosmos DB tarih saat ve zaman damgası işlemleri
 
 ## <a name="functions-to-obtain-the-date-and-time"></a>Tarih ve saati elde etmek için işlevler
 
-Aşağıdaki skaler işlevler, Şu anki UTC Tarih ve saatini iki şekilde almanızı sağlar: ISO 8601 biçimine uygun bir dize veya değeri, değeri UNIX dönemi olan bir sayısal zaman damgasına (milisaniye olarak) sahip olur:
+Aşağıdaki skaler işlevler üç biçimde geçerli UTC Tarih ve saatini almanıza olanak sağlar: ISO 8601 biçimine uygun bir dize, değeri, UNIX dönemi 'nden bu yana geçen milisaniye sayısı veya değeri, UNIX dönemi bu yana geçen 100 nanosaniyelik Ticks sayısı olan sayısal bir zaman damgası olan sayısal bir zaman damgasıdır. :
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
@@ -28,13 +28,16 @@ Aşağıdaki skaler işlevler, Şu anki UTC Tarih ve saatini iki şekilde alman�
 
 ## <a name="functions-to-work-with-datetime-values"></a>DateTime değerleriyle çalışacak işlevler
 
-Aşağıdaki işlevler, DateTime değerlerini kolayca yönetmenize olanak sağlar:
+Aşağıdaki işlevler, DateTime, timestamp ve Tick değerlerini kolayca yönetmenize olanak sağlar:
 
 * [DateTimeAdd](sql-query-datetimeadd.md)
-* [Tarih TimeDiff](sql-query-datetimediff.md)
+* [DateTimeDiff](sql-query-datetimediff.md)
 * [DateTimeFromParts](sql-query-datetimefromparts.md)
 * [DateTimePart](sql-query-datetimepart.md)
 * [DateTimeToTicks](sql-query-datetimetoticks.md)
+* [DateTimeToTimestamp](sql-query-datetimetotimestamp.md)
+* [TicksToDateTime](sql-query-tickstodatetime.md)
+* [TimestampToDateTime](sql-query-timestamptodatetime.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

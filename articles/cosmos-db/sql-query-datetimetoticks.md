@@ -4,20 +4,20 @@ description: Azure Cosmos DB 'de SQL sistem işlevi DateTimeToTicks hakkında bi
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a6fcff691ee5278ed0a9e1c132f8ecebbee9431c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227497"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605143"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB)
 
-Belirtilen TarihSaat değeri ticks öğesine dönüştürür. Tek bir onay, saniyenin 100 nanosaniye veya 1 10-milimetre Onth sayısını temsil eder.
-  
+Belirtilen TarihSaat değeri ticks öğesine dönüştürür. Tek bir onay, saniyenin 100 nanosaniye veya 1 10-milimetre Onth sayısını temsil eder. 
+
 ## <a name="syntax"></a>Söz dizimi
   
 ```sql
@@ -31,7 +31,7 @@ DateTimeToTicks (<DateTime>)
 
 ## <a name="return-types"></a>Dönüş türleri
 
-Pozitif bir tamsayı değeri döndürür.
+, UNIX dönemi bu yana geçen 100-nanosaniyelik Tick 'in geçerli sayısı olan işaretli bir sayısal değer döndürür. Diğer bir deyişle, DateTimeToTicks, 00:00:00 Perşembe, 1 Ocak 1970 ve bu yana geçen 100-nanosaniyelik ticks sayısını döndürür.
 
 ## <a name="remarks"></a>Açıklamalar
 

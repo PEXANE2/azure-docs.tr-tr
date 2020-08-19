@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7411b4c000569693335cb0438fe186b290750247
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88602457"
+ms.locfileid: "88604683"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -215,7 +215,7 @@ Trafik şu şekilde izler: şube cihazı >ISP->Microsoft ağ Edge->Microsoft DC 
 
 Evet. Tercihen tümleşik [sanal WAN iş ortaklarımız](../articles/virtual-wan/virtual-wan-locations-partners.md)tarafından IPSec 'i destekleyen bir internet bağlantısı ve fiziksel cihaz. İsteğe bağlı olarak, Azure ile yapılandırmayı ve bağlantıyı tercih ettiğiniz cihazdan el ile yönetebilirsiniz.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Bir bağlantıda (VPN, ExpressRoute veya sanal ağ) varsayılan yolu (0.0.0.0/0) etkinleştirmek Nasıl yaparım?:
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Nasıl yaparım? bir bağlantıda (VPN, ExpressRoute veya sanal ağ) varsayılan yol (0.0.0.0/0) etkinleştirilsin mi?
 
 Bir sanal hub, bağlantıda ' Enabled ' olduğunda, bir sanal ağ/siteden siteye VPN/ExpressRoute bağlantısına öğrenilen bir varsayılan yol yayabilir. Kullanıcı bir sanal ağ bağlantısını, bir VPN bağlantısını veya ExpressRoute bağlantısını düzenlediğinde bu bayrak görünür. Varsayılan olarak, bir site veya ExpressRoute devresi bir hub 'a bağlıyken bu bayrak devre dışıdır. Sanal ağı bir sanal hub 'a bağlamak için bir sanal ağ bağlantısı eklendiğinde varsayılan olarak etkindir. Varsayılan yol, sanal WAN hub 'ında değil; Varsayılan yol, hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak sanal WAN hub tarafından zaten öğrenildiği ya da başka bir bağlı sitede Zorlamalı tünel etkinse yayılır.
 
@@ -239,11 +239,11 @@ Bir sanal hub 'a birden çok ExpressRoute bağlantı hattı bağlandığında, b
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Sanal WAN, Azure trafiği için VPN üzerinden ExpressRoute 'u tercih ediyor
 
-Yes 
+Evet.
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Bir sanal WAN hub 'ının bir ExpressRoute bağlantı hattı ve bu ağa bağlı bir VPN sitesi olduğunda, bir VPN bağlantı yolunun ExpressRoute üzerinden tercihe göre yapılmasına neden olacak?
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Bir sanal WAN hub 'ının bir ExpressRoute bağlantı hattı ve bu ağa bağlı bir VPN sitesi olduğunda, ExpressRoute üzerinden bir VPN bağlantı yolunun tercih edildiği ne olur?
 
-ExpressRoute bağlantı hattı sanal hub 'a bağlıyken, Microsoft Edge yönlendiricileri, şirket içi ve Azure arasındaki iletişimin ilk düğümüdür. Bu uç yönlendiriciler, sanal WAN ExpressRoute Gateway 'ler ile iletişim kurar ve sanal WAN 'daki ağ geçitleri arasındaki tüm yolları denetleyen sanal hub yönlendiricisinden yolları öğrenirsiniz. Microsoft Edge yönlendiricileri, sanal hub ExpressRoute yollarını, şirket içinde öğrendiği yollar üzerinde daha yüksek bir tercihe göre işler. VPN sitesinin yol uzunluğu daha uzun OLMASıNA neden olmadığı sürece, VPN bağlantısının, sanal hub için birincil orta hale gelmesi nedeniyle, VPN sitesi daha uzun bir yol uzunluğuna sahip değilse, sanal hub, ExpressRoute ağ geçidi ile VPN Learnt yollarını paylaşmaya devam eder ve Microsoft Edge yönlendiricilerinin şirket içi yollar üzerinden VPN yollarını tercih etmesini sağlar. 
+ExpressRoute bağlantı hattı sanal hub 'a bağlıyken, Microsoft Edge yönlendiricileri, şirket içi ve Azure arasındaki iletişimin ilk düğümüdür. Bu uç yönlendiriciler, sanal WAN ExpressRoute ağ geçitleriyle iletişim kurar, bu da sanal WAN 'daki tüm ağ geçitleri arasındaki tüm yolları denetleyen sanal hub yönlendiricisinden yollar öğrenmelidir. Microsoft Edge yönlendiricileri, sanal hub ExpressRoute yollarını, şirket içinde öğrenilmiş yollar üzerinde daha yüksek bir tercihe göre işler. Herhangi bir nedenden dolayı, VPN bağlantısı, yolların (ExpressRoute ve VPN arasındaki yük devretme senaryoları) öğrenilmesi için sanal hub 'ın birincil orta haline gelirse, VPN sitesinin yol uzunluğu daha uzun OLMASıNA neden olmadığı sürece, sanal hub, Azure ile öğrenilen yolları ExpressRoute ağ geçidiyle paylaşmaya devam eder ve Microsoft Edge yönlendiricilerinin şirket içi yollar üzerinden VPN yollarını tercih etmesini sağlar.
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>İki hub (hub 1 ve 2) bağlı olduğunda ve hub 'lara bir fiyona yay olarak bağlı bir ExpressRoute bağlantı hattı varsa, Merkez 2 ' de bağlı olan VNet 'e ulaşmak için hub 1 ' e bağlı VNet 'in yolu nedir?
 
@@ -253,12 +253,13 @@ Geçerli davranış, VNet-VNet bağlantısı için hub-hub üzerinden ExpressRou
 
 IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv6 desteği olan bir VNet 'iniz varsa ve VNet 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo şu anda desteklenmemektedir.
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Çeşitli sanal WAN işlevlerini otomatikleştirerek betikler tarafından kullanılacak önerilen API sürümü nedir?
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Çeşitli sanal WAN işlevlerini otomatikleştirerek betikler tarafından kullanılacak önerilen API sürümü nedir?
 
 Minimum 05-01-2020 sürümü (Mayıs 1 2020) gereklidir. 
 
-### <a name="any-virtual-wan-limits"></a>Tüm sanal WAN limitleri?
-Sanal WAN sınırları: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits
+### <a name="are-there-any-virtual-wan-limits"></a>Herhangi bir sanal WAN sınırı var mı?
+
+Abonelik ve hizmet limitleri sayfasındaki [sanal WAN sınırları](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits) bölümüne bakın.
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Sanal WAN türleri (temel ve standart) arasındaki farklar nelerdir?
 

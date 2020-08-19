@@ -121,6 +121,8 @@
           href: howto-create-custom-analytics.md
         - name: Power BI’da verilerinizi görselleştirme
           href: howto-connect-powerbi.md
+        - name: Dosya yüklemelerini yapılandırma ve kullanma
+          href: howto-configure-file-uploads.md
     - name: Yönetim
       items:
         - name: Uygulamanızı yönetme

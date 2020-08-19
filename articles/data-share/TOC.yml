@@ -6,6 +6,11 @@
       href: overview.md
     - name: Desteklenen veri depoları
       href: supported-data-stores.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Veri paylaşımı oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: Öğreticiler
   expanded: true
   items:

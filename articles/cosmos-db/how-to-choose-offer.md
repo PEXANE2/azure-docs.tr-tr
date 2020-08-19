@@ -4,14 +4,14 @@ description: İş yükünüz için standart (el ile) sağlanan aktarım hızı v
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116817"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605207"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
 
@@ -37,7 +37,10 @@ Aşağıdaki tabloda standart (el ile) ve otomatik ölçeklendirme arasındaki �
 ## <a name="understand-your-traffic-patterns"></a>Trafik desenlerinizi anlayın
 
 ### <a name="new-applications"></a>Yeni uygulamalar ###
-Yeni bir uygulama oluşturuyorsanız ve trafik modelinizi henüz bilmiyorsanız, başlangıçta aşırı sağlamayı önlemek için RU/s (veya minimum RU/sn) giriş noktasında başlamak isteyebilirsiniz. Ya da yüksek ölçekli bir uygulamanız olması gerekmiyorsa, maliyeti iyileştirmek için en az RU/sn giriş noktası sağlamak isteyebilirsiniz. Her iki durumda da standart (el ile) veya otomatik ölçeklendirme uygundur. Şunları göz önünde bulundurmanız gerekir:
+
+Yeni bir uygulama oluşturuyorsanız ve trafik modelinizi henüz bilmiyorsanız, başlangıçta aşırı sağlamayı önlemek için RU/s (veya minimum RU/sn) giriş noktasında başlamak isteyebilirsiniz. Ya da yüksek ölçekli bir uygulamanız olması gerekmiyorsa, maliyeti iyileştirmek için en az RU/sn giriş noktası sağlamak isteyebilirsiniz. Düşük beklenen trafiğe sahip küçük uygulamalar için [sunucusuz](throughput-serverless.md) kapasite modunu da dikkate alabilirsiniz.
+
+Standart (el ile) veya otomatik ölçeklendirme kullanmayı planladığınızdan, şunları göz önünde bulundurmanız gerekir:
 
 400 RU/sn giriş noktasında standart (el ile) RU/s sağlarsanız, üretilen işi el ile değiştirmediğiniz müddetçe 400 RU/s üzerinde kullanamazsınız. Standart (el ile) sağlanan aktarım hızı ücreti saat başına 400 RU/sn için faturalandırılırsınız.
 

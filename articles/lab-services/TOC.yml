@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: Kapasite sınırları
       href: capacity-limits.md
+    - name: Laboratuvarlar için maliyet yönetimi
+      href: cost-management-guide.md
     - name: Senaryolar
       items:
         - name: Sınıfları yönetmek Laboratuvar Servislerini kullanma
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: Laboratuvar hesabında laboratuvarları yönetme
           href: manage-labs.md
-        - name: VM’lerin otomatik kapatılmasını yapılandırma
+        - name: Laboratuvar hesabı için VM’lerin otomatik kapatılmasını yapılandırma
           href: how-to-configure-lab-accounts.md
         - name: Laboratuvar oluşturucusu ekleme
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: Destek bilgilerini belirtme (laboratuvar hesabı sahibi)
           href: lab-account-owner-support-information.md
-        - name: Laboratuvarlar için maliyet yönetimi
-          href: cost-management-guide.md
     - name: Sınıf laboratuvarlarını oluşturma ve yapılandırma (eğitimci)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: Linux için uzak masaüstü bağlantısını etkinleştirme
           href: how-to-enable-remote-desktop-linux.md
-        - name: Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme
+        - name: Laboratuvar için VM’lerin otomatik kapatılmasını yapılandırma
           href: how-to-enable-shutdown-disconnect.md
         - name: Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
           items:

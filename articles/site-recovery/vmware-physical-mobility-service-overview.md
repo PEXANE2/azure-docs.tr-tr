@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131790"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604731"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
@@ -37,6 +37,7 @@ Anında yükleme, [çoğaltmayı etkinleştirmek](vmware-azure-enable-replicatio
 
 - Tüm gönderme yükleme [önkoşullarının](vmware-azure-install-mobility-service.md) karşılandığından emin olun.
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
+- SUSE Linux Enterprise Server 11 SP4 için [9,36 sürümü](https://support.microsoft.com/help/4578241/) , en son yükleyicinin [yapılandırma sunucusu ve genişleme işlem sunucusu 'nda kullanılabilir](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) olmasını sağlayın
 
 Anında yükleme iş akışı aşağıdaki bölümlerde açıklanmıştır:
 
@@ -129,7 +130,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Kurulum günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 `/InstallLocation`| İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu (herhangi bir klasör) belirtir.
@@ -140,9 +141,9 @@ Kurulum günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Aracı yapılandırma günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
-`/CSEndPoint` | Zorunlu parametre. `<CSIP>`yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
+`/CSEndPoint` | Zorunlu parametre. `<CSIP>` yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 `/PassphraseFilePath` |  Zorunlu. Parolanın konumu. Geçerli bir UNC veya yerel dosya yolu kullanın.
 
 ### <a name="linux-machine"></a>Linux makinesi
@@ -170,7 +171,7 @@ Aracı yapılandırma günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgent
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 `-d` | İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu belirtir: `/usr/local/ASR` .
 `-v` | Zorunlu. Mobility hizmetinin yüklü olduğu platformu belirtir. <br/> VMware VM 'Leri/fiziksel sunucuları için **VMware** . <br/> Azure VM 'Leri için **Azure** .
@@ -180,14 +181,14 @@ Sözdizimi | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
-`-i` | Zorunlu parametre. `<CSIP>`yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+`-i` | Zorunlu parametre. `<CSIP>` yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 `-P` |  Zorunlu. Parolasının kaydedildiği dosyanın tam dosya yolu. Geçerli bir klasör kullanın.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure sanal makine Aracısı
 
 - **Windows VM 'leri**: Mobility hizmetinin 9.7.0.0 sürümünden [Azure VM Aracısı](../virtual-machines/extensions/features-windows.md#azure-vm-agent) , Mobility hizmeti yükleyicisi tarafından yüklenir. Bu, makinenin Azure 'a devredilmesini sağlar, Azure VM, herhangi bir VM uzantısını kullanmak için aracı yükleme önkoşullarını karşılar.
-- **Linux VM 'leri**: [Walınuxagent](../virtual-machines/extensions/update-linux-agent.md) yük DEVRETMEDEN sonra Azure VM 'ye el ile yüklenmelidir.
+- **Linux VM 'leri**:  [Walınuxagent](../virtual-machines/extensions/update-linux-agent.md) yük DEVRETMEDEN sonra Azure VM 'ye el ile yüklenmelidir.
 
 ## <a name="locate-installer-files"></a>Yükleyici dosyalarını bul
 
@@ -204,13 +205,27 @@ Yükleyici dosyası | İşletim sistemi (yalnızca 64 bit)
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 ve SP3 'Ü içerir.
-`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+[İndirilip bu klasöre el ile yerleştirilecek](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6,4 </br> Oracle Enterprise Linux 6,5
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16,04 LTS sunucusu
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Deyi 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+
+### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>SUSE 11 SP3 sunucusu için en son Mobility Aracısı yükleyicisini indirin
+
+[9,36 sürümü](https://support.microsoft.com/help/4578241/) ile **SUSE Linux Enterprise Server 11 SP3 makinelerini güncelleştirmek veya korumak için bir önkoşul** olarak:
+
+1. En son Mobility Aracısı yükleyicisinin Microsoft Indirme Merkezi ' nden indirildiğinden ve yapılandırma sunucusuna ve tüm genişleme işlem sunucularında bulunan Push Installer deposuna yerleştirildiğinden emin olun
+2. SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini [indirin](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) .
+3. Configuration Server 'a gidin, SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini aşağıdaki yollarla kopyalayın
+    1. INSTALL_DIR \home\svsystems\pushınstallsvc\repository
+    1.  \Home\svsystems\admin\web\sw klasörleri INSTALL_DIR
+4. Şimdi, ilişkili genişleme işlem sunucularına giderek, yükleyiciyi 3. adımda bahsedilen yolların her ikisinde de kopyalayın &.
+5. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\admin\web\sw yolu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

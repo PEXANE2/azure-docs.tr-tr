@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560036"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605445"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Öğretici: kullanıma hazır tehditleri algılama
 
@@ -29,40 +29,50 @@ ms.locfileid: "85560036"
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
- [Veri kaynaklarınızı](quickstart-onboard.md)   Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanız için Azure Sentinel, kullanıma hazır yerleşik şablonlar sağlar. Bu şablonlar, Microsoft 'un, bilinen tehditler, yaygın saldırı vektörleri ve şüpheli etkinlik yükseltme zincirlerine göre güvenlik uzmanı ve analistlerinin ekibi tarafından tasarlanmıştır. Bu şablonları etkinleştirdikten sonra, ortamınız genelinde şüpheli görünen tüm etkinlikleri otomatik olarak arar. Birçok şablon, gereksinimlerinize göre, etkinlikleri aramak veya filtrelemek için özelleştirilebilir. Bu şablonlar tarafından oluşturulan uyarılar, ortamınızda atayabileceğiniz ve araştırabilmeniz için olaylar oluşturur.
+[Veri kaynaklarınızı](quickstart-onboard.md)   Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun oluştuğunda bildirim almak isteyeceksiniz. Azure Sentinel, tehdit algılama kuralları oluşturmanıza yardımcı olacak yerleşik, yerleşik şablonlar sağlar. Bu şablonlar, Microsoft 'un, bilinen tehditler, yaygın saldırı vektörleri ve şüpheli etkinlik yükseltme zincirlerine göre güvenlik uzmanı ve analistlerinin ekibi tarafından tasarlanmıştır. Bu şablonlardan oluşturulan kurallar, şüpheli görünen herhangi bir etkinlik için ortamınızda otomatik olarak arama yapar. Şablonların birçoğu, etkinlikleri aramak veya gereksinimlerinize göre onları filtrelemek için özelleştirilebilir. Bu kurallar tarafından oluşturulan uyarılar, ortamınızda atayabileceğiniz ve araştırabilmeniz için olaylar oluşturur.
 
 Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur:
 
 > [!div class="checklist"]
-> * Kullanıma hazır algılamaları kullanma
+> * Kullanıma hazır tehdit algılamalarını kullanma
 > * Tehdit yanıtlarını otomatikleştirin
 
 ## <a name="about-out-of-the-box-detections"></a>Hazır gelen algılamalar hakkında
 
 Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından** **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
 
-   ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın](media/tutorial-detect-built-in/view-oob-detections.png)
+   :::image type="content" source="media/tutorial-detect-built-in/view-oob-detections.png" alt-text="Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın":::
 
 Aşağıdaki şablon türleri kullanılabilir:
 
-- **Microsoft** güvenlik-Microsoft güvenlik şablonları, diğer Microsoft Güvenlik çözümlerinde oluşturulan uyarılardan gerçek zamanlı olarak Azure Sentinel olaylarını otomatik olarak oluşturur. Benzer mantığa sahip yeni kurallar oluşturmak için Microsoft güvenlik kurallarını şablon olarak kullanabilirsiniz. Güvenlik kuralları hakkında daha fazla bilgi için bkz. [Microsoft Güvenlik uyarılarından olayları otomatik olarak oluşturma](create-incidents-from-alerts.md).
-- **Fusion teknolojisine** göre, Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama, birden fazla ürün genelinde çok sayıda düşük kaliteli uyarı ve olayla Yüksek uygunluğa ve eylem yapılabilir olaylara ilişkilendirilebilen ölçeklenebilir makine öğrenimi algoritmaları kullanır. Fusion varsayılan olarak etkindir. Logic Hidden olduğundan, bunu birden fazla kural oluşturmak için şablon olarak kullanamazsınız.
-- **Machine Learning davranış analizi** -bu şablonlar, özel Microsoft makine öğrenimi algoritmalarını temel alır. bu nedenle, nasıl çalıştıkları ve ne zaman çalıştıkları hakkında iç mantığı göremezsiniz. Logic Hidden olduğundan, bunu birden fazla kural oluşturmak için şablon olarak kullanamazsınız.
--   **Zamanlanmış** – zamanlanmış analitik kurallar, Microsoft güvenlik uzmanları tarafından yazılan zamanlanmış sorgulardır. Sorgu mantığını görebilir ve üzerinde değişiklik yapabilirsiniz. Benzer mantığa sahip yeni kurallar oluşturmak için, zamanlanmış kuralları şablon olarak kullanabilirsiniz.
+- **Microsoft Güvenlik**
+   
+   Microsoft güvenlik şablonları, diğer Microsoft Güvenlik çözümlerinde oluşturulan uyarılardan gerçek zamanlı olarak Azure Sentinel olaylarını otomatik olarak oluşturur. Benzer mantığa sahip yeni kurallar oluşturmak için Microsoft güvenlik kurallarını şablon olarak kullanabilirsiniz. Güvenlik kuralları hakkında daha fazla bilgi için bkz. [Microsoft Güvenlik uyarılarından olayları otomatik olarak oluşturma](create-incidents-from-alerts.md).
+
+- **Fusion** 
+
+    Fusion teknolojisine bağlı olarak, Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama, birden fazla ürün genelinde çok sayıda düşük kaliteli uyarı ve olayı Yüksek uygunluğa ve eyleme dönüştürülebilir olaylara ilişkilendirebilen ölçeklenebilir makine öğrenimi algoritmaları kullanır. Fusion varsayılan olarak etkindir. Logic Hidden ve bu nedenle özelleştirilebilir olmadığından, bu şablonla yalnızca bir kural oluşturabilirsiniz.
+
+- **Machine Learning davranış analizi**
+
+    Bu şablonlar, Microsoft makine öğrenimi algoritmalarını temel alır. bu nedenle, nasıl çalıştıkları ve ne zaman çalıştıkları hakkında iç mantığı göremezsiniz. Logic Hidden ve bu nedenle özelleştirilebilir olmadığından, bu türden her şablonla yalnızca bir kural oluşturabilirsiniz.
+
+- **Zamanlanan**
+
+    Zamanlanan analiz kuralları, Microsoft güvenlik uzmanları tarafından yazılan yerleşik sorguları temel alır. Sorgu mantığını görebilir ve üzerinde değişiklik yapabilirsiniz. Zamanlanan kurallar şablonunu kullanabilir ve yeni kurallar oluşturmak için Sorgu mantığı ve zamanlama ayarlarını özelleştirebilirsiniz.
 
 ## <a name="use-out-of-the-box-detections"></a>Kullanıma hazır algılamaları kullanma
 
-1. Yerleşik bir şablon kullanmak için, bu şablonu temel alan yeni bir etkin kural oluşturmak üzere **kural oluştur** ' a tıklayın. Her giriş, otomatik olarak denetlenen gerekli veri kaynaklarının bir listesini içerir ve bu, **oluşturma kuralının** devre dışı bırakılmakta kaynaklanabilir.
+1. Yerleşik bir şablon kullanmak için şablon adına tıklayın ve ardından Ayrıntılar bölmesindeki **kural oluştur** düğmesine tıklayarak bu şablonu temel alan yeni bir etkin kural oluşturun. Her şablonda gerekli veri kaynakları listesi bulunur. Şablonu açtığınızda, veri kaynakları otomatik olarak kullanılabilirlik için denetlenir. Bir kullanılabilirlik sorunu varsa, **kural oluştur** düğmesi devre dışı bırakılabilir veya bu etkiye bir uyarı görebilirsiniz.
   
-   ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın](media/tutorial-detect-built-in/use-built-in-template.png)
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Algılama kuralı Önizleme bölmesi":::
  
-1. Bu, seçilen şablona göre kural oluşturma Sihirbazı ' nı açar. Tüm ayrıntılar, yeniden doldurulur ve **zamanlanan kurallar** veya **Microsoft güvenlik kuralları**için, mantığı kuruluşunuza daha iyi uyacak şekilde özelleştirebilir veya yerleşik şablonu temel alan ek kurallar oluşturabilirsiniz. Kural oluşturma Sihirbazı 'ndaki adımları uyguladıktan ve şablonu temel alan bir kural oluşturmayı tamamladıktan sonra, yeni kural **etkin kurallar** sekmesinde görünür.
+1. **Kural oluştur** düğmesine tıklamak, seçilen şablonu temel alan kural oluşturma Sihirbazı ' nı açar. Tüm ayrıntılar, yeniden doldurulur ve **zamanlanan** veya **Microsoft Güvenlik** şablonlarıyla, mantığın ve diğer kural ayarlarının özel gereksinimlerinize daha uygun olması için özelleştirebilirsiniz. Bu işlemi, yerleşik şablonu temel alan ek kurallar oluşturmak için yineleyebilirsiniz. Kural oluşturma sihirbazındaki adımları sona erdikten sonra, şablonu temel alan bir kural oluşturmayı bitirirsiniz. Yeni kurallar, **etkin kurallar** sekmesinde görünür.
 
-Sihirbazdaki alanlarla ilgili daha fazla bilgi için bkz. [öğretici: şüpheli tehditleri algılamak için özel analitik kurallar oluşturma](tutorial-detect-threats-custom.md).
-
-
+    Kural oluşturma Sihirbazı 'nda kurallarınızı özelleştirme hakkında daha fazla bilgi için bkz. [öğretici: tehditleri algılamak için özel analiz kuralları oluşturma](tutorial-detect-threats-custom.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu öğreticide, Azure Sentinel kullanarak tehditleri algılamaya nasıl başlacağınız hakkında daha fazla öğrenirsiniz. 
 
 Tehditlere yönelik yanıtlarınızı otomatik hale getirmeyi öğrenmek için [Azure Sentinel 'de otomatik tehdit yanıtları ayarlayın](tutorial-respond-threats-playbook.md).

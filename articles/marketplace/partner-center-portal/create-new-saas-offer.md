@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166731"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604751"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS teklifi oluşturma
 
@@ -30,7 +30,7 @@ Ticari Market 'te hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-saas.png)
 
 > [!NOTE]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca çevrimiçi mağazalarda görünür. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
 
 ## <a name="new-offer"></a>Yeni teklif
 
@@ -185,7 +185,7 @@ Teklifiniz, teklifiniz ve kategori seçiminiz ile ilişkili işlem yeteneklerine
 - Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
 - Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
 
-[Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)her bir storefront için geçerli kategorilerin ve alt kategorilerin tam listesine bakın.
+[Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)her çevrimiçi mağaza için geçerli kategorilerin ve alt kategorilerin tam listesini görün.
 
 ### <a name="industries"></a>Sektörler
 
@@ -269,11 +269,11 @@ Bu alan gereklidir.
 
 - **Gizlilik ilkesi** (gerekli) – kuruluşunuzun gizlilik ilkesine bağlayın. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
 - **CSP program pazarlama malzemeleri** (isteğe bağlı) – teklifinizi [bulut çözümü sağlayıcısı (CSP)](../cloud-solution-providers.md) programına genişletmeyi seçerseniz, pazarlama malzemeleri için bir bağlantı sağlayın. CSP, CSP iş ortaklarının teklifinizi paketlemelerine, pazarlamaya ve satmasına olanak tanıyarak, teklifinizi daha geniş bir yelpazede nitelikli müşterilere genişletir. Bu satıcıların, teklifinizi pazarlama malzemelerinden sorumlu olması gerekir. Daha fazla bilgi için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
-- **Kullanışlı bağlantılar** (isteğe bağlı) – uygulamanız veya bir **başlık** ve **URL 'si**sağlanarak listelenen ilgili hizmetlerinize ilişkin isteğe bağlı ek çevrimiçi belgeler. **+ URL Ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
+- **Kullanışlı bağlantılar** (isteğe bağlı) – uygulamanız veya bir **başlık**  ve  **URL 'si**sağlanarak listelenen ilgili hizmetlerinize ilişkin isteğe bağlı ek çevrimiçi belgeler. **+ URL Ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
 
 #### <a name="contact-information"></a>İletişim bilgileri
 
-- **Kişiler** – her müşteri kişisi için, bir çalışan **adı**, **telefon numarası**ve **e-posta** adresi sağlayın ( *bunlar genel olarak gösterilmez* ). **Destek kişi** grubu Için bir **Destek URL 'si** gereklidir (Bu, herkese açık *şekilde görüntülenecektir)* .
+- **Kişiler** – her müşteri kişisi için, bir çalışan  **adı**,  **telefon numarası**ve **e-posta** adresi sağlayın ( *bunlar genel olarak gösterilmez* ). **Destek kişi** grubu Için bir **Destek URL 'si** gereklidir (Bu, herkese açık *şekilde görüntülenecektir)* .
 
   - **Destek kişisi** (gerekli) – genel destek soruları için.
   - **Mühendislik ilgili kişisi** (gerekli) – Teknik sorular için.
@@ -282,14 +282,14 @@ Bu alan gereklidir.
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
 - **Belgeler** (gerekli) – Teklifinizle ilgili pazarlama belgelerini, en az bir ve teklif başına üç adede kadar belgeyi PDF biçiminde ekleyin.
-- **Görüntüler** – logo görüntülerini png biçiminde karşıya yükle:
+- **Görüntüler**  – logo görüntülerini png biçiminde karşıya yükle:
 
   - **Küçük** (48 x 48 piksel, gereklidir)
   - **Orta** (90 x 90 piksel, gereklidir)
   - **Büyük** (216 x 216 piksel, gereklidir)
   - **Geniş** (255 x 115 piksel) (isteğe bağlı)
 
-   Bu üç logo boyutu, storefronts 'de farklı yerlerde kullanılır:
+   Bu üç logo boyutu, çevrimiçi mağazalardaki farklı yerlerde kullanılır:
 
    -   Küçük logo (48 x 48 piksel) Azure Marketi arama sonuçlarında ve Microsoft AppSource ana sayfa ve arama sonuçları sayfasında görünür. 
    -   Orta logo (90 x 90 piksel) Microsoft Azure içinde yeni bir kaynak oluşturduğunuzda görüntülenir.
@@ -471,7 +471,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 , Teklifinizin CSP programında kullanılabilmesini sağlamak için, bulut çözümü sağlayıcılarının, müşterilerine paketlenmiş bir çözümün parçası olarak ürününüzü satmasına olanak sağlar. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](https://go.microsoft.com/fwlink/?linkid=2111109).
 
-## <a name="publish"></a>Yayımla
+## <a name="publish"></a>Yayımlama
 
 Teklifin tüm gerekli bölümlerini tamamladıktan sonra, portalın sağ üst köşesinde bulunan **gözden geçir ve Yayımla** ' yı seçin.
 

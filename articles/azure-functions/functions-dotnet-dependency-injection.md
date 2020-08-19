@@ -4,15 +4,15 @@ description: .NET işlevlerinde Hizmetleri kaydetmek ve kullanmak için bağıml
 author: craigshoemaker
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 09/05/2019
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: ee3caef30c573763db56f89aa4900aa62b8a436a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206104"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603867"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -22,7 +22,7 @@ Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetim
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
@@ -226,10 +226,10 @@ Ve `local.settings.json` özel ayarı aşağıdaki gibi yapılandırabilecek bir
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 Çağırma `Bind` özelliği, eşleşen özellik adlarına sahip değerleri özel örneğe kopyalar. Options örneği artık bir işleve eklemek için IoC kapsayıcısında kullanılabilir.
@@ -253,8 +253,57 @@ public class HttpTrigger
 
 Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](/aspnet/core/fundamentals/configuration/options) bakın.
 
-> [!WARNING]
-> *local.settings.json* veya appSettings gibi dosyalardaki değerleri okumaya çalışmadan kaçının *. { Tüketim planında Environment}. JSON* . Tetikleyici bağlantılarıyla ilgili bu dosyalardan okunan değerler, uygulama ölçeklenirken, ölçek denetleyicisi uygulamanın yeni örneklerini oluşturduğundan, barındırma altyapısının yapılandırma bilgilerine erişimi olmadığı için kullanılabilir değildir.
+### <a name="customizing-configuration-sources"></a>Yapılandırma kaynaklarını özelleştirme
+
+> [!NOTE]
+> Yapılandırma kaynağı özelleştirmesi, Azure Işlevleri ana bilgisayar sürümleri 2.0.14192.0 ve 3.0.14191.0 ' den başlayarak kullanılabilir.
+
+Ek yapılandırma kaynakları belirtmek için, `ConfigureAppConfiguration` işlev uygulamanızın sınıfındaki yöntemi geçersiz kılın `StartUp` .
+
+Aşağıdaki örnek, temel ve isteğe bağlı ortama özgü uygulama ayarları dosyalarından yapılandırma değerlerini ekler.
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+Özelliğine yapılandırma sağlayıcıları ekleyin `ConfigurationBuilder` `IFunctionsConfigurationBuilder` . Yapılandırma sağlayıcılarını kullanma hakkında daha fazla bilgi için [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)konusuna bakın.
+
+`FunctionsHostBuilderContext`, Öğesinden elde edilir `IFunctionsConfigurationBuilder.GetContext()` . Bu bağlamı, geçerli ortam adını almak ve işlev uygulama klasörünüzdeki yapılandırma dosyalarının konumunu çözümlemek için kullanın.
+
+Varsayılan olarak, *appsettings.js* gibi yapılandırma dosyaları, işlev uygulamasının çıkış klasörüne otomatik olarak kopyalanmaz. Dosyaların kopyalandığından emin olmak için *. csproj* dosyanızı aşağıdaki örnekle eşleşecek şekilde güncelleştirin.
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> Tüketim veya Premium planlarında çalışan işlev uygulamaları için, Tetiklerde kullanılan yapılandırma değerlerinde yapılan değişiklikler ölçeklendirme hatalarına neden olabilir. Sınıf tarafından bu özelliklerde yapılan tüm değişiklikler, `FunctionsStartup` işlev uygulaması başlatma hatasıyla sonuçlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 10/30/2019
-  ms.openlocfilehash: 131be4c87e0274050b6c7b374f75757c8d3f94f2
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.openlocfilehash: 03f1f908983487bb3ee5be88ced36a0848a731cc
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88167853"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88590447"
 landingContent:
 - title: Azure SQL Veritabanı
   linkLists:
@@ -37,6 +37,10 @@ landingContent:
       url: database/single-database-create-quickstart.md
     - text: Güvenlik duvarını yapılandırma
       url: database/firewall-create-server-level-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Veritabanı’na genel bakış
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61
   - linkListType: concept
     links:
     - text: SQL Server’dan geçirme
@@ -67,6 +71,10 @@ landingContent:
       url: managed-instance/connect-vm-instance-configure.md
     - text: Örnek veritabanını geri yükleme
       url: managed-instance/restore-sample-database-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Yönetilen Örneği’ne genel bakış
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
     - text: SQL Server’dan geçirme
@@ -95,6 +103,10 @@ landingContent:
       url: virtual-machines/windows/sql-vm-create-portal-quickstart.md
     - text: Azure VM üzerinde SQL oluşturma (Linux)
       url: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure VM üzerinde SQL Server’a genel bakış
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61
   - linkListType: concept
     links:
     - text: SQL Server’dan geçirme
@@ -145,14 +157,22 @@ landingContent:
       url: database/design-first-database-tutorial.md
     - text: İlk veritabanını tasarlama (C#)
       url: database/design-first-database-csharp-tutorial.md
-- title: Başvuru
+- title: Azure SQL’i öğrenme
   linkLists:
   - linkListType: learn
     links:
-    - text: Eğitim için SQL kaynakları
-      url: /sql/sql-server/educational-sql-resources
+    - text: Yeni başlayanlar için Azure SQL
+      url: https://aka.ms/azuresql4beginners
     - text: Azure SQL ile ilgili temel bilgiler
       url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Uygulamalı Azure SQL laboratuvarları
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL bootcamp
+      url: https://aka.ms/azuresqlbootcamp
+    - text: Eğitim için SQL kaynakları
+      url: /sql/sql-server/educational-sql-resources
+- title: Başvuru
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI örnekleri

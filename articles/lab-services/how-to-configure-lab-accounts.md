@@ -3,12 +3,12 @@ title: Azure Lab Services ' de sanal makinelerin otomatik olarak kapatılmasın�
 description: Bu makalede laboratuvar hesabındaki sanal makinelerin otomatik olarak kapatılmasını yapılandırma açıklanmaktadır.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589817"
+ms.locfileid: "88603898"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Laboratuvar hesabı için sanal makinelerin otomatik olarak kapatılmasını yapılandırın
 
@@ -35,4 +35,4 @@ Otomatik kapatılma [ayarları ile maliyet denetimini en üst düzeye çıkar](c
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Laboratuvar sahibi bu ayarı laboratuvar düzeyinde nasıl yapılandırabileceğinizi veya geçersiz kılacağınızı öğrenmek için bkz. [bağlantı kesildiğinde VM 'lerin otomatik kapatılmasını etkinleştirme](how-to-enable-shutdown-disconnect.md)
+Laboratuvar sahibi bu ayarı laboratuvar düzeyinde nasıl yapılandırabileceğinizi veya geçersiz kılacağınızı öğrenmek için bkz. [Laboratuvar Için sanal makinelerin otomatik olarak kapatılmasını yapılandırma](how-to-enable-shutdown-disconnect.md)

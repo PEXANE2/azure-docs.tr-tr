@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115663"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604903"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
@@ -84,7 +84,8 @@ Sıfırdan bir Key Vault sertifikası oluşturulduğunda, bir ilkenin sağlanmas
 Yüksek düzeyde, bir sertifika ilkesi aşağıdaki bilgileri içerir (tanımları [burada](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)bulunabilir):  
 
 -   X509 sertifika özellikleri: bir x509 sertifika isteği oluşturmak için kullanılan konu adını, konu diğer adlarını ve diğer özellikleri Içerir.  
--   Anahtar özellikleri: anahtar türü, anahtar uzunluğu, dışarı aktarılabilir ve Reusekeyonyenilemesi alanlarını içerir. Bu alanlar anahtar kasasının nasıl oluşturulacağını gösteren anahtar kasasına yönlendirir.  
+-   Anahtar özellikleri: anahtar türü, anahtar uzunluğu, dışarı aktarılabilir ve Reusekeyonyenilemesi alanlarını içerir. Bu alanlar anahtar kasasının nasıl oluşturulacağını gösteren anahtar kasasına yönlendirir. 
+     - Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Oct ( [burada](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenir) 
 -   Gizli özellikler: sertifikayı gizli olarak almak için, gizli değeri oluşturmak üzere adreslenebilir gizli dizi içerik türü gibi gizli özellikler içerir.  
 -   Ömür Işlemleri: KV sertifikası için ömür eylemleri içerir. Her ömür eylemi şunları içerir:  
 

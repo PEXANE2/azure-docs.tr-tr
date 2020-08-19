@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98ce4d5e82d65d911984dc45615253ddcae33ae1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589891"
+ms.locfileid: "88604589"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services için maliyet yönetimi
 
@@ -129,8 +129,8 @@ Bu ayarlar hem laboratuvar hesabı düzeyinde hem de laboratuvar düzeyinde yap�
     
 Bağlantı kesildiğinde VM 'lerin otomatik olarak kapatılmasını yapılandırma ve etkinleştirme hakkında bilgi için şu makalelere bakın:
 
-* [Laboratuvar hesabı için bağlantı kesildiğinde VM 'lerin otomatik olarak kapatılmasını yapılandırma](how-to-configure-lab-accounts.md)
-* [Bağlantı kesildiğinde VM 'lerin otomatik kapatılmasını etkinleştir](how-to-enable-shutdown-disconnect.md)
+* [Laboratuvar hesabı için sanal makinelerin otomatik olarak kapatılmasını yapılandırın](how-to-configure-lab-accounts.md)
+* [Laboratuvar için sanal makinelerin otomatik olarak kapatılmasını yapılandırma](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>Kota ile zamanlanan süre
 

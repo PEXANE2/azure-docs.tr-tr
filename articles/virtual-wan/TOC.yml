@@ -136,6 +136,10 @@
       items:
         - name: Günlükleri ve ölçümler
           href: logs-metrics.md
+    - name: Özel Bağlantı
+      items:
+        - name: Özel Bağlantı bağlanabilirliğini yapılandırma
+          href: howto-private-link.md
 - name: Başvuru
   items:
     - name: Azure PowerShell

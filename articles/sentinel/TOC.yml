@@ -58,10 +58,10 @@
               href: connect-azure-security-center.md
             - name: IoT için Azure Güvenlik Merkezi
               href: connect-asc-iot.md
+            - name: Azure Web Uygulaması Güvenlik Duvarı (WAF)
+              href: connect-azure-waf.md
             - name: Etki alanı adı sunucusu
               href: connect-dns.md
-            - name: Azure web uygulaması güvenlik duvarı
-              href: connect-azure-waf.md
             - name: Windows güvenlik duvarı
               href: connect-windows-firewall.md
             - name: Windows güvenlik olayları

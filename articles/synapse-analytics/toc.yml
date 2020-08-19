@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Veri Bilimcisi
       items:
-        - name: NYC Taxi ipuçları
+        - name: Azure AutoML kullanarak gerileme denemesi çalıştırma
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Apache Spark MLlib kullanarak sınıflandırma modeli oluşturma
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: Apache Spark’ı ek kitaplıklarla genişletme
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: Veri Analisti
       items:
         - name: Analiz için SQL isteğe bağlı özelliğini ve görselleştirmek için Synapse Studio’yu kullanma
@@ -202,8 +202,6 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark kavramları
               href: ./spark/apache-spark-concepts.md
-            - name: Çalışma zamanı dil ve kitaplık desteği
-              href: ./spark/apache-spark-version-support.md
             - name: Delta Lake nedir?
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Apache Spark performansı
@@ -212,6 +210,12 @@
               href: ./spark/apache-spark-autoscale.md
         - name: Geliştirme
           items:
+            - name: Kitaplıklar
+              items:
+                - name: Kitaplıkları ekleme ve yönetme
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: Çalışma zamanı dil ve kitaplık desteği
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio not defterleri
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: Apache Spark için .NET

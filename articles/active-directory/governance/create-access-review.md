@@ -11,20 +11,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056202"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605085"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
 Çalışanlar için gruplara ve uygulamalara erişim ve zaman içinde konuklar değişiklikleri. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Azure Active Directory (Azure AD) kullanarak Grup üyeleri veya uygulama erişimi için erişim gözden geçirmeleri oluşturabilir. Erişimi düzenli olarak gözden geçirmeniz gerekiyorsa yinelenen erişim İncelemeleri de oluşturabilirsiniz. Bu senaryolar hakkında daha fazla bilgi için bkz. [Kullanıcı erişimini yönetme](manage-user-access-with-access-reviews.md) ve [konuk erişimini yönetme](manage-guest-access-with-access-reviews.md).
+
+Erişim Incelemelerini etkinleştirme hakkında hızlı bir video izleyebilirsiniz:
+
+>[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
 Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
@@ -55,7 +59,12 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
 1. Erişim gözden geçirmesini yinelenen hale getirmek için **Sıklık** ayarını **bir saatten** **haftalık**, **aylık**, **üç aylık**, **yarı yıllık**veya **yıllık**olarak değiştirin. Her bir yinelenen serinin gözden geçiricilerin giriş için kaç gün sonra açık olacağını tanımlamak için **süre** kaydırıcısını veya metin kutusunu kullanın. Örneğin, aylık bir gözden geçirme için ayarlayabileceğiniz en uzun süre, çakışan incelemelerden kaçınmak için 27 gün olabilir.
 
-1. Yinelenen erişim gözden geçirme serisinin nasıl sonlandıralınacağını belirtmek için **bitiş** ayarını kullanın. Seriler üç şekilde bitemez: sürekli olarak gözden geçirmeler başlatacak şekilde, belirli bir tarihe kadar veya tanımlanan sayıda oluşumdan sonra sürekli olarak çalışır. Siz, başka bir Kullanıcı Yöneticisi veya başka bir genel yönetici, **ayarları**, bu tarihte sona erecek şekilde değiştirerek, oluşturulduktan sonra seriyi durdurabilir.
+1. Yinelenen erişim gözden geçirme serisinin nasıl sonlandıralınacağını belirtmek için **bitiş** ayarını kullanın. Seri üç şekilde bitebilirler: 
+    1. İncelemeleri süresiz olarak başlatmak için sürekli olarak çalışır
+    1. Belirli bir tarihe kadar
+    1. Tanımlı bir oluşum sayısı tamamlanana kadar. 
+  
+    Siz, başka bir Kullanıcı Yöneticisi veya başka bir genel yönetici, **ayarları**, bu tarihte sona erecek şekilde değiştirerek, oluşturulduktan sonra seriyi durdurabilir.
 
 1. **Kullanıcılar** bölümünde, erişim incelemesinin uygulandığı kullanıcıları belirtin. Erişim incelemeleri bir grubun üyeleri veya bir uygulamaya atanmış kullanıcılar için olabilir. Üye olan veya uygulamaya erişimi olan tüm kullanıcıları gözden geçirmek yerine, yalnızca üye olan (veya uygulamaya atanan) Konuk kullanıcıları gözden geçirmek için erişim incelemesini daha fazla kapsama aktarabilirsiniz.
 
@@ -83,9 +92,9 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
     ![Erişim incelemesi oluşturma-programlar](./media/create-access-review/programs.png)
 
-    Farklı amaçlar için erişim incelemelerini, programlar halinde düzenleyerek nasıl izleneceğini ve toplayacağınızı basitleştirebilirsiniz. Her erişim incelemesi bir programla bağlantılı olabilir. Daha sonra bir denetçi için rapor hazırlarken, belirli bir girişim için kapsamdaki erişim incelemelerine odaklanabilirsiniz. Programlar ve erişim gözden geçirme sonuçları, genel yönetici, Kullanıcı Yöneticisi, güvenlik yöneticisi veya güvenlik okuyucusu rolündeki kullanıcılar tarafından görülebilir.
+    Onları programlar halinde düzenleyerek, erişim incelemelerini toplamayı ve izlemeyi kolaylaştırabilirsiniz. Her erişim incelemesi bir programla bağlantılı olabilir. Daha sonra bir denetçi için rapor hazırlarken, belirli bir girişim için kapsamdaki erişim incelemelerine odaklanabilirsiniz. Programlar ve erişim gözden geçirme sonuçları, genel yönetici, Kullanıcı Yöneticisi, güvenlik yöneticisi veya güvenlik okuyucusu rolündeki kullanıcılar tarafından görülebilir.
 
-    Programların listesini görmek için, erişim İncelemeleri sayfasına gidin ve **Programlar**' ı seçin. Genel yönetici veya Kullanıcı Yöneticisi rollüyorsanız, ek programlar oluşturabilirsiniz. Örneğin, her uyumluluk girişimi veya iş hedefi için bir program olmasını seçebilirsiniz. Artık bir programa ihtiyacınız yoksa ve onunla bağlantılı denetimleri yoksa, onu silebilirsiniz.
+    Programların listesini görmek için, erişim İncelemeleri sayfasına gidin ve **Programlar**' ı seçin. Genel yönetici veya Kullanıcı Yöneticisi rollüyorsanız, ek programlar oluşturabilirsiniz. Örneğin, her uyumluluk girişimi veya iş hedefi için bir program olmasını seçebilirsiniz. Artık bir programa ihtiyacınız kalmadığında ve ona bağlı denetimleri yoksa, onu silebilirsiniz.
 
 ### <a name="upon-completion-settings"></a>Tamamlama ayarlarından sonra
 
@@ -93,7 +102,7 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
     ![Erişim gözden geçirmesi oluşturma-tamamlanma ayarları](./media/create-access-review/upon-completion-settings.png)
 
-1. Reddedilen kullanıcılar için erişimi otomatik olarak kaldırmak istiyorsanız, **etkinleştirilecek** **sonuçları kaynağa otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
+1. Engellenen kullanıcıların erişimini otomatik olarak kaldırmak istiyorsanız, **etkinleştirmek**Için **sonuçları otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
 
 1. Gözden geçiren tarafından gözden geçirilmemiş kullanıcılar için gözden geçirme süresi içinde gözden **geçirmeli yanıt** verme listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilmiş kullanıcıları etkilemez. Son Gözden geçirenin kararı reddederse, kullanıcının erişimi kaldırılır.
 
@@ -119,7 +128,7 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
     >[!NOTE]
     > Varsayılan olarak, Azure AD, henüz yanıt vermemiş olan gözden geçirenlere bitiş tarihine kadar otomatik olarak bir anımsatıcı gönderir
 
-1. Önizle Gözden geçirenlere gönderilen e-postanın içeriği İnceleme adı, kaynak adı, son tarih vb. gözden geçirme ayrıntılarına göre otomatik olarak oluşturulur. Ek yönergeler veya iletişim bilgileri gibi ek bilgilere iletişim kurmak için bir yönteme ihtiyacınız varsa, bu ayrıntıları gözden geçiren için ek içerikte, davet ve anımsatıcı e-postalarına gönderilen gözden geçirenler e-postalarına dahil edilecek şekilde belirtebilirsiniz. Aşağıdaki Vurgulanan bölümde bu bilgilerin görüntüleneceği yer verilmiştir.
+1. Önizle Gözden geçirenlere gönderilen e-postanın içeriği İnceleme adı, kaynak adı, son tarih vb. gözden geçirme ayrıntılarına göre otomatik olarak oluşturulur. Ek yönergeler veya iletişim bilgileri gibi ek bilgilere iletişim kurmak için bir yönteme ihtiyacınız varsa, bu ayrıntıları **Gözden geçiren Için ek içerikte** , davet ve anımsatıcı e-postalarına gönderilen gözden geçirenler e-postalarına dahil edilecek şekilde belirtebilirsiniz. Aşağıdaki Vurgulanan bölümde bu bilgilerin görüntüleneceği yer verilmiştir.
 
     ![Kullanıcılara bir gruba erişimi gözden geçirme](./media/create-access-review/review-users-access-group.png)
 
@@ -142,8 +151,8 @@ Konukları gözden geçirenler olarak atadıysanız ve daveti kabul etmediyse, b
 |Başlatılıyor | İnceleme başlatılıyor. E-posta bildirimleri etkinse, e-postalar gözden geçirenlere gönderilir. |
 |Ediyor | İnceleme başlatıldı. E-posta bildirimlerinin etkin olduğu e-postalar gözden geçirenlere gönderilmiştir. Gözden geçirenler, son tarihe kadar karar gönderebilir. |
 |Tamamlan | Gözden geçirme tamamlandı ve gözden geçirme sahibine e-postalar gönderiliyor. |
-|Oto gözden geçirme | İnceleme bir sistem inceleme aşamasında. Sistem, öneriler veya önceden yapılandırılmış kararlar temelinde incelenebilecek kullanıcılar için kararları kaydediyor. |
-|Oto gözden geçirildi | Gözden geçirilmemiş tüm kullanıcılar için sistem tarafından kararlar kaydedilir. İnceleme, otomatik uygulama etkinse **uygulamaya** devam etmek için hazırlayın. |
+|Otomatik Gözden geçirme | İnceleme bir sistem inceleme aşamasında. Sistem, öneriler veya önceden yapılandırılmış kararlar temelinde incelenebilecek kullanıcılar için kararları kaydediyor. |
+|Otomatik Gözden geçirme | Gözden geçirilmemiş tüm kullanıcılar için sistem tarafından kararlar kaydedilir. İnceleme, otomatik uygulama etkinse **uygulamaya** devam etmek için hazırlayın. |
 |Uygulamayı | Onaylanan kullanıcılar için erişim değişikliği olmayacaktır. |
 |Uygulandı | Varsa, reddedilen kullanıcılar kaynak veya dizinden kaldırılmıştır. |
 

@@ -28,6 +28,12 @@
               href: connect-nodejs.md
             - name: Java
               href: connect-java.md
+            - name: Spring Data JDBC ile Java
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data JPA ile Java
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data R2DBC ile Java
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
             - name: Ruby
               href: connect-ruby.md
             - name: PHP
@@ -38,7 +44,7 @@
               href: connect-go.md
     - name: Hiper Ölçek (Citus)
       items:
-        - name: DB Oluşturma - Portal
+        - name: Sunucu grubu oluşturma - Portal
           href: quickstart-create-hyperscale-portal.md
 - name: Öğreticiler
   items:
@@ -48,7 +54,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -153,10 +159,14 @@
               href: concepts-aks.md
             - name: Java
               items:
+                - name: Java ve JDBC kullanma
+                  href: connect-java.md
                 - name: Spring Verilerini Yapılandırma JDBC
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Verilerini Yapılandırma JPA
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                - name: Spring Verilerini Yapılandırma R2DBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
         - name: Çoğaltma
           items:
             - name: Okuma amaçlı çoğaltmalar
@@ -237,7 +247,7 @@
           items:
             - name: Azure portal
               href: howto-restore-server-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-restore-server-cli.md
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
@@ -259,7 +269,7 @@
           items:
             - name: Azure portal
               href: howto-configure-server-parameters-using-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
@@ -267,7 +277,7 @@
           items:
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
             - name: Azure PowerShell
               href: howto-auto-grow-storage-powershell.md
@@ -319,7 +329,7 @@
           items:
             - name: Azure portal
               href: howto-restart-server-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md

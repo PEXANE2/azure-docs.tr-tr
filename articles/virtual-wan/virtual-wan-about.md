@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 451e1581350bb1d38580d00ffd24c781bc30242d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507594"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604687"
 ---
-# <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
+# <a name="what-is-azure-virtual-wan"></a>Azure Sanal WAN nedir?
 
 Azure sanal WAN, tek bir işlemsel arabirim sağlamak için birçok ağ, güvenlik ve yönlendirme işlevlerini birlikte getiren bir ağ hizmetidir. Bu işlevler, dal bağlantısını (SD-WAN veya VPN CPE gibi sanal WAN Iş ortağı cihazlarından bağlantı Otomasyonu aracılığıyla) içerir. siteden siteye VPN bağlantısı, uzak kullanıcı VPN (Noktadan siteye) bağlantısı, özel (ExpressRoute) bağlantısı, bulut içi bağlantı (sanal ağlar için geçişli bağlantı), VPN ExpressRoute arası bağlantı, yönlendirme, Azure Güvenlik Duvarı ve özel bağlantı için şifreleme. Sanal WAN kullanmaya başlamak için bu kullanım örneklerinin tümünün olması gerekmez. Yalnızca tek bir kullanım durumu ile çalışmaya başlayabilir ve ardından ağınızı geliştikçe ayarlayabilirsiniz.
 
@@ -102,11 +102,11 @@ Her sanal hub yönlendiricisi, 50 Gbps 'e kadar toplam üretimi destekler. Sanal
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN ve ExpressRoute arasında geçiş bağlantısı
 
-Sanal WAN, VPN ve ExpressRoute arasında geçiş bağlantısına izin verir. Bu, VPN bağlantılı sitelerin veya uzak kullanıcıların ExpressRoute ile bağlantılı sitelerle iletişim kurabildiğini gösterir. Ayrıca **dal bayrağının** etkin olduğu bir örtülü varsayım da vardır. Bu bayrak Azure portal Azure sanal WAN ayarları ' nda bulunabilir. Tüm rota yönetimi, sanal ağlar arasında aktarım bağlantısı sağlayan sanal hub yönlendiricisi tarafından sağlanır.
+Sanal WAN, VPN ve ExpressRoute arasında geçiş bağlantısına izin verir. Bu, VPN bağlantılı sitelerin veya uzak kullanıcıların ExpressRoute ile bağlantılı sitelerle iletişim kurabildiğini gösterir. Ayrıca, **dalı arası bayrağın** ETKIN ve BGP 'nin VPN ve ExpressRoute bağlantılarında desteklendiği bir kapalı varsayım vardır. Bu bayrak, Azure portal Azure sanal WAN ayarları ' nda bulunabilir. Tüm rota yönetimi, sanal ağlar arasında aktarım bağlantısı sağlayan sanal hub yönlendiricisi tarafından sağlanır.
 
 ### <a name="custom-routing"></a><a name="routing"></a>Özel yönlendirme
 
-Sanal WAN, gelişmiş yönlendirme iyileştirmeleri sağlar. Özel yol tabloları ayarlama, sanal ağ yönlendirmeyi yönlendirme ilişkilendirmesi ve yayma ile en iyileştirme, mantıksal olarak yönlendirme tablolarını etiketlerle gruplama ve çok sayıda ağ sanal gereci veya paylaşılan hizmet yönlendirme senaryosunu basitleştirme.
+Sanal WAN, gelişmiş yönlendirme iyileştirmeleri sağlar. Özel yol tabloları ayarlama, yönlendirme ilişkilendirmesi ve yayma ile sanal ağ yönlendirmeyi iyileştirme, etiketleri mantıksal olarak gruplama ve çok sayıda ağ sanal gereci (NVA) veya paylaşılan hizmetleri yönlendirme senaryolarını basitleştirme.
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Küresel VNet eşlemesi
 
@@ -120,17 +120,21 @@ Azure sanal WAN, ExpressRoute trafiğinizi şifreleme olanağı sağlar. Bu tekn
 
 Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi.
 
-## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Temel ve standart sanal WAN 'Lar içindeki rota tabloları
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>Temel ve standart sanal WAN 'Lar için rota tabloları
 
 Yol tablolarında ilişkilendirme ve yayma özellikleri artık vardır. Önceden var olan bir yol tablosu, bu özelliklere sahip olmayan bir yol tablosudur. Hub yönlendirmesinde önceden varolan yollar varsa ve yeni özellikleri kullanmak istiyorsanız, aşağıdakileri göz önünde bulundurun:
 
-* **Sanal hub 'da önceden var olan yollara sahip standart sanal WAN müşterileri**: yeni rota tablosu yeteneklerini kullanmak Için lütfen Azure 'da kullanıma alma Için 14 Ağustos 'tan tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından yeni rota tabloları oluşturmaya (Azure portal Hub için yönlendirme tabloları bölümünde kullanılabilir) denemeniz gerekir.
+* **Sanal hub 'da önceden var olan yollara sahip standart sanal WAN müşterileri**: yeni rota tablosu yeteneklerini kullanmak Için lütfen Azure 'da piyasaya çıkma Için 14 Ağustos 'un tamamlanmasını bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından yeni rota tabloları oluşturmaya (Azure portal Hub için yönlendirme tabloları bölümünde kullanılabilir) denemeniz gerekir.
 
-* **Sanal hub 'da önceden var olan yollara sahip temel sanal WAN müşterileri**: yeni rota tablosu yeteneklerini kullanmak Için lütfen Azure 'da kullanıma alma Için 14 Ağustos 'tan tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden mevcut olan yollar varsa öncelikle bunları silmeniz ve ardından temel sanal WAN 'ınızı standart sanal WAN 'a **yükseltmeniz** gerekir. Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
+* **Sanal hub 'da önceden var olan yollara sahip temel sanal WAN müşterileri**: yeni rota tablosu yeteneklerini kullanmak Için lütfen Azure 'da piyasaya çıkma Için 14 Ağustos 'tan tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından temel sanal WAN 'ınızı standart sanal WAN 'a **yükseltmeniz** gerekir. Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>SSS
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="view-the-latest-feature-updates"></a><a name="new"></a>En son özellik güncelleştirmelerini görüntüleme
+
+RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) sayfasında en son sanal WAN özelliği güncelleştirmelerini görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

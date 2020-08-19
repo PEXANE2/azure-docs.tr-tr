@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460108"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604531"
 ---
 # <a name="manage-the-mobility-agent"></a>Mobility aracısını yönetme 
 
@@ -26,8 +26,9 @@ VMware VM 'lerini ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarmas
 ## <a name="update-mobility-service-from-azure-portal"></a>Mobility hizmetini Azure portal güncelleştirme
 
 1. Başlamadan önce, korunan makinelerde Mobility hizmetini güncelleştirmeden önce, yapılandırma sunucusunun, genişleme işlem sunucularının ve dağıtımınızın bir parçası olan ana hedef sunucuların güncelleştirildiğinden emin olun.
-2. Portalda, **çoğaltılan öğeler**> kasayı açın.
-3. Yapılandırma sunucusu en son sürümsa, "Yeni Site Recovery çoğaltma Aracısı güncelleştirmesi kullanılabilir ' ı okuduğunu belirten bir bildirim görürsünüz. Yüklemek için tıklayın. "
+    1. SUSE Linux Enterprise Server 11 SP4 için [9,36 sürümü](https://support.microsoft.com/help/4578241/) , en son yükleyicinin [yapılandırma sunucusu ve genişleme işlem sunucusu 'nda kullanılabildiğinden](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)emin olun.
+1. Portalda, **çoğaltılan öğeler**> kasayı açın.
+1. Yapılandırma sunucusu en son sürümsa, "Yeni Site Recovery çoğaltma Aracısı güncelleştirmesi kullanılabilir ' ı okuduğunu belirten bir bildirim görürsünüz. Yüklemek için tıklayın. "
 
      ![Çoğaltılan Öğeler penceresi](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
@@ -69,7 +70,7 @@ Site Recovery dağıttığınızda, Mobility hizmetini göndererek yüklemeyi et
 Kullanıcı arabiriminden veya bir komut isteminden kaldırın.
 
 - **Kullanıcı arabiriminden**: makinenin Denetim Masası 'Nda, **Programlar**' ı seçin. **Mobility hizmeti/ana hedef sunucusu kaldırma Microsoft Azure Site Recovery**seçin  >  **Uninstall**.
-- **Bir komut isteminden**: makinede yönetici olarak bir komut istemi penceresi açın. Aşağıdaki komutu çalıştırın: 
+- **Bir komut isteminden**: makinede yönetici olarak bir komut istemi penceresi açın. Şu komutu çalıştırın: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
@@ -77,7 +78,7 @@ Kullanıcı arabiriminden veya bir komut isteminden kaldırın.
 ### <a name="on-a-linux-machine"></a>Bir Linux makinesinde
 1. Linux makinesinde, **kök** Kullanıcı olarak oturum açın.
 2. Bir terminalde/usr/local/asrdizinine gidin.
-3. Aşağıdaki komutu çalıştırın:
+3. Şu komutu çalıştırın:
     ```
     uninstall.sh -Y
    ```
