@@ -118,6 +118,19 @@
       items:
         - name: Depolama hesapları
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Yetkilendirme
+          items:
+            - name: Veri işlemlerini yetkilendirme
+              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Azure AD ile yetkilendir
+                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Paylaşılan Anahtar ile yetkilendirme
+                  href: /rest/api/storageservices/authorize-with-shared-key
+                - name: Paylaşılan erişim imzalarıyla (SAS) temsilci erişimi
+                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Yönetim işlemlerini yetkilendirme
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Güvenlik
           items:
             - name: Güvenlik önerileri
@@ -131,17 +144,6 @@
                   href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: İstekte müşteri tarafından sağlanan anahtarlar
                   href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Veri işlemlerini yetkilendirme
-              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: Azure AD ile yetkilendir
-                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Paylaşılan Anahtar ile yetkilendirme
-                  href: /rest/api/storageservices/authorize-with-shared-key
-                - name: Paylaşılan erişim imzalarıyla (SAS) temsilci erişimi
-                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Yönetim işlemlerini yetkilendirme
-              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Sabit bloblar
               href: storage-blob-immutable-storage.md
             - name: Gelişmiş tehdit koruması
@@ -313,64 +315,64 @@
               href: storage-blob-properties-metadata.md
             - name: Blob kopyalama (.NET)
               href: storage-blob-copy.md
+        - name: Blob verilerine erişimi yetkilendirme
+          items:
+            - name: Kullanıcılar için yetkilendirme seçenekleri
+              items:
+                - name: Portal
+                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: RBAC ile erişim haklarını yönetme
+              items:
+                - name: Portal
+                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure AD ile kimlik doğrulama ve yetkilendirme
+              items:
+                - name: Yönetilen kimlikle yetkilendirme
+                  href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Bir uygulamadan yetkilendirme
+                  href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Paylaşılan Anahtar ile yetkilendirme
+              items:
+                - name: Hesap anahtarlarını görüntüleme ve yönetme
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Bağlantı dizelerini yapılandırma
+                  href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure Depolama REST API’sini kullanma
+                  href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Paylaşılan erişim imzalarıyla (SAS) temsilci erişimi
+              items:
+                - name: Kullanıcı temsilcisi SAS’ı oluşturma
+                  items:
+                    - name: PowerShell
+                      href: storage-blob-user-delegation-sas-create-powershell.md
+                    - name: Azure CLI
+                      href: storage-blob-user-delegation-sas-create-cli.md
+                    - name: .NET
+                      href: storage-blob-user-delegation-sas-create-dotnet.md
+                - name: Hizmet SAS’ı oluşturma (.NET)
+                  href: storage-blob-service-sas-create-dotnet.md
+                - name: Hesap SAS’ı oluşturma (.NET)
+                  href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Depolanan erişim ilkesi tanımlama
+                  href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Blob verilerine anonim okuma erişimini yönetme
+              items:
+                - name: Kapsayıcılar ve bloblar için anonim okuma erişimini yapılandırma
+                  href: anonymous-read-access-configure.md
+                - name: Blob verilerine anonim okuma erişimini engelleme
+                  href: anonymous-read-access-prevent.md
+                - name: Ortak kapsayıcılara ve bloblara anonim olarak erişme (.NET)
+                  href: anonymous-read-access-client.md
         - name: Blob verilerinin güvenliğini sağlama
           items:
-            - name: Blob verilerine erişimi yetkilendirme
-              items:
-                - name: Kullanıcılar için yetkilendirme seçenekleri
-                  items:
-                    - name: Portal
-                      href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: RBAC ile erişim haklarını yönetme
-                  items:
-                    - name: Portal
-                      href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure AD ile kimlik doğrulama ve yetkilendirme
-                  items:
-                    - name: Yönetilen kimlikle yetkilendirme
-                      href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Bir uygulamadan yetkilendirme
-                      href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Paylaşılan Anahtar ile yetkilendirme
-                  items:
-                    - name: Hesap anahtarlarını görüntüleme ve yönetme
-                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Bağlantı dizelerini yapılandırma
-                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure Depolama REST API’sini kullanma
-                      href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Paylaşılan erişim imzalarıyla (SAS) temsilci erişimi
-                  items:
-                    - name: Kullanıcı temsilcisi SAS’ı oluşturma
-                      items:
-                        - name: PowerShell
-                          href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure CLI
-                          href: storage-blob-user-delegation-sas-create-cli.md
-                        - name: .NET
-                          href: storage-blob-user-delegation-sas-create-dotnet.md
-                    - name: Hizmet SAS’ı oluşturma (.NET)
-                      href: storage-blob-service-sas-create-dotnet.md
-                    - name: Hesap SAS’ı oluşturma (.NET)
-                      href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Depolanan erişim ilkesi tanımlama
-                      href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Blob verilerine anonim okuma erişimini yönetme
-                  items:
-                    - name: Kapsayıcılar ve bloblar için anonim okuma erişimini yapılandırma
-                      href: anonymous-read-access-configure.md
-                    - name: Blob verilerine anonim okuma erişimini engelleme
-                      href: anonymous-read-access-prevent.md
-                    - name: Ortak kapsayıcılara ve bloblara anonim olarak erişme (.NET)
-                      href: anonymous-read-access-client.md
             - name: Azure Depolama şifrelemesini yönetme
               items:
                 - name: Blobun şifrelenip şifrelenmediğini denetleme

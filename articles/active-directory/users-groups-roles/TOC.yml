@@ -42,6 +42,8 @@
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Kullanıcıları toplu oluşturma
           href: users-bulk-add.md
+        - name: Konuk kullanıcı izinlerini kısıtlama
+          href: users-restrict-guest-permissions.md
         - name: Kullanıcı profillerini yönetme
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Personelim temsilcisi
@@ -68,19 +70,19 @@
           href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Dinamik gruplar ve B2B
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Dizininizi yönetme
+    - name: Birden çok kiracıyı yönetme
       items:
-        - name: Azure AD kuruluşları
+        - name: Azure AD kiracı yönetimi
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Etki alanı adlarını yönetme
           href: domains-manage.md
-        - name: Bir dizini silme
+        - name: Kiracı silme
           href: directory-delete-howto.md
         - name: Birden fazla dizin
           href: licensing-directory-independence.md
         - name: Self servis kaydolma
           href: directory-self-service-signup.md
-        - name: Dizin devralma
+        - name: Kiracı devralma
           href: domains-admin-takeover.md
         - name: Azure AD Connect
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context

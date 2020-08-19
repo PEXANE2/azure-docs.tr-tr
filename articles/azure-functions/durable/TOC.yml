@@ -22,6 +22,9 @@
     - name: Dayanıklı işlev oluşturma - Python
       displayName: 'get started, chaining'
       href: quickstart-python-vscode.md
+    - name: Dayanıklı işlev oluşturma - PowerShell
+      displayName: 'get started, chaining'
+      href: quickstart-powershell-vscode.md
 - name: Öğreticiler
   items:
     - name: İşlev zinciri oluşturma

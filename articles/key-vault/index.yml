@@ -13,19 +13,19 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: daccc4195877ad18441640f562556d97a04b10f0
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: 549309a01602206b85a54b47df297735dfc5e709
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386495"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262611"
 highlightedContent:
   items:
   - title: Azure Key Vault’a giriş
     itemType: overview
     url: ./general/overview.md
   - title: Geçici silmedeki önemli değişiklikler
-    itemType: overview
+    itemType: whats-new
     url: ./general/soft-delete-change.md
   - title: Kimlik Doğrulaması
     itemType: overview
@@ -89,6 +89,23 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: Daha fazla göster
+  - title: İstemci kitaplıkları
+    links:
+    - url: ./general/client-libraries.md
+      itemType: reference
+      text: Azure Key Vault için istemci kitaplıkları
+    - url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      itemType: reference
+      text: .NET İstemci kitaplığı
+    - url: /python/api/overview/azure/key-vault-index?view=azure-python
+      itemType: reference
+      text: Python İstemci kitaplığı
+    - url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+      itemType: reference
+      text: Java İstemci kitaplığı
+    - url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+      itemType: reference
+      text: Node.js İstemci kitaplığı
   - title: Depolama ile Key Vault
     links:
     - url: ./secrets/overview-storage-keys.md

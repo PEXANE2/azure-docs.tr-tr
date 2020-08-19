@@ -151,6 +151,8 @@
           href: workflow-automation.md
         - name: Önerileri dışarı aktarma
           href: continuous-export.md
+    - name: Varlık envanteriyle kaynaklarınızı yönetme
+      href: asset-inventory.md
     - name: Diğer araçlarla ve hizmetlerle tümleştirme
       items:
         - name: Windows Admin Center ile tümleştirme

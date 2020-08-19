@@ -79,6 +79,8 @@
   items:
     - name: Azure Red Hat OpenShift 4 kümelerinde ağ oluşturma
       href: concepts-networking.md
+    - name: Azure Red Hat OpenShift 3.11’den Azure Red Hat OpenShift 4’e geçme
+      href: migration.md
 - name: Başvuru
   items:
     - name: Azure Red Hat OpenShift CLI

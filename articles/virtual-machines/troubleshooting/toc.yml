@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: Windows VM aracısını çevrimdışı olarak yükleme
       href: install-vm-agent-offline.md
+    - name: Windows VM aracısıyla ilgili sorunları giderme
+      href: windows-azure-guest-agent.md
 - name: Yedekleme ve geri yükleme
   items:
     - name: Azure VM’de yedekleme hatalarıyla ilgili sorunları giderme

@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: Kavramlar
   items:
+    - name: Uygulama ve dağıtımı anlama
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: Kotaları ve sınırları anlama
       href: spring-cloud-quotas.md
     - name: Ölçümleri anlama
