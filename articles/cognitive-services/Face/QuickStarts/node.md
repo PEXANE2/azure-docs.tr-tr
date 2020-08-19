@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 44bd0a766574889334601a354b47946a80fc475a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 245cb90fa49e844b6e190f6acb8a44f339fd29dd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833718"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539327"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node.js kullanarak görüntüdeki yüzeyleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Node.js ile Azure yüz REST API kullanacaksınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -113,7 +113,7 @@ Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve dosyayı `node
 node facedetection.js
 ```
 
-Tüm JSON verileri buradan aşağıda verilmiştir `response.data` . Örnek:
+Tüm JSON verileri buradan aşağıda verilmiştir `response.data` . Örneğin:
 
 ```json
 [

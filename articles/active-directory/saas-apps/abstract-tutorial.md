@@ -2,26 +2,21 @@
 title: 'Öğretici: abstract ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve soyut arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb167ab-d769-4661-a8cb-ae371cb63d2a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f19733f01cf601c1145d5e2bb5deb58db828dc4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68302596"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538340"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Öğretici: Özet Azure Active Directory ile tümleştirin
 
@@ -93,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-abstract-sso"></a>Soyut SSO 'yu yapılandırma
 
-' I `App Federation Metadata Url` ve `Azure AD Identifier` ' yı, soyut üzerinde SSO 'yu yapılandırmak için gerekli olacak şekilde Azure Portal aldığınızdan emin olun.
+' `App Federation Metadata Url` I ve ' `Azure AD Identifier` yi, soyut üzerinde SSO 'yu yapılandırmak için gerekli olacak şekilde Azure Portal aldığınızdan emin olun.
 
 Bu bilgileri, **SAML Ile çoklu oturum açma ayarlama** sayfasında bulabilirsiniz:
 
@@ -123,9 +118,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

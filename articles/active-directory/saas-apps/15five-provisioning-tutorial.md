@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için 15Beş yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı 15 beş 'a öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: a276c004-9f71-4efc-8cca-1f615760249f
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: dbed26bc6175b464b59fc48c733b15e6fecc7fc1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b42833056d6c9c0e6053dbf34c7de17b4136a797
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924956"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539190"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için 15Beş yapılandırma
 
@@ -38,7 +34,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [15Be�
 > * 15 beş üzerinde gruplar ve grup üyelikleri sağlama
 > * 15 beş [üzerinde çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/15five-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -90,7 +86,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Kullanıcı ve/veya grup atamaları
 
 ### <a name="to-configure-automatic-user-provisioning-for-15five-in-azure-ad"></a>Azure AD 'de 15Beş için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

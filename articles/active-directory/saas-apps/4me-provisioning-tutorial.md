@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için 4me yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını 4me 'ye otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: beb580a02e1db80cf2d74f8167a98c9ead170810
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018698"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538782"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 4me yapılandırma
 
@@ -31,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları 4me 'y
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -84,7 +80,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
 ### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Azure AD 'de 4me için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

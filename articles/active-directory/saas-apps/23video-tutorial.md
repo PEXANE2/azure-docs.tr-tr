@@ -2,26 +2,21 @@
 title: 'Öğretici: 23 video ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve 23 video arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5e73dd1d-3995-4a73-b9cf-1b2318d49cb3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5061c2e4c627e7919683bbf00970b626554df43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68879797"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538867"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>Öğretici: 23 videoyu Azure Active Directory ile tümleştirin
 
@@ -109,9 +104,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -153,7 +148,7 @@ Bu bölümün amacı 23 videoda B. Simon adlı bir Kullanıcı oluşturmaktır.
 
     ![Kullanıcı ata](./media/23video-tutorial/tutorial-23video-12.png)
 
-    a. **E-posta adresleri** metin kutusunda, gibi B.Simon@contoso.combir kullanıcının e-posta adresini yazın.  
+    a. **E-posta adresleri** metin kutusunda, gibi bir kullanıcının e-posta adresini yazın B.Simon@contoso.com .  
 
     b. Kullanıcı Ekle ' ye tıklayın **..**.
 
@@ -165,8 +160,8 @@ Erişim panelinde 23 video kutucuğuna tıkladığınızda, SSO 'yu ayarladığ�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
