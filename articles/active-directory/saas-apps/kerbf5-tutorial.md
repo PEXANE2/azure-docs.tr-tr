@@ -2,26 +2,21 @@
 title: 'Öğretici: F5 ile Azure AD çoklu oturum açma tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve F5 arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39382eab-05fe-4dc2-8792-62d742dfb4e1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017457"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -223,7 +218,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 1. Ayrıca, **Uygulama ana bilgisayar adı Için SSL sertifikası gerekir. System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. **Içeri aktarma türü** **PKCS 12 (IIS)** olacaktır. **Anahtar adı** belirtin (daha sonra yapılandırmadan başvurulacak) ve pfx dosyasını belirtmeniz gerekir. PFX için **parola** belirtin. **İçeri Aktar**’a tıklayın.
 
     >[!NOTE]
-    >Uygulama adı örneğinde, `Kerbapp.superdemo.live` bir joker karakter sertifikası kullanıyoruz KeyName`WildCard-SuperDemo.live`
+    >Uygulama adı örneğinde, `Kerbapp.superdemo.live` bir joker karakter sertifikası kullanıyoruz KeyName `WildCard-SuperDemo.live`
 
     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure02.png) 
  
@@ -347,7 +342,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 1. SAML SP 'yi ayarlamak için, **Yerel SP hizmetleri > > federasyon > SAML hizmet sağlayıcısına erişim** ' e gidin ve **Oluştur**' a tıklayın. Aşağıdaki bilgileri tamamlayıp **Tamam**' a tıklayın.
 
     * Tür adı: KerbApp200SAML
-    * Varlık KIMLIĞI *:https://kerb-app.com.cutestat.com
+    * Varlık KIMLIĞI *: https://kerb-app.com.cutestat.com
     * SP adı ayarları
     * Düzen: https
     * Ana bilgisayar: kerbapp200. superdemo. canlı
@@ -456,7 +451,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 *  **1. Adım:** Bir temsili hesabı oluşturun
 
-    **Örneğinde**
+    **Örnek:**
     * Etki alanı adı: **superdemo. canlı**
 
     * Sam hesap adı: **büyük-ipuser**
@@ -465,7 +460,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 * **2. Adım:** SPN 'YI ayarla (APM temsili hesabında)
 
-    **Örneğinde**
+    **Örnek:**
     * Setspn – A **Host/Big-ipuser. superdemo. canlı** büyük-ipuser
 
 * **Adım 3:** SPN temsili (App Service hesabı için) F5 temsili hesabı için uygun temsilciyi ayarlayın.
@@ -487,9 +482,9 @@ Erişim panelinde F5 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

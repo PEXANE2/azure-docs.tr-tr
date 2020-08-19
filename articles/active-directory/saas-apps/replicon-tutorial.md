@@ -2,26 +2,21 @@
 title: 'Öğretici: Replicon ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Replıon arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8394191820226a0d4fdcfe1a078e85e1caafa37f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058197"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534346"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Replicon tümleştirme
 
@@ -33,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Replicon tümleştirme ha
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -114,7 +109,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Enablesaml Authentication2** iletişim kutusunu göstermek için, aşağıdaki URL 'nize şirketinizin anahtarınızı ekleyin:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Aşağıda, URL 'nin tamamının şeması gösterilmektedir:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Aşağıda, URL 'nin tamamının şeması gösterilmektedir: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. **+** **V20Configuration** bölümünü genişletmek için öğesine tıklayın.
 

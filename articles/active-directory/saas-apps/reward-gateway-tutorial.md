@@ -2,25 +2,21 @@
 title: 'Öğretici: Reward Gateway ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve daha fazla ağ geçidi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 34336386-998a-4d47-ab55-721d97708e5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 03e6f52d764b72c423269fcdfdc966474978aa6e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 61d7e678b2904ff6eda1866951cfafd0fa0d6688
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169366"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Öğretici: Reward Gateway ile tümleştirme Azure Active Directory
 
@@ -120,7 +116,7 @@ Azure AD çoklu oturum açmayı, Reward Gateway ile yapılandırmak için aşağ
     - `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, Reward Manager portalında bir tümleştirme ayarlamaya başlayın. Ayrıntılar şu şekilde bulunabilirhttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, Reward Manager portalında bir tümleştirme ayarlamaya başlayın. Ayrıntılar şu şekilde bulunabilir https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -138,7 +134,7 @@ Azure AD çoklu oturum açmayı, Reward Gateway ile yapılandırmak için aşağ
 
 ### <a name="configure-reward-gateway-single-sign-on"></a>Reward Gateway 'ı çoklu oturum açmayı yapılandırma
 
-**Reward Gateway** tarafında çoklu oturum açma 'yı yapılandırmak Için, Reward Manager portalında bir tümleştirme ayarlamaya başlayın. Imza sertifikanızı almak ve yapılandırma sırasında karşıya yüklemek için indirilen meta verileri kullanın. Ayrıntılar şu şekilde bulunabilirhttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
+**Reward Gateway** tarafında çoklu oturum açma 'yı yapılandırmak Için, Reward Manager portalında bir tümleştirme ayarlamaya başlayın. Imza sertifikanızı almak ve yapılandırma sırasında karşıya yüklemek için indirilen meta verileri kullanın. Ayrıntılar şu şekilde bulunabilir https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 

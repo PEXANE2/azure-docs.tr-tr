@@ -2,25 +2,21 @@
 title: 'Öğretici Azure Active Directory: ıntelligencebank ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve ıntelligencebank arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7479c06a-e1fb-4f1d-81f8-9f255ff1b9fc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b418b15aaebe298b8e7c6507c96de2843d51e9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170182"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535620"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Öğretici: ıntelligencebank ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -143,7 +139,7 @@ Bu bölümde, ıntelligencebank erişimi vererek Azure çoklu oturum açma özel
 
     ![Intelligencebank yapılandırması](./media/intelligencebank-tutorial/authenticator.PNG)
 
-1. Aşağıdaki adımları uygulayın:
+1. Aşağıdaki adımları gerçekleştirin:
 
     ![Intelligencebank yapılandırması](./media/intelligencebank-tutorial/urls.PNG)
 
@@ -183,9 +179,9 @@ Erişim panelinde ıntelligencebank kutucuğuna tıkladığınızda, SSO 'yu aya
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

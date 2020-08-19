@@ -2,26 +2,21 @@
 title: 'Öğretici: Adobe Sign ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile Adobe Işareti arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7d1ea6c1ee21970a598855471284130160e1d65
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73154032"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537966"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Öğretici: Adobe Sign ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Adobe Sign 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -150,7 +145,7 @@ Azure AD çoklu oturum açmayı Adobe Sign ile yapılandırmak için aşağıdak
 
 1. Farklı bir Web tarayıcısı penceresinde, Adobe Imza şirket sitenizde yönetici olarak oturum açın.
 
-1. SAML menüsünde, **Hesap ayarları** > **SAML ayarları**' nı seçin.
+1. SAML menüsünde, **Hesap ayarları**  >  **SAML ayarları**' nı seçin.
    
     ![Adobe Sign SAML ayarları sayfasının ekran görüntüsü](./media/adobe-echosign-tutorial/ic789520.png "Hesap")
 
@@ -172,7 +167,7 @@ Azure AD çoklu oturum açmayı Adobe Sign ile yapılandırmak için aşağıdak
    
    f. Azure portal, **IDP oturum kapatma URL 'si** metin kutusuna kopyaladığınız **Logout URL 'sini**yapıştırın.
 
-   g. İndirilen **sertifika (base64)** Dosyanızı Not defteri 'nde açın. İçeriğini panonuza kopyalayın ve sonra **IDP sertifikası** metin kutusuna yapıştırın.
+   örneğin: İndirilen **sertifika (base64)** Dosyanızı Not defteri 'nde açın. İçeriğini panonuza kopyalayın ve sonra **IDP sertifikası** metin kutusuna yapıştırın.
 
    h. **Değişiklikleri Kaydet**' i seçin.
 
@@ -194,12 +189,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -236,7 +231,7 @@ Azure AD kullanıcılarının Adobe oturum açmasını etkinleştirmek için, bu
 
 1. **Adobe imza** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüde **Hesap**' ı seçin. Ardından, sol bölmede **Kullanıcılar & gruplar** > **Yeni Kullanıcı oluştur**' u seçin.
+2. Üstteki menüde **Hesap**' ı seçin. Ardından, sol bölmede **Kullanıcılar & gruplar**  >  **Yeni Kullanıcı oluştur**' u seçin.
    
     ![Hesap, kullanıcılar &grupları ve vurgulanmış yeni bir Kullanıcı oluşturma ile birlikte Adobe Sign şirket sitesinin ekran görüntüsü](./media/adobe-echosign-tutorial/ic789524.png "Hesap")
    

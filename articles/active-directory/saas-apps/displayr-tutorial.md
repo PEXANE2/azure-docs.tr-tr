@@ -2,26 +2,21 @@
 title: 'Öğretici: Displayr ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Displayr arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: b739b4e3-1a37-4e3c-be89-c3945487f4c1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103982"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536266"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Öğretici: Displayr 'yi Azure Active Directory tümleştirin
 
@@ -153,7 +148,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     f. **Grup eşlemeleri** isteğe bağlıdır.
 
-    g. **Kaydet**’e tıklayın.  
+    örneğin: **Kaydet**’e tıklayın.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -163,9 +158,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -207,7 +202,7 @@ Azure AD kullanıcılarını etkinleştirmek için, Displayr 'de oturum açın v
 
     a. **Ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını girin.
 
-    b. **E-posta** metin kutusuna kullanıcının e-postasını girin `Brittasimon@contoso.com`.
+    b. **E-posta** metin kutusuna kullanıcının e-postasını girin `Brittasimon@contoso.com` .
 
     c. Uygun **Grup üyeliğinizi**seçin.
 

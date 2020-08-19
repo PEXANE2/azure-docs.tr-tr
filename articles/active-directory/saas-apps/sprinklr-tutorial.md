@@ -2,25 +2,21 @@
 title: 'Öğretici: Sprınklr ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Sprınklr arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089653"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534226"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Öğretici: Sprınklr ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Sprınklr 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -134,7 +130,7 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
     ![Yönetim](./media/sprinklr-tutorial/ic782907.png "Yönetim")
 
-1. Sol bölmeden **Iş ortağı \> çoklu oturum açmayı Yönet** ' e gidin.
+1. Sol bölmeden **Iş ortağı \> Çoklu oturum açmayı Yönet** ' e gidin.
 
     ![Iş ortağını Yönet](./media/sprinklr-tutorial/ic782908.png "Iş ortağını Yönet")
 
@@ -158,7 +154,7 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
     f. Azure portalından kopyaladığınız **oturum açma URL 'si** değerini **kimlik sağlayıcısı oturum açma URL 'si** metin kutusuna yapıştırın.
 
-    g. Azure portalından kopyaladığınız **oturum kapatma URL 'si** değerini **ıDENTITY Provider Logout URL** metin kutusuna yapıştırın.
+    örneğin: Azure portalından kopyaladığınız **oturum kapatma URL 'si** değerini **ıDENTITY Provider Logout URL** metin kutusuna yapıştırın.
 
     h. **SAML Kullanıcı kimliği türü**olarak, onaylama ' nın **kullanıcının Sprinklr.com Kullanıcı adını içerdiğini**seçin.
 
@@ -191,7 +187,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

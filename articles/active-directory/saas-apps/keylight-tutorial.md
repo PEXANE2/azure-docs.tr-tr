@@ -2,26 +2,21 @@
 title: 'Öğretici: LockPath Keylight ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile LockPath Keylight arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 234a32f1-9f56-4650-9e31-7b38ad734b1a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098783"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Öğretici: LockPath Keylight ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ LockPath Keylight 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -162,9 +157,9 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     e. **SAML Kullanıcı kimliği konumunu** **Konu bildiriminin NameIdentifier öğesine**ayarlayın.
 
-    f. Aşağıdaki kalıbı kullanarak **Keylight hizmet sağlayıcısını** sağlayın: `https://<CompanyName>.keylightgrc.com`.
+    f. Aşağıdaki kalıbı kullanarak **Keylight hizmet sağlayıcısını** sağlayın: `https://<CompanyName>.keylightgrc.com` .
 
-    g. **Kullanıcıları otomatik sağlamayı** **etkin**olarak ayarlayın.
+    örneğin: **Kullanıcıları otomatik sağlamayı** **etkin**olarak ayarlayın.
 
     h. **Otomatik sağlama hesap türünü** **tam Kullanıcı**olarak ayarlayın.
 
@@ -172,11 +167,11 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     j. **Otomatik sağlama güvenlik**yapılandırmasını ayarlayın, **Standart Kullanıcı Yapılandırması**' nı seçin.
 
-    k. **E-posta özniteliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    k. **E-posta özniteliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    l. **First Name öznitelik** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    l. **First Name öznitelik** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    m. **Soyadı özniteliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    m. **Soyadı özniteliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
     n. **Kaydet**’e tıklayın.
 
@@ -198,11 +193,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -2,26 +2,21 @@
 title: 'Öğretici: Learnon ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Öğrennon arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b11c6315-c79d-4f34-9610-bd17070ab7c7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098231"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Öğretici: Learnon ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Azure AD ile Learnon tümleştirme, aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -153,11 +148,11 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
 
     d. **SAML belirteci Post param Name** metin kutusuna, doğrulanacak ve kimlik doğrulaması yapılacak SAML onaylama, örneğin **SAMLResponse**gıbı, yukarıda belirtilen saml tüketicisi URL 'sine istek Post parametresinin adını yazın.
 
-    e. **Ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı tanımlayıcısı (e-posta adresi) nerede olduğunu belirten değeri yazın `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+    e. **Ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı tanımlayıcısı (e-posta adresi) nerede olduğunu belirten değeri yazın `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
   
     f. **Sağlayıcı konumunu tanımla** metin kutusuna, Azure Portal oturum açma ekranından karşıya yüklenen simgeye tıkladıklarında kullanıcıların nereye gönderileceğini belirten değeri yazın.
   
-    g. **Oturumu Kapat URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
+    örneğin: **Oturumu Kapat URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
 
     h. **Parmak Izlerini Yönet**' e tıklayın ve ardından indirilen sertifikanızın parmak izi ' ni karşıya yükleyin.
 
@@ -165,9 +160,9 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
 
      ![Çoklu oturum açmayı yapılandırma](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. **Ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı adı ' nda nerede olduğunu belirten değeri yazın; örneğin: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. **Ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı adı ' nda nerede olduğunu belirten değeri yazın; örneğin: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
   
-    b. **Son ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı soyadı ' nda nerede olduğunu bildiren değeri yazın. Örneğin: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    b. **Son ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı soyadı ' nda nerede olduğunu bildiren değeri yazın. Örneğin: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -187,11 +182,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
