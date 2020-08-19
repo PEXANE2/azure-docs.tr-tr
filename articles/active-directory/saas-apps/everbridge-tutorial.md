@@ -2,25 +2,21 @@
 title: 'Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve tek köprü arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103251"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme
 
@@ -31,7 +27,7 @@ Her bir Azure AD ile bir yaprak Köprüsü tümleştirdiğinizde şunları yapab
 * Kullanıcılarınızın Azure AD hesaplarıyla bir yaprak 'ta otomatik olarak oturum açmaya izin verin. Bu erişim denetimine çoklu oturum açma (SSO) adı verilir.
 * Azure portal kullanarak hesaplarınızı tek bir merkezi konumda yönetin.
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -168,7 +164,7 @@ Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal*
    
      f. **Hizmet sağlayıcı tarafından başlatılan Istek bağlama**Için **http yeniden yönlendirme**' yi seçin.
 
-     g. **Kaydet**’i seçin.
+     örneğin: **Kaydet**’i seçin.
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Her bir yaprak Köprüsü üye portalı çoklu oturum açma olarak yapılandırma
 
@@ -178,7 +174,7 @@ Her **bir yaprak Köprüsü** **üye portalı**olarak tek tek oturum açma 'yı 
 
 Azure portal test kullanıcısını, için bu adımları izleyin.
 
-1. Azure Portal sol bölmedeki **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmedeki **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
 
     ![Kullanıcılar ve tüm kullanıcılar bağlantıları](common/users.png)
 
@@ -202,7 +198,7 @@ Azure portal test kullanıcısını, için bu adımları izleyin.
 
 Her bir yaprak köprüye erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar** >tek**köprü**' i seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar tek**  > **köprü**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -214,7 +210,7 @@ Her bir yaprak köprüye erişim vererek Azure çoklu oturum açma özelliğini 
 
     ![Kullanıcılar ve gruplar bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+4. **Kullanıcı ekle**'yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Atama Ekle iletişim kutusu](common/add-assign-user.png)
 

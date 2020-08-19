@@ -3,16 +3,20 @@ title: Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedekleme ve geri yükleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535436"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566242"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
 Azure Backup, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (işletim sistemi ve veri) yedeklenmesini destekler. Artık, seçmeli diskler Yedekleme ve geri yükleme işlevselliğini kullanarak bir VM 'deki veri disklerinin bir alt kümesini yedekleyebilirsiniz. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası yalnızca yedekleme işlemine dahil edilen diskleri içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntülerle hem de kasadan geri yükleme için geçerlidir.
+
+>[!NOTE]
+>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme, tüm bölgelerde genel önizlemededir.
 
 ## <a name="scenarios"></a>Senaryolar
 

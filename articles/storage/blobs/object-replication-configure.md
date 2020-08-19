@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540605"
+ms.locfileid: "88566072"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)
 
@@ -45,7 +45,7 @@ Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
 1. Azure portal kaynak depolama hesabına gidin.
 1. **BLOB hizmeti**altında, **nesne çoğaltma**' yı seçin.
-1. **Çoğaltmayı ayarla**' yı seçin.
+1. **Çoğaltma kurallarını ayarla**' yı seçin.
 1. Hedef aboneliği ve depolama hesabını seçin.
 1. **Kapsayıcı çiftleri** bölümünde, kaynak hesaptan kaynak kapsayıcısını ve hedef hesaptan bir hedef kapsayıcıyı seçin. Çoğaltma İlkesi başına en fazla 10 kapsayıcı çifti oluşturabilirsiniz.
 

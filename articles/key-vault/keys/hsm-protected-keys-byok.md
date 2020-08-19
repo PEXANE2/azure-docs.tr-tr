@@ -7,15 +7,15 @@ manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 4df934f38a8fb657fa4a8de5922d96197a3d02cc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061101"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585483"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
 
@@ -43,7 +43,7 @@ Daha fazla bilgi ve Key Vault kullanmaya başlama öğreticisi için (HSM koruma
 * KEK, hedef anahtarın içeri aktarılacağı aynı anahtar kasasında olmalıdır.
 * BYOK dosyası Key Vault karşıya yüklendiğinde, Key Vault HSM, hedef anahtar malzemelerinin şifresini çözmek ve bir HSM anahtarı olarak içeri aktarmak için KEK özel anahtarını kullanır. Bu işlem tamamen bir Key Vault HSM içinde gerçekleşir. Hedef anahtar her zaman HSM koruma sınırında kalır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar listelenmektedir:
 
@@ -89,7 +89,7 @@ Bir KEK, Key Vault HSM 'de oluşturulan bir RSA anahtarıdır. KEK, içe aktarma
 KEK şu olmalıdır:
 - Bir RSA-HSM anahtarı (2.048-bit; 3.072-bit; veya 4.096-bit)
 - Hedef anahtarı içeri aktarmayı planladığınız aynı anahtar kasasında oluşturuldu
-- Olarak ayarlanan izin verilen anahtar işlemleri ile oluşturuldu`import`
+- Olarak ayarlanan izin verilen anahtar işlemleri ile oluşturuldu `import`
 
 > [!NOTE]
 > KEK, yalnızca izin verilen anahtar işlemi olarak ' import ' içermelidir. ' Import ' diğer tüm anahtar işlemleriyle birbirini dışlıyor.

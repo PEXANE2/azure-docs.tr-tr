@@ -2,26 +2,21 @@
 title: 'Öğretici: MobileIron ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve MobileIron arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 3e4bbd5b-290e-4951-971b-ec0c1c11aaa2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4e997c6f2d0826c8914c671d625cc1c49bb018
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160451"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554671"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Öğretici: MobileIron ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ MobileIron 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -127,7 +122,7 @@ Azure AD çoklu oturum açmayı MobileIron ile yapılandırmak için aşağıdak
 
 1. Farklı bir Web tarayıcısı penceresinde, MobileIron şirket sitenizde yönetici olarak oturum açın.
 
-2. **Yönetici** > **kimliği** ' ne gidin ve **Cloud IDP kurulumu alanındaki bilgiler** ' de **AAD** seçeneğini belirleyin.
+2. **Yönetici**  >  **kimliği** ' ne gidin ve **Cloud IDP kurulumu alanındaki bilgiler** ' de **AAD** seçeneğini belirleyin.
 
     ![Çoklu oturum açma yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -157,12 +152,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -199,7 +194,7 @@ MobileIron söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görev
 
 1. MobileIron şirket sitenizde yönetici olarak oturum açın.
 
-1. **Kullanıcılar** ' a gidin ve**Tek Kullanıcı** **Ekle** > ' ye tıklayın.
+1. **Kullanıcılar** ' a gidin ve **Add**  >  **Tek Kullanıcı**Ekle ' ye tıklayın.
 
     ![Çoklu oturum açma kullanıcı düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_user.png)
 
@@ -207,7 +202,7 @@ MobileIron söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görev
 
     ![Çoklu oturum açma kullanıcı ekleme düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com.
+    a. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com .
 
     b. **Ad** metin kutusuna, ilk Kullanıcı adını Britta gibi girin.
 

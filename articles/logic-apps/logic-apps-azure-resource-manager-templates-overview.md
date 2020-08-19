@@ -3,15 +3,15 @@ title: Genel Bakış-Azure Logic Apps için dağıtımı otomatikleştirin
 description: Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonlar hakkında bilgi edinin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/25/2019
-ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520978"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565562"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
@@ -175,7 +175,7 @@ Parametreleri tanımlamaya yönelik bazı en iyi uygulamalar şunlardır:
 
   * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* Şablon parametre adlarını iş akışı Tanım parametresi adlarından ayırt etmek için, açıklayıcı şablon parametre adlarını kullanabilirsiniz, örneğin:`TemplateFabrikamPassword`
+* Şablon parametre adlarını iş akışı Tanım parametresi adlarından ayırt etmek için, açıklayıcı şablon parametre adlarını kullanabilirsiniz, örneğin: `TemplateFabrikamPassword`
 
 Daha fazla şablon en iyi uygulamaları için bkz. [şablon parametreleri Için en iyi uygulamalar](../azure-resource-manager/templates/template-best-practices.md#parameters).
 
@@ -237,7 +237,7 @@ Bu örnek parametre dosyası, bu konuda daha önce belirtilen şablon parametrel
 
 ## <a name="template-resources"></a>Şablon kaynakları
 
-Şablonunuz, `resources` [mantıksal uygulamanızın kaynak tanımı](#logic-app-resource-definition), herhangi bir [bağlantı kaynak](#connection-resource-definitions)tanımı ve mantıksal uygulamanızın dağıtım için ihtiyaç duyacağı diğer tüm kaynaklar gibi Azure 'da oluşturulacak ve dağıtılacak her kaynak için tanımları içeren bir nesnesidir.
+Şablonunuz, `resources` [mantıksal uygulamanızın kaynak tanımı](#logic-app-resource-definition), [bağlantı kaynak tanımları](#connection-resource-definitions)ve mantıksal uygulamanızın dağıtım için ihtiyaç duyacağı diğer kaynaklar gibi, Azure 'da oluşturulacak ve dağıtılacak her kaynak için tanımları içeren bir nesnesidir.
 
 ```json
 {
@@ -264,6 +264,22 @@ Bu örnek parametre dosyası, bu konuda daha önce belirtilen şablon parametrel
 
 > [!NOTE]
 > Şablonlar birden çok Logic Apps için kaynak tanımları içerebilir, bu nedenle tüm mantıksal uygulama kaynaklarınızın aynı Azure kaynak grubunu belirttiğinizden emin olun. Şablonu Visual Studio kullanarak bir Azure Kaynak grubuna dağıttığınızda, sizden açmak istediğiniz mantıksal uygulama sorulur. Ayrıca, Azure Kaynak grubu projeniz birden fazla şablon içerebilir, bu nedenle istendiğinde doğru parametreler dosyasını seçtiğinizden emin olun.
+
+<a name="view-resource-definitions"></a>
+
+### <a name="view-resource-definitions"></a>Kaynak tanımlarını görüntüle
+
+Bir Azure Kaynak grubundaki tüm kaynakların kaynak tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md), bu, genellikle dağıtıma HAZIRAN geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur veya Azure Portal şu adımları uygulayın:
+
+1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
+
+1. Mantıksal uygulamanızı, bağlantılarınızı ve diğer kaynaklarınızı içeren Azure kaynak grubunu bulun.
+
+1. Kaynak grubu araç çubuğunda **genel bakış**' ı seçin ve ardından kaynak grubundaki tüm kaynakları seçin.
+
+1. Kaynak grubu araç çubuğunda, **Ayarlar**' ın altında, **şablonu dışarı aktar**' ı seçin.
+
+   Portal seçtiğiniz kaynakların tanımlarını gösterir. Daha fazla bilgi için bkz. [Azure Portal bir şablona tek ve çoklu kaynak dışarı aktarma](../azure-resource-manager/templates/export-template-portal.md).
 
 Şablon kaynakları ve öznitelikleri hakkında genel bilgi için şu konulara bakın:
 
@@ -319,7 +335,7 @@ Mantıksal uygulamanızın kaynak tanımı, `properties` Bu bilgileri içeren ne
 
 Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 
-| Öznitelik | Gerekli | Tür | Description |
+| Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
 | `state` | Evet | Dize | Mantıksal uygulamanızın dağıtım sırasındaki durumu, mantıksal uygulamanızın `Enabled` etkin olduğu ve mantıksal uygulamanızın etkin olmadığı `Disabled` anlamına gelir. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
 | `integrationAccount` | No | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne `id` tümleştirme HESABıNıN kimliğini belirten özniteliğini içerir. |

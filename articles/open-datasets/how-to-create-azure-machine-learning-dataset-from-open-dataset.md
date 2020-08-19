@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 54408b20ebba60de2e1a696e5bd9b06f55e860ba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513227"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584888"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde Azure Machine Learning veri kümeleri oluşturma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ tabular_dataset = MNIST.get_tabular_dataset()
 file_dataset = MNIST.get_file_dataset()
 ```
 
-Bu örnekte, diabetes `opendatasets` sınıfı yalnızca olarak kullanılabilir `TabularDataset` , bu nedenle `get_tabular_dataset()`
+Bu örnekte, diabetes `opendatasets` sınıfı yalnızca olarak kullanılabilir `TabularDataset` , bu nedenle kullanımı `get_tabular_dataset()` .
 
 ```python
 
@@ -98,7 +98,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-with-the-studio"></a>Studio ile veri kümeleri oluşturma
 
-Ayrıca, tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere Machine Learning araçları 'nı içeren birleştirilmiş bir Web arabirimi olan [Azure Machine Learning Studio](https://ml.azure.com)Ile açık veri kümelerinde veri kümeleri oluşturabilirsiniz.
+Ayrıca, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için Machine Learning araçları 'nı içeren birleştirilmiş bir Web arabirimi olan [Azure Machine Learning Studio](https://ml.azure.com)Ile Azure açık veri kümelerinden Azure Machine Learning veri kümeleri oluşturabilirsiniz.
 
 > [!Note]
 > Azure Machine Learning Studio aracılığıyla oluşturulan veri kümeleri otomatik olarak çalışma alanına kaydedilir.
@@ -111,7 +111,7 @@ Ayrıca, tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek
 
     ![Veri kümesi seçin](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, **genel tatiller** veri kümesi için zaman aralığını bir yıla, ülke kodunu Ise yalnızca bizimle filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
+1. Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, **genel tatiller** veri kümesi için zaman aralığını bir yıla, ülke kodunu Ise yalnızca bizimle filtreleyerek filtreleyebilirsiniz. Alan açıklamaları ve tarih aralıkları gibi veri ayrıntıları için [Azure açık veri kümeleri kataloğuna](https://azure.microsoft.com/services/op[en-datasets/catalog/) bakın. **Oluştur**’u seçin.
 
     ![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

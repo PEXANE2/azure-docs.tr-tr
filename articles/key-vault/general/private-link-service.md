@@ -6,14 +6,14 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: quickstart
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494698"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585840"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -67,7 +67,7 @@ Artık yapılandırılmış özel uç noktayı görebileceksiniz. Artık bu öze
 
 Zaten bir anahtar kasanız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. Azure portalında oturum açın. 
+1. Azure Portal’da oturum açın. 
 1. Arama çubuğuna "Anahtar Kasası" yazın
 1. Özel uç nokta eklemek istediğiniz listeden anahtar kasasını seçin.
 1. Ayarlar altında "ağ" sekmesini seçin
@@ -158,7 +158,7 @@ Dört sağlama durumu vardır:
 
 | Hizmet eylemi sağla | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
@@ -238,7 +238,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 ## <a name="troubleshooting-guide"></a>Sorun Giderme Kılavuzu
 
 * Özel uç noktanın onaylanmış durumda olduğundan emin olmak için denetleyin. 
-    1. Azure portal bunu denetleyebilir ve giderebilirsiniz. Key Vault kaynağını açın ve ağ seçeneğine tıklayın. 
+    1. Bunu Azure portalda denetleyebilir ve gerekirse düzeltebilirsiniz. Key Vault kaynağını açıp Ağ İletişimi seçeneğine tıklayın. 
     2. Ardından özel uç nokta bağlantıları sekmesini seçin. 
     3. Bağlantı durumunun onaylanmış ve sağlama durumunun başarılı olduğundan emin olun. 
     4. Ayrıca, Özel uç nokta kaynağına gidebilir ve aynı özellikleri orada gözden geçirebilir ve sanal ağın kullandığınız bir ile eşleşip eşleşmediğini iki kez kontrol edebilirsiniz.
@@ -247,7 +247,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
     1. Tam adı olan bir Özel DNS Zone kaynağınız olmalıdır: privatelink.vaultcore.azure.net. 
     2. Bu ayarı nasıl ayarlayacağınızı öğrenmek için lütfen aşağıdaki bağlantıya bakın. [Özel DNS bölgeler](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
     
-* Özel DNS bölgesinin sanal ağla bağlantılı olmadığından emin olmak için denetleyin. Hala genel IP adresini almaya devam ediyorsanız bu sorun olabilir. 
+* Özel DNS Bölgesini denetleyerek Sanal Ağ ile bağlantılı olmadığından emin olun. Hala genel IP adresini almaya devam ediyorsanız bu sorun olabilir. 
     1. Özel bölge DNS sanal ağa bağlı değilse, sanal ağdan kaynaklanan DNS sorgusu, anahtar kasasının genel IP adresini döndürür. 
     2. Azure portal Özel DNS bölgesi kaynağına gidin ve sanal ağ bağlantıları seçeneğine tıklayın. 
     4. Anahtar kasasına çağrı gerçekleştirecek sanal ağın listelenmesi gerekir. 
@@ -256,13 +256,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Özel DNS bölgesinde Anahtar Kasası için bir kaydın eksik olmadığından emin olun. 
     1. Özel DNS bölgesi sayfasına gidin. 
-    2. Genel Bakış ' A tıklayın ve anahtar kasanızın (ör. fabrikam) basit adına sahip bir kayıt olup olmadığını kontrol edin. Herhangi bir sonek belirtmeyin.
-    3. Yazımı denetlediğinizden emin olun ve bir kayıt oluşturun ya da onarın. 3600 TTL (1 saat) kullanabilirsiniz. 
+    2. Genel Bakış'a tıklayıp anahtar kasanızın basit adının (örn. fabrikam) bulunduğu bir A kaydı olup olmadığını denetleyin. Herhangi bir son ek belirtmeyin.
+    3. Yazımı denetleyin ve A kaydını düzeltin veya yeni bir kayıt oluşturun. TTL değeri olarak 3600 (1 saat) belirtebilirsiniz. 
     4. Doğru özel IP adresini belirttiğinizden emin olun. 
     
 * Bir kaydın doğru IP adresine sahip olduğundan emin olun. 
-    1. Azure portal ' de özel uç nokta kaynağını açarak IP adresini doğrulayabilirsiniz 
-    2. Azure portal (Key Vault kaynağında değil) Microsoft. Network/privateEndpoints kaynağına gidin
+    1. IP adresini onaylamak için Azure portalında Özel Uç Nokta kaynağını açabilirsiniz 
+    2. Azure portalında Microsoft.Network/privateEndpoints kaynağına (Key Vault kaynağına değil) gidin
     3. Genel Bakış sayfasında ağ arabirimi ' ne bakın ve bu bağlantıya tıklayın. 
     4. Bağlantı, özel IP adresi özelliğini içeren NIC kaynağına genel bakışı gösterir. 
     5. Bunun, A kaydında belirtilen doğru IP adresi olduğunu doğrulayın.

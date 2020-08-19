@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262866"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585569"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -65,7 +65,7 @@ Azure Backup, Azure sanal makinesinin uygulamayla tutarlı bir yedeğini almak i
 
 - **VSS Yazıcı hizmetinin çalışır olduğundan emin olun**: [VSS yazıcı sorunlarını gidermek](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state)için aşağıdaki adımları izleyin.
 - **Yedekleme en iyi yöntem kılavuzlarını izleyin**: [Azure VM yedeklemesini etkinleştirmek için en iyi uygulamaları](backup-azure-vms-introduction.md#best-practices)gözden geçirin.
-- **Şifrelenmiş diskler için yönergeleri gözden geçirin**: şifrelenmiş disk Içeren VM 'ler için yedeklemeyi etkinleştirirseniz, tüm gerekli izinleri sağladığınızdan emin olun. Daha fazla bilgi için bkz. [şifrelenmiş Azure VM 'Yi yedekleme ve geri yükleme](backup-azure-vms-encryption.md#encryption-support).
+- **Şifrelenmiş diskler için yönergeleri gözden geçirin**: şifrelenmiş disk Içeren VM 'ler için yedeklemeyi etkinleştirirseniz, tüm gerekli izinleri sağladığınızdan emin olun. Daha fazla bilgi için bkz. [şifrelenmiş Azure VM 'Yi yedekleme ve geri yükleme](backup-azure-vms-encryption.md).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM aracısı Azure Backup ile iletişim kuramıyor
 
@@ -277,7 +277,7 @@ Aşağıdaki koşullar anlık görüntü görevinin başarısız olmasına neden
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_ `<Geo>` _ `<number>` .
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' i seçin.
@@ -306,7 +306,7 @@ Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu eylem geri 
 
 Kaynak grubundaki kilit nedeniyle temizlenmediği geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Hub** menüsünde **tüm kaynaklar**' ı seçin, ardından `<Geo>` sanal makinenizin bulunduğu kaynak grubunu aşağıdaki biçimde AzureBackupRG_ _ ' i seçin `<number>` .
 
     ![Kaynak grubunu seçin](./media/backup-azure-arm-vms-prepare/resource-group.png)

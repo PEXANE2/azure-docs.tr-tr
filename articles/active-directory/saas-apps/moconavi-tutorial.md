@@ -2,25 +2,21 @@
 title: 'Öğretici: moconavi ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve moconavi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 038520e662a205bc173035fd19656cbaf4800239
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160530"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Öğretici: moconavi ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Moconavi 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -150,12 +146,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -205,7 +201,7 @@ Bu bölümde, moconavi 'de Britta Simon adlı bir Kullanıcı oluşturacaksını
 
     ![Çoklu oturum açmayı test etme](./media/moconavi-tutorial/testing3.png)
 
-    a. Giriş kimlik doğrulaması **anahtarını**girin`azureAD` : **giriş kimlik doğrulama anahtarı** metin kutusuna.
+    a. Giriş kimlik doğrulaması **anahtarını**girin `azureAD` : **giriş kimlik doğrulama anahtarı** metin kutusuna.
 
     b. Giriş Kullanıcı **kimliğini**: `your ad account` **Giriş Kullanıcı kimliği** metin kutusuna girin.
 

@@ -2,26 +2,21 @@
 title: 'Öğretici: E Sales Manager yeniden karması ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ile E Sales Manager yeniden karışımı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202405"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555398"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory E Sales Manager yeniden karması ile tümleştirin
 
@@ -35,7 +30,7 @@ Azure AD 'yi E Sales Manager yeniden karması ile tümleştirerek aşağıdaki a
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini E-Sales Manager yeniden karması ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -204,7 +199,7 @@ Bu bölümde, aşağıdakileri yaparak Azure portal test kullanıcısı Britta S
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
 
-    d. **Oluştur**'u seçin.
+    d. **Oluştur**’u seçin.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E-Satış Yöneticisi oluşturma test kullanıcısını yeniden karıştır
 

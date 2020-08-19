@@ -2,24 +2,29 @@
 title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: a5c12f9f9177c4495a82ced2b3c7d0c5edcdd78e
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 08/18/2020
+ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262798"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585346"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
 
-Bu makalede, [Azure Backup](backup-overview.md) hizmetini kullanarak Windows veya Linux Azure sanal makinelerini (VM 'ler) şifrelenmiş disklerle yedekleme ve geri yükleme işlemlerinin nasıl yapılacağı açıklanır.
+Bu makalede, [Azure Backup](backup-overview.md) hizmetini kullanarak Windows veya Linux Azure sanal makinelerini (VM 'ler) şifrelenmiş disklerle yedekleme ve geri yükleme işlemlerinin nasıl yapılacağı açıklanır. Daha fazla bilgi için bkz. [Azure VM yedeklemelerini şifreleme](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
-Başlamadan önce Azure Backup Azure VM 'leriyle nasıl etkileşime gireceğini öğrenmek istiyorsanız şu kaynakları gözden geçirin:
+## <a name="encryption-using-platform-managed-keys"></a>Platform tarafından yönetilen anahtarları kullanarak şifreleme
 
-- Azure VM yedekleme mimarisini [gözden geçirin](backup-architecture.md#architecture-built-in-azure-vm-backup) .
-- [Hakkında bilgi edinin](backup-azure-vms-introduction.md) Azure VM yedeklemesi ve Azure Backup uzantısı.
+Varsayılan olarak, sanal makinelerinizdeki tüm diskler, [depolama hizmeti şifrelemesini](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)kullanan platform tarafından yönetilen anahtarlar (PMK) kullanılarak otomatik olarak şifrelenir. Bu VM 'Leri, sonunda şifrelemeyi desteklemek için gerekli herhangi bir eylem olmadan Azure Backup kullanarak yedekleyebilirsiniz. Platform tarafından yönetilen anahtarlarla şifreleme hakkında daha fazla bilgi için [Bu makaleye bakın](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).
 
-## <a name="encryption-support"></a>Şifreleme desteği
+![Şifrelenmiş diskler](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
+
+Özel yönetilen anahtarlarla (CMK) disk şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar. Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)bakın.
+
+## <a name="encryption-support-using-ade"></a>ADE kullanarak şifreleme desteği
 
 Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini destekler. ADE, Windows VM 'leri şifrelemek için BitLocker 'ı ve Linux sanal makineleri için dm-crypt özelliğini kullanır. ADE, disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşir. Key Vault anahtar şifreleme anahtarları (KEKs), Key Vault yazmadan önce ek bir güvenlik katmanı eklemek ve şifreleme gizli dizilerini şifrelemek için kullanılabilir.
 
@@ -119,11 +124,6 @@ Azure Backup, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek
 1. Erişim **ilkeleri**  >  **Ekle erişim ilkesi**' ni seçin.
 
     ![Erişim İlkesi Ekle](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. **Asıl seçin**' i seçin ve ardından **yedekleme yönetimi**yazın.
-1. **Yedekleme yönetimi hizmeti**  >  **seçin**öğesini seçin.
-
-    ![Yedekleme hizmeti seçimi](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. Şablondan yapılandırma **İlkesi Ekle**  >  **(isteğe bağlı)** bölümünde **Azure Backup**' yi seçin.
     - **Anahtar izinleri** ve **gizli izinler**için gerekli izinler önceden doldurulur.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322848"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566157"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog kullanarak Linux tabanlı kaynaklardan veri toplama
 
@@ -67,7 +67,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 
 ### <a name="configure-the-log-analytics-agent"></a>Log Analytics aracısını yapılandırma
 
-1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanınızın Gelişmiş ayarlar yapılandırma >bağlantısını aç** bağlantısına tıklayın.
+1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanınızın Gelişmiş ayarlar yapılandırma >bağlantısını aç ** bağlantısına tıklayın.
 
 1. **Gelişmiş ayarlar** dikey penceresinde **veri**  >  **Syslog**öğesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin.
     
@@ -77,7 +77,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 
 1. İzlemek istediğiniz tüm özellikleri eklediğinizde ve her biri için herhangi bir önem derecesi belirlediyseniz, bu onay kutusunu **makinelerime aşağıdaki yapılandırmayı Uygula**seçeneğini belirleyin.
 
-1. **Kaydet**'i seçin. 
+1. **Kaydet**’i seçin. 
 
 1. VM 'niz veya gerecinizde belirttiğiniz olanakları gönderdiğinizden emin olun.
 
@@ -86,6 +86,8 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 1. Syslog iletilerinizi ayrıştırmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/log-query/functions.md) bölümünde açıklanan sorgu parametrelerini kullanabilirsiniz. Sonra sorguyu yeni bir Log Analytics işlevi olarak kaydedebilir ve yeni bir veri türü olarak kullanabilirsiniz.
 
 > [!NOTE]
+> **Hem düz Syslog *hem* de CEF iletilerini iletmek için aynı makineyi kullanma**
+>
 >
 > Var olan [CEF günlüğü iletici makinenizi](connect-cef-agent.md) kullanarak, günlükleri düz Syslog kaynaklarından toplayıp iletebilirsiniz. Ancak, olayların çoğaltılmasıyla sonuçlanacak şekilde Azure Sentinel 'e her iki biçimdeki olayları göndermeyi önlemek için aşağıdaki adımları gerçekleştirmeniz gerekir.
 >
@@ -111,7 +113,7 @@ Azure Sentinel, anormal Secure Shell (SSH) oturum açma etkinliğini belirlemek 
  
 Bu algılama, syslog veri bağlayıcısının belirli bir yapılandırmasını gerektirir: 
 
-1. Önceki yordamdaki 5. adım için hem **AUTH** hem de **authprıv** 'in izlenecek tesis olarak seçildiğinden emin olun. Tüm seçili olmaları için önem derecesi seçenekleri için varsayılan ayarları koruyun. Örnek:
+1. Önceki yordamdaki 5. adım için hem **AUTH** hem de **authprıv** 'in izlenecek tesis olarak seçildiğinden emin olun. Tüm seçili olmaları için önem derecesi seçenekleri için varsayılan ayarları koruyun. Örneğin:
     
     > [!div class="mx-imgBorder"]
     > ![Anormal SSH oturum açma algılaması için gereken tesisler](./media/connect-syslog/facilities-ssh-detection.png)

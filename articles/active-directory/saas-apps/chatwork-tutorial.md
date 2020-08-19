@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 9f43498ec6a80776f31cd45e80be6d786c2ae863
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529381"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586265"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>Öğretici: ChatWork ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -83,7 +83,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [ChatWork istemci destek ekibine](mailto:info@support.chatwork.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri **CHATWORK SSO yapılandırmasından**sonra ayarladığınız özel oturum açma URL 'siyle güncelleştirin.
+
+1. ChatWork uygulaması, **benzersiz kullanıcı tanımlayıcı** özniteliğinin değerinin ChatWork içinde kayıtlı e-posta adresiyle eşleştiğinden bekliyor. Özniteliği, varsayılan olarak **User. PrincipalName** ile eşlenir. PrincipalName e-posta adresinden farklıysa,  **benzersiz kullanıcı tanımlayıcısını** **User. Mail**ile eşleyin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -125,11 +127,11 @@ Bu bölümde, ChatWork 'e erişim vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-chatwork-sso"></a>ChatWork SSO 'yu yapılandırma
 
-**ChatWork** Side çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' dan [ChatWork destek ekibine](mailto:info@support.chatwork.com)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**ChatWork** Side çoklu oturum açmayı yapılandırmak Için lütfen [ChatWork yönetici kılavuzunu](https://download.chatwork.com/Chatwork_AdminGuide.pdf) okuyun ve bir ChatWork ayarı yapılandırın.
 
 ### <a name="create-chatwork-test-user"></a>ChatWork test kullanıcısı oluştur
 
-Bu bölümde, ChatWork içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları ChatWork platformunda eklemek için [ChatWork destek ekibi](mailto:info@support.chatwork.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, ChatWork içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. [ChatWork yönetici kılavuzuna](https://download.chatwork.com/Chatwork_AdminGuide.pdf) erişin ve kullanıcıyı ChatWork platformuna ekleyin.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

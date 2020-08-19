@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089507"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565919"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Hızlı başlangıç: ilk statik Web uygulamanızı oluşturma
 
@@ -20,7 +20,7 @@ Azure Statik Web Uygulamaları, uygulamaları bir GitHub deposundan derleyerek w
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [GitHub](https://github.com) hesabı
 - [Azure](https://portal.azure.com) hesabı
@@ -98,7 +98,7 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Sonraki derleme düğmesi":::
 
 > [!NOTE]
->  Herhangi bir depo görmüyorsanız, GitHub 'da Azure statik Web Apps yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth uygulamaları > ayarlar > uygulamalar**' a gidip **Azure statik Web Apps**' yı seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
+>  Herhangi bir depo görmüyorsanız, GitHub 'da Azure statik Web Apps yetkilendirmeniz gerekebilir. [GitHub giriş sayfasına](https://github.com) gidin ve açılan menüyü açmak için hesap yansımanıza tıklayın. **Ayarlar**' a ve ardından **uygulamalar > yetkili OAuth uygulamaları Azure statik Web Apps >** ve son olarak **izin ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
 
 ### <a name="build"></a>Oluşturma
 

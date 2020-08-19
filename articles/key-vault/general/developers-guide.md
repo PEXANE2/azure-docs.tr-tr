@@ -5,15 +5,15 @@ services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531175"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585874"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -51,7 +51,7 @@ Anahtar kasaınızdaki anahtarlar, gizlilikler veya sertifikalarla çalışmadan
 - [REST ile gizli dizi işlemleri](/rest/api/keyvault/#secret-operations)
 - [Python ile gizli dizi ayarlama ve alma](../secrets/quick-create-python.md)
 - [Java ile gizli dizi ayarlama ve alma](../secrets/quick-create-java.md)
-- [Node.jsile gizli dizi ayarlama ve alma](../secrets/quick-create-node.md)
+- [Node.jsile gizli dizi ayarlama ve alma ](../secrets/quick-create-node.md)
 - [.NET ile gizli dizi ayarlama ve alma (v4 SDK)](../secrets/quick-create-net.md)
 - [Bir Anahtar Kasası oluşturma ve bir Azure Resource Manager şablonu aracılığıyla gizli dizi ekleme](../secrets/quick-create-template.md)
 
@@ -94,7 +94,7 @@ Key Vault kaynaklarınızın tamamına REST arabiriminden erişilebilir. Kasalar
 
 Node.js, Key Vault yönetim API 'SI ve Key Vault nesne API 'SI ayrıdır. Aşağıdaki genel bakış makalesi, her ikisine de erişmenizi sağlar. 
 
-[Node.jsiçin Azure Key Vault modüller](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
+[Node.jsiçin Azure Key Vault modüller ](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 

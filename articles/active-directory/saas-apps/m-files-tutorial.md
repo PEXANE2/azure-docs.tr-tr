@@ -2,25 +2,21 @@
 title: 'Öğretici: a-Files ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve d dosyaları arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4536fd49-3a65-4cff-9620-860904f726d0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 41877db250cd6c56d80dbdf98fa0d78562686bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159455"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Öğretici: d-dosyalarla Azure Active Directory tümleştirme
 
@@ -32,7 +28,7 @@ P dosyalarını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -145,7 +141,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     Sunucu bölümünün altında, aşağıdaki gibi değerleri:  
 
-    a. **Ad**için yazın `<tenant-name>.cloudvault.m-files.com`. 
+    a. **Ad**için yazın `<tenant-name>.cloudvault.m-files.com` . 
  
     b. **Bağlantı noktası numarası**için **4466**yazın. 
 
@@ -155,7 +151,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     e. **Sunucu üzerindeki kasa**için, sunucuda ilgili kasayı seçin.
  
-    f. **Tamam**'a tıklayın.
+    f. **Tamam** düğmesine tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -175,12 +171,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -210,7 +206,7 @@ Bu bölümde, e-dosyalara erişim vererek Azure çoklu oturum açma özelliğini
 
 ### <a name="create-m-files-test-user"></a>A-Files test kullanıcısı oluştur
 
-Bu bölümün amacı, a-dosyalarında Britta Simon adlı bir Kullanıcı oluşturmaktır. E-dosyalarda kullanıcıları eklemek için, [e-Files destek](mailto:support@m-files.com) ekibiyle çalışın.
+Bu bölümün amacı, a-dosyalarında Britta Simon adlı bir Kullanıcı oluşturmaktır. E-dosyalarda kullanıcıları eklemek için,  [e-Files destek](mailto:support@m-files.com) ekibiyle çalışın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

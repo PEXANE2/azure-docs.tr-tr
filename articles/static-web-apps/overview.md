@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835791"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565715"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi nedir?
 
@@ -32,10 +32,10 @@ Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve 
 
 - HTML, CSS, JavaScript ve görüntüler gibi statik içerik için **Web barındırma** .
 - Azure Işlevleri tarafından sunulan **TÜMLEŞIK API** desteği.
-- Depo değişikliklerinin derlemeleri ve dağıtımları tetikleyen **birinci taraf GitHub tümleştirmesi** .
+- Depo değişikliklerinin derlemeleri ve dağıtımları tetikleyen **birinci sınıf GitHub tümleştirmesi** .
 - **Genel olarak dağıtılmış** statik içerik, içeriği kullanıcılarınıza yaklaştırır.
 - Otomatik olarak yenilenen **ÜCRETSIZ SSL sertifikaları**.
-- **Özel etki alanları** \* uygulamanıza markalı özelleştirmeler sağlamak için.
+- Uygulamanıza markalı özelleştirmeler sağlamak için **özel etki alanları** .
 - CORS yapılandırması gerektirmeyen API 'Ler çağrılırken ters proxy ile **sorunsuz güvenlik modeli** .
 - Azure Active Directory, Facebook, Google, GitHub ve Twitter ile **kimlik doğrulama sağlayıcısı tümleştirmeleri** .
 - **Özelleştirilebilir yetkilendirme rolü tanımı** ve atamaları.
@@ -44,11 +44,9 @@ Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve 
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Statik Web Apps ile yapabilecekleriniz
 
-- [Azure işlevleri](apis.md) arka ucu Ile [angular](getting-started.md#tabpanel_CeZOj-G++Q_angular), [tepki](getting-started.md#tabpanel_CeZOj-G++Q_react)verme, [svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) [gibi çerçeveler](getting-started.md#tabpanel_CeZOj-G++Q_vue) ve kitaplıklar ile **modern JavaScript uygulamaları oluşturun** .
+- [Azure işlevleri](apis.md) arka ucu Ile [angular](getting-started.md?tabs=angular), [tepki](getting-started.md?tabs=react)verme, [svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) [gibi çerçeveler](getting-started.md?tabs=react) ve kitaplıklar ile **modern JavaScript uygulamaları oluşturun** .
 - [Gatsby](publish-gatsby.md), [kugo](publish-hugo.md), [vuepress](publish-vuepress.md)gibi çerçeveler ile **statik siteler yayımlayın** .
 - [Next.js](deploy-nextjs.md) ve [Nuxt.js](deploy-nuxtjs.md)gibi çerçeveler ile **Web uygulamaları dağıtın** .
-
-\*Tepesinde etki alanı kayıtları önizleme sırasında desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
