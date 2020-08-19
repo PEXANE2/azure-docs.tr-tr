@@ -3,22 +3,22 @@ title: Kurtarma Hizmetleri kasalarına genel bakış
 description: Kurtarma Hizmetleri kasaları ve Azure Backup kasaları arasında genel bakış ve karşılaştırma.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261880"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587761"
 ---
 # <a name="recovery-services-vaults-overview"></a>Kurtarma Hizmetleri kasalarına genel bakış
 
 Bu makalede, bir kurtarma hizmetleri kasasının özellikleri açıklanmaktadır. Kurtarma Hizmetleri Kasası, Azure 'da veri barındıran bir depolama varlıktır. Veriler genellikle, sanal makineler (VM 'Ler), iş yükleri, sunucular veya iş istasyonları için verilerin veya yapılandırma bilgilerinin kopyalarıdır. Kurtarma Hizmetleri kasalarını, IaaS VM 'Leri (Linux veya Windows) ve Azure SQL veritabanları gibi çeşitli Azure hizmetleri için yedekleme verilerini tutmak üzere kullanabilirsiniz. Kurtarma Hizmetleri kasaları, System Center DPM, Windows Server, Azure Backup Sunucusu ve daha fazlasını destekler. Kurtarma Hizmetleri kasaları, yedekleme verilerinizi düzenlemeyi kolaylaştırırken yönetim zorluklarını da en aza indirir. Kurtarma Hizmetleri kasaları, şu gibi özellikler sağlayan Azure Azure Resource Manager modelini temel alır:
 
-- **Yedekleme verilerini güvenli hale getirmeye yardımcı olmak Için geliştirilmiş yetenekler**: kurtarma hizmetleri kasaları ile Azure Backup bulut yedeklemelerini korumak için güvenlik özellikleri sağlar. Güvenlik özellikleri, üretim ve yedekleme sunucuları tehlikeye atılsa bile yedeklemelerinizi güvenli hale getirmek ve verileri güvenli bir şekilde kurtarmanız için de güvence altına alınır. [Daha fazla bilgi](backup-azure-security-feature.md)
+- **Yedekleme verilerini güvenli hale getirmeye yardımcı olmak Için geliştirilmiş yetenekler**: kurtarma hizmetleri kasaları ile Azure Backup bulut yedeklemelerini korumak için güvenlik özellikleri sağlar. Güvenlik özellikleri, üretim ve yedekleme sunucuları tehlikeye atılsa bile yedeklemelerinizi güvenli hale getirmek ve verileri güvenli bir şekilde kurtarmanız için de güvence altına alınır. [Daha fazla bilgi edinin](backup-azure-security-feature.md)
 
-- **Karma BT ortamınız Için merkezi izleme**: kurtarma hizmetleri kasaları Ile yalnızca [Azure IaaS sanal](backup-azure-manage-vms.md) makinelerinizi ve ayrıca şirket [içi varlıklarınızı](backup-azure-manage-windows-server.md#manage-backup-items) merkezi bir portalda izleyebilirsiniz. [Daha fazla bilgi](backup-azure-monitoring-built-in-monitor.md)
+- **Karma BT ortamınız Için merkezi izleme**: kurtarma hizmetleri kasaları Ile yalnızca [Azure IaaS sanal](backup-azure-manage-vms.md) makinelerinizi ve ayrıca şirket [içi varlıklarınızı](backup-azure-manage-windows-server.md#manage-backup-items) merkezi bir portalda izleyebilirsiniz. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md)
 
-- **Rol tabanlı Access Control (RBAC)**: RBAC, Azure 'da ayrıntılı erişim yönetimi denetimi sağlar. [Azure çeşitli yerleşik roller sağlar](../role-based-access-control/built-in-roles.md)ve Azure Backup [kurtarma noktalarını yönetmek için üç yerleşik rol](backup-rbac-rs-vault.md)içerir. Kurtarma Hizmetleri kasaları, yedekleme ve geri yükleme erişimini sınırlayan RBAC ile uyumludur. [Daha fazla bilgi](backup-rbac-rs-vault.md)
+- **Rol tabanlı Access Control (RBAC)**: RBAC, Azure 'da ayrıntılı erişim yönetimi denetimi sağlar. [Azure çeşitli yerleşik roller sağlar](../role-based-access-control/built-in-roles.md)ve Azure Backup [kurtarma noktalarını yönetmek için üç yerleşik rol](backup-rbac-rs-vault.md)içerir. Kurtarma Hizmetleri kasaları, yedekleme ve geri yükleme erişimini sınırlayan RBAC ile uyumludur. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md)
 
 - **Geçici silme**: kötü bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verileri için 14 günlük ek bekletme, müşteriye hiçbir ücret vermez. [Daha fazla bilgi edinin](backup-azure-security-feature-cloud.md).
 
@@ -32,10 +32,19 @@ Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan yedeklemeleri ve kurtarm
 
 - Depolama artıklığı hakkında daha fazla bilgi edinmek için [coğrafi](../storage/common/storage-redundancy.md) ve [Yerel](../storage/common/storage-redundancy.md) artıklık üzerinde bu makalelere bakın.
 
-### <a name="additional-resources"></a>Ek kaynaklar
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki şifreleme ayarları
 
-- [Kasa destekleniyor ve desteklenmeyen senaryolar](backup-support-matrix.md#vault-support)
-- [Kasa hakkında sık sorulan sorular](backup-azure-backup-faq.md)
+Bu bölümde, kurtarma hizmetleri kasasında depolanan yedekleme verilerinizi şifrelemek için kullanılabilen seçenekler açıklanmaktadır.
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Platform tarafından yönetilen anahtarlar kullanılarak yedekleme verilerinin şifrelenmesi
+
+Varsayılan olarak, tüm verileriniz platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu şifrelemeyi etkinleştirmek için uçtan herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
+
+Verilerinizi sahip olduğunuz ve yönetilen şifreleme anahtarlarını kullanarak şifrelemeyi seçebilirsiniz. Azure Backup, yedeklemelerinizi şifrelemek için Azure Key Vault depolanan RSA anahtarlarınızı kullanmanıza olanak sağlar. Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasının Azure Key Vault şifreleme anahtarına erişim izni verilmelidir. Her gerektiğinde anahtarı devre dışı bırakabilir veya erişimi iptal edebilirsiniz. Ancak, kasadaki herhangi bir öğeyi korumayı denemeden önce anahtarlarınızı kullanarak şifrelemeyi etkinleştirmeniz gerekir.
+
+[Müşteri tarafından yönetilen anahtarları kullanarak](encryption-at-rest-with-cmk.md)yedekleme verilerinizi şifrelemek hakkında daha fazla bilgi edinin.
 
 ## <a name="azure-advisor"></a>Azure Danışmanı
 
@@ -45,9 +54,15 @@ Azure Danışmanı, yedeklenmeyen VM 'Ler için saatlik [öneriler](../advisor/a
 
 ![Azure Danışmanı](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>Ek kaynaklar
+
+- [Kasa destekleniyor ve desteklenmeyen senaryolar](backup-support-matrix.md#vault-support)
+- [Kasa hakkında sık sorulan sorular](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makaleleri kullanın:</br>
-[IaaS VM 'sini yedekleme](backup-azure-arm-vms-prepare.md)</br>
-[Azure Backup Sunucusu yedekleme](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server yedekleme](backup-windows-with-mars-agent.md)
+Aşağıdaki makaleleri kullanın:
+
+- [IaaS VM 'sini yedekleme](backup-azure-arm-vms-prepare.md)
+- [Azure Backup Sunucusu yedekleme](backup-azure-microsoft-azure-backup.md)
+- [Windows Server yedekleme](backup-windows-with-mars-agent.md)

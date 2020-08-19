@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 841c4d85dee829eeebaef17e6ff12343d9940d03
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 237ca65d5feadd019b734dd751d943c06c9a2213
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192046"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587013"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -55,7 +55,7 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 |[Dikkatli IT](https://vigilant.it/manage-cloud-service/)|[Azure sistem durumu denetimi: 5 günlük değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 günlük uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandıs yönetilen ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet tarafından desteklenen Vandıs, sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Palo Alto Networks Ile desteklenen vandis yönetilen VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Market, sanal WAN, güvenlik hizmetleri ve özel kenar bölgesi Hizmetleri için Azure Marketi, şu Azure ağı MSP Iş ortaklarından, yol haritası: [Amdocs](https://www.amdocs.com/);  [Deutsche Telekod](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Omnicloud](https://omniclouds.com/);  [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
+Azure Market, sanal WAN, güvenlik hizmetleri ve özel kenar bölgesi Hizmetleri için Azure Marketi, şu Azure ağı MSP Iş ortaklarından, yol haritası: [Amdocs](https://www.amdocs.com/);  [Deutsche Telekod](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Omnicloud](https://omniclouds.com/); [Turuncu Iş Hizmetleri](https://www.orange-business.com/en/solutions/cloud-computing); [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute iş ortakları
 

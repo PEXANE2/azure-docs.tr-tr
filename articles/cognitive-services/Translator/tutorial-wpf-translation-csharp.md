@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995743"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589665"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile bir çeviri uygulaması oluşturma
 
@@ -23,7 +23,7 @@ Bu öğreticide, tek bir abonelik anahtarıyla metin çevirisi, dil algılama ve
 
 WPF nedir? Masaüstü istemci uygulamaları oluşturan bir UI çerçevesidir. WPF geliştirme platformu, uygulama modeli, kaynaklar, denetimler, grafikler, düzen, veri bağlama, belgeler ve güvenlik dahil olmak üzere çok sayıda uygulama geliştirme özelliği destekler. .NET Framework bir alt kümesidir, bu nedenle daha önce ASP.NET veya Windows Forms kullanarak .NET Framework ile uygulamalar oluşturduysanız, programlama deneyiminin tanıdık olması gerekir. WPF, uygulama programlamaya yönelik bildirim temelli bir model sağlamak için Genişletilebilir uygulama biçimlendirme dili 'ni (XAML) kullanır. Bu, gelecek bölümlerde gözden geçireceğiz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Visual Studio 'da WPF projesi oluşturma
@@ -40,7 +40,7 @@ Bu liste, bu öğreticide kullanılan bilişsel hizmetleri içerir. Her bir öze
 | Hizmet | Özellik | Açıklama |
 |---------|---------|-------------|
 | Translator | [Dilleri al](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Metin çevirisi için desteklenen dillerin tüm listesini alın. |
-| Translator | [Çevir](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 60 ' den fazla dile çevirin. |
+| Translator | [Çevir](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 70 ' den fazla dile çevirin. |
 | Translator | [Algılama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
 | Bing Yazım Denetimi | [Yazım Denetimi](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Çeviri doğruluğunu artırmak için yazım hatalarını düzeltin. |
 
@@ -72,7 +72,7 @@ Sonraki bölümde, JSON ayrıştırma gibi ek işlevler için projenize derlemel
 
 ## <a name="add-references-and-nuget-packages-to-your-project"></a>Projenize başvurular ve NuGet paketleri ekleyin
 
-Projemiz .NET Framework derlemeleri ve NuGet Paket Yöneticisi 'ni kullanarak yükleytiğimiz NewtonSoft. json ' ı gerektirir.
+Projemiz .NET Framework derlemeleri ve üzerinde NewtonSoft.Jsiçin NuGet Paket Yöneticisi 'ni kullanarak yükleyeceğiz.
 
 ### <a name="add-net-framework-assemblies"></a>.NET Framework derlemeleri Ekle
 
@@ -91,15 +91,15 @@ Nesneleri seri hale getirmek ve seri durumdan çıkarmak için ve HTTP istekleri
 > [!NOTE]
 > Derleme başvuruları hakkında daha fazla bilgi edinmek istiyorsanız bkz. [nasıl yapılır: başvuru Yöneticisi 'ni kullanarak başvuru ekleme veya kaldırma](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
-### <a name="install-newtonsoftjson"></a>NewtonSoft. JSON 'ı yükler
+### <a name="install-newtonsoftjson"></a>NewtonSoft.Jsburaya yüklensin
 
-Uygulamamız JSON nesnelerinin serisini kaldırmak için NewtonSoft. JSON kullanacaktır. Paketi yüklemek için bu yönergeleri izleyin.
+Uygulamamız, JSON nesnelerinin serisini kaldırmak için NewtonSoft.Jskullanır. Paketi yüklemek için bu yönergeleri izleyin.
 
 1. Projenizi Visual Studio 'nun Çözüm Gezgini bulun ve projenize sağ tıklayın. **NuGet Paketlerini Yönet**' i seçin.
 1. **Araştır** sekmesini bulun ve seçin.
-1. Arama çubuğuna [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) girin.
+1. Arama çubuğuna [NewtonSoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) girin.
 
-    ![NewtonSoft. JSON öğesini bulun ve yükler](media/nuget-package-manager.png)
+    ![NewtonSoft.Jsbul ve yüklensin](media/nuget-package-manager.png)
 
 1. Paketi seçin ve ardından **yüklensin**' e tıklayın.
 1. Yükleme tamamlandığında sekmesini kapatın.
@@ -114,7 +114,7 @@ Biz oluşturduğumuzun bir bakalım.
 
 Kullanıcı arabirimi şu bileşenleri içerir:
 
-| Name | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Metin çevirisi için Microsoft Translator tarafından desteklenen dillerin listesini görüntüler. Kullanıcı çeviri yaptığı kaynak dili seçer. |
 | `ToLanguageComboBox` | ComboBox | Aynı dil listesini ile görüntüler `FromComboBox` , ancak kullanıcının çevirdiğini dili seçmek için kullanılır. |
@@ -173,7 +173,7 @@ Bu, formunuz için hazırlayın. Şimdi metin çevirisini ve Bing Yazım Denetim
 
 ## <a name="create-your-app"></a>Uygulamanızı oluşturun
 
-`MainWindow.xaml.cs`uygulamamızı denetleyen kodu içerir. Sonraki birkaç bölümde, açılan menülerinizi doldurmak ve çevirmen ve Bing Yazım Denetimi tarafından sunulan bir API 'yi çağırmak için kod ekleyeceğiz.
+`MainWindow.xaml.cs` uygulamamızı denetleyen kodu içerir. Sonraki birkaç bölümde, açılan menülerinizi doldurmak ve çevirmen ve Bing Yazım Denetimi tarafından sunulan bir API 'yi çağırmak için kod ekleyeceğiz.
 
 * Program başlatıldığında ve örneği oluşturulduğunda `MainWindow` , `Languages` dil seçim açılır listelerimizi almak ve doldurmak için Translator yöntemi çağırılır. Bu, her oturumun başlangıcında bir kez gerçekleşir.
 * **Çevir** düğmesine tıklandığında, kullanıcının dil seçimi ve metni alınır, girişte yazım denetimi yapılır ve çeviri ve algılanan dil kullanıcı için görüntülenir.
@@ -263,7 +263,7 @@ Son olarak, çeviri dillerini almak ve uygulamanın kullanıcı arabirimimizin a
 
 ## <a name="get-supported-languages"></a>Desteklenen dilleri alma
 
-Çevirmen Şu anda 60 'den fazla dili destekliyor. Yeni dil desteği zamana göre eklenebileceğinden, uygulamanızdaki dil listesini kodlamak yerine, çevirmen tarafından sunulan diller kaynağını çağırmayı öneririz.
+Çevirmen Şu anda 70 'den fazla dili destekliyor. Yeni dil desteği zamana göre eklenebileceğinden, uygulamanızdaki dil listesini kodlamak yerine, çevirmen tarafından sunulan diller kaynağını çağırmayı öneririz.
 
 Bu bölümde, `GET` çeviri için kullanılabilen dillerin bir listesini istediğimizden sonra diller kaynağına bir istek oluşturacağız.
 
@@ -289,7 +289,7 @@ Daha fazla ilerleyebilmemiz için, diller kaynağı çağrısı için örnek ç�
 }
 ```
 
-Bu çıktıdan, dil kodunu ve `name` belirli bir dilin içeriğini ayıklayabiliriz. Uygulamamız JSON nesnesinin () serisini kaldırmak için NewtonSoft. JSON kullanıyor [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) .
+Bu çıktıdan, dil kodunu ve `name` belirli bir dilin içeriğini ayıklayabiliriz. Uygulamamız JSON nesnesinin () serisini kaldırmak için üzerinde NewtonSoft.Jskullanır [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) .
 
 Son bölümde kaldığınız yerden başladığımızda, uygulamamıza desteklenen diller için bir yöntem ekleyelim.
 
@@ -358,7 +358,7 @@ Bu yöntem, sözlüğü üzerinde dolaşır `languageCodesAndTitles` ve her anah
 > [!TIP]
 > Menüler için varsayılan bir seçim olmadan, kullanıcı önce bir "hedef" veya "kaynak" dil seçmeden **Çevir**’e tıklayabilir. Varsayılan değerler bu sorunla başa çıkma gereksinimini ortadan kaldırır.
 
-Artık `MainWindow` başlatılmış ve Kullanıcı arabirimi oluşturulduktan sonra, **çeviri** düğmesine tıklanana kadar bu kod çalışmaz.
+Artık `MainWindow` başlatılmış ve Kullanıcı arabirimi oluşturulduktan sonra, **çeviri**  düğmesine tıklanana kadar bu kod çalışmaz.
 
 ## <a name="detect-language-of-source-text"></a>Kaynak metnin dilini Algıla
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 72b3b190492be5cec9986729875c5b09e2559ae5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 46ddbd18051ffa44232468704ce189d4171b50e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854322"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590018"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Çekirdek (SQL) API 'SI için Azure Cosmos DB Apache Spark Bağlayıcısı: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87854322"
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -35,7 +36,7 @@ ms.locfileid: "87854322"
 > * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
-Çekirdek (SQL) için Azure Cosmos DB Apache Spark bağlayıcısını kullanarak büyük veri analizlerini hızlandırın. Spark Bağlayıcısı, Azure Cosmos DB depolanan veriler üzerinde [Spark](https://spark.apache.org/) işleri çalıştırmanızı sağlar. Toplu işlem ve akış işleme desteklenir.
+Çekirdek (SQL) için Azure Cosmos DB Apache Spark bağlayıcısını kullanarak büyük veri analizlerini hızlandırın. Spark Bağlayıcısı, Azure Cosmos DB depolanan veriler üzerinde [Spark ](https://spark.apache.org/) işleri çalıştırmanızı sağlar. Toplu işlem ve akış işleme desteklenir.
 
 Bağlayıcıyı Azure 'da yönetilen Spark kümeleri sağlayan [Azure Databricks](https://azure.microsoft.com/services/databricks) veya [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)ile kullanabilirsiniz. Aşağıdaki tabloda desteklenen Spark sürümleri gösterilmektedir.
 

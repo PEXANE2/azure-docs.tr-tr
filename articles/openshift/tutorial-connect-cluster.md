@@ -6,18 +6,18 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d7efe781f1ba2beb1fa7dd4fdaaad280fc789de2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204389"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587863"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesine bağlanma
 
 Üçünden ikinci bölüm olan bu öğreticide, OpenShift web konsolundan birlikte OpenShift 4 çalıştıran bir Azure Red Hat OpenShift kümesine bağlanırsınız. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > [!div class="checklist"]
-> * Kümeniz `kubeadmin` için kimlik bilgilerini alın
+> * `kubeadmin`Kümeniz için kimlik bilgilerini alın
 > * OpenShift CLı 'yı yükler
 > * OpenShift CLı kullanarak bir Azure Red Hat OpenShift kümesine bağlanma
 
@@ -25,11 +25,11 @@ ms.locfileid: "82204389"
 
 Önceki öğreticilerde, bir Azure Red Hat OpenShift kümesi oluşturuldu. Bu adımları yapmadıysanız ve birlikte takip etmek istiyorsanız, [öğretici 1 ile başlayın-Azure Red Hat OpenShift 4 kümesi oluşturun.](tutorial-create-cluster.md)
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.0.75 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-`kubeadmin` Kullanıcıyı kullanarak kümede oturum açabilirsiniz.  `kubeadmin` Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın.
+Kullanıcıyı kullanarak kümede oturum açabilirsiniz `kubeadmin` .  Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Aşağıdaki örnek çıktı, parolasının içinde `kubeadminPassword`olacağını gösterir.
+Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kubeadminPassword` .
 
 ```json
 {
@@ -46,7 +46,7 @@ Aşağıdaki örnek çıktı, parolasının içinde `kubeadminPassword`olacağı
 }
 ```
 
-Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, şöyle görünür`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, şöyle görünür `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -55,7 +55,7 @@ Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, ş�
     --query "consoleProfile.url" -o tsv
 ```
 
-Konsol URL 'sini bir tarayıcıda başlatın ve `kubeadmin` kimlik bilgilerini kullanarak oturum açın.
+Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak oturum açın `kubeadmin` .
 
 ![Azure Red Hat OpenShift oturum açma ekranı](media/aro4-login.png)
 
@@ -65,7 +65,7 @@ OpenShift Web konsolunda oturum **açtıktan sonra, üzerine tıklayın.** sağ 
 
 ![Azure Red Hat OpenShift oturum açma ekranı](media/aro4-download-cli.png)
 
-Ayrıca, makinenizde makinenize uygun olan CLı 'nın en son sürümünü yükleyebilirsiniz <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/>.
+Ayrıca, makinenizde makinenize uygun olan CLı 'nın en son sürümünü yükleyebilirsiniz <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 
 Azure Cloud Shell komutları çalıştırıyorsanız, Linux için en son OpenShift 4 CLı 'yi indirin.
 
@@ -86,7 +86,7 @@ API sunucusunun adresini alın.
 apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.url -o tsv)
 ```
 
-Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. ** \<Kubeadmin Password>** yerine yeni aldığınız parolayı değiştirin.
+Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. **\<kubeadmin password>** Yeni aldığınız parolayla değiştirin.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
@@ -96,7 +96,7 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 
 Öğreticinin bu bölümünde, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
-> * Kümeniz `kubeadmin` için kimlik bilgilerini alın
+> * `kubeadmin`Kümeniz için kimlik bilgilerini alın
 > * OpenShift CLı 'yı yükler
 > * OpenShift CLı kullanarak bir Azure Red Hat OpenShift kümesine bağlanma
 

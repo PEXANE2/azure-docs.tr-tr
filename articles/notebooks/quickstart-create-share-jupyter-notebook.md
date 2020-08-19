@@ -1,21 +1,21 @@
 ---
-title: Azure Notebooks önizlemede bir Jupyter Not defteri oluşturma ve paylaşma
-description: Azure Notebooks önizlemede hızlı bir şekilde bir Jupyter Not defteri oluşturup çalıştırın ve ardından bu not defterini başkalarıyla paylaşabilirsiniz.
+title: Azure Notebooks önizlemede Jupyter Notebook oluşturma ve paylaşma
+description: Azure Notebooks önizlemede hızlıca bir Jupyter Notebook oluşturup çalıştırın, sonra bu not defterini başkalarıyla paylaşabilirsiniz.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849412"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589342"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir not defteri oluşturma ve paylaşma
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Bu hızlı başlangıçta Azure Notebooks bir Jupyter Not defteri oluşturup çalıştırın ve ardından bu not defterini başkalarıyla paylaşabilirsiniz. Jupyter, bir paylaşılabilir tuvalde Not defteri üzerinde markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri kolayca birleştirebilmenizi sağlar. Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir.
+Bu hızlı başlangıçta, Azure Notebooks Jupyter Notebook oluşturup çalıştırın ve ardından bu not defterini başkalarıyla paylaşabilirsiniz. Jupyter, bir paylaşılabilir tuvalde Not defteri üzerinde markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri kolayca birleştirebilmenizi sağlar. Azure Notebooks, bulutta jupi not defterlerini geliştirmek ve çalıştırmak için ücretsiz bir barındırılan hizmettir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Yok.
@@ -91,7 +91,7 @@ Yok.
 
 1. Çalışmanızı kaydetmek için Kaydet simgesini seçin:
 
-    ![Jupyter Not defteri araç çubuğunda Kaydet simgesi](media/quickstarts/hello-results-save-icon.png)
+    ![Jupyter Notebook araç çubuğunda Kaydet simgesi](media/quickstarts/hello-results-save-icon.png)
 
 1. **File**  >  Sunucuyu durdurmak ve tarayıcı penceresini kapatmak için**Kapat ve Durdur** menü komutunu seçin.
 
@@ -106,4 +106,4 @@ Proje sayfasında, bir bağlantı almak, bağlantıyla birlikte bir e-posta ilet
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için Jupyter Notebook oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md)

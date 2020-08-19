@@ -2,25 +2,21 @@
 title: Azure AD Uygulama Ara Sunucusu sık sorulan sorular | Microsoft Docs
 description: Şirket içi uygulamaları uzak kullanıcılara yayımlamak için Azure AD Uygulama Ara Sunucusu kullanma hakkında sık sorulan soruların (SSS) yanıtlarını öğrenin.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042114"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589172"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -91,6 +87,15 @@ Uygulama proxy 'Si Windows Server 2012 R2 veya üstünü gerektirir. Windows Ser
 
 ## <a name="application-configuration"></a>Uygulama yapılandırması
 
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Geçersiz bir sertifika veya hatalı parola ile ilgili bir hata alıyorum
+
+SSL sertifikasını karşıya yükledikten sonra portalda "geçersiz sertifika, yanlış parola" iletisini alırsınız.
+
+Bu hatayı gidermek için bazı ipuçları aşağıda verilmiştir:
+- Sertifikayla ilgili sorunları kontrol edin. Yerel bilgisayarınıza yükler. Herhangi bir sorunla karşılaşmıyorsanız, sertifika iyidir.
+- Parolanın özel karakter içermediğinden emin olun. Sınama için parola yalnızca 0-9, A-Z ve A-z karakterlerini içermelidir.
+- Sertifika Microsoft yazılım anahtarı depolama sağlayıcısı ile oluşturulduysa, RSA algoritması kullanılmalıdır.
+
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Varsayılan ve "uzun" arka uç zaman aşımı uzunluğu nedir? Zaman aşımı genişletilmiş olabilir mi?
 
 Varsayılan uzunluk 85 saniyedir. "Long" ayarı 180 saniyedir. Zaman aşımı sınırı genişletilemiyor.
@@ -120,7 +125,7 @@ Daha fazla bilgi için bkz. [uygulama proxy 'si Ile Kerberos kısıtlanmış tem
 
 NTLM kimlik doğrulaması, ön kimlik doğrulama veya çoklu oturum açma yöntemi olarak kullanılamaz. NTLM kimlik doğrulaması yalnızca istemci ile yayınlanan web uygulaması arasında doğrudan anlaşılırken kullanılabilir. NTLM kimlik doğrulamasının kullanılması genellikle tarayıcıda bir oturum açma isteminin görünmesine neden olur.
 
-## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulaması
+## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>Doğrudan kimlik doğrulamasıyla yayımlanan uygulamalar için koşullu erişim Ilkelerini kullanabilir miyim?
 

@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 7044954d2ba67e61172c08c0a77acaaaec3822c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992683"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589461"
 ---
 # <a name="what-is-the-translator"></a>Çevirmen nedir?
 
-Çevirmen, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilecek. [60'tan fazla dilde](languages.md) çok dilli kullanıcı deneyimi eklemenizi sağlayan bu API, tüm donanım platformlarında ve tüm işletim sistemlerinde metin çevirisi için kullanılabilir.
+Çevirmen, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilecek. [70 ' den fazla dilde](languages.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır ve metinden metne dil çevirisi için herhangi bir işletim sistemiyle herhangi bir donanım platformunda kullanılabilir.
 
 Çevirmen, bulutta makine öğrenimi ve AI algoritmalarının Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/?pivot=products&panel=ai) koleksiyonunun bir parçasıdır ve geliştirme projelerinizde kolayca tüketilebilir.
 
@@ -54,6 +54,6 @@ Custom Translator sayesinde, kendi işletmenizde veya sektörünüzde kullanıla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Erişim anahtarı için [kaydolun](translator-text-how-to-signup.md).
+- Erişim anahtarı için [kaydolun](translator-text-how-to-signup.md) .
 - [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) , API 'ler için teknik belgeler sağlar.
 - [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

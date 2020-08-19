@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242772"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589309"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -19,7 +19,7 @@ Bir işlev uygulamasındaki uygulama ayarları, bu işlev uygulaması için tüm
 Dosyasında ve [local.settings.json](functions-run-local.md#local-settings-file) dosyasında [host.js](functions-host-json.md) başka genel yapılandırma seçenekleri vardır.
 
 > [!NOTE]  
-> Dosya üzerinde host.jsdeğiştirmek zorunda kalmadan değerleri ayarlama host.jsgeçersiz kılmak için uygulama ayarlarını kullanabilirsiniz. Bu, belirli bir ortam için ayarlarda belirli host.jsyapılandırmanız veya değiştirmeniz gereken senaryolar için yararlıdır. Bu Ayrıca, projenizin yeniden yayımlanmasını gerektirmeden ayarları host.jsdeğiştirmenize de olanak tanır. Daha fazla bilgi edinmek için [başvuruhost.jsmakalesine](functions-host-json.md#override-hostjson-values)bakın.  
+> Dosya üzerinde host.jsdeğiştirmek zorunda kalmadan değerleri ayarlama host.jsgeçersiz kılmak için uygulama ayarlarını kullanabilirsiniz. Bu, belirli bir ortam için ayarlarda belirli host.jsyapılandırmanız veya değiştirmeniz gereken senaryolar için yararlıdır. Bu Ayrıca, projenizin yeniden yayımlanmasını gerektirmeden ayarları host.jsdeğiştirmenize de olanak tanır. Daha fazla bilgi edinmek için [ başvuruhost.jsmakalesine](functions-host-json.md#override-hostjson-values)bakın.  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -94,7 +94,7 @@ Günlükleri depolamak ve portaldaki **izleyici** sekmesinde görüntülemek iç
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`, bir işlev uygulamasının kök URL 'SI için gösterilen varsayılan giriş sayfasını devre dışı bırakır. `false` varsayılan değerdir.
+`true` , bir işlev uygulamasının kök URL 'SI için gösterilen varsayılan giriş sayfasını devre dışı bırakır. `false` varsayılan değerdir.
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -106,7 +106,7 @@ Bu uygulama ayarı atlandığında veya olarak ayarlandığında `false` , URL '
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`, .NET kodu derlenirken yayın modunun kullanılacağı anlamına gelir; `false`hata ayıklama modunu kullanma anlamına gelir. `true` varsayılan değerdir.
+`true` , .NET kodu derlenirken yayın modunun kullanılacağı anlamına gelir; `false` hata ayıklama modunu kullanma anlamına gelir. `true` varsayılan değerdir.
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -234,8 +234,8 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 
 İşlev uygulamasının ölçeklenebilen en fazla örnek sayısı. Varsayılan sınır yoktur.
 
-> [!NOTE]
-> Bu ayar bir önizleme özelliğidir ve yalnızca bir değere ayarlanmışsa güvenilir <= 5
+> [!IMPORTANT]
+> Bu ayar önizlemededir.  [İşlev için en fazla ölçek genişletme için bir uygulama özelliği](./functions-scale.md#limit-scale-out) eklenmiştir ve ölçeği ölçeğini sınırlamak için önerilen yoldur.
 
 |Anahtar|Örnek değer|
 |---|------------|

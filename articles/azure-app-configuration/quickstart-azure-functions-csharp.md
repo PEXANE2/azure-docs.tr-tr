@@ -1,6 +1,6 @@
 ---
 title: Azure Işlevleri ile Azure Uygulama yapılandırması için hızlı başlangıç | Microsoft Docs
-description: Azure Işlevleri ile Azure Uygulama yapılandırması 'nı kullanmaya yönelik hızlı başlangıç.
+description: Bu hızlı başlangıçta Azure Uygulama yapılandırması ve C# ile bir Azure Işlevleri uygulaması oluşturun. Uygulama yapılandırma deposu oluşturun ve bu depolama alanına bağlanın. İşlevi yerel olarak test edin.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: bae602bd45115fa6e199e886db0539c4f47f5180
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210021"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590294"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 

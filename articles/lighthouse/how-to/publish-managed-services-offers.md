@@ -1,14 +1,14 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure 'da kullanımı için bir yönetilen hizmet teklifini nasıl yayımlayacağınızı öğrenin.
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167240"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589733"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -22,8 +22,19 @@ Yönetilen hizmet [teklifi sertifika gereksinimleri](/legal/marketplace/certific
 
 Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](../../cost-management-billing/manage/link-partner-id.md) .
 
-> [!NOTE]
-> Bir teklifi Azure Marketi 'ne yayımlamak istemiyorsanız, Azure Resource Manager şablonları kullanarak müşterileri el ile ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure 'da müşteri ekleme](onboard-customer.md).
+Bir teklifi Azure Marketi 'ne yayımlamak veya tüm gereksinimleri karşılamazsanız, Azure Resource Manager şablonları kullanarak müşterileri el ile ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure 'da müşteri ekleme](onboard-customer.md).
+
+Aşağıdaki tablo, yönetilen bir hizmet teklifini yayımlayarak veya Azure Resource Manager şablonları kullanarak müşterilerin eklenip eklenmeyeceğini belirlemenize yardımcı olabilir.
+
+|**Dikkate Alınacak Nokta**  |**Yönetilen hizmet teklifi**  |**ARM şablonları**  |
+|---------|---------|---------|
+|[Iş Ortağı Merkezi hesabı](../../marketplace/partner-center-portal/create-account.md) gerektirir   |Yes         |Hayır        |
+|[Gümüş veya altın bulut platformu uzmanlık düzeyi](/partner-center/learn-about-competencies) veya [Azure uzmanı msp](https://partner.microsoft.com/membership/azure-expert-msp) gerektirir      |Yes         |Hayır         |
+|Azure Marketi aracılığıyla yeni müşteriler tarafından kullanılabilir     |Yes     |Hayır       |
+|Teklifi belirli müşterilerle sınırlayabilir     |Evet (yalnızca özel tekliflerle birlikte, bulut çözümü sağlayıcısı (CSP) programının satıcısı ile belirlenen aboneliklerle birlikte kullanılamaz)         |Yes         |
+|Azure portal müşteri kabulünü gerektirir     |Yes     |Hayır   |
+|Birden çok abonelik, kaynak grubu veya müşteri eklemek için Otomasyonu kullanabilir |Hayır     |Yes    |
+|Yeni yerleşik rollere ve Azure ışıklı kullanım özelliklerine anında erişin     |Her zaman değil (genellikle bir gecikmeden sonra kullanılabilir)         |Yes         |
 
 ## <a name="create-your-offer"></a>Teklifinizi oluşturma
 

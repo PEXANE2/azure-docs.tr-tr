@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: bdde2076039a6f7687e06edef6dfd6f6f5148ce4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044149"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590175"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -30,6 +30,48 @@ Bundan sonra, komutunu yeniden çalıştırabilmelisiniz.
 ### <a name="possible-causes"></a>Olası nedenler
 
 Bu Cloud Shell, bilinen bir sorunun sonucudur: [*Cloud Shell Token alma işlemi, 400 Istemci hatasıyla başarısız oluyor: Hatalı istek*](https://github.com/Azure/azure-cli/issues/11749).
+
+## <a name="missing-role-assignment-after-scripted-setup"></a>Komut dosyası kurulumundan sonra eksik rol ataması
+
+Bazı kullanıcılar [*nasıl yapılır: bir örnek ve kimlik doğrulaması (komut dosyası) ayarlama*](how-to-set-up-instance-scripted.md)rol atama bölümüyle ilgili sorunlar yaşayabilir. Betik hata göstermez, ancak *Azure dijital TWINS sahibi (Önizleme)* rolü kullanıcıya başarıyla atanmaz ve bu, yolda diğer kaynakları oluşturma yeteneğini etkiler.
+
+Rol atamalarınızın betiği çalıştırdıktan sonra başarıyla ayarlandığını anlamak için, kurulum makalesinin [*Kullanıcı rolü atamasını doğrula*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) bölümüne ait yönergeleri izleyin. Kullanıcılarınız bu rolle gösterilmezse, bu sorun sizi etkiler.
+
+### <a name="troubleshooting-steps"></a>Sorun giderme adımları
+
+Çözümlemek için, CLı veya Azure portal kullanarak rol atamasını el ile ayarlayabilirsiniz. 
+
+Aşağıdaki yönergeleri izleyin:
+* [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)
+* [Portal@@](how-to-set-up-instance-portal.md#set-up-user-access-permissions)
+
+### <a name="possible-causes"></a>Olası nedenler
+
+Kişisel [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile oturum açan kullanıcılar için, kullanıcının oturum açma e-postalarından sizin gibi komutları TANıMLAYAN asıl kimliği, kullanıcının oturum açma e-postaınızdan farklı olabilir, bu da komut dosyasının rolü doğru şekilde atamak için bulmasını ve kullanmasını zorlaştırır.
+
+## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
+
+Azure ** [. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) kitaplığı**'nın en son sürümünü (sürüm **1.2.0**) kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+
+Etkilenen yöntem aşağıdaki makalelerde kullanılır: 
+* [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)
+* [*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)
+* [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md)
+
+Sorun, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Identity. AuthenticationFailedException" hata yanıtını içerir. Tarayıcı penceresi tamamen başlayamayabilir veya kullanıcının kimlik doğrulamasını başarıyla başarabilirken, istemci uygulaması yine de hata vererek başarısız olabilir.
+
+### <a name="troubleshooting-steps"></a>Sorun giderme adımları
+
+Bu sorunu çözmek için, uygulamalarınızın Azure. Identity sürüm **1.1.1**'i açık bir şekilde kullanmasını sağlayabilirsiniz. Kitaplığın bu sürümüyle, tarayıcının beklendiği gibi yüklemesi ve kimlik doğrulaması gerekir.
+
+>[!NOTE]
+> Hala en son **1.2.0**için varsayılan değer olacak şekilde, herhangi bir sürüm belirtmeden kitaplığı eklemek yeterli değildir. Sürüm **1.1.1** öğesini açıkça belirtmeniz gerekir.
+
+### <a name="possible-causes"></a>Olası nedenler
+
+Bu, Azure dijital TWINS ile Azure. Identity kitaplığı 'nın en son sürümü olan **1.2.0**sürümü arasında bir uyumsuzluk olur. 
+
+Uygulamanızda sürüm **1.2.0** kullanıyorsanız veya bir sürüm belirtmeden kitaplığı projenize eklerseniz (aynı zamanda bu en son sürümü için varsayılan olarak) Bu sorunu görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

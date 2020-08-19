@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528392"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590124"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirme
 
@@ -22,6 +22,8 @@ Azure depolama, bir uygulama veya başka bir depolama hesabı kullanıcısı tar
 Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaşımları için geçici silme 'nin nasıl etkinleştirileceği ve kullanılacağı gösterilmektedir:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
+
+## <a name="getting-started"></a>Başlarken
 
 1. [Azure portal](https://portal.azure.com/) oturum açın.
 1. Depolama hesabınıza gidin ve **Dosya hizmeti**altında **geçici silme** ' yi seçin.
@@ -33,7 +35,13 @@ Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaş�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geçici silme cmdlet 'leri, az. Storage modülünün 2.1.1-Preview sürümünde kullanılabilir. Geçici silme özelliğini etkinleştirmek için bir dosya istemcisinin hizmet özelliklerini güncelleştirmeniz gerekir. Aşağıdaki örnek, bir depolama hesabındaki tüm dosya paylaşımları için geçici silme imkanı sunar:
+## <a name="prerequisite"></a>Önkoşul
+
+Geçici silme cmdlet 'leri Şu anda yalnızca az. Storage modülünün [2.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) ve [2.3.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) sürümlerinde mevcuttur. 
+
+## <a name="getting-started"></a>Başlarken
+
+Geçici silme özelliğini etkinleştirmek için bir dosya istemcisinin hizmet özelliklerini güncelleştirmeniz gerekir. Aşağıdaki örnek, bir depolama hesabındaki tüm dosya paylaşımları için geçici silme imkanı sunar:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"

@@ -1,27 +1,22 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu özel etki alanları | Microsoft Docs
+title: Azure AD Uygulama Ara Sunucusu özel etki alanları
 description: Azure AD Uygulama Ara Sunucusu 'de özel etki alanlarını yapılandırın ve yönetin.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764919"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587778"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
@@ -87,15 +82,15 @@ Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yay
    
 4. **Dış URL** alanında, listeyi aşağı açılır ve kullanmak istediğiniz özel etki alanını seçin.
    
-5. **Ekle**'yi seçin.
+5. **Ekle**’yi seçin.
    
    ![Özel etki alanı seç](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Etki alanının zaten bir sertifikası varsa, **sertifika** alanı sertifika bilgilerini görüntüler. Aksi takdirde, **sertifika** alanını seçin. 
+6. Etki alanının zaten bir sertifikası varsa, **sertifika** alanı sertifika bilgilerini görüntüler. Aksi takdirde, **sertifika** alanını seçin.
    
    ![Sertifikayı karşıya yüklemek için tıklayın](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. **SSL sertifikası** SAYFASıNDA, PFX Sertifika dosyanıza gidin ve seçin. Sertifika için parola girin ve **sertifikayı karşıya yükle**' yi seçin. Sertifikalar hakkında daha fazla bilgi için bkz. [özel etki alanları Için sertifikalar](#certificates-for-custom-domains) bölümü.
+7. **SSL sertifikası** SAYFASıNDA, PFX Sertifika dosyanıza gidin ve seçin. Sertifika için parola girin ve **sertifikayı karşıya yükle**' yi seçin. Sertifikalar hakkında daha fazla bilgi için bkz. [özel etki alanları Için sertifikalar](#certificates-for-custom-domains) bölümü. Sertifika geçerli değilse veya parolayla ilgili bir sorun varsa, bir hata iletisi görürsünüz. [Uygulama proxy 'SI SSS](application-proxy-faq.md#application-configuration) , deneyebileceğiniz bazı sorun giderme adımları içerir.
    
    ![Sertifikayı karşıya yükle](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Sertifika, özel etki alanınız için güvenli TLS bağlantısı oluşturur.
 
 Tüm gerekli ara sertifikaların dahil edildiğinden emin olmak için bir PFX sertifikası kullanmanız gerekir. Sertifika özel anahtarı içermelidir.
 
-Sertifika imzası yöntemlerinde kısıtlama yoktur. Eliptik Eğri Şifreleme (ECC), konu diğer adı (SAN) ve diğer ortak sertifika türleri desteklenir. 
+Konu alternatif adı (SAN) gibi en yaygın sertifika imzası yöntemleri desteklenir. 
 
 Joker karakter, dış URL ile eşleştiği sürece joker sertifikaları kullanabilirsiniz. [Joker uygulamalar](application-proxy-wildcard.md)için joker karakter sertifikaları kullanmanız gerekir. Sertifikayı da alt etki alanlarına erişmek üzere kullanmak istiyorsanız, alt etki alanı joker karakterlerini aynı sertifikaya konu alternatif adları olarak eklemeniz gerekir. Örneğin, bir konu diğer adı olarak * \* . Apps.Adventure-Works.com* eklemediğiniz sürece. * \* adventure-works.com* için bir sertifika. * \* Apps.Adventure-Works.com* için çalışmaz. 
 

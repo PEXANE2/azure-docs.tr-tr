@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272069"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586903"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -35,6 +35,7 @@ Bu sayfa düzenli olarak güncelleştirildiğinden, sık sık ziyaret edin. Alt�
 Ağustos ayında güncelleştirmeler şunlardır:
 
 - [Varlık envanteri-varlıklarınızın güvenlik sonrası yeni görünümü](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [Azure Active Directory güvenlik varsayılanları için destek eklendi (Multi-Factor Authentication için)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [Hizmet sorumlusu önerisi eklendi](#service-principals-recommendation-added)
 - [VM 'lerde güvenlik açığı değerlendirmesi-birleştirilmiş öneriler ve ilkeler](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
 
@@ -50,11 +51,27 @@ Güvenlik sonrası verilerinizi araştırmak ve bulgularınızı temel alarak da
 [Varlık envanteri](asset-inventory.md)hakkında daha fazla bilgi edinin.
 
 
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Azure Active Directory güvenlik varsayılanları için destek eklendi (Multi-Factor Authentication için)
+
+Güvenlik Merkezi, Microsoft 'un ücretsiz kimlik güvenlik korumalarının [güvenlik Varsayılanları](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)için tam destek ekledi.
+
+Güvenlik Varsayılanları, kuruluşunuzun kimlik ile ilgili ortak saldırılardan savunmak için önceden yapılandırılmış kimlik güvenlik ayarlarını sağlar. Güvenlik Varsayılanları, genel olarak 5.000.000 taneden fazla kiracı koruuyor; 50.000 kiracılar da Güvenlik Merkezi tarafından korunur.
+
+Güvenlik Merkezi artık güvenlik Varsayılanları etkinleştirilmeden bir Azure aboneliğini her belirlediğinde bir güvenlik önerisi sunmaktadır. Bu aşamada, Güvenlik Merkezi, Azure Active Directory (AD) Premium lisansının bir parçası olan koşullu erişimi kullanarak Multi-Factor Authentication 'ı etkinleştirmeyi öneririz. Azure AD Ücretsiz kullanan müşteriler için artık güvenlik varsayılanlarını etkinleştirmenizi öneririz. 
+
+Amacınız, daha fazla müşteriyi MFA ile bulut ortamlarını güvenli hale getirmeye teşvik etmek ve ayrıca en yüksek risklerden birini, [güvenli puanlarına](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)göre en iyi şekilde azaltmaktır.
+
+[Güvenlik Varsayılanları](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)hakkında daha fazla bilgi edinin.
+
+
 ### <a name="service-principals-recommendation-added"></a>Hizmet sorumlusu önerisi eklendi
 
-Abonelikleri yönetmek için yönetim sertifikaları kullanan güvenlik merkezi müşterilerine yönelik yeni öneri.
+Güvenlik Merkezi müşterilerinin aboneliklerini yönetmek için yönetim sertifikaları kullanmalarını sağlamak üzere yeni bir öneri eklenmiştir.
 
 Kullanım önerisi, **yönetim sertifikaları yerine aboneliklerinizi korumak Için hizmet sorumlularını** , aboneliklerinizi daha güvenli bir şekilde yönetmek Için hizmet sorumlularını veya Azure Resource Manager kullanmanızı önerir. 
+
+[Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)hakkında daha fazla bilgi edinin.
+
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>VM 'lerde güvenlik açığı değerlendirmesi-birleştirilmiş öneriler ve ilkeler
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057001"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590413"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -76,7 +76,7 @@ Azure Güvenlik Duvarı Ilkeleri bölgeler arasında kullanılabilir. Örneğin,
 
 Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 
-|Sorun  |Description  |Risk azaltma  |
+|Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
 |Trafik bölme|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
 |Bölge başına bir güvenli sanal hub|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
@@ -85,6 +85,8 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 |Sanal hub 'dan farklı bir bölgedeki bağlı bileşen|Sanal hub 'dan farklı bir bölgedeki bağlı bileşen desteklenmez.|Araştırılıyor<br><br>Hub ile aynı bölgede bölge başına bir merkez ve eş VNET oluşturun.|
 |Özel trafik filtrelemesi etkinken dal trafiğine dallan|Özel trafik filtrelemesi etkinleştirildiğinde dal trafiğine dallan desteklenmez. |Araştırma.<br><br>Şube bağlantısı, çok önemli ise özel trafiğin güvenliğini sağlayın.|
 |Aynı sanal WAN 'ı paylaşan tüm güvenli sanal hub 'Lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün sanal WAN hub 'Ları ile hizalanır.|Farklı kaynak gruplarında güvenli sanal hub 'Ların oluşturulmasını sağlamak için birden çok sanal WAN oluşturun.|
+|Toplu IP adresi ekleme başarısız oluyor|Birden çok genel IP adresi eklerseniz, güvenli Merkez güvenlik duvarı başarısız durumuna geçer.|Daha küçük genel IP adresi artışlarını ekleyin. Örneğin, bir seferde 10 ekleyin.|
+|Uygulama kuralları, özel DNS (Önizleme) yapılandırılmış güvenli bir hub 'da başarısız olur.|DNS proxy/özel DNS (Önizleme), Güvenlik Duvarı Yönetim NIC 'sinin yapılandırıldığı senaryolarda çalışmaz. Bu, güvenli Merkez dağıtımlarını ve zorlamalı tünelin etkinleştirildiği durumları içerir.|Araştırma bölümünde çözüm.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/25/2020
-ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/14/2020
+ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086838"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587319"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL yönetilen örneği, temel altyapıyı ve mimarisine bağlı olan özellikle
 
 |   | **4. nesil** | **5. nesil** |
 | --- | --- | --- |
-| **Donanım** | Intel E5-2673 v3 (Haswell) 2,4-GHz işlemciler, ekli SSD sanal çekirdek = 1 PP (fiziksel çekirdek) | Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) işlemciler, Fast NVMe SSD, vCore = 1 LP (hiper iş parçacığı) |
+| **Donanım** | Intel® E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD sanal çekirdek = 1 PP (fiziksel çekirdek) | Intel® E5-2673 v4 (geniş) 2,3 GHz, Intel® SP-8160 (ufuk Gölü) ve Intel® 8272CL (Cascade Lake) 2,5 GHz işlemcileri, Fast NVMe SSD, vCore = 1 LP (hiper iş parçacığı) |
 | **Sanal çekirdek sayısı** | 8, 16, 24 sanal çekirdek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | **Maksimum bellek (bellek/çekirdek oranı)** | Sanal çekirdek başına 7 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | vCore başına 5,1 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
 | **Maks. bellek Içi OLTP belleği** | Örnek sınırı: vCore başına 1-1,5 GB| Örnek sınırı: vCore başına 0,8-1,65 GB |
@@ -80,7 +80,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](#file-io-characteristics-in-general-purpose-tier) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
-| Bellek içi OLTP | Desteklenmez | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
+| Bellek İçi OLTP | Desteklenmez | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
 | En fazla oturum sayısı | 30000 | 30000 |
 | Maksimum eş zamanlı çalışan (istek) | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 |
 | [Salt okuma çoğaltmaları](../database/read-scale-out.md) | 0 | 1 (fiyata dahildir) |
@@ -150,9 +150,9 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional ve MSDN Platformları|2|32|
 
-\*Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
+\* Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
 
-\*\*Daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
+\*\* Daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 
 > [!IMPORTANT]
 > VCore ve alt ağ sınırlarınızın 0 olması durumunda, abonelik türü için varsayılan bölgesel sınırın ayarlanmayacağı anlamına gelir. Aynı yordamın yanı sıra gerekli sanal çekirdek ve alt ağ değerlerini sağlayan belirli bir bölgede abonelik erişimi almak için kota artışı isteği 'ni de kullanabilirsiniz.

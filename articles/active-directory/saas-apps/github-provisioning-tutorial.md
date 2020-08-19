@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550679"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589223"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub 'ı yapılandırma
 
@@ -29,6 +29,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu vars
 * GitHub Enterprise [Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)'da oluşturulmuş GitHub [Enterprise faturalandırma planını](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) gerektiren bir GitHub kuruluşu
 * Kuruluş için yönetici izinlerine sahip GitHub 'da bir kullanıcı hesabı
 * [Burada](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) açıklandığı gibi, kuruluşunuz için OAuth erişiminin sağlandığından emin olun
+* Tek bir kuruluşa SCıM sağlama yalnızca, kuruluş düzeyinde SSO etkinleştirildiğinde desteklenir
 
 > [!NOTE]
 > Azure AD sağlama tümleştirmesi, GitHub Enterprise [faturalandırma planındaki](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)GitHub [Kurumsal bulut](https://help.github.com/articles/github-s-products/#github-enterprise) müşterileri tarafından KULLANıLABILEN [GitHub SCIM API](https://developer.github.com/v3/scim/)'sini kullanır.

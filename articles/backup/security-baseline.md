@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d0a6b6561b5d0995d7794993608a4991b1da2718
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810148"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589427"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -350,7 +350,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 - [Azure Backup Azure AD oturum açma kullanacak şekilde yapılandırma](../app-service/configure-authentication-provider-aad.md)
 
-- [AAD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Azure AD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -902,7 +902,7 @@ Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde yedekleyin
 
 - [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Azure Backup şifrelemeyi anlama](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [Azure Backup şifrelemeyi anlama](./backup-encryption.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

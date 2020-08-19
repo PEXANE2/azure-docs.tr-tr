@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 7b02296d5d9aed5866c0efcdf85fa1c9946617d0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501908"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590090"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -38,7 +38,7 @@ Bu nedenle, depolama hesabında ve veri ambarı sunucusunda AAD kimlik doğrulam
 
 - Bu bağlayıcı yalnızca Scala 'da kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Veri aktarmak istediğiniz veritabanında/SQL havuzunda **db_exporter** rolün bir üyesi olmalıdır.
 - Varsayılan depolama hesabındaki Depolama Blobu veri katılımcısı rolünün bir üyesi olmalıdır.
@@ -203,7 +203,7 @@ Mıknatıccs kullanarak PySpark not defterinde bir Scala hücresi çalıştırı
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesinde sorgulamak için PySpark içinde Spark SQL kullanın.

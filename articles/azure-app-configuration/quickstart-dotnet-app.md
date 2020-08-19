@@ -1,6 +1,6 @@
 ---
 title: Azure Uygulama yapılandırması için .NET Framework ile hızlı başlangıç | Microsoft Docs
-description: Azure uygulama yapılandırmasını .NET Framework uygulamalarla kullanmaya yönelik hızlı başlangıç
+description: Bu makalede, Azure Uygulama yapılandırması ile bir .NET Framework uygulama oluşturarak uygulama ayarlarının kodunuzla ayrı olarak depolanmasını ve yönetimini merkezileştirin.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 63b7f8b28e339abde326bf3dca34d9ee6d816a31
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209905"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590277"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla .NET Framework uygulaması oluşturma
 

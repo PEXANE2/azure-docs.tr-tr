@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319312"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589393"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -48,9 +48,9 @@ Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kas
 
 * Azure 'da, Azure depolama ile kasa arasındaki yoldaki veriler [https tarafından korunur](backup-support-matrix.md#network-traffic-to-azure). Bu veriler, Azure omurga ağında kalır.
 
-* Yedekleme verileri [Microsoft tarafından yönetilen anahtarlar](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)kullanılarak otomatik olarak şifrelenir ve bunu etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Ayrıca, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](encryption-at-rest-with-cmk.md) kullanarak yedeklenen verilerinizi şifreleyebilirsiniz. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
+* Yedekleme verileri, [platform tarafından yönetilen anahtarlar](backup-encryption.md)kullanılarak otomatik olarak şifrelenir ve bunu etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Ayrıca, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](encryption-at-rest-with-cmk.md) kullanarak yedeklenen verilerinizi şifreleyebilirsiniz. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
 
-* Azure Backup, işletim sistemi/veri disklerinin [Azure disk şifrelemesi (ade)](backup-encryption.md#backup-of-vms-encrypted-using-ade) ve [CMK şifreli disklere sahip VM](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys)'lerle şifrelendiğinden Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. Daha fazla bilgi için, [şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](./backup-azure-vms-encryption.md).
+* Azure Backup, işletim sistemi/veri disklerinin [Azure disk şifrelemesi (ade)](backup-azure-vms-encryption.md#encryption-support-using-ade) ve [CMK şifreli disklere sahip VM](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys)'lerle şifrelendiğinden Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. Daha fazla bilgi için, [şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](./backup-azure-vms-encryption.md).
 
 * MARS aracısına sahip şirket içi sunuculardan veri yedeklendiğinde, veriler Azure Backup yüklenmeden önce bir parola ile şifrelenir ve yalnızca Azure Backup indirildikten sonra şifresi çözülür. [Karma yedeklemeleri korumaya yardımcı olmak için güvenlik özellikleri](#security-features-to-help-protect-hybrid-backups)hakkında daha fazla bilgi edinin.
 
@@ -64,7 +64,7 @@ Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Karma yedeklemeleri korumaya yardımcı olan güvenlik özellikleri
 
-Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunları içerir:
+Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunlardır:
 
 * Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır. [Saldırıları engelleyen özellikler hakkında daha fazla bilgi edinin](./backup-azure-security-feature.md#prevent-attacks).
 

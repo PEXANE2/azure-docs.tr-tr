@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850669"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589359"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Senaryo: Azure Güvenlik Duvarı-özel
 
@@ -40,6 +40,8 @@ Kaç tane yol tablosunun gerekli olacağını anlamak için, her hücrenin bir k
   * İlişkili yol tablosu: **varsayılan**
   * Yol tablolarına yayma: **varsayılan**
 
+> [!NOTE]
+> Her bölgede tek bir güvenli sanal hub ile ayrı bir sanal WAN örneği oluşturabilir ve sonra her bir sanal WAN 'ı siteden siteye VPN aracılığıyla birbirlerine bağlayabilirsiniz.
 
 Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 

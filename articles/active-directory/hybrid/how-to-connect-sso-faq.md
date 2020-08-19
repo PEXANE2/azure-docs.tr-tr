@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019740"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589053"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
@@ -54,7 +54,7 @@ Ayrıca, bir uygulama Azure AD uç noktalarına kiracı olarak ayarlanan bir otu
 | Uygulama adı | Kullanılacak uygulama URL 'SI |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| Azure portalı | https: \/ /Portal.Azure.com/contoso.com |
+| Azure portal | https: \/ /Portal.Azure.com/contoso.com |
 
 Yukarıdaki tablolarda, kiracınızın doğru uygulama URL 'Lerine ulaşmak için "contoso.com" yerine etki alanı adınızı koyun.
 
@@ -104,7 +104,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
    2. Çağrısı yapın `Update-AzureADSSOForest -OnPremCredentials $creds` . Bu komut, `AZUREADSSO` Bu belırlı ad ormanındaki bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
    
    >[!NOTE]
-   >Bir etki alanı yöneticisi değilseniz ve etki alanı yöneticisi tarafından izinler atadıysanız,`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >Bir etki alanı yöneticisi değilseniz ve etki alanı yöneticisi tarafından izinler atadıysanız, `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Özelliği ayarladığınız her AD Ormanı için önceki adımları tekrarlayın.
 
@@ -135,6 +135,8 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
    3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
    5. Çağrısı yapın `Enable-AzureADSSO -Enable $false` .
+   
+   Bu noktada, sorunsuz SSO devre dışıdır, ancak sorunsuz SSO 'yu etkinleştirmek istediğiniz durumlarda etki alanları yapılandırılmış olarak kalır. Etki alanlarını sorunsuz SSO yapılandırmasından tamamen kaldırmak isterseniz yukarıdaki 5. adımı tamamladıktan sonra aşağıdaki cmdlet 'i çağırın: `Disable-AzureADSSOForest -DomainFqdn <fqdn>` .
 
    >[!IMPORTANT]
    >PowerShell kullanarak sorunsuz SSO devre dışı bırakmak, Azure AD Connect durumunu değiştirmez. Sorunsuz SSO, **Kullanıcı oturum açma** sayfasında etkin olarak görünür.
@@ -149,7 +151,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
    5. Çağrısı yapın `Get-AzureADSSOStatus | ConvertFrom-Json` . Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
 
-   **3. adım. `AZUREADSSO`Listede gördüğünüz her ad ormanındaki bilgisayar hesabını el ile silin.**
+   **3. adım. `AZUREADSSO` Listede gördüğünüz her ad ormanındaki bilgisayar hesabını el ile silin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

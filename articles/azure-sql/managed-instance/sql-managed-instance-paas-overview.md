@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055242"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590073"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -73,8 +73,8 @@ SQL yönetilen örneği için [sanal çekirdek tabanlı satın alma modeli](../d
 
 Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 
-- **4. nesil** mantıksal CPU 'Lar Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD, fiziksel çekirdekler, çekirdek BAŞıNA 7 GB RAM ve 8 Ila 24 sanal çekirdek arasında işlem boyutları temel alır.
-- **5. nesil** mantıksal CPU 'Lar Intel E5-2673 v4 (çok iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasındaki işlem boyutlarını temel alır.
+- **4. nesil** mantıksal CPU 'lar Intel® E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD, fiziksel çekirdekler, çekirdek BAŞıNA 7 GB RAM ve 8 Ila 24 sanal çekirdek arasında işlem boyutları temel alır.
+- **5. nesil** mantıksal CPU 'lar Intel® E5-2673 v4 (çok iyi) 2,3 GHz, ıNTEL® SP-8160 (ufuk Gölü) ve ıNTEL® 8272CL (Cascade lake) 2,5 GHz işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasında işlem boyutlarını temel alır.
 
 [SQL yönetilen örnek kaynak limitlerinin](resource-limits.md#hardware-generation-characteristics)donanım nesilleri arasındaki fark hakkında daha fazla bilgi bulabilirsiniz.
 

@@ -1,76 +1,84 @@
 ---
 title: Sık sorulan sorular-Azure Key Vault sertifika içeri aktarma
-description: Sık sorulan sorular-Azure Key Vault sertifika içeri aktarma
+description: Azure Key Vault sertifikalarını içeri aktarma hakkında sık sorulan soruların yanıtlarını alın.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056355"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588830"
 ---
-# <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Sık sorulan sorular-Azure Key Vault sertifika içeri aktarma
+# <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
+
+Bu makalede Azure Key Vault sertifikalarını içeri aktarma hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 ### <a name="how-can-i-import-a-certificate-in-azure-key-vault"></a>Azure Key Vault sertifikayı nasıl içeri aktarabilirim?
 
-Sertifikayı içeri aktar – içeri aktarma işlemi Için, Azure Anahtar Kasası iki sertifika biçimini kabul eder pek ve PFX. Yalnızca genel bölümü olan ped dosyaları olsa da, Azure Anahtar Kasası yalnızca dosya klasöründe ve özel anahtarla bir ped veya PFX gerektirir. [Sertifikayı içeri aktarmak için öğreticiyi](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault) izleyin
+Bir sertifika içeri aktarma işlemi için Azure Key Vault iki sertifika dosyası biçimini kabul eder: pek ve PFX. Yalnızca ortak bölümü olan ped dosyaları olsa da, Key Vault yalnızca özel anahtarı olan bir ped veya PFX dosyası gerektirir. Daha fazla bilgi için bkz. [Key Vault bir sertifikayı Içeri aktarma](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault).
 
-### <a name="after-importing-password-protected-certificate-into-the-key-vault-and-then-downloading-it-i-am-not-able-to-see-the-password-associated-with-the-certificate"></a>Parola korumalı sertifikayı anahtar kasasına aldıktan sonra karşıdan yükledikten sonra sertifikayla ilişkili parolayı göremiyorum mıyım?
+### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Parola korumalı bir sertifikayı Key Vault aldıktan sonra karşıdan yükledikten sonra, onunla ilişkili parolayı neden göremiyorum?
     
-Depolamayla, Anahtar Kasası 'na depolamadan sonra karşıya yüklenen korumalı sertifika, onunla ilişkili parolayı kaydetmez. Parola yalnızca içeri aktarma işlemi sırasında gereklidir. Bu bir tasarım tabanlı kavram olsa da, sertifikayı her zaman gizli olarak alabilir ve [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)aracılığıyla önceki parolayı ekleyerek Base64 'ten PFX 'e dönüştürebilirsiniz.
+Bir sertifika içeri aktarıldıktan ve Key Vault bir şekilde korunduktan sonra, ilişkili parolası kaydedilmez. Parola, içeri aktarma işlemi sırasında yalnızca bir kez gereklidir. Bu tasarıma göre yapılır, ancak [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)aracılığıyla parolayı ekleyerek sertifikayı her zaman gizli dizi olarak alabilir ve Base64 'den PFX 'e dönüştürebilirsiniz.
 
-### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>' Hatalı parametre hatasını ' nasıl çözebilirim? Key Vault'ta içeri aktarma desteği sunulan sertifika biçimleri hangileridir?
+### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>"Hatalı parametre" hatasını nasıl çözebilirim? Key Vault aktarmak için desteklenen sertifika biçimleri nelerdir?
 
-Sertifikayı içeri aktarırken, anahtarın dosyanın içine eklendiğinden emin olmanız gerekir. Özel anahtarınız farklı bir biçimde ayrı olarak varsa, anahtarı sertifikayla birleştirmeniz gerekir. Bazı sertifika yetkilileri sertifikaları farklı biçimlerde sağlar, bu nedenle sertifikayı içeri aktarmadan önce. pek veya. pfx biçiminde olduklarından ve kullanılan anahtarın RSA ya da ECC olduğundan emin olun. [Sertifika gereksinimlerini](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) ve [sertifika anahtarı gereksinimlerini](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)gözden geçirmek için bunlara bakın.
+Bir sertifikayı içeri aktardığınızda, anahtarın dosyaya eklendiğinden emin olmanız gerekir. Ayrı olarak farklı biçimde depolanan bir özel anahtarınız varsa, anahtarı sertifikayla birleştirmeniz gerekir. Bazı sertifika yetkilileri (CA 'Lar) diğer biçimlerde sertifika sağlar. Bu nedenle, sertifikayı içeri aktarmadan önce, bunun pek veya PFX dosya biçiminde olduğundan ve anahtarın Rivest – Shamir – Adleman (RSA) veya eliptik-eğri şifreleme (ECC) şifrelemesi kullandığından emin olun. 
 
-###  <a name="can-i-import-certificate-using-arm-template"></a>ARM şablonunu kullanarak sertifikayı içeri aktarabilir miyim?
+Daha fazla bilgi için bkz. [sertifika gereksinimleri](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) ve [sertifika anahtarı gereksinimleri](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection).
 
-Hayır, ARM şablonları kullanarak sertifika işlemleri yapmak mümkün değildir. Önerilen geçici çözüm, API veya CLı veya PowerShell 'deki sertifika içeri aktarma yöntemlerini kullanmaktır. Zaten bir sertifikanız varsa, parolayı bir gizli dizi olarak içeri aktarabilirsiniz.
+###  <a name="can-i-import-a-certificate-by-using-an-arm-template"></a>ARM şablonunu kullanarak bir sertifikayı içeri aktarabilir miyim?
 
-### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>Portal aracılığıyla sertifika içeri aktarma işlemi sırasında karşılaşılan "Bir sorun oluştu" hatası. Nasıl daha fazla araştırma yapabilirim?
+Hayır, bir Azure Resource Manager (ARM) şablonu kullanarak sertifika işlemleri yapmak mümkün değildir. Önerilen bir geçici çözüm, Azure API 'SI, Azure CLı veya PowerShell 'deki sertifika içeri aktarma yöntemlerini kullanmaktır. Mevcut bir sertifikanız varsa, parolayı gizli dizi olarak içeri aktarabilirsiniz.
+
+### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal aracılığıyla bir sertifikayı içeri aktardığımda, "sorun oluştu" hatası alıyorum. Nasıl daha fazla araştırma yapabilirim?
     
-Daha açıklayıcı hata görüntülemek için, [Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) veya [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)aracılığıyla sertifika dosyasını içeri aktarın.
+Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) veya [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)kullanarak sertifika dosyasını içeri aktarın.
 
-### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>' Hata türünü nasıl çözebilirim? erişim engellendi veya Kullanıcı sertifikayı içeri aktarmaya yetkili değil mi?
+### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>"Hata türü: erişim engellendi veya Kullanıcı sertifikayı içeri aktarma yetkisi yok" hatasını nasıl çözebilirim?
     
-Bu işlem için sertifikalar/içeri aktarma izni gerekir. Key Vault örneğinin bulunduğu yere gidin ve erişim ilkeleri altında kullanıcıya gerekli izinleri verin. Key Vault> erişim ilkelerine gidin > erişim Ilkesi Ekle > sertifika Izinlerini seçin (veya izinleri istediğiniz şekilde) > asıl > aramak ve sonra kullanıcının e-postasını eklemek. [Sertifikayla ilgili erişim ilkeleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)
+İçeri aktarma işlemi, erişim ilkeleri altına sertifikayı içeri aktarmak için kullanıcıya izin vermenizi gerektirir. Bunu yapmak için, anahtar kasanıza gidin, **erişim ilkeleri**  >  **Ekle erişim ilkesi Ekle**  >  **sertifika izinleri**  >  **sorumlusu**seçin, Kullanıcı için arama yapın ve ardından kullanıcının e-posta adresini ekleyin. 
+
+Sertifikayla ilgili erişim ilkeleri hakkında daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control).
 
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>"Hata türü: sertifika oluştururken çakışma" hatasını nasıl çözebilirim?
     
-Sertifika adı benzersiz olmalıdır. Aynı ada sahip bir sertifika, Azure Anahtar Kasası 'nda [sertifika oluşturmaya](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) çalıştığınız şekilde, aynı ada sahip başka bir anahtar veya gizli dizi varsa, aynı ada sahip olan bir sertifika da geçici olarak silinmiş durumda olabilir. Key Vault sertifikanız için belirtmeyi denediğiniz aynı ada sahip başka bir anahtar veya gizli dizi varsa, başarısız olur ve bu anahtarı veya parolayı kaldırmanız ya da sertifikanız için farklı bir ad kullanmanız gerekir. [Silinen sertifikayı görüntüle](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate)
+Her sertifika adının benzersiz olması gerekir. Diğeri ile aynı ada sahip bir sertifika, geçici olarak silinmiş bir durumda olabilir. Ayrıca, Azure Key Vault [bir sertifikanın](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) oluşturulmasına göre, sertifika için belirtmeyi denediğiniz bir ada sahip anahtar kasasında başka bir anahtar veya gizli dizi varsa, sertifika oluşturma başarısız olur ve bu anahtarı veya parolayı kaldırmanız ya da sertifikanız için farklı bir ad kullanmanız gerekir. 
 
-### <a name="why-am-i-getting-the-error-type-char-length-is-too-long"></a>Neden ' hata türü: char length çok uzun ' alıyorum?
+Daha fazla bilgi için bkz. [sertifika silme işlemi](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
+
+### <a name="why-am-i-getting-error-type-char-length-is-too-long"></a>Neden "hata türü: karakter uzunluğu çok uzun" alıyorum?
+Bu hata iki nedenden kaynaklanabilir:    
+* Sertifika konu adı 200 karakterle sınırlıdır.
+* Sertifika parolası 200 karakterle sınırlıdır.
+
+### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>Azure Key Vault, zaman aşımına uğradı bir sertifikayı içeri aktarabilir miyim?
     
-* Sertifika konu adı uzunluğu 200 char karakter sınırına sahiptir
-* Sertifika parolasının uzunluğu 200 char karakter sınırına sahiptir
+Hayır, zaman aşımına memiş PFX sertifikaları Key Vault içine aktarılamaz.
 
-### <a name="can-i-import-an-expired-certificate-in-azure-key-vault"></a>Azure Anahtar Kasası 'nda bir zaman aşımına uğradı bir sertifikayı içeri aktarabilir miyim?
-    
-Hayır, zaman aşımına memiş PFX sertifikaları Azure Key Vault öğesine aktarılmaz.
+### <a name="how-can-i-convert-my-certificate-to-the-proper-format"></a>Sertifikamı doğru biçime nasıl dönüştürebilirim?
 
-### <a name="how-can-i-convert-my-certificate-to-proper-format"></a>Sertifikamı doğru biçime nasıl dönüştürebilirim?
-
-Sertifikayı gerekli biçimde sağlamak için Sertifika yetkilinizden istediğinizi sorabilirsiniz, ancak doğru biçime dönüştürmenize yardımcı olabilecek üçüncü taraf araçlar da vardır, ancak Microsoft sertifikayı istenen biçimde alma hakkında daha fazla öneri vermez.
+CA 'nız sertifikayı gerekli biçimde vermesini isteyebilirsiniz. Ayrıca, sertifikayı doğru biçime dönüştürmenize yardımcı olabilecek üçüncü taraf araçlar da vardır.
 
 ### <a name="can-i-import-certificates-from-non-partner-cas"></a>İş ortağı olmayan CA 'lardan sertifika alabilir miyim?
-Evet, herhangi bir CA 'dan sertifika içeri aktarabilirsiniz, ancak Anahtar Kasası bu sertifikaları otomatik olarak yenileyemeyecektir. Sertifika süre sonu hakkında bildirim almak için e-posta bildirimleri ayarlayabileceksiniz.
+Evet, herhangi bir CA 'dan sertifika içeri aktarabilirsiniz, ancak anahtar kasanızın bunları otomatik olarak yenileyemeyecektir. Anımsatıcıları, sertifikanın süre sonu hakkında bildirim almak için ayarlayabilirsiniz.
 
-### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Bir sertifikayı bir iş ortağı CA 'dan içeri aktardığımda otomatik yenileme özelliği çalışmaya devam eder mi?
-Evet, karşıya yüklendikten sonra sertifikanın verme ilkesinde, tekrar döndürmeyi belirtdiğinizden emin olmanız gerekir. Ayrıca, değişiklikler sonraki döngüye veya sertifika sürümüne kadar yansıtılır.
+### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>Bir sertifikayı bir iş ortağı CA 'dan içeri aktardığımda, otomatik yenileme özelliği hala çalışır mı?
+Evet. Sertifikayı karşıya yükledikten sonra, sertifikanın verme ilkesinde, oto döndürmeyi belirttiğinizden emin olun. Bir sonraki döngüye veya sertifika sürümü yayımlanıncaya kadar ayarlarınız geçerli olur.
 
-### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Key Vault içeri aktarılan App Service Sertifikası göremiyor musunuz? 
-Sertifika başarıyla içeri aktarıldıysa, lütfen parolalar dikey penceresinde içinde gözden geçirin.
+### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>Key Vault içeri aktardığım App Service sertifikayı neden göremiyorum? 
+Sertifikayı başarıyla aldıysanız, **gizli** dizi bölmesine giderek doğrulayabilmelisiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73e23f24717616ef417460d2fdae6116cfdbdb3a
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810420"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587574"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -65,14 +65,14 @@ Azure Digital Twins .NET (C#) SDK 'Sı, .NET için Azure SDK 'sının bir parça
 > [!NOTE]
 > SDK tasarımı hakkında ayrıntılı bilgi için bkz. [Azure SDK 'ları için genel tasarım ilkeleri](https://azure.github.io/azure-sdk/general_introduction.html) ve belirli [.net tasarım yönergeleri](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini ekleyin. Ayrıca, **Azure. Identity** paketine da ihtiyacınız olacaktır.
+SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini ekleyin. Ayrıca, **Azure. Identity** Package (sürüm 1.1.1) gerekecektir.
 
 * Visual Studio 'da, NuGet Paket Yöneticisi ( *araçlar > NuGet Paket Yöneticisi aracılığıyla erişilir > çözüm Için NuGet Paketlerini Yönet*) ile paket ekleyebilirsiniz. 
 * .NET komut satırı aracını kullanarak şunları gerçekleştirebilirsiniz:
 
     ```cmd/sh
     dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
+    dotnet add package Azure.identity --version 1.1.1
     ```
 
 API 'Leri uygulamada kullanma hakkında ayrıntılı bilgi için bkz. [*öğretici: istemci uygulaması kodu*](tutorial-code.md). 

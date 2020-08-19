@@ -3,12 +3,12 @@ title: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 description: Azure Backup ile bir Azure VM oluşturduğunuzda yedeklemenin nasıl etkinleştirileceğini açıklar.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032859"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586707"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -47,6 +47,9 @@ Hesabınızda zaten oturum açmadıysanız [Azure Portal](https://portal.azure.c
     - Anında geri yükleme işlevselliği hakkında [daha fazla bilgi edinin](backup-instant-restore-capability.md) .
 
       ![Varsayılan yedekleme ilkesi](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE ve PMK, Azure VM 'leri için varsayılan şifreleme yöntemleridir](backup-encryption.md) . Azure Backup, bu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Sanal makineler için Azure Backup kaynak grubu
 

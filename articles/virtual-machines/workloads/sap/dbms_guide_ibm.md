@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/13/2020
+ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3db8ece7cd1d3ef57b51b164fad3340b80882369
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 947f50c1a92985c057f39a5efb1be250bf8ef06c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510207"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587166"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -30,7 +30,7 @@ Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleşt
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir:
 
-| Dekont numarası |Title |
+| Dekont numarası |Başlık |
 | --- |--- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -85,8 +85,8 @@ Aşağıda, küçük ve çok büyük olan DB2 dağıtımları üzerinde SAP 'nin
 | VM adı/boyutu |DB2 bağlama noktası |Azure Premium Disk |NR disk |IOPS |Üretilen iş [MB/s] |Boyut [GB] |Veri bloğu ıOPS |Patlama THR [GB] | Şerit boyutu | Önbelleğe Alma |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/DB2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
-|vCPU: 4 |/DB2/ <SID> /sapdata |P6 |4 |960  |200  |256  |14,000  |680  |256 KB |ReadOnly |
-|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
+|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
 | |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
 | |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 

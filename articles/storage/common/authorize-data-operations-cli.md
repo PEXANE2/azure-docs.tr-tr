@@ -1,24 +1,24 @@
 ---
-title: Blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLı komutlarını çalıştırma
+title: Azure CLı ile blob veya kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 titleSuffix: Azure Storage
 description: Azure CLı ile blob veya kuyruk verilerinde veri işlemlerini yetkilendirme işlemini belirtin. Hesap erişim anahtarı veya paylaşılan erişim imzası (SAS) belirteci ile Azure AD kimlik bilgilerini kullanarak veri işlemlerini yetkilendirebilirsiniz.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ab346af1516c29b1638811217b779e11f120043
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183403"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589071"
 ---
-# <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLı komutlarını çalıştırma
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLı ile blob veya kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 
 Azure depolama, Azure CLı için, blob veya kuyruk verilerinde işlemleri nasıl yetkilendirmek istediğinizi belirtmenize olanak tanıyan uzantılar sağlar. Veri işlemlerini aşağıdaki yollarla yetkilendirebilirsiniz:
 

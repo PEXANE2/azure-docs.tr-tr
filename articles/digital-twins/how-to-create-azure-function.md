@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124315"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589410"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -83,8 +83,8 @@ Bunun hakkında daha fazla bilgi için bkz. [*Event Grid tetikleyiciden yerel ol
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Azure Digital TWINS SDK 'sını Azure işlev uygulamanıza ekleyin
 
 İşlev uygulaması, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanarak Azure Digital TWINS ile etkileşime girer. SDK 'yı kullanmak için projenize aşağıdaki paketleri eklemeniz gerekir:
-* `Azure.DigitalTwins.Core`(sürüm `1.0.0-preview.2` )
-* `Azure.Identity`
+* `Azure.DigitalTwins.Core` (sürüm `1.0.0-preview.2` )
+* `Azure.Identity` (sürüm `1.1.1` )
 
 Azure Işlevleri için doğru şekilde ayarlanmak üzere Azure SDK işlem hattının yapılandırılması için şunlar gerekir:
 * `Azure.Net.Http`

@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, bir uygulamayı dağıtmayı ve Azure portal kullanarak Azure Kubernetes hizmeti 'nde (AKS) performansı izlemenizi öğrenin.
 services: container-service
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 08/18/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 987836281c1decb976418406b8e47afffb9cd0d8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cd3fd41d281708f4c1d9616db47f751f60e055cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003228"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589920"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -91,9 +91,6 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
 Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerinin çalıştırılacağı gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure Vote uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirimde iki [Kubernetes dağıtımı][kubernetes-deployment] vardır-bir örnek Azure oy Python uygulamaları ve diğeri de redin örneği için. İki [Kubernetes hizmeti][kubernetes-service] de oluşturulur; redsıs örneği için bir iç hizmet ve Azure oy uygulamasına internet 'ten erişmek için bir dış hizmet.
-
-> [!TIP]
-> Bu hızlı başlangıçta, uygulama bildirimlerini el ile oluşturup AKS kümesine dağıtacaksınız. Daha fazla gerçek dünya senaryolarında kodunuzu doğrudan AKS kümesinde hızlıca yineleyip hatalarını ayıklamak için [Azure Dev Spaces][azure-dev-spaces]’ı kullanabilirsiniz. Dev Spaces’ı işletim sistemi platformları ile geliştirme ortamlarında kullanabilir ve ekibinizdeki diğer kişilerle birlikte çalışabilirsiniz.
 
 Cloud Shell, veya gibi adlı bir dosya oluşturmak için bir düzenleyici kullanın `azure-vote.yaml` `code azure-vote.yaml` `nano azure-vote.yaml` `vi azure-vote.yaml` . Ardından aşağıdaki YAML tanımına kopyalayın:
 
@@ -232,7 +229,7 @@ Azure portalında bu verilerin doldurulması birkaç dakika sürebilir. Azure Vo
 
 1. Sol taraftaki **izleme** altında **Öngörüler** ' i seçin.
 1. Üst taraftan **+ Filtre Ekle**'yi seçin
-1. Özellik olarak *ad alanı* ' nı seçin ve ardından şunu seçin*\<All but kube-system\>*
+1. Özellik olarak *ad alanı* ' nı seçin ve ardından şunu seçin *\<All but kube-system\>*
 1. **Kapsayıcılar** bölümünü görüntüleyin.
 
 Aşağıdaki örnekte olduğu gibi *azure-vote-back* ve *azure-vote-front* kapsayıcıları görüntülenir:

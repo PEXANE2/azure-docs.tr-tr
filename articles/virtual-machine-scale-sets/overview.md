@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075550"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590396"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri nedir?
 Azure sanal makine ölçek kümeleri, yük dengeli bir VM grubu oluşturmanızı ve yönetmenizi sağlar. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Ölçek kümeleri, uygulamalarınıza yönelik yüksek düzeyde kullanılabilirlik sağlar ve çok sayıda sanal makineyi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize imkan tanır. Sanal makine ölçek kümeleri ile, işlem, büyük veri ve kapsayıcı iş yükleri gibi alanlar için büyük ölçekli hizmetler derleyebilirsiniz.
@@ -60,6 +60,10 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
 Basit bir ekleme işlemine sahip [VM'ler için Azure izleyici](../azure-monitor/insights/vminsights-overview.md)kullanın ve ölçek kümesindeki VM 'LERDEN önemli CPU, bellek, disk ve ağ performans sayaçları koleksiyonunu otomatikleştirin. Ayrıca, ölçek kümelerinizin kullanılabilirliği ve performansına odaklanmaya yardımcı olan ek izleme özellikleri ve önceden tanımlanmış görselleştirmeler de içerir.
 
 Sayfa görünümleri, uygulama istekleri ve özel durumlar dahil olmak üzere uygulamanız hakkında ayrıntılı bilgi toplamak için Application Insights ile [sanal makine ölçek kümesi uygulamanız](../azure-monitor/app/azure-vm-vmss-apps.md) için izlemeyi etkinleştirin. Kullanıcı trafiğinin benzetimini yapmak için bir [Kullanılabilirlik testi](../azure-monitor/app/monitor-web-app-availability.md) yapılandırarak uygulamanızın kullanılabilirliğini daha da doğrulayın.
+
+## <a name="singapore-data-residency"></a>Singapur veri yerleşimi
+
+Azure 'da, müşteri verilerinin tek bir bölgede depolanmasını etkinleştirme özelliği şu anda yalnızca Asya Pasifik coğrafi bölgenin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri coğrafi olarak depolanır. Daha fazla bilgi için bkz. [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Başlamak için, Azure portalında ilk sanal makine ölçek kümenizi oluşturun.

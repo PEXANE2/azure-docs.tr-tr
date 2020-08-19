@@ -1,21 +1,21 @@
 ---
-title: Öğretici-Jupyter Not defteri oluşturma ve çalıştırma-Azure Notebooks Önizleme
-description: Veri bilimi 'nde doğrusal gerileme sürecini gösteren Azure Notebooks önizlemede bir Jupyter Not defteri oluşturmayı ve çalıştırmayı öğrenin.
+title: Öğretici-Jupyter Notebook Azure Notebooks önizlemesi oluşturma ve çalıştırma
+description: Veri bilimi 'nde doğrusal gerileme sürecini gösteren Azure Notebooks önizlemede Jupyter Notebook oluşturma ve çalıştırma hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846921"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589288"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Öğretici: Python ile Jupyter Not defteri oluşturma ve çalıştırma
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Öğretici: Python ile Jupyter Notebook oluşturma ve çalıştırma
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Bu öğreticide, basit doğrusal regresyon gösteren bir bütün Jupyter Not defteri oluşturmak için Azure Notebooks kullanma işleminde size kılavuzluk eder. Bu öğreticide, farklı hücreler oluşturmayı, hücreleri çalıştırmayı ve Not defterini bir slayt gösterisi olarak sunmayı içeren Jupyter Not defteri Kullanıcı arabirimi hakkında bilgi edinin.
+Bu öğretici, basit doğrusal regresyon gösteren bir bütün Jupyter Notebook oluşturmak için Azure Notebooks kullanma sürecinde size kılavuzluk eder. Bu öğreticinin elbette, farklı hücreler oluşturmayı, hücreleri çalıştırmayı ve Not defterini bir slayt gösterisi olarak sunmayı içeren Jupyter Notebook Kullanıcı arabirimi hakkında bilgi edinin.
 
 Tamamlanan Not defteri [GitHub-Azure Notebooks örnekleri](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)üzerinde bulunabilir. Bununla birlikte, bu öğretici yeni bir proje ve boş bir not defteriyle başlar, böylece adım adım oluşturmaya deneyim sağlayabilirsiniz.
 
@@ -417,7 +417,7 @@ Not defterinizdeki kod hücreleri, istediğiniz şekilde davranmıyorsa, kod hat
 
 Neyse ki not defteri 'nin *. ipynb* dosyasını indirebilir, sonra Python uzantısını kullanarak Visual Studio Code açabilirsiniz. Uzantı doğrudan bir not defterini tek bir kod dosyası olarak içeri aktarır ve açıklamalarda Markaşağı hücreleri korur. Not defteri 'ni içeri aktardıktan sonra, Visual Studio Code hata ayıklayıcıyı kullanarak kodunuzda adım adım ilerledikten, kesme noktaları ayarlamanıza, durumu incelemenize ve benzeri bir durumla devam edebilirsiniz. Kodunuzda düzeltmeler yaptıktan sonra, *. ipynb* dosyasını Visual Studio Code dışarı aktarıp Azure Notebooks geri yükleyin.
 
-Daha fazla bilgi için Visual Studio Code belgelerinde [Jupyter Notebook hata ayıklama](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) bölümüne bakın.
+Daha fazla bilgi için Visual Studio Code belgelerindeki [Jupyter Notebook hata ayıklama](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) bölümüne bakın.
 
 Ayrıca bkz. jupi Not defterleri için Visual Studio Code ek özellikler için [Visual Studio Code-jupde desteği](https://code.visualstudio.com/docs/python/jupyter-support) .
 

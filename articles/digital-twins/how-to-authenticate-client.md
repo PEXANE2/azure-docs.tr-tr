@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1eebacefa2e91970263c301de4ff160ea7c9f2eb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420354"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589376"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -34,8 +34,8 @@ Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine iht
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Kimlik doğrulaması ve istemci oluşturma: .NET (C#) SDK
 
 İlk olarak, .NET SDK ve kimlik doğrulama araçları 'nı bu nasıl yapılır için kullanmak üzere projenize aşağıdaki paketleri ekleyin:
-* `Azure.DigitalTwins.Core`(sürüm `1.0.0-preview.2` )
-* `Azure.Identity`
+* `Azure.DigitalTwins.Core` (sürüm `1.0.0-preview.2` )
+* `Azure.Identity` (sürüm `1.1.1` )
 
 Seçtiğiniz araçlara bağlı olarak, Visual Studio Paket Yöneticisi 'ni veya komut satırı aracını kullanarak paketleri dahil edebilirsiniz `dotnet` . 
 

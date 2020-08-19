@@ -4,18 +4,18 @@ description: Azure CLI kullanarak mevcut bir Azure sanal ağına Linux Service F
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260229"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586929"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure sanal ağına bir Linux Service Fabric kümesi dağıtma
 
 Bu makalede, Azure CLı ve şablon kullanarak bir [Azure sanal ağına (VNet)](../virtual-network/virtual-networks-overview.md) bir Linux Service Fabric kümesi dağıtmayı öğreneceksiniz. Öğreticiyi tamamladığınızda, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz olur. PowerShell kullanarak Windows kümesi oluşturmak için bkz. [Azure’da güvenli bir Windows kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
@@ -34,14 +34,19 @@ Aşağıdaki Resource Manager şablonu dosyalarını indirin:
 Ubuntu 16,04 LTS için:
 
 * [AzureDeploy.json][template]
-* [ÜzerindeAzureDeploy.Parameters.js][parameters]
+* [ ÜzerindeAzureDeploy.Parameters.js][parameters]
 
 Ubuntu 18,04 LTS için:
 
 * [AzureDeploy.json][template2]
-* [ÜzerindeAzureDeploy.Parameters.js][parameters2]
+* [ ÜzerindeAzureDeploy.Parameters.js][parameters2]
 
-İki şablon arasındaki fark, **Vmımagesku** özniteliğidir ve "18,04-LTS" olarak ayarlanmıştır ve her bir düğümün **typehandlerversion** ayarı 1,1 olarak ayarlanmıştır.
+Ubuntu 18,04 LTS için iki şablon arasındaki fark 
+* **Vmımagesku** özniteliği "18,04-LTS" olarak ayarlandı
+* her düğümün **Typehandlerversion** 'ı 1,1 olarak ayarlanmıştır
+* Microsoft. ServiceFabric/kümeler kaynağı
+   - **Apiversion** , "2019-03-01" veya üzeri olarak ayarlandı
+   - **Vmımage** özelliği "Ubuntu18_04" olarak ayarlandı
 
 Bu şablon, bir sanal ağa yedi sanal makine ve üç düğümlü türden oluşan güvenli bir küme dağıtır.  Diğer örnek şablonlar [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates)'da bulunabilir. [AzureDeploy.json][template] aşağıdakiler dahil bir grup kaynak dağıtır.
 

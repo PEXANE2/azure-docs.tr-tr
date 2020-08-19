@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134505"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590379"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -54,7 +54,9 @@ Hayır. Azure NetApp Files birimlerine IP ataması dinamiktir. Statik IP atamas�
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM ve depolama arasındaki ağ trafiği şifrelenir mi?
 
-Veri trafiği (NFSv3, NFSv 4.1 veya SMBv3 istemcisinden Azure NetApp Files birimlerine trafik) şifrelenmez. Bununla birlikte, bir Azure VM 'den (NFS veya SMB istemcisi çalıştıran) Azure NetApp Files, diğer tüm Azure-VM-VM trafiği kadar güvenlidir. Bu trafik Azure veri merkezi ağı için yereldir. 
+NFSv 4.1 istemcileri ve Azure NetApp Files birimleri arasındaki veri trafiği, AES-256 şifrelemesi ile Kerberos kullanılarak şifrelenir. Ayrıntılar için bkz. [NFSv 4.1 Kerberos şifrelemeyi yapılandırma Azure NetApp Files](configure-kerberos-encryption.md) .   
+
+Azure NetApp Files birimler için NFSv3 veya SMBv3 istemcileri arasındaki veri trafiği şifrelenmemiştir. Bununla birlikte, bir Azure VM 'den (NFS veya SMB istemcisi çalıştıran) Azure NetApp Files, diğer tüm Azure-VM-VM trafiği kadar güvenlidir. Bu trafik Azure veri merkezi ağı için yereldir. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Depolama alanı bekleyen olarak şifrelenebilir mi?
 
@@ -125,7 +127,7 @@ Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak [bi
 
 ### <a name="how-do-i-enable-root-squashing"></a>Nasıl yaparım? kök ele geçirme etkinleştirilsin mi?
 
-Kök kilitlenme Şu anda desteklenmiyor.
+Birimin dışa aktarma ilkesini kullanarak, kök hesabın birime erişip erişemeyeceğini belirtebilirsiniz. Ayrıntılar için bkz. [NFS için dışarı aktarma Ilkesini yapılandırma](azure-netapp-files-configure-export-policy.md) .
 
 ## <a name="smb-faqs"></a>SMB hakkında SSS
 

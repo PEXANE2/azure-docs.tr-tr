@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255237"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590362"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -37,7 +37,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 ## <a name="what-youll-learn"></a>Öğrenecekleriniz
 * Azure SDK’sını yükleyerek Azure dağıtımı için makinenizi etkinleştirme.
 * Bir ASP.NET MVC web rolü ve çalışan rolü ile Visual Studio bulut hizmeti projesi oluşturma.
-* Azure Storage öykünücüsü kullanarak bulut hizmeti projesini yerel olarak test etme.
+* Azure depolama öykünücüsünü kullanarak bulut hizmeti projesini yerel olarak test etme.
 * Bulut projesini bir Azure bulut hizmetinde yayımlama ve Azure Storage hesabını kullanarak test etme.
 * Dosyaları karşıya yükleme ve Azure Blob hizmetine depolama.
 * Katmanlar arasında iletişim için Azure Queue hizmetini kullanma.
@@ -100,7 +100,7 @@ Uygulamayı herhangi bir bulut bağlantısı olmadan tamamen yerel bilgisayarın
 
 Aşağıdaki bölümde çözümü bulutta çalışan kuyruklar, blob’lar ve uygulama veritabanı için Azure bulut kaynakları kullanacak şekilde yapılandıracaksınız. Yerel olarak çalıştırmaya devam ederken bulut depolama alanını ve veritabanı kaynaklarını da kullanmak istiyorsanız bunu yapabilirsiniz. Bunun için yalnızca bağlantı dizesi ayarlarını yapmanız gerekir. Bu ayarları nasıl yapacağınızı ileride öğreneceksiniz.
 
-## <a name="deploy-the-application-to-azure"></a>Uygulamayı Azure’a dağıtma
+## <a name="deploy-the-application-to-azure"></a>Uygulamayı Azure'a dağıtma
 Uygulamayı bulutta çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
 * Bir Azure bulut hizmeti oluşturun.
@@ -124,7 +124,7 @@ Azure bulut hizmeti, uygulamanın çalıştırılacağı ortamıdır.
 5. Uygulamayı dağıtmak istediğiniz bölgeyi seçin.
 
     Bu alan, bulut hizmetinizin hangi veri merkezinde barındırılacağını belirtir. Bir üretim uygulaması için müşterilerinize en yakın bölgeyi seçmeniz gerekir. Bu öğretici için size en yakın bölgeyi seçin.
-5. **Oluştur**'a tıklayın.
+5. **Oluştur**’a tıklayın.
 
     Aşağıdaki görüntüde bulut hizmeti CSvccontosoads.cloudapp.net URL’si ile oluşturulur.
 
@@ -153,9 +153,9 @@ Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullan
 9. Yeni sunucu için **Seçin**’e tıklayın.
 
     ![Yeni sunucu](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. **Oluştur**'a tıklayın.
+10. **Oluştur**’a tıklayın.
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+### <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 Azure Storage hesabı kuyruk ve blob verilerini buluta depolamaya yönelik kaynaklar sağlar.
 
 Gerçek bir uygulamada genellikle uygulama verilerine karşı günlük verileri için ve test verilerine karşı üretim verileri için ayrı hesaplar oluşturursunuz. Bu öğreticide yalnızca tek bir hesap kullanacaksınız.
@@ -176,7 +176,7 @@ Gerçek bir uygulamada genellikle uygulama verilerine karşı günlük verileri 
     Bulut hizmeti ve depolama hesabı farklı veri merkezlerinde (farklı bölgelerde) olduğunda gecikme artar ve veri merkezinin dışındaki bant genişliği için sizden ücret alınır. Bir veri merkezi içinde bant genişliği ücretsizdir.
 
     Azure benzeşim grupları bir veri merkezinde bulunan kaynaklar arasındaki uzaklığı en aza indirmeye yönelik bir mekanizma sağlar. Bu öğretici benzeşim gruplarını kullanmaz. Daha fazla bilgi için bkz. [Azure’da Benzeşim Grubu Oluşturma](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. **Oluştur**'a tıklayın.
+7. **Oluştur**’a tıklayın.
 
     ![Yeni depolama hesabı](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -396,7 +396,7 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
        ```
 
-### <a name="add-code-files"></a>Kod dosyaları ekleme
+### <a name="add-code-files"></a>Kod dosyalarını ekleme
 Bu bölümde, indirilen çözümden yeni çözüme kod dosyaları kopyalarsınız. Aşağıdaki bölümlerde bu kodun temel kısımları gösterilmiş ve açıklanmıştır.
 
 Bir projeye veya klasöre dosya eklemek için, projeye veya klasöre sağ tıklayın ve **Add**  -  **Varolan öğe**Ekle ' ye tıklayın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.

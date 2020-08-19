@@ -1,6 +1,6 @@
 ---
 title: Azure Uygulama yapılandırması en iyi uygulamalar | Microsoft Docs
-description: Azure Uygulama yapılandırması 'nı en iyi şekilde kullanmayı öğrenin
+description: Azure Uygulama yapılandırması kullanırken en iyi yöntemleri öğrenin. Kapsanan konular arasında anahtar gruplandırmaları, anahtar-değer kompozisyonları, uygulama yapılandırması önyüklemesi ve daha fazlası bulunur.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d97626d5eed96a3debb41c86f6dab6fbaf1953cd
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206689"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588067"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 

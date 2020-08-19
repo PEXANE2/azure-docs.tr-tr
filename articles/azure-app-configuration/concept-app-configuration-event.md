@@ -1,18 +1,18 @@
 ---
 title: Azure Uygulama yapılandırması anahtar-değer olaylarına yeniden davranıyor
-description: Uygulama yapılandırma olaylarına abone olmak için Azure Event Grid kullanın.
+description: Uygulamaların, önemli bir koda gerek kalmadan anahtar değerlerindeki değişikliklere tepki vermesini sağlayan uygulama yapılandırma olaylarına abone olmak için Azure Event Grid kullanın.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523807"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590039"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure uygulama yapılandırma olaylarına yeniden davranıma
 
@@ -40,13 +40,13 @@ Azure uygulama yapılandırma olayları, verilerdeki değişikliklere yanıt ver
 > |Özellik|Tür|Açıklama|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |konu başlığı|string|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
-> |Konu|string|Olayın konusu olan anahtar-değer URI 'SI.|
+> |subject|string|Olayın konusu olan anahtar-değer URI 'SI.|
 > |eventTime|string|Olayın oluşturulduğu tarih/saat, ISO 8601 biçiminde.|
-> |Türü|string|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
-> |Kimlik|string|Bu olayın benzersiz tanımlayıcısı.|
+> |eventType|string|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
+> |Id|string|Bu olayın benzersiz tanımlayıcısı.|
 > |dataVersion|string|Veri nesnesinin şema sürümü.|
 > |metadataVersion|string|Üst düzey özelliklerin şema sürümü.|
-> |veriler|nesne|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|
+> |veriler|object|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|
 > |Data. Key|string|Değiştirilen veya silinen anahtar-değer anahtarı.|
 > |Data. Label|string|Değiştirilen veya silinen anahtar-değer etiketi.|
 > |Data. ETag|string|`KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için.|

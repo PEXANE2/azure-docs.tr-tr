@@ -1,7 +1,7 @@
 ---
 title: Dil desteği-LUSıS
 titleSuffix: Azure Cognitive Services
-description: LUSıS, hizmet içindeki çeşitli özelliklere sahiptir. Tüm özellikler aynı dil eşliği değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil kültürüyle desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
+description: LUIS birçok farklı özelliğe sahiptir. Tüm özellikler aynı dil seçeneklerine sahip değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil için desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340207"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588031"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
-LUSıS, hizmet içindeki çeşitli özelliklere sahiptir. Tüm özellikler aynı dil eşliği değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil kültürüyle desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
+LUIS birçok farklı özelliğe sahiptir. Tüm özellikler aynı dil seçeneklerine sahip değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil için desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
 
 ## <a name="multi-language-luis-apps"></a>Çok dilli LUSıS uygulamaları
 
@@ -115,8 +115,8 @@ Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 |--|--|--|
 |Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, özelliği olarak ayarlanır `Ich fahre einen kranken wagen` . `kranken` `wagen` Farklı varlıklar olarak ve bağımsız olarak işaretlemeye izin verme.|
 |Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir `Ich fahre einen krankenwagen` utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |
-|Felemenkçe<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı `Ik ga naar de kleuterschool` bir utterance olarak girerse, özelliği olarak ayarlanır `Ik ga naar de kleuter school` . `kleuter` `school` Farklı varlıklar olarak ve bağımsız olarak işaretlemeye izin verme.|
-|Felemenkçe<br>`de-de`|1.0.1|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir `Ik ga naar de kleuterschool` utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `kleuterschool` tek bir varlık olarak işaretlenir. |
+|Felemenkçe<br>`nl-nl`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı `Ik ga naar de kleuterschool` bir utterance olarak girerse, özelliği olarak ayarlanır `Ik ga naar de kleuter school` . `kleuter` `school` Farklı varlıklar olarak ve bağımsız olarak işaretlemeye izin verme.|
+|Felemenkçe<br>`nl-nl`|1.0.1|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir `Ik ga naar de kleuterschool` utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `kleuterschool` tek bir varlık olarak işaretlenir. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Belirteç Oluşturucu sürümler arasında geçiş yapma

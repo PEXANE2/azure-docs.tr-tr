@@ -1,14 +1,14 @@
 ---
 title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163348"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589750"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
@@ -66,9 +66,6 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
-
-> [!NOTE]
-> Ayrıca, kök kapsamdaki Izleme okuyucusu Azure yerleşik rolünü bireysel kullanıcılara veya Kullanıcı gruplarına atayabilirsiniz. Bu, bir kullanıcının [Azure Portal doğrudan yetkilendirme bilgilerini görüntüleyebilmesini](#view-delegation-changes-in-the-azure-portal)istiyorsanız yararlı olabilir. Bunu yaparsanız, mümkün olan en az sayıda kullanıcıyla sınırlı olması gereken geniş bir erişim düzeyi olduğunu unutmayın.
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Genel yönetici hesabı için yükseltilmiş erişimi kaldırın
 
@@ -164,15 +161,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal temsili değişikliklerini görüntüle
-
-Izleme okuyucusu Azure yerleşik rolü kök kapsamda atanmış olan kullanıcılar, doğrudan Azure portal, yetkilendirme değişikliklerini görüntüleyebilir.
-
-1. **Müşterilerimiz** sayfasına gidin ve ardından sol taraftaki gezinti menüsünde **etkinlik günlüğü** ' nü seçin.
-1. Ekranın üst kısmındaki filtrede **Dizin etkinliğinin** seçildiğinden emin olun.
-
-Temsili değişikliklerinin bir listesi görüntülenir. **Durum**, **olay kategorisi**, **saat**, **zaman damgası**, **abonelik**, **olay tarafından başlatılan olay**, kaynak **grubu**, **kaynak türü**ve **kaynak** değerlerini göstermek veya gizlemek için **Sütunları Düzenle** seçeneğini belirleyebilirsiniz.
 
 > [!TIP]
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) aynı işlemlerin aynısını kullanabilir.

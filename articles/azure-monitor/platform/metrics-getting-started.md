@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276439"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590192"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini'ni kullanmaya başlama
 
@@ -41,16 +41,19 @@ Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azu
 
 4. İsteğe bağlı olarak, [ölçüm toplamayı değiştirebilirsiniz](metrics-charts.md#changing-aggregation). Örneğin, grafiğinizin ölçüm minimum, maksimum veya Ortalama değerlerini göstermesini isteyebilirsiniz.
 
-> [!NOTE]
+> [!TIP]
 > Aynı grafikte birden çok ölçüm çizilmek istiyorsanız **ölçüm Ekle** düğmesini kullanın ve bu adımları tekrarlayın. Tek bir görünümdeki birden çok grafik için üstteki **Grafik Ekle** düğmesini seçin.
 
 ## <a name="select-a-time-range"></a>Bir zaman aralığı seçin
+
+> [!WARNING]
+> [Azure'daki ölçümlerin çoğu 93 gün boyunca depolanır](data-platform-metrics.md#retention-of-metrics). Ancak, herhangi bir grafik üzerinde en fazla 30 günlük veri girebilirsiniz. Bu sınırlama [günlük tabanlı ölçümler](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) için geçerli değildir.
 
 Varsayılan olarak, grafik en son 24 saat ölçüm verilerini gösterir. Zaman aralığını değiştirmek, grafiğinizde yakınlaştırmak veya uzaklaştırmak için **zaman Seçicisi** bölmesini kullanın. 
 
 ![Zaman aralığı Bölmesini Değiştir](./media/metrics-getting-started/time-picker.png)
 
-> [!NOTE]
+> [!TIP]
 > Grafiğin ilgi çekici bir alanını (ani veya bir DIP) araştırmak için **zaman fırçası** 'nı kullanın. Fare işaretçisini alanın başlangıcına koyun, sol fare düğmesine tıklayın ve basılı tutun, alanın diğer tarafına sürükleyin ve sonra düğmeyi bırakın. Grafik bu zaman aralığında yakınlaşacaktır. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Boyut filtrelerini uygulama ve bölme

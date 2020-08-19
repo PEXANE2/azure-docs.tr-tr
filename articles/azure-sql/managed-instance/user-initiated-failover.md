@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191204"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589512"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -126,9 +126,12 @@ Yük devretmeyi başlatmadan önce, çıktı, BC hizmet katmanındaki geçerli b
 
 Daha önce BC için gösterilen GP hizmet katmanıyla aynı çıktıyı göremezsiniz. Bunun nedeni, GP hizmet katmanının yalnızca tek bir düğümü temel alır. GP hizmet katmanı için T-SQL sorgu çıktısı, yük devretmeden önce ve sonra tek bir düğüm gösterir. Yük devretme sırasında istemcinizden bağlantı kaybı, genellikle bir dakika içinde, yük devretme yürütmesinin göstergesi olacaktır.
 
+> [!NOTE]
+> Yük devretme işleminin tamamlanması (gerçek kısa kullanım dışı kalması), **yüksek yoğunlukta** iş yükleri olması durumunda birkaç dakika sürebilir. Bunun nedeni, örnek altyapısının, yük devretmeden önce birincil ve ikincil düğümde yakalandığı tüm geçerli işlemleri ele alırken.
+
 > [!IMPORTANT]
 > Kullanıcı tarafından başlatılan el ile yük devretmenin işlevsel sınırlamaları şunlardır:
-> - Her 30 dakikada bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
+> - Her **30 dakikada**bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
 > - BC örnekleri için, yük devretme isteğinin kabul edilmesi için mevcut çoğaltmaların çekirdeği olması gerekir.
 > - BC örnekleri için, hangi okunabilir ikincil çoğaltmanın üzerinde yük devretmeyi başlatacağını belirtmek mümkün değildir.
 

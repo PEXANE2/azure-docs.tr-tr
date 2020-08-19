@@ -4,15 +4,15 @@ description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, kull
 services: load-balancer
 author: anavinahar
 ms.service: load-balancer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447023"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586724"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer yenilikler nelerdir?
 
@@ -33,7 +33,7 @@ Ayrıca en son Azure Load Balancer güncelleştirmelerini bulabilir ve RSS akı�
 | Özellik| Azure Izleyici kullanarak Öngörüler Azure Load Balancer | Ağlar için Azure Izleyici 'nin bir parçası olarak oluşturulan müşteriler artık tüm Load Balancer yapılandırmalarına ve sistem durumu panolarına ait, Azure portal ölçümleriyle önceden yapılandırılmış standart yük dengeleyiciler için topik haritalar sahibi vardır. [Başlayın ve daha fazla bilgi edinin](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Haziran 2020 |
 | Doğrulama | HA bağlantı noktaları için doğrulama ekleme | HA bağlantı noktası kurallarının ve HA olmayan bağlantı noktası kurallarının yalnızca kayan IP etkin olduğunda yapılandırılamasından emin olmak için bir doğrulama eklenmiştir. Daha önce bu yapılandırma, istendiği gibi çalışmaz, ancak işe devam etmez. İşlev değişikliği yapılmadı. [Buradan](load-balancer-ha-ports-overview.md#limitations) daha fazla bilgi edinebilirsiniz| Haziran 2020 |
 | Özellik| Azure Load Balancer için IPv6 desteği (genel kullanıma sunuldu) | Azure yük dengeleyiciler için ön uç olarak IPv6 adresleriniz olabilir. [Burada çift yığın uygulaması oluşturmayı](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) öğrenin |Nisan 2020|
-| Özellik| Boşta kalma zaman aşımı durumunda TCP sıfırlamaları (genel kullanıma sunuldu)| Daha öngörülebilir bir uygulama davranışı oluşturmak için TCP sıfırlamaları kullanın. [Daha fazla bilgi](load-balancer-tcp-reset.md)| Şubat 2020 |
+| Özellik| Boşta kalma zaman aşımı durumunda TCP sıfırlamaları (genel kullanıma sunuldu)| Daha öngörülebilir bir uygulama davranışı oluşturmak için TCP sıfırlamaları kullanın. [Daha fazla bilgi edinin](load-balancer-tcp-reset.md)| Şubat 2020 |
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

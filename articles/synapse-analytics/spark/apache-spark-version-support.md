@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: eda93f64b503a1894f306be75dd5a3321d428eb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bedb7da2f088c065d95d60effeda1e4db15d44a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089235"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589495"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Apache Spark ve bağımlı bileşenler için desteklenen dil ve çalışma zamanı sürümleri  
 
@@ -567,7 +567,6 @@ Zookeeper-3.4.11.2.6.99.201 -1240. jar
 zstd-jni-1.3.2 -2. jar
 
 ## <a name="python-libraries"></a>Python kitaplıkları
-_license = = 1.1
 
 absl-Kopyala = = 0.8.1
 
@@ -578,8 +577,6 @@ Alabaster = = 0.7.10
 Altair = = 3.2.0
 
 ApplicationInsights = = 0.11.9
-
-asn1crypto = = 0.22.0
 
 asn1crypto = = 1.0.1
 
@@ -593,7 +590,11 @@ attrs = = 19.2.0
 
 Azure-ortak = = 1.1.23
 
+Azure-Core = = 1.6.0
+
 Azure-graphrbac = = 0.61.1
+
+Azure-Identity = = 1.2.0
 
 Azure-MGMT-Authorization = = 0.60.0
 
@@ -601,43 +602,68 @@ Azure-MGMT-containerregistry = = 2.8.0
 
 Azure-MGMT-keykasası = = 2.0.0
 
+Azure-MGMT-ağ = = 10.2.0
+
 Azure-MGMT-Resource = = 5.1.0
 
 Azure-MGMT-depolama = = 4.2.0
 
-azureml-oto ml-Core = = 1.0.65.1
+Azure-Storage-blob = = 2.1.0
 
-azureml-çekirdek = = 1.0.65.1
+Azure-Storage-ortak = = 2.1.0
 
-azureml-dataprep = = 1.1.20
+azureml-oto ml-Core = = 1.6.0
 
-azureml-dataprep-Native = = 13.1.0
+azureml-oto ml-Runtime = = 1.6.0. post1
 
-azureml-işlem hattı = = 1.0.65
+azureml-çekirdek = = 1.6.0
 
-azureml-işlem hattı-çekirdek = = 1.0.65
+azureml-dataprep = = 1.6.3
 
-azureml-işlem hattı-adımlar = = 1.0.65
+azureml-dataprep-Native = = 14.1.0
 
-azureml-SDK = = 1.0.65
+azureml-varsayılanlar = = 1.6.0
 
-azureml-telemetri = = 1.0.65
+azureml-açıkla-model = = 1.6.0
 
-azureml-eğitme = = 1.0.65
+azureml-yorumlama = = 1.6.0
 
-azureml-eğitme-oto ml = = 1.0.65
+azureml-model-Yönetim-SDK = = 1.0.1 B6. post1
 
-azureml-tren-Core = = 1.0.65
 
-azureml-tren-restclients-Hyperdrive = = 1.0.65
+azureml-OPENDATASET = = 1.6.0
+
+azureml-işlem hattı = = 1.6.0
+
+azureml-işlem hattı-çekirdek = = 1.6.0
+
+azureml-işlem hattı-adımlar = = 1.6.0
+
+azureml-SDK = = 1.6.0
+
+azureml-telemetri = = 1.6.0
+
+azureml-eğitme = = 1.6.0
+
+azureml-eğitme-oto ml = = 1.6.0
+
+azureml-tren-oto ml-Client = = 1.6.0. post1
+
+azureml-tren-oto ml-Runtime = = 1.6.0
+
+azureml-tren-Core = = 1.6.0
+
+azureml-tren-restclients-Hyperdrive = = 1.6.0
 
 Babel = = 2.4.0
+
+backcall = = 0.2.0
+
+geribağlantı noktaları. shutil-Get-Terminal-size = = 1.0.0
 
 geribağlantı noktaları. TempFile = = 1.0
 
 backports. WeakRef = = 1.0. post1
-
-geri bağlantı noktaları = = 1.0
 
 beautifulsoup4 = = 4.6.0
 
@@ -647,37 +673,25 @@ Blaze = = 0.10.1
 
 Bleach = = 1.5.0
 
-bokeh = = 0.12.5
-
 bokeh = = 1.3.4
-
-Boto = = 2.46.1
 
 Boto = = 2.49.0
 
-boto3 = = 1.9.245
+boto3 = = 1.9.247
 
-botocore = = 1.12.245
+botocore = = 1.12.247
 
-performans sorunu = = 1.2.1
-
-Cairo = = 1.14.8
+Performans sorunu = = 1.2.1
 
 certifi = = 2019.9.11
 
-cffi = = 1.10.0
-
 cffi = = 1.12.3
-
-chardet = = 3.0.3
 
 chardet = = 3.0.4
 
+grafik-Studio = = 1.0.0
+
 = = 6.7 öğesine tıklayın
-
-= = 7.0 öğesine tıklayın
-
-cloudpickle = = 0.2.2
 
 cloudpickle = = 1.2.2
 
@@ -685,21 +699,13 @@ clyıent = = 1.2.2
 
 Colorama = = 0.3.9
 
-contextlib2 = = 0.5.5
+configparser = = 3.7.4
 
-contextlib2 = = 0.6.0
-
-Şifreleme = = 1.8.1
+contextlib2 = = 0.6.0. post1
 
 şifreleme = = 2.7
 
-kıvrık = = 7.52.1
-
 ok = = 0.10.0
-
-ok = = 0.10.0
-
-cython = = 0.25.2
 
 Cython = = 0.29.13
 
@@ -709,9 +715,7 @@ davsk = = 0.14.3
 
 DataShape = = 0.5.4
 
-dbus = = 1.10.10
-
-dekoratör = = 4.0.11
+dekoratör = = 4.4.0
 
 Dill = = 0.3.1.1
 
@@ -721,31 +725,23 @@ disden = = 1.4.0
 
 Docker = = 4.1.0
 
-docutils = = 0.13.1
-
 docutils = = 0.15.2
 
-dotnetcore2 = = 2.1.9
-
-entryPoints = = 0.2.2
+dotnetcore2 = = 2.1.14
 
 entryPoints = = 0,3
 
-et_xmlfile = = 1.0.1
-
-Expat = = 2.1.0
+et-xmlfile = = 1.0.1
 
 FastCache = = 1.0.2
 
 Yangın = = 0.2.1
 
-Flask = = 0.12.2
+flake8 = = 3.7.9
+
+Flask = = 1.0.3
 
 Flask-CORS = = 3.0.2
-
-fontconfig = = 2.12.1
-
-FreeType = = 2.5.5
 
 fsspec = = 0.5.2
 
@@ -755,11 +751,7 @@ Gast = = 0.3.2
 
 gensim = = 3.8.1
 
-get_terminal_size = = 1.0.0
-
 gevent = = 1.2.1
-
-Glib = = 2.50.2
 
 Google-pasta = = 0.1.7
 
@@ -767,37 +759,31 @@ Doğa = = 0.4.12
 
 grpcıo = = 1.24.1
 
-GST-eklentiler-taban = = 1.8.0
-
-GStreamer = = 1.8.0
+gunic, = = 19.9.0
 
 h5py = = 2.10.0
 
-h5py = = 2.7.0
-
-harfbuzz = = 0.9.39
-
-HDF5 = = 1.8.17
-
-heapdict = = 1.0.0
+HeapDict = = 1.0.1
 
 html5lib = = 0.999
 
-ICU = = 54.1
-
-IDNA = = 2.5
-
 IDNA = = 2.8
+
+ImageIO = = 2.6.1
 
 ImageSize = = 0.7.1
 
 ımportlib-Metadata = = 0.23
 
+yorumlama-topluluk = = 0.10.2
+
+yorumlama-çekirdek = = 0.1.21
+
 ipykernel = = 4.6.1
 
-ipython_genutils = = 0.2.0
+IPython = = 7.8.0
 
-IPython = = 5.3.0
+IPython-genutils = = 0.2.0
 
 ipypencere öğeleri = = 6.0.0
 
@@ -807,8 +793,6 @@ iztarihi = = 0.6.0
 
 ısdangerou = = 0.24
 
-jbig = = 2.1
-
 jdcal = = 1.3
 
 JEDI = = 0.10.2
@@ -817,71 +801,43 @@ jeepney = = 0.4.1
 
 Jinja2 = = 2.10.3
 
-jinja2 = = 2.9.6
-
 jmespath = = 0.9.4
 
-JPEG = = 9B
+joblib = = 0.14.1
+
+JSON-Logging-Kopyala = = 0.2
 
 JsonForm = = 0.0.2
 
 jsonpickle = = 1.2
 
-jsonschema = = 2.6.0
-
-jsonschema = = 3.1.0
+jsonschema = = 3.1.1
 
 Jsonsır = = 0.0.2
 
-JS-Regex = = 1.0.0
-
-jupyter_client = = 5.0.1
-
-jupyter_console = = 5.1.0
-
-jupyter_core = = 4.3.0
-
 juprivter = = 1.0.0
 
-keras2onnx = = 1.5.2 planlama
+jupyıter-istemci = = 5.0.1
+
+jupyıter-konsol = = 5.1.0
+
+jupyıter-Core = = 4.3.0
 
 Keras-uygulamalar = = 1.0.8
 
 Keras-ön Işleme = = 1.1.0
 
+keras2onnx = = 1.5.2 planlama
+
 kiwıolver = = 1.1.0
 
 Lazy-Object-proxy = = 1.2.2
 
-libffi = = 3.2.1
-
-libgcc = = 4.8.5
-
-libgfortran = = 3.0.0
-
-libıg onv = = 1.14
-
-libpng = = 1.6.27
-
-libsodium = = 1.0.10
-
-Libtiff = = 4.0.6
-
-libtool = = 2.4.2 sections
-
-libxcb = = 1.12
-
-libxml2 = = 2.9.4
-
-libxslt = = 1.1.29
+Liac-arff = = 2.4.0
 
 lightgbm = = 2.2.3
 
 llvmlite = = 0.18.0
-
-llvmlite = = 0.29.0
-
-loctus= = 0.2.0
 
 loctus= = 0.2.0
 
@@ -889,25 +845,25 @@ LXML = = 3.7.3
 
 Markaşağı = = 3.1.1
 
-markupsafe = = 0.23
-
 MarkupSafe = = 1.1.1
 
-Matplotlib = = 2.0.2
-
 Matplotlib = = 3.1.1
+
+McCain = = 0.6.1
 
 missingno = = 0.4.2
 
 Hatalı ayarla = = 0.7.4
 
-MKL = = 2017.0.1
-
-MKL-Service = = 1.1.2
+mmlspark = = 1.0.0. dev1
 
 more-ıtertools = = 7.2.0
 
 mpmath = = 0.19
+
+msal = = 1.3.0
+
+msal-Extensions = = 0.1.3
 
 msgpack = = 0.6.2
 
@@ -916,6 +872,8 @@ msgpack-Python = = 0.4.8
 msrest = = 0.6.10
 
 msrestazure = = 0.6.2
+
+multimethods = = 1.0.0
 
 çoğuldispatch = = 0.4.9
 
@@ -927,7 +885,7 @@ nbformat = = 4.3.0
 
 NDG-httpsclient = = 0.5.1
 
-NetworkX = = 1.11
+NetworkX = = 2.3
 
 nimbusml = = 1.5.0
 
@@ -937,13 +895,11 @@ burun = = 1.3.7
 
 Not defteri = = 5.0.0
 
+notebookutils = = 20200602.4
+
 Numba = = 0.33.0
 
-Numba = = 0.45.1
-
 numexpr = = 2.6.2 Critical
-
-sayısal tuş takımı = = 1.12.1
 
 sayısal tuş takımı = = 1.16.2
 
@@ -965,35 +921,21 @@ onnxruntime = = 0.4.0
 
 openpyxl = = 2.4.7
 
-OpenSSL = = 1.0.2 l
-
-Paketleme = = 16.8
-
 Paketleme = = 19.2
-
-Pandas = = 0.20.1
 
 Pandas = = 0.23.4
 
 pandocfilters = = 1.4.1
 
-Pango = = 1.40.3
-
-partd = = 0.3.8
+param = = 1.9.2
 
 partd = = 1.0.0
-
-Path. Kopyala = = 10.3.1
 
 pathlib2 = = 2.2.1
 
 pathSpec = = 0.6.0
 
-Patsy = = 0.4.1
-
 Patsy = = 0.5.1
-
-PCRE = = 8.39
 
 pep8 = = 1.7.0
 
@@ -1001,15 +943,7 @@ pbeklediği = = 4.2.1
 
 picktashare = = 0.7.4
 
-Pillow = = 4.1.1
-
 Pillow = = 6.2.0
-
-PIP = = 9.0.1
-
-PIP = = 9.0.1
-
-pikselman = = 0.34.0
 
 plotly = = 4.1.1
 
@@ -1017,7 +951,9 @@ PLY = = 3.10
 
 pmdarıma = = 1.1.1
 
-prompt_toolkit = = 1.0.14
+portalocker = = 1.7.0
+
+istem-araç seti = = 2.0.10
 
 protoarabellek = = 3.10.0
 
@@ -1027,23 +963,31 @@ ptyprocess = = 0.5.1
 
 Kopyala = = 1.4.33
 
+Kopyala-cpuınfo = = 6.0.0
+
+py4j = = 0.10.7
+
+pyarrow = = 0.15.1
+
 pyasn1 = = 0.4.7
 
-pycosat = = 0.6.2
+pycodestyle = = 2.5.0
 
-pycparser = = 2.17
+pycosat = = 0.6.2
 
 pycparser = = 2.19
 
 pyşifre = = 2.6.1
 
+pyct = = 0.4.6
+
 pykıvrık = = 7.43.0
 
-pyflakes = = 1.5.0
+pyflakes = = 2.1.1
 
 pygal = = 2.4.0
 
-pygments = = 2.2.0
+Pygments = = 2.2.0
 
 PyJWT = = 1.7.1
 
@@ -1053,53 +997,33 @@ pymssql = = 2.1.4
 
 pyodbc = = 4.0.16
 
-pyopenssl = = 17.0.0
-
 pyOpenSSL = = 19.0.0
-
-pyparsing = = 2.1.4
 
 pyparsing = = 2.4.2 sections
 
-PyQt = = 5.6.0
-
 pyrsistent = = 0.15.4
 
-pytables = = 3.3.0
+pyspark = = 2.4.4
 
 pytest = = 3.0.7
-
-Python = = 3.6.1
-
-Python-dateutil = = 2.6.0
 
 Python-dateutil = = 2.8.0
 
 Python-EasyConfig = = 0.1.7
 
-pytz = = 2017.2
-
 pytz = = 2019.3
 
-pywaveizin = = 0.5.2
-
-pyyaml = = 3.12
+Pywaveizin = = 1.0.3
 
 PyYAML = = 5.1.2
 
 pyzmq = = 16.0.2
 
-QT = = 5.6.2
-
-qtawesome = = 0.4.4
+QtAwesome = = 0.4.4
 
 qtconsole = = 4.3.0
 
-qtpy = = 1.2.1
-
-ReadLine = = 6.2
-
-istekler = = 2.14.2
+QtPy = = 1.2.1
 
 istekler = = 2.22.0
 
@@ -1109,41 +1033,27 @@ Kaynak = = 0.2.1
 
 yeniden deneniyor = = 1.3.3
 
-Rope = = 0.9.4
+Rope-py3k = = 0.9.4. post1
 
 ruamel. YAML = = 0.15.89
 
-ruamel_yaml = = 0.11.14
-
 s3transfer = = 0.2.1
 
-scikit-Image = = 0.13.0
-
-scikit-öğren = = 0.18.1
+scikit-Image = = 0.15.0
 
 scikit-öğren = = 0.20.3
 
-SciPy = = 0.19.0
-
 SciPy = = 1.1.0
-
-Seaborn = = 0.7.1
 
 Seaborn = = 0.9.0
 
 SecretStorage = = 3.1.1
 
-setuptools = = 27.2.0
-
-setuptools = = 41.4.0
+Shap = = 0.34.0
 
 simplegeneric = = 0.8.1
 
 singledispatch = = 3.4.0.3
-
-SIP = = 4.18
-
-altı = = 1.10.0
 
 altı = = 1.12.0
 
@@ -1157,25 +1067,19 @@ snowballstemmer = = 1.2.1
 
 sortedcollections = = 0.5.3
 
-sortedcontainers = = 1.5.7
-
 sortedcontainers = = 2.1.0
 
 Sphinx = = 1.5.6
 
 Spyder = = 3.1.4
 
-sqlalchemy = = 1.1.9
-
-SQLite = = 3.13.0
+SQLAlchemy = = 1.1.9
 
 statsmodeller = = 0.10.1
 
-statsmodeller = = 0.8.0
-
 seny = = 1.0
 
-tblib = = 1.3.2
+tablolar = = 3.3.0
 
 tblib = = 1.4.0
 
@@ -1191,17 +1095,13 @@ sonlandırado = = 0,6
 
 TestPath = = 0,3
 
-TK = = 8.5.18
-
 Toolz = = 0.10.0
 
-Toolz = = 0.8.2
-
-Torch = = 1.2.0
-
-Tornado = = 4.5.1
+Torch = = 1.3.0
 
 Tornado = = 6.0.3
+
+tqdm = = 4.46.1
 
 traitizin = = 4.3.2
 
@@ -1209,45 +1109,29 @@ yazma-uzantıları = = 3.7.4
 
 unicodecsv = = 0.14.1
 
-unixODBC = = 2.3.4
-
 urllib3 = = 1.25.6
+
+Vega-veri kümeleri = = 0.7.0
 
 wcwidth = = 0.1.7
 
 WebSocket-istemci = = 0.56.0
 
-Werkzeug = = 0.12.2
-
 Werkzeug = = 0.16.0
 
-tekerlek = = 0.29.0
-
-tekerlek = = 0.30.0
-
 widgetsnbextension = = 2.0.0
-
-wrapt = = 1.10.10
 
 wrapt = = 1.11.2
 
 xlrd = = 1.0.0
 
-xlsxwriter = = 0.9.6
+XlsxWriter = = 0.9.6
 
 xlwt = = 1.2.0
 
-XZ = = 5.2.2
-
-YAML = = 0.1.6
-
-zeromq = = 4.1.5
-
-ZCT = = 0.1.2
+ZCT = = 1.0.0
 
 Zipp = = 0.6.0
-
-zlib = = 1.2.8
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
