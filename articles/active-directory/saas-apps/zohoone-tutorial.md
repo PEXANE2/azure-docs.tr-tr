@@ -2,25 +2,21 @@
 title: 'Öğretici: Zoho One ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Zoho One arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: baa33e79b3bba8eccb2d0fc03e110e1a3c4defde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Öğretici: Zoho One ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Zoho 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -110,7 +106,7 @@ Azure AD çoklu oturum açmayı, Zoho One ile birlikte yapılandırmak için aş
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
-    > Önceki **yanıt URL 'si** değeri gerçek değil. #Step4, daha sonra `<saml-identifier>` Öğreticinin ilerleyen kısımlarında açıklanan, **Zoho yapılandırma bir çoklu oturum açma** bölümünün değerden yararlanacaktır.
+    > Önceki **yanıt URL 'si** değeri gerçek değil. `<saml-identifier>`#Step4, daha sonra Öğreticinin ilerleyen kısımlarında açıklanan, **Zoho yapılandırma bir çoklu oturum açma** bölümünün değerden yararlanacaktır.
 
     c. **Ek URL 'Ler ayarla**' ya tıklayın.
 
@@ -160,7 +156,7 @@ Azure AD çoklu oturum açmayı, Zoho One ile birlikte yapılandırmak için aş
 
     d. **Kaydet**’e tıklayın.
 
-4. SAML kimlik doğrulaması kurulumunu kaydettikten sonra, **SAML tanımlayıcı** değerini kopyalayın ve ' `<saml-identifier>`nin yerine `https://accounts.zoho.com/samlresponse/one.zoho.com` **Yanıt** URL 'sini ekleyin ve oluşturulan değeri **temel SAML yapılandırması** bölümünün altındaki yanıt **URL 'si** metin kutusuna yapıştırın.
+4. SAML kimlik doğrulaması kurulumunu kaydettikten sonra, **SAML tanımlayıcı** değerini kopyalayın ve ' nin yerine **Yanıt** URL 'sini ekleyin `<saml-identifier>` `https://accounts.zoho.com/samlresponse/one.zoho.com` ve oluşturulan değeri **temel SAML yapılandırması** bölümünün altındaki yanıt **URL 'si** metin kutusuna yapıştırın.
 
     ![Zoho bir SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -197,11 +193,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -247,7 +243,7 @@ Azure AD kullanıcılarının, Zoho 'da oturum açmasını sağlamak için, bunl
     
     a. **Ad** metin kutusuna, **Britta Simon**gibi kullanıcının adını girin.
     
-    b. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com.
+    b. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com .
 
     >[!Note]
     >Etki alanı listesinden doğrulanmış etki alanınızı seçin.

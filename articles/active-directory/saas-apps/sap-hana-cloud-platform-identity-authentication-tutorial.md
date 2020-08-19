@@ -2,25 +2,21 @@
 title: 'Öğretici: SAP Cloud Platform Identity Authentication ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve SAP bulut platformu kimlik doğrulaması arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1c1320d1-7ba4-4b5f-926f-4996b44d9b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: db852254d7f6ec9c0cb76151fa23e58e2d97bd2c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2d0b53581bbc2211df156b90326fc73d0c2ae091
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981825"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Öğretici: SAP bulut platformu kimlik doğrulaması ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -126,7 +122,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SAP bulut platformu kimlik doğrulama uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
     | firstName | Kullanıcı. |
 
@@ -152,9 +148,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -176,7 +172,7 @@ Bu bölümde, SAP bulut platformu kimlik doğrulama kimlik doğrulamasına eriş
 
 ## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>SAP bulut platformu kimlik doğrulama SSO 'yu yapılandırma
 
-1. Uygulamanız için yapılandırılmış SSO 'yu almak için SAP Cloud Platform kimlik doğrulaması yönetim konsoluna gidin. URL aşağıdaki düzene sahiptir: `https://<tenant-id>.accounts.ondemand.com/admin`. Ardından [Microsoft Azure AD Ile tümleştirmede](https://developers.sap.com/tutorials/cp-ias-azure-ad.html)SAP Cloud Platform kimlik doğrulama hakkındaki belgeleri okuyun.
+1. Uygulamanız için yapılandırılmış SSO 'yu almak için SAP Cloud Platform kimlik doğrulaması yönetim konsoluna gidin. URL aşağıdaki düzene sahiptir: `https://<tenant-id>.accounts.ondemand.com/admin` . Ardından [Microsoft Azure AD Ile tümleştirmede](https://developers.sap.com/tutorials/cp-ias-azure-ad.html)SAP Cloud Platform kimlik doğrulama hakkındaki belgeleri okuyun.
 
 2. Azure portal **Kaydet** düğmesini seçin.
 
@@ -209,9 +205,9 @@ Erişim panelinde SAP Cloud Platform kimliği kimlik doğrulama kutucuğuna tık
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,17 +1,17 @@
 ---
 title: Yüksek kullanılabilirlik-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makale, PostgreSQL için Azure veritabanı-tek sunucu için yüksek kullanılabilirlik hakkında bilgi sağlar
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508473"
+ms.locfileid: "88547690"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik – tek sunucu
 PostgreSQL için Azure veritabanı – tek sunucu hizmeti, [% 99,99](https://azure.microsoft.com/support/legal/sla/postgresql) çalışma süresi için mali olarak desteklenen hizmet düzeyi SÖZLEŞMESI (SLA) ile garantili yüksek düzeyde kullanılabilirlik sağlar. PostgreSQL için Azure veritabanı, Kullanıcı tarafından sağlanan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım veya ağ başarısızlığı gibi planlanmamış olaylar gerçekleştiğinde yüksek kullanılabilirlik sağlar. PostgreSQL için Azure veritabanı en kritik durumlardan hızla kurturabilir ve bu hizmeti kullanırken neredeyse hiçbir uygulama süresi olmamasını sağlar.
@@ -61,7 +61,7 @@ Planlanmamış kapalı kalma süresi, temel alınan donanım hatası, ağ sorunl
 
 | **Senaryo** | **Otomatik kurtarma** |
 | ---------- | ---------- |
-| <B>Veritabanı sunucusu hatası | Temel alınan bazı donanım hatası nedeniyle veritabanı sunucusu kapalıysa, etkin bağlantılar bırakılır ve tüm esnek işlemler iptal edilir. Yeni bir veritabanı sunucusu otomatik olarak dağıtılır ve uzak veri depolama yeni veritabanı sunucusuna eklenir. Veritabanı kurtarma işlemi tamamlandıktan sonra istemcileri, ağ geçidi aracılığıyla yeni veritabanı sunucusuna bağlanabilir. <br /> <br /> Kurtarma süresi (RTO), büyük bir işlem ve veritabanı sunucusu başlatma işlemi sırasında gerçekleştirilecek kurtarma miktarı gibi hata sırasında etkinlik dahil çeşitli faktörlere bağımlıdır. <br /> <br /> PostgreSQL veritabanlarını kullanan uygulamaların, kesilen bağlantıları ve başarısız işlemleri algılayıp yeniden denedikleri bir şekilde oluşturulması gerekir.  Uygulama yeniden denenirse, ağ geçidi, bağlantıyı yeni oluşturulan veritabanı sunucusuna şeffaf olarak yeniden yönlendirir. |
+| <B>Veritabanı sunucusu hatası | Temel alınan bazı donanım hatası nedeniyle veritabanı sunucusu kapalıysa, etkin bağlantılar bırakılır ve tüm esnek işlemler iptal edilir. Yeni bir veritabanı sunucusu otomatik olarak dağıtılır ve uzak veri depolama yeni veritabanı sunucusuna eklenir. Veritabanı kurtarma işlemi tamamlandıktan sonra istemcileri, ağ geçidi aracılığıyla yeni veritabanı sunucusuna bağlanabilir. <br /> <br /> Kurtarma süresi (RTO), büyük işlem ve veritabanı sunucusu başlatma işlemi sırasında gerçekleştirilecek kurtarma miktarı gibi hata sırasında etkinlik dahil çeşitli faktörlere bağımlıdır. <br /> <br /> PostgreSQL veritabanlarını kullanan uygulamaların, kesilen bağlantıları ve başarısız işlemleri algılayıp yeniden denedikleri bir şekilde oluşturulması gerekir.  Uygulama yeniden denenirse, ağ geçidi, bağlantıyı yeni oluşturulan veritabanı sunucusuna şeffaf olarak yeniden yönlendirir. |
 | <B>Depolama hatası | Uygulamalar, disk arızası veya fiziksel blok bozulması gibi depolama ile ilgili herhangi bir sorun için herhangi bir etkisi görmez. Veriler 3 kopyada depolandığından, verilerin kopyası, çalışan depolama alanı tarafından sunulur. Blok bozulmaları otomatik olarak düzeltilir. Verilerin bir kopyası kaybolursa, verilerin yeni bir kopyası otomatik olarak oluşturulur. |
 
 Kurtarmak için Kullanıcı eylemi gerektiren bazı hata senaryoları şunlardır:

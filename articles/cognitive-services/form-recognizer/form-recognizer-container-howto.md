@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538029"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547367"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Form tanıyıcı kapsayıcıları (Önizleme) yükleyip çalıştırın
 
@@ -28,9 +28,9 @@ Karmaşıklığı azaltmak ve özel bir form tanıyıcı modelini iş akışı O
 |----------|----------|
 | Form Tanıma | <li>PDF, PNG ve JPG dosyalarını işler<li>Aynı düzene sahip en az beş form ile özel modeller traıns <li>Anahtar-değer çiftlerini ve tablo bilgilerini ayıklar <li>Form içindeki görüntülerden yazdırılmış metni algılamak ve ayıklamak için Azure bilişsel hizmetler Görüntü İşleme API'si Metin Tanıma özelliğini kullanır<li>Ek açıklama veya etiketleme gerektirmez |
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Form tanıyıcı kapsayıcılarını kullanmadan önce, aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -49,13 +49,13 @@ Form tanıyıcı kapsayıcılarını kullanmadan önce, aşağıdaki önkoşulla
 
 Gerekli olan tüm bilişsel hizmetler için üç birincil parametre vardır. Son Kullanıcı Lisans Sözleşmesi 'nin (EULA) değeri ile mevcut olması gerekir `accept` . Ayrıca, hem bir uç nokta URL 'SI hem de API anahtarı gereklidir.
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Uç nokta URI 'SI `{COMPUTER_VISION_ENDPOINT_URI}` ve`{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Uç nokta URI 'SI `{COMPUTER_VISION_ENDPOINT_URI}` ve `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
 **Uç nokta** URI değeri, karşılık gelen bilişsel hizmet kaynağının Azure Portal *genel bakış* sayfasında bulunur. *Genel bakış* sayfasına gidin, uç noktanın üzerine gelin ve bir `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simge görüntülenir. Gerektiğinde kopyalayın ve kullanın.
 
 ![Uç nokta URI 'sini daha sonra kullanılmak üzere toplayın](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Anahtarlar `{COMPUTER_VISION_API_KEY}` ve`{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Anahtarlar `{COMPUTER_VISION_API_KEY}` ve `{FORM_RECOGNIZER_API_KEY}`
 
 Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve ilgili bilişsel hizmet kaynağının Azure portal tuşları sayfasında kullanılabilir. *Anahtarlar* sayfasına gidin ve `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> simgesine tıklayın.
 

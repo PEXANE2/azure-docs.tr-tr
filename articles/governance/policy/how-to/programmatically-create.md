@@ -1,14 +1,14 @@
 ---
 title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969898"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548320"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -88,12 +88,12 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
    _ContosoRG_ değerini amaçlanan kaynak grubunuzun adıyla değiştirin.
 
    ' Deki **kapsam** parametresi, `New-AzPolicyAssignment` Yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi **RESOURCEID** özelliğinin döndürdüğü tam kaynak yolunu kullanır `Get-AzResourceGroup` . Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve ' ı `{rName}` `{rgName}` `{subId}` `{mgName}` kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin.
-   `{rType}`kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
+   `{rType}` kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
 
-   - Kaynak`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Kaynak grubu-`/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Aboneliğiniz`/subscriptions/{subId}/`
-   - Yönetim grubu-`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Kaynak `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Kaynak grubu- `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Aboneliğiniz `/subscriptions/{subId}/`
+   - Yönetim grubu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Kaynak Yöneticisi PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
 
@@ -216,12 +216,12 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   ' Deki **kapsam** parametresi, `az policy assignment create` Yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve ' ı `{rName}` `{rgName}` `{subId}` `{mgName}` kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin. `{rType}`kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
+   ' Deki **kapsam** parametresi, `az policy assignment create` Yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve ' ı `{rName}` `{rgName}` `{subId}` `{mgName}` kaynak adı, kaynak grubu adı, abonelik kimliği ve yönetim grubu adıyla değiştirin. `{rType}` kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
 
-   - Kaynak`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Kaynak grubu-`/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Aboneliğiniz`/subscriptions/{subID}`
-   - Yönetim grubu-`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Kaynak `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Kaynak grubu- `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Aboneliğiniz `/subscriptions/{subID}`
+   - Yönetim grubu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Aşağıdaki komutla PowerShell kullanarak Azure Ilke tanımı KIMLIĞI ' ni edinebilirsiniz:
 

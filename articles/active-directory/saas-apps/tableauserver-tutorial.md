@@ -2,25 +2,21 @@
 title: 'Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Tableau Server arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648463"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546603"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -109,7 +105,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -153,9 +149,9 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
     f. Azure portal 'ten indirilen Federasyon meta veri dosyanızı bulun ve **SAML IDP meta veri dosyasına**yükleyin.
 
-    g. IDP 'nin Kullanıcı adlarını, görünen adları ve e-posta adreslerini tutmak için kullandığı özniteliklerin adlarını girin.
+    örneğin: IDP 'nin Kullanıcı adlarını, görünen adları ve e-posta adreslerini tutmak için kullandığı özniteliklerin adlarını girin.
 
-    h. **Kaydet** 'e tıklayın
+    h. **Kaydet**’e tıklayın
 
     > [!NOTE]
     > Müşterinin bir. CRT uzantılı bir pek kodlu x509 sertifika dosyasını ve. Key uzantısına sahip bir RSA veya DSA özel anahtar dosyasını sertifika anahtarı dosyası olarak yüklemesi gerekir. Sertifika dosyası ve sertifika anahtar dosyası hakkında daha fazla bilgi için lütfen [Bu](https://help.tableau.com/current/server/en-us/saml_requ.htm) belgeye başvurun. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [sunucu GENELINDEKI SAML 'Yi yapılandırma](https://help.tableau.com/current/server/en-us/config_saml.htm)makalesine başvurun.
@@ -177,9 +173,9 @@ Erişim panelinde Tableau sunucu kutucuğuna tıkladığınızda, SSO 'yu ayarla
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

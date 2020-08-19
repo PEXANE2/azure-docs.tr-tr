@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Wrike yapılandırma | Microsoft Docs'
 description: "' Nin, yazma için Kullanıcı hesaplarını otomatik olarak sağlaması ve sağlaması için Azure Active Directory nasıl yapılandırılacağını öğrenin."
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3ec25504decca0747c8a853bb88ab3e7a10966a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064207"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546330"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Wrike yapılandırma
 
@@ -113,7 +109,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Azure AD 'de Wrike için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
@@ -137,7 +133,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 
 9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Wrike olarak eşitler**' ı seçin.
 

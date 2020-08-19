@@ -2,25 +2,21 @@
 title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Zscaler 'yi yapılandırma | Microsoft Docs"
 description: Bu öğreticide, Kullanıcı hesaplarını Zscaler 'ya otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğreneceksiniz.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 364b106e7c1f01269ac02b0c2851f8824ea0f58c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062704"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545749"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
@@ -79,7 +75,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 > [!TIP]
 > Ayrıca, Zscaler için SAML tabanlı çoklu oturum açmayı etkinleştirmek isteyebilirsiniz. Bunu yaparsanız, [Zscaler iki çoklu oturum açma öğreticisindeki](zscaler-two-tutorial.md)yönergeleri izleyin. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak iki özellik birbirini tamamlayabilirler.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** > **tüm uygulamalar** > **Zscaler**' ı seçin:
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Zscaler**' ı seçin:
 
     ![Kurumsal uygulamalar](common/enterprise-applications.png)
 
@@ -97,7 +93,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 5. **Yönetici kimlik bilgileri** bölümünde, bir sonraki adımda açıklandığı gibi Zscaler hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin.
 
-6. **Kiracı URL 'sini** ve **gizli anahtarı**almak için, Zscaler portalında **Yönetim** > **kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
+6. **Kiracı URL 'sini** ve **gizli anahtarı**almak için, **Administration**  >  Zscaler portalında Yönetim**kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
 
     ![Zscaler Iki kimlik doğrulama ayarı](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
 
@@ -109,7 +105,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 7. **Kiracı URL 'si** ve **gizli belirteç** kutularına değerleri GIRDIKTEN sonra, Azure AD 'Nin Zscaler 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Zscaler hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Bağlantıyı sınama](./media/zscaler-two-provisioning-tutorial/test-connection.png)
+    ![Bağlantıyı test etme](./media/zscaler-two-provisioning-tutorial/test-connection.png)
 
 8. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin. **Bir hata oluştuğunda e-posta bildirimi gönder**' i seçin:
 

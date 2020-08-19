@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Juno yolculuğu yapılandırma | Microsoft Docs'
 description: Azure AD 'den Juno yolculuğa yönelik kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0538902897d088c8ce271487b3f30698af0bb1eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926561"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546896"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Juno yolculuğu yapılandırma
 
@@ -34,7 +30,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Juno y
 > * Kullanıcı özniteliklerinin Azure AD ile Juno yolculuğu arasında eşitlenmiş olmasını sağlama
 > * Juno yolculukta [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/juno-journey-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,7 +46,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Juno yolculuğu yapılandırma
 
-1. **Gizli belirteç** ve **kiracı URL 'si** Için, adresindeki Juno yolculuğu destek ekibine başvurun support@the-juno.com . Bu değer, Azure portal Juno yolculuğu uygulamanızın sağlama sekmesinde sırasıyla **gizli belirteç** ve **kiracı URL 'si** alanlarına girilir. 
+1. **Gizli belirteç** ve **kiracı URL 'si** Için, adresindeki Juno yolculuğu destek ekibine başvurun support@the-juno.com . Bu değer, Azure portal Juno yolculuğu uygulamanızın sağlama sekmesinde sırasıyla **gizli belirteç**  ve **kiracı URL 'si** alanlarına girilir. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Juno yolculuğu ekleme
 
@@ -71,7 +67,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Azure AD 'de Juno yolculuğu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

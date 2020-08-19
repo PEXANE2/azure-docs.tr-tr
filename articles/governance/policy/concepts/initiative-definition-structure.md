@@ -1,14 +1,14 @@
 ---
 title: Girişim tanımı yapısının ayrıntıları
 description: Kuruluşunuzdaki Azure kaynaklarına dağıtım için ilke tanımlarını gruplamak üzere ilke girişim tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205963"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544647"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Ilke girişimi tanım yapısı
 
@@ -19,7 +19,7 @@ Bir ilke girişim tanımı oluşturmak için JSON kullanırsınız. İlke giriş
 - görünen ad
 - açıklama
 - meta veriler
-- parametreler
+- parameters
 - ilke tanımları
 - ilke grupları (Bu özellik, [mevzuat uyumluluk (Önizleme) özelliğinin](./regulatory-compliance.md)bir parçasıdır)
 
@@ -109,14 +109,14 @@ Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri 
 
 ### <a name="common-metadata-properties"></a>Ortak meta veri özellikleri
 
-- `version`(dize): bir ilke girişim tanımının içerik sürümü hakkındaki ayrıntıları Izler.
-- `category`(dize): ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
+- `version` (dize): bir ilke girişim tanımının içerik sürümü hakkındaki ayrıntıları Izler.
+- `category` (dize): ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
 
   > [!NOTE]
   > [Mevzuat uyumluluk](./regulatory-compliance.md) girişimi Için, `category` **mevzuat uyumluluğu**olmalıdır.
 
-- `preview`(Boolean): ilke girişim tanımı _Önizleme_Ise, true veya false bayrağı.
-- `deprecated`(Boolean): ilke girişim tanımı _kullanım dışı_olarak işaretlenmişse true veya false bayrağı.
+- `preview` (Boolean): ilke girişim tanımı _Önizleme_Ise, true veya false bayrağı.
+- `deprecated` (Boolean): ilke girişim tanımı _kullanım dışı_olarak işaretlenmişse true veya false bayrağı.
 
 > [!NOTE]
 > Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir. Azure Ilke sürümlerinin yerleşik yolu hakkında daha fazla bilgi için bkz. [yerleşik sürüm oluşturma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -218,10 +218,10 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **init_
 
 Bir ilke tanımını temsil eden her _dizi_ öğesi aşağıdaki özelliklere sahiptir:
 
-- `policyDefinitionId`(dize): dahil edilecek özel veya yerleşik ilke tanımının KIMLIĞI.
-- `policyDefinitionReferenceId`(dize): dahil edilen ilke tanımı için kısa bir ad.
+- `policyDefinitionId` (dize): dahil edilecek özel veya yerleşik ilke tanımının KIMLIĞI.
+- `policyDefinitionReferenceId` (dize): dahil edilen ilke tanımı için kısa bir ad.
 - `parameters`: (İsteğe bağlı) Bu ilke tanımındaki bir özellik olarak, dahil edilen ilke tanımına bir girişim parametresi geçirmek için ad/değer çiftleri. Daha fazla bilgi için bkz. [Parametreler](#parameters).
-- `groupNames`(dizeler dizisi): (Isteğe bağlı) ilke tanımının üyesi olduğu grup. Daha fazla bilgi için bkz. [ilke grupları](#policy-definition-groups).
+- `groupNames` (dizeler dizisi): (Isteğe bağlı) ilke tanımının üyesi olduğu grup. Daha fazla bilgi için bkz. [ilke grupları](#policy-definition-groups).
 
 `policyDefinitions`Her biri aynı girişim parametresini geçen iki adet dahil ilke tanımına sahip olan bir örneği aşağıda verilmiştir:
 
@@ -257,10 +257,10 @@ Ek gruplandırma ayrıntıları, Microsoft tarafından oluşturulan **Policymeta
 
 İçindeki her _dizi_ öğesi `policyDefinitionGroups` aşağıdaki özelliklerden her ikisine de sahip olmalıdır:
 
-- `name`(dize) \[ gerekli \] : **denetimin**kısa adı. Bu özelliğin değeri içinde tarafından kullanılır `groupNames` `policyDefinitions` .
-- `category`(dize): denetimin **Uyumluluk etki alanı** .
-- `displayName`(dize): **denetimin**kolay adı. Portal tarafından kullanılır.
-- `description`(dize): **denetimin** ne yaptığını açıklama.
+- `name` (dize) \[ gerekli \] : **denetimin**kısa adı. Bu özelliğin değeri içinde tarafından kullanılır `groupNames` `policyDefinitions` .
+- `category` (dize): denetimin **Uyumluluk etki alanı** .
+- `displayName` (dize): **denetimin**kolay adı. Portal tarafından kullanılır.
+- `description` (dize): **denetimin** ne yaptığını açıklama.
 - `additionalMetadataId`(dize): **Denetim** ve **Uyumluluk etki alanı**hakkında ek ayrıntılara sahip [policymetadata](#metadata-objects) nesnesinin konumu.
 
   > [!NOTE]
@@ -293,8 +293,8 @@ Bir ilke gruplandırması için meta veriler, düğümde aşağıdaki bilgilere 
 
 - `metadataId`: Gruplandırmanın ilişkili olduğu **DENETIM kimliği** .
 - `category`(gerekli): **denetimin** ait olduğu **Uyumluluk etki alanı** .
-- `title`(gerekli): **DENETIM kimliğinin**kolay adı.
-- `owner`(gerekli): Azure 'da denetim sorumluluğunu kim olduğunu tanımlar: _Müşteri_, _Microsoft_, _paylaşılan_.
+- `title` (gerekli): **DENETIM kimliğinin**kolay adı.
+- `owner` (gerekli): Azure 'da denetim sorumluluğunu kim olduğunu tanımlar: _Müşteri_, _Microsoft_, _paylaşılan_.
 - `description`: Denetimle ilgili ek bilgiler.
 - `requirements`: Denetim uygulamasının sorumluluğuyla ilgili ayrıntılar.
 - `additionalContentUrl`: Denetim hakkında daha fazla bilgi için bir bağlantı. Bu özellik genellikle uyumluluk standardında bu denetimi içeren belge bölümünün bir bağlantıdır.

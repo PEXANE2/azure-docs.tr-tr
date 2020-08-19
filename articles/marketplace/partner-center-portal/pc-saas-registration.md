@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304182"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548344"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 
@@ -26,7 +26,7 @@ Azure AD (Active Directory) hakkında daha fazla bilgi için bkz. [kimlik doğru
 
 Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD kiracısı olarak kaydedilmelidir. Bu kayıt işlemi, uygulamanız hakkında Azure AD bazı ayrıntıları vermeyi içerir. Azure portal kullanarak yeni bir uygulama kaydetmek için aşağıdaki adımları uygulayın:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Hesabınız birden fazla erişim veriyorsa, sağ üst köşedeki hesabınıza tıklayın ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları**' a tıklayın ve **Yeni uygulama kaydı**' na tıklayın.
 
@@ -82,14 +82,14 @@ Gönderi<br>
 
 |  Özellik adı     |  Gerekli         |  Açıklama |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  Doğru      |  Verme türü. `"client_credentials"` adresini kullanın. |
+|  `grant_type`      |  Doğru      |  Verme türü. `"client_credentials"` komutunu kullanın. |
 |  `client_id`       |  Doğru      |  Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı. |
 |  `client_secret`   |  Doğru      |  Azure AD uygulamasıyla ilişkili gizli dizi. |
 |  `resource`        |  Doğru      |  Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`Bu durumda Market SaaS API 'si her zaman hedef kaynak olduğundan kullanın. |
 
 ##### <a name="response"></a>*Response*
 
-|  Ad     |  Tür         |  Description |
+|  Ad     |  Tür         |  Açıklama |
 |  ------   |  ---------------  | ------------ |
 |  200 TAMAM   |  TokenResponse    |  İstek başarılı oldu. |
 

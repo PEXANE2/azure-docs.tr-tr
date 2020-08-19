@@ -2,25 +2,21 @@
 title: 'Öğretici: ZIVVER ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve ZIVVER arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 64cb7ea0-df6c-4963-84d8-6f435980e2de
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f55fed72d61597f61cb246c6c74d525b51702e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233252"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Öğretici: ZIVVER ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ ZIVVER 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -113,12 +109,12 @@ Azure AD çoklu oturum açma 'yı ZIVVER ile yapılandırmak için aşağıdaki 
 
 6. Yukarıdaki ZIVVER uygulaması, daha fazla özniteliğin SAML yanıtına geri geçirilmesini bekliyor. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Ad Alanı | Kaynak özniteliği|
+    | Name | Ad Alanı | Kaynak özniteliği|
     | ---------------| --------------- |
-    | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | User. ObjectID |
+    | ZivverAccountKey | https: \/ /zivver.com/SAML/Attributes | User. ObjectID |
 
     >[!NOTE]
-    >Şirket içi Active Directory ve Azure AD Connect aracı ile karma bir kurulum kullanıyorsanız, değer şu şekilde ayarlanmalıdır`user.objectGUID`
+    >Şirket içi Active Directory ve Azure AD Connect aracı ile karma bir kurulum kullanıyorsanız, değer şu şekilde ayarlanmalıdır `user.objectGUID`
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -184,11 +180,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

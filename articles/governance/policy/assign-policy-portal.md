@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Portal ile yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure portal kullanırsınız.
-ms.date: 03/24/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240002"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548388"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Hızlı başlangıç: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup yönetilen diskler ilke 
 
    :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Atamalar sayfasından bir ilke tanımı atama" border="false":::
 
-1. **İlke Ata** sayfasında üç noktaya tıklayıp bir yönetim grubu veya abonelik belirleyerek **Kapsam**’ı seçin. İsterseniz bir kaynak grubu seçin. Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Ardından **Kapsam** sayfasının alt kısmından **Seç**’e tıklayın.
+1. **Ilke ata** sayfasında, üç noktayı seçip bir yönetim grubu veya abonelik seçerek **kapsamı** ayarlayın. İsterseniz bir kaynak grubu seçin. Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Ardından **kapsam** sayfasının alt kısmındaki **Seç** düğmesini kullanın.
 
    Bu örnekte **Contoso** aboneliği kullanılır. Sizin aboneliğiniz farklı olacaktır.
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup yönetilen diskler ilke 
 
    Kullanılabilir yerleşik ilkelerin kısmi listesi için bkz. [Azure ilke örnekleri](./samples/index.md).
 
-1. İlke tanımları listenizde _Yönetilen disk kullanmayan VM'leri denetle_ tanımını arayın. Bu ilkeye tıklayın ve **Seç**'e tıklayın.
+1. İlke tanımları listenizde _Yönetilen disk kullanmayan VM'leri denetle_ tanımını arayın. Bu ilkeyi seçin ve ardından **Seç** düğmesini kullanın.
 
    :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="Doğru ilke tanımını bulma" border="false":::
 
@@ -60,13 +60,13 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup yönetilen diskler ilke 
 
 1. **Yönetilen Kimlik Oluşturun** seçeneğini işaretsiz bırakın. İlke veya girişim, [Deployifnotexists](./concepts/effects.md#deployifnotexists) efektli bir ilke içerdiğinde bu kutu _denetlenmelidir_ . Bu hızlı başlangıç için kullanılan ilke olmadığından boş bırakın. Daha fazla bilgi için [yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) ve [düzeltme güvenliğinin işleyişi](./how-to/remediate-resources.md#how-remediation-security-works) bölümlerine bakın.
 
-1. **Ata**'ya tıklayın.
+1. **Ata**’yı seçin.
 
 Artık ortamınızın uyumluluk durumunu anlamak için uyumlu olmayan kaynakları belirlemek için hazırsınız demektir.
 
 ## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
 
-Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Ardından, oluşturduğunuz **yönetilen diskler ilke atamasını kullanmayan VM 'Leri denetle** seçeneğini bulun.
+Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Ardından, oluşturduğunuz _yönetilen diskler ilke atamasını kullanmayan VM 'Leri denetle_ seçeneğini bulun.
 
 :::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Ilke uyumluluk sayfasındaki uyumluluk ayrıntıları" border="false":::
 
@@ -74,12 +74,12 @@ Bu yeni atamayla uyumlu olmayan mevcut kaynaklar varsa **uyumlu olmayan kaynakla
 
 Bir koşul mevcut kaynaklarınıza göre değerlendirilip true sonucunu verdiğinde, bu kaynaklar ilkeyle uyumlu değil olarak işaretlenir. Aşağıdaki tabloda, elde edilen uyumluluk durumu için farklı ilke etkilerinin koşul değerlendirmesi ile nasıl çalıştığı gösterilmektedir. Azure portal değerlendirme mantığını görmeseniz de, uyumluluk durumu sonuçları gösterilir. Uyumluluk durumu sonucu uyumlu veya uyumsuz şeklindedir.
 
-| **Kaynak Durumu** | **Etki** | **İlke Değerlendirmesi** | **Uyumluluk Durumu** |
+| **Kaynak Durumu** | **Etki** | **İlke Değerlendirmesi** | **Uyumluluk durumu** |
 | --- | --- | --- | --- |
-| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Uyumlu Değil |
-| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Uyumlu |
-| Yeni | Audit, AuditIfNotExist\* | True | Uyumlu Değil |
-| Yeni | Audit, AuditIfNotExist\* | False | Uyumlu |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Doğru | Uyumlu Değil |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Yanlış | Uyumlu |
+| Yeni | Audit, AuditIfNotExist\* | Doğru | Uyumlu Değil |
+| Yeni | Audit, AuditIfNotExist\* | Yanlış | Uyumlu |
 
 \* Append, DeployIfNotExist ve AuditIfNotExist etkileri IF deyiminin TRUE olmasını gerektirir.
 Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
@@ -88,9 +88,9 @@ Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerek
 
 Oluşturulan atamayı kaldırmak için şu adımları izleyin:
 
-1. Azure İlkesi sayfasının sol tarafından **Uyumluluk**’u (veya **Atamalar**’ı) seçin ve oluşturduğunuz **Yönetilen disk kullanmayan VM'leri denetle** ilke atamasını bulun.
+1. Azure İlkesi sayfasının sol tarafından **Uyumluluk**’u (veya **Atamalar**’ı) seçin ve oluşturduğunuz _Yönetilen disk kullanmayan VM'leri denetle_ ilke atamasını bulun.
 
-1. Yönetilen diskler ilkesi atamasını **kullanmayan VM 'Leri denetle** ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
+1. Yönetilen diskler ilkesi atamasını _kullanmayan VM 'Leri denetle_ ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
 
    :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Uyumluluk sayfasından bir atamayı silme" border="false":::
 

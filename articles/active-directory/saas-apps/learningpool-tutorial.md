@@ -2,26 +2,21 @@
 title: 'Öğretici: Learningpool Yasası ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve Öğrenningpool yasası arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 51e8695f-31e1-4d09-8eb3-13241999d99f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 173fab91681943576f9a4afeba8d38a99e22996f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ed4039528e60f318dcad7af864c8dcb3483e7365
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799777"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Öğretici: Learningpool Yasası ile tümleştirme Azure Active Directory
 
@@ -33,9 +28,9 @@ Learningpool Yasası Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Öğrenningpool Yasası ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -124,7 +119,7 @@ Azure AD çoklu oturum açmayı Öğrenningpool Yasası ile yapılandırmak içi
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin: 
 
-    | Name | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | ------------------- | -------------------- |
     | urn: OID: 1.2.840.113556.1.4.221 | User. UserPrincipalName |
     | urn: OID: 2.5.4.42 | Kullanıcı. |
@@ -191,7 +186,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

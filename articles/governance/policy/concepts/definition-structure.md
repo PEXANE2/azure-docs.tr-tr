@@ -1,14 +1,14 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 06/12/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116990"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547809"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -17,7 +17,7 @@ Azure Ilkesi, kaynaklar için kurallar oluşturur. İlke tanımları, kaynak uyu
 
 Kuralları tanımlayarak, maliyetlerinizi denetleyebilir ve kaynaklarınızı daha kolay yönetebilirsiniz. Örneğin, yalnızca belirli türlerdeki sanal makinelere izin verileceğini belirtebilirsiniz. Ya da kaynakların belirli bir etiketi olmasını isteyebilirsiniz. İlke atamaları alt kaynaklar tarafından devralınır. Bir kaynak grubuna bir ilke ataması uygulanmışsa, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
 
-İlke tanımı şeması şurada bulunur:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+İlke tanımı şeması şurada bulunur: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğeleri içerir:
 
@@ -100,29 +100,29 @@ Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samp
 
 **Modu** `all` çoğu durumda ayarlamanız önerilir. Portal üzerinden oluşturulan tüm ilke tanımları `all` modunu kullanır. PowerShell veya Azure CLı kullanıyorsanız, **mod** parametresini el ile belirtebilirsiniz. İlke tanımı bir **mod** değeri içermiyorsa, varsayılan olarak `all` Azure PowerShell ve ' de Azure CLI ' de olur `null` . `null`Mod, `indexed` geriye dönük uyumluluğu desteklemek için kullanmayla aynıdır.
 
-`indexed`Etiketler veya konumlar uygulayan ilkeler oluşturulurken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları** ve **aboneliklerdir**. Bir kaynak grubunda veya abonelikte konum veya etiket uygulayan ilke tanımlarının **modu** olarak ayarlanması `all` ve ya da türünü hedeflemesi gerekir `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` . Bir örnek için bkz. [model: Etiketler-örnek #1](../samples/pattern-tags.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/management/tag-support.md).
+`indexed` Etiketler veya konumlar uygulayan ilkeler oluşturulurken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları** ve **aboneliklerdir**. Bir kaynak grubunda veya abonelikte konum veya etiket uygulayan ilke tanımlarının **modu** olarak ayarlanması `all` ve ya da türünü hedeflemesi gerekir `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` . Bir örnek için bkz. [model: Etiketler-örnek #1](../samples/pattern-tags.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Kaynak sağlayıcısı modları (Önizleme)
 
 Şu anda önizleme sırasında şu kaynak sağlayıcısı modları destekleniyor:
 
 - `Microsoft.ContainerService.Data`[Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarını yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımların, [Enforceregopolicy](./effects.md#enforceregopolicy) efektini kullanması **gerekir** . Bu mod _kullanım dışı_bırakılıyor.
-- `Microsoft.Kubernetes.Data`Kubernetes kümelerinizi Azure üzerinde veya kapalı olarak yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımlar, etkileri _Denetim_, _reddetme_ve _devre dışı_bırakma kullanır. [Enforceopaconstraint](./effects.md#enforceopaconstraint) efektinin kullanılması _kullanım dışı_bırakılıyor.
+- `Microsoft.Kubernetes.Data` Kubernetes kümelerinizi Azure üzerinde veya kapalı olarak yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımlar, etkileri _Denetim_, _reddetme_ve _devre dışı_bırakma kullanır. [Enforceopaconstraint](./effects.md#enforceopaconstraint) efektinin kullanılması _kullanım dışı_bırakılıyor.
 - `Microsoft.KeyVault.Data`[Azure Key Vault](../../../key-vault/general/overview.md)' deki kasaların ve sertifikaların yönetilmesi için.
 
 > [!NOTE]
 > Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve önizleme aşamasında girişimleri desteklemez.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
 
 ### <a name="common-metadata-properties"></a>Ortak meta veri özellikleri
 
-- `version`(dize): bir ilke tanımının içeriğinin sürümü hakkındaki ayrıntıları Izler.
-- `category`(dize): ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
-- `preview`(Boolean): ilke tanımı _Önizleme_Ise, true veya false bayrağı.
-- `deprecated`(Boolean): ilke tanımı _kullanım dışı_olarak işaretlenmişse true veya false bayrağı.
+- `version` (dize): bir ilke tanımının içeriğinin sürümü hakkındaki ayrıntıları Izler.
+- `category` (dize): ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
+- `preview` (Boolean): ilke tanımı _Önizleme_Ise, true veya false bayrağı.
+- `deprecated` (Boolean): ilke tanımı _kullanım dışı_olarak işaretlenmişse true veya false bayrağı.
 
 > [!NOTE]
 > Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir. Azure Ilke sürümlerinin yerleşik yolu hakkında daha fazla bilgi için bkz. [yerleşik sürüm oluşturma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -188,7 +188,7 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **allow
 
 Özelliği içinde `metadata` , Azure Portal içinde çoklu seçim listesi sağlamak Için **strongtype** kullanabilirsiniz. **strongtype** desteklenen bir _kaynak türü_ veya izin verilen bir değer olabilir. Bir _kaynak türünün_ **strongtype**için geçerli olup olmadığını anlamak Için [Get-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)' ı kullanın. **Strongtype** _kaynak türü_ için biçim `<Resource Provider>/<Resource Type>` . Örneğin, `Microsoft.Network/virtualNetworks/subnets`.
 
-**Get-AzResourceProvider** tarafından döndürülen bazı _kaynak türleri_ desteklenir. Bunlar:
+**Get-AzResourceProvider** tarafından döndürülen bazı _kaynak türleri_ desteklenir. Bu türler şunlardır:
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -275,7 +275,8 @@ Bir koşul, bir **alanın** veya **değer** erişimcisinin belirli ölçütlere 
 - `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
 - `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
 - `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
-- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
 **Daha az**, **lessotalals**, **büyüktür**ve **greaterOrEquals**için, özellik türü koşul türüyle eşleşmiyorsa bir hata oluşur. Dize karşılaştırmaları kullanılarak yapılır `InvariantCultureIgnoreCase` .
@@ -346,8 +347,7 @@ Aşağıdaki örnekte, `concat` **TagName** parametresinin değeri adlı etiket 
 
 ### <a name="value"></a>Değer
 
-Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametrelere](#parameters), [desteklenen şablon işlevlerine](#policy-functions)veya değişmez değerlere karşı koşulları denetler.
-**değer** , desteklenen herhangi bir [koşulla](#conditions)eşleştirildi.
+Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametrelere](#parameters), [desteklenen şablon işlevlerine](#policy-functions)veya değişmez değerlere karşı koşulları denetler. **değer** , desteklenen herhangi bir [koşulla](#conditions)eşleştirildi.
 
 > [!WARNING]
 > Bir _şablon işlevinin_ sonucu bir hata ise, ilke değerlendirmesi başarısız olur. Başarısız bir değerlendirme örtük bir **reddetme**. Daha fazla bilgi için bkz. [şablon arızalarını önleme](#avoiding-template-failures). Yeni veya güncelleştirilmiş kaynaklarda, yeni bir ilke tanımını test etme ve doğrulama sırasında başarısız bir değerlendirmesinin etkisini engellemek için **Donotenzorlamalı** 'ın [Enforcementmode](./assignment-structure.md#enforcement-mode) kullanın.
@@ -453,7 +453,7 @@ Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp k
 - **Count. Field** (zorunlu): dizinin yolunu içerir ve bir dizi diğer adı olmalıdır. Dizi eksikse, ifade koşul ifadesi düşünülmeden _false_ olarak değerlendirilir.
 - **Count. where** (isteğe bağlı): **Count. Field**öğesinin her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini ayrı ayrı değerlendirmek için koşul ifadesi. Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
   [Mantıksal işleçler](#logical-operators) , bu özelliğin içinde karmaşık değerlendirme gereksinimleri oluşturmak için kullanılabilir.
-- **\<condition\>**(gerekli): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
+- **\<condition\>** (gerekli): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
 
 #### <a name="count-examples"></a>Sayı örnekleri
 
@@ -575,7 +575,7 @@ Tüm [Kaynak Yöneticisi şablonu işlevleri](../../../azure-resource-manager/te
 
 Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resource Manager şablonunda (ARM şablonu) kullanımı farklıdır:
 
-- `utcNow()`-ARM şablonundan farklı olarak, bu özellik _DefaultValue_dışında kullanılabilir.
+- `utcNow()` -ARM şablonundan farklı olarak, bu özellik _DefaultValue_dışında kullanılabilir.
   - Universal ISO 8601 DateTime biçimindeki ' yyyy-aa-ddTHH: mm: ss. fffffffZ ' içinde geçerli tarih ve saate ayarlanmış bir dize döndürür
 
 Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
@@ -586,7 +586,7 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 - `field(fieldName)`
   - **Alanadı**: [gerekli] dize-alınacak [alanın](#fields) adı
   - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür
-  - `field`Öncelikle, değerlendirilen kaynaktaki alanlara başvurmak için **Auditınotexists** ve **deployifnotexists** ile birlikte kullanılır. Bu kullanım örneği, [Deployifnotexists örneğinde](effects.md#deployifnotexists-example)görülebilir.
+  - `field` Öncelikle, değerlendirilen kaynaktaki alanlara başvurmak için **Auditınotexists** ve **deployifnotexists** ile birlikte kullanılır. Bu kullanım örneği, [Deployifnotexists örneğinde](effects.md#deployifnotexists-example)görülebilir.
 - `requestContext().apiVersion`
   - İlke değerlendirmesini tetikleyen isteğin API sürümünü döndürür (örnek: `2019-09-01` ).
     Bu değer, kaynak oluşturma/güncelleştirme değerlendirmesi için PUT/PATCH isteğinde kullanılan API sürümüdür. En son API sürümü, mevcut kaynaklardaki uyumluluk değerlendirmesi sırasında her zaman kullanılır.

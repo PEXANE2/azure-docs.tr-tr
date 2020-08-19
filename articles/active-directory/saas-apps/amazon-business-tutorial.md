@@ -2,26 +2,21 @@
 title: 'Öğretici: Amazon Business ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Amazon Business arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2597a66-afd9-4f11-b14b-646b597bb6c2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f5ff42597a457a8849e424e041f1677c28b383
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608968"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548325"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
 
@@ -33,7 +28,7 @@ Bu öğreticide, Amazon Business 'ı Azure Active Directory (Azure AD) ile tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -85,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
     
-       | URL | Bölge |
+       | URL | Region |
        |-|-|
        | `https://www.amazon.com`| Kuzey Amerika |
        | `https://www.amazon.co.jp`| Doğu Asya |
@@ -93,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Yanıt URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
     
-       | URL | Bölge |
+       | URL | Region |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kuzey Amerika |
        | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Doğu Asya |
@@ -171,7 +166,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Öznitelikler](media/amazon-business-tutorial/map-attribute1.png)
 
-1. **Öznitelik eşleme** sihirbazında **+ alan Ekle** seçeneğine tıklayarak gereksinim alanlarını ekleyin. Azure portal **Kullanıcı öznitelikleri & talepler** bölümünden, **SAML AttributeName** alanına kopyaladığınız ad alanı dahil öznitelik değerlerini ekleyin ve **İleri**' ye tıklayın.
+1. **Öznitelik eşleme** sihirbazında **+ alan Ekle** seçeneğine tıklayarak gereksinim alanlarını ekleyin. Azure portal **Kullanıcı öznitelikleri & talepler** bölümünden,  **SAML AttributeName** alanına kopyaladığınız ad alanı dahil öznitelik değerlerini ekleyin ve **İleri**' ye tıklayın.
 
     ![Öznitelikler](media/amazon-business-tutorial/map-attribute2.png)
 
@@ -217,7 +212,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure portal bir Azure AD güvenlik grubu oluşturun
 
@@ -293,8 +288,8 @@ Erişim panelinde Amazon Business kutucuğuna tıkladığınızda, SSO 'yu ayarl
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

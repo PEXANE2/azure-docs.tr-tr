@@ -11,28 +11,28 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108999"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545667"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
 > [!NOTE]
-> * V3 Yaklaşım Analizi kapsayıcısı genel kullanıma sunulmuştur. Anahtar tümceciği ayıklama ve dil algılama kapsayıcıları, geçitli genel önizleme olarak kullanılabilir.
+> * V3 Yaklaşım Analizi kapsayıcısı genel kullanıma sunulmuştur. Anahtar ifade ayıklama ve dil algılama kapsayıcıları engelsiz genel önizleme olarak sağlanır.
 > * Varlık bağlama ve NER Şu anda bir kapsayıcı olarak kullanılamıyor.
-> * Şu anda, sistem durumu kapsayıcısı kullanımı için Metin Analizi faturalandırılmaz.
+> * Şu anda Sistem Durumu için Metin Analizi kapsayıcı kullanımı için ücretlendirilmezsiniz.
 
-Kapsayıcılar, kendi ortamınızda metin analitik API 'Leri çalıştırmanızı sağlar ve belirli güvenlik ve veri idare gereksinimleriniz için harika bir yöntemdir. Metin Analizi kapsayıcıları ham metin üzerinde gelişmiş doğal dil işleme sağlar ve üç ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama ve dil algılama. 
+Kapsayıcılar Metin Analizi API'lerini kendi ortamınızda çalıştırabilmenize olanak tanır. Bunlar belirli güvenlik ve veri idaresi gereksinimleriniz için çok kullanışlıdır. Metin Analizi kapsayıcıları ham metin üzerinde gelişmiş doğal dil işleme sağlar ve üç ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama ve dil algılama. 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
 > [!IMPORTANT]
 > Ücretsiz hesap, ayda 5.000 işlem ile sınırlıdır ve kapsayıcılar için yalnızca **ücretsiz** ve **Standart** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">fiyatlandırma katmanları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> geçerlidir. İşlem isteği ücretleri hakkında daha fazla bilgi için bkz. [veri limitleri](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Metin Analizi kapsayıcılarından herhangi birini çalıştırmak için konak bilgisayar ve kapsayıcı ortamları olmalıdır.
 
@@ -65,7 +65,7 @@ Aşağıdaki tabloda Metin Analizi kapsayıcıları için en düşük ve öneril
 
 CPU çekirdeği ve belleği, `--cpus` `--memory` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir `docker run` .
 
-## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al `docker pull`
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -96,7 +96,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma `docker run`
 
 Kapsayıcıları çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Kapsayıcı siz durduruncaya kadar çalışmaya devam edecektir.
 
@@ -127,9 +127,9 @@ Kapsayıcıları çalıştırmak için [Docker Run](https://docs.docker.com/engi
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
-Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar.
+Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.
 
-`http://localhost:5000`Kapsayıcı API 'leri için Konağı kullanın.
+Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın.
 
 <!--  ## Validate container is running -->
 

@@ -2,26 +2,21 @@
 title: "Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile tümleştirme Azure Active Directory (V 5.2) | Microsoft Docs"
 description: Azure Active Directory ve JIRA SAML SSO arasında Microsoft (V 5.2) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d0c00408-f9b8-4a79-bccc-c346a7331845
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099508"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile tümleştirme Azure Active Directory (V 5.2)
 
@@ -33,7 +28,7 @@ Azure AD ile JIRA SAML SSO 'SU ile Microsoft (V 5.2) tümleştirmesi aşağıdak
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="description"></a>Açıklama
 
@@ -187,7 +182,7 @@ Azure AD çoklu oturum açmayı Microsoft (V 5.2) ile JIRA SAML SSO 'SU ile yap�
 
     f. Federasyon etki alanını (örneğin, ADFS vb.) Azure AD ile kullanıyorsanız, **giriş bölgesi bulmayı etkinleştir** seçeneğini tıklayın ve **etki alanı adını**yapılandırın.
 
-    g. **Etki alanı adı** ' nda, ADFS tabanlı oturum açma durumunda etki alanı adını buraya yazın.
+    örneğin: **Etki alanı adı** ' nda, ADFS tabanlı oturum açma durumunda etki alanı adını buraya yazın.
 
     h. Kullanıcı JIRA oturumunu kapattığında Azure AD 'den oturumu kapatmak istiyorsanız **Çoklu oturum açmayı etkinleştir** ' i işaretleyin. 
 
@@ -214,11 +209,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon\@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com.
+    b. **Kullanıcı adı** alanına yazın `brittasimon\@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com.
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -270,11 +265,11 @@ Azure AD kullanıcılarının JIRA şirket içi sunucusunda oturum açmasını s
 
     ![Çalışan Ekle](./media/jira52microsoft-tutorial/user4.png)
 
-    a. **E-posta adresi** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-posta adresini yazın.
+    a. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
     b. **Tam ad** metin kutusuna, Britta Simon gibi kullanıcının tam adını yazın.
 
-    c. Kullanıcı **adı** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-postasını yazın.
+    c. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
 
     d. **Parola** metin kutusuna kullanıcının parolasını yazın.
 

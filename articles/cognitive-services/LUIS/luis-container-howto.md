@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524514"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547401"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUSıS Docker kapsayıcılarını yükleyip çalıştırın
 
@@ -26,9 +26,9 @@ Aşağıdaki videoda Bu kapsayıcının kullanımı gösterilmektedir.
 
 [![Bilişsel hizmetler için kapsayıcı gösterimi](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Lusıs kapsayıcısını çalıştırmak için aşağıdaki önkoşullara göz önünde bulunur:
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda kapsayıcı ana bilgisayarı için en düşük ve önerilen
 
 Çekirdek ve bellek, `--cpus` `--memory` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir `docker run` .
 
-## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al `docker pull`
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Depodan bir kapsayıcı görüntüsü indirmek için komutunu kullanın `mcr.microsoft.com/azure-cognitive-services/luis` :
 
@@ -171,7 +171,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | Yayınlanan LUSıS uygulamasının uygulama KIMLIĞI. |
 | **{SLOT_NAME}** | Yayınlanan LUSıS uygulamasının ortamı. Aşağıdaki değerlerden birini kullanın:<br/>`PRODUCTION`<br/>`STAGING` |
 | **{AUTHORING_KEY}** | Yayımlanan LUO uygulaması için Luo hesabının yazma anahtarı.<br/>Yazma anahtarınızı, Lua portalındaki **Kullanıcı ayarları** sayfasından edinebilirsiniz. |
-| **{AZURE_REGION}** | Uygun Azure bölgesi:<br/><br/>`westus`-Batı ABD<br/>`westeurope`-Batı Avrupa<br/>`australiaeast`-Avustralya Doğu |
+| **{AZURE_REGION}** | Uygun Azure bölgesi:<br/><br/>`westus` -Batı ABD<br/>`westeurope` -Batı Avrupa<br/>`australiaeast` -Avustralya Doğu |
 
 Yayınlanan paketi indirmek için [buradaki API belgelerine][download-published-package]başvurun. Başarılı bir şekilde indirildiyse, yanıt bir LUSıS paket dosyasıdır. Dosyayı kapsayıcının giriş bağlaması için belirtilen depolama konumuna kaydedin.
 
@@ -190,11 +190,11 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | Eğitilen LUO uygulamasının uygulama KIMLIĞI. |
 | **{APP_VERSION}** | Eğitilen LUIN uygulamasının uygulama sürümü. |
 | **{AUTHORING_KEY}** | Yayımlanan LUO uygulaması için Luo hesabının yazma anahtarı.<br/>Yazma anahtarınızı, Lua portalındaki **Kullanıcı ayarları** sayfasından edinebilirsiniz. |
-| **{AZURE_REGION}** | Uygun Azure bölgesi:<br/><br/>`westus`-Batı ABD<br/>`westeurope`-Batı Avrupa<br/>`australiaeast`-Avustralya Doğu |
+| **{AZURE_REGION}** | Uygun Azure bölgesi:<br/><br/>`westus` -Batı ABD<br/>`westeurope` -Batı Avrupa<br/>`australiaeast` -Avustralya Doğu |
 
 Sürümlenmiş paketi indirmek için [buradaki API belgelerine][download-versioned-package]başvurun. Başarılı bir şekilde indirildiyse, yanıt bir LUSıS paket dosyasıdır. Dosyayı kapsayıcının giriş bağlaması için belirtilen depolama konumuna kaydedin.
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma `docker run`
 
 Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın `{ENDPOINT_URI}` `{API_KEY}` .
 

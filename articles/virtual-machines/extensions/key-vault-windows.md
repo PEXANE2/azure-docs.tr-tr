@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502971"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545395"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -73,14 +73,14 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 > 
 > Bunun nedeni, `/secrets` yol değil, özel anahtar dahil olmak üzere tam sertifikayı döndürmektedir `/certificates` . Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> ' AuthenticationSettings ' özelliği, VM 'nin birden çok atanmış kimliği olduğunda senaryolar için isteğe bağlıdır.
-> Key Vault kimlik doğrulaması için kullanılacak kimliğin kullanılmasına izin verir.
+> [!IMPORTANT]
+> ' AuthenticationSettings ' özelliği yalnızca **Kullanıcı tarafından atanan kimlikleri**olan VM 'ler için **gereklidir** .
+> Key Vault kimlik doğrulaması için kullanılacak kimliği belirtir.
 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |

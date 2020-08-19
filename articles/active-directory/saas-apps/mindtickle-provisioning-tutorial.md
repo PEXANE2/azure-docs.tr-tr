@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını mini olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ae7b6ac9c6feb539e4da3627ebbabd3c5b628fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061248"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549073"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırma
 
@@ -57,7 +53,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 Azure AD ile otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırmadan önce, mindticon 'da SCıM sağlamasını etkinleştirmeniz gerekir.
 
 
-1.  SCıM sağlamasını yapılandırmak için gereken JWT belirtecini almak için [Mindticula 'nin destek ekibine](mailto:help@mindtickle.com) ulaşın.
+1.  SCıM sağlamasını yapılandırmak için gereken JWT belirtecini almak için  [Mindticula 'nin destek ekibine](mailto:help@mindtickle.com) ulaşın.
 
 
 ## <a name="add-mindtickle-from-the-gallery"></a>Galeriden mini Ekle
@@ -91,7 +87,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
 ### <a name="to-configure-automatic-user-provisioning-for-mindtickle-in-azure-ad"></a>Azure AD 'de mini Kullanıcı sağlamayı otomatik olarak yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

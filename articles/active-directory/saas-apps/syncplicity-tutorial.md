@@ -2,25 +2,21 @@
 title: 'Öğretici: syncplicity ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve syncplicity arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 896a3211-f368-46d7-95b8-e4768c23be08
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da532adfa2d4ab97edb44de9ae49c646ccdff381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233278"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544902"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Öğretici: syncplicity ile tümleştirin Azure Active Directory
 
@@ -104,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Çoklu oturum açma (SSO)** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma \(SSO 'su\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![Çoklu oturum açma \( SSO 'su\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
     a. **Özel etki alanı** metin kutusuna etki alanı adını yazın.
   
@@ -118,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     f. **Kimlik sağlayıcısı sertifikası**' nda **Dosya Seç**' e tıklayın ve ardından Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.
 
-    g. **Değişiklikleri Kaydet**' e tıklayın.
+    örneğin: **Değişiklikleri Kaydet**' e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -128,9 +124,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -156,7 +152,7 @@ Azure AD kullanıcılarının oturum açabilmeleri için syncplicity uygulaması
 
 **Syncplicity 'e bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. **Syncplicity** kiracınızda oturum açın (örneğin: `https://company.Syncplicity.com`).
+1. **Syncplicity** kiracınızda oturum açın (örneğin: `https://company.Syncplicity.com` ).
 
 1. **Yönetici** ' ye tıklayın ve **Kullanıcı hesapları** ' nı seçtikten sonra **Kullanıcı Ekle**' ye tıklayın.
 

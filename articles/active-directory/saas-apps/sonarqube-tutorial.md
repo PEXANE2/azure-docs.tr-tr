@@ -2,26 +2,21 @@
 title: 'Öğretici: Sonarqum ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile Sonarqude arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b01665e7-c3d0-4393-9286-d5bcf8cf6add
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3790c52598b2857f56cac54acad156b3ba0bf51
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026693"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Öğretici: Sonarqum ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -111,9 +106,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -157,11 +152,11 @@ Bu bölümde, Sonarqusize erişimi vererek Azure çoklu oturum açma özelliğin
 
     f. Base64 Ile kodlanmış sertifikayı not defteri 'nde açın, içeriğini kopyalayın ve **sağlayıcı sertifikası** metin kutusuna yapıştırın.
 
-    g. **SAML Kullanıcı oturum açma özniteliği** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`girin.
+    örneğin: **SAML Kullanıcı oturum açma özniteliği** metin kutusuna değeri girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    h. **SAML Kullanıcı adı öznitelik** metin kutusuna değeri `http://schemas.microsoft.com/identity/claims/displayname`girin.
+    h. **SAML Kullanıcı adı öznitelik** metin kutusuna değeri girin `http://schemas.microsoft.com/identity/claims/displayname` .
 
-    i. **SAML Kullanıcı e-posta özniteliği** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`girin.
+    i. **SAML Kullanıcı e-posta özniteliği** metin kutusuna değeri girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     j. **Kaydet**’e tıklayın.
 
@@ -177,9 +172,9 @@ Erişim panelinde Sonarque kutucuğunu tıklattığınızda, SSO 'yu ayarladığ
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

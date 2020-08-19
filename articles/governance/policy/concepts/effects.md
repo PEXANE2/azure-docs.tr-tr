@@ -1,14 +1,14 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
-ms.date: 06/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791427"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544732"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -17,8 +17,8 @@ Azure İlkesi'ndeki her ilke tanımı tek bir etkiye sahiptir. Bu efekt, ilke ku
 Bu efektler Şu anda bir ilke tanımında destekleniyor:
 
 - [Ekle](#append)
-- [Denetim](#audit)
-- [Auditınotexists](#auditifnotexists)
+- [Denetle](#audit)
+- [AuditIfNotExists](#auditifnotexists)
 - [Reddetme](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
@@ -43,7 +43,7 @@ Kaynak oluşturma veya güncelleştirme istekleri önce Azure Ilkesi tarafından
 
 Kaynak sağlayıcı Kaynak Yöneticisi modundaki bir istek için bir başarı kodu döndürdüğünde, **Auditınotexists** ve **deployifnotexists** , ek uyumluluk günlüğü veya eylemi gerekip gerekmediğini belirlemeyi değerlendirir.
 
-## <a name="append"></a>Ekle
+## <a name="append"></a>Ekleme
 
 Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
 
@@ -139,7 +139,7 @@ Kaynak sağlayıcısı modu için `Microsoft.Kubernetes.Data` , denetim efektini
 }
 ```
 
-## <a name="auditifnotexists"></a>Auditınotexists
+## <a name="auditifnotexists"></a>AuditIfNotExists
 
 Auditınotexists, **IF** koşuluyla eşleşen kaynakla _ilgili_ kaynakların denetlenmesini sağlar, **ancak koşulun** **ayrıntılarında** belirtilen özellikleri içermez.
 
@@ -546,7 +546,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|Çalışma |Açıklama |
+|İşlem |Açıklama |
 |-|-|
 |addOrReplace |Etiket, farklı bir değerle zaten mevcut olsa bile, kaynağa tanımlı etiketi ve değeri ekler. |
 |Ekle |Kaynağa tanımlı etiketi ve değeri ekler. |

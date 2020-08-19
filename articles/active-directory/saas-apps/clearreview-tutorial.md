@@ -2,26 +2,21 @@
 title: 'Öğretici: temiz Inceleme ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve gözden geçirme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed7900373c5d8897fd360c708434d96e5dfbc73d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034712"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Öğretici: temiz Inceleme ile Azure Active Directory tümleştirme
 
@@ -35,7 +30,7 @@ Azure AD ile açık Incelemeyi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini açık gözden geçirmeyle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 

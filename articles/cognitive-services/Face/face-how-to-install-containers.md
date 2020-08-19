@@ -11,23 +11,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497888"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548472"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
 
 > [!IMPORTANT]
-> Yüz kapsayıcı kullanıcıları için sınıra ulaşıldı. Şu anda yüz kapsayıcısı için yeni uygulamalar kabul etmiyoruz.
+> Yüz Tanıma v1 kapsayıcısı kullanıcılarının sınırına ulaşıldı. Şu anda Yüz Tanıma kapsayıcısı için yeni uygulama kabul etmiyoruz.
 
 Azure bilişsel hizmetler, resimlerde insan yüzlerini algılayan, Docker için standartlaştırılmış bir Linux kapsayıcısı sağlar. Ayrıca, Noi 'ler ve gözler, cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri gibi yüz başlıkları dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, aynı görüntüde veya farklı resimlerde iki yüzün aynı olup olmadığını, Güvenirlik puanı kullanılarak kontrol edebilir. Yüz Ayrıca, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için yüzleri bir veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 

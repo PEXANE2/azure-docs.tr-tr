@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: etiket yönetimini yönetme'
 description: Bu öğreticide, yeni ve mevcut kaynaklarda bir etiket idare modeli oluşturmak ve zorlamak için Azure Ilkesinin değiştirme efektini kullanırsınız.
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142274"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545514"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure Ilkesiyle etiket yönetimini yönetme
 
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
 ## <a name="configure-the-costcenter-tag"></a>CostCenter etiketini yapılandırma
 
-Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _Costcenter_ etiket gereksinimleri aşağıdakileri çağırır:
+Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _Costcenter_ etiket gereksinimleri aşağıdaki sonuçlar için çağrı sağlar:
 
 - _Costcenter_ etiketini eksik kaynak gruplarını reddetme
 - Eksik olduğunda üst kaynak grubundan _Costcenter_ etiketini eklemek için kaynakları değiştirin
@@ -107,7 +107,7 @@ Bu ilke kuralı, mevcut [kaynakları düzeltirken etiket](../how-to/remediate-re
 
 ## <a name="configure-the-env-tag"></a>Env etiketini yapılandırma
 
-Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _env_ etiketi gereksinimleri aşağıdakileri çağırır:
+Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _env_ etiketi gereksinimleri aşağıdaki sonuçlar için çağrı sağlar:
 
 - Kaynak grubunun adlandırma şemasına bağlı olarak kaynak grubundaki _env_ etiketini değiştirme
 - Kaynak grubundaki tüm kaynaklardaki _env_ etiketini üst kaynak grubuyla aynı olacak şekilde değiştirin

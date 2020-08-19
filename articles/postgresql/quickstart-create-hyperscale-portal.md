@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: dağıtılmış tablolar oluşturma-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı'
+title: 'Hızlı başlangıç: sunucu grubu oluşturma-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı'
 description: PostgreSQL için Azure veritabanı hiper ölçek (Citus) üzerinde dağıtılmış tablolar oluşturmak ve sorgulamak için hızlı başlangıç.
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: c17018e0f2f3a7c1c23d176a441842abcf5521f4
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183930"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547707"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı-hiper ölçek (Citus) oluşturma
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal hiper ölçek (Citus) sunucu grubu oluşturma
 
 PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız, yönetilen bir hizmettir. Bu hızlı başlangıçta, Azure portal kullanarak bir PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu oluşturma gösterilmektedir. Dağıtılmış verileri keşfedeceğiz: düğümler arasında parça tabloları, örnek verileri geri almak ve birden çok düğümde yürütülen sorguları çalıştırmak isteyeceksiniz.
 
@@ -104,7 +104,7 @@ SET CLIENT_ENCODING TO 'utf8';
 SELECT count(*) from github_events;
 ```
 
-Bu, işe yaramakta. Bu toplama sıralamasına bir bit içinde geri döneceğiz, ancak şimdilik diğer birkaç sorguya göz atalım. JSONB sütununun içinde `payload` iyi bir veri bulunur, ancak olay türüne göre farklılık gösterir. `PushEvent`olaylar, gönderim için ayrı yürütmelerin sayısını içeren bir boyut içerir. Saat başına toplam işleme sayısını bulmak için kullanabiliriz:
+Bu, işe yaramakta. Bu toplama sıralamasına bir bit içinde geri döneceğiz, ancak şimdilik diğer birkaç sorguya göz atalım. JSONB sütununun içinde `payload` iyi bir veri bulunur, ancak olay türüne göre farklılık gösterir. `PushEvent` olaylar, gönderim için ayrı yürütmelerin sayısını içeren bir boyut içerir. Saat başına toplam işleme sayısını bulmak için kullanabiliriz:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,

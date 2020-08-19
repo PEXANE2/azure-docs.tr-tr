@@ -1,22 +1,22 @@
 ---
-title: Linux için konuk yapılandırma ilkeleri oluşturma
+title: Linux için Konuk Yapılandırma ilkeleri oluşturma
 description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı öğrenin.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236599"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547729"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için konuk yapılandırma ilkeleri oluşturma
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkeleri oluşturma
 
 Özel ilkeler oluşturmadan önce [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md)' nın genel bakış bilgilerini okuyun.
  
 Windows için konuk yapılandırma ilkeleri oluşturma hakkında bilgi edinmek için bkz. [Windows Için Konuk yapılandırma ilkeleri oluşturma](./guest-configuration-create.md) sayfası
 
-Linux 'u denetlerken, Konuk yapılandırması [Chef InSpec](https://www.inspec.io/)kullanır. InSpec profili, makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
+Linux’ı denetlerken Konuk Yapılandırması [Chef InSpec](https://www.inspec.io/) kullanır. InSpec profili makinenin olması gereken durumu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
 
 [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md) , yalnızca makineler içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz kullanılamamaktadır.
 
@@ -25,9 +25,8 @@ Bir Azure veya Azure dışı makinenin durumunu doğrulamak üzere kendi yapıla
 > [!IMPORTANT]
 > Konuk yapılandırması olan özel ilkeler bir önizleme özelliğidir.
 >
-> Azure sanal makinelerinde denetimleri gerçekleştirmek için konuk yapılandırma uzantısı gereklidir.
-> Uzantıyı tüm Linux makinelerinde ölçeklendirerek dağıtmak için aşağıdaki ilke tanımını atayın:
->   - [Linux VM 'lerde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Konuk Yapılandırma uzantısı Azure sanal makinelerinde denetim gerçekleştirmek için gereklidir. Uzantıyı tüm Linux makinelerinde ölçeklendirerek dağıtmak için aşağıdaki ilke tanımını atayın:
+> - [Linux VM 'lerde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>PowerShell modülünü yükler
 
@@ -52,14 +51,13 @@ Modülün yüklenebildiği işletim sistemleri:
 - Windows
 
 > [!NOTE]
-> ' Test-GuestConfigurationPackage ' cmdlet 'i, OMı üzerindeki bir bağımlılık nedeniyle OpenSSL sürüm 1,0 gerektirir.
-> Bu, OpenSSL 1,1 veya üzeri ile herhangi bir ortamda hata oluşmasına neden olur.
+> ' Test-GuestConfigurationPackage ' cmdlet 'i, OMı üzerindeki bir bağımlılık nedeniyle OpenSSL sürüm 1,0 gerektirir. Bu, OpenSSL 1,1 veya üzeri ile herhangi bir ortamda hata oluşmasına neden olur.
 
 Konuk yapılandırması kaynak modülü için aşağıdaki yazılımlar gereklidir:
 
 - PowerShell 6,2 veya sonraki bir sürümü. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/scripting/install/installing-powershell) izleyin.
 - Azure PowerShell 1.5.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
-  - Yalnızca AZ modüller ' az. Accounts ' ve ' az. resources ' gereklidir.
+  - Yalnızca az modüller ' az. Accounts ' ve ' az. resources ' gereklidir.
 
 ### <a name="install-the-module"></a>Modülü yükler
 
@@ -81,7 +79,8 @@ PowerShell 'e **Guestconfiguration** modülünü yüklemek için:
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Linux için konuk yapılandırma yapıtları ve ilkesi
 
-Linux ortamlarında bile, Konuk yapılandırması, Istenen durum yapılandırmasını dil soyutlama olarak kullanır. Uygulama yerel kod (C++) tabanlıdır, bu nedenle PowerShell 'i yüklemek gerekmez. Bununla birlikte, ortamla ilgili ayrıntıları açıklayan bir yapılandırma MOF gerektirir. DSC, InSpec 'in nasıl yürütüldüğünü, parametrelerin nasıl sağlandığını ve çıktının hizmete nasıl döndürüldüğünü standartlaştırmaya yönelik sarmalayıcı olarak davranır. Özel InSpec içeriğiyle çalışırken çok az DSC bilgisi gerekir.
+Linux ortamlarında bile, Konuk yapılandırması, Istenen durum yapılandırmasını dil soyutlama olarak kullanır. Uygulama yerel kod (C++) tabanlıdır, bu nedenle PowerShell 'i yüklemek gerekmez. Bununla birlikte, ortamla ilgili ayrıntıları açıklayan bir yapılandırma MOF gerektirir.
+DSC, InSpec 'in nasıl yürütüldüğünü, parametrelerin nasıl sağlandığını ve çıktının hizmete nasıl döndürüldüğünü standartlaştırmaya yönelik sarmalayıcı olarak davranır. Özel InSpec içeriğiyle çalışırken çok az DSC bilgisi gerekir.
 
 #### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 Bu dosyayı `config.ps1` Proje klasörüne kaydedin. Terminalde yürüterek PowerShell 'de çalıştırın `./config.ps1` . Yeni bir MOF dosyası oluşturulacak.
 
 `Node AuditFilePathExists`Komut Teknik olarak gerekli değildir `AuditFilePathExists.mof` , ancak varsayılan olarak değil adlı bir dosya oluşturur `localhost.mof` . . Mof dosya adının yapılandırılması, ölçeklendirmeye çalışırken birçok dosyayı düzenlemeyi kolaylaştırır.
-
-
 
 Artık aşağıdaki gibi bir proje yapısına sahip olmanız gerekir:
 
@@ -288,8 +285,7 @@ Aşağıdaki dosyalar tarafından oluşturulmuştur `New-GuestConfigurationPolic
 
 Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
 
-Son olarak, cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` .
-Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` .
+Son olarak, cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` .
 
 Yayımla komutunu çalıştırmak için Azure 'da Ilke oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı**' dir.
 
@@ -459,5 +455,5 @@ Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için yerleşik Kılavuzu g�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuk yapılandırması](../concepts/guest-configuration.md)olan VM 'leri denetleme hakkında bilgi edinin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](get-compliance-data.md)öğrenin.
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](./programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](./get-compliance-data.md)öğrenin.

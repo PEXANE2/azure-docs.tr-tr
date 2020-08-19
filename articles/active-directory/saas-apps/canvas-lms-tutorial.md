@@ -2,26 +2,21 @@
 title: 'Öğretici: tuvalle Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve tuval arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232044"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547639"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Öğretici: tuvalle Azure Active Directory tümleştirme
 
@@ -33,7 +28,7 @@ Tuvali Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -159,7 +154,7 @@ Azure AD çoklu oturum açmayı tuvalle yapılandırmak için aşağıdaki adım
 
     f. **Oturum açma özniteliği** listesinden **NameID**' yi seçin.
 
-    g. **Tanımlayıcı biçimi** listesinden **emapostaadresi**' ni seçin.
+    örneğin: **Tanımlayıcı biçimi** listesinden **emapostaadresi**' ni seçin.
 
     h. **Kimlik doğrulama ayarlarını kaydet**' e tıklayın.
 
@@ -181,12 +176,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -240,9 +235,9 @@ Azure AD kullanıcılarının tuvalde oturum açmasını sağlamak için, tuvald
 
    a. **Tam ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını girin.
 
-   b. **E-posta** metin kutusuna, **\@brittasıon contoso.com**gibi kullanıcının e-postasını girin.
+   b. **E-posta** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
-   c. **Oturum açma** metin kutusunda, kullanıcının Azure ad e-posta adresini **brittasıon\@contoso.com**gibi girin.
+   c. **Oturum açma** metin kutusunda, kullanıcının Azure ad e-posta adresini **brittasıon \@ contoso.com**gibi girin.
 
    d. **Kullanıcıya bu hesap oluşturma hakkında e-posta gönder**' i seçin.
 

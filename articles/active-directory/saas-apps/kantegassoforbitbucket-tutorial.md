@@ -2,25 +2,21 @@
 title: "Öğretici: Bitbucket için Kantega SSO 'SU ile Azure Active Directory tümleştirme | Microsoft Docs"
 description: Bitbucket için Azure Active Directory ve Kantega SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c41cdaaf-0441-493c-94c7-569615b7b1ab
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b04b44c907e3210f3cc3975b36639f4fe275eef9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 36d843e80f024408747c1f94512a3ccc04c6709b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099203"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Öğretici: Bitbucket için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Bitbucket için Kantega SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantaj
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -148,7 +144,7 @@ Bitbucket için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandır
 
     ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
-1. Yükleme tamamlandıktan sonra. **Kapat**' a tıklayın.
+1. Yükleme tamamlandıktan sonra. **Kapat**’a tıklayın.
 
     ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
@@ -241,7 +237,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -293,11 +289,11 @@ Azure AD kullanıcılarının Bitbucket 'da oturum açmasını sağlamak için, 
 
     ![Çalışan Ekle](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a. Kullanıcı **adı** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-postasını yazın.
+    a. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
 
     b. **Tam ad** metin kutusuna, Britta Simon gibi kullanıcının tam adını yazın.
 
-    c. **E-posta adresi** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-posta adresini yazın.
+    c. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
     d. **Parola** metin kutusuna kullanıcının parolasını yazın.
 

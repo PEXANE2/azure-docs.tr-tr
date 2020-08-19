@@ -2,26 +2,21 @@
 title: 'Öğretici: yardım Scout ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve yardım Scout arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0aad9910-0bc1-4394-9f73-267cf39973ab
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Öğretici: yardım Scout ile Azure Active Directory tümleştirme
 
@@ -33,7 +28,7 @@ Yardım scout with Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -98,7 +93,7 @@ Azure AD çoklu oturum açmayı yardım Scout ile birlikte yapılandırmak için
 
     a. **Tanımlayıcı** , yardım Scout 'Dan başlayan **hedef kitle URI 'Si (HIZMET sağlayıcısı varlık kimliği)**`urn:`
 
-    b. **Yanıt URL** 'Si, yardım Scout 'dan başlayan **geri gönderme URL 'Si (onaylama işlemi tüketici hizmeti URL 'si)** ile başlar`https://` 
+    b. **Yanıt URL** 'Si, yardım Scout 'dan başlayan **geri gönderme URL 'Si (onaylama işlemi tüketici hizmeti URL 'si)** ile başlar `https://` 
 
     > [!NOTE]
     > Bu URL 'Lerdeki değerler yalnızca tanıtım amaçlıdır. Bu değerleri gerçek yanıt URL 'SI ve tanımlayıcısından güncelleştirmeniz gerekir. Bu değerleri, Öğreticinin ilerleyen kısımlarında açıklanan kimlik doğrulama bölümü altındaki **Çoklu oturum açma** sekmesinden alırsınız.
@@ -141,12 +136,12 @@ Bu bölümün amacı, B. Simon adlı Azure portal bir test kullanıcısı oluşt
 
     a. **Ad** alanına **B. Simon**girin.
   
-    b. **Kullanıcı adı** alanına **B. Simon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **B. Simon \@ yourcompanydomain. Extension** yazın  
     Örneğin, B.Simon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -210,7 +205,7 @@ Bu bölümde, yardım Scout 'a erişim vererek Azure çoklu oturum açma özelli
 
     b. Azure portal 'ten indirilen **sertifikayı (base64)** karşıya yüklemek Için **sertifikayı karşıya yükle** ' ye tıklayın.
 
-    c. E-posta etki alanları metin kutusunda `contoso.com` , kuruluşunuzun e-posta etki **alanlarını** (s) e.x. girin. Birden çok etki alanını virgülle ayırarak ayırabilirsiniz. [Yardım scout oturum açma sayfasında](https://secure.helpscout.net/members/login/) belirli bir etki alanını giren bir yardım Scout kullanıcısı veya Yöneticisi, kimlik bilgileriyle kimlik doğrulaması yapmak Için kimlik sağlayıcısına yönlendirilir.
+    c. E-posta etki alanları metin kutusunda, kuruluşunuzun e-posta etki alanlarını (s) e.x. girin `contoso.com` . **Email Domains** Birden çok etki alanını virgülle ayırarak ayırabilirsiniz. [Yardım scout oturum açma sayfasında](https://secure.helpscout.net/members/login/) belirli bir etki alanını giren bir yardım Scout kullanıcısı veya Yöneticisi, kimlik bilgileriyle kimlik doğrulaması yapmak Için kimlik sağlayıcısına yönlendirilir.
 
     d. Son olarak, kullanıcıların bu yöntemden yalnızca bir yardım almak için oturum açmasını istiyorsanız **SAML oturum açmayı zorla** ' ya geçiş yapabilirsiniz. Hala, yardım Scout kimlik bilgileriyle oturum açmak için bu seçeneği bırakmak istiyorsanız, devre dışı bırakabilirsiniz. Bu etkin olsa bile, hesap sahibi, hesap parolasıyla Scout 'a yardımcı olmak için her zaman oturum açabilir.
 

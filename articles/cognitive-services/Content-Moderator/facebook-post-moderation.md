@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118648"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548523"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
 
@@ -28,7 +28,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > * Content Moderator'dan ve Facebook'tan HTTP olaylarını dinleyen Azure İşlevleri oluşturma.
 > * Facebook uygulamasını kullanarak Facebook sayfasını Content Moderator bağlayın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
 Bu diyagramda bu senaryonun her bileşeni gösterilmektedir:
 
@@ -68,7 +68,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 1. Yeni oluşturulan İşlev Uygulaması gidin.
 1. Uygulama içinde **platform özellikleri** sekmesine gidin ve **yapılandırma**' yı seçin. Aşağıdaki anahtar/değer çiftlerini eklemek için sonraki sayfanın **uygulama ayarları** bölümünde **Yeni uygulama ayarı** ' nı seçin:
     
-    | Uygulama ayarı adı | value   | 
+    | Uygulama ayarı adı | değer   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | Content Moderator Takım Kimliğiniz  | 
     | `cm:SubscriptionKey` | Content Moderator abonelik anahtarınız. Bkz. [Kimlik Bilgileri](review-tool-user-guide/credentials.md) |
@@ -87,7 +87,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
     1. **Http tetikleyicisini**belirten kutucuğa tıklayın.
     1. **FBListener** adını girin. **Yetkilendirme Düzeyi** alanı **İşlev** olarak ayarlanmalıdır.
-    1. **Oluştur**' a tıklayın.
+    1. **Oluştur**’a tıklayın.
     1. **Run. CSX** Içeriğini **fblistener/Run. CSX** içeriğiyle değiştirin
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

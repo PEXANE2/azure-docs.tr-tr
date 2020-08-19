@@ -3,24 +3,23 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987112"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544681"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
-Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](../../../azure-arc/servers/overview.md)çalışan makineler için bir makine içindeki ayarları denetleyebilir.
-Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
+Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](../../../azure-arc/servers/overview.md)çalışan makineler için bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
 
 - İşletim sisteminin yapılandırması
 - Uygulama yapılandırması veya varlığı
 - Ortam ayarları
 
-Şu anda, çoğu Azure Ilkesi Konuk yapılandırma ilkesi yalnızca makinenin içindeki ayarları denetler.
-Yapılandırma uygulamamaları. Özel durum [aşağıda başvurulan](#applying-configurations-using-guest-configuration)bir yerleşik ilkedir.
+Şu anda Azure İlkesi Konuk Yapılandırma ilkelerinin çoğu yalnızca makinenin içindeki ayarları denetlemektedir.
+Yapılandırma uygulamamaktadır. Özel durum [aşağıda başvurulan](#applying-configurations-using-guest-configuration)bir yerleşik ilkedir.
 
 ## <a name="enable-guest-configuration"></a>Konuk yapılandırmasını etkinleştir
 
@@ -32,7 +31,7 @@ Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısın
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure sanal makineleri için gereksinimleri dağıtma
 
-Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir ve makinede sistem tarafından yönetilen bir kimlik olması gerekir. Uzantı, uygulanabilir ilke atamasını ve ilgili yapılandırma tanımını indirir. Kimlik, Konuk yapılandırma hizmetine okuduğu ve yazdığı makinenin kimliğini doğrulamak için kullanılır. Arc bağlantılı makine aracısına eklendiğinden, bu uzantı, Arc bağlantılı makineler için gerekli değildir.
+Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir ve makinede sistem tarafından yönetilen bir kimlik olması gerekir. Uzantı, uygulanabilir ilke atamasını ve buna karşılık gelen yapılandırma tanımını indirir. Kimlik, Konuk yapılandırma hizmetine okuduğu ve yazdığı makinenin kimliğini doğrulamak için kullanılır. Arc bağlantılı makine aracısına eklendiğinden, bu uzantı, Arc bağlantılı makineler için gerekli değildir.
 
 > [!IMPORTANT]
 > Azure sanal makinelerini denetlemek için konuk yapılandırma uzantısı ve yönetilen bir kimlik gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke girişim atamasını yapın:
@@ -60,10 +59,10 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde bulunan daha eski işletim sistemi sürümleri hariç tutulur.
+Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur.
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
-|Publisher|Ad|Sürümler|
+|Publisher|Adı|Sürümler|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 ve üzeri|
 |Credavtiv|Debian|8 ve üzeri|
@@ -93,8 +92,7 @@ Azure platform kaynaklarıyla güvenli ve kimliği doğrulanmış bir kanal olu�
 
 ### <a name="azure-arc-connected-machines"></a>Azure Arc bağlantılı makineler
 
-Azure Arc tarafından bağlanan Azure dışında bulunan düğümlerin Konuk yapılandırma hizmetine bağlantısı olması gerekir.
-[Azure Arc belgelerinde](../../../azure-arc/servers/overview.md)sunulan ağ ve ara sunucu gereksinimleriyle ilgili ayrıntılar.
+Azure Arc tarafından bağlanan Azure dışında bulunan düğümlerin Konuk yapılandırma hizmetine bağlantısı olması gerekir. [Azure Arc belgelerinde](../../../azure-arc/servers/overview.md)sunulan ağ ve ara sunucu gereksinimleriyle ilgili ayrıntılar.
 
 Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'daki bir ağ giden trafiğe izin vermezse, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. "Guestandhybridmanagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) , Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
 
@@ -157,9 +155,9 @@ Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk ata
 
 Konuk yapılandırma uzantısı, günlük dosyalarını aşağıdaki konumlara Yazar:
 
-Pencerelerin`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Pencerelerin `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-'Un`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+'Un `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 `<version>`, Geçerli sürüm numarasını belirtir.
 

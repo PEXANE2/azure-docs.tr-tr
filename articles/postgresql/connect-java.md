@@ -1,390 +1,500 @@
 ---
-title: 'Hızlı başlangıç: Java ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
-description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Java kod örneği sağlanmıştır.
-author: rachel-msft
-ms.author: raagyema
+title: PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
+description: Bir PostgreSQL için Azure veritabanı ile Java ve JDBC kullanmayı öğrenin.
+author: jdubois
+ms.author: judubois
 ms.service: postgresql
-ms.custom:
-- mvc
-- seo-java-august2019
-- devx-track-java
-ms.devlang: java
+ms.custom: mvc, devcenter
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.openlocfilehash: 4e73cf35634b29409f8316080952e46825dd1a0d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.devlang: java
+ms.date: 08/17/2020
+ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182859"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545446"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma-tek sunucu
+# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
 
-Bu hızlı başlangıçta, Java uygulaması kullanarak PostgreSQL için Azure veritabanı 'na bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
+Bu konu başlığı altında, [PostgreSQL Için Azure veritabanı](https://docs.microsoft.com/azure/postgresql/)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+## <a name="prerequisites"></a>Ön koşullar
 
-- Hızlı başlangıç: Azure portal veya [hızlı başlangıç: Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)PostgreSQL [için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) .
+- Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
+- Desteklenen bir [Java Development Kit](https://aka.ms/azure-jdks), sürüm 8 (Azure Cloud Shell içinde bulunur).
+- [Apache Maven](https://maven.apache.org/) derleme aracı.
 
-- [PostgreSQL JDBC sürücüsü](https://jdbc.postgresql.org/download.html) -Java ve Java geliştirme seti sürümünüzü eşleştirin.
-- [Sınıfyolu ayrıntıları](https://jdbc.postgresql.org/documentation/head/classpath.html) -uygulama Sınıfdosyanıza PostgreSQL JDBC jar dosyasını (örneğin, PostgreSQL-42.1.1. jar) dahil edin.
+## <a name="prepare-the-working-environment"></a>Çalışma ortamını hazırlama
 
-## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
-PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
+Yazma hatalarını sınırlamak ve özel gereksinimleriniz için aşağıdaki yapılandırmayı özelleştirmenizi kolaylaştırmak için ortam değişkenlerini kullanacağız.
 
-1. [Azure Portal](https://portal.azure.com/), oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın ve seçin.
+Aşağıdaki komutları kullanarak bu ortam değişkenlerini ayarlayın:
 
-1. Sunucunun **genel bakış** panelinden **sunucu adı** ve **Yönetici Kullanıcı adı**' nı bir yere göz atın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+```bash
+AZ_RESOURCE_GROUP=database-workshop
+AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
+AZ_LOCATION=<YOUR_AZURE_REGION>
+AZ_POSTGRESQL_USERNAME=demo
+AZ_POSTGRESQL_PASSWORD=<YOUR_POSTGRESQL_PASSWORD>
+AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
+```
 
-    ![PostgreSQL için Azure veritabanı bağlantı dizesi](./media/connect-java/server-details-azure-database-postgresql.png)
+Yer tutucuları, bu makale boyunca kullanılan aşağıdaki değerlerle değiştirin:
 
-## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
-Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri veritabanına yüklemek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, tabloyu bırakmak ve oluşturmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. [Hazırlık Estatement](https://jdbc.postgresql.org/documentation/head/query.html) nesnesi, parametre değerlerini bağlamak Için SetString () ve setınt () ile birlikte INSERT komutlarını oluşturmak için kullanılır. [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemi, her parametre kümesi için komutu çalıştırır. 
+- `<YOUR_DATABASE_NAME>`: PostgreSQL sunucunuzun adı. Azure genelinde benzersiz olmalıdır.
+- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. `eastus`Varsayılan olarak kullanabilirsiniz, ancak bir bölgeyi yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
+- `<YOUR_POSTGRESQL_PASSWORD>`: PostgreSQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerden üçünde olmalıdır: Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #,%, vb.).
+- `<YOUR_LOCAL_IP_ADDRESS>`: Java uygulamanızı çalıştıracağınız yerel bilgisayarınızın IP adresi. Bunu bulmanın kolay bir yolu, tarayıcınızı [whatismyip.Akamai.com](http://whatismyip.akamai.com/)'e işaret kullanmaktır.
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ardından, aşağıdaki komutu kullanarak bir kaynak grubu oluşturun:
+
+```azurecli
+az group create \
+    --name $AZ_RESOURCE_GROUP \
+    --location $AZ_LOCATION \
+  	| jq
+```
+
+> [!NOTE]
+> `jq`JSON verilerini göstermek ve daha okunabilir hale getirmek için yardımcı programı kullanıyoruz. Bu yardımcı program, [Azure Cloud Shell](https://shell.azure.com/)varsayılan olarak yüklenir. Bu yardımcı programı beğenmezseniz, `| jq` kullanacağımız tüm komutların bölümünü güvenle kaldırabilirsiniz.
+
+## <a name="create-an-azure-database-for-postgresql-instance"></a>PostgreSQL için Azure veritabanı örneği oluşturma
+
+Oluşturacağız ilk şey, yönetilen bir PostgreSQL sunucusudur.
+
+> [!NOTE]
+> Azure portal kullanarak PostgreSQL [Için Azure veritabanı oluşturma sunucusu](/azure/postgresql/quickstart-create-server-database-portal)oluşturma hakkında daha ayrıntılı bilgi edinebilirsiniz.
+
+[Azure Cloud Shell](https://shell.azure.com/)' de aşağıdaki komutu çalıştırın:
+
+```azurecli
+az postgres server create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME \
+    --location $AZ_LOCATION \
+    --sku-name B_Gen5_1 \
+    --storage-size 5120 \
+    --admin-user $AZ_POSTGRESQL_USERNAME \
+    --admin-password $AZ_POSTGRESQL_PASSWORD \
+  	| jq
+```
+
+Bu komut, küçük bir PostgreSQL sunucusu oluşturur.
+
+### <a name="configure-a-firewall-rule-for-your-postgresql-server"></a>PostgreSQL sunucunuz için bir güvenlik duvarı kuralı yapılandırma
+
+PostgreSQL için Azure veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Herhangi bir gelen bağlantıya izin veren bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
+
+Yerel IP adresinizi Bu makalenin başlangıcında yapılandırdığınız için, aşağıdaki komutu çalıştırarak sunucunun güvenlik duvarını açabilirsiniz:
+
+```azurecli
+az postgres server firewall-rule create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME-database-allow-local-ip \
+    --server $AZ_DATABASE_NAME \
+    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  	| jq
+```
+
+### <a name="configure-a-postgresql-database"></a>PostgreSQL veritabanı yapılandırma
+
+Daha önce oluşturduğunuz PostgreSQL sunucusu boş. Java uygulamasıyla kullanabileceğiniz herhangi bir veritabanı yoktur. Aşağıdaki komutu kullanarak adlı yeni bir veritabanı oluşturun `demo` :
+
+```azurecli
+az postgres db create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name demo \
+    --server-name $AZ_DATABASE_NAME \
+  	| jq
+```
+
+### <a name="create-a-new-java-project"></a>Yeni bir Java projesi oluşturma
+
+En sevdiğiniz IDE 'yi kullanarak yeni bir Java projesi oluşturun ve `pom.xml` kök dizinine bir dosya ekleyin:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.12</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+Bu dosya, projemizi kullanacak şekilde yapılandıran bir [Apache Maven](https://maven.apache.org/) :
+
+- Java 8
+- Java için son PostgreSQL sürücüsü
+
+### <a name="prepare-a-configuration-file-to-connect-to-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'na bağlanmak üzere bir yapılandırma dosyası hazırlama
+
+*Src/Main/Resources/Application. Properties* dosyası oluşturun ve şunları ekleyin:
+
+```properties
+url=jdbc:postgresql://$AZ_DATABASE_NAME.postgres.database.azure.com:5432/demo?ssl=true&sslmode=require
+user=demo@$AZ_DATABASE_NAME
+password=$AZ_POSTGRESQL_PASSWORD
+```
+
+- İki değişkeni, `$AZ_DATABASE_NAME` Bu makalenin başlangıcında yapılandırdığınız değerle değiştirin.
+- Değişkenini, `$AZ_POSTGRESQL_PASSWORD` Bu makalenin başlangıcında yapılandırdığınız değerle değiştirin.
+
+> [!NOTE]
+> `?ssl=true&sslmode=require` `url` VERITABANıNA bağlanırken JDBC sürücüsüne TLS ([Aktarım Katmanı Güvenliği](https://en.wikipedia.org/wiki/Transport_Layer_Security)) kullanmasını söylemek için yapılandırma özelliğine ekledik. PostgreSQL için Azure veritabanı ile TLS kullanılması zorunludur ve bu, iyi bir güvenlik uygulamasıdır.
+
+### <a name="create-an-sql-file-to-generate-the-database-schema"></a>Veritabanı şemasını oluşturmak için bir SQL dosyası oluşturma
+
+Veritabanı şeması oluşturmak için bir *src/Main/kaynaklar `schema.sql` /* dosya kullanacağız. Bu dosyayı aşağıdaki içerikle oluşturun:
+
+```sql
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
+```
+
+## <a name="code-the-application"></a>Uygulamayı kodlayın
+
+### <a name="connect-to-the-database"></a>Veritabanına bağlanın
+
+Ardından, PostgreSQL sunucunuzdaki verileri depolamak ve almak için JDBC kullanacak Java kodunu ekleyin.
+
+Şunu içeren bir *src/Main/Java/DemoApplication. Java* dosyası oluşturun:
 
 ```java
+package com.example.demo;
+
 import java.sql.*;
-import java.util.Properties;
+import java.util.*;
+import java.util.logging.Logger;
 
-public class CreateTableInsertRows {
+public class DemoApplication {
 
-    public static void main (String[] args)  throws Exception
-    {
+    private static final Logger log;
 
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log =Logger.getLogger(DemoApplication.class.getName());
+    }
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
+    public static void main(String[] args) throws Exception {
+        log.info("Loading application properties");
+        Properties properties = new Properties();
+        properties.load(DemoApplication.class.getClassLoader().getResourceAsStream("application.properties"));
+
+        log.info("Connecting to the database");
+        Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        log.info("Database connection test: " + connection.getCatalog());
+
+        log.info("Create database schema");
+        Scanner scanner = new Scanner(DemoApplication.class.getClassLoader().getResourceAsStream("schema.sql"));
+        Statement statement = connection.createStatement();
+        while (scanner.hasNextLine()) {
+            statement.execute(scanner.nextLine());
         }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
 
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
+        /*
+        Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+        insertData(todo, connection);
+        todo = readData(connection);
+        todo.setDetails("congratulations, you have updated data!");
+        updateData(todo, connection);
+        deleteData(todo, connection);
+        */
 
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Drop previous table of same name if one exists.
-                Statement statement = connection.createStatement();
-                statement.execute("DROP TABLE IF EXISTS inventory;");
-                System.out.println("Finished dropping table (if existed).");
-    
-                // Create table.
-                statement.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);");
-                System.out.println("Created table.");
-    
-                // Insert some data into table.
-                int nRowsInserted = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO inventory (name, quantity) VALUES (?, ?);");
-                preparedStatement.setString(1, "banana");
-                preparedStatement.setInt(2, 150);
-                nRowsInserted += preparedStatement.executeUpdate();
-
-                preparedStatement.setString(1, "orange");
-                preparedStatement.setInt(2, 154);
-                nRowsInserted += preparedStatement.executeUpdate();
-
-                preparedStatement.setString(1, "apple");
-                preparedStatement.setInt(2, 100);
-                nRowsInserted += preparedStatement.executeUpdate();
-                System.out.println(String.format("Inserted %d row(s) of data.", nRowsInserted));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-    
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
+        log.info("Closing database connection");
+        connection.close();
     }
 }
 ```
 
-## <a name="read-data"></a>Verileri okuma
-**SELECT** SQL deyimiyle verileri okumak için aşağıdaki kodu kullanın. Veritabanına bağlanmak, select deyimini oluşturmak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. Sonuçlar [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) nesnesi kullanılarak işlenir. 
+Bu Java kodu, PostgreSQL sunucusuna bağlanmak ve verilerimizi depolayacak bir şema oluşturmak için daha önce oluşturduğumuz *Application. Properties* ve *Schema. SQL* dosyalarını kullanacaktır.
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Bu dosyada, verileri ekleme, okuma, güncelleştirme ve silmeye yönelik yöntemler hakkında yorum yaptık. Bu makalenin geri kalanında bu yöntemleri kodlarız ve bunların her birinin açıklamalarını oluşturabileceksiniz.
 
-```java
-import java.sql.*;
-import java.util.Properties;
+> [!NOTE]
+> Veritabanı kimlik bilgileri, *Application. Properties* dosyasının *Kullanıcı* ve *parola* özelliklerinde depolanır. `DriverManager.getConnection(properties.getProperty("url"), properties);`Özellikler dosyası bir bağımsız değişken olarak geçirildiğinden, bu kimlik bilgileri çalıştırıldığında kullanılır.
 
-public class ReadTable {
+Artık bu ana sınıfı en sevdiğiniz aracı ile çalıştırabilirsiniz:
 
-    public static void main (String[] args)  throws Exception
-    {
+- IDE 'nizi kullanarak *Demoapplication* sınıfına sağ tıklayıp yürütebilmelisiniz.
+- Maven kullanarak uygulamayı çalıştırarak çalıştırabilirsiniz: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"` .
 
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
-
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-    
-                Statement statement = connection.createStatement();
-                ResultSet results = statement.executeQuery("SELECT * from inventory;");
-                while (results.next())
-                {
-                    String outputString = 
-                        String.format(
-                            "Data row = (%s, %s, %s)",
-                            results.getString(1),
-                            results.getString(2),
-                            results.getString(3));
-                    System.out.println(outputString);
-                }
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
-    }
-}
+Uygulama, PostgreSQL için Azure veritabanı 'na bağlanmalıdır, bir veritabanı şeması oluşturun ve konsol günlüklerinde gördüğünüz gibi bağlantıyı kapatır:
 
 ```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Closing database connection 
+```
 
-## <a name="update-data"></a>Verileri güncelleştirme
-**UPDATE** SQL deyimiyle verileri değiştirmek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, update deyimini hazırlamak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemleri kullanılır. 
+### <a name="create-a-domain-class"></a>Etki alanı sınıfı oluşturma
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+`Todo`Sınıfının yanında yeni bir Java sınıfı oluşturun `DemoApplication` ve aşağıdaki kodu ekleyin:
 
 ```java
-import java.sql.*;
-import java.util.Properties;
+package com.example.demo;
 
-public class UpdateTable {
-    public static void main (String[] args)  throws Exception
-    {
+public class Todo {
 
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
+    private Long id;
+    private String description;
+    private String details;
+    private boolean done;
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
+    public Todo() {
+    }
 
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
+    public Todo(Long id, String description, String details, boolean done) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.done = done;
+    }
 
-        Connection connection = null;
+    public Long getId() {
+        return id;
+    }
 
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Modify some data in table.
-                int nRowsUpdated = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE inventory SET quantity = ? WHERE name = ?;");
-                preparedStatement.setInt(1, 200);
-                preparedStatement.setString(2, "banana");
-                nRowsUpdated += preparedStatement.executeUpdate();
-                System.out.println(String.format("Updated %d row(s) of data.", nRowsUpdated));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", done=" + done +
+                '}';
     }
 }
 ```
-## <a name="delete-data"></a>Verileri silme
-**DELETE** SQL deyimiyle verileri kaldırmak için aşağıdaki kodu kullanın. Veritabanına bağlanmak, delete deyimini hazırlamak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemleri kullanılır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Bu sınıf, `todo` *şema. SQL* betiği yürütürken oluşturduğunuz tabloda eşlenmiş bir etki alanı modelidir.
+
+### <a name="insert-data-into-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'na veri ekleme
+
+*Src/Main/Java/DemoApplication. Java* dosyasında, Main yönteminden sonra veritabanına veri eklemek için aşağıdaki yöntemi ekleyin:
 
 ```java
-import java.sql.*;
-import java.util.Properties;
+private static void insertData(Todo todo, Connection connection) throws SQLException {
+    log.info("Insert data");
+    PreparedStatement insertStatement = connection
+            .prepareStatement("INSERT INTO todo (id, description, details, done) VALUES (?, ?, ?, ?);");
 
-public class DeleteTable {
-    public static void main (String[] args)  throws Exception
-    {
-
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
-
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Delete some data from table.
-                int nRowsDeleted = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM inventory WHERE name = ?;");
-                preparedStatement.setString(1, "orange");
-                nRowsDeleted += preparedStatement.executeUpdate();
-                System.out.println(String.format("Deleted %d row(s) of data.", nRowsDeleted));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
-    }
+    insertStatement.setLong(1, todo.getId());
+    insertStatement.setString(2, todo.getDescription());
+    insertStatement.setString(3, todo.getDetails());
+    insertStatement.setBoolean(4, todo.isDone());
+    insertStatement.executeUpdate();
 }
+```
+
+Artık yönteminde aşağıdaki iki satırın açıklamasını bulabilirsiniz `main` :
+
+```java
+Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+insertData(todo, connection);
+```
+
+Ana sınıfın yürütülmesi şu çıktıyı üretmelidir:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Closing database connection
+```
+
+### <a name="reading-data-from-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'ndan veri okuma
+
+Kodunuzun doğru şekilde çalışıp çalışmadığını doğrulamak için daha önce eklenen verileri okuyalim.
+
+*Src/Main/Java/DemoApplication. Java* dosyasında, yönteminden sonra, `insertData` veritabanından veri okumak için aşağıdaki yöntemi ekleyin:
+
+```java
+private static Todo readData(Connection connection) throws SQLException {
+    log.info("Read data");
+    PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
+    ResultSet resultSet = readStatement.executeQuery();
+    if (!resultSet.next()) {
+        log.info("There is no data in the database!");
+        return null;
+    }
+    Todo todo = new Todo();
+    todo.setId(resultSet.getLong("id"));
+    todo.setDescription(resultSet.getString("description"));
+    todo.setDetails(resultSet.getString("details"));
+    todo.setDone(resultSet.getBoolean("done"));
+    log.info("Data read from the database: " + todo.toString());
+    return todo;
+}
+```
+
+Artık yönteminde aşağıdaki satırı açıklama ekleyebilirsiniz `main` :
+
+```java
+todo = readData(connection);
+```
+
+Ana sınıfın yürütülmesi şu çıktıyı üretmelidir:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="updating-data-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda veriler güncelleştiriliyor
+
+Daha önce eklediğimiz verileri güncelleştirelim.
+
+Hala *src/Main/Java/DemoApplication. Java* dosyasında, yönteminden sonra, `readData` veritabanı içindeki verileri güncelleştirmek için aşağıdaki yöntemi ekleyin:
+
+```java
+private static void updateData(Todo todo, Connection connection) throws SQLException {
+    log.info("Update data");
+    PreparedStatement updateStatement = connection
+            .prepareStatement("UPDATE todo SET description = ?, details = ?, done = ? WHERE id = ?;");
+
+    updateStatement.setString(1, todo.getDescription());
+    updateStatement.setString(2, todo.getDetails());
+    updateStatement.setBoolean(3, todo.isDone());
+    updateStatement.setLong(4, todo.getId());
+    updateStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Artık yönteminde aşağıdaki iki satırın açıklamasını bulabilirsiniz `main` :
+
+```java
+todo.setDetails("congratulations, you have updated data!");
+updateData(todo, connection);
+```
+
+Ana sınıfın yürütülmesi şu çıktıyı üretmelidir:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="deleting-data-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda veri silme
+
+Son olarak, daha önce eklediğimiz verileri silelim.
+
+Hala *src/Main/Java/DemoApplication. Java* dosyasında, yönteminden sonra, `updateData` veritabanı içindeki verileri silmek için aşağıdaki yöntemi ekleyin:
+
+```java
+private static void deleteData(Todo todo, Connection connection) throws SQLException {
+    log.info("Delete data");
+    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
+    deleteStatement.setLong(1, todo.getId());
+    deleteStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Artık yönteminde aşağıdaki satırı açıklama ekleyebilirsiniz `main` :
+
+```java
+deleteData(todo, connection);
+```
+
+Ana sınıfın yürütülmesi şu çıktıyı üretmelidir:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Delete data 
+[INFO   ] Read data 
+[INFO   ] There is no data in the database! 
+[INFO   ] Closing database connection 
+```
+
+## <a name="conclusion-and-resources-clean-up"></a>Sonuç ve kaynak Temizleme
+
+Tebrikler! PostgreSQL için Azure veritabanı 'ndan veri depolamak ve almak için JDBC kullanan bir Java uygulaması oluşturdunuz.
+
+Bu hızlı başlangıç sırasında kullanılan tüm kaynakları temizlemek için, aşağıdaki komutu kullanarak kaynak grubunu silin:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

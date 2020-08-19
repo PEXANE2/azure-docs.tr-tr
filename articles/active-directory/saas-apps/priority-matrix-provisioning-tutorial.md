@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için öncelik matrisi yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını öncelik matrisine otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: a4598a99-3c98-4c14-86c2-95cc562e2439
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: 80ffaba6713027d216958e0be2cd4ae35a8d2d70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bca751c55182df99e87ff1651de534985d9b5e76
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063484"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548999"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için öncelik matrisini yapılandırma
 
@@ -108,7 +104,7 @@ Bu bölüm, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup atam
 
 ### <a name="to-configure-automatic-user-provisioning-for-priority-matrix-in-azure-ad"></a>Azure AD 'de öncelik matrisi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

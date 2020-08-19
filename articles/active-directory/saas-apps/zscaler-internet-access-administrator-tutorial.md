@@ -2,26 +2,21 @@
 title: 'Öğretici: Zscaler Internet erişimi yöneticisiyle Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve Zscaler Internet erişimi Yöneticisi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: ea555097-bf62-45dd-9b45-b75c50324a69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2957cf59a93837e4f84f64be054cdb9e6939da3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0cbcfb65d7c7ac71b17e38dd72545a3d8fd2f162
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016540"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Öğretici: Zscaler Internet erişim yöneticisiyle Azure Active Directory tümleştirme
 
@@ -35,7 +30,7 @@ Zscaler Internet Access Administrator 'ı Azure AD ile tümleştirmek aşağıda
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Zscaler Internet erişimi yöneticisiyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -137,7 +132,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Name  | Kaynak özniteliği  |
+    | Adı  | Kaynak özniteliği  |
     | ---------| ------------ |
     | Rol     | Kullanıcı. atandroles |
 

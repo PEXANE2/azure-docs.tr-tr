@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d0c6488f9a75bbf9ba6775138edeed9c4a397abf
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552229"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547333"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,12 +42,6 @@ Skaler değerler, listeler, tablolar, resimler, dizinler ve daha fazlası dahil 
 ## <a name="interactive-logging-session"></a>Etkileşimli günlüğe kaydetme oturumu
 
 Etkileşimli günlük oturumları genellikle Not defteri ortamlarında kullanılır. [Deneme. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) yöntemi etkileşimli bir günlüğe kaydetme oturumu başlatır. Oturum sırasında günlüğe kaydedilen tüm ölçümler, denemenin içindeki çalıştırma kaydına eklenir. [Run. Completed ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) yöntemi oturumları sonlandırır ve çalıştırmayı tamamlandı olarak işaretler.
-
-Aşağıdaki kod parçacığı, [Çalıştır. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) yöntemiyle eğitim parametrelerini ve performans ölçümlerini günlüğe kaydetmek için etkileşimli bir oturum açma oturumu kullanır. Ayrıca, eğitilen modeli belirtilen bir çıkış konumuna yükler.
-
-[! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb? Name = create_experiment)]
-
-Etkileşimli günlüğe kaydetme kullanan tüm örnek bir not defteri için bkz. bir [Not defterinde model eğitme](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb).
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig günlükleri
 

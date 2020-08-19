@@ -2,26 +2,21 @@
 title: 'Öğretici Azure Active Directory: Fheye/CRUCIBLE için Kantega SSO ile tümleştirme | Microsoft Docs'
 description: Fheye/CRUCIBLE için Azure Active Directory ile Kantega SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9fe951fd-1530-4d33-a1a4-390385b99ce9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f262f94c451d5dcffd933bdebb1374b8733b9fd8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67595182"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Öğretici: Fheye/CRUCIBLE için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Azure AD ile Fheys/CRUCIBLE için Kantega SSO 'yu tümleştirmek aşağıdaki av
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -153,7 +148,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
     ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
-1. Yükleme tamamlandıktan sonra. **Kapat**' a tıklayın.
+1. Yükleme tamamlandıktan sonra. **Kapat**’a tıklayın.
 
     ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
@@ -241,11 +236,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -293,11 +288,11 @@ Azure AD kullanıcılarının fhete/Crucıya 'da oturum açmasını sağlamak i�
 
     ![Çalışan Ekle](./media/kantegassoforfisheyecrucible-tutorial/user3.png)
 
-    a. Kullanıcı **adı** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-postasını yazın.
+    a. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
 
     b. **Görünen ad** metin kutusuna, Britta Simon gibi kullanıcının görünen adını yazın.
 
-    c. **E-posta adresi** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-posta adresini yazın.
+    c. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
     d. **Parola** metin kutusuna kullanıcının parolasını yazın.
 

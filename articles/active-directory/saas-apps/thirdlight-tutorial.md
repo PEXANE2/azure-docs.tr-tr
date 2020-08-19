@@ -2,25 +2,21 @@
 title: 'Öğretici: üç cülü ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Bu öğreticide, Azure Active Directory ve üçüncü olarak çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 168aae9a-54ee-4c2b-ab12-650a2c62b901
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Öğretici: üçüncülü ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Bu öğreticide, üç cülü Azure Active Directory (Azure AD) ile nasıl tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -55,7 +51,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin:
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin:
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -132,7 +128,7 @@ Azure AD çoklu oturum açma 'yı üçe Dlight ile yapılandırmak için şu ad�
 
 1. Yeni bir Web tarayıcısı penceresinde, diğer şirket sitenizde yönetici olarak oturum açın.
 
-1. **Yapılandırma** > **sistem yönetimi** > **SAML2**şuraya gidin:
+1. **Yapılandırma**  >  **sistem yönetimi**  >  **SAML2**şuraya gidin:
 
     ![Sistem Yönetimi](./media/thirdlight-tutorial/ic805843.png "Sistem Yönetimi")
 
@@ -166,7 +162,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@\<\< yourcompanydomain> yazın. Uzantı>**. (Örneğin, BrittaSimon@contoso.com.)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

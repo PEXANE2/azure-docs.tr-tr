@@ -2,26 +2,21 @@
 title: 'Öğretici: ILMS ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve ILMS arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: d6e11639-6cea-48c9-b008-246cf686e726
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944014"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545222"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Öğretici: ILMS 'Leri Azure Active Directory ile tümleştirme
 
@@ -113,7 +108,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -165,7 +160,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     f. **Kullanıcı profilindeki zorunlu olmayan alanlar Için boş değerleri Güncelleştir** seçeneği işaretliyse, oturum açma sonrasında boş olan isteğe bağlı profil alanları kullanıcının ILMS profilinin bu alanlar için boş değerler içermesine neden olur.
 
-    g. **Hata bildirim e-postasını gönder** ' i işaretleyin ve hata bildirim e-postasını almak istediğiniz kullanıcının e-postasını girin.
+    örneğin: **Hata bildirim e-postasını gönder** ' i işaretleyin ve hata bildirim e-postasını almak istediğiniz kullanıcının e-postasını girin.
 
 7. Ayarları kaydetmek için **Kaydet** düğmesine tıklayın.
 
@@ -179,9 +174,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -221,7 +216,7 @@ El ile bir kullanıcı oluşturmanız gerekiyorsa, aşağıdaki adımları izley
 
     b. **Soyadı** metin kutusuna Simon gibi son adı yazın.
 
-    c. **E-posta kimliği** metin kutusuna, gibi BrittaSimon@contoso.comkullanıcının e-posta adresini yazın.
+    c. **E-posta kimliği** metin kutusuna, gibi kullanıcının e-posta adresini yazın BrittaSimon@contoso.com .
 
     d. **Bölge** açılan kutusunda bölge değerini seçin.
 
@@ -229,7 +224,7 @@ El ile bir kullanıcı oluşturmanız gerekiyorsa, aşağıdaki adımları izley
 
     f. **Departman** açılan menüsünde departman değerini seçin.
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
     > [!NOTE]
     > Kayıt postası **Gönder** onay kutusunu seçerek kullanıcıya kayıt postası gönderebilirsiniz.

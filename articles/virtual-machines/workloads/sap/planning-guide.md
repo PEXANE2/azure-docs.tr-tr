@@ -8,15 +8,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61401fc15f6f1003f6969787854fad65bfb6a5ab
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511244"
+ms.locfileid: "88547418"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -365,7 +365,7 @@ Azure belgelerindeki SAP iş yükünün giriş noktası [burada](./get-started.m
 
 Aşağıdaki SAP notları, Azure 'daki SAP konusuyla ilgilidir:
 
-| Dekont numarası | Title |
+| Dekont numarası | Başlık |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve boyutlandırma |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -766,6 +766,8 @@ Microsoft Azure, VM 'Leri ve ilişkili diskleri dağıtmanın birden çok yolunu
 #### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a><a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Bir VM 'yi Şirket içinden, genelleştirilmiş olmayan bir disk ile Azure 'a taşıma
 
 Belirli bir SAP sistemini Şirket içinden Azure 'a taşımayı planlarsınız. Bu işlem, işletim sistemini, SAP Ikililerini ve DBMS ikililerini içeren VHD 'yi, DBMS 'nin veri ve günlük dosyalarıyla Azure 'a karşıya yükleyerek yapılabilir. [Aşağıdaki senaryo #2][planning-guide-5.1.2]aksine, Azure VM 'de ana bilgisayar adı, SAP SID 'SI ve SAP Kullanıcı hesaplarını şirket içi ortamda yapılandırıldıklarında saklayın. Bu nedenle, görüntüyü genelleştirerek gerekli değildir. Şirket içi hazırlama adımları ve genelleştirilmiş VM 'Ler ya da VHD 'lerin Azure 'a yüklenmesi için, [BIR VM 'yi Şirket içinden bu belgenin Genelleştirilmiş olmayan bir disketiyle Azure 'a taşımaya yönelik bölüm hazırlama][planning-guide-5.2.1] bölümüne bakın. Bölüm senaryosunu okuyun 3: Azure 'da böyle bir görüntüyü dağıtmanın ayrıntılı adımları için [dağıtım KıLAVUZUNDA][deployment-guide] [SAP Ile GENELLEŞTIRILMIŞ bir Azure VHD kullanarak bir VM 'Yi Şirket içinden taşıma][deployment-guide-3.4] .
+
+Bu kılavuzda ayrıntılı olarak açıklanmayacak başka bir seçenek, SAP NetWeaver uygulama sunucularını ve SAP NetWeaver merkezi hizmetlerini Azure 'a çoğaltmak için Azure Site Recovery kullanmaktır. Veritabanı katmanı için Azure Site Recovery kullanmanız önerilmez ve HANA sistem çoğaltması gibi veritabanına özgü çoğaltma mekanizmalarını kullanın. Daha fazla bilgi için bkz. Şirket [içi uygulamalar için olağanüstü durum kurtarma hakkında](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload) bilgi için bkz. bölüm [koruma](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) .
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Müşteriye özgü bir görüntüyle VM dağıtma
 

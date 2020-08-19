@@ -2,26 +2,21 @@
 title: 'Öğretici: SAP Cloud Platform ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve SAP bulut platformu arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168873"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Öğretici: SAP Cloud Platform ile tümleştirme Azure Active Directory
 
@@ -112,7 +107,7 @@ Azure AD çoklu oturum açmayı SAP Cloud Platform ile yapılandırmak için aş
 
     ![SAP Cloud Platform etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, kullanıcılarınız tarafından **SAP bulut platformu** uygulamanızda oturum açmak için kullanılan URL 'yi yazın. Bu, SAP bulut platformu uygulamanızda korunan bir kaynağın hesaba özgü URL 'sidir. URL aşağıdaki modele dayalıdır:`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. **Oturum açma URL 'si** metin kutusunda, kullanıcılarınız tarafından **SAP bulut platformu** uygulamanızda oturum açmak için kullanılan URL 'yi yazın. Bu, SAP bulut platformu uygulamanızda korunan bir kaynağın hesaba özgü URL 'sidir. URL aşağıdaki modele dayalıdır: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
     >[!NOTE]
     >Bu, SAP bulut platformu uygulamanızda kullanıcının kimlik doğrulamasını gerektiren URL 'dir.

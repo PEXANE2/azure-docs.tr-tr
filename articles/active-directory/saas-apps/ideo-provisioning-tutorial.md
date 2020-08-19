@@ -2,25 +2,21 @@
 title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için ıDEO 'ı yapılandırma | Microsoft Docs"
 description: Kullanıcı hesaplarını ıDEO 'ya otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: de4f06a3-83e9-46ce-80ee-03d706b91c81
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: a778675bade3b381907a823e74f07ab4e7f96581
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f1b42619a80610a1732fb763dd4994241bf584fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926884"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547452"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için ıDEO 'ı yapılandırma
 
@@ -38,7 +34,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları ıDEO 
 > * IDEO 'da grupları ve grup üyeliklerini sağlama
 > * IDEO 'da çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -78,7 +74,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak ıDEO 'daki kullanıcılar
 
 ### <a name="to-configure-automatic-user-provisioning-for-ideo-in-azure-ad"></a>Azure AD 'de ıDEO için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

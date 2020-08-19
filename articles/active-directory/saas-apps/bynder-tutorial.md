@@ -2,26 +2,21 @@
 title: 'Öğretici: Bynder ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Bynder arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 250dbdf2-faf5-48dd-be7c-d54502ef7528
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1848610250e696807acef118384f43d2a51442ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f47fe7f18c4054f65e7a6882d4003006b1a896ad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80984496"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547590"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Öğretici: Bynder ile Azure Active Directory tümleştirme
 
@@ -86,23 +81,23 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    Varsayılan etki alanı için:`https://<company name>.getbynder.com`
+    Varsayılan etki alanı için:  `https://<company name>.getbynder.com`
     
-    Özel etki alanı için:`https;//<subdomain>.<domain>.com`
+    Özel etki alanı için:  `https;//<subdomain>.<domain>.com`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
-     Varsayılan etki alanı için:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+     Varsayılan etki alanı için:  `https://<company name>.getbynder.com/sso/SAML/authenticate/`
     
-    Özel etki alanı için:`https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
+    Özel etki alanı için:  `https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-     Varsayılan etki alanı için:`https://<company name>.getbynder.com/login/`
+     Varsayılan etki alanı için:  `https://<company name>.getbynder.com/login/`
     
-     Özel etki alanı için:` https://<subdomain>.<domain>.com/login/`
+     Özel etki alanı için:  ` https://<subdomain>.<domain>.com/login/`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Bynder istemci destek ekibine](https://www.bynder.com/en/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -143,9 +138,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -180,8 +175,8 @@ Erişim panelinde Bynder kutucuğuna tıkladığınızda, SSO 'yu ayarladığın
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

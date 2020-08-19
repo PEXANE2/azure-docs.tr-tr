@@ -1,14 +1,14 @@
 ---
 title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236548"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547673"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -16,8 +16,7 @@ ms.locfileid: "88236548"
  
 Linux için konuk yapılandırma ilkeleri oluşturma hakkında bilgi edinmek için bkz. [Linux Için Konuk yapılandırma ilkeleri oluşturma](./guest-configuration-create-linux.md) sayfası
 
-Windows 'u denetlerken, Konuk yapılandırması yapılandırma dosyasını oluşturmak için [Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması, makinenin içinde olması gereken koşulu tanımlar.
-Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
+Windows’u denetlerken, Konuk Yapılandırması yapılandırma dosyasını oluşturmak için [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması makinenin olması gereken durumu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
 
 [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md) , yalnızca makineler içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz kullanılamamaktadır.
 
@@ -26,7 +25,7 @@ Bir Azure veya Azure dışı makinenin durumunu doğrulamak üzere kendi yapıla
 > [!IMPORTANT]
 > Konuk yapılandırması olan özel ilkeler bir önizleme özelliğidir.
 >
-> Azure sanal makinelerinde denetimleri gerçekleştirmek için konuk yapılandırma uzantısı gereklidir.
+> Konuk Yapılandırma uzantısı Azure sanal makinelerinde denetim gerçekleştirmek için gereklidir.
 > Uzantıyı tüm Windows makineleri genelinde ölçekli olarak dağıtmak için aşağıdaki ilke tanımlarını atayın:
 >   - [Windows VM 'lerinde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
@@ -56,7 +55,7 @@ Konuk yapılandırması kaynak modülü için aşağıdaki yazılımlar gereklid
 
 - PowerShell 6,2 veya sonraki bir sürümü. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/scripting/install/installing-powershell) izleyin.
 - Azure PowerShell 1.5.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
-  - Yalnızca AZ modüller ' az. Accounts ' ve ' az. resources ' gereklidir.
+  - Yalnızca az modüller ' az. Accounts ' ve ' az. resources ' gereklidir.
 
 ### <a name="install-the-module"></a>Modülü yükler
 
@@ -90,8 +89,7 @@ Konuk yapılandırma bir makineyi denet,, olay sırası Windows PowerShell DSC '
 1. İşlevin döndürdüğü Boole değeri, Konuk atamasının Azure Resource Manager durumunun uyumlu olup olmadığını belirler.
 1. Sağlayıcı `Get-TargetResource` her ayarın geçerli durumunu döndürmek için çalışır, böylece ayrıntılar, makinenin neden uyumlu olmaması ve geçerli durumun uyumlu olduğunu doğrulamak için geçerlidir.
 
-Azure Ilkesindeki, verileri Konuk yapılandırma atamalarına geçiren parametreler _dize_ türünde olmalıdır.
-DSC kaynağı dizileri desteklediğinden bile, dizileri parametreler aracılığıyla geçirmek mümkün değildir.
+Azure Ilkesindeki, verileri Konuk yapılandırma atamalarına geçiren parametreler _dize_ türünde olmalıdır. DSC kaynağı dizileri desteklediğinden bile, dizileri parametreler aracılığıyla geçirmek mümkün değildir.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-Nedenler özelliği ayrıca, kaynak için bir katıştırılmış sınıf olarak şema MOF 'ye eklenmelidir.
+Nedenler özelliği, kaynak için şema MOF öğesine eklenmiş bir sınıf olarak eklenmelidir.
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ Paket biçimi bir. zip dosyası olmalıdır.
 ### <a name="storing-guest-configuration-artifacts"></a>Konuk yapılandırma yapıtları depolanıyor
 
 . Zip paketinin yönetilen sanal makineler tarafından erişilebilen bir konumda depolanması gerekir.
-GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-sas-overview.md) ekleyebilirsiniz.
-Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
+GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-sas-overview.md) ekleyebilirsiniz. Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Adım adım, Windows için özel konuk yapılandırma denetim ilkesi oluşturma
 
@@ -602,5 +599,5 @@ Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için yerleşik Kılavuzu g�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuk yapılandırması](../concepts/guest-configuration.md)olan VM 'leri denetleme hakkında bilgi edinin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](get-compliance-data.md)öğrenin.
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](./programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](./get-compliance-data.md)öğrenin.

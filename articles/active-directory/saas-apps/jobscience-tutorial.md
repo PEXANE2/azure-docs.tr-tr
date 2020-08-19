@@ -2,25 +2,20 @@
 title: 'Öğretici: Jobscience ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Jobscience arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870534"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Öğretici: Jobscience ile Azure Active Directory tümleştirme
 
@@ -146,7 +141,7 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
 
 1. Jobscience şirket sitesinde **güvenlik denetimleri**' ne ve ardından **Çoklu oturum açma ayarları**' na tıklayın.
     
-    ![Güvenlik Denetimleri](./media/jobscience-tutorial/ic784364.png "Güvenlik Denetimleri")
+    ![Güvenlik denetimleri](./media/jobscience-tutorial/ic784364.png "Güvenlik Denetimleri")
 
 1. **Çoklu oturum açma ayarları** bölümünde aşağıdaki adımları uygulayın:
     
@@ -192,7 +187,7 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
 
 1. SP tarafından başlatılan çoklu oturum açma URL 'sini almak için **güvenlik denetimleri** menü bölümündeki **Çoklu oturum açma ayarları** ' na tıklayın.
 
-    ![Güvenlik Denetimleri](./media/jobscience-tutorial/ic784368.png "Güvenlik Denetimleri")
+    ![Güvenlik denetimleri](./media/jobscience-tutorial/ic784368.png "Güvenlik Denetimleri")
     
     Yukarıdaki adımda oluşturduğunuz SSO profilini tıklatın. Bu sayfada şirketiniz için çoklu oturum açma URL 'SI (örneğin,) gösterilir `https://companyname.my.salesforce.com?so=companyid` .    
 
@@ -229,7 +224,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** ' i seçin ve **parola**değerini yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
  
 ### <a name="creating-a-jobscience-test-user"></a>Jobscience test kullanıcısı oluşturma
 

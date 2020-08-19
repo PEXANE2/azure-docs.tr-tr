@@ -2,26 +2,21 @@
 title: 'Öğretici: AnswerHub ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve AnswerHub arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73152998"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Öğretici: AnswerHub ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ AnswerHub Azure AD ile tümleştirmek şu avantajları sağlar:
 * Hesaplarınızı merkezi bir konumdan yönetebilirsiniz: Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -185,7 +180,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     a. **Ad** kutusuna **Brittasıon**yazın.
   
-    b. **Kullanıcı adı** kutusuna **\@ brittasıon<yourcompanydomain. Extension>** girin.  
+    b. **Kullanıcı adı** kutusuna **brittasıon \@<yourcompanydomain. Extension>** girin.  
     Örneğin, BrittaSimon@contoso.com.
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.

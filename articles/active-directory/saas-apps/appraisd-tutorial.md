@@ -2,26 +2,21 @@
 title: 'Öğretici: Appraisd ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Appraisd arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: db063306-4d0d-43ca-aae0-09f0426e7429
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67561192"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547792"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Öğretici: Appraisd ile tümleştirin Azure Active Directory
 
@@ -84,7 +79,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Geçiş durumu** metin kutusuna bir URL yazın:`<TENANTCODE>`
 
-    c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Isterseniz, **oturum açma URL 'si** metin kutusuna AŞAĞıDAKI kalıbı kullanarak bir URL yazın:`https://app.appraisd.com/saml/<TENANTCODE>`
+    c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Isterseniz, **oturum açma URL 'si** metin kutusuna AŞAĞıDAKI kalıbı kullanarak bir URL yazın: `https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
     > Appraisd SSO yapılandırma sayfasında, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve geçiş durumu değerini alırsınız.
@@ -147,9 +142,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B. Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B. Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B. Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -193,7 +188,7 @@ Azure AD kullanıcılarının Appraisd 'de oturum açmasını sağlamak için, A
 
     b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B. Simon@contoso.com`.
+    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B. Simon@contoso.com` .
 
     d. **Kullanıcı Ekle**' ye tıklayın.
 
