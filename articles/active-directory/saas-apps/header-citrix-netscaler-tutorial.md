@@ -2,26 +2,21 @@
 title: 'Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (üst bilgi tabanlı kimlik doğrulaması) | Microsoft Docs'
 description: Üst bilgi tabanlı kimlik doğrulaması kullanarak Azure Active Directory ve Citrix NetScaler arasında çoklu oturum açma (SSO) yapılandırma hakkında bilgi edinin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b0adc7bf-696d-44c9-a57a-f9e9471b8710
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ea6824975d0cb3f4b909db41188c490bbba6d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80477948"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (üst bilgi tabanlı kimlik doğrulaması)
 
@@ -154,9 +149,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
 
-   1. **Ad**için girin `B.Simon`.  
+   1. **Ad**için girin `B.Simon` .  
 
-   1. **Kullanıcı adı**için girin _username@companydomain.extension_. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı**için girin _username@companydomain.extension_ . Örneğin, `B.Simon@contoso.com`.
 
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola**' ya, sonra da görüntülenen değeri yazın veya kopyalayın.
 
@@ -174,7 +169,7 @@ Bu bölümde, Kullanıcı, Citrix NetScaler 'a erişim izni vererek, B. Simon ku
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -196,18 +191,18 @@ Yapılandırmak istediğiniz kimlik doğrulaması türü için adımlar için bi
 
 Bir sanal sunucu oluşturmak için:
 
-1. **Trafik yönetimi** > **Yük Dengeleme** > **Hizmetleri**' ni seçin.
+1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Citrix NetScaler yapılandırma-hizmetler bölmesi](./media/header-citrix-netscaler-tutorial/web01.png)
 
 1. Uygulamaları çalıştıran Web sunucusu için aşağıdaki değerleri ayarlayın:
 
-   * **Hizmet adı**
+   * **Hizmet Adı**
    * **Sunucu IP/varolan sunucu**
-   * **Protocol**
-   * **Bağ**
+   * **Protokol**
+   * **Bağlantı noktası**
 
      ![Citrix NetScaler yapılandırma bölmesi](./media/header-citrix-netscaler-tutorial/web01.png)
 
@@ -215,16 +210,16 @@ Bir sanal sunucu oluşturmak için:
 
 Yük dengeleyiciyi yapılandırmak için:
 
-1. **Trafik yönetimi** > **Yük Dengeleme** > **sanal sunucularına**gidin.
+1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
-    * **Adı**
-    * **Protocol**
-    * **IP Adresi**
-    * **Bağ**
+    * **Ad**
+    * **Protokol**
+    * **IP adresi**
+    * **Bağlantı noktası**
 
 1. **Tamam**’ı seçin.
 
@@ -262,9 +257,9 @@ Citrix ADC SAML profilini yapılandırmak için aşağıdaki bölümleri dolduru
 
 Kimlik doğrulama ilkesi oluşturmak için:
 
-1. **Güvenlik** > **aaa – uygulama trafik** > **ilkeleri** > **kimlik** > doğrulama**ilkeleri**' ne gidin.
+1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -298,7 +293,7 @@ Bir kimlik doğrulama SAML sunucusu oluşturmak için, **kimlik doğrulaması SA
 
 Kimlik doğrulama sanal sunucusu oluşturmak için:
 
-1.  **Güvenlik** > **aaa-uygulama trafik** > **ilkeleri** > **kimlik** > doğrulama**sanal sunucuları**' na gidin.
+1.  **Güvenlik**  >  **aaa-uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **sanal sunucuları**' na gidin.
 
 1.  **Ekle**' yi seçin ve ardından aşağıdaki adımları uygulayın:
 
@@ -351,7 +346,7 @@ Kimlik doğrulama sanal sunucusu için iki bölümü değiştirin:
 
 #### <a name="create-a-rewrite-action"></a>Yeniden yazma eylemi oluştur
 
-1. **Appexpert** > **yeniden** > yazma**eylemleri**' ne gidin.
+1. **Appexpert**  >  **yeniden**yazma  >  **eylemleri**' ne gidin.
  
     ![Citrix NetScaler yapılandırması-yeniden yazma eylemleri bölmesi](./media/header-citrix-netscaler-tutorial/header01.png)
 
@@ -371,7 +366,7 @@ Kimlik doğrulama sanal sunucusu için iki bölümü değiştirin:
  
 #### <a name="create-a-rewrite-policy"></a>Yeniden yazma ilkesi oluşturma
 
-1.  **Appexpert** > **yeniden** > yazma**ilkelerine**gidin.
+1.  **Appexpert**  >  **yeniden**yazma  >  **ilkelerine**gidin.
  
     ![Citrix NetScaler yapılandırması-Ilkeleri yeniden yaz bölmesi](./media/header-citrix-netscaler-tutorial/header03.png)
 
@@ -391,7 +386,7 @@ Kimlik doğrulama sanal sunucusu için iki bölümü değiştirin:
 
 GUI kullanarak bir yeniden yazma ilkesini bir sanal sunucuya bağlamak için:
 
-1. **Trafik yönetimi** > **Yük Dengeleme** > **sanal sunucularına**gidin.
+1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
 1. Sanal sunucular listesinde, yeniden yazma ilkesini bağlamak istediğiniz sanal sunucuyu seçin ve **Aç**' ı seçin.
 
@@ -417,13 +412,13 @@ GUI kullanarak bir yeniden yazma ilkesini bir sanal sunucuya bağlamak için:
 
 ### <a name="modify-the-saml-server-to-extract-attributes-from-a-claim"></a>Bir talepten öznitelikleri ayıklamak için SAML sunucusunu değiştirin
 
-1.  **Güvenlik** > **aaa-uygulama trafik** > **ilkeleri** > **kimlik doğrulama** > **Gelişmiş İlkeler** > **Eylemler** > **sunucular**' a gidin.
+1.  **Güvenlik**  >  **aaa-uygulama trafik**  >  **ilkeleri**  >  **kimlik doğrulama**  >  **Gelişmiş İlkeler**  >  **Eylemler**  >  **sunucular**' a gidin.
 
 1.  Uygulama için uygun kimlik doğrulama SAML sunucusunu seçin.
  
     ![Citrix NetScaler yapılandırması-kimlik doğrulama SAML sunucu bölmesini yapılandırma](./media/header-citrix-netscaler-tutorial/header09.png)
 
-1. **Özniteliklerde** sorun, AYıKLAMAK istediğiniz SAML özniteliklerini virgülle ayırarak girin. Örneğimizde özniteliği `mySecretID`giriyoruz.
+1. **Özniteliklerde** sorun, AYıKLAMAK istediğiniz SAML özniteliklerini virgülle ayırarak girin. Örneğimizde özniteliği giriyoruz `mySecretID` .
  
     ![Citrix NetScaler yapılandırması-Öznitelikler bölmesi](./media/header-citrix-netscaler-tutorial/header10.png)
 

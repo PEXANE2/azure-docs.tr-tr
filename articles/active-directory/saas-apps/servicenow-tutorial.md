@@ -2,25 +2,21 @@
 title: 'Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve ServiceNow arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507758"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540244"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +28,7 @@ Bu öğreticide ServiceNow 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -250,7 +246,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
     1. ServiceNow uygulamanızda yönetici olarak oturum açın.
 
-       * Otomatik yapılandırmada, tüm gerekli ayarlar **ServiceNow** tarafında yapılandırılır, ancak **X. 509.440 sertifikası** varsayılan olarak etkinleştirilmez. ServiceNow 'daki kimlik sağlayıcınızda el ile eşlemeniz gerekir. Şu adımları izleyin:
+       * Otomatik yapılandırmada, tüm gerekli ayarlar **ServiceNow** tarafında yapılandırılır, ancak **X. 509.440 sertifikası** varsayılan olarak etkinleştirilmez. ServiceNow 'daki kimlik sağlayıcınızda el ile eşlemeniz gerekir. Şu adımları uygulayın:
 
          1. Sol bölmede, arama kutusundan **çok sağlayıcıya YÖNELIK SSO** bölümünü arayın ve **kimlik sağlayıcıları**' nı seçin.
 
@@ -296,7 +292,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
              > ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/testconnection-fail.png "Çoklu oturum açmayı yapılandırma")
         
-          1. Kimlik bilgileriniz sorulduğunda, bunları girin. Aşağıdaki sayfayı görürsünüz. **SSO oturumu kapatma test sonuçları** hatası bekleniyor. Hatayı yoksayın ve **Etkinleştir**' i seçin.
+          1. Kimlik bilgileriniz sorulduğunda, bunları girin. Aşağıdaki sayfayı görürsünüz. **SSO oturumu kapatma test sonuçları** hatası bekleniyor. Hatayı yoksayın ve  **Etkinleştir**' i seçin.
 
              ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/servicenowactivate.png "Çoklu oturum açmayı yapılandırma")
   
@@ -353,7 +349,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
           > ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/testconnection-fail.png "Çoklu oturum açmayı yapılandırma")
 
-        * Kimlik bilgileriniz sorulduğunda, bunları girin. Aşağıdaki sayfayı görürsünüz. **SSO oturumu kapatma test sonuçları** hatası bekleniyor. Hatayı yoksayın ve **Etkinleştir**' i seçin.
+        * Kimlik bilgileriniz sorulduğunda, bunları girin. Aşağıdaki sayfayı görürsünüz. **SSO oturumu kapatma test sonuçları** hatası bekleniyor. Hatayı yoksayın ve  **Etkinleştir**' i seçin.
 
           ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/servicenowactivate.png "Çoklu oturum açmayı yapılandırma")
 

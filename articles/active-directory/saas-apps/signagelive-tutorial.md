@@ -2,26 +2,21 @@
 title: 'Öğretici: Signagelive ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Signagelive arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: d923f0e7-ad31-4d59-a6fd-f0e895e1a32d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dab2fd0ee2f25e835b4bd07a3534475d3d93b5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160932"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Öğretici: Signagelive ile tümleştirme Azure Active Directory
 
@@ -32,7 +27,7 @@ Signagelive Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla Signagelive 'de (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -61,7 +56,7 @@ Galeriden Signagelive eklemek için aşağıdaki adımları uygulayın:
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini seçin.
+3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki  **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
@@ -148,7 +143,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**yazın.
   
-    b. **Kullanıcı adı** alanına "brittasimon@yourcompanydomain.extension" yazın. Örneğin, bu durumda "BrittaSimon@contoso.com" girebilirsiniz.
+    b. **Kullanıcı adı** alanına " brittasimon@yourcompanydomain.extension " yazın. Örneğin, bu durumda " BrittaSimon@contoso.com " girebilirsiniz.
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri unutmayın.
 

@@ -2,25 +2,21 @@
 title: 'Öğretici: Egnyut ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Egnde arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76983733"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544341"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Öğretici: Egnyut ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -132,12 +128,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -197,7 +193,7 @@ Bu bölümde, erişim izni vererek Azure çoklu oturum açma özelliğini kullan
    
     f. **Varsayılan kullanıcı eşlemesi**olarak **e-posta adresi**' ni seçin.
    
-    g. **Etki alanına özgü veren değerini kullanmak**için **devre dışı**' yı seçin.
+    örneğin: **Etki alanına özgü veren değerini kullanmak**için **devre dışı**' yı seçin.
    
     h. **Kaydet**’e tıklayın.
 
@@ -209,7 +205,7 @@ Azure AD kullanıcılarının, Egnler 'de oturum açmasını sağlamak için, bu
 
 1. **Egnyi** şirket sitenizde yönetici olarak oturum açın.
 
-2. **Ayarlar \> kullanıcılar & gruplar**' a gidin.
+2. **Ayarlar \> Kullanıcılar & gruplar**' a gidin.
 
 3. **Yeni Kullanıcı Ekle**' ye tıklayın ve sonra eklemek istediğiniz kullanıcı türünü seçin.
    
@@ -219,7 +215,7 @@ Azure AD kullanıcılarının, Egnler 'de oturum açmasını sağlamak için, bu
     
     ![Yeni standart Kullanıcı](./media/egnyte-tutorial/ic787825.png "Yeni standart Kullanıcı")   
 
-    a. **E-posta** metin kutusuna, **\@brittasıon contoso.com**gibi kullanıcının e-postasını girin.
+    a. **E-posta** metin kutusuna, **Brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
     b. Kullanıcı **adı** metin kutusuna, **Brittasıon**gibi kullanıcının Kullanıcı adını girin.
 

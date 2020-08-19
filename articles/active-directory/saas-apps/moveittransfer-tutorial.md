@@ -2,25 +2,21 @@
 title: 'Öğretici: MoveIt aktarımı ile Azure Active Directory tümleştirme-Azure AD tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve MoveIt aktarma-Azure AD tümleştirmesi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 43383e82d983c998d159728997da4757cc364999
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161325"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Öğretici: MoveIt aktarımı ile Azure Active Directory tümleştirme-Azure AD tümleştirmesi
 
@@ -32,7 +28,7 @@ MoveIt aktarımını tümleştirme-Azure AD tümleştirmesi, Azure AD ile aşağ
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -173,9 +169,9 @@ Azure AD çoklu oturum açmayı MoveIt aktarma-Azure AD tümleştirmesi ile yap�
     
     a. **SAML NameID** öğesini **oturum açma adı**olarak seçin.
     
-    b. **Tam ad** olarak **diğer** ' i seçin ve **öznitelik adı** metin kutusuna değeri koyun: `http://schemas.microsoft.com/identity/claims/displayname`.
+    b. **Tam ad** olarak **diğer** ' i seçin ve **öznitelik adı** metin kutusuna değeri koyun: `http://schemas.microsoft.com/identity/claims/displayname` .
     
-    c. **E-posta** olarak **diğer** ' i seçin ve **öznitelik adı** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`koyun:.
+    c. **E-posta** olarak **diğer** ' i seçin ve **öznitelik adı** metin kutusuna değeri koyun: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
     
     d. **Oturum açma sırasında hesabı otomatik oluştur**olarak **Evet** ' i seçin.
     
@@ -199,12 +195,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -2,26 +2,21 @@
 title: 'Öğretici: RStudio Connect ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve RStudio Connect arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9bc78022-6d38-4476-8f03-e3ca2551e72e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81407095"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Öğretici: RStudio Connect ile Azure Active Directory tümleştirme
 
@@ -33,7 +28,7 @@ RStudio Connect 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -104,7 +99,7 @@ Azure AD çoklu oturum açmayı RStudio Connect ile yapılandırmak için aşağ
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız aşağıdaki adımları uygulayarak rstudio Connect Server adresiniz ve bağlantı noktasıyla değiştirin `<example.com>` :
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız aşağıdaki adımları uygulayarak `<example.com>` rstudio Connect Server adresiniz ve bağlantı noktasıyla değiştirin:
 
     ![RStudio etki alanı ve URL 'Leri bağlama çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -119,7 +114,7 @@ Azure AD çoklu oturum açmayı RStudio Connect ile yapılandırmak için aşağ
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<example.com>/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bunlar, RStudio Connect sunucu adresinden (`https://example.com` Yukarıdaki örneklerde) belirlenir. Sorun yaşıyorsanız [rstudio Connect destek ekibine](mailto:support@rstudio.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bunlar, RStudio Connect sunucu adresinden ( `https://example.com` Yukarıdaki örneklerde) belirlenir. Sorun yaşıyorsanız [rstudio Connect destek ekibine](mailto:support@rstudio.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 6. RStudio Connect uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. RStudio Connect uygulaması **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
@@ -131,7 +126,7 @@ Azure AD çoklu oturum açmayı RStudio Connect ile yapılandırmak için aşağ
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio Connect çoklu oturum açmayı yapılandırma
 
-**Rstudio Connect**için çoklu oturum açma 'yı yapılandırmak için, yukarıda kullanılan **uygulama Federasyon meta veri URL 'Sini** ve **sunucu adresini** kullanmanız gerekir. Bu, adresindeki `/etc/rstudio-connect.rstudio-connect.gcfg`rstudio Connect yapılandırma dosyasında yapılır.
+**Rstudio Connect**için çoklu oturum açma 'yı yapılandırmak için, yukarıda kullanılan **uygulama Federasyon meta veri URL 'Sini** ve **sunucu adresini** kullanmanız gerekir. Bu, adresindeki RStudio Connect yapılandırma dosyasında yapılır `/etc/rstudio-connect.rstudio-connect.gcfg` .
 
 Bu örnek bir yapılandırma dosyasıdır:
 
@@ -158,7 +153,7 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-**Sunucu adresinizi** `Server.Address` , değerinde ve **uygulama Federasyon meta veri URL 'sini** `SAML.IdPMetaData` değerinde depolayın. Bu örnek yapılandırmanın şifrelenmemiş bir HTTP bağlantısı kullandığını ve Azure AD 'nin şifreli bir HTTPS bağlantısının kullanılmasını gerektirdiğini unutmayın. RStudio 'nun önünde bir [ters proxy](https://docs.rstudio.com/connect/admin/proxy/) kullanabilir ya da rstudio Connect 'ı [doğrudan https kullanmak](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)üzere yapılandırabilirsiniz. 
+**Sunucu adresinizi** , değerinde `Server.Address` ve **uygulama Federasyon meta veri URL 'sini** değerinde depolayın `SAML.IdPMetaData` . Bu örnek yapılandırmanın şifrelenmemiş bir HTTP bağlantısı kullandığını ve Azure AD 'nin şifreli bir HTTPS bağlantısının kullanılmasını gerektirdiğini unutmayın. RStudio 'nun önünde bir [ters proxy](https://docs.rstudio.com/connect/admin/proxy/) kullanabilir ya da rstudio Connect 'ı [doğrudan https kullanmak](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)üzere yapılandırabilirsiniz. 
 
 Yapılandırma ile ilgili sorun yaşıyorsanız, [rstudio Connect yönetici kılavuzunu](https://docs.rstudio.com/connect/admin/authentication/saml/) okuyabilir veya yardım Için [rstudio destek ekibine](mailto:support@rstudio.com) e-posta gönderebilirsiniz.
 
@@ -180,11 +175,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

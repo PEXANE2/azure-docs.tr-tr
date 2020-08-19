@@ -3,12 +3,12 @@ title: Bilgi temellerini geçirme-Soru-Cevap Oluşturma
 description: Bilgi bankasını geçirmek, bir bilgi tabanından dışarı aktarma ve sonra başka bir içeri aktarma gerektirir.
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343097"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542930"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Dışarı aktarma kullanarak Bilgi Bankası geçirme
 
@@ -20,9 +20,9 @@ Geçiş, mevcut bir bilgi bankasından yeni bir Bilgi Bankası oluşturma işlem
 
 Bilgi bankasını geçirmek, mevcut bir bilgi bankasından dışa aktarma ve sonra başka bir içeri aktarma gerektirir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+* Başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 * Yeni bir [soru-cevap oluşturma hizmeti](../How-To/set-up-qnamaker-service-azure.md) ayarlama
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Bilgi bankasını Soru-Cevap Oluşturma geçirme
@@ -52,7 +52,7 @@ Bilgi bankasını geçirmek, mevcut bir bilgi bankasından dışa aktarma ve son
 
 Geçiş işlemi, aşağıdaki REST API 'Leri kullanılarak programlı olarak kullanılabilir:
 
-**Dışarı aktar**
+**Dışarı Aktarma**
 
 * [Bilgi Bankası API 'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
 

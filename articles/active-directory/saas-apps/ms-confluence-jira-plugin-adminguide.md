@@ -2,25 +2,21 @@
 title: Atlaseli Jira/Confluence Yönetici Kılavuzu-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) ile Atlaseli Jira ve Confluence kullanımı için Yönetici Kılavuzu..
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016794"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543991"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için atlasme Jira ve Confluence Yönetici Kılavuzu
 
@@ -54,7 +50,7 @@ Jira ve Confluence yöneticileri, Azure AD 'yi kullanarak SSO 'yu etkinleştirme
 * Jira veya Confluence, şirket ağı dışında da kullanılabilir.
 * Eklenti yalnızca Jira ve Confluence 'ın şirket içi sürümü ile birlikte çalışarak.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Eklentiyi yüklemeden önce aşağıdaki bilgileri aklınızda edin:
 
@@ -147,7 +143,7 @@ Aşağıdaki görüntüde hem Jira hem de Confluence içindeki yapılandırma ek
 
 * **WebSudo 'ı devre dışı bırakmak istiyorsunuz (güvenli Yönetici oturumunu devre dışı bırak)**:
 
-  * Jira için güvenli yönetici oturumları (diğer bir deyişle, yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinizdeki bu özelliği kaldırmak istiyorsanız, Jira-config. Properties dosyanızda aşağıdaki satırı belirtin:`jira.websudo.is.disabled = true`
+  * Jira için güvenli yönetici oturumları (diğer bir deyişle, yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinizdeki bu özelliği kaldırmak istiyorsanız, Jira-config. Properties dosyanızda aşağıdaki satırı belirtin: `jira.websudo.is.disabled = true`
 
   * Confluence için, [Confluence support sitesindeki](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)adımları izleyin.
 

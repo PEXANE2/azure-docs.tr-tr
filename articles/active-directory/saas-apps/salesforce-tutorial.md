@@ -2,25 +2,21 @@
 title: 'Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Salesforce arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7228f4fbf348b8112654ece91aa5e9e831ac1201
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849204"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543576"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -90,21 +86,21 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak değeri yazın:
 
-    Kurumsal Hesap:`https://<subdomain>.my.salesforce.com`
+    Kurumsal Hesap: `https://<subdomain>.my.salesforce.com`
 
-    Geliştirici hesabı:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Geliştirici hesabı: `https://<subdomain>-dev-ed.my.salesforce.com`
     
     b. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak değeri yazın:
 
-    Kurumsal Hesap:`https://<subdomain>.my.salesforce.com`
+    Kurumsal Hesap: `https://<subdomain>.my.salesforce.com`
 
-    Geliştirici hesabı:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Geliştirici hesabı: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     c. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak değeri yazın:
 
-    Kurumsal Hesap:`https://<subdomain>.my.salesforce.com`
+    Kurumsal Hesap: `https://<subdomain>.my.salesforce.com`
 
-    Geliştirici hesabı:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Geliştirici hesabı: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Salesforce istemci desteği ekibine](https://help.salesforce.com/support) başvurun.
@@ -127,7 +123,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

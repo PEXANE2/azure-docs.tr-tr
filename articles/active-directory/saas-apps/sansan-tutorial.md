@@ -2,26 +2,21 @@
 title: 'Öğretici: sansan ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ile sansan arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea824cfd5e80ce3aff06774a2e1525cf97d15f65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65c3e3df9fe62614eff15585373360ebcaa158cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67091862"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543338"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>Öğretici: Tassan 'ı Azure Active Directory ile tümleştirme
 
@@ -82,7 +77,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Oturum açma URL 'si** metin kutusunda, aşağıdaki KALıBı kullanarak URL 'nin herhangi birini yazın:
     
-    | Ortam | URL'si |
+    | Ortam | URL |
     |:--- |:--- |
     | PC Web |`https://ap.sansan.com/v/saml2/<company name>/acs` |
     | Yerel mobil uygulama |`https://internal.api.sansan.com/saml2/<company name>/acs` |
@@ -113,9 +108,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

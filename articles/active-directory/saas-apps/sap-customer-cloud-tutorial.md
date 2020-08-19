@@ -2,26 +2,21 @@
 title: 'Öğretici: müşteri için SAP bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Müşteri için Azure Active Directory ve SAP bulutu arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 90154dab-eba2-4563-bcf0-f2acc797ea97
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f9fd458ea19fa0dad2f630f94a67d5e1db96cee3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72264028"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Öğretici: müşteri için SAP bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -126,9 +121,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -152,7 +147,7 @@ Bu bölümde, müşteri için SAP buluta erişim vererek Azure çoklu oturum aç
 
 1. Yeni bir Web tarayıcı penceresi açın ve müşteri için SAP Cloud şirket sitenizde yönetici olarak oturum açın.
 
-2. Menünün sol tarafında, **kimlik sağlayıcıları** > **Kurumsal kimlik sağlayıcıları** > ' na tıklayın ve açılır pencerede **Azure AD**gibi kimlik sağlayıcısı**adını ekleyin,** **Kaydet** ' e tıklayın, ardından **SAML 2,0 yapılandırması**' na tıklayın.
+2. Menünün sol tarafında, **kimlik sağlayıcıları**   >  **Kurumsal kimlik sağlayıcıları**' na tıklayın  >  **Add** ve açılır pencerede **Azure AD**gibi kimlik sağlayıcısı adını ekleyin, **Kaydet** ' e tıklayın, ardından **SAML 2,0 yapılandırması**' na tıklayın.
 
     ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure01.png)
 
@@ -172,7 +167,7 @@ Azure AD kullanıcılarının müşteri için SAP bulutu 'nda oturum açmasını
 
 1. Bir güvenlik yöneticisi olarak müşteri için SAP bulutu 'nda oturum açın.
 
-2. Menünün sol tarafında **Kullanıcılar & yetkilendirmeler** > **Kullanıcı yönetimi** > **Kullanıcı Ekle**' ye tıklayın.
+2. Menünün sol tarafında **Kullanıcılar & yetkilendirmeler**   >  **Kullanıcı yönetimi**  >  **Kullanıcı Ekle**' ye tıklayın.
 
     ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure03.png)
 
@@ -184,7 +179,7 @@ Azure AD kullanıcılarının müşteri için SAP bulutu 'nda oturum açmasını
 
     b. **Soyadı** metin kutusuna **Simon**gibi kullanıcının adını girin.
 
-    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com`.
+    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com` .
 
     d. **Oturum açma adı** metin kutusuna **B. Simon**gibi kullanıcının adını girin.
 
@@ -200,9 +195,9 @@ Erişim panelinde müşteri için SAP bulutu kutucuğuna tıkladığınızda, SS
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

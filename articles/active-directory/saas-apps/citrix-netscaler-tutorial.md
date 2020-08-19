@@ -2,25 +2,21 @@
 title: 'Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (Kerberos tabanlı kimlik doğrulaması) | Microsoft Docs'
 description: Kerberos tabanlı kimlik doğrulaması kullanarak Azure Active Directory ve Citrix NetScaler arasında çoklu oturum açma (SSO) yapılandırma hakkında bilgi edinin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af501bd0-8ff5-468f-9b06-21e607ae25de
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80477995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (Kerberos tabanlı kimlik doğrulaması)
 
@@ -131,9 +127,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
 
-   1. **Ad**için girin `B.Simon`.  
+   1. **Ad**için girin `B.Simon` .  
 
-   1. **Kullanıcı adı**için girin _username@companydomain.extension_. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı**için girin _username@companydomain.extension_ . Örneğin, `B.Simon@contoso.com`.
 
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola**' ya, sonra da görüntülenen değeri yazın veya kopyalayın.
 
@@ -151,7 +147,7 @@ Bu bölümde, Kullanıcı, Citrix NetScaler 'a erişim izni vererek, B. Simon ku
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -173,33 +169,33 @@ Yapılandırmak istediğiniz kimlik doğrulaması türü için adımlar için bi
 
 Bir sanal sunucu oluşturmak için:
 
-1. **Trafik yönetimi** > **Yük Dengeleme** > **Hizmetleri**' ni seçin.
+1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Citrix NetScaler yapılandırma-hizmetler bölmesi](./media/citrix-netscaler-tutorial/web01.png)
 
 1. Uygulamaları çalıştıran Web sunucusu için aşağıdaki değerleri ayarlayın:
 
-   * **Hizmet adı**
+   * **Hizmet Adı**
    * **Sunucu IP/varolan sunucu**
-   * **Protocol**
-   * **Bağ**
+   * **Protokol**
+   * **Bağlantı noktası**
 
 ### <a name="configure-the-load-balancer"></a>Yük dengeleyiciyi yapılandırma
 
 Yük dengeleyiciyi yapılandırmak için:
 
-1. **Trafik yönetimi** > **Yük Dengeleme** > **sanal sunucularına**gidin.
+1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
-    * **Adı**
-    * **Protocol**
-    * **IP Adresi**
-    * **Bağ**
+    * **Ad**
+    * **Protokol**
+    * **IP adresi**
+    * **Bağlantı noktası**
 
 1. **Tamam**’ı seçin.
 
@@ -237,9 +233,9 @@ Citrix ADC SAML profilini yapılandırmak için aşağıdaki bölümleri dolduru
 
 Kimlik doğrulama ilkesi oluşturmak için:
 
-1. **Güvenlik** > **aaa – uygulama trafik** > **ilkeleri** > **kimlik** > doğrulama**ilkeleri**' ne gidin.
+1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -273,7 +269,7 @@ Bir kimlik doğrulama SAML sunucusu oluşturmak için, **kimlik doğrulaması SA
 
 Kimlik doğrulama sanal sunucusu oluşturmak için:
 
-1.  **Güvenlik** > **aaa-uygulama trafik** > **ilkeleri** > **kimlik** > doğrulama**sanal sunucuları**' na gidin.
+1.  **Güvenlik**  >  **aaa-uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **sanal sunucuları**' na gidin.
 
 1.  **Ekle**' yi seçin ve ardından aşağıdaki adımları uygulayın:
 
@@ -285,7 +281,7 @@ Kimlik doğrulama sanal sunucusu oluşturmak için:
 
     1. **Tamam**’ı seçin.
     
-1. **Devam**'ı seçin.
+1. **Devam**’ı seçin.
 
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>Kimlik doğrulama sanal sunucusunu Azure AD kullanacak şekilde yapılandırma
 
@@ -332,9 +328,9 @@ Kimlik doğrulama sanal sunucusu için iki bölümü değiştirin:
     
     Bu örnekte:
 
-    * `IDENTT.WORK`, etki alanı FQDN 'sidir.
-    * `identt`, etki alanı NetBIOS adıdır.
-    * `appdelegation`, temsili Kullanıcı hesabı adıdır.
+    * `IDENTT.WORK` , etki alanı FQDN 'sidir.
+    * `identt` , etki alanı NetBIOS adıdır.
+    * `appdelegation` , temsili Kullanıcı hesabı adıdır.
 
 1. Aşağıdaki ekran görüntüsünde gösterildiği gibi Web sunucusu için temsilciyi yapılandırın:
  
@@ -347,7 +343,7 @@ Kimlik doğrulama sanal sunucusu için iki bölümü değiştirin:
 
 Citrix NetScaler AAA-CD hesabını yapılandırmak için:
 
-1.  **Citrix Gateway** > **aaa KCD (Kerberos kısıtlı temsilcisi) hesaplarına**gidin.
+1.  **Citrix Gateway**  >  **aaa KCD (Kerberos kısıtlı temsilcisi) hesaplarına**gidin.
 
 1.  **Ekle**' yi seçin ve ardından aşağıdaki değerleri girin veya seçin:
 
@@ -355,10 +351,10 @@ Citrix NetScaler AAA-CD hesabını yapılandırmak için:
 
     * **Bölge**: etki alanını ve uzantıyı büyük harfle girin.
 
-    * **HIZMET SPN**'si `http/<host/fqdn>@<DOMAIN.COM>`:.
+    * **HIZMET SPN**'si: `http/<host/fqdn>@<DOMAIN.COM>` .
     
         > [!NOTE]
-        > `@DOMAIN.COM`gereklidir ve büyük harf olmalıdır. Örnek: `http/cweb2@IDENTT.WORK`.
+        > `@DOMAIN.COM` gereklidir ve büyük harf olmalıdır. Örnek: `http/cweb2@IDENTT.WORK`.
 
     * **Temsilci Kullanıcı**: temsilci Kullanıcı adını girin.
 
@@ -372,11 +368,11 @@ Citrix NetScaler AAA-CD hesabını yapılandırmak için:
 
 Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
 
-1.  **Güvenlik** > **aaa-uygulama trafik** > **ilkeleri** > **trafik ilkeleri, profiller ve form SSO profilestraffic ilkeleri '** ne gidin.
+1.  **Güvenlik**  >  **aaa-uygulama trafik**  >  **ilkeleri**  >  **trafik ilkeleri, profiller ve form SSO profilestraffic ilkeleri '** ne gidin.
 
 1.  **Trafik profillerini**seçin.
 
-1.  **Add (Ekle)** seçeneğini belirleyin.
+1.  **Ekle**’yi seçin.
 
 1.  Bir trafik profilini yapılandırmak için aşağıdaki değerleri girin veya seçin.
 
@@ -392,7 +388,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
  
 1.  **Trafik ilkesi**seçin.
 
-1.  **Add (Ekle)** seçeneğini belirleyin.
+1.  **Ekle**’yi seçin.
 
 1.  Bir trafik ilkesi yapılandırmak için aşağıdaki değerleri girin veya seçin:
 
@@ -410,7 +406,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
 
 GUI kullanarak bir trafik ilkesini bir sanal sunucuya bağlamak için:
 
-1. **Trafik yönetimi** > **Yük Dengeleme** > **sanal sunucularına**gidin.
+1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
 1. Sanal sunucular listesinde, yeniden yazma ilkesini bağlamak istediğiniz sanal sunucuyu seçin ve **Aç**' ı seçin.
 

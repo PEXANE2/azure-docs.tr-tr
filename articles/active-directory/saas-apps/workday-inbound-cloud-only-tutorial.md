@@ -3,23 +3,19 @@ title: 'Öğretici: Azure Active Directory Workday gelen sağlamasını yapılan
 description: Workday 'den Azure AD 'ye gelen sağlamayı nasıl yapılandıracağınızı öğrenin
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041816"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540975"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Öğretici: Workday 'yi Azure AD Kullanıcı sağlaması için yapılandırma
 Bu öğreticinin amacı, Workday 'den çalışan verileri Azure Active Directory ' ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -95,7 +91,7 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 **Workday 'i yalnızca bulutta bulunan kullanıcıların sağlamasını Azure Active Directory üzere yapılandırmak için:**
 
-1. <https://portal.azure.com> kısmına gidin.
+1. <https://portal.azure.com> öğesine gidin.
 
 2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 
@@ -111,7 +107,7 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
-   * **Workday Kullanıcı adı** – kiracı etki alanı adının eklendiği Workday tümleştirme sistem hesabının kullanıcı adını girin. Şuna benzemelidir:username@contoso4
+   * **Workday Kullanıcı adı** – kiracı etki alanı adının eklendiği Workday tümleştirme sistem hesabının kullanıcı adını girin. Şuna benzemelidir: username@contoso4
 
    * **İşgünü parolası –** Workday tümleştirme sistem hesabının parolasını girin
 
@@ -119,9 +115,9 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>
@@ -156,7 +152,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den yalnızca bulutta bulunan kul
 
       * İşleç: NULL DEĞIL
 
-3. **Hedef nesne eylemleri** alanında, Azure AD 'de gerçekleştirilen eylemlerin genel olarak filtrelemesini sağlayabilirsiniz. **Oluşturma** ve **güncelleştirme** en yaygın olarak kullanılır.
+3. **Hedef nesne eylemleri** alanında, Azure AD 'de gerçekleştirilen eylemlerin genel olarak filtrelemesini sağlayabilirsiniz. **Oluşturma**  ve **güncelleştirme** en yaygın olarak kullanılır.
 
 4. **Öznitelik eşlemeleri** bölümünde, bağımsız Workday özniteliklerinin Active Directory özniteliklerle nasıl eşlendiğini tanımlayabilirsiniz.
 

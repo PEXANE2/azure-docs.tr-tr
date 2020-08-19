@@ -2,24 +2,21 @@
 title: 'Öğretici: Tableau Online ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Tableau arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d4b1149-ba3b-4f4e-8bce-9791316b730d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 187600edb599f5a5775e1b847ed1cb3a49f3b827
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76985637"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542534"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Öğretici: Tableau Online ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -97,7 +94,7 @@ Azure AD çoklu oturum açmayı Tableau Online ile yapılandırmak için aşağ�
     b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
-    > Bu öğreticideki `<entityid>` **Tableau online 'ı ayarla** bölümünde değeri alacaksınız. Varlık KIMLIĞI değeri, **Tableau online 'ı ayarla** bölümünde **Azure AD tanımlayıcı** değeri olacak.
+    > `<entityid>`Bu öğreticideki **Tableau online 'ı ayarla** bölümünde değeri alacaksınız. Varlık KIMLIĞI değeri, **Tableau online 'ı ayarla** bölümünde **Azure AD tanımlayıcı** değeri olacak.
 
 5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -131,12 +128,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
-    Örneğin, Brittasıon\@contoso.com
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    Örneğin, Brittasıon \@ contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -198,7 +195,7 @@ Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma
 
     f. E-posta için ad alanı değerlerini kopyalamak ve soyadı yukarıdaki adımları tekrarlayın.
 
-    g. Tableau Online uygulamasına geçiş yapın ve ardından **Kullanıcı öznitelikleri & talep** bölümünü aşağıdaki şekilde ayarlayın:
+    örneğin: Tableau Online uygulamasına geçiş yapın ve ardından **Kullanıcı öznitelikleri & talep** bölümünü aşağıdaki şekilde ayarlayın:
 
     * E-posta: **posta** veya **userPrincipalName**
 
@@ -216,7 +213,7 @@ Bu bölümde, Tableau online 'da Britta Simon adlı bir Kullanıcı oluşturacak
   
     ![Azure AD test kullanıcısı oluşturma](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. **(SAML) kimlik doğrulaması için Kullanıcı Ekle**' yi seçin. **E-posta adreslerini girin** metin kutusuna Britta. simon\@contoso.com ekleyin
+2. **(SAML) kimlik doğrulaması için Kullanıcı Ekle**' yi seçin. **E-posta adreslerini girin** metin kutusuna Britta. simon \@ contoso.com ekleyin
   
     ![Azure AD test kullanıcısı oluşturma](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 

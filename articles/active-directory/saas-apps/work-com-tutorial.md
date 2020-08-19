@@ -2,26 +2,21 @@
 title: 'Öğretici: Work.com ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Work.com arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 98e6739e-eb24-46bd-9dd3-20b489839076
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087089"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Öğretici: Work.com ile tümleştirme Azure Active Directory
 
@@ -33,7 +28,7 @@ Work.com Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -175,13 +170,13 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
     
     c. İndirilen sertifikayı Azure portal yüklemek için, **Araştır**' a tıklayın.
     
-    d. **Varlık kimliği** metin kutusuna yazın `https://salesforce-work.com`.
+    d. **Varlık kimliği** metin kutusuna yazın `https://salesforce-work.com` .
     
     e. **SAML kimlik türü**olarak, onaylama ' yı seçtiğinizde **Kullanıcı nesnesinden federasyon kimliği bulunur**.
     
     f. **SAML kimlik konumu**olarak, Select **Identity öğesi Subject ifadesinin NameIdentfier öğesidir**.
     
-    g. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    örneğin: **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     h. **Kimlik sağlayıcısı oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
     
@@ -219,11 +214,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -263,7 +258,7 @@ Azure Active Directory kullanıcıların oturum açabilmeleri için, Work.com ' 
    
     ![Kurulum](./media/work-com-tutorial/IC794108.png "Kurulum")
 
-3. **Kullanıcıları \> Yönet**' e gidin.
+3. **Kullanıcıları Yönet \> **' e gidin.
    
     ![Kullanıcıları yönetme](./media/work-com-tutorial/IC784369.png "Kullanıcıları Yönet")
 
@@ -281,13 +276,13 @@ Azure Active Directory kullanıcıların oturum açabilmeleri için, Work.com ' 
     
     c. **Diğer ad** metin **kutusuna kullanıcının** **adını** yazın.
     
-    d. **E-posta** metin kutusuna kullanıcının Brittasimon@contoso.com **e-posta adresini** yazın.
+    d. **E-posta** metin kutusuna kullanıcının **e-posta adresini** yazın Brittasimon@contoso.com .
     
-    e. **Kullanıcı adı** metin kutusuna, gibi Brittasimon@contoso.combir Kullanıcı adı yazın.
+    e. **Kullanıcı adı** metin kutusuna, gibi bir Kullanıcı adı yazın Brittasimon@contoso.com .
     
     f. **Nick adı** metin kutusunda, Kullanıcı **Simon**için bir **Nick adı** yazın.
     
-    g. **Rol**, **Kullanıcı Lisansı**ve **profil**' i seçin.
+    örneğin: **Rol**, **Kullanıcı Lisansı**ve **profil**' i seçin.
     
     h. **Kaydet**’e tıklayın.  
       

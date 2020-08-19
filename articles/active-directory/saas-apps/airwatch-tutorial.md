@@ -2,26 +2,21 @@
 title: 'Öğretici: AirWatch ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve AirWatch arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74231983"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542828"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Öğretici: AirWatch 'u Azure Active Directory tümleştirin
 
@@ -110,7 +105,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve meta veri XML 'Sini indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -146,7 +141,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SAML 2,0** bölümünde, indirilen sertifikayı karşıya yüklemek Için **karşıya yükle**' ye tıklayın.
 
-    ![Karşıya yükle](./media/airwatch-tutorial/ic791932.png "Karşıya Yükle")
+    ![Karşıya yükle](./media/airwatch-tutorial/ic791932.png "Karşıya Yükleme")
 
 1. **İstek** bölümünde aşağıdaki adımları uygulayın:
 
@@ -170,19 +165,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Öznitelik](./media/airwatch-tutorial/ic791927.png "Öznitelik")
 
-    a. **Nesne tanımlayıcısı** metin kutusuna yazın `http://schemas.microsoft.com/identity/claims/objectidentifier`.
+    a. **Nesne tanımlayıcısı** metin kutusuna yazın `http://schemas.microsoft.com/identity/claims/objectidentifier` .
 
-    b. **Kullanıcı adı** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. **Kullanıcı adı** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    c. **Görünen ad** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. **Görünen ad** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    d. **Ilk ad** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. **Ilk ad** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    e. **Soyadı** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. **Soyadı** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
-    f. **E-posta** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. **E-posta** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -192,9 +187,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

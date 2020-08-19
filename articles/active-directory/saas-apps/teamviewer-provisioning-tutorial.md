@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için TeamViewer yapılandırma | Microsoft Docs'
 description: Azure AD 'den TeamViewer 'a Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 73dd5494-f572-42bb-9071-d599361b9bd7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd455f3149fea4240d393d69b2e39b9247edc0a3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7cb83b53b6516de58c99859f3a0d4c9122b78322
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542182"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için TeamViewer 'ı yapılandırma
 
@@ -34,7 +30,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için TeamViewer
 > * Azure AD ve TeamViewer arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * TeamViewer ['Da çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -85,7 +81,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-teamviewer-in-azure-ad"></a>Azure AD 'de TeamViewer için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

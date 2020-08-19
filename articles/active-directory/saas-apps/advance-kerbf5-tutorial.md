@@ -2,26 +2,21 @@
 title: 'Öğretici: F5 ile çoklu oturum açma tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve F5 arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9c5fb47a-1c5d-437a-b4c1-dbf739eaf5e3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e9a112f3f8cb7ba22201f4e5f05f21af30df039
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018682"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542992"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile Azure Active Directory (AD) çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -33,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -188,9 +183,9 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
     >[!Note]
     >Oluşturulacak ve belirtilecektir Kerberos temsili hesabı gerekir. KCD bölümüne başvurun (değişken başvuruları için eki Inceleyin)
 
-    • Kullanıcı adı kaynağı`session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    • Kullanıcı adı kaynağı  `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    • Kullanıcı bölgesi kaynağı`session.logon.last.domain`
+    • Kullanıcı bölgesi kaynağı  `session.logon.last.domain`
 
     ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure11.png)
 
@@ -328,9 +323,9 @@ Erişim panelinde F5 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -2,26 +2,21 @@
 title: 'Öğretici: yardımcı yardımcı ile Azure Active Directory Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve yardımcı Yardımcısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5f42e4d7-4d92-4096-a0d5-02fa438a5dfd
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89467dcca75c72c3a868478cc3e46b9cb474ed19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101280"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540108"
 ---
 # <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Öğretici: yardımcı Yardımcısı Azure Active Directory ile tümleştirin
 
@@ -81,7 +76,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa ve **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
     >[!NOTE]
-    >Hizmet sağlayıcı meta veri `https://sso.helperhelper.com/saml/<customer_id>` dosyasını almak için URL 'ye gidin. `<customer_id>`Için [Yardım Yardımcısı istemci destek ekibine](mailto:info@helperhelper.com) başvurun.
+    >`https://sso.helperhelper.com/saml/<customer_id>`Hizmet sağlayıcı meta veri dosyasını almak için URL 'ye gidin. İçin [Yardım Yardımcısı istemci destek ekibine](mailto:info@helperhelper.com) başvurun `<customer_id>` .
 
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
@@ -119,9 +114,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B. Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

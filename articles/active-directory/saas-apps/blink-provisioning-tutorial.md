@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için yanıp sönme yapılandırma | Microsoft Docs'
 description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırma hakkında bilgi edinin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 9ebcbf4a-0cf9-41c3-96af-d8ab6ab11639
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57f4dee41bfa2405b229015958fc178391b0723f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81381009"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542792"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yanıp sönme 'yi yapılandırma
 
@@ -31,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi otomatik olarak sağlamak ve devre dışı
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

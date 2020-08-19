@@ -2,25 +2,21 @@
 title: 'Öğretici: Azure Active Directory Peakon otomatik Kullanıcı sağlamasını yapılandırma | Microsoft Docs'
 description: Peakon 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063421"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543685"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Peakon yapılandırma
 
@@ -99,7 +95,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanı
 
 ### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Azure AD 'de Peakon için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -133,7 +129,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanı
 
     ![Peakon Kullanıcı öznitelikleri](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için,       [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
     
     ![Sağlama kapsamı](common/provisioning-scope.png)
 

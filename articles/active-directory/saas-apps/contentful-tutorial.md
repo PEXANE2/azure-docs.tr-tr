@@ -2,26 +2,21 @@
 title: 'Öğretici: çekişme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve çekişme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f29e1015-d508-4698-a381-5d871c646161
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b58abede48c0e096f3f54989d783b1e455f8e4d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b6abb280a505264a8092cfd700e225e93aa74a1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82169651"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Öğretici: çekişme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -87,11 +82,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    - **Yanıt URL 'si** metin kutusunda, çakışma ' deki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür:`https://be.contentful.com/sso/<organization_id>/consume`
+    - **Yanıt URL 'si** metin kutusunda, çakışma ' deki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür: `https://be.contentful.com/sso/<organization_id>/consume`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    - **Oturum açma URL 'si** metin kutusunda, aynı ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür:`https://be.contentful.com/sso/<organization_id>/login`
+    - **Oturum açma URL 'si** metin kutusunda, aynı ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve oturum açma URL 'si ile güncelleştirin ve bu URL 'YI, çakışma içindeki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayarak açın.
@@ -122,9 +117,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

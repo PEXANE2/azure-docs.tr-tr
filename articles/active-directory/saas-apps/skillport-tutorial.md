@@ -2,25 +2,21 @@
 title: 'Öğretici: Skillport ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Skillport arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cceb0a98cc35a41d1d46b798c9caf08fae2e3748
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680755"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Öğretici: Skillport ile tümleştirme Azure Active Directory
 
@@ -32,7 +28,7 @@ Skillport Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -107,21 +103,21 @@ Azure AD çoklu oturum açmayı Skillport ile yapılandırmak için aşağıdaki
 
     a. **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:
 
-    AB veri merkezi:`https://adfs.skillport.eu`
+    AB veri merkezi: `https://adfs.skillport.eu`
 
-    ABD veri merkezi:`https://sso.skillport.com`
+    ABD veri merkezi: `https://sso.skillport.com`
 
     b. **Tanımlayıcı** kutusuna URL 'yi yazın:
 
-    AB veri merkezi:`http://adfs.skillport.eu/adfs/services/trust`
+    AB veri merkezi: `http://adfs.skillport.eu/adfs/services/trust`
 
-    ABD veri merkezi:`https://sso.skillport.com`
+    ABD veri merkezi: `https://sso.skillport.com`
 
     c. **Yanıt URL** 'si metin kutusuna URL 'yi yazın:
 
-    AB veri merkezi:`https://adfs.skillport.eu/adfs/ls/`
+    AB veri merkezi: `https://adfs.skillport.eu/adfs/ls/`
 
-      ABD veri merkezi:`https://sso.skillport.com/sp/ACS.saml2`
+      ABD veri merkezi: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -164,7 +160,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

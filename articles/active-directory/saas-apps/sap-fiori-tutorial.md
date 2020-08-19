@@ -2,26 +2,21 @@
 title: 'Öğretici: SAP Fiori ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve SAP Fiori arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 77ad13bf-e56b-4063-97d0-c82a19da9d56
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78897754"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Öğretici: SAP Fiori ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -123,14 +118,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![SAP 'de ABAP System T01/122.368 sayfasının SAML 2,0 yapılandırması](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. **Sağlayıcı adı** kutusunda **T01122** değerini **http\/:/T01122**ile değiştirin ve ardından **Kaydet**' i seçin.
+1. **Sağlayıcı adı** kutusunda **T01122** değerini **http: \/ /t01122**ile değiştirin ve ardından **Kaydet**' i seçin.
 
     > [!NOTE]
-    > Varsayılan olarak, sağlayıcı adı SID>\< \<istemci> biçimindedir. Azure AD,>:// \<\<ad> biçim protokolünde adı bekliyor. Azure AD 'de birden çok SAP Fiori ABAP altyapısını yapılandırabilmek\://\<için sağlayıcı \<adını https SID>istemci> olarak tutmanızı öneririz.
+    > Varsayılan olarak, sağlayıcı adı biçimindedir \<sid> \<client> . Azure AD,://biçiminde ad bekliyor \<protocol> \<name> . \: // \<sid> \<client> Azure AD 'de birden çok SAP Fiori ABAP altyapısını yapılandırabilmek için sağlayıcı adını https olarak tutmanızı öneririz.
 
     ![SAP 'de ABAP System T01/122.368 sayfasının SAML 2,0 yapılandırmasındaki güncelleştirilmiş sağlayıcı adı](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
-1. **Yerel sağlayıcı sekmesi** > **meta verileri**' ni seçin.
+1. **Yerel sağlayıcı sekmesi**  >  **meta verileri**' ni seçin.
 
 1. **SAML 2,0 meta verileri** iletişim kutusunda, oluşturulan meta veri xml dosyasını indirin ve bilgisayarınıza kaydedin.
 
@@ -152,7 +147,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![meta veri dosyası seçin](common/browse-upload-metadata.png)
 
-    c. Meta veri dosyası başarıyla karşıya yüklendiğinde, **tanımlayıcı** ve **yanıt URL 'SI** değerleri **temel SAML yapılandırması** bölmesine otomatik olarak doldurulur. **Oturum açma URL 'si** kutusunda, aşağıdaki düzene sahıp bir URL girin: `https:\//\<your company instance of SAP Fiori\>`.
+    c. Meta veri dosyası başarıyla karşıya yüklendiğinde, **tanımlayıcı** ve **yanıt URL 'SI** değerleri **temel SAML yapılandırması** bölmesine otomatik olarak doldurulur. **Oturum açma URL 'si** kutusunda, aşağıdaki düzene sahıp bir URL girin: `https:\//\<your company instance of SAP Fiori\>` .
 
     > [!NOTE]
     > Bazı müşteriler yanlış yapılandırılmış **yanıt URL** değerleriyle ilgili hataları raporlar. Bu hatayı görürseniz, örneğiniz için doğru yanıt URL 'sini ayarlamak için aşağıdaki PowerShell betiğini kullanabilirsiniz:
@@ -161,7 +156,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
     > ``` 
     > 
-    > Komut dosyasını çalıştırmadan önce `ServicePrincipal` nesne kimliğini kendiniz ayarlayabilir veya buraya geçirebilirsiniz.
+    > `ServicePrincipal`Komut dosyasını çalıştırmadan önce nesne kimliğini kendiniz ayarlayabilir veya buraya geçirebilirsiniz.
 
 1. SAP Fiori uygulaması, SAML onayları 'nin belirli bir biçimde olmasını bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu öznitelik değerlerini yönetmek için, **SAML Ile çoklu oturum açmayı ayarla** bölmesinde **Düzenle**' yi seçin.
 
@@ -197,9 +192,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -259,11 +254,11 @@ Bu bölümde, SAP Fiori 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![SAP 'de kimlik doğrulama gereksinimleri seçenekleri ve son seçeneği](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-1. **Güvenilen sağlayıcı** > **kimliği Federasyonu** (sayfanın alt kısmında) seçeneğini belirleyin. **Düzenle**' yi seçin.
+1. **Güvenilen sağlayıcı**  >  **kimliği Federasyonu** (sayfanın alt kısmında) seçeneğini belirleyin. **Düzenle**’yi seçin.
 
     ![SAP 'deki güvenilen sağlayıcı ve Kimlik Federasyonu sekmeleri](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Kimlik Federasyonu sekmesindeki Ekle seçeneği](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 
@@ -309,8 +304,8 @@ Bu bölümde SAP Fiori 'da Britta Simon adlı bir Kullanıcı oluşturacaksını
 
 1. SAP Fiori ' de kimlik sağlayıcısı Azure AD etkinleştirildikten sonra, çoklu oturum açmayı test etmek için aşağıdaki URL 'Lerden birine erişmeyi deneyin (Kullanıcı adı ve parola istenmez):
 
-    * https:\//\<sapurl\>/SAP/BC/BSP/SAP/it00/default.htm
-    * https:\//\<sapurl\>/SAP/BC/BSP/SAP/it00/default.htm
+    * https: \/ / \<sapurl\> /SAP/BC/BSP/SAP/it00/default.htm
+    * https: \/ / \<sapurl\> /SAP/BC/BSP/SAP/it00/default.htm
 
     > [!NOTE]
     > *Sapurl 'yi* gerçek SAP ana bilgisayar adıyla değiştirin.
@@ -319,13 +314,13 @@ Bu bölümde SAP Fiori 'da Britta Simon adlı bir Kullanıcı oluşturacaksını
 
     ![SAP 'deki standart test uygulaması sayfası](./media/sapfiori-tutorial/testingsso.png)
 
-1. Kullanıcı adı ve parola istenirse, sorunu tanılamaya yardımcı olması için izlemeyi etkinleştirin. İzleme için şu URL 'yi\//\<kullanın: https: sapurl\>/SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122.368&SAP-Language = en #.
+1. Kullanıcı adı ve parola istenirse, sorunu tanılamaya yardımcı olması için izlemeyi etkinleştirin. İzleme için şu URL 'yi kullanın: https: \/ / \<sapurl\> /SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122.368&SAP-Language = en #.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -2,25 +2,21 @@
 title: 'Öğretici Azure Active Directory: ContractSafe SAML2 SSO ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve ContractSafe SAML2 SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9d8c9eba-6a90-4c8f-b387-a6ead4af00af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9459d13e8943f7e9177d2ad493873257f46f6649
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77185628"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544408"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Öğretici: ContractSafe SAML2 SSO ile çoklu oturum açma (SSO) Azure Active Directory tümleştirme
 
@@ -114,7 +110,7 @@ Bu bölümde, **B. Simon**adlı Azure Portal bir test kullanıcısı oluşturaca
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, `username@companydomain.extension` biçiminde bir e-posta adresi girin. `B.Simon@contoso.com` bunun bir örneğidir.
+   1. **Kullanıcı adı** alanına, biçiminde bir e-posta adresi girin `username@companydomain.extension` . `B.Simon@contoso.com` bunun bir örneğidir.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
 
@@ -150,7 +146,7 @@ Erişim panelini kullanarak Azure AD SSO yapılandırmanızı test edin. Erişim
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

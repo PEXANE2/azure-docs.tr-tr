@@ -2,26 +2,21 @@
 title: 'Öğretici: Openatina ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Openatina arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: dd4adfc7-e238-41d5-8b25-1811f08078b6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43fc2272a81672ea613bdcbe17c5381e99cafbff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73053207"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543950"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Öğretici: Openatina ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -111,9 +106,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -155,17 +150,17 @@ Bu bölümde, Openatina erişimi vererek Azure çoklu oturum açma özelliğini 
 
     a. **Görünen ad eşlemesi**' nde **özniteliği kullan**' ı seçin.
 
-    b. **Görünen ad özniteliği** metin kutusuna değeri `http://schema.microsoft.com/identity/claims/displayname`girin.
+    b. **Görünen ad özniteliği** metin kutusuna değeri girin `http://schema.microsoft.com/identity/claims/displayname` .
 
     c. **Benzersiz kullanıcı eşlemesi**' nde **özniteliği kullan**' ı seçin.
 
-    d. **Benzersiz kullanıcı özniteliği** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`girin.
+    d. **Benzersiz kullanıcı özniteliği** metin kutusuna değeri girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     e. **Durum**' da, tüm üç onay kutusunu seçin.
 
     f. **Yerel hesap oluştur**' da **otomatik olarak**' ı seçin.
 
-    g. **Değişiklikleri kaydet**'i seçin.
+    örneğin: **Değişiklikleri kaydet**'i seçin.
 
     h. **</> bağlı olan taraf** sekmesinden, **SP meta veri XML** dosyasını indirmek için **meta veri URL 'sini** kopyalayın ve bunu tarayıcıda açın. Bu SP meta veri dosyasını Azure AD 'deki **temel SAML yapılandırması** bölümüne yükleyin.
 
@@ -183,9 +178,9 @@ Erişim panelinde Openatina kutucuğuna tıkladığınızda, SSO 'yu ayarladığ
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

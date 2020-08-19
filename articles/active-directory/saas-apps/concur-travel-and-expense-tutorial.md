@@ -2,26 +2,21 @@
 title: 'Öğretici Azure Active Directory: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve Concur seyahat ve harcama arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6401ace4-71c0-4778-8b15-900f2f5f0c4c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6797d169dbdfdd63ae9cc96ac9fed133bc8d1adc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72373429"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Öğretici: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -106,9 +101,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -144,7 +139,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Concur seyahat 
 Bu bölümde, Concur seyahat ve harcama için B. Simon adlı bir Kullanıcı oluşturacaksınız. Concur seyahat ve gider platformunda kullanıcıları eklemek için Concur destek ekibi ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
 
 > [!NOTE]
-> B. Simon 'ın Concur oturum açma kimliği, Azure AD 'de B. Simon 'ın benzersiz tanımlayıcısı ile eşleşmelidir. Örneğin, B. Simon 'un Azure AD benzersiz tanımlayıcı, `B.Simon@contoso.com`. B. Simon 'ın Concur oturum açma kimliği de olmalıdır `B.Simon@contoso.com` . 
+> B. Simon 'ın Concur oturum açma kimliği, Azure AD 'de B. Simon 'ın benzersiz tanımlayıcısı ile eşleşmelidir. Örneğin, B. Simon 'un Azure AD benzersiz tanımlayıcı, `B.Simon@contoso.com` . B. Simon 'ın Concur oturum açma kimliği de olmalıdır `B.Simon@contoso.com` . 
 
 ## <a name="configure-concur-mobile-sso"></a>Concur Mobile SSO 'yu yapılandırma
 Concur Mobile SSO 'yu etkinleştirmek için, Concur destek ekibi **Kullanıcı erişim URL 'si**sağlamanız gerekir. Azure AD 'den **Kullanıcı erişimi URL 'si** almak için aşağıdaki adımları izleyin:
@@ -164,9 +159,9 @@ Erişim panelinde Concur seyahat ve harcama kutucuğuna tıkladığınızda, SSO
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

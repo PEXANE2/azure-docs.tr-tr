@@ -2,27 +2,22 @@
 title: Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma | Microsoft Docs
 description: Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma adımları.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610998"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543933"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma
 
@@ -32,7 +27,7 @@ ms.locfileid: "82610998"
 
     ![Azure Active Directory düğmesi](common/select-azuread.png))
 
-2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin.
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -72,7 +67,7 @@ Kullanıcı veya yönetici daha sonra uygulamayı kabul edebilir. Onay, uygulama
 > [!NOTE]
 > Uygulamanızı birden çok dizindeki kullanıcılar için kullanılabilir hale getiriyorsanız, hangi kiracının bulunduğunu belirlemeniz için bir mekanizmaya ihtiyacınız vardır. Tek kiracılı bir uygulamanın, bir kullanıcı için kendi dizinine bakması gerekir. Çok kiracılı bir uygulamanın, Azure AD 'deki tüm dizinlerden belirli bir kullanıcıyı tanımlaması gerekir.
 >
-> Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta `https://login.microsoftonline.com/common` , Azure AD 'deki tüm dizinlere yöneliktir. Kiracıya özgü bir uç nokta olabilir `https://login.microsoftonline.com/contoso.onmicrosoft.com`.
+> Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta, `https://login.microsoftonline.com/common` Azure AD 'deki tüm dizinlere yöneliktir. Kiracıya özgü bir uç nokta olabilir `https://login.microsoftonline.com/contoso.onmicrosoft.com` .
 >
 > Ortak uç nokta, uygulamanızı geliştirirken göz önünde bulundurmanız gereken önemli bir noktadır. Oturum açma, oturum kapatma ve belirteç doğrulama sırasında birden fazla kiracıyı işlemek için gerekli mantığa ihtiyacınız olacaktır.
 
@@ -126,7 +121,7 @@ Aşağıdaki adımlarda, uygulama geliştiricisi ve Kullanıcı için onay deney
 
 3. Kullanıcının kimliği doğrulanmıyorsa, Azure AD/Yetkilendir uç noktası oturum açma için istemde bulunur.
 
-    ![Kimlik doğrulaması](./media/openidoauth-tutorial/authentication.png)
+    ![Kimlik Doğrulaması](./media/openidoauth-tutorial/authentication.png)
 
 4. Kullanıcı oturum açtıktan sonra, Azure AD kullanıcının bir onay sayfası gösterilmesi gerekip gerekmediğini belirler. Bu belirleme, kullanıcının (veya kuruluşun yöneticisinin) uygulama iznini zaten vermiş olup olmadığına bağlıdır.
 
@@ -138,12 +133,12 @@ Normal bir Kullanıcı bazı izinleri kabul edebilir. Diğer izinler, kiracı y�
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Yönetici onayı ve Kullanıcı Onayı arasındaki fark
 
-Yönetici olarak, kiracınızdaki tüm kullanıcılar adına bir uygulamanın temsilci izinlerini de kabul edebilirsiniz. Yönetici onayı, izin iletişim kutusunun Kiracıdaki her kullanıcı için görünmesini engeller. Yönetici rolüne sahip kullanıcılar Azure portal izin verebilir. Uygulamanızın **Ayarlar** sayfasından **gerekli izinler** > **yönetici izni ver**' i seçin.
+Yönetici olarak, kiracınızdaki tüm kullanıcılar adına bir uygulamanın temsilci izinlerini de kabul edebilirsiniz. Yönetici onayı, izin iletişim kutusunun Kiracıdaki her kullanıcı için görünmesini engeller. Yönetici rolüne sahip kullanıcılar Azure portal izin verebilir. Uygulamanızın **Ayarlar** sayfasından **gerekli izinler**  >  **yönetici izni ver**' i seçin.
 
 ![Izin verme düğmesi](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> **Yönetici onayı verme** düğmesi kullanılarak açık onay verılmesı artık adal. js kullanan tek sayfalı uygulamalar (maça 'lar) için gereklidir. Aksi takdirde, erişim belirteci istendiğinde uygulama başarısız olur.
+> **Yönetici onayı verme** düğmesi kullanılarak açık onay verilmesi artık ADAL.js kullanan tek sayfalı uygulamalar (maça 'lar) için gereklidir. Aksi takdirde, erişim belirteci istendiğinde uygulama başarısız olur.
 
 Yalnızca uygulama izinleri her zaman kiracı yöneticisinin onayını gerektirir. Uygulamanız yalnızca uygulama izni isterse ve Kullanıcı uygulamada oturum açmaya çalışırsa bir hata iletisi görüntülenir. İleti, kullanıcının onay veremediği diyor.
 
