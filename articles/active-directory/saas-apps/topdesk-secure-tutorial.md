@@ -2,26 +2,21 @@
 title: 'Öğretici: TOPdesk ile güvenli Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve TOPdesk ile güvenli arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db7f2afa7993c8f8d2fe9fe30e5ecd4f2388b44b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233394"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Öğretici: Topmasa güvenliğine Azure Active Directory tümleştirme
 
@@ -33,7 +28,7 @@ Azure AD ile TOPdesk ile güvenli bir şekilde tümleştirmek aşağıdaki avant
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -108,7 +103,7 @@ Azure AD çoklu oturum açmayı TOPdesk ile güvenli olarak yapılandırmak içi
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.topdesk.net`
 
-    b. **Tanımlayıcı URL 'si** kutusunda, TopDesk yapılandırmasından alabileceğiniz TopDesk meta veri URL 'sini girin. Bu, aşağıdaki kalıbı kullanmalıdır:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    b. **Tanımlayıcı URL 'si** kutusunda, TopDesk yapılandırmasından alabileceğiniz TopDesk meta veri URL 'sini girin. Bu, aşağıdaki kalıbı kullanmalıdır: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.topdesk.net/tas/secure/login/verify`
 
@@ -185,11 +180,11 @@ Azure AD çoklu oturum açmayı TOPdesk ile güvenli olarak yapılandırmak içi
 
     d. TOPdesk destek ekibinden aldığınız logo dosyasını karşıya yüklemek için, **logo simgesi**altında, **Araştır**' a tıklayın.
 
-    e. **Kullanıcı adı öznitelik** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. **Kullanıcı adı öznitelik** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
     f. **Görünen ad** metin kutusuna yapılandırmanız için bir ad yazın.
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -209,12 +204,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -251,9 +246,9 @@ Topmasa-Secure durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
 1. **Topoloji güvenli** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüde **Topmasa \> yeni \> \> destek dosyaları işleci**' ne tıklayın.
+2. Üstteki menüde **Topmasa \> Yeni \> destek dosyaları \> işleci**' ne tıklayın.
 
-    ![İşleç](./media/topdesk-secure-tutorial/ic790610.png "İşleç")
+    ![Operatör](./media/topdesk-secure-tutorial/ic790610.png "Operatör")
 
 3. **Yeni operatör** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

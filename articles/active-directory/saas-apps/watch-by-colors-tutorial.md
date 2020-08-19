@@ -2,26 +2,21 @@
 title: 'Öğretici: renklerle Izle ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Renklerle Azure Active Directory ve Izleme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 586a029c-fb8d-4233-b280-103b9ba7102d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79fd6c5212b2ad956259f2cfbfb36ec3e7e92844
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523827"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Öğretici: renklerle Izleme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -98,9 +93,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -132,7 +127,7 @@ Bu bölümde, renklere göre Izleme erişimine izin vererek Azure çoklu oturum 
 
 3. Izlemeyi renklerle el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve renkler şirket sitesini yönetici olarak Izleyin ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın sağ üst köşesinde **profil** > **Hesap ayarları** > **SSO (çoklu oturum açma)** seçeneğine tıklayın.
+4. Sayfanın sağ üst köşesinde **profil**  >  **Hesap ayarları**  >  **SSO (çoklu oturum açma)** seçeneğine tıklayın.
 
     ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config01.png)
 
@@ -156,7 +151,7 @@ Azure AD kullanıcılarının renklerle Izlemek üzere oturum açmasını sağla
 
 1. Renklerle bir güvenlik yöneticisi olarak Izlemek için oturum açın.
 
-1. Sayfanın sağ üst köşesinde **profil** > **kullanıcıları** > **Kullanıcı Ekle**' ye tıklayın.
+1. Sayfanın sağ üst köşesinde **profil**  >  **kullanıcıları**  >  **Kullanıcı Ekle**' ye tıklayın.
 
     ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config03.png)
 
@@ -168,7 +163,7 @@ Azure AD kullanıcılarının renklerle Izlemek üzere oturum açmasını sağla
 
     b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com`.
+    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com` .
 
     d. **Parola** metin kutusuna parolayı girin.
 
@@ -184,9 +179,9 @@ Erişim panelinde renklere göre Izle kutucuğuna tıkladığınızda, SSO 'yu a
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

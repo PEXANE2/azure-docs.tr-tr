@@ -3,24 +3,19 @@ title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama iç
 description: İş Workday 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245356"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527817"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -395,9 +390,9 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>
@@ -499,7 +494,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | ---------- | ---------- | ---------- | ---------- |
 | **Workerıd**  |  Çalışan Kimliği | **Evet** | Yalnızca oluşturma sırasında yazılmıştır |
 | **PreferredNameData**    |  ,    |   |   Yalnızca oluşturma sırasında yazılmıştır |
-| **SelectUniqueValue (JOIN (" \@ ", JOIN (".", \[ FirstName \] , \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (bir \@ "", JOIN (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"))**   | userPrincipalName     |     | Yalnızca oluşturma sırasında yazılmıştır 
+| **SelectUniqueValue (JOIN (" \@ ", JOIN (".",  \[ FirstName \] , \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (bir \@ "", JOIN (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"))**   | userPrincipalName     |     | Yalnızca oluşturma sırasında yazılmıştır 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Yalnızca oluşturma sırasında yazılmıştır |
 | **Anahtar ( \[ etkin \] ,, "0", "true", "1", "false")** |  accountDisabled      |     | Oluştur + güncelleştir |
 | **FirstName**   | givenName       |     |    Oluştur + güncelleştir |
@@ -515,7 +510,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | **CountryReferenceTwoLetter**    |  c  |     |         Oluştur + güncelleştir |
 | **CountryRegionReference** |  st     |     | Oluştur + güncelleştir |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Oluştur + güncelleştir |
-| **Posta Kodu**  |   postalCode  |     | Oluştur + güncelleştir |
+| **PostalCode**  |   postalCode  |     | Oluştur + güncelleştir |
 | **PrimaryWorkTelephone**  |  telephoneNumber 'dır   |     | Oluştur + güncelleştir |
 | **Faks**      | facsimileTelephoneNumber 'dir     |     |    Oluştur + güncelleştir |
 | **Cep**  |    mobil       |     |       Oluştur + güncelleştir |
@@ -776,7 +771,7 @@ Kullanıcının departmanı ve ülkesi/bölgesi hakkında bilgi de sağlamak iç
 
 Bu tür gereksinimleri, örneğin, Şirket, iş birimi, şehir veya ülke/bölge gibi öznitelikleri içerecek şekilde *CN* veya *DisplayName* oluşturmak için nasıl işleyebileceğini açıklamaktadır.
 
-* Her Workday özniteliği, **öznitelik eşleme-> Gelişmiş bölüm-> Iş günü için öznitelik listesini düzenle**' de yapılandırılabilir olan temel BIR XPath API ifadesi kullanılarak alınır. Workday *adı*, *preferredlastname*, *Company* ve *supervisorspganleştirme* öznitelikleri için varsayılan XPath API ifadesi aşağıda verilmiştir.
+* Her Workday özniteliği,  **öznitelik eşleme-> Gelişmiş bölüm-> Iş günü için öznitelik listesini düzenle**' de yapılandırılabilir olan temel BIR XPath API ifadesi kullanılarak alınır. Workday *adı*, *preferredlastname*, *Company* ve *supervisorspganleştirme* öznitelikleri için varsayılan XPath API ifadesi aşağıda verilmiştir.
 
      | Workday özniteliği | API XPATH Ifadesi |
      | ----------------- | -------------------- |
@@ -806,7 +801,7 @@ Bu tür gereksinimleri, örneğin, Şirket, iş birimi, şehir veya ülke/bölge
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Doğru ifadeye sahip olduktan sonra, öznitelik eşlemeleri tablosunu düzenleyin ve *DisplayName* öznitelik eşlemesini aşağıda gösterildiği gibi değiştirin: ![ DisplayName Mapping](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Doğru ifadeye sahip olduktan sonra, öznitelik eşlemeleri tablosunu düzenleyin ve *DisplayName* öznitelik eşlemesini aşağıda gösterildiği gibi değiştirin:   ![ DisplayName Mapping](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
 * Yukarıdaki örneği genişleterek, Workday 'den gelen şehir adlarını bir toplu değer değerlerine dönüştürüp daha sonra *Smith, John (çi)* veya *tikan, Gamze (NYC)* gibi görünen adlar oluşturmak için bunu kullanın. Bu sonuç, genlik değişkeni olarak Workday *municipitesi* özniteliği ile bir switch ifadesi kullanılarak elde edilebilir.
 
@@ -866,7 +861,7 @@ Bu bölüm, sorun gidermeye yönelik aşağıdaki noktaları ele almaktadır:
 * Sağlama aracısının dağıtıldığı Windows Server makinesinde oturum açın
 * **Windows Server Olay Görüntüleyicisi** masaüstü uygulamasını açın.
 * **Windows günlükleri > uygulamasını**seçin.
-* **Geçerli günlüğü filtrele...** öğesini kullanın Kaynak AAD altında günlüğe kaydedilen tüm olayları görüntüleme seçeneği **. **Aşağıda gösterildiği gibi "-5" filtresini belirterek. ProvisioningAgent 'a bağlanın ve olay kimliği "5" olan olayları dışlayın.
+* **Geçerli günlüğü filtrele...** öğesini kullanın Kaynak AAD altında günlüğe kaydedilen tüm olayları görüntüleme seçeneği **. ** Aşağıda gösterildiği gibi "-5" filtresini belirterek. ProvisioningAgent 'a bağlanın ve olay kimliği "5" olan olayları dışlayın.
 
   ![Windows Olay Görüntüleyicisi](media/workday-inbound-tutorial/wd_event_viewer_01.png))
 
@@ -988,7 +983,7 @@ Bu bölüm, Workday Kullanıcı sağlama ve bu sorunu çözme ile ilgili sık g�
 
 |#|Hata Senaryosu |Olası nedenler|Önerilen çözüm|
 |--|---|---|---|
-|1.| Sağlama Aracısı şu hata iletisiyle yüklenirken hata iletisi: *' Microsoft Azure AD Connect sağlama Aracısı ' (AADConnectProvisioningAgent) hizmeti başlatılamadı. Sistemi başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.* | Bu hata genellikle, sağlama aracısını bir etki alanı denetleyicisine yüklemeye çalışıyorsanız ve Grup İlkesi hizmetin başlamasını engelliyorsa, genellikle görüntülenir.  Ayrıca, aracının çalıştığı önceki bir sürümüne sahipseniz ve yeni bir yükleme başlatmadan önce bu sürümü kaldırmadıysanız da görülür.| Sağlama aracısını DC olmayan bir sunucuya yükler. Yeni aracıyı yüklemeden önce aracının önceki sürümlerinin kaldırıldığından emin olun.|
+|1.| Sağlama Aracısı şu hata iletisiyle yüklenirken hata iletisi:  *' Microsoft Azure AD Connect sağlama Aracısı ' (AADConnectProvisioningAgent) hizmeti başlatılamadı. Sistemi başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.* | Bu hata genellikle, sağlama aracısını bir etki alanı denetleyicisine yüklemeye çalışıyorsanız ve Grup İlkesi hizmetin başlamasını engelliyorsa, genellikle görüntülenir.  Ayrıca, aracının çalıştığı önceki bir sürümüne sahipseniz ve yeni bir yükleme başlatmadan önce bu sürümü kaldırmadıysanız da görülür.| Sağlama aracısını DC olmayan bir sunucuya yükler. Yeni aracıyı yüklemeden önce aracının önceki sürümlerinin kaldırıldığından emin olun.|
 |2.| ' Microsoft Azure AD Connect sağlama Aracısı ' Windows hizmeti *Başlangıç* durumunda ve *çalışan* durumuna geçmiyor. | Yüklemenin bir parçası olarak, aracı Sihirbazı sunucuda bir yerel hesap (**NT Service \\ aadconnectprovisioningagent**) oluşturur ve bu, hizmeti başlatmak için kullanılan oturum açma hesabıdır. Windows sunucunuzdaki bir güvenlik ilkesi yerel hesapların Hizmetleri çalıştırmasını engelliyorsa, bu hatayla karşılaşırsınız. | *Hizmetler konsolunu*açın. ' Microsoft Azure AD sağlama aracısına Bağlan ' Windows hizmetine sağ tıklayın ve oturum aç sekmesinde, hizmeti çalıştırmak için bir etki alanı yöneticisinin hesabını belirtin. Hizmeti yeniden başlatın. |
 |3.| Adım *bağlama Active Directory*, sağlama aracısını ad etki alanınız ile yapılandırırken, sihirbazın ad şemasını yüklemeye ve sonunda zaman aşımına uğramadan uzun bir süre sürer. | Bu hata genellikle, güvenlik duvarı sorunlarından dolayı sihirbaz AD etki alanı denetleyicisi sunucusuna bağlanamadığında gösterilir. | *Active Directory bağlanma* Sihirbazı EKRANıNDA, ad etki alanınız için kimlik bilgilerini sağlarken, *etki alanı denetleyicisi önceliği Seç*adlı bir seçenek vardır. Aracı sunucusuyla aynı sitede olan bir etki alanı denetleyicisi seçmek ve iletişimi engelleyen bir güvenlik duvarı kuralı olmadığından emin olmak için bu seçeneği kullanın. |
 
@@ -1041,7 +1036,7 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
 3. Workday Studio 'Yu başlatın.
 
-4. Komut çubuğundan, **Test Web hizmeti ' ni sınayıcı seçeneğinde > Workday** ' i seçin.
+4. Komut çubuğundan,  **Test Web hizmeti ' ni sınayıcı seçeneğinde > Workday** ' i seçin.
 
 5. **Dış**' i seçin ve adım 2 ' de INDIRDIĞINIZ Human_Resources WSDL dosyasını seçin.
 
