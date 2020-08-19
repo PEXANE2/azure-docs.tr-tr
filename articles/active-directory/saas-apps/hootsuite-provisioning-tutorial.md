@@ -30,7 +30,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem HootSu
 > * HootSuite 'de grupları ve grup üyeliklerini sağlama
 > * HootSuite ['de çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
