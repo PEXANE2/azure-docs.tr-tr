@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032961"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586197"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -25,10 +25,10 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
 >- Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](#set-storage-redundancy) .
 >- Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız gerekiyorsa, [Bu geçici çözümleri gözden geçirin](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
-1. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.
+1. **Kurtarma Hizmetleri kasaları** bölmesinden yeni kasayı seçin. **Ayarlar** bölümünde **Özellikler**' i seçin.
+1. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
 
-1. Depolama çoğaltma türünü seçin ve **Kaydet**' e tıklayın.
+1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
      ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -46,7 +46,7 @@ Geri yükleme seçeneklerinden biri olan çapraz bölge geri yükleme (CRR), Azu
 - Denetim veya uyumluluk gereksinimi olduğunda ayrıntıya ait ayrıntıları yürütün
 - Birincil bölgede bir olağanüstü durum varsa VM 'yi veya diskini geri yükleyin.
 
-Bu özelliği seçmek için **yedekleme yapılandırması** dikey penceresinden **çapraz bölge geri yüklemeyi etkinleştir** ' i seçin.
+Bu özelliği seçmek için **yedekleme yapılandırması** bölmesinden **çapraz bölge geri yüklemeyi etkinleştir** ' i seçin.
 
 Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vardır.
 
@@ -62,22 +62,40 @@ Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vard�
 
 ### <a name="configure-cross-region-restore"></a>Çapraz bölge geri yüklemeyi yapılandırma
 
-GRS yedekliliği ile oluşturulan bir kasa, çapraz bölge geri yükleme özelliğini yapılandırma seçeneğini içerir. Her GRS kasasının bir başlığı olur ve bu, belgelere bağlanır. Kasa için CRR 'yi yapılandırmak için, bu özelliği etkinleştirme seçeneğini içeren yedekleme yapılandırması dikey penceresine gidin.
+GRS yedekliliği ile oluşturulan bir kasa, çapraz bölge geri yükleme özelliğini yapılandırma seçeneğini içerir. Her GRS kasasının bir başlığı olur ve bu, belgelere bağlanır. Kasa için CRR 'yi yapılandırmak için, bu özelliği etkinleştirme seçeneğini içeren yedekleme yapılandırması bölmesine gidin.
 
  ![Yedekleme yapılandırması başlığı](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. Portaldan kurtarma hizmetleri Kasası > ayarlar > Özellikler ' e gidin.
-2. İşlevselliği etkinleştirmek için **Bu kasada çapraz bölge geri yüklemeyi etkinleştir** ' e tıklayın.
+2. İşlevselliği etkinleştirmek için **Bu kasada çapraz bölge geri yüklemeyi etkinleştir '** i seçin.
 
-   ![Bu kasada çapraz bölge geri yüklemeyi etkinleştir ' e tıklamadan önce](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Bu kasada çapraz bölge geri yüklemeyi etkinleştir ' i seçmeden önce](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![Bu kasada çapraz bölge geri yüklemeyi etkinleştir ' e tıkladıktan sonra](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![Bu kasada çapraz bölge geri yüklemeyi etkinleştir ' i seçtikten sonra](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 [İkincil bölgedeki yedekleme öğelerini görüntülemeyi](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)öğrenin.
 
 [İkincil bölgede geri yüklemeyi](backup-azure-arm-restore-vms.md#restore-in-secondary-region)öğrenin.
 
 [İkincil bölge geri yükleme işlerini izlemeyi](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)öğrenin.
+
+## <a name="set-encryption-settings"></a>Şifreleme ayarlarını ayarla
+
+Varsayılan olarak, kurtarma hizmetleri kasasındaki veriler platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu şifrelemeyi etkinleştirmek için sonlandırmadan açık bir eylem gerekmez ve kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.  Bu kasadaki yedekleme verilerini şifrelemek için kendi anahtarınızı getirmeyi tercih edebilirsiniz. Bu, müşteri tarafından yönetilen anahtarlar olarak adlandırılır. Yedekleme verilerini kendi anahtarınızı kullanarak şifrelemek isterseniz, herhangi bir öğe bu kasaya korunmadan önce şifreleme anahtarı belirtilmelidir. Anahtarınızla şifrelemeyi etkinleştirdikten sonra geri alınamaz.
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak şifrelemek için bir kasa yapılandırma
+
+Kasalarınızı müşteri tarafından yönetilen anahtarlarla şifrelemek üzere yapılandırmak için bu adımların bu sırada izlenmesi gerekir:
+
+1. Kurtarma Hizmetleri kasanızda yönetilen kimliği etkinleştirin
+
+1. Azure Key Vault şifreleme anahtarına erişmek için kasaya izin atayın
+
+1. Azure Key Vault geçici silme ve Temizleme korumasını etkinleştirme
+
+1. Şifreleme anahtarını kurtarma hizmetleri kasasına atama
+
+Bu adımların her birine ilişkin yönergeler, [Bu makalede](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys)bulunabilir.
 
 ## <a name="modifying-default-settings"></a>Varsayılan ayarları değiştirme
 
@@ -132,7 +150,6 @@ Geçerli korunan verileri GRS kasasında tutmanız ve yeni bir LRS kasasında ko
   - Kurtarma noktalarını GRS kasasında tutmak için ödeme yapmanız gerekir (Ayrıntılar için [Azure Backup fiyatlandırmasına](azure-backup-pricing.md) bakın).
   - Gerekirse, GRS kasasından VM 'yi geri yükleyebileceksiniz.
   - Yeni kaynaktaki sanal makinenin LRS kasasındaki ilk yedekleme bir ilk çoğaltma olacaktır.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

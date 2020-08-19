@@ -2,26 +2,21 @@
 title: 'Öğretici: Palo Alto Networks ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-GlobalProtect | Microsoft Docs'
 description: Azure Active Directory ve Palo Alto Networks-GlobalProtect arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 03bef6f2-3ea2-4eaa-a828-79c5f1346ce5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aa6c799535db21a9d40f2eb8b74300a8c6b00f0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2b8c74b8a456815400f6d68200ea93f43e3adff0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740017"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554061"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Öğretici: Palo Alto Networks ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-GlobalProtect
 
@@ -108,7 +103,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -146,7 +141,7 @@ Bu bölümde, Palo Alto Networks-GlobalProtect 'e erişim vererek Azure çoklu o
 
     a. **Profil adı** metin kutusuna bir ad girin; Örneğin, Azure AD GlobalProtect.
 
-    b. **Kimlik sağlayıcısı meta verileri**' nde, **Araştır** ' a tıklayın ve Azure Portal indirdiğiniz Metadata. xml dosyasını seçin
+    b. **Kimlik sağlayıcısı meta verileri**' nde, **Araştır** ' a tıklayın ve indirdiğiniz metadata.xml dosyayı seçin Azure Portal
 
     c. **Tamam 'a** tıklayın
 
@@ -162,8 +157,8 @@ Erişim panelinde Palo Alto Networks-GlobalProtect kutucuğuna tıkladığınız
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure AD ile Palo Alto ağlarını deneyin-GlobalProtect](https://aad.portal.azure.com/)

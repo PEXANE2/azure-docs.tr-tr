@@ -2,25 +2,21 @@
 title: 'Öğretici: çevrimiçi Monsat ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve çevrimiçi ortamda çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 89713d99b9a6d5f8b56d57c9cf6f184142510420
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 415d1b8fd8b950aec96a89965e798dfb92a3efae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160498"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Öğretici: çevrimiçi olarak Monsat tümleştirmesi Azure Active Directory
 
@@ -32,7 +28,7 @@ Azure AD ile çevrimiçi olarak tümleştirme, aşağıdaki avantajları sağlar
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -107,15 +103,15 @@ Azure AD 'ye yönelik çoklu oturum açmayı çevrimiçi olarak yapılandırmak 
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    Üretim ortamı için:`https://<subdomain>.montageonline.co.nz/`
+    Üretim ortamı için: `https://<subdomain>.montageonline.co.nz/`
 
-    Test ortamı için:`https://build-<subdomain>.montageonline.co.nz/`
+    Test ortamı için: `https://build-<subdomain>.montageonline.co.nz/`
 
     b. **Tanımlayıcı** metin kutusuna bir URL yazın:
 
-    Üretim ortamı için:`MOL_Azure`
+    Üretim ortamı için: `MOL_Azure`
 
-    Test ortamı için:`MOL_Azure_Build`
+    Test ortamı için: `MOL_Azure_Build`
 
     > [!NOTE] 
     > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [çevrimiçi istemci desteği ekibine](https://www.montage.co.nz/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -156,12 +152,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

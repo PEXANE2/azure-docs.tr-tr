@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 07/21/2020
-ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325075"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586826"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 
 |-|**Genel Amaçlı**|**İş Açısından Kritik**|**Hiper Ölçek**|
 |---|---|---|---|
-|En iyi kullanım alanı:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
+|En iyi kullanım alanı:|Birçok iş yükü. Bütçe odaklı, dengeli ve ölçeklenebilir işlem ile depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
 |Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**SQL yönetilen örneği**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
 |IOPS ve aktarım hızı (yaklaşık)|**SQL veritabanı**: [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**SQL yönetilen örneği**: bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md#service-tier-characteristics).|[Tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
 |Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](read-scale-out.md)|
@@ -102,12 +102,12 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 |Donanım oluşturma  |İşlem  |Bellek  |
 |:---------|:---------|:---------|
-|4. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
-|5. nesil     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
-|Fsv2 serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-En fazla 72 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-136 GB 'a kadar sağlama|
-|M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz ve Intel Xeon Platinum 8280M2,7 GHz (Cascade Lake) işlemcileri<br>-En fazla 128 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-3,7 TB 'a kadar sağlama|
+|4. nesil     |-Intel® E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
+|5. nesil     |**Sağlanan işlem**<br>-Intel® E5-2673 v4 (çok Iyi) 2,3-GHz, Intel® SP-8160 (ufuk Gölü) \* ve ıntel® 8272CL (Cascade Lake) 2,5 GHz \* işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel® E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel® SP-8160 (ufuk Gölü) * işlemciler<br>-40 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 120 GB 'a kadar otomatik ölçeklendirme|
+|Fsv2 serisi     |-Intel® 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-En fazla 72 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-136 GB 'a kadar sağlama|
+|M serisi     |-Intel® E7-8890 v3 2,5 GHz ve Intel® 8280D 2,7 GHz (Cascade Lake) işlemcileri<br>-En fazla 128 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-3,7 TB 'a kadar sağlama|
 
-\*[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, Intel SP-8160 (ufuk Gölü) Işlemcileri kullanılarak 5. nesil veritabanları için donanım oluşturma, Gen6 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (geniş ve ufuk Gölü) bağımsız olarak aynıdır.
+\*[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, ıNTEL® SP-8160 (ufuk Gölü) işlemcileri kullanan veritabanları için donanım oluşturma, Gen6 olarak görünür, ancak ıNTEL® 8272CL (Cascade Lake) kullanan veritabanları için donanım oluşturma, Gen7 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (çok Iyi, ufuk Gölü veya Cascade Lake) bağımsız olarak aynıdır.
 
 Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sanal çekirdek) Için kaynak limitleri](resource-limits-vcore-single-databases.md)veya [elastik havuzlar (Vcore) için kaynak sınırları](resource-limits-vcore-elastic-pools.md).
 
@@ -180,7 +180,7 @@ Daha fazla ayrıntı için [az SQL mı Update](https://docs.microsoft.com/cli/az
 
 ### <a name="hardware-availability"></a>Donanım kullanılabilirliği
 
-#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a>4. nesil/5. nesil
+#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a> 4. nesil/5. nesil
 
 4. nesil donanım [kullanıma alınıyor](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) ve Yeni dağıtımlar için artık kullanılamıyor. Tüm yeni veritabanlarının 5. nesil donanımında dağıtılması gerekir.
 

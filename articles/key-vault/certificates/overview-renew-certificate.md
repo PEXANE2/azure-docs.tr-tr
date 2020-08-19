@@ -1,71 +1,82 @@
 ---
 title: Azure Key Vault sertifikası yenileme hakkında
-description: Azure Key Vault sertifikası yenileme hakkında
+description: Bu makalede Azure Key Vault sertifikalarının nasıl yenileneceği açıklanır.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236072"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588812"
 ---
-# <a name="about-azure-key-vault-certificate-renewal"></a>Azure Key Vault sertifikası yenileme hakkında
+# <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault sertifikalarınızı yenileme
 
-Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza ve uygulamalar için güvenli iletişimleri etkinleştirmenize olanak tanır. Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
+Azure Key Vault ile ağınız için dijital sertifikaları kolayca sağlayabilir, yönetebilir ve dağıtabilir ve uygulamalarınız için güvenli iletişim sağlayabilirsiniz. Sertifikalar hakkında daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates).
 
-Kısa süreli sertifikaya sahip olma veya sertifika döndürmenin sıklığını artırma, kısary 'in, zarar açısından kapsamını sınırlar.
+Kısa süreli sertifikaları kullanarak veya sertifika döndürme sıklığını artırarak, yetkisiz kullanıcılar tarafından uygulamalarınıza erişimi önlemeye yardımcı olabilirsiniz.
 
-## <a name="certificate-expiration-notifications"></a>Sertifika süre sonu bildirimleri
-İlk olarak, sertifikaların kullanım süreleri dolduğunda bildirim almak için Key Vault sertifika kişisi eklediğinizden emin olun (örn. PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) saniye kullanarak, sertifika süre sonu hakkında ne zaman bildirim almak istediğinizi yapılandırın. Yaşam süresi eylemini yapılandırmak için [burayı](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) izleyin
+Bu makalede Azure Key Vault sertifikalarınızın nasıl yenileneceği açıklanır.
 
-Anahtar Kasası 'nda üç sertifika oluşturma kategorisi vardır. Bu kılavuz, sertifikaların nasıl yapıldığını anlamanıza yardımcı olur.
--   Tümleşik CA ile oluşturulan sertifikalar (DigiCert veya GlobalSign)
--   Tümleşik olmayan CA ile oluşturulan sertifikalar
+## <a name="get-notified-about-certificate-expirations"></a>Sertifika süre sonları hakkında bildirim alın
+Sertifikalarınızın kullanım süreleri dolduğunda bildirilmesi için aşağıdakileri yapın:
+
+İlk olarak, [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)PowerShell cmdlet 'ini kullanarak anahtar kasanıza bir sertifika kişisi ekleyin.
+
+İkincisi, sertifika süre sonu hakkında ne zaman bilgilendirilmek istediğinizi yapılandırın. Sertifikanın yaşam döngüsü özniteliklerini yapılandırmak için, bkz. [Key Vault sertifika oto döndürmeyi yapılandırma](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+
+Key Vault, üç sertifika kategorisi vardır:
+-   DigiCert veya GlobalSign gibi tümleşik bir sertifika yetkilisi (CA) ile oluşturulan sertifikalar
+-   Tümleşik olmayan bir CA ile oluşturulan sertifikalar
 -   Otomatik olarak imzalanan sertifikalar
 
-## <a name="renewal-of-integrated-ca-certificate"></a>Tümleşik CA sertifikasının yenilenmesi 
-İyi haber! Azure Anahtar kasaları, Microsoft güvenilir CA 'Lar tarafından verilen sertifikaların uçtan uca bakımına sahiptir; Örneğin, DigiCert ve GlobalSign. [Güvenilir bir CA 'yı Anahtar Kasası ile tümleştirmeyi](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)öğrenin.
+## <a name="renew-an-integrated-ca-certificate"></a>Tümleşik CA sertifikasını yenileme 
+Azure Key Vault, güvenilen Microsoft sertifika yetkilileri DigiCert ve GlobalSign tarafından verilen sertifikaların uçtan uca bakımını gerçekleştirir. [Güvenilir bir CA 'yı Key Vault ile tümleştirmeyi](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)öğrenin.
 
-## <a name="renewal-of-non-integrated-ca-certificate"></a>Tümleşik olmayan CA sertifikasının yenilenmesi 
-Azure Anahtar Kasası, kullanıcılarına, kullanıcılarının çeşitli Azure kaynaklarıyla tümleşmesini ve dağıtımı kolaylaştırmak için herhangi bir CA 'dan sertifika alma avantajını sağlar. Sertifikanızın izlenmesini kaybetme konusunda endişelenmek veya sertifikanızın zaten süresi dolmuşsa daha kötü olduğunu fark ediyorsanız, Key Vault, güncel kalmakta yardımcı olabilir. Tümleşik olmayan CA sertifikası için, Anahtar Kasası kullanıcının süresi dolmak üzere olan e-posta bildirimlerini ayarlamasına olanak tanır. Bu bildirimler, birden fazla kullanıcı için de ayarlanabilir.
+## <a name="renew-a-nonintegrated-ca-certificate"></a>Tümleşik olmayan bir CA sertifikasını yenileme 
+Azure Key Vault kullanarak, çeşitli Azure kaynaklarıyla tümleştirmenize ve dağıtımı kolaylaştırmanıza olanak tanıyan bir avantaj olan herhangi bir CA 'dan sertifikaları içeri aktarabilirsiniz. Sertifika sona erme tarihlerinin izlenmesini kaybetmekten endişelendiyseniz veya daha kötü bir sertifikanın zaten süresinin dolduğunu fark ediyorsanız, anahtar kasanızın sizi güncel tutmaya yardımcı olabilir. Tümleşik olmayan CA sertifikaları için, Anahtar Kasası neredeyse sona erme e-posta bildirimleri ayarlamanıza olanak sağlar. Bu tür bildirimler, birden fazla kullanıcı için de ayarlanabilir.
 
-Şimdi bir sertifikayı yenilemek için, bir Azure Key Vault sertifikasının sürümlenmiş bir nesne olduğunu anlamak önemlidir. Geçerli sürümün süresi dolduğunda yeni bir sürüm oluşturmanız gerekir. Kavramsal olarak, her yeni sürüm, anahtar ve bu anahtarı bir kimliğe bağlayan bir Blobun oluşan yeni bir sertifika ile birlikte olacaktır. İş ortağı olmayan bir CA kullandığınızda, Anahtar Kasası bir anahtar değer çifti oluşturacak ve CSR 'yi döndürecek.
+> [!IMPORTANT]
+> Sertifika, sürümlü bir nesnedir. Geçerli sürümün süresi dolduğunda yeni bir sürüm oluşturmanız gerekir. Kavramsal olarak, her yeni sürüm, bir anahtardan oluşan yeni bir sertifikadır ve bu anahtarı bir kimliğe bağlayan Blobun. İş ortağı olmayan bir CA kullandığınızda, Anahtar Kasası bir anahtar/değer çifti oluşturur ve bir sertifika imzalama isteği (CSR) döndürür.
 
-**Azure portal izlenecek adımlar:-**
-1.  Yenilemek istediğiniz sertifikayı açın.
-2.  Sertifika ekranında **+ Yeni sürüm** düğmesini seçin.
-3.  **Sertifika işlemi** seçin
-4.  **CSR 'Yi indir**' i seçin. Bu işlem, yerel sürücünüzde bir. csr dosyası indirir.
-5.  İsteği imzalamak için CSR 'yi seçtiğiniz CA 'ya taşıyın
-6.  İmzalanan isteği geri getirip aynı sertifika Işlemi ekranında **CSR 'Yi Birleştir** ' i seçin.
+Tümleşik olmayan bir CA sertifikasını yenilemek için aşağıdakileri yapın:
+
+1. Azure portal oturum açın ve ardından yenilemek istediğiniz sertifikayı açın.
+1. Sertifika bölmesinde **Yeni sürüm**' ü seçin.
+1. **Sertifika işlemi**seçin.
+1. Yerel sürücünüze bir CSR dosyası indirmek için **CSR 'Yi indir** ' i seçin.
+1. İsteği imzalamak için CSR 'yi seçtiğiniz CA 'ya gönderin.
+1. İmzalanmış isteği geri getirin ve aynı sertifika işlemi bölmesinde **CSR 'Yi Birleştir** ' i seçin.
 
 > [!NOTE]
-> İmzalı CSR 'yi oluşturulan aynı CSR isteğiyle birleştirmek önemlidir, aksi takdirde anahtar eşleşmez.
+> İmzalı CSR 'yi, oluşturduğunuz aynı CSR isteğiyle birleştirmek önemlidir. Aksi takdirde, anahtar eşleşmez.
 
-Adımlar, yeni bir sertifika oluşturmaya benzer ve Ayrıntılar [aşağıda]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)daha ayrıntılı olarak belgelenmiştir.
+Yeni bir CSR oluşturma hakkında daha fazla bilgi için, bkz. [Key Vault BIR CSR oluşturma ve birleştirme]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal).
 
-## <a name="renewal-of-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika yenileme
+## <a name="renew-a-self-signed-certificate"></a>Kendinden imzalı bir sertifikayı yenileme
 
-İyi haber! Azure Anahtar kasaları Ayrıca, kendi kullanıcıları için otomatik olarak imzalanan sertifikaların otomatik yenilenmesini de ele alır. Verme ilkesini değiştirme ve sertifikanın ömür süresi eylem özniteliklerini güncelleştirme hakkında daha fazla bilgi edinmek için [buradan](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)daha fazla bilgi edinin.
+Azure Key Vault Ayrıca otomatik olarak imzalanan sertifikaların otomatik yenileme de işler. Verme ilkesini değiştirme ve bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirme hakkında daha fazla bilgi edinmek için bkz. [Key Vault sertifika oto döndürmeyi yapılandırma](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
 
-### <a name="troubleshoot"></a>Sorun giderme
-Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini görüntülemek için sertifika Işlemini görüntüleme adımına geçin.
+## <a name="troubleshoot"></a>Sorun giderme
+Verilen sertifika Azure portal *devre dışı bırakılmışsa* , sertifikanın hata iletisini görüntülemek Için **sertifika işleme** ' ya gidin.
 
-### <a name="frequently-asked-questions"></a>Sık sorulan sorular
-* Sertifikanın oto döndürme özelliğini nasıl test edebilirim?
-  1 aylık geçerliliği olan bir sertifika oluşturun ve ardından %1 ' de döndürme için yaşam süresi eylemini ayarlayın. Bu ayar sertifikayı 7,2 saat içinde döndürür.
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+**Sertifikanın oto döndürme özelliğini nasıl test edebilirim?**
+
+**1 aylık**geçerliliği olan bir sertifika oluşturun ve ardından **%1**' deki döndürme için ömür eylemini ayarlayın. Bu ayar sertifika her 7,2 saatte bir döndürülür.
   
-* Etiketler, sertifikanın otomatik yenilenmesinin ardından çoğaltılacaktır mi?
-  Evet, Etiketler otomatik yenilemeyle sonra çoğaltılır.
+**Etiketler sertifikanın otomatik yenileme sonra çoğaltılacaktır mi?**
 
-### <a name="see-also"></a>Ayrıca Bkz.
-*   [Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme](how-to-integrate-certificate-authority.md)
-*   [Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma](tutorial-rotate-certificates.md)
+Evet, Etiketler otomatik yenileme sonra çoğaltılır.
+
+## <a name="next-steps"></a>Sonraki adımlar
+*   [Key Vault DigiCert sertifika yetkilisi ile tümleştirin](how-to-integrate-certificate-authority.md)
+*   [Öğretici: Key Vault sertifika oto döndürmeyi yapılandırma](tutorial-rotate-certificates.md)

@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdcffeda1c57cdb043c51c8a3640006be8ae7418
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424971"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602440"
 ---
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
 Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturur ve tam ekran okuyucu istemci kitaplığını kullanarak modern okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)ulaşabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -42,7 +42,7 @@ Visual Studio 'da, yerleşik Model-View-Controller ve ASP.NET Core 2,1 ASP.NET C
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _üzerindesecrets.js_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
+_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _ üzerindesecrets.js_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _ üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
 
 ```json
 {
@@ -71,7 +71,7 @@ _Controllers\homecontroller.cs_dosyasını açın ve dosyanın en üstündeki _u
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Şimdi, denetleyiciyi _üzerindesecrets.js_Azure AD değerlerini almak için yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {``` aşağıdaki kodu ekleyin.
+Şimdi, denetleyiciyi _ üzerindesecrets.js_Azure AD değerlerini almak için yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {``` aşağıdaki kodu ekleyin.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId

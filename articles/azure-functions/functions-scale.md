@@ -3,14 +3,14 @@ title: Azure İşlevleri’ni ölçeklendirme ve barındırma
 description: Azure Işlevleri tüketim planı ve Premium plan arasında seçim yapma hakkında bilgi edinin.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025837"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587234"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure İşlevleri’ni ölçeklendirme ve barındırma
 
@@ -86,7 +86,7 @@ JavaScript işlevlerini bir App Service planında çalıştırırken, daha az vC
 
 Bir [App Service ortamı](../app-service/environment/intro.md) (ASE) çalıştırmak, işlevlerinizi tamamen yalıtmanıza ve yüksek ölçeğe karşı yararlanmanızı sağlar.
 
-### <a name="always-on"></a><a name="always-on"></a>Her zaman açık
+### <a name="always-on"></a><a name="always-on"></a> Her zaman açık
 
 App Service bir planda çalıştırırsanız, işlev uygulamanızın doğru çalışması için **Always on** ayarını etkinleştirmeniz gerekir. Bir App Service planında, işlevler çalışma zamanı birkaç dakikadan sonra boş kalır, bu nedenle yalnızca HTTP Tetikleyicileri "uyandırır" olur. Her zaman açık, yalnızca bir App Service planında kullanılabilir. Tüketim planında, platform işlev uygulamalarını otomatik olarak etkinleştirir.
 
@@ -144,11 +144,19 @@ Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulamas
 
 Ölçeklendirme, bir dizi etkene göre farklılık gösterebilir ve seçilen tetikleyici ve dile göre farklı şekilde ölçeklendirebilir. ' Nin farkında olması için ölçeklendirmenin bazı çok karmaşık özellikleri vardır:
 
-* Tek bir işlev uygulaması yalnızca en fazla 200 örneğe ölçeklendirir. Tek bir örnek aynı anda birden fazla ileti veya isteği işleyebilir, bu nedenle eşzamanlı yürütmeler sayısında bir küme sınırı yoktur.
+* Tek bir işlev uygulaması yalnızca en fazla 200 örneğe ölçeklendirir. Tek bir örnek aynı anda birden fazla ileti veya isteği işleyebilir, bu nedenle eşzamanlı yürütmeler sayısında bir küme sınırı yoktur.  Ölçeği azaltmak için [daha düşük bir değer belirtebilirsiniz](#limit-scale-out) .
 * HTTP Tetikleyicileri için, saniyede en çok bir kez yeni örnekler ayrılır.
 * HTTP olmayan Tetikleyiciler için, en çok, her 30 saniyede bir yeni örnek ayrılır. Bir [Premium planda](#premium-plan)çalışırken ölçekleme daha hızlıdır.
 * Service Bus Tetikleyiciler için, en verimli ölçekleme için kaynaklardaki hakları _Yönet_ ' i kullanın. _Dinleme_ haklarıyla, ölçek kararlarını bilgilendirmek için sıra uzunluğu kullanılamadığından ölçekleme doğru değildir. Service Bus erişim ilkelerinde hakları ayarlama hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim yetkilendirme ilkesi](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
 * Olay Hub 'ı Tetikleyicileri için başvuru makalesindeki [ölçeklendirme Kılavuzu](functions-bindings-event-hubs-trigger.md#scaling) ' na bakın. 
+
+### <a name="limit-scale-out"></a>Ölçeği genişletme sınırı
+
+Bir uygulamanın ölçeklendirilen örnek sayısını kısıtlamak isteyebilirsiniz.  Bu, bir veritabanı gibi bir aşağı akış bileşeninin aktarım hızını sınırlı olduğu durumlarda yaygın olarak kullanılır.  Varsayılan olarak, tüketim planı işlevleri en fazla 200 örneğe kadar ölçeklendirecektir ve Premium plan işlevleri, en fazla 100 örneğe kadar ölçeklendirecektir.  Değeri değiştirerek belirli bir uygulama için daha düşük bir en yüksek değer belirtebilirsiniz `functionAppScaleLimit` .  `functionAppScaleLimit`Sınırsız için 0 veya null ya da 1 ile uygulama maksimum değeri arasında geçerli bir değer ayarlanabilir.
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ölçeklenebilir uygulamalar için en iyi uygulamalar ve desenler
 

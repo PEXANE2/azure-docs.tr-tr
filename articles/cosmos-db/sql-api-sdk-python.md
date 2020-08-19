@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API 'SI, SDK & kaynakları
 description: Sürüm tarihleri, emeklilik tarihleri ve Azure Cosmos DB Python SDK 'nın her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL Python API 'SI ve SDK hakkında bilgi edinin.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876266"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585993"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876266"
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876266"
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Yayın geçmişi
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- "Yavaş" Dizin oluşturma modu için kullanımdan kaldırma uyarısı eklendi. Arka uç artık bu moda kapsayıcı oluşturulmasına izin vermez ve bunun yerine tutarlı olarak ayarlar.
+
+**Yeni özellikler**
+- Yeni bir kapsayıcı oluştururken analitik depolama TTL 'yi ayarlama özelliği eklendi.
+
+**Hata düzeltmeleri**
+- Get_client API 'Leri için giriş olarak dicts için sabit destek.
+- Sorgu yineleyiciler içinde düzeltilen Python 2/3 uyumluluğu.
+- Sabit tür ipucu hatası (sorun #12570).
+- Upsert_item işlevine seçenek üst bilgilerinin eklendiği hata düzeltildi. Sorun #11791-teşekkürler @aalapatirvbd .
+- Bir öğede dize olmayan bir KIMLIK kullanıldığında düzeltilen hata oluştu. Artık AttributeError yerine TypeError (sorun #11793) oluşturur.
 
 ### <a name="400"></a>4.0.0
 
@@ -81,14 +96,14 @@ ms.locfileid: "87876266"
 
 * Yeni Oluşturucu ve işlem başına yapılandırma anahtar sözcüğü bağımsız değişkenleri eklendi:
 
-  * `retry_total`-En fazla yeniden deneme girişimleri.
-  * `retry_backoff_max`-Saniye cinsinden en fazla yeniden deneme bekleme süresi.
-  * `retry_fixed_interval`-Milisaniye cinsinden sabit yeniden deneme aralığı.
-  * `retry_read`-En fazla yuva okuma yeniden deneme girişimi sayısı.
-  * `retry_connect`-En fazla bağlantı hatası yeniden deneme girişimi sayısı.
-  * `retry_status`-Hata durum kodlarında en fazla yeniden deneme denemesi sayısı.
-  * `retry_on_status_codes`-Yeniden denenecek belirli durum kodlarının listesi.
-  * `retry_backoff_factor`-Yeniden deneme girişimleri arasında bekleme süresini hesaplama faktörü.
+  * `retry_total` -En fazla yeniden deneme girişimleri.
+  * `retry_backoff_max` -Saniye cinsinden en fazla yeniden deneme bekleme süresi.
+  * `retry_fixed_interval` -Milisaniye cinsinden sabit yeniden deneme aralığı.
+  * `retry_read` -En fazla yuva okuma yeniden deneme girişimi sayısı.
+  * `retry_connect` -En fazla bağlantı hatası yeniden deneme girişimi sayısı.
+  * `retry_status` -Hata durum kodlarında en fazla yeniden deneme denemesi sayısı.
+  * `retry_on_status_codes` -Yeniden denenecek belirli durum kodlarının listesi.
+  * `retry_backoff_factor` -Yeniden deneme girişimleri arasında bekleme süresini hesaplama faktörü.
 
 ### <a name="400b3"></a>4.0.0 B3
 
@@ -98,7 +113,7 @@ ms.locfileid: "87876266"
 
 * Sürüm 4.0.0 B2, Python dili en iyi uygulamalarına uygun bir istemci kitaplığı oluşturmaya yönelik çabalarımızın ikinci yinelemedir.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 * İstemci bağlantısı, içinde tanımlanan HTTP işlem hattını tüketmek üzere uyarlanmıştır `azure.core.pipeline` .
 
@@ -139,13 +154,13 @@ ms.locfileid: "87876266"
 * Hata hiyerarşisi artık şuradan devralındı `azure.core.AzureError` :
 
   * `HTTPFailure`, `CosmosHttpResponseError` olarak yeniden adlandırıldı
-  * `JSONParseFailure`kaldırılmış ve değiştirildi`azure.core.DecodeError`
+  * `JSONParseFailure` kaldırılmış ve değiştirildi `azure.core.DecodeError`
   * Belirli yanıt kodları için ek hatalar eklendi:
-    * `CosmosResourceNotFoundError`durum 404 için
-    * `CosmosResourceExistsError`durum 409 için
-    * `CosmosAccessConditionFailedError`durum 412 için
+    * `CosmosResourceNotFoundError` durum 404 için
+    * `CosmosResourceExistsError` durum 409 için
+    * `CosmosAccessConditionFailedError` durum 412 için
 
-* `CosmosClient`Artık, istemci bağlantısını kapatmayı işlemek için bir bağlam yöneticisinde çalıştırılabilir.
+* `CosmosClient` Artık, istemci bağlantısını kapatmayı işlemek için bir bağlam yöneticisinde çalıştırılabilir.
 
 * Tekrarlayabileceğiniz yanıtlar (örneğin, sorgu yanıtları ve liste yanıtları) artık türündedir `azure.core.paging.ItemPaged` . Yöntemi, `fetch_next_block` yöntemi tarafından erişilen bir ikincil Yineleyici ile değiştirilmiştir `by_page` .
 

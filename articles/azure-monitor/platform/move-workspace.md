@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: e0ecfd3acb6a8a1d40e006aef1bbf63eae0e1ff4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770807"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566293"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
@@ -39,7 +39,10 @@ Otomasyon Hesabınızın bağlantısını kaldırmak için önce kaldırılması
 - Azure Güvenlik Merkezi
 
 >[!IMPORTANT]
-> - Bir çalışma alanında etkinleştirildikten sonra, Azure Sentinel bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınmasını **desteklememektedir** . Çalışma alanını taşımanız gerekiyorsa [Azure Sentinel](mailto:AzureSentinel@microsoft.com)'e başvurun.
+> **Azure Sentinel müşterileri:**
+> - Bir çalışma alanına dağıtıldıktan sonra, Azure Sentinel bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınmasını **desteklememektedir** . 
+>
+>   Çalışma alanını zaten taşıdıysanız, **analiz** altındaki tüm etkin kuralları devre dışı bırakın ve beş dakika sonra yeniden etkinleştirin. Bu durum çoğu durumda etkili olmalıdır, ancak yeniden yinelemek için, bu, sizin sorumluluğunuzdadır ve riski size aittir.
 
 ### <a name="delete-solutions-in-azure-portal"></a>Azure portal çözümleri silme
 Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kullanın:

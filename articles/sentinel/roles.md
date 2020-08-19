@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836777"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565851"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
@@ -60,6 +60,10 @@ Belirli iş gereksinimlerine sahip kullanıcılara görevlerini gerçekleştirme
 
     Bir kullanıcının **veri bağlayıcıları**eklemesi Için, Azure Sentinel çalışma alanında Kullanıcı yazma izinlerini atamanız gerekir. Ayrıca, ilgili bağlayıcı sayfasında listelendiği gibi her bağlayıcı için gerekli ek izinleri göz önünde bulabilirsiniz.
 
+- Olayları atayan Konuk kullanıcılar
+
+    Bir Konuk kullanıcının olayları atayabilmesi gerekiyorsa, Azure Sentinel Yanıtlayıcı rolüne ek olarak, kullanıcının da [Dizin okuyucu](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)rolüne atanması gerekir. Bu rolün bir Azure RBAC rolü, ancak bir **Azure Active Directory** rolü *olmadığından* ve normal (konuk olmayan) kullanıcıların bu rolü varsayılan olarak atandığını unutmayın. 
+
 Yan yana karşılaştırma için [aşağıdaki tabloya](#roles-and-allowed-actions)bakın.
 
 ### <a name="other-roles-you-might-see-assigned"></a>Atanmış olarak görebileceğiniz diğer roller
@@ -76,7 +80,7 @@ Azure Sentinel 'e özgü Azure rolleri atarken, diğer amaçlar için kullanıc�
 
 Aşağıdaki tabloda, Azure Sentinel 'de roller ve izin verilen eylemler özetlenmektedir. 
 
-| Role | PlayBook 'lar oluşturma ve çalıştırma| Çalışma kitaplarını, analitik kuralları ve diğer Azure Sentinel kaynaklarını oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyin |
+| Rol | PlayBook 'lar oluşturma ve çalıştırma| Çalışma kitaplarını, analitik kuralları ve diğer Azure Sentinel kaynaklarını oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyin |
 |---|---|---|---|---|
 | Azure Sentinel Okuyucusu | -- | -- | -- | &#10003; |
 | Azure Sentinel Yanıtlayıcısı | -- | -- | &#10003; | &#10003; |

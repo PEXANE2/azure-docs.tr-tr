@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 40485014d819026c6fbc1f82da57c494f7a6a182
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dd0a9bf69a3b5a6a17d91f0521bebd0fc78f606f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272601"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566225"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -283,7 +283,6 @@ Bu sayfanın en altında, bu uyarıların amaçlarını kategorilere ayırmak i�
 | **Olağan dışı bir konumdan oturum açma**             | SQL Server erişim modelinde, birinin sunucuda olağan dışı bir coğrafi konumdan oturum açmış olduğu bir değişiklik vardı. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (eski bir çalışan veya dış saldırgan) algılar.                                                                                             | Yararlanan                       | Orta   |
 | **Olası SQL deneme yanılma denemesi**           | Farklı kimlik bilgileriyle çok sayıda başarısız oturum açma denemesi meydana geldi. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı bir deneme yanılma saldırısı algılar.                                                                                                                                                                                                                      | Araştırma                            | Yüksek     |
 | **Olası SQL ekleme**                     | SQL ekleme ile güvenlik açığı bulunan tanımlı bir uygulamaya karşı etkin bir yararlanma gerçekleşti. Bu, bir saldırganın savunmasız uygulama kodunu veya saklı yordamları kullanarak kötü amaçlı SQL deyimleri eklemeye çalıştığı anlamına gelir.                                                                                                                                                                                                            | -                                  | Yüksek     |
-| **Güvensiz olabilecek eylem**                   | Kötü amaçlı oturumlarda yaygın olarak kullanılan yüksek ayrıcalıklı SQL komutu bir SQL Server yürütüldü. Bu komutların varsayılan olarak devre dışı bırakılması önerilir. Bazı durumlarda, uyarı meşru bir eylem (çalışan yönetici betiği) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem algılar (Windows katmanını ihlal etmek için SQL güvenlerini kullanan saldırgan).                                                                               | Yürütme                          | Yüksek     |
 | **Olağan dışı dışa aktarma konumu**                     | Bir SQL içeri ve dışarı aktarma işlemi için dışarı aktarma depolama hedefinde bir değişiklik vardı. Bazı durumlarda, uyarı meşru bir değişiklik (yeni yedekleme hedefi) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem algılar (saldırgan, verileri bir dosyaya kolayca bir şekilde yeniden katılabilir).                                                                                                                                                          | Sızdırma                       | Yüksek     |
 |                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                             |                                    |          |
 

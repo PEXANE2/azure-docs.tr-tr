@@ -2,25 +2,21 @@
 title: 'Öğretici: Five9 Plus bağdaştırıcısıyla Azure Active Directory tümleştirme (CTı, kişi merkezi aracıları) | Microsoft Docs'
 description: Azure Active Directory ve Five9 Plus bağdaştırıcısı (CTı, kişi merkezi aracıları) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 88dc82ab-be0b-4017-8335-c47d00775d7b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dd4eab2d8e877cac468097c0a6ed6aa3cfb750b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ab03aecf8226662eeb03a5bb3f8adc85013375d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67102462"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Öğretici: Five9 Plus bağdaştırıcısıyla Azure Active Directory tümleştirme (CTı, kişi merkezi aracıları)
 
@@ -32,7 +28,7 @@ Azure AD ile Five9 Plus bağdaştırıcısını (CTı, Ilgili kişi merkezi arac
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -107,7 +103,7 @@ Azure AD çoklu oturum açmayı Five9 Plus bağdaştırıcısı (CTı, kişi mer
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    |    Ortam      |       URL'si      |
+    |    Ortam      |       URL      |
     | :-- | :-- |
     | "Microsoft Dynamics CRM için Five9 Plus bağdaştırıcısı" için | `https://app.five9.com/appsvcs/saml/metadata/alias/msdc` |
     | "Zendesk için Five9 Plus bağdaştırıcısı" için | `https://app.five9.com/appsvcs/saml/metadata/alias/zd` |
@@ -115,7 +111,7 @@ Azure AD çoklu oturum açmayı Five9 Plus bağdaştırıcısı (CTı, kişi mer
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    |      Ortam     |      URL'si      |
+    |      Ortam     |      URL      |
     | :--                  | :--           |
     | "Microsoft Dynamics CRM için Five9 Plus bağdaştırıcısı" için | `https://app.five9.com/appsvcs/saml/SSO/alias/msdc` |
     | "Zendesk için Five9 Plus bağdaştırıcısı" için | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
@@ -139,11 +135,11 @@ Azure AD çoklu oturum açmayı Five9 Plus bağdaştırıcısı (CTı, kişi mer
 
 1. **Five9 Plus bağdaştırıcısı (CTI, kişi merkezi aracıları)** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'leri [Five9 Plus bağdaştırıcı (CTI, bağlantı merkezi aracıları) destek ekibine](https://www.five9.com/about/contact)göndermeniz gerekir. Ayrıca, SSO 'yu daha fazla yapılandırmak için lütfen bağdaştırıcıya göre aşağıdaki adımları izleyin:
 
-    a. "Aracı masaüstü araç seti için Five9 Plus bağdaştırıcısı" Yönetici Kılavuzu:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. "Aracı masaüstü araç seti için Five9 Plus bağdaştırıcısı" Yönetici Kılavuzu: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. "Microsoft Dynamics CRM için Five9 Plus bağdaştırıcısı" Yönetici Kılavuzu:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. "Microsoft Dynamics CRM için Five9 Plus bağdaştırıcısı" Yönetici Kılavuzu: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. "Zendesk için Five9 Plus bağdaştırıcısı" Yönetici Kılavuzu:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. "Zendesk için Five9 Plus bağdaştırıcısı" Yönetici Kılavuzu: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -163,11 +159,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

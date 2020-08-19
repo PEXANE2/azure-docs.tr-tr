@@ -2,25 +2,21 @@
 title: 'Öğretici: NetVision Compas ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ve NetVision Compas arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a56f44c5-dc08-4c7c-ad20-b6e7127deb2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80520186"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554507"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Öğretici: NetVision Compas ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -109,9 +105,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -159,7 +155,7 @@ Bu bölümde, **NetVision Compas**'de SAML SSO 'yu etkinleştirirsiniz.
 
 Bu bölümde, Azure AD 'yi SSO için kullanmak üzere **NetVision Compas** 'de var olan bir kullanıcıyı yapılandırırsınız.
 1. Şirketiniz tarafından tanımlanan **NetVision Compas** Kullanıcı sağlama yordamını izleyin veya var olan bir kullanıcı hesabını düzenleyin.
-1. Kullanıcının profilini tanımlarken, kullanıcının **e-posta (kişisel)** ADRESININ Azure AD Kullanıcı adı ile eşleştiğinden emin olun: username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
+1. Kullanıcının profilini tanımlarken, kullanıcının **e-posta (kişisel)** ADRESININ Azure AD Kullanıcı adı ile eşleştiğinden emin olun: username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
 
     ![Kullanıcıyı Düzenle](media/netvision-compas-tutorial/user-config.png)
 
@@ -188,9 +184,9 @@ Erişim panelinde NetVision Compas kutucuğuna tıkladığınızda, SSO 'yu ayar
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

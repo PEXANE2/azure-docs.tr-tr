@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: 64a21c0d0edcd035bdf42c3b17c5f2c0131dabfa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: bb69d48fe4e65d0fc27db027aecab0f1a745e8d5
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117025"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566191"
 ---
-# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları
+# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu makalede, sanal çekirdek satın alma modelini kullanarak Azure SQL veritabanı 'nda tek veritabanlarına yönelik ayrıntılı kaynak limitleri sağlanmaktadır.
@@ -58,7 +58,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>5. nesil işlem oluşturma (2. bölüm)
 
@@ -84,7 +84,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-3"></a>5. nesil işlem oluşturma (Bölüm 3)
 
@@ -97,7 +97,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|3072|3072|4096|4096|4096|
-|En fazla günlük boyutu (GB)|922|922|1229|1229|1229|
+|En fazla günlük boyutu (GB)|922|922|1024|1024|1024|
 |TempDB en fazla veri boyutu (GB)|576|640|768|1024|1280|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
@@ -110,7 +110,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 
 ## <a name="hyperscale---provisioned-compute---gen4"></a>Hiper ölçek-sağlanan işlem-4. nesil
@@ -140,7 +140,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
-\*Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen4-compute-generation-part-2"></a>4. nesil işlem oluşturma (2. bölüm)
 
@@ -167,7 +167,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
-\*Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>Hiper ölçek-sağlanan işlem-5. nesil
 
@@ -196,7 +196,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
-\*Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen5-compute-generation-part-2"></a>5. nesil işlem oluşturma (2. bölüm)
 
@@ -223,7 +223,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
-\*Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Yerel SSD GÇ 'nin yanı sıra, iş yükleri uzak [sayfa sunucusu](service-tier-hyperscale.md#page-server) GÇ kullanır. Etkin ıOPS, iş yüküne bağlıdır. Ayrıntılar için bkz. [VERI GÇ](resource-limits-logical-server.md#resource-governance)yönetimi ve [Kaynak Kullanım istatistiklerinde veri GÇ](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 #### <a name="notes"></a>Notlar
 
@@ -259,7 +259,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen4-compute-generation-part-2"></a>4. nesil işlem oluşturma (2. bölüm)
 
@@ -284,7 +284,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Genel amaçlı-sağlanan işlem-5. nesil
 
@@ -311,7 +311,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>5. nesil işlem oluşturma (2. bölüm)
 
@@ -323,7 +323,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|3072|3072|3072|4096|4096|4096|4096|
-|En fazla günlük boyutu (GB)|922|922|922|1229|1229|1229|1229|
+|En fazla günlük boyutu (GB)|922|922|922|1024|1024|1024|1024|
 |TempDB en fazla veri boyutu (GB)|512|576|640|768|1024|1280|2560|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
@@ -336,7 +336,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Genel amaçlı-sağlanan işlem-Fsv2-Series
 
@@ -364,7 +364,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="fsv2-series-compute-generation-part-2"></a>Fsv2 serisi işlem oluşturma (2. bölüm)
 
@@ -390,7 +390,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>İş açısından kritik-sağlanan işlem-4. nesil
 
@@ -421,7 +421,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen4-compute-generation-part-2"></a>4. nesil işlem oluşturma (2. bölüm)
 
@@ -447,7 +447,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---gen5"></a>İş açısından kritik-sağlanan işlem-5. nesil
 
@@ -475,7 +475,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>5. nesil işlem oluşturma (2. bölüm)
 
@@ -487,7 +487,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|15,77|18,14|20,51|25,25|37,94|52,23|131,64|
 |En fazla veri boyutu (GB)|3072|3072|3072|4096|4096|4096|4096|
-|En fazla günlük boyutu (GB)|922|922|922|1229|1229|1229|1229|
+|En fazla günlük boyutu (GB)|922|922|922|1024|1024|1024|1024|
 |TempDB en fazla veri boyutu (GB)|512|576|640|768|1024|1280|2560|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |GÇ gecikme süresi (yaklaşık)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|
@@ -501,7 +501,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>İş açısından kritik-sağlanan işlem-a serisi
 
@@ -529,7 +529,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 > [!IMPORTANT]
 > Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](file-space-manage.md).
@@ -558,7 +558,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
-\*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 > [!IMPORTANT]
 > Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](file-space-manage.md).

@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ec482af2878ba302a4658314723b96fb9a42999
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904896"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566140"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management'ta kullanıcı hesaplarını yönetme
 
-API Management, geliştiriciler API Management kullanarak kullanıma sunabileceğiniz API 'lerin kullanıcılardır. Bu kılavuzda, geliştiricilerin API Management örneğinizle birlikte kullanılabilir hale getirmek üzere API 'Leri ve ürünleri kullanmak üzere nasıl oluşturulacağı ve davet yapılacağı gösterilir. Kullanıcı hesaplarını programlı olarak yönetme hakkında daha fazla bilgi için [API Management Rest](/rest/api/apimanagement/) başvurusu içindeki [Kullanıcı varlık](/rest/api/apimanagement/2019-12-01/user) belgelerine bakın.
+API Management, geliştiriciler API Management kullanarak kullanıma sunabileceğiniz API 'lerin kullanıcılardır. Bu kılavuzda, geliştiricilerin API Management örneğinizle birlikte kullanılabilir hale getirmek üzere API 'Leri ve ürünleri kullanmak üzere nasıl oluşturulacağı ve davet yapılacağı gösterilmektedir. Kullanıcı hesaplarını programlı olarak yönetme hakkında daha fazla bilgi için [API Management Rest](/rest/api/apimanagement/) başvurusu içindeki [Kullanıcı varlık](/rest/api/apimanagement/2019-12-01/user) belgelerine bakın.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki görevleri tamamlar: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 

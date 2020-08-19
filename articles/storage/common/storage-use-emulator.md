@@ -7,19 +7,19 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236837"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588204"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 
-Microsoft Azure depolama öykünücüsü, yerel geliştirme amaçlarıyla Azure blob, kuyruk ve tablo hizmetlerine öykünen bir araçtır. Uygulamanızı, Azure aboneliği oluşturmadan veya herhangi bir ücret ödemeden yerel olarak depolama hizmetlerine karşı test edebilirsiniz. Uygulamanızın öykünücü üzerinde nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın.
+Microsoft Azure Depolama Öykünücüsü, yerel geliştirme amaçlarıyla Azure blob, kuyruk ve tablo hizmetlerine öykünen bir araçtır. Uygulamanızı, Azure aboneliği oluşturmadan veya herhangi bir ücret ödemeden yerel olarak depolama hizmetlerine karşı test edebilirsiniz. Uygulamanızın öykünücü üzerinde nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın.
 
 > [!IMPORTANT]
-> Azure depolama öykünücüsü artık etkin bir şekilde geliştirilmiyor. [**Azurite**](storage-use-azurite.md) , iletme sonrasında depolama öykünücü platformudur. Azurite, Azure depolama öykünücüsünün yerini almıştır. Azurite, Azure depolama API 'lerinin en son sürümlerini destekleyecek şekilde güncellenmeye devam edecektir. Daha fazla bilgi için bkz. [**Yerel Azure depolama geliştirmesi Için Azurite öykünücüsünü kullanma**](storage-use-azurite.md).
+> Azure depolama öykünücüsü artık etkin bir şekilde geliştirilmiyor. [**Azurite**](storage-use-azurite.md) , Iletme sonrasında depolama öykünücü platformudur. Azurite, Azure depolama öykünücüsünün yerini almıştır. Azurite, Azure depolama API 'lerinin en son sürümlerini destekleyecek şekilde güncellenmeye devam edecektir. Daha fazla bilgi için bkz. [**Yerel Azure depolama geliştirmesi Için Azurite öykünücüsünü kullanma**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>Depolama öykünücüsünü al
 

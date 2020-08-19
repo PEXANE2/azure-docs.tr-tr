@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043878"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566276"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>SQL makineler için gelişmiş veri güvenliği (Önizleme)
 
@@ -72,7 +72,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
     [![İsteğe bağlı demeti olan güvenlik merkezi fiyatlandırma sayfası](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    Makinelerdeki SQL Server 'lar için gelişmiş veri güvenliği, seçilen çalışma alanına bağlı tüm SQL Server 'lar üzerinde etkinleştirilecek. SQL Server ilk yeniden başlatıldıktan sonra koruma tam olarak etkin olacaktır. 
+    Makinelerdeki SQL Server 'lar için gelişmiş veri güvenliği, seçilen çalışma alanına bağlı tüm SQL Server 'lar üzerinde etkinleştirilecek. SQL Server örneğinin ilk yeniden başlatıldıktan sonra koruma tam olarak etkin olur.
 
     >[!TIP] 
     > Yeni bir çalışma alanı oluşturmak için [Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)bölümündeki yönergeleri izleyin.

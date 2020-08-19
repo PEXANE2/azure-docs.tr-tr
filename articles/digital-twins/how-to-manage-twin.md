@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506550"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587608"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -37,18 +37,22 @@ Dijital bir ikizi oluşturmak için şunları sağlamanız gerekir:
 
 İsteğe bağlı olarak, dijital ikizi tüm özellikleri için başlangıç değerleri sağlayabilirsiniz. 
 
-Model ve ilk özellik değerleri `initData` , ilgili verileri içeren BIR JSON dizesi olan parametresi aracılığıyla sağlanır.
+Model ve ilk özellik değerleri `initData` , ilgili verileri içeren BIR JSON dizesi olan parametresi aracılığıyla sağlanır. Bu nesneyi yapılandırma hakkında daha fazla bilgi için sonraki bölüme geçin.
 
 > [!TIP]
 > Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha sonra](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekirse yeni oluşturduğunuz TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
 
-### <a name="initialize-properties"></a>Özellikleri Başlat
+### <a name="initialize-model-and-properties"></a>Modeli ve özellikleri Başlat
 
-İkizi oluşturma API 'SI, ikizi özelliklerinin geçerli bir JSON açıklamasında seri hale getirilebilir bir nesne kabul eder. Bir ikizi için JSON biçiminin açıklaması için bkz. [*Kavramlar: dijital TWINS ve ikizi Graph*](concepts-twins-graph.md) .
+İkizi oluşturma API 'SI, ikizi özelliklerinin geçerli bir JSON açıklamasına serileştirilmiş bir nesne kabul eder. Bir ikizi için JSON biçiminin açıklaması için bkz. [*Kavramlar: dijital TWINS ve ikizi Graph*](concepts-twins-graph.md) . 
+
+İlk olarak, ikizi ve özellik verilerini temsil eden bir veri nesnesi oluşturacaksınız. Daha sonra, `JsonSerializer` bunun serileştirilmiş bir sürümünü parametresi IÇIN API çağrısına geçirmek için kullanabilirsiniz `initdata` .
 
 Bir parametre nesnesini el ile ya da bir belirtilen yardımcı sınıfı kullanarak oluşturabilirsiniz. Her birine bir örnek aşağıda verilmiştir.
 
 #### <a name="create-twins-using-manually-created-data"></a>El ile oluşturulan verileri kullanarak TWINS oluşturma
+
+Herhangi bir özel yardımcı sınıf kullanmadan, bir ikizi özelliklerini temsil edebilirsiniz `Dictionary<string, object>` ; burada, `string` özelliğin adı, `object` özelliği ve değerini temsil eden bir nesnedir.
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>Yardımcı sınıfla TWINS oluşturma
 
+Yardımcı sınıfı, `BasicDigitalTwin` Özellik alanlarını bir "ikizi" nesnesinde daha doğrudan depolamanıza olanak tanır. `Dictionary<string, object>`Daha sonra doğrudan ikizi nesnesine eklenebilen bir kullanarak özellik listesini oluşturmak isteyebilirsiniz `CustomProperties` .
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateDigitalTwin` . Yukarıdaki örnekte bu şöyle görünür:
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>Dijital ikizi için veri al
 

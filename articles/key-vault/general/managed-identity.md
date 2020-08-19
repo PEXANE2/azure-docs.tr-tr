@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090646"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586180"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama
 
@@ -26,7 +26,7 @@ Bu makalede, bir App Service uygulaması için yönetilen kimlik oluşturma ve A
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir. 
 
@@ -42,7 +42,7 @@ Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gere
 
 İlk olarak, bir uygulamaya sistem tarafından atanan bir kimlik eklemeniz gerekir. 
  
-### <a name="azure-portal"></a>Azure portalı 
+### <a name="azure-portal"></a>Azure portal 
 
 Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygulama oluşturun ve ardından özelliği etkinleştirmeniz gerekir. 
 
@@ -88,7 +88,7 @@ Bir `PrincipalId` sonraki bölümde gerekli olacak ' ı bir yere unutmayın.
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Uygulamanıza Key Vault erişim izni verin 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1.  Key Vault kaynağına gidin. 
 

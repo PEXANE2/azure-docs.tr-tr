@@ -2,25 +2,21 @@
 title: 'Öğretici: Perception Birleşik Devletler Azure Active Directory tümleştirme (UltiPro olmayan) | Microsoft Docs'
 description: Azure Active Directory ve Perception Birleşik Devletler (non-UltiPro) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ba42f780c93486409077383750d0635637e99b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094847"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553972"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Öğretici: Perception Birleşik Devletler Azure Active Directory tümleştirme (UltiPro olmayan)
 
@@ -32,7 +28,7 @@ Azure AD ile Perception Birleşik Devletler Tümleştirme (non-UltiPro), aşağ�
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -109,7 +105,7 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
-    c. **Perception Birleşik Devletler (non-UltiPro)** uygulaması, **Azure AD tanımlayıcı** değerini, URI kodlamalı olarak **ayarlanan Perception Birleşik Devletler (ultipro olmayan)** bölümünden alacağınız <entity_id> olarak gerektirir. URI kodlamalı değeri almak için aşağıdaki bağlantıyı kullanın: **http://www.url-encode-decode.com/**.
+    c. **Perception Birleşik Devletler (non-UltiPro)** uygulaması, **Azure AD tanımlayıcı** değerini, URI kodlamalı olarak **ayarlanan Perception Birleşik Devletler (ultipro olmayan)** bölümünden alacağınız <entity_id> olarak gerektirir. URI kodlamalı değeri almak için aşağıdaki bağlantıyı kullanın: **http://www.url-encode-decode.com/** .
 
     d. URI kodlamalı değeri aldıktan sonra, aşağıda belirtildiği gibi **yanıt URL** 'siyle birleştirin.
 
@@ -161,7 +157,7 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
     
     c. **Kimlik sağlayıcısı adı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın. 
 
-    d. **SAML etki alanı metin**kutusunda, gibi @contoso.cometki alanını girin.
+    d. **SAML etki alanı metin**kutusunda, gibi etki alanını girin @contoso.com .
 
     e. **Meta VERI XML** dosyasını karşıya yüklemek Için **yeniden yükle** 'ye tıklayın.
 
@@ -185,11 +181,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

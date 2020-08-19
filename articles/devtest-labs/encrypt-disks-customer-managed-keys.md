@@ -3,12 +3,12 @@ title: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kull
 description: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifrelemeyi öğrenin.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542437"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566208"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifreleyin
 Sunucu tarafı şifreleme (SSE) verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. SSE, Azure 'da (işletim sistemi ve veri diskleri) yönetilen disklerde depolanan verilerinizi otomatik olarak buluta kalıcı hale getirerek varsayılan olarak şifreler. Azure 'da [disk şifrelemesi](../virtual-machines/windows/disk-encryption.md) hakkında daha fazla bilgi edinin. 
@@ -28,12 +28,11 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
 1. Bir disk şifreleme ayarladıysanız, bir [Key Vault ve bir disk şifreleme kümesi ayarlamak](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault)için bu makaleyi izleyin. Disk şifreleme kümesi için aşağıdaki gereksinimleri dikkate alın: 
 
     - Disk şifreleme kümesinin **laboratuvarınız ile aynı bölgede ve abonelikte**olması gerekir. 
-    - Laboratuvar işletim sistemi disklerini şifrelemek için kullanılacak disk şifreleme kümesine en az bir **okuyucu düzeyinde erişime** sahip olduğunuzdan emin olun.  
-2. Laboratuvarın tüm laboratuar işletim sistemi diskleri için şifrelemeyi işlemesi için laboratuvar sahibinin, laboratuvarın **sistem tarafından atanan kimliğine** , disk şifreleme kümesine izni açıkça vermesi gerekir. Laboratuvar sahibi bunu aşağıdaki adımları tamamlayarak yapabilir:
+    - Laboratuvar işletim sistemi disklerini şifrelemek için kullanılacak disk şifreleme kümesine en az bir **okuyucu düzeyinde erişime** sahip olduğunuzdan emin olun. 
+2. 8/1/2020 ' den önce oluşturulan laboratuvarlar için laboratuvar sahibinin laboratuvar sistemi tarafından atanan kimliğin etkinleştirildiğinden emin olması gerekir. Bunu yapmak için, laboratuvar sahibi laboratuvarına gidebilir, **yapılandırma ve ilkeler**' e tıklayabilir, **kimlik (Önizleme)** dikey penceresine tıklayabilir, sistem tarafından atanan kimlik **durumunu** **Açık** olarak değiştirebilir ve **Kaydet**' e tıklayabilirsiniz. 8/1/2020 Laboratuvarı sistem tarafından atanan kimlik ile oluşturulan yeni laboratuvarlar için varsayılan olarak etkinleştirilir. 
+3. Laboratuvarın tüm laboratuar işletim sistemi diskleri için şifrelemeyi işlemesi için, laboratuvar sahibinin, temel alınan Azure aboneliğinde sanal makine katılımcısı rolü ' ne ek olarak, laboratuvar sahibinin, disk şifreleme kümesi ve sanal makine katılımcısı rolü üzerinde **sistem tarafından atanan kimlik** okuyucusu rolünü açıkça vermesi gerekir. Laboratuvar sahibi bunu aşağıdaki adımları tamamlayarak yapabilir:
 
-    > [!IMPORTANT]
-    > 8/1/2020 tarihinde veya sonrasında oluşturulan Labs için bu adımları uygulamanız gerekir. Bu tarihten önce oluşturulan laboratuvarlar için herhangi bir eylem gerekmez.
-
+   
     1. Azure kaynaklarına Kullanıcı erişimini yönetebilmeniz için Azure abonelik düzeyinde [Kullanıcı erişimi Yöneticisi rolünün](../role-based-access-control/built-in-roles.md#user-access-administrator) bir üyesi olduğunuzdan emin olun. 
     1. **Disk şifreleme kümesi** sayfasında, Sol menüdeki **ERIŞIM denetimi (IAM)** seçeneğini belirleyin. 
     1. Araç çubuğunda **+ Ekle** ' yi seçin ve **rol ataması Ekle**' yi seçin.  
@@ -48,9 +47,7 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Rol atamasını Kaydet":::
 3. **Abonelik**erişim denetimi (IAM) sayfasını kullanarak, laboratuvarın **sistem tarafından atanan kimliğini** **sanal makine katılımcısı** rolüne ekleyin  ->  **Access control (IAM)** . Adımlar önceki adımlarda olanlarla benzerdir. 
 
-    > [!IMPORTANT]
-    > 8/1/2020 tarihinde veya sonrasında oluşturulan Labs için bu adımları uygulamanız gerekir. Bu tarihten önce oluşturulan laboratuvarlar için herhangi bir eylem gerekmez.
-
+    
     1. Azure portal **abonelik** sayfasına gidin. 
     1. **Erişim denetimi (IAM)** öğesini seçin. 
     1. Araç çubuğunda **+ Ekle** ' yi seçin ve **rol ataması Ekle**' yi seçin. 

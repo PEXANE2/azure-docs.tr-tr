@@ -2,48 +2,34 @@
 title: Azure Backup'ta şifreleme
 description: Azure Backup ' deki şifreleme özelliklerinin, yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza nasıl yardımcı olduğunu öğrenin.
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 099e736bfb321f0f92bd3a57f9c24e88293b42bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538760"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586656"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup'ta şifreleme
 
-Tüm yedeklenen verileriniz, Azure depolama şifrelemesi kullanılarak bulutta depolandığında, güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olacak şekilde otomatik olarak şifrelenir. Bekleyen bu veriler 256 bit AES şifrelemesi kullanılarak şifrelenir, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur.
+Tüm yedeklenen verileriniz, Azure depolama şifrelemesi kullanılarak bulutta depolandığında, güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olacak şekilde otomatik olarak şifrelenir. Bekleyen bu veriler 256 bit AES şifrelemesi kullanılarak şifrelenir, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Bekleyen şifrelemeye ek olarak, yoldaki tüm yedekleme verileriniz HTTPS üzerinden aktarılır. Her zaman Azure omurga ağında kalır.
 
-Bekleyen şifrelemeye ek olarak, yoldaki tüm yedekleme verileriniz HTTPS üzerinden aktarılır. Her zaman Azure omurga ağında kalır.
+## <a name="levels-of-encryption-in-azure-backup"></a>Azure Backup şifreleme düzeyleri
 
-Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md). Şifreleme hakkında karşılaşabileceğiniz soruları yanıtlamak için [Azure Backup SSS](./backup-azure-backup-faq.md#encryption) bölümüne bakın.
+Azure Backup iki düzeyde şifreleme içerir:
 
-## <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Platform tarafından yönetilen anahtarlar kullanılarak yedekleme verilerinin şifrelenmesi
-
-Varsayılan olarak, tüm verileriniz platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu şifrelemeyi etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez ve kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
-
-## <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
-
-Azure sanal makinelerinizi yedeklerken artık size ait olan ve yönetilen anahtarları kullanarak verilerinizi şifreleyebilirsiniz. Azure Backup, yedeklemelerinizi şifrelemek için Azure Key Vault depolanan RSA anahtarlarınızı kullanmanıza olanak sağlar. Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasının Azure Key Vault şifreleme anahtarına erişim verilmesi gerekir. Her gerektiğinde anahtarı devre dışı bırakabilir veya erişimi iptal edebilirsiniz. Ancak, kasadaki herhangi bir öğeyi korumayı denemeden önce anahtarlarınızı kullanarak şifrelemeyi etkinleştirmeniz gerekir.
-
-[Burada](encryption-at-rest-with-cmk.md)müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinizi şifrelemek hakkında daha fazla bilgi edinin.
-
-## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmiş yönetilen disk VM 'lerinin yedeklemesi
-
-Azure Backup Ayrıca, [depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md)için anahtarınızı kullanan Azure VM 'lerinizi yedeklemenizi sağlar. Diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. Depolama Hizmeti Şifrelemesi (SSE), müşteri tarafından yönetilen anahtarlar kullanılarak Azure disk şifrelemesi 'nden farklıdır, çünkü ADE, Konuk içi şifrelemeyi gerçekleştirmek için BitLocker (Windows için) ve DM-crypt (Linux için) için, SSE, depolama hizmetindeki verileri şifreler ve VM 'niz için herhangi bir işletim sistemi veya görüntü kullanmanıza olanak sağlar. Daha fazla ayrıntı için [, müşteri tarafından yönetilen anahtarlarla yönetilen disklerin şifrelenmesi](../virtual-machines/windows/disk-encryption.md#customer-managed-keys) bölümüne bakın.
-
-## <a name="infrastructure-level-encryption-for-backup-data"></a>Yedekleme verileri için altyapı düzeyinde şifreleme
-
-Kurtarma Hizmetleri kasasındaki verilerinizi, müşteri tarafından yönetilen anahtarları kullanarak şifrelemeye ek olarak, depolama altyapısında yapılandırılmış ek bir şifreleme katmanına sahip olmasını da tercih edebilirsiniz. Bu altyapı şifrelemesi, platform tarafından yönetilir ve müşterinin yönettiği anahtarlar kullanılarak bekleyen şifrelemeyle birlikte, yedekleme verilerinizin iki katmanlı şifrelemesine izin verir. Altyapı şifrelemenin yalnızca, bekleyen şifreleme için kendi anahtarlarınızı kullanmayı tercih ederseniz yapılandırılabileceğini not edilmelidir. Altyapı şifrelemesi, verileri şifrelemek için platform tarafından yönetilen anahtarları kullanır.
+- **Kurtarma Hizmetleri kasasındaki verilerin şifrelenmesi**
+  - **Platform tarafından yönetilen anahtarlar kullanılarak**: varsayılan olarak, tüm verileriniz platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu şifrelemeyi etkinleştirmek için uçtan herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
+  - **Müşteri tarafından yönetilen anahtarları kullanma**: Azure sanal makinelerinizi yedeklerken, size ait olan ve yönetilen şifreleme anahtarlarını kullanarak verilerinizi şifrelemeyi seçebilirsiniz. Azure Backup, yedeklemelerinizi şifrelemek için Azure Key Vault depolanan RSA anahtarlarınızı kullanmanıza olanak sağlar. Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasını Azure Key Vault şifreleme anahtarına vermeniz gerekir. Her gerektiğinde anahtarı devre dışı bırakabilir veya erişimi iptal edebilirsiniz. Ancak, kasadaki herhangi bir öğeyi korumayı denemeden önce anahtarlarınızı kullanarak şifrelemeyi etkinleştirmeniz gerekir. [Daha fazla bilgi edinin](encryption-at-rest-with-cmk.md).
+  - **Altyapı düzeyinde şifreleme**: müşteri tarafından yönetilen anahtarları kullanarak kurtarma hizmetleri kasasındaki verilerinizi şifrelemeye ek olarak, depolama altyapısında yapılandırılmış ek bir şifreleme katmanına sahip olmasını da tercih edebilirsiniz. Bu altyapı şifrelemesi platform tarafından yönetiliyor. Müşteri tarafından yönetilen anahtarlar kullanılarak, bekleyen şifrelemeyle birlikte, yedekleme verilerinizin iki katmanlı şifrelemesine izin verir. Altyapı şifrelemesi, yalnızca, bekleyen şifreleme için kendi anahtarlarınızı kullanmayı seçerseniz yapılandırılabilir. Altyapı şifrelemesi, verileri şifrelemek için platform tarafından yönetilen anahtarları kullanır.
+- **Yedeklenmekte olan iş yüküne özgü şifreleme**  
+  - **Azure sanal makine yedeklemesi**: Azure Backup [platform tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)kullanılarak şifrelenmiş disklere sahip VM 'lerin yedeklenmesini ve size ait ve sizin tarafınızdan yönetilen [müşteri tarafından yönetilen anahtarları](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) destekler. Ayrıca, işletim sistemi veya veri disklerinin [Azure disk şifrelemesi](backup-azure-vms-encryption.md#encryption-support-using-ade)kullanılarak şifrelendiği Azure sanal makinelerinizi da yedekleyebilirsiniz. ADE, Konuk içi şifrelemeyi gerçekleştirmek için Windows VM 'Leri için BitLocker ve Linux VM 'Ler için DM-Crypt kullanır.
 
 >[!NOTE]
 >Altyapı şifrelemesi Şu anda sınırlı önizlemededir ve yalnızca ABD Doğu, US West2, ABD Orta Güney, US Gov Arizona ve ABD GOV Virginia bölgelerinde kullanılabilir. Bu bölgelerin herhangi birinde özelliğini kullanmak istiyorsanız, lütfen [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) doldurun ve bize e-posta gönderin [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-## <a name="backup-of-vms-encrypted-using-ade"></a>ADE kullanılarak şifrelenen VM 'lerin yedeklenmesi
-
-Azure Backup ile, işletim sistemi veya veri disklerinin Azure disk şifrelemesi kullanılarak şifrelendiği Azure sanal makinelerinizi da yedekleyebilirsiniz. ADE, Konuk içi şifrelemeyi gerçekleştirmek için Windows VM 'Leri için BitLocker ve Linux sanal makineleri için DM-Crypt kullanır. Ayrıntılar için bkz. [Azure Backup ile şifrelenmiş sanal makineleri yedekleme ve geri yükleme](./backup-azure-vms-encryption.md).
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şifrelenmiş bir Azure VM 'yi yedekleme ve geri yükleme](backup-azure-vms-encryption.md)
+- [Bekleyen veri için Azure Depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- Şifreleme hakkında karşılaşabileceğiniz sorular için [Azure Backup SSS](backup-azure-backup-faq.md#encryption)

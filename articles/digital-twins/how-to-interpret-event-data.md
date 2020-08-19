@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510037"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587642"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
@@ -30,7 +30,7 @@ Genel olarak, bildirimler iki bölümden oluşur: başlık ve gövde.
 
 Bildirim iletisi üstbilgileri, anahtar-değer çiftleri ile temsil edilir. Kullanılan protokole (MQTT, AMQP veya HTTP) bağlı olarak, ileti üstbilgileri farklı şekilde serileştirilir. Bu bölümde, seçilen protokole ve Serileştirmeden bağımsız olarak bildirim iletilerine ilişkin genel üst bilgi bilgileri anlatılmaktadır.
 
-Bazı bildirimler CloudEvents standardına uygundur. CloudEvents uygunluğu aşağıdaki gibidir.
+Bazı bildirimler [Cloudevents](https://cloudevents.io/) standardına uygundur. CloudEvents uygunluğu aşağıdaki gibidir.
 * Cihazlardan alınan bildirimler, bildirim için mevcut belirtimleri izlemeye devam eder
 * IoT Hub tarafından işlenen ve yayılan bildirimler, IoT Hub, Event Grid gibi CloudEvents desteğini desteklemeyi tercih ettiği durumlar haricinde bildirim için mevcut belirtimleri izlemeye devam eder.
 * Bir [model](concepts-models.md) ile [dijital TWINS](concepts-twins-graph.md) 'Ten alınan bildirimler, cloudevents ile uyumlu
@@ -107,7 +107,7 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir. |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
-| `specversion` | *1,0*<br>İleti, CloudEvents belirtiminin bu sürümüne uyar. |
+| `specversion` | *1,0*<br>İleti, [Cloudevents belirtiminin](https://github.com/cloudevents/spec)bu sürümüne uyar. |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | Dijital ikizi KIMLIĞI |
@@ -193,7 +193,7 @@ Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda veril
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir |
 | `source` | *Mydigitaltwins.westus2.azuredigitaltwins.net* gibi Azure dijital TWINS örneğinin adı |
-| `specversion` | *1,0*<br>İleti, CloudEvents belirtiminin bu sürümüne uyar. |
+| `specversion` | *1,0*<br>İleti, [Cloudevents belirtiminin](https://github.com/cloudevents/spec)bu sürümüne uyar. |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | İlişkinin KIMLIĞI, örneğin `<twinID>/relationships/<relationshipID>` |
@@ -249,7 +249,7 @@ Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda 
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
-| `specversion` | *1,0*<br>İleti, CloudEvents belirtiminin bu sürümüne uyar. |
+| `specversion` | *1,0*<br>İleti, [Cloudevents belirtiminin](https://github.com/cloudevents/spec)bu sürümüne uyar. |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | Dijital ikizi KIMLIĞI |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: e7aa5963f6e26776184de361aaa91f5a3c36ec9e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546631"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587969"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Öğretici: Spotınst ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -75,18 +75,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
+1. **Temel SAML yapılandırması** bölümünde, IDP tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
 
-    a. **Ek URL 'Leri ayarla**' yı işaretleyin.
-
-    b. **Geçiş durumu** metin kutusuna bir değer yazın:`<ID>`
-
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımları gerçekleştirin:
-
-    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://console.spotinst.com/auth/saml`
-
-    > [!NOTE]
-    > Geçiş durumu değeri gerçek değil. Geçiş durumu değerini, Öğreticinin ilerleyen kısımlarında açıklanan gerçek geçiş durumu değeriyle güncelleşceksiniz.
+   1. **Yanıt URL 'sinin** şu şekilde ayarlandığından emin olun: https://console.spotinst.com/auth/saml .
+   1. **Geçiş durumunda**,, **SSO** sekmesinde de doğrulayabileceği spotinst kuruluş kimliğinizi girin.
+   1. **Oturum açma URL 'si** boş olmalıdır.
 
 1. **Kaydet**’e tıklayın.
 

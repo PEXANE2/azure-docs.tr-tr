@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048561"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586614"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Ayrılmış HSM dağıtım mimarisi
 
@@ -40,7 +40,7 @@ HSM 'ler, Microsoft 'un veri merkezlerinde dağıtılır ve yüksek oranda kulla
 * Doğu Japonya
 * Batı Japonya
 * Kuzey Avrupa
-* Batı Avrupa
+* West Europe
 * Güney Birleşik Krallık
 * Batı Birleşik Krallık
 * Orta Kanada
@@ -48,7 +48,7 @@ HSM 'ler, Microsoft 'un veri merkezlerinde dağıtılır ve yüksek oranda kulla
 * Doğu Avustralya
 * Güneydoğu Avustralya
 
-Bu bölgelerin her birinde, iki bağımsız veri merkezinde veya en az iki bağımsız kullanılabilirlik bölgesinde dağıtılan HSM rafları vardır. Güney Doğu Asya üç kullanılabilirlik bölgesine sahiptir ve Doğu ABD 2 iki tane vardır. Avrupa, Asya ve ABD 'de adanmış HSM hizmeti sunan toplam sekiz bölge vardır. Azure bölgeleri hakkında daha fazla bilgi için bkz. resmi [Azure bölgeleri bilgileri](https://azure.microsoft.com/global-infrastructure/regions/).
+Bu bölgelerin her birinde, iki bağımsız veri merkezinde veya en az iki bağımsız kullanılabilirlik bölgesinde dağıtılan HSM rafları vardır. Güney Doğu Asya üç kullanılabilirlik bölgesine sahiptir ve Doğu ABD 2 iki tane vardır. Avrupa, Asya ve ABD 'de adanmış HSM hizmeti sunan toplam sekiz bölge vardır. Azure bölgeleri hakkında daha fazla bilgi için bkz. resmi  [Azure bölgeleri bilgileri](https://azure.microsoft.com/global-infrastructure/regions/).
 Tüm özel HSM tabanlı çözümler için bazı tasarım faktörleri konum/gecikme, yüksek kullanılabilirlik ve diğer dağıtılmış uygulamalar için destek.
 
 ## <a name="device-location"></a>Cihaz konumu

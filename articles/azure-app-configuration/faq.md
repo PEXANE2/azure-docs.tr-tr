@@ -1,18 +1,18 @@
 ---
 title: Azure uygulama yapılandırma hakkında SSS
-description: Azure Uygulama yapılandırması hakkında sık sorulan sorular
+description: Azure Uygulama yapılandırması hakkında sık sorulan sorular (SSS) hakkında bilgi edinmek için Azure Key Vault farklıdır.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348782"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587353"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -107,7 +107,7 @@ Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan t�
 
 Uygulamanız düzenli olarak HTTP durum kodu 429 yanıtlarını yaşıyorsa, yapılan istek sayısını azaltmak için yeniden tasarlamayı düşünün. Daha fazla bilgi için bkz. [uygulama yapılandırmasına yapılan Istekleri azaltma](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden mi?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden?
 
 Şu koşullarda bir HTTP durum kodu 429 yanıtı alacaksınız:
 

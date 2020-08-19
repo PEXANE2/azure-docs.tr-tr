@@ -1,17 +1,17 @@
 ---
 title: Azure uygulama yapılandırma anahtar-değer deposunu anlama
-description: Yapılandırma verilerinin Azure Uygulama yapılandırması 'nda nasıl depolandığını anlayın.
+description: Yapılandırma verilerini anahtar-değer olarak depolayan Azure Uygulama yapılandırması 'nda anahtar-değer depolama alanını anlayın. Anahtar değerleri, uygulama ayarlarının bir gösterimidir.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 9a0ed747ea0c894214a633bdbc8141e95e95b5fb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830045"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586401"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
 
@@ -69,16 +69,16 @@ Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz ş
 
 | Anahtar | Açıklama |
 |---|---|
-| `key`atlanır veya`key=*` | Tüm anahtarlarla eşleşir |
+| `key` atlanır veya `key=*` | Tüm anahtarlarla eşleşir |
 | `key=abc` | **ABC** anahtar adı tam olarak eşleşir |
 | `key=abc*` | **ABC** ile başlayan anahtar adlarını eşleştirir |
 | `key=abc,xyz` | **ABC** veya **xyz**anahtar adlarını eşleştirir. Beş CSV Ile sınırlıdır |
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
-| Etiket | Açıklama |
+| Etiketle | Açıklama |
 |---|---|
-| `label`atlanır veya`label=*` | İçeren herhangi bir etiketle eşleşir.`\0` |
+| `label` atlanır veya `label=*` | İçeren herhangi bir etiketle eşleşir. `\0` |
 | `label=%00` | Eşleşir `\0` etiketi |
 | `label=1.0.0` | Label **1.0.0** ile tam olarak eşleşir |
 | `label=1.0.*` | 1,0 ile başlayan etiketlerle eşleşir **.** |
