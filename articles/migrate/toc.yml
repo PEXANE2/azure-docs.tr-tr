@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
       href: troubleshoot-assessment.md
+    - name: Aracısız VMware geçişindeki çoğaltma sorunlarını giderme
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: Kaynaklar
   items:
     - name: Bulut Benimseme Çerçevesi kapsamında geçiş

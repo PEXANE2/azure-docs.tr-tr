@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006868"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612427"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLı 'yı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme (eski)
 
@@ -27,6 +27,7 @@ Bu makalede kullanılan tam örnek betik için bkz. Azure [CLI örnekleri-Azure 
 ## <a name="the-following-limitations-apply"></a>Aşağıdaki sınırlamalar geçerlidir:
 
 - Azure AD, yalnızca RBAC özellikli kümede etkinleştirilebilir.
+- Azure AD eski tümleştirmesi, yalnızca küme oluşturma sırasında etkinleştirilebilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -176,7 +177,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > RBAC bağlamasını verdiğiniz kullanıcı aynı Azure AD kiracısında ise, *userPrincipalName*öğesine göre izinler atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve onun yerine *ObjectID* özelliğini kullanın.
 
-Adlı bir YAML bildirimi oluşturun `basic-azure-ad-binding.yaml` ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId* ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
+Adlı bir YAML bildirimi oluşturun `basic-azure-ad-binding.yaml` ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId*  ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -244,7 +245,7 @@ error: You must be logged in to the server (Unauthorized)
 
 * Kullanıcı hesabının aynı Azure AD kiracısında olup olmadığı ile ilgili olarak uygun nesne KIMLIĞINI veya UPN 'yi tanımlamış olursunuz.
 * Kullanıcı 200 taneden fazla grubun üyesi değil.
-* Sunucu için uygulama kaydında tanımlanan gizli dizi, kullanılarak yapılandırılan değerle eşleşiyor`--aad-server-app-secret`
+* Sunucu için uygulama kaydında tanımlanan gizli dizi, kullanılarak yapılandırılan değerle eşleşiyor `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

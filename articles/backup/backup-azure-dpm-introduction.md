@@ -3,12 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263274"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612665"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -92,7 +92,7 @@ Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal g�
   - Kimlik bilgileri denetimi kaybolursa, diğer makineleri kasaya kaydetmek için kasa kimlik bilgileri kullanılabilir.
   - Ancak, yedekleme verileri müşteriye ait bir parola kullanılarak şifrelenir, bu nedenle mevcut yedekleme verilerinin güvenliği tehlikeye alınamaz.
 - Dosyanın DPM sunucusundan erişilebilen bir konuma kaydedildiğinden emin olun. Dosya paylaşımında/SMB 'de depolanıyorsa, erişim izinleri olup olmadığını denetleyin.
-- Kasa kimlik bilgileri 48 saat sonra sona eriyor. Yeni kasa kimlik bilgilerini gerektiği kadar birçok kez indirebilirsiniz. Ancak kayıt iş akışı sırasında yalnızca en son kasa kimlik bilgisi dosyası kullanılabilir.
+- Kasa kimlik bilgilerinin süresi 48 sonra dolar. Yeni kasa kimlik bilgilerini gerektiği kadar birçok kez indirebilirsiniz. Ancak kayıt iş akışı sırasında yalnızca en son kasa kimlik bilgisi dosyası kullanılabilir.
 - Azure Backup hizmeti sertifikanın özel anahtarını bilmez ve özel anahtar portalda veya hizmette kullanılamaz.
 
 Kasa kimlik bilgileri dosyasını aşağıdaki gibi bir yerel makineye indirin:
@@ -182,4 +182,4 @@ Kasa kimlik bilgileri dosyasının kurulum uygulaması tarafından erişilebilen
 Geçersiz bir kasa kimlik bilgisi hatasıyla karşılaşırsanız (örneğin, "geçersiz kasa kimlik bilgileri sağlanmış"), dosya bozuk veya kurtarma hizmetiyle ilişkili en son kimlik bilgilerine sahip değil.
 
 - Portaldan yeni bir kasa kimlik bilgileri dosyası indirdikten sonra işlemi yeniden deneyin.
-- Bu hata genellikle, Azure portal hızlı bir şekilde art arda iki adımda **kasa kimlik bilgilerini indir** seçeneğini belirlediğinizde görülür. Bu durumda, yalnızca ikinci kasa kimlik bilgisi dosyası geçerlidir.
+- Bu hata genellikle, Azure portal hızlı bir şekilde art arda iki kez **kasa kimlik bilgilerini indir** seçeneğini belirlediğinizde görülür. Bu durumda, yalnızca ikinci kasa kimlik bilgisi dosyası geçerlidir.

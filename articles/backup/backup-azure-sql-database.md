@@ -3,12 +3,12 @@ title: SQL Server veritabanlarını Azure 'a yedekleme
 description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır. Makalede kurtarma SQL Server de açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 28644065619771069e556c941d2c5a77626e1ba6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 92097f4be02e81d3a8d306f6dc00bb0e8c939005
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922906"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612546"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
@@ -27,7 +27,7 @@ Bu çözüm SQL veritabanlarınızın yedeklerini almak için SQL Native API 'le
 
 * Korumak istediğiniz SQL Server VM ve içindeki veritabanları için sorgulamak üzere belirttikten sonra, Azure Backup hizmet, VM 'ye ad uzantısı tarafından bir iş yükü yedekleme uzantısı yükler `AzureBackupWindowsWorkload` .
 * Bu uzantı, bir düzenleyici ve SQL eklentisi içerir. Düzenleyici, yedekleme, yedekleme ve geri yükleme gibi çeşitli işlemler için iş akışlarını tetiklemeden sorumlu olsa da, eklenti gerçek veri akışından sorumludur.
-* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı oluşturur `NT SERVICE\AzureWLBackupPluginSvc` . Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. `NT SERVICE\AzureWLBackupPluginSvc`Hesap bir [sanal hizmet hesabıdır](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)ve bu nedenle herhangi bir parola yönetimi gerektirmez. Azure Backup `NT AUTHORITY\SYSTEM` , veritabanı bulma/sorgulama hesabından yararlanır, bu nedenle bu HESABıN SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](#set-vm-permissions).
+* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı oluşturur `NT SERVICE\AzureWLBackupPluginSvc` . Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. `NT SERVICE\AzureWLBackupPluginSvc`Hesap bir [sanal hizmet hesabıdır](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)ve bu nedenle herhangi bir parola yönetimi gerektirmez. Azure Backup `NT AUTHORITY\SYSTEM` , veritabanı bulma/sorgulama hesabından yararlanır, bu nedenle bu HESABıN SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatasıyla karşılaşabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](#set-vm-permissions).
 * Seçili veritabanlarında korumayı Yapılandır ' ı etkinleştirdikten sonra, yedekleme hizmeti düzenleyiciyi yedekleme zamanlamaları ve diğer ilke ayrıntıları ile ayarlar; bu da uzantının yerel olarak VM 'de önbelleğe alınır.
 * Zamanlanan zamanda, düzenleyici eklenti ile iletişim kurar ve VDı kullanarak SQL Server 'dan yedekleme verilerini akışa başlar.  
 * Eklenti, verileri doğrudan kurtarma hizmetleri kasasına gönderir ve böylece bir hazırlama konumu gereksinimini ortadan kaldırır. Veriler, depolama hesaplarında Azure Backup hizmeti tarafından şifrelenir ve depolanır.
@@ -51,7 +51,7 @@ Başlamadan önce, aşağıdakileri doğrulayın:
 * Sanal makinedeki veritabanlarını bulacak bir NT SERVICE\AzureWLBackupPluginSvc hesabı oluşturur. Bu hesap, yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir.
 * Bir VM üzerinde çalışan veritabanlarını bulur Azure Backup NT AUTHORITY\SYSTEM hesabını kullanır. Bu hesap, SQL 'de ortak bir oturum açma olmalıdır.
 
-Azure Marketi 'nde SQL Server VM oluşturmadıysanız veya SQL 2008 ve 2008 R2 kullanıyorsanız bir **Usererrorsqlnosysadminmembership** hatası alabilirsiniz.
+Azure Market 'te SQL Server VM oluşturmadıysanız veya SQL 2008 ve 2008 R2 kullanıyorsanız bir **Usererrorsqlnosysadminmembership** hatası alabilirsiniz.
 
 Windows 2008 R2 'de çalışan **SQL 2008** ve **2008 R2** durumunda izinler vermek için [buraya](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)bakın.
 

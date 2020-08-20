@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: d101acd3e72e68efd9198cb273fd352967a0cd54
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192361"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612393"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
 
@@ -36,7 +36,7 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 |Yayın durumu:|Genel olarak kullanılabilir|
 |Fiyat|Ücretsiz katmanı|
 |Gerekli roller ve izinler:|Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -57,7 +57,29 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
 
 1. "Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet**’i seçin.
+
+
+## <a name="setting-up-continuous-export-via-the-rest-api"></a>REST API aracılığıyla sürekli dışarı aktarmayı ayarlama
+
+Sürekli dışa aktarma özelliği Azure Güvenlik Merkezi tahmin [API 'si](https://docs.microsoft.com/rest/api/securitycenter/automations)aracılığıyla yapılandırılabilir ve yönetilebilir. Aşağıdaki olası hedeflerin herhangi birine dışarı aktarmak için bu API 'yi kullanarak akışlarını otomatikleştirin oluşturun veya güncelleştirin:
+
+- Azure Event Hub
+- Log Analytics çalışma alanı
+- Azure Logic Apps 
+
+API, Azure portal kullanılamayan ek işlevler sağlar, örneğin:
+
+* **Daha büyük birim** -API, tek bir abonelikte birden çok dışa aktarma yapılandırması oluşturmanıza olanak sağlar. Güvenlik Merkezi 'nin Portal Kullanıcı arabirimindeki **sürekli dışarı aktarma** sayfası, her abonelik için yalnızca bir dışarı aktarma yapılandırmasını destekler.
+
+* **Ek özellikler** -API, Kullanıcı arabiriminde görüntülenmeyen ek parametreler sunar. Örneğin, Otomasyon kaynağına Etiketler ekleyebilir ve ayrıca, güvenlik merkezi 'nin Portal Kullanıcı arabirimindeki **sürekli dışarı aktarma** sayfasında sunulmadan daha geniş bir uyarı ve öneri özellikleri kümesine göre dışarı aktarma işlemini tanımlayabilirsiniz.
+
+* **Daha odaklı kapsam** -API, dışa aktarma yapılandırmalarınızın kapsamı için daha ayrıntılı bir düzey sağlar. API ile bir dışarı aktarma tanımlarken, bunu kaynak grubu düzeyinde yapabilirsiniz. Güvenlik Merkezi 'nin Portal Kullanıcı arabiriminde **sürekli dışarı aktarma** sayfasını kullanıyorsanız, bunu abonelik düzeyinde tanımlamanız gerekir.
+
+    > [!TIP]
+    > API kullanarak birden çok dışarı aktarma yapılandırması ayarladıysanız veya yalnızca API parametreleri kullandıysanız, bu ek özellikler Güvenlik Merkezi Kullanıcı arabiriminde gösterilmez. Bunun yerine, diğer yapılandırmaların var olduğunu bildiren bir başlık görüntülenir.
+
+[REST API belgelerindeki](https://docs.microsoft.com/rest/api/securitycenter/automations)akışlarını otomatikleştirin API 'si hakkında daha fazla bilgi edinin.
 
 
 
@@ -109,7 +131,7 @@ Azure Izleyici, Log Analytics çalışma alanı sorgularını temel alan tanıla
 
 Azure Izleyici 'de Güvenlik Merkezi 'ndeki uyarıları ve önerileri görüntülemek için Log Analytics sorgularına göre bir uyarı kuralı yapılandırın (günlük uyarısı):
 
-1. Azure Izleyici **uyarıları** sayfasında **Yeni uyarı kuralı**' na tıklayın.
+1. Azure Izleyici **uyarıları** sayfasında **Yeni uyarı kuralı**' nı seçin.
 
     ![Azure Izleyici 'nin uyarılar sayfası](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -126,12 +148,25 @@ Artık, Azure Izleyici uyarıları 'ndaki yeni Azure Güvenlik Merkezi uyarılar
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Güvenlik uyarılarını el ile tek seferlik dışarı aktarma
 
-Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarıları** veya **öneriler** sayfasını açın ve **CSV raporu indir** düğmesine tıklayın.
+Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarıları** veya **öneriler** sayfasını açın ve **CSV raporu indir** düğmesini seçin.
 
 [![Uyarı verilerini CSV dosyası olarak indir](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
 > Bu raporlar Şu anda seçili olan aboneliklerdeki kaynaklara yönelik uyarıları ve önerileri içerir.
+
+
+
+## <a name="faq---continuous-export"></a>SSS-sürekli dışarı aktarma
+
+### <a name="what-are-the-costs-involved-in-exporting-data"></a>Verileri dışarı aktarma ile ilgili maliyetler nelerdir?
+
+Sürekli dışarı aktarmayı etkinleştirme maliyeti yoktur. Yapılandırmaya bağlı olarak, Log Analytics çalışma alanınızda verilerin alımı ve saklanması için maliyetler tahakkuk edebilir. 
+
+[Log Analytics çalışma alanı fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.
+
+[Azure Olay Hub 'ı fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/)hakkında daha fazla bilgi edinin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

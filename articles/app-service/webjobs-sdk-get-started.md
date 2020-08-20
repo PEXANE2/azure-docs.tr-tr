@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212863"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612495"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
 
@@ -192,7 +192,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 1. Visual Studio 'da **Sunucu Gezgini** açın ve Azure 'da oturum açın. **Azure** düğümüne sağ tıklayın ve ardından **Microsoft Azure aboneliğine Bağlan**' ı seçin.
 
-   ![Azure’da oturum açma](./media/webjobs-sdk-get-started/sign-in.png)
+   ![Azure'da oturum açma](./media/webjobs-sdk-get-started/sign-in.png)
 
 1. **Sunucu Gezgini**içindeki **Azure** düğümü altında **depolama**' ya sağ tıklayın ve ardından **depolama hesabı oluştur**' u seçin.
 
@@ -327,13 +327,13 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 1. **Bağlantı dizeleri** kutusuna aşağıdaki girişi ekleyin.
 
-   |Name  |bağlantı dizesi  |Veritabanı türü|
+   |Ad  |bağlantı dizesi  |Veritabanı türü|
    |---------|---------|------|
    |AzureWebJobsStorage | {daha önce kopyaladığınız depolama bağlantı dizesi}|Özel|
 
 1. **Uygulama ayarları** kutusunda bir Application Insights izleme anahtarı yoksa, daha önce kopyaladığınız birini ekleyin. (İzleme anahtarı, App Service uygulamasının nasıl oluşturulduğuna bağlı olarak zaten orada olabilir.)
 
-   |Name  |Değer  |
+   |Ad  |Değer  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {izleme anahtarı} |
 

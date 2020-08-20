@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003590"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612410"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure dijital TWINS sorunlarını giderme: tanılama günlüğü
 
@@ -57,7 +57,7 @@ Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, olay, örne
 
 Tanılama ayarlarını ayarlarken **Kategori ayrıntıları** altında seçilebilecekleri günlük kategorileri hakkında daha fazla ayrıntı aşağıda verilmiştir.
 
-| Günlük kategorisi | Description |
+| Günlük kategorisi | Açıklama |
 | --- | --- |
 | ADTModelsOperation | Modellerle ilgili tüm API çağrılarını günlüğe kaydet |
 | ADTQueryOperation | Sorgularla ilgili tüm API çağrılarını günlüğe kaydet |
@@ -88,7 +88,7 @@ Her kategoride günlüğe kaydedilen işlemlerin ve karşılık gelen [Azure dij
 | ADTEventRoutesOperation | Microsoft. DigitalTwins/eventroutes/Write | Olay rotaları API ekleme |
 |  | Microsoft. DigitalTwins/eventroutes/okuma | Kimliğe ve liste API 'Lerine göre olay yolları |
 |  | Microsoft. DigitalTwins/eventrotalar/Sil | Olay rotaları API silme |
-|  | Microsoft. DigitalTwins/eventroutes/eylem | Bir olayın bitiş noktası hizmetine çıkışı (API çağrısı değil) |
+|  | Microsoft. DigitalTwins/eventroutes/eylem | Bir uç nokta hizmetine olay yayımlamaya çalışırken hata oluştu (API çağrısı değil) |
 | ADTDigitalTwinsOperation | Microsoft. DigitalTwins/digitaltwıns/Write | Dijital TWINS ekleme, Ilişki ekleme, güncelleştirme, güncelleştirme bileşeni |
 |  | Microsoft. DigitalTwins/digitaltwıns/okuma | Kimliğe göre dijital TWINS alma, bileşen alma, kimliğe göre Ilişki alma, gelen Ilişkileri listeleme, Ilişkileri listeleme |
 |  | Microsoft. DigitalTwins/digitaltwıns/Delete | Dijital TWINS silme, Ilişkiyi silme |

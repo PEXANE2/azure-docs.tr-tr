@@ -8,7 +8,7 @@
     - name: Ticari markete genel bakış ve sunulan avantajlar
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 'Bir market, iki vitrin'
+        - name: 'Tek market, iki çevrimiçi mağaza'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Yayımlama seçenekleri ve dikkat edilmesi gerekenler
           href: ./determine-your-listing-type.md

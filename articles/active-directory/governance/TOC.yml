@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: Erişim gözden geçirmeleri
       items:
+        - name: Erişim gözden geçirmesi dağıtımını planlama
+          href: deploy-access-reviews.md
         - name: Erişim paketleri
           items:
             - name: Erişim gözden geçirmesi oluşturma

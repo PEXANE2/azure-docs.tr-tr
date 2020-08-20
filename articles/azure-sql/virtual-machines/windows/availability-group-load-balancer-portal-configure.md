@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284294"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612563"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma
 
@@ -71,6 +71,7 @@ Görevin bu bölümünde aşağıdaki adımları uygulayın:
    | --- | --- |
    | **Ad** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç**: çoğu uygulama, aynı sanal ağ içindeki uygulamaların kullanılabilirlik grubuna bağlanmasına izin veren bir iç yük dengeleyici kullanır.  </br> **Harici**: uygulamaların genel bir Internet bağlantısı aracılığıyla kullanılabilirlik grubuna bağlanmasına izin verir. |
+   | **SKU** |**Standart**: SQL örneklerinizin yük dengeleyiciden farklı bir kullanılabilirlik kümesi içinde olması durumunda gereklidir. </br> **Temel**: varsayılan seçenek. |
    | **Sanal ağ** |SQL Server örneklerinin bulunduğu sanal ağı seçin. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. |
    | **IP adresi ataması** |**Static** |
@@ -256,7 +257,7 @@ Azure portal bir yük dengeleyicisine bir IP adresi eklemek için aşağıdaki a
     |**Arka uç bağlantı noktası** |**Bağlantı noktası**ile aynı değeri kullanın.
     |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
     |**Durumu araştırması** |Oluşturduğunuz araştırmayı seçin.
-    |**Oturum kalıcılığı** |Hiçbiri
+    |**Oturum kalıcılığı** |Yok
     |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
     |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
 
@@ -305,7 +306,7 @@ Bir kullanılabilirlik grubu Dağıtılmış kullanılabilirlik grubuna katılı
    |**Arka uç bağlantı noktası** | 5022- **bağlantı noktası**ile aynı değeri kullanın.
    |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
    |**Durumu araştırması** |Oluşturduğunuz araştırmayı seçin.
-   |**Oturum kalıcılığı** |Hiçbiri
+   |**Oturum kalıcılığı** |Yok
    |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
    |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
 

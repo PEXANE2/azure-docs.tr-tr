@@ -2,13 +2,13 @@
 title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 28bdf902ab74bf4bb94a6bc02a558bf200b25e52
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/20/2020
+ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836641"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611747"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -22,17 +22,25 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 
 **Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
 --- | --- | --- | --- | --- | ---
+[Toplu 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [Toplu 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [Toplu 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV makineleri-2.0.9183.0 <br> VMware makineleri-2.0.9177.0
 [Toplu 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Toplu 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
-[Toplu 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
-[Toplu 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
 
-> [!NOTE]
-> Güncelleştirme paketi 44, Site Recovery sağlayıcıları ve aracıları için güncelleştirmeler içermediği için tabloda gösterilmez.
+
+## <a name="updates-august-2020"></a>Güncelleştirmeler (Ağustos 2020)
+
+### <a name="update-rollup-49"></a>Güncelleştirme paketi 49
+
+[Güncelleştirme paketi 49](https://support.microsoft.com/help/4578241/update-rollup-49-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
+**Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
 
 ## <a name="updates-july-2020"></a>Güncelleştirmeler (Temmuz 2020)
 
@@ -437,7 +445,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 --- | ---
 **Linux desteği** |  Oracle Linux 6,8, Oracle Linux 6,9 ve Oracle Linux 7,0 için Red Hat uyumlu çekirdek ile ve Ayırıcılanılabilir kurumsal çekirdek (UEK) sürüm 5 için destek eklenmiştir.
 **LVM** | LVM ve LVM2 birimlerine yönelik destek eklendi.<br/><br/> Bir disk bölümünde ve LVM birimlerinde/boot dizini artık desteklenmektedir.
-**Dizinler** | Bu dizinler için, ayrı bölümler olarak ayarlanan veya aynı sistem diskinde olmayan dosya sistemleri için destek eklendi:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
+**Dizine** | Bu dizinler için, ayrı bölümler olarak ayarlanan veya aynı sistem diskinde olmayan dosya sistemleri için destek eklendi:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
 **Windows Server 2008** | Dinamik disklere yönelik destek eklendi.
 **Yükünü** | Storvsc ve vsbus önyükleme sürücüleri olmadığı için VMware VM 'Leri için geliştirilmiş yük devretme süresi.
 **UEFı desteği** | Azure VM 'Leri UEFı önyükleme türünü desteklemez. Artık, Site Recovery ile şirket içi fiziksel sunucuları UEFı ile Azure 'a geçirebilirsiniz. Site Recovery, geçiş işleminden önce önyükleme türünü BIOS 'a dönüştürerek sunucuyu geçirir. Site Recovery, yalnızca VM 'Ler için bu dönüştürmeyi daha önce destekliyordu. Windows Server 2012 veya üstünü çalıştıran fiziksel sunucular için destek sağlanır.

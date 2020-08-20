@@ -125,20 +125,26 @@
           href: partition-data.md
         - name: Yapay bölüm anahtarı
           href: synthetic-partition-keys.md
-    - name: Sağlanan aktarım hızı
+    - name: Kapasite
       items:
         - name: İstek birimleri
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: Sağlanan aktarım hızına giriş
-          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-          href: set-throughput.md
-        - name: Otomatik ölçeklendirme aktarım hızı sağlama
-          href: provision-throughput-autoscale.md
-        - name: Otomatik ölçeklendirme ve standart (el ile) aktarım hızı arasında seçim yapma
-          href: how-to-choose-offer.md
-        - name: Otomatik ölçeklendirme hakkında SSS
-          href: autoscale-faq.md
+        - name: Sağlanan aktarım hızı
+          items:
+            - name: Sağlanan aktarım hızına giriş
+              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+              href: set-throughput.md
+            - name: Otomatik ölçeklendirme aktarım hızı sağlama
+              href: provision-throughput-autoscale.md
+            - name: Otomatik ölçeklendirme ve standart (el ile) aktarım hızı arasında seçim yapma
+              href: how-to-choose-offer.md
+            - name: Otomatik ölçeklendirme hakkında SSS
+              href: autoscale-faq.md
+        - name: Sunucusuz
+          href: serverless.md
+        - name: Sağlanan aktarım hızı ile sunucusuz sistem arasında tercih yapın
+          href: throughput-serverless.md
     - name: SQL sorgusu
       items:
         - name: Başlarken
@@ -238,6 +244,9 @@
                     - name: DateTimeToTicks
                       displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
                       href: sql-query-datetimetoticks.md
+                    - name: DateTimeToTimestamp
+                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                      href: sql-query-datetimetotimestamp.md
                     - name: GetCurrentDateTime
                       displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
                       href: sql-query-getcurrentdatetime.md
@@ -247,6 +256,12 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: TicksToDateTime
+                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                      href: sql-query-tickstodatetime.md
+                    - name: TimestampToDateTime
+                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                      href: sql-query-timestamptodatetime.md
                 - name: Matematik işlevleri
                   items:
                     - name: Matematik işlevleri
@@ -953,26 +968,28 @@
           href: how-to-manage-conflicts.md
         - name: Oturum belirteci biçimini dönüştürme
           href: how-to-convert-session-token.md
-    - name: Sağlanan aktarım hızı
+    - name: Kapasite
       items:
-        - name: Kapsayıcıda standart (el ile) aktarım hızı sağlama
-          displayName: 'request units, RUs, RU, collection level'
-          href: how-to-provision-container-throughput.md
-        - name: Veritabanında standart (el ile) aktarım hızı sağlama
-          displayName: 'request units, RUs, RU, shared throughput, database level'
-          href: how-to-provision-database-throughput.md
-        - name: Bir veritabanı veya kapsayıcıda otomatik ölçeklendirme aktarım hızı sağlama
-          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-          href: how-to-provision-autoscale-throughput.md
-        - name: Cosmos kapasite planlayıcısı ile RU/sn’yi tahmin etme
-          displayName: 'request units, RUs, RU, capacity'
-          href: estimate-ru-with-capacity-planner.md
         - name: İstek birimi ücreti bul
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-        - name: Azure İşlevleri süreölçerini kullanarak ölçeklendirme
-          displayName: 'request units, RUs, RU, timer'
-          href: scale-on-schedule.md
+        - name: Sağlanan aktarım hızı
+          items:
+            - name: Kapsayıcıda standart (el ile) aktarım hızı sağlama
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-container-throughput.md
+            - name: Veritabanında standart (el ile) aktarım hızı sağlama
+              displayName: 'request units, RUs, RU, shared throughput, database level'
+              href: how-to-provision-database-throughput.md
+            - name: Bir veritabanı veya kapsayıcıda otomatik ölçeklendirme aktarım hızı sağlama
+              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+              href: how-to-provision-autoscale-throughput.md
+            - name: Cosmos kapasite planlayıcısı ile RU/sn’yi tahmin etme
+              displayName: 'request units, RUs, RU, capacity'
+              href: estimate-ru-with-capacity-planner.md
+            - name: Azure İşlevleri süreölçerini kullanarak ölçeklendirme
+              displayName: 'request units, RUs, RU, timer'
+              href: scale-on-schedule.md
     - name: Kapsayıcılarla ve öğelerle çalışma
       items:
         - name: Cosmos DB verileriyle çalışma

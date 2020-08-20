@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585569"
+ms.locfileid: "88611866"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -277,7 +277,7 @@ Aşağıdaki koşullar anlık görüntü görevinin başarısız olmasına neden
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_ `<Geo>` _ `<number>` .
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' i seçin.
@@ -306,7 +306,7 @@ Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu eylem geri 
 
 Kaynak grubundaki kilit nedeniyle temizlenmediği geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Hub** menüsünde **tüm kaynaklar**' ı seçin, ardından `<Geo>` sanal makinenizin bulunduğu kaynak grubunu aşağıdaki biçimde AzureBackupRG_ _ ' i seçin `<number>` .
 
     ![Kaynak grubunu seçin](./media/backup-azure-arm-vms-prepare/resource-group.png)

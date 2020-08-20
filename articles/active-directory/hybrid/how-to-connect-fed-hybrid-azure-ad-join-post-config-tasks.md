@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807596"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612478"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılmada yapılandırma sonrası görevler
 
@@ -63,7 +63,7 @@ Kuruluşunuz Azure AD 'de oturum açmak için bir Federasyon Hizmeti kullanıyor
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Windows alt düzey cihazlar için Azure AD sorunsuz SSO 'yu etkinleştirme
 
-Kuruluşunuz Azure AD 'de oturum açmak için parola karma eşitlemesi veya geçişli kimlik doğrulaması kullanıyorsa, Windows alt düzey cihazların kimliğini doğrulamak için Azure AD sorunsuz SSO 'yu bu oturum açma yöntemiyle etkinleştirin: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
+Kuruluşunuz Azure AD 'de oturum açmak için parola karma eşitlemesi veya geçişli kimlik doğrulaması kullanıyorsa, Windows alt düzey cihazların kimliğini doğrulamak için Azure AD sorunsuz SSO 'yu bu oturum açma yöntemiyle etkinleştirin:  https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Windows alt düzey cihazlar için Azure AD ilkesini ayarlama
 
@@ -76,7 +76,7 @@ Windows alt düzey cihazlarını kaydetmek için, Azure AD ilkesinin kullanıcı
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Windows alt düzey cihazlara Azure AD uç noktası ekleme
 
-Cihazların kimliğini doğrularken sertifika istemlerinin önüne geçmek için, Windows alt düzey cihazlarınızdaki yerel Intranet bölgelerine Azure AD cihaz kimlik doğrulaması uç noktasını ekleyin:`https://device.login.microsoftonline.com` 
+Cihazların kimliğini doğrularken sertifika istemlerinin önüne geçmek için, Windows alt düzey cihazlarınızdaki yerel Intranet bölgelerine Azure AD cihaz kimlik doğrulaması uç noktasını ekleyin: `https://device.login.microsoftonline.com` 
 
 [Sorunsuz SSO](how-to-connect-sso.md)kullanıyorsanız, bu bölgedeki "komut dosyası aracılığıyla durum çubuğu güncelleştirmelerine izin ver" i de etkinleştirin ve aşağıdaki uç noktayı ekleyin:`https://autologon.microsoftazuread-sso.com` 
 
@@ -87,9 +87,6 @@ Bu yükleyici, kullanıcı bağlamında çalışan cihaz sisteminde zamanlanmı�
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Grup ilkesini cihaz kaydına izin verecek şekilde yapılandırma
 
 Ayrı cihazlarda karma Azure AD JOIN 'e izin verme hakkında daha fazla bilgi için bkz. [karma Azure AD JOIN 'In denetimli doğrulaması](../devices/hybrid-azuread-join-control.md).
-
-> [!NOTE]
-> 2012 R2 için ilke ayarları **> > Yönetim Şablonları > Windows bileşenleri > Workplace Join >, istemci bilgisayarlarına otomatik çalışma alanına katılma**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Cihaz geri yazmayı yapılandırma](how-to-connect-device-writeback.md)

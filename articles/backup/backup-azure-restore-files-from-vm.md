@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262679"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611849"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> ' Mount-a ' kullanmayın. Bu komut '/etc/fstab ' içinde açıklanan tüm cihazları takar. Bu, yinelenen cihazların bağlı olabileceği anlamına gelebilir. Veriler, verileri kalıcı hale getiremeyen komut dosyası tarafından oluşturulan cihazlara yönlendirilebilir ve bu nedenle veri kaybına neden olabilir.
+> ' Mount-a ' kullanmayın. Bu komut '/etc/fstab ' içinde açıklanan tüm cihazları takar. Bu, yinelenen cihazların bağlı olabileceği anlamına gelebilir. Veriler kalıcı olmayan komut dosyası tarafından oluşturulan cihazlara yönlendirilebilir ve bu nedenle veri kaybına neden olabilir.
 
 #### <a name="for-raid-arrays"></a>RAID dizileri için
 

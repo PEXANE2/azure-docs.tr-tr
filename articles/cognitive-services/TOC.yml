@@ -19,6 +19,8 @@
       href: cognitive-services-apis-create-account.md
     - name: Azure CLI’yi kullanarak yeni kaynak oluşturma
       href: cognitive-services-apis-create-account-cli.md
+    - name: İstemci kitaplığını kullanarak yeni kaynak oluşturma
+      href: cognitive-services-apis-create-account-client-library.md
     - name: ARM şablonu kullanarak yeni bir kaynak oluşturma
       displayName: Resource Manager
       href: resource-manager-template.md

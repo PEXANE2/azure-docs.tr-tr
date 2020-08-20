@@ -13,12 +13,12 @@ ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258586"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612325"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -233,6 +233,7 @@ Hata yanıtları şöyle görünür:
 | `interaction_required` | Standart olmayan, OıDC belirtimi yalnızca Endpoint üzerinde bunu çağırır `/authorize` . İstek, Kullanıcı etkileşimi gerektirir. Örneğin, ek bir kimlik doğrulama adımı gereklidir. | `/authorize`Aynı kapsamlarla isteği yeniden deneyin. |
 | `temporarily_unavailable` | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği küçük bir gecikmeden sonra yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
 |`consent_required` | İstek için Kullanıcı izni gerekiyor. Bu hata standart değildir, çünkü genellikle `/authorize` her OıDC belirtimleri için uç noktada döndürülür. `scope`Kod satın alma akışında, istemci uygulamanın istek için izni olmayan bir parametre kullanıldığında döndürülür.  | İstemcinin `/authorize` onay tetiklenmesi için kullanıcıyı doğru kapsam ile uç noktaya geri gönderebilmesi gerekir. |
+|`invalid_scope` | Uygulama tarafından istenen kapsam geçersiz.  | Kimlik doğrulama isteğindeki kapsam parametresinin değerini geçerli bir değere güncelleştirin. |
 
 > [!NOTE]
 > Tek sayfalı uygulamalar `invalid_request` , yalnızca ' tek sayfalı uygulamanın ' istemci türü için, çıkış noktaları arası belirteç kullanımına izin verildiğini belirten bir hata alabilir.  Bu, belirteci istemek için kullanılan yeniden yönlendirme URI 'sinin `spa` yeniden yönlendirme URI 'si olarak işaretlenmediğini belirtir.  Bu akışın nasıl etkinleştirileceği hakkında [uygulama kayıt adımlarını](#redirect-uri-setup-required-for-single-page-apps) gözden geçirin.

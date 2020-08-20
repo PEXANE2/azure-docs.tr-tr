@@ -4,14 +4,14 @@ description: Azure Cosmos DB ' de otomatik dizin oluşturma ve daha fazla perfor
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077603"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607516"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 
@@ -30,15 +30,15 @@ Azure Cosmos DB iki dizin oluşturma modunu destekler:
 - **Hiçbiri**: Dizin oluşturma kapsayıcıda devre dışı bırakıldı. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu tutarlı olarak ayarlanabilir ve sonra, Işlem tamamlanana kadar [ındexdönüşümle ilerlemesi](how-to-manage-indexing-policy.md#dotnet-sdk) kullanılarak izlenebilir.
 
 > [!NOTE]
-> Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Yavaş dizin oluşturma, altyapı başka bir iş gerçekleştirmediğinden daha düşük bir öncelik düzeyinde dizinde güncelleştirmeler gerçekleştirir. Bu, **tutarsız veya tamamlanmamış** sorgu sonuçlarının oluşmasına neden olabilir. Bir Cosmos kapsayıcısını sorgulamayı planlıyorsanız, geç dizin oluşturma ' yı seçmemelisiniz. Haziran 2020 ' de, artık yeni kapsayıcıların geç dizin oluşturma moduna ayarlamaya izin veren bir değişiklik yaptık. Azure Cosmos DB hesabınız zaten yavaş dizin oluşturma ile en az bir kapsayıcı içeriyorsa, bu hesap otomatik olarak değişiklikten muaf tutulur. Ayrıca, [Azure desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ile iletişim kurarak bir istisna isteyebilirsiniz.
+> Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Yavaş dizin oluşturma, altyapı başka bir iş gerçekleştirmediğinden daha düşük bir öncelik düzeyinde dizinde güncelleştirmeler gerçekleştirir. Bu, **tutarsız veya tamamlanmamış** sorgu sonuçlarının oluşmasına neden olabilir. Bir Cosmos kapsayıcısını sorgulamayı planlıyorsanız, geç dizin oluşturma ' yı seçmemelisiniz. Haziran 2020 ' de, artık yeni kapsayıcıların geç dizin oluşturma moduna ayarlamaya izin veren bir değişiklik yaptık. Azure Cosmos DB hesabınız zaten yavaş dizin oluşturma ile en az bir kapsayıcı içeriyorsa, bu hesap otomatik olarak değişiklikten muaf tutulur. Ayrıca, [Azure desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile iletişim kurarak (yavaş Dizin oluşturmayı desteklemeyen [sunucusuz](serverless.md) modda bir Azure Cosmos hesabı kullanıyor olmanız dışında) bir istisna da isteyebilirsiniz.
 
 Varsayılan olarak, dizin oluşturma ilkesi olarak ayarlanır `automatic` . `automatic`Dizin oluşturma ilkesindeki özelliği olarak ayarlanarak elde edilir `true` . Bu özelliği ayarlamak için `true` Azure CosmosDB 'nin belgeleri yazıldığı gibi otomatik olarak dizin oluşturulmasına izin verir.
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Özellik yollarını dahil etme ve hariç tutma
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Özellik yollarını dahil etme ve hariç tutma
 
 Özel bir dizin oluşturma ilkesi, dizin oluşturma işleminden açıkça dahil edilen veya dışlanan Özellik yollarını belirtebilir. Dizine alınmış yolların sayısını en iyi duruma getirerek, yazma işlemlerinin gecikme süresini ve RU ücretlendirmesini önemli ölçüde azaltabilirsiniz. Bu yollar, [Dizin oluşturma genel bakış bölümünde açıklanan yöntemi](index-overview.md#from-trees-to-property-paths) aşağıdaki eklemelerle izleyerek tanımlanmıştır:
 
-- skaler bir değere (dize veya sayı) öndeki bir yol, şununla biter`/?`
+- skaler bir değere (dize veya sayı) öndeki bir yol, şununla biter `/?`
 - bir dizideki öğeler `/[]` , Gösterim (yerine `/0` , `/1` vb.) ile birlikte karşılanır
 - `/*`joker karakter, düğümün altındaki herhangi bir öğeyi eşleştirmek için kullanılabilir
 
@@ -81,11 +81,11 @@ Herhangi bir dizin oluşturma ilkesinin kök yolu `/*` dahil edilen ya da hariç
 
 Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle karşılaşabilirsiniz:
 
-- `kind`ya da olabilir `range` `hash` . Aralık dizini işlevselliği bir karma dizinin tüm işlevlerini sağlar, bu nedenle bir Aralık dizini kullanmanızı öneririz.
+- `kind` ya da olabilir `range` `hash` . Aralık dizini işlevselliği bir karma dizinin tüm işlevlerini sağlar, bu nedenle bir Aralık dizini kullanmanızı öneririz.
 
-- `precision`, eklenen yollar için dizin düzeyinde tanımlanmış bir sayıdır. Değeri `-1` en fazla duyarlığı gösterir. Bu değeri her zaman olarak ayarlamayı öneririz `-1` .
+- `precision` , eklenen yollar için dizin düzeyinde tanımlanmış bir sayıdır. Değeri `-1` en fazla duyarlığı gösterir. Bu değeri her zaman olarak ayarlamayı öneririz `-1` .
 
-- `dataType`ya da olabilir `String` `Number` . Bu, dizine eklenecek JSON özelliklerinin türlerini gösterir.
+- `dataType` ya da olabilir `String` `Number` . Bu, dizine eklenecek JSON özelliklerinin türlerini gösterir.
 
 Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olur:
 
@@ -103,9 +103,9 @@ Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, da
 
 Aşağıda bir örnek verilmiştir:
 
-**Dahil edilen yol**:`/food/ingredients/nutrition/*`
+**Dahil edilen yol**: `/food/ingredients/nutrition/*`
 
-**Dışlanan yol**:`/food/ingredients/*`
+**Dışlanan yol**: `/food/ingredients/*`
 
 Bu durumda, dahil edilen yol daha kesin olduğundan, dışlanan yol üzerinden önceliklidir. Bu yollara bağlı olarak, `food/ingredients` yoldaki veya iç içe yerleştirilmiş tüm veriler dizinden dışlanıyor. Özel durum, dahil edilen yol içindeki veriler olabilir: `/food/ingredients/nutrition/*` , Dizin oluşturulacak.
 
@@ -261,6 +261,9 @@ Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler 
 
 Kapsayıcının dizin oluşturma ilkesi [, Azure Portal veya desteklenen SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)dilediğiniz zaman güncelleştirilemeyebilir. Dizin oluşturma ilkesi için bir güncelleştirme, eski dizinden yeni bir dönüştürmeyi tetikler ve bu, çevrimiçi ve yerinde gerçekleştirilir (Bu nedenle işlem sırasında ek depolama alanı tüketilmemelidir). Eski ilkenin dizini, yazma kullanılabilirliği, okuma kullanılabilirliği veya kapsayıcıda sağlanan aktarım hızını etkilemeden etkili bir şekilde yeni ilkeye dönüştürülür. Dizin dönüştürme zaman uyumsuz bir işlemdir ve tamamlanmak üzere gereken süre, sağlanan aktarım hızına, öğe sayısına ve bunların boyutuna bağlıdır.
 
+> [!IMPORTANT]
+> Dizin dönüştürme, [Istek birimlerini](request-units.md)tüketen bir işlemdir. Bir dizin dönüştürmesi tarafından tüketilen istek birimleri Şu anda [sunucusuz](serverless.md) kapsayıcılar kullanıyorsanız faturalandırılmaz. Bu Istek birimleri, sunucusuz genel kullanıma sunulduğunda faturalandırılır.
+
 > [!NOTE]
 > [SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)Dizin dönüşümünün ilerlemesini izlemek mümkündür.
 
@@ -284,7 +287,7 @@ Hiçbir özellik yolunun dizine alınması gereken ancak TTL 'nin gerekli olduğ
 
 - bir dizin oluşturma modu tutarlı olarak ayarlanır ve
 - dahil edilen yol yok ve
-- `/*`yalnızca Dışlanan yol olarak.
+- `/*` yalnızca Dışlanan yol olarak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

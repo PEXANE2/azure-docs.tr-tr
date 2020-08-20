@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Duvarı SSS
+title: Azure Güvenlik Duvarı hakkında SSS
 description: Azure Güvenlik Duvarı hakkında SSS. Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmeti.
 services: firewall
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: efb793898da03d2a024b559075a2d55e79b20d65
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208516"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611186"
 ---
-# <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
+# <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı hakkında SSS
 
 ## <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -97,7 +97,7 @@ $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
 $publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
 $publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
-$azfw.Allocate($vnet,@($publicip,$publicip2))
+$azfw.Allocate($vnet,@($publicip1,$publicip2))
 
 Set-AzFirewall -AzureFirewall $azfw
 ```
@@ -185,9 +185,9 @@ Hayır. Azure Güvenlik Duvarı varsayılan olarak Active Directory erişimi eng
 Evet, Azure PowerShell kullanarak bunu yapabilirsiniz:
 
 ```azurepowershell
-# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+# Add a Threat Intelligence allow list to an Existing Azure Firewall
 
-## Create the Whitelist with both FQDN and IPAddresses
+## Create the allow list with both FQDN and IPAddresses
 
 $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `

@@ -2,21 +2,21 @@
 title: Amazon Web Services (AWS) EC2 VM 'lerini bulun, değerlendirin ve Azure 'a geçirin
 description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geçirileceği açıklanır.
 ms.topic: tutorial
-ms.date: 06/16/2020
+ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066653"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611441"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
-Bu öğreticide, Azure geçişi 'ni kullanarak Amazon Web Services (AWS) sanal makinelerini (VM) Azure VM 'lerine nasıl keşfedebileceğiniz, değerlendirirsiniz ve geçireceğiniz gösterilmektedir: Sunucu değerlendirmesi ve sunucu geçiş araçları
+Bu öğreticide, Azure geçişi: Sunucu değerlendirmesi ve Azure geçişi: sunucu geçiş araçları 'nı kullanarak Amazon Web Services (AWS) sanal makinelerini (VM) Azure VM 'lerine bulma, değerlendirme ve geçirme işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 > [!NOTE]
-> AWS sanal makinelerinizi Azure 'a geçirdiğinizde, VM 'Ler fiziksel sunuculardır gibi değerlendirilir. AWS sanal makinelerinizi Azure 'a geçirmek için, fiziksel makinelerin geçirilmesi için sunucu geçiş akışını kullanacaksınız.
+> AWS VM 'lerini fiziksel sunucu olarak düşünerek Azure 'a geçirebilirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
@@ -33,20 +33,29 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="discover-and-assess-aws-vms"></a>AWS VM 'lerini bulma ve değerlendirme  
+## <a name="discover-and-assess"></a>Bulma ve değerlendirme
 
-Azure 'a geçirmeden önce, bir VM bulma ve geçiş değerlendirmesi gerçekleştirmenizi öneririz. Bu değerlendirme, AWS sanal makinelerinizin Azure 'a geçiş için doğru boyut ve potansiyel Azure çalışma maliyetlerini tahmin etmesine yardımcı olur.
+Azure 'a geçirmeden önce, bir VM bulma ve geçiş değerlendirmesi gerçekleştirmenizi öneririz. Bu değerlendirme, AWS sanal makinelerinizin Azure 'a geçiş için doğru boyutlandırmasının yanı sıra olası Azure çalışma maliyetlerini tahmin etmenize yardımcı olur.
 
 Bir değerlendirmeyi aşağıdaki şekilde ayarlayın:
 
-1. AWS VM 'lerinizi, Azure geçişi: Sunucu değerlendirmesi aracını kullanarak bir değerlendirme yapmak amacıyla fiziksel makine olarak düşünerek bir değerlendirme gerçekleştirilebilir. Azure 'u ayarlamak ve AWS VM 'lerinizi bir değerlendirme için hazırlamak üzere [öğreticiyi](./tutorial-prepare-physical.md) izleyin.
+1. Azure 'u ayarlamak ve AWS VM 'lerinizi bir değerlendirme için hazırlamak üzere [öğreticiyi](./tutorial-prepare-physical.md) izleyin. Şunlara dikkat edin:
+
+    - Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
+        - Windows makineleri için WinRM bağlantı noktası 5986 (HTTPS) ve 5985 (HTTP) seçeneğine izin verin. Bu, uzak WMI çağrılarına izin verir. Öğesini ayarlarsanız 
+        - Linux makineleri için:
+            1. Her bir Linux makinesinde oturum açın.
+            2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
+            3. Dosyasında, **Passwordaduthentication** satırını bulun ve değeri **Evet**olarak değiştirin.
+            4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
+
 2. Ardından, AWS sanal makinelerinizi bulup değerlendirmek üzere bir Azure geçişi projesi ve gereci ayarlamak için bu [öğreticiyi](./tutorial-assess-physical.md) izleyin.
 
 Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirmek VM 'Leri geçirebilmek için zorunlu bir adım değildir.
 
-## <a name="migrate-aws-vms"></a>AWS VM 'lerini geçirme   
 
-## <a name="1-prerequisites-for-migration"></a>1. geçiş için Önkoşullar
+
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Geçirmek istediğiniz AWS VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. AWS VM 'Leri, geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi (yük devretme testi) gerçekleştirmenizi öneririz.
 - AWS sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -56,7 +65,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
     - Geçişe başlamadan önce bu değişiklikleri yapmak önemlidir. Değişikliği yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
 Yapmanız gereken [Windows](prepare-for-migration.md#windows-machines) ve [Linux](prepare-for-migration.md#linux-machines) değişikliklerini gözden geçirin.
 
-## <a name="2-prepare-azure-resources-for-migration"></a>2. geçiş için Azure kaynakları hazırlama
+### <a name="prepare-azure-resources-for-migration"></a>Azure kaynaklarını geçiş için hazırlama
 
 Azure geçişi: sunucu geçiş aracı ile geçiş için Azure 'u hazırlayın.
 
@@ -85,7 +94,7 @@ Sanal makine katılımcısı rolünü Azure hesabına atayın. Bu izinler şunla
 
 Bir Azure sanal ağı (VNet) [ayarlayın](../virtual-network/manage-virtual-network.md#create-a-virtual-network) . Azure 'a çoğaltma yaptığınızda oluşturulan Azure VM 'Ler, geçişi ayarlarken belirttiğiniz Azure VNet 'e birleştirilir.
 
-## <a name="3-prepare-aws-instances-for-migration"></a>3. geçiş için AWS örnekleri hazırlama
+## <a name="prepare-aws-instances-for-migration"></a>AWS örneklerini geçiş için hazırlama
 
 AWS 'yi Azure 'a geçişe hazırlamak için, geçiş için bir çoğaltma gereci hazırlamanız ve dağıtmanız gerekir.
 
@@ -111,7 +120,7 @@ Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 - Çoğaltma gereci MySQL kullanır. Gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) gözden geçirin.
 - Çoğaltma gerecinin [ortak](migrate-replication-appliance.md#url-access) ve [kamu](migrate-replication-appliance.md#azure-government-url-access) bulutları 'Na erişmesi Için gereken Azure URL 'lerini gözden geçirin.
 
-## <a name="4-add-the-server-migration-tool"></a>4. sunucu geçiş aracını ekleme
+## <a name="add-the-server-migration-tool"></a>Sunucu geçiş aracını ekleme
 
 Bir Azure geçişi projesi ayarlayın ve ardından sunucu geçiş aracını buna ekleyin.
 
@@ -135,7 +144,7 @@ Bir Azure geçişi projesi ayarlayın ve ardından sunucu geçiş aracını buna
 10. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
 11. Araç eklendikten sonra, Azure geçişi proje > **sunucuları**  >  **geçiş araçları**' nda görüntülenir.
 
-## <a name="5-set-up-the-replication-appliance"></a>5. çoğaltma gereç ayarı
+## <a name="set-up-the-replication-appliance"></a>Çoğaltma gereç ayarı
 
 Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. AWS VM 'Leri geçişi için gereci ayarlamak üzere, Gereç için yükleyici dosyasını indirmeniz ve ardından bunu [hazırladığınız VM](#prepare-a-machine-for-the-replication-appliance)'de çalıştırmanız gerekir.
 
@@ -177,7 +186,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. AWS VM 'Leri ge�
 
     ![Kaydı Sonlandır](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-## <a name="6-install-the-mobility-service"></a>6. Mobility hizmetini yükler
+## <a name="install-the-mobility-service"></a>Mobility hizmetini yükleme
 
 Geçirilecek kaynak AWS VM 'lerine Mobility hizmeti aracısının yüklü olması gerekir. Aracı yükleyicileri, çoğaltma aracısında kullanılabilir. Doğru yükleyiciyi bulur ve geçirmek istediğiniz her makineye aracıyı yüklersiniz. Aşağıdaki gibi yapın:
 
@@ -229,7 +238,7 @@ Geçirilecek kaynak AWS VM 'lerine Mobility hizmeti aracısının yüklü olmas�
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <replication appliance IP address> -P <Passphrase File Path>
     ```
 
-## <a name="7-enable-replication-for-aws-vms"></a>7. AWS VM 'Leri için çoğaltmayı etkinleştirin
+## <a name="enable-replication-for-aws-vms"></a>AWS VM 'Leri için çoğaltmayı etkinleştirme
 
 > [!NOTE]
 > Portal aracılığıyla, çoğaltma için aynı anda en fazla 10 VM ekleyebilirsiniz. Aynı anda daha fazla VM çoğaltmak için, bunları 10 toplu iş olarak ekleyebilirsiniz.
@@ -276,7 +285,7 @@ Geçirilecek kaynak AWS VM 'lerine Mobility hizmeti aracısının yüklü olmas�
 > [!NOTE]
 > Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz, **Manage**  >  **çoğaltılan makineleri**yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
 
-## <a name="8-track-and-monitor-replication-status"></a>8. çoğaltma durumunu izleme ve izleme
+## <a name="track-and-monitor-replication-status"></a>Çoğaltma durumunu izleme ve izleme
 
 - **Çoğalt** ' a tıkladığınızda çoğaltma Başlat işi başlar.
 - Çoğaltma Başlat işi başarıyla tamamlandığında, VM 'Ler ilk çoğaltmasını Azure 'a başlatır.
@@ -288,7 +297,7 @@ Portal bildirimlerinde iş durumunu izleyebilirsiniz.
 
 ![Çoğaltmayı izleme](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
-## <a name="9-run-a-test-migration"></a>9. bir test geçişi çalıştırın
+## <a name="run-a-test-migration"></a>Geçiş testi çalıştırma
 
 Delta çoğaltma başladığında, Azure 'a tam geçiş çalıştırmadan önce VM 'Ler için bir test geçişi çalıştırabilirsiniz. Test geçişi kesinlikle önerilir ve olası sorunları bulmaya ve gerçek geçişe devam etmeden önce bunları gidermeye yönelik bir fırsat sağlar. Bunu geçirmeden önce her VM için en az bir kez yapmanız önerilir.
 
@@ -314,7 +323,7 @@ Test geçişini aşağıdaki şekilde yapın:
     ![Geçişi temizleme](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
 
 
-## <a name="10-migrate-aws-vms"></a>10. AWS VM 'lerini geçirin
+## <a name="migrate-aws-vms"></a>AWS VM 'lerini geçirme
 
 Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıktan sonra AWS sanal makinelerini geçirebilirsiniz.
 
@@ -340,6 +349,9 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 5. Geçirilen Azure VM örneğine giden trafiği kesin.
 6. Azure sanal makinelerinin yeni konumunu ve IP adresini göstermek için herhangi bir iç belgeyi güncelleştirin. 
 
+
+
+
 ## <a name="post-migration-best-practices"></a>Geçiş sonrası en iyi uygulamalar
 
 - Daha fazla esneklik için:
@@ -353,9 +365,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 - İzleme ve yönetim için:
     - [Azure Maliyet Yönetimi](../cost-management-billing/cloudyn/overview.md)’ni dağıtarak kaynak kullanımını ve harcamayı izleyin.
 
-## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bulut benimseme çerçevesindeki [bulut geçiş yolculuğunu](/azure/architecture/cloud-adoption/getting-started/migrate) araştırın.
 
 ## <a name="troubleshooting--tips"></a>Sorun giderme/Ipuçları
 
@@ -376,3 +386,7 @@ Azure bulut benimseme çerçevesindeki [bulut geçiş yolculuğunu](/azure/archi
 
 **Soru:** Uzak Windows Yönetim hizmeti 'nden 504 HTTP durum kodu nedeniyle Azure geçişi 'ni kullanarak AWS örneklerini bulamadım    
 **Cevap:** Azure geçiş gereci gereksinimlerini ve URL erişim gereksinimlerini gözden geçirdiğinizden emin olun. Hiçbir proxy ayarlarının gereç kaydını engellemediğinden emin olun.   
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure bulut benimseme çerçevesindeki [bulut geçiş yolculuğunu](/azure/architecture/cloud-adoption/getting-started/migrate) araştırın.

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/19/2020
+ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225980"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607544"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -35,12 +35,13 @@ Azure Cosmos öykünücüsü yerel geliştirici iş istasyonunda çalışan bir 
 
 * Öykünücü Veri Gezgini Şu anda SQL API istemcilerini destekler. MongoDB, Table, Graph ve Cassandra API 'Leri gibi Azure Cosmos DB API 'Ler için Veri Gezgini görünümü ve işlemleri tam olarak desteklenmez.
 * Azure Cosmos öykünücüsü yalnızca tek bir sabit hesabı ve iyi bilinen bir ana anahtarı destekler. Azure Cosmos öykünücüsünde anahtar yeniden oluşturma mümkün değildir, ancak varsayılan anahtar komut satırı seçeneği kullanılarak değiştirilebilir.
+* Azure Cosmos öykünücüsü, [sağlanan aktarım hızı](set-throughput.md) modunda bir Azure Cosmos hesabını destekler; Şu anda [sunucusuz](serverless.md) modda bir Azure Cosmos hesabını desteklememektedir.
 * Azure Cosmos öykünücüsü ölçeklenebilir bir hizmet değildir ve çok sayıda kapsayıcıyı desteklemez.
 * Azure Cosmos öykünücüsü farklı [Azure Cosmos DB tutarlılık düzeyleri](consistency-levels.md)sunmaz.
 * Azure Cosmos öykünücüsü [çok bölgeli çoğaltma](distribute-data-globally.md)sunmaz.
 * Azure Cosmos öykünücüsünün kopyası her zaman Azure Cosmos DB hizmetindeki en son değişikliklerle güncel olmayabilir, uygulamanızın üretim verimlilik (ru) ihtiyaçlarını doğru şekilde tahmin etmek için [Azure Cosmos DB kapasite planlayıcıya](https://www.documentdb.com/capacityplanner) başvurmalısınız.
 * Azure Cosmos öykünücüsü 'nü kullanırken, varsayılan olarak, en fazla 25 sabit boyut kapsayıcısı (yalnızca Azure Cosmos DB SDK 'Ları kullanarak desteklenir) veya Azure Cosmos öykünücüsünü kullanarak 5 sınırsız kapsayıcı oluşturabilirsiniz. Bu değeri değiştirme hakkında daha fazla bilgi için bkz. [PartitionCount değerini ayarlama](#set-partitioncount).
-* Öykünücü 254 karakterlik maksimum kimlik özelliği boyutunu destekler.
+* Öykünücü 254 karakterlik maksimum KIMLIK özelliği boyutunu destekler.
 
 ## <a name="system-requirements"></a>Sistem gereksinimleri
 

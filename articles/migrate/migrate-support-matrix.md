@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamalar
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022727"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612121"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -45,7 +45,7 @@ Azure Geçişi Sunucu Geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | SQL Server veritabanlarını değerlendirin. | NA
 [DMS](../dms/dms-overview.md) | NA | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | NA
-[Movere](https://www.movere.io/) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
+[Movere](https://www.movere.io/) | VMware VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri ve SQL Server veritabanlarını değerlendirin. | NA

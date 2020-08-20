@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3a23e0c2546da55f977d589eb38607994d3902b
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80133172"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611807"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Linux kapsayıcılarını çalıştırmak için Windows üzerinde IoT Edge kullanma
 
@@ -26,7 +26,7 @@ Bu makalede, Windows x64 (AMD/Intel) sisteminizdeki Linux kapsayıcıları kulla
 
 En son IoT Edge sürümüne nelerin dahil olduğu hakkında bilgi için, bkz. [Azure IoT Edge sürümler](https://github.com/Azure/azure-iotedge/releases).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek ve yüklemeden önce bir kapsayıcı altyapısı için hazırlamak üzere bu bölümü kullanın.
 
@@ -34,7 +34,7 @@ Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek 
 
 Linux kapsayıcılarıyla Azure IoT Edge, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) karşılayan herhangi bir Windows sürümünde çalıştırılabilir
 
-Bir sanal makineye IoT Edge yüklemek istiyorsanız, iç içe sanallaştırmayı etkinleştirin ve en az 2 GB bellek ayırın. İç içe sanallaştırmayı etkinleştirme, kullandığınız hiper yöneticiye bağlı olarak farklılık gösteren bir değer. Hyper-V için 2. nesil sanal makinelerde varsayılan olarak etkinleştirilmiş iç içe sanallaştırma vardır. VMWare için, sanal makinenizde özelliği etkinleştirmek üzere bir geçiş düğmesi vardır.
+Bir sanal makineye IoT Edge yüklemek istiyorsanız, iç içe sanallaştırmayı etkinleştirin ve en az 2 GB bellek ayırın. İç içe sanallaştırmayı etkinleştirme, kullandığınız hiper yöneticiye bağlı olarak farklılık gösteren bir değer. Hyper-V için 2. nesil sanal makinelerde varsayılan olarak etkinleştirilmiş iç içe sanallaştırma vardır. VMware için, sanal makinenizde özelliği etkinleştirmek üzere bir geçiş düğmesi vardır.
 
 ### <a name="prepare-the-container-engine"></a>Kapsayıcı altyapısını hazırlama
 
@@ -57,7 +57,7 @@ IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT 
 
 1. Henüz yapmadıysanız, yeni bir IoT Edge cihazı kaydedin ve cihaz bağlantı dizesini alın. Bu bölümün ilerleyen kısımlarında kullanılacak bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
 
-   * [Azure portalındaki](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
@@ -88,7 +88,7 @@ IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT 
 
 6. İstendiğinde, 1. adımda aldığınız cihaz bağlantı dizesini belirtin. Cihaz bağlantı dizesi, fiziksel cihazı IoT Hub bir cihaz KIMLIĞIYLE ilişkilendirir.
 
-   Cihaz bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Cihaz bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulama
 

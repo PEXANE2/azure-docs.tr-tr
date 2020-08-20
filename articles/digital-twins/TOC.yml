@@ -22,6 +22,8 @@
       href: concepts-twins-graph.md
     - name: Sorgu dili
       href: concepts-query-language.md
+    - name: Sorgu Birimleri
+      href: concepts-query-units.md
     - name: Diğer hizmetlerle tümleştirme
       href: concepts-integration.md
     - name: Olay yolları

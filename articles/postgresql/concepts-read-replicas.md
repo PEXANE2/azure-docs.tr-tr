@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276660"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611135"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -126,7 +126,7 @@ Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Durdur eylemi, ço�
 ## <a name="failover"></a>Yük devretme
 Ana ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
 
-Çoğaltma zaman uyumsuz olduğundan, ana ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, ana sunucu üzerinde çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniye ile birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
+Çoğaltma zaman uyumsuz olduğundan, ana ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, ana sunucu üzerinde çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
 
 > [!Tip]
 > Çoğaltmaya yük devretmek, çoğaltmayı ana bilgisayardan geri bağladığınızda oluşan gecikme, ne kadar veri kaybedildiğine işaret eder.
@@ -146,7 +146,7 @@ Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük 
 
 Bu bölümde çoğaltma oku özelliği hakkında dikkat edilecek noktalar özetlenmektedir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Okuma çoğaltmaları ve [mantıksal kod çözme](concepts-logical.md) , bilgi Için doğrudan Postgres yazma günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
 
 Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
@@ -163,16 +163,19 @@ Bir okuma çoğaltması, PostgreSQL için yeni bir Azure veritabanı sunucusu ol
 ### <a name="replica-configuration"></a>Çoğaltma yapılandırması
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, depolama ve yedekleme saklama süresi dahil olmak üzere çeşitli ayarlar değiştirilebilir.
 
-Aşağıdaki koşullarda, sanal çekirdekler ve fiyatlandırma katmanı da çoğaltma üzerinde değiştirilebilir:
-* PostgreSQL, `max_connections` okuma çoğaltmasındaki parametrenin değerini ana değerden büyük veya ona eşit olacak şekilde gerektirir; Aksi takdirde, çoğaltma başlatılmaz. PostgreSQL için Azure veritabanı 'nda `max_connections` parametre değeri SKU 'su (sanal çekirdek ve Fiyatlandırma Katmanı) temel alır. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda sınırlamalar](concepts-limits.md). 
-* Temel fiyatlandırma katmanından veya temel alınan ölçekleme desteklenmez
-
-> [!IMPORTANT]
-> Ana ayar yeni bir değere güncellenmadan önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
-
-Yukarıda açıklanan sunucu değerlerini güncelleştirmeye çalışırsanız, ancak sınırlara bağlı kalmazsanız bir hata alırsınız.
-
 Çoğaltma oluşturulduğunda veya daha sonra güvenlik duvarı kuralları, sanal ağ kuralları ve parametre ayarları ana sunucudan çoğaltmaya devralınmaz.
+
+### <a name="scaling"></a>Ölçeklendirme
+Sanal çekirdekleri ölçeklendirin veya Genel Amaçlı ile bellek için Iyileştirilmiş:
+* PostgreSQL, `max_connections` ikincil bir sunucudaki ayarın [birincil üzerindeki ayardan büyük veya ona eşit](https://www.postgresql.org/docs/current/hot-standby.html)olmasını gerektirir, aksi takdirde ikincil başlatılmaz.
+* PostgreSQL için Azure veritabanı 'nda, bağlantılar bellek kullandığından, her bir sunucu için izin verilen en yüksek bağlantı, işlem SKU 'suna sabitlenmiştir. [Max_connections ve işlem SKU 'ları arasındaki eşleme](concepts-limits.md)hakkında daha fazla bilgi edinebilirsiniz.
+* Ölçeği **artırma**: ilk olarak bir çoğaltmanın işlem ölçeğini ölçeklendirin, sonra birincili ölçeği ölçeklendirin. Bu sipariş, hataların gereksinimi ihlal etmelerini engeller `max_connections` .
+* Ölçeği **azaltma**: ilk olarak birincil işlemin işlem ölçeğini azaltın, sonra çoğaltmanın ölçeğini azaltın. Çoğaltmayı Birincilden daha düşük ölçeklendirmeye çalışırsanız, bu, gereksinimi ihlal ettiğinden bir hata olur `max_connections` .
+
+Depolama alanı ölçeklendiriliyor:
+* Depolama-tam çoğaltmasından çoğaltma sorunlarını engellemek için tüm çoğaltmaların depolama otomatik büyümesi etkinleştirilmiş olarak etkinleştirilir. Bu ayar devre dışı bırakılamaz.
+* Ayrıca, diğer tüm sunucularda yaptığınız gibi, depolamayı el ile de ölçeklendirdirebilirsiniz
+
 
 ### <a name="basic-tier"></a>Temel katman
 Temel katman sunucuları yalnızca aynı bölge çoğaltmasını destekler.

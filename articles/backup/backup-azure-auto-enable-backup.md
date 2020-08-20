@@ -3,12 +3,12 @@ title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olara
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514229"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612682"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 
@@ -30,21 +30,21 @@ Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konu
 
 ## <a name="using-the-built-in-policy"></a>Yerleşik ilkeyi kullanma
 
-İlkeyi gerekli kapsama atamak için lütfen aşağıdaki adımları izleyin:
+İlkeyi gerekli kapsama atamak için aşağıdaki adımları izleyin:
 
-1. Azure portalında oturum açın ve **ilke** panosuna gidin.
-2. Azure kaynakları genelinde tüm yerleşik ilkelerin listesini almak için sol menüdeki **tanımlar** ' ı seçin.
-3. **Kategori = Yedekleme**listesini filtreleyin. Listenin, bir konumun VM 'lerde yedeklemeyi aynı konumda bulunan mevcut bir merkezi kasaya yapılandırın ' adlı tek bir ilkeye göre filtrelenmiş olduğunu görürsünüz.
+1. Azure portal oturum açın ve **ilke** panosuna gidin.
+1. Azure kaynakları genelinde tüm yerleşik ilkelerin listesini almak için sol menüdeki **tanımlar** ' ı seçin.
+1. **Kategori = Yedekleme**listesini filtreleyin. Listenin, bir konumun VM 'lerde yedeklemeyi aynı konumda bulunan mevcut bir merkezi kasaya yapılandırın ' adlı tek bir ilkeye göre filtrelenmiş olduğunu görürsünüz.
 ![İlke panosu](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-4. İlkenin adına tıklayın. Bu ilkenin ayrıntılı tanımına yönlendirilirsiniz.
-![İlke tanımı dikey penceresi](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-5. Dikey pencerenin üst kısmındaki **ata** düğmesine tıklayın. Bu, sizi **Ilke ata** dikey penceresine yönlendirir.
-6. **Temel bilgiler**altında, **kapsam** alanının yanındaki üç noktaya tıklayın. Bu, ilke için uygulanacak aboneliği seçebileceğiniz sağ bağlam dikey penceresini açar. Ayrıca, ilkenin yalnızca belirli bir kaynak grubundaki VM 'Ler için uygulanması için, isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
+1. İlkenin adını seçin. Bu ilkenin ayrıntılı tanımına yönlendirilirsiniz.
+![İlke tanımı bölmesi](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
+1. Bölmenin üst kısmındaki **ata** düğmesini seçin. Bu, sizi **Ilke ata** bölmesine yönlendirir.
+1. **Temel bilgiler**altında, **kapsam** alanının yanındaki üç noktayı seçin. Bu, ilke için uygulanacak aboneliği seçebileceğiniz bir sağ bağlam bölmesi açar. Ayrıca, ilkenin yalnızca belirli bir kaynak grubundaki VM 'Ler için uygulanması için, isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
 ![İlke atama temelleri](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-7. **Parametreler** sekmesinde, açılan listeden bir konum seçin ve kapsamdaki VM 'lerin ilişkilendirilmesi gereken kasa ve yedekleme ilkesini seçin.
+1. **Parametreler** sekmesinde, açılan listeden bir konum seçin ve kapsamdaki VM 'lerin ilişkilendirilmesi gereken kasa ve yedekleme ilkesini seçin.
 ![İlke atama parametreleri](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-8. **Efektin** deployIfNotExists olarak ayarlandığından emin olun.
-9. **Gözden geçir + oluştur** ' a gidin ve **Oluştur**' a tıklayın.
+1. **Efektin** deployIfNotExists olarak ayarlandığından emin olun.
+1. **Gözden geçir + oluştur** ' a gidin ve **Oluştur**' u seçin.
 
 > [!NOTE]
 >

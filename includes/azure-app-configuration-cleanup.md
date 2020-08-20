@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116997"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88639111"
 ---
 Bu makalede oluşturulan kaynakları kullanmaya devam etmek istemiyorsanız, ücretlendirmemek için burada oluşturduğunuz kaynak grubunu silin.
 
@@ -22,7 +22,7 @@ Bu makalede oluşturulan kaynakları kullanmaya devam etmek istemiyorsanız, üc
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve **kaynak grupları**' nı seçin.
 1. **Ada göre filtrele** kutusuna kaynak grubunuzun adını girin. 
-1. Sonuç listesinde, kaynak grubunu seçin ve satıra sağ tıklayın ya da bağlam menüsünü açmak için **üç nokta** (**...**) düğmesini kullanın.
+1. Sonuç listesinde, bir genel bakışı görmek için kaynak grubu adını seçin.
 1. **Kaynak grubunu sil**'i seçin.
 1. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını girin ve **Sil**' i seçin.
 

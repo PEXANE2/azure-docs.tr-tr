@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514110"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612580"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -57,23 +57,23 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
    ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeye tıklayın. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
+   Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeyi seçin. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
 
    ![Essentials bilgi sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Kasa genel bakış menüsünde, **kaynak grubu**' nun yanındaki **Değiştir** ' e tıklayarak **kaynakları taşı** dikey penceresini açın.
+3. Kasa genel bakış menüsünde, **kaynak grubu**' nun yanındaki **Değiştir** ' i seçerek **kaynakları taşı** bölmesini açın.
 
    ![Kaynak grubunu değiştir](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. **Kaynakları taşı** dikey penceresinde, seçili kasa için, aşağıdaki görüntüde gösterildiği gibi onay kutusunu seçerek isteğe bağlı ilişkili kaynakları taşımanız önerilir.
+4. **Kaynakları taşı** bölmesinde, seçili kasa için, aşağıdaki görüntüde gösterildiği gibi onay kutusunu seçerek isteğe bağlı ilişkili kaynakları taşımanız önerilir.
 
    ![Aboneliği taşı](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğine tıklayın.
+5. Hedef kaynak grubunu eklemek için, **kaynak grubu** aşağı açılan listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğini belirleyin.
 
    ![Kaynak oluştur](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. Kaynak grubu eklendikten sonra, **taşınan kaynaklarla ilişkili araçların ve betiklerin yeni kaynak kimlikleri seçeneği kullanılarak güncelleştirene** ve ardından kasayı taşımayı tamamlaması için **Tamam** ' a tıkladığımda emin olun.
+6. Kaynak grubu eklendikten sonra, **taşınan kaynaklarla ilişkili araçların ve betiklerin yeni kaynak kimlikleri seçeneğini kullanacak şekilde güncelleştirene** ve ardından kasayı taşımayı tamamlaması için **Tamam** ' ı seçmesini öğrendim.
 
    ![Onay Iletisi](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
@@ -86,11 +86,11 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 
     ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeye tıklayın. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
+    Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeyi seçin. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
 
     ![Essentials bilgi sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Kasa genel bakış menüsünde, **abonelik**' ın yanındaki **Değiştir** ' e tıklayarak **kaynakları taşı** dikey penceresini açın.
+3. Kasa genel bakış menüsünde, **abonelik**' ın yanındaki **Değiştir** ' i seçerek **kaynakları taşı** bölmesini açın.
 
    ![Aboneliği Değiştir](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
@@ -99,11 +99,11 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
    ![kaynağı taşı](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Kasanın taşınmasını istediğiniz **abonelik** açılır listesinden hedef aboneliği seçin.
-6. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğine tıklayın.
+6. Hedef kaynak grubunu eklemek için, **kaynak grubu** aşağı açılan listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğini belirleyin.
 
    ![Azure](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. **Taşınan kaynaklarla ilişkili araçların ve betiklerin, onaylamak üzere yeni kaynak kimlikleri seçeneğini kullanacak şekilde güncelleştirene kadar çalışmayacaktır** ve ardından **Tamam**' a tıklayın.
+7. **Taşınan kaynaklarla ilişkili araçların ve betiklerin, onaylamak üzere yeni kaynak kimlikleri seçeneğini kullanacak şekilde güncelleştirene** ve sonra **Tamam**' ı seçene kadar çalıştığını anladım seçeneğini belirleyin.
 
 > [!NOTE]
 > Çapraz abonelik yedeklemesi (RS kasası ve korunan VM 'Ler farklı aboneliklerde) desteklenen bir senaryo değildir. Ayrıca, yerel yedekli depolama (LRS) ile global olarak yedekli depolama (GRS) arasında depolama artıklığı seçeneği ve tam tersi de kasa taşıma işlemi sırasında değiştirilemez.
@@ -112,7 +112,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>PowerShell kullanarak kurtarma hizmetleri kasasını taşıma
 
-Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource`Kaynak adı ve kaynak türü gerektirir. Cmdlet 'ten her ikisini de alabilirsiniz `Get-AzureRmRecoveryServicesVault` .
+Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource` Kaynak adı ve kaynak türü gerektirir. Cmdlet 'ten her ikisini de alabilirsiniz `Get-AzureRmRecoveryServicesVault` .
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"

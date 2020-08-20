@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 08/19/2020
 ms.author: victorh
-ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da2b206bf24cb33180305e32e270b989eb64dfa3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267707"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612613"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Güvenlik Duvarı Zorlamalı tünel
 
-Yeni bir Azure Güvenlik Duvarı yapılandırdığınızda, Internet 'e yönelik tüm trafiği doğrudan Internet 'e gitmek yerine belirlenen bir sonraki atlamaya yönlendirebilirsiniz. Örneğin, Internet 'e geçirilmeden önce ağ trafiğini işlemek için şirket içi bir uç güvenlik duvarına veya diğer ağ sanal gerecine (NVA) sahip olabilirsiniz. Ancak, Zorlamalı tünel için mevcut bir güvenlik duvarını yapılandıramazsınız.
+Yeni bir Azure Güvenlik Duvarı yapılandırırken internete giden tüm trafiği doğrudan internete gitmek yerine belirlenmiş bir atlamaya gidecek şekilde yönlendirebilirsiniz. Örneğin, Internet 'e geçirilmeden önce ağ trafiğini işlemek için şirket içi bir uç güvenlik duvarına veya diğer ağ sanal gerecine (NVA) sahip olabilirsiniz. Ancak, Zorlamalı tünel için mevcut bir güvenlik duvarını yapılandıramazsınız.
 
 Varsayılan olarak, tüm giden Azure bağımlılıklarının karşılanmasını sağlamak için Azure Güvenlik duvarında zorlamalı tünelye izin verilmez. Varsayılan bir yolu olan *AzureFirewallSubnet* üzerinde Kullanıcı tanımlı yol (UDR), doğrudan Internet 'e gitmez.
 
@@ -24,13 +24,13 @@ Varsayılan olarak, tüm giden Azure bağımlılıklarının karşılanmasını 
 
 Zorlamalı tüneli desteklemek için, hizmet yönetimi trafiği müşteri trafiğinden ayrılır. Kendi ilişkili genel IP adresi ile *AzureFirewallManagementSubnet* adlı ek bir ayrılmış alt ağ (minimum alt ağ boyutu/26) gereklidir. Bu alt ağda izin verilen tek yol Internet 'e yönelik varsayılan bir yoldur ve BGP yolu yayılması devre dışı bırakılmalıdır.
 
-Şirket içi trafiği zorlamak için BGP aracılığıyla tanıtılan bir varsayılan yönlendirmenize sahipseniz, güvenlik duvarınızı dağıtmadan önce *AzureFirewallSubnet* ve *AzureFirewallManagementSubnet* oluşturmanız ve Internet 'e varsayılan bir rota ile bir UDR oluşturmanız ve **sanal ağ geçidi yol yayılması** devre dışı bırakılması gerekir.
+Şirket içi trafiği zorlamak için BGP aracılığıyla tanıtılan bir varsayılan yolunuz varsa, güvenlik duvarınızı dağıtmadan önce *AzureFirewallSubnet* ve *AzureFirewallManagementSubnet* oluşturmanız ve Internet 'e varsayılan bır yol içeren bir UDR uygulamanız ve **ağ geçidi yollarının** devre dışı bırakılması gerekir.
 
-Bu yapılandırmada, *AzureFirewallSubnet* artık, Internet 'e geçirilmeden önce trafiği işlemek için herhangi bir şirket içi güvenlik duvarı veya NVA için yollar içerebilir. Bu alt ağda **sanal ağ geçidi yol yayılması** etkinse, bu yolları BGP üzerinden *AzureFirewallSubnet* 'e yayımlayabilirsiniz.
+Bu yapılandırmada, *AzureFirewallSubnet* artık, Internet 'e geçirilmeden önce trafiği işlemek için herhangi bir şirket içi güvenlik duvarı veya NVA için yollar içerebilir. Bu alt ağda **ağ geçidi yollarının yayılması** etkinse, bu yolları BGP üzerinden de yayımlayabilirsiniz *AzureFirewallSubnet* .
 
-Örneğin, *AzureFirewallSubnet* üzerinde VPN ağ geçidiniz ile şirket içi cihazınıza ulaşmak için bir sonraki atlama olarak varsayılan bir yol oluşturabilirsiniz. Ya da **sanal ağ geçidi yol yaymayı** etkinleştirerek, şirket içi ağa uygun yolları alabilirsiniz.
+Örneğin, *AzureFirewallSubnet* üzerinde VPN ağ geçidiniz ile şirket içi cihazınıza ulaşmak için bir sonraki atlama olarak varsayılan bir yol oluşturabilirsiniz. Ya da şirket içi ağa uygun yolları almak için **ağ geçidi yollarını yay** ' i de etkinleştirebilirsiniz.
 
-![Sanal ağ geçidi yol yayma](media/forced-tunneling/route-propagation.png)
+:::image type="content" source="media/forced-tunneling/route-propagation.png" alt-text="Sanal ağ geçidi yol yayma":::
 
 Zorlamalı tüneli etkinleştirirseniz, Internet 'e bağlı trafik, AzureFirewallSubnet 'deki güvenlik duvarı özel IP adreslerinden birine, kaynak şirket içi güvenlik duvarınızdan gizleniyor.
 

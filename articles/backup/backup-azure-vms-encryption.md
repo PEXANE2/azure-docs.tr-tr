@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585346"
+ms.locfileid: "88611305"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
 
@@ -69,7 +69,7 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 1. **Backup goal**  >  **İş yükünüzün çalıştığı** yedekleme hedefi alanında **Azure**' ı seçin.
 1. **Neleri yedeklemek istiyorsunuz?** **sanal makine**' yi seçin. Ardından **Yedekle**' yi seçin.
 
-      ![Senaryo dikey penceresi](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![Senaryo bölmesi](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. **Yedekleme ilkesi**  >  **yedekleme ilkesi**' nde, kasa ile ilişkilendirmek istediğiniz ilkeyi seçin. Ardından **Tamam**’ı seçin.
     - Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle depolandığını belirtir.

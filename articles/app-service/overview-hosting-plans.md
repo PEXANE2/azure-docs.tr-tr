@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: c6aa5200220c55407ade5910b4232fffed3ffe19
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141593"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611458"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
@@ -65,11 +65,11 @@ Bir uygulamanın ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [Öl�
 
 Bu bölümde App Service uygulamalar nasıl faturalandırılır açıklanmaktadır. Bölgeye özgü ayrıntılı fiyatlandırma bilgileri için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
 
-**Ücretsiz** katman haricinde, bir App Service planı kullandığı işlem kaynakları üzerinde saatlik ücret taşır.
+**Ücretsiz** katman haricinde, bir App Service planı kullandığı işlem kaynakları üzerinde ücret taşır.
 
-- **Paylaşılan** katmanda, her uygulama bir CPU dakikası kotası alır, bu nedenle _her uygulama_ CPU kotası için saatlik olarak ücretlendirilir.
-- Adanmış işlem katmanlarında (**temel**, **Standart**, **Premium**, **PremiumV2**) App Service planı, uygulamaların ölçeklendiği sanal makine örneklerinin sayısını tanımlar, böylece App Service planındaki _her sanal makine örneği_ saatlik ücretlendirilir. Bu sanal makine örnekleri, üzerinde kaç uygulama çalıştığını dikkate almaksızın aynı şekilde ücretlendirilir. Beklenmeyen ücretlerden kaçınmak için bkz. [App Service planını Temizleme](app-service-plan-manage.md#delete).
-- **Yalıtılmış** katmanda App Service ortamı, uygulamalarınızı çalıştıran yalıtılmış çalışanların sayısını tanımlar ve _her çalışan_ saatlik olarak ücretlendirilir. Ayrıca, App Service Ortamı çalıştırmak için saatlik temel bir ücret de vardır.
+- **Paylaşılan** katmanda, her uygulama CPU dakikalık bir kota alır, bu nedenle _her uygulama_ CPU kotasına göre ücretlendirilir.
+- Adanmış işlem katmanlarında (**temel**, **Standart**, **Premium**, **PremiumV2**) App Service planı, uygulamaların ölçeklendiği sanal makine örneklerinin sayısını tanımlar, böylece App Service planındaki _her sanal makine örneği_ ücretlendirilir. Bu sanal makine örnekleri, üzerinde kaç uygulama çalıştığını dikkate almaksızın aynı şekilde ücretlendirilir. Beklenmeyen ücretlerden kaçınmak için bkz. [App Service planını Temizleme](app-service-plan-manage.md#delete).
+- **Yalıtılmış** katmanda App Service ortamı, uygulamalarınızı çalıştıran yalıtılmış çalışanların sayısını tanımlar ve _her çalışan_ ücretlendirilir. Ayrıca, App Service Ortamı çalıştıran bir düz damga ücreti de vardır.
 
 Kullanabileceğiniz App Service Özellikleri (özel etki alanları, TLS/SSL sertifikaları, dağıtım yuvaları, yedeklemeler vb.) kullanmak için ücretlendirilmezsiniz. Özel durumlar şunlardır:
 

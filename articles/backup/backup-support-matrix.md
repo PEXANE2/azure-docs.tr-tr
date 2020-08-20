@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922325"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612529"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -79,8 +79,8 @@ Linux makinelerini yedeklemek istiyorsanız, bu destek aşağıda verilmiştir:
 --- | ---
 **Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmez. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
 **Linux çalıştıran Azure VM 'yi yedeklemek için aracı uzantısı kullanma** | [Özel betikler](backup-azure-linux-app-consistent.md)kullanarak uygulamayla tutarlı yedekleme.<br/><br/> Dosya düzeyinde kurtarma.<br/><br/> Kurtarma noktasından veya diskten bir VM oluşturarak geri yükleyin.
-**Linux çalıştıran şirket içi makineleri yedeklemek için DPM 'yi kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.
-**Linux çalıştıran şirket içi makineleri yedeklemek için MABS kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.
+**Linux çalıştıran şirket içi makineleri yedeklemek için DPM 'yi kullanma** | Hyper-V ve VMware üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMware Linux konuk VM 'lerinin VM geri yüklemesi.
+**Linux çalıştıran şirket içi makineleri yedeklemek için MABS kullanma** | Hyper-V ve VMware üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMware Linux konuk VM 'lerinin VM geri yüklemesi.
 **Linux Azure VM 'lerini yedeklemek için MABS veya DPM kullanma** | Desteklenmez.
 
 ## <a name="daylight-saving-time-support"></a>Gün ışığından yararlanma süresi desteği
@@ -150,9 +150,9 @@ Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlen
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
-| SQL/SAP HANA          | Hayır                                                           | Yok               |
-| 'Nın                    | Hayır                                                           | Yok               |
+| MARS Aracısı/şirket içi | No                                                           | N/A               |
+| SQL/SAP HANA          | No                                                           | N/A               |
+| 'Nın                    | No                                                           | N/A               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

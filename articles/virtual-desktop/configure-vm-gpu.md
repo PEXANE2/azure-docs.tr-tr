@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007785"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612648"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -51,7 +51,7 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 1. Yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak VM 'nin masaüstüne bağlanın.
 2. Başlat menüsünü açın ve grup ilkesi düzenleyicisini açmak için "gpedit. msc" yazın.
 3. **Computer Configuration**  >  **Yönetim Şablonları**,  >  **Windows Components**  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **uzak oturum ortamı**Uzak Masaüstü oturumu ana bilgisayarı Windows bileşenleri Uzak Masaüstü Hizmetleri Bilgisayar Yapılandırması ' na gidin.
-4. İlke ' yi seçin **tüm Uzak Masaüstü Hizmetleri oturumları için donanım varsayılan grafik bağdaştırıcısını kullanın** ve bu ilkeyi, uzak oturumda GPU oluşturmayı etkinleştirmek için **etkin** olarak ayarlayın.
+4. İlke ' yi seçin **tüm Uzak Masaüstü Hizmetleri oturumları için donanım grafik bağdaştırıcılarını kullanın** ve bu ilkeyi, uzak oturumda GPU oluşturmayı etkinleştirmek için **etkin** olarak ayarlayın.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
 

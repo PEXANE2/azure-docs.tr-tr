@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272663"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611951"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -46,7 +46,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Yürütülen denetimler|
 |---|
-|<ul><li>Bulut hizmeti barındırılan bir ad kullanıyor mu?</li><li>Konak işletim sistemi önyüklemesi tamamlandı mı?</li><li>Sanal makine kapsayıcısı sağlanıyor ve destekleniyor mu?</li><li>Ana bilgisayar ve depolama hesabı arasında ağ bağlantısı var mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li></ul>|
+|<ul><li>Üretim yuvası dağıtımı tüm rol örneklerinde sağlıklı mı?</li><li>Rol tüm sanal makine örneklerinde sağlıklı mı?</li><li>Bulut hizmeti rolü içindeki her VM 'nin sistem durumu nedir?</li><li>Platform veya müşteri tarafından başlatılan işlem nedeniyle VM durumu değişikliği mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. biliveservices/hesapları
 |Yürütülen denetimler|

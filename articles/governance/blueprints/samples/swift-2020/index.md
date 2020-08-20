@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 şema örneğine genel bakış
 description: SWIFT CSP-CSCF v2020 şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli SWIFT CSP-CSCF denetimlerini değerlendirmesine yardımcı olur.
-ms.date: 05/13/2020
+ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 04afbe2b0ef3b632d81b832e6a94bce2618fc851
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8c6eb7a609f1103f0b20a83e45bef9e18ae4d5c4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657049"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612699"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 şema örneğine genel bakış
 
