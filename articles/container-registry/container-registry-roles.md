@@ -2,17 +2,17 @@
 title: Azure rolleri ve izinleri
 description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izinler sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) ve kimlik ve erişim yönetimi (ıAM) kullanın.
 ms.topic: article
-ms.date: 12/02/2019
-ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/17/2020
+ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920084"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661393"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
 
-Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düzeylerde izinler sağlayan [yerleşik bir Azure rolleri](../role-based-access-control/built-in-roles.md) kümesini destekler. Kullanıcılara, hizmet sorumlularına veya bir kayıt defteriyle etkileşim kurması gereken diğer kimliklere belirli izinler atamak için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/index.yml) kullanın. 
+Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düzeylerde izinler sağlayan [yerleşik bir Azure rolleri](../role-based-access-control/built-in-roles.md) kümesini destekler. Kullanıcılara, hizmet sorumlularına veya bir kayıt defteriyle etkileşim kurması gereken diğer kimliklere belirli izinler atamak için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/index.yml) kullanın. Ayrıca, farklı işlemler için bir kayıt defterine ayrıntılı izinlerle [özel roller](#custom-roles) de tanımlayabilirsiniz.
 
 | Rol/Izin       | [Erişim Kaynak Yöneticisi](#access-resource-manager) | [Kayıt Defteri Oluştur/Sil](#create-and-delete-registry) | [Görüntü gönder](#push-image) | [Çekme resmi](#pull-image) | [Görüntü verilerini sil](#delete-image-data) | [İlkeleri Değiştir](#change-policies) |   [Görüntüleri imzala](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -70,7 +70,7 @@ Genellikle bir hizmet sorumlusu kullanan otomatik bir işleme atanan görüntül
 
 ## <a name="custom-roles"></a>Özel roller
 
-Diğer Azure kaynaklarında olduğu gibi, Azure Container Registry için ayrıntılı izinlerle kendi [özel rollerinizi](../role-based-access-control/custom-roles.md) de oluşturabilirsiniz. Ardından, özel rolleri kullanıcılara, hizmet sorumlularına veya bir kayıt defteriyle etkileşimde bulunmak için gereken diğer kimliklere atayın. 
+Diğer Azure kaynaklarında olduğu gibi, Azure Container Registry için ayrıntılı izinlerle [özel roller](../role-based-access-control/custom-roles.md) de oluşturabilirsiniz. Ardından, özel rolleri kullanıcılara, hizmet sorumlularına veya bir kayıt defteriyle etkileşimde bulunmak için gereken diğer kimliklere atayın. 
 
 Özel bir role hangi izinlerin uygulanacağını öğrenmek için, Microsoft. ContainerRegistry [eylemlerinin](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)listesine bakın, [yerleşik ACR rollerinin](../role-based-access-control/built-in-roles.md)izin verilen eylemlerini inceleyin veya şu komutu çalıştırın:
 
@@ -82,6 +82,36 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 > [!IMPORTANT]
 > Özel bir rolde Azure Container Registry Şu anda `Microsoft.ContainerRegistry/*` `Microsoft.ContainerRegistry/registries/*` tüm eşleşen eylemlere erişim veren veya gibi joker karakterleri desteklememektedir. Rol içinde her türlü gerekli eylemi belirtin.
+
+### <a name="example-custom-role-to-import-images"></a>Örnek: görüntüleri içeri aktarmak için özel rol
+
+Örneğin, aşağıdaki JSON bir özel rol için bir kayıt defterine [görüntü aktarmaya](container-registry-import-images.md) izin veren en düşük eylemleri tanımlar.
+
+```json
+{
+   "assignableScopes": [
+     "/subscriptions/<optional, but you can limit the visibility to one or more subscriptions>"
+   ],
+   "description": "Can import images to registry",
+   "Name": "AcrImport",
+   "permissions": [
+     {
+       "actions": [
+         "Microsoft.ContainerRegistry/registries/push/write",
+         "Microsoft.ContainerRegistry/registries/pull/read",
+         "Microsoft.ContainerRegistry/registries/read",
+         "Microsoft.ContainerRegistry/registries/importImage/action"
+       ],
+       "dataActions": [],
+       "notActions": [],
+       "notDataActions": []
+     }
+   ],
+   "roleType": "CustomRole"
+ }
+```
+
+JSON açıklamasını kullanarak özel bir rol oluşturmak veya güncelleştirmek için [Azure CLI](../role-based-access-control/custom-roles-cli.md), [Azure Resource Manager şablonu](../role-based-access-control/custom-roles-template.md), [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)veya diğer Azure araçlarını kullanın. Özel bir rol için rol atamalarını, yerleşik Azure rolleri için rol atamalarını yönettiğiniz şekilde ekleyin veya kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

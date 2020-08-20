@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Lenses.io ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Lenses.io arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Bu öğreticide, Azure Active Directory ile Lenses.io arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,120 +11,123 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0b8d736ab169ad07bd23a21d3a420bb6a044bf01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 48a1e50d451abb429e9bc33308909b368283644f
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528667"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661461"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Öğretici: Lenses.io DataOps portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory.
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Öğretici: Lenses.io DataOps portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, [lenses.io](https://lenses.io/) dataops portalını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Lenses.io 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, [lenses.io](https://lenses.io/) dataops portalını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Lenses.io 'i Azure AD ile tümleştirdikten sonra şunları yapabilirsiniz:
 
 * Azure AD 'de Lenses.io portalına erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına olanak tanıyın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure AD ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Bir mercekler portalının örneği. Bir mercan portalını [çeşitli yollarla](https://lenses.io/product/deployment/)dağıtabilirsiniz.
-* Çoklu oturum açmayı (SSO) destekleyen bir lenses.io [Lisans](https://lenses.io/product/pricing/) .
+* Bir mercekler portalının örneği. Çeşitli [dağıtım seçenekleri](https://lenses.io/product/deployment/)arasından seçim yapabilirsiniz.
+* Çoklu oturum açmayı (SSO) destekleyen bir Lenses.io [lisansı](https://lenses.io/product/pricing/) .
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edeceksiniz.
 
-* Lenses.io **SP** tarafından başlatılan SSO 'yu destekler
+* Lenses.io, hizmet sağlayıcısı (SP) tarafından başlatılan SSO 'yu destekler.
 
-* Lenses.io 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Lenses.io yapılandırdıktan sonra oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi, kuruluşunuzun hassas verilerinin, gerçek zamanlı olarak ayıklanma ve savunma korumasını korur. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-lensesio-from-the-gallery"></a>Galeriden Lenses.io ekleme
+## <a name="add-lensesio-from-the-gallery"></a>Galeriden Lenses.io ekleme
 
-Lenses.io tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Lenses.io yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Lenses.io tümleştirmesini Azure AD 'ye yapılandırmak için, yönetilen SaaS uygulamaları listenize Lenses.io ekleyin:
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **lenses.io** yazın.
-1. Sonuçlar panelinden **lenses.io** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
-
+1. İş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol bölmede **Azure Active Directory** hizmeti seçin.
+1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+1. **Yeni uygulama**’yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **lenses.io** girin.
+1. Sonuçlar panelinden **lenses.io**' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Lenses.io için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu lenses.io portalınızla yapılandırın ve test edin. SSO 'nun çalışması için, Lenses.io içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Lenses.io portalınızla Azure AD SSO 'yu yapılandırmak ve test etmek için *B. Simon* adlı bir test kullanıcısı oluşturacaksınız. SSO 'nun çalışması için, Lenses.io içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Lenses.io ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Aşağıdaki adımları tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. B. Simon ile Azure AD çoklu oturum açmayı test etmek için **[bir Azure AD test kullanıcısı ve grubu oluşturun](#create-an-azure-ad-test-user-and-group)** .
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[LENSES.IO SSO 'Yu yapılandırın](#configure-lensesio-sso)** .
-    1. **[Lenses.io test grubu Izinleri oluştur](#create-lensesio-test-group-permissions)** -hangi B. simon 'ın lenses.io (yetkilendirme) erişimi gerektiğini denetlemek için.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
+    1. Azure AD SSO 'yu B. Simon ile test etmek için [bir Azure AD test kullanıcısı ve grubu oluşturun](#create-an-azure-ad-test-user-and-group) .
+    1. Azure AD SSO 'yu kullanmak için B. Simon 'u etkinleştirmek üzere [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
+1. Uygulama tarafında SSO ayarlarını yapılandırmak için [LENSES.IO SSO 'Yu yapılandırın](#configure-lensesio-sso) .
+    1. B. Simon 'ın Lenses.io 'ye (yetkilendirme) erişip erişebileceklerini denetlemek için [lenses.io test grubu Izinleri oluşturun](#create-lensesio-test-group-permissions) .
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için [test SSO 'su](#test-sso) .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/), **lenses.io** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesini seçin.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenlemenin simgesini gösteren ekran görüntüsü.](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki metin girişi kutularına değerler girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki stili kullanarak bir URL yazın: `https://<CUSTOMER_LENSES_BASE_URL>` örn.`https://lenses.my.company.com`
+    a. **Oturum açma URL 'si**: Şu düzene sahıp bir URL girin: `https://<CUSTOMER_LENSES_BASE_URL>` . `https://lenses.my.company.com` bunun bir örneğidir.
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki stili kullanarak bir URL yazın: `https://<CUSTOMER_LENSES_BASE_URL>` örn.`https://lenses.my.company.com`
+    b. **Tanımlayıcı (VARLıK kimliği)**: Şu düzene sahıp bir URL girin: `https://<CUSTOMER_LENSES_BASE_URL>` . `https://lenses.my.company.com` bunun bir örneğidir.
 
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
-    DomainName. `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
+    c. **Yanıt URL 'si**: Şu düzene sahıp bir URL girin: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client` . `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client` bunun bir örneğidir.
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, merme portalı örneğinizin temel URL 'sine göre gerçek oturum açma URL 'SI, yanıt URL 'si ve tanımlayıcı ile güncelleştirin. [LENSES.IO SSO belgelerinde](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)daha fazla bilgi edinebilirsiniz.
+    > Bu değerler gerçek değildir. Bunları gerçek oturum açma URL 'SI, yanıt URL 'si ve mercekler portalı örneğinizin temel URL 'SI ile güncelleştirin. Daha fazla bilgi için bkz. [LENSES.IO SSO belgeleri](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0) .
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümüne gidin. **Federasyon meta VERI XML**'i bulun ve ardından sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![Sertifika indirme bağlantısını gösteren ekran görüntüsü.](common/metadataxml.png)
 
-1. **Lenses.io ayarla** bölümünde, Azure SSO 'unuzla karşılaştırmaları yapılandırmak IÇIN Yukarıdaki XML dosyasını kullanın.
+1. **Lenses.io ayarla** bölümünde, Azure SSO 'nuzu yapılandırmak IÇIN indirdiğiniz XML dosyasını kullanın.
 
 ### <a name="create-an-azure-ad-test-user-and-group"></a>Azure AD test kullanıcısı ve grubu oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız. B. Simon 'ın hangi erişim B. Simon ile olduğunu denetlemek için kullanılacak bir test grubu da oluşturacaksınız.
-Mercekler 'in, [merme SSO belgelerinde](https://docs.lenses.io/install_setup/configuration/security.html#id3) yetkilendirme için Grup üyeliği eşlemesini nasıl kullandığını öğrenebilirsiniz.
+Azure portal, B. Simon adlı bir test kullanıcısı oluşturacaksınız. Daha sonra, B. Simon 'un lense erişimini denetleyen bir test grubu oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+Mercekler 'in, [merme SSO belgelerinde](https://docs.lenses.io/install_setup/configuration/security.html#id3)yetkilendirme için Grup üyeliği eşlemesini nasıl kullandığını öğrenebilirsiniz.
+
+**Test kullanıcısını oluşturmak için:**
+
+1. Azure portal sol bölmesinde **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Kullanıcı adı** kutusuna, girin username@companydomain.extension . Örneğin, B.Simon@contoso.com.
+   1. **Parolayı göster** onay kutusunu seçin. **Parola kutusunda gösterilen** parolayı yazın.
+   1. **Oluştur**’u seçin.
 
-Grubu oluşturmak için:
-1. **Azure Active Directory**dön, **grupları** seçin
-1. Ekranın üst kısmındaki **Yeni Grup** ' u seçin.
+**Grubu oluşturmak için:**
+
+1. **Azure Active Directory**' e gidin ve ardından **gruplar**' ı seçin.
+1. Ekranın üst kısmında **Yeni Grup**' u seçin.
 1. **Grup özelliklerinde**şu adımları izleyin:
-   1. **Grup türü** alanında öğesini seçin `Security` .
-   1. **Grup adı** alanına şunu girin`LensesUsers`
-   1. **Oluştur**’a tıklayın.
-1. Grubu seçin `LensesUsers` ve **nesne kimliğini** (ör.) göz önünde faydalanın `f8b5c1ec-45de-4abd-af5c-e874091fb5f7` . Bu KIMLIK, bu grubun kullanıcılarını [doğru izinlerle](https://docs.lenses.io/install_setup/configuration/security.html#id3)eşlemek Için mercekler 'de kullanılacaktır.  
-   
-Grubu test kullanıcısına atamak için: 
-1. **Azure Active Directory**dön, **Kullanıcılar**' ı seçin.
-1. Test kullanıcısını seçin `B.Simon` .
+   1. **Grup türü** kutusunda **güvenlik**' i seçin.
+   1. **Grup adı** kutusuna **lensesusers**yazın.
+   1. **Oluştur**’u seçin.
+1. **Mersesusers** grubunu seçin ve **nesne kimliğini** (örneğin, f8b5c1ec-45de-4ABD-AF5C-e874091fb5f7) kopyalayın. Bu KIMLIĞI, Grup kullanıcılarını [doğru izinlerle](https://docs.lenses.io/install_setup/configuration/security.html#id3)eşlemek Için merler içinde kullanacaksınız.  
+
+**Grubu test kullanıcısına atamak için:**
+
+1. **Azure Active Directory**' e gidin ve ardından **Kullanıcılar**' ı seçin.
+1. **B. Simon**test kullanıcısını seçin.
 1. **Grupları**seçin.
-1. Ekranın üst kısmındaki **üyelikleri Ekle** ' yi seçin.
-1. Arama yapın `LensesUsers` ve seçin.
+1. Ekranın üst kısmında, **Üyelik Ekle**' yi seçin.
+1. **Merseskullanıcıları**için arama yapın ve seçin.
 1. **Seç**’e tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
@@ -133,43 +136,45 @@ Bu bölümde, Lenses.io 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **lenses.io**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Uygulamaya Genel Bakış sayfasında, **Yönet** bölümünde **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısını gösteren ekran görüntüsü.](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı ekle**'yi seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+   ![Kullanıcı Ekle bağlantısını gösteren ekran görüntüsü.](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** öğesini seçin. Ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
 
 ## <a name="configure-lensesio-sso"></a>Lenses.io SSO 'yu yapılandırma
 
-**Lenses.io** portalında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini mercekler ÖRNEĞINIZDE yükler ve [SSO 'yu etkinleştirmek için mercekler 'i yapılandırırsınız](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses). 
+**Lenses.io** portalında SSO 'yu yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini mercekler ÖRNEĞINIZDE yükleyip, [SSO 'yu etkinleştirmek için merler 'i yapılandırın](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses).
 
 ### <a name="create-lensesio-test-group-permissions"></a>Lenses.io test grubu izinleri oluştur
 
-Bu bölümde, **Object Id** `LensesUsers` Kullanıcı [oluşturma bölümünde](#create-an-azure-ad-test-user-and-group)Not ettiğimiz grubun nesne kimliğini kullanarak merceklerde bir grup oluşturacaksınız.
-`B.Simon`Merceklerde olması gereken istenen izinleri atarsınız.
-[Azure-lenses grubu eşlemesi](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups)hakkında daha fazla bilgi edinebilirsiniz.
+1. Merceklerde bir grup oluşturmak için **Lensesusers** grubunun **nesne kimliğini** kullanın. Bu, Kullanıcı [oluşturma bölümünde](#create-an-azure-ad-test-user-and-group)kopyaladığınız kimliğidir.
+1. B. Simon için istenen izinleri atayın.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+Daha fazla bilgi için bkz. [Azure-lenses grubu eşleme](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups).
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+## <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde Lenses.io kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Lenses.io portalında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Bu bölümde, erişim panelini kullanarak Azure AD SSO yapılandırmanızı test edin.
+
+Erişim panelinde Lenses.io kutucuğunu seçtiğinizde, Lenses.io portalınıza otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [Erişim Paneli'ne Giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ Lenses.io örneğiniz için SSO kurulum ](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
+- [Lenses.io Örneğinizde SSO 'yu ayarlama](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure AD ile uygulama erişimi ve SSO nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure AD 'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Lenses.io deneyin](https://aad.portal.azure.com/)
 

@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036683"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661446"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınızla ilgili yaygın sorunlar
 
@@ -31,14 +32,10 @@ Azure Active Directory (Azure AD) kuruluşunuz iki öğeli doğrulamayı (2GD) a
 
 2GD yalnızca bir paroladan daha güvenlidir, çünkü 2GD, _bildiğiniz_ bir şeyi ve bir şeyi _gerektirir._ Fiziksel telefonunuza sahip bir korsan yok.
 
-<center>
-
-![Kavramsal kimlik doğrulama yöntemleri görüntüsü](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
 >Yöneticimce sahipseniz Azure AD [belgelerinde](https://docs.microsoft.com/azure/active-directory)Azure AD ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
->
->Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap olan iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır (örneğin, alain@contoso.com ). İki öğeli doğrulamayla ilgili sorun yaşıyorsanız (örneğin,) kendiniz için ayarladığınız bir hesap olan kişisel Microsoft hesabı, danielle@outlook.com [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+
+Bu içerik, kuruluşunuz tarafından size sunulan hesap (örneğin,) için iş veya okul hesabınızda size yardımcı olmaya yöneliktir dritan@contoso.com . Kendiniz için ayarladığınız bir hesap olan kişisel Microsoft hesabı iki öğeli doğrulamayla ilgili sorun yaşıyorsanız (örneğin, danielle@outlook.com ), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Mobil cihazım benim benimle yok
 
@@ -71,7 +68,7 @@ Doğrulama kodunuzun alınmıyor yaygın bir sorundur. Sorun genellikle mobil ci
 --------- | ------------
 Mobil cihazınızı yeniden başlatın | Bazen cihazınızda bir yenileme yeterlidir. Cihazınızı yeniden başlattığınızda, tüm arka plan işlem ve Hizmetleri sonlandırılır. Yeniden başlatma, cihazınızın temel bileşenlerini de kapatır. Cihazınızı yeniden başlattığınızda herhangi bir hizmet veya bileşen yenilenir.
 Güvenlik bilgilerinizin doğru olduğundan emin olun | Güvenlik doğrulama yöntemi bilgilerinizin doğru, özellikle telefon numaralarınızı doğru olduğundan emin olun. Yanlış telefon numarasına yerleştirirseniz, Tüm uyarılarınız bu hatalı sayıya gider. Neyse ki, bu kullanıcı uyarılarla hiçbir şey yapamayacaktır, ancak hesabınızda oturum açmanıza de yardımcı olmaz. Bilgilerinizin doğru olduğundan emin olmak için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md) makalesindeki yönergelere bakın.
-Bildirimlerin açık olduğunu doğrulayın | Mobil cihazınızın bildirimleri açık olduğundan emin olun. Aşağıdaki bildirim modlarına izin verildiğinden emin olun: <br/><br/> &bull;Telefon görüşmeleri <br/> &bull;Kimlik doğrulama uygulamanız <br/> &bull;SMS mesajlaşma uygulamanız <br/><br/> Bu modların cihazınızda _görünür_ bir uyarı oluşturtığınızdan emin olun.
+Bildirimlerin açık olduğunu doğrulayın | Mobil cihazınızın bildirimleri açık olduğundan emin olun. Aşağıdaki bildirim modlarına izin verildiğinden emin olun: <br/><br/> &bull; Telefon görüşmeleri <br/> &bull; Kimlik doğrulama uygulamanız <br/> &bull; SMS mesajlaşma uygulamanız <br/><br/> Bu modların cihazınızda _görünür_ bir uyarı oluşturtığınızdan emin olun.
 Bir cihaz sinyaliniz ve Internet bağlantınız olduğundan emin olun | Telefon aramalarınızın ve SMS iletilerinizin mobil cihazınıza geldiğinden emin olun. Sizi bir arkadaşınız araması yapın ve her ikisini de aldığınızdan emin olmak için size bir kısa mesaj gönderin. Çağrıyı veya metni almazsanız, önce mobil cihazınızın açık olduğundan emin olun. Cihazınız açıksa, ancak yine de aramayı veya metni almadıysanız, ağınızla ilgili bir sorun olabilir. Sağlayıcınızla konuşmanız gerekir. Genellikle sinyalle ilgili sorunlarınız varsa, mobil cihazınızda [Microsoft Authenticator uygulamasını](user-help-auth-app-download-install.md) yüklemenizi ve kullanmanızı öneririz. Doğrulayıcı uygulaması, herhangi bir hücre sinyali veya Internet bağlantısı gerekmeden oturum açma için rastgele güvenlik kodları oluşturabilir.
 Rahatsız değil ' i Kapat | Mobil cihazınız için **rahatsız değil** özelliğini açtığınızdan emin olun. Bu özellik açık olduğunda, bildirimlerin mobil cihazınızda sizi uyarmasını izin verilmez. Bu özelliğin nasıl kapatılacağı hakkında yönergeler için mobil cihazınızın kılavuzuna bakın.
 Telefon numaralarının engellemesini kaldır | Birleşik Devletler, Microsoft 'tan gelen sesli çağrılar şu numaralardan gelir: + 1 (866) 539 4191, + 1 (855) 330 8653 ve + 1 (877) 668 6536.

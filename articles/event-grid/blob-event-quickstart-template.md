@@ -3,12 +3,12 @@ title: Blob Depolama olaylarını Web uç noktasına gönder-şablon
 description: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure Resource Manager şablonu kullanın. Olayları bir Web kancasına gönder. '
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460448"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661274"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>ARM şablonunu kullanarak BLOB Depolama olaylarını Web uç noktasına yönlendirme
 
@@ -41,7 +41,7 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json" range="1-91" highlight="40-85":::
+:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve bir şablonu açmak için aşağıdaki bağlantıyı seçin. Şablon bir anahtar kasası ve gizli dizi oluşturur.
+1. Aşağıdaki bağlantıyı seçerek Azure’da oturum açıp bir şablon açın. Şablon bir anahtar kasası ve gizli dizi oluşturur.
 
     [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
@@ -87,6 +87,6 @@ Artık gerekli olmadığında [kaynak grubunu silin](../azure-resource-manager/m
 Azure Resource Manager şablonları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure Resource Manager belgeleri](../azure-resource-manager/index.yml)
-* [Azure Resource Manager şablonlarda kaynakları tanımlama](/azure/templates/)
+* [Azure Resource Manager şablonlarında kaynakları tanımlama](/azure/templates/)
 * [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

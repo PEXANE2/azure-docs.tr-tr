@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu Azure portal-Azure
 description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 06ac7719c5ada08da37beffa23801a0201f75dc4
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002658"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661376"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -22,7 +22,7 @@ Konak havuzları, Windows sanal masaüstü ortamlarında bir veya daha fazla öz
 
 Bu makale, Azure portal aracılığıyla bir Windows sanal masaüstü ortamı için bir konak havuzu oluşturmaya yönelik kurulum sürecinde size yol gösterecektir. Bu yöntem, Windows sanal masaüstünde bir konak havuzu oluşturmak, bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturmak, bu VM 'Leri Azure Active Directory (AD) etki alanına eklemek ve VM 'Leri Windows sanal masaüstü ile kaydettirmek için tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir konak havuzu oluşturmak için aşağıdaki parametreleri girmeniz gerekir:
 
@@ -36,7 +36,7 @@ Ayrıca aşağıdaki işlemleri de bilmeniz gerekir:
 - Kullanmak istediğiniz görüntünün kaynağı. Azure galerisinden mi veya özel bir görüntü mi?
 - Etki alanınıza katılarak kimlik bilgileri.
 
-Ayrıca, Microsoft. DesktopVirtualization kaynak sağlayıcısını kaydettiğinizden emin olun. Henüz yapmadıysanız, **abonelikler**' e gidin, aboneliğinizin adını seçin ve ardından **Azure kaynak sağlayıcıları**' nı seçin.
+Ayrıca, Microsoft. DesktopVirtualization kaynak sağlayıcısını kaydettiğinizden emin olun. Henüz yapmadıysanız, **abonelikler**' e gidin, aboneliğinizin adını seçin ve ardından **kaynak sağlayıcıları**' nı seçin. DesktopVirtualization için arama yapın, Microsoft. DesktopVirtualization ' ı seçin ve ardından Kaydet ' i seçin.
 
 Azure Resource Manager şablonuyla bir Windows sanal masaüstü konak havuzu oluşturduğunuzda, Azure Galerisi 'nden, yönetilen bir görüntüden veya yönetilmeyen görüntüden bir sanal makine oluşturabilirsiniz. VM görüntülerini oluşturma hakkında daha fazla bilgi edinmek için bkz. Azure ['a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md) ve [Azure 'DA genelleştirilmiş bir VM 'Nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md).
 
@@ -80,9 +80,9 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
        > [!div class="mx-imgBorder"]
        > ![Atama türü alanının "havuza alınmış" seçiliyken bir ekran görüntüsü. Kullanıcı, Yük Dengeleme açılan menüsünde imlecini yukarı doğru üzerine alır.](media/pooled-assignment-type.png)
 
-10. **İleri ' yi seçin: VM ayrıntıları**.
+10. **İleri ' yi seçin: sanal makineler >**.
 
-11. Zaten sanal makineler oluşturduysanız ve bunları yeni konak havuzuyla kullanmak istiyorsanız **Hayır**' ı seçin. Yeni sanal makineler oluşturmak ve bunları yeni konak havuzuna kaydetmek istiyorsanız **Evet**' i seçin.
+11. Zaten sanal makineler oluşturduysanız ve bunları yeni konak havuzuyla kullanmak istiyorsanız **Hayır**' ı seçin, ileri ' yi seçin **: çalışma alanı >** ve [çalışma alanı bilgileri](#workspace-information) bölümüne atlayın. Yeni sanal makineler oluşturmak ve bunları yeni konak havuzuna kaydetmek istiyorsanız **Evet**' i seçin.
 
 İlk parçayı tamamladığınıza göre, VM 'yi oluşturduğumuz kurulum sürecinin bir sonraki bölümüne geçeceğiz.
 
@@ -92,13 +92,13 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
 
 Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
-1. Kaynak grubu altında, sanal makineleri oluşturmak istediğiniz kaynak grubunu seçin. Bu, konak havuzu için kullanılandan farklı bir kaynak grubu olabilir.
+1. **Kaynak grubu**altında, sanal makineleri oluşturmak istediğiniz kaynak grubunu seçin. Bu, konak havuzu için kullanılandan farklı bir kaynak grubu olabilir.
 
-2. Sanal makineleri oluşturmak istediğiniz **sanal makine bölgesini** seçin. Konak havuzu için seçtiğiniz bölgeden aynı veya farklı olabilir.
+2. Sanal makineleri oluşturmak istediğiniz **sanal makine konumunu** seçin. Konak havuzu için seçtiğiniz bölgeden aynı veya farklı olabilir.
 
-3. Sonra, oluşturmak istediğiniz sanal makinenin boyutunu seçin. Varsayılan boyutu olduğu gibi tutabilirsiniz ya da boyutu değiştirmek için **boyutu Değiştir** ' i seçin. **Boyutu Değiştir**' i seçerseniz, görüntülenen pencerede, iş yükünüz için uygun olan sanal makine boyutunu seçin.
+3. Ardından, kullanmak istediğiniz **sanal makine boyutunu** seçin. Varsayılan boyutu olduğu gibi tutabilirsiniz ya da boyutu değiştirmek için **boyutu Değiştir** ' i seçin. **Boyutu Değiştir**' i seçerseniz, görüntülenen pencerede, iş yükünüz için uygun olan sanal makine boyutunu seçin.
 
-4. VM sayısı ' nın altında, konak havuzunuz için oluşturmak istediğiniz VM sayısını sağlayın.
+4. **VM sayısı**' nın altında, konak havuzunuz için oluşturmak istediğiniz VM sayısını sağlayın.
 
     >[!NOTE]
     >Kurulum işlemi, konak havuzunuzu ayarlarken en fazla 400 VM oluşturabilir ve her bir VM kurulum işlemi kaynak grubunuzda dört nesne oluşturur. Oluşturma işlemi abonelik kotayı denetlemediğinden, girdiğiniz sanal makine sayısının Azure VM 'de ve kaynak grubunuz ve aboneliğiniz için API sınırları içinde olduğundan emin olun. Konak havuzunuzu oluşturmayı bitirdikten sonra daha fazla VM ekleyebilirsiniz.
@@ -109,9 +109,11 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
     - **Galeri**' yi seçerseniz, açılan menüden önerilen görüntülerden birini seçin:
 
-      - Windows 10 Enterprise çoklu oturum, sürüm 1909 + kurumsal için Microsoft 365 uygulamalar – Gen 1
-      - Windows 10 Enterprise multi-session, sürüm 1909 – Gen 1
-      - Windows Server 2019 Datacenter-Gen1
+      - Windows 10 Enterprise multi-session, sürüm 1909
+      - Windows 10 Enterprise çoklu oturum, sürüm 1909 + Microsoft 365 uygulamalar
+      - Windows Server 2019 Datacenter
+      - Windows 10 Enterprise multi-session, sürüm 2004
+      - Windows 10 Enterprise çoklu oturum, sürüm 2004 + Microsoft 365 uygulamalar
 
      İstediğiniz görüntüyü görmüyorsanız, galerinizdeki başka bir görüntüyü ya da Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntülere ve disklere gözatamazsınız**' ı seçin.
 
@@ -127,7 +129,7 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
 7. Sanal makinelerinizin ne tür işletim sistemi diskleri kullanmasını istediğinizi seçin: Standart SSD, Premium SSD veya Standart HDD.
 
-8. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz sanal ağı ve alt ağı seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel IP daha güvenli olduğundan **Hayır**' ı seçmenizi öneririz.
+8. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz **sanal ağı** ve **alt ağı** seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel IP daha güvenli olduğundan **Hayır**' ı seçmenizi öneririz.
 
 9. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş**veya **yok**.
 
@@ -141,11 +143,11 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
     **Gelişmiş**' i seçerseniz, önceden yapılandırdığınız mevcut bir ağ güvenlik grubunu seçin.
 
-10. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. Ayrıca, sanal makinelerin bulunmasını istediğiniz belirli bir kuruluş birimini de ekleyebilirsiniz.
+10. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. Ayrıca, sanal makinelerin bulunmasını istediğiniz belirli bir kuruluş birimini de ekleyebilirsiniz. **Hayır**' ı seçerseniz, VM 'ler **ad etkı alanına katılma UPN**'si sonekiyle eşleşen etki alanına birleştirilir.
 
 11. Yönetici hesabı ' nın altında, seçtiğiniz sanal ağın Active Directory Etki Alanı yöneticisinin kimlik bilgilerini girin.
 
-12. **Çalışma alanı**seçin.
+12. **İleri ' yi seçin: çalışma alanı >**.
 
 Bununla birlikte, konak havuzunuzu ayarlamanın bir sonraki aşamasına başlamaya hazırız: uygulama grubunuzu bir çalışma alanına kaydetme.
 
@@ -161,7 +163,7 @@ Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
 
 2. Sonra, yeni bir çalışma alanı oluşturmak mı yoksa mevcut çalışma alanlarından seçmek mi istediğinizi seçin. Yalnızca konak havuzuyla aynı konumda oluşturulan çalışma alanları, uygulama grubunu ' a kaydetmeye izin verilir.
 
-3. İsteğe bağlı olarak **Etiketler**' i seçebilirsiniz.
+3. İsteğe bağlı olarak, Ileri ' yi seçebilirsiniz **: etiketler >**.
 
     Burada, yöneticilerinize daha kolay hale getirmek için nesneleri meta verilerle gruplandırabilmeniz için Etiketler ekleyebilirsiniz.
 
@@ -175,7 +177,7 @@ Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
      - Yeni konak havuzunuz.
      - Bir masaüstü uygulama grubu.
      - Oluşturmayı seçerseniz çalışma alanı.
-     - Masaüstü uygulama grubunu kaydetmeyi seçerseniz, kayıt tamamlanacaktır
+     - Masaüstü uygulama grubunu kaydetmeyi seçerseniz, kayıt tamamlanır.
      - Sanal makineler, etki alanına katılmış ve yeni konak havuzuna kayıtlı olan bunları oluşturmayı seçerseniz.
      - Yapılandırmanızı temel alan bir Azure Kaynak Yönetimi şablonu için indirme bağlantısı.
 

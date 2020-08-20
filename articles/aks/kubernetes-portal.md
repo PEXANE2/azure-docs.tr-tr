@@ -6,18 +6,21 @@ author: laurenhughes
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: lahugh
-ms.openlocfilehash: 109192efa19605af003dcfb30592c865ce7495b5
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136991"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661359"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal (Önizleme) ile Kubernetes kaynaklarına erişin
 
 Azure portal, Azure Kubernetes Service (AKS) kümenizdeki Kubernetes kaynaklarına kolay erişim için bir Kubernetes kaynak Görüntüleyici (Önizleme) içerir. Azure portal Kubernetes kaynaklarını görüntüleme, Azure portal ve komut satırı aracı arasındaki bağlam geçişini azaltır ve `kubectl` Kubernetes kaynaklarınızı görüntüleme ve düzenlemeyle ilgili deneyimi kolaylaştırır. Kaynak Görüntüleyicisi Şu anda dağıtımlar, pods ve çoğaltma kümeleri gibi birden çok kaynak türü içerir.
 
 Azure portal Kubernetes kaynak görünümü, kullanımdan kaldırılması için ayarlanan [aks Pano eklentisinin][kubernetes-dashboard]yerini alır.
+
+>[!NOTE]
+>Capabilty Şu anda [özel Azure Kubernetes hizmet kümelerinde](https://docs.microsoft.com/azure/aks/private-clusters)desteklenmiyor.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

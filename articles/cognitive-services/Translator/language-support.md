@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a0ea0a7580bbb7a6106880d2733f36f5ab7a7690
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cc5964bb243216233300e8616b0460b7a1a043d9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639792"
+ms.locfileid: "88661546"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -75,6 +75,8 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Klingon|   `tlh-Latn`  |
 |Klingon (plqaD)|   `tlh-Piqd`  |
 |Korece |`ko`   |
+|Kürtçe (orta)  |`ku`   |
+|Kürtçe (Kuzey) |`kmr`  |
 |Letonca|   `lv`    |
 |Litvanca|    `lt`    |
 |Malgaşça|  `mg`    |
@@ -190,10 +192,10 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça `Arab` | <--> | Tin `Latn` |
 | Bangla  | `bn` | Bengali `Beng` | <--> | Tin `Latn` |
-| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Tin `Latn` |
-| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Geleneksel Çince `Hant`|
-| Geleneksel Çince | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Tin `Latn` |
-| Geleneksel Çince | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Basitleştirilmiş Çince `Hans` |
+| ve | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Tin `Latn` |
+| ve | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Geleneksel Çince `Hant`|
+| seçenekleri yerine | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Tin `Latn` |
+| seçenekleri yerine | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Basitleştirilmiş Çince `Hans` |
 | Gucerat dili | `gu`  | Gucerat dili `Gujr` | --> | Tin `Latn` |
 | İbranice | `he` | İbranice `Hebr` | <--> | Tin `Latn` |
 | Hintçe | `hi` | Devanagari `Deva` | <--> | Tin `Latn` |

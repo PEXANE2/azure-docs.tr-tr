@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272357"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660691"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -704,8 +704,9 @@ Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 daki
 * [Visual Studio 2019 kullanarak C#](durable-functions-create-first-csharp.md)
 * [Visual Studio Code kullanan JavaScript](quickstart-js-vscode.md)
 * [Visual Studio Code kullanarak Python](quickstart-python-vscode.md)
+* [Visual Studio Code kullanarak PowerShell](quickstart-powershell-vscode.md)
 
-Her iki hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
+Bu hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
 
 ## <a name="learn-more"></a>Daha fazlasını öğrenin
 

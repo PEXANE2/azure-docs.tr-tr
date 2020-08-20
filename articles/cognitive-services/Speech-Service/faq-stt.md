@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921022"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661529"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -75,7 +75,7 @@ Y **: modeller**yerel olarak indirilemez ve yürütülemez.
 
 **S: isteklerim kısıtlandı mı?**
 
-Y **: REST API**, istekleri 5 saniyede 25 ' e sınırlandırır. Ayrıntılar, [konuşma](speech-to-text.md)için sayfalarımızda bulunabilir.
+Y **: bkz**. [konuşma Hizmetleri kotaları ve limitleri](speech-services-quotas-and-limits.md).
 
 **S: çift kanallı ses için nasıl ücret ödersiniz?**
 
@@ -85,52 +85,14 @@ Y: her **bir**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), 
 > Özel konuşma hizmetini kullanmanızı engelleyen başka gizlilik endişeleriniz varsa, destek kanallarından birine başvurun.
 
 ## <a name="increasing-concurrency"></a>Eşzamanlılık artırma
+Bkz. [konuşma Hizmetleri kotaları ve sınırları](speech-services-quotas-and-limits.md).
 
-**S: dağıtılan modelimde portalda sunulmadan daha fazla eşzamanlılık almam gerekir mi?**
-
-Y **: modelinizi**20 eşzamanlı istek artışlarına göre ölçeklendirebilirsiniz.
-
-Gerekli bilgiler ile [Azure destek portalında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)bir destek isteği oluşturun. Bilgileri, [Destek sayfasında](support.md)belirtilen genel kanallardan (GitHub, StackOverflow,...) herhangi birine nakletmeyin.
-
-***Özel bir modelin***Eşzamanlılığını artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
-
-- Modelin dağıtıldığı bölge,
-- dağıtılan modelin uç nokta KIMLIĞI:
-  - [Özel konuşma tanıma portalına](https://aka.ms/customspeech)alındı,
-  - oturum aç (gerekliyse),
-  - projenizi ve dağıtımınızı seçin,
-  - Eşzamanlılık artışı için gereken uç noktayı seçin,
-  - öğesini kopyalayın `Endpoint ID` .
-
-Bir ***temel modelin***eşzamanlılık düzeyini artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
-
-- Hizmetinizin bölgesi,
-
-ya da
-
-- aboneliğiniz için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın),
-
-veya
-
-- aboneliğinizin kaynak KIMLIĞI:
-  - [Azure Portal](https://portal.azure.com)gidin,
-  - `Cognitive Services`arama kutusunda öğesini seçin,
-  - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
-  - `Properties`Bu hizmet için görüntüleme,
-  - tamamını kopyalayın `Resource ID` .
-  
-**S: eşzamanlılık limitimin artırılması maliyetimi artırıyor mu?**
-
-Y **: Hayır**, maliyet kullanımı temel alır. Eşzamanlılık artırma, daha yüksek maliyetlere neden olmaz. Maliyetle ilgili ayrıntılı bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) . 
-  
->[!NOTE]
->Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları tarafından sınırlandırıldığından [, kapsayıcılar eşzamanlılık](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) sınırlarına artış gerektirmez.
 
 ## <a name="importing-data"></a>Verileri içeri aktarma
 
 **S: bir veri kümesinin boyutuyla ilgili sınır nedir ve neden sınırla?**
 
-**A**: bir veri kümesi için geçerli sınır 2 GB 'dir. Sınır, HTTP karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır.
+Y **: sınır**, http karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır. Gerçek sınır için [konuşma Hizmetleri kotaları ve limitlerini](speech-services-quotas-and-limits.md) inceleyin.
 
 **S: daha büyük bir metin dosyasını karşıya yükleyebilmem için metin dosyalarımı ZIP yapabilir miyim?**
 
@@ -198,7 +160,7 @@ Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak
 
 **S: kiracı modeli tarafından hangi konuşma deneyimleri geliştirildi?**
 
-Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulup yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı AAD belirteci de iletir.
+Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulup yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı Azure AD belirteci de iletir.
 
 Konuşma hizmeti uygulamalarınız için bir kiracı modeli oluşturduğunuzda, dikte ve PowerPoint resim yazısı gibi Office 365 ' de yerleşik konuşma deneyimleri değiştirilmez.
 

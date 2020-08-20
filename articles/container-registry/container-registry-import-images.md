@@ -2,13 +2,13 @@
 title: Kapsayıcı görüntülerini içeri aktarma
 description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Lerini kullanarak kapsayıcı görüntülerini bir Azure Container Registry 'ye aktarın.
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/17/2020
+ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023525"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660504"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
 
@@ -28,6 +28,8 @@ Azure Container Registry 'de görüntü içeri aktarma işlemi Docker CLı komut
 
 * Multi-Architecture görüntülerini (resmi Docker görüntüleri gibi) içeri aktardığınızda, bildirim listesinde belirtilen tüm mimarilerin ve platformların görüntüleri bir kopyası alınır.
 
+* Kaynak ve hedef kayıt defterlerine erişimin, kayıt defterlerinin genel uç noktalarını kullanması gerekmez.
+
 Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Azure Cloud Shell veya yerel olarak (sürüm 2.0.55 veya üzeri önerilir) çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
 > [!NOTE]
@@ -38,7 +40,7 @@ Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Az
 
 Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
 
-Bir görüntüyü Azure Container Registry 'ye aktarmak için, kimliğinizin hedef kayıt defterine (en az katkıda bulunan rolü) yazma izinleri olması gerekir. Bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md). 
+Bir görüntüyü Azure Container Registry 'ye aktarmak için, kimliğinizin hedef kayıt defterine (en az katkıda bulunan rolü veya ımportımage eylemine izin veren özel bir rol) yazma izinleri olması gerekir. Bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md#custom-roles). 
 
 ## <a name="import-from-a-public-registry"></a>Ortak bir kayıt defterinden içeri aktarma
 
@@ -85,9 +87,11 @@ az acr import \
 
 Bir görüntüyü, tümleşik Azure Active Directory izinleri kullanarak başka bir Azure Container kayıt defterinden içeri aktarabilirsiniz.
 
-* Kimliğiniz, kaynak kayıt defterinden (okuyucu rolü) okumak ve hedef kayıt defterine (katkıda bulunan rolü) yazmak için Azure Active Directory izinlere sahip olmalıdır.
+* Kimliğiniz, kaynak kayıt defterinden (okuyucu rolü) okumak ve hedef kayıt defterine (katkıda bulunan rolü veya ımportımage eylemine izin veren [özel bir rol](container-registry-roles.md#custom-roles) ) aktarmak için Azure Active Directory izinlere sahip olmalıdır.
 
 * Kayıt defteri aynı Active Directory kiracısında aynı veya farklı bir Azure aboneliğinde olabilir.
+
+* Kaynak kayıt defterine [genel erişim](container-registry-access-selected-networks.md#disable-public-network-access) devre dışı bırakılmış olabilir. Ortak erişim devre dışıysa, kaynak kayıt defterini kayıt defteri oturum açma sunucusu adı yerine kaynak KIMLIĞIYLE belirtin.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Aynı abonelikteki bir kayıt defterinden içeri aktarma
 
@@ -98,6 +102,16 @@ az acr import \
   --name myregistry \
   --source mysourceregistry.azurecr.io/aci-helloworld:latest \
   --image aci-helloworld:latest
+```
+
+Aşağıdaki örnek, kayıt defterinin `aci-helloworld:latest` genel uç noktasına erişimin devre dışı bırakılmasıyla, bir kaynak kayıt defteri *mysourceregyımonu* *myregistry* 'e aktarır. Kaynak kayıt defterinin parametresi ile kaynak KIMLIĞINI sağlayın `--registry` . `--source`Parametresinin kayıt defteri oturum açma sunucusu adını değil yalnızca kaynak depoyu ve etiketi belirttiğinden emin olun.
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source aci-helloworld:latest \
+  --image aci-helloworld:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 Aşağıdaki örnek, bir görüntüyü etiketi yerine manifest Digest (SHA-256 karması, olarak temsil edilir) ile içe aktarır `sha256:...` :

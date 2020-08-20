@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640166"
+ms.locfileid: "88660883"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
-Batch dökümü, depolamada büyük miktarda ses eklemenizi sağlayan bir REST API işlemleri kümesidir. Paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarıyla karşılaşabilirsiniz. Yeni v 3.0 API 'SI ile bir veya daha fazla ses dosyası oluşturma veya bir depolama kapsayıcısının tamamını işleme seçeneğiniz vardır.
+Batch dökümü, depolamada büyük miktarda ses eklemenizi sağlayan bir REST API işlemleri kümesidir. Tipik bir URI veya paylaşılan erişim imzası (SAS) URI 'SI kullanarak ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarını alabilirsiniz. V 3.0 API 'SI ile bir veya daha fazla ses dosyası verebilir veya bir depolama kapsayıcısını tamamen işleyebilirsiniz.
 
-Zaman uyumsuz konuşmayı metne dönüştürme, özelliklerden yalnızca biridir. Aşağıdaki yöntemleri çağırmak için Batch transcripts REST API 'Lerini kullanabilirsiniz:
+Aşağıdaki yöntemleri çağırmak için Batch transcripts REST API 'Lerini kullanabilirsiniz:
 
 |    Toplu iş dökümü Işlemi                                             |    Yöntem    |    REST API çağrısı                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -33,14 +33,12 @@ Zaman uyumsuz konuşmayı metne dönüştürme, özelliklerden yalnızca biridir
 |    Verilen KIMLIK tarafından tanımlanan dökümü alır.                        |    GET       |    speechtotext/v 3.0/Transcriptions/{id}       |
 |    Verilen KIMLIK tarafından tanımlanan döküm sonuç dosyalarını alır.    |    GET       |    speechtotext/v 3.0/Transcriptions/{id}/dosya |
 
-
-
-
 [Swagger belgesi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)olarak KULLANıLABILEN ayrıntılı API 'yi gözden geçirebilir ve test edebilirsiniz.
 
-Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır. Şu anda bir işin çalışma durumuna ne zaman değiştiği hakkında bir tahmin yoktur. Normal sistem yükü altında, dakikalar içinde gerçekleşmelidir. Çalışma durumunda, gerçek döküm gerçek zamanlı olarak daha hızlı işlenir.
+Bu API özel uç noktalar gerektirmez ve hiçbir eşzamanlılık gereksinimi yoktur.
 
-Kullanımı kolay API 'nin yanında, Özel uç noktaları dağıtmanız gerekmez ve gözlemlemeye yönelik eşzamanlılık gereksinimleriniz yoktur.
+Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır.
+Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü altında dakikalar içinde gerçekleşmesi gerekir. Çalışma durumunda, döküm, ses çalışma zamanı kayıttan yürütme hızından daha hızlı gerçekleşir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -61,7 +59,8 @@ Toplu iş dökümü API 'SI aşağıdaki biçimleri destekler:
 | ÇA    | PCM   | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
 | OGG    | OPUS 'LAR  | 16 bit  | 8 kHz veya 16 kHz, mono veya stereo |
 
-Stereo ses akışları için, sol ve sağ kanallar, döküm sırasında bölünür. Her kanal için bir JSON sonuç dosyası oluşturuluyor. Söylenişi başına oluşturulan zaman damgaları, geliştiricinin sıralı bir son döküm oluşturmasını sağlar.
+Stereo ses akışları için, sol ve sağ kanallar, döküm sırasında bölünür. Her kanal için bir JSON sonuç dosyası oluşturuluyor.
+Sıralı bir son döküm oluşturmak için, utterance başına oluşturulan zaman damgalarını kullanın.
 
 ### <a name="configuration"></a>Yapılandırma
 
@@ -93,7 +92,7 @@ Yapılandırma parametreleri JSON (bir depolama kapsayıcısının tamamına gö
 }
 ```
 
-Toplu iş dökümlerine özel eğitilen modeller kullanmak için, aşağıda gösterildiği gibi başvurulabilir:
+Aşağıdaki JSON bir toplu iş dökümde kullanmak üzere özel bir eğitilen model belirtiyor:
 
 ```json
 {
@@ -128,42 +127,42 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
       `profanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler, küfür `None` filtrelemeyi devre dışı bırakmak, `Masked` küfür ile `Removed` tüm küfür kaldırmak veya `Tags` "küfür" etiketleri eklemek için. Varsayılan ayar `Masked` değeridir.
+      İsteğe bağlı, varsayılan olarak olur `Masked` . Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler, küfür `None` filtrelemeyi devre dışı bırakmak, `Masked` küfür ile `Removed` tüm küfür kaldırmak veya `Tags` "küfür" etiketleri eklemek için.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `punctuationMode`
    :::column-end:::
    :::column span="2":::
-      Tanıma sonuçlarında noktalama işaretlerinin nasıl işleneceğini belirtir. Kabul edilen değerler `None` , `Dictated` Açık (konuşulan) noktalama işareti, `Automatic` kod çözücüsünün noktalama ile uğraşmasına veya `DictatedAndAutomatic` Dikte ve otomatik noktalama kullanımına izin vermek için noktalama işaretlerini devre dışı bırakır. Varsayılan ayar `DictatedAndAutomatic` değeridir.
+      İsteğe bağlı, varsayılan olarak olur `DictatedAndAutomatic` . Tanıma sonuçlarında noktalama işaretlerinin nasıl işleneceğini belirtir. Kabul edilen değerler `None` , `Dictated` Açık (konuşulan) noktalama işareti, `Automatic` kod çözücüsünün noktalama ile uğraşmasına veya `DictatedAndAutomatic` Dikte ve otomatik noktalama kullanımına izin vermek için noktalama işaretlerini devre dışı bırakır.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `wordLevelTimestampsEnabled`
    :::column-end:::
    :::column span="2":::
-      Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, `true` devre dışı bırakmak için sözcük düzeyi zaman damgalarını ve `false` (varsayılan değer) etkin hale gelir.
+      İsteğe bağlı, `false` Varsayılan olarak. Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `diarizationEnabled`
    :::column-end:::
    :::column span="2":::
-      Giriş analizinin, iki ses içeren mono kanalı olması beklenen girişte gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler `true` `false` devre dışı bırakılır ve devre dışı bırakmak için (varsayılan değer). Ayrıca, `wordLevelTimestampsEnabled` true olarak ayarlanması gerekir.
+      İsteğe bağlı, `false` Varsayılan olarak. Giriş analizinin, iki ses içeren mono kanalı olması beklenen girişte gerçekleştirilmesi gerektiğini belirtir. Note: `wordLevelTimestampsEnabled` olarak ayarlanması gerekir `true` .
 :::row-end:::
 :::row:::
    :::column span="1":::
       `channels`
    :::column-end:::
    :::column span="2":::
-      İşlemek için isteğe bağlı kanal numaraları dizisi. Burada, ses dosyasındaki kullanılabilir kanalların bir alt kümesinin işlenmek üzere belirtilenebilir (örneğin, `0` yalnızca). Belirtilmezse, kanallar `0` `1` Varsayılan olarak yeniden oluşturulur.
+      İsteğe bağlı `0` ve `1` Varsayılan olarak yeniden yapılır. İşlenecek bir kanal numaraları dizisi. Burada, ses dosyasındaki kullanılabilir kanalların bir alt kümesinin işlenmek üzere belirtilenebilir (örneğin, `0` yalnızca).
 :::row-end:::
 :::row:::
    :::column span="1":::
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      Dökümü tamamladıktan sonra otomatik olarak döküm silme işlemi için isteğe bağlı süre. , `timeToLive` Sonunda silindiklerinden emin olmak için yığın işleme dökümlerinin yararlı olması gerekir (ör. `PT12H` ). Belirtilmemişse veya olarak ayarlandıysa, döküm `PT0H` otomatik olarak silinmez.
+      İsteğe bağlı, varsayılan olarak silme yok. Dökümü tamamladıktan sonra otomatik olarak döküm silme süresi. , `timeToLive` Sonunda silindiklerinden emin olmak için toplu işleme (örn. `PT12H` 12 saat) yararlı olur.
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -175,43 +174,44 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 ### <a name="storage"></a>Depolama
 
-Toplu iş dökümü, ses okumak ve depoya yazmak için [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) destekler.
+Toplu iş dökümü, bir internet URI 'sinden ses okuyabilir ve [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)kullanarak ses okuyabilir veya yazma işlemini yazabilir.
 
 ## <a name="batch-transcription-result"></a>Toplu iş dökümü sonucu
 
-Her giriş sesi için, bir döküm sonuç dosyası oluşturuluyor. [Get döküm dosyalarını](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)çağırarak sonuç dosyalarının listesini alabilirsiniz. Bu yöntem, bu döküm için sonuç dosyalarının bir listesini döndürür. Belirli bir giriş dosyası için döküm dosyasını bulmak için, ve ile döndürülen tüm dosyaları filtreleyin `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` .
+Her ses girişi için, bir döküm sonuç dosyası oluşturulur.
+[Döküm dosyalarını Al](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles) işlemi, bu döküm için sonuç dosyalarının bir listesini döndürür. Belirli bir giriş dosyası için döküm dosyasını bulmak için, ve ile döndürülen tüm dosyaları filtreleyin `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` .
 
 Her döküm sonuç dosyası şu biçimdedir:
 
 ```json
 {
-  "source": "...",                                                 // the sas url of a given contentUrl or the path relative to the root of a given container
-  "timestamp": "2020-06-16T09:30:21Z",                             // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
-  "durationInTicks": 41200000,                                     // total audio duration in ticks (1 tick is 100 nanoseconds)
-  "duration": "PT4.12S",                                           // total audio duration, ISO 8601 encoded duration
-  "combinedRecognizedPhrases": [                                   // concatenated results for simple access in single string for each channel
+  "source": "...",                      // sas url of a given contentUrl or the path relative to the root of a given container
+  "timestamp": "2020-06-16T09:30:21Z",  // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
+  "durationInTicks": 41200000,          // total audio duration in ticks (1 tick is 100 nanoseconds)
+  "duration": "PT4.12S",                // total audio duration, ISO 8601 encoded duration
+  "combinedRecognizedPhrases": [        // concatenated results for simple access in single string for each channel
     {
-      "channel": 0,                                                // channel number of the concatenated results
+      "channel": 0,                     // channel number of the concatenated results
       "lexical": "hello world",
       "itn": "hello world",
       "maskedITN": "hello world",
       "display": "Hello world."
     }
   ],
-  "recognizedPhrases": [                                           // results for each phrase and each channel individually
+  "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",                              // recognition state, e.g. "Success", "Failure"
-      "channel": 0,                                                // channel number of the result
-      "offset": "PT0.07S",                                         // offset in audio of this phrase, ISO 8601 encoded duration 
-      "duration": "PT1.59S",                                       // audio duration of this phrase, ISO 8601 encoded duration
-      "offsetInTicks": 700000.0,                                   // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
-      "durationInTicks": 15900000.0,                               // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "channel": 0,                     // channel number of the result
+      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
+      "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
+      "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
+      "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
       
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
-          "confidence": 0.898652852,                               // confidence value for the recognition of the whole phrase
-          "speaker": 1,                                            // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
+          "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
+          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",
@@ -247,7 +247,7 @@ Sonuç aşağıdaki formları içerir:
 
 :::row:::
    :::column span="1":::
-      **Form**
+      **Alan**
    :::column-end:::
    :::column span="2":::
       **İçerik**
@@ -285,9 +285,9 @@ Sonuç aşağıdaki formları içerir:
 
 Kararlama, hoparlörleri ses parçasıyla ayırma işlemidir. Batch ardışık düzeni, erişimi destekler ve mono kanal kayıtlarında iki hoparlörleri tanıyor. Özellik, stereo kayıtlarında kullanılamaz.
 
-Diarleştirme etkin olan döküm çıkışı, her bir çıkış `Speaker` tümceciği için bir giriş içerir. Eğer Eğer bu özellik kullanılmazsa, özelliği `Speaker` JSON çıktısında yok. İki sesi destekliyoruz, böylece hoparlörler veya olarak tanımlanır `1` `2` .
+Diarleştirme etkin olan döküm çıkışı, her bir çıkış `Speaker` tümceciği için bir giriş içerir. Eğer Eğer bu özellik kullanılmazsa, `Speaker` ÖZELLIĞI JSON çıktısında yok. İki sesi destekliyoruz, böylece hoparlörler veya olarak tanımlanır `1` `2` .
 
-Daha fazla bilgi almak için, aşağıda gösterildiği gibi, HTTP isteğine ilgili parametresini eklemeniz yeterlidir.
+Daha fazla seçim yapmak için `diarizationEnabled` özelliği, `true` http isteğinin aşağıda gösterildiği gibi ayarla ' yı ekleyin.
 
  ```json
 {
@@ -315,7 +315,7 @@ Toplu iş dökümü hizmeti, çok sayıda gönderilen dökümü işleyebilir. Bi
 
 Tüm örnekler, alt dizinin içindeki [GitHub örnek deposunda](https://aka.ms/csspeech/samples) bulunur `samples/batch` .
 
-Lütfen örnek kodu Abonelik bilgileriniz, hizmet bölgesi, geçiş için ses dosyasına işaret eden SAS URI 'SI ve özel model kullanmak istiyorsanız model konumu ile güncelleştirin.
+Örnek kodu Abonelik bilgileriniz, hizmet bölgeniz, ses dosyasına işaret eden URI ve özel bir model kullanıyorsanız model konumu ile güncelleştirin.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
 
@@ -325,16 +325,14 @@ Lütfen örnek kodu Abonelik bilgileriniz, hizmet bölgesi, geçiş için ses do
 
 Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)inceleyin. Burada gösterilen tam örnek için alt dizinde [GitHub](https://aka.ms/csspeech/samples) ' a gidin `samples/batch` .
 
-Ses ve döküm durumunu alma hakkında zaman uyumsuz Kurulum ' a göz atın. Oluşturduğunuz istemci bir .NET HTTP istemcsahiptir. `PostTranscriptions`Ses dosyası ayrıntılarını ve durumları almaya yönelik bir yöntemi göndermek için bir yöntem vardır `GetTranscriptions` . `PostTranscriptions` bir tanıtıcı döndürür ve bunu, döküm `GetTranscriptions` durumunu almak için bir tanıtıcı oluşturmak üzere kullanır.
+Bu örnek, ses göndermek ve döküm durumunu almak için zaman uyumsuz bir kurulum kullanır.
+`PostTranscriptions`Yöntemi, ses dosyası ayrıntılarını gönderir ve `GetTranscriptions` yöntemi durumları alır.
+`PostTranscriptions` bir tanıtıcı döndürür ve bunu, döküm `GetTranscriptions` durumunu almak için bir tanıtıcı oluşturmak üzere kullanır.
 
-Geçerli örnek kod özel bir model belirtmiyor. Hizmet, dosya veya dosyaları çözümlemek için temel modeli kullanır. Modeli belirtmek için, özel model için model başvurusuyla aynı yönteme geçiş yapabilirsiniz.
+Bu örnek kod özel bir model belirtmez. Hizmet, dosya veya dosyaları çözümlemek için temel modeli kullanır. Modeli belirtmek için, özel model için model başvurusuyla aynı yönteme geçiş yapabilirsiniz.
 
 > [!NOTE]
 > Taban çizgisi dökümü için, taban çizgisi modelinin KIMLIĞINI bildirmeniz gerekmez.
-
-## <a name="download-the-sample"></a>Örneği indirme
-
-Örneği `samples/batch` [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)dizinde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

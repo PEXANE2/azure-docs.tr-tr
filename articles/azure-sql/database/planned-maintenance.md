@@ -1,5 +1,5 @@
 ---
-title: Azure bakım olaylarını planlama
+title: Azure bakım olaylarını planlayın
 description: Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde planlı bakım olaylarına hazırlanma hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-db-mi
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 5bdc3eb8c118c19f90ce1fd92ac5ee156719dacd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f0bda1f4b9894b1ea5a68f44a728f715676d500e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987233"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661155"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde Azure bakım olaylarını planlayın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tam
 
 Bir bulut veritabanı hizmetine bağlanan tüm istemci üretim uygulamaları sağlam bir bağlantı [yeniden deneme mantığı](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)uygulamalıdır. Bu durum, bu durumların azaltılmasına yardımcı olur ve genellikle hataları son kullanıcıya saydam hale getirir.
 
-## <a name="frequency"></a>Sıklık
+## <a name="frequency"></a>Frequency
 
 Ortalama olarak, 1,7 planlı bakım olayları her ay oluşur.
 

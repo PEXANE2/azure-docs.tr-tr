@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080635"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660605"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: Node.js ve Azure/Service-Bus paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanarak bir Service Bus aboneliğinden ileti almak için Node.js bir program yazmayı öğreneceksiniz [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
@@ -22,7 +22,7 @@ Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanar
 - Birlikte çalışmak için bir konu ve aboneliğiniz yoksa, bunları oluşturmak için [Service Bus konu ve abonelik oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-topics-subscriptions-portal.md) adımlarını izleyin. Service Bus örneğiniz için bağlantı dizesini ve oluşturduğunuz konunun ve aboneliğin adlarını göz önünde bulabilirsiniz. Bu değerleri örneklerde kullanacağız.
 
 > [!NOTE]
-> - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node.js uygulamasının nasıl oluşturulacağı hakkında yönergeler için, bkz. [Azure Web sitesinde bir Node.js uygulaması oluşturma ve dağıtma](../app-service/quickstart-nodejs.md)veya [Windows PowerShell kullanarak bulut hizmetiNode.js](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node.js uygulamasının nasıl oluşturulacağı hakkında yönergeler için, bkz. [Azure Web sitesinde bir Node.js uygulaması oluşturma ve dağıtma](../app-service/quickstart-nodejs.md)veya [ Windows PowerShell kullanarak bulut hizmetiNode.js](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 > - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paket henüz topcıs ve abonelik oluşturmayı desteklemiyor. [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)Program aracılığıyla onları oluşturmak istiyorsanız lütfen paketi kullanın.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Paketi yüklemek için Düğüm Paket Yöneticisi’ni (NPM) kullanma
@@ -86,7 +86,7 @@ Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messagin
 Service Bus abonelikle etkileşim kurmak, [Servicebusclient](/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu kullanarak [subscriptionclient](/javascript/api/@azure/service-bus/subscriptionclient) sınıfının örneğini oluşturmaya başlar. Abonelik istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) ya da [registermessagehandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
-2. Adlı bir dosya oluşturun `recieve.js` ve içine aşağıdaki kodu yapıştırın. Bu kod, aboneliğinizden 10 ileti almaya çalışır. Aldığınız gerçek sayı, abonelik ve ağ gecikmesi içindeki ileti sayısına bağlıdır.
+2. Adlı bir dosya oluşturun `receive.js` ve içine aşağıdaki kodu yapıştırın. Bu kod, aboneliğinizden 10 ileti almaya çalışır. Aldığınız gerçek sayı, abonelik ve ağ gecikmesi içindeki ileti sayısına bağlıdır.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -117,7 +117,7 @@ Service Bus abonelikle etkileşim kurmak, [Servicebusclient](/javascript/api/@az
     });
     ```
 3. Yukarıdaki koda konu ve aboneliğinizin bağlantı dizesini ve adlarını girin.
-4. Sonra `node receiveMessages.js` bu dosyayı yürütmek için komut isteminde komutunu çalıştırın.
+4. Sonra `node receive.js` bu dosyayı yürütmek için komut isteminde komutunu çalıştırın.
 
 Tebrikler! Service Bus aboneliğinden yalnızca ileti aldınız.
 

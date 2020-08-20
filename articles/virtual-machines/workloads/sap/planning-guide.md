@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2bf360d9b09be4db84d0ff00b1a777fe8b188ea
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652211"
+ms.locfileid: "88661342"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -1803,7 +1803,7 @@ Sanal makinelerinizin kullanılabilirliğini etkileyebilecek iki tür Azure plat
 * Planlı bakım olayları, Microsoft tarafından, sanal makinelerinizin üzerinde çalıştığı platform altyapısının genel güvenilirlik, performans ve güvenliğini geliştirmek amacıyla temel alınan Azure platformunda yapılan düzenli güncelleştirmelerdir.
 * Plansız bakım olayları, sanal makinenizin altında yatan donanım ya da fiziksel altyapı bir şekilde arıza yaptığında gerçekleştirilir. Buna yerel ağ hataları, yerel disk hataları veya raf düzeyinde diğer hatalar dahildir. Böyle bir hata algılandığında, Azure platformu sanal makinenizi sanal makinenizi barındıran uygun olmayan fiziksel sunucudan sağlıklı fiziksel bir sunucuya otomatik olarak geçirilir. Bu tür olaylar nadirdir, ancak sanal makinenizin yeniden başlatılmasına da neden olabilir.
 
-Bu belgelerde daha fazla ayrıntı bulabilirsiniz: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+Daha fazla ayrıntı için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliği](../../windows/manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliği](../../linux/manage-availability.md).
 
 #### <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -1811,7 +1811,7 @@ Microsoft Azure Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kul
 
 Azure depolama, verilerin üç görüntüsünü varsayılan olarak tutarken, birden çok Azure diski arasında RAID5 veya RAID1 gerekli değildir.
 
-Bu makalede daha fazla ayrıntı bulabilirsiniz: <https://azure.microsoft.com/documentation/articles/storage-redundancy/>
+Daha ayrıntılı bilgi için bkz. [Azure depolama artıklığı](../../../storage/common/storage-redundancy.md).
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>SAP uygulamalarında daha yüksek kullanılabilirlik elde etmek için Azure altyapı VM yeniden başlatması kullanma
 

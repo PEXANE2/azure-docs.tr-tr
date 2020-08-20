@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/18/2020
+ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386189"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661206"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
 
-Şirket [ *içi veri ağ geçidini* yerel bir bilgisayara yükledikten](../logic-apps/logic-apps-gateway-install.md) sonra ve Şirket içindeki veri kaynaklarına mantıksal uygulamalarınızdan erişebilmeniz için, Azure 'da ağ geçidi yüklemeniz için bir ağ geçidi kaynağı oluşturmanız gerekir. Daha sonra, Azure Logic Apps ' de bulunan [Şirket içi bağlayıcılar](../connectors/apis-list.md#on-premises-connectors) için kullanmak istediğiniz Tetikleyiciler ve Eylemler ' de bu ağ geçidi kaynağı ' nı seçebilirsiniz.
+Şirket [ *içi veri ağ geçidini* yerel bir bilgisayara yükledikten](../logic-apps/logic-apps-gateway-install.md) sonra ve Şirket içindeki veri kaynaklarına mantıksal uygulamalarınızdan erişebilmeniz için, Azure 'da ağ geçidi yüklemeniz için bir ağ geçidi kaynağı oluşturmanız gerekir. Daha sonra, Azure Logic Apps ' de bulunan [Şirket içi bağlayıcılar](../connectors/apis-list.md#on-premises-connectors) için kullanmak istediğiniz Tetikleyiciler ve Eylemler ' de bu ağ geçidi kaynağı ' nı seçebilirsiniz. Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](/data-integration/gateway/service-gateway-onprem#considerations)vardır.
 
 Bu makalede, [yerel bilgisayarınızda daha önce yüklenmiş bir ağ geçidi](../logic-apps/logic-apps-gateway-install.md)için Azure Gateway kaynağınızın nasıl oluşturulacağı gösterilmektedir. Ağ Geçidi hakkında daha fazla bilgi için bkz. [ağ geçidinin nasıl çalıştığı](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -48,7 +48,7 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 * SQL Server
 * Teradata
 
-Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
+REST veya SOAP kullanarak, HTTP veya HTTPS üzerinden veri kaynaklarına bağlanan [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) da oluşturabilirsiniz. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -152,7 +152,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 
 1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
 
-   Örneğin:
+   Örnek:
 
    ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537454"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661189"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure veritabanı geçiş hizmeti örneği oluşturma
 
@@ -35,7 +35,7 @@ Azure veritabanı geçiş hizmeti ARM şablonu şunları gerektirir:
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json" highlight="33-75":::
+:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json":::
 
 Şablonda üç Azure kaynağı tanımlanmıştır: 
 
@@ -64,7 +64,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 
 
-3. **Gözden geçir ve oluştur**’u seçin. Azure veritabanı geçiş hizmeti örneği başarıyla dağıtıldıktan sonra bir bildirim alırsınız. 
+3. **Gözden geçir + oluştur**’u seçin. Azure veritabanı geçiş hizmeti örneği başarıyla dağıtıldıktan sonra bir bildirim alırsınız. 
 
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
@@ -109,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Azure veritabanı geçiş hizmeti 'ni dağıtmanın diğer yolları için bkz.: 
 - [Azure Portal](quickstart-create-data-migration-service-portal.md)

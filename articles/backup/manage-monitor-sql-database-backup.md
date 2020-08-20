@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını yönetme ve izleme
 description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritabanlarının nasıl yönetileceği ve izleneceği açıklanır.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537313"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659594"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme
 
@@ -117,24 +117,6 @@ Yalnızca kopya tam yedekleme için saklama süresini belirtmeniz gerektiğinde,
 
 Daha fazla bilgi için bkz. [SQL Server yedekleme türleri](backup-architecture.md#sql-server-backup-types).
 
-## <a name="unregister-a-sql-server-instance"></a>SQL Server örneğinin kaydını silme
-
-Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL Server örneğinin kaydını kaldırın:
-
-1. Kasa panosunda, **Yönet**altında, **Yedekleme altyapısı**' nı seçin.  
-
-   ![Yedekleme altyapısını seçin](./media/backup-azure-sql-database/backup-infrastructure-button.png)
-
-2. **Yönetim sunucuları**altında **korumalı sunucular**' ı seçin.
-
-   ![Korumalı sunucuları seçin](./media/backup-azure-sql-database/protected-servers.png)
-
-3. **Korumalı sunucular**' da, kaydı kaldırmak istediğiniz sunucuyu seçin. Kasayı silmek için tüm sunucuların kaydını kaldırmanız gerekir.
-
-4. Korumalı sunucuya sağ tıklayın ve **kayıt kaldır**' ı seçin.
-
-   ![Sil ' i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
-
 ## <a name="modify-policy"></a>İlkeyi Değiştir
 
 Yedekleme sıklığını veya bekletme aralığını değiştirmek için ilkeyi değiştirin.
@@ -160,11 +142,31 @@ Etkilenen tüm öğelerin ilke sürümünü tek tıklamayla çözebilirsiniz:
 
   ![Tutarsız ilkeyi çözme](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
 
+## <a name="unregister-a-sql-server-instance"></a>SQL Server örneğinin kaydını silme
+
+Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL Server örneğinin kaydını kaldırın:
+
+1. Kasa panosunda, **Yönet**altında, **Yedekleme altyapısı**' nı seçin.  
+
+   ![Yedekleme altyapısını seçin](./media/backup-azure-sql-database/backup-infrastructure-button.png)
+
+2. **Yönetim sunucuları**altında **korumalı sunucular**' ı seçin.
+
+   ![Korumalı sunucuları seçin](./media/backup-azure-sql-database/protected-servers.png)
+
+3. **Korumalı sunucular**' da, kaydı kaldırmak istediğiniz sunucuyu seçin. Kasayı silmek için tüm sunucuların kaydını kaldırmanız gerekir.
+
+4. Korumalı sunucuya sağ tıklayın ve **kayıt kaldır**' ı seçin.
+
+   ![Sil ' i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM uzantıyı yeniden Kaydet
 
-Bazen, VM 'deki iş yükü uzantısı bir neden veya diğer bir nedenden dolayı etkilenebilir. Bu gibi durumlarda, VM 'de tetiklenen tüm işlemler başarısız olur. Ardından, uzantıyı VM 'de yeniden kaydetmeniz gerekebilir. **Yeniden kaydetme** işlemi devam etmek için VM 'de iş yükü yedekleme uzantısını yeniden yükler.
+Bazen, VM 'deki iş yükü uzantısı bir veya başka bir nedenden dolayı etkilenebilir. Bu gibi durumlarda, VM 'de tetiklenen tüm işlemler başarısız olur. Ardından, uzantıyı VM 'de yeniden kaydetmeniz gerekebilir. **Yeniden kaydet** işlemi, devam etmek için VM 'de iş yükü yedekleme uzantısını yeniden yükler. Bu seçeneği, kurtarma hizmeti kasasında **Yedekleme altyapısı** altında bulabilirsiniz.
 
-Bu seçeneği dikkatli bir şekilde kullanın; zaten sağlıklı bir uzantıya sahip bir VM 'de tetiklendiğinde, bu işlem uzantının yeniden başlatılmasına neden olur. Bu, tüm sürmekte olan işlerin başarısız olmasına neden olabilir. Yeniden kaydetme işlemini tetiklemeden önce bir veya daha fazla [belirtiyle](backup-sql-server-azure-troubleshoot.md#re-registration-failures) ilgili bir veya daha fazla belirti olup olmadığını denetleyin.
+![Yedekleme altyapısı altındaki korumalı sunucular](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
+
+Bu seçeneği dikkatli kullanın. Zaten sağlıklı bir uzantıya sahip bir VM 'de tetiklendiğinde, bu işlem uzantının yeniden başlatılmasına neden olur. Bu, tüm sürmekte olan işlerin başarısız olmasına neden olabilir. Yeniden kaydetme işlemini tetiklemeden önce bir veya daha fazla [belirtiye](backup-sql-server-azure-troubleshoot.md#re-registration-failures) göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

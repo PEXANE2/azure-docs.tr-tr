@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/20/2020
+ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211511"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660978"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -147,9 +147,18 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
    using Azure.Search.Documents.Models;
    ```
 
-1. [Searchcredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) 'ı [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential)ile değiştirin.
+1. İstemci kimlik doğrulama kodunu gözden geçirin. Önceki sürümlerde, API anahtarını (örneğin, [SearchServiceClient. Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) özelliği) ayarlamak için istemci nesnesindeki özellikleri kullanırsınız. Geçerli sürümde, anahtarı kimlik bilgileri olarak geçirmek için [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) sınıfını kullanın, böylece gerekırse, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilirsiniz.
 
-1. Dizin Oluşturucu ile ilgili nesneler için istemci başvurularını güncelleştirin. Dizin oluşturucular, veri kaynakları veya becerileri kullanıyorsanız, istemci başvurularını [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)olarak değiştirin. Bu istemci, sürüm 11 ' de yenidir ve öncül değildir.
+   İstemci özellikleri yalnızca `Endpoint` , `ServiceName` , ve `IndexName` (uygun olduğunda) için kolaylaştırılmıştır. Aşağıdaki örnek, anahtar değerini okumak için uç noktayı ve [ortam](https://docs.microsoft.com//dotnet/api/system.environment) sınıfını sağlamak Için sistem [URI](https://docs.microsoft.com/dotnet/api/system.uri) sınıfını kullanır:
+
+   ```csharp
+   Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+   AzureKeyCredential credential = new AzureKeyCredential(
+      Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+   SearchIndexClient indexClient = new SearchIndexClient(endpoint, credential);
+   ```
+
+1. Dizin oluşturucudan ilgili nesneler için yeni istemci başvuruları ekleyin. Dizin oluşturucular, veri kaynakları veya becerileri kullanıyorsanız, istemci başvurularını [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)olarak değiştirin. Bu istemci, sürüm 11 ' de yenidir ve öncül değildir.
 
 1. Sorgular ve veri içeri aktarma için istemci başvurularını güncelleştirin. [Searchındexclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) örnekleri [searchclient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)olarak değiştirilmelidir. Ad karışıklığı önlemek için, bir sonraki adıma geçmeden önce tüm örnekleri yakalediğinizden emin olun.
 

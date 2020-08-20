@@ -3,12 +3,12 @@ title: V3 RTM 'nin yedekleyebilecekleri Azure Backup Sunucusu
 description: Bu makalede, v3 RTM korumalarına Azure Backup tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir koruma matrisi sunulmaktadır.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611985"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661291"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Sunucusu v3 RTM koruma matrisi
 
@@ -32,9 +32,9 @@ Aşağıdaki matris, Azure Backup Sunucusu v3 RTM ve önceki sürümleriyle nele
 |Sunucular (32 bit ve 64 bit)|Windows Server 2012/2012 SP1 – Datacenter ve Standard|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma<br /><br />Windows Server 2012 yinelenenleri kaldırılmış birimleri korumak için Azure Backup Sunucusu en az Windows Server 2012 R2 üzerinde çalışıyor olmalıdır.|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2012/2012 SP1 – Datacenter ve Standard|Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya<br /><br />Windows Server 2012 yinelenenleri kaldırılmış birimleri korumak için Azure Backup Sunucusu en az Windows Server 2012 R2 üzerinde çalışıyor olmalıdır.|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2012/2012 SP1 – Datacenter ve Standard|VMware 'de Windows sanal makinesi (VMware 'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma<br /><br />Windows Server 2012 yinelenenleri kaldırılmış birimleri korumak için Azure Backup Sunucusu en az Windows Server 2012 R2 üzerinde çalışıyor olmalıdır.|
-|Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırmanız ve [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) yüklemeniz gerekir|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
-|Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırmanız ve [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) yüklemeniz gerekir|Birim, paylaşım, klasör, dosya|
-|Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|VMware 'de Windows sanal makinesi (VMWare 'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırmanız ve [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) yüklemeniz gerekir|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
+|Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırıyor ve [Windows Management Framework 'ü](https://www.microsoft.com/download/details.aspx?id=54616) yüklemeniz gerekiyor|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
+|Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırıyor ve [Windows Management Framework 'ü](https://www.microsoft.com/download/details.aspx?id=54616) yüklemeniz gerekiyor|Birim, paylaşım, klasör, dosya|
+|Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|VMware 'de Windows sanal makinesi (VMWare 'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırıyor ve [Windows Management Framework 'ü](https://www.microsoft.com/download/details.aspx?id=54616) yüklemeniz gerekiyor|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|Desteklenmez|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|VMware 'de Windows sanal makinesi (VMware 'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Storage Server 2008|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|

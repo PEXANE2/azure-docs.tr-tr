@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/16/2020
+ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258452"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661325"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
 
@@ -44,8 +44,8 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. ClassicStorage/storageAccounts/queueServices | Evet | Hayır | |
 |Microsoft. ClassicStorage/storageAccounts/tableServices | Evet | Hayır | |
 |Microsoft. Biliveservices/hesapları | Evet | Hayır | [Bilişsel hizmetler](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Evet | Evet | [Sanal Makineler](./metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Evet | Hayır |[Sanal Makine Ölçek Kümeleri](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.Compute/virtualMachines | Evet | Evet<sup>1</sup> | [Sanal makineler](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachineScaleSets | Evet | Hayır |[Sanal makine ölçek kümeleri](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. Containerınstance/containerGroups | Evet| Hayır | [Kapsayıcı grupları](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft. ContainerRegistry/kayıt defterleri | Hayır | Hayır | [Kapsayıcı kayıt defterleri](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft. ContainerService/Managedkümeler | Evet | Hayır | [Yönetilen Kümeler](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
@@ -83,7 +83,7 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. Network/Applicationgateway 'ler | Evet | Hayır | [Uygulama ağ geçitleri](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Evet | Hayır | [Güvenlik duvarları](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Hayır | Hayır | [DNS Bölgeleri](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/Expressroutedevreleri | Yok | Hayır |[Express Route Devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/Expressroutedevreleri | N/A | Hayır |[Express Route Devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (yalnızca standart SKU 'Lar için)| Evet| Hayır | [Yük dengeleyiciler](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/Natgateway 'ler| Hayır | Hayır | |
 |Microsoft. Network/privateEndpoints| Hayır | Hayır | |
@@ -100,7 +100,7 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. SQL/ManagedInstances | Hayır | Evet | [SQL Yönetilen Örnekleri](./metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft. SQL/Servers/veritabanları | Hayır | Evet | [SQL Veritabanları](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft. SQL/Servers/Elaun havuzları | Hayır | Evet | [SQL elastik havuzları](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft. Storage/storageAccounts |Evet | Hayır | [Depolama Hesapları](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft. Storage/storageAccounts |Evet | Hayır | [Depolama hesapları](./metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft. Storage/storageAccounts/Services | Evet| Hayır | [BLOB Hizmetleri](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Dosya Hizmetleri](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [kuyruk Hizmetleri](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) ve [Tablo Hizmetleri](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft. StorageCache/önbellekler | Evet | Hayır | |
 |Microsoft. Storagessync/storageSyncServices | Evet | Hayır | [Depolama Eşitleme Hizmetleri](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
@@ -111,6 +111,8 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. Web/sunucugrupları | Evet | Hayır | [App Service planları](./metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft. Web/siteler | Evet | Hayır | [Uygulama hizmetleri](./metrics-supported.md#microsoftwebsites-excluding-functions) ve [işlevleri](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft. Web/Sites/Yuvaları | Evet | Hayır | [App Service Yuvaları](./metrics-supported.md#microsoftwebsitesslots)|
+
+<sup>1</sup> yalnızca platform ölçümleri için desteklenir (özel ölçümler değil)
 
 ## <a name="payload-schema"></a>Yük şeması
 

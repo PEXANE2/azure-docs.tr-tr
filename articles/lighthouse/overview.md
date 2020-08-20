@@ -1,18 +1,18 @@
 ---
 title: Azure Lighthouse nedir?
 description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
-ms.date: 08/12/2020
+ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: f65411c03725058e8aa6491245ffd94987efa6c9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163229"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660742"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
-Azure Athouse, daha yüksek otomasyon, ölçek ve gelişmiş idare özelliklerine sahip birden fazla kiracı genelinde Azure kaynaklarını görüntülemek ve yönetmek için tek bir denetim düzlemi sunar. Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Bu teklif, birden fazla kiracıda kaynakları yöneten kurumsal BT kuruluşları için de avantaj sağlayabilir.
+Azure Athouse, platformlar ve kiracılar arasında daha yüksek otomasyon, ölçeklenebilirlik ve geliştirilmiş idare sağlayan çoklu ve çok kiracılı yönetimi sağlar. Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Bu teklif, birden fazla kiracıda kaynakları yöneten kurumsal BT kuruluşları için de avantaj sağlayabilir.
 
 ![Azure açık kullanım için genel bakış Diyagramı](media/azure-lighthouse-overview.jpg)
 

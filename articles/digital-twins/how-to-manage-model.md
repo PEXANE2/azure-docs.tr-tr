@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 919db9338917a9c2bedd7806eb251a2e5ef6187b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510003"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661563"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -69,7 +69,7 @@ Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın ken
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="manage-models-with-apis"></a>Modelleri API 'lerle yönetin.
+## <a name="manage-models-with-apis"></a>Modelleri API 'lerle yönetme
 
 Aşağıdaki bölümlerde, [Azure Digital TWINS API 'leri ve SDK 'ları](how-to-use-apis-sdks.md)kullanılarak farklı model yönetimi işlemlerinin nasıl tamamlanacağı gösterilmektedir.
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
 
 ```json
 [

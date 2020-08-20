@@ -3,15 +3,15 @@ title: Windows Sanal Masaüstü nedir? - Azure
 description: Windows sanal masaüstü 'ne genel bakış.
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002367"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661121"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
@@ -46,7 +46,7 @@ Windows sanal masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsi
 
 Sanal masaüstlerini dağıtabilir ve yönetebilirsiniz:
 
-* Konak havuzlarını yapılandırmak, uygulama grupları oluşturmak, kullanıcı atamak ve kaynakları yayımlamak için Windows sanal masaüstü PowerShell ve REST arabirimlerini kullanın.
+* Konak havuzlarını yapılandırmak, uygulama grupları oluşturmak, kullanıcı atamak ve kaynakları yayımlamak için Azure portal, Windows sanal masaüstü PowerShell ve REST arabirimlerini kullanın.
 * Tek bir konak havuzundan tam masaüstü veya ayrı ayrı uzak uygulamalar yayımlayın, farklı Kullanıcı kümeleri için ayrı ayrı uygulama grupları oluşturun, hatta görüntü sayısını azaltmak için kullanıcıları birden çok uygulama grubuna atayın.
 * Ortamınızı yönetirken, rol atamak ve çeşitli yapılandırma veya kullanıcı hatalarını anlamak için tanılama toplamak üzere yerleşik olarak atanmış erişimi kullanın.
 * Hataları gidermek için yeni tanılama hizmetini kullanın.
@@ -61,7 +61,7 @@ Ayrıca, sanal masaüstlerine Kullanıcı atayabilir ve bunları bağlayabilirsi
 
 Windows sanal masaüstü 'Nü kurmak ve kullanıcılarınızı Windows Masaüstü ve uygulamalarına başarıyla bağlamak için gereken birkaç nokta vardır.
 
-Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle, dağıtmayı planladığınız masaüstü ve uygulamalara bağlı olarak kullanıcılarınız için [uygun lisanslara](https://azure.microsoft.com/pricing/details/virtual-desktop/) sahip olduğunuzdan emin olun:
+Aşağıdaki işletim sistemlerini destekliyoruz, bu nedenle dağıtmayı planladığınız masaüstü ve uygulamalara bağlı olarak kullanıcılarınız için [uygun lisanslara](https://azure.microsoft.com/pricing/details/virtual-desktop/) sahip olduğunuzdan emin olun:
 
 |İşletim Sistemi|Gerekli lisans|
 |---|---|
@@ -71,11 +71,17 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
 
-* Bir [Azure Active Directory](/azure/active-directory/)
-* Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, aşağıdakilerden biriyle yapılandırabilirsiniz:
-  * Azure AD Connect (Hibrit kuruluşlar için)
-  * Azure AD Domain Services (karma veya bulut kurumları için)
-* Windows Server 'a bağlı olan veya içeren bir sanal ağ içeren bir Azure aboneliği Active Directory
+* Bir [Azure Active Directory](/azure/active-directory/).
+* Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, Azure AD Connect (Hibrit kuruluşlar için) veya Azure AD Domain Services (karma veya bulut kurumları için) kullanarak yapılandırabilirsiniz.
+  * Azure Active Directory ile eşitlenmiş bir Windows Server AD. Kullanıcı Windows Server AD 'den kaynaklıdır ve Windows sanal masaüstü VM 'si Windows Server AD etki alanına katılır.
+  * Azure Active Directory ile eşitlenmiş bir Windows Server AD. Kullanıcı Windows Server AD 'den kaynaklıdır ve Windows sanal masaüstü VM 'si Azure AD Domain Services etki alanına katılır.
+  * Azure AD Domain Services etki alanı. Kullanıcının kaynağı Azure Active Directory ve Windows sanal masaüstü VM 'si Azure AD Domain Services etki alanına katılır.
+* Windows Server Active Directory veya Azure AD DS örneğine bağlı olan veya içeren bir sanal ağ içeren aynı Azure AD kiracısının üst öğesi olan bir Azure aboneliği.
+
+Windows sanal masaüstüne bağlanmak için Kullanıcı gereksinimleri:
+
+* Kullanıcının kaynağı Azure AD 'ye bağlı Active Directory aynı olmalıdır. Windows sanal masaüstü B2B veya MSA hesaplarını desteklemez.
+* Windows sanal masaüstüne abone olmak için kullandığınız UPN, sanal makinenin katıldığı Active Directory etki alanında bulunmalıdır.
 
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
 
@@ -91,7 +97,7 @@ Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir
 
 En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
-* İstemci ağından, ana bilgisayar havuzlarının dağıtıldığı Azure bölgesine gidiş dönüş (RTT) gecikmesi 150 MS 'den az olmalıdır.
+* İstemci ağından, ana bilgisayar havuzlarının dağıtıldığı Azure bölgesine gidiş dönüş (RTT) gecikmesi 150 MS 'den az olmalıdır. Bağlantı durumunu ve önerilen Azure bölgenizi görüntülemek için [deneyim Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment) ' nı kullanın.
 * Masaüstleri ve uygulamalar barındıran VM 'Ler Yönetim hizmetine bağlandığında ağ trafiği ülke/bölge kenarlıklarının dışına akabilir.
 * Ağ performansını iyileştirmek için, oturum ana bilgisayarının VM 'lerinin yönetim hizmeti ile aynı Azure bölgesinde birlikte bulunmasını öneririz.
 
@@ -111,7 +117,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 > [!IMPORTANT]
 > Windows sanal masaüstü Şu anda Windows Mağazası 'ndan uzak masaüstü istemcisini desteklememektedir. Bu istemciye yönelik destek gelecekteki bir sürüme eklenecektir.
 
-Uzak Istemcileri kullanmak için engellemesini kaldırmanız gereken URL 'Ler hakkında daha fazla bilgi edinmek için bkz. [GÜVENLI URL listesi](safe-url-list.md).
+İstemcileri kullanmak için engellemesini kaldırmanız gereken URL 'Ler hakkında daha fazla bilgi edinmek için bkz. [GÜVENLI URL listesi](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Desteklenen sanal makine işletim sistemi görüntüleri
 
@@ -130,14 +136,14 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|
-|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|
-|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
-|Windows Server 2019|Yes|Yes|Hayır|Hayır|
-|Windows Server 2016|Evet|Yes|Yes|Yes|
-|Windows Server 2012 R2|Evet|Yes|Hayır|Hayır|
+|Windows 10 Enterprise (çoklu oturum), sürüm 2004|Evet|Evet|Evet|Evet|
+|Windows 10 Enterprise (çoklu oturum), sürüm 1909|Evet|Evet|Evet|Evet|
+|Windows 10 Enterprise (çoklu oturum), sürüm 1903|Evet|Evet|Hayır|Hayır|
+|Windows 10 Enterprise (çoklu oturum), sürüm 1809|Evet|Evet|Hayır|Hayır|
+|Windows 7 Enterprise|Evet|Evet|Hayır|Hayır|
+|Windows Server 2019|Evet|Evet|Hayır|Hayır|
+|Windows Server 2016|Evet|Evet|Evet|Evet|
+|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

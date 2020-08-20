@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590175"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661495"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -69,9 +69,9 @@ Bu sorunu çözmek için, uygulamalarınızın Azure. Identity sürüm **1.1.1**
 
 ### <a name="possible-causes"></a>Olası nedenler
 
-Bu, Azure dijital TWINS ile Azure. Identity kitaplığı 'nın en son sürümü olan **1.2.0**sürümü arasında bir uyumsuzluk olur. 
+Bu, Azure. Identity Library 'nin (sürüm **1.2.0**) en son sürümündeki bir açık sorun ile Ilgilidir: [*ınteractivebrowsercredential kullanılırken kimlik doğrulaması başarısız olur*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
 
-Uygulamanızda sürüm **1.2.0** kullanıyorsanız veya bir sürüm belirtmeden kitaplığı projenize eklerseniz (aynı zamanda bu en son sürümü için varsayılan olarak) Bu sorunu görürsünüz.
+Bu sorunu, Azure dijital TWINS uygulamanızda sürüm **1.2.0** kullanıyorsanız veya bir sürüm belirtmeden kitaplığı projenize eklerseniz (Bu en son sürümü varsayılan olarak da budur) görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

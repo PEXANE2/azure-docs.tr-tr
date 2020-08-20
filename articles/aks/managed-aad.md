@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799866"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661070"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -20,7 +20,7 @@ AKS tarafından yönetilen Azure AD tümleştirmesi, kullanıcıların daha önc
 
 Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (RBAC) bir kullanıcının kimliğine veya dizin grubu üyeliğine göre yapılandırabilir. Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][open-id-connect].
 
-[Azure Active Directory tümleştirme kavramları BELGELERINDEKI](concepts-identity.md#azure-active-directory-integration)AAD tümleştirme akışı hakkında daha fazla bilgi edinin.
+[Azure Active Directory tümleştirme kavramları belgelerindeki](concepts-identity.md#azure-active-directory-integration)Azure AD tümleştirme akışı hakkında daha fazla bilgi edinin.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
@@ -32,10 +32,10 @@ AKS tarafından yönetilen Azure Active Directory tümleştirme, [aks 'in destek
 ## <a name="limitations"></a>Sınırlamalar 
 
 * AKS tarafından yönetilen Azure AD tümleştirmesi devre dışı bırakılamaz
-* RBAC özellikli olmayan kümeler, AKS tarafından yönetilen AAD tümleştirmesi için desteklenmez
-* AKS tarafından yönetilen AAD tümleştirmesiyle ilişkili Azure AD kiracısı 'nin değiştirilmesi desteklenmiyor
+* AKS tarafından yönetilen Azue AD tümleştirmesi için RBAC özellikli olmayan kümeler desteklenmez
+* AKS tarafından yönetilen Azure AD tümleştirmesi ile ilişkili Azure AD kiracısı 'nin değiştirilmesi desteklenmiyor
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure CLı sürüm 2.9.0 veya üzeri
 * Minimum [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) sürümü ile kubectl
@@ -139,6 +139,31 @@ Bu adımları uygulamak için [Azure Kubernetes hizmet kümesi Yöneticisi](../r
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
 
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Mevcut kümenizde AKS tarafından yönetilen Azure AD tümleştirmesini etkinleştirme
+
+AKS tarafından yönetilen Azure AD tümleştirmesini, mevcut RBAC etkin kümenizde etkinleştirebilirsiniz. Kümenizde erişim sağlamak için yönetici grubunuzu ayarlamayı doğrulayın.
+
+```azurecli-interactive
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
+```
+
+AKS tarafından yönetilen bir Azure AD kümesinin başarılı bir şekilde etkinleştirilmesi yanıt gövdesinde aşağıdaki bölüme sahiptir
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+[Buradaki][access-cluster]adımları izleyerek kümenize erişmek için Kullanıcı kimlik bilgilerini yeniden indirin.
+
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>AKS tarafından yönetilen Azure AD tümleştirmesine yükseltme
 
 Kümeniz eski Azure AD tümleştirmesini kullanıyorsa, AKS tarafından yönetilen Azure AD tümleştirmesine yükseltebilirsiniz.
@@ -174,7 +199,7 @@ Kümeye erişmek istiyorsanız [buradaki][access-cluster]adımları izleyin.
 * [Kubernetes RBAC Ile Azure AD tümleştirmesi][azure-ad-rbac]hakkında bilgi edinin.
 * Kubectl 'de kullanılamayan Azure kimlik doğrulaması özelliklerine erişmek için [kubelogin](https://github.com/Azure/kubelogin) kullanın.
 * [Aks ve Kubernetes kimlik kavramları][aks-concepts-identity]hakkında daha fazla bilgi edinin.
-* AKS tarafından yönetilen Azure AD etkinleştirilmiş kümeler oluşturmak için [Azure Resource Manager (ARM) şablonları][aks-arm-template] kullanın.
+* AKS tarafından yönetilen Azure AD etkinleştirilmiş kümeler oluşturmak için [Azure Resource Manager (ARM) şablonları ][aks-arm-template] kullanın.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

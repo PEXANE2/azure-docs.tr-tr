@@ -2,13 +2,13 @@
 title: Ortak kayıt defteri erişimini yapılandırma
 description: Seçilen ortak IP adreslerinden veya adres aralıklarından bir Azure Container Registry 'ye erişimi etkinleştirmek için IP kurallarını yapılandırın.
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523834"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660934"
 ---
 # <a name="configure-public-ip-network-rules"></a>Genel IP ağ kurallarını yapılandırma
 
@@ -61,12 +61,12 @@ az acr network-rule add \
 
 İsteğe bağlı olarak, kayıt defterindeki genel uç noktasını devre dışı bırakın. Genel uç noktayı devre dışı bırakmak tüm güvenlik duvarı yapılandırmalarının üzerine yazar. Örneğin, [özel bağlantı](container-registry-private-link.md)kullanarak bir sanal ağda güvenli hale getirilmiş bir kayıt defterine genel erişimi devre dışı bırakmak isteyebilirsiniz.
 
+> [!NOTE]
+> Kayıt defteri bir [hizmet uç noktası](container-registry-vnet.md)olan bir sanal ağda ayarlandıysa, kayıt defterinin ortak uç noktasına erişiminin devre dışı bırakılması, sanal ağ içindeki kayıt defterine erişimi de devre dışı bırakır.
+
 ### <a name="disable-public-access---cli"></a>Genel erişimi devre dışı bırak-CLı
 
-Azure CLı kullanarak genel erişimi devre dışı bırakmak için [az ACR Update][az-acr-update] çalıştırın ve `--public-network-enabled` olarak ayarlayın `false` . 
-
-> [!NOTE]
-> `public-network-enabled`Bağımsız değişken Azure CLI 2.6.0 veya üstünü gerektirir. 
+Azure CLı kullanarak genel erişimi devre dışı bırakmak için [az ACR Update][az-acr-update] çalıştırın ve `--public-network-enabled` olarak ayarlayın `false` . `public-network-enabled`Bağımsız değişken Azure CLI 2.6.0 veya üstünü gerektirir. 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled false
@@ -75,7 +75,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Ardından **Kaydet**’i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**'i seçin.
 
 ![Genel erişimi devre dışı bırak][acr-access-disabled]
 
@@ -98,7 +98,7 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Ortak erişimi geri yükleme-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Ardından **Kaydet**’i seçin.
+1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Sonra **Kaydet**'i seçin.
 
 ![Tüm ağlardan ortak erişim][acr-access-all-networks]
 
