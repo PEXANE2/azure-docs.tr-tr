@@ -4,21 +4,21 @@ titleSuffix: Azure Media Services
 description: Varlıkların ne olduğunu ve Azure Media Services tarafından nasıl kullanıldığını öğrenin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6c9f69a39f725b082771b66959a219581c281ed5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27082499263af6eedd7d9d628b7b1746a9177672
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043513"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606845"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure Media Services v3 içindeki varlıklar
 
@@ -42,7 +42,7 @@ Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksiniml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Media Services varlıkları yönetme](manage-asset-concept.md)
+[Media Services genel bakış](media-services-overview.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323273"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607425"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Ticari Market listelerinizi Azure Active Directory ile tümleştirin
 
@@ -20,7 +20,7 @@ ms.locfileid: "87323273"
 
 ## <a name="azure-ad-benefits"></a>Azure AD avantajları
 
-Microsoft AppSource ve Azure Market müşterileri, storefront listeleme kataloglarında arama yapmak için ürün içi deneyimler kullanır. Bu eylemler, müşterilerin üründe oturum açmasını gerektirir. Azure AD tümleştirmesi aşağıdaki avantajları sağlar:
+Microsoft AppSource ve Azure Market müşterileri çevrimiçi mağaza listesi kataloglarında arama yapmak için ürün içi deneyimler kullanır. Bu eylemler, müşterilerin üründe oturum açmasını gerektirir. Azure AD tümleştirmesi aşağıdaki avantajları sağlar:
 
 - Daha hızlı katılım ve iyileştirilmiş müşteri deneyimi
 - Milyonlarca kurumsal Kullanıcı için çoklu oturum açma (SSO)
@@ -35,10 +35,10 @@ Microsoft AppSource ve Azure Market müşterileri, storefront listeleme katalogl
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | Sanal Makine | Yok | Hayır | Hayır | Hayır |
 | Azure uygulamaları (çözüm şablonu)  | Yok | Yok | Yok | Yok |
-| Yönetilen uygulamalar  | Yok | Yok | Yok | Hayır |
-| SaaS  | Hayır | Evet | Yes | Yes |
-| Kapsayıcılar  | Yok | Yok | Yok | Hayır |
-| Danışmanlık Hizmetleri  | Hayır | Yok | Yok | Yok |
+| Yönetilen uygulamalar  | Yok | Yok | Yok | No |
+| SaaS  | Hayır | Yes | Yes | Yes |
+| Kapsayıcılar  | Yok | Yok | Yok | No |
+| Danışmanlık Hizmetleri  | No | Yok | Yok | Yok |
 
 SaaS teknik gereksinimleri hakkında daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](./azure-ad-saas.md).
 
@@ -56,8 +56,8 @@ Kimlik doğrulama sırasında Azure AD, uygulamanıza veya teklifinizi bir belir
 
 Uygulamanızda tek tıklamayla kimlik doğrulamayı etkinleştirmek için Azure AD kullandığınızda şunları yapabilirsiniz:
 
-- Market 'ten deneme listeinize müşteri deneyimini kolaylaştırın.
-- Kullanıcı Market 'ten etki alanı veya deneme ortamınıza yeniden yönlendirildiğinde bile, ürün içi deneyim hisini koruyun.
+- Ticari Market 'ten deneme listeinize müşteri deneyimini kolaylaştırın.
+- Kullanıcı ticari Market 'ten etki alanı veya deneme ortamınıza yeniden yönlendirildiğinde bile, ürün içi deneyim hisini koruyun.
 - Ek oturum açma adımları olmadığından, kullanıcılar yeniden yönlendirildiğinde terk olma olasılığını azaltın.
 - Azure AD kullanıcılarının büyük popülasyonu için dağıtım engelleri azaltma.
 
@@ -67,12 +67,12 @@ Uygulamanızda tek tıklamayla kimlik doğrulamayı etkinleştirmek için Azure 
 
 Aşağıdaki eylemleri desteklemek için Azure AD 'yi kullanın:
 
-- Uygulamanızı Market stokörkinden birine kaydedin. Daha fazla bilgi için [uygulama kaydını](../active-directory/develop/quickstart-register-app.md) veya [appsource sertifikasını](../active-directory/azuread-dev/howto-get-appsource-certified.md) görüntüleyin.
+- Uygulamanızı ticari Market çevrimiçi mağazalarından birine kaydedin. Daha fazla bilgi için [uygulama kaydını](../active-directory/develop/quickstart-register-app.md) veya [appsource sertifikasını](../active-directory/azuread-dev/howto-get-appsource-certified.md) görüntüleyin.
 - Tek tıklamayla deneme deneyimi almak için Azure AD 'de çok kiracılı destek özelliğini etkinleştirin.
 
 Azure AD Federasyon çoklu oturum açma 'yı kullanmaya yeni başladıysanız şu adımları uygulayın:
 
-1. Uygulamanızı Market 'e kaydedin.
+1. Uygulamanızı ticari Market 'e kaydedin.
 1. [OAuth 2,0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) veya [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md)kullanarak Azure AD ile SSO geliştirin.
 1. Tek tıklamayla deneme deneyimi sağlamak için Azure AD 'de çok kiracılı destek özelliğini etkinleştirin.
 
@@ -89,7 +89,7 @@ Aşağıdaki eylemlerden birini desteklemek için Azure AD 'yi kullanın:
 
 Daha önce yapmadıysanız, 
 
-- Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
+- Ticari Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
 
 Iş Ortağı Merkezi 'ne kaydolmak için yeni bir teklif oluşturmaya veya var olan bir teklifle çalışmaya başlayın:
 

@@ -6,22 +6,23 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3c13d37e62da8abfa860d5fdbdf186302519c93e
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120585"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606507"
 ---
-# <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na yönetilen kimlikle bağlanma
+# <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Yönetilen Kimlik ile MySQL için Azure Veritabanı'na bağlanma
 
-Bu makalede, bir Azure sanal makinesi (VM) için bir Azure veritabanına MySQL sunucusuna erişmek üzere Kullanıcı tarafından atanan bir kimliğin nasıl kullanılacağı gösterilir. Yönetilen Hizmet Kimlikleri Azure tarafından otomatik olarak yönetilir kodunuza kimlik bilgileri girmenize gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmanıza olanak tanır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu makalede, bir Azure sanal makinesi (VM) için bir Azure veritabanına MySQL sunucusuna erişmek üzere Kullanıcı tarafından atanan bir kimliğin nasıl kullanılacağı gösterilir. Yönetilen Hizmet Kimlikleri Azure tarafından otomatik olarak yönetilir kodunuza kimlik bilgileri girmenize gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmanıza olanak tanır. 
 
-> [!div class="checklist"]
-> * VM 'nize MySQL için Azure veritabanı sunucusuna erişim izni verme
-> * Veritabanında, VM 'nin Kullanıcı tarafından atanan kimliğini temsil eden bir kullanıcı oluşturun
-> * VM kimliğini kullanarak bir erişim belirteci alın ve bunu kullanarak MySQL için Azure veritabanı sunucusunu sorgulayın
-> * C# örnek uygulamasında belirteç alımı uygulama
+Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+
+- VM 'nize MySQL için Azure veritabanı sunucusuna erişim izni verme
+- Veritabanında, VM 'nin Kullanıcı tarafından atanan kimliğini temsil eden bir kullanıcı oluşturun
+- VM kimliğini kullanarak bir erişim belirteci alın ve bunu kullanarak MySQL için Azure veritabanı sunucusunu sorgulayın
+- C# örnek uygulamasında belirteç alımı uygulama
 
 > [!IMPORTANT]
 > Yönetilen kimlikle bağlantı yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
@@ -83,7 +84,7 @@ Bu belirteç alımı, aşağıdaki parametreler için bir HTTP isteği yapılara
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`(daha önce aldığınız)
+* `client_id` = `CLIENT_ID` (daha önce aldığınız)
 
 Bir alan içeren bir JSON sonucunu geri alacaksınız `access_token` . bu uzun metin değeri, veritabanına bağlanırken parola olarak kullanmanız gereken yönetilen kimlik erişim belirtecidir.
 

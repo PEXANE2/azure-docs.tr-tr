@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082825"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607486"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
-Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market Web stokileri](comparing-appsource-azure-marketplace.md)aracılığıyla tekliflerinizi yayımlamaya ek olarak, programın sunduğu milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
+Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market çevrimiçi mağazalarıyla](comparing-appsource-azure-marketplace.md)tekliflerinizi yayımlamaya ek olarak, programın hizmet verdiği milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
 
 CSP iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlayan yeni veya mevcut teklifleri CSP programında kullanılabilir olarak yapılandırabilirsiniz.
 
@@ -166,7 +166,7 @@ Teklifiniz Şu anda **seçenek 3: CSP programında iş ortakları**yoksa diledi�
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>CSP programındaki iş ortaklarıyla satış ve destek malzemeleri paylaşma
 
-Bulut çözümü sağlayıcısı programındaki iş ortaklarının teklifinizi en verimli şekilde temsil etmesini ve kuruluşunuzla birlikte çalışmasını sağlamak için, satıcıların kullanabildiği satış ve destek malzemeleri göndermeniz gerekir. Bu kaynaklar Market storets 'deki müşterilere sunulmayacak.
+Bulut çözümü sağlayıcısı programındaki iş ortaklarının teklifinizi en verimli şekilde temsil etmesini ve kuruluşunuzla birlikte çalışmasını sağlamak için, satıcıların kullanabildiği satış ve destek malzemeleri göndermeniz gerekir. Bu kaynaklar çevrimiçi mağazalardaki müşterilere gösterilmez.
 
 ### <a name="partner-center-csp-channel"></a>İş Ortağı Merkezi CSP kanalı
 

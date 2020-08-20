@@ -4,21 +4,21 @@ description: Azure Cosmos DB 'de SQL sistem işlevi GetCurrentTimestamp hakkınd
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/19/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9c35f83ce7a9a478f706e9ed560d884d9bf5e508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261286"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606923"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 
  00:00:00 Perşembe, 1 Ocak 1970 tarihinden itibaren geçen milisaniye sayısını döndürür.
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentTimestamp ()  
@@ -26,13 +26,13 @@ GetCurrentTimestamp ()
   
 ## <a name="return-types"></a>Dönüş türleri
   
-  Bir sayısal değer döndürür. Bu, UNIX dönemi 'nden beri geçen milisaniye sayısı (00:00:00 Perşembe, 1 Ocak 1970).
+İşaretli bir sayısal değeri döndürür. bu yana geçen milisaniye sayısı, örneğin, UNIX dönemi (00:00:00, 1 Ocak 1970).
 
 ## <a name="remarks"></a>Açıklamalar
 
-  GetCurrentTimestamp () belirleyici olmayan bir işlevdir.
-  
-  Döndürülen sonuç UTC 'dir (Eşgüdümlü Evrensel Saat).
+GetCurrentTimestamp () belirleyici olmayan bir işlevdir. Döndürülen sonuç UTC 'dir (Eşgüdümlü Evrensel Saat).
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="examples"></a>Örnekler
   

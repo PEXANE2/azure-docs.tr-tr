@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213877"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607406"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
 Bu makale, Microsoft ticari Market tekliflerini oluşturma ve ilgi çekici öneriler sunmaktadır. Aşağıdaki tablolarda, Iş Ortağı Merkezi 'nde teklif bilgilerini tamamlamaya yönelik en iyi uygulamalar ana hatlarıyla verilmiştir. Tekliflerinizin nasıl çalıştığını analiz etmek için Iş Ortağı Merkezi ' nde [Market öngörüleri panosuna](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) gidin. 
 
-## <a name="storefront-offer-details"></a>Storefront teklif ayrıntıları
+## <a name="online-store-offer-details"></a>Çevrimiçi mağaza teklif ayrıntıları
 
-| Storefront ayarı | En iyi yöntem |
+| Ayar | En iyi yöntem |
 |:--- |:--- |  
 | Teklif Adı | Uygulamalar için, müşterilerinizin teklifinizi bulmasına yardımcı olmak için arama anahtar sözcükleri içeren net bir başlık sağlayın. <br> <br> Danışmanlık Hizmetleri için şu biçimi izleyin: [teklif adı: [Duration] [teklif türü] (örneğin, contoso: 2 haftalık uygulama) |
 | Teklif açıklaması | İlk birkaç cümlede teklifinizin değer teklifini açıklayan net bir açıklama sağlayın.  Bu tümcelerin, arama motoru sonuçlarında kullanılabileceğini aklınızda bulundurun. Değer teklifini temel bileşenler şunlardır: <ul> <li>Ürün veya çözümün açıklaması. </li> <li> Ürün veya çözümden faydalanan Kullanıcı. </li> <li> Müşterinin ürün veya çözüm adreslerine ihtiyacı veya sorun olması gerekir. </li> </ul> <br> Mümkün olduğunda sektör standart sözlüğünü veya avantaj tabanlı bir ifade kullanın.  Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin.  Bunun yerine, teslim ettiğiniz değere odaklanın. <br> <br> Danışmanlık hizmeti listeleri için sağladığınız profesyonel hizmeti açık bir şekilde belirtin. |
@@ -28,11 +28,11 @@ Bu makale, Microsoft ticari Market tekliflerini oluşturma ve ilgi çekici öner
 > [!IMPORTANT]
 > Microsoft ticari markaları ve Microsoft yazılımlarının, ürünlerinin ve hizmetlerinin adlarına başvururken, teklif adınızın ve teklif açıklamasının **[Microsoft ticari marka ve marka yönergelerine](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** ve diğer ilgili, ürüne özgü yönergelere bağlı olduğundan emin olun.
 
-## <a name="storefront-listing-details"></a>Storefront listeleme ayrıntıları
+## <a name="online-store-listing-details"></a>Çevrimiçi mağaza listeleme ayrıntıları
 
-Farklı bir storefront için kategoriler ve endüstriler, farklı teklif türleri için geçerli olacaktır.
+Farklı bir çevrimiçi mağazaya yönelik Kategoriler ve endüstriler, farklı teklif türleri için geçerli olacaktır.
 
-| Storefront | Kategoriler <br>Storefront tarafından | Kategoriler <br>Storefront tarafından | Sektörler <br> AppSource için |
+| Çevrimiçi mağaza | Kategoriler <br>çevrimiçi mağazaya göre | Kategoriler <br>çevrimiçi mağazaya göre | Sektörler <br> AppSource için |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Teklif türü**   |  **Azure Market**  | **AppSource**  |
 | Azure Uygulaması | X | |
@@ -48,9 +48,9 @@ Farklı bir storefront için kategoriler ve endüstriler, farklı teklif türler
 
 ### <a name="categories"></a>Kategoriler
 
-Microsoft AppSource ve Azure Market, benzersiz müşteri gereksinimlerine yönelik iki farklı stottadan farklıdır. Azure Marketi, BT uzmanlarının ve geliştiricilerin Azure 'da çözüm oluşturduğu uygulamaları hedefler.  Microsoft AppSource, iş ve/veya sektör SaaS uygulamalarını, Dynamics 365 eklentilerini, Microsoft 365 eklentilerini ve güç platformu uygulamalarını arayan iş kullanıcılarını hedefler.
+Microsoft AppSource ve Azure Marketi, benzersiz müşteri gereksinimlerine sunan iki farklı çevrimiçi depolardır. Azure Marketi, BT uzmanlarının ve geliştiricilerin Azure 'da çözüm oluşturduğu uygulamaları hedefler.  Microsoft AppSource, iş ve/veya sektör SaaS uygulamalarını, Dynamics 365 eklentilerini, Microsoft 365 eklentilerini ve güç platformu uygulamalarını arayan iş kullanıcılarını hedefler.
 
-Kategoriler ve alt kategoriler, hedef kitleye göre her storefront eşlenir. Teklifiniz teklif türüne, teklifin ve kategorinin/alt kategori seçimine bağlı olarak Microsoft AppSource veya Azure Marketi 'nde yayımlanacak. 
+Kategoriler ve alt kategoriler, hedef kitle temelinde her bir çevrimiçi depoya eşlenir. Teklifiniz teklif türüne, teklifin ve kategorinin/alt kategori seçimine bağlı olarak Microsoft AppSource veya Azure Marketi 'nde yayımlanacak. 
 
 Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak için kategoriler ve alt kategoriler ' i seçin. Şunları seçebilirsiniz:
 
@@ -61,9 +61,9 @@ Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak içi
 
 **ÖNEMLI: SaaS teklifleri ve Microsoft 365 eklentiler**
 
-Transact yeteneklerinin Market müşterilerinin nasıl görüntülenebileceğini ve satın alınabileceği hakkında ayrıntılı bilgi edinmek için [teklif türüne göre kılavuza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) bakın. SaaS teklifleri için teklifin işlem yeteneğinin yanı sıra kategori seçimi de teklifinizin yayımlanacağı storefront ' ı saptacaktır:
+Transact yeteneklerinin Market müşterilerinin nasıl görüntülenebileceğini ve satın alınabileceği hakkında ayrıntılı bilgi edinmek için [teklif türüne göre kılavuza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) bakın. SaaS teklifleri için, teklifin yayımlanacağı çevrimiçi mağazayı ve kategori seçimini de teklif olarak belirlersiniz:
 
-| SaaS teklifi    | SaaS teklifi   | SaaS teklifi  | SaaS teklifi   | SaaS teklifi   | SaaS teklifi   | SaaS teklifi    | Uygulanabilir storefront | Uygulanabilir storefront |
+| SaaS teklifi    | SaaS teklifi   | SaaS teklifi  | SaaS teklifi   | SaaS teklifi   | SaaS teklifi   | SaaS teklifi    | Geçerli çevrimiçi mağaza| Geçerli çevrimiçi mağaza |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Ölçülen faturalandırma | Microsoft 365 eklentiler | Benimle iletişim kurun | Transact (en az 1 plan) | Yalnızca özel plan | Yalnızca genel plan | Ortak & özel planlar | AppSource | Azure Market |
 |  | X |  |  |  |  |  | X |  |
@@ -117,8 +117,8 @@ AppSource 'ta seçili Ürünler altında gösterilmesi için uygulamanızın bir
 
 Anahtar sözcükler, müşterilerin arama yaparken teklifinizi bulmasına yardımcı olabilir. Teklifiniz için en üst arama anahtar sözcüklerini ve açıklama teklif listesi ayrıntıları bölümünün anahtar sözcük bölümünde yer alarak teklif Özeti ve açıklamasına dahil edin.
 
-## <a name="storefront-marketing-details"></a>Storefront pazarlama ayrıntıları
-| Storefront ayarı | En iyi yöntem |
+## <a name="online-store-marketing-details"></a>Çevrimiçi mağaza pazarlama ayrıntıları
+| Ayar | En iyi yöntem |
 |:--- |:--- |  
 | Teklif logosu (PNG biçimi, 48 &nbsp; &times; &nbsp; 48): arama sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Amblemini PNG biçiminde karşıya yükleyerek teklifinizin arama sayfasına yükleyin. |
 | Teklif logosu (PNG biçimi, 216 &nbsp; &times; &nbsp; 216): uygulama ayrıntıları sayfası | Dijital bir ortam için logonuzu tasarlayın ve iyileştirin:<br>Logonuzu uygulama ayrıntıları listesi sayfasına PNG biçiminde karşıya yükleyin. |

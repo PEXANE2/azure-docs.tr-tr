@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6b3cd5ab5849c33172e4a629c79fb792b82f1255
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227518"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606938"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
 
-Etkin tarih ve saati zaman işaretleri cinsinden döndürür.
+00:00:00 Perşembe, 1 Ocak 1970 ve bu yana geçen 100-nanosaniyelik ticks sayısını döndürür.
   
 ## <a name="syntax"></a>Syntax
   
@@ -26,9 +26,11 @@ GetCurrentTicks ()
 
 ## <a name="return-types"></a>Dönüş türleri
 
-Pozitif bir tamsayı değeri döndürür.
+, UNIX dönemi bu yana geçen 100-nanosaniyelik Tick 'in geçerli sayısı olan işaretli bir sayısal değer döndürür. Diğer bir deyişle GetCurrentTicks, 00:00:00 Perşembe, 1 Ocak 1970 100, bu yana geçen nanosaniyelik ticks sayısını döndürür.
 
 ## <a name="remarks"></a>Açıklamalar
+
+GetCurrentTicks () belirleyici olmayan bir işlevdir. Döndürülen sonuç UTC 'dir (Eşgüdümlü Evrensel Saat).
 
 Bu sistem işlevi dizinden yararlanmayacak.
 

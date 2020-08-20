@@ -4,21 +4,21 @@ description: Azure Cosmos DB 'de SQL sistem işlevi GetCurrentDateTime hakkında
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4db2ec7bbd05d982af57c05fd46ef7da7c682e15
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258802"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606962"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 
 ISO 8601 dizesi olarak geçerli UTC (Eşgüdümlü Evrensel Saat) Tarih ve saati döndürür.
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentDateTime ()
@@ -44,15 +44,13 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Açıklamalar
 
-  GetCurrentDateTime () belirleyici olmayan bir işlevdir.
-  
-  Döndürülen sonuç UTC 'dir.
+GetCurrentDateTime () belirleyici olmayan bir işlevdir. Döndürülen sonuç UTC 'dir. Duyarlık, 100 nanosaniye değeriyle doğru 7 haneye sahiptir.
 
-  Duyarlık, 100 nanosaniye değeriyle doğru 7 haneye sahiptir.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, GetCurrentDateTime () yerleşik işlevini kullanarak geçerli UTC Tarih zamanının nasıl alınacağını gösterir.
+Aşağıdaki örnek, GetCurrentDateTime () yerleşik işlevini kullanarak geçerli UTC Tarih zamanının nasıl alınacağını gösterir.
   
 ```sql
 SELECT GetCurrentDateTime() AS currentUtcDateTime

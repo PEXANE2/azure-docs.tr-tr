@@ -5,29 +5,36 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964592"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606906"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 
-Tamamen yönetilen bir bulutta yerel veritabanı hizmeti olarak, Azure Cosmos DB yalnızca sağlanan aktarım hızı ve tüketilen depolama alanı için ücretlendirme yaparak faturalandırmayı basitleştirir. Şirket içi veya IaaS ile barındırılan diğer yöntemler ile karşılaştırıldığında ek lisans ücretleri, donanım, yardımcı program maliyetleri veya tesis maliyetleri yoktur. Azure Cosmos DB çoklu bölge yeteneklerini dikkate aldığınızda, veritabanı hizmeti mevcut şirket içi veya IaaS çözümleriyle karşılaştırıldığında maliyetlerde önemli bir düşüş sağlar.
+Tam olarak yönetilen bir bulutta yerel veritabanı hizmeti olan Azure Cosmos DB, yalnızca veritabanı işlemleri için ücretlendirme yaparak ve depolama alanı tüketilip faturalandırılmasını basitleştirir. Şirket içi veya IaaS ile barındırılan diğer yöntemler ile karşılaştırıldığında ek lisans ücretleri, donanım, yardımcı program maliyetleri veya tesis maliyetleri yoktur. Azure Cosmos DB çoklu bölge yeteneklerini dikkate aldığınızda, veritabanı hizmeti mevcut şirket içi veya IaaS çözümleriyle karşılaştırıldığında maliyetlerde önemli bir düşüş sağlar.
 
-Azure Cosmos DB, sağlanan verimlilik ve tüketilen depolama alanı temelinde saatlik olarak faturalandırılırsınız. Sağlanan verimlilik için, faturalandırma birimi saat başına 100 RU/sn 'dir ve en son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. Tüketilen depolama için ayda 1 GB depolama alanı başına faturalandırılırsınız, en son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
+- **Veritabanı işlemleri**: veritabanı işlemlerinizin ücretlendirildiği yol, kullanmakta olduğunuz Azure Cosmos hesabının türüne bağlıdır.
 
-Bu makale, aylık faturada gördüğünüz ayrıntıları anlamanıza yardımcı olacak örnekleri içerir. Azure Cosmos kapsayıcılarınızda farklı miktarda aktarım hızı sağlandıysa, bunları birden fazla bölgeye yaydıysanız veya farklı bir öğe için bir aydan daha fazla süre boyunca çalışıyorlarsa örneklerde gösterilen sayılar farklı olabilir. Bu makaledeki tüm örneklerde, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cosmos-db/) gösterilen fiyatlandırma bilgilerine göre fatura hesaplanır.
+  - **Sağlanan aktarım hızı**: 100 ru/sn 'lik artışlarla, belirli bir saat için sağlanan maksimum üretilen iş hacmi için saatlik olarak faturalandırılırsınız.
+  - **Sunucusuz**: veritabanı işlemleriniz tarafından tüketilen toplam istek birimi miktarı için saatlik olarak faturalandırılırsınız.
+
+- **Depolama**: belirli bir saat için verileriniz ve dizinlerinizin tükettiği toplam depolama miktarı (GB cinsinden) için sabit bir ücret üzerinden faturalandırılırsınız.
+
+En son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
+
+Bu makale, aylık faturada gördüğünüz ayrıntıları anlamanıza yardımcı olacak örnekleri içerir. Azure Cosmos kapsayıcılarınızda farklı miktarda aktarım hızı sağlandıysa, bunları birden fazla bölgeye yaydıysanız veya farklı bir öğe için bir aydan daha fazla süre boyunca çalışıyorlarsa örneklerde gösterilen sayılar farklı olabilir. Bu makaledeki tüm örneklerde, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cosmos-db/)gösterilen fiyatlandırma bilgilerine göre fatura hesaplanır.
 
 > [!NOTE]
 > Faturalandırma, 60 dakikalık bir süre değil, bir duvar saati saatinin herhangi bir bölümü için tasarlanmıştır. Bu belgede gösterilen tüm örnekler, ABD 'deki devlet dışı bir bölgede dağıtılan bir Azure Cosmos hesabının fiyatını temel alır. Fiyatlandırma ve hesaplama, kullandığınız bölgeye bağlı olarak farklılık gösterir, en son fiyatlandırma bilgileri için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 
 ## <a name="billing-examples"></a>Faturalandırma örnekleri
 
-### <a name="billing-example---throughput-on-a-container-full-month"></a>Faturalandırma örneği-bir kapsayıcıda işleme (tam ay)
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>Faturalandırma örneği-bir kapsayıcıda sağlanan aktarım hızı (tam ay)
 
 * Bir kapsayıcıda 1.000 RU/sn aktarım hızı kullandığınızı ve bu süre için 24 saat * 30 720 gün boyunca mevcut olduğunu varsayalım.  
 
@@ -39,13 +46,21 @@ Bu makale, aylık faturada gördüğünüz ayrıntıları anlamanıza yardımcı
 
 * Toplam aylık faturada 7.200 birim (/100 ru) gösterilecektir ve bu maliyet, $57,60.
 
-### <a name="billing-example---throughput-on-a-container-partial-month"></a>Faturalandırma örneği-bir kapsayıcıda aktarım hızı (kısmi ay)
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>Faturalandırma örneği-bir kapsayıcıda sağlanan aktarım hızı (kısmi ay)
 
 * Sağlanan 2.500 RU/sn için üretilen iş hızına sahip bir kapsayıcı oluşturduğumuz varsayın. Kapsayıcı ayda 24 saat sürer (örneğin, oluşturduktan sonra 24 saat sonra silinir).  
 
 * Ardından, faturada 600 birim (2.500 RU/sn/100 RU/sn/Unit * 24 saat) göreceksiniz. Maliyet $4,80 (600 birim * $0.008/Unit) olacaktır.
 
 * Aylık toplam fatura $4,80 olacaktır.
+
+### <a name="billing-example---serverless-container"></a>Faturalandırma örneği-sunucusuz kapsayıcı
+
+* Sunucusuz bir kapsayıcı oluşturduğumuz varsayılmıştır. 
+
+* Ayda toplam 500.000 Istek birimi tüketen veritabanı istekleri veriyoruz. Maliyet $0,125 (500.000 * $0,25/milyon) olacaktır.
+
+* Aylık toplam fatura $0,125 olacaktır.
 
 ### <a name="billing-rate-if-storage-size-changes"></a>Depolama boyutu değişirse faturalandırma oranı
 
@@ -55,7 +70,7 @@ Depolama kapasitesi, aylık bir dönemde depolanan en fazla saatlik veri miktar�
 
 Kapsayıcının veya veritabanının mevcut olduğu her saat için, kullanım veya kapsayıcının veya veritabanının bir saatten daha az etkin olduğu durumlarda, her saat için sabit bir fiyat üzerinden faturalandırılırsınız. Örneğin, bir kapsayıcı veya veritabanı oluşturup 5 dakika sonra silerseniz faturanızda bir saat yer alır.
 
-### <a name="billing-rate-when-throughput-on-a-container-or-database-scales-updown"></a>Bir kapsayıcı veya veritabanı üzerinde üretilen iş miktarı yukarı/aşağı ölçeklenirken faturalandırma oranı
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>Bir kapsayıcıda veya veritabanında sağlanan üretilen iş hacmi yukarı/aşağı ölçeği artırdığı zaman Faturalandırma oranı
 
 9:30:400 RU/sn 'den 1.000 RU/sn 'ye kadar olan üretilen iş verimini artırdıysanız ve daha sonra 10:45 tarihinde 400 ru/sn 'ye geri dönmek istiyorsanız, iki saatlik 1.000 RU/sn üzerinden ücretlendirilirsiniz. 
 
@@ -75,7 +90,7 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Adanmış üretilen iş faturası örneği":::
 
-### <a name="billing-example-containers-with-shared-throughput-mode"></a>Faturalandırma örneği: paylaşılan işleme modundaki kapsayıcılar
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>Faturalandırma örneği: paylaşılan (sağlanan) işleme modundaki kapsayıcılar
 
 * İki Azure Cosmos veritabanı ile Doğu ABD 2 içinde bir Azure Cosmos hesabı oluşturursanız (veritabanı düzeyinde üretilen işi paylaşan bir kapsayıcı kümesi ile), sırasıyla 50-K RU/sn ve 70-K RU/sn için sağlanan aktarım hızı ile, 120 en fazla K RU/sn için sağlanan toplam işlem hızına sahip olursunuz.  
 
@@ -97,7 +112,7 @@ Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınız
 
 Batı ABD ' de bir Azure Cosmos Kapsayıcınız olduğunu varsayalım. Kapsayıcı 10.000 RU/sn aktarım hızı ile oluşturulur ve bu ay 1 TB veri depoladığınızda. Azure Cosmos hesabınıza her biri aynı depolama ve aktarım hızı ile üç bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) eklediğinizi varsayalım. Toplam aylık faturanız olacaktır (bir ayda 30 gün varsayılır). Faturanız aşağıdaki gibi olacaktır: 
 
-|**Öğe** |**Kullanım (ay)** |**Fiyat** |**Aylık maliyet** |
+|**Öğe** |**Kullanım (ay)** |**Hız** |**Aylık maliyet** |
 |---------|---------|---------|-------|
 |Batı ABD kapsayıcı için üretilen iş faturası      | 10.000 RU/sn * 24 * 30    |$0,008/saat başına 100 RU/sn   |$576|
 |3 ek bölge için üretilen iş faturası Doğu ABD, Kuzey Avrupa ve Doğu Asya       | 3 * 10.000 RU/sn * 24 * 30    |$0,008/saat başına 100 RU/sn  |$1.728|
@@ -111,7 +126,7 @@ Batı ABD ' de bir Azure Cosmos Kapsayıcınız olduğunu varsayalım. Kapsayıc
 
 Batı ABD içinde bir Azure Cosmos kapsayıcısı oluşturduğunuzu varsayalım. Kapsayıcı 10.000 RU/sn aktarım hızı ile oluşturulur ve bu ay 1 TB veri depoladığınızda. Her biri aynı depolama ve aktarım hızı ve Azure Cosmos hesabınızla ilişkili tüm bölgelerdeki kapsayıcılara yazmak istediğiniz üç bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) eklediğinizi varsayalım. Toplam aylık faturanız şu şekilde olacaktır: (bir ayda 30 gün varsayılır):
 
-|**Öğe** |**Kullanım (ay)**|**Fiyat** |**Aylık maliyet** |
+|**Öğe** |**Kullanım (ay)**|**Hız** |**Aylık maliyet** |
 |---------|---------|---------|-------|
 |Batı ABD kapsayıcı için üretilen iş faturası (tüm bölgeler yazılabilir)       | 10.000 RU/sn * 24 * 30    |$0,016/saat başına 100 RU/sn    |$1.152 |
 |3 ek bölge için üretilen iş faturası Doğu ABD, Kuzey Avrupa ve Doğu Asya (tüm bölgeler yazılabilir)        | (3 + 1) * 10.000 RU/sn * 24 * 30    |$0,016/saat başına 100 RU/sn   |$4.608 |
@@ -267,7 +282,7 @@ Azure Cosmos DB ayrılmış kapasite, tüm Azure bölgelerindeki tüm Azure Cosm
 
 Toplam faturanız (ayrılmış kapasite olmadan) olacaktır (30 gün veya 720 saat varsayılır): 
 
-|**Geli**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
+|**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
 |Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |
@@ -281,7 +296,7 @@ Bunun yerine ayrılmış kapasite satın aldığınızı göz önünde bulunduru
 
 Kullanım dışı olarak satın almış olduğunuz miktar, $8 KB/sn 100 için saat başına, saat başına $6,40 fiyat üzerinden Doğu ABD. Daha sonra, aboneliğiniz için ayarlanan bölgesel liste fiyatlarındaki herhangi bir genel Azure bölgesindeki sağlanan aktarım hızı kapasitesi için saatlik olarak bu ön ödemeli üretilen iş hacmi üzerinden aşağı doğru çizebilirsiniz. Bu örnekte, Doğu ABD her biri için 50 K RU/sn sağladığınızda ve Japonya Doğu, saat başına sağlanan aktarım hızı $8,00 ' i çizecek ve saat başına $0,50 yaş (veya $360/ay) üzerinden faturalandırılırsınız. 
 
-|**Geli**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
+|**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
 |Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |

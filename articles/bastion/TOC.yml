@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Bastion hakkında
+    - name: Azure Bastion nedir?
       href: bastion-overview.md
 - name: Hızlı Başlangıçlar
   items:

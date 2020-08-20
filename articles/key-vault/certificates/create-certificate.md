@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 71d8961af372f927fab909073daa715766542f87
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189972"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606669"
 ---
 # <a name="certificate-creation-methods"></a>Sertifika oluşturma yöntemleri
 
@@ -82,7 +82,7 @@ Sertifika oluşturma el ile veya "kendi" veren kullanılarak tamamlanabilir. Ayr
 
 |Sağlayıcı|Sertifika türü|Yapılandırma kurulumu  
 |--------------|----------------------|------------------|  
-|DigiCert|Key Vault DigiCert ile OV veya EV SSL sertifikaları sunar| [Tümleştirme Kılavuzu](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|DigiCert|Key Vault DigiCert ile OV veya EV SSL sertifikaları sunar| [Tümleştirme Kılavuzu](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 |GlobalSign|Key Vault GlobalSign ile OV veya EV SSL sertifikaları sunar| [Tümleştirme Kılavuzu](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Sertifika veren, Azure Key Vault (KV) ile bir Certificateıssuer kaynağı olarak temsil edilen bir varlıktır. Bir KV sertifikasının kaynağı hakkında bilgi sağlamak için kullanılır; verenin adı, sağlayıcı, kimlik bilgileri ve diğer yönetim ayrıntıları.

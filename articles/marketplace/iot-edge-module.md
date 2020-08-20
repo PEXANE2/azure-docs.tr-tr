@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119490"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607360"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
 
@@ -38,9 +38,9 @@ IoT Edge modülü teklif türü, bir IoT Edge cihazında çalışan belirli bir 
 
 ## <a name="publishing-your-iot-edge-module"></a>IoT Edge modülünüzü yayımlama
 
-**Doğru storefront seçme**
+**Doğru çevrimiçi mağazayı seçme**
 
-IoT Edge modüller yalnızca Azure Marketi 'Nde yayımlanır, AppSource uygulanmaz.  İzleme farklılıkları ve hedef kitleler hakkında daha fazla bilgi için bkz. [çözümünüz için yayımlama seçeneğini belirleme](determine-your-listing-type.md).
+IoT Edge modüller yalnızca Azure Marketi 'Nde yayımlanır, AppSource uygulanmaz.  Çevrimiçi mağazalardaki farklılıklar ve hedef kitleler hakkında daha fazla bilgi için bkz. [Yayımlama seçeneğinizi belirleme](determine-your-listing-type.md).
  
 **Faturalandırma seçenekleri**
 
@@ -73,17 +73,9 @@ Azure Marketi 'Nde bir IoT Edge modülünü yayımlamak için aşağıdaki önko
 
 Azure Market 'te sertifikalı ve yayımlanmış olması için bir IoT Edge modülü için birincil teknik gereksinimler, [IoT Edge modülü teknik varlıklarınızı hazırlama](./partner-center-portal/create-iot-edge-module-asset.md)bölümünde ayrıntılı olarak açıklanmıştır.
 
-## <a name="documentation-and-resources"></a>Belgeler ve kaynaklar
-
-[IoT Edge bir modül teklifi oluşturun](./partner-center-portal/azure-iot-edge-module-creation.md) --Iş Ortağı Merkezi 'nde yeni bir IoT Edge modülü teklifi yayımlama adımları.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız,
-
-- Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
-
-Iş Ortağı Merkezi 'ne kaydolmak ve yeni bir teklif oluşturmaya veya var olan bir teklif üzerinde çalışmaya başlamak için
-
+- Ticari Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
+- Iş Ortağı Merkezi 'nde [bir IoT Edge Module teklifi oluşturun].
 - Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) ' nde oturum açın.
 - Bir IoT Edge modülü teklifini yayımlama hakkında bilgi için bkz. [IoT Edge modülü teklifi oluşturma](./partner-center-portal/azure-iot-edge-module-creation.md) .

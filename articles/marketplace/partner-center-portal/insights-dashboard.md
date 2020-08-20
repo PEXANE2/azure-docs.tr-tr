@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323290"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607147"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Iş Ortağı Merkezi 'nde Market öngörüleri panosu
 
-Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, yayımcıların ticari Market storefronts: Microsoft AppSource ve Azure Marketi 'nde listelenen ilgili ürün ayrıntıları sayfaları için müşteri etkileşimini ölçmesine olanak tanıyan Market Web Analytics 'in bir özetini görüntüler.
+Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, yayımcıların ticari Market çevrimiçi mağazalarında listelenen ilgili ürün ayrıntı sayfaları için müşteri etkileşimini ölçmesine olanak tanıyan Market Web Analytics 'in bir özetini görüntüler: Microsoft AppSource ve Azure Marketi.
 
 ## <a name="marketplace-insights-dashboard"></a>Market İçgörüleri panosu
 
@@ -42,11 +42,11 @@ Azure Market veya AppSource 'ta teklifleri ziyaret eden kullanıcılar ve Iş Or
 
 Ticari Market ölçümlerini çeşitli yollarla görüntüleyin:
 
-- Storefront sekmeleri
+- Çevrimiçi mağaza sekmeleri
 - Sayfa filtreleri
 - Tarih filtreleri
 
-**Storefront sekmeleri**: Azure Marketi sekmeleri appsource & aracılığıyla tekliflerinizin ölçümlerini ayrı olarak görebilirsiniz. Seçili tekliflerle ilgili ölçümlerin bir görselliğini görmek için sağdaki teklif açılan listesinden teklif (ler) i seçin. Varsayılan olarak, tüm teklifler seçilidir.
+**Çevrimiçi mağaza sekmeleri**: appsource & Azure Marketi sekmeleri aracılığıyla tekliflerinizin ölçümlerini ayrı olarak görüntüleyebilirsiniz. Seçili tekliflerle ilgili ölçümlerin bir görselliğini görmek için sağdaki teklif açılan listesinden teklif (ler) i seçin. Varsayılan olarak, tüm teklifler seçilidir.
 
 ![İş Ortağı Merkezi Öngörüler panosu teklif açılan listesi](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ Isı haritasını aşağıdaki özellikleri içerir:
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi karşılaştırması
 
-Aşağıdaki sütunlar, Y ekseninde (grafiğin sol tarafındaki eksen) görüntülenen aylık sayfa ziyaretlerinin sayısını temsil eder. Eğilim çizgisi, Azure Marketi ve AppSource 'ta yayınlanan tekliflerinize yönelik ikincil Y ekseni (grafiğin sağ tarafındaki eksen) üzerinde, benzersiz ziyaretçilerin aylık eğilimini temsil eder.
+Aşağıdaki sütunlar, Y ekseninde (grafiğin sol tarafındaki eksen) görüntülenen aylık sayfa ziyaretlerinin sayısını temsil eder. Eğilim çizgisi, çevrimiçi mağazalarda yayınlanan tekliflerinizi için ikincil Y ekseni (grafiğin sağ tarafındaki eksen) üzerinde (örneğin, grafiğin sağ tarafında), benzersiz ziyaretçilerin aylık eğilimini temsil eder: Azure Market ve AppSource.
 
 ![İş Ortağı Merkezi Öngörüler sayfası ziyaretleri ve benzersiz ziyaretçi eğilimi](./media/insights-page-vists-unique-visitors.png)
 

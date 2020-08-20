@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797874"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607446"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -22,7 +22,7 @@ Danışmanlık hizmeti teklifleri müşterilere özgü görevlendirmelerdir. Yay
 
 ## <a name="compare-consulting-services"></a>Danışmanlık hizmetlerini karşılaştırın
 
-Ticari Market storets, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki storefronts arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](comparing-appsource-azure-marketplace.md).
+Ticari Market çevrimiçi mağazalarının Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için hedef kitleleri ve bulut ürünleri ile hizalanır. Her çevrimiçi mağaza, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki çevrimiçi mağaza arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](comparing-appsource-azure-marketplace.md).
 
 Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri AppSource 'ta listelenmeye uygundur. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri liste yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF dosyasını indirin.
 
@@ -34,7 +34,7 @@ Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Az
 > AppSource 'taki Danışmanlık Hizmetleri, Dynamics 365, Power BI veya güç uygulamalarına yönelik kalite çözümleri sunma konusunda uzmanlığa sahip kullanıcılar için tekliflere odaklanmalıdır.
  
 > [!TIP]
-> Azure Marketi 'nde storefront yayımlamak için, Iş Ortağı Merkezi **birincil ürün** aşağı açılan listesinde **Azure**' ı seçin.
+> Azure Market 'te yayımlamak için, Iş Ortağı Merkezi **birincil ürün** aşağı açılan listesinde **Azure**' ı seçin.
 >
 > AppSource 'a yayımlamak için, Iş Ortağı Merkezi **birincil ürün** açılan listesinden **Dynamics 365**, **Power BI**veya **Power Apps**' i seçin.
 
@@ -86,12 +86,12 @@ Sistem Tümleştirici İş ortakları, aşağıdaki 20 ülkede/bölgede Danışm
 Şirket bilgilerinizi Market 'e [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) başlayın. Kayıt gereksinimlerinin tüm denetim listesi için bkz. [Market 'te yayımcı olma](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Yayımlama yapılarınızı hazırlama
-Kaydolmadan önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin.
+Kaydolmadan önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin. 
 
 |Yeni yayımcılar için kurulum  |
 |---------|
 |MPN Kimliği     |
-|Şirket logoları: 48 x 48 piksel (isteğe bağlı), 216 x 216 piksel – 350 x 350 piksel (gerekli)  |
+|Şirket logoları (48 x 48, 216 x 216 piksel)     |
 |Müşteri adayı hedefi     |
 ||
 

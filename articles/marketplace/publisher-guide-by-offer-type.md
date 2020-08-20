@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119727"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607261"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -22,7 +22,7 @@ Bir teklif oluşturabilmeniz için ve [bir yayımlama seçeneğine karar](determ
 
 Tek bir teklif türü farklı yayımlama seçeneklerini etkinleştirmek için farklı yollarla yapılandırılabilir, eylem çağrısı, sağlama veya fiyatlandırma. Teklif türünün yayımlama seçeneği ve yapılandırması Ayrıca, teklif uygunluğu ve teknik gereksinimlere de uyum sağlar.
 
-Teklifinizi oluşturmadan önce storefront ve teklif türü uygunluk gereksinimlerini ve teknik yayımlama gereksinimlerini gözden geçirdiğinizden emin olun.
+Teklifinizi oluşturmadan önce çevrimiçi mağazayı gözden geçirdiğinizden emin olun ve tür uygunluk gereksinimlerini ve teknik yayımlama gereksinimlerini sunun.
 
 ## <a name="list-of-offer-types"></a>Teklif türlerinin listesi
 
@@ -45,4 +45,4 @@ Seçenekleri ve teklif türlerini listeleyerek çoklu oturum açma gereksinimler
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Teklifinizin seçim ve yapılandırmasını sonuçlandırmak için teklif türü (Aşağıdaki bölümler) için ilgili makaledeki uygunluk gereksinimlerini gözden geçirin.
-- Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için storefront göre yayımlama düzenlerini gözden geçirin.
+- Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için çevrimiçi mağazaya göre yayımlama düzenlerini gözden geçirin.

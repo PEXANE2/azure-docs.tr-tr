@@ -1,22 +1,22 @@
 ---
 title: Bölgeye göre ödeme ayrıntıları-Microsoft ticari Market
-description: Ödemelerin nasıl aktarılacağı tahmini süreyi ve ödemeleri alacağınız Microsoft vitrinler 'yi, ülke/bölge ve ödeme hesap türüne bağlı olarak değişiklik yapmayı öğrenin.
+description: Ödemelerin nasıl aktarılacağı tahmini süreyi ve ödemeleri alacağınız Microsoft çevrimiçi mağazalarınızı, ülke/bölge ve ödeme hesap türüne bağlı olarak değişiklik yapmayı öğrenin.
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327336"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607273"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
 
-Ödemelerin aktarılacağı tahmini süre ve ödemeleri alacağınız storeronts, ülke/bölge ve ödeme hesap türüne bağlı olarak değişebilir. Bu makalede, her ülkede ve bölgede desteklenen ödeme yöntemleri özetlenmektedir.
+Ödemelerin aktarılacağı tahmini süre ve ödemeleri alacağınız çevrimiçi mağazalar, ülke/bölge ve ödeme hesap türüne bağlı olarak değişebilir. Bu makalede, her ülkede ve bölgede desteklenen ödeme yöntemleri özetlenmektedir.
 
 Belirli bir ülke ve bölge için ACH/SEPA veya tel aktarım kullanarak ödeme yaptık. Bazı ülkeler ve bölgeler Ayrıca, bir ödeme yöntemi olarak PayPal 'yi destekler.
 
@@ -45,7 +45,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Cezayir | Yes | Yes | Yes | Yes |
 | Andorra | Hayır | Hayır | Yes | Yes |
 | Angola | Yes | Yes | Yes | Hayır |
-| Antigua ve Barbuda | Yes | Yes | Hayır | Evet |
+| Antigua ve Barbuda | Yes | Yes | Hayır | Yes |
 | Arjantin | Yes | Yes | Yes | Yes |
 | Ermenistan | Yes | Yes | Hayır | Hayır |
 | Avustralya | Yes | Yes | Yes | Yes |
@@ -58,7 +58,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Benin | Yes | Yes | Yes | Hayır |
 | Bolivya | Yes | Yes | Yes | Hayır |
 | Bosna-Hersek | Yes | Yes | Yes | Yes |
-| Botsvana | Yes | Yes | Hayır | Evet |
+| Botsvana | Yes | Yes | Hayır | Yes |
 | Brezilya | Yes | Yes | Yes | Yes |
 | Bulgaristan | Yes | Yes | Yes | Yes |
 | Burkina Faso | Yes | Yes | Yes | Hayır |
@@ -80,7 +80,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Kıbrıs | Yes | Yes | Yes | Yes |
 | Çek Cumhuriyeti | Yes | Yes | Yes | Yes |
 | Danimarka | Yes | Yes | Yes | Yes |
-| Dominika | Yes | Yes | Hayır | Evet |
+| Dominika | Yes | Yes | Hayır | Yes |
 | Dominik Cumhuriyeti | Yes | Yes | Yes | Yes |
 | Ekvador | Yes | Yes | Yes | Yes |
 | Mısır | Yes | Yes | Yes | Yes |
@@ -96,15 +96,15 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Gana | Yes | Yes | Yes | Hayır |
 | Yunanistan | Yes | Yes | Yes | Yes |
 | Guatemala | Yes | Yes | Yes | Yes |
-| Gine | Yes | Yes | Evet | Hayır |
-| Haiti | Yes | Yes | Evet | Hayır |
+| Gine | Yes | Yes | Yes | Hayır |
+| Haiti | Yes | Yes | Yes | Hayır |
 | Honduras | Yes | Yes | Yes | Yes |
 | Hong Kong | Yes | Yes | Yes | Yes |
 | Macaristan | Yes | Yes | Yes | Yes |
-| İzlanda | Yes | Yes | Evet | Hayır |
+| İzlanda | Yes | Yes | Yes | Hayır |
 | Hindistan | Yes | Yes | Yes | Yes |
 | Endonezya | Yes | Yes | Yes | Yes |
-| Irak | Yes | Evet | Hayır | Hayır |
+| Irak | Yes | Yes | Hayır | Hayır |
 | İrlanda | Yes | Yes | Yes | Yes |
 | İsrail | Yes | Yes | Yes | Yes |
 | İtalya | Yes | Yes | Yes | Yes |
@@ -113,9 +113,9 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Ürdün | Yes | Yes | Yes | Yes |
 | Kazakistan | Yes | Yes | Yes | Yes |
 | Kenya | Yes | Yes | Yes | Yes |
-| Kore dili (Güney) | Yes | Yes | Evet | Hayır |
+| Kore dili (Güney) | Yes | Yes | Yes | Hayır |
 | Kuveyt | Yes | Yes | Yes | Yes |
-| Kırgızistan | Hayır | Hayır | Evet | Hayır |
+| Kırgızistan | Hayır | Hayır | Yes | Hayır |
 | Laos | Yes | Yes | Yes | Hayır |
 | Letonya | Yes | Yes | Yes | Hayır |
 | Lübnan | Yes | Yes | Hayır | Hayır |
@@ -129,7 +129,7 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Malezya | Yes | Yes | Yes | Yes |
 | Mali | Yes | Yes | Yes | Hayır |
 | Malta | Yes | Yes | Yes | Yes |
-| Mauritius | Yes | Yes | Hayır | Evet |
+| Mauritius | Yes | Yes | Hayır | Yes |
 | Meksika | Yes | Yes | Yes | Yes |
 | Monako | Yes | Yes | Hayır | Hayır |
 | Moğolistan | Yes | Yes | Yes | Hayır |
@@ -151,12 +151,12 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Filipinler | Yes | Yes | Yes | Yes |
 | Polonya | Yes | Yes | Yes | Yes |
 | Portekiz | Yes | Yes | Yes | Yes |
-| Porto Riko | Hayır | Hayır | Evet | Hayır |
+| Porto Riko | Hayır | Hayır | Yes | Hayır |
 | Katar | Yes | Yes | Yes | Yes |
 | Romanya | Yes | Yes | Yes | Hayır |
-| Rusya | Yes | Yes | Hayır | Evet |
+| Rusya | Yes | Yes | Hayır | Yes |
 | Ruanda | Yes | Yes | Yes | Hayır |
-| Saint Vincent ve Grenadinler | Hayır | Evet | Hayır | Hayır |
+| Saint Vincent ve Grenadinler | Hayır | Yes | Hayır | Hayır |
 | Suudi Arabistan | Yes | Yes | Yes | Yes |
 | Senegal | Yes | Yes | Yes | Hayır |
 | Sırbistan | Yes | Yes | Yes | Hayır |
@@ -174,24 +174,24 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 | Tacikistan | Yes | Yes | Hayır | Hayır |
 | Tanzanya | Yes | Yes | Yes | Hayır |
 | Tayland | Yes | Yes | Yes | Yes |
-| Timor-Leste | Yes | Yes | Evet | Hayır |
-| Togo | Yes | Yes | Evet | Hayır |
-| Tonga | Yes | Evet | Hayır | Hayır |
+| Timor-Leste | Yes | Yes | Yes | Hayır |
+| Togo | Yes | Yes | Yes | Hayır |
+| Tonga | Yes | Yes | Hayır | Hayır |
 | Trinidad ve Tobago | Yes | Yes | Yes | Yes |
-| Tunus | Yes | Yes | Evet | Hayır |
-| Türkiye | Yes | Yes | Evet | Hayır |
-| Türkmenistan | Yes | Evet | Hayır | Hayır |
-| Uganda | Yes | Yes | Evet | Hayır |
-| Ukrayna | Yes | Evet | Hayır | Hayır |
+| Tunus | Yes | Yes | Yes | Hayır |
+| Türkiye | Yes | Yes | Yes | Hayır |
+| Türkmenistan | Yes | Yes | Hayır | Hayır |
+| Uganda | Yes | Yes | Yes | Hayır |
+| Ukrayna | Yes | Yes | Hayır | Hayır |
 | Birleşik Arap Emirlikleri | Yes | Yes | Yes | Yes |
 | Birleşik Krallık | Yes | Yes | Yes | Yes |
 | Birleşik Devletler | Yes | Yes | Yes | Yes |
 | Uruguay | Yes | Yes | Yes | Yes |
-| Özbekistan | Yes | Evet | Hayır | Hayır |
+| Özbekistan | Yes | Yes | Hayır | Hayır |
 | Venezuela | Yes | Yes | Yes | Yes |
 | Vietnam | Yes | Yes | Yes | Yes |
-| Zambiya | Yes | Yes | Evet | Hayır |
-| Zimbabve | Yes | Yes | Evet | Hayır |
+| Zambiya | Yes | Yes | Yes | Hayır |
+| Zimbabve | Yes | Yes | Yes | Hayır |
 | | |
 
 ## <a name="next-step"></a>Sonraki adım

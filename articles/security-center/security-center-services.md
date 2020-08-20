@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258619"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607133"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -91,13 +91,13 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 
 | Uç Nokta Koruma| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016 veya üzeri| Hayır, işletim sisteminde yerleşik| Evet |
-| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
-| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Evet |
-| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
-| McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
-| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
-| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  **\***  |
+| Microsoft Defender virüsten koruma| Windows Server 2016 veya üzeri| Hayır, işletim sisteminde yerleşik| Yes |
+| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Yes |
+| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
+| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
+| McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
+| McAfee v10+ | Linux sunucu ailesi  | No | Yes **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | No | Yes  **\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 

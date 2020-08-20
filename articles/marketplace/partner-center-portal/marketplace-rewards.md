@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496024"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606762"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -27,7 +27,7 @@ Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir ü
 
 Transact iş ortakları için, Market platformu aracılığıyla faturalanan satışlarınızı büyürken, katman başına daha fazla avantajdan yararlanın.
 
-Stoıd 'ler içinde yayımlamak için en düşük gereksinim bir MPNID olduğundan, bu avantajlar MPN uzmanlığa veya iş ortağı türünden bağımsız olarak tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, işletmelerini bir platform olarak marketten büyütmek için güçde bulunur.
+Çevrimiçi mağazalarda yayımlamak için en düşük gereksinim bir MPNıD 'dir, bu nedenle MPN uzmanlığa veya iş ortağı türünden bağımsız olarak bu avantajlar tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, işletmelerini bir platform olarak marketten büyütmek için güçde bulunur.
 
 Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, [kendi kendinize de gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
 

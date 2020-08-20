@@ -3,7 +3,7 @@ title: Azure CLI Betik Örneği - Bir kapsayıcıya dosya yükleme | Microsoft D
 description: Bu makalede, Azure CLı komut dosyasının bir depolama kapsayıcısına yerel bir dosya yüklemek için nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,24 +12,23 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a28cabfbc5cbba906a8c16451de801818b3fbed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2441aba7c7b83b379a9c80192fe72736ecebab8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489971"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606648"
 ---
 # <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLı örneği: bir kapsayıcıya yerel bir dosya yükleme
 
 Bu makaledeki Azure CLI betiğinde, yerel bir dosyanın bir depolama kapsayıcısına nasıl yükleneceği gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Media Services hesabı oluşturun](./create-account-howto.md).
-* [Varlıkları Yönet](manage-asset-concept.md)' i gözden geçirin.
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

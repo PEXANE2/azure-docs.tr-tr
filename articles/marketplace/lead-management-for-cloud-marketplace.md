@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035187"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606892"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>Ticari Market için lider yönetimi
 
@@ -44,7 +44,7 @@ Müşteri adayı hedefini doğru bir şekilde yapılandırdıktan ve teklifiniz 
 
 Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak ve size yeterli veri sağlamak için size yakın bir şekilde çalışmak istemeniz gerekir. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin Market müşteri adaylarıyla daha başarılı olmasını sağlamak için geri bildirim ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Iş Ortağı Merkezi 'nde yayımlama sırasında ortak lider yapılandırma hataları
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Iş Ortağı Merkezi 'nde yayımlama sırasında ortak lider yapılandırma hataları
 
 **Müşteri adayı Dynamics CRM 'ye kaydedilemedi. Dynamics CRM hesap ayarlarını kontrol edin. LastCRMError: Dynamics CRM 'de oturum açılamıyor, LastCRMException:** 
 
@@ -170,7 +170,7 @@ Lider yalnızca, müşteri adayı hedefi olarak Azure BLOB depolamayı seçtiği
 
 **Market 'ten bir e-posta aldım, neden CRM 'de müşteri adayını bulamıyorum?**  
 
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedeniyle,. edu etki alanından kişisel olarak tanımlanabilen verileri geçirmedik. [Yardım ve destek](https://aka.ms/marketplacepublishersupport)'te bir destek bileti gönderebilirsiniz.
+Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle,. edu etki alanından kişisel olarak tanımlanabilen verileri geçirmeiyoruz. [Yardım ve destek](https://aka.ms/marketplacepublishersupport)'te bir destek bileti gönderebilirsiniz.
 
 **Azure Tablo/Azure blobu 'nı lider hedefim olarak yapılandırdım, müşteri adaylarını nasıl görüntüleyebilirim?** 
 

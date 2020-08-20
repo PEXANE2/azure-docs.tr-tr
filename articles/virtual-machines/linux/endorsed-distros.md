@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185001"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607015"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 
@@ -26,11 +26,11 @@ ms.locfileid: "88185001"
 
 ## <a name="supported-distributions-and-versions"></a>Desteklenen dağıtımlar ve sürümler
 
-Aşağıdaki tablo, Azure 'da desteklenen Linux dağıtımlarını ve sürümlerini listelemektedir. Azure 'da Linux ve açık kaynaklı teknoloji desteği hakkında daha ayrıntılı bilgi için [Microsoft Azure Içindeki Linux görüntüleri Için destek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) bölümüne bakın.
+Aşağıdaki tablo, Azure 'da desteklenen Linux dağıtımlarını ve sürümlerini listelemektedir. Daha fazla bilgi için bkz. [Microsoft Azure Linux görüntüleri Için destek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure).
 
-Hyper-V ve Azure için Linux Integration Services (LIS) sürücüleri, Microsoft 'un doğrudan yukarı akış Linux çekirdeğine katkıda bulunduğu çekirdek modüllerdir. Bazı LIS sürücüleri, varsayılan olarak dağıtımın çekirdeğine yerleştirilmiştir. Red Hat Enterprise (RHEL)/CentOS tabanlı eski dağıtımlar, [Hyper-V ve Azure Için Linux Integration Services sürüm 4,2](https://www.microsoft.com/download/details.aspx?id=55106)' de ayrı bir indirme olarak sunulmaktadır. LIS sürücüleri hakkında daha fazla bilgi için bkz. [Linux çekirdek gereksinimleri](create-upload-generic.md#linux-kernel-requirements) .
+Hyper-V ve Azure için Linux Integration Services (LIS) sürücüleri, Microsoft 'un doğrudan yukarı akış Linux çekirdeğine katkıda bulunduğu çekirdek modüllerdir. Bazı LIS sürücüleri, varsayılan olarak dağıtımın çekirdeğine yerleştirilmiştir. Red Hat Enterprise (RHEL)/CentOS tabanlı eski dağıtımlar, [Hyper-V ve Azure Için Linux Integration Services sürüm 4,2](https://www.microsoft.com/download/details.aspx?id=55106)' de ayrı bir indirme olarak sunulmaktadır. Daha fazla bilgi için bkz. [Linux çekirdek gereksinimleri](create-upload-generic.md#linux-kernel-requirements).
 
-Azure Linux Aracısı, Azure Marketi görüntülerinde önceden yüklenmiş olur ve genellikle dağıtımın paket deposundan kullanılabilir. Kaynak kodu [GitHub](https://github.com/azure/walinuxagent)' da bulunabilir.
+Azure Linux Aracısı zaten Azure Marketi görüntülerinde önceden yüklenmiş ve genellikle dağıtımın paket deposundan kullanılabilir. Kaynak kodu [GitHub](https://github.com/azure/walinuxagent)' da bulunabilir.
 
 | Dağıtım | Sürüm | Sürücüler | Aracı |
 | --- | --- | --- | --- |
@@ -39,20 +39,20 @@ Azure Linux Aracısı, Azure Marketi görüntülerinde önceden yüklenmiş olur
 | Credavtiv tarafından ortaya çıkarıldı |8.x, 9.x |Çekirdekte |Paket: "waagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Kinvolk tarafından yataylı kapsayıcı Linux| Stable, Edge| | |
 | Oracle tarafından Oracle Linux |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat ile Red Hat Enterprise Linux |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat ile Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise SUSE |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE genel bulut görüntüsü yaşam döngüsü](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |Çekirdekte |Leyebilir<p> Bulutta 11 için [: Araçlar](https://build.opensuse.org/project/show/Cloud:Tools) deposu<br>"genel bulut" modülünde "Python-Azure-Agent" altında bulunan 12 için<br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | SUSE tarafından openSUSE |openSUSE Leap 15.x |Çekirdekte |Paket: [bulutta:](https://build.opensuse.org/project/show/Cloud:Tools) "Python-Azure-Agent" ın altındaki araçlar deposu <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Kurallı olarak Ubuntu |Ubuntu Server ve Pro. 16. x, 18. x, 20. x<p>Ubuntu 12,04 ve 14,04 için genişletilmiş destek hakkında bilgi burada bulunabilir: [Ubuntu genişletilmiş güvenlik Bakımı](https://www.ubuntu.com/esm). |Çekirdekte |Paket: "walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Görüntü güncelleştirme temposunda
 
-Azure, onaylı Linux dağıtımlarının yayımcılarının, üç aylık veya daha hızlı bir temposunda en son düzeltme ekleri ve güvenlik düzeltmeleri ile Azure Marketi 'ndeki görüntülerini düzenli olarak güncelleştirilmesini gerektirir. Azure Marketi 'ndeki güncelleştirilmiş görüntüler, bir görüntü SKU 'sunun yeni sürümleri olarak müşteriler tarafından otomatik olarak kullanılabilir. Linux görüntülerini bulma hakkında daha fazla bilgi: [Azure Marketi 'Nde LINUX VM görüntülerini bulun](./cli-ps-findimage.md).
+Azure, onaylı Linux dağıtımlarının yayımcılarının, üç aylık veya daha hızlı bir temposunda en son düzeltme ekleri ve güvenlik düzeltmeleri ile Azure Marketi 'ndeki görüntülerini düzenli olarak güncelleştirmesine gerek duyar. Market 'teki güncelleştirilmiş görüntüler, bir görüntü SKU 'sunun yeni sürümleri olarak müşteriler tarafından otomatik olarak kullanılabilir. Linux görüntülerini bulma hakkında daha fazla bilgi: [Azure Marketi 'Nde LINUX VM görüntülerini bulun](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Azure tarafından ayarlanan çekirdekler
 
 Azure, Azure Market 'Te yayımladıkları görüntüleri iyileştirmek için, çeşitli desteklenen linux dağıtımlarıyla yakından birlikte çalışmaktadır. Bu işbirliğinin bir yönü, Azure platformu için optimize edilmiş ve Linux dağıtımının tamamen desteklenen bileşenleri olarak sunulan "ayarlanmış" Linux çekirdekleri geliştirmektedir. Azure tarafından ayarlanmış çekirdekler yeni özellikler ve performans iyileştirmeleri ve dağıtım tarafından kullanılabilen varsayılan ya da genel çekirdekler ile karşılaştırıldığında daha hızlı (genellikle üç ayda) temposunda.
 
-Çoğu durumda, müşteriler bu iyileştirilmiş çekirdekler için hemen faydalanabilmeleri için, bu çekirdekler 'yi Azure Marketi 'ndeki varsayılan görüntülerde önceden yüklenmiş olarak bulacaksınız. Azure tarafından ayarlanan bu çekirdekler hakkında daha fazla bilgi aşağıdaki bağlantılarda bulunabilir:
+Çoğu durumda, bu çekirdekleri Azure Marketi 'ndeki varsayılan görüntülerde önceden yüklenmiş olarak bulacak ve müşteriler bu iyileştirilmiş çekirdekler için hemen faydalanacaktır. Azure tarafından ayarlanan bu çekirdekler hakkında daha fazla bilgi aşağıdaki bağlantılarda bulunabilir:
 
 - [CentOS Azure tarafından ayarlanmış çekirdek-CentOS sanallaştırma SıG ile kullanılabilir](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Bulut çekirdeğini devre dışı bırak-Azure 'da detem 10 ve detem 9 "backports" görüntüsü ile kullanılabilir](https://wiki.debian.org/Cloud/MicrosoftAzure)
@@ -78,9 +78,9 @@ Credadtiv, ücretsiz yazılım kullanarak profesyonel çözümlerin geliştirilm
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
 
-Kinvolk, en az bir şekilde, Kapsayıcılı uygulamalar için bir minimum, sabit ve otomatik güncelleştirme temeli için özgün CoreOS vizyonunu devam ettirerek, yataydaki bir Linux kapsayıcısıdır. En az bir kalda, yatayda yalnızca kapsayıcıları dağıtmak için gereken paketleri içerir. Sabit dosya sistemi tutarlılık ve güvenlik garantisi sağlarken, otomatik güncelleştirme özellikleri, en son güvenlik düzeltmeleriyle her zaman güncel olmasını sağlar. 
+Kinvolk, en düşük, sabit ve Kapsayıcılı uygulamalar için otomatik güncelleştirme temeli için özgün CoreOS vizyonunu devam ettirerek, yataydaki bir Linux kapsayıcısının arkasındaki şirkettir. En az bir kalda, yatayda yalnızca kapsayıcıları dağıtmak için gereken paketleri içerir. Sabit dosya sistemi tutarlılık ve güvenlik garantisi sağlarken, otomatik güncelleştirme özellikleri, en son güvenlik düzeltmeleriyle her zaman güncel olmasını sağlar. 
 
-En çok 7/24 yanıt, güvenlik ve Teknik Uyarılar ve uzun süreli bir destek kanalı dahil olmak üzere Azure 'a yönelik en iyi duruma getirilmiş görüntüleri içeren isteğe bağlı bir ticari destek aboneliği sunan, Kinvolk 'in genel ekibi ve kapsayıcı teknoloji uzmanlarının, yataybir kapsayıcı Linux tarafından yedeklenir.
+KCAR kapsayıcı Linux, Kinvolk 'in dünya çapında ve uzun süreli destek kanalı dahil olmak üzere çok yönlü yanıt, güvenlik ve Teknik Uyarılar ve Azure 'a yönelik en iyi duruma getirilmiş görüntüleri içeren isteğe bağlı bir ticari destek aboneliği sunan ve kapsayıcı teknoloji uzmanlarının yedeklenmesini sağlar.
 
 
 ### <a name="oracle"></a>Oracle
@@ -93,7 +93,7 @@ Oracle stratejisi, genel ve özel bulutlara yönelik kapsamlı bir çözüm port
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Dünya genelindeki açık kaynaklı çözümlerin önde gelen sağlayıcısı, Red Hat Fortune 500 şirketinin %90 ' ünden fazlasına yardımcı olur. iş sorunlarını çözmesine, BT ve iş stratejilerini hizalamasına ve daha sonra teknoloji için hazırlık yapmanıza olanak sağlar. Red Hat Bu, açık iş modeli ve uygun maliyetli, öngörülebilir bir abonelik modeli aracılığıyla güvenli çözümler sunarak bunu yapar.
+Dünya genelindeki açık kaynaklı çözümlerin önde gelen sağlayıcısı, Red Hat Fortune 500 şirketinin %90 ' ünden fazlasına yardımcı olur. iş sorunlarını çözmesine, BT ve iş stratejilerini hizalamasına ve daha sonra teknoloji için hazırlık yapmanıza olanak sağlar. Red Hat Bu, açık bir iş modeli ve uygun maliyetli, öngörülebilir bir abonelik modeli aracılığıyla güvenli çözümler sağlayarak buna erişir.
 
 ### <a name="suse"></a>SUSE
 

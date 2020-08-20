@@ -1,32 +1,32 @@
 ---
 title: Microsoft AppSource ve Azure Marketi karşılaştırması
-description: Bu makalede, Microsoft ticari Market vitrinler-Microsoft AppSource ve Azure Marketi arasındaki farklar açıklanmaktadır.
+description: Bu makalede, Microsoft ticari Market çevrimiçi mağazalarının Microsoft AppSource ve Azure Market arasındaki farklar açıklanmaktadır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121818"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607468"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Marketi karşılaştırması
 
-Microsoft ticari Market [Microsoft AppSource](https://appsource.microsoft.com) ve [Azure Marketi](https://azuremarketplace.microsoft.com)'ni içerir. Her storefront benzersiz müşteri gereksinimlerine ve farklı hedef kitlelere hizmet eder, böylece çözümünüzün veya hizmetinizin doğru müşteriler tarafından kullanılabilir olmasını sağlayabilirsiniz.
+Microsoft ticari Market [Microsoft AppSource](https://appsource.microsoft.com) ve [Azure Marketi](https://azuremarketplace.microsoft.com)'ni içerir. Her çevrimiçi mağaza benzersiz müşteri gereksinimlerine ve farklı hedef kitlelere sahip olur, böylece çözümünüz veya hizmetinizin doğru müşteriler tarafından kullanılabilir olmasını sağlayabilirsiniz.
 
-## <a name="understanding-the-differences-between-storefronts"></a>Vitrinler arasındaki farkları anlama
+## <a name="understanding-the-differences-between-online-stores"></a>Çevrimiçi mağazalar arasındaki farkları anlama
 
-Bir storefront seçmek için öncelikle teklifiniz için hedef kitleyi belirleyin. Birden çok storem 'de izleyicileri hedefliyorsanız, birden fazla stotiye satış yapmak için bir kez yayımlayabilirsiniz.
+Çevrimiçi mağaza seçmek için öncelikle teklifiniz için hedef kitleyi belirleyin. Birden çok çevrimiçi mağazasında izleyicileri hedefliyorsanız, birden fazla mağaza Satım için bir kez yayımlayabilirsiniz.
 
 | Azure Market | AppSource |
 |:--- |:--- |
 | BT uzmanları ve geliştiriciler | İş kullanıcıları ve Iş karar mekanizmaları |
 
-Aşağıdaki tabloda, storefront kullanmanın avantajları açıklanmaktadır:
+Aşağıdaki tabloda, çevrimiçi mağaza kullanmanın avantajları açıklanmaktadır:
 
 | Yararları | Azure Market | AppSource |
 |:--- |:--- | :--- |

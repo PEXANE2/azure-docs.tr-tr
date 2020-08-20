@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607334"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -120,11 +120,11 @@ Ticari Market yayımcıları, yazılımlarını desteklemekten sorumludur ve Mic
 
 Yayımlama işlemi sırasında teklifinizin önizlemesine erişim vermiş olursunuz. Erişim, **Önizleme** sekmesinde belirttiğiniz kullanıcılarla kısıtlıdır ve teklif başka bir kişi tarafından görüntülenemez. Bir önizleme satın alabilir ve süreci test edebilirsiniz, ancak teklifinizin kurulumuna göre tüm tutardan ücret ödersiniz.
 
-Bir satın almayı çok düşük bir fiyatla tamamlayabilmeniz için, tek başına kullanabileceğiniz bir özel planı yayımlamayı ve test maliyeti olarak kabul ettiğiniz bir fiyata yayımlamayı öneririz. $0,00 fiyatı desteklenir, ancak ücretli bir abonelik olduğu için tam deneyimi yansıtmaz, bu nedenle fiyatı $1,00 ' de ayarlamayı öneririz.
+Bir satın alma işleminin düşük bir fiyatla tamamlanabilmesi için, tek başına sizin tarafınızdan görüntülenebilen bir özel planı yayımlamayı öneririz ve test maliyeti olarak kabul edebilirsiniz. $0,00 fiyatı desteklenir, ancak ücretli bir abonelik olduğu için tam deneyimi yansıtmaz, bu nedenle fiyatı $1,00 ' de ayarlamayı öneririz.
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Ticari Market 'ten müşteri adayları nedir ve bunlarla ne yapmam gerekir?
 
-Müşteriler Microsoft AppSource ve Azure Market stokileri için tekliflerinizi kullanırken bilgiler yakalanır. Müşteriler yeterli ilgi gösterdikten sonra bir müşteri adayı oluşturulur ve tercih ettiğiniz sisteme bir fırsat gönderilir. Ticari Market 'te başarılı olan yayımcılar genellikle müşteri adaylarına, ilişki geliştirebilir ve ilgi çekici bir şekilde ilgileniyor.
+Müşteriler Microsoft AppSource ve Azure Market çevrimiçi mağazalarında tekliflerinizi kullanırken bilgiler yakalanır. Müşteriler yeterli ilgi gösterdikten sonra bir müşteri adayı oluşturulur ve tercih ettiğiniz sisteme bir fırsat gönderilir. Ticari Market 'te başarılı olan yayımcılar genellikle müşteri adaylarına, ilişki geliştirebilir ve ilgi çekici bir şekilde ilgileniyor.
 
 Daha fazla bilgi için bkz. [Market teklifinizin müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -140,7 +140,7 @@ Teklifler, bunları nasıl yapılandırdığınıza ve müşterilerin eylemlerin
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Teklifim hem Microsoft AppSource hem de Azure Marketi 'nde görünebilir mi?
 
-Microsoft AppSource, iş ve sektör çözümlerinin hedefi ve Azure Marketi BT ve Geliştirici çözümleri için tasarlanmıştır. Teklifler, teklif oluşturma sırasında seçtiğiniz kategorilere ve sektörlere göre her bir storete tarafından kullanılabilir. Teklifin her iki stokın kullanıcılarıyla ilgili olduğu nadir durumlarda, her ikisinde de görünebilirler.
+Microsoft AppSource, iş ve sektör çözümlerinin hedefi ve Azure Marketi BT ve Geliştirici çözümleri için tasarlanmıştır. Teklifler, teklif oluşturma sırasında seçtiğiniz kategorilere ve sektörlere göre çevrimiçi mağazaların her birinde kullanılabilir. Teklifin her iki çevrimiçi mağazadaki kullanıcılarla ilgili olduğu nadir durumlarda, her ikisinde de görünebilir.
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı nedir?
 

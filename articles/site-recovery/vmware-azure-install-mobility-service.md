@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186446"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606509"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Mobility aracısının gönderim yüklemesi için kaynak makineyi hazırlama
 
@@ -59,6 +59,7 @@ Korumak istediğiniz her Linux makinesinde şunları yapın:
 11. **Hesapları Yönet** sekmesinde **Hesap Ekle**' yi seçin.
 12. Oluşturduğunuz hesabı ekleyin.
 13. Bir bilgisayar için çoğaltmayı etkinleştirdiğinizde kullandığınız kimlik bilgilerini girin.
+1. SUSE Linux Enterprise Server 11 SP3 makinelerini güncelleştirmek veya korumak için ek adım. [Yapılandırma sunucusunda en son sürümün kullanılabilir olduğundan emin olun](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Çoğaltılan makinelerde virüsten koruma
 

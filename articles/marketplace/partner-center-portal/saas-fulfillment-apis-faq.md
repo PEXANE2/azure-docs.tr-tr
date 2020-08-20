@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 164a0e295179bb0c1e8d7da6b43d8e07a4e9f4e9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304420"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606807"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 'in API 'Leri karşılama hakkında genel sorular
 
@@ -63,13 +63,13 @@ API 'ye yapılan yanıt, `Resolve` SaaS aboneliğiyle ilişkili teklif ve plan b
 >[!Note]
 >Belirli dönüştürme yollarını desteklemek istemiyorsanız, eski sürüme engel olabilirsiniz.
 
-Aşağıdaki sıra, SaaS deneyiminde bir Azure müşterisi değiştiğinde akışı yakalar:
+Aşağıdaki sıra, bir Azure müşterisi SaaS deneyiminde bir planı değiştirdiğinde akışı yakalar:
 
 ![Müşteri planı değişiklik akışı](media/saas-metering-service-integration-flow-b.png)
 
-Aşağıdaki sıra, Microsoft 'un storefront bir Azure müşterisi tarafından planda değiştiği sırada akışı yakalar.
+Aşağıdaki sıra, bir Azure müşterisi Microsoft 'un çevrimiçi mağazasındaki bir planı değiştirdiğinde akışı yakalar:
 
-![Müşteri storefront planı değişiklik akışı](media/saas-metering-service-integration-flow-c.png)
+![Müşteri çevrimiçi mağaza planı değişiklik akışı](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Azure kullanıcısı, Azure aboneliği ile ilişkili planın aboneliğini nasıl iptal edebilir?
 
@@ -79,9 +79,9 @@ Aşağıdaki sıra, bir Azure müşterisi SaaS deneyiminde SaaS teklifine abone 
 
 ![SaaS deneyiminde müşteri aboneliği kaldırma](media/saas-metering-service-integration-flow-d.png)
 
-Aşağıdaki sıra, Azure kullanıcısı Microsoft 'un storefront abone olarak kaldırılırken akışı yakalar:
+Aşağıdaki sıra, Azure kullanıcısı Microsoft 'un çevrimiçi mağazasındaki aboneliği kaldırdığınızda akışı yakalar:
 
-![Microsoft 'un storefront abone olduğu müşteri aboneliği](media/saas-metering-service-integration-flow-e.png)
+![Microsoft 'un çevrimiçi mağazasındaki müşteri aboneliği kaldırılıyor](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

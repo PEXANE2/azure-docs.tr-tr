@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168023"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607192"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -54,7 +54,7 @@ Bir teklif sertifikalandırıldıktan ve yayımlandıktan sonra, müşteriler e�
 
 ## <a name="deploying-private-offers"></a>Özel teklifleri dağıtma
 
-Özel Teklifler yalnızca [Azure Portal](https://azure.microsoft.com/features/azure-portal/) aracılığıyla bulunabilir ve [Microsoft AppSource](https://appsource.microsoft.com/) veya [Azure Marketi](https://azuremarketplace.microsoft.com)'nde gösterilmez. Farklı ticari Market stotörlerinin yayımlanması hakkında daha fazla bilgi edinmek için bkz. [Yayımlama seçeneğinizi belirleme](./determine-your-listing-type.md).
+Özel Teklifler yalnızca [Azure Portal](https://azure.microsoft.com/features/azure-portal/) aracılığıyla bulunabilir ve [Microsoft AppSource](https://appsource.microsoft.com/) veya [Azure Marketi](https://azuremarketplace.microsoft.com)'nde gösterilmez. Farklı ticari Market çevrimiçi mağazalarında yayımlama hakkında daha fazla bilgi edinmek için bkz. [Yayımlama seçeneğinizi belirleme](./determine-your-listing-type.md).
 
 Müşteriler, Azure portal oturum açtıktan sonra özel tekliflerinden erişmek için Market gezinti öğesini seçebilir. Özel teklifler de arama sonuçlarında görünür ve diğer teklifler gibi komut satırı ve Azure Resource Manager şablonları aracılığıyla dağıtılabilir.
 

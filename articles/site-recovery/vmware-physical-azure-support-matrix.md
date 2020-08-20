@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 8ffc07d38e3a04cd4cf71aaa8e80d69066f044f6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079408"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607087"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -86,12 +86,12 @@ Windows 7 SP1 64-bit | [Güncelleştirme paketi 36](https://support.microsoft.co
 **İşletim sistemi** | **Ayrıntılar**
 --- | ---
 Linux | Yalnızca 64 bit sistem desteklenir. 32 bit sistem desteklenmez.<br/><br/>Her Linux sunucusunda [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklü olmalıdır. Yük devretme/yük devretme testi sonrasında Azure 'da sunucuyu önyüklemek gerekir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun. <br/><br/> Azure 'da Linux sunucularını çalıştırmak için yük devretmeyi Site Recovery. Ancak, Linux satıcıları, desteği yalnızca yaşam sonuna ulaşmamış olan dağıtım sürümleriyle sınırlayabilir.<br/><br/> Linux dağıtımları üzerinde yalnızca dağıtım alt sürüm sürümü/güncelleştirmesi 'nin bir parçası olan hisse senedi çekirdekleri desteklenir.<br/><br/> Korunan makinelerin birincil Linux dağıtım sürümleri arasında yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakın, işletim sistemini yükseltin ve sonra çoğaltmayı yeniden etkinleştirin.<br/><br/> Azure 'da Linux ve açık kaynaklı teknoloji desteği hakkında [daha fazla bilgi edinin](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
-Linux Red Hat Enterprise | 5,2 5,11</b><br/> 6,1 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/> Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda daha eski çekirdekler, [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
-Linux: CentOS | 5,2 5,11</b><br/> 6,1 6,10</b><br/> 7,0 7,8<br/> <br/> 8,0, 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/><br/> CentOS 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda daha eski çekirdekler, [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
-Ubuntu | Ubuntu 14,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)
+Linux Red Hat Enterprise | 5,2 5,11</b><br/> 6,1 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/> Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda daha eski çekirdekler, [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
+Linux: CentOS | 5,2 5,11</b><br/> 6,1 6,10</b><br/> 7,0 [7,9](https://support.microsoft.com/help/4578241/)<br/> <br/> 8,0, 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/><br/> CentOS 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda daha eski çekirdekler,  [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
+Ubuntu | Ubuntu 14,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions); Ubuntu 18.4.03 (çekirdek v 5.4) [9,36](https://support.microsoft.com/help/4578241/) adresinden desteklenir </br> Ubuntu 20,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)
 Debian | 7. ve 8. (tüm 7 için destek içerir). *x*, 8. *x* sürümleri) [(desteklenen çekirdek sürümlerini gözden geçirin)](#debian-kernel-versions)
-SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> SUSE Linux Enterprise Server 11 SP3 'den SP4 'e çoğaltılan makinelerin yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakıp yükseltmeden sonra yeniden etkinleştirin.
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/)  <br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Tüm UEK çekirdekler ve RedHat çekirdekte çalışan <= 3.10.0-1062. * desteklenir. RedHat çekirdekler 'nin geri kalanı için destek, Ağustos 'un sonuna kadar beklenen 9,36 ' de kullanıma sunulacaktır.
+SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3. [Yapılandırma sunucusunda en son Mobility Aracısı yükleyicisini Indirdiğinizden emin olun](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server). </br> SUSE Linux Enterprise Server 11 SP4 </br> **Not**: SUSE LINUX ENTERPRISE Server 11 SP3 'den SP4 'e çoğaltılan makinelerin yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakıp yükseltmeden sonra yeniden etkinleştirin. <br/>|
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/)  <br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor<br/><br/>8.1<br/>Tüm uı3.10.0 çekirdekler ve RedHat çekirdekleri üzerinde çalışma <=-1062. * [9,36](https://support.microsoft.com/help/4578241/) [9,35](https://support.microsoft.com/help/4573888/) desteklenir
 
 > [!Note]
 > Windows sürümlerinin her biri için Azure Site Recovery yalnızca [uzun süreli bakım kanalı (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) derlemelerini destekler.  [Yarı yıllık kanal](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) yayınları Şu anda şu anda desteklenmiyor.
@@ -100,50 +100,50 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Desteklenen yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-14,04 LTS | [9,32][9.32 UR], [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
-14,04 LTS | [9,31][9.31 UR] | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
+14,04 LTS | [9,32][9.32 UR], [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/) | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 |||
+16,04 LTS | [9,36](https://support.microsoft.com/help/4578241/)| 4.4.0-21-Generic-4.4.0-186-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-112-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1092-Azure |
 16,04 LTS | [9,35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-Genel-4.4.0-184-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-106-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1089-Azure |
 16,04 LTS | [9,34](https://support.microsoft.com/help/4570609) | 4.4.0-21-Genel-4.4.0-178-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic to 4.15.0-101-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1083-Azure |
 16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-Genel-4.4.0-178-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic-4.15.0-99-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1082-Azure|
 16,04 LTS | [9,32][9.32 UR] | 4.4.0-21-Generic-4.4.0-171-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-74-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1066-Azure|
-16,04 LTS | [9,31][9.31 UR] | 4.4.0-21-Generic-4.4.0-170-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-72-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1063-Azure|
 |||
+18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-Genel-4.15.0-112-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-58-Generic </br> 5.3.0-19-Generic-5.3.0-64-Generic </br> 5.4.0-37-Generic to 5.4.0-42-Generic</br> 4.15.0-1009-Azure-4.15.0-1092-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1032-Azure </br> 5.4.0-1020-Azure-5.4.0-1022-Azure|
 18,04 LTS | [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-Genel-4.15.0-108-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-52-Generic </br> 5.3.0-19-Generic-5.3.0-61-Generic </br> 4.15.0-1009-Azure-4.15.0-1089-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1031-Azure|
 18,04 LTS | [9,34](https://support.microsoft.com/help/4570609) | 4.15.0-20-Genel-4.15.0-101-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-48-Generic </br> 5.3.0-19-Generic ile 5.3.0-53-Generic </br> 4.15.0-1009-Azure-4.15.0-1083-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1022-Azure|
 18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-Generic ila 4.15.0-99-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-47-Generic </br> 5.3.0-19-Generic-5.3.0-51-Generic </br> 4.15.0-1009-Azure-4.15.0-1082-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1020-Azure|
 18,04 LTS | [9,32][9.32 UR]| 4.15.0-20-Genel-4.15.0-74-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-37-Generic </br> 5.3.0-19-Generic-5.3.0-24-genel </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1028-Azure </br> 5.3.0-1007-Azure-5.3.0-1009-Azure|
-18,04 LTS | [9,31][9.31 UR]| 4.15.0-20-Genel-4.15.0-72-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-37-Generic </br> 5.3.0-19-Generic-5.3.0-24-genel </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1025-Azure </br> 5.3.0-1007-Azure|
+|||
+20,04 LTS |[9,36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-Generic to 5.4.0-42 </br> -Generic 5.4.0-1010-Azure-5.4.0-1022-Azure
 
 ### <a name="debian-kernel-versions"></a>Çekirdek sürümlerini kaldırma
 
 
 **Desteklenen yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-Deyi 7 | [9,31][9.31 UR], [9,32][9.32 UR], [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/)| 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
+Deyi 7 | [9,32][9.32 UR], [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/)| 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
 |||
-Debian 8 | [9,35](https://support.microsoft.com/help/4573888/) | 3.16.0-4-AMD64 ila 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
-Debian 8 | [9,31][9.31 UR], [9,32][9.32 UR], [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
+Debian 8 | [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/) | 3.16.0-4-AMD64 ila 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
+Debian 8 | [9,32][9.32 UR], [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 desteklenen çekirdek sürümü
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,36](https://support.microsoft.com/help/4578241/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.43-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.22-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,35](https://support.microsoft.com/help/4573888/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.43-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.19-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,34](https://support.microsoft.com/help/4570609) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.43-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.13-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.29-Azure  |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 desteklenen çekirdek sürümü
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,36](https://support.microsoft.com/help/4578241/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.38-Azure
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,35](https://support.microsoft.com/help/4573888/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.33-Azure 
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,34](https://support.microsoft.com/help/4570609)  | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.30-Azure 
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.30-Azure |
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir. </br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure
-
-
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux dosya sistemleri/Konuk depolama
 
@@ -193,15 +193,15 @@ Site Recovery hizmetine özel bağlantı erişimi | Evet. [Daha fazla bilgi edin
 
 **Bileşen** | **Desteklenir**
 --- | ---
-Azure ExpressRoute | Evet
-ILB | Evet
-ELB | Evet
-Azure Traffic Manager | Evet
-Çoklu NIC | Evet
-Ayrılmış IP adresi | Evet
-IPv4 | Evet
-Kaynak IP adresini sakla | Evet
-Azure sanal ağ hizmet uç noktaları<br/> | Evet
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Çoklu NIC | Yes
+Ayrılmış IP adresi | Yes
+IPv4 | Yes
+Kaynak IP adresini sakla | Yes
+Azure sanal ağ hizmet uç noktaları<br/> | Yes
 Hızlandırılmış ağ iletişimi | No
 
 ## <a name="storage"></a>Depolama
@@ -210,25 +210,25 @@ Hızlandırılmış ağ iletişimi | No
 Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
 Docker disk yapılandırması | No
 Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
-Ana bilgisayar SAN (Iscsı/FC) | Evet
+Ana bilgisayar SAN (Iscsı/FC) | Yes
 Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
 Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
-Konuk/sunucu VMDK | Evet
+Konuk/sunucu VMDK | Yes
 Konuk/sunucu paylaşılan küme diski | No
 Konuk/sunucu tarafından şifrelenen disk | No
 Konuk/sunucu NFS | No
 Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
 Konuk/sunucu SMB 3,0 | No
-Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
 4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | No
 4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | No
-Şeritli disk >4 TB olan konuk/sunucu birimi | Evet
+Şeritli disk >4 TB olan konuk/sunucu birimi | Yes
 Mantıksal birim yönetimi (LVM)| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
 Konuk/sunucu-depolama alanları | No
 Konuk/sunucu Hot Add/Remove disk | No
-Konuk/sunucu-diski hariç tut | Evet
+Konuk/sunucu-diski hariç tut | Yes
 Konuk/sunucu çok yollu (MPIO) | No
 Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört destekleniyordu.
 ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
@@ -246,17 +246,17 @@ Konuk/sunucu EFı/UEFı önyüklemesi | -Site Recovery Mobility Agent sürüm 9,
 
 **Bileşen** | **Desteklenir**
 --- | ---
-Yerel olarak yedekli depolama | Evet
-Coğrafi olarak yedekli depolama | Evet
-Okuma erişimli coğrafi olarak yedekli depolama | Evet
+Yerel olarak yedekli depolama | Yes
+Coğrafi olarak yedekli depolama | Yes
+Okuma erişimli coğrafi olarak yedekli depolama | Yes
 Seyrek Erişimli Depolama | No
 Sık erişimli depolama| No
 Blok blobları | No
-Bekleyen şifreleme (SSE)| Evet
+Bekleyen şifreleme (SSE)| Yes
 Bekleyen şifreleme (CMK)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
 Rest 'te Çift şifreleme | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller). [Windows](../virtual-machines/windows/disk-encryption.md) ve [Linux](../virtual-machines/linux/disk-encryption.md)için desteklenen bölgeler hakkında daha fazla bilgi edinin.
-Premium depolama | Evet
-Güvenli aktarım seçeneği | Evet
+Premium depolama | Yes
+Güvenli aktarım seçeneği | Yes
 İçeri/dışarı aktarma hizmeti | No
 Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
 Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
@@ -265,10 +265,10 @@ Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katman
 
 **Özellik** | **Desteklenir**
 --- | ---
-Kullanılabilirlik kümeleri | Evet
+Kullanılabilirlik kümeleri | Yes
 Kullanılabilirlik alanları | No
-HUB | Evet
-Yönetilen diskler | Evet
+HUB | Yes
+Yönetilen diskler | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 

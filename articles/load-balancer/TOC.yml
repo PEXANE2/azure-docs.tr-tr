@@ -4,8 +4,6 @@
   items:
     - name: Azure Load Balancer nedir?
       href: load-balancer-overview.md
-    - name: Yenilikler
-      href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Genel yük dengeleyici oluşturma - Portal
@@ -45,6 +43,8 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
+    - name: Yenilikler
+      href: whats-new.md
     - name: Bileşenler
       href: components.md
     - name: Kavramlar

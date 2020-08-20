@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5058f37fcf96c7c556b55f0afb8753390f51f4d1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503574"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607348"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -133,8 +133,8 @@ Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır 
 
 |Microsoft faturaları  | $100,00/ay  |
 |---------|---------|
-|Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \*$90,00/ay    |
-|Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \*$10,00     |
+|Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \* Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \* $90,00/ay    |
+|Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \* Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \* $10,00     |
 
 Microsoft, ticari Market 'te yayımladığınız bazı tekliflerle ilgili Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için geçerlidir.
 
@@ -148,7 +148,7 @@ Microsoft, ticari Market 'te yayımladığınız bazı tekliflerle ilgili Market
 
 **Ücretsiz krediler ve parasal taahhüt** : bazı müşteriler azure 'u kurumsal anlaşma bir parasal taahhütte ön ödeme yapmayı tercih ediyor veya Azure ile kullanım için ücretsiz krediler sağladı. Bu krediler Azure kullanımı için ödeme yapmak üzere kullanılabilse de, yayımcı yazılımı lisans ücretleri için ödeme yapmak üzere kullanılamaz.
 
-**Faturalandırma ve koleksiyonlar** – yayımcı yazılım lisansı faturalandırması müşteri tarafından seçilen faturalandırma yöntemi kullanılarak sunulur ve faturalama zaman çizelgesine uyar. Yerinde Kurumsal Anlaşma olmayan müşteriler Market yazılım lisansları için aylık olarak faturalandırılır. Kurumsal Anlaşma olan müşteriler aylık olarak sunulan bir fatura aracılığıyla aylık olarak faturalandırılır.
+**Faturalandırma ve koleksiyonlar** – yayımcı yazılım lisansı faturalandırması, faturalandırılmasına ve faturalama zaman çizelgesine göre belirtilen müşteri tarafından seçilen yöntemi kullanılarak sunulur. Yerinde Kurumsal Anlaşma olmayan müşteriler Market yazılım lisansları için aylık olarak faturalandırılır. Kurumsal Anlaşma olan müşteriler aylık olarak sunulan bir fatura aracılığıyla aylık olarak faturalandırılır.
 
 Abonelik veya kullandıkça öde fiyatlandırma modelleri seçildiğinde, Microsoft, yayımcının aracı olarak davranır ve faturalandırma, ödeme ve koleksiyonun tüm yönleriyle sorumludur.
 
@@ -191,4 +191,4 @@ Transact yayımlama seçeneği yalnızca aşağıdaki Market teklif türleriyle 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Teklifinizin seçimini ve yapılandırmasını tamamlamak için teklif türüne göre yayımlama seçeneklerinde uygunluk gereksinimlerini gözden geçirin.
-- Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için storefront göre yayımlama düzenlerini gözden geçirin.
+- Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için çevrimiçi mağazaya göre yayımlama düzenlerini gözden geçirin.

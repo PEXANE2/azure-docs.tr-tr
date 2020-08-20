@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498030"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607387"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -32,7 +32,7 @@ Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir ü
 
 Transact iş ortakları için, ticari Market platformu aracılığıyla faturalanan satışlarınızı büyürken, katman başına daha fazla avantajdan yararlanın.
 
-Stoıd 'ler içinde yayımlamak için en düşük gereksinim bir MPNID olduğundan, bu avantajlar MPN uzmanlığa veya iş ortağı türünden bağımsız olarak tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, ticari Market aracılığıyla işletmelerini bir platform olarak büyümeye güç sağlar.
+Çevrimiçi mağazalarda yayımlamak için en düşük gereksinim bir MPNıD 'dir, bu nedenle MPN uzmanlığa veya iş ortağı türünden bağımsız olarak bu avantajlar tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, ticari Market aracılığıyla işletmelerini bir platform olarak büyümeye güç sağlar.
 
 Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, sizin de [gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
 
@@ -87,7 +87,7 @@ Canlı bir teklif sahibi olan tüm iş ortakları, ticari Market teklifleriniz i
 
 ![Teknik avantajlar](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\*Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2021 tarihine kadar tamamlanması gerekir.
+\* Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2021 tarihine kadar tamamlanması gerekir.
 
 Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 

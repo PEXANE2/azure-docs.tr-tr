@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: VPN Gateway hakkında
+    - name: VPN Ağ Geçidi nedir?
       href: vpn-gateway-about-vpngateways.md
 - name: Öğreticiler
   items:
@@ -116,7 +116,7 @@
           items:
             - name: P2S VPN yapılandırma
               items:
-                - name: Azure portalı
+                - name: Azure portal
                   href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
                 - name: Azure PowerShell
                   href: vpn-gateway-howto-point-to-site-rm-ps.md

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056559"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607506"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -20,7 +20,7 @@ Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne geçti. İş Ortağı Merk
 
 ## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>Iş Ortağı Merkezi 'ne geçiş benim için ne anlama geliyor?
 
-İş Ortağı Merkezi 'nde her zamanki gibi iş yapmaya devam edebilirsiniz:
+İş Ortağı Merkezi 'nde iş yapmaya devam edebilirsiniz:
 
 | Alan<img src="" width=200px> | Değişiklikler |
 | --- | --- |
@@ -58,7 +58,7 @@ Bunlar, kullanımdan kaldırılan Bulut İş Ortağı Portalı ve geçerli Iş o
 
 | Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
 | --- | --- |
-| **Bağlantı**:https://cloudpartner.azure.com/ | **Bağlantı**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory vehttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Bağlantı**: https://cloudpartner.azure.com/ | **Bağlantı**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory ve https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
 | **Gezinti**: Öngörüler ödemede sunulan ödeme raporlaması | **Gezinti**: Iş Ortağı Merkezi – ödeme simgesi içinde sunulan ödeme raporlaması |
 | **Kapsam**:<ul><li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olur.</li><li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir.</li></ul> | **Kapsam**:<ul><li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li><li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li><li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.</li></ul> |
 | **İşlem ödeme için hazır değil**: Faturalandırma sürüyor | **İşlem ödeme için hazır değil**: sonraki tahmini ödeme: ödeme durumu işlenmemiş durumda. |
@@ -135,7 +135,7 @@ Bulut İş Ortağı Portalı ve Iş ortağı merkezi arasındaki bazı farklıl�
 
 ### <a name="modular-publishing-capabilities"></a>Modüler yayımlama özellikleri
 
-İş Ortağı Merkezi, tüm güncelleştirmeleri her zaman tek seferde yayımlamak yerine yayımlamak istediğiniz değişiklikleri seçmenizi sağlayan modüler bir yayımlama seçeneği sunar. Örneğin, aşağıdaki ekranda yalnızca yayımlanacak değişikliklerin **Özellikler** ve **teklif listesi**değişiklikleri olduğunu gösterilmektedir. Önizleme sayfasında yaptığınız değişiklikler yayımlanmaz.
+İş Ortağı Merkezi, tüm güncelleştirmeleri her zaman tek seferde yayımlamak yerine yayımlamak istediğiniz değişiklikleri seçmenizi sağlayan modüler bir yayımlama seçeneği sunar. Örneğin, aşağıdaki ekranda yalnızca yayımlanacak değişikliklerin **Özellikler** ve  **teklif listesi**değişiklikleri olduğunu gösterilmektedir. Önizleme sayfasında yaptığınız değişiklikler yayımlanmaz.
 
 [![Ekran görüntüsü Iş Ortağı Merkezi Inceleme ve yayımlama sayfasını gösterir.](media/cpp-pc-faq/review-page.png "Iş Ortağı Merkezi Inceleme ve yayımlama sayfasını gösterir")](media/cpp-pc-faq/review-page.png#lightbox)
 
@@ -153,7 +153,7 @@ Bazı marka değişiklikleri olduğunu fark edeceksiniz. Örneğin, *SKU 'Lar* I
 
 [![Ekran görüntüsü Iş Ortağı Merkezi planları sayfasını gösterir.](media/cpp-pc-faq/plans.png "Iş Ortağı Merkezi planları sayfasını gösterir")](media/cpp-pc-faq/plans.png#lightbox)
 
-Ayrıca, daha önce **Market** veya **storefront details** (danışmanlık hizmeti, Power BI uygulaması) bulut iş ortağı portalı sayfalarında önceden verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nde **teklif listesi** sayfasında toplanır:
+Ayrıca, daha önce **Market** veya **storefront details**  (danışmanlık hizmeti, Power BI uygulaması) bulut iş ortağı portalı sayfalarında önceden verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nde **teklif listesi** sayfasında toplanır:
 
 [![Ekran görüntüsü Iş Ortağı Merkezi teklif listesi sayfasını gösterir.](media/cpp-pc-faq/offer-listing.png "Iş Ortağı Merkezi teklif listesi sayfasını gösterir")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
@@ -181,6 +181,6 @@ Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve
 
 | API <img src="" width=100px>| Açıklamayı Değiştir | Etki |
 | --- | --- | --- |
-| Yayınlama SONRASı, GoLive, Iptal | Geçirilen tekliflere, yanıt üst bilgisi farklı bir biçime sahip olur ancak işlem durumunu almak için göreli bir yol belirten aynı şekilde çalışmaya devam edecektir. | Bir teklif için karşılık gelen POST isteklerinin herhangi birine gönderim yaparken, konum üst bilgisi teklifin geçiş durumuna bağlı olarak iki biçimden birine sahip olur: <ul><li>Geçirilmeyen teklifler:`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilen teklifler:`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
+| Yayınlama SONRASı, GoLive, Iptal | Geçirilen tekliflere, yanıt üst bilgisi farklı bir biçime sahip olur ancak işlem durumunu almak için göreli bir yol belirten aynı şekilde çalışmaya devam edecektir. | Bir teklif için karşılık gelen POST isteklerinin herhangi birine gönderim yaparken, konum üst bilgisi teklifin geçiş durumuna bağlı olarak iki biçimden birine sahip olur: <ul><li>Geçirilmeyen teklifler: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilen teklifler: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | Işlemi al | Daha önce yanıtta bir ' bildirim-e-posta ' alanını destekleyen teklifler için, bu alan kullanım dışı bırakılır ve artık geçirilmiş teklifler için döndürülmez. | Geçirilmiş teklifleriniz için, isteklerde belirtilen e-posta listesine artık bildirim gönderemeyecektir. Bunun yerine, API hizmeti, e-posta göndermek için Iş Ortağı Merkezi 'nde bildirim e-postası işlemiyle hizalanır. Özellikle, işlem ilerleme durumu bildirimleri Iş Ortağı Merkezi 'nde hesap ayarlarınızın satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresine gönderilir.<br><br>Iş Ortağı Merkezi 'ndeki [Hesap ayarları](https://partner.microsoft.com/dashboard/account/management) bölümündeki satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresinin bildirimleri almak için doğru olduğundan emin olun. |
 |||

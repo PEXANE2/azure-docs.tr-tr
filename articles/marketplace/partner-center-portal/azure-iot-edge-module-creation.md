@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2584d10a73f183958e3b7010255979cc47bc2cd9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167190"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606353"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Marketi için bir Nesnelerin İnterneti (IoT) Edge modülü t
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca çevrimiçi mağazalarda görünür. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
 
 ### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -131,7 +131,7 @@ Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -233,7 +233,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 3. Destek adresi (bağlantı)
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
-6. Name
+6. Adı
 7. Özet
 8. Açıklama
 9. Yararlı bağlantılar

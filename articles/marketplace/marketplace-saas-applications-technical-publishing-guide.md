@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280945"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607300"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulaması teklifi yayımlama kılavuzu
 
@@ -21,14 +21,14 @@ SaaS uygulamalarını ticari markette, "benimle Iletişime geçin", "Şimdi dene
 
 ## <a name="offer-overview"></a>Teklifin genel bakış  
 
-SaaS uygulamaları Microsoft AppSource ve Azure Marketi 'nde kullanılabilir.  Hem vitrinler, List, deneme ve Transact tekliflerini destekler.
+SaaS uygulamaları Microsoft AppSource ve Azure Marketi 'nde kullanılabilir.  Çevrimiçi mağazaların her ikisi de liste, deneme ve Transact tekliflerini destekler.
 
 **Liste:**  Listeleme yayımlama seçeneği, bir kişi kullanım teklifi türü içerir ve deneme ya da Işlem düzeyinde katılım uygulanabilir olmadığında kullanılır. Bu yaklaşımın avantajı, işletmeden bir çözüm sunan yayımcıların, işinizi artırma konusunda anlaşabilecek müşteri adaylarını hemen almaya başlamasını sağlar.  
-**Deneme/işlem:**  Müşterinin çözümünüz için bir deneme süresi doğrudan satın alma veya isteme seçeneği vardır. Deneme deneyimini sağlamak, müşterilere sunulan katılım düzeyini artırır ve müşterilerin satın almadan önce çözümünüzü araştırmalarını sağlar. Deneme deneyimiyle, daha fazla bilgi sahibi olursunuz ve müşteri görevlendirmelerden daha fazla ve daha zengin müşteri adayları beklemeniz gerekir. Denemeler, deneme süresi boyunca en az ücretsiz destek içermelidir.  
+**Deneme/işlem:**  Müşterinin çözümünüz için bir deneme süresi doğrudan satın alma veya isteme seçeneği vardır. Deneme deneyimini sağlamak, müşterilere sunulan katılım düzeyini artırır ve müşterilerin satın almadan önce çözümünüzü araştırmalarını sağlar. Deneme deneyimiyle, çevrimiçi mağazalardan daha iyi yükseltme şansı elde edersiniz ve müşteri görevlendirmelerden daha fazla ve daha zengin müşteri adayları beklemelisiniz. Denemeler, deneme süresi boyunca en az ücretsiz destek içermelidir.  
 
 | SaaS uygulamaları teklifi | İş gereksinimleri | Teknik gereksinimler |  
 | --- | --- | --- |  
-| **Bize Ulaşın** | Yes | Hayır |  
+| **Bizimle iletişime geçin** | Yes | Hayır |  
 | **Power BI/Dynamics** | Yes | Evet (Azure AD tümleştirmesi) |  
 | **SaaS uygulamaları**| Yes | Evet (Azure AD tümleştirmesi) |     
 
@@ -127,7 +127,7 @@ Microsoft, ticaret hareketini barındırır. Microsoft, müşterinizin adına fa
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- |  
 |Faturalandırma ve ölçüm | Teklifiniz, yayımlamadan önce seçtiğiniz fiyatlandırma modeline (sabit fiyat veya Kullanıcı başına) göre fiyatlandırılır.  Düz oran modeli kullanıyorsanız, isteğe bağlı olarak, sabit fiyata dahil edilen kullanım için müşterileri ücretlendirmeden kullanılan ek boyutları ekleyebilirsiniz. |  
-|İptal Etme | Teklifiniz herhangi bir zamanda müşteri tarafından iptal edilir. |  
+|İptal | Teklifiniz herhangi bir zamanda müşteri tarafından iptal edilir. |  
 |İşlem giriş sayfası | Kullanıcıların SaaS hizmet hesabını oluşturup yönetebilecekleri bir Azure ortak markalı işlem giriş sayfası barındırabilirsiniz. |   
 | Abonelik API 'SI | Bir kullanıcı hesabı ve hizmet planı oluşturmak, güncelleştirmek ve silmek için SaaS aboneliğiyle etkileşime girebilen bir hizmeti kullanıma sunacaksınız. Kritik API değişikliklerinin 24 saat içinde desteklenmesi gerekir. Kritik olmayan API değişiklikleri düzenli olarak serbest bırakılır. |  
 
