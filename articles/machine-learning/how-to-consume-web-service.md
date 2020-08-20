@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e5fb19b0d8d94b5ccc07c465c3e9f3bf0de50ab7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843071"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652602"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,10 +41,10 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 
 [Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
 
-* `auth_enabled`-Anahtar kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
-* `token_auth_enabled`-Belirteç kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
-* `scoring_uri`-REST API adresi.
-* `swagger_uri`-Openapı belirtiminin adresi. Otomatik şema oluşturmayı etkinleştirdiyseniz, bu URI kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+* `auth_enabled` -Anahtar kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
+* `token_auth_enabled` -Belirteç kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
+* `scoring_uri` -REST API adresi.
+* `swagger_uri` -Openapı belirtiminin adresi. Otomatik şema oluşturmayı etkinleştirdiyseniz, bu URI kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
 
@@ -157,30 +157,6 @@ REST API, isteğin gövdesinin aşağıdaki yapıyla bir JSON belgesi olmasını
 
 > [!IMPORTANT]
 > Verilerin yapısının, hizmette Puanlama betiğinin ve modelinin beklediği ile eşleşmesi gerekir. Puanlama betiği, verileri modele geçirmeden önce değiştirebilir.
-
-Örneğin, [Not defteri örneğinde eğitme](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) içindeki model 10 sayıdan oluşan bir dizi bekler. Bu örneğe ilişkin Puanlama betiği, istekten bir sayısal tuş bir y dizisi oluşturur ve modele geçirir. Aşağıdaki örnek bu hizmetin beklediği verileri gösterir:
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-Web hizmeti, bir istekte birden çok veri kümesini kabul edebilir. Yanıt dizisi içeren bir JSON belgesi döndürür.
 
 ### <a name="binary-data"></a>İkili veriler
 

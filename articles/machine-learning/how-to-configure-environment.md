@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09d82c4834e50e0dff74edb5ccd14287736b937e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844482"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652653"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -215,7 +215,7 @@ Jupyter Notebook ortamınızda bu bileşenleri etkinleştirmek için:
     conda activate myenv
     ```
 
-1. Örnek bir not defteri kümesi için [GitHub deposunu](https://aka.ms/aml-notebooks) kopyalayın.
+1. Örnek bir not defteri kümesi için [GitHub deposunu](https://github.com/Azure/MachineLearningNotebooks) kopyalayın.
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
@@ -312,7 +312,7 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
    > Başka SDK ek özellikleri yüklenemez. Yukarıdaki seçeneklerden yalnızca birini seçin [databricks] veya [Oto ml].
 
    * **Tüm kümelere otomatik olarak ekle**' yi seçmeyin.
-   * Küme adınızın yanındaki **Ekle** ' yi seçin.
+   * Küme adınızın yanındaki  **Ekle** ' yi seçin.
 
 1. Durum **iliştirilene**kadar, bu işlem birkaç dakika sürebilir.  Bu adım başarısız olursa:
 
@@ -323,8 +323,8 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
    Ayrıca şunları göz önünde bulundurun:
    + Azure Databricks kullanırken, oto ml yapılandırmasında aşağıdaki parametreleri ekleyin:
-       1. ```max_concurrent_iterations```, kümenizdeki çalışan düğümlerinin sayısına bağlıdır.
-        2. ```spark_context=sc```, varsayılan Spark bağlamını temel alır.
+       1. ```max_concurrent_iterations``` , kümenizdeki çalışan düğümlerinin sayısına bağlıdır.
+        2. ```spark_context=sc``` , varsayılan Spark bağlamını temel alır.
    + Ya da eski bir SDK sürümünüz varsa, kümenin yüklü olan kitaplıkların seçimini kaldırın ve çöp kutusuna geçiş yapın. Yeni SDK sürümünü yükleyip kümeyi yeniden başlatın. Yeniden başlatmadan sonra bir sorun varsa, kümenizi ayırın ve yeniden bağlayın.
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:

@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7957253565658ca387502acb413bc3e6f9a1a3a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538811"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652755"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -58,7 +58,7 @@ Başlamak için:
 3. **Connect-AzAccount**kullanarak Azure hesabınızda oturum açın. Bu cmdlet bir Web sayfasını getirir ve sizden hesap kimlik bilgilerinizi ister:
 
     * Alternatif olarak, **-Credential** parametresini kullanarak, hesap kimlik bilgilerinizi **Connect-azaccount** cmdlet 'ine bir parametre olarak dahil edebilirsiniz.
-    * CSP iş ortağı olarak bir kiracı adına çalışıyorsanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin: **Connect-AzAccount-Tenant "fabrikam.com"**
+    * Bir kiracı adına çalışan bir CSP iş ortağıysanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin: **Connect-AzAccount-Tenant "fabrikam.com"**
 
 4. Hesap birden çok aboneliğe sahip olduğundan, hesapla birlikte kullanmak istediğiniz aboneliği ilişkilendirin:
 
@@ -394,7 +394,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="delete-backup-data"></a>Yedekleme verilerini silme
 
-Kasadaki depolanan yedekleme verilerini tamamen kaldırmak için '-RemoveRecoveryPoints ' bayrağını [' devre dışı bırak](#retain-data)' seçeneğini eklemeniz yeterlidir.
+Kasadaki depolanan yedekleme verilerini tamamen kaldırmak için '-RemoveRecoveryPoints ' bayrağını/anahtarını [' devre dışı bırak ' koruma komutuna](#retain-data)ekleyin.
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
@@ -422,7 +422,7 @@ Bir Azure VM 'yi geri yüklemek için temel adımlar şunlardır:
 * Diskleri geri yükleyin.
 * Depolanan disklerden VM oluşturma.
 
-### <a name="select-the-vm"></a>VM 'yi seçin
+### <a name="select-the-vm-when-restoring-files"></a>VM 'yi seçin (dosyaları geri yüklerken)
 
 Doğru yedekleme öğesini tanımlayan PowerShell nesnesini almak için, kasadaki kapsayıcıdan başlayın ve nesne hiyerarşisinde bir şekilde çalışın. VM 'yi temsil eden kapsayıcıyı seçmek için [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) cmdlet 'Ini ve [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) cmdlet 'ine yönelik kanalı kullanın.
 
@@ -431,9 +431,9 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Bir kurtarma noktası seçin
+### <a name="choose-a-recovery-point-when-restoring-files"></a>Bir kurtarma noktası seçin (dosyaları geri yüklerken)
 
-Yedekleme öğesinin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 'ini kullanın. Sonra geri yüklemek için kurtarma noktasını seçin. Hangi kurtarma noktasının kullanılacağını bilmiyorsanız, listede en son RecoveryPointType = Apptutarlı noktasını seçmek iyi bir uygulamadır.
+Yedekleme öğesinin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 'ini kullanın. Sonra geri yüklemek için kurtarma noktasını seçin. Hangi kurtarma noktasının kullanılacağı konusunda emin değilseniz, listede en son RecoveryPointType = Apptutarlı noktasını seçmek iyi bir uygulamadır.
 
 Aşağıdaki betikte, **$RP**değişkeni, son yedi gün içindeki seçili yedekleme öğesi için bir kurtarma noktaları dizisidir. Dizi, dizin 0 ' daki en son kurtarma noktasıyla ters sırada sıralanır. Kurtarma noktasını seçmek için standart PowerShell dizisi dizinlemeyi kullanın. Örnekte, $rp [0] en son kurtarma noktasını seçer.
 
@@ -636,9 +636,9 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
         }
     ```
 
-    * **Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **Anahtar Kasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
+    * **Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **Anahtar Kasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (bir veri blobu için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
 
-    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.
+    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılamadığında yürütülmesi gerekir.
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -663,9 +663,9 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
         }
     ```
 
-    * **Azure AD (bek ve kek) olmadan yönetilmeyen ve şifrelenmiş sanal makineler** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), kaynak **keykasası/anahtar/gizli** anahtar yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
+    * **Azure AD (bek ve kek) olmadan yönetilmeyen ve şifrelenmiş sanal makineler** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), kaynak **keykasası/anahtar/gizli** anahtar yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (bir veri blobu için bu adım gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
 
-    Aşağıdaki betiğin yalnızca kaynak Keykasası/Key/Secret kullanılabilir olmadığında yürütülmesi gerekir.
+    Aşağıdaki komut dosyasının yalnızca kaynak Keykasası/anahtar/parola kullanılabilir olmadığında yürütülmesi gerekir.
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -697,9 +697,9 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
 
     * **Azure AD Ile yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -Azure AD ile yönetilen şifreli VM 'ler IÇIN (bek ve kek kullanılarak şifrelenir), geri yüklenen yönetilen diskleri iliştirin. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
+    * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (bir veri diski için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
 
-    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.  
+    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılamadığında yürütülmesi gerekir.  
 
     ```powershell
     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -718,7 +718,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
 
     Gizli dizileri kullanılabilir olduktan ve şifreleme ayrıntıları işletim sistemi diskinde ayarlandıktan sonra, geri yüklenen yönetilen diskleri eklemek için bkz. [PowerShell kullanarak bir WINDOWS sanal makinesine veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -kaynak **Anahtar Kasası/anahtar/gizli** anahtar yoksa, Azure AD olmayan şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir),, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri diskleri için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
+    * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -kaynak **Anahtar Kasası/anahtar/gizli** anahtar yoksa, Azure AD olmayan şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir),, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diskleri için bu adım gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
 
     Aşağıdaki betiğin yalnızca kaynak Keykasası/anahtar/parola kullanılabilir olmadığında yürütülmesi gerekir.
 
@@ -764,7 +764,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
     ```
 
 7. ADE uzantısı gönder.
-   ADE uzantıları itilmediği takdirde, veri diskleri şifrelenmemiş olarak işaretlenir, bu nedenle aşağıdaki adımların yürütülmesi zorunludur:
+   ADE uzantıları itilmemişse, veri diskleri şifrelenmemiş olarak işaretlenir, bu nedenle aşağıdaki adımların yürütülmesi zorunludur:
 
    * **Azure AD Ile VM için** -veri diskleri şifrelemesini el ile etkinleştirmek için aşağıdaki komutu kullanın  
 
@@ -811,7 +811,7 @@ Azure VM yedeğinden bir dosyayı geri yüklemenin temel adımları şunlardır:
 * Gerekli dosyaları kopyalayın
 * Diski çıkarın
 
-### <a name="select-the-vm"></a>VM 'yi seçin
+### <a name="select-the-vm-when-restoring-the-vm"></a>VM 'yi seçin (VM geri yüklenirken)
 
 Doğru yedekleme öğesini tanımlayan PowerShell nesnesini almak için, kasadaki kapsayıcıdan başlayın ve nesne hiyerarşisinde bir şekilde çalışın. VM 'yi temsil eden kapsayıcıyı seçmek için [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) cmdlet 'Ini ve [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) cmdlet 'ine yönelik kanalı kullanın.
 
@@ -820,9 +820,9 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Bir kurtarma noktası seçin
+### <a name="choose-a-recovery-point-when-restoring-the-vm"></a>Bir kurtarma noktası seçin (VM geri yüklenirken)
 
-Yedekleme öğesinin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 'ini kullanın. Sonra geri yüklemek için kurtarma noktasını seçin. Hangi kurtarma noktasının kullanılacağını bilmiyorsanız, listede en son RecoveryPointType = Apptutarlı noktasını seçmek iyi bir uygulamadır.
+Yedekleme öğesinin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 'ini kullanın. Sonra geri yüklemek için kurtarma noktasını seçin. Hangi kurtarma noktasının kullanılacağı konusunda emin değilseniz, listede en son RecoveryPointType = Apptutarlı noktasını seçmek iyi bir uygulamadır.
 
 Aşağıdaki betikte, **$RP**değişkeni, son yedi gün içindeki seçili yedekleme öğesi için bir kurtarma noktaları dizisidir. Dizi, dizin 0 ' daki en son kurtarma noktasıyla ters sırada sıralanır. Kurtarma noktasını seçmek için standart PowerShell dizisi dizinlemeyi kullanın. Örnekte, $rp [0] en son kurtarma noktasını seçer.
 

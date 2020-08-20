@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835740"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652789"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -120,7 +120,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 - Bir kasa oluşturulduğunda, "DefaultPolicy" de oluşturulur ve kaynakları yedeklemek için kullanılabilir.
 - Bir yedekleme ilkesinin bekletme döneminde yapılan tüm değişiklikler, yeni olanlardan başka tüm eski kurtarma noktalarına daha etkin bir şekilde uygulanır.
 
-### <a name="additional-reference"></a>Ek başvuru
+### <a name="additional-reference"></a>Ek başvurular
 
 - Azure VM makinesi: ilke [oluşturma](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) ve [değiştirme](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) .
 - Azure VM makinesindeki SQL Server veritabanı: ilke [oluşturma](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) ve [değiştirme](./manage-monitor-sql-database-backup.md#modify-policy) .
@@ -193,9 +193,8 @@ Azure VM 'Leri, işletim sistemlerini, uygulamalarını ve verilerini depolamak 
 
 Disk depolama ve VM 'Ler için kullanılabilir disk türleri hakkında daha fazla bilgi için şu makalelere bakın:
 
-- [Windows VM 'Leri için Azure yönetilen diskler](../virtual-machines/windows/managed-disks-overview.md)
-- [Linux sanal makineleri için Azure yönetilen diskler](../virtual-machines/linux/managed-disks-overview.md)
-- [VM 'Ler için kullanılabilir disk türleri](../virtual-machines/windows/disks-types.md)
+- [Linux sanal makineleri için Azure yönetilen diskler](../virtual-machines/managed-disks-overview.md)
+- [VM 'Ler için kullanılabilir disk türleri](../virtual-machines/disks-types.md)
 
 ### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Premium Depolama ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -204,7 +203,7 @@ Azure Backup ile Premium depolamayı kullanarak Azure VM 'Leri yedekleyebilirsin
 - VM 'Leri Premium Depolama ile yedekleme işlemi sırasında, yedekleme hizmeti depolama hesabında *AzureBackup*adlı geçici bir hazırlama konumu oluşturur. Hazırlama konumunun boyutu, kurtarma noktası anlık görüntüsünün boyutuna eşittir.
 - Premium depolama hesabının geçici hazırlama konumuna uyum sağlamak için yeterli boş alana sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Premium sayfa BLOB depolama hesapları Için ölçeklenebilirlik hedefleri](../storage/blobs/scalability-targets-premium-page-blobs.md). Hazırlama konumunu değiştirmeyin.
 - Yedekleme işi tamamlandıktan sonra, hazırlama konumu silinir.
-- Hazırlama konumu için kullanılan depolama fiyatı, [Premium Depolama fiyatlandırmasıyla](../virtual-machines/windows/disks-types.md#billing)tutarlıdır.
+- Hazırlama konumu için kullanılan depolama fiyatı, [Premium Depolama fiyatlandırmasıyla](../virtual-machines/disks-types.md#billing)tutarlıdır.
 
 Premium depolamayı kullanarak Azure VM 'lerini geri yüklediğinizde, bunları Premium veya standart depolamaya geri yükleyebilirsiniz. Genellikle bunları Premium depolamaya geri yüklemeniz gerekir. Ancak, VM 'den yalnızca bir dosya alt kümesine ihtiyacınız varsa, bunları standart depolamaya geri yüklemek uygun maliyetli olabilir.
 

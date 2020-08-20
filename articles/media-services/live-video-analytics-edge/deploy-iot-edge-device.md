@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067945"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652466"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -51,7 +51,7 @@ Akış uç noktasını başlatmak için bu komutu kullanabilirsiniz
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
-Media Service API 'Lerine erişmek için kimlik bilgilerini almak üzere bu makaledeki adımları izleyin: [Media Service API 'lerine erişin](../latest/access-api-howto.md#use-the-azure-portal).
+Media Service API 'Lerine erişmek için kimlik bilgilerini almak üzere bu makaledeki adımları izleyin: [medya hizmeti API 'lerine erişin](../latest/access-api-howto.md?tabs=portal) ve Portal sekmesini seçin.
 
 ## <a name="create-and-use-local-user-account-for-deployment"></a>Dağıtım için yerel kullanıcı hesabı oluşturma ve kullanma
 IoT Edge modülünde canlı video analizlerini çalıştırmak için, olabildiğince az ayrıcalığa sahip bir yerel kullanıcı hesabı oluşturun. Örnek olarak, Linux makinenizde aşağıdaki komutları çalıştırın:
@@ -168,7 +168,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     * {resourceGroupName}-medya hizmeti hesabınızın ait olduğu kaynak grubu
     * {AMS-Account-Name}-Media Services hesabınızın adıdır
     
-    Diğer değerleri almak için bkz. [erişim Azure Media Services API 'si](../latest/access-api-howto.md#use-the-azure-portal).  
+    Diğer değerleri almak için bkz. [erişim Azure Media Services API 'si](../latest/access-api-howto.md?tabs=portal) ve Portal sekmesini seçme.  
     * Aadtenantıd-kiracınızın KIMLIĞIDIR ve Yukarıdaki bağlantıdan "Aadtenantıd" ile aynıdır.
     * Aadserviceprincıpalappıd-bu, medya hizmeti hesabınız için hizmet sorumlusunun uygulama KIMLIĞIDIR ve Yukarıdaki bağlantıdan "Aadclitıd" ile aynıdır.
     * Aadservicesprincipalsecret-bu, hizmet sorumlusunun parolasıdır ve Yukarıdaki bağlantıdan "AadSecret" ile aynıdır.

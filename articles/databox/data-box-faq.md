@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090765"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652585"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -56,6 +56,18 @@ A.  Data Box hangi ülkelerin/bölgelerin kullanılabildiği hakkında bilgi edi
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>S. Data Box ile hangi bölgelerde veri depolayabilirim?
 A. Data Box ABD, Batı Avrupa, Kuzey Avrupa, Fransa, UK, Japonya, Avustralya ve Kanada 'daki tüm bölgeler için desteklenir. Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)' ne gidin.
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>S. Şirket içi kaynak verileri farklı bir ülkede/bölgede bir Azure bölgesine nasıl aktarabilir veya bir ülkede bir Azure bölgesinden farklı bir ülkeye/bölgeye veri aktarabilirsiniz?
+
+Data Box veri alımı veya çıkışı yalnızca hedefle aynı ülke/bölge dahilinde destekler ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), veri kutularının herhangi bir AB ülkesine/bölgesine nereden gönderdikleriyle ilgili olan emirler için geçerlidir.
+
+Örneğin, içeri aktarma senaryosunda, Kanada 'da bir Azure WestUS depolama hesabına taşımak istediğiniz şirket içi verileriniz varsa, bunu aşağıdaki şekilde gerçekleştirebilirsiniz:
+
+1. Canda 'da bir depolama hesabı seçerek Kanada 'daki siparişi Data Box. Cihaz, bir Azure veri merkezinden, sipariş oluşturma sırasında belirtilen nakliye adresine (Kanada 'da) gönderilir.
+
+2. Data Box şirket içi veri kopyalama işlemi yapıldıktan sonra, cihazı Kanada 'daki Azure veri merkezine döndürün. Data Box bulunan veriler, sipariş oluşturma sırasında seçilen Kanada Azure bölgesindeki hedef depolama hesabına yüklenir.
+
+3. Daha sonra AzCopy gibi bir araç kullanarak, verileri WestUS ' deki bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>S. Data Box ile ilgili sorun yaşamam halinde kiminle iletişim kurmam gerekir?
 A. Data Box ile ilgili sorun yaşamanız halinde lütfen [Microsoft Desteği ile iletişime geçin](data-box-disk-contact-microsoft-support.md).
