@@ -4,20 +4,20 @@ description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905134"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641968"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
-Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makalede, size sunulan dağıtım yöntemlerine ilişkin bir genel bakış ve çeşitli senaryolarda kullanılacak en iyi yöntem önerileri sunulmaktadır. Ayrıca, underlyng dağıtım teknolojileri hakkında ayrıntılı bir liste ve önemli ayrıntılar sağlar. 
+Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makalede, size sunulan dağıtım yöntemlerine ilişkin bir genel bakış ve çeşitli senaryolarda kullanılacak en iyi yöntem önerileri sunulmaktadır. Ayrıca, temel alınan dağıtım teknolojileri hakkında ayrıntılı bir liste ve önemli ayrıntılar sağlar. 
 
 ## <a name="deployment-methods"></a>Dağıtım yöntemleri
 
-Azure 'da kod yayımlamak için kullandığınız dağıtım teknolojisi, genellikle uygulamanızı yayımlama yöntemiyle belirlenir. Uygun dağıtım yöntemi, belirli gereksinimlere ve geliştirme döngüsündeki noktaya göre belirlenir. Örneğin, geliştirme ve test sırasında, Visual Studio Code gibi doğrudan geliştirme aracınızdan dağıtım yapabilirsiniz. Uygulamanız üretimde olduğunda, kaynak denetiminden veya ek doğrulama ve test içeren bir otomatik yayımlama işlem hattı kullanarak daha dikkatli bir şekilde yayımlayabilirsiniz.  
+Azure 'da kod yayımlamak için kullandığınız dağıtım teknolojisi, genellikle uygulamanızı yayımlama yöntemiyle belirlenir. Uygun dağıtım yöntemi, belirli gereksinimlere ve geliştirme döngüsündeki noktaya göre belirlenir. Örneğin, geliştirme ve test sırasında, Visual Studio Code gibi doğrudan geliştirme aracınızdan dağıtım yapabilirsiniz. Uygulamanız üretimde olduğunda, kaynak denetiminden sürekli olarak veya ek doğrulama ve test içeren bir otomatik yayımlama işlem hattı kullanarak yayımlamak daha olasıdır.  
 
 Aşağıdaki tabloda, Işlev projeniz için kullanılabilir dağıtım yöntemleri açıklanmaktadır.
 
@@ -106,7 +106,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 İşlev uygulamanızı içeren bir uzak paket (. zip) dosyasına başvurmak için bir dış paket URL 'SI kullanabilirsiniz. Dosya, girilen URL 'den indirilir ve uygulama [paket modundan Çalıştır](run-functions-from-deployment-package.md) bölümünde çalışır.
 
->__Nasıl kullanılır:__ `WEBSITE_RUN_FROM_PACKAGE`Uygulama ayarlarınıza ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz.
+>__Nasıl kullanılır:__ `WEBSITE_RUN_FROM_PACKAGE` Uygulama ayarlarınıza ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz.
 >
 >Azure Blob depolama kullanırsanız, IŞLEVLERE pakete erişim sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanın. Uygulamanın her yeniden başlatıldığı zaman içeriğin bir kopyasını getirir. Başvurunuz, uygulamanın ömrü için geçerli olmalıdır.
 
@@ -202,7 +202,13 @@ Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve d
 | PowerShell (Önizleme) |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup>Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik HTTP ve Zamanlayıcı Tetikleyicileri için etkindir.
+<sup>*</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik HTTP ve Zamanlayıcı Tetikleyicileri için etkindir.
+
+## <a name="deployment-behaviors"></a>Dağıtım davranışları
+
+Bir dağıtım gerçekleştirdiğinizde, istekleri işlemeye başlamak için yeni kod yüklendikten sonra, mevcut tüm yürütmelerin tamamlanmasını veya zaman aşımına izin verilir.
+
+Bu geçiş üzerinde daha fazla denetime ihtiyacınız varsa dağıtım yuvalarını kullanmanız gerekir.
 
 ## <a name="deployment-slots"></a>Dağıtım yuvaları
 

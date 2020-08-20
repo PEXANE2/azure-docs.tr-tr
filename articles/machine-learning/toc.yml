@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: Kurumsal kullanıma hazır olma ve güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Kurumsal güvenlik ve idare
           items:
             - name: Kurumsal güvenliğe genel bakış

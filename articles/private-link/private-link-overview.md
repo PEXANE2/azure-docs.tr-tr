@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168159"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639707"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -68,6 +68,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 | Azure SignalR | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |  | Önizleme   <br/> [Daha fazla bilgi edinin](https://aka.ms/asrs/privatelink)   |
 | Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |  | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Azure Dosya Eşitleme | Tüm ortak bölgeler      | |   GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD, BATı ORTA ABD, FRANSA ORTA, DOĞU ASYA, UK GÜNEY, ABD DEVLETI VIRGINIA, US GOV ARIZONA  | | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 En güncel bildirimler için, [Azure özel bağlantı güncelleştirmeleri sayfasına](https://azure.microsoft.com/updates/?product=private-link)bakın.
 

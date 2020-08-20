@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850755"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642206"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -21,7 +21,7 @@ Python 'da tek başına Işlev örnek projeleri için bkz. [Python işlevleri ö
 
 Azure Işlevleri, bir işlevin girişi işleyen ve çıkış üreten Python betikinizde durum bilgisiz bir yöntem olmasını bekler. Varsayılan olarak, çalışma zamanı metodun dosyada çağrılan genel bir yöntem olarak uygulanması beklenir `main()` `__init__.py` . Ayrıca, [alternatif bir giriş noktası da belirtebilirsiniz](#alternate-entry-point).
 
-Tetikleyicilerden ve bağlamalardan alınan veriler, `name` *function.js* dosyasında tanımlanan özelliği kullanarak Yöntem öznitelikleri aracılığıyla işleve bağlıdır. Örneğin, aşağıdaki _function.js_ ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır `req` :
+Tetikleyicilerden ve bağlamalardan alınan veriler, `name` *function.js* dosyasında tanımlanan özelliği kullanarak Yöntem öznitelikleri aracılığıyla işleve bağlıdır. Örneğin, aşağıdaki  _function.js_ ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -87,7 +87,6 @@ Ana proje klasörü ( \_ \_ uygulama \_ \_ ) aşağıdaki dosyaları içerebilir
 * *requirements.txt*: Azure 'a yayımlarken sistemin yüklediği paketlerin listesini içerir.
 * *host.js*:: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
 * *. funcignore*: (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
-* *. gitignore*: (isteğe bağlı) bir git deposundan dışlanan dosyaları bildirir (örneğin, local.settings.js).
 * *Dockerfile*: (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (function.js) vardır.
@@ -351,11 +350,11 @@ def main(req: azure.functions.HttpRequest,
 
 [**Bağlam**](/python/api/azure-functions/azure.functions.context?view=azure-python) sınıfı aşağıdaki dize özniteliklerine sahiptir:
 
-`function_directory`İşlevin çalıştığı dizin.
+`function_directory` İşlevin çalıştığı dizin.
 
-`function_name`İşlevin adı.
+`function_name` İşlevin adı.
 
-`invocation_id`Geçerli işlev çağırma KIMLIĞI.
+`invocation_id` Geçerli işlev çağırma KIMLIĞI.
 
 ## <a name="global-variables"></a>Global değişkenler
 

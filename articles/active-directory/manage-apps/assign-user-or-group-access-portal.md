@@ -12,16 +12,16 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799511"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642036"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory'de kurumsal uygulamaya kullanıcı veya grup atama
 
-Bu makalede, Azure portal içinden veya PowerShell kullanarak Azure Active Directory (Azure AD) içindeki kurumsal uygulamalara Kullanıcı veya Grup atama işlemlerinin nasıl yapılacağı gösterilir. Bir uygulamayı bir kullanıcıya atadığınızda, uygulama kolay erişim için kullanıcının [uygulamalar erişim panelinde](https://myapps.microsoft.com/) görüntülenir. Uygulama rolleri kullanıma sunarsa, kullanıcıya belirli bir rol de atayabilirsiniz.
+Bu makalede, Azure portal içinden veya PowerShell kullanarak Azure Active Directory (Azure AD) içindeki kurumsal uygulamalara Kullanıcı veya Grup atama işlemlerinin nasıl yapılacağı gösterilir. Bir uygulamayı bir kullanıcıya atadığınızda, uygulama kullanıcının [uygulamamda](https://myapps.microsoft.com/) kolay erişim için görüntülenir. Uygulama rolleri kullanıma sunarsa, kullanıcıya belirli bir rol de atayabilirsiniz.
 
 Daha fazla denetim için, bazı kurumsal uygulama türleri [Kullanıcı Ataması gerektirecek](#configure-an-application-to-require-user-assignment)şekilde yapılandırılabilir. 
 
@@ -45,7 +45,7 @@ Kullanıcı Ataması gerekli olduğunda, yalnızca uygulamaya açıkça atadığ
 
 Atama *gerekli*olmadığında, bu seçeneği **Hayır** olarak ayarlamış olmanız ya da uygulamanın başka bir SSO modu kullanması nedeniyle, uygulamanın doğrudan bir bağlantısı veya uygulamanın **Özellikler** sayfasında **Kullanıcı erişimi URL 'si** varsa, herhangi bir Kullanıcı uygulamaya erişebilecektir. 
 
-Bu ayar, uygulama erişimi panelinde bir uygulamanın görünüp başlatılmayacağını etkilemez. Uygulamaya bir kullanıcı veya grup atadıktan sonra, uygulamalar kullanıcıların uygulama erişim panellerinde görüntülenir. Arka plan için bkz. [uygulamalara erişimi yönetme](what-is-access-management.md).
+Bu ayar, uygulamamda bir uygulamanın görüntülenip görüntülenmeyeceğini etkilemez. Uygulamaya bir kullanıcı veya grup atadıktan sonra, uygulamalar kullanıcıların uygulama erişim panellerinde görüntülenir. Arka plan için bkz. [uygulamalara erişimi yönetme](what-is-access-management.md).
 
 
 Bir uygulama için Kullanıcı Ataması gerektirmek için:
@@ -161,7 +161,7 @@ Bu örnek, PowerShell kullanarak [Microsoft çalışma alanı analizi](https://p
 ## <a name="related-articles"></a>İlgili makaleler:
 
 - [Uygulamalara son kullanıcı erişimi hakkında daha fazla bilgi edinin](end-user-experiences.md)
-- [Azure AD erişim paneli dağıtımını planlayın](access-panel-deployment-plan.md)
+- [Azure AD My Apps dağıtımını planlayın](access-panel-deployment-plan.md)
 - [Uygulamalara erişimi yönetme](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Sonraki adımlar

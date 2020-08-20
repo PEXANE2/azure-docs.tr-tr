@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164589"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640523"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -76,7 +76,7 @@ Uygulama proxy 'Si, Azure portal yapılandırdığınız bir Azure AD hizmetidir
 
 Bu özelliğin bileşenleri, bulutta çalışan uygulama proxy hizmeti 'ni, şirket içi sunucuda çalışan hafif bir aracı olan uygulama proxy bağlayıcısını ve kimlik sağlayıcısı olan Azure AD ' yi içerir. Her üç bileşen birlikte çalışarak, kullanıcıya şirket içi Web uygulamalarına erişmek için çoklu oturum açma deneyimi sağlar.
 
-Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazlarından tanıdık bir URL veya [Uygulamaps erişim panelini](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) kullanarak şirket içi Web uygulamalarına erişebilirler. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint siteleri, Tableau, Qlik, Web üzerinde Outlook ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
+Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazlarından tanıdık bir URL 'YI veya [uygulamalarımı](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) kullanarak şirket içi Web uygulamalarına erişebilir. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint siteleri, Tableau, Qlik, Web üzerinde Outlook ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
 
 ![Azure AD Uygulama Ara Sunucusu mimarisi](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

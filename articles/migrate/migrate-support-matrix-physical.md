@@ -3,12 +3,12 @@ title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423788"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640132"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -34,7 +34,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | **Windows:** Etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmamış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
+| **İzinler**           | **Windows:** Etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmamış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. <br/> Alternatif olarak, aşağıdaki komutları kullanarak gerekli yeteneklerin ayarlandığından emin olun. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk (/usr/sbin/Fdisk yoksa) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
 | **İşletim sistemi** | Windows Server 2003 ve SUSE Linux dışındaki tüm işletim sistemleri geçiş için değerlendirilenebilir. |
 
 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 
 **Cihaz** | **Bağlantı**
 --- | ---
-**Elektrikli** | TCP bağlantı noktası 3389 ' deki gelen bağlantılar, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> Bağlantı noktası 44368 ' de, URL 'YI kullanarak gereç yönetimi uygulamasına uzaktan erişmek için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
+**Elektrikli** | TCP bağlantı noktası 3389 ' deki gelen bağlantılar, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> Bağlantı noktası 44368 ' de, URL 'YI kullanarak gereç yönetimi uygulamasına uzaktan erişmek için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
 **Fiziksel sunucular** | **Windows:** Windows sunucularından yapılandırma ve performans meta verileri çekmek için WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantı. <br/><br/> **Linux:**  22 (TCP) bağlantı noktasındaki gelen bağlantılar, Linux sunucularından yapılandırma ve performans meta verilerini çekme. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Aracı tabanlı bağımlılık Analizi gereksinimleri

@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: Genel Bakış
       items:
-        - name: Gerçek zamanlı konuşmayı metne dönüştürme nedir?
+        - name: Konuşmayı metne dönüştürme nedir?
           href: speech-to-text.md
-        - name: Toplu konuşmayı metne dönüştürme nedir?
-          href: batch-transcription.md
         - name: Konuşma tanımanın temelleri
           href: speech-to-text-basics.md
     - name: Hızlı Başlangıçlar
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: Otomatik kaynak dili algılamayı kullanma
           href: how-to-automatic-language-detection.md
+        - name: Toplu transkripsiyon API’sini kullanma
+          href: batch-transcription.md
     - name: Öğreticiler
       items:
         - name: Kiracı modelleriyle doğruluğu geliştirme

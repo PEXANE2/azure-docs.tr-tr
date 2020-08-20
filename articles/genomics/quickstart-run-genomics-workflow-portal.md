@@ -9,18 +9,18 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0e106f3ea8a5de80f4961a1d591d31abdbe2ca86
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876300"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642325"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Hızlı Başlangıç: Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma
 
 Bu hızlı başlangıçta, giriş verilerini bir Azure Blob depolama hesabına yükler ve Python Genomiks istemcisini kullanarak Microsoft Genomiks hizmeti aracılığıyla bir iş akışı çalıştırırsınız. Microsoft Genomiks, ham okumalardan başlayarak hizalanmış okumalar ve varyant ilanları üreten, bir genomu hızlı bir şekilde işleyebilen ikincil analize yönelik ölçeklenebilir ve güvenli bir hizmettir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), `pip` yüklü ve `python` sistem yolunuzda. Microsoft Genomiks istemcisi Python 3 ile uyumlu değildir. 
@@ -55,9 +55,9 @@ Hem Python hem de Microsoft Genomiks Python istemcisini `msgen` yerel ortamını
 Microsoft Genomiks Python istemcisi Python 2.7.12 veya sonraki bir 2.7. xx sürümü ile uyumludur. 2.7.14 önerilen sürümdür. Dosyayı [buradan](https://www.python.org/downloads/release/python-2714/) indirebilirsiniz. 
 
 > [!IMPORTANT]
-> Python 3. x, Python 2.7. xx ile uyumlu değildir.  `msgen`bir Python 2,7 uygulamasıdır. Çalışırken `msgen` , etkin Python ortamınızın Python 'un 2.7. xx sürümünü kullandığınızdan emin olun. `msgen`Python 'un 3. x sürümüyle birlikte kullanmaya çalışırken hata alabilirsiniz.
+> Python 3. x, Python 2.7. xx ile uyumlu değildir.  `msgen` bir Python 2,7 uygulamasıdır. Çalışırken `msgen` , etkin Python ortamınızın Python 'un 2.7. xx sürümünü kullandığınızdan emin olun. `msgen`Python 'un 3. x sürümüyle birlikte kullanmaya çalışırken hata alabilirsiniz.
 
-### <a name="install-the-microsoft-genomics-python-client-msgen"></a>Microsoft Genomiks Python istemcisini yükler`msgen`
+### <a name="install-the-microsoft-genomics-python-client-msgen"></a>Microsoft Genomiks Python istemcisini yükler `msgen`
 
 `pip`Microsoft Genomiks istemcisini yüklemek Için Python kullanın `msgen` . Aşağıdaki yönergelerde, Python2. x ' in zaten sistem yolunuzda olduğu varsayılır. `pip`Yüklemenin algılanmadığını sorun yaşıyorsanız, sistem yolunuza Python ve Scripts alt klasörünü eklemeniz gerekir.
 
@@ -125,7 +125,7 @@ GATK4 çalıştırmak istiyorsanız `process_name` parametresini olarak ayarlay�
 
 Varsayılan olarak, Genomiks hizmeti VCF dosyalarını çıktı. Bir VCF çıkışı yerine bir gVCF çıkışı isterseniz ( `-emitRefConfidence` GATK 3. x içinde ve `emit-ref-confidence` GATK 4. x içinde ile eşdeğer), `emit_ref_confidence` parametreyi *config.txt* ekleyin ve `gvcf` Önceki şekilde gösterildiği gibi olarak ayarlayın.  VCF çıktısına geri dönmek için *config.txt* dosyasından kaldırın ya da `emit_ref_confidence` parametresini olarak ayarlayın `none` . 
 
-`bgzip`, VCF veya gvcf dosyasını sıkıştıran ve `tabix` Sıkıştırılmış dosya için bir dizin oluşturan bir araçtır. Varsayılan olarak, Genomiks hizmeti `bgzip` `tabix` ". g. vcf" çıktısından sonra çalışır, ancak bu araçları ". vcf" çıkışı için varsayılan olarak çalıştırmaz. Çalıştırıldığında, hizmet ". gz" (bgzıp çıkışı) ve ". tbi" (tabx çıkışı) dosyaları üretir. Bağımsız değişkeni, ". vcf" çıkışı için varsayılan olarak false olarak ayarlanmış ve ". g. vcf" çıkışı için varsayılan olarak true olarak ayarlanan bir Boole değeridir. Komut satırında kullanmak için ya da olarak belirtin `-bz` `--bgzip-output` `true` (bgzip ve tabx 'i çalıştırın) veya `false` . Bu bağımsız değişkeni *config.txt* dosyasında kullanmak için `bgzip_output: true` dosya ekleyin `bgzip_output: false` .
+`bgzip` , VCF veya gvcf dosyasını sıkıştıran ve `tabix` Sıkıştırılmış dosya için bir dizin oluşturan bir araçtır. Varsayılan olarak, Genomiks hizmeti `bgzip` `tabix` ". g. vcf" çıktısından sonra çalışır, ancak bu araçları ". vcf" çıkışı için varsayılan olarak çalıştırmaz. Çalıştırıldığında, hizmet ". gz" (bgzıp çıkışı) ve ". tbi" (tabx çıkışı) dosyaları üretir. Bağımsız değişkeni, ". vcf" çıkışı için varsayılan olarak false olarak ayarlanmış ve ". g. vcf" çıkışı için varsayılan olarak true olarak ayarlanan bir Boole değeridir. Komut satırında kullanmak için ya da olarak belirtin `-bz` `--bgzip-output` `true` (bgzip ve tabx 'i çalıştırın) veya `false` . Bu bağımsız değişkeni *config.txt* dosyasında kullanmak için `bgzip_output: true` dosya ekleyin `bgzip_output: false` .
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Python istemcisini kullanarak iş akışınızı Microsoft Genomiks hizmetine gönderme `msgen`
 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Ayrıca, "Genomiks öğreticisi. ipynb" dosyasını indirerek ve [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) gibi bir not defteri okuyucusunu kullanarak dosyayı açıp çalıştırmak için [Azure Not defteri örneğimizi](https://aka.ms/genomicsnotebook) kullanarak bu öğreticiyi inceleyebilirsiniz.
+Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi, "Genomikler öğreticisi. ipynb" dosyasını indirerek ve [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) gibi bir not defteri okuyucusunu kullanarak dosyayı açıp çalıştırmak için [Azure Notebooks örneğimizi](https://aka.ms/genomicsnotebook) kullanarak da inceleyebilirsiniz.

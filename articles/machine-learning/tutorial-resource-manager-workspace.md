@@ -9,12 +9,12 @@ ms.date: 05/26/2020
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.openlocfilehash: 098d82e6521a4a355ac31809937b589f984816f2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 760406b738d2aa95ef086941850814f4bf39fbb4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027180"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639877"
 ---
 # <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-an-arm-template"></a>Öğretici: ARM şablonunu kullanarak bir Azure Machine Learning çalışma alanı dağıtma
 
@@ -24,7 +24,7 @@ Bu öğreticide, Azure Resource Manager şablonu kullanarak bir Azure Machine Le
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-machine-learning-create%2Fazuredeploy.json)
 
@@ -36,9 +36,9 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-machine-learning-create/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-machine-learning-create/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json" range="1-258" highlight="224-254":::
+:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json":::
 
 Aşağıdaki kaynaklar şablonda tanımlanmıştır:
 
@@ -69,8 +69,8 @@ Yukarıdaki komutu çalıştırdığınızda şunu girin:
 
 Azure ML çalışma alanınızı görmek için:
 
-1. https://portal.azure.com kısmına gidin.
-1. Giriş yapın.
+1. https://portal.azure.com öğesine gidin.
+1. Oturum açın.
 1. Yeni oluşturduğunuz çalışma alanını seçin.
 
 Azure Machine Learning giriş sayfasını görürsünüz:

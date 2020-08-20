@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459394"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640557"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Parola tabanlı çoklu oturum açmayı yapılandırma
 
@@ -29,7 +29,7 @@ Parola tabanlı SSO, uygulamaları Azure AD 'ye hızlı bir şekilde tümleştir
 
 - Yalnızca Kullanıcı adı ve parola alanlarının oturum açmasını gerektiren uygulamalar için çoklu oturum açma alanları gerektiren uygulamalar desteklenir
 
-- Kullanıcılarınızın kimlik bilgilerini girerken [uygulama erişimi panelinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) göreceği Kullanıcı adı ve parola alanlarının etiketlerini özelleştirin
+- Kullanıcılarınızın, kimlik bilgilerini girerken [uygulamalarım](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) üzerinde göreceği Kullanıcı adı ve parola alanlarının etiketlerini özelleştirin
 
 - Kullanıcılarınızın, el ile yazdıkları mevcut uygulama hesapları için kendi kullanıcı adlarını ve parolalarını sağlamasına izin verin.
 
@@ -71,7 +71,7 @@ Azure AD 'nin Ayrıştırma girişimi başarısız olursa, oturum açmayı el il
    ![Parola tabanlı çoklu oturum açma için el ile yapılandırma](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. **Kayıt açma alanlarını yakala '** yı seçin. **Şu anda devam eden ileti meta veri yakalama olduğunu**gösteren yeni bir sekmede yakalama durumu sayfası açılır.
 
-4. **Erişim paneli uzantısı gerekli** kutusu yeni bir sekmede görünürse **uygulamalarım güvenli oturum açma uzantısı** tarayıcı uzantısını yüklemek için **Şimdi yüklensin** ' i seçin. (Tarayıcı uzantısı Microsoft Edge, Chrome veya Firefox gerektirir.) Sonra uzantıyı yükleyip etkinleştirin, sonra da yakalama durumu sayfasını yenileyin.
+4. Uygulamalarım **uzantısı gerekli** kutusu yeni bir sekmede görünürse **uygulamalarım güvenli oturum açma uzantısı** tarayıcı uzantısını yüklemek için **Şimdi yüklensin** ' i seçin. (Tarayıcı uzantısı Microsoft Edge, Chrome veya Firefox gerektirir.) Sonra uzantıyı yükleyip etkinleştirin, sonra da yakalama durumu sayfasını yenileyin.
 
    Tarayıcı uzantısı daha sonra, girilen URL 'YI görüntüleyen bir sekme açar.
 5. Girilen URL 'nin bulunduğu sekmede, oturum açma işlemine gidin. Kullanıcı adı ve parola alanlarını doldurup oturum açmayı deneyin. (Doğru parolayı sağlamanız gerekmez.)

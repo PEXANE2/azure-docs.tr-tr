@@ -6,15 +6,15 @@ ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 87b91d353b6d9f64f28892feed92c44ceafc2598
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575705"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640931"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>Öğretici: Azure veri paylaşma ve Kaynak Yöneticisi şablonlarını kullanarak veri paylaşma
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Hızlı başlangıç: Azure veri paylaşma ve Kaynak Yöneticisi şablonlarını kullanarak veri paylaşma
 
 Azure Resource Manager şablonu kullanarak bir Azure depolama hesabından yeni bir Azure veri paylaşımı ayarlamayı öğrenin ve verilerinizi Azure kuruluşunuz dışındaki müşteriler ve iş ortaklarıyla paylaşmaya başlayın. Desteklenen veri depolarının bir listesi için bkz. [Azure veri paylaşımında desteklenen veri depoları](./supported-data-stores.md).
 
@@ -81,7 +81,7 @@ Bunun nedeni, dağıtımın, RBAC ataması sonlandırılmadan önce veri kümesi
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Oluşturduğunuz veri paylaşma hesabını açın.
 1. Sol menüden **paylaşımları gönder**' i seçin.  Listelenen depolama hesabı görüntülenir.
 1. Depolama hesabını seçin.  **Ayrıntılar**' ın altında, şablonda yapılandırdığınız eşitleme ayarını görürsünüz.
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure veri paylaşımının nasıl oluşturulacağını ve alıcıların nasıl davet alınacağını öğrenirsiniz. Bir veri tüketicisinin bir veri paylaşımının nasıl kabul edileceği ve alabileceği hakkında daha fazla bilgi edinmek için, [verileri kabul etme ve alma](subscribe-to-data-share.md) öğreticisine geçin.
+Bu hızlı başlangıçta, Azure veri paylaşımının nasıl oluşturulacağını ve alıcıların nasıl davet alınacağını öğrenirsiniz. Bir veri tüketicisinin bir veri paylaşımının nasıl kabul edileceği ve alabileceği hakkında daha fazla bilgi edinmek için, [verileri kabul etme ve alma](subscribe-to-data-share.md) öğreticisine geçin.

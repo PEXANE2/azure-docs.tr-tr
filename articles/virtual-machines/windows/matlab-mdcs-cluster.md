@@ -8,22 +8,25 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074234"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639698"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM 'lerinde MATLAB dağıtılmış bilgi Işlem sunucusu kümeleri oluşturma
 İşlem yoğunluğu olan paralel MATLAB iş yüklerinizi çalıştırmak için bir veya daha fazla MATLAB dağıtılmış bilgi Işlem sunucusu kümesi oluşturmak üzere sanal makineleri Microsoft Azure kullanın. Kümelerinizi dağıtılmış bilgi Işlem sunucusu yazılımınızı, temel görüntü olarak kullanılacak bir VM 'ye yükler ve kümeyi dağıtmak ve yönetmek için bir Azure hızlı başlangıç şablonu veya Azure PowerShell betiği ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)' da kullanılabilir) kullanın. Dağıtımdan sonra, iş yüklerinizi çalıştırmak için kümeye bağlanın.
+
+> [!IMPORTANT]
+> Bu makale yazıldığı için artık Azure 'da MATLAB uygulamalarının kullanımı için resmi destek bulunmaktadır. Bu makalede başvurulan şablon ve betikler yerine bu daha yeni yeteneklerin kullanılması önerilir. [Azure Marketi 'nde](https://azuremarketplace.microsoft.com/) "MATLAB" için arama yapın; Azure 'da MATLAB uygulamalarının çalıştırılması hakkında daha fazla bilgi için [MathWorks](https://www.mathworks.com/solutions/cloud.html#public-cloud)adresinden ulaşılabilir.
 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>MATLAB ve MATLAB dağıtılmış bilgi Işlem sunucusu hakkında
 [MATLAB](https://www.mathworks.com/products/matlab/) platformu, mühendislik ve bilimsel sorunları çözmek için iyileştirilmiştir. Büyük ölçekli benzetimler ve veri işleme görevleri olan MATLAB kullanıcıları, işlem kümelerinin ve kılavuz hizmetlerinden yararlanarak işlem yoğunluklu iş yüklerini hızlandırmak için MathWorks paralel bilgi işlem ürünlerini kullanabilir. [Paralel bilgi Işlem araç kutusu](https://www.mathworks.com/products/parallel-computing/) , MATLAB kullanıcılarının uygulamaları paralel hale getirmek ve çok çekirdekli Işlemciler, GPU 'lar ve işlem kümelerinden yararlanmasını sağlar. [MATLAB dağıtılmış bilgi Işlem sunucusu](https://www.mathworks.com/products/distriben/) , MATLAB kullanıcılarının bir işlem kümesindeki birçok bilgisayarı kullanmasına olanak sağlar.
 
 Azure sanal makinelerini kullanarak, paralel çalışmayı, etkileşimli işler, toplu işler, bağımsız görevler ve iletişim görevleri gibi şirket içi kümeler olarak göndermek için kullanılabilen tüm mekanizmaların bulunduğu MATLAB dağıtılmış bilgi Işlem sunucusu kümeleri oluşturabilirsiniz. Azure 'un MATLAB platformu ile birlikte kullanılması, geleneksel şirket içi donanımların sağlanması ve kullanılması ile karşılaştırıldığında birçok avantaj sunar: bir dizi sanal makine boyutu, istek üzerine küme oluşturma, bu sayede yalnızca kullandığınız işlem kaynakları için ödeme yapma ve modelleri ölçekli olarak test etme yeteneği.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **İstemci bilgisayar** -dağıtımdan sonra Azure ve MATLAB dağıtılmış bilgi işlem sunucusu kümesiyle iletişim kurmak için Windows tabanlı bir istemci bilgisayara ihtiyacınız vardır.
 * **Azure PowerShell** -istemci bilgisayarınıza yüklemek için [Azure PowerShell yüklemeyi ve yapılandırmayı öğrenin](/powershell/azure/) .
 * **Azure aboneliği** -aboneliğiniz yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturabilirsiniz. Daha büyük kümeler için Kullandıkça Öde aboneliğine veya diğer satın alma seçeneklerine göz önünde bulundurun.

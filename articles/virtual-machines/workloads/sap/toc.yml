@@ -291,6 +291,8 @@
       href: azure-monitor-overview.md
     - name: SAP Çözümleri için Azure İzleyici Sağlayıcıları
       href: azure-monitor-providers.md
+    - name: SAP Çözümleri için Azure İzleyici’yi yapılandırma
+      href: azure-monitor-sap-quickstart.md
     - name: SAP Çözümleri için Azure İzleyici Hakkında SSS
       href: azure-monitor-faq.md
 - name: Başvuru

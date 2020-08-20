@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 9ecbd7778480d37fb0a0cf135d3cc5db48bf2add
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2aa9325fc01fff683e2604063408281e66d65804
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323664"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641934"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -36,7 +36,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
+:::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 Şablonda bir Azure kaynağı tanımlanmıştır:
 * [Microsoft. Biliveservices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): bilişsel hizmetler kaynağı oluşturur.
@@ -67,7 +67,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
 > [!NOTE]
-> `az deployment group`oluşturma için Azure CLı sürüm 2,6 veya üzeri gerekir. Sürüm türünü görüntüleme `az --version` . Daha fazla bilgi için [belgelerine](https://docs.microsoft.com/cli/azure/deployment/group)bakın.
+> `az deployment group` oluşturma için Azure CLı sürüm 2,6 veya üzeri gerekir. Sürüm türünü görüntüleme `az --version` . Daha fazla bilgi için [belgelerine](https://docs.microsoft.com/cli/azure/deployment/group)bakın.
 
 [Yerel makinenizde](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure komut satırı arabirimi 'NI (CLI) kullanarak veya **deneyin** düğmesine sahip bir tarayıcıda aşağıdaki betiği çalıştırın. Yeni bir kaynak grubu için bir ad ve konum (örneğin `centralus` ) girin ve ARM şablonu bunun içinde bilişsel hizmetler kaynağını dağıtmak için kullanılacaktır. Kullandığınız adı unutmayın. Daha sonra dağıtımı doğrulamak için kullanacaksınız.
 

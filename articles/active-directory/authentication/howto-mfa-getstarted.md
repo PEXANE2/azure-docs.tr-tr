@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757614"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641084"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication dağıtımı planlayın
 
@@ -108,6 +108,9 @@ Kuruluşların, [adlandırılmış konumları](../conditional-access/location-co
 ## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planlayın
 
 Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [kimlik doğrulama yöntemlerini](../authentication/concept-authentication-methods.md) seçebilirler. Birincil yöntemi kullanılamaz durumda olduğunda kullanıcıların bir yedekleme yöntemine sahip olması için birden fazla kimlik doğrulama yöntemine izin vermek önemlidir. Yöneticilerin etkinleştiremeleri için aşağıdaki yöntemler kullanılabilir:
+
+> [!TIP]
+> Microsoft, en iyi güvenlik ve Kullanıcı deneyimi için Azure Multi-Factor Authentication birincil yöntemi olarak mobil uygulamayı kullanmanızı önerir.
 
 ### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
 
@@ -244,10 +247,10 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
    * Isteğe bağlı: güvenilen konumlar veya adlandırılmış konumlar yapılandırdıysanız, bu konumları ilke içinden dahil etmek veya hariç tutmak için belirtebilirsiniz.
 1. **İzin**ver ' in altında, **erişim verme** radyo düğmesinin seçili olduğundan emin olun.
     * **Multi-Factor Authentication gerektir**kutusunu işaretleyin.
-    * **Seç**' e tıklayın.
+    * **Seç**’e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 
@@ -342,11 +345,11 @@ Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yö
 1. MFA kayıt ilkenizi yapılandırma
    1. [Birleşik MFA ve SSPR](howto-registration-mfa-sspr-combined.md)
    1. [Kimlik koruması](../identity-protection/howto-mfa-policy.md) ile
-1. Kullanıcı iletişimleri gönder ve kaydolmalarını kullanıcılara al[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. Kullanıcı iletişimleri gönder ve kaydolmalarını kullanıcılara al [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Kimin kaydolduğunu takip edin](#identify-non-registered-users)
 
 > [!TIP]
-> Kamu Bulutu kullanıcıları şurada kaydedebilir:[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Kamu Bulutu kullanıcıları şurada kaydedebilir: [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Çözümünüzü yönetin
 

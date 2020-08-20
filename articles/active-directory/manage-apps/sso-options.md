@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 3352bb13602947f08cc974d63308f2d802b144e7
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c380642cd4297a753b113bdbfdfb46060656269e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612359"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642104"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 'de çoklu oturum açma seçenekleri
 
 Çoklu oturum açma, geleneksel oturum açma yöntemlerine göre birçok avantaj sağlar.
 
-- **Çoklu oturum açma ile**kullanıcılar, etki alanına katılmış cihazlara, şirket kaynaklarına, hizmet olarak yazılım (SaaS) uygulamalarına ve Web uygulamalarına erişmek için bir hesapla bir kez oturum açabilirler. Oturum açtıktan sonra Kullanıcı Office 365 portalından veya Azure AD Uygulamaps erişim panelinden uygulama başlatabilir. Yöneticiler kullanıcı hesabı yönetimini merkezileştirmek ve grup üyeliğine göre uygulamalara Kullanıcı erişimini otomatik olarak ekleyebilir veya kaldırabilir.
+- **Çoklu oturum açma ile**kullanıcılar, etki alanına katılmış cihazlara, şirket kaynaklarına, hizmet olarak yazılım (SaaS) uygulamalarına ve Web uygulamalarına erişmek için bir hesapla bir kez oturum açabilirler. Oturum açtıktan sonra Kullanıcı Office 365 portalından veya uygulamalarım aracılığıyla uygulama başlatabilir. Yöneticiler kullanıcı hesabı yönetimini merkezileştirmek ve grup üyeliğine göre uygulamalara Kullanıcı erişimini otomatik olarak ekleyebilir veya kaldırabilir.
 
 - **Çoklu oturum açma olmadan**, kullanıcıların uygulamaya özgü parolaları hatırlamaları ve her uygulamada oturum açması gerekir. BT personelinin, Office 365, Box ve Salesforce gibi her uygulama için Kullanıcı hesapları oluşturması ve güncelleştirmesi gerekir. Kullanıcıların parolalarını hatırlamaları ve her uygulamada oturum açma süresini harcaması gerekir.
 
@@ -123,7 +123,7 @@ Her uygulama için parola, Azure AD yöneticisi veya kullanıcıları tarafında
 
 Azure AD yöneticisi kimlik bilgilerini yönettiğinde:  
 
-- Kullanıcının Kullanıcı adını ve parolayı sıfırlaması veya anımsaması gerekmez. Kullanıcı, erişim panelinde veya bir belirtilen bağlantı aracılığıyla uygulamaya tıklayarak uygulamaya erişebilir.
+- Kullanıcının Kullanıcı adını ve parolayı sıfırlaması veya anımsaması gerekmez. Kullanıcı uygulamalarıma tıklayarak veya bir belirtilen bağlantı aracılığıyla uygulamaya erişebilir.
 - Yönetici, kimlik bilgileri üzerinde yönetim görevleri gerçekleştirebilir. Örneğin, yönetici, uygulama erişimini Kullanıcı grubu üyeliklerine ve çalışan durumuna göre güncelleştirebilir.
 - Yönetici, birçok kullanıcı arasında paylaşılan uygulamalara erişim sağlamak için yönetici kimlik bilgilerini kullanabilir. Örneğin, yönetici bir uygulamaya erişebilen herkese, sosyal medya veya belge paylaşım uygulamasına erişim izni verebilir.
 

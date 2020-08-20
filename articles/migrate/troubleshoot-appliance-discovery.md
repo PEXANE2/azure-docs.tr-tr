@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171864"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640591"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -117,6 +117,28 @@ Hata 50004: "sunucu adı çözümlenemediği için bir konağa veya kümeye bağ
     3. IP adresini ve ana bilgisayar adını bir satıra ekleyin. Bu hatayı gördüğünüz her bir konak veya küme için tekrarlayın.
     4. Hosts dosyasını kaydedin ve kapatın.
     5. Gereç Yönetimi uygulamasını kullanarak gerecin konaklara bağlanıp bağlanamayacağını denetleyin. 30 dakika sonra, Azure portal bu konaklar için en son bilgileri görmeniz gerekir.
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Hata 60001: sunucuya bağlanılamıyor 
+
+- Gerecden sunucuya bağlantı olduğundan emin olun
+- Bir Linux sunucusu ise, aşağıdaki adımları kullanarak parola tabanlı kimlik doğrulamasının etkinleştirildiğinden emin olun:
+    1. Linux makinesinde oturum açın ve ' VI/etc/ssh/sshd_config ' komutunu kullanarak SSH yapılandırma dosyasını açın.
+    2. "Passwordaduthentication" seçeneğini Evet olarak ayarlayın. Dosyayı kaydedin.
+    3. SSH hizmetini "Service SSHD restart" çalıştırarak yeniden başlatın
+- Bir Windows Server ise, bağlantı noktası 5985 ' nin uzak WMI çağrılarına izin vermek için açık olduğundan emin olun.
+- Bir GCP Linux sunucusu keşfederken ve bir kök Kullanıcı kullanıyorsanız, kök oturum açma için varsayılan ayarı değiştirmek üzere aşağıdaki komutları kullanın
+    1. Linux makinesinde oturum açın ve ' VI/etc/ssh/sshd_config ' komutunu kullanarak SSH yapılandırma dosyasını açın.
+    2. "PermitRootLogin" seçeneğini Evet olarak ayarlayın.
+    3. SSH hizmetini "Service SSHD restart" çalıştırarak yeniden başlatın
+
+## <a name="error-no-suitable-authentication-method-found"></a>Hata: uygun bir kimlik doğrulama yöntemi bulunamadı
+
+Aşağıdaki adımları kullanarak Linux sunucusunda parola tabanlı kimlik doğrulamasının etkinleştirildiğinden emin olun:
+    1. Linux makinesinde oturum açın ve ' VI/etc/ssh/sshd_config ' komutunu kullanarak SSH yapılandırma dosyasını açın.
+    2. "Passwordaduthentication" seçeneğini Evet olarak ayarlayın. Dosyayı kaydedin.
+    3. SSH hizmetini "Service SSHD restart" çalıştırarak yeniden başlatın
+
 
 ## <a name="discovered-vms-not-in-portal"></a>Bulunan VM 'Ler portalda yok
 

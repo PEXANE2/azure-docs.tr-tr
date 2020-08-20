@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009127"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641033"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi ve onaylanan istemci uygulaması gerektirme
 
@@ -55,9 +55,9 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.
-1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
+1. **Koşullar**' ın altında, **istemci uygulamaları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
+   1. **Mobil uygulamalar ve Masaüstü istemcileri** ' ni seçin ve diğer her şeyin seçimini kaldırın.
 1. **Erişim denetimleri**  >  **izni**altında, aşağıdaki seçenekleri belirleyin:
    - **Onaylanan istemci uygulaması gerektir**
    - **Uygulama koruma ilkesi gerektir (Önizleme)**
@@ -76,10 +76,9 @@ Bu adımdaki koşullu erişim ilkesi için aşağıdaki bileşenleri yapılandı
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
-1. **Koşullar**altında:
-   1. **İstemci uygulamaları (Önizleme)**:
-      1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-      1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
+1. **Koşullar**altında **istemci uygulamalar**' ı seçin:
+   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+   1. **Exchange ActiveSync istemcileri** ' ni seçin ve diğer her şeyin seçimini kaldırın.
 1. **Erişim denetimleri**  >  **izni**altında, **erişim ver**' i, **Uygulama koruma ilkesi gerektir**' i ve **Seç**' i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
@@ -107,9 +106,9 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.
-1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
+1. **Koşullar**' ın altında, **istemci uygulamaları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Tarayıcı**' yı seçin.
+   1. **Tarayıcı** ' yı seçin ve diğer her şeyin seçimini kaldırın.
 1. **Erişim denetimleri**  >  **izni**altında, aşağıdaki seçenekleri belirleyin:
    - **Onaylanan istemci uygulaması gerektir**
    - **Uygulama koruma ilkesi gerektir (Önizleme)**
@@ -140,9 +139,9 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.
-1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
+1. **Koşullar**' ın altında, **istemci uygulamaları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
+   1. **Mobil uygulamalar ve Masaüstü istemcileri** ' ni seçin ve diğer her şeyin seçimini kaldırın.
 1. **Erişim denetimleri**  >  **izni**altında, aşağıdaki seçenekleri belirleyin:
    - **Onaylanan istemci uygulaması gerektir**
    - **Uygulama koruma ilkesi gerektir (Önizleme)**
@@ -159,10 +158,9 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
-1. **Koşullar**altında:
-   1. **İstemci uygulamaları (Önizleme)**:
-      1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-      1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
+1. **Koşullar**altında **istemci uygulamalar**' ı seçin:
+   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+   1. **Exchange ActiveSync istemcileri** ' ni seçin ve diğer her şeyin seçimini kaldırın.
 1. **Erişim denetimleri**  >  **izni**altında, **erişim ver**' i, **Uygulama koruma ilkesi gerektir**' i ve **Seç**' i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.

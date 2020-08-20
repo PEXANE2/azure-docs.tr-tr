@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207413"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642223"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -382,14 +382,14 @@ Visual Studio Code ve Azure Functions Core Tools gibi araçları kullanarak bir 
 * Azure 'da otomatik MSI kimlik doğrulaması.
 * İsterseniz Azure PowerShell `AzureRM` PowerShell diğer adlarını açma özelliği.
 
-## <a name="powershell-version"></a>PowerShell sürümü
+## <a name="powershell-versions"></a>PowerShell sürümleri
 
-Aşağıdaki tabloda, Işlevler çalışma zamanının her ana sürümü tarafından kullanılan PowerShell sürümü gösterilmektedir:
+Aşağıdaki tabloda, Işlevlerin çalışma zamanının her ana sürümü tarafından desteklenen PowerShell sürümleri ve gerekli .NET sürümü gösterilmektedir:
 
-| İşlevler sürümü | PowerShell sürümü                             |
-|-------------------|------------------------------------------------|
-| 'in               | Windows PowerShell 5,1 (çalışma zamanı tarafından kilitlendi) |
-| 2.x               | PowerShell Core 6                              |
+| İşlevler sürümü | PowerShell sürümü                               | .NET sürümü  | 
+|-------------------|--------------------------------------------------|---------------|
+| 3. x (önerilir) | PowerShell 7 (önerilir)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Geçerli sürümü `$PSVersionTable` herhangi bir işlevden yazdırarak görebilirsiniz.
 

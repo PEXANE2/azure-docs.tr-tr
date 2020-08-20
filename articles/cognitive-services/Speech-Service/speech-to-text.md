@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678078"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640421"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses akışlarının gerçek zamanlı olarak dökümünü metne sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metni komut girişi olarak kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi ile desteklenmektedir. <a href="./speech-translation.md" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Çeviri</a> ve <a href="./text-to-speech.md" target="_blank">metin okuma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmeti teklifleriyle sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](language-support.md#speech-to-text).
 
@@ -30,6 +28,8 @@ Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma 
 > [!NOTE]
 > Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API 'Leri kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
 > - [Bing Konuşma konuşma hizmetine geçirme](how-to-migrate-from-bing-speech.md)
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
 
@@ -58,6 +58,10 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 ## <a name="customization"></a>Özelleştirme
 
 Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilirsiniz. Özelleştirme, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelmenize yardımcı olur. [özel konuşma tanıma](how-to-custom-speech.md). Özelleştirme seçenekleri dile/yerel ayara göre farklılık gösterir. desteği doğrulamak için [desteklenen diller](supported-languages.md) bölümüne bakın.
+
+## <a name="batch-transcription"></a>Toplu iş transkripsiyonu
+
+Toplu iş dökümü, depolamada büyük miktarda ses aktarmanıza olanak sağlayan bir REST API işlemleri kümesidir. Paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarıyla karşılaşabilirsiniz. Toplu iş dökümü API 'sini kullanma hakkında daha fazla bilgi için bkz. [nasıl yapılır](batch-transcription.md) .
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 

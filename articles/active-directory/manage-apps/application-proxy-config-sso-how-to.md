@@ -16,12 +16,12 @@ ms.date: 03/12/2019
 ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764953"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642138"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Uygulama proxy 'Si uygulamasında çoklu oturum açmayı yapılandırma
 
@@ -49,7 +49,7 @@ Bu seçeneklerin her biri, uygulamanıza "kurumsal uygulamalar" ile gidip Sol me
 
 Bu sayfada Ayrıca bir ek oturum açma seçeneği görürsünüz: bağlantılı oturum açma. Bu seçenek, uygulama proxy 'Si tarafından da desteklenir. Ancak, bu seçenek uygulamaya çoklu oturum açma eklemez. Bu, uygulamanın Active Directory Federasyon Hizmetleri (AD FS) gibi başka bir hizmet kullanarak zaten çoklu oturum açma özellikli olabileceğini gösterebilir. 
 
-Bu seçenek, yöneticinin uygulamaya erişirken kullanıcı tarafından ilk kez oturum açmış bir uygulamaya bağlantı oluşturmasını sağlar. Örneğin, Active Directory Federasyon Hizmetleri (AD FS) 2,0 kullanarak kullanıcıların kimliğini doğrulamak için yapılandırılmış bir uygulama varsa, bir yönetici, erişim panelinde buna bir bağlantı oluşturmak için "bağlantılı oturum açma" seçeneğini kullanabilir.
+Bu seçenek, yöneticinin uygulamaya erişirken kullanıcı tarafından ilk kez oturum açmış bir uygulamaya bağlantı oluşturmasını sağlar. Örneğin, Active Directory Federasyon Hizmetleri (AD FS) 2,0 kullanarak kullanıcıların kimliğini doğrulamak için yapılandırılmış bir uygulama varsa, yönetici uygulamamda buna bir bağlantı oluşturmak için "bağlantılı oturum açma" seçeneğini kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Uygulama proxy 'Si ile çoklu oturum açma için parola oluşturma](application-proxy-configure-single-sign-on-password-vaulting.md)

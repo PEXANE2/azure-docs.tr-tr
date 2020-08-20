@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082996"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642240"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
 
@@ -235,13 +235,23 @@ Aynı işlevi yeniden çağırabilirsiniz ( `Invoke-RestMethod` Örneğin kullan
 
 Işlev kodunuzda hata ayıklarken aşağıdaki sorunları aklınızda bulundurun.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`hata ayıklayıcının beklenmedik bir yerde kesintiye neden olabilir
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` hata ayıklayıcının beklenmedik bir yerde kesintiye neden olabilir
 
 PowerShell uzantısı `Debug-Runspace` ' nı kullanır; bu, sırasıyla PowerShell 'in `BreakAll` özelliğini kullanır. Bu özellik, PowerShell 'in yürütülen ilk komutta durmasını söyler. Bu davranış, hata ayıklanan çalışma alanı içinde kesme noktaları ayarlama fırsatı sağlar.
 
 Azure Işlevleri çalışma zamanı, komut dosyanızı çağırmadan önce birkaç komut çalıştırır `run.ps1` , bu nedenle hata ayıklayıcının veya içinde bölünmesi sona eriyor mümkündür `Microsoft.Azure.Functions.PowerShellWorker.psm1` `Microsoft.Azure.Functions.PowerShellWorker.psd1` .
 
 Bu kesme gerçekleşmelidir, `continue` `c` Bu kesme noktasına atlamak için veya komutunu çalıştırın. Ardından, beklenen kesme noktasında durursunuz.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Hata ayıklama sırasında zorluklıyorsanız şunları denetlemeniz gerekir:
+
+| İşaretli | Eylem |
+|------|------|
+| `func --version`Terminalden çalıştırın. Bulunamayan bir hata alırsanız `func` , yerel değişkende temel araçlar (func.exe) eksik olabilir `path` .| [Temel araçları yeniden yükleyin](functions-run-local.md#v2).|  
+| Visual Studio Code, varsayılan terminalin func.exe erişimi olması gerekir. Linux için Windows alt sistemi (WSL) gibi temel araçların yüklü olmadığı bir varsayılan Terminal kullandığınızdan emin olun.  | Visual Studio Code ' de varsayılan kabuğu PowerShell 7 (önerilir) ya da Windows PowerShell 5,1 olarak ayarlayın.|
+  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

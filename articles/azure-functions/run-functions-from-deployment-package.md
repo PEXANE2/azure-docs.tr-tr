@@ -3,12 +3,12 @@ title: Azure Işlevlerinizi bir paketten çalıştırın
 description: Azure Işlevleri çalışma zamanının, işlev uygulaması proje dosyalarınızı içeren bir dağıtım paketi dosyası bağlayarak işlevlerinizi çalıştırmasını sağlayabilirsiniz.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214235"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639894"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
@@ -50,6 +50,9 @@ Aşağıda, Azure Blob depolamada barındırılan bir. zip dosyasından çalış
 ## <a name="integration-with-zip-deployment"></a>ZIP dağıtımıyla tümleştirme
 
 [ZIP dağıtımı][Zip deployment for Azure Functions] , işlev uygulaması projenizi dizine dağıtmanıza olanak sağlayan bir Azure App Service özelliğidir `wwwroot` . Proje bir. zip dağıtım dosyası olarak paketlenmiştir. Paketinizi klasöre dağıtmak için aynı API 'Ler kullanılabilir `d:\home\data\SitePackages` . `WEBSITE_RUN_FROM_PACKAGE`Uygulama ayarı değeri ile `1` , ZIP dağıtım API 'leri `d:\home\data\SitePackages` dosyaları içine ayıklamak yerine paketini klasörüne kopyalar `d:\home\site\wwwroot` . Ayrıca dosyayı da oluşturur `packagename.txt` . Yeniden başlatmadan sonra, paket `wwwroot` salt okunurdur. ZIP dağıtımı hakkında daha fazla bilgi için bkz. [Azure işlevleri Için zip dağıtımı](deployment-zip-push.md).
+
+> [!NOTE]
+> Bir dağıtım gerçekleştiğinde, işlev uygulamasının yeniden başlatılması tetiklenir. Yeniden başlatmadan önce, var olan tüm işlev yürütmeleri tamamlanana veya zaman aşımına izin verilir. Daha fazla bilgi için bkz. [dağıtım davranışları](functions-deployment-technologies.md#deployment-behaviors).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>WEBSITE_RUN_FROM_PACKAGE ayarı ekleniyor
 

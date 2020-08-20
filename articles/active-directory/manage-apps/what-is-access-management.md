@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562574"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639928"
 ---
 # <a name="managing-access-to-apps"></a>Uygulamalara erişimi yönetme
 
@@ -45,7 +45,7 @@ Belirli uygulama türlerinde, [kullanıcıların uygulamaya atanmasını isteme]
 * Azure Active Directory ön kimlik doğrulaması kullanan uygulama proxy uygulamaları
 * Bir kullanıcı veya yönetici bu uygulamaya alındıktan sonra OAuth 2,0/OpenID Connect kimlik doğrulaması kullanan Azure AD uygulama platformunda oluşturulan uygulamalar. Belirli kurumsal uygulamalar, oturum açmaya izin verilen kişiler üzerinde ek denetim sağlar.
 
-Kullanıcı Ataması *gerekli olmadığında*, atanmamış kullanıcılar uygulamayı uygulamalarımın erişim panelinden görmez, ancak uygulamanın kendisinde oturum AÇABILIRLER (SP tarafından başlatılan oturum açma olarak da bilinir) veya uygulamanın **Özellikler** sayfasında (IDP tarafından başlatılan oturum açma olarak da BILINIR) **Kullanıcı erişim URL** 'sini kullanabilirler.
+Kullanıcı Ataması *gerekli olmadığında*, atanmamış kullanıcılar uygulamayı uygulamalarım üzerinde görmez, ancak uygulamanın kendisinde oturum AÇABILIRLER (SP tarafından başlatılan oturum açma olarak da bilinir) ya da uygulamanın **Özellikler** sayfasında (IDP tarafından başlatılan oturum açma olarak da BILINIR) **Kullanıcı erişim URL** 'sini kullanabilirler.
 
 Bazı uygulamalarda, Kullanıcı Ataması gerektirme seçeneği uygulamanın özelliklerinde kullanılamaz. Bu durumlarda, hizmet sorumlusu üzerinde Approleatamamentrequired özelliğini ayarlamak için PowerShell kullanabilirsiniz.
 
@@ -53,12 +53,12 @@ Bazı uygulamalarda, Kullanıcı Ataması gerektirme seçeneği uygulamanın öz
 
 Azure AD, kuruluşunuzdaki son kullanıcılara [uygulama dağıtmak için çeşitli özelleştirilebilir yollar](end-user-experiences.md) sağlar:
 
-* Azure AD My Apps erişim paneli
+* Azure AD uygulamalarım
 * Office 365 uygulama başlatıcısı
 * Federasyon uygulamalarında doğrudan oturum açma (Service-PR)
 * Birleştirilmiş, parola tabanlı veya var olan uygulamalara yönelik ayrıntılı bağlantılar
 
-Bir kurumsal uygulamaya atanan kullanıcıların bu dosyayı erişim panelinde ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirleyebilirsiniz.
+Bir kurumsal uygulamaya atanan kullanıcıların bu dosyayı Uygulamalarım ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirleyebilirsiniz.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Örnek: Azure AD ile karmaşık uygulama ataması
 Salesforce gibi bir uygulamayı düşünün. Birçok kuruluşta Salesforce öncelikle pazarlama ve satış ekipleri tarafından kullanılır. Genellikle, pazarlama ekibinin üyelerinin Salesforce erişimine son derece ayrıcalıklı erişimi vardır, ancak satış ekibinin üyeleri sınırlı erişime sahip olur. Birçok durumda, büyük bir bilgi çalışanı popülasyonu uygulamaya erişimi kısıtlamıştır. Bu kuralların özel durumları önemli bir şekilde karmaşıklaştırır. Genellikle pazarlama veya satış liderlik ekiplerinin, Kullanıcı erişimi vermek veya rollerini bu genel kurallardan bağımsız olarak değiştirmesi için Prerogative.
@@ -72,7 +72,7 @@ Azure AD ile, Salesforce gibi uygulamalar çoklu oturum açma (SSO) ve otomatik 
 
 * Özel durum mekanizmasını etkinleştirmek için, her rol için bir self servis grubu oluşturulabilir. Örneğin, "Salesforce Marketing Exception" grubu bir self servis grubu olarak oluşturulabilir. Grup Salesforce pazarlama rolüne atanabilir ve pazarlama liderliği ekibi sahip olabilir. Pazarlama liderliği ekibinin üyeleri, kullanıcı ekleyebilir veya kaldırabilir, bir JOIN ilkesi ayarlayabilir veya hatta bireysel kullanıcıların katılması isteklerini onaylayabilir veya reddedebilir. Bu mekanizma, sahipler veya Üyeler için uzman eğitim gerektirmeyen bir bilgi çalışanı uygun deneyimi aracılığıyla desteklenir.
 
-Bu durumda, atanan tüm kullanıcılar otomatik olarak Salesforce olarak sağlanır, çünkü farklı gruplara eklendikçe rol atamaları Salesforce 'ta güncelleştirilir. Kullanıcılar, Microsoft uygulama erişim paneli, Office Web istemcileri ve hatta kurumsal Salesforce oturum açma sayfasına giderek Salesforce 'ı bulabilir ve bunlara erişebilir. Yöneticiler, Azure AD raporlama kullanarak kullanımı ve atama durumunu kolayca görüntüleyebilir.
+Bu durumda, atanan tüm kullanıcılar otomatik olarak Salesforce olarak sağlanır, çünkü farklı gruplara eklendikçe rol atamaları Salesforce 'ta güncelleştirilir. Kullanıcılar, kendi Uygulamalarım, Office Web istemcileri ve hatta kurumsal Salesforce oturum açma sayfasına giderek Salesforce 'a ve bunlara erişebilir. Yöneticiler, Azure AD raporlama kullanarak kullanımı ve atama durumunu kolayca görüntüleyebilir.
 
 Yöneticiler, belirli roller için erişim ilkeleri ayarlamak üzere [Azure AD koşullu erişimi](../conditional-access/concept-conditional-access-users-groups.md) kullanabilir. Bu ilkeler, şirket ortamının dışında erişime izin verilip verilmeyeceğini, hatta çeşitli durumlarda erişim elde etmek için Multi-Factor Authentication veya cihaz gereksinimlerini içerebilir.
 
@@ -88,7 +88,7 @@ Bir kullanıcının Microsoft tarafından yayımlanan bir uygulamaya erişebilec
 
 Bazı uygulamalar bu yöntemleri birleştirir. Örneğin, bazı Microsoft uygulamaları Office 365 aboneliğinin bir parçasıdır, ancak yine de onay gerektirir.
 
-Kullanıcılar Office 365 uygulamalarına Office 365 portalları aracılığıyla erişebilir. Ayrıca, dizininizin **Kullanıcı ayarlarındaki**Office [365 görünürlüğü](hide-application-from-user-portal.md) ' nı kullanarak, uygulamalarım erişim panelinde Office 365 uygulamalarını gösterebilir veya gizleyebilirsiniz. 
+Kullanıcılar Office 365 uygulamalarına Office 365 portalları aracılığıyla erişebilir. Ayrıca, dizininizdeki Office 365 uygulamalarını, dizininizin **Kullanıcı ayarlarındaki** [Office 365 görünürlüğü arasında](hide-application-from-user-portal.md) gösterebilir veya gizleyebilirsiniz. 
 
 Kurumsal uygulamalarda olduğu gibi, kullanıcıları Azure portal aracılığıyla belirli Microsoft uygulamalarına [atayabilir](assign-user-or-group-access-portal.md) veya Portal seçeneği kullanılabilir değilse PowerShell 'i kullanabilirsiniz.
 

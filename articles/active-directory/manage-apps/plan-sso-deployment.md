@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054809"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642393"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -235,11 +235,11 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 
 | Bilgisini| Roller | Azure AD rolü (gerekirse) |
 |--------|-------|-----------------------------|
-| Yardım Masası Yöneticisi | Katman 1 desteği | Hiçbiri |
+| Yardım Masası Yöneticisi | Katman 1 desteği | Yok |
 | Kimlik Yöneticisi | Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama | Genel yönetici |
-| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
+| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
-| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
+| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
 
@@ -285,7 +285,7 @@ Aşağıdaki bağlantılar sorun giderme senaryolarını sunar. Destek personeli
 
 - [Özel portaldan oturum açma sorunları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [Özel bölmeden oturum açma sorunları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Uygulamalarımın oturum açtığı sorunlar](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [Uygulama oturum açma sayfasında hata](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 

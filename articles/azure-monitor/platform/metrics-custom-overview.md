@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321284"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639911"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
@@ -26,6 +26,7 @@ Azure Izleyici özel ölçümleri genel önizlemede geçerli.
 
 Özel ölçümler, çeşitli yöntemler aracılığıyla Azure Izleyici 'ye gönderilebilir:
 - Azure Application Insights SDK 'sını kullanarak uygulamanızı işaretleyin ve Azure Izleyici 'ye özel telemetri gönderin. 
+- Azure Izleyici aracısını (Önizleme) [Windows veya Linux Azure sanal](azure-monitor-agent-overview.md) makinesine yükleyip Azure izleyici ölçümlerine performans sayaçlarını göndermek için bir [veri toplama kuralı](data-collection-rule-azure-monitor-agent.md) kullanın.
 - [Azure](collect-custom-metrics-guestos-resource-manager-vm.md)sanal makinenize, [sanal makine ölçek KÜMESINE](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasik VM](collect-custom-metrics-guestos-vm-classic.md)'ye veya [Klasik Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) Windows Azure tanılama (wad) uzantısını yükleyip performans sayaçlarını Azure izleyici 'ye gönderin. 
 - Azure Izleme çıkış eklentisini kullanarak Azure Linux sanal makinenize etkileyen bir Azure [Data telegraf Aracısı](collect-custom-metrics-linux-telegraf.md) 'nı yükleyip ölçümleri gönderin.
 - Özel ölçümleri [doğrudan Azure izleyici REST API](./metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
@@ -60,7 +61,7 @@ Bu özellik, için özel ölçümün hangi Azure Kaynak KIMLIĞIYLE bildirilece�
 > Bir kaynak grubunun veya aboneliğin kaynak KIMLIĞI için özel ölçümleri yayalamazsınız.
 
 
-### <a name="region"></a>Bölge
+### <a name="region"></a>Region
 Bu özellik, için ölçüm yaymakta olduğunuz kaynağın hangi Azure bölgesine dağıtıldığını yakalar. Ölçümler, kaynağın dağıtıldığı bölge ile aynı Azure Izleyici bölgesel uç noktasına verilmelidir. Örneğin, Batı ABD dağıtılan bir sanal makinenin özel ölçümleri WestUS bölgesel Azure Izleyici uç noktasına gönderilmelidir. Bölge bilgileri de API çağrısının URL 'SI olarak kodlanır.
 
 > [!NOTE]  
@@ -205,7 +206,7 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 | **Afrika** | |
 |Güney Afrika Kuzey | https: \/ /southafricanorth.Monitoring.Azure.com |
 | **Asya** | |
-|Central India | https: \/ /centralindia.Monitoring.Azure.com |
+|Orta Hindistan | https: \/ /centralindia.Monitoring.Azure.com |
 |Doğu Avustralya | https: \/ /australiaeast.Monitoring.Azure.com |
 |Doğu Japonya | https: \/ /japaneast.Monitoring.Azure.com |
 |Güneydoğu Asya  | https: \/ /SoutheastAsia.Monitoring.Azure.com |

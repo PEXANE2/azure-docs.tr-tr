@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168208"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641849"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API: Indirme ve sürüm notları
 > [!div class="op_single_selector"]
@@ -41,6 +41,14 @@ ms.locfileid: "84168208"
 
 ## <a name="release-notes-for-100-series"></a>1.0.0 serisi için sürüm notları
 1.0.0 serisi [Microsoft.Azure.DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)'a bağımlılığı alır.
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Cosmosdb uç noktası ise TTL özelliğini ayarlamak için destek ekle 
+* Zaman aşımı ve görev iptal edildi özel durumu üzerinde yeniden deneme ilkesini
+* ASP .NET uygulamalarında görülen aralıklı görev iptal özel durumunu çözme
+* Azure Tablo Depolaması 'nı çözme yalnızca ikincil uç nokta konum modundan al
+* `Microsoft.Azure.DocumentDB.Core`Bağımlılık sürümünü, aralıklı null başvuru özel durumunu düzelten 2.11.2 'ye Güncelleştir
+* `Odata.Core`Azure kabuğu ile uyumluluk çakışmasını gideren 7.6.4 için bağımlılık sürümünü Güncelleştir
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Tablo SDK varsayılan izleme düzeyini SourceLevels. off olarak ayarlayarak performans iyileştirmesi app.config aracılığıyla kabul edilebilir

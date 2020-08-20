@@ -15,22 +15,22 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763151"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640761"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Self Servis uygulama atamasını yapılandırma
 
-Kullanıcılarınızın uygulama erişimi panelden uygulamaları kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasına ve erişim istemesine izin vermek istediğiniz uygulamalara **self servis uygulama erişimini** etkinleştirmeniz gerekir. Bu işlev, [Azure AD Galerisi](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)'nden eklenen, [Azure AD uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) veya [Kullanıcı ya da yönetici izni](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)aracılığıyla eklenen uygulamalar için kullanılabilir. 
+Kullanıcılarınızın uygulamalarımı kendi uygulamalarından kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasına ve erişim istemesine izin vermek istediğiniz uygulamalara **self servis uygulama erişimini** etkinleştirmeniz gerekir. Bu işlev, [Azure AD Galerisi](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)'nden eklenen, [Azure AD uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) veya [Kullanıcı ya da yönetici izni](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)aracılığıyla eklenen uygulamalar için kullanılabilir. 
 
 Bu özellik, bir BT grubu olarak zaman ve para tasarrufu yapmanız için harika bir yoldur ve Azure Active Directory ile modern uygulamalar dağıtımının bir parçası olarak önemle önerilir.
 
 Bu özelliği kullanarak şunları yapabilirsiniz:
 
--   Kullanıcıların uygulama [erişim panelinden](https://myapps.microsoft.com/) bothering BT grubu olmadan uygulamaları kendi kendine bulmasına izin verin.
+-   Bothering BT grubu olmadan, kullanıcıların [uygulamalarımı](https://myapps.microsoft.com/) kendi kendine bulmasına izin verin.
 
 -   Bu kullanıcıları önceden yapılandırılmış bir gruba ekleyerek kimin erişimi olduğunu, erişimi kaldırabileceğini görebilir ve bunlara atanan rolleri yönetebilirsiniz.
 
@@ -38,7 +38,7 @@ Bu özelliği kullanarak şunları yapabilirsiniz:
 
 -   İsteğe bağlı olarak, bu uygulamaya erişimi onaylayabilecek en fazla 10 kişi yapılandırın.
 
--   İsteğe bağlı olarak, bir iş onaylayanın, kullanıcıların uygulamada oturum açmak için kullanabileceği parolaları ayarlamaya, iş onaylayanın [uygulama erişim panelinden](https://myapps.microsoft.com/)doğrudan izin verin.
+-   İsteğe bağlı olarak, bir iş onaylayanın, kullanıcıların uygulamada oturum açmak için kullanabileceği parolaları ayarlamaya olanak tanımak için, iş Onaylayandan [uygulamalarım](https://myapps.microsoft.com/)' a doğru.
 
 -   İsteğe bağlı olarak otomatik olarak self servis atanan kullanıcıları doğrudan bir uygulama rolüne atar.
 
@@ -79,7 +79,7 @@ Bir uygulamaya Self Servis uygulama erişimini etkinleştirmek için aşağıdak
 
 11. Son olarak bölmenin en üstündeki **Kaydet** düğmesine tıklayın.
 
-Self Servis uygulama yapılandırmasını tamamladıktan sonra kullanıcılar kendi [uygulamalarım erişim paneline](https://myapps.microsoft.com/) gidebilir ve self servis erişimiyle etkinleştirilecek uygulamaları bulmak için **self servis uygulamaları Ekle** düğmesine tıklayabilirsiniz. İş onaylayanları Ayrıca kendi [uygulamalarım erişim panelinden](https://myapps.microsoft.com/)bir bildirim görür. Bir Kullanıcı onay gerektiren bir uygulamaya erişim isteğinde bulunduğunda bu e-postayı bildiren bir e-posta sağlayabilirsiniz.
+Self Servis uygulama yapılandırmasını tamamladıktan sonra, kullanıcılar kendi [uygulamalarım](https://myapps.microsoft.com/) ' a gidebilir ve self servis erişimiyle etkinleştirilecek uygulamaları bulmak için **self servis uygulamaları Ekle** düğmesine tıklayabilir. İş onaylayanları Ayrıca [uygulamalarım](https://myapps.microsoft.com/)' da bir bildirim görür. Bir Kullanıcı onay gerektiren bir uygulamaya erişim isteğinde bulunduğunda bu e-postayı bildiren bir e-posta sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Self servis grup yönetimi için Azure Active Directory'yi ayarlama](../users-groups-roles/groups-self-service-management.md)

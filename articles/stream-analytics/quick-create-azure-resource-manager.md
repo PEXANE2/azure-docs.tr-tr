@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 26ae0f5add40125b5e9c1ce9451583040322314b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043555"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641902"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure Stream Analytics işi oluşturma
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, bir Azure Stream Analytics işi oluşturmak için bir
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
@@ -35,9 +35,9 @@ Bu makaleyi tamamlayabilmeniz için şunları yapmanız gerekir:
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json" range="1-66" highlight="41-60":::
+:::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json":::
 
 Şablonda tanımlanan Azure kaynağı [Microsoft. StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs): Azure Stream Analytics işi oluşturma.
 
@@ -59,7 +59,7 @@ Bu bölümde ARM şablonunu kullanarak bir Azure Stream Analytics işi oluşturu
    |---------|---------|
    |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
-   |**Geli**     | **Doğu ABD**’yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
+   |**Bölge**     | **Doğu ABD**’yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
    |**Stream Analytics Iş adı**     | Stream Analytics işiniz için bir ad sağlayın.      |
    |**Akış birimi sayısı**     |  İhtiyacınız olan akış birimi sayısını seçin. Daha fazla bilgi için bkz. [akış birimlerini anlama ve ayarlama](stream-analytics-streaming-unit-consumption.md).       |
 

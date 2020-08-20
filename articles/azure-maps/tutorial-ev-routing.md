@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850177"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639758"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -27,7 +27,7 @@ Bu öğreticide, elektrik araç pili düşük olan bir sürücünün yardımına
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Bulutta [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) bir Jupyter Not defteri oluşturun ve çalıştırın.
+> * Bulutta [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) bir Jupyter Notebook dosyası oluşturun ve çalıştırın.
 > * Python 'da Azure haritalar REST API 'Lerini çağırın.
 > * Elektrik araç tüketiminin tüketim modeline göre erişilebilir bir Aralık arayın.
 > * Erişilebilir Aralık veya ısovaone içindeki elektrik araç doldurma istasyonlarını arayın.
@@ -35,7 +35,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
@@ -45,9 +45,9 @@ Hesabınız için birincil abonelik anahtarını almak üzere [birincil anahtar 
 
 Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
-## <a name="create-an-azure-notebook"></a>Azure Not defteri oluşturma
+## <a name="create-an-azure-notebooks-project"></a>Azure Notebooks projesi oluşturma
 
-Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturmanız ve Jupyter Not defteri dosyasını indirmeniz ve çalıştırmanız gerekir. Not defteri dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure Not defteri projesi oluşturmak ve Jupyter Not Defteri belgesini buna yüklemek için aşağıdaki adımları uygulayın:
+Bu öğreticiyle birlikte izlemek için bir Azure Notebooks projesi oluşturmanız ve Jupyter Notebook dosyasını indirip çalıştırmanız gerekir. Jupyter Notebook dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure Notebooks projesi oluşturmak ve Jupyter Notebook belgeyi bu klasöre yüklemek için aşağıdaki adımları uygulayın:
 
 1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. Ortak profil sayfanızın en üstünde **Projelerim**' nı seçin.
@@ -64,25 +64,25 @@ Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturma
 
 1. **Oluştur**’u seçin.
 
-1. Projeniz oluşturulduktan sonra, bu [Jupyter Not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
+1. Projeniz oluşturulduktan sonra bu [Jupyter Notebook belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Maps Jupyter Notebook deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
 
-1. Projeler listesinde, **projem** sayfasında, projenizi seçin ve ardından **karşıya yükle** ' yi seçerek Jupyter Not defteri belge dosyasını karşıya yükleyin. 
+1. Projeler listesinde, **projem** sayfasında, projenizi seçin ve sonra Jupyter Notebook belge dosyasını karşıya yüklemek Için **karşıya yükle** ' yi seçin. 
 
-    ![Not defterini karşıya yükle](./media/tutorial-ev-routing/upload-notebook.png)
+    ![karşıya yükleme Jupyter Notebook](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. Dosyayı bilgisayarınızdan karşıya yükleyin ve ardından **bitti**' yi seçin.
 
-1. Karşıya yükleme başarıyla tamamlandıktan sonra, dosyanız proje sayfanızda görüntülenir. Dosyayı Jupyter Not defteri olarak açmak için dosyaya çift tıklayın.
+1. Karşıya yükleme başarıyla tamamlandıktan sonra, dosyanız proje sayfanızda görüntülenir. Dosyayı Jupyter Notebook olarak açmak için dosyaya çift tıklayın.
 
-Not Defteri dosyasında uygulanan işlevselliği anlamaya çalışın. Kodu Not Defteri dosyasında, tek seferde bir hücre olarak çalıştırın. Not defteri uygulamasının en üstündeki **Çalıştır** düğmesini seçerek kodu her hücrede çalıştırabilirsiniz.
+Jupyter Notebook dosyasında uygulanan işlevselliği anlamaya çalışın. Kodu, Jupyter Notebook dosyasında, tek seferde bir hücre olarak çalıştırın. Jupyter Notebook uygulamasının en üstündeki **Çalıştır** düğmesini seçerek kodu her hücrede çalıştırabilirsiniz.
 
   ![Çalıştır düğmesi](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Proje düzeyi paketleri 'ni yükler
 
-Kodu Not defterinde çalıştırmak için, aşağıdaki adımları uygulayarak paketleri proje düzeyine yüklersiniz:
+Kodu Jupyter Notebook çalıştırmak için, aşağıdaki adımları uygulayarak paketleri proje düzeyine yüklersiniz:
 
-1. [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin ve ardından projenize yükleyin.
+1. [Azure haritalar Jupyter Notebook deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını indirin ve ardından projenize yükleyin.
 1. Proje panosunda **proje ayarları**' nı seçin. 
 1. **Proje ayarları** bölmesinde **ortam** sekmesini seçin ve ardından **Ekle**' yi seçin.
 1. **Ortam kurulum adımları**altında aşağıdakileri yapın:   

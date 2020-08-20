@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760278"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642444"
 ---
 # <a name="application-management-best-practices"></a>Uygulama yönetimi en iyi uygulamaları
 
@@ -33,8 +33,8 @@ Bu makalede, Azure Active Directory (Azure AD) içinde uygulamaları yönetmeye 
 | Uygulamalar için Azure AD Uygulama Galerisine bakın  | Azure AD 'de Kurumsal Çoklu oturum açma (SSO) ile etkinleştirilen binlerce önceden tümleştirilmiş uygulama içeren bir galeri bulunur. Uygulamaya özgü Kurulum Kılavuzu için [SaaS uygulama öğreticileri listesine](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)bakın.  | 
 | Federal SAML tabanlı SSO kullanın  | Bir uygulama bunu destekliyorsa, parola tabanlı SSO ve ADFS yerine Azure AD ile Federal ve SAML tabanlı SSO kullanın.  | 
 | Sertifika imzalama için SHA-256 kullanın  | Azure AD, SAML Yanıtını imzalamak için varsayılan olarak SHA-256 algoritmasını kullanır. Uygulama SHA-1 gerektirmediği takdirde SHA-256 kullanın (bkz. [sertifika imzalama seçenekleri](certificate-signing-options.md) ve [uygulama oturum açma sorunu](application-sign-in-problem-application-error.md).)  | 
-| Kullanıcı Ataması gerektir  | Varsayılan olarak, kullanıcılar bu kullanıcılara atanmadan kurumsal uygulamalarınıza erişebilir. Ancak, uygulama rolleri kullanıma sunarsa veya uygulamanın bir kullanıcının erişim panelinde görünmesini istiyorsanız, Kullanıcı Ataması gerektir. (Bkz. [uygulamaları tümleştirmek Için Geliştirici Kılavuzu](developer-guidance-for-integrating-applications.md).)  | 
-| Uygulamalarım erişim panelinden kullanıcılarınıza dağıtın | Üzerindeki [erişim paneli](end-user-experiences.md) , `https://myapps.microsoft.com` kullanıcılara atanan bulut tabanlı uygulamalar için tek bir giriş noktası sağlayan Web tabanlı bir portaldır. Grup Yönetimi ve self servis parola sıfırlama gibi ek yetenekler eklendikçe, kullanıcılar bunları erişim panelinde bulabilir. Bkz. [erişim bölmesi dağıtımı planı](access-panel-deployment-plan.md).
+| Kullanıcı Ataması gerektir  | Varsayılan olarak, kullanıcılar bu kullanıcılara atanmadan kurumsal uygulamalarınıza erişebilir. Ancak, uygulama rolleri kullanıma sunarsa veya uygulamanın kullanıcı uygulamamda görünmesini istiyorsanız, Kullanıcı Ataması gerektir. (Bkz. [uygulamaları tümleştirmek Için Geliştirici Kılavuzu](developer-guidance-for-integrating-applications.md).)  | 
+| Uygulamalarımı kullanıcılarınıza dağıtın | Konumundaki [uygulamalarım](end-user-experiences.md) `https://myapps.microsoft.com` , kullanıcılara atanan bulut tabanlı uygulamalar için tek bir giriş noktası sağlayan Web tabanlı bir portaldır. Grup Yönetimi ve self servis parola sıfırlama gibi ek yetenekler eklendikçe, kullanıcılar bunları uygulamamda bulabilir. Bkz. [uygulamalarımı dağıtımını planla](access-panel-deployment-plan.md).
 | Grup atamasını kullanma  | Aboneliğinize dahil ise, grup sahibine devam eden erişim yönetimini devredebilmeniz için bir uygulamaya gruplar atayın. (Bkz. [uygulamaları tümleştirmek Için Geliştirici Kılavuzu](developer-guidance-for-integrating-applications.md).)   | 
 | Sertifikaları yönetmek için bir işlem oluşturma | İmza sertifikasının maksimum ömrü üç yıldır. Sertifikanın süresi dolduğunda kesinti oluşmasını engellemek veya en aza indirmek için, sertifikayla ilgili değişiklik bildirimlerinin yakından izlendiğinden emin olmak için roller ve e-posta dağıtım listelerini kullanın. |
 

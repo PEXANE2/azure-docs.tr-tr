@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f26addda79d57a055f7b431968319138d499ef18
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272946"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642291"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 'ta parlak CRUISE
 
@@ -146,8 +146,9 @@ Geribildirim dosyaları, gerçekleştirilmiş alt planlar ve sorgu günlükleri 
 sudo /opt/peregrine/analyze/peregrine.sh clean
 ```
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
+* [Mini bir CRUISE 'nin avantajlarını öğrenmek için Iş yükü öngörüleri Not defterini kullanın](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [Azure HDInsight GÇ önbelleği 'ni kullanarak Apache Spark iş yüklerinin performansını iyileştirme](apache-spark-improve-performance-iocache.md)
 * [HDInsight 'ta Apache Spark işlerini iyileştirme](./apache-spark-perf.md)
 * [Parlak CRUISE: Spark 'ta el ile hesaplama yeniden kullanımı](https://people.cs.umass.edu/~aroy/sparkcruise-vldb19.pdf)

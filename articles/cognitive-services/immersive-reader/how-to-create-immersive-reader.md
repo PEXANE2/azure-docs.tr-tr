@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042026"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639825"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -44,7 +44,8 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | Parametre | Yorumlar |
@@ -168,7 +171,12 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
     | ResourceGroupLocation |Kaynak grubunuz yoksa, grubun oluşturulacağı bir konum sağlamanız gerekir. Konumların bir listesini bulmak için öğesini çalıştırın `az account list-locations` . Döndürülen sonucun *Name* özelliğini (boşluk olmadan) kullanın. Kaynak grubunuz zaten varsa, bu parametre isteğe bağlıdır. |
     | AADAppDisplayName |Azure Active Directory Uygulama görünen adı. Mevcut bir Azure AD uygulaması bulunamazsa, bu adı taşıyan yeni bir tane oluşturulur. Azure AD uygulaması zaten mevcutsa bu parametre isteğe bağlıdır. |
     | Aadappıdentifieruri |Azure AD uygulaması için URI. Mevcut bir Azure AD uygulaması bulunamazsa, bu URI 'ye sahip yeni bir tane oluşturulur. Örneğin, `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Daha sonra, derinlikli okuyucuyu başlatmak üzere bir belirteç alırken kimlik doğrulaması için kullanılacak bir parola. Parola en az 16 karakter uzunluğunda olmalı, en az 1 özel karakter içermeli ve en az 1 sayısal karakter içermelidir. |
+    | AADAppClientSecret |Daha sonra, derinlikli okuyucuyu başlatmak üzere bir belirteç alırken kimlik doğrulaması için kullanılacak bir parola. Parola en az 16 karakter uzunluğunda olmalı, en az 1 özel karakter içermeli ve en az 1 sayısal karakter içermelidir. Bu kaynağı oluşturduktan sonra Azure AD uygulama istemci gizli dizilerini yönetmek için lütfen ziyaret edin https://portal.azure.com ve giriş > Azure Active Directory-> uygulama kayıtları-> `[AADAppDisplayName]` -> sertifikalar ve gizlilikler dikey penceresi-> istemci gizli bilgileri bölümüne gidin (aşağıdaki "Azure AD uygulama gizli dizilerini yönetme" ekran görüntüsünde gösterildiği gibi). |
+    | Aadappclientsecretexpiasyon |Sona ereceği tarih veya tarih/saat `[AADAppClientSecret]` (örn. ' 2020-12-31T11:59:59 + 00:00 ' veya ' 2020-12-31 '). |
+
+    Azure AD uygulama sırlarınızı yönetin
+
+    ![Azure Portal sertifikaları ve gizlilikler dikey penceresi](./media/client-secrets-blade.png)
 
 1. JSON çıkışını daha sonra kullanmak üzere bir metin dosyasına kopyalayın. Çıktı aşağıdaki gibi görünmelidir.
 

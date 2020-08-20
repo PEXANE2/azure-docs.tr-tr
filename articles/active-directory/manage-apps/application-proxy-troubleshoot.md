@@ -2,26 +2,21 @@
 title: Uygulama ara sunucusu sorunlarını giderme | Microsoft Docs
 description: Azure AD Uygulama Ara Sunucusu 'de hata giderme konularını ele alır.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848455"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640863"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Uygulama Proxy'si sorunlarını ve hata iletilerini giderme
 
@@ -84,6 +79,7 @@ Bu liste, uygulamaya erişmeye ve başarısız olmasına çalıştıklarında so
 | Bu kurumsal uygulamaya şu anda erişilemiyor. Lütfen daha sonra tekrar deneyin... Bağlayıcı zaman aşımına uğradı. | Kullanıcılarınız şirket içi tarafında bu uygulama için doğru tanımlanmamışsa, yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. Kullanıcılarınızın şirket içi makinede bu arka uç uygulaması için tanımlanan uygun izinlere sahip olduğundan emin olun. |
 | Bu şirket uygulamasına erişilemiyor. Bu uygulamaya erişim yetkiniz yok. Yetkilendirme başarısız oldu. Kullanıcının Azure Active Directory Premium için bir lisansa sahip olduğundan emin olun. | Kullanıcılarınız, abone yöneticisinin bir Premium lisansıyla açıkça atanmamışsa, yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. Abonenin Active Directory **Lisansları** sekmesine gidin ve bu kullanıcı veya kullanıcı grubuna bir Premium Lisansı atandığından emin olun. |
 | Belirtilen ana bilgisayar adına sahip bir sunucu bulunamadı. | Bu hata, uygulamanın özel etki alanı doğru yapılandırılmamışsa yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. [Azure 'da özel etki alanları Ile çalışma](application-proxy-configure-custom-domain.md) bölümündeki adımları izleyerek etki alanı için bir sertifika YÜKLEDIĞINIZDEN ve DNS kaydını doğru şekilde yapılandırdığınızdan emin olun ad uygulama ara sunucusu |
+|Yasak: Bu şirket uygulamasına erişilemiyor veya Kullanıcı yetkilendirilemedi. Kullanıcının şirket içi AD 'niz içinde tanımlandığından ve kullanıcının şirket içi AD 'de uygulamaya erişimi olduğundan emin olun. | Bu, yetkilendirme bilgilerine erişimle ilgili bir sorun olabilir, bkz. [bazı uygulamalar ve API 'ler, hesap nesnelerinde yetkilendirme bilgilerine erişim gerektirir]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). Bir Nutshell 'de, çözülecek uygulama proxy Bağlayıcısı makine hesabını "Windows yetkilendirme erişim grubu" adlı yerleşik etki alanı grubuna ekleyin. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Hata listemde burada listelenmedi
 

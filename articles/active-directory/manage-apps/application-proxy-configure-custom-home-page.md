@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764885"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642070"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu kullanarak yayımlanan uygulamalar için özel bir giriş sayfası ayarlama
 
-Bu makalede, bir uygulamayı özel bir giriş sayfasına yönlendirmek için bir uygulamanın nasıl yapılandırılacağı açıklanır. Uygulama proxy 'si ile bir uygulama yayımladığınızda, dahili bir URL ayarlarsınız, ancak bazen kullanıcının ilk göreceği sayfa değildir. Bir kullanıcının uygulamaya erişirken doğru sayfayı alması için özel bir giriş sayfası ayarlayın. Kullanıcı, Azure Active Directory erişim panelinden veya Office 365 uygulama Başlatıcısı ' ndan uygulamaya erişip erişmediğine bakılmaksızın, ayarladığınız özel giriş sayfasını görür.
+Bu makalede, bir uygulamayı özel bir giriş sayfasına yönlendirmek için bir uygulamanın nasıl yapılandırılacağı açıklanır. Uygulama proxy 'si ile bir uygulama yayımladığınızda, dahili bir URL ayarlarsınız, ancak bazen kullanıcının ilk göreceği sayfa değildir. Bir kullanıcının uygulamaya erişirken doğru sayfayı alması için özel bir giriş sayfası ayarlayın. Bir Kullanıcı, uygulamaya Azure Active Directory uygulamalarımın veya Microsoft 365 uygulama başlatıcılarından erişip erişmediğine bakılmaksızın, ayarladığınız özel giriş sayfasını görür.
 
 Bir Kullanıcı uygulamayı başlattığında, varsayılan olarak yayımlanan uygulamanın kök etki alanı URL 'sine yönlendirilir. Giriş sayfası genellikle giriş sayfası URL 'SI olarak ayarlanır. Uygulama kullanıcısının uygulama içindeki belirli bir sayfaya giriş yapmak istediğinizde, bir özel giriş sayfası URL 'SI tanımlamak için Azure AD PowerShell modülünü kullanın.
 
@@ -37,7 +37,7 @@ Bir Kullanıcı uygulamayı başlattığında, varsayılan olarak yayımlanan uy
 - `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`Bunun yerine giriş sayfası URL 'si olarak ayarlamak istiyorsunuz, bu nedenle bir dış Kullanıcı önce oturum açma sayfasını görür.
 
 > [!NOTE]
-> Kullanıcılara yayımlanan uygulamalara erişim izni verdiğinizde, uygulamalar [Azure AD erişim panelinde](../user-help/my-apps-portal-end-user-access.md) ve [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)'nda görüntülenir.
+> Kullanıcılara yayımlanan uygulamalara erişim izni verdiğinizde uygulamalar [uygulamalarım](../user-help/my-apps-portal-end-user-access.md) ve [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)'nda görüntülenir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -63,7 +63,7 @@ Azure AD portalı aracılığıyla uygulamanızın giriş sayfası URL 'sini de�
 
    ![Giriş sayfası URL 'SI alanını gösteren kayıtlı bir uygulama için marka sayfası](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="change-the-home-page-with-powershell"></a>Giriş sayfasını PowerShell ile değiştirme
 

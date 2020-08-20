@@ -3,12 +3,12 @@ title: Azure geçiş 'de Hyper-V değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile Hyper-V değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 563a98162a2453ac1c96baf9f04500ee880e0ce5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420966"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641832"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
@@ -34,7 +34,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
-| **Hyper-V konağı**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir.<br/><br/> Hyper-V konağı Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırabilir. Windows Server 2016 ve Windows Server 2012 R2 'nin sunucu çekirdeği yüklemesi de desteklenir. <br/>Windows Server 2012 çalıştıran Hyper-V konaklarında yer alan VM'leri değerlendiremezsiniz.
+| **Hyper-V konağı**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir.<br/><br/> Hyper-V konağı Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırabilir. Bu işletim sistemlerinin sunucu çekirdeği yüklemesi de desteklenir. <br/>Windows Server 2012 çalıştıran Hyper-V konaklarında yer alan VM'leri değerlendiremezsiniz.
 | **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. <br/> Yönetici izinleri atamak istemiyorsanız, bir yerel veya etki alanı kullanıcı hesabı oluşturun ve bu gruplara kullanıcı hesabını ekleyin-uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları. |
 | **PowerShell uzaktan iletişim**   | Her Hyper-V konağında [PowerShell uzaktan iletişim](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) özelliğinin etkinleştirilmesi gerekir. |
 | **Hyper-V Çoğaltma**       | Hyper-V çoğaltması kullanıyorsanız (veya aynı VM tanımlayıcılarına sahip birden fazla sanal makine varsa) ve Azure geçişi 'ni kullanarak hem özgün hem de çoğaltılan VM 'Leri keşfetiyorsanız, Azure geçişi tarafından oluşturulan değerlendirme doğru olmayabilir. |
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 
 **Cihaz** | **Bağlantı**
 --- | ---
-**Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
+**Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
 **Hyper-V konağı/kümesi** | Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V VM 'Leri için meta verileri ve performans verilerini çekmek üzere WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantı.
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Aracı tabanlı bağımlılık Analizi gereksinimleri

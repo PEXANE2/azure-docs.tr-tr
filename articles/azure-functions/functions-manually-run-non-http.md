@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121822"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640981"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
 
@@ -37,7 +37,7 @@ Bu istek konumunu, Postman 'da, işlevi çalıştırmak için Azure isteği 'nde
 
 ## <a name="get-the-functions-master-key"></a>İşlevin ana anahtarını al
 
-1. Azure portal işlevinizde gelin ve **Işlev anahtarları**' nı seçin. Ardından, kopyalamak istediğiniz işlev anahtarını seçin. 
+1. [Azure Portal](https://portal.azure.com)işlev uygulamanıza gidin, **uygulama anahtarları**' nı ve ardından `_master` anahtarı seçin. 
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
@@ -50,7 +50,7 @@ Bu istek konumunu, Postman 'da, işlevi çalıştırmak için Azure isteği 'nde
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Ana anahtar test sonuçlarını görmek için günlükleri görüntüleyin." border="true":::
 
 > [!CAUTION]  
-> Ana anahtar tarafından verilen işlev uygulamanızda yükseltilmiş izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalıdır veya bir uygulamada dağıtmanız gerekir.
+> Ana anahtar tarafından verilen işlev uygulamanızda yükseltilmiş izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalıdır veya bir uygulamada dağıtmanız gerekir. Anahtar yalnızca bir HTTPS uç noktasına gönderilmelidir.
 
 ## <a name="call-the-function"></a>İşlevi çağırın
 

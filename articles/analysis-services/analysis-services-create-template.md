@@ -8,12 +8,12 @@ ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: 249c678fb6d55f01a9f06e4e1db5f41fa85a700f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553079"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641917"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Hızlı başlangıç: sunucu ARM şablonu oluşturma
 
@@ -27,14 +27,14 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**: Hesap oluşturmak için [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/offers/ms-azr-0044p/)’nü ziyaret edin.
-* **Azure Active Directory**: Aboneliğinizin bir Azure Active Directory Kiracısı ile ilişkilendirilmiş olması gerekir. Ayrıca bu Azure Active Directory içindeki bir hesapla Azure'da oturum açmış olmanız gerekir. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
+* **Azure aboneliği**: hesap oluşturmak Için [Azure Ücretsiz deneme sürümünü](https://azure.microsoft.com/offers/ms-azr-0044p/) ziyaret edin.
+* **Azure Active Directory**: Aboneliğinizin bir Azure Active Directory Kiracısı ile ilişkilendirilmiş olması gerekir. Ayrıca bu Azure Active Directory içindeki bir hesapla Azure'da oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [Kimlik doğrulaması ve izinler](analysis-services-manage-users.md).
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-analysis-services-create/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
 
 Şablonda bir güvenlik duvarı kuralına sahip tek bir [Microsoft. AnalysisServices/Servers](/azure/templates/microsoft.analysisservices/servers) kaynağı tanımlanmıştır.
 

@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459343"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641985"
 ---
 # <a name="configure-linked-sign-on"></a>Bağlantılı oturum açmayı yapılandırma
 
 Uygulama yönetiminde [hızlı başlangıç serisinde](view-applications-portal.md) , Azure AD 'yi bir uygulama Için kimlik sağlayıcısı (IDP) olarak kullanmayı öğrendiniz. Hızlı başlangıç kılavuzunda SAML tabanlı SSO 'yu ayarlarsınız. Başka bir seçenek **bağlandı**. Bu makale, bağlantılı seçenek hakkında daha fazla ayrıntıya gider.
 
-**Bağlı** seçeneği, bir Kullanıcı kuruluşunuzun [uygulamalarım](https://myapplications.microsoft.com/) veya Office 365 portalından uygulamayı seçtiğinde hedef konumu yapılandırmanıza olanak tanır.
+**Bağlı** seçeneği, bir Kullanıcı kuruluşunuzun [uygulamalarım](https://myapps.microsoft.com/) veya Office 365 portalından uygulamayı seçtiğinde hedef konumu yapılandırmanıza olanak tanır.
 
 Bağlantı seçeneğinin değerli olduğu bazı yaygın senaryolar şunlardır:
 - Active Directory Federasyon Hizmetleri (AD FS) (AD FS) gibi şu anda Federasyon kullanan özel bir Web uygulamasına bir bağlantı ekleyin.
@@ -35,7 +35,7 @@ Bağlantı seçeneğinin değerli olduğu bazı yaygın senaryolar şunlardır:
 
 Hızlı bir şekilde hızlandırmak için uygulama yönetiminde [hızlı başlangıç serisini](view-applications-portal.md) gözden geçirebilirsiniz. Çoklu oturum açmayı yapılandırdığınız hızlı başlangıçta **bağlantılı** seçeneği de bulacaksınız. 
 
-**Bağlantılı** seçenek, Azure AD aracılığıyla oturum açma işlevleri sağlamaz. Bu seçenek yalnızca kullanıcıların [uygulamamda](https://myapplications.microsoft.com/) Microsoft 365 veya uygulama başlatıcısında uygulamayı seçerken gönderileceği konumu ayarlar.
+**Bağlantılı** seçenek, Azure AD aracılığıyla oturum açma işlevleri sağlamaz. Bu seçenek yalnızca kullanıcıların [uygulamamda](https://myapps.microsoft.com/) Microsoft 365 veya uygulama başlatıcısında uygulamayı seçerken gönderileceği konumu ayarlar.
 
 > [!IMPORTANT] 
 > **Çoklu oturum açma** seçeneğinin **Kurumsal uygulamalarda**bir uygulama için gezinmede olmadığı bazı senaryolar vardır. 
@@ -48,7 +48,7 @@ Hızlı bir şekilde hızlandırmak için uygulama yönetiminde [hızlı başlan
 
 Bir uygulamaya yönelik bir bağlantı ayarlamak için **Çoklu oturum açma** sayfasında **bağlı** ' yı seçin. Sonra bağlantıyı girip **Kaydet**' i seçin. Bu seçeneklerin nerede bulunacağı hakkında bir anımsatıcı mi var? [Hızlı başlangıç serisine](view-applications-portal.md)göz atın.
  
-Bir uygulamayı yapılandırdıktan sonra, bu uygulamaya Kullanıcı ve grup atayın. Kullanıcıları atadığınızda, uygulamanın [uygulamamda](https://myapplications.microsoft.com/) ne zaman göründüğünü veya Microsoft 365 uygulama Başlatıcısı ' nı denetleyebilirsiniz.
+Bir uygulamayı yapılandırdıktan sonra, bu uygulamaya Kullanıcı ve grup atayın. Kullanıcıları atadığınızda, uygulamanın [uygulamamda](https://myapps.microsoft.com/) ne zaman göründüğünü veya Microsoft 365 uygulama Başlatıcısı ' nı denetleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

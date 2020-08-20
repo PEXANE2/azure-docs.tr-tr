@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
 ms.date: 07/16/2020
-ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513039"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642019"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure blok zinciri hizmeti üyesi oluşturma
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
+:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json":::
 
 Şablonda tanımlanan Azure kaynakları:
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve bir şablonu açmak için aşağıdaki bağlantıyı seçin.
+1. Aşağıdaki bağlantıyı seçerek Azure’da oturum açıp bir şablon açın.
 
     [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 

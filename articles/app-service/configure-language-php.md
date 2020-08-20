@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080088"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642053"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service için bir PHP uygulaması yapılandırma
 
@@ -119,7 +119,7 @@ Tüm değişikliklerinizi işleyin ve git kullanarak kodunuzu dağıtın veya de
 
 App Service, Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarını dağıtım zamanında çalıştırmak istiyorsanız, [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)sağlamanız gerekir. App Service, git ile dağıtırken veya derleme Otomasyonu etkinken [ZIP dağıtımıyla](deploy-zip.md) , bu betiği çalıştırır. 
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örnek:
+Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir * .* Örnek:
 
 ```json
 "dependencies": {
@@ -203,10 +203,10 @@ fi
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
 1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
-1. `php composer.phar install` komutunu çalıştırın.
+1. `php composer.phar install` öğesini çalıştırın.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
+`PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
 
 Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
 
@@ -276,8 +276,8 @@ App Service için varsayılan PHP görüntüsü Apache kullanır ve uygulamanız
 App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa, `X-Forwarded-Proto` üstbilgiyi inceleyin.
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -374,7 +374,7 @@ PHP_INI_SYSTEM yönergeleri özelleştirmek için (bkz. [php.ini yönergeleri](h
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`, *php.ini* var olan varsayılan dizindir. `/home/site/ini`, özel bir *. ini* dosyası ekleyeceğiniz özel dizindir. Değerleri bir ile ayırın `:` .
+`/usr/local/etc/php/conf.d` , *php.ini* var olan varsayılan dizindir. `/home/site/ini` , özel bir *. ini* dosyası ekleyeceğiniz özel dizindir. Değerleri bir ile ayırın `:` .
 
 Linux kapsayıcınızda () Web SSH oturumuna gidin `https://<app-name>.scm.azurewebsites.net/webssh/host` .
 

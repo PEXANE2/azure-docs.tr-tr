@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762981"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639945"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Kullanıcılara uygulamalar atama
 
@@ -44,9 +44,9 @@ Bir kullanıcının bir uygulamaya erişmesi için öncelikle kendisine bir şek
 
     * [Tüm kullanıcılar](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) grubu
 
-3.  Bir yönetici, bir kullanıcının uygulama [erişimi paneli](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) ile uygulama ekleme özelliği **iş onayı olmadan** **uygulama eklemesine Izin** vermek için [self servis uygulamasına erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) sağlar
+3.  Bir yönetici, bir kullanıcının [uygulamalarımı](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) kullanarak uygulama eklemesine izin vermek için [self servis uygulamasına erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , **iş onayı olmadan** **uygulama ekleme özelliği sağlar**
 
-4.  Bir yönetici, bir kullanıcının [uygulama erişim paneli uygulama](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Ekle** özelliğini kullanarak bir uygulama eklemesine izin vermek Için [self servis uygulama erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) sağlar, ancak**Seçilen iş onaylayanlardan yalnızca önceki onay**
+4.  Bir yönetici, [self servis uygulama erişiminin](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , [uygulamalar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **uygulama ekleme** özelliği kullanarak bir uygulama eklemesine izin verir, ancak**Seçilen iş onaylayanlardan yalnızca daha önce onaylanmak** üzere
 
 5.  Bir yönetici, bir kullanıcıya **iş onayı olmadan** bir uygulamanın atandığı bir gruba katılmasına izin vermek için [self servis grup yönetimine](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) olanak tanır
 

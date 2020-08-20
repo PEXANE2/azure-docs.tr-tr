@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538182"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642359"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell için özellikler & araçları
 
@@ -57,7 +57,7 @@ Cloud Shell içindeki PowerShell, Exchange Online modülünün özel bir derleme
 
 ![Connect-EXOPSSession ve Get-User komutlarını çalıştıran bir Azure Cloud Shell ekran görüntüsü.](media/features-powershell/exchangeonline.png)
 
- `Get-Command -Module tmp_*` öğesini çalıştırın
+ `Get-Command -Module tmp_*` komutunu çalıştırın
 > [!NOTE]
 > Modül adı ile başlamalıdır `tmp_` , aynı ön eke sahip modüller yüklediyseniz, cmdlet 'leri de ortaya çıkmış olur. 
 
@@ -69,7 +69,7 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 
 ## <a name="tools"></a>Araçlar
 
-|Kategori   |Name   |
+|Kategori   |Ad   |
 |---|---|
 |Linux araçları            |bash<br> ZSH<br> dak<br> tmux<br> derinlemesine<br>               |
 |Azure araçları            |[Azure CLI](https://github.com/Azure/azure-cli) ve [Azure klasik CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure İşlevleri CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
@@ -84,8 +84,8 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 
 |Dil   |Sürüm   |
 |---|---|
-|.NET Core  |2.2.402       |
-|Go         |1.9        |
+|.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
+|Başlayın         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |

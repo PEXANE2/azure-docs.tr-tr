@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: edb84810b7391242e9ac90b1502c18f9af4e4698
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433182"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641051"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics ortak sorgu desenleri
 
@@ -36,7 +36,7 @@ Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çık
 
 **Giriş**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -46,7 +46,7 @@ Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çık
 
 **Çıktı ArchiveOutput**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -56,7 +56,7 @@ Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çık
 
 **Çıkış AlertOutput**:
 
-| Marka | Zaman | Count |
+| Marka | Süre | Count |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -121,14 +121,14 @@ Giriş akışı verilerini çıkışa kopyalamak için basit bir geçişli sorgu
 
 **Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Süre | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Çıkış**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Süre | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -146,7 +146,7 @@ Bir **Select** * sorgusu, gelen bir olaydaki tüm alanları ve bunları çıkı�
 
 **Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Süre | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -154,7 +154,7 @@ Bir **Select** * sorgusu, gelen bir olaydaki tüm alanları ve bunları çıkı�
 
 **Çıkış**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -175,7 +175,7 @@ FROM Input
 
 **Giriş**:
 
-| Marka | License_plate | Zaman |
+| Marka | License_plate | Süre |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -183,7 +183,7 @@ FROM Input
 
 **Çıkış**:
 
-| Marka | License_plate | Zaman |
+| Marka | License_plate | Süre |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
@@ -207,14 +207,14 @@ WHERE
 
 **Giriş**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
 **Çıkış**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
@@ -240,7 +240,7 @@ Olaylar, sistem tarafından gerçek zamanlı olarak tüketildiği için, bir ola
 
 **Giriş**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Süre |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YıLZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -252,7 +252,7 @@ Olaylar, sistem tarafından gerçek zamanlı olarak tüketildiği için, bir ola
 
 **Çıkış**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Süre |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
@@ -293,7 +293,7 @@ Bir zaman penceresinde bilgileri hesaplamak için, veriler birlikte toplanabilir
 
 **Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Süre | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -331,7 +331,7 @@ Düzensiz veya eksik olaylar söz konusu olduğunda, daha seyrek bir veri giriş
 
 **Giriş**:
 
-| Zaman | Değer |
+| Süre | Değer |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -377,7 +377,7 @@ Aynı akıştaki olayların bağıntılandırgetirilmesi, **gecikme** işlevi ku
 
 **Giriş**:
 
-| Marka | License_plate | Zaman |
+| Marka | License_plate | Süre |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -386,7 +386,7 @@ Aynı akıştaki olayların bağıntılandırgetirilmesi, **gecikme** işlevi ku
 
 **Çıkış**:
 
-| Marka | Zaman | Current_car_license_plate | First_car_license_plate | First_car_time |
+| Marka | Süre | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
@@ -415,7 +415,7 @@ Bir olayın süresi, son olay alındıktan sonra son başlangıç olayına bakar
 
 **Giriş**:  
 
-| Kullanıcı | Özellik | Olay | Zaman |
+| Kullanıcı | Özellik | Olay | Süre |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Başlangıç |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
@@ -449,7 +449,7 @@ WHERE
 
 **Giriş**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -459,7 +459,7 @@ WHERE
 
 **Çıktıların**
 
-| Count_make | Zaman |
+| Count_make | Süre |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
@@ -484,7 +484,7 @@ Daha fazla bilgi için [ **Count** toplama işlevine](/stream-analytics-query/co
 
 **Giriş**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Süre |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YıLZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -496,7 +496,7 @@ Daha fazla bilgi için [ **Count** toplama işlevine](/stream-analytics-query/co
 
 **Çıkış**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Süre |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | QYıF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
@@ -518,7 +518,7 @@ WHERE
 
 **Çıkış**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Süre |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YıLZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -547,7 +547,7 @@ Belirli bir zaman penceresinde olaylar üzerinde ortalamaları hesaplama gibi bi
 
 **Giriş**:  
 
-| DeviceId | Zaman | Öznitelik | Değer |
+| DeviceId | Süre | Öznitelik | Değer |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000 Z |Sıcaklık |50 |
 | 1 |2018-07-27T00:00:01.0000000 Z |Sıcaklık |50 |
@@ -596,7 +596,7 @@ Daha fazla bilgi için bkz. [Count (ayrık süre)](/stream-analytics-query/count
 
 **Giriş**:
 
-| Marka | Zaman |
+| Marka | Süre |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
@@ -604,7 +604,7 @@ Daha fazla bilgi için bkz. [Count (ayrık süre)](/stream-analytics-query/count
 
 **Çıkış**:
 
-| Marka |Dispatch_to_lane | Zaman |
+| Marka |Dispatch_to_lane | Süre |
 | --- | --- | --- |
 | Make1 |A |2015-01-01T00:00:01.0000000 Z |
 | Make2 |Kenarı |2015-01-01T00:00:02.0000000 Z |
@@ -633,7 +633,7 @@ Veri **cast** yöntemi kullanılarak gerçek zamanlı olarak ayarlanabilir. Örn
 
 **Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Süre | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -667,7 +667,7 @@ Birden çok olayla yayılan koşullar için, bu koşulun süresini tanımlamak �
 
 **Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Süre | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:02.0000000 Z |25000 |
@@ -715,7 +715,7 @@ Olaylar, Event üreticileri, bölümler arasındaki saat eğetkinlikleri veya a�
 
 **Giriş**:
 
-| Licenselevha | Marka | Zaman | Tollıd |
+| Licenselevha | Marka | Süre | Tollıd |
 | --- | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
 | YıLHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
@@ -760,7 +760,7 @@ Bu pencere, Kullanıcı etkileşimi verileri hesaplanırken özellikle faydalıd
 
 **Giriş**:
 
-| User_id | Zaman | URL |
+| User_id | Süre | URL |
 | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
 | 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
@@ -846,7 +846,7 @@ Daha fazla bilgi için [JavaScript](/azure/stream-analytics/stream-analytics-jav
 
 **Giriş**:
 
-| ATM_id | Operation_id | Return_Code | Zaman |
+| ATM_id | Operation_id | Return_Code | Süre |
 | --- | --- | --- | --- |
 | 1 | "PIN girme" | Başarılı | 2017-01-26T00:10:00.0000000 Z |
 | 2 | "Para yuvası açılıyor" | Başarılı | 2017-01-26T00:10:07.0000000 Z |
@@ -863,10 +863,10 @@ Daha fazla bilgi için [JavaScript](/azure/stream-analytics/stream-analytics-jav
 
 ```SQL
 SELECT *
-FROM intput TIMESTAMP BY time OVER ATM_id
+FROM input TIMESTAMP BY time OVER ATM_id
 MATCH_RECOGNIZE (
-    PARTITON BY ATM_id
     LIMIT DURATION(minute, 1)
+    PARTITON BY ATM_id
     MEASURES
         First(Warning.ATM_id) AS ATM_id,
         First(Warning.Operation_Id) AS First_Warning_Operation_id,
@@ -894,7 +894,7 @@ Jeo-uzamsal veriler, coğrafi JSON veya WKT biçimlerinde olay akışı veya ba�
 
 **Giriş**:
 
-| Equipment_id | Equipment_current_location | Zaman |
+| Equipment_id | Equipment_current_location | Süre |
 | --- | --- | --- |
 | 1 | "NOKTA (-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000 Z |
 | 1 | "NOKTA (-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000 Z |
@@ -909,7 +909,7 @@ Jeo-uzamsal veriler, coğrafi JSON veya WKT biçimlerinde olay akışı veya ba�
 
 **Çıkış**:
 
-| Equipment_id | Equipment_alert_location | Zaman |
+| Equipment_id | Equipment_alert_location | Süre |
 | --- | --- | --- |
 | 1 | "NOKTA (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 

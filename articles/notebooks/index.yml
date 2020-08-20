@@ -3,18 +3,18 @@ title: Azure Notebooks Önizleme Belgeleri
 summary: 9 Ekim 2020'de Azure Notebooks genel önizleme sitesi kullanımdan kaldırılacak ve onun yerini Visual Studio, Azure ve GitHub'dan tümleşik hizmetler alacaktır. https://notebooks.azure.com/Content/alternatives.html adresinde seçenekleriniz ve Microsoft'un diğer not defteri deneyimleri hakkında bilgi edinebilirsiniz.
 metadata:
   title: Azure Notebooks Önizleme Belgeleri
-  description: Barındırılan Azure Notebooks Önizleme hizmeti aracılığıyla Jupyter not defterlerini oluşturmayı, çalıştırmayı ve paylaşmayı öğrenin.
+  description: Barındırılan Azure Notebooks Önizleme hizmeti aracılığıyla Jupyter Notebooks oluşturmayı, çalıştırmayı ve paylaşmayı öğrenin.
   ms.service: azure-notebooks
   ms.topic: landing-page
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 456cd23308c7258b59fa8dad628e9f09f6afc0e2
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  ms.openlocfilehash: cdc98d01a4fae5e4b09af001ec65dd7a29c34c0f
+  ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88586962"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88640285"
 landingContent:
 - title: Azure Notebooks hakkında
   linkLists:
@@ -38,17 +38,17 @@ landingContent:
       url: /learn/modules/analyze-climate-data-with-azure-notebooks/
   - linkListType: tutorial
     links:
-    - text: Python ile Jupyter notebook oluşturma ve çalıştırma
+    - text: Python ile Jupyter Notebook oluşturma ve çalıştırma
       url: tutorial-create-run-jupyter-notebook.md
   - linkListType: quickstart
     links:
     - text: Oturum açma ve kullanıcı kimliği ayarlama
       url: quickstart-sign-in-azure-notebooks.md
-    - text: Not defteri oluşturma ve paylaşma
+    - text: Notebook oluşturma ve paylaşma
       url: quickstart-create-share-jupyter-notebook.md
-    - text: Not defterini kopyalama
+    - text: Notebook kopyalama
       url: quickstart-clone-jupyter-notebook.md
-    - text: Yerel Jupyter not defterini geçirme
+    - text: Yerel Jupyter Notebook’u geçirme
       url: quickstart-migrate-local-jupyter-notebook.md
     - text: Özel bir ortamla proje oluşturma
       url: quickstart-create-jupyter-notebook-project-environment.md
@@ -64,7 +64,7 @@ landingContent:
       url: work-with-project-data-files.md
     - text: Projeleri oluşturma ve kopyalama
       url: create-clone-jupyter-notebooks.md
-    - text: Not defterinde bulut verilerine erişme
+    - text: Notebook’taki bulut verilerine erişme
       url: access-data-resources-jupyter-notebooks.md
-    - text: Not defterinde paketleri yükleme
+    - text: Notebook’ta paketleri yükleme
       url: install-packages-jupyter-notebook.md

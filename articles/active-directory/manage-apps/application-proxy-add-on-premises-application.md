@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212806"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642155"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -188,7 +188,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 
     | Alan | Açıklama |
     | :---- | :---------- |
-    | **Ad** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
+    | **Ad** | Uygulamamda ve Azure portal görünecek uygulamanın adı. |
     | **İç URL** | Özel ağınızın içinden uygulamaya erişim URL 'SI. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. Bu şekilde, farklı siteleri farklı uygulamalarla aynı sunucuda yayımlayabilir ve her birine kendi ad ve erişim kurallarına sahip olabilirsiniz.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Örneğin, uygulamanız https: \/ /yourapp/App ise ve https: \/ /yourapp/Media konumunda bulunan görüntüleri kullanıyorsa, https: \/ /yourapp/yolunu olarak yayımlamanız gerekir. Bu iç URL 'nin kullanıcılarınızın göreceği giriş sayfası olması gerekmez. Daha fazla bilgi için bkz. [yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](application-proxy-configure-custom-home-page.md). |
     | **Dış URL** | Kullanıcıların uygulamaya ağınızın dışından erişebileceği adres. Varsayılan uygulama proxy 'Si etki alanını kullanmak istemiyorsanız, [Azure AD uygulama ara sunucusu özel etki alanları](application-proxy-configure-custom-domain.md)hakkında bilgi edinin.|
     | **Ön kimlik doğrulama** | Uygulama proxy 'Si, uygulamanıza erişim vermeden önce kullanıcıları nasıl doğrular.<br><br>**Azure Active Directory** -uygulama proxy 'si, kullanıcıların dizin ve uygulama için izinlerinin kimliğini doğrulayan Azure AD ile oturum açmasını yeniden yönlendirir. Koşullu erişim ve Multi-Factor Authentication gibi Azure AD güvenlik özelliklerinin avantajlarından yararlanabilmek için bu seçeneği varsayılan olarak tutmanız önerilir. Uygulamayı Microsoft Bulut uygulama güvenliği ile izlemek için **Azure Active Directory** gereklidir.<br><br>**Geçiş** -kullanıcıların uygulamaya erişmek IÇIN Azure AD 'de kimlik doğrulaması yapması gerekmez. Arka uçta kimlik doğrulama gereksinimlerini ayarlamaya devam edebilirsiniz. |
@@ -205,7 +205,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
     | **Üst bilgilerdeki URL 'Leri çevir** | Uygulamanız kimlik doğrulaması isteğindeki orijinal ana bilgisayar üst bilgisini gerektirmediğiniz sürece bu değeri **Evet** olarak tutun. |
     | **Uygulama gövdesinde URL 'Leri çevir** | Diğer şirket içi uygulamalara yönelik olarak kodlanmış HTML bağlantıları yoksa ve özel etki alanları kullanmadıkça bu değeri **Hayır** olarak tutun. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile bağlantı çevirisi](application-proxy-configure-hard-coded-link-translation.md).<br><br>Bu uygulamayı Microsoft Cloud App Security (MCAS) ile izlemeyi planlıyorsanız, bu değeri **Evet** olarak ayarlayın. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi Izlemeyi yapılandırma](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. **Add (Ekle)** seçeneğini belirleyin.
+7. **Ekle**’yi seçin.
 
 ## <a name="test-the-application"></a>Uygulamayı test etme
 

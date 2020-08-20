@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: c80b4e57c94737778d8e6f63804d95f4d1b35fb0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95f8466944d4131b3356f44d65171bf1b6cc7a82
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501806"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640812"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
@@ -52,7 +52,7 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Seçenek 1 (varsayılan): yük dengeleyici oluşturma (Standart SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standart SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
@@ -593,7 +593,7 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
    --lb-name myLoadBalancer
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. seçenek: yük dengeleyici oluşturma (temel SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.

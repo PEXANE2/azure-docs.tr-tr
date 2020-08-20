@@ -4,13 +4,13 @@ description: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 3cd2ed692f3a34223675da69efd92e78c2ba9504
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083195"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640846"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve nereye gönderileceğini belirtir. Bu makalede, Azure Izleyici Aracısı kullanılarak sanal makinelerden veri toplamak için bir veri toplama kuralının nasıl oluşturulacağı açıklanır.
@@ -48,7 +48,7 @@ Yeni bir kural ve ilişkilendirme kümesi oluşturmak için **Ekle** ' ye tıkla
 [![Veri kaynağı temel](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Diğer günlükleri ve performans sayaçlarını belirtmek için **özel**' i seçin. Ardından, toplanacak belirli değerler için bir [XPath](https://www.w3schools.com/xml/xpath_syntax.asp) belirtebilirsiniz. Örnekler için bkz. [örnek DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
+Diğer günlükleri ve performans sayaçlarını belirtmek için **özel**' i seçin. Ardından, toplanacak belirli değerler için bir [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) belirtebilirsiniz. Örnekler için bkz. [örnek DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
 
 [![Veri kaynağı özel](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 
@@ -61,6 +61,11 @@ Veri toplama kuralının ayrıntılarını ve VM kümesiyle ilişkilendirmeyi g�
 > [!NOTE]
 > Veri toplama kuralı ve ilişkilendirmeleri oluşturulduktan sonra, verilerin hedeflere gönderilmesi 5 dakikaya kadar sürebilir.
 
+## <a name="createusingrestapi"></a>REST API kullanarak oluşturma
+REST API kullanarak bir DCR ve ilişki oluşturmak için aşağıdaki adımları izleyin. 
+1. [Örnek DCR](data-collection-rule-overview.md#sample-data-collection-rule)' de gösterilen JSON BIÇIMINI kullanarak DCR dosyasını el ile oluşturun.
+2. [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)kullanarak kural oluşturun.
+3. [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)kullanarak, her bir sanal makine için veri toplama kuralına bir ilişki oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

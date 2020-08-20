@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055777"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640608"
 ---
 # <a name="blob-snapshots"></a>Blob anlık görüntüleri
 
 Anlık görüntü, bir Blobun zaman içinde alınmış bir salt okunurdur.
 
 > [!NOTE]
-> Blob sürümü oluşturma (Önizleme), bir Blobun geçmiş kopyalarını korumak için alternatif bir yol sunar. Daha fazla bilgi için bkz. [BLOB sürüm oluşturma (Önizleme)](versioning-overview.md).
+> Blob sürümü oluşturma (Önizleme), bir Blobun önceki sürümlerini korumak için alternatif bir yol sunar. Daha fazla bilgi için bkz. [BLOB sürüm oluşturma (Önizleme)](versioning-overview.md).
 
 ## <a name="about-blob-snapshots"></a>Blob anlık görüntüleri hakkında
 
@@ -33,7 +33,7 @@ Blob URI 'si, blob URI 'sinin, anlık görüntünün alındığı saati belirtme
 > Tüm anlık görüntüler, temel Blobun URI 'sini paylaşır. Temel blob ve anlık görüntü arasındaki tek ayrım, eklenen **Tarih saat** değeridir.
 >
 
-Blob herhangi bir sayıda anlık görüntüye sahip olabilir. Anlık görüntüler, bağımsız olarak ya da temel Blobun blob silme işleminin bir parçası olarak açıkça silinene kadar kalır. Geçerli anlık görüntülerinizi izlemek için temel bloba ilişkili anlık görüntüleri numaralandırabilirsiniz.
+Blob herhangi bir sayıda anlık görüntüye sahip olabilir. Anlık görüntüler, bağımsız olarak ya da temel Blobun [BLOB silme](/rest/api/storageservices/delete-blob) işleminin bir parçası olarak açıkça silinene kadar kalır. Geçerli anlık görüntülerinizi izlemek için temel bloba ilişkili anlık görüntüleri numaralandırabilirsiniz.
 
 Bir Blobun anlık görüntüsünü oluşturduğunuzda, Blobun sistem özellikleri aynı değerlerle anlık görüntüye kopyalanır. Temel Blobun meta verileri, oluşturduğunuz sırada anlık görüntü için ayrı meta veriler belirtmediğiniz müddetçe anlık görüntüye de kopyalanır. Anlık görüntü oluşturduktan sonra, bunu okuyabilir, kopyalayabilir veya silebilirsiniz, ancak değiştiremezsiniz.
 
@@ -51,15 +51,15 @@ Aşağıdaki liste, bir anlık görüntü oluştururken dikkate alınması gerek
 
 - Depolama hesabınız, blob 'ta mi yoksa anlık görüntüde olsun, benzersiz bloklar veya sayfalar için ücretler uygular. Hesabınız, temel aldıkları blobu güncelleştirene kadar bir blob ile ilişkili anlık görüntüler için ek ücret uygulamaz. Temel blobu güncelleştirdikten sonra, anlık görüntülerinden ayrılan olur. Bu durumda, her blob veya anlık görüntüde benzersiz bloklar veya sayfalar için ücretlendirilirsiniz.
 - Blok Blobu içindeki bir bloğu değiştirdiğinizde, bu blok daha sonra benzersiz bir blok olarak ücretlendirilir. Bu, blok aynı blok KIMLIĞINE ve anlık görüntüdeki verilerle aynı verilere sahip olsa da geçerlidir. Blok yeniden gerçekleştirildikten sonra, herhangi bir anlık görüntüde onun karşılığından ayrılan bir işlem olur ve veriler için ücretlendirilirsiniz. Aynı verilerle güncelleştirilmiş bir sayfa blobunun bir sayfası için de aynı değer geçerlidir.
-- [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] veya [Uploadfrombyıtearray] [dotnet_UploadFromByteArray] yöntemi çağırarak bir Blok Blobu değiştirme, blob 'taki tüm blokları değiştirir. Bu bloba ilişkili bir anlık görüntü varsa, temel blob ve anlık görüntüdeki tüm bloklar artık birbirinden kalır ve her iki blobdaki tüm bloklar için ücretlendirilirsiniz. Bu, temel bloba ve anlık görüntüdeki veriler aynı kalabilse bile geçerlidir.
+- Blob 'un tüm içeriğinin üzerine yazan bir yöntemi çağırarak bir blok Blobun güncelleştirilmesi, Blobun tüm blokların yerini alır. Bu bloba ilişkili bir anlık görüntü varsa, temel blob ve anlık görüntüdeki tüm bloklar artık birbirinden kalır ve her iki blobdaki tüm bloklar için ücretlendirilirsiniz. Bu, temel bloba ve anlık görüntüdeki veriler aynı kalabilse bile geçerlidir.
 - Azure Blob hizmeti, iki Blobun aynı verileri içerip içermediğini belirleme anlamına gelir. Karşıya yüklenen ve yürütülen her bir blok, aynı verilere ve aynı blok KIMLIĞINE sahip olsa bile benzersiz olarak değerlendirilir. Ücretler benzersiz bloklar için tahakkuk ettiğinden, anlık görüntü sonucu olan bir Blobun ek benzersiz bloklar ve ek ücretler ile güncelleştirilmesini göz önünde bulundurmanız önemlidir.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Anlık görüntü yönetimiyle maliyeti en aza indirme
+### <a name="minimize-costs-with-snapshot-management"></a>Anlık görüntü yönetimi ile maliyetleri en aza indirme
 
 Ek ücretlerden kaçınmak için anlık görüntülerinizi dikkatle yönetmeniz önerilir. Anlık görüntülerinizin depolanması tarafından tahakkuk eden maliyetleri en aza indirmeye yardımcı olması için bu en iyi yöntemleri izleyebilirsiniz:
 
 - Aynı verilerle güncelleştirseniz bile blob 'u her güncelleştirdiğinizde bir blob ile ilişkili anlık görüntüleri silin ve yeniden oluşturun, çünkü uygulama tasarımınız anlık görüntüleri korumanızı gerektirmez. Blobun anlık görüntülerini silip yeniden oluşturarak Blobun ve anlık görüntülerin birbirinden yönlendirilmemesini sağlayabilirsiniz.
-- Bir Blobun anlık görüntülerini korumak istiyorsanız, blobu güncelleştirmek için [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] veya [Uploadfrombyıtearray] [dotnet_UploadFromByteArray] çağrısını önleyin. Bu yöntemler, blobdaki tüm blokları değiştirerek temel Blobun ve anlık görüntülerinin önemli ölçüde ayrılmış olmasına neden olur. Bunun yerine, [PutBlock] [dotnet_PutBlock] ve [PutBlockList] [dotnet_PutBlockList] yöntemlerini kullanarak mümkün olan en az sayıda blok güncelleştirin.
+- Bir Blobun anlık görüntülerini yaşıyorsanız, blobu güncelleştirdiğinizde tüm Blobun üzerine yazmış olan yöntemlerin çağrılmasını önleyin. Bunun yerine, maliyetleri düşük tutmak için mümkün olan en az sayıda blok güncelleştirin.
 
 ### <a name="snapshot-billing-scenarios"></a>Anlık görüntü faturalandırma senaryoları
 
@@ -85,9 +85,12 @@ Senaryo 3 ' te, temel blob güncelleştirildi, ancak anlık görüntü yok. Blok
 
 #### <a name="scenario-4"></a>4\. Senaryo
 
-Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap tüm sekiz benzersiz blok için ücretlendirilir. Bu senaryo, [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] veya [Uploadfrombrivtearray] [dotnet_UploadFromByteArray] gibi bir güncelleştirme yöntemi kullanıyorsanız oluşabilir, çünkü bu yöntemler bir blob 'un tüm içeriğini değiştirir.
+Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap tüm sekiz benzersiz blok için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+
+> [!TIP]
+> Tüm Blobun üzerine yazacak yöntemlerin çağrılmasını önleyin ve bunun yerine maliyetleri düşük tutmak için ayrı blokları güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: af5324373359cea643a3e31b6bb94e614ddb7e36
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083180"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640744"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Izleyici 'de veri toplama kuralları (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve verilerin nereye gönderileceğini veya depolanacağını belirtir. Bu makalede, içerik ve yapısı ve bunlarla nasıl oluşturabileceğiniz ve bunlarla çalışma gibi veri toplama kurallarına genel bir bakış sunulmaktadır.
@@ -68,7 +68,7 @@ Aşağıdaki tabloda, her bir veri toplama kuralı için geçerli olan sınırla
 Şu anda bir DCR oluşturmak için kullanılabilecek iki yöntem vardır:
 
 - Bir veri toplama kuralı oluşturmak ve bir veya daha fazla sanal makineyle ilişkilendirilmesini sağlamak için [Azure Portal kullanın](data-collection-rule-azure-monitor-agent.md) .
-- JSON 'daki veri toplama kuralını doğrudan düzenleyin ve REST API kullanarak gönderebilirsiniz.
+- JSON 'daki veri toplama kuralını doğrudan düzenleyin ve [REST API kullanarak gönderebilirsiniz](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Örnek veri toplama kuralı
 Aşağıdaki örnek veri toplama kuralı, Azure Yönetim aracısına sahip sanal makineler içindir ve aşağıdaki ayrıntılara sahiptir:

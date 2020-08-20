@@ -10,10 +10,12 @@
       href: overview-iot-central-developer.md
     - name: Son güncelleştirmeler
       items:
+        - name: Temmuz 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
         - name: Haziran 2020 yeni ve güncelleştirilmiş özellikler
-          href: 'https://azure.microsoft.com/en-us/updates/azure-iot-central-feature-updates-june-2020/'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
         - name: Haziran 2020 kullanıcı arabirimi ve belge güncelleştirmeleri
-          href: 'https://azure.microsoft.com/en-us/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
         - name: Mayıs 2020 iş ve ölçüm güncelleştirmeleri
           href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
         - name: Mayıs 2020 pano güncelleştirmeleri

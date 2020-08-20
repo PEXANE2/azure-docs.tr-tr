@@ -1,5 +1,5 @@
 ---
-title: Batch dökümünü alma-konuşma hizmeti nedir?
+title: Toplu iş dökümü kullanma-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Toplu döküm, depolama alanında Azure Blob 'Ları gibi büyük miktarda ses eklemek istiyorsanız idealdir. Adanmış REST API kullanarak, paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma yapabilirsiniz.
 services: cognitive-services
@@ -10,20 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214048"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640166"
 ---
-# <a name="what-is-batch-transcription"></a>Toplu iş dökümü nedir?
+# <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
 Batch dökümü, depolamada büyük miktarda ses eklemenizi sağlayan bir REST API işlemleri kümesidir. Paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarıyla karşılaşabilirsiniz. Yeni v 3.0 API 'SI ile bir veya daha fazla ses dosyası oluşturma veya bir depolama kapsayıcısının tamamını işleme seçeneğiniz vardır.
 
 Zaman uyumsuz konuşmayı metne dönüştürme, özelliklerden yalnızca biridir. Aşağıdaki yöntemleri çağırmak için Batch transcripts REST API 'Lerini kullanabilirsiniz:
-
-
 
 |    Toplu iş dökümü Işlemi                                             |    Yöntem    |    REST API çağrısı                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -46,22 +44,16 @@ Kullanımı kolay API 'nin yanında, Özel uç noktaları dağıtmanız gerekmez
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="subscription-key"></a>Abonelik Anahtarı
-
 Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](get-started.md)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
 >[!NOTE]
 > Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelik anahtarları (F0) çalışmıyor. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-### <a name="custom-models"></a>Özel modeller
-
 Modelleri özelleştirmeyi planlıyorsanız, [akustik özelleştirme](how-to-customize-acoustic-models.md) ve [dil özelleştirme](how-to-customize-language-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model konumuyla ihtiyacınız vardır. Modelin ayrıntılarını inceleyebileceğiniz zaman model konumunu alabilirsiniz ( `self` özellik). Toplu iş dökümü hizmeti için dağıtılan özel bir uç nokta *gerekli değildir* .
 
-## <a name="the-batch-transcription-api"></a>Toplu Iş dökümü API 'SI
+## <a name="batch-transcription-api"></a>Toplu iş dökümü API 'SI
 
-### <a name="supported-formats"></a>Desteklenen biçimler
-
-Toplu Iş dökümü API 'SI aşağıdaki biçimleri destekler:
+Toplu iş dökümü API 'SI aşağıdaki biçimleri destekler:
 
 | Biçimlendir | Bileşeni | Örnek başına bit sayısı | Örnek hız             |
 |--------|-------|---------|---------------------------------|
@@ -185,7 +177,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 Toplu iş dökümü, ses okumak ve depoya yazmak için [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) destekler.
 
-## <a name="the-batch-transcription-result"></a>Toplu iş dökümü sonucu
+## <a name="batch-transcription-result"></a>Toplu iş dökümü sonucu
 
 Her giriş sesi için, bir döküm sonuç dosyası oluşturuluyor. [Get döküm dosyalarını](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)çağırarak sonuç dosyalarının listesini alabilirsiniz. Bu yöntem, bu döküm için sonuç dosyalarının bir listesini döndürür. Belirli bir giriş dosyası için döküm dosyasını bulmak için, ve ile döndürülen tüm dosyaları filtreleyin `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` .
 
@@ -251,7 +243,7 @@ Her döküm sonuç dosyası şu biçimdedir:
 }
 ```
 
-Sonuç şu formları içerir:
+Sonuç aşağıdaki formları içerir:
 
 :::row:::
    :::column span="1":::
@@ -289,9 +281,9 @@ Sonuç şu formları içerir:
       Tanınan metnin görüntüleme formu. Eklenen noktalama işaretleri ve büyük harfler dahil edilir.
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>Konuşmacı ayrımı (Diarleştirme)
+## <a name="speaker-separation-diarization"></a>Konuşmacı ayrımı (diarleştirme)
 
-Kararlama, hoparlörleri ses parçasıyla ayırma işlemidir. Batch Işlem hatmız, daha fazla seçim destekleiyor ve mono kanal kayıtlarında iki hoparlörleri tanıyor. Özellik, stereo kayıtlarında kullanılamaz.
+Kararlama, hoparlörleri ses parçasıyla ayırma işlemidir. Batch ardışık düzeni, erişimi destekler ve mono kanal kayıtlarında iki hoparlörleri tanıyor. Özellik, stereo kayıtlarında kullanılamaz.
 
 Diarleştirme etkin olan döküm çıkışı, her bir çıkış `Speaker` tümceciği için bir giriş içerir. Eğer Eğer bu özellik kullanılmazsa, özelliği `Speaker` JSON çıktısında yok. İki sesi destekliyoruz, böylece hoparlörler veya olarak tanımlanır `1` `2` .
 
@@ -317,7 +309,7 @@ Yukarıdaki istekteki parametreler gösterildiği için sözcük düzeyi zaman d
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Döküm hizmeti, çok sayıda gönderilen dökümü işleyebilir. Bir veya daha fazla gözden geçir aracılığıyla döküm durumunu sorgulayabilirsiniz `GET` . [Get transcriptions](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions) Sonuçları aldıktan sonra hizmetten düzenli olarak [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) çağrısını çağırın. Bunun yerine `timeToLive` , sonuçların son silinmesini sağlamak için özelliği makul bir değere ayarlayın.
+Toplu iş dökümü hizmeti, çok sayıda gönderilen dökümü işleyebilir. Bir veya daha fazla gözden geçir aracılığıyla döküm durumunu sorgulayabilirsiniz `GET` . [Get transcriptions](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions) Sonuçları aldıktan sonra hizmetten düzenli olarak [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) çağrısını çağırın. Bunun yerine `timeToLive` , sonuçların son silinmesini sağlamak için özelliği makul bir değere ayarlayın.
 
 ## <a name="sample-code"></a>Örnek kod
 

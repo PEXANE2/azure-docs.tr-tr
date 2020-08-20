@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763423"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640455"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory için iş kolu uygulamaları geliştirin
 Bu kılavuz, Azure Active Directory (AD) için iş kolu (LoB) uygulamaları geliştirmeye genel bir bakış sağlar. Hedef kitle Active Directory/Office 365 genel yöneticileridir.
@@ -58,7 +58,7 @@ Geliştiricilerin uygulamayı üretime hazır hale getirmenize yardımcı olmak 
 SaaS uygulamalarınıza uygulama başına erişim kuralları yapılandırın. Örneğin, MFA gerektirebilir veya yalnızca güvenilen ağlardaki kullanıcılara erişime izin verebilirsiniz. Bu belgenin ayrıntıları, [erişim kurallarını yapılandırma](../conditional-access/app-based-mfa.md)belgesinde mevcuttur.
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Uygulamayı kullanıcı ataması ve kullanıcı atama gerektirecek şekilde yapılandırma
-Varsayılan olarak, kullanıcılar atanana gerek kalmadan uygulamalara erişebilir. Ancak, uygulama rolleri kullanıma sunarsa ya da uygulamanın bir kullanıcının erişim panelinde görünmesini istiyorsanız, Kullanıcı ataması yapmanız gerekir.
+Varsayılan olarak, kullanıcılar atanana gerek kalmadan uygulamalara erişebilir. Ancak, uygulama rolleri açığa alıyorsa veya uygulamanın bir kullanıcının uygulamamda görünmesini istiyorsanız, Kullanıcı ataması yapmanız gerekir.
 
 Azure AD Premium veya Enterprise Mobility Suite (EMS) abonesiyseniz, grupların kullanılması önemle önerilir. Uygulamaya grupları atamak, devam eden erişim yönetimini grubun sahibine atamanıza olanak tanır. Grup Yönetimi özelliğinizi kullanarak grubu oluşturabilir veya kuruluşunuzdaki sorumlu tarafın grubu oluşturmasını isteyebilirsiniz.
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367793"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642427"
 ---
-# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlayın
+# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlama
 
 Azure Active Directory (Azure AD) uygulama proxy 'Si, şirket içi uygulamalar için güvenli ve düşük maliyetli bir uzaktan erişim çözümüdür. Henüz modern protokolleri kullanmayan eski şirket içi uygulamalara erişimi yönetmek için "bulut Ilk" kuruluşları için anında geçiş yolu sağlar. Ek tanıtım bilgileri için bkz. [uygulama proxy nedir](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
 
@@ -170,7 +170,7 @@ Aşağıdaki yönergeleri izleyerek tüm Kullanıcı ve iş gereksinimlerinin ka
 
 ### <a name="deploy-application-proxy"></a>Uygulama proxy 'Sini dağıt
 
-Uygulama ara sunucusunu dağıtma adımları bu [öğreticide, uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)konusunda ele alınmıştır. Yükleme başarılı olmazsa, portalda **uygulama ara sunucusunu sorun gider** ' i seçin veya [uygulama proxy 'si aracı bağlayıcısını yüklemeyle ilgili sorunlar için](application-proxy-connector-installation-problem.md)sorun giderme kılavuzunu kullanın.
+Uygulama ara sunucusunu dağıtma adımları bu [öğreticide, uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)konusunda ele alınmıştır. Yükleme başarılı olmazsa, portalda  **uygulama ara sunucusunu sorun gider**  ' i seçin veya [uygulama proxy 'si aracı bağlayıcısını yüklemeyle ilgili sorunlar için](application-proxy-connector-installation-problem.md)sorun giderme kılavuzunu kullanın.
 
 ### <a name="publish-applications-via-application-proxy"></a>Uygulama proxy 'Si aracılığıyla uygulama yayımlama
 
@@ -271,7 +271,7 @@ Aşağıdaki yetenekler Azure AD Uygulama Ara Sunucusu desteklemek için kullan�
 
 * Risk tabanlı koşullu erişim: şirket içinde veya bulutta olsun, tüm uygulamalara ve tüm kullanıcılara uygulanabilen [risk tabanlı bir koşullu erişim ilkesiyle](https://www.microsoft.com/cloud-platform/conditional-access) verilerinizi kötü amaçlı saldırılara karşı koruyun.
 
-* Azure AD erişim paneli: uygulama proxy hizmeti dağıtıldıktan ve uygulamalar güvenli bir şekilde yayımlanmışsa, kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Yeni uygulamalara ve gruplara erişim isteme ya da bu kaynaklara erişimi başka kişilerin adına, [erişim paneli](https://aka.ms/AccessPanelDPDownload)aracılığıyla yönetme yeteneği gibi self servis özellikleri ile üretkenliğinizi artırın.
+* Azure AD My Apps: uygulama proxy hizmeti dağıtıldı ve uygulamalar güvenli bir şekilde yayımlandı, kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Yeni uygulamalara ve gruplara erişim isteme veya bu kaynaklara erişimi diğer kişilerin adına, [uygulamalarım](https://aka.ms/AccessPanelDPDownload)aracılığıyla yönetme gibi self servis özellikleri ile üretkenliğinizi artırın.
 
 ## <a name="manage-your-implementation"></a>Uygulamanızı yönetme
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135496"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641866"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
@@ -47,7 +47,7 @@ Uygulama özelliklerini düzenlemek için:
 3. Yapılandırmak için kullanılabilen seçenekleri anlamak için bir dakikanızı ayırın:
     - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
-    - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların onu [erişim paneli](https://myapps.microsoft.com) ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirler. (Office 365 veya Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)
+    - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların bu dosyayı [uygulamalarım](https://myapps.microsoft.com) ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirler. (Office 365 veya Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)
     
     > [!TIP]
     > Kullanıcıları atamak, gezinme 'nin **Kullanıcılar ve gruplar** bölümünde gerçekleşir.
@@ -56,13 +56,13 @@ Uygulama özelliklerini düzenlemek için:
     
     | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Uygulamaya atanmış olan veya olmayan kullanıcılar için davranış. |
     |---|---|---|---|
-    | Evet | Evet | Evet | Atanan kullanıcılar uygulamayı görebilir ve oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
-    | Evet | Evet | Hayır  | Atanan kullanımlar uygulamayı göremez, ancak oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
-    | Evet | Hayır  | Evet | Atanan kullanıcılar uygulamayı görebilir ve oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez, ancak oturum açabilir. |
-    | Evet | Hayır  | Hayır  | Atanan kullanıcılar uygulamayı göremez, ancak oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez, ancak oturum açabilir. |
-    | Hayır  | Evet | Evet | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
-    | Hayır  | Evet | Hayır  | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
-    | Hayır  | Hayır  | Evet | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Yes | Yes | Yes | Atanan kullanıcılar uygulamayı görebilir ve oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Yes | Yes | Hayır  | Atanan kullanımlar uygulamayı göremez, ancak oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Yes | Hayır  | Yes | Atanan kullanıcılar uygulamayı görebilir ve oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez, ancak oturum açabilir. |
+    | Yes | Hayır  | Hayır  | Atanan kullanıcılar uygulamayı göremez, ancak oturum açabilir.<br>Atanmamış kullanıcılar uygulamayı göremez, ancak oturum açabilir. |
+    | Hayır  | Yes | Yes | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Hayır  | Yes | Hayır  | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
+    | Hayır  | Hayır  | Yes | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
     | Hayır  | Hayır  | Hayır  | Atanan kullanıcılar uygulamayı göremez ve oturum açılamıyor.<br>Atanmamış kullanıcılar uygulamayı göremez ve oturum açılamıyor. |
 
 4. İşiniz bittiğinde **Kaydet**' i seçin.
