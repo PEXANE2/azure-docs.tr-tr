@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507837"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652194"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu
 
@@ -45,7 +45,7 @@ Gösterilen ilk senaryo, Azure Backup hizmetin bir `backint` SAP HANA veritaban�
 
 Azure Backup, [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)adlı özel SAP HANA arabirimini kullanarak SAP HANA için yedekleme çözümü olarak tümleştirilir ve sertifikalandırilmiştir. Çözüm hakkında daha fazla ayrıntı için, özellikleri ve kullanılabilir olduğu Azure bölgeleri, [Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi Için destek matrisi](../../../backup/sap-hana-backup-support-matrix.md#scenario-support)makalesini okuyun. HANA için Azure Backup hizmeti hakkında ayrıntılar ve ilkeler için, [Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkındaki](../../../backup/sap-hana-db-about.md)makaleyi okuyun. 
 
-Azure Backup hizmetin faydalanma olasılığı, Azure Premium Depolama 'nın disk anlık görüntülerini kullanarak uygulamayla tutarlı bir yedekleme oluşturmaktır. [Azure Ultra disk](../../linux/disks-enable-ultra-ssd.md) ve [Azure NetApp FILES](https://azure.microsoft.com/services/netapp/) gibi diğer Hana sertifikalı Azure depolama, Azure Backup hizmet aracılığıyla bu tür bir anlık görüntüyü desteklememektedir. Şu makaleler okunuyor:
+Azure Backup hizmetin faydalanma olasılığı, Azure Premium Depolama 'nın disk anlık görüntülerini kullanarak uygulamayla tutarlı bir yedekleme oluşturmaktır. [Azure Ultra disk](../../disks-enable-ultra-ssd.md) ve [Azure NetApp FILES](https://azure.microsoft.com/services/netapp/) gibi diğer Hana sertifikalı Azure depolama, Azure Backup hizmet aracılığıyla bu tür bir anlık görüntüyü desteklememektedir. Şu makaleler okunuyor:
 
 - [Azure’da sanal makine yedekleme altyapınızı planlama](../../../backup/backup-azure-vms-introduction.md)
 - [Uygulama ile tutarlı Azure Linux VM yedekleri](../../../backup/backup-azure-linux-app-consistent.md) 

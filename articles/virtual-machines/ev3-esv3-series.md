@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 86de6f94dc5bf44836fad37680a439d26d66ce6d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f9ef048fa7cc4b795f409326988e3276743b6992
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837083"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648964"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 ve Esv3 serisi
 
@@ -97,7 +97,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

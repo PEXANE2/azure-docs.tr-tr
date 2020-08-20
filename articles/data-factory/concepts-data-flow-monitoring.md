@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475558"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650902"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
 
@@ -76,6 +76,10 @@ Ayrıca, ADF ardışık düzen izleme görünümündeki veri akışı etkinliği
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>İşlem sonrası süre
+
+Haritaınızda bir havuz dönüştürme simgesi seçtiğinizde, sağdaki slayt paneli alt kısımdaki "işlem sonrası zamanı" adlı ek bir veri noktası gösterir. Bu, verileriniz yüklendikten, dönüştürüldükten ve yazıldıktan *sonra* Spark kümesinde işinizi yürütmek için harcanan süre miktarıdır. Bu süre, bağlantı havuzlarını kapatmayı, sürücü kapatmayı, dosyaları silmeyi, birleştirme dosyalarını, vb. içerebilir. Akışınızda "dosyaları taşı" ve "çıktıyı tek dosyaya kaydet" gibi eylemler gerçekleştirdiğinizde, işlem sonrası süre değerinde bir artış görürsünüz.
   
 ## <a name="monitor-icons"></a>Simgeleri izle
 

@@ -9,19 +9,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: aa7e773cb45ea23d0e091ce12cc8488114ddfbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 94c47369d7b638640fab1971801177103779e896
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837066"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648947"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 ve Esv4 serisi
 
 Ev4 ve Esv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar için Idealdir ve 50 GB 'A kadar RAM özelliğine sahiptir.
 
 > [!NOTE]
-> Sık sorulan sorular için, [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
+> Sık sorulan sorular için,  [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
 
 ## <a name="ev4-series"></a>Ev4 serisi
 
@@ -97,7 +97,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

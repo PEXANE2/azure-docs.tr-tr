@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833343"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648998"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
 Azure 'da SAP NetWeaver, Business One `Hybris` veya S/4HANA sistemleri mimarisi tasarlamak, ölçeklenebilir, verimli ve yüksek oranda kullanılabilir bir dağıtıma ulaşmak için kullanabileceğiniz çeşitli mimariler ve araçlar için çok sayıda farklı fırsat açar. Kullanılan işletim sistemine veya DBMS 'ye bağımlı olsa da kısıtlamalar vardır. Ayrıca, şirket içinde desteklenen tüm senaryolar Azure 'da aynı şekilde desteklenmez. Bu belge, Azure VM 'Leri kullanan desteklenen yüksek kullanılabilirliğe sahip olmayan yapılandırmaların ve yüksek kullanılabilirliğe sahip yapılandırmaların ve mimarilerin oluşmasına yol açacaktır. [Hana büyük örneklerle](./hana-overview-architecture.md)desteklenen senaryolar IÇIN, [Hana büyük örnekler için desteklenen senaryolar](./hana-supported-scenario.md)makalesine bakın. 
@@ -160,7 +160,7 @@ SAP Merkezi Hizmetleri, SAP yapılandırmanızın ikinci bir tek hata noktasıd�
     - [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)
 - Bir kümede barındırılan NFS paylaşımıyla Red Hat işletim sisteminde pacemaker `glusterfs` . Makalelerde Ayrıntılar bulunabilir
     - [Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği](./high-availability-guide-rhel.md)
-    - [`GlusterFS`Azure VM 'lerde Red Hat Enterprise Linux for SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
+    - [`GlusterFS` Azure VM 'lerde Red Hat Enterprise Linux for SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)barındırılan NFS paylaşımıyla Red Hat işletim sisteminde pacemaker. Ayrıntılar makalesinde açıklanmaktadır
     - [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux](./high-availability-guide-rhel-netapp-files.md)
 
@@ -215,7 +215,7 @@ Sıraya alma çoğaltması sunucusu olan bir çoklu SID kümesi, şema gibi
 SAP HANA ölçek genişletme senaryoları, [SAP HANA donanım dizininde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)listelenen Hana sertifikalı Azure VM 'lerinin bir alt kümesi için desteklenir. ' Kümeleme ' sütununda ' Yes ' ile işaretlenen tüm VM 'Ler OLAP veya S/4HANA ölçeği için kullanılabilir. Bekleme olmadan yapılandırma, Azure Depolama türleri ile desteklenir: 
 
 - /Hana/log birimi için Azure Write Hızlandırıcısı dahil olmak üzere Azure Premium Depolama
-- [Ultra disk](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra disk](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 Bekleyen düğüm (ler) ile OLAP veya S/4HANA için genişleme yapılandırmalarının SAP HANA, yalnızca Azure NetApp Files üzerinde barındırılan NFS ile desteklenir.

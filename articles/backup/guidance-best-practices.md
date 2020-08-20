@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808636"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650885"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -175,7 +175,7 @@ Azure Backup, iş yükünüze ait verilerin kurtarma hizmetleri kasasına taşı
 
 * *Azure VM yedeklemesi* -depolama ve Azure Backup hizmeti arasındaki tüm gerekli iletişim ve veri aktarımı, sanal ağınıza erişime gerek kalmadan Azure ağı içinde gerçekleşir. Bu nedenle, güvenli ağların içine yerleştirilmiş olan Azure VM 'lerinin yedeklenmesi, herhangi bir IP veya FQDN 'ye erişim izni vermemesini gerektirmez.
 
-* Azure VM 'de *SQL Server veritabanları,* Azure vm 'de SAP HANA veritabanları-Azure Backup hizmeti, Azure depolama ve Azure Active Directory bağlantı gerektirir. Bu, Özel uç noktalar kullanılarak veya gerekli genel IP adreslerine veya FQDN 'lere erişim izni vererek elde edilebilir. Gerekli Azure hizmetlerine doğru bağlantının yapılmasına izin verilmemesi, veritabanı bulma, yedeklemeyi yapılandırma, yedeklemeleri gerçekleştirme ve verileri geri yükleme gibi işlemlerde hata oluşmasına yol açabilir. NSG etiketlerini, Azure Güvenlik duvarını ve HTTP proxy 'yi kullanırken tüm Ağ Kılavuzu için, bu [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) ve [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) makalelerine bakın.
+* Azure VM 'de *SQL Server veritabanları,* Azure vm 'de SAP HANA veritabanları-Azure Backup hizmeti, Azure depolama ve Azure Active Directory bağlantı gerektirir. Bu, Özel uç noktalar kullanılarak veya gerekli genel IP adreslerine veya FQDN 'lere erişim izni vererek elde edilebilir. Gerekli Azure hizmetlerine doğru bağlantının yapılmasına izin verilmemesi, veritabanı bulma, yedeklemeyi yapılandırma, yedeklemeleri gerçekleştirme ve verileri geri yükleme gibi işlemlerde hata oluşmasına yol açabilir. NSG etiketlerini, Azure Güvenlik duvarını ve HTTP proxy 'yi kullanırken tüm Ağ Kılavuzu için bu [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) ve [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) makalelerine bakın.
 
 * *Karma* -MARS (Microsoft Azure Kurtarma Hizmetleri) Aracısı tüm kritik işlemler için ağ erişimi gerektirir-yükleme, yapılandırma, yedekleme ve geri yükleme. MARS Aracısı [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) üzerinden Azure Backup hizmetine, [Özel uç noktaları](install-mars-agent.md#private-endpoints) kullanarak veya [uygun erişim denetimleriyle ara sunucu/güvenlik duvarı](install-mars-agent.md#verify-internet-access)aracılığıyla genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi aracılığıyla bağlanabilir.
 
@@ -189,7 +189,7 @@ Azure [Özel uç noktası](../private-link/private-endpoint-overview.md) , Azure
 
 ## <a name="governance-considerations"></a>İdare ile ilgili önemli noktalar
 
-Azure 'da idare, birincil olarak [Azure ilkesi](../governance/policy/overview.md) ve [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md)ile uygulanır. [Azure ilkesi](../governance/policy/overview.md) , kaynaklarınız için kuralları zorlamak üzere ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar. Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar. [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar. Ayrıca, [Azure fiyat Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) ve [Azure Advisor](../advisor/advisor-overview.md) gibi aşağıdaki araçlar, maliyet yönetimi sürecinde önemli bir rol oynar.
+Azure 'da idare, birincil olarak [Azure ilkesi](../governance/policy/overview.md) ve [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md)ile uygulanır. [Azure ilkesi](../governance/policy/overview.md) , kaynaklarınız için kuralları zorlamak üzere ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar. Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar. [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar. Ayrıca, [Azure fiyat Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) ve [Azure Advisor](../advisor/advisor-overview.md)  gibi aşağıdaki araçlar, maliyet yönetimi sürecinde önemli bir rol oynar.
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup yerleşik Azure Ilkesi aracılığıyla iki temel senaryoyu destekler
 

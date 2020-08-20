@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: fcbcb89505130dddb42d97c153b172a22a9b29b2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ac3f31fecd53ddf1dd8bb81229c67cb4bb60c34e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831490"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650647"
 ---
 # <a name="av2-series"></a>Av2 Serisi
 
@@ -52,7 +52,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

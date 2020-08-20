@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847644"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650834"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -34,7 +34,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 > * Çalıştırmayı başlatmak için bir deneme gönder
 > * Sonuçları görüntüleme
 
-Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://aka.ms/azureml-rl-notebooks)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
+Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -45,7 +45,7 @@ Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangı�
      - Eğitim bölümünde örnek not defterlerini nasıl klonleyeceğinizi öğrenin [: Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
          - **Öğretici** yerine, **kullanım için nasıl yapılır-azureml** klasörünü kopyalayın
      - `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb`Dağıtılmış pekiştirmeye dayalı öğrenimi için kullanılan ağ bağlantı noktalarını açmak üzere konumunda bulunan sanal ağ kurulum Not defterini çalıştırın.
-     - Örnek Not defterini çalıştırma`/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
+     - Örnek Not defterini çalıştırma `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
  
  - Kendi Jupyter Notebook sunucunuz
 
@@ -433,4 +433,4 @@ Kısa bir çalışmada, bir pekiştirmeye dayalı öğrenme aracısını Pong '�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir ıMPALA Learning Aracısı kullanarak bir pekiştirmeye dayalı öğrenme aracısını eğitme hakkında bilgi edindiniz. Ek örnekleri görmek için [Azure Machine Learning pekiştirmeye dayalı Learning GitHub deposuna](https://aka.ms/azureml-rl-notebooks)gidin.
+Bu makalede, bir ıMPALA Learning Aracısı kullanarak bir pekiştirmeye dayalı öğrenme aracısını eğitme hakkında bilgi edindiniz. Ek örnekleri görmek için [Azure Machine Learning pekiştirmeye dayalı Learning GitHub deposuna](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)gidin.

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290025"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652109"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -76,7 +76,7 @@ Eğitim sırasında Azure Machine Learning, paralel olarak, sizin için farklı 
 
 1. **Python SDK 'sını veya Studio web deneyimini kullanmak isteyip Istemediğinizi seçin**: [Python SDK ve Studio Web deneyimi](#parity)arasındaki eşlik hakkında bilgi edinin.
 
-   * Sınırlı veya kod deneyimi için Azure Machine Learning Studio web deneyimini şurada deneyin:[https://ml.azure.com](https://ml.azure.com/)  
+   * Sınırlı veya kod deneyimi için Azure Machine Learning Studio web deneyimini şurada deneyin: [https://ml.azure.com](https://ml.azure.com/)  
    * Python geliştiricileri için [Azure Machine Learning Python SDK 'sını](how-to-configure-auto-train.md) inceleyin 
 
     [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
@@ -138,7 +138,7 @@ Bu ayarı şu şekilde etkinleştirin:
 
 + Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` , [oto mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) nesneniz içinde belirtin. [Korleştirme etkinleştirme](how-to-configure-auto-features.md)hakkında daha fazla bilgi edinin. 
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensesıme modelleri
+## <a name="ensemble-models"></a><a name="ensemble"></a> Ensesıme modelleri
 
 Otomatik makine öğrenimi, varsayılan olarak etkin olan ensebölümlü modellerini destekler. Enseletirme öğrenimi, tek modeller kullanmanın aksine birden çok modeli birleştirerek makine öğrenimi sonuçlarını ve tahmine dayalı performansı geliştirir. Ensebir yineleme, çalıştırmalarınızın son yinelemeleri olarak görünür. Otomatik makine öğrenimi, modelleri birleştirmek için hem oylama hem de yığınlama yöntemini kullanır:
 
@@ -202,15 +202,13 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 * Yüzlerce yağ için tahmine dayalı bakım
 * Bireysel kullanıcılar için bir deneyim uyarlama.
 
-Daha fazla bilgi için GitHub 'daki [birçok modeller çözüm hızlandırıcısına](https://aka.ms/many-models) bakın.
-
 ## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning 'de oto ml
 
 Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar
 
 * Kod ile deneyimli müşteriler için [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
-* Sınırlı/kod deneyimi müşterileri için Azure Machine Learning Studio[https://ml.azure.com](https://ml.azure.com/)  
+* Sınırlı/kod deneyimi müşterileri için Azure Machine Learning Studio [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 

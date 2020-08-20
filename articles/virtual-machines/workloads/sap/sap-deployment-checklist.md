@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511151"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651735"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -110,9 +110,9 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
            -  [Azure 'Da Linux sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
    2. Depolama’yı seçin.
         - [SAP iş yükü için belge Azure depolama türlerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) denetleyin
-        - En azından, SAP uygulama katmanlarını temsil eden VM 'Ler için ve performans duyarlı olmayan DBMS 'lerin dağıtımı için [Azure Standart SSD depolama](../../windows/disks-types.md#standard-ssd) kullanın.
-        - Genel olarak, [Azure Standart HDD disklerinin](../../windows/disks-types.md#standard-hdd)kullanımını önermiyoruz.
-        - Uzaktan performansa duyarlı tüm DBMS VM 'Leri için [Azure Premium Depolama](../../windows/disks-types.md#premium-ssd) kullanın.
+        - En azından, SAP uygulama katmanlarını temsil eden VM 'Ler için ve performans duyarlı olmayan DBMS 'lerin dağıtımı için [Azure Standart SSD depolama](../../disks-types.md#standard-ssd) kullanın.
+        - Genel olarak, [Azure Standart HDD disklerinin](../../disks-types.md#standard-hdd)kullanımını önermiyoruz.
+        - Uzaktan performansa duyarlı tüm DBMS VM 'Leri için [Azure Premium Depolama](../../disks-types.md#premium-ssd) kullanın.
         - [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanın.
         - D serisi olan DBMS günlük sürücüleri için Azure Yazma Hızlandırıcısı kullanın. [Yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)' de belgelendiği gibi yazma Hızlandırıcısı limitlerinin ve kullanımlardan haberdar olun.
         - Farklı DBMS türleri için [SAP ile ilgili genel DBMS belgelerini](./dbms_guide_general.md) ve genel belgenin Işaret ettiği DBMS 'ye özgü belgeleri denetleyin.

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: acd030d8108ef3983be29fe85de6d7b3caf620af
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849344"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651225"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -90,7 +90,7 @@ Bu kod, şunu belirten bir genel tahmin aracı nesnesi oluşturur, `est`
 
 * Betikleriniz için bir komut dosyası dizini. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
 * Eğitim betiği, *train_titanic. Kopyala*.
-* Eğitim için giriş veri kümesi, `titanic_ds` . `as_named_input()`, giriş veri kümesinin eğitim betiğinizdeki atanan ad tarafından başvurulabilmesi için gereklidir `titanic` . 
+* Eğitim için giriş veri kümesi, `titanic_ds` . `as_named_input()` , giriş veri kümesinin eğitim betiğinizdeki atanan ad tarafından başvurulabilmesi için gereklidir `titanic` . 
 * Deneme için işlem hedefi.
 * Deneme için ortam tanımı.
 
@@ -115,7 +115,7 @@ Aşağıdaki örnek bir dosya veri kümesi oluşturur ve veri kümesini, eğitim
 
 ### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
 
-Aşağıdaki örnek, Web URL 'lerinden kaydedilmemiş bir dosya veri kümesi oluşturur. Diğer kaynaklardan [veri kümeleri oluşturma](https://aka.ms/azureml/howto/createdatasets) hakkında daha fazla bilgi edinin.
+Aşağıdaki örnek, Web URL 'lerinden kaydedilmemiş bir dosya veri kümesi oluşturur. Diğer kaynaklardan [veri kümeleri oluşturma](how-to-create-register-datasets.md) hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -201,7 +201,7 @@ Bir veri kümesini **indirdiğinizde** , veri kümesi tarafından başvurulan t�
 
 Betiğinizin veri kümesi tarafından başvurulan tüm dosyaları işliyorsa ve işlem diskiniz tam veri kümesine uyuyorsa, depolama hizmetlerinden veri akışı yükünü ortadan kaldırmak için indirme önerilir. Veri boyutunuz işlem diski boyutunu aşarsa, indirme mümkün değildir. Bu senaryo için, işleme sırasında yalnızca komut dosyası tarafından kullanılan veri dosyaları yüklendiğinden, bağlama yapmanız önerilir.
 
-Aşağıdaki kod, şu `dataset` adreste geçici dizine bağlar:`mounted_path`
+Aşağıdaki kod, şu `dataset` adreste geçici dizine bağlar: `mounted_path`
 
 ```python
 import tempfile

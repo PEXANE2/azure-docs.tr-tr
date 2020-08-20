@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612580"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650922"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -141,7 +141,7 @@ Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini 
 ## <a name="post-migration"></a>Geçiş sonrası
 
 1. Kaynak grupları için erişim denetimlerini ayarlayın/doğrulayın.  
-2. Taşıma işlemi tamamlandığında, yedekleme raporlama ve izleme özelliğinin yeniden yapılandırılması gerekir. Taşıma işlemi sırasında önceki yapılandırma kaybedilir.
+2. Taşıma tamamlandıktan sonra yedekleme raporlama ve izleme özelliğinin kasa için yeniden yapılandırılması gerekir. Taşıma işlemi sırasında önceki yapılandırma kaybedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

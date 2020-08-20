@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506405"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650477"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
 Azure, SAP HANA çalıştıran Azure sanal makineleri için uygun olan farklı türlerde depolama alanı sağlar. SAP HANA dağıtımlar listesi için kabul edilebilir **SAP HANA sertifikalı Azure Depolama türleri** : 
 
 - Azure Premium SSD veya Premium Depolama 
-- [Ultra disk](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra disk](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Bu disk türleri hakkında bilgi edinmek için bkz. [SAP iş yükü Için Azure Depolama türleri](./planning-guide-storage.md) ve [bir disk türü seçme](../../linux/disks-types.md)
+Bu disk türleri hakkında bilgi edinmek için bkz. [SAP iş yükü Için Azure Depolama türleri](./planning-guide-storage.md) ve [bir disk türü seçme](../../disks-types.md)
 
 Azure, Azure Standard ve Premium depolamada bulunan VHD 'ler için iki dağıtım yöntemi sunar. Azure blok depolama dağıtımları için [Azure yönetilen disk](https://azure.microsoft.com/services/managed-disks/) avantajlarından yararlanabilirsiniz. 
 
@@ -59,7 +59,7 @@ Yetersiz depolama gecikmesi DBMS sistemleri için kritik öneme sahip olduğu i�
 
 HANA için depolama yapılandırmanızı seçerken kullanabileceğiniz bazı temel ilkeler şöyle listelenebilir:
 
-- [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) temel alan depolama türüne karar verin ve [bir disk türü seçin](../../linux/disks-types.md)
+- [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) temel alan depolama türüne karar verin ve [bir disk türü seçin](../../disks-types.md)
 - VM için boyutlandırma veya karar verirken genel VM g/ç verimlilik ve ıOPS sınırları göz önünde bulundurun. Genel VM depolama aktarım hızı, [bellek için iyileştirilmiş sanal makine boyutlarında](../../sizes-memory.md) belgelenmiştir
 - Depolama yapılandırmasına karar verirken, **/Hana/Data** Volume yapılandırmanızda VM 'nin Genel aktarım hızını aşmaya çalışın. Savepoints yazmak SAP HANA, g/ç agresif yayınlanıyor olabilir. Bir kayıt noktası yazarken **/Hana/Data** hacminin üretilen iş limitlerinin gönderimi kolayca mümkündür. **/Hana/Data** birimini oluşturan DISKLERINIZ, sanal makinenizin izin verdiğinden daha yüksek bir aktarım hızına sahip olursa, yazma noktası tarafından kullanılan aktarım hızı, yineleme günlüğü yazmaları için üretilen iş taleplerini kesintiye uğratan bir şekilde çalışabilir. Uygulama verimini etkileyebilecek bir durum
 - Azure Premium Storage kullanıyorsanız, en az maliyetli yapılandırma, **/Hana/Data** ve **/Hana/log** birimlerini oluşturmak üzere dizili kümeler oluşturmak için mantıksal birim yöneticilerini kullanmaktır
@@ -218,7 +218,7 @@ Ultra disk üzerinde **/Hana/log** dahil diğer birimler için yapılandırma ş
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>SAP HANA için Azure Ultra disk depolama yapılandırması
-Başka bir Azure depolama türüne [Azure Ultra disk](../../windows/disks-types.md#ultra-disk)adı verilir. Şu ana kadar çok ve ultra disk sunulan Azure depolama arasındaki önemli fark, disk yeteneklerinin artık disk boyutuna bağlanmadığı bir isteklerdir. Müşteri olarak, bu özellikleri ultra disk için tanımlayabilirsiniz:
+Başka bir Azure depolama türüne [Azure Ultra disk](../../disks-types.md#ultra-disk)adı verilir. Şu ana kadar çok ve ultra disk sunulan Azure depolama arasındaki önemli fark, disk yeteneklerinin artık disk boyutuna bağlanmadığı bir isteklerdir. Müşteri olarak, bu özellikleri ultra disk için tanımlayabilirsiniz:
 
 - 4 GiB ile 65.536 GiB arasında değişen bir disk boyutu
 - IOPS, 100 ıOPS 'den 160K ıOPS 'ye (maksimum sanal makine türlerine göre değişir) göre Aralık
@@ -362,6 +362,6 @@ SAP ile sertifikalı olmayan ve bu nedenle [SAP HANA donanım dizininde](https:/
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure sanal makineleri Için yüksek kullanılabilirlik kılavuzu SAP HANA](./sap-hana-availability-overview.md).

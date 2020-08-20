@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190841"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648760"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server 'daki yenilikler (MABS)
 
@@ -114,7 +114,7 @@ MABS v3, MABS veritabanı olarak SQL 2017 ile yüklenebilir. SQL Server 'ı SQL 
 
 ### <a name="windows-server-2019-support"></a>Windows Server 2019 desteği
 
-MABS v3, Windows Server 2019 ' ye yüklenebilir. MABS v3 'i WS2019 ile birlikte kullanmak için, MABS v3 'e yüklemeden/yükseltmeden önce işletim sistemini WS2019 'e yükseltebilir ya da işletim sistemi sonrası v3 'yi yükleme/yükseltme işlemini WS2016 üzerinde yükseltmeniz sağlayabilirsiniz.
+MABS v3, Windows Server 2019 ' ye yüklenebilir. MABS v3 'i WS2019 ile birlikte kullanmak için, MABS v3 'e yüklemeden/yükseltmeden önce işletim sistemini WS2019 'e yükseltebilir veya WS2016 üzerinde v3 yükledikten/yükselttikten sonra işletim sistemini yükseltebilirsiniz.
 
 MABS v3 tam bir sürümdür ve doğrudan Windows Server 2016, Windows Server 2019 üzerine yüklenebilir veya MABS v2 'den yükseltilebilir. Yedekleme sunucusu v3 sürümüne yükseltmeden veya yüklemeden önce, yükleme önkoşulları hakkında bilgi edinin.
 [Burada](./backup-azure-microsoft-azure-backup.md#software-package)mabs yükleme/yükseltme adımları hakkında daha fazla bilgi bulabilirsiniz.

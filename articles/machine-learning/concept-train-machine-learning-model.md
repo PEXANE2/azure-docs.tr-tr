@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876912"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651769"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -90,7 +90,7 @@ Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini (�
 * [Öğretici: Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)
 * [Örnekler: makine öğrenimi ardışık düzenleri Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Örnekler: otomatik makine öğrenimiyle işlem hattı](https://aka.ms/pl-automl)
-* [Örnekler: tahmini ile işlem hattı](https://aka.ms/pl-estimator)
+* [Örnekler: tahmini ile işlem hattı](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Eğitim işi gönderdiğinizde ne olacağını anlayın
 
@@ -108,7 +108,7 @@ Azure eğitim yaşam döngüsü aşağıdakilerden oluşur:
     1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanı ACR 'ye kaydedilir)
 1. Daraltılmış proje dosyanızı işlem düğümündeki geçici depolamaya indirme
 1. Proje dosyasının sıkıştırması kaldırılıyor
-1. Yürütülen işlem düğümü`python <entry script> <arguments>`
+1. Yürütülen işlem düğümü `python <entry script> <arguments>`
 1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
 1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma 
 

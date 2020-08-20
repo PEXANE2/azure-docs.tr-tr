@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 9caa4690fa6b9d6c473bb8863acdcbbe15a37fba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570067"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650595"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla Azure Data Factory şifreleyin
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory, varlık tanımları, çalışma sırasında önbelleğe alınan tüm veriler devam ediyor ve veri önizleme için önbelleğe alınan veriler de dahil olmak üzere, bekleyen verileri şifreler. Varsayılan olarak, veriler, veri fabrikanıza benzersiz olarak atanmış rastgele oluşturulmuş bir Microsoft tarafından yönetilen anahtarla şifrelenir. Ek güvenlik garantisi için artık Azure Data Factory içindeki müşteri tarafından yönetilen anahtarlar özelliğiyle Kendi Anahtarını Getir (BYOK) seçeneğini etkinleştirebilirsiniz. Müşteri tarafından yönetilen bir anahtar belirttiğinizde Data Factory, müşteri verilerini şifrelemek için hem fabrika sistem anahtarını hem __de__ CMK 'yi kullanır. Eksik olan iki durum da veri ve fabrika erişimine Izin vermez.
+Azure Data Factory, verileri bekleyen veri, varlık tanımları ve çalışma sırasında önbelleğe alınan tüm veriler de dahil olmak üzere şifreler. Varsayılan olarak, veriler, veri fabrikanıza benzersiz olarak atanmış rastgele oluşturulmuş bir Microsoft tarafından yönetilen anahtarla şifrelenir. Ek güvenlik garantisi için artık Azure Data Factory içindeki müşteri tarafından yönetilen anahtarlar özelliğiyle Kendi Anahtarını Getir (BYOK) seçeneğini etkinleştirebilirsiniz. Müşteri tarafından yönetilen bir anahtar belirttiğinizde Data Factory, müşteri verilerini şifrelemek için hem fabrika sistem anahtarını hem __de__ CMK 'yi kullanır. Eksik olan iki durum da veri ve fabrika erişimine Izin vermez.
 
 Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault gereklidir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Anahtar Kasası ve Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 
@@ -76,7 +76,7 @@ Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında sakla
 
     ![Key Vault 'den anahtar URI al ekran görüntüsü](media/enable-customer-managed-key/04-get-key-identifier.png)
 
-1. Azure Data Factory portalını başlatın ve sol taraftaki Gezinti çubuğunu kullanarak Data Factory giriş sayfasına atlayın
+1. Azure Data Factory portalını başlatın ve sol taraftaki Gezinti çubuğunu kullanarak Data Factory ' e atlayın Yönetim Portalı
 
 1. __Müşterinin ana anahtar__ simgesine tıklayın
 

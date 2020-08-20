@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 881fa116b1a44d4714002f71e6ebd163279d8c70
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284311"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651191"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server her zaman açık kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -167,7 +167,7 @@ Ağı, alt ağları ve kullanılabilirlik kümelerini oluşturduktan sonra, etki
 
 Etki alanı denetleyicileri oluşturup yapılandırmak için, **SQL-ha-RG** kaynak grubuna dönün.
 
-1. **Ekle**'yi seçin. 
+1. **Ekle**’yi seçin. 
 2. **Windows Server 2016 Datacenter**yazın.
 3. **Windows Server 2016 Datacenter**öğesini seçin. **Windows Server 2016 Datacenter**'da dağıtım modelinin **Kaynak Yöneticisi**olduğundan emin olun ve ardından **Oluştur**' u seçin. 
 
@@ -276,7 +276,7 @@ Bu sunucunun özel IP adresini aklınızda edin.
 
 3. **Özel**' i seçin ve birincil etki alanı DENETLEYICISININ özel IP adresini yazın.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ### <a name="configure-the-second-domain-controller"></a>İkinci etki alanı denetleyicisini yapılandırma
 
@@ -328,7 +328,7 @@ Sunucu yapılandırma değişikliklerini tamamladıktan sonra sunucuyu yeniden b
 
 Azure portal, sanal ağ altında, DNS sunucusunu ikincil etki alanı denetleyicisinin IP adresini içerecek şekilde değiştirin. Bu ayar, DNS hizmeti yedekliliği sağlar.
 
-### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a>Etki alanı hesaplarını yapılandırma
+### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a> Etki alanı hesaplarını yapılandırma
 
 Sonraki adımlarda Active Directory hesaplarını yapılandırırsınız. Aşağıdaki tabloda hesaplar gösterilmektedir:
 
@@ -380,7 +380,7 @@ Devam etmeden önce aşağıdaki tasarım kararlarını göz önünde bulundurun
 
 * **Depolama-Azure yönetilen diskler**
 
-   Sanal makine depolama alanı için Azure yönetilen diskleri kullanın. Microsoft, SQL Server sanal makineler için yönetilen diskler önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure Yönetilen Disklere Genel Bakış](../../../virtual-machines/linux/managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla bilgi için bkz. [kullanılabilirlik kümesindeki VM 'ler Için yönetilen diskleri kullanma](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Sanal makine depolama alanı için Azure yönetilen diskleri kullanın. Microsoft, SQL Server sanal makineler için yönetilen diskler önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure Yönetilen Disklere Genel Bakış](../../../virtual-machines/managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla bilgi için bkz. [kullanılabilirlik kümesindeki VM 'ler Için yönetilen diskleri kullanma](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Üretimde ağ özel IP adresleri**
 
@@ -496,7 +496,7 @@ Diğer SQL Server VM adımları yineleyin.
   >
 
 
-## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a>Her SQL Server VM Güvenlik duvarını yapılandırma
+## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Her SQL Server VM Güvenlik duvarını yapılandırma
 
 Çözüm, güvenlik duvarında aşağıdaki TCP bağlantı noktalarının açılmasını gerektirir:
 

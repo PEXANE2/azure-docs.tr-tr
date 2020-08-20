@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 08/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 0535363165ccda83759a21bff1773280e60fe73c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cfbb704799a1884c689bd0de547526a33f1ba7ce
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542607"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Öğretici: Citrix ShareFile ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Citrix ShareFile 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Citrix ShareFile ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -42,64 +42,45 @@ Azure AD tümleştirmesini Citrix ShareFile ile yapılandırmak için aşağıda
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
 * Citrix ShareFile **SP** tarafından başlatılan SSO 'yu destekler
+* Citrix ShareFile yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-citrix-sharefile-from-the-gallery"></a>Galeriden Citrix ShareFile ekleme
 
 Citrix ShareFile 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için Galeriden Citrix ShareFile öğesini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Citrix ShareFile eklemek için aşağıdaki adımları uygulayın:**
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Citrix ShareFile** yazın.
+1. Sonuçlar panelinden **Citrix ShareFile** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
-
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
-
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
-
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
-
-4. Arama kutusuna **Citrix ShareFile**yazın, sonuç panelinden **Citrix ShareFile** öğesini seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
-
-     ![Sonuçlar listesinde Citrix ShareFile](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
 Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Citrix ShareFile ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Citrix ShareFile içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Citrix ShareFile ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Citrix ShareFile çoklu oturum açma yapılandırma](#configure-citrix-sharefile-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Citrix **[ShareFile test kullanıcısı oluşturun](#create-citrix-sharefile-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan Citrix ShareFile 'Da Britta Simon 'a sahip olmalıdır.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. **[Citrix ShareFile SSO 'Yu yapılandırma](#configure-citrix-sharefile-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * Citrix **[ShareFile test kullanıcısı oluşturun](#create-citrix-sharefile-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan Citrix ShareFile 'Da Britta Simon 'a sahip olmalıdır.
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-Azure AD çoklu oturum açmayı Citrix ShareFile ile birlikte yapılandırmak için aşağıdaki adımları uygulayın:
+1. [Azure Portal](https://portal.azure.com/), **Citrix ShareFile** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-1. [Azure Portal](https://portal.azure.com/), **Citrix ShareFile** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Citrix ShareFile etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<tenant-name>.sharefile.com/saml/login`
 
@@ -134,111 +115,86 @@ Azure AD çoklu oturum açmayı Citrix ShareFile ile birlikte yapılandırmak i�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-citrix-sharefile-single-sign-on"></a>Citrix ShareFile çoklu oturum açmayı yapılandırma
-
-1. Farklı bir Web tarayıcısı penceresinde, **Citrix ShareFile** şirket sitenizde yönetici olarak oturum açın.
-
-2. Üstteki araç çubuğunda **yönetici**' ye tıklayın.
-
-3. Sol gezinti bölmesinde **Çoklu oturum açmayı Yapılandır**' ı seçin.
-   
-    ![Hesap yönetimi](./media/sharefile-tutorial/ic773627.png "Hesap yönetimi")
-
-4. **Çoklu oturum açma/SAML 2,0 yapılandırma** Iletişim kutusunda **temel ayarlar**altında aşağıdaki adımları gerçekleştirin:
-   
-    ![Çoklu oturum açma](./media/sharefile-tutorial/ic773628.png "Çoklu oturum açma")
-   
-    a. **SAML etkinleştir**' e tıklayın.
-    
-    b. **IDP veren/VARLıK kimliği** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
-
-    c. **X. 509.440 sertifikası** alanının yanındaki **Değiştir** ' e tıklayın ve ardından Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.
-    
-    d. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
-    
-    e. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
-
-5. Citrix ShareFile yönetim portalında **Kaydet** ' e tıklayın.
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Citrix ShareFile 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Citrix ShareFile erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **Citrix ShareFile**öğesini seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Citrix ShareFile**öğesini seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde, yazın ve **Citrix ShareFile**öğesini seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesindeki Citrix ShareFile bağlantısı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-citrix-sharefile-sso"></a>Citrix ShareFile SSO 'yu yapılandırma
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Farklı bir Web tarayıcısı penceresinde, **Citrix ShareFile** şirket sitenizde yönetici olarak oturum açın.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+1. Sol taraftaki menüde, **Ayarlar simgesi**  ->  **güvenlik**  ->  **oturumu & güvenlik ilkesi**' ne tıklayın.
+   
+    ![Hesap yönetimi](./media/sharefile-tutorial/settings-security.png "Hesap yönetimi")
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Çoklu oturum açma/SAML 2,0 yapılandırma** Iletişim kutusunda **temel ayarlar**altında aşağıdaki adımları gerçekleştirin:
+   
+    ![Çoklu oturum açma](./media/sharefile-tutorial/saml-configuration.png "Çoklu oturum açma")
+   
+    a. **SAML etkinleştir**' de **Evet** ' i seçin.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+    b. **ShareFile Issuer/ENTITY ID** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** iletişim kutusundaki **tanımlayıcı URL** kutusuna yapıştırın.
+    
+    c. **IDP veren/VARLıK kimliği** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+    d. **X. 509.440 sertifikası** alanının yanındaki **Değiştir** ' e tıklayın ve ardından Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.
+    
+    e. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    
+    f. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-### <a name="create-citrix-sharefile-test-user"></a>Citrix ShareFile test kullanıcısı oluştur
+5. Citrix ShareFile yönetim portalında **Kaydet** ' e tıklayın.
 
-Azure AD kullanıcılarının Citrix ShareFile oturumu açmasını sağlamak için, Citrix ShareFile 'a sağlanması gerekir. Citrix ShareFile söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
-
-**Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
+## <a name="create-citrix-sharefile-test-user"></a>Citrix ShareFile test kullanıcısı oluştur
 
 1. **Citrix ShareFile** kiracınızda oturum açın.
 
-2. Kullanıcıları **Yönet Yönet \> giriş \> + çalışan oluştur**' a tıklayın.
+2. **Kişiler**  ->  **Kullanıcıları Yönet ana**  ->  **Yeni Kullanıcı oluştur**  ->  **çalışanlar oluştur**' a tıklayın.
    
-    ![Çalışan oluştur](./media/sharefile-tutorial/IC781050.png "Çalışan oluştur")
+    ![Çalışan oluştur](./media/sharefile-tutorial/create-user.png "Çalışan oluştur")
 
 3. **Temel bilgiler** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Temel bilgiler](./media/sharefile-tutorial/IC799951.png "Temel bilgiler")
+    ![Temel bilgiler](./media/sharefile-tutorial/user-form.png "Temel bilgiler")
    
-    a. **E-posta adresi** metin kutusuna Britta Simon 'un e-posta adresini **brittasıon \@ contoso.com**olarak yazın.
+    a. **Ad** metin kutusuna **Ilk Kullanıcı adını** **Britta**olarak yazın.
    
-    b. **Ad** metin kutusuna **Ilk Kullanıcı adını** **Britta**olarak yazın.
+    b.  **Soyadı** metin kutusunda, Kullanıcı **adını** **Simon**olarak yazın.
    
-    c. **Soyadı** metin kutusunda, Kullanıcı **adını** **Simon**olarak yazın.
+    c. **E-posta adresi** metin kutusuna Britta Simon 'un e-posta adresini **brittasıon \@ contoso.com**olarak yazın.
 
 4. **Kullanıcı Ekle**'ye tıklayın.
   
     >[!NOTE]
     >Azure AD hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler. Azure AD Kullanıcı hesapları sağlamak için Citrix ShareFile tarafından sunulan diğer Citrix ShareFile Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 

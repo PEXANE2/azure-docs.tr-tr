@@ -3,12 +3,12 @@ title: Çok günlük kayıtların kayıttan yürütülmesi-Azure
 description: Bu öğreticide, Azure Media Service API 'Lerini kullanarak çok günlü bir sürekli video kaydını kayıttan yürütmeyi öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433664"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649100"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Öğretici: çok günlük kayıtları kayıttan yürütme  
 
@@ -40,7 +40,7 @@ Aşağıdaki belge sayfalarını okumanız önerilir:
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma 
 
-[CVR öğreticisinin](continuous-video-recording-tutorial.md)bir parçası olarak bir medya hizmeti hesabı oluşturmuş olursunuz. Bu öğreticide, bu hesaba yönelik tüm API erişiminizin olması gerekir. Hizmet sorumlusu oluşturmak için [MEDIA SERVICES API 'sine erişmek için kimlik bilgilerini al](../latest/access-api-howto.md#use-the-azure-portal) ' daki adımları kullanabilirsiniz. Aşağıdaki gibi görünen Azure portal bir JSON bloğu edinebilirsiniz:
+[CVR öğreticisinin](continuous-video-recording-tutorial.md)bir parçası olarak bir medya hizmeti hesabı oluşturmuş olursunuz. Bu öğreticide, bu hesaba yönelik tüm API erişiminizin olması gerekir. Hizmet sorumlusu oluşturmak için [MEDIA SERVICES API 'sine erişmek için kimlik bilgilerini al](../latest/access-api-howto.md?tabs=portal) ' daki adımları kullanabilirsiniz. Aşağıdaki gibi görünen Azure portal bir JSON bloğu edinebilirsiniz:
 
 ```
 {
@@ -57,7 +57,7 @@ Aşağıdaki belge sayfalarını okumanız önerilir:
 }
 ```
 
-Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör, bu öğretici için gerekli dosyaları içerir. AppSettings. json dosyasını açın ve içeriğini yeni bir dosya olan appSettings. Development. JSON dosyasına kopyalayın. İkinci dosyada aşağıdaki düzenlemeleri yapın:
+Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör, bu öğretici için gerekli dosyaları içerir. appsettings.jsdosya üzerinde açın ve içeriğini yeni bir dosyaya kopyalayın, appsettings.development.js. İkinci dosyada aşağıdaki düzenlemeleri yapın:
 
 ```
   "AMS" : {

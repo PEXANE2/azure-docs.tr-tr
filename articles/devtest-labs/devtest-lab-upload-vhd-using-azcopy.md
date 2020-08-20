@@ -3,18 +3,18 @@ title: AzCopy kullanarak Azure DevTest Labs VHD dosyasını karşıya yükleme |
 description: Bu makalede, Azure DevTest Labs ' de bir laboratuvarın depolama hesabına VHD dosyası yüklemek için AzCopy komut satırı yardımcı programını kullanma kılavuzu sağlanmıştır.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483219"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650783"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy kullanarak VHD dosyasını laboratuvarın depolama hesabına yükleyin
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs, VHD dosyaları, sanal makineleri sağlamak için kullanılan özel görüntüler oluşturmak için kullanılabilir. Aşağıdaki adımlarda, bir laboratuvarın depolama hesabına bir VHD dosyası yüklemek için AzCopy komut satırı yardımcı programını kullanma işleminde size yol gösterilmektedir. VHD dosyanızı karşıya yükledikten sonra, [sonraki adımlar bölümünde](#next-steps) KARŞıYA yüklenen VHD dosyasından nasıl özel bir görüntü oluşturulacağını gösteren bazı makaleler listelenmektedir. Azure 'daki diskler ve VHD 'ler hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../virtual-machines/linux/managed-disks-overview.md)
+Azure DevTest Labs, VHD dosyaları, sanal makineleri sağlamak için kullanılan özel görüntüler oluşturmak için kullanılabilir. Aşağıdaki adımlarda, bir laboratuvarın depolama hesabına bir VHD dosyası yüklemek için AzCopy komut satırı yardımcı programını kullanma işleminde size yol gösterilmektedir. VHD dosyanızı karşıya yükledikten sonra, [sonraki adımlar bölümünde](#next-steps) KARŞıYA yüklenen VHD dosyasından nasıl özel bir görüntü oluşturulacağını gösteren bazı makaleler listelenmektedir. Azure 'daki diskler ve VHD 'ler hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../virtual-machines/managed-disks-overview.md)
 
 > [!NOTE] 
 >  

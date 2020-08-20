@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508796"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649168"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -87,6 +87,10 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
     ./generatePartnerCredentials.ps1
 
     ```
+
+> [!NOTE]
+> 1. Datahub API uç noktası adının küçük olması gerekir.
+> 2. Datahub API uç noktası için farmtts Web sitesi adı URL 'sini kopyalıyorsanız, sonunda eğik çizgi (/) olmadığından emin olun.
 
 9. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cea08022b992395862fcf75e0592efd54c805a98
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168040"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649134"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -85,7 +85,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    1. C# ' de aşağıdaki kod, uygulama adına belirteci alabilir. Gen1 ortamından veri sorgulama hakkında tüm bir örnek için, [C# kullanarak sorgu verilerini](time-series-insights-query-data-csharp.md)okuyun.
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
+        C# koduna erişmek için [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] depoya bakın. 
 
    1. Belirteç daha sonra `Authorization` uygulama Azure TIME SERIES INSIGHTS API 'sini çağırdığında üstbilgiye geçirilebilir.
 

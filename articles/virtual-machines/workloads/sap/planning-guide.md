@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547418"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652211"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -242,7 +242,7 @@ ms.locfileid: "88547418"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -533,7 +533,7 @@ Azure 'da hizmet veya VM 'Leri dağıttığınızda, VHD 'lerin ve VM görüntü
 
 Azure 'da SAP dağıtımı planlarken önemli bir rol yürütülüm. Bir depolama hesabındaki kalıcı disklerin sayısını yönettiğinizde. Depolama hesaplarını yönetmeniz ve sonunda daha kalıcı diskler oluşturmak için yeni depolama hesapları oluşturmanız gerekir.
 
-Son yıllarda, [Azure yönetilen disklerin](../../windows/managed-disks-overview.md) tanıtımı sizi bu görevlerden daha fazla karşılamış. SAP dağıtımları için öneri, Azure depolama hesaplarını kendiniz yönetmek yerine Azure tarafından yönetilen disklerden faydalanır. Azure yönetilen diskler, diskler farklı depolama hesaplarına dağıtılır, bu nedenle ayrı depolama hesaplarının sınırları aşılmaz.
+Son yıllarda, [Azure yönetilen disklerin](../../managed-disks-overview.md) tanıtımı sizi bu görevlerden daha fazla karşılamış. SAP dağıtımları için öneri, Azure depolama hesaplarını kendiniz yönetmek yerine Azure tarafından yönetilen disklerden faydalanır. Azure yönetilen diskler, diskler farklı depolama hesaplarına dağıtılır, bu nedenle ayrı depolama hesaplarının sınırları aşılmaz.
 
 Bir depolama hesabı içinde, belirli diskleri belirli kapsayıcılara gruplamak için kullanılabilecek ' kapsayıcılar ' adlı bir klasör kavramı türüne sahip olursunuz.
 
@@ -804,7 +804,7 @@ Kendi Azure VM diskinizi hazırlarken gereksinimler şunlardır:
 
 * Başlangıçta işletim sistemini içeren VHD en büyük boyut olan 127 GB olabilir. Bu sınırlama Mart 2015 ' ün sonunda ortadan kaldırıldı. Artık işletim sistemini içeren VHD, diğer Azure depolama barındırılan VHD 'ler olarak en fazla 1 TB olabilir.
 * Sabit VHD biçiminde olması gerekir. VHDx biçimindeki Dinamik VHD 'ler veya VHD 'ler henüz Azure 'da desteklenmiyor. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
-* VM 'ye bağlanan ve VM 'nin Azure 'da yeniden bağlanması gereken VHD 'ler, aynı zamanda bir sabit VHD biçiminde olmalıdır. Veri disklerinin boyut sınırları için [Bu makaleyi (Linux)](../../linux/managed-disks-overview.md) ve [Bu makaleyi (Windows)](../../windows/managed-disks-overview.md)okuyun. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
+* VM 'ye bağlanan ve VM 'nin Azure 'da yeniden bağlanması gereken VHD 'ler, aynı zamanda bir sabit VHD biçiminde olmalıdır. Veri disklerinin boyut sınırları için [Bu makaleyi](../../managed-disks-overview.md) okuyun. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
 * Yönetim ayrıcalıklarına sahip başka bir yerel hesap ekleyin, bu, Microsoft desteği tarafından kullanılabilen veya VM dağıtılmadan ve daha uygun kullanıcıların kullanılabilmesi için içinde çalışacağı hizmet ve uygulamaların bağlamı olarak atanabileceği bir yerel hesap ekleyin.
 * Belirli dağıtım senaryosu için gerekli olabilecek diğer yerel hesapları ekleyin.
 
@@ -831,7 +831,7 @@ Kendi Azure VM görüntünüzü hazırlarken gereksinimler şunlardır:
 
 * Başlangıçta işletim sistemini içeren VHD en büyük boyut olan 127 GB olabilir. Bu sınırlama Mart 2015 ' ün sonunda ortadan kaldırıldı. Artık işletim sistemini içeren VHD, diğer Azure depolama barındırılan VHD 'ler olarak en fazla 1 TB olabilir.
 * Sabit VHD biçiminde olması gerekir. VHDx biçimindeki Dinamik VHD 'ler veya VHD 'ler henüz Azure 'da desteklenmiyor. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
-* VM 'ye bağlanan ve VM 'nin Azure 'da yeniden bağlanması gereken VHD 'ler, aynı zamanda bir sabit VHD biçiminde olmalıdır. Veri disklerinin boyut sınırları için [Bu makaleyi (Linux)](../../windows/managed-disks-overview.md) ve [Bu makaleyi (Windows)](../../linux/managed-disks-overview.md) okuyun. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
+* VM 'ye bağlanan ve VM 'nin Azure 'da yeniden bağlanması gereken VHD 'ler, aynı zamanda bir sabit VHD biçiminde olmalıdır. Veri disklerinin boyut sınırları için [Bu makaleyi](../../managed-disks-overview.md) okuyun. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
 * Belirli dağıtım senaryosu için gerekli olabilecek diğer yerel hesapları ekleyin.
 * Görüntüde bir SAP NetWeaver yüklemesi varsa ve Azure dağıtımı noktasındaki asıl adından ana bilgisayar adının yeniden adlandırılması büyük olasılıkla, SAP yazılım sağlama Yöneticisi DVD 'sinin en son sürümlerini şablona kopyalamanız önerilir. Bu, değiştirilen ana bilgisayar adını uyarlamak ve/veya yeni bir kopya başlatıldıktan hemen sonra dağıtılan VM görüntüsü içindeki SAP sisteminin SID 'sini değiştirmek için SAP tarafından girilen yeniden adlandırma işlevselliğini kolayca kullanmanıza imkan sağlar.
 

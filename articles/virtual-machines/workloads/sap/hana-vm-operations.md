@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506439"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649695"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -29,7 +29,7 @@ Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyap�
 - [SAP Yükleme Kılavuzu](https://service.sap.com/instguides)
 - [SAP notları](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
 - [Azure sanal makineleri](../../linux/tutorial-manage-vm.md)
@@ -243,7 +243,7 @@ DT 2,0 en iyi uygulama yönergelerine göre disk GÇ verimlilik, fiziksel çekir
 
 Birden çok Azure diskini DT 2,0 sanal makinesine iliştirmek ve VM başına disk aktarım hızı üst sınırına ulaşmak için işletim sistemi düzeyinde bir yazılım RAID (dizme) oluşturmak gerekir. Tek bir Azure diski, bu şekilde en fazla VM sınırına ulaşmak için üretilen iş miktarını sağlayamaz. Azure Premium Storage, DT 2,0 ' i çalıştırmak için zorunludur. 
 
-- Kullanılabilir Azure disk türleriyle ilgili ayrıntılar [burada](../../windows/disks-types.md) bulunabilir
+- Kullanılabilir Azure disk türleriyle ilgili ayrıntılar [burada](../../disks-types.md) bulunabilir
 - Mdaddm aracılığıyla yazılım RAID oluşturma hakkında ayrıntılı bilgi için [burada](../../linux/configure-raid.md) bulunabilir
 - En fazla üretilen iş için bir şeritli birim oluşturmak üzere LVM yapılandırma ayrıntıları [burada](../../linux/configure-lvm.md) bulunabilir
 

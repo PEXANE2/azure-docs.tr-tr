@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f49a66fc6e233658b228b7ad9bacdaa23917afef
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547333"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648743"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,8 +70,6 @@ Ayrıca, sonuç çalıştırmasında işlevinde aynı parametreyi de kullanabili
 run.wait_for_completion(show_output=True)
 ```
 
-ScriptRunConfigs günlüklerini kullanan tüm örnek bir not defteri için bkz. [modeli yerel olarak eğitme](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb).
-
 ## <a name="native-python-logging"></a>Yerel Python günlüğü
 
 SDK 'daki bazı Günlükler, günlüğe kaydetme düzeyini hata ayıklama olarak ayarlamanıza olanak tanıyan bir hata içerebilir. Günlüğe kaydetme düzeyini ayarlamak için betiğe aşağıdaki kodu ekleyin.
@@ -88,9 +86,7 @@ Azure Machine Learning, otomatik makine öğrenimi çalıştırmaları veya işl
 Azure Machine Learning tasarımcısında (Önizleme) ölçümleri günlüğe kaydetme hakkında bilgi için bkz [. nasıl yapılır: tasarımcıda ölçümleri nasıl günlüğe kaydetme (Önizleme)](how-to-track-designer-experiments.md)
 
 ## <a name="example-notebooks"></a>Örnek not defterleri
-Aşağıdaki Not defterleri bu makaledeki kavramları göstermektedir:
-* [Nasıl yapılır kullanımı-bir not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [Nasıl yapılır-kullanım-azureml/eğitim/yerel olarak eğitme](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+Aşağıdaki Not defteri, bu makaledeki kavramları göstermektedir:
 * [Nasıl yapılır kullanımı-azureml/izleme-ve izleme-denemeleri/Logging-API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]

@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669299"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652026"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>SQL Server ile bir Windows sanal makinesi sağlamak için Azure portal kullanma
 
@@ -34,7 +34,7 @@ Kendi SQL Server VM oluşturmak için bu kılavuzu kullanın. Ya da bunu, Azure 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a>SQL Server sanal makine galeri görüntüleri
+## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server sanal makine galeri görüntüleri
 
 SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önceden yapılandırılmış birkaç görüntüden birini seçebilirsiniz. Aşağıdaki adımlarda SQL Server 2017 görüntülerinden birini seçme gösterilmektedir.
 
@@ -56,7 +56,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
    > Bu seçeneklerle ilgili daha fazla bilgi için bkz. [SQL Server Azure VM’leri için fiyatlandırma kılavuzu](pricing-guidance.md).
 
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 
 ## <a name="1-configure-basic-settings"></a>1. temel ayarları Yapılandır
@@ -104,7 +104,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 * **Gelişmiş**' in altında, **yönetilen diskleri**kullan altında **Evet** ' i seçin.
 
    > [!NOTE]
-   > Microsoft, SQL Server için Yönetilen Diskleri önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../../../virtual-machines/windows/managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla ayrıntı için bkz. [Kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma](../../../virtual-machines/windows/manage-availability.md).
+   > Microsoft, SQL Server için Yönetilen Diskleri önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../../../virtual-machines/managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla ayrıntı için bkz. [Kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma](../../../virtual-machines/windows/manage-availability.md).
 
 ![SQL VM disk ayarları](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -136,7 +136,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 **SQL Server ayarları** sekmesinde, SQL Server için belirli ayarları ve iyileştirmeleri yapılandırın. SQL Server için aşağıdaki ayarları yapılandırabilirsiniz:
 
 - [Bağlantı](#connectivity)
-- [Kimlik Doğrulaması](#authentication)
+- [Yetkilendirmesi](#authentication)
 - [Azure Key Vault tümleştirme](#azure-key-vault-integration)
 - [Depolama yapılandırması](#storage-configuration)
 - [Otomatik düzeltme eki uygulama](#automated-patching)
@@ -177,7 +177,7 @@ SQL Server kimlik doğrulamasını etkinleştirmemeyi tercih ediyorsanız, SQL S
 
 ### <a name="azure-key-vault-integration"></a>Azure Anahtar Kasası tümleştirme
 
-Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları**' nı seçin ve **Azure Anahtar Kasası tümleştirmesi**' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
+Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları**' nı seçin ve  **Azure Anahtar Kasası tümleştirmesi**' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
 
 ![Azure Anahtar Kasası tümleştirme](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -257,7 +257,7 @@ Azure portalından dağıtımı izleyebilirsiniz. Ekranın üst kısmındaki **B
 > [!NOTE]
 > Azure 'un bir SQL Server VM dağıtması için bir zaman örneği: varsayılan ayarlarla Doğu ABD bölgesine sağlanan bir test SQL Server VM yaklaşık 12 dakika sürer. Bölgenize ve seçtiğiniz ayarlara bağlı olarak daha hızlı veya daha yavaş dağıtım süreleriyle karşılaşabilirsiniz.
 
-## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a>VM 'yi uzak masaüstü ile açma
+## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a> VM 'yi uzak masaüstü ile açma
 
 Uzak Masaüstü Protokolü (RDP) ile SQL Server sanal makinesine bağlanmak için aşağıdaki adımları kullanın:
 
@@ -267,7 +267,7 @@ SQL Server sanal makineye bağlandıktan sonra, SQL Server Management Studio'yu 
 
 Makineye erişim, gereksinimlerinize göre makineyi ve SQL Server ayarlarını doğrudan değiştirmenize olanak tanır. Örneğin, güvenlik duvarı ayarlarını yapılandırabilir veya SQL Server yapılandırma ayarlarını değiştirebilirsiniz.
 
-## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a>SQL Server uzaktan bağlanma
+## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> SQL Server uzaktan bağlanma
 
 Bu kılavuzda, sanal makine ve **SQL Server kimlik doğrulaması**için **genel** erişim ' i seçmiş olursunuz. Bu ayarlar, İnternet üzerinden tüm istemcilerden gelen (doğru SQL oturum açma bilgilerine sahip oldukları varsayılarak) SQL Server bağlantılarına izin verecek şekilde sanal makineyi yapılandırdı.
 

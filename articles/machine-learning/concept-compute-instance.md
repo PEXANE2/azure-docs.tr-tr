@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829450"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651924"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -145,7 +145,7 @@ Azure Machine Learning Studio 'daki çalışma alanınızda, Not defterlerinizde
 
 |Alan  |Açıklama  |
 |---------|---------|
-|İşlem adı     |  <li>Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.</li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
+|İşlem adı     |  <li>Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.</li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Sanal makine türü |  CPU veya GPU seçin. Bu tür, oluşturulduktan sonra değiştirilemez     |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |SSH erişimini etkinleştirme/devre dışı bırakma     |   SSH erişimi varsayılan olarak devre dışıdır.  SSH erişimi olamaz. oluşturulduktan sonra değiştirildi. [Vs Code uzak](how-to-set-up-vs-code-remote.md) ile etkileşimli olarak hata ayıklamayı planlıyorsanız erişimi etkinleştirdiğinizden emin olun   |
@@ -155,26 +155,22 @@ Ayrıca, bir örnek oluşturabilirsiniz
 * Doğrudan [Tümleşik Not defteri deneyiminden](tutorial-1st-experiment-sdk-setup.md#azure)
 * Azure portal
 * Azure Resource Manager şablondan. Örnek bir şablon için [Azure Machine Learning işlem örneği oluşturma şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)' na bakın.
-* [Azure MACHINE LEARNING SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb) ile
+* Azure Machine Learning SDK ile
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md#computeinstance)
 
 VM ailesi kotası başına bölge başına adanmış çekirdek ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota. Birleşik ve Azure Machine Learning eğitim işlem kümesi kotasıyla paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır.
 
 ## <a name="compute-target"></a>İşlem hedefi
 
-İşlem örnekleri, Azure Machine Learning işlem eğitimi kümelerine benzer bir [eğitim işlem hedefi](concept-compute-target.md#train) olarak kullanılabilir. 
+İşlem örnekleri, Azure Machine Learning işlem kümelerine benzer bir [eğitim işlem hedefi](concept-compute-target.md#train) olarak kullanılabilir. 
 
 İşlem örneği:
 * İş kuyruğu vardır.
 * Bir sanal ağ ortamında, kuruluşların SSH bağlantı noktasını açmasına gerek olmadan işleri güvenli bir şekilde çalıştırır. İş kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir Docker kapsayıcısında paketleyebilir.
 * Birden çok küçük işi paralel olarak çalıştırabilir (Önizleme).  Çekirdek başına iki iş paralel olarak çalışabilir, ancak işlerin geri kalanı sıraya alınır.
+* Tek düğümlü çok GPU dağıtılmış eğitim işlerini destekler
 
 Test/hata ayıklama senaryoları için, işlem örneğini yerel bir ınırm dağıtım hedefi olarak kullanabilirsiniz.
-
-> [!NOTE]
-> Dağıtılmış eğitim işleri, işlem örneği üzerinde desteklenmez.  Dağıtılmış eğitim için (işlem kümeleri] (nasıl yapılır-ayarla---------------------
-
-Daha ayrıntılı bilgi için bkz. [computeinstance-on-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)Not Bu not defteri, *eğitim/eğitme-on-computeinstance*Içindeki Studio **örnekleri** klasöründe de mevcuttur.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Not defteri VM 'sine ne oldu?
 

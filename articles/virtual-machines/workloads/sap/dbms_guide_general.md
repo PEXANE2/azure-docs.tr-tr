@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510241"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650624"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -82,7 +82,7 @@ Azure 'da SAP iş yükünde başka makaleler de mevcuttur. [Azure 'Da SAP iş y�
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir.
 
-| Dekont numarası | Title |
+| Dekont numarası | Başlık |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -111,10 +111,7 @@ Genel olarak, Windows, Linux ve DBMS yükleme ve yapılandırma temelde şirket 
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS dağıtımları için bir sanal makinenin depolama yapısı
 Bu bölümü izlemek için [Dağıtım Kılavuzu][deployment-guide]'nun [Bu][deployment-guide-3] bölümünde sunulan bilgileri okuyun ve anlayın. Bu bölümü kullanmadan önce farklı VM Serisi ve standart ve Premium depolama arasındaki farkları anlamanız ve bilmeniz gerekir. 
 
-Azure VM 'Leri için Azure depolama hakkında bilgi edinmek için bkz.:
-
-- [Azure Windows VM 'leri için yönetilen disklere giriş](../../windows/managed-disks-overview.md).
-- [Azure Linux VM 'leri için yönetilen disklere giriş](../../linux/managed-disks-overview.md).
+Azure VM 'Leri için Azure depolama hakkında bilgi edinmek için bkz. [Azure VM 'ler için yönetilen disklere giriş](../../managed-disks-overview.md).
 
 Temel yapılandırmada genellikle işletim sisteminin, DBMS 'nin ve en son SAP ikililerinin veritabanı dosyalarından ayrı olduğu bir dağıtım yapısı önerilir. Azure sanal makineler 'de çalışan SAP sistemlerinin temel VHD veya disk, işletim sistemi, veritabanı yönetim sistemi yürütülebilir dosyaları ve SAP yürütülebilir dosyaları ile yüklenmiş olması önerilir. 
 
@@ -156,7 +153,7 @@ Daha önce belirtildiği gibi, ıOPS gereksiniminizi tek bir VHD 'nin sağlayabi
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Linux 'ta yazılım RAID oluşturmak için yalnızca MDADDM ve mantıksal birim Yöneticisi (LVM) desteklenir. Daha fazla bilgi için bkz.
+> Linux 'ta yazılım RAID oluşturmak için yalnızca MDADDM ve mantıksal birim Yöneticisi (LVM) desteklenir. Daha fazla bilgi için bkz:
 >
 > - MDADDM kullanarak [Linux 'ta yazılım RAID yapılandırma](../../linux/configure-raid.md)
 > - LVM ['yi kullanarak Azure 'da bir LINUX VM 'de LVM 'Yi yapılandırma](../../linux/configure-lvm.md)
@@ -205,7 +202,7 @@ Aşağıdaki öneriler, bu g/ç özelliklerinin standart DBMS için olduğunu va
 
 Standart depolama için olası önbellek türleri şunlardır:
 
-* Yok
+* Hiçbiri
 * Okuma
 * Okuma/Yazma
 
@@ -213,7 +210,7 @@ Tutarlı ve belirleyici performans sağlamak için, DBMS ile ilgili veri dosyala
 
 Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttur:
 
-* Yok
+* Hiçbiri
 * Okuma
 * Okuma/yazma
 * Hiçbiri + yalnızca Azure a serisi VM 'Ler için olan Yazma Hızlandırıcısı

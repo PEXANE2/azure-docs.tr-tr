@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319499"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650426"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
 
@@ -199,7 +199,7 @@ Bu örnek, yeniden eğitim tetiklenmesi için bir Azure Logic App ile Event Grid
 
 Başlamadan önce aşağıdaki eylemleri gerçekleştirin:
 
-* Bir çalışma alanında veri yük kümesini [algılamak]( https://aka.ms/datadrift) için bir veri kümesi izleyicisini ayarlama
+* Bir çalışma alanında veri yük kümesini [algılamak](how-to-monitor-datasets.md) için bir veri kümesi izleyicisini ayarlama
 * Yayımlanmış bir [Azure Data Factory işlem hattı](https://docs.microsoft.com/azure/data-factory/)oluşturun.
 
 Bu örnekte, bir blob deposuna dosya kopyalamak ve yayımlanmış bir Machine Learning işlem hattı çalıştırmak için basit bir Data Factory işlem hattı kullanılır. Bu senaryo hakkında daha fazla bilgi için bkz. Machine Learning bir adım ayarlama [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)

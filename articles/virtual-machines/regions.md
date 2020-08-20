@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284736"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650562"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure’da sanal makine bölgeleri
 
@@ -75,11 +75,11 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 
 | Çoğaltma stratejisi | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Yes |Yes |
+| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Evet |Evet |
 | Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Evet |
 | Ayrı düğümlerde tutulan veri kopyası sayısı. |3 |3 |6 |6 |
 
-[Azure Depolama çoğaltma seçenekleri hakkında buradan](../storage/common/storage-redundancy.md) daha fazla bilgi alabilirsiniz. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](./windows/managed-disks-overview.md).
+[Azure Depolama çoğaltma seçenekleri hakkında buradan](../storage/common/storage-redundancy.md) daha fazla bilgi alabilirsiniz. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](./managed-disks-overview.md).
 
 ### <a name="storage-costs"></a>Depolama maliyetleri
 Fiyatlar seçtiğiniz depolama türüne ve kullanılabilirliğe bağlı olarak değişir.
