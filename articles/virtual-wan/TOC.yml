@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Sanal WAN Hakkında
+    - name: Sanal WAN nedir?
       href: virtual-wan-about.md
     - name: Mimari
       items:
