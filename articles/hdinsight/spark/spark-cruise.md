@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642291"
+ms.locfileid: "88649066"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 'ta parlak CRUISE
 
@@ -58,7 +58,7 @@ Aşağıdaki örnek senaryo, Apache Spark sorgularını iyileştirmek için *par
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-`analyze`Komut, sorgu planlarını ayrıştırır ve iş yükünün tablosal gösterimini oluşturur. Ardından, `views` komut ortak alt plan ifadelerini tanımlar ve gelecekteki gerçekleştirmesi ve yeniden kullanım için ilginç alt plan ifadelerini seçer. Çıktı, gelecekteki Spark SQL sorgularının ek açıklamalarını içeren bir geri bildirim dosyasıdır. 
+`analyze`Komut, sorgu planlarını ayrıştırır ve iş yükünün tablosal gösterimini oluşturur. Bu iş yükü tablosu, [HDInsight parlak CRUISE örnekleri](https://github.com/Azure-Samples/azure-sparkcruise-samples) deposuna eklenen *workloadınsights* Not defteri kullanılarak sorgulanabilir. Ardından, `views` komut ortak alt plan ifadelerini tanımlar ve gelecekteki gerçekleştirmesi ve yeniden kullanım için ilginç alt plan ifadelerini seçer. Çıktı, gelecekteki Spark SQL sorgularının ek açıklamalarını içeren bir geri bildirim dosyasıdır. 
 
 `show`Komut aşağıdaki metin gibi bir çıktı görüntüler:
 

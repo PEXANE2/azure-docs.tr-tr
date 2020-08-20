@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080514"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648573"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ölçek Kümeleri Için tasarım konuları
 Bu makalede, sanal makine ölçek kümelerine ilişkin tasarım konuları ele alınmaktadır. Sanal makine ölçek kümelerinin ne olduğu hakkında bilgi için [sanal makine ölçek kümelerine genel bakış](./overview.md)bölümüne bakın.
@@ -42,7 +42,7 @@ Bazı özellikler Şu anda yalnızca VM 'lerde kullanılabilir:
 ## <a name="storage"></a>Depolama
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Azure yönetilen diskler ile ölçek kümeleri
-Ölçek Kümeleri, geleneksel Azure depolama hesapları yerine [Azure yönetilen disklerle](../virtual-machines/windows/managed-disks-overview.md) oluşturulabilir. Yönetilen diskler aşağıdaki avantajları sağlar:
+Ölçek Kümeleri, geleneksel Azure depolama hesapları yerine [Azure yönetilen disklerle](../virtual-machines/managed-disks-overview.md) oluşturulabilir. Yönetilen diskler aşağıdaki avantajları sağlar:
 - Ölçek kümesi VM 'Leri için Azure Storage hesapları kümesini önceden oluşturmanız gerekmez.
 - Ölçek kümesindeki VM 'Ler için [bağlı veri disklerini](virtual-machine-scale-sets-attached-disks.md) tanımlayabilirsiniz.
 - Ölçek Kümeleri, [bir küme içinde en fazla 1.000 VM 'yi destekleyecek](virtual-machine-scale-sets-placement-groups.md)şekilde yapılandırılabilir. 

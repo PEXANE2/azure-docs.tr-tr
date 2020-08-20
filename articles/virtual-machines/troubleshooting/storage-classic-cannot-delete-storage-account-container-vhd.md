@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77915046"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649866"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Klasik depolama kaynağı silme hatalarıyla ilgili sorunları giderme
 Bu makalede, Azure klasik depolama hesabı, kapsayıcı veya *. vhd Sayfa Blobu dosyası silinmeye çalışılırken aşağıdaki hatalardan biri oluştuğunda sorun giderme kılavuzu sunulmaktadır. 
@@ -21,7 +21,7 @@ Bu makalede, Azure klasik depolama hesabı, kapsayıcı veya *. vhd Sayfa Blobu 
 
 Bu makale yalnızca klasik depolama kaynaklarıyla ilgili sorunları ele alır. Bir Kullanıcı Azure portal, PowerShell veya CLı kullanarak klasik bir sanal makineyi silerse, diskler otomatik olarak silinmez. Kullanıcı "disk" kaynağını silme seçeneğini alır. Seçeneğin seçili olmaması durumunda, "disk" kaynağı depolama hesabının, kapsayıcının ve gerçek *. vhd sayfası blob dosyasının silinmesini engeller.
 
-Azure diskleri hakkında daha fazla bilgiyi [burada](../../virtual-machines/windows/managed-disks-overview.md)bulabilirsiniz. Azure, bir VM 'ye bağlı bir diskin bozulmasını engellemek için silinmesini engeller. Ayrıca, bir VM 'ye bağlı bir Sayfa Blobu olan kapsayıcıların ve depolama hesaplarının silinmesini engeller. 
+Azure diskleri hakkında daha fazla bilgiyi [burada](../../virtual-machines/managed-disks-overview.md)bulabilirsiniz. Azure, bir VM 'ye bağlı bir diskin bozulmasını engellemek için silinmesini engeller. Ayrıca, bir VM 'ye bağlı bir Sayfa Blobu olan kapsayıcıların ve depolama hesaplarının silinmesini engeller. 
 
 ## <a name="what-is-a-disk"></a>"Disk" nedir?
 Bir "disk" kaynağı bir sanal makineye bir işletim sistemi diski veya veri diski olarak bir *. vhd Sayfa Blobu dosyası bağlamak için kullanılır. Bir işletim sistemi diski veya veri diski kaynağı silinene kadar, *. vhd dosyasında bir kira tutmaya devam edecektir. Bir "disk" kaynağı işaret ediyorsa, aşağıdaki resimde gösterilen yoldaki herhangi bir depolama kaynağı silinemez.
@@ -112,7 +112,7 @@ Kullanıcı PowerShell 'i kullanarak silmeyi seçerse, bu hata aşağıdaki hata
 
 ### <a name="to-remove-classic-disks"></a>Klasik diskleri kaldırmak için
 Azure portal şu adımları uygulayın:
-1.  [Azure portalına](https://portal.azure.com) gidin.
+1.  [Azure Portal](https://portal.azure.com)gidin.
 2.  Disklere (klasik) gidin. 
 3.  Diskler sekmesine tıklayın. ![ Kapsayıcı blobu "liste" bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
@@ -124,7 +124,7 @@ Azure portal şu adımları uygulayın:
 
 ### <a name="to-remove-classic-images"></a>Klasik görüntüleri kaldırmak için   
 Azure portal şu adımları uygulayın:
-1.  [Azure portalına](https://portal.azure.com) gidin.
+1.  [Azure Portal](https://portal.azure.com)gidin.
 2.  İşletim sistemi görüntüleri (klasik) sayfasına gidin.
 3.  Görüntüyü silin.
 4.  Daha önce başarısız olan silme işlemini yeniden deneyin.

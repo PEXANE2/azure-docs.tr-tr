@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcc1202c08be905cf08513f38e79a8a7674e01
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734937"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650138"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki klasik to Kaynak Yöneticisi dağıtım modelinden geçişin avantajları
 
@@ -63,4 +63,4 @@ Başlamak için bkz. [Klasik sanal ağ modelinden Kaynak Yöneticisi Azure AD Do
 [availability-zones]: ../availability-zones/az-overview.md
 [howto-migrate]: migrate-from-classic-vnet.md
 [attributes]: synchronization.md#attribute-synchronization-and-mapping-to-azure-ad-ds
-[managed-disks]: ../virtual-machines/windows/managed-disks-overview.md
+[managed-disks]: ../virtual-machines/managed-disks-overview.md

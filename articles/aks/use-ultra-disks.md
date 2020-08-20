@@ -4,23 +4,23 @@ description: Azure Kubernetes Service (AKS) kümesinde Ultra disklerin nasıl et
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986840"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650188"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Ultra diskleri kullanma (Önizleme)
 
-[Azure Ultra diskler](../virtual-machines/linux/disks-enable-ultra-ssd.md) , durum bilgisi olan uygulamalarınız için yüksek aktarım hızı, yüksek IOPS ve tutarlı düşük gecikmeli disk depolama alanı sunar. Ultra disklerin büyük bir avantajı, aracı düğümlerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizi dinamik olarak değiştirme yeteneğidir. Ultra diskler, veri kullanımı yoğun iş yükleri için uygundur.
+[Azure Ultra diskler](../virtual-machines/disks-enable-ultra-ssd.md) , durum bilgisi olan uygulamalarınız için yüksek aktarım hızı, yüksek IOPS ve tutarlı düşük gecikmeli disk depolama alanı sunar. Ultra disklerin büyük bir avantajı, aracı düğümlerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizi dinamik olarak değiştirme yeteneğidir. Ultra diskler, veri kullanımı yoğun iş yükleri için uygundur.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanında ayarlanabilir.
 
 > [!IMPORTANT]
-> Azure Ultra diskler, bu diskleri ve yalnızca belirli VM serisini destekleyen kullanılabilirlik bölgelerinde ve bölgelerde dağıtılan nodepools gerektirir. Bkz. [**Ultra DISKLER GA kapsamı ve sınırlamaları**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
+> Azure Ultra diskler, bu diskleri ve yalnızca belirli VM serisini destekleyen kullanılabilirlik bölgelerinde ve bölgelerde dağıtılan nodepools gerektirir. Bkz. [**Ultra DISKLER GA kapsamı ve sınırlamaları**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>Sınırlamalar
-- Bkz. [ **Ultra diskler GA kapsamı ve sınırlamaları**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- Bkz. [ **Ultra diskler GA kapsamı ve sınırlamaları**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
 - Bir ultra diskler için desteklenen boyut aralığı 100 ile 1500 arasındadır
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Ultra diskler kullanan yeni bir küme oluşturun
@@ -226,7 +226,7 @@ Events:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ultra diskler hakkında daha fazla bilgi için bkz. [Azure Ultra diskler kullanma](../virtual-machines/linux/disks-enable-ultra-ssd.md).
+- Ultra diskler hakkında daha fazla bilgi için bkz. [Azure Ultra diskler kullanma](../virtual-machines/disks-enable-ultra-ssd.md).
 - Depolama en iyi uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) içinde depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage]
 
 <!-- LINKS - external -->
@@ -240,7 +240,7 @@ Events:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

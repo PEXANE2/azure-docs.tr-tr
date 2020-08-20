@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745792"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649423"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -58,6 +58,23 @@ A. Data Box Disk ABD, Kanada, Avustralya, Batı Avrupa ve Kuzey Avrupa, Kore ve 
 
 ### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>S. Sevkiyat sırasında Data Box Disk çapraz ülke/bölge kenarlıkları olacak mı?
 A. Data Box Disk, hedefle aynı ülke/bölge içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB) ' deki ve disklerin herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinin bulunduğu emirlerdir.
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>S. Şirket içi kaynaklı verileri bir ülkede/bölgede farklı bir ülkede/bölgede bulunan bir Azure bölgesine nasıl aktarabilirim?
+A. Data Box Disk, yalnızca aynı bölgedeki (ticari sınır) veri alımını destekler. Diğer tüm durumlarda, ek işlem yapmanız gerekebilir. 
+
+Örneğin, Kanada 'da bir Azure WestUS depolama hesabına geçmek istediğiniz şirket içi verileriniz varsa, bunu aşağıdaki şekilde gerçekleştirebilirsiniz:
+
+### <a name="option-1"></a>1. Seçenek: 
+
+[Azure içeri/dışarı aktarma hizmeti](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure WestUS veri merkezine kadar verileri içeren [desteklenen bir disk](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) gönderin.
+
+### <a name="option-2"></a>2. Seçenek:
+
+1. Canda merkezi 'nde bir depolama hesabı seçerek Kanada 'daki sipariş Data Box Disk. SSD disk (s), sipariş oluşturma sırasında verilen sevkiyat adresine (Kanada 'da) Kanada Orta Azure veri merkezinden gönderilir.
+
+2. Şirket içi sunucunuzdaki veriler disklere kopyalandıktan sonra, Microsoft tarafından sunulan döndürülen etiketleri kullanarak bunları Kanada 'daki Azure veri merkezine döndürün. Data Box Disk bulunan veriler, ardından sipariş oluşturma sırasında seçilen Kanada Azure bölgesindeki hedef depolama hesabına yüklenir.
+
+3. Daha sonra AzCopy gibi bir araç kullanarak, verileri WestUS ' deki bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box Disk faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>S. Data Box Diskleriyle ilgili sorun yaşamam halinde kiminle iletişim kurmam gerekir?
 A. Data Box diskleriyle ilgili herhangi bir sorunla karşılaşırsanız lütfen [Microsoft desteği başvurun](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2c1b9bb8d8fa1e7b82bebfa31963be19d9024af
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837100"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648505"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Bellek için iyileştirilmiş dv2 ve Dsv2 serisi
 
@@ -66,7 +66,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 | Standard_DS15_v2 <sup>2</sup> | 20 | 140 | 280 | 64 | 80000/640 (720) | 64000/960 | 8|25000 <sup>4</sup> |
 
 <sup>1</sup> DSV2 serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [yüksek performans Için tasarlama](./windows/premium-storage-performance.md).
-<sup>2</sup> örnek, Intel Haswell tabanlı donanıma yalıtılmış ve tek bir müşteriye ayrılmıştır.  
+<sup>2</sup>  örnek, Intel Haswell tabanlı donanıma yalıtılmış ve tek bir müşteriye ayrılmıştır.  
 <sup>3</sup> kısıtlı çekirdek boyutu var.  
 Hızlandırılmış ağ ile <sup>4</sup> 25000 Mbps.
 
@@ -83,7 +83,7 @@ Hızlandırılmış ağ ile <sup>4</sup> 25000 Mbps.
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

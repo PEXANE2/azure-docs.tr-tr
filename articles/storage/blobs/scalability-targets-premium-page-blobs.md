@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76756258"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654812"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik ve performans hedefleri
 
@@ -25,7 +25,7 @@ ms.locfileid: "76756258"
 Premium performans sayfası BLOB depolama hesabı, okuma/yazma işlemleri için iyileştirilmiştir. Bu depolama hesabı türü, bir Azure sanal makinesi için yönetilmeyen bir diski yedekler.
 
 > [!NOTE]
-> Microsoft, mümkünse Azure sanal makineleri (VM 'Ler) ile yönetilen disklerin kullanılmasını önerir. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Windows VM 'leri için Azure disk depolama genel bakış](../../virtual-machines/windows/managed-disks-overview.md).
+> Microsoft, mümkünse Azure sanal makineleri (VM 'Ler) ile yönetilen disklerin kullanılmasını önerir. Yönetilen diskler hakkında daha fazla bilgi için bkz. [VM 'ler için Azure disk depolama genel bakış](../../virtual-machines/managed-disks-overview.md).
 
 Premium Sayfa Blobu depolama hesaplarının aşağıdaki ölçeklenebilirlik hedefleri vardır:
 
@@ -39,7 +39,7 @@ Premium Sayfa Blobu depolama hesaplarının aşağıdaki ölçeklenebilirlik hed
 
 Premium Sayfa Blobu hesabı, Premium performans için yapılandırılmış genel amaçlı bir hesaptır. Genel amaçlı v2 depolama hesapları önerilir.
 
-Yönetilmeyen diskler için Premium sayfa BLOB depolama hesapları kullanıyorsanız ve uygulamanız tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarsa, Microsoft yönetilen disklere geçiş yapmanızı önerir. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Windows VM 'leri için Azure disk depolama genel](../../virtual-machines/windows/managed-disks-overview.md) bakış veya [Linux VM 'lerine Azure disk depolama genel bakış](../../virtual-machines/linux/managed-disks-overview.md).
+Yönetilmeyen diskler için Premium sayfa BLOB depolama hesapları kullanıyorsanız ve uygulamanız tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarsa, Microsoft yönetilen disklere geçiş yapmanızı önerir. Yönetilen diskler hakkında daha fazla bilgi için bkz. [VM 'ler için Azure disk depolama genel bakış](../../virtual-machines/managed-disks-overview.md).
 
 Yönetilen disklere geçiş yapıamıyorsanız, uygulamanızı birden çok depolama hesabı kullanmak ve bu depolama hesaplarında bölümlemek için derleyin. Örneğin, birden çok VM arasında 51 TB diskler eklemek istiyorsanız, bunları iki depolama hesabına yayın. 35 TB, tek bir Premium depolama hesabının sınırlıdır. Tek bir Premium performans depolama hesabının 35 TB 'den fazla sağlanan disk üzerinde hiçbir şekilde bulunmadığından emin olun.
 

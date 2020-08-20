@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 520754c08fc9bf89949739987b41974eccdcd29d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292141"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654778"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı iyileştirin
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2-Series Linux sanal makinelerinde performansı iyileştirin
 
 Lsv2 serisi sanal makineler, çok sayıda uygulama ve sektör genelinde yerel depolamada yüksek g/ç ve aktarım hızı gerektiren çeşitli iş yüklerini destekler.  Lsv2-Series, Cassandra, MongoDB, Cloudera ve Redsıs gibi büyük veri, SQL, NoSQL veritabanları, veri ambarı ve büyük işlem veritabanları için idealdir.
 
@@ -83,7 +83,7 @@ Müşteriyi korumaya yönelik verileri güvenli bir şekilde silmeyen senaryolar
 - VM sağlıksız hale gelir ve bir donanım sorunu nedeniyle başka bir düğüme hizmet vermek zorunda olur.
 - VM 'nin bakım için başka bir konağa yeniden ayrılmasını gerektiren planlı bakım hizmeti işlemlerinin az olması.
 
-Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure IaaS diskleri Için Yedekleme ve olağanüstü durum kurtarma](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure IaaS diskleri Için Yedekleme ve olağanüstü durum kurtarma](../backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

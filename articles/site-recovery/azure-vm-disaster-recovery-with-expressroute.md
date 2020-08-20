@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954094"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654387"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure VM 'lerinde ExpressRoute 'ı olağanüstü durum kurtarma ile tümleştirme
 
@@ -22,7 +22,7 @@ Bu makalede, Azure sanal makineleri için ikincil bir Azure bölgesine olağanü
 
 Site Recovery Azure VM verilerini Azure 'a çoğaltarak Azure VM 'Leri olağanüstü durumdan kurtarmaya olanak sağlar.
 
-- Azure VM 'Leri [Azure yönetilen diskleri](../virtual-machines/windows/managed-disks-overview.md)kullanıyorsa, VM verileri ikincil bölgedeki çoğaltılan bir yönetilen diske çoğaltılır.
+- Azure VM 'Leri [Azure yönetilen diskleri](../virtual-machines/managed-disks-overview.md)kullanıyorsa, VM verileri ikincil bölgedeki çoğaltılan bir yönetilen diske çoğaltılır.
 - Azure VM 'Leri yönetilen diskler kullanmamışsa, VM verileri bir Azure depolama hesabına çoğaltılır.
 - Çoğaltma uç noktaları geneldir, ancak Azure VM 'Leri için çoğaltma trafiği internet üzerinden geçmez.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832595"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654744"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -58,7 +58,7 @@ Taban çizgisi: %270
 
 ![Saatlik trafik verileri grafiği](./media/b-series-burstable/office-workload.png)
 
-| Senaryo | Zaman | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
+| Senaryo | Süre | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
 | --- | --- | --- | --- | --- |
 | B16ms dağıtımı | Dağıtım | Dağıtım  | 480 (ilk krediler) | 480 |
 | Trafik yok | 0:00 | 0 | 162 | 642 |
@@ -88,7 +88,7 @@ Taban çizgisi: %270
 
 <sup>1</sup> bir saat içinde kullanılan birikmiş krediler, şu şekilde eşdeğerdir: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
-16 vCPU ve 64 GiB belleğe sahip bir D16s_v3 için saatlik ücret saat başına $0,936 (aylık $673,92) ve 16 vCPU ve 64 GiB belleği ile B16ms için Fiyat, saat başına ' dir (aylık $0,794). <b>Bu durum %15 tasarruf sonucu!</b>
+16 vCPU ve 64 GiB belleğe sahip bir D16s_v3 için saatlik ücret saat başına $0,936 (aylık $673,92) ve 16 vCPU ve 64 GiB belleği ile B16ms için Fiyat, saat başına ' dir (aylık $0,794). <b> Bu durum %15 tasarruf sonucu!</b>
 
 ## <a name="q--a"></a>Soru-Cevap
 
@@ -149,7 +149,7 @@ Y **: B1ls** yalnızca Linux görüntülerini destekler ve başka bir işletim s
 
 Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
 
-Disk türleri hakkında daha fazla bilgi: [disk türleri](./linux/disks-types.md#ultra-disk)
+Disk türleri hakkında daha fazla bilgi: [disk türleri](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

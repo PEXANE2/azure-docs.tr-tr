@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058165"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649746"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Depolama kaynağı silme hatalarını giderme
 
@@ -28,7 +28,7 @@ Bazı senaryolarda, bir Azure Resource Manager dağıtımında bir Azure Depolam
 > 
 > **# Blob 'ları silme başarısız: <br> blobname. vhd: Şu anda blob üzerinde bir kira var ve istekte hiçbir kıra kimliği belirtilmemiş.**
 
-Azure VM 'lerinde kullanılan VHD 'ler, Azure 'da standart veya Premium bir depolama hesabında sayfa Blobları olarak depolanan. vhd dosyalarıdır. Azure diskleri hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../linux/managed-disks-overview.md).
+Azure VM 'lerinde kullanılan VHD 'ler, Azure 'da standart veya Premium bir depolama hesabında sayfa Blobları olarak depolanan. vhd dosyalarıdır. Azure diskleri hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../managed-disks-overview.md).
 
 Azure, bir VM 'ye bağlı bir diskin bozulmasını engellemek için silinmesini engeller. Ayrıca, bir VM 'ye bağlı bir Sayfa Blobu olan kapsayıcıların ve depolama hesaplarının silinmesini engeller. 
 
@@ -76,7 +76,7 @@ Bu adımlar tamamlandıktan sonra depolama hesabını, kapsayıcıyı veya blobu
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>2. Adım: işletim sistemi diskini ayırmak için VM 'yi silme
 VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce VM 'yi silmeniz gerekir. Bu adımlar tamamlandıktan sonra aynı VM 'ye bağlı veri diskleri için başka bir eylem gerekli olmaz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Hub menüsünde **sanal makineler**' i seçin.
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. Sanal makineyi etkin bir şekilde kullanan hiçbir şeyin olmadığından ve artık sanal makineye ihtiyacınız olmadığından emin olun.
@@ -86,7 +86,7 @@ VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce 
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>3. Adım: veri diskini VM 'den ayırma
 VHD bir veri diskise, kirayı kaldırmak için VHD 'yi VM 'den ayırın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Hub menüsünde **sanal makineler**' i seçin.
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. **Sanal makine ayrıntıları** bölmesinde **diskler** ' i seçin.
