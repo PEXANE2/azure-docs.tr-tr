@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510870"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653622"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -36,7 +36,7 @@ Azure [depolama çoğaltma](../../../storage/common/storage-redundancy.md?toc=%2
 
 ### <a name="azure-managed-disks"></a>Azure yönetilen diskler
 
-Yönetilen diskler, Azure depolama hesaplarında depolanan VHD 'ler yerine kullanılabilecek Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makinenin [kullanılabilirlik kümesi] [sanal makineler-Yönet-kullanılabilirliği] ile otomatik olarak hizalanır ve bu nedenle sanal makinenizin ve sanal makinede çalışan hizmetlerin kullanılabilirliğini arttırır. Daha fazla bilgi için [genel bakış makalesini](../../windows/managed-disks-overview.md)okuyun.
+Yönetilen diskler, Azure depolama hesaplarında depolanan VHD 'ler yerine kullanılabilecek Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makinenin [kullanılabilirlik kümesi] [sanal makineler-Yönet-kullanılabilirliği] ile otomatik olarak hizalanır ve bu nedenle sanal makinenizin ve sanal makinede çalışan hizmetlerin kullanılabilirliğini arttırır. Daha fazla bilgi için [genel bakış makalesini](../../managed-disks-overview.md)okuyun.
 
 Dayanıklılık ile ilgili bu örnek, yönetilen disklerin avantajlarını gösterir:
 
@@ -61,7 +61,7 @@ Kalıcı depolama, Azure 'da dağıttığınız yığının çeşitli bileşenle
 - NetWeaver veya S/4HANA için genel aktarım dizininizi içeren dosya paylaşımları veya paylaşılan diskler. Bu paylaşımların içeriği birden çok VM 'de çalışan yazılım tarafından tüketilebilir veya yüksek kullanılabilirlik yük devretme kümesi senaryoları oluşturmak için kullanılır
 - /Sapmnt dizini veya benzer EDI işlemlerine yönelik ortak dosya paylaşımları. Bu paylaşımların içeriği birden çok VM 'de çalışan yazılım tarafından tüketilebilir veya yüksek kullanılabilirlik yük devretme kümesi senaryoları oluşturmak için kullanılır
 
-Sonraki birkaç bölümde, farklı Azure Depolama türleri ve SAP iş yükünün kullanılabilirliği, yukarıdaki dört senaryoya uygun olarak ele alınmıştır. Farklı Azure Depolama türlerinin nasıl kullanılması gerektiği konusunda genel bir kategori, [Azure 'da bulunan disk türleri nelerdir](../../linux/disks-types.md)makalesinde açıklanmaktadır. SAP iş yükü için farklı Azure depolama türlerini kullanmaya yönelik öneriler, farklı şekilde değil.
+Sonraki birkaç bölümde, farklı Azure Depolama türleri ve SAP iş yükünün kullanılabilirliği, yukarıdaki dört senaryoya uygun olarak ele alınmıştır. Farklı Azure Depolama türlerinin nasıl kullanılması gerektiği konusunda genel bir kategori, [Azure 'da bulunan disk türleri nelerdir](../../disks-types.md)makalesinde açıklanmaktadır. SAP iş yükü için farklı Azure depolama türlerini kullanmaya yönelik öneriler, farklı şekilde değil.
 
 SAP NetWeaver/4HANA için Azure depolama türlerinde destek kısıtlamaları için, SAP HANA sertifikalı ve desteklenen Azure Depolama türleri için [sap destek dekontunu 2015553](https://launchpad.support.sap.com/#/notes/2015553) okuyun ve [Azure sanal makine depolama yapılandırması SAP HANA](./hana-vm-operations-storage.md)makalesini okuyun.
 
@@ -123,7 +123,7 @@ Azure Premium SSD depolaması, şunları sağlamak için hedefle tanıtılmışt
 * IOPS ve aktarım hızı için SLA 'Lar
 * G/ç gecikmede daha az değişkenlik
 
-Bu tür bir depolama, DBMS iş yüklerini, düşük tek basamaklı milisaniyelik gecikme süresi gerektiren depolama trafiğini ve Azure Premium Depolama söz konusu disklerde saklanan gerçek veri hacmi değildir ve bu nedenle, disk içinde depolanan verilerin miktarından bağımsız olarak bu tür bir diskin boyut kategorisini hedefler. Ayrıca, [Premium SSD](../../linux/disks-types.md#premium-ssd)makalesinde gösterilen boyut kategorilerine doğrudan eşlenmemiş Premium depolamada diskler oluşturabilirsiniz. Ekibinizle şu makaleye sahiptir:
+Bu tür bir depolama, DBMS iş yüklerini, düşük tek basamaklı milisaniyelik gecikme süresi gerektiren depolama trafiğini ve Azure Premium Depolama söz konusu disklerde saklanan gerçek veri hacmi değildir ve bu nedenle, disk içinde depolanan verilerin miktarından bağımsız olarak bu tür bir diskin boyut kategorisini hedefler. Ayrıca, [Premium SSD](../../disks-types.md#premium-ssd)makalesinde gösterilen boyut kategorilerine doğrudan eşlenmemiş Premium depolamada diskler oluşturabilirsiniz. Ekibinizle şu makaleye sahiptir:
 
 - Depolama, aralıklar halinde düzenlenir. Örneğin, 513 GiB ile 1024 GiB kapasitesi arasındaki bir disk aynı özellikleri ve aynı aylık maliyetleri paylaşır
 - GiB başına ıOPS, boyut kategorilerinde doğrusal olarak izlenmiyor. 32 GiB 'nin altındaki daha küçük diskler, GiB başına ıOPS ücretlerinden daha fazladır. 32 gib 'den 1024 GiB 'ye kadar olan diskler için gib başına ıOPS oranı GiB başına 4-5 ıOPS arasındadır. 32.767 GiB 'ye kadar büyük diskler için, GiB başına ıOPS ücreti 1 ' in altına gidiyor
@@ -184,8 +184,8 @@ Azure ultra diskler Azure IaaS VM'leri içi yüksek işleme hızı, yüksek IOPS
 Bir ultra disk oluştururken, şunları tanımlayabilmeniz için üç boyutun olması gerekir:
 
 - Diskin kapasitesi. Aralıklar 4 GiB 'den 65.536 GiB 'ye kadar
-- Disk için sağlanan ıOPS. Diskin kapasitesine göre farklı en büyük değerler geçerlidir. Daha fazla ayrıntı için [Ultra disk](../../linux/disks-types.md#ultra-disk) makalesini okuyun
-- Sağlanan depolama bant genişliği. Farklı en yüksek bant genişliği, diskin kapasitesine bağlı olarak geçerlidir. Daha fazla ayrıntı için [Ultra disk](../../linux/disks-types.md#ultra-disk) makalesini okuyun
+- Disk için sağlanan ıOPS. Diskin kapasitesine göre farklı en büyük değerler geçerlidir. Daha fazla ayrıntı için [Ultra disk](../../disks-types.md#ultra-disk) makalesini okuyun
+- Sağlanan depolama bant genişliği. Farklı en yüksek bant genişliği, diskin kapasitesine bağlı olarak geçerlidir. Daha fazla ayrıntı için [Ultra disk](../../disks-types.md#ultra-disk) makalesini okuyun
 
 Tek bir diskin maliyeti, belirli diskler için ayrı olarak tanımlayabileceğiniz üç boyuta göre belirlenir. 
 
@@ -352,7 +352,7 @@ Azure VM 'lerini bir SAP sisteminin yaşam döngüsünde ayarlarken, yeni ve dah
 
 
 ## <a name="striping-or-not-striping"></a>Şeritleme veya şeridi yok
-Birden çok Azure diskinin daha büyük bir birimde bir dizi kümesi oluşturulması, tek tek disklerin ıOPS ve üretilen iş verimini tek bir birimde birikmesini sağlar. Yalnızca Azure Standart depolama ve Azure Premium Depolama için kullanılır. Aktarım hızını ve ıOPS 'yi bir diskin kapasitesinden bağımsız olarak yapılandırabileceğiniz Azure Ultra disk, Stripe kümelerinin kullanımını gerektirmez. NFS veya SMB tabanlı paylaşılan birimler şeritli olamaz. Azure Premium Depolama verimlilik ve ıOPS 'nin doğrusal olmayan doğası nedeniyle, büyük tek Azure Premium Depolama disklerinden aynı ıOPS ve aktarım hızı ile daha küçük kapasite sağlayabilirsiniz. Bu, Azure Premium Depolama kullanarak daha düşük maliyetli verimlilik veya ıOPS elde etme yöntemidir. Örneğin:
+Birden çok Azure diskinin daha büyük bir birimde bir dizi kümesi oluşturulması, tek tek disklerin ıOPS ve üretilen iş verimini tek bir birimde birikmesini sağlar. Yalnızca Azure Standart depolama ve Azure Premium Depolama için kullanılır. Aktarım hızını ve ıOPS 'yi bir diskin kapasitesinden bağımsız olarak yapılandırabileceğiniz Azure Ultra disk, Stripe kümelerinin kullanımını gerektirmez. NFS veya SMB tabanlı paylaşılan birimler şeritli olamaz. Azure Premium Depolama verimlilik ve ıOPS 'nin doğrusal olmayan doğası nedeniyle, büyük tek Azure Premium Depolama disklerinden aynı ıOPS ve aktarım hızı ile daha küçük kapasite sağlayabilirsiniz. Bu, Azure Premium Depolama kullanarak daha düşük maliyetli verimlilik veya ıOPS elde etme yöntemidir. Örnek:
 
 - İki P15 Premium Depolama diski arasında şeritleme size 
 - 250 MIB/sn. Bu tür bir birimde 512 GiB kapasitesi vardır. Saniyede 250 MIB üretilen işi sağlayan tek bir diske sahip olmak istiyorsanız, 2 TiB kapasiteye sahip bir P40 disk seçmeniz gerekir. 

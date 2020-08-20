@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053754"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654897"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault ve yönetilen kimlik ile Azure Batch hesabınız için müşteri tarafından yönetilen anahtarlar yapılandırın
 
@@ -19,7 +19,7 @@ Varsayılan olarak Azure Batch, sertifikalar, iş/görev meta verileri gibi Azur
 Sağladığınız anahtarların [Azure Key Vault](../key-vault/general/basic-concepts.md)oluşturulması ve müşterinin yönettiği anahtarlarla yapılandırmak istediğiniz Batch hesaplarının [Azure yönetilen kimliğiyle](../active-directory/managed-identities-azure-resources/overview.md)etkinleştirilmesi gerekir.
 
 > [!IMPORTANT]
-> Azure Batch 'de müşteri tarafından yönetilen anahtarlar için destek şu anda Orta Batı ABD, Doğu ABD, Orta Güney ABD, Batı ABD 2, US Gov Virginia ve US Gov Arizona bölgeleri için genel önizlemededir.
+> Azure Batch 'de müşteri tarafından yönetilen anahtarlar için destek şu anda Batı Avrupa, Kuzey Avrupa, İsviçre Kuzey, Orta ABD, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD 2, US Gov Virginia ve US Gov Arizona bölgeleri için genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -82,7 +82,7 @@ Azure portal, Key Vault oluşturulduktan sonra, **Ayarlar**' ın altında buluna
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Azure Key Vault bir anahtar oluşturun
 
-Azure portal, **anahtar** bölümündeki Key Vault örneğine gidin, **Oluştur/al**' ı seçin. **Anahtar türünü** `RSA` ve **RSA anahtar boyutunu** en az bit olacak şekilde seçin `2048` . `EC`anahtar türleri şu anda bir Batch hesabında müşteri tarafından yönetilen anahtar olarak desteklenmez.
+Azure portal, **anahtar** bölümündeki Key Vault örneğine gidin, **Oluştur/al**' ı seçin. **Anahtar türünü** `RSA` ve **RSA anahtar boyutunu** en az bit olacak şekilde seçin `2048` . `EC` anahtar türleri şu anda bir Batch hesabında müşteri tarafından yönetilen anahtar olarak desteklenmez.
 
 ![Bir anahtar oluşturma](./media/batch-customer-managed-key/create-key.png)
 

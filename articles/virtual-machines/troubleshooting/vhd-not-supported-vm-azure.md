@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f31e8d36d6ba615b21a4043c7d39716fc6d89a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999063"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653503"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>Azure 'da bir sanal makine oluşturduğunuzda VHD desteklenmez
 
@@ -62,7 +62,6 @@ Azure VM oluşturmak için bir VHD oluşturma ve karşıya yükleme hakkında da
 
 Sorun devam ettirilmesi bozulmuş bir VHD 'YI gösteriyor olabilir. Bu durumda, VHD 'yi sıfırdan yeniden oluşturmanızı öneririz.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makaleyi inceleyin:
 
-- [Windows VHD hakkında](../windows/managed-disks-overview.md)
-- [Linux VHD hakkında](../linux/managed-disks-overview.md)
+- [VHD hakkında](../managed-disks-overview.md)

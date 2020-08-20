@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537556"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653962"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Hızlı başlangıç: Azure DevTest Labs ARM şablonunu kullanarak laboratuvar ayarlama
 Bu hızlı başlangıçta, bir Azure Resource Manager (ARM) şablonu kullanarak Windows Server 2019 Datacenter VM ile bir laboratuvar oluşturacaksınız. 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json" range="1-97" highlight="51-85":::
+:::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json":::
 
 Şablonda tanımlanan kaynaklar şunları içerir:
 

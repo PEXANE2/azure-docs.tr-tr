@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258539"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654047"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -71,7 +71,7 @@ Advisor, Azure Blob depolama alanınızı analiz eder ve son 30 gün içinde dep
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB, MySQL ve PostgreSQL ayrılmış kapasitesi
 Danışman, MariaDB için Azure veritabanı, MySQL için Azure veritabanı ve son 30 gün içinde PostgreSQL için Azure veritabanı kullanım modellerinizi analiz eder. Daha sonra maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, MariaDB, MySQL ve PostgreSQL saatlik kullanımını ön satın alabilir ve geçerli maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
-### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>SYNAPSE Analytics (eski adıyla SQL veri ambarı) ayrılmış kapasitesi
+### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ayrılmış kapasitesi
 Danışman, son 30 gün içinde Azure SYNAPSE Analytics kullanım modellerinizi analiz eder ve maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, SYNAPSE Analytics saatlik kullanımını ön satın alabilir ve isteğe bağlı maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Paradan tasarruf etmek için ilişkilendirilmemiş genel IP adreslerini silin

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510904"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654608"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
 
@@ -71,7 +71,7 @@ SAP ASE, aksi belirtilmedikçe verileri disk depolama cihazlarına sırayla yaza
 Otomatik veritabanı genişletmesinin, SAP Uyarlamalı sunucu Enterprise ve [sap desteği not#1815695](https://launchpad.support.sap.com/#/notes/1815695) [otomatik veritabanı alanı genişletmeyi yapılandırma](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) makalesinde açıklandığı şekilde yapılandırılması önerilir. 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure sanal makinesi, disk ve dosya sistemi yapılandırmalarında örnek SAP Ao 
-Aşağıdaki şablonlar hem Linux hem de Windows için örnek yapılandırma gösterir. Sanal makine ve disk yapılandırmasını onaylamadan önce, bireysel VM 'nin ağ ve depolama bant genişliği kotalarının iş gereksinimini karşılamak için yeterli olduğundan emin olun. Ayrıca, farklı Azure VM türlerinin, VM 'ye eklenebilecek farklı disk sayısı üst sınırına sahip olduğunu aklınızda bulundurun. Örneğin, bir E4s_v3 VM 48 MB/sn depolama GÇ işleme sınırına sahiptir. Veritabanı yedekleme etkinliği için gereken depolama aktarım hızı 48 MB/sn 'den fazla talep isterse, daha fazla depolama bant genişliği işleme içeren daha büyük bir VM türü kaçınılmaz. Azure depolama 'yı yapılandırırken, özellikle de [Azure Premium Depolama](../../windows/premium-storage-performance.md) ile GB 'lık kapasite başına aktarım hızı ve IOPS 'nin değişiklik olduğunu göz önünde bulundurmanız gerekir. Bu konuda daha fazla bilgi için bkz. [Azure 'da disk türleri kullanılabilir](../../windows/disks-types.md). Belirli Azure VM türleri için kotalar, [bellek için iyileştirilmiş sanal makine boyutları](../../sizes-memory.md) ve bu makaleye bağlı makalelerde belgelenmiştir. 
+Aşağıdaki şablonlar hem Linux hem de Windows için örnek yapılandırma gösterir. Sanal makine ve disk yapılandırmasını onaylamadan önce, bireysel VM 'nin ağ ve depolama bant genişliği kotalarının iş gereksinimini karşılamak için yeterli olduğundan emin olun. Ayrıca, farklı Azure VM türlerinin, VM 'ye eklenebilecek farklı disk sayısı üst sınırına sahip olduğunu aklınızda bulundurun. Örneğin, bir E4s_v3 VM 48 MB/sn depolama GÇ işleme sınırına sahiptir. Veritabanı yedekleme etkinliği için gereken depolama aktarım hızı 48 MB/sn 'den fazla talep isterse, daha fazla depolama bant genişliği işleme içeren daha büyük bir VM türü kaçınılmaz. Azure depolama 'yı yapılandırırken, özellikle de [Azure Premium Depolama](../../windows/premium-storage-performance.md) ile GB 'lık kapasite başına aktarım hızı ve IOPS 'nin değişiklik olduğunu göz önünde bulundurmanız gerekir. Bu konuda daha fazla bilgi için bkz. [Azure 'da disk türleri kullanılabilir](../../disks-types.md). Belirli Azure VM türleri için kotalar, [bellek için iyileştirilmiş sanal makine boyutları](../../sizes-memory.md) ve bu makaleye bağlı makalelerde belgelenmiştir. 
 
 > [!NOTE]
 >  Bir DBMS sistemi Şirket içinden Azure 'a taşınırsa, sanal makine üzerinde izleme yapmanız ve CPU, bellek, ıOPS ve depolama aktarım hızını değerlendirmek önerilir. Yukarıda bahsedilen makalelerde belgelenen VM kota limitleriyle gözlemlenen en yüksek değerleri karşılaştırın

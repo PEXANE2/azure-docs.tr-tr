@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5994e9741340c6fef662f7037efa142c5684b6cb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544838"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655133"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -21,7 +21,7 @@ Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında s�
 
 **Azure yönetilen diskler nedir?**
 
-Yönetilen diskler, depolama hesabı yönetimini sizin için işleyerek Azure IaaS VM 'Leri için disk yönetimini kolaylaştıran bir özelliktir. Daha fazla bilgi için bkz. [yönetilen disklere genel bakış](../articles/virtual-machines/windows/managed-disks-overview.md).
+Yönetilen diskler, depolama hesabı yönetimini sizin için işleyerek Azure IaaS VM 'Leri için disk yönetimini kolaylaştıran bir özelliktir. Daha fazla bilgi için bkz. [yönetilen disklere genel bakış](../articles/virtual-machines/managed-disks-overview.md).
 
 **Mevcut bir VHD 'den 80 GB olan standart bir yönetilen disk oluşturdum, ne kadar ücret alınacaktır?**
 
@@ -212,7 +212,7 @@ Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. 
 Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı **hiçbiri**olarak ayarlayın.
 
 **Var olan sanal makinenize bir ultra disk ekleyebilir miyim?**
-Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabilirlik alanı çifti olması gerekir. Ayrıntılar için bkz. [Ultra disklerle çalışmaya](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) başlama.
+Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabilirlik alanı çifti olması gerekir. Ayrıntılar için bkz. [Ultra disklerle çalışmaya](../articles/virtual-machines/disks-enable-ultra-ssd.md) başlama.
 
 **VM 'im için bir ultra disk işletim sistemi diski olarak kullanabilir miyim?**
 Hayır, Ultra diskler yalnızca veri diskleri olarak desteklenir ve yalnızca 4K yerel disk olarak desteklenir.
@@ -303,7 +303,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Yes
+Evet
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -341,7 +341,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Yes
+Evet
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 

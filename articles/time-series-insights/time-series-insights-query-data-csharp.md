@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0e1976f51251913197eeec1a342eb1e891ddcaa6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e7f5750d89c661cad7616cf1c56157c6e92e1175
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206307"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654472"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen1 ortamından veri sorgulama
 
@@ -75,7 +75,7 @@ Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak paketleri ek
 
 ## <a name="c-sample-code"></a>C# örnek kodu
 
-Time Series Insights Gen1 örnekleri, [csharpquery-example](https://github.com/Azure-Samples/Azure-Time-Series-Insights#tsi-gen1) yolunda bulunabilir
+C# örnek koduna erişmek için lütfen [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] depoya bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

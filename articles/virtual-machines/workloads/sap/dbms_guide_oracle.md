@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504951"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654625"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -247,7 +247,7 @@ ms.locfileid: "88504951"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -318,7 +318,7 @@ Oracle yazılımı, Microsoft Azure üzerinde çalıştırmak için Oracle taraf
 
 Aşağıdaki SAP notları Azure 'da SAP ile ilgilidir.
 
-| Dekont numarası | Title |
+| Dekont numarası | Başlık |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -353,11 +353,11 @@ Kullanılabilir yeterli boş alan yoksa disk 2048 GB olarak yeniden [boyutlandı
 Geçicidosyalar için doğru alan miktarını öğrenmek için, var olan sistemlerdeki geçicidosyalar boyutunu kontrol edebilirsiniz.
 
 ### <a name="storage-configuration"></a>Depolama yapılandırması
-Yalnızca NTFS biçimli diskler kullanan tek örnekli Oracle desteklenir. Tüm veritabanı dosyaları, yönetilen disklerde (önerilir) veya VHD 'lerde NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) veya [Azure tarafından yönetilen diskleri](../../windows/managed-disks-overview.md)temel alır. 
+Yalnızca NTFS biçimli diskler kullanan tek örnekli Oracle desteklenir. Tüm veritabanı dosyaları, yönetilen disklerde (önerilir) veya VHD 'lerde NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır. 
 
-[Azure yönetilen diskleri](../../windows/managed-disks-overview.md)kullanmanızı kesinlikle öneririz. Ayrıca, Oracle Database dağıtımlarınız için [Premium SSD 'lerin](../../windows/disks-types.md) kullanılması önemle önerilir.
+[Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanızı kesinlikle öneririz. Ayrıca, Oracle Database dağıtımlarınız için [Premium SSD 'lerin](../../disks-types.md) kullanılması önemle önerilir.
 
-Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz.
+Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz:
 
 - [Microsoft Azure Dosya Hizmeti’ne Giriş](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -374,10 +374,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -387,13 +387,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Yok | Kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium | Yok | Kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium | Hiçbiri | Kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium | Hiçbiri | Kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium | Yok | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -442,11 +442,11 @@ Bu durumda, Oracle Home, Stage, saptrace, saparch, sapbackup, sapcheck veya sapr
 
 ### <a name="storage-configuration"></a>Depolama yapılandırması
 
-Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya [Azure tarafından yönetilen diskleri](../../windows/managed-disks-overview.md)temel alır.
+Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır.
 
 Oracle Linux UEK kernels için, [Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
 
-[Azure yönetilen diskleri](../../windows/managed-disks-overview.md)kullanmanız önemle önerilir. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium SSD 'ler](../../windows/disks-types.md) kullanılması önemle önerilir.
+[Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanız önemle önerilir. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium SSD 'ler](../../disks-types.md) kullanılması önemle önerilir.
 
 Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için, aşağıdakilere bakın: 
 
@@ -464,10 +464,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -478,13 +478,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Yok | Kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium | Hiçbiri | Kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium | Hiçbiri | Kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM

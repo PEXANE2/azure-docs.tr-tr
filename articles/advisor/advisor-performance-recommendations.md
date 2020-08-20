@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257466"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653316"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -51,32 +51,32 @@ Danışman, depolama hesabınızda yüksek işlem hacmi olan standart disklere s
 
 Azure Premium Depolama, g/ç yoğunluklu iş yüklerini çalıştıran sanal makineler için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Premium Depolama hesapları kullanan sanal makine diskleri, verileri katı hal sürücülerinde (SSD 'Ler) depolar. Uygulamanız için en iyi performans için, yüksek ıOPS gerektiren tüm sanal makine disklerini Premium depolamaya geçirmeniz önerilir.
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablolarınızdaki veri eğriliğini kaldırma
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için Azure SYNAPSE Analytics tablolarınızdaki veri eğriliğini kaldırma
 
 Veri eğriltme, iş yükünüzü çalıştırdığınızda gereksiz veri hareketine veya kaynak performans sorunlarına neden olabilir. Advisor, %15 ' ten büyük olan dağıtım verisi eğriliğini algılar. Verilerinizi yeniden dağıtmanız ve tablo dağıtım anahtarı seçimlerinizi geri yüklemenizi önerir. Eğriliği belirleme ve kaldırma hakkında daha fazla bilgi edinmek için bkz. [skew sorunlarını giderme](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice).
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı Tablolarınızda geçmiş tablo istatistiklerini oluşturun veya güncelleştirin
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için Azure SYNAPSE Analytics Tablolarınızda geçmiş tablo istatistiklerini oluşturun veya güncelleştirin
 
-Danışman güncel [tablo istatistiklerine](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) sahip olmayan tabloları tanımlar ve istatistiklerin oluşturulmasını veya güncelleştirilmesini önerir. Azure SQL veri ambarı 'nda sorgu iyileştiricisi, sorgu sonuçlarında kardinalite veya satır sayısını tahmin etmek için güncel istatistikleri kullanır. Bu tahminler, en hızlı performansı sağlamak üzere sorgu iyileştiricinin bir sorgu planı oluşturmasını sağlar.
+Danışman güncel [tablo istatistiklerine](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) sahip olmayan tabloları tanımlar ve istatistiklerin oluşturulmasını veya güncelleştirilmesini önerir. Azure SYNAPSE Analytics 'te sorgu iyileştiricisi, sorgu sonuçlarında kardinalite veya satır sayısını tahmin etmek için güncel istatistikleri kullanır. Bu tahminler, en hızlı performansı sağlamak üzere sorgu iyileştiricinin bir sorgu planı oluşturmasını sağlar.
 
 ## <a name="improve-mysql-connection-management"></a>MySQL bağlantı yönetimini geliştirme
 
 Advisor analizine, bir MySQL sunucusuna bağlanan uygulamanızın bağlantıları verimli bir şekilde yönetmediğinden emin olabilirsiniz. Bu durum gereksiz kaynak tüketimine ve genel uygulama gecikmesine neden olabilir. Bağlantı yönetimini geliştirmek için, kısa süreli bağlantıların sayısını azaltmanızı ve boşta kalmış gereksiz bağlantıları kaldırmanızı öneririz. Bu geliştirmeleri, ProxySQL gibi bir sunucu tarafı bağlantı havuzlayıcı yapılandırarak yapabilirsiniz.
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablolarınızdaki önbellek kullanımını iyileştirmek üzere ölçeği büyütün
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için Azure SYNAPSE Analytics tablolarında önbellek kullanımını iyileştirmek üzere ölçeği büyütün
 
-Azure Advisor, SQL veri ambarı tablolarınızın yüksek önbellek kullanan yüzdesi ve düşük bir isabet yüzdesi olup olmadığını algılar. Bu durum, SQL veri ambarı örneğinizin performansını etkileyebilecek yüksek önbellek çıkarmayı gösterir. Danışman, iş yükünüz için yeterli önbellek kapasitesi ayırdığınızdan emin olmak için SQL veri ambarı örneğinizi ölçeklendirmenizi önerir.
+Azure Advisor, Azure SYNAPSE Analytics tablolarınızın yüksek önbellek kullanan yüzdesi ve düşük bir isabet yüzdesi olup olmadığını algılar. Bu durum, Azure SYNAPSE Analytics örneğinizin performansını etkileyebilecek yüksek önbellek çıkarmayı gösterir. Danışman, iş yükünüz için yeterli önbellek kapasitesi ayırdığınızdan emin olmak için Azure SYNAPSE Analytics örneğinizi ölçeklendirmenizi önerir.
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablolarını çoğaltılan tablolara dönüştürme
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için Azure SYNAPSE Analytics tablolarını çoğaltılan tablolara dönüştürme
 
 Danışman, çoğaltılan tablo olmayan ancak dönüşümden faydalanabilir olan tabloları tanımlar. Bu tabloları dönüştürmenizi önerir. Önerilerin temeli:
 - Çoğaltılan tablonun boyutu. 
 - Sütun sayısı. 
 - Tablo dağıtım türü. 
-- SQL veri ambarı tablosundaki bölümlerin sayısı. 
+- Azure SYNAPSE Analytics tablosundaki bölümlerin sayısı. 
 
-Bağlam için öneri bölümünde ek buluşsal yöntemler sağlanmış olabilir. Bu önerinin nasıl belirlendiği hakkında daha fazla bilgi edinmek için bkz. [SQL veri ambarı önerileri](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
+Bağlam için öneri bölümünde ek buluşsal yöntemler sağlanmış olabilir. Bu önerinin nasıl belirlendiği hakkında daha fazla bilgi edinmek için bkz. [Azure SYNAPSE Analytics önerileri](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>En son Azure özelliklerini almak için depolama hesabınızı Azure Resource Manager geçirin
 
@@ -160,13 +160,13 @@ Azure Advisor, son 7 gün içinde sistem günlüklerini analiz eder ve kümenizi
 Bu koşullar, kümenizin yüksek yazma gecikme sürelerine sahip olduğunu gösterir. Bunun nedeni, kümenizde gerçekleştirilen ağır iş yükünün olması olabilir. Kümenizin performansını artırmak için, Azure HDInsight HBase tarafından sunulan hızlandırılmış yazma özelliğini kullanmayı düşünmek isteyebilirsiniz. HDInsight Apache HBase kümeleri için Hızlandırılmış Yazma İşlemleri özelliği, bulut depolaması kullanmak yerine her bir RegionServer örneğine (çalışan düğümü) premium SSD yönetilen diskler ekler. Sonuç olarak, uygulamalarınız için düşük yazma gecikme süresine ve daha iyi dayanıklılığa sahip olursunuz. Bu özellik hakkında daha fazla [bilgi edinmek için daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Daha iyi performans için Azure Veri Gezgini tablo önbelleği-süre (ilke) gözden geçirin (Önizleme)
-Bu öneri, yapılandırılan önbellek döneminin (ilke) ötesinde çok sayıda sorguya sahip olan Azure Veri Gezgini tablolarını (önbelleğe alma verilerine erişen sorgu yüzdesine göre ilk 10 tabloyu görürsünüz) gösterir. Kümenin performansını geliştirmek için önerilen eylem: Bu tablodaki sorguları, gereken en düşük zaman aralığıyla (tanımlanan ilke dahilinde) sınırlayın. Alternatif olarak, tüm zaman aralığındaki veriler gerekliyse, önbellek süresini önerilen değere yükseltin.
+Bu öneri, yapılandırılmış olan önbelleğe alma süresinden (ilke) daha ötesine bakan çok sayıda sorguya sahip olan Azure Veri Gezgini tablolarını gösterir (Önbellek dışındaki verilere erişen sorgu yüzdesine göre sıralanmış ilk 10 tablo görüntülenir). Kümenin performansını geliştirmek için önerilen eylem: Bu tablodaki sorguları gereken en düşük zaman aralığıyla (tanımlanan ilke içinde) sınırlayın. Alternatif olarak tüm zaman aralığındaki veriler gerekliyse önbellek süresini önerilen değere yükseltin.
 
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL geçici tablo boyutlandırmasını iyileştirerek performansı artırma
-Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları nedeniyle gereksiz g/ç yükünü ortadan kaldırır. Bu, gereksiz disk tabanlı işlemlere ve düşük performansa neden olabilir. Disk tabanlı işlemlerin sayısını azaltmak için 'tmp_table_size' ve 'max_heap_table_size' parametre değerlerini artırmanızı öneririz. [Daha fazla bilgi](https://aka.ms/azure_mysql_tmp_table)
+Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları nedeniyle gereksiz g/ç yükünü ortadan kaldırır. Bu, gereksiz disk tabanlı işlemlere ve düşük performansa neden olabilir. Disk tabanlı işlemlerin sayısını azaltmak için 'tmp_table_size' ve 'max_heap_table_size' parametre değerlerini artırmanızı öneririz. [Daha fazla bilgi edinin](https://aka.ms/azure_mysql_tmp_table)
 
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Düğümler arasında iş yükünü dağıtmak için sunucu grubundaki verileri dağıtın
-Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi](https://go.microsoft.com/fwlink/?linkid=2135201) 
+Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme
 

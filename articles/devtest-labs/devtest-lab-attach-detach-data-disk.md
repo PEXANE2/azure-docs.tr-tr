@@ -3,15 +3,15 @@ title: Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayı
 description: Azure DevTest Labs bir sanal makineye bir veri diski eklemeyi veya kullanımdan çıkarmayı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287571"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653928"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayırma
-[Azure yönetilen diskler](../virtual-machines/windows/managed-disks-overview.md) , sanal makine veri diskleriyle ilişkili depolama hesaplarını yönetir. Bir Kullanıcı bir VM 'ye yeni bir veri diski iliştirir, gereken disk türünü ve boyutunu belirtir ve Azure, diski otomatik olarak oluşturur ve yönetir. Veri diski, VM 'den ayrılabilir ve daha sonra aynı VM 'ye yeniden eklenebilir ya da aynı kullanıcıya ait farklı bir VM 'ye iliştirilebilir.
+[Azure yönetilen diskler](../virtual-machines/managed-disks-overview.md) , sanal makine veri diskleriyle ilişkili depolama hesaplarını yönetir. Bir Kullanıcı bir VM 'ye yeni bir veri diski iliştirir, gereken disk türünü ve boyutunu belirtir ve Azure, diski otomatik olarak oluşturur ve yönetir. Veri diski, VM 'den ayrılabilir ve daha sonra aynı VM 'ye yeniden eklenebilir ya da aynı kullanıcıya ait farklı bir VM 'ye iliştirilebilir.
 
 Bu işlevsellik, her bir sanal makinenin dışında depolama veya yazılım yönetimi için kullanışlıdır. Depolama veya yazılım bir veri diskinde zaten mevcutsa, bu veri diskine sahip olan kullanıcı tarafından sahip olunan herhangi bir VM 'ye kolayca eklenebilir, ayrılabilir ve yeniden eklenebilir.
 

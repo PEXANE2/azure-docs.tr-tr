@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5a2205ec835fb630933dd85b4b0e5846ae864cb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236185"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653265"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Günlük diskini Ultra diske geçir
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Veritabanınızın [tam yedeklemesini](backup-restore.md) doldurun.
 
 VM 'de ultradisk uyumluluğunu etkinleştirdikten sonra Ultra SSD sanal makinenize ekleyin. 
 
-Ultra disk, VM boyutlarının ve bölgelerinin bir alt kümesinde desteklenir. Devam etmeden önce, sanal makinenizin Ultra diski destekleyen bir bölgede, bölgede ve boyutta olduğunu doğrulayın. Azure CLı veya PowerShell kullanarak [VM boyutunu ve bölgesini tespit edebilir ve doğrulayabilirsiniz](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) . 
+Ultra disk, VM boyutlarının ve bölgelerinin bir alt kümesinde desteklenir. Devam etmeden önce, sanal makinenizin Ultra diski destekleyen bir bölgede, bölgede ve boyutta olduğunu doğrulayın. Azure CLı veya PowerShell kullanarak [VM boyutunu ve bölgesini tespit edebilir ve doğrulayabilirsiniz](../../../virtual-machines/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) . 
 
 ### <a name="enable-compatibility"></a>Uyumluluğu etkinleştir
 
@@ -50,7 +50,7 @@ Uyumluluğu etkinleştirmek için şu adımları izleyin:
 
 1. **Ultra disk uyumluluğunu etkinleştirmek**için **Evet** ' i seçin. 
 
-   :::image type="content" source="../../../../includes/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Azure portal ayarlar altında diskler için ek ayarları seçin":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Azure portal ayarlar altında diskler için ek ayarları seçin":::
 
 1. **Kaydet**’i seçin. 
 
@@ -58,7 +58,7 @@ Uyumluluğu etkinleştirmek için şu adımları izleyin:
 
 ### <a name="attach-disk"></a>Disk Ekle
 
-Sanal makinenize bir ultra disk iliştirmek için Azure portal kullanın. Ayrıntılar için bkz. [bir ultra disk iliştirme](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
+Sanal makinenize bir ultra disk iliştirmek için Azure portal kullanın. Ayrıntılar için bkz. [bir ultra disk iliştirme](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
 
 Disk eklendikten sonra, Azure portal kullanarak sanal makineyi bir kez daha başlatın. 
 
@@ -85,7 +85,7 @@ Yeni günlük sürücüsünü kullanmak için SQL Server yapılandırın. Bunu T
 1. Günlük dosyanız için kullanılacak bir klasör (veya birden çok klasör) oluşturun. 
 1. Klasöre sağ tıklayın ve **Özellikler**' i seçin.
 1. **Güvenlik** sekmesinde, SQL Server hizmet hesabına tam denetim erişimi verin. 
-1. Ayarlarınızı kaydetmek için **Tamam ' ı** seçin. 
+1. Ayarlarınızı kaydetmek için **Tamam ' ı**  seçin. 
 1. SQL verilerinin olmasını planladığınız her kök düzeyi klasör için bunu tekrarlayın. 
 
 ### <a name="use-new-log-drive"></a>Yeni günlük sürücüsü kullan 

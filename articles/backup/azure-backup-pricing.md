@@ -3,12 +3,12 @@ title: Azure Backup fiyatlandırması
 description: Azure Backup fiyatlandırmadan bütçeleme maliyetlerini nasıl tahmin edebileceğiniz hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035765"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654540"
 ---
 # <a name="azure-backup-pricing"></a>Azure Backup fiyatlandırması
 
@@ -100,7 +100,7 @@ Azure VM 'lerde çalışan SQL Server 'lar Azure Backup kullanarak yedekleme mal
 
   - Yedekleme Türü
 
-    - Tercih ettiğiniz en etkili ilke haftalık/aylık/yıllık tam yedeklemeler için **günlük farklılıklar** . Azure Backup, tek tıklamayla de farklılıklar aracılığıyla geri yüklenebilir.
+    - Tercih ettiğiniz en etkili ilke haftalık/aylık/yıllık tam yedeklemeler için **günlük farklılıklar** . Azure Backup tek tıklamayla de farklılıklar aracılığıyla geri yüklenebilir.
 
     - Ayrıca günlük/haftalık/aylık/yıllık tam yedeklemeler içeren bir ilke olmasını da tercih edebilirsiniz. Bu seçenek ilk seçenekten biraz daha fazla depolama alanı tüketir.
 
@@ -137,7 +137,7 @@ Azure Backup kullanarak Azure VM 'lerinde çalışan SAP HANA sunucularının ma
   - **% Dalgalanmasını**biliyorsanız, **kendi% seçeneğinizi girin**
 - Yedekleme ilkesini seçin
   - Yedekleme Türü
-    - Tercih ettiğiniz en etkili ilke **haftalık/aylık/yıllık** tam yedeklemeler için **günlük farklılıklar** . Azure Backup, tek tıklamayla de farklılıklar aracılığıyla geri yüklenebilir.
+    - Tercih ettiğiniz en etkili ilke **haftalık/aylık/yıllık** tam yedeklemeler için **günlük farklılıklar** . Azure Backup tek tıklamayla de farklılıklar aracılığıyla geri yüklenebilir.
     - Ayrıca **günlük/haftalık/aylık/yıllık** tam yedeklemeler içeren bir ilke olmasını da tercih edebilirsiniz. Bu seçenek ilk seçenekten biraz daha fazla depolama alanı tüketir.
   - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklenir? (gün) [7-35]
   - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklensin mi? (gün)
@@ -160,7 +160,7 @@ Azure Backup tarafından sunulan [anlık görüntü tabanlı yedekleme çözüm�
 - Birden çok depolama hesabına yayılan dosya paylaşımlarını yedeklemek istiyorsanız, yukarıdaki boyutla dosya paylaşımlarını barındıran depolama hesabı sayısını belirtin.
 
 - Yedeklemek istediğiniz dosya paylaşımlarında beklenen veri dalgalanması miktarı. <br>Dalgalanma, verilerdeki değişiklik miktarına başvurur ve anlık görüntü depolama boyutunu doğrudan etkiler. Örneğin, 200 GB 'lık verilerin yedeklendiği bir dosya paylaşımınız varsa ve her gün 10 GB değişirse, günlük dalgalanma %5 ' tir.
-  - Daha yüksek dalgalanma, her gün dosya paylaşma içeriklerinde bulunan veri miktarının yüksek olduğu ve bu nedenle Artımlı anlık görüntü (yalnızca veri değişikliklerini yakalama) boyutunun de daha fazla olması anlamına gelir.
+  - Daha yüksek dalgalanma, dosya paylaşma içeriklerinde her gün yüksek miktarda veri değişikliği ve bu nedenle Artımlı anlık görüntü (yalnızca veri değişikliklerini yakalama) boyutunun da daha fazla olması anlamına gelir.
   - Düşük (%1), Orta (%3) veya yüksek (%5) seçin dosya paylaşımının özelliklerine ve kullanımına göre.
   - Dosya paylaşımınız için tam **karmaşıklığın%** ' ü biliyorsanız, açılan listeden **kendi% ' ınızı gir** seçeneğini belirleyebilirsiniz. Değerleri belirtin (%) günlük, haftalık, aylık ve yıllık karmaşıklık için.
 

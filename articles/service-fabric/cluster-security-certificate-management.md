@@ -4,12 +4,12 @@ description: X. 509.440 sertifikalarıyla güvenliği sağlanmış bir Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246716"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653673"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric kümelerinde sertifika yönetimi
 
@@ -91,7 +91,7 @@ Bu noktada kasada bir sertifika mevcuttur, tüketim için hazırlanın. Onward:
 Özel anahtarı dahil olmak üzere kasadan, sertifikayı alan ve kümenin ana bilgisayarlarının her birine yükleyen bir varlık olan ' sağlama Aracısı ' ' nı belirttik. (Service Fabric sertifika sağlamadıkları için çağırır.) Bağlamımızda küme, Azure VM 'Leri ve/veya sanal makine ölçek kümeleri koleksiyonunda barındırılacak. Azure 'da, bir kasadan VM/VMSS 'ye bir sertifika sağlamak, yukarıdaki şekilde, sağlama aracısının kasa sahibine göre kasada daha önce ' Al ' izinleri verildiğini varsayarak, aşağıdaki mekanizmalarla elde edilebilir: 
   - geçici: bir operatör sertifikayı kasadan alır (PFX/PKCS #12 veya ped olarak) ve her bir düğüme yüklenir
   - dağıtım sırasında bir sanal makine ölçek kümesi olarak ' gizli ': Işlem hizmeti, işleç adına ilk taraf kimliğini kullanarak, şablon dağıtımı etkinleştirilmiş bir kasadan alınan sertifikaya ve sanal makine ölçek kümesinin her bir düğümüne ([bunun gibi](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)) yüklerse, Bu, yalnızca sürümlenmiş parolaların sağlanmasına izin verir
-  - [Key Vault VM uzantısını](../virtual-machines/extensions/key-vault-windows.md)kullanma; Bu, gözlemlenen sertifikaların düzenli olarak yenilenmesi için, sürüm daha az bildirimleri kullanarak sertifikaların sağlanmasına olanak tanır. Bu durumda, VM/VMSS 'nin, gözlemlenen sertifikaları içeren kasaya erişim izni verilen bir kimlik olan [yönetilen bir kimliğe](../virtual-machines/windows/security-policy.md#managed-identities-for-azure-resources)sahip olması beklenir.
+  - [Key Vault VM uzantısını](../virtual-machines/extensions/key-vault-windows.md)kullanma; Bu, gözlemlenen sertifikaların düzenli olarak yenilenmesi için, sürüm daha az bildirimleri kullanarak sertifikaların sağlanmasına olanak tanır. Bu durumda, VM/VMSS 'nin, gözlemlenen sertifikaları içeren kasaya erişim izni verilen bir kimlik olan [yönetilen bir kimliğe](../virtual-machines/security-policy.md#managed-identities-for-azure-resources)sahip olması beklenir.
 
 Geçici mekanizmanın birden çok nedenden dolayı kullanılması önerilmez, güvenliğin kullanılabilirliğine ve burada açıklanmayacaktır; Ayrıntılar için bkz. [sanal makine ölçek kümelerinde sertifikalara](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)bakın.
 

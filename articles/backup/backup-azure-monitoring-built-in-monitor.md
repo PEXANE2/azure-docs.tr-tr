@@ -4,12 +4,12 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054546"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654132"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -52,7 +52,7 @@ Aşağıdaki senaryolar, hizmet tarafından alertable senaryoları olarak tanım
 - Azure VM yedeklemeleri
 - Azure Dosya yedeklemeleri
 - SQL, SAP HANA gibi Azure iş yükü yedeklemeleri
-- Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 
+- Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
 > [!NOTE]
 > System Center Data Protection Manager (SC-DPM) ve Microsoft Azure Backup sunucusu (MABS) uyarıları burada gösterilmez.
@@ -83,7 +83,7 @@ Uyarı önem derecesine bağlı olarak, uyarılar üç tür halinde tanımlanabi
 ## <a name="notification-for-backup-alerts"></a>Yedekleme uyarıları için bildirim
 
 > [!NOTE]
-> Bildirim yapılandırması yalnızca Azure Portal üzerinden yapılabilir. PS/CLı/REST API/Azure Resource Manager şablon desteği desteklenmez.
+> Bildirimin yapılandırması yalnızca Azure portal aracılığıyla yapılabilir. PS/CLı/REST API/Azure Resource Manager şablon desteği desteklenmez.
 
 Bir uyarı ortaya çıktığında kullanıcılara bildirilir. Azure Backup, e-posta ile yerleşik bir bildirim mekanizması sağlar. Tek tek e-posta adreslerini veya bir uyarı oluşturulduğunda bildirilecek dağıtım listelerini belirtebilir. Ayrıca, her bir uyarı için bildirim almayı veya saatlik bir özette grupları seçip bildirim almayı seçebilirsiniz.
 
@@ -100,7 +100,7 @@ Sıklık bir saatlik Özet olarak ayarlandıysa ve bir süre içinde bir uyarı 
 
 ## <a name="inactivating-alerts"></a>Uyarıları etkinleştirme
 
-Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesine tıklayabilirsiniz. Bu, en üstteki ' devre dışı ' düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğmeye tıkladığınızda, uyarının durumu ' etkin değil ' olarak değişir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp ' devre dışı bırak ' seçeneğini belirleyerek bir uyarıyı devre dışı bırakabilirsiniz.
+Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesini seçebilirsiniz. Bu, en üstteki **devre dışı bırak** düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğmeye tıklamak, uyarının durumunu **etkin değil**olarak değiştirir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp **devre dışı bırak**' ı seçerek bir uyarıyı devre dışı bırakabilirsiniz.
 
 ![RS Kasası uyarısı intivasyonu](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

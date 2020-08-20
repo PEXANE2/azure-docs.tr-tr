@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 072b0e3bcf4da8e2c71082a549d42d105c06ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659809"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654438"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Bir Linux sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
-Yönetilmeyen diskler kullanan mevcut Linux sanal makineleriniz (VM) varsa, VM 'Leri [Azure yönetilen diskleri](../linux/managed-disks-overview.md)kullanacak şekilde dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
+Yönetilmeyen diskler kullanan mevcut Linux sanal makineleriniz (VM) varsa, VM 'Leri [Azure yönetilen diskleri](../managed-disks-overview.md)kullanacak şekilde dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
 
 Bu makalede, Azure CLı kullanarak VM 'Leri nasıl dönüştürebileceğiniz gösterilmektedir. Yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). 
 
@@ -104,4 +104,4 @@ Geçiş tamamlandıktan sonra VM durdurulur ve yeniden başlatılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Depolama seçenekleri hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../windows/managed-disks-overview.md).
+Depolama seçenekleri hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../managed-disks-overview.md).

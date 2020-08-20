@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504322"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653537"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD oluşturma sırasında sık karşılaşılan sorunlar
 
@@ -20,7 +20,7 @@ Bu sık sorulan sorular (SSS), Azure sanal makine teklifiniz için bir sanal sab
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Premium depolamada bulunan bir VHD 'yi kullanarak Azure portal bir sanal makine oluşturmak Nasıl yaparım?.
 
-Azure Marketi Şu anda yönetilen depolama veya Azure Premium Depolama 'daki görüntülerden sanal makine teklifleri oluşturmayı desteklemez. Ayrıntılar için bkz. [Azure yönetilen disklere genel bakış](../../virtual-machines/windows/managed-disks-overview.md).
+Azure Marketi Şu anda yönetilen depolama veya Azure Premium Depolama 'daki görüntülerden sanal makine teklifleri oluşturmayı desteklemez. Ayrıntılar için bkz. [Azure yönetilen disklere genel bakış](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Teklifler için 2. nesil VM 'Leri kullanabilir miyim?
 
@@ -28,7 +28,7 @@ Hayır, yalnızca nesil 1 VHD 'ler desteklenir. Ancak, 2. nesil VM 'Lerin deste�
 
 ## <a name="how-do-i-change-the-name-of-the-host"></a>Nasıl yaparım? konağın adı değiştirilsin mi?
 
-Yapamazsınız. Bir VM oluşturulduktan sonra kullanıcılar (sahipler dahil) ana bilgisayar adını güncelleştiremez.
+Yönetemezsiniz. Bir VM oluşturulduktan sonra kullanıcılar (sahipler dahil) ana bilgisayar adını güncelleştiremez.
 
 ## <a name="how-do-i-reset-the-remote-desktop-service-or-its-sign-in-password"></a>Uzak Masaüstü hizmetinin veya oturum açma parolasının Nasıl yaparım? sıfırlansın mı?
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf483d5a9b6a75ccad48908701d89d1c40206208
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: efd3f0f19325bdaccf98d10306c90488c78b3de7
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759878"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653775"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -377,7 +377,7 @@ ms.locfileid: "87759878"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -449,12 +449,12 @@ Bu makalede, Azure Resource Manager dağıtım modelini kullanarak Azure 'da yü
 
 Dağıtım ve yapılandırmayı basitleştirmek için, bu makalede SAP üç katmanlı yüksek kullanılabilirliğe sahip Kaynak Yöneticisi şablonları kullanırız. Şablonlar, yüksek kullanılabilirliğe sahip bir SAP sistemi için ihtiyaç duyduğunuz tüm altyapının dağıtımını otomatik hale getirir. Altyapı Ayrıca SAP sisteminizin performans standardı (SAPS) boyutunu destekler.
 
-## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Kaynakları
+## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Kaynakları
 Başlamadan önce, aşağıdaki bölümlerde açıklanan önkoşulları karşıladığınızdan emin olun. Ayrıca, [kaynaklar][sap-ha-guide-2] bölümünde listelenen tüm kaynakları denetlediğinizden emin olun.
 
 Bu makalede, [üç KATMANLı SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/)için Azure Resource Manager şablonlar kullanırız. Şablonlara faydalı bir genel bakış için bkz. [SAP Azure Resource Manager şablonları](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap).
 
-## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Kaynakların
+## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Kaynakların
 Bu makaleler Azure 'da SAP dağıtımlarını kapsar:
 
 * [SAP NetWeaver için Azure sanal makineleri planlama ve uygulama][planning-guide]
@@ -487,10 +487,10 @@ Azure Resource Manager ve klasik Azure dağıtım modelleri aşağıdaki alanlar
 - Azure Kaynak grubunda Azure iç yük dengeleyici bağımlılığı
 - SAP çoklu SID senaryoları desteği
 
-### <a name="resource-groups"></a><a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Kaynak grupları
+### <a name="resource-groups"></a><a name="f76af273-1993-4d83-b12d-65deeae23686"></a> Kaynak grupları
 Azure Resource Manager, Azure aboneliğinizdeki tüm uygulama kaynaklarını yönetmek için kaynak gruplarını kullanabilirsiniz. Tümleşik bir yaklaşım olan bir kaynak grubunda, tüm kaynaklar aynı yaşam döngüsüne sahiptir. Örneğin, tüm kaynaklar aynı anda oluşturulur ve aynı zamanda silinir. [Kaynak grupları](../../../azure-resource-manager/management/overview.md#resource-groups) hakkında daha fazla bilgi edinin.
 
-### <a name="azure-internal-load-balancer-dependency-on-the-azure-resource-group"></a><a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure Kaynak grubunda Azure iç yük dengeleyici bağımlılığı
+### <a name="azure-internal-load-balancer-dependency-on-the-azure-resource-group"></a><a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Azure Kaynak grubunda Azure iç yük dengeleyici bağımlılığı
 
 Klasik Azure dağıtım modelinde, Azure iç yük dengeleyici (Azure Load Balancer hizmeti) ve bulut hizmeti grubu arasında bir bağımlılık vardır. Her iç yük dengeleyicinin bir bulut hizmeti grubu olması gerekir.
 
@@ -507,12 +507,12 @@ Klasik Azure dağıtım modelini kullanmak için Azure 'da SAP NetWeaver 'de aç
 >
 >
 
-## <a name="windows-server-failover-clustering"></a><a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Windows Server Yük Devretme Kümelemesi
+## <a name="windows-server-failover-clustering"></a><a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a> Windows Server Yük Devretme Kümelemesi
 Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirliğe sahip SAP Ass/SCS yüklemesi ve DBMS 'nin temelidir.
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğüm) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi, uygulamalar ve hizmetler sağlamak üzere sağlıklı bir kümeyi sürdürirken oluşabilecek hata sayısını hesaplar. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-### <a name="quorum-modes"></a><a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>Çekirdek modları
+### <a name="quorum-modes"></a><a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a> Çekirdek modları
 Windows Server Yük Devretme Kümelemesi kullandığınızda dört çekirdek modu arasından seçim yapabilirsiniz:
 
 * **Düğüm çoğunluğu**. Kümenin her bir düğümü oylayabilir. Küme yalnızca oyları olan, yani oyından fazla olacak şekilde çalışır. Düzensiz sayıda düğüme sahip kümeler için bu seçeneği öneririz. Örneğin, yedi düğümlü bir küme içindeki üç düğüm başarısız olabilir ve küme stilleri büyük bir çoğunluğuna ulaşır ve çalışmaya devam eder.  
@@ -520,7 +520,7 @@ Windows Server Yük Devretme Kümelemesi kullandığınızda dört çekirdek mod
 * **Düğüm ve dosya paylaşımının çoğunluğu**. Her düğüm ve yönetici tarafından oluşturulan bir dosya paylaşımının (bir dosya paylaşma tanığı), düğümlerin ve dosya paylaşımının kullanılabilir ve iletişim içinde olup olmamasına bakılmaksızın, bu, belirlenen bir dosya paylaşma (dosya paylaşma tanığı). Küme yalnızca oylarının büyük bir çoğunluğuna sahip olur, yani oyları yarıya kadar büyüktür. Bu mod, çift sayıda düğüm içeren bir küme ortamında mantıklı olur. Düğüm ve disk çoğunluğu moduna benzerdir, ancak tanık disk yerine bir tanık dosya paylaşma kullanır. Bu modun uygulanması kolaydır, ancak dosya paylaşımının kendisi yüksek oranda kullanılabilir değilse, tek hata noktası olabilir.
 * **Çoğunluk yok: yalnızca disk**. Bir düğüm varsa ve küme depolamadaki belirli bir diskle iletişim kutusunda kümenin bir çekirdeği vardır. Yalnızca bu diskle iletişim de olan düğümler kümeye katılabilir. Bu modu kullanmanızı öneririz.
 
-## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Şirket içi Windows Server Yük Devretme Kümelemesi
+## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a> Şirket içi Windows Server Yük Devretme Kümelemesi
 Şekil 1 ' de iki düğümün kümesi gösterilmektedir. Düğümler arasındaki ağ bağlantısı başarısız olursa ve her iki düğüm de çalışır duruma çıkarsa, bir çekirdek disk veya dosya paylaşımında kümenin uygulama ve hizmetlerini sağlamaya devam edecek olan düğüm belirlenir. Çekirdek diskine veya dosya paylaşıma erişimi olan düğüm, hizmetlerin devam etmesini sağlayan düğümdür.
 
 Bu örnek iki düğümlü bir küme kullandığından, düğüm ve dosya paylaşma çoğunluğu çekirdek modunu kullanırız. Düğüm ve disk çoğunluğu de geçerli bir seçenektir. Bir üretim ortamında, bir çekirdek disk kullanmanızı öneririz. Ağ ve depolama sistemi teknolojisini kullanarak yüksek oranda kullanılabilir hale getirebilirsiniz.
@@ -529,7 +529,7 @@ Bu örnek iki düğümlü bir küme kullandığından, düğüm ve dosya paylaş
 
 _**Şekil 1:** Azure 'da SAP yoks/SCS için Windows Server Yük Devretme Kümelemesi yapılandırması örneği_
 
-### <a name="shared-storage"></a><a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a>Paylaşılan depolama alanı
+### <a name="shared-storage"></a><a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a> Paylaşılan depolama alanı
 Şekil 1 ' de iki düğümlü bir paylaşılan depolama kümesi de gösterilmektedir. Şirket içi paylaşılan depolama kümesinde, kümedeki tüm düğümler paylaşılan depolamayı algılar. Kilitleme mekanizması, verilerin bozulmasını önler. Tüm düğümler, başka bir düğümün başarısız olup olmadığını algılayabilir. Bir düğüm başarısız olursa, kalan düğüm depolama kaynaklarının sahipliğini alır ve hizmetlerin kullanılabilirliğini sağlar.
 
 > [!NOTE]
@@ -537,7 +537,7 @@ _**Şekil 1:** Azure 'da SAP yoks/SCS için Windows Server Yük Devretme Kümele
 >
 >
 
-### <a name="networking-and-name-resolution"></a><a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a>Ağ ve ad çözümlemesi
+### <a name="networking-and-name-resolution"></a><a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a> Ağ ve ad çözümlemesi
 İstemci bilgisayarlar, kümeye bir sanal IP adresi ve DNS sunucusunun sağladığı bir sanal ana bilgisayar adı üzerinden ulaşabilirler. Şirket içi düğümler ve DNS sunucusu birden çok IP adresini işleyebilir.
 
 Tipik bir kurulumda iki veya daha fazla ağ bağlantısı kullanırsınız:
@@ -546,7 +546,7 @@ Tipik bir kurulumda iki veya daha fazla ağ bağlantısı kullanırsınız:
 * Sinyal için bir küme iç ağ bağlantısı
 * İstemcilerin kümeye bağlanmak için kullandığı ortak ağ
 
-## <a name="windows-server-failover-clustering-in-azure"></a><a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Azure 'da Windows Server Yük Devretme Kümelemesi
+## <a name="windows-server-failover-clustering-in-azure"></a><a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a> Azure 'da Windows Server Yük Devretme Kümelemesi
 Çıplak veya özel bulut dağıtımlarıyla karşılaştırıldığında, Azure sanal makineleri, Windows Server Yük Devretme Kümelemesi 'ni yapılandırmak için ek adımlar gerektirir. Paylaşılan bir küme diski oluştururken, SAP ASCS/SCS örneği için birkaç IP adresi ve sanal konak adı ayarlamanız gerekir.
 
 Bu makalede, Azure 'da SAP yüksek kullanılabilirlik Merkezi Hizmetleri kümesi oluşturmak için gereken temel kavramları ve ek adımları tartıştık. Üçüncü taraf aracı SIOS veri ve Azure iç yük dengeleyicinin nasıl yapılandırılacağını göstereceğiz. Bu araçları, Azure 'da dosya paylaşma tanığı olan bir Windows Yük devretme kümesi oluşturmak için kullanabilirsiniz.
@@ -555,7 +555,7 @@ Bu makalede, Azure 'da SAP yüksek kullanılabilirlik Merkezi Hizmetleri kümesi
 
 _**Şekil 2:** Azure 'da paylaşılan disk olmadan Windows Server Yük Devretme Kümelemesi yapılandırması_
 
-### <a name="shared-disk-in-azure-with-sios-datakeeper"></a><a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Azure 'da SIOS Dataman ile paylaşılan disk
+### <a name="shared-disk-in-azure-with-sios-datakeeper"></a><a name="1a464091-922b-48d7-9d08-7cecf757f341"></a> Azure 'da SIOS Dataman ile paylaşılan disk
 Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği için küme paylaşılan depolama gerekir. Azure, 2016 Eylül itibariyle paylaşılan depolama kümesi oluşturmak için kullanabileceğiniz paylaşılan depolama alanı sunmaz. Küme paylaşılan depolama alanını taklit eden yansıtılmış bir depolama alanı oluşturmak için üçüncü taraf yazılım SIOS Dataman kümesi sürümünü kullanabilirsiniz. SIOS çözümü gerçek zamanlı zaman uyumlu veri çoğaltması sağlar. Bir küme için paylaşılan disk kaynağı oluşturma işlemi şu şekilde yapılır:
 
 1. Bir Windows küme yapılandırmasındaki sanal makinelerin (VM) her birine ek bir Azure sanal sabit diski (VHD) ekleyin.
@@ -573,13 +573,13 @@ _**Şekil 3:** Azure 'da SIOS Dataman ile Windows Server Yük Devretme Kümeleme
 >
 >
 
-### <a name="name-resolution-in-azure"></a><a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a>Azure 'da ad çözümlemesi
+### <a name="name-resolution-in-azure"></a><a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a> Azure 'da ad çözümlemesi
 Azure bulut platformu, kayan IP adresleri gibi sanal IP adreslerini yapılandırma seçeneği sunmaz. Bulutta küme kaynağına ulaşmak üzere bir sanal IP adresi ayarlamak için alternatif bir çözüme ihtiyacınız vardır.
 Azure 'da Azure Load Balancer hizmetinde bir iç yük dengeleyici vardır. İç yük dengeleyici ile istemciler küme sanal IP adresi üzerinden kümeye ulaşabilirler.
 İç yük dengeleyiciyi, küme düğümlerini içeren kaynak grubunda dağıtmanız gerekir. Ardından, tüm gerekli bağlantı noktası iletme kurallarını iç yük dengeleyicinin araştırma bağlantı noktalarıyla yapılandırın.
 İstemciler sanal ana bilgisayar adı aracılığıyla bağlanabilir. DNS sunucusu, küme IP adresini çözümler ve iç yük dengeleyici, kümenin etkin düğümüne bağlantı noktası iletmeyi işler.
 
-## <a name="sap-netweaver-high-availability-in-azure-infrastructure-as-a-service-iaas"></a><a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>Azure hizmet olarak altyapı (IaaS) içinde SAP NetWeaver yüksek kullanılabilirliği
+## <a name="sap-netweaver-high-availability-in-azure-infrastructure-as-a-service-iaas"></a><a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a> Azure hizmet olarak altyapı (IaaS) içinde SAP NetWeaver yüksek kullanılabilirliği
 SAP yazılım bileşenleri gibi SAP uygulaması yüksek kullanılabilirlik elde etmek için aşağıdaki bileşenleri korumanız gerekir:
 
 * SAP uygulama sunucusu örneği
@@ -588,7 +588,7 @@ SAP yazılım bileşenleri gibi SAP uygulaması yüksek kullanılabilirlik elde 
 
 Yüksek kullanılabilirlik senaryolarında SAP bileşenlerini koruma hakkında daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama](planning-guide.md).
 
-### <a name="high-availability-sap-application-server"></a><a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a>Yüksek kullanılabilirliğe sahip SAP uygulama sunucusu
+### <a name="high-availability-sap-application-server"></a><a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a> Yüksek kullanılabilirliğe sahip SAP uygulama sunucusu
 SAP uygulama sunucusu ve iletişim örnekleri için genellikle belirli bir yüksek kullanılabilirlik çözümüne ihtiyacınız yoktur. Yedeklilik ile yüksek kullanılabilirlik elde edersiniz ve Azure sanal makinelerinin farklı örneklerinde birden fazla iletişim kutusu örneği yapılandıracaksınız. İki Azure sanal makine örneğinde yüklü en az iki SAP uygulaması örneği olmalıdır.
 
 ![Şekil 4: yüksek kullanılabilirliğe sahip SAP uygulama sunucusu][sap-ha-guide-figure-2000]
@@ -604,14 +604,14 @@ SAP uygulama sunucusu örneklerini barındıran tüm sanal makineleri aynı Azur
 
 Azure depolama hesabı olası bir tek hata noktası olduğundan, en az iki sanal makinenin dağıtıldığı en az iki Azure depolama hesabı olması önemlidir. İdeal bir kurulumda, SAP iletişim kutusu örneği çalıştıran her sanal makinenin diskleri farklı bir depolama hesabına dağıtılır.
 
-### <a name="high-availability-sap-ascsscs-instance"></a><a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği
+### <a name="high-availability-sap-ascsscs-instance"></a><a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a> Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği
 Şekil 5, yüksek kullanılabilirliğe sahip SAP yoks/SCS örneğine bir örnektir.
 
 ![Şekil 5: yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği][sap-ha-guide-figure-2001]
 
 _**Şekil 5:** Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği_
 
-#### <a name="sap-ascsscs-instance-high-availability-with-windows-server-failover-clustering-in-azure"></a><a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>Azure 'da Windows Server Yük Devretme Kümelemesi ile SAP ASCS/SCS örneği yüksek kullanılabilirliği
+#### <a name="sap-ascsscs-instance-high-availability-with-windows-server-failover-clustering-in-azure"></a><a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a> Azure 'da Windows Server Yük Devretme Kümelemesi ile SAP ASCS/SCS örneği yüksek kullanılabilirliği
 Çıplak veya özel bulut dağıtımlarıyla karşılaştırıldığında, Azure sanal makineleri, Windows Server Yük Devretme Kümelemesi 'ni yapılandırmak için ek adımlar gerektirir. Bir Windows Yük devretme kümesi oluşturmak için, bir SAP ASCS/SCS örneği Kümelemeye yönelik bir paylaşılan küme diskine, birkaç IP adresine, birkaç sanal konak adına ve bir Azure iç yük dengeleyicisine sahip olmanız gerekir. Bu konuda makalenin ilerleyen bölümlerinde daha ayrıntılı olarak ele alınmaktadır.
 
 ![Şekil 6: Azure 'da, SIOS Dataman kullanarak SAP yoks/SCS yapılandırması için Windows Server Yük Devretme Kümelemesi][sap-ha-guide-figure-1002]
@@ -630,7 +630,7 @@ Azure 'da Azure Resource Manager dağıtım modelini kullanarak kümeleme SQL Se
 * [Kaynak Yöneticisi kullanarak Azure sanal makinelerinde Always on kullanılabilirlik grubunu el ile yapılandırma][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
 * [Azure 'da Always on kullanılabilirlik grubu için bir Azure iç yük dengeleyici yapılandırma][virtual-machines-windows-portal-sql-alwayson-int-listener]
 
-## <a name="end-to-end-high-availability-deployment-scenarios"></a><a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a>Uçtan uca yüksek kullanılabilirliğe sahip dağıtım senaryoları
+## <a name="end-to-end-high-availability-deployment-scenarios"></a><a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a> Uçtan uca yüksek kullanılabilirliğe sahip dağıtım senaryoları
 
 ### <a name="deployment-scenario-using-architectural-template-1"></a>Mimari Şablon 1 kullanarak dağıtım senaryosu
 
@@ -668,7 +668,7 @@ _**Şekil 9:** SAP yüksek kullanılabilirliğe sahip mimari Şablon 2, yoks/SCS
 
 _**Şekil 10:** Farklı yoks/SCS örnekleri için adanmış bir küme ile SAP yüksek kullanılabilirliğe sahip mimari Şablon 3_
 
-## <a name="prepare-the-infrastructure"></a><a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>Altyapıyı hazırlama
+## <a name="prepare-the-infrastructure"></a><a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a> Altyapıyı hazırlama
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Altyapıyı mimari Şablon 1 için hazırlama
 SAP için Azure Resource Manager şablonları, gerekli kaynakların dağıtımını basitleştirmeye yardımcı olur.
@@ -720,7 +720,7 @@ _**Şekil 11:** SAP yüksek kullanılabilirlik Azure Resource Manager parametrel
 >
 >
 
-### <a name="deploy-virtual-machines-with-corporate-network-connectivity-cross-premises-to-use-in-production"></a><a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Üretimde kullanmak üzere kurumsal ağ bağlantısı (şirketler arası) ile sanal makineler dağıtma
+### <a name="deploy-virtual-machines-with-corporate-network-connectivity-cross-premises-to-use-in-production"></a><a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> Üretimde kullanmak üzere kurumsal ağ bağlantısı (şirketler arası) ile sanal makineler dağıtma
 Üretim SAP sistemlerinde Azure sanal makinelerini Azure siteden siteye VPN veya Azure ExpressRoute kullanarak kurumsal ağ bağlantısı ile dağıtın.
 
 > [!NOTE]
@@ -749,7 +749,7 @@ _**Şekil 11:** SAP yüksek kullanılabilirlik Azure Resource Manager parametrel
    /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
    ```
 
-### <a name="deploy-cloud-only-sap-instances-for-test-and-demo"></a><a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>Test ve tanıtım için yalnızca bulutta SAP örnekleri dağıtın
+### <a name="deploy-cloud-only-sap-instances-for-test-and-demo"></a><a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> Test ve tanıtım için yalnızca bulutta SAP örnekleri dağıtın
 Yüksek kullanılabilirlik SAP sisteminizi yalnızca bulut dağıtım modelinde dağıtabilirsiniz. Bu tür bir dağıtım öncelikle tanıtım ve test kullanım durumları için yararlıdır. Üretim kullanım örnekleri için uygun değildir.
 
 - Azure portal, **Parametreler** dikey penceresinde, **Neworexistingsubnet** kutusunda **Yeni**' yi seçin. **SubnetID** alanını boş bırakın.
@@ -785,7 +785,7 @@ Yeni bir çoklu SID kümesi oluşturmak için aşağıdaki üç şablonu dağıt
 
 Aşağıdaki bölümlerde, şablonlarda sağlamanız gereken şablonlar ve parametreler hakkında daha fazla ayrıntı verilmektedir.
 
-#### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a>YOKS/SCS şablonu
+#### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a> YOKS/SCS şablonu
 
 YOKS/SCS şablonu, birden fazla ASCS/SCS örneğini barındıran bir Windows Server yük devretme kümesi oluşturmak için kullanabileceğiniz iki sanal makine dağıtır.
 
@@ -820,7 +820,7 @@ Yük dengeleyici, aşağıdaki araştırma bağlantı noktalarını kullanacak �
 - YOKS/SCS iç yük dengeleyici araştırma bağlantı noktası: 620x0
 - ERS iç yük dengeleyici araştırma bağlantı noktası (yalnızca Linux): 621x2
 
-#### <a name="database-template"></a><a name="database-template"></a>Veritabanı şablonu
+#### <a name="database-template"></a><a name="database-template"></a> Veritabanı şablonu
 
 Veritabanı şablonu, bir SAP sistemine yönelik ilişkisel veritabanı yönetim sistemini (RDBMS) yüklemek için kullanabileceğiniz bir veya iki sanal makine dağıtır. Örneğin, beş SAP sistemi için bir ASCS/SCS şablonu dağıtırsanız, bu şablonu beş kez dağıtmanız gerekir.
 
@@ -837,7 +837,7 @@ Veritabanı çoklu SID şablonunu ayarlamak için, [veritabanı çoklu SID şabl
 - **Yönetici Kullanıcı adı ve yönetici parolası**. Makinede oturum açmak için kullanılabilecek yeni bir kullanıcı oluşturun.
 - **Alt ağ kimliği**. ASCS/SCS şablonunun dağıtımı sırasında kullandığınız alt ağın KIMLIĞINI veya Ass/SCS şablon dağıtımının bir parçası olarak oluşturulan alt ağın KIMLIĞINI girin.
 
-#### <a name="application-servers-template"></a><a name="application-servers-template"></a>Uygulama sunucuları şablonu
+#### <a name="application-servers-template"></a><a name="application-servers-template"></a> Uygulama sunucuları şablonu
 
 Uygulama sunucuları şablonu, bir SAP sistemi için SAP uygulama sunucusu örnekleri olarak kullanılabilecek iki veya daha fazla sanal makine dağıtır. Örneğin, beş SAP sistemi için bir ASCS/SCS şablonu dağıtırsanız, bu şablonu beş kez dağıtmanız gerekir.
 
@@ -851,7 +851,7 @@ Uygulama sunucuları Multi-SID şablonunu ayarlamak için, [uygulama sunucuları
   -  **Alt ağ kimliği**. ASCS/SCS şablonunun dağıtımı sırasında kullandığınız alt ağın KIMLIĞINI veya Ass/SCS şablon dağıtımının bir parçası olarak oluşturulan alt ağın KIMLIĞINI girin.
 
 
-### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure sanal ağı
+### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure sanal ağı
 Örneğimizde, Azure sanal ağının adres alanı 10.0.0.0/16 ' dır. Adres aralığı 10.0.0.0/24 olan **alt ağ**adlı bir alt ağ vardır. Tüm sanal makineler ve iç yük dengeleyiciler bu sanal ağda dağıtılır.
 
 > [!IMPORTANT]
@@ -859,7 +859,7 @@ Uygulama sunucuları Multi-SID şablonunu ayarlamak için, [uygulama sunucuları
 >
 >
 
-### <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>DNS IP adresleri
+### <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a> DNS IP adresleri
 
 Gerekli DNS IP adreslerini ayarlamak için aşağıdaki adımları uygulayın.
 
@@ -885,7 +885,7 @@ Gerekli DNS IP adreslerini ayarlamak için aşağıdaki adımları uygulayın.
 | İlk DNS sunucusu |domcontenr-0 |PR1-NIC-domcontenr-0 |10.0.0.10 |
 | İkinci DNS sunucusu |domcontenr-1 |PR1-NIC-domcontenr-1 |10.0.0.11 |
 
-### <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>SAP ASCS/SCS kümelenmiş örneği ve DBMS kümelenmiş örneği için ana bilgisayar adları ve statik IP adresleri
+### <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> SAP ASCS/SCS kümelenmiş örneği ve DBMS kümelenmiş örneği için ana bilgisayar adları ve statik IP adresleri
 
 Şirket içi dağıtım için, bu ayrılmış ana bilgisayar adlarına ve IP adreslerine ihtiyacınız vardır:
 
@@ -899,7 +899,7 @@ Kümeyi oluşturduğunuzda, **PR1-ascs-Vir** ve **PR1-DBMS-Vir** sanal ana bilgi
 
 Diğer iki sanal ana bilgisayar adını, **PR1-ascs-SAP** ve **PR1-DBMS-SAP**ve DNS sunucusunda ilişkili IP adreslerini el ile oluşturabilirsiniz. Kümelenmiş SAP ASCS/SCS örneği ve kümelenmiş DBMS örneği bu kaynakları kullanır. Bunun nasıl yapılacağı hakkında bilgi için bkz. [KÜMELENMIŞ SAP yoks/SCS örneği için sanal konak adı oluşturma][sap-ha-guide-9.1.1].
 
-### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>SAP sanal makineleri için statik IP adresleri ayarlama
+### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> SAP sanal makineleri için statik IP adresleri ayarlama
 Kümenizde kullanmak üzere sanal makineleri dağıttıktan sonra, tüm sanal makineler için statik IP adresleri ayarlamanız gerekir. Bunu, Konuk işletim sisteminde değil, Azure sanal ağ yapılandırmasında yapın.
 
 1. Azure Portal, **kaynak grubu**  >  **ağ kartı**  >  **ayarları**  >  **IP adresi**' ni seçin.
@@ -929,7 +929,7 @@ Kümenizde kullanmak üzere sanal makineleri dağıttıktan sonra, tüm sanal ma
 | DBMS örneği için ilk küme düğümü |PR1-DB-0 |PR1-NIC-DB-0 |10.0.0.30 |
 | DBMS örneği için ikinci küme düğümü |PR1-DB-1 |PR1-NIC-DB-1 |10.0.0.31 |
 
-### <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Azure iç yük dengeleyici için statik IP adresi ayarlama
+### <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a> Azure iç yük dengeleyici için statik IP adresi ayarlama
 
 SAP Azure Resource Manager şablonu, SAP ASCS/SCS örneği kümesi ve DBMS kümesi için kullanılan bir Azure iç yük dengeleyici oluşturur.
 
@@ -957,7 +957,7 @@ Azure iç yük dengeleyici için bir statik IP adresi ayarlamak için:
 | SAP DBMS iç yük dengeleyici |PR1-lb-DBMS |10.0.0.33 |
 
 
-### <a name="default-ascsscs-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Azure iç yük dengeleyici için varsayılan yoks/SCS Yük Dengeleme kuralları
+### <a name="default-ascsscs-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a> Azure iç yük dengeleyici için varsayılan yoks/SCS Yük Dengeleme kuralları
 
 SAP Azure Resource Manager şablonu, ihtiyacınız olan bağlantı noktalarını oluşturur:
 * Varsayılan örnek numarası **00** olan BIR ABAP Ass örneği
@@ -1009,7 +1009,7 @@ _**Şekil 15:** Azure iç yük dengeleyici için varsayılan yoks/SCS Yük Denge
 
 Yük dengeleyici **PR1-lb-DBMS** IP ADRESINI, DBMS örneğinin sanal ana BILGISAYAR adının IP adresine ayarlayın.
 
-### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>Azure iç yük dengeleyici için ASCS/SCS varsayılan Yük Dengeleme kurallarını değiştirme
+### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure iç yük dengeleyici için ASCS/SCS varsayılan Yük Dengeleme kurallarını değiştirme
 
 SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, bağlantı noktalarının adlarını ve değerlerini varsayılan değerlerle değiştirmeniz gerekir.
 
@@ -1028,7 +1028,7 @@ SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, ba
 
    _**Şekil 16:** Azure iç yük dengeleyici için ASCS/SCS varsayılan Yük Dengeleme kurallarını değiştirme_
 
-### <a name="add-windows-virtual-machines-to-the-domain"></a><a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Windows sanal makinelerini etki alanına ekleme
+### <a name="add-windows-virtual-machines-to-the-domain"></a><a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> Windows sanal makinelerini etki alanına ekleme
 
 Sanal makinelere statik bir IP adresi atadıktan sonra, sanal makineleri etki alanına ekleyin.
 
@@ -1036,7 +1036,7 @@ Sanal makinelere statik bir IP adresi atadıktan sonra, sanal makineleri etki al
 
 _**Şekil 17:** Bir etki alanına sanal makine ekleme_
 
-### <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme
+### <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme
 
 Azure Load Balancer, bağlantılar, belirlenen süre boyunca boşta kaldığında bağlantıları kapatan iç yük dengeleyiciye sahiptir (boşta zaman aşımı). İletişim örneklerinde SAP iş işlemleri, ilk sıraya alma/sıradan çıkarma isteğinin gönderilmesi gerektiği anda SAP sıraya alma işlemine bağlantılar açar. Bu bağlantılar genellikle iş süreci veya sıraya alma işlemi yeniden başlatılana kadar kurulmaya devam eder. Ancak, bağlantı ayarlanan süre boyunca boşta kalırsa, Azure iç yük dengeleyici bağlantıları kapatır. Bu bir sorun değildir çünkü SAP iş işlemi, artık mevcut değilse sıraya alma işlemiyle bağlantıyı yeniden oluşturur. Bu etkinlikler, SAP işlemlerinin geliştirici izlemelerinde belgelenmiştir, ancak bu izlemelerde büyük miktarda ekstra içerik oluşturur. TCP/IP `KeepAliveTime` ve `KeepAliveInterval` her iki küme düğümünde de değişiklik yapmak iyi bir fikirdir. Bu değişiklikleri, makalenin ilerleyen kısımlarında açıklanan SAP profili parametreleriyle TCP/IP parametrelerinde birleştirin.
 
@@ -1064,14 +1064,14 @@ _**Tablo 4:** İkinci TCP/IP parametresini değiştirme_
 
 **Değişiklikleri uygulamak için her iki küme düğümünü yeniden başlatın**.
 
-### <a name="set-up-a-windows-server-failover-clustering-cluster-for-an-sap-ascsscs-instance"></a><a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>SAP ASCS/SCS örneği için Windows Server Yük Devretme Kümelemesi kümesi ayarlama
+### <a name="set-up-a-windows-server-failover-clustering-cluster-for-an-sap-ascsscs-instance"></a><a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a> SAP ASCS/SCS örneği için Windows Server Yük Devretme Kümelemesi kümesi ayarlama
 
 SAP yoks/SCS örneği için Windows Server Yük Devretme Kümelemesi kümesi ayarlamak şu görevleri içerir:
 
 - Küme düğümlerini bir küme yapılandırmasında toplama
 - Küme dosya paylaşma tanığını yapılandırma
 
-#### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>Küme düğümlerini bir küme yapılandırmasında toplayın
+#### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> Küme düğümlerini bir küme yapılandırmasında toplayın
 
 1. Rol ve Özellik Ekleme Sihirbazı 'nda, her iki küme düğümüne yük devretme kümelemesi ekleyin.
 2. Yük Devretme Kümesi Yöneticisi kullanarak yük devretme kümesini ayarlayın. Yük Devretme Kümesi Yöneticisi, **küme oluştur**' u seçin ve ardından yalnızca ilk kümenin adını, A düğümünü ekleyin. İkinci düğümü henüz eklemeyin; ikinci düğümü sonraki bir adımda ekleyeceksiniz.
@@ -1150,14 +1150,14 @@ SAP yoks/SCS örneği için Windows Server Yük Devretme Kümelemesi kümesi aya
    _**Şekil 29:** Disk çekirdeği hakkındaki uyarıları yoksay_
 
 
-#### <a name="configure-a-cluster-file-share-witness"></a><a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Küme dosyası paylaşma tanığını yapılandırma
+#### <a name="configure-a-cluster-file-share-witness"></a><a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> Küme dosyası paylaşma tanığını yapılandırma
 
 Küme dosya paylaşımının tanığını yapılandırmak şu görevleri içerir:
 
 - Dosya paylaşma oluşturma
 - Yük Devretme Kümesi Yöneticisi 'de dosya paylaşma tanık çekirdeğini ayarlama
 
-##### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>Dosya paylaşma oluşturma
+##### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> Dosya paylaşma oluşturma
 
 1. Çekirdek disk yerine bir dosya paylaşma tanığı seçin. SIOS Dataman bu seçeneği destekler.
 
@@ -1196,7 +1196,7 @@ Küme dosya paylaşımının tanığını yapılandırmak şu görevleri içerir
 
    _**Şekil 33:** Dosya paylaşımında küme adı nesnesinin güvenlik özniteliklerini ayarlama_
 
-##### <a name="set-the-file-share-witness-quorum-in-failover-cluster-manager"></a><a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>Yük Devretme Kümesi Yöneticisi 'de dosya paylaşma tanık çekirdeğini ayarlama
+##### <a name="set-the-file-share-witness-quorum-in-failover-cluster-manager"></a><a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> Yük Devretme Kümesi Yöneticisi 'de dosya paylaşma tanık çekirdeğini ayarlama
 
 1. Çekirdek ayarlarını yapılandırma Sihirbazı 'Nı açın.
 
@@ -1235,7 +1235,7 @@ Windows Yük devretme kümesini başarılı bir şekilde yükledikten sonra, yü
 
 Bu ayarlar müşterilerle test edilmiştir ve bir tarafta yeterince dayanıklı olması için iyi bir uzlaşma sağlanması sağladı. Diğer taraftan, bu ayarlar SAP yazılımı veya düğüm/VM hatasında gerçek hata koşullarında yeterince hızlı yük devretme sağlamamıştı. 
 
-### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>SAP ASCS/SCS küme paylaşma diski için SIOS Dataman küme sürümünü yükleyin
+### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> SAP ASCS/SCS küme paylaşma diski için SIOS Dataman küme sürümünü yükleyin
 
 Artık Azure 'da çalışan bir Windows Server Yük Devretme Kümelemesi yapılandırmasına sahipsiniz. Ancak, bir SAP ASCS/SCS örneği yüklemek için, paylaşılan bir disk kaynağınız olması gerekir. Azure 'da ihtiyacınız olan paylaşılan disk kaynaklarını oluşturamazsınız. SIOS Dataman küme sürümü, paylaşılan disk kaynakları oluşturmak için kullanabileceğiniz bir üçüncü taraf çözümüdür.
 
@@ -1245,7 +1245,7 @@ SAP ASCS/SCS küme paylaşma diski için SIOS Dataman küme sürümü yüklemesi
 - SIOS veri Man 'ı yükleme
 - SIOS veri Man 'ı ayarlama
 
-#### <a name="add-the-net-framework-35"></a><a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>3,5 .NET Framework ekleyin
+#### <a name="add-the-net-framework-35"></a><a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a> 3,5 .NET Framework ekleyin
 Microsoft .NET Framework 3,5, Windows Server 2012 R2 'de otomatik olarak etkinleştirilmez veya yüklenmez. , SIOS veri Man 'ı, .NET Framework veri sahibi yüklediğiniz tüm düğümlerde olmasını gerektirdiğinden, kümedeki tüm sanal makinelerin Konuk işletim sistemine 3,5 .NET Framework yüklenmesi gerekir.
 
 3,5 .NET Framework eklemenin iki yolu vardır:
@@ -1266,7 +1266,7 @@ Microsoft .NET Framework 3,5, Windows Server 2012 R2 'de otomatik olarak etkinle
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-#### <a name="install-sios-datakeeper"></a><a name="dd41d5a2-8083-415b-9878-839652812102"></a>SIOS Dataman 'ı yükler
+#### <a name="install-sios-datakeeper"></a><a name="dd41d5a2-8083-415b-9878-839652812102"></a> SIOS Dataman 'ı yükler
 
 Kümedeki her düğüme SIOS Dataman küme sürümü yükleyin. Bir sanal paylaşılan depolama alanını, SIOS \ veri Man ile oluşturmak için eşitlenmiş bir yansıtma oluşturun ve küme paylaşılan depolama benzetimi yapın.
 
@@ -1313,7 +1313,7 @@ SIOS Dataman 'ı yüklemek için:
 
 6. İstendiğinde, sanal makineyi yeniden başlatın.
 
-#### <a name="set-up-sios-datakeeper"></a><a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>SIOS Dataman 'ı ayarlama
+#### <a name="set-up-sios-datakeeper"></a><a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> SIOS Dataman 'ı ayarlama
 
 Her iki düğüme de SIOS veri Man 'ı yükledikten sonra yapılandırmayı başlatmanız gerekir. Yapılandırmanın amacı, sanal makinelerin her birine bağlı ek VHD 'ler arasında zaman uyumlu veri çoğaltmasına sahip olmaktır.
 
@@ -1378,7 +1378,7 @@ Her iki düğüme de SIOS veri Man 'ı yükledikten sonra yapılandırmayı baş
 
    _**Şekil 55:** Yük Devretme Kümesi Yöneticisi, Dataman 'ın çoğaltılan diski gösterir_
 
-## <a name="install-the-sap-netweaver-system"></a><a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a>SAP NetWeaver sistemini yükler
+## <a name="install-the-sap-netweaver-system"></a><a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a> SAP NetWeaver sistemini yükler
 
 Kurulum, kullandığınız DBMS sistemine bağlı olarak farklılık gösterdiğinden, DBMS kurulumunu açıklamayamayacağız. Bununla birlikte, DBMS ile ilgili yüksek kullanılabilirliğe sahip olan kaygıları Azure için farklı DBMS satıcıları desteğinin işlevleri ile ilgilendiririz. Örneğin, SQL Server için her zaman açık veya veritabanı yansıtma ve Oracle veritabanları için Oracle Data Guard. Bu makalede kullandığımız senaryoda, DBMS 'ye daha fazla koruma ekleyeceğiz.
 
@@ -1389,7 +1389,7 @@ Farklı DBMS Hizmetleri, Azure 'da bu tür bir kümelenmiş SAP ASCS/SCS yapıla
 >
 >
 
-### <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle SAP 'yi yükler
+### <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a> Yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle SAP 'yi yükler
 
 > [!IMPORTANT]
 > Sayfa dosyanızı veri ve yansıtmalı birimlere yerleştirdiğinizden emin olun. Dataman yansıtılmış birimleri desteklemez. Sayfa dosyanızı, varsayılan olan bir Azure sanal makinesinin geçici sürücüsünde bırakabilirsiniz. Henüz orada yoksa, Windows sayfa dosyasını Azure sanal makinenizin D sürücüsüne taşıyın.
@@ -1404,7 +1404,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 - Araştırma bağlantı noktası ekleme
 - Windows Güvenlik Duvarı araştırma bağlantı noktasını açma
 
-#### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Kümelenmiş SAP Ass/SCS örneği için sanal ana bilgisayar adı oluşturma
+#### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a> Kümelenmiş SAP Ass/SCS örneği için sanal ana bilgisayar adı oluşturma
 
 1. Windows DNS Yöneticisi 'nde, yoks/SCS örneğinin sanal ana bilgisayar adı için bir DNS girişi oluşturun.
 
@@ -1425,7 +1425,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 
    _**Şekil 57:** SAP Ass/SCS küme yapılandırması için yeni sanal ad ve TCP/IP adresi_
 
-#### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>SAP ilk küme düğümünü yükler
+#### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> SAP ilk küme düğümünü yükler
 
 1. Küme düğümü A 'da ilk küme düğümü seçeneğini yürütün. Örneğin, **PR1-ascs-0** ana bilgisayarında.
 2. Azure iç yük dengeleyici için varsayılan bağlantı noktalarını tutmak üzere şunları seçin:
@@ -1443,7 +1443,7 @@ Sonraki birkaç görev standart SAP yükleme belgelerinde açıklanmamıştır.
 >
 >
 
-#### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>ASCS/SCS örneğinin SAP profilini değiştirme
+#### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> ASCS/SCS örneğinin SAP profilini değiştirme
 
 Yeni bir profil parametresi eklemeniz gerekiyor. Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme][sap-ha-guide-8.11]' de sorun senaryosunu belirttik. Bu bölümde, bazı temel TCP/IP bağlantı parametrelerinde da iki değişiklik yapılmıştır. İkinci bir adımda, `keep_alive` bağlantıların Azure iç yük dengeleyicinin boşta eşiğine ulaşmaması için sıraya alma sunucusunu bir sinyal gönderecek şekilde ayarlamanız gerekir.
 
@@ -1466,7 +1466,7 @@ YOKS/SCS örneğinin SAP profilini değiştirmek için:
 
 2. Değişiklikleri uygulamak için SAP ASCS/SCS örneğini yeniden başlatın.
 
-#### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Araştırma bağlantı noktası ekle
+#### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> Araştırma bağlantı noktası ekle
 
 Tüm küme yapılandırmasının Azure Load Balancer ile çalışmasını sağlamak için iç yük dengeleyicinin araştırma işlevini kullanın. Azure iç yük dengeleyici, genellikle katılan sanal makineler arasında eşit olarak gelen iş yükünü dağıtır. Ancak, yalnızca bir örnek etkin olduğundan, bazı küme yapılandırmalarında bu çalışmaz. Diğer örnek pasif ve iş yükünün hiçbirini kabul edemiyor. Araştırma işlevselliği, Azure iç yük dengeleyicinin yalnızca etkin bir örneğe iş atarken çalışmasına yardımcı olur. Araştırma işlevselliğiyle, iç yük dengeleyici hangi örneklerin etkin olduğunu algılayabilir ve sonra yalnızca örneği iş yüküne hedefleyebilir.
 
@@ -1561,7 +1561,7 @@ Araştırma bağlantı noktası eklemek için:
 
    _**Şekil 59:** Yeni değeri ayarladıktan sonra küme bağlantı noktasını araştırma_
 
-#### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>Windows Güvenlik Duvarı araştırma bağlantı noktasını açın
+#### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Windows Güvenlik Duvarı araştırma bağlantı noktasını açın
 
 Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırma bağlantı noktası açmanız gerekir. Windows Güvenlik Duvarı araştırması bağlantı noktasını açmak için aşağıdaki betiği kullanın. Ortamınız için PowerShell değişkenlerini güncelleştirin.
 
@@ -1573,15 +1573,15 @@ Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırma bağlantı
 
 **Probeport** **62000**olarak ayarlanır. Artık ** \\ \ascsha-clsap\sapmnt** dosya paylaşımıyla, **assha-DBAS**gibi diğer konaklardan erişebilirsiniz.
 
-### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Veritabanı örneğini yükler
+### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Veritabanı örneğini yükler
 
 Veritabanı örneğini yüklemek için SAP yükleme belgelerinde açıklanan süreci izleyin.
 
-### <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>İkinci küme düğümünü yükler
+### <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> İkinci küme düğümünü yükler
 
 İkinci kümeyi yüklemek için SAP yükleme kılavuzundaki adımları izleyin.
 
-### <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>SAP ERS Windows hizmeti örneğinin başlangıç türünü değiştirme
+### <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> SAP ERS Windows hizmeti örneğinin başlangıç türünü değiştirme
 
 SAP 'nin Windows hizmeti başlangıç türünü, her iki küme düğümünde da **Otomatik (Gecikmeli başlatma)** olarak değiştirin.
 
@@ -1589,11 +1589,11 @@ SAP 'nin Windows hizmeti başlangıç türünü, her iki küme düğümünde da 
 
 _**Şekil 60:** SAP ERS örneği için hizmet türünü Gecikmeli otomatik olarak değiştirme_
 
-### <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>SAP birincil uygulama sunucusunu yükler
+### <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP birincil uygulama sunucusunu yükler
 
 PAS 'yi barındırmak için belirlediğiniz sanal makinede *sıd*>-dı-0 <birincil uygulama sunucusu (pas) örneğini yükleyebilirsiniz. Azure veya Dataman 'a özgü ayarlar üzerinde hiçbir bağımlılık yoktur.
 
-### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>SAP ek uygulama sunucusunu yükler
+### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP ek uygulama sunucusunu yükler
 
 SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. Örneğin, <*sıd*>-dı-1 Ile <*SID*>-dı- &lt; n &gt; .
 
@@ -1602,10 +1602,10 @@ SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal 
 >
 
 
-## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>SAP ASCS/SCS örneği yük devretme ve SIOS çoğaltmasını test etme
+## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> SAP ASCS/SCS örneği yük devretme ve SIOS çoğaltmasını test etme
 Yük Devretme Kümesi Yöneticisi ve SIOS Dataman yönetimi ve yapılandırma aracını kullanarak SAP yoks/SCS örneği yük devretmesini ve SIOS disk çoğaltmasını test etmek ve izlemek kolaydır.
 
-### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS örneği, küme düğümü A 'da çalışıyor
+### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> SAP ASCS/SCS örneği, küme düğümü A 'da çalışıyor
 
 **SAP PR1** küme grubu, A küme düğümü üzerinde çalışıyor. Örneğin, **PR1-ascs-0**üzerinde. **SAP PR1** küme grubunun bir parçası olan ve ascs/SCS örneğinin kullandığı paylaşılan disk sürücüsünü, A düğümünü Kümelendirmek için atayın.
 
@@ -1619,7 +1619,7 @@ SIOS Verilerlik yönetimi ve yapılandırma aracında, paylaşılan disk veriler
 
 _**Şekil 62:** Jımdataman 'da yerel birimi küme düğümü A 'yı küme düğümüne çoğaltma B_
 
-### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>A düğümünden B düğümüne yük devretme
+### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> A düğümünden B düğümüne yük devretme
 
 1. A küme düğümünden B kümesine SAP <*sıd*> küme grubunun yük devretmesini başlatmak için şu seçeneklerden birini seçin:
    - Yük Devretme Kümesi Yöneticisi kullan  

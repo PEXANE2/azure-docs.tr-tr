@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710278"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653588"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz etme
 Bu makalede, Hyper-V’den Azure’a dağıtım senaryosu için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporunda bulunan sayfalar ele alınmaktadır.
@@ -99,7 +99,7 @@ Sanal makine çoğaltmasının üretim uygulamalarınızda istenmeyen kapalı ka
 ### <a name="maximum-copy-frequency"></a>En yüksek kopyalama sıklığı
 İstenen RPO'yu elde etmek üzere çoğaltma için önerilen en yüksek kopyalama sıklığı ayarlanmalıdır. Varsayılan değer beş dakikadır. Daha iyi bir RPO elde etmek için kopyalama sıklığını 30 saniyeye ayarlayabilirsiniz.
 
-### <a name="what-if-analysis"></a>Benzetim analiz
+### <a name="what-if-analysis"></a>Durum analizi
 ![Benzetim analizi](media/hyper-v-deployment-planner-analyze-report/what-if-analysis-h2a.png) Bu analiz, sürenin yalnızca yüzde 90’ını karşılamasını istediğiniz RPO için daha düşük bir bant genişliği ayarladığınızda profil oluşturma sırasında kaç tane ihlal oluşabileceğini özetler. Belirli bir günde bir veya daha fazla RPO ihlali ortaya çıkabilir. Graf, günün yoğun RPO değerini gösterir. Bu analizi temel alarak, belirtilen düşük bant genişliği ile tüm günlerdeki RPO ihlali sayısının ve bir gündeki en yoğun RPO gerçekleşme zamanının kabul edilebilir olup olmadığına karar verebilirsiniz. Kabul edilebilir ise, çoğaltma için daha düşük bant genişliği ayırabilirsiniz. Kabul edilebilir değilse, istenen yüzde 100 RPO süresini karşılamak için önerildiği şekilde daha yüksek bant genişliği ayırın. 
 
 ### <a name="recommendation-for-successful-initial-replication"></a>Başarılı ilk çoğaltma önerisi
@@ -179,7 +179,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 
 **VM Adı**: Rapor oluşturulurken VMListFile içinde kullanılan VM adı. Bu sütunda ayrıca sanal makinelere bağlanan diskler de (VHD) listelenir. Adlar, profil oluşturma sırasında aracın sanal makineleri bulduğu Hyper-V konak adlarını içerir.
 
-**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet** \* , VM 'nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulan yüksek değişim sıklığı veya IOPS diski, diske eşlenen boyuttan daha büyük bir premium disk boyutuna sığar. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir: 
+**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet** \* , VM 'nin [Premium SSD 'ler](../virtual-machines/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulan yüksek değişim sıklığı veya IOPS diski, diske eşlenen boyuttan daha büyük bir premium disk boyutuna sığar. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir: 
 * <128 GB bir P10’dur.
 * 128 GB ile 256 GB arası P15’tir.
 * 256 GB ile 512 GB arası P20'dir.

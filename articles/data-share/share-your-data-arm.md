@@ -1,18 +1,18 @@
 ---
-title: 'Hızlı başlangıç: kuruluşunuz dışında paylaşma-Azure veri paylaşımınız'
-description: Hızlı başlangıç-Azure veri paylaşma ve Kaynak Yöneticisi şablonu kullanarak müşterilerle ve iş ortaklarıyla veri paylaşma
+title: Kuruluşunuz dışında paylaşma (ARM şablonu)-Azure veri paylaşımının hızlı başlangıç
+description: Bu hızlı başlangıçta Azure veri paylaşma ve Kaynak Yöneticisi şablonunu kullanarak müşteriler ve iş ortakları ile veri paylaşmayı öğrenin.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 87b91d353b6d9f64f28892feed92c44ceafc2598
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640931"
+ms.locfileid: "88654115"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Hızlı başlangıç: Azure veri paylaşma ve Kaynak Yöneticisi şablonlarını kullanarak veri paylaşma
 

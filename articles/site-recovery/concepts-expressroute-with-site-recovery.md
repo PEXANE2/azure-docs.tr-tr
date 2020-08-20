@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700894"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654319"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure Site Recovery ile Azure ExpressRoute
 
@@ -50,7 +50,7 @@ Birleşik senaryo şu diyagramda temsil edilir: ![ ExpressRoute ile şirket içi
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>ExpressRoute ile Azure 'dan Azure 'a çoğaltma
 
-Azure Site Recovery, [Azure sanal makinelerinin](azure-to-azure-architecture.md)olağanüstü durum kurtarmaya izin verebilir. Azure sanal makinelerinizde [Azure yönetilen diskleri](../virtual-machines/windows/managed-disks-overview.md)kullanıp kullanmadığını bağlı olarak, çoğaltma verileri hedef Azure bölgesindeki bir Azure depolama hesabına veya çoğaltma yönetilen diskine gönderilir. Çoğaltma uç noktaları genel olsa da, Azure VM çoğaltma için çoğaltma trafiği varsayılan olarak, kaynak sanal ağın bulunduğu Azure bölgesinden bağımsız olarak Internet 'te geçiş yapmaz. [Özel bir rota](../virtual-network/virtual-networks-udr-overview.md#custom-routes) ile 0.0.0.0/0 adres ön eki için Azure 'un varsayılan sistem yolunu geçersiz KıLABILIR ve VM trafiğini şirket içi ağ sanal gerecine (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Recovery çoğaltma için önerilmez. Özel yollar kullanıyorsanız, çoğaltma trafiğinin Azure sınırından ayrılmaması için sanal ağınızda "depolama" için [bir sanal ağ hizmet uç noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
+Azure Site Recovery, [Azure sanal makinelerinin](azure-to-azure-architecture.md)olağanüstü durum kurtarmaya izin verebilir. Azure sanal makinelerinizde [Azure yönetilen diskleri](../virtual-machines/managed-disks-overview.md)kullanıp kullanmadığını bağlı olarak, çoğaltma verileri hedef Azure bölgesindeki bir Azure depolama hesabına veya çoğaltma yönetilen diskine gönderilir. Çoğaltma uç noktaları genel olsa da, Azure VM çoğaltma için çoğaltma trafiği varsayılan olarak, kaynak sanal ağın bulunduğu Azure bölgesinden bağımsız olarak Internet 'te geçiş yapmaz. [Özel bir rota](../virtual-network/virtual-networks-udr-overview.md#custom-routes) ile 0.0.0.0/0 adres ön eki için Azure 'un varsayılan sistem yolunu geçersiz KıLABILIR ve VM trafiğini şirket içi ağ sanal gerecine (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Recovery çoğaltma için önerilmez. Özel yollar kullanıyorsanız, çoğaltma trafiğinin Azure sınırından ayrılmaması için sanal ağınızda "depolama" için [bir sanal ağ hizmet uç noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
 
 Azure VM olağanüstü durum kurtarma için varsayılan olarak ExpressRoute çoğaltma için gerekli değildir. Sanal makinelerin hedef Azure bölgesine yük devri yapıldıktan sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz. Veri aktarımı fiyatlarının, Azure bölgeleri arasında veri çoğaltma modundan bağımsız olarak uygulanacağını unutmayın.
 

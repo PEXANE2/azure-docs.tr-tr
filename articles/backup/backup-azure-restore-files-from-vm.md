@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611849"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654166"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -398,7 +398,7 @@ Kurtarma hizmeti ile makine arasındaki veri akışı, TCP üzerinden güvenli b
 
 Üst/yedeklenen VM 'de bulunan herhangi bir dosya Access Control listesi (ACL), bağlı dosya sisteminde de korunur.
 
-Betik, bir kurtarma noktasına salt okunurdur ve yalnızca 12 saat boyunca geçerlidir. Daha önce erişimi kaldırmak istiyorsanız, Azure Portal/PowerShell/CLı oturumunu açın ve söz konusu kurtarma noktası için **çıkarma diskleri** gerçekleştirin. Betik hemen geçersiz kılınır.
+Betik, bir kurtarma noktasına salt okunurdur ve yalnızca 12 saat boyunca geçerlidir. Daha önce erişimi kaldırmak istiyorsanız, Azure portal/PowerShell/CLı ' da oturum açın ve söz konusu kurtarma noktası için **çıkarma diskleri** gerçekleştirin. Betik hemen geçersiz kılınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

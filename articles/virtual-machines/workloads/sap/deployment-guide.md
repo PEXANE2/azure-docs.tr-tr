@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: dbcb39641f35ad0f997db30b320826764a08bff1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082265"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653520"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -133,7 +133,7 @@ ms.locfileid: "87082265"
 [deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (SAP için Azure uzantısı sorunlarını giderme-desteğe başvurun)
 [deployment-guide-run-the-script]:deployment-guide.md#0d2847ad-865d-4a4c-a405-f9b7baaa00c7 (SAP için Azure uzantısı sorunlarını giderme-kurulum betiğini çalıştırma)
 [deployment-guide-redeploy-after-sysprep]:deployment-guide.md#2cd61f22-187d-42ed-bb8c-def0c983d756 (SAP için Azure uzantısı sorunlarını giderme-Sysprep sonrasında yeniden dağıtma)
-[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 (SAP için Azure uzantısı sorunlarını giderme-Internet bağlantısını çözme)
+[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 ( SAP için Azure uzantısı sorunlarını giderme-Internet bağlantısını çözme)
 
 
 [deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (VM uzantısını yapılandırma)
@@ -256,7 +256,7 @@ ms.locfileid: "87082265"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -368,7 +368,7 @@ SAP boyutlandırma için aşağıdaki bilgileri öğrenin:
 
 ### <a name="resource-groups"></a>Kaynak grupları
 
-Azure Resource Manager, Azure aboneliğinizdeki tüm uygulama kaynaklarını yönetmek için kaynak gruplarını kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış][resource-group-overview].
+Azure Resource Manager, Azure aboneliğinizdeki tüm uygulama kaynaklarını yönetmek için kaynak gruplarını kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Resource Manager'a genel bakış][resource-group-overview].
 
 ## <a name="resources"></a>Kaynaklar
 
@@ -1169,7 +1169,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    b.  `ps -ax | grep waagent` komutunu çalıştırın
 
-   **Beklenen sonuç**: şuna benzer bir giriş görüntüler:`python /usr/sbin/waagent -daemon`
+   **Beklenen sonuç**: şuna benzer bir giriş görüntüler: `python /usr/sbin/waagent -daemon`
 
 1. SAP için Azure uzantısının yüklü olduğundan ve çalıştığından emin olun.
 
@@ -1179,7 +1179,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    b. `ps -ax | grep AzureEnhanced` komutunu çalıştırın
 
-   **Beklenen sonuç**: şuna benzer bir giriş görüntüler:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
+   **Beklenen sonuç**: şuna benzer bir giriş görüntüler: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. SAP ana bilgisayar aracısını SAP Note [1031096]' de açıklandığı gibi yükleyip çıktısını denetleyin `saposcol` .
 
@@ -1203,7 +1203,7 @@ Bu denetim SAP uygulamanızın içinde görüntülenen tüm performans ölçüml
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Windows VM 'de hazırlık denetimini çalıştırma
 
 1. Azure sanal makinesinde oturum açın (yönetici hesabı kullanarak gerekli değildir).
-1. Bir Web tarayıcısı açın ve şuraya gidinhttp://127.0.0.1:11812/azure4sap/metrics
+1. Bir Web tarayıcısı açın ve şuraya gidin http://127.0.0.1:11812/azure4sap/metrics
 1. Tarayıcı, sanal makinenizin izleme verilerini içeren bir XML dosyası görüntülemelidir veya indirmelidir. Böyle bir durum söz konusu değilse, SAP için Azure uzantısının yüklü olduğundan emin olun.
 
 ##### <a name="check-the-content-of-the-xml-file"></a>XML dosyasının içeriğini denetle
@@ -1234,7 +1234,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    b.  `ps -ax | grep waagent` komutunu çalıştırın
 
-   **Beklenen sonuç**: şuna benzer bir giriş görüntüler:`python /usr/sbin/waagent -daemon`
+   **Beklenen sonuç**: şuna benzer bir giriş görüntüler: `python /usr/sbin/waagent -daemon`
 
 1. SAP için Azure uzantısının yüklü olduğundan ve çalıştığından emin olun.
 
@@ -1244,7 +1244,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    b. `ps -ax | grep AzureEnhanced` komutunu çalıştırın
 
-   **Beklenen sonuç**: şuna benzer bir giriş görüntüler:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
+   **Beklenen sonuç**: şuna benzer bir giriş görüntüler: `/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. SAP ana bilgisayar aracısını SAP Note [1031096]' de açıklandığı gibi yükleyip çıktısını denetleyin `saposcol` .
 
@@ -1495,7 +1495,7 @@ Uzantıyı yeniden yüklemek için bu kılavuzdaki [SAP Için Azure uzantısın�
 
 Hatalar kaybdeğilse, [desteğe başvurun][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Desteğe başvurun
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Destek birimine başvurma
 
 Beklenmeyen bir hata veya bilinen bir çözüm yok. C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) veya/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) klasöründe bulunan AzureEnhancedMonitoring_service. log dosyasını toplayın ve daha fazla yardım için sap desteği ile iletişime geçin.
 

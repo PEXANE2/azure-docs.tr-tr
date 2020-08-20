@@ -3,16 +3,16 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192298"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653707"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
-[Azure yönetilen diskler](../virtual-machines/windows/managed-disks-overview.md) , verilerin kalıcı olarak depolanması için Azure sanal makineler ile kullanılmak üzere önerilen disk depolama sunumudur. Yönetilen diskleri kullanmak için düğüm türlerinizi içeren sanal makine ölçek kümelerini yükselterek Service Fabric iş yüklerinizin dayanıklılığını geliştirebilirsiniz. Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
+[Azure yönetilen diskler](../virtual-machines/managed-disks-overview.md) , verilerin kalıcı olarak depolanması için Azure sanal makineler ile kullanılmak üzere önerilen disk depolama sunumudur. Yönetilen diskleri kullanmak için düğüm türlerinizi içeren sanal makine ölçek kümelerini yükselterek Service Fabric iş yüklerinizin dayanıklılığını geliştirebilirsiniz. Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 
 Yönetilen diskleri kullanmak için bir Service Fabric küme düğümünü yükseltmeye yönelik genel strateji şu şekilde yapılır:
 

@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432863"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654710"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -25,11 +25,11 @@ Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanız
 - Bir kurtarma hizmetleri Kasası (her ikisi de) Azure Backup ve Azure Site Recovery tarafından kullanıldığında, bu makalede yalnızca Azure Backup için özel uç noktaların kullanımı ele alınmaktadır.
 - Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle Azure Active Directory bir bölgede çalışması için gereken IP 'Leri ve FQDN 'lerin, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz.
 - Ağ Ilkelerine sahip sanal ağlar özel uç noktalar için desteklenmez. Devam etmeden önce ağ Ilkelerini devre dışı bırakmanız gerekir.
-- Kurtarma Hizmetleri kaynak sağlayıcısını, aboneliği 1 2020 Mayıs tarihinden önce kaydettirdiğiniz takdirde yeniden kaydetmeniz gerekir. Sağlayıcıyı yeniden kaydetmek için Azure portal aboneliğinize gidin, sol gezinti çubuğunda **kaynak sağlayıcısı** ' na gidin ve ardından **Microsoft. recoveryservices** ' i seçin ve **yeniden kaydet**' e tıklayın.
+- Kurtarma Hizmetleri kaynak sağlayıcısını, aboneliği 1 2020 Mayıs tarihinden önce kaydettirdiğiniz takdirde yeniden kaydetmeniz gerekir. Sağlayıcıyı yeniden kaydetmek için Azure portal aboneliğinize gidin, sol gezinti çubuğunda **kaynak sağlayıcısı** ' na gidin, ardından **Microsoft. recoveryservices** ' i seçin ve **yeniden kaydet**' i seçin.
 
 ## <a name="recommended-and-supported-scenarios"></a>Önerilen ve desteklenen senaryolar
 
-Kasa için özel uç noktalar etkinleştirildiğinden, bunlar SQL ve SAP HANA iş yüklerini yalnızca bir Azure VM ve MARS aracı yedeklemesi için yedekleme ve geri yükleme için kullanılır. Diğer iş yüklerinin yedeklenmesi için kasayı da kullanabilirsiniz (ancak özel uç noktalar gerektirmez). MARS Aracısı kullanılarak SQL ve SAP HANA iş yüklerinin ve yedeklemenin yedeğinin yanı sıra, Azure VM yedeklemesi durumunda dosya kurtarma gerçekleştirmek için de özel uç noktalar kullanılır. Daha fazla bilgi için aşağıdaki tabloya bakın:
+Kasa için özel uç noktalar etkinleştirildiğinden, bunlar SQL ve SAP HANA iş yüklerini yalnızca bir Azure VM ve MARS aracı yedeklemesi için yedekleme ve geri yükleme için kullanılır. Diğer iş yüklerinin yedeklenmesi için kasayı da kullanabilirsiniz (ancak özel uç noktalar gerektirmez). MARS Aracısı kullanılarak SQL ve SAP HANA iş yüklerinin ve yedeklemenin yedeğinin yanı sıra, Azure VM yedeklemesi için dosya kurtarma gerçekleştirmek üzere özel uç noktalar da kullanılır. Daha fazla bilgi için aşağıdaki tabloya bakın:
 
 | Azure VM 'de iş yüklerini yedekleme (SQL, SAP HANA), MARS Aracısı kullanarak yedekleme | Özel uç noktaların kullanımı, sanal ağlarınızdan Azure Backup veya Azure depolama için herhangi bir IP/FQDN 'nin izin vermeksizin, yedekleme ve geri yüklemeye izin vermek için önerilir. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -55,7 +55,7 @@ Yönetilen kimlikler, kasasının özel uç noktalar oluşturmasına ve kullanma
 
     ![Kimlik durumunu açık olarak değiştir](./media/private-endpoints/identity-status-on.png)
 
-1. **Durumu** **Açık** olarak değiştirin ve **Kaydet**' e tıklayın.
+1. **Durumu** **Açık** olarak değiştirin ve **Kaydet**' i seçin.
 
 1. Kasanın yönetilen kimliği olan bir **nesne kimliği** oluşturulur.
 
@@ -72,14 +72,14 @@ Yönetilen kimlikler, kasasının özel uç noktalar oluşturmasına ve kullanma
 
 Oluşturulması gereken iki zorunlu DNS bölgesi vardır:
 
-- `privatelink.blob.core.windows.net`(yedekleme/geri yükleme verileri için)
-- `privatelink.queue.core.windows.net`(hizmet iletişimi için)
+- `privatelink.blob.core.windows.net` (yedekleme/geri yükleme verileri için)
+- `privatelink.queue.core.windows.net` (hizmet iletişimi için)
 
 1. **Tüm hizmetler** arama çubuğunda **özel DNS bölgesinde** arama yapın ve açılan listeden **özel DNS bölge** ' yi seçin.
 
     ![Özel DNS bölgeyi seçin](./media/private-endpoints/private-dns-zone.png)
 
-1. **Özel DNS bölgesi** bölmesinde, yeni bir bölge oluşturmaya başlamak Için **+ Ekle** düğmesine tıklayın.
+1. **Özel DNS bölgesi** bölmesinde, yeni bir bölge oluşturmaya başlamak Için **+ Ekle** düğmesini seçin.
 
 1. **Özel DNS bölgesi oluştur** bölmesinde, gereken ayrıntıları girin. Abonelik, Özel uç noktanın oluşturulacağı ile aynı olmalıdır.
 
@@ -90,7 +90,7 @@ Oluşturulması gereken iki zorunlu DNS bölgesi vardır:
 
     | **Bölge**                           | **Hizmet** | **Abonelik ve kaynak grubu (RG) ayrıntıları**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Abonelik**: özel uç noktanın her ne kadar **RG**olması gerektığı ile aynıdır: VNET 'In veya özel uç noktanın |
+    | `privatelink.blob.core.windows.net`  | Blob        | **Abonelik**: özel uç noktanın her ne kadar  **RG**olması gerektığı ile aynıdır: VNET 'In veya özel uç noktanın |
     | `privatelink.queue.core.windows.net` | Kuyruk       | **RG**: VNET 'In veya özel uç noktanın RG 'ı |
 
     ![Özel DNS bölgesi oluştur](./media/private-endpoints/create-private-dns-zone.png)
@@ -105,7 +105,7 @@ Azure 'da ayrı bir özel DNS bölgesi oluşturmak isterseniz, zorunlu DNS bölg
 
 | **Bölge**                                                     | **Hizmet** | **Abonelik ve kaynak grubu ayrıntıları**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Note**: buraya *coğrafi* bölge kodu başvurur. Örneğin, sırasıyla Orta Batı ABD ve Kuzey Avrupa için *wcus* ve *ne* yapın. | Backup      | **Abonelik**: özel uç noktanın **nerede oluşturulması gerektiği**ile aynı: ABONELIK içindeki herhangi bir RG |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Note**: buraya *coğrafi* bölge kodu başvurur. Örneğin, sırasıyla Orta Batı ABD ve Kuzey Avrupa için *wcus* ve *ne* yapın. | Backup      | **Abonelik**: özel uç noktanın  **nerede oluşturulması gerektiği**ile aynı: ABONELIK içindeki herhangi bir RG |
 
 Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) bakın.
 
@@ -119,7 +119,7 @@ Ulusal bölgelerdeki URL adlandırma kuralları için:
 
 Yukarıda oluşturulan DNS bölgeleri, şimdi yedeklenecek sunucularınızın bulunduğu sanal ağa bağlı olmalıdır. Bu, oluşturduğunuz tüm DNS bölgeleri için yapılmalıdır.
 
-1. DNS bölgenize gidin (önceki adımda oluşturduğunuz) ve sol çubuktaki **sanal ağ bağlantıları** ' na gidin. Buradan, **+ Ekle** düğmesine tıklayın
+1. DNS bölgenize gidin (önceki adımda oluşturduğunuz) ve sol çubuktaki **sanal ağ bağlantıları** ' na gidin. Buradan, **+ Ekle** düğmesini seçin
 1. Gerekli ayrıntıları girin. **Abonelik** ve **sanal ağ** alanları, sunucularınızın bulunduğu sanal ağın ilgili ayrıntılarıyla doldurulmalıdır. Diğer alanların olduğu gibi bırakılması gerekir.
 
     ![Sanal ağ bağlantısı ekle](./media/private-endpoints/add-virtual-network-link.png)
@@ -139,7 +139,7 @@ Bu üç kaynak grubu için **katılımcı** rolünü kasaya vermenizi öneririz 
 
     ![Rol ataması ekleyin](./media/private-endpoints/add-role-assignment.png)
 
-1. **Rol ataması Ekle** bölmesinde, **rol**olarak **katkıda bulunan** ' ı seçin ve kasasının **adını** **sorumlu**olarak kullanın. Kasanızı seçin ve işiniz bittiğinde **Kaydet** ' e tıklayın.
+1. **Rol ataması Ekle** bölmesinde, **rol**olarak **katkıda bulunan** ' ı seçin ve kasasının **adını** **sorumlu**olarak kullanın. Kasanızı seçin ve işiniz bittiğinde **Kaydet** ' i seçin.
 
     ![Rol ve asıl seçin](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -155,7 +155,7 @@ Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmak
 
     ![Özel bağlantı ara](./media/private-endpoints/search-for-private-link.png)
 
-1. Sol gezinti çubuğunda **Özel uç noktalar**' a tıklayın. **Özel uç noktalar** bölmesinde, kasaya özel bir uç nokta oluşturmaya başlamak Için **+ Ekle** ' ye tıklayın.
+1. Sol gezinti çubuğunda **Özel uç noktalar**' ı seçin. **Özel uç noktalar** bölmesinde bir kez **+ Ekle** ' yi seçerek kasanız Için özel bir uç nokta oluşturmaya başlayın.
 
     ![Özel bağlantı merkezinde özel uç nokta Ekle](./media/private-endpoints/add-private-endpoint.png)
 
@@ -169,13 +169,13 @@ Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmak
 
         ![Kaynak sekmesini doldur](./media/private-endpoints/resource-tab.png)
 
-    1. **Yapılandırma**: yapılandırma bölümünde, Özel uç noktanın oluşturulmasını istediğiniz sanal ağı ve alt ağı belirtin. Bu, VM 'nin bulunduğu VNET olur. Özel **uç noktanızı** özel bir DNS bölgesiyle tümleştirmeyi tercih edebilirsiniz. Alternatif olarak, özel DNS sunucunuzu da kullanabilir veya özel bir DNS bölgesi oluşturabilirsiniz.
+    1. **Yapılandırma**: yapılandırma bölümünde, Özel uç noktanın oluşturulmasını istediğiniz sanal ağı ve alt ağı belirtin. Bu, VM 'nin bulunduğu sanal ağ olacaktır. Özel **uç noktanızı** özel bir DNS bölgesiyle tümleştirmeyi tercih edebilirsiniz. Alternatif olarak, özel DNS sunucunuzu da kullanabilir veya özel bir DNS bölgesi oluşturabilirsiniz.
 
         ![Yapılandırma sekmesini doldur](./media/private-endpoints/configuration-tab.png)
 
     1. İsteğe bağlı olarak, Özel uç noktanız için **Etiketler** ekleyebilirsiniz.
 
-    1. Ayrıntıları girerken, **Gözden geçirme ve oluşturma** işlemi tamamlandığında oluştur ' a ilerleyin. Doğrulama tamamlandığında, Özel uç noktayı oluşturmak için **Oluştur** ' a tıklayın.
+    1. Ayrıntıları girerken ve bir kez **oluşturma** işlemi tamamlandıktan sonra devam edin. Doğrulama tamamlandığında, Özel uç noktayı oluşturmak için **Oluştur** ' u seçin.
 
 ## <a name="approving-private-endpoints"></a>Özel uç noktaları onaylama
 
@@ -200,7 +200,7 @@ Kasa için isteğe bağlı özel DNS bölgesi ve özel uç noktaları oluşturdu
 
 Bu, Özel uç noktanıza ait her FQDN için Özel DNS bölgenize giriş yapmanızı gerektirir.
 
-1. **Özel DNS bölgenize** gidin ve sol çubuktaki **genel bakış** seçeneğine gidin. Buradan, kayıt eklemeye başlamak için **+ kayıt kümesi** ' ne tıklayın.
+1. **Özel DNS bölgenize** gidin ve sol çubuktaki **genel bakış** seçeneğine gidin. Buradan, kayıt eklemeye başlamak için **+ kayıt kümesi** ' ni seçin.
 
     ![Kayıt eklemek için + kayıt kümesi seçin](./media/private-endpoints/select-record-set.png)
 
@@ -332,9 +332,9 @@ Yanıt JSON 'SI:
 
 Kasa için yönetilen kimliğin, kaynak grubunda ve özel uç noktaların oluşturulacağı sanal ağda aşağıdaki izinlere sahip olması gerekir:
 
-- `Microsoft.Network/privateEndpoints/*`Bu, kaynak grubundaki özel uç noktalarda CRUD 'yi gerçekleştirmek için gereklidir. Kaynak grubuna atanmalıdır.
-- `Microsoft.Network/virtualNetworks/subnets/join/action`Bu, özel IP 'nin özel uç noktayla birlikte eklendiği sanal ağda gereklidir.
-- `Microsoft.Network/networkInterfaces/read`Bu, Özel uç nokta için oluşturulan ağ arabirimini almak üzere kaynak grubunda gereklidir.
+- `Microsoft.Network/privateEndpoints/*` Bu, kaynak grubundaki özel uç noktalarda CRUD 'yi gerçekleştirmek için gereklidir. Kaynak grubuna atanmalıdır.
+- `Microsoft.Network/virtualNetworks/subnets/join/action` Bu, özel IP 'nin özel uç noktayla birlikte eklendiği sanal ağda gereklidir.
+- `Microsoft.Network/networkInterfaces/read` Bu, Özel uç nokta için oluşturulan ağ arabirimini almak üzere kaynak grubunda gereklidir.
 - Özel DNS bölge katılımcısı rolü bu rol zaten var ve izinleri sağlamak için kullanılabilir `Microsoft.Network/privateDnsZones/A/*` `Microsoft.Network/privateDnsZones/virtualNetworkLinks/read` .
 
 Gerekli izinlere sahip roller oluşturmak için aşağıdaki yöntemlerden birini kullanabilirsiniz:
@@ -543,7 +543,7 @@ Kuyruk hizmeti () için DNS bölgesi `privatelink.queue.core.windows.net` :
 
     ![Kuyruk hizmeti için bir tür kaydı olarak FQDN ve özel IP girdisi ekleme](./media/private-endpoints/add-type-a-record-for-queue.png)
 
-## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 S. Var olan bir yedekleme Kasası için özel bir uç nokta oluşturabilir miyim?<br>
 A. Hayır, Özel uç noktalar yalnızca yeni yedekleme kasaları için oluşturulabilir. Bu nedenle kasada hiç öğe korunmamış olmalıdır. Aslında, özel bitiş noktaları oluşturulmadan önce herhangi bir öğeyi kasaya koruma girişimi yapılabilir.

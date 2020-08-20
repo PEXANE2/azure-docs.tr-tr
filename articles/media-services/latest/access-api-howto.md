@@ -3,7 +3,7 @@ title: Azure AD kimlik doğrulamasını kullanmaya başlama
 description: Azure Media Services API 'sini kullanmak için Azure Active Directory (Azure AD) kimlik doğrulamasına erişme hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: juliako
-ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.author: inhenkel
+ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035816"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654846"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API 'sine erişim için kimlik bilgilerini alın  
 
@@ -33,14 +33,14 @@ Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulaması kull
 
 Bu makalede Media Services API 'sine erişmek için kimlik bilgilerini alma adımları açıklanır. Aşağıdaki sekmelerden birini seçin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](create-account-howto.md)konusuna bakın.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="portal"></a>[Portal](#tab/portal/)
 
-### <a name="api-access"></a>API erişimi 
+### <a name="api-access"></a>API erişimi
 
 **API erişimi** sayfası, API 'ye bağlanmak için kullanmak istediğiniz kimlik doğrulama yöntemini seçmenizi sağlar. Bu sayfa, API 'ye bağlanmak için gereken değerleri de sağlar.
 
@@ -70,7 +70,7 @@ Bu seçenek, Media Services kaynaklarla etkileşim kurmak için uygulama kullana
 
 Kullanıcı uygulamanızı **MEDIA SERVICES API 'ye Bağlan** bölümüne bağlamak için kimlik bilgilerinizi kopyalayın. Metin değerleri alabilir veya JSON veya XML bloklarını kopyalayabilirsiniz.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
+## <a name="cli"></a>[CLI](#tab/cli/)
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

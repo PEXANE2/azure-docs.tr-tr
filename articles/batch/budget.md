@@ -3,12 +3,12 @@ title: Maliyet Analizi ve bütçe
 description: Maliyet analizini nasıl alabileceğinizi ve toplu iş yüklerinizi çalıştırmak için kullanılan temel işlem kaynakları ve yazılım lisansları için bir bütçe ayarlamanıza öğrenin.
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725780"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654251"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch için maliyet analizi ve bütçeler
 
@@ -68,7 +68,7 @@ Düşük öncelikli VM 'Ler, Azure 'daki daha fazla bilgi işlem kapasitesinden 
 
 ### <a name="virtual-machine-os-disk-type"></a>Sanal makine işletim sistemi disk türü
 
-Birden çok [VM işletim sistemi disk türü](../virtual-machines/windows/disks-types.md)var. Çoğu VM Serisi hem Premium hem de standart depolamayı destekleyen boyutlarda. Bir havuz için bir ' VM boyutu seçildiğinde Batch, Premium SSD işletim sistemi disklerini yapılandırır. ' S ' olmayan VM boyutu seçildiğinde, standart HDD Disk türü kullanılır. Örneğin, Premium SSD işletim sistemi diskleri için kullanılır `Standard_D2s_v3` ve standart HDD işletim sistemi diskleri için kullanılır `Standard_D2_v3` .
+Birden çok [VM işletim sistemi disk türü](../virtual-machines/disks-types.md)var. Çoğu VM Serisi hem Premium hem de standart depolamayı destekleyen boyutlarda. Bir havuz için bir ' VM boyutu seçildiğinde Batch, Premium SSD işletim sistemi disklerini yapılandırır. ' S ' olmayan VM boyutu seçildiğinde, standart HDD Disk türü kullanılır. Örneğin, Premium SSD işletim sistemi diskleri için kullanılır `Standard_D2s_v3` ve standart HDD işletim sistemi diskleri için kullanılır `Standard_D2_v3` .
 
 Premium SSD işletim sistemi diskleri daha pahalıdır, ancak Premium diskler içeren daha yüksek performansa ve VM 'lere standart HDD işletim sistemi disklerine sahip VM 'lerden biraz daha hızlı başlayabilirler. Batch ile, işletim sistemi diski genellikle uygulamalar ve görev dosyaları VM 'lerde geçici SSD disk yer aldığı sürece çoğu zaman kullanılmaz. Bu nedenle, çoğu durumda, bir ' VM boyutu belirtildiğinde, Premium SSD için artan maliyeti ödemenizi gerektirmez.
 

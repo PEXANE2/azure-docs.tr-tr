@@ -1,16 +1,16 @@
 ---
-title: Azure Advisor 'a giriş
+title: Azure Danışmanı’na Giriş
 description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057684"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654030"
 ---
-# <a name="introduction-to-azure-advisor"></a>Azure Advisor 'a giriş
+# <a name="introduction-to-azure-advisor"></a>Azure Danışmanı’na Giriş
 
 Azure Advisor 'ın temel özellikleri hakkında bilgi edinin ve sık sorulan soruların yanıtlarını alın.
 
@@ -55,7 +55,7 @@ Danışman önerilerine bir abonelik, kaynak grubu veya kaynak *sahibi*, *katkı
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Danışman hangi kaynakları öneri sağlar?
 
-Danışman Application Gateway, App Services, kullanılabilirlik kümeleri, Azure önbelleği, Azure Data Factory, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı, MariaDB için Azure veritabanı, Azure ExpressRoute, Azure Cosmos DB, Azure genel IP adresleri, SQL veri ambarı, SQL sunucuları, depolama hesapları, Traffic Manager profilleri ve sanal makineler için öneriler sağlar.
+Danışman Application Gateway, App Services, kullanılabilirlik kümeleri, Azure önbelleği, Azure Data Factory, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı, MariaDB için Azure veritabanı, Azure ExpressRoute, Azure Cosmos DB, Azure genel IP adresleri, Azure SYNAPSE Analytics, SQL sunucuları, depolama hesapları, Traffic Manager profilleri ve sanal makineler için öneriler sağlar.
 
 Azure Danışmanı, [Azure Güvenlik Merkezi](../security-center/security-center-recommendations.md) 'nin önerilerini de içerir ve bu da ek kaynak türleri için öneriler içerebilir.
 

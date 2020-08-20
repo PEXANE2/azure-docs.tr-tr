@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827869"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654268"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -26,7 +26,7 @@ Azure 'da birden fazla kullanılabilir bulut depolama türü vardır. Azure 'a d
 
 [Azure dosya paylaşımları](storage-files-introduction.md) , genel amaçlı dosya verileri için uygundur. Bu veriler, için bir şirket içi SMB veya NFS paylaşımının kullanıldığı her şeyi içerir. [Azure dosya eşitleme](storage-sync-files-planning.md)ile, şirket Içi Windows Server çalıştıran sunuculardaki çeşitli Azure dosya paylaşımlarının içeriğini önbelleğe alabilirsiniz.
 
-Şu anda bir şirket içi sunucuda çalışan bir uygulama için, dosyaları bir Azure dosya paylaşımında depolamak iyi bir seçenek olabilir. Uygulamayı Azure 'a taşıyabilir ve Azure dosya paylaşımlarını paylaşılan depolama alanı olarak kullanabilirsiniz. Ayrıca, bu senaryo için [Azure disklerini](../../virtual-machines/windows/managed-disks-overview.md) de göz önünde bulundurun.
+Şu anda bir şirket içi sunucuda çalışan bir uygulama için, dosyaları bir Azure dosya paylaşımında depolamak iyi bir seçenek olabilir. Uygulamayı Azure 'a taşıyabilir ve Azure dosya paylaşımlarını paylaşılan depolama alanı olarak kullanabilirsiniz. Ayrıca, bu senaryo için [Azure disklerini](../../virtual-machines/managed-disks-overview.md) de göz önünde bulundurun.
 
 Bazı bulut uygulamaları SMB 'ye veya makine yerel veri erişimi veya paylaşılan erişim 'e bağlı değildir. Bu uygulamalar için, [Azure Blob 'ları](../blobs/storage-blobs-overview.md) gibi nesne depolama genellikle en iyi seçenektir.
 
@@ -126,7 +126,7 @@ Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için 
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Destekleniyor. | Meta verileri kopyalamaz. |
 |||||
 
-*\*Tam doğruluk: Azure dosya paylaşma yeteneklerini karşılar veya aşar.*
+*\* Tam doğruluk: Azure dosya paylaşma yeteneklerini karşılar veya aşar.*
 
 ### <a name="migration-helper-tools"></a>Geçiş Yardımcısı araçları
 

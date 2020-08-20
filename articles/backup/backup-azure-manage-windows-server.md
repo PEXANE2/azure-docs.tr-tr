@@ -3,12 +3,12 @@ title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
 description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263339"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654217"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -71,7 +71,7 @@ Yedekleme ön denetimleri, Azure VM 'leriniz için zamanlanmış yedekleme işle
 
 * **Başarılı**: Bu durum, sanal makinenizin yapılandırmasının başarılı yedeklemelere neden olması gerektiğini ve bir düzeltici eylem yapılması gerektiğini gösterir.
 * **Uyarı**: Bu durum, VM yapılandırmasındaki yedekleme *hatalarına yol açabilecek* bir veya daha fazla sorunu gösterir. Başarılı yedeklemeler sağlamak için *Önerilen* adımları sağlar. Örneğin, en son VM aracısının yüklü olmaması, yedeklemelerin aralıklı olarak başarısız olmasına neden olabilir. Bu durum, bir uyarı durumu sağlar.
-* **Kritik**: Bu durum, VM yapılandırmasında yedekleme hatalarına yol *açacak* ve başarılı yedeklemeler sağlamak için *gerekli* adımları sağlayan bir veya daha fazla kritik sorunu belirtir. Örneğin, bir VM 'nin NSG kurallarına neden olan bir ağ sorunu, sanal makinenin Azure Backup hizmetiyle iletişim kurmasını önlediği için yedeklemelerin başarısız olmasına neden olur. Bu durum kritik bir durum sağlar.
+* **Kritik**: Bu durum, VM yapılandırmasında yedekleme hatalarına yol *açacak* ve başarılı yedeklemeler sağlamak için *gerekli* adımları sağlayan bir veya daha fazla kritik sorunu belirtir. Örneğin, bir VM 'nin NSG kurallarına neden olan bir ağ sorunu, sanal makinenin Azure Backup hizmetiyle iletişim kurmasını önlediği için yedeklemelerin başarısız olmasına neden olur. Bu durum, kritik bir durum sağlar.
 
 Kurtarma Hizmetleri kasasında VM yedeklemeleri için yedekleme ön denetimleri tarafından bildirilen tüm sorunları çözmeye başlamak için aşağıdaki adımları izleyin.
 
@@ -96,7 +96,7 @@ Yedekleme uyarıları listesi, filtrelenmiş uyarılarla ilgili seçili bilgiler
 | Uyarı Düzeyi | Uyarı üreten olaylar |
 | ----------- | ----------- |
 | Kritik | Yedekleme işleri başarısız olduğunda, kurtarma işleri başarısız olduğunda ve bir sunucuda korumayı durdurduğunuzda ancak verileri koruduğunuz zaman kritik uyarılar alırsınız.|
-| Uyarı | Şu durumlarda uyarı uyarısı alırsınız: yedekleme işleri uyarılarla tamamlandı, örneğin, bozulma sorunları nedeniyle 100 'den az dosya yedeklenmemişse veya 1.000.000 ' den fazla dosya başarıyla yedekleniyorsa). |
+| Uyarı | Şu durumlarda uyarı uyarısı alırsınız: yedekleme işleri uyarılarla tamamlanır. Örneğin, bozulma sorunları nedeniyle 100 'den az dosya yedeklenmemişse veya 1.000.000 ' den fazla dosya başarıyla yedeklendiğinde). |
 | Bilgilendirici | Şu anda, hiçbir bilgilendirme uyarısı kullanımda değil. |
 
 ### <a name="viewing-alert-details"></a>Uyarı ayrıntılarını görüntüleme

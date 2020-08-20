@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035800"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653605"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
 [Azure kullanılabilirlik alanları](../../../availability-zones/az-overview.md) , Azure 'un sağladığı yüksek kullanılabilirliğe sahip özelliklerden biridir. Kullanılabilirlik Alanları kullanmak, Azure üzerinde SAP iş yüklerinin genel kullanılabilirliğini geliştirir. Bu özellik bazı [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)zaten kullanılabilir. Gelecekte, daha fazla bölgede kullanıma sunulacaktır.
@@ -109,7 +109,7 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
 - SAP Merkezi Hizmetleri ve DBMS katmanının yük devretme kümelerinin yük dengeleyiciler için [Standart SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kullanmanız gerekir. Temel Load Balancer bölgeler arasında çalışmaz.
 - SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağları ile birlikte bölgeler arasında uzatılır. Her bölge için ayrı sanal ağlara gerek yoktur.
 - Dağıttığınız tüm sanal makineler için [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, bölgesel dağıtımları için desteklenmez.
-- Azure Premium Depolama ve [Ultra SSD depolama](../../windows/disks-types.md#ultra-disk) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
+- Azure Premium Depolama ve [Ultra SSD depolama](../../disks-types.md#ultra-disk) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
 - Aynı, paylaşılan bir disk (Windows), CIFS paylaşım (Windows) veya NFS paylaşım (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu Paylaşılan diskleri veya paylaşımları bölgeler arasında çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
   - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](./sap-high-availability-guide-wsfc-shared-disk.md)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
   - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](./high-availability-guide-suse-nfs.md)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
@@ -137,7 +137,7 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
 - SAP Merkezi Hizmetleri ve DBMS katmanının yük devretme kümelerinin yük dengeleyiciler için [Standart SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kullanmanız gerekir. Temel Load Balancer bölgeler arasında çalışmaz.
 - SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağları ile birlikte bölgeler arasında uzatılır. Her bölge için ayrı sanal ağlara gerek yoktur.
 - Dağıttığınız tüm sanal makineler için [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, bölgesel dağıtımları için desteklenmez.
-- Azure Premium Depolama ve [Ultra SSD depolama](../../windows/disks-types.md#ultra-disk) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
+- Azure Premium Depolama ve [Ultra SSD depolama](../../disks-types.md#ultra-disk) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
 - Aynı, paylaşılan bir disk (Windows), CIFS paylaşım (Windows) veya NFS paylaşım (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu Paylaşılan diskleri veya paylaşımları bölgeler arasında çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
     - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](./sap-high-availability-guide-wsfc-shared-disk.md)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
     - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](./high-availability-guide-suse-nfs.md)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
@@ -167,7 +167,7 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
 - SAP Merkezi Hizmetleri ve DBMS katmanının yük devretme kümelerinin yük dengeleyiciler için [Standart SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kullanmanız gerekir. Temel Load Balancer bölgeler arasında çalışmaz.
 - SAP sistemini barındırmak için dağıttığınız Azure sanal ağı, alt ağları ile birlikte bölgeler arasında uzatılır. Her bölge için ayrı sanal ağlara gerek yoktur.
 - Dağıttığınız tüm sanal makineler için [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/)kullanmanız gerekir. Yönetilmeyen diskler, bölgesel dağıtımları için desteklenmez.
-- Azure Premium Depolama ve [Ultra SSD depolama](../../windows/disks-types.md#ultra-disk) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
+- Azure Premium Depolama ve [Ultra SSD depolama](../../disks-types.md#ultra-disk) alanları arasında herhangi bir tür depolama çoğaltmasını desteklemez. Uygulama (DBMS veya SAP Merkezi Hizmetler) önemli verileri çoğaltmalıdır.
 - Aynı, paylaşılan bir disk (Windows), CIFS paylaşım (Windows) veya NFS paylaşım (Linux) olan paylaşılan sapmnt dizini için de geçerlidir. Bu Paylaşılan diskleri veya paylaşımları bölgeler arasında çoğaltan bir teknoloji kullanmanız gerekir. Bu teknolojiler desteklenir:
     - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](./sap-high-availability-guide-wsfc-shared-disk.md)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
     - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](./high-availability-guide-suse-nfs.md)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.

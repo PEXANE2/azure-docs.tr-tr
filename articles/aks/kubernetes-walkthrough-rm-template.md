@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 08/18/2020
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 15217d4cb9a904f9f41725143d4ae98e9fce0035
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: bf77d1b4297c62e71f4fc227162ba2f6d1a387bd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589997"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654404"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -76,7 +76,7 @@ az ad sp create-for-rbac --skip-assignment
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-aks/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
+:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json":::
 
 Daha fazla AKS örneği için bkz. [aks hızlı başlangıç şablonları][aks-quickstart-templates] sitesi.
 

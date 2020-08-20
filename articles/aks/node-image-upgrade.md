@@ -5,15 +5,15 @@ author: laurenhughes
 ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 08/17/2020
+ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562796"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654285"
 ---
-# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Önizleme-Azure Kubernetes Service (AKS) düğümü görüntü yükseltmeleri
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes hizmeti (AKS) düğümü görüntüsü yükseltme
 
 AKS, en yeni işletim sistemi ve çalışma zamanı güncelleştirmeleriyle güncel olması için bir düğümdeki görüntülerin yükseltilmesini destekler. AKS, en son güncelleştirmelerle hafta başına yeni bir görüntü sağlar; bu nedenle, Linux veya Windows yamaları dahil olmak üzere en son özellikler için düğümlerinizin görüntülerini düzenli olarak yükseltmeniz yararlı olur. Bu makalede, AKS küme düğümü görüntülerinin nasıl yükseltilebileceği ve Kubernetes 'in sürümünü yükseltmeden önce düğüm havuzu görüntülerinin nasıl güncelleşileceği gösterilmektedir.
 
@@ -21,23 +21,9 @@ AKS tarafından sunulan en son görüntüler hakkında bilgi edinmek istiyorsan�
 
 Kümeniz için Kubernetes sürümünü yükseltme hakkında daha fazla bilgi için bkz. [AKS kümesini yükseltme][upgrade-cluster].
 
-## <a name="register-the-node-image-upgrade-preview-feature"></a>Düğüm görüntüsü yükseltme önizleme özelliğini kaydetme
+## <a name="install-the-aks-cli-extension"></a>AKS CLı uzantısını yükler
 
-Önizleme döneminde düğüm görüntüsü yükseltme özelliğini kullanmak için, özelliği kaydetmeniz gerekir.
-
-```azurecli
-# Register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "NodeImageUpgradePreview"
-```
-
-Kaydın tamamlanması birkaç dakika sürer. Özelliğin kaydedildiğini doğrulamak için aşağıdaki komutu kullanın:
-
-```azurecli
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodeImageUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-Önizleme süresince, düğüm görüntüsü yükseltmesini kullanabilmeniz için *aks-Preview* CLI uzantısının olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeler olup olmadığını denetleyin:
+Bir sonraki Core CLı sürümü yayınlanmadan önce, düğüm görüntüsü yükseltmesini kullanabilmeniz için *aks-Preview* CLI uzantısının olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeler olup olmadığını denetleyin:
 
 ```azurecli
 # Install the aks-preview extension
@@ -46,12 +32,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
-
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Tüm düğüm havuzlarındaki tüm düğümleri yükselt
 

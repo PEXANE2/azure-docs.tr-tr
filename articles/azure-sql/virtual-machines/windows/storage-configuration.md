@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667378"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653367"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM’leri için depolama yapılandırması
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,13 +28,13 @@ Bu konu, Azure 'un sağlama ve mevcut VM 'Ler için SQL Server sanal makinelerin
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz aşağıdaki özellikleri gerektirir:
 
 * [SQL Server Galeri görüntüsü](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)ile sağlandı.
 * [Kaynak Yöneticisi dağıtım modelini](../../../azure-resource-manager/management/deployment-models.md)kullanır.
-* [Premium SSD 'ler](../../../virtual-machines/windows/disks-types.md)kullanır.
+* [Premium SSD 'ler](../../../virtual-machines/disks-types.md)kullanır.
 
 ## <a name="new-vms"></a>Yeni VM 'Ler
 
@@ -115,7 +115,7 @@ SQL Server VM oluşturma işlemi sırasında yapılandırılmış sürücüler i
 Bu bölümde, Azure 'un Azure portal SQL Server VM sağlama veya yapılandırma sırasında otomatik olarak gerçekleştirdiği depolama yapılandırması değişikliklerine yönelik bir başvuru sağlanmaktadır.
 
 * Azure, VM 'nizden seçilen depolama alanından bir depolama havuzu yapılandırır. Bu konunun sonraki bölümünde, depolama havuzu yapılandırması hakkında ayrıntılı bilgi verilmektedir.
-* Otomatik depolama yapılandırması her zaman [Premium SSDs](../../../virtual-machines/windows/disks-types.md) P30 veri disklerini kullanır. Sonuç olarak, seçtiğiniz terabaytlık ve sanal makinenize bağlı veri disklerinin sayısı arasında bir 1:1 eşlemesi vardır.
+* Otomatik depolama yapılandırması her zaman [Premium SSDs](../../../virtual-machines/disks-types.md) P30 veri disklerini kullanır. Sonuç olarak, seçtiğiniz terabaytlık ve sanal makinenize bağlı veri disklerinin sayısı arasında bir 1:1 eşlemesi vardır.
 
 Fiyatlandırma bilgileri için **disk depolama** sekmesindeki [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage) sayfasına bakın.
 

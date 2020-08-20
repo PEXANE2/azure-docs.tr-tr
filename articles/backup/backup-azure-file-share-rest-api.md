@@ -3,12 +3,12 @@ title: REST API ile Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için REST API kullanmayı öğrenin
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036751"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654149"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak Azure dosya paylaşma 'yı yedekleme
 
@@ -54,13 +54,13 @@ URI 'de tüm gerekli parametreler verildiğinden, ayrı bir istek gövdesine ger
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Yanıtlar
+#### <a name="responses-to-the-refresh-operation"></a>Yenileme işlemine yanıtlar
 
 ' Refresh ' işlemi [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-##### <a name="example-responses"></a>Örnek yanıtlar
+##### <a name="example-responses-to-the-refresh-operation"></a>Yenileme işlemine örnek yanıtlar
 
 *Post* isteği gönderildikten sonra, 202 (kabul edildi) yanıtı döndürülür.
 
@@ -421,7 +421,7 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Ardından, *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
+Ardından,  *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
@@ -487,13 +487,13 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 }
 ```
 
-### <a name="responses"></a>Yanıtlar
+### <a name="responses-to-the-on-demand-backup-operation"></a>İsteğe bağlı yedekleme işlemine yanıtlar
 
 İsteğe bağlı yedekleme tetiklenmesi [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Bu işlem tamamlandığında, başka bir işlem oluşturulduğunda ve 200 (Tamam) olduğunda iki yanıt döndürür: 202 (kabul edildi).
 
-### <a name="example-responses"></a>Örnek yanıtlar
+### <a name="example-responses-to-the-on-demand-backup-operation"></a>İsteğe bağlı yedekleme işlemine örnek yanıtlar
 
 İstek üzerine yedekleme için *Post* isteğini gönderdikten sonra, ilk yanıt bir konum üst bilgisi veya Azure-Async-header ile 202 (kabul edilir) olur.
 
@@ -516,7 +516,7 @@ Bu işlem tamamlandığında, başka bir işlem oluşturulduğunda ve 200 (Tamam
 'Content-Length': '0'
 ```
 
-Ardından, *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
+Ardından,  *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01

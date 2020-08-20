@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831116"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654659"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -118,7 +118,7 @@ Bu belgeler, depolama türleri ve yüksek kullanılabilirlik yapılandırması s
 
 İlke ' de şunları yapmalısınız:
 
-- Standart HDD 'ler üzerinden Premium SSD 'leri kullanın. Kullanılabilir disk türleri hakkında daha fazla bilgi edinmek için bkz. makalemiz [bir disk türü seçin](../../windows/disks-types.md)
+- Standart HDD 'ler üzerinden Premium SSD 'leri kullanın. Kullanılabilir disk türleri hakkında daha fazla bilgi edinmek için bkz. makalemiz [bir disk türü seçin](../../disks-types.md)
 - Yönetilmeyen diskler üzerinde Azure yönetilen disklerini kullanma
 - Disk yapılandırmanızla yapılandırılmış yeterli ıOPS ve g/ç aktarım hızına sahip olduğunuzdan emin olun
 - Maliyetli bir depolama yapılandırması sağlamak için/Hana/Data ve/Hana/log birimini birleştirin

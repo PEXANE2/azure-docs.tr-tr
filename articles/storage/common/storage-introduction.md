@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133789"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653809"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Temel Azure depolama hizmetlerine giriş
 
@@ -21,7 +21,7 @@ Azure depolama platformu, Microsoft 'un modern veri depolama senaryolarına yön
 
 - **Dayanıklı ve yüksek oranda kullanılabilir.** Yedeklilik, verilerinizin geçici donanım hataları durumunda güvende kalmasını sağlar. Ayrıca, yerel felaketler ya da doğal afetlere karşı ek koruma için verileri meri merkezleri ya da coğrafi bölgeler arasında çoğaltmayı seçebilirsiniz. Bu şekilde çoğaltılan veriler beklenmeyen bir kesinti durumunda yüksek oranda kullanılabilir olmaya devam eder.
 - **Güvende.** Bir Azure depolama hesabına yazılan tüm veriler hizmet tarafından şifrelenir. Azure Depolama, verilerinize erişmesi gereken kişiler üzerinde ayrıntılı denetime sahip olmanızı sağlar.
-- **Ölçeklenebilir.** Azure Depolama, günümüzün uygulamalarına ait veri depolama ve performans gereksinimlerini karşılamak için yüksek düzeyde ölçeklenebilir şekilde tasarlanmıştır.
+- **Ölçeklenebilirliği.** Azure Depolama, günümüzün uygulamalarına ait veri depolama ve performans gereksinimlerini karşılamak için yüksek düzeyde ölçeklenebilir şekilde tasarlanmıştır.
 - **Lebilmesi.** Azure, donanım bakımını, güncelleştirmeleri ve kritik sorunları sizin için işler.
 - **Erişilebilir.** Azure Depolama’daki verilere dünyanın herhangi bir yerinden HTTP ya da HTTPS aracılığıyla erişilebilir. Microsoft, Azure depolama için, .NET, Java, Node.js, Python, PHP, Ruby, Go ve diğerleri gibi çeşitli dillerde istemci kitaplıkları sağlar ve bu da yetişkinlere yönelik REST API. Azure Depolama, Azure PowerShell veya Azure CLI’de betik oluşturmayı destekler. Azure portalı ve Azure Depolama Gezgini ise verilerinizle çalışmaya yönelik kolay görsel çözümler sunar.  
 
@@ -30,10 +30,10 @@ Azure depolama platformu, Microsoft 'un modern veri depolama senaryolarına yön
 Azure Storage platformu aşağıdaki veri hizmetlerini içerir:
 
 - [Azure Blobları](../blobs/storage-blobs-introduction.md): Metin ve ikili veriler için yüksek düzeyde ölçeklenebilir nesne deposu. Ayrıca Data Lake Storage 2. aracılığıyla büyük veri analizi desteğini de içerir.
-- [Azure Dosyaları](../files/storage-files-introduction.md): Bulut veya şirket içi dağıtımlar için yönetilen dosya paylaşımları.
+- [Azure dosyaları](../files/storage-files-introduction.md): bulut veya şirket içi dağıtımlar için yönetilen dosya paylaşımları.
 - [Azure Kuyrukları](../queues/storage-queues-introduction.md): Uygulama bileşenleri arasında güvenilir mesajlaşmaya yönelik bir mesajlaşma deposu.
 - [Azure Tabloları](../tables/table-storage-overview.md): Yapılandırılmış verilerin şemasız depolanmasına yönelik bir NoSQL deposu.
-- [Azure diskleri](../../virtual-machines/windows/managed-disks-overview.md): Azure VM 'ler için blok düzeyinde depolama birimleri.
+- [Azure diskleri](../../virtual-machines/managed-disks-overview.md): Azure VM 'ler için blok düzeyinde depolama birimleri.
 
 Her hizmete bir depolama hesabı aracılığıyla erişilir. Başlamak için bkz. [Depolama hesabı oluşturma](storage-account-create.md).
 
@@ -41,7 +41,7 @@ Her hizmete bir depolama hesabı aracılığıyla erişilir. Başlamak için bkz
 
 Aşağıdaki tabloda dosyalar, Bloblar, diskler, kuyruklar ve tablolar karşılaştırılmaktadır ve her biri için örnek senaryolar gösterilmiştir.
 
-| Özellik | Description | Kullanılması gereken durumlar |
+| Özellik | Açıklama | Kullanılması gereken durumlar |
 |--------------|-------------|-------------|
 | **Azure Dosyaları** |, Sektör standart sunucu Ileti bloğu (SMB) protokolü aracılığıyla herhangi bir yerden erişebileceğiniz tam olarak yönetilen bulut dosya paylaşımları sunar.<br><br>Azure dosya paylaşımlarını buluttan veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarından bağlayabilirsiniz. | Azure 'da çalışan ve diğer uygulamalar arasında veri paylaşmak için yerel dosya sistemi API 'Lerini zaten kullanan bir uygulamayı buluta "kaldırmak ve kaydırmak" istiyorsunuz.<br/><br/>Şirket içi dosya sunucularını veya NAS cihazlarını değiştirmek veya eklemek istiyorsunuz.<br><br> Birçok sanal makineden erişilmesi gereken geliştirme ve hata ayıklama araçlarını depolamak istiyorsunuz. |
 | **Azure Blobları** | Yapılandırılmamış verilerin, Blok Bloblarında çok büyük ölçekte depolanmasına ve erişilmesine izin verir.<br/><br/>Ayrıca kurumsal büyük veri analizi çözümleri için [Azure Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md) destekler. | Uygulamanızın akış ve rastgele erişim senaryolarını desteklemesini istiyorsunuz.<br/><br/>Uygulama verilerine dilediğiniz yerden erişebilmek istiyorsunuz.<br/><br/>Azure 'da bir kurumsal veri Gölü oluşturmak ve büyük veri analizi gerçekleştirmek istiyorsunuz. |
@@ -67,7 +67,7 @@ BLOB depolama hakkında daha fazla bilgi için bkz. [BLOB depolamaya giriş](../
 
 ## <a name="azure-files"></a>Azure Dosyaları
 
-[Azure Dosyaları](../files/storage-files-introduction.md), standart Sunucu İleti Bloğu (SMB) protokolü kullanılarak erişilebilen yüksek oranda kullanılabilir ağ dosya paylaşımları oluşturmanıza olanak tanır. Bu durum, birden fazla VM’nin hem okuma hem de yazma erişimi ile aynı dosyaları paylaşabildiği anlamına gelir. Dosyaları REST arabirimi veya depolama istemci kitaplıkları kullanarak da okuyabilirsiniz.
+[Azure dosyaları](../files/storage-files-introduction.md) , standart sunucu ileti bloğu (SMB) protokolü kullanılarak erişilebilen yüksek oranda kullanılabilir ağ dosya paylaşımları ayarlamanıza olanak sağlar. Bu durum, birden fazla VM’nin hem okuma hem de yazma erişimi ile aynı dosyaları paylaşabildiği anlamına gelir. Dosyaları REST arabirimi veya depolama istemci kitaplıkları kullanarak da okuyabilirsiniz.
 
 Dosyalara dünyanın herhangi bir yerinden dosyayı işaret eden ve paylaşılan erişim imzası (SAS) belirteci içeren bir URL kullanarak erişebilme olanağı, Azure Dosyaları'nı kurumsal bir dosya paylaşımındaki dosyalardan ayıran özelliklerden biridir. SAS belirteçleri oluşturabilirsiniz; bunlar, belirli bir süre için özel bir varlığa belirli bir erişim izni verir.
 
@@ -101,7 +101,7 @@ Tablo depolama hakkında daha fazla bilgi için bkz. [Azure Tablo depolamaya gen
 
 Azure yönetilen disk, bir sanal sabit disktir (VHD). Bunu, şirket içi sunucuda bir fiziksel disk gibi düşünebilirsiniz, ancak sanallaştırılabilir. Azure tarafından yönetilen diskler, Azure 'da rastgele bir GÇ depolama nesnesi olan sayfa Blobları olarak depolanır. Sayfa Blobları, blob kapsayıcıları ve Azure depolama hesapları üzerinde bir soyutlama olduğundan, yönetilen bir disk ' Managed ' çağrısı yaptık. Yönetilen disklerle, tüm yapmanız gereken diski temin etmek ve Azure 'un geri kalanını yapması gerekir.
 
-Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/windows/managed-disks-overview.md).
+Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="types-of-storage-accounts"></a>Depolama hesabı türleri
 
@@ -150,7 +150,7 @@ Bir depolama hesabındaki kaynaklara, HTTP/HTTPS istekleri yapan herhangi bir di
 - [Azure Depolama REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [.NET için Azure depolama istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Java/Android için Azure depolama istemci kitaplığı](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Node.jsiçin Azure depolama istemci kitaplığı](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Node.jsiçin Azure depolama istemci kitaplığı ](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Python için Azure depolama istemci kitaplığı](https://github.com/Azure/azure-storage-python)
 - [PHP için Azure depolama istemci kitaplığı](https://github.com/Azure/azure-storage-php)
 - [Ruby için Azure depolama istemci kitaplığı](https://github.com/Azure/azure-storage-ruby)
