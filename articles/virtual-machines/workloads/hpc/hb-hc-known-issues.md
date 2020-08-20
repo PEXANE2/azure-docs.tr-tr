@@ -10,18 +10,19 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500027"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652874"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB serisi ve HC serisi sanal makineler ile ilgili bilinen sorunlar
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>H serisi ve N serisi VM’lerdeki bilinen sorunlar
 
-Bu makalede, HB Serisi ve HC Serisi VM 'Leri kullanırken en yaygın sorunlar ve çözümler sağlanmaktadır.
+Bu makalede, [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'leri kullanırken en yaygın sorunlar ve çözümler sağlanmaktadır.
 
 ## <a name="dram-on-hb-series"></a>DRAM on HB Serisi
 
@@ -87,6 +88,15 @@ Linux altında bir HB Serisi VM 'yi önyüklerken aşağıdaki çekirdek uyarı 
 
 Bu uyarıyı yoksayabilirsiniz. Bunun nedeni, Azure hiper yöneticinin zaman içinde ele alacak bilinen bir sınırlamasıdır.
 
+
+## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>InfiniBand etkin N serisi VM boyutlarında InfiniBand sürücü yüklemesi
+
+NC24r_v3 ve ND40r_v2, NC24r ve NC24r_v2 SR-ıOV etkin olmadığı sürece SR-ıOV etkindir. [Burada](../../sizes-hpc.md#rdma-capable-instances)Bifurcation hakkında bazı ayrıntılar.
+InfiniBand (ıB), SR-ıOV etkin VM boyutları üzerinde, SR-ıOV olmayan VM boyutları ND sürücüleri gerektirdiğinden, ALıNAN sürücülerle yapılandırılabilir. Bu ıB desteği, [CentOS-HPC Vmin](configure.md)üzerinde uygun şekilde sunulmaktadır. Ubuntu için, [Belgeler](enable-infiniband.md#vm-images-with-infiniband-drivers)bölümünde açıklandığı gıbı hem ofed hem de ND sürücülerini yüklemek için [buradaki yönergeye](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) bakın.
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da [yüksek performanslı bilgi işlem](/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
+- Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin.
+- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).
