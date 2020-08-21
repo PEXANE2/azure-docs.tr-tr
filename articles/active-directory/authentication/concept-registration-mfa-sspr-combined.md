@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512984"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718926"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory genel bakış için Birleşik güvenlik bilgileri kaydı
 
@@ -32,7 +32,7 @@ Bu makalede, Birleşik güvenlik kaydının ne olduğu özetlenmektedir. Birleş
 
 ![Bir kullanıcı için kayıtlı güvenlik bilgilerini gösteren profilim](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkisini anladığınızdan emin olmak için bu yöneticiye odaklanmış belgeleri ve Kullanıcı odaklı belgeleri gözden geçirin. Kullanıcılarınıza yeni deneyim hazırlamak ve başarılı bir dağıtım sağlamaya yardımcı olmak için, [Kullanıcı belgelerine](../user-help/user-help-security-info-overview.md) yönelik eğitime dayandırın.
+Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkisini anladığınızdan emin olmak için bu yöneticiye odaklanmış belgeleri ve Kullanıcı odaklı belgeleri gözden geçirin. Kullanıcılarınıza yeni deneyim hazırlamak ve başarılı bir dağıtım sağlamaya yardımcı olmak için, [Kullanıcı belgelerine](../user-help/security-info-setup-signin.md) yönelik eğitime dayandırın.
 
 Azure AD Birleşik güvenlik bilgileri kaydı Şu anda Azure ABD Kamu, Azure Almanya veya Azure Çin 21Vianet gibi ulusal bulutlarda kullanılamaz.
 
@@ -56,13 +56,13 @@ Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri deste
 | Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
 | Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
 | Donanım belirteci | Hayır | Hayır | Evet |
-| Telefon | Yes | Yes | Yes |
-| Alternatif telefon | Yes | Yes | Yes |
+| Telefon | Evet | Evet | Evet |
+| Alternatif telefon | Evet | Evet | Evet |
 | Ofis telefonu | Hayır | Hayır | Hayır |
-| E-posta | Yes | Yes | Yes |
+| E-posta | Evet | Evet | Evet |
 | Güvenlik soruları | Evet | Hayır | Evet |
 | Uygulama parolaları | Evet | Hayır | Evet |
-| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Yes | Yes | Yes |
+| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Evet | Evet | Evet |
 
 > [!NOTE]
 > Uygulama parolaları yalnızca Multi-Factor Authentication için zorlanan kullanıcılar tarafından kullanılabilir. Uygulama parolaları, koşullu erişim ilkesi aracılığıyla Multi-Factor Authentication için etkinleştirilen kullanıcılar tarafından kullanılamaz.

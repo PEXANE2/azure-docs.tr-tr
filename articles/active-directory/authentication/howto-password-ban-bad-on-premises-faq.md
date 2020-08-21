@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24db7981557cf76f9108a1dca37ea4c4c9f51951
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283087"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717787"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD parola koruması şirket içi sık sorulan sorular
 
@@ -46,7 +46,7 @@ Parola değişikliği, bir Kullanıcı eski parola hakkında bilgi sahibi oldukt
 
 Bir parola kümesi (bazen parola sıfırlama olarak adlandırılır), bir yönetici bir hesaptaki parolayı yeni bir parolayla Değiştir, örneğin Active Directory Kullanıcılar ve bilgisayarlar Yönetim Aracı ' nı kullanmaktır. Bu işlem, yüksek düzeyde ayrıcalık (genellikle etki alanı Yöneticisi) gerektirir ve işlemi gerçekleştiren kişi genellikle eski parola hakkında bilgi sahibi değildir. Yardım Masası senaryoları genellikle parola kümeleri gerçekleştirir, örneğin, parolasını unutmuş bir kullanıcıyı öğreniyor. Ayrıca, yeni bir kullanıcı hesabı bir parola ile ilk kez oluşturulduğunda parola ayarlama olaylarını da görürsünüz.
 
-Parola doğrulama ilkesi, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığına bakılmaksızın aynı şekilde davranır. Azure AD parola koruması DC Aracısı hizmeti, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığını bildirmek için farklı olayları günlüğe kaydeder.  Bkz. [Azure AD parola koruması izleme ve günlüğe kaydetme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+Parola doğrulama ilkesi, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığına bakılmaksızın aynı şekilde davranır. Azure AD parola koruması DC Aracısı hizmeti, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığını bildirmek için farklı olayları günlüğe kaydeder.  Bkz. [Azure AD parola koruması izleme ve günlüğe kaydetme](./howto-password-ban-bad-on-premises-monitor.md).
 
 **S: Active Directory Kullanıcıları ve bilgisayarları Yönetimi ek bileşenini kullanarak zayıf bir parola ayarlamaya çalışırken neden yinelenen parola reddetme olayları günlüğe kaydedilir?**
 
@@ -54,7 +54,7 @@ Active Directory Kullanıcıları ve Bilgisayarları yönetim ek bileşeni, önc
 
 **S: Azure AD parola koruma parolası doğrulama olayları neden boş bir kullanıcı adıyla günlüğe kaydediliyor?**
 
-Active Directory, örneğin [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API 'sini kullanarak etki alanının geçerli parola karmaşıklığı gereksinimlerini geçirmesinin başarılı olup olmadığını görmek için bir parolayı test etme özelliğini destekler. Bu şekilde bir parola doğrulandığında, test, Azure AD parola koruması gibi parola filtresi DLL tabanlı ürünlerin doğrulanmasını de içerir, ancak belirli bir parola filtresi dll 'sine geçirilen kullanıcı adları boş olur. Bu senaryoda, Azure AD parola koruması Şu anda etkin olan parola ilkesini kullanarak parolayı doğrular ve sonucu yakalamak için bir olay günlüğü iletisi verir, ancak olay günlüğü iletisinde boş Kullanıcı adı alanları vardır.
+Active Directory, örneğin [NetValidatePasswordPolicy](/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API 'sini kullanarak etki alanının geçerli parola karmaşıklığı gereksinimlerini geçirmesinin başarılı olup olmadığını görmek için bir parolayı test etme özelliğini destekler. Bu şekilde bir parola doğrulandığında, test, Azure AD parola koruması gibi parola filtresi DLL tabanlı ürünlerin doğrulanmasını de içerir, ancak belirli bir parola filtresi dll 'sine geçirilen kullanıcı adları boş olur. Bu senaryoda, Azure AD parola koruması Şu anda etkin olan parola ilkesini kullanarak parolayı doğrular ve sonucu yakalamak için bir olay günlüğü iletisi verir, ancak olay günlüğü iletisinde boş Kullanıcı adı alanları vardır.
 
 **S: Azure AD parola koruması 'Nın diğer parola filtresi tabanlı ürünlerle yan yana yüklenmesi destekleniyor mu?**
 
@@ -74,13 +74,13 @@ FRS (DFSR 'nin öncül teknolojisi) birçok bilinen soruna sahiptir ve Windows S
 
 Daha fazla bilgi için lütfen aşağıdaki makalelere bakın:
 
-[SYSVOL çoğaltmasını DFSR 'ye geçirme durumu](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[SYSVOL çoğaltmasını DFSR 'ye geçirme durumu](/archive/blogs/askds/the-case-for-migrating-sysvol-to-dfsr)
 
 [Son, FRS için Nigh](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
 Etki alanınız zaten DFSR kullanıyorsa, Azure AD parola korumasını yüklemeden önce bu uygulamayı DFSR 'yi kullanacak şekilde geçirmeniz gerekır. Daha fazla bilgi için şu bağlantıya bakın:
 
-[SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
 > Azure AD parola koruması DC Aracısı yazılımı, halen SYSVOL çoğaltması için FRS kullanan etki alanlarındaki etki alanı denetleyicilerine yüklenir, ancak yazılım bu ortamda düzgün çalışmaz. Diğer negatif yan etkiler, çoğaltılamayan tek dosyaları ve SYSVOL geri yükleme yordamlarını başarılı olarak, ancak tüm dosyaları çoğaltamaz. Yalnızca DFSR 'nin kendi avantajları ve ayrıca Azure AD parola koruması dağıtımının engellemesini kaldırmak için etki alanınızı en kısa sürede DFSR 'yi kullanacak şekilde geçirmeniz gerekir. Yazılımın gelecekteki sürümleri, hala FRS kullanan bir etki alanında çalışırken otomatik olarak devre dışı bırakılacaktır.
@@ -101,7 +101,7 @@ Hayır. Proxy sunucusu durum bilgisiz olduğundan, belirli bir proxy sunucusunun
 
 Evet. Azure AD parola koruma proxy hizmeti ve Azure AD Connect hiçbir şekilde doğrudan çakışmalıdır.
 
-Ne yazık ki, Azure AD parola koruma proxy 'Si yazılımı tarafından yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmeti sürümü ile [Azure Active Directory uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) yazılımı tarafından yüklenen hizmetin sürümü arasında bir uyumsuzluk bulundu. Bu uyumsuzluk, aracı güncelleştiricisi hizmetinin yazılım güncelleştirmeleri için Azure ile bağlantı kurabileceğinden kaynaklanabilir. Aynı makinede Azure AD parola koruma proxy ve Azure Active Directory Uygulama Ara Sunucusu yüklenmesi önerilmez.
+Ne yazık ki, Azure AD parola koruma proxy 'Si yazılımı tarafından yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmeti sürümü ile [Azure Active Directory uygulama ara sunucusu](../manage-apps/application-proxy.md) yazılımı tarafından yüklenen hizmetin sürümü arasında bir uyumsuzluk bulundu. Bu uyumsuzluk, aracı güncelleştiricisi hizmetinin yazılım güncelleştirmeleri için Azure ile bağlantı kurabileceğinden kaynaklanabilir. Aynı makinede Azure AD parola koruma proxy ve Azure Active Directory Uygulama Ara Sunucusu yüklenmesi önerilmez.
 
 **S: DC aracıları ve proxy 'lerin hangi sırada yüklü ve kayıtlı olması gerekir?**
 

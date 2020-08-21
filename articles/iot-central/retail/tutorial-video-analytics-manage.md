@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038472"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719079"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Öğretici: bir video analizini Izleme ve yönetme-nesne ve hareket algılama uygulaması
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| adlı yönetilen örnek, |
 |amsAccountName| AccountName|
 
-Uygulamanızdaki **izleyici** panosuna gidin. Ardından, **çıkarım olayı video** kutucuğunda yakalanan nesne algılama köprülerinin birine tıklayın. Video, yerel video oynatıcı tarafından görüntülenen bir sayfada görünür:
+**Camera-003** cihazına gidin ve **Pano** sekmesini seçin. Ardından, **çıkarım olayı video** kutucuğunda yakalanan nesne algılama köprülerinin birine tıklayın. Video, yerel video oynatıcı tarafından görüntülenen bir sayfada görünür:
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Video kod parçacığı":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>Uygulama panosundaki sanal cihazları değiştirme
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>Uygulama panolarındaki sanal cihazları değiştirme
 
 Uygulama panoları başlangıçta IoT Central sanal cihazlardan oluşturulan telemetri ve özelliklerle doldurulur. Kutucukları gerçek kameralardan veya Live555 benzeticisinden telemetri olarak yapılandırmak için aşağıdaki adımları izleyin:
 
-1. **Gerçek kamera İzleyicisi** panosuna gidin.
+1. **(Örnek) gerçek kamera İzleyicisi** uygulama panosuna gidin.
 1. **Düzenle**’yi seçin.
+1. **Dekont** kutucuğunu seçin ve silin.
+1. Pano başlığını *gerçek kamera Izleyicisine*değiştirin.
 1. **Çıkarım sayısı** kutucuğunda Yapılandır simgesini seçin.
 1. **Grafiği Yapılandır** bölümünde, **LVA Edge nesne algılayıcısı** cihaz grubundaki bir veya daha fazla gerçek kameraları seçin.
 1. `AI Inference Interface/Inference Count`Telemetri alanını seçin.
 1. **Güncelleştir**’i seçin.
-
-   
 
 1. Aşağıdaki kutucuklar için adımları yineleyin:
     1. **Algılama** pasta grafiği `AI Inference Interface/Inference/entity/tag/value` telemetri türünü kullanır.

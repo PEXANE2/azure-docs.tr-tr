@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507187"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717889"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -41,7 +41,7 @@ Ağ Ilkesi ve erişim Hizmetleri, kuruluşlara şu olanakları sağlar:
 * Cihazların ağ kaynaklarına kısıtlanmamış veya kısıtlı erişim verilip verilmediğini belirlemek için ağ erişim koruması (NAP) istemci sistem durumu ilkeleri oluşturun ve uygulayın.
 
 * 802.1 x özellikli kablosuz erişim noktalarına ve Ethernet anahtarlarına erişim için kimlik doğrulama ve yetkilendirmeyi zorlamak için bir yol sağlar.
-  Daha fazla bilgi için bkz. [ağ Ilkesi sunucusu](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top).
+  Daha fazla bilgi için bkz. [ağ Ilkesi sunucusu](/windows-server/networking/technologies/nps/nps-top).
 
 Kuruluşların güvenliği artırmak ve yüksek düzeyde uyumluluk sağlaması için, kullanıcıların VPN sunucusundaki sanal bağlantı noktasına bağlanmak üzere iki aşamalı doğrulama kullanmasını sağlamak üzere NPS 'YI Azure Multi-Factor Authentication ile tümleştirilebilir. Kullanıcılara erişim izni verilmesi için, bunların Kullanıcı adı ve parola birleşimini ve denetdukları diğer bilgileri sağlaması gerekir. Bu bilgiler güvenilir olmalı ve kolayca çoğaltılmamalıdır. Bir cep telefonu numarası, bir yer çizgisi numarası ya da bir mobil cihazda uygulama içerebilir.
 
@@ -94,7 +94,7 @@ Bu makalede, Microsoft Windows Server 2016 kullanan ve VPN sunucunuzun bağlant�
 
 Ağ Ilkesi ve erişim Hizmetleri, RADIUS sunucusu ve istemci işlevselliği sağlar. Bu makalede, ortamınızdaki bir üye sunucusuna veya etki alanı denetleyicisine ağ Ilkesi ve erişim Hizmetleri rolü yüklediğinizi varsayılmaktadır. Bu kılavuzda, bir VPN yapılandırması için RADIUS yapılandırırsınız. Ağ Ilkesi ve erişim Hizmetleri rolünü VPN *sunucunuz dışında bir sunucuya yükler* .
 
-Ağ Ilkesi ve erişim Hizmetleri rol hizmeti Windows Server 2012 veya sonraki bir sürümü yükleme hakkında bilgi için bkz. [NAP sistem durumu Ilkesi sunucusu yükleme](https://technet.microsoft.com/library/dd296890.aspx). Windows Server 2016 ' de NAP kullanımdan kaldırılmıştır. NPS 'nin bir etki alanı denetleyicisine yüklenmesi önerisi dahil olmak üzere en iyi NPS yöntemlerinin açıklaması için bkz. [NPS Için en iyi uygulamalar](https://technet.microsoft.com/library/cc771746).
+Ağ Ilkesi ve erişim Hizmetleri rol hizmeti Windows Server 2012 veya sonraki bir sürümü yükleme hakkında bilgi için bkz. [NAP sistem durumu Ilkesi sunucusu yükleme](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). Windows Server 2016 ' de NAP kullanımdan kaldırılmıştır. NPS 'nin bir etki alanı denetleyicisine yüklenmesi önerisi dahil olmak üzere en iyi NPS yöntemlerinin açıklaması için bkz. [NPS Için en iyi uygulamalar](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-mfa-license"></a>Azure MFA lisansı
 
@@ -446,13 +446,13 @@ Azure Multi-Factor Authentication günlüğünden ilgili bir olay burada göster
 
 ![Azure Multi-Factor Authentication günlükleri](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-Gelişmiş sorun giderme yapmak için, NPS hizmetinin yüklü olduğu NPS veritabanı biçim günlük dosyalarına başvurun. Günlük dosyaları, _%systemroot%\System32\Logs_ klasöründe virgülle ayrılmış metin dosyaları olarak oluşturulur. Günlük dosyalarının açıklaması için bkz. [NPS veritabanı biçimi günlük dosyalarını yorumlama](https://technet.microsoft.com/library/cc771748.aspx).
+Gelişmiş sorun giderme yapmak için, NPS hizmetinin yüklü olduğu NPS veritabanı biçim günlük dosyalarına başvurun. Günlük dosyaları, _%systemroot%\System32\Logs_ klasöründe virgülle ayrılmış metin dosyaları olarak oluşturulur. Günlük dosyalarının açıklaması için bkz. [NPS veritabanı biçimi günlük dosyalarını yorumlama](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)).
 
 Bunları bir elektronik tabloya veya veritabanına aktarmadığınız takdirde, bu günlük dosyalarındaki girişlerin yorumlanması zordur. Günlük dosyalarını yorumlarken size yardımcı olmak için birçok Internet kimlik doğrulama hizmeti (IAS) ayrıştırma aracını çevrimiçi bulabilirsiniz. İndirilebilir bir [paylaşılan yazılım uygulamasının](https://www.deepsoftware.com/iasviewer) çıktısı burada gösterilmektedir:
 
 ![Örnek paylaşılan yazılım uygulaması IAS ayrıştırıcısı](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-Ek sorun giderme işlemleri yapmak için Wireshark veya [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)gibi bir protokol çözümleyici kullanabilirsiniz. Wireshark ' deki aşağıdaki resimde VPN sunucusu ile NPS arasındaki RADIUS iletileri gösterilmektedir.
+Ek sorun giderme işlemleri yapmak için Wireshark veya [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)gibi bir protokol çözümleyici kullanabilirsiniz. Wireshark ' deki aşağıdaki resimde VPN sunucusu ile NPS arasındaki RADIUS iletileri gösterilmektedir.
 
 ![Filtrelenmiş trafiği gösteren Microsoft Ileti Çözümleyicisi](./media/howto-mfa-nps-extension-vpn/image50.png)
 

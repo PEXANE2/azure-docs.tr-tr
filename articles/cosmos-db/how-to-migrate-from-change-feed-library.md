@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b610748e425b9497e12c389cca4d797d6da54087
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261418"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719011"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Değişiklik akışı işlemcisi kitaplığından .NET v3 SDK Azure Cosmos DB geçirin
 
@@ -46,10 +46,6 @@ Değişiklik akışı işlemci kitaplığına benzer şekilde, .NET v3 SDK 'daki
 SDK V3 değişiklik akışı işlemcisi, eski kitaplık durumunu algılayacak ve geçirilen uygulama kodunun ilk yürütmesi üzerine otomatik olarak yeni şemaya geçirecektir. 
 
 Eski kodu kullanarak uygulamayı güvenle durdurabilir, kodu yeni sürüme geçirebilir, geçirilen uygulamayı başlatabilir ve uygulama durdurulduğunda gerçekleşen tüm değişiklikler yeni sürüm tarafından oluşturulur ve işlenir.
-
-> [!NOTE]
-> Kitaplığı kullanan uygulamalardan .NET v3 SDK 'sına geçiş tek bir yoldur çünkü durum (kiralamalar) yeni şemaya geçirilecektir. Geçiş geriye dönük olarak uyumlu değildir.
-
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82143219"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718960"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -88,7 +88,7 @@ Aşağıdaki temel gereksinimler geçerlidir:
     * Varsayılan olarak, RPC sunucu bağlantı noktası dinamik bir RPC bağlantı noktasıdır, ancak [statik bir bağlantı noktası kullanacak](#static)şekilde yapılandırılabilir.
 * Azure AD parola koruma Proxy hizmetinin yükleneceği tüm makinelerin aşağıdaki uç noktalara ağ erişimi olması gerekir:
 
-    |**Uç Nokta**|**Amaç**|
+    |**Uç Noktası**|**Amaç**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Kimlik doğrulama istekleri|
     |`https://enterpriseregistration.windows.net`|Azure AD parola koruma işlevi|
@@ -101,7 +101,7 @@ Azure AD parola koruması DC Aracısı için aşağıdaki gereksinimler geçerli
     * Active Directory etki alanı veya ormanın Windows Server 2012 etki alanı işlev düzeyinde (DFL) veya orman işlev düzeyinde (FFL) olması gerekmez. [Tasarım ilkeleri](concept-password-ban-bad-on-premises.md#design-principles)bölümünde belirtildiği gıbı, DC Aracısı veya proxy yazılımının çalışması için gereken en az DFL veya FFL yoktur.
 * Azure AD parola koruması DC Aracısı 'nı çalıştıran tüm makinelerin .NET 4,5 yüklü olması gerekir.
 * Azure AD parola koruması DC Aracısı hizmetini çalıştıran tüm Active Directory etki alanı, SYSVOL çoğaltması için Dağıtılmış Dosya Sistemi Çoğaltma (DFSR) kullanmalıdır.
-   * Etki alanınız zaten DFSR kullanıyorsa, Azure AD parola korumasını yüklemeden önce geçişi yapmanız gerekir. Daha fazla bilgi için bkz [. SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+   * Etki alanınız zaten DFSR kullanıyorsa, Azure AD parola korumasını yüklemeden önce geçişi yapmanız gerekir. Daha fazla bilgi için bkz [. SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
     > [!WARNING]
     > Azure AD parola koruması DC Aracısı yazılımı, SYSVOL çoğaltması için hala FRS (DFSR 'nin öncül teknolojisi) kullanan etki alanlarında bulunan etki alanı denetleyicilerine yüklenir, ancak yazılım bu ortamda düzgün çalışmaz.
@@ -124,14 +124,14 @@ Azure AD parola koruması proxy hizmeti için aşağıdaki gereksinimler geçerl
 * Azure AD parola koruması ara sunucusu hizmetini barındıran tüm makineler, etki alanı denetleyicilerinin proxy hizmetinde oturum açabilme izni verecek şekilde yapılandırılmalıdır. Bu özellik "Bu bilgisayara ağ üzerinden eriş" ayrıcalık ataması aracılığıyla denetlenir.
 * Azure AD parola koruması ara sunucusu hizmetini barındıran tüm makineler, giden TLS 1,2 HTTP trafiğine izin verecek şekilde yapılandırılmalıdır.
 * Azure AD parola koruma proxy hizmetini ve ormanını Azure AD 'ye kaydetmek için bir *genel yönetici* hesabı.
-* [Uygulama proxy 'si ortamı kurulum yordamları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)'nda belirtilen bağlantı noktaları ve URL 'ler kümesi için ağ erişimi etkinleştirilmelidir.
+* [Uygulama proxy 'si ortamı kurulum yordamları](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)'nda belirtilen bağlantı noktaları ve URL 'ler kümesi için ağ erişimi etkinleştirilmelidir.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD aracı Güncelleştirici önkoşullarını bağlama
 
 Microsoft Azure AD Connect Agent Güncelleştirici hizmeti, Azure AD parola koruma proxy hizmeti ile yan yana yüklenir. Microsoft Azure AD Connect Agent Güncelleştirici hizmetinin işlev yapabilmesi için ek yapılandırma gerekir:
 
-* Ortamınız bir HTTP proxy sunucusu kullanıyorsa, [mevcut şirket içi proxy sunucularıyla çalışma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)bölümünde belirtilen yönergeleri izleyin.
-* Microsoft Azure AD Connect Agent Güncelleştirici hizmeti ayrıca [TLS gereksinimlerinde](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements)belirtilen TLS 1,2 adımlarını da gerektirir.
+* Ortamınız bir HTTP proxy sunucusu kullanıyorsa, [mevcut şirket içi proxy sunucularıyla çalışma](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)bölümünde belirtilen yönergeleri izleyin.
+* Microsoft Azure AD Connect Agent Güncelleştirici hizmeti ayrıca [TLS gereksinimlerinde](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements)belirtilen TLS 1,2 adımlarını da gerektirir.
 
 > [!WARNING]
 > Azure AD parola koruma proxy 'si ve Azure AD Uygulama Ara Sunucusu, yönergelerin uygulama proxy 'Si içeriğine başvurmasının neden olduğu Microsoft Azure AD Connect aracı Güncelleştirici hizmetinin farklı sürümlerini yükler. Bu farklı sürümler yan yana yüklendiğinde uyumsuzdur ve bunu yaptığınızda, aracı Güncelleştirici hizmetinin yazılım güncelleştirmeleri için Azure 'a bağlantı kurmasını önleyecek, bu nedenle Azure AD parola koruma proxy 'sini ve uygulama ara sunucusunu hiçbir zaman aynı makineye yüklememelisiniz.

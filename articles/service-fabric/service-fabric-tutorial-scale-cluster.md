@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ö
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257113"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716903"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
@@ -33,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -80,7 +80,7 @@ Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-c
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya *üzerinde* açın.  Bu öğreticide [örnek şablon][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya * üzerinde* açın.  Bu öğreticide [örnek şablon][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
 
 Bu nedenle, *nt1InstanceCount* değerini güncelleştirerek ikinci düğüm türündeki düğümlerin sayısını değiştirirsiniz.  Bir düğüm türünü 100 ' dan fazla düğüme ölçeklendiremezsiniz.  Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır. Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 
@@ -103,7 +103,7 @@ Azure 'da çalışan bir Service Fabric kümesinde tanımlanan her düğüm tür
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya *üzerinde* açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  Bu bölümde bir Kaynak Yöneticisi şablonunu güncelleştirerek ve dağıtarak dördüncü düğüm türü eklersiniz. 
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya * üzerinde* açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  Bu bölümde bir Kaynak Yöneticisi şablonunu güncelleştirerek ve dağıtarak dördüncü düğüm türü eklersiniz. 
 
 Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sanal ağın ayrı alt ağında çalışan) ve ağ güvenlik grubunu da eklersiniz.  Yeni ölçek kümesi için yeni veya var olan genel IP adresi ve Azure yük dengeleyici kaynakları eklemeyi seçebilirsiniz.  Yeni düğüm türünün bir [dayanıklılık düzeyi][durability] ve "Standard_D2_V2" boyutu vardır.
 
@@ -144,7 +144,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-template.jsdosya *üzerinde* , sanal ağ kaynağına yeni bir alt ağ ekleyin:
+template.jsdosya * üzerinde* , sanal ağ kaynağına yeni bir alt ağ ekleyin:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -809,7 +809,7 @@ Bir Service Fabric kümesi oluşturduktan sonra, düğüm türünü (sanal makin
 > [!WARNING]
 > Bir üretim kümesinden düğüm türünü kaldırmak için Remove-AzServiceFabricNodeType kullanılması, sıklıkla kullanılması önerilmez. Düğüm türünün arkasındaki sanal makine ölçek kümesi kaynağını sildiği için bu, tehlikeli bir komuttur. 
 
-Düğüm türünü kaldırmak için [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet 'ini çalıştırın.  Düğüm türü gümüş veya altın [dayanıklılık düzeyinde][durability] olmalıdır cmdlet, düğüm türüyle ilişkili ölçek kümesini siler ve işlemin tamamlanmasını biraz zaman alır.  Ardından, kaldırılacak düğümlerin her birinde [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) cmdlet 'ini çalıştırın, bu, düğüm durumunu siler ve düğümleri kümeden kaldırır. Düğümlerde hizmetler varsa, hizmetler önce başka bir düğüme taşınır. Küme Yöneticisi çoğaltma/hizmet için bir düğüm bulamazsa, işlem gecikmeli/engellenir.
+Düğüm türünü kaldırmak için [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet 'ini çalıştırın.  Düğüm türü gümüş veya altın [dayanıklılık düzeyinde][durability]  olmalıdır cmdlet, düğüm türüyle ilişkili ölçek kümesini siler ve işlemin tamamlanmasını biraz zaman alır.  Ardından, kaldırılacak düğümlerin her birinde [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) cmdlet 'ini çalıştırın, bu, düğüm durumunu siler ve düğümleri kümeden kaldırır. Düğümlerde hizmetler varsa, hizmetler önce başka bir düğüme taşınır. Küme Yöneticisi çoğaltma/hizmet için bir düğüm bulamazsa, işlem gecikmeli/engellenir.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Düğüm kaynaklarını artırma 
-Bir Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya özgün düğüm türünü yeni bir düğüm türüyle değiştirerek (güncelleştirilmiş VM SKU 'SU veya IŞLETIM sistemi görüntüsü ile), düğüm türünün işletim sistemini yükseltebilirsiniz. Daha fazla ayrıntı için bkz. [Azure Service Fabric düğüm türünü ölçeklendirme](service-fabric-scale-up-node-type.md).
+Bir Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya özgün düğüm türünü yeni bir düğüm türüyle değiştirerek (güncelleştirilmiş VM SKU 'SU veya IŞLETIM sistemi görüntüsü ile), düğüm türünün işletim sistemini yükseltebilirsiniz. Daha fazla ayrıntı için bkz. [Azure Service Fabric düğüm türünü ölçeklendirme](service-fabric-scale-up-primary-node-type.md).
 
 > [!IMPORTANT]
 > Tehlikeli bir işlem ve desteklenmeyen sanal makine SKU 'SU veya işletim sistemi görüntüsü için hiçbir yerde değişiklik yapmayı denemeyin.
@@ -842,7 +842,7 @@ Bu mümkün değilse, yeni bir küme oluşturabilir ve eski kümenizdeki uygulam
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya *üzerinde* açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya * üzerinde* açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  
 
 İkinci düğüm türündeki VM 'lerin boyutu *vmNodeType1Size* parametresinde ayarlanır.  Standard_D2_V2 *vmNodeType1Size* parametre değerini, her bir sanal makine örneğinin kaynaklarını çift eden [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)olarak değiştirin.
 

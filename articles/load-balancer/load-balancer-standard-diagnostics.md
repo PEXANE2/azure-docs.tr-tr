@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090459"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717351"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -25,7 +25,7 @@ Azure Standart Load Balancer aşağıdaki tanılama yeteneklerini kullanıma sun
 
 * **Çok boyutlu ölçümler ve uyarılar**: Standart yük dengeleyici yapılandırmalarına yönelik [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) aracılığıyla çok boyutlu tanılama özellikleri sağlar. Standart yük dengeleyici kaynaklarınızı izleyebilir, yönetebilir ve sorun giderebilirsiniz.
 
-* **Kaynak sistem durumu**: Azure portal ve Kaynak Durumu sayfasındaki Load Balancer sayfası (izleyici altında) Standart Load Balancer için kaynak durumu bölümünü kullanıma sunar. 
+* **Kaynak sistem durumu**: Load Balancer kaynak durumu durumu Monitor altındaki kaynak durumu sayfasında bulunur. Bu otomatik denetim, Load Balancer kaynağınızın geçerli kullanılabilirliğini bildirir.
 
 Bu makalede, bu yetenekler için hızlı bir tura yer verilmiştir ve bunları Standart Load Balancer için kullanmanın yolları sunulmaktadır. 
 
@@ -91,7 +91,7 @@ Uyarıları yapılandırmak için:
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Veri yolu, Load Balancer ön ucu için hazır ve kullanılabilir mi?
 <details><summary>Genişlet</summary>
 
-Veri yolu kullanılabilirlik kullanılabilirliği ölçümü, sanal makinelerinizin bulunduğu işlem konağının bölge içindeki veri yolunun sistem durumunu açıklar. Ölçüm, Azure altyapısının sistem durumunun bir yansımasıyla aynıdır. Ölçüyü şu şekilde kullanabilirsiniz:
+Veri yolu kullanılabilirliği ölçümü, sanal makinelerinizin bulunduğu işlem konağının bölge içindeki veri yolunun sistem durumunu açıklar. Ölçüm, Azure altyapısının sistem durumunun bir yansımasıyla aynıdır. Ölçüyü şu şekilde kullanabilirsiniz:
 - Hizmetinizin dış kullanılabilirliğini izleyin
 - Daha ayrıntılı bilgi edinin ve hizmetinizin dağıtıldığı platformun sağlıklı olup olmadığını veya Konuk işletim sistemi ya da uygulama örneğinizin sağlıklı olup olmadığını anlayın.
 - Bir olayın hizmetinize mı yoksa temel alınan veri düzlemine mi ilgili olduğunu yalıtın. Bu ölçüyü durum araştırma durumu ("arka uç örneği kullanılabilirliği") ile karıştırmayın.
@@ -110,7 +110,7 @@ Standart Load Balancer kaynaklarınız için veri yolu kullanılabilirliğini al
 
 Dağıtımınızın ön ucu ve kuralıyla eşleşen bir paket düzenli aralıklarla oluşturulur. Kaynak bölgeden, arka uç havuzundaki bir VM 'nin bulunduğu konağa geçer. Yük dengeleyici altyapısı, diğer tüm trafikle aynı yük dengelemeyi ve çeviri işlemlerini gerçekleştirir. Bu araştırma, yük dengeli uç noktanıza bant içinde yer alır. Arka uç havuzunda iyi durumda olan bir VM 'nin bulunduğu işlem konağına araştırma yapıldıktan sonra, işlem Konağı yoklama hizmetine bir yanıt üretir. VM 'niz bu trafiği görmez.
 
-Veri yolu kullanılabilirliği kullanılabilirliği aşağıdaki nedenlerden dolayı başarısız olur:
+Veri yolu kullanılabilirliği aşağıdaki nedenlerden dolayı başarısız olur:
 - Dağıtımınızda arka uç havuzunda kalan sağlıklı VM yok. 
 - Bir altyapı kesintisi oluştu.
 
@@ -155,14 +155,14 @@ SNAT bağlantı istatistiklerini almak için:
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>SNAT bağlantı noktası kullanımımı ve ayırma Nasıl yaparım? kontrol edilsin mi?
 <details>
   <summary>Genişlet</summary>
-SNAT kullanım ölçümü, bir internet kaynağı ile arka uç VM veya bir yük dengeleyicinin arkasındaki sanal makine ölçek kümesi arasında kaç tane benzersiz akış oluşturulduğunu belirtir ve genel IP adresine sahip değildir. Bunu SNAT ayırma ölçümüyle karşılaştırarak, hizmetinizin, SNAT tükenmesi ve elde edilen giden akış arızası riski olup olmadığını belirleyebilirsiniz. 
+Kullanılan SNAT bağlantı noktaları ölçümü, giden akışları sürdürmek için kaç adet SNAT bağlantı noktasının tüketildiğini izler. Bu, bir internet kaynağı ile arka uç VM veya bir yük dengeleyicinin arkasındaki sanal makine ölçek kümesi arasında kaç tane benzersiz akış yapıldığını ve genel IP adresine sahip olmadığını gösterir. Kullanmakta olduğunuz SNAT bağlantı noktası sayısını ayrılan SNAT bağlantı noktaları ölçümüyle karşılaştırarak, hizmetinizin, SNAT tükenmesi ve elde edilen giden akış arızası riski olup olmadığını belirleyebilirsiniz. 
 
 Ölçümleriniz [giden akış](https://aka.ms/lboutbound) hatası riskini gösteriyorsa, makaleye başvurun ve hizmetin sistem durumunu sağlamak için bunu azaltmaya yönelik adımları uygulayın.
 
 SNAT bağlantı noktası kullanımını ve ayırmayı görüntülemek için:
 1. İstenen verilerin görüntülendiğinden emin olmak için grafiğin zaman toplamasını 1 dakika olarak ayarlayın.
-1. Ölçüm türü ve toplama olarak **Ortalama** olarak **SNAT kullanımı** ve/veya **SNAT ayırması** seçin
-    * Varsayılan olarak, bu, TCP ve UDP üzerinden toplanmış olan Load Balancer eşlenen tüm ön uç genel IP 'lerine karşılık gelen, her arka uç VM veya VMSSes tarafından ayrılan veya kullanılan, her bir arka uç VM veya tarafından kullanılan, ortalama
+1. Ölçüm türü ve toplama olarak **Ortalama** IÇIN **kullanılan SNAT bağlantı noktalarını** ve/veya **ayrılmış SNAT bağlantı noktalarını** seçin
+    * Varsayılan olarak, bu ölçümler, TCP ve UDP üzerinden toplanan Load Balancer eşlenen tüm ön uç genel IP 'lerine karşılık gelen, her bir arka uç VM 'si veya VMSS tarafından ayrılan veya kullanılan toplam SNAT bağlantı noktası sayısıdır.
     * Tarafından kullanılan veya yük dengeleyici için ayrılan toplam SNAT bağlantı noktalarını görüntülemek için ölçüm toplama **toplamını** kullanın
 1. Belirli bir **protokol türüne**, bir **arka uç IP**kümesine ve/veya **ön uç IP**'lerine filtre uygulayın.
 1. Arka uç veya ön uç örneği başına sistem durumunu izlemek için bölme uygulayın. 
@@ -252,13 +252,14 @@ Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
 
    *Şekil: Load Balancer kaynak durumu görünümü*
  
-Çeşitli kaynak sistem durumu durumları ve bunların açıklamaları aşağıdaki tabloda listelenmiştir: 
+Genel kaynak sistem durumu açıklaması [RHC belgelerinde](https://docs.microsoft.com/azure/service-health/resource-health-overview)bulunabilir. Azure Load Balancer için belirli durumlar için aşağıdaki tabloda listelenmiştir: 
 
 | Kaynak sistem durumu | Açıklama |
 | --- | --- |
 | Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
-| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. **Azure izleyici**ölçümleri ' ni seçerek sistem durumunu tanılayın  >  **Metrics**.<br>(*Kullanılamayan* durum, kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına da gelebilir.) |
-| Bilinmiyor | Standart yük dengeleyici kaynağınız için kaynak sistem durumu henüz güncelleştirilmemiş.<br>(*Bilinmeyen* durum da kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına gelebilir.)  |
+| Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %90 ' den az, ancak %25 ' ten büyük bir durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. [Veri yolu kullanılabilirliği Kılavuzu ' nu izleyerek, kullanılabilirliğinden etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını saptayın.
+| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %25 sistem durumunu daha az raporladı. Gelen bağlantı için önemli bir performans etkisi veya kullanılabilirlik eksikliği yaşanacaktır. Kullanılamaz duruma neden olan kullanıcı veya platform olayları olabilir. [Veri yolu kullanılabilirliği Kılavuzu] sorunlarını etkileyen Kullanıcı tarafından başlatılan olaylar olup olmadığını belirleme. |
+| Bilinmiyor | Standart yük dengeleyici kaynağınızın kaynak sistem durumu henüz güncelleştirilmemiş veya son 10 dakika boyunca veri yolu kullanılabilirliği bilgilerini almamış. Bu durum geçici olmalıdır ve veriler alındıktan hemen sonra doğru durum yansıtılacaktır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

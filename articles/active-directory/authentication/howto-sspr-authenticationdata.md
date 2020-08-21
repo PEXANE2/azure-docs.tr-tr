@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22037468c47de45513351e1d6126d3f3e5fccadc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035392"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717804"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Azure Active Directory self servis parola sıfırlama için Kullanıcı kimlik doğrulaması iletişim bilgilerini önceden doldur (SSPR)
 
@@ -88,7 +88,7 @@ Aşağıdaki alanlar PowerShell aracılığıyla ayarlanabilir:
 
 ### <a name="use-powershell-version-1"></a>PowerShell sürüm 1 kullan
 
-Başlamak için [Azure AD PowerShell modülünü indirip yükleyin](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Yüklendikten sonra, her alanı yapılandırmak için aşağıdaki adımları kullanın.
+Başlamak için [Azure AD PowerShell modülünü indirip yükleyin](/previous-versions/azure/jj151815(v=azure.100)#bkmk_installmodule). Yüklendikten sonra, her alanı yapılandırmak için aşağıdaki adımları kullanın.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>PowerShell sürüm 1 ile kimlik doğrulama verilerini ayarlama
 
@@ -126,7 +126,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>PowerShell sürüm 2 kullan
 
-Başlamak için [Azure AD sürüm 2 PowerShell modülünü indirip yükleyin](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0).
+Başlamak için [Azure AD sürüm 2 PowerShell modülünü indirip yükleyin](/powershell/module/azuread/?view=azureadps-2.0).
 
 Tarafından desteklenen son PowerShell sürümlerinden hızlıca yüklemek için `Install-Module` aşağıdaki komutları çalıştırın. İlk satır modülün zaten yüklü olup olmadığını denetler:
 

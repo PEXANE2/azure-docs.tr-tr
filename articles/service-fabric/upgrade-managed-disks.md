@@ -3,12 +3,12 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653707"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717532"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -365,7 +365,7 @@ Bu kılavuzda, işlem sırasında hizmet kesintilerine karşı bir Service Fabri
 
 Şunları nasıl yapacağınızı öğrenin:
 
-* [Service Fabric kümesi birincil düğüm türünün ölçeğini artırma](service-fabric-scale-up-node-type.md)
+* [Service Fabric kümesi birincil düğüm türünün ölçeğini artırma](service-fabric-scale-up-primary-node-type.md)
 
 * [Ölçek kümesi şablonunu yönetilen diskleri kullanacak şekilde dönüştürme](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 

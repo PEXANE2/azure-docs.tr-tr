@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550626"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717974"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
 
@@ -37,7 +37,7 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 | [Karma Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join-hybrid.md) için Windows 10 sürüm 2004 veya üzeri gerekir |   | X |
 | Tam düzeltme eki uygulanan Windows Server 2016/2019 etki alanı denetleyicileri. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) sürüm 1.4.32.0 veya üzeri |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (isteğe bağlı) | X | X |
+| [Microsoft Intune](/intune/fundamentals/what-is-intune) (isteğe bağlı) | X | X |
 | Sağlama paketi (Isteğe bağlı) | X | X |
 | Grup ilkesi (Isteğe bağlı) |   | X |
 
@@ -100,7 +100,7 @@ Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz grupları
       - OMA-URI:./Device/Vendor/MSFT/passportforwork/SecurityKey/usesecuritykeyforsignın
       - Veri türü: tamsayı
       - Değer: 1
-1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. Daha fazla bilgi için bkz. [Microsoft Intune kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign).
+1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. Daha fazla bilgi için bkz. [Microsoft Intune kullanıcı ve cihaz profilleri atama](/intune/device-profile-assign).
 
 ![Intune özel cihaz yapılandırma ilkesi oluşturma](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
@@ -113,7 +113,7 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 1. Projenize bir ad verin ve projenin oluşturulduğu yolu bir yere göz atın ve ardından **İleri**' yi seçin.
 1. **Seçili proje iş akışı** olarak *sağlama paketini* seçili bırakın ve **İleri ' yi**seçin.
 1. Görüntülenecek **ve yapılandırılacak ayarları seçin**altında *tüm Windows masaüstü sürümleri* ' ni seçin ve ardından **İleri**' yi seçin.
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 1. Yeni oluşturduğunuz projenizde, **çalışma zamanı ayarları**  >  **windowshelloforbusiness**  >  **SecurityKeys**  >  **usesecuritykeyforsign'** e gidin.
 1. **Usesecuritykeyforsignın** öğesini *etkin*olarak ayarlayın.
 1. **Export**  >  **Sağlama paketini** dışarı aktar 'ı seçin
@@ -122,10 +122,10 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 1. **Sağlama paketinin kaydedileceği yeri seçin** ' ın altında **derleme** pencereleri ' ne göz atın veya yolu değiştirin ve **İleri ' yi**seçin.
 1. **Sağlama paketini oluşturma** sayfasında **Oluştur** ' u seçin.
 1. Oluşturulan iki dosyayı (*ppkg* ve *Cat*), daha sonra makinelere uygulayabileceğiniz bir konuma kaydedin.
-1. Oluşturduğunuz sağlama paketini uygulamak için bkz. [sağlama paketi uygulama](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package).
+1. Oluşturduğunuz sağlama paketini uygulamak için bkz. [sağlama paketi uygulama](/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Windows 10 sürüm 1809 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (*Enablesharedpcmode*) etkinleştirmesi gerekir. Bu işlevi etkinleştirme hakkında daha fazla bilgi için bkz. [Windows 10 ile paylaşılan veya konuk bilgisayar ayarlama](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
+> Windows 10 sürüm 1809 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (*Enablesharedpcmode*) etkinleştirmesi gerekir. Bu işlevi etkinleştirme hakkında daha fazla bilgi için bkz. [Windows 10 ile paylaşılan veya konuk bilgisayar ayarlama](/windows/configuration/set-up-shared-or-guest-pc).
 
 ### <a name="enable-with-group-policy"></a>grup ilkesi ile etkinleştir
 

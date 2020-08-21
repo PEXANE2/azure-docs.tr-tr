@@ -2,14 +2,14 @@
 title: Görevleri Kullanıcı hesapları altında Çalıştır
 description: Kullanıcı hesaplarının türlerini ve bunların nasıl yapılandırılacağını öğrenin.
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142684"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719368"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
 
@@ -49,18 +49,13 @@ Kullanıcı hesabının yükseltme düzeyi, bir görevin yükseltilmiş erişiml
 
 ## <a name="auto-user-accounts"></a>Otomatik Kullanıcı hesapları
 
-Varsayılan olarak, görevler bir otomatik Kullanıcı hesabı altında, yükseltilmiş erişimi olmayan standart bir kullanıcı olarak ve görev kapsamıyla toplu olarak çalışır. Otomatik Kullanıcı belirtimi görev kapsamı için yapılandırıldığında, Batch hizmeti yalnızca o görev için bir otomatik Kullanıcı hesabı oluşturur.
+Varsayılan olarak, görevler bir otomatik Kullanıcı hesabı altında, yükseltilmiş erişimi olmayan standart bir kullanıcı olarak ve havuz kapsamıyla toplu olarak çalışır. Havuz kapsamı, görevin havuzdaki herhangi bir görevde kullanılabilen bir otomatik Kullanıcı hesabı altında çalıştığı anlamına gelir. Havuz kapsamı hakkında daha fazla bilgi için bkz. [bir görevi havuz kapsamı ile otomatik Kullanıcı olarak çalıştırma](#run-a-task-as-an-auto-user-with-pool-scope).
 
-Görev kapsamının alternatifi havuz kapsamıdır. Bir görevin otomatik Kullanıcı belirtimi havuz kapsamı için yapılandırıldığında, görev, havuzdaki herhangi bir görevde kullanılabilen bir otomatik Kullanıcı hesabı altında çalışır. Havuz kapsamı hakkında daha fazla bilgi için bkz. [bir görevi havuz kapsamı ile otomatik Kullanıcı olarak çalıştırma](#run-a-task-as-an-auto-user-with-pool-scope).
-
-Varsayılan kapsam Windows ve Linux düğümlerinde farklıdır:
-
-- Windows düğümlerinde görevler, varsayılan olarak görev kapsamında çalışır.
-- Linux düğümleri her zaman havuz kapsamı altında çalışır.
+Havuz kapsamının alternatifi görev kapsamıdır. Otomatik Kullanıcı belirtimi görev kapsamı için yapılandırıldığında, Batch hizmeti yalnızca o görev için bir otomatik Kullanıcı hesabı oluşturur.
 
 Her biri benzersiz bir otomatik Kullanıcı hesabına karşılık gelen otomatik Kullanıcı belirtimi için dört olası yapılandırma vardır:
 
-- Görev kapsamıyla yönetici olmayan erişim (varsayılan Otomatik Kullanıcı belirtimi)
+- Görev kapsamıyla yönetici olmayan erişim
 - Görev kapsamıyla yönetici (yükseltilmiş) erişim
 - Havuz kapsamıyla yönetici olmayan erişim
 - Havuz kapsamıyla yönetici erişimi
@@ -75,7 +70,7 @@ Yükseltilmiş erişimle bir görevi çalıştırmanız gerektiğinde, yönetici
 > [!NOTE]
 > Yalnızca gerekli olduğunda yükseltilmiş erişimi kullanın. En iyi uygulamalar, istenen sonuca ulaşmak için gereken en düşük ayrıcalığa izin verilmesini önerir. Örneğin, bir başlangıç görevi, tüm kullanıcılar yerine geçerli kullanıcı için yazılım yüklerse, görevlere yükseltilmiş erişim vermekten kaçınabilirsiniz. Başlangıç görevi dahil olmak üzere aynı hesap altında çalışması gereken tüm görevler için havuz kapsamı ve yönetici olmayan erişim için otomatik Kullanıcı belirtimini yapılandırabilirsiniz.
 
-Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapılandırılacağını gösterir. Örnekler, yükseltme düzeyini `Admin` ve kapsamını olarak ayarlar `Task` . Görev kapsamı varsayılan ayardır, ancak örnek için buraya eklenmiştir.
+Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapılandırılacağını gösterir. Örnekler, yükseltme düzeyini `Admin` ve kapsamını olarak ayarlar `Task` .
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>Batch Python
@@ -113,7 +108,7 @@ Bir düğüm sağlandığında, havuzdaki her düğümde, yükseltilmiş erişim
 
 Otomatik Kullanıcı için havuz kapsamı belirttiğinizde, yönetici erişimiyle çalışan tüm görevler, aynı havuz genelinde otomatik Kullanıcı hesabı altında çalışır. Benzer şekilde, yönetici izinleri olmadan çalışan görevler de tek bir havuz genelinde otomatik Kullanıcı hesabı altında çalışır.
 
-> [!NOTE] 
+> [!NOTE]
 > İki havuz genelinde otomatik Kullanıcı hesabı ayrı hesaplardır. Havuz genelinde yönetim hesabı altında çalışan görevler, standart hesap altında çalışan görevlerle veri paylaşamaz ve tam tersi de geçerlidir.
 
 Aynı otomatik Kullanıcı hesabı altında çalıştırmanın avantajı, görevlerin aynı düğümde çalışan diğer görevlerle veri paylaşabilleridir.
@@ -291,7 +286,7 @@ Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runay
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`belirtilmemiş | Güncelleştirme gerekmiyor                                                                                               |
+| `CloudTask.RunElevated` belirtilmemiş | Güncelleştirme gerekmiyor                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -299,7 +294,7 @@ Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runay
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`belirtilmemiş | Güncelleştirme gerekmiyor                                                                                                                     |
+| `CloudTask.withRunElevated` belirtilmemiş | Güncelleştirme gerekmiyor                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -307,7 +302,7 @@ Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runay
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, burada <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
 | `run_elevated=False`                      | `user_identity=user`, burada <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
-| `run_elevated`belirtilmemiş | Güncelleştirme gerekmiyor                                                                                                                                  |
+| `run_elevated` belirtilmemiş | Güncelleştirme gerekmiyor                                                                                                                                  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

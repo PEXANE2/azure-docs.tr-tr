@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032307"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719247"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
@@ -152,7 +152,7 @@ Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pa
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve Micro-Karşılama Merkezi uygulama şablonu](./tutorial-micro-fulfillment-center.md) öğreticisini inceleyin.
 
-## <a name="video-analytics---object-and-motion-detection"></a>Video analizi-nesne ve hareket algılama
+## <a name="video-analytics---object-and-motion-detection"></a>Video analizi - nesne ve hareket algılama
 
 *IoT Central video analizi-nesne ve hareket algılama* uygulama şablonu, nesneleri ve hareketi algılamak için akıllı sınır kameralarını kullanan bir çözümün nasıl dağıtılacağını, yönetileceğini ve izleneceğini hızlı bir şekilde görmenizi sağlar.
 
@@ -160,20 +160,20 @@ Video analizi uygulaması, IoT Edge çalıştıran [canlı bir video analizi (LV
 
 Uygulama şablonu dört uygulama panosu içerir:
 
-* **Kurulum** , uygulama tasarımı hakkında bilgi sağlar ve kameraları eklemenize ve silmenize olanak sağlar.
-* **Yönetin** , kameraları yönetmenizi sağlar. Örneğin, kameraları yapılandırabilir, durum bilgilerini görüntüleyebilir ve çalıştıran kameraları başlatabilirsiniz.
-* **Gerçek kameralar** , gerçek kameralardan algılama sayısı ve kamera olayları gibi bilgileri görüntülemenize olanak sağlar.
-* **İzleyici** , tüm kameralardan ayrıntılı bilgileri görüntülemenize olanak sağlar.
+* **Başlarken,** uygulama şablonunu kullanmaya başlamanıza yardımcı olacak kaynaklara bağlantılar sağlar.
+* **Demo panosu** , bağlı kameralardan görüntülenebilecek bilgi türlerinin bir resmini sağlar.
+* **(Örnek) gerçek kamera yönetimi** , sanal kameraları uygulamadan kullanarak nasıl yönetebileceğinizi gösterir.
+* **(Örnek) gerçek kamera İzleyicisi** , sanal kameralarınızı uygulamadan nasıl izleyekullanabileceğinizi göstermek için sanal kameraları kullanır.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Video analizi-nesne ve hareket algılama":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Video analizi - nesne ve hareket algılama":::
 
 Çözümün mimarisi hakkında daha fazla bilgi edinmek için bkz. [video analizi uygulama mimarisi](architecture-video-analytics.md).
 
-Çözümü dağıtmayı öğrenmek için bkz. [Azure 'da video Analytics uygulaması oluşturma IoT Central](tutorial-video-analytics-create-app.md) öğreticisi.
+Çözümü dağıtmayı öğrenmek için bkz. [Azure 'da video Analytics uygulaması oluşturma IoT Central](tutorial-video-analytics-deploy.md) öğreticisi.
 
 ### <a name="live-video-analytics"></a>Canlı video analizi
 
-Canlı video analizi, kenarı ve bulutu kapsayan akıllı video uygulamaları oluşturmanız için bir platform sağlar. Platform, canlı videoyu yakalama, kaydetme, çözümleme ve sonuçları video veya video analizi olabilecek sonuçları Azure hizmetlerine yayımlama özelliği sunar. Azure Hizmetleri, bulutta veya kenarda çalışıyor olabilir. Platformu, video analiziyle IoT çözümlerini geliştirmek için kullanabilirsiniz.
+[Canlı video analizi](https://github.com/Azure/live-video-analytics) , kenarı ve bulutu kapsayan akıllı video uygulamaları oluşturmanız için bir platform sağlar. Platform, canlı videoyu yakalama, kaydetme, çözümleme ve sonuçları video veya video analizi olabilecek sonuçları Azure hizmetlerine yayımlama özelliği sunar. Azure Hizmetleri, bulutta veya kenarda çalışıyor olabilir. Platformu, video analiziyle IoT çözümlerini geliştirmek için kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -184,4 +184,5 @@ Bir perakende çözümü oluşturmaya başlamak için:
 * [Bir dijital dağıtım merkezi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-iot-central-digital-distribution-center.md).
 * [Bir akıllı envanter yönetimi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-iot-central-smart-inventory-management.md).
 * [Mikro Karşılama Merkezi uygulama şablonunu dağıtın ve adım adım](./tutorial-micro-fulfillment-center.md)inceleyin.
+* [Video analizi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-video-analytics-deploy.md).
 * [IoT Central genel bakışta](../preview/overview-iot-central.md)IoT Central hakkında daha fazla bilgi edinin.

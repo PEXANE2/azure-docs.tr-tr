@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027623"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716308"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -30,7 +30,7 @@ Bu belge, bir kuruluşun aşağıdaki senaryolarla öngörülemeyen kesintiler s
 
  1. Kuruluşlar, risk azaltma stratejilerini veya yedek planları uygulayarak **kesintiye uğramadan önce** kilitleme riskini azaltmak için dayanıklılığı artırabilir.
  2. Kuruluşlar, risk azaltma stratejilerini ve acil durum planlarını ortadan kaldırarak, **kesintiye** uğradıklarında seçtikleri uygulamalara ve kaynaklara erişmeye devam edebilir.
- 3. Kuruluşlar, **kesintiden sonra** ve uygulandıkları tüm kıtları geri almadan önce günlükleri gibi bilgileri korudıklarından emin olmalıdır.
+ 3. Kuruluşlar,  **kesintiden sonra** ve uygulandıkları tüm kıtları geri almadan önce günlükleri gibi bilgileri korudıklarından emin olmalıdır.
  4. Önleme stratejilerini veya alternatif planları uygulanmayan kuruluşlar, kesintiye uğramak için **acil durum seçeneklerini** uygulayabilir.
 
 ## <a name="key-guidance"></a>Anahtar Kılavuzu
@@ -55,7 +55,7 @@ Gerçek kesintiyi azaltıcı bir işlem, ortaya çıkabilecek erişim denetimi s
 
 ### <a name="administrator-lockout-contingency"></a>Yönetici kilitlenme yedek
 
-Kiracınıza yönetici erişiminin kilidini açmak için acil durum erişim hesapları oluşturmanız gerekir. *Kesme camı* olarak da bilinen bu acil durum erişim hesapları, normal ayrıcalıklı hesap erişimi yordamları kullanılabilir OLMADıĞıNDA Azure AD yapılandırmasını yönetme erişimine izin verir. [Acil durum erişim hesabı önerilerini]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)takip eden en az iki acil durum erişim hesabı oluşturulmalıdır.
+Kiracınıza yönetici erişiminin kilidini açmak için acil durum erişim hesapları oluşturmanız gerekir. *Kesme camı* olarak da bilinen bu acil durum erişim hesapları, normal ayrıcalıklı hesap erişimi yordamları kullanılabilir OLMADıĞıNDA Azure AD yapılandırmasını yönetme erişimine izin verir. [Acil durum erişim hesabı önerilerini]( ../users-groups-roles/directory-emergency-access.md)takip eden en az iki acil durum erişim hesabı oluşturulmalıdır.
 
 ### <a name="mitigating-user-lockout"></a>Kullanıcı kilitlemeyi azaltma
 
@@ -65,11 +65,11 @@ Kiracınıza yönetici erişiminin kilidini açmak için acil durum erişim hesa
 
 Aşağıdaki erişim denetimlerini, kuruluş için mevcut koşullu erişim ilkelerinize ekleyin:
 
-1. Farklı iletişim kanallarına dayanan her bir kullanıcı için birden çok kimlik doğrulama yöntemi sağlayın (örneğin, Microsoft Authenticator uygulaması (internet tabanlı), OATH belirteci (cihazda oluşturulan) ve SMS (telephonic). Aşağıdaki PowerShell betiği, kullanıcılarınızın kaydolmaları gereken ek yöntemleri ( [Azure MFA kimlik doğrulama yöntemi analizi Için betik](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)) önceden belirlemenize yardımcı olur.
+1. Farklı iletişim kanallarına dayanan her bir kullanıcı için birden çok kimlik doğrulama yöntemi sağlayın (örneğin, Microsoft Authenticator uygulaması (internet tabanlı), OATH belirteci (cihazda oluşturulan) ve SMS (telephonic). Aşağıdaki PowerShell betiği, kullanıcılarınızın kaydolmaları gereken ek yöntemleri ( [Azure MFA kimlik doğrulama yöntemi analizi Için betik](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)) önceden belirlemenize yardımcı olur.
 2. Windows 10 cihazlarında Iş için Windows Hello 'Yu, doğrudan cihaz oturum açma işleminden MFA gereksinimlerini karşılayacak şekilde dağıtın.
-3. Güvenilen cihazları [Azure AD hibrit JOIN](https://docs.microsoft.com/azure/active-directory/devices/overview) veya [Microsoft Intune yönetilen cihazlar](https://docs.microsoft.com/intune/planning-guide)aracılığıyla kullanın. Güvenilen cihazlar, kullanıcıya MFA sınaması olmadan ilkenin güçlü kimlik doğrulama gereksinimlerini karşılayabildiğinden, Kullanıcı deneyimini iyileştirir. Daha sonra MFA, yeni bir cihaz kaydedilirken ve güvenilir olmayan cihazlardan uygulamalara veya kaynaklara erişirken gerekecektir.
+3. Güvenilen cihazları [Azure AD hibrit JOIN](../devices/overview.md) veya [Microsoft Intune yönetilen cihazlar](/intune/planning-guide)aracılığıyla kullanın. Güvenilen cihazlar, kullanıcıya MFA sınaması olmadan ilkenin güçlü kimlik doğrulama gereksinimlerini karşılayabildiğinden, Kullanıcı deneyimini iyileştirir. Daha sonra MFA, yeni bir cihaz kaydedilirken ve güvenilir olmayan cihazlardan uygulamalara veya kaynaklara erişirken gerekecektir.
 4. Kullanıcı veya oturum açma, sabit MFA ilkelerinin yerine risk altında olduğunda erişimi önleyen Azure AD kimlik koruması risk tabanlı ilkelerini kullanın.
-5. Azure MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
+5. Azure MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](../manage-apps/view-applications-portal.md) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
 
 >[!NOTE]
 > Risk tabanlı ilkeler için [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) lisansları gerekir.
@@ -92,7 +92,7 @@ Bu örnek ilke kümesi, **appusers**'daki seçili kullanıcılara, güvenilen bi
 
 ### <a name="contingencies-for-user-lockout"></a>Kullanıcı kilitleme için kıdurumlar
 
-Alternatif olarak, kuruluşunuz da yedek ilkeler oluşturabilir. Yedek ilkeler oluşturmak için iş sürekliliği, operasyonel maliyet, mali maliyet ve güvenlik riskleri arasında zorunluluğunu getirir kriterleri tanımlamanız gerekir. Örneğin, bir acil durum ilkesini yalnızca bir kullanıcı alt kümesi, bir uygulamalar alt kümesi veya bir konum alt kümesi için etkinleştirebilirsiniz. Bir risk azaltma yöntemi uygulandığında, acil durum ilkeleri yöneticilere ve son kullanıcılara uygulamalara ve kaynaklara erişim sağlayacak. Microsoft, yöneticilerin, ilkelerin açık olmaları gereken etkileri izleyebilmesi için, kullanımda olmadığında [yalnızca rapor modunda](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only) yedek ilkelerin etkinleştirilmesini önerir.
+Alternatif olarak, kuruluşunuz da yedek ilkeler oluşturabilir. Yedek ilkeler oluşturmak için iş sürekliliği, operasyonel maliyet, mali maliyet ve güvenlik riskleri arasında zorunluluğunu getirir kriterleri tanımlamanız gerekir. Örneğin, bir acil durum ilkesini yalnızca bir kullanıcı alt kümesi, bir uygulamalar alt kümesi veya bir konum alt kümesi için etkinleştirebilirsiniz. Bir risk azaltma yöntemi uygulandığında, acil durum ilkeleri yöneticilere ve son kullanıcılara uygulamalara ve kaynaklara erişim sağlayacak. Microsoft, yöneticilerin, ilkelerin açık olmaları gereken etkileri izleyebilmesi için, kullanımda olmadığında [yalnızca rapor modunda](../conditional-access/howto-conditional-access-report-only.md) yedek ilkelerin etkinleştirilmesini önerir.
 
  Bir kesinti sırasında pozlandırmayı anlamak, riskinizi azaltmaya yardımcı olur ve planlama sürecinizin önemli bir parçasıdır. Acil durum planınızı oluşturmak için öncelikle kuruluşunuzun aşağıdaki iş gereksinimlerini saptayın:
 
@@ -119,7 +119,7 @@ Bir yedek koşullu erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanl�
 
 * Bir kimlik bilgisi türü veya bir erişim denetimi mekanizmasının uygulamalarınıza erişimi etkilediği bir geri dönüş ilkeleri kümesi yapılandırın. Yalnızca rapor olarak etki alanına katılmayı gerektiren bir ilke yapılandırma olarak, bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilke için yedekleme olarak.
 * [Parola Kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki UYGULAMALARı izleyerek MFA gerekli olmadığında, kötü aktör tahmin parolalarının riskini azaltın.
-* Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure AD self servis parola sıfırlama (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) ve [Azure AD parola korumasını](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) dağıtın.
+* Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure AD self servis parola sıfırlama (SSPR)](./tutorial-enable-sspr.md) ve [Azure AD parola korumasını](./howto-password-ban-bad-on-premises-deploy.md) dağıtın.
 * Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örneğin:
   * Exchange ve SharePoint 'e kısıtlı oturum talebi gönderen bir yedekleme ilkesi yapılandırın.
   * Kuruluşunuz Microsoft Cloud App Security kullanıyorsa, MCAS 'nin bulunduğu ilkeye geri dönerek MCAS, salt okuma erişimine Izin verir ancak karşıya yüklemelerden yararlanır.
@@ -208,7 +208,7 @@ Etkinleştirme sırası:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Şirket içi kaynaklardan (NPS uzantısı) Kullanıcı kilitlemesi için kıdır
 
-Azure MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
+Azure MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](../manage-apps/view-applications-portal.md) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
 
 VPN ve Uzak Masaüstü Ağ Geçidi gibi şirket içi kaynakları korumak için Azure AD MFA NPS uzantısını dağıttıysanız, MFA ile bir acil durum durumunda MFA 'yı devre dışı bırakmak için hazır olduğunuzda önceden göz önünde bulundurmanız gerekir.
 
@@ -233,7 +233,7 @@ Aşağıdaki koşullar doğruysa Kullanıcı kilitleme de oluşabilir:
 - Kuruluşunuz, geçişli kimlik doğrulama veya Federasyon ile karma kimlik çözümü kullanır.
 - Şirket içi kimlik sistemleriniz (Active Directory, AD FS veya bağımlı bir bileşen) kullanılamaz. 
  
-Kuruluşunuz, şirket içi kimlik sistemleriniz kapalıysa [Parola karması eşitlemesini kullanmaya geçiş](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) yapmanızı sağladığından, [parola karma eşitlemesini etkinleştirmelidir](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+Kuruluşunuz, şirket içi kimlik sistemleriniz kapalıysa [Parola karması eşitlemesini kullanmaya geçiş](../hybrid/plan-connect-user-signin.md) yapmanızı sağladığından, [parola karma eşitlemesini etkinleştirmelidir](../hybrid/choose-ad-authn.md).
 
 #### <a name="microsoft-recommendations"></a>Microsoft önerileri
  Kuruluşunuzun Federasyon veya geçişli kimlik doğrulaması kullandığından bağımsız olarak Azure AD Connect sihirbazını kullanarak parola karması eşitlemesini etkinleştirin.
@@ -255,7 +255,7 @@ Bir kesinti sırasında hangi azaltmaları veya kıgenlerle kullanıldığına b
 1. Değişiklik denetimi stratejinizin bir parçası olarak, erişim denetimleri tam olarak çalışır duruma geldiğinde, uyguladığınız tüm kıtları geri almak için her değişikliği ve önceki durumu belgeleyin.
 2. Kötü amaçlı aktörlerin, MFA 'yı devre dışı bıraktığınız sırada parola spreyi veya kimlik avı saldırıları aracılığıyla parola toplama girişiminde bulunduğunu varsayın Ayrıca, kötü aktörlerin bu pencere sırasında denenmeyen herhangi bir kaynağa daha önce erişim vermediği parolalara zaten sahip olması gerekebilir. Yöneticiler gibi kritik kullanıcılar için, MFA 'yı devre dışı bırakmadan önce parolalarını sıfırlayarak bu riski kısmen azaltabilirsiniz.
 3. MFA 'nın devre dışı bırakıldığı zaman ne işe erişebileceğini belirlemek için tüm oturum açma etkinliklerini arşivleyin.
-4. Bu pencere sırasında [raporlanan tüm risk algılamalarını önceliklendirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
+4. Bu pencere sırasında [raporlanan tüm risk algılamalarını önceliklendirme](../reports-monitoring/concept-sign-ins.md) .
 
 ## <a name="after-a-disruption"></a>Kesintiden sonra
 
@@ -265,8 +265,8 @@ Hizmet geri yüklendikten sonra, kesintiye uğramasından sonra, etkinleştirile
 2. Acil durum ilkelerinizi yalnızca rapor moduna geri devre dışı bırakın. 
 3. Yaptığınız diğer değişiklikleri geri alın ve kesinti sırasında belgelenir.
 4. Acil durum erişim hesabı kullandıysanız, kimlik bilgilerini yeniden oluşturmayı ve acil durum erişim hesabı yordamlarınızın bir parçası olarak yeni kimlik bilgileri ayrıntılarını fiziksel olarak güvenli hale getirmeyi unutmayın.
-5. Şüpheli etkinlik kesintiye uğradıktan sonra [raporlanan tüm risk algılamalarını önceliklendirmeye](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) devam edin.
-6. Bir kullanıcı kümesini hedeflemek için [PowerShell kullanılarak](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçleri iptal edildiğinde, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunun yapılması, geri yüklenen ilkelerin denetimini yeniden kimlik doğrulaması ve karşılamaları için zorlayacaktır.
+5. Şüpheli etkinlik kesintiye uğradıktan sonra [raporlanan tüm risk algılamalarını önceliklendirmeye](../reports-monitoring/concept-sign-ins.md) devam edin.
+6. Bir kullanıcı kümesini hedeflemek için [PowerShell kullanılarak](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçleri iptal edildiğinde, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunun yapılması, geri yüklenen ilkelerin denetimini yeniden kimlik doğrulaması ve karşılamaları için zorlayacaktır.
 
 ## <a name="emergency-options"></a>Acil durum seçenekleri
 
@@ -280,17 +280,17 @@ Kuruluşunuz Kullanıcı başına MFA eski ilkelerini kullanıyorsa, aşağıdak
  > Erişimi engellemeyi kaldırmak için güvenilen IP adreslerini genişletirseniz, IP adresleriyle ilişkili risk algılamaları (örneğin, imkansız seyahat veya bilmediğiniz konumlar) oluşturulmaz.
 
 >[!NOTE]
- > Azure MFA için [Güvenilen IP 'lerin](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) yapılandırılması yalnızca [Azure AD Premium lisanslarla](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)kullanılabilir.
+ > Azure MFA için [Güvenilen IP 'lerin](./howto-mfa-mfasettings.md) yapılandırılması yalnızca [Azure AD Premium lisanslarla](./concept-mfa-licensing.md)kullanılabilir.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
-* [Azure AD Kimlik Doğrulaması Belgeleri](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Azure AD 'de acil erişimli yönetim hesaplarını yönetme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Azure Active Directory adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
-  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Karma Azure Active Directory katılmış cihazları yapılandırma](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [İş İçin Windows Hello Dağıtım Kılavuzu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Azure AD Kimlik Doğrulaması Belgeleri](./howto-mfaserver-iis.md)
+* [Azure AD 'de acil erişimli yönetim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)
+* [Azure Active Directory adlandırılmış konumları yapılandırma](../reports-monitoring/quickstart-configure-named-locations.md)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+* [Karma Azure Active Directory katılmış cihazları yapılandırma](../devices/hybrid-azuread-join-plan.md)
+* [İş İçin Windows Hello Dağıtım Kılavuzu](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Parola Kılavuzu-Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Koşullu erişim Azure Active Directory koşullar nelerdir?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Koşullu erişim Azure Active Directory erişim denetimleri nelerdir?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
-* [Koşullu erişim yalnızca rapor modu nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)
+* [Koşullu erişim Azure Active Directory koşullar nelerdir?](../conditional-access/concept-conditional-access-conditions.md)
+* [Koşullu erişim Azure Active Directory erişim denetimleri nelerdir?](../conditional-access/controls.md)
+* [Koşullu erişim yalnızca rapor modu nedir?](../conditional-access/concept-conditional-access-report-only.md)
