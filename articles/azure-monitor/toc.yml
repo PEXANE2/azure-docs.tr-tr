@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: Uyarılar
       items:
-        - name: Uygulama uyarı kuralları
-          items:
-            - name: Kullanılabilirlik
-              href: app/monitor-web-app-availability.md
-            - name: Ölçüm uyarıları
-              href: ./platform/alerts-log.md
         - name: Ölçüm uyarı kuralları
           items:
             - name: Ölçüm uyarılarını yönetme
               href: platform/alerts-metric.md
+            - name: Kullanılabilirlik
+              href: app/monitor-web-app-availability.md
             - name: Dinamik eşikleri kullanma
               href: platform/alerts-dynamic-thresholds.md
             - name: Çok sayıda zaman serisi için tek tek uyarılar

@@ -222,7 +222,7 @@
             - name: Mv2 serisi
               href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Kısıtlanmış vCPU'lar
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md
         - name: Depolama için iyileştirilmiş
           items:
             - name: Genel Bakış
@@ -279,7 +279,7 @@
             - name: Azure ayırmaları nedir?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: Sanal makine örneği boyut esnekliği
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot VM'ler
           displayName: 'pre-empt, preempt'
           href: spot-vms.md
@@ -305,7 +305,7 @@
             - name: Azure ayırmaları nedir?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Sanal makine örneği boyut esnekliği
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
     - name: Ayrılmış konaklar
       href: dedicated-hosts.md
     - name: Bakım ve güncelleştirmeler
@@ -313,21 +313,21 @@
     - name: Disk depolama
       items:
         - name: Yönetilen disklere giriş
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md
         - name: IaaS VM’leri için disk türü seçme
-          href: disks-types.md
+          href: ../disks-types.md
         - name: Şifreleme
           href: disk-encryption.md
         - name: Disk Depolama rezervasyonları
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Yüksek performansa uygun tasarım yapma
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md
         - name: Disk genişletme
           href: disk-bursting.md
         - name: Diskler için ölçeklenebilirlik hedefleri
           href: disk-scalability-targets.md
         - name: Diskler için yedekleme ve olağanüstü durum kurtarma
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Paylaşılan diskler
           href: disks-shared.md
         - name: Kısa ömürlü işletim sistemi diskleri
@@ -341,7 +341,7 @@
     - name: Güvenlik
       items:
         - name: Güvenlik ve ilke
-          href: security-policy.md
+          href: ../security-policy.md
         - name: Azure Disk Şifrelemesi
           href: disk-encryption-overview.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
@@ -855,7 +855,7 @@
           displayName: Azure Resource Manager
           href: ../using-managed-disks-template-deployments.md
         - name: Paylaşılan diskleri etkinleştirme
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md
         - name: Diske VHD yükleme - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Diski güvenli bir şekilde içeri/dışarı aktarma - Portal
@@ -863,11 +863,11 @@
         - name: Bir diski yeniden boyutlandırma
           href: expand-os-disk.md
         - name: Diskleri yönetmek için Depolama Gezgini kullanma
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
         - name: Disk Depolama rezervasyonu yapma
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md
         - name: Artımlı anlık görüntü oluşturma - PowerShell
           href: disks-incremental-snapshots.md
         - name: Artımlı anlık görüntü oluşturma - Portal
@@ -903,7 +903,7 @@
             - name: Yazma hızlandırıcıyı etkinleştirme
               href: ../how-to-enable-write-accelerator.md
             - name: Ultra diskleri kullanma
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md
             - name: Disk kıyaslama
               href: disks-benchmarks.md
         - name: Kullanıma açılmamış diskleri bulma - PowerShell

@@ -193,7 +193,7 @@
 - name: Sanal Disk Yönetimi sorunları
   items:
     - name: Genel Bakış
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: SSS
       href: ../windows/faq-for-disks.md
     - name: Depolama alanı kaynaklarını silerken karşılaşılan hatalar

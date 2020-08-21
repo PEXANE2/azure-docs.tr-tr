@@ -72,9 +72,6 @@
       items:
         - name: CLI ile eğitim ve dağıtım
           href: tutorial-train-deploy-model-cli.md
-        - name: ARM şablonuyla çalışma alanları oluşturma
-          displayName: Resource Manager
-          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning uzantısını ayarlama
