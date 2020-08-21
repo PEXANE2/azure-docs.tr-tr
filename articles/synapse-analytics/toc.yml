@@ -204,6 +204,8 @@
               href: ./spark/apache-spark-concepts.md
             - name: Delta Lake nedir?
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Delta Lake’e işlevsel genel bakış
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark performansı
               href: ./spark/apache-spark-performance.md
             - name: Apache Spark Otomatik Ölçeklendirme davranışı
@@ -454,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics için Apache Spark ile Azure Cosmos DB analizleri mağazasında sorgu yapma
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Apache Spark kullanarak Synapse Link’ten bir SQL havuzuna veri kopyalama
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: Depolama alanındaki verileri sorgulama

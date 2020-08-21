@@ -141,7 +141,7 @@
           href: uptime-sla.md
         - name: Yakınlık yerleştirme gruplarını kullanma (önizleme)
           href: reduce-latency-ppg.md
-        - name: Düğüm görüntüsünü yükseltme (önizleme)
+        - name: Düğüm görüntüsünü yükseltme
           href: node-image-upgrade.md
         - name: İşlem düğümü işletim sistemi güncelleştirmeleri
           href: node-updates-kured.md

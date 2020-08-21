@@ -488,22 +488,16 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
-- id: app-service-platform-windows-linux
-  title: App Service platformu
-  prompt: Barındırma platformu seçme
+- id: programming-languages-spark-all-minus-sql
+  title: Programlama dilleri
+  prompt: Dil seçin
   pivots:
-  - id: platform-linux
-    title: Linux
-  - id: platform-windows
-    title: Windows
-- id: app-service-containers-windows-linux
-  title: Özel kapsayıcılarla App Service
-  prompt: Özel kapsayıcı platformu seçme
-  pivots:
-  - id: container-linux
-    title: Linux kapsayıcısı
-  - id: container-windows
-    title: Windows kapsayıcısı
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
 - id: aml-control-methods
   title: Azure Machine Learning kontrol düzlemi
   prompt: Azure Machine Learning kontrol düzlemi arabirimi seçme
@@ -540,10 +534,34 @@ groups:
     title: Java
   - id: programming-language-more
     title: Daha fazla dil...
+- id: ams-lva-edge-programming-languages
+  title: IoT Edge’de Canlı Video Analizi programlama dilleri
+  prompt: Programlama dili seçin
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: App Service platformu
+  prompt: Barındırma platformu seçme
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: Özel kapsayıcılarla App Service
+  prompt: Özel kapsayıcı platformu seçme
+  pivots:
+  - id: container-linux
+    title: Linux kapsayıcısı
+  - id: container-windows
+    title: Windows kapsayıcısı
 metadata:
-  ms.openlocfilehash: a51aa5fcc88269e718375ed08f0238867da7079b
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+  ms.openlocfilehash: e9997400e1ed6708889f5f9f70078f5d3ec4c282
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88225640"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88691216"

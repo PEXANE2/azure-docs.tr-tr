@@ -40,6 +40,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: Yönetilen kimlik kullanarak Key Vault'u Azure Spring Cloud uygulamasına bağlama
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: Sanal ağda Azure Spring Cloud dağıtma
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler

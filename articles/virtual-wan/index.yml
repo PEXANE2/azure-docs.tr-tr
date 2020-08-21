@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 05/08/2020
-  ms.openlocfilehash: 14336a28630e7a62a19e2b3a51934950cf12e2f8
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/19/2020
+  ms.openlocfilehash: 1a0a64864c4e8229b4a0f2211af06920fc1e73cc
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85564041"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88654557"
 landingContent:
 - title: Sanal WAN Hakkında
   linkLists:
@@ -39,24 +39,60 @@ landingContent:
       url: virtual-wan-expressroute-portal.md
     - text: Kullanıcı VPN (noktadan siteye) bağlantısı oluşturma
       url: virtual-wan-point-to-site-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Sanal WAN iş ortakları için otomasyonu yapılandırma
-      url: virtual-wan-configure-automation-providers.md
   - linkListType: concept
     links:
     - text: IPSec bağlantısı için varsayılan ilkeler
       url: virtual-wan-ipsec.md
+    - text: Sanal WAN iş ortakları için otomasyon yönergeleri
+      url: virtual-wan-configure-automation-providers.md
+  - linkListType: how-to-guide
+    links:
+    - text: Merkezde NVA oluşturma
+      url: how-to-nva-hub.md
+    - text: Sanal WAN için ExpressRoute üzerinden IPsec yapılandırma
+      url: vpn-over-expressroute.md
+    - text: VPN Gateway’i Sanal WAN’a bağlama
+      url: connect-virtual-network-gateway-vwan.md
 - title: Mimari
   linkLists:
   - linkListType: concept
     links:
     - text: Sanal WAN'a geçme
       url: migrate-from-hub-spoke-topology.md
+  - linkListType: architecture
+    links:
     - text: Genel geçiş ağ mimarisi
       url: virtual-wan-global-transit-network-architecture.md
     - text: SD-WAN bağlantı mimarisi
       url: sd-wan-connectivity-architecture.md
+- title: Yönlendirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sanal merkez yönlendirmesi hakkında
+      url: about-virtual-hub-routing.md
+    - text: Senaryo - Trafiği bir NVA aracılığıyla yönlendirme
+      url: scenario-route-through-nva.md
+    - text: Senaryo - Herhangi iki nokta arasında
+      url: scenario-any-to-any.md
+    - text: Senaryo -  Sanal ağları yalıtma
+      url: scenario-isolate-vnets.md
+    - text: Senaryo - Paylaşılan Hizmetler sanal ağları
+      url: scenario-shared-services-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sanal merkez yönlendirmesini yapılandırma
+      url: how-to-virtual-hub-routing.md
+- title: İzleme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure İzleyicisi İçgörüleri’ni kullanarak izleme
+      url: azure-monitor-insights.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure İzleyici günlüklerini ve ölçümlerini yapılandırma
+      url: azure-monitor-insights.md
 - title: Başvuru
   linkLists:
   - linkListType: reference

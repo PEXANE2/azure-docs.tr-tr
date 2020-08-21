@@ -638,10 +638,12 @@
     - name: Bağımsız Bulutlar
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Fiyatlandırma ve limitler
+    - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
+    - name: Kotalar ve Sınırlar
+      href: speech-services-quotas-and-limits.md
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Şifreleme

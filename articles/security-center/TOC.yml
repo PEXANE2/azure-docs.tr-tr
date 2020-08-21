@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: E-posta bildirimlerini ayarlama
       href: security-center-provide-security-contact-details.md
+    - name: ARM şablonuyla uyarıya otomatik yanıt oluşturma
+      href: quickstart-automation-alert.md
 - name: Öğreticiler
   items:
     - name: Planlama ve işlemler kılavuzu

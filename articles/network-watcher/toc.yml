@@ -61,6 +61,12 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: ARMClient kullanma
           href: connection-monitor-preview-create-using-arm-client.md
+    - name: Bağlantı İzleyicisi’ne geçiş (Önizleme)
+      items:
+        - name: Ağ Performansı İzleyicisi’nden
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: Bağlantı İzleyicisi’nden
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: VM ağ sorunlarını tanılama
       items:
         - name: VM uzantıları yükleme

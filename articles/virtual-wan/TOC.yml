@@ -36,10 +36,6 @@
           href: virtual-wan-locations-partners.md
         - name: İş ortaklarına yönelik otomasyon yönergeleri
           href: virtual-wan-configure-automation-providers.md
-    - name: Fiyatlandırma kavramları
-      href: pricing-concepts.md
-    - name: Sanal merkezde NVA hakkında
-      href: about-nva-hub.md
     - name: Yönlendirme
       items:
         - name: Sanal merkez yönlendirmesi hakkında
@@ -54,15 +50,15 @@
               href: scenario-isolate-vnets-custom.md
             - name: Paylaşılan Hizmetler Sanal Ağları
               href: scenario-shared-services-vnet.md
-            - name: NVA üzerinden yönlendirme
+            - name: Bir NVA üzerinden yönlendirme
               href: scenario-route-through-nva.md
-            - name: NVA üzerinden yönlendirme - özel (Önizleme)
+            - name: Bir NVA üzerinden yönlendirme - özel
               href: scenario-route-through-nvas-custom.md
             - name: Azure Güvenlik Duvarı - özel
               href: scenario-route-between-vnets-firewall.md
     - name: İzleme
       items:
-        - name: Sanal WAN için Azure İzleyici İçgörüleri hakkında (Önizleme)
+        - name: Sanal WAN için Azure İzleyici İçgörüleri hakkında
           href: azure-monitor-insights.md
     - name: Siteden siteye
       items:
@@ -70,11 +66,15 @@
           href: virtual-wan-ipsec.md
         - name: Birden çok ISP bağlantısı - Azure yol seçimi
           href: path-selection-multiple-links.md
+    - name: Fiyatlandırma kavramları
+      href: pricing-concepts.md
+    - name: Sanal merkezde NVA hakkında
+      href: about-nva-hub.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sanal WAN SKU'sunu yükseltme
       href: upgrade-virtual-wan.md
-    - name: Sanal merkezde NVA oluşturma (Önizleme)
+    - name: Sanal merkezde NVA oluşturma
       href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
@@ -154,14 +154,18 @@
   items:
     - name: SSS
       href: virtual-wan-faq.md
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Abonelik ve hizmet sınırlamaları
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Güncelleştirme duyuruları
+      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Abonelik ve hizmet sınırlamaları
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Ağ Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Ağ blogu
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Ağ güncelleştirme duyuruları
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

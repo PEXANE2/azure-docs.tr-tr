@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Lighthouse belgeleri
-summary: Azure Lighthouse, hizmet yöneticilerinin Azure kaynaklarını tüm müşterilerinde daha fazla otomatikleştirme, ölçeklendirme ve geliştirilmiş idare ile görüntüleyip yönetmesini sağlar.
+summary: Azure Lighthouse, kiracılar arası ve çok kiracılı yönetime olanak tanır. Bu sayede kaynaklar ve kiracılar daha yüksek otomasyon, ölçeklenebilirlik ve gelişmiş idare elde edilir.
 metadata:
   title: Azure Lighthouse Belgeleri
   description: Azure Lighthouse, hizmet yöneticilerinin Azure kaynaklarını tüm müşterilerinde daha fazla otomatikleştirme, ölçeklendirme ve geliştirilmiş idare ile görüntüleyip yönetmesini sağlar.
@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 07/20/2020
-  ms.openlocfilehash: f30f07fd200a5ac14e9733e5def7541b197004b2
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 40352965db20c12e589f52f76869032d1f5f1b10
+  ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87072661"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88659883"
 landingContent:
 - title: Azure Lighthouse hakkında
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: ./concepts/azure-delegated-resource-management.md
     - text: Kiracılar arası yönetim deneyimleri
       url: ./concepts/cross-tenant-management-experience.md
-- title: Kullanmaya başlayın
+- title: başlarken
   linkLists:
   - linkListType: how-to-guide
     links:
