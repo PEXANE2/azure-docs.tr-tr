@@ -4,17 +4,26 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: glenga
-ms.openlocfilehash: 2936d22eacef73daef4433b3fd296dd4757fa410
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a4f03223b5067d18f5d6e747b3bb630a86031b8f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031141"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689583"
 ---
-Uzantı paketlerinizi kullanmıyorsanız, projeniz için gereken belirli uzantı paketlerini yüklemek için Azure Functions Core Tools yerel olarak kullanabilirsiniz. 
+Uzantı paketlerinizi kullanmıyorsanız, projeniz için gereken belirli uzantı paketlerini yüklemek için Azure Functions Core Tools yerel olarak kullanabilirsiniz.
+
+> [!IMPORTANT]
+> Uzantı paketleri kullanan bir işlev uygulamasına açıkça uzantı yükleyemezsiniz. `extensionBundle`Uzantıları açıkça yüklemeden önce *üzerindehost.js* bölümünü kaldırın.
+
+Aşağıdaki öğelerde, uzantıları el ile yüklemeniz gerekebilecek bazı nedenler açıklanmaktadır:
+
+* Bir uzantının bir pakette bulunmayan belirli bir sürümüne erişmeniz gerekir.
+* Pakette kullanılamayan özel bir uzantıya erişmeniz gerekir.
+* Tek bir pakette kullanılamayan belirli bir uzantı birleşimine erişmeniz gerekir.
 
 > [!NOTE]
-> Temel araçları kullanarak uzantıları el ile yüklemek için .NET Core 2. x SDK 'sının yüklü olması gerekir.
+> Temel araçları kullanarak uzantıları el ile yüklemek için [.NET Core 2. x SDK 'sının](https://dotnet.microsoft.com/download) yüklü olması gerekir. .NET Core SDK, Azure Functions Core Tools tarafından NuGet 'ten uzantı yüklemek için kullanılır. Azure Işlevleri uzantılarını kullanmak için .NET bilmeniz gerekmez.
 
 Uzantıları açıkça yüklediğinizde, projenizin köküne Extensions. csproj adlı bir .NET proje dosyası eklenir. Bu dosya, işlevleriniz için gereken NuGet paketleri kümesini tanımlar. Bu dosyadaki [NuGet paket başvurularıyla](/nuget/consume-packages/package-references-in-project-files) çalışabilmenize karşın, çekirdek araçları dosyayı el ile düzenlemek zorunda kalmadan uzantıları yüklemenize olanak sağlar.
 
@@ -28,6 +37,8 @@ Yerel projenizde bağlamalar tarafından kullanılan tüm uzantı paketlerini ot
 func extensions install
 ```
 Komut, hangi paketlere ihtiyacınız olduğunu görmek için dosyadaki *function.js* okur, bunları yüklerse ve uzantılar projesini (Extensions. csproj) yeniden oluşturur. Geçerli sürümde yeni bağlamalar ekler ancak mevcut bağlamaları güncelleştirmez. `--force`Yeni yenilerini yüklerken mevcut bağlamaları en son sürüme güncelleştirmek için seçeneğini kullanın.
+
+İşlev uygulamanız çekirdek araçların tanımadığı bağlamaları kullanıyorsa, belirli uzantıyı el ile yüklemelisiniz.
 
 #### <a name="install-a-specific-extension"></a>Belirli bir uzantıyı yükler
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236480"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688054"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -100,8 +100,8 @@ Cosmos kapsayıcılarının içindeki ve içindeki veri hareketleri her zaman RU
 Değişiklik akışı işlemcisi, uzun süre çalışan işlemleri veya görevleri destekleyen herhangi bir platformda barındırılabilir:
 
 * Sürekli çalışan bir [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
-* [Azure sanal makinesindeki](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines)bir işlem.
-* [Azure Kubernetes hizmetinde](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service)bir arka plan işi.
+* [Azure sanal makinesindeki](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)bir işlem.
+* [Azure Kubernetes hizmetinde](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)bir arka plan işi.
 * Bir [ASP.NET barındırılan hizmeti](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
 
 Değişiklik akışı işlemcisi kısa süreli ortamlarda çalışabilir, ancak kira kapsayıcısı durumu koruduğundan, bu ortamların başlangıç ve durdurma döngüleri bildirimleri almaya yönelik gecikme ekler (ortamın her başlatılışında işlemciyi başlatma yükünden kaynaklanır).

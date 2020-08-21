@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660883"
+ms.locfileid: "88689754"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -174,7 +174,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 ### <a name="storage"></a>Depolama
 
-Toplu iş dökümü, bir internet URI 'sinden ses okuyabilir ve [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)kullanarak ses okuyabilir veya yazma işlemini yazabilir.
+Toplu iş dökümü, genel olarak görünen bir internet URI 'sinden ses okuyabilir ve [Azure Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)Ile SAS URI 'si kullanarak ses okuyabilir veya döküm yazabilirsiniz.
 
 ## <a name="batch-transcription-result"></a>Toplu iş dökümü sonucu
 
@@ -243,7 +243,7 @@ Her döküm sonuç dosyası şu biçimdedir:
 }
 ```
 
-Sonuç aşağıdaki formları içerir:
+Sonuç aşağıdaki alanları içerir:
 
 :::row:::
    :::column span="1":::
@@ -309,7 +309,8 @@ Yukarıdaki istekteki parametreler gösterildiği için sözcük düzeyi zaman d
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Toplu iş dökümü hizmeti, çok sayıda gönderilen dökümü işleyebilir. Bir veya daha fazla gözden geçir aracılığıyla döküm durumunu sorgulayabilirsiniz `GET` . [Get transcriptions](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions) Sonuçları aldıktan sonra hizmetten düzenli olarak [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) çağrısını çağırın. Bunun yerine `timeToLive` , sonuçların son silinmesini sağlamak için özelliği makul bir değere ayarlayın.
+Toplu iş dökümü hizmeti, çok sayıda gönderilen dökümü işleyebilir. Onayları [Al](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)ile birlikte, döküm durumlarını sorgulayabilirsiniz.
+Sonuçları aldıktan sonra hizmetten düzenli olarak [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) çağrısını çağırın. Bunun yerine `timeToLive` , sonuçların son silinmesini sağlamak için özelliği de ayarlayın.
 
 ## <a name="sample-code"></a>Örnek kod
 

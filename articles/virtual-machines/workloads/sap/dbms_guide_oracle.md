@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654625"
+ms.locfileid: "88690332"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -357,7 +357,7 @@ Yalnızca NTFS biçimli diskler kullanan tek örnekli Oracle desteklenir. Tüm v
 
 [Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanızı kesinlikle öneririz. Ayrıca, Oracle Database dağıtımlarınız için [Premium SSD 'lerin](../../disks-types.md) kullanılması önemle önerilir.
 
-Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz:
+Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz.
 
 - [Microsoft Azure Dosya Hizmeti’ne Giriş](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -444,7 +444,7 @@ Bu durumda, Oracle Home, Stage, saptrace, saparch, sapbackup, sapcheck veya sapr
 
 Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır.
 
-Oracle Linux UEK kernels için, [Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
+Oracle Linux UEK kernels için, [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
 
 [Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanız önemle önerilir. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium SSD 'ler](../../disks-types.md) kullanılması önemle önerilir.
 

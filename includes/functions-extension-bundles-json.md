@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
-ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b67e2bf2ae5af2feb334e898ce69fd5b959c7cf0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878263"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689582"
 ---
 ```json
 {
@@ -27,7 +27,3 @@ Aşağıdaki özellikler ' de mevcuttur `extensionBundle` :
 | -------- | ----------- |
 | kimlik | Microsoft Azure Işlevleri Uzantısı paketleri için ad alanı. |
 | sürüm | Yüklenecek paket sürümü. Işlevler çalışma zamanı her zaman, sürüm aralığı veya aralığı tarafından tanımlanan izin verilen en fazla sürümü seçer. Yukarıdaki sürüm değeri, 1.0.0 'e kadar tüm paket sürümlerinin 2.0.0 dahil değil, izin vermez. Daha fazla bilgi için bkz. [Sürüm aralıklarını belirtmek için Aralık gösterimi](/nuget/reference/package-versioning#version-ranges). |
-
-Paket sürümleri artıkında paket değişim artışı. Paketteki paketler ana bir sürümle artında ana sürüm değişiklikleri oluşur. Paketteki ana sürüm değişiklikleri genellikle Işlevler çalışma zamanının ana sürümündeki bir değişiklikle birlikte bulunur.  
-
-Varsayılan paket tarafından yüklenen geçerli uzantı kümesi, [dosyasında buextensions.js](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)numaralandırılır.

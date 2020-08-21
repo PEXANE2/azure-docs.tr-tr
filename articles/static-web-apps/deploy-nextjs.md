@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431645"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684601"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Next.js Web sitelerini dağıtma
 
@@ -57,7 +57,7 @@ Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluş
     npm run dev
     ```
 
-<http://localhost:3000>Aşağıdaki Web sitesini tercih ettiğiniz tarayıcınızda açık olarak görmeniz gereken uygulamayı açmak için şuraya gidin:
+`http://localhost:3000`Aşağıdaki Web sitesini tercih ettiğiniz tarayıcınızda açık olarak görmeniz gereken uygulamayı açmak için şuraya gidin:
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Next.js uygulamayı Başlat":::
 
@@ -84,7 +84,7 @@ Kullanarak bir Next.js sitesi oluşturduğunuzda `npm run build` , uygulama stat
     
       Bu yapılandırma `/` `/` , yol için sunulan ve sayfa _/index.js_ sayfa dosyası olan Next.js sayfasıyla eşlenir.
 
-1. Derleme betiği _üzerindepackage.js_, komutunu kullanarak derlemeden sonra da statik bir site oluşturmak için güncelleştirin `next export` . `export`Komut bir statik site oluşturur.
+1. Derleme betiği _ üzerindepackage.js_, komutunu kullanarak derlemeden sonra da statik bir site oluşturmak için güncelleştirin `next export` . `export`Komut bir statik site oluşturur.
 
     ```json
     "scripts": {
@@ -169,7 +169,7 @@ Azure statik Web Apps, NPM modüllerini yükleme ve her dağıtım sırasında �
 
 2. *Uygulama yapıtı konumu* metin **kutusuna yazın.**
 
-### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 1. Kaynak oluşturma Işlemini başlatmak için **Oluştur** ' a tıklayın ve ayrıca dağıtım Için bir GitHub eylemi sağlayın.

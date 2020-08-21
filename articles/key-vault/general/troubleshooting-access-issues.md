@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585466"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688649"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -25,7 +25,7 @@ Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasa
 Hizmetinizi ölçeklendirmeye başladığınızda, anahtar kasanıza gönderilen isteklerin sayısı artacaktır. Bu, isteklerinizin gecikme süresini artırmak ve olağanüstü durumlarda, hizmetinizin performansını etkileyecek olan isteklerinizin kısıtlanmasına neden olur. Anahtar Kasası performans ölçümlerini izleyebilir ve belirli eşiklere göre uyarı alabilir, izlemeyi yapılandırmaya yönelik adım adım kılavuz için [daha fazla](https://docs.microsoft.com/azure/key-vault/general/alert)bilgi edinebilirsiniz.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Anahtar Kasası nesnesine göre erişim denetimini nasıl atayabilirim? 
-Gizli/anahtar/sertifika erişim denetimi özelliğinin kullanılabilirliğine buradan bildirim verilecektir, [daha fazla bilgi edinin](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)
+Gizli/anahtar/sertifika erişim denetimi özelliğinin kullanılabilirliğine buradan bildirim verilecektir, [daha fazla bilgi edinin](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>Erişim denetimi ilkesini kullanarak Anahtar Kasası kimlik doğrulamasını nasıl sağlayabilirim?
 Key Vault için bulut tabanlı bir uygulamanın kimlik doğrulamasının en kolay yolu, yönetilen bir kimlikle; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma]( https://docs.microsoft.com/azure/key-vault/general/managed-identity) konusuna bakın.

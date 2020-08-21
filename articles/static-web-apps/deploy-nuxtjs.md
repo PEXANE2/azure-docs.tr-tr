@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9c7e03f5e658b8e15dcae1c5314b73dfbfdf0206
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2eafd2f74ffcf5fe0fe65d04884cfd2d668cdf0b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430284"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684584"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Nuxt.js Web sitelerini dağıtma
 
@@ -56,7 +56,7 @@ Kullanarak yeni bir Nuxt.js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni 
     npm run dev
     ```
 
-<http://localhost:3000>Aşağıdaki Web sitesini tercih ettiğiniz tarayıcınızda açık olarak görmeniz gereken uygulamayı açmak için şuraya gidin:
+`http://localhost:3000`Aşağıdaki Web sitesini tercih ettiğiniz tarayıcınızda açık olarak görmeniz gereken uygulamayı açmak için şuraya gidin:
 
 :::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
@@ -153,7 +153,7 @@ Azure statik Web Apps, NPM modüllerini yükleme ve her dağıtım sırasında �
 
 1. *Uygulama yapıtı konumu* metin kutusuna **Dist** yazın.
 
-### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 1. Kaynak oluşturma Işlemini başlatmak için **Oluştur** ' a tıklayın ve ayrıca dağıtım Için bir GitHub eylemi sağlayın.
@@ -211,7 +211,7 @@ Sayfa dinamik bir sayfa ise, örneğin `_id.vue` , bu dinamik sayfadan statik BI
    ```
 
    > [!NOTE]
-   > `routes`zaman uyumsuz bir işlevdir, bu nedenle bu işlevdeki bir API 'ye istek yapabilir ve yollar oluşturmak için döndürülen listeyi kullanabilirsiniz.
+   > `routes` zaman uyumsuz bir işlevdir, bu nedenle bu işlevdeki bir API 'ye istek yapabilir ve yollar oluşturmak için döndürülen listeyi kullanabilirsiniz.
 
 2. Yeni değişiklikleri GitHub deponuza gönderin ve GitHub eylemleri sitenizi yeniden oluşturup birkaç dakika bekleyin. Derleme tamamlandıktan sonra 404 hatası kaybolur.
 

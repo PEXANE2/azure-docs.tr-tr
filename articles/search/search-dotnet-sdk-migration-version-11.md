@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660978"
+ms.locfileid: "88688360"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -28,6 +28,9 @@ Yeni sürümde fark ettiğiniz bazı önemli farklılıklar şunlardır:
 + Yeni bir paket adı: `Azure.Search.Documents` yerine `Microsoft.Azure.Search` .
 + İki yerine üç istemci: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Bazı görevleri basitleştirecek bir dizi API ve küçük yapısal farklılık içindeki adlandırma farklılıkları
+
+> [!NOTE]
+> .NET SDK sürüm 11 ' de listelenen değişikliklerin listesi için [**değişiklik günlüğünü**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) gözden geçirin.
 
 ## <a name="package-and-library-consolidation"></a>Paket ve kitaplık birleştirme
 
@@ -114,19 +117,23 @@ Azure Bilişsel Arama istemci kitaplığı 'nın her sürümü, REST API karşı
 
 [2020-06-30 arama hizmeti](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json), sürüm 11 ' i hedefler. Sürüm 11 de sıfırdan oluşturulan yeni bir istemci kitaplığı olduğundan, çoğu geliştirme çabasında denkliği, sürüm 10 ' a odaklanılmış ve bazı REST API özellik desteği hala bekliyor.
 
-Sürüm 11 aşağıdaki nesneleri ve işlemleri tam olarak destekler:
+Sürüm 11,0, aşağıdaki nesneleri ve işlemleri tam olarak destekler:
 
 + Dizin oluşturma ve yönetme
 + Eş anlamlı eşleme oluşturma ve yönetimi
 + Tüm sorgu türleri ve sözdizimi (coğrafi uzamsal filtreler hariç)
 + Veri kaynakları ve becerileri dahil olmak üzere Azure veri kaynaklarını dizine alma için Dizin Oluşturucu nesneler ve işlemler
 
+Sürüm 11,1 şunları ekler:
+
++ [FieldBuilder](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.fieldbuilder) (11,1 'e eklendi)
++ [Seri hale getirici özelliği](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclientoptions.serializer) (11,1 ' de eklenmiştir) özel serileştirme desteği
+
 ### <a name="pending-features"></a>Bekleyen özellikler
 
-Aşağıdaki sürüm 10 özellikleri henüz 11. sürümde kullanılamamaktadır. Bu özellikleri kullanırsanız, desteklenene kadar geçiş üzerinde tutun.
+Aşağıdaki sürüm 10 özellikleri henüz 11. sürümde kullanılamamaktadır. Bu özelliklere ihtiyaç duyuyorsanız, desteklenene kadar geçiş üzerinde tutun.
 
 + Jeo-uzamsal türler
-+ [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) ( [Bu geçici çözümü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)kullanabilseniz de kullanabilirsiniz).
 + [Bilgi deposu](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
@@ -176,7 +183,7 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
 
 Kitaplıklarda ve API 'Lerde yapılan değişiklikler verildiğinde, sürüm 11 ' e yükseltme önemsiz değildir ve kodunuzun artık sürüm 10 ve öncesiyle geriye dönük olarak uyumlu olmaması açısından önemli bir değişiklik oluşturur. Farkları kapsamlı bir şekilde gözden geçirmek için bkz. için [değişiklik günlüğü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) `Azure.Search.Documents` .
 
-Hizmet sürümleri açısından, 10 ' dan 11 ' e geçmek aşağıdaki davranış değişikliklerini sunar: 
+Sürüm 11 ' deki kod değişikliklerinin var olan işlevlerle (ve yalnızca API 'lerin yeniden düzenlemesi değil) ilgisi olan hizmet sürümü güncelleştirmeleri açısından, aşağıdaki davranış değişikliklerini bulacaksınız:
 
 + [BM25 derecelendirme algoritması](index-ranking-similarity.md) önceki derecelendirme algoritmasından daha yeni teknolojinin yerini alır. Yeni hizmetler, bu algoritmayı otomatik olarak kullanacaktır. Mevcut hizmetler için, parametreleri yeni algoritmayı kullanacak şekilde ayarlamanız gerekir.
 

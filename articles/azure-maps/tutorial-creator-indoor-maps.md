@@ -3,17 +3,17 @@ title: Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 description: Inkapılı haritalar oluşturmak için Azure haritalar Oluşturucu kullanın.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075405"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688104"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -28,7 +28,7 @@ Bu öğreticide, ınkapı haritaları oluşturma gösterilmektedir. Bu öğretic
 > * Harita özelliklerinizi ve veri kümenizdeki verileri kullanarak bir özellik stateset oluşturma
 > * Özellik stateset 'nizi güncelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Inkapısı haritaları oluşturmak için:
 
@@ -109,16 +109,25 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
     > Bu belgedeki API URL 'lerinin, Oluşturucu kaynağınızın konumuna göre ayarlanması gerekebilir. Daha fazla ayrıntı için bkz. [creator hizmetlerine erişim](how-to-manage-creator.md#access-to-creator-services).
 
-3. **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin ve **konum** anahtarını bulun. Dönüştürme isteği için olan **konum** anahtarının değerini kopyalayın `status URL` .
+3. **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin ve **konum** anahtarını bulun. Dönüştürme isteği için olan **konum** anahtarının değerini kopyalayın `status URL` . Bunu bir sonraki adımda kullanacaksınız.
 
-4. Oluşturucu sekmesinde yeni bir http **Al** yöntemi başlatın. Azure Maps birincil abonelik anahtarınızı öğesine ekleyin `status URL` . Önceki adımdan ' de bir **Get** isteği yapın `status URL` . Dönüştürme işlemi henüz tamamlanmadıysa, aşağıdaki JSON yanıtına benzer bir şey görebilirsiniz:
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Konum anahtarının değerini kopyalayın":::
+
+4. Oluşturucu sekmesinde yeni bir http **Al** yöntemi başlatın. Azure Maps birincil abonelik anahtarınızı öğesine ekleyin `status URL` . **GET** `status URL` Adım 3 ' te kopyaladığınız bir get isteği yapın. `status URL`AŞAĞıDAKI URL gibi görünür:
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    Dönüştürme işlemi henüz tamamlanmadıysa, aşağıdaki JSON yanıtına benzer bir şey görebilirsiniz:
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -177,7 +186,7 @@ Veri kümesi, binalar, düzeyler ve odalar gibi eşleme özelliklerinin bir kole
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -206,7 +215,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"
@@ -215,7 +224,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
 ## <a name="query-datasets-with-wfs-api"></a>WFS API ile veri kümelerini sorgulama
 
- Veri kümeleri, [WFS API](https://docs.microsoft.com/rest/api/maps/wfs)kullanılarak sorgulanabilir. WFS API ile özellik koleksiyonları, belirli bir koleksiyon veya özellik **kimliği**olan belirli bir özellik için sorgulama yapabilirsiniz. Özellik **kimliği** , özelliği veri kümesi içinde benzersiz şekilde tanımlar. Bu, örneğin, belirli bir stateset içinde hangi özellik durumunun güncelleştirileceğini belirlemek için kullanılır.
+ Veri kümeleri,  [WFS API](https://docs.microsoft.com/rest/api/maps/wfs)kullanılarak sorgulanabilir. WFS API ile özellik koleksiyonları, belirli bir koleksiyon veya özellik **kimliği**olan belirli bir özellik için sorgulama yapabilirsiniz. Özellik **kimliği** , özelliği veri kümesi içinde benzersiz şekilde tanımlar. Bu, örneğin, belirli bir stateset içinde hangi özellik durumunun güncelleştirileceğini belirlemek için kullanılır.
 
 1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
 
@@ -391,7 +400,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
     >[!NOTE]
     > Güncelleştirme yalnızca, postalanan zaman damgası önceki isteğin zaman damgasından sonra olduğunda kaydedilir. Oluşturma sırasında daha önce yapılandırdığımız herhangi bir KeyName geçirebiliriz.
 
-7. Başarılı bir güncelleştirmeden sonra bir `200 OK` http durum kodu alırsınız. Bir ınkapımap için [dinamik stil uygulanmışsa](indoor-map-dynamic-styling.md) , güncelleştirme işlenen haritasında belirtilen zaman damgasında görüntülenir.
+7. Başarılı bir güncelleştirmeden sonra bir `200 OK` http durum kodu alırsınız. Bir ınkapımap için  [dinamik stil uygulanmışsa](indoor-map-dynamic-styling.md) , güncelleştirme işlenen haritasında belirtilen zaman damgasında görüntülenir.
 
 [Özellik alma API 'si](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) , özelliğini kullanarak bir özelliğin durumunu almanıza olanak sağlar `ID` . Ayrıca, [durum SILME API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview)'sini kullanarak stateset ve kaynaklarını silebilirsiniz.
 

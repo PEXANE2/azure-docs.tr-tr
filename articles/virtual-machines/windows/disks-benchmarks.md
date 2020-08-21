@@ -7,25 +7,25 @@ ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 6a9089bb13a9b2d7f091d209240bcd7a9e02e148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8bf90f4ecea992b3212200905cd9204e4079b1b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660749"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683972"
 ---
 # <a name="benchmarking-a-disk"></a>Diski sınama
 
-Sınama, uygulamanızdaki farklı iş yüklerini taklit etme ve her iş yükü için uygulama performansını ölçme işlemidir. [Yüksek performans için tasarlama makalesinde](premium-storage-performance.md)açıklanan adımları kullanarak, uygulama performansı gereksinimlerini toplamıştır. Uygulamayı barındıran VM 'lerde benchişaretleme araçları 'nı çalıştırarak, uygulamanızın Premium depolamayla elde edilebileceği performans düzeylerini belirleyebilirsiniz. Bu makalede, Azure Premium Depolama disklerinde sağlanan standart bir DS14 VM 'yi sınama örnekleri sunuyoruz.
+Sınama, uygulamanızdaki farklı iş yüklerini taklit etme ve her iş yükü için uygulama performansını ölçme işlemidir. [Yüksek performans için tasarlama makalesinde](../premium-storage-performance.md)açıklanan adımları kullanarak, uygulama performansı gereksinimlerini toplamıştır. Uygulamayı barındıran VM 'lerde benchişaretleme araçları 'nı çalıştırarak, uygulamanızın Premium depolamayla elde edilebileceği performans düzeylerini belirleyebilirsiniz. Bu makalede, Azure Premium Depolama disklerinde sağlanan standart bir DS14 VM 'yi sınama örnekleri sunuyoruz.
 
 Windows ve Linux için sırasıyla ortak bir benchişaretleme araçları Iometer ve FIO 'u kullandık. Bu araçlar, iş yükü gibi bir üretimi taklit eden birden çok iş parçacığı oluşturup sistem performansını ölçer. Araçları kullanarak, genellikle bir uygulama için değiştiremediğiniz blok boyutu ve sıra derinliği gibi parametreleri de yapılandırabilirsiniz. Bu sayede, farklı uygulama iş yükleri türleri için Premium disklerle sağlanan yüksek ölçekli bir VM 'de maksimum performansı elde etmenizi sağlayan daha fazla esneklik sağlanır. Her bir sınama aracı hakkında daha fazla bilgi edinmek için [Iometer](http://www.iometer.org/) ve [Fio](http://freecode.com/projects/fio)'ı ziyaret edin.
 
-Aşağıdaki örnekleri izlemek için standart bir DS14 VM oluşturun ve VM 'ye 11 Premium Depolama diski ekleyin. 11 disk, ana bilgisayar önbelleğe alma ile 10 disk yapılandırın ve bunları Nocacheyazmaları adlı bir birime ayırır. Ana bilgisayar önbelleğe almayı kalan diskte "ReadOnly" olarak yapılandırın ve bu diskle CacheReads adlı bir birim oluşturun. Bu kurulumu kullanarak, standart bir DS14 VM 'den en fazla okuma ve yazma performansını görebilirsiniz. Premium SSD 'Ler içeren bir DS14 VM oluşturma hakkında ayrıntılı adımlar için, [yüksek performans Için tasarlama](premium-storage-performance.md)bölümüne gidin.
+Aşağıdaki örnekleri izlemek için standart bir DS14 VM oluşturun ve VM 'ye 11 Premium Depolama diski ekleyin. 11 disk, ana bilgisayar önbelleğe alma ile 10 disk yapılandırın ve bunları Nocacheyazmaları adlı bir birime ayırır. Ana bilgisayar önbelleğe almayı kalan diskte "ReadOnly" olarak yapılandırın ve bu diskle CacheReads adlı bir birim oluşturun. Bu kurulumu kullanarak, standart bir DS14 VM 'den en fazla okuma ve yazma performansını görebilirsiniz. Premium SSD 'Ler içeren bir DS14 VM oluşturma hakkında ayrıntılı adımlar için, [yüksek performans Için tasarlama](../premium-storage-performance.md)bölümüne gidin.
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yüksek performans için tasarlamaya yönelik](premium-storage-performance.md)makalemize ilerleyin.
+[Yüksek performans için tasarlamaya yönelik](../premium-storage-performance.md)makalemize ilerleyin.
 
 Bu makalede, prototip için mevcut uygulamanıza benzer bir denetim listesi oluşturacaksınız. Değerlendirme araçlarını kullanarak, iş yüklerinin benzetimini yapabilir ve prototip uygulamasındaki performansı ölçebilir. Bunu yaparak, hangi disk teklifini, uygulama performansı gereksinimlerinizin eşleşeceğini veya geçebileceği tespit edebilirsiniz. Daha sonra üretim uygulamanız için aynı yönergeleri uygulayabilirsiniz.

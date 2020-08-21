@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek ü
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520881"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689856"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup _yönetilen diskleri kul
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json":::
 
 Şablonda tanımlanan kaynak:
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Name | Değer |
+   | Ad | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. Ekran görüntüsünde, kaynak grubu adı _mypolicyquickstart \<Date in MMDD\> RG_' dir. |

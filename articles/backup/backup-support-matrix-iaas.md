@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 66c712eca86b01c5815638c9ea58042580791ea6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611543"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685485"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -165,7 +165,7 @@ Yinelenen yinelenenleri kaldırma & VM 'Leri/diskleri geri yükleme | Azure Back
 Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
 Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Genişleme Dosya Sunucusu kullanarak VM 'Leri yedekleme desteklenmez. Yedekleme sırasında CSV yazıcılarının başarısız olma olasılığı yüksektir. Geri yükleme sırasında CSV birimleri içeren diskler gelmeyebilir.
-[Paylaşılan diskler](../virtual-machines/windows/disks-shared-enable.md) | Desteklenmez.
+[Paylaşılan diskler](../virtual-machines/disks-shared-enable.md) | Desteklenmez.
 
 ## <a name="vm-network-support"></a>VM ağı desteği
 
@@ -207,10 +207,10 @@ Veri güvenliği:
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | ![Yes][green] | ![Yes][green]
-Azure VM’leri | ![Yes][green] | ![Yes][green]
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
+Azure VM’leri | ![Evet][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="vm-compression-support"></a>VM sıkıştırma desteği
 
@@ -223,8 +223,8 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
 Azure VM’leri | NA | NA
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

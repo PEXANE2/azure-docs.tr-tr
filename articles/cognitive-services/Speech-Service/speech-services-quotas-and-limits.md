@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: alexeyo
-ms.openlocfilehash: 86182130daf5cbb61df7a751aaeff392dd608a67
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88662597"
+ms.locfileid: "88690145"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmetleri kotaları ve limitleri
 
@@ -132,7 +132,7 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
   - Var olan limiti denetlemek için kota veya kullanım doğrulaması "
 - Ileri ' ye tıklayın *: çözümler*
 - İstek oluşturma ile daha fazla ilerleyin
-- *Ayrıntı* alanları ' nda *Açıklama* alanına girer:
+- *Ayrıntılar* sekmesinde *Açıklama* alanına yazın:
   - isteğin **konuşmaya metin** kotası hakkında olduğuna ilişkin bir Note
   - **Taban** veya **özel** model
   - Daha [önce topladığınız](#have-the-required-information-ready) Azure Kaynak bilgileri 
@@ -184,7 +184,7 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
   - Var olan limiti denetlemek için kota veya kullanım doğrulaması "
 - Ileri ' ye tıklayın *: çözümler*
 - İstek oluşturma ile daha fazla ilerleyin
-- *Ayrıntı* alanları ' nda *Açıklama* alanına girer:
+- *Ayrıntılar* sekmesinde *Açıklama* alanına yazın:
   - isteğin **metin okuma** kotasıyla ilgili olduğunu belirten bir Note
   - Daha [önce topladığınız](#prepare-the-required-information) Azure Kaynak bilgileri 
   - Gerekli bilgileri girmeyi ve *gözden geçir + oluştur* sekmesinde *Oluştur* düğmesine tıklayın

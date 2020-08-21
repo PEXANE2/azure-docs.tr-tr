@@ -9,32 +9,31 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431197"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691267"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
 
 **Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure yapay zeka Galerisi](https://gallery.azure.ai)** , Azure AI ile oluşturulmuş çözümleri bulmak ve paylaşmak için topluluk odaklı bir sitedir.
 Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz çeşitli kaynakları vardır.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bunlara
+Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu güncelleştirmeler şunlardır:
 
 * **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
 * **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.
 * **Koleksiyonlar** -bir koleksiyon, belirli bir çözümü veya kavramı ele alan denemeleri, API 'ler ve diğer Galeri kaynaklarını gruplamanıza olanak tanır.
 * **Özel modüller** -kendi denemeleri kullanabilmeniz için, özel modülleri Studio (klasik) çalışma alanınıza indirebilirsiniz.
-* **Jupi Not defterleri** -Jupimter Not defterleri, tek ve etkileşimli bir tuvalde kod, veri görselleştirmeleri ve belgeler içerir. Galerideki Not defterleri, gelişmiş makine öğrenimi teknikleri ve çözümleri hakkında öğreticiler ve ayrıntılı açıklamalar sağlar.
 
 ## <a name="discover-and-contribute"></a>Bulma ve katkıda bulunma
 
@@ -49,12 +48,12 @@ LinkedIn veya Twitter 'ın paylaşma yeteneklerini kullanarak veya bir bağlant�
 
 Oturum açtığınızda Galeri topluluğunun bir üyesi olursunuz. Bu sayede, başkalarının bulduğunuz çözümlerden yararlanabilmesi için kaynakları indirebilir veya kendi Galeri öğelerinizi katkıda bulunun.
 
-Kendi analiz çözümlerinizi geliştirmek için kullanmak üzere **denemeleri**, **özel modüller**ve **jupyıter not defterlerini** indirebilirsiniz.
+Kendi analiz çözümlerinizi geliştirmek için kullanmak üzere **denemeleri**, **özel modüller** indirebilirsiniz.
 Galeriye **denemeleri**, **öğreticiler**ve **koleksiyonlar** katkıda bulunabilir.
 
-## <a name="download-experiments-modules-notebooks"></a>Denemeleri, modüller, Not defterleri indirin
+## <a name="download-experiments-modules"></a>Denemeleri, modülleri indir
 
-Kendi çözümlerinizi geliştirmek için kullanmak üzere kendi Machine Learning Studio (klasik) çalışma alanınıza **denemeleri**, **özel modüller**ve **jupyıter not defterlerini** indirebilirsiniz.
+Kendi çözümlerinizi geliştirmek için kullanmak üzere kendi Machine Learning Studio (klasik) çalışma alanınıza **denemeleri**, **özel modüller** indirebilirsiniz.
 
 AI Galerisi içinden bir kaynağı indirmek için:
 
@@ -203,6 +202,6 @@ Bir etiket girdikten sonra, başka bir etiket girmek için Tab tuşuna basın.
 
 Galerinin kullanıcılarımıza ve kullanıcılarımıza göre olmasını istiyoruz. Galeri hakkında ne kadar sevdiğiniz veya nefret verdiğiniz şeyleri bize bildirmek için sağ taraftaki gülümseme 'nı kullanın.  
 
-![Geri Bildirim](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![Geribildirim](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[GALERIYE GÖTÜR >>](https://gallery.azure.ai)**

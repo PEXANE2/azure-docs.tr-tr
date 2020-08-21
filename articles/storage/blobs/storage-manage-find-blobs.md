@@ -3,17 +3,17 @@ title: Blob dizini (Önizleme) ile Azure Blob depolama üzerinde verileri yönet
 description: Blob nesnelerini bulma, yönetme ve sorgulama için blob dizini etiketlerini nasıl kullanacağınızı öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 08/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ed70a05e0a6213ce00a6e0514f0741e8abbaeef9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499883"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690383"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure Blob depolama üzerinde verileri yönetme ve bulma
 
@@ -105,7 +105,7 @@ Aşağıdaki tabloda FindBlobsByTags için geçerli tüm işleçler gösterilmek
 |     <      |  Küçüktür    | "Age" < ' 32 ' |
 |     <=     |  Küçüktür veya eşittir  | "Şirket" <= ' contoso ' |
 |    AND     |  Mantıksal and  | "Rank" >= ' 010 ' ve "Rank" < ' 100 ' |
-| @container |  Belirli bir kapsayıcının kapsamı   | @container= ' videof, ' ve "Status" = ' bitti ' |
+| @container |  Belirli bir kapsayıcının kapsamı   | @container = ' videof, ' ve "Status" = ' bitti ' |
 
 > [!NOTE]
 > Etiketler üzerinde ayarlama ve sorgulama yaparken naicografik sıralaması hakkında bilgi sahibi olun.

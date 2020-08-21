@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544681"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685774"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -36,7 +36,7 @@ Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](.
 > [!IMPORTANT]
 > Azure sanal makinelerini denetlemek için konuk yapılandırma uzantısı ve yönetilen bir kimlik gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke girişim atamasını yapın:
 > 
-> - [Sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için önkoşulları dağıtın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> `Deploy prerequisites to enable Guest Configuration policies on virtual machines`
 
 ### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
@@ -62,7 +62,7 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur.
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
-|Publisher|Adı|Sürümler|
+|Publisher|Ad|Sürümler|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 ve üzeri|
 |Credavtiv|Debian|8 ve üzeri|

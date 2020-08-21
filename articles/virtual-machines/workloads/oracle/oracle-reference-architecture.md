@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448769"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690366"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -79,7 +79,7 @@ Aşağıdaki diyagram, Azure 'da kullanılabilirlik alanları ile Oracle Data Gu
 
 ![Veri koruma Aracısı ile kullanılabilirlik alanlarını kullanmak Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-Önceki diyagramda istemci sistemi, Web aracılığıyla Oracle arka ucu ile özel bir uygulamaya erişir. Web ön ucu, bir yük dengeleyicide yapılandırılır. Web ön ucu, çalışmayı işlemek için uygun uygulama sunucusuna bir çağrı yapar. Uygulama sunucusu birincil Oracle veritabanını sorgular. Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve yüksek kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
+Önceki diyagramda istemci sistemi, Web aracılığıyla Oracle arka ucu ile özel bir uygulamaya erişir. Web ön ucu, bir yük dengeleyicide yapılandırılır. Web ön ucu, çalışmayı işlemek için uygun uygulama sunucusuna bir çağrı yapar. Uygulama sunucusu birincil Oracle veritabanını sorgular. Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve yüksek kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
 
 Oracle veritabanları, yüksek kullanılabilirlik için birden fazla kullanılabilirlik bölgesine yerleştirilir. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge ayarlanır. Bölge içindeki kullanılabilirlik bölgelerinin fiziksel ayrımı, verileri veri merkezi hatalarından korur. Ayrıca, bir kesinti oluştuğunda veritabanını ikincil üzerinde başlatmak ve yükünü devretmek için iki kullanılabilirlik bölgesinde iki fsfo gözlemcilerin ayarlanır. 
 
@@ -113,7 +113,7 @@ Aşağıdaki diyagram, yüksek kullanılabilirlik ve olağanüstü durum kurtarm
 
 GoldenGate, kuruluş genelinde birden çok farklı platform arasında işlem düzeyindeki verilerin değişimini ve işlemesini mümkün değildir. İşlem bütünlüğü ve mevcut altyapınızdaki en az ek yük ile kaydedilmiş işlemleri hareket ettirir. Modüler mimarisi, seçili veri kayıtlarını, işlemsel değişiklikleri ve DDL 'de yapılan değişiklikleri (veri tanımlama dili) çeşitli topolojilerde ayıklama ve çoğaltma esnekliği sağlar.
 
-Oracle GoldenGate, çift yönlü çoğaltma sağlayarak veritabanınızı yüksek kullanılabilirlik için yapılandırmanızı sağlar. Bu, **çok yöneticili** veya **etkin-etkin bir yapılandırma**ayarlamanıza olanak sağlar. Aşağıdaki diyagram, Azure 'da Oracle GoldenGate etkin-etkin kurulumu için önerilen bir mimaridir. Aşağıdaki mimaride, Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
+Oracle GoldenGate, çift yönlü çoğaltma sağlayarak veritabanınızı yüksek kullanılabilirlik için yapılandırmanızı sağlar. Bu, **çok yöneticili** veya **etkin-etkin bir yapılandırma**ayarlamanıza olanak sağlar. Aşağıdaki diyagram, Azure 'da Oracle GoldenGate etkin-etkin kurulumu için önerilen bir mimaridir. Aşağıdaki mimaride, Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
 
 ![Veri koruma Aracısı ile kullanılabilirlik alanlarını kullanmak Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu gü
 
 ## <a name="architecture-and-design-considerations"></a>Mimari ve tasarım konuları
 
-- Lisanslama maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için Oracle Database sanal makinenizin [kısıtlı çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) ile hiper iş parçacıklı [bellek için iyileştirilmiş sanal makine](../../sizes-memory.md) kullanmayı düşünün. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanın.
+- Lisanslama maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için Oracle Database sanal makinenizin [kısıtlı çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) ile hiper iş parçacıklı [bellek için iyileştirilmiş sanal makine](../../sizes-memory.md) kullanmayı düşünün. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanın.
 - Yönetilen diskler kullanılırken, yeniden başlatmalar üzerinde disk/cihaz adı değişebilir. Takmaların yeniden başlatmalar arasında kalıcı olmasını sağlamak için, ad yerine cihaz UUID 'sini kullanmanız önerilir. [Burada](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)daha fazla bilgi bulabilirsiniz.
 - Bölge içi yüksek kullanılabilirlik elde etmek için kullanılabilirlik alanlarını kullanın.
 - Oracle veritabanınız için Ultra diskler (kullanılabilir olduğunda) veya Premium diskler kullanmayı düşünün.

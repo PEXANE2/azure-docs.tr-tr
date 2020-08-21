@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708748"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689516"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği 'nde Machine Learning Services (Önizleme)
 
@@ -52,7 +52,23 @@ Python ve R 'nin temel dağıtımları Machine Learning Services eklenmiştir. M
 
 Bu sınırlı genel önizleme, [Azure önizleme koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)tabidir. 
 
-Önizleme programını birleştirmek ve bu koşulları kabul etmek istiyorsanız, konumunda bir Azure destek bileti oluşturarak kayıt isteğinde bulunabilir [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . "Sorun türü" için "Teknik" seçeneğini belirleyin, "hizmet" için "SQL veritabanı yönetilen örneği" ni seçin ve "sorun türü" için "diğer" seçeneğini belirleyin. Şu bilgileri de ekleyerek SQL Yönetilen Örneği için Machine Learning sınırlı genel önizleme sürümüne kaydolmak istediğinizi belirten bir istek gönderin: mantıksal sunucu adı, bölge ve abonelik kimliği.
+Önizleme programını birleştirmek ve bu koşulları kabul etmek istiyorsanız, konumunda bir Azure destek bileti oluşturarak kayıt isteğinde bulunabilir [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
+
+1. Aşağıdaki seçenekleri belirleyin:
+   - Sorun türü- **Teknik**
+   - Abonelik- *aboneliğinizi seçin*
+   - Hizmet- **SQL veritabanı yönetilen örneği**
+   - Özet- *isteğinizin kısa bir açıklamasını girin*
+   - Sorun türü- **SQL yönetilen örneği için Machine Learning Services (Önizleme)**
+   - Sorun alt türü- **diğer sorun veya "nasıl yapılır" soruları**
+
+1. **İleri: çözümler**' e tıklayın.
+
+1. Önizleme hakkındaki bilgileri okuyun, sonra **Ayrıntılar**' a tıklayın.
+
+1. **Açıklama**' da, önizlemede kaydetmek istediğiniz mantıksal sunucu adı, bölge ve abonelik kimliği dahil olmak üzere isteğinizin ayrıntılarını girin. Diğer ayrıntıları uygun şekilde girin.
+
+1. İşiniz bittiğinde **İleri**' ye tıklayın ve **ardından Oluştur ' a tıklayın.**
 
 Programa kaydınız yapıldıktan sonra Microsoft sizi genel önizleme sürümüne alacak ve var olan veya yeni veritabanınız için Machine Learning Services işlevini etkinleştirecektir.
 

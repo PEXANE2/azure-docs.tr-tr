@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829382"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689686"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Makine öğrenimi modellerinde eşitliği azaltma (Önizleme)
 
@@ -51,7 +51,7 @@ Bu bileşenler birlikte, veri bilimcilerinin ve iş liderlerinin eşitliği ve p
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>Makine öğrenimi modellerinde eşitliği değerlendirin
 
-Fairlearn açık kaynaklı pakette, eşitliği, **Grup eşitliği**olarak bilinen bir yaklaşım olsa da, hangi kişi gruplarının Harms 'nin risk altında olduğunu soran Alt oluşturmalar olarak da bilinen ilgili gruplar **gizli özellikler** veya gizli öznitelikler aracılığıyla tanımlanır. Hassas özellikler, Fairlearn açık kaynaklı paketteki bir tahmin aracı 'a vektör veya çağrılan bir matris olarak geçirilir `sensitive_features` . Bu terim, Grup eşitliği değerlendirmek için sistem tasarımcısının bu özelliklere duyarlı olması önerilir. 
+Fairlearn açık kaynaklı pakette, eşitliği, **Grup eşitliği**olarak bilinen bir yaklaşım olsa da, hangi kişi gruplarının Harms 'nin risk altında olduğunu soran Alt oluşturmalar olarak da bilinen ilgili gruplar **gizli özellikler** veya gizli öznitelikler aracılığıyla tanımlanır. Hassas özellikler, Fairlearn açık kaynaklı paketteki bir tahmin aracı 'a vektör veya çağrılan bir matris olarak geçirilir  `sensitive_features` . Bu terim, Grup eşitliği değerlendirmek için sistem tasarımcısının bu özelliklere duyarlı olması önerilir. 
 
 En küçük bir şey, bu özelliklerin özel veriler nedeniyle gizlilik etkilerini içerip içermediğini belirtir. Ancak "hassas" sözcüğü, bu özelliklerin tahminlerde kullanılması gerektiğini göstermez.
 
@@ -108,6 +108,6 @@ Fairlearn açık kaynak paketi, karşı işlem ve azaltma unfairness azaltma alg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Fairlearn 'in [GitHub](https://github.com/fairlearn/fairlearn/), [Kullanıcı Kılavuzu](https://fairlearn.github.io/user_guide/index.html), [örnekler](https://fairlearn.github.io/auto_examples/notebooks/index.html)ve [örnek not defterlerini](https://github.com/fairlearn/fairlearn/tree/master/notebooks)kullanıma alarak farklı bileşenleri nasıl kullanacağınızı öğrenin.
+- Fairlearn 'in [GitHub](https://github.com/fairlearn/fairlearn/), [Kullanıcı Kılavuzu](https://fairlearn.github.io/user_guide/index.html), [örnekler](https://fairlearn.github.io/auto_examples/)ve [örnek not defterlerini](https://github.com/fairlearn/fairlearn/tree/master/notebooks)kullanıma alarak farklı bileşenleri nasıl kullanacağınızı öğrenin.
 - Azure Machine Learning makine öğrenimi modellerinin eşitliği değerlendirmesini [nasıl](how-to-machine-learning-fairness-aml.md) etkinleştirebileceğinizi öğrenin.
 - Azure Machine Learning ek eşitliği değerlendirmesi senaryoları için [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) bakın. 

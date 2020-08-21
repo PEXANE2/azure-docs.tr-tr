@@ -2,13 +2,13 @@
 title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm dağıtımını tümleştirme
 description: Azure 'da var olan veya yeni bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme önerileri hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: a1ba75369a1d6f19ca7ae1f36107170f219f72d0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/20/2020
+ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649593"
+ms.locfileid: "88684526"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
@@ -28,10 +28,7 @@ Hub ve bağlı bileşen senaryosu, üzerinde iş yükleri içeren bir karma bulu
 
 Diyagramda, Azure 'da ExpressRoute aracılığıyla şirket içi ve Azure VMware çözümüne bağlı bir hub ve bağlı bileşen dağıtımı örneği gösterilmektedir.
 
-:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware Çözüm Merkezi ve bağlı bileşen tümleştirme dağıtımı":::
-
-
-
+:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware Çözüm Merkezi ve bağlı bileşen tümleştirme dağıtımı" border="false":::
 
 Mimaride aşağıdaki ana bileşenler bulunur:
 
@@ -64,12 +61,12 @@ ExpressRoute bağlantıları, trafiği şirket içi, Azure VMware çözümü ve 
 
 * **Şirket içinden Azure VMware Çözüm trafiği akışı**
 
-  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Şirket içinden Azure VMware Çözüm trafiği akışı":::
+  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Şirket içinden Azure VMware Çözüm trafiği akışı" border="false":::
 
 
 * **Azure VMware çözümü ile hub VNET trafik akışı**
 
-  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware çözümünü hub sanal ağ trafiği akışına":::
+  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware çözümünü hub sanal ağ trafiği akışına" border="false":::
 
 
 Azure VMware Çözüm ağı ve ınterconnectivity kavramları hakkında daha fazla ayrıntıyı [Azure VMware çözüm ürün belgelerinde](./concepts-networking.md)bulabilirsiniz.
@@ -97,7 +94,7 @@ Daha ayrıntılı bir trafik ilkesi oluşturmak için, tekerlek ve hub içindeki
 
 Azure Application Gateway v1 ve v2, Azure VMware Çözüm VM 'lerinde arka uç havuzu olarak çalışan Web Apps ile test edilmiştir. Application Gateway Şu anda Azure VMware Çözüm VM 'lerinde çalışan Web uygulamalarını internet 'e sunmak için desteklenen tek yöntemdir. Ayrıca, uygulamaları iç kullanıcılara güvenli bir şekilde kullanıma sunabilir.
 
-:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Ağ güvenlik grupları kullanılarak ikinci trafik segmentinin düzeyi":::
+:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Ağ güvenlik grupları kullanılarak ikinci trafik segmentinin düzeyi" border="false":::
 
 
 ### <a name="jumpbox-and-azure-bastion"></a>Sıçrama kutusu ve Azure savunma
@@ -110,7 +107,7 @@ En iyi güvenlik uygulaması olarak, hub sanal ağı içinde [Microsoft Azure](.
 > Sıçrama kutusu VM 'sine genel bir IP adresi vermeyin veya 3389/TCP bağlantı noktasını genel İnternet 'e sunmaz. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure savunma merkezi sanal ağı":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure savunma merkezi sanal ağı" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS çözümleme konuları

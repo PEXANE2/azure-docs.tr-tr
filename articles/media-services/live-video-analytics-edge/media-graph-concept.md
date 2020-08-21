@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300816"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690689"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -80,6 +80,10 @@ Hareket algılama işlemcisi düğümü, canlı video 'daki hareketi algılaman�
 #### <a name="http-extension-processor"></a>HTTP uzantısı işlemcisi
 
 HTTP uzantısı işlemci düğümü, kendi IoT Edge modülünüzü bir medya grafiğine bağlamanıza olanak sağlar. Bu düğüm, giriş olarak kodu çözülmüş video çerçevelerini alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir HTTP REST uç noktasına geçirir. Bu düğüm, gerekirse REST uç noktasıyla kimlik doğrulaması yapabilir. Ayrıca, düğümün REST uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici vardır. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler.
+
+#### <a name="grpc-extension-processor"></a>gRPC uzantı işlemcisi
+
+GRPC uzantısı işlemci düğümü, kodu çözülmüş video çerçevelerini giriş olarak alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir gRPC uç noktasına geçirir. Ayrıca, düğüm, gRPC uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici içerir. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler.
 
 #### <a name="signal-gate-processor"></a>Sinyal kapısı işlemcisi  
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 580d3cea94e3c550954fc0fa1aa6f2c3a73e9386
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554878"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683870"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Onfido yapılandırma öğreticisi
 
@@ -24,7 +24,7 @@ Bu örnek öğreticide, Azure AD B2C [Onfido](https://onfido.com/)ile tümleşti
 
 Bu örnekte, kimlik doğrulaması yapmak için kaydolma veya oturum açma akışındaki Onfido 'ın hizmetini bağlayacağız. Kullanıcının hangi ürün ve hizmete erişebileceği hakkında bilinçli kararlar, Onfido 'ın sonuçlarına göre yapılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -136,7 +136,7 @@ Belirtilen özel ilkelerde, aşağıdaki yer tutucuları bulun ve örneğinizi k
 | {your_tenant_extensions_app_objectid}                  | Kiracınızın depolama uygulamasının nesne KIMLIĞI                                   | 01234567-89ab-cdef-0123-456789ABCDEF         |
 | {your_app_insights_instrumentation_key} | App Insights örneğiniz için izleme anahtarı *| 01234567-89ab-cdef-0123-456789ABCDEF|
 |{your_ui_file_base_url}| UI **ocean_blue**, **dağ**ve **varlıklar** klasörlerinizin bulunduğu konumun URL 'si | https://yourstorage.blob.core.windows.net/UI/|
-| {your_app_service_URL}                                 | Ayarladığınız App Service 'in URL 'SI                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | Ayarladığınız App Service 'in URL 'SI                                             | `https://yourapp.azurewebsites.net`          |
 
 * App Insights farklı bir kiracıda olabilir. Bu adım isteğe bağlıdır. Gerekli değilse, ilgili teknisyen ve düzenleme adımlarını kaldırın.
 

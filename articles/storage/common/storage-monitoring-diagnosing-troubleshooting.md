@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076053"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688564"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -468,7 +468,7 @@ Bu hatanın en yaygın nedeni, depolama hizmetindeki zaman aşımı süresi dolm
 | Kaynak | Ayrıntı Düzeyi | Ayrıntı Düzeyi | İstemci istek kimliği | İşlem metni |
 | --- | --- | --- | --- | --- |
 | Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |Yalnızca konum modu Primarylocation 'a göre konum birincil olan işlem başlatılıyor. |
-| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |İçin zaman uyumlu istek başlatılıyor<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |İçin zaman uyumlu istek başlatılıyor <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> |
 | Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |Yanıt bekleniyor. |
 | Microsoft. Azure. Storage |Uyarı |2 |85d077ab-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (403) yasak. |
 | Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |Yanıt alındı. Durum kodu = 403, Istek KIMLIĞI = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 =, ETag =. |
@@ -516,7 +516,7 @@ Günlük girişleri:
 | 07b26a5d-... |İçin zaman uyumlu istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD............ x-MS-Client-Request-id: 07b26a5d-.... x-MS-Date: Tue, 03 Haz 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | 07b26a5d-... |Yanıt bekleniyor. |
-| 07b26a5d-... |Yanıt alındı. Durum kodu = 200, Istek KIMLIĞI = eeead849-... Content-MD5 =, ETag = &quot; 0x8d14d2dc63d059b &quot; . |
+| 07b26a5d-... |Yanıt alındı. Durum kodu = 200, Istek KIMLIĞI = eeead849-... Content-MD5 =, ETag =    &quot; 0x8d14d2dc63d059b &quot; . |
 | 07b26a5d-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | 07b26a5d-... |Yanıt gövdesi indiriliyor. |
 | 07b26a5d-... |İşlem başarıyla tamamlandı. |
@@ -559,7 +559,7 @@ Bu örnekte, günlük istemcisinin, **Uploadfromstream** yönteminden (de8b1c3c-
 
 Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunucu tarafı günlüğü iletisi gösterilmektedir:
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 | İstek başlangıç saati | 2014-05-30T06:17:48.4473697 Z |
 | İşlem türü     | GetBlobProperties            |

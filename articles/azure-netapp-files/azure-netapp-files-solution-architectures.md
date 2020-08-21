@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: b-juche
-ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: e7bdf6ce35e2649a068de234b4b52e13efe72c44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258234"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690553"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -68,6 +68,7 @@ Bu bölümde, Azure çözümlerinde SAP başvuruları sağlanmaktadır.
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [SAP HANA Azure sanal makine depolama alanı yapılandırmaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+* [Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat)
 * [SUSE Linux Enterprise Server Azure NetApp Files ile Azure VM 'lerinde bekleme düğümüyle genişleme SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
 * [Red Hat Enterprise Linux Azure NetApp Files ile Azure VM 'lerinde bekleme düğümüyle genişleme SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
 
@@ -85,7 +86,7 @@ Bu bölüm, sanal masaüstü altyapısı çözümlerine yönelik başvurular sa�
 
 ### <a name="windows-virtual-desktop"></a>Windows Sanal Masaüstü
 
-* [Windows sanal masaüstü ile Azure NetApp Files kullanmanın avantajları](solutions-windows-virtual-desktop.md)
+* [Windows Sanal Masaüstü ile Azure NetApp Files kullanmanın avantajları](solutions-windows-virtual-desktop.md)
 * [Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Kuruluş ölçeğinde Windows sanal masaüstü](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

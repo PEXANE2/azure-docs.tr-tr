@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd4ea4438e82ea9fb1d503b262bfda1b22b2737
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83845449"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690315"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS web uygulamaları için Azure Multi-Factor Authentication Sunucusu
 
@@ -48,7 +48,7 @@ Form tabanlı kimlik doğrulaması kullanan bir IIS web uygulamasını güvenli 
     - Birincil kimlik bilgilerinin bir Windows Etki Alanı, LDAP dizinine göre mi yoksa RADIUS sunucusuna göre mi doğrulanacağını belirtin.
 
 12. Form Tabanlı Web Sitesi Ekle iletişim kutusuna dönmek için **Tamam**’a tıklayın.
-13. **Tamam**'a tıklayın.
+13. **Tamam** düğmesine tıklayın.
 14. URL ve sayfa değişkenleri algılandığında veya girildiğinde, web sitesi verileri Form Tabanlı panelde görüntülenir.
 
 ## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu ile Tümleşik Windows Kimlik Doğrulaması kullanma
@@ -58,11 +58,11 @@ Tümleşik Windows HTTP kimlik doğrulaması kullanan bir IIS web uygulamasını
 1. Azure Multi-Factor Authentication Sunucusu’nun soldaki menüsünde IIS Kimlik Doğrulaması simgesine tıklayın.
 2. **HTTP** sekmesine tıklayın.
 3. **Ekle**'ye tıklayın.
-4. Taban URL 'SI Ekle iletişim kutusunda, HTTP kimlik doğrulamasının gerçekleştirildiği Web sitesinin URL 'sini girin (gibi <http://localhost/owa> ) ve bir uygulama adı sağlayın (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
+4. Taban URL 'SI Ekle iletişim kutusunda, HTTP kimlik doğrulamasının gerçekleştirildiği Web sitesinin URL 'sini girin (gibi `http://localhost/owa` ) ve bir uygulama adı sağlayın (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
 5. Varsayılan yeterli değilse, Boşta kalma zaman aşımı ve Maksimum oturum sürelerini ayarlayın.
 6. Tüm kullanıcılar sunucuya aktarılmışsa veya sunucuya aktarılacaksa ve Multi-Factor Authentication 'a tabi olursa **Kullanıcı eşleştirme Multi-Factor Authentication iste** kutusunu işaretleyin. Çok sayıda kullanıcı Sunucu’ya henüz aktarılmadı ve/veya multi-factor authentication’da muaf tutulacaksa, kutunun işaretini kaldırın.
 7. İsterseniz **tanımlama bilgisi önbelleği** kutusunu işaretleyin.
-8. **Tamam**'a tıklayın.
+8. **Tamam** düğmesine tıklayın.
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu için IIS Eklentilerini Etkinleştirme
 

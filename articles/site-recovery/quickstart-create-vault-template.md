@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kull
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248834"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684125"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir kurtarma hizmetleri Kasası oluşturma
 
@@ -17,19 +17,19 @@ Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) ku
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
-[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json" range="1-66" highlight="41-65":::
+:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
@@ -46,7 +46,7 @@ Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlang
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt** görüntüsünü seçin.
 
-   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri seçin veya girin:
 

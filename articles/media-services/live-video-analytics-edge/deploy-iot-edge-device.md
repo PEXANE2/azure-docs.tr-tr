@@ -3,19 +3,18 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652466"
+ms.locfileid: "88684108"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
 Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Canlı video analizi için HW/SW kısıtlamalarını karşılayan bir Linux makinesi
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
@@ -23,6 +22,7 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 * [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
 * [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
+
     * Şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
     * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir
 
@@ -190,6 +190,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > İkizi özelliği **Allowunsecuredendpoints** , öğreticiler ve hızlı başlangıçlar amacıyla doğru olarak ayarlanır.   
    Üretim ortamında çalışırken bu özelliği **false** olarak ayarlamanız gerekir. Bu, uygulamanın tüm güvenli olmayan uç noktaları engellemesini ve Graf topolojilerini çalıştırmak için geçerli bağlantı kimlik bilgilerinin gerekli olacağını sağlar.  
@@ -210,8 +211,8 @@ Dağıtım bilgilerinizi gözden geçirin ve ardından Oluştur ' u seçin.
 
 Dağıtımı oluşturduktan sonra IoT Hub 'ınızın IoT Edge sayfasına dönersiniz.
 
-1.  Bilgilerini açmak için dağıtıma hedeflenmiş IoT Edge cihazı seçin.
-2.  Cihaz ayrıntılarında, BLOB depolama modülünün hem dağıtım hem de **cihaz tarafından bildirilen**olarak listelendiğini doğrulayın.
+1. Bilgilerini açmak için dağıtıma hedeflenmiş IoT Edge cihazı seçin.
+2. Cihaz ayrıntılarında, BLOB depolama modülünün hem dağıtım hem de **cihaz tarafından bildirilen**olarak listelendiğini doğrulayın.
 
 Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
 Durum kodu: 200 – OK [, IoT Edge çalışma zamanının](../../iot-edge/iot-edge-runtime.md) sağlıklı ve sorunsuz bir şekilde çalıştığı anlamına gelir.
@@ -247,6 +248,7 @@ Sonra, bir doğrudan yöntemi çağırarak örneği test etmenizi sağlar. LvaEd
     ![Durum 200 iletisi](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [Hızlı başlangıç: Başlarken-canlı video analizlerini deneme IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

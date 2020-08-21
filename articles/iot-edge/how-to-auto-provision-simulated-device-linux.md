@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092397"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684465"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
@@ -31,7 +31,7 @@ Görevler aşağıdaki gibidir:
 >
 > Fiziksel bir cihaz kullanıyorsanız, bu makaledeki [sağlama bilgilerini bir fiziksel cihazdan alma](#retrieve-provisioning-information-from-a-physical-device) bölümüne geçebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
 * Etkin bir IoT Hub.
@@ -61,7 +61,7 @@ Yeni sanal anahtarı oluştururken hata görürseniz, başka hiçbir anahtarın 
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-1. Sanal makineniz için kullanmak üzere bir disk görüntüsü dosyası indirin ve yerel olarak kaydedin. Örneğin, [Ubuntu server 18,04](http://releases.ubuntu.com/18.04.4/). IoT Edge cihazlar için desteklenen işletim sistemleri hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
+1. Sanal makineniz için kullanmak üzere bir disk görüntüsü dosyası indirin ve yerel olarak kaydedin. Örneğin, [Ubuntu server 18,04](http://releases.ubuntu.com/18.04/). IoT Edge cihazlar için desteklenen işletim sistemleri hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
 
 2. Hyper-V Yöneticisi 'nde, **Action**  >  **New**  >  **Eylemler** menüsünde Yeni**sanal makine** eylem ' i seçin.
 
@@ -170,7 +170,7 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
 
    6. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Daha fazla bilgi için bkz. [IoT Edge modüllerini ölçekli olarak dağıtma](how-to-deploy-at-scale.md).
 
-   7. **Kaydet**'i seçin.
+   7. **Kaydet**’i seçin.
 
 Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir.
 

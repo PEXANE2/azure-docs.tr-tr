@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424384"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685723"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hata kodları
  
@@ -89,7 +89,7 @@ Belirteçler Base64 kodlardır ve değerler gibi web sitelerinde kodu çözüleb
 
 Bu belirteçte birçok önemli bölümü görebiliriz:
 
-- AUD (hedef kitle): belirtecin kaynağı. Bunun olduğuna dikkat edin <https://vault.azure.net> . Bu belirteç, Graph gibi bu değerle açıkça eşleşmeyen herhangi bir kaynak için çalışmayacaktır.
+- AUD (hedef kitle): belirtecin kaynağı. Bunun olduğuna dikkat edin `https://vault.azure.net` . Bu belirteç, Graph gibi bu değerle açıkça eşleşmeyen herhangi bir kaynak için çalışmayacaktır.
 - IAT (çıkarılan): belirteç verildiğinde dönem başlangıcından bu yana geçen onay işareti sayısı.
 - NBF (daha önce değil): Bu belirteç geçerli olduğunda dönem başlangıcından bu yana geçen onay işareti sayısı.
 - exp (sona erme): Bu belirtecin süresi dolduğunda dönem başlangıcından bu yana geçen onay işareti sayısı.

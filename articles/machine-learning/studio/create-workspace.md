@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433236"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691284"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma
 
@@ -26,7 +26,7 @@ Azure Machine Learning Studio (klasik) kullanmak için bir Machine Learning Stud
 
 Machine Learning Studio (klasik) ' de bir çalışma alanı açmak için, çalışma alanını oluşturmak için kullandığınız Microsoft hesabında oturum açmanız veya çalışma alanına katılması için sahibinden bir davetiye almanız gerekir. Azure portal, erişimi yapılandırma özelliğini içeren çalışma alanını yönetebilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın
+1. [Azure portalda](https://portal.azure.com/) oturum açma
 
     > [!NOTE]
     > Oturum açmak ve bir Studio (klasik) çalışma alanı oluşturmak için bir Azure abonelik yöneticisi olmanız gerekir. 
@@ -39,7 +39,7 @@ Machine Learning Studio (klasik) ' de bir çalışma alanı açmak için, çalı
 
 4. Çalışma alanı bilgilerinizi girin:
 
-   - *Çalışma alanı adı* en fazla 260 karakter uzunluğunda olabilir ve bir boşluk ile sonlanmaz. Ad şu karakterleri içeremez:`< > * % & : \ ? + /`
+   - *Çalışma alanı adı* en fazla 260 karakter uzunluğunda olabilir ve bir boşluk ile sonlanmaz. Ad şu karakterleri içeremez: `< > * % & : \ ? + /`
    - Seçtiğiniz ilişkili *fiyatlandırma katmanıyla* birlikte seçtiğiniz (veya oluşturduğunuz) *Web hizmeti planı* , Web hizmetlerini bu çalışma alanından dağıtırsanız kullanılır.
 
      ![Yeni bir Studio (klasik) çalışma alanı oluştur](./media/create-workspace/create-new-workspace.png)
@@ -70,7 +70,7 @@ Studio (klasik) çalışma alanınızı yönetme hakkında daha fazla bilgi içi
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasik) çalışma alanını paylaşma
-Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, çalışma alanınıza ve tüm denemeleri, veri kümelerine, Notebook, vb. erişimi paylaşmak için kullanıcıları çalışma alanınıza davet edebilirsiniz. Kullanıcıları, iki rolden birine ekleyebilirsiniz:
+Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, çalışma alanınıza ve tüm denemeleri, veri kümelerine ve vb. erişimi paylaşmak için kullanıcıları çalışma alanınıza davet edebilirsiniz. Kullanıcıları, iki rolden birine ekleyebilirsiniz:
 
 * **Kullanıcı** -bir çalışma alanı kullanıcısı, çalışma alanında denemeleri, veri kümeleri, vb. oluşturabilir, açabilir, değiştirebilir ve silebilir.
 * **Sahip** -bir sahip, kullanıcının ne yapabileceklerini ek olarak çalışma alanındaki kullanıcıları davet edebilir ve kaldırabilir.
@@ -82,7 +82,7 @@ Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, çal�
 
 ### <a name="to-share-a-studio-classic-workspace"></a>Bir Studio (klasik) çalışma alanını paylaşmak için
 
-1. Machine Learning Studio 'de (klasik) oturum açın[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Machine Learning Studio 'de (klasik) oturum açın [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
 2. Sol bölmede, **Ayarlar** ' a tıklayın.
 

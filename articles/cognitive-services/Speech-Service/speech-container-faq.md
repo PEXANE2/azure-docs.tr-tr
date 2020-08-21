@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10a75d19b7fb134b8e7498c422742e00f6475da5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289022"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690213"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapsayıcıları hakkında sık sorulan sorular (SSS)
 
@@ -95,7 +95,7 @@ Microsoft 'a ödenen bakım maliyeti hizmet düzeyine ve hizmetin içeriğine ba
 <b>Neden eksik noktalama işaretleri eksik?</b>
 </summary>
 
-**Cevap:** `speech_recognition_language=<YOUR_LANGUAGE>`Karbon istemci kullanılıyorsa istekte açıkça yapılandırılması gerekir.
+**Cevap:** `speech_recognition_language=<YOUR_LANGUAGE>` Karbon istemci kullanılıyorsa istekte açıkça yapılandırılması gerekir.
 
 Örnek:
 
@@ -291,8 +291,8 @@ Hangi işlevlerin test edilmesi ve SDK ve REST API 'Lerinin nasıl test edilmesi
 
 | Uç Noktası                                                | İşlevsel test                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Metni sentezleştirme (metinden konuşmaya)                                  |     | Yes      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Bilişsel Hizmetler-Şirket içi dikte v1 WebSocket uç noktası        | Yes | Hayır       |
+| `/speech/synthesize/cognitiveservices/v1`               | Metni sentezleştirme (metinden konuşmaya)                                  |     | Evet      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Bilişsel Hizmetler-Şirket içi dikte v1 WebSocket uç noktası        | Evet | Hayır       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Bilişsel Hizmetler-Şirket içi etkileşimli v1 WebSocket uç noktası  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Bilişsel Hizmetler-Şirket içi konuşma v1 WebSocket uç noktası |     |          |
 
@@ -305,7 +305,7 @@ Hangi işlevlerin test edilmesi ve SDK ve REST API 'Lerinin nasıl test edilmesi
 - Sürüm yapılarında (işlem sonlandırılıyor) Onaylamalar ateşte.
 
 Geçici çözüm kodunuzda sürekli tanıma özelliğini kullanmaya geçiş yapar veya (daha hızlı) kapsayıcıdaki etkileşimli veya sürekli uç noktalara bağlanır.
-Kodunuz için uç noktayı <Host: Port>/Speech/Recognition/interactive/cognitiveservices/v1 olarak ayarlayın
+Kodunuz için, uç noktasını/Speech/Recognition/interactive/cognitiveservices/v1 olarak ayarlayın. `host:port`
 
 Çeşitli modlar için bkz. konuşma modları-aşağıya bakın:
 
@@ -559,7 +559,7 @@ Python [örnekleri](https://github.com/Azure-Samples/cognitive-services-speech-s
 
 Dikte etmeyi etkinleştirmek Için C# ' de `SpeechConfig.EnableDictation()` işlevi çağırın.
 
-### <a name="fromendpoint-apis"></a>`FromEndpoint`GetVersionEx
+### <a name="fromendpoint-apis"></a>`FromEndpoint` GetVersionEx
 | Dil | API ayrıntıları |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -579,7 +579,7 @@ Dikte etmeyi etkinleştirmek Için C# ' de `SpeechConfig.EnableDictation()` işl
 
 **Cevap:** Yeni bir API var `FromHost` . Bu, var olan API 'Leri değiştirmez veya değiştirmez. Yalnızca özel bir ana bilgisayar kullanarak bir konuşma yapılandırması oluşturmak için alternatif bir yol ekler.
 
-### <a name="fromhost-apis"></a>`FromHost`GetVersionEx
+### <a name="fromhost-apis"></a>`FromHost` GetVersionEx
 
 | Dil | API ayrıntıları |
 |--|:-|
@@ -597,8 +597,8 @@ Ana bilgisayar için biçim `protocol://hostname:port` , `:port` isteğe bağlı
 - Kapsayıcı uzak bir sunucuda çalışıyorsa, bu sunucunun ana bilgisayar adını veya IPv4 adresini kullanın.
 
 Konuşmayı metne yönelik ana bilgisayar parametresi örnekleri:
-- `ws://localhost:5000`-bağlantı noktası 5000 kullanılarak yerel bir kapsayıcıya güvenli olmayan bağlantı
-- `ws://some.host.com:5000`-uzak sunucuda çalışan bir kapsayıcıya güvenli olmayan bağlantı
+- `ws://localhost:5000` -bağlantı noktası 5000 kullanılarak yerel bir kapsayıcıya güvenli olmayan bağlantı
+- `ws://some.host.com:5000` -uzak sunucuda çalışan bir kapsayıcıya güvenli olmayan bağlantı
 
 Yukarıdaki Python örnekleri, ancak `host` yerine parametresini kullanın `endpoint` :
 

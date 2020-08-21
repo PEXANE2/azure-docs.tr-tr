@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2ff5b7832b894e218cf65447378bfe6fd3e42ca3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3da313803aa546c2399e3c8c18858bee5cfa2ea1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658467"
+ms.locfileid: "88684380"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Akış veya kodlama için medya yükleme
 Media Services, dijital dosyalarınızı (medya) bir varlıkla ilişkili bir blob kapsayıcısına yüklersiniz. Varlık [varlığı video](/rest/api/media/operations/asset) , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir. Dosyalar varlığın kapsayıcısına yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
@@ -44,7 +44,7 @@ Ancak başlamadan önce, birkaç değer toplamanız veya bunun hakkında düşü
 
 ## <a name="rest"></a>[REST](#tab/rest/)
 
-[Postman veya DIĞER Rest yöntemini kullanarak bir varlık oluşturduktan ve varlık IÇIN sus URL 'sini](how-to-create-asset.md?tabs=rest)edindikten sonra Azure depolama API 'Lerini veya SDK 'larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanın.
+[Postman veya DIĞER Rest yöntemini kullanarak bir varlık oluşturduktan ve varlık IÇIN SAS URL 'sini](how-to-create-asset.md?tabs=rest)ayırdıktan sonra Azure depolama API 'Lerini veya SDK 'larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanın.
 
 ---
 <!-- add these to the tabs when available -->

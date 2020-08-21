@@ -3,55 +3,63 @@ title: Azure Işlevleri bağlama uzantılarını kaydetme
 description: Ortamınıza bağlı olarak bir Azure Işlevleri bağlama uzantısı kaydetmeyi öğrenin.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/08/2019
+ms.date: 08/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224790"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689584"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
 
-Azure Işlevleri sürüm 2. x ile başlayarak, [bağlama](./functions-triggers-bindings.md) işlevleri çalışma zamanından ayrı paketler olarak kullanılabilir. .NET işlevleri NuGet paketleri aracılığıyla bağlamalara erişirken, uzantı paketleri diğer işlevlere bir yapılandırma ayarı aracılığıyla tüm bağlamalara erişmesine izin verir.
+Azure Işlevleri sürüm 2. x ile başlayarak, işlevler çalışma zamanı yalnızca HTTP ve Zamanlayıcı tetikleyicilerini varsayılan olarak içerir. Diğer [Tetikleyiciler ve bağlamalar](./functions-triggers-bindings.md) ayrı paketler olarak kullanılabilir.
 
-Bağlama uzantıları ile ilgili aşağıdaki öğeleri göz önünde bulundurun:
-
-- Bağlama uzantıları, [Visual Studio kullanarak C# sınıf kitaplığı oluşturma](#local-csharp)dışında 1. x işlevlerine açık olarak kaydolmazlar.
-
-- HTTP ve Zamanlayıcı Tetikleyicileri varsayılan olarak desteklenir ve bir uzantı gerektirmez.
+.NET sınıf kitaplığı işlevleri uygulamaları, NuGet paketleri olarak projeye yüklenen bağlamaları kullanır. Uzantı paketleri, non-.NET Functions uygulamalarının .NET altyapısıyla uğraşmak zorunda kalmadan aynı bağlamaları kullanmasına izin verir.
 
 Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 
 | Geliştirme ortamı |Kayıt<br/> 1. x Işlevleri içinde  |Kayıt<br/> 3. x/2. x Işlevleri içinde  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure portal|Automatic|Otomatik<sup>*</sup>|
-|Non-.NET dilleri veya yerel Azure Core araçları geliştirme|Automatic|[Azure Functions Core Tools ve uzantı paketleri kullanma](#extension-bundles)|
+|Non-.NET dilleri|Automatic|[Uzantı paketleri](#extension-bundles) kullan (önerilir) veya [uzantıları açıkça yükler](#explicitly-install-extensions)|
 |Visual Studio kullanarak C# sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
-|Visual Studio Code kullanarak C# sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
+|Visual Studio Code kullanarak C# sınıf kitaplığı|N/A|[.NET Core CLI kullan](#vs-code)|
 
 <sup>*</sup> Portalda uzantı paketleri kullanılmaktadır.
 
-## <a name="extension-bundles"></a><a name="extension-bundles"></a>Uzantı demeti
+## <a name="access-extensions-in-non-net-languages"></a>Non-.NET dillerde erişim uzantıları
 
-Uzantı demeti, işlev uygulamanıza uyumlu bir Işlev kümesi bağlama uzantısı eklemektir. Paketleri kullanırken, uygulamanızı oluşturduğunuzda önceden tanımlanmış bir uzantılar kümesi eklenir. Bir paketteki tanımlı uzantı paketleri birbirleriyle uyumlu olacak şekilde doğrulanır, bu da paketler arasındaki çakışmalardan kaçınmanıza yardımcı olur. Uzantı demeti bir non-.NET Functions projesiyle .NET proje kodu yayımlamak zorunda kalmamak için izin verir. Dosya üzerinde, uygulamanın host.jsuzantı paketlerini etkinleştirirsiniz.  
+Java, JavaScript, PowerShell, Python ve özel Işleyici işlev uygulamaları için, bağlamalara erişmek için uzantı paketleri kullanmanız önerilir. Uzantı paketlerinin kullanılamaz olduğu durumlarda, bağlama uzantılarını açık bir şekilde yükleyebilirsiniz.
 
-Uzantı paketlerini, sürüm 2. x ve sonraki sürümler çalışma zamanının sürümleriyle birlikte kullanabilirsiniz. 
+### <a name="extension-bundles"></a><a name="extension-bundles"></a>Uzantı demeti
 
-Azure Functions Core Tools, Visual Studio Code kullanarak ve uzaktan oluştururken yerel geliştirme için uzantı paketleri kullanın. Yerel olarak geliştirme yaparken [Azure Functions Core Tools](functions-run-local.md#v2)en son sürümünü kullandığınızdan emin olun. Uzantı paketleri, Azure portal işlevler geliştirirken de kullanılır. 
+Uzantı demeti, işlev uygulamanıza uyumlu bir bağlama uzantıları kümesi eklemenin bir yoludur. Dosya üzerinde, uygulamanın *host.js* uzantı paketlerini etkinleştirirsiniz.
 
-Uzantı paketleri kullanmıyorsanız, [herhangi bir bağlama uzantısını açıkça yüklemeden](#explicitly-install-extensions)önce, yerel bilgisayarınıza .NET Core 2. x SDK 'sını yüklemelisiniz. Gerekli uzantıları açıkça tanımlayan bir Extensions. csproj dosyası projenize eklenir. Uzantı demeti yerel geliştirme için bu gereksinimleri ortadan kaldırır. 
+Uzantı paketlerini, sürüm 2. x ve sonraki sürümler çalışma zamanının sürümleriyle birlikte kullanabilirsiniz.
 
-Uzantı paketlerini kullanmak için, dosyadaki *host.js* aşağıdaki girişi içerecek şekilde güncelleştirin `extensionBundle` :
- 
+Uzantı paketleri sürümlüdür. Her sürüm birlikte çalışmak üzere doğrulanan belirli bir bağlama uzantıları kümesi içerir. Uygulamanızda ihtiyaç duyduğunuz uzantılara göre bir paket sürümü seçin.
+
+İşlev uygulamanıza Uzantı paketi eklemek için `extensionBundle` *host.js*bölümüne ekleyin. Çoğu durumda, Visual Studio Code ve Azure Functions Core Tools sizin için otomatik olarak ekler.
+
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="explicitly-install-extensions"></a>Uzantıları açıkça yükler
+Aşağıdaki tabloda, varsayılan *Microsoft. Azure. Functions. extensionpaket* paketi 'nin şu anda kullanılabilir olan sürümleri ve içerdikleri uzantılara bağlantılar listelenmektedir.
+
+| Paket sürümü | host.jssürümünde sürüm | Dahil edilen uzantılar |
+| --- | --- | --- |
+| 'in | `[1.*, 2.0.0)` | Paketi oluşturmak için kullanılan [extensions.js](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) bakın |
+| 2.x | `[2.*, 3.0.0)` | Paketi oluşturmak için kullanılan [extensions.js](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) bakın |
+
+> [!NOTE]
+> Üzerinde host.jsözel bir sürüm aralığı belirtebilirsiniz ancak bu tablodan bir sürüm değeri kullanmanızı öneririz.
+
+### <a name="explicitly-install-extensions"></a><a name="explicitly-install-extensions"></a>Uzantıları açıkça yükler
 
 [!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
-## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet paketleri
+## <a name="install-extensions-from-nuget-in-net-languages"></a><a name="local-csharp"></a>.NET dilinde NuGet 'den uzantıları yükler
 
 C# sınıf kitaplığı tabanlı işlevler projesi için doğrudan uzantıları yüklemelisiniz. Uzantı paketleri özellikle C# sınıf kitaplığı tabanlı olmayan projeler için tasarlanmıştır.
 
@@ -69,7 +77,7 @@ Belirli bir bağlama için kullanılan paketin adı, söz konusu bağlamaya ili�
 
 `Install-Package`Bağlama başvurmak için kullanırsanız, [uzantı paketleri](#extension-bundles)kullanmanız gerekmez. Bu yaklaşım, Visual Studio 'da oluşturulan sınıf kitaplıkları için özeldir.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Visual Studio Code ile C# sınıf kitaplığı
+### <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Visual Studio Code ile C# sınıf kitaplığı
 
 **Visual Studio Code**' de, bir C# sınıf kitaplığı projesi için paketleri, .NET Core CLI [DotNet Add Package](/dotnet/core/tools/dotnet-add-package) komutunu kullanarak komut isteminden yükler. Aşağıdaki örnek nasıl bağlama ekleneceğini gösterir:
 

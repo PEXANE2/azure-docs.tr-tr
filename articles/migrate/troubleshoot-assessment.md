@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263036"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685417"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -36,10 +36,10 @@ Microsoft Visual Studio aboneliği gerektirir | Makine, yalnızca bir Visual Stu
 Gerekli depolama performansı için VM bulunamadı | Makine için gereken depolama performansı (saniye başına giriş/çıkış işlemi [ıOPS] ve üretilen iş), Azure VM desteğini aşıyor. Geçişten önce makinenin depolama gereksinimlerini azaltın.
 Gerekli ağ performansı için VM bulunamadı | Makine için gereken ağ performansı (ın/out) Azure VM desteğini aşıyor. Makinenin ağ gereksinimlerini azaltın.
 Belirtilen konumda VM bulunamadı | Geçişten önce farklı bir hedef konum kullanın.
-Bir veya daha fazla uygun olmayan disk | VM 'ye bağlı bir veya daha fazla disk, Azure gereksinimlerini karşılamıyor. A<br/><br/> Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklememektedir ve Premium yönetilen diskler (32 TB) için disk sınırlarına göre diskleri değerlendirir.<br/><br/> SANAL makineye bağlı her disk için, diskin boyutunun < 64 TB (Ultra SSD diskler tarafından desteklenir) olduğundan emin olun.<br/><br/> Değilse, Azure 'a geçmeden önce disk boyutunu azaltın veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](../virtual-machines/windows/premium-storage-performance.md#disk-striping) . Her disk için gereken performansın (ıOPS ve aktarım hızı) Azure [yönetilen sanal makine diskleri](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)tarafından desteklendiğinden emin olun.
+Bir veya daha fazla uygun olmayan disk | VM 'ye bağlı bir veya daha fazla disk, Azure gereksinimlerini karşılamıyor. A<br/><br/> Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklememektedir ve Premium yönetilen diskler (32 TB) için disk sınırlarına göre diskleri değerlendirir.<br/><br/> SANAL makineye bağlı her disk için, diskin boyutunun < 64 TB (Ultra SSD diskler tarafından desteklenir) olduğundan emin olun.<br/><br/> Değilse, Azure 'a geçmeden önce disk boyutunu azaltın veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](../virtual-machines/premium-storage-performance.md#disk-striping) . Her disk için gereken performansın (ıOPS ve aktarım hızı) Azure [yönetilen sanal makine diskleri](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)tarafından desteklendiğinden emin olun.
 Bir veya daha fazla uygun olmayan ağ bağdaştırıcısı. | Kullanılmayan ağ bağdaştırıcılarını geçişten önce makineden kaldırın.
 Disk sayısı sınırı aşıyor | Kullanılmayan diskleri geçişten önce makineden kaldırın.
-Disk boyutu sınırı aşıyor | Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemez ve değerlendirir disk sınırlarına (32 TB) dayalı diskleri destekler.<br/><br/> Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş işleminden önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](../virtual-machines/windows/premium-storage-performance.md#disk-striping) .
+Disk boyutu sınırı aşıyor | Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemez ve değerlendirir disk sınırlarına (32 TB) dayalı diskleri destekler.<br/><br/> Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş işleminden önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](../virtual-machines/premium-storage-performance.md#disk-striping) .
 Belirtilen konumda disk yok | Geçirmeden önce diskin hedef konumunda olduğundan emin olun.
 Belirtilen artıklık için disk kullanılamıyor | Disk, değerlendirme ayarlarında tanımlanan artıklık depolama türünü kullanmalıdır (varsayılan olarak LRS).
 Bir iç hata nedeniyle disk uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831303"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683904"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
 
@@ -59,7 +59,7 @@ Premium depolama önbelleği: desteklenir
 
 MB/sn = 10^6 bayt/saniye ve GiB = 1024^3 bayt.
 
-<sup>1</sup> bir FS Serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [Windows](windows/premium-storage-performance.md) veya [Linux](linux/premium-storage-performance.md)için yüksek performans için tasarlama.  
+<sup>1</sup> bir FS Serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [yüksek performans için tasarım (./Premium-Storage-Performance.MD).
 
 
 ## <a name="nvv2-series"></a>NVv2 serisi
@@ -267,7 +267,7 @@ Premium depolama önbelleği: desteklenir
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288) | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576) | 51200/512 | 8/8000 |
 
-<sup>1</sup> DS serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [Windows](windows/premium-storage-performance.md) veya [Linux](linux/premium-storage-performance.md)için yüksek performans için tasarlama.
+<sup>1</sup> DS serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [yüksek performans için tasarım (./Premium-Storage-Performance.MD).
 <sup>2</sup> VM AILESI şu CPU 'dan birinde çalışabilir: 2,2 GHz ıntel Xeon® E5-2660 v2, 2,4 GHz ıntel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz ıntel Xeon® E5-2673 v4 (geniş bir)  
 
 <br>
@@ -293,7 +293,7 @@ Premium depolama önbelleği: desteklenmiyor
 | Standart_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-LS Serisi VM 'lerle mümkün olan en fazla disk aktarım hızı, ekli disklerin sayısı, boyutu ve şeritleriyle sınırlı olabilir. Ayrıntılar için bkz. [Windows](windows/premium-storage-performance.md) veya [Linux](linux/premium-storage-performance.md)için yüksek performans için tasarlama.
+LS Serisi VM 'lerle mümkün olan en fazla disk aktarım hızı, ekli disklerin sayısı, boyutu ve şeritleriyle sınırlı olabilir. Ayrıntılar için bkz. [yüksek performans için tasarım (./Premium-Storage-Performance.MD).
 
 <sup>1</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 
@@ -315,7 +315,7 @@ Premium depolama önbelleği: desteklenir
 | Standard_GS4 &nbsp; <sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112) | 40000/1000 | 8/16000 |
 | Standard_GS5 &nbsp; <sup>2, &nbsp; 3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224) | 80000/2000 | 8/20000 |
 
-<sup>1</sup> GS serisi VM ile mümkün olan maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir. Ayrıntılar için bkz. [Windows](windows/premium-storage-performance.md) veya [Linux](linux/premium-storage-performance.md)için yüksek performans için tasarlama.
+<sup>1</sup> GS serisi VM ile mümkün olan maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir. Ayrıntılar için bkz. [yüksek performans için tasarım (./Premium-Storage-Performance.MD).
 
 <sup>2</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 

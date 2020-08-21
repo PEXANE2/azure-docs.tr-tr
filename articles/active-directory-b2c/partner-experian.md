@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2a69bc40090e74ad5885c2576c040693f90d5d03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099758"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683887"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Experian yapılandırma öğreticisi
 
@@ -30,13 +30,13 @@ Bu örnekte, Experian 'in tümleşik dijital kimliği ve sahtekarlık risk platf
 - İkinci Ad
 - Soyadı
 - Adres
-- Şehir
+- City
 - Eyalet/İl
 - Posta Kodu
 - Ülke/Bölge
 - Telefon Numarası
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -129,7 +129,7 @@ Belirtilen özel ilkelerde, aşağıdaki yer tutucuları bulun ve örneğinizi k
 | {your_tenant_extensions_app_objectid}                  | Kiracınızın depolama uygulamasının nesne KIMLIĞI                                   | 01234567-89ab-cdef-0123-456789ABCDEF         |
 | {your_api_username_key_name}                           | [Burada](#part-4---create-api-policy-keys) oluşturduğunuz Kullanıcı adı anahtarının adı             | B2C \_ 1a \_ RestApiUsername                     |
 | {your_api_password_key_name}                           | [Burada](#part-4---create-api-policy-keys) oluşturduğunuz parola anahtarının adı             | B2C \_ 1a \_ RestApiPassword                     |
-| {your_app_service_URL}                                 | Ayarladığınız App Service 'in URL 'SI                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | Ayarladığınız App Service 'in URL 'SI                                             | `https://yourapp.azurewebsites.net`          |
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Bölüm 6-Azure AD B2C ilkesini yapılandırma
 
