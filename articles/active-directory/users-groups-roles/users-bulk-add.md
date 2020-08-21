@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236565"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705631"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -35,7 +35,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 ![Her satır ve sütunun amacını ve değerlerini açıklayan karşıya yükleme ve çağrı aşımları için elektronik tablo](./media/users-bulk-add/create-template-example.png)
 
 > [!WARNING]
-> CSV şablonuna yalnızca bir girdi eklemeye çalışırsanız, satır 3 ' ü korumanız ve yeni girdinizi satır 4 ' e eklemeniz gerekir. 
+> CSV şablonunu kullanarak yalnızca bir girdi ekliyorsanız, satır 3 ' ü korumanız ve yeni girdinizi satır 4 ' e eklemeniz gerekir.
 
 ### <a name="csv-template-structure"></a>CSV şablonu yapısı
 

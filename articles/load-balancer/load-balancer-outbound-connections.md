@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: ea73a4164a2f23a51ce1702cd85d29d7fb4c6790
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650409"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706073"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -136,7 +136,7 @@ Bir NSG AZURE_LOADBALANCER varsayılan etiketten durum araştırma isteklerini e
 - Ön uç IP adresi başına kullanılabilir en fazla kısa ömürlü bağlantı noktası sayısı 64.000 ' dir.
 - Yapılandırılabilir giden boşta kalma zaman aşımı aralığı 4 ila 120 dakikadır (240 ila 7200 saniye).
 - Load Balancer giden NAT için ıCMP 'yi desteklemez.
-- Giden kuralları, yalnızca bir NIC 'in birincil IP yapılandırmasına uygulanabilir.  Birden çok NIC desteklenir.
+- Giden kuralları, yalnızca bir NIC 'in birincil IP yapılandırmasına uygulanabilir.  VM veya NVA 'nın ikincil IP 'si için giden bir kural oluşturamazsınız. Birden çok NIC desteklenir.
 - VNet ve diğer Microsoft Platformu Hizmetleri olmayan Web çalışanı rolleri, ön VNet Hizmetleri ve diğer platform hizmetleri işlevinin yan etkisi nedeniyle yalnızca bir iç Standart Load Balancer kullanıldığında erişilebilir. İlgili hizmetin kendisi veya temel alınan platform hiçbir bildirimde bulunmaksızın değişmeksizin, bu yan etkiye güvenmeyin. Yalnızca dahili Standart Load Balancer kullandığınızda istenirse, açıkça giden bağlantı oluşturmanız gerektiğini varsaymanız gerekir. Bu makalede açıklanan senaryo 3 yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar

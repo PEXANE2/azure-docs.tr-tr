@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1f72b14dd503f9b5a5f4065661cf9d35b68680e3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: db2ee7adac19da7f7f5e1c6f60394d94dbf29ad5
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658285"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705223"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -95,7 +95,7 @@ Bu diskin en fazla 2.048 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Her VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](~/articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](~/articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir.  
+VM 'lerin çoğu, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici disk olmadan VM 'Ler hakkında daha fazla bilgi için bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](../articles/virtual-machines/azure-vms-no-temp-disk.md)
 
 Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Konakta şifrelemeyi etkinleştirmediğiniz takdirde geçici disk sunucu tarafı şifrelemesi tarafından şifrelenmez.
 

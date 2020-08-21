@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8d57b4499f3f1b2f22c14cc912e81b709ec4054c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500336"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705708"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Eklenmemiş yönetilen ve yönetilmeyen Azure disklerini bulma ve silme
 
@@ -52,14 +52,14 @@ foreach ($md in $managedDisks) {
 Yönetilmeyen diskler, [Azure depolama hesaplarında](../../storage/common/storage-account-overview.md) [sayfa BLOBLARı](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) olarak depolanan VHD dosyalarıdır. Aşağıdaki betik, **Leasestatus** özelliğinin değerini inceleyerek eklenmemiş yönetilmeyen diskleri (sayfa Blobları) arar. Bir sanal makineye yönetilmeyen bir disk eklendiğinde, **Leasestatus** özelliği **kilitli**olarak ayarlanır. Yönetilmeyen bir disk bağlı değilken, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanır. Betik, bir Azure aboneliğindeki tüm Azure depolama hesaplarında yönetilmeyen tüm diskleri inceler. Betik, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanmış bir yönetilmeyen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
 
 >[!IMPORTANT]
->İlk olarak, **Deleteunattachedvhd** değişkenini 0 olarak ayarlayarak betiği çalıştırın. Bu eylem, tüm eklenmemiş yönetilmeyen VHD 'leri bulup görüntülemenizi sağlar.
+>İlk olarak, **Deleteunattachedvhd** değişkenini olarak ayarlayarak betiği çalıştırın `$false` . Bu eylem, tüm eklenmemiş yönetilmeyen VHD 'leri bulup görüntülemenizi sağlar.
 >
->Eklenmemiş tüm diskleri gözden geçirdikten sonra, betiği yeniden çalıştırın ve **Deleteunattachedvhd** değişkenini 1 olarak ayarlayın. Bu eylem, tüm eklenmemiş yönetilmeyen VHD 'leri silmenize olanak sağlar.
+>Eklenmemiş tüm diskleri gözden geçirdikten sonra, betiği yeniden çalıştırın ve **Deleteunattachedvhd** değişkenini olarak ayarlayın `$true` . Bu eylem, tüm eklenmemiş yönetilmeyen VHD 'leri silmenize olanak sağlar.
 
 ```azurepowershell-interactive
-# Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
-# Set deleteUnattachedVHDs=0 if you want to see the Uri of the unattached VHDs
-$deleteUnattachedVHDs=0
+# Set deleteUnattachedVHDs=$true if you want to delete unattached VHDs
+# Set deleteUnattachedVHDs=$false if you want to see the Uri of the unattached VHDs
+$deleteUnattachedVHDs=$false
 $storageAccounts = Get-AzStorageAccount
 foreach($storageAccount in $storageAccounts){
     $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
@@ -71,7 +71,7 @@ foreach($storageAccount in $storageAccounts){
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object { 
             #If a Page blob is not attached as disk then LeaseStatus will be unlocked
             if($_.ICloudBlob.Properties.LeaseStatus -eq 'Unlocked'){
-                    if($deleteUnattachedVHDs -eq 1){
+                    if($deleteUnattachedVHDs){
                         Write-Host "Deleting unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
                         $_ | Remove-AzStorageBlob -Force
                         Write-Host "Deleted unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"

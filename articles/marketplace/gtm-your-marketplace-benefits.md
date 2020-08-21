@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607387"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705563"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -26,7 +26,7 @@ Market Retatminileri, ilk müşterilerinizi almanıza yardımcı olmak üzere ta
 
 Program olumlu bir geri bildirim döngüsü oluşturur: her büyüme aşamasında avantajlar, sizi bir sonraki aşamada ilerlemek için tasarlanmıştır. böylece, işletmenizin Microsoft 'un alanıyla, Microsoft 'un alanı ve ticari Market 'ten yararlanarak Microsoft 'un kanalıyla de yararlanmanızı sağlayabilirsiniz.
 
-Avantajlarınız, teklifinizin [liste, deneme veya Transact](determine-your-listing-type.md#choose-a-call-to-action)olduğundan farklılaştırılır.
+Avantajlarınız, teklifinizin [liste, deneme veya Transact](determine-your-listing-type.md#choose-a-listing-option)olduğundan farklılaştırılır.
 
 Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir üyesi tarafından iletişim kurulacaksınız.
 

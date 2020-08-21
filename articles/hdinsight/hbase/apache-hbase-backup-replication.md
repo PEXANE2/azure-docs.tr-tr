@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076751"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705733"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight 'ta Apache HBase ve Apache Phoenix için yedekleme ve çoğaltma ayarlama
 
@@ -114,11 +114,11 @@ Hedef adres, aşağıdaki üç bölümden oluşur:
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>`Apache ZooKeeper düğümlerinin virgülle ayrılmış listesidir, örneğin:
+* `<ZooKeeperQuorum>` Apache ZooKeeper düğümlerinin virgülle ayrılmış listesidir, örneğin:
 
     zk0-hluc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, ZK4-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`HDInsight 'ta varsayılan değer 2181 ' `<ZnodeParent>` dir ve şu `/hbase-unsecure` şekilde tamamlanır `<destinationAddress>` :
+* `<Port>` HDInsight 'ta varsayılan değer 2181 ' `<ZnodeParent>` dir ve şu `/hbase-unsecure` şekilde tamamlanır `<destinationAddress>` :
 
     zk0-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, ZK4-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, zk3-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net: 2181:/HBase-Unsecure
 
@@ -213,7 +213,13 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-Anlık görüntü verildikten sonra, hedef kümenin baş düğümüne SSH ekleyin ve daha önce açıklandığı gibi restore_snapshot komutunu kullanarak anlık görüntüyü geri yükleyin.
+Kaynak kümenize bağlı ikincil bir Azure depolama hesabınız yoksa veya kaynak kümeniz şirket içi bir kümeniz (veya HDI olmayan bir küme ise), HDI kümenizin depolama hesabına erişmeye çalıştığınızda yetkilendirme sorunlarıyla karşılaşabilirsiniz. Bu sorunu çözmek için, aşağıdaki örnekte gösterildiği gibi depolama hesabınıza ait anahtarı bir komut satırı parametresi olarak belirtin. Azure portal depolama hesabınıza anahtarı alabilirsiniz.
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+Anlık görüntü verildikten sonra, hedef kümenin baş düğümüne SSH ekleyin ve `restore_snapshot` daha önce açıklandığı gibi komutunu kullanarak anlık görüntüyü geri yükleyin.
 
 Anlık görüntüler, komut sırasında bir tablonun tüm yedeklemesini sağlar `snapshot` . Anlık görüntüler, Windows 'un zaman içinde Artımlı anlık görüntüler gerçekleştirme veya anlık görüntüye eklenecek sütun ailelerinin alt kümelerini belirtme olanağı sağlamaz.
 

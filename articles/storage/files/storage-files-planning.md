@@ -8,12 +8,12 @@ ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520541"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705920"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -37,7 +37,7 @@ Azure dosya paylaşımlarını depolama hesaplarına dağıttığınızda şunla
 
 ## <a name="identity"></a>Kimlik
 Bir Azure dosya paylaşımında erişim sağlamak için dosya paylaşımının kullanıcısının kimliği doğrulanmalıdır ve paylaşıma erişim yetkisi vardır. Bu, dosya paylaşımıyla erişen kullanıcının kimliğine göre yapılır. Azure dosyaları üç ana kimlik sağlayıcısıyla tümleştirilir:
-- Şirket **içi Active Directory Domain Services (AD DS veya şirket içi AD DS)** (Önizleme): Azure depolama hesapları, bir Windows Server dosya sunucusu ya da NAS cihazında olduğu gibi, müşteriye ait, Active Directory Domain Services etki alanına katılmış olabilir. Bir etki alanı denetleyicisini şirket içinde, bir Azure VM 'de, hatta başka bir bulut sağlayıcısında VM olarak dağıtabilirsiniz; Azure dosyaları, etki alanı denetleyicinizin barındırıldığı yere belirsiz. Bir depolama hesabı etki alanına katıldıktan sonra, Son Kullanıcı BILGISAYARıNDA oturum açtıkları kullanıcı hesabıyla bir dosya paylaşımından bağlanabilir. AD tabanlı kimlik doğrulaması, Kerberos kimlik doğrulama protokolünü kullanır.
+- Şirket **içi Active Directory Domain Services (AD DS veya şirket içi AD DS)**: Azure depolama hesapları, bir Windows Server dosya sunucusu veya NAS cihazında olduğu gibi, müşteriye ait, Active Directory Domain Services etki alanına katılmış olabilir. Bir etki alanı denetleyicisini şirket içinde, bir Azure VM 'de, hatta başka bir bulut sağlayıcısında VM olarak dağıtabilirsiniz; Azure dosyaları, etki alanı denetleyicinizin barındırıldığı yere belirsiz. Bir depolama hesabı etki alanına katıldıktan sonra, Son Kullanıcı BILGISAYARıNDA oturum açtıkları kullanıcı hesabıyla bir dosya paylaşımından bağlanabilir. AD tabanlı kimlik doğrulaması, Kerberos kimlik doğrulama protokolünü kullanır.
 - **Azure Active Directory Domain Services (azure AD DS)**: Azure AD DS, Azure kaynakları Için kullanılabilen Microsoft tarafından yönetilen bir etki alanı denetleyicisi sağlar. Depolama hesabınıza Azure AD DS katılma etki alanı, şirkete ait Active Directory etki alanına katılma gibi benzer avantajlar sağlar. Bu dağıtım seçeneği, AD tabanlı izinleri gerektiren uygulama kaldırma ve kaydırma senaryoları için en yararlı seçenektir. Azure AD DS, AD tabanlı kimlik doğrulaması sağladığından, bu seçenek Kerberos kimlik doğrulama protokolünü de kullanır.
 - Azure **depolama hesabı anahtarı**: Azure dosya paylaşımları, bir Azure depolama hesabı anahtarıyla de bağlanabilir. Bir dosya payını bu şekilde bağlamak için, depolama hesabı adı Kullanıcı adı olarak kullanılır ve depolama hesabı anahtarı parola olarak kullanılır. Azure dosya paylaşımının bağlanması için depolama hesabı anahtarını kullanmak, bağlı dosya paylaşımının ACL 'Leri olsa bile paylaşımdaki tüm dosya ve klasörler üzerinde tam izinlere sahip olacağı için etkili bir şekilde bir yönetici işlemidir. SMB üzerinden bağlanacak depolama hesabı anahtarını kullanırken, NTLMv2 kimlik doğrulama protokolü kullanılır.
 

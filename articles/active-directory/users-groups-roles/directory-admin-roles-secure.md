@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807868"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691369"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -373,7 +373,7 @@ Ayrıcalıklı erişim hesaplarını yönetirken aşağıdaki yöntemleri öneri
 * Yalnızca gerektiğinde ayrıcalıklı erişim verin ve daha sonra kaldırın (tam zamanında)
 * Ayrıcalıklı hesaplarla ilişkili denetim etkinlik günlüklerini sakla
 
-Tüm güvenlik yol haritası oluşturma hakkında daha fazla bilgi için bkz. [Microsoft Cloud It Architecture kaynakları](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Yol Haritalarınızın herhangi bir bölümünü uygulamanıza yardımcı olmak üzere Microsoft hizmetleriyle birlikte çalışmak için Microsoft temsilcinize başvurun veya bkz. [kuruluşunuzu korumak Için derleme açısından kritik siber savunmaları](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Tüm güvenlik yol haritası oluşturma hakkında daha fazla bilgi için bkz. [Microsoft Cloud It Architecture kaynakları](https://almbok.com/office365/microsoft_cloud_it_architecture_resources). Yol Haritalarınızın herhangi bir bölümünü uygulamanıza yardımcı olmak üzere Microsoft hizmetleriyle birlikte çalışmak için Microsoft temsilcinize başvurun veya bkz. [kuruluşunuzu korumak Için derleme açısından kritik siber savunmaları](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Güvenli ayrıcalıklı erişim yol haritası 'nın bu son devam eden aşaması aşağıdaki bileşenleri içerir.
 

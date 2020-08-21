@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265254"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706039"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -49,9 +49,8 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
 
      Portalda sanal ağı oluştururken yalnızca bir adres aralığı tanımlayabilmenize karşın, sanal ağ oluşturulduktan sonra adres alanına daha fazla adres aralığı ekleyebilirsiniz. Mevcut bir sanal ağa adres aralığı ekleme hakkında bilgi edinmek için bkz. [adres aralığı ekleme veya kaldırma](#add-or-remove-an-address-range).
 
-     >[!WARNING]
-     >Bir sanal ağda başka bir sanal ağla veya şirket içi ağla çakışan adres aralıkları varsa, iki ağ bağlanamaz. Bir adres aralığı tanımlayabilmeniz için önce sanal ağı diğer sanal ağlara veya gelecekte şirket içi ağlara bağlamak isteyip istemediğinizi göz önünde bulundurun.
-     >
+     > [!WARNING]
+     > Bir sanal ağda başka bir sanal ağla veya şirket içi ağla çakışan adres aralıkları varsa, iki ağ bağlanamaz. Bir adres aralığı tanımlayabilmeniz için önce sanal ağı diğer sanal ağlara veya gelecekte şirket içi ağlara bağlamak isteyip istemediğinizi göz önünde bulundurun. Microsoft, kuruluşunuzun sahip olduğu özel adres alanı veya ortak adres alanı ile sanal ağ adres aralıklarının yapılandırılmasını önerir.
      >
 
      - **Alt ağ adı**: alt ağ adı sanal ağ içinde benzersiz olmalıdır. Alt ağ oluşturulduktan sonra alt ağ adını değiştiremezsiniz. Bir sanal ağ oluşturmak için sanal ağ gerekli olmasa bile, Portal bir sanal ağ oluşturduğunuzda bir alt ağ tanımlamanızı gerektirir. Portalda, bir sanal ağ oluştururken yalnızca bir alt ağ tanımlayabilirsiniz. Sanal ağ oluşturulduktan sonra, sanal ağa daha sonra daha fazla alt ağ ekleyebilirsiniz. Bir sanal ağa alt ağ eklemek için bkz. [alt ağları yönetme](virtual-network-manage-subnet.md). Azure CLı veya PowerShell kullanarak birden çok alt ağa sahip bir sanal ağ oluşturabilirsiniz.
@@ -123,7 +122,7 @@ Adres aralığı eklemek veya kaldırmak için:
 4. Aşağıdaki seçeneklerden birini doldurun:
     - **Adres aralığı Ekle**: yeni adres aralığını girin. Adres aralığı, sanal ağ için tanımlanan mevcut bir adres aralığıyla çakışamaz.
     - **Adres aralığını kaldır**: kaldırmak istediğiniz adres aralığının sağında **.**.. öğesini seçin ve **Kaldır**' ı seçin. Adres aralığında bir alt ağ varsa, adres aralığını kaldıramazsınız. Bir adres aralığını kaldırmak için, önce adres aralığında bulunan tüm alt ağları (ve alt ağlardaki kaynakları) silmeniz gerekir.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 **Komutlar**
 
@@ -144,7 +143,7 @@ Sanal ağa bağlı tüm VM 'Ler, sanal ağ için belirttiğiniz DNS sunucularıy
    - **Adresi Kaldır**: kaldırmak istediğiniz sunucunun yanında **..**. ' ı seçin ve ardından **kaldırın**. Sunucu silindiğinde bu sanal ağ listesinden sunucu kaldırılır. DNS sunucusu, diğer sanal ağlarınızın kullanması için Azure 'da kayıtlı kalır.
    - **DNS sunucusu adreslerini yeniden sırala**: DNS sunucularınızı, ortamınız için doğru sırada listediğinizi doğrulamanız önemlidir. DNS sunucusu listeleri belirtildikleri sırada kullanılır. Hepsini bir kez deneme ayarı olarak çalışmamaları. Listedeki ilk DNS sunucusuna ulaşılırsa istemci, DNS sunucusunun düzgün çalışıp çalışmadığını fark etmeksizin bu DNS sunucusunu kullanır. Listelenen tüm DNS sunucularını kaldırın ve ardından bunları istediğiniz sırayla yeniden ekleyin.
    - **Bir adresi değiştirin**: listedeki DNS sunucusunu vurgulayın ve yeni adresi girin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 6. Sanal ağa bağlı olan VM 'Leri yeniden başlatarak yeni DNS sunucusu ayarları atanır. VM 'Ler yeniden başlatılana kadar geçerli DNS ayarlarını kullanmaya devam eder.
 
 **Komutlar**

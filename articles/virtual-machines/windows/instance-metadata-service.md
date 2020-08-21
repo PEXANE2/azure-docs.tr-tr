@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: fe059f684306e2c98e625af72248f03f0932ebad
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168278"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705070"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
 Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekleri hakkında bilgi sağlar ve sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilir.
 Bu bilgiler SKU, depolama, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Kullanılabilir verilerin tüm listesi için bkz. [metadata API 'leri](#metadata-apis).
-Instance Metadata Service hem VM hem de sanal makine ölçek kümesi örnekleri için kullanılabilir. Yalnızca [Azure Resource Manager](/rest/api/resources/)kullanılarak oluşturulan/yönetilen VM 'leri çalıştırmak için kullanılabilir.
+Instance Metadata Service, sanal makine ve sanal makine ölçek kümesi örnekleri çalıştırmak için kullanılabilir. Tüm API 'ler, [Azure Resource Manager](/rest/api/resources/)kullanılarak oluşturulan/yönetilen VM 'leri destekler. Yalnızca Atsınanan ve ağ uç noktaları, klasik (ARM olmayan) VM 'Leri destekler ve yalnızca sınırlı bir ölçüde bu şekilde attest eder.
 
 Azure 'un ıMDS, iyi bilinen yönlendirilemeyen IP adresinde () bulunan bir REST uç noktasıdır `169.254.169.254` ve yalnızca VM 'nin içinden erişilebilir. VM ve ıDS arasındaki iletişim, Konağı hiçbir şekilde bırakmıyor.
 ISE 'yi sorgularken ve ile aynı işlem yaparken, HTTP istemcilerinizin VM içindeki Web proxy 'lerini atlaması en iyi uygulamadır `169.254.169.254` [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
@@ -173,7 +173,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 > [!NOTE]
 > /Metadata/Instance içindeki yaprak düğümleri için `format=json` çalışmıyor. `format=text`Varsayılan biçim JSON olduğundan bu sorguların açıkça belirtilmesi gerekir.
 
-### <a name="versioning"></a>Sürüm oluşturma
+### <a name="versioning"></a>Sürüm Oluşturma
 
 Instance Metadata Service sürümlenmiş ve HTTP isteğindeki API sürümünün belirtilmesi zorunludur.
 
@@ -685,7 +685,7 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 }
 ```
 
-İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
+İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. SANAL makineye özgü bazı ayrıntılarla birlikte imzalama için kullanılan sertifikayı içerir. ARM VM 'Leri için buna VMID, SKU, nonce, SubscriptionID, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri dahildir. Plan bilgileri yalnızca Azure Market görüntüleri için doldurulur. Klasik (ARM olmayan) VM 'Ler için yalnızca VMID 'nin doldurulması garanti edilir. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 Belge aşağıdaki alanları içerir:
 
 Veriler | Açıklama
@@ -695,8 +695,11 @@ plan | [Azure Marketi görüntü planı](/rest/api/compute/virtualmachines/creat
 zaman damgası/createdOn | İmzalanmış belgenin oluşturulduğu zamana ilişkin UTC zaman damgası
 zaman damgası/expiresOn | İmzalanan belgenin süresi dolduğu zaman için UTC zaman damgası
 Kimliği |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | Üzerinde sunulan sanal makine için Azure aboneliği`2019-04-30`
-isteyin | VM görüntüsü için özel SKU, ' de tanıtılan`2019-11-01`
+subscriptionId | Üzerinde sunulan sanal makine için Azure aboneliği `2019-04-30`
+isteyin | VM görüntüsü için özel SKU, ' de tanıtılan `2019-11-01`
+
+> [!NOTE]
+> Klasik (ARM olmayan) VM 'Ler için yalnızca VMID 'nin doldurulması garanti edilir.
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>Örnek 2: VM 'nin Azure 'da çalıştığı doğrulanıyor
 

@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606762"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705053"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Market Retatileri, ilk müşterilerinizi almanıza yardımcı olmak üzere tanıma etkinlikleriyle başlayan belirli bir büyüme aşamasıdır. Ticari Market 'te büyürken, müşterileri dönüştürmenize ve anlaşmaları kapatmanıza yardımcı olmak için tasarlanan yeni avantajların kilidini açırsınız.
+Market Retatileri, ilk müşterilerinizi almanıza yardımcı olmak üzere tanıma etkinlikleriyle başlayan belirli bir büyüme aşamasıdır. Microsoft ticari Market 'te büyüdükçe, müşterileri dönüştürmenize ve anlaşmaları kapatmanıza yardımcı olmak için tasarlanan yeni avantajların kilidini açırsınız.
 
 Program olumlu bir geri bildirim döngüsü oluşturur: her büyüme aşamasındaki avantajlar bir sonraki aşamada ilerlemenize yardımcı olur. Bu, işletmenizin Microsoft 'un alanı ile Microsoft 'un sağladığı kurumsal Market 'ten yararlanarak Microsoft 'un kanalıyla ve Microsoft 'un kanalıyla yararlanmanızı sağlar.
 
-Avantajlarınız, teklifinizin [liste, deneme veya Transact](../determine-your-listing-type.md#choose-a-call-to-action)olduğundan farklılaştırılır.
+Avantajlarınız, teklifinizin [liste, deneme veya Transact](../determine-your-listing-type.md#choose-a-listing-option)olduğundan farklılaştırılır.
 
 Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir üyesi tarafından iletişim kurulacaksınız.
 
-Transact iş ortakları için, Market platformu aracılığıyla faturalanan satışlarınızı büyürken, katman başına daha fazla avantajdan yararlanın.
+Transact iş ortakları için, ticari Market platformu aracılığıyla faturalanan satışlarınızı büyürken, katman başına daha fazla avantajdan yararlanın.
 
-Çevrimiçi mağazalarda yayımlamak için en düşük gereksinim bir MPNıD 'dir, bu nedenle MPN uzmanlığa veya iş ortağı türünden bağımsız olarak bu avantajlar tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, işletmelerini bir platform olarak marketten büyütmek için güçde bulunur.
+Çevrimiçi mağazalarda yayımlamak için en düşük gereksinim bir MPNıD 'dir, bu nedenle MPN uzmanlığa veya iş ortağı türünden bağımsız olarak bu avantajlar tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, ticari Market aracılığıyla işletmelerini bir platform olarak büyümeye güç sağlar.
 
 Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, [kendi kendinize de gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
 
-Market Remaronları için uygunluk programını [burada](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)inceleyin.
+Market Rehirine uygunluk programına uygunluğu denetlemek için Iş Ortağı Merkezi ' nde [Market depoları](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) sayfasına bakın.
 
 Kullanmaya başlamak için adımlarınız kolaydır:
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292104"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705649"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 'da Linux VM 'Leri için zaman eşitleme
 
@@ -64,7 +64,7 @@ Varsayılan olarak, Linux için Azure Market görüntülerinin çoğu iki kaynak
 - NTP, birincil olarak NTP sunucusundan zaman alır. Örneğin, Ubuntu 16,04 LTS Market görüntüleri **NTP.Ubuntu.com**kullanır.
 - Konak saati VM 'lere iletmek ve bakım için VM duraklatıldıktan sonra düzeltmeler yapmak için kullanılan, ikincil olarak Vmictimessync hizmeti. Azure Konakları, doğru zaman saklamak için Microsoft 'a ait stratum 1 cihazlarını kullanır.
 
-Daha yeni Linux dağıtımlarında, Vmictimessync hizmeti duyarlık Time Protocol (PTP) kullanır, ancak önceki dağıtımlar PTP 'i desteklemeyebilir ve konaktan zaman almak için NTP 'e geri dönecektir.
+Daha yeni Linux dağıtımlarında, Vmictimessync hizmeti bir duyarlık Time Protocol (PTP) donanım saati kaynağı sağlar, ancak önceki dağıtımlar bu saat kaynağını sağlayamayabilir ve konaktan zaman almak için NTP 'e geri dönecektir.
 
 NTP 'nin doğru şekilde eşitlenmesini onaylamak için komutunu çalıştırın `ntpq -p` .
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>PTP denetimi
+### <a name="check-for-ptp-clock-source"></a>PTP saat kaynağını denetle
 
-Linux 'un daha yeni sürümleriyle, bir duyarlık Time Protocol (PTP) saat kaynağı Vmictimessync sağlayıcının bir parçası olarak kullanılabilir. Red Hat Enterprise Linux veya CentOS 7. x ' in eski sürümlerinde, [Linux Tümleştirme Hizmetleri](https://github.com/LIS/lis-next) indirilebilir ve güncelleştirilmiş sürücüyü yüklemek için kullanılabilir. PTP kullanılırken, Linux cihazı/dev/PTP*x*biçiminde olacaktır. 
+Linux 'un daha yeni sürümleriyle, bir duyarlık Time Protocol (PTP) saat kaynağı Vmictimessync sağlayıcının bir parçası olarak kullanılabilir. Red Hat Enterprise Linux veya CentOS 7. x ' in eski sürümlerinde, [Linux Tümleştirme Hizmetleri](https://github.com/LIS/lis-next) indirilebilir ve güncelleştirilmiş sürücüyü yüklemek için kullanılabilir. PTP Clock kaynağı kullanılabilir olduğunda, Linux cihazı/dev/PTP*x*biçiminde olacaktır. 
 
 Hangi PTP saat kaynaklarının kullanılabilir olduğunu görün.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165779"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691335"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açabileceğinizi öğrenmek için bir kod örneği kullanırsınız. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
@@ -90,8 +90,8 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 
 > [!div renderon="docs"]
 > Burada:
-> - `Enter_the_Application_Id_here`-Azure portal kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** . Uygulamanın **genel bakış** sayfasında **uygulama (istemci) kimliğini** bulabilirsiniz.
-> - `Enter_the_Tenant_Info_Here`-Aşağıdaki seçeneklerden biridir:
+> - `Enter_the_Application_Id_here` -Azure portal kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** . Uygulamanın **genel bakış** sayfasında **uygulama (istemci) kimliğini** bulabilirsiniz.
+> - `Enter_the_Tenant_Info_Here` -Aşağıdaki seçeneklerden biridir:
 >   - Uygulamanız **yalnızca bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >   - Uygulamanız **Herhangi bir kuruluş dizinindeki hesaplar** yaklaşımını destekliyorsa bu değeri `organizations` ile değiştirin
 >   - Uygulamanız **Tüm Microsoft hesabı kullanıcıları** yaklaşımını destekliyorsa bu değeri `common` ile değiştirin
@@ -148,7 +148,7 @@ Yöntemi, `AddAuthentication` hizmetini tarayıcı senaryolarında kullanılan v
 > |Konum | Açıklama |
 > |---------|---------|
 > | ClientId  | Azure portal kayıtlı uygulamadan uygulama (istemci) KIMLIĞI. |
-> | Yetkili | Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle, bu <https://login.microsoftonline.com/{tenant}/v2.0> genel buluta yöneliktir; burada {Tenant} kiracınızın adı, KIRACı kimliğiniz veya ortak uç noktaya yönelik bir başvuru için *ortaktır* (çok kiracılı uygulamalar için kullanılır) |
+> | Yetkili | Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle, bu `https://login.microsoftonline.com/{tenant}/v2.0` genel buluta yöneliktir; burada {Tenant} kiracınızın adı, KIRACı kimliğiniz veya ortak uç noktaya yönelik bir başvuru için *ortaktır* (çok kiracılı uygulamalar için kullanılır) |
 > | TokenValidationParameters | Belirteç doğrulaması için parametre listesi. Bu durumda, `ValidateIssuer` `false` kişisel veya iş veya okul hesaplarından oturum açma işlemlerini kabul edemeyeceğini belirtmek için olarak ayarlanır. |
 
 
@@ -156,7 +156,7 @@ Yöntemi, `AddAuthentication` hizmetini tarayıcı senaryolarında kullanılan v
 > Ayar `ValidateIssuer = false` , bu hızlı başlangıç için bir basitleştirmesi. Gerçek uygulamalarda, sertifikayı vereni doğrulamanız gerekir.
 > Bunun nasıl yapılacağını anlamak için örneklere bakın.
 >
-> Ayrıca `Configure` iki önemli yöntem içeren yöntemine dikkat edin: `app.UseCookiePolicy()` ve`app.UseAuthentication()`
+> Ayrıca `Configure` iki önemli yöntem içeren yöntemine dikkat edin: `app.UseCookiePolicy()` ve `app.UseAuthentication()`
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: f20a40603916e703d6f3cfc13ee2d165675f3ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: df2c626de39ff4482a4dc69fa5a514fc92002ccb
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588509"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705869"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Gizli uygulama ayarlarını bir Web uygulaması için güvenli bir şekilde Kaydet
 
@@ -101,35 +101,22 @@ Devam etmek için [.NET 4.7.1 indirin](https://www.microsoft.com/download/detail
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Gizli dizi ayarlarını kaynak denetimi klasörü dışında bir gizli dosyada Kaydet
 Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyorsanız, bu seçenekle birlikte gidin.
 
-1. Aşağıdaki NuGet paketini projenize yükler
-    ```
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    ```
+1. Projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu işlem, ** Urationoluşturucular. usersecretMicrosoft.Configuration.Config** bir NuGet paketi yükler, gizli ayarları web.config dosya dışında kaydetmek için bir dosya oluşturur ve web.config dosyasına bir bölüm **configoluşturucular** ekler.
 
-2. Aşağıdakine benzer bir dosya oluşturun. Bunu proje klasörünüzün dışında bir konuma kaydedin.
+2. Gizli dizi ayarlarını kök öğe altına koyun. Aşağıda bir örnek verilmiştir
 
     ```xml
+    <?xml version="1.0" encoding="utf-8"?>
     <root>
-        <secrets ver="1.0">
-            <secret name="secret1" value="foo_one" />
-            <secret name="secret2" value="foo_two" />
-        </secrets>
+      <secrets ver="1.0">
+        <secret name="secret" value="foo"/>
+        <secret name="secret1" value="foo_one" />
+        <secret name="secret2" value="foo_two" />
+      </secrets>
     </root>
     ```
 
-3. Gizli dosyayı Web.config dosyanızda bir yapılandırma Oluşturucusu olacak şekilde tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun.
-
-    ```xml
-    <configBuilders>
-        <builders>
-            <add name="Secrets"
-                 secretsFile="C:\Users\AppData\MyWebApplication1\secret.xml" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder,
-                    Microsoft.Configuration.ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
-        </builders>
-    </configBuilders>
-    ```
-
-4. AppSettings bölümünde gizli dizi yapılandırma oluşturucusunun kullanılması. Gizli bir değere sahip gizli dizi ayarı için bir giriş olduğundan emin olun.
+3. AppSettings bölümünde gizli dizi yapılandırma oluşturucusunun kullanılması. Gizli bir değere sahip gizli dizi ayarı için bir giriş olduğundan emin olun.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -148,20 +135,18 @@ Projeniz için bir Key Vault yapılandırmak üzere ASP.NET Core bölümündeki 
 
 1. Aşağıdaki NuGet paketini projenize yükler
    ```
-   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   Microsoft.Configuration.ConfigurationBuilders.Azure
    ```
 
 2. Web.config Key Vault Configuration Builder tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun. Key Vault Genel Azure veya Sovereign bulutu kullanıyorsanız, *VAULTNAME* değerini Key Vault adı olacak şekilde değiştirin.
 
     ```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-    <configBuilders>
+     <configBuilders>
         <builders>
-            <add name="AzureKeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
+            <add name="Secrets" userSecretsId="695823c3-6921-4458-b60b-2b82bbd39b8d" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            <add name="AzureKeyVault" vaultName="[VaultName]" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
         </builders>
-    </configBuilders>
+      </configBuilders>
     ```
 3. AppSettings bölümünün Key Vault yapılandırma oluşturucusunu kullandığını belirtin. Gizli bir değere sahip gizli dizi ayarı için herhangi bir giriş olduğundan emin olun.
 

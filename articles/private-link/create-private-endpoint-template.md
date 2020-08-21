@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071494"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705818"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel uç nokta oluşturma
 
@@ -37,7 +37,7 @@ Bu şablon bir Azure SQL veritabanı örneği için özel bir uç nokta oluştur
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
+:::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json":::
 
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
@@ -76,7 +76,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Portalın arama çubuğunda _Myvm {UniqueId}_ girin.
 
-2. **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
+2. **Bağlan**’ı seçin. **Sanal makineye bağlan** açılır.
 
 3. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
@@ -120,7 +120,7 @@ ARM şablonunu Azure 'a dağıtma:
     - **Parola**: oluşturma sırasında bir parola girin.
     - **Parolayı anımsa**: **Evet**' i seçin.
 
-5.  **Bağlan**'ı seçin.
+5.  **Bağlan**’ı seçin.
 6.  Soldaki menüden **veritabanlarına**gidin.
 7.  İsteğe bağlı olarak, _örnek DB_'den bilgi oluşturabilir veya sorgulayabilirsiniz.
 8.  _Myvm {UniqueId}_ Ile uzak masaüstü bağlantısını kapatın.

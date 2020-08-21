@@ -3,14 +3,14 @@ title: Dayanıklı İşlevler sürümlere genel bakış-Azure Işlevleri
 description: Dayanıklı İşlevler sürümleri hakkında bilgi edinin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024733"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705801"
 ---
 # <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
 
@@ -44,7 +44,29 @@ Bu bölümde, yeni özelliklerden yararlanmak için mevcut sürüm 1. x Dayanık
 
 ### <a name="upgrade-the-extension"></a>Uzantıyı yükseltin
 
-[Dayanıklı işlevler bağlamaları uzantısının](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) sürüm 2. x ' i projenize yükler. Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../functions-bindings-register.md) .
+Dayanıklı İşlevler bağlamaları uzantısının en son 2. x sürümünü projenize yükler.
+
+#### <a name="javascript-and-python"></a>JavaScript ve Python
+
+Dayanıklı İşlevler 2. x [Azure işlevleri Uzantı paketi](../functions-bindings-register.md#extension-bundles)'nin 2. x sürümünde kullanılabilir.
+
+Projenizdeki Uzantı paketi sürümünü güncelleştirmek için üzerinde host.jsaçın ve `extensionBundle` bölümü 2. x () kullanacak şekilde güncelleştirin `[2.*, 3.0.0)` .
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+.NET projenizi [dayanıklı işlevler bağlamaları uzantısının](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)en son sürümünü kullanacak şekilde güncelleştirin.
+
+Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../functions-bindings-register.md#local-csharp) .
 
 ### <a name="update-your-code"></a>Kodunuzu güncelleştirme
 
@@ -55,7 +77,7 @@ Dayanıklı İşlevler 2. x birkaç önemli değişiklik sunar. Dayanıklı İş
 Dayanıklı İşlevler 2. x, şema üzerinde yeni bir host.jskullanır. 1. x üzerindeki ana değişiklikler şunları içerir:
 
 * `"storageProvider"``"azureStorage"`depolama birimine özgü yapılandırma için (ve alt bölümü).
-* `"tracing"`izleme ve günlük yapılandırma için.
+* `"tracing"` izleme ve günlük yapılandırma için.
 * `"notifications"``"eventGrid"`olay Kılavuzu bildirim yapılandırması için (ve alt bölümü).
 
 Ayrıntılar için [başvuru belgelerindeki Dayanıklı İşlevler host.js](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.

@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 08/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910185"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706020"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirme ve konuk davet edebilecek kişileri yönetme
 
-Bu makalede Azure Active Directory (Azure AD) B2B işbirliğinin nasıl etkinleştirileceği ve konukları kimlerin davet edebileceğinizi belirleme açıklanmaktadır. Varsayılan olarak, dizininizdeki tüm kullanıcılar ve konuklar bir yönetici rolüne atanmasa bile konukları davet edebilir. Dış işbirliği ayarları, kuruluşunuzdaki farklı türlerdeki kullanıcılar için konuk davetlerini açmanıza veya kapaetmenize olanak tanır. Ayrıca, konukların konuk davet etmesini sağlayan roller atayarak bireysel kullanıcılara davetiye da atayabilirsiniz.
+Bu makalede Azure Active Directory (Azure AD) B2B işbirliğinin nasıl etkinleştirileceği, konukları kimlerin ziyaretçi davet edebilir ve konuk kullanıcıların Azure AD 'de sahip olduğu izinleri belirleyecekleri açıklanmaktadır. 
+
+Varsayılan olarak, dizininizdeki tüm kullanıcılar ve konuklar bir yönetici rolüne atanmasa bile konukları davet edebilir. Dış işbirliği ayarları, kuruluşunuzdaki farklı türlerdeki kullanıcılar için konuk davetlerini açmanıza veya kapaetmenize olanak tanır. Ayrıca, konukların konuk davet etmesini sağlayan roller atayarak bireysel kullanıcılara davetiye da atayabilirsiniz.
+
+Azure AD, dış konuk kullanıcıların Azure AD dizininizde neleri görebileceğini kısıtlamanıza olanak sağlar. Varsayılan olarak, Konuk kullanıcılar kullanıcıları, grupları veya diğer dizin kaynaklarını listelemelerini engelleyen sınırlı bir izin düzeyine ayarlanır, ancak gizli olmayan grupların üyeliğini görebilirler. Yeni bir önizleme ayarı, konuk erişimini daha da kısıtlamanızı sağlar, böylece konukların yalnızca kendi profil bilgilerini görüntüleyebilmesini sağlayabilirsiniz. 
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>B2B dış işbirliği ayarlarını yapılandırma
 
@@ -38,19 +42,38 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
 1. [Azure Portal](https://portal.azure.com) kiracı yöneticisi olarak oturum açın.
 2. **Azure Active Directory**seçin.
 3. **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
-6. **Dış işbirliği ayarları** sayfasında, etkinleştirmek istediğiniz ilkeleri seçin.
 
-   ![Dış işbirliği ayarları](./media/delegate-invitations/control-who-to-invite.png)
+4. **Konuk Kullanıcı erişimi kısıtlamaları (Önizleme)** altında, konuk kullanıcıların sahip olmasını istediğiniz erişim düzeyini seçin:
 
-  - **Konuk kullanıcılar izinleri sınırlıdır**: Bu ilke, dizininizdeki konuklara ilişkin izinleri belirler. Kullanıcıları, grupları veya diğer dizin kaynaklarını numaralandırma gibi belirli dizin görevlerinin konukları engellemek için **Evet** ' i seçin. Konuklara, dizininizdeki normal kullanıcılar olarak dizin verilerine aynı erişimi vermek için **Hayır** ' ı seçin.
+   > [!IMPORTANT]
+   > Kısa bir süre için, Konuk Kullanıcı izinleri için bu yeni Portal denetimleri yalnızca URL kullanılarak görünür olur [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . Daha fazla bilgi için bkz. [Konuk erişim Izinlerini kısıtlama (Önizleme)](https://aka.ms/exid-users-restrict-guest-permissions).
+
+   - **Konuk kullanıcılar aynı üyelere (en kapsamlı) sahiptir**: Bu seçenek, konuklara Azure AD kaynaklarına ve dizin verilerine üye kullanıcı olarak aynı erişimi sağlar.
+
+   - **Konuk kullanıcıların, dizin nesnelerinin özelliklerine ve üyeliklerine sınırlı erişimi vardır**: (varsayılan) Bu ayar, kullanıcıları, grupları veya diğer dizin kaynaklarını numaralandırma gibi belirli dizin görevlerinin konukları engeller. Konuklar, tüm gizli olmayan grupların üyeliğini görebilir.
+
+   - **Konuk Kullanıcı erişimi, kendi dizin nesnelerinin özellikleri ve üyelikleri (en kısıtlayıcı) ile kısıtlıdır**: Bu ayarla, konuklar yalnızca kendi profillerine erişebilir. Konukların diğer kullanıcıların profillerini, gruplarını veya grup üyeliklerini görmesini izin verilmez.
+  
+    ![Konuk Kullanıcı erişimi kısıtlamaları ayarları](./media/delegate-invitations/guest-user-access.png)
+
+5. **Konuk davet ayarları**altında, uygun ayarları seçin:
+
    - **Konuk davet eden rolündeki Yöneticiler ve kullanıcılar davet edebilir**: yöneticilerin ve kullanıcıların "konuk davet eden" rolünde konukları davet etmesini sağlamak için, bu ilkeyi **Evet**olarak ayarlayın.
+
    - **Üyeler davet edebilir**: dizininizin yönetici olmayan üyelerinin konukları davet etmesini sağlamak için, bu ilkeyi **Evet**olarak ayarlayın.
+
    - **Konuklar davet edebilir**: konukların diğer konukları davet etmesini sağlamak için bu ilkeyi **Evet**olarak ayarlayın.
+
    - **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)**: tek seferlik geçiş kodu özelliği hakkında daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](one-time-passcode.md).
-   - **İşbirliği kısıtlamaları**: belirli etki alanlarına davetlere izin verme veya bunları engelleme hakkında daha fazla bilgi için bkz. [belirli kuruluşlardan B2B kullanıcılarına izin verme veya bu kullanıcıları engelleme](allow-deny-list.md).
-   
+
+   - **Konuk self servis kaydolma özelliğini Kullanıcı akışları (Önizleme) Ile etkinleştirin**: Bu ayar hakkında daha fazla bilgi için bkz. [bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)](self-service-sign-up-user-flow.md).
+
    > [!NOTE]
    > **Üyeler davet** etmek için **Hayır** ve **Yöneticiler ve konuk davet eden rolündeki kullanıcılar davet** **olarak ayarlanırsa,** **konuk davet** eden rolündeki kullanıcılar konukları davet edebilir.
+
+    ![Konuk davet ayarları](./media/delegate-invitations/guest-invite-settings.png)
+
+6. **İşbirliği kısıtlamaları**' nın altında, belirttiğiniz etki alanlarına davetleri izin vermeyi veya reddetmeyi seçin. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](allow-deny-list.md).
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk davet eden rolünü bir kullanıcıya atama
 

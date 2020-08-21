@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a0f06c2db0a5bf196ae610efadd85ef1df8defe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844652"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691321"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>ML modellerinin eşitliği 'i değerlendirmek için Fairlearn açık kaynak paketiyle birlikte Azure Machine Learning kullanın (Önizleme)
 
@@ -33,7 +33,7 @@ Bu nasıl yapılır kılavuzunda, aşağıdaki görevleri gerçekleştirmek içi
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning eşitliği SDK 
 
-Azure Machine Learning eşitliği SDK, `azureml-contrib-fairness` Azure Machine Learning içindeki açık kaynaklı Python paketini [Fairlearn](http://fairlearn.github.io), tümleştirir. Fairlearn 'in Azure Machine Learning dahilinde tümleştirmesi hakkında daha fazla bilgi edinmek için bu [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)göz atın. Fairlearn hakkında daha fazla bilgi için bkz. [örnek kılavuz](https://fairlearn.github.io/auto_examples/notebooks/index.html) ve [örnek Not defterleri](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
+Azure Machine Learning eşitliği SDK, `azureml-contrib-fairness` Azure Machine Learning içindeki açık kaynaklı Python paketini [Fairlearn](http://fairlearn.github.io), tümleştirir. Fairlearn 'in Azure Machine Learning dahilinde tümleştirmesi hakkında daha fazla bilgi edinmek için bu [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)göz atın. Fairlearn hakkında daha fazla bilgi için bkz. [örnek kılavuz](https://fairlearn.github.io/auto_examples/) ve [örnek Not defterleri](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
 
 Ve paketlerini yüklemek için aşağıdaki komutları kullanın `azureml-contrib-fairness` `fairlearn` :
 ```bash

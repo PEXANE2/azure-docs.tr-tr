@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78191075"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88702957"
 ---
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -30,7 +30,7 @@ Azure Functions Core Tools, bir Azure Işlevleri projesinde yerel olarak çalı�
 
     Aşağıdaki URL 'den bir tarayıcıdan GET isteğini de yürütebilirsiniz:
 
-    <http://localhost:7071/api/HttpExample?name=PowerShell>
+    `http://localhost:7071/api/HttpExample?name=PowerShell`
 
     `name`Sorgu parametresi ya da gövdede bir parametre geçirmeden HttpTrigger uç noktasını çağırdığınızda, işlev bir `BadRequest` hata döndürür. run.ps1 kodu gözden geçirdikten sonra, bu hatanın tasarım tarafından oluştuğunu görürsünüz.
 

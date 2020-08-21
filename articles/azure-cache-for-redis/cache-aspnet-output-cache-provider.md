@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 0c60eb8618568d01af9ec6ad0e3d00fe1332b766
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213016"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705036"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için ASP.NET çıkış önbelleği sağlayıcısı
 
@@ -57,7 +57,7 @@ NuGet paketi, gerekli derleme başvurularını indirir ve ekler ve aşağıdaki 
 | *konağının* | string | e | Redsıs sunucu IP adresi veya ana bilgisayar adı |
 | *bağ* | pozitif tamsayı | 6379 (TLS olmayan/SSL)<br/>6380 (TLS/SSL) | Redsıs sunucu bağlantı noktası |
 | *accessKey* | string | "" | Redsıs yetkilendirmesi etkinken redsıs sunucu parolası. Değer varsayılan olarak boş dizedir. Bu, oturum durumu sağlayıcısının Redsıs sunucusuna bağlanırken herhangi bir parolayı kullanmayacağı anlamına gelir. **Redsıs sunucunuz Azure Redis Cache gibi genel olarak erişilebilen bir ağda ise, güvenliği artırmak için Redsıs yetkilendirmesini etkinleştirdiğinizden emin olun ve güvenli bir parola sağlayın.** |
-| *SSL* | boolean | **yanlýþ** | TLS aracılığıyla Redsıs sunucusuna bağlanıp bağlanmayacağı. Redin, kutudan Out tarafından desteklenmediği için bu değer varsayılan olarak **false 'tur** . **SSL 'yi destekleyen Azure Redis Cache kullanıyorsanız, güvenliği artırmak için bunu true olarak ayarladığınızdan emin olun.**<br/><br/>TLS olmayan bağlantı noktası, yeni önbellekler için varsayılan olarak devre dışıdır. Bu ayar için TLS bağlantı noktasını kullanmak üzere **true değerini** belirtin. TLS olmayan bağlantı noktasını etkinleştirme hakkında daha fazla bilgi için, [önbellek yapılandırma](cache-configure.md) konusunun [erişim bağlantı noktaları](cache-configure.md#access-ports) bölümüne bakın. |
+| *SSL* | boolean | **yanlýþ** | TLS aracılığıyla Redsıs sunucusuna bağlanıp bağlanmayacağı. Redin, kutudan Out tarafından desteklenmediği için bu değer varsayılan olarak **false 'tur** . **SSL 'yi destekleyen Azure Redis Cache kullanıyorsanız, güvenliği artırmak için bunu true olarak ayarladığınızdan emin olun.**<br/><br/>TLS olmayan bağlantı noktası, yeni önbellekler için varsayılan olarak devre dışıdır. Bu ayar için TLS olmayan bağlantı noktasını kullanmak üzere **true değerini** belirtin. TLS olmayan bağlantı noktasını etkinleştirme hakkında daha fazla bilgi için, [önbellek yapılandırma](cache-configure.md) konusunun [erişim bağlantı noktaları](cache-configure.md#access-ports) bölümüne bakın. |
 | *Databaseıdnumber* | pozitif tamsayı | 0 | *Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Kullanılacak redne veritabanını belirtin. |
 | *Connectiontimeoutınmilliseconds* | pozitif tamsayı | StackExchange. Redsıs tarafından sağlanır | StackExchange. Redsıs. Connectionçoğullayıcı oluşturulurken *ConnectTimeout* ayarlamak için kullanılır. |
 | *Operationtimeoutınmilliseconds* | pozitif tamsayı | StackExchange. Redsıs tarafından sağlanır | StackExchange. Redsıs. Connectionçoğullayıcı oluştururken *Synctimeout* ayarlamak için kullanılır. |

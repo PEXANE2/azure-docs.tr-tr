@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037016"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691488"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -54,7 +54,7 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 |Fiyat|Standart katmanı|
 |Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -83,7 +83,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
     - **Öneri yok** -tanımlı bir uygulama listesi olmayan ve özelliği desteklemeyen makineler. Makineniz aşağıdaki nedenlerle bu sekmede olabilir:
       - Log Analytics Aracısı eksik
       - Log Analytics Aracısı olayları göndermiyor
-      - Bu, bir GPO veya yerel güvenlik ilkesi tarafından etkinleştirilen önceden var olan [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) ilkesi olan bir Windows makinesidir
+      - Bu, bir GPO veya yerel güvenlik ilkesi tarafından etkinleştirilen önceden var olan [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ilkesi olan bir Windows makinesidir
 
       > [!TIP]
       > Güvenlik Merkezi 'nin makine grubu başına benzersiz önerilerini tanımlamak için en az iki haftalık veri olması gerekir. Kısa süre önce oluşturulmuş olan veya standart katmanla en son etkinleştirilen aboneliklere ait olan makineler, **öneri yok** sekmesi altında görünür.

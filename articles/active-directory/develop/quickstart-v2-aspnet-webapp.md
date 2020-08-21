@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 297c2354e8a56b681230bfe2cedd0d49ddbb5b82
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165728"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691301"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açmasını öğrenmek için bir kod örneği kullanırsınız.  (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Ac
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. Yeni  [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'e tıklayın.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >
@@ -77,7 +77,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Ac
 1. Zip dosyasını kök klasöre yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) açın
 1. Çözümü Visual Studio’da açın (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. Visual Studio sürümüne bağlı olarak, projeye sağ tıklayıp `AppModelv2-WebApp-OpenIDConnect-DotNet` **NuGet paketlerini geri yüklemeniz** gerekebilir
-1. Paket Yöneticisi konsolunu açın (diğer Windows-> Paket Yöneticisi konsolu > görüntüleyin) ve çalıştırın`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. Paket Yöneticisi konsolunu açın (diğer Windows-> Paket Yöneticisi konsolu > görüntüleyin) ve çalıştırın `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 
 > [!div renderon="docs"]
 > 5. **Web.config** dosyasını düzenleyip `ClientId` ve `Tenant` parametrelerini şu şekilde değiştirin:
@@ -159,7 +159,7 @@ public void Configuration(IAppBuilder app)
 > |Konum  | Açıklama |
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
-> | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için <https://login.microsoftonline.com/{tenant}/v2.0>; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |
+> | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için `https://login.microsoftonline.com/{tenant}/v2.0`; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |
 > | `RedirectUri`  | Microsoft Identity platform uç noktasında kimlik doğrulamasından sonra kullanıcıların gönderildiği URL |
 > | `PostLogoutRedirectUri`     | Oturum kapatıldıktan sonra kullanıcıların gönderildiği URL |
 > | `Scope`     | İstenen kapsamların listesi, boşlukla ayrılmış |

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009197"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691420"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
 
@@ -32,7 +32,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 
@@ -162,7 +162,7 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 2. Log Analytics çalışma alanınıza gidin.
 3. Sol bölmede, çalışma alanı veri kaynakları altında **sanal makineler**' i seçin.
 4. Bağlanmak istediğiniz VM 'nin adını seçin.
-5. **Bağlan**'ı seçin.
+5. **Bağlan**’ı seçin.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -196,7 +196,7 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
    > [!div class="mx-imgBorder"]
    > ![Yeniden yönlendirme URI 'SI sayfası](../media/redirect-uri-page.png)
 
-8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı ise `contosoapp45` , ILIŞKILI URL 'niz <https://contosoapp45.azurewebsites.net> ).
+8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı ise `contosoapp45` , ILIŞKILI URL 'niz <http://contoso.azurewebsites.net> ).
 9. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
 10.   **Kabul Et**’i seçin.
 
